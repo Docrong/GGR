@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<boco>
+	<test1>
+SELECT m.ID as ID, m.SHEETID as 工单号, m.TITLE as 标题, m.SHEETACCEPTLIMIT as 处理时限, m.SHEETCOMPLETELIMIT as 受理时限, m.SENDTIME as 派单时间, m.SENDUSERID as 派单人, m.SENDDEPTID as SENDDEPTID, m.SENDROLEID as SENDROLEID, m.SENDCONTACT as SENDCONTACT, m.ENDTIME as ENDTIME, m.ENDRESULT as ENDRESULT, m.STATUS as STATUS, u.id as 用户ID, u.deptname as deptname, u.email as email, u.userid as userid, u.username as username FROM commonfault_main m,taw_system_user u WHERE  m.sendtime>Sysdate-1200 	</test1>
+	<param1>date</param1>
+	<param2>time</param2>
+	<param3>like</param3>
+</boco>

@@ -1,0 +1,10 @@
+#Mon Jun 26 14:57:17 CST 2017
+eclipse.preferences.version=1
+encoding//src/com/boco/eoms/commons/util/xml/XMLProperties.java=UTF-8
+encoding//src/com/boco/eoms/commons/util/xml/XmlManage.java=UTF-8
+encoding//src/com/boco/eoms/database/ConnectionPoolFactory.java=UTF-8
+encoding//src/com/boco/eoms/database/SQLConnection.java=UTF-8
+encoding//src/com/boco/eoms/download/TestTemplate.java=UTF-8
+encoding//src/com/boco/eoms/servlet/ExportExcel.java=UTF-8
+encoding//src/config/export-util.xml=UTF-8
+encoding//src/config/head.st=UTF-8

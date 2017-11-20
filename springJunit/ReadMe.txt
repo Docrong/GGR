@@ -1,4 +1,4 @@
-此程序为Springssh+junit测试中提取出来的
+姝ょ▼搴忎负Springssh+junit娴嬭瘯涓彁鍙栧嚭鏉ョ殑
 JDK 1.6
 java libraries:
 	Java EE 5 Libraries;
@@ -6,4 +6,10 @@ java libraries:
 	Spring 3.0 Core Libraries
 	Spring 3.0 Testing Support Libraries
 	Hibernate 3.1 Core Libraries
-其他jar包放在lib中了
+鍏朵粬jar鍖呮斁鍦╨ib涓簡
+update聽11.20
+涓轰簡鍏煎聽spring.jar
+鍒犻櫎
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
+浠ュ強聽spring 3.0core鐩稿叧鍐呭

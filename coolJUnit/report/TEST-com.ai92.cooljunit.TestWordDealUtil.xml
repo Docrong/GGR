@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="MrWRong" name="com.ai92.cooljunit.TestWordDealUtil" tests="6" time="0.056" timestamp="2017-11-20T01:05:48">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.6.0_45\jre\bin" />
+    <property name="java.vm.version" value="20.45-b01" />
+    <property name="ant.library.dir" value="C:\Users\gr\AppData\Local\Genuitec\Common\plugins\org.apache.ant_1.7.1.v20090120-1145\lib" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on June 27 2008" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="src folder" value="src" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="path.separator" value=";" />
+    <property name="ant.file.auto unittest task" value="C:\Users\gr\Desktop\coolJUnit\build.xml" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="user.country" value="CN" />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="user.dir" value="C:\Users\gr\Desktop\coolJUnit" />
+    <property name="java.runtime.version" value="1.6.0_45-b06" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="eclipse.pdebuild.scripts" value="/C:/Users/gr/AppData/Local/Genuitec/Common/plugins/org.eclipse.pde.build_3.5.2.R35x_20100114/scripts/" />
+    <property name="basedir" value="C:\Users\gr\Desktop\coolJUnit" />
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.6.0_45\jre\lib\endorsed" />
+    <property name="os.arch" value="amd64" />
+    <property name="java.io.tmpdir" value="C:\Users\gr\AppData\Local\Temp\" />
+    <property name="ant.core.lib" value="C:\Users\gr\AppData\Local\Genuitec\Common\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="user.variant" value="" />
+    <property name="os.name" value="Windows 8" />
+    <property name="ant.home" value="C:\Users\gr\AppData\Local\Genuitec\Common\plugins\org.apache.ant_1.7.1.v20090120-1145" />
+    <property name="eclipse.pdebuild.templates" value="/C:/Users/gr/AppData/Local/Genuitec/Common/plugins/org.eclipse.pde.build_3.5.2.R35x_20100114/templates/" />
+    <property name="ant.project.name" value="auto unittest task" />
+    <property name="sun.jnu.encoding" value="GBK" />
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.6.0_45\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Users/gr/AppData/Local/Genuitec/Common/binary/com.sun.java.jdk.win32.x86_1.6.0.013/jre/bin/client;C:/Users/gr/AppData/Local/Genuitec/Common/binary/com.sun.java.jdk.win32.x86_1.6.0.013/jre/bin;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Java\jdk1.8.0_151\bin;C:\Program Files\Java\jdk1.8.0_151\jre\bin;C:\windows\system32\;C:\Program Files\TortoiseSVN\bin;D:\mysql\mysql-5.7.20-winx64\bin;G:\apache-ant-1.9.9\bin;C:\ProgramData\gr\GitHubDesktop\bin;C:\Users\gr\AppData\Local\GitHubDesktop\bin;." />
+    <property name="eclipse.pdebuild.home" value="/C:/Users/gr/AppData/Local/Genuitec/Common/plugins/org.eclipse.pde.build_3.5.2.R35x_20100114/./" />
+    <property name="java.class.version" value="50.0" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="os.version" value="6.2" />
+    <property name="ant.file" value="C:\Users\gr\Desktop\coolJUnit\build.xml" />
+    <property name="user.home" value="C:\Users\gr" />
+    <property name="user.timezone" value="" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="file.encoding" value="GBK" />
+    <property name="output folder" value="bin" />
+    <property name="test folder" value="testsrc" />
+    <property name="user.name" value="gr" />
+    <property name="java.class.path" value="C:\Users\gr\Desktop\coolJUnit\lib\junit-4.9.jar;C:\Users\gr\Desktop\coolJUnit\bin;C:\Users\gr\Desktop\coolJUnit;C:\Program Files\Java\jdk1.8.0_151\lib\dt.jar;C:\Program Files\Java\jdk1.8.0_151\lib\tools.jar;C:\Users\gr\workspace2\partner\web\WEB-INF\lib\junit.jar;C:\Users\gr\AppData\Local\Genuitec\Common\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-launcher.jar;C:\Users\gr\AppData\Local\Genuitec\Common\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar;C:\Users\gr\AppData\Local\Genuitec\Common\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-junit.jar" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.ai92.cooljunit.TestWordDealUtil filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\gr\Desktop\coolJUnit\report\TEST-com.ai92.cooljunit.TestWordDealUtil.xml crashfile=C:\Users\gr\Desktop\coolJUnit\junitvmwatcher4869140973505047433.properties propsfile=C:\Users\gr\Desktop\coolJUnit\junit2728561884736619360.properties" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.home" value="C:\Program Files\Java\jdk1.6.0_45\jre" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="user.language" value="zh" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="java.version" value="1.6.0_45" />
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.6.0_45\jre\lib\ext;C:\Windows\Sun\Java\lib\ext" />
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.6.0_45\jre\lib\resources.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\rt.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\jce.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.6.0_45\jre\lib\modules\jdk.boot.jar;C:\Program Files\Java\jdk1.6.0_45\jre\classes" />
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="file.separator" value="\" />
+    <property name="report folder" value="report" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="sun.desktop" value="windows" />
+    <property name="sun.cpu.isalist" value="amd64" />
+  </properties>
+  <testcase classname="com.ai92.cooljunit.TestWordDealUtil" name="wordFormat4DBNormal" time="0.0010" />
+  <testcase classname="com.ai92.cooljunit.TestWordDealUtil" name="wordFormat4DBNull" time="0.0010" />
+  <testcase classname="com.ai92.cooljunit.TestWordDealUtil" name="wordFormat4DBEmpty" time="0.0" />
+  <testcase classname="com.ai92.cooljunit.TestWordDealUtil" name="wordFormat4DBegin" time="0.0" />
+  <testcase classname="com.ai92.cooljunit.TestWordDealUtil" name="wordFormat4DBEnd" time="0.0" />
+  <testcase classname="com.ai92.cooljunit.TestWordDealUtil" name="wordFormat4DBTogether" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

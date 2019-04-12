@@ -1,0 +1,121 @@
+﻿body {
+  margin:0px;
+  background-image:none;
+  position:static;
+  left:auto;
+  width:1366px;
+  margin-left:0;
+  margin-right:0;
+  text-align:left;
+}
+#base {
+  position:absolute;
+  z-index:0;
+}
+#u110_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:1366px;
+  height:768px;
+}
+#u110 {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:1366px;
+  height:768px;
+}
+#u111 {
+  position:absolute;
+  left:2px;
+  top:376px;
+  width:1362px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u112_img {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:1065px;
+  height:561px;
+}
+#u112 {
+  position:absolute;
+  left:285px;
+  top:67px;
+  width:1065px;
+  height:561px;
+}
+#u113 {
+  position:absolute;
+  left:2px;
+  top:272px;
+  width:1061px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u114 {
+  position:absolute;
+  left:150px;
+  top:401px;
+  width:74px;
+  height:72px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u115 {
+  position:absolute;
+  left:39px;
+  top:401px;
+  width:74px;
+  height:72px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u116 {
+  position:absolute;
+  left:150px;
+  top:535px;
+  width:74px;
+  height:72px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u117 {
+  position:absolute;
+  left:39px;
+  top:535px;
+  width:74px;
+  height:72px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u118 {
+  position:absolute;
+  left:39px;
+  top:270px;
+  width:74px;
+  height:72px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u119 {
+  position:absolute;
+  left:1283px;
+  top:11px;
+  width:68px;
+  height:31px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}
+#u120 {
+  position:absolute;
+  left:152px;
+  top:271px;
+  width:74px;
+  height:72px;
+  overflow:hidden;
+  background-image:url('../../resources/images/transparent.gif');
+}

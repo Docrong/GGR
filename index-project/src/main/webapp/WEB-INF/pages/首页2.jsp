@@ -310,14 +310,15 @@
     	</div>
     	<div style="width: 100%;height: 70%;border: 25px;background-color: #EEEEEE;padding-top: 20px">
     	<div id="main" style="background-color: white;width: 100%;height: 100%">
-    		<div id="swdt" style="background-color: white;width: 100%;height: 100%;"></div>
+    		<!-- <div id="swdt" style="background-color: white;width: 100%;height: 100%;"></div> -->
+    		<iframe src="index3" height="800" width="1400" ></iframe>
     	</div>
     	</div>
     </div>
   </div>
 <!--     <script type="text/javascript" src="echart/main.js"></script>-->        
-<script type="text/javascript" src="echart/local.js"></script>    
-   
+<!-- <script type="text/javascript" src="echart/local.js"></script>    
+ -->   
 
     		
   

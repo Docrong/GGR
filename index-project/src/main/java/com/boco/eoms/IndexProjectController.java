@@ -19,4 +19,8 @@ public class IndexProjectController {
 	public String index2(HttpServletRequest request,HttpServletResponse response) {
 		return "首页2";
 	}
+	@RequestMapping("/index3")
+	public String index3(HttpServletRequest request,HttpServletResponse response) {
+		return "mindmanager";
+	}
 }

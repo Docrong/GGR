@@ -24,9 +24,9 @@ function getGlobalTreeOption() {
             trigger: 'item',
             formatter: "{b}: {c}",
             hideDelay: 0,
-            position: function(p) {
-                return [p[0], p[1] - 8];
-            }
+//            position: function(p) {
+//                return [p[0], p[1] - 8];
+//            }
         },
         toolbox: {
             show: true

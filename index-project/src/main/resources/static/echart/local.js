@@ -20,7 +20,7 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
 		"children" : "",
 	} ];
 	arr1[0].symbol='rectangle';
-	arr1[0].symbolSize= [80, 60];
+	arr1[0].symbolSize= [80, 30];
 	arr1[0].smooth=true;
 	arr1[0].itemStyle=jsondec;
 	arr1[0].isExpand=false;
@@ -38,10 +38,46 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
 		name : "平台功能",
 		children :""
 	} ];
+	
+	for(var i=0;i<arr2.length;i++){
+		arr2[i].symbol='rectangle';
+		arr2[i].symbolSize= [80, 30];
+		arr2[i].smooth=true;
+		arr2[i].itemStyle=jsondec;
+		arr2[i].isExpand=false;
+	}
+	
 	var arr3 = [ {
-		"name" : "我",
+		"name" : "接口",
 		"children" : ""
-	} ];
+	},{
+		name :"处理",
+		children:""
+	} ,{
+		name :"流程",
+		children:""
+	},{
+		name:"查询",
+		children:""
+	},{
+		name:"统计",
+		children:""
+	},{
+		name:"视图",
+		children:""
+	},{
+		name:"定时任务",
+		children:""
+	}];
+	
+	for(var i=0;i<arr3.length;i++){
+		arr3[i].symbol='rectangle';
+		arr3[i].symbolSize= [80, 30];
+		arr3[i].smooth=true;
+		arr3[i].itemStyle=jsondec;
+		arr3[i].isExpand=false;
+	}
+	
 	option = {
 		title : {
 			text : 'test'
@@ -60,9 +96,11 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
             type:'tree',
             orient: 'horizontal',  // vertical horizontal
             rootLocation: {x: 100, y: '60%'}, // 根节点位置  {x: 'center',y: 10}
-            nodePadding: 20,
+            nodePadding: 2,
+            layerPadding:100,
             symbol: 'circle',
-            symbolSize: 40,
+            symbolSize: 10,
+            roam:true,
             itemStyle: {
                 normal: {
                     label: {
@@ -100,13 +138,21 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
 			} else {
 				arr1[0].children = "";
 			}
-		} else if (aname == "爸爸") {
+		} else if (aname == "故障工单") {
 
 			if (params.data.children == "") {
 				arr2[0].children = arr3;
 			} else {
 				arr2[0].children = "";
 			}
+		}else if(aname == '家宽投诉工单'){
+			
+		}else if(aname == '通用任务工单'){
+			
+		}else if(aname == '平台功能'){
+			
+		}else if(aname == '2'){
+			
 		}
 		myCharts.setOption(option, true);
 	})

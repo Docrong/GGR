@@ -168,12 +168,14 @@
       <li class="layui-nav-item">
         <a href="javascript:;">
         <i class="layui-icon layui-icon-username" style="font-size: 20px; "></i>   
-          admin
+          admin<%--username --%>
         </a>
+        <%--
         <dl class="layui-nav-child">
           <dd><a href="">基本资料</a></dd>
           <dd><a href="">安全设置</a></dd>
         </dl>
+         --%>
       </li>
       <li class="layui-nav-item"><a href="">注销</a></li>
       <li class="layui-nav-item">&nbsp;&nbsp;&nbsp;&nbsp;</li>
@@ -186,7 +188,7 @@
       <ul class="layui-nav layui-nav-tree " style="background: #545C6D;width: 100%;"  lay-filter="test">
       </br>
       <li class="layui-nav-item layui-nav-itemed" style="width: 100%;text-align: center" >
-        <img src="http://t.cn/RCzsdCq" class="layui-nav-img" style="height: 80px;width: 80px;">
+        <img src="layui/icon/user.jpg" class="layui-nav-img" style="height: 80px;width: 80px;">
       </li>
       <li class="layui-nav-item layui-nav-itemed" style="width: 100%;text-align: left" >
       	<span style="font-size: 125%">&emsp;&emsp;&emsp;职位&emsp;&emsp;<span><span style="font-size: 100%">运维人员<span>
@@ -310,16 +312,30 @@
     	</div>
     	<div style="width: 100%;height: 70%;border: 25px;background-color: #EEEEEE;padding-top: 20px">
     	<div id="main" style="background-color: white;width: 100%;height: 100%">
-    		<!-- <div id="swdt" style="background-color: white;width: 100%;height: 100%;"></div> -->
-    		<iframe src="index3" height="800" width="1400" ></iframe>
+    		 <div id="swdt" style="background-color: white;width: 100%;height: 100%;"></div> 
+    		<!-- <iframe id="treeIframe" src="index3" height="100%" width="100%" ></iframe> -->
     	</div>
     	</div>
     </div>
   </div>
 <!--     <script type="text/javascript" src="echart/main.js"></script>-->        
-<!-- <script type="text/javascript" src="echart/local.js"></script>    
- -->   
-
+ <script type="text/javascript" src="echart/local.js"></script>    
+   
+<script type="text/javascript">  
+   /*  $(document).ready(function(e){  
+    　　    var iframe = document.getElementById("treeIframe");    
+        if (iframe.attachEvent) {    
+            iframe.attachEvent("onload", function() {    
+                alert(1);//iframe加载完成后你需要进行的操作  
+            });    
+        } else {    
+            iframe.onload = function() {    
+                // alert(2);     //iframe加载完成后你需要进行的操作  
+            };    
+        }  
+    }); */
+        //if...else...是一种兼容ie的写法
+    </script>
     		
   
   <div class="layui-footer" style="left: 325px;">

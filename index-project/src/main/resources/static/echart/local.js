@@ -19,11 +19,11 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
 		"name" : "电子运维系统\n(EOMS)",
 		"children" : "",
 	} ];
-	arr1[0].symbol='rectangle';
-	arr1[0].symbolSize= [80, 30];
-	arr1[0].smooth=true;
-	arr1[0].itemStyle=jsondec;
-	arr1[0].isExpand=false;
+//	arr1[0].symbol='rectangle';
+//	arr1[0].symbolSize= [80, 30];
+//	arr1[0].smooth=true;
+//	arr1[0].itemStyle=jsondec;
+//	arr1[0].isExpand=false;
 	console.log(arr1[0]);
 	var arr2 = [ {
 		"name" : "故障工单",
@@ -40,11 +40,11 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
 	} ];
 	
 	for(var i=0;i<arr2.length;i++){
-		arr2[i].symbol='rectangle';
-		arr2[i].symbolSize= [80, 30];
-		arr2[i].smooth=true;
-		arr2[i].itemStyle=jsondec;
-		arr2[i].isExpand=false;
+//		arr2[i].symbol='rectangle';
+//		arr2[i].symbolSize= [80, 30];
+//		arr2[i].smooth=true;
+//		arr2[i].itemStyle=jsondec;
+//		arr2[i].isExpand=false;
 	}
 	
 	var arr3 = [ {
@@ -71,11 +71,11 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
 	}];
 	
 	for(var i=0;i<arr3.length;i++){
-		arr3[i].symbol='rectangle';
-		arr3[i].symbolSize= [80, 30];
-		arr3[i].smooth=true;
-		arr3[i].itemStyle=jsondec;
-		arr3[i].isExpand=false;
+//		arr3[i].symbol='rectangle';
+//		arr3[i].symbolSize= [80, 30];
+//		arr3[i].smooth=true;
+//		arr3[i].itemStyle=jsondec;
+//		arr3[i].isExpand=false;
 	}
 	
 	option = {
@@ -96,12 +96,14 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
             type:'tree',
             orient: 'horizontal',  // vertical horizontal
             rootLocation: {x: 100, y: '60%'}, // 根节点位置  {x: 'center',y: 10}
-            nodePadding: 2,
-            layerPadding:100,
+            nodePadding : 30,
+			layerPadding : 100,
+			hoverable : false,
             symbol: 'circle',
-            symbolSize: 10,
+            symbolSize: 20,
             roam:true,
             itemStyle: {
+            	color:'#FFFFFF',
                 normal: {
                     label: {
                         show: true,
@@ -115,12 +117,12 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
                     lineStyle: {
                         color: '#000',
                         width: 1,
-                        type: 'broken' // 'curve'|'broken'|'solid'|'dotted'|'dashed'
+                        type: 'broken' //折线 'curve'|'broken'|'solid'|'dotted'|'dashed'
                     }
                 },
                 emphasis: {
                     label: {
-                        show: true
+                        show: false
                     }
                 }
             },
@@ -129,6 +131,7 @@ require([ 'echarts', 'echarts/chart/tree' // 使用柱状图就加载bar模块�
 	};
 	myCharts.setOption(option);
 	myCharts.on('click', function(params) {
+		console.log(params);
 		var aname = params.name;
 		//判断点击的节点名称 
 		if (aname == "电子运维系统\n(EOMS)") {

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<boco>
-	<url>jdbc:oracle:thin:@192.168.10.101:1521:orcl</url><!--已改为在tomcat中配置数据库连接所以这里配置无效-->
-	<user>test</user>
-	<password>test</password>
-    <filePath>D:\ExportExcel</filePath><!--导出文件缓存路径-->
-    <part>100000</part><!--多少条数据分配一个线程-->
-</boco>
-

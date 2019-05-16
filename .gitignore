@@ -4,3 +4,4 @@
 /leecode/mvnw.cmd
 /leecode/*.gitignore
 /leecode/target
+/leecode/.settings

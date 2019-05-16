@@ -1,5 +1,9 @@
 package com.work.ggr.leecode.string;
-
+/**
+ * 判断是否是回文
+ * @author gr
+ *
+ */
 public class 回文 {
 
 	public static void main(String[] args) {

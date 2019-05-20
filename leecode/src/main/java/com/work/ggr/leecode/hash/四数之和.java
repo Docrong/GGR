@@ -1,5 +1,7 @@
 package com.work.ggr.leecode.hash;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -20,12 +22,42 @@ public class 四数之和 {
 
 	public static void main(String[] args) {
 
-		int[]nums=new int[] {1,0,-1,0,-2,20};
+		int[]nums=new int[] {1,0,-1,0,-2,2};
 		int target=0;
+		List result=fourSum(nums, target);
+		System.out.println(result);
 	}
 
-	public static List<List<Integer>> fourSum(int[] nums, int target) {
-		return null;
+	public static List fourSum(int[] nums, int target) {
+		List result=new ArrayList();
+		Arrays.sort(nums);
+		for(int num:nums) {
+			System.out.println(num);
+		}
+		for(int i=0;i<nums.length-3;i++) {
+			int index1=i+1;
+			int index2=index1+1;
+			int index3=nums.length-1;
+			for(index1=i+1;index1<nums.length-2;index1++) {
+				if(nums[i]+nums[index1]+nums[index2]+nums[index3]==target) {
+					System.out.println(i+","+index1+","+index2+","+index3);
+					result.add(Arrays.asList(nums[i],nums[index1],nums[index2],nums[index3]));
+					while(index2<index3&&nums[index2]==nums[index2+1]) {
+						index2++;index3--;
+					}
+					while(index2<index3&&nums[index3]==nums[index3-1]) {
+						index2++;index3--;
+					}
+					index2++;index3--;
+				}else if(nums[i]+nums[index1]+nums[index2]+nums[index3]<target) {
+					index2++;
+				}else {
+					index3--;
+				}
+			}
+			
+		}
+		return result;
 
 	}
 }

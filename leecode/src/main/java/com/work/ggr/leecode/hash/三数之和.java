@@ -41,7 +41,9 @@ public class 三数之和 {
 				}
 			}
 		}
-		List result=new ArrayList(set);*/
+		List result=new ArrayList(set);
+		return result;
+		*/
 		List result=new ArrayList();
 		Arrays.sort(nums);
 		for(int i=0;i<nums.length-2;i++) {

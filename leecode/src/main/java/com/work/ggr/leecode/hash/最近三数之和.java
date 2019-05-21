@@ -28,37 +28,38 @@ public class 最近三数之和 {
 	}
 
 	public static int threeSumClosest(int[] nums, int target) {
-		/*List<Integer> result=new ArrayList<Integer>();
 		Arrays.sort(nums);
+		int sum=nums[0] + nums[1] + nums[2];
 		for(int i=0;i<nums.length-2;i++) {
 			if(i==0||(i > 0 && nums[i] != nums[i - 1])) {
 				int l=i+1;
 				int r=nums.length-1;
 				while (l<r) {
 					if(nums[i]+nums[l]+nums[r]==target) {
-						System.out.println("---"+(nums[i]+nums[l]+nums[r]));
-						result.add(target);
-						while(l<r&&nums[l]==nums[l+1]) {
-							l++;
-						}
-						while(r>l&&nums[r]==nums[r-1]) {
-							r--;
-						}
-						l++;r--;
-					}else if(nums[i]+nums[l]+nums[r]<target) {System.out.println("---"+(nums[i]+nums[l]+nums[r]));
-						result.add(nums[i]+nums[l]+nums[r]);
+						return nums[i]+nums[l]+nums[r];
+						
+					} 
+					sum=Math.abs(nums[i]+nums[l]+nums[r]-target)<Math.abs(sum-target)?nums[i]+nums[l]+nums[r]:sum;
+					if(nums[i]+nums[l]+nums[r]<target) {
+						while (l < r && nums[l] == nums[l + 1]) {
+                            l++;
+                        }
+//						System.out.println(":"+(nums[i]+nums[l]+nums[r]));
 						l++;
-					}else {System.out.println("---"+(nums[i]+nums[l]+nums[r]));
-						result.add(nums[i]+nums[l]+nums[r]);
+					}else {
+						while (l < r && nums[r] == nums[r - 1]) {
+                            r--;
+                        }
+//						System.out.println(":"+(nums[i]+nums[l]+nums[r]));
 						r--;
 					}
 				}
 			}
 		}
 
-		return 0;*/
+		return sum;
 		
-		 if (nums == null || nums.length < 3) {
+		 /*if (nums == null || nums.length < 3) {
 	            throw new IllegalArgumentException("argument is error.");
 	        }
 	        Arrays.sort(nums);
@@ -87,6 +88,6 @@ public class 最近三数之和 {
 	                }
 	            }
 	        }
-	        return sum;
+	        return sum;*/
 	}
 }

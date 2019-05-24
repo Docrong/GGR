@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.demo.model.TestTable"
+            table="Test_Table"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="remark"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="datestr"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

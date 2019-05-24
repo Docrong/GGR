@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+   
+    <!--TawSystemPrivMenu-DAO START-->
+    <bean id="tawHieDefDAO" class="com.boco.eoms.commons.voiceMessage.dao.jdbc.TawHieDefDAOJDBC" autowire="byName"/>
+    <bean id="tawHieApplyDAO" class="com.boco.eoms.commons.voiceMessage.dao.jdbc.TawHieApplyDAOJDBC" autowire="byName"/>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

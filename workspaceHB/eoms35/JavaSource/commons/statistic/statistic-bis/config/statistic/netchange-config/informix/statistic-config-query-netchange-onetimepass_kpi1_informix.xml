@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id>45</est-module-id>
+
+	
+
+	<kpi-define><!-- 可重复 -->
+		<name>onetimepassStat_kpi1</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!-- 
+		<condition-param page-name="sendDeptId"/> 
+		-->
+		<!--
+		<condition-param page-name="revDeptId" markflag="true" />
+	   -->
+		<summary-define>
+			<id>s1</id>
+			<sequence></sequence>
+			<column>'aa'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service></id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			</summary-define>
+		  <auto-append-groupby>fasle</auto-append-groupby>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.netchange.vo.StatDetailVONetchange</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_netchange est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+      </where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.sendtime&gt;'@beginTime@' and est.sendtime&lt;'@endTime@' 
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_netchange est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and (est.mainrejecttimes is null or est.mainrejecttimes=0)
+      </where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!--一次审批成功数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and (est.mainrejecttimes is null or est.mainrejecttimes=0) and est.sendtime&gt;'@beginTime@' and est.sendtime&lt;'@endTime@' 
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+			<query-define><!-- 可重复 -->
+			<name>query3</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_netchange est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.mainrejecttimes>0
+      </where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!--审批不通过数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.mainrejecttimes>0 and est.sendtime&gt;'@beginTime@' and est.sendtime&lt;'@endTime@' 
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		
+	</kpi-define>	
+</KpiConfig>

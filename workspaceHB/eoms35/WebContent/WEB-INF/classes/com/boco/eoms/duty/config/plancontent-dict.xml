@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="yearflag" description="年度">
+		<item id="2000" name="2000" description="2000" />
+		<item id="2001" name="2001" description="2001" />
+		<item id="2002" name="2002" description="2002" />
+		<item id="2003" name="2003" description="2003" />
+		<item id="2004" name="2004" description="2004" />
+		<item id="2005" name="2005" description="2005" />
+		<item id="2006" name="2006" description="2006" />
+		<item id="2007" name="2007" description="2007" />
+		<item id="2008" name="2008" description="2008" />
+		<item id="2009" name="2009" description="2009" />
+		<item id="2010" name="2010" description="2010" />
+		<item id="2011" name="2011" description="2011" />
+		<item id="2012" name="2012" description="2012" />
+		<item id="2013" name="2013" description="2013" />
+		<item id="2014" name="2014" description="2014" />
+		<item id="2015" name="2015" description="2015" />
+		<item id="2016" name="2016" description="2016" />
+		<item id="2017" name="2017" description="2017" />
+		<item id="2018" name="2018" description="2018" />
+		<item id="2019" name="2019" description="2019" />
+		<item id="2020" name="2020" description="2020" />
+		<item id="2021" name="2021" description="2021" />
+		<item id="2022" name="2022" description="2022" />
+		<item id="2023" name="2023" description="2023" />
+		<item id="2024" name="2024" description="2024" />
+		<item id="2025" name="2025" description="2025" />
+		<item id="2026" name="2026" description="2026" />
+		<item id="2027" name="2027" description="2027" />
+		<item id="2028" name="2028" description="2028" />
+		<item id="2029" name="2029" description="2029" />
+		<item id="2030" name="2030" description="2030" />
+	</dict>   
+	<dict id="monthflag" description="月度">
+		<item id="01" name="01" description="01" />
+		<item id="02" name="02" description="02" />
+		<item id="03" name="03" description="03" />
+		<item id="04" name="04" description="04" />
+		<item id="05" name="05" description="05" />
+		<item id="06" name="06" description="06" />
+		<item id="07" name="07" description="07" />
+		<item id="08" name="08" description="08" />
+		<item id="09" name="09" description="09" />
+		<item id="10" name="10" description="10" />
+		<item id="11" name="11" description="11" />
+		<item id="12" name="12" description="12" />
+	</dict>
+	<dict id="fileProperty" description="文件属性">
+		<item id="0" name="机密" description="机密" />
+		<item id="1" name="重要" description="重要" />
+		<item id="2" name="普通" description="普通" />
+	</dict>
+	<dict id="executeFlag" description="是否完成">
+		<item id="0" name="未完成" description="未完成" />
+		<item id="1" name="完成" description="完成" />
+		<item id="2" name="超时" description="超时" />
+	</dict>
+	<dict id="nuiteFlag" description="是否合并">
+		<item id="0" name="否" description="否" />
+		<item id="1" name="是" description="是" />
+	</dict>
+	<dict id="orderState" description="工单状态">
+		<item id="10" name="待处理" description="待处理" />
+		<item id="12" name="已处理" description="已处理" />
+	</dict>
+	<dict id="orderType" description="工单类型">
+		<item id="0" name="任务工单" description="任务工单" />
+	</dict>
+	<dict id="useState" description="使用状态">
+		<item id="0" name="正常" description="正常" />
+		<item id="1" name="停机" description="停机" />
+		<item id="2" name="遗失" description="遗失" />
+		<item id="3" name="借出" description="借出" />
+	</dict>
+	<dict id="cardType" description="测试卡类型">
+		<item id="0" name="国际卡" description="国际卡" />
+		<item id="1" name="国内卡" description="国内卡" />
+	</dict>
+	<dict id="country" description="国家">
+		<item id="0" name="美国" description="美国" />
+		<item id="1" name="英国" description="英国" />
+	</dict>
+	<dict id="province" description="省">
+		<item id="0" name="天津" description="天津" />
+		<item id="1" name="北京" description="北京" />
+	</dict>
+	<dict id="operator" description="运营商">
+		<item id="Vodafone" name="Vodafone" description="Vodafone" />
+		<item id="O2" name="O2" description="O2" />
+		<item id="TMobile" name="T-Mobile" description="T-Mobile" />
+		<item id="Orange" name="Orange" description="Orange" />
+		<item id="Hutchison3" name="Hutchison 3" description="Hutchison 3" />
+	</dict>
+	<dict id="devVendor" description="设备厂商">
+		<item id="0" name="设备厂商01" description="设备厂商01" />
+		<item id="1" name="设备厂商02" description="设备厂商02" />
+		<item id="2" name="设备厂商03" description="设备厂商03" />
+		<item id="3" name="设备厂商04" description="设备厂商04" />
+	</dict>
+	<dict id="devicetype" description="设备类型">
+		<item id="0" name="设备类型01" description="设备类型01" />
+		<item id="1" name="设备类型02" description="设备类型02" />
+		<item id="2" name="设备类型03" description="设备类型03" />
+		<item id="3" name="设备类型04" description="设备类型04" />
+	</dict>
+	<dict id="faultUnitLevel" description="故障单元级别">
+		<item id="0" name="故障单元级别01" description="故障单元级别01" />
+		<item id="1" name="故障单元级别02" description="故障单元级别02" />
+		<item id="2" name="故障单元级别03" description="故障单元级别03" />
+		<item id="3" name="故障单元级别04" description="故障单元级别04" />
+	</dict>
+	<dict id="faultLevel" description="故障级别">
+		<item id="0" name="故障级别01" description="故障级别01" />
+		<item id="1" name="故障级别02" description="故障级别02" />
+		<item id="2" name="故障级别03" description="故障级别03" />
+		<item id="3" name="故障级别04" description="故障级别04" />
+	</dict>
+	<dict id="problemSolveInfo" description="解决类别">
+		<item id="0" name="未解决" description="未解决" />
+		<item id="1" name="已解决" description="已解决" />
+	</dict>
+	<dict id="company" description="解决类别">
+		<item id="0" name="阿尔卡特" description="阿尔卡特" />
+		<item id="1" name="贝尔" description="贝尔" />
+		<item id="2" name="华维" description="华维" />
+		<item id="3" name="摩托罗拉" description="摩托罗拉" />
+		<item id="4" name="诺基亚" description="诺基亚" />
+		<item id="5" name="神州数码" description="神州数码" />
+		<item id="6" name="西门子" description="西门子" />
+		<item id="7" name="亚信" description="亚信" />
+		<item id="8" name="亿阳" description="亿阳" />
+		<item id="9" name="中软" description="中软" />
+		<item id="10" name="中兴" description="中兴" />
+		<item id="11" name="直真" description="直真" />
+		<item id="12" name="大唐" description="大唐" />
+	</dict>
+</dicts>  

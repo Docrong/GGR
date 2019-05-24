@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.system.priv.model.TawSystemPrivRegion"
+            table="taw_system_priv_region"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="objectid"
+                length="100"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="menuid"
+                length="100"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="regionid"
+                length="200"
+        >
+
+        </property>
+
+		 <property
+            name="isapp"
+                length="5"
+        >
+        </property>
+      <property
+            name="leaf"
+                length="5"
+        >
+        </property>
+        <property
+             name="flag"
+             length="5"
+        >
+        </property>
+        
+        <property
+             name="url"
+             length="254"
+        >
+        </property>
+        <property
+             name="objecttype"
+             length="254"
+        >
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

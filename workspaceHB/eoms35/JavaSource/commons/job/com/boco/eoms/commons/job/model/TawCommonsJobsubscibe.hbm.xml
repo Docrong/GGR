@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.job.model.TawCommonsJobsubscibe"
+            table="taw_commons_jobsubscibe"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="deleted"
+                length="50"
+
+         >
+
+        </property>
+
+        <property
+            name="jobSortId"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="jobCycle"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="jobType"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="subId"
+                length="50"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="subscriberDeptId"
+                length="50"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="subscriberId"
+                length="50"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="subscribeTime"
+                length="50"
+                not-null="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

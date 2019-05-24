@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--NetFault-START-->    
+
+    <bean id="INetFaultMainDAO"
+		class="com.boco.eoms.sheet.netFault.dao.hibernate.NetFaultMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="INetFaultLinkDAO"
+		class="com.boco.eoms.sheet.netFault.dao.hibernate.NetFaultLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="INetFaultTaskDAO"
+		class="com.boco.eoms.sheet.netFault.dao.hibernate.NetFaultTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="NetFaultTask"
+		class="com.boco.eoms.sheet.netFault.model.NetFaultTask" autowire="byName">
+     </bean>
+    <bean id="NetFaultLink"
+		class="com.boco.eoms.sheet.netFault.model.NetFaultLink"
+		autowire="byName" />
+	<bean id="NetFaultMain"
+		class="com.boco.eoms.sheet.netFault.model.NetFaultMain"
+		autowire="byName" />
+	<bean id="iNetFaultTask"
+		class="com.boco.eoms.sheet.netFault.task.impl.NetFaultTaskImpl"
+		autowire="byName" />
+	<bean id="iNetFaultTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.netFault.service.impl.NetFaultTaskManagerImpl">
+				<property name="taskModelObject" ref="NetFaultTask" />
+				<property name="taskDAO">
+					<ref bean="INetFaultTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/netFaultConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iNetFaultFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.netFault.service.impl.NetFaultFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iNetFaultLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.netFault.service.impl.NetFaultLinkManagerImpl">
+				<property name="linkObject" ref="NetFaultLink"/>
+				<property name="linkDAO">
+				  <ref bean="INetFaultLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iNetFaultMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.netFault.service.impl.NetFaultMainManagerImpl">
+			    <property name="mainObject" ref="NetFaultMain" />
+				<property name="mainDAO">
+				 <ref bean="INetFaultMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iNetFaultQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>NetFaultProces</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/netfaultproces-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iNetFaultQo"
+		class="com.boco.eoms.sheet.netFault.qo.impl.NetFaultQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="NetFaultMain" />
+		<property name="poLink" value="NetFaultLink" />
+		<property name="aliasMain" value="NetFaultMain" />
+		<property name="aliasLink" value="NetFaultLink" />
+		<property name="poTask" value="NetFaultTask" />
+	    <property name="aliasTask" value="NetFaultTask" />			
+	</bean>
+
+	<bean id="NetFault" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.netFault.webapp.action.NetFaultMethod">
+				<property name="businessFlowService" >
+					<ref bean="iNetFaultFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iNetFaultLinkManager" />
+				<property name="mainService"
+					ref="iNetFaultMainManager" />
+				<property name="sheetTask"
+					ref="NetFaultTask" />
+				<property name="taskService"
+					ref="iNetFaultTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/netfaultproces-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+     <!--NetFault-END-->  
+</beans>

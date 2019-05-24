@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Add new Managers here -->
+
+	<!--TawWorkbenchNetDisk-DAO START-->
+	<bean id="networkcalendarDao"
+		class="com.boco.eoms.workbench.networkcalendar.dao.hibernate.NetworkcalendarDaoHibernate"
+		autowire="byName" />
+		<bean id="NetworkcalendarMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workbench.networkcalendar.mgr.impl.NetworkcalendarMgrImpl">
+				<property name="networkcalendarDao"
+					ref="networkcalendarDao" />
+			
+			</bean>
+		</property>
+	</bean>
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

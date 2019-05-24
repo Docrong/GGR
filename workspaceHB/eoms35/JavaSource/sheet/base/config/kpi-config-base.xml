@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<kpi-define><!-- 可重复,统计表定义名称,如:xxx工单及时率统计表 -->
+		<name>testKpi</name>
+		<use-jsp-head>false</use-jsp-head><!--  -->
+		<condition-param dbtype="datetime" page-name="beginTime" query-name="sendTime" operate=">="/><!-- dbtype={String,int,datetime} -->
+		<condition-param dbtype="datetime" page-name="endTime" query-name="" operate=">="/><!-- dbtype={String,int,datetime} -->
+		<condition-param dbtype="datetime" page-name="" query-name="" operate=">="/><!-- dbtype={String,int,datetime} -->
+		
+		<view-row-span-max>1</view-row-span-max>				
+
+		<summary-define>
+			<view-name>角色</view-name>
+			<column>sendroleid</column><!-- 汇总字段 -->
+			<view-width></view-width>
+			<code-to-name></code-to-name> 
+		</summary-define>
+		
+		<query-define ><!-- 可重复 -->
+			<name></name>
+			<percent-count>select count(*) from apply_main</percent-count><!-- 可为空 -->
+			<from>apply_main</from><!-- from sql 不为空 -->
+			<where>id is not null</where><!-- 可为空 -->
+			<order-by>sendroleid</order-by><!-- 可为空 -->
+			<between-time-column></between-time-column><!-- 一般不为空(因为一般统计月报,年报或自定义时间段),为空时将统计所有记录 -->
+						
+			<field-define><!-- 可重复 -->
+				<view-name>待处理</view-name>
+				<view-width>20</view-width>
+				<view-row-index>1</view-row-index>
+				<view-row-span>1</view-row-span>
+				<view-column-span>1</view-column-span>
+
+				<as-name>f1</as-name>
+				<stat-sql>sum(case when mainapplycall>0 then 1 else 0 end)</stat-sql>
+				<need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
+				<percent-divisor-name></percent-divisor-name><!-- 百分比中分子显示名称 -->
+				<percent-count-name></percent-count-name><!-- 百分比中分母显示名称 -->
+				<list-sql></list-sql>
+			</field-define>
+		</query-define>
+
+
+	</kpi-define>
+
+</KpiConfig>

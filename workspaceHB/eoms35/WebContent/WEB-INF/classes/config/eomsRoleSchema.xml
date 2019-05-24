@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubRoleSchema>
+	<sub-role-mapping businessName="deptId">
+        <column-name>deptId</column-name>
+        <num>0</num>
+        <pojo-name>TawSystemDept</pojo-name>
+        <pojo-primary-key>deptId</pojo-primary-key>
+    </sub-role-mapping>
+    <sub-role-mapping businessName="class1">
+        <column-name>type1</column-name>
+        <num>1</num>
+        <pojo-name>TawSystemDictItem</pojo-name>
+        <pojo-primary-key>dictId</pojo-primary-key>
+    </sub-role-mapping>
+    <sub-role-mapping businessName="class2">
+        <column-name>type2</column-name>
+        <num>2</num>
+        <pojo-name>TawSystemDictItem</pojo-name>
+        <pojo-primary-key>dictId</pojo-primary-key>
+    </sub-role-mapping>
+    <sub-role-mapping businessName="class3">
+        <column-name>type3</column-name>
+        <num>3</num>
+        <pojo-name>TawSystemDictItem</pojo-name>
+        <pojo-primary-key>dictId</pojo-primary-key>
+    </sub-role-mapping>
+    <sub-role-mapping businessName="class4">
+        <column-name>type4</column-name>
+        <num>4</num>
+        <pojo-name>TawSystemDictItem</pojo-name>
+        <pojo-primary-key>dictId</pojo-primary-key>
+    </sub-role-mapping>
+</SubRoleSchema>

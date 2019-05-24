@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.message.model.SmsService"
+            table="sms_service"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="deleted"
+                length="1"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="isSendImediat"
+                length="10"
+                unique="true"
+                column="is_send_imediat"
+        >
+
+        </property>
+
+        <property
+            name="isSendNight"
+                length="10"
+                unique="false"
+                column="is_send_night"
+        >
+
+        </property>
+
+        
+        <property
+            name="msgType"
+                length="1"
+                not-null="false"
+                unique="true"
+                column="msg_type"
+        >
+
+        </property>
+
+        <property
+            name="name"
+                length="100"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="200"
+        >
+
+        </property>
+
+        <property
+            name="count"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="cycleDay"
+                length="5"
+                column="cycle_day"
+        >
+
+        </property>
+
+        <property
+            name="cycleHour"
+                length="5"
+                column="cycle_hour"
+        >
+
+        </property>
+
+        <property
+            name="cycleMonth"
+                length="5"
+                column="cycle_month"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                length="25"
+                column="end_time"
+        >
+
+        </property>
+
+        <property
+            name="interval"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="leaf"
+                length="5"
+        >
+
+        </property>
+
+        <property
+            name="regetData"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="sendDay"
+                length="5"
+                column="send_day"
+        >
+
+        </property>
+
+        <property
+            name="sendHour"
+                length="5"
+                column="send_hour"
+        >
+
+        </property>
+
+        <property
+            name="sendMin"
+                length="5"
+                column="send_min"
+        >
+
+        </property>
+
+        <property
+            name="sendStatus"
+                length="10"
+                column="send_status"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                length="25"
+                column="start_time"
+        >
+
+        </property>
+
+        <property
+            name="userId"
+                length="30"
+                not-null="false"
+                unique="true"
+                column="user_id"
+        >
+
+        </property>
+
+        <property
+            name="cycleStatus"
+                length="5"
+                not-null="false"
+                unique="true"
+                column="cycle_status"
+        >
+
+        </property>
+
+        <property
+            name="isCycleSend"
+                length="5"
+                unique="true"
+                column="is_cycle_send"
+        >
+
+        </property>
+        
+        <property
+            name="parentId"
+                length="32"
+                unique="true"
+                column="parent_id"
+        >
+
+        </property>
+        
+        <property
+            name="status"
+                length="5"
+                unique="true"
+                column="status"
+        >
+
+        </property>
+		
+		<property
+            name="regetAddr"
+                length="150"
+            column="reget_addr"
+        >
+
+        </property>
+        
+        <property
+            name="regetProtocol"
+                length="30"
+            column="reget_protocol"
+        >
+
+        </property>
+        
+        <property
+            name="selStatus"
+                length="5"
+            column="sel_status"
+        >
+
+        </property>
+        
+        <property
+            name="isSendUnDuty"
+                length="32"
+                column="is_send_unduty"
+        >
+        </property>
+		<property
+			name="usersId"
+			   length="100"
+			   not-null="false"
+			   column="usersId"
+			>
+		</property>
+    </class>    
+
+</hibernate-mapping>
+

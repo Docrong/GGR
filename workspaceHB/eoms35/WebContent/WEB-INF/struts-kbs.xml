@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- Generated with Karapan Sapi Struts Generator --><!-- Visit http://www.javanovic.com         -->
+<struts-config>
+  <form-beans>
+    <!--===============information publish===========-->
+    <form-bean type="com.boco.eoms.kbs.controller.TawFileUploadForm" name="tawFileUploadForm" />
+    <form-bean type="com.boco.eoms.kbs.controller.TawBoardForm" name="tawBoardForm" />
+    <form-bean type="com.boco.eoms.kbs.controller.TawInformationForm" name="tawInformationForm" />
+    <form-bean type="com.boco.eoms.kbs.controller.KbsBaseForm" name="kbsBaseForm" />
+    <!--=============================================-->
+  </form-beans>
+
+  <!-- ============ Global forwards ============ -->
+  <global-forwards type="org.apache.struts.action.ActionForward">
+    <forward name="failure" path="../failure.jsp" />
+    <forward name="timeout" path="../timeout.jsp" />
+    <forward name="nopriv" path="../nopriv.jsp" />
+  </global-forwards>
+
+  <!-- ============ Action Mapping definitions ============ -->
+  <action-mappings type="org.apache.struts.action.ActionMapping">
+    <!-- <<<<<<<<<<<<<< TawBoard >>>>>>>>>>>>>>> -->
+    <action path="/TawBoard/add" parameter="ADD" type="com.boco.eoms.kbs.controller.TawBoardAction" scope="request" name="tawBoardForm" validate="false">
+      <forward name="success" path="manager.TawBoard.entry" />
+    </action>
+    <action path="/TawBoard/edit" parameter="EDIT" type="com.boco.eoms.kbs.controller.TawBoardAction" scope="request" name="tawBoardForm" validate="false">
+      <forward name="success" path="manager.TawBoard.entry" />
+    </action>
+    <action path="/TawBoard/list" parameter="LIST" type="com.boco.eoms.kbs.controller.TawBoardAction" scope="request" name="tawBoardForm" validate="false">
+      <forward name="success" path="manager.TawBoard.summary" />
+    </action>
+    <action path="/TawBoard/view" parameter="VIEW" type="com.boco.eoms.kbs.controller.TawBoardAction" scope="request" name="tawBoardForm" validate="false">
+      <forward name="success" path="manager.TawBoard.view" />
+    </action>
+    <action path="/TawBoard/remove" parameter="REMOVE" type="com.boco.eoms.kbs.controller.TawBoardAction" scope="request" name="tawBoardForm" validate="false">
+      <forward name="success" path="manager.TawBoard.remove" />
+    </action>
+    <action path="/TawBoard/trash" parameter="TRASH" type="com.boco.eoms.kbs.controller.TawBoardAction" scope="request" name="tawBoardForm" validate="false">
+      <forward name="success" path="/TawBoard/list.do" />
+    </action>
+    <action path="/TawBoard/save" parameter="SAVE" type="com.boco.eoms.kbs.controller.TawBoardAction" scope="request" name="tawBoardForm" validate="true" input="manager.TawBoard.entry">
+      <forward name="success"  path="/manager/TawBoard/redirect.jsp" />
+      <forward name="cancel" redirect="true" path="/do/TawBoard/list" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawInformation >>>>>>>>>>>>>>> -->
+    <action path="/TawInformation/add" parameter="ADD" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.entry" />
+    </action>
+    <action path="/TawInformation/edit" parameter="EDIT" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/manager/TawInformation/edit.jsp" />
+    </action>
+    <action path="/TawInformation/list" parameter="LIST" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.summary" />
+    </action>
+    <action path="/TawInformation/unlist" parameter="UNLIST" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.summary" />
+    </action>
+    <action path="/TawInformation/modilist" parameter="MODILIST" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.summary" />
+    </action>
+    <action path="/TawInformation/denylist" parameter="DENYLIST" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.summary" />
+    </action>
+    <action path="/TawInformation/listnotice" parameter="LISTNOTICE" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.summary" />
+    </action>
+    <action path="/TawInformation/listReply" parameter="LISTREPLY" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.display" />
+    </action>
+    <action path="/TawInformation/view" parameter="VIEW" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="manager.TawInformation.view" />
+    </action>
+    <action path="/TawInformation/trash" parameter="TRASH" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/TawInformation/denylist.do" />
+      <forward name="query" path="/TawInformation/queryList.do" />
+    </action>
+    <action path="/TawInformation/save" parameter="SAVE" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+
+       <forward name="success" redirect="true" path="/uploadsuc.jsp" />
+      <forward name="isnull" redirect="true" path="/manager/TawInformation/deptnull.jsp" />
+      <forward name="cancel" redirect="true" path="/do/TawInformation/list" />
+    </action>
+    <action path="/TawInformation/classify" parameter="CLASSIFY" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/TawInformation/list.do" />
+      <forward name="query" path="/TawInformation/queryList.do" />
+    </action>
+    <action path="/TawInformation/preclass" parameter="PRECLASS" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/manager/TawInformation/preclass.jsp" />
+    </action>
+    <action path="/TawInformation/file" parameter="FILE" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/manager/TawFileUpload/uploadfile.jsp" />
+    </action>
+    <action path="/TawInformation/ChkPass" parameter="CHKPASS" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/TawInformation/list.do" />
+    </action>
+    <action path="/TawInformation/TryAgain" parameter="TRYAGAIN" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/TawInformation/unlist.do" />
+    </action>
+     <action path="/TawInformation/ChkModi" parameter="CHKMODI" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/TawInformation/modilist.do" />
+    </action>
+    <action path="/TawInformation/ChkDeny" parameter="CHKDENY" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/TawInformation/denylist.do" />
+    </action>
+    <action path="/TawInformation/search" parameter="SEARCH" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/manager/TawInformation/search.jsp" />
+    </action>
+    <action path="/TawInformation/searchDo" parameter="SEARCHDO" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="session" name="tawInformationForm" validate="false">
+      <forward name="success" path="/manager/TawInformation/searchDo.jsp" />
+    </action>
+        <action path="/TawInformation/seluser" parameter="SEL" type="com.boco.eoms.kbs.controller.TawInformationAction"
+      scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/manager/TawInformation/seluser.jsp"/>
+    </action>
+    <action path="/TawInformation/receedit" parameter="RECEEDIT" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="true">
+      <forward name="success" path="/configbox/listbox/listbox_rece.jsp" />
+    </action>
+<!-- <<<<<<<<<<<<<< TawDatum >>>>>>>>>>>>>>> -->
+
+    <action path="/TawInformation/preclass" parameter="PRECLASS" type="com.boco.eoms.kbs.controller.TawInformationAction" scope="request" name="tawInformationForm" validate="false">
+      <forward name="success" path="/manager/TawInformation/preclass.jsp" />
+    </action>
+      <!-- <<<<<<<<<<<<<< KbsBase >>>>>>>>>>>>>>> -->
+    <action path="/KbsBase/add" name="kbsBaseForm" parameter="ADD" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="false" >
+      <forward name="success" path="/manager/KbsBase1/entry.jsp" />
+    </action>
+    <action path="/KbsBase/save" name="kbsBaseForm"  parameter="SAVE" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" redirect="true" path="/uploadsuc.jsp" />
+    </action>
+     <action path="/KbsBase/pass" name="kbsBaseForm"  parameter="PASS" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" redirect="true" path="/KbsBase/unlist.do" />
+    </action>
+     <action path="/KbsBase/commit" name="kbsBaseForm"  parameter="COMMIT" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" redirect="true" path="/KbsBase/draftlist.do" />
+    </action>
+    <action path="/KbsBase/draft" name="kbsBaseForm"  parameter="DRAFT" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" redirect="true" path="/KbsBase/draftlist.do" />
+    </action>
+     <action path="/KbsBase/stop" name="kbsBaseForm"  parameter="STOP" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" redirect="true" path="/KbsBase/stoplist.do" />
+    </action>
+     <action path="/KbsBase/deny" name="kbsBaseForm"  parameter="DENY" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" redirect="true" path="/KbsBase/denylist.do" />
+    </action>
+    <action path="/KbsBase/update" name="kbsBaseForm"  parameter="UPDATE" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" redirect="true" path="/KbsBase/list.do" />
+      <forward name="unlist" redirect="true" path="/KbsBase/unlist.do" />
+      <forward name="draftlist" redirect="true" path="/KbsBase/draftlist.do" />
+    </action>
+    <action path="/KbsBase/edit" name="kbsBaseForm" parameter="EDIT" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="false" >
+      <forward name="success" path="/manager/KbsBase1/edit.jsp" />
+    </action>
+    <action path="/KbsBase/view" name="kbsBaseForm"  parameter="VIEW" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="false" >
+      <forward name="success" path="/manager/KbsBase1/view.jsp" />
+    </action>
+    <action path="/KbsBase/remove" name="kbsBaseForm"  parameter="REMOVE" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="false" >
+      <forward name="success" path="/manager/KbsBase1/remove.jsp" />
+    </action>
+    <action path="/KbsBase/trash" name="kbsBaseForm" parameter="TRASH" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="false" >
+     <forward name="success" redirect="true" path="/KbsBase/list.do" />
+     <forward name="draftlist" redirect="true" path="/KbsBase/draftlist.do" />
+    </action>
+     <action path="/KbsBase/search"  name="kbsBaseForm" parameter="SEARCH" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request" validate="false">
+      <forward name="success" path="/query/KbsBase1/search.jsp" />
+    </action>
+    <action path="/KbsBase/searchdo"  name="kbsBaseForm" parameter="SEARCHDO" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="session" validate="false">
+      <forward name="success" path="/manager/KbsBase1/display.jsp" />
+    </action>
+    <action path="/KbsBase/unlist" name="kbsBaseForm"  parameter="UNLIST" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/manager/KbsBase1/list.jsp" />
+    </action>
+    <action path="/KbsBase/draftlist" name="kbsBaseForm"  parameter="DRAFTLIST" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/manager/KbsBase1/list.jsp" />
+    </action>
+     <action path="/KbsBase/denylist" name="kbsBaseForm"  parameter="DENYLIST" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/manager/KbsBase1/list.jsp" />
+    </action>
+     <action path="/KbsBase/list" name="kbsBaseForm"  parameter="LIST" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/manager/KbsBase1/list.jsp" />
+    </action>
+    <action path="/KbsBase/stoplist" name="kbsBaseForm"  parameter="STOPLIST" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/manager/KbsBase1/list.jsp" />
+    </action>
+     <action path="/KbsBase/stat" name="kbsBaseForm"  parameter="STAT" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/query/KbsBase1/stat.jsp" />
+    </action>
+      <action path="/KbsBase/statdo" name="kbsBaseForm"  parameter="STATDO" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/query/KbsBase1/statlist.jsp" />
+    </action>
+    <action path="/KbsBase/statlistdo" name="kbsBaseForm"  parameter="STATLISTDO" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="true" >
+      <forward name="success" path="/query/KbsBase1/statlistdetail.jsp" />
+    </action>
+    <action path="/KbsBase/display" name="kbsBaseForm"  parameter="DISPLAY" type="com.boco.eoms.kbs.controller.KbsBaseAction" scope="request"  validate="false" >
+      <forward name="success" path="/manager/KbsBase1/display.jsp" />
+    </action>
+  </action-mappings>
+
+  <controller contentType="text/html;charset=GB2312" locale="true" processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+
+  <!-- ========== Message Resources Definitions =========================== -->
+  <message-resources parameter="resources.application_zh_CN" />
+
+  <!-- ========== Plug Ins Configuration ================================== -->
+  <!-- Add multiple validator resource files by setting the pathname property -->
+      <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+      </plug-in>
+
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-kbs.xml" />
+    <set-property property="moduleAware" value="true" />
+  </plug-in>
+
+</struts-config>

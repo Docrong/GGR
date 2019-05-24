@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="CommonfaultCorrigendum" description="故障工单勘误">
+  <flow-define id="CommonfaultCorrigendum" description="故障工单勘误" tasknamespace="http://CommonfaultCorrigendum" linkservicename="" dictfilename="dict-sheet-commonfaultcorrigendum" name="CommonfaultCorrigendum">
+    <phase-id id="receive" name="新建工单" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="DraftTask" role="" condition="${operateType}==22" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="保存草稿" />
+      <to-phase-id id="NetCorrigendum" role="" condition="${operateType}==0" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发" />
+    </phase-id>
+    <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="NetCorrigendum" name="网元勘误" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="HoldTask" role="" condition="${operateType}==102" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="审批通过" />
+    </phase-id>
+  </flow-define>
+</WorkFlowRule>
+

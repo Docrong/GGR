@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans> 
+	<bean id="tawwpExecuteContentDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpExecuteContentDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpExecuteContentUserDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpExecuteContentUserDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpTawwpGetZNXJDao"
+		class="com.boco.eoms.workplan.dao.Jdbc.TawwpGetZNXJDAO"
+		autowire="byName" />
+	<!--<bean id="tawwpLogShowDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TbwwpLogShowDaoHibernate"
+		autowire="byName" />-->
+	<bean id="tawwpMonthExecuteDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpMonthExecuteDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpMonthExecuteUserDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpMonthExecuteUserDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpAddonsTableDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpAddonsTableDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpExecuteAssessDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpExecuteAssessDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpExecuteFileDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpExecuteFileDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpExecuteReportDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpExecuteReportDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpLogDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpLogDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpNewLogDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpNewLogDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpModelDispatchDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpModelDispatchDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpModelExecuteDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpModelExecuteDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpModelGroupDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpModelGroupDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpModelPlanDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpModelPlanDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpMonthCheckDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpMonthCheckDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpMonthPlanDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpMonthPlanDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpNetDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpNetDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpStubUserDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpStubUserDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpYearCheckDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpYearCheckDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpYearExecuteDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpYearExecuteDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpYearPlanDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpYearPlanDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpWorkflowDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpWorkflowDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpExecuteCheckDao"
+		class="com.boco.eoms.workplan.dao.hibernate.TawwpExecuteCheckDaoHibernate"
+		autowire="byName" />
+	<bean id="tawwpMonthPlanJDBC"
+		class="com.boco.eoms.workplan.dao.Jdbc.TawwpMonthPlanJDBC"
+		autowire="byName" />
+	<bean id="tawwpOrgUserRelJDBC"
+		class="com.boco.eoms.workplan.dao.Jdbc.TawwpOrgUserRelJDBC"
+		autowire="byName" />
+	<bean id="tawwpAddonsMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpAddonsMgrImpl">
+				<property name="tawwpAddonsTableDao"
+					ref="tawwpAddonsTableDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tawwpExecuteMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpExecuteMgrImpl">
+				<property name="tawwpMonthExecuteUserDao"
+					ref="tawwpMonthExecuteUserDao" />
+				<property name="tawwpExecuteContentDao"
+					ref="tawwpExecuteContentDao" />
+				<property name="tawwpMonthPlanDao"
+					ref="tawwpMonthPlanDao" />
+				<property name="tawwpExecuteReportDao"
+					ref="tawwpExecuteReportDao" />
+				<property name="tawwpExecuteAssessDao"
+					ref="tawwpExecuteAssessDao" />
+				<property name="tawwpExecuteFileDao"
+					ref="tawwpExecuteFileDao" />
+				<property name="tawwpTaskManageInterfaceMgr"
+					ref="tawwpTaskManageInterfaceMgr" />
+				<property name="tawwpExecuteContentUserDao"
+					ref="tawwpExecuteContentUserDao" />
+				<property name="tawwpNewLogDao" ref="tawwpNewLogDao" />
+				<property name="tawwpMonthPlanJDBC"
+					ref="tawwpMonthPlanJDBC" />
+				
+				<property name="tawwpMonthExecuteDao"
+					ref="tawwpMonthExecuteDao" />
+				<property name="tawwpYearExecuteDao"
+					ref="tawwpYearExecuteDao" />
+				<property name="tawwpModelExecuteDao"
+					ref="tawwpModelExecuteDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tawwpLogMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpLogMgrImpl">
+				<property name="tawwpLogDao" ref="tawwpLogDao" />
+			</bean>
+		</property>
+	</bean><!--
+
+
+	<bean id="tawwpLogShowMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpLogShowMgrImpl">
+				<property name="tawwpLogShowDao" ref="tawwpLogShowDao" />
+			</bean>
+		</property>
+	</bean>  
+
+
+	--><bean id="tawwpNetMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpNetMgrImpl">
+				<property name="tawwpNetDao" ref="tawwpNetDao" />
+				<property name="tawwpNewLogDao" ref="tawwpNewLogDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="tawwpWorkflowMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpWorkflowMgrImpl">
+				<property name="tawwpWorkflowDao"
+					ref="tawwpWorkflowDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="tawwpExecuteCheckMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpExecuteCheckMgrImpl">
+				<property name="tawwpExecuteCheckDao"
+					ref="tawwpExecuteCheckDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="tawwpStatMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpStatMgrImpl">
+				<property name="tawwpMonthPlanDao"
+					ref="tawwpMonthPlanDao" />
+				<property name="tawwpNetDao" ref="tawwpNetDao" />
+				<property name="tawwpYearPlanDao"
+					ref="tawwpYearPlanDao" />
+				<property name="tawwpModelPlanDao"
+					ref="tawwpModelPlanDao" />
+				<property name="tawwpExecuteContentDao"
+					ref="tawwpExecuteContentDao" />
+				<property name="tawwpExecuteAssessDao"
+					ref="tawwpExecuteAssessDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tawwpStubUserMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpStubUserMgrImpl">
+				<property name="tawwpStubUserDao"
+					ref="tawwpStubUserDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tawwpTaskManageInterfaceMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpTaskManageInterfaceMgrImpl">
+				<property name="tawwpMonthExecuteDao"
+					ref="tawwpMonthExecuteDao" />
+				<property name="tawwpExecuteContentDao"
+					ref="tawwpExecuteContentDao" />
+				<property name="tawwpExecuteContentUserDao"
+					ref="tawwpExecuteContentUserDao" />
+				<property name="tawwpNetMgr" ref="tawwpNetMgr" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tawwpModelMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpModelMgrImpl">
+				<property name="tawwpModelPlanDao"
+					ref="tawwpModelPlanDao" />
+				<property name="tawwpModelExecuteDao"
+					ref="tawwpModelExecuteDao" />
+				<property name="tawwpModelGroupDao"
+					ref="tawwpModelGroupDao" />
+				<property name="tawwpModelDispatchDao"
+					ref="tawwpModelDispatchDao" />
+				<property name="tawwpYearPlanDao"
+					ref="tawwpYearPlanDao" />
+				<property name="tawwpYearExecuteDao"
+					ref="tawwpYearExecuteDao" />
+				<property name="tawwpAddonsTableDao"
+					ref="tawwpAddonsTableDao" />
+
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tawwpMonthMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpMonthMgrImpl">
+				<property name="tawwpYearPlanDao"
+					ref="tawwpYearPlanDao" />
+				<property name="tawwpMonthPlanDao"
+					ref="tawwpMonthPlanDao" />
+				<property name="tawwpMonthExecuteDao"
+					ref="tawwpMonthExecuteDao" />
+				<property name="tawwpNetDao" ref="tawwpNetDao" />
+				<property name="tawwpYearExecuteDao"
+					ref="tawwpYearExecuteDao" />
+				<property name="tawwpMonthCheckDao"
+					ref="tawwpMonthCheckDao" />
+				<property name="tawwpMonthExecuteUserDao"
+					ref="tawwpMonthExecuteUserDao" />
+				<property name="tawwpExecuteContentDao"
+					ref="tawwpExecuteContentDao" />
+				<property name="tawwpExecuteContentUserDao"
+					ref="tawwpExecuteContentUserDao" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<bean id="tawwpYearPlanMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpYearPlanMgrImpl">
+				<property name="tawwpYearPlanDao"
+					ref="tawwpYearPlanDao" />
+				<property name="tawwpModelPlanDao"
+					ref="tawwpModelPlanDao" />
+				<property name="tawwpYearExecuteDao"
+					ref="tawwpYearExecuteDao" />
+				<property name="tawwpModelGroupDao"
+					ref="tawwpModelGroupDao" />
+				<property name="tawwpModelExecuteDao"
+					ref="tawwpModelExecuteDao" />
+				<property name="tawwpYearCheckDao"
+					ref="tawwpYearCheckDao" />
+				<property name="tawwpNetDao" ref="tawwpNetDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="tawwpWorkplanReportMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workplan.mgr.impl.TawwpWorkplanReportMgrImpl">
+				<property name="tawwpYearPlanDao"
+					ref="tawwpYearPlanDao" />
+				<property name="tawwpMonthPlanDao"
+					ref="tawwpMonthPlanDao" />
+				<property name="tawwpYearPlanMgr"
+					ref="tawwpYearPlanMgr" />
+				<property name="tawwpMonthMgr" ref="tawwpMonthMgr" />
+			</bean>
+		</property>
+	</bean>
+	<import
+		resource="classpath:com/boco/eoms/workplan/config/applicationContext-workplan-versionlog.xml" />
+	<import
+		resource="classpath:com/boco/eoms/workplan/config/applicationContext-wordplan-attributes.xml" />
+
+
+</beans>

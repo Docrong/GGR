@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="module" description="模块">
+		<item id="1" name="工单" description="工单" />
+		<item id="2" name="作业计划" description="作业计划" />
+	</dict>
+
+</dicts>
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kpi>
+     <cnname>工单号, 地区名称,工单信息, 派单时间, 处理环节</cnname>
+     <enname>sheetid,id,areaname,title,sendtime, dealname</enname>
+     <sql>select m1.sheetid,m1.id,getareaname(m1.todeptid) areaname,m1.title,m1.sendtime,decode(m1.status,'0','运行中','1' ,'已归档') status
+From commonfault_main m1,commonfault_link l1
+,(select  m.id,max(l.operatetime)operatetime,operatetype,activetemplateid from commonfault_main m,commonfault_link l 
+          where m.id = l.mainid and m.sendtime &gt;to_date('{2}','yyyy-mm-dd hh24:mi:ss') and m.sendtime&lt;to_date('{1}','yyyy-mm-dd hh24:mi:ss') and l.operatetype =7
+                  group by m.id,operatetype,activetemplateid 
+    ) t0 
+ where m1.sendtime&gt;to_date('{2}','yyyy-mm-dd hh24:mi:ss') and m1.sendtime&lt;to_date('{1}','yyyy-mm-dd hh24:mi:ss')
+  and m1.id =l1.mainid and l1.mainid = t0.id and l1.operatetime = t0.operatetime and l1.operatetype = t0.operatetype and m1.status in (0,1) and m1.deleted=0 and m1.todeptid='{0}'
+ </sql>
+   <a>sheetid,N,N,N</a>
+   <groupby> todeptid</groupby>
+
+</kpi>

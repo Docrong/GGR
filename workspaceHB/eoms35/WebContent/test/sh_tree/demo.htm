@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+	"http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-store"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<!-- The xtree script file -->
+<script type="text/javascript" src="js/prototype.js"></script>
+<script type="text/javascript" src="js/xtree2.js"></script>
+<script type="text/javascript" src="js/xloadtree2.js"></script>
+<link type="text/css" rel="stylesheet" href="css/xtree2.css">
+<script>
+function expand(){
+  if(tree.getExpanded()){
+    $("expandicon").value = "关闭树";
+    tree.collapseAll();
+  }
+  else{
+    $("expandicon").value = "展开树";
+    tree.expandAll();
+  
+  }
+}
+function getInfo(name){    
+  var url = "getinfo.jsp";
+  var pars = "name="+name;
+  var myAjax = new Ajax.Updater('info', url, {method: 'get', parameters: pars});
+  //var myAjax = new Ajax.Request(
+	//               this.url,
+	//               {method: 'get', parameters: pars, onComplete: process, onFailure: reportError}
+	//               );
+  
+}
+function process(originalRequest){
+  
+}
+</script>
+</head>
+
+<body>
+<div id="outer">
+  <div id="head">
+    <div id="title">流程图</div>
+  </div>
+  
+  <div id="workspace">
+  
+    <div id="tree">
+      <input id="expandicon" type="button" value="关闭树" onclick="expand();">
+      <script type="text/javascript">
+        var tree = new WebFXLoadTree("流程图", "5.xml");
+        tree.write();
+      </script>
+    </div>
+    
+    <div id="info">
+       流程树图说明:
+        <div class="status-finish">此操作已完成</div>
+        <div class="status-handling">此操作未完成</div>
+    </div>
+    
+  </div>
+  
+</div>
+</body>
+</html>

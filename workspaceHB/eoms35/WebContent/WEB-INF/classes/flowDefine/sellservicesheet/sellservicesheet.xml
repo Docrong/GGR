@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_6.dtd">
+<workflow>
+  <initial-actions>
+    <action id="2" name="NewSendMore" view="派发">
+      <results>
+        <unconditional-result id="2" old-status="Finished" status="Queued" step="1" subFlow="sellservicesheetsub" />
+      </results>
+    </action>
+    <action id="4" name="Draft" view="保存">
+      <results>
+        <unconditional-result id="4" old-status="Finished" status="Queued" step="3" />
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="1" name="接单人" DriverForward="true">
+      <actions>
+        <action id="9" name="Hold" view="归档">
+          <results>
+            <unconditional-result id="9" old-status="Finished" status="Queued" step="7"/>
+          </results>
+        </action>
+        <action id="11" name="TransmitMore" view="转派">
+          <results>
+            <unconditional-result id="11" old-status="Finished" status="Queued" step="1" subFlow="sellservicesheetsub"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="草稿">
+      <actions>
+        <action id="6" name="SendMore" view="派发">
+          <results>
+            <unconditional-result id="6" old-status="Finished" status="Queued" step="1" subFlow="sellservicesheetsub"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="7" name="归档">
+    </step>
+  </steps>
+</workflow>

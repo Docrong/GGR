@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawRmWorkorderRecord"
+            table="taw_rm_workorderrecord"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="workOrderId"
+            	column="work_order_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="title"
+            	column="title"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="receiver"
+            	column="receiver"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="sender"
+            	column="sender"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="replyTime"
+            	column="reply_time"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="receiveTime"
+            	column="receive_time"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="orderType"
+            	column="order_type"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="orderState"
+            	column="order_state"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="subProcessInstId"
+            	column="subProcessInst_id"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="processInstId"
+            	column="processInst_id"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="activityInstId"
+            	column="activityInst_id"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="workItemId"
+            	column="workItem_id"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="activityDefId"
+            	column="activityDef_id"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="activityInstName"
+            	column="activityInst_name"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="sheetType"
+            	column="sheet_type"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="roomId"
+            	column="room_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="userId"
+            	column="user_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="workSerial"
+            	column="work_serial"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+            	column="create_time"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,63 @@
+package id4qd0qdjc31o07djc3wj8j;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id27lupdjc31o07djc3x323.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.service.dao.ldap.factory:oiref> 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.dao.ldap.BaseLdapDAO:oiref><oihard>
+@__modelType reference 
+*/
+class reference77 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.dao.ldap.RegionLdapDAO:oiref><oihard>
+@__modelType reference 
+*/
+class reference84 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.dao.ldap.DepartmentLdapDAO:oiref><oihard>
+@__modelType reference 
+*/
+class reference85 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.dao.ldap.UserLdapDAO:oiref><oihard>
+@__modelType reference 
+*/
+class reference86 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.dao.ldap.RoleLdapDAO:oiref><oihard>
+@__modelType reference 
+*/
+class reference87 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.dao.ldap.PermissionLdapDAO:oiref><oihard>
+@__modelType reference 
+*/
+class reference88 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.dao.ldap.RangeLdapDAO:oiref><oihard>
+@__modelType reference 
+*/
+class reference89 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="BusinessPlan" description="新业务设计流程">
+   <flow-define id="BusinessPlanProcess" description="新业务设计流程">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="analyse" role="dealPerformer@205" condition="${operateType}==0" name="新建派发"/>
+       <to-phase-id id="draft" role="dealPerformer@204" condition="${operateType}==22" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="draft" name="草稿" type="operate">       
+       <to-phase-id id="analyse" role="dealPerformer@205" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id>
+     <phase-id id="reject" name="驳回" type="operate">       
+       <to-phase-id id="analyse" role="dealPerformer@205" condition="${operateType}==54" name="重新派发"/>
+     </phase-id> 
+     <phase-id id="analyse" name="可行性分析" type="operate">       
+       <to-phase-id id="audit" role="dealPerformer@206" condition="${operateType}==91" name="可行性审批"/>
+       <to-phase-id id="reject" role="dealPerformer@204" condition="${operateType}==90" name="驳回"/>
+     </phase-id>  
+     <phase-id id="audit" name="可行性审批" type="operate">       
+       <to-phase-id id="appraisal" role="dealPerformer@205" condition="${operateType}==92" name="规范评审"/>
+       <to-phase-id id="reject" role="dealPerformer@204" condition="${operateType}==90" name="驳回"/>
+     </phase-id> 
+     <phase-id id="appraisal" name="规范评审" type="operate">       
+       <to-phase-id id="standard" role="dealPerformer@206" condition="${operateType}==93" name="规范审批"/>
+       <to-phase-id id="audit" role="dealPerformer@206" condition="${operateType}==4" name="驳回可行性审批"/>
+     </phase-id>
+     <phase-id id="standard" name="规范审批" type="operate">       
+       <to-phase-id id="hold" role="dealPerformer@204" condition="${operateType}==94" name="归档"/>
+       <to-phase-id id="appraisal" role="dealPerformer@205" condition="${operateType}==4" name="驳回"/>
+     </phase-id>
+     <phase-id id="hold" name="归档" type="operate">
+     </phase-id>     
+  </flow-define>
+</WorkFlowRule>

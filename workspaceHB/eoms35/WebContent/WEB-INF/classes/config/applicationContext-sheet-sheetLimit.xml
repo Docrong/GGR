@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+   <bean id="sheetLimitDao" class="com.boco.eoms.sheet.tool.limit.dao.hibernate.SheetLimitDAOImpl" autowire="byName"/>
+    <bean id="IsheetLimitManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.sheet.tool.limit.service.impl.SheetLimitManagerImpl">
+                <property name="dao" ref="sheetLimitDao"/>
+	        </bean>
+        </property>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

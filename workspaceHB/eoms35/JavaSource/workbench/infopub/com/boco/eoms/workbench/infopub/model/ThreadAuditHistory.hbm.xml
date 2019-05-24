@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.workbench.infopub.model.ThreadAuditHistory"
+		table="ifp_thread_audit_history">
+
+		<id name="id" column="id" unsaved-value="null">
+
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+
+			</generator>
+
+		</id>
+
+	
+
+		<property name="isCurrent" length="10" not-null="false"
+			unique="true" column="is_current">
+
+		</property>
+
+		<property name="opinion" length="500" not-null="false"
+			unique="true" column="opinion">
+
+		</property>
+
+		<property name="parentId" length="32" not-null="false"
+			unique="true"  column="parent_id">
+
+		</property>
+
+		<property name="orgType" length="10" not-null="false"
+			unique="true" column="org_type">
+
+		</property>
+
+		<property name="status" length="10" not-null="false"
+			unique="true" column="status">
+
+		</property>
+
+		<property name="threadId" length="32" not-null="false"
+			unique="true" column="thread_id">
+
+		</property>
+
+		<property name="orgId" length="50" not-null="false"
+			unique="true" column="org_id">
+
+		</property>
+
+		<property name="auditTime" length="50" not-null="false"
+			unique="true" column="audit_time">
+		</property>
+		
+		<property name="submitTime" length="50" not-null="false"
+			unique="true" column="submit_time">
+		</property>
+		
+		<property name="note" length="50" not-null="false"
+			unique="true" column="note">
+		</property>
+		
+		<property name="isDel" length="10" not-null="false"
+			unique="true" column="is_del">
+		</property>
+
+	</class>
+
+</hibernate-mapping>
+

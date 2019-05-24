@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="dutyUserCache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="appCacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>com.boco.eoms.duty.DUTYUSER_CATCH</value>
+		</property>
+		<!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
+		<property name="maxElementsInMemory">
+			<value>100001</value>
+		</property>
+		<property name="overflowToDisk">
+			<value>true</value>
+		</property>
+		<property name="eternal">
+			<value>true</value>
+		</property>
+		<property name="timeToLive">
+			<value>600</value>
+		</property>
+		<property name="timeToIdle">
+			<value>600</value>
+		</property>
+		<property name="diskPersistent">
+			<value>false</value>
+		</property>
+		<property name="diskExpiryThreadIntervalSeconds">
+			<value>120</value>
+		</property>
+	</bean>
+
+	<bean id="dutyUserCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
+		<property name="cache">
+			<ref local="dutyUserCache" />
+		</property>
+	</bean>
+
+	<bean id="dutyUserCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="dutyUserCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*getDutyManCache</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="dutyUserBaseCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>dutyUserCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="TawDutyManCacheBean" parent="dutyUserBaseCacheProxy">
+		<property name="target">
+			<bean class="com.boco.eoms.duty.cache.TawDutyManCacheBean" />
+		</property>
+	</bean>
+
+
+	<!-- 自动更新缓存 -->
+
+
+	<bean id="dutyUserFlushCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="dutyUserFlushCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<!--
+					<value>.*methodOne</value>
+					<value>.*methodTwo</value>
+				-->
+				<value>.*addDutyManCache</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dutyUserFlushCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
+		<property name="cache">
+			<ref local="dutyUserCache" />
+		</property>
+		<property name="method">
+			<props>
+				<prop
+					key="com.boco.eoms.duty.cache.TawDutyManCacheBean.getDutyManCache">
+					com.boco.eoms.duty.cache.TawDutyManCacheBean.getDutyManCache
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="dutyUserBaseFlushCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>dutyUserFlushCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="TawDutyFlushCacheBean" parent="dutyUserBaseFlushCacheProxy">
+		<property name="target">
+			<bean class="com.boco.eoms.duty.cache.TawDutyManCacheBean" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<log-configs modelId="A" modelName="A">
+	<log-config operId="aa1" operName="aa1" operDesc="1"/>
+    <log-config operId="aa2" operName="ab1" operDesc="1"/>
+</log-configs>

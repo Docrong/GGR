@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated from FMImportSample.xml by XMLBuddy -->
+<!ELEMENT className (#PCDATA)>
+<!ELEMENT column (startRow,endRow,headerMapping)>
+<!ELEMENT endRow (#PCDATA)>
+<!ELEMENT fieldName (#PCDATA)>
+<!ELEMENT header (headerName,fieldName,type,length,isNull)>
+<!ATTLIST header col NMTOKEN #REQUIRED>
+<!ELEMENT headerMapping (header+)>
+<!ELEMENT headerName (#PCDATA)>
+<!ELEMENT isNull (#PCDATA)>
+<!ELEMENT length (#PCDATA)>
+<!ELEMENT sheet (className,column+)>
+<!ATTLIST sheet num NMTOKEN #REQUIRED>
+<!ELEMENT sheets (sheet+)>
+<!ELEMENT startRow (#PCDATA)>
+<!ELEMENT type (#PCDATA)>

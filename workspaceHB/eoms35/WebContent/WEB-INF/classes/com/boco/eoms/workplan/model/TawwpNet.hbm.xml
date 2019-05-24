@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpNet"
+        table="TAW_WP_NET"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpNet.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="deptId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="DEPTID"
+            length="10"
+            not-null="true"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NAMES"
+            length="100"
+            not-null="true"
+        />
+
+        <property
+            name="roomId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="ROOMID"
+            length="40"
+            not-null="true"
+        />
+
+        <property
+            name="sysTypeId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="SYSTYPEID"
+            length="10"
+            not-null="false"
+        />
+
+        <property
+            name="netTypeId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="NETTYPEID"
+            length="10"
+            not-null="false"
+        />
+        
+        <property
+            name="mynettypeid"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="MYNETTYPEID"
+            length="10"
+            not-null="false"
+        />
+
+        <property
+            name="serialNo"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SERIALNO"
+            length="40"
+            not-null="true"
+        />
+
+        <property
+            name="vendor"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="VENDOR"
+            length="60"
+            not-null="true"
+        />
+
+        <property
+            name="deleted"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DELETED"
+            length="1"
+            not-null="true"
+        />
+        <property
+            name="reportFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="REPORTFLAG"
+            length="10"
+            not-null="false"
+        />
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpNet.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!--TawSystemReported-DAO START-->
+	<bean id="tawSystemReportedDao"
+		class="com.boco.eoms.commons.system.reported.dao.hibernate.TawSystemReportedDaoHibernate"
+		autowire="byName" />
+	<bean id="tawSystemReportedUserDao"
+		class="com.boco.eoms.commons.system.reported.dao.hibernate.TawSystemReportedUserDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemReported-DAO END-->
+	<!--TawSystemReported-START-->
+	<bean id="tawSystemReportedManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.boco.eoms.commons.system.reported.service.impl.TawSystemReportedManagerImpl">
+				<property name="tawSystemReportedDao"
+					ref="tawSystemReportedDao" />
+				<property name="tawSystemReportedUserDao"
+					ref="tawSystemReportedUserDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemReported-END-->
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

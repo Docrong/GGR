@@ -1,0 +1,33 @@
+[PropertyInfo]
+CONSTITUTESTATENAME,String[],false,false, , ,false,<default>
+content,String,false,false, , ,true,<default>
+crtime,String,false,false, , ,true,<default>
+cruser,String,false,false, , ,true,<default>
+cruserName,String,false,false, , ,true,<default>
+deleted,String,false,false, , ,true,<default>
+deptId,String,false,false, , ,true,<default>
+deptName,String,false,false, , ,true,<default>
+id,String,false,false, , ,true,<default>
+modelPlanId,String,false,false, , ,true,<default>
+monthPlanHash,Hashtable,false,false, , ,true,<default>
+name,String,false,false, , ,true,<default>
+netList,String,false,false, , ,true,<default>
+netListName,String,false,false, , ,true,<default>
+netState,String,false,false, , ,false,<default>
+netTypeId,String,false,false, , ,true,<default>
+netTypeName,String,false,false, , ,true,<default>
+remark,String,false,false, , ,true,<default>
+state,String,false,false, , ,true,<default>
+stateName,String,false,false, , ,true,<default>
+step,Step,false,false, , ,true,<default>
+sysTypeId,String,false,false, , ,true,<default>
+sysTypeName,String,false,false, , ,true,<default>
+yearCheckId,String,false,false, , ,true,<default>
+yearCheckList,List,false,false, , ,true,<default>
+yearExecuteList,List,false,false, , ,true,<default>
+yearFlag,String,false,false, , ,true,<default>
+[IconNames]
+
+
+
+

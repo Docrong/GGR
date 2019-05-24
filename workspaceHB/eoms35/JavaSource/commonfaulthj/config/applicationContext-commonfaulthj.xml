@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="commonfaulthjMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commonfaulthj.mgr.impl.CommonfaulthjMgrImpl">
+				<property name="commonfaulthjDao" ref="commonfaulthjDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="commonfaulthjDao"
+		class="com.boco.eoms.commonfaulthj.dao.hibernate.CommonfaulthjDaoHibernate"
+		autowire="byName" />
+
+
+</beans>
+
+
+
+
+
+
+
+
+

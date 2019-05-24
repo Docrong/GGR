@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawNetTransfer"
+            table="taw_net_transfer"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="originateDept"
+                length="128"
+                not-null="true"
+        column="ORIGINATE_DEPT">
+
+        </property>
+
+        <property
+            name="originater"
+                length="64"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="date"
+                length="32"
+                not-null="true"
+                column="DATE_TIME"
+        >
+
+        </property>
+
+        <property
+            name="dispatchNum"
+                length="128"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="dutyMan"
+                length="64"
+                not-null="false"
+                column="DUTY_MAN"
+        >
+
+        </property>
+        <property
+            name="state"
+                length="32"
+                not-null="true"
+        >
+
+        </property>
+        <property
+            name="contact"
+                length="64"
+                not-null="true"
+        >
+
+        </property>
+        <property
+            name="speciality"
+                length="64"
+                not-null="true"
+        >
+
+        </property>
+         <property
+            name="equipmentDept"
+                length="64"
+                not-null="true"
+        column="EQUIPMENT_DEPT">
+
+        </property>
+        <property
+            name="referNet"
+                length="128"
+                not-null="true"
+                column="REFER_NET"
+        >
+
+        </property>
+        <property
+            name="title"
+                length="128"
+                not-null="true"
+        >
+
+        </property>
+         <property
+            name="content"
+                length="512"
+                not-null="true"
+        >
+
+        </property>
+         <property
+            name="remark"
+                length="512"
+                not-null="false"
+        >
+
+        </property>
+         <property
+            name="accessory"
+                length="128"
+                not-null="false"
+        >
+
+        </property>
+         <property
+            name="hasub"
+                length="8"
+                not-null="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

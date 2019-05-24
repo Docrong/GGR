@@ -1,0 +1,305 @@
+<head>
+	<public:component tagName="EOMSTab">
+		<meta http-equiv="MSThemeCompatible" content="yes">
+		<public:defaults viewLinkContent viewInheritStyle="true" contentEditable="false" tabStop="false" />
+		<public:attach event="oncontentready" onevent="initElement()" />
+		<public:attach event="onpropertychange" onevent="elementPropertyChange()" />
+		<public:attach event="ondetach" onevent="cleanupElement()" />
+		<public:property name="selectedIndex" value=-1 />
+		<public:method   name="initPages" />
+		<public:method   name="unload" />
+	</public:component>
+	
+	<style>
+		body
+		{
+			background-color: transparent;
+			height: 21px;
+			margin: 0px;
+			cursor: default;
+		}
+		.iTab
+		{
+			position: absolute;
+			top: 1px;
+		}
+		.iTab .l
+		{
+			height: 18px;
+			width: 4px;
+		}
+		.iTab .c
+		{
+			font: menu;
+			height: 18px;
+			padding: 2px, 2px, 0px, 2px;
+			word-break:keep-all;
+		}
+		.iTab .r
+		{
+			height: 18px;
+			width: 4px;
+		}
+	</style>
+	
+	<script language="jscript">
+		var objTabs = new Array() ;
+		function initElement() {
+			element.style.overflow = "hidden" ;
+			element.style.height = "21px" ;
+			element.style.cursor = "default" ;
+			var objTabElements = element.document.all.tags("EOMSTabButton") ;
+			if (objTabElements != null) {
+				for (var i = 0; i < objTabElements.length; i++) {
+					var newElement = "<table cellpadding=0 cellspacing=0" ;
+					try {
+						newElement += " id=" + objTabElements[i].id ;
+					}
+					catch(e) {
+						alert("Please provide a unique id for all EOMSTabButtons!") ;
+						return ;
+					}
+					newElement += " tabText=" + objTabElements[i].tabText ;
+					newElement += " tabPage=" + objTabElements[i].tabPage ;
+					newElement += " value=-1>" ;
+					objTabs[i] = element.document.createElement(newElement) ;
+					with (objTabs[i]) {
+						className = "iTab" ;
+						var objNewRow = insertRow() ;
+						with (objNewRow) {
+							for (var c = 0; c <= 3; c++) { insertCell(c) }
+							with (children[0]) {
+								className = "l" ;
+							}
+							with (children[1]) {
+								className = "c" ;
+								innerText = objTabElements[i].tabText ;
+							}
+							with (children[2]) {
+								className = "r" ;
+							}
+						}
+					}
+					iBody.insertAdjacentElement("afterBegin", objTabs[i]) ;
+					objTabs[i].attachEvent("onmouseover", elementOnMouseOver) ;
+					objTabs[i].attachEvent("onmouseout", elementOnMouseOut) ;
+					objTabs[i].attachEvent("onmousedown", elementOnMouseDown) ;
+					if (i == 0) {
+//						objTabs[i].style.left = "1px" ;						
+						objTabs[i].l = 6;
+						objTabs[i].style.left = objTabs[i].l + "px";
+						objTabs[i].w = 60;
+//						alert(objTabs[i].offsetWidth);
+					}
+					else {
+//						objTabs[i].style.left = objTabs[i - 1].offsetLeft + objTabs[i - 1].offsetWidth + 1 ;						
+						objTabs[i].style.left = objTabs[i - 1].l + objTabs[i - 1].w + 1 + "px" ;
+						objTabs[i].l = objTabs[i - 1].l + objTabs[i - 1].w + 1;
+						objTabs[i].w = 50;
+					}
+					setTabState(objTabs[i]) ;
+				}
+//				element.style.width = objTabs[objTabElements.length - 1].offsetLeft + objTabs[objTabElements.length - 1].offsetWidth + 20 ;
+				element.style.width = objTabs[objTabElements.length - 1].l + objTabs[objTabElements.length - 1].w + 20 ;
+				element.style.top = 6;
+			}
+			window.attachEvent("onload", actionOnLoad) ;
+			window.document.styleSheets.item(0).owningElement.attachEvent("onload", elementSetStyle) ;
+		}
+		function cleanupElement() {
+			if (objTabs != null) {
+				for (var i = 0; i < objTabs.length; i++) {
+					objTabs[i].detachEvent("onmouseover", elementOnMouseOver) ;
+					objTabs[i].detachEvent("onmouseout", elementOnMouseOut) ;
+					objTabs[i].detachEvent("onmousedown", elementOnMouseDown) ;
+				}
+			}
+			window.detachEvent("onload", actionOnLoad) ;
+			window.document.styleSheets.item(0).owningElement.detachEvent("onload", elementSetStyle) ;
+		}
+		function actionOnLoad() {
+			initPages() ;
+		}
+		function initPages() {
+			if (objTabs != null) {
+				for (var i = 0; i < objTabs.length; i++) {
+					var tabPage = window.document.all(objTabs[i].tabPage) ;
+					if (tabPage != null) {
+						with (tabPage.style) {
+							top = element.offsetTop + element.offsetHeight - 1 ;
+							left = element.offsetLeft ;
+						}
+//						tabPage.initPageConector(objTabs[i].offsetLeft - 1, objTabs[i].offsetWidth + 2) ;
+						showWindowObjects(tabPage, false) ;
+					}
+				}
+			}
+			if (element.selectedIndex != -1) {
+				objTabs[element.selectedIndex].value = 1 ;
+				setTabState(objTabs[element.selectedIndex]) ;
+				window.document.all(objTabs[element.selectedIndex].tabPage).style.zIndex = 100 ;
+				showWindowObjects(window.document.all(objTabs[element.selectedIndex].tabPage), true) ;
+			}
+			else {
+				element.selectedIndex = 0 ;
+			}
+		}
+		function elementSetStyle() {
+			tabStyleSheet.href = window.document.styleSheets.item(0).href ;
+			if (objTabs != null) {
+				for (var i = 0; i < objTabs.length; i++) {
+					setTabState(objTabs[i]) ;	
+				}
+			}
+		}
+		function unload() {
+			return cleanupElement() ;
+		}
+		function elementOnMouseOver() {
+			var el = window.event.srcElement ;
+			if (el.tagName == "TD") { el = el.offsetParent ; }
+			with (el) {
+				if (value != 1) { value = 0 ; }
+			}
+			setTabState(el) ;
+		}
+		function elementOnMouseOut() {
+			var el = window.event.srcElement ;
+			if (el.tagName == "TD") { el = el.offsetParent ; }
+			with (el) {
+				if (value != 1) { value = -1 ; }
+			}
+			setTabState(el) ;
+		}
+		function elementOnMouseDown() {
+			var el = window.event.srcElement ;
+			if (el.tagName == "TD") { el = el.offsetParent ; }
+			if (objTabs != null) {
+				for (var i = 0; i < objTabs.length; i++) {
+					if (objTabs[i] == el) {
+						element.selectedIndex = i ;
+					}
+				}
+			}
+		}
+		function elementPropertyChange() {
+			if (window.event.propertyName == "selectedIndex") {
+				if (objTabs != null) {
+					for (var i = 0; i < objTabs.length; i++) {
+						with (objTabs[i]) {
+							if (value == 1) {
+								value = -1 ;
+								setTabState(objTabs[i]) ;
+								style.zIndex = -1 ;
+								showWindowObjects(window.document.all(tabPage), false) ;
+								window.document.all(tabPage).style.zIndex = -1 ;
+								break ;
+							}
+						}
+					}
+					el = objTabs[parseInt(element.selectedIndex)] ;
+					el.value = 1 ;
+					setTabState(el) ;
+					window.document.all(el.tabPage).style.zIndex = 100 ;
+					showWindowObjects(window.document.all(el.tabPage), true) ;
+//					alert(window.document.all(el.tabPage).outerHTML);
+				}
+			}
+		}
+		function elementOnSelect() {
+			with (window.event) {
+				cancelBubble = true ;
+				returnValue = false ;
+			}
+			return false ;
+		}
+		function elementOnContextMenu() {
+			with (window.event) {
+				cancelBubble = true ;
+				returnValue = false ;
+			}
+			return false ;
+		}
+		function setTabState(el) {
+			//if (element.currentStyle.leftImage == null) { return ; }
+			switch (parseInt(el.value)) {
+				case -1:
+					with (el.children[0].children[0].children[0]) {
+						style.backgroundImage = element.currentStyle.leftImage;
+						style.height = "18px";
+					}
+					with (el.children[0].children[0].children[1]) {
+						style.backgroundImage = element.currentStyle.centerImage ;
+						style.height = "18px";
+						style.padding = "2px, 2px, 0px, 2px" ;
+					}
+					with (el.children[0].children[0].children[2]) {
+						style.backgroundImage = element.currentStyle.rightImage ;
+						style.height = "18px";
+					}
+					el.style.margin = "1px, 0px, 1px, 1px" ;
+					el.style.zIndex = -1 ;
+					break ;
+				case 0:
+					with (el.children[0].children[0].children[0]) {
+						style.backgroundImage = element.currentStyle.leftImageOver ;
+						style.height = "18px";
+					}
+					with (el.children[0].children[0].children[1]) {
+						style.backgroundImage = element.currentStyle.centerImageOver ;
+						style.height = "18px";
+						style.padding = "2px, 2px, 0px, 2px" ;
+					}
+					with (el.children[0].children[0].children[2]) {
+						style.backgroundImage = element.currentStyle.rightImageOver ;
+						style.height = "18px";
+					}
+					el.style.margin = "1px, 0px, 1px, 1px" ;
+					el.style.zIndex = -1 ;
+					break ;
+				case 1:
+					with (el.children[0].children[0].children[0]) {
+						style.backgroundImage = element.currentStyle.leftImageDown ;
+						style.height = "21px";
+					}
+					with (el.children[0].children[0].children[1]) {
+						style.backgroundImage = element.currentStyle.centerImageDown ;
+						style.height = "21px";
+						style.padding = "0px, 4px, 2px, 4px" ;
+					}
+					with (el.children[0].children[0].children[2]) {
+						style.backgroundImage = element.currentStyle.rightImageDown ;
+						style.height = "21px";
+					}
+					el.style.margin = "-1px, 0px, 0px, -1px" ;
+					el.style.zIndex = 100 ;
+					break ;
+			}
+		}
+		function showWindowObjects(el, bShow) {
+			try {
+	//			var colSelects = el.contentObject().all.tags("SELECT") ;
+	//			for (var i = 0; i < colSelects.length; i++) {
+					with (el.style) {
+						if (bShow) {
+							if (display != "") {
+								display = "" ;
+							}
+						}
+						else {
+							if (display != "none") {
+								display = "none" ;
+							}
+						}
+					}
+		//		}
+			}
+			catch(e) {
+			}
+		}
+	</script>
+</head>
+
+<body id="iBody">
+</body>
+

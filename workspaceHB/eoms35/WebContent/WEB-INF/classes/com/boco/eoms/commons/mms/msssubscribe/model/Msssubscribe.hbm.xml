@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.mms.msssubscribe.model.Msssubscribe"
+            table="ota_mss_subscribe"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="mmsreport_templateId"
+            	column="mmsreport_templateId"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+		<property
+            name="mmreportName"
+            	column="mmreportName"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+	<property
+            name="receivePerson"
+            	column="receivePerson"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="receiveMobile"
+            	column="receiveMobile"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="receiveTime"
+            	column="receiveTime"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="createPerson"
+            	column="createPerson"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="creatTime"
+            	column="creatTime"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        
+    </class>    
+
+</hibernate-mapping>
+

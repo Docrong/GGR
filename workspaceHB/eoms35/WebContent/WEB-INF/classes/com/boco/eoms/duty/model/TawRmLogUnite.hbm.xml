@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawRmLogUnite"
+            table="taw_rm_logunite"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="workerNames"
+            	column="worker_names"
+                length="255"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="planContent"
+            	column="plan_content"
+                length="5000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="workOrder"
+            	column="work_order"
+                length="10000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="workbenchMemo"
+            	column="workbench_memo"
+                length="2000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="dispatchRecord"
+            	column="dispatch_record"
+                length="2000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="visitRecord"
+            	column="visit_record"
+                length="2000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="loanRecord"
+            	column="loan_record"
+                length="2000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="reliefRecord"
+            	column="relief_record"
+                length="2000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="beginTime"
+            	column="begin_time"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+            	column="end_time"
+                length="2000"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="userId"
+            	column="user_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="roomId"
+            	column="room_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="workSerial"
+            	column="work_serial"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="assessorId"
+            	column="assessor_id"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="auditingReason"
+            	column="auditing_reason"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="auditingTime"
+            	column="auditing_time"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

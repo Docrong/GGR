@@ -1,0 +1,20 @@
+[PropertyInfo]
+accessories,String,false,false, , ,true,<default>
+achieve_person,String,false,false, , ,true,<default>
+achieve_time,String,false,false, , ,true,<default>
+fault_anolyize,String,false,false, , ,true,<default>
+fault_description,String,false,false, , ,true,<default>
+id,int,false,false, , ,true,<default>
+idNew,String,false,false,idNew,idNew,true,<default>
+key_word,String,false,false, , ,true,<default>
+labels,String[],false,false, , ,true,<default>
+region_code,String,false,false, , ,true,<default>
+resovl_process,String,false,false, , ,true,<default>
+values,String[],false,false, , ,true,<default>
+worksheet_type,int,false,false, , ,true,<default>
+id_new,String,false,false,id_new,id_new,true,<default>
+[IconNames]
+
+
+
+

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.partner.baseinfo.model.PartnerUser"
+            table="pnr_user"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="name"
+            	column="name"
+                length="255"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deptId"
+            	column="dept_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deptName"
+            	column="dept_name"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+    <property
+            name="areaId"
+            	column="area_Id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property> 
+     <property
+            name="areaName"
+            	column="area_name"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+       <property
+            name="personCardNo"
+            	column="person_card_no"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="areaNames"
+            	column="area_names"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="userId"
+            	column="user_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="sex"
+            	column="sex"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="photo"
+            	column="photo"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="birthdey"
+            	column="birthdey"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="diploma"
+            	column="diploma"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="workTime"
+            	column="work_time"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deptWorkTime"
+            	column="dept_work_time"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="licenseType"
+            	column="license_type"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="licenseNo"
+            	column="license_no"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="post"
+            	column="post"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="postState"
+            	column="post_state"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="phone"
+            	column="phone"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="email"
+            	column="email"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="treeNodeId"
+            	column="tree_node_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

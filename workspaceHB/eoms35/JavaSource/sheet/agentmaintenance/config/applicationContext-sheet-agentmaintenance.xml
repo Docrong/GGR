@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--AgentMaintenance-START-->    
+
+	<bean id="IAgentMaintenanceMainDAO" class="com.boco.eoms.sheet.agentmaintenance.dao.hibernate.AgentMaintenanceMainDAOHibernate" autowire="byName"></bean>
+	<bean id="IAgentMaintenanceLinkDAO" class="com.boco.eoms.sheet.agentmaintenance.dao.hibernate.AgentMaintenanceLinkDAOHibernate" autowire="byName"></bean>
+	<bean id="IAgentMaintenanceTaskDAO" class="com.boco.eoms.sheet.agentmaintenance.dao.hibernate.AgentMaintenanceTaskDAOHibernate" autowire="byName"></bean>
+	
+	<bean id="userMadeDao" class="com.boco.eoms.sheet.agentmaintenance.dao.hibernate.UserMadeDAOHibernate" autowire="byName"></bean>
+	<bean id="UserMade" class="com.boco.eoms.sheet.agentmaintenance.model.UserMade" autowire="byName" />
+	<bean id="UserMadeManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.sheet.agentmaintenance.service.impl.UserMadeManagerImpl">
+                <property name="userMadeDao" ref="userMadeDao"/>
+            </bean>
+        </property>
+    </bean>
+	
+	<bean id="AgentMaintenanceTask" class="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceTask" autowire="byName"></bean>
+    <bean id="AgentMaintenanceLink" class="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceLink" autowire="byName" />
+	<bean id="AgentMaintenanceMain" class="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceMain" autowire="byName" />
+	<bean id="iagentmaintenanceTask" class="com.boco.eoms.sheet.agentmaintenance.task.impl.AgentMaintenanceTaskImpl" autowire="byName" />
+	
+	<bean id="iagentmaintenanceTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.boco.eoms.sheet.agentmaintenance.service.impl.AgentMaintenanceTaskManagerImpl">
+				<property name="taskModelObject" ref="AgentMaintenanceTask" />
+				<property name="taskDAO">
+					<ref bean="IAgentMaintenanceTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/agentMaintenanceConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	
+	<bean id="iAgentMaintenanceFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.boco.eoms.sheet.agentmaintenance.service.impl.AgentMaintenanceFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iAgentMaintenanceLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.boco.eoms.sheet.agentmaintenance.service.impl.AgentMaintenanceLinkManagerImpl">
+				<property name="linkObject" ref="AgentMaintenanceLink"/>
+				<property name="linkDAO">
+				  	<ref bean="IAgentMaintenanceLinkDAO"/>
+				</property>
+				<property name="dao">
+				  	<ref bean="IAgentMaintenanceLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iAgentMaintenanceMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean class="com.boco.eoms.sheet.agentmaintenance.service.impl.AgentMaintenanceMainManagerImpl">
+			    <property name="mainObject" ref="AgentMaintenanceMain" />
+				<property name="mainDAO">
+				 	<ref bean="IAgentMaintenanceMainDAO" />
+				</property>
+				<property name="workSheetQO">
+					<ref bean="iAgentMaintenanceQo" />
+				</property>
+				<property name="flowTemplateName">
+					<value>AgentMaintenanceMainFlowProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/agentmaintenance-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean> 
+
+	<bean id="iAgentMaintenanceQo" class="com.boco.eoms.sheet.agentmaintenance.qo.impl.AgentMaintenanceQoImpl" autowire="byName" singleton="false" >
+		<property name="poMain" value="AgentMaintenanceMain" />
+		<property name="poLink" value="AgentMaintenanceLink" />
+		<property name="aliasMain" value="agentMaintenanceMain" />
+		<property name="aliasLink" value="agentMaintenanceLink" />
+		<property name="poTask" value="AgentMaintenanceTask" />
+	    <property name="aliasTask" value="agentMaintenanceTask" />			
+	</bean>
+
+	<bean id="AgentMaintenance" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean class="com.boco.eoms.sheet.agentmaintenance.webapp.action.AgentMaintenanceMethod">
+				<property name="businessFlowService" >
+					<ref bean="iAgentMaintenanceFlowManager" />
+			   	</property>
+				<property name="linkService" ref="iAgentMaintenanceLinkManager" />
+				<property name="mainService" ref="iAgentMaintenanceMainManager" />
+				<property name="sheetTask" ref="AgentMaintenanceTask" />
+				<property name="taskService" ref="iagentmaintenanceTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/agentmaintenance-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>   
+	
+	<bean id="iAgentMaintenanceCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.agentmaintenance.service.bo.AgentCrmServiceManageImpl">
+			</bean>
+		</property>
+	</bean>     
+	<!--AgentMaintenance-END-->  
+</beans>

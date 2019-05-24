@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.message.model.SmsSpSubmit"
+            table="sp_submit"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null" 
+    >
+	
+            
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+  </generator>  
+
+    </id>
+
+        <property
+            name="msgContent"
+                length="255"
+                not-null="false"
+                unique="false"
+                column="msgcontent"
+        >
+
+        </property>
+        
+        <property
+            name="desttermId"
+                length="21"
+                not-null="false"
+                unique="false"
+                column="desttermid"
+        >
+
+        </property>
+
+        <!--<property
+            name="atTime"
+                length="18"
+                not-null="false"
+                unique="false"
+                column="attime"
+        >
+
+        </property>
+
+         property
+            name="needTime"
+                length="10"
+                not-null="true"
+                unique="false"
+                column="needtime"
+        >
+
+        </property> -->
+
+        <property
+            name="sendTime"
+                length="30"
+                not-null="true"
+                unique="false"
+                column="send_time"
+        >
+
+        </property>
+
+        <property
+            name="msgFormat"
+                length="10"
+                not-null="false"
+                unique="false"
+                column="msgformat"
+        >
+
+        </property>
+        
+        <property
+            name="msgLevel"
+                length="10"
+                not-null="false"
+                unique="false"
+                column="msglevel"
+        > 
+ 
+        </property>
+        
+        <!--  property
+            name="status"
+                length="10"
+                not-null="false"
+                unique="false"
+                column="status"
+        >
+
+        </property>   -->     
+        
+    </class>    
+
+</hibernate-mapping>
+

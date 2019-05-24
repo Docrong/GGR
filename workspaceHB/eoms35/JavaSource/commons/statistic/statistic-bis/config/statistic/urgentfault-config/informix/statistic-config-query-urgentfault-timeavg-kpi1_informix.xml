@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id>53</est-module-id>
+
+	
+	<!--******************************************************************
+********    按(角色)统计 (按受理部门)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>timeavgStatByRevRole</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param page-name="subroleFromDeptid" markflg="ture"/>  
+		<condition-param page-name="mainNetSortOne" markflg="ture"/>
+		<condition-param page-name="areaid" markflg="ture"/>
+		<summary-define>
+			<id>s1</id><!--处理角色-->
+			<sequence></sequence>
+			<column>est.OPERATEROLEID</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statSubRoleId2name_v35</id2name-service> <!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+		
+		<summary-define>
+			<id>s2</id><!--网络类型-->
+			<sequence></sequence>
+			<column>est.mainNetSortone</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statDictId2name_v35</id2name-service> <!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+		<summary-define>
+			<id>s3</id><!--地域-->
+			<sequence></sequence>
+			<column>est.TODEPTID</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statAreaId2name_v35</id2name-service> <!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.urgentfault.vo.UrgentfaultIntimeDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where> est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@'  and est.OPERATEROLEID in (@subroleFromDeptid@) and est.TODEPTID in (@areaid@) and est.mainNetSortone in(@mainNetSortOne@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid ,est.sheetid,est.title,est.mainnetsortone,est.todeptid,est.sendroleid,est.operateroleid,est.sendtime,est.mainFaultAvoidTime from est_urgentfault est where est.status=1  and est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.TODEPTID='@s3@' AND est.mainNetSortone='@s2@'  and est.OPERATEROLEID = '@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 处理总时间 -->
+				<sequence>2</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>sum(est.mainFaultAvoidTime-est.mainFaultGenerantTime)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid ,est.sheetid,est.mainnetsortone,est.todeptid,est.sendroleid,est.operateroleid,est.sendtime,est.mainFaultAvoidTime from est_urgentfault est where est.status=1  and est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.TODEPTID='@s3@' AND est.mainNetSortone='@s2@' and est.OPERATEROLEID = '@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		 
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 平均处理时长 -->
+				<sequence>3</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>avg(est.mainFaultAvoidTime-est.mainFaultGenerantTime)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid ,est.sheetid,est.mainnetsortone,est.todeptid,est.sendroleid,est.operateroleid,est.sendtime,est.mainFaultAvoidTime from est_urgentfault est where est.status=1  and est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.TODEPTID='@s3@' AND est.mainNetSortone='@s2@' and est.OPERATEROLEID = '@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+	
+	</kpi-define>	
+	
+	
+	
+	
+	
+	<!--******************************************************************
+********    按(受理人)统计***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+	 	<name>timeavgStatByRevPerson</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param page-name="userByDeptid" markflg="ture"/>  
+		<condition-param page-name="mainNetSortOne" markflg="ture"/>
+		<condition-param page-name="areaid" markflg="ture"/>
+		<summary-define>
+			<id>s4</id><!--处理人-->
+			<sequence></sequence>
+			<column>est.OPERATEUSERID</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseUserId2name_v35</id2name-service> <!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+		
+		<summary-define>
+			<id>s5</id><!--网络类型-->
+			<sequence></sequence>
+			<column>est.mainNetSortone</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statDictId2name_v35</id2name-service> <!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+		<summary-define>
+			<id>s6</id><!--地域-->
+			<sequence></sequence>
+			<column>est.TODEPTID</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statAreaId2name_v35</id2name-service> <!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.urgentfault.vo.UrgentfaultIntimeDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@'  and est.OPERATEUSERID in (@userByDeptid@) and est.TODEPTID in (@areaid@) and est.mainNetSortone in(@mainNetSortOne@) and est.status=1  and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f4</id><!--总工单数-->
+				<sequence></sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid ,est.sheetid,est.title,est.mainnetsortone,est.todeptid,est.senduserid,est.operateuserid,est.sendtime,est.mainFaultAvoidTime from est_urgentfault est where est.status=1  and est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.TODEPTID='@s6@' AND mainNetSortone='@s5@' and est.OPERATEUSERID ='@s4@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f5</id><!-- 处理总时间 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>sum(est.mainFaultAvoidTime-est.mainFaultGenerantTime)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid ,est.sheetid,est.mainnetsortone,est.todeptid,est.senduserid,est.operateuserid,est.sendtime,est.mainFaultAvoidTime from est_urgentfault est where est.status=1  and est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.TODEPTID='@s6@' AND mainNetSortone='@s5@'  and est.OPERATEUSERID ='@s4@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		 
+			<field-define><!-- 可重复 -->
+				<id>f6</id><!-- 平均处理时长 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>avg(est.mainFaultAvoidTime-est.mainFaultGenerantTime)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid ,est.sheetid,est.mainnetsortone,est.todeptid,est.senduserid,est.operateuserid,est.sendtime,est.mainFaultAvoidTime from est_urgentfault est where est.status=1  and est.sendtime&gt;='@beginTime@' and est.sendtime&lt;'@endTime@' and est.TODEPTID='@s6@' AND mainNetSortone='@s5@'  and est.OPERATEUSERID ='@s4@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+	</kpi-define>	
+	
+	
+	
+	 
+</KpiConfig>

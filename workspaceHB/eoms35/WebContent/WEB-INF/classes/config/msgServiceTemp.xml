@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service>
+	<!-- 模块或业务 -->
+	<status></status>
+	<!-- 服务名称 -->
+	<serviceName></serviceName>
+	<!--  -->
+	<createUserId></createUserId>
+	<!--  -->
+	<selStatus value="">
+		<userId></userId>
+		<deptId></deptId>
+	</selStatus>
+	<!--  -->
+	<msgType></msgType>
+	<!--  -->
+	<count></count>
+	<!--  -->
+	<interval></interval>
+	<!--  -->
+	<isNightSend></isNightSend>
+	<!--  -->
+	<isEmergency></isEmergency>
+	<!--  -->
+	<startTime></startTime>
+	<!--  -->
+	<endTime></endTime>
+	<!--  -->
+	<sendStatus>
+		<!--  -->
+		<sendDay></sendDay>
+		<!--  -->
+		<sendHour></sendHour>
+		<!--  -->
+		<sendMin></sendMin>
+	</sendStatus>
+	
+	
+	
+	<!-- 是否循环发送 -->
+	<isCycleSend>
+		<!--  -->
+		<cycleStatus>
+			<!--  -->
+			<cycleMonth></cycleMonth>
+			<!--  -->
+			<cycleDay></cycleDay>
+			<!--  -->
+			<cycleHour></cycleHour>
+		</cycleStatus>
+		<!--  -->
+		<regetData>
+			<!--  -->
+			<regetAddr regetProtocol="">
+			</regetAddr>			
+		</regetData>
+	</isCycleSend>
+	
+</service>

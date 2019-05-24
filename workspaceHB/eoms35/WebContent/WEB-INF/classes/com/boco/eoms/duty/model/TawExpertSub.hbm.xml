@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawExpertSub"
+            table="taw_expert_sub"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="malfunctionName"
+                length="128"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="malfunctionDeal"
+                length="128"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="score"
+                length="32"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="addMan"
+                length="32"
+                not-null="false"
+        >
+
+        </property>
+        <property
+            name="addTime"
+                length="32"
+                not-null="true"
+        >
+
+        </property>
+        <property
+            name="mainId"
+                length="32"
+                not-null="true"
+        >
+
+        </property>
+       
+    </class>    
+
+</hibernate-mapping>
+

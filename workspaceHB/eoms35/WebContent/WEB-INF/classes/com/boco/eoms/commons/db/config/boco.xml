@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+	<ProjectName>BOCO</ProjectName>
+	<NeedReloadProperty>true</NeedReloadProperty>
+
+	<database>
+		<format>
+			<Charset>
+				<!--页面字符集-->
+				<Page_Charset>GB2312</Page_Charset>
+				<!--数据库字符集-->
+				<DB_Charset>GB2312</DB_Charset>
+				<!--Action字符集-->
+				<FormBean_Charset>GB2312</FormBean_Charset>
+			</Charset>
+		</format>
+		<type>sqlserver</type>
+	</database>
+
+	<DomainRecur>true</DomainRecur>
+	<Separator>2</Separator>
+	<UploadType>UpE</UploadType>
+	<SendSMsgAvailable>true</SendSMsgAvailable>
+	<LogExecuteTime>1</LogExecuteTime>
+	<LogErrorMsg>1</LogErrorMsg>
+	<LOGFILE_ROOT>log</LOGFILE_ROOT>
+	<LogPath>log</LogPath>
+	<LOG_FORMAT>yyyy.MM.dd'-'hh:mm:ss</LOG_FORMAT>
+	<DEBUG_MODE>true</DEBUG_MODE>
+	<printMsg>false</printMsg>
+	<ConnectionType>3</ConnectionType>
+	<DefaultPoolName>BocoInformix</DefaultPoolName>
+
+	<PoolNames>BocoInformix</PoolNames>
+	<BocoInformixUrl>jdbc:oracle:thin:@10.149.6.6:1521:eoms</BocoInformixUrl>
+	<BocoInformixUser>eoms35</BocoInformixUser>
+	<BocoInformixPassword>eoms35</BocoInformixPassword>
+	<BocoInformixCharset>ZHS16GBK</BocoInformixCharset>
+	<BocoInformixMaxconn>5</BocoInformixMaxconn>
+	<BocoInformixMinconn>3</BocoInformixMinconn>
+	<BocoInformixMaxusecount>4</BocoInformixMaxusecount>
+	<BocoInformixMaxidletime>30</BocoInformixMaxidletime>
+	<BocoInformixMaxalivetime>3</BocoInformixMaxalivetime>
+
+	<DriverClasses>oracle.jdbc.driver.OracleDriver</DriverClasses>
+	<DriverClassName>oracle.jdbc.driver.OracleDriver</DriverClassName>
+
+ <!-- JNDI Config Parameters -->
+ <ContainerType>Weblogic</ContainerType>
+ <JNDIName>myPool</JNDIName>
+ <InitialContextFactory>weblogic.jndi.WLInitialContextFactory</InitialContextFactory>
+ <ProviderURL>t3://10.149.6.6:7001</ProviderURL> 
+</boco>

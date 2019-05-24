@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.tool.access.model.TawSheetAccess"
+            table="sheet_tool_access"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="accesss"
+                length="254"
+        >
+
+        </property>
+
+        <property
+            name="processname"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="taskname"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="accessid"
+                length="254"
+        >
+
+        </property>
+
+        <property
+            name="leaf"
+                length="5"
+        >
+
+        </property>
+
+        <property
+            name="ordercode"
+        >
+
+        </property>
+
+        <property
+            name="parAccessid"
+                length="254"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="254"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,108 @@
+
+
+
+
+
+
+
+<link rel="stylesheet" href="../css/table_style.css" type="text/css">
+
+<script type="text/javascript" src="../css/finallytree.js"></script>
+<script type="text/javascript" src="../css/calendar.js"></script>
+<script language="JavaScript" src="../dialog.js"></SCRIPT>
+
+<head>
+  <title>执行作业计划汇总</title>
+</head>
+
+
+<input type="hidden" name="path" id="path" value="/EOMS_J2EE">
+<input type="hidden" name="sdomids" id="sdomids" value="">
+
+<form name="tawgzplanform" method="post" action="../tawgzplan/save.do" onsubmit='return SubmitCheck()'>
+
+
+  <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
+    <tr>
+      <td width="700" align="center" valign="middle" class="table_title">
+        &nbsp;执行作业计划汇总
+      </td>
+    </tr>
+  </table>
+
+  <table border="0"  width="600" cellspacing="1" cellpadding="1" class="table_show" align=center>
+    <tr class="tr_show">
+      <td width="100" class="td_label">
+        网元类型
+      </td>
+      <td width="500" colspan="5">
+	 <table width="100%"> 
+	   <tr class="tr_show">
+	     <td width="50%" align="center">
+	       系统类型 :
+	       <select size=1 name="netTreeIdSRC" style="width:100"> 
+	         <option value="-1" selected>选择系统类型 </option> 
+	         <option value="406100">数据中心 </option> 
+	         <option value="406101">监控中心 </option> 
+	         <option value="406102">维护中心 </option> 
+	         <option value="406103">信息中心 </option> 
+	         <option value="406104">计费中心 </option> 
+	         <option value="406105">网管中心 </option> 
+	         <option value="406106">传输中心 </option> 
+	         <option value="406107">网优中心 </option> 
+	         <option value="406108">动力中心 </option> 
+	       </select> 
+             </td> 
+             <td width="50%" align="center"> 
+               网元类型 :
+               <select size=1 name="netTreeIdDES" style="width:100"> 
+                 <option value="-1" selected>选择网元类型 </option> 
+	         <option value="406100">网元类型一 </option> 
+	         <option value="406101">网元类型二 </option> 
+	         <option value="406102">网元类型三 </option> 
+               </select>
+             </td>
+           </tr>
+         </table> 
+      </td>
+    </tr>
+    <tr class="tr_show">
+      <td width="100" class="td_label">
+        计划名称
+      </td>
+      <td width="500" colspan="5">
+      
+        <input type="text" name="planName" size="30" styleClass="clstext" readonly="true" >
+          <a href="javascript:onTitle();">作业计划模板列表</a>
+      
+        <input type="hidden" name="titleId" size="30" styleClass="clstext" >
+      </td>
+    </tr>
+       
+    <tr class="tr_show">
+      <td width="100" class="td_label">
+        地市</td>
+      <td width="100">
+        <select>
+          <option>-- 请选择 --</option>
+          <option>地市一</option>
+          <option>地市二</option>
+          <option>地市三</option>
+        </select>
+      </td>
+    
+      
+    </tr>
+    <tr class="tr_show">
+      <td align="middle" colspan="6">
+        
+        <input type="submit" value="汇总" name="B1" class="clsbtn2">
+        <input type="button" value="返回" name="B2" Onclick="GoBack();" class="clsbtn2">
+      </td>
+    </tr>
+  </table>
+  
+</form>
+
+
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="com.boco.eoms.check.model.TawCheckDutyScore" table="taw_check_score_duty">
+     <id column="DUTY_ID" name="duty_id" type="string">
+       <generator class="uuid.hex"/>
+     </id>
+  <property column="SCORE_ROOM_ID" length="100" name="score_room_id" type="string"/>
+  <property column="SCORE_ROOM_NAME" length="100" name="score_room_name" type="string"/>	
+  <property column="SCORE_USER_ID" length="100" name="score_user_id" type="string"/>
+  <property column="SCORE_USER_NAME" length="100" name="score_user_name" type="string"/>	
+  <property column="SCORE_YEAR" length="100" name="score_year" type="string"/>
+  <property column="SCORE_MONTH" length="100" name="score_month" type="string"/>
+  <property column="RATE" length="100" name="rate" type="double"/>
+  <property column="RATE_FULL" length="100" name="rate_full" type="double"/>
+  <property column="RATE_SCORE" length="100" name="rate_score" type="double"/>
+  <property column="FINISH" length="100" name="finish" type="double"/>
+  <property column="FINISH_FULL" length="100" name="finish_full" type="double"/>
+  <property column="FINISH_SCORE" length="100" name="finish_score" type="double"/>
+  <property column="FAULT" length="100" name="fault" type="double"/>
+  <property column="FAULT_FULL" length="100" name="fault_full" type="double"/>
+  <property column="FAULT_SCORE" length="100" name="fault_score" type="double"/>
+  <property column="FLAG_SCORE" length="100" name="flag_score" type="string"/> 
+  <property column="FULL_SCORE" length="100" name="full_score" type="double"/>
+  <property column="SCORE_DELETED" length="100" name="score_deleted" type="string"/>
+</class>
+</hibernate-mapping>

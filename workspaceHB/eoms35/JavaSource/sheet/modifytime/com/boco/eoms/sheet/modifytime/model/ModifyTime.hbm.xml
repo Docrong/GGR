@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.modifytime.model.ModifyTime"
+            table="ModifyTime"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="beginTime"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="functionary"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="introduction"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="local"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="metNet"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="specialtyOne"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+        
+               <property
+            name="specialtyTwo"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+        
+               <property
+            name="specialtyThree"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="title"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="type"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remarks"
+                length="255"
+        >
+
+        </property>
+
+        <property
+            name="deleted"
+                length="5"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

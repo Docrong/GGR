@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    
+    <!-- 持久队列相关属性配置 -->
+    <bean id="pqConfig"
+		class="com.boco.eoms.pq.util.PQConfig">
+		<!-- 二级持久队列RetainPQ最大执行失败次数，超过此次数将任务转入三级持久队列HoldPQ -->
+		<property name="maxRetainPQFailCount">
+			<value>3</value>
+		</property>
+		<!-- 三级持久队列任务每页显示数 -->
+		<property name="pageSize">
+			<value>10</value>
+		</property>
+	</bean>
+	
+	<!-- 持久队列门面bean -->
+	<bean id="pqFacade"
+		class="com.boco.eoms.pq.facade.impl.PQFacadeImpl" />
+	
+	<!--InitPQ-DAO START-->
+    <bean id="initPQDao" class="com.boco.eoms.pq.dao.hibernate.InitPQDaoHibernate" autowire="byName"/>
+    <!--InitPQ-DAO END-->
+    <!--InitPQ-MGR START-->
+    <bean id="initPQMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.pq.mgr.impl.InitPQMgrImpl">
+                <property name="initPQDao" ref="initPQDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--InitPQ-MGR END-->
+	
+	<!--RetainPQ-DAO START-->
+    <bean id="retainPQDao" class="com.boco.eoms.pq.dao.hibernate.RetainPQDaoHibernate" autowire="byName"/>
+    <!--RetainPQ-DAO END-->
+    <!--RetainPQ-MGR START-->
+    <bean id="retainPQMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.pq.mgr.impl.RetainPQMgrImpl">
+                <property name="retainPQDao" ref="retainPQDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--RetainPQ-MGR END-->
+	
+	<!--HoldPQ-DAO START-->
+    <bean id="holdPQDao" class="com.boco.eoms.pq.dao.hibernate.HoldPQDaoHibernate" autowire="byName"/>
+    <!--HoldPQ-DAO END-->
+    <!--HoldPQ-MGR START-->
+    <bean id="holdPQMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.pq.mgr.impl.HoldPQMgrImpl">
+                <property name="holdPQDao" ref="holdPQDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--Hold-MGR END-->
+	<import
+		resource="classpath:com/boco/eoms/pq/config/applicationContext-pq-versionlog.xml" />
+
+</beans>
+
+
+

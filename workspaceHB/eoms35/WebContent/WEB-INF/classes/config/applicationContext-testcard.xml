@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">		
+<beans>
+    <!--TawRmTestcard-DAO START-->
+    <bean id="tawRmTestcardDao" class="com.boco.eoms.otherwise.dao.hibernate.TawRmTestcardDaoHibernate" autowire="byName"/>
+    <!--TawRmTestcard-DAO END-->
+    <!--TawRmTestcard-START-->    
+    <bean id="ItawRmTestcardManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.otherwise.service.impl.TawRmTestcardManagerImpl">
+                <property name="tawRmTestcardDao" ref="tawRmTestcardDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmTestcard-END-->
+    
+    <!--TawRmInoutRecord-DAO START-->
+    <bean id="tawRmInoutRecordDao" class="com.boco.eoms.otherwise.dao.hibernate.TawRmInoutRecordDaoHibernate" autowire="byName"/>
+    <bean id="tawRmInoutRecordJdbc" class="com.boco.eoms.otherwise.dao.hibernate.TawRmInoutRecordDaoJdbcImpl" autowire="byName"/>
+    <!--TawRmInoutRecord-DAO END-->
+    <!--TawRmInoutRecord-START-->    
+    <bean id="ItawRmInoutRecordManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.otherwise.service.impl.TawRmInoutRecordManagerImpl">
+                <property name="tawRmInoutRecordDao" ref="tawRmInoutRecordDao"/>
+                <property name="tawRmInoutRecordJdbc" ref="tawRmInoutRecordJdbc"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmInoutRecord-END-->
+    
+    <!--TawRmRenewal-DAO START-->
+    <bean id="tawRmRenewalDao" class="com.boco.eoms.otherwise.dao.hibernate.TawRmRenewalDaoHibernate" autowire="byName"/>
+    <!--TawRmRenewal-DAO END-->
+    <!--TawRmRenewal-START-->    
+    <bean id="ItawRmRenewalManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.otherwise.service.impl.TawRmRenewalManagerImpl">
+                <property name="tawRmRenewalDao" ref="tawRmRenewalDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmRenewal-END-->
+	<import resource="classpath:config/applicationContext-otherwise-attributes.xml" />
+</beans>
+
+

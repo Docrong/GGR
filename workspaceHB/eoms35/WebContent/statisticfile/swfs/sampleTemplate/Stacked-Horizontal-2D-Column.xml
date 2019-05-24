@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Stacked Horizontal 2DColumn">>
+      <animation enabled="yes" speed="30" type="step" appearance="size"/>
+      <hints enabled="no"/>
+      <captions show="no" />
+      <column_chart block_space = "10" column_space = "10" left_space = "70" right_space = "70" up_space = "10"  down_space = "10">
+        <border enabled="no"/>
+		<block_names>
+		  <font size="10" type="Verdana" color="Black"/>
+		</block_names>
+      </column_chart>
+    </chart>
+    <workspace>
+  	  <name text="U.S. Population">
+	    <font color="White" type="Verdana"/>
+	  </name>
+      <base_area enabled="no" />
+      <chart_area x="30" y="30" deep="4">
+      <background color="Gray" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xC9D1DD</color>
+	      <color>0x8591A1</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="1.57"/>
+	  </background>
+	  </chart_area>
+    </workspace>
+  </type>
+</root>

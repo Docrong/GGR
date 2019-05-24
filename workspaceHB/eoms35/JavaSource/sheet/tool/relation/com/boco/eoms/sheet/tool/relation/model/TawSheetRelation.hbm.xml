@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.tool.relation.model.TawSheetRelation"
+            table="sheet_tool_relation"
+    >
+
+    <id name="currentId" column="currentId">
+       <generator class="assigned"/>
+    </id>
+
+        <property name="parentId" />
+        <property name="parentFlowName" />
+        <property name="parentTitle" />
+        <property name="parentSheetId" />
+        <property name="parentProcessId" />
+        <property name="currentFlowName" />
+        <property name="currentTitle" />
+        <property name="currentSheetId" />
+        <property name="currentProcessId" />
+        <property name="userId" />
+        <property name="subRoleId" />
+        <property name="invokeTime" />
+        <property name="invokeState" />
+        <property name="taskName" />
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="IGroupCheckMainDAO"
+		class="com.boco.eoms.sheet.groupcheck.dao.hibernate.GroupCheckMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IGroupCheckLinkDAO"
+		class="com.boco.eoms.sheet.groupcheck.dao.hibernate.GroupCheckLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IGroupCheckTaskDAO"
+		class="com.boco.eoms.sheet.groupcheck.dao.hibernate.GroupCheckTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="GroupCheckTask"
+		class="com.boco.eoms.sheet.groupcheck.model.GroupCheckTask" autowire="byName">
+     </bean>
+    <bean id="GroupCheckLink"
+		class="com.boco.eoms.sheet.groupcheck.model.GroupCheckLink"
+		autowire="byName" />
+	<bean id="GroupCheckMain"
+		class="com.boco.eoms.sheet.groupcheck.model.GroupCheckMain"
+		autowire="byName" />
+	<bean id="iGroupCheckTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.groupcheck.service.impl.GroupCheckTaskManagerImpl">
+				<property name="taskModelObject" ref="GroupCheckTask" />
+				<property name="taskDAO">
+					<ref bean="IGroupCheckTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/groupcheckTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iGroupCheckFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.groupcheck.service.impl.GroupCheckFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iGroupCheckLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.groupcheck.service.impl.GroupCheckLinkManagerImpl">
+				<property name="linkObject" ref="GroupCheckLink"/>
+				<property name="linkDAO">
+				  <ref bean="IGroupCheckLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iGroupCheckMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.groupcheck.service.impl.GroupCheckMainManagerImpl">
+			    <property name="mainObject" ref="GroupCheckMain" />
+				<property name="mainDAO">
+				 <ref bean="IGroupCheckMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iGroupCheckQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>GroupCheck</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/groupcheck-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iGroupCheckQo"
+		class="com.boco.eoms.sheet.groupcheck.qo.impl.GroupCheckQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="GroupCheckMain" />
+		<property name="poLink" value="GroupCheckLink" />
+		<property name="poTask" value="GroupCheckTask" />
+		<property name="aliasMain" value="groupcheckMain" />
+		<property name="aliasLink" value="groupcheckLink" />
+		<property name="aliasTask" value="groupcheckTask" />
+
+	</bean>
+
+	<bean id="GroupCheck" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.groupcheck.webapp.action.GroupCheckMethod">
+				<property name="businessFlowService" >
+					<ref bean="iGroupCheckFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iGroupCheckLinkManager" />
+				<property name="mainService"
+					ref="iGroupCheckMainManager" />
+				<property name="sheetTask"
+					ref="GroupCheckTask" />
+				<property name="taskService"
+					ref="iGroupCheckTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/groupcheck-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+
+</beans>

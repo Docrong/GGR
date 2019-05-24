@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+    <property name="show_sql">true</property>
+    <mapping resource="com/boco/eoms/duty/model/TawRmDispatchRecord.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmLoanRecord.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmLogUnite.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmReliefRecord.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmPlanContent.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmVisitRecord.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmWorkorderRecord.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmReplace.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/faultrecord/model/Faultrecord.hbm.xml"/>
+    <mapping resource="com/boco/eoms/duty/model/TawRmArticle.hbm.xml"/>
+    <mapping resource="com/boco/eoms/duty/model/TawNetTransfer.hbm.xml"/>
+    <mapping resource="com/boco/eoms/duty/model/TawNetTransferSub.hbm.xml"/>
+    <mapping resource="com/boco/eoms/duty/model/TawExpertInfo.hbm.xml"/>
+    <mapping resource="com/boco/eoms/duty/model/TawExpertSub.hbm.xml"/>
+    <mapping resource="com/boco/eoms/duty/model/TawRmDutyEvent.hbm.xml"/> 
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmDutyEventSub.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmDutyEventPub.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/TawRmExchangePer.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/duty/model/PapersPart.hbm.xml"/>
+   </session-factory>
+</hibernate-configuration>
+  

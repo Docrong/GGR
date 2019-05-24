@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited by eastbear (Weijun Xiong) --><boco>
+	<ProjectName>BOCO</ProjectName>
+	<NeedReloadProperty>true</NeedReloadProperty>
+
+	<database>
+	<format>
+		<Charset>
+			<!--页面字符集-->
+			<Page_Charset>UTF-8</Page_Charset>
+			<!--数据库字符集-->
+			<DB_Charset>ISO-8859-1</DB_Charset>
+			<!--Action字符集-->
+			<FormBean_Charset>ISO-8859-1</FormBean_Charset>
+		</Charset>
+	</format>
+        <type>informix</type>
+	</database>
+
+        <DomainRecur>true</DomainRecur>
+	<Separator>2</Separator>
+	<UploadType>UpE</UploadType>
+	<SendSMsgAvailable>true</SendSMsgAvailable>
+	<LogExecuteTime>1</LogExecuteTime>
+	<LogErrorMsg>1</LogErrorMsg>
+	<LOGFILE_ROOT>log</LOGFILE_ROOT>
+	<LogPath>log</LogPath>
+	<LOG_FORMAT>yyyy.MM.dd'-'hh:mm:ss</LOG_FORMAT>
+	<DEBUG_MODE>true</DEBUG_MODE>
+	<printMsg>false</printMsg>
+	<ConnectionType>3</ConnectionType>
+	<DefaultPoolName>BocoInformix</DefaultPoolName>
+
+
+	<PoolNames>BocoInformix <!--BocoNM BocoSMS--> BocoSMS</PoolNames>
+	<BocoInformixUrl>jdbc:informix-sqli://10.194.2.26:8002/eoms27test:informixserver=eomsdb</BocoInformixUrl>
+	<BocoInformixUser>informix</BocoInformixUser>
+	<BocoInformixPassword>informix</BocoInformixPassword>
+	<BocoInformixCharset>ZHS16GBK</BocoInformixCharset>
+	<BocoInformixMaxconn>20</BocoInformixMaxconn>
+	<BocoInformixMinconn>2</BocoInformixMinconn>
+	<BocoInformixMaxusecount>80</BocoInformixMaxusecount>
+	<BocoInformixMaxidletime>30</BocoInformixMaxidletime>
+	<BocoInformixMaxalivetime>20</BocoInformixMaxalivetime>
+
+
+	<BocoNMUrl>jdbc:informix-sqli://10.223.3.8:8002/cookdb2:informixserver=nmserver3</BocoNMUrl>
+	<BocoNMUser>informix</BocoNMUser>
+	<BocoNMPassword>Nmdbnx82</BocoNMPassword>
+	<BocoNMCharset>ZHS16GBK</BocoNMCharset>
+	<BocoNMMaxconn>5</BocoNMMaxconn>
+	<BocoNMMinconn>1</BocoNMMinconn>
+	<BocoNMMaxusecount>80</BocoNMMaxusecount>
+	<BocoNMMaxidletime>30</BocoNMMaxidletime>
+	<BocoNMMaxalivetime>4</BocoNMMaxalivetime>
+
+
+	<!--
+        <BocoSMSUrl>jdbc:informix-sqli://10.194.2.36:8002/npmdb:informixserver=wnmsserver</BocoSMSUrl>
+        <BocoSMSUser>npmuser</BocoSMSUser>
+        <BocoSMSPassword>npmuser</BocoSMSPassword>
+        <BocoSMSCharset>ZHS16GBK</BocoSMSCharset>
+        <BocoSMSMaxconn>2</BocoSMSMaxconn>
+        <BocoSMSMinconn>1</BocoSMSMinconn>
+        <BocoSMSMaxusecount>60</BocoSMSMaxusecount>
+        <BocoSMSMaxidletime>30</BocoSMSMaxidletime>
+        <BocoSMSMaxalivetime>5</BocoSMSMaxalivetime>
+        -->
+        <BocoSMSUrl>jdbc:informix-sqli://10.194.2.26:8002/eomsdb:informixserver=eomsdb</BocoSMSUrl>
+        <BocoSMSUser>informix</BocoSMSUser>
+        <BocoSMSPassword>informix</BocoSMSPassword>
+        <BocoSMSCharset>ZHS16GBK</BocoSMSCharset>
+        <BocoSMSMaxconn>2</BocoSMSMaxconn>
+        <BocoSMSMinconn>1</BocoSMSMinconn>
+        <BocoSMSMaxusecount>60</BocoSMSMaxusecount>
+        <BocoSMSMaxidletime>30</BocoSMSMaxidletime>
+        <BocoSMSMaxalivetime>5</BocoSMSMaxalivetime>
+
+	<DriverClasses>oracle.jdbc.driver.OracleDriver com.informix.jdbc.IfxDriver</DriverClasses>
+	<DriverClassName>oracle.jdbc.driver.OracleDriver com.informix.jdbc.IfxDriver</DriverClassName>
+	<url>jdbc:oracle:thin:@boco-nm:1521:cookdb;user=eoms;password=eoms</url>
+
+
+	<pretable>boco_</pretable>
+	<reportxml>report.xml</reportxml>
+	<pagesize>11</pagesize>
+	<graphxml>graph.xml</graphxml>
+
+	<INTREGIONID>27</INTREGIONID>
+	<STRREGIONCODE>HB</STRREGIONCODE>
+	<STRREGIONNAME>湖北</STRREGIONNAME>
+
+      <!-- add by wuzongxian use for 资源管理模块数据上传路径 -->
+      <!-- for windows -->
+	<resuploaddir>D:\\wzx\\EOMS27\\EOMS_J2EE\\resmanage\\upload</resuploaddir>
+
+
+<!--   scropioD for 作业计划总部接口-->
+<serverip>http://10.18.1.21:8083/</serverip>
+
+	<!--added by pyun-->
+
+	<!-- for short message config-->
+	<sms_host_ip>10.223.15.102</sms_host_ip>
+	<sms_port>7890</sms_port>
+	<sms_user>929801</sms_user>
+	<sms_pass>929801</sms_pass>
+	<sms_icp_code>06688</sms_icp_code>
+	<sms_icp_id>929801</sms_icp_id>
+
+	<!-- for monitor cycle,millsecond-->
+	<monitor_period>60000</monitor_period>
+
+	<!--added by pyun end-->
+
+	<SYSTEM>
+	<!--change version interface flag.-->
+	<!--EOMSV2.0 means EOMSV1.5/2.0/2.5 old interface,EOMSV2.6 means EOMSV2.6/2.7 new interface.-->
+	  <interface>EOMSV2.0</interface>
+	  <cache>
+             <switch>ON</switch>
+	     <deptcache>DEPT</deptcache>
+             <usercache>USER</usercache>
+             <dictcache>DICT</dictcache>
+             <rmtreecache>RMTREE</rmtreecache>
+	     <deptrmcache>DEPTRM</deptrmcache>
+             <deptscache>DEPTS</deptscache>
+             <groupusercache>GROUPUSER</groupusercache>
+          </cache>
+          <DICTTYPE>
+		<FaultType name="故障类型">1</FaultType>
+               	<TaskType name="任务类型">406116</TaskType>
+                <FeedbackType name="反馈类型">406117</FeedbackType>
+
+                <project_code name="项目类别">406118</project_code>
+
+                <FaultClass name="紧急程度">2</FaultClass>
+		<Satisfaction name="满意程度">3</Satisfaction>
+		<Specialty name="所属专业">2000</Specialty>
+		<FaultEquip name="故障设备">406113</FaultEquip>
+		<SoftType name="软件补丁类型">20</SoftType>
+		<CompliantType name="用户申告类型">7</CompliantType>
+		<MANU name="制造商">406115</MANU>
+		<EquipId name="设备类型">406114</EquipId>
+		<ApplyType name="投述类型">8</ApplyType>
+		<RegionType name="区域类型">9</RegionType>
+		<NetFault name="是否是网络突发故障">10</NetFault>
+		<CustType name="用户类型">11</CustType>
+		<ApplyResource name="工单来源">12</ApplyResource>
+		<LineMethod name="割接前后的敷设方式">13</LineMethod>
+		<LineProperty name="光缆属性">14</LineProperty>
+		<MoveMethod name="迁改方式">15</MoveMethod>
+		<SoftType name="软件版本类型">20</SoftType>
+                <Manufacturer name="厂商名称">406134</Manufacturer>
+	        <StatisticList name="统计项目">406148</StatisticList>
+		<NoKnown>
+			<name>未知</name>
+			<value>0</value>
+		</NoKnown>
+
+                <StopStationFault name="断站故障类型">1014</StopStationFault>
+						<StopStationEc name="断站电源故障">1015</StopStationEc>
+						<StopStationTr name="断站传输故障">1016</StopStationTr>
+						<StopStationType name="基站类别">1017</StopStationType>
+						<StopStationMethod name="传输组网方式">1018</StopStationMethod>
+						<StopStationCa name="电源引入">1019</StopStationCa>
+						<StopStationNode name="是否传输节点">1020</StopStationNode>
+                                                <StopStationAir name="空调故障">1021</StopStationAir>
+                                                <StopStationLighting name="雷击">1022</StopStationLighting>
+                                                <StopStationStolen name="被盗">1023</StopStationStolen>
+                                                <StopStationNature  name="自然灾害">1024</StopStationNature>
+                                                <StopStationMostly name="主设备故障">1025</StopStationMostly>
+                                                <StopStationReason name="详细原因">1119</StopStationReason>
+          </DICTTYPE>
+	</SYSTEM>
+
+
+	<DUTY>
+ 	  <!-- on 为所有人都可以进入在线值班  -->
+	  <onlinedutyall>on</onlinedutyall>
+	  <OtherAssign>3</OtherAssign>
+	</DUTY>
+
+	<WORKSHEET>
+		<!--工单不同背景色显示-->
+		<colorflag>
+			<!--催办-->
+			<hie>tr_show_pink
+				<color>#FF6600</color>
+			</hie>
+			<!--阶段建议-->
+			<phaseAdvice>tr_show_blue
+				<color>#3366FF</color>
+			</phaseAdvice>
+			<!--故障工单-->
+			<faultsheet>
+				<!--不可控工单-->
+				<control>tr_show_orange
+					<color>#FFFF00</color>
+				</control>
+				<!--升级工单-->
+				<level>tr_show_purple
+					<color>#FF00FF</color>
+				</level>
+				<!--重大故障工单-->
+				<importantFault>tr_show_red
+					<color>#CC0000</color>
+				</importantFault>
+			</faultsheet>
+		</colorflag>
+
+		<prefix>/newworksheet</prefix>
+                <wfprefix>/wfworksheet</wfprefix>
+		<config>
+			<Reportsheet>
+				<sheetname>重大故障上报工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.ReportsheetBO</boname>
+			</Reportsheet>
+			<Faultsheet>
+				<sheetname>故障工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.FaultsheetBO</boname>
+			</Faultsheet>
+			<Tasksheet>
+				<sheetname>任务工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.TasksheetBO</boname>
+			</Tasksheet>
+
+			<Applysheet>
+				<sheetname>申告工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.ApplysheetBO</boname>
+			</Applysheet>
+			<Datasheet>
+				<sheetname>局数据工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.DatasheetBO</boname>
+			</Datasheet>
+			<Softwaresheet>
+				<sheetname>软件版本升级工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.SoftwaresheetBO</boname>
+			</Softwaresheet>
+			<Badboardsheet>
+				<sheetname>坏板工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.BadboardsheetBO</boname>
+			</Badboardsheet>
+			<Datasheet>
+				<sheetname>局数据工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.DatasheetBO</boname>
+			</Datasheet>
+			<Softwaresheet>
+				<sheetname>软件版本升级工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.SoftwaresheetBO</boname>
+			</Softwaresheet>
+			<Requsheet>
+				<sheetname>申请工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.RequsheetBO</boname>
+			</Requsheet>
+			<Feedbacksheet>
+				<sheetname>反馈工单</sheetname>
+				<boname>com.boco.eoms.worksheet.bo.impl.FeedbacksheetBO</boname>
+			</Feedbacksheet>
+
+ 			 <Town_range>
+ 				<sheetname>省内边界过覆盖</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.town_range.bo.Town_rangeBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.town_range.flowcontrol.Town_rangeFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.town_range.flowcontrol.Town_rangeTaskManager</taskmanagername>
+ 				<flowname>town_range</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>20</sheettype>
+				<xyzlength>100000</xyzlength>
+			</Town_range>
+                      	<City_create>
+ 				<sheetname>新增省际边界过覆盖小区信息（县公司发起）</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.city_create.bo.City_createBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.city_create.flowcontrol.City_createFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.city_create.flowcontrol.City_createTaskManager</taskmanagername>
+ 				<flowname>city_create</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>21</sheettype>
+				<xyzlength>100000</xyzlength>
+			</City_create>
+                        <City_modify>
+ 				<sheetname>修改省际边界过覆盖小区信息</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.city_modify.bo.City_modifyBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.city_modify.flowcontrol.City_modifyFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.city_modify.flowcontrol.City_modifyTaskManager</taskmanagername>
+ 				<flowname>city_modify</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>22</sheettype>
+				<xyzlength>100000</xyzlength>
+			</City_modify>
+                        <City_modifynet>
+ 				<sheetname>修改省际边界过覆盖小区信息(网管中心发起)</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.city_modifynet.bo.City_modifynetBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.city_modifynet.flowcontrol.City_modifynetFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.city_modifynet.flowcontrol.City_modifynetTaskManager</taskmanagername>
+ 				<flowname>city_modifynet</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>23</sheettype>
+				<xyzlength>100000</xyzlength>
+			</City_modifynet>
+                        <City_delete>
+ 				<sheetname>删除省际过覆盖小区信息流程</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.city_delete.bo.City_deleteBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.city_delete.flowcontrol.City_deleteFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.city_delete.flowcontrol.City_deleteTaskManager</taskmanagername>
+ 				<flowname>city_delete</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>24</sheettype>
+				<xyzlength>100000</xyzlength>
+			</City_delete>
+			<Town_pretreatment>
+ 				<sheetname>省内边界建站预处理小区信息</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.town_pretreatment.bo.Town_pretreatmentBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.town_pretreatment.flowcontrol.Town_pretreatmentFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.town_pretreatment.flowcontrol.Town_pretreatmentTaskManager</taskmanagername>
+ 				<flowname>town_pretreatment</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>25</sheettype>
+				<xyzlength>100000</xyzlength>
+			</Town_pretreatment>
+                        <Town_modify>
+ 				<sheetname>修改边界过覆盖小区信息</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.town_modify.bo.Town_modifyBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.town_modify.flowcontrol.Town_modifyFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.town_modify.flowcontrol.Town_modifyTaskManager</taskmanagername>
+ 				<flowname>town_modify</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>26</sheettype>
+				<xyzlength>100000</xyzlength>
+			</Town_modify>
+			<Town_delete>
+ 				<sheetname>删除省内过覆盖小区信息</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.town_delete.bo.Town_deleteBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.town_delete.flowcontrol.Town_deleteFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.town_delete.flowcontrol.Town_deleteTaskManager</taskmanagername>
+ 				<flowname>town_delete</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>27</sheettype>
+				<xyzlength>100000</xyzlength>
+			</Town_delete>
+                     <Stopstation>
+ 				<sheetname>基站断站工单</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.stopstation.bo.StopstationBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.stopstation.flowcontrol.StopstationFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.stopstation.flowcontrol.StopstationTaskManager</taskmanagername>
+ 				<flowname>stopstation</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>50</sheettype>
+				<xyzlength>100000</xyzlength>
+			</Stopstation>
+			<Newstation>
+ 				<sheetname>基站断站工单</sheetname>
+ 				<wfboname>com.boco.eoms.wfworksheet.newstation.bo.NewstationBO</wfboname>
+ 				<fsmboname>com.boco.eoms.wfworksheet.newstation.flowcontrol.NewstationFSMBO</fsmboname>
+	 		        <taskmanagername>com.boco.eoms.wfworksheet.newstation.flowcontrol.NewstationTaskManager</taskmanagername>
+ 				<flowname>newstation</flowname>
+ 				<sendOrg></sendOrg>
+ 				<sendOrgType>1</sendOrgType>
+				<sheettype>52</sheettype>
+				<xyzlength>100000</xyzlength>
+			</Newstation>
+		</config>
+		<value>
+			<com>
+			<boco>
+			<eoms>
+			<worksheet>
+			<bo>
+			<impl>
+				<ReportsheetBO>
+					<sheettype>5</sheettype>
+					<xyzlength>100000</xyzlength>
+				</ReportsheetBO>
+				<FaultsheetBO>
+					<sheettype>1</sheettype>
+					<xyzlength>100000</xyzlength>
+				</FaultsheetBO>
+				<TasksheetBO>
+					<sheettype>2</sheettype>
+					<xyzlength>100000</xyzlength>
+				</TasksheetBO>
+				<ApplysheetBO>
+					<sheettype>4</sheettype>
+					<xyzlength>100000</xyzlength>
+				</ApplysheetBO>
+				<DatasheetBO>
+					<sheettype>3</sheettype>
+					<xyzlength>100000</xyzlength>
+				</DatasheetBO>
+				<SoftwaresheetBO>
+					<sheettype>6</sheettype>
+					<xyzlength>100000</xyzlength>
+				</SoftwaresheetBO>
+				<BadboardsheetBO>
+					<sheettype>9</sheettype>
+					<xyzlength>100000</xyzlength>
+				</BadboardsheetBO>
+                                <DatasheetBO>
+					<sheettype>3</sheettype>
+					<xyzlength>100000</xyzlength>
+                                  </DatasheetBO>
+				<SoftwaresheetBO>
+					<sheettype>13</sheettype>
+					<xyzlength>100000</xyzlength>
+				</SoftwaresheetBO>
+				<RequsheetBO>
+					<sheettype>15</sheettype>
+					<xyzlength>100000</xyzlength>
+				</RequsheetBO>
+				<FeedbacksheetBO>
+					<sheettype>16</sheettype>
+					<xyzlength>100000</xyzlength>
+				</FeedbacksheetBO>
+
+			</impl>
+			</bo>
+			</worksheet>
+			</eoms>
+			</boco>
+			</com>
+		</value>
+
+
+		<DealTimeLimit><!-- 故障工单处理时限定义 -->
+			<common-leader>3</common-leader>
+			<common-instancy>3</common-instancy>
+			<common-importance>10</common-importance>
+			<common-sub>96</common-sub>
+			<common-com>36</common-com>
+
+			<trans-leader>3</trans-leader>
+			<trans-instancy>3</trans-instancy>
+			<trans-importance>10</trans-importance>
+			<trans-sub>96</trans-sub>
+			<trans-com>36</trans-com>
+		</DealTimeLimit>
+
+                <!--用户申告工单处理时限定义 -->
+		<applyDealTimeLimit>
+			<!--互联互通处理时限定义，单位：天 -->
+			<communication>7</communication>
+			<!--其他投诉类型处理时限定义，单位：天 -->
+			<other>2</other>
+		</applyDealTimeLimit>
+
+	</WORKSHEET>
+
+	<Interface>
+          <map>
+		<type_1 ><!-- 故障类型 -->
+			<value name="网管告警故障类型" interface_id="185" eoms_id="185" />
+                        <value name="集团_国际电话" interface_id="1" eoms_id="30001" />
+		</type_1>
+		<type_2 ><!-- 紧急程度，告警级别 -->
+			<value name="1" interface_id="严重告警" eoms_id="4" />
+			<value name="2" interface_id="主要告警" eoms_id="3" />
+			<value name="3" interface_id="轻微告警" eoms_id="1" />
+			<value name="4" interface_id="警告" eoms_id="2" />
+			<value name="5" interface_id="不确定告警" eoms_id="1" />
+			<value name="6" interface_id="重大告警" eoms_id="4" />
+		</type_2>
+		<type_3><!-- 满意程度 -->
+			<value name="很满意" interface_id="1" eoms_id="1001" />
+			<value name="满意" interface_id="2" eoms_id="1002" />
+			<value name="一般" interface_id="3" eoms_id="1003" />
+			<value name="不满意" interface_id="4" eoms_id="1004" />
+			<value name="很不满意" interface_id="5" eoms_id="1005" />
+			<value name="未知" interface_id="0" eoms_id="1000" />
+		</type_3>
+                <type_4>
+                        <value name="四川公司" interface_id="SC" eoms_id="1"/>
+                        <value name="集团公司" interface_id="JT" eoms_id="1643"/>
+                        <value name="北京公司" interface_id="BJ" eoms_id="1644"/>
+                        <value name="广东公司" interface_id="GD" eoms_id="1645"/>
+                        <value name="天津公司" interface_id="TJ" eoms_id="1646"/>
+                        <value name="上海公司" interface_id="SH" eoms_id="1647"/>
+                        <value name="重庆公司" interface_id="CQ" eoms_id="1648"/>
+                        <value name="河北公司" interface_id="HE" eoms_id="1649"/>
+                        <value name="山东公司" interface_id="SD" eoms_id="1650"/>
+                        <value name="河南公司" interface_id="HA" eoms_id="1651"/>
+                        <value name="湖北公司" interface_id="HB" eoms_id="1652"/>
+                        <value name="湖南公司" interface_id="HN" eoms_id="1653"/>
+                        <value name="广西公司" interface_id="GX" eoms_id="1654"/>
+                        <value name="山西公司" interface_id="SX" eoms_id="1655"/>
+                        <value name="内蒙古公司" interface_id="NM" eoms_id="1656"/>
+                        <value name="辽宁公司" interface_id="LN" eoms_id="1657"/>
+                        <value name="吉林公司" interface_id="JL" eoms_id="1658"/>
+                        <value name="黑龙江公司" interface_id="HL" eoms_id="1659"/>
+                        <value name="江苏公司" interface_id="JS" eoms_id="1660"/>
+                        <value name="浙江公司" interface_id="ZJ" eoms_id="1661"/>
+                        <value name="安徽公司" interface_id="AH" eoms_id="1662"/>
+                        <value name="福建公司" interface_id="FJ" eoms_id="1663"/>
+                        <value name="江西公司" interface_id="JX" eoms_id="1664"/>
+                        <value name="海南公司" interface_id="HI" eoms_id="1665"/>
+                        <value name="贵州公司" interface_id="GZ" eoms_id="1666"/>
+                        <value name="云南公司" interface_id="YN" eoms_id="1667"/>
+                        <value name="西藏公司" interface_id="XZ" eoms_id="1668"/>
+                        <value name="陕西公司" interface_id="SN" eoms_id="1669"/>
+                        <value name="甘肃公司" interface_id="GS" eoms_id="1670"/>
+                        <value name="青海公司" interface_id="QH" eoms_id="1671"/>
+                        <value name="宁夏公司" interface_id="NX" eoms_id="1672"/>
+                        <value name="新疆公司" interface_id="XJ" eoms_id="1673"/>
+                </type_4>
+                <type_5> <!--集团紧急程度映射 -->
+                        <value name="紧急" interface_id="1" eoms_id="4" />
+                        <value name="重要" interface_id="2" eoms_id="3" />
+                        <value name="次要" interface_id="3" eoms_id="1" />
+                        <value name="一般" interface_id="4" eoms_id="2" />
+                </type_5>
+                <type_6><!--四川基础数据库派单部门映射对应表-->
+                  <value name="成都" interface_id="028" eoms_id="1055"/>
+                  <value name="阿坝" interface_id="0837" eoms_id="1001"/>
+                  <value name="巴中" interface_id="0827" eoms_id="1002"/>
+                  <value name="达川" interface_id="0818" eoms_id="1004"/>
+                  <value name="德阳" interface_id="0838" eoms_id="1005"/>
+                  <value name="甘孜" interface_id="0836" eoms_id="1006"/>
+                  <value name="广安" interface_id="0826" eoms_id="1007"/>
+                  <value name="广元" interface_id="0839" eoms_id="1008"/>
+                  <value name="乐山" interface_id="08331" eoms_id="1009"/>
+                  <value name="凉山" interface_id="0834" eoms_id="1010"/>
+                  <value name="泸州" interface_id="0830" eoms_id="1011"/>
+                  <value name="眉山" interface_id="08332" eoms_id="1012"/>
+                  <value name="绵阳" interface_id="0816" eoms_id="1013"/>
+                  <value name="内江" interface_id="08321" eoms_id="1021"/>
+                  <value name="南充" interface_id="0817" eoms_id="1015"/>
+                  <value name="攀枝" interface_id="0812" eoms_id="1016"/>
+                  <value name="遂宁" interface_id="0825" eoms_id="1017"/>
+                  <value name="雅安" interface_id="0835" eoms_id="1018"/>
+                  <value name="宜宾" interface_id="0831" eoms_id="1019"/>
+                  <value name="资阳" interface_id="08322" eoms_id="1014"/>
+                  <value name="自贡" interface_id="0813" eoms_id="1020"/>
+                </type_6>
+
+
+  		 <type_7>
+                   <value name="网管中心" interface_id="GZEOMS" eoms_id="13"/>
+                   <value name="客服中心" interface_id="GZChinaMobile" eoms_id="1577"/>
+                   <value name="计费中心" interface_id="JFZX" eoms_id="38"/>
+                </type_7>
+
+  		 <type_8>
+                   <value name="六盘水投诉班" interface_id="六盘水" eoms_id="1585"/>
+                   <value name="遵义投诉班" interface_id="遵义" eoms_id="1581"/>
+                   <value name="黔东南分公司" interface_id="凯里" eoms_id="18"/>
+                   <value name="安顺分公司" interface_id="安顺" eoms_id="16"/>
+                   <value name="黔西南州投诉班" interface_id="兴义" eoms_id="1586"/>
+                   <value name="黔南投诉班" interface_id="都匀" eoms_id="1583"/>
+                   <value name="铜仁投诉班" interface_id="铜仁" eoms_id="1579"/>
+                   <value name="毕节投诉班" interface_id="毕节" eoms_id="1578"/>
+                   <value name="贵阳投诉班" interface_id="贵阳" eoms_id="1580"/>
+                </type_8>
+            </map>
+                <WNMSDept>
+                      <省网管中心>13</省网管中心>
+                      <阿坝藏族羌族自治州>1001</阿坝藏族羌族自治州>
+                      <巴中地区>1002</巴中地区>
+                      <成都市>1077</成都市>
+                      <达川地区>1004</达川地区>
+                      <德阳市>1005</德阳市>
+                      <甘孜藏族自治州>1006</甘孜藏族自治州>
+                      <广安地区>1007</广安地区>
+                      <广元市>1008</广元市>
+                      <乐山市>1009</乐山市>
+                      <凉山彝族自治州>1010</凉山彝族自治州>
+                      <眉山地区>1012</眉山地区>
+                      <绵阳市>1013</绵阳市>
+                      <南充市>1015</南充市>
+                      <内江市>1021</内江市>
+                     <攀枝花市>1016</攀枝花市>
+                      <遂宁市>1017</遂宁市>
+                      <雅安地区>1018</雅安地区>
+                      <宜宾市>1019</宜宾市>
+                      <资阳市>1014</资阳市>
+                      <自贡市>1020</自贡市>
+                      <泸州市>1011</泸州市>
+              </WNMSDept>
+
+                <sendPerson>admin</sendPerson>
+				<IPsendPerson>admin</IPsendPerson>
+                <attachmentLocalAddr>d:\jintongeoms27\EOMS_J2EE\newworksheet\upload\</attachmentLocalAddr>
+                 <bulletinAttachmentLocalAddr>d:\jintongeoms27\EOMS_J2EE\infopub\upload\</bulletinAttachmentLocalAddr>
+                <attachmentURL>http://10.194.2.3:8082/EOMS_J2EE/newworksheet/upload/</attachmentURL>
+                <bulletinAttachmentURL>http://10.101.9.58/infopub/upload/</bulletinAttachmentURL>
+                <localInterfaceDeptName>贵州网管中心</localInterfaceDeptName>
+
+	</Interface>
+
+        <FaultSheetAddr>http://10.101.16.163:8080/EOMS_J2EE/services/FaultSheet</FaultSheetAddr>
+        <TaskSheetAddr>http://10.101.16.163:8080/EOMS_J2EE/services/TaskSheet</TaskSheetAddr>
+
+        <BulletinAddr>http://135.11.50.55/adminservice/Bulletin.asmx</BulletinAddr>
+
+        <ApplySheetAddr>http://135.11.50.55/adminservice/KFComplainSheet.asmx</ApplySheetAddr>
+                 <JT_Bulletin>20</JT_Bulletin>
+                <KF_Bulletin>3</KF_Bulletin>
+         <KFAcceptDept>2</KFAcceptDept>
+
+        <scheduler>
+        	<job_1 name="作业计划每日提醒" >
+        		<type>cron</type>
+        		<frequency>0 38 23 * * ?</frequency>
+        		<classname>com.boco.eoms.gzjh.scheduler.TawgzSMSScheduler</classname>
+        	</job_1>
+        	<job_2 name="作业计划月度提醒" >
+        		<type>cron</type>
+        		<frequency>0 15 10 22 * ?</frequency>
+        		<classname>com.boco.eoms.gzjh.scheduler.TawgzSMSMonthScheduler</classname>
+        	</job_2>
+
+		<job_3 name="短信回单轮循">
+			<type>simple</type>
+		       	<frequency>0</frequency>
+		       	<classname>com.boco.eoms.worksheet.sms.monitor.SMSDeliverScheduler</classname>
+		</job_3>
+                <job_4 name="值班日志自动合并">
+			<type>cron</type>
+		       	<frequency>0 1 0 * * ?</frequency>
+		       	<classname>com.boco.eoms.duty.util.DutyAutoScheduler</classname>
+		</job_4>
+
+              <!--  <job_5 name="短信发送轮询">
+			<type>simple</type>
+		       	<frequency>180000</frequency>
+		       	<classname>com.boco.eoms.message.monitor.MonitorScheduler1</classname>
+		</job_5>
+		<job_5 name="待质检工单超时轮询">
+			<type>simple</type>
+			<frequency>60000</frequency>
+			<classname>com.boco.eoms.worksheet.check.scheduler.ApplysheetCheckScheduler</classname>
+		</job_5>     -->
+                <job_5 name="短信发送号码自动更新">
+			<type>cron</type>
+			<frequency>1 1 0 * * ?</frequency>
+			<classname>com.boco.eoms.sms.autophone</classname>
+		</job_5>
+               <job_6 name="用户帐户更新轮训">
+                       <type>cron</type>
+                       <frequency>00 00 10 14 * ? </frequency>
+                       <classname>com.boco.eoms.jbzl.monitor.TawRmUserSafeScheduler</classname>
+               </job_6>
+               <job_7 name="用户帐户更新轮训">
+                       <type>cron</type>
+                       <frequency>00 00 10 27 * ? </frequency>
+                       <classname>com.boco.eoms.jbzl.monitor.TawRmUserSafeScheduler</classname>
+               </job_7>
+        </scheduler>
+
+        <check>
+            <check_dept>13</check_dept>
+            <interface_dept>13</interface_dept>
+            <reply_limit>30</reply_limit>
+        </check>
+        <WorksheetLimitDefine>
+          <faultsheet>0.3</faultsheet>
+          <applysheet>0.3</applysheet>
+          <tasksheet>0.3</tasksheet>
+          <datasheet>0.3</datasheet>
+          <reportsheet>0.3</reportsheet>
+          <softwaresheet>0.3</softwaresheet>
+          <badboardsheet>0.3</badboardsheet>
+          <requsheet>0.3</requsheet>
+          <feedbacksheet>0.3</feedbacksheet>
+        </WorksheetLimitDefine>
+</boco>

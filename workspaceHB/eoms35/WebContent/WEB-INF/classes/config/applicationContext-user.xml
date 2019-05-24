@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+
+	<!--TawSystemUserRefRole-DAO START-->
+	<bean id="tawSystemUserRefRoleDao"
+		class="com.boco.eoms.commons.system.user.dao.hibernate.TawSystemUserRefRoleDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemUserRefRole-DAO END-->
+	<!--TawSystemUserRefRole-START-->
+	<bean id="itawSystemUserRefRoleManager"
+		parent="sysuserBaseFlushCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.user.service.impl.TawSystemUserRefRoleManagerImpl">
+				<property name="tawSystemUserRefRoleDao"
+					ref="tawSystemUserRefRoleDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemUserRefRole-END-->
+	<!--TawSystemUser-DAO START-->
+	<bean id="tawSystemUserDao"
+		class="com.boco.eoms.commons.system.user.dao.hibernate.TawSystemUserDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemUser-DAO END-->
+	<!--TawSystemUser-START-->
+	<bean id="itawSystemUserManager"
+		parent="sysuserBaseFlushCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl">
+				<property name="tawSystemUserDao"
+					ref="tawSystemUserDao" />
+				<property name="tawSystemDeptManager"
+					ref="ItawSystemDeptManager" />
+				<property name="tawSystemPrivUserAssignJdbc"
+					ref="tawSystemPrivMenuCommonDao" />
+				<property name="tawSystemPrivAssignDao"
+					ref="tawSystemPrivAssignDao" />
+
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemUser-END-->
+	<!-- gong -->
+	
+	<!--TawPartnersUser-DAO START-->
+	<bean id="tawPartnersUserDao"
+		class="com.boco.eoms.commons.system.user.dao.hibernate.TawPartnersUserDaoHibernate"
+		autowire="byName" />
+	<!--TawPartnersUser-DAO END-->
+	<!--TawPartnersUser-START-->
+	<bean id="itawPartnersUserManager"
+		parent="sysuserBaseFlushCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.user.service.impl.TawPartnersUserManagerImpl">
+				<property name="tawPartnersUserDao"
+					ref="tawPartnersUserDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawPartnersUser-END-->
+
+	<!-- gong -->
+	<!--iTawSystemUserBo-START-->
+	<bean id="iTawSystemUserBo" parent="sysuserBaseFlushCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.user.service.bo.impl.TawSystemUserBoImpl">
+				<property name="usermanager"
+					ref="itawSystemUserManager" />
+			</bean>
+		</property>
+	</bean>
+	<!--iTawSystemUserBo-END-->
+
+	<!--iTawSystemUserRefRoleBo-START-->
+	<bean id="iTawSystemUserRefRoleBo"
+		parent="sysuserBaseFlushCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.user.service.bo.impl.TawSystemUserRefRoleBoImpl">
+				<property name="rolemanager"
+					ref="itawSystemUserRefRoleManager" />
+				<property name="userbo" ref="iTawSystemUserBo" />
+			</bean>
+		</property>
+	</bean>
+	<!--iTawSystemUserRefRoleBo-END-->
+
+
+	<!-- sox -->
+	<bean id="userPasswdHistoryDao"
+		class="com.boco.eoms.commons.system.user.sox.dao.hibernate.UserPasswdHistoryDaoHibernate"
+		autowire="byName" />
+
+	<bean id="userPasswdHistoryMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.user.sox.mgr.impl.UserPasswdHistoryMgrImpl">
+				<property name="userPasswdHistoryDao"
+					ref="userPasswdHistoryDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="userAttributes"
+		class="com.boco.eoms.commons.system.user.util.UserAttributes">
+		<property name="passwdLength">
+			<value>6</value>
+		</property>
+		<property name="passwdRepeatNum">
+			<value>6</value>
+		</property>
+		<property name="passwdAvailableDay">
+			<value>90</value>
+		</property>
+		<property name="passwdUnavailableRemindDay">
+			<value>10</value>
+		</property>
+		<property name="passwdRemindWords">
+			<value><![CDATA[您的电子运维帐户密码将无效，请您尽快登陆电子运维系统跟新密码，谢谢。]]></value>
+		</property>
+	</bean>
+	<bean id="UserMgrImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.user.service.impl.UserMgrImpl">
+				<property name="deptMgr"
+					ref="DeptMgrImpl" />
+				<property name="tawSystemUserDao"
+					ref="tawSystemUserDao" />
+				<property name="tawSystemUserManager"
+					ref="itawSystemUserManager" />
+				<property name="tawSystemUserRefRoleDao" ref="tawSystemUserRefRoleDao"/>
+			</bean>
+		</property>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

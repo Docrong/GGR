@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+	<class name="com.boco.eoms.sheet.circuitdispatch.model.CircuitDispatchCollect"
+		table="circuitdispatch_collect">
+		<id name="id" column="id">
+			<generator class="uuid.hex" />
+		</id>
+		<property name="sheetId" />
+		<property name="title" />
+		<property name="linkId"  />
+		<property name="mainId"  />
+		<property name="nodeAcceptLimit" />
+		<property name="nodeCompleteLimit"  />
+		<property name="operateType"  />
+		<property name="operateTime"  />
+		<property name="operateOrgType"  />
+		<property name="operateUserId"  />
+		<property name="operateDeptId"  />
+		<property name="operateRoleId"  />
+		<property name="toOrgType"  />
+		<property name="toOrgUserId"  />
+		<property name="toOrgDeptId"  />
+		<property name="toOrgRoleId" />
+		<property name="acceptFlag"  />
+		<property name="acceptTime"  />
+		<property name="completeFlag"  />
+		<property name="completeTime"  />
+		<property name="activeTemplateId"  />
+		<property name="preLinkId"  />
+		
+		<property name="sheetAcceptLimit"  />
+		<property name="sheetCompleteLimit"  />
+		<property name="status"  />
+		<property name="holdStatisfied"  />
+		
+		<property name="isReject"  />
+		<property name="acceptSecond"  />
+		<property name="completeSecond"  />
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+	<bean id="OperateDict1"
+		class="com.boco.eoms.sheet.base.dict.OperateDict">
+		<constructor-arg type="java.lang.String">
+			<value>1</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>转派</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>转派</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="OperateDict2"
+		class="com.boco.eoms.sheet.base.dict.OperateDict">
+		<constructor-arg type="java.lang.String">
+			<value>2</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>派单</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.String">
+			<value>派单</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="DictService"
+		class="com.boco.eoms.sheet.base.dict.DictServiceImpl">
+		<property name="operateMap">
+			<map>
+				<entry>
+					<key>
+						<value type="java.lang.String">1</value>
+					</key>
+					<ref bean="OperateDict1" />
+				</entry>
+				<entry>
+					<key>
+						<value type="java.lang.String">2</value>
+					</key>
+					<ref bean="OperateDict2" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+</beans>

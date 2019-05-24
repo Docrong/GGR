@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wapNodes>
+	<wapDBConnections name="连接池配置">
+		<wapDBConnection dbName="测试连接池" dbId="1258">
+			<description>此连接池为测试所用</description>
+			<dbConnectionUrl>
+				jdbc:mysql//:10.0.6.14:1537:eoms?username=test&amp;password=1
+			</dbConnectionUrl>
+			<userName>test</userName>
+			<password>1</password>
+			<DbType>mysql</DbType>
+			<DB_Charset>utf-8</DB_Charset>
+		</wapDBConnection>
+	</wapDBConnections>
+
+	<wapNode wapNodeID="9727" name="WAP子系统1" description="wap系统1描述"
+		dbName="测试连接池" cardId="7847766_9727" dbId="1258">
+		<card cardId="7847766_9727" name="登录页面" description="用于用户登录"
+			title="用户登录" mainFlag="true">
+			<wmlTag type="Text" tagKey="1" orderId="1"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">
+				用户名：
+			</wmlTag>
+			<wmlTag type="Input" tagKey="2" orderId="2"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapInputTag">
+				<input type="text" name="username" value=""
+					emptyok="false" size="20" maxlength="20" />
+			</wmlTag>
+			<wmlTag type="Br" tagKey="3" orderId="3"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+				<br />
+			</wmlTag>
+			<wmlTag type="Text" tagKey="4" orderId="4"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">
+				密 码：
+			</wmlTag>
+			<wmlTag type="Input" tagKey="5" orderId="5"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapInputTag">
+				<input type="password" name="password" value="ff"
+					emptyok="false" size="20" maxlength="20" />
+			</wmlTag>
+			<wmlTag type="Br" tagKey="6" orderId="6"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+				<br />
+			</wmlTag>
+			<wmlTag type="Anchor" tagKey="7" orderId="7"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapAnchorTag">
+				<anchor type="accept">
+					确定
+					<go href="wap?cardId=11111112_9727" method="post">
+						<postField name="username" value="$(username)" />
+						<postField name="password" value="$(password)" />
+						<postField name="spage" value="1" />
+					</go>
+				</anchor>
+			</wmlTag>
+			<wmlTag type="Br" tagKey="8" orderId="8"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+				<br />
+			</wmlTag>
+			<wmlTag type="SelectStatic" tagKey="9" orderId="9"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapSelectStaticTag">
+				<select name="select" multiple="false">
+					<option value="bj">北京</option>
+					<option value="hs">衡水</option>
+				</select>
+			</wmlTag>
+			<wmlTag type="Br" tagKey="10" orderId="10"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+				<br />
+			</wmlTag>
+			<wmlTag type="Href"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag" tagKey="11"
+				orderId="11">
+				<a href="http://wap.mop.com">猫扑</a>
+			</wmlTag>
+			<wmlTag type="Br" tagKey="12" orderId="12"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+				<br />
+			</wmlTag>
+		</card>
+
+		<card cardId="11111112_9727" name="显示" description="显示不同的标签控件"
+			title="显示" mainFlag="true">
+
+			<wmlTag type="Text" tagKey="1" orderId="1"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">
+				图片：
+			</wmlTag>
+			<wmlTag type="Br" tagKey="2" orderId="2"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+				<br />
+			</wmlTag>
+			<wmlTag type="Image" tagKey="3" orderId="3"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapImageTag">
+				<img type="auto" src="webtool/uploadImages/2.gif" alt="wokao"
+					height="128" width="128" align="middle" />
+			</wmlTag>
+			<wmlTag type="Onevent" tagKey="4" orderId="4"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapOneventTag">
+				<onevent type="ontimer">
+					<go href="wap" />
+					<timer value="300" />
+				</onevent>
+			</wmlTag>
+			<wmlTag type="SysClass" tagKey="5" orderId="5"
+				class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+				<sysClass
+					classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule"
+					method="workSheetList" isList="true" name="neibulei"
+					isPageination="true" pageSize="3" verOrDis="display"
+					verifyMethod="" isDisplayNext="true" inPutParam="[@username]"
+					paramTypes="String">
+					<a
+						href="wap?cardId=11111114_9727&amp;sheetId=[@neibuleiList:sheetId]&amp;spage=[@spage]&amp;username=[@username]">
+						用户名：[@neibuleiList:username]状态：[@neibuleiList:state]日期：[@neibuleiList:date]
+					</a>
+				</sysClass>
+			</wmlTag>
+
+		</card>
+	</wapNode>
+
+</wapNodes>
+

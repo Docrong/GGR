@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.boco.eoms.workplan.model.TawwpNewLog"
+		table="TAW_WP_NewLOG" dynamic-update="false" dynamic-insert="false"
+		select-before-update="false">
+
+		<id name="id" column="ID" type="java.lang.String" length="32"
+			unsaved-value="null">
+			<generator class="uuid.hex">
+				<!--
+					To add non XDoclet generator parameters, create a file named
+					hibernate-generator-params-TawwpNewLog.xml
+					containing the additional parameters and place it in your merge dir.
+				-->
+			</generator>
+		</id>
+
+		<property name="createTime" type="date"
+			update="false" insert="true" access="property" column="createTime"
+			length="255" not-null="false" />
+
+		<property name="model" type="java.lang.String" update="false"
+			insert="true" access="property" column="model" length="255"
+			not-null="false" />
+
+		<property name="resultState" type="java.lang.String"
+			update="false" insert="true" access="property" column="resultState"
+			length="255" not-null="false" />
+
+		<property name="logType" type="java.lang.String" update="true"
+			insert="true" access="property" column="LOGTYPE" length="255" />
+
+		<property name="message" type="java.lang.String" update="true"
+			insert="true" access="property" column="message" length="255" />
+
+		<!--
+			To add non XDoclet property mappings, create a file named
+			hibernate-properties-TawwpLog.xml
+			containing the additional properties and place it in your merge dir.
+		-->
+
+	</class>
+
+</hibernate-mapping>

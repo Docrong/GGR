@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://EomsLibray">
+	<xsd:complexType name="ControlBO">
+		<xsd:annotation>
+      <xsd:documentation>控制bo，该bo可以不用继承，需要各个流程自己定义。&#13;
+但是需要注意的是，该对象中只能存放跟流程控制有关的，并且不需要放入业务数据库的属性。&#13;
+包括但不限于：&#13;
+1.循环控制标识&#13;
+2.分支选择标识、&#13;
+3.各个humantask的执行者对象。&#13;
+etc....&#13;
+诸如此类的属性。&#13;
+特殊说明：这里定义各个人工任务的执行者对象属性的目的，是为了在humantask中配置变量时直接使用该属性。&#13;
+</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="ifTerminateFlow"
+				type="xsd:boolean" />
+			<xsd:element minOccurs="0" name="currentStepName"
+				type="xsd:string" />
+			<xsd:element minOccurs="0" name="driveForwardPerformer"
+				type="xsd:string" />
+			<xsd:element minOccurs="0" name="copyPerformerArray"
+				type="xsd:string" maxOccurs="unbounded">
+				<xsd:annotation><xsd:documentation>保存抄送对象的数组</xsd:documentation></xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="copyPerformerLeaderArray"
+				type="xsd:string" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="copyPerformerTypeArray"
+				type="xsd:string" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="dealPerformerArray"
+				type="xsd:string" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="dealPerformerLeaderArray"
+				type="xsd:string" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="dealPerformerTypeArray"
+				type="xsd:string" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

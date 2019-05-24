@@ -1,0 +1,3825 @@
+<?xml version="1.0" encoding="GB2312"?>
+<report>
+<page name="t_wl_rate">
+  <viewname>local_radio_rate</viewname>
+  <title>全省五项考核指标</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区名称</td>
+    <td  align="center" width="10%" >长途来话接通率(%)</td>
+    <td  align="center" width="10%">掉话率(%)</td>
+    <td  align="center" width="10%">短消息接通率(%)-全天</td>
+    <td  align="center" width="10%">最坏小区比例(%)</td>
+    <td  align="center" width="10%">PDP激活成功率(%)</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >region</td>
+    <td >intoll_connrate</td>
+    <td >drop_rate</td>
+    <td >smsc_connrate</td>
+    <td >round(worst_cell_r*100,3) w_cell</td>
+    <td >pdp_act_sucrate</td>
+ </tr>
+</table>
+<where>ne_type = 10000 and hour(first_result) =10</where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause> 
+<operateid>5002</operateid>
+</page>
+<page name="t_wl_rate_region">
+  <viewname>local_radio_rate</viewname>
+  <title>各地市五项考核指标</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区名称</td>
+    <td  align="center" width="10%" >长途来话接通率(%)</td>
+    <td  align="center" width="10%">掉话率(%)</td>
+    <td  align="center" width="10%">最坏小区比例(%)</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >region</td>
+    <td >intoll_connrate</td>
+    <td >drop_rate</td>
+    <td >round(worst_cell_r*100,3) w_cell</td>
+ </tr>
+</table>
+<where>ne_type = 10003 and hour(first_result) =10</where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause> 
+<regionclause>ne_id</regionclause>
+<operateid>5002</operateid>
+</page>
+<page name="t_wl_abover_traffic">
+  <viewname>tpc_tkgp_ne t,tcc_ne_snap tmsc,tcc_ne_snap tkgp</viewname>
+  <title>全省一汇二汇每线话务量超标</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >时间</td>
+    <td  align="center" width="10%" >MSC名称</td>
+    <td  align="center" width="10%" >中继群名称</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">中继数</td>
+    <td  align="center" width="10%">话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">t.compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(tmsc.ne_id,101)</td>
+    <td >soa_get_nename(t.ne_id,600)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),avail_ts),2)</td>
+    <td >tot_ts</td>
+    <td >round((i_seize_traf+o_seize_traf),3)</td>
+ </tr>
+</table>
+<where>t.compress_date=tmsc.compress_date
+and t.compress_date=tkgp.compress_date
+and tmsc.ne_type=101 and tkgp.ne_type=600
+and tmsc.tmsc_cat  in (1,2) 
+and tkgp.related_ne1=tmsc.ne_id
+and t.ne_id=tkgp.ne_id
+and sfb_divfloat_1((i_seize_traf+o_seize_traf),avail_ts)>0.62</where>
+<orderby>t.first_result</orderby>
+<limitclause>t.first_result</limitclause>
+<regionclause>tkgp.region_id</regionclause>
+<operateid>5003</operateid>
+</page>
+<page name="t_zy_busy_cell_name_all">
+  <viewname>local_busy_cell a,vendor_name b</viewname>
+  <title>超忙小区名称表</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%" >超忙小区名称</td>
+    <td  align="center" width="10%" >超忙小区代码</td>
+    <td  align="center" width="10%" >设备类型</td>
+    <td  align="center" width="10%" >小区载频数</td>
+    <td  align="center" width="10%" >小区话务量</td>
+    <!--td  align="center" width="10%" >每线话务量</td-->
+    <td  align="center" width="10%" >拥塞率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">a.first_result</td>
+    <td >hour(a.first_result)</td>
+    <td >substr(a.region_name,1,19)</td>
+    <td >a.bts_name</td>
+    <td >a.object_rdn</td>
+    <td >b.vendor_text</td>
+    <td >a.trx_nbr</td>
+    <td >round(a.tch_traffic,3)</td>
+    <!--td >round(traffic_p_tch,3)</td-->
+    <td >a.tch_congrate_nho</td>
+ </tr>
+</table>
+<where>a.vendor_id=b.type and a.tch_congrate_nho &gt; 5 </where>
+<orderby>a.first_result,a.region_name</orderby>
+<limitclause>a.first_result</limitclause>
+<regionclause>a.region_id</regionclause>
+<operateid>5008</operateid>
+</page>
+<page name="t_drop_rate">
+  <viewname>local_radio_rate</viewname>
+  <title>全省忙时掉话率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >通话次数</td>
+    <td  align="center" width="10%" >掉话次数</td>
+    <td  align="center" width="10%">掉话率(%)</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >region</td>
+    <td >suc_answ_sys</td>
+    <td >drop_call_tch</td>
+    <td>round(drop_rate ,3 )</td>
+ </tr>
+</table>
+<where>(hour(first_result)=10 or hour(first_result)=18) and ne_type =10000</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5013</operateid>
+</page>
+<page name="t_drop_rate_region">
+  <viewname>local_radio_rate</viewname>
+  <title>地区忙时掉话率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >通话次数</td>
+    <td  align="center" width="10%" >掉话次数</td>
+    <td  align="center" width="10%">掉话率(%)</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >region</td>
+    <td >suc_answ_sys</td>
+    <td >drop_call_tch</td>
+    <td>round(drop_rate ,3 )</td>
+ </tr>
+</table>
+<where>(hour(first_result)=10 or hour(first_result)=18) and ne_type =10003</where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5013</operateid>
+</page>
+<page name="t_tpm_smab2002_main">
+  <viewname>tpa_smsc_traf_sum</viewname>
+  <title>全省短消息接通率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >名称</td>
+    <td  align="center" width="20%" >全天向短信中心提交的短信总条数</td>
+    <td  align="center" width="20%">手机向短信中心提交的短信条数</td>
+    <td  align="center" width="20%">短信中心成功受理的短信条数</td>
+    <td  align="center" width="15%">MO提交成功率</td>
+    <td  align="center" width="15%">MT下发成功率</td>
+    <td  align="center" width="15%">短信接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id ,ne_type)</td>
+    <td >att_msg_2_smsc_1</td>
+    <td >att_mo</td>
+    <td >suc_processed_mo</td>
+    <td >round(sfb_divfloat_1(suc_processed_mo,att_mo)*100,3)</td>
+    <td >round(sfb_divfloat_1(suc_mt,att_mt-unsuc_mt_usr_rsn)*100,3)</td>
+    <td >round((suc_processed_mo * sfb_divfloat_1(suc_mt,(att_mo*(att_mt-unsuc_mt_usr_rsn))))*100,3)</td>
+ </tr>
+</table>
+<where>sum_level =1 and ne_type in (10000,105)</where>
+<orderby>compress_date</orderby>
+ <limitclause>first_result</limitclause>
+ <operateid>5014</operateid>
+</page>
+<page name="t_zy_byfree_cell_r_all">
+  <viewname>local_byfree_cell_r</viewname>
+  <title>超忙和非单载频超闲小区表</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%" >非单载频超闲小区数目</td>
+    <td  align="center" width="10%" >超忙小区数目</td>
+    <td  align="center" width="10%" >非单载频超闲小区比例</td>
+    <td  align="center" width="10%" >超忙小区比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >hour(first_result)</td>
+    <td >substr(region_name,1,19)</td>
+    <td >freecell_nbr</td>
+    <td >busycell_nbr</td>
+    <td >free_r</td>
+    <td >busy_r</td>
+ </tr>
+</table>
+<where></where>
+<orderby>first_result,region_name</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>region_id</regionclause>
+<operateid>5018</operateid>
+</page>
+<page name="t_pdp10_act_rate">
+  <viewname>tpc_sgsn_ne </viewname>
+  <title>PDP激活成功率(10时)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">SGSN</td>
+    <td  align="center" width="10%">由MS终端发起的PDP上下文激活成功次数</td>
+    <td  align="center" width="10%" >由MS终端发起的PDP上下文激活尝试次数</td>
+    <td  align="center" width="10%" >由MS发起的PDP上下文激活成功率(%)</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >ms_pdp_acpt</td>
+    <td > ms_pdp_req</td>
+    <td type="float">round(sfb_divfloat_3(ms_pdp_acpt,ms_pdp_req),3)*100  pdp_act_rate</td>
+ </tr>
+</table>
+<where>hour(first_result) =10 and ne_type=121 </where>
+<orderby>first_result</orderby>
+<limitclause>first_result</limitclause>
+<operateid>5016</operateid>
+</page>
+<page name="t_pdp_day_act_rate">
+  <viewname>tpa_sgsn_sum</viewname>
+  <title>全省PDP激活成功率(全天)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">由MS终端发起的PDP上下文激活成功次数</td>
+    <td  align="center" width="10%" >由MS终端发起的PDP上下文激活尝试次数</td>
+    <td  align="center" width="10%" >PDP激活成功率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp" >first_result</td>
+    <td >round(ms_pdp_acpt,0)</td>
+    <td > round(ms_pdp_req,0)</td>
+    <td type="float">round(sfb_divfloat_3(ms_pdp_acpt,ms_pdp_req),3)*100 pdp_act_rate</td>
+ </tr>
+</table>
+<where>sum_level=1  and ne_type =10000</where>
+<orderby>first_result</orderby>
+<limitclause>first_result</limitclause>
+<operateid>5019</operateid>
+</page>
+<page name="t_pdp_day_act_rate_region">
+  <viewname>tpa_sgsn_sum</viewname>
+  <title>地市PDP激活成功率(全天)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">SGSN</td>
+    <td  align="center" width="10%">由MS终端发起的PDP上下文激活成功次数</td>
+    <td  align="center" width="10%" >由MS终端发起的PDP上下文激活尝试次数</td>
+    <td  align="center" width="10%" >PDP激活成功率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" >first_result</td>
+    <td >soa_get_nename(ne_id,ne_type) ne_name</td>
+    <td >round(ms_pdp_acpt,0)</td>
+    <td >round(ms_pdp_req,0)</td>
+    <td type="float">round(sfb_divfloat_3(ms_pdp_acpt,ms_pdp_req),3)*100 pdp_act_rate</td>
+ </tr>
+</table>
+<where>sum_level=1  and ne_type =121</where>
+<orderby>first_result</orderby>
+<limitclause>first_result</limitclause>
+<operateid>5019</operateid>
+</page>
+
+<page name="t_warn_region">
+  <viewname>nmosdb@nmosserver1:title_alarm_region r,nmosdb@nmosserver1:tfu_alarm_title t</viewname>
+  <title>地区告警统计分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">厂商</td>
+    <td  align="center" width="10%">告警类型</td>
+    <td  align="center" width="10%" >四川</td>
+    <td  align="center" width="10%" >阿坝</td>
+    <td  align="center" width="10%" >巴中市</td>
+    <td  align="center" width="10%" >成都市</td>
+    <td  align="center" width="10%" >达川市</td>
+    <td  align="center" width="10%" >德阳市 </td>
+    <td  align="center" width="10%" >甘孜</td>
+    <td  align="center" width="10%" >广安市</td>
+    <td  align="center" width="10%" >广元市</td>
+    <td  align="center" width="10%" >乐山市</td>
+    <td  align="center" width="10%" >西昌</td>
+    <td  align="center" width="10%" >泸州市</td>
+    <td  align="center" width="10%" >眉山市</td>
+    <td  align="center" width="10%" >绵阳市</td>
+    <td  align="center" width="10%" >南充市</td>
+    <td  align="center" width="10%" >攀枝花市</td>
+    <td  align="center" width="10%" >遂宁市</td>
+    <td  align="center" width="10%" >雅安市</td>
+    <td  align="center" width="10%" >宜宾市</td>
+    <td  align="center" width="10%" >自贡市</td>
+    <td  align="center" width="10%" >内江市</td>
+    <td  align="center" width="10%" >资阳市</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td>soa_get_nename_sc2(r.vendor_id,88)</td>
+    <td>t.title</td>
+    <td >region_1 </td>
+    <td >region_22 </td>
+    <td >region_20 </td>
+    <td >region_3 </td>
+    <td >region_15 </td>
+    <td >region_6 </td>
+    <td >region_8 </td>
+    <td >region_7 </td>
+    <td >region_13 </td>
+    <td >region_9 </td>
+    <td >region_14 </td>
+    <td >region_16 </td>
+    <td >region_2 </td>
+    <td >region_5 </td>
+    <td >region_21 </td>
+    <td >region_17 </td>
+    <td >region_10 </td>
+    <td >region_18 </td>
+    <td >region_12 </td>
+    <td >region_11 </td>
+    <td >region_19 </td>
+    <td >region_4 </td>
+ </tr>
+</table>
+<where>r.vendor_id=1 and t.vendor_id=r.vendor_id and t.title_id=r.title_id
+</where>
+<orderby>1,3</orderby>
+<operateid>5011</operateid>
+<limitclause>first_result</limitclause>
+</page>
+<page name="t_warnbss_region">
+  <viewname>nmosdb@nmosserver1:title_alarm_ne r,nmosdb@nmosserver1:tfu_alarm_title t</viewname>
+  <title>网元告警统计查询结果</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr align="center" bgcolor="#FFE2A6">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%">厂商</td>
+    <td  align="center" width="10%">网元</td>
+    <td  align="center" width="10%">告警类型</td>
+    <td  align="center" width="10%" >次数</td>
+
+  </tr>
+    <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td>nmosdb@nmosserver1:soa_get_nename(related_region,3)</td>
+    <td>nmosdb@nmosserver1:soa_get_nename_sc2(related_vendor,88)</td>
+    <td>nmosdb@nmosserver1:to_rdn(ne_id)</td>
+    <td>t.title</td>
+    <td>alarm_n</td>
+  </tr>
+</table>
+<where>related_vendor=1 and t.title_id=r.title_id</where>
+<orderby>1,5</orderby>
+<regionclause>related_region</regionclause>
+<limitclause>first_result</limitclause>
+<operateid>5011</operateid>
+</page>
+
+<page name="t_warning">
+  <viewname>nmosdb@nmosserver1:jl_alarm_n</viewname>
+  <title>网元告警统计查询结果</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr align="center" bgcolor="#FFE2A6">
+    <td rowspan="2">日期</td>
+    <td rowspan="2">名称</td>
+    <td rowspan="2">厂商</td>
+    <td rowspan="2">告警总数</td>
+    <td colspan="2">告警合计</td>
+    <td colspan="2">严重告警</td>
+    <td colspan="2">主要告警</td>
+    <td colspan="2">次要告警</td>
+    <td colspan="2">一般告警</td>
+  </tr>
+  <tr align="center" bgcolor="#FFE2A6">
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td>nmosdb@nmosserver1:soa_get_nename(case when related_region=0 then  1059902420 else related_region end ,case when related_region=0 then 0 else 3 end)</td>
+    <td>nmosdb@nmosserver1:soa_get_nename_sc2(ne_id ,ne_type)</td>
+    <td>T_NUM</td>
+    <td>T_A_NUM</td>
+    <td>T_C_NUM</td>
+    <td>CR_A_NUM</td>
+    <td>CR_C_NUM</td>
+    <td>MA_A_NUM</td>
+    <td>MA_C_NUM</td>
+    <td>MI_A_NUM</td>
+    <td>MI_C_NUM</td>
+    <td>UN_A_NUM</td>
+    <td>UN_C_NUM</td>
+  </tr>
+</table>
+<where>ne_type =88</where>
+<orderby>first_result</orderby>
+<regionclause>related_region</regionclause>
+<limitclause>first_result</limitclause>
+<operateid>5009</operateid>
+</page>
+<page name="t_warning_region">
+  <viewname>nmosdb@nmosserver1:ne_alarm_n</viewname>
+  <title>网元告警统计查询结果</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr align="center" bgcolor="#FFE2A6">
+    <td rowspan="2">日期</td>
+    <td rowspan="2">厂商</td>
+    <td rowspan="2">网元</td>
+    <td colspan="2">告警合计</td>
+    <td colspan="2">严重告警</td>
+    <td colspan="2">主要告警</td>
+    <td colspan="2">次要告警</td>
+    <td colspan="2">一般告警</td>
+  </tr>
+  <tr align="center" bgcolor="#FFE2A6">
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+    <td>活动告警</td>
+    <td>恢复告警</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+     <td>nmosdb@nmosserver1:soa_get_nename_sc2(related_vendor,88)</td>
+    <td>nmosdb@nmosserver1:to_rdn(ne_id)</td>
+    <td>T_NUM</td>
+    <td>T_A_NUM</td>
+    <td>CR_NUM</td>
+    <td>CR_a_NUM</td>
+    <td>MA_NUM</td>
+    <td>MA_a_NUM</td>
+    <td>MI_NUM</td>
+    <td>MI_a_NUM</td>
+    <td>UN_NUM</td>
+    <td>UN_a_NUM</td>
+  </tr>
+</table>
+<where></where>
+<orderby>first_result</orderby>
+<regionclause>related_region</regionclause>
+<limitclause>first_result</limitclause>
+<operateid>5009</operateid>
+</page>
+<page name="t_vpm">
+  <viewname>tpa_scp_sum x0,tpa_sdp_sum x1,tcc_scp x2</viewname>
+  <title>全省智能网scp,vcc数据</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="20%" >系统设计最大CAPS数</td>
+    <td  align="center" width="15%">最大CAPS数</td>
+    <td  align="center" width="15%">VC全天PPS充值金额</td>
+    <td  align="center" width="15%">VC全天PPIP充值金额</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">x0.compress_date</td>
+    <td >soa_get_nename(x0.ne_id,x0.ne_type)</td>
+    <td >sum(x2.caps_max_nbr) caps_max_nbr</td>
+    <td >round(x0.caps_nbr,0) caps_nbr</td>
+    <td >round(x1.chg_amount_pps,0)</td>
+    <td >x1.chg_amount_ppip</td>
+ </tr>
+</table>
+<where> x0.compress_date=x1.compress_date and x1.compress_date=x2.compress_date 
+And x0.ne_type=x1.ne_type And x0.ne_type=10000 
+And x0.sum_level=x1.sum_level And x0.sum_level=1</where>
+<groupby>1,2,4,5,6</groupby>
+<orderby>x0.compress_date</orderby>
+<limitclause>x0.compress_date</limitclause>
+<operateid>5025</operateid>
+</page>
+<page name="t_zy_byfree_cell_r_free">
+  <viewname>zy_free_cell a,vendor_name b,zy_byfree_cell_r c</viewname>
+  <title>非单载频超闲小区表</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">设备类型</td>
+    <td  align="center" width="10%" >非单载频超闲小区数目</td>
+    <td  align="center" width="10%" >非单载频超闲小区比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">a.first_result</td>
+    <td >hour(a.first_result)</td>
+    <td >a.region_name</td>
+    <td >b.vendor_text</td>
+    <td >count(a.vendor_id)</td>
+    <td >round(sfb_divfloat_1(count(a.vendor_id),c.freecell_nbr),3)</td>
+ </tr>
+</table>
+<where>a.vendor_id=b.type and c.first_result=a.first_result and c.related_region=a.related_region</where>
+<groupby>a.first_result,a.region_name,b.vendor_text,c.freecell_nbr</groupby>
+<orderby>a.first_result,a.region_name</orderby>
+</page>
+<page name="t_alarm_title">
+  <viewname>nmosdb@nmosserver1:tfa_alarm f ,nmosdb@nmosserver1:tfu_alarm_title t</viewname>
+  <title>网元告警正文</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >发生时间</td>
+    <td  align="center" width="10%" >清除时间</td>
+    <td  align="center" width="10%">告警类型</td>
+    <td  align="center" width="10%">告警正文</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+
+    <td >nmosdb@nmosserver1:to_rdn(int_id) to_r</td>
+    <td >event_time</td>
+    <td >cancel_time</td>
+    <td >t.title</td>
+    <td >nmosdb@nmosserver1:alarm_text(fp0,fp1,fp2,fp3) a_t</td>
+ </tr>
+</table>
+<where></where>
+<orderby>event_time</orderby>
+<limitclause>event_time</limitclause>
+<operateid>5010</operateid>
+</page>
+<page name="t_tpm_c12002_main_x0">
+  <viewname>tpa_radio_sum</viewname>
+  <title>全省忙时话务掉话比</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="25%" >忙时话音信道总话务量</td>
+    <td  align="center" width="25%" >忙时话音信道掉话总次数（含切换）</td>
+    <td  align="center" width="25%">话务掉话比</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >round(tch_traffic,3)</td>
+    <td >drop_call_tch</td>
+    <td >round(sfb_divfloat_1(tch_traffic,drop_call_tch)*60,3) tch_drop_rate</td>
+ </tr>
+</table>
+<where>ne_type=10000 and s_hour = 10</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5020</operateid>
+</page>
+<page name="t_tpm_c12002_main_x0_region">
+  <viewname>tpa_radio_sum</viewname>
+  <title>各地市忙时话务掉话比</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >城市名称</td>
+    <td  align="center" width="30%" >忙时话音信道总话务量</td>
+    <td  align="center" width="30%" >忙时话音信道掉话总次数（含切换）</td>
+    <td  align="center" width="30%">话务掉话比</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >soa_get_nename(ne_id ,ne_type)</td>
+    <td >round(tch_traffic,3)</td>
+    <td >drop_call_tch</td>
+    <td >round(sfb_divfloat_1(tch_traffic,case when drop_call_tch=0 then null else drop_call_tch end)*60,3) tch_drop_rate</td>
+ </tr>
+</table>
+<where>ne_type =10003 and s_hour = 10 AND ne_id not in (-999999)</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5020</operateid>
+</page>
+<page name="t_att_tch_rate">
+  <viewname>tpa_radio_sum </viewname>
+  <title>全省忙时无线接通率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >SDCCH试呼总次数</td>
+    <td  align="center" width="10%" >SDCCH溢出总次数</td>
+    <td  align="center" width="20%">话音溢出总次数（不含切换）</td>
+    <td  align="center" width="20%">话音信道试呼总次数（不含切换）</td>
+    <td  align="center" width="10%">无线接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >s_hour</td>
+    <td >round(att_sdcch_seiz,7)</td>
+    <td >att_sdcch_ovrfl</td>
+    <td >att_tch_ovrfl_nho</td>
+    <td >round(tch_call_req_nho,0)</td>
+    <td >round( (1 - sfb_divfloat_1(att_tch_ovrfl_nho,tch_call_req_nho) ) * (1 - sfb_divfloat_1(att_sdcch_ovrfl,att_sdcch_seiz ) )  ,3) att_rate</td>
+ </tr>
+</table>
+<where>s_hour = 10 and ne_type =10000</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5021</operateid>
+</page>
+<page name="t_att_tch_rate_region">
+  <viewname>tpa_radio_sum  </viewname>
+  <title>地市忙时无线接通率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="15%">地市</td>
+    <td  align="center" width="15%" >SDCCH试呼总次数</td>
+    <td  align="center" width="15%" >SDCCH溢出总次数</td>
+    <td  align="center" width="15%">话音溢出总次数（不含切换）</td>
+    <td  align="center" width="15%">话音信道试呼总次数（不含切换）</td>
+    <td  align="center" width="10%">无线接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id ,ne_type) region_name</td>
+    <td >att_sdcch_seiz</td>
+    <td >att_sdcch_ovrfl</td>
+    <td >att_tch_ovrfl_nho</td>
+    <td >round(tch_call_req_nho,0)</td>
+    <td >round( (1 - sfb_divfloat_1(att_tch_ovrfl_nho,tch_call_req_nho) ) * (1 - sfb_divfloat_1(att_sdcch_ovrfl,att_sdcch_seiz ) )  ,3) att_rate</td>
+ </tr>
+</table>
+<where>ne_type =10003 and s_hour = 10 AND ne_id not in (-999999)</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5021</operateid>
+</page>
+<page name="t_pdp_property">
+  <viewname>tpc_sgsn_ne</viewname>
+  <title>PDP性能</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">SGSN</td>
+    <td  align="center" width="10%" >平均的附着用户数</td>
+    <td  align="center" width="10%" >GPRS附着程序尝试成功次数</td>
+    <td  align="center" width="10%">GPRS附着程序尝试次数</td>
+    <td  align="center" width="10%">附着成功率(%)</td>
+    <td  align="center" width="10%">激活PDP上下文的用户数</td>
+    <td  align="center" width="10%">由MS发起的PDP上下文激活成功次数(SGSN）</td>
+    <td  align="center" width="10%">由MS发起的PDP上下文激活尝试次数(SGSN)</td>
+    <td  align="center" width="10%">由MS发起的PDP上下文激活成功率（SGSN）(%)</td>
+    <td  align="center" width="10%">SGSN GB上行流量</td>
+    <td  align="center" width="10%">SGSN GB下行流量</td>
+    <td  align="center" width="10%">SGSN内部路由区更新成功次数</td>
+    <td  align="center" width="10%">SGSN内部路由区更新尝试次数</td>
+    <td  align="center" width="10%">SGSN间路由区更新成功次数</td>
+    <td  align="center" width="10%">SGSN间路由区更新尝试次数</td>
+    <td  align="center" width="10%">路由区更新成功率(%)</td>
+    <td  align="center" width="10%">分组寻呼成功率(%）</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type)   ne_name</td>
+    <td >round(mean_att_sub,0) </td>
+    <td >suc_gprs_attch</td>
+    <td >att_gprs_attch</td>
+    <td type="float">round(sfb_divfloat_1(suc_gprs_attch ,att_gprs_attch)*100,3)</td>
+    <td >n_sub_actpdp</td>
+    <td >ms_pdp_acpt</td>
+    <td >ms_pdp_req</td>
+    <td type="float">round(sfb_divfloat_1(ms_pdp_acpt, ms_pdp_req)*100,3)</td>
+    <td >round(ul_oct_sndcp_rcv,0)</td>
+    <td >round(dl_oct_sndcp_sent,0)</td>
+    <td >suc_intr_sgsn_ra</td>
+    <td >att_intr_sgsn_ra</td>
+    <td >suc_inter_sgsn_ra</td>
+    <td >att_inter_sgsn_ra</td>
+    <td type="float">round(sfb_divfloat_1(suc_inter_sgsn_ra, att_inter_sgsn_ra)*100,3)</td>
+    <td type="float">round(sfb_divfloat_1((att_ps_page-fail_ps_page),att_ps_page)*100,3)</td>
+</tr>
+</table>
+<where>hour(first_result) =10 and ne_type=121</where>
+<orderby>first_result</orderby>
+<limitclause>first_result</limitclause>
+<operateid>5026</operateid>
+</page>
+<page name="t_msc_vlr">
+  <viewname>tpc_msc_ne x0, tcc_ne_snap x1 </viewname>
+  <title>CP负荷、VLR用户数</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >测量时间</td>
+    <td  align="center" width="10%" >交换机名称</td>
+    <td  align="center" width="20%">CP负荷</td>
+    <td  align="center" width="20%">VLR开机用户数</td>
+    <td  align="center" width="10%">VLR用户总数</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >x0.compress_date</td>
+    <td >x0.s_hour</td>
+    <td >x1.zh_label</td>
+    <td >round(x0.msc_processor_load,3)</td>
+    <td >x0.active_subs</td>
+    <td >x0.subscrib_in_vlr</td>
+ </tr>
+</table>
+<where>x0.compress_date=x1.compress_date
+and x1.ne_id=x0.ne_id
+and x1.ne_type=101
+and (x0.s_hour = 10 or x0.s_hour = 18) </where>
+<orderby>x0.first_result</orderby>
+<limitclause>x0.first_result</limitclause>
+<regionclause>x1.region_id</regionclause>
+<operateid>5004</operateid>
+</page>
+<page name="t_zy_free_cell_name_all">
+  <viewname>local_free_cell a,vendor_name b</viewname>
+  <title>非单载频超闲小区名称表</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%" >超闲小区名称</td>
+    <td  align="center" width="10%" >超闲小区代码</td>
+    <td  align="center" width="10%" >设备类型</td>
+    <td  align="center" width="10%" >小区载频数</td>
+    <!--td  align="center" width="10%" >非单载频超闲小区名称</td-->
+    <td  align="center" width="10%" >每线话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">a.first_result</td>
+    <td >hour(a.first_result)</td>
+    <td >a.region_name</td>
+    <td >a.bts_name</td>
+    <td >a.object_rdn</td>
+    <td >b.vendor_text</td>
+    <td >a.trx_nbr</td>
+    <td >round(a.traffic_p_tch,3)</td>
+ </tr>
+</table>
+<where>a.vendor_id=b.type and a.traffic_p_tch &lt; 0.1 </where>
+<orderby>a.first_result,a.region_name</orderby>
+<limitclause>a.first_result</limitclause>
+<regionclause>a.region_id</regionclause>
+<operateid>5007</operateid>
+</page>
+<page name="t_worse_cell_rate">
+  <viewname>tpa_radio_sum</viewname>
+  <title>全省忙时最坏小区比（城市)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地市</td>
+    <td  align="center" width="10%" >最坏小区数</td>
+    <td  align="center" width="10%">最坏小区比</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type) region</td>
+    <td >worst_cell</td>
+    <td >round(100*sfb_divfloat_1(worst_cell,total_cell_w),3) worst_rate_city</td>
+ </tr>
+</table>
+<where>ne_type =10000 and(hour(first_result)=10 or hour(first_result)=18) </where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5015</operateid>
+</page>
+<page name="t_worse_cell_rate_region">
+  <viewname>tpa_radio_sum </viewname>
+  <title>地市忙时最坏小区比（城市）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >最坏小区数</td>
+    <td  align="center" width="10%">最坏小区比</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type) region</td>
+    <td >worst_cell</td>
+    <td >round(100*sfb_divfloat_1(worst_cell,total_cell_w),3) worst_rate_city</td>
+ </tr>
+</table>
+<where>ne_type=10003 and (hour(first_result)=10 or hour(first_result)=18) </where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5015</operateid>
+</page>
+<page name="t_nbr_rate">
+  <viewname>local_radio_rate x0 ,tpa_gsma_sum x1 </viewname>
+  <title>全省忙时信道可用率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >话音信道配置总数</td>
+    <td  align="center" width="10%">话音信道可用总数</td>
+    <td  align="center" width="10%">话音信道可用率</td>
+    <td  align="center" width="10%" >信令信道配置总数</td>
+    <td  align="center" width="10%" >信令信道可用总数</td>
+    <td  align="center" width="10%">信令信道可用率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">x0.first_result</td>
+    <td >hour(x0.first_result)</td>
+    <td >round(x0.total_traffic_ch,0)</td>
+    <td >round(x0.total_traffic_ch*x0.tch_availrate/100,0)</td>
+    <td >round(x0.tch_availrate,3)</td>
+    <td >round(x1.total_signal_ch,0)</td>
+    <td >round(x1.total_signal_ch*x0.sch_availrate/100,0)</td>
+    <td >round(x0.sch_availrate,3)</td>
+ </tr>
+</table>
+<where>x0.first_result=x1.first_result and x0.ne_type =10000 and x0.ne_type=x1.ne_type and x0.ne_id=x1.ne_id and hour(x0.first_result) = 10  and x1.s_hour=10 and x1.sv_id=-1</where>
+<orderby>x0.first_result</orderby>
+<limitclause>x0.first_result</limitclause>
+<operateid>5022</operateid>
+</page>
+<page name="t_nbr_rate_region">
+  <viewname>local_radio_rate x0 ,tpa_gsma_sum x1</viewname>
+  <title>地区忙时信道可用率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%" >话音信道配置总数</td>
+    <td  align="center" width="10%">话音信道可用总数</td>
+    <td  align="center" width="10%">话音信道可用率</td>
+    <td  align="center" width="10%" >信令信道配置总数</td>
+    <td  align="center" width="10%" >信令信道可用总数</td>
+    <td  align="center" width="10%">信令信道可用率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+     <td type="datetime">x0.first_result</td>
+    <td >hour(x0.first_result)</td>
+    <td >soa_get_nename(x0.ne_id ,x0.ne_type) region</td>
+    <td >round(x0.total_traffic_ch,0)</td>
+    <td >round(x0.total_traffic_ch*x0.tch_availrate/100,0)</td>
+    <td >round(x0.tch_availrate,3)</td>
+    <td >round(x1.total_signal_ch,0)</td>
+    <td >round(x1.total_signal_ch*x0.sch_availrate/100,0)</td>
+    <td >round(x0.sch_availrate,3)</td>
+ </tr>
+</table>
+<where>x0.first_result=x1.first_result and x0.ne_type =10003 and x0.ne_type=x1.ne_type and x0.ne_id=x1.ne_id and hour(x0.first_result) = 10  and x1.s_hour=10 and x1.sv_id=-1 </where>
+<orderby>x0.first_result</orderby>
+<limitclause>x0.first_result</limitclause>
+<regionclause>x0.ne_id</regionclause>
+<operateid>5022</operateid>
+</page>
+<page name="t_worse_cell_rate_jq">
+  <viewname>tpa_radio_sum</viewname>
+  <title>全省忙时最坏小区比（郊区）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地市</td>
+    <td  align="center" width="10%" >最坏小区数</td>
+    <td  align="center" width="10%">最坏小区比</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type) region</td>
+    <td >worst_cell</td>
+    <td >round(100*sfb_divfloat_1(worst_cell,total_cell_w),3) worst_rate_country</td>
+ </tr>
+</table>
+<where>ne_type =10000 and sum_level=0 and hour(first_result)=10</where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5024</operateid>
+</page>
+<page name="t_worse_cell_rate_region_jq">
+  <viewname>tpa_radio_sum</viewname>
+  <title>地市忙时最坏小区比（郊区）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >最坏小区数</td>
+    <td  align="center" width="10%">最坏小区比</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type) region</td>
+    <td >worst_cell</td>
+    <td >round(100*sfb_divfloat_1(worst_cell,total_cell_w),3) worst_rate_country</td>
+ </tr>
+</table>
+<where>ne_type=10003 and sum_level=0 and hour(first_result)=10</where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5024</operateid>
+</page>
+<page name="t_cd_five">
+  <viewname>local_radio_rate</viewname>
+  <title>五项考核指标（成都） </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区名称</td>
+    <td  align="center" width="10%" >长途来话接通率(%)</td>
+    <td  align="center" width="10%">掉话率(%)</td>
+    <td  align="center" width="10%">短消息接通率(%)-全天</td>
+    <td  align="center" width="10%">最坏小区比例(%)</td>
+    <td  align="center" width="10%">PDP激活成功率(%)</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >region</td>
+    <td >intoll_connrate</td>
+    <td >drop_rate</td>
+    <td >smsc_connrate</td>
+    <td >round(worst_cell_r*100,3) w_cell</td>
+    <td >pdp_act_sucrate</td>
+ </tr>
+</table>
+<where>ne_id=-1483444163 and  ne_type = 10003 and hour(first_result) =10</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5041</operateid>
+</page>
+
+<page name="t_tpm_cd_traffic24_y">
+  <viewname>vpa_cd_day_traffic a,local_eoms_order b</viewname>
+  <title>成都地区24小时话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%" >0点</td>
+    <td  align="center" width="10%" >1点</td>
+    <td  align="center" width="10%" >2点</td>
+    <td  align="center" width="10%" >3点</td>
+    <td  align="center" width="10%" >4点</td>
+    <td  align="center" width="10%" >5点</td>
+    <td  align="center" width="10%" >6点</td>
+    <td  align="center" width="10%" >7点</td>
+    <td  align="center" width="10%" >8点</td>
+    <td  align="center" width="10%" >9点</td>
+    <td  align="center" width="10%" >10点</td>
+    <td  align="center" width="10%" >11点</td>
+    <td  align="center" width="10%" >12点</td>
+    <td  align="center" width="10%" >13点</td>
+    <td  align="center" width="10%" >14点</td>
+    <td  align="center" width="10%" >15点</td>
+    <td  align="center" width="10%" >16点</td>
+    <td  align="center" width="10%" >17点</td>
+    <td  align="center" width="10%" >18点</td>
+    <td  align="center" width="10%" >19点</td>
+    <td  align="center" width="10%" >20点</td>
+    <td  align="center" width="10%" >21点</td>
+    <td  align="center" width="10%" >22点</td>
+    <td  align="center" width="10%" >23点</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >a.ne_name</td>
+    <td >round(tch_tra_0 ,3)</td>
+    <td >round(tch_tra_1, 3)</td>
+    <td >round(tch_tra_2, 3)</td>
+    <td >round(tch_tra_3 ,3)</td>
+    <td >round(tch_tra_4 ,3)</td>
+    <td >round(tch_tra_5 ,3)</td>
+    <td >round(tch_tra_6 ,3)</td>
+    <td >round(tch_tra_7 ,3)</td>
+    <td >round(tch_tra_8 ,3)</td>
+    <td >round(tch_tra_9 ,3)</td>
+    <td >round(tch_tra_10,3)</td>
+    <td >round(tch_tra_11 ,3)</td>
+    <td >round(tch_tra_12 ,3)</td>
+    <td >round(tch_tra_13 ,3)</td>
+    <td >round(tch_tra_14,3)</td>
+    <td >round(tch_tra_15,3)</td>
+    <td >round(tch_tra_16,3)</td>
+    <td >round(tch_tra_17,3)</td>
+    <td >round(tch_tra_18 ,3)</td>
+    <td >round(tch_tra_19 ,3)</td>
+    <td >round(tch_tra_20,3)</td>
+    <td >round(tch_tra_21 ,3)</td>
+    <td >round(tch_tra_22 ,3)</td>
+    <td >round(tch_tra_23 ,3)</td>
+ </tr>
+</table>
+<where>a.ne_name=b.ne_name</where>
+<orderby>compress_date,b.order</orderby>
+<limitclause>compress_date</limitclause>
+<cityclause>b.ne_id</cityclause>
+<operateid>5047</operateid>
+</page>
+
+<page name="t_zy_v_cdbad_cell_all">
+  <viewname>tpc_radio_ne a, tcc_ne_snap b,tcc_bts c,local_eoms_order_cd d</viewname>
+  <title>最坏小区-成都地区</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%" >CELL_ID</td>
+    <td  align="center" width="10%" >SITE</td>
+    <td  align="center" width="10%" >BSC </td>
+    <td  align="center" width="10%" >MSC</td>
+    <td  align="center" width="10%" >OMC</td>
+    <td  align="center" width="10%" >DRI配置</td>
+    <td  align="center" width="10%" >话音信道话务量</td>
+    <td  align="center" width="10%" >TCH可用率（%）</td>
+    <td  align="center" width="10%" >无线接通率（%）</td>
+    <td  align="center" width="10%" >TCH掉话率（%）</td>
+    <td  align="center" width="10%" >TCH拥塞率（%）</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">a.first_result</td>
+    <td>a.s_hour</td>
+    <td >soa_get_nename(b.country_id,10014)</td>
+    <td >b.userlabel</td>
+    <td >soa_get_nename(b.related_site,201)</td>
+    <td >soa_get_nename(b.related_bsc,200)</td>
+    <td >soa_get_nename(b.related_msc,101)</td>
+    <td >soa_get_nename(b.related_omc,100)</td>
+    <td >c.trx_nbr</td>
+    <td >a.tch_traffic</td>
+    <td >a.avail_tch_nbr</td>
+    <td >round((1-sfb_divfloat_1(att_sdcch_ovrfl,att_sdcch_seiz))*(1-sfb_divfloat_1(att_tch_ovrfl_nho,tch_call_req_nho))*100,3)</td>
+    <td >round(sfb_divfloat_1((drop_call_tch*100),tch_seize_nho),3)</td>
+    <td >round(sfb_divfloat_1((att_tch_ovrfl_nho*100),tch_call_req_nho),3)</td>
+ </tr>
+</table>
+<where>a.compress_date=b.compress_date
+and a.compress_date=c.compress_date
+and a.ne_type=300
+and a.ne_type=b.ne_type
+and a.ne_id=b.ne_id
+and a.ne_id=c.ne_id
+and worst_cell=1
+and b.region_id=-1483444163
+and b.country_id=d.country_id
+</where>
+<orderby>a.first_result,d.cd_order</orderby>
+<limitclause>a.first_result</limitclause>
+<cityclause>d.city_id</cityclause>
+<operateid>5048</operateid>
+</page>
+
+<page name="t_tpm_radio_btscd_region">
+  <viewname>tpc_radio_ne a, tcc_ne_snap b</viewname>
+  <title>按小区统计TCH和SDCCH忙时话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >小区</td>
+    <td  align="center" width="10%" >TCH话务量</td>
+    <td  align="center" width="10%" >SDCCH话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >a.compress_date</td>
+    <td >a.s_hour</td>
+    <td >soa_get_nename(b.region_id,10003)</td>
+    <td >b.userlabel</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round(a.sdcch_traffic,3)</td>
+ </tr>
+</table>
+<where>a.s_hour in (10,18) and a.compress_date=b.compress_date and a.ne_type=300 and a.ne_type=b.ne_type and a.ne_id=b.ne_id and b.region_id=-1483444163</where>
+<limitclause>a.first_result</limitclause>
+<cityclause>b.city_id</cityclause>
+<operateid>5049</operateid>
+</page>
+
+<page name="t_tpm_radio_btsqt_region">
+  <viewname>tpa_radio_sum a, tcc_ne_snap b</viewname>
+  <title>按小区统计TCH和SDCCH全天话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+     <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >小区</td>
+    <td  align="center" width="10%" >TCH话务量</td>
+    <td  align="center" width="10%" >SDCCH话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >a.compress_date</td>
+    <td >a.s_hour</td>
+    <td >soa_get_nename(b.region_id,10003)</td>
+    <td >b.userlabel</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round(a.sdcch_traffic,3)</td>
+ </tr>
+</table>
+<where>a.compress_date=b.compress_date and a.ne_type=300 and a.ne_type=b.ne_type and a.ne_id=b.ne_id and b.region_id=-1483444163 and a.sum_level=1</where>
+<orderby>a.first_result</orderby>
+<limitclause>a.first_result</limitclause>
+<cityclause>b.city_id</cityclause>
+<operateid>5050</operateid>
+</page>
+
+<page name="t_tch_cdcountry">
+  <viewname>tpc_radio_ne a, tcc_ne_snap b,local_eoms_order_cd c</viewname>
+  <title>成都地区无线指标（细粒度）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >乡镇</td>
+    <td  align="center" width="10%" >基站</td>
+    <td  align="center" width="10%" >小区</td>
+    <td  align="center" width="10%" >TCH话务量</td>
+    <td  align="center" width="10%" >SDCCH话务量</td>
+    <td  align="center" width="10%" >TCH掉话次数</td>
+    <td  align="center" width="10%" >无线接通率</td>
+    <td  align="center" width="10%" >TCH拥塞率(含切换)</td>
+    <td  align="center" width="10%" >TCH拥塞率(不含切换)</td>
+    <td  align="center" width="10%" >TCH掉话率</td>
+    <td  align="center" width="10%" >SDCCH拥塞率</td>
+    <td  align="center" width="10%" >SDCCH掉话率</td>
+    <td  align="center" width="10%" >每线话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >a.first_result</td>
+    <td >a.s_hour</td>
+    <td >soa_get_nename(b.region_id,10003)</td>
+    <td >soa_get_nename(b.country_id,10014)</td>
+    <td >soa_get_nename(b.related_site,201)</td>
+    <td >b.userlabel</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round(a.sdcch_traffic,3)</td>
+    <td >round(a.drop_call_tch,3)</td>
+    <td >round((1-sfb_divfloat_1(a.att_sdcch_ovrfl,a.att_sdcch_seiz))*(1-sfb_divfloat_1(a.att_tch_ovrfl_nho,a.tch_call_req_nho)),3)</td>
+    <td >round(sfb_divfloat_1((a.att_tch_ovrfl*100),a.tch_call_req),3)</td>
+    <td >round(sfb_divfloat_1((a.att_tch_ovrfl_nho*100),a.tch_call_req_nho),3)</td>
+    <td >round(sfb_divfloat_1((drop_call_tch*100),tch_seize_nho),3)</td>
+    <td >round(sfb_divfloat_1((att_sdcch_ovrfl*100),att_sdcch_seiz),3)</td>
+    <td >round(sfb_divfloat_1((drop_call_sdcch*100),(att_sdcch_seiz-att_sdcch_ovrfl)),3)</td>
+    <td >round(sfb_divfloat_1(a.tch_traffic,a.avail_tch_nbr),3)</td>
+ </tr>
+</table>
+<where>a.compress_date=b.compress_date  and b.ne_type=300 and a.ne_type=b.ne_type and a.ne_id=b.ne_id 
+and b.region_id=-1483444163 and a.s_hour=10 and b.country_id=c.country_id</where>
+<orderby>a.first_result,c.cd_order</orderby>
+<limitclause>a.first_result</limitclause>
+<cityclause>c.city_id</cityclause>
+<operateid>5051</operateid>
+</page>
+
+<page name="t_busycell_yxd">
+  <viewname>local_busy_cell </viewname>
+  <title>成都地区超忙小区比例</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >超忙小区名称</td>
+    <td  align="center" width="10%" >每线话务量</td>
+    <td  align="center" width="10%" >掉话率%</td>
+    <td  align="center" width="10%" >tch话务量</td>
+    <td  align="center" width="10%" >拥塞率%（含切换）</td>
+    <td  align="center" width="10%" >拥塞率%（不含切换）</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" >first_result</td>
+    <td >hour(first_result)</td>
+    <td >region_name</td>
+    <td >bts_name</td>
+    <td >round(traffic_p_tch,3)</td>
+    <td >round(tch_droprate,3)</td>
+    <td >round(tch_traffic,3)</td>
+    <td >round(tch_congrate,3)</td>
+    <td >round(tch_congrate_nho,3)</td>
+    </tr>
+</table>
+<where>region_id=-1483444163 </where>
+<limitclause>first_result</limitclause>
+<cityclause>city_id</cityclause>
+<operateid>5052</operateid>
+</page>
+
+<page name="t_freecell_yxd">
+  <viewname>local_free_cell </viewname>
+  <title>成都地区超闲小区比例</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >超闲小区名称</td>
+    <td  align="center" width="10%" >每线话务量</td>
+    <td  align="center" width="10%" >掉话率%</td>
+    <td  align="center" width="10%" >tch话务量</td>
+    <td  align="center" width="10%" >拥塞率%（含切换）</td>
+    <td  align="center" width="10%" >拥塞率%（不含切换）</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" >first_result</td>
+    <td >hour(first_result)</td>
+    <td >region_name</td>
+    <td >bts_name</td>
+    <td >round(traffic_p_tch,3)</td>
+    <td >round(tch_droprate,3)</td>
+    <td >round(tch_traffic,3)</td>
+    <td >round(tch_congrate,3)</td>
+    <td >round(tch_congrate_nho,3)</td>
+ </tr>
+</table>
+<where>region_id=-1483444163 </where>
+<limitclause>first_result</limitclause>
+<cityclause>city_id</cityclause>
+<operateid>5053</operateid>
+</page>
+
+
+<page name="t_vpm_b2002_all_a">
+  <viewname>tpa_gsma_sum</viewname>
+  <title>全省GSM数字移动电话系统工作报告A表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >GSM话务交换机总数量</td>
+    <td  align="center" width="10%" >独立LSTP交换机总数量</td>
+    <td  align="center" width="10%" >移动端局总数量</td>
+    <td  align="center" width="10%" >移动端局设计总容量</td>
+    <td  align="center" width="10%" >GSM1800交换机总数量（包括900/1800合用交换机）</td>
+    <td  align="center" width="10%" >移动关口局总数量 </td>
+    <td  align="center" width="10%" >HLR总数量</td>
+    <td  align="center" width="10%" >HLR总容量</td>
+    <td  align="center" width="10%" >HLR总用户数</td>
+    <td  align="center" width="10%" >基站控制器总数</td>
+    <td  align="center" width="10%" >基站总数</td>
+    <td  align="center" width="10%" >小区总数</td>
+    <td  align="center" width="10%" >载波配置总数</td>
+    <td  align="center" width="10%" >GSM900系统话音信道配置总数</td>
+    <td  align="center" width="10%" >GSM1800系统话音信道配置总数</td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">指标</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >D001</td>
+    <td  align="center" width="10%" >D002</td>
+    <td  align="center" width="10%" >D003</td>
+    <td  align="center" width="10%" >D004</td>
+    <td  align="center" width="10%" >D005</td>
+    <td  align="center" width="10%" >D006</td>
+    <td  align="center" width="10%" >D007</td>
+    <td  align="center" width="10%" >D008</td>
+    <td  align="center" width="10%" >D009</td>
+    <td  align="center" width="10%" >D010</td>
+    <td  align="center" width="10%" >D011 </td>
+    <td  align="center" width="10%" >D012 </td>
+    <td  align="center" width="10%" >D013 </td>
+    <td  align="center" width="10%" >D014 </td>
+    <td  align="center" width="10%" >D015 </td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">单位</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >户</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >户</td>
+    <td  align="center" width="10%" >户</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >条</td>
+    <td  align="center" width="10%" >条</td>
+ </tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >nvl(total_switch,0)</td>
+    <td >nvl(total_lstp,0)</td>
+    <td >nvl(end_switch,0)</td>
+    <td >nvl(capacity_user,0)</td>
+    <td >round(nvl(END_18SWITCH,0)+nvl(END_9_18SWITCH,0),0)</td>
+    <td >nvl(total_only_gmsc,0)</td>
+    <td >nvl(total_hlr,0)</td>
+    <td >nvl(capacity_hlr,0)</td>
+    <td >nvl(hlr_user,0)</td>
+    <td >nvl(total_bsc,0)</td>
+    <td >nvl(total_btssite,0)</td>
+    <td >nvl(total_cell,0)</td>
+    <td >nvl(total_carrier,0)</td>
+    <td >nvl(total_9traf_ch,0)</td>
+    <td >nvl(total_18traf_ch,0)</td>
+</tr>
+</table>
+<where> s_hour in(10,18) and sum_level=0 and ne_type=10000 and sv_id=-1</where>
+<limitclause>first_result</limitclause>
+<operateid>5054</operateid>
+</page>
+
+
+<page name="t_vpm_b2002_all_a_region">
+  <viewname>tpa_gsma_sum</viewname>
+  <title>地市GSM数字移动电话系统工作报告A表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >GSM话务交换机总数量</td>
+    <td  align="center" width="10%" >独立LSTP交换机总数量</td>
+    <td  align="center" width="10%" >移动端局总数量</td>
+    <td  align="center" width="10%" >移动端局设计总容量</td>
+    <td  align="center" width="10%" >GSM1800交换机总数量（包括900/1800合用交换机）</td>
+    <td  align="center" width="10%" >移动关口局总数量 </td>
+    <td  align="center" width="10%" >HLR总数量</td>
+    <td  align="center" width="10%" >HLR总容量</td>
+    <td  align="center" width="10%" >HLR总用户数</td>
+    <td  align="center" width="10%" >基站控制器总数</td>
+    <td  align="center" width="10%" >基站总数</td>
+    <td  align="center" width="10%" >小区总数</td>
+    <td  align="center" width="10%" >载波配置总数</td>
+    <td  align="center" width="10%" >GSM900系统话音信道配置总数</td>
+    <td  align="center" width="10%" >GSM1800系统话音信道配置总数</td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">指标</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >D001</td>
+    <td  align="center" width="10%" >D002</td>
+    <td  align="center" width="10%" >D003</td>
+    <td  align="center" width="10%" >D004</td>
+    <td  align="center" width="10%" >D005</td>
+    <td  align="center" width="10%" >D006</td>
+    <td  align="center" width="10%" >D007</td>
+    <td  align="center" width="10%" >D008</td>
+    <td  align="center" width="10%" >D009</td>
+    <td  align="center" width="10%" >D010</td>
+    <td  align="center" width="10%" >D011 </td>
+    <td  align="center" width="10%" >D012 </td>
+    <td  align="center" width="10%" >D013 </td>
+    <td  align="center" width="10%" >D014 </td>
+    <td  align="center" width="10%" >D015 </td>
+    <td  align="center" width="10%" >－</td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">单位</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >户</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >户</td>
+    <td  align="center" width="10%" >户</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >个</td>
+    <td  align="center" width="10%" >条</td>
+    <td  align="center" width="10%" >条</td>
+    <td  align="center" width="10%" >－</td>
+ </tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type) name</td>
+    <td >nvl(total_switch,0)</td>
+    <td >nvl(total_lstp,0)</td>
+    <td >nvl(end_switch,0)</td>
+    <td >nvl(capacity_user,0)</td>
+    <td >round(nvl(end_18switch,0)*10,0)/10</td>
+    <td >nvl(total_gmsc,0)</td>
+    <td >nvl(total_hlr,0)</td>
+    <td >nvl(capacity_hlr,0)</td>
+    <td >nvl(hlr_user,0)</td>
+    <td >nvl(total_bsc,0)</td>
+    <td >nvl(total_btssite,0)</td>
+    <td >nvl(total_cell,0)</td>
+    <td >nvl(total_carrier,0)</td>
+    <td >nvl(total_9traf_ch,0)</td>
+    <td >nvl(total_18traf_ch,0)</td>
+</tr>
+</table>
+<where>s_hour in(10,18) and sum_level=0 and ne_type=10003 and sv_id =-1</where>
+<orderby>first_result,3</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5054</operateid>
+</page>
+
+
+<page name="t_vpm_b2002_all_b">
+  <viewname>tpa_msc_sum</viewname>
+  <title>全省GSM数字移动电话系统工作报告B表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >忙时VLR用户总数</td>
+    <td  align="center" width="10%" >忙时VLR开机用户总数</td>
+    <td  align="center" width="10%" >忙时系统试呼总次数</td>
+    <td  align="center" width="10%" >忙时网络试呼总次数</td>
+    <td  align="center" width="10%" >忙时系统应答总次数</td>
+    <td  align="center" width="10%" >忙时系统寻呼总次数 </td>
+    <td  align="center" width="10%" >忙时被叫呼通总次数</td>
+    <td  align="center" width="10%" >忙时被叫响应总次数</td>
+    <td  align="center" width="10%" >忙时交换机试呼总次数</td>
+    <td  align="center" width="10%" >忙时交换机接通总次数</td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">指标</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >D121 </td>
+    <td  align="center" width="10%" >D122 </td>
+    <td  align="center" width="10%" >D123 </td>
+    <td  align="center" width="10%" >D124 </td>
+    <td  align="center" width="10%" >D125 </td>
+    <td  align="center" width="10%" >D126  </td>
+    <td  align="center" width="10%" >D127 </td>
+    <td  align="center" width="10%" >D128 </td>
+    <td  align="center" width="10%" >D129 </td>
+    <td  align="center" width="10%" >D130 </td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">单位</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >户 </td>
+    <td  align="center" width="10%" >户 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+ </tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >subscrib_in_vlr</td>
+    <td >active_subs</td>
+    <td >att_calls_sys</td>
+    <td >net_att_call</td>
+    <td >suc_answ_sys</td>
+    <td >att_pages</td>
+    <td >tot_called_ans_1</td>
+    <td >suc_pages</td>
+    <td >att_calls_msc</td>
+    <td >suc_calls_msc</td>
+</tr>
+</table>
+<where>sum_level=0 and ne_type=10000 and s_hour in(9,10,11,12,18,19,20,21)</where>
+<limitclause>first_result</limitclause>
+<operateid>5055</operateid>
+</page>
+<page name="t_vpm_b2002_all_b_region">
+  <viewname>tpa_msc_sum</viewname>
+  <title>地市GSM数字移动电话系统工作报告B表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >忙时VLR用户总数</td>
+    <td  align="center" width="10%" >忙时VLR开机用户总数</td>
+    <td  align="center" width="10%" >忙时系统试呼总次数</td>
+    <td  align="center" width="10%" >忙时网络试呼总次数</td>
+    <td  align="center" width="10%" >忙时系统应答总次数</td>
+    <td  align="center" width="10%" >忙时系统寻呼总次数 </td>
+    <td  align="center" width="10%" >忙时被叫呼通总次数</td>
+    <td  align="center" width="10%" >忙时被叫响应总次数</td>
+    <td  align="center" width="10%" >忙时交换机试呼总次数</td>
+    <td  align="center" width="10%" >忙时交换机接通总次数</td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">指标</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >D121 </td>
+    <td  align="center" width="10%" >D122 </td>
+    <td  align="center" width="10%" >D123 </td>
+    <td  align="center" width="10%" >D124 </td>
+    <td  align="center" width="10%" >D125 </td>
+    <td  align="center" width="10%" >D126  </td>
+    <td  align="center" width="10%" >D127 </td>
+    <td  align="center" width="10%" >D128 </td>
+    <td  align="center" width="10%" >D129 </td>
+    <td  align="center" width="10%" >D130 </td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">单位</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >户 </td>
+    <td  align="center" width="10%" >户 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+ </tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+  <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type) name</td>
+    <td >subscrib_in_vlr</td>
+    <td >active_subs</td>
+    <td >att_calls_sys</td>
+    <td >net_att_call</td>
+    <td >suc_answ_sys</td>
+    <td >att_pages</td>
+    <td >tot_called_ans_1</td>
+    <td >suc_pages</td>
+    <td >att_calls_msc</td>
+    <td >suc_calls_msc</td>
+</tr>
+</table>
+<where> sum_level=0 and ne_type=10003 and s_hour in(9,10,11,12,18,19,20,21)</where>
+<orderby>first_result,3</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5055</operateid>
+</page>
+
+<page name="t_vpm_c12002_all_c1">
+  <viewname>tpa_radio_sum</viewname>
+  <title>全省GSM数字移动电话系统工作报告C1表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >忙时SDCCH可用总数</td>
+    <td  align="center" width="10%" >忙时SDCCH试呼总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH溢出总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH分配失败总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH掉话总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH总话务量 </td>
+    <td  align="center" width="10%" >忙时话音信道可用总数</td>
+    <td  align="center" width="10%" >忙时话音信道试呼总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道溢出总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配失败总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配不成功总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道试呼总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道溢出总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配失败总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配不成功总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道占用总次数</td>
+    <td  align="center" width="10%" >忙时话音信道占用总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道掉话总次数 </td>
+    <td  align="center" width="10%" >忙时话音信道总话务量 </td>
+    <td  align="center" width="10%" >忙时切换请求总次数 </td>
+    <td  align="center" width="10%" >忙时切换成功总次数  </td>
+    <td  align="center" width="10%" >GSM1800系统忙时话音信道总话务量 </td>
+    <td  align="center" width="10%" >最坏小区数量 </td>
+    <td  align="center" width="10%" >最坏小区比例  </td>
+ </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">指标</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >D231 </td>
+    <td  align="center" width="10%" >D232 </td>
+    <td  align="center" width="10%" >D233 </td>
+    <td  align="center" width="10%" >D234 </td>
+    <td  align="center" width="10%" >D235 </td>
+    <td  align="center" width="10%" >D236  </td>
+    <td  align="center" width="10%" >D237 </td>
+    <td  align="center" width="10%" >D238 </td>
+    <td  align="center" width="10%" >D239 </td>
+    <td  align="center" width="10%" >D240 </td>
+    <td  align="center" width="10%" >D241 </td>
+    <td  align="center" width="10%" >D242 </td>
+    <td  align="center" width="10%" >D243 </td>
+    <td  align="center" width="10%" >D244 </td>
+    <td  align="center" width="10%" >D245 </td>
+    <td  align="center" width="10%" >D246 </td>
+    <td  align="center" width="10%" >D247 </td>
+    <td  align="center" width="10%" >D248 </td>
+    <td  align="center" width="10%" >D249 </td>
+    <td  align="center" width="10%" >D250 </td>
+    <td  align="center" width="10%" >D251 </td>
+    <td  align="center" width="10%" >D252 </td>
+    <td  align="center" width="10%" >D253 </td>
+    <td  align="center" width="10%" >D254 </td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">单位</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >条 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >条 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >个 </td>
+    <td  align="center" width="10%" >％ </td>
+</tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+     <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(avail_sdcch_nbr,0)</td>
+    <td >round(att_sdcch_seiz,2)</td>
+    <td >round(att_sdcch_ovrfl,2)</td>
+    <td >f_sdcch_ass</td>
+    <td >drop_call_sdcch</td>
+    <td >round(sdcch_traffic/10,3)*10</td>
+    <td >round(avail_tch_nbr,2)</td>
+    <td >round(tch_call_req_nho,2)</td>
+    <td >round(att_tch_ovrfl_nho,2)</td>
+    <td >round(f_tch_ass_nho,2)</td>
+    <td >round(unsuc_tchass_nh1,2)</td>
+    <td >round(tch_call_req,2)</td>
+    <td >round(att_tch_ovrfl,2)</td>
+    <td >round(f_tch_ass,2)</td>
+    <td >round(unsuc_tch_ass,2)</td>
+    <td >round(tch_seize_nho,2)</td>
+    <td >round(tch_call_seiz,2)</td>
+    <td >round(drop_call_tch,2)</td>
+    <td >round(tch_traffic/10,3)*10</td>
+    <td >round(ho_req,2)</td>
+    <td >round(s_ho,2)</td>
+    <td >round(tch_traffic18/10,3)*10</td>
+    <td >round(worst_cell,2)</td>
+    <td >round(100.0*worst_cell/total_cell_w,3)</td>
+</tr>
+</table>
+<where>sum_level = 0 and ne_type =10000 and s_hour=10</where>
+<limitclause>first_result</limitclause>
+<operateid>5056</operateid>
+</page>
+<page name="t_vpm_c12002_all_c1_region">
+  <viewname>tpa_radio_sum</viewname>
+  <title>地市GSM数字移动电话系统工作报告C1表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >忙时SDCCH可用总数</td>
+    <td  align="center" width="10%" >忙时SDCCH试呼总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH溢出总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH分配失败总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH掉话总次数</td>
+    <td  align="center" width="10%" >忙时SDCCH总话务量 </td>
+    <td  align="center" width="10%" >忙时话音信道可用总数</td>
+    <td  align="center" width="10%" >忙时话音信道试呼总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道溢出总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配失败总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配不成功总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道试呼总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道溢出总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配失败总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道分配不成功总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道占用总次数</td>
+    <td  align="center" width="10%" >忙时话音信道占用总次数(含切换)</td>
+    <td  align="center" width="10%" >忙时话音信道掉话总次数 </td>
+    <td  align="center" width="10%" >忙时话音信道总话务量 </td>
+    <td  align="center" width="10%" >忙时切换请求总次数 </td>
+    <td  align="center" width="10%" >忙时切换成功总次数  </td>
+    <td  align="center" width="10%" >GSM1800系统忙时话音信道总话务量 </td>
+    <td  align="center" width="10%" >最坏小区数量 </td>
+    <td  align="center" width="10%" >最坏小区比例  </td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">指标</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >D231 </td>
+    <td  align="center" width="10%" >D232 </td>
+    <td  align="center" width="10%" >D233 </td>
+    <td  align="center" width="10%" >D234 </td>
+    <td  align="center" width="10%" >D235 </td>
+    <td  align="center" width="10%" >D236  </td>
+    <td  align="center" width="10%" >D237 </td>
+    <td  align="center" width="10%" >D238 </td>
+    <td  align="center" width="10%" >D239 </td>
+    <td  align="center" width="10%" >D240 </td>
+    <td  align="center" width="10%" >D241 </td>
+    <td  align="center" width="10%" >D242 </td>
+    <td  align="center" width="10%" >D243 </td>
+    <td  align="center" width="10%" >D244 </td>
+    <td  align="center" width="10%" >D245 </td>
+    <td  align="center" width="10%" >D246 </td>
+    <td  align="center" width="10%" >D247 </td>
+    <td  align="center" width="10%" >D248 </td>
+    <td  align="center" width="10%" >D249 </td>
+    <td  align="center" width="10%" >D250 </td>
+    <td  align="center" width="10%" >D251 </td>
+    <td  align="center" width="10%" >D252 </td>
+    <td  align="center" width="10%" >D253 </td>
+    <td  align="center" width="10%" >D254 </td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">单位</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >条 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >条 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >个 </td>
+    <td  align="center" width="10%" >％ </td>
+ </tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type) name</td>
+    <td >round(avail_sdcch_nbr,0)</td>
+    <td >round(att_sdcch_seiz,2)</td>
+    <td >round(att_sdcch_ovrfl,2)</td>
+    <td >f_sdcch_ass</td>
+    <td >drop_call_sdcch</td>
+    <td >round(sdcch_traffic/10,3)*10</td>
+    <td >round(avail_tch_nbr,2)</td>
+    <td >round(tch_call_req_nho,2)</td>
+    <td >round(att_tch_ovrfl_nho,2)</td>
+    <td >round(f_tch_ass_nho,2)</td>
+    <td >round(unsuc_tchass_nh1,2)</td>
+    <td >round(tch_call_req,2)</td>
+    <td >round(att_tch_ovrfl,2)</td>
+    <td >round(f_tch_ass,2)</td>
+    <td >round(unsuc_tch_ass,2)</td>
+    <td >round(tch_seize_nho,2)</td>
+    <td >round(tch_call_seiz,2)</td>
+    <td >round(drop_call_tch,2)</td>
+    <td >round(tch_traffic/10,3)*10</td>
+    <td >round(ho_req,2)</td>
+    <td >round(s_ho,2)</td>
+    <td >round(tch_traffic18/10,3)*10</td>
+    <td >round(worst_cell,2)</td>
+    <td >round(100.0*worst_cell/total_cell_w,3)</td>
+</tr>
+</table>
+<where>sum_level = 0 and ne_type =10003 and s_hour=10</where>
+<orderby>first_result,3</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5056</operateid>
+</page>
+
+
+<page name="t_vpm_c32002_all_c2">
+  <viewname>tpa_radio_sum</viewname>
+  <title>全省GSM数字移动电话系统工作报告C2表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+     <td  align="center" width="10%">时段 </td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >ERL </td>
+</tr>
+<tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(tch_traffic/10,3)*10</td>
+</tr>
+</table>
+<where>ne_type=10000 and sum_level=0</where>
+<limitclause>first_result</limitclause>
+<operateid>5057</operateid>
+</page>
+<page name="t_vpm_c32002_all_c2_region">
+  <viewname>tpa_radio_sum</viewname>
+  <title>地市GSM数字移动电话系统工作报告C2表 </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+  <td  align="center" width="10%">日期</td>
+     <td  align="center" width="10%">时段 </td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >ERL </td>
+</tr>
+<tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >compress_date</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type) name</td>
+    <td >round(tch_traffic/10,3)*10</td>
+</tr>
+</table>
+<where> ne_type=10003 and sum_level=0</where>
+<orderby>first_result,3</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5057</operateid>
+</page>
+
+<page name="t_to_uc_tele">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>移动与电信和联通忙时话务量分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td >s_hour</td>
+    <td >soa_get_svname(sv_id,5)</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+ o_seize_traf,3)</td>
+    <td >round((i_seize_traf+o_seize_traf)/tot_ts,3)</td>
+    <td >round(i_call_ans/nvl(i_call_att, i_call_seize)*100,3)</td>
+    <td >round(o_call_ans/nvl(o_call_att, o_call_seize)*100,3)</td>
+ </tr>
+</table>
+<where>s_hour in(10,18) and sv_cat_id=5 and sv_id in (53,51,52) and ne_type=10000</where>
+<orderby>compress_date</orderby>
+<limitclause>first_result</limitclause>
+<operateid>5062</operateid>
+</page>
+
+<page name="t_to_uc_tele_region">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>移动与电信和联通忙时话务量分析-地市</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >soa_get_svname(sv_id,5)</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+ o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>s_hour in(10,18) and sv_cat_id=5 and sv_id in (53,51,52) and ne_type=10003 </where>
+<orderby>compress_date</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5062</operateid>
+</page>
+
+
+<page name="t_to_uc_tele_p">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>移动与电信忙时来话去话话务量比例分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">忙时来话话务量占总话务量的比例</td>
+    <td  align="center" width="10%">忙时去话话务量占总话务量的比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td >s_hour</td>
+    <td >soa_get_svname(sv_id,5)</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+ o_seize_traf,3)</td>
+    <td >round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+    <td >round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+ </tr>
+</table>
+<where> s_hour in(10,18) and sv_cat_id=5  and sv_id = 53 and ne_type=10000</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+ <operateid>5063</operateid>
+</page>
+<page name="t_to_uc_tele_p_region">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>移动与电信忙时来话去话话务量比例分析-地市</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">忙时来话话务量占总话务量的比例</td>
+    <td  align="center" width="10%">忙时去话话务量占总话务量的比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >soa_get_svname(sv_id,5)</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+ o_seize_traf,3)</td>
+    <td >round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+    <td >round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+ </tr>
+</table>
+<where> s_hour in(10,18) and sv_cat_id=5  and sv_id = 53 and ne_type=10003  </where>
+<orderby>compress_date</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>ne_id</regionclause>
+ <operateid>5063</operateid>
+</page>
+
+<page name="t_to_uc_p">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>移动与联通忙时来话去话话务量比例分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">忙时来话话务量占总话务量的比例</td>
+    <td  align="center" width="10%">忙时去话话务量占总话务量的比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_svname(sv_id,5)</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+ o_seize_traf,3)</td>
+    <td >round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+    <td >round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+ </tr>
+</table>
+<where> s_hour in(10,18) and sv_cat_id=5  and sv_id in (51,52) and ne_type=10000</where>
+<orderby>compress_date,s_hour</orderby>
+<limitclause>first_result</limitclause>
+ <operateid>5064</operateid>
+</page>
+
+<page name="t_to_uc_p_region">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>移动与联通忙时来话去话话务量比例分析-地市</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">忙时来话话务量占总话务量的比例</td>
+    <td  align="center" width="10%">忙时去话话务量占总话务量的比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >soa_get_svname(sv_id,5)</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+ o_seize_traf,3)</td>
+    <td >round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+    <td >round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3)</td>
+  </tr>
+</table>
+<where> s_hour in(10,18) and sv_cat_id=5  and sv_id in (51,52) and ne_type=10003 </where>
+<orderby>compress_date,s_hour</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+ <operateid>5064</operateid>
+</page>
+
+
+
+<page name="t_to_unionc_p">
+  <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+  <title>移动与联通忙时话务量比例分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr    bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">移动到联通话务量</td>
+    <td  align="center" width="10%">话音信道总话务量</td>
+    <td  align="center" width="10%">移动到联通占总话务量比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td  type="datesc" link="detail.jsp">a.compress_date</td>
+    <td >a.s_hour</td>
+    <td >soa_get_svname(b.sv_id,5)</td>
+    <td >round(b.i_seize_traf+b.o_seize_traf,3)</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3)</td>
+ </tr>
+</table>
+<where>a.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10000 and b.compress_date=a.compress_date and b.s_hour=a.s_hour and b. sv_cat_id=5  and b.sv_id in (51,52)</where>
+<orderby>a.first_result</orderby>
+<limitclause>a.compress_date</limitclause>
+<operateid>5066</operateid>
+</page>
+<page name="t_to_unionc_p_region">
+  <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+  <title>移动与联通忙时话务量比例分析-地市</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr    bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">移动到联通话务量</td>
+    <td  align="center" width="10%">话音信道总话务量</td>
+    <td  align="center" width="10%">移动到联通占总话务量比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td  type="dateSC" link="detail.jsp">a.compress_date</td>
+    <td >a.s_hour</td>
+    <td >soa_get_nename(a.ne_id,a.ne_type)</td>
+    <td >soa_get_svname(b.sv_id,5)</td>
+     <td >round(b.i_seize_traf+b.o_seize_traf,3)</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3)</td>
+ </tr>
+</table>
+<where>a.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10003 and a.ne_id=b.ne_id and b.compress_date=a.compress_date and b.s_hour=a.s_hour and b. sv_cat_id=5 and b.sv_id in (51,52)  </where>
+<orderby>a.first_result</orderby>
+<limitclause>a.compress_date</limitclause>
+<regionclause>a.ne_id</regionclause>
+<operateid>5066</operateid>
+</page>
+
+
+
+
+
+
+<page name="t_to_tele_p">
+  <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+  <title>移动与电信忙时话务量比例分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr    bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">移动到电信话务量</td>
+    <td  align="center" width="10%">话音信道总话务量</td>
+    <td  align="center" width="10%">移动到电信占总话务量比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td  type="datesc" link="detail.jsp">a.compress_date</td>
+    <td >b.s_hour</td>
+    <td >round(b.i_seize_traf+b.o_seize_traf,3)</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3)</td>
+ </tr>
+</table>
+<where>b.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10000  and b.compress_date=a.compress_date and b.s_hour=a.s_hour  and b. sv_cat_id=5  and b.sv_id = 53</where>
+<orderby>a.first_result</orderby>
+<limitclause>a.first_result</limitclause>
+<operateid>5067</operateid>
+</page>
+<page name="t_to_tele_p_region">
+  <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+  <title>移动与电信忙时话务量比例分析-地市</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr    bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">移动到电信话务量</td>
+    <td  align="center" width="10%">话音信道总话务量</td>
+    <td  align="center" width="10%">移动到电信占总话务量比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td  type="dateSC" link="detail.jsp">a.compress_date</td>
+    <td >b.s_hour</td>
+    <td >soa_get_nename(a.ne_id,a.ne_type)</td>
+    <td >round(b.i_seize_traf+b.o_seize_traf,3)</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3)</td>
+ </tr>
+</table>
+<where>b.s_hour in(10,18) and  a.ne_type=b.ne_type and a.ne_type=10003 and a.ne_id=b.ne_id and  b.compress_date=a.compress_date and b.s_hour=a.s_hour  and b. sv_cat_id=5  and b.sv_id = 53  </where>
+<orderby>a.first_result</orderby>
+<limitclause>a.compress_date</limitclause>
+<regionclause>a.ne_id</regionclause>
+<operateid>5067</operateid>
+</page>
+<page name="t_wl_v_day_f">
+  <viewname>local_smsc_ed6</viewname>
+  <title>全省短信信息互联互通情况</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >名称</td>
+    <td  align="center" width="10%" >全天送往联通的短信提交总条数</td>
+    <td  align="center" width="10%">全天送往联通的短信成功提交总条数</td>
+    <td  align="center" width="10%">忙时送往联通的短信提交总条数</td>
+    <td  align="center" width="10%">忙时送往联通的短信成功发送总条数</td>
+    <td  align="center" width="10%">全天联通送来短信尝试提交总条数</td>
+    <td  align="center" width="10%">全天联通送来短信成功提交总条数</td>
+    <td  align="center" width="10%">忙时联通送来短信尝试提交总条数</td>
+    <td  align="center" width="10%">忙时联通送来短信提交成功总次数</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >related_region</td>
+    <td >att_mo_cm2cu_d</td>
+    <td >suc_mo_cm2cu_d</td>
+    <td >att_mo_cm2cu</td>
+    <td >suc_mo_cm2cu</td>
+    <td >att_mo_cu2cm_d</td>
+    <td >suc_mo_cu2cm_d</td>
+    <td >att_mo_cu2cm</td>
+    <td >suc_mo_cu2cm</td>
+ </tr>
+</table>
+<where></where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5028</operateid>
+</page>
+<page name="t_vpm_c32002_all">
+  <viewname>local_traffic_day</viewname>
+  <title>全省tch全天话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >全天话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(tch_traffic ,3)</td>
+ </tr>
+</table>
+<where>sum_level = 1 and ne_type =10000</where>
+<orderby>compress_date</orderby>
+<limitclause>first_result</limitclause> 
+<operateid>5029</operateid>
+</page>
+<page name="t_vpm_c32002_all_region">
+  <viewname>local_traffic_day</viewname>
+  <title>地区tch全天话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >全天话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(tch_traffic ,3)</td>
+ </tr>
+</table>
+<where>sum_level = 1 and ne_type =10003</where>
+<orderby>compress_date</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5029</operateid> 
+</page>
+<page name="t_tpm_r2002_main">
+  <viewname>tpa_radio_sum</viewname>
+  <title>全省tch忙时话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">小时</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%">忙时话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(tch_traffic,3)</td>
+ </tr>
+</table>
+<where>sum_level = 0 and ne_type =10000 and s_hour in(10,18)</where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause> 
+<operateid>5030</operateid> 
+</page>
+<page name="t_tpm_r2002_main_region">
+  <viewname>tpa_radio_sum</viewname>
+  <title>地区tch忙时话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">小时</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%">忙时话务量</td>
+
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(tch_traffic,3)</td>
+  </tr>
+</table>
+<where>sum_level=0 and ne_type =10003 and s_hour in(10,18)</where>
+<orderby>first_result</orderby>
+<limitclause>compress_date</limitclause> 
+<regionclause>ne_id</regionclause> 
+<operateid>5030</operateid> 
+</page>
+<page name="t_to_tele">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>全省互联互通移动到电信</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_svname(sv_id,5) interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+ o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>(s_hour = 10 or s_hour=18)  and ne_type =10000 and sv_cat_id=5 and sv_id=53</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5035</operateid>
+</page>
+<page name="t_to_tele_region">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>地市互联互通移动到电信</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >soa_get_svname(sv_id,5)  interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>s_hour = 10  and sum_level = 0  and ne_type =10003 and sv_cat_id=5 and sv_id=53</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5035</operateid>
+</page>
+<page name="t_to_uc">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>全省互联互通移动到联通</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_svname(sv_id,5) interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>(s_hour = 10 or s_hour=18)   and ne_type =10000 and sv_cat_id=5 and sv_id in (51,52)</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5036</operateid>
+</page>
+<page name="t_to_uc_region">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>地市互联互通移动到联通</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type) region_name</td>
+    <td >soa_get_svname(sv_id,5)  interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>s_hour = 10  and ne_type =10003 and sv_cat_id=5 and sv_id in (51,52)</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5036</operateid>
+</page>
+<page name="t_to_rc">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>全省互联互通移动到铁通</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_svname(sv_id,5) interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>(s_hour = 10 or s_hour=18)   and ne_type =10000 and sv_cat_id=5 and sv_id=55</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5037</operateid>
+</page>
+<page name="t_to_rc_region">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>地市互联互通移动到铁通</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type) region_name</td>
+    <td >soa_get_svname(sv_id,5) interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>s_hour = 10  and ne_type =10003 and sv_cat_id=5 and sv_id=55</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5037</operateid>
+</page>
+<page name="t_to_cnc">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>全省互联互通移动到网通</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_svname(sv_id,5) interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>(s_hour = 10 or s_hour=18)   and ne_type =10000 and sv_cat_id=5 and sv_id=54</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5038</operateid>
+</page>
+<page name="t_to_cnc_region">
+  <viewname>tpa_tkgp_sum</viewname>
+  <title>地市互联互通移动到网通</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">局向名称</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">总话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+    <td  align="center" width="10%">来话接通率</td>
+    <td  align="center" width="10%">去话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type) region_name</td>
+    <td >soa_get_svname(sv_id,5) interconn_type</td>
+    <td >round(i_seize_traf,3)</td>
+    <td >round(o_seize_traf,3)</td>
+    <td >round(i_seize_traf+o_seize_traf,3)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),tot_ts),3)</td>
+    <td >round(sfb_divfloat_1(i_call_ans,nvl(i_call_att, i_call_seize))*100,3)</td>
+    <td >round(sfb_divfloat_1(o_call_ans,nvl(o_call_att, o_call_seize))*100,3)</td>
+ </tr>
+</table>
+<where>s_hour = 10   and ne_type =10003 and sv_cat_id=5 and sv_id=54</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5038</operateid>
+</page>
+<page name="t_trunk_cd">
+  <viewname>tpd_tkgp t,tcd_ne_pcm a,tcc_ne_frame msc</viewname>
+  <title>二汇至成都客服中继话务统计表(成都)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">小时</td>
+    <td  align="center" width="10%">继群名称</td>
+    <td  align="center" width="10%" >中继数</td>
+    <td  align="center" width="10%" >闭塞中继数</td>
+    <td  align="center" width="10%">中继可用数</td>
+    <td  align="center" width="10%">来话占用次数</td>
+    <td  align="center" width="10%">来话应答次数</td>
+    <td  align="center" width="10%">来话接通率(%)</td>
+    <td  align="center" width="10%">去话占用次数</td>
+    <td  align="center" width="10%">去话接通率(%)</td>
+    <td  align="center" width="10%">去话壅塞次数</td>
+    <td  align="center" width="10%">去话溢出次数</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">scan_start_time</td>
+    <td >hour(scan_start_time)</td>
+    <td >soa_get_nename(t.ne_id,600) name</td>
+    <td >tot_ts</td>
+    <td >block_ts</td>
+    <td >avail_ts</td>
+    <td >i_call_seize</td>
+    <td >i_call_ans</td>
+    <td type="float">round(sfb_divfloat_1(i_call_ans,nvl(i_call_att,i_call_seize))*100,2) i_ans_seize_r</td>
+    <td >o_call_seize</td>
+    <td type="float">round(sfb_divfloat_1(o_call_ans,nvl(o_call_att,o_call_seize))*100,2) o_ans_seize_r</td>
+    <td >o_call_conges</td>
+    <td >o_call_ovfl</td>
+    <td >round(i_seize_traf,2)</td>
+    <td >round(o_seize_traf,2)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),avail_ts),2)</td>
+ </tr>
+</table>
+<where>a.pm_rdn like "%KF%" and t.ne_id=a.ne_id and a.related_ne1=msc.ne_id and region_id =-1483444163 </where>
+<orderby>scan_start_time</orderby>
+<limitclause>scan_start_time</limitclause>
+<operateid>5039</operateid>
+</page>
+<page name="t_trunk_neij">
+  <viewname>tpd_tkgp t,tcd_ne_pcm a,tcc_ne_frame msc</viewname>
+  <title>二汇至成都客服中继话务统计表(内江)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">小时</td>
+    <td  align="center" width="10%">继群名称</td>
+    <td  align="center" width="10%" >中继数</td>
+    <td  align="center" width="10%" >闭塞中继数</td>
+    <td  align="center" width="10%">中继可用数</td>
+    <td  align="center" width="10%">来话占用次数</td>
+    <td  align="center" width="10%">来话应答次数</td>
+    <td  align="center" width="10%">来话接通率(%)</td>
+    <td  align="center" width="10%">去话占用次数</td>
+    <td  align="center" width="10%">去话接通率(%)</td>
+    <td  align="center" width="10%">去话拥塞次数</td>
+    <td  align="center" width="10%">去话溢出次数</td>
+    <td  align="center" width="10%">来话话务量</td>
+    <td  align="center" width="10%">去话话务量</td>
+    <td  align="center" width="10%">每线话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+   <td type="datetime">scan_start_time</td>
+    <td >hour(scan_start_time)</td>
+    <td >soa_get_nename(t.ne_id,600)</td>
+    <td >tot_ts</td>
+    <td >block_ts</td>
+    <td >avail_ts</td>
+    <td >i_call_seize</td>
+    <td >i_call_ans</td>
+    <td type="float">round(sfb_divfloat_1(i_call_ans,nvl(i_call_att,i_call_seize))*100,2) i_ans_seize_r</td>
+    <td >o_call_seize</td>
+    <td type="float">round(sfb_divfloat_1(o_call_ans,nvl(o_call_att,o_call_seize))*100,2) o_ans_seize_r</td>
+    <td >o_call_conges</td>
+    <td >o_call_ovfl</td>
+    <td >round(i_seize_traf,2)</td>
+    <td >round(o_seize_traf,2)</td>
+    <td >round(sfb_divfloat_1((i_seize_traf+o_seize_traf),avail_ts),2)</td>
+ </tr>
+ </table>
+ <where>a.pm_rdn like "%KF%" and t.ne_id=a.ne_id and a.related_ne1=msc.ne_id and region_id =1545006672</where>
+<orderby>scan_start_time</orderby>
+<limitclause>scan_start_time</limitclause>
+<operateid>5040</operateid>
+</page>
+<page name="t_wl_v_cdcity_r">
+  <viewname>vpa_radio_sum a,local_eoms_order b</viewname>
+  <title>成都地区无线指标-县市</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">小时</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >TCH话务量</td>
+    <td  align="center" width="10%">SDCCH话务量</td>
+    <td  align="center" width="10%">TCH掉话次数</td>
+    <td  align="center" width="10%">最坏小区比例(%)</td>
+    <td  align="center" width="10%">最坏小区个数</td>
+    <td  align="center" width="10%">话务掉话比(%)</td>
+    <td  align="center" width="10%">无线接通率(%)</td>
+    <td  align="center" width="10%">TCH拥塞率(不含切换)(%</td>
+    <td  align="center" width="10%">TCH拥塞率(含切换)(%)</td>
+    <td  align="center" width="10%" >TCH掉话率(%)</td>
+    <td  align="center" width="10%" >SDCCH拥塞率(%)</td>
+    <td  align="center" width="10%" >SDCCH掉话率(%)</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >a.ne_name</td>
+    <td >round(tch_traffic,2)</td>
+    <td >round(sdcch_traffic,2)</td>
+    <td >round(drop_call_tch,0)</td>
+    <td >round(worst_cell_rate,3)</td>
+    <td >worst_cell</td>
+    <td >round(tch_drop_rate,2)</td>
+    <td >round(radio_conn_r,3) radio_suc_r</td>
+    <td >round(tch_ovrfl_nho_r,2)</td>
+    <td >round(tch_ovrfl_r,2)</td>
+    <td >round(drop_call_rate  ,2)</td>
+    <td >round(sdcch_ovrfl_r ,2)</td>
+    <td >round(sdcch_drop_r,2)</td>
+ </tr>
+</table>
+<where> sum_level =0 and a.ne_name=b.ne_name</where>
+<orderby>first_result,b.order</orderby>
+<limitclause>first_result</limitclause>
+<cityclause>b.ne_id</cityclause>
+<operateid>5042</operateid>
+</page>
+<page name="t_wl_t_cd_pmr">
+  <viewname>vpa_radio_sum a,local_eoms_order b</viewname>
+  <title>信道可用率-成都</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >话音信道配置数</td>
+    <td  align="center" width="10%">话音信道可用数</td>
+    <td  align="center" width="10%">信令信道配置数</td>
+    <td  align="center" width="10%">信令信道可用数</td>
+    <td  align="center" width="10%">话音信道可用率%</td>
+    <td  align="center" width="10%">信令信道可用率%</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >a.ne_name</td>
+    <td >round(tch_nbr,0)</td>
+    <td >round(avail_tch_nbr,0)</td>
+    <td >round(sdcch_nbr,0)</td>
+    <td >round(avail_sdcch_nbr,0)</td>
+    <td >round(tch_avail_r,3) tch_r</td>
+    <td >round(sdcch_avail_r,3) sdcch_r</td>
+ </tr>
+</table>
+<where>sum_level =0 and a.ne_name=b.ne_name</where>
+<orderby>first_result,b.order</orderby>
+<limitclause>first_result</limitclause>
+<cityclause>b.ne_id</cityclause>
+<operateid>5043</operateid>
+</page>
+<page name="t_tch_cdcountry_all">
+  <viewname> local_traffic_day a,tcc_ne_snap b ,local_eoms_order_cd c</viewname>
+  <title>成都地区全天话务量（细粒度）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >乡镇</td>
+    <td  align="center" width="10%" >基站</td>
+    <td  align="center" width="10%" >小区</td>
+    <td  align="center" width="10%" >TCH话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" >a.first_result</td>
+    <td >a.s_hour</td>
+    <td >soa_get_nename(b.region_id,10003) city_name</td>
+    <td >soa_get_nename(b.country_id,10014)  country_name</td>
+    <td >soa_get_nename(b.related_site,201) zh_label</td>
+    <td >b.userlabel</td>
+    <td >round(a.tch_traffic,3)</td>
+ </tr>
+</table>
+<where>a.compress_date=b.compress_date and a.ne_type=300
+and a.ne_type=b.ne_type and a.ne_id=b.ne_id and b.region_id=-1483444163 and a.sum_level=1 and b.country_id=c.country_id</where>
+<orderby>a.first_result,c.cd_order</orderby>
+<limitclause>a.first_result</limitclause>
+<cityclause>c.city_id</cityclause>
+<operateid>5044</operateid>
+</page>
+<page name="t_tpm_cd_traffic_busy_yxd">
+  <viewname>tpa_cd_radio_sum a,local_eoms_order b</viewname>
+  <title>成都地区TCH忙时话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%" >TCH话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >s_hour</td>
+    <td >a.ne_name</td>
+    <td >round(tch_traffic,3) </td>
+ </tr>
+</table>
+<where>sum_level = 0 and s_hour in (10,18) and a.ne_name=b.ne_name</where>
+<orderby>first_result,b.order</orderby>
+<limitclause>compress_date</limitclause>
+<cityclause>a.ne_id</cityclause>
+<operateid>5045</operateid>
+</page>
+<page name="t_wl_rate_com">
+  <viewname>local_radio_rate </viewname>
+  <title>移动通信网性能指标集-忙时</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="10%" >信令信道可用率(%)</td>
+    <td  align="center" width="10%">信令信道拥塞率(%)</td>
+    <td  align="center" width="10%">信令信道掉话率(%)</td>
+   <td  align="center" width="10%">话音信道可用率(%)</td>
+    <td  align="center" width="10%">话音信道拥塞率（不含切换）(%)</td>
+    <td  align="center" width="10%">话音信道拥塞率（含切换）(%)</td>
+    <td  align="center" width="10%">话音信道掉话率(%) </td>
+    <td  align="center" width="10%">掉话率(%))</td>
+    <td  align="center" width="10%">切换成功率(%)</td>
+    <td  align="center" width="10%">交换机分配成功率(%) </td>
+    <td  align="center" width="10%">话音接通率(%)</td>
+    <td  align="center" width="10%">被叫呼通率(%)</td>
+    <td  align="center" width="10%">交换机接通率(%)</td>
+    <td  align="center" width="10%">无线信道利用率(%)</td>
+    <td  align="center" width="10%">无线信道利用率(集团算法)(%)</td>
+    <td  align="center" width="10%">无线信道利用率(省公司算法)(%)</td>
+    <td  align="center" width="10%">长途来话接通率(%)</td>
+    <td  align="center" width="10%">无线接通率(%)</td>
+    <td  align="center" width="10%">小区总数</td>
+    <td  align="center" width="10%">最坏小区数量</td>
+    <td  align="center" width="10%">最坏小区比例(%)</td>
+    <td  align="center" width="10%">超闲小区数量</td>
+    <td  align="center" width="10%">超闲小区比例(%)</td>
+    <td  align="center" width="10%">超忙小区数量</td>
+    <td  align="center" width="10%">超忙小区比例(%)</td>
+    <td  align="center" width="10%">话务掉话比</td>
+    <td  align="center" width="10%">忙时话务量</td>
+    <td  align="center" width="10%">PDP激活成功率(%)</td>
+    <td  align="center" width="10%">MO提交成功率（%）-全天 </td>
+    <td  align="center" width="10%">MT下发成功率（%）-全天 </td>
+    <td  align="center" width="10%">短消息接通率(%)-全天 </td>
+  </tr>
+ <tr color="green" bgcolor="#FFFFFF">
+     <td type="datesc" >compress_date </td>
+     <td> hour(first_result) </td>
+    <td >soa_get_nename(ne_id,ne_type) region</td>
+    <td >sch_availrate</td>
+    <td >sch_congrate</td>
+    <td >sch_droprate</td>
+    <td >tch_availrate</td>
+    <td >tch_congrate_nho</td>
+    <td >tch_congrate</td>
+    <td >tch_droprate</td>
+    <td >drop_rate</td>
+    <td >ho_sucrate</td>
+    <td >mscassign_sucrate</td>
+    <td >traffic_ansrate</td>
+    <td >becalled_ansrate</td>
+    <td >msc_connrate</td>
+    <td >bss_usagerate</td>
+    <td >bss_usagerate_jt</td>
+    <td >bss_usagerate_pro</td>
+    <td >intoll_connrate</td>
+    <td >bss_connrate</td>
+    <td >total_cell</td>
+    <td >worst_cell</td>
+    <td >round(worst_cell_r*100,3) w_cell</td>
+    <td >idle_cell</td>
+    <td >exidle_rate</td>
+    <td >busy_cell</td>
+    <td >exbusy_rate</td>
+    <td >traffic_drop_rate</td>
+    <td >round(tch_traffic,3)</td>
+    <td >pdp_act_sucrate</td>
+    <td >smsc_mo_sucrate</td>
+    <td >smsc_mt_sucrate</td>
+    <td >smsc_connrate</td>
+</tr>
+ </table>
+<where>hour(first_result) in (10,18)</where>
+<orderby>compress_date</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5060</operateid>
+</page>
+<page name="t_tpm_cd_traffic_yxd">
+  <viewname>tpa_cd_radio_sum a ,local_eoms_order b</viewname>
+  <title>成都地区TCH全天话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%" >TCH话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >a.ne_name</td>
+    <td >round(tch_traffic ,3)</td>
+ </tr>
+</table>
+<where>sum_level = 1 and ne_type in(10003,10004)and a.ne_name=b.ne_name</where>
+<orderby>first_result,b.order</orderby>
+<limitclause>first_result</limitclause>
+<cityclause>a.ne_id</cityclause>
+<operateid>5046</operateid>
+</page>
+<page name="t_tpm_b2002_main">
+  <viewname>tpa_msc_sum</viewname>
+  <title>全省早忙时vlr用户数</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="5%" >小时</td>
+    <td  align="center" width="10%">VLR用户数</td>
+    <td  align="center" width="10%">VLR开机用户数</td>
+    <td  align="center" width="10%">VLR用户开机率%</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >s_hour</td>
+    <td >round(subscrib_in_vlr,0)</td>
+    <td >round(active_subs,0)</td>
+    <td >round(sfb_divfloat_1(active_subs ,subscrib_in_vlr)*100,2)</td>
+ </tr>
+</table>
+<where>ne_type=10000 and s_hour in (10)</where>
+<orderby>compress_date,s_hour</orderby>
+<limitclause>compress_date</limitclause> 
+<operateid>5005</operateid>
+</page>
+<page name="t_tpm_b2002_main_region">
+  <viewname>tpa_msc_sum</viewname>
+  <title>地市早忙时vlr用户数</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="5%" >小时</td>
+    <td  align="center" width="10%">VLR用户数</td>
+    <td  align="center" width="10%">VLR开机用户数</td>
+    <td  align="center" width="10%">VLR用户开机率%</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >s_hour</td>
+    <td >round(subscrib_in_vlr,0)</td>
+    <td >round(active_subs,0)</td>
+    <td >round(sfb_divfloat_1(active_subs , subscrib_in_vlr)*100,2)</td>
+ </tr>
+</table>
+<where>ne_type=10003 and s_hour in (10)</where>
+<orderby>compress_date,ne_id,s_hour</orderby>
+<limitclause>compress_date</limitclause>
+<regionclause>ne_id</regionclause> 
+<operateid>5005</operateid>
+</page>
+<page name="t_tpm_b2002w_main">
+  <viewname>tpa_msc_sum</viewname>
+  <title>全省晚忙时vlr用户数</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="5%" >小时</td>
+    <td  align="center" width="10%">VLR用户数</td>
+    <td  align="center" width="10%">VLR开机用户数</td>
+    <td  align="center" width="10%">VLR用户开机率%</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" link="detail.jsp">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >s_hour</td>
+    <td >round(subscrib_in_vlr,0)</td>
+    <td >round(active_subs,0)</td>
+    <td >round(sfb_divfloat_1(active_subs , subscrib_in_vlr)*100,2)</td>
+ </tr>
+</table>
+<where>ne_type=10000 and s_hour in (18)</where>
+<orderby>compress_date,s_hour</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5006</operateid> 
+</page>
+<page name="t_tpm_b2002w_main_region">
+  <viewname>tpa_msc_sum</viewname>
+  <title>地市晚忙时vlr用户数</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="5%" >小时</td>
+    <td  align="center" width="10%">VLR用户数</td>
+    <td  align="center" width="10%">VLR开机用户数</td>
+    <td  align="center" width="10%">VLR用户开机率%</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >s_hour</td>
+    <td >round(subscrib_in_vlr,0)</td>
+    <td >round(active_subs,0)</td>
+    <td >round(sfb_divfloat_1(active_subs , subscrib_in_vlr)*100,2)</td>
+ </tr>
+</table>
+<where>ne_type=10003 and s_hour in (18)</where>
+<orderby>compress_date,ne_id,s_hour</orderby>
+<limitclause>compress_date</limitclause> 
+<regionclause>ne_id</regionclause> 
+<operateid>5006</operateid>
+</page>
+<page name="t_tpd_t1_iarstat">
+  <viewname>vpw_connrate_region</viewname>
+  <title>全省忙时长途来话接通率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">名称</td>
+    <td  align="center" width="5%" >来话试呼次数</td>
+    <td  align="center" width="5%" >来话应答次数</td>
+    <td  align="center" width="10%">长途来话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime" link="detail.jsp">first_result</td>
+    <td >hour(first_result)</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >call_attempts</td>
+    <td >call_with_answer</td>
+    <td >round(intoll_connrate,1)</td>
+ </tr>
+</table>
+<where>ne_type=10000 and (hour(first_result)=10 or hour(first_result)=18)</where>
+<orderby>first_result</orderby>
+<limitclause>first_result</limitclause>
+<operateid>5012</operateid>
+</page>
+<page name="t_tpd_t1_iarstat_region">
+  <viewname>vpw_connrate_region</viewname>
+  <title>地区忙时长途来话接通率</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%" >地区</td>
+    <td  align="center" width="5%" >小时</td>
+    <td  align="center" width="5%" >来话试呼次数</td>
+    <td  align="center" width="5%" >来话应答次数</td>
+    <td  align="center" width="10%">长途来话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >hour(first_result)</td>
+    <td >call_attempts</td>
+    <td >call_with_answer</td>
+    <td >round(intoll_connrate,1)</td>
+ </tr>
+</table>
+<where>ne_type=10003 and (hour(first_result)=10 or hour(first_result)=18)</where>
+<orderby>first_result,ne_id</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>ne_id</regionclause>
+<operateid>5012</operateid>
+</page>
+<page name="t_sc_v_connrate_msc_all">
+  <viewname>sc_v_connrate_msc</viewname>
+  <title>按DEST统计的长途来话接通率-交换机</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >交换机名称</td>
+    <td  align="center" width="10%" >DEST名称</td>
+    <td  align="center" width="10%" >来话试呼次数</td>
+    <td  align="center" width="10%" >来话应答次数</td>
+    <td  align="center" width="10%" >长途来话接通率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datetime">first_result</td>
+    <td >hour(first_result)</td>
+    <td >msc</td>
+    <td >dest</td>
+    <td >call_attempts</td>
+    <td >call_with_answer</td>
+    <td >intoll_connrate</td>
+ </tr>
+</table>
+<where></where>
+<orderby>first_result</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>region_id</regionclause>
+<operateid>5058</operateid>
+</page>
+<page name="t_zy_v_scbad_cell_all">
+  <viewname>vpa_worst_cell_city</viewname>
+  <title>最坏小区-地州（城市）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%" >城市/郊区</td>
+    <td  align="center" width="10%" >CELL_ID</td>
+    <td  align="center" width="10%" >SITE</td>
+    <td  align="center" width="10%" >BSC </td>
+    <td  align="center" width="10%" >MSC</td>
+    <td  align="center" width="10%" >OMC</td>
+    <td  align="center" width="10%" >DRI配置</td>
+    <td  align="center" width="10%" >话音信道话务量</td>
+    <td  align="center" width="10%" >TCH可用率（%）</td>
+    <td  align="center" width="10%" >无线接通率（%）</td>
+    <td  align="center" width="10%" >TCH掉话率（%）</td>
+    <td  align="center" width="10%" >TCH拥塞率（%）</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td>s_hour</td>
+    <td >region_name</td>
+    <td >city</td>
+    <td >bts_id</td>
+    <td >site_id</td>
+    <td >bsc_id</td>
+    <td >msc_id</td>
+    <td >omc_id</td>
+    <td >trx_nbr</td>
+    <td >tch_traffic</td>
+    <td >avail_tch_nbr</td>
+    <td >round(radio_conn_r,3)</td>
+    <td >round(drop_call_rate,3)</td>
+    <td >round(sdcch_ovrfl_r,3)</td>
+ </tr>
+</table>
+<where></where>
+<orderby>3,first_result</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>region_id</regionclause>
+<operateid>5017</operateid>
+</page>
+<page name="t_zy_v_scbad_cell_all_jq">
+  <viewname>vpa_worst_cell_country </viewname>
+  <title>最坏小区-地州（郊区）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%" >城市/郊区</td>
+    <td  align="center" width="10%" >CELL_ID</td>
+    <td  align="center" width="10%" >SITE</td>
+    <td  align="center" width="10%" >BSC </td>
+    <td  align="center" width="10%" >MSC</td>
+    <td  align="center" width="10%" >OMC</td>
+    <td  align="center" width="10%" >DRI配置</td>
+    <td  align="center" width="10%" >话音信道话务量</td>
+    <td  align="center" width="10%" >TCH可用率（%）</td>
+    <td  align="center" width="10%" >无线接通率（%）</td>
+    <td  align="center" width="10%" >TCH掉话率（%）</td>
+    <td  align="center" width="10%" >TCH拥塞率（%）</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">compress_date</td>
+    <td>s_hour</td>
+    <td >region_name</td>
+    <td >city</td>
+    <td >bts_id</td>
+    <td >site_id</td>
+    <td >bsc_id</td>
+    <td >msc_id</td>
+    <td >omc_id</td>
+    <td >trx_nbr</td>
+    <td >tch_traffic</td>
+    <td >avail_tch_nbr</td>
+    <td >round(radio_conn_r,3)</td>
+    <td >round(drop_call_rate,3)</td>
+    <td >round(sdcch_ovrfl_r,3)</td>
+ </tr>
+</table>
+<where></where>
+<orderby>3,first_result</orderby>
+<limitclause>first_result</limitclause>
+<regionclause>region_id</regionclause>
+<operateid>5023</operateid>
+</page>
+<page name="t_zy_bh_r_y">
+  <viewname>local_top_region</viewname>
+  <title>全省最忙时与次忙时话务量</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">地区</td>
+    <td  align="center" width="10%" >最忙时段</td>
+    <td  align="center" width="10%" >最忙时话务量</td>
+    <td  align="center" width="10%" >次忙时段</td>
+    <td  align="center" width="10%" >次忙时话务量</td>
+    <td  align="center" width="20%" >全天话务量</td>
+    <td  align="center" width="10%" >忙时集中率</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">first_result</td>
+    <td >soa_get_nename(ne_id,ne_type) name</td>
+    <td >time1</td>
+    <td >round(tch1,3)</td>
+    <td >time2</td>
+    <td >round(tch2,3)</td>
+    <td >round(tch_day,3)</td>
+    <td >round(bh_r,3)</td>
+ </tr>
+</table>
+<where>ne_type in (10000,10003)</where>
+<orderby>first_result,ne_type,ne_id</orderby>
+<limitclause>first_result</limitclause> 
+<regionclause>ne_id</regionclause>
+<operateid>5031</operateid>
+</page>
+<page name="t_to_mobile_p">
+  <viewname>tpa_radio_sum a, tpa_tkgp_sum b </viewname>
+  <title>移动与移动忙时话务量比例分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr    bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">移动到移动话务量</td>
+    <td  align="center" width="10%">话音信道总话务量</td>
+    <td  align="center" width="10%">移动到移动占总话务量比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td  type="datesc" link="detail.jsp">a.compress_date</td>
+    <td >a.s_hour</td>
+    <td >round((a.tch_traffic-sum(b.i_seize_traf+b.o_seize_traf)),3)</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round((sfb_divfloat_1(a.tch_traffic-sum(b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3)</td>
+ </tr>
+</table>
+<where>a.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10000 AND a.ne_id=b.ne_id
+   and b.compress_date=a.compress_date and b.s_hour=a.s_hour and b. sv_cat_id=5  and b.sv_id in (51,52,53) </where>
+<groupby>1,2,a.tch_traffic</groupby>
+<orderby>1,2</orderby>
+<limitclause>a.compress_date</limitclause>
+<operateid>5065</operateid>
+</page>
+<page name="t_to_mobile_p_region">
+  <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+  <title>移动与移动忙时话务量比例分析</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%">地市</td>
+    <td  align="center" width="10%">移动到移动话务量</td>
+    <td  align="center" width="10%">话音信道总话务量</td>
+    <td  align="center" width="10%">移动到移动占总话务量比例</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">a.compress_date</td>
+    <td >soa_get_nename(a.ne_id,a.ne_type)</td>
+    <td >a.s_hour</td>
+    <td >round((a.tch_traffic-sum(b.i_seize_traf+b.o_seize_traf)),3)</td>
+    <td >round(a.tch_traffic,3)</td>
+    <td >round((sfb_divfloat_1(a.tch_traffic-sum(b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3)</td>
+ </tr>
+</table>
+<where>a.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10003 AND a.ne_id=b.ne_id
+   and b.compress_date=a.compress_date and b.s_hour=a.s_hour and b. sv_cat_id=5  and b.sv_id in (51,52,53) </where>
+<groupby>1,3,a.tch_traffic,a.ne_type,a.ne_id</groupby>
+<orderby>1,2,3</orderby>
+<limitclause>a.compress_date</limitclause>
+<regionclause>a.ne_id</regionclause>
+<operateid>5065</operateid>
+</page>
+<page name="t_tvpm_ed72002_all">
+  <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+  <title>全省17951业务统计报表（移动电话作被叫)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >名称</td>
+    <td  align="center" width="10%" >项目</td>
+    <td  align="center" width="10%">话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc"  link="detail.jsp">x0.compress_date</td>
+    <td >x0.s_hour</td>
+    <td >soa_get_nename(x0.ne_id ,x0.ne_type )</td>
+    <td >x1.ne_name</td>
+    <td >round(x0.seiz_traffic , 2 )</td>
+   </tr>
+</table>
+<where>x0.ne_type = 10000  and x1.ne_id =1 AND s_hour=0  and x0.sum_level=1 AND x0.sv_id = 34 </where>
+<orderby>x0.compress_date</orderby>
+<limitclause>x0.compress_date</limitclause>
+<operateid>5032</operateid>
+</page>
+<page name="t_vpm_ed72002_all_region">
+  <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+  <title>各地市17951业务统计报表（移动电话作被叫）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="20%" >名称</td>
+    <td  align="center" width="25%" >项目</td>
+    <td  align="center" width="35%">话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc">x0.compress_date</td>
+    <td >x0.s_hour</td>
+    <td >soa_get_nename(x0.ne_id,x0.ne_type)</td>
+    <td >x1.ne_name</td>
+    <td >round(x0.seiz_traffic , 2 )</td>
+ </tr>
+</table>
+<where>x0.ne_type = 10003  and x1.ne_id =1 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 34</where>
+<orderby>x0.compress_date</orderby>
+<limitclause>x0.compress_date</limitclause>
+<regionclause>x0.ne_id</regionclause>
+<operateid>5032</operateid>
+</page>
+<page name="t_tvpm_ed72002gd_all">
+  <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+  <title>全省17951业务统计报表（固定电话作被叫)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+        <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >名称</td>
+    <td  align="center" width="10%" >项目</td>
+    <td  align="center" width="10%">话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc"  link="detail.jsp">x0.compress_date</td>
+    <td >x0.s_hour</td>
+    <td >soa_get_nename(x0.ne_id ,x0.ne_type )</td>
+    <td >x1.ne_name</td>
+    <td >round(x0.seiz_traffic , 2 )</td>
+   </tr>
+</table>
+<where>x0.ne_type = 10000  and x1.ne_id =5 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 33 </where>
+<orderby>x0.compress_date</orderby>
+<limitclause>x0.compress_date</limitclause>
+<operateid>5034</operateid>
+</page>
+<page name="t_vpm_ed72002gd_all_region">
+  <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+  <title>各地市17951业务统计报表（固定电话作被叫）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+        <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >名称</td>
+    <td  align="center" width="10%" >项目</td>
+    <td  align="center" width="10%">话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc"  >x0.compress_date</td>
+    <td >x0.s_hour</td>
+    <td >soa_get_nename(x0.ne_id ,x0.ne_type )</td>
+    <td >x1.ne_name</td>
+    <td >round(x0.seiz_traffic , 2 )</td>
+   </tr>
+</table>
+<where>x0.ne_type = 10003  and x1.ne_id =5 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 33 </where>
+<orderby>x0.compress_date</orderby>
+<limitclause>x0.compress_date</limitclause>
+<regionclause>x0.ne_id</regionclause>
+<operateid>5034</operateid>
+</page>
+<page name="t_tvpm_ed72002lt_all">
+  <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+  <title>全省17951业务统计报表（联通电话作被叫)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >名称</td>
+    <td  align="center" width="10%" >项目</td>
+    <td  align="center" width="10%">话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc"  link="detail.jsp">x0.compress_date</td>
+    <td >x0.s_hour</td>
+    <td >soa_get_nename(x0.ne_id ,x0.ne_type )</td>
+    <td >x1.ne_name</td>
+    <td >round(x0.seiz_traffic , 2 )</td>
+   </tr>
+</table>
+<where>x0.ne_type = 10000  and x1.ne_id =4 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 35 </where>
+<orderby>x0.compress_date</orderby>
+<limitclause>x0.compress_date</limitclause>
+<operateid>5033</operateid>
+</page>
+<page name="t_vpm_ed72002lt_all_region">
+  <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+  <title>各地市17951业务统计报表（联通电话作被叫）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >名称</td>
+    <td  align="center" width="10%" >项目</td>
+    <td  align="center" width="10%">话务量</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >x0.compress_date</td>
+    <td >x0.s_hour</td>
+    <td >soa_get_nename(x0.ne_id ,x0.ne_type )</td>
+    <td >x1.ne_name</td>
+    <td >round(x0.seiz_traffic , 2 )</td>
+   </tr>
+</table>
+<where>x0.ne_type = 10003  and x1.ne_id =4 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 35 </where>
+<orderby>x0.compress_date</orderby>
+<limitclause>x0.compress_date</limitclause>
+<regionclause>x0.ne_id</regionclause>
+<operateid>5033</operateid>
+</page>
+<page name="t_wl_mon_rate_com">
+  <viewname>local_mon_rate</viewname>
+  <title>长途来话接通率月报-忙时（%）</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center">地区</td>
+    <td  align="center">年份</td>
+    <td  align="center">月份</td>
+    <td  align="center">1号 </td>
+    <td  align="center">2号 </td>
+    <td  align="center">3号 </td>
+    <td  align="center">4号 </td>
+    <td  align="center">5号 </td>
+    <td  align="center">6号 </td>
+    <td  align="center">7号 </td>
+    <td  align="center">8号 </td>
+    <td  align="center">9号 </td>
+    <td  align="center">10号 </td>
+    <td  align="center">11号 </td>
+    <td  align="center">12号 </td>
+    <td  align="center">13号 </td>
+    <td  align="center">14号 </td>
+    <td  align="center">15号 </td>
+    <td  align="center">16号 </td>
+    <td  align="center">17号 </td>
+    <td  align="center">18号 </td>
+    <td  align="center">19号 </td>
+    <td  align="center">20号 </td>
+    <td  align="center">21号 </td>
+    <td  align="center">22号 </td>
+    <td  align="center">23号 </td>
+    <td  align="center">24号 </td>
+    <td  align="center">25号 </td>
+    <td  align="center">26号 </td>
+    <td  align="center">27号 </td>
+    <td  align="center">28号 </td>
+    <td  align="center">29号 </td>
+    <td  align="center">30号 </td>
+    <td  align="center">31号 </td>
+  </tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td>soa_get_nename(ne_id,ne_type)</td>
+    <td >year(compress_date)</td>
+    <td >month(compress_date)</td>
+    <td >intoll_connrate1</td>
+    <td >intoll_connrate2</td>
+    <td >intoll_connrate3</td>
+    <td >intoll_connrate4</td>
+    <td >intoll_connrate5</td>
+    <td >intoll_connrate6</td>
+    <td >intoll_connrate7</td>
+    <td >intoll_connrate8</td>
+    <td >intoll_connrate9</td>
+    <td >intoll_connrate10</td>
+    <td >intoll_connrate11</td>
+    <td >intoll_connrate12</td>
+    <td >intoll_connrate13</td>
+    <td >intoll_connrate14</td>
+    <td >intoll_connrate15</td>
+    <td >intoll_connrate16</td>
+    <td >intoll_connrate17</td>
+    <td >intoll_connrate18</td>
+    <td >intoll_connrate19</td>
+    <td >intoll_connrate20</td>
+    <td >intoll_connrate21</td>
+    <td >intoll_connrate22</td>
+    <td >intoll_connrate23</td>
+    <td >intoll_connrate24</td>
+    <td >intoll_connrate25</td>
+    <td >intoll_connrate26</td>
+    <td >intoll_connrate27</td>
+    <td >intoll_connrate28</td>
+    <td >intoll_connrate29</td>
+    <td >intoll_connrate30</td>
+    <td >intoll_connrate31</td>
+</tr>
+ </table>
+<where></where>
+<orderby>compress_date,ne_type</orderby>
+<regionclause>ne_id</regionclause>
+<operateid>5059</operateid>
+</page>
+<page name="t_gprs_pf">
+  <viewname>tpw_gprs_pf </viewname>
+  <title>GPRS无线网络运行情况统计--成都(忙时)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >上行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">下行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网CS1利用率(%)</td>
+    <td  align="center" width="10%">全网CS2利用率(%)</td>
+    <td  align="center" width="10%">全网CS3利用率(%)</td>
+    <td  align="center" width="10%">全网CS4利用率(%)</td>
+    <td  align="center" width="10%">PDTCH请求成功率(%)</td>
+    <td  align="center" width="10%">PDCH尝试分配次数</td>
+    <td  align="center" width="10%">PDCH尝试分配失败次数</td>
+    <td  align="center" width="10%">一个16kb/s的pdtch(分组业务信道)切换到tch（电路业务信道）的次数</td>
+    <td  align="center" width="10%">Bss向sgsn发送的流量控制消息数</td>
+    <td  align="center" width="10%">Gprs_access_per_rach</td>
+    <td  align="center" width="10%">Gprs_access_per_pch</td>
+    <td  align="center" width="10%">Gprs_access_per_agch</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(air_ul_blks_q3,3)</td>
+    <td >round(air_dl_blks_q3,3)</td>
+    <td >round(air_all_blks_q3,3)</td>
+    <td >round(air_cs1_r,3)</td>
+    <td >round(air_cs2_r,3)</td>
+    <td >round(air_cs3_r,3)</td>
+    <td >round(air_cs4_r,3)</td>
+    <td >round(chanl_req_suc_r,3)</td>
+    <td >pdch_ass_att</td>
+    <td >pdch_ass_fail</td>
+    <td >channel_ho</td>
+    <td >round(gbl_send_msg,0)</td>
+    <td >gprs_access_per_rach</td>
+    <td >gprs_access_per_pch</td>
+    <td >gprs_access_per_agch</td>
+ </tr>
+</table>
+<where>sum_level=0  
+and ne_type = 10003
+and ne_id=-1483444163
+and (s_hour=10 or s_hour=18)
+</where>
+<orderby>first_result,3</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5068</operateid>
+</page>
+<page name="t_gprs_pf_BSS">
+  <viewname>tpw_gprs_pf </viewname>
+  <title>GPRS无线网络运行情况统计--BSS(忙时)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >上行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">下行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网CS1利用率(%)</td>
+    <td  align="center" width="10%">全网CS2利用率(%)</td>
+    <td  align="center" width="10%">全网CS3利用率(%)</td>
+    <td  align="center" width="10%">全网CS4利用率(%)</td>
+    <td  align="center" width="10%">PDTCH请求成功率(%)</td>
+    <td  align="center" width="10%">PDCH尝试分配次数</td>
+    <td  align="center" width="10%">PDCH尝试分配失败次数</td>
+    <td  align="center" width="10%">一个16kb/s的pdtch(分组业务信道)切换到tch（电路业务信道）的次数</td>
+    <td  align="center" width="10%">Bss向sgsn发送的流量控制消息数</td>
+    <td  align="center" width="10%">Gprs_access_per_rach</td>
+    <td  align="center" width="10%">Gprs_access_per_pch</td>
+    <td  align="center" width="10%">Gprs_access_per_agch</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >compress_date</td>
+    <td >s_hour</td>
+    <td >soa_get_nename(ne_id,ne_type)</td>
+    <td >round(air_ul_blks_q3,3)</td>
+    <td >round(air_dl_blks_q3,3)</td>
+    <td >round(air_all_blks_q3,3)</td>
+    <td >round(air_cs1_r,3)</td>
+    <td >round(air_cs2_r,3)</td>
+    <td >round(air_cs3_r,3)</td>
+    <td >round(air_cs4_r,3)</td>
+    <td >round(chanl_req_suc_r,3)</td>
+    <td >pdch_ass_att</td>
+    <td >pdch_ass_fail</td>
+    <td >channel_ho</td>
+    <td >round(gbl_send_msg,0)</td>
+    <td >gprs_access_per_rach</td>
+    <td >gprs_access_per_pch</td>
+    <td >gprs_access_per_agch</td>
+ </tr>
+</table>
+<where>sum_level=0  
+and ne_type = 200
+and (s_hour=10 or s_hour=18)
+</where>
+<orderby>first_result,3</orderby>
+<limitclause>compress_date</limitclause>
+<operateid>5069</operateid>
+</page>
+<page name="t_gprs_pf_CELL_0">
+  <viewname>tcc_ne_snap a,vpw_gprs_pf main,tcc_bts c</viewname>
+  <title>GPRS无线网络运行情况统计--CELL(分时)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >BSC名</td>
+    <td  align="center" width="10%">Site</td>
+    <td  align="center" width="10%">Cell_rdn</td>
+    <td  align="center" width="10%">Ci</td>
+    <td  align="center" width="10%" >上行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">下行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网CS1利用率(%)</td>
+    <td  align="center" width="10%">全网CS2利用率(%)</td>
+    <td  align="center" width="10%">全网CS3利用率(%)</td>
+    <td  align="center" width="10%">全网CS4利用率(%)</td>
+    <td  align="center" width="10%">PDTCH请求成功率(%)</td>
+    <td  align="center" width="10%">PDCH尝试分配次数</td>
+    <td  align="center" width="10%">PDCH尝试分配失败次数</td>
+    <td  align="center" width="10%">一个16kb/s的pdtch(分组业务信道)切换到tch（电路业务信道）的次数</td>
+    <td  align="center" width="10%">Bss向sgsn发送的流量控制消息数</td>
+    <td  align="center" width="10%">Gprs_access_per_rach</td>
+    <td  align="center" width="10%">Gprs_access_per_pch</td>
+    <td  align="center" width="10%">Gprs_access_per_agch</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >a.compress_date</td>
+    <td >hour(main.first_result)</td>
+    <td >soa_get_nename(a.related_bsc,200)</td>
+    <td >soa_get_nename(a.related_site,201)</td>
+    <td >a.userlabel</td>
+    <td >c.cell_id</td>
+    <td >round(main.air_ul_blks_q3,3)</td>
+    <td >round(main.air_dl_blks_q3,3)</td>
+    <td >round(main.air_all_blks_q3,3)</td>
+    <td >round(main.air_cs1_r,3)</td>
+    <td >round(main.air_cs2_r,3)</td>
+    <td >round(main.air_cs3_r,3)</td>
+    <td >round(main.air_cs4_r,3)</td>
+    <td >round(main.chanl_req_suc_r,3)</td>
+    <td >main.pdch_ass_att</td>
+    <td >main.pdch_ass_fail</td>
+    <td >main.channel_ho</td>
+    <td >round(main.gbl_send_msg,0)</td>
+    <td >main.gprs_access_per_rach</td>
+    <td >main.gprs_access_per_pch</td>
+    <td >main.gprs_access_per_agch</td>
+ </tr>
+</table>
+<where>a.ne_type=300
+and a.region_id=-1483444163
+and extend(Main.first_result,year to day)=a.compress_date
+and a.compress_date=c.compress_date
+and a.ne_id=main.ne_id
+and a.ne_id=c.ne_id
+</where>
+<orderby>1,2,3,5</orderby>
+<limitclause>main.first_result</limitclause>
+<operateid>5070</operateid>
+</page>
+<page name="t_gprs_pf_CELL_1">
+  <viewname>tcc_ne_snap a,tpw_gprs_pf main,tcc_bts c</viewname>
+  <title>GPRS无线网络运行情况统计--CELL(全天)</title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >BSC名</td>
+    <td  align="center" width="10%">Site</td>
+    <td  align="center" width="10%">Cell_rdn</td>
+    <td  align="center" width="10%">Ci</td>
+    <td  align="center" width="10%" >上行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">下行应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网应用数据流量(KByte/小时)</td>
+    <td  align="center" width="10%">全网CS1利用率(%)</td>
+    <td  align="center" width="10%">全网CS2利用率(%)</td>
+    <td  align="center" width="10%">全网CS3利用率(%)</td>
+    <td  align="center" width="10%">全网CS4利用率(%)</td>
+    <td  align="center" width="10%">PDTCH请求成功率(%)</td>
+    <td  align="center" width="10%">PDCH尝试分配次数</td>
+    <td  align="center" width="10%">PDCH尝试分配失败次数</td>
+    <td  align="center" width="10%">一个16kb/s的pdtch(分组业务信道)切换到tch（电路业务信道）的次数</td>
+    <td  align="center" width="10%">Bss向sgsn发送的流量控制消息数</td>
+    <td  align="center" width="10%">Gprs_access_per_rach</td>
+    <td  align="center" width="10%">Gprs_access_per_pch</td>
+    <td  align="center" width="10%">Gprs_access_per_agch</td>
+  </tr>
+  <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >a.compress_date</td>
+    <td >hour(main.first_result)</td>
+    <td >soa_get_nename(a.related_bsc,200)</td>
+    <td >soa_get_nename(a.related_site,201)</td>
+    <td >a.userlabel</td>
+    <td >c.cell_id</td>
+    <td >round(main.air_ul_blks_q3,3)</td>
+    <td >round(main.air_dl_blks_q3,3)</td>
+    <td >round(main.air_all_blks_q3,3)</td>
+    <td >round(main.air_cs1_r,3)</td>
+    <td >round(main.air_cs2_r,3)</td>
+    <td >round(main.air_cs3_r,3)</td>
+    <td >round(main.air_cs4_r,3)</td>
+    <td >round(main.chanl_req_suc_r,3)</td>
+    <td >main.pdch_ass_att</td>
+    <td >main.pdch_ass_fail</td>
+    <td >main.channel_ho</td>
+    <td >round(main.gbl_send_msg,0)</td>
+    <td >main.gprs_access_per_rach</td>
+    <td >main.gprs_access_per_pch</td>
+    <td >main.gprs_access_per_agch</td>
+ </tr>
+</table>
+<where> a.ne_type=300
+and main.sum_level=1
+and a.region_id=-1483444163
+and extend(Main.first_result,year to day)=a.compress_date
+and a.compress_date=c.compress_date
+and a.ne_id=main.ne_id
+and a.ne_id=c.ne_id
+</where>
+<orderby>1,2,3,5</orderby>
+<limitclause>a.compress_date</limitclause>
+<operateid>5071</operateid>
+</page>
+<page name="t_vpm_c12002_all_half">
+  <viewname> tpa_half_sum a ,tcc_ne_snap b</viewname>
+  <title>全省GSM数字移动电话系统工作报告C1表(半速率和全速率汇总表) </title>
+<table border="1" width="100%" bordercolorlight="#4378b6" bordercolordark="#ffffff" cellspacing="1" cellpadding="1">
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">日期</td>
+    <td  align="center" width="10%">时段</td>
+    <td  align="center" width="10%" >网元名称</td>
+    <td  align="center" width="10%" >忙时话音信道试呼总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时半速率话音信道溢出总次数(不含切换)</td>
+    <td  align="center" width="10%" >忙时全速率话音信道溢出总次数(不含切换)</td>
+    <td  align="center" width="10%" >系统拥塞率</td>
+    <td  align="center" width="10%" >忙时半速率话音信道掉话总次数</td>
+    <td  align="center" width="10%" >忙时全速率话音信道掉话总次数 </td>
+    <td  align="center" width="10%" >忙时半速率话音信道总话务量</td>
+    <td  align="center" width="10%" >忙时全速率话音信道总话务量</td>
+    <td  align="center" width="10%" >忙时话音信道总话务量</td>
+ </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">指标</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >A1 </td>
+    <td  align="center" width="10%" >A2 </td>
+    <td  align="center" width="10%" >A3</td>
+    <td  align="center" width="10%" >A4</td>
+    <td  align="center" width="10%" >A5</td>
+    <td  align="center" width="10%" >A6 </td>
+    <td  align="center" width="10%" >A7 </td>
+    <td  align="center" width="10%" >A8</td>
+    <td  align="center" width="10%" >A9</td>
+  </tr>
+  <tr   bgcolor="#FFE2A6" height="30">
+    <td  align="center" width="10%">单位</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >－</td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >   </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >次 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+    <td  align="center" width="10%" >爱尔兰 </td>
+</tr>
+ <tr color="green" bgcolor="#FFFFFF">
+    <td type="datesc" >a.compress_date</td>
+    <td >hour(a.first_result)</td>
+    <td >soa_get_nename(a.ne_id,a.ne_type)</td>
+    <td >tch_call_req_nho</td>
+    <td >half_tch_ovrfl_nho</td>
+    <td >full_tch_ovrfl_nho</td>
+    <td >round((full_tch_ovrfl_nho+half_tch_ovrfl_nho)/ Tch_call_req_nho,3)</td>
+    <td >half_drop_tch</td>
+    <td >full_drop_tch</td>
+    <td >half_tch_traffic</td>
+    <td >round(full_tch_traffic,3)</td>
+    <td >round(tch_traffic,3)</td>   
+  </tr> 
+</table>
+<where>sum_level = 0 and a.ne_type =200 and s_hour=10 
+and a.ne_type=b.ne_type and a.ne_id=b.ne_id 
+and a.compress_date=b.compress_date</where>
+<regionclause>b.region_id</regionclause>
+<limitclause>a.first_result</limitclause> 
+<operateid>5061</operateid>
+</page>
+</report>

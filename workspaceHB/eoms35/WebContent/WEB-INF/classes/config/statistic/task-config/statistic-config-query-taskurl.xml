@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+
+
+	<!-- ********按(地州)统计 ********************** -->
+	<kpi-define><!-- 可重复 -->
+		<name>taskbycity</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param dbtype="datetime" page-name="beginTime"
+			query-name="est.sendtime" operate="&gt;" /><!-- dbtype={String,int,datetime} -->
+		<condition-param dbtype="datetime" page-name="endTime"
+			query-name="est.sendtime" operate="&lt;" /><!-- dbtype={String,int,datetime} -->
+		<condition-param dbtype="string" page-name="cityDeptId"
+			query-name="est.operatedeptid" operate="in" /><!-- dbtype={String,int,datetime} -->
+
+		<summary-define>
+			<id>s1</id>
+			<sequence></sequence>
+			<column>est.operatedeptid</column><!-- 汇总字段 -->
+			<id2name-service>tawSystemDeptDao</id2name-service><!-- 汇总字段 -->
+			
+		</summary-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id>
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est where est.status!=1 and est.status!=4
+				</list-hsql>
+			</field-define>
+
+		</query-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4 and completeflag = 2</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est where est.status!=1 and est.status!=4 and completeflag = 2
+				</list-hsql>
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f1)-f2</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est where est.linkid not in(select distinct nvl( t.linkid,'-') from est_tasksheet t where t.status!=1 and t.status!=4 and t.completeflag = 2)
+				</list-hsql>
+			</field-define>
+
+
+		</query-define>
+
+	</kpi-define>	
+	
+	
+<!--******************************************************************
+********    按(部门)统计   ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>taskbydept</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param dbtype="datetime" page-name="beginTime"
+			query-name="est.sendtime" operate="&gt;" /><!-- dbtype={String,int,datetime} -->
+		<condition-param dbtype="datetime" page-name="endTime"
+			query-name="est.sendtime" operate="&lt;" /><!-- dbtype={String,int,datetime} -->
+		<condition-param dbtype="string" page-name="sendDeptId"
+			query-name="pre.operatedeptid" operate="in" /><!-- dbtype={String,int,datetime} -->
+		<condition-param dbtype="string" page-name="revDeptId"
+			query-name="est.operatedeptid" operate="in" /><!-- dbtype={String,int,datetime} -->
+
+		<summary-define>
+			<id>s1</id><!--派发部门-->
+			<sequence></sequence>
+			<column>pre.operatedeptid</column><!-- 汇总字段 -->
+			<id2name-service>tawSystemDeptDao</id2name-service><!-- 汇总字段 -->
+
+		</summary-define>
+		<summary-define>
+			<id>s2</id><!--受理部门-->
+			<sequence></sequence>
+			<column>est.operatedeptid</column><!-- 汇总字段 -->
+			<id2name-service>tawSystemDeptDao</id2name-service><!-- 汇总字段 -->
+			
+		</summary-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4</where><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4
+				</list-hsql>
+			</field-define>
+
+		</query-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status=4</where><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 撤销数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status=4
+				</list-hsql>
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query3</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4 and est.linkstatus=1</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 已处理工单总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.linkstatus=1
+				</list-hsql>
+			</field-define>
+		</query-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query4</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4 and est.linkstatus=1 and est.completeflag = 2</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f4</id><!-- 已处理工单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.linkstatus=1 and est.completeflag = 2
+				</list-hsql>
+			</field-define>
+		</query-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query5</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4 and est.operatetype=4</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f5</id><!-- 驳回工单总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.operatetype=4
+				</list-hsql>
+			</field-define>
+		</query-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query6</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4 and est.operatetype=4 and est.completeflag = 2</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f6</id><!-- 驳回工单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid from est.status!=1 and est.status!=4 and est.operatetype=4 and est.completeflag = 2
+				</list-hsql>
+			</field-define>
+		</query-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query7</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4 and est.linkstatus=0</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f7</id><!-- 未处理工单总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.linkstatus=0
+				</list-hsql>
+			</field-define>
+		</query-define>
+
+		<query-define><!-- 可重复 -->
+			<name>query8</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid</from><!-- 不可为空 -->
+			<where>est.status!=1 and est.status!=4 and est.linkstatus=0 and est.completeflag = 2</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f8</id><!-- 未处理工单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.linkstatus=0 and est.completeflag = 2
+				</list-hsql>
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f9</id><!-- 未处理工单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f7)-f8</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.linkstatus=0 and est.linkid not in(select distinct nvl( t.linkid,'-') from est_tasksheet t where t.status!=1 and t.status!=4 and t.linkstatus=0 and t.completeflag = 2)
+				</list-hsql>
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f10</id><!-- 驳回工单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f5)-f6</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.operatetype=4 and est.linkid not in(select distinct nvl( t.linkid,'-') from est_tasksheet t where t.status!=1 and t.status!=4 and t.operatetype=4 and t.completeflag = 2)
+				</list-hsql>
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f11</id><!-- 已处理工单数-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f3)-f4</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_tasksheet est join est_tasksheet pre on pre.linkid=est.prelinkid where est.status!=1 and est.status!=4 and est.linkstatus=1 and est.linkid not in(select distinct nvl( t.linkid,'-') from est_tasksheet t where t.status!=1 and t.status!=4 and t.linkstatus=1 and t.completeflag = 2)
+				</list-hsql>
+			</field-define>
+
+		</query-define>
+
+	</kpi-define>	
+		
+</KpiConfig>

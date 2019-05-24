@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GBK"?>
+<dict-relations>
+	<dict-relation id="countryrelation" sourceDictKey="dict-plancontent"
+		sourceDictId="cardType">
+		<item-relation sourceItemId="0" destinationDictKey="dict-plancontent"
+			destinationDictId="country" destinationItemIds="0,1" />
+		<item-relation sourceItemId="1" destinationDictKey="dict-plancontent"
+			destinationDictId="province" destinationItemIds="0,1"/>
+	</dict-relation>
+</dict-relations>

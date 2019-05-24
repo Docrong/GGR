@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<dict-relations>
+	<dict-relation id="majorrelation" sourceDictKey="sample"
+		sourceDictId="major">
+		<item-relation sourceItemId="1" destinationDictKey="sample"
+			destinationDictId="major" destinationItemIds="2" />
+		<item-relation sourceItemId="2" destinationDictKey="sample"
+			destinationDictId="exigence" destinationItemIds="1,2">
+		</item-relation>
+	</dict-relation>
+</dict-relations>

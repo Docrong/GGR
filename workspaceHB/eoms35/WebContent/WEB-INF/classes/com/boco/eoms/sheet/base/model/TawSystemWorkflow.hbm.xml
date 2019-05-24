@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.base.model.TawSystemWorkflow"
+            table="taw_system_workflow"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+    <generator class="increment">
+
+    </generator>
+    </id>
+        <property
+        	column="name"
+            name="name"
+                length="255"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+        	column="flowId"
+            name="flowId"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+        	column="sheetid"
+            name="sheetid"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+        
+        <property
+        	column="mainServiceBeanId"
+            name="mainServiceBeanId"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="255"
+                not-null="false"
+                unique="true"
+        >
+         </property>
+        <property
+            name="roleId"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

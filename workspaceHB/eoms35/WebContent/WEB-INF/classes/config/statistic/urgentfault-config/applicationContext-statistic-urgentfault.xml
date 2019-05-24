@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- sample config file  , 
+			create new config file in your module -->
+<beans>
+	<!-- 配置信息类 -->
+	<bean id="statUrgentfaultConfigManager"
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
+		autowire="byName">
+		<!-- 统计算法配置文件路径 在子模块中新建配置文件 
+		<property name="configFilePath">
+			<value>classpath:config/statistic-config-query-task.xml</value>
+		</property>-->
+		
+		<!-- Excel配置文件路径 在子模块中新建配置文件
+		<property name="excelConfigFilePath">
+			<value>classpath:config/statistic-config-excel-task.xls</value>
+		</property>-->
+		
+		<!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
+		<property name="reloadConfig">
+			<value>false</value>
+		</property>
+		
+		<!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
+		<property name="excelConfigMap">
+           <map>
+              
+           	  <entry key="urgentfault-timeavg-kpi1"><value>classpath:config/statistic/urgentfault-config/statistic-config-excel-urgentfault-timeavg-kpi1.xls</value></entry>
+           	  <!--oracle-->
+           	  <entry key="urgentfault-std_oracle"><value>classpath:config/statistic/urgentfault-config/oracle/statistic-config-excel-urgentfault-std_oracle.xls</value></entry>
+              <entry key="urgentfault-intime-kpi2_oracle"><value>classpath:config/statistic/urgentfault-config/oracle/statistic-config-excel-urgentfault-intime-kpi2_oracle.xls</value></entry>
+             <entry key="urgentfault-timeavg-kpi1_oracle"><value>classpath:config/statistic/urgentfault-config/oracle/statistic-config-excel-urgentfault-timeavg-kpi1_oracle.xls</value></entry>
+           <!--informix-->
+           <entry key="urgentfault-std_informix"><value>classpath:config/statistic/urgentfault-config/informix/statistic-config-excel-urgentfault-std_informix.xls</value></entry>
+            <entry key="urgentfault-timeavg-kpi1_informix"><value>classpath:config/statistic/urgentfault-config/informix/statistic-config-excel-urgentfault-timeavg-kpi1_informix.xls</value></entry>
+           <entry key="urgentfault-intime-kpi2_informix"><value>classpath:config/statistic/urgentfault-config/informix/statistic-config-excel-urgentfault-intime-kpi2_informix.xls</value></entry>
+           </map>
+        </property>
+        
+        <!-- 配置quary算法文件路径 key为excel中配置的参数，value对应文件名称  -->
+        <property name="queryCongigMap">
+           <map>
+              
+           	 <entry key="urgentfault-timeavg-kpi1"><value>classpath:config/statistic/urgentfault-config/statistic-config-query-urgentfault-timeavg-kpi1.xml</value></entry>
+           <!--oracle-->
+           <entry key="urgentfault-std_oracle"><value>classpath:config/statistic/urgentfault-config/oracle/statistic-config-query-urgentfault-std_oracle.xml</value></entry>
+            <entry key="urgentfault-timeavg-kpi1_oracle"><value>classpath:config/statistic/urgentfault-config/oracle/statistic-config-query-urgentfault-timeavg-kpi1_oracle.xml</value></entry>
+           <entry key="urgentfault-intime-kpi2_oracle"><value>classpath:config/statistic/urgentfault-config/oracle/statistic-config-query-urgentfault-intime-kpi2_oracle.xml</value></entry>				
+           <!--informix-->
+           <entry key="urgentfault-std_informix"><value>classpath:config/statistic/urgentfault-config/informix/statistic-config-query-urgentfault-std_informix.xml</value></entry>
+            <entry key="urgentfault-timeavg-kpi1_informix"><value>classpath:config/statistic/urgentfault-config/informix/statistic-config-query-urgentfault-timeavg-kpi1_informix.xml</value></entry>
+           <entry key="urgentfault-intime-kpi2_informix"><value>classpath:config/statistic/urgentfault-config/informix/statistic-config-query-urgentfault-intime-kpi2_informix.xml</value></entry>  
+           </map>
+        </property>
+		
+		<!-- Excel解析类 		 
+			目前使用applicationContext-statistic-base.xml中的配置 
+			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
+		<property name="excelConverter" ref="statBaseExcelConverter"/>
+	</bean>
+	
+	<!-- 统计工具需要实现的类
+	<bean id= "istatisticTool"
+		class="com.boco.eoms.commons.statistic.task.config.ist.StatisticToolTask">
+	</bean>-->
+	
+	<!-- 总体管理类 -->
+	<bean id="statUrgentfaultManager" 
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
+		<property name="statConfigManager" ref="statUrgentfaultConfigManager" />
+
+		<!-- 详细列表的VO类  -->
+		<property name="statDetailVOName">
+			<value>com.boco.eoms.commons.statistic.base.vo.StatDetailVO</value>
+		</property>
+		
+		<!--<property name="statisticTool" ref="istatisticTool"></property>
+		
+		--><!-- 
+			以下3个对象目前使用applicationContext-statistic-base.xml中的配置 
+			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.
+		-->
+		<property name="statJdbcDAO" ref="statBaseJdbcDAO" />
+		<property name="statExcelConverter" ref="statBaseExcelConverter" />
+		<!--<property name="statDetailDAO" ref="statDetailDAOOracle" />-->
+
+		<property name="statExportExcel" ref="statBaseExportExcel"></property>
+		
+		<!-- 订制统计访问数据库接口 -->
+		<property name="customStatHibernateDAO" ref="customStatHibernateDAO"></property>
+		
+	</bean>
+
+	<!-- 统计工具任务工单实现类 -->
+	<bean id="urgentfaultStatMethod"
+		class="com.boco.eoms.commons.statistic.urgentfault.webapp.action.UrgentfaultStatMethodImpl">
+		<property name="statManager" ref="statUrgentfaultManager" />
+	</bean>
+	
+	<!--
+	<bean id="statAttributeUrl" class="com.boco.eoms.commons.statistic.task.util.TaskStatAttributeUrl" >
+		<property name="attributeUrl">
+			<props>
+				<prop key="tasksheet"><![CDATA[/tasksheet.pr.prShowQueryInfo.do?detail/isDetail=1]]></prop>
+				<prop key="2"><![CDATA[222]]></prop>
+			</props>
+		</property>
+	</bean>-->
+</beans>

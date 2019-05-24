@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.commons.statistic.customstat.model.CustomstatRemind" table="customstat_remind" dynamic-update="true"  dynamic-insert="true">
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="sub_id" length="32" name="subId" type="string"/>
+<property column="stat_name" length="32" name="statName" type="string"/>
+
+<property column="stat_type" length="5" name="statType" type="string"/>
+<property column="stat_year" length="10" name="year" type="string"/>
+<property column="stat_quarter" length="10" name="quarter" type="string"/>
+<property column="stat_month" length="10" name="month" type="string"/>
+<property column="stat_date" length="10" name="date" type="string"/>
+<property column="stat_week" length="10" name="week" type="string"/>
+
+<property column="save_user" length="100" name="saveUser" type="string"/>
+<property column="acceptdate" length="20" name="acceptDate" type="string"/>
+<property column="excelurl" length="100" name="excelUrl" type="string"/>
+<property column="accepttype" length="5" name="accepttype" type="string"/>
+
+</class>
+</hibernate-mapping>
+

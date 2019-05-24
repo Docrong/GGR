@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+   <bean id="overtimeTipDao" class="com.boco.eoms.sheet.overtimetip.dao.hibernate.OvertimeTipDAOImpl" autowire="byName"/>
+    <bean id="iOvertimeTipManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.sheet.overtimetip.service.impl.OvertimeTipManagerImpl">
+                <property name="dao" ref="overtimeTipDao"/>
+	        </bean>
+        </property>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,314 @@
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+  "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+
+<tiles-definitions>
+  <definition name="doc.mainLayout" path="/template/dutyLayout.jsp">
+    <put name="title"  value="Title"/>
+    <put name="body"   value="/template/main.jsp"/>
+  </definition>
+
+  <definition name="error.page" extends="doc.mainLayout">
+    <put name="title"  value="Error"/>
+    <put name="body"   value="/failure.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmAssignSub >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmAssignSub.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignSub Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignSub/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignSub.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignSub Summary"/>
+    <put name="body"   value="/duty/manager/TawRmAssignSub/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignSub.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmAssignSub"/>
+    <put name="body"   value="/duty/manager/TawRmAssignSub/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignSub.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmAssignSub"/>
+    <put name="body"   value="/duty/manager/TawRmAssignSub/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmAssignSub.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmAssignSub/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmAssignwork >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmAssignwork.select_room" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/select_room.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.select_time" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/select_time.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.assign" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/assign.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.save_assign" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/save_assign.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.query" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/query.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.query_result" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/query_result.jsp"/>
+  </definition>
+
+  <definition name="duty.manager.TawRmAssignwork.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Entry"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmAssignwork Summary"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmAssignwork"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmAssignwork.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmAssignwork"/>
+    <put name="body"   value="/duty/manager/TawRmAssignwork/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmAssignwork.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmAssignwork/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawUserRoom >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawUserRoom.new" extends="doc.mainLayout">
+    <put name="title"  value="TawUserRoom Entry"/>
+    <put name="body"   value="/duty/manager/TawUserRoom/new.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawUserRoom.saveNew" extends="doc.mainLayout">
+    <put name="title"  value="TawUserRoom Entry"/>
+    <put name="body"   value="/duty/manager/TawUserRoom/savenew.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawUserRoom.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawUserRoom Entry"/>
+    <put name="body"   value="/duty/manager/TawUserRoom/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawUserRoom.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawUserRoom Summary"/>
+    <put name="body"   value="/duty/manager/TawUserRoom/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawUserRoom.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawUserRoom"/>
+    <put name="body"   value="/duty/manager/TawUserRoom/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawUserRoom.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawUserRoom"/>
+    <put name="body"   value="/duty/manager/TawUserRoom/remove.jsp"/>
+  </definition>
+  <definition name="query.TawUserRoom.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawUserRoom/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmExchange >>>>>>>>>>>>>>> -->
+ <definition name="duty.manager.TawRmExchange.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmExchange Entry"/>
+    <put name="body"   value="/duty/manager/TawRmExchange/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmExchange.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmExchange Summary"/>
+    <put name="body"   value="/duty/manager/TawRmExchange/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmExchange.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmExchange"/>
+    <put name="body"   value="/duty/manager/TawRmExchange/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmExchange.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmExchange"/>
+    <put name="body"   value="/duty/manager/TawRmExchange/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmExchange.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmExchange/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmSysteminfo >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmSysteminfo.select_room" extends="doc.mainLayout">
+    <put name="title"  value="TawRmSysteminfo Entry"/>
+    <put name="body"   value="/duty/manager/TawRmSysteminfo/select_room.jsp"/>
+  </definition>
+
+  <definition name="duty.manager.TawRmSysteminfo.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmSysteminfo Entry"/>
+    <put name="body"   value="/duty/manager/TawRmSysteminfo/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmSysteminfo.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmSysteminfo Summary"/>
+    <put name="body"   value="/duty/manager/TawRmSysteminfo/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmSysteminfo.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmSysteminfo"/>
+    <put name="body"   value="/duty/manager/TawRmSysteminfo/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmSysteminfo.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmSysteminfo"/>
+    <put name="body"   value="/duty/manager/TawRmSysteminfo/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmSysteminfo.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmSysteminfo/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmGuestform >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmGuestform.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmGuestform Entry"/>
+    <put name="body"   value="/duty/manager/TawRmGuestform/entry.jsp"/>
+  </definition>
+
+  <definition name="duty.manager.TawRmGuestform.affirm" extends="doc.mainLayout">
+    <put name="title"  value="TawRmGuestform Affirm"/>
+    <put name="body"   value="/duty/manager/TawRmGuestform/affirm.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmGuestform.okey" extends="doc.mainLayout">
+    <put name="title"  value="TawRmGuestform List"/>
+    <put name="body"   value="/duty/manager/TawRmGuestform/okey.jsp"/>
+  </definition>
+
+  <definition name="duty.manager.TawRmGuestform.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmGuestform Summary"/>
+    <put name="body"   value="/duty/manager/TawRmGuestform/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmGuestform.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmGuestform"/>
+    <put name="body"   value="/duty/manager/TawRmGuestform/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmGuestform.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmGuestform"/>
+    <put name="body"   value="/duty/manager/TawRmGuestform/remove.jsp"/>
+  </definition>
+  <definition name="duty.query.TawRmGuestform.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/duty/query/TawRmGuestform/SearchByPK.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmGuestform.offduty" extends="doc.mainLayout">
+    <put name="title"  value="offduty"/>
+    <put name="body"   value="/duty/manager/TawRmGuestform/offduty.jsp"/>
+  </definition>
+
+  <!-- <<<<<<<<<<<<<< TawRmRecord >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmRecord.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmRecord Entry"/>
+    <put name="body"   value="/duty/manager/TawRmRecord/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmRecord.AddRecord" extends="doc.mainLayout">
+    <put name="title"  value="TawRmRecord Record"/>
+    <put name="body"   value="/duty/manager/TawRmRecord/AddRecord.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmRecord.devolve" extends="doc.mainLayout">
+    <put name="title"  value="TawRmRecord Devolve"/>
+    <put name="body"   value="/duty/manager/TawRmRecord/devolve.jsp"/>
+  </definition>
+
+
+  <definition name="duty.manager.TawRmRecord.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmRecord Summary"/>
+    <put name="body"   value="/duty/manager/TawRmRecord/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmRecord.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmRecord"/>
+    <put name="body"   value="/duty/manager/TawRmRecord/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmRecord.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmRecord"/>
+    <put name="body"   value="/duty/manager/TawRmRecord/remove.jsp"/>
+  </definition>
+  <definition name="duty.query.TawRmRecord.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/duty/query/TawRmRecord/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmRecordSub >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmRecordSub.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmRecordSub Entry"/>
+    <put name="body"   value="/duty/manager/TawRmRecordSub/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmRecordSub.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmRecordSub Summary"/>
+    <put name="body"   value="/duty/manager/TawRmRecordSub/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmRecordSub.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmRecordSub"/>
+    <put name="body"   value="/duty/manager/TawRmRecordSub/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmRecordSub.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmRecordSub"/>
+    <put name="body"   value="/duty/manager/TawRmRecordSub/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmRecordSub.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmRecordSub/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmDutyfile >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmDutyfile.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmDutyfile Entry"/>
+    <put name="body"   value="/duty/manager/TawRmDutyfile/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmDutyfile.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmDutyfile Summary"/>
+    <put name="body"   value="/duty/manager/TawRmDutyfile/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmDutyfile.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmDutyfile"/>
+    <put name="body"   value="/duty/manager/TawRmDutyfile/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmDutyfile.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmDutyfile"/>
+    <put name="body"   value="/duty/manager/TawRmDutyfile/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmDutyfile.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmDutyfile/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawRmChangeduty >>>>>>>>>>>>>>> -->
+  <definition name="duty.manager.TawRmChangeduty.select_time" extends="doc.mainLayout">
+    <put name="title"  value="TawRmChangeduty Entry"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/select_time.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmChangeduty.apply" extends="doc.mainLayout">
+    <put name="title"  value="TawRmChangeduty Entry"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/apply.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmChangeduty.save_apply" extends="doc.mainLayout">
+    <put name="title"  value="TawRmChangeduty Entry"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/save_apply.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmChangeduty.query_apply" extends="doc.mainLayout">
+    <put name="title"  value="TawRmChangeduty Entry"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/query_apply.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmChangeduty.transact_apply" extends="doc.mainLayout">
+    <put name="title"  value="TawRmChangeduty Entry"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/transact_apply.jsp"/>
+  </definition>
+
+
+  <definition name="duty.manager.TawRmChangeduty.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmChangeduty Entry"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/entry.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmChangeduty.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmChangeduty Summary"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/summary.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmChangeduty.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmChangeduty"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/view.jsp"/>
+  </definition>
+  <definition name="duty.manager.TawRmChangeduty.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmChangeduty"/>
+    <put name="body"   value="/duty/manager/TawRmChangeduty/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmChangeduty.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmChangeduty/SearchByPK.jsp"/>
+  </definition>
+
+</tiles-definitions>

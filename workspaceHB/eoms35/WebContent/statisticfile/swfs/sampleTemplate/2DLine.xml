@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+	<type>
+		<chart type="2DLine">
+			<values show="no" decimal_places="" thousand_separator="," prefix=""/>
+			<animation enabled="yes"/>
+			<names show="yes" rotation="0" placement="chart" position="bottom">
+               <font type="verdana_embed_tf" color="#808080"/>
+            </names>
+			<arguments show="no" decimal_places="0"/>
+			<line_chart >
+			   <block_names enabled="no"/>
+			</line_chart>
+		</chart>
+		<workspace>
+			<chart_area width="300" height="100" x="150" y="300" deep="0">
+				<border enabled="yes" color="0xB54001"/>
+			</chart_area>
+			<base_area enabled="no"/>
+			<name text=" "/>
+			<grid>
+				<values>
+					<lines color="0xB9B9B8"/>
+					<captions>
+						<font size="12" type="Tahoma"/>
+					</captions>
+					<ticks>
+						<major_ticks>
+							<lines length="5" color="0xFBF6EF" type="outside"/>
+						</major_ticks>
+					</ticks>
+				</values>
+				<arguments lines_step="1">
+					<lines color="0xB9B9B8"/>
+					<captions enabled="no">
+						<font size="12" type="Tahoma"/>
+					</captions>
+					<ticks>
+						<major_ticks type="outside">
+							<lines length="5" color="0xFBF6EF" type="outside"/>
+						</major_ticks>
+					</ticks>
+				</arguments>
+			</grid>
+
+			<x_axis smart="no"/>
+			<y_axis smart="yes"/>
+		</workspace>
+		
+		<legend enabled="yes" x="400" y="50"> 
+			<values enabled="no"/>
+			<header names="图例"/>
+			<names width="150"/>
+			<scroller enabled="no"/>
+			<border enabled="no"/>
+			<background enabled="no"/>
+		</legend>
+	</type>
+</root>

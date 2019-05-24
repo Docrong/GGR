@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.otherwise.model.TawRmTestcard"
+            table="taw_rm_testcard"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="cardType"
+            	column="card_type"
+                length="10"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fromProvince"
+            	column="from_province"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fromCity"
+            	column="from_city"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fromCountry"
+            	column="from_country"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fromOperator"
+            	column="from_operator"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="toProvince"
+            	column="to_province"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="toCity"
+            	column="to_city"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="toCountry"
+            	column="to_country"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="toOperator"
+            	column="to_operator"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="supplyer"
+            	column="supplyer"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="iccid"
+            	column="iccid"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="msisdn"
+            	column="msisdn"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="imsi"
+            	column="imsi"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="pin"
+            	column="pin"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="puk"
+            	column="puk"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="bootPassword"
+            	column="boot_password"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="operation"
+            	column="operation"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="openAccountDate"
+            	column="open_account_date"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="logoutDate"
+            	column="logout_date"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="takeOverDate"
+            	column="take_over_date"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="state"
+            	column="state"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="oldNumber"
+            	column="old_number"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="userId"
+            	column="user_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

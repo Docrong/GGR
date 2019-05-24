@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans> 
+		<form-bean
+		  name="mmsreportTemplateForm"
+		  type="com.boco.eoms.commons.mms.mmsreporttemplate.webapp.form.MmsreportTemplateForm"
+		/>
+		<form-bean
+		  name="reportTemplateForm"
+		  type="com.boco.eoms.commons.mms.reporttemplate.webapp.form.ReportTemplateForm"
+		/>
+		
+		<form-bean
+		  name="statreportForm"
+		  type="com.boco.eoms.commons.mms.statreport.webapp.form.StatreportForm"
+		/>
+		
+		<form-bean
+		  name="mmsreportForm"
+		  type="com.boco.eoms.commons.mms.mmsreport.webapp.form.MmsreportForm"
+		/>
+		<form-bean
+		  name="msssubscribeForm"
+		  type="com.boco.eoms.commons.mms.msssubscribe.webapp.form.MsssubscribeForm"
+		/>
+	</form-beans>
+	<!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+    </global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward
+		  name="success"
+		  path="/common/success.jsp"
+		  redirect="false"
+		  contextRelative="true"
+		/>
+		<forward
+		  name="nopriv"
+		  path="/common/nopriv.jsp"
+		  redirect="false"
+		  contextRelative="true"
+		/>
+		<forward
+		  name="fail"
+		  path="/common/failure.jsp"
+		  redirect="false"
+		  contextRelative="true"
+		/>
+    </global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+
+	<action-mappings>
+			<action
+		  path="/mmsreportTemplates"
+		  type="com.boco.eoms.commons.mms.mmsreporttemplate.webapp.action.MmsreportTemplateAction"
+		  name="mmsreportTemplateForm"
+		  scope="request"
+		  input="mainMenu"
+		  parameter="method"
+		  unknown="false"
+		  validate="false"
+		>
+			<set-property
+			  property="cancellable"
+			  value="true"
+			/>
+			<forward
+			  name="showPage"
+			  path="/WEB-INF/pages/mms/mmsreportTemplate/showPage.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="edit"
+			  path="/WEB-INF/pages/mms/mmsreportTemplate/mmsreportTemplateEdit.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="find"
+			  path="/WEB-INF/pages/mms/mmsreportTemplate/detail.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="add"
+			  path="/WEB-INF/pages/mms/mmsreportTemplate/mmsreportTemplateForm.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="list"
+			  path="/WEB-INF/pages/mms/mmsreportTemplate/mmsreportTemplateList.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			
+			<forward
+			  name="success_mmsreportTemplates"
+			  path="/WEB-INF/pages/mms/mmsreportTemplate/success.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+		</action>
+		<action
+		  path="/statreports"
+		  type="com.boco.eoms.commons.mms.statreport.webapp.action.StatreportAction"
+		  name="statreportForm"
+		  scope="request"
+		  input="mainMenu"
+		  parameter="method"
+		  unknown="false"
+		  validate="false"
+		>
+			<set-property
+			  property="cancellable"
+			  value="true"
+			/>
+			<forward
+			  name="showPage"
+			  path="/WEB-INF/pages/mms/statreport/showPage.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+
+			  name="detail"
+			  path="/WEB-INF/pages/mms/statreport/detail.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			
+			<forward
+
+			  name="edit"
+			  path="/WEB-INF/pages/mms/statreport/statreportForm.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="list"
+			  path="/WEB-INF/pages/mms/statreport/statreportList.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+		</action>
+		
+		<action
+		  path="/mmsreports"
+		  type="com.boco.eoms.commons.mms.mmsreport.webapp.action.MmsreportAction"
+		  name="mmsreportForm"
+		  scope="request"
+		  input="mainMenu"
+		  parameter="method"
+		  unknown="false"
+		  validate="false"
+		>
+			<set-property
+			  property="cancellable"
+			  value="true"
+			/>
+			<forward
+			  name="edit"
+			  path="/WEB-INF/pages/mms/mmsreport/mmsreportForm.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="showPage"
+			  path="/WEB-INF/pages/mms/mmsreport/showPage.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="detail"
+			  path="/WEB-INF/pages/mms/mmsreport/detail.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="list"
+			  path="/WEB-INF/pages/mms/mmsreport/mmsreportList.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+		</action>
+		<action
+		  path="/msssubscribes"
+		  type="com.boco.eoms.commons.mms.msssubscribe.webapp.action.MsssubscribeAction"
+		  name="msssubscribeForm"
+		  scope="request"
+		  input="mainMenu"
+		  parameter="method"
+		  unknown="false"
+		  validate="false"
+		>
+			<set-property
+			  property="cancellable"
+			  value="true"
+			/>
+			<forward
+			  name="add"
+			  path="/WEB-INF/pages/mms/msssubscribe/msssubscribeForm.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="modify"
+			  path="/WEB-INF/pages/mms/msssubscribe/msssubscribeModidy.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="list"
+			  path="/WEB-INF/pages/mms/msssubscribe/msssubscribeList.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="edit"
+			  path="/WEB-INF/pages/mms/msssubscribe/detail.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+						<forward
+			  name="showPage"
+			  path="/WEB-INF/pages/mms/msssubscribe/showPage.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			
+			<forward
+			  name="success_msssubscribe"
+			  path="/WEB-INF/pages/mms/msssubscribe/success.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			
+		</action>
+	</action-mappings>
+ 	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+ 	<message-resources parameter="config/statistic/base-config/ApplicationResources-statistic"
+		key="statistic" />
+	<message-resources parameter="config/mms/reporttemplate/applicationResource-reporttemplate"/>
+	<message-resources parameter="config/mms/statreport/applicationResource-statreport"/>
+	<message-resources parameter="config/mms/mmsreport/applicationResource-statreport"/>
+	<message-resources parameter="config/mms/mmsreporttemplate/applicationResource-mmsreporttemplate"/>
+	<message-resources parameter="config/mms/msssubscribe/applicationResource-msssubscribe"/>
+	<!-- ========== Validator plugin ===================  -->
+	<!-- 
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+		value="/WEB-INF/validator-rules.xml,
+		/WEB-INF/validator-rules-custom.xml,
+		/WEB-INF/validation.xml" />
+		</plug-in>
+	-->
+</struts-config>

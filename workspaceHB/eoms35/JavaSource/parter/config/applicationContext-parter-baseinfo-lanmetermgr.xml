@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <!--Lanmetermgr-DAO START-->
+    <bean id="lanmetermgrDao" class="com.boco.eoms.parter.baseinfo.lanmetermgr.dao.hibernate.LanmetermgrDaoHibernate" autowire="byName"/>
+    <!--Lanmetermgr-DAO END-->
+    <!--Lanmetermgr-START-->    
+    <bean id="IlanmetermgrManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.parter.baseinfo.lanmetermgr.service.impl.LanmetermgrManagerImpl">
+                <property name="lanmetermgrDao" ref="lanmetermgrDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--Lanmetermgr-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

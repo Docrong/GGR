@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Range 3DColumn">
+      <animation enabled="yes" speed="50" type="all" appearance="size"/>
+      <values show="yes" decimal_places="2" y_offset="-30">
+	    <font type="Tempus Sans ITC" size="14"/>
+	  </values>
+	  <names>
+	    <font type="Tempus Sans ITC"/>
+	  </names>
+	  <hints enabled="yes" text="{OPEN}, {CLOSE}" />
+	  <column_chart>
+	    <background color="0xFBAB00" auto_color="no"/>
+	  </column_chart>
+    </chart>
+    <workspace>
+	<y_axis smart="yes" />
+      <base_area enabled="no"/>
+      <chart_area width="380" deep="0" y="60" x="70">
+        <background enabled="no"/>
+        <border enabled="no"/>
+      </chart_area>
+      <background enabled="yes" type="gradient" gradient_type="linear">
+	    <colors>
+	      <color>0xD7D7D7</color>
+ 		  <color>0xFFFFFF</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="0"/>
+	  </background>
+      <grid>
+        <values>
+		  <lines color="0xC7C7C7" />
+		  <captions>
+		    <font size="12" color="0x878787" type="Tempus Sans ITC"/>
+		  </captions>
+		</values>
+      </grid>
+    </workspace>
+  </type>
+
+</root>

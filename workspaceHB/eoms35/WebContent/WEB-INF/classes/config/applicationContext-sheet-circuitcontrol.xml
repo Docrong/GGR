@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="ICircuitControlMainDAO"
+		class="com.boco.eoms.sheet.circuitcontrol.dao.hibernate.CircuitControlMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="ICircuitControlLinkDAO"
+		class="com.boco.eoms.sheet.circuitcontrol.dao.hibernate.CircuitControlLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ICircuitControlTaskDAO"
+		class="com.boco.eoms.sheet.circuitcontrol.dao.hibernate.CircuitControlTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="CircuitControlTask"
+		class="com.boco.eoms.sheet.circuitcontrol.model.CircuitControlTask" autowire="byName">
+     </bean>
+    <bean id="CircuitControlLink"
+		class="com.boco.eoms.sheet.circuitcontrol.model.CircuitControlLink"
+		autowire="byName" />
+	<bean id="CircuitControlMain"
+		class="com.boco.eoms.sheet.circuitcontrol.model.CircuitControlMain"
+		autowire="byName" />
+	<bean id="iCircuitControlTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitcontrol.service.impl.CircuitControlTaskManagerImpl">
+				<property name="taskModelObject" ref="CircuitControlTask" />
+				<property name="taskDAO">
+					<ref bean="ICircuitControlTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/circuitcontrolTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iCircuitControlFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitcontrol.service.impl.CircuitControlFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCircuitControlLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitcontrol.service.impl.CircuitControlLinkManagerImpl">
+				<property name="linkObject" ref="CircuitControlLink"/>
+				<property name="linkDAO">
+				  <ref bean="ICircuitControlLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCircuitControlMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitcontrol.service.impl.CircuitControlMainManagerImpl">
+			    <property name="mainObject" ref="CircuitControlMain" />
+				<property name="mainDAO">
+				 <ref bean="ICircuitControlMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iCircuitControlQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>CircuitControl</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/circuitcontrol-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iCircuitControlQo"
+		class="com.boco.eoms.sheet.circuitcontrol.qo.impl.CircuitControlQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="CircuitControlMain" />
+		<property name="poLink" value="CircuitControlLink" />
+		<property name="poTask" value="CircuitControlTask" />
+		<property name="aliasMain" value="circuitcontrolMain" />
+		<property name="aliasLink" value="circuitcontrolLink" />
+		<property name="aliasTask" value="circuitcontrolTask" />
+
+	</bean>
+
+	<bean id="CircuitControl" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitcontrol.webapp.action.CircuitControlMethod">
+				<property name="businessFlowService" >
+					<ref bean="iCircuitControlFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iCircuitControlLinkManager" />
+				<property name="mainService"
+					ref="iCircuitControlMainManager" />
+				<property name="sheetTask"
+					ref="CircuitControlTask" />
+				<property name="taskService"
+					ref="iCircuitControlTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/circuitcontrol-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+
+</beans>

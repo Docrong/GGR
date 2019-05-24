@@ -1,0 +1,232 @@
+<!--
+ 工单页面 页面互调html模板
+ version 0.1
+ 
+ 工单互调的使用:
+ 
+ 建立载入的容器，一般为含有id属性的div 例如:
+ <div id="inner"></div>
+ 
+ 点击按钮或选择下拉的事件触发后，使用如下JS：
+ eoms.util.appendPage(id,url);
+ 
+ 其中id为容器id，url为要载入的页面地址
+-->
+
+<html>
+<head>
+  <title></title>
+  <!-- HTTP 1.1 -->
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <!-- HTTP 1.0 -->
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <!-- Prevents caching at the Proxy Server -->
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <script type="text/javascript" charset="utf-8" src="../../scripts/local/zh_CN.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../scripts/base/eoms.js"></script>
+   <script type="text/javascript">
+	eoms.appPath = "../..";
+  </script>
+  <link rel="stylesheet" type="text/css" media="all" href="../../styles/default/theme.css" />
+  <script type="text/javascript" charset="utf-8" src="../../scripts/form/validation.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../scripts/widgets/calendar/calendar.js"></script>
+  <!-- EXT LIBS verson 1.1 -->
+  <script type="text/javascript" src="../../scripts/ext/adapter/ext/ext-base.js"></script>
+  <script type="text/javascript" src="../../scripts/ext/ext-all.js"></script>
+  <script type="text/javascript" src="../../scripts/adapter/ext-ext.js"></script>
+  <script type="text/javascript" src="../../scripts/ext/source/locale/ext-lang-zh_CN.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../scripts/ext/resources/css/ext-all.css" />
+  <link rel="stylesheet" type="text/css" href="../../styles/default/ext-adpter.css" />
+  <!-- EXT LIBS END -->  
+</head>
+
+<body>
+<div id="page"> 
+  <div id="content" class="clearfix">
+    <div id="main"><br/><br/>
+
+<!-- main.jsp start -->
+
+<script type="text/javascript">
+Ext.onReady(function() {
+	var tabs = new Ext.TabPanel('main');
+	tabs.addTab('sheetform','新业务试点工单');  
+	tabs.activate('sheetform');
+	
+	$('btns').show();
+	v = new eoms.form.Validation({form:'theform'});
+});
+
+function loadpage(sel){
+	var id = 'inner';
+	var url = '../test/ajax.htm';
+	if(sel.value == "1")
+	{
+	  //正式环境使用eoms.util.appendPage来载入JS
+	  //eoms.util.appendPage(id,url);
+	  
+	  //以下为测试环境使用
+	  Ajax.Request(url,
+	    {
+	  	  method:'get',
+		  onComplete:function(x){$(id).innerHTML = x.responseText;}
+	    }
+	  );
+	}
+	else{
+		$(id).innerHTML = "";
+	}
+}
+</script>
+
+<div id="sheetform" class="tabContent">
+  <form id="theform" name="theform">
+    <div id="idSpecial">
+    	
+<!-- baseinputmainhtml.jsp start -->		
+<table id="sheet" class="formTable">
+  <tr>
+  	<td class="label">工单标题</td>
+	<td colspan="3">
+		<input type="text" class="text max" alt="allowBlank:false,vtext:'请输入工单标题'"/>
+	</td>
+  </tr>
+  
+  <tr>
+    <td class="label">派发人</td>
+    <td class="content">管理员</td>
+    <td class="label">派单部门</td>
+    <td class="content">省公司</td>
+  </tr>
+  <tr>
+  	<td class="label">派单角色</td>
+	<td colspan="3">
+      <select id="sendRoleId" name="sendRoleId">
+      	<option value="8a1581b7168e67bc01168e6e0dfc0042">重大活动应急保障任务组织人(BOCOTEST-交换网-汇接网)</option>
+		<option value="8a1581b7168e67bc01168e6e0e0c0043">重大活动应急保障任务组织人(BOCOTEST-交换网-软交换)</option>
+		<option value="402881e8190ce56801190cece6a00002">我的虚拟组</option>
+		<option value="8a8092ea1636c487011636d064680006">安全维护组(BOCOTEST-无线专业-GPRS)</option>
+		<option value="8a1580ea193b0bff01193b1a3b8b0003">测试子角色类型(省公司-无线专业)</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">派单人联系方式</td>
+    <td>
+      <input type="text" class="text" name="sendContact" id="sendContact" value="" alt="allowBlank:false"/>
+    </td>
+    <td class="label">派往部门</td>
+    <td>
+      <input type="text" class="text"  readonly="readonly" name="showDept" id="${sheetPageName}showDept" value=""/>
+    </td>
+  </tr>
+  <tr>
+  	<td class="label">回复时限</td>
+  	<td>
+  		<input id="time1" type="text" class="text" readonly="readonly"
+			alt="vtype:'lessThen',link:'time2',vtext:'回复时限不能晚于处理时限'" 
+			onclick="popUpCalendar(this, this);"
+		/>
+  	</td>
+  	<td class="label">最终处理时限</td>
+  	<td>
+  		<input id="time2" type="text" class="text" readonly="readonly"
+			alt="vtype:'moreThen',link:'time1',vtext:'处理时限不能早于回复时限'" 
+			onclick="popUpCalendar(this, this);"
+		/>
+  	</td>
+  </tr>
+</table>
+<!-- baseinutmainhtml.jsp end-->
+
+<!-- inputmain.jsp start-->
+<br/>
+
+<table class="formTable">
+<tr>
+	<td class="label">一级专业</td>
+    <td>
+		<select id="mainSpecialtyType" name="mainSpecialtyType" class="select">
+			<option value="">请选择</option>
+			<option value="1010301">无线网</option>
+			<option value="1010302">交换网</option>
+			<option value="1010303">传输网</option>
+			<option value="1010304">数据网</option>
+			<option value="1010305">动环</option>
+			<option value="1010306">智能网</option>
+			<option value="1010307">应急与事件管理流程</option>
+			<option value="1010308">安全管理流程</option>
+		</select>
+    </td>
+	<td class="label">二级专业</td>
+    <td>
+		 <select id="mainSpecialtyType2" name="mainSpecialtyType2" class="select">
+		 	<option value="">请选择</option>
+		</select>
+    </td>
+  </tr>
+  <tr>
+  	<td class="label">是否有业务规范</td>
+    <td>
+		<select onchange="javascript:loadpage(this);" name="mainIfCriterion" id="mainIfCriterion">
+			<option id="">请选择</option>
+			<option value="1">已有</option>
+			<option value="0">没有</option>
+		</select>			
+    </td>
+	<td class="label">时限要求</td>
+	<td>
+		<input type="text" class="text" name="mainTimeLimit" id="mainTimeLimit" value="" readonly="readonly" onclick="popUpCalendar(this, this);"/>
+    </td>
+  </tr>
+
+  <tr>
+  	<td class="label">试点需求简述</td>
+    <td colspan="3">
+		<textarea name="mainPilotDesc" id="mainPilotDesc" class="textarea max" alt="allowBlank:false"></textarea>
+    </td>
+  </tr>
+
+  <tr>
+  	<td class="label">试点需求详细说明</td>
+    <td colspan="3">
+    <!--
+		<iframe id="IFrame1-mainPilotAccessories" name="IFrame1-mainPilotAccessories" class="uploadframe"
+			frameborder="0" scrolling="auto" src="/eoms/accessories/pages/upload.jsp?appId=newBusiness&filelist=null&idField=mainPilotAccessories"></iframe>
+<input type="hidden" name="mainPilotAccessories" id="mainPilotAccessories"/> 
+	-->
+    </td>
+  </tr>		  
+</table>
+<br/>
+<div id="inner"></div>
+
+<fieldset>
+  <legend>派往角色:新业务接口人</legend>
+  <input class="btn" type="button" name="test-chooser-btn" id="test-chooser-btn" value="选择派发对象">
+  <div id="test-chooser-show" class="viewer-list">
+    <div>未选择项目</div>
+  </div>
+</fieldset>
+
+<!-- inputmain.jsp end-->
+	
+<br/> 
+
+<div class="form-btns" style="display:none" id="btns">
+	<input type="submit" class="btn" value="保存"/>
+</div>
+
+</form>
+</div>
+<!-- main.jsp end-->
+
+<!-- footer_eoms.jsp start-->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<!-- footer_eoms.jsp end-->

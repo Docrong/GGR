@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://EomsLibray">
+	<xsd:complexType name="MainBO">
+		<xsd:annotation>
+      <xsd:documentation>wps中各个流程中，记录用户工单主信息的对象：mainBO，本类为所有mainBO对象的基类。所有流程中的lmainBO对象均需要继承该对象&#13;
+方法&#13;
+1.在自己的Library中的Dependencies中将eomsTemplate加入。&#13;
+2.是在BO--&gt;Properties--&gt;Desciption--&gt;Inherit from中选中本基类。&#13;
+3.在自己的mainbo中填入自己的特色字段</xsd:documentation>
+    </xsd:annotation>
+		<xsd:sequence>
+			<xsd:element minOccurs="0" name="id" type="xsd:string">
+				<xsd:annotation>
+          
+        <xsd:documentation>main表主键</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sheetId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>工单流水号，不同于主键，该字段为用户可见的字段</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="title" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>工单标题</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sheetAcceptLimit"
+				type="xsd:dateTime">
+				<xsd:annotation>
+          <xsd:documentation>工单的接单时限</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sheetCompleteLimit"
+				type="xsd:dateTime">
+				<xsd:annotation>
+          <xsd:documentation>工单的完成时限</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sheetAccessories"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>附件</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendTime"
+				type="xsd:dateTime">
+				<xsd:annotation>
+          
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendOrgType"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>派单对象类型&#13;
+1.部门&#13;
+2.角色&#13;
+3.个人</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendUserId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>派单对象的用户id</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendDeptId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>派单对象的部门id</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendRoleId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>派单对象的角色id</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendContact"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>派单人联系方式</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="endTime"
+				type="xsd:dateTime">
+				<xsd:annotation>
+          <xsd:documentation>工单的结束时间</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="endResult"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>结束信息（归档内容）</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="status" type="xsd:int">
+				<xsd:annotation>
+          <xsd:documentation>工单结束状态&#13;
+0未结束 1已归档 2已结束未归档</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="holdStatisfied"
+				type="xsd:int">
+				<xsd:annotation>
+          <xsd:documentation>归档满意度</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="endUserId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>结束工单的用户id</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="endDeptId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>结束工单的用户所属部门id</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="endRoleId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>结束工单的用户所属角色id</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="deleted" type="xsd:int">
+				<xsd:annotation>
+          <xsd:documentation>删除标志</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="piid" type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>工单所对应的流程实例号。</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="parentSheetName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>当A流程出发B流程时，A流程的工单名</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="parentSheetId"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>当A流程出发B流程时，A流程的工单流水号</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sheetTemplateName"
+				type="xsd:string">
+				<xsd:annotation>
+          <xsd:documentation>模板名称（预留）</xsd:documentation>
+        </xsd:annotation>
+			</xsd:element>
+			<xsd:element minOccurs="0" name="correlationKey"
+				type="xsd:string" />
+			<xsd:element minOccurs="0" name="parentCorrelation"
+				type="xsd:string" />
+			<xsd:element minOccurs="0" name="toDeptId"
+				type="xsd:string" />
+			<xsd:element minOccurs="0" name="templateFlag"
+				type="xsd:int">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="cancelReason"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendYear" type="xsd:int"></xsd:element>
+			<xsd:element minOccurs="0" name="sendMonth"
+				type="xsd:int">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="sendDay" type="xsd:int"></xsd:element>
+			<xsd:element minOccurs="0" name="parentPhaseName"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element minOccurs="0" name="invokeMode"
+				type="xsd:string">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

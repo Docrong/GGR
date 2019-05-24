@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.sheet.commonfaultpack.model.CommonFaultPackMain"
+		table="CommonFaultPack_main">
+		<id name="id" column="id">
+			<generator class="uuid.hex" />
+		</id>
+		<property name="mainId" />
+
+		<property name="title" />
+
+		<property name="mainApplySheetId" />
+
+		<property name="mainAlarmLevel" />
+
+		<property name="mainIfUrgentFault" />
+
+		<property name="mainFaultResponseLevel" />
+
+		<property name="mainAlarmNum" />
+
+		<property name="mainAlarmState" />
+
+		<property name="mainAlarmDesc" />
+
+		<property name="mainAlarmSolveDate" />
+
+		<property name="mainEquipmentFactory" />
+
+		<property name="mainEquipmentName" />
+
+		<property name="mainEquipmentModel" />
+
+		<property name="mainFaultGenerantTime" />
+
+		<property name="mainIfAffectOperation" />
+
+		<property name="mainFaultDiscoverableMode" /> 
+
+		<property name="mainAlarmId" />
+
+		<property name="mainAlarmSource" />
+
+		<property name="mainAlarmLogicSort" />
+
+		<property name="mainAlarmLogicSortSub" />
+
+		<property name="mainFaultSpecialty" />
+
+		<property name="mainEquipmentType" />
+
+		<property name="mainNetName" />
+
+		<property name="mainFaultGenerantProvince" />
+
+		<property name="mainFaultGenerantCity" />
+
+		<property name="mainNetSortOne" />
+
+		<property name="mainNetSortTwo" />
+
+		<property name="mainNetSortThree" />
+  
+		<property name="replyFaultAvoidTime" />
+
+		<property name="replyOperRenewTime" />
+
+		<property name="replyAffectTimeLength" />
+
+		<property name="replyDealStep" />
+		
+		<property name="replyFaultDealResult" />
+
+		<property name="replyFaultReasonSort" />
+
+		<property name="replyFaultReasonSubsection" />
+
+        <property name="replyIfGreatFault" />
+
+		<property name="replyIfExcuteNetChange" />
+
+		<property name="replyIfFinallySolveProject" />
+		
+		<property name="mainCheckTime" />
+		
+		<property name="mainLocatinf" />
+		
+	</class>
+
+</hibernate-mapping>
+

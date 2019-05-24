@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.boco.eoms.duty.model.TawRmExchangePer" table="TAW_RM_EXCHANGE_PER" >
+        <id name="id" type="java.lang.String">
+            <column name="ID" length="32" />
+            <generator class="uuid.hex" />
+        </id>
+        <property name="workSerial" 
+            column="WORKSERIAL" precision="22" scale="0" >
+        </property>
+        <property name="prAlarmNums" 
+            column="PR_ALARMNUMS" precision="22" scale="0" not-null="false" >
+        </property>
+        <property name="alAlarmNum"
+            column="AL_ALARMNUM" precision="22" scale="0" not-null="false" >
+        </property>
+        <property name="noAlarmNum" 
+            column="NO_ALARMNUM" precision="22" scale="0" not-null="false" >
+        </property>
+        <property name="sendSheetNum" 
+            column="SENDSHEETNUM" precision="22" scale="0" not-null="false" >
+        </property>
+        <property name="leaveSheetNum"
+            column="LEAVESHEETNUM" precision="22" scale="0" not-null="false" >
+        </property>
+        <property name="exchangeTime" 
+            column="EXCHANGETIME" length="100" not-null="false" >
+        </property>
+        <property name="operationalState" 
+            column="OPERATIONALSTATE" length="500" not-null="false" >
+        </property>
+        <property name="difLinetype" 
+            column="DIFLINETYPE" length="200" not-null="false" >
+        </property>
+        <property name="yeLinetype" 
+            column="YLINETYPE" length="200" not-null="false" >
+        </property>
+        <property name="leaveSheetNums"
+            column="LEAVESHEETNUMS" precision="22" scale="0" not-null="false" >
+        </property>
+        <property name="chiefSheetNum" 
+            column="CHIEFSHEETNUM" precision="22" scale="0" not-null="false" >
+        </property>
+        <property name="purpose" 
+            column="PURPOSE" length="500" not-null="false" >
+        </property>
+        <property name="completeFlag" 
+            column="COMPLETE_FLAG" length="50" not-null="false" >
+        </property>
+        <property name="toLinetype" 
+            column="TLINETYPE" length="200" not-null="false" >
+        </property>
+        <property name="balance" 
+            column="BALANCE" length="50" not-null="false" >
+        </property>
+        <property name="attentive" 
+            column="ATTENTIVE" length="500" not-null="false" >
+        </property>
+        <property name="city" 
+            column="CITY" length="100" not-null="false" >
+        </property>
+        <property name="sheetId" 
+            column="SHEETID" length="32" not-null="false" >
+        </property>
+        <property name="reason" 
+            column="REASON" length="500" not-null="false" >
+        </property>
+        <property name="person" 
+            column="PERSON" length="50" not-null="false" >
+        </property>
+        <property name="phone" 
+            column="PHONE" length="50" not-null="false" >
+        </property>
+        <property name="rate" 
+            column="RATE" length="100" not-null="false" >
+        </property>
+        <property name="flag" 
+            column="FLAG" length="50" >
+        </property>
+        <property name="receiver" 
+            column="RECEIVER" length="255" >
+        </property>
+        
+    </class>
+</hibernate-mapping>

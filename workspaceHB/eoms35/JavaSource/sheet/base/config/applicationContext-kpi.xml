@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+   
+    <!--ICollectColumnQuery.java START-->
+    <bean id="ICollectColumnQuery" class="com.boco.eoms.sheet.base.kpi.dao.hibernate.CollectColumnQueryImpl" autowire="byName"/>
+    <!--ICollectColumnQuery.java END-->
+    
+    <!--TawSystemWorkflow-DAO START-->
+    <bean id="IBaseKPIDAO" class="com.boco.eoms.sheet.base.kpi.dao.hibernate.BaseKPIDAOImpl" autowire="byName"/>
+    <!--TawSystemWorkflow-DAO END-->
+
+</beans>

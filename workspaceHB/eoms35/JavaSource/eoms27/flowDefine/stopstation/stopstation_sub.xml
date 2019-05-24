@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_6.dtd">
+<workflow>
+  <initial-actions>
+    <action id="4" name="NewSend" view="派发">
+      <results>
+        <unconditional-result id="4" old-status="Finished" status="Queued" step="3" />
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="3" name="包机人">
+      <actions>
+        <action id="12" name="Accept" view="受理">
+          <results>
+            <unconditional-result id="12" old-status="Finished" status="Queued" step="10"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="10" name="确认受理">
+      <actions>
+        <action id="15" name="BackToUp" view="回复">
+          <results>
+            <unconditional-result id="15" old-status="Finished" status="Queued" step="13"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="13" name="派单人">
+    </step>
+  </steps>
+</workflow>

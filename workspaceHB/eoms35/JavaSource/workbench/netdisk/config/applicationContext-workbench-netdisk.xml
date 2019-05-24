@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- Add new Managers here -->
+    
+    <!--TawWorkbenchNetDisk-DAO START-->
+    <bean id="tawWorkbenchNetDiskDao" class="com.boco.eoms.workbench.netdisk.dao.hibernate.TawWorkbenchNetDiskDaoHibernate" autowire="byName"/>
+    <!--TawWorkbenchNetDisk-DAO END-->
+    <!--TawWorkbenchNetDisk-START-->    
+    <bean id="ItawWorkbenchNetDiskMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.workbench.netdisk.mgr.impl.TawWorkbenchNetDiskMgrImpl">
+                <property name="tawWorkbenchNetDiskDao" ref="tawWorkbenchNetDiskDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawWorkbenchNetDisk-END-->
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

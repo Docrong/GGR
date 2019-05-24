@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="common" description="公共查询字段">
+		<item id="001" name="main.id" description="main表主键" />			
+		<item id="002" name="main.sheetId" description="工单流水号" />
+		<item id="003" name="main.title" description="工单主题" />
+		<item id="004" name="main.sendTime" description="派单时间" />
+		<item id="005" name="main.sheetAcceptLimit" description="受理时限" />
+		<item id="006" name="main.sheetCompleteLimit" description="完成时限" />
+		<item id="007" name="main.status" description="工单状态" />	
+					
+	</dict>
+	<dict id="CommonFault" description="故障流程">
+		<item id="001" name="main.mainFaultResponseLevel" description="故障响应级别" />		
+	</dict>
+</dicts>

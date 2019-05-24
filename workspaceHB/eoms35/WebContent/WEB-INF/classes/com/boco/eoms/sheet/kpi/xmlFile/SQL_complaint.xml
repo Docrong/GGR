@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kpi>
+	<cnname>工单流水号,主题,投诉地区,投诉内容,派单部门,部门电话,客服id,客户电话,是否大面积投诉,重复投诉次数,投诉分类,最终处理结果,新增工单操作时间,处理时限,T1操作时间,T1是否超时,一级处理人,T1处理部门,T2操作时间,T2是否超时,二级处理人,T2处理部门,处理级别,问题原因,解决措施,质检操作时间,质检结果,是否一次质检通过</cnname>
+	<enname>sheetid,title,customattribution,complaintdesc,senddeptid,bdeptcontactphone,parentcorrelation,customphone,bdeptcontactphone1,repeatcomplainttimes,getcomplainttype,endresult,operatetime,nodecompletelimit,operatetimeT1,completeflagT1,operateuseridT1,operatedeptidT1,operatetimeT2,completeflagT2,operateuseridT2,operatedeptidT2,distinction,dealdesc,issueeliminatreason,operatetime1,linkcheckidea,operatetype1</enname>
+	<a>,url,</a>
+	<sql>
+	select m.sheetid sheetid,
+       m.title title,
+       m.customattribution customattribution,
+       m.complaintdesc complaintdesc,
+       getdeptname(m.senddeptid) senddeptid,
+       bdeptcontactphone bdeptcontactphone,
+       'id=' || parentcorrelation parentcorrelation,
+       customphone customphone,
+       gettypename(m.bdeptcontactphone) bdeptcontactphone1,
+       repeatcomplainttimes repeatcomplainttimes,
+       getcomplainttype(m.complainttype1,
+                        m.complainttype2,
+                        m.complainttype,
+                        m.complainttype4,
+                        m.complainttype5,
+                        m.complainttype6,
+                        m.complainttype7) getcomplainttype,
+       m.endresult endresult,
+       to_char(l0.operatetime, 'yyyy-mm-dd hh24:mi:ss') operatetime,
+       to_char(l0.nodecompletelimit, 'yyyy-mm-dd hh24:mi:ss') nodecompletelimit,
+       l1.operatetime - 0 operatetimeT1,
+       decode(l1.completeflag, 2, '超时', '未超时') completeflagT1,
+       getusername(l1.operateuserid) operateuseridT1,
+       getdeptname(l1.operatedeptid) operatedeptidT1,
+       l2.operatetime - 0 operatetimeT2,
+       decode(l1.completeflag, 2, '超时', '未超时') completeflagT2,
+       getusername(l2.operateuserid) operateuseridT2,
+       getdeptname(l2.operatedeptid) operatedeptidT2,
+       decode(l2.id, '', 'T1处理', 'T2处理') distinction,
+       decode(l2.dealdesc, '', l1.dealdesc, l2.dealdesc) dealdesc,
+       decode(l2.issueeliminatreason,
+              '',
+              l1.issueeliminatreason,
+              l2.issueeliminatreason) issueeliminatreason,
+       decode(l2.dealresult,
+              '101061101',
+              '解决',
+              '101061102',
+              '未解决',
+              decode(l1.dealresult,
+                     '101061101',
+                     '解决',
+                     '101061102',
+                     '未解决',
+                     '')),
+       to_char(l3.operatetime, 'yyyy-mm-dd hh24:mi:ss') operatetime1,
+       l3.linkcheckidea linkcheckidea,
+       decode(l3.operatetype, '56', '是', '54', '否', '未质检') operatetype1
+  from complaint_main m,
+       complaint_link l0,
+       complaint_link l1,
+       complaint_link l2,
+       complaint_link l3,
+       (select l2.mainid, max(l2.operatetime) operatetime
+          from complaint_link l2, complaint_main m2
+         where m2.sendtime between
+               to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
+               to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
+           and m2.id = l2.mainid
+           and l2.activetemplateid = 'FirstExcuteHumTask'
+           and l2.operatetype != 0
+         group by l2.mainid) T1,
+       (select l2.mainid, max(l2.operatetime) operatetime
+          from complaint_link l2, complaint_main m2
+         where m2.sendtime between
+               to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
+               to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
+           and m2.id = l2.mainid
+           and l2.activetemplateid = 'SecondExcuteHumTask'
+           and l2.operatetype = 46
+         group by l2.mainid) T2,
+       (select min(l3.operatetime) operatetime, l3.mainid
+          from complaint_link l3, complaint_main m3
+         where m3.sendtime between
+               to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
+               to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
+           and m3.id = l3.mainid
+           and (l3.operatetype = '54' or l3.operatetype = '56')
+         group by l3.mainid) Tzj
+ where m.sendtime between to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
+       to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
+   and m.deleted = '0'
+   and status &gt;= 0
+   and m.id = l0.mainid
+   and l0.operatetype = '0'
+   and l0.activetemplateid is null
+   and m.id = t1.mainid(+)
+   and t1.operatetime = l1.operatetime(+)
+   and t1.mainid = l1.mainid(+)
+   and m.id = t2.mainid(+)
+   and t2.operatetime = l2.operatetime(+)
+   and t2.mainid = l2.mainid(+)
+   and m.id = Tzj.mainid(+)
+   and Tzj.operatetime = l3.operatetime(+)
+   and Tzj.mainid = l3.mainid(+)
+   and (l1.operatedeptid like '{2}' or l2.operatedeptid like '{2}')
+	</sql>
+</kpi>

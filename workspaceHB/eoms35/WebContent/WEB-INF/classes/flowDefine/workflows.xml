@@ -1,0 +1,14 @@
+<workflows>
+   <workflow name="town_range" type="resource" location="flowDefine/town_range/town_range.xml" />
+   <workflow name="city_create" type="resource" location="flowDefine/city_create/city_create.xml" />
+   <workflow name="city_delete" type="resource" location="flowDefine/city_delete/city_delete.xml" />
+   <workflow name="city_modify" type="resource" location="flowDefine/city_modify/city_modify.xml" />
+   <workflow name="city_modifynet" type="resource" location="flowDefine/city_modifynet/city_modifynet.xml" />
+   <workflow name="town_pretreatment" type="resource" location="flowDefine/town_pretreatment/town_pretreatment.xml" />
+   <workflow name="town_delete" type="resource" location="flowDefine/town_delete/town_delete.xml" />
+   <workflow name="town_modify" type="resource" location="flowDefine/town_modify/town_modify.xml" />
+   <workflow name="stopstation" type="resource" location="flowDefine/stopstation/stopstation.xml" />
+   <workflow name="stopstation_sub" type="resource" location="flowDefine/stopstation/stopstation_sub.xml" />
+   <workflow name="newstation" type="resource" location="flowDefine/newstation/newstation.xml" />
+   <workflow name="newstation_sub" type="resource" location="flowDefine/newstation/newstation_sub.xml" />
+ </workflows>

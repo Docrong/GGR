@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="ResourceListSelectionDialog.showDerived" value="false"/>
+	<section name="CleanDialogSettings">
+		<item key="TOGGLE_SELECTED" value="false"/>
+		<item key="DIALOG_X_ORIGIN" value="650"/>
+		<item key="DIALOG_HEIGHT" value="441"/>
+		<item key="DIALOG_Y_ORIGIN" value="222"/>
+		<item key="DIALOG_WIDTH" value="621"/>
+	</section>
+	<section name="org.eclipse.ui.views.task">
+	</section>
+	<section name="ResourceListSelectionDialogSettings">
+		<item key="DIALOG_FONT_NAME" value="1|Microsoft YaHei UI|9|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Microsoft YaHei UI"/>
+		<item key="DIALOG_X_ORIGIN" value="732"/>
+		<item key="DIALOG_HEIGHT" value="749"/>
+		<item key="DIALOG_Y_ORIGIN" value="26"/>
+		<item key="DIALOG_WIDTH" value="748"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+	</section>
+</section>

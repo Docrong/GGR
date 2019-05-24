@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<vasp:MM7Config xmlns:vasp="http://mms.chinamobile.com/mm7ConfigSchema">
+	<AuthenticationMode>1</AuthenticationMode>
+	<UserName>eomsmms</UserName>
+	<Password>eoms123</Password>
+	<MaxMessageSize>100000</MaxMessageSize>
+	<LogPath>/space/eomswap2/tomcat5mms/tomcat5/webapps/TestMMSConfig/vas_log</LogPath>
+	<logLevel>1</logLevel>
+	<Charset>GB2312</Charset>
+	<mmscURL>http://10.100.1.50:8088/vas</mmscURL>
+	<mmscIP>10.100.1.50:8088</mmscIP>
+	<MmscID>928001</MmscID>
+	<UseSSL>true</UseSSL>
+	<ListenIP>10.101.16.26</ListenIP>
+	<ListenPort>1088</ListenPort>
+	<BackLog>50</BackLog>
+	<TimeOut>20000</TimeOut>
+	<ReSendCount>2</ReSendCount>
+	<LogNum>100</LogNum>
+	<LogInterval>120</LogInterval>
+	<LogSize>1000</LogSize>
+</vasp:MM7Config>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.softchange.model.SoftChangeLink"
+            table="SoftChange_link"
+    >
+
+    <id
+        name="id"
+        column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+       <property name="mainId" />
+       	<property name="nodeAcceptLimit" />
+		<property name="nodeCompleteLimit" />
+		<property name="operaterContact" />        
+		<property name="operateType" />
+		<property name="operateTime" />
+		<property name="operateOrgType" />
+		<property name="operateUserId" />
+		<property name="operateDeptId" />
+		<property name="operateRoleId" />
+		<property name="toOrgType" />
+		<property name="toOrgUserId" />
+		<property name="toOrgDeptId" />
+		<property name="toOrgRoleId" />
+		<property name="acceptFlag" />
+		<property name="acceptTime" />
+		<property name="completeFlag" />
+		<property name="completeTime" />
+		<property name="preLinkId" />
+		<property name="parentLinkId" />
+		<property name="firstLinkId" />
+		<property name="piid" />
+		<property name="aiid" />
+		<property name="activeTemplateId" />
+		<property name="nodeTemplateName" />
+		<property name="correlationKey" />
+		<property name="nodeAccessories" />
+		<property name="templateFlag" />
+		<property name="templateName" />
+		<property name="templateCreateUserId" />
+		<property name="transferReason" />
+		<property name="remark" />
+	    <property name="operateYear" />
+		<property name="operateMonth" />
+		<property name="operateDay" />
+		
+		
+		<property name="linkCompleteLimitTime" />
+
+		<property name="linkDesignComment" />
+
+		<property name="linkInvolvedProvince" />
+
+		<property name="linkInvolvedCity" />
+
+		<property name="linkDesignKey" />
+
+		<property name="linkRiskEstimate" />
+
+		<property name="linkEffectAnalyse" />
+
+		<property name="linkIsCheck" />
+
+		<property name="linkCheckComment" />
+
+		<property name="linkPermitResult" />
+
+		<property name="linkPermitIdea" />
+
+		<property name="linkManager" />
+
+		<property name="linkContact" />
+
+		<property name="linkPlanStartTime" />
+
+		<property name="linkPlanEndTime" />
+
+		<property name="linkCellInfo" />
+
+		<property name="linkIsEffectBusiness" />
+
+		<property name="linkEffectCondition" />
+
+		<property name="linkNetManage" />
+
+		<property name="linkBusinessDept" />
+
+		<property name="linkIsSendToFront" />
+
+		<property name="linkCutResult" />
+
+		<property name="linkIsPlan" />
+
+		<property name="linkCutComment" />
+
+		<property name="linkBusinessComment" />
+
+		<property name="linkTestResult" />
+
+		<property name="linkAlertRecord" />
+
+		<property name="linkUnnormalComment" />
+
+		<property name="linkCutAnalyse" />
+
+		<property name="linkIsUpdateWork" />
+
+		<property name="linkWorkUpdateAdvice" />
+
+		<property name="linkSoftVersionUpdate" />
+
+		<property name="linkNextPlan" />
+
+		<property name="linkIsNeedProject" />
+
+		<property name="linkProjectComment" />
+		
+		<property name="linkFailedReason" />
+
+</class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts description="地市集客业务工单">
+	<dict id="mainOperateType" description="处理方法">
+		<item id="0" name="提交申请" description="提交申请" />
+		<item id="22" name="草稿保存" description="DraftTask" />
+		<item id="3" name="草稿派发" description="草稿派发" />
+		<item id="6" name="处理回复通过" description="处理回复通过" />
+		<item id="7" name="处理回复不通过" description="处理回复不通过" />
+		<item id="4" name="驳回上一级" description="驳回上一级" />
+		<item id="54" name="重新派发" description="重新派发" />
+		<item id="18" name="归档" description="归档" />
+		<item id="8" name="移交" description="移交" />
+		<item id="88" name="转审" description="转审" />
+		<item id="30" name="会审" description="会审" />	
+		<item id="-13" name="强制归档" description="强制归档" />	
+		<item id="-14" name="强制作废" description="强制作废" />
+		<item id="-12" name="作废" description="作废" />
+		<item id="-10" name="抄送" description="抄送" />	
+		<item id="-15" name="抄送确认" description="抄送确认" />
+		<item id="9" name="阶段回复" description="阶段回复" />	
+		<item id="-11" name="阶段通知" description="阶段通知" />
+		<item id="10" name="分派" description="分派" />	
+		<item id="61" name="确认受理" description="确认受理" />
+		<item id="11" name="分派回复" description="分派回复" />
+	  
+
+		<item id="102" name="审核通过" description="审核通过" />		
+		
+		
+		<item id="103" name="审核通过" description="审核通过" />		
+		
+		
+		<item id="104" name="设计通过" description="设计通过" />		
+		
+		
+		<item id="105" name="审核通过" description="审核通过" />		
+		
+		
+		<item id="106" name="施工" description="施工" />		
+		
+		
+		<item id="107" name="施工完成" description="施工完成" />		
+		
+		
+		<item id="108" name="验收通过" description="验收通过" />		
+		
+		
+		<item id="109" name="审核通过" description="审核通过" />		
+		
+		
+		<item id="110" name="审核通过" description="审核通过" />		
+		
+		
+		<item id="111" name="回复通过" description="回复通过" />		
+		
+		
+		<item id="112" name="回复不通过" description="回复不通过" />		
+		
+		
+				
+	</dict>
+	
+	<dict id="activeTemplateId" description="处理方法">
+	  
+
+		<item id="OrderExamine" name="订单审核" description="订单审核" />
+
+		<item id="NetOrderExamine" name="网管订单审核" description="网管订单审核" />
+
+		<item id="SchemeDesign" name="方案设计" description="方案设计" />
+
+		<item id="SubmitExamine" name="提交审核" description="提交审核" />
+
+		<item id="ExamineScheme" name="审核方案" description="审核方案" />
+
+		<item id="Construction" name="施工" description="施工" />
+
+		<item id="SubmitCheck" name="提交验收" description="提交验收" />
+
+		<item id="CheckExamine" name="验收审核" description="验收审核" />
+
+		<item id="OpenComplete" name="开通完成" description="开通完成" />
+
+		<item id="AffirmHumTask" name="回复建单人" description="回复建单人" />
+
+		<item id="HoldTask" name="归档" description="归档" />
+
+
+		<item id="" name="新增工单" description="新增工单" />
+		<item id="cc" name="抄送" description="抄送" />
+		<item id="reply" name="阶段回复" description="阶段回复" />
+		<item id="advice" name="阶段通知" description="阶段通知" />	
+		<item id="DraftTask" name="草稿" description="草稿" />
+		<item id="RejectTask" name="被驳回" description="被驳回" />
+	</dict>
+</dicts>

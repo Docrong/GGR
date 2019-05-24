@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>网络维护人员按照用工类型分类统计表</title>
+	<est-module-id>43</est-module-id>
+
+	<!-- 用工类型 -->
+	<kpi-define><!-- 可重复 -->
+		<name>operuserByWorklevel</name>
+		<kpi-caption></kpi-caption>
+		<condition-param page-name="param1" />
+
+		<summary-define>
+			<id>s1</id><!---->
+			<sequence></sequence>
+			<column>'ww'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+		
+		<auto-append-groupby>false</auto-append-groupby>
+
+		<stat-detail-vo>
+			com.boco.eoms.commons.statistic.operuser.vo.StatDetailVOSOperuser
+		</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<!--<from>	(select count(*) num,area_id,dept_id,type,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.dept_id) dept_name,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.area_id)area_name 
+				from pnr_partner_apparatus t where dept_id like '%@dept_id@%' and area_id like '%@area_id@%' and type like '%%'  group by area_id,dept_id,type) ddd</from>-->
+			<!-- 	<where></where>可为空 -->
+			<where></where>
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!---->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser)</list-count>
+				
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<!--<from>	(select count(*) num,area_id,dept_id,type,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.dept_id) dept_name,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.area_id)area_name 
+				from pnr_partner_apparatus t where dept_id like '%@dept_id@%' and area_id like '%@area_id@%' and type like '%%'  group by area_id,dept_id,type) ddd</from>-->
+			<!-- 	<where></where>可为空 -->
+			<where>
+				worklevel = '115010801'
+			</where>
+
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!---->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser where worklevel = '115010801' 
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser where worklevel = '115010801')</list-count>
+				
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query3</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<!--<from>	(select count(*) num,area_id,dept_id,type,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.dept_id) dept_name,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.area_id)area_name 
+				from pnr_partner_apparatus t where dept_id like '%@dept_id@%' and area_id like '%@area_id@%' and type like '%%'  group by area_id,dept_id,type) ddd</from>-->
+			<!-- 	<where></where>可为空 -->
+			<where>
+				worklevel = '115010802'
+			</where>
+
+
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!---->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser where worklevel = '115010802' 
+				</list-hsql>
+				
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser where worklevel = '115010802')</list-count>
+			</field-define>
+
+		</query-define>
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query4</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<!--<from>	(select count(*) num,area_id,dept_id,type,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.dept_id) dept_name,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.area_id)area_name 
+				from pnr_partner_apparatus t where dept_id like '%@dept_id@%' and area_id like '%@area_id@%' and type like '%%'  group by area_id,dept_id,type) ddd</from>-->
+			<!-- 	<where></where>可为空 -->
+			<where>
+				worklevel = '115010803'
+			</where>
+
+
+			<field-define><!-- 可重复 -->
+				<id>f4</id><!---->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser where worklevel = '115010803' 
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser where worklevel = '115010803')</list-count>
+				
+			</field-define>
+
+		</query-define>
+		
+	</kpi-define>
+</KpiConfig>

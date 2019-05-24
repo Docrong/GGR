@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts description="日志类型">
+	<dict id="issucess" description="">
+		<item id="info" name="info" description="info" />
+		<item id="warn" name="warn" description="warn" />
+		<item id="error" name="error" description="error" />
+	</dict>	
+</dicts>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="IMofficeDataMainDAO"
+		class="com.boco.eoms.sheet.mofficedata.dao.hibernate.MofficeDataMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IMofficeDataLinkDAO"
+		class="com.boco.eoms.sheet.mofficedata.dao.hibernate.MofficeDataLinkDAOHibernate" autowire="byName">
+	</bean>
+	<bean id="IMofficeDataSubLinkDAO"
+		class="com.boco.eoms.sheet.mofficedata.dao.hibernate.MofficeDataSubLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IMofficeDataBuisTypeDAO"
+		class="com.boco.eoms.sheet.mofficedata.dao.hibernate.MofficeDataBuisTypeDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IMofficeDataTaskDAO"
+		class="com.boco.eoms.sheet.mofficedata.dao.hibernate.MofficeDataTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="MofficeDataTask"
+		class="com.boco.eoms.sheet.mofficedata.model.MofficeDataTask" autowire="byName">
+     </bean>
+    <bean id="MofficeDataLink"
+		class="com.boco.eoms.sheet.mofficedata.model.MofficeDataLink"
+		autowire="byName" />
+	 <bean id="MofficeDataSubLink"
+		class="com.boco.eoms.sheet.mofficedata.model.MofficeDataSubLink"
+		autowire="byName" />
+	 <bean id="MofficeDataBuisType"
+		class="com.boco.eoms.sheet.mofficedata.model.MofficeDataBuisType"
+		autowire="byName" />
+	<bean id="MofficeDataMain"
+		class="com.boco.eoms.sheet.mofficedata.model.MofficeDataMain"
+		autowire="byName" />
+	<bean id="iMofficeDataTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.mofficedata.service.impl.MofficeDataTaskManagerImpl">
+				<property name="taskModelObject" ref="MofficeDataTask" />
+				<property name="taskDAO">
+					<ref bean="IMofficeDataTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/mofficedataTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iMofficeDataFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.mofficedata.service.impl.MofficeDataFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iMofficeDataLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.mofficedata.service.impl.MofficeDataLinkManagerImpl">
+				<property name="linkObject" ref="MofficeDataLink"/>
+				<property name="linkDAO">
+				  <ref bean="IMofficeDataLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iMofficeDataSubLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.mofficedata.service.impl.MofficeDataSubLinkManagerImpl">
+				<property name="subLinkObject" ref="MofficeDataSubLink"/>
+				<property name="subLinkDao">
+				  <ref bean="IMofficeDataSubLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iMofficeDataBuisTypeManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.mofficedata.service.impl.MofficeDataBuisTypeManagerImpl">
+				<property name="buisTypeObject" ref="MofficeDataBuisType"/>
+				<property name="buisTypeDao">
+				  <ref bean="IMofficeDataBuisTypeDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iMofficeDataMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.mofficedata.service.impl.MofficeDataMainManagerImpl">
+			    <property name="mainObject" ref="MofficeDataMain" />
+				<property name="mainDAO">
+				 <ref bean="IMofficeDataMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iMofficeDataQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>MofficeData</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/mofficedata-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iMofficeDataQo"
+		class="com.boco.eoms.sheet.mofficedata.qo.impl.MofficeDataQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="MofficeDataMain" />
+		<property name="poLink" value="MofficeDataLink" />
+		<property name="poTask" value="MofficeDataTask" />
+		<property name="aliasMain" value="mofficedataMain" />
+		<property name="aliasLink" value="mofficedataLink" />
+		<property name="aliasTask" value="mofficedataTask" />
+
+	</bean>
+
+	<bean id="MofficeData" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.mofficedata.webapp.action.MofficeDataMethod">
+				<property name="businessFlowService" >
+					<ref bean="iMofficeDataFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iMofficeDataLinkManager" />
+				<property name="mainService"
+					ref="iMofficeDataMainManager" />
+				<property name="sheetTask"
+					ref="MofficeDataTask" />
+				<property name="taskService"
+					ref="iMofficeDataTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/mofficedata-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+
+</beans>

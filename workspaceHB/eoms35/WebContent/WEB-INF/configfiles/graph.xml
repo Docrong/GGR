@@ -1,0 +1,1552 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<report>
+<GRAPH graphname="g_wl_rate">
+        <viewname>local_radio_rate</viewname>
+        <flag>C1</flag>
+        <title>全省五项考核指标-线图</title>
+        <compress_date>日期</compress_date>
+        <long>时长途来话接通率</long>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">intoll_connrate long</item>
+        </axisy>
+        <axisygroup>hour(first_result) hour_time</axisygroup>
+        <where>ne_type = 10000  AND  hour(first_result) =10</where>
+        <orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <operateid>5002</operateid>
+</GRAPH>
+<GRAPH graphname="g_wl_rate_region">
+        <viewname>local_radio_rate</viewname>
+        <flag>C2</flag>
+        <title>地市五项考核指标-柱图</title>
+        <compress_date>日期</compress_date>
+        <long>时长途来话接通率</long>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">intoll_connrate long</item>
+        </axisy>
+        <axisygroup>region;hour(first_result) hour_time</axisygroup>
+        <where>ne_type = 10003 AND hour(first_result) =10</where>
+        <orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5002</operateid>
+</GRAPH>
+<GRAPH graphname="g_wl_rate_region_mul">
+        <viewname>local_radio_rate</viewname>
+        <flag>C1</flag>
+        <title>地市五项考核指标-线图</title>
+        <compress_date>日期</compress_date>
+        <long>时长途来话接通率</long>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">drop_rate long</item>
+        </axisy>
+        <axisygroup>region;hour(first_result) hour_time</axisygroup>
+        <where>ne_type = 10003 AND hour(first_result) =10</where>
+        <orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5002</operateid>
+</GRAPH>
+<GRAPH graphname="g_drop_rate">
+        <viewname>local_radio_rate</viewname>
+        <flag>C1</flag>
+        <title>全省忙时掉话率-线图</title>
+        <compress_date>日期</compress_date>
+        <drop>忙时掉话率</drop>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(drop_rate ,3 ) drop</item>
+        </axisy>
+        <axisygroup>hour(first_result) hour</axisygroup>
+        <where>(hour(first_result)=10 or hour(first_result)=18) and ne_type =10000</where>
+         <orderby>compress_date</orderby>
+         <limitclause>compress_date</limitclause>
+         <operateid>5013</operateid>
+</GRAPH>
+<GRAPH graphname="g_drop_rate_region">
+        <viewname>local_radio_rate</viewname>
+        <flag>C2</flag>
+        <title>地区忙时掉话率-柱图</title>
+        <compress_date>日期</compress_date>
+        <drop>忙时掉话率</drop>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(drop_rate ,3 ) drop</item>
+        </axisy>
+        <where>ne_type =10003</where>
+        <axisygroup>region</axisygroup>
+      	<orderby>compress_date</orderby>
+      	<limitclause>compress_date</limitclause>
+      	<regionclause>ne_id</regionclause>
+      	<operateid>5013</operateid>
+</GRAPH>
+<GRAPH graphname="g_drop_rate_region_mul">
+        <viewname>local_radio_rate</viewname>
+        <flag>C1</flag>
+        <title>地市忙时掉话率-线图</title>
+        <compress_date>日期</compress_date>
+        <drop>忙时掉话率</drop>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(drop_rate ,3) drop</item>
+        </axisy>
+        <where>ne_type =10003</where>
+        <axisygroup>region</axisygroup>
+      	<orderby>compress_date</orderby>
+      	<limitclause>compress_date</limitclause>
+      	<regionclause>ne_id</regionclause>
+      	<operateid>5013</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpm_smab2002_main">
+        <viewname>tpa_smsc_traf_sum</viewname>
+        <flag>C1</flag>
+        <title>全省短消息接通率-线图</title>
+        <compress_date>日期</compress_date>
+        <mo>MO提交成功率</mo>
+        <mt>MT下发成功率</mt>
+        <suc>短信接通率</suc>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(sfb_divfloat_1(suc_processed_mo,att_mo),3) mo</item>
+              <item datatype="float02">round(sfb_divfloat_1(suc_mt,att_mt-unsuc_mt_usr_rsn),3) mt</item>
+              <item datatype="float03">round(suc_processed_mo * sfb_divfloat_1(suc_mt,(att_mo*(att_mt-unsuc_mt_usr_rsn))),3) suc</item>
+        </axisy>
+        <where>ne_type =10000</where>
+        <orderby>compress_date</orderby>
+        <limitclause>first_result</limitclause>
+         <operateid>5014</operateid>
+</GRAPH>
+<GRAPH graphname="g_pdp10_act_rate">
+        <viewname>tpc_sgsn_ne </viewname>
+        <flag>C1</flag>
+        <title> PDP激活成功率(10时)-线图</title>
+        <first_result>日期</first_result>
+        <suc_rate>由MS发起的PDP上下文激活成功率(%)</suc_rate>
+        <axisx>
+              <item datatype="date01">first_result</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(sfb_divfloat_3(ms_pdp_acpt,ms_pdp_req),3)*100  suc_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) name</axisygroup>
+        <where>hour(first_result) =10 and ne_type= 121  </where>
+	<orderby>first_result</orderby>
+	<limitclause>first_result</limitclause>
+        <operateid>5016</operateid>
+</GRAPH>
+<GRAPH graphname="g_pdp_day_act_rate">
+        <viewname>tpa_sgsn_sum</viewname>
+        <flag>C1</flag>
+        <title> 全省PDP激活成功率(全天)-线图</title>
+        <first_result>日期</first_result>
+        <suc_rate>省PDP激活成功率</suc_rate>
+        <axisx>
+              <item datatype="date01">first_result</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">sfb_divfloat_3(ms_pdp_acpt,ms_pdp_req)*100 suc_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type)  ne_name</axisygroup>
+        <where>sum_level=1  and ne_type =10000</where>
+	<orderby>first_result</orderby>
+	<limitclause>first_result</limitclause>
+        <operateid>5019</operateid>
+</GRAPH>
+<GRAPH graphname="g_tch_drop_rate">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C1</flag>
+        <title>全省忙时话务掉话比－线图</title>
+        <compress_date>日期</compress_date>
+        <tch_drop_rate>时话务掉话比</tch_drop_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">sfb_divfloat_1(tch_traffic,drop_call_tch)*60 tch_drop_rate</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>ne_type=10000 and s_hour =10</where>
+        <orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <operateid>5020</operateid>
+</GRAPH>
+<GRAPH graphname="g_tch_drop_rate_region">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C2</flag>
+        <title>地市忙时话务掉话比-柱图</title>
+        <compress_date>日期</compress_date>
+        <tch_drop_rate>时话务掉话比</tch_drop_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">sfb_divfloat_1(tch_traffic,drop_call_tch)*60 tch_drop_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id ,ne_type) region_name;s_hour</axisygroup>
+        <where>ne_type=10003 and s_hour=10 and ne_id not in (-999999)</where>
+        <orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5020</operateid>
+</GRAPH>
+<GRAPH graphname="g_tch_drop_rate_region_mul">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C1</flag>
+        <title>地市忙时话务掉话比-线图</title>
+        <compress_date>日期</compress_date>
+        <tch_drop_rate>时话务掉话比</tch_drop_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">sfb_divfloat_1(tch_traffic,drop_call_tch)*60 tch_drop_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id ,ne_type) region_name;s_hour</axisygroup>
+        <where>ne_type=10003 and s_hour=10 and ne_id not in (-999999)</where>
+        <orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5020</operateid>
+</GRAPH>
+<GRAPH graphname="g_att_tch_rate">
+        <viewname>tpa_radio_sum x0</viewname>
+        <flag>C2</flag>
+        <title> 全省忙时无线接通率-柱图</title>
+        <compress_date>日期</compress_date>
+        <att_rate>时无线接通率</att_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round( (1 - sfb_divfloat_1(att_tch_ovrfl_nho,tch_call_req_nho) ) * (1 - sfb_divfloat_1(att_sdcch_ovrfl,att_sdcch_seiz ) )  ,3) att_rate</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>s_hour = 10 and ne_type=10000</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+       	<operateid>5021</operateid>
+</GRAPH>
+<GRAPH graphname="g_att_tch_rate_region">
+        <viewname>tpa_radio_sum x0</viewname>
+        <flag>C2</flag>
+        <title> 地市忙时无线接通率-柱图</title>
+        <compress_date>日期</compress_date>
+        <att_rate>时无线接通率</att_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round( (1 - sfb_divfloat_1(att_tch_ovrfl_nho,tch_call_req_nho) ) * (1 - sfb_divfloat_1(att_sdcch_ovrfl,att_sdcch_seiz ) )  ,3) att_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id ,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10 and ne_type=10003 AND ne_id not in (-999999)</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+       	<regionclause>ne_id</regionclause>
+       	<operateid>5021</operateid>
+</GRAPH>
+<GRAPH graphname="g_att_tch_rate_region_mul">
+        <viewname>tpa_radio_sum x0</viewname>
+        <flag>C1</flag>
+        <title> 地市忙时无线接通率-线图</title>
+        <compress_date>日期</compress_date>
+        <att_rate>时无线接通率</att_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round( (1 - sfb_divfloat_1(att_tch_ovrfl_nho,tch_call_req_nho) ) * (1 - sfb_divfloat_1(att_sdcch_ovrfl,att_sdcch_seiz ) )  ,3) att_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id ,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10 and ne_type=10003 and ne_id not in (-999999)</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+       	<regionclause>ne_id</regionclause>
+       	<operateid>5021</operateid>
+</GRAPH>
+<GRAPH graphname="g_worse_cell_rate">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C1</flag>
+        <title> 全省忙时最坏小区比（城市）-线图</title>
+        <compress_date>日期</compress_date>
+        <worst_rate_city>忙时最坏小区比</worst_rate_city>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">100*worst_cell/total_cell_w worst_rate_city</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region</axisygroup>
+        <where>(hour(first_result)=10 or hour(first_result)=18) and ne_type =10000</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+       	<operateid>5015</operateid>
+</GRAPH>
+<GRAPH graphname="g_worse_cell_rate_region">
+        <viewname>tpa_radio_sum </viewname>
+        <flag>C2</flag>
+        <title> 地市忙时最坏小区比（城市）-柱图</title>
+        <compress_date>日期</compress_date>
+        <worst_rate_city>忙时最坏小区比</worst_rate_city>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">100*sfb_divfloat_1(worst_cell,total_cell_w) worst_rate_city</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region</axisygroup>
+        <where>ne_type=10003</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5015</operateid>
+</GRAPH>
+<GRAPH graphname="g_worse_cell_rate_region_mul">
+        <viewname>tpa_radio_sum </viewname>
+        <flag>C1</flag>
+        <title> 地市忙时最坏小区比（城市）-线图</title>
+        <compress_date>日期</compress_date>
+        <worst_rate_city>忙时最坏小区比</worst_rate_city>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">100*sfb_divfloat_1(worst_cell,total_cell_w) worst_rate_city</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region</axisygroup>
+        <where>ne_type=10003</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5015</operateid>
+</GRAPH>
+<GRAPH graphname="g_nbr_rate">
+        <viewname>local_radio_rate x0 ,tpa_gsma_sum x1</viewname>
+        <flag>C1</flag>
+        <title> 全省忙时信道可用率-线图</title>
+        <time>日期</time>
+        <tch>忙时话音信道可用率</tch>
+        <sch>忙时信令信道可用率</sch>
+        <axisx>
+              <item datatype="date01">x0.first_result time</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">x0.tch_availrate tch</item>
+              <item datatype="float02">x0.sch_availrate sch</item>
+        </axisy>
+        <where>x0.first_result=x1.first_result and x0.ne_type =10003 and x0.ne_type=x1.ne_type and hour(x0.first_result) = 10  and x1.s_hour=10 </where>
+       	<orderby>x0.first_result</orderby>
+       	<limitclause>x0.first_result</limitclause>
+       	<operateid>5022</operateid>
+</GRAPH>
+<GRAPH graphname="g_nbr_rate_region_mul">
+        <viewname>local_radio_rate x0 ,tpa_gsma_sum x1</viewname>
+        <flag>C1</flag>
+        <title> 地市忙时信道可用率-线图</title>
+        <time>日期</time>
+        <tch>忙时话音信道可用率</tch>
+        <sch>忙时信令信道可用率</sch>
+        <axisx>
+              <item datatype="date01">x0.first_result time</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">x0.tch_availrate tch</item>
+              <item datatype="float02">x0.sch_availrate sch</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id ,x0.ne_type) region_name</axisygroup>
+        <where>x0.first_result=x1.first_result and x0.ne_type =10003 and x0.ne_type=x1.ne_type and hour(x0.first_result) = 10  and x1.s_hour=10</where>
+       	<orderby>x0.first_result</orderby>
+       	<limitclause>x0.first_result</limitclause>
+       	<regionclause>x0.ne_id</regionclause>
+       	<operateid>5022</operateid>
+</GRAPH>
+<GRAPH graphname="g_worse_cell_rate_jq">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C1</flag>
+        <title> 全省忙时最坏小区比（郊区）-线图</title>
+        <compress_date>日期</compress_date>
+        <worst_rate_country>忙时最坏小区比</worst_rate_country>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">100*sfb_divfloat_1(worst_cell,total_cell_w) worst_rate_country</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region</axisygroup>
+        <where>ne_type=10000</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <operateid>5024</operateid>
+</GRAPH>
+<GRAPH graphname="g_worse_cell_rate_region_jq">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C2</flag>
+        <title> 地市忙时最坏小区比（郊区）-柱图</title>
+        <compress_date>日期</compress_date>
+        <worst_rate_country>忙时最坏小区比</worst_rate_country>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">100*sfb_divfloat_1(worst_cell,total_cell_w) worst_rate_country</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region</axisygroup>
+        <where>ne_type=10003</where>
+       	<orderby>compress_date</orderby>
+       	<regionclause>ne_id</regionclause>
+       	<limitclause>compress_date</limitclause>
+        <operateid>5024</operateid>
+</GRAPH>
+<GRAPH graphname="g_worse_cell_rate_region_mul_jq">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C1</flag>
+        <title> 地市忙时最坏小区比（郊区）-线图</title>
+        <compress_date>日期</compress_date>
+        <worst_rate_country>忙时最坏小区比</worst_rate_country>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">100*sfb_divfloat_1(worst_cell,total_cell_w) worst_rate_country</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region</axisygroup>
+        <where>ne_type=10003</where>
+       	<orderby>compress_date</orderby>
+       	<regionclause>ne_id</regionclause>
+       	<limitclause>compress_date</limitclause>
+</GRAPH>
+<GRAPH graphname="g_to_uc_tele">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 移动与电信和联通忙时话务量分析-线图</title>
+        <compress_date>日期</compress_date>
+        <seize_traf>时与移动忙时总话务量</seize_traf>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">(i_seize_traf+ o_seize_traf) seize_traf</item>
+         </axisy>
+        <axisygroup>soa_get_svname(sv_id,5) svname;s_hour</axisygroup>
+        <where>s_hour in(10,18) and sv_cat_id=5 and sv_id in (53,51,52)</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>first_result</limitclause>
+       	<operateid>5062</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_tele_region">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C2</flag>
+        <title>移动与电信和联通忙时话务量分析-柱图 </title>
+        <compress_date>日期 </compress_date>
+        <seize_traf>与移动忙时总话务量 </seize_traf>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">(i_seize_traf+ o_seize_traf) seize_traf</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname</axisygroup>
+        <where>s_hour in(10,18) and sv_cat_id=5 and sv_id in (53,51,52) and ne_id in (-1483444163,-1205918901,-1423354781)</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>first_result</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5062</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_tele_region_mul">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 移动与电信和联通忙时话务量分析-线图</title>
+        <compress_date>日期</compress_date>
+        <seize_traf>与移动忙时总话务量</seize_traf>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">(i_seize_traf+ o_seize_traf) seize_traf</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname</axisygroup>
+        <where>s_hour in(10,18) and sv_cat_id=5 and sv_id in (53,51,52)  </where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>first_result</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5062</operateid>
+</GRAPH>
+
+<GRAPH graphname="g_to_uc_tele_p">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 移动与电信忙时来话去话话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+        <aa>时与移动忙时来话话务量占总话务量的比例</aa>
+        <bb>时与移动忙时去话话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) aa</item>
+              <item datatype="float02">round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname;s_hour</axisygroup>
+        <where>s_hour in(10,18) and sv_cat_id=5  and sv_id = 53 and ne_type=10000</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+       	 <operateid>5063</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_tele_p_region">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C2</flag>
+        <title> 移动与电信忙时来话去话话务量比例分析-柱图(地市)</title>
+        <compress_date>日期</compress_date>
+        <aa>时与移动忙时来话话务量占总话务量的比例</aa>
+        <bb>时与移动忙时去话话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) aa</item>
+              <item datatype="float02">round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname;s_hour</axisygroup>
+        <where>s_hour in(10,18) and sv_cat_id=5  and sv_id = 53 and ne_type=10003 and ne_id in (-1483444163,-1205918901,-1423354781) </where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>first_result</limitclause>
+        <regionclause>ne_id</regionclause>
+         <operateid>5063</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_tele_p_region_mul">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 移动与电信忙时来话去话话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+        <aa>时与移动忙时来话话务量占总话务量的比例</aa>
+        <bb>时与移动忙时去话话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) aa</item>
+              <item datatype="float02">round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname;s_hour</axisygroup>
+        <where>s_hour in(10,18) and sv_cat_id=5  and sv_id = 53 and ne_type=10003 </where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>first_result</limitclause>
+        <regionclause>ne_id</regionclause>
+         <operateid>5063</operateid>
+</GRAPH>
+
+<GRAPH graphname="g_to_uc_p">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title>移动与联通忙时话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+        <aa>时与移动忙时来话话务量占总话务量的比例</aa>
+        <bb>时与移动忙时去话话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) aa</item>
+              <item datatype="float02">round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname;s_hour</axisygroup>
+        <where>s_hour in(10,18) and sv_cat_id=5  and sv_id in (51,52) and ne_type=10000 </where>
+       	<orderby></orderby>
+       	<limitclause>first_result</limitclause>
+       	 <operateid>5064</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_p_region">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C2</flag>
+        <title>移动与联通忙时话务量比例分析-柱图</title>
+        <compress_date>日期</compress_date>
+        <aa>时与移动忙时来话话务量占总话务量的比例</aa>
+        <bb>时与移动忙时去话话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) aa</item>
+              <item datatype="float02">round((sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf)))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname;s_hour</axisygroup>
+        <where> s_hour in(10,18) and sv_cat_id=5  and sv_id in (51,52) and ne_type=10003 and ne_id in (-1483444163)</where>
+       	<orderby></orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+         <operateid>5064</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_p_region_mul">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title>移动与联通忙时话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+       <aa>时与移动忙时来话话务量占总话务量的比例</aa>
+       <bb>时与移动忙时去话话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(sfb_divfloat_1(i_seize_traf,( i_seize_traf+ o_seize_traf))*100,3) aa</item>
+              <item datatype="float02">round(sfb_divfloat_1(o_seize_traf,( i_seize_traf+ o_seize_traf))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;soa_get_svname(sv_id,5) svname;s_hour</axisygroup>
+        <where> s_hour in(10,18) and sv_cat_id=5  and sv_id in (51,52) and ne_type=10003 </where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+         <operateid>5064</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_unionc_p">
+        <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+        <flag>C1</flag>
+        <title>移动与联通忙时话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+        <bb>时移动到联通话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">a.compress_date compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3)  bb</item>
+        </axisy>
+        <axisygroup>a.s_hour s_hour</axisygroup>
+        <where>b.compress_date=a.compress_date and a.ne_type=10000 and a.ne_type=b.ne_type and a.s_hour in(10,18) and b.s_hour=a.s_hour  and b. sv_cat_id=5  and b.sv_id in (51,52)</where>
+       	<orderby>a.compress_date</orderby>
+       	<limitclause>a.compress_date</limitclause>
+        <operateid>5066</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_unionc_p_region">
+        <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+        <flag>C2</flag>
+        <title>移动与联通忙时话务量比例分析(地市)-柱图</title>
+        <compress_date>日期</compress_date>
+        <bb>时移动到联通话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">a.compress_date compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic)*100),3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(a.ne_id,a.ne_type) name ;a.s_hour s_hour</axisygroup>
+        <where>b.compress_date=a.compress_date and a.ne_type=10003 and a.ne_type=b.ne_type and a.s_hour in(10,18) and b.s_hour=a.s_hour  and b. sv_cat_id=5  and b.sv_id in (51,52) </where>
+       	<orderby>a.compress_date</orderby>
+       	<limitclause>a.compress_date</limitclause>
+        <regionclause>a.ne_id</regionclause>
+          <operateid>5066</operateid>
+</GRAPH>
+
+
+
+
+
+<GRAPH graphname="g_to_tele_p">
+        <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+        <flag>C1</flag>
+        <title>移动与电信忙时话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+        <bb>时移动到电信话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">a.compress_date compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(a.ne_id,a.ne_type) name ;a.s_hour s_hour</axisygroup>
+        <where>b.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10000  and b.compress_date=a.compress_date and b.s_hour=a.s_hour  and b. sv_cat_id=5  and b.sv_id = 53</where>
+       	<orderby></orderby>
+       	<limitclause>a.first_result</limitclause>
+       	<operateid>5067</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_tele_p_region">
+        <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+        <flag>C2</flag>
+        <title>移动与电信忙时话务量比例分析-柱图(地市)</title>
+        <compress_date>日期</compress_date>
+        <bb>时移动到电信话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">a.compress_date compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1((b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(a.ne_id,a.ne_type) name;a.s_hour s_hour</axisygroup>
+        <where>b.s_hour in(10,18) and  a.ne_type=b.ne_type and a.ne_type=10003 and b.compress_date=a.compress_date and b.s_hour=a.s_hour  and b. sv_cat_id=5  and b.sv_id = 53 </where>
+       	<orderby></orderby>
+       	<limitclause>a.compress_date</limitclause>
+       	<regionclause>a.ne_id</regionclause>
+       	<operateid>5067</operateid>
+</GRAPH>
+<GRAPH graphname="g_wl_v_day_f">
+        <viewname>local_smsc_ed6</viewname>
+        <flag>C1</flag>
+        <title>短信信息互联互通情况-线图</title>
+        <compress_date>日期</compress_date>
+        <to>省全天送往联通短信成功率</to>
+        <come>省全天联通送来短信成功率</come>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">sfb_divfloat_1(suc_mo_cm2cu_d*100,att_mo_cm2cu_d) to</item>
+              <item datatype="float02">sfb_divfloat_1(suc_mo_cu2cm_d*100,att_mo_cu2cm_d) come</item>
+        </axisy>
+        <axisygroup>related_region</axisygroup>
+        <where></where>
+        <orderby>compress_date</orderby>
+</GRAPH>
+<GRAPH graphname="g_vpm_c32002_all">
+        <viewname>local_traffic_day</viewname>
+        <flag>C1</flag>
+        <title>全省tch全天话务量-线图</title>
+        <compress_date>日期</compress_date>
+        <tch_traffic>全天话务量</tch_traffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">tch_traffic</item>
+        </axisy>
+        <axisygroup></axisygroup>
+        <where>sum_level = 1 and ne_type =10000</where>
+        <orderby>first_result</orderby>
+        <limitclause>first_result</limitclause>
+        <operateid>5029</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_c32002_all_region">
+        <viewname>local_traffic_day</viewname>
+        <flag>C2</flag>
+        <title>地市tch全天话务量-柱图</title>
+        <compress_date>日期</compress_date>
+        <tch_traffic>全天话务量</tch_traffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">tch_traffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) name</axisygroup>
+        <where>sum_level = 1 and ne_type =10003</where>
+        <orderby>first_result</orderby>
+        <limitclause>first_result</limitclause>
+        <regionclause>ne_id</regionclause> 
+        <operateid>5029</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_c32002_all_region_mul">
+        <viewname>local_traffic_day</viewname>
+        <flag>C1</flag>
+        <title>地市tch全天话务量-线图</title>
+        <compress_date>日期</compress_date>
+        <tch_traffic>全天话务量</tch_traffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">tch_traffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) name</axisygroup>
+        <where>sum_level = 1 and ne_type =10003</where>
+        <orderby>first_result</orderby>
+        <limitclause>first_result</limitclause>
+        <regionclause>ne_id</regionclause> 
+        <operateid>5029</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpm_r2002_main">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C1</flag>
+        <title>全省tch忙时话务量-线图</title>
+        <compress_date>日期</compress_date>
+        <tch_traffic>忙时话务量</tch_traffic>
+        
+
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">tch_traffic</item>
+              
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>sum_level = 0 and ne_type =10000 and s_hour in(10,18)</where>
+        <orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <operateid>5030</operateid> 
+</GRAPH>
+<GRAPH graphname="g_tpm_r2002_main_region">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C2</flag>
+        <title>地市tch忙时话务量-柱图</title>
+        <compress_date>日期</compress_date>
+        <tch_traffic>忙时话务量</tch_traffic>
+        
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">tch_traffic</item>
+              
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>sum_level=0 and ne_type=10003  and s_hour in(10,18) 
+               and ne_id in (-1531793788,-1483444163,1599135962,1545006672,-1205918901,262587338,1021353243)</where>
+        <orderby>compress_date</orderby>
+         <limitclause>compress_date</limitclause>
+         <regionclause>ne_id</regionclause> 
+         <operateid>5030</operateid> 
+</GRAPH>
+<GRAPH graphname="g_tpm_r2002_main_region_mul">
+        <viewname>tpa_radio_sum</viewname>
+        <flag>C1</flag>
+        <title>地市tch忙时话务量-线图</title>
+        <compress_date>日期</compress_date>
+        <tch_traffic>忙时话务量</tch_traffic>
+        
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">tch_traffic</item>
+              
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>sum_level=0 and ne_type=10003  and s_hour in(10,18)</where>
+        <orderby>compress_date</orderby>
+         <limitclause>compress_date</limitclause>
+         <regionclause>ne_id</regionclause> 
+         <operateid>5030</operateid> 
+</GRAPH>
+<GRAPH graphname="g_to_tele">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 全省互联互通移动到电信-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>(s_hour = 10 or s_hour=18)  and ne_type =10000 and sv_cat_id=5 and sv_id=53</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <operateid>5035</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_tele_region">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C2</flag>
+        <title> 地市互联互通移动到电信-柱图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10   and ne_type =10003 and sv_cat_id=5 and sv_id=53</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5035</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_tele_region_mul">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 地市互联互通移动到电信-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10  and sum_level = 0  and ne_type =10003 and sv_cat_id=5 and sv_id=53</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5035</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 全省互联互通移动到联通-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>(s_hour = 10 or s_hour=18)  and ne_type =10000 and sv_cat_id=5 and sv_id in (51,52)</where>
+       	<orderby>compress_date</orderby>
+        <limitclause>compress_date</limitclause>
+        <operateid>5036</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_region">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C2</flag>
+        <title> 地市互联互通移动到联通-柱图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10    and ne_type =10003 and sv_cat_id=5 and sv_id in (51,52)</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5036</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_uc_region_mul">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 地市互联互通移动到联通-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10   and ne_type =10003 and sv_cat_id=5 and sv_id in (51,52)</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>       	
+        <operateid>5036</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_rc">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 全省互联互通移动到铁通-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>(s_hour = 10 or s_hour=18) and ne_type =10000 and sv_cat_id=5 and sv_id=55</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <operateid>5037</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_rc_region">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C2</flag>
+        <title> 地市互联互通移动到铁通-柱图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10   and ne_type =10003 and sv_cat_id=5 and sv_id=55</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5037</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_rc_region_mul">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 地市互联互通移动到铁通-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10   and ne_type =10003 and sv_cat_id=5 and sv_id=55</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5037</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_cnc">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 全省互联互通移动到网通-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>(s_hour = 10 or s_hour=18)   and ne_type =10000 and sv_cat_id=5 and sv_id=54</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <operateid>5038</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_cnc_region">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C2</flag>
+        <title> 地市互联互通移动到网通-柱图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10   and ne_type =10003 and sv_cat_id=5 and sv_id=54</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5038</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_cnc_region_mul">
+        <viewname>tpa_tkgp_sum</viewname>
+        <flag>C1</flag>
+        <title> 地市互联互通移动到网通-线图</title>
+        <compress_date>日期</compress_date>
+        <total_trafffic>时总话务量</total_trafffic>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">i_seize_traf+ o_seize_traf total_trafffic</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>s_hour = 10    and ne_type =10003 and sv_cat_id=5 and sv_id=54</where>
+       	<orderby>compress_date</orderby>
+       	<limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5038</operateid>
+</GRAPH>
+<GRAPH graphname="g_trunk_cd">
+        <viewname>tpd_tkgp t,tcd_ne_pcm a,tcc_ne_frame msc</viewname>
+        <flag>C1</flag>
+        <title>二汇至成都客服中继话务统计表(成都)-线图</title>
+        <scan_start_time>日期时间</scan_start_time>
+        <i_ans_seize_r>时来话接通率(%)</i_ans_seize_r>
+        <o_ans_seize_r>时去话接通率(%)</o_ans_seize_r>
+        <axisx>
+              <item datatype="date01">scan_start_time</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(sfb_divfloat_1(i_call_ans,nvl(i_call_att,i_call_seize)),2) i_ans_seize_r</item>
+              <item datatype="float02">round(sfb_divfloat_1(o_call_ans,nvl(o_call_att,o_call_seize)),2) o_ans_seize_r</item>
+        </axisy>
+        <axisygroup>soa_get_nename(t.ne_id,600) name;hour(scan_start_time) s_hour</axisygroup>
+        <where>hour(scan_start_time)=10 and a.pm_rdn like "%KF%" and t.ne_id=a.ne_id and a.related_ne1=msc.ne_id and region_id =-1483444163 </where>
+        <orderby>scan_start_time</orderby>
+</GRAPH>
+<GRAPH graphname="g_trunk_neij">
+        <viewname>tpd_tkgp t,tcd_ne_pcm a,tcc_ne_frame msc</viewname>
+        <flag>C1</flag>
+        <title>二汇至成都客服中继话务统计表(内江)-线图</title>
+        <scan_start_time>日期时间</scan_start_time>
+        <i_ans_seize_r>时来话接通率(%)</i_ans_seize_r>
+        <o_ans_seize_r>时去话接通率(%)</o_ans_seize_r>
+        <axisx>
+              <item datatype="date01">scan_start_time</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(sfb_divfloat_1(i_call_ans,nvl(i_call_att,i_call_seize)),2) i_ans_seize_r</item>
+              <item datatype="float02">round(sfb_divfloat_1(o_call_ans,nvl(o_call_att,o_call_seize)),2) o_ans_seize_r</item>
+        </axisy>
+        <axisygroup>soa_get_nename(t.ne_id,600);hour(scan_start_time) s_hour</axisygroup>
+        <where>hour(scan_start_time)=10 and a.pm_rdn like "%KF%" and t.ne_id=a.ne_id and a.related_ne1=msc.ne_id and region_id =1545006672</where>
+        <orderby>scan_start_time</orderby>
+</GRAPH>
+<GRAPH graphname="g_tpm_cd_traffic_busy_yxd">
+        <viewname>tpa_cd_radio_sum</viewname>
+        <flag>C2</flag>
+        <title>成都地区TCH忙时话务量-柱图</title>
+        <date>日期</date>
+        <traffic>TCH话务量</traffic>
+        <axisx>
+              <item datatype="date01">compress_date  date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(tch_traffic,3) traffic</item>
+        </axisy>
+        <axisygroup>ne_name name</axisygroup>
+        <where>sum_level = 0 and s_hour in (10,18)</where>
+        <orderby>first_result,ne_type</orderby>
+        <limitclause>compress_date</limitclause>
+        <cityclause>ne_id</cityclause>
+        
+</GRAPH>
+<GRAPH graphname="g_tpm_cd_traffic_busy_yxd_0">
+        <viewname>tpa_cd_radio_sum</viewname>
+        <flag>C1</flag>
+        <title>成都地区TCH忙时话务量-线图</title>
+        <date>日期</date>
+        <traffic>TCH话务量</traffic>
+        <axisx>
+              <item datatype="date01">compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(tch_traffic,3) traffic</item>
+        </axisy>
+        <axisygroup>ne_name name</axisygroup>
+        <where>sum_level = 0 and s_hour in (10,18)</where>
+        <orderby>first_result,ne_type</orderby>
+        <limitclause>compress_date</limitclause>
+        <cityclause>ne_id</cityclause>
+</GRAPH>
+<GRAPH graphname="g_tpm_cd_traffic_yxd">
+        <viewname>tpa_cd_radio_sum </viewname>
+        <flag>C2</flag>
+        <title>成都地区TCH全天话务量-柱图</title>
+        <date>日期</date>
+        <traffic>TCH话务量</traffic>
+        <axisx>
+              <item datatype="date01">compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(tch_traffic ,3) traffic</item>
+        </axisy>
+        <axisygroup>ne_name name</axisygroup>
+        <where>sum_level = 1 and ne_type in(10003,10004)</where>
+        <orderby>first_result,ne_type </orderby>
+        <limitclause>first_result</limitclause>
+        <cityclause>ne_id</cityclause>
+</GRAPH>
+<GRAPH graphname="g_tpm_cd_traffic_yxd_0">
+        <viewname>tpa_cd_radio_sum </viewname>
+        <flag>C1</flag>
+        <title>成都地区TCH全天话务量-线图</title>
+        <date>日期</date>
+        <traffic>TCH话务量</traffic>
+        <axisx>
+              <item datatype="date01">compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(tch_traffic ,3) traffic</item>
+        </axisy>
+        <axisygroup>ne_name name</axisygroup>
+        <where>sum_level = 1 and ne_type in(10003,10004)</where>
+        <orderby>first_result,ne_type </orderby>
+        <limitclause>first_result</limitclause>
+        <cityclause>ne_id</cityclause>
+</GRAPH>
+<GRAPH graphname="g_tpm_b2002_main">
+        <viewname>tpa_msc_sum</viewname>
+        <flag>C2</flag>
+        <title>全省早忙时vlr用户数-柱图</title>
+        <compress_date>日期</compress_date>
+        <subscrib_in_vlr>时用户数</subscrib_in_vlr>
+        <active_subs>时开机用户数</active_subs>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">subscrib_in_vlr</item>
+              <item datatype="float02">active_subs</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>ne_type=10000 and s_hour in (10)</where>
+        <orderby>compress_date,s_hour</orderby>
+        <limitclause>compress_date</limitclause>
+        <operateid>5005</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpm_b2002_main_region">
+        <viewname>tpa_msc_sum</viewname>
+        <flag>C2</flag>
+        <title>地市早忙时vlr用户数-柱图</title>
+        <region_name>地区</region_name>
+        <subscrib_in_vlr>时用户数</subscrib_in_vlr>
+        <active_subs>开机用户数</active_subs>
+        <axisx>
+              <item datatype="varchar01">soa_get_nename(ne_id,ne_type) region_name</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">subscrib_in_vlr</item>
+              <item datatype="float02">active_subs</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>ne_type=10003 and s_hour in (10)</where>
+        <orderby>ne_id,s_hour</orderby>
+       <limitclause>compress_date</limitclause>
+       <regionclause>ne_id</regionclause> 
+       <operateid>5005</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpm_b2002_main_region_mul">
+        <viewname>tpa_msc_sum</viewname>
+        <flag>C1</flag>
+        <title>地市早忙时vlr用户开机率-线图</title>
+        <compress_date>日期</compress_date>
+        <active_rate>时开机率</active_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">sfb_divfloat_1(active_subs,subscrib_in_vlr) active_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>ne_type=10003 and s_hour in (10)</where>
+        <orderby>ne_id,compress_date,s_hour</orderby>
+        <limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause> 
+        <operateid>5005</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpm_b2002w_main">
+        <viewname>tpa_msc_sum</viewname>
+        <flag>C2</flag>
+        <title>全省晚忙时vlr用户数-柱图</title>
+        <compress_date>日期</compress_date>
+        <subscrib_in_vlr>时用户数</subscrib_in_vlr>
+        <active_subs>时开机用户数</active_subs>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">subscrib_in_vlr</item>
+              <item datatype="float02">active_subs</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>ne_type=10000 and s_hour in (18)</where>
+        <orderby>compress_date,s_hour</orderby>
+        <limitclause>compress_date</limitclause>
+        <operateid>5006</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpm_b2002w_main_region">
+        <viewname>tpa_msc_sum</viewname>
+        <flag>C2</flag>
+        <title>地市晚忙时vlr用户数-柱图</title>
+        <region_name>地区</region_name>
+        <subscrib_in_vlr>时用户数</subscrib_in_vlr>
+        <active_subs>开机用户数</active_subs>
+        <axisx>
+              <item datatype="varchar01">soa_get_nename(ne_id,ne_type) region_name</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">subscrib_in_vlr</item>
+              <item datatype="float02">active_subs</item>
+        </axisy>
+        <axisygroup>s_hour</axisygroup>
+        <where>ne_type=10003 and s_hour in (18)</where>
+        <orderby>ne_id,s_hour</orderby>
+        <limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause>
+        <operateid>5006</operateid> 
+</GRAPH>
+<GRAPH graphname="g_tpm_b2002w_main_region_mul">
+        <viewname>tpa_msc_sum</viewname>
+        <flag>C1</flag>
+        <title>地市晚忙时vlr用户开机率-线图</title>
+        <compress_date>日期</compress_date>
+        <active_rate>时开机率</active_rate>
+        <axisx>
+              <item datatype="date01">compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">sfb_divfloat_1(active_subs,subscrib_in_vlr) active_rate</item>
+        </axisy>
+        <axisygroup>soa_get_nename(ne_id,ne_type) region_name;s_hour</axisygroup>
+        <where>ne_type=10003 and s_hour in (18)</where>
+        <orderby>ne_id,compress_date,s_hour</orderby>
+        <limitclause>compress_date</limitclause>
+        <regionclause>ne_id</regionclause> 
+        <operateid>5006</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpd_t1_iarstat">
+        <viewname>vpw_connrate_region</viewname>
+        <flag>C1</flag>
+        <title>全省忙时长途来话接通率-线图</title>
+        <compress_date>日期</compress_date>
+        <msg1>时长途来话接通率</msg1>
+        <axisx>
+              <item datatype="date01">substr(first_result,1,10) compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(intoll_connrate,1) msg1</item>
+        </axisy>
+        <axisygroup>hour(first_result) hour</axisygroup>
+        <where>ne_type=10000 and (hour(first_result)=10 or hour(first_result)=18)</where>
+	<orderby>first_result</orderby>
+	<limitclause>first_result</limitclause>
+	<operateid>5012</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpd_t1_iarstat_region">
+        <viewname>vpw_connrate_region</viewname>
+        <flag>C2</flag>
+        <title>地区忙时长途来话接通率-柱图</title>
+        <region_name>地区</region_name>
+        <msg1>时长途来话接通率</msg1>
+        <axisx>
+              <item datatype="date01">soa_get_nename(ne_id,ne_type) region_name</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(intoll_connrate,1) msg1</item>
+        </axisy>
+        <axisygroup>hour(first_result) hour</axisygroup>
+        <where>ne_type=10003 and (hour(first_result)=10 or hour(first_result)=18)</where>
+	<orderby>first_result,ne_id</orderby>
+	<limitclause>first_result</limitclause>
+	<regionclause>ne_id</regionclause>
+	<operateid>5012</operateid>
+</GRAPH>
+<GRAPH graphname="g_tpd_t1_iarstat_region_mul">
+        <viewname>vpw_connrate_region</viewname>
+        <flag>C1</flag>
+        <title>地区忙时长途来话接通率-线图</title>
+        <compress_date>日期</compress_date>
+        <msg1>时长途来话接通率</msg1>
+        <axisx>
+              <item datatype="date01">substr(first_result,1,10) compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(intoll_connrate,1) msg1</item>
+        </axisy>
+        <axisygroup>hour(first_result) hour</axisygroup>
+        <where>ne_type=10003 and (hour(first_result)=10 or hour(first_result)=18)</where>
+	<orderby>first_result,ne_id</orderby>
+	<limitclause>first_result</limitclause>
+	<regionclause>ne_id</regionclause>
+	<operateid>5012</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_mobile_p">
+        <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+        <flag>C1</flag>
+        <title>移动与移动忙时话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+        <bb>时移动到移动话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">a.compress_date compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1(a.tch_traffic-sum(b.i_seize_traf+b.o_seize_traf),a.tch_traffic))*100,3) bb</item>
+        </axisy>
+        <axisygroup>b.s_hour s_hour</axisygroup>
+        <where>a.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10000 AND a.ne_id=b.ne_id
+   and b.compress_date=a.compress_date and b.s_hour=a.s_hour and b. sv_cat_id=5  and b.sv_id in (51,52,53)</where>
+       	<groupby>2,3,a.tch_traffic</groupby>
+       	<orderby></orderby>
+       	<limitclause>a.compress_date</limitclause>
+       	<operateid>5065</operateid>
+</GRAPH>
+<GRAPH graphname="g_to_mobile_p_region">
+        <viewname>tpa_radio_sum a, tpa_tkgp_sum b</viewname>
+        <flag>C1</flag>
+        <title>移动与移动忙时话务量比例分析-线图</title>
+        <compress_date>日期</compress_date>
+        <bb>忙时移动到移动话务量占总话务量的比例</bb>
+        <axisx>
+              <item datatype="date01">a.compress_date compress_date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round((sfb_divfloat_1(sum(a.tch_traffic)-sum(b.i_seize_traf+b.o_seize_traf),sum(a.tch_traffic)))*100,3) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(a.ne_id,a.ne_type) region_name</axisygroup>
+        <where>a.s_hour in(10,18) and a.ne_type=b.ne_type and a.ne_type=10003 AND a.ne_id=b.ne_id
+   and b.compress_date=a.compress_date and b.s_hour=a.s_hour and b. sv_cat_id=5  and b.sv_id in (51,52,53)</where>
+       	<groupby>2,a.tch_traffic,a.ne_type,a.ne_id</groupby>
+       	<orderby>2,3</orderby>
+       	<limitclause>a.compress_date</limitclause>
+       	<regionclause>a.ne_id</regionclause>
+        <operateid>5065</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002_all">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C1</flag>
+        <title>全省17951业务统计（移动电话作被叫)－线图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name  name1</axisygroup>
+        <where>x0.ne_type = 10000  and x1.ne_id =1 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 34 </where>
+        <orderby>x0.compress_date</orderby>
+        <limitclause>x0.compress_date</limitclause>
+        <operateid>5032</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002_all_region">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C2</flag>
+        <title>地市17951业务（移动电话作被叫）-柱图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>x1.ne_name name,x0.s_hour</axisygroup>
+        <where>x0.ne_type = 10003  and x1.ne_id =1 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 34</where>
+        <orderby>x0.compress_date</orderby>
+        <limitclause>x0.compress_date</limitclause>
+        <regionclause>x0.ne_id</regionclause>
+        <operateid>5032</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002_all_region_mul">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C1</flag>
+        <title>地市17951业务（移动电话作被叫）-线图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name name1</axisygroup>
+        <where>x0.ne_type = 10003  and x1.ne_id =1 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 34</where>
+        <orderby>x0.compress_date</orderby>
+        <limitclause>x0.compress_date</limitclause>
+        <regionclause>x0.ne_id</regionclause>
+        <operateid>5032</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002gd_all">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C1</flag>
+        <title>全省17951业务统计（固定电话作被叫)－线图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name name1</axisygroup>
+        <where>x0.ne_type = 10000  and x1.ne_id =5 AND  s_hour=0  and x0.sum_level=1 AND x0.sv_id = 33</where>
+        <orderby>x0.compress_date</orderby>
+        <limitclause>x0.compress_date</limitclause>
+        <operateid>5034</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002lt_all">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C1</flag>
+        <title>全省17951业务统计（联通电话作被叫)－线图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date  date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name name1</axisygroup>
+        <where>x0.ne_type = 10000  and x1.ne_id =4 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 35 </where>
+        <orderby>x0.compress_date</orderby>
+        <limitclause>x0.compress_date</limitclause>
+        <operateid>5033</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002lt_all_region">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C2</flag>
+        <title>地市17951业务（联通电话作被叫）-柱图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date  date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name name1</axisygroup>
+        <where>x0.ne_type = 10003  and x1.ne_id =4 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 35 </where>
+        <orderby>x0.compress_date</orderby>
+          <limitclause>x0.compress_date</limitclause>
+        <regionclause>x0.ne_id</regionclause>
+        <operateid>5033</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002lt_all_region_mul">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C1</flag>
+        <title>地市17951业务（联通电话作被叫）-线图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date  date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name name1</axisygroup>
+        <where>x0.ne_type = 10003  and x1.ne_id =4 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 35 </where>
+        <orderby>x0.compress_date</orderby>
+          <limitclause>x0.compress_date</limitclause>
+        <regionclause>x0.ne_id</regionclause>
+        <operateid>5033</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002gd_all_region">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C2</flag>
+        <title>地市17951业务（固定电话作被叫）-柱图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name name1</axisygroup>
+        <where>x0.ne_type = 10003  and x1.ne_id =5 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 33</where>
+        <orderby>x0.compress_date</orderby>
+          <limitclause>x0.compress_date</limitclause>
+        <regionclause>x0.ne_id</regionclause>
+        <operateid>5034</operateid>
+</GRAPH>
+<GRAPH graphname="g_vpm_ed72002gd_all_region_mul">
+        <viewname>tpa_destcode_sum x0 ,local_name1 x1</viewname>
+        <flag>C1</flag>
+        <title>地市17951业务（固定电话作被叫）-线图</title>
+        <date>日期</date>
+        <bb>话务量</bb>
+        <axisx>
+              <item datatype="date01">x0.compress_date date</item>
+        </axisx>
+        <axisy>
+              <item datatype="float01">round(x0.seiz_traffic , 2 ) bb</item>
+        </axisy>
+        <axisygroup>soa_get_nename(x0.ne_id,x0.ne_type) name;x1.ne_name name1</axisygroup>
+        <where>x0.ne_type = 10003  and x1.ne_id =5 AND  s_hour=0  and x0.sum_level=1  AND x0.sv_id = 33</where>
+        <orderby>x0.compress_date</orderby>
+          <limitclause>x0.compress_date</limitclause>
+        <regionclause>x0.ne_id</regionclause>
+        <operateid>5034</operateid>
+</GRAPH>
+</report>

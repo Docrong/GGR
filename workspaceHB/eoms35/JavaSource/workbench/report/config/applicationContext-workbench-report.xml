@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    
+    <!--TawWorkbenchReport-DAO START-->
+    <bean id="tawWorkbenchReportDao" class="com.boco.eoms.workbench.report.dao.hibernate.TawWorkbenchReportDaoHibernate" autowire="byName"/>
+    <!--TawWorkbenchReport-DAO END-->
+    <!--TawWorkbenchReport-START-->    
+    <bean id="ItawWorkbenchReportManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.workbench.report.service.impl.TawWorkbenchReportManagerImpl">
+                <property name="tawWorkbenchReportDao" ref="tawWorkbenchReportDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawWorkbenchReport-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

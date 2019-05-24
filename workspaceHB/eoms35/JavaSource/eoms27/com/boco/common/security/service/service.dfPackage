@@ -1,0 +1,46 @@
+package id123qndjc31o07djc3gfpp;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id3vzntdjc31o07djc3pem9.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.service.manager:oiref> 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#id12cjjdjc31o07djc3pji1.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.service.dao:oiref> 
+*/
+class reference30 {
+}/**
+@__ref <oiref:design#Class#id22qb4djc31o07djc3puot.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.service.model:oiref> 
+*/
+class reference32 {
+}/**
+@__ref <oiref:design#Class#id4roeydjc31o07djc3pzy2.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.service.factory:oiref> 
+*/
+class reference34 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

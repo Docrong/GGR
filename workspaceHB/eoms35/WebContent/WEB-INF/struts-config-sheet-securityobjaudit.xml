@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<!-- ========== Data Sources Definitions =================================== -->
+	<!--
+		Define your Struts data sources in a file called struts-data-sources.xml and place
+		it in your merge directory.
+	-->
+
+	<!-- ========== Form Bean Definitions =================================== -->
+	<form-beans>
+		<form-bean name="multiPageForm"
+			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
+		<!--bean for EsmProcess end-->
+	</form-beans>
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward name="selectFile" path="/selectFile.do" />
+		<forward name="logout" path="/logout.jsp" />
+		<forward name="error"
+			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+			contextRelative="true" />
+	</global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+	<action-mappings>
+		<action path="/securityobjaudit"
+			type="com.boco.eoms.sheet.securityobjaudit.webapp.action.SecurityObjAuditAction"
+			name="multiPageForm" scope="request" input="error" parameter="method"
+			unknown="false" validate="false" attribute="SecurityObjAudit">
+			<set-property property="cancellable" value="true" />
+			<forward name="new"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/main.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="inputNew"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="dealpage"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/dealpage.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="inputDealpage"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputdealpage.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="reject"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/reject.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="inputReject"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputreject.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/detail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="draft"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="cancel"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="delete"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="hold"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/list.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="success"
+				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="successMessage"
+				path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="portal"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/portal.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="split"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/split.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="history"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/history.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="draw"
+                path="/WEB-INF/pages/wfworksheet/securityobjaudit/draw.jsp"
+                redirect="false" contextRelative="true"/>
+            <forward name="pic"
+                path="/WEB-INF/pages/wfworksheet/securityobjaudit/pic.jsp"
+                redirect="false" contextRelative="true"/>
+            <forward name="holdlist"
+                path="/WEB-INF/pages/wfworksheet/securityobjaudit/mainlist.jsp" 
+                redirect="false" contextRelative="true" />
+			<forward name="mainlist"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/mainlist.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="startlist"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/mainlist.jsp"
+				redirect="false" contextRelative="true" />
+		    <forward name="maindetail"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/detail.jsp"
+				redirect="false" contextRelative="true" />
+           <forward name="query"
+                path="/WEB-INF/pages/wfworksheet/securityobjaudit/query.jsp"
+                redirect="false" contextRelative="true" />
+	        <forward name="queryInput"
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/queryinput.jsp"
+		        redirect="false" contextRelative="true" />		
+	        <forward name="querylist"
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/querylist.jsp"
+		        redirect="false" contextRelative="true" />
+		     <forward name="templates" 
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/templates.jsp"
+		        redirect="false" contextRelative="true"/>
+		    <forward name="dealTemplates" 
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/dealTemplates.jsp"
+		        redirect="false" contextRelative="true"/>
+		    <forward name="dealTemplateDetail" 
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/dealTemplateDetail.jsp"
+		        redirect="false" contextRelative="true"/>
+		    <forward name="sheetAccessories" 
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/sheetAccessories.jsp"
+		        redirect="false" contextRelative="true"/>
+		   <forward name="showInvokeRelationShipList" 
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/showInvokeRelationShipList.jsp"
+		        redirect="false" contextRelative="true"/>	   
+		   <forward name="batchDealPage" 
+		        path="/WEB-INF/pages/wfworksheet/securityobjaudit/batchDealPage.jsp"
+		        redirect="false" contextRelative="true"/>
+		   <forward name="transfer"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/transfer.jsp"	
+				redirect="false" contextRelative="true" />
+			<forward name="forceHold"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/forceHold.jsp"	
+				redirect="false" contextRelative="true" />
+			<forward name="adminlist"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/adminlist.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="event"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/event.jsp" redirect="false"
+				contextRelative="true" />
+	        <forward name="inputEvent"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/inputevent.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="saveInfo" path="/securityobjaudit.do?method=showDetailPage"/>
+		    <forward name="saveInfoAndExit" path="/securityobjaudit.do?method=showListsendundo"/>   
+			<forward name="cancellist"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/mainlist.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="remark"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/remark.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="phaseBackToUp"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/phaseBackToUp.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="phaseAdvice"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/phaseBackToUp.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="showDraftList" path="/securityobjaudit.do?method=showDraftList"/>	
+		    <forward name="draftList" path="/WEB-INF/pages/wfworksheet/securityobjaudit/draftList.jsp" redirect="false"
+				contextRelative="true"/> 		
+			<forward name="showWorkFlow"
+				path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="getLinkOperatePage"
+				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
+				redirect="false" contextRelative="true" />								
+			<forward name="cc"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/makeCopy.jsp"
+				redirect="false" contextRelative="true" />			
+			<forward name="shoWholeWorkFlow"
+				path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="showSetpInfoPage"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/showStepInfoPage.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="dealReplyAccept"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/dealReplyAccept.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="dealReplyReject"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/dealReplyReject.jsp" 
+				redirect="false" contextRelative="true" />					
+		      <forward name="showWorkFlowInstance"
+				path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
+				redirect="false" contextRelative="true" />
+			<!-- 工单休眠操作页面 add by weichao 20141223 -->		
+			<forward name="asleep"
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/asleep.jsp"
+				redirect="false" contextRelative="true" />	
+			<forward name="sleeplist" 
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/sleeplist.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="dealsleep" 
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/dealsleep.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="activation" 
+				path="/WEB-INF/pages/wfworksheet/securityobjaudit/activation.jsp"
+				redirect="false" contextRelative="true" />
+		<!-- 工单休眠操作页面 add by weichao 20141223 -->		
+									
+		 </action>
+	</action-mappings>
+
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+	<message-resources parameter="config/ApplicationResources-sheet" key="sheet" />
+	<message-resources
+		parameter="config/ApplicationResources-sheet-securityobjaudit" key="securityobjaudit" />
+</struts-config>

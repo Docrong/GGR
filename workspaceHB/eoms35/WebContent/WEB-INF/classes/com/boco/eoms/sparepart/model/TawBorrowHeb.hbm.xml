@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.sparepart.model.BorrowHeb"  table="TAW_SP_BORROW">
+
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="OBJECTTYPE" length="32" name="objecttype" type="string"/>
+<property column="VERSION" length="32" name="version" type="string"/>
+<property column="OBJECTNAME" length="32" name="objectname" type="string"/>
+<property column="NETTYPE" length="32" name="nettype" type="string"/>
+<property column="SERIALNO" length="32" name="serialno" type="string"/>
+<property column="SUPPLIER" length="32" name="supplier" type="string"/>
+<property column="OPERATOR" length="32" name="operator" type="string"/>
+<property column="INTIME" length="7" name="intime" type="date"/>
+<property column="STORAGEID" length="32" name="storageid" type="string"/>
+<property column="NOTE" length="32" name="note" type="string"/>
+<property column="NECODE" length="5" name="necode" type="integer"/>
+<property column="SWVERSION" length="32" name="swversion" type="string"/>
+<property column="HWVERSION" length="32" name="hwversion" type="string"/>
+<property column="PRODUCTCODE" length="32" name="productcode" type="string"/>
+<property column="MANAGECODE" length="32" name="managecode" type="string"/>
+<property column="POSITION" length="32" name="position" type="string"/>
+<property column="STORAGE" length="32" name="storage" type="string"/>
+<property column="CNAME" length="32" name="cname" type="string"/>
+<property column="NECNAME" length="32" name="necname" type="string"/>
+<property column="SUPPLIERNAME" length="32" name="suppliername" type="string"/>
+<property column="CONTRACT" length="32" name="contract" type="string"/>
+<property column="MONEY" length="32" name="money" type="string"/>
+<property column="DEPT_ID" length="32" name="deptId" type="string"/>
+<property column="OBJECTTYPENAME" length="32" name="objecttypename" type="string"/>
+</class>
+</hibernate-mapping>

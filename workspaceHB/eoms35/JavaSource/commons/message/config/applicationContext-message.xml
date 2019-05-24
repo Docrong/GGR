@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ 
+ 
+    <!--TawCommonMessageOpertype-DAO START-->
+    <bean id="tawCommonMessageOpertypeDao" class="com.boco.eoms.commons.message.dao.hibernate.TawCommonMessageOpertypeDaoHibernate" autowire="byName"/>
+    <!--TawCommonMessageOpertype-DAO END-->
+    <!--TawCommonMessageOpertype-START-->    
+    <bean id="tawCommonMessageOpertypeManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.impl.TawCommonMessageOpertypeManagerImpl">
+                <property name="tawCommonMessageOpertypeDao" ref="tawCommonMessageOpertypeDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawCommonMessageOpertype-END-->
+    <!--TawCommonMessageModelType-DAO START-->
+    <bean id="tawCommonMessageModelTypeDao" class="com.boco.eoms.commons.message.dao.hibernate.TawCommonMessageModelTypeDaoHibernate" autowire="byName"/>
+    <!--TawCommonMessageModelType-DAO END-->
+    <!--TawCommonMessageModelType-START-->    
+    <bean id="tawCommonMessageModelTypeManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.impl.TawCommonMessageModelTypeManagerImpl">
+                <property name="tawCommonMessageModelTypeDao" ref="tawCommonMessageModelTypeDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawCommonMessageModelType-END-->
+    
+     <!--ITawCommonMessageMOPBo-START-->    
+    <bean id="iTawCommonMessageMOPBo" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.bo.impl.TawCommonMessageMOPBoImpl">
+                <property name="opertype" ref="tawCommonMessageOpertypeManager"/>
+                <property name="modeltype" ref="tawCommonMessageModelTypeManager"/>
+            </bean>
+        </property>
+    </bean>
+    <!--ITawCommonMessageMOPBo-END-->
+    
+    <!--TawCommonMessageAddService-DAO START-->
+    <bean id="tawCommonMessageAddServiceDao" class="com.boco.eoms.commons.message.dao.hibernate.TawCommonMessageAddServiceDaoHibernate" autowire="byName"/>
+    <!--TawCommonMessageAddService-DAO END-->
+    <!--TawCommonMessageAddService-START-->    
+    <bean id="tawCommonMessageAddServiceManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.impl.TawCommonMessageAddServiceManagerImpl">
+                <property name="tawCommonMessageAddServiceDao" ref="tawCommonMessageAddServiceDao"/>
+            </bean>
+        </property>
+    </bean>
+    
+    <!--TawCommonMessageAddService-END-->
+     <!--ITawCommonMessageServiceBo-Begin-->
+     <bean id="iTawCommonMessageServiceBo" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.bo.impl.TawCommonMessageServiceBoImpl">
+                <property name="messageservice" ref="tawCommonMessageAddServiceManager"/>
+            </bean>
+        </property>
+    </bean>
+    <!--ITawCommonMessageServiceBo-end-->
+    <!--TawCommonMessageSubscribe-DAO START-->
+    <bean id="tawCommonMessageSubscribeDao" class="com.boco.eoms.commons.message.dao.hibernate.TawCommonMessageSubscribeDaoHibernate" autowire="byName"/>
+    <!--TawCommonMessageSubscribe-DAO END-->
+    <!--TawCommonMessageSubscribe-START-->    
+    <bean id="tawCommonMessageSubscribeManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.impl.TawCommonMessageSubscribeManagerImpl">
+                <property name="tawCommonMessageSubscribeDao" ref="tawCommonMessageSubscribeDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawCommonMessageSubscribe-END-->
+    
+    
+    <!--ITawCommonMessageSubscirbeBo-START-->    
+    <bean id="iTawCommonMessageSubscirbeBo" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.bo.impl.TawCommonMessageSubscirbeBoImpl">
+                <property name="subscribeDao" ref="tawCommonMessageSubscribeManager"/>
+            </bean>
+        </property>
+    </bean>
+    <!--ITawCommonMessageSubscirbeBo-END-->
+    <!--TawCommonMessageMonitor-DAO START-->
+    <bean id="tawCommonMessageMonitorDao" class="com.boco.eoms.commons.message.dao.hibernate.TawCommonMessageMonitorDaoHibernate" autowire="byName"/>
+    <!--TawCommonMessageMonitor-DAO END-->
+    <!--TawCommonMessageMonitor-START-->    
+    <bean id="tawCommonMessageMonitorManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.impl.TawCommonMessageMonitorManagerImpl">
+                <property name="tawCommonMessageMonitorDao" ref="tawCommonMessageMonitorDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawCommonMessageMonitor-END-->
+    <!--TawCommonMessageMonitorRef-DAO START-->
+    <bean id="tawCommonMessageMonitorRefDao" class="com.boco.eoms.commons.message.dao.hibernate.TawCommonMessageMonitorRefDaoHibernate" autowire="byName"/>
+    <!--TawCommonMessageMonitorRef-DAO END-->
+    <!--TawCommonMessageMonitorRef-START-->    
+    <bean id="tawCommonMessageMonitorRefManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.impl.TawCommonMessageMonitorRefManagerImpl">
+                <property name="tawCommonMessageMonitorRefDao" ref="tawCommonMessageMonitorRefDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawCommonMessageMonitorRef-END-->
+    
+     <!--ITawCommonMessageCTBo-START-->    
+    <bean id="iTawCommonMessageCTBo" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.service.bo.impl.TawCommonMessageCTBoImpl">
+                <property name="subscribebo" ref="iTawCommonMessageSubscirbeBo"/>
+                <property name="monitormanager" ref="tawCommonMessageMonitorManager"/>
+            </bean>
+        </property>
+    </bean>
+    <!--ITawCommonMessageCTBo-END-->
+    
+    
+      <!--TawCommonMessageMethod-START-->    
+      <!-- 
+    <bean id="tawCommonMessageMethod" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.message.msg.bo.TawCommonMessageMethod">
+                <property name="servicebo" ref="iTawCommonMessageServiceBo"/>
+                <property name="ctbo" ref="iTawCommonMessageCTBo"/>
+            </bean>
+        </property>
+    </bean>
+     -->
+    <!--TawCommonMessageMethod-END-->
+    
+  
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

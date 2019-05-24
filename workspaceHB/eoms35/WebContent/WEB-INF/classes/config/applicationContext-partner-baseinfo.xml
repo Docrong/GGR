@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+   <!-- diyubumenshu -->
+	<bean id="areaDeptTreeMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.partner.baseinfo.mgr.impl.AreaDeptTreeMgrImpl">
+				<property name="areaDeptTreeDao" ref="areaDeptTreeDao" />
+			</bean>
+		</property>
+	</bean>	
+
+	<bean id="areaDeptTreeDao"
+		class="com.boco.eoms.partner.baseinfo.dao.hibernate.AreaDeptTreeDaoHibernate"
+		autowire="byName" />
+		
+	<!-- hezuohuoban -->	
+	<bean id="partnerDeptMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.partner.baseinfo.mgr.impl.PartnerDeptMgrImpl">
+				<property name="partnerDeptDao" ref="partnerDeptDao" />
+			</bean>
+		</property>
+	</bean>
+	
+
+	<bean id="partnerDeptDao"
+		class="com.boco.eoms.partner.baseinfo.dao.hibernate.PartnerDeptDaoHibernate"
+		autowire="byName" />
+		
+		<!-- renlixinxi -->
+	<bean id="partnerUserMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.partner.baseinfo.mgr.impl.PartnerUserMgrImpl">
+				<property name="partnerUserDao" ref="partnerUserDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="partnerUserDao"
+		class="com.boco.eoms.partner.baseinfo.dao.hibernate.PartnerUserDaoHibernate"
+		autowire="byName" />
+	
+	<!-- renyuandiyuduizhao -->	
+	<bean id="partnerUserAndAreaMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.partner.baseinfo.mgr.impl.PartnerUserAndAreaMgrImpl">
+				<property name="partnerUserAndAreaDao" ref="partnerUserAndAreaDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="partnerUserAndAreaDao"
+		class="com.boco.eoms.partner.baseinfo.dao.hibernate.PartnerUserAndAreaDaoHibernate"
+		autowire="byName" />
+
+</beans>
+
+
+
+
+
+
+
+
+

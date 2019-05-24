@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.statistic.model.StSubscription" table="st_subscription" dynamic-update="true"  dynamic-insert="true">
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="sub_id" length="32" name="subId" type="string"/>
+<property column="stat_mode" length="4" name="statMode" type="integer"/>
+<property column="cycle" length="50" name="cycle" type="string"/>
+<property column="item" length="5" name="item" type="string"/>
+<property column="type" length="10" name="type" type="string"/>
+<property column="class_name" length="100" name="className" type="string"/>
+<property column="item_name" length="100" name="itemName" type="string"/>
+<property column="subscriber" length="20" name="subscriber" type="string"/>
+<property column="subscribe_dept" length="4" name="subscribeDept" type="integer"/>
+<property column="subscribe_time" length="7" name="subscribeTime" type="timestamp"/>
+<property column="send_deptid" length="250" name="sendDeptid" type="string"/>
+<property column="send_userid" length="20" name="sendUserid" type="string"/>
+<property column="receive_deptid" length="250" name="receiveDeptid" type="string"/>
+<property column="receive_userid" length="20" name="receiveUserid" type="string"/>
+<property column="statfromdate" length="7" name="statfromdate" type="timestamp"/>
+<property column="stattodate" length="7" name="stattodate" type="timestamp"/>
+<property column="weekselectfrom" length="4" name="weekselectfrom" type="integer"/>
+<property column="deleted" length="4" name="deleted" type="integer"/>
+<property column="remark" length="255" name="remark" type="string"/>
+</class>
+</hibernate-mapping>

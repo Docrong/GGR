@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="dutyAttributes"
+		class="com.boco.eoms.workbench.networkcalendar.webapp.util.DutyAttributes">
+		<property name="dutyOtherAssign">
+			<value>2</value>
+		</property>
+		<property name="dutyRootPath">
+			<value>duty/model/new</value>
+		</property>
+		<property name="dutyOldPath">
+			<value>duty/model/old</value>
+		</property>
+		<property name="serverId">
+			<value>8a44e42c1b1f377f011b1f42011d0007</value>
+		</property>
+		<property name="sendSMsgAvailable">
+			<value>true</value>
+		</property>
+	</bean>
+	   
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

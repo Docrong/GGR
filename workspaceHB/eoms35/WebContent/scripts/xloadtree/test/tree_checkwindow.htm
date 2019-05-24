@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link type="text/css" rel="stylesheet" href="../xtree2.css"></link>
+<script type="text/javascript">
+var xtreePath = "..";
+</script>
+<script type="text/javascript" charset="utf-8" src="../xtree2.js"></script>
+<script type="text/javascript" charset="utf-8" src="../xloadtree2.js"></script>
+</head>
+<body>
+<div id="checkboxtree" class="checkboxtree" style="left: 400px;">
+<strong>ÇëÑ¡Ôñ</strong>
+&nbsp;[&nbsp;<A HREF="#" onclick="javascript:document.getElementById('checkboxtree').hide();">Òþ²Ø</A>&nbsp;]
+<BR>
+<script type="text/javascript">
+	var tree = new WebFXLoadTree("µØÇøÊ÷Í¼","tree1.xml");
+	tree.write();
+	tree.checkboxmode = "multi";
+	tree.showField = "itemName";
+	tree.hiddField = "itemId";
+    tree.expand();
+</script>
+</div>
+</body>
+</html>

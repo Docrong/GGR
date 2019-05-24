@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="ICityCustomMainDAO"
+		class="com.boco.eoms.sheet.citycustom.dao.hibernate.CityCustomMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="ICityCustomLinkDAO"
+		class="com.boco.eoms.sheet.citycustom.dao.hibernate.CityCustomLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ICityCustomTaskDAO"
+		class="com.boco.eoms.sheet.citycustom.dao.hibernate.CityCustomTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="CityCustomTask"
+		class="com.boco.eoms.sheet.citycustom.model.CityCustomTask" autowire="byName">
+     </bean>
+    <bean id="CityCustomLink"
+		class="com.boco.eoms.sheet.citycustom.model.CityCustomLink"
+		autowire="byName" />
+	<bean id="CityCustomMain"
+		class="com.boco.eoms.sheet.citycustom.model.CityCustomMain"
+		autowire="byName" />
+	<bean id="iCityCustomTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.citycustom.service.impl.CityCustomTaskManagerImpl">
+				<property name="taskModelObject" ref="CityCustomTask" />
+				<property name="taskDAO">
+					<ref bean="ICityCustomTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/citycustomTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iCityCustomFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.citycustom.service.impl.CityCustomFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCityCustomLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.citycustom.service.impl.CityCustomLinkManagerImpl">
+				<property name="linkObject" ref="CityCustomLink"/>
+				<property name="linkDAO">
+				  <ref bean="ICityCustomLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCityCustomMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.citycustom.service.impl.CityCustomMainManagerImpl">
+			    <property name="mainObject" ref="CityCustomMain" />
+				<property name="mainDAO">
+				 <ref bean="ICityCustomMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iCityCustomQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>CityCustom</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/citycustom-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iCityCustomQo"
+		class="com.boco.eoms.sheet.citycustom.qo.impl.CityCustomQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="CityCustomMain" />
+		<property name="poLink" value="CityCustomLink" />
+		<property name="poTask" value="CityCustomTask" />
+		<property name="aliasMain" value="citycustomMain" />
+		<property name="aliasLink" value="citycustomLink" />
+		<property name="aliasTask" value="citycustomTask" />
+
+	</bean>
+
+	<bean id="CityCustom" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.citycustom.webapp.action.CityCustomMethod">
+				<property name="businessFlowService" >
+					<ref bean="iCityCustomFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iCityCustomLinkManager" />
+				<property name="mainService"
+					ref="iCityCustomMainManager" />
+				<property name="sheetTask"
+					ref="CityCustomTask" />
+				<property name="taskService"
+					ref="iCityCustomTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/citycustom-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+
+</beans>

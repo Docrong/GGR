@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.pq.model.RetainPQ"
+		table="sequence_retainpq">
+
+		<id name="jobId" column="job_id" unsaved-value="null">
+
+			<generator class="uuid.hex">
+
+			</generator>
+
+		</id>
+
+		<!-- blob -->
+		<property name="clz" column="clz" type="java.sql.Blob">
+
+		</property>
+
+		<property name="methodName" length="255" column="method_name">
+
+		</property>
+
+		<!-- blob -->
+		<property name="paramTypes" column="param_types" type="java.sql.Blob">
+
+		</property>
+
+		<!-- blob -->
+		<property name="params" column="params" type="java.sql.Blob">
+
+		</property>
+
+		<!-- blob -->
+		<property name="sequenceCallback" column="sequence_callback" type="java.sql.Blob">
+
+		</property>
+
+		<property name="status" length="50" not-null="true" column="status">
+
+		</property>
+		
+		<property name="insertTime" length="50" not-null="true" column="insert_time"/>
+		
+		<property name="failCount" length="50" not-null="true" column="fail_count"/>
+		
+		<property name="deleted" length="50" not-null="true" column="deleted"/>
+	</class>
+
+</hibernate-mapping>
+

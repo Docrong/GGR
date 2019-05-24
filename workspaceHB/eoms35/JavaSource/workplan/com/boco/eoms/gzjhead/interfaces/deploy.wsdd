@@ -1,0 +1,418 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ReportExecuteService WSDL service -->
+
+  <service name="ReportInventoryPort" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"/>
+      <parameter name="wsdlServiceElement" value="ReportExecuteService"/>
+      <parameter name="wsdlServicePort" value="ReportInventoryPort"/>
+      <parameter name="className" value="com.boco.eoms.gzjhead.interfaces.ReportInventoryBindingImpl"/>
+      <parameter name="wsdlPortType" value="ReportInventoryPortType"/>
+      <operation name="reportInventory" qname="ReportInventory" returnQName="retNS:ReportInventoryResponse" xmlns:retNS="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" returnType="rtns:>ReportInventoryResponse" xmlns:rtns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" >
+        <parameter qname="pns:ReportInventoryRequest" xmlns:pns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" type="tns:>ReportInventoryRequest" xmlns:tns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"/>
+        <fault name="ReportInventoryFault" qname="fns:FaultDetails" xmlns:fns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" class="com.boco.eoms.gzjhead.interfaces.FaultDetails" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="reportInventory"/>
+
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:neListType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NeListType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:neNumberType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NeNumberType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:attachInfoType"
+        type="java:com.boco.eoms.gzjhead.interfaces.AttachInfoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>IsAliveRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._IsAliveRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportFormResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportFormResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportInventoryResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportInventoryResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportFormRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportFormRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:noteType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NoteType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>IsAliveResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._IsAliveResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ModifyFormRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ModifyFormRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:modifyTypeType"
+        type="java:com.boco.eoms.gzjhead.interfaces.ModifyTypeType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ModifyFormResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ModifyFormResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportInventoryRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportInventoryRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:reportTypeType"
+        type="java:com.boco.eoms.gzjhead.interfaces.ReportTypeType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:attachInfoListType"
+        type="java:com.boco.eoms.gzjhead.interfaces.AttachInfoListType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="ReportExecutePort" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"/>
+      <parameter name="wsdlServiceElement" value="ReportExecuteService"/>
+      <parameter name="wsdlServicePort" value="ReportExecutePort"/>
+      <parameter name="className" value="com.boco.eoms.gzjhead.interfaces.ReportExecuteBindingImpl"/>
+      <parameter name="wsdlPortType" value="ReportExecutePortType"/>
+      <operation name="reportForm" qname="ReportForm" returnQName="retNS:ReportFormResponse" xmlns:retNS="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" returnType="rtns:>ReportFormResponse" xmlns:rtns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" >
+        <parameter qname="pns:ReportFormRequest" xmlns:pns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" type="tns:>ReportFormRequest" xmlns:tns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"/>
+        <fault name="ReportFormFault" qname="fns:FaultDetails" xmlns:fns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" class="com.boco.eoms.gzjhead.interfaces.FaultDetails" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="modifyForm" qname="ModifyForm" returnQName="retNS:ModifyFormResponse" xmlns:retNS="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" returnType="rtns:>ModifyFormResponse" xmlns:rtns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" >
+        <parameter qname="pns:ModifyFormRequest" xmlns:pns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" type="tns:>ModifyFormRequest" xmlns:tns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"/>
+        <fault name="ModifyFormFault" qname="fns:FaultDetails" xmlns:fns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" class="com.boco.eoms.gzjhead.interfaces.FaultDetails" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="reportForm modifyForm"/>
+
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:neListType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NeListType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:neNumberType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NeNumberType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:attachInfoType"
+        type="java:com.boco.eoms.gzjhead.interfaces.AttachInfoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>IsAliveRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._IsAliveRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportFormResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportFormResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportInventoryResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportInventoryResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportFormRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportFormRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:noteType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NoteType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>IsAliveResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._IsAliveResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ModifyFormRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ModifyFormRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:modifyTypeType"
+        type="java:com.boco.eoms.gzjhead.interfaces.ModifyTypeType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ModifyFormResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ModifyFormResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportInventoryRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportInventoryRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:reportTypeType"
+        type="java:com.boco.eoms.gzjhead.interfaces.ReportTypeType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:attachInfoListType"
+        type="java:com.boco.eoms.gzjhead.interfaces.AttachInfoListType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+  <service name="AuxiliaryPort" provider="java:RPC" style="document" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"/>
+      <parameter name="wsdlServiceElement" value="ReportExecuteService"/>
+      <parameter name="wsdlServicePort" value="AuxiliaryPort"/>
+      <parameter name="className" value="com.boco.eoms.gzjhead.interfaces.AuxiliaryBindingImpl"/>
+      <parameter name="wsdlPortType" value="AuxiliaryPortType"/>
+      <operation name="isAlive" qname="IsAlive" returnQName="retNS:IsAliveResponse" xmlns:retNS="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" returnType="rtns:>IsAliveResponse" xmlns:rtns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" >
+        <parameter qname="pns:IsAliveRequest" xmlns:pns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" type="tns:>IsAliveRequest" xmlns:tns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"/>
+        <fault name="IsAliveFault" qname="fns:FaultDetails" xmlns:fns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService" class="com.boco.eoms.gzjhead.interfaces.FaultDetails" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="isAlive"/>
+
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:neListType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NeListType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:neNumberType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NeNumberType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:attachInfoType"
+        type="java:com.boco.eoms.gzjhead.interfaces.AttachInfoType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>IsAliveRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._IsAliveRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportFormResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportFormResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportInventoryResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportInventoryResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportFormRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportFormRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:noteType"
+        type="java:com.boco.eoms.gzjhead.interfaces.NoteType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>IsAliveResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._IsAliveResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ModifyFormRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ModifyFormRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:modifyTypeType"
+        type="java:com.boco.eoms.gzjhead.interfaces.ModifyTypeType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ModifyFormResponse"
+        type="java:com.boco.eoms.gzjhead.interfaces._ModifyFormResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:>ReportInventoryRequest"
+        type="java:com.boco.eoms.gzjhead.interfaces._ReportInventoryRequest"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:reportTypeType"
+        type="java:com.boco.eoms.gzjhead.interfaces.ReportTypeType"
+        serializer="org.apache.axis.encoding.ser.SimpleSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.SimpleDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService"
+        qname="ns:attachInfoListType"
+        type="java:com.boco.eoms.gzjhead.interfaces.AttachInfoListType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

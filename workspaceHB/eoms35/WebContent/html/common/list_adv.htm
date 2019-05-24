@@ -1,0 +1,460 @@
+<!--
+ 分类页面-数据列表页面 html模板
+ version 0.1
+ 
+ table风格定义
+ 	<table class="listTable">
+ 隔行换色使用JS:
+ 	eoms.util.colorRows(表格id);
+ 表格标题,使用caption标签
+ 	<caption>普通列表</caption>
+-->
+
+<html>
+<head>
+  <title></title>
+  <!-- HTTP 1.1 -->
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <!-- HTTP 1.0 -->
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <!-- Prevents caching at the Proxy Server -->
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <script type="text/javascript" charset="utf-8" src="../../scripts/local/zh_CN.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../scripts/base/eoms.js"></script>
+   <script type="text/javascript">
+	eoms.appPath = "../..";
+  </script>
+  <link rel="stylesheet" type="text/css" media="all" href="../../styles/default/theme.css" />
+    <!-- EXT LIBS verson 1.1 -->
+  <script type="text/javascript" src="../../scripts/ext/adapter/ext/ext-base.js"></script>
+  <script type="text/javascript" src="../../scripts/ext/ext-all.js"></script>
+  <script type="text/javascript" src="../../scripts/adapter/ext-ext.js"></script>
+  <script type="text/javascript" src="../../scripts/ext/source/locale/ext-lang-zh_CN.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../scripts/ext/resources/css/ext-all.css" />
+  <link rel="stylesheet" type="text/css" href="../../styles/default/ext-adpter.css" />
+  <!-- EXT LIBS END -->  
+  <style type="text/css">
+    td.c1 {
+    	background-color:red;
+    }
+    tr.colorrow td.c1 {
+    	background-color:red;
+    }
+  </style>
+</head>
+
+<body>
+<div id="page"> 
+  <div id="content" class="clearfix">
+    <div id="main"><br/><br/>
+<!-- 引入的头文件 结束 -->
+	
+	<!-- 普通列表 开始 -->
+	<span class="pagebanner"></span>
+	<table class="listTable" id="list2">
+		<caption>普通列表</caption>
+		<thead>	
+		<tr>
+			<th nowrap>
+				<a href="#">处理时限</a>
+			</th>
+			<th nowrap width="70">
+				<a href="#">状态</a>
+			</th>
+			<th nowrap>
+				<a href="#">地区</a>
+			</th>
+			<th nowrap width="120">
+				<a href="#">开始时间</a>
+			</th>
+			<th width="70%">
+				<a href="#">工单主题</a>
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>20分钟</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				今天 10:29
+			</td>
+			<td>
+			
+			<a href="#ddd">
+			用户反映手机信号断续，要求核查，已处理</a>
+			</td>
+		</tr>
+		<tr>
+			<td>60分钟</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				今天 10:29
+			</td>
+			<td>
+			<a href="#44">
+			我省运维小区023号故障,已上报,请部门注意
+			</a>
+			</td>
+		</tr>
+		<tr>
+			<td>60分钟</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				昨天 10:29
+			</td>
+			<td>
+			<a href="#33">
+			我省运维小区087号故障,已上报,请部门注意 
+			</a>
+			</td>
+		</tr>
+		<tr>
+			<td>2小时</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				昨天 10:29
+			</td>
+			<td>
+			<a href="#44">新服务开通申请</a> 
+			</td>
+		</tr>
+		<tr>
+			<td>6小时</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				06-03-12 19:49
+			</td>
+			<td>
+			<a href="#44">告警报告034号</a> 
+			</td>
+		</tr>
+	</tbody></table>
+	<script type="text/javascript">
+	if(typeof Ext!="undefined"){
+	eoms.loadJS(eoms.appPath+"/scripts/ExtTable.js",function(){
+		new eoms.ExtTable("list2",{enableColHide:false}).init();
+	});
+	}
+	</script>
+	<br/>
+	<input type="button" class="button" value="处理">
+	<input type="button" class="button" value="操作">
+	
+	<br/><br/>
+	<!-- 操作处理列表 开始 -->
+	<table class="listTable" id="list3">
+		<caption>操作处理列表</caption>
+		<thead>	
+		<tr>
+			<th nowrap>
+				名称
+			</th>
+			<th nowrap class="imageColumn">
+				编辑
+			</th>
+			<th nowrap class="imageColumn">
+				处理
+			</th>
+			<th nowrap class="imageColumn">
+				查询
+			</th>
+			<th nowrap class="imageColumn">
+				删除
+			</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>
+				<a href="#ddd">用户反映手机信号断续，要求核查，已处理</a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="编辑这个项目"><img src="../../images/icons/edit.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="处理这个项目"><img src="../../images/icons/list-handle.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="搜索这个项目"><img src="../../images/icons/search.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="删除这个项目"><img src="../../images/icons/list-delete.gif"/></a>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="#ddd">
+			用户反映手机信号断续，要求核查，已处理</a></td>
+			<td class="image">
+				<a href="#sdf" title="编辑这个项目"><img src="../../images/icons/edit.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="处理这个项目"><img src="../../images/icons/list-handle.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="搜索这个项目"><img src="../../images/icons/search.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="删除这个项目"><img src="../../images/icons/list-delete.gif"/></a>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="#ddd">
+			用户反映手机信号断续，要求核查，已处理</a></td>
+			<td class="image">
+				<a href="#sdf" title="编辑这个项目"><img src="../../images/icons/edit.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="处理这个项目"><img src="../../images/icons/list-handle.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="搜索这个项目"><img src="../../images/icons/search.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="删除这个项目"><img src="../../images/icons/list-delete.gif"/></a>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="#ddd">
+			用户反映手机信号断续，要求核查，已处理</a></td>
+			<td class="image">
+				<a href="#sdf" title="编辑这个项目"><img src="../../images/icons/edit.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="处理这个项目"><img src="../../images/icons/list-handle.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="搜索这个项目"><img src="../../images/icons/search.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="删除这个项目"><img src="../../images/icons/list-delete.gif"/></a>
+			</td>
+		</tr>
+		<tr>
+			<td><a href="#ddd">
+			用户反映手机信号断续，要求核查，已处理</a></td>
+			<td class="image">
+				<a href="#sdf" title="编辑这个项目"><img src="../../images/icons/edit.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="处理这个项目"><img src="../../images/icons/list-handle.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="搜索这个项目"><img src="../../images/icons/search.gif"/></a>
+			</td>
+			<td class="image">
+				<a href="#sdf" title="删除这个项目"><img src="../../images/icons/list-delete.gif"/></a>
+			</td>
+		</tr>
+	</tbody></table>
+	
+	<script type="text/javascript">
+	if(typeof Ext!="undefined"){
+		eoms.loadJS(eoms.appPath+"/scripts/ExtTable.js",function(){
+			new eoms.ExtTable("list3").init();
+		});
+	}
+	</script>
+	<br/>
+	<input type="button" class="button" value="处理">
+	<input type="button" class="button" value="操作">
+		
+	<br/><br/>
+	<!-- 带图标列表 开始 -->
+	<table class="listTable" id="list">
+		<caption>带图标列表</caption>
+		<thead>	
+		<tr>
+			<td>
+				<a href="#">#</a>
+			</td>
+			<td nowrap>
+				<a href="#">处理时限</a>
+			</td>
+			<td nowrap width="70">
+				<a href="#">状态</a>
+			</td>
+			<td nowrap>
+				<a href="#">地区</a>
+			</td>
+			<td nowrap width="120">
+				<a href="#">开始时间</a>
+			</td>
+			<td width="70%">
+				<a href="#">工单主题</a>
+			</td>
+		</tr>
+		</thead>
+		<tbody>
+		<tr class="serious">
+			<td class="icon"></td>
+			<td>20分钟</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				今天 10:29
+			</td>
+			<td>
+			
+			<a href="#ddd">
+			用户反映手机信号断续，要求核查，已处理</a>
+			</td>
+		</tr>
+		<tr class="alert">
+			<td class="icon"></td>
+			<td>60分钟</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				今天 10:29
+			</td>
+			<td id="row2">
+			<a href="#44">
+			我省运维小区023号故障,已上报,请部门注意
+			</a>
+			</td>
+		</tr>
+		<tr class="alert">
+			<td class="icon"></td>
+			<td>60分钟</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				昨天 10:29
+			</td>
+			<td>
+			<a href="#33">
+			我省运维小区087号故障,已上报,请部门注意 
+			</a>
+			</td>
+		</tr>
+		<tr class="normal">
+			<td class="icon"></td>
+			<td>2小时</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				昨天 10:29
+			</td>
+			<td>
+			<a href="#44">新服务开通申请</a> 
+			</td>
+		</tr>
+		<tr class="normal">
+			<td class="icon"></td>
+			<td>6小时</td>
+			<td>
+				等待处理
+			</td>
+			<td>成都</td>
+			<td>
+				06-03-12 19:49
+			</td>
+			<td>
+			<a href="#44">告警报告034号</a> 
+			</td>
+		</tr>
+		<tr class="complete">
+			<td class="icon"></td>
+			<td>2小时</td>
+			<td>
+				已派发
+			</td>
+			<td>德阳</td>
+			<td>
+				06-03-12 19:49
+			</td>
+			<td>
+			<a href="#44">处理办法的方案</a>
+			</td>
+		</tr>
+		<tr class="complete">
+			<td class="icon"></td>
+			<td>6小时</td>
+			<td>
+				已派发
+			</td>
+			<td>德阳</td>
+			<td>
+				06-03-12 19:49
+			</td>
+			<td>
+			<a href="#44">移动梦网服务调整通知</a> 
+			</td>
+		</tr>
+		<tr class="finish">
+			<td class="icon"></td>
+			<td>2小时</td>
+			<td>
+				已归档
+			</td>
+			<td>德阳</td>
+			<td>
+				06-03-12 19:49
+			</td>
+			<td>
+			<a href="#44">
+				移动梦网服务调整通知
+			</a>
+			</td>
+		</tr>
+		<tr class="finish">
+			<td class="icon"></td>
+			<td>6小时</td>
+			<td>
+				已归档
+			</td>
+			<td>德阳</td>
+			<td>
+				06-03-12 19:49
+			</td>
+			<td>
+			<a href="#44">
+				移动梦网服务调整通知
+			</a>
+			</td>
+		</tr>
+	</tbody></table>
+	<br/>
+	<input type="button" class="button" value="处理">
+	<input type="button" class="button" value="操作">
+
+	
+<script type="text/javascript">
+	eoms.util.colorRows('list');
+	eoms.util.colorRows('list2');
+	eoms.util.colorRows('list3');
+</script>
+
+<!-- footer_eoms.jsp start-->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<!-- footer_eoms.jsp end-->

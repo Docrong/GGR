@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="BusinessImplementYY" description="语音专线工单">
+  <flow-define id="BusinessImplementYYProcess" description="语音专线工单" tasknamespace="http://BusinessImplementYYProcess" linkservicename="iBusinessImplementYYLinkManager" dictfilename="businessimplementyy" name="BusinessImplementYY">
+    <phase-id id="receive" name="新建" type="receive" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="AuditTask" role="dealPerformer@" condition="${operateType}==0" operatetype="0" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="派发" />
+      <to-phase-id id="DraftTask" role="dealPerformer@" condition="${operateType}==22" operatetype="22" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="保存草稿" />
+    </phase-id>
+    <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="AuditTask" role="dealPerformer@4061" condition="${operateType}==3" operatetype="3" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="草稿派发" />
+    </phase-id>
+    <phase-id id="RejectTask" name="驳回" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="AuditTask" name="定单审核" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="RejectTask" role="dealPerformer@" condition="${operateType}==54" operatetype="54" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回" />
+      <to-phase-id id="CodeDispthTask" role="dealPerformer@4062" condition="${operateType}==71" operatetype="71" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="送分配人" />
+    </phase-id>
+    <phase-id id="CodeDispthTask" name="编接续码分配" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="GetWayTask" role="dealPerformer@4063" condition="${operateType}==72" operatetype="72" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="送端口分配" />
+    </phase-id>
+    <phase-id id="GetWayTask" name="设备端口分配" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="OpenTask" role="dealPerformer@4064" condition="${operateType}==73" operatetype="73" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="送开通" />
+    </phase-id>
+    <phase-id id="OpenTask" name="专线开通" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="DataMakeTask" role="" condition="${operateType}==74" operatetype="74" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="送数据制作" />
+    </phase-id>
+    <phase-id id="DataMakeTask" name="数据制作" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="BusiTestTask" role="dealPerformer@4066" condition="${operateType}==75" operatetype="75" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="送业务测试" />
+    </phase-id>
+    <phase-id id="BusiTestTask" name="业务测试" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="DataOkTask" role="dealPerformer@4067" condition="${operateType}==76" operatetype="76" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="送数据确认" />
+    </phase-id>
+    <phase-id id="DataOkTask" name="数据确认" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="HoldTask" role="" condition="${operateType}==77" operatetype="77" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="送归档" />
+    </phase-id>
+  </flow-define>
+</WorkFlowRule>
+

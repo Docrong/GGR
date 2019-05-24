@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<session-factory>
+	<property name="show_sql">true</property>
+	<!-- 定制统计 如果不需要定制统计则不需要配置一下2个配置文件-->
+	<mapping
+		resource="com/boco/eoms/commons/statistic/base/model/StatisticFileInfo.hbm.xml" />
+	<mapping 
+		resource="com/boco/eoms/commons/statistic/customstat/model/StSubscription.hbm.xml"/>
+	<mapping 
+		resource="com/boco/eoms/commons/statistic/customstat/model/CustomstatRemind.hbm.xml"/>
+</session-factory>
+</hibernate-configuration>
+

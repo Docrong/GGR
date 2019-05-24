@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--BusinessImplement-START-->    
+
+    <bean id="IBusinessImplementMainDAO"
+		class="com.boco.eoms.sheet.businessimplement.dao.hibernate.BusinessImplementMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IBusinessImplementLinkDAO"
+		class="com.boco.eoms.sheet.businessimplement.dao.hibernate.BusinessImplementLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IBusinessImplementTaskDAO"
+		class="com.boco.eoms.sheet.businessimplement.webapp.action.UbcmirmsUtilTest" autowire="byName">
+     </bean>
+     <bean id="BusinessImplementTask"
+		class="com.boco.eoms.sheet.businessimplement.model.BusinessImplementTask" autowire="byName">
+     </bean>
+    <bean id="BusinessImplementLink"
+		class="com.boco.eoms.sheet.businessimplement.model.BusinessImplementLink"
+		autowire="byName" />
+	<bean id="BusinessImplementMain"
+		class="com.boco.eoms.sheet.businessimplement.model.BusinessImplementMain"
+		autowire="byName" />
+	<bean id="iBusinessImplementTask"
+		class="com.boco.eoms.sheet.businessimplement.task.impl.BusinessImplementTaskImpl"
+		autowire="byName" />
+	<bean id="iBusinessImplementTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessimplement.service.impl.BusinessImplementTaskManagerImpl">
+				<property name="taskModelObject" ref="BusinessImplementTask" />
+				<property name="taskDAO">
+					<ref bean="IBusinessImplementTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/businessimplementConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iBusinessImplementFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessimplement.service.impl.BusinessImplementFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iBusinessImplementLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessimplement.service.impl.BusinessImplementLinkManagerImpl">
+				<property name="linkObject" ref="BusinessImplementLink"/>
+				<property name="linkDAO">
+				  <ref bean="IBusinessImplementLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iBusinessImplementMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessimplement.service.impl.BusinessImplementMainManagerImpl">
+			    <property name="mainObject" ref="BusinessImplementMain" />
+				<property name="mainDAO">
+				 <ref bean="IBusinessImplementMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iBusinessImplementQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>BusinessImplementProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/businessimplement-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iBusinessImplementQo"
+		class="com.boco.eoms.sheet.businessimplement.qo.impl.BusinessImplementQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="BusinessImplementMain" />
+		<property name="poLink" value="BusinessImplementLink" />
+		<property name="aliasMain" value="BusinessImplementMain" />
+		<property name="aliasLink" value="BusinessImplementLink" />
+		<property name="poTask" value="BusinessImplementTask" />
+	    <property name="aliasTask" value="BusinessImplementTask" />			
+	</bean>
+
+	<bean id="BusinessImplement" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessimplement.webapp.action.BusinessImplementMethod">
+				<property name="businessFlowService" >
+					<ref bean="iBusinessImplementFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iBusinessImplementLinkManager" />
+				<property name="mainService"
+					ref="iBusinessImplementMainManager" />
+				<property name="sheetTask"
+					ref="BusinessImplementTask" />
+				<property name="taskService"
+					ref="iBusinessImplementTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/businessimplement-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+	<bean id="iBusinessImplementCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessimplement.service.impl.BusinessImplementCrmManagerImpl">
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iBusinessImplementInterfaceManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessimplement.service.impl.BusinessImplementInterfaceManagerImpl">
+			</bean>
+		</property>
+	</bean>
+     <!--BusinessImplement-END-->  
+</beans>

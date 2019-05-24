@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.commons.interfaceMonitoring.model.InterfaceConfiguration"
+		table="interface_configuration">
+
+		<id name="id" column="id" unsaved-value="null">
+
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+
+			</generator>
+
+		</id>
+<property name="provider" column="provider" length="50"
+			not-null="false" unique="false">
+
+		</property>
+		<property name="interfaceName" column="interface_name" length="50"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="interfaceUrl" column="interface_url" length="200"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="updatedTime" column="updated_time" length="100"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="shortTitle" column="short_title"
+			length="100" not-null="false" unique="false">
+
+		</property>
+
+	
+
+		<property name="description" column="description"
+			length="200" not-null="false" unique="false">
+
+		</property>
+		<property name="direction" column="direction"
+			length="200" not-null="false" unique="false">
+
+		</property>
+		<property name="moduleid" column="Module_id"
+			length="200" not-null="false" unique="false">
+
+		</property>
+		
+	</class>
+
+</hibernate-mapping>
+

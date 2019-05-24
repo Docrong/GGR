@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<log-configs modelId="aa2" modelName="bbb发">
+	<log-config operId="1" operName="aa" operDesc="1">
+        	<log-config operId="2" operName="22" operDesc="1">
+        		<log-config operId="4" operName="fc" operDesc="0" />
+        		<log-config operId="5" operName="dc" operDesc="0" />
+        	</log-config>
+	        <log-config operId="3" operName="cc" operDesc="0" />
+	</log-config>
+</log-configs>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawRmPlanContent"
+            table="taw_rm_plancontent"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="executecontentId"
+            	column="executecontent_id"
+                length="32"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="deptId"
+            	column="dept_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="userId"
+            	column="user_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="month"
+            	column="month"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="content"
+            	column="content"
+                length="100"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="monthplanName"
+            	column="monthplan_name"
+                length="100"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="roomId"
+            	column="room_id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="workSerial"
+            	column="work_serial"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="executeFlag"
+            	column="execute_flag"
+                length="10"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+            	column="create_time"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

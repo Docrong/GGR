@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.boco.eoms.commons.statistic.base.model.CustomSatatisticInfo" table="est_customsatatisticinfo">
+
+    <id name="id" column="id" unsaved-value="null">
+
+	    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+	    <generator class="uuid.hex"></generator>
+    </id>
+    
+		<property name="subscibeid" length="1000"></property>
+
+        <property name="department" length="50"></property>
+        
+        <property name="person" length="50"></property>
+        
+        <property name="statName" length="100"></property>
+        
+        <property name="reportType" length="50"></property>
+        
+        <property name="actionAttribute" length="100"></property>
+        
+        <property name="condition" length="2000"></property>
+        
+        <property name="customTime" length="100"></property>
+        
+        <property name="statFlg" length="100"></property>
+        
+        <property name="customDescribe" length="1000"></property>
+    </class>    
+
+</hibernate-mapping>
+

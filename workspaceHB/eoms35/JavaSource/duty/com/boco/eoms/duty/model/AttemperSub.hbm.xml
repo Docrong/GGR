@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.AttemperSub"
+            table="taw_rm_attemper_sub"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="attemperId"
+            	column="attemper_id"
+                length="30"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deptId"
+            	column="dept_id"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="cruser"
+            	column="cruser"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="crtime"
+            	column="crtime"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="intendBeginTime"
+            	column="intend_begin_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="intendEndTime"
+            	column="intend_end_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="persistTimes"
+            	column="persist_times"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="isAppEffect"
+            	column="is_app_effect"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="effectOperation"
+            	column="effect_operation"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="title"
+            	column="title"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="content"
+            	column="content"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="remark"
+            	column="remark"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="resultType"
+            	column="result_type"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="result"
+            	column="result"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="status"
+            	column="status"
+                length="5"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="holdTime"
+            	column="hold_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="finishUser"
+            	column="finish_user"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="serial"
+            	column="serial"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deleted"
+            	column="deleted"
+                length="5"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="ifContrastReport"
+            	column="if_contrast_report"
+                length="5"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="days"
+            	column="days"
+                length="5"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="netDept"
+            	column="net_dept"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="subSpeciality"
+            	column="sub_speciality"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+
+    </class>    
+
+</hibernate-mapping>
+

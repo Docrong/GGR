@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="IforumsManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workbench.infopub.mgr.impl.ForumsManagerImpl">
+				<property name="forumsDao" ref="forumsDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="forumsDao"
+		class="com.boco.eoms.workbench.infopub.dao.hibernate.ForumsDaoHibernate"
+		autowire="byName" />
+
+
+	<bean id="threadDao"
+		class="com.boco.eoms.workbench.infopub.dao.hibernate.ThreadDaoHibernate"
+		autowire="byName" />
+
+	<!--Thread-START-->
+	<bean id="IthreadManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workbench.infopub.mgr.impl.ThreadManagerImpl">
+				<property name="threadDao" ref="threadDao" />
+				<property name="threadAuditHistoryManager" ref="IthreadAuditHistoryManager" />
+				<property name="threadPermimissionOrgManager" ref="IthreadPermimissionOrgManager" />
+				<property name="threadHistoryManager" ref="IthreadHistoryManager" />
+				
+			</bean>
+		</property>
+	</bean>
+	<!--Thread-END-->
+
+
+	<!--ThreadHistory-START-->
+	<bean id="IthreadHistoryManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workbench.infopub.mgr.impl.ThreadHistoryManagerImpl">
+				<property name="threadHistoryDao"
+					ref="threadHistoryDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--ThreadHistory-END-->
+
+	<!--ThreadHistory-DAO START-->
+	<bean id="threadHistoryDao"
+		class="com.boco.eoms.workbench.infopub.dao.hibernate.ThreadHistoryDaoHibernate"
+		autowire="byName" />
+	<!--ThreadHistory-DAO END-->
+
+	<!--ThreadPermimissionOrg-START-->
+	<bean id="IthreadPermimissionOrgManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workbench.infopub.mgr.impl.ThreadPermimissionOrgManagerImpl">
+				<property name="threadPermimissionOrgDao"
+					ref="threadPermimissionOrgDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--ThreadPermimissionOrg-END-->
+	<!--ThreadPermimissionOrg-DAO START-->
+	<bean id="threadPermimissionOrgDao"
+		class="com.boco.eoms.workbench.infopub.dao.hibernate.ThreadPermimissionOrgDaoHibernate"
+		autowire="byName" />
+	<!--ThreadPermimissionOrg-DAO END-->
+
+	<bean id="threadAuditHistoryDao"
+		class="com.boco.eoms.workbench.infopub.dao.hibernate.ThreadAuditHistoryDaoHibernate"
+		autowire="byName" />
+
+
+	<bean id="IthreadAuditHistoryManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.workbench.infopub.mgr.impl.ThreadAuditHistoryManagerImpl">
+				<property name="threadAuditHistoryDao"
+					ref="threadAuditHistoryDao" />
+			</bean>
+		</property>
+	</bean>
+
+
+
+</beans>
+
+
+
+
+
+
+
+
+

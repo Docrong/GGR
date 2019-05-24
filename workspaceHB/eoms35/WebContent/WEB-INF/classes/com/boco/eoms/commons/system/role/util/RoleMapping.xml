@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<description>a map file for our new template system</description>
+	
+	<class
+		name="com.boco.eoms.commons.system.role.util.SheetInfo">
+		<map-to xml="sheetInfo" />
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute" />
+		</field>
+		<field name="styleId" type="string" >
+			<bind-xml name="styleId" node="attribute" />
+		</field>
+	</class>
+	
+	<class
+		name="com.boco.eoms.commons.system.role.util.RoleFilter">
+		<map-to xml="roleFilter" />
+		<field name="businessName" type="string">
+			<bind-xml name="businessName" node="attribute" />
+		</field>
+		<field name="name" type="string" >
+			<bind-xml name="name" node="attribute" />
+		</field>
+		<field name="dictId" type="string" >
+			<bind-xml name="dictId" node="attribute" />
+		</field>
+		<field name="sub" type="string" >
+			<bind-xml name="sub" node="attribute" />
+		</field>
+		<field name="htmlType" type="string" >
+			<bind-xml name="htmlType" node="attribute" />
+		</field>
+		<field name="multiple" type="string" >
+			<bind-xml name="multiple" node="attribute" />
+		</field>
+		<field name="size" type="string" >
+			<bind-xml name="size" node="attribute" />
+		</field>
+		<field name="sheetInfo"
+			type="com.boco.eoms.commons.system.role.util.SheetInfo"
+			collection="collection" />
+	</class>
+
+	<class
+		name="com.boco.eoms.commons.system.role.util.RoleModel">
+		<map-to xml="roleModel" />
+		<field name="modelId" type="string">
+			<bind-xml name="modelId" node="attribute" />
+		</field>
+		<field name="modelName" type="string" >
+			<bind-xml name="modelName" node="attribute" />
+		</field>
+		<field name="condition" type="string" >
+			<bind-xml name="condition" node="attribute" />
+		</field>
+		<field name="filePath" type="string" >
+			<bind-xml name="filePath" node="attribute" />
+		</field>
+		
+		<field name="roleFilter"
+			type="com.boco.eoms.commons.system.role.util.RoleFilter"
+			collection="collection" />
+	</class>
+
+
+
+	<class
+		name="com.boco.eoms.commons.system.role.util.RoleMappings">
+		<map-to xml="roleMappings" />
+		<field name="roleModel"
+			type="com.boco.eoms.commons.system.role.util.RoleModel"
+			collection="collection" />
+	</class>
+
+</mapping>

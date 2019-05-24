@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id></est-module-id>
+
+	
+	<!--******************************************************************
+********    按（申请单位）统计  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>itrequirement_intime_bydept</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!--  condition-param page-name="sendDeptId"/>-->
+		<condition-param page-name="senddeptid" markflg="true" />
+		
+		<summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>main.senddeptid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			                 
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.itrequirement.vo.ItrequirementStatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>itrequirement_main main </from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>main.status=1 
+			        and main.sendtime&gt;='@beginTime@' and main.sendtime&lt;'@endTime@' 
+			        and main.senddeptid in (@senddeptid@) and main.senddeptid is not null
+			</where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--完成工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(main.id) </stat-sql>
+
+				<list-hsql>
+					select main.id as mainid,main.sheetid,main.title,main.senddeptid,main.sendtime 
+                    from itrequirement_main main
+                    where main.status=1 
+			        and main.sendtime&gt;='@beginTime@' and main.sendtime&lt;'@endTime@' 
+			        and main.senddeptid =@s1@ and main.senddeptid is not null  order by main.sendtime desc
+				</list-hsql>
+				
+				<list-count-select-sql>select count(main.id) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+	
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<from>v_itrequirement</from><!-- 不可为空 -->
+			<where>v_itrequirement.js=1 
+			       and  v_itrequirement.sendtime&gt;='@beginTime@' and v_itrequirement.sendtime&lt;'@endTime@'
+			       and v_itrequirement.senddeptid in (@senddeptid@) and v_itrequirement.senddeptid is not null</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 方案原因导致失败数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql> count(v_itrequirement.id)</stat-sql>
+				
+				<list-hsql>
+					select distinct v_itrequirement.id as mainid,v_itrequirement.sheetid,v_itrequirement.title,v_itrequirement.senddeptid,v_itrequirement.sendtime 
+                    from v_itrequirement
+                    where v_itrequirement.js=1
+                    and v_itrequirement.sendtime&gt;'@beginTime@' and v_itrequirement.sendtime&lt;'@endTime@'
+			        and v_itrequirement.senddeptid =@s1@ and v_itrequirement.senddeptid is not null   order by v_itrequirement.sendtime desc
+				</list-hsql>
+				<list-count-select-sql>select count(id)</list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+	
+
+	</kpi-define>
+	
+	<!--******************************************************************
+********    按（网管系统）统计   ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>itrequirement_intime_bymainnetsystem</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!--  condition-param page-name="sendDeptId"/>-->
+		<condition-param page-name="mainnetsystem" markflg="true" />
+		
+		<summary-define>
+			<id>s1</id><!--网管系统-->
+			<sequence></sequence>
+			<column>main.mainnetsystem</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.itrequirement.vo.ItrequirementStatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>itrequirement_main main</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where> main.status=1 
+			        and main.sendtime&gt;='@beginTime@' and main.sendtime&lt;'@endTime@' 
+			        and main.mainnetsystem in (@mainnetsystem@) and main.mainnetsystem is not null</where><!-- 可为空 -->
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--完成工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(main.id)</stat-sql>
+
+				<list-hsql>
+					select main.id as mainid,main.sheetid,main.title,main.mainnetsystem,main.sendtime,main.senddeptid 
+                    from itrequirement_main main
+                    where main.status=1 
+			        and main.sendtime&gt;='@beginTime@' and main.sendtime&lt;'@endTime@' 
+			        and main.mainnetsystem=@s1@ and main.mainnetsystem is not null order by main.sendtime desc
+				</list-hsql>
+				  
+				
+				<list-count-select-sql>select count(main.id) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+	
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<from>v_itrequirement</from><!-- 不可为空 -->
+			<where>v_itrequirement.js=1
+                    and v_itrequirement.sendtime&gt;'@beginTime@' and v_itrequirement.sendtime&lt;'@endTime@'
+			        and v_itrequirement.mainnetsystem in (@mainnetsystem@) and v_itrequirement.mainnetsystem is not null</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 方案原因导致失败数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(id)</stat-sql>
+
+				<list-hsql>
+		select distinct v_itrequirement.id as mainid,v_itrequirement.sheetid,v_itrequirement.title,v_itrequirement.senddeptid,v_itrequirement.sendtime 
+                    from v_itrequirement 
+                    where v_itrequirement.js=1
+                    and v_itrequirement.sendtime&gt;'@beginTime@' and v_itrequirement.sendtime&lt;'@endTime@'
+			        and  v_itrequirement.mainnetsystem=@s1@ and v_itrequirement.mainnetsystem is not null order by v_itrequirement.sendtime desc
+				</list-hsql>
+				<list-count-select-sql>select count(id) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+		
+		</kpi-define>
+	
+
+	
+</KpiConfig>

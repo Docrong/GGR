@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.commons.interfaceMonitoring.model.InterfaceMonitoring"
+		table="INTERFACE_MONITORING">
+
+		<id name="id" column="id" unsaved-value="null">
+
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+
+			</generator>
+
+		</id>
+
+		<property name="callingTime" column="CALLING_TIME" length="50"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="callingSide" column="CALLING_SIDE" length="50"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="provider" column="PROVIDER" length="100"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="interFaceType" column="INTERFACE_TYPE"
+			length="100" not-null="false" unique="false">
+
+		</property>
+
+	
+
+		<property name="interFaceMethod" column="INTERFACE_METHOD"
+			length="50" not-null="false" unique="false">
+
+		</property>
+		<property name="success" column="SUCCESS" length="50"
+			not-null="false" unique="false">
+
+		</property>
+		<property name="exceptionLog" column="EXCEPTION_LOG" length="500"
+			not-null="false" unique="false">
+
+		</property>
+		<property name="keyword" column="KEYWORD" length="100"
+			not-null="false" unique="false">
+
+		</property>
+		<property name="text" column="TEXT" length="500"
+			not-null="false" unique="false">
+
+		</property>
+			<property name="serSupplier" column="serSupplier" length="20"
+			not-null="false" unique="false">
+
+		</property>
+			<property name="serCaller" column="serCaller" length="20"
+			not-null="false" unique="false">
+
+		</property>
+			<property name="sheetKey" column="sheet_key" length="50"
+			not-null="false" unique="false">
+
+		</property>
+			<property name="method" column="method" length="50"
+			not-null="false" unique="false">
+
+		</property>
+
+<property name="callDirection" column="CALL_DIRECTION" length="50"
+			not-null="false" unique="false">
+
+		</property>
+	</class>
+
+</hibernate-mapping>
+

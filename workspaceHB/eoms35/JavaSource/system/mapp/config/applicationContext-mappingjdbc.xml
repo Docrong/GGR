@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="mappingJdbcMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.system.mappingstorage.mgr.impl.MappingJdbcMgrImpl">
+				<property name="mappingJdbcDao" ref="mappingJdbcDao" />
+				
+			</bean>
+		</property>
+	</bean>
+	<bean id="mappingJdbcDao" 
+		class="com.boco.eoms.system.mappingstorage.dao.hibernate.MappingJdbcDaoHibernate"
+		autowire="byName" />
+</beans>
+
+
+
+
+
+
+
+
+

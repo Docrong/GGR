@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MenuConfig>
+    <Displayers>
+        <Displayer name="Velocity" type="net.sf.navigator.displayer.VelocityMenuDisplayer"/>
+    </Displayers>
+    <Menus>
+        <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu.do"/>
+        <Menu name="UserMenu" title="menu.user" description="User Menu" forward="editProfile" roles="admin,user"/>
+        <Menu name="FileUpload" title="menu.selectFile" description="File Upload" width="100" forward="selectFile" roles="admin,user"/>
+        <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="admin" width="120" forward="viewUsers">
+            <Item name="ViewUsers" title="menu.admin.users" forward="viewUsers"/>
+            <Item name="ActiveUsers" title="mainMenu.activeUsers" action="activeUsers"/>
+            <Item name="ReloadContext" title="menu.admin.reload" action="reload"/>
+            <Item name="FlushCache" title="menu.flushCache" action="flush"/>
+            <Item name="Clickstream" title="menu.clickstream" page="/clickstreams.jsp"/>
+        </Menu>
+        <Menu name="Logout" title="user.logout" page="/logout.jsp" roles="admin,user"/>
+        
+        
+        <!--TawCommonMessageServiceType-START-->
+        <Menu name="TawCommonMessageServiceTypeMenu" title="tawCommonMessageServiceTypeList.title" page="/tawCommonMessageServiceTypes.do"/>
+        <!--TawCommonMessageServiceType-END-->
+        <!--TawCommonMessageOpertype-START-->
+        <Menu name="TawCommonMessageOpertypeMenu" title="tawCommonMessageOpertypeList.title" page="/tawCommonMessageOpertypes.do"/>
+        <!--TawCommonMessageOpertype-END-->
+        <!--TawCommonMessageModelType-START-->
+        <Menu name="TawCommonMessageModelTypeMenu" title="tawCommonMessageModelTypeList.title" page="/tawCommonMessageModelTypes.do"/>
+        <!--TawCommonMessageModelType-END-->
+        <!--TawCommonMessageAddService-START-->
+        <Menu name="TawCommonMessageAddServiceMenu" title="tawCommonMessageAddServiceList.title" page="/tawCommonMessageAddServices.do"/>
+        <!--TawCommonMessageAddService-END-->
+        <!--TawCommonMessageSubscribe-START-->
+        <Menu name="TawCommonMessageSubscribeMenu" title="tawCommonMessageSubscribeList.title" page="/tawCommonMessageSubscribes.do"/>
+        <!--TawCommonMessageSubscribe-END-->
+        <!--TawCommonMessageMonitor-START-->
+        <Menu name="TawCommonMessageMonitorMenu" title="tawCommonMessageMonitorList.title" page="/tawCommonMessageMonitors.do"/>
+        <!--TawCommonMessageMonitor-END-->
+        <!--TawCommonMessageMonitorRef-START-->
+        <Menu name="TawCommonMessageMonitorRefMenu" title="tawCommonMessageMonitorRefList.title" page="/tawCommonMessageMonitorRefs.do"/>
+        <!--TawCommonMessageMonitorRef-END-->
+        
+        <!--TawSystemUserRefRole-START-->
+        <Menu name="TawSystemUserRefRoleMenu" title="tawSystemUserRefRoleList.title" page="/tawSystemUserRefRoles.do"/>
+        <!--TawSystemUserRefRole-END-->
+        <!--TawSystemUser-START-->
+        <Menu name="TawSystemUserMenu" title="tawSystemUserList.title" page="/tawSystemUsers.do"/>
+        <!--TawSystemUser-END-->
+        
+        <!--TawSystemDept-START-->
+        <Menu name="TawSystemDeptMenu" title="tawSystemDeptList.title" page="/tawSystemDepts.do"/>
+        <!--TawSystemDept-END-->
+        <!--TawSystemDictType-START-->
+        <Menu name="TawSystemDictTypeMenu" title="tawSystemDictTypeList.title" page="/tawSystemDictTypes.do"/>
+        <!--TawSystemDictType-END-->
+        <!--TawSystemDictItem-START-->
+        <Menu name="TawSystemDictItemMenu" title="tawSystemDictItemList.title" page="/tawSystemDictItems.do"/>
+        <!--TawSystemDictItem-END-->
+        <!--PortalUnifyUser-START-->
+        <Menu name="PortalUnifyUserMenu" title="portalUnifyUserList.title" page="/portalUnifyUsers.do"/>
+        <!--PortalUnifyUser-END-->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--AppfuseDemo-START-->
+        <Menu name="AppfuseDemoMenu" title="appfuseDemoList.title" page="/appfuseDemos.do"/>
+        <!--AppfuseDemo-END-->
+        
+        <!--SampleTable-START-->
+        <Menu name="SampleTableMenu" title="sampleTableList.title" page="/sampleTables.do"/>
+        <!--SampleTable-END-->
+        
+        <!--TawSystemPrivAssign-START-->
+        <Menu name="TawSystemPrivAssignMenu" title="tawSystemPrivAssignList.title" page="/tawSystemPrivAssigns.do"/>
+        <!--TawSystemPrivAssign-END-->
+        <!--TawSystemPrivMenu-START-->
+        <Menu name="TawSystemPrivMenuMenu" title="tawSystemPrivMenuList.title" page="/tawSystemPrivMenus.do"/>
+        <!--TawSystemPrivMenu-END-->
+    </Menus>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</MenuConfig>

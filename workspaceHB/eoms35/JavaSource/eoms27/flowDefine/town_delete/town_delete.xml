@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_6.dtd">
+<workflow>
+  <initial-actions>
+    <action id="44" name="Draft" view="保存">
+      <results>
+        <unconditional-result id="44" old-status="Finished" status="Queued" step="43" />
+      </results>
+    </action>
+    <action id="48" name="NewSend" view="派发">
+      <results>
+        <unconditional-result id="48" old-status="Finished" status="Queued" step="45" />
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="43" name="起草工单（分公司一）">
+      <actions>
+        <action id="47" name="Send" view="派发">
+          <results>
+            <unconditional-result id="47" old-status="Finished" status="Queued" step="45"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="45" name="附件补充确认（分公司二）">
+      <actions>
+        <action id="51" name="BackToUp" view="回复上级">
+          <results>
+            <unconditional-result id="51" old-status="Finished" status="Queued" step="49"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="49" name="起草工单（分公司一）">
+      <actions>
+        <action id="56" name="Transmit" view="转派">
+          <results>
+            <unconditional-result id="56" old-status="Finished" status="Queued" step="54" ifMakeCopyFor="true"/>
+          </results>
+        </action>
+        <action id="79" name="BackToDownReject" view="处理回复不通过">
+          <results>
+            <unconditional-result id="79" old-status="Finished" status="Queued" step="45"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="54" name="计费处理（省计费中心）">
+      <actions>
+        <action id="64" name="BackToUp" view="回复上级">
+          <results>
+            <unconditional-result id="64" old-status="Finished" status="Queued" step="62"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="59" name="完成">
+    </step>
+    <step id="62" name="起草工单（分公司一）">
+      <actions>
+        <action id="77" name="BackToDownReject" view="处理回复不通过">
+          <results>
+            <unconditional-result id="77" old-status="Finished" status="Queued" step="54"/>
+          </results>
+        </action>
+        <action id="81" name="Hold" view="归档">
+          <results>
+            <unconditional-result id="81" old-status="Finished" status="Queued" step="59"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--ComplaintDuban-START-->    
+
+    <bean id="IComplaintDubanMainDAO"
+		class="com.boco.eoms.sheet.complaintDuban.dao.hibernate.ComplaintDubanMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IComplaintDubanLinkDAO"
+		class="com.boco.eoms.sheet.complaintDuban.dao.hibernate.ComplaintDubanLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IComplaintDubanTaskDAO"
+		class="com.boco.eoms.sheet.complaintDuban.dao.hibernate.ComplaintDubanTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ComplaintDubanTask"
+		class="com.boco.eoms.sheet.complaintDuban.model.ComplaintDubanTask" autowire="byName">
+     </bean>
+    <bean id="ComplaintDubanLink"
+		class="com.boco.eoms.sheet.complaintDuban.model.ComplaintDubanLink"
+		autowire="byName" />
+	<bean id="ComplaintDubanMain"
+		class="com.boco.eoms.sheet.complaintDuban.model.ComplaintDubanMain"
+		autowire="byName" />
+	<bean id="iComplaintDubanTask"
+		class="com.boco.eoms.sheet.complaintDuban.task.impl.ComplaintDubanTaskImpl"
+		autowire="byName" />
+	<bean id="iComplaintDubanTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.complaintDuban.service.impl.ComplaintDubanTaskManagerImpl">
+				<property name="taskModelObject" ref="ComplaintDubanTask" />
+				<property name="taskDAO">
+					<ref bean="IComplaintDubanTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/complaintDubanConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iComplaintDubanFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.complaintDuban.service.impl.ComplaintDubanFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iComplaintDubanLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.complaintDuban.service.impl.ComplaintDubanLinkManagerImpl">
+				<property name="linkObject" ref="ComplaintDubanLink"/>
+				<property name="linkDAO">
+				  <ref bean="IComplaintDubanLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iComplaintDubanMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.complaintDuban.service.impl.ComplaintDubanMainManagerImpl">
+			    <property name="mainObject" ref="ComplaintDubanMain" />
+				<property name="mainDAO">
+				 <ref bean="IComplaintDubanMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iComplaintDubanQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>ComplaintDubanProcesses</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/complaintdubanprocesses-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iComplaintDubanQo"
+		class="com.boco.eoms.sheet.complaintDuban.qo.impl.ComplaintDubanQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="ComplaintDubanMain" />
+		<property name="poLink" value="ComplaintDubanLink" />
+		<property name="aliasMain" value="ComplaintDubanMain" />
+		<property name="aliasLink" value="ComplaintDubanLink" />
+		<property name="poTask" value="ComplaintDubanTask" />
+	    <property name="aliasTask" value="ComplaintDubanTask" />			
+	</bean>
+
+	<bean id="ComplaintDuban" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.complaintDuban.webapp.action.ComplaintDubanMethod">
+				<property name="businessFlowService" >
+					<ref bean="iComplaintDubanFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iComplaintDubanLinkManager" />
+				<property name="mainService"
+					ref="iComplaintDubanMainManager" />
+				<property name="sheetTask"
+					ref="ComplaintDubanTask" />
+				<property name="taskService"
+					ref="iComplaintDubanTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/complaintdubanprocesses-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+     <!--ComplaintDuban-END-->  
+</beans>

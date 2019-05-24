@@ -1,0 +1,70 @@
+<html>
+<head>
+  <title></title>
+  <!-- HTTP 1.1 -->
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <!-- HTTP 1.0 -->
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <!-- Prevents caching at the Proxy Server -->
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/local/zh_CN.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/base/eoms.js"></script>
+   <script type="text/javascript">
+	eoms.appPath = "../../..";
+  </script>
+  <link rel="stylesheet" type="text/css" media="all" href="../../../styles/default/theme.css" />
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/form/validation.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/form/popcalendar.js"></script>
+  <!-- EXT LIBS verson 1.1 -->
+  <script type="text/javascript" src="../../../scripts/ext/adapter/ext/ext-base.js"></script>
+  <script type="text/javascript" src="../../../scripts/ext/ext-all.js"></script>
+  <script type="text/javascript" src="../../../scripts/adapter/ext-ext.js"></script>
+  <script type="text/javascript" src="../../../scripts/ext/source/locale/ext-lang-zh_CN.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../scripts/ext/resources/css/ext-all.css" />
+  <link rel="stylesheet" type="text/css" href="../../../styles/default/ext-adpter.css" />
+  <!-- EXT LIBS END -->  
+</head>
+
+<body>
+<div id="page"> 
+  <div id="content" class="clearfix">
+    <div id="main"><br/><br/>
+
+    <script type="text/javascript" src="../FrameLayout.js"></script>
+    <script type="text/javascript">
+    var layout;
+    Ext.onReady(function(){
+    	var cfg = {
+    		west:{
+    			title:'标题1'
+    		},
+    		center:{
+    			title:'标题2'
+    		}
+    	};
+    	layout = new eoms.layout.FrameLayout(cfg);
+    });
+    </script>
+  
+    <div id="headerPanel" class="x-layout-inactive-content">
+	  <h1>Frame Layout 测试页面</h1>
+    </div>
+
+    <div id="westPanel" class="x-layout-inactive-content">
+	  <div id="westPanel-tb" class="tb"></div>
+	  <div id="westPanel-body">
+	    <a href="http://www.douban.com" target="centerPanel">get</a><br/>
+	    <a href="http://www.douban.com" target="centerPanel">get</a>
+	  </div>
+    </div>
+	
+	<iframe id="centerPanel" name="centerPanel" frameborder="no" class="x-layout-inactive-content"></iframe>
+
+<!-- footer_eoms.jsp start-->
+    </div>
+  </div>
+</div>
+</body>
+

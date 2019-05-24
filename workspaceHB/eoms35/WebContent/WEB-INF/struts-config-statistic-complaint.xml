@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config> 
+
+	<!-- ========== Data Sources Definitions =================================== -->
+	<!--
+		Define your Struts data sources in a file called struts-data-sources.xml and place
+		it in your merge directory.
+	-->
+
+	<!-- ========== Form Bean Definitions =================================== -->
+	<form-beans>
+		<form-bean
+       name="statForm"
+       type="com.boco.eoms.commons.statistic.base.webapp.form.StatForm"
+    /> 
+   
+	</form-beans>
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward name="selectFile" path="/selectFile.do" />
+		<forward name="logout" path="/logout.jsp" />
+      	<forward
+          name="fail"
+          path="/common/fail.jsp"
+          redirect="false"
+          contextRelative="true"
+      	/>
+	</global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+	<action-mappings>
+		<action path="/stat"
+			type="com.boco.eoms.commons.statistic.complaint.webapp.action.ComplaintAction"
+			name="statForm" scope="request" parameter="method"
+			unknown="false" validate="false" attribute="complaintStatMethod"> 
+			<set-property property="cancellable" value="true" />
+				
+			  <!-- 显示工单查询页面 -->
+		      <forward name="std_statistic" 
+				  path="/WEB-INF/pages/statistic/complaint/std/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+				  
+				   <forward name="complaint_resolve_kpi3" 
+				  path="/WEB-INF/pages/statistic/complaint/resolve_kpi3/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+				  
+				  <forward name="complaint_timeavg_kpi2" 
+				  path="/WEB-INF/pages/statistic/complaint/timeavg_kpi2/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+
+				    <!-- 显示质检一次通过查询页面 -->
+		      <forward name="onetimepass_statistic" 
+				  path="/WEB-INF/pages/statistic/complaint/onetimepass_kpi4/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+
+			     <!-- 显示质检一次通过统计工单详细信息页面 -->
+		      <forward name="onetimepass_statisticsheetlist" 
+				  path="/WEB-INF/pages/statistic/complaint/onetimepass_kpi4/list.jsp" redirect="false"
+				  contextRelative="true"/>
+
+			<!-- 显示工单结果页面 -->
+	         <forward name="statisticresult" 
+		          path="/WEB-INF/pages/statistic/common/resultHtml.jsp" redirect="false"
+		          contextRelative="true"/>	  
+			<!-- 显示统计工单详细信息页面 sheet-->
+		      <forward name="std_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/complaint/std/list.jsp" redirect="false"
+		          contextRelative="true" /> 
+		      <!-- 显示故障管理－投诉处理流程－KPI－1查询页面 -->
+		      <forward name="intime_kpi1_statistic" 
+				  path="/WEB-INF/pages/statistic/complaint/intime_kpi1/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+		       <!-- 显示故障管理－投诉处理流程－KPI－1详细信息页面 sheet-->
+		      <forward name="intime_kpi1_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/complaint/intime_kpi1/list.jsp" redirect="false"
+		          contextRelative="true" /> 
+		          
+		          
+		          <forward name="complaint_resolve_kpi3list"
+			      path="/WEB-INF/pages/statistic/complaint/resolve_kpi3/list.jsp" redirect="false"
+		          contextRelative="true" /> 
+		          
+		       <forward name="complaint_timeavg_kpi2list"
+			      path="/WEB-INF/pages/statistic/complaint/timeavg_kpi2/list.jsp" redirect="false"
+		          contextRelative="true" /> 
+	    	</action>
+		
+	</action-mappings>
+
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+	<message-resources parameter="config/statistic/base-config/ApplicationResources-statistic"
+		key="statistic" />
+	<message-resources parameter="config/statistic/task-config/ApplicationResources-statistic-complaint"
+		key="statistictask" />
+	<!-- ========== Validator plugin ===================  -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml" />
+	</plug-in>
+
+</struts-config>

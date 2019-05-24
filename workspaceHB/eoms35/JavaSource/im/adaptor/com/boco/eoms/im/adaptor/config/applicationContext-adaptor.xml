@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="imconfig"
+		class="com.boco.eoms.im.adaptor.util.Imconfig">
+		<!-- ip -->
+		<property name="ip">
+			<value>10.131.62.239</value>
+		</property>
+		<!--端口  -->
+		<property name="port">
+			<value>5222</value>
+		</property>
+		<!-- 资源 -->
+		<property name="resource">
+			<value>spark</value>
+		</property>
+		<!-- 主机名 -->
+		<property name="hostname">
+			<value>eoms-server</value>
+		</property>
+		
+		<!-- 系统用户 -->
+	    <property name="webMaster">
+	    	<value>webMaster</value>
+	    </property>
+	    <property name="password">
+	    	<value>111</value>
+	    </property>
+		
+	</bean>
+	
+	<!--  -->
+	<bean id="imAdaptorFacade"
+			class="com.boco.eoms.im.adaptor.facade.impl.IMAdaptorFacadeImpl">
+	</bean>
+	
+	<bean id="imMgr"
+			class="com.boco.eoms.im.adaptor.mgr.impl.IMAdaptorMgrImpl">
+	</bean>
+	<import
+		resource="classpath:com/boco/eoms/im/adaptor/config/applicationContext-im-versionlog.xml" />
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

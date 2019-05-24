@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<dict-relations>
+	<dict-relation id="majorrelation" sourceDictKey="dict-failureRecord"
+		sourceDictId="faulttype1">
+		<item-relation sourceItemId="1" destinationDictKey="dict-failureRecord"
+			destinationDictId="faulttype1" destinationItemIds="2" />
+		<item-relation sourceItemId="2" destinationDictKey="dict-failureRecord"
+			destinationDictId="faultregion" destinationItemIds="1,2">
+		</item-relation>
+	</dict-relation>
+</dict-relations>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+                            "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                            "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!-- DO NOT EDIT: This is a generated file that is synchronized -->
+<!-- by MyEclipse Hibernate tool integration.                   -->
+<!-- Created Wed Nov 21 11:46:30 CST 2007                         -->
+<hibernate-mapping package="com.boco.eoms.check.model">
+
+    <class name="TawRoomdutyCheck" table="TAW_ROOMDUTY_CHECK">
+        <id name="id" column="ID" type="java.lang.String" length="32">
+            <generator class="uuid.hex"/>
+        </id>
+ 
+        <property name="roomid" column="ROOMID" type="java.lang.String" />
+        <property name="checktype" column="CHECKTYPE" type="java.lang.String" />
+        <property name="checkdate" column="CHECKDATE" type="java.lang.String" />
+        <property name="remark" column="REMARK" type="java.lang.String" />
+        <property name="state" column="STATE" type="java.lang.String" />
+        
+        <set name="addonstable" table="TAW_ROOMDUTYC_ADDONSTABLE" 
+        	lazy="true" cascade="save-update">
+        	<key column="ROOMDUTYID"></key>
+        	<many-to-many class="com.boco.eoms.duty.model.TawRmAddonsTable" column="ADDONSTABLEID"> </many-to-many>
+        </set>
+        
+        
+    </class>
+    
+</hibernate-mapping>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<description>a map file for our new template system</description>
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMImportHeader">
+		<map-to xml="header" />
+		<field name="col" type="integer">
+			<bind-xml name="col" node="attribute" />
+		</field>
+		<field name="headerName" type="string" />
+		<field name="fieldName" type="string" />
+		<field name="type" type="string" />
+		<field name="length" type="integer" />
+		<field name="isNull" type="string" />
+	</class>
+
+
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMImportHeaderMapping">
+		<field name="header"
+			type="com.boco.eoms.commons.file.config.model.FMImportHeader"
+			collection="collection" />
+	</class>
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMImportColumn">
+		<map-to xml="column" />
+		<field name="startRow" type="integer" />
+		<field name="endRow" type="integer" />
+
+		<field name="headerMapping"
+			type="com.boco.eoms.commons.file.config.model.FMImportHeaderMapping" />
+
+	</class>
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMImportSheet">
+		<map-to xml="sheet" />
+
+		<field name="num" type="integer">
+			<bind-xml name="num" node="attribute" />
+		</field>
+		<field name="className" type="string" />
+		<field name="column"
+			type="com.boco.eoms.commons.file.config.model.FMImportColumn"
+			collection="collection" />
+	</class>
+
+
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMImportSheets">
+		<map-to xml="sheets" />
+
+		<field name="sheet"
+			type="com.boco.eoms.commons.file.config.model.FMImportSheet"
+			collection="collection" />
+	</class>
+
+
+</mapping>

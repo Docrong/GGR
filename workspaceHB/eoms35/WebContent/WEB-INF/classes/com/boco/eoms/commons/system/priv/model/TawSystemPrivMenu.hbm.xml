@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.system.priv.model.TawSystemPrivMenu"
+            table="taw_system_priv_menu"
+    >
+
+	<id name="privid" column="privid" unsaved-value="null">
+			<generator class="uuid.hex">
+			</generator>
+	</id>
+
+        <property
+            name="name"
+                length="100"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="ownerId"
+                length="200"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="200"
+        >
+
+        </property>
+ 	 	<property
+            name="nature"
+                length="5"
+        >
+
+        </property>
+      
+    </class>    
+
+</hibernate-mapping>
+

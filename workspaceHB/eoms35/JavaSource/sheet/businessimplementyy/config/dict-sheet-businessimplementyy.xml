@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="宽带业务拆除工单">
+	<dict id="mainOperateType" description="处理方法">	
+		<item id="0" name="新建派发" description="新建派发" />		
+		<item id="22" name="草稿保存" description="草稿保存" />
+		<item id="3" name="草稿派发" description="草稿派发" />
+		<item id="54" name="重新派发" description="重新派发" />		
+		<item id="46" name="开通情况回复" description="开通情况回复" />
+		<item id="6" name="处理回复通过" description="处理回复通过" />
+		<item id="7" name="不通过退回" description="不通过退回" />
+		<item id="18" name="归档" description="归档" />
+		<item id="4" name="驳回上一级" description="驳回上一级" />
+		<item id="8" name="移交" description="移交" />
+	    <item id="88" name="转审" description="转审" />
+		<item id="30" name="会审" description="会审" />
+		<item id="55" name="会审回复" description="会审回复" />		
+        <item id="-13" name="强制归档" description="强制归档" />	
+		<item id="-14" name="强制作废" description="强制作废" />
+		<item id="-12" name="作废" description="作废" />
+		<item id="-10" name="抄送" description="抄送" />	
+		<item id="-15" name="抄送确认" description="抄送确认" />
+		<item id="9" name="阶段回复" description="阶段回复" />	
+		<item id="-11" name="阶段通知" description="阶段通知" />
+		<item id="10" name="分派" description="分派" />
+		<item id="11" name="分派回复" description="分派回复" />	
+		<item id="61" name="确认受理" description="确认受理" />
+		
+		<item id="71" name="送编续码" description="送编续码" />
+		<item id="72" name="送设备端口分配" description="送设备端口分配" />
+		<item id="73" name="送专线开通" description="送专线开通" />
+		<item id="74" name="送数据制作" description="送数据制作" />
+		
+		<item id="75" name="送业务测试" description="送业务测试" />
+		
+		<item id="76" name="送数据确认" description="送数据确认" />
+		
+		<item id="77" name="送归档" description="送归档" />	
+		<item id="17" name="退回验证" description="退回验证" />
+		<item id="18" name="归档" description="归档" />
+		<item id="111" name="等待业务开通工单完成" description="等待业务开通工单完成" />
+		
+	</dict>
+	
+	
+
+	<dict id="activeTemplateId" description="节点名称">
+	    <item id="cc" name="抄送" description="抄送" />
+	    <item id="reply" name="阶段回复" description="阶段回复" />
+	    <item id="advice" name="阶段通知" description="阶段通知" />
+	    <item id="" name="新增工单" description="新增工单" />	
+		<item id="DraftTask" name="草稿" description="草稿" />
+		<item id="RejectTask" name="被驳回" description="被驳回" />
+		<item id="AuditTask" name="定单审核" description="定单审核" />
+		<item id="CodeDispthTask" name="编接续码分配" description="编接续码分配" />
+		<item id="GetWayTask" name="设备端口分配" description="设备端口分配" />
+		<item id="OpenTask" name="专线开通" description="专线开通" />
+		<item id="DataMakeTask" name="数据制作" description="数据制作" />
+		<item id="BusiTestTask" name="业务测试" description="业务测试" />
+		<item id="DataOkTask" name="数据确认" description="数据确认" />
+		<item id="HoldTask" name="待归档" description="待归档" />
+
+	</dict>
+</dicts>
+

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--SafetyProblem-START-->    
+
+    <bean id="ISafetyProblemMainDAO"
+		class="com.boco.eoms.sheet.safetyproblem.dao.hibernate.SafetyProblemMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="ISafetyProblemLinkDAO"
+		class="com.boco.eoms.sheet.safetyproblem.dao.hibernate.SafetyProblemLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ISafetyProblemTaskDAO"
+		class="com.boco.eoms.sheet.safetyproblem.dao.hibernate.SafetyProblemTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="SafetyProblemTask"
+		class="com.boco.eoms.sheet.safetyproblem.model.SafetyProblemTask" autowire="byName">
+     </bean>
+    <bean id="SafetyProblemLink"
+		class="com.boco.eoms.sheet.safetyproblem.model.SafetyProblemLink"
+		autowire="byName" />
+	<bean id="SafetyProblemMain"
+		class="com.boco.eoms.sheet.safetyproblem.model.SafetyProblemMain"
+		autowire="byName" />
+	<bean id="isafetyproblemTask"
+		class="com.boco.eoms.sheet.safetyproblem.task.impl.SafetyProblemTaskImpl"
+		autowire="byName" />
+	<bean id="isafetyproblemTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.service.impl.SafetyProblemTaskManagerImplGZ">
+				<property name="taskModelObject" ref="SafetyProblemTask" />
+				<property name="taskDAO">
+					<ref bean="ISafetyProblemTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/safetyProblemConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iSafetyProblemFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.service.impl.SafetyProblemFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iSafetyProblemLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.service.impl.SafetyProblemLinkManagerImpl">
+				<property name="linkObject" ref="SafetyProblemLink"/>
+				<property name="linkDAO">
+				  <ref bean="ISafetyProblemLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iSafetyProblemMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.service.impl.SafetyProblemMainManagerImpl">
+			    <property name="mainObject" ref="SafetyProblemMain" />
+				<property name="mainDAO">
+				 <ref bean="ISafetyProblemMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iSafetyProblemQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>SafetyProblemMainFlowProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/safetyproblem-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iSafetyProblemQo"
+		class="com.boco.eoms.sheet.safetyproblem.qo.impl.SafetyProblemQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="SafetyProblemMain" />
+		<property name="poLink" value="SafetyProblemLink" />
+		<property name="aliasMain" value="safetyProblemMain" />
+		<property name="aliasLink" value="safetyProblemLink" />
+		<property name="poTask" value="SafetyProblemTask" />
+	    <property name="aliasTask" value="safetyProblemTask" />			
+	</bean>
+
+	<bean id="SafetyProblem" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.webapp.action.SafetyProblemHBMethod">
+				<property name="businessFlowService" >
+					<ref bean="iSafetyProblemFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iSafetyProblemLinkManager" />
+				<property name="mainService"
+					ref="iSafetyProblemMainManager" />
+				<property name="sheetTask"
+					ref="SafetyProblemTask" />
+				<property name="taskService"
+					ref="isafetyproblemTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/safetyproblem-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+     <!--SafetyProblem-END-->  
+     <!--<bean id="iSafetyProblemCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.service.impl.SafetyProblemCrmManagerImpl">
+			</bean>
+		</property>
+	</bean>--> 
+
+	<bean id="iSafetyProblemCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.service.impl.SafetyProblemCrmManagerImpl">
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iSafetyProblemGMCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.safetyproblem.service.impl.SafetyProblemGMCrmManagerImpl">
+			</bean>
+		</property>
+	</bean>
+</beans>

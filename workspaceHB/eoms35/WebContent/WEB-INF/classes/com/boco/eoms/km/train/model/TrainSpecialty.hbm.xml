@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.km.train.model.TrainSpecialty"
+            table="KM_TRAIN_SPECIALTY"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="specialtyName"
+            	column="SPECIALTY_NAME"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="isDelete"
+            	column="IS_DELETE"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+		<property
+            name="nodeId"
+            	column="NODE_ID"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="parentNodeId"
+            	column="PARENT_NODE_ID"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="leaf"
+            	column="LEAF"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+    </class>    
+
+</hibernate-mapping>
+

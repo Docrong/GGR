@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portal-security xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="portal-security.xsd">
+	<application>
+		<defaultLocale>zh_CN</defaultLocale>
+		<allowChangeLocale>false</allowChangeLocale>
+		<reCreateTable>false</reCreateTable>
+	</application>
+	<role>
+		<name>role_public</name>
+		<allowLookAndFeel>true</allowLookAndFeel>
+		<allowLayout>true</allowLayout>
+		<allowAddTab>false</allowAddTab>
+		<allowAddContent>false</allowAddContent>
+		<allowSignIn>true</allowSignIn>
+		<allowTurnOff>false</allowTurnOff>
+		<theme>theme/master3.css</theme>
+	</role>	
+	<role>
+		<name>role_admin</name>
+		<allowLookAndFeel>true</allowLookAndFeel>
+		<allowLayout>true</allowLayout>
+		<allowAddTab>true</allowAddTab>
+		<allowAddContent>true</allowAddContent>
+		<allowSignIn>true</allowSignIn>
+		<allowTurnOff>false</allowTurnOff>
+		<title>Admin's Portal</title>
+		<theme>theme/master3.css</theme>
+	</role>
+	<role>
+		<name>role_member</name>
+		<allowLookAndFeel>true</allowLookAndFeel>
+		<allowLayout>true</allowLayout>
+		<allowAddTab>true</allowAddTab>
+		<allowAddContent>true</allowAddContent>
+		<allowSignIn>true</allowSignIn>
+		<allowTurnOff>false</allowTurnOff>
+		<title>Member's Portal</title>
+		<theme>theme/master3.css</theme>
+		<!-- <users>
+			<user>
+				<name>admin</name>
+				<password>a564de63c2d0da68cf47586ee05984d7</password>
+				<firstName>Jianmin</firstName>
+				<middleName></middleName>
+				<lastName>Liu</lastName>
+				<email>liujianmin@gmail.com</email>
+			</user>			
+		</users>-->
+	</role>
+</portal-security>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+	<base>
+	    <InterfaceUser>test2</InterfaceUser>
+		<SendRoleId>test2</SendRoleId>
+		<AcceptGroupId>101</AcceptGroupId>
+		<AcceptRoleId>test2</AcceptRoleId>
+		<SendImmediately>false</SendImmediately>
+	</base>
+    <newWorkSheet><!-- 工单派发 -->
+        <content columnName="title" interfaceName="title" defauleValue="" />
+        <content columnName="sheetAcceptLimit" interfaceName="sheetAcceptLimit"   />
+        <content columnName="sheetCompleteLimit" interfaceName="sheetCompleteLimit"   />
+        
+        <content columnName="mainNetSort1" interfaceName="mainNetSort1"  />
+        <content columnName="mainNetSort2" interfaceName="mainNetSort2"   />
+        <content columnName="mainNetSort3" interfaceName="mainNetSort3"  />
+        <content columnName="mainTaskType" interfaceName="mainTaskType"  />
+        <content columnName="mainTaskDescription" interfaceName="mainTaskDescription"  />
+        <content columnName="mainTaskDeptId" interfaceName="mainTaskDeptId"  />
+		
+		<content columnName="mainInterfaceSheetType" interfaceName="" defauleValue="crm" />
+		<content columnName="phaseId" interfaceName="" defauleValue="TaskCreateAuditHumTask" />
+		<content columnName="sendUserId" interfaceName="" defauleValue="test2" />
+	</newWorkSheet>
+	<replyWorkSheet> <!-- 回复工单 -->
+		<content columnName="linkTaskComplete" interfaceName="linkTaskComplete"  defauleValue="" />
+		<content columnName="operateTime" interfaceName="operateTime"  defauleValue="" />
+		<content columnName="operateUserId" interfaceName="operateUserId" defauleValue=""/>
+		<content columnName="sheetId" interfaceName="sheetId"  defauleValue="" />	
+		<content columnName="operateDeptId" interfaceName="operateDeptId"  defauleValue="业务支撑中心" />
+		<content columnName="operateType" interfaceName="operateType" defauleValue="205" />
+		<content columnName="phaseId" interfaceName="" defauleValue="AffirmHumTask" />
+		<content columnName="beanId" interfaceName="" defauleValue="iSafetyProblemMainManager" />
+		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.safetyproblem.model.SafetyProblemMain" />
+		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.safetyproblem.model.SafetyProblemLink" />
+	</replyWorkSheet>
+</boco>
+

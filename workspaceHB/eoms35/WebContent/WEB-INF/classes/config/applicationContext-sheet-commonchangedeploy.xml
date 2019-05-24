@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="ICommonChangeDeployMainDAO"
+		class="com.boco.eoms.sheet.commonchangedeploy.dao.hibernate.CommonChangeDeployMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="ICommonChangeDeployLinkDAO"
+		class="com.boco.eoms.sheet.commonchangedeploy.dao.hibernate.CommonChangeDeployLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ICommonChangeDeployTaskDAO"
+		class="com.boco.eoms.sheet.commonchangedeploy.dao.hibernate.CommonChangeDeployTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="CommonChangeDeployTask"
+		class="com.boco.eoms.sheet.commonchangedeploy.model.CommonChangeDeployTask" autowire="byName">
+     </bean>
+    <bean id="CommonChangeDeployLink"
+		class="com.boco.eoms.sheet.commonchangedeploy.model.CommonChangeDeployLink"
+		autowire="byName" />
+	<bean id="CommonChangeDeployMain"
+		class="com.boco.eoms.sheet.commonchangedeploy.model.CommonChangeDeployMain"
+		autowire="byName" />
+	<bean id="iCommonChangeDeployTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.commonchangedeploy.service.impl.CommonChangeDeployTaskManagerImpl">
+				<property name="taskModelObject" ref="CommonChangeDeployTask" />
+				<property name="taskDAO">
+					<ref bean="ICommonChangeDeployTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/commonchangedeployTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iCommonChangeDeployFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.commonchangedeploy.service.impl.CommonChangeDeployFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCommonChangeDeployLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.commonchangedeploy.service.impl.CommonChangeDeployLinkManagerImpl">
+				<property name="linkObject" ref="CommonChangeDeployLink"/>
+				<property name="linkDAO">
+				  <ref bean="ICommonChangeDeployLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCommonChangeDeployMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.commonchangedeploy.service.impl.CommonChangeDeployMainManagerImpl">
+			    <property name="mainObject" ref="CommonChangeDeployMain" />
+				<property name="mainDAO">
+				 <ref bean="ICommonChangeDeployMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iCommonChangeDeployQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>CommonChangeDeployProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/commonchangedeploy-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iCommonChangeDeployQo"
+		class="com.boco.eoms.sheet.commonchangedeploy.qo.impl.CommonChangeDeployQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="CommonChangeDeployMain" />
+		<property name="poLink" value="CommonChangeDeployLink" />
+		<property name="poTask" value="CommonChangeDeployTask" />
+		<property name="aliasMain" value="commonchangedeployMain" />
+		<property name="aliasLink" value="commonchangedeployLink" />
+		<property name="aliasTask" value="commonchangedeployTask" />
+
+	</bean>
+
+	<bean id="CommonChangeDeploy" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.commonchangedeploy.webapp.action.CommonChangeDeployMethod">
+				<property name="businessFlowService" >
+					<ref bean="iCommonChangeDeployFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iCommonChangeDeployLinkManager" />
+				<property name="mainService"
+					ref="iCommonChangeDeployMainManager" />
+				<property name="sheetTask"
+					ref="CommonChangeDeployTask" />
+				<property name="taskService"
+					ref="iCommonChangeDeployTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/commonchangedeploy-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+
+</beans>
+

@@ -1,0 +1,1145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>网络维护人员技术人才统计表</title>
+	<est-module-id>43</est-module-id>
+
+	<!-- 用工类型 -->
+	<kpi-define><!-- 可重复 -->
+		<name>operuserByPrizelevel</name>
+		<kpi-caption></kpi-caption>
+		<condition-param page-name="prizelevel" />
+
+		<summary-define>
+			<id>s1</id><!---->
+			<sequence></sequence>
+			<column>'aa'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+		
+		<auto-append-groupby>false</auto-append-groupby>
+
+		<stat-detail-vo>
+			com.boco.eoms.commons.statistic.operuser.vo.StatDetailVOSOperuser
+		</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010101' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010101' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query3</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010101' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query4</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010101'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f4</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010101')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query11</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010102' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f11</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query12</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010102' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f12</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query13</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010102' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f13</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query14</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010102'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f14</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010102')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query21</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010103' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f21</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query22</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010103' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f22</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query23</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010103' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f23</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query24</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010103'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f24</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010103')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query31</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010104' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f31</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query32</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010104' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f32</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query33</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010104' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f33</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query34</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010104'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f34</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010104')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query41</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010105' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f41</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query42</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010105' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f42</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query43</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010105' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f43</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query44</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010105'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f44</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010105')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query51</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010106' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f51</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query52</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010106' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f52</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query53</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010106' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f53</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query54</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010106'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f54</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010106')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query61</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010107' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f61</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query62</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010107' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f62</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query63</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010107' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f63</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query64</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010107'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f64</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010107')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query71</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010108' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f71</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query72</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010108' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f72</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query73</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010108' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f73</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query74</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010108'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f74</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010108')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query81</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010109' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f81</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query82</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010109' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f82</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query83</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010109' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f83</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query84</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010109'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f84</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010109')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query91</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010110' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f91</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query92</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010110' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f92</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query93</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010110' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f93</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query94</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010110'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f94</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010110')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query101</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010111' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f101</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query102</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010111' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f102</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query103</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010111' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f103</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query114</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010111'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f104</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010111')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query111</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010112' and prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f111</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112' and prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112' and prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query112</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010112' and prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f112</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112' and prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112' and prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query113</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010112' and prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f113</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112' and prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112' and prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		<query-define><!-- 可重复 -->
+			<name>query114</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			subarea = '115010112'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f114</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where subarea = '115010112')</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query201</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			prizelevel = '115010701'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f201</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where prizelevel = '115010701'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where prizelevel = '115010701')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query202</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			prizelevel = '115010702'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f202</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where prizelevel = '115010702'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where prizelevel = '115010702')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query203</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			prizelevel = '115010703'
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f203</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where prizelevel = '115010703'
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+					where prizelevel = '115010703')</list-count>
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query204</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>taw_system_operuser tso</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>
+			</where>
+			<field-define><!-- 可重复 -->
+				<id>f204</id><!---->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>				
+				<list-hsql>
+					select name,deptid,subarea,majortype,jobtype from taw_system_operuser
+				</list-hsql>
+				<list-count>  select count(*) from (select name,deptid,subarea,majortype,jobtype from taw_system_operuser)</list-count>
+			</field-define>
+		</query-define>
+		
+		
+		
+		
+		
+	</kpi-define>
+</KpiConfig>

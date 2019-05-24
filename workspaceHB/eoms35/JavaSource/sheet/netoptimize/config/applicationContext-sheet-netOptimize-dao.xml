@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="INetOptimizeMainDao" class="com.boco.eoms.sheet.netoptimize.dao.hibernate.NetOptimizeMainDaoHibernate" autowire="byName">
+	
+      </bean>
+	<bean id="INetOptimizeLinkDao" class="com.boco.eoms.sheet.netoptimize.dao.hibernate.NetOptimizeLinkDaoHibernate" autowire="byName">
+	  
+      </bean>
+
+	<bean id="iNetOptimizeTaskDAO" class="com.boco.eoms.sheet.netoptimize.dao.hibernate.NetOptimizeTaskDAOHibernate" autowire="byName">
+      
+      </bean>
+</beans>          

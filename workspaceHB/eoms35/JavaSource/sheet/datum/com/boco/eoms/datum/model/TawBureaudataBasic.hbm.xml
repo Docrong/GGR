@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.boco.eoms.datum.model">
+	<class
+		name="TawBureaudataBasic"
+		table="TAW_BUREAUDATA_BASIC"
+	> 
+		<meta attribute="sync-DAO">true</meta>
+		<id
+			name="segmentid"
+			type="integer"
+			column="segmentid"
+		>
+			<generator class="assigned"/>
+		</id>
+
+		<property
+			name="prezonenum"
+			column="PREZONENUM"
+			type="integer"
+			not-null="false"
+			length="22"
+		/>
+		<property
+			name="zonenum"
+			column="ZONENUM"
+			type="integer"
+			not-null="false"
+			length="22"
+		/>
+		<property
+			name="belongflag"
+			column="BELONGFLAG"
+			type="integer"
+			not-null="false"
+			length="22"
+		/>
+		<property
+			name="prehlrsignalid"
+			column="PREHLRSIGNALID"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="hlrsignalid"
+			column="HLRSIGNALID"
+			type="string"
+			not-null="false"
+			length="20"
+		/>
+		<property
+			name="newbureauid"
+			column="NEWBUREAUID"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+		<property
+			name="adjustbureauid"
+			column="ADJUSTBUREAUID"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+		<property
+			name="bureadatasheetid"
+			column="BUREADATASHEETID"
+			type="string"
+			not-null="false"
+			length="200"
+		/>
+		<property
+			name="sheetid"
+			column="SHEETID"
+			type="string"
+			not-null="false"
+			length="100"
+		/>
+
+
+	</class>	
+</hibernate-mapping>

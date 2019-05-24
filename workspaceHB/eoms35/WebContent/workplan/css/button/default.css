@@ -1,0 +1,299 @@
+		body
+		{
+			position: relative;
+			cursor: default;
+		}
+		td
+		{
+			vertical-align: middle;
+			text-align: center;
+		}
+		.buttonState
+		{
+			color: menutext;
+			background-color: #006699;
+		}
+		.buttonState #tl
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbTopLeft.gif);
+		}
+		.buttonState #t
+		{
+			height: 3px;
+			background-image: url(images/oldblue/gbTop.gif);
+		}
+		.buttonState #tr
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbTopRight.gif);
+		}
+		.buttonState #l1
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbLeft.gif);
+		}
+		.buttonState #l2
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbLeft.gif);
+		}
+		.buttonState #r1
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbRight.gif);
+		}
+		.buttonState #r2
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbRight.gif);
+		}
+		.buttonState #bl
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbBottomLeft.gif);
+		}
+		.buttonState #b
+		{
+			height: 3px;
+			background-image: url(images/oldblue/gbBottom.gif);
+		}
+		.buttonState #br
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbBottomRight.gif);
+		}
+		.buttonState #iImage
+		{
+			padding: 0px 0px 0px 0px;
+			vertical-align: middle;
+			filter:	Alpha(Opacity=70);
+		}
+		.buttonState #iText
+		{
+			font-size:12px;
+			text-align: center;
+			padding: 0px 0px 0px 0px;
+			word-break:keep-all;
+			width:52px;
+			height:10px;
+			color:#FFFFFF;
+			background-image: url(../button/images/oldblue/gbText.gif);
+		}
+		.buttonStateOver
+		{
+			color: menutext;
+			background-color: #F6F6F1;
+			cursor:hand;
+		}
+		.buttonStateOver #tl
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbTopLeft.gif);
+		}
+		.buttonStateOver #t
+		{
+			height: 3px;
+			background-image: url(images/oldblue/gbTop.gif);
+		}
+		.buttonStateOver #tr
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbTopRight.gif);
+		}
+		.buttonStateOver #l1
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbLeft.gif);
+		}
+		.buttonStateOver #l2
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbLeft.gif);
+		}
+		.buttonStateOver #r1
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbRight.gif);
+		}
+		.buttonStateOver #r2
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbRight.gif);
+		}
+		.buttonStateOver #bl
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbBottomLeft.gif);
+		}
+		.buttonStateOver #b
+		{
+			height: 3px;
+			background-image: url(images/oldblue/gbBottom.gif);
+		}
+		.buttonStateOver #br
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbBottomRight.gif);
+		}
+		.buttonStateOver #iImage
+		{
+			padding: 0px 2px 0px 2px;
+			vertical-align: middle;
+			filter:	Alpha(Opacity=100);
+		}
+		.buttonStateOver #iText
+		{
+			font-size:12px;
+			text-align: center;
+			padding: 0px 0px 0px 0px;
+			word-break:keep-all;
+			width:52px;
+			height:12px;
+			background-image: url(images/oldblue/gbText.gif);
+		}
+		.buttonStateDown
+		{
+			color: white;
+			background-color: #E5E4DD;
+		}
+		.buttonStateDown #tl
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbTopLeft.gif);
+		}
+		.buttonStateDown #t
+		{
+			height: 3px;
+			background-image: url(images/oldblue/gbTop.gif);
+		}
+		.buttonStateDown #tr
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbTopRight.gif);
+		}
+		.buttonStateDown #l1
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbLeft.gif);
+		}
+		.buttonStateDown #l2
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbLeft.gif);
+		}
+		.buttonStateDown #r1
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbRight.gif);
+		}
+		.buttonStateDown #r2
+		{
+			width: 4px;
+			background-image: url(images/oldblue/gbRight.gif);
+		}
+		.buttonStateDown #bl
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbBottomLeft.gif);
+		}
+		.buttonStateDown #b
+		{
+			height: 3px;
+			background-image: url(images/oldblue/gbBottom.gif);
+		}
+		.buttonStateDown #br
+		{
+			height: 3px;
+			width: 4px;
+			background-image: url(images/oldblue/gbBottomRight.gif);
+		}
+		.buttonStateDown #iImage
+		{
+			padding: 0px 2px 0px 2px;
+			vertical-align: middle;
+			filter:	Alpha(Opacity=100);
+		}
+		.buttonStateDown #iText
+		{
+			font-size:12px;
+			text-align: center;
+			padding: 0px 0px 0px 0px;
+			word-break:keep-all;
+			width:52px;
+			background-image: url(images/oldblue/gbText.gif);
+		}
+		.buttonStateDisabled
+		{
+			color: menutext;
+			background-color: transparent;
+		}
+		.buttonStateDisabled #tl
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #t
+		{
+			height: 4px;
+		}
+		.buttonStateDisabled #tr
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #l1
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #l2
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #r1
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #r2
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #bl
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #b
+		{
+			height: 4px;
+		}
+		.buttonStateDisabled #br
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #iImage
+		{
+			padding: 0px 2px 0px 2px;
+			vertical-align: middle;
+			filter:	Gray() Alpha(Opacity=40);
+		}
+		.buttonStateDisabled #iText
+		{
+			color: graytext;
+			font-size:12px;
+			text-align: center;
+			padding: 2px 3px 2px 3px;
+			word-break:keep-all;
+		}

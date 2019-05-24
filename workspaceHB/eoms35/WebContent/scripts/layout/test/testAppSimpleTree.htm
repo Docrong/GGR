@@ -1,0 +1,226 @@
+<html>
+<head>
+  <title></title>
+  <!-- HTTP 1.1 -->
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <!-- HTTP 1.0 -->
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <!-- Prevents caching at the Proxy Server -->
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/local/zh_CN.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/base/eoms.js"></script>
+   <script type="text/javascript">
+	eoms.appPath = "../../..";
+  </script>
+  <link rel="stylesheet" type="text/css" media="all" href="../../../styles/default/theme.css" />
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/form/validation.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/form/popcalendar.js"></script>
+  <!-- EXT LIBS verson 1.1 -->
+  <script type="text/javascript" src="../../../scripts/ext/adapter/ext/ext-base.js"></script>
+  <script type="text/javascript" src="../../../scripts/ext/ext-all.js"></script>
+  <script type="text/javascript" src="../../../scripts/adapter/ext-ext.js"></script>
+  <script type="text/javascript" src="../../../scripts/ext/source/locale/ext-lang-zh_CN.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../scripts/ext/resources/css/ext-all.css" />
+  <link rel="stylesheet" type="text/css" href="../../../styles/default/ext-adpter.css" />
+  <!-- EXT LIBS END -->  
+</head>
+
+<body>
+<div id="page"> 
+  <div id="content" class="clearfix">
+    <div id="main"><br/><br/>
+  <script type="text/javascript" src="AppSimpleTree.js"></script>
+  <script type="text/javascript">
+  var config = {
+    /**************
+ 	* Tree Configs
+ 	**************/
+	treeGetNodeUrl:"/eoms/dept/tawSystemDepts.do?method=getNodes",
+    treeRootId:'-1',
+	treeRootText:"all dept",
+	ctxMenu:{
+		newNode:{text:"new nodess"},
+		delNode:{text:"del nodess"}
+	},//end of ctxMenu
+	/**************
+ 	* Form Configs
+ 	**************/
+	actions:{
+		newNode : {
+			btnText:"new dataff",
+			url:"/eoms/dept/tawSystemDepts.do?method=xsave",
+			init:function(){
+				AppSimpleTree.setField("parentDeptid","id");
+			}
+		},
+		getNode : {
+			url:"/eoms/dept/tawSystemDepts.do?method=xget"
+		},
+		edtNode : {
+			btnText:"save dataff",
+			url:"/eoms/dept/tawSystemDepts.do?method=xedit"
+		},
+		delNode : {
+			url:"/eoms/dept/tawSystemDepts.do?method=xdelete"
+		}
+	},
+	fields : [
+        new Ext.form.TextField({
+            fieldLabel: 'deptName',
+            name: 'deptName',
+            allowBlank:false,
+            width:150
+        }),
+         new Ext.form.TextField({
+            fieldLabel: 'deptmanager',
+            name: 'deptmanager',
+            id: 'deptmanager',
+            allowBlank:true,
+            readOnly:'true',
+            width:150
+        }),
+           new Ext.form.TextField({
+            fieldLabel: 'tmporaryManager',
+            name: 'tmporaryManager',
+            id: 'tmporaryManager',
+            allowBlank:true,
+            readOnly:'true',
+            width:150
+        }),
+         new Ext.form.TextField({
+            fieldLabel: 'tmporarybegintime',
+            name: 'tmporarybegintime',
+            allowBlank:true,
+            width:150
+        }),
+         new Ext.form.TextField({
+            fieldLabel: 'tmporarystopTime',
+            name: 'tmporarystopTime',
+            allowBlank:true,
+            width:150
+        }),
+         new Ext.form.TextField({
+            fieldLabel: 'deptemail',
+            name: 'deptemail',
+            allowBlank:true,
+            width:150,
+            vtype:'email'
+        }),
+           new Ext.form.NumberField({
+            fieldLabel: 'deptfax',
+            name: 'deptfax',
+            allowBlank:true,
+            width:150
+        }),
+         new Ext.form.NumberField({
+            fieldLabel: 'deptmobile',
+            name: 'deptmobile',
+            allowBlank:true,
+            width:150  
+        }),
+         new Ext.form.NumberField({
+            fieldLabel: 'deptphone',
+            name: 'deptphone',
+            allowBlank:true,
+            width:150
+        }),
+        
+
+        new Ext.form.SimpleSelect({
+            fieldLabel: 'deptType',
+            hiddenName:'deptType',
+            values : [
+        				['NetWORK', '1'],
+        				['Service Layer', '0']
+        			   ],
+            allowBlank:true,
+            value:'1',
+            width:150
+        }),
+      new Ext.form.TextField({
+            fieldLabel: 'areaid',
+            name: 'areaid',
+            id:'areaid',
+            width:150,
+            allowBlank:true,
+            width:150
+        }),
+        new Ext.form.TextArea({
+            fieldLabel: 'remark',
+            name: 'remark',
+            width:150,
+            grow: true,
+            preventScrollbars:true
+        }),
+        /* Hidden Field
+        */
+        new Ext.form.HiddenField({name: 'id'}),
+        new Ext.form.HiddenField({name: 'deptId'}),
+        new Ext.form.HiddenField({name: 'opertime'}),
+        new Ext.form.HiddenField({name: 'operuserid'}),
+        new Ext.form.HiddenField({name: 'parentDeptid'}),
+        new Ext.form.HiddenField({name: 'ordercode'}),
+        new Ext.form.HiddenField({name: 'leaf'}),
+        new Ext.form.HiddenField({name: 'tempid',id:'tempid'}),
+        new Ext.form.HiddenField({name: 'newAreaId',id:'newAreaId'}),
+        new Ext.form.HiddenField({name: 'tempid2',id:'tempid2'}),
+        new Ext.form.HiddenField({name: 'regionflag',id:'regionflag'}) 
+	], // end of fields
+	/************************
+ 	* Custom onLoad Functions
+ 	*************************/	
+	onLoadFunctions:function(){
+		var	treeAction2='/eoms/xtree.do?method=userFromDept';
+		var treeArea='/eoms/xtree.do?method=areaTree';
+		xbox({
+			btnId:'deptmanager',dlgId:'hello-dlg2',
+			treeDataUrl:treeAction2,treeRootId:'-1',treeRootText:'Users',treeChkMode:'single',treeChkType:'user',
+			showChkFldId:'deptmanager',saveChkFldId:'tempid'
+		});
+		xbox({
+			btnId:'tmporaryManager',dlgId:'hello-dlg',
+			treeDataUrl:treeAction2,treeRootId:'-1',treeRootText:'Users',treeChkMode:'single',treeChkType:'user',
+			showChkFldId:'tmporaryManager',saveChkFldId:'tempid2'
+		});
+		xbox({
+			btnId:'areaid',dlgId:'hello-dlg3',
+			treeDataUrl:treeArea,treeRootId:'-1',treeRootText:'Area',treeChkMode:'single',treeChkType:'area',
+			showChkFldId:'areaid',saveChkFldId:'newAreaId'
+		});
+	}
+  }; // end of config
+  Ext.onReady(AppSimpleTree.init, AppSimpleTree);
+  </script>
+  <style type="text/css">
+  	body{
+  		 background-image:none;
+  	}
+  </style>
+<div id="headerPanel" style="background:url(/eoms/styles/default/images/header-bg.gif)"><img src="/eoms/styles/default/images/header-dept.gif"></div>
+<div id="helpPanel" style="padding:10px;">
+	<dl>
+		<dt>${eoms:a2u('添加一个下级角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"新建子节点"')}</dd>
+		<dt>${eoms:a2u('修改一个角色的信息')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"修改"')}</dd>
+		<dt>${eoms:a2u('删除角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"删除"')}</dd>
+		<dt>${eoms:a2u('查看角色的子角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"子角色列表"')}</dd>
+		<dt>${eoms:a2u('批量添加子角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"添加子角色"')}</dd>
+	</dl>
+</div>
+<div id="treePanel">
+	<div id="treePanel-tb" class="tb"></div>
+	<div id="treePanel-body"></div>
+</div>
+<div id="formPanel">
+	<div id="formPanel-body" style="padding:10px;"></div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+ 
+	<bean id="ILocalCommonTaskMainDAO"
+		class="com.boco.eoms.sheet.localCommonTask.dao.hibernate.LocalCommonTaskMainDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="ILocalCommonTaskLinkDAO"
+		class="com.boco.eoms.sheet.localCommonTask.dao.hibernate.LocalCommonTaskLinkDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="ILocalCommonTaskTaskDAO"
+		class="com.boco.eoms.sheet.localCommonTask.dao.hibernate.LocalCommonTaskTaskDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="LocalCommonTaskTask"
+		class="com.boco.eoms.sheet.localCommonTask.model.LocalCommonTaskTask"
+		autowire="byName">
+	</bean>
+	<bean id="LocalCommonTaskLink"
+		class="com.boco.eoms.sheet.localCommonTask.model.LocalCommonTaskLink"
+		autowire="byName" />
+	<bean id="LocalCommonTaskMain"
+		class="com.boco.eoms.sheet.localCommonTask.model.LocalCommonTaskMain"
+		autowire="byName" />
+	<bean id="iLocalCommonTaskTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.localCommonTask.service.impl.LocalCommonTaskTaskManagerImpl">
+				<property name="taskModelObject" ref="LocalCommonTaskTask" />
+				<property name="taskDAO">
+					<ref bean="ILocalCommonTaskTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/localCommonTaskTaskConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iLocalCommonTaskFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.localCommonTask.service.impl.LocalCommonTaskFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iLocalCommonTaskLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.localCommonTask.service.impl.LocalCommonTaskLinkManagerImpl">
+				<property name="linkObject" ref="LocalCommonTaskLink" />
+				<property name="linkDAO">
+					<ref bean="ILocalCommonTaskLinkDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>   
+	<bean id="iLocalCommonTaskMainManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.localCommonTask.service.impl.LocalCommonTaskMainManagerImpl">
+				<property name="mainObject" ref="LocalCommonTaskMain" />
+				<property name="mainDAO">
+					<ref bean="ILocalCommonTaskMainDAO" />
+				</property>
+				<property name="workSheetQO">
+					<ref bean="iLocalCommonTaskQo" />
+				</property>
+				<property name="flowTemplateName">
+					<value>LocalCommonTaskProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/localCommonTask-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="iLocalCommonTaskQo"
+		class="com.boco.eoms.sheet.localCommonTask.qo.impl.LocalCommonTaskQoImpl"
+		autowire="byName" singleton="false">
+		<property name="poMain" value="LocalCommonTaskMain" />
+		<property name="poLink" value="LocalCommonTaskLink" />
+		<property name="poTask" value="LocalCommonTaskTask" />
+		<property name="aliasMain" value="localCommonTaskMain" />
+		<property name="aliasLink" value="localCommonTaskLink" />
+		<property name="aliasTask" value="localCommonTaskTask" />
+
+	</bean>
+
+	<bean id="LocalCommonTask" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.localCommonTask.webapp.action.LocalCommonTaskMethod">
+				<property name="businessFlowService">
+					<ref bean="iLocalCommonTaskFlowManager" />
+				</property>
+				<property name="linkService"
+					ref="iLocalCommonTaskLinkManager" />
+				<property name="mainService"
+					ref="iLocalCommonTaskMainManager" />
+				<property name="sheetTask" ref="LocalCommonTaskTask" />
+				<property name="taskService"
+					ref="iLocalCommonTaskTaskManager" />
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/localCommonTask-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+
+	
+	
+	
+</beans>

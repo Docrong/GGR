@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+
+    <chart type="2DLine" minimum_value="0" maximum_value="6" minimum_argument="0" maximum_argument="23">
+
+      <animation enabled="yes" speed="50" type="all" appearance="size"/>
+
+          <values show="no" decimal_places="1" postfix="K"/>
+
+	  <arguments show="no" decimal_places="0"/>
+
+	  <names rotation = "-90" show="yes" position="bottom" placement="chart" y_offset="6">
+		<font type="verdana_embed_tf" size="9"/>
+	  </names>
+
+
+	  <hints enabled="yes" width='240'>
+<text>
+<![CDATA[{BLOCK_NAME} - <font color="#FF0000"><b>Traffic:</b></font> {VALUE}]]>
+</text>
+</hints>
+
+	  <line_chart>
+	    <lines color="0xFBAB00" size="2" auto_color="no"/>
+
+<block_names enabled='no'/>
+		<dots radius='2'>
+		  <background auto_color="no" color="0xF8F8F8"/>
+		  <border enabled="yes"/>
+		</dots>
+
+	  </line_chart>
+    </chart>
+    <workspace>
+      <base_area enabled="no"/>
+      <chart_area width="390" height="230" deep="0" y="40" x="50">
+	    <background enabled="no"/>
+	    <border enabled="yes" size="2" color="Black" alpha="100" />
+	</chart_area>
+      <background enabled="yes" type="solid" color = "0xF8F8F8"/>
+      <grid>
+        <values lines_step="0.6" start="0" end="6">
+		  <lines color="0xC7C7C7" />
+		  <captions x_offset = "-10">
+		    <font size="10" color="Black" type="MS Reference Sans Serif"/>
+		  </captions>
+		</values>
+      </grid>
+    </workspace>
+  </type>
+</root>

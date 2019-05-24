@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.boco.eoms.commons.system.reported.model.TawSystemReported" table="taw_system_reported">
+
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex" />
+		</id>
+		<property column="USER_ID" length="50" name="userId" type="string"/>
+		<property column="FUNCTION_ID" length="5" name="functionId" type="string"/>
+		<property column="MODEL_ID" length="5" name="modelId" type="string"/>
+		<property column="CREATE_TIME" length="20" name="createTime" type="timestamp"/>
+		<property column="REPORTED_ORG_NAME" length="5" name="reportedOrgName" type="string"/>
+		<property column="REMARK" length="50" name="remark" type="string"/>
+    </class>    
+</hibernate-mapping>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="仪表信息管理">
+	<dict id="meterSort" description="仪表使用分类">
+		<item id="1110201" name="仪表使用分类1" description="仪表使用分类1" />
+		<item id="1110202" name="仪表使用分类2" description="仪表使用分类2" />
+		
+	</dict>	
+</dicts>
+
+

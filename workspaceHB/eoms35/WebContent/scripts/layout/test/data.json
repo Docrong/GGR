@@ -1,0 +1,5 @@
+[
+{id:'11',text:'test1',allowChild:true,allowMynode:true,nodeType:'user'},
+{id:'12',text:'test2',allowEdit:true,allowMynode:false,allowDelete:true,nodeType:'dept'},
+{id:'13',text:'test3',leaf:true,nodeType:'role'}
+]

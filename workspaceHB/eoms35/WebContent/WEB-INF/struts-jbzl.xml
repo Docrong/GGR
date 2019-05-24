@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<!-- Generated with Karapan Sapi Struts Generator --><!-- Visit http://www.javanovic.com         --><struts-config>
+    <!-- ============ DataSource Pool ============ -->
+
+  <!-- ============ Form beans ============ -->
+  <form-beans>
+    <!--worksheet flow bean begin -->
+    <form-bean type="com.boco.eoms.jbzl.flow.controller.TawFlowGroupForm"
+		name="tawFlowGroupForm"/>
+    <form-bean type="com.boco.eoms.jbzl.flow.controller.TawWsFlowForm"
+		name="tawWsFlowForm"/>
+    <form-bean type="com.boco.eoms.jbzl.flow.controller.TawWsGroupForm"
+		name="tawWsGroupForm"/>
+	<form-bean type="com.boco.eoms.jbzl.controller.TawDeptConfForm"
+		name="tawDeptConfForm"/>
+    <!--worksheet flow bean end -->
+
+    <form-bean type="com.boco.eoms.duty.controller.TawRmRecordForm" name="tawRmRecordForm"/>
+    <form-bean type="com.boco.eoms.faultsheet.controller.TawFaultsheetForm" name="tawFaultsheetForm"/>
+
+    <form-bean type="org.apache.struts.action.DynaActionForm" name="myWorkBeanForm">
+    <form-property name="name" type="java.lang.String" />
+    <form-property name="content" type="java.lang.String" />
+    <form-property name="para" type="java.lang.String" />
+    <form-property name="size" type="java.lang.Integer" />
+    </form-bean>
+
+    <form-bean type="com.boco.eoms.planexec.controller.TAWCHANGERECORDForm" name="tAWCHANGERECORDForm"/>
+    <form-bean type="com.boco.eoms.planexec.controller.TAWHARDRECORDForm" name="tAWHARDRECORDForm"/>
+    <form-bean type="com.boco.eoms.planexec.controller.TAWSOFTMENDLISTForm" name="tAWSOFTMENDLISTForm"/>
+    <form-bean type="com.boco.eoms.planexec.controller.TAWSOFTRECORDForm" name="tAWSOFTRECORDForm"/>
+    <form-bean type="com.boco.eoms.planexec.controller.TAWSYSTEMRECORDForm" name="tAWSYSTEMRECORDForm"/>
+    <form-bean type="com.boco.eoms.planexec.controller.TAWORDERRECORDForm" name="tAWORDERRECORDForm"/>
+
+    <form-bean type="com.boco.eoms.jbzl.controller.TawHieConfForm" name="tawHieConfForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawSmsApplyForm" name="tawSmsApplyForm" />
+
+    <form-bean type="com.boco.eoms.common.controller.SaveSessionBeanForm" name="saveSessionBeanForm" />
+    <form-bean type="com.boco.eoms.log.controller.TawLogForm" name="tawLogForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawApparatusroomForm" name="tawApparatusroomForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawUserRoomForm" name="tawUserRoomForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawDeptForm" name="tawDeptForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawRmUserForm" name="tawRmUserForm" />
+
+    <form-bean type="com.boco.eoms.jbzl.controller.TawRoleForm" name="tawRoleForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawOperateForm" name="tawOperateForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawRolePrivForm" name="tawRolePrivForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawApplicationForm" name="tawApplicationForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawUserPrivDomForm" name="tawUserPrivDomForm" />
+
+    <form-bean type="com.boco.eoms.wsdict.controller.TawWsDictForm" name="tawWsDictForm" />
+    <form-bean type="com.boco.eoms.wsdict.controller.TawWsDictTypeForm" name="tawWsDictTypeForm" />
+    <form-bean type="com.boco.eoms.wsdict.controller.TawWsModuleForm" name="tawWsModuleForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawRmTreeForm" name="tawRmTreeForm" />
+
+    <form-bean type="com.boco.eoms.jbzl.controller.TawRmGroupuserForm" name="tawRmGroupuserForm" />
+    <form-bean type="com.boco.eoms.jbzl.controller.TawLogsForm" name="tawLogsForm" /> <!--add by zdl-->
+
+  </form-beans>
+
+  <!-- ============ Global forwards ============ -->
+  <global-forwards type="org.apache.struts.action.ActionForward">
+    <forward name="failure" path="/failure.jsp" />
+    <forward name="success1" path="/success.jsp" />
+    <forward name="success3" path="/success.jsp" />
+    <forward name="success" path="/success.jsp" />
+    <forward name="error" path="/failure.jsp" />
+    <forward name="timeout" path="/timeout.jsp" />
+    <forward name="nopriv" path="/nopriv.jsp" />
+    <forward name="notonduty" path="/duty/notonduty.jsp"/>
+  </global-forwards>
+
+  <!-- ============ Action Mapping definitions ============ -->
+  <action-mappings type="org.apache.struts.action.ActionMapping">
+    <!--worksheet flow group action mapping  begin -->
+    <action path="/TawWsGroup/add" parameter="ADD" type="com.boco.eoms.jbzl.flow.controller.TawWsGroupAction" scope="request" name="tawWsGroupForm" validate="true">
+      <forward name="success" path="sysadmin/flow/listbox/listbox_group.jsp" />
+    </action>
+    <action path="/TawWsGroup/edit" parameter="EDIT" type="com.boco.eoms.jbzl.flow.controller.TawWsGroupAction" scope="request" name="tawWsGroupForm" validate="true">
+      <forward name="success" path="sysadmin/flow/listbox/listbox_group.jsp" />
+    </action>
+    <action path="/TawWsGroup/save" parameter="SAVE" type="com.boco.eoms.jbzl.flow.controller.TawWsGroupAction" scope="request" name="tawWsGroupForm" validate="true">
+      <forward name="success" redirect="true" path="sysadmin/flow/savesuccess.jsp" />
+    </action>
+    <action path="/TawWsGroup/list" parameter="LIST" type="com.boco.eoms.jbzl.flow.controller.TawWsGroupAction" scope="request" name="tawWsGroupForm" validate="true">
+      <forward name="success" path="sysadmin/flow/grouplist.jsp" />
+    </action>
+    <action path="/TawWsGroup/trash" parameter="TRASH" type="com.boco.eoms.jbzl.flow.controller.TawWsGroupAction" scope="request" name="tawWsGroupForm" validate="true">
+      <forward name="success" redirect="true" path="/TawWsGroup/list.do" />
+    </action>
+    <!--worksheet flow group action mapping end -->
+
+    <!--worksheet flow action mapping  begin -->
+    <action path="/TawWsFlow/init" parameter="INIT" type="com.boco.eoms.jbzl.flow.controller.TawWsFlowAction" scope="request" name="tawWsFlowForm" validate="true">
+      <forward name="success" path="sysadmin/flow/flowconfig.jsp" />
+    </action>
+    <action path="/TawWsFlow/update" parameter="UPDATE" type="com.boco.eoms.jbzl.flow.controller.TawWsFlowAction" scope="request" name="tawWsFlowForm" validate="true">
+      <forward name="success" redirect="true" path="sysadmin/flow/savesuccess.jsp"/>
+    </action>
+    <action path="/TawWsFlow/config" parameter="CONFIG" type="com.boco.eoms.jbzl.flow.controller.TawWsFlowAction" scope="request" name="tawWsFlowForm" validate="true">
+      <forward name="success" path="sysadmin/flow/listbox/listbox_flowconfig.jsp" />
+    </action>
+    <action path="/TawWsFlow/view" parameter="VIEW" type="com.boco.eoms.jbzl.flow.controller.TawWsFlowAction" scope="request" name="tawWsFlowForm" validate="true">
+      <forward name="success"  path="sysadmin/flow/flowconfig_display.jsp" />
+    </action>
+    <!--worksheet flow action mapping end -->
+
+      <!-- <<<<<<<<<<<<<< data load to ldap.such as:dept銆乽ser銆乷perate銆乨ataRange >>>>>>>>>>>>>>> -->
+    <action path="/Load/dept" parameter="LOADDEPT" type="com.boco.eoms.jbzl.util.LoadFromDB" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/load.jsp" />
+    </action>
+    <action path="/Load/user" parameter="LOADUSER" type="com.boco.eoms.jbzl.util.LoadFromDB" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/load.jsp" />
+    </action>
+    <action path="/Load/oper" parameter="LOADOPER" type="com.boco.eoms.jbzl.util.LoadFromDB" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/load.jsp" />
+    </action>
+    <action path="/Load/range" parameter="LOADRANGE" type="com.boco.eoms.jbzl.util.LoadFromDB" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/load.jsp" />
+    </action>
+    <action path="/Load/deptdb" parameter="LOADDEPTTODB" type="com.boco.eoms.jbzl.util.LoadFromDB" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/load.jsp" />
+    </action>
+    <action path="/Load/userdb" parameter="LOADUSERTODB" type="com.boco.eoms.jbzl.util.LoadFromDB" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/load.jsp" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawSmsApply >>>>>>>>>>>>>>> -->
+    <action path="/TawSmsApply/add" parameter="ADD" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawSmsApply/entry.jsp" />
+    </action>
+    <action path="/TawSmsApply/add2" parameter="ADD2" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawSmsApply/entry3.jsp" />
+    </action>
+    <action path="/TawSmsApply/edit" parameter="EDIT" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawSmsApply/entry2.jsp" />
+    </action>
+    <action path="/TawSmsApply/list" parameter="LIST" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawSmsApply/summary.jsp" />
+    </action>
+    <action path="/TawSmsApply/view" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawSmsApply/view.jsp" />
+    </action>
+    <action path="/TawSmsApply/remove" parameter="REMOVE" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawSmsApply/remove.jsp" />
+    </action>
+    <action path="/TawSmsApply/trash" parameter="TRASH" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" redirect="true" path="/TawSmsApply/list.do" />
+      <forward name="cancel" redirect="true" path="/TawSmsApply/list.do" />
+    </action>
+    <action path="/TawSmsApply/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="true" input="/TawSmsApply/add.do">
+      <forward name="success" redirect="true" path="/TawSmsApply/list.do" />
+      <forward name="duplicate" path="/TawHieConf/add.do" />
+    </action>
+    <action path="/TawSmsApply/save2" parameter="SAVE2" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="true" input="/TawSmsApply/edit.do">
+      <forward name="success" redirect="true" path="/TawSmsApply/list.do" />
+      <forward name="duplicate" path="/TawSmsApply/edit.do" />
+    </action>
+    <action path="/TawSmsApply/searchdo" parameter="SEARCHDO" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="session" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawSmsApply/searchdo.jsp" />
+    </action>
+    <action path="/TawSmsApply/search" parameter="SEARCH" type="com.boco.eoms.jbzl.controller.TawSmsApplyAction" scope="request" name="tawSmsApplyForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawSmsApply/search.jsp" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawHieConf >>>>>>>>>>>>>>> -->
+    <action path="/TawHieConf/add" parameter="ADD" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawHieConf/entry.jsp" />
+    </action>
+    <action path="/TawHieConf/edit" parameter="EDIT" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawHieConf/entry2.jsp" />
+    </action>
+    <action path="/TawHieConf/list" parameter="LIST" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawHieConf/summary.jsp" />
+    </action>
+    <action path="/TawHieConf/view" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawHieConf/view.jsp" />
+    </action>
+    <action path="/TawHieConf/remove" parameter="REMOVE" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawHieConf/remove.jsp" />
+    </action>
+    <action path="/TawHieConf/trash" parameter="TRASH" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="false">
+      <forward name="success" redirect="true" path="/TawHieConf/list.do" />
+      <forward name="cancel" redirect="true" path="/TawHieConf/list.do" />
+    </action>
+    <action path="/TawHieConf/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="true" input="/TawHieConf/add.do">
+      <forward name="success" redirect="true" path="/TawHieConf/list.do" />
+      <forward name="duplicate" path="/TawHieConf/add.do" />
+    </action>
+    <action path="/TawHieConf/save2" parameter="SAVE2" type="com.boco.eoms.jbzl.controller.TawHieConfAction" scope="request" name="tawHieConfForm" validate="true" input="/TawHieConf/edit.do">
+      <forward name="success" redirect="true" path="/TawHieConf/list.do" />
+      <forward name="duplicate" path="/TawHieConf/edit.do" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< MyWork >>>>>>>>>>>>>>> -->
+    <action path="/MyWork/Init" parameter="INIT" type="com.boco.eoms.common.controller.MyWorkAction" scope="request" name="myWorkBeanForm" validate="false">
+      <forward name="success" path="template/myworks.jsp" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawLog >>>>>>>>>>>>>>> -->
+    <action path="/TawLog/add" parameter="ADD" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/manager/TawLog/entry.jsp" />
+    </action>
+    <action path="/TawLog/edit" parameter="EDIT" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/manager/TawLog/entry.jsp" />
+    </action>
+    <action path="/TawLog/list" parameter="LIST" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/manager/TawLog/summary.jsp" />
+    </action>
+    <action path="/TawLog/view" parameter="VIEW" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/manager/TawLog/view,jsp" />
+    </action>
+    <action path="/TawLog/remove" parameter="REMOVE" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/manager/TawLog/remove.jsp" />
+    </action>
+    <action path="/TawLog/trash" parameter="TRASH" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="/TawLog/list.do" />
+    </action>
+    <action path="/TawLog/save" parameter="SAVE" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="true" input="manager.TawLog.entry">
+      <forward name="success" path="/TawLog/list.do" />
+      <forward name="cancel" redirect="true" path="/TawLog/list.do" />
+    </action>
+    <action path="/TawLog/querydo" parameter="QUERYDO" type="com.boco.eoms.log.controller.TawLogAction" scope="session" name="tawLogForm" validate="false">
+      <forward name="success" path="log/query/TawLog/querydo.jsp" />
+    </action>
+    <action path="/TawLog/queryinit" parameter="QUERYINIT" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/query/TawLog/queryinit.jsp" />
+    </action>
+    <action path="/TawLog/comequery" parameter="COMEQUERY" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/query/TawLog/comequery.jsp" />
+    </action>
+    <action path="/TawLog/comestati" parameter="COMESTATI" type="com.boco.eoms.log.controller.TawLogAction" scope="request" name="tawLogForm" validate="false">
+      <forward name="success" path="log/query/TawLog/comestastis.jsp" />
+    </action>
+    <!-- <<<<<<<<<<<<<< SaveSessionBean >>>>>>>>>>>>>>> -->
+    <action path="/SaveSessionBean/login" parameter="LOGIN" type="com.boco.eoms.common.controller.SaveSessionBeanAction" scope="request" name="saveSessionBeanForm" validate="false">
+      <forward name="success" path="/login.jsp" />
+      <forward name="failureinfo" path="/sysadmin/manager/TawRmUser/failureinfo.jsp" />
+    </action>
+    <action path="/SaveSessionBean/init" parameter="INIT" type="com.boco.eoms.common.controller.SaveSessionBeanAction" scope="request" name="saveSessionBeanForm" validate="true" input="/index.jsp">
+      <forward name="newInterfaceSuccess" path="/mainframe_new.jsp" />
+      <forward name="success" path="/mainframe.jsp" />
+      <forward name="roomselect" path="/SaveSessionBean/roomselect.do" />
+      <forward name="workserialselect" path="/SaveSessionBean/workserialselect.do" />
+      <forward name="failure" path="/index.jsp" />
+    </action>
+    <action path="/SaveSessionBean/roomselect" parameter="ROOMSELECT" type="com.boco.eoms.common.controller.SaveSessionBeanAction" scope="request" name="saveSessionBeanForm" validate="false">
+      <forward name="success" path="/roomselect.jsp" />
+      <forward name="failure" path="/index.jsp" />
+    </action>
+    <action path="/SaveSessionBean/workserialselect" parameter="WORKSERIALSELECT" type="com.boco.eoms.common.controller.SaveSessionBeanAction" scope="request" name="saveSessionBeanForm" validate="false">
+      <forward name="newInterfaceSuccess" path="/mainframe_new.jsp" />
+      <forward name="success" path="/mainframe.jsp" />
+      <forward name="saveworkserial" path="/SaveSessionBean/saveworkserial.do" />
+      <forward name="workserialselect" path="/workserialselect.jsp" />
+      <forward name="failure" path="/index.jsp" />
+    </action>
+    <action path="/SaveSessionBean/saveworkserial" parameter="SAVEWORKSERIAL" type="com.boco.eoms.common.controller.SaveSessionBeanAction" scope="request" name="saveSessionBeanForm" validate="false" input="/index.jsp">
+      <forward name="newInterfaceSuccess" path="/mainframe_new.jsp" />
+      <forward name="success" path="/mainframe.jsp" />
+      <forward name="failure" path="/index.jsp" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawUserPrivDom >>>>>>>>>>>>>>> -->
+    <action path="/TawUserPrivDom/search" parameter="SEARCH" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawUserPrivDom/SearchInit.jsp" />
+      <forward name="cancel" path="/TawUserPrivDom/search.do" />
+    </action>
+
+    <action path="/TawUserPrivDom/searchDo" parameter="SEARCHDO" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="session" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawUserPrivDom/Search.jsp"/>
+      <forward name="batch" path="sysadmin/manager/TawUserPrivDom/batch.jsp"/>
+    </action>
+
+    <action path="/TawUserPrivDom/batchsave" parameter="BATCHSAVE" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" redirect="true" path="/TawUserPrivDom/search.do"/>
+    </action>
+
+    <action path="/TawUserPrivDom/viewrole" parameter="VIEWROLE" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawUserPrivDom/viewRoles.jsp" />
+    </action>
+    <action path="/TawUserPrivDom/conSelRoles" parameter="CONROLE" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" redirect="true" path="/TawUserPrivDom/search.do" />
+    </action>
+    <action path="/TawUserPrivDom/selDom" parameter="SELDOM" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" validate="false">
+      <forward name="success" path="userpriv.seldom" />
+    </action>
+    <action path="/TawUserPrivDom/updateRoleDom" parameter="UPRDOM" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="/TawUserPrivDom/conSelRoles.do" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawUserPrivDom new ! >>>>>>>>>>>>>>> -->
+    <action path="/TawUserPrivDom/viewApp" parameter="VIEWAPP" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawUserPrivDom/viewApp.jsp" />
+    </action>
+    <action path="/TawUserPrivDom/viewOper" parameter="VIEWOPER" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawUserPrivDom/viewOpers.jsp" />
+    </action>
+
+    <action path="/TawUserPrivDom/saveOperSel" parameter="SAV_OPER_SEL" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="TawOperateForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawUserPrivDom/listOpers.jsp" />
+    </action>
+
+    <action path="/TawUserPrivDom/selOperDom" parameter="SELOPERDOM" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="userpriv.selOperDom" />
+    </action>
+
+    <action path="/TawUserPrivDom/saveOperDom" parameter="SAVEOPERDOM" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/goto.jsp" />
+    </action>
+    <action path="/TawUserPrivDom/viewpriv" parameter="VIEWPRIV" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawUserPrivDom/viewpriv.jsp" />
+    </action>
+
+    <action path="/TawUserPrivDom/analyzeRole" parameter="ANAROLE" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawUserPrivDom/viewRoleOper.jsp" />
+    </action>
+    <action path="/TawUserPrivDom/saveRoleOper" parameter="SROLEOPER" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawOperateForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawUserPrivDom/listRoleOpers.jsp" />
+    </action>
+    <action path="/TawUserPrivDom/selRoleOperDom" parameter="SELROPERDOM" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="userpriv.selRoleOperDom" />
+    </action>
+    <action path="/TawUserPrivDom/saveRoleOperDom" parameter="SAVEROPERDOM" type="com.boco.eoms.jbzl.controller.TawUserPrivDomAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="/TawUserPrivDom/saveRoleOper.do" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawDept >>>>>>>>>>>>>>> -->
+    <action path="/TawDept/list" parameter="LIST" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawDept/summary.jsp" />
+    </action>
+    <action path="/TawDept/recover" parameter="RECOVER" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" redirect="true" path="/TawDept/list.do"/>
+    </action>
+    <action path="/TawDept/delforever" parameter="DELFOREVER" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" redirect="true" path="/TawDept/list.do"/>
+    </action>
+
+    <action path="/TawDept/tree" parameter="TREE" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawDept/depttree.jsp" />
+    </action>
+    <action path="/TawDept/add" parameter="ADD" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawDept/entry.jsp" />
+    </action>
+    <action path="/TawDept/edit" parameter="EDIT" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawDept/entry2.jsp" />
+    </action>
+
+    <action path="/TawDept/view" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawDept/view.jsp" />
+    </action>
+    <action path="/TawDept/remove" parameter="REMOVE" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawDept/remove.jsp" />
+    </action>
+    <action path="/TawDept/trash" parameter="TRASH" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="false">
+      <forward name="success" redirect="true" path="/TawDept/tree.do" />
+      <forward name="cancel" redirect="true" path="/TawDept/tree.do" />
+    </action>
+    <action path="/TawDept/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="true" input="/TawDept/add.do">
+      <forward name="success" redirect="true" path="/TawDept/tree.do" />
+      <forward name="duplicate" path="/TawDept/add.do" />
+      <forward name="cancel" redirect="true" path="/TawDept/tree.do" />
+    </action>
+    <action path="/TawDept/save2" parameter="SAVE2" type="com.boco.eoms.jbzl.controller.TawDeptAction" scope="request" name="tawDeptForm" validate="true" input="/TawDept/edit.do">
+      <forward name="success" redirect="true" path="/TawDept/tree.do" />
+      <forward name="duplicate" path="/TawDept/edit.do" />
+      <forward name="cancel" redirect="true" path="/TawDept/tree.do" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawRmUser >>>>>>>>>>>>>>> -->
+    <action path="/TawRmUser/add" parameter="ADD" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmUser/entry.jsp" />
+    </action>
+
+    <action path="/TawRmUser/edit" parameter="EDIT" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmUser/entry2.jsp" />
+      <forward name="success3" path="sysadmin/manager/TawRmUser/entry3.jsp" />
+    </action>
+
+    <action path="/TawRmUser/edit3" parameter="EDIT3" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmUser/entry3.jsp" />
+    </action>
+
+    <action path="/TawRmUser/list" parameter="LIST" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmUser/summary.jsp" />
+    </action>
+
+    <action path="/TawRmUser/view" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmUser/view.jsp" />
+    </action>
+    <action path="/TawRmUser/remove" parameter="REMOVE" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmUser/remove.jsp" />
+    </action>
+    <action path="/TawRmUser/trash" parameter="TRASH" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" redirect="true" path="/TawRmUser/searchDo.do" />
+      <forward name="listall" redirect="true" path="/infopub/TawInformation/addresslist.do" />
+      <forward name="cancel" redirect="true" path="/TawRmUser/searchDo.do" />
+    </action>
+    <action path="/TawRmUser/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="true" input="/TawRmUser/add.do">
+      <forward name="success" path="sysadmin/goto.jsp" />
+      <forward name="duplicate" path="/TawRmUser/add.do" />
+    </action>
+    <action path="/TawRmUser/save2" parameter="SAVE2" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="true" input="/TawRmUser/edit.do">
+      <forward name="success" redirect="true" path="/TawRmUser/searchDo.do" />
+      <forward name="listall" redirect="true" path="/infopub/TawInformation/addresslist.do" />
+      <forward name="duplicate" path="/TawRmUser/edit.do" />
+      <forward name="failure" path="/TawRmUser/edit.do" />
+      <forward name="cancel" redirect="true" path="/TawRmUser/searchDo.do" />
+      <forward name="failureinfo" path="sysadmin/manager/TawRmUser/failureinfo.jsp" />
+    </action>
+    <action path="/TawRmUser/save4" parameter="SAVE4" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="true" input="/TawRmUser/edit4.do">
+      <forward name="success" redirect="true" path="/TawRmUser/searchDo.do" />
+      <forward name="duplicate" path="/TawRmUser/edit4.do" />
+      <forward name="failure" path="/TawRmUser/edit4.do" />
+      <forward name="cancel" redirect="true" path="/TawRmUser/searchDo.do" />
+    </action>
+    <action path="/TawRmUser/save6" parameter="SAVE6" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="/TawRmUser/searchDo.do" />
+      <forward name="cancel" path="/TawRmUser/searchDo.do" />
+    </action>
+    <action path="/TawRmUser/save3" parameter="SAVE3" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="true" input="/TawRmUser/edit3.do">
+      <forward name="success" redirect="true" path="/TawRmUser/searchDo.do" />
+      <forward name="duplicate" path="/TawRmUser/edit3.do" />
+      <forward name="failure" path="/TawRmUser/edit3.do" />
+      <forward name="cancel" redirect="true" path="/TawRmUser/searchDo.do" />
+    </action>
+
+    <action path="/TawRmUser/search" parameter="SEARCH" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawRmUser/SearchInit.jsp" />
+      <forward name="cancel" path="/TawRmUser/search.do" />
+    </action>
+    <action path="/TawRmUser/searchDo" parameter="SEARCHDO" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="session" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawRmUser/Search.jsp" />
+      <forward name="cancel" path="/TawRmUser/search.do" />
+    </action>
+
+    <action path="/TawRmUser/se" parameter="SE" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawRmUser/seinit.jsp" />
+      <forward name="cancel" path="/TawRmUser/se.do" />
+    </action>
+    <action path="/TawRmUser/seDo" parameter="SEDO" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="session" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawRmUser/se.jsp" />
+      <forward name="cancel" path="/TawRmUser/se.do" />
+    </action>
+
+    <action path="/TawRmUser/recover" parameter="RECOVER" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="session" name="tawRmUserForm" validate="false">
+      <forward name="success" redirect="true" path="/TawRmUser/se.do" />
+    </action>
+
+    <action path="/TawRmUser/re" parameter="RE" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmUser/re.jsp" />
+    </action>
+    <action path="/TawRmUser/tr" parameter="TR" type="com.boco.eoms.jbzl.controller.TawRmUserAction" scope="request" name="tawRmUserForm" validate="false">
+      <forward name="success" redirect="true" path="/TawRmUser/seDo.do" />
+      <forward name="cancel" redirect="true" path="/TawRmUser/seDo.do" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawApparatusroom >>>>>>>>>>>>>>> -->
+    <action path="/TawApparatusroom/manager" parameter="MANAGER" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawApparatusroom/manager.jsp" />
+    </action>
+    <action path="/TawApparatusroom/recover" parameter="RECOVER" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" redirect="true" path="/TawApparatusroom/manager.do" />
+    </action>
+    <action path="/TawApparatusroom/del" parameter="DEL" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" redirect="true" path="/TawApparatusroom/manager.do" />
+    </action>
+
+    <action path="/TawApparatusroom/add" parameter="ADD" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawApparatusroom/entry.jsp" />
+    </action>
+    <action path="/TawApparatusroom/edit" parameter="EDIT" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawApparatusroom/entry2.jsp" />
+    </action>
+    <action path="/TawApparatusroom/list" parameter="LIST" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawApparatusroom/summary.jsp" />
+    </action>
+    <action path="/TawApparatusroom/view" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawApparatusroom/view.jsp" />
+    </action>
+    <action path="/TawApparatusroom/remove" parameter="REMOVE" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawApparatusroom/remove.jsp" />
+    </action>
+    <action path="/TawApparatusroom/trash" parameter="TRASH" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" redirect="true" path="/TawApparatusroom/search.do" />
+      <forward name="cancel" redirect="true" path="/TawApparatusroom/searchDo.do" />
+    </action>
+    <action path="/TawApparatusroom/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="true" input="/TawApparatusroom/add.do">
+      <forward name="success" redirect="true" path="/TawApparatusroom/list.do" />
+      <forward name="cancel" redirect="true" path="/TawApparatusroom/searchDo.do" />
+      <forward name="duplicate" path="/TawApparatusroom/add.do" />
+    </action>
+    <action path="/TawApparatusroom/save2" parameter="SAVE2" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="true" input="/TawApparatusroom/edit.do">
+      <forward name="success" redirect="true" path="/TawApparatusroom/search.do" />
+      <forward name="duplicate" path="/TawApparatusroom/edit.do" />
+      <forward name="cancel" redirect="true" path="/TawApparatusroom/searchDo.do" />
+    </action>
+    <action path="/TawApparatusroom/search" parameter="SEARCH" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="request" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawApparatusroom/SearchInit.jsp" />
+    </action>
+    <action path="/TawApparatusroom/searchDo" parameter="SEARCHDO" type="com.boco.eoms.jbzl.controller.TawApparatusroomAction" scope="session" name="tawApparatusroomForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawApparatusroom/Search.jsp" />
+    </action>
+
+
+    <!-- <<<<<<<<<<<<<< TawRole >>>>>>>>>>>>>>> -->
+  <action path="/TawRole/search" parameter="SEARCH" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+    <forward name="success" path="/sysadmin/query/TawRole/search.jsp" />
+  </action>
+
+  <action path="/TawRole/searchdo" parameter="SEARCHDO" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="session" name="tawRoleForm" validate="false">
+    <forward name="success" path="/sysadmin/query/TawRole/searchdo.jsp" />
+  </action>
+
+  <action path="/TawRole/add" parameter="ADD" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+    <forward name="success" path="/sysadmin/manager/TawRole/entry.jsp" />
+  </action>
+
+    <action path="/TawRole/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="true" input="/TawRole/add.do">
+      <forward name="success" redirect="true" path="/TawRole/list.do" />
+      <forward name="cancel" redirect="true" path="/TawRole/list.do" />
+      <forward name="duplicate" path="/TawRole/add.do" />
+    </action>
+
+    <action path="/TawRole/save2" parameter="SAVE2" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="true" input="/TawRole/edit.do">
+      <forward name="success" redirect="true" path="/TawRole/list.do" />
+      <forward name="cancel" redirect="true" path="/TawRole/list.do" />
+      <forward name="duplicate" path="/TawRole/edit.do" />
+    </action>
+
+    <action path="/TawRole/list" parameter="LIST" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="/sysadmin/manager/TawRole/summary.jsp" />
+
+    </action>
+    <action path="/TawRole/viewApp" parameter="APP" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="tawrole.viewapp"/>
+    </action>
+
+
+
+
+
+
+
+
+    <action path="/TawRole/viewApp2" parameter="APP" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="tawrole.viewapp2"/>
+    </action>
+    <action path="/TawRole/viewOper" parameter="OPER" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="tawrole.viewoper" />
+    </action>
+    <action path="/TawRole/saveOperSel" parameter="SAV_OPER_SEL" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="/TawRole/viewApp.do" />
+
+
+
+    </action>
+
+    <action path="/TawRole/edit" parameter="EDIT" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="/sysadmin/manager/TawRole/entry2.jsp" />
+    </action>
+    <action path="/TawRole/view" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="/sysadmin/manager/TawRole/view.jsp" />
+    </action>
+    <action path="/TawRole/views" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="/sysadmin/manager/TawRole/view.jsp" />
+    </action>
+
+    <action path="/TawRole/remove" parameter="REMOVE" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="/sysadmin/manager/TawRole/remove.jsp" />
+    </action>
+    <action path="/TawRole/trash" parameter="TRASH" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" redirect="true" path="/TawRole/list.do" />
+      <forward name="cancel" redirect="true" path="/TawRole/list.do" />
+    </action>
+    <action path="/TawRole/seldom" parameter="SELDOM" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="tawrole.seldom" />
+      <forward name="nohide" path="tawrole.seldom2" />
+      <forward name="goto"  path="/TawRole/over.do" />
+    </action>
+    <action path="/TawRole/updatedom" parameter="URDOM" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="/TawRole/over.do" />
+    </action>
+
+    <action path="/TawRole/over" parameter="OVER" type="com.boco.eoms.jbzl.controller.TawRoleAction" scope="request" name="tawRoleForm" validate="false">
+      <forward name="success" path="tawrole.over" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawWsDict >>>>>>>>>>>>>>> -->
+    <action path="/TawWsDict/add" parameter="ADD" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDict/entry.jsp" />
+    </action>
+    <action path="/TawWsDict/edit" parameter="EDIT" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDict/entry2.jsp" />
+    </action>
+    <action path="/TawWsDict/list" parameter="LIST" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDict/summary.jsp" />
+    </action>
+    <action path="/TawWsDict/view" parameter="VIEW" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDict/view.jsp" />
+    </action>
+    <action path="/TawWsDict/remove" parameter="REMOVE" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDict/remove.jsp" />
+    </action>
+    <action path="/TawWsDict/trash" parameter="TRASH" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="false">
+       <forward name="success" redirect="true" path="/TawWsDict/searchDo.do" />
+      <forward name="cancel" redirect="true" path="/TawWsDict/searchDo.do" />
+    </action>
+    <action path="/TawWsDict/save" parameter="SAVE" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="true" input="sysadmin/manager/TawWsDict/entry.jsp">
+      <forward name="success" path="sysadmin/goto.jsp" />
+      <forward name="duplicate" path="/TawWsDict/add.do" />
+    </action>
+
+    <action path="/TawWsDict/save2" parameter="SAVE2" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="true" input="sysadmin/manager/TawWsDict/entry2.jsp">
+      <forward name="success" redirect="true" path="/TawWsDict/searchDo.do" />
+      <forward name="cancel" redirect="true" path="/TawWsDict/searchDo.do" />
+      <forward name="duplicate" path="/TawWsDict/edit.do" />
+    </action>
+
+    <action path="/TawWsDict/search" parameter="SEARCH" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="request" name="tawWsDictForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawWsDict/SearchInit.jsp" />
+    </action>
+    <action path="/TawWsDict/searchDo" parameter="SEARCHDO" type="com.boco.eoms.wsdict.controller.TawWsDictAction" scope="session" name="tawWsDictForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawWsDict/Search.jsp" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawWsDictType >>>>>>>>>>>>>>> -->
+    <action path="/TawWsDictType/add" parameter="ADD" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDictType/entry.jsp" />
+    </action>
+    <action path="/TawWsDictType/edit" parameter="EDIT" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDictType/entry2.jsp" />
+    </action>
+    <action path="/TawWsDictType/list" parameter="LIST" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDictType/summary.jsp" />
+    </action>
+    <action path="/TawWsDictType/view" parameter="VIEW" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDictType/view.jsp" />
+    </action>
+    <action path="/TawWsDictType/remove" parameter="REMOVE" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsDictType/remove.jsp" />
+    </action>
+    <action path="/TawWsDictType/trash" parameter="TRASH" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="false">
+      <forward name="success" redirect="true" path="/TawWsDictType/list.do" />
+      <forward name="cancel" redirect="true" path="/TawWsDictType/list.do" />
+    </action>
+    <action path="/TawWsDictType/save" parameter="SAVE" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="true" input="/TawWsDictType/add.do">
+      <forward name="success" redirect="true" path="/TawWsDictType/list.do" />
+      <forward name="duplicate" path="/TawWsDictType/add.do" />
+      <forward name="cancel" redirect="true" path="/TawWsDictType/list.do" />
+    </action>
+    <action path="/TawWsDictType/save2" parameter="SAVE2" type="com.boco.eoms.wsdict.controller.TawWsDictTypeAction" scope="request" name="tawWsDictTypeForm" validate="true" input="/TawWsDictType/edit.do">
+      <forward name="success" redirect="true" path="/TawWsDictType/list.do" />
+      <forward name="duplicate" path="/TawWsDictType/edit.do" />
+      <forward name="cancel" redirect="true" path="/TawWsDictType/list.do" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawWsModule >>>>>>>>>>>>>>> -->
+    <action path="/TawWsModule/add" parameter="ADD" type="com.boco.eoms.wsdict.controller.TawWsModuleAction" scope="request" name="tawWsModuleForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsModule/entry.jsp" />
+    </action>
+    <action path="/TawWsModule/edit" parameter="EDIT" type="com.boco.eoms.wsdict.controller.TawWsModuleAction" scope="request" name="tawWsModuleForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsModule/entry.jsp" />
+    </action>
+    <action path="/TawWsModule/list" parameter="LIST" type="com.boco.eoms.wsdict.controller.TawWsModuleAction" scope="request" name="tawWsModuleForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsModule/summary.jsp" />
+    </action>
+    <action path="/TawWsModule/view" parameter="VIEW" type="com.boco.eoms.wsdict.controller.TawWsModuleAction" scope="request" name="tawWsModuleForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsModule/view.jsp" />
+    </action>
+    <action path="/TawWsModule/remove" parameter="REMOVE" type="com.boco.eoms.wsdict.controller.TawWsModuleAction" scope="request" name="tawWsModuleForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawWsModule/remove.jsp" />
+      <forward name="cancel" redirect="true" path="/TawWsModule/list.do" />
+    </action>
+    <action path="/TawWsModule/trash" parameter="TRASH" type="com.boco.eoms.wsdict.controller.TawWsModuleAction" scope="request" name="tawWsModuleForm" validate="false">
+      <forward name="success" path="/TawWsModule/list.do" />
+      <forward name="cancel" path="/TawWsModule/list.do" />
+    </action>
+    <action path="/TawWsModule/save" parameter="SAVE" type="com.boco.eoms.wsdict.controller.TawWsModuleAction" scope="request" name="tawWsModuleForm" validate="true" input="/TawWsModule/add.do">
+      <forward name="success" path="/TawWsModule/list.do" />
+      <forward name="cancel" redirect="true" path="/TawWsModule/list.do" />
+    </action>
+
+	<!--<<<<<<<<<<<<<<<<<<<<<<<<<<<TawDeptConf>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<action path="/TawDeptConf/config" parameter="CONFIG" type="com.boco.eoms.jbzl.controller.TawDeptConfAction" scope="request" name="tawDeptConfForm" validate="true">
+      <forward name="success" path="sysadmin/manager/TawDeptConf/config.jsp"/>
+      <forward name="adminsuccess" path="sysadmin/manager/TawDeptConf/adminconfig.jsp"/>
+	</action>
+	<action path="/TawDeptConf/userconfig" parameter="USERCONFIG" type="com.boco.eoms.jbzl.controller.TawDeptConfAction" scope="request" name="tawDeptConfForm" validate="true">
+	  <forward name="success" path="sysadmin/manager/TawDeptConf/userconfig.jsp"/>
+	</action>
+	<action path="/TawDeptConf/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawDeptConfAction" scope="request" name="tawDeptConfForm" validate="true">
+      <forward name="success" path="success.jsp"/>
+	</action>
+
+	<!-- <<<<<<<<<<<<<< TawRmGroupuser >>>>>>>>>>>>>>> -->
+    <action path="/TawRmGroupuser/add" parameter="ADD" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmGroupuser/entry.jsp" />
+    </action>
+    <action path="/TawRmGroupuser/save" parameter="SAVE" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="true" input="/TawRmGroupuser/add.do">
+      <forward name="success" path="sysadmin/goto.jsp" />
+      <forward name="duplicate" path="/TawRmGroupuser/add.do" />
+    </action>
+    <action path="/TawRmGroupuser/list" parameter="LIST" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmGroupuser/summary.jsp" />
+    </action>
+    <action path="/TawRmGroupuser/search" parameter="SEARCH" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawRmGroupuser/SearchInit.jsp" />
+      <forward name="cancel" path="/TawRmGroupuser/search.do" />
+    </action>
+    <action path="/TawRmGroupuser/searchDo" parameter="SEARCHDO" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="session" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/query/TawRmGroupuser/Search.jsp" />
+      <forward name="cancel" path="/TawRmGroupuser/search.do" />
+    </action>
+    <action path="/TawRmGroupuser/view" parameter="VIEW" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmGroupuser/view.jsp" />
+    </action>
+    <action path="/TawRmGroupuser/edit" parameter="EDIT" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmGroupuser/entry2.jsp" />
+      <forward name="success3" path="sysadmin/manager/TawRmGroupuser/entry3.jsp" />
+    </action>
+    <action path="/TawRmGroupuser/save2" parameter="SAVE2" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="true" input="/TawRmGroupuser/edit.do">
+      <forward name="success" redirect="true" path="/TawRmGroupuser/searchDo.do" />
+      <forward name="failure" path="/TawRmGroupuser/edit.do" />
+      <forward name="cancel" redirect="true" path="/TawRmGroupuser/searchDo.do" />
+    </action>
+    <action path="/TawRmGroupuser/remove" parameter="REMOVE" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmGroupuser/remove.jsp" />
+    </action>
+    <action path="/TawRmGroupuser/trash" parameter="TRASH" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" redirect="true" path="/TawRmGroupuser/searchDo.do" />
+      <forward name="cancel" redirect="true" path="/TawRmGroupuser/searchDo.do" />
+    </action>
+    <action path="/TawRmGroupuser/listbox" parameter="LISTBOX" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmGroupuser/listgroubbox.jsp" />
+    </action>
+    <action path="/TawRmGroupuser/listbatchbox" parameter="LISTBATCHBOX" type="com.boco.eoms.jbzl.controller.TawRmGroupuserAction" scope="request" name="tawRmGroupuserForm" validate="false">
+      <forward name="success" path="sysadmin/manager/TawRmGroupuser/listGroupbatchbox.jsp" />
+    </action>
+	<!--TawUserLog add by zdl begin-->
+	<action path="/TawLogs/loadSearchDeleteUserPage" parameter="LOADSEARCHDELETEUSERPAGE" type="com.boco.eoms.jbzl.controller.TawLogsAction" scope="request" name="tawLogsForm" validate="true">
+      <forward name="success" path="/sysadmin/query/TawUserLog/searchDeleteUser.jsp"/>
+	</action>
+	<action path="/TawLogs/searchDeleteUser" parameter="SEARCHDELETEUSER" type="com.boco.eoms.jbzl.controller.TawLogsAction" scope="request" name="tawLogsForm" validate="true">
+      <forward name="success" path="/sysadmin/query/TawUserLog/listDeleteUser.jsp"/>
+	</action>
+	<!--TawUserLog add by zdl end-->
+<action path="/TawLogs/loadSearchLogPage" parameter="LOADSEARCHLOGPAGE" type="com.boco.eoms.jbzl.controller.TawLogsAction" scope="request" name="tawLogsForm" validate="true">
+      <forward name="success" path="/sysadmin/query/TawUserLog/searchLog.jsp"/>
+	</action>
+	<action path="/TawLogs/loadSearchLoginPage" parameter="LOADSEARCHLOGINPAGE" type="com.boco.eoms.jbzl.controller.TawLogsAction" scope="request" name="tawLogsForm" validate="true">
+      <forward name="success" path="/sysadmin/query/TawUserLog/searchLogin.jsp"/>
+	</action>
+	<action path="/TawLogs/searchLog" parameter="SEARCHLOG" type="com.boco.eoms.jbzl.controller.TawLogsAction" scope="request" name="tawLogsForm" validate="true">
+      <forward name="success" path="/sysadmin/query/TawUserLog/listLog.jsp"/>
+	</action>
+	<action path="/TawLogs/searchLoginLog" parameter="SEARCHLOGINLOG" type="com.boco.eoms.jbzl.controller.TawLogsAction" scope="request" name="tawLogsForm" validate="true">
+      <forward name="success" path="/sysadmin/query/TawUserLog/listLogin.jsp"/>
+	</action>
+
+  </action-mappings>
+
+  <controller contentType="text/html;charset=GB2312" locale="true" processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+
+  <!-- ========== Message Resources Definitions =========================== -->
+  <message-resources parameter="resources.application_zh_CN" />
+
+  <!-- ========== Plug Ins Configuration ================================== -->
+  <!-- Add multiple validator resource files by setting the pathname property -->
+      <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,
+                                                  /WEB-INF/validation.xml" />
+      </plug-in>
+
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-def.xml" />
+    <set-property property="moduleAware" value="true" />
+  </plug-in>
+
+</struts-config>

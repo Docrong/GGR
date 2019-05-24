@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config> 
+
+	<!-- ========== Data Sources Definitions =================================== -->
+	<!--
+		Define your Struts data sources in a file called struts-data-sources.xml and place
+		it in your merge directory.
+	-->
+
+	<!-- ========== Form Bean Definitions =================================== -->
+	<form-beans>
+		<form-bean
+       name="statForm"
+       type="com.boco.eoms.commons.statistic.base.webapp.form.StatForm"
+    /> 
+    
+    <form-bean name="stSubscriptionForm"
+			type="com.boco.eoms.commons.statistic.customstat.webapp.form.StSubscriptionForm" />
+   
+	</form-beans>
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward name="selectFile" path="/selectFile.do" />
+		<forward name="logout" path="/logout.jsp" />
+      	<forward name="fail" path="/common/fail.jsp" redirect="false" contextRelative="true"/>
+      	
+      	<forward name="mainMenu" path="/mainMenu.html" redirect="true" />
+
+		<forward name="Success" path="/common/success.jsp"
+			redirect="false" contextRelative="true" />
+		<forward name="failure" path="/common/failure.jsp"
+			redirect="false" contextRelative="true" />
+	</global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+	<action-mappings>
+		
+		<!-- 统计页面action -->
+		<action path="/stat"
+			type="com.boco.eoms.commons.statistic.customstat.webapp.action.CustomStatAction"
+			name="statForm" scope="request" parameter="method"
+			unknown="false" validate="false" attribute="customStatMethod"> 
+			<set-property property="cancellable" value="true" />
+
+
+			<!-- 显示查询定制统计页面 -->
+		      <forward name="seachstatisticfilepage" 
+				  path="/WEB-INF/pages/statistic/customstat/seachstatisticfilepage.jsp" redirect="false"
+				  contextRelative="true"/>
+				  
+			<!-- 显示工单结果页面 -->
+		      <forward name="statisticresult" 
+				  path="/WEB-INF/pages/statistic/common/resultHtml.jsp" redirect="false"
+				  contextRelative="true"/>
+			
+			<!-- 显示已经统计出来的报表页面 -->
+			 <forward name="statisticfilepage" 
+				  path="/WEB-INF/pages/statistic/customstat/statisticfilepage.jsp" redirect="false"
+				  contextRelative="true"/>
+			
+			<!-- 成功结果页面 -->
+			<forward contextRelative="true" name="success"
+				path="/WEB-INF/pages/statistic/customstat/success.jsp"
+				redirect="false" />
+				  
+			<!-- 以下为所有工单的list页面，如果增加工单定制则需增加该工单的list页面跳转forward -->  
+			<!-- 故障工单的list页面 -->
+			<!-- 显示解决级率统计工单详细列表页面 sheet-->
+		    <forward name="std_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/commonfault/std/list.jsp" redirect="false"
+		          contextRelative="true" /> 
+		          
+		    <forward name="intime_statisticsheetlist" 
+				  path="/WEB-INF/pages/statistic/commonfault/intime_KPI1/list.jsp" redirect="false"
+				  contextRelative="true"/>
+				  
+				  <!-- 显示解决级率统计工单详细列表页面 sheet-->
+		    <forward name="T_resolve_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/commonfault/T_resolve/list.jsp" redirect="false"
+		          contextRelative="true" />
+		          
+		          <!-- 显示压力测试详细列表页面 sheet-->
+		    <forward name="T_resolve_statisticsheetlist_test"
+			      path="/WEB-INF/pages/statistic/commonfault/test/list.jsp" redirect="false"
+		          contextRelative="true" />
+		          
+		          <!-- 显示一次完成率统计工单详细列表页面 sheet-->
+			<forward name="onetimepass-statisticsheetlist-kpi2"
+			      path="/WEB-INF/pages/statistic/commonfault/onetimepass_kpi2/list.jsp" redirect="false"
+		          contextRelative="true" />
+		          
+		    <forward name="commonfault_delay_KPI3list"
+			      path="/WEB-INF/pages/statistic/commonfault/delay_KPI3/list.jsp" redirect="false"
+		          contextRelative="true" />	  
+				  
+    	</action>
+    	
+    	<!-- 定制页面action -->
+    	<action path="/stSubscriptions"
+			type="com.boco.eoms.commons.statistic.customstat.webapp.action.StSubscriptionAction"
+			name="stSubscriptionForm" scope="request" input="main"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			
+			<forward contextRelative="true" name="search"
+				path="/WEB-INF/pages/statistic/customstat/custom/stSubscriptionQuery.jsp"
+				redirect="false" />
+			<forward contextRelative="true" name="addpage"
+				path="/WEB-INF/pages/statistic/customstat/custom/stSubscriptionForm.jsp"
+				redirect="false" />
+			<forward contextRelative="true" name="look"
+				path="/WEB-INF/pages/statistic/customstat/custom/stSubscriptionLook.jsp"
+				redirect="false" />
+			<forward contextRelative="true" name="editpage"
+				path="/WEB-INF/pages/statistic/customstat/custom/stSubscriptionEdite.jsp"
+				redirect="false" />
+			<forward contextRelative="true" name="list"
+				path="/WEB-INF/pages/statistic/customstat/custom/stSubscriptionList.jsp"
+				redirect="false" />
+			<forward contextRelative="true" name="success"
+				path="/WEB-INF/pages/statistic/customstat/custom/success.jsp"
+				redirect="false" />
+			<forward contextRelative="true" name="successed"
+				path="/WEB-INF/pages/statistic/customstat/custom/successed.jsp"
+				redirect="false" />
+			<!-- 订阅mapping -->
+			<forward contextRelative="true" name="customstatremind"
+				path="/WEB-INF/pages/statistic/customstat/customstatRemind.jsp"
+				redirect="false" />
+			<forward contextRelative="true" name="customstatremind_success"
+				path="/WEB-INF/pages/statistic/customstat/custom/customstatremind_success.jsp"
+				redirect="false" />
+				
+		</action>
+		
+	</action-mappings>
+
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+	<message-resources parameter="config/statistic/base-config/ApplicationResources-statistic"
+		key="statistic" />
+	
+	<message-resources
+		parameter="config/statistic/customstat-config/ApplicationResources-custom"/>
+		
+	<!-- ========== Validator plugin ===================  -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml" />
+	</plug-in>
+
+</struts-config>

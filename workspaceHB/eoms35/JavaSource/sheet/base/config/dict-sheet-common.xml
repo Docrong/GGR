@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="yesOrNot" description="是否">
+		<item id="0" name="否" description="否" />
+		<item id="1" name="是" description="是" />
+	</dict>
+	<dict id="ifAuditPass" description="是否审核通过">
+		<item id="0" name="不通过" description="不通过" />
+		<item id="1" name="通过" description="通过" />
+	</dict>
+	
+	<dict id="ifCriterion" description="是否有技术规范">
+	    <item id="1" name="已有" description="已有"/>
+	    <item id="1" name="没有" description="没有"/>
+	</dict>	
+	
+	<dict id="sheetStatus" description="工单状态值">
+	    <item id="-1" name="已撤销" description="已撤销"/>
+	    <item id="0" name="运行中" description="运行中"/>
+	    <item id="1" name="已归档" description="已归档"/>
+	    <item id="3" name="草稿" description="草稿"/>		
+	    <item id="4" name="暂存" description="暂存"/>	    
+	    <item id="-14" name="强制作废" description="强制作废"/>	
+	    <item id="-13" name="强制归档" description="强制归档"/>	
+	    <item id="-12" name="作废" description="作废"/>	
+	</dict>	
+	<dict id="trueOrFalse" description="是否">
+		<item id="false" name="否" description="否" />
+		<item id="true" name="是" description="是" />
+	</dict>
+	<dict id="operateType" description="操作类型">
+		<item id="1" name="转发" description="转发" />
+		<item id="2" name="回复" description="回复" />
+	</dict>
+	<dict id="messagetype" description="选择类型">
+		<item id="1" name="通知当前处理人" description="通知当前处理人" />
+		<item id="2" name="通知所有处理人" description="通知所有处理人" />
+		<item id="3" name="通知部门" description="通知部门" />
+	</dict>
+	
+	<dict id="taskStatus" description="任务状态">
+		<item id="2" name="未接单" description="未接单" />
+		<item id="3" name="运行" description="运行" />
+		<item id="5" name="完成" description="完成" />
+		<item id="8" name="已接单" description="已接单" />
+		<item id="-1" name="待处理回复" description="待处理回复" />
+	</dict>
+	
+    <dict id="checkStatus" description="告警核查状态">
+		<item id="0" name="未申请" description="未申请" />
+		<item id="1" name="审核中" description="审核中" />
+		<item id="2" name="已通过" description="已通过" />
+		<item id="3" name="已驳回" description="已驳回" />
+	</dict>
+</dicts>

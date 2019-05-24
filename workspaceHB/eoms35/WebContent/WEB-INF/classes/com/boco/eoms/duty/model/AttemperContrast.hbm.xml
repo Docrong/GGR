@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.AttemperContrast"
+            table="taw_rm_attemper_contrast"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="deptId"
+            	column="dept_id"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="cruser"
+            	column="cruser"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="crtime"
+            	column="crtime"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="attemperId"
+            	column="attemper_id"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="subAttemperId"
+            	column="sub_attemper_id"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="beginTime"
+            	column="begin_time"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="endTime"
+            	column="end_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="persistTimes"
+            	column="persist_times"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="subCompany"
+            	column="sub_company"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="friendCompany"
+            	column="friend_company"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="cableClass"
+            	column="cable_class"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="subRing"
+            	column="sub_ring"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="mainCable"
+            	column="main_cable"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="protectCable"
+            	column="protect_cable"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="netNameA"
+            	column="net_name_a"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="netNameB"
+            	column="net_name_b"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="ifNormalSwitch"
+            	column="if_normal_switch"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="beforeIntoA"
+            	column="before_into_a"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="beforeOuterA"
+            	column="before_outer_a"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="beforeIntoB"
+            	column="before_into_b"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="beforeOuterB"
+            	column="before_outer_b"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="afterIntoA"
+            	column="after_into_a"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="afterOuterA"
+            	column="after_outer_a"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="afterIntoB"
+            	column="after_into_b"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="afterOuterB"
+            	column="after_outer_b"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="finishResult"
+            	column="finish_result"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="adjustReason"
+            	column="adjust_reason"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="isAppEffect"
+            	column="is_app_effect"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="remark"
+            	column="remark"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="serial"
+            	column="serial"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deleted"
+            	column="deleted"
+                length="5"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="days"
+            	column="days"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- sample config file  , 
+			create new config file in your module -->
+<beans>
+	<!-- 配置信息类 -->
+	<bean id="statPartnerBaseinfoConfigManager"
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
+		autowire="byName">
+		<!-- 统计算法配置文件路径 在子模块中新建配置文件 
+		<property name="configFilePath">
+			<value>classpath:config/statistic-config-query-task.xml</value>
+		</property>-->
+		
+		<!-- Excel配置文件路径 在子模块中新建配置文件
+		<property name="excelConfigFilePath">
+			<value>classpath:config/statistic-config-excel-task.xls</value>
+		</property>-->
+		
+		<!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
+		<property name="reloadConfig">
+			<value>false</value>
+		</property>
+		
+		<!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
+		<property name="excelConfigMap">
+           <map>
+                                        	
+           	<!-- oracle版本 -->
+             <entry key="partnerbaseinfo_std_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-excel-notflow-partner-baseinfo_std.xls</value></entry>
+           	 <entry key="apparatus_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-excel-notflow-partner-baseinfo_apparatus.xls</value></entry>
+           	 <entry key="oil_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-excel-notflow-partner-baseinfo_oil.xls</value></entry>																					  	
+            <entry key="car_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-excel-notflow-partner-baseinfo_car.xls</value></entry>																					  	
+           
+           </map>
+        </property>
+        
+        <!-- 配置quary算法文件路径 key为excel中配置的参数，value对应文件名称  -->
+        <property name="queryCongigMap">
+           <map>
+                                     
+              <!-- oracle版本 -->
+              <entry key="partnerbaseinfo_std_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-query-notflow-partner-baseinfo_std.xml</value></entry>   
+              <entry key="apparatus_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-query-notflow-partner-baseinfo_apparatus.xml</value></entry>   
+               <entry key="oil_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-query-notflow-partner-baseinfo_oil.xml</value></entry>   
+               <entry key="car_oracle"><value>classpath:config/statistic/notflow-config/partner/baseinfo/statistic-config-query-notflow-partner-baseinfo_car.xml</value></entry>   
+                         																						  	
+           </map>
+        </property>
+		
+		<!-- Excel解析类 		 
+			目前使用applicationContext-statistic-base.xml中的配置 
+			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
+		<property name="excelConverter" ref="statBaseExcelConverter"/>
+	</bean>
+	
+	<!-- 统计工具需要实现的类
+	<bean id= "istatisticTool"
+		class="com.boco.eoms.commons.statistic.task.config.ist.StatisticToolTask">
+	</bean>-->
+	
+	<!-- 总体管理类 -->
+	<bean id="statPartnerBaseinfoManager" 
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
+		<property name="statConfigManager" ref="statPartnerBaseinfoConfigManager" />
+
+		<!-- 详细列表的VO类  -->
+		<property name="statDetailVOName">
+			<value>com.boco.eoms.commons.statistic.base.vo.StatDetailVO</value>
+		</property>
+		
+		<!-- property name="statisticTool" ref="istatisticTool"></property-->
+		
+		<!-- 
+			以下3个对象目前使用applicationContext-statistic-base.xml中的配置 
+			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.
+		-->
+		<property name="statJdbcDAO" ref="statBaseJdbcDAO" />
+		<property name="statExcelConverter" ref="statBaseExcelConverter" />
+		
+
+		<property name="statExportExcel" ref="statBaseExportExcel"></property>
+		
+		<!-- 订制统计访问数据库接口 -->
+		<property name="customStatHibernateDAO" ref="customStatHibernateDAO"></property>
+		
+	</bean>
+
+	<!-- 合作伙伴基本信息 -->
+	<bean id="baseinfoStatMethod"
+		class="com.boco.eoms.commons.statistic.notflow.partner.baseinfo.webapp.action.BaseinfoStatMethodImpl">
+		<property name="statManager" ref="statPartnerBaseinfoManager" />
+	</bean>
+	
+	<bean id="busiOperUrl" class="com.boco.eoms.commons.statistic.base.util.StatAttributeUrl" >
+		<property name="attributeUrl">
+			<props>
+				<prop key="bosheet"><![CDATA[/prShowQueryInfo.do]]></prop>
+				<prop key="2"><![CDATA[222]]></prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 合作伙伴仪器仪表信息 -->
+	<bean id="apparatusStatMethod"
+		class="com.boco.eoms.commons.statistic.notflow.partner.baseinfo.webapp.action.ApparatusStatMethodImpl">
+		<property name="statManager" ref="statPartnerBaseinfoManager" />
+	</bean>
+	
+	<!-- 注册 人员id转name接口 -->
+	<bean id="areaDeptTreeDao_v35"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV35Impl"
+		  autowire="byName">
+		<property name="ID2NameV35BeanId">
+			<value>areaDeptTreeDao</value>
+		</property>
+	</bean>
+	
+</beans>

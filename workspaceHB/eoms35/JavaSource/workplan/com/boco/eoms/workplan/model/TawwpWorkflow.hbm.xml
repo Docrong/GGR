@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpWorkflow"
+        table="TAW_WP_WORKFLOW"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpAddonsTable.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="executeId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTEID"
+            length="32"
+            not-null="true"
+        />
+
+        <property
+            name="flowId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FLOWID"
+            length="32"
+            not-null="true"
+        />
+
+        <property
+            name="flowType"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FLOWTYPE"
+            length="4"
+            not-null="false"
+        />
+
+        
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpAddonsTable.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

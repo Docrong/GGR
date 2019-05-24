@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="eoms35" default="wps-userlist" basedir=".">
+	<target name="wps-userlist" depends="windowsOS" >
+	</target>
+	
+	<target name="windowsOS">
+		<echo message="windows." />
+		<exec dir="E:\IBM\ID\602\runtimes\bi_v6\ProcessChoreographer\admin" executable="cmd.exe">
+			<arg line="/c ..\..\bin\wsadmin -lang jython -f refreshStaffQuery.py -server server1 -user wpiadmin -password wpiadmin"/>
+        </exec>
+	</target>
+	
+	<target name="unixOS">
+		<echo message="unix..." />
+		<exec dir="E:\IBM\ID\602\runtimes\bi_v6\ProcessChoreographer\admin" executable="/bin/sh">
+            <arg line="-c ..\..\bin\wsadmin -lang jython -f refreshStaffQuery.py -server server1 -user wpiadmin -password wpiadmin" />
+        </exec>
+	</target>
+</project>

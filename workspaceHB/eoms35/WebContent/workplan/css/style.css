@@ -1,0 +1,544 @@
+/*
+
+在实际运用中可能会遇到其他很多种情况，使用者在使用的时候，若发现需要补充，修改的请与我联系：
+
+电话：82825659
+
+*/
+
+body
+{
+	font-size:12px
+	font-color:#000000
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	background-color:#0070CA;
+	scrollbar-base-color: #426492;
+	scrollbar-arrow-color: #000000;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-darkshadow-color: #c3c3c3;
+	scrollbar-face-color: #f3ffff;
+	scrollbar-shadow-color: #426492;
+	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
+	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
+}
+
+table	{ font-size: 12px;
+		margin-top: 0em;
+		margin-left: 0em;
+	}
+
+tr
+	{
+	 vertical-align: middle ;
+	}
+
+td
+{
+	font-size:12px;
+	font-color:#000000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+/*-----------------------------------------------------------------------*/
+.tr_show{
+	border-collapse:separate;
+	background-color:#E2F1FC;
+}
+
+.table_show{
+			background:#719FD6;
+}
+
+.td_label{
+	background-color:#BEDEF8;
+	text-align:center;
+	color:#104CB9;
+	font-weight:bold;
+}
+.td_title{
+	background-color:#EEEDED;
+	color:#E27924;
+	text-align:center;
+	height:22;
+	padding:0,0,0,0;
+	font-weight:bold;
+}
+
+.td_title_two{
+	background-color:#3C98E1;
+	color:#FFFFFF;
+	height:22;
+	padding:0,0,0,15;
+}
+.td_none{
+	background-color:transparent;
+	padding:9,0,0,0;
+	height:20;
+}
+.td_button{
+	border-collapse:separate;
+	background-color:#E2F1FC;
+	padding:6pt 0pt 3pt 0pt;
+	text-align:center;
+
+}
+
+textarea {
+		border:1px solid #48AFFE;
+		border-top:1px solid #88CBFE;
+		border-left:1px solid #88CBFE;
+		font:normal 12px 宋体;
+	font-size:12px;
+	padding: 0px;
+	}
+
+ select {
+ 	background-color: #eeeeee;
+	font-size:12px;
+	font-color:#000000;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	padding: 0px;
+	}
+
+
+p		{ margin-top: .6em; margin-bottom: .6em	}
+
+h1		{  font-weight: bold;
+		font-size: 55%;
+		margin-bottom: -2.2em; }
+
+h2		{  font-weight: bold;
+		font-size: 66%;
+		margin-top: 6pt;
+		margin-bottom: -2.2em; }
+
+h3		{  font-weight: bold;
+		font-size: 77%;
+		margin-top: 6pt;
+		margin-bottom: -3em;  }
+
+h4		{font-size: 105%;
+		margin-top: 1.2em;
+		margin-bottom: .5em  }
+
+h5		{font-size: 100%;
+		margin-top: 1.2em;
+		margin-bottom: .5em }
+
+h6		{font-size: 100%;
+		margin-top: 1.2em;
+		margin-bottom: .5em }
+
+code	{  font-family: Courier;
+		font-size: 100%;  }
+
+hr	{  color: black;
+		margin-bottom: 20pt; }
+/*...........................................登陆界面样式.............................................*/
+
+/*帮助的链接样式*/
+a.help:link {color: #FFff00; font_size: 12; TEXT-DECORATION: none}
+a.help:hover{color: #00ff00; font-size: 14; TEXT-DECORATION: none}
+a.help:active{color: #00ff00; font-size: 14; TEXT-DECORATION: none}
+a.help:visited{color: #ffff00; font-size: 12; TEXT-DECORATION: none}
+
+/*字体样式*/
+.idxfont1 {
+	  background-image: url(../images/public/logo6.jpg);
+	  font-size: 12px;
+	  font-weight: bold;
+}
+
+/*按钮样式*/
+.idxbtn1 {
+	background-color: #FBF6BC;
+	height: 20px;
+	width: 50px;
+	margin-top: 10px;
+}
+
+.clsdlft {
+	font-size: 13px;
+	color: #000000;
+}
+.treetop1{
+        font_size: 12px;
+}
+
+/*.................................................头部样式..........................................*/
+
+.unnamed1 {
+	font-size: 12px;
+	color: #000000;
+}
+.unnamed2 {
+	font-size: 12px;
+	color: #FFFFFF;
+}
+.r-top {
+	font-size: 12px;
+	color: #0000CC;
+}
+
+/*header.jsp的链接样式*/
+td.head {font-size:12px;color:#ffffff;text-decoration:none};
+a.head {font-size:12px;color:#ffffff;text-decoration:none};
+A.head:link {COLOR: #ffffff;font-size: 12px; TEXT-DECORATION: none};
+A.head:hover {COLOR: #ffff00;font-size: 12px; TEXT-DECORATION: none};
+A.head:active {COLOR: #00ff00;font-size: 12px; TEXT-DECORATION: none};
+A.head:visited {COLOR: #ffffff;font-size: 12px; TEXT-DECORATION: none};
+
+/*...........................................目录树的样式.............................................*/
+/*目录树的样式*/
+#tree {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+#tree a {
+	mios:expression(this.onclick=changeLinkStyle);
+	color: #104CB9;
+}
+#tree a.clicked {
+	color: darkblue; 
+	font-size: 12px; 
+	font-weight:bold;
+	TEXT-DECORATION: underline
+}
+#tree img {
+	border: 0px;
+	width: 18px;
+	height: 18px;
+}
+
+#tree2 {
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+#tree2 a {
+	color: #104CB9;
+	text-decoration: none;
+}
+#tree2 img {
+	border: 0px;
+	width: 18px;
+	height: 18px;
+}
+
+
+/*普通滚动条的样式-->定义在<body class="clsscrollbar">*/
+.clsscrollbar
+{
+/*
+	scrollbar-base-color: #426492;
+	scrollbar-arrow-color: #000000;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-darkshadow-color: #c3c3c3;
+	scrollbar-face-color: #f3ffff;
+	scrollbar-shadow-color: #426492;
+	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
+	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
+*/
+}
+/*背景样式*/
+.clsbkgrnd {
+	background-image: url(../images/bottom/ditu-1.gif);
+}
+.clstopmenu {
+	background-color: #6B95E1;
+}
+
+.time {  font-size: 12px}
+
+/*...............................................欢迎界面样式.................................................*/
+
+.unnamed3 {
+	font-size: 12px;
+	color: 0142A4;
+ 	line-height: 120%;
+}
+.unnamed4 {
+	font-size: 13px;
+ 	font-weight: 700;
+}
+/*.............................................个模块欢迎界面样式....................................................*/
+
+.clsdocu {
+	font-size: 13px;
+	color: #0142A4;
+	text-decoration: none;
+	line-height: 28px;
+}
+
+.unnamed5 {
+	font-size: 14px;
+	color: #3366FF;
+}
+
+.idxfont2 {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 10px;
+	color: #FFFFFF;
+}
+
+
+/*...............................................内容部分...............................................*/
+
+/*summary.jsp的背景样式--> 例：<table ... class="clsbkgd">*/
+.clsbkgd{
+	background-color:  #709fd5;
+}
+
+/*所有内容界面的背景样式*/
+
+.clsbdr {
+	background-image:  url(../images/bottom/bj_1_1.gif);
+}
+
+/*标题上面一行的颜色样式 -->用于标题上方有颜色衬托的地方 例：<table class="clsfst">*/
+.clsfst {
+	background-color: #6085c9;
+}
+
+/*主标题栏的样式 -->用于包含主标题的表格或单元格 例：<td class="clsscd">*/
+.clsscd {
+	background-color: #eeeced;
+	font-size: 12px;
+	font-weight: bold;
+	color: #043AA6;
+	padding: 5px;
+	border-left-width:1;
+	border-left-style: solid;
+	border-left-color:#709fd5;
+	border-right-width:1;
+	border-right-style: solid;
+	border-right-color:#709fd5;
+	border-top-width:1;
+	border-top-style: solid;
+	border-top-color:#709fd5;
+}
+
+.clsscd1 {
+	background-color: #6287CE;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 5px;
+}
+
+/*特殊的内容标题样式 AddRecord.jsp*/
+.clsthd {
+	background-color: #d6dfef;
+	font-size: 12px;
+	color: #000000;
+	text-align: right;
+	padding: 5px;
+}
+
+/*一般的内容标题样式 summary.jsp-->用于包含内容标题的表格或单元格 例：<td class="clsthd1">*/
+.clsthd1 {
+	background-color: #d7dae1;
+	font-size: 12px;
+	color: #000000;
+	text-align: center;
+	border-left-width:1;
+	border-left-style: solid;
+	border-left-color:#709fd5;
+	border-right-width:1;
+	border-top-style: solid;
+	border-top-width: 1;
+	border-top-color:#709fd5;
+	padding-left: 6;
+	padding-right: 6;
+	padding-top: 3;
+	padding-bottom: 3;
+}
+.clsthd2 {
+	font-size: 12px;
+	color: #000000;
+	text-align: center;
+}
+.clsthd3 {
+	background-color: #d7dae1;
+	font-size: 12px;
+	color: #000000;
+	text-align: center;
+	border-left-width:1;
+	border-left-style: solid;
+	border-left-color:#709fd5;
+	border-right-width:1;
+	border-right-style: solid;
+	border-right-color:#709fd5;
+	border-top-style: solid;
+	border-top-width: 1;
+	border-top-color:#709fd5;
+	padding-left: 6;
+	padding-right: 6;
+	padding-top: 3;
+	padding-bottom: 3;
+}
+/*一般的内容样式 AddRecord.jsp -->用于包含内容的表格或单元格 例：<td class="clsfth">*/
+.clsfth {
+	background-color: #e5edf8;
+	font-size: 12px;
+	color: #000000;
+}
+
+/*特殊的内容样式 summary.jsp*/
+.clsfth1 {
+	background-color: #e5edf8;
+	font-size: 12px;
+	color: #000000;
+	border-top-width: 1;
+	border-left-width: 1;
+	border-left-style: solid;
+	border-left-color:#709fd5;
+	border-right-width: 1;
+	border-right-style: solid;
+	border-right-color:#709fd5;
+	border-top-style: solid;
+	border-top-width: 1;
+	border-top-color:#709fd5;
+	padding-left: 6;
+	padding-right: 6;
+	padding-top: 3;
+	padding-bottom: 3;
+}
+
+.clsfth2 {
+	background-color: #e5edf8;
+	font-size: 12px;
+	color: #000000;
+	text-align: center;
+	border-left-width:1;
+	border-left-style: solid;
+	border-left-color:#709fd5;
+	border-right-width:1;
+	border-top-style: solid;
+	border-top-width: 1;
+	border-top-color:#709fd5;
+	padding-left: 6;
+	padding-right: 6;
+	padding-top: 3;
+	padding-bottom: 3;
+}
+.clsfth3 {
+	background-color: #e5edf8;
+	font-size: 12px;
+	color: #000000;
+	text-align: center;
+	border-left-width:1;
+	border-left-style: solid;
+	border-left-color:#709fd5;
+	border-right-width:1;
+	border-right-style: solid;
+	border-right-color:#709fd5;
+	border-top-style: solid;
+	border-top-width: 1;
+	border-top-color:#709fd5;
+	padding-left: 6;
+	padding-right: 6;
+	padding-top: 3;
+	padding-bottom: 3;
+}
+/*通用按钮样式 --> 例：<input type="button" ... class=clsbtn>*/
+.clsbtn {
+	background-color: #FBF6BC;
+	height: 20px;
+	width: 50px;
+	margin-top: 10px;
+}
+
+/*特殊按钮样式 */
+.clsbtn1 {
+	background-color: #FBF6BC;
+	height: 20px;
+	width: 50px;
+	margin-top: 10px;
+}
+
+.clsbtn2 {
+	height: 20px;
+	width: 60px;
+	background-color: #8EC1F0;
+	border-top-style: solid;
+	border-top-width: 0;
+	border-top-color:#709fd5;
+	border-left-style: solid;
+	border-left-width: 0;
+	border-left-color:#709fd5;
+	border-right-style: solid;
+	border-right-width: 1;
+	border-right-color:#709fd5;
+	border-bottom-style: solid;
+	border-bottom-width: 1;
+	border-bottom-color:#709fd5;
+	font-size: 12px;
+}
+
+/*内容界面通用滚动条和背景样式-->定义在
+例：	<html>
+    	<head>
+	<title>table</title>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
+	<style type="text/css">
+
+	</style>
+	</head>
+	<body bgcolor="#FFFFFF"  leftmargin="0" topmargin="0" class="clssclbar">
+	<table width="100%" height="100%">
+  	<tr>
+    	<td  align="center" valign="top">中
+    所有内容界面必须使用这个样式*/
+
+.clssclbar{
+	scrollbar-base-color: #426492;
+	scrollbar-arrow-color: #000000;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-darkshadow-color: #c3c3c3;
+	scrollbar-face-color: #f3ffff;
+	scrollbar-shadow-color: #426492;
+	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
+	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
+
+	background-image:  url(../images/bottom/bj_1_1.gif);
+}
+
+/*内容界面特殊滚动条样式 dutyfile.jsp*/
+.clssclbar1{
+	scrollbar-base-color: #426492;
+	scrollbar-arrow-color: #000000;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-darkshadow-color: #c3c3c3;
+	scrollbar-face-color: #f3ffff;
+	scrollbar-shadow-color: #426492;
+	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
+	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
+	border: solid 0px #87CEEB;
+	background-color: #E6EEF9;
+}
+
+/*主表格边框样式 例：<table ... class="clstblc1">*/
+.clstblcl {
+	border: 2px solid #BCBABB;
+}
+
+/*textarea边框样式 例：<input ... type="text" ... class="clstext">*/
+.clstext {
+	border: 1px solid #174EA8;
+}
+
+/*通用连接样式 --> 例：<...class="clslink">*/
+a.clslink:link {color: #ffffff; font_size: 12; TEXT-DECORATION: none}
+a.clslink:hover{color: #990033; font-size: 12; TEXT-DECORATION: none}
+a.clslink:active{color: #cc3300; font-size: 12; TEXT-DECORATION: none}
+a.clslink:visited{color: #ffffff; font-size: 12; TEXT-DECORATION: none}
+
+a {font-size:12px;color:#104CB9;text-decoration:none}
+A:link {COLOR: #104CB9;font-size: 12px; TEXT-DECORATION: none}
+A:hover {COLOR: #104CB9;font-size: 12px; TEXT-DECORATION: none}
+A:active {COLOR: #37C0FE;font-size: 12px; TEXT-DECORATION: none}
+
+
+注：如按钮，文本框等使用标签 class用styleClass替换.

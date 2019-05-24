@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+    <class name="com.boco.eoms.infmanage.model.Collsheet" table=" worksheet_coll_okb">
+    <jcs-cache usage="nonstrict-read-write"/>
+    <id column="id_new" name="id_new" type="string">
+        <generator class="uuid.hex"/>
+    </id>
+    <property column="worksheet_type" name="worksheet_type" type="integer" />
+    <property column="region_code" length="50" name="region_code" type="string"/>
+    <property column="achieve_person" length="30" name="achieve_person" type="string"/>
+    <property column="achieve_time" length="30" name="achieve_time" type="string"/>
+    <property column="key_word" length="100" name="key_word" type="string"/>
+    <property column="fault_description" length="1000" name="fault_description" type="string"/>
+    <property column="fault_anolyize" length="1000" name="fault_anolyize" type="string"/>
+    <property column="resovl_process" length="2000" name="resovl_process" type="string"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Data Sources Definitions =================================== -->
+  <!--
+    Define your Struts data sources in a
+    
+     file called struts-data-sources.xml and place
+    it in your merge directory.
+  -->
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+    <form-bean
+      name="userForm"
+      type="com.boco.eoms.base.webapp.form.UserForm"
+    />
+    <form-bean
+      name="addressForm"
+      type="com.boco.eoms.base.webapp.form.AddressForm"
+    />
+    <form-bean
+      name="roleForm"
+      type="com.boco.eoms.base.webapp.form.RoleForm"
+    />
+    <form-bean
+      name="uploadForm"
+      type="com.boco.eoms.base.webapp.form.UploadForm"
+    />
+    <form-bean
+      name="ordersheetForm"
+      type="com.boco.eoms.businessupport.order.webapp.form.OrderSheetForm"
+    />
+  </form-beans>
+
+
+   <action-mappings>
+    
+   
+    <action
+      path="/ordersheets"
+      type="com.boco.eoms.businessupport.order.webapp.action.OrderSheetAction"
+      name="ordersheetForm"
+      scope="request"
+      input="listjsp"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+    
+      <forward
+        contextRelative="true"
+        name="formjsp"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/ordersheetForm.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="listjsp"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/ordersheetList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="gprsspecialLineList"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/gprsspecialLineList.jsp"
+        redirect="false"
+      />
+             <forward
+        contextRelative="true"
+        name="smsspeciallineList"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/smsspecialLineList.jsp"
+        redirect="false"
+      />
+     <forward
+        contextRelative="true"
+        name="languagespecialLineList"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/languagespecialLineList.jsp"
+        redirect="false"
+        />
+      <forward
+        contextRelative="true"
+        name="gprsproductquerylist"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/gprsspecialLineList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="transferspecialLineList"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/transferspecialLineList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="transferproductquerylist"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/transferspecialLineList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="ipproductquerylist"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/ipspecialLineList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="ipspecialLineList"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/ipspecialLineList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="querypage"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/orderquerypage.jsp"
+        redirect="false"
+      />
+       <forward
+        contextRelative="true"
+        name="productquerypage"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/productquerypage.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="querylist"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/querylist.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="sheetList"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/sheetlist.jsp"
+        redirect="false"
+      />
+       <forward
+        contextRelative="true"
+        name="difproductsList"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/difproductslist.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="detail"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/detail.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="deletefailurejsp"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/delete_fail.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="deletesuccessjsp"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/delete_success.jsp"
+        redirect="false"
+      />
+     <forward
+        contextRelative="true"
+        name="savefailurejsp"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/sheet_fail.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="savesuccessjsp"
+        path="/WEB-INF/pages/wfworksheet/ordersheet/sheet_success.jsp"
+        redirect="false"
+      />
+    </action>
+    <!-- Action to flush cache -->
+    <action path="/flush" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/backup/flushCache.jsp" roles="admin"/>
+
+    <!-- Forward to page to begin file upload -->
+    <action path="/selectFile" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/backup/uploadForm.jsp"/>
+    <!-- Forward to view Active Users -->
+    <action path="/activeUsers" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/backup/activeUsers.jsp" roles="admin"/>
+
+  </action-mappings>
+
+  <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+      <message-resources parameter="config/ApplicationResources" key="common"/>
+      <message-resources parameter="config/ApplicationResources-businessupport-ordersheet" key="sheet"/>
+      <message-resources parameter="config/ApplicationResources-businessupport-ordersheet" key="ordersheet"/>
+
+      <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+
+</struts-config>

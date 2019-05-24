@@ -1,0 +1,12 @@
+.x-tree-node-leaf img.kpi,.x-tree-node-collapsed img.kpi,.x-tree-node-expanded img.kpi {
+	background-image:url(images/kpi.gif);
+}
+.x-tree-node-leaf img.kpiType,.x-tree-node-collapsed img.kpiType,.x-tree-node-expanded img.kpiType {
+	background-image:url(images/kpiType.gif);
+}
+.x-tree-node-leaf img.template,.x-tree-node-collapsed img.template,.x-tree-node-expanded img.template {
+	background-image:url(images/template.gif);
+}
+.x-tree-node-leaf img.templateType,.x-tree-node-collapsed img.templateType,.x-tree-node-expanded img.templateType {
+	background-image:url(images/templateType.gif);
+}

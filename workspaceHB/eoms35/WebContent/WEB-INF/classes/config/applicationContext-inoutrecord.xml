@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">		
+<beans>
+    <!--TawRmInoutRecord-DAO START-->
+    <bean id="tawRmInoutRecordDao" class="com.boco.eoms.otherwise.dao.hibernate.TawRmInoutRecordDaoHibernate" autowire="byName"/>
+    <!--TawRmInoutRecord-DAO END-->
+    <!--TawRmInoutRecord-START-->    
+    <bean id="ItawRmInoutRecordManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.otherwise.service.impl.TawRmInoutRecordManagerImpl">
+                <property name="tawRmInoutRecordDao" ref="tawRmInoutRecordDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmInoutRecord-END-->
+</beans>
+
+

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.boco.eoms.workplan.model.TawwpModelExecute"
+		table="TAW_WP_MODELEXECUTE" dynamic-update="false"
+		dynamic-insert="false" select-before-update="false"
+		optimistic-lock="version">
+
+		<id name="id" column="ID" type="java.lang.String" length="32"
+			unsaved-value="null">
+			<generator class="uuid.hex">
+				<!--  
+					To add non XDoclet generator parameters, create a file named 
+					hibernate-generator-params-TawwpModelExecute.xml 
+					containing the additional parameters and place it in your merge dir. 
+				-->
+			</generator>
+		</id>
+
+		<property name="name" type="java.lang.String" update="true"
+			insert="true" access="property" column="NAMES" length="200"
+			not-null="true" />
+
+
+
+
+		<property name="botype" type="java.lang.String" update="true"
+			insert="true" access="property" column="BOTYPE" length="200"
+			not-null="false" />
+		<property name="executedeptlevel" type="java.lang.String" update="true"
+			insert="true" access="property" column="EXECUTEDEPTLEVEL" length="200"
+			not-null="false" />
+		<property name="appdesc" type="java.lang.String" update="true"
+			insert="true" access="property" column="APPDESC" length="200"
+			not-null="false" />
+
+		<property name="taskid" type="java.lang.String" update="true"
+			insert="true" access="property" column="taskid" length="200"
+			not-null="false" />
+
+
+
+
+		<property name="origin" type="java.lang.String" update="false"
+			insert="true" access="property" column="ORIGIN" length="1"
+			not-null="true" />
+
+		<property name="crtime" type="java.lang.String" update="false"
+			insert="true" access="property" column="CRTIME" length="19"
+			not-null="true" />
+
+		<property name="cruser" type="java.lang.String" update="false"
+			insert="true" access="property" column="CRUSER" length="20"
+			not-null="true" />
+
+		<property name="deleted" type="java.lang.String" update="true"
+			insert="true" access="property" column="DELETED" length="1"
+			not-null="true" />
+
+		<many-to-one name="tawwpModelPlan"
+			class="com.boco.eoms.workplan.model.TawwpModelPlan" cascade="save-update"
+			outer-join="auto" update="true" insert="true" access="property"
+			column="MODEL_PLAN_ID" not-null="true" />
+
+		<property name="cycle" type="java.lang.String" update="true"
+			insert="true" access="property" column="CYCLES" length="1"
+			not-null="true" />
+
+		<property name="format" type="java.lang.String" update="true"
+			insert="true" access="property" column="FORMAT" length="100"
+			not-null="false" />
+
+		<property name="formId" type="java.lang.String" update="true"
+			insert="true" access="property" column="FORMID" length="255"
+			not-null="false" />
+     
+		<property name="remark" type="java.lang.String" update="true"
+			insert="true" access="property" column="REMARK" length="400"
+			not-null="false" />
+		<property name="note" type="java.lang.String" update="true"
+			insert="true" access="property" column="NOTE" length="400"
+			not-null="false" />	
+		
+		<property name="accessories" type="java.lang.String" update="true"
+			insert="true" access="property" column="ACCESSORIES" length="400"
+			not-null="false" />
+
+		<property name="validate" type="java.lang.String" update="true"
+			insert="true" access="property" column="VALIDATES" length="255"
+			not-null="false" />
+
+		<property name="serialNo" type="java.lang.String" update="true"
+			insert="true" access="property" column="SERIALNO" length="5"
+			not-null="false" />
+
+		<property name="xlsX" type="java.lang.String" update="true"
+			insert="true" access="property" column="XLSX" length="3"
+			not-null="false" />
+
+		<property name="xlsY" type="java.lang.String" update="true"
+			insert="true" access="property" column="XLSY" length="3"
+			not-null="false" />
+		
+		
+		 <property  name="isHoliday"  type="java.lang.String"  update="true"
+            insert="true" access="property" column="IS_HOLIDAY" length="1"
+            not-null="false"
+        />
+         <property  name="monthFlag"  type="java.lang.String"  update="true"
+            insert="true" access="property" column="MONTHFLAG" length="10"
+            not-null="false"
+        />
+        <property
+            name="isWeekend" type="java.lang.String" update="true"
+            insert="true" access="property" column="IS_WEEKEND" length="1"
+            not-null="false"
+        />  
+        
+        <property
+            name="executeDay" type="java.lang.String" update="true"
+            insert="true" access="property" column="EXECUTEDAY" length="1"
+            not-null="false"
+        />  
+
+        <property name="executeMonth" type="java.lang.String" update="true"
+			insert="true" access="property" column="execute_month" length="12"
+			not-null="false" />
+			
+		<property name="executeTimes" type="integer" update="true"
+			insert="true" access="property" column="execute_times"  
+			not-null="false" />
+			
+		<many-to-one name="tawwpModelGroup"
+			class="com.boco.eoms.workplan.model.TawwpModelGroup" cascade="none"
+			outer-join="auto" update="true" insert="true" access="property"
+			column="MODEL_GROUP_ID" not-null="false" />
+
+		<property name="netTypeId" type="java.lang.String"
+			update="false" insert="true" access="property" column="NETTYPEID"
+			length="10" not-null="false" />
+			
+		<property  name="fileFlag"  type="java.lang.String"  update="true"
+            insert="true" access="property" column="FILE_FLAG" length="1"
+            not-null="false"
+        />
+		<!--
+			To add non XDoclet property mappings, create a file named
+			hibernate-properties-TawwpModelExecute.xml
+			containing the additional properties and place it in your merge dir.
+		-->
+
+	</class>
+
+</hibernate-mapping>

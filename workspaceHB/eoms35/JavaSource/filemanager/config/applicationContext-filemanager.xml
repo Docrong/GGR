@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+    <!--TawTopic-DAO START-->
+    <bean id="tawFileMgrTopicDao" class="com.boco.eoms.filemanager.dao.hibernate.TawFileMgrTopicDaoHibernate" autowire="byName"/>
+
+    <bean id="tawFileMgrTopicDaoJdbc" class="com.boco.eoms.filemanager.dao.hibernate.TawFileMgrTopicDaoJdbcImpl" autowire="byName"/>
+    <!--TawTopict-END-->
+    
+    <!--TawScheme-DAO START-->
+    <bean id="tawFileMgrSchemeDao" class="com.boco.eoms.filemanager.dao.hibernate.TawFileMgrSchemeDaoHibernate" autowire="byName"/>
+
+    <!--TawScheme-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

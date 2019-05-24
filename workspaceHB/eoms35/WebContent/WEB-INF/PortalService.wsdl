@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://entity.user.portal.light.org" xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope" xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapenc12="http://www.w3.org/2003/05/soap-encoding" xmlns:tns="http://bo.webservices.portal.eoms.boco.com" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://bo.webservices.portal.eoms.boco.com">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://bo.webservices.portal.eoms.boco.com" elementFormDefault="qualified" attributeFormDefault="qualified">
+      <xsd:element name="getPortalRoleList">
+        <xsd:complexType />
+      </xsd:element>
+      <xsd:complexType name="ArrayOfString">
+        <xsd:sequence>
+          <xsd:element name="string" type="xsd:string" nillable="true" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getPortalRoleListResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="tns:ArrayOfString" nillable="true" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="saveOrUpdatePortalUser">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in0" type="ns1:PortalUser" nillable="true" minOccurs="1" maxOccurs="1" />
+            <xsd:element name="in1" type="xsd:string" nillable="true" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="saveOrUpdatePortalUserResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:boolean" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="delPortalUser">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="in0" type="xsd:string" nillable="true" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="delPortalUserResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="out" type="xsd:boolean" minOccurs="1" maxOccurs="1" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://entity.user.portal.light.org" elementFormDefault="qualified" attributeFormDefault="qualified">
+      <xsd:complexType name="PortalUser">
+        <xsd:sequence>
+          <xsd:element name="deptid" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="deptname" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="email" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="id" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="password" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="postid" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="postname" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="role" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="userId" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="username" type="xsd:string" minOccurs="0" nillable="true" />
+          <xsd:element name="version" type="xsd:int" minOccurs="0" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="delPortalUserResponse">
+    <wsdl:part element="tns:delPortalUserResponse" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="delPortalUserRequest">
+    <wsdl:part element="tns:delPortalUser" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="saveOrUpdatePortalUserResponse">
+    <wsdl:part element="tns:saveOrUpdatePortalUserResponse" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="saveOrUpdatePortalUserRequest">
+    <wsdl:part element="tns:saveOrUpdatePortalUser" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="getPortalRoleListResponse">
+    <wsdl:part element="tns:getPortalRoleListResponse" name="parameters" />
+  </wsdl:message>
+  <wsdl:message name="getPortalRoleListRequest">
+    <wsdl:part element="tns:getPortalRoleList" name="parameters" />
+  </wsdl:message>
+  <wsdl:portType name="PortalServicePortType">
+    <wsdl:operation name="getPortalRoleList">
+      <wsdl:input message="tns:getPortalRoleListRequest" name="getPortalRoleListRequest" />
+      <wsdl:output message="tns:getPortalRoleListResponse" name="getPortalRoleListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="saveOrUpdatePortalUser">
+      <wsdl:input message="tns:saveOrUpdatePortalUserRequest" name="saveOrUpdatePortalUserRequest" />
+      <wsdl:output message="tns:saveOrUpdatePortalUserResponse" name="saveOrUpdatePortalUserResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="delPortalUser">
+      <wsdl:input message="tns:delPortalUserRequest" name="delPortalUserRequest" />
+      <wsdl:output message="tns:delPortalUserResponse" name="delPortalUserResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PortalServiceHttpBinding" type="tns:PortalServicePortType">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getPortalRoleList">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getPortalRoleListRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getPortalRoleListResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saveOrUpdatePortalUser">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="saveOrUpdatePortalUserRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saveOrUpdatePortalUserResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delPortalUser">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="delPortalUserRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="delPortalUserResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PortalService">
+    <wsdl:port binding="tns:PortalServiceHttpBinding" name="PortalServiceHttpPort">
+      <wsdlsoap:address location="http://10.149.6.4:8080/portalTest/services/PortalService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+

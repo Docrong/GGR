@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+  <form-beans>
+    <form-bean dynamic="true" name="ImportForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="fileName" type="java.lang.String" />
+    </form-bean>
+     <form-bean dynamic="true" name="ImportWordForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="fileName" type="java.lang.String" />
+       <form-property name="vendor" type="java.lang.String" />
+    </form-bean>
+
+    <form-bean dynamic="true" name="StudyForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="studyselect" type="java.lang.String" />
+      <form-property name="typeSel" type="java.lang.String" />
+      <form-property name="typeSelName" type="java.lang.String" />
+    </form-bean>
+
+    <form-bean dynamic="true" name="SubmitStudyForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="options" type="java.lang.String" />
+      <form-property name="typeSel" type="java.lang.String" />
+    </form-bean>
+
+    <form-bean dynamic="true" name="subManageForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="batchSel" type="java.lang.String" />
+      <form-property name="checkSel" type="java.lang.String" />
+    </form-bean>
+
+    <form-bean dynamic="true" name="subModifyForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="subId" type="java.lang.String" />
+    </form-bean>
+
+    <form-bean dynamic="true" name="ModifySubmitForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="subId"      type="java.lang.String" />
+      <form-property name="title"      type="java.lang.String"/>
+      <form-property name="options"    type="java.lang.String"/>
+      <form-property name="result"     type="java.lang.String"/>
+      <form-property name="difficulty" type="java.lang.Integer"/>
+      <form-property name="issueType"  type="java.lang.Integer"/>
+      <form-property name="value"      type="java.lang.Integer"/>
+      <form-property name="specialty"  type="java.lang.Integer"/>
+      <form-property name="manufacturer" type="java.lang.Integer"/>
+      <form-property name="equipment"    type="java.lang.Integer"/>
+      <form-property name="comment"      type="java.lang.String"/>
+      <form-property name="image"        type="java.lang.String"/>
+    </form-bean>
+
+    <form-bean dynamic="true" name="examConfigForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="title" type="java.lang.String" />
+      <form-property name="typeSel" type="java.lang.String" />
+      <form-property name="proportion" type="java.lang.String" />
+      <form-property name="starttime" type="java.lang.String" />
+      <form-property name="endtime" type="java.lang.String" />
+      <form-property name="testers" type="java.lang.String" />
+      <form-property name="issueStarttime" type="java.lang.String" />
+      <form-property name="issueEndtime" type="java.lang.String" />
+      <form-property name="configSel" type="java.lang.String" />
+    </form-bean>
+
+    <form-bean dynamic="true" name="studyQueryForm" type="org.apache.struts.action.DynaActionForm">
+      <description>studyonline formbean example</description>
+      <form-property name="deptId" type="java.lang.String" />
+      <form-property name="sdomids" type="java.lang.String" />
+      <form-property name="deptName" type="java.lang.String" />
+      <form-property name="userName" type="java.lang.String" />
+      <form-property name="userId" type="java.lang.String" />
+      <form-property name="issueId" type="java.lang.String" />
+      <form-property name="configSel" type="java.lang.String" />
+    </form-bean>
+
+  </form-beans>
+
+  <global-forwards>
+    <forward name="failure" path="/../failure_sheet.jsp" />
+    <forward name="success1" path="/../success.jsp" />
+    <forward name="success3" path="/../success.jsp" />
+    <forward name="success" path="/../success.jsp" />
+    <forward name="error" path="/../failure.jsp" />
+    <forward name="timeout" path="/../timeout.jsp" />
+    <forward name="nopriv" path="/../nopriv.jsp" />
+    <forward name="failure1" path="../studyonline/failure1.jsp" />
+    <forward name="examinenull" path="../studyonline/examinenull.jsp" />
+    <forward name="warehousenull" path="../studyonline/warehousenull.jsp" />
+  </global-forwards>
+  <action-mappings>
+
+
+    <action name="ImportForm" parameter="IMPORT" path="/import" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/import.jsp" />
+    </action>
+     <action name="ImportWordForm" parameter="IMPORT_WORD" path="/import_word" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/import_word.jsp" />
+    </action>
+    <action name="StudyForm" parameter="STUDYSELECT" path="/StudySelect" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/studyselect.jsp" />
+    </action>
+    <action name="StudyForm" parameter="SAVEDEFAULT" path="/saveDefault" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="StudySelect.do" />
+    </action>
+    <action name="StudyForm" parameter="STUDY" path="/study" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/study.jsp" />
+    </action>
+    <action name="SubmitStudyForm" parameter="STUDYSUBMIT" path="/StudySubmit" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/studysubmit.jsp" />
+    </action>
+    <action name="SubmitStudyForm" parameter="SUBMANAGE" path="/subManage" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/submanage.jsp" />
+    </action>
+    <action name="subManageForm" parameter="BATCHDELETE" path="/batchDelete" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="subManage.do" />
+    </action>
+    <action name="subManageForm" parameter="DELETESUB" path="/deleteSub" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="subManage.do" />
+    </action>
+    <action name="subModifyForm" parameter="SUBMODIFY" path="/modifySub" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/submodify.jsp" />
+    </action>
+    <action name="ModifySubmitForm" parameter="MODIFYSUBMIT" path="/modifySubmit" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="modifySub.do" />
+    </action>
+    <action name="examConfigForm" parameter="EXAMCONFIG" path="/examConfig" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/examconfig.jsp" />
+    </action>
+    <action name="examConfigForm" parameter="CONFIGSUBMIT" path="/configSubmit" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/../success.jsp" />
+    </action>
+    <action name="StudyForm" parameter="EXAMINE" path="/examine" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/examine.jsp" />
+      <forward name="finish" path="examFinish.do" />
+    </action>
+    <action name="studyQueryForm" parameter="STUDYQUERY" path="/studyQuery" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/query/studyquery.jsp" />
+    </action>
+    <action name="studyQueryForm" parameter="QUERYDO" path="/queryDo" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/query/studylist.jsp" />
+    </action>
+    <action name="studyQueryForm" parameter="DETAIL" path="/detail" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/query/detail.jsp" />
+    </action>
+    <action name="studyQueryForm" parameter="EXAMQUERY" path="/examQuery" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/query/examquery.jsp" />
+    </action>
+    <action name="studyQueryForm" parameter="EXAMQUERYDO" path="/examQueryDO" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/query/studylist.jsp" />
+    </action>
+    <action name="studyQueryForm" parameter="EXAMFINISH" path="/examFinish" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/../success.jsp" />
+    </action>
+    <action name="studyQueryForm" parameter="REPORT" path="/report" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/report.jsp" />
+    </action>
+    <action name="studyQueryForm" parameter="REPORTDO" path="/reportDO" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="report.do" />
+    </action>
+    <action name="studyQueryForm" parameter="DELIMPORT" path="/delImport" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="report.do" />
+    </action>
+    <action name="SubmitStudyForm" parameter="REPORTDETAIL" path="/reportDetail" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/reportdetail.jsp" />
+    </action>
+    <action name="SubmitStudyForm" parameter="PHYSICALDELSUB" path="/physicalDelSub" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="reportDetail.do" />
+    </action>
+    <action name="studyQueryForm" parameter="AUDITING" path="/auditing" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/auditing.jsp" />
+    </action>
+    <action name="ModifySubmitForm" parameter="AUDITINGDO" path="/auditingDO" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="auditing.do" />
+    </action>
+    <action name="ModifySubmitForm" parameter="REJECT" path="/reject" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="auditing.do" />
+    </action>
+    <action name="SubmitStudyForm" parameter="AUDITINGDETAIL" path="/auditingDetail" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/auditingdetail.jsp" />
+    </action>
+    <action name="examConfigForm" parameter="ISSUECONFIG" path="/issueConfig" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/issueconfig.jsp" />
+    </action>
+    <action name="examConfigForm" parameter="ISSUEDO" path="/issueDO" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/../success.jsp" />
+    </action>
+    <action name="examConfigForm" parameter="ISSUEINFO" path="/issueInfo" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/issueinfo.jsp" />
+    </action>
+    <action name="examConfigForm" parameter="EXAMDELETE" path="/examDelete" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/manage/examdelete.jsp" />
+    </action>
+    <action name="examConfigForm" parameter="EXAMDELETEDO" path="/examDeleteDO" scope="request" type="com.boco.eoms.studyonline.controller.StudyOnlineAction" validate="true">
+      <forward name="success" path="/../success.jsp" />
+    </action>
+
+
+
+  </action-mappings>
+  <controller contentType="text/html;charset=GB2312" debug="3" locale="true" nocache="true" processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+  <message-resources parameter="resources.application_zh_CN" />
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+  </plug-in>
+  <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-def.xml" />
+    <set-property property="definitions-debug" value="0" />
+    <set-property property="definitions-parser-details" value="0" />
+    <set-property property="definitions-parser-validate" value="true" />
+  </plug-in>
+</struts-config>

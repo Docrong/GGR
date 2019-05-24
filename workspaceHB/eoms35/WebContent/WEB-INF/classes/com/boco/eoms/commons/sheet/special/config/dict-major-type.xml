@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="专业类型字典">
+	<dict id="majorType" description="专业">
+		<item id="1" name="大专业" description="大专业" />
+		<item id="2" name="小专业" description="小专业" />
+		<item id="3" name="网元类型" description="网元类型" />
+	</dict>
+</dicts>
+
+

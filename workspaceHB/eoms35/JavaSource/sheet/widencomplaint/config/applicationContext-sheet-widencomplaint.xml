@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="IWidenComplaintMainDAO"
+		class="com.boco.eoms.sheet.widencomplaint.dao.hibernate.WidenComplaintMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IWidenComplaintLinkDAO"
+		class="com.boco.eoms.sheet.widencomplaint.dao.hibernate.WidenComplaintLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IWidenComplaintTaskDAO"
+		class="com.boco.eoms.sheet.widencomplaint.dao.hibernate.WidenComplaintTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="WidenComplaintTask"
+		class="com.boco.eoms.sheet.widencomplaint.model.WidenComplaintTask" autowire="byName">
+     </bean>
+    <bean id="WidenComplaintLink"
+		class="com.boco.eoms.sheet.widencomplaint.model.WidenComplaintLink"
+		autowire="byName" />
+	<bean id="WidenComplaintMain"
+		class="com.boco.eoms.sheet.widencomplaint.model.WidenComplaintMain"
+		autowire="byName" />
+	<bean id="iWidenComplaintTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.widencomplaint.service.impl.WidenComplaintTaskManagerImpl">
+				<property name="taskModelObject" ref="WidenComplaintTask" />
+				<property name="taskDAO">
+					<ref bean="IWidenComplaintTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/widencomplaintTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iWidenComplaintFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.widencomplaint.service.impl.WidenComplaintFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iWidenComplaintLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.widencomplaint.service.impl.WidenComplaintLinkManagerImpl">
+				<property name="linkObject" ref="WidenComplaintLink"/>
+				<property name="linkDAO">
+				  <ref bean="IWidenComplaintLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iWidenComplaintMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.widencomplaint.service.impl.WidenComplaintMainManagerImpl">
+			    <property name="mainObject" ref="WidenComplaintMain" />
+				<property name="mainDAO">
+				 <ref bean="IWidenComplaintMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iWidenComplaintQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>WidenComplaint</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/widencomplaint-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iWidenComplaintQo"
+		class="com.boco.eoms.sheet.widencomplaint.qo.impl.WidenComplaintQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="WidenComplaintMain" />
+		<property name="poLink" value="WidenComplaintLink" />
+		<property name="poTask" value="WidenComplaintTask" />
+		<property name="aliasMain" value="widencomplaintMain" />
+		<property name="aliasLink" value="widencomplaintLink" />
+		<property name="aliasTask" value="widencomplaintTask" />
+
+	</bean>
+
+	<bean id="WidenComplaint" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.widencomplaint.webapp.action.WidenComplaintMethod">
+				<property name="businessFlowService" >
+					<ref bean="iWidenComplaintFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iWidenComplaintLinkManager" />
+				<property name="mainService"
+					ref="iWidenComplaintMainManager" />
+				<property name="sheetTask"
+					ref="WidenComplaintTask" />
+				<property name="taskService"
+					ref="iWidenComplaintTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/widencomplaint-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+
+	<bean id="iWidenComplaintCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.widencomplaint.service.bo.WidenCrmServiceManageImpl">
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iWidenComplaintInterfaceManagerImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.widencomplaint.service.impl.WidenComplaintInterfaceManagerImpl">
+			</bean>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <!--TawWorkbenchMemo-DAO START-->
+    <bean id="ITawSystemCodeDao" class="com.boco.eoms.commons.system.code.dao.hibernate.TawSystemCodeDaoHibernate" autowire="byName"/>
+    <!--TawWorkbenchMemo-DAO END-->
+    <!--TawWorkbenchMemo-START-->    
+    <bean id="ItawSystemCodeManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.system.code.service.impl.TawSystemCodeManagerImpl">
+                <property name="tawSystemCodeDao" ref="ITawSystemCodeDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawWorkbenchMemo-END-->
+    
+
+ 
+</beans>

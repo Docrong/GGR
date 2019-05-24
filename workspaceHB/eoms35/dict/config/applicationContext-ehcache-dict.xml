@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="dictCache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="appCacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>com.boco.eoms.commons.system.dict.DICT_CATCH</value>
+		</property>
+		<!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
+		<property name="maxElementsInMemory">
+			<value>100001</value>
+		</property>
+		<property name="overflowToDisk">
+			<value>true</value>
+		</property>
+		<property name="eternal">
+			<value>true</value>
+		</property>
+		<property name="timeToLive">
+			<value>600</value>
+		</property>
+		<property name="timeToIdle">
+			<value>600</value>
+		</property>
+		<property name="diskPersistent">
+			<value>false</value>
+		</property>
+		<property name="diskExpiryThreadIntervalSeconds">
+			<value>120</value>
+		</property>
+
+	</bean>
+
+
+
+	<bean id="dictCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
+		<property name="cache">
+			<ref local="dictCache" />
+		</property>
+	</bean>
+
+	<bean id="dictCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="dictCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*id2Name</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="dictBaseCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>dictCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 自动更新缓存 -->
+	<bean id="dictFlushCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="dictFlushCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*id2Name</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dictFlushCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
+		<property name="cache">
+			<ref local="dictCache" />
+		</property>
+		<property name="method">
+			<props>
+				<prop
+					key="com.boco.eoms.commons.system.dict.service.impl.ID2NameServiceImpl.id2Name">
+					dictCacheKeyCallback
+				</prop>
+
+			</props>
+		</property>
+	</bean>
+
+	<bean id="dictBaseFlushCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>dictFlushCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dictCacheKeyCallback"
+		class="com.boco.eoms.commons.system.dict.cache.DictCacheKeyCallback" />
+
+	<bean id="ID2NameGetServiceCatch"
+		parent="dictBaseCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.dict.service.impl.ID2NameServiceImpl">
+			</bean>
+		</property>
+	</bean>
+
+</beans>

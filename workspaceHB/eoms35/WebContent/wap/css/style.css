@@ -1,0 +1,319 @@
+body {
+	margin:0px;
+}
+input{
+  width:100px;
+  height:14px;
+}
+p{
+	font-size:12px;
+	font-family:"宋体";
+	text-indent:20px;
+	line-height:18px;
+}
+span{
+  font-size:12px;
+  font-family:"宋体";
+  text-indent:20px;
+}
+a:link {
+	color: #000000;
+	text-decoration: none;
+}
+a:visited {
+    color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+a:active {
+	text-decoration: none;
+}
+.a1:link {
+	color: #000000;
+	text-decoration: none;
+}
+.a1:visited {
+    color: #000000;
+	text-decoration: none;
+}
+.a1:hover {
+    color: #000000;
+	text-decoration: underline;
+}
+.a1:active {
+    color: #000000;
+	text-decoration: none;
+}
+/*------ 登陆页面------*/
+.login_bg{
+	background-image:url(../images/login_bg.gif);
+	text-align: center;
+	padding-top:30px;
+	background-repeat: repeat-x;
+	padding-bottom:40px;
+}
+.login_table{
+   padding-left:20px;
+   padding-right:20px;
+ }
+.title_text{
+	font-size: 16px;
+	color: #01375F;
+	font-style: normal;
+	font-weight: bold;
+	font-variant: normal;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+.user_text{
+   float:left;
+   font-family: "宋体";
+   font-size:12px;
+   color: #000000;
+   padding-top:5px;
+}
+
+
+/*------ <ins class="two-word"></ins> .two-word {width:2em;}------*/
+
+.btn{
+   background-image:url(../images/btn.gif);
+   background-repeat:no-repeat;  
+   width:77px;
+   height:20px;
+   text-align:center;
+	border:0px;
+	font-family: "宋体";
+	color: #000000;
+	font-size:12px;
+	CURSOR: hand;
+	padding: 0px;
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	background-color:transparent;
+}
+	
+.table_td{
+    font-family: "宋体";
+	color: #000000;
+	font-size:12px;
+	padding-top:20px;
+
+}
+/*------ 功能列表页面index_1------*/
+.table_width{
+    width:220px;
+	height:90px;
+}
+.sub_table_bg{
+    width:240px;
+	background-color:#F1FCFF;
+}
+.ico_bg{
+	background-image:url(../images/ico_bg.gif);
+	background-repeat: repeat-x;
+	width:240px;
+	height: 94px;
+	text-align: center;
+	vertical-align: top;    
+}
+.nav_text{
+    font-family: "宋体";
+	color: #000000;
+	font-size:12px;
+	text-align: center;
+}
+.title_bg_01{
+	background-image:url(../images/title_bg_01.gif);
+	height:24px;
+	background-repeat: repeat-x;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #004A7B;
+	text-indent:10px;
+}
+.title_bg_01 img{
+   vertical-align:middle;
+}
+.content_text_01{
+   font-size:12px;
+   font-family:"宋体";
+   color:#000000;
+}
+.content_text_01 ul{
+	padding-top:5px;
+	line-height:18px;
+}
+.content_text_01 li{
+   list-style-image: url(../images/tu01.gif);
+
+}
+.title_bg_02{
+	background-image:url(../images/title_bg_02.gif);
+	height:24px;
+	background-repeat: repeat-x;
+	font-family: "宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #004A7B;
+	text-indent:10px;
+}
+.title_bg_02 img{
+   vertical-align:middle;
+}
+.content_text_02{
+   font-size:12px;
+   font-family:"宋体";
+   color:#000000;
+}
+.content_text_02 ul{
+	padding-top:5px;
+	line-height:18px;
+}
+.content_text_02 li{
+   list-style-image: url(../images/tu02.gif);
+}
+/*------ 工单列表页面index_2------*/
+.list_text_03{
+   height:260px;
+   padding:6px;
+   vertical-align:top;
+}
+.title_bg_03{
+	background-color:#8CBDEF;
+	height:25px;
+	font-size:12px;
+	font-family:"宋体";
+	color:#000000;
+	text-indent:8px;
+}
+.content_text_03{
+   font-size:12px;
+   font-family:"宋体";
+   color:#000000;
+   background-color:#D6EFEF;
+   height:25px;
+   text-indent:8px;
+}
+/*------ 工单信息呈现页面index_3------*/
+.add_table_bg{/*文本背景框*/
+	background-color:#9299A3;
+}
+.fb_xx_head_tr{/*表单行背景色设为白色*/
+	background-color:white;
+	height:20px;
+	text-align:left;
+	font-size:12px;
+}
+.tt_head_bg{
+	text-align:left;
+	color:#000000;
+	background-color:#A7CFFD;
+	height:23px;
+	font-size: 12px;
+	text-indent:8px;
+	width:90px;
+}
+.fb_add_content{
+	font-size: 12px;
+	color: #000000;
+	text-indent:8px;
+	text-align: left;
+}
+.div_all{
+	width:100%;
+	overflow: scroll;
+	overflow-x:hidden;
+	border:0px solid #CEE6F9;
+	
+}
+.btn_bg{
+	background-image:url(../images/btn_bg.gif);
+	background-repeat: repeat-x;
+	text-align: center;
+	height:35px;
+}
+.btn_02{
+    width:62px;
+	height:25px;
+	background-image:url(../images/btn_02.gif);
+	background-repeat:no-repeat;
+	text-align:center;
+	border:0px solid ;
+	font-family: "宋体";
+	color: #ffffff;
+	font-size: 12px;
+	background-color:transparent;
+}
+.btn_03{
+    width:37px;
+	height:25px;
+	background-image:url(../images/btn_03.gif);
+	background-repeat:no-repeat;
+	text-align:center;
+	border:0px solid ;
+	font-family: "宋体";
+	color: #ffffff;
+	font-size: 12px;
+	background-color:transparent;
+}
+/*------ 工单处理页面index_4------*/
+/*表格间隔颜色*/
+.alterColor{ background-color:#9299A3}
+.tt_head_bg_1{
+	text-align:left;
+	color:#000000;
+	background-color:#D6EFEF;
+	height:25px;
+	font-size: 12px;
+	padding-left:10px;
+}
+.tt_head_bg_2{
+	text-align:left;
+	color:#000000;
+	background-color:#EFF7F7;
+	height:25px;
+	font-size: 12px;
+	padding-left:15px;
+}
+/*------ 彩信报页面index_5------*/
+.page_bg{
+	background-color:#697281;
+	background-repeat: repeat-x;
+	text-align: right;
+	height:23px;
+	font-size:12px;
+	font-family:"宋体";
+	color:#FFFFFF;
+	padding-right:10px;
+}
+.head_text{
+	font-family:"宋体";
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	line-height:25px;
+}
+.content_text_list{
+    font-family:"宋体";
+	font-size: 12px;
+	color: #000000;
+	padding-top:3px;
+	line-height:16px;
+}
+.content_text_list li{
+	list-style-type: none;
+}
+.line{
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #97A0AB;
+	height:18px;
+}
+
+

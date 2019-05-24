@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.boco.eoms.check.model.TawCheckCDMASCORE" table="taw_check_score_cdma">
+  <id column="SCORE_ID" name="score_id" type="string">
+   <generator class="uuid.hex"/>
+  </id>
+  <property column="SCORE_AREA_ID" length="100" name="score_area_id" type="string"/>
+  <property column="SCORE_AREA_NAME" length="100" name="score_area_name" type="string"/>
+  <property column="SCORE_YEAR" length="100" name="score_year" type="string"/>
+  <property column="SCORE_MONTH" length="100" name="score_month" type="string"/>
+  <property column="C42" length="100" name="c42" type="double"/>
+  <property column="C42_FULL" length="100" name="c42_full" type="double"/>
+  <property column="C42_SCORE" length="100" name="c42_score" type="double"/>
+  <property column="C43" length="100" name="c43" type="double"/>
+  <property column="C43_FULL" length="100" name="c43_full" type="double"/>
+  <property column="C43_SCORE" length="100" name="c43_score" type="double"/>
+  <property column="C45" length="100" name="c45" type="double"/>
+  <property column="C45_FULL" length="100" name="c45_full" type="double"/>
+  <property column="C45_SCORE" length="100" name="c45_score" type="double"/>
+  <property column="C65" length="100" name="c65" type="double"/>
+  <property column="C65_FULL" length="100" name="c65_full" type="double"/>
+  <property column="C65_SCORE" length="100" name="c65_score" type="double"/>
+  <property column="C411" length="100" name="c411" type="double"/>
+  <property column="C411_FULL" length="100" name="c411_full" type="double"/>
+  <property column="C411_SCORE" length="100" name="c411_score" type="double"/>
+  <property column="P26" length="100" name="vir_p26" type="double"/>
+  <property column="P26_FULL" length="100" name="vir_p26_full" type="double"/>
+  <property column="P26_SCORE" length="100" name="vir_p26_score" type="double"/>
+  <property column="C64" length="100" name="c64" type="double"/>
+  <property column="C64_FULL" length="100" name="c64_full" type="double"/>
+  <property column="C64_SCORE" length="100" name="c64_score" type="double"/>
+  <property column="C412" length="100" name="c412" type="double"/>
+  <property column="C412_FULL" length="100" name="c412_full" type="double"/>
+  <property column="C412_SCORE" length="100" name="c412_score" type="double"/>
+  <property column="FULL_SCORE" length="100" name="full_score" type="double"/>
+  <property column="SCORE_DELETED" length="100" name="score_deleted" type="string"/>
+ </class>
+</hibernate-mapping>

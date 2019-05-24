@@ -1,0 +1,600 @@
+<PUBLIC:attach		event="ondocumentready" onevent="initElement()" />
+<PUBLIC:attach		event="ondetach" onevent="cleanupElement()" />
+<PUBLIC:attach		event="onmouseover" onevent="elementOnMouseOver()" />
+<PUBLIC:attach		event="onmouseout" onevent="elementOnMouseOut()" />
+<PUBLIC:attach		event="onclick" onevent="elementOnClick()" />
+<PUBLIC:attach		event="ondblclick" onevent="elementOnDoubleClick()" />
+<PUBLIC:attach		event="onselectstart" onevent="elementOnSelect()" />
+
+<PUBLIC:property	name="ID" value="" />
+<PUBLIC:property	name="value" value="" />
+<PUBLIC:property	name="text" value="" />
+<PUBLIC:property	name="selectedIndex" value=-1 />
+<PUBLIC:property	name="sortType" value="Ascending" />
+
+<PUBLIC:method		name="itemCount" />
+<PUBLIC:method		name="sort" />
+<PUBLIC:method		name="addItem" />
+<PUBLIC:method		name="removeItem" />
+<PUBLIC:method		name="showItem" />
+<PUBLIC:method		name="hideItem" />
+<PUBLIC:method		name="getItemIndex" />
+<PUBLIC:method		name="getItemText" />
+<PUBLIC:method		name="getItemChecked" />
+<PUBLIC:method		name="getItemValue" />
+<PUBLIC:method		name="getItemHTML" />
+<PUBLIC:method		name="getItemTag" />
+<PUBLIC:method		name="getItemParentID" />
+<PUBLIC:method		name="setItemTag" />
+<PUBLIC:method		name="setSelectedItem" />
+<PUBLIC:method		name="selectedItems" />
+<PUBLIC:method		name="getElementIndex" />
+
+<PUBLIC:event		name="onchange" id="onchange" />
+<PUBLIC:event		name="ondoubleclick" id="ondoubleclick" />
+<PUBLIC:event		name="onRowSelect" id="rowselect" />
+
+<script language="jscript">
+
+var imageCell = 0 ;
+var captionCell = 1 ;
+var valueCell = 2 ;
+var tagCell = 3 ;
+var parentCell = 4 ;
+
+var optionsElement = null ;
+
+function initElement() {
+	objSelectedItems = new selectedItems();
+	optionsElement = element.children[0] ;
+	with (optionsElement) {
+		for (var i = 0; i < rows.length; i++) {
+			with (rows[i].children[imageCell]) {
+				if (children.length == 0) {
+					var imgElement = document.createElement("IMG") ;
+					imgElement.src = element.currentStyle.noImageUrl ;
+					insertAdjacentElement("beforeEnd", imgElement) ;
+				}
+				else {
+					children[0].hideFocus = true ;
+				}
+			}
+		}
+	}
+}
+
+function cleanupElement() {
+	optionsElement = null ;
+}
+
+function elementOnMouseOver() {
+
+	var el = getRealItem(window.event.srcElement) ;
+	if (el.tagName == "TR" && el.className != "EOMSListboxItemUnEnabled") {
+		el.className = "EOMSListboxItemOver" ;
+	}
+	el = null ;
+}
+
+function elementOnMouseOut() {
+	var el = getRealItem(window.event.srcElement) ;
+	if (el.tagName == "TR" && el.className != "EOMSListboxItemUnEnabled") {
+//		alert("dd="+objSelectedItems.isItemSelected(el));
+		if (objSelectedItems.isItemSelected(el)) {
+			el.className = "EOMSListboxItemSelected" ;
+		}
+		else {
+			el.className = "EOMSListboxItem" ;
+		}
+	}
+	el = null ;
+}
+
+function elementOnClick() {
+	var el = getRealItemClick(window.event.srcElement)
+	if (el.tagName == "TR" && el.className != "EOMSListboxItemUnEnabled") {
+
+		if (pageSelected!=null){
+			pageSelected.className = "EOMSListboxItem" ;
+		}
+		el.className = "EOMSListboxItemSelected" ;
+		element.selectedIndex = el.rowIndex;
+		element.text = el.children[captionCell].innerText ;
+		element.value = el.children[valueCell].innerText ;
+		element.ID = el.id;
+		onchange.fire() ;
+
+		pageSelected = el;
+		pageSelected.ID = el.id;
+		pageSelected.parentID = el.parentElement.parentElement.id;
+		pageSelected.text = el.children[captionCell].innerText;
+		if (el.id.indexOf("tr_parentid_") != -1)
+		{
+			pageSelected.property = "dept";
+		}
+                if (el.id.indexOf("tr_postid_") != -1)
+		{
+			pageSelected.property = "post";
+		}
+		if (el.id.indexOf("tr_userid_") != -1)
+		{
+			pageSelected.property = "user";
+		}
+		if (el.id.indexOf("tr_groupid_") != -1)
+		{
+			pageSelected.property = "group";
+		}
+		if (pageSelected.parentElement.id=="rootTbody"){
+			pageSelected.action = "add";
+		}
+		if (pageSelected.parentElement.id=="sortTbody") {
+			pageSelected.action = "del";
+		}
+
+
+		//点击、shiftKey、ctrlKey事件处理
+		switch(true) {
+			case window.event.shiftKey:
+				var lastItem = objSelectedItems.lastItem() ;
+				if (lastItem != null) {
+					var sIndex, lIndex;
+					sIndex = getElementIndex(lastItem);
+
+					if (lastItem.parentElement == el.parentElement)
+					{
+						lIndex = getElementIndex(el);
+					}
+					else{
+						//showInfo(el.offsetTop+" "+lastItem.offsetTop);
+						if (el.offsetTop < lastItem.offsetTop){
+							for(i=0; i<=sIndex;i++){
+								//alert("i="+i+"top="+lastItem.parentElement.children[i].offsetTop)
+								if(lastItem.parentElement.children[i].offsetTop >= el.offsetTop){
+									lIndex = i;
+									break;
+								}
+							}
+							//showInfo("sIndex="+sIndex+" lindex="+lIndex);
+						}
+						else {
+							for(i=lastItem.parentElement.children.length-1; i>=sIndex;i--){
+								if(lastItem.parentElement.children[i].offsetTop <= el.offsetTop){
+									lIndex = i;
+									break;
+								}
+							}
+							//showInfo("sIndex="+sIndex+" lindex="+lIndex);
+
+						}
+					}
+
+
+					if (sIndex > lIndex) {
+						for (i = lIndex + 1; i <= sIndex; i++) {
+							var tElement = lastItem.parentElement.children[i - 1];
+
+							if (!objSelectedItems.isItemSelected(tElement) &&
+								(tElement.className == "EOMSListboxItem" || tElement.className == "EOMSListboxItemOver"))
+							{
+								objSelectedItems.addItem(tElement);
+								tElement.className = "EOMSListboxItemSelected";
+							}
+						}
+					}
+					else {
+						for (i = sIndex+1; i <= lIndex+1; i++) {
+							var tElement = lastItem.parentElement.children[i - 1];
+							if (!objSelectedItems.isItemSelected(tElement) &&
+								(tElement.className == "EOMSListboxItem" || tElement.className == "EOMSListboxItemOver"))
+							{
+								objSelectedItems.addItem(tElement);
+								tElement.className = "EOMSListboxItemSelected";
+							}
+						}
+					}
+				}
+				else {
+					objSelectedItems.addSingleItem(el) ;
+					el.className = "EOMSListboxItemSelected";
+				}
+				break;
+			case window.event.ctrlKey:
+				if (objSelectedItems.isItemSelected(el)) {
+					objSelectedItems.deleteItem(el) ;
+					el.className = "EOMSListboxItem";
+				}
+				else {
+					objSelectedItems.addItem(el) ;
+					el.className = "EOMSListboxItemSelected";
+				}
+				break;
+			default:
+				if (objSelectedItems.count() > 0) {
+					for (i = 0; i < objSelectedItems.count(); i++) {
+						var tElement = objSelectedItems.getSelectedItem(i) ;
+						tElement.className = "EOMSListboxItem";
+					}
+				}
+
+				objSelectedItems.addSingleItem(el);
+				el.className = "EOMSListboxItemSelected";
+				break;
+		}
+		if (el.parentElement.id=="rootTbody"){
+			objSelectedItems.action = "add";
+		}
+		if (el.parentElement.id=="sortTbody") {
+			objSelectedItems.action = "del";
+		}
+		onchange.fire();
+	}
+
+	el = null ;
+	//showInfo("Selected Count:"+objSelectedItems.count());
+}
+
+function elementOnDoubleClick() {
+	with (window.event) {
+		var el = getRealItemClick(srcElement) ;
+		cancelBubble = true ;
+		returnValue = false ;
+	}
+	//if (el.tagName == "TR") {
+		//window.document.fnEOMSListboxDelRow(element);
+	//	ondoubleclick.fire() ;
+	//}
+	el = null ;
+	//return false ;
+}
+
+function elementOnSelect() {
+	with (window.event) {
+		cancelBubble = true ;
+		returnValue = false ;
+	}
+	return false ;
+}
+function showInfo(str){
+	window.document.getElementById("infofield").innerText = str;
+}
+function itemCount() {
+	return optionsElement.rows.length ;
+}
+
+function sort() {
+	var bReverse = (sortType == "Descending") ;
+	for (var i = 0; i < optionsElement.rows.length; i++) {
+     	var strRowInsert = (optionsElement.rows[i].children[captionCell].innerText).toLowerCase() ;
+        for (var s = 0; s <= i; s++) {
+			var strRowCurrent = (optionsElement.rows[s].children[captionCell].innerText).toLowerCase() ;
+			if (((!bReverse && strRowInsert < strRowCurrent) || (bReverse && strRowInsert > strRowCurrent)) && (i != s)) {
+				with (optionsElement.insertRow(optionsElement.rows[s].rowIndex)) {
+					className = "EOMSListboxItem" ;
+					for (var c = 0; c <= 3; c++) { insertCell(c) }
+					with (children[imageCell]) {
+						className = "EOMSListboxImage" ;
+						innerHTML = optionsElement.rows[i + 1].children[imageCell].innerHTML ;
+					}
+					with (children[captionCell]) {
+						className = "EOMSListboxCaption" ;
+						innerHTML = optionsElement.rows[i + 1].children[captionCell].innerHTML ;
+					}
+					with (children[valueCell]) {
+						className = "EOMSListboxValue" ;
+						innerText = optionsElement.rows[i + 1].children[valueCell].innerText ;
+					}
+					with (children[tagCell]) {
+						className = "EOMSListboxTag" ;
+						innerText = optionsElement.rows[i + 1].children[tagCell].innerText ;
+					}
+				}
+                optionsElement.deleteRow(optionsElement.rows[i + 1].rowIndex) ;
+                break ;
+            }
+        }
+	}
+	setSelectedItem(getItemIndex(element.text)) ;
+}
+
+function addItem(itmType, text, value, itemIndex, exData, tagData, parentID) {
+	var objNewRow = optionsElement.insertRow(itemIndex) ;
+	with (objNewRow) {
+		className = "EOMSListboxItem";
+		id = tagData+"_sel";
+		for (var c = 0; c <= 4; c++) { insertCell(c) }
+		with (children[imageCell]) {
+			className = "EOMSListboxImage" ;
+			switch ((itmType).toLowerCase()) {
+				case "n":
+					innerHTML = "<img src='" + element.currentStyle.noImageUrl + "'>" ;
+					break ;
+				case "i":
+					if (exData == "") {
+						exData = element.currentStyle.noImageUrl ;
+					}
+					innerHTML = "<img src='" + exData + "'>" ;
+					break ;
+				case "c":
+					if (exData == "" || (exData).toLowerCase() == "false" || !exData) {
+						innerHTML = "<input type='checkbox' hidefocus style='height: 15px; overflow: hidden;'>";
+					}
+					else {
+						innerHTML = exData;
+					}
+					break ;
+			}
+		}
+		with (children[captionCell]) {
+			className = "EOMSListboxCaption" ;
+			innerHTML = text ;
+		}
+		with (children[valueCell]) {
+			className = "EOMSListboxValue" ;
+			innerText = value ;
+		}
+		with (children[tagCell]) {
+			className = "EOMSListboxTag" ;
+			innerText = tagData ;
+		}
+		with (children[parentCell]) {
+			className = "EOMSListboxParent" ;
+			innerText = parentID ;
+		}
+	}
+	setSelectedItem(getItemIndex(element.text)) ;
+}
+
+function removeItem(itemIndex) {
+	optionsElement.deleteRow(itemIndex) ;
+	if (element.selectedIndex == itemIndex) {
+		element.selectedIndex = -1 ;
+		element.text = "" ;
+		element.value = "" ;
+		onchange.fire() ;
+	}
+}
+
+function showItem(itemIndex) {
+	optionsElement.rows[itemIndex].style.display = "" ;
+}
+
+function hideItem(itemIndex) {
+	optionsElement.rows[itemIndex].style.display = "none" ;
+	if (selectedIndex == itemIndex) {
+		element.selectedIndex = -1 ;
+		element.text = "" ;
+		element.value = "" ;
+		onchange.fire() ;
+	}
+}
+// -------------------------------------------------------------
+//	SELECTED OBJECT FUNCTION
+// -------------------------------------------------------------
+function selectedItems(varData) {
+	var arrItems = new Array() ;
+	var objLastItemAdded = null ;
+
+	this.count = function () {
+					return arrItems.length ;
+				 }
+
+	this.clear = function () {
+					arrItems = new Array();
+					objLastItemAdded = null ;
+	}
+
+	this.getSelectedItem = function (varData) {
+							  if (varData >= 0 && varData <= this.count()) {
+								  return arrItems[varData] ;
+							  }
+							  else {
+								  return null ;
+							  }
+						  }
+
+	this.lastItem = function () {
+					   return objLastItemAdded ;
+				   }
+
+	this.getItems = function () {
+					   return arrItems ;
+				   }
+
+	this.isItemSelected = function (varData) {
+							 return (this.getItemIndex(varData) != -1) ;
+						 }
+
+	this.addSingleItem = function (varData) {
+						    arrItems = new Array() ;
+							this.addItem(varData) ;
+						}
+
+	this.addItem = function (varData) {
+
+						var tElement = varData;
+						tElement.ID = varData.id;
+						tElement.parentID = varData.parentElement.parentElement.id;
+						tElement.text = varData.children[captionCell].innerText;
+						tElement.value = varData.children[valueCell].innerText;
+						tElement.tagInfo = varData.children[tagCell].innerText;
+						if (varData.id.indexOf("tr_parentid_") != -1)	tElement.property = "dept";
+                                                if (varData.id.indexOf("tr_postid_") != -1)		tElement.property = "post";
+						if (varData.id.indexOf("tr_userid_") != -1)		tElement.property = "user";
+						if (varData.id.indexOf("tr_groupid_") != -1)	tElement.property = "group";
+
+						arrItems[arrItems.length] = tElement ;
+						objLastItemAdded = tElement ;
+				  }
+
+	this.deleteItem = function (varData) {
+						 var idx = this.getItemIndex(varData) ;
+						 if (idx != -1) {
+							 var c = -1;
+							 var tmpArray = new Array() ;
+						     for (var i = 0; i < arrItems.length; i++) {
+							     if (i != idx) {
+							  	     c++ ;
+							  	     tmpArray[c] = arrItems[i] ;
+							     }
+							 }
+							 arrItems = tmpArray ;
+						 }
+				     }
+
+	this.getItemIndex = function (varData) {
+						   if (arrItems.length == 0) {
+							   return (-1) ;
+						   }
+						   else {
+						       for (var i = 0; i < arrItems.length; i++) {
+								   if (varData == arrItems[i]) {
+									   return (i) ;
+								   }
+							   }
+							   return (-1) ;
+						   }
+					   }
+}
+
+function getElementIndex(el) {
+	var colLength = el.parentElement.children.length ;
+	for (var i = 0; i < colLength; i++) {
+		if (el.parentElement.children[i] == el) {
+			return i ;
+		}
+	}
+	return -1 ;
+}
+
+function getItemIndex(itemText) {
+	with (optionsElement) {
+		for (var i = 0; i < rows.length; i++) {
+			with (rows[i].children[captionCell]) {
+				if (innerText == itemText) {
+					return rows[i].rowIndex ;
+				}
+			}
+		}
+	}
+	return -1 ;
+}
+
+function getItemText(itemIndex) {
+	return optionsElement.rows[itemIndex].children[captionCell].innerText;
+}
+
+function getItemValue(itemIndex) {
+	return optionsElement.rows[itemIndex].children[valueCell].innerText;
+}
+
+function getItemHTML(itemIndex) {
+	return optionsElement.rows[itemIndex].children[captionCell].innerHTML;
+}
+
+function getItemTag(itemIndex) {
+	return optionsElement.rows[itemIndex].children[tagCell].innerText;
+}
+
+function getItemParentID(itemIndex) {
+      alert("1111111111111111111111");
+	return optionsElement.rows[itemIndex].children[parentCell].innerText;
+}
+
+function getItemChecked(itemIndex) {
+	with (optionsElement.rows[itemIndex].children[imageCell]) {
+		if (children[0].tagName != "INPUT") {
+			return false ;
+		}
+		else {
+			return children[0].checked ;
+		}
+	}
+}
+
+function setItemTag(itemIndex, tagData) {
+	optionsElement.rows[itemIndex].children[tagCell].innerText = tagData;
+}
+
+function setSelectedItem(itemIndex) {
+	if (itemIndex == -1) {
+		if (element.selectedIndex != -1) {
+			if (element.selectedIndex > optionsElement.rows.length - 1) {
+				element.selectedIndex = -1 ;
+				element.text = "" ;
+				element.value = "" ;
+				return ;
+			}
+			optionsElement.rows[element.selectedIndex].className = "EOMSListboxItem" ;
+			element.selectedIndex = -1 ;
+			element.text = "" ;
+			element.value = "" ;
+			onchange.fire() ;
+		}
+	}
+	else {
+		if (element.selectedIndex > optionsElement.rows.length - 1) {
+			element.selectedIndex = -1 ;
+			element.text = "" ;
+			element.value = "" ;
+			return ;
+		}
+		if (element.selectedIndex != -1) {
+			optionsElement.rows[element.selectedIndex].className = "EOMSListboxItem" ;
+		}
+		with (optionsElement.rows[itemIndex]) {
+			className = "EOMSListboxItemSelected" ;
+			element.selectedIndex = rowIndex ;
+			element.text = children[captionCell].innerText ;
+			element.value = children[valueCell].innerText ;
+		}
+		onchange.fire() ;
+	}
+}
+
+function getRealItem(el) {
+	if (el != null) {
+		if (el.tagName == "IMG") { el = el.parentElement ; }
+		if (el.tagName == "INPUT") { el = el.parentElement ; }
+		if (el.tagName == "LI") { el = el.parentElement ; }
+		switch (el.className) {
+			case "EOMSListboxImage":
+				return el.parentElement ;
+				break ;
+			case "EOMSListboxCaption":
+				return el.parentElement ;
+				break ;
+			default:
+				return el ;
+				break ;
+		}
+	}
+	else {
+		return el ;
+	}
+}
+
+function getRealItemClick(el) {
+	if (el != null) {
+		if (el.tagName == "IMG" && el.id.indexOf("img_parentid_") == -1) { el = el.parentElement ; }
+		if (el.tagName == "LI") { el = el.parentElement ; }
+		switch (el.className) {
+			case "EOMSListboxImage":
+				return el.parentElement ;
+				break ;
+			case "EOMSListboxCaption":
+				//alert(el.parentElement.outerHTML);
+				//if(el.parentElement.id.indexOf("img_parentid_") == -1)
+					return el.parentElement ;
+				break ;
+			default:
+				return el ;
+				break ;
+		}
+	}
+	else {
+		return el ;
+	}
+}
+</script>
+
+</PUBLIC:COMPONENT>

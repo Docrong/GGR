@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.message.model.SmsMonitorBak"
+            table="sms_monitor_bak"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="applyId"
+                length="32"
+                not-null="false"
+                unique="false"
+                column="apply_id"
+        >
+
+        </property>
+        
+        <property
+            name="buizid"
+                length="50"
+                not-null="false"
+                unique="false"
+                column="buiz_id"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                length="500"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="dispatchTime"
+                length="20"
+                not-null="false"
+                unique="false"
+                column="dispatch_time"
+        >
+
+        </property>
+
+        <property
+            name="mobile"
+                length="100"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="receiverId"
+                length="30"
+                not-null="false"
+                unique="false"
+                column="receiver_id"
+        >
+
+        </property>
+        
+        <property
+            name="isSendImediat"
+                length="10"
+                not-null="false"
+                unique="false"
+                column="is_send_imediat"
+        >
+
+        </property>
+        
+        <property
+            name="serviceId"
+                length="32"
+                not-null="false"
+                unique="false"
+                column="service_id"
+        >
+
+        </property>
+        
+        <property
+            name="regetData"
+                length="10"
+        >
+
+        </property>
+        
+        <property
+            name="deleted"
+                length="5"
+                not-null="false"
+                unique="false"
+                column="deleted"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

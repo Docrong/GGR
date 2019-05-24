@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <!--Metermgr-DAO START-->
+    <bean id="metermgrDao" class="com.boco.eoms.parter.baseinfo.metermgr.dao.hibernate.MetermgrDaoHibernate" autowire="byName"/>
+    <!--Metermgr-DAO END-->
+    <!--Metermgr-START-->    
+    <bean id="ImetermgrManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.parter.baseinfo.metermgr.service.impl.MetermgrManagerImpl">
+                <property name="metermgrDao" ref="metermgrDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--Metermgr-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.sheet.expert.model.TawSheetExpert"
+            table="taw_sheet_expert"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="expertName"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="postName"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="deptId"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="phone"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="email"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="postStartTime"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="postEndTime"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="expertType"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="acceptCount"
+                length="50"
+        >
+       </property>
+       
+       <property
+            name="speId"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="expertState"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="stateStartTime"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="stateEndTime"
+                length="50"
+        >
+         </property>
+         
+          <property
+            name="deleted"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

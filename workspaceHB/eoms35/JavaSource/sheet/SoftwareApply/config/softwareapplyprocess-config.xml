@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="SoftwareApplyProcess" description="软件版本/补丁申请工单">
+  <flow-define id="SoftwareApplyProcess" description="软件版本/补丁申请工单" tasknamespace="http://" linkservicename="" dictfilename="dict-sheet-softwareApply.xml" name="SoftwareApplyProcess">
+    <phase-id id="receive" name="新建工单" type="receive" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="AuditTask" role="dealPerformer@" condition="${operateType}==" operatetype="" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="申请" />
+    </phase-id>
+    <phase-id id="ValidateTask" name="测试验证" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="ValidateTask" role="dealPerformer@" condition="${operateType}==" operatetype="" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="提交验证结果" />
+    </phase-id>
+    <phase-id id="HoldTask" name="归档工单" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="AuditingTask" name="审批" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="RejectHumTask" role="dealPerformer@" condition="${operateType}==" operatetype="" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="驳回" />
+      <to-phase-id id="AnalysisTask" role="dealPerformer@" condition="${operateType}==" operatetype="" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="通过" />
+    </phase-id>
+    <phase-id id="BatchTask" name="结果批复" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="HoldTask" role="dealPerformer@" condition="${operateType}==" operatetype="" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="归档" />
+    </phase-id>
+  </flow-define>
+</WorkFlowRule>
+

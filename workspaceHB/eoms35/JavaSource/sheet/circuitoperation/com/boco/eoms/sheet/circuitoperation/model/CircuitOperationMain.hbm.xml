@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.circuitoperation.model.CircuitOperationMain"
+            table="CircuitOperation_main"
+    >
+
+    <id
+        name="id"
+        column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+        <property name="sheetId" />
+		<property name="title" />
+		<property name="sheetAcceptLimit" />
+		<property name="sheetCompleteLimit" />
+		<property name="sendTime" />
+		<property name="sendOrgType" />
+		<property name="sendUserId" />
+		<property name="sendDeptId" />
+		<property name="sendRoleId" />
+		<property name="sendContact" />
+		<property name="endTime" />
+		<property name="endResult" />
+		<property name="status" />
+		<property name="holdStatisfied" />
+		<property name="endUserId" />
+		<property name="endDeptId" />
+		<property name="endRoleId" />
+		<property name="deleted" />
+		<property name="piid" />
+		<property name="parentSheetName" />
+		<property name="parentSheetId" />
+		<property name="sheetTemplateName" />
+		<property name="sheetAccessories" />
+		<property name="correlationKey" />
+		<property name="parentCorrelation" />
+		<property name="toDeptId" />
+		<property name="templateFlag" />
+		<property name="cancelReason" />
+		<property name="invokeMode" />
+ 		<property name="sendYear" />
+		<property name="sendMonth" />
+        <property name="sendDay" />       
+        <property name="parentPhaseName" /> 
+        
+        <property name="mainUrgency" /> 
+
+        <property name="mainRequireUse" /> 
+
+        <property name="mainRequireDesc" /> 
+
+        <property name="mainAContact" /> 
+
+        <property name="mainAContactTel" /> 
+
+        <property name="mainTransferNum" /> 
+
+        <property name="mainConstructor" /> 
+
+        <property name="mainConstructionIfS" /> 
+
+        <property name="mainConstructionDesc" /> 
+
+        <property name="mainCircuitCode" /> 
+
+        <property name="mainCircuitStatus" /> 
+
+        <property name="mainSpeed" /> 
+
+        <property name="mainAClient" /> 
+
+        <property name="mainZClient" /> 
+
+        <property name="mainOpenDate" /> 
+
+        <property name="mainCircuitAlias" /> 
+
+        <property name="mainNumber" /> 
+
+        <property name="mainCircuitBoard" /> 
+
+        <property name="mainBandwidth" /> 
+
+        <property name="mainCircuitForUnit" /> 
+
+        <property name="mainCircuitUse" /> 
+
+        <property name="mainBusinessType" /> 
+
+        <property name="mainUseType" /> 
+
+        <property name="mainTransferBoard" /> 
+
+        <property name="mainRouting" /> 
+
+        <property name="mainABusinessMRoom" /> 
+
+        <property name="mainABusinessNE" /> 
+
+        <property name="mainABusinessPort" /> 
+
+        <property name="mainABusinessDO" /> 
+
+        <property name="mainZBusinessMRoom" /> 
+
+        <property name="mainZBusinessNE" /> 
+
+        <property name="mainZBusinessPort" /> 
+
+        <property name="mainZBusinessDO" /> 
+
+        <property name="mainATransferMRoom" /> 
+
+        <property name="mainATransferNE" /> 
+
+        <property name="mainATransferPort" /> 
+
+        <property name="mainATransferDO" /> 
+
+        <property name="mainZTransferMRoom" /> 
+
+        <property name="mainZTransferNE" /> 
+
+        <property name="mainZTransferPort" /> 
+
+        <property name="mainZTransferDO" /> 
+
+        <property name="mainNetSortOne" /> 
+
+        <property name="mainNetSortTwo" /> 
+
+        <property name="mainATransferPortT" /> 
+
+        <property name="mainZTransferPortT" />                            
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="ArithmeticModify" description="算法修改流程">
+  <flow-define id="ArithmeticModifyProcess" description="算法修改流程" tasknamespace="http://ArithmeticModifyProcess" linkservicename="iArithmeticModifyLinkManager" dictfilename="dict-sheet-arithmeticmodify" name="ArithmeticModify">
+    <phase-id id="receive" name="新建工单" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="DraftTask" role="" condition="${operateType}==22" operatetype="22" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="草稿保存" />
+      <to-phase-id id="PermitTask" role="dealPerformer@80046" condition="${operateType}==0" operatetype="0" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="80046" commonoperatetype="" name="提交审批" />
+    </phase-id>
+    <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="PermitTask" role="dealPerformer@80046" condition="${operateType}==3" operatetype="3" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="80046" commonoperatetype="" name="草稿派发" />
+    </phase-id>
+    <phase-id id="RejectTask" name="被驳回" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="PermitTask" role="dealPerformer@80046" condition="${operateType}==54" operatetype="54" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="80046" commonoperatetype="" name="重新提交审批" />
+    </phase-id>
+    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="PermitTask" name="审批" type="operate" displaytransferaudit="true" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="RequireConfirmTask" role="dealPerformer@80047" condition="${operateType}==103" operatetype="103" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="80047" commonoperatetype="" name="审批通过" />
+      <to-phase-id id="RejectTask" role="" condition="${operateType}==102" operatetype="102" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="审批不通过" />
+    </phase-id>
+    <phase-id id="TargetCheckTask" name="指标合理性检查" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="TargetConfirmTask" role="dealPerformer@40047" condition="${operateType}==109" operatetype="109" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="40047" commonoperatetype="" name="核查确认结果" />
+      <to-phase-id id="ResultCheckTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="RequireConfirmTask" name="需求确认" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="DeployImplementTask" role="dealPerformer@80048" condition="${operateType}==104" operatetype="104" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="80048" commonoperatetype="" name="确认通过" />
+      <to-phase-id id="PermitTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="ResultConfirmTask" name="部署结果确认" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="CheckDataSameTask" role="dealPerformer@40049" condition="${operateType}==106" operatetype="106" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="40049" commonoperatetype="" name="提交测试报告" />
+      <to-phase-id id="DeployImplementTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="ResultCheckTask" name="验证结果确认" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="TargetCheckTask" role="dealPerformer@40046" condition="${operateType}==108" operatetype="108" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="40046" commonoperatetype="" name="确认通过" />
+      <to-phase-id id="CheckDataSameTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="TargetConfirmTask" name="指标确认部署" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="FormalDeployTask" role="dealPerformer@40048" condition="${operateType}==110" operatetype="110" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="确认完毕/提交正式部署" />
+      <to-phase-id id="TargetCheckTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="PublishNoticeTask" name="算法发布通知" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="HoldTask" role="" condition="${operateType}==112" operatetype="112" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="算法发布通知并抄送" />
+      <to-phase-id id="FormalDeployTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="DeployImplementTask" name="测试部署实施" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="ResultConfirmTask" role="dealPerformer@80047" condition="${operateType}==105" operatetype="105" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="80047" commonoperatetype="" name="提交测试报告" />
+      <to-phase-id id="RequireConfirmTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="FormalDeployTask" name="正式部署" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="PublishNoticeTask" role="dealPerformer@40047" condition="${operateType}==111" operatetype="111" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="40047" commonoperatetype="" name="部署完毕" />
+      <to-phase-id id="TargetConfirmTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+    <phase-id id="CheckDataSameTask" name="验证数据一致性" type="operate" displaytransferaudit="false" displayconfirm="true" displayreject="true" displaycommonoperate="true">
+      <to-phase-id id="ResultCheckTask" role="dealPerformer@40047" condition="${operateType}==107" operatetype="107" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="40047" commonoperatetype="" name="验证结果反馈" />
+      <to-phase-id id="ResultConfirmTask" role="" condition="${operateType}==4" operatetype="4" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="驳回上一级" />
+    </phase-id>
+  </flow-define>
+</WorkFlowRule>
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE document SYSTEM "E:\projects\boco\eoms3.5\01-Project\EOMS-V3.5\source0.1\web\WEB-INF\classes\com\boco\eoms\commons\file\config\FMImportMapping.dtd">-->
+<sheets>
+	<!-- 第一页 -->
+	<sheet num="0">
+		<!-- 第一页的类型 -->
+		<className>com.boco.eoms.commons.file.sample.FMImportSample</className>
+		<column>
+			<!-- 开始行 -->
+			<startRow>2</startRow>
+			<!-- 结束行 -->
+			<endRow>-1</endRow>
+			<headerMapping>
+				<!-- 字段1-->
+				<header col="1">
+					<!-- 显示名称 -->
+					<headerName>备注</headerName>
+					<!-- 字段名称 -->
+					<fieldName>memo</fieldName>
+					<!-- 字段类型 -->
+					<type>String</type>
+					<!-- 字段长度 -->
+					<length>50</length>
+					<!-- 是否可以为空 -->
+					<isNull>true</isNull>
+				</header>
+				<header col="2">
+					<headerName>名称</headerName>
+					<fieldName>name</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>false</isNull>
+				</header>
+			</headerMapping>
+		</column>
+		
+	    <column>
+			<startRow>16</startRow>
+			<endRow>20</endRow>
+			<headerMapping>
+				<header col="2">
+					<headerName>备注</headerName>
+					<fieldName>memo</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+				<header col="3">
+					<headerName>名称</headerName>
+					<fieldName>name</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+			</headerMapping>
+		</column>
+	</sheet>
+
+
+
+	<sheet num="1">
+		<className>com.boco.eoms.commons.file.sample.FMImportSample</className>
+		<column>
+			<startRow>2</startRow>
+			<endRow>13</endRow>
+			<headerMapping>
+				<header col="1">
+					<headerName>备注</headerName>
+					<fieldName>memo</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>				
+				<header col="2">
+					<headerName>名称</headerName>
+					<fieldName>name</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>				
+			</headerMapping>
+		</column>
+	</sheet>
+</sheets>

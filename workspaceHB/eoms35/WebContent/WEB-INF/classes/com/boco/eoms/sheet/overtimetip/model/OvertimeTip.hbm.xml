@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+    <class
+            name="com.boco.eoms.sheet.overtimetip.model.OvertimeTip"
+            table="wf_overtimetip"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="flowName"
+                length="50"
+        >
+
+        </property>
+        
+        <property
+            name="specialty1"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="specialty2"
+                length="50"
+        >
+
+        </property>
+            
+       
+         <property
+            name="specialty3"
+                length="50"
+        >
+        </property>
+        
+         <property
+            name="specialty4"
+                length="50"
+        >
+         </property>
+        <property
+            name="specialty5"
+                length="50"
+        >
+        </property>
+        
+         <property
+            name="specialty6"
+                length="50"
+        >
+        </property>
+         <property
+            name="specialty7"
+                length="50"
+        >
+        </property>
+       <property
+            name="specialty8"
+                length="50"
+        >
+        </property>
+        <property
+            name="specialty9"
+                length="50"
+        >
+        </property>
+        <property
+            name="specialty10"
+                length="50"
+        >
+        </property>
+        <property
+            name="userId"
+                length="50"
+        >
+        </property>
+               
+        <property
+            name="overtimeLimit"
+                length="50"
+        >
+        </property>
+        
+        <property name="setTime">
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

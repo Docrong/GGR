@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.taskplan.model.Taskplan"
+            table="webmaster_workplan"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="deptid"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="insert_time"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="month_mark"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="project_decompose"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="project_name"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="serial_mark"
+                length="20"
+        >
+
+        </property>
+
+        <property
+            name="stakeholders"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="task_complete"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="task_decompose"
+                length="1200"
+        >
+
+        </property>
+
+        <property
+            name="task_plan"
+                length="1000"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

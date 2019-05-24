@@ -1,0 +1,149 @@
+<mapping>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableCellFont">
+
+	
+		<field name="showText" type="java.lang.String">
+			<bind-xml name="show-text" node="text"/>
+		</field>
+		
+		<field name="face" type="java.lang.String">
+			<bind-xml name="face" node="attribute"/>
+		</field>
+		
+		<field name="color" type="java.lang.String">
+			<bind-xml name="color" node="attribute"/>
+		</field>
+		
+		<field name="style" type="java.lang.String">
+			<bind-xml name="style" node="attribute"/>
+		</field>
+	
+	</class>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableCellLink">
+		<!-- map-to xml="table-cell-link"></map-to -->
+		<field name="link" type="java.lang.String">
+			<bind-xml name="href" node="attribute"/>
+		</field>
+		<field name="target" type="java.lang.String">
+			<bind-xml name="target" node="attribute"/>
+		</field>
+		<field name="showText" type="java.lang.String">
+			<bind-xml name="show-text" node="text"/>
+		</field>
+	</class>
+		
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableCell">
+		<!-- map-to xml="table-cell"/ -->
+		
+		<field name="tableCellFont" type="com.boco.eoms.commons.statistic.base.config.excel.TableCellFont">
+			<bind-xml name="font" node="element"/>
+		</field>
+		
+		<field name="tableCellLink" type="com.boco.eoms.commons.statistic.base.config.excel.TableCellLink">
+			<bind-xml name="a" node="element"/>
+		</field>
+		
+		<field name="rowSpan" type="java.lang.String">
+			<bind-xml name="rowspan" node="attribute"/>
+		</field>
+		
+		<field name="colSpan" type="java.lang.String">
+			<bind-xml name="colspan" node="attribute"/>
+		</field>
+		<field name="VAlign" type="java.lang.String">
+			<bind-xml name="valign" node="attribute"/>
+		</field>
+		<field name="HAlign" type="java.lang.String">
+			<bind-xml name="align" node="attribute"/>
+		</field>
+	</class>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableRow">
+		<!-- map-to xml="table-row"/ -->
+		<field name="tableCells" type="com.boco.eoms.commons.statistic.base.config.excel.TableCell" collection="array">
+			<bind-xml name="td" node="element"/>
+		</field>
+		
+		<field name="cellHeight" type="float">
+			<bind-xml name="height" node="attribute"/>
+		</field>
+	</class>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableHead">
+		<!-- map-to xml="table-content"/ -->
+		<field name="tableRows" type="com.boco.eoms.commons.statistic.base.config.excel.TableRow" collection="array">
+			<bind-xml name="tr" node="element"/>
+		</field>
+	</class>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableBody">
+		<!-- map-to xml="table-content"/ -->
+
+		<field name="tableRows" type="com.boco.eoms.commons.statistic.base.config.excel.TableRow" collection="array">
+			<bind-xml name="tr" node="element"/>
+		</field>
+	</class>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableFoot">
+
+		<field name="tableRows" type="com.boco.eoms.commons.statistic.base.config.excel.TableRow" collection="array">
+			<bind-xml name="tr" node="element"/>
+		</field>
+	</class>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.TableColWidth">
+
+		
+		<field name="colwidth" type="float">
+			<bind-xml name="width" node="attribute"/>
+		</field>
+	</class>
+
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.Table">
+		<field name="id" type="java.lang.String">
+			<bind-xml name="id" node="attribute"/>
+		</field>
+		<!--  field name="border" type="java.lang.String">
+			<bind-xml name="border" node="attribute"/>
+		</field-->
+		<field name="tableColWidth" type="com.boco.eoms.commons.statistic.base.config.excel.TableColWidth" collection="array">
+			<bind-xml name="col" node="element"/>
+		</field>
+		<field name="tableHead" type="com.boco.eoms.commons.statistic.base.config.excel.TableHead">
+			<bind-xml name="thead" node="element"/>
+		</field>
+		<field name="tableBody" type="com.boco.eoms.commons.statistic.base.config.excel.TableBody">
+			<bind-xml name="tbody" node="element"/>
+		</field>
+		<field name="tableFoot" type="com.boco.eoms.commons.statistic.base.config.excel.TableFoot">
+			<bind-xml name="tfoot" node="element"/>
+		</field>
+		<field name="style" type="java.lang.String">
+			<bind-xml name="style" node="attribute"/>
+		</field>
+	</class>
+	
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.Sheet">
+<map-to xml="div"/>
+		<field name="tables" type="com.boco.eoms.commons.statistic.base.config.excel.Table" collection="array">
+			<bind-xml name="table" node="element"/>
+		</field>
+		<!--field name="sheetName" type="java.lang.String">
+			<bind-xml name="name" node="attribute"/>
+		</field-->
+	</class>
+
+	
+	<!--
+	<class name="com.boco.eoms.commons.statistic.base.config.excel.Excel">
+
+		<field name="sheets" type="com.boco.eoms.commons.statistic.base.config.excel.Sheet" collection="array">
+			<bind-xml name="html" node="element"/>
+		</field>
+		<field name="fileName" type="java.lang.String">
+			<bind-xml name="file-name" node="attribute"/>
+		</field>
+	</class-->
+</mapping>

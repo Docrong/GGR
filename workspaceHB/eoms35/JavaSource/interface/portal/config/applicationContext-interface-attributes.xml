@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="tawInterFacePortaAttributes"
+		class="com.boco.eoms.portal.bean.TawInterFacePortaAttributes">
+		<property name="webserviceurl">
+			<value>http://10.149.6.4:8080/portalTest/services/PortalService</value>
+		</property>
+	</bean>
+</beans>
+

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    
+    
+    <!--TawSheetAccess-DAO START-->
+    <bean id="tawSheetAccessDao" class="com.boco.eoms.sheet.tool.access.dao.hibernate.TawSheetAccessDaoHibernate" autowire="byName"/>
+     <bean id="ITawSheetAccessDaoJdbc" class="com.boco.eoms.sheet.tool.access.dao.hibernate.TawSheetAccessJdbcImpl" autowire="byName"/>
+    <!--TawSheetAccess-DAO END-->
+    <!--TawSheetAccess-START-->    
+    <bean id="ItawSheetAccessManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.sheet.tool.access.service.impl.TawSheetAccessManagerImpl">
+                <property name="tawSheetAccessDao" ref="tawSheetAccessDao"/>
+                <property name="tawSheetAccessDaoJdbc" ref="ITawSheetAccessDaoJdbc"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawSheetAccess-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

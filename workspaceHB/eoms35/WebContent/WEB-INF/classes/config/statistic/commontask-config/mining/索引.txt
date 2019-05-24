@@ -1,0 +1,15 @@
+
+informix:
+create index index_commontasklink_mainid on commontask_link 
+    (mainid) using btree  in indexdbs ;
+create index index_commontaskmain_sendtime on commontask_main 
+    (sendtime) using btree  in indexdbs ;
+
+
+==========================================
+
+oracle:
+create index index_commontasklink_mainid on commontask_link 
+    (mainid) TABLESPACE indexdbs ;
+create index index_commontaskmain_sendtime on commontask_main 
+    (sendtime) TABLESPACE indexdbs ;

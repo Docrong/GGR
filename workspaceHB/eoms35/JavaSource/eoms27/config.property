@@ -1,0 +1,22 @@
+#SSOREQUEST
+#Wed Feb 18 18:27:51 CST 2009
+#应用key
+APP_KEY=11
+#sso的服务地址
+SSO_ADDRESS=http://10.0.2.107:8080/sso
+#检查是否登陆地址
+CHECK_ADDRESS=check.do?method=checkUserOnline
+#检查是否登陆并且查询应用账号地址
+CHECK_TOKEN_APP_ADDRESS=check.do?method=getUserApplicationAccount
+#退出地址
+LOGOUT_ADDRESS=logout.do?method=logout
+#是否时时检查
+SSO_ALWAYS_CHECK=n
+#单点登陆的登陆页面
+LOGIN_PAGE_ADDRESS=http://10.32.1.95:8089/EOMS_J2EE/login.jsp
+#应用登陆页面
+APP_LOGIN_PAGE=http://10.32.1.95:8089/EOMS_J2EE/login.jsp
+#检查类型url_check 或者 token_check
+CHECK_TYPE=url_check
+#应用系统post到的地址
+APP_LOGIN_DO=/EOMS_J2EE/index.do

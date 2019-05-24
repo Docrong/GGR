@@ -1,0 +1,195 @@
+
+<PUBLIC:attach	event="oncontentready" for="element" onevent="initElement(element)" />
+<PUBLIC:attach	event="onmouseover" onevent="elementOnMouseOver()" />
+<PUBLIC:attach	event="onmouseout" onevent="elementOnMouseOut()" />
+<PUBLIC:attach	event="onclick" onevent="elementOnClick()" />
+
+<style>
+	.TableContent {font-size: 12px;background-color:#9CB8F4;}
+	.TableContent td{padding-left:4px;padding-right:4px;line-height: 150%}
+	.TableTitle {background-color:#0080C0;color: #ffffff;font-weight:bold;text-align:center;}
+	.SortTableTitle {font-size: 12px;background-color:#0080C0;color: #ffffff;font-weight:bold;text-align:center;}
+	.SortTableTitle td{cursor: hand;border-left:0px;border-top:0px;border-right: 1px outset;border-bottom: 1px outset;white-space: nowrap;text-decoration: underline;overflow: hidden;}
+	.TableFilterList {line-height: 100%}
+	.TableFilterList td{padding-left:0px;padding-right:0px;}
+	.TableBodyOut1 {background-color: #EDF1F8;cursor:default;}
+	.TableBodyOut2 {background-color: #D5E0F7;cursor:default;}
+	.TableBodyOver {background-color: #ABCBE2;cursor:default;}
+	.TableBodyClicked {background-color: #C1CDD8;}
+	.Page_Tools a{font-size: 12px;color: #000000;text-decoration: none;border: 1px solid #0066CC;line-height: 120%;letter-spacing: 4px;padding: 2px 0px 0px 4px;}
+	.Page_Tools a:link,.Page_Tools a:visited{background-color: #FFFFFF;}
+	.Page_Tools a:hover{color: red;}
+	.Page_List {font-size: 12px;color: #000000;}
+	.Page_List a{color: #000000;text-decoration: none;border: 1px solid #0066CC;line-height: 120%;letter-spacing: 1px;padding: 2px 0px 0px 2px;}
+	.Page_List a:link,.Page_Tools a:visited{background-color: #FFFFFF;}
+	.Page_List a:hover{background-color: #006699;color: #FFFFFF;}
+	.Page_List_input{border: 1px solid #0066CC;}
+	.Page_List_button{height: 20px;}
+</style>
+
+<script language="jscript">
+
+function initElement(table,needMouseStyle){
+  InitStyle();
+  //初始化表格样式
+  function InitStyle(){
+    //*** 保存该表格已处理样式信息 ***
+    table.isSetStyle = true;
+    table.needMouseStyle = needMouseStyle;
+
+    //*** 表格事件处理 ***
+    if (needMouseStyle != false){
+      table.onmouseover = TR_onMouseOver;
+      table.onmouseout = TR_onMouseOut;
+      table.onclick = TR_onClick;
+    }
+
+    //*** 表格样式处理 ***
+    if (table.className == "") table.className = "TableContent";
+    if (table.cellSpacing == "") table.cellSpacing = 1;
+    if (table.cellPadding == "") table.cellPadding = 1;
+
+    //*** 表格行列样式处理 ***
+	//alert(table.className);
+    var tr = table.rows;
+    var curRow = 0;
+    for (var i=0;i<tr.length;i++){
+      var oTR = tr[i];
+      //当前行是标题
+      if (oTR.parentNode.tagName=="THEAD" || oTR.parentNode.className.toLowerCase()=="tabletitle"){
+        //*** 处理排序标题 ***
+        if (oTR.className == "SortTableTitle"){
+          if (i<=1){
+            _loadJS("table.js");//读取表格操作函数集
+          }
+          for (var j=0;j<oTR.cells.length;j++){
+            if (oTR.cells[j].rowSpan == 1 && oTR.cells[j].colSpan == 1 && oTR.cells[j].innerText.length>1){
+              //允许排序：当前列为单行单列，且内容大于1个字
+              oTR.cells[j].title = "点击排序";
+              oTR.cells[j].onmousedown = function(){this.style.borderStyle="inset";}
+              oTR.cells[j].onmouseup = function(){this.style.borderStyle="outset";}
+              oTR.cells[j].onclick = TD_SortTable;
+            }else{
+              oTR.cells[j].style.cursor = "default";
+              oTR.cells[j].style.textDecoration = "none";
+            }
+          }
+        }else{
+          if (oTR.className == "") oTR.className = "TableTitle";
+        }
+      }
+      //当前是行是表格正文
+      else{
+        //*** 不处理隐藏状态行 ***
+        if (oTR.style.display == "none") continue;
+
+        oTR.curRowIndex = curRow; //保存当前显示行数,用于行颜色交换,因为tr.sectionRowIndex属性会包括隐藏的行。
+        oTR.className = "TableBodyOut" + (curRow++%2+1);
+
+        //*** 处理点击事件 ***
+        if (needMouseStyle != false){ //需要样式切换
+          var td = oTR.cells[0];
+          var chkObj = td.firstChild;
+          if (chkObj!=null && chkObj.type=="checkbox"){ //第一个单元格内元素为checkbox时，设置单元格样式
+            if (i<3 && tr[0].parentNode.rows.length==1){//当表头只有一行时，设置第一行第一列背景为白色
+              tr[0].cells[0].style.backgroundColor = "#FFFFFF";
+            }
+            td.width = 22;
+            td.style.textAlign = "center";
+            td.style.paddingLeft = 0;
+            td.style.paddingRight = 0;
+            chkObj.onpropertychange = CheckBox_Change;
+          } // if checkbox
+        } // if needMouseStyle
+      } //if else
+    } //for
+  }
+
+  /*** 鼠标移入效果 ***/
+  function TR_onMouseOver(){
+    var obj = event.srcElement;
+    var objTR = getTableParent(obj,"TR");
+    if (objTR == null || objTR.parentNode.tagName=="THEAD" || objTR.parentNode.className.toLowerCase=="tabletitle") return; //当前行是标题
+    if (objTR.className!="TableBodyClicked"){
+      objTR.className = "TableBodyOver";
+    }
+  }
+  /*** 鼠标移出效果 ***/
+  function TR_onMouseOut(){
+    var obj = event.srcElement;
+    var objTR = getTableParent(obj,"TR");
+    if (objTR == null || objTR.parentNode.tagName=="THEAD" || objTR.parentNode.className.toLowerCase=="tabletitle") return; //当前行是标题
+    if (objTR.className!="TableBodyClicked"){
+      objTR.className = "TableBodyOut" + (objTR.curRowIndex%2+1);
+    }
+  }
+  /*** 鼠标点击效果 ***/
+  function TR_onClick(){
+    var obj = event.srcElement;
+    var objTR = getTableParent(obj,"TR");
+		if (objTR == null || obj.tagName=="INPUT" || obj.tagName=="A" || obj.type=="checkbox") return;
+		var chkObj = objTR.cells[0].firstChild;
+		if (chkObj!=null && chkObj.type=="checkbox"){
+		  chkObj.click();
+		}
+		//this.onClickOrigin();
+  }
+  /*** 单选框属性改变事件 ***/
+  function CheckBox_Change(){
+    try {
+      var chkAllObj = document.getElementsByName("chkSelectAll")
+      var objTR = getTableParent(this,"TR");
+      //未选中时：将全选框设为false
+      if (!this.checked){
+        objTR.className = "TableBodyOut" + (objTR.sectionRowIndex%2+1);
+        for (var i=0;i<chkAllObj.length;i++){
+          chkAllObj[i].checked = false;
+        }
+      }else{
+        objTR.className = "TableBodyClicked";
+        if (chkAllObj[0].checked) return; //全选框已选中时，返回
+        formObj = getParent(this,"FORM");
+        var selectCount = 0; //选中数量
+        var chkCount = 0;    //全部单选框数量
+        var iptObjects = formObj.getElementsByTagName("INPUT");
+        var iptCount = iptObjects.length;
+        for (var i=0;i<iptCount;i++){
+          if (iptObjects[i].type=="checkbox" && iptObjects[i].id!="chkSelectAll"){
+            chkCount ++;
+            if (iptObjects[i].checked) selectCount ++;
+          }
+        }
+        if (chkCount == selectCount){
+          for (var i=0;i<chkAllObj.length;i++) chkAllObj[i].checked = true;
+        }
+      }
+    }//try
+    catch (e){}
+  }
+
+  /*** 表格排序事件 ***/
+  function TD_SortTable(){
+    if (typeof(sortTable)=="function"){
+      sortTable(getParent(this,"TABLE")); //sortTable()方法在table.js中
+    }
+  }
+
+  function getTableParent(el, pTagName) {
+  	if (el == null) return null;
+  	else if (el.nodeType == 1 && el.tagName.toLowerCase() == pTagName.toLowerCase())
+  		return el;
+  	else{
+  	  if (el.tagName.toLowerCase() == "tbody" || el.tagName.toLowerCase() == "thead" || el.tagName.toLowerCase() == "table") return null;
+  		return getTableParent(el.parentNode, pTagName);
+    }
+  }
+}
+
+function elementOnMouseOver(){
+}
+function elementOnMouseOut(){
+}
+function elementOnClick(){
+}
+</script>
+

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpYearCheck"
+        table="TAW_WP_YEARCHECK"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpYearCheck.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="deptId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="DEPTID"
+            length="10"
+            not-null="true"
+        />
+
+        <property
+            name="content"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CONTENT"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="crtime"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CRTIME"
+            length="19"
+            not-null="true"
+        />
+
+        <property
+            name="checktime"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CHECKTIME"
+            length="19"
+            not-null="false"
+        />
+
+        <property
+            name="checkUser"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CHECKUSER"
+            length="20"
+            not-null="true"
+        />
+
+        <property
+            name="state"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATE"
+            length="2"
+            not-null="false"
+        />
+
+        <property
+            name="flowSerial"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="FLOWSERIAL"
+            length="4"
+            not-null="false"
+        />
+
+        <property
+            name="stepSerial"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="STEPSERIAL"
+            length="4"
+            not-null="false"
+        />
+
+        <many-to-one
+            name="tawwpYearPlan"
+            class="com.boco.eoms.workplan.model.TawwpYearPlan"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="YEAR_PLAN_ID"
+            not-null="true"
+        />
+
+        <many-to-one
+            name="tawwpExecuteAssess"
+            class="com.boco.eoms.workplan.model.TawwpExecuteAssess"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTE_ASSESS_ID"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpYearCheck.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

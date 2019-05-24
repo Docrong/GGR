@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MMConfig-messages>
+	<MMConfig-message id="1" name="mms">
+		<transactionID>1000000</transactionID>
+		<VASID>10658218</VASID>
+		<VASPID>826211</VASPID>
+		<serviceCode>000</serviceCode>
+		<SenderAddress>10658218000</SenderAddress>
+	</MMConfig-message>
+</MMConfig-messages>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts description="公用">
+	<dict id="state" description="状态"> 
+		<item id="1" name="连接网元不成功" description="连接网元不成功" />
+		<item id="2" name="巡检正常" description="巡检正常" />
+		<item id="3" name="巡检异常" description="巡检异常" />
+		<item id="4" name="命令执行失败" description="命令执行失败" />
+		<item id="5" name="没有分析结果" description="没有分析结果" />
+	</dict> 
+	<dict id="taskid" description="专业"> 
+		<item id="8aa081eb21edd60b0121eddc7fde000a" name="ls" description="taskid" />
+		<item id="8aa081eb21edd60b0121eddc7fde000b" name="ls" description="taskid" />
+	</dict> 
+</dicts>

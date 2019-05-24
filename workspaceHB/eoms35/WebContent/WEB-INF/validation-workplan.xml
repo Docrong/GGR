@@ -1,0 +1,97 @@
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+
+<form-validation>
+  <formset>
+    <form name="tAWGZCONTENTForm">
+      <field property="CONTENT" depends="required,maxlength">
+        <arg0 key="TAWGZCONTENT.CONTENT"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>100</var-value>
+        </var>
+      </field>
+      <field property="REMARK" depends="maxlength">
+        <arg0 key="TAWGZCONTENT.REMARK"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>200</var-value>
+        </var>
+      </field>
+    </form>
+
+    <form name="tAWGZPLANForm">
+      <field property="MYNAME" depends="required,maxlength">
+        <arg0 key="TAWGZPLAN.MYNAME"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>50</var-value>
+        </var>
+      </field>
+      <field property="CONTENT" depends="required,maxlength">
+        <arg0 key="TAWGZPLAN.CONTENT"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>200</var-value>
+        </var>
+      </field>
+      <field property="DEPTNAME" depends="required">
+        <arg0 key="TAWGZPLAN.DEPTNAME"/>
+      </field>
+      <field property="MANAGER" depends="required">
+        <arg0 key="TAWGZPLAN.MANAGER"/>
+      </field>
+      <field property="REMARK" depends="maxlength">
+        <arg0 key="TAWGZPLAN.REMARK"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>100</var-value>
+        </var>
+      </field>
+    </form>
+
+    <form name="tAWGZPLANITEMForm">
+      <field property="MYNAME" depends="required,maxlength">
+        <arg0 key="TAWGZPLANITEM.MYNAME"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>40</var-value>
+        </var>
+      </field>
+      <field property="REMARK" depends="maxlength">
+        <arg0 key="TAWGZPLANITEM.REMARK"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>100</var-value>
+        </var>
+      </field>
+    </form>
+
+    <form name="tAWOBJECTForm">
+      <field property="INTNAME" depends="required,maxlength">
+        <arg0 key="TAWOBJECT.INTNAME"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>20</var-value>
+        </var>
+      </field>
+      <field property="DEPTNAME" depends="required,maxlength">
+        <arg0 key="TAWOBJECT.DEPTNAME"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>200</var-value>
+        </var>
+      </field>
+    </form>
+
+  </formset>
+</form-validation>

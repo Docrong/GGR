@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.parter.baseinfo.mainmetermgr.model.Mainmetermgr"
+            table="pnr_mainmetermgr"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="maintenUnitId"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="maintenUnitIdCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="maintenUnitIdRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="OTDR"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="OTDRCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="OTDRRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lighCableFinder"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lighCableFinderCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lighCableFinderRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="groundFinder"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="groundFinderCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="groundFinderRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="portableGPS"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="portableGPSCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="portableGPSRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="autoFiberWeld"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="autoFiberWeldCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="autoFiberWeldRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberStrip"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberStripCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberStripRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="losetubeStrip"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="losetubeStripCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="losetubeStripRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="pspStrip"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="pspStripCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="pspStripRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lighCableReame"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lighCableReameCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lighCableReameRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="beamTubeFinde"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="beamTubeFindeCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="beamTubeFindeRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberAmputat"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberAmputatCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberAmputatRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="VLinker"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="VLinkerCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="VLinkerRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="scavPump"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="scavPumpCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="scavPumpRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberRecognizer"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberRecognizerCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fiberRecognizerRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mechSpecTool"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mechSpecToolCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+  		<property
+            name="mechSpecToolRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="dynamo"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="dynamoCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="dynamoRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mainterCar"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mainterCarCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mainterCarRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="waterPump"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="waterPumpCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="waterPumpRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mobileGps"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mobileGpsCou"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mobileGpsRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+
+

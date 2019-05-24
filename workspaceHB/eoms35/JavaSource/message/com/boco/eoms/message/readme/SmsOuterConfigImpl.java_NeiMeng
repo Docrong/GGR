@@ -1,0 +1,176 @@
+// Decompiled by Jad v1.5.7g. Copyright 2000 Pavel Kouznetsov.
+// Jad home page: http://www.geocities.com/SiliconValley/Bridge/8617/jad.html
+// Decompiler options: packimports(3) fieldsfirst ansi 
+// Source File Name:   SmsOuterConfigImpl.java
+
+package com.boco.eoms.message.util;
+
+import com.boco.eoms.common.util.StaticMethod;
+import com.boco.eoms.commons.loging.BocoLog;
+import com.boco.eoms.message.dao.ISmsOuterConfig;
+import com.boco.eoms.message.util.nm.ReadConf;
+import com.boco.eoms.message.util.nm.SmsUtil;
+import com.sxit.cmpp.*;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+
+public class SmsOuterConfigImpl
+    implements ISmsOuterConfig
+{
+
+    public SmsOuterConfigImpl()
+    {
+    }
+
+    public boolean sendSms(String mobiles, String content)
+    {
+        ReadConf rc = new ReadConf();
+        content = content.trim();
+        if(!rc.isOn())
+        {
+            String errMsg = "抱歉，短信功能暂没有开发，不能进行发送操作！";
+            System.out.println(errMsg);
+            return false;
+        }
+        if(!StaticMethod.nullObject2String(mobiles).equals("") && !StaticMethod.nullObject2String(content).equals(""))
+        {
+            SmsUtil util = new SmsUtil();
+            CMPPSocket socket = null;
+            CMPP cmpp = null;
+            socket = getCMPPSocket(rc, util);
+            cmpp = getCMPP(rc, socket, util);
+            String currentPhone = "";
+            if(socket != null && cmpp != null)
+            {
+                currentPhone = mobiles;
+                CMPPSubmitResp resp = new CMPPSubmitResp();
+                try
+                {
+                    Thread.sleep(rc.getSmsSleepTime() * 1000);
+                }
+                catch(InterruptedException ie)
+                {
+                    System.out.println("Error:sleep exception");
+                }
+                String msg[] = splitString(content, 60);
+                StringBuffer result = new StringBuffer();
+                StringBuffer messageConent = new StringBuffer();
+                byte messagesHead[] = {
+                    5, 0, 3, 10, 1, 1
+                };
+                int len = msg.length;
+                if(len > 127)
+                {
+                    result.append("消息内容太长");
+                    System.out.println(result.toString());
+                    return false;
+                }
+                messagesHead[4] = (byte)len;
+                com.sxit.cmpp.SubmitBody sub = null;
+                int cmppFlag = 0;
+                for(int j = 1; j <= len; j++)
+                {
+                    cmppFlag = cmpp.cmppActiveTest();
+                    if(cmppFlag != 0)
+                    {
+                        String closeResult = util.closeSocket(socket);
+                        BocoLog.info(this, "重开socket前关闭socket操作：" + closeResult);
+                        socket = null;
+                        cmpp = null;
+                        socket = getCMPPSocket(rc, util);
+                        cmpp = getCMPP(rc, socket, util);
+                    }
+                    if(socket != null && cmpp != null)
+                    {
+                        messagesHead[5] = (byte)j;
+                        messageConent.append(byteToUcs2(messagesHead));
+                        messageConent.append(msg[j - 1]);
+                        BocoLog.info(this, "派往" + currentPhone + "的第" + j + "个包头信息messagesHead[" + messagesHead[0] + "," + messagesHead[1] + "," + messagesHead[2] + "," + messagesHead[3] + "," + messagesHead[4] + "," + messagesHead[5] + "]，字节数：" + messageConent.length());
+                        sub = util.initSmsBody(rc.getSmsIcpId(), rc.getSmsIcpCode(), currentPhone, messageConent.toString());
+                        int resultValue = 0;
+                        BocoLog.info(this, currentPhone + "信息开始派发");
+                        resultValue = cmpp.cmppSubmit(sub, resp);
+                        BocoLog.info(this, currentPhone + "信息派发结束");
+                        messageConent.delete(0, messageConent.length());
+                    } else
+                    {
+                        BocoLog.error(this, "建立连接失败");
+                    }
+                }
+
+            } else
+            {
+                BocoLog.error(this, "建立连接失败");
+            }
+            util.closeSocket(socket);
+        }
+        return true;
+    }
+
+    private static String byteToUcs2(byte src[])
+    {
+        String desc = "";
+        try
+        {
+            desc = new String(src, "UnicodeBigUnmarked");
+        }
+        catch(UnsupportedEncodingException e)
+        {
+            e.printStackTrace();
+        }
+        return desc;
+    }
+
+    private static CMPPSocket getCMPPSocket(ReadConf rc, SmsUtil util)
+    {
+        CMPPSocket socket = null;
+        for(int count = 0; socket == null && count < 5;)
+        {
+            count++;
+            try
+            {
+                socket = util.createSocket(rc.getSmsHostIp(), rc.getSmsSendPort());
+            }
+            catch(CMPPException ce)
+            {
+                socket = null;
+                ce.printStackTrace();
+            }
+        }
+
+        return socket;
+    }
+
+    private static CMPP getCMPP(ReadConf rc, CMPPSocket socket, SmsUtil util)
+    {
+        CMPP cmpp = null;
+        for(int count = 0; cmpp == null && socket != null && count < 5;)
+        {
+            count++;
+            try
+            {
+                cmpp = util.createConnect(rc.getSmsIcpId(), rc.getSmsPassword(), rc.getSmsVersion(), socket);
+            }
+            catch(CMPPException ce)
+            {
+                cmpp = null;
+                ce.printStackTrace();
+            }
+        }
+
+        return cmpp;
+    }
+
+    public static String[] splitString(String str, int count)
+    {
+        int loopCount = str.length() % count != 0 ? str.length() / count + 1 : str.length() / count;
+        String stringArray[] = new String[loopCount];
+        for(int i = 1; i <= loopCount; i++)
+            if(i == loopCount)
+                stringArray[i - 1] = str.substring((i - 1) * count, str.length());
+            else
+                stringArray[i - 1] = str.substring((i - 1) * count, i * count);
+
+        return stringArray;
+    }
+}

@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.parter.baseinfo.basemetermgr.model.Basemetermgr"
+            table="pnr_basemetermgr"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="maintenUnitIdVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="maintenUnitIdRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="desktopComputerVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="desktopComputerRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="faxVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="faxRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fixedPhoneVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="fixedPhoneRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="moveTestPhoneVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="moveTestPhoneRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lineTesterVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="lineTesterRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="terraBlockTesterVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="terraBlockTesterRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="cellTesterVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="cellTesterRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="maintenanceToolsVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="maintenanceToolsRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="maintenanceCarsVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="maintenanceCarsRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="multimeterVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="multimeterRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="ACDCclampMeterVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="ACDCclampMeterRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="twoMInstrumentVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="twoMInstrumentRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="antennaAngleGaugeVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="antennaAngleGaugeRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="telescopeVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="telescopeRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="digitalCameraVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="digitalCameraRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="gradienterVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="gradienterRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="GPSLocatorVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="GPSLocatorRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="infraredThermoscopeVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="infraredThermoscopeRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="notebookPCVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="notebookPCRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mobileGpsVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="mobileGps"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

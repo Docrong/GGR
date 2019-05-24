@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+
+	<class name="com.boco.eoms.sheet.base.model.EomsDoneSheetView"
+	 
+		table="eoms_done_sheet">
+		<id column="id" name="id" type="string">
+			<generator class="assigned" />
+		</id> 
+		<property name="sheetType" />
+		<property name="sheetTypeName" />
+		<property name="taskName" />
+		<property name="taskDisplayName" />
+		<property name="createTime" />
+		<property name="taskStatus" />
+		<property name="processId" />
+		<property name="sheetKey" />
+		<property name="sheetId" />
+		<property name="title" />
+		<property name="acceptTimeLimit" />
+		<property name="completeTimeLimit" />
+		<property name="operateRoleId" />
+		<property name="taskOwner" />
+		<property name="preLinkId" />
+		<property name="flowName" />
+		<property name="currentLinkId" />	
+		<property name="subTaskFlag" />
+		<property name="operateType" />
+		<property name="parentTaskId" />
+		<property name="ifWaitForSubTask" />	
+		<property name="subTaskDealFalg" />
+
+		
+		<property name="sendTime" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<import
+		resource="classpath:com/boco/eoms/duty/config/applicationContext-duty-attributes.xml" />
+
+	<!--TawRmDispatchRecord-DAO START-->
+    <bean id="tawRmDispatchRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDispatchRecordDaoHibernate" autowire="byName"/>
+    <!--TawRmDispatchRecord-DAO END-->
+    <!--TawRmDispatchRecord-START-->    
+    <bean id="ITawRmDispatchRecordManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmDispatchRecordManagerImpl">
+                <property name="tawRmDispatchRecordDao" ref="tawRmDispatchRecordDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmDispatchRecord-END-->
+    
+    <!--TawRmLoanRecord-DAO START-->
+    <bean id="tawRmLoanRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmLoanRecordDaoHibernate" autowire="byName"/>
+    <!--TawRmLoanRecord-DAO END-->
+    <!--TawRmLoanRecord-START-->    
+    <bean id="ITawRmLoanRecordManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmLoanRecordManagerImpl">
+                <property name="tawRmLoanRecordDao" ref="tawRmLoanRecordDao"/>
+            </bean>
+        </property>
+    </bean>
+    
+     <!--TawRmArticle-DAO START-->
+    <bean id="tawRmArticleDao" class="com.boco.eoms.duty.dao.hibernate.TawRmArticleDaoHibernate" autowire="byName"/>
+    <!--TawRmArticle-DAO END-->
+    <!--TawRmArticle-START   -->
+    <bean id="ITawRmArticleManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmArticleManagerImpl">
+                <property name="tawRmArticleDao" ref="tawRmArticleDao"/>
+            </bean>
+        </property>
+    </bean>
+     
+     <!--TawNetTransfer-DAO START-->
+    <bean id="tawNetTransferDao" class="com.boco.eoms.duty.dao.hibernate.TawNetTransferDaoHibernate" autowire="byName"/>
+    <!--TawNetTransfer-DAO END-->
+    <!--TawRmLoanRecord-START   -->
+    <bean id="ITawNetTransferManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawNetTransferManagerImpl">
+                <property name="tawNetTransferDao" ref="tawNetTransferDao"/>
+            </bean>
+        </property>
+    </bean>
+     
+    <!--TawNetTransfer-DAO-END-->
+    
+    <!--TawNetTransferSub-DAO START-->
+    <bean id="tawNetTransferSubDao" class="com.boco.eoms.duty.dao.hibernate.TawNetTransferSubDaoHibernate" autowire="byName"/>
+    <!--TawNetTransfer-DAO END-->
+    <!--TawRmLoanRecord-START   -->
+    <bean id="ITawNetTransferSubManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawNetTransferSubManagerImpl">
+                <property name="tawNetTransferSubDao" ref="tawNetTransferSubDao"/>
+            </bean>
+        </property>
+    </bean>
+     
+    <!--TawNetTransferSub-END-->
+    <!--TawExpertInfo-DAO START-->
+    <bean id="tawExpertInfoDao" class="com.boco.eoms.duty.dao.hibernate.TawExpertInfoDaoHibernate" autowire="byName"/>
+    <!--TawExpertInfo-DAO END-->
+    <!--TawExpertInfo-START   -->
+    <bean id="ITawExpertInfoManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawExpertInfoManagerImpl">
+                <property name="tawExpertInfoDao" ref="tawExpertInfoDao"/>
+            </bean>
+        </property>
+    </bean>
+     
+    <!--TawExpertInfo-DAO-END-->
+    
+    <!--TawExpertSub-DAO START-->
+    <bean id="tawExpertSubDao" class="com.boco.eoms.duty.dao.hibernate.TawExpertSubDaoHibernate" autowire="byName"/>
+    <!--TawExpert-DAO END-->
+    <!--TawRmLoanRecord-START   -->
+    <bean id="ITawExpertSubManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawExpertSubManagerImpl">
+                <property name="tawExpertSubDao" ref="tawExpertSubDao"/>
+            </bean>
+        </property>
+    </bean>
+     
+    <!--TawExpertSub-END-->
+    
+    <!--TawRmLogUnite-DAO START-->
+    <bean id="tawRmLogUniteDao" class="com.boco.eoms.duty.dao.hibernate.TawRmLogUniteDaoHibernate" autowire="byName"/>
+    <!--TawRmLogUnite-DAO END-->
+    <!--TawRmLogUnite-START-->    
+    <bean id="ITawRmLogUniteManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmLogUniteManagerImpl">
+                <property name="tawRmLogUniteDao" ref="tawRmLogUniteDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmLogUnite-END-->
+    
+    <!--TawRmPlanContent-DAO START-->
+    <bean id="tawRmPlanContentDao" class="com.boco.eoms.duty.dao.hibernate.TawRmPlanContentDaoHibernate" autowire="byName"/>
+    <!--TawRmPlanContent-DAO END-->
+    <!--TawRmPlanContent-START-->    
+    <bean id="ITawRmPlanContentManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmPlanContentManagerImpl">
+                <property name="tawRmPlanContentDao" ref="tawRmPlanContentDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmPlanContent-END-->
+    
+    <!--TawRmReliefRecord-DAO START-->
+    <bean id="tawRmReliefRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmReliefRecordDaoHibernate" autowire="byName"/>
+    <!--TawRmReliefRecord-DAO END-->
+    <!--TawRmReliefRecord-START-->    
+    <bean id="ITawRmReliefRecordManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmReliefRecordManagerImpl">
+                <property name="tawRmReliefRecordDao" ref="tawRmReliefRecordDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmReliefRecord-END-->
+    
+    <!--TawRmVisitRecord-DAO START-->
+    <bean id="tawRmVisitRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmVisitRecordDaoHibernate" autowire="byName"/>
+    <!--TawRmVisitRecord-DAO END-->
+    <!--TawRmVisitRecord-START-->    
+    <bean id="ITawRmVisitRecordManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmVisitRecordManagerImpl">
+                <property name="tawRmVisitRecordDao" ref="tawRmVisitRecordDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmVisitRecord-END-->
+    
+    <!--TawRmWorkorderRecord-DAO START-->
+    <bean id="tawRmWorkorderRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmWorkorderRecordDaoHibernate" autowire="byName"/>
+    <!--TawRmWorkorderRecord-DAO END-->
+    <!--TawRmWorkorderRecord-START-->    
+    <bean id="ITawRmWorkorderRecordManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmWorkorderRecordManagerImpl">
+                <property name="tawRmWorkorderRecordDao" ref="tawRmWorkorderRecordDao"/>
+                <property name="tawRmWorkOrderRecordJdbc" ref="tawRmWorkOrderRecordJdbc"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawRmWorkorderRecord-END-->
+    <bean id="tawRmWorkOrderRecordJdbc" class="com.boco.eoms.duty.dao.hibernate.TawRmWorkOrderJdbcImpl" autowire="byName"/>
+    
+ 	<bean id="tawRmReplaceDaoJdbc" class="com.boco.eoms.duty.dao.jdbc.TawRmReplaceDaoJDBC" autowire="byName"/>
+
+ 	<bean id="tawRmReplaceDao" class="com.boco.eoms.duty.dao.hibernate.TawRmReplaceDaoHibernate" autowire="byName"/>   
+    <bean id="ItawRmReplaceManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmReplaceManagerImpl">
+                <property name="tawRmReplaceDao" ref="tawRmReplaceDao"/>
+                <property name="tawRmReplaceDaoJdbc" ref="tawRmReplaceDaoJdbc"/>
+                <property name="privMgrImpl" ref="PrivMgrImpl"/>
+                <property name="tawSystemPrivMenuManager" ref="ItawSystemPrivMenuManager"/>
+            </bean>
+        </property>
+    </bean>
+    
+    <!-- TawRmAssignwork -->
+    <bean id="ItawRmAssignworkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmAssignworkManagerImpl" />
+        </property>
+    </bean>
+    
+    <!-- Faultrecord -->
+	<bean id="faultrecordDao" class="com.boco.eoms.duty.dao.hibernate.FaultrecordDaoHibernate" autowire="byName"/>
+
+    <bean id="FaultrecordBO" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.faultrecord.bo.FaultrecordBO">
+                <property name="faultrecordDao" ref="faultrecordDao"/>
+            </bean>
+        </property>
+    </bean>
+        
+     <!--ITawRmExchangePerManager-START-->  
+    <bean id="tawRmExchangePerDao" class="com.boco.eoms.duty.dao.hibernate.TawRmExchangePerDaoHibernate" autowire="byName"/>
+    <!--tawRmExchangePerDao-DAO END-->
+    <!--ITawRmExchangePerManager-START-->    
+    <bean id="tawRmExchangePerManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmExchangePerManagerImpl">
+                <property name="tawRmExchangePerDao" ref="tawRmExchangePerDao"/>
+            </bean>
+        </property>
+    </bean>
+        <!--tawRmDao-DAO START-->
+    <bean id="tawRmDutyEventDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDutyEventDaoHibernate" autowire="byName"/>
+    <!--tawRmDutyenventDao-DAO END-->
+      <!--ITawRmDutyEnventManager-START--> 
+    <bean id="ITawRmDutyEnventManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmDutyEventManagerImpl">
+                <property name="tawRmDutyEventDao" ref="tawRmDutyEventDao"/>
+            </bean>
+        </property>
+    </bean>
+ 
+     <!--ITawRmDutyEventPubManager START-->
+         <!--tawRmDutyEventPubDao-DAO START-->
+    <bean id="tawRmDutyEventPubDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDutyEventPubDaoHibernate" autowire="byName"/>
+    <!--tawRmDutyEventPubDao-DAO END-->
+      <!--ITawRmDutyEventPubManager-START--> 
+    <bean id="tawRmDutyEnventPubManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmDutyEventPubManagerImpl">
+                <property name="tawRmDutyEventPubDao" ref="tawRmDutyEventPubDao"/>
+            </bean>
+        </property>
+    </bean>	
+    <bean id="faultCommontMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.FaultCommontMgrImpl">
+				<property name="faultCommontDao" ref="faultCommontDao" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<bean id="faultCommontDao"
+		class="com.boco.eoms.duty.dao.hibernate.FaultCommontDaoHibernate"
+		autowire="byName" />
+	<bean id="faultEquipmentMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.FaultEquipmentMgrImpl">
+				<property name="faultEquipmentDao" ref="faultEquipmentDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="faultEquipmentDao"
+		class="com.boco.eoms.duty.dao.hibernate.FaultEquipmentDaoHibernate"
+		autowire="byName" />
+	
+	<bean id="faultCircuitMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.FaultCircuitMgrImpl">
+				<property name="faultCircuitDao" ref="faultCircuitDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="faultCircuitDao"
+		class="com.boco.eoms.duty.dao.hibernate.FaultCircuitDaoHibernate"
+		autowire="byName" />
+		
+	<bean id="attemperMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.AttemperMgrImpl">
+				<property name="attemperDao" ref="attemperDao" />
+				<property name="attemperSubDao" ref="attemperSubDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="attemperDao"
+		class="com.boco.eoms.duty.dao.hibernate.AttemperDaoHibernate"
+		autowire="byName" />
+	
+	<bean id="attemperSubMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.AttemperSubMgrImpl">
+				<property name="attemperSubDao" ref="attemperSubDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="attemperSubDao"
+		class="com.boco.eoms.duty.dao.hibernate.AttemperSubDaoHibernate"
+		autowire="byName" />
+	
+	<bean id="attemperContrastMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.AttemperContrastMgrImpl">
+				<property name="attemperContrastDao" ref="attemperContrastDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="attemperContrastDao"
+		class="com.boco.eoms.duty.dao.hibernate.AttemperContrastDaoHibernate"
+		autowire="byName" />
+	
+	<bean id="attemperLogMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.AttemperLogMgrImpl">
+				<property name="attemperLogDao" ref="attemperLogDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="attemperLogDao"
+		class="com.boco.eoms.duty.dao.hibernate.AttemperLogDaoHibernate"
+		autowire="byName" />
+		
+	<bean id="eventReadMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.duty.mgr.impl.EventReadMgrImpl">
+				<property name="eventReadDao" ref="eventReadDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="eventReadDao"
+		class="com.boco.eoms.duty.dao.hibernate.EventReadDaoHibernate"
+		autowire="byName" />	
+    
+    <!--tawRmEmergencyDao START-->
+    <bean id="tawRmEmergencyDao" class="com.boco.eoms.duty.dao.hibernate.TawRmEmergencyDaoHibernate" autowire="byName"/>
+    <!--tawRmDutyenventDao-DAO END-->
+		
+    <!--ITawRmDutyEnventManager-START-->    
+    <bean id="ITawRmEmergencyManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmEmergencyManagerImpl">
+                <property name="tawRmEmergencyDao" ref="tawRmEmergencyDao"/>
+            </bean>
+        </property>
+    </bean>
+     <!--ITawRmDutyEventPubDaoManager START-->	
+     
+      <!--ITawRmDutyCacheManager-START-->    
+    <bean id="ITawRmDutyCacheManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.duty.service.impl.TawRmDutyCacheManagerImpl"/>
+        </property>
+    </bean>
+    
+	
+    <bean id="tawRmGuestFormDAO" 
+    class="com.boco.eoms.duty.dao.hibernate.TawTmGuestFormDAOHibernate" autowire="byName"/>
+    
+    <bean id="tawRmGuestFormMgr" parent="txProxyTemplate">
+    	<property name="target">
+    		<bean class="com.boco.eoms.duty.mgr.impl.TawRmGuestFormMgrImpl">
+    			<property name="tawRmGuestFormDAO" ref="tawRmGuestFormDAO"/>
+    		</bean>
+    	</property>
+    </bean>
+    
+    <bean id="tawRmThingDAO" class="com.boco.eoms.duty.dao.hibernate.TawRmThingDAOHibernate" autowire="byName"/>
+    
+    <bean id="tawRmThingMgr" parent="txProxyTemplate">
+    	<property name="target">
+    		<bean class="com.boco.eoms.duty.mgr.impl.TawRmThingMgrImpl">
+    			<property name="tawRmThingDAO" ref="tawRmThingDAO"/>
+    		</bean>
+    	</property>
+    </bean>
+  	<import
+		resource="classpath:com/boco/eoms/duty/config/applicationContext-duty-versionlog.xml" />
+</beans>

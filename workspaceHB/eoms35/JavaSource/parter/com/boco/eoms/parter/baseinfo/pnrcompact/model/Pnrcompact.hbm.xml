@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.parter.baseinfo.pnrcompact.model.Pnrcompact"
+            table="pnr_compact"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="compactNumVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactNumRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactNameVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactNameRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="conmpactUnitVal" 
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+        
+        <property
+            name="conmpactUnitValId" 
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="conmpactUnitRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactContentVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactContentRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactPlaceVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactPlaceRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="projectMeasureVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="projectMeasureRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="unitPriceVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="unitPriceRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactMoneyVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactMoneyRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="paymentModeVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="paymentModeRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactSignedDateVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactSignedDateRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactValidityVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="compactValidityRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remarkVal"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remarkRem"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

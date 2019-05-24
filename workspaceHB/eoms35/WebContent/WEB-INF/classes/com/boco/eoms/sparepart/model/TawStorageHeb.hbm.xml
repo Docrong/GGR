@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.sparepart.model.StorageHeb"  table="TAW_SP_STORAGE">
+
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="STORAGENAME" length="32" name="storagename" type="string"/>
+<property column="NOTE" length="32" name="note" type="string"/>
+<property column="DEPT_NAME" length="32" name="deptName" type="string"/>
+<property column="DEPT_ID" length="32" name="deptId" type="string"/>
+</class>
+</hibernate-mapping>

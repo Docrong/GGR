@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.km.kmOperate.model.KmOperate"
+            table="KM_OPERATE_CONFIG"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="nodeId"
+            	column="NODE_ID"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="nodeType"
+            	column="NODE_TYPE"
+                length="10"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="operateType"
+            	column="OPERATE_TYPE"
+                length="50"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="orgType"
+            	column="ORG_TYPE"
+                length="10"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="orgId"
+            	column="ORG_ID"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+
+    </class>    
+
+</hibernate-mapping>
+

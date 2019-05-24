@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ipconfig>
+	<ip_pair name="default">
+		<ip>
+			<url>10.32.1.189:8087</url>
+			<dnsname></dnsname>
+			<type>in</type>
+		</ip> 
+		<ip>
+			<url></url>
+			<dnsname>localhost:8087</dnsname>
+			<type>out</type>
+		</ip>
+	</ip_pair>
+	<ip_pair name="server1">
+		<ip>
+			<url>10.4.0.14:8099</url>
+			<dnsname>www.hao123.com</dnsname>
+			<type>in</type>
+		</ip>
+		<ip>
+			<url>10.195.1.50:83</url>
+			<dnsname></dnsname>
+			<type>out</type>
+		</ip>
+	</ip_pair>
+</ipconfig>

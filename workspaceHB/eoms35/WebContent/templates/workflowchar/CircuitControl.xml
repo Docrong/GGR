@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+  <cell id="1" type="InitialActionCell" height="30" width="100" x="210" y="80" />
+  <cell id="2" type="StepCell" height="30" width="100" x="568" y="80" />
+  <cell id="3" type="StepCell" height="30" width="100" x="923" y="80" />
+  <cell id="4" type="StepCell" height="30" width="100" x="210" y="281" />
+  <cell id="5" type="StepCell" height="30" width="100" x="378" y="495" />
+  <connector id="90" linewidth="1.0" color="-16777216" labelx="0" labely="444" from="0" to="0" start="210,80" end="210,281" />
+  <connector id="91" linewidth="1.0" color="-16777216" labelx="519" labely="0" from="0" to="0" start="210,80" end="568,80" />
+  <connector id="92" linewidth="1.0" color="-16777216" labelx="1000" labely="563" from="0" to="0" start="210,281" end="378,495">
+    <routing id="92" x="428" y="296" />
+  </connector>
+  <connector id="93" linewidth="1.0" color="-16777216" labelx="1004" labely="480" from="0" to="0" start="378,495" end="923,80">
+    <routing id="93" x="971" y="510" />
+  </connector>
+  <connector id="94" linewidth="1.0" color="-16777216" labelx="992" labely="618" from="0" to="0" start="378,495" end="210,281">
+    <routing id="94" x="259" y="510" />
+  </connector>
+  <channel id="chl-1" y1="0" y2="200" text="车间" />
+  <channel id="chl-2" y1="200" y2="400" text="有线科" />
+  <channel id="chl-3" y1="400" y2="600" text="网管中心" />
+</layout>
+

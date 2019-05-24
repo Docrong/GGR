@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.sheet.ptnpretreatmentrule.model.PtnPretreatmentRule"
+		table="ptn_pretreatment_rule">
+		<id name="id" column="id">
+			<generator class="uuid.hex" />
+		</id>
+		<property name="factory" />
+
+		<property name="equipmentType" />
+
+		<property name="alarmName" />
+
+		<property name="alatmID" />
+
+		<property name="faultDealDesc" />
+
+		<property name="faultReasonSort1" />
+
+		<property name="faultReasonSort2" />
+
+		<property name="faultReasonSort3" />
+
+		<property name="preDealRelation" />
+
+	</class>
+
+</hibernate-mapping>
+

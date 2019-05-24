@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>合作伙伴基本信息统计</title>
+	<est-module-id>43</est-module-id>
+
+	
+	<!--******************************************************************
+********    按(部门)统计 (按受理部门统计)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>userStatByArea</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="areaId"/>
+		<condition-param page-name="deptId"/>
+		<condition-param page-name="areaName"/>
+		<condition-param page-name="deptName"/>
+		
+	    <summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>'@areaName@'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service></id2name-service><!-- 汇总字段-->			
+		</summary-define>
+		
+		<summary-define>
+			<id>s2</id><!--受理部门-->
+			<sequence></sequence>
+			<column>'@deptName@'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service></id2name-service><!-- 汇总字段-->			
+		</summary-define>
+		
+		<auto-append-groupby>false</auto-append-groupby> 
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.notflow.partner.baseinfo.vo.StatDetailVOSPartnerUser</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>pnr_user</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>tree_node_id in (select node_id from pnr_areadepttree where  parent_node_id = '@deptId@' and node_type = 'user')</where><!-- 可为空 -->
+
+			
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+
+			</field-define>
+
+		</query-define>		
+		
+
+	</kpi-define>
+	<!--******************************************************************
+********    按合作伙伴名称查询  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>userStatByDept</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="deptName"/>
+		
+	    <summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>'@deptName@'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service></id2name-service><!-- 汇总字段-->			
+		</summary-define>
+		
+		
+		<auto-append-groupby>false</auto-append-groupby> 
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.notflow.partner.baseinfo.vo.StatDetailVOSPartnerUser</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>pnr_user</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>tree_node_id in (select node_id from pnr_areadepttree where node_type = 'user' and parent_node_id in (select node_id from pnr_areadepttree where nodeName = '@deptName@'))</where><!-- 可为空 -->
+
+			
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+
+			</field-define>
+
+		</query-define>		
+		
+
+	</kpi-define>
+	
+		<!--******************************************************************
+********    按地市统计合作伙伴信息  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>deptStatByArea</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="areaName"/>
+		
+	    <summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>'@areaName@'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service></id2name-service><!-- 汇总字段-->			
+		</summary-define>
+		
+	    <summary-define>
+			<id>s2</id><!--受理部门-->
+			<sequence></sequence>
+			<column>max(factory_lists)</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service></id2name-service><!-- 汇总字段-->			
+		</summary-define>
+		
+		<auto-append-groupby>false</auto-append-groupby> 
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.notflow.partner.baseinfo.vo.StatDetailVOSPartnerUser</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>(select * from pnr_areadepttree where  parent_node_id in (select node_id from pnr_areadepttree where nodeName = '@areaName@') 
+union  (select * from pnr_areadepttree where nodeName = '@areaName@'))</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where></where><!-- 可为空 -->
+
+			
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)-1</stat-sql>
+
+			</field-define>			
+
+		</query-define>		
+
+	</kpi-define>
+	
+</KpiConfig>

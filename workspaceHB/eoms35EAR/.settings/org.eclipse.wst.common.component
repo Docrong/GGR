@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="eoms35EAR">
+        <module-type module-type-id="jst.ear">
+            <version>1.4</version>
+        </module-type>
+        <wb-resource deploy-path="/" source-path="/"/>
+        <dependent-module deploy-path="/" handle="module:/resource/eoms35/eoms35">
+            <dependent-object>WebModule_1287642860296</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/resource/eomsEJB/eomsEJB">
+            <dependent-object>EjbModule_1297991434828</dependent-object>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="eomsEJBClient.jar" deploy-path="/" handle="module:/resource/eomsEJBClient/eomsEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>

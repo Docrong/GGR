@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration//EN" "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+<tiles-definitions>
+<!--baiQiang-->
+	<definition name="doc.mainLayout1" path="/template/classicLayout1.jsp">
+		<put name="menu" value="/template/menu.jsp"/>
+		<put name="body" value="/template/main.jsp"/>
+	</definition>
+	<definition name="error.page" extends="doc.mainLayout1">
+		<put name="title" value="Error"/>
+		<put name="body" value="/failure.jsp"/>
+	</definition>
+
+	<!-- <<<<<<<<<<<<<< Test >>>>>>>>>>>>>>> -->
+	<definition name="test.list" extends="doc.mainLayout1">
+		<put name="body" value="/test/manager/TawDept1/summary.jsp"/>
+		<put name="menu" value="/test/manager/TawDept1/summary.jsp"/>
+	</definition>
+
+</tiles-definitions>

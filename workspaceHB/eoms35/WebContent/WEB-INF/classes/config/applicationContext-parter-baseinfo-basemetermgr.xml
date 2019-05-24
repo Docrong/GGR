@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <!--Basemetermgr-DAO START-->
+    <bean id="basemetermgrDao" class="com.boco.eoms.parter.baseinfo.basemetermgr.dao.hibernate.BasemetermgrDaoHibernate" autowire="byName"/>
+    <!--Basemetermgr-DAO END-->
+    <!--Basemetermgr-START-->    
+    <bean id="IbasemetermgrManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.parter.baseinfo.basemetermgr.service.impl.BasemetermgrManagerImpl">
+                <property name="basemetermgrDao" ref="basemetermgrDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--Basemetermgr-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

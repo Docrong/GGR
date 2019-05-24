@@ -1,0 +1,38 @@
+<script language=javascript>
+switch(type)
+{
+	case 'text':
+	case 'file':
+	case 'password':  //文本输入框和密码输入框的样式
+		style.border="1px solid  #48AFFE";
+		break;
+	case 'reset':	  //重置按钮所用样式
+		className = "clsbtn2";
+		attachEvent("onclick",doreset);  //点击重置按钮时调用的方法
+		break;
+	case 'submit':
+	case 'button':  //按钮类的样式（不包括图片按钮）
+		if(element.value.length<=4)
+			className = "clsbtn2";
+		else
+			className = "clsbigbtn";
+		break;
+	case 'hidden':
+	break;
+}
+
+function doreset(){
+	var fields = element.form.getElementsByTagName("input");
+	for (var i=0;i<fields.length;i++)
+	{
+		if (fields[i].type=="text" || fields[i].type=="password")
+		{
+			fields[i].value="";
+		}
+		if (fields[i].type=="checkbox" || fields[i].type=="radio")
+		{
+			fields[i].checked=false;
+		}
+	}
+}
+</script>

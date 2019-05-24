@@ -1,0 +1,257 @@
+/*** COMMON **/
+#loading{
+	position:absolute;
+	left:45%;
+	top:40%;
+	border:1px solid #6593cf;
+	padding:2px;
+	background:#f0f0f0;
+	width:220px;
+	text-align:center;
+	z-index:20001;
+}
+.loading-indicator {
+	border:1px solid #a3bad9;
+    background-position:10px;
+	color:#003366;
+	font-size:12px;
+	padding:10px 30px;
+	margin:0;
+}
+
+form .loading-indicator{
+	border:0;
+	background-color:#F3FAFC;
+}
+
+/** Toolbar & Button **/
+.blist .x-btn-text { /** menu **/
+    color:#fff;
+	background-image: url(../../images/list-items.gif)
+}
+
+.x-layout-tools-add{
+	padding-right:20px;
+	font-size:12px;
+	background-image:url(../../images/icons/icon-add.gif);
+}
+.x-layout-tools-add-em{
+	vertical-align:middle;
+	margin-top:20px;
+	margin-right:10px;
+}
+.x-toolbar{
+	background:transparent;
+	border:0;
+	padding:2px;
+}
+.x-toolbar td, .x-toolbar span, 
+.x-toolbar input, .x-toolbar div, 
+.x-toolbar select, .x-toolbar label{
+	font-size:12px;
+}
+/* modified by mios 070417 */
+.x-toolbar .x-btn-over .x-btn-left{
+	background:transparent;
+}
+.x-toolbar .x-btn-over .x-btn-right{
+	background:transparent;
+}
+.x-toolbar .x-btn-over .x-btn-center{
+	background:transparent;
+}
+
+.x-toolbar .x-btn-click .x-btn-left, .x-toolbar .x-btn-pressed .x-btn-left, .x-toolbar .x-btn-menu-active .x-btn-left{
+	background:transparent;
+}
+.x-toolbar .x-btn-click .x-btn-right, .x-toolbar .x-btn-pressed .x-btn-right, .x-toolbar .x-btn-menu-active .x-btn-right{
+	background:transparent;
+}
+.x-toolbar .x-btn-click .x-btn-center, .x-toolbar .x-btn-pressed .x-btn-center, .x-toolbar .x-btn-menu-active .x-btn-center{
+	background:transparent;
+}
+.x-btn button {
+	font-size:12px;
+}
+.x-tabs-strip .x-tabs-text,.x-menu-list-item,
+.x-grid-hd-row td, .x-grid-row td,.x-dd-drag-ghost,
+.x-layout-panel-hd-text,.x-tip .x-tip-bd{
+	font-size:12px;
+}
+.add .x-btn-text, .add .x-btn-text-icon{
+    background-image:url(../../images/icons/add.gif);
+}
+
+.remove .x-btn-text, .remove-mi .x-menu-item-icon, .remove .x-btn-text-icon {
+    background-image:url(../../images/icons/delete.gif);
+}
+.new-mi .x-menu-item-icon{
+    background-image:url(../../images/icons/add.gif);
+}
+.edit-mi .x-menu-item-icon{
+    background-image:url(../../images/icons/edit.gif);
+}
+.list-mi .x-menu-item-icon{
+    background-image:url(../../images/icons/list.png);
+}
+.save .x-btn-text {
+    background-image:url(../../images/icons/save.gif);
+}
+.refresh .x-btn-text {
+    background-image:url(../../images/icons/refresh.gif);
+}
+.expand .x-btn-text {
+    background-image:url(../../images/icons/expand.gif);
+}
+.search .x-btn-text, .x-layout-search {
+    background-image:url(../../images/icons/search.gif);
+}
+.x-layout-search {
+    background-image:url(../../images/icons/search.gif);
+	width:16px;
+	height:16px;
+}
+.collapse .x-btn-text {
+    background-image:url(../../images/icons/collapse.gif);
+}
+.msgbox{
+	background-color:#e8f5fe;
+    background-image:url(../../images/icons/yes.gif);
+    background-repeat: no-repeat;
+    background-position: 5px 5px;
+	border:1px solid #acc6e9;
+	margin:5px;
+	padding:5px;
+    padding-left:25px;
+	height:18px;
+	text-align:left;
+}
+/* 用于chooser */
+.chooser-bg{		
+	background-color : #efefec;
+	border : 0px;
+}
+/******************
+ * TREENODE ICONCLS 
+ *****************/
+.x-tree-node{
+	font-size:12px;
+}
+.x-tree-node-leaf img.dept,.x-tree-node-collapsed img.dept,.x-tree-node-expanded img.dept {
+	background-image:url(../../images/icons/nodetype/dept.gif);
+}
+.x-tree-node-leaf img.partner-dept,.x-tree-node-collapsed img.partner-dept,.x-tree-node-expanded img.partner-dept {
+	background-image:url(../../images/icons/nodetype/partner-dept.gif);
+}
+.x-tree-node-leaf img.role,.x-tree-node-collapsed img.role,.x-tree-node-expanded img.role {
+	background-image:url(../../images/icons/nodetype/role.gif);
+} 
+.x-tree-node-leaf img.post,.x-tree-node-collapsed img.post,.x-tree-node-expanded img.post {
+	background-image:url(../../images/icons/nodetype/post.gif);
+} 
+.x-tree-node-leaf img.user {
+	background-image:url(../../images/icons/nodetype/user.gif);
+}
+.x-tree-node-leaf img.leader {
+	background-image:url(../../images/icons/nodetype/leader.gif);
+}
+.x-tree-node-leaf img.subrole,.x-tree-node-collapsed img.subrole,.x-tree-node-expanded img.subrole {
+	background-image:url(../../images/icons/nodetype/subrole.gif);
+}
+.x-tree-node-leaf img.success,.x-tree-node-collapsed img.success,.x-tree-node-expanded img.success {
+	background-image:url(../../images/icons/nodetype/success.gif);
+}
+.x-tree-node-leaf img.failure,.x-tree-node-collapsed img.failure,.x-tree-node-expanded img.failure {
+	background-image:url(../../images/icons/nodetype/failure.gif);
+}
+.x-tree-node-leaf img.empty {
+	background-image:url(../../images/icons/nodetype/empty.gif);
+}
+.emptyText a span{
+	color:#666;
+}
+input.x-tree-node-cb {
+	vertical-align:middle;
+}
+/*****************
+ * FORM STYLES
+ *****************/
+.x-form fieldset legend{
+	font-size:13px;
+}
+.x-form-element label{
+	clear:none;
+	float:none;
+	padding:3px 3px 3px 0px;
+}
+.x-form-element {
+    position:static;
+}
+.x-form-item .form-btns{
+	clear:left;
+	display:block;
+	float:left;
+	padding:3px 3px 3px 0pt;
+	position:relative;
+}
+.x-form-item .form-xbox{
+	clear:left;
+	display:block;
+	float:left;
+	padding:3px 3px 3px 0pt;
+	position:relative;
+}
+
+.x-layout-panel-south {
+	background:#C3DAF9 none repeat scroll 0%;
+	border-color:#DDECFE -moz-use-text-color -moz-use-text-color;
+	border-style:solid none none;
+	border-width:1px 0px 0px;
+}
+.tb{
+	background:#D0DEF0 url(../../scripts/ext/resources/images/gray/layout/panel-title-light-bg.gif) repeat-x;
+}
+.ext-el-mask-msg div{
+	cursor:auto;
+}
+.ext-el-mask {
+	background-color:#EEEEEE;
+}
+.x-tip .x-tip-bd-inner {
+    font-size:12px;
+}
+.x-view-selected {
+	background-color:#316AC5 !important;
+	color:white;
+}
+/** ext表格中自动换行 **/
+.x-grid-row td{
+	white-space:normal;
+}
+/** ext表格文字在ie中正常显示 **/
+em{
+	line-height:18px
+}
+/** 表单trigger图片在ie中正常显示 
+.x-form-field-wrap .x-form-trigger{
+	top:0px !important;
+	top:-1px;
+}
+**/
+
+/** 角色选择样式**/
+.x-tree-node div.cmp{
+    background:#eee url(images/chooser-category.gif) repeat-x;
+    margin-top:1px;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ccc;
+    padding-top:2px;
+    padding-bottom:1px;
+}
+.x-tree-node img.folder, .x-tree-node-collapsed img.folder{
+    background-image:url(../../scripts/ext/resources/images/default/tree/folder.gif);
+}
+
+.x-tree-node-expanded img.folder {
+    background-image:url(../../scripts/ext/resources/images/default/tree/folder-open.gif);
+}

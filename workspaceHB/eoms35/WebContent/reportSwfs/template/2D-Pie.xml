@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+
+    <workspace>
+      <chart_area width="400" height="240" x="20" y="30" deep="0">
+	  <background enabled="no" type="gradient" gradient_type="linear">
+			<colors>
+			  <color>0xFFFFFF</color>
+			  <color>0xF4E1C4</color>
+			</colors>
+			<alphas>
+			  <alpha>100</alpha>
+			  <alpha>100</alpha>
+			</alphas>
+			<ratios>
+			  <ratio>127</ratio>
+			  <ratio>0xFF</ratio>
+			</ratios>
+			<matrix r="-1.7"/>
+     </background>
+	  </chart_area>
+	  <base_area enabled="no"/>
+    </workspace>
+    <chart type="2DPie">
+      <animation enabled="yes" speed="10" type="step"/>
+      <names show="yes">
+         <font size="12"/>
+      </names>
+      <values show="yes" />
+	<captions>
+	    <font size="12" type="Verdana" color="#090909" />
+        <links enabled="yes" size="1" edge_size="20" slice_space="8" color="#090909" alpha="100" />
+	</captions>
+      <pie_chart rotation="-90" protrusion_radius="0" x="223" y="180">
+        <border enabled="yes" color="0xF4E1C4"/> 
+		<background type="gradient">
+			<alphas>
+			  <alpha>100</alpha>
+			  <alpha>100</alpha>
+			</alphas>
+			<ratios>
+			  <ratio>0</ratio>
+			  <ratio>0xFF</ratio>
+			</ratios>
+	     </background>
+      </pie_chart>	  
+      <hints width="170">
+	    <border color="0xB54001"/>
+	    <background color="0xF4E1C4"/>
+	  </hints>
+    </chart>	
+  </type>
+</root>

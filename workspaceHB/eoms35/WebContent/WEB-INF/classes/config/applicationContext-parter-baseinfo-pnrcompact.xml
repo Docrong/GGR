@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <!--Pnrcompact-DAO START-->
+    <bean id="pnrcompactDao" class="com.boco.eoms.parter.baseinfo.pnrcompact.dao.hibernate.PnrcompactDaoHibernate" autowire="byName"/>
+    <!--Pnrcompact-DAO END-->
+    <!--Pnrcompact-START-->    
+    <bean id="IpnrcompactManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.parter.baseinfo.pnrcompact.service.impl.PnrcompactManagerImpl">
+                <property name="pnrcompactDao" ref="pnrcompactDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--Pnrcompact-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id>44</est-module-id>
+
+	
+	<!--******************************************************************
+********    满足率  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>satisfyStat</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		
+		<summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>'a'</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service></id2name-service><!-- 汇总字段-->			
+		</summary-define>
+		
+		<auto-append-groupby>false</auto-append-groupby> 
+		
+		<stat-detail-vo>com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')</where>
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--已归档工单总数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_circuitdispatch est where est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--已归档工单status=1-->
+			<where>est.status=1 and est.operatetype=124 and est.linkrejectreason='101091101' and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')</where><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 一次审批成功数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					  select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_circuitdispatch est where est.status=1 and est.operatetype=124 and est.linkrejectreason='101091101' and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+	</kpi-define>		
+	
+</KpiConfig>

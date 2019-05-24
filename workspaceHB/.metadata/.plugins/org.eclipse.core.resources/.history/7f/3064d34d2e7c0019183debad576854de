@@ -1,0 +1,87 @@
+<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
+	contentType="text/html;charset=utf-8"%>
+<%@ include file="/common/taglibs.jsp"%>
+<%@ include file="/common/header_eoms_form.jsp"%>
+<%
+	String startDate = com.boco.eoms.base.util.StaticMethod.getLocalString(-1);
+	String endDate = com.boco.eoms.base.util.StaticMethod.getCurrentDateTime();;
+ %>
+
+<script type="text/javascript"><!--
+ 
+</script>
+
+<div style="border:1px solid #98c0f4;padding:5px;width:98%;"
+	class="x-layout-panel-hd">工具栏： <img
+	src="${app}/images/icons/search.gif" align="absmiddle"
+	style="cursor:pointer" /> <span id="openQuery" style="cursor:pointer"
+	onclick="openQuery(this);">打开快速查询</span></div>
+
+<div id="listQueryObject"
+	style="display:none;border:1px solid #98c0f4;border-top:0;padding:5px;background-color:#eff6ff;width:98%">
+<form name="queryform" method="post"
+	action="../supervisetask//supervisetask.do?method=supervisetaskRuleList">
+
+<table width="100%" class="formTable">
+
+
+	<tr>
+		<td class="label">督办时间段</td>
+		<td>
+			督办开始时间 <input
+			type="hidden" id="sendTimeStartDateExpression"
+			name="sendTimeStartDateExpression" value=">=" /> <input type="text"
+			name="sendTimeStartDate"
+			onclick="popUpCalendar(this, this, null, null, null, true, -1)"
+			readonly="true" class="text" value="<%=startDate %>" /> &nbsp;&nbsp;
+		<input type="hidden" name="sendTimeLogicExpression" value="and" /> 
+			督办截止时间 <input type="hidden"
+			id="sendTimeEndDateExpression" name="sendTimeEndDateExpression"
+			value="<="> <input type="text" name="sendTimeEndDate"
+			id="sendTimeEndDate"
+			onclick="popUpCalendar(this, this,null,null,null,true,-1)" alt=""
+			value="<%=endDate %>" readonly="true" class="text" />
+		</td>
+
+		<td class="label">专业</td>
+		<td>
+			<eoms:comboBox name="major" id="major" initDicId="1010107" defaultValue="">
+	    		</eoms:comboBox>
+			
+		</td>
+	</tr>
+	<tr>
+		<td class="label">地市</td>
+		<td id="tdToDeptId">
+			<select id="toDeptId" name="toDeptId"></select>
+		</td>
+		<td class="label">挂牌周期</td>
+		<td><input type="text" name="supervisetaskCycle" id="supervisetaskCycle"
+			class="text" value="" /></td>
+	</tr>
+	<tr>
+		<td class="label">挂牌类型</td>
+		<td><input type="text" name="supervisetaskType" id="supervisetaskType"
+			class="text" value="" /></td>
+			
+		<td class="label">手机号</td>		
+		<td><input type="text" name="phone" id="phone">
+		</td>
+		
+		
+	</tr>
+
+	<tr>
+		<td colspan="2">
+		<input type="button" value="查询" class="button" onclick="queryRecord();"></td>
+	</tr>
+
+</table>
+
+</form>
+</div>
+
+
+
+
+<%@ include file="/common/footer_eoms.jsp"%>

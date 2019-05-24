@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawExpertInfo"
+            table="taw_expert_info"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="expertId"
+                length="32"
+                not-null="true">
+
+        </property>
+
+        <property
+            name="adress"
+                length="64"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="addTime"
+                length="32"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="creater"
+                length="32"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="telephone"
+                length="32"
+                not-null="false"
+        >
+
+        </property>
+        <property
+            name="email"
+                length="64"
+                not-null="false"
+        >
+
+        </property>
+        <property
+            name="mobile"
+                length="32"
+                not-null="false"
+        >
+
+        </property>
+        <property
+            name="post"
+                length="64"
+                not-null="false"
+        >
+
+        </property>
+         <property
+            name="dept"
+                length="64"
+                not-null="false">
+
+        </property>
+        <property
+            name="beGoodAt"
+                length="512"
+                not-null="false"
+        >
+
+        </property>
+        <property
+            name="resume"
+                length="512"
+                not-null="false"
+        >
+
+        </property>
+         <property
+            name="expertName"
+                length="64"
+                not-null="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,122 @@
+<!--
+ 增强的表单操作页面 html模板
+ version 0.1
+ 
+ 表格 帮助块:
+ 	<caption>
+ 	  <div class="help">
+ 	    <dl>
+ 	      <dt>帮助标题</dt>
+ 	      <dd>帮助内容</dd>
+ 	    </dl>
+ 	  </div>
+ 	</caption>
+ 表格 当使用帮助块时的表格头
+ 	<div class="header">
+      	<span>知识库表单</span>
+        <em>*号为必填项</em>
+    </div>
+-->
+
+<!-- 引入header_eoms.jsp 开始 -->
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <script type="text/javascript" charset="utf-8" src="../../scripts/local/zh_CN.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../scripts/base/eoms.js"></script>
+   <script type="text/javascript">
+	eoms.appPath = "../..";
+  </script>
+  <link rel="stylesheet" type="text/css" media="all" href="../../styles/default/theme.css" />
+</head>
+
+<body>
+<div id="page"> 
+  <div id="content" class="clearfix">
+    <div id="main"><br/><br/>
+<!-- 引入header_eoms.jsp 结束 -->
+
+<!-- 四列表单 开始 -->
+<form>
+  <table class="formTable">
+    <caption>
+      <div class="header center">知识库表单</div>
+      <div class="help">     
+        <span>
+      	<dl>
+      	  <dt class="warn">*为必填项</dt>
+      	</dl>
+      	</span> 
+        <span>
+      	<dl>
+      	  <dt class="search">需要寻求知识库帮助吗？</dt>
+      	  <dd><a href="#">自动查询</a> <a href="#">手动查询</a></dd>
+      	</dl>
+      	</span>
+      	<span>
+      	<dl>
+      	  <dt class="add">经验宝贵，我要丰富知识库！</dt>
+      	  <dd><a href="#">添加知识</a></dd>
+      	</dl>
+        </span>
+        <div class="clear"></div>
+      </div>
+    </caption>
+    <tr>
+      <td class="label">
+        *系统类型 :
+      </td>
+      <td class="content">
+        <input type="text" class="text"/>
+      </td>
+      <td class="label">
+        系统类型 :
+      </td>
+      <td class="content">
+        <input type="text" class="text"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">
+        网元类型 :
+      </td>
+      <td class="content">
+        <input type="text" class="text"/>
+      </td>
+      <td class="label">
+        系统类型 :
+      </td>
+      <td class="content">
+        <input type="text" class="text"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">
+        模板来源 :
+      </td>
+      <td class="content">
+        <input type="text" class="text"/>
+      </td>
+      <td class="label">
+        系统类型 :
+      </td>
+      <td class="content max">
+        <input type="text" class="text"/>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <input type="submit" value="提交" name="B1"  class="submit">  
+</form>
+<!-- footer_eoms.jsp start-->
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<!-- footer_eoms.jsp end-->

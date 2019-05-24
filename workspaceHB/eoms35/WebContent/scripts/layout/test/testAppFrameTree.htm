@@ -1,0 +1,95 @@
+<html>
+<head>
+  <title></title>
+  <!-- HTTP 1.1 -->
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <!-- HTTP 1.0 -->
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <!-- Prevents caching at the Proxy Server -->
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/local/zh_CN.js"></script>  
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/base/eoms.js"></script>
+   <script type="text/javascript">
+	eoms.appPath = "../../..";
+  </script>
+  <link rel="stylesheet" type="text/css" media="all" href="../../../styles/default/theme.css" />
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/form/validation.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../../scripts/form/popcalendar.js"></script>
+  <!-- EXT LIBS verson 1.1 -->
+  <script type="text/javascript" src="../../../scripts/ext/adapter/ext/ext-base.js"></script>
+  <script type="text/javascript" src="../../../scripts/ext/ext-all.js"></script>
+  <script type="text/javascript" src="../../../scripts/adapter/ext-ext.js"></script>
+  <script type="text/javascript" src="../../../scripts/ext/source/locale/ext-lang-zh_CN.js"></script>
+  <link rel="stylesheet" type="text/css" href="../../../scripts/ext/resources/css/ext-all.css" />
+  <link rel="stylesheet" type="text/css" href="../../../styles/default/ext-adpter.css" />
+  <!-- EXT LIBS END -->  
+</head>
+
+<body>
+<div id="page"> 
+  <div id="content" class="clearfix">
+    <div id="main"><br/><br/>
+
+  <script type="text/javascript" src="../AppFrameTree.js"></script>
+  <script type="text/javascript">
+  var config = {
+    /**************
+ 	* Tree Configs
+ 	**************/
+	treeGetNodeUrl:"data.json",
+    treeRootId:'-1',
+	treeRootText:"供应商管理",
+	pageFrameId:'formPanel-page',
+	onClick:{url:"testPage.jsp?name=",text:"信息"},
+	ctxMenu:[
+		{id:'newnode', text:'新建子节点',cls:'new-mi',url:'testPage.jsp?name='},
+		{id:'edtnode', text:'修改',cls:'edit-mi',url:'testPage.jsp?name=',rootCanShow:true},
+		{id:'delnode', text:'删除',cls:'remove-mi',url:'testPage.jsp?name='},
+		{id:'Mynode', text:'查看',url:'testPage.jsp?name=',isDelete:true},
+		{id:'ss', text:'ss查看',url:'testPage.jsp?name=',isDelete:true}
+	],//end of ctxMenu
+	/************************
+ 	* Custom onLoad Functions
+ 	*************************/
+	onLoadFunctions:function(){
+	}
+  }; // end of config
+  Ext.onReady(AppFrameTree.init, AppFrameTree);
+  </script>
+  <style type="text/css">
+  	body{background-image:none;}
+  </style>
+<div id="headerPanel" class="x-layout-inactive-content">
+	<h1>供应商管理</h1>
+</div>
+<div id="helpPanel" style="padding:10px;" class="x-layout-inactive-content">
+	<dl><!--
+		<dt>${eoms:a2u('添加一个下级角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"新建子节点"')}</dd>
+		<dt>${eoms:a2u('修改一个角色的信息')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"修改"')}</dd>
+		<dt>${eoms:a2u('删除角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"删除"')}</dd>
+		<dt>${eoms:a2u('查看角色的子角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"子角色列表"')}</dd>
+		<dt>${eoms:a2u('批量添加子角色')}</dt>
+		<dd>${eoms:a2u('在树图中的角色上点击右键，并选择"添加子角色"')}</dd>
+		-->
+	</dl>
+</div>
+<div id="treePanel" class="x-layout-inactive-content">
+	<div id="treePanel-tb" class="tb"></div>
+	<div id="treePanel-body"></div>
+</div>
+<div id="formPanel" class="x-layout-inactive-content">
+	<iframe id="formPanel-page" name="formPanel-page" frameborder="no" style="width:100%;height:100%" src=""></iframe>
+</div>
+
+<!-- footer_eoms.jsp start-->
+				</div>
+			</div>
+		</div>
+	</body>
+

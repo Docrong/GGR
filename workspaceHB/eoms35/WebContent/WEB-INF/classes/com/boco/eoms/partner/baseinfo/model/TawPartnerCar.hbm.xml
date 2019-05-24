@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.partner.baseinfo.model.TawPartnerCar"
+            table="pnr_partner_car"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="car_number"
+            	column="car_number"
+                length="64"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="dept_id"
+            	column="dept_id"
+                length="64"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="area_id"
+            	column="area_id"
+                length="64"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="start_time"
+            	column="start_time"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="piece"
+            	column="piece"
+                length="64"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="remark"
+            	column="remark"
+                length="256"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        <property name="addMan" column="addMan" length="32"
+			not-null="false" unique="false">
+
+		</property>
+		<property name="addTime" column="addTime" length="32"
+			not-null="false" unique="false">
+
+		</property>
+		<property name="connectType" column="connectType" length="64"
+			not-null="false" unique="false">
+
+		</property>
+        
+    </class>    
+
+</hibernate-mapping>
+

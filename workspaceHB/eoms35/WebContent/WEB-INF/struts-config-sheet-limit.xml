@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans> 
+		
+	 <form-bean name="sheetLimitForm"
+      type="com.boco.eoms.sheet.tool.limit.webapp.form.SheetLimitForm"
+      />
+	</form-beans>
+	 <!-- ========== Global Exceptions Definitions =================================== -->
+      <global-exceptions>
+        <exception type="java.lang.Exception"
+            key="errors.general"
+            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+     </global-exceptions>
+
+ 	<!-- ========== Action Mapping Definitions =================================== -->
+   <action-mappings>
+   
+   <action
+      path="/sheetLimit"
+      type="com.boco.eoms.sheet.tool.limit.webapp.action.SheetLimitAction"
+      name="sheetLimitForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+    
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/sheetLimit/sheetLimitForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/sheetLimit/sheetLimitList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/sheetLimit.do"
+        redirect="true"
+       
+      />
+      <forward
+        name="searchDeaList"
+        path="/sheetLimit.do?method=getSheetLimitList"
+        redirect="true"
+       
+      />
+       <forward
+        name="dealLimitList"
+        path="/WEB-INF/pages/sheetLimit/dealLimitList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="editLimit"
+        path="/WEB-INF/pages/sheetLimit/dealLimitForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+       <forward
+        name="saveFailure"
+        path="/WEB-INF/pages/sheetLimit/failure.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    <action
+      path="/editSheetLimit"
+      type="com.boco.eoms.sheet.tool.limit.webapp.action.SheetLimitAction"
+      name="sheetLimitForm"
+      scope="request"
+      input="list"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/sheetLimit/sheetLimitForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/sheetLimit/sheetLimitList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/sheetLimit.do"
+        redirect="true"
+      
+      />
+       <forward
+        name="dealLimitList"
+        path="/WEB-INF/pages/sheetLimit/dealLimitList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="editLimit"
+        path="/WEB-INF/pages/sheetLimit/dealLimitForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    <action
+      path="/saveSheetLimit"
+      type="com.boco.eoms.sheet.tool.limit.webapp.action.SheetLimitAction"
+      name="sheetLimitForm"
+      scope="request"
+      input="edit"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/sheetLimit/sheetLimitForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/sheetLimit/sheetLimitList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/sheetLimit.do"
+        redirect="true"
+       
+      />
+       <forward
+        name="saveFailure"
+        path="/WEB-INF/pages/sheetLimit/failure.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+	</action-mappings>
+	
+ <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    
+      <message-resources parameter="config/ApplicationResources-sheet-sheetLimit" key="sheetLimit"/>
+	  <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>

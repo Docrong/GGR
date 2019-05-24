@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.partdata.model.TawpartLacBsc"
+            table="partdata_lac_bsc"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="areaId"
+            	column="area_id"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="areaName"
+            	column="area_name"
+                length="64"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="bsc"
+            	column="bsc"
+                length="64"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="lac"
+            	column="LAC"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="mscId"
+            	column="MSCID"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="mscName"
+            	column="MSCNAME"
+                length="64"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="creator"
+            	column="creator"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="createTime"
+            	column="create_time"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+       <property
+            name="partRangeId"
+            	column="part_Range_Id"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

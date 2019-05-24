@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawRmAddonsTable"
+            table="taw_rm_addons"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="name"
+            	column="name"
+                length="255"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+            	column="remark"
+                length="255"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="model"
+            	column="model"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="url"
+            	column="url"
+                length="255"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="roomId"
+            	column="roomId"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="creatUser"
+            	column="creatUser"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="creatTime"
+            	column="creatTime"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="deleted"
+            	column="deleted"
+                length="10"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+       
+    </class>    
+
+</hibernate-mapping>
+

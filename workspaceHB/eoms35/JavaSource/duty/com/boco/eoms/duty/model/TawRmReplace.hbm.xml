@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+  
+    <class
+            name="com.boco.eoms.duty.model.TawRmReplace"
+            table="taw_rm_replace"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="roomId"
+            	column="roomid"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="inputdate"
+            	column="inputdate"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="workserial"
+            	column="workserial"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="dutydate"
+            	column="dutydate"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="hander"
+            	column="hander"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="receiver"
+            	column="receiver"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+            	column="flag"
+                length="30"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="reason"
+            	column="reason"
+                length="300"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+            	column="remark"
+                length="300"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+ 
+    </class>    
+
+</hibernate-mapping>
+

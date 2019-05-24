@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+
+	<class name="com.boco.eoms.commons.statistic.task.model.EstTask"
+		table="est_task">
+		<id column="linkid" name="linkid" type="string">
+			<generator class="assigned" />
+		</id> 
+			<property name="mainid" />
+			<property name="nodeacceptlimit" />
+			<property name="nodecompletelimit" />
+			<property name="operatetime" />
+			<property name="operateuserid" />
+			<property name="operatedeptid" />
+			<property name="operateroleid" />
+			<property name="operateorgtype" />
+			<property name="toorgtype" />
+			<property name="toorgdeptid" />
+			<property name="toorguserid" />
+			<property name="toroleid" />
+			<property name="completeflag" />
+			<property name="completetime" />
+			<property name="completeusetime" />
+			<property name="prelinkid" />
+			<property name="activitydefid" />
+			<property name="workitemid" />
+			<property name="activityinstid" />
+			<property name="operatetype" />
+			<property name="sheetid" />
+			<property name="title" />
+			<property name="sheetcompletelimit" />
+			<property name="sendtime" />
+			<property name="status" />
+			<property name="holdstatisfied" />
+			<property name="senduserid" />
+			<property name="senddeptid" />
+			<property name="sendroleid" />
+			<property name="endtime" />
+			<property name="endresult" />
+			<property name="enduserid" />
+			<property name="enddeptid" />
+			<property name="endroleid" />
+			<property name="deleted" />
+			<property name="sheettype" />
+			<property name="orgid" />
+			<property name="orgtype" />
+			<property name="mainapptime" />
+			<property name="mainmajorid" />
+			<property name="mainapptype" />
+			<property name="mainapplycause" />
+			<property name="maindescription" />
+			<property name="linkauditopinion" />
+			<property name="linkpassopinion" />
+			<property name="linkispass" />
+			<property name="issongshen" />
+			<property name="linkreplycontent" />
+			<property name="linkmemo" />
+			<property name="linkreason" />
+			<property name="linkstatus" />
+			<property name="deptlevel" />
+
+	</class>
+</hibernate-mapping>

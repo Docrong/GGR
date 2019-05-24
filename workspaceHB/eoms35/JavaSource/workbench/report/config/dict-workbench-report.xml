@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="auditStatus" description="审核状态">
+		<item id="0" name="未提交" description="未提交" />
+		<item id="1" name="已提交" description="已提交" />
+		<item id="2" name="已审核" description="已审核" />
+	</dict>
+	<dict id="reportType" description="报告类型">
+		<item id="0" name="日报" description="日报" />
+		<item id="1" name="月报" description="月报" />
+	</dict>
+</dicts>

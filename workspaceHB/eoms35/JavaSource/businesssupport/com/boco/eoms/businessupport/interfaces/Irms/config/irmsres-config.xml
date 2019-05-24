@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+    <ServiceUrl>http://10.25.2.97:8899/webmaster/cxfservices/IEomsResTempBO</ServiceUrl>
+    <enable>true</enable>
+    <addEomsResByProdTypeBO>
+    	<content columnName="mainSpecifyType" interfaceEnName="prodType" interfaceCnName="产品类型" defauleValue="" dictNodePath="prodType"/>
+    	<content columnName="customName" interfaceEnName="custName" interfaceCnName="客户名称" defauleValue="" />
+    	<content columnName="productName" interfaceEnName="prodName" interfaceCnName="产品名称" defauleValue="" />
+    	<content columnName="id" interfaceEnName="prodCode" interfaceCnName="产品编号" defauleValue="" />
+    	<content columnName="circuitSheetId" interfaceEnName="transCuid" interfaceCnName="传输的CUID" defauleValue="" />
+    	<content columnName="circuitName" interfaceEnName="trnsName" interfaceCnName="传输的名称" defauleValue="" />
+    	<content columnName="fiberEquipCodeZ" interfaceEnName="OpticalCuid" interfaceCnName="光纤的CUID" defauleValue="" />
+    	<content columnName="fiberEquipNameZ" interfaceEnName="OpticalName" interfaceCnName="光纤的名称" defauleValue="" />
+    	<content columnName="" interfaceEnName="BtsCuid" interfaceCnName="基站的CUID" defauleValue="" />
+    	<content columnName="accessSiteIdenA" interfaceEnName="BtsName" interfaceCnName="基站的名称" defauleValue="" />
+    	
+    	<content columnName="mainServiceNumType" interfaceEnName="mainServiceNumType" interfaceCnName="服务号码类型" defauleValue="" />
+    	<content columnName="mainDxCxServiceNumber" interfaceEnName="mainDxCxServiceNumber" interfaceCnName="短彩信服务号码" defauleValue="" />
+    	<content columnName="mainConferType" interfaceEnName="mainConferType" interfaceCnName="协议类型" defauleValue="" />
+    	<content columnName="mainGatewayIPAddress" interfaceEnName="mainGatewayIPAddress" interfaceCnName="网关IP地址" defauleValue="" />
+    	<content columnName="mainGatewayName" interfaceEnName="mainGatewayName" interfaceCnName="网关名称" defauleValue="" />
+    	<content columnName="mainTerminalIPAddress" interfaceEnName="mainTerminalIPAddress" interfaceCnName="终端IP地址" defauleValue="" />
+    	<content columnName="mainGiveBusPort" interfaceEnName="mainGiveBusPort" interfaceCnName="提供服务端口号" defauleValue="" />
+    	<content columnName="mainGatewayUser" interfaceEnName="mainGatewayUser" interfaceCnName="登录网关用户名" defauleValue="" />
+    	<content columnName="mainSwitchInType" interfaceEnName="mainSwitchInType" interfaceCnName="接入方式" defauleValue="" />
+    	<content columnName="mainSwitchInClientDate" interfaceEnName="mainSwitchInClientDate" interfaceCnName="接入客户日期" defauleValue="" />
+    	
+    	<content columnName="mainOAReferenceNo" interfaceEnName="mainOAReferenceNo" interfaceCnName="OA文号" defauleValue="" />
+    	<content columnName="mainCallType" interfaceEnName="mainCallType" interfaceCnName="呼叫类型" defauleValue="" />
+    	<content columnName="mainClientSoundAdd" interfaceEnName="mainClientSoundAdd" interfaceCnName="客户语音接入地址" defauleValue="" />
+    	<content columnName="mainSoundNumber" interfaceEnName="mainSoundNumber" interfaceCnName="语音接入号码" defauleValue="" />
+    	<content columnName="mainTricky" interfaceEnName="mainTricky" interfaceCnName="位长" defauleValue="" />
+    	<content columnName="mainDetailType " interfaceEnName="mainDetailType " interfaceCnName="详细业务类型" defauleValue="" />
+    	<content columnName="mainCallerOpenBrand" interfaceEnName="mainCallerOpenBrand" interfaceCnName="主叫用户开放品牌" defauleValue="" />
+    	<content columnName="mainCallerBeArea" interfaceEnName="mainCallerBeArea" interfaceCnName="主叫用户归属地" defauleValue="" />
+    	<content columnName="mainBusinessOpenArea" interfaceEnName="mainBusinessOpenArea" interfaceCnName="业务开放地" defauleValue="" />
+    	<content columnName="mainDialType" interfaceEnName="mainDialType" interfaceCnName="拨号方式" defauleValue="" />
+    	<content columnName="mainDetailDial" interfaceEnName="mainDetailDial" interfaceCnName="详细拨号方式" defauleValue="" />
+    	<content columnName="mainIfOpenLocaPhone" interfaceEnName="mainIfOpenLocaPhone" interfaceCnName="是否开通省内长途来话" defauleValue="" />
+    	<content columnName="mainIfOpenBordPhone" interfaceEnName="mainIfOpenBordPhone" interfaceCnName="是否开通省际长途来话" defauleValue="" />
+    	<content columnName="mainIfOpenIntePhone" interfaceEnName="mainIfOpenIntePhone" interfaceCnName="是否开通国际长途来话" defauleValue="" />
+    	<content columnName="mainClientCallerNum" interfaceEnName="mainClientCallerNum" interfaceCnName="客户主叫号码" defauleValue="" />
+    	<content columnName="mainCallerAlterType" interfaceEnName="mainCallerAlterType" interfaceCnName="主叫号码修改方式" defauleValue="" />
+    	<content columnName="mainCalloutRange" interfaceEnName="mainCalloutRange" interfaceCnName="呼出范围" defauleValue="" />
+    	<content columnName="mainDetailCalloutRange" interfaceEnName="mainDetailCalloutRange" interfaceCnName="详细呼出范围" defauleValue="" />
+    	<content columnName="mainCalloutForm" interfaceEnName="mainCalloutForm" interfaceCnName="呼出号码形式" defauleValue="" />
+    	<content columnName="mainSignalType" interfaceEnName="mainSignalType" interfaceCnName="信令方式" defauleValue="" />	
+    	<content columnName="mainSignalCoding" interfaceEnName="mainSignalCoding" interfaceCnName="信令点编码" defauleValue="" />
+    	<content columnName="mainSignalConfer" interfaceEnName="mainSignalConfer" interfaceCnName="信令协议" defauleValue="" />
+    	<content columnName="mainRelayCount" interfaceEnName="mainRelayCount" interfaceCnName="中继数" defauleValue="" />
+    	<content columnName="mainChargingExplain" interfaceEnName="mainChargingExplain" interfaceCnName="计费说明" defauleValue="" />
+    	<content columnName="mainClientEngineAdd" interfaceEnName="mainClientEngineAdd" interfaceCnName="客户机房地址" defauleValue="" />
+    	<content columnName="mainClientEqiupBrand" interfaceEnName="mainClientEqiupBrand" interfaceCnName="客户端设备品牌" defauleValue="" />
+    	<content columnName="mainModel" interfaceEnName="mainModel" interfaceCnName="型号" defauleValue="" />
+    	<content columnName="mainEquipPortInfo" interfaceEnName="mainEquipPortInfo" interfaceCnName="接入设备端口信息" defauleValue="" />
+    	<content columnName="mainPropertyRight" interfaceEnName="mainPropertyRight" interfaceCnName="产权" defauleValue="" />
+    	<content columnName="mainClientNeedDesc" interfaceEnName="mainClientNeedDesc" interfaceCnName="客户需求描述" defauleValue="" />
+    	<content columnName="mainTakeEffectTime" interfaceEnName="mainTakeEffectTime" interfaceCnName="拟生效时间" defauleValue="" />
+    </addEomsResByProdTypeBO>
+</boco>
+

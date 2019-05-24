@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.km.knowledge.model.KmContentsOpinion"
+		table="KM_CONTENTS_OPINION">
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex"></generator>
+		</id>
+
+		<property name="tableId" column="TABLE_ID" length="32" not-null="false" unique="false">
+		</property>
+		
+		<property name="themeId" column="THEME_ID" length="32" not-null="false" unique="false">
+		</property>
+
+		<property name="contentId" column="CONTENT_ID" length="100" not-null="false" unique="false">
+		</property>
+
+		<property name="createUser" column="CREATE_USER" length="100" not-null="false" unique="false">
+		</property>
+
+		<property name="createDept" column="CREATE_DEPT" length="100" not-null="false" unique="false">
+		</property>
+
+		<property name="createTime" column="CREATE_TIME" length="7" not-null="false" unique="false">
+		</property>
+
+		<property name="opinionContent" column="OPINION_CONTENT" not-null="false" unique="false">
+		</property>
+
+		<property name="opinionGrade" column="OPINION_GRADE" not-null="false" unique="false">
+		</property>
+
+		<property name="isEdit" column="IS_EDIT" length="100" not-null="false" unique="false">
+		</property>
+
+		<property name="isRefedit" column="IS_REFEDIT" length="100" not-null="false" unique="false">
+		</property>
+
+		<property name="isDeleted" column="IS_DELETED" length="100" not-null="false" unique="false">
+		</property>
+
+
+	</class>
+
+</hibernate-mapping>
+

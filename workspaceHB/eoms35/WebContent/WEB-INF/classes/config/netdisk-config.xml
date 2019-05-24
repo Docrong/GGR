@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="netDiskAttributes"
+		class="com.boco.eoms.workbench.netdisk.webapp.util.NetDiskAttributes">
+		
+		<!-- 网络U盘根路径windows环境下的配置-->
+		<!--<property name="netDiskRootPath">
+			<value>D:/netdisk</value>
+		</property> -->
+		<!-- 网络U盘根路径Unix环境下的配置 绝对路径-->		
+	    <property name="netDiskRootPath">
+            <value>/downloads</value>
+         </property>
+		
+		<!-- 最大单个上传文件限制（单位MB）-->
+		<property name="maxFileSize">
+			<value>300</value>
+		</property>
+		
+		<!-- 用户个人空间（单位MB）-->
+		<property name="maxUserSpace">
+			<value>1000</value>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

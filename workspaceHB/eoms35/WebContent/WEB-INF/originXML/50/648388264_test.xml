@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="gb2312"?>
+<title value="请输入中文" name="test" type="1">
+ <head>
+  <elements>
+   <element value="故障问题" showType="input" name="h0" newLine="0" rows="1" cols="1" align="center" valign="center" x="1" y="1" validateType="null" startTime="00:00:00" endTime="23:59:59" dicId="1" cycle="0" />
+  </elements>
+ </head>
+ <body>
+  <elements>
+   <emterm>
+    <element value="故障类型" showType="text" name="b0" newLine="0" rows="1" cols="1" align="center" valign="center" x="1" y="1" validateType="null" startTime="00:00:00" endTime="23:59:59" dicId="1" cycle="0" />
+    <element value="紧急程度" showType="text" name="b1" newLine="0" rows="1" cols="1" align="center" valign="center" x="1" y="1" validateType="null" startTime="00:00:00" endTime="23:59:59" dicId="2" cycle="0" />
+    <element value="满意程度" showType="text" name="b2" newLine="0" rows="1" cols="1" align="center" valign="center" x="1" y="1" validateType="null" startTime="00:00:00" endTime="23:59:59" dicId="3" cycle="0" />
+   </emterm>
+  </elements>
+ </body>
+</title>
+

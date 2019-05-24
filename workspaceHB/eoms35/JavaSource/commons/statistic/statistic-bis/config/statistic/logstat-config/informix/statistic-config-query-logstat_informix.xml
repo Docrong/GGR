@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id></est-module-id>
+
+
+	
+	<kpi-define><!-- 可重复 -->
+		<name>byuser</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+	  <condition-param page-name="revUserId" markflg="true"/>
+	  
+		
+		<summary-define>
+			<id>s1</id><!--专家姓名 汇总字段-->
+			<sequence>1</sequence>
+			<column>log1.userid</column><!-- 汇总字段 -->
+			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+	
+	
+		<stat-detail-vo>com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		
+		<query-define><!-- 可重复 -->
+			<name>query1</name>			
+			<from>taw_common_logoperator log1</from><!-- 不可为空 -->
+			<where>
+			  log1.beginnotetime &gt;='@beginTime@' and log1.beginnotetime &lt;'@endTime@'
+        and  log1.userid in (@revUserId@) and  log1.operId='0001' 
+			</where><!-- 可为空 -->
+
+			<field-define>
+				<id>f1</id><!--在线时长-->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+			</field-define>
+
+		</query-define>
+		
+	</kpi-define>
+	
+	
+	<kpi-define><!-- 可重复 -->
+		<name>bydept</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param page-name="revDeptId" markflg="true"/>
+		<condition-param page-name="opername" markflg="true"/>
+		<summary-define>
+			<id>s1</id><!--专家姓名 汇总字段-->
+			<sequence>1</sequence>
+			<column>log1.deptid</column><!-- 汇总字段 -->
+			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+		</summary-define>
+		<summary-define>
+			<id>s2</id><!--专家类别 汇总字段-->
+			<sequence>1</sequence>
+			<column>log1.opername</column><!-- 汇总字段 -->
+			<id2name-service></id2name-service><!-- statDictId2name_v35_gz -->
+		</summary-define>	
+		<summary-define>
+			<id>s3</id><!--专家类别 汇总字段-->
+			<sequence>1</sequence>
+			<column>log1.modelname</column><!-- 汇总字段 -->
+			<id2name-service></id2name-service><!-- statDictId2name_v35_gz -->
+		</summary-define>	
+		
+	
+		<stat-detail-vo>com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		
+		<query-define><!-- 可重复 -->
+			<name>query1</name>			
+			<from>taw_common_logoperator log1</from><!-- 不可为空 -->
+			<where>
+			    log1.beginnotetime &gt;='@beginTime@' and log1.beginnotetime &lt;'@endTime@' and  log1.operId not in('0001','0002')
+	        and  log1.deptid in (@revDeptId@) and log1.opername in (@opername@) and (log1.modelname!='' or log1.modelname is not null)
+	        and (log1.opername!='' or log1.opername is not null) and (log1.deptid !='' or log1.deptid is not null)
+			</where><!-- 可为空 -->
+
+			<field-define>
+				<id>f1</id><!--在线时长-->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+			</field-define>
+
+		</query-define>
+		
+	</kpi-define>
+
+
+</KpiConfig>	

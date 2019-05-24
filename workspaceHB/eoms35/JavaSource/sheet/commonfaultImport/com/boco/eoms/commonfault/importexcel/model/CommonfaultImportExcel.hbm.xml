@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commonfault.importexcel.model.CommonfaultImportExcel"
+            table="commonfault_importExcel"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="fileName"
+            	column="filename"
+                length="200"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="createTime"
+            	column="createtime"
+                length="50"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="createUser"
+            	column="createuser"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="createDept"
+            	column="createdept"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="accessories"
+            	column="accessories"
+                length="200"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+
+		<property
+            name="accessoriesId"
+            	column="accessories_id"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

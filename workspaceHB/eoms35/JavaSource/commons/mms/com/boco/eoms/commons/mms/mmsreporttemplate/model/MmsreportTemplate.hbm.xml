@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.mms.mmsreporttemplate.model.MmsreportTemplate"
+            table="ota_mmsreport_template"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="mmsName"
+            	column="mmsName"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="mmsReportDesc"
+            	column="mmsReportDesc"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="executeCycle"
+            	column="executeCycle"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="reportDisplayType"
+            	column="reportDisplayType"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+       	<property
+            name="userid"
+            	column="userid"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+	<property
+            name="reportCreatDate"
+            	column="reportCreatDate"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="pictureFormat"
+            	column="pictureFormat"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="statReportId"
+            	column="statReportId"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="froumid"
+            	column="froumid"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="threadid"
+            	column="threadid"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        	<property
+            name="jobid"
+            	column="jobid"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        
+    </class>    
+
+</hibernate-mapping>
+

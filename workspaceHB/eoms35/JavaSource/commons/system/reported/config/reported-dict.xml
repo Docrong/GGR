@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="modelId" description="模块名称">
+		<item id="1" name="值班" description="值班" />
+		<item id="2" name="作业计划" description="作业计划" />
+	</dict>
+	<dict id="functionId" description="功能名称">
+		<item id="1" name="日报" description="日报" />
+		<item id="2" name="月报" description="月报" />
+	</dict>
+</dicts>  

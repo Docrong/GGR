@@ -55,4 +55,6 @@ public interface SuperviseTaskManager {
 	
 	public void newBulletin1(String str);
 	public String querySheetStatus(String sheetid);
+	
+	public Map getBoardDetail2( Integer curPage,  Integer pageSize, Map maptj)throws Exception;
 }

@@ -1,6 +1,8 @@
 package com.boco.eoms.sheet.supervisetask.dao.hibernate;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,8 +12,10 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 
+import com.boco.eoms.base.util.ApplicationContextHolder;
 import com.boco.eoms.base.util.StaticMethod;
 import com.boco.eoms.sheet.base.dao.hibernate.MainDAO;
+import com.boco.eoms.sheet.base.service.IDownLoadSheetAccessoriesService;
 import com.boco.eoms.sheet.base.util.Constants;
 import com.boco.eoms.sheet.commontask.model.CommonTaskMain;
 import com.boco.eoms.sheet.listedregulation.model.ListedRegulationMain;
@@ -372,6 +376,63 @@ public class SuperviseTaskDaoHibernate extends MainDAO implements SuperviseTaskD
 			}
 			
 		};
+		return (Map) getHibernateTemplate().execute(callback);
+	}
+	
+	public Map getBoardDetail2(final Integer curPage, final Integer pageSize,final Map maptj)throws Exception{
+		HibernateCallback callback=new HibernateCallback(){
+
+			public Object doInHibernate(Session session)  {
+				IDownLoadSheetAccessoriesService service = (IDownLoadSheetAccessoriesService)ApplicationContextHolder.getInstance().getBean("IDownLoadSheetAccessoriesService");
+				String status=(String) maptj.get("status");
+				String sql="";
+				if(status.equals("0")){
+					sql="SELECT DISTINCT m.sheetid,m.title from  ( "+
+					" SELECT A .noticeuserid, A .noticemobile,A .*FROM "+
+					" sms_record A WHERE A .dispatchtime - SYSDATE <= 1 / 24 "+
+					" AND A .ifload = 0 AND NOTICEUSERID = 'xiongchiliang') m";
+					
+				}else if(status.equals("1")){
+					String commonfaultsql="SELECT DISTINCT m.SHEETID FROM( "+
+					" select a.noticeuserid,a.noticemobile,a.*  from "+ 
+					" sms_record a where a.ifload = 0 and exists "+
+					"(select 1 from commonfault_main b where b.sheetid = a.sheetid and b.status = 0))m";
+					String listedregulationsql="SELECT DISTINCT m.SHEETID FROM( "+
+					" select a.noticeuserid,a.noticemobile,a.*  from "+ 
+					" sms_record a where a.ifload = 0 and exists "+ 
+					" (select 1 from commonfault_main b where b.sheetid = a.sheetid and b.status = 0))m";
+					sql=commonfaultsql+" union all("+listedregulationsql+")";
+				}else if(status.equals("2")){
+					String sql3commonfault="SELECT distinct m.sheetid  from( "+
+					" select a.noticeuserid,a.noticemobile,a.* from sms_record a where a.ifload = 1 and "+
+					" exists (select 1 from sms_record b where b.sheetid = a.sheetid "+
+					" and b.dispatchtime >a.dispatchtime and b.ifload = 1) "+
+					" and exists (select 1 from commonfault_main b where b.sheetid = a.sheetid and b.status = 0))m";
+					String sql3listedregulation="SELECT distinct m.sheetid  from( "+
+					" select a.noticeuserid,a.noticemobile,a.* from sms_record a where a.ifload = 1 and "+
+					" exists (select 1 from sms_record b where b.sheetid = a.sheetid "+
+					" and b.dispatchtime >a.dispatchtime and b.ifload = 1) "+
+					" and exists (select 1 from listedregulation_main b where b.sheetid = a.sheetid and b.status = 0))m";
+					sql=sql3commonfault+" union all("+sql3listedregulation+")";
+				}
+				Query query = session.createSQLQuery(sql);
+				if(pageSize.intValue()!=-1){
+					query.setFirstResult(pageSize.intValue()
+									* (curPage.intValue()));
+	         
+					query.setMaxResults(pageSize.intValue());
+					}
+				List list=query.list();
+				Query query2 = session.createSQLQuery(sql);
+				int total=query2.list().size();
+			Map map=new HashMap();
+			map.put("result", list);
+			map.put("total", new Integer(total));
+				return map;
+			}
+			
+		};
+		
 		return (Map) getHibernateTemplate().execute(callback);
 	}
 	

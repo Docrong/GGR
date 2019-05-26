@@ -594,92 +594,183 @@ public class SuperviseTaskAction extends SheetAction {
 		.getSession().getAttribute("sessionform");
 		String userphone= sessionform.getContactMobile();
 		
-		
+		Integer pageSize = ((SheetAttributes) ApplicationContextHolder
+				.getInstance().getBean("SheetAttributes")).getPageSize();
+		String pageIndexName = new org.displaytag.util.ParamEncoder("taskList")
+			.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+		final Integer pageIndex = new Integer(GenericValidator
+				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+						: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
 		
 		if(status.equals("0")){//即将来到本级督办
-			sql="SELECT DISTINCT m.sheetid,m.title from  ( "+
-				" SELECT A .noticeuserid, A .noticemobile,A .*FROM "+
-				" sms_record A WHERE A .dispatchtime - SYSDATE <= 1 / 24 "+
-				" AND A .ifload = 0 AND NOTICEUSERID = 'xiongchiliang') m";
-			List list=service.getSheetAccessoriesList(sql);
+
+			Map maptj=new HashMap();
+			maptj.put("status", "0");
+			Map result=superviseTaskManager.getBoardDetail2(pageIndex, pageSize, maptj);
+			request.setAttribute("total", result.get("total"));
+			List list=(List) result.get("result");
 			if(list!=null&&list.size()>0){
 				for(int i=0;i<list.size();i++){
-					Map map=(Map) list.get(i);
-					String sheetid=(String) map.get("sheetid");
-					String title=(String) map.get("title");
-					if(title.contains("SuperviseTaskRecord")){//挂牌整治工单
-						String querymain="select sheetid,sendUserid,sendcontact,mainListedTime from listedregulation_main where sheetid='"+sheetid+"'";
-						List listmain=service.getSheetAccessoriesList(querymain);
-						System.out.println(querymain);
-						if(listmain!=null&&listmain.size()>0){
-							Map map2=(Map) listmain.get(0);
-							Date mainListedTime=(Date) map2.get("mainListedTime");
-							long diff = new Date().getTime() - mainListedTime.getTime();
-							long day = diff / (1000 * 24 * 60 * 60);
-							long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
-							map2.put("costtime", day+"天"+hour+"小时");
-							map2.put("workflowType", "commonfault");
-							resultlist.add(map2);
-							System.out.println(map2);
-						}
-						
-					}else{//故障工单
-						String querymain="select mainFaultGenerantTime,sheetid,sendUserid,sendcontact from commonfault_main where sheetid='"+sheetid+"'";
-						List listmain=service.getSheetAccessoriesList(querymain);
-						System.out.println(querymain);
-						if(listmain!=null&&listmain.size()>0){
-							Map map2=(Map) listmain.get(0);
-							Date mainFaultGenerantTime=(Date) map2.get("mainFaultGenerantTime");
-							long diff = new Date().getTime() - mainFaultGenerantTime.getTime();
-							long day = diff / (1000 * 24 * 60 * 60);
-							long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
-							map2.put("costtime", day+"天"+hour+"小时");
-							map2.put("workflowType", "commonfault");
-							resultlist.add(map2);
-							System.out.println(map2);
-						}
-					}
-					System.out.println(sheetid);
-				}
 				
+				Object[] objarr=(Object[]) list.get(i);
+				String sheetid=(String) objarr[0];
+				String title=(String) objarr[1];
+				if(title.contains("SuperviseTaskRecord")){//挂牌整治工单
+					String querymain="select sheetid,sendUserid,sendcontact,mainListedTime from listedregulation_main where sheetid='"+sheetid+"'";
+					List listmain=service.getSheetAccessoriesList(querymain);
+					System.out.println(querymain);
+					if(listmain!=null&&listmain.size()>0){
+						Map map2=(Map) listmain.get(0);
+						Date mainListedTime=(Date) map2.get("mainListedTime");
+						long diff = new Date().getTime() - mainListedTime.getTime();
+						long day = diff / (1000 * 24 * 60 * 60);
+						long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
+						map2.put("costtime", day+"天"+hour+"小时");
+						map2.put("workflowType", "commonfault");
+						resultlist.add(map2);
+						System.out.println(map2);
+					}
+				}else{//故障工单
+					String querymain="select mainFaultGenerantTime,sheetid,sendUserid,sendcontact from commonfault_main where sheetid='"+sheetid+"'";
+					List listmain=service.getSheetAccessoriesList(querymain);
+					System.out.println(querymain);
+					if(listmain!=null&&listmain.size()>0){
+						Map map2=(Map) listmain.get(0);
+						Date mainFaultGenerantTime=(Date) map2.get("mainFaultGenerantTime");
+						long diff = new Date().getTime() - mainFaultGenerantTime.getTime();
+						long day = diff / (1000 * 24 * 60 * 60);
+						long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
+						map2.put("costtime", day+"天"+hour+"小时");
+						map2.put("workflowType", "commonfault");
+						resultlist.add(map2);
+						System.out.println(map2);
+					}
+					
+				}
+				System.out.println(sheetid);
 			}
+			}
+			
+				
 		}else if(status.equals("1")){//已来到本级督办
-			String commonfaultsql="SELECT DISTINCT m.SHEETID FROM( "+
-							" select a.noticeuserid,a.noticemobile,a.*  from "+ 
-							" sms_record a where a.ifload = 0 and exists "+
-							"(select 1 from commonfault_main b where b.sheetid = a.sheetid and b.status = 0))m";
-			String listedregulationsql="SELECT DISTINCT m.SHEETID FROM( "+
-							" select a.noticeuserid,a.noticemobile,a.*  from "+ 
-							" sms_record a where a.ifload = 0 and exists "+ 
-							" (select 1 from commonfault_main b where b.sheetid = a.sheetid and b.status = 0))m";
-			System.out.println("commonfaultsql:"+commonfaultsql);
-			System.out.println("listedregulation:"+listedregulationsql);
-			List commonfaultmainlist=service.getSheetAccessoriesList(commonfaultsql);
-			List listedregulationlist=service.getSheetAccessoriesList(listedregulationsql);
-			if(commonfaultmainlist!=null&&commonfaultmainlist.size()>0){
-				for(int i=0;i<commonfaultmainlist.size();i++){
-					Map map=(Map) commonfaultmainlist.get(i);
-					String sheetid=(String) map.get("sheetid");
+			Map maptj=new HashMap();
+			maptj.put("status", "1");
+			Map result=superviseTaskManager.getBoardDetail2(pageIndex, pageSize, maptj);
+			request.setAttribute("total", result.get("total"));
+			List list=(List) result.get("result");
+			if(list!=null&&list.size()>0){
+				for(int i=0;i<list.size();i++){
+					String sheetid=(String) list.get(0);
+					String querymain="select mainFaultGenerantTime,sheetid,sendUserid,sendcontact from commonfault_main where sheetid='"+sheetid+"'";
+					List listmain=service.getSheetAccessoriesList(querymain);
+					System.out.println(querymain);
+					if(listmain!=null&&listmain.size()>0){
+						Map map2=(Map) listmain.get(0);
+						Date mainFaultGenerantTime=(Date) map2.get("mainFaultGenerantTime");
+						long diff = new Date().getTime() - mainFaultGenerantTime.getTime();
+						long day = diff / (1000 * 24 * 60 * 60);
+						long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
+						map2.put("costtime", day+"天"+hour+"小时");
+						map2.put("workflowType", "commonfault");
+						resultlist.add(map2);
+						System.out.println(map2);
+					}
+					querymain="select sheetid,sendUserid,sendcontact,mainListedTime from listedregulation_main where sheetid='"+sheetid+"'";
+					listmain=service.getSheetAccessoriesList(querymain);
+					System.out.println(querymain);
+					if(listmain!=null&&listmain.size()>0){
+						Map map2=(Map) listmain.get(0);
+						Date mainListedTime=(Date) map2.get("mainListedTime");
+						long diff = new Date().getTime() - mainListedTime.getTime();
+						long day = diff / (1000 * 24 * 60 * 60);
+						long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
+						map2.put("costtime", day+"天"+hour+"小时");
+						map2.put("workflowType", "listedregulation");
+						resultlist.add(map2);
+						System.out.println(map2);
+					}
 				}
 			}
-		}else if(status.equals("2")){//已提交到上级督办
 			
+		}else if(status.equals("2")){//已提交到上级督办
+			Map maptj=new HashMap();
+			maptj.put("status", "2");
+			Map result=superviseTaskManager.getBoardDetail2(pageIndex, pageSize, maptj);
+			request.setAttribute("total", result.get("total"));
+			List list=(List) result.get("result");
+			if(list!=null&&list.size()>0){
+				for(int i=0;i<list.size();i++){
+					String sheetid=(String) list.get(0);
+					String querymain="select mainFaultGenerantTime,sheetid,sendUserid,sendcontact from commonfault_main where sheetid='"+sheetid+"'";
+					List listmain=service.getSheetAccessoriesList(querymain);
+					System.out.println(querymain);
+					if(listmain!=null&&listmain.size()>0){
+						Map map2=(Map) listmain.get(0);
+						Date mainFaultGenerantTime=(Date) map2.get("mainFaultGenerantTime");
+						long diff = new Date().getTime() - mainFaultGenerantTime.getTime();
+						long day = diff / (1000 * 24 * 60 * 60);
+						long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
+						map2.put("costtime", day+"天"+hour+"小时");
+						map2.put("workflowType", "commonfault");
+						resultlist.add(map2);
+						System.out.println(map2);
+					}
+					querymain="select sheetid,sendUserid,sendcontact,mainListedTime from listedregulation_main where sheetid='"+sheetid+"'";
+					listmain=service.getSheetAccessoriesList(querymain);
+					System.out.println(querymain);
+					if(listmain!=null&&listmain.size()>0){
+						Map map2=(Map) listmain.get(0);
+						Date mainListedTime=(Date) map2.get("mainListedTime");
+						long diff = new Date().getTime() - mainListedTime.getTime();
+						long day = diff / (1000 * 24 * 60 * 60);
+						long hour = diff % (1000 * 24 * 60 * 60) / (1000*60*60);
+						map2.put("costtime", day+"天"+hour+"小时");
+						map2.put("workflowType", "listedregulation");
+						resultlist.add(map2);
+						System.out.println(map2);
+					}
+				}
+			}
 		}
 		System.out.println(resultlist);
 			
-			
 		
 		request.setAttribute("status", status);
-		request.setAttribute("total", new Integer(resultlist.size()));
-		request.setAttribute("pageSize", new Integer(15));
+		
+		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("taskList", resultlist);
 		return mapping.findForward("supervisetaskBoardDetail2");
 	}
 	//督办任务 看板 三级视图
 	public ActionForward supervisetaskBoardDetail3(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)throws Exception{
-		String sheetId=StaticMethod.null2String(request.getParameter("sheetId"));
+		String sheetid=StaticMethod.null2String(request.getParameter("sheetid"));
+		String workflowType=StaticMethod.null2String(request.getParameter("workflowType"));
 		
+		if(workflowType.equals("commonfault")){
+			
+		}else if(workflowType.equals("listedregulation")){
+			
+		}
+		JSONObject json=new JSONObject();
+		json.put("position", "责任人");
+		json.put("person", "张三");
+		json.put("time", "5月24日 12:00");
+		json.put("phone", "13140168392");
+		json.put("statue", "pass");
+		json.put("order", "1");
+		json.put("className", "e-pass");
+		List resultList=new ArrayList();
+		resultList.add(json);
+		resultList.add(json);
+		resultList.add(json);
+		resultList.add(json);
+		resultList.add(json);
+		request.setAttribute("resultList", resultList);
+		
+		System.out.println(json);
+		request.setAttribute("workflowType", workflowType);
+		request.setAttribute("sheetid", sheetid);
 		return mapping.findForward("supervisetaskBoardDetail3");
 	}
 	
@@ -769,32 +860,5 @@ public class SuperviseTaskAction extends SheetAction {
 		return this.supervisetaskBoardMainAdd(mapping, form, request, response);
 	}
 	
-	//接口,其他工程调用返回工单状态:0未归档;1-已归档
-	public String querySheetStatus(String sheetid)throws Exception{
-//		sheetid="JX-051-190513-24958";
-//		sheetid="JX-666-190311-13611";
-//		IDownLoadSheetAccessoriesService service = (IDownLoadSheetAccessoriesService)ApplicationContextHolder.getInstance().getBean("IDownLoadSheetAccessoriesService");
-//		String sql="select status from COMMONFAULT_MAIN where sheetid='"+sheetid+"' ";
-//		String sql2="select status from listedregulation_main where sheetid='"+sheetid+"'";
-//		List mainlist=service.getSheetAccessoriesList(sql);
-//		System.out.println("Supervisetaskmainlist1:"+mainlist);
-//		String status="";
-//		if(mainlist!=null&&mainlist.size()>0){
-//			Map map=(Map) mainlist.get(0);
-//			status=String.valueOf(map.get("status")) ;
-//		}else{
-//			mainlist=service.getSheetAccessoriesList(sql2);
-//			System.out.println("Supervisetaskmainlist1:"+mainlist);
-//			if(mainlist!=null&&mainlist.size()>0){
-//				Map map=(Map) mainlist.get(0);
-//				status=String.valueOf( map.get("status"));
-//			}
-//		}
-//		System.out.println("工单状态是:"+status);
-//		JSONObject json=new JSONObject();
-//		json.put("status", status);
-		
-		
-		return sheetid;
-	}
+	
 }

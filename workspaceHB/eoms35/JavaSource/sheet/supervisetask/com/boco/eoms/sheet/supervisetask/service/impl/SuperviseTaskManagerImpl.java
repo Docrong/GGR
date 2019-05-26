@@ -955,4 +955,9 @@ public class SuperviseTaskManagerImpl implements SuperviseTaskManager {
 		}
 		return json.toString();
 	}
+	
+	
+	public Map getBoardDetail2( Integer curPage,  Integer pageSize, Map maptj)throws Exception{
+		return ISuperviseTaskDAO.getBoardDetail2(  curPage,  pageSize, maptj);
+	}
 }

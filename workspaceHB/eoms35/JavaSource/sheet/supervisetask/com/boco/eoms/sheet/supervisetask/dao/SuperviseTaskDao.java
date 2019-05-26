@@ -29,4 +29,6 @@ public interface SuperviseTaskDao extends IMainDAO {
 	public SuperviseTaskRecord getSuperviseTaskRecordBySheetId( String sheetId);
 	
 	public Map supervisetaskRuleList2( Integer curPage,  Integer pageSize, Map maptj);
+	
+	public Map getBoardDetail2( Integer curPage,  Integer pageSize, Map maptj)throws Exception;
 }

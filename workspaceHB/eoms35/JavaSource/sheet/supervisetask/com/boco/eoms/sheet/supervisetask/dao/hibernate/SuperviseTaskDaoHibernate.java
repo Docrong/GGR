@@ -21,6 +21,7 @@ import com.boco.eoms.sheet.commontask.model.CommonTaskMain;
 import com.boco.eoms.sheet.listedregulation.model.ListedRegulationMain;
 import com.boco.eoms.sheet.listedregulation.model.ListedRegulationTask;
 import com.boco.eoms.sheet.supervisetask.dao.SuperviseTaskDao;
+import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskMainDuty;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRecord;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRule;
 
@@ -436,4 +437,73 @@ public class SuperviseTaskDaoHibernate extends MainDAO implements SuperviseTaskD
 		return (Map) getHibernateTemplate().execute(callback);
 	}
 	
+	public Map BoardCountList(final Integer curPage,final  Integer pageSize,final Map maptj)throws Exception{
+		HibernateCallback callback=new HibernateCallback(){
+
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				String userid=(String) maptj.get("userid");
+				String querysql="SELECT DISTINCT S.sheetid,'commonfault' type_,m.sendtime from \n" +
+				"SMS_RECORD s,COMMONFAULT_MAIN m where s.ifload=0 and s.sheetid=m.sheetid\n" +
+				"union all(\n" +
+				"select DISTINCT s.sheetid,'listedregulation' type_,l.sendtime from  \n" +
+				"SMS_RECORD s,LISTEDREGULATION_MAIN l where  s.sheetid=l.sheetid)";
+				
+				String sql=querysql;
+				
+				Query query=session.createSQLQuery(sql);
+				if(pageSize.intValue()!=-1){
+					query.setFirstResult(pageSize.intValue()
+									* (curPage.intValue()));
+	         
+					query.setMaxResults(pageSize.intValue());
+					}
+				List list=query.list();
+				Query query2 = session.createSQLQuery(sql);
+				int total=query2.list().size();
+				Map map=new HashMap();
+				map.put("result", list);
+				map.put("total", new Integer(total));
+				return map;
+			}
+			
+		};
+		return (Map) getHibernateTemplate().execute(callback);
+	}
+	public Map BoardCountPersonList(final Integer curPage, final Integer pageSize,final Map maptj)throws Exception{
+		HibernateCallback callback=new HibernateCallback(){
+
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
+				String userid=(String) maptj.get("userid");
+				String querysql="";
+				
+				String sql=querysql;
+				
+				Query query=session.createSQLQuery(sql);
+				if(pageSize.intValue()!=-1){
+					query.setFirstResult(pageSize.intValue()
+									* (curPage.intValue()));
+	         
+					query.setMaxResults(pageSize.intValue());
+					}
+				List list=query.list();
+				Query query2 = session.createSQLQuery(sql);
+				int total=query2.list().size();
+				Map map=new HashMap();
+				map.put("result", list);
+				map.put("total", new Integer(total));
+				return map;
+			}
+			
+		};
+		return (Map) getHibernateTemplate().execute(callback);
+	}
+	
+	public void supervisetaskMainDutySave(SuperviseTaskMainDuty t) {
+		if ((t.getId() == null) || (t.getId().equals(""))){
+			getHibernateTemplate().save(t);
+		}
+		else
+			getHibernateTemplate().saveOrUpdate(t);
+	
+	}
 }

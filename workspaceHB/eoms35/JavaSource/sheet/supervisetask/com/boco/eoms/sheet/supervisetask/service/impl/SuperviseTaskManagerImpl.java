@@ -44,6 +44,7 @@ import com.boco.eoms.commons.loging.BocoLog;
 import com.boco.eoms.commons.system.session.form.TawSystemSessionForm;
 import com.boco.eoms.commons.util.xml.XmlManage;
 import com.boco.eoms.sheet.supervisetask.dao.SuperviseTaskDao;
+import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskMainDuty;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRecord;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRule;
 import com.boco.eoms.sheet.supervisetask.service.SuperviseTaskManager;
@@ -959,5 +960,17 @@ public class SuperviseTaskManagerImpl implements SuperviseTaskManager {
 	
 	public Map getBoardDetail2( Integer curPage,  Integer pageSize, Map maptj)throws Exception{
 		return ISuperviseTaskDAO.getBoardDetail2(  curPage,  pageSize, maptj);
+	}
+	
+	public Map BoardCountList(Integer curPage,  Integer pageSize, Map maptj)throws Exception{
+		return ISuperviseTaskDAO.BoardCountList(  curPage,  pageSize, maptj);
+	}
+	public Map BoardCountPersonList(Integer curPage,  Integer pageSize, Map maptj)throws Exception{
+		return ISuperviseTaskDAO.BoardCountPersonList(  curPage,  pageSize, maptj);
+	}
+
+	public void supervisetaskMainDutySave(SuperviseTaskMainDuty t) {
+		 ISuperviseTaskDAO.supervisetaskMainDutySave(t);
+		
 	}
 }

@@ -7,6 +7,7 @@ import com.boco.eoms.sheet.base.dao.IMainDAO;
 import com.boco.eoms.sheet.commontask.model.CommonTaskMain;
 import com.boco.eoms.sheet.listedregulation.model.ListedRegulationMain;
 import com.boco.eoms.sheet.listedregulation.model.ListedRegulationTask;
+import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskMainDuty;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRecord;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRule;
 
@@ -31,4 +32,7 @@ public interface SuperviseTaskDao extends IMainDAO {
 	public Map supervisetaskRuleList2( Integer curPage,  Integer pageSize, Map maptj);
 	
 	public Map getBoardDetail2( Integer curPage,  Integer pageSize, Map maptj)throws Exception;
+	public Map BoardCountList(Integer curPage,  Integer pageSize, Map maptj)throws Exception;
+	public Map BoardCountPersonList(Integer curPage,  Integer pageSize, Map maptj)throws Exception;
+	public void supervisetaskMainDutySave(SuperviseTaskMainDuty t);
 }

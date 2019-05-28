@@ -34,8 +34,71 @@ public class SuperviseTaskRecord {
 	private String reason;//督办原因
 	private String superviseType;//督办方式
 	
+	private String createuser;
+	private String createcontact;
 	
+	private String sendtime1;
+	private String sendtime2;
+	private String sendtime3;
+	private String sendtime4;
+	private String sendtime5;
 	
+	public String getSendtime1() {
+		return sendtime1;
+	}
+
+	public void setSendtime1(String sendtime1) {
+		this.sendtime1 = sendtime1;
+	}
+
+	public String getSendtime2() {
+		return sendtime2;
+	}
+
+	public void setSendtime2(String sendtime2) {
+		this.sendtime2 = sendtime2;
+	}
+
+	public String getSendtime3() {
+		return sendtime3;
+	}
+
+	public void setSendtime3(String sendtime3) {
+		this.sendtime3 = sendtime3;
+	}
+
+	public String getSendtime4() {
+		return sendtime4;
+	}
+
+	public void setSendtime4(String sendtime4) {
+		this.sendtime4 = sendtime4;
+	}
+
+	public String getSendtime5() {
+		return sendtime5;
+	}
+
+	public void setSendtime5(String sendtime5) {
+		this.sendtime5 = sendtime5;
+	}
+
+	public String getCreatecontact() {
+		return createcontact;
+	}
+
+	public void setCreatecontact(String createcontact) {
+		this.createcontact = createcontact;
+	}
+
+	public String getCreateuser() {
+		return createuser;
+	}
+
+	public void setCreateuser(String createuser) {
+		this.createuser = createuser;
+	}
+
 	public String getSheetId() {
 		return sheetId;
 	}

@@ -53,7 +53,12 @@
 	<property name="content"/>
 		<property name="reason"/>	
 		<property name="superviseType"/> 
-			 				 	
- 
+		<property name="createuser"></property>	 				 	
+		<property name="createcontact"></property>
+		<property name="sendtime1"></property>
+		<property name="sendtime2"></property>
+		<property name="sendtime3"></property>
+		<property name="sendtime4"></property>
+		<property name="sendtime5"></property>
 </class>    
 </hibernate-mapping>

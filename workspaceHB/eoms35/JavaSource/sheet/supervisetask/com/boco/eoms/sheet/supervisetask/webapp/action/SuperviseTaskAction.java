@@ -1,5 +1,6 @@
 package com.boco.eoms.sheet.supervisetask.webapp.action;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,10 +29,12 @@ import com.boco.eoms.commons.system.session.form.TawSystemSessionForm;
 import com.boco.eoms.sheet.base.service.IDownLoadSheetAccessoriesService;
 import com.boco.eoms.sheet.base.util.SheetAttributes;
 import com.boco.eoms.sheet.base.webapp.action.SheetAction;
+import com.boco.eoms.sheet.commonfault.model.CommonFaultMain;
 import com.boco.eoms.sheet.commontask.model.CommonTaskMain;
 //import com.boco.eoms.sheet.listedregulation.model.ListedRegulationMain;
 //import com.boco.eoms.sheet.listedregulation.model.ListedRegulationTask;
 import com.boco.eoms.sheet.listedregulation.model.ListedRegulationMain;
+import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskMainDuty;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRecord;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRule;
 import com.boco.eoms.sheet.supervisetask.service.SuperviseTaskManager;
@@ -745,30 +748,330 @@ public class SuperviseTaskAction extends SheetAction {
 	public ActionForward supervisetaskBoardDetail3(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)throws Exception{
 		String sheetid=StaticMethod.null2String(request.getParameter("sheetid"));
+		sheetid="JX-051-190513-24071";
 		String workflowType=StaticMethod.null2String(request.getParameter("workflowType"));
-		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		IDownLoadSheetAccessoriesService service = (IDownLoadSheetAccessoriesService)ApplicationContextHolder.getInstance().getBean("IDownLoadSheetAccessoriesService");
+		List resultList=new ArrayList();
+		JSONObject record0=new JSONObject();
+		JSONObject record1=new JSONObject();
+		JSONObject record2=new JSONObject();
+		JSONObject record3=new JSONObject();
+		JSONObject record4=new JSONObject();
+		Date date=new Date();
+		String sql="select t1.noticeusername,t1.noticeuserid,t1.noticemobile ,t2.* from sms_record t1,( "+
+		" select dispatchtime,row_number() over(order by dispatchtime)rn "+
+		" from sms_record where sheetid='"+sheetid+"' and ifload<>-1 group BY dispatchtime)t2 "+ 
+		" where t1.dispatchtime=t2.dispatchtime order by t2.rn";
 		if(workflowType.equals("commonfault")){
+			/*rows like blow
+			 |noticeusername--用户名CN|noticeuserid--用户|noticemobile--手机|dispatchtime--转发时间|rn--督办等级|
+			 */
+			List querylist=service.getSheetAccessoriesList(sql);
+			System.out.println("querylist:"+querylist);
+			if (querylist != null && querylist.size() > 0) {
+				String createusersql = "select m.*,u.username from commonfault_main m,taw_system_user u " +
+									"where m.senduserid=u.userid and sheetid='HB-051-150514-12858'";
+				System.out.println("createusersql:"+createusersql);
+				List list = service.getSheetAccessoriesList(createusersql);
+				if (list != null && list.size() > 0) {
+					Map map = (Map) list.get(0);
+					Map map2= 	(Map) querylist.get(0);
+					String userid = (String) map.get("senduserid");
+					String contact = (String) map.get("sendcontact");
+					String username=String.valueOf(map.get("username"));
+					String dispatchtime = String.valueOf(map2
+							.get("dispatchtime"));
+					String status = "";
+					String className = "";
+					if (date.after(df.parse(dispatchtime))) {
+						status = "pass";
+						className = "e-pass";
+					} else if ((date.getTime() + 1000 * 60 * 60) < df.parse(
+							dispatchtime).getTime()) {
+						status = "already";
+						className = "e-already";
+					} else {
+						status = "undo";
+						className = "e-undo";
+					}
+					record0.put("position", "责任人");
+					record0.put("person", username);
+					record0.put("time", dispatchtime);
+					record0.put("phone", contact);
+					record0.put("order", "1");
+					record0.put("statue", status);
+					record0.put("className", className);
+					 
+				 }else{
+					 record0.put("position", "责任人");
+						record0.put("person", "");
+						record0.put("time", "");
+						record0.put("phone", "");
+						record0.put("order", "1");
+						record0.put("statue", "pass");
+						record0.put("className", "e-pass");
+				 }
+				 System.out.println(list);
+				
+				for(int i=0;i<querylist.size();i++){
+					Map map=(Map) querylist.get(i);
+					String rn=String.valueOf( map.get("rn"));
+					String noticeuserid=String.valueOf(map.get("noticeusername"));
+					String noticemobile=String.valueOf(map.get("noticemobile"));
+					String dispatchtime=String.valueOf(map.get("dispatchtime"));
+					System.out.println("rn"+rn);
+					System.out.println("dispatchtime"+dispatchtime);
+					
+					String status="";
+					String className="";
+					if(date.after(df.parse(dispatchtime))){
+						status="pass";
+						className="e-pass";
+					}else if((date.getTime()+1000*60*60)<df.parse(dispatchtime).getTime()){
+						status="already";
+						className="e-already";
+					}else{
+						status="undo";
+						className="e-undo";
+					}
+					if(rn.equals("1")){
+						if(!record1.has("position")){
+							record1.put("position", "一级督办");
+						}
+						if(!record1.has("time")){
+							record1.put("time", dispatchtime);
+						}
+						if(!record1.has("statue")){
+							record1.put("statue", status);
+						}
+						if(!record1.has("order")){
+							record1.put("order", "2");
+						}
+						if(!record1.has("className")){
+							record1.put("className", className);
+						}
+						record1.put("person", noticeuserid);
+						record1.put("phone", noticemobile);
+					}else if(rn.equals("2")){
+						if(!record2.has("position")){
+							record2.put("position", "二级督办");
+						}
+						if(!record2.has("time")){
+							record2.put("time", dispatchtime);
+						}
+						if(!record2.has("statue")){
+							record2.put("statue", status);
+						}
+						if(!record2.has("order")){
+							record2.put("order", "2");
+						}
+						if(!record2.has("className")){
+							record2.put("className", className);
+						}
+							
+						record2.put("person", noticeuserid);
+						record2.put("phone", noticemobile);
+						
+					}else if(rn.equals("3")){
+						if(!record3.has("position")){
+							record3.put("position", "三级督办");
+						}
+						if(!record3.has("time")){
+							record3.put("time", dispatchtime);
+						}
+						if(!record3.has("statue")){
+							record3.put("statue", status);
+						}
+						if(!record3.has("order")){
+							record3.put("order", "4");
+						}
+						if(!record3.has("className")){
+							record3.put("className", className);
+						}
+						record3.put("phone", noticemobile);
+						record3.put("person", noticeuserid);
+					}else if(rn.equals("4")){
+						if(!record4.has("position")){
+							record4.put("position", "四级督办");
+						}
+						if(!record4.has("time")){
+							record4.put("time", dispatchtime);
+						}
+						if(!record4.has("statue")){
+							record4.put("statue", status);
+						}
+						if(!record4.has("order")){
+							record4.put("order", "5");
+						}
+						if(!record4.has("className")){
+							record4.put("className", className);
+						}
+						record4.put("phone", noticemobile);
+						record4.put("person", noticeuserid);
+					}
+				}
+			}
+			
 			
 		}else if(workflowType.equals("listedregulation")){
-			
+			List querylist=service.getSheetAccessoriesList(sql);
+			System.out.println("querylist:"+querylist);
+			if (querylist != null && querylist.size() > 0) {
+				String createusersql = "select m.*,u.username from listedregulation_main m,taw_system_user u "
+						+ "where m.senduserid=u.userid and sheetid='HB-051-150514-12858'";
+				System.out.println("createusersql:" + createusersql);
+				List list = service.getSheetAccessoriesList(createusersql);
+				if (list != null && list.size() > 0) {
+					Map map = (Map) list.get(0);
+					Map map2 = (Map) querylist.get(0);
+					String userid = (String) map.get("senduserid");
+					String contact = (String) map.get("sendcontact");
+					String username = String.valueOf(map.get("username"));
+					String dispatchtime = String.valueOf(map2
+							.get("dispatchtime"));
+					String status = "";
+					String className = "";
+					if (date.after(df.parse(dispatchtime))) {
+						status = "pass";
+						className = "e-pass";
+					} else if ((date.getTime() + 1000 * 60 * 60) < df.parse(
+							dispatchtime).getTime()) {
+						status = "already";
+						className = "e-already";
+					} else {
+						status = "undo";
+						className = "e-undo";
+					}
+					record0.put("position", "责任人");
+					record0.put("person", username);
+					record0.put("time", dispatchtime);
+					record0.put("phone", contact);
+					record0.put("order", "1");
+					record0.put("statue", status);
+					record0.put("className", className);
+
+				} else {
+					record0.put("position", "责任人");
+					record0.put("person", "");
+					record0.put("time", "");
+					record0.put("phone", "");
+					record0.put("order", "1");
+					record0.put("statue", "pass");
+					record0.put("className", "e-pass");
+				}
+				System.out.println(list);	
+				
+				for(int i=0;i<querylist.size();i++){
+					Map map=(Map) querylist.get(i);
+					String rn=String.valueOf( map.get("rn"));
+					String noticeuserid=String.valueOf(map.get("noticeusername"));
+					String noticemobile=String.valueOf(map.get("noticemobile"));
+					String dispatchtime=String.valueOf(map.get("dispatchtime"));
+					System.out.println("rn"+rn);
+					System.out.println("dispatchtime"+dispatchtime);
+					
+					String status="";
+					String className="";
+					if(date.after(df.parse(dispatchtime))){
+						status="pass";
+						className="e-pass";
+					}else if((date.getTime()+1000*60*60)<df.parse(dispatchtime).getTime()){
+						status="already";
+						className="e-already";
+					}else{
+						status="undo";
+						className="e-undo";
+					}
+					
+					if(rn.equals("1")){
+						if(!record1.has("position")){
+							record1.put("position", "一级督办");
+						}
+						if(!record1.has("time")){
+							record1.put("time", dispatchtime);
+						}
+						if(!record1.has("statue")){
+							record1.put("statue", status);
+						}
+						if(!record1.has("order")){
+							record1.put("order", "2");
+						}
+						if(!record1.has("className")){
+							record1.put("className", className);
+						}
+						record1.put("person", noticeuserid);
+						record1.put("phone", noticemobile);
+					}else if(rn.equals("2")){
+						if(!record2.has("position")){
+							record2.put("position", "二级督办");
+						}
+						if(!record2.has("time")){
+							record2.put("time", dispatchtime);
+						}
+						if(!record2.has("statue")){
+							record2.put("statue", status);
+						}
+						if(!record2.has("order")){
+							record2.put("order", "2");
+						}
+						if(!record2.has("className")){
+							record2.put("className", className);
+						}
+							
+						record2.put("person", noticeuserid);
+						record2.put("phone", noticemobile);
+						
+					}else if(rn.equals("3")){
+						if(!record3.has("position")){
+							record3.put("position", "三级督办");
+						}
+						if(!record3.has("time")){
+							record3.put("time", dispatchtime);
+						}
+						if(!record3.has("statue")){
+							record3.put("statue", status);
+						}
+						if(!record3.has("order")){
+							record3.put("order", "4");
+						}
+						if(!record3.has("className")){
+							record3.put("className", className);
+						}
+						record3.put("phone", noticemobile);
+						record3.put("person", noticeuserid);
+					}else if(rn.equals("4")){
+						if(!record4.has("position")){
+							record4.put("position", "四级督办");
+						}
+						if(!record4.has("time")){
+							record4.put("time", dispatchtime);
+						}
+						if(!record4.has("statue")){
+							record4.put("statue", status);
+						}
+						if(!record4.has("order")){
+							record4.put("order", "5");
+						}
+						if(!record4.has("className")){
+							record4.put("className", className);
+						}
+						record4.put("phone", noticemobile);
+						record4.put("person", noticeuserid);
+					}
+				}
+			}
 		}
-		JSONObject json=new JSONObject();
-		json.put("position", "责任人");
-		json.put("person", "张三");
-		json.put("time", "5月24日 12:00");
-		json.put("phone", "13140168392");
-		json.put("statue", "pass");
-		json.put("order", "1");
-		json.put("className", "e-pass");
-		List resultList=new ArrayList();
-		resultList.add(json);
-		resultList.add(json);
-		resultList.add(json);
-		resultList.add(json);
-		resultList.add(json);
+		System.out.println("SuperviseTaskBoardDetail3:");
+		resultList.add(record0);
+		resultList.add(record1);
+		resultList.add(record2);
+		resultList.add(record3);
+		resultList.add(record4);
 		request.setAttribute("resultList", resultList);
 		
-		System.out.println(json);
+		System.out.println("result"+resultList);
 		request.setAttribute("workflowType", workflowType);
 		request.setAttribute("sheetid", sheetid);
 		return mapping.findForward("supervisetaskBoardDetail3");
@@ -776,11 +1079,97 @@ public class SuperviseTaskAction extends SheetAction {
 	
 	public ActionForward supervisetaskBoardCount(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)throws Exception{
+		
+		IDownLoadSheetAccessoriesService service = (IDownLoadSheetAccessoriesService)ApplicationContextHolder.getInstance().getBean("IDownLoadSheetAccessoriesService");
+		Integer pageSize = ((SheetAttributes) ApplicationContextHolder
+				.getInstance().getBean("SheetAttributes")).getPageSize();
+		String pageIndexName = new org.displaytag.util.ParamEncoder("taskList")
+			.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+		final Integer pageIndex = new Integer(GenericValidator
+				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+						: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+		Map maptj=new HashMap();
+		Map resultmap=superviseTaskManager.BoardCountList(pageIndex, pageSize, maptj);
+		String total=String.valueOf(resultmap.get("total"));
+		List result=(List) resultmap.get("result");//查询出sheetid和工单类型
+		Date date=new Date();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		List resultList=new ArrayList();
+		for(int i=0;i<result.size();i++){
+			Object[]obj=(Object[]) result.get(i);
+			String sheetid=(String) obj[0];
+			String type=(String) obj[1];
+			String sendtime=String.valueOf(obj[2]);
+			System.out.println("sheetid:"+sheetid+",type:"+type);
+			Map map=new HashMap();
+			map.put("sheetid", sheetid);
+			map.put("workflowType", type);
+			map.put("sendtime", sendtime);
+			//查询督办级别,人员
+			//|noticeusername--用户名CN|noticeuserid--用户|noticemobile--手机|dispatchtime--转发时间|rn--督办等级|
+			String querylevel="select t1.noticeusername,t1.noticeuserid,t1.noticemobile ,t2.* from sms_record t1,( \n" +
+			"		 select dispatchtime,row_number() over(order by dispatchtime)rn \n" +
+			"		 from sms_record where sheetid='JX-051-190513-24071' and ifload<>-1 group BY dispatchtime)t2 \n" +
+			"		 where t1.dispatchtime=t2.dispatchtime order by t2.rn";
+			List levelList=service.getSheetAccessoriesList(querylevel);
+			String status="";
+			String username="";
+			String mobile="";
+			for(int j=0;j<levelList.size();j++){
+				Map map2=(Map) levelList.get(j);
+				String rn=String.valueOf( map2.get("rn"));
+				String noticeusername=String.valueOf(map2.get("noticeusername"));
+				String noticemobile=String.valueOf(map2.get("noticemobile"));
+				String dispatchtime=String.valueOf(map2.get("dispatchtime"));
+				if(date.after(df.parse(dispatchtime))){
+					status="pass";
+				}else if((date.getTime()+1000*60*60)<df.parse(dispatchtime).getTime()){
+					status="already";
+				}else{
+					status="undo";
+				}
+				map.put("status", status);
+				if(rn.equals("1")){
+					map.put("username1", noticeusername);
+					map.put("status1", status);
+					map.put("mobile1", noticemobile);
+				}else if(rn.equals("2")){
+					map.put("username2", noticeusername);
+					map.put("status2", status);
+					map.put("mobile2", noticemobile);
+				}else if(rn.equals("3")){
+					map.put("username3", noticeusername);
+					map.put("status3", status);
+					map.put("mobile3", noticemobile);
+				}else if(rn.equals("4")){
+					map.put("username4", noticeusername);
+					map.put("status4", status);
+					map.put("mobile4", noticemobile);
+				}
+			}
+			resultList.add(map);	
+		}
+		System.out.println("Supervisetask result:"+resultList);
+		
+	
+		request.setAttribute("pageSize", pageSize);
+		request.setAttribute("taskList", resultList);
+		request.setAttribute("total", new Integer(total));
 		return mapping.findForward("supervisetaskBoardCount");
 	}
 	
 	public ActionForward supervisetaskBoardCountPerson(ActionMapping mapping, ActionForm form,
 			HttpServletRequest request, HttpServletResponse response)throws Exception{
+		List result=new ArrayList();
+		Map map=new HashMap();
+		map.put("test", "test");
+		map.put("test2", "test2");
+		result.add(map);
+		result.add(map);
+		
+		request.setAttribute("taskList", result);
+		request.setAttribute("pageSize", new Integer(15));
+		request.setAttribute("total", new Integer(15));
 		
 		return mapping.findForward("supervisetaskBoardCountPerson");
 	}
@@ -820,7 +1209,6 @@ public class SuperviseTaskAction extends SheetAction {
 		String cityid=StaticMethod.null2String(request.getParameter("toDeptId"));//地市
 		String userid=StaticMethod.null2String(request.getParameter("sendUserid"));//问题派发人
 		String deptid=StaticMethod.null2String(request.getParameter("deptid"));//派发部门
-		String sendUserid=StaticMethod.null2String(request.getParameter("sendUserid"));
 		String errorDesc=StaticMethod.null2String(request.getParameter("errorDesc"));//故障描述
 		String expectGoal=StaticMethod.null2String(request.getParameter("expectGoal"));//评估目标
 		
@@ -834,10 +1222,29 @@ public class SuperviseTaskAction extends SheetAction {
 		map.put("cityid", cityid);
 		map.put("userid", userid);
 		map.put("deptid", deptid);
-		map.put("sendUserid", sendUserid);
 		map.put("errorDesc", errorDesc);
 		map.put("expectGoal", expectGoal);
 		
+		SuperviseTaskMainDuty t=new SuperviseTaskMainDuty();
+		t.setDeleted("0");
+		t.setSendtime(createtime);
+		t.setWorkflowType(workflowType);
+		t.setWorkflowStatus(workflowStatus);
+		t.setSheetid(sheetId);
+		t.setCityid(cityid);
+		t.setUserid(userid);
+		t.setDeptid(deptid);
+		t.setErrorDesc(errorDesc);
+		t.setErrorSource(errorSource);
+		t.setExpectGoal(expectGoal);
+		try {
+			
+			superviseTaskManager.supervisetaskMainDutySave(t);
+		} catch (Exception e) {
+			System.out.println("supervisetaskBoardMainAddSave Error");
+			e.printStackTrace();
+			
+		}
 		
 //		模拟一条数据
 		JSONObject whereadd=new JSONObject();

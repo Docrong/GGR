@@ -13,9 +13,7 @@
  	<mapping resource="com/boco/eoms/sheet/supervisetask/model/SuperviseTaskRecord.hbm.xml"/>
  	<mapping resource="com/boco/eoms/sheet/supervisetask/model/SuperviseTaskRule.hbm.xml"/>
  	
- 	
- 	<!--<mapping resource="com/boco/eoms/sheet/listedregulation/model/ListedRegulationMain.hbm.xml"/>
-  -->
+ 	<mapping resource="com/boco/eoms/sheet/supervisetask/model/SuperviseTaskMainDuty.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
 

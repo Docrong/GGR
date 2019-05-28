@@ -11,7 +11,7 @@
     <!--  -->
 <script type="text/javascript">
 // data中 className 为必传字段 其中e-pass代表已经处理 e-already正在处理 e-undo 待处理
-
+<%--
 var data = [{
   position : "责任人",  //流转级别
   person : "张光",  //人员
@@ -53,15 +53,14 @@ var data = [{
   order : "5",  //顺序
   className : "e-undo" //这个必须传，代表待处理的单子
 }];
+--%>
 
 
 $(function(){
   //未对数据排序  如果需要排序  请先排好顺序
-    var data2=document.getElementById("data2");
-       var data2json= eval('(' + data2.value + ')');
-        console.log(data);
-        console.log(data2json);
-        data=data2json;
+   var data2=document.getElementById("data2");
+   var data= eval('(' + data2.value + ')');
+    
   var dataList1 = "", dataList0 = "", dataLength = 0, j = 0;
   if (data) {
     dataLength = data.length;
@@ -106,6 +105,7 @@ function gotoWorkflowDetail(workflowType,sheetid){
 	if(workflowType=='commonfault'){
 		url='../commontask/commontask.do?method=showDetailPage&sheetKey=8a8a8a81682b55a901682b8e6eb5002d';
 	}else if(workflowType=='listedregulation'){
+		url='../commontask/commontask.do?method=showDetailPage&sheetKey=8a8a8a81682b55a901682b8e6eb5002d';
 	}
 		
 		window.open(url);

@@ -15,6 +15,7 @@ import org.apache.struts.action.ActionMapping;
 //import com.boco.eoms.sheet.listedregulation.model.ListedRegulationTask;
 import com.boco.eoms.sheet.commontask.model.CommonTaskMain;
 import com.boco.eoms.sheet.listedregulation.model.ListedRegulationMain;
+import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskMainDuty;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRecord;
 import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRule;
 
@@ -57,4 +58,8 @@ public interface SuperviseTaskManager {
 	public String querySheetStatus(String sheetid);
 	
 	public Map getBoardDetail2( Integer curPage,  Integer pageSize, Map maptj)throws Exception;
+	public Map BoardCountList(Integer curPage,  Integer pageSize, Map maptj)throws Exception;
+	public Map BoardCountPersonList(Integer curPage,  Integer pageSize, Map maptj)throws Exception;
+	
+	public void supervisetaskMainDutySave(SuperviseTaskMainDuty t);
 }

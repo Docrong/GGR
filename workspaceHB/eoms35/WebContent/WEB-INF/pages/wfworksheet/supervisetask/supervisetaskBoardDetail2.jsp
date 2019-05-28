@@ -12,6 +12,12 @@ function gotoDetail3(workflowType,sheetid){
 	var url="../supervisetask/supervisetask.do?method=supervisetaskBoardDetail3&sheetid="+sheetid+"&workflowType="+workflowType;
 	window.open(url);
 }
+window.onload=function(){
+	var th=document.getElementsByTagName("th");
+	for(var i=0;i<th.length;i++){
+		th[i].style="text-align:center;";
+	}
+};
 
 </script>
 

@@ -7,8 +7,7 @@ public class SuperviseTaskInterface {
 
 	public String querySheetStatus(String sheetid)throws Exception{
 		SuperviseTaskManager superviseTaskManager=(SuperviseTaskManager)ApplicationContextHolder.getInstance().getBean("iSuperviseTaskManager"); 
-		String json=superviseTaskManager.querySheetStatus(sheetid);
-		sheetid=json;
-		return sheetid;
+		String jsonStr=superviseTaskManager.querySheetStatus(sheetid);
+		return jsonStr;
 	}
 }

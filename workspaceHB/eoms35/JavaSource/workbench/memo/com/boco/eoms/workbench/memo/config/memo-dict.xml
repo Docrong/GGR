@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="level" description="紧急重要程度">
+		<item id="1" name="重要紧急" description="重要紧急" />
+		<item id="2" name="重要不紧急" description="重要不紧急" />
+		<item id="3" name="紧急不重要" description="紧急不重要" />
+		<item id="4" name="不重要不紧急" description="不重要不紧急" />
+	</dict>   
+	<dict id="sendflag" description="派发标志">
+		<item id="0" name="否" description="否" />
+		<item id="1" name="是" description="是" />
+	</dict>
+	<dict id="sendmanner" description="发送方式">
+		<item id="1" name="短信" description="短信" />
+		<item id="2" name="e_mail" description="e_mail" />
+		<item id="3" name="系统" description="系统" />
+	</dict>
+</dicts>  

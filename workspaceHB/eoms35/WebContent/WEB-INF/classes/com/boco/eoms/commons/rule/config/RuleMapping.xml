@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<description>a map file for our new template system</description>
+
+	<class name="com.boco.eoms.commons.rule.config.model.RuleEngine">
+		<map-to xml="ruleEngine" />
+		<field name="rules"
+			type="com.boco.eoms.commons.rule.config.model.Rules"/>
+			
+		<field name="expStyles"
+			type="com.boco.eoms.commons.rule.config.model.ExpStyles"/>
+		
+		<field name="groups"
+			type="com.boco.eoms.commons.rule.config.model.Groups"/>
+			
+		<field name="dict"
+			type="com.boco.eoms.commons.rule.config.model.Dict"/>	
+	</class>
+	
+	<class name="com.boco.eoms.commons.rule.config.model.Dict">
+		<map-to xml="dict" />
+		<field name="dictTypeSql" type="string">
+			<bind-xml name="dictTypeSql" node="attribute" />
+		</field>
+		<field name="dictSql" type="string">
+			<bind-xml name="dictSql" node="attribute" />
+		</field>
+	</class>
+	
+	<class name="com.boco.eoms.commons.rule.config.model.Groups">
+		<map-to xml="groups" />
+		<field name="group" type="com.boco.eoms.commons.rule.config.model.Group" collection="collection"/>
+	</class>
+	
+	<class name="com.boco.eoms.commons.rule.config.model.Group">
+		<map-to xml="group" />
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute" />
+		</field>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute" />
+		</field>
+		<field name="groupRef" type="com.boco.eoms.commons.rule.config.model.GroupRef" collection="collection"/>
+	</class>
+	
+	
+	<class name="com.boco.eoms.commons.rule.config.model.GroupRef">
+		<map-to xml="groupRef" />
+		<field name="ruleId" type="string">
+			<bind-xml name="ruleId" node="attribute" />
+		</field>
+		<field name="pri" type="integer">
+			<bind-xml name="pri" node="attribute" />
+		</field>
+	</class>
+	
+	
+	<class name="com.boco.eoms.commons.rule.config.model.ExpStyles">
+		<map-to xml="expStyles" />
+		<field name="expStyles" type="com.boco.eoms.commons.rule.config.model.ExpStyle" collection="collection"/>
+	</class>
+	
+	<class name="com.boco.eoms.commons.rule.config.model.Rules">
+		<map-to xml="rule" />
+		<field name="rule" type="com.boco.eoms.commons.rule.config.model.Rule" collection="collection"/>
+	</class>
+	
+	<class name="com.boco.eoms.commons.rule.config.model.ExpStyle">
+		<map-to xml="expStyle" />
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute" />
+		</field>
+		<field name="style" type="string">
+			<bind-xml name="style" node="attribute" />
+		</field>			
+	</class>
+
+	<class name="com.boco.eoms.commons.rule.config.model.Rule">
+		<map-to xml="rule" />
+		<field name="className" type="string">
+			<bind-xml name="className" node="attribute" />
+		</field>
+		<field name="id" type="string">
+			<bind-xml name="id" node="attribute" />
+		</field>
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute" />
+		</field>
+		<field name="listeners" type="com.boco.eoms.commons.rule.config.model.Listeners"/>
+		<field name="input"
+			type="com.boco.eoms.commons.rule.config.model.Input"
+			 />
+		<field name="output"
+			type="com.boco.eoms.commons.rule.config.model.Output"
+			 />
+	</class>
+
+	<class name="com.boco.eoms.commons.rule.config.model.Listeners">
+		<map-to xml="listeners" />
+		<field name="listeners"
+			type="com.boco.eoms.commons.rule.config.model.Listener"
+			collection="collection" />
+	</class>
+	
+	<class name="com.boco.eoms.commons.rule.config.model.Listener">
+		<map-to xml="listener" />
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute" />
+		</field>		
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute" />
+		</field>		
+	</class>
+	
+	
+	<class name="com.boco.eoms.commons.rule.config.model.Input">
+		<map-to xml="input" />
+		<field name="parameters"
+			type="com.boco.eoms.commons.rule.config.model.Parameter"
+			collection="collection" />
+	</class>
+
+	<class name="com.boco.eoms.commons.rule.config.model.Output">
+		<map-to xml="output" />
+		<field name="parameters"
+			type="com.boco.eoms.commons.rule.config.model.Parameter"
+			collection="collection" />
+	</class>
+
+
+	<class name="com.boco.eoms.commons.rule.config.model.Parameter">
+		<map-to xml="parameter" />
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute" />
+		</field>
+		<field name="type" type="string">
+			<bind-xml name="type" node="attribute" />
+		</field>
+		<field name="expression" type="string">
+			<bind-xml name="expression" node="attribute" />
+		</field>
+		<field name="drl" type="string">
+			<bind-xml name="drl" node="attribute" />
+		</field>
+		<field name="expStyleId" type="string">
+			<bind-xml name="expStyleId" node="attribute" />
+		</field>
+		
+		<field name="description" type="string">
+			<bind-xml name="description" node="attribute" />
+		</field>
+		
+	</class>
+
+
+</mapping>

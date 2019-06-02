@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="demoCache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="appCacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>com.boco.eoms.DEMO_CACHE</value>
+		</property>
+		<!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
+		<property name="maxElementsInMemory">
+			<value>100001</value>
+		</property>
+		<property name="overflowToDisk">
+			<value>true</value>
+		</property>
+		<property name="eternal">
+			<value>true</value>
+		</property>
+		<property name="timeToLive">
+			<value>600</value>
+		</property>
+		<property name="timeToIdle">
+			<value>600</value>
+		</property>
+		<property name="diskPersistent">
+			<value>false</value>
+		</property>
+		<property name="diskExpiryThreadIntervalSeconds">
+			<value>120</value>
+		</property>
+
+	</bean>
+
+
+	<bean id="demoCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
+		<property name="cache">
+			<ref local="demoCache" />
+		</property>
+	</bean>
+
+	<bean id="demoCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="demoCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<!--
+					<value>.*methodOne</value>
+					<value>.*methodTwo</value>
+				-->
+				<value>.*getDate</value>
+				<value>.*getRandom</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="demoBaseCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>demoCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="DemoBean" parent="demoBaseCacheProxy">
+		<property name="target">
+			<bean class="com.boco.eoms.commons.cache.sample.DemoBean" />
+		</property>
+	</bean>
+
+
+	<!-- 自动更新缓存 -->
+
+
+	<bean id="demoFlushCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="demoFlushCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<!--
+					<value>.*methodOne</value>
+					<value>.*methodTwo</value>
+				-->
+				<value>.*addDate</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="demoFlushCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
+		<property name="cache">
+			<ref local="demoCache" />
+		</property>
+		<property name="method">
+			<props>
+				<prop
+					key="com.boco.eoms.commons.cache.sample.DemoBean.addDate">
+					com.boco.eoms.commons.cache.sample.DemoBean.getDate
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="demoBaseFlushCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>demoFlushCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="DemoFlushBean" parent="demoBaseFlushCacheProxy">
+		<property name="target">
+			<bean class="com.boco.eoms.commons.cache.sample.DemoBean" />
+		</property>
+	</bean>
+
+
+	<!-- application -->
+
+	<!-- 
+		<bean id="commonlogBoCache" parent="demoBaseCacheProxy">
+		<property name="target">
+		<bean
+		class="com.boco.eoms.commons.log.service.impl.TawCommonLogBOImpl">
+		<property name="tawlogdeoploydao"
+		ref="commonlogDeploydao" />
+		<property name="logopermanager"
+		ref="tawCommonLogOperatorManager" />
+		</bean>
+		</property>
+		</bean>
+	-->
+
+
+
+</beans>

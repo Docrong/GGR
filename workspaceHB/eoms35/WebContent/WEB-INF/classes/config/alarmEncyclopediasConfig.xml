@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<boco>
+	<connparam>
+    	<province>HB</province><!-- 省份 -->
+    	<systemName>EOMS</systemName><!-- 系统名 -->    	
+    	<key>f7594f8ca1d1ccbc</key><!-- 密钥 -->
+    	<stringType>xml</stringType><!-- 字符串类型 -->
+    	<urlTitle>http://10.1.121.202:9002/alarmwiki/service/message/HB/EOMS</urlTitle><!-- 接口地址 -->
+    </connparam>
+</boco>

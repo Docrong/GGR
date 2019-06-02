@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!--
+ * Copyright (c) 2006 Jianmin Liu.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+-->
+<portlet-app
+    xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd"
+    version="1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd
+                        http://java.sun.com/xml/ns/portlet/portlet-app_1_0.xsd">
+
+	<portlet>
+      <portlet-name>JFreeChartDemoPortlet</portlet-name>
+      <portlet-class>org.light.portlets.demo.jfreechart.JFreeChartDemoPortlet</portlet-class>
+
+      <supports>
+         <mime-type>text/html</mime-type>
+         <portlet-mode>VIEW</portlet-mode>
+      </supports>
+       <resource-bundle>resourceBundle</resource-bundle>
+      <portlet-info>
+         <title>JFreeChart Demo Portlet</title>
+      </portlet-info>
+   </portlet>
+
+	<portlet>
+        <description>ThemeDescription</description>
+        <portlet-name>themePortlet</portlet-name>
+        <display-name>Theme Portlet</display-name>
+
+        <portlet-class>org.light.portal.config.portlets.ThemePortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Theme Portlet</title>
+			<short-title>Theme</short-title>
+			<keywords>Theme</keywords>
+        </portlet-info>
+
+	</portlet>
+
+	<portlet>
+        <description>TabDescription</description>
+        <portlet-name>tabPortlet</portlet-name>
+        <display-name>Tab Portlet</display-name>
+
+        <portlet-class>org.light.portal.config.portlets.TabPortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Tab Portlet</title>
+			<short-title>Tab</short-title>
+			<keywords>Tab</keywords>
+        </portlet-info>
+
+	</portlet>
+
+	<portlet>
+        <description>ContentDescription</description>
+        <portlet-name>contentPortlet</portlet-name>
+        <display-name>Content Portlet</display-name>
+
+        <portlet-class>org.light.portal.config.portlets.ContentPortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Content Portlet</title>
+			<short-title>Content</short-title>
+			<keywords>Content</keywords>
+        </portlet-info>
+
+	</portlet>
+
+	<portlet>
+        <description>UserDescription</description>
+        <portlet-name>userPortlet</portlet-name>
+        <display-name>User Portlet</display-name>
+
+        <portlet-class>org.light.portal.config.portlets.UserPortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>User Portlet</title>
+			<short-title>User</short-title>
+			<keywords>User</keywords>
+        </portlet-info>
+	    <portlet-preferences>
+        </portlet-preferences>
+	</portlet>
+
+
+	<portlet>
+        <description>SearchPortletDescription</description>
+        <portlet-name>searchPortlet</portlet-name>
+        <display-name>Search Portlet</display-name>
+
+        <portlet-class>org.light.portlets.search.SearchPortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Search Portlet</title>
+			<short-title>Search</short-title>
+			<keywords>Search</keywords>
+        </portlet-info>
+	    <portlet-preferences>
+            <preference>
+				<name>Google</name>
+				<value>http://www.google.com/search?q=</value>
+				<read-only>true</read-only>
+			</preference>
+            <preference>
+				<name>Yahoo</name>
+				<value>http://search.yahoo.com/search?p=</value>
+			</preference>
+            <preference>
+                <name>AskJeeves</name>
+                <value>http://web.ask.com/web?q=</value>
+            </preference>
+            <preference>
+				<name>Vivisimo</name>
+				<value>http://vivisimo.com/search?query=</value>
+			</preference>
+			<preference>
+				<name>Amazon</name>
+				<value>http://www.a9.com/</value>
+			</preference>
+
+        </portlet-preferences>
+
+	</portlet>
+
+	<portlet>
+        <description>WeatherPortletDescription</description>
+        <portlet-name>weatherPortlet</portlet-name>
+        <display-name>Weather Portlet</display-name>
+
+        <portlet-class>org.light.portlets.weather.WeatherPortlet</portlet-class>
+
+        <init-param>
+            <name>url</name>
+            <value>http://xoap.weather.com/weather/local/</value>
+        </init-param>
+
+        <init-param>
+			<name>partnerId</name>
+			<value>1021498252</value>
+		</init-param>
+
+		<init-param>
+			<name>licence</name>
+			<value>4c7efa4d82cd2b90</value>
+		</init-param>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Weather Portlet</title>
+			<short-title>Weather</short-title>
+			<keywords>Weather</keywords>
+        </portlet-info>
+
+	</portlet>
+
+	<portlet>
+        <description>BookmarkPortletDescription</description>
+        <portlet-name>bookmarkPortlet</portlet-name>
+        <display-name>Bookmark Portlet</display-name>
+
+        <portlet-class>org.light.portlets.bookmark.BookmarkPortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Bookmark Portlet</title>
+			<short-title>Bookmark</short-title>
+			<keywords>Bookmark</keywords>
+        </portlet-info>
+
+	</portlet>
+<!-- 20070422 zhoucz start -->
+	<portlet>
+        <description>WebSystemPortletDescription</description>
+        <portlet-name>webSystemPortlet</portlet-name>
+        <display-name>Web System Portlet</display-name>
+
+        <portlet-class>org.light.portlets.websystem.WebSystemPortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Bookmark Portlet</title>
+			<short-title>Bookmark</short-title>
+			<keywords>Bookmark</keywords>
+        </portlet-info>
+	    <!-- 070321 add comment-->
+	     <portlet-preferences>
+            <preference>
+				<name>EOMS3.5ƽ̨</name>
+				<value>editPortalUnifyUser.html?sysid=11</value>
+				<read-only>true</read-only>
+			</preference>
+          
+        </portlet-preferences>
+        <!-- end -->
+	</portlet>
+<!-- 20070422 zhoucz end -->
+	<portlet>
+        <description>RssPortletDescription</description>
+        <portlet-name>rssPortlet</portlet-name>
+        <display-name>Rss Portlet</display-name>
+
+        <portlet-class>org.light.portlets.rss.RssPortlet</portlet-class>
+
+        <expiration-cache>-1</expiration-cache>
+
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Rss Portlet</title>
+			<short-title>Rss</short-title>
+			<keywords>Rss</keywords>
+        </portlet-info>
+
+	</portlet>
+
+	<portlet>
+        <description>NotePortletDescription</description>
+        <portlet-name>notePortlet</portlet-name>
+        <display-name>Note Portlet</display-name>
+        <portlet-class>org.light.portlets.note.NotePortlet</portlet-class>
+        <expiration-cache>-1</expiration-cache>
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+        <supported-locale>en</supported-locale>
+        <supported-locale>fr</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>Note Portlet</title>
+			<short-title>Note</short-title>
+			<keywords>Note</keywords>
+        </portlet-info>
+	    <portlet-preferences>
+            <preference>
+				<name>fontColor</name>
+				<value>0000ff</value>
+			</preference>
+        </portlet-preferences>
+	</portlet>
+
+    <portlet>
+        <description>web page portlet</description>
+        <portlet-name>webPagePortlet</portlet-name>
+        <display-name>Viewer Portlet</display-name>
+        <portlet-class>org.light.portlets.proxywebpage.WebPageForwardPortlet</portlet-class>
+        <expiration-cache>-1</expiration-cache>
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+        <supported-locale>zh_CN</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>web pagge portlet</title>
+			<short-title>web pagge</short-title>
+			<keywords>url</keywords>
+        </portlet-info>
+
+	</portlet>
+	<!-- 0315 by zhoucz
+    <portlet>
+        <description>web pagge forward</description>
+        <portlet-name>webPageForward</portlet-name>
+        <display-name>Viewer Portlet</display-name>
+        <portlet-class>org.light.portlets.proxywebpage.WebPageForwardPortlet</portlet-class>
+        <expiration-cache>-1</expiration-cache>
+        <supports>
+			<mime-type>text/html</mime-type>
+            <portlet-mode>VIEW</portlet-mode>
+            <portlet-mode>EDIT</portlet-mode>
+            <portlet-mode>HELP</portlet-mode>
+            <portlet-mode>CONFIG</portlet-mode>
+		</supports>
+        <supported-locale>zh_CN</supported-locale>
+		<resource-bundle>resourceBundle</resource-bundle>
+		<portlet-info>
+			<title>web pagge forward</title>
+			<short-title>web pagge forward</short-title>
+			<keywords>url</keywords>
+        </portlet-info>
+
+	</portlet>
+	-->
+ </portlet-app>

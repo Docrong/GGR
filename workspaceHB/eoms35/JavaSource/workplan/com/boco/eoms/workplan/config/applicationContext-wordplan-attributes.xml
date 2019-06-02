@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="workplanAttributes"
+		class="com.boco.eoms.workplan.util.WorkplanAttributes">
+		<property name="serverId">
+			<value>8aa081eb205f90a2012060283edb000b</value>
+		</property>
+	 	<property name="path">
+			<value>D:\ydeoms35\web/workplan/tawwpfile/attmentfile/</value>
+		</property>
+		<property name="newstrregioncode">
+			<value>HEB</value> 
+		</property>
+		<property name="intfaceUrl">
+			<value>http://10.218.7.25:8080/XFireWS/services/NeCheckerService</value>
+		</property>
+		<property name="port">
+			<value>21</value>
+		</property>
+		<property name="user">
+			<value>administrator</value>
+		</property>
+		<property name="password">
+			<value>boco123znxj</value>
+		</property>
+		<property name="ip">
+			<value>10.2.0.1</value>
+		</property>
+			<property name="statday">
+			<value>2</value>
+		</property>
+		<property name="switchQualityCheck">
+			<value>0</value>
+		</property>
+		<property name="userServiceId">
+			<value></value>
+		</property>
+		<property name="deptServiceId">
+			<value></value>
+		</property>
+		<property name="roomServiceId">
+			<value></value>
+		</property> 
+		<property name="errorLogPath">
+		   <value>D:\ydeoms35\web\workplan\tawwpfile\attmentfile\</value>
+		</property>
+  		<property name="ftpLogIP">
+  		   <value>10.101.16.87</value>
+  		</property>
+  		<property name="ftpLogPort">
+  		     <value>8021</value>
+  		</property>
+  		<property name="ftpLogAcc">
+  		    <value>administrator</value>
+  		</property>
+  		<property name="ftpLogPwd">
+  		 <value>boco123znxj</value>
+  		 </property>
+  		 	<property name="intfaceDept">
+			<value>NM</value>
+		</property>
+	</bean>
+</beans>

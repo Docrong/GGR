@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="SequenceFacade"
+		class="com.boco.eoms.sequence.SequenceFacadeImpl" />
+
+	<bean id="SequenceRegister"
+		class="com.boco.eoms.sequence.SequenceRegister">
+		<property name="register">
+			<list>
+				<value>duty</value>
+				<value>msg</value>
+				<value>log</value>
+				<value>smsmonitorbak</value>
+				<value>mapping</value>
+				<value>sendmsg</value>
+				<value>savelog</value>
+				<value>closemsg</value>
+				<value>sendMsg</value>
+			</list>
+		</property>
+	</bean>
+
+</beans>
+
+
+

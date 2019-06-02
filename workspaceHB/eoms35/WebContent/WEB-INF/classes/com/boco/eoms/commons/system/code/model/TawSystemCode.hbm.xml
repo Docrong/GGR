@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.system.code.model.TawSystemCode"
+            table="taw_system_code"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+		<property
+            name="name"
+                length="128"
+                not-null="false"
+                unique="false"
+                column="name"
+        >
+
+        </property>
+        <property
+            name="code"
+                length="128"
+                not-null="false"
+                column="code"
+        >
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

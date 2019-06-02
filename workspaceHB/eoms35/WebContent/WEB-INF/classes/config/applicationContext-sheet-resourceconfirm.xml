@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--ResourceConfirm-START-->    
+
+    <bean id="IResourceConfirmMainDAO"
+		class="com.boco.eoms.sheet.resourceconfirm.dao.hibernate.ResourceConfirmMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IResourceConfirmLinkDAO"
+		class="com.boco.eoms.sheet.resourceconfirm.dao.hibernate.ResourceConfirmLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IResourceConfirmTaskDAO"
+		class="com.boco.eoms.sheet.resourceconfirm.dao.hibernate.ResourceConfirmTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ResourceConfirmTask"
+		class="com.boco.eoms.sheet.resourceconfirm.model.ResourceConfirmTask" autowire="byName">
+     </bean>
+    <bean id="ResourceConfirmLink"
+		class="com.boco.eoms.sheet.resourceconfirm.model.ResourceConfirmLink"
+		autowire="byName" />
+	<bean id="ResourceConfirmMain"
+		class="com.boco.eoms.sheet.resourceconfirm.model.ResourceConfirmMain"
+		autowire="byName" />
+	<bean id="iResourceConfirmTask"
+		class="com.boco.eoms.sheet.resourceconfirm.task.impl.ResourceConfirmTaskImpl"
+		autowire="byName" />
+	<bean id="iResourceConfirmTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.resourceconfirm.service.impl.ResourceConfirmTaskManagerImpl">
+				<property name="taskModelObject" ref="ResourceConfirmTask" />
+				<property name="taskDAO">
+					<ref bean="IResourceConfirmTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/resourceconfirmConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iResourceConfirmFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.resourceconfirm.service.impl.ResourceConfirmFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iResourceConfirmLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.resourceconfirm.service.impl.ResourceConfirmLinkManagerImpl">
+				<property name="linkObject" ref="ResourceConfirmLink"/>
+				<property name="linkDAO">
+				  <ref bean="IResourceConfirmLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iResourceConfirmMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.resourceconfirm.service.impl.ResourceConfirmMainManagerImpl">
+			    <property name="mainObject" ref="ResourceConfirmMain" />
+				<property name="mainDAO">
+				 <ref bean="IResourceConfirmMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iResourceConfirmQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>ResourceConfirmProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/resourceconfirm-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iResourceConfirmQo"
+		class="com.boco.eoms.sheet.resourceconfirm.qo.impl.ResourceConfirmQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="ResourceConfirmMain" />
+		<property name="poLink" value="ResourceConfirmLink" />
+		<property name="aliasMain" value="resourceConfirmMain" />
+		<property name="aliasLink" value="resourceConfirmLink" />
+		<property name="poTask" value="ResourceConfirmTask" />
+	    <property name="aliasTask" value="resourceConfirmTask" />			
+	</bean>
+
+	<bean id="ResourceConfirm" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.resourceconfirm.webapp.action.ResourceConfirmMethod">
+				<property name="businessFlowService" >
+					<ref bean="iResourceConfirmFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iResourceConfirmLinkManager" />
+				<property name="mainService"
+					ref="iResourceConfirmMainManager" />
+				<property name="sheetTask"
+					ref="ResourceConfirmTask" />
+				<property name="taskService"
+					ref="iResourceConfirmTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/resourceconfirm-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+	<bean id="iResourceConfirmCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.resourceconfirm.service.impl.ResourceConfirmCrmManagerImpl">
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iResourceConfirmInterfaceManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.resourceconfirm.service.impl.ResourceConfirmInterfaceManagerImpl">
+			</bean>
+		</property>
+	</bean>
+     <!--ResourceConfirm-END-->  
+</beans>

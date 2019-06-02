@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.message.model.TawCommonMessageAddService"
+            table="taw_common_messageaddservice"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="issendimediat"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="issendnight"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="messagetype"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="modelid"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="modelname"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operid"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="opername"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="100"
+        >
+
+        </property>
+
+       
+        <property
+            name="urgency"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="modeloperid"
+                length="100"
+        >
+
+        </property>
+         <property
+            name="userid"
+                length="100"
+        >
+
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

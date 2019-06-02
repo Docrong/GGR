@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Add new Managers here -->
+
+
+
+
+
+
+	<!--TawSystemRoleType-DAO START-->
+	<bean id="tawSystemRoleTypeDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemRoleTypeDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemRoleType-DAO END-->
+	<!--TawSystemRoleType-START-->
+	<bean id="ItawSystemRoleTypeManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemRoleTypeManagerImpl">
+				<property name="tawSystemRoleTypeDao"
+					ref="tawSystemRoleTypeDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemRoleType-END-->
+
+
+	<!--TawSystemRole-DAO START-->
+	<bean id="tawSystemRoleDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemRoleDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemRole-DAO END-->
+	<!--TawSystemRole-START-->
+	<bean id="ItawSystemRoleManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemRoleManagerImpl">
+				<property name="tawSystemRoleDao"
+					ref="tawSystemRoleDao" />
+				<property name="userRoleDao"
+					ref="tawSystemUserRefRoleDao" />
+				<property name="subRoleDao" ref="tawSystemSubRoleDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemRole-END-->
+	<!--TawSystemSubRole-DAO START-->
+	<bean id="tawSystemSubRoleDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemSubRoleDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemSubRole-DAO END-->
+	<!--TawSystemSubRole-START-->
+	<bean id="ItawSystemSubRoleManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemSubRoleManagerImpl">
+				<property name="tawSystemSubRoleDao"
+					ref="tawSystemSubRoleDao" />
+				<property name="userRoleDao"
+					ref="tawSystemUserRefRoleDao" />
+				<property name="roleDao" ref="tawSystemRoleDao" />
+				<property name="deptDao" ref="tawSystemDeptDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemSubRole-END-->
+	<!--TawSystemOrganizationProxy-DAO START-->
+	<bean id="tawSystemOrganizationProxyDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemOrganizationProxyDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemOrganizationProxy-DAO END-->
+	<!--TawSystemOrganizationProxy-START-->
+	<bean id="ItawSystemOrganizationProxyManager"
+		parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemOrganizationProxyManagerImpl">
+				<property name="tawSystemOrganizationProxyDao"
+					ref="tawSystemOrganizationProxyDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemOrganizationProxy-END-->
+
+	<!--TawSystemDeptRefPost-DAO START-->
+	<bean id="tawSystemDeptRefPostDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemDeptRefPostDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemDeptRefPost-DAO END-->
+	<!--TawSystemDeptRefPost-START-->
+	<bean id="ItawSystemDeptRefPostManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemDeptRefPostManagerImpl">
+				<property name="tawSystemDeptRefPostDao"
+					ref="tawSystemDeptRefPostDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemDeptRefPost-END-->
+
+	<bean id="tawSystemPostDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemPostDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemPost-DAO END-->
+	<!--TawSystemPost-START-->
+	<bean id="ItawSystemPostManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemPostManagerImpl">
+				<property name="tawSystemPostDao"
+					ref="tawSystemPostDao" />
+				<property name="tawSystemUserRefPostDao"
+					ref="tawSystemUserRefPostDao" />
+				<property name="tawSystemDeptRefPostDao"
+					ref="tawSystemDeptRefPostDao" />
+				<property name="tawSystemSubRoleRefPostDao"
+					ref="tawSystemSubRoleRefPostDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<!--TawSystemUserRefPost-DAO START-->
+	<bean id="tawSystemUserRefPostDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemUserRefPostDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemUserRefPost-DAO END-->
+	<!--TawSystemUserRefPost-START-->
+	<bean id="ItawSystemUserRefPostManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemUserRefPostManagerImpl">
+				<property name="tawSystemUserRefPostDao"
+					ref="tawSystemUserRefPostDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemUserRefPost-END-->
+
+	<!--TawSystemRoleRefWorkflow-DAO START-->
+	<bean id="tawSystemRoleRefWorkflowDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemRoleRefWorkflowDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemRoleRefWorkflow-DAO END-->
+	<!--TawSystemRoleRefWorkflow-START-->
+	<bean id="ItawSystemRoleRefWorkflowManager"
+		parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemRoleRefWorkflowManagerImpl">
+				<property name="tawSystemRoleRefWorkflowDao"
+					ref="tawSystemRoleRefWorkflowDao" />
+			</bean>
+		</property>
+	</bean>
+	<!--TawSystemRoleRefWorkflow-END-->
+
+
+
+
+	<!--SelectRoleType START-->
+	<bean id="SelectRoleType"
+		class="com.boco.eoms.commons.system.role.tags.SelectRoleType"
+		autowire="byName" />
+	<!--SelectRoleType END-->
+
+
+	<!--TawSystemDeptRefPost-DAO START-->
+	<bean id="tawSystemSubRoleRefPostDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemSubRoleRefPostDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemDeptRefPost-DAO END-->
+	<!--TawSystemDeptRefPost-START-->
+	<bean id="ItawSystemSubRoleRefPostManager"
+		parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemSubRoleRefPostManagerImpl">
+				<property name="tawSystemSubRoleRefPostDao"
+					ref="tawSystemSubRoleRefPostDao" />
+			</bean>
+		</property>
+	</bean>
+
+
+	<!--TawSystemDeptRefPost-DAO START-->
+	<bean id="tawSystemRoleImportDao"
+		class="com.boco.eoms.commons.system.role.dao.hibernate.TawSystemRoleImportDaoHibernate"
+		autowire="byName" />
+	<!--TawSystemDeptRefPost-DAO END-->
+	<!--TawSystemDeptRefPost-START-->
+	<bean id="tawSystemRoleImportManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.TawSystemRoleImportManagerImpl">
+				<property name="tawSystemRoleImportDao"
+					ref="tawSystemRoleImportDao" />
+				<property name="fmImportFileManager"
+					ref="FMImportExcelFileManagerImpl" />
+				<property name="tawSystemSubRoleDao"
+					ref="tawSystemSubRoleDao" />
+				<property name="tawSystemUserRefRoleDao"
+					ref="tawSystemUserRefRoleDao" />
+
+			</bean>
+		</property>
+	</bean>
+
+
+	<bean id="RoleMgrImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.role.service.impl.RoleMgrImpl">
+				<property name="tawSystemRoleManager"
+					ref="ItawSystemRoleManager" />
+				<property name="tawSystemSubRoleManager"
+					ref="ItawSystemSubRoleManager" />
+				<property name="tawSystemSubRoleDao"
+					ref="tawSystemSubRoleDao" />
+				<property name="tawSystemRoleDao"
+					ref="tawSystemRoleDao" />
+				<property name="tawSystemUserRefRoleDao"
+					ref="tawSystemUserRefRoleDao" />
+				<property name="tawSystemUserRefRoleManager" ref="itawSystemUserRefRoleManager"/>
+				
+				<property name="tawSystemUserDao"
+					ref="tawSystemUserDao" />
+			</bean>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

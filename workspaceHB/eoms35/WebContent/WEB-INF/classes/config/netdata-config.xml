@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WorkFlowRule name="NetData" description="网络数据管理流程">
+   <flow-define id="NetDataMainProcess" description="网络数据管理工单">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="ProjectCreateTask" role="dealPerformer@245" condition="${operateType}==0" name="新建派发"/>
+       <to-phase-id id="DraftTask" role="dealPerformer@244" condition="${operateType}==22" name="保存草稿"/> 
+     </phase-id>
+     <phase-id id="DraftTask" name="草稿" type="operate">       
+       <to-phase-id id="ProjectCreateTask" role="dealPerformer@245" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id>
+     <phase-id id="RejectTask" name="被驳回" type="operate">       
+       <to-phase-id id="ProjectCreateTask" role="dealPerformer@245" condition="${operateType}==54" name="重新派发"/>
+     </phase-id> 
+     <phase-id id="ProjectCreateTask" name="方案制定中" type="operate">       
+       <to-phase-id id="AuditTask" role="dealPerformer@245" condition="${operateType}==110" name="提交审核"/>
+       <to-phase-id id="RejectTask" role="dealPerformer@244" condition="${operateType}==4" name="驳回"/>
+     </phase-id>     
+     <phase-id id="AuditTask" name="方案审核中" type="operate">
+       <to-phase-id id="PermitTask" role="dealPerformer@246" condition="${operateType}==111" name="审核通过"/>
+        <to-phase-id id="ProjectCreateTask" role="" condition="${operateType}==123" name="审核不通过"/>
+     </phase-id>
+     <phase-id id="PermitTask" name="方案审批中" type="operate">
+     	<to-phase-id id="PlanTask" role="" condition="${operateType}==112" name="审批通过"/>
+        <to-phase-id id="RejectTask" role="" condition="${operateType}==122" name="不通过/驳回申请"/>
+        <to-phase-id id="ProjectCreateTask" role="" condition="${operateType}==121" name="不通过/重新制定方案"/>
+     </phase-id>
+     <phase-id id="PlanTask" name="排程中" type="operate">
+     	<to-phase-id id="ExecuteTask" role="dealPerformer@378" condition="${operateType}==113" name="提交实施"/>
+     </phase-id>
+     <phase-id id="ExecuteTask" name="数据制作中" type="operate">
+     	<to-phase-id id="CheckDataTask" role="dealPerformer@379" condition="${operateType}==114" name="提交核查"/>
+     	<to-phase-id id="PlanTask" role="dealPerformer@247" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id>
+     <phase-id id="CheckDataTask" name="数据核查中" type="operate">
+     	<to-phase-id id="TestOperationTask" role="dealPerformer@380" condition="${operateType}==117" name="需要业务测试"/>
+     	<to-phase-id id="ValidateTask" role="dealPerformer@247" condition="${operateType}==118" name="无需业务测试"/>
+     	<to-phase-id id="ExecuteTask" role="dealPerformer@247" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id>
+     <phase-id id="TestOperationTask" name="业务测试中" type="operate">
+     	<to-phase-id id="ValidateTask" role="" condition="${operateType}==119" name="提交验证"/>
+     	<to-phase-id id="CheckDataTask" role="dealPerformer@247" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id>
+     <phase-id id="ValidateTask" name="验证变更中" type="operate">
+     	<to-phase-id id="HoldTask" role="" condition="${operateType}==116" name="归档"/>
+     </phase-id>
+     <phase-id id="HoldTask" name="待归档" type="operate">
+     </phase-id>
+  </flow-define>
+</WorkFlowRule>

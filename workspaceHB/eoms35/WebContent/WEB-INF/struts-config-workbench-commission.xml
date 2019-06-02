@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+	  <form-bean
+        name="tawWorkbenchCommissionPresetForm"
+        type="com.boco.eoms.workbench.commission.webapp.form.TawWorkbenchCommissionPresetForm"
+      />
+      <form-bean
+        name="tawWorkbenchCommissionInstanceForm"
+        type="com.boco.eoms.workbench.commission.webapp.form.TawWorkbenchCommissionInstanceForm"
+      />
+	</form-beans>
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<!-- 
+			<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+		-->
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards/>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+
+
+	<action-mappings>
+	
+	<action
+      path="/tawWorkbenchCommissionPresets"
+      type="com.boco.eoms.workbench.commission.webapp.action.TawWorkbenchCommissionPresetAction"
+      name="tawWorkbenchCommissionPresetForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionPresetList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="query"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionPresetQuery.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="queryList"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionPresetQueryList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionPresetForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    
+    <action
+      path="/tawWorkbenchCommissionInstances"
+      type="com.boco.eoms.workbench.commission.webapp.action.TawWorkbenchCommissionInstanceAction"
+      name="tawWorkbenchCommissionInstanceForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="main"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionInstanceMain.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionInstanceList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="query"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionInstanceQuery.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="queryList"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionInstanceQueryList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawWorkbenchCommission/tawWorkbenchCommissionInstanceForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    
+	</action-mappings>	
+	
+
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+		 <message-resources parameter="config/ApplicationResources-workbench-commission"/>
+	<!-- ========== Validator plugin ===================  -->
+	<!-- 
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+		value="/WEB-INF/validator-rules.xml,
+		/WEB-INF/validator-rules-custom.xml,
+		/WEB-INF/validation.xml" />
+		</plug-in>
+	-->
+</struts-config>

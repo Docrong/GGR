@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+
+<property name="show_sql">true</property> 
+    <mapping resource="com/boco/eoms/workplan/model/TawwpAddonsTable.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpExecuteAssess.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpExecuteContent.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpExecuteContentUser.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpExecuteFile.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpExecuteReport.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpLog.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpModelDispatch.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpModelExecute.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpModelGroup.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpModelPlan.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpMonthCheck.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpMonthExecute.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpMonthExecuteUser.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpMonthPlan.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpNet.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpStubUser.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpYearCheck.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpYearExecute.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpYearPlan.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpWorkflow.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpExecuteCheck.hbm.xml"/>
+    <mapping resource="com/boco/eoms/workplan/model/TawwpNewLog.hbm.xml"/>
+     <mapping resource="com/boco/eoms/workplan/model/TawwpExecuteFlag.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
+

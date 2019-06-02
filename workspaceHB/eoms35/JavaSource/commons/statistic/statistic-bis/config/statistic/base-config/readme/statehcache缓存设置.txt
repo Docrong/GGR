@@ -1,0 +1,24 @@
+﻿1.statehcache.xml说明
+主要标签：     
+	<cache 
+		name="statisticEhcache" 
+		maxElementsInMemory="10001"
+		eternal="false" 
+		timeToIdleSeconds="600" 
+		timeToLiveSeconds="600"
+		overflowToDisk="true"
+		diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="10">
+	</cache>
+	
+	<!-- 
+    	说明：
+    		name：统计的cache，名称不能改变
+    		maxElementsInMemory：//缓存中最大允许创建的对象数
+    		eternal：//缓存中对象是否为永久的，如果是(true)，超时设置将被忽略，对象从不过期
+    		timeToIdleSeconds  - 设置某个元素消亡前的停顿时间。也就是在一个元素消亡之前，两次访问时间的最大时间间隔值。这只能在元素不是永久驻留时有效（译注：如果对象永恒不灭，则设置该属性也无用）。如果该值是 0 就意味着元素可以停顿无穷长的时间。
+				timeToLiveSeconds - 为元素设置消亡前的生存时间。也就是一个元素从构建到消亡的最大时间间隔值。这只能在元素不是永久驻留时有效。
+    		overflowToDisk://内存不足时，是否启用磁盘缓存
+    		diskPersistent：是否永久保存在磁盘中
+    		diskExpiryThreadIntervalSeconds：现成终止后的多少秒后删除保存在磁盘上的缓存
+     -->

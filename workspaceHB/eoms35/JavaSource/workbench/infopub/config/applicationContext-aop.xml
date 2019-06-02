@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+ 
+ 
+<beans>
+     <bean id="kwikEMartTarget" class="com.boco.eoms.workbench.infopub.test.aop.ApuKwikEMart">
+          <!--
+               把这里注释去掉的话,程序调用的时候测试异常通知;
+               <property name="cheeseIsEmpty">
+                    <value>true</value>
+               </property>
+               <property name="pepperIsEmpty">
+                    <value>true</value>
+               </property>
+               <property name="squishIsEmpty">
+                    <value>true</value>
+               </property>
+          -->
+     </bean>
+ 
+     <!-- 方法调用前通知 
+     <bean id="welcomeAdvice" class="demo.advice.WelcomeAdvice" /> -->
+     <!-- 方法调用后通知 -->
+     <bean id="thankYouAdvice" class="com.boco.eoms.workbench.infopub.util.AfterMethodAdvice" >
+        <property name="exclude">
+			<list>
+				<value>com.boco.eoms.workbench.infopub.test.aop.KwikEMart.buyCheese(com.boco.eoms.workbench.infopub.test.aop.Customer)</value>
+			</list>
+		</property>
+     </bean>
+     <!-- 环绕调用通知 
+     <bean id="onePerCustomerInterceptor" class="demo.advice.OnePerCustomerInterceptor" /> -->
+     <!-- 异常调用通知 
+     <bean id="kwikEmartExceptionAdvice" class="demo.advice.KwikEmartExceptionAdvice" /> -->
+    
+     <bean id="kwikEMart" class="org.springframework.aop.framework.ProxyFactoryBean">
+          <property name="proxyInterfaces" value="com.boco.eoms.workbench.infopub.test.aop.KwikEMart" />
+          <property name="interceptorNames">
+               <list>                                    
+                    <value>thankYouAdvice</value>                
+               </list>
+          </property>
+          <property name="target">
+               <ref bean="kwikEMartTarget" />
+          </property>
+     </bean>
+ 
+</beans>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- Add new Managers here -->
+    
+    <bean id="tawCommonsAccessoriesConfigDao" class="com.boco.eoms.commons.accessories.dao.hibernate.TawCommonsAccessoriesConfigDaoHibernate" autowire="byName"/>        
+    <bean id="tawCommonsAccessoriesDao" class="com.boco.eoms.commons.accessories.dao.hibernate.TawCommonsAccessoriesDaoHibernate" autowire="byName"/>
+    <bean id="daoJdbc" class="com.boco.eoms.commons.accessories.dao.jdbc.TawCommonsAccessoriesDaoJdbc" autowire="byName"/>    
+    <bean id="ItawCommonsAccessoriesManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.accessories.service.impl.TawCommonsAccessoriesManagerCOSImpl">
+                <property name="dao" ref="tawCommonsAccessoriesDao"/>
+                <property name="configManager" ref="ItawCommonsAccessoriesConfigManager"/>
+                <property name="filePath" >
+                   <value>classpath:accessories/uploadfile</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+            
+    <bean id="ItawCommonsAccessoriesConfigManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.accessories.service.impl.TawCommonsAccessoriesConfigManagerImpl">
+                <property name="daoJdbc" ref="daoJdbc"/>
+                <property name="configDAO" ref="tawCommonsAccessoriesConfigDao"/>
+            </bean>
+        </property>
+    </bean>
+    <bean id="accessoriesAttributes"
+		class="com.boco.eoms.commons.accessories.util.AccessoriesAttributes">
+		<property name="uploadPath">
+			<value>e:/eoms/upload/</value>
+		</property>
+	
+	
+	</bean>
+    
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

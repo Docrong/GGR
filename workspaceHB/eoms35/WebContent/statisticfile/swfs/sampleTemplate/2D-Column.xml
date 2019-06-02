@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+  <type> 
+    <system> 
+      <refresh enabled="yes"/> 
+    </system>  
+    <chart type="2DColumn" minimum_value="0.0" maximum_value="1.05"> 
+      <animation show="yes"  speed="7"/>  
+	  <names show="no"  placement="chart" position="bottom">
+         <font type="verdana_embed_tf" size="12" align="center"/>
+	  </names>
+      <column_chart column_space="1" round_radius="0"/> 
+      <hints enabled="no" text="{BLOCK_NAME}, {NAME}" auto_size="yes"> 
+         <background color="White"/> 
+      </hints>	  
+      <values show="yes" decimal_places="0" thousand_separator=",">
+        <font size="10"/>
+      </values>
+    </chart>  
+	<workspace>
+	   <chart_area width="500" height="300" x="100" y="120" deep="0">
+		 <border enabled="yes" color="0xB54001"/>
+	   </chart_area>
+	   <base_area enabled="no"/>
+	   <name text=" "/>
+	   <grid>
+		 <values>
+			<lines color="0xB9B9B8"/>
+		        <captions>
+					<font size="12" type="arial"/>
+				</captions>
+				<ticks>
+					<major_ticks>
+						<lines length="5" color="0xFBF6EF" type="outside"/>
+					</major_ticks>
+				</ticks>
+			</values>
+		</grid>              
+	   <x_axis smart="no"/>
+	   <y_axis smart="yes"/>
+	</workspace>
+	<legend enabled="yes" x="400" y="50"> 
+		<values enabled="no"/>
+		<header names="图例"/>
+		<names width="150"/>
+		<scroller enabled="no"/>
+		<border enabled="no"/>
+		<background enabled="no"/>
+	</legend> 
+  </type>
+</root>

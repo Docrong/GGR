@@ -1,0 +1,386 @@
+// Decompiled by Jad v1.5.8e2. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://kpdus.tripod.com/jad.html
+// Decompiler options: packimports(3) fieldsfirst ansi space 
+// Source File Name:   CommonFaultTaskManagerImpl.java
+
+package com.boco.eoms.sheet.commonfault.service.impl;
+import com.boco.eoms.base.util.StaticMethod;
+
+import com.boco.eoms.sheet.base.dao.ITaskDAO;
+import com.boco.eoms.sheet.base.model.BaseMain;
+import com.boco.eoms.sheet.base.service.impl.TaskServiceImpl;
+import com.boco.eoms.sheet.base.util.*;
+
+import com.boco.eoms.sheet.commonfault.dao.ICommonFaultTaskDAO;
+import com.boco.eoms.sheet.commonfault.service.ICommonFaultTaskManager;
+import com.boco.eoms.sheet.overtimetip.util.OvertimeTipUtil;
+import java.io.PrintStream;
+import java.util.*;
+
+public class CommonFaultTaskManagerImpl extends TaskServiceImpl
+	implements ICommonFaultTaskManager
+{
+
+	public CommonFaultTaskManagerImpl()
+	{
+	}
+
+	public HashMap getAcceptTaskByRole(Map condition, String userId, Integer startIndex, Integer length)
+		throws Exception
+	{
+		HashMap taskMap = new HashMap();
+		String orderCondition = (String)condition.get("orderCondition");
+		condition.put("userId", userId);
+		String sql = QuerySqlInit.getAcceptTaskByRole(condition);
+		StringBuffer hql = new StringBuffer();
+		if (!orderCondition.equals("") && orderCondition != null)
+			hql.append(sql).append(" order by " + orderCondition);
+		else
+			hql.append(sql).append(" order by task.createTime desc");
+		System.out.println("sql=======" + hql);
+		taskMap = getTaskDAO().getTaskListByCondition(hql.toString(), startIndex, length);
+		return taskMap;
+	}
+
+	public List getCommonfaultTasksByCondition(String condition)
+		throws Exception
+	{
+		String hql = " from " + getTaskModelObject().getClass().getName() + " task,com.boco.eoms.sheet.commonfault.model.CommonFaultMain main" + " where task.sheetKey=main.id and " + condition + " order by createTime";
+		return getTaskDAO().getTasksByHql(hql);
+	}
+
+	public HashMap getUndoTaskByOverTime(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length)
+		throws Exception
+	{
+		String wheresql = "";
+		HashMap taskMap = new HashMap();
+		HashMap cloumnMap = OvertimeTipUtil.getMainColumnByMapping(flowName);
+		Iterator it = cloumnMap.keySet().iterator();
+		System.out.println("---cloumnMap---"+cloumnMap);
+		String ruternColumnName;
+		String tmpOvertimeClm;
+		for (ruternColumnName = ""; it.hasNext(); ruternColumnName = ruternColumnName + " main." + (String)cloumnMap.get(tmpOvertimeClm) + ",")
+			tmpOvertimeClm = (String)it.next();
+
+		if (!ruternColumnName.equals(""))
+			ruternColumnName = "," + ruternColumnName.substring(0, ruternColumnName.length() - 1);
+		String sql = "select task.* " + ruternColumnName + ",main.mainNetName from commonfault_task task,commonfault_main main,performace_type p where main.id = task.sheetkey and task.taskDisplayName<>'草稿' and main.deleted<>'1' and main.status=0 and main.todeptid=p.areaid(+) and main.mainnetsortone=p.nettype1(+) and main.mainnetsorttwo=p.nettype2(+) and main.mainNetSortThree=p.nettype3(+) and p.id is null ";
+		String countsql = "select count(task.id)  from commonfault_task task,commonfault_main main,performace_type p where main.id = task.sheetkey and task.taskDisplayName<>'草稿' and main.deleted<>'1' and main.status=0 and main.todeptid=p.areaid(+) and main.mainnetsortone=p.nettype1(+) and main.mainnetsorttwo=p.nettype2(+) and main.mainNetSortThree=p.nettype3(+) and p.id is null ";
+	if (!condition.get("ifAgent").toString().equals(""))
+			if (condition.get("ifAgent").toString().equals("1"))
+				wheresql = wheresql + " and decode(main.ifAgent ,'', '1',main.ifAgent) =1";
+			else
+				wheresql = wheresql + " and main.ifAgent='" + condition.get("ifAgent").toString() + "'";
+		wheresql = wheresql + " and task.id in ( select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted <>'1' and taskowner = '" + userId + "'"
+		+ " union all select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted <>'1' and taskowner = '" + deptId + "'"
+		+ " union all select t3.id from commonfault_task t3,commonfault_main m2,taw_system_userrefrole r where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted <>'1' and r.subRoleid = t3.taskowner and r.userid='" + userId + "'"
+		+ " union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted <> '1' and t1.taskowner='" + userId + "'"
+		+ " union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted <> '1' and t1.taskowner='" + deptId + "'"
+		+ " union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and m1.deleted <> '1' and r.userid = '" + userId + "')";
+		sql = sql + wheresql;
+		countsql = countsql + wheresql;
+		if (condition.get("sheetId") != null)
+		{
+			sql = sql + wheresql + "and  task.sheetid='" + condition.get("sheetId") + "'";
+			countsql = countsql + wheresql + "and  task.sheetid='" + condition.get("sheetId") + "'";
+		}
+		
+		String orderCondition = (String)condition.get("orderCondition");
+		if (length.intValue() != -1)
+			if (!orderCondition.equals("") && orderCondition != null)
+			{
+				sql = sql + "order by " + orderCondition;
+				countsql = countsql + "order by " + orderCondition;
+			} else
+			{
+				sql = sql + "order by task.createTime desc";
+				countsql = countsql + "order by task.createTime desc";
+			}
+		System.out.println("lizhi--countsql=" + countsql);
+		Integer total = ((ICommonFaultTaskDAO)getTaskDAO()).getCountTaskBySQL(countsql);
+		taskMap = ((ICommonFaultTaskDAO)getTaskDAO()).getTaskListBySQL(sql, startIndex, length);
+		taskMap.put("taskTotal", total);
+		return taskMap;
+	}
+	public HashMap getUndoTaskByOverTimePerformace(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length)
+	throws Exception
+{
+	String wheresql = "";
+	HashMap taskMap = new HashMap();
+	HashMap cloumnMap = OvertimeTipUtil.getMainColumnByMapping(flowName);
+
+	Iterator it = cloumnMap.keySet().iterator();
+	String ruternColumnName;
+	String tmpOvertimeClm;
+	for (ruternColumnName = ""; it.hasNext(); ruternColumnName = ruternColumnName + " main." + (String)cloumnMap.get(tmpOvertimeClm) + ",")
+
+		tmpOvertimeClm = (String)it.next();
+
+
+
+	if (!ruternColumnName.equals(""))
+		ruternColumnName = "," + ruternColumnName.substring(0, ruternColumnName.length() - 1);
+	String sql = "select task.* " + ruternColumnName + ",main.mainNetName from commonfault_task task,commonfault_main main,performace_type p where main.id = task.sheetkey and task.taskDisplayName<>'草稿' and main.deleted<>'1' and main.status=0 and main.todeptid=p.areaid and main.mainnetsortone=p.nettype1 and main.mainnetsorttwo=p.nettype2 and main.mainNetSortThree=p.nettype3 ";
+	String countsql = "select count(task.id)  from commonfault_task task,commonfault_main main,performace_type p where main.id = task.sheetkey and task.taskDisplayName<>'草稿' and main.deleted<>'1' and main.status=0 and main.todeptid=p.areaid and main.mainnetsortone=p.nettype1 and main.mainnetsorttwo=p.nettype2 and main.mainNetSortThree=p.nettype3 ";
+	if (!condition.get("ifAgent").toString().equals(""))
+		if (condition.get("ifAgent").toString().equals("1"))
+			wheresql = wheresql + " and decode(main.ifAgent ,'', '1',main.ifAgent) =1";
+		else
+			wheresql = wheresql + " and main.ifAgent='" + condition.get("ifAgent").toString() + "'";
+	wheresql = wheresql + " and task.id in ( select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted <>'1' and taskowner = '" + userId + "'" + " union all select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted <>'1' and taskowner = '" + deptId + "'" + " union all select t3.id from commonfault_task t3,commonfault_main m2,taw_system_userrefrole r where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted <>'1' and r.subRoleid = t3.taskowner and r.userid='" + userId + "'" + " union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted <> '1' and t1.taskowner='" + userId + "'" + " union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted <> '1' and t1.taskowner='" + deptId + "'" + " union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and m1.deleted <> '1' and r.userid = '" + userId + "')";
+	sql = sql + wheresql;
+	countsql = countsql + wheresql;
+	if (condition.get("sheetId") != null)
+	{
+		sql = sql + wheresql + "and  task.sheetid='" + condition.get("sheetId") + "'";
+		countsql = countsql + wheresql + "and  task.sheetid='" + condition.get("sheetId") + "'";
+	}
+	String orderCondition = (String)condition.get("orderCondition");
+	if (length.intValue() != -1)
+		if (!orderCondition.equals("") && orderCondition != null)
+		{
+			sql = sql + "order by " + orderCondition;
+			countsql = countsql + "order by " + orderCondition;
+		} else
+		{
+			sql = sql + "order by task.createTime desc";
+			countsql = countsql + "order by task.createTime desc";
+		}
+	System.out.println("lizhi--countsql=" + countsql);
+	Integer total = ((ICommonFaultTaskDAO)getTaskDAO()).getCountTaskBySQL(countsql);
+	taskMap = ((ICommonFaultTaskDAO)getTaskDAO()).getTaskListBySQL(sql, startIndex, length);
+	taskMap.put("taskTotal", total);
+	return taskMap;
+}
+
+
+	public HashMap getUndoTaskSql(Map condition, String flowName)
+	{
+		String userId = (String)condition.get("userId");
+		String deptId = (String)condition.get("deptId");
+		HashMap cloumnMap = OvertimeTipUtil.getAllMainColumnByMapping(flowName);
+		HashMap entityMap = new HashMap();
+		HashMap returnMap = new HashMap();
+		Iterator it = cloumnMap.keySet().iterator();
+		String ruternColumnName = "";
+		String tmpOvertimeClm;
+		for (; it.hasNext(); entityMap.put(tmpOvertimeClm, "m" + tmpOvertimeClm))
+		{
+			tmpOvertimeClm = (String)it.next();
+			ruternColumnName = ruternColumnName + " main." + (String)cloumnMap.get(tmpOvertimeClm) + " as m" + tmpOvertimeClm + ",";
+		}
+
+		if (!ruternColumnName.equals(""))
+			ruternColumnName = "," + ruternColumnName.substring(0, ruternColumnName.length() - 1);
+		String hql = "select task.*" + ruternColumnName + " from " + " commonfault_task  task, commonfault_main   main " + "where task.id in ( ( select id from commonfault_task task1 where " + "( task1.taskOwner='" + userId + "' or task1.taskOwner='" + deptId + "'" + " or task1.taskOwner in (select userrefrole.subRoleid from taw_system_userrefrole  userrefrole where userrefrole.userid='" + userId + "'))" + " and (task1.taskStatus='" + "2" + "'" + " or task1.taskStatus='" + "8" + "'" + " or task1.taskStatus='" + "1" + "')" + " and task1.taskDisplayName<>'草稿' and task1.ifWaitForSubTask = 'false') union " + " ( select id from commonfault_task task1 " + " where task1.ifWaitForSubTask='true' and ( task1.id in (" + " select task2.parentTaskId from commonfault_task  task2 " + " where task2.subTaskFlag='true' and (task2.subTaskDealFalg='false' or task2.subTaskDealFalg is null) " + " and task2.taskStatus='" + "5" + "'))" + " and ( task1.taskOwner='" + userId + "' or task1.taskOwner='" + deptId + "' " + " or task1.taskOwner in (select userrefrole.subRoleid from taw_system_userrefrole  userrefrole where userrefrole.userid='" + userId + "'))" + " and (task1.taskStatus='" + "2" + "'" + " or task1.taskStatus='" + "8" + "'" + " or task1.taskStatus='" + "1" + "')" + " and task1.taskDisplayName<>'草稿'" + " )) and main.id=task.sheetKey and main.deleted<>'1'";
+		returnMap.put("hsql", hql);
+		returnMap.put("entityMap", entityMap);
+		return returnMap;
+	}
+	
+	public HashMap getAllTaskByUserid(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length) throws Exception {
+		HashMap taskMap=new HashMap();
+		BaseMain mainObject = (BaseMain)condition.get("mainObject");
+		String hql = "select distinct task from "
+				+ this.getTaskModelObject().getClass().getName()+ " as task,"
+				+ mainObject.getClass().getName()+ " as main "
+				//+ ",TawSystemUserRefRole as userrefrole "
+				+ "where ((task.taskOwner='" + userId + "' or task.taskOwner='" + deptId + "')"
+				//由于建立了索引，将查询角色改为子查询方式 modify by jialei 2009-02-25
+				//+ "(task.taskOwner=userrefrole.subRoleid and userrefrole.userid='"+ userId + "'))" 
+				+ " or task.taskOwner in (select userrefrole.subRoleid from TawSystemUserRefRole as userrefrole where userrefrole.userid='" + userId + "'))"
+				+ " and (task.taskStatus=" + Constants.TASK_STATUS_READY 
+				+ " or task.taskStatus=" + Constants.TASK_STATUS_CLAIMED
+				+ " or task.taskStatus=" + Constants.TASK_STATUS_INACTIVE + ")"
+				+ " and task.taskDisplayName<>'草稿'"
+				// 增加main.deleted<>1的条件，过滤已经隐藏或删除的工单 add by jialei
+				+ " and main.id=task.sheetKey and main.deleted<>'1'"
+				//分派处理 add by jialei
+				+ " and (task.ifWaitForSubTask='false' or (task.ifWaitForSubTask='true' and task.id in (select task1.parentTaskId from "+this.getTaskModelObject().getClass().getName()+" as task1 where task1.subTaskFlag='true' and (task1.subTaskDealFalg='false' or task1.subTaskDealFalg is null ) and task1.taskStatus='"+Constants.TASK_STATUS_FINISHED+"')))"
+				+ " order by task.createTime desc";
+
+		taskMap=((ICommonFaultTaskDAO)getTaskDAO()).getTasksomelengthListBySQL(hql, startIndex, length);
+		return taskMap;
+	}
+
+	public HashMap getNoAcceptTaskByUserid(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length) throws Exception {
+		HashMap taskMap=new HashMap();
+		BaseMain mainObject = (BaseMain)condition.get("mainObject");
+		String hql = "select distinct task from "
+				+ this.getTaskModelObject().getClass().getName()+ " as task,"
+				+ mainObject.getClass().getName()+ " as main "
+				//+ ",TawSystemUserRefRole as userrefrole "
+				+ "where ((task.taskOwner='" + userId + "' or task.taskOwner='" + deptId + "')"
+				//由于建立了索引，将查询角色改为子查询方式 modify by jialei 2009-02-25
+				//+ "(task.taskOwner=userrefrole.subRoleid and userrefrole.userid='"+ userId + "'))" 
+				+ " or task.taskOwner in (select userrefrole.subRoleid from TawSystemUserRefRole as userrefrole where userrefrole.userid='" + userId + "'))"
+				+ " and (task.taskStatus=" + Constants.TASK_STATUS_READY 
+				+ " )"
+				+ " and task.taskDisplayName<>'草稿'"
+				// 增加main.deleted<>1的条件，过滤已经隐藏或删除的工单 add by jialei
+				+ " and main.id=task.sheetKey and main.deleted<>'1'"
+				//分派处理 add by jialei
+				+ " and (task.ifWaitForSubTask='false' or (task.ifWaitForSubTask='true' and task.id in (select task1.parentTaskId from "+this.getTaskModelObject().getClass().getName()+" as task1 where task1.subTaskFlag='true' and (task1.subTaskDealFalg='false' or task1.subTaskDealFalg is null ) and task1.taskStatus='"+Constants.TASK_STATUS_FINISHED+"')))"
+				+ " order by task.createTime desc";
+
+		taskMap=((ICommonFaultTaskDAO)getTaskDAO()).getTasksomelengthListBySQL(hql, startIndex, length);
+		return taskMap;
+	}
+
+	public HashMap getNoDealTaskByUserid(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length) throws Exception {
+		HashMap taskMap=new HashMap();
+		BaseMain mainObject = (BaseMain)condition.get("mainObject");
+		String hql = "select distinct task from "
+				+ this.getTaskModelObject().getClass().getName()+ " as task,"
+				+ mainObject.getClass().getName()+ " as main "
+				//+ ",TawSystemUserRefRole as userrefrole "
+				+ "where ((task.taskOwner='" + userId + "' or task.taskOwner='" + deptId + "')"
+				//由于建立了索引，将查询角色改为子查询方式 modify by jialei 2009-02-25
+				//+ "(task.taskOwner=userrefrole.subRoleid and userrefrole.userid='"+ userId + "'))" 
+				+ " or task.taskOwner in (select userrefrole.subRoleid from TawSystemUserRefRole as userrefrole where userrefrole.userid='" + userId + "'))"
+				+ " and (task.taskStatus=" + Constants.TASK_STATUS_CLAIMED
+				+ " )"
+				+ " and task.taskDisplayName<>'草稿'"
+				// 增加main.deleted<>1的条件，过滤已经隐藏或删除的工单 add by jialei
+				+ " and main.id=task.sheetKey and main.deleted<>'1'"
+				//分派处理 add by jialei
+				+ " and (task.ifWaitForSubTask='false' or (task.ifWaitForSubTask='true' and task.id in (select task1.parentTaskId from "+this.getTaskModelObject().getClass().getName()+" as task1 where task1.subTaskFlag='true' and (task1.subTaskDealFalg='false' or task1.subTaskDealFalg is null ) and task1.taskStatus='"+Constants.TASK_STATUS_FINISHED+"')))"
+				+ " order by task.createTime desc";
+
+		taskMap=((ICommonFaultTaskDAO)getTaskDAO()).getTasksomelengthListBySQL(hql, startIndex, length);
+		return taskMap;
+	}
+	
+	public HashMap setTaskModel(Object task, HashMap processTemplateMap, HashMap taskBOMap, HashMap taskObjectMap, HashMap mainObjectMap, HashMap linkObjectMap)
+	throws Exception
+{
+	HashMap valueMap = new HashMap();
+	String taskPropNames = HibernateConfigurationHelper.getPkColumnName(task.getClass()) + "," + HibernateConfigurationHelper.getPropNamesWithoutPK(task.getClass());
+	String taskPropName[] = taskPropNames.split(",");
+	for (int i = 0; taskPropName.length > 0 && i < taskPropName.length; i++)
+	{
+		String name = taskPropName[i];
+		PropertyFile propertyFile = PropertyFile.getInstance(getTaskConfigPath());
+		String key = SheetStaticMethod.nullObject2String(PropertyFile.getPropertyByName(name));
+		System.out.println("key=" + key);
+		if (key.equals(""))
+		{
+			Object taskObjectTemp = taskObjectMap.get(name);
+			valueMap.put(name, taskObjectTemp);
+		} else
+		if (key.indexOf("task.") >= 0)
+		{
+			key = key.substring(key.lastIndexOf(".") + 1, key.length());
+			Object taskBOTemp = taskBOMap.get(key);
+			valueMap.put(name, taskBOTemp);
+		} else
+		if (key.indexOf("process.") >= 0)
+		{
+			key = key.substring(key.lastIndexOf(".") + 1, key.length());
+			Object processTemp = processTemplateMap.get(key);
+			valueMap.put(name, processTemp);
+		} else
+		if (key.indexOf("main.") >= 0)
+		{
+			key = key.substring(key.lastIndexOf(".") + 1, key.length());
+			Object processTemp = mainObjectMap.get(key);
+			valueMap.put(name, processTemp);
+		} else
+		if (key.indexOf("link.") >= 0)
+		{
+			key = key.substring(key.lastIndexOf(".") + 1, key.length());
+			Object processTemp = linkObjectMap.get(key);
+			valueMap.put(name, processTemp);
+		} else
+		if (key.indexOf("#") >= 0)
+		{
+			String expressions[] = key.split("\\?");
+			if (expressions.length > 1)
+			{
+				String leftExpression = expressions[0];
+				String rightExpression = expressions[1];
+				String rightExprs[] = rightExpression.split(":");
+				if (leftExpression.indexOf("taskBO.") >= 0)
+				{
+					int endNumber = leftExpression.indexOf("==");
+					String objectName = leftExpression.substring(leftExpression.lastIndexOf(".") + 1, endNumber).trim();
+					Object taskBOTemp = taskBOMap.get(objectName);
+					String taskBOTempValue = SheetStaticMethod.nullObject2String(taskBOTemp);
+					String real = leftExpression.substring(endNumber, leftExpression.length());
+					String realExpression = "\"" + taskBOTempValue + "\"" + real;
+					if (EomsBshEval.getbooleanFromStringExpression(realExpression))
+					{
+						if (rightExprs.length > 1)
+						{
+							String rightOne = rightExprs[0].trim();
+							if (rightOne.indexOf(".") == -1)
+							{
+								Object taskObjectTemp = taskObjectMap.get(name);
+								valueMap.put(name, taskObjectTemp);
+							}
+						}
+					} else
+					if (rightExprs.length > 1)
+					{
+						String rightTwo = rightExprs[1];
+						if (rightTwo.indexOf(".") >= 0)
+						{
+							String rightTwoName = rightTwo.substring(rightTwo.indexOf(".") + 1, rightTwo.length()).trim();
+							Object taskObjectTemp = taskBOMap.get(rightTwoName);
+							valueMap.put(name, taskObjectTemp);
+						}
+					}
+				}
+			}
+		} else
+		if (key.indexOf("&") >= 0)
+		{
+			System.out.println("taskBO.description&linkBO.operateType:" + key);
+			String expressions[] = key.split("&");
+			if (expressions.length > 1)
+			{
+				String leftExpression = expressions[0];
+				String rightExpression = expressions[1];
+				leftExpression = leftExpression.substring(leftExpression.lastIndexOf(".") + 1, leftExpression.length());
+				System.out.println("leftExpression:" + leftExpression);
+				String description = StaticMethod.nullObject2String(taskBOMap.get(leftExpression));
+				System.out.println("description:" + description);
+				rightExpression = rightExpression.substring(rightExpression.lastIndexOf(".") + 1, rightExpression.length());
+				System.out.println("rightExpression:" + rightExpression);
+				String operateType = StaticMethod.nullObject2String(linkObjectMap.get(rightExpression));
+				System.out.println("operateType:" + operateType);
+				System.out.println("name:" + name);
+				if (description.equals("FirstExcuteHumTask") && (operateType.equals("0") || operateType.equals("4")))
+					valueMap.put(name, operateType);
+			}
+		}
+	}
+
+	for (Iterator it = valueMap.keySet().iterator(); it.hasNext();)
+	{
+		String key = it.next().toString();
+		System.out.println("task model name=" + key);
+		Object obj = valueMap.get(key);
+		if (obj != null)
+			System.out.println("task mode value=" + obj.toString());
+		else
+			System.out.println("task mode value is null");
+	}
+
+	return valueMap;
+}
+
+	/**
+	 * add by weichao 20150515 根据SQL查找task列表
+	 * 
+	 * @param hsql
+	 * @param curPage
+	 * @param pageSize
+	 * @return
+	 * @throws HibernateException
+	 */
+	public HashMap getTaskListByCondition(String queryStr, Integer curPage, Integer pageSize) throws Exception {
+
+		return ((ICommonFaultTaskDAO) getTaskDAO()).getTasksListBySQL(queryStr, curPage, pageSize);
+	}
+}

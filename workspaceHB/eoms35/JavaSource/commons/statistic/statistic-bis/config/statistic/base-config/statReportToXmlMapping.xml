@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+    <class name="com.boco.eoms.commons.statistic.base.config.report.Reports">
+        <field name="reports" type="com.boco.eoms.commons.statistic.base.config.report.Report" collection="array">
+            <bind-xml name="report" node="element"/>
+        </field>
+    </class>
+    
+    <class name="com.boco.eoms.commons.statistic.base.config.report.Report">
+        <field name="datas" type="com.boco.eoms.commons.statistic.base.config.report.Datas">
+            <bind-xml name="datas" node="element"/>
+        </field>
+        <field name="displayinfo" type="com.boco.eoms.commons.statistic.base.config.report.DisplayInfo">
+            <bind-xml name="display-info" node="element"/>
+        </field>
+        <field name="id" type="java.lang.String">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+    </class>
+    
+    <class name="com.boco.eoms.commons.statistic.base.config.report.Datas">
+        <field name="datas"
+            type="com.boco.eoms.commons.statistic.base.config.report.Data" collection="array">
+            <bind-xml name="data" node="element"/>
+        </field>
+    </class>
+    
+    <class name="com.boco.eoms.commons.statistic.base.config.report.Data">
+        <field name="fields"
+            type="com.boco.eoms.commons.statistic.base.config.report.Field" collection="array">
+            <bind-xml name="field" node="element"/>
+        </field>
+    </class>
+    
+    <class name="com.boco.eoms.commons.statistic.base.config.report.Field">
+        <field name="url" type="java.lang.String">
+            <bind-xml name="url" node="attribute"/>
+        </field>
+        <field name="id2name" type="java.lang.String">
+            <bind-xml name="id2name" node="attribute"/>
+        </field>
+        <field name="value" type="java.lang.String">
+            <bind-xml name="value" node="attribute"/>
+        </field>
+        <field name="id" type="java.lang.String">
+            <bind-xml name="id" node="attribute"/>
+        </field>
+    </class>
+    
+    <class name="com.boco.eoms.commons.statistic.base.config.report.DisplayInfo">
+        <field name="infos"
+            type="com.boco.eoms.commons.statistic.base.config.report.Info" collection="array">
+            <bind-xml name="info" node="element"/>
+        </field>
+    </class>
+    
+    <class name="com.boco.eoms.commons.statistic.base.config.report.Info">
+        <field name="name" type="java.lang.String">
+            <bind-xml name="name" node="attribute"/>
+        </field>
+        <field name="value" type="java.lang.String">
+            <bind-xml name="value" node="attribute"/>
+        </field>
+    </class>
+</mapping>

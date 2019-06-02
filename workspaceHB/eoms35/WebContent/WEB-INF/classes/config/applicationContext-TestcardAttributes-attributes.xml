@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="TestCardAttributes"
+		class="com.boco.eoms.testcard.util.TestCardAttributes">
+		<property name="normalState">
+			<value>正常</value>
+		</property>
+		<property name="downtimeState">
+			<value>停机</value>
+		</property>
+		<property name="lostState">
+			<value>遗失</value>
+		</property>
+		<property name="registrationState">
+			<value>SIM卡注册失败</value>
+		</property>
+		<property name="lendingState">
+			<value>借出</value>
+		</property>
+		<property name="scrappedState">
+			<value>报废</value>
+		</property>
+		<property name="useState">
+			<value>使用</value>
+		</property>
+		<property name="questionState">
+			<value>待接收</value>
+		</property>
+		<property name="auditedState">
+			<value>已审核</value>
+		</property>
+		<property name="pendingState">
+			<value>待审核</value>
+		</property>
+		<property name="serverId">
+			<value>8a44e43f1ac8fb2b011ac9168eda0005</value>
+		</property>
+		<property name="returnDay">
+			<value>-1</value>
+		</property>
+	
+	
+	</bean>
+</beans>
+

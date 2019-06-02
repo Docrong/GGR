@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+	<bean id="iWfSheetDeleteOperateManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.sheetdelete.service.impl.WfSheetDeleteOperateManager">
+				<property name="businessFlowService">
+					<ref bean="businessFlowService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iWfSheetDeleteInfoManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.sheetdelete.service.impl.WfSheetDeleteInfoManager">
+				<property name="infoDao">
+					<ref bean="iWfSheetDeleteInfoDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iWfSheetDeleteInfoDAO"
+		class="com.boco.eoms.sheet.sheetdelete.dao.hibernate.WfSheetDeleteInfoDAOHibernate"
+		autowire="byName">
+
+	</bean>
+</beans>

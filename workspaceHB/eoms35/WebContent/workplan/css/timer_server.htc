@@ -1,0 +1,38 @@
+<public:component>
+<public:attach event="oncontentready" onevent="play()" />
+<public:method name="playback" />
+
+<script language="jscript">
+var d, serverDate;
+
+function play() {
+	d = new Date();
+	serverDate = element.innerText;
+	d.setTime(Date.parse(serverDate));
+	playback();
+	setInterval(element.id+".playback()",1000);
+}
+
+function playback() {   
+	var strTime;
+
+	strTime = "";
+	strTime += d.getFullYear()+"年 ";
+	strTime += d.getMonth()+1+"月 ";
+	strTime += d.getDate()+"日 ";
+	strTime += (d.getHours()<12 ? "上午" : "下午")+" " ;
+	strTime += this.formatTime(d.getHours())+": ";
+	strTime += this.formatTime(d.getMinutes())+": ";
+	strTime += this.formatTime(d.getSeconds());
+
+	element.innerText = strTime;
+	
+	d.setSeconds(d.getSeconds()+1);
+}
+
+function formatTime(sTime) {
+	return sTime <10 ? ("0"+sTime) : sTime;
+}
+
+</script>
+</public:component>

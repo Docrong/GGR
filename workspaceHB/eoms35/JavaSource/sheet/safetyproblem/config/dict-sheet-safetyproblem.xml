@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="安全问题工单">
+	<dict id="mainOperateType" description="处理方法">	
+		<item id="0" name="新建派发" description="新建派发" />		
+		<item id="22" name="草稿保存" description="草稿保存" />
+		<item id="3" name="草稿派发" description="草稿派发" />
+		<item id="54" name="重新派发" description="重新派发" />		
+		<item id="46" name="处理完成无需审批" description="处理完成无需审批" />
+		<item id="6" name="处理回复通过" description="处理回复通过" />
+		<item id="7" name="不通过退回" description="不通过退回" />
+		<item id="18" name="归档" description="归档" />
+		<item id="4" name="驳回上一级" description="驳回上一级" />
+		<item id="8" name="移交" description="移交" />
+	    <item id="88" name="转审" description="转审" />
+		<item id="30" name="会审" description="会审" />
+		<item id="55" name="会审回复" description="会审回复" />		
+        <item id="-13" name="强制归档" description="强制归档" />	
+		<item id="-14" name="强制作废" description="强制作废" />
+		<item id="-12" name="作废" description="作废" />
+		<item id="-10" name="抄送" description="抄送" />	
+		<item id="-15" name="抄送确认" description="抄送确认" />
+		<item id="9" name="阶段回复" description="阶段回复" />	
+		<item id="-11" name="阶段通知" description="阶段通知" />
+		<item id="10" name="分派" description="分派" />
+		<item id="11" name="分派回复" description="分派回复" />	
+		<item id="61" name="确认受理" description="确认受理" />
+		
+		<item id="199" name="提交审核" description="提交审核" />
+		
+				
+		<item id="200" name="派发审批" description="派发审批" />
+		<item id="201" name="派发审批通过" description="派发审批通过" />
+		<item id="202" name="派发审批不通过" description="派发审批不通过" />
+		
+		<item id="203" name="任务执行" description="任务执行" />
+		<item id="10" name="分派" description="分派" />
+		<item id="205" name="执行完成/无需审批" description="执行完成/无需审批" />
+		<item id="206" name="执行完成/送审" description="执行完成/送审" />
+		
+		<item id="207" name="完成审批" description="完成审批" />
+		<item id="208" name="完成审批通过" description="完成审批通过" />
+		<item id="209" name="完成审批不通过" description="完成审批不通过" />	
+
+		<item id="210" name="处理回复" description="处理回复" />
+		<item id="211" name="处理回复通过" description="处理回复通过" />
+		<item id="212" name="处理回复不通过" description="处理回复不通过" />	
+	</dict>
+	
+	
+
+	<dict id="activeTemplateId" description="节点名称">
+	    <item id="cc" name="抄送" description="抄送" />
+	    <item id="reply" name="阶段回复" description="阶段回复" />
+	    <item id="advice" name="阶段通知" description="阶段通知" />	
+		<item id="DraftTask" name="草稿" description="草稿" />
+		<item id="RejectTask" name="被驳回" description="被驳回" />
+		<item id="TaskCreateAuditHumTask" name="任务创建审批中" description="任务创建审批中" />
+		<item id="ExcuteHumTask" name="任务执行中" description="任务执行中" />
+		<item id="TaskCompleteAuditHumTask" name="任务执行完成审批中" description="任务执行完成审批中" />
+		<item id="RejectTask" name="处理回复中" description="处理回复中" />
+		<item id="HoldHumTask" name="待归档" description="待归档" />
+		<item id="" name="新增工单" description="新增工单" />
+	</dict>
+</dicts>
+

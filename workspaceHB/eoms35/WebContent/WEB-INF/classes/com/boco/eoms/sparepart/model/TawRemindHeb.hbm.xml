@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.sparepart.model.RemindHeb"  table="TAW_SP_REMIND">
+
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="STORAGEID" length="32" name="storageid" type="string"/>
+<property column="OBJECT" length="32" name="object" type="string"/>
+<property column="TYPE" length="32" name="type" type="string"/>
+<property column="UPPERLIMIT" length="32" name="upperlimit" type="string"/>
+<property column="LOWERLIMIT" length="32" name="getLowerlimit" type="string"/>
+<property column="LIMITDATE" length="7" name="limitdate" type="date"/>
+<property column="SENDMSG" length="225" name="sendmsg" type="string"/>
+<property column="NOTE" length="225" name="note" type="string"/>
+</class>
+</hibernate-mapping>

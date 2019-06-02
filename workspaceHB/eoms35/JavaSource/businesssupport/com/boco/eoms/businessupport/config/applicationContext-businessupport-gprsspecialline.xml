@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <!--GprsSpecialLine-DAO START-->
+    <bean id="gprsspeciallineDao" class="com.boco.eoms.businessupport.product.dao.hibernate.GprsSpecialLineDaoHibernate" autowire="byName"/>
+    <bean id="IGprsSpecialLineJdbc" class="com.boco.eoms.businessupport.product.dao.hibernate.GprsSpecialLineJdbcImpl" autowire="byName"/>
+    <!--GprsSpecialLine-DAO END-->
+    <!--GprsSpecialLine-START-->    
+    <bean id="IGprsSpecialLineManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.businessupport.product.service.impl.GprsSpecialLineManagerImpl">
+                <property name="gprsspeciallineDao" ref="gprsspeciallineDao"/>
+                <property name="gprsspeciallineJdbc" ref="IGprsSpecialLineJdbc"/>
+            </bean>
+        </property>
+    </bean>
+</beans>
+
+
+
+

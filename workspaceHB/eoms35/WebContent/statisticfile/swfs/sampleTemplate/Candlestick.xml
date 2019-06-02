@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+
+    <background color="0xEEF2FB"/>
+    <workspace>
+      <name text="3 Months"/>
+      <chart_area x="40" width="400" deep="4" y="30">
+        <border enabled="yes" color="0xDAE1E8"/>
+        <background color="0xFFFFFF"/>
+      </chart_area>
+      <base_area enabled="no"/>
+      <grid>
+        <values horizontal_captions_position="left" color="0xDAE1E8">
+          <captions>
+            <font type="Verdana" size="10"/>
+          </captions>
+        </values>
+      </grid>
+	<y_axis smart="yes" />
+    </workspace>
+    <chart type="Candlestick">
+      <candlestick_chart maximum_value="24" minimum_value="29" candlestick_space="0" left_space="50" right_space="50" >
+        <bears>
+	  <background color="White" />
+	  <border color="Black" />
+        </bears>
+        <bulls>
+	  <background color="Red" />
+	  <border color="Black" />
+        </bulls>
+      </candlestick_chart>
+      <hints  auto_size='no' width='100' height='80' >
+	<text>
+<![CDATA[{NAME}<br/><b>Open:</b> {OPEN}<br/><b><font color="#FF0000">Close:</font></b> {CLOSE}<br/><b>High:</b> {HIGH}<br/>Low: {LOW}]]></text>
+        <border color="0xDAE1E8"/>
+        <background color="0xffffff"/>
+      </hints>
+    </chart>
+  </type> 
+</root>

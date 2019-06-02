@@ -1,0 +1,290 @@
+		body
+		{
+			position: relative;
+			cursor: default;
+		}
+		td
+		{
+			vertical-align: middle;
+			text-align: center;
+		}
+		.buttonState
+		{
+			color: menutext;
+			background-color: #F6F6F1;
+		}
+		.buttonState #tl
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbTopLeft.gif);
+		}
+		.buttonState #t
+		{
+			height: 4px;
+			background-image: url(images/gbTop.gif);
+		}
+		.buttonState #tr
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbTopRight.gif);
+		}
+		.buttonState #l1
+		{
+			width: 4px;
+			background-image: url(images/gbLeft.gif);
+		}
+		.buttonState #l2
+		{
+			width: 4px;
+			background-image: url(images/gbLeft.gif);
+		}
+		.buttonState #r1
+		{
+			width: 4px;
+			background-image: url(images/gbRight.gif);
+		}
+		.buttonState #r2
+		{
+			width: 4px;
+			background-image: url(images/gbRight.gif);
+		}
+		.buttonState #bl
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbBottomLeft.gif);
+		}
+		.buttonState #b
+		{
+			height: 4px;
+			background-image: url(images/gbBottom.gif);
+		}
+		.buttonState #br
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbBottomRight.gif);
+		}
+		.buttonState #iImage
+		{
+			padding: 0px 2px 0px 2px;
+			vertical-align: middle;
+			filter:	Alpha(Opacity=70);
+		}
+		.buttonState #iText
+		{
+			font: menu;
+			text-align: center;
+			padding: 2px 3px 2px 3px;
+			word-break:keep-all;
+		}
+		.buttonStateOver
+		{
+			color: menutext;
+			background-color: #F6F6F1;
+			cursor:hand;
+		}
+		.buttonStateOver #tl
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbTopLeft.gif);
+		}
+		.buttonStateOver #t
+		{
+			height: 4px;
+			background-image: url(images/gbTop.gif);
+		}
+		.buttonStateOver #tr
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbTopRight.gif);
+		}
+		.buttonStateOver #l1
+		{
+			width: 4px;
+			background-image: url(images/gbLeft.gif);
+		}
+		.buttonStateOver #l2
+		{
+			width: 4px;
+			background-image: url(images/gbLeft.gif);
+		}
+		.buttonStateOver #r1
+		{
+			width: 4px;
+			background-image: url(images/gbRight.gif);
+		}
+		.buttonStateOver #r2
+		{
+			width: 4px;
+			background-image: url(images/gbRight.gif);
+		}
+		.buttonStateOver #bl
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbBottomLeft.gif);
+		}
+		.buttonStateOver #b
+		{
+			height: 4px;
+			background-image: url(images/gbBottom.gif);
+		}
+		.buttonStateOver #br
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbBottomRight.gif);
+		}
+		.buttonStateOver #iImage
+		{
+			padding: 0px 2px 0px 2px;
+			vertical-align: middle;
+			filter:	Alpha(Opacity=100);
+		}
+		.buttonStateOver #iText
+		{
+			font: menu;
+			text-align: center;
+			padding: 2px 3px 2px 3px;
+			word-break:keep-all;
+		}
+		.buttonStateDown
+		{
+			color: white;
+			background-color: #E5E4DD;
+		}
+		.buttonStateDown #tl
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbTopLeftDown.gif);
+		}
+		.buttonStateDown #t
+		{
+			height: 4px;
+			background-image: url(images/gbTopDown.gif);
+		}
+		.buttonStateDown #tr
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbTopRightDown.gif);
+		}
+		.buttonStateDown #l1
+		{
+			width: 4px;
+			background-image: url(images/gbLeftDown.gif);
+		}
+		.buttonStateDown #l2
+		{
+			width: 4px;
+			background-image: url(images/gbLeftDown.gif);
+		}
+		.buttonStateDown #r1
+		{
+			width: 4px;
+			background-image: url(images/gbRightDown.gif);
+		}
+		.buttonStateDown #r2
+		{
+			width: 4px;
+			background-image: url(images/gbRightDown.gif);
+		}
+		.buttonStateDown #bl
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbBottomLeftDown.gif);
+		}
+		.buttonStateDown #b
+		{
+			height: 4px;
+			background-image: url(images/gbBottomDown.gif);
+		}
+		.buttonStateDown #br
+		{
+			height: 4px;
+			width: 4px;
+			background-image: url(images/gbBottomRightDown.gif);
+		}
+		.buttonStateDown #iImage
+		{
+			padding: 0px 2px 0px 2px;
+			vertical-align: middle;
+			filter:	Alpha(Opacity=100);
+		}
+		.buttonStateDown #iText
+		{
+			font: menu;
+			text-align: center;
+			padding: 2px 3px 2px 3px;
+			word-break:keep-all;
+		}
+		.buttonStateDisabled
+		{
+			color: menutext;
+			background-color: transparent;
+		}
+		.buttonStateDisabled #tl
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #t
+		{
+			height: 4px;
+		}
+		.buttonStateDisabled #tr
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #l1
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #l2
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #r1
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #r2
+		{
+			width: 4px;
+		}
+		.buttonStateDisabled #bl
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #b
+		{
+			height: 4px;
+		}
+		.buttonStateDisabled #br
+		{
+			height: 4px;
+			width: 4px;
+		}
+		.buttonStateDisabled #iImage
+		{
+			padding: 0px 2px 0px 2px;
+			vertical-align: middle;
+			filter:	Gray() Alpha(Opacity=40);
+		}
+		.buttonStateDisabled #iText
+		{
+			color: graytext;
+			font: menu;
+			text-align: center;
+			padding: 2px 3px 2px 3px;
+			word-break:keep-all;
+		}

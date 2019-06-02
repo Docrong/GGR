@@ -1,0 +1,38 @@
+[PropertyInfo]
+charge,String,false,false, , ,true,<default>
+contract,String,false,false, , ,true,<default>
+etime,String,false,false, , ,true,<default>
+hwversion,String,false,false, , ,true,<default>
+id,int,false,false, , ,true,<default>
+intime,String,false,false, , ,true,<default>
+loannum,int,false,false,loannum,loannum,true,<default>
+managecode,String,false,false, , ,true,<default>
+necode,String,false,false, , ,true,<default>
+nettype,String,false,false, , ,true,<default>
+note,String,false,false, , ,true,<default>
+objectname,String,false,false, , ,true,<default>
+objecttype,String,false,false, , ,true,<default>
+operator,String,false,false, , ,true,<default>
+outPercent,String,false,false, , ,true,<default>
+outSum,int,false,false, , ,true,<default>
+position,String,false,false, , ,true,<default>
+productcode,String,false,false, , ,true,<default>
+proform,String,false,false, , ,true,<default>
+repairnum,int,false,false,repairnum,repairnum,true,<default>
+serialno,String,false,false, , ,true,<default>
+serSum,int,false,false, , ,true,<default>
+servicePercent,String,false,false, , ,true,<default>
+state,String,false,false, , ,true,<default>
+storage,String,false,false, , ,true,<default>
+sum,String,false,false, , ,true,<default>
+supplier,String,false,false, , ,true,<default>
+supplierid,String,false,false, , ,true,<default>
+units,String,false,false, , ,true,<default>
+updatetime,String,false,false, , ,true,<default>
+userId,String,false,false, , ,true,<default>
+version,String,false,false, , ,true,<default>
+[IconNames]
+
+
+
+

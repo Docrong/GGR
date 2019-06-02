@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<websphereDeploySettings>
+  <!--The preferences in this file is not used by the current version of the product; However, it was created because the backwards compatibility preference is enabled.-->
+  <!--See the com.ibm.etools.ejbdeploy.prefs file in this same directory for the preferences used by the current vesrion of the product.-->
+  <generateRefStubs value="true"/>
+  <generationFolder name="ejbModule"/>
+  <rmicSysProperties value=""/>
+</websphereDeploySettings>

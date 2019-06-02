@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+  <cell id="1" type="InitialActionCell" height="30" width="100" x="213" y="80" />
+  <cell id="2" type="StepCell" height="30" width="100" x="566" y="80" />
+  <cell id="3" type="StepCell" height="30" width="100" x="903" y="80" />
+  <cell id="4" type="StepCell" height="30" width="100" x="360" y="286" />
+  <cell id="5" type="StepCell" height="30" width="100" x="360" y="481" />
+  <connector id="90" linewidth="1.0" color="-16777216" labelx="0" labely="561" from="0" to="0" start="213,80" end="360,286">
+    <routing id="90" x="264" y="299" />
+  </connector>
+  <connector id="91" linewidth="1.0" color="-16777216" labelx="502" labely="0" from="0" to="0" start="213,80" end="566,80" />
+  <connector id="92" linewidth="1.0" color="-16777216" labelx="0" labely="559" from="0" to="0" start="566,80" end="360,286">
+    <routing id="92" x="613" y="298" />
+  </connector>
+  <connector id="93" linewidth="1.0" color="-16777216" labelx="0" labely="594" from="0" to="0" start="360,286" end="360,481" />
+  <connector id="94" linewidth="1.0" color="-16777216" labelx="1004" labely="457" from="0" to="0" start="360,481" end="903,80">
+    <routing id="94" x="953" y="495" />
+  </connector>
+  <channel id="chl-1" y1="0" y2="200" text="规划站址调整申请人" />
+  <channel id="chl-2" y1="200" y2="400" text="规划站址调整管理员" />
+  <channel id="chl-3" y1="400" y2="600" text="规划站址调整审核人" />
+</layout>
+

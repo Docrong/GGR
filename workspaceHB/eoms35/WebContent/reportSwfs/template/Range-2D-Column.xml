@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Range 2DColumn" maximum_value="70" minimum_value="-15">
+      <animation appearance="alpha" speed="5"/>
+      <column_chart column_space="0">
+        <block_names>
+          <font size="9" type="Verdana"/>
+        </block_names>
+      </column_chart>
+      <hints enabled="no"/>
+      <names show="no"/>
+      <values show="no"/>
+    </chart>
+    <workspace>
+      <background enabled="yes" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xF1F6F9</color>
+	      <color>0x095D8B</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="1.58"/>
+	  </background>
+      <chart_area height="260" width="305" y="50" x="58">
+<background enabled="no"/>
+<border enabled="no"/>
+	  </chart_area>
+      <base_area enabled="no"/>
+      <grid>
+        <values lines_step="5" end="70" start="-15">
+          <captions>
+            <font size="10" type="Verdana"/>
+          </captions>
+        </values>
+      </grid>   
+    </workspace>
+    <legend enabled="yes" x="400" y="50">
+      <values enabled="no"/>
+      <header names="Versions"/>
+      <names width="150"/>
+      <scroller enabled="no"/>
+      <border enabled="no"/>
+      <background enabled="no"/>
+    </legend>    
+  </type>
+
+</root>

@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpExecuteContent"
+        table="TAW_WP_EXECUTECONTENT"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpExecuteContent.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NAMES"
+            length="200"
+            not-null="true"
+        />
+
+		<property name="botype" type="java.lang.String" update="true"
+			insert="true" access="property" column="BOTYPE" length="200"
+			not-null="false" />
+		<property name="executedeptlevel" type="java.lang.String" update="true"
+			insert="true" access="property" column="EXECUTEDEPTLEVEL" length="200"
+			not-null="false" />
+		<property name="appdesc" type="java.lang.String" update="true"
+			insert="true" access="property" column="APPDESC" length="200"
+			not-null="false" />
+
+        <property
+            name="content"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CONTENT"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="remark"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="REMARK"
+            length="400"
+            not-null="false"
+        />
+
+        <property
+            name="fileFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FILE_FLAG"
+            length="1"
+            not-null="false"
+        />  
+
+        <property
+            name="startDate"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STARTDATE"
+            length="19"
+            not-null="true"
+        />
+
+        <property
+            name="endDate"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ENDDATE"
+            length="19"
+            not-null="true"
+        />
+
+        <property
+            name="crtime"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CRTIME"
+            length="19"
+            not-null="false"
+        />
+
+        <property
+            name="cruser"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CRUSER"
+            length="250"
+            not-null="false"
+        />
+
+        <property
+            name="executeFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTEFLAG"
+        />
+
+        <property
+            name="formId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FORMID"
+        />
+
+        <property
+            name="formDataId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="FORMDATAID"
+        />
+
+        <property
+            name="eligibility"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="ELIGIBILITY"
+        />
+
+        <property
+            name="checkContent"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CHECKCONTENT"
+        />
+
+        <property
+            name="cycle"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CYCLES"
+            length="3"
+            not-null="true"
+        />
+
+        <property
+            name="deptId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="DEPTID"
+            length="10"
+            not-null="true"
+        />
+
+        <property
+            name="executeDept"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="EXECUTEDEPT"
+            length="10"
+            not-null="false"
+        />
+        
+        <property
+            name="workSheetId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="WORKSHEETID"
+        />
+
+        <property
+            name="command"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMMAND"
+            length="100"
+            not-null="false"
+        />
+
+        <property
+            name="commandName"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="COMMANDNAME"
+            length="100"
+            not-null="false"
+        />
+
+        <property
+            name="executer"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTER"
+            length="250"
+            not-null="false"
+        />
+        
+        <property
+            name="normalFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NOMALFLAG"
+            length="2"
+            not-null="false"
+        />
+
+        
+        <property
+            name="qualityCheckUser"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="QUALITYCHCKUSER"
+            length="2"
+            not-null="false"
+        />
+       
+        <property
+            name="qualityCheckFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="QUALITYCHCKFLAG"
+            length="2"
+            not-null="false"
+        />
+        <property
+            name="qualityCheckDevice"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="QUALITYCHCKDEVICE"
+            length="2"
+            not-null="false"
+        />
+
+        <many-to-one
+            name="tawwpMonthExecute"
+            class="com.boco.eoms.workplan.model.TawwpMonthExecute"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTH_EXECUTE_ID"
+            not-null="true"
+        />
+
+        <many-to-one
+            name="tawwpMonthPlan"
+            class="com.boco.eoms.workplan.model.TawwpMonthPlan"
+            lazy="false"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTH_PLAN_ID"
+            not-null="true"
+        />
+
+        <set
+            name="tawwpExecuteContentUsers"
+            lazy="true"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="EXECUTE_CONTENT_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpExecuteContentUser"
+              />
+
+        </set>
+
+        <set
+            name="tawwpExecuteFiles"
+            lazy="false"
+            inverse="true"
+            cascade="all"
+            sort="unsorted"
+        >
+ 
+              <key
+                  column="EXECUTE_CONTENT_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpExecuteFile"
+              />
+
+        </set>
+
+        <property
+            name="executeDuty"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTEDUTY"
+            length="1"
+            not-null="false"
+        />
+
+        <property
+            name="executeRoom"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTEROOM"
+            length="100"
+            not-null="false"
+        />
+
+        <property
+            name="executerType"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTETYPE"
+            length="1"
+            not-null="false"
+        />
+
+        <property
+            name="monthPlanExecuteFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTHPLANEXECUTEFLAG"
+            length="1"
+            not-null="false"
+        />
+
+        
+         <property
+            name="reason"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="REASON"
+            length="255"
+            not-null="false"
+        />
+ 		 
+
+        
+        <property
+            name="extendremark"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="extendremark"
+            length="255"
+            not-null="false"
+        />
+ 		 <property
+            name="accessories"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="accessories"
+            length="255"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpExecuteContent.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

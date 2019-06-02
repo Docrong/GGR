@@ -1,0 +1,7 @@
+{
+	status:1,
+	data:[
+		{text:"工单1：提交给您指定的人员吗?",fn:function(){$("tt").value="测试成功"}},
+		{text:"工单2：提交给您指定的人员吗?",fn:function(){$("sendContact").value="111"}}		
+	]
+}

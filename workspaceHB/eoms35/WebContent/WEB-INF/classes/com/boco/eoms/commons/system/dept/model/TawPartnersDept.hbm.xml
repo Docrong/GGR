@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.commons.system.dept.model.TawPartnersDept"
+		table="taw_Partners_dept">
+
+		   <id column="id" name="id" type="string">
+                <generator class="uuid.hex"/>
+           </id>
+
+		<property name="qualification" length="100">
+
+		</property>
+
+		<property name="registerFund" length="100">
+
+		</property>
+
+		<property name="companyType" length="100">
+
+		</property>
+
+		<property name="setupTime" length="100">
+
+		</property>
+
+		<property name="fixAsset" length="100">
+
+		</property>
+
+		<property name="peopleNumber" length="100">
+
+		</property>
+
+		<property name="companyWeb" length="100">
+
+		</property>
+
+		<property name="contacter" length="100">
+
+		</property>
+
+		<property name="businessLicense" length="100">
+
+		</property>
+
+		<property name="certificationDept" length="100">
+
+		</property>
+
+		<property name="professionalLevel" length="100">
+
+		</property>
+
+		<property name="isUnicomAssociation" length="10">
+
+		</property>
+
+		<property name="managePeople" length="100">
+
+		</property>
+
+		<property name="seniorTitle" length="100">
+
+		</property>
+
+		<property name="intermediateTitle" length="100">
+
+		</property>
+
+		<property name="juniorTitle" length="100">
+
+		</property>
+
+		<property name="workers" length="100">
+
+		</property>
+
+		<property name="ownCars" length="100">
+
+		</property>
+
+		<property name="ownInstrument" length="100">
+
+		</property>
+
+		<property name="lines" length="100">
+		
+		</property>
+		
+		<property name="baseStations" length="100">
+
+		</property>
+		<property name="towers" length="100">
+
+		</property>
+		<property name="microwaves" length="100" />
+		
+		<property name="powerAndSet" length="100" />
+		<property name="qualificationValidity" length="100" />
+		<property name="bankAccount" length="100" />
+		<property name="thirdServiceContract" length="100" />
+		<property name="attachName" length="100" />
+		<property name="deptId" length="100" />
+	</class>
+
+</hibernate-mapping>
+

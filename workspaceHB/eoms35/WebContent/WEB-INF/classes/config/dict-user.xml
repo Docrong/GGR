@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="用户字典">	
+	<dict id="userSex" description="性别">
+		<item id="1" name="男" description="男" />
+		<item id="0" name="女" description="女" />
+	</dict>
+</dicts>
+
+

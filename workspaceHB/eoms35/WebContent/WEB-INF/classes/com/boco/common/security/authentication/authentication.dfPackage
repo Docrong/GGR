@@ -1,0 +1,55 @@
+package id43kmldjc31o07djc3g4vi;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#com.boco.common.security.authentication.SimplePrincipal:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.authentication.SimpleGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.authentication.UserData:oiref><oihard>
+@__modelType reference 
+*/
+class reference18 {
+}/**
+@__ref <oiref:design#Class#idnq2ddjc31o07djc3ly1w.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.authentication.callback:oiref> 
+*/
+class reference21 {
+}/**
+@__ref <oiref:design#Class#id2t7zidjc31o07djc3lufo.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.authentication.login:oiref> 
+*/
+class reference22 {
+}/**
+@__ref <oiref:design#Class#idzqi0djc31o07djc3okk8.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.authentication.cofig:oiref> 
+*/
+class reference28 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

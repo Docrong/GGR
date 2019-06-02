@@ -1,0 +1,30 @@
+<public:component>
+<public:attach event="oncontentready" onevent="play()" />
+<public:method name="playback" />
+
+<script language="jscript">
+function play() {
+	playback();
+	setInterval(element.id+".playback()",1000);
+}
+
+function playback() {
+	var objDate = new Date();
+	var strTime = "";
+		strTime += objDate.getFullYear()+"年 ";
+		strTime += objDate.getMonth()+1+"月 ";
+		strTime += objDate.getDate()+"日 ";
+		strTime += (objDate.getHours()<=12 ? "上午" : "下午")+" " ;
+		strTime += this.formatTime(objDate.getHours())+": ";
+		strTime += this.formatTime(objDate.getMinutes())+": ";
+		strTime += this.formatTime(objDate.getSeconds());
+
+	element.innerText = strTime;
+}
+
+function formatTime(sTime) {
+	return sTime <10 ? ("0"+sTime) : sTime;
+}
+
+</script>
+</public:component>

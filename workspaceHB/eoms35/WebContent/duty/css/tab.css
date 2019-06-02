@@ -1,0 +1,44 @@
+a:active {  text-decoration: none; color: #5AA5F7}
+a:visited {  text-decoration: none; color: #000000}
+a:link {  text-decoration: none; color: #000000}
+a:hover {  color: #0665B7; text-decoration: none}
+.p9 {  font-size: 9pt}
+.p10 { font-size: 10pt}
+.p11 {  font-size: 11pt}
+.shitu_headcolor {  font-family: ""; background-color: #468284; font-size: 9pt;color: #ffffff;font-weight:}
+.headover {BACKGROUND-COLOR: #006699; COLOR: #ffffff; CURSOR: s-resize; FONT-FAMILY:
+"Arial"; FONT-WEIGHT: bold}
+.color1 {  background-color: ; font-size: 9pt} 
+.color2 { background-color: #D6E7F7; font-size: 9pt}
+.selecteddocument {background-color: #FFFF9C; font-size: 9pt}
+.tabletitle {font-family:"ºÚÌå";color:#000000;font-size:16pt}
+.outerblue {
+	PADDING-RIGHT: 5px; BORDER-TOP: #336699 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; OVERFLOW: hidden; PADDING-TOP: 0px; HEIGHT: 276px
+}
+.innerwhite {
+	BORDER-RIGHT: black 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: black 1px solid; PADDING-LEFT: 5px; BACKGROUND: white; PADDING-BOTTOM: 5px; BORDER-LEFT: black 1px solid; WIDTH: 100%; PADDING-TOP: 5px; BORDER-BOTTOM: black 1px solid; HEIGHT: 100%
+}
+.descHints {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 8pt; BACKGROUND: #e4e4e4; PADDING-BOTTOM: 5px; WIDTH: 100%; PADDING-TOP: 5px; HEIGHT: 133px
+}
+.descHilite {
+	COLOR: red
+}
+.controlTitle {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; BACKGROUND: white; PADDING-BOTTOM: 5px; CURSOR: hand; PADDING-TOP: 5px; BORDER-BOTTOM: #cccccc 1px solid; TEXT-ALIGN: center
+}
+.copyBar {
+	PADDING-RIGHT: 5px; BORDER-TOP: #cccccc 1px solid; MARGIN-TOP: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 9pt; BACKGROUND: #cccccc; PADDING-BOTTOM: 5px; CURSOR: hand; PADDING-TOP: 5px; FONT-FAMILY: verdana; TEXT-ALIGN: left
+}
+.codeHilite {
+	FONT-SIZE: 9pt; COLOR: red; FONT-FAMILY: verdana
+}
+.cpcontent {
+	BORDER-RIGHT: #336699 2px solid; PADDING-RIGHT: 0px; BORDER-TOP: #336699 2px solid; DISPLAY: none; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 10pt; Z-INDEX: 1; PADDING-BOTTOM: 0px; OVERFLOW: auto; BORDER-LEFT: #336699 2px solid; WIDTH: 101.8%; PADDING-TOP: 0px; BORDER-BOTTOM: #99ccff 2px solid; FONT-FAMILY: verdana; SCROLLBAR-BASE-COLOR: #cccccc; POSITION: absolute; HEIGHT: 98.5%; BACKGROUND-COLOR: white; TEXT-ALIGN: left
+}
+.tab {
+	FONT-WEIGHT: normal; FONT-SIZE: 8pt; Z-INDEX: 1; LEFT: 2px; BACKGROUND-IMAGE: url(UI_graytab.gif); WIDTH: 90px; CURSOR: hand; COLOR: white; PADDING-TOP: 2px; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: verdana; POSITION: absolute; TOP: 30px; HEIGHT: 25px; TEXT-ALIGN: center
+}
+.mainview {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #99ccff 1px solid; PADDING-LEFT: 2px; Z-INDEX: 1; LEFT: 0px; PADDING-BOTTOM: 2px; BORDER-LEFT: #99ccff 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #000000 1px solid; POSITION: absolute; left:4px; TOP: 48px; BACKGROUND-COLOR: #6699cc; TEXT-ALIGN: left;
+width:expression(document.body.clientWidth-20); height:99%; z-index:1;}

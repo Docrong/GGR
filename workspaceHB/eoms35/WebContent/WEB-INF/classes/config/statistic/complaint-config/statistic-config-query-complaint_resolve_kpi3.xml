@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id>52</est-module-id> <!--最后采集的时间表id-->
+
+	<!-- ********按(人员)统计故障一级解决率 ********************** -->
+	<kpi-define><!-- 可重复 -->
+		<name>complaint_resolve_byuser</name>
+		<kpi-caption></kpi-caption>
+		<!-- dbtype={String,int,datetime} -->
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param  page-name="areaid" markflg="true"/>
+		<condition-param  page-name="mainNetSortOne" markflg="true"/>
+		
+		<condition-param  page-name="userByDeptid" markflg="true"/>
+		
+		<!--人员-->
+		<summary-define>
+			<id>s1</id>
+			<sequence></sequence>
+			<column>est.OPERATEUSERID</column>
+			<!-- 注册 部门id转name接口 "statBaseDeptId2name_v35"-->
+			<!-- 注册 人员id转name接口 "statBaseUserId2name_v35"-->
+			<!-- 注册 字典id转name接口 "statDictId2name_v35"-->
+			<!-- 注册 大角色id转name接口 "statRoleId2name_v35"-->
+			<!-- 注册 小角色id转name接口 "statSubRoleId2name_v35"-->
+			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name-->
+		</summary-define>
+		
+		<!--网络类型-->
+		<summary-define>
+			<id>s2</id>
+			<sequence></sequence>
+			<column>est.complainttype1</column>
+			<id2name-service>statDictId2name_v35</id2name-service>
+		</summary-define>
+		
+		<!--地域-->
+		<summary-define>
+			<id>s3</id>
+			<sequence></sequence>
+			<column>est.TODEPTID</column>
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statAreaId2name_v35</id2name-service>
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_complaint est</from><!-- 不可为空 -->
+			<where>est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and  est.status=1
+			and est.OPERATEUSERID in (@userByDeptid@) and est.OPERATEUSERID is not null and est.complainttype1 in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id>
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+				<list-hsql>
+					select distinct est.mainid ,est.sheetid,est.title,est.complainttype1,est.todeptid, est.senduserid, est.operateuserid,est.sendtime  from est_complaint est where 
+ 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+ 					and est.OPERATEUSERID='@s1@' and est.TODEPTID='@s3@' and est.complainttype1='@s2@' and  est.status=1
+				</list-hsql>
+				
+			</field-define>
+			
+		</query-define>
+		
+			<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_complaint est</from><!-- 不可为空 -->
+			<where>est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
+			and  est.status=1 and (est.MAINIFDEFERRESOLVE='0' or est.MAINIFDEFERRESOLVE is null) 
+			and est.OPERATEUSERID in (@userByDeptid@) and est.complainttype1 in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id>
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+				<list-hsql>
+					select distinct est.mainid ,est.sheetid,est.title,est.complainttype1,est.todeptid, est.senduserid, est.operateuserid,est.sendtime  from est_complaint est where 
+ 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+ 					and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s3@'
+ 						and  est.status=1 and (est.MAINIFDEFERRESOLVE='0' or est.MAINIFDEFERRESOLVE is null) 
+				</list-hsql>
+				
+			</field-define>
+			
+		</query-define>
+		
+	</kpi-define>
+	
+	
+	<!-- ********按(角色)故障一级解决率 ********************** -->
+	<kpi-define><!-- 可重复 -->
+		<name>complaint_resolve_byrole</name>
+		<kpi-caption></kpi-caption>
+		
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param  page-name="areaid" markflg="true"/>
+		<condition-param  page-name="mainNetSortOne" markflg="true"/>
+		
+		<condition-param  page-name="subroleFromDeptid" markflg="true"/>
+		
+		<!--角色-->
+		<summary-define>
+			<id>s1</id>
+			<sequence></sequence>
+			<column>est.OPERATEROLEID</column>
+			<id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name_v35 -->
+		</summary-define>
+		
+		<!--网络类型-->
+		<summary-define>
+			<id>s2</id>
+			<sequence></sequence>
+			<column>est.complainttype1</column>
+			<id2name-service>statDictId2name_v35</id2name-service>
+		</summary-define>
+		
+		<!--地域-->
+		<summary-define>
+			<id>s3</id>
+			<sequence></sequence>
+			<column>est.TODEPTID</column>
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statAreaId2name_v35</id2name-service>
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_complaint est</from><!-- 不可为空 -->
+			<where>est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and  est.status=1
+			and est.OPERATEROLEID in (@subroleFromDeptid@) and est.complainttype1 in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id>
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+				<list-hsql>
+					select distinct est.mainid ,est.sheetid,est.title, est.complainttype1,est.todeptid,est.sendroleid,est.sendtime from est_complaint est where 
+ 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+ 				 	and est.OPERATEROLEID='@s1@' and est.OPERATEROLEID is not null and est.complainttype1='@s2@' and est.TODEPTID='@s3@'  and  est.status=1
+				</list-hsql>
+				
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_complaint est</from><!-- 不可为空 -->
+			<where>est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
+			and  est.status=1 and (est.MAINIFDEFERRESOLVE='0' or est.MAINIFDEFERRESOLVE is null) 
+			and est.OPERATEROLEID in (@subroleFromDeptid@) and est.complainttype1 in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id>
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+				<list-hsql>
+					select distinct est.mainid ,est.sheetid,est.title, est.complainttype1,est.todeptid,est.sendroleid,est.sendtime  from est_complaint est where 
+ 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+ 				 	and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s3@' 
+ 				 	and  est.status=1  	and (est.MAINIFDEFERRESOLVE='0' or est.MAINIFDEFERRESOLVE is null) 
+				</list-hsql>
+				
+			</field-define>
+			
+		</query-define>
+		
+	</kpi-define>
+	
+</KpiConfig>

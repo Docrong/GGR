@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Inverse2DLine" minimum_value="0" maximum_value="70" minimum_argument="-15" maximum_argument="15">
+      <animation enabled="yes" speed="10" type="all" appearance="alpha"/>
+	  <arguments show="no"/>
+	  <values show="no"/>	  
+	  <hints enabled="no"/>
+	  <line_chart>
+	    <lines color="0x080070" auto_color="no"/>
+		<dots radius="10">
+		  <background auto_color="no" color="0x419AFF"/>
+		  <border enabled="yes" color="0x080070" size="2"/>
+		</dots>
+	  </line_chart>
+    </chart>
+    <workspace>
+	   <x_axis name="x axis" rotation="30" position="right_bottom">
+  <font type="verdana_embed_tf" align="right"/>
+</x_axis>
+       <background enabled="yes" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xF1F6F9</color>
+	      <color>0x095D8B</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="-0.79"/>
+	  </background>
+      <chart_area height="260" width="405" y="50" x="68">
+	    <background enabled="no"/>
+		<border enabled="no"/>
+	  </chart_area>
+      <base_area enabled="no"/>
+      <grid>
+        <values lines_step="10" start="0" end="70">
+		 <captions>
+            <font size="10" type="Verdana"/>
+          </captions>
+		</values>
+        <arguments lines_step="15" start="-15" end="15">
+		 <captions position="top">
+            <font size="10" type="Verdana"/>
+          </captions>
+		</arguments>
+      </grid>
+    </workspace>
+  </type>
+</root>

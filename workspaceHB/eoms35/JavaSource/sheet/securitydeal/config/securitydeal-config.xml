@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="SecurityDeal" description="安全问题处理流程">
+   <flow-define id="SecurityDealProcess" description="安全问题处理流程">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="MakeTask" role="dealPerformer@317" condition="${operateType}==0" name="新建派发"/>
+       <to-phase-id id="DraftTask" role="dealPerformer@330" condition="${operateType}==22" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="DraftTask" name="草稿" type="operate">       
+       <to-phase-id id="MakeTask" role="dealPerformer@317" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id>
+     <phase-id id="reject" name="被驳回" type="operate">       
+       <to-phase-id id="MakeTask" role="dealPerformer@317" condition="${operateType}==54" name="重新派发"/>
+     </phase-id> 
+     <phase-id id="MakeTask" name="完成方案、提交审核" type="operate">       
+       <to-phase-id id="AuditTask" role="dealPerformer@330" condition="${operateType}==90" name="方案审核"/>
+       <to-phase-id id="reject" role="" condition="${operateType}==4" name="驳回"/>
+     </phase-id>  
+     <phase-id id="AuditTask" name="审核方案" type="operate">       
+       <to-phase-id id="PerformTask" role="dealPerformer@317" condition="${operateType}==911" name="审核通过"/>
+       <to-phase-id id="MakeTask" role="dealPerformer@317" condition="${operateType}==912" name="审核不通过"/>
+     </phase-id> 
+     <phase-id id="PerformTask" name="执行及反馈" type="operate">       
+       <to-phase-id id="HoldTask" role="dealPerformer@330" condition="${operateType}==92" name="处理完成"/>
+       <to-phase-id id="AuditTask" role="" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id>
+     <phase-id id="HoldTask" name="归档" type="operate">
+     </phase-id>     
+  </flow-define>
+</WorkFlowRule>

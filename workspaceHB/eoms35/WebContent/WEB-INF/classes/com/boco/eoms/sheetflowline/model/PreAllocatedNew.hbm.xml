@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.sheetflowline.model.PreAllocatedNew" table="PREALLOCATED_NEW">
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+			</generator>
+		</id>
+
+
+		<property name="dutyLeader" column="DUTYLEADER" length="20" not-null="false" unique="false">
+		</property>
+
+		<property name="startTime" column="STARTTIME" length="32" not-null="false" unique="false">
+		</property>
+
+		<property name="endTime" column="ENDTIME" length="32" not-null="false" unique="false">
+		</property>
+        
+        <property name="dutyType" column="dutyType" length="5" not-null="false" unique="false">
+		</property>
+		
+		<property name="createTime" column="CREATETIME" length="50" not-null="false" unique="false">
+		</property>
+
+		<property name="createUser" column="CREATEUSER" length="50" not-null="false" unique="false">
+		</property>
+		
+		<property name="faultResponseLevel" column="FAULTRESPONSELEVEL" length="20" not-null="false" unique="false">
+		</property>
+		
+		<property name="specailJHUserId" column="specailJHUserId" length="100" not-null="false" unique="false">
+		</property>
+		<property name="monitorJHUserId" column="monitorJHUserId" length="100" not-null="false" unique="false">
+		</property>
+        <property name="specailJHcount" column="specailJHcount" length="5" not-null="false" unique="false">
+		</property>
+		<property name="specailJHAlreadyCount" column="specailJHAlreadyCount" length="5" not-null="false" unique="false">
+		</property>
+		
+		<property name="specailCSUserId" column="specailCSUserId" length="100" not-null="false" unique="false">
+		</property>
+		<property name="monitorCSUserId" column="monitorCSUserId" length="100" not-null="false" unique="false">
+		</property>
+        <property name="specailCScount" column="specailCScount" length="5" not-null="false" unique="false">
+		</property>
+		<property name="specailCSAlreadyCount" column="specailCSAlreadyCount" length="5" not-null="false" unique="false">
+		</property>
+		
+		<property name="specailSJUserId" column="specailSJUserId" length="100" not-null="false" unique="false">
+		</property>
+		<property name="monitorSJUserId" column="monitorSJUserId" length="100" not-null="false" unique="false">
+		</property>
+        <property name="specailSJcount" column="specailSJcount" length="5" not-null="false" unique="false">
+		</property>
+		<property name="specailSJAlreadyCount" column="specailSJAlreadyCount" length="5" not-null="false" unique="false">
+		</property>
+		
+		<property name="specailOtherUserId" column="specailOtherUserId" length="100" not-null="false" unique="false">
+		</property>
+		<property name="monitorOtherUserId" column="monitorOtherUserId" length="100" not-null="false" unique="false">
+		</property>
+        <property name="specailOthercount" column="specailOthercount" length="5" not-null="false" unique="false">
+		</property>
+		<property name="specailOtherAlreadyCount" column="specailOtherAlreadyCount" length="5" not-null="false" unique="false">
+		</property>
+		
+		<property name="specailJHAlreadyUserId" column="specailJHAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorJHAlreadyUserId" column="monitorJHAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorJHAlreadyCount" column="monitorJHAlreadyCount" length="5" not-null="false" unique="false"/>		
+		<property name="specailJHAlreadyUserCount" column="specailJHAlreadyUserCount" length="5" not-null="false" unique="false"/>
+		<property name="monitorJHAlreadyUserCount" column="monitorJHAlreadyUserCount" length="5" not-null="false" unique="false"/>
+		
+		<property name="specailCSAlreadyUserId" column="specailCSAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorCSAlreadyUserId" column="monitorCSAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorCSAlreadyCount" column="monitorCSAlreadyCount" length="5" not-null="false" unique="false"/>		
+		<property name="specailCSAlreadyUserCount" column="specailCSAlreadyUserCount" length="5" not-null="false" unique="false"/>
+		<property name="monitorCSAlreadyUserCount" column="monitorCSAlreadyUserCount" length="5" not-null="false" unique="false"/>
+		
+		<property name="specailSJAlreadyUserId" column="specailSJAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorSJAlreadyUserId" column="monitorSJAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorSJAlreadyCount" column="monitorSJAlreadyCount" length="5" not-null="false" unique="false"/>		
+		<property name="specailSJAlreadyUserCount" column="specailSJAlreadyUserCount" length="5" not-null="false" unique="false"/>
+		<property name="monitorSJAlreadyUserCount" column="monitorSJAlreadyUserCount" length="5" not-null="false" unique="false"/>
+		
+		<property name="specailOtherAlreadyUserId" column="specailOtherAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorOtherAlreadyUserId" column="monitorOtherAlreadyUserId" length="5" not-null="false" unique="false"/>
+		<property name="monitorOtherAlreadyCount" column="monitorOtherAlreadyCount" length="5" not-null="false" unique="false"/>		
+		<property name="specailOtherAlreadyUserCount" column="specailOtherAlreadyUserCount" length="5" not-null="false" unique="false"/>
+		<property name="monitorOtherAlreadyUserCount" column="monitorOtherAlreadyUserCount" length="5" not-null="false" unique="false"/>
+
+	</class>
+
+</hibernate-mapping>
+

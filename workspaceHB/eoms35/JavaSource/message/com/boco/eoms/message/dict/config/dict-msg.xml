@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="信息类型">
+	<dict id="msgType" description="信息类型">
+		<item id="1" name="短信" description="短信" />
+		<item id="2" name="邮件" description="邮件" />
+		<item id="3" name="语音" description="语音" />
+		<item id="4" name="彩信" description="彩信" />
+		<item id="5" name="IM" description="IM" />
+	</dict>
+	<dict id="month" description="月">
+		<item id="1" name="1" description="1月" />
+		<item id="2" name="2" description="2月" />
+		<item id="3" name="3" description="3月" />
+		<item id="4" name="4" description="4月" />
+		<item id="5" name="5" description="5月" />
+		<item id="6" name="6" description="6月" />
+		<item id="7" name="7" description="7月" />
+		<item id="8" name="8" description="8月" />
+		<item id="9" name="9" description="9月" />
+		<item id="10" name="10" description="10月" />
+		<item id="11" name="11" description="11月" />
+		<item id="12" name="12" description="12月" />
+	</dict>
+	<dict id="day" description="天">
+		<item id="1" name="1" description="1" />
+		<item id="2" name="2" description="2" />
+		<item id="3" name="3" description="3" />
+		<item id="4" name="4" description="4" />
+		<item id="5" name="5" description="5" />
+		<item id="6" name="6" description="6" />
+		<item id="7" name="7" description="7" />
+		<item id="8" name="8" description="8" />
+		<item id="9" name="9" description="9" />
+		<item id="10" name="10" description="10" />
+		<item id="11" name="11" description="11" />
+		<item id="12" name="12" description="12" />
+		<item id="13" name="13" description="13" />
+		<item id="14" name="14" description="14" />
+		<item id="15" name="15" description="15" />
+		<item id="16" name="16" description="16" />
+		<item id="17" name="17" description="17" />
+		<item id="18" name="18" description="18" />
+		<item id="19" name="19" description="19" />
+		<item id="20" name="20" description="20" />
+		<item id="21" name="21" description="21" />
+		<item id="22" name="22" description="22" />
+		<item id="23" name="23" description="23" />
+		<item id="24" name="24" description="24" />
+		<item id="25" name="25" description="25" />
+		<item id="26" name="26" description="26" />
+		<item id="27" name="27" description="27" />
+		<item id="28" name="28" description="28" />
+		<item id="29" name="29" description="29" />		
+		<item id="30" name="30" description="30" />
+		<item id="31" name="31" description="31" />
+	</dict>
+	<dict id="hour" description="时">
+		<item id="1" name="1" description="1点" />
+		<item id="2" name="2" description="2点" />
+		<item id="3" name="3" description="3点" />
+		<item id="4" name="4" description="4点" />
+		<item id="5" name="5" description="5点" />
+		<item id="6" name="6" description="6点" />
+		<item id="7" name="7" description="7点" />
+		<item id="8" name="8" description="8点" />
+		<item id="9" name="9" description="9点" />
+		<item id="10" name="10" description="10点" />
+		<item id="11" name="11" description="11点" />
+		<item id="12" name="12" description="12点" />
+		<item id="13" name="13" description="13点" />
+		<item id="14" name="14" description="14点" />
+		<item id="15" name="15" description="15点" />
+		<item id="16" name="16" description="16点" />
+		<item id="17" name="17" description="17点" />
+		<item id="18" name="18" description="18点" />
+		<item id="19" name="19" description="19点" />
+		<item id="20" name="20" description="20点" />
+		<item id="21" name="21" description="21点" />
+		<item id="22" name="22" description="22点" />
+		<item id="23" name="23" description="23点" />
+		<item id="24" name="24" description="24点" />
+	</dict>
+	<dict id="soapType" description="协议类型">
+		<item id="axis" name="Axis协议" description="Axis协议" />
+		<item id="xfire" name="Xfire协议" description="Xfire协议" />
+		<item id="soap" name="无框架" description="无框架" />
+	</dict>
+	
+</dicts>
+

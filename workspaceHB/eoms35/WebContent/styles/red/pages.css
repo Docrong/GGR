@@ -1,0 +1,259 @@
+/*****************
+ * 登录页面login.jsp
+ *****************/
+body#login{
+	background: white url(images/bg.gif);
+	background-repeat:repeat;
+}
+#loginForm fieldset {
+    width: 300px;
+    padding: 10px 30px;
+    margin: 0px auto;
+}
+
+#loginForm li {
+    text-align: left;
+    padding: 0px;
+}
+
+.login-box{
+	color:#5F6775;
+	width:700px;
+	margin:4em auto 0pt;
+	background:url(images/login-bg.gif) no-repeat scroll left top;
+	min-height:430px;
+}
+.login-content{
+	float:left;
+	margin:20px 0 20px 5px;
+	padding-top:75px;
+	min-height:150px !important;
+	min-height:80px;}
+.login-form{
+	float:right;
+	position:relative;
+	margin:20px 5px;
+	margin-right:40px;
+	height:400px;
+	width:200px;
+}
+.login-form-content{
+	position:absolute;
+	left:0;
+	bottom:1px;
+}
+/*****************
+ * 表单详细页面
+ *****************/
+ div#sheetinfo{
+	padding:15px;
+ }
+ .tabFrame{
+ 	width:98%;
+	height:500px;
+	border:0;
+ } 
+ #tabtool{
+	clear:none;
+	float:right;
+}
+ #filter{
+  float:left;
+  display:inline;
+  margin:5px;
+  padding:10px;
+}
+div.history-item{
+	font-size:12px;
+	padding:0 10px;
+}
+div.history-item-title{
+	font:14px bold;
+	background-color:#efefef;
+}
+div.history-item-content{
+	width:100%;
+}
+table.history-item-table{
+	border-collapse: collapse;
+	font-size: 12px;
+}
+table.history-item-table td{
+	border: 1px solid #dfdfdf;
+	padding: 3px 6px;
+}
+td.column-title{
+	background-color:#f8f7f6;
+	width:15%;
+}
+td.column-content{
+	width:35%;
+}
+ ul.history {list-style:none;}
+ li.history-item {font-size:14px; padding: 0px; margin: 0px 2% 10px 5px;} 
+ li.history-item a {
+ 	border: 1px solid #8cacbb;
+ 	color:#006699;
+ 	padding: 0.8ex 0px 0.8ex 8px;font-size:14px;
+ 	display:block; 
+ 	position:relative; text-decoration:none;
+ 	height:auto;
+	cursor:text;
+ } 
+ li.history-item a:hover {background:#e5ecf9;border: 1px solid #8cacbb;color:#006699;}
+ li.history-item a span {display:none; }
+ li.history-item a span.show {display:block; }
+ li.history-item a:hover span {display:block; position:relative; }
+ 
+ .tabtool-history-detail{
+ }
+ 
+
+
+/*****************
+ * 表单列表页面
+ *****************/
+.list-title {
+	height:22px;
+	margin: 0 10px 10px 10px;
+	padding:3px 10px 3px 20px;
+	vertical-align:middle;
+	width:95%;
+	clear:right;
+	color:#8b8c8d;
+	border-bottom:1px solid #cfcfcf;
+	background-image:url(../../images/icons/table.png);
+	background-repeat:no-repeat;
+	background-position:left center;
+}
+
+.list table{
+	width: 95%;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+
+
+.list table td {
+	border: 1px solid #c1dad7;
+	padding: 3px 6px;
+}
+
+
+.list .header {
+	background: #cae8ea;
+	color:#006699;
+}
+.list .header td a:link, .list .header td a:visited {
+	color:#006699;
+}
+
+
+
+/*****************
+ * 成功和失败页面
+ *****************/
+.successPage h1,.errorPage h1, .failurePage h1{
+	height:32px;
+	padding:10px 0 0 45px;
+	margin:20px;
+	vertical-align:middle;
+	background-repeat:no-repeat;
+	background-position:3px bottom;
+ }
+.successPage .header{
+	color:#3786d6;
+	background-image:url(../../images/icons/success.gif);
+}
+.errorPage .header, .failurePage .header{
+    color: #b4c24b;
+	background-image:url(../../images/icons/failed.gif);
+}
+.errorPage .content,.successPage .content,.failurePage .content{
+	line-height:24px;
+	color:#3786d6;
+	border-top:1px solid #acd0f4;
+	padding:10px;
+	margin:10px;
+}
+.content ul{
+	margin-left:30px;
+}
+.content #error-msg{
+}
+.hidden-el{
+	display:none;
+}
+
+
+/***************************
+ * 平台js框架页面
+ **************************/
+#headerPanel{
+	background:white url(images/background.gif);
+	width:100%;
+	height:100%;
+}
+#headerPanel h1{
+	font-size:15px;
+	padding:10px;
+	width:100%;
+	height:100%;
+}
+.panel{
+	padding:10px;
+}
+.gridPanel-grid{
+	border:1px solid #6593cf;
+	margin-bottom:10px;
+}
+.app-header{
+	background:url(images/header-bg.gif) repeat-x;
+}
+.app-panel{
+	padding:10px;
+}
+
+/*****************
+ * 文件上传页面
+ *****************/
+iframe.uploadframe{
+	height:50px;
+}
+
+.upload-box{
+	/*border:1px solid #b5b8c8;
+	padding:5px;*/
+}
+
+a.filelink{
+	line-height:1.2em;
+}
+
+/*****************
+ * 欢迎页面
+ *****************/
+.welcome {
+	width:758px;
+}
+.welcome .title{
+	min-height:190px;
+	background:url(images/welcome-titlebg.gif) no-repeat;
+}
+.welcome .title .content{
+	margin:50px 10px 10px 20px;
+	width:700px;
+	line-height:2em;
+}
+.welcome .title .foot{
+	height:10px;
+}
+.module {
+	margin-bottom:20px;
+}
+.module .img {
+	float:left;
+}
+.module .detail {
+	line-height:2em;
+}

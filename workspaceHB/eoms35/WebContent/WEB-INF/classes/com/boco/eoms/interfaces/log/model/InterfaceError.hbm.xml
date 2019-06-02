@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.interfaces.log.model.InterfaceError" table="interface_error">
+<jcs-cache usage="nonstrict-read-write" />
+<id column="id" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="sheet_id" length="32" name="sheetId" type="string"/>
+<property column="sheet_type" length="32" name="sheetType" type="string"/>
+<property column="ser_method" length="50" name="serMethod" type="string"/>
+<property column="call_time" length="7" name="callTime" type="timestamp"/>
+<property column="source_data" length="1000" name="sourceData" type="string"/>
+</class>
+</hibernate-mapping>

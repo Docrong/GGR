@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="信息所属类型">
+	<dict id="threadType" description="紧急程度">
+		<item id="1" name="一般" description="一般" />
+		<item id="2" name="紧急" description="紧急" />
+	</dict>
+	<dict id="reply" description="是否需要回复">
+		<item id="1" name="是" description="是" />
+		<item id="2" name="否" description="否" />
+	</dict>
+    <dict id="replyresult" description="回复结果">
+		<item id="1" name="通过" description="通过" />
+		<item id="2" name="不通过" description="不通过" />
+	</dict>
+	<dict id="isPass" description="审核通过否">
+		<item id="1" name="通过" description="通过" />
+		<item id="2" name="不通过" description="不通过" />		
+	</dict>
+	
+	<dict id="permissionType" description="权限类型">
+		<item id="1" name="审核信息" description="审核信息" />
+		<item id="2" name="可读信息" description="信息可见" />	
+		<item id="3" name="发布信息" description="发布信息" />
+		<item id="4" name="管理版块" description="管理版块" />	
+	</dict>
+	
+	<dict id="auditStatus" description="审核状态">
+		<item id="1" name="不需要审核" description="不需要审核" />
+		<item id="2" name="草稿" description="超出发布范围（需要审核），但未提交审核，一般为草稿" />	
+		<item id="3" name="审核中" description="正在审核中" />
+		<item id="4" name="审核通过" description="通过审核,正式发布" />	
+		<item id="5" name="审核不通过" description="未通过审核" />
+		<item id="6" name="非机密传阅" description="传阅" />
+	</dict>
+	
+	<!-- 2009-04-10 用于外系统调用接口，区别外系统 -->
+	<dict id="otherSystemType" description="外系统">
+		<item id="1" name="传输" description="传输" />
+		<item id="2" name="无线" description="无线" />		
+	</dict>
+	
+</dicts>
+
+

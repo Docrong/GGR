@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<root>
+  <styles>
+    <style type='background' id='background' gradient_type='radial' background_type="gradient">
+      <colors>
+        <color>0xaaaaaa</color>
+        <color>0xffffff</color>
+      </colors>
+      <ratios>
+        <ratio>0</ratio>
+        <ratio>0xff</ratio>
+      </ratios>
+      <alphas>
+        <alpha>100</alpha>
+        <alpha>100</alpha>
+      </alphas>
+      <matrix rotation='0' />
+    </style>
+    <!-- deal styles -->
+    <style type='deal_background' id='dealBackground' enabled='yes' color='0xdddddd' alpha='100' />
+    <style type='deal_border' id='dealBorder' enabled='yes' thickness='1' color='0x666666' alpha='100' />
+    <style type='deal_position' id='dealPosition' left='220' top='220' />
+    <style type='deal_size' id='dealSize' startAngle='0' endAngle='180' innerRadius='0' outerRadius='148' />
+	
+	<!-- indicator styles -->
+    <style type='indicator_background' id='indicatorBackground' enabled='yes' color='0x000000' alpha='100' />
+    <style type='indicator_border' id='indicatorBorder' enabled='yes' color='0x000000' thickness='1' alpha='100' />
+	
+    <!-- scales styles -->
+    <style type='scale_size' id='scaleSize' length='15' />
+    <style type='scale_position' id='scalePosition' radius='134' />
+    <style type='scale_lines' id='scaleLines' enabled='yes' thickness='1' color='0x000000' alpha='100' />
+    <style type='scale_labels_position' id='scaleLabelsPosition' radius='170' />
+    <style type='scale_labels_background' id='scaleLabelsBackground' enabled='no' />
+    <style type='scale_labels_border' id='scaleLabelsBorder' enabled='no' color='0x000000' />
+    <style type='scale_labels_text' id='scaleLabelsText' font='Verdana' size='12' color='0x000000' bold='no' italic='no' underline='no' align='right'/>
+    <style type='scale_labels_size' id='scaleLabelsSize' />
+	
+    <style id='areaBackground0' type='area_background' enabled='yes' color='0x8A88F0' alpha='100' />
+    <style id='areaBackground1' type='area_background' enabled='yes' color='0xBBBBBB' alpha='100' />
+    <style id='areaBorder' type='area_border' enabled='yes' thickness='1' color='0xFFFFFF' alpha='100' />
+    <style id='areaBorder0' type='area_border' enabled='yes' thickness='1' color='0x666666' alpha='100' />
+	<style id='areaSize' type='area_size' outerRadius="145" innerRadius="57" />
+
+    <style type='circle_object_border' id='dotBorder' enabled='no' />
+    <style type='circle_object_position' id='dotPosition' left='220' top='220' />
+    <style type='circle_object_size' id='dotSize' radius='15' />
+    <style type='circle_object_background' id='dotBackground' enabled='yes' color='0x000000' alpha='100' />
+	
+    <style id="emptyBorder" enabled="no" />
+  </styles>
+  <shapes>
+    <shape id='indicatorShape' type='polygon'>
+      <point x='0' y='-4' />
+      <point x='-134' y='0' />
+      <point x='0' y='4' />
+      <point x='0' y='-4' />
+    </shape>
+  </shapes>
+</root>

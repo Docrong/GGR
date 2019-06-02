@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+		
+		<form-bean
+      name="tawCommonLogOperatorForm"
+      type="com.boco.eoms.commons.log.webapp.form.TawCommonLogOperatorForm"
+    />
+     <form-bean
+      name="tawCommonLogDeployForm"
+      type="com.boco.eoms.commons.log.webapp.form.TawCommonLogDeployForm"
+    />
+   <form-bean
+      name="tawCommonLogConditionForm"
+      type="com.boco.eoms.commons.log.webapp.form.TawCommonLogConditionForm"
+    />
+
+    <form-bean name="TawCommonLogConditionForm" type="org.apache.struts.action.DynaActionForm" dynamic="true">
+    <form-property name="searchbyuser" type="java.lang.String"/>
+    <form-property name="searchbymodel" type="java.lang.String"/>
+    <form-property name="searchbyoper" type="java.lang.String"/>
+    <form-property name="searchbystarttime" type="java.lang.String"/>
+    <form-property name="searchbyendtime" type="java.lang.String"/>
+    <form-property name="issucess" type="java.lang.String"/>
+    </form-bean>
+		
+	</form-beans>
+
+	 <!-- ========== Global Exceptions Definitions =================================== -->
+      <global-exceptions>
+        <exception type="java.lang.Exception"
+            key="errors.general"
+            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
+
+  <!-- ========== Global Forward Definitions =================================== -->
+      <global-forwards>
+        <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
+        <!-- Forwards specified in actions -->        
+        <forward name="addUser" path="/editUser.do?method=Add&amp;amp;from=list" redirect="true"/>
+        <forward name="cancelUser" path="/editUser.do?method=Cancel"/>
+        <forward name="deleteUser" path="/editUser.do?method=Delete"/>
+        <forward name="updateUser" path="/userProfile.do"/>
+        <!-- Forwards for links used in Menu -->
+        <forward name="editProfile" path="/editProfile.do"/>
+        <forward name="editUser" path="/editUser.do"/>
+        <forward name="viewUsers" path="/users.do" redirect="true"/>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+    </global-forwards>
+
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+
+
+	<action-mappings>
+		<action
+      path="/tawCommonLogConditions"
+      type="com.boco.eoms.commons.log.webapp.action.TawCommonLogtestAppfus"
+      name="tawCommonLogConditionForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true" 
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawCommonLogCondition/querylist.jsp"
+        redirect="false" contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawCommonLogCondition/querylist.jsp"
+        redirect="false" contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/log/tawCommonLogConditions.do"
+         redirect="false"  contextRelative="true"
+      />
+    </action>
+
+
+<action path="/tawCommonLogTree"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/tawCommonLogCondition/logTree.jsp"/>
+			
+<action path="/tawCommonLogStat"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/tawCommonLogCondition/logStat.jsp" />
+
+ <action name="TawCommonLogConditionForm" parameter="LOGQUERY" path="/TawCommonLogCondition/querydo" scope="request" type="com.boco.eoms.commons.log.webapp.action.TawCommonLogConditionAction" validate="true">
+      
+      <forward name="success" path="/WEB-INF/pages/tawCommonLogCondition/lognotesucess.jsp"  redirect="false"  contextRelative="true"/>
+      <forward name="failure" path="/WEB-INF/pages/tawCommonLogCondition/logfailure.jsp"  redirect="false"  contextRelative="true"/>
+</action>
+
+ <action name="TawCommonLogConditionForm" parameter="LOGSTAT" path="/TawCommonLogCondition/logstatdo" scope="request" type="com.boco.eoms.commons.log.webapp.action.TawCommonLogStatAction" validate="true">
+      
+      <forward name="success" path="/WEB-INF/pages/tawCommonLogCondition/logstatdo.jsp"  redirect="false"  contextRelative="true"/>
+      
+</action>
+<action name="TawCommonLogConditionForm" parameter="LOGSTATDEPT" path="/TawCommonLogCondition/logstatdeptdo" scope="request" type="com.boco.eoms.commons.log.webapp.action.TawCommonLogStatAction" validate="true">
+      
+      <forward name="success" path="/WEB-INF/pages/tawCommonLogCondition/logstatdeptdo.jsp"  redirect="false"  contextRelative="true"/>
+      
+</action>
+<action name="TawCommonLogConditionForm" parameter="LOGSTATUSER" path="/TawCommonLogCondition/logstatuserdo" scope="request" type="com.boco.eoms.commons.log.webapp.action.TawCommonLogStatAction" validate="true">
+      
+      <forward name="success" path="/WEB-INF/pages/tawCommonLogCondition/logstatuserdo.jsp"  redirect="false"  contextRelative="true"/>
+      
+</action>
+<action name="TawCommonLogConditionForm" parameter="LOGSTATALL" path="/TawCommonLogCondition/logstatalldo" scope="request" type="com.boco.eoms.commons.log.webapp.action.TawCommonLogStatAction" validate="true">
+      
+      <forward name="success" path="/WEB-INF/pages/tawCommonLogCondition/logstatalldo.jsp"  redirect="false"  contextRelative="true"/>
+      
+</action>
+<action
+      path="/tawCommonLogDeploys"
+      type="com.boco.eoms.commons.log.webapp.action.TawCommonLogDeployAction"
+      name="tawCommonLogDeployForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawCommonLogDeploy/tawCommonLogDeployForm.jsp"
+        redirect="false"
+         contextRelative="true"
+
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawCommonLogDeploy/tawCommonLogDeployList.jsp"
+        redirect="false"
+         contextRelative="true"
+         
+      />
+      <forward
+        name="chaxun"
+        path="/WEB-INF/pages/tawCommonLogDeploy/search.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      
+      <forward
+        name="search"
+        path="/tawCommonLogDeploys.do"
+        redirect="true"
+         contextRelative="true"
+      />
+       <forward
+        name="searchs"
+        path="/tolist.do"
+        redirect="true"
+         contextRelative="true"
+      />
+    </action>
+    <action
+      path="/editTawCommonLogDeploy"
+      type="com.boco.eoms.commons.log.webapp.action.TawCommonLogDeployAction"
+      name="tawCommonLogDeployForm"
+      scope="request"
+      input="list"
+      parameter="method"
+      unknown="false"
+      validate="false"
+
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawCommonLogDeploy/tawCommonLogDeployForm.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawCommonLogDeploy/tawCommonLogDeployList.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/log/tawCommonLogDeploys.do"
+        redirect="true"
+         contextRelative="true"
+      />
+    </action>
+    <action
+      path="/saveTawCommonLogDeploy"
+      type="com.boco.eoms.commons.log.webapp.action.TawCommonLogDeployAction"
+      name="tawCommonLogDeployForm"
+      scope="request"
+      input="edit"
+      parameter="method"
+      unknown="false"
+      validate="true"
+
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawCommonLogDeploy/tawCommonLogDeployForm.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawCommonLogDeploy/tawCommonLogDeployList.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/log/tawCommonLogDeploys.do"
+        redirect="true"
+         contextRelative="true"
+      />
+    </action>
+    
+    <action
+      path="/tawCommonLogOperators"
+      type="com.boco.eoms.commons.log.webapp.action.TawCommonLogOperatorAction"
+      name="tawCommonLogOperatorForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    
+      
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawCommonLogOperator/tawCommonLogOperatorForm.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawCommonLogOperator/tawCommonLogOperatorList.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/tawCommonLogOperators.do"
+        redirect="true"
+         contextRelative="true"
+      />
+    </action>
+    <action
+      path="/editTawCommonLogOperator"
+      type="com.boco.eoms.commons.log.webapp.action.TawCommonLogOperatorAction"
+      name="tawCommonLogOperatorForm"
+      scope="request"
+      input="list"
+      parameter="method"
+      unknown="false"
+      validate="false"
+
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawCommonLogOperator/tawCommonLogOperatorForm.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawCommonLogOperator/tawCommonLogOperatorList.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/log/tawCommonLogOperators.do"
+        redirect="true"
+         contextRelative="true"
+      />
+    </action>
+    <action
+      path="/saveTawCommonLogOperator"
+      type="com.boco.eoms.commons.log.webapp.action.TawCommonLogOperatorAction"
+      name="tawCommonLogOperatorForm"
+      scope="request"
+      input="edit"
+      parameter="method"
+      unknown="false"
+      validate="true"
+      
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawCommonLogOperator/tawCommonLogOperatorForm.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawCommonLogOperator/tawCommonLogOperatorList.jsp"
+        redirect="false"
+         contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/log/tawCommonLogOperators.do"
+        redirect="true"
+        contextRelative="true"
+      />
+    </action>
+
+	</action-mappings>
+	
+ <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+      <message-resources parameter="config/ApplicationResources"/>
+
+      <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>

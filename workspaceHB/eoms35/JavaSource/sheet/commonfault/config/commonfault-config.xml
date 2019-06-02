@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WorkFlowRule name="CommonFault" description="故障处理流程">
+   <flow-define id="CommonFaultMainFlowProcess" description="故障处理工单">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@191" condition="${operateType}==0" name="新建派发"/>
+       <to-phase-id id="DraftHumTask" role="dealPerformer@191" condition="${operateType}==22" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="DraftHumTask" name="草稿" type="operate">       
+       <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@191" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id>
+     <phase-id id="BackHumTask" name="驳回" type="operate">       
+       <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@191" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id>      
+     <phase-id id="FirstExcuteHumTask" name="一级处理" type="operate">       
+       <to-phase-id id="SecondExcuteHumTask" role="dealPerformer@192" condition="${operateType}==1" name="移交T2处理"/>
+       <to-phase-id id="HoldHumTask" role="" condition="${operateType}==46" name="处理完成"/>
+       <to-phase-id id="ExamineHumTask" role="dealPerformer@194" condition="${operateType}==5" name="延期申请"/>
+       <to-phase-id id="BackHumTask" role="" condition="${operateType}==4" name="驳回"/>
+     </phase-id>     
+     <phase-id id="SecondExcuteHumTask" name="二级处理" type="operate">
+       <to-phase-id id="ThirdExcuteHumTask" role="dealPerformer@193" condition="${operateType}==2" name="移交T3处理"/>
+       <to-phase-id id="HoldHumTask" role="" condition="${operateType}==46" name="处理完成"/>
+       <to-phase-id id="ExamineHumTask" role="dealPerformer@194" condition="${operateType}==5" name="延期申请"/>
+       <to-phase-id id="FirstExcuteHumTask" role="" condition="${operateType}==4" name="驳回"/>
+     </phase-id>
+     <phase-id id="ThirdExcuteHumTask" name="三级处理" type="operate">
+     	<to-phase-id id="HoldHumTask" role="" condition="${operateType}==46" name="处理完成"/>
+     	<to-phase-id id="ExamineHumTask" role="dealPerformer@194" condition="${operateType}==5" name="延期申请"/>
+     	<to-phase-id id="SecondExcuteHumTask" role="" condition="${operateType}==4" name="驳回"/>
+     </phase-id>
+     <phase-id id="ExamineHumTask" name="延期审批" type="operate">
+     	<to-phase-id id="FirstExcuteHumTask" role="" condition="" name="审批完成"/>
+     	<to-phase-id id="SecondExcuteHumTask" role="" condition="" name="审批完成"/>
+     	<to-phase-id id="ThirdExcuteHumTask" role="" condition="" name="审批完成"/>
+     </phase-id>
+     <phase-id id="HoldHumTask" name="归档工单" type="operate"> 
+     	<to-phase-id id="FirstExcuteHumTask" role="" condition="" name="退回"/>
+     	<to-phase-id id="SecondExcuteHumTask" role="" condition="" name="退回"/>
+     	<to-phase-id id="ThirdExcuteHumTask" role="" condition="" name="退回"/>   	     	     
+     </phase-id>
+  </flow-define>
+</WorkFlowRule>

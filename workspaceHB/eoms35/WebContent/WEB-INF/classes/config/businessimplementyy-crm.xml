@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+	<base>
+		<InterfaceUser>test</InterfaceUser>
+		<SendRoleId>8a033ed4272861ea012728695c910008</SendRoleId>
+		<AcceptGroupId>927</AcceptGroupId>
+		<AcceptRoleId>8a033ed4272861ea012728695c910008</AcceptRoleId>
+		<SendImmediately>false</SendImmediately>
+		<InvokeReplyAll>false</InvokeReplyAll>
+	</base>
+    <newWorkSheet>
+        <content columnName="mainSpecifyType" 									          interfaceName="zxType" 							defauleValue="" dictNodePath="serviceType3" />
+		<content columnName="toDeptId" interfaceName="accountManagerCity" defauleValue="" dictNodePath="cityName" />
+		<content columnName="productKind" interfaceName="productKind"
+			defauleValue="" dictNodePath="productKindDict" />
+		<content columnName="mainResourceAffCRMNumber"
+			interfaceName="confCRMTicketNo" defauleValue="" />
+		<content columnName="mainProductInstanceCode"
+			interfaceName="confCRMTicketNo" defauleValue="" />
+		<content columnName="productName" interfaceName="productName"
+			defauleValue="" />
+
+		<content columnName="title" interfaceName="title"
+			defauleValue="" />
+		<content columnName="mainArgument" interfaceName="urgentDegree"
+			defauleValue="" dictNodePath="urgentDegree" />
+		<content columnName="sheetAcceptLimit" interfaceName="dealTime1"
+			defauleValue="" type="date" />
+		<content columnName="sheetCompleteLimit"
+			interfaceName="dealTime2" defauleValue="" type="date" />
+			
+				<!-- ordersheet -->
+		<content columnName="customName" interfaceName="customName"
+				defauleValue="" />
+		<content columnName="customContact"
+				interfaceName="customContact" defauleValue="" />
+		<content columnName="clientConnPersonPhone"
+				interfaceName="customContactPhone" defauleValue="" />
+	    <content columnName="cmanagerPhone" interfaceName="accountManagerName"
+				defauleValue="" />
+		<content columnName="cmanagerContactPhone" interfaceName="accountManagerPhone"
+			defauleValue="" />
+		<content columnName="customManagerDept" interfaceName="accountManagerDept"
+			defauleValue="" />
+		<content columnName="customManagerMail" interfaceName="accountManagerEmail"
+			defauleValue="" />
+		<content columnName="projectManagerName" interfaceName="projectManager"
+			defauleValue="" />
+		<content columnName="projectManagerPhone" interfaceName="projectManagerPhone"
+			defauleValue="" />	
+		<content columnName="customLevel" interfaceName="customLevel"
+			defauleValue="" dictNodePath="customLevel" />
+		<content columnName="provinceName" interfaceName="provinceName"
+			defauleValue="" dictNodePath="provinceName" />
+		<content columnName="cityName" interfaceName="accountManagerCity"
+			defauleValue="" dictNodePath="" />
+		<content columnName="countyName" interfaceName="countyName"
+			defauleValue="" dictNodePath="toCountyID" />
+		<content columnName="groupCustomBusinessScope" interfaceName="businessRange"
+			defauleValue="" />	
+		<content columnName="groupCustomNo" interfaceName="customNo"
+			defauleValue="" />	
+		<content columnName="groupCustomAdd" interfaceName="customContactAdd"
+			defauleValue="" />
+		 <content columnName="groupCustomMail" interfaceName="customContactPost"
+			defauleValue="" />	
+		 <content columnName="groupCustomBusinesType" interfaceName="customTrade"
+			defauleValue="" />
+		<content columnName="groupCustomMail" interfaceName="customContactEmail"
+			defauleValue="" />
+		<content columnName="customContact" interfaceName="customContact"
+			defauleValue="" />
+		<content columnName="customContactPhone" interfaceName="customContactPhone"
+			defauleValue="" />
+		<content columnName="groupDealContact"
+			interfaceName="bdeptContact" defauleValue="" />
+		<content columnName="groupDealContactPhone"
+			interfaceName="bdeptContactPhone" defauleValue="" />
+		<content columnName="groupTechContact"
+			interfaceName="groupTechContact" defauleValue="" />
+		<content columnName="groupTechContactPhone"
+			interfaceName="groupTechContactPhone" defauleValue="" />
+		<content columnName="needDesc" interfaceName="bRequirementDesc"
+			defauleValue="" />
+		<content columnName="provinceA" interfaceName="provinceA"
+				defauleValue="" />
+		<content columnName="cityA" interfaceName="cityA"
+				defauleValue="" />
+		<content columnName="provinceZ" interfaceName="provinceZ"
+				defauleValue="" />
+		<content columnName="cityZ" interfaceName="cityZ"
+				defauleValue="" />
+		<content columnName="projectName" interfaceName="projectName"
+			defauleValue="" />
+		<content columnName="stationNumber" interfaceName="siteCount"
+			defauleValue="" />
+		<content columnName="eleNumber" interfaceName="amount"
+			defauleValue="" />
+		<content columnName="remarks" interfaceName="remarks"
+			defauleValue="" />
+		<content columnName="netResCapacity" interfaceName="netResCapacity"
+			defauleValue="" />
+		<content columnName="clientPgmCapacity" interfaceName="clientPgmCapacity"
+			defauleValue="" />
+		<content columnName="expectFinishdays" interfaceName="expectFinishdays"
+			defauleValue="" />
+		<content columnName="circuitCode" interfaceName="circuitCode"
+			defauleValue="" />
+			
+			<content columnName="checkPerson" interfaceName="checkPerson" defauleValue="" />
+		<content columnName="checkDepmt" interfaceName="checkDepmt" defauleValue="" />
+		<content columnName="checkPhone" interfaceName="checkPhone" defauleValue="" />
+		<content columnName="checkMail" interfaceName="checkMail" defauleValue="" />
+		<content columnName="checkComments" interfaceName="checkComments" defauleValue="" />
+		<content columnName="checkTime" interfaceName="checkTime" defauleValue="" />
+			
+			<content columnName="orderType" interfaceName="" defauleValue="1040101" />
+			<content columnName="mainSendSheetModule" interfaceName="" defauleValue="1" />
+			<content columnName="parentCorrelation" interfaceName="serialNo" defauleValue="" />
+			<content columnName="phaseId" interfaceName="" defauleValue="AuditTask" />
+			<content columnName="sendUserId" interfaceName="" defauleValue="test" />		
+		
+	</newWorkSheet>
+	<portA>
+		<!-- 接入点 -->
+		<content columnName="portInterfaceType" interfaceName="portAInterfaceType" defauleValue="" />
+		<content columnName="portDeviceName" interfaceName="portABDeviceName" defauleValue="" />
+		<content columnName="portDetailAdd" interfaceName="portADetailAdd" defauleValue="" />
+		<content columnName="portDevicePort" interfaceName="portABDevicePort" defauleValue="" />
+		<content columnName="portCustAidPerson" interfaceName="portAContactPhone" defauleValue="" />
+		
+		<content columnName="sevPointContact" interfaceName="sevAPointContact" defauleValue="" />
+		<content columnName="sevPointContactPhone" interfaceName="sevAPointContactPhone" defauleValue="" />
+		<content columnName="sevPointContactEmail" interfaceName="sevAPointContactEmail" defauleValue="" />
+		<content columnName="sevPointContactAdd" interfaceName="sevAPointContactAdd" defauleValue="" />
+	</portA>
+	<portZ>
+		<!-- 接入点 -->
+		<content columnName="portInterfaceType" interfaceName="portZInterfaceType" defauleValue="" />
+		<content columnName="portDeviceName" interfaceName="portABDeviceName" defauleValue="" />
+		<content columnName="portDetailAdd" interfaceName="portZDetailAdd" defauleValue="" />
+		<content columnName="portDevicePort" interfaceName="portZBDevicePort" defauleValue="" />
+		<content columnName="portCustAidPerson" interfaceName="portZContactPhone" defauleValue="" />
+
+		<content columnName="sevPointContact" interfaceName="sevZPointContact" defauleValue="" />
+		<content columnName="sevPointContactPhone" interfaceName="sevZPointContactPhone" defauleValue="" />
+		<content columnName="sevPointContactEmail" interfaceName="sevZPointContactEmail" defauleValue="" />
+		<content columnName="sevPointContactAdd" interfaceName="sevZPointContactAdd" defauleValue="" />
+	</portZ>
+	<specialInfo>
+	
+		<content columnName="tradeId" interfaceName="TRADEID" defauleValue="" />
+		<content columnName="portAInterfaceType" interfaceName="portAInterfaceType" defauleValue="" />
+		<content columnName="portABDeviceName" interfaceName="portABDeviceName" defauleValue="" />
+		<content columnName="portADetailAdd" interfaceName="portADetailAdd" defauleValue="" />
+		<content columnName="portABDevicePort" interfaceName="portABDevicePort" defauleValue="" />
+		<content columnName="portAContactPhone" interfaceName="portAContactPhone" defauleValue="" />
+		
+		<content columnName="sevAPointContact" interfaceName="sevAPointContact" defauleValue="" />
+		<content columnName="sevAPointContactPhone" interfaceName="sevAPointContactPhone" defauleValue="" />
+		<content columnName="sevAPointContactEmail" interfaceName="sevAPointContactEmail" defauleValue="" />
+		<content columnName="sevAPointContactAdd" interfaceName="sevAPointContactAdd" defauleValue="" />
+		
+		<content columnName="portZInterfaceType" interfaceName="portZInterfaceType" defauleValue="" />
+		<content columnName="portZBDeviceName" interfaceName="portZBDeviceName" defauleValue="" />
+		<content columnName="portZDetailAdd" interfaceName="portZDetailAdd" defauleValue="" />
+		<content columnName="portZBDevicePort" interfaceName="portZBDevicePort" defauleValue="" />
+		<content columnName="portZContactPhone" interfaceName="portZContactPhone" defauleValue="" />
+
+		<content columnName="sevZPointContact" interfaceName="sevZPointContact" defauleValue="" />
+		<content columnName="sevZPointContactPhone" interfaceName="sevZPointContactPhone" defauleValue="" />
+		<content columnName="sevZPointContactEmail" interfaceName="sevZPointContactEmail" defauleValue="" />
+		<content columnName="sevZPointContactAdd" interfaceName="sevZPointContactAdd" defauleValue="" />
+
+		<content columnName="businesstype1" interfaceName="productKind"
+			defauleValue="" dictNodePath="productKindDict" />
+		<content columnName="specialLines"
+			interfaceName="crmSpecialLineNo" defauleValue="" />
+		<!-- gprs专线 -->
+		<content columnName="apnScopeName" interfaceName="APNDomain" defauleValue="" />
+		<content columnName="apnName" interfaceName="APNName" defauleValue="" /><!--APN名称	 -->
+		<content columnName="apnType" interfaceName="APNType" defauleValue="" />
+		<content columnName="apnIndex" interfaceName="APNID" defauleValue="" />
+		<content columnName="longitudeA" interfaceName="longitudeA"
+			defauleValue="" />
+		<content columnName="latitudeA" interfaceName="latitudeA"
+			defauleValue="" />
+		<content columnName="transferInputMethod" interfaceName="transferMode"
+			defauleValue="" />
+		<content columnName="businessBandwidth" interfaceName="bandwidth"
+			defauleValue="" />
+		<content columnName="userIsRadiusValid" interfaceName="isRadiusValidate"
+			defauleValue="" />
+		<content columnName="apnRootMethod" interfaceName="apnRouterMode"
+			defauleValue="" />
+		<content columnName="endIDDividType" interfaceName="ipAddressAssign"
+			defauleValue="" />
+		<content columnName="apnRootMethod" interfaceName="businessRange"
+			defauleValue="" />
+		<content columnName="planExeEndPointNum" interfaceName="terminalNum"
+			defauleValue="" />
+		<content columnName="isDoubleGGSN" interfaceName="doubleGGSN"
+			defauleValue="" />
+		<content columnName="firstApnAddAndNum" interfaceName="apnIPPool"
+			defauleValue="" />
+		<content columnName="secondApnAddAndNum" interfaceName="secondIPPool"
+			defauleValue="" />
+		<content columnName="greIpAdd" interfaceName="AppServerIPAdd"
+			defauleValue="" />
+		<content columnName="simAdnHlrScope" interfaceName="simHLR"
+			defauleValue="" />
+		<content columnName="userInputRouterIP" interfaceName="cusAccessRouterIP"
+			defauleValue="" />
+		<content columnName="userAppServerIP" interfaceName="cusAppServIP"
+			defauleValue="" />
+		<content columnName="endPortNum" interfaceName="terminalNum"
+			defauleValue="" />
+		<content columnName="numberDecrpt" interfaceName="numDetail"
+			defauleValue="" />
+		<content columnName="businessNumAssessment" interfaceName="volumeAssessment"
+			defauleValue="" />
+		<content columnName="applyPurpose" interfaceName="applyPurpose"
+			defauleValue="" />
+		<content columnName="remark" interfaceName="otherDescription"
+			defauleValue="" />
+		<content columnName="radiusAddress" interfaceName="radiusValidateIPAdd" defauleValue="" />
+		<!-- ip专线 -->
+		<content columnName="businessBandwidth"
+			interfaceName="bandwidth" defauleValue="" />
+		<content columnName="portANetDeptUser"
+			interfaceName="portANetDeptUser" defauleValue="" />
+		<content columnName="ipNeedNum"
+			interfaceName="interconIPAddNum" defauleValue="" />
+		<content columnName="ipServerNeedNum"
+			interfaceName="cusAppServIPAddNum" defauleValue="" />
+		
+		<!-- transferspeciall -->
+			<content columnName="cityA" interfaceName="cityA"
+			defauleValue="" />
+			<content columnName="cityZ" interfaceName="cityZ"
+			defauleValue="" />
+			<content columnName="bandwidth" interfaceName="bandwidth"
+			defauleValue="" />
+			<content columnName="amount" interfaceName="cableCount"
+			defauleValue="" />
+			<content columnName="interfaceType" interfaceName="portAInterfaceType"
+			defauleValue="" />
+			<content columnName="interfaceCustomConnPerson" interfaceName="sevAPointContact"
+			defauleValue="" />
+						<content columnName="interfaceCustomConnPhone" interfaceName="sevAPointContactPhone"
+			defauleValue="" />
+			<content columnName="interfaceCustomConnMail" interfaceName="sevAPointContactEmail"
+			defauleValue="" />
+			<content columnName="interfaceCustomConnAdd" interfaceName="sevAPointContactAdd"
+			defauleValue="" />
+			<content columnName="portAInterfaceType" interfaceName="portAInterfaceType"
+			defauleValue="" />
+			<content columnName="apointComputHouseName" interfaceName="portAEngineRoomName"
+			defauleValue="" />
+			<content columnName="portAContactPhone" interfaceName="portACustAidPhone"
+			defauleValue="" />
+			<content columnName="portADetailAdd" interfaceName="portADetailAdd"
+			defauleValue="" />
+			<content columnName="portABDeviceName" interfaceName="portABDeviceName"
+			defauleValue="" />
+			<content columnName="apointLocalPerson" interfaceName="portACustAidPerson"
+			defauleValue="" />
+			<content columnName="portZInterfaceType" interfaceName="portZInterfaceType"
+			defauleValue="" />
+			<content columnName="zpointComputerHorseName" interfaceName="portZEngineRoomName"
+			defauleValue="" />
+			<content columnName="zpointLocalPerson" interfaceName="portACustAidPerson"
+			defauleValue="" />
+			<content columnName="portZDetailAdd" interfaceName="portZDetailAdd"
+			defauleValue="" />
+			<content columnName="portZBDeviceName" interfaceName="portZBDeviceName"
+			defauleValue="" />
+			<content columnName="portZContactPhone" interfaceName="portZCustAidPhone"
+			defauleValue="" />
+			
+			<content columnName="siteNameA" interfaceName="ASiteName" defauleValue="" />
+			<content columnName="siteNameZ" interfaceName="ZSiteName" defauleValue="" />
+			<content columnName="portA" interfaceName="portA" defauleValue="" />
+	
+	</specialInfo>
+	<renewWorkSheet>
+  		<content columnName="mainSpecifyType" 									          interfaceName="zxType" 							defauleValue="" dictNodePath="serviceType3" />
+    	<content columnName="orderBuisnessType" 									          interfaceName="mainSpecifyType" 							defauleValue="" />
+		<content columnName="toDeptId" interfaceName="accountManagerCity" defauleValue="" dictNodePath="cityName" />
+		<content columnName="productKind" interfaceName="productKind"
+			defauleValue="" dictNodePath="productKindDict" />
+		<content columnName="mainResourceAffCRMNumber"
+			interfaceName="confCRMTicketNo" defauleValue="" />
+		<content columnName="mainProductInstanceCode"
+			interfaceName="confCRMTicketNo" defauleValue="" />
+		<content columnName="productName" interfaceName="productName"
+			defauleValue="" />
+
+		<content columnName="title" interfaceName="title"
+			defauleValue="" />
+		<content columnName="mainArgument" interfaceName="urgentDegree"
+			defauleValue="" dictNodePath="urgentDegree" />
+		<content columnName="sheetAcceptLimit" interfaceName="dealTime1"
+			defauleValue="" type="date" />
+		<content columnName="sheetCompleteLimit"
+			interfaceName="dealTime2" defauleValue="" type="date" />
+			
+				<!-- ordersheet -->
+		<content columnName="customName" interfaceName="customName"
+				defauleValue="" />
+		<content columnName="customContact"
+				interfaceName="customContact" defauleValue="" />
+		<content columnName="clientConnPersonPhone"
+				interfaceName="customContactPhone" defauleValue="" />
+	    <content columnName="cmanagerPhone" interfaceName="accountManagerName"
+				defauleValue="" />
+		<content columnName="cmanagerContactPhone" interfaceName="accountManagerPhone"
+			defauleValue="" />
+		<content columnName="customManagerDept" interfaceName="accountManagerDept"
+			defauleValue="" />
+		<content columnName="customManagerMail" interfaceName="accountManagerEmail"
+			defauleValue="" />
+		<content columnName="projectManagerName" interfaceName="projectManager"
+			defauleValue="" />
+		<content columnName="projectManagerPhone" interfaceName="projectManagerPhone"
+			defauleValue="" />	
+		<content columnName="customLevel" interfaceName="customLevel"
+			defauleValue="" dictNodePath="customLevel" />
+		<content columnName="provinceName" interfaceName="provinceName"
+			defauleValue="" dictNodePath="provinceName" />
+		<content columnName="cityName" interfaceName="accountManagerCity"
+			defauleValue="" dictNodePath="" />
+		<content columnName="countyName" interfaceName="countyName"
+			defauleValue="" dictNodePath="toCountyID" />
+		<content columnName="groupCustomBusinessScope" interfaceName="businessRange"
+			defauleValue="" />	
+		<content columnName="groupCustomNo" interfaceName="customNo"
+			defauleValue="" />	
+		<content columnName="groupCustomAdd" interfaceName="customContactAdd"
+			defauleValue="" />
+		 <content columnName="groupCustomMail" interfaceName="customContactPost"
+			defauleValue="" />	
+		 <content columnName="groupCustomBusinesType" interfaceName="customTrade"
+			defauleValue="" />
+		<content columnName="groupCustomMail" interfaceName="customContactEmail"
+			defauleValue="" />
+		<content columnName="customContact" interfaceName="customContact"
+			defauleValue="" />
+		<content columnName="customContactPhone" interfaceName="customContactPhone"
+			defauleValue="" />
+		<content columnName="groupDealContact"
+			interfaceName="bdeptContact" defauleValue="" />
+		<content columnName="groupDealContactPhone"
+			interfaceName="bdeptContactPhone" defauleValue="" />
+		<content columnName="groupTechContact"
+			interfaceName="groupTechContact" defauleValue="" />
+		<content columnName="groupTechContactPhone"
+			interfaceName="groupTechContactPhone" defauleValue="" />
+		<content columnName="needDesc" interfaceName="bRequirementDesc"
+			defauleValue="" />
+		<content columnName="provinceA" interfaceName="provinceA"
+				defauleValue="" />
+		<content columnName="cityA" interfaceName="cityA"
+				defauleValue="" />
+		<content columnName="provinceZ" interfaceName="provinceZ"
+				defauleValue="" />
+		<content columnName="cityZ" interfaceName="cityZ"
+				defauleValue="" />
+		<content columnName="projectName" interfaceName="projectName"
+			defauleValue="" />
+		<content columnName="stationNumber" interfaceName="siteCount"
+			defauleValue="" />
+		<content columnName="eleNumber" interfaceName="amount"
+			defauleValue="" />
+		<content columnName="remarks" interfaceName="remarks"
+			defauleValue="" />
+		<content columnName="netResCapacity" interfaceName="netResCapacity"
+			defauleValue="" />
+		<content columnName="clientPgmCapacity" interfaceName="clientPgmCapacity"
+			defauleValue="" />
+		<content columnName="expectFinishdays" interfaceName="expectFinishdays"
+			defauleValue="" />
+		<content columnName="circuitCode" interfaceName="circuitCode"
+			defauleValue="" />
+			
+			<content columnName="checkPerson" interfaceName="checkPerson" defauleValue="" />
+		<content columnName="checkDepmt" interfaceName="checkDepmt" defauleValue="" />
+		<content columnName="checkPhone" interfaceName="checkPhone" defauleValue="" />
+		<content columnName="checkMail" interfaceName="checkMail" defauleValue="" />
+		<content columnName="checkComments" interfaceName="checkComments" defauleValue="" />
+		<content columnName="checkTime" interfaceName="checkTime" defauleValue="" />
+			
+			<content columnName="orderType" interfaceName=""
+			defauleValue="1040104" />
+		<content columnName="mainSendSheetModule" interfaceName=""
+			defauleValue="1" />
+
+		<content columnName="parentCorrelation" interfaceName="serialNo"
+			defauleValue="" />
+		<content columnName="activeTemplateId" 			  interfaceName="" 												defauleValue="AuditTask" />
+		<content columnName="phaseId"                 interfaceName=""                        defauleValue="AuditTask" />
+		<content columnName="operateType" interfaceName="" defauleValue="54" />
+	</renewWorkSheet>
+	<suggestWorkSheet>
+		<content columnName="remark" interfaceName="opDesc" defauleValue="" />
+	</suggestWorkSheet>
+	<untreadWorkSheet>
+		<content columnName="remark" interfaceName="opDesc" defauleValue="" />
+		<content columnName="phaseId" interfaceName="" defauleValue="ImplementDealTask" />
+	</untreadWorkSheet>
+	<checkinWorkSheet>
+		<content columnName="holdStatisfied" interfaceName="closeSatisfyDegree" defauleValue=""  dictNodePath="holdStatisfied"/>
+		<content columnName="endResult" interfaceName="closeDesc" defauleValue="" />
+		<content columnName="phaseId" interfaceName="" defauleValue="receive" />
+		<content columnName="hasNextTaskFlag" interfaceName="" defauleValue="true" />
+		<content columnName="operateType" interfaceName="" defauleValue="18" />
+	</checkinWorkSheet>
+	
+	
+	<replyWorkSheet> <!-- 回复 -->
+		   <!-- 国际互联网 -->
+		<content columnName="mainInterfaceAConnPerson" 					interfaceEnName="ndeptContact" 			interfaceCnName="网络部门联系人" 							defauleValue="" />
+		<content columnName="mainAConnPersonPhone" 		      interfaceEnName="ndeptContactPhone" interfaceCnName="网络部门联系人电话" 					defauleValue="" />		
+		<content columnName="mainBusinessConnPerson" 					  interfaceEnName="pdeptContact" 			interfaceCnName="工程部门联系人"							defauleValue="" />  		
+		<content columnName="mainBusinessConnPersonPhone" 		      interfaceEnName="pdeptContactPhone" interfaceCnName="工程部门联系人电话"					defauleValue="" />  		
+		<content columnName="mainNumber" 						      interfaceEnName="dealResult" 				interfaceCnName="处理结果" 										defauleValue="" dictNodePath="dealResultCrm"/>		
+		<content columnName="linkDealDescriptin" 							      interfaceEnName="dealDesc" 					interfaceCnName="处理说明"										defauleValue="" />		
+		<content columnName="circuitSheetId" 					      interfaceEnName="circuitCode" 			interfaceCnName="传输专线电路代号" 						defauleValue="" />
+		<content columnName="testReport" 						      interfaceEnName="testReport" 				interfaceCnName="测试报告"				  					defauleValue="" /> 
+		<content columnName="ipAddress" 							  	interfaceEnName="IPAddr" 						interfaceCnName="IP地址（账号）"				   		defauleValue="" />		
+		<content columnName="mainBusinessConnPerson" 			interfaceEnName="buildCompContact" 	interfaceCnName="工程单位联系人"				   		defauleValue="" />		
+		<content columnName="mainBusinessConnPersonPhone"     interfaceEnName="buildCompContactPhone" interfaceCnName="工程单位联系人电话"			defauleValue="" />		
+		<content columnName="remark" interfaceEnName="remark" interfaceCnName="备注" defauleValue="" />  
+
+	    <content columnName="apnID" interfaceEnName="apnID" interfaceCnName="apnID" defauleValue="" />
+	    <content columnName="tradeId" interfaceEnName="tradeID" interfaceCnName="产品实例标识" defauleValue="" />
+</replyWorkSheet>      
+	
+	<confirmWorkSheet> <!-- 受理 -->
+		<content columnName="" interfaceCnName="操作类型" interfaceEnName="opType" defauleValue="受理" />
+		<content columnName="" interfaceCnName="操作说明" interfaceEnName="opDesc" defauleValue=""/>
+	</confirmWorkSheet>
+	<notifyWorkSheet> <!-- 阶段回复 -->
+		<content columnName="" 				interfaceCnName="操作类型" 			interfaceEnName="opType" defauleValue="阶段回复" />
+		<content columnName="remark"  interfaceCnName="操作说明" 			interfaceEnName="opDesc" defauleValue=""/>
+	</notifyWorkSheet>
+	<withdrawWorkSheet> <!-- 驳回 -->
+		<content columnName="" 						 interfaceCnName="操作类型" interfaceEnName="opType" defauleValue="驳回" />
+		<content columnName="remark" interfaceCnName="操作说明" interfaceEnName="opDesc" defauleValue=""/>
+	</withdrawWorkSheet>
+	<putNbrmsInfo><!-- 信息推送 -->
+				<content columnName="sheetKey" interfaceName="sheetkey" defauleValue="" />
+				<content columnName="circuitNumber" interfaceName="numberId" defauleValue="" />
+				<content columnName="circuitCode" interfaceName="circuitCode" defauleValue="" />
+	</putNbrmsInfo>
+</boco>
+ 

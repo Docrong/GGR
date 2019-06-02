@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.boco.eoms.check.model.TawCheckTransSCORE" table="taw_check_score_trans">
+   <id column="SCORE_ID" name="score_id" type="string">
+    <generator class="uuid.hex"/>
+   </id>
+  <property column="SCORE_AREA_ID" length="100" name="score_area_id" type="string"/>
+  <property column="SCORE_AREA_NAME" length="100" name="score_area_name" type="string"/>
+  <property column="SCORE_YEAR" length="100" name="score_year" type="string"/>
+  <property column="SCORE_MONTH" length="100" name="score_month" type="string"/>
+  <property column="T42" length="100" name="t42" type="double"/>
+  <property column="T42_FULL" length="100" name="t42_full" type="double"/>
+  <property column="T42_SCORE" length="100" name="t42_score" type="double"/>
+  <property column="T43" length="100" name="t43" type="double"/>
+  <property column="T43_FULL" length="100" name="t43_full" type="double"/>
+  <property column="T43_SCORE" length="100" name="t43_score" type="double"/>
+  <property column="T45" length="100" name="t45" type="double"/>
+  <property column="T45_FULL" length="100" name="t45_full" type="double"/>
+  <property column="T45_SCORE" length="100" name="t45_score" type="double"/>
+  <property column="T49" length="100" name="t49" type="double"/>
+  <property column="T49_FULL" length="100" name="t49_full" type="double"/>
+  <property column="T49_SCORE" length="100" name="t49_score" type="double"/>
+  <property column="T411" length="100" name="t411" type="double"/>
+  <property column="T411_FULL" length="100" name="t411_full" type="double"/>
+  <property column="T411_SCORE" length="100" name="t411_score" type="double"/>
+  <property column="T65" length="100" name="t65" type="double"/>
+  <property column="T65_FULL" length="100" name="t65_full" type="double"/>
+  <property column="T65_SCORE" length="100" name="t65_score" type="double"/>
+  <property column="T66" length="100" name="t66" type="double"/>
+  <property column="T66_FULL" length="100" name="t66_full" type="double"/>
+  <property column="T66_SCORE" length="100" name="t66_score" type="double"/>
+  <property column="FULL_SCORE" length="100" name="full_score" type="double"/>
+  <property column="SCORE_DELETED" length="100" name="score_deleted" type="string"/>
+  </class>
+</hibernate-mapping>

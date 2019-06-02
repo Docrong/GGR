@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC	
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping>
+    <class name="com.boco.eoms.commons.transaction.test.model.ApplyDetail" table="trans_test_02">
+        <id name="id" column="id" type="string">
+            <generator class="uuid.hex"></generator>
+        </id>
+
+        <property name="name" column="name" type="string" />
+        <property name="remark" column="remark" type="string" />
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.urgentfault.model.UrgentFaultMain"
+            table="urgentfault_main"
+    >
+
+    <id
+        name="id"
+            column="id"
+        
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+        <property name="sheetId" />
+		<property name="title" />
+		<property name="sheetAcceptLimit" />
+		<property name="sheetCompleteLimit" />
+		<property name="sendTime" />
+		<property name="sendOrgType" />
+		<property name="sendUserId" />
+		<property name="sendDeptId" />
+		<property name="sendRoleId" />
+		<property name="sendContact" />
+		<property name="endTime" />
+		<property name="endResult" />
+		<property name="status" />
+		<property name="holdStatisfied" />
+		<property name="endUserId" />
+		<property name="endDeptId" />
+		<property name="endRoleId" />
+		<property name="deleted" />
+		<property name="piid" />
+		<property name="parentSheetName" />
+		<property name="parentSheetId" />
+		<property name="sheetTemplateName" />
+		<property name="sheetAccessories" />
+		<property name="correlationKey" />
+		<property name="parentCorrelation" />
+		<property name="toDeptId" />
+		<property name="cancelReason" />
+		<property name="invokeMode" />
+		
+		<property name="mainIfGreatFault" />
+		<property name="mainGreatFaultId" />
+		<property name="mainFaultSheetId" />
+		<property name="mainFaultGenerantTime" />
+		<property name="mainFaultGenerantPlace" />
+		<property name="mainEquipmentFactory" />
+		<property name="mainFaultDesc" />
+		<property name="mainFaultReason" />
+		<property name="mainTrafficLoss" />
+		<property name="mainImpactUserNum" />
+		<property name="mainIfAffectOperation" />
+		<property name="mainAffectArea" />
+		<property name="mainAffectOperationDesc" />
+		<property name="mainAffectStartTime" />
+		<property name="mainAffectOperationLevel" />
+		<property name="mainAffectOperationSort" />
+		<property name="mainTriggerUserComplaint" />
+		<property name="mainIfReport" />
+		<property name="templateFlag" />
+		
+		<property name="mainIfAchieveProjectStartup" />
+		
+		<property name="mainUrgentLeve" />
+		<property name="mainFaultSpeciality" />
+		<property name="mainEquipIntegrator" />
+		<property name="mainFaultAvoidTime" />
+		<property name="mainAffectTimeLength" />
+		<property name="mainNetSortOne" />
+		<property name="mainNetSortTwo" />
+		<property name="mainNetSortThree" />
+		<property name="mainFaultSubReason" />
+		<property name="mainFaultLocation" />
+		<property name="mainReportLimit" />
+        <property name="mainIfRecord" />   
+        		
+		<property name="sendYear" />
+		<property name="sendMonth" />
+        <property name="sendDay" />	    
+        
+		<property name="parentPhaseName" />			 
+    </class>    
+
+</hibernate-mapping>
+

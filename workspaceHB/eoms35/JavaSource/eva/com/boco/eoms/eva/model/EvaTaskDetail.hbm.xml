@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class
+            name="com.boco.eoms.eva.model.EvaTaskDetail"
+            table="eva_task_detail"
+    >
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+		<property
+            name="taskId"
+            	column="task_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+
+		<property
+            name="kpiId"
+            	column="kpi_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+
+		<property
+            name="weight"
+            	column="weight"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+
+		<property
+            name="rowspan"
+            	column="rowspan"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        
+		<property
+            name="colspan"
+            	column="colspan"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        
+        <property
+            name="listNo"
+            	column="list_no"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        
+        <property
+            name="nodeId"
+            	column="node_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        
+        <property
+            name="parentNodeId"
+            	column="parent_node_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        
+        <property
+            name="leaf"
+            	column="leaf"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+    </class>    
+
+</hibernate-mapping>

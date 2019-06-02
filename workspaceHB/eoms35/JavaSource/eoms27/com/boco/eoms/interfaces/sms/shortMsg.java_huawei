@@ -1,0 +1,166 @@
+package com.boco.eoms.interfaces.sms;
+
+import com.huawei.smproxy.*;
+import com.huawei.insa2.comm.cmpp.message.*;
+import com.huawei.insa2.util.*;
+import java.util.Date;
+import java.io.FileInputStream;
+import java.io.File;
+import com.boco.eoms.common.util.PropertyFile;
+import com.boco.eoms.common.util.StaticMethod;
+import com.boco.eoms.common.log.BocoLog;
+public class shortMsg {
+
+  static SMProxy myProxy = null;
+
+  public shortMsg() {
+  }
+
+  public String getProperty(String key) {
+    FileInputStream conf = null;
+    PropertyFile prop = PropertyFile.getInstance();
+    String ret = "";
+    try {
+      ret = prop.getProperty(key).toString();
+    }
+    catch (Exception e) {
+      System.out.println("配置文件：" + prop.getFilePath() + "没有发现");
+    }
+
+    if (ret == null)
+      ret = "";
+    return ret;
+
+  }
+
+  private CMPPSubmitMessage initCMPP(String tel, String msg) {
+    CMPPSubmitMessage submitMsg = null;
+    try {
+      if (StaticMethod.nullObject2String(tel) == "" ||
+          StaticMethod.nullObject2String(msg) == "") {
+        return null;
+      }
+      else {
+        int pk_Total = 1;
+        int pk_Number = 1;
+        int registered_Delivery = 1;
+        int msg_Level = 3;
+        String service_Id = getProperty("sms_icp_code");
+        int fee_UserType = 2;
+        String fee_Terminal_Id = "";
+        int tp_Pid = 0;
+        int tp_Udhi = 0;
+        int msg_Fmt = 15;
+        String msg_Src = getProperty("sms_icp_id");
+        String fee_Type = "01";
+        String fee_Code = "10";
+        Date valid_Time = null;
+        Date at_Time = null;
+        String src_Terminal_Id = getProperty("sms_icp_code");
+        String[] dest_Terminal_Id = tel.split(",");
+        byte[] msg_Content = msg.getBytes();
+        String reserve = "";
+
+        submitMsg =
+            new CMPPSubmitMessage(
+            pk_Total,
+            pk_Number,
+            registered_Delivery,
+            msg_Level,
+            service_Id,
+            fee_UserType,
+            fee_Terminal_Id,
+            tp_Pid,
+            tp_Udhi,
+            msg_Fmt,
+            msg_Src,
+            fee_Type,
+            fee_Code,
+            valid_Time,
+            at_Time,
+            src_Terminal_Id,
+            dest_Terminal_Id,
+            msg_Content,
+            reserve
+            );
+      }
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+    return submitMsg;
+  }
+
+  public Args initConfig() {
+    Args args = null;
+    PropertyFile prop = PropertyFile.getInstance();
+    String configfile = prop.getFilePath() + File.separator + "SMProxy.xml";
+    System.out.println("配置文件：" + configfile);
+    File file = new File(configfile);
+    try {
+      if (file.exists()) {
+        args = new Cfg(configfile, false).getArgs("ismg");
+        System.out.println("args:" + args.toString());
+      }
+      file = null;
+    }
+    catch (Exception e) {
+      e.printStackTrace();
+    }
+    return args;
+  }
+
+  /**
+   * 程序入口。
+   */
+  public String sendSms(String tel, String msg) throws Exception {
+    String ret = "OK";
+    try {
+      if (! (StaticMethod.nullObject2String(tel).equals("") ||
+             StaticMethod.nullObject2String(msg).equals(""))) {
+        if (myProxy == null) {
+          Args args = initConfig();
+          if (args == null) {
+            ret = "配置文件不存在";
+            return ret;
+          }
+          myProxy = new SMProxy(args);
+        }
+        else if (myProxy.getConnState() != null) {
+          Args args = initConfig();
+          if (args == null) {
+            ret = "配置文件不存在";
+            return ret;
+          }
+          myProxy = new SMProxy(args);
+        }
+        if (myProxy != null) {
+          //发送短信
+          synchronized (myProxy) {
+            CMPPSubmitMessage submitMsg = initCMPP(tel, msg);
+            System.out.println("submit start");
+            CMPPSubmitRepMessage submitRepMsg = (CMPPSubmitRepMessage) myProxy.
+                send(
+                submitMsg);
+            System.out.println("submit end");
+            if (submitRepMsg.getResult() != 0) {
+              ret = "短信发送失败:error result=" + submitRepMsg.getResult();
+            }
+          }
+        }
+        else {
+          ret = "连接短信网关失败";
+        }
+      }
+      else {
+        ret = "手机号或短信内容为空";
+      }
+    }
+    catch (Exception e) {
+      ret = e.getMessage();
+      e.printStackTrace(); //异常处理
+    }
+    BocoLog.info(this,1002,tel+"手机号发送短信内容为："+msg+"时:"+ret);
+    return ret;
+  }
+}

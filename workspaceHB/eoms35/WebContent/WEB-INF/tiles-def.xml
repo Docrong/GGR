@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration//EN" "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+<tiles-definitions>
+<!--baiQiang-->
+	<definition name="doc.mainLayout1" path="/template/classicLayout1.jsp">
+		<put name="menu" value="/template/menu.jsp"/>
+		<put name="body" value="/template/main.jsp"/>
+	</definition>
+
+	<definition name="doc.mainLayout2" path="/template/classicLayout2.jsp">
+		<put name="menu" value="/template/menu.jsp"/>
+		<put name="body" value="/template/main.jsp"/>
+		<put name="header" value="/template/main.jsp"/>
+	</definition>
+
+	<definition name="doc.mainLayout3" path="/template/classicLayout3.jsp">
+		<put name="menu" value="/template/menu.jsp"/>
+		<put name="body" value="/template/main.jsp"/>
+		<put name="header" value="/template/main.jsp"/>
+	</definition>
+
+	<definition name="error.page" extends="doc.mainLayout1">
+		<put name="title" value="Error"/>
+		<put name="body" value="/failure.jsp"/>
+	</definition>
+
+        <!-- <<<<<<<<<<<<<< tiles for infopub >>>>>>>>>>>>>>> -->
+        <definition name="info.Layout" path="/template/infoLayout.jsp">
+                <put name="body"   value="/template/null.jsp"/>
+        </definition>
+
+	<!-- <<<<<<<<<<<<<< Test >>>>>>>>>>>>>>> -->
+	<definition name="test.list" extends="doc.mainLayout1">
+		<put name="body" value="/test/manager/TawDept1/summary.jsp"/>
+	</definition>
+
+
+	<!-- <<<<<<<<<<<<<< TawRole >>>>>>>>>>>>>>> -->
+	<definition name="tawrole.add" extends="doc.mainLayout1">
+		<put name="body" value="/sysadmin/manager/TawRole/entry.jsp"/>
+		<put name="menu" value="/TawRole/list.do"/>
+	</definition>
+	<definition name="tawrole.remove" extends="doc.mainLayout1">
+		<put name="body" value="/sysadmin/manager/TawRole/remove.jsp"/>
+		<put name="menu" value="/TawRole/list.do"/>
+	</definition>
+	<definition name="tawrole.view" extends="doc.mainLayout1">
+		<put name="body" value="/sysadmin/manager/TawRole/view.jsp"/>
+		<put name="menu" value="/TawRole/list.do"/>
+	</definition>
+	<definition name="tawrole.edit" extends="doc.mainLayout1">
+		<put name="body" value="/sysadmin/manager/TawRole/entry2.jsp"/>
+		<put name="menu" value="/TawRole/list.do"/>
+	</definition>
+
+	<definition name="tawrole.viewapp" extends="doc.mainLayout2">
+		<put name="header" value="/sysadmin/manager/TawRole/header.jsp"/>
+		<put name="menu" value="/sysadmin/manager/TawRole/viewApp.jsp"/>
+	</definition>
+	<definition name="tawrole.viewapp2" extends="doc.mainLayout1">
+		<put name="menu" value="/sysadmin/manager/TawRole/viewApp.jsp"/>
+	</definition>
+
+	<definition name="tawrole.viewoper" extends="doc.mainLayout2">
+		<put name="header" value="/sysadmin/manager/TawRole/header.jsp"/>
+		<put name="body" value="/sysadmin/manager/TawRole/viewOper.jsp"/>
+		<put name="menu" value="/TawRole/viewApp2.do"/>
+	</definition>
+
+	<definition name="tawrole.seldom" extends="doc.mainLayout3">
+		<put name="body" value="/sysadmin/manager/TawRole/tree.jsp"/>
+		<put name="header" value="/sysadmin/manager/TawRole/header.jsp"/>
+	</definition>
+
+	<definition name="tawrole.seldom2" extends="doc.mainLayout3">
+		<put name="body" value="/sysadmin/manager/TawRole/tree2.jsp"/>
+		<put name="header" value="/sysadmin/manager/TawRole/header.jsp"/>
+	</definition>
+
+	<definition name="tawrole.over" extends="doc.mainLayout3">
+		<put name="body" value="/sysadmin/manager/TawRole/over.jsp"/>
+		<put name="header" value="/sysadmin/manager/TawRole/header.jsp"/>
+	</definition>
+       <!-- <<<<<<<<<<<<<< Config User Priv >>>>>>>>>>>>>>> -->
+	<definition name="userpriv.seldom" extends="doc.mainLayout1">
+		<put name="body" value="/sysadmin/manager/TawUserPrivDom/tree.jsp"/>
+		<put name="menu" value="/TawUserPrivDom/conSelRoles.do"/>
+	</definition>
+
+	<definition name="userpriv.selOperDom" extends="doc.mainLayout1">
+		<put name="body" value="/sysadmin/manager/TawUserPrivDom/tree.jsp"/>
+		<put name="menu" value="/TawUserPrivDom/saveOperSel.do"/>
+	</definition>
+
+	<definition name="userpriv.selRoleOperDom" extends="doc.mainLayout1">
+		<put name="body" value="/sysadmin/manager/TawUserPrivDom/tree.jsp"/>
+		<put name="menu" value="/TawUserPrivDom/saveRoleOper.do"/>
+	</definition>
+
+
+<!--zhouGuangYi-->
+  <definition name="doc.mainLayout" path="/template/classicLayout.jsp">
+    <put name="title"  value="Title"/>
+    <put name="header" value="/template/header.jsp"/>
+    <put name="menu"   value="/template/menu.jsp"/>
+    <put name="footer" value="/template/footer.jsp"/>
+    <put name="body"   value="/template/main.jsp"/>
+  </definition>
+
+  <definition name="error.page" extends="doc.mainLayout">
+    <put name="title"  value="Error"/>
+    <put name="body"   value="/failure.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawDealstep >>>>>>>>>>>>>>> -->
+<!--
+  <definition name="manager.TawDealstep.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawDealstep Entry"/>
+    <put name="body"   value="/worksheet/manager/TawDealstep/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawDealstep.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawDealstep Summary"/>
+    <put name="body"   value="/worksheet/manager/TawDealstep/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawDealstep.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawDealstep"/>
+    <put name="body"   value="/worksheet/manager/TawDealstep/view.jsp"/>
+  </definition>
+  <definition name="manager.TawDealstep.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawDealstep"/>
+    <put name="body"   value="/worksheet/manager/TawDealstep/remove.jsp"/>
+  </definition>
+  <definition name="query.TawDealstep.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawDealstep/SearchByPK.jsp"/>
+  </definition>
+-->
+  <!-- <<<<<<<<<<<<<< TawDept >>>>>>>>>>>>>>> -->
+<!--
+  <definition name="manager.TawDept.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawDept Entry"/>
+    <put name="body"   value="/worksheet/manager/TawDept/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawDept.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawDept Summary"/>
+    <put name="body"   value="/worksheet/manager/TawDept/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawDept.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawDept"/>
+    <put name="body"   value="/worksheet/manager/TawDept/view.jsp"/>
+  </definition>
+  <definition name="manager.TawDept.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawDept"/>
+    <put name="body"   value="/worksheet/manager/TawDept/remove.jsp"/>
+  </definition>
+  <definition name="query.TawDept.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawDept/SearchByPK.jsp"/>
+  </definition>
+-->
+  <!-- <<<<<<<<<<<<<< TawFaultsheet >>>>>>>>>>>>>>>
+  doc.mainLayout定义显示格式,指向 classicLayout.jsp
+  -->
+  <definition name="manager.TawFaultsheet.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawFaultsheet Entry"/>
+    <put name="body"   value="/worksheet/manager/TawFaultsheet/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultsheet.transmit" extends="doc.mainLayout">
+    <put name="title"  value="TawFaultsheet Transmit"/>
+    <put name="body"   value="/worksheet/manager/TawFaultsheet/transmit.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultsheet.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawFaultsheet Summary"/>
+    <put name="body"   value="/worksheet/manager/TawFaultsheet/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultsheet.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawFaultsheet"/>
+    <put name="body"   value="/worksheet/manager/TawFaultsheet/view.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultsheet.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawFaultsheet"/>
+    <put name="body"   value="/worksheet/manager/TawFaultsheet/remove.jsp"/>
+  </definition>
+  <definition name="query.TawFaultsheet.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawFaultsheet/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawFsReply >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawFsReply.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawFsReply Entry"/>
+    <put name="body"   value="/worksheet/manager/TawFsReply/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawFsReply.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawFsReply Summary"/>
+    <put name="body"   value="/worksheet/manager/TawFsReply/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawFsReply.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawFsReply"/>
+    <put name="body"   value="/worksheet/manager/TawFsReply/view.jsp"/>
+  </definition>
+  <definition name="manager.TawFsReply.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawFsReply"/>
+    <put name="body"   value="/worksheet/manager/TawFsReply/remove.jsp"/>
+  </definition>
+  <definition name="query.TawFsReply.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawFsReply/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawSoftware >>>>>>>>>>>>>>>
+  doc.mainLayout定义显示格式,指向 classicLayout.jsp
+  -->
+  <definition name="manager.TawSoftware.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawSoftware Entry"/>
+    <put name="body"   value="/worksheet/manager/TawSoftware/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawSoftware.transmit" extends="doc.mainLayout">
+    <put name="title"  value="TawSoftware Transmit"/>
+    <put name="body"   value="/worksheet/manager/TawSoftware/transmit.jsp"/>
+  </definition>
+  <definition name="manager.TawSoftware.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawSoftware Summary"/>
+    <put name="body"   value="/worksheet/manager/TawSoftware/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawSoftware.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawSoftware"/>
+    <put name="body"   value="/worksheet/manager/TawSoftware/view.jsp"/>
+  </definition>
+  <definition name="manager.TawSoftware.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawSoftware"/>
+    <put name="body"   value="/worksheet/manager/TawSoftware/remove.jsp"/>
+  </definition>
+  <definition name="query.TawSoftware.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawSoftware/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawSoftwareReply >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawSoftwareReply.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawSoftwareReply Entry"/>
+    <put name="body"   value="/worksheet/manager/TawSoftwareReply/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawSoftwareReply.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawSoftwareReply Summary"/>
+    <put name="body"   value="/worksheet/manager/TawSoftwareReply/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawSoftwareReply.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawSoftwareReply"/>
+    <put name="body"   value="/worksheet/manager/TawSoftwareReply/view.jsp"/>
+  </definition>
+  <definition name="manager.TawSoftwareReply.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawSoftwareReply"/>
+    <put name="body"   value="/worksheet/manager/TawSoftwareReply/remove.jsp"/>
+  </definition>
+  <definition name="query.TawSoftwareReply.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawSoftwareReply/SearchByPK.jsp"/>
+  </definition>
+<!--chengjw datasheet-->
+  <!-- <<<<<<<<<<<<<< TawDatasheet >>>>>>>>>>>>>>>
+  doc.mainLayout classicLayout.jsp
+  -->
+  <definition name="manager.TawDatasheet.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawDatasheet Entry"/>
+    <put name="body"   value="/worksheet/manager/TawDatasheet/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawDatasheet.transmit" extends="doc.mainLayout">
+    <put name="title"  value="TawDatasheet Transmit"/>
+    <put name="body"   value="/worksheet/manager/TawDatasheet/transmit.jsp"/>
+  </definition>
+  <definition name="manager.TawDatasheet.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawDatasheet Summary"/>
+    <put name="body"   value="/worksheet/manager/TawDatasheet/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawDatasheet.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawFaultsheet"/>
+    <put name="body"   value="/worksheet/manager/TawDatasheet/view.jsp"/>
+  </definition>
+  <definition name="manager.TawDatasheet.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawDatasheet"/>
+    <put name="body"   value="/worksheet/manager/TawDatasheet/remove.jsp"/>
+  </definition>
+  <definition name="query.TawDatasheet.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawDatasheet/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawDataReply >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawDataReply.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawDataReply Entry"/>
+    <put name="body"   value="/worksheet/manager/TawDataReply/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawDataReply.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawDataReply Summary"/>
+    <put name="body"   value="/worksheet/manager/TawDataReply/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawDataReply.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawDataReply"/>
+    <put name="body"   value="/worksheet/manager/TawDataReply/view.jsp"/>
+  </definition>
+  <definition name="manager.TawDataReply.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawDataReply"/>
+    <put name="body"   value="/worksheet/manager/TawDataReply/remove.jsp"/>
+  </definition>
+  <definition name="query.TawDataReply.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawDataReply/SearchByPK.jsp"/>
+  </definition>
+<!--chengjiwu datasheet and data reply end-->
+
+<!--chengjw plansheet-->
+  <!-- <<<<<<<<<<<<<< TawPlansheet >>>>>>>>>>>>>>>
+  doc.mainLayout classicLayout.jsp
+  -->
+  <definition name="manager.TawPlansheet.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawPlansheet Entry"/>
+    <put name="body"   value="/worksheet/manager/TawPlansheet/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawPlansheet.transmit" extends="doc.mainLayout">
+    <put name="title"  value="TawPlansheet Transmit"/>
+    <put name="body"   value="/worksheet/manager/TawPlansheet/transmit.jsp"/>
+  </definition>
+  <definition name="manager.TawPlansheet.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawPlansheet Summary"/>
+    <put name="body"   value="/worksheet/manager/TawPlansheet/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawPlansheet.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawFaultsheet"/>
+    <put name="body"   value="/worksheet/manager/TawPlansheet/view.jsp"/>
+  </definition>
+  <definition name="manager.TawPlansheet.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawPlansheet"/>
+    <put name="body"   value="/worksheet/manager/TawPlansheet/remove.jsp"/>
+  </definition>
+  <definition name="query.TawPlansheet.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawPlansheet/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawPlanReply >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawPlanReply.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawPlanReply Entry"/>
+    <put name="body"   value="/worksheet/manager/TawPlanReply/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawPlanReply.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawPlanReply Summary"/>
+    <put name="body"   value="/worksheet/manager/TawPlanReply/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawPlanReply.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawPlanReply"/>
+    <put name="body"   value="/worksheet/manager/TawPlanReply/view.jsp"/>
+  </definition>
+  <definition name="manager.TawPlanReply.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawPlanReply"/>
+    <put name="body"   value="/worksheet/manager/TawPlanReply/remove.jsp"/>
+  </definition>
+  <definition name="query.TawPlanReply.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawPlanReply/SearchByPK.jsp"/>
+  </definition>
+<!--chengjiwu Plansheet and Plan reply end-->
+<!--chengjw FaultReport-->
+  <!-- <<<<<<<<<<<<<< TawFaultReport >>>>>>>>>>>>>>>
+  doc.mainLayout classicLayout.jsp
+  -->
+  <definition name="manager.TawFaultReport.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawFaultReport Entry"/>
+    <put name="body"   value="/worksheet/manager/TawFaultReport/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultReport.transmit" extends="doc.mainLayout">
+    <put name="title"  value="TawFaultReport Transmit"/>
+    <put name="body"   value="/worksheet/manager/TawFaultReport/transmit.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultReport.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawFaultReport Summary"/>
+    <put name="body"   value="/worksheet/manager/TawFaultReport/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultReport.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawFaultsheet"/>
+    <put name="body"   value="/worksheet/manager/TawFaultReport/view.jsp"/>
+  </definition>
+  <definition name="manager.TawFaultReport.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawFaultReport"/>
+    <put name="body"   value="/worksheet/manager/TawFaultReport/remove.jsp"/>
+  </definition>
+  <definition name="query.TawFaultReport.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawFaultReport/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawReportReply >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawReportReply.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawReportReply Entry"/>
+    <put name="body"   value="/worksheet/manager/TawReportReply/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawReportReply.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawReportReply Summary"/>
+    <put name="body"   value="/worksheet/manager/TawReportReply/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawReportReply.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawReportReply"/>
+    <put name="body"   value="/worksheet/manager/TawReportReply/view.jsp"/>
+  </definition>
+  <definition name="manager.TawReportReply.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawReportReply"/>
+    <put name="body"   value="/worksheet/manager/TawReportReply/remove.jsp"/>
+  </definition>
+  <definition name="query.TawReportReply.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawReportReply/SearchByPK.jsp"/>
+  </definition>
+<!--chengjiwu FaultReport and faultreply end-->
+ <!-- <<<<<<<<<<< TawCompliantsheet >>>>>>>>>>>>>>>> -->
+  <definition name="manager.TawCompliantsheet.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawCompliantsheet Entry"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantsheet/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawCompliantsheet.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawCompliantsheet Summary"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantsheet/summary.jsp"/>
+  </definition>
+ <definition name="manager.TawCompliantsheet.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawCompliantsheet"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantsheet/view.jsp"/>
+  </definition>
+  <definition name="manager.TawCompliantsheet.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawCompliantsheet"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantsheet/remove.jsp"/>
+  </definition>
+  <definition name="manager.TawCompliantsheet.transmit" extends="doc.mainLayout">
+    <put name="title"  value="TawCompliantsheet Transmit"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantsheet/transmit.jsp"/>
+  </definition>
+  <definition name="query.TawCompliantsheet.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/worksheet/query/TawCompliantsheet/SearchByPK.jsp"/>
+  </definition>
+ <!-- <<<<<<<<<<<<<< TawCompliantReply >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawCompliantReply.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawCompliantReply Entry"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantReply/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawCompliantReply.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawCompliantReply Summary"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantReply/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawCompliantReply.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawCompliantReply"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantReply/view.jsp"/>
+  </definition>
+  <definition name="manager.TawCompliantReply.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawCompliantReply"/>
+    <put name="body"   value="/worksheet/manager/TawCompliantReply/remove.jsp"/>
+  </definition>
+
+  <!-- <<<<<<<<<<<<<< TawRmUser >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawRmUser.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawRmUser Entry"/>
+    <put name="body"   value="/manager/TawRmUser/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawRmUser.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawRmUser Summary"/>
+    <put name="body"   value="/manager/TawRmUser/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawRmUser.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawRmUser"/>
+    <put name="body"   value="/manager/TawRmUser/view.jsp"/>
+  </definition>
+  <definition name="manager.TawRmUser.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawRmUser"/>
+    <put name="body"   value="/manager/TawRmUser/remove.jsp"/>
+  </definition>
+  <definition name="query.TawRmUser.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawRmUser/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawWrfMonitor >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawWrfMonitor.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawWrfMonitor Entry"/>
+    <put name="body"   value="/manager/TawWrfMonitor/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawWrfMonitor.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawWrfMonitor Summary"/>
+    <put name="body"   value="/manager/TawWrfMonitor/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawWrfMonitor.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawWrfMonitor"/>
+    <put name="body"   value="/manager/TawWrfMonitor/view.jsp"/>
+  </definition>
+  <definition name="manager.TawWrfMonitor.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawWrfMonitor"/>
+    <put name="body"   value="/manager/TawWrfMonitor/remove.jsp"/>
+  </definition>
+  <definition name="query.TawWrfMonitor.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawWrfMonitor/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawWsDict >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawWsDict.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawWsDict Entry"/>
+    <put name="body"   value="/manager/TawWsDict/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawWsDict.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawWsDict Summary"/>
+    <put name="body"   value="/manager/TawWsDict/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawWsDict.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawWsDict"/>
+    <put name="body"   value="/manager/TawWsDict/view.jsp"/>
+  </definition>
+  <definition name="manager.TawWsDict.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawWsDict"/>
+    <put name="body"   value="/manager/TawWsDict/remove.jsp"/>
+  </definition>
+  <definition name="query.TawWsDict.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawWsDict/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawWsDictType >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawWsDictType.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawWsDictType Entry"/>
+    <put name="body"   value="/manager/TawWsDictType/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawWsDictType.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawWsDictType Summary"/>
+    <put name="body"   value="/manager/TawWsDictType/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawWsDictType.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawWsDictType"/>
+    <put name="body"   value="/manager/TawWsDictType/view.jsp"/>
+  </definition>
+  <definition name="manager.TawWsDictType.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawWsDictType"/>
+    <put name="body"   value="/manager/TawWsDictType/remove.jsp"/>
+  </definition>
+  <definition name="query.TawWsDictType.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawWsDictType/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawWsFlow >>>>>>>>>>>>>>> -->
+
+  <definition name="manager.TawWsFlow.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawWsFlow Entry"/>
+    <put name="body"   value="/sysadmin/manager/TawWsFlow/wsflow.jsp"/>
+  </definition>
+<!--
+  <definition name="manager.TawWsFlow.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawWsFlow Summary"/>
+    <put name="body"   value="/sysadmin/manager/TawWsFlow/summary.jsp"/>
+  </definition>
+-->
+  <definition name="manager.TawWsFlow.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawWsFlow"/>
+    <put name="body"   value="../sysadmin/manager/TawWsFlow/wsflow.jsp"/>
+  </definition>
+<!--
+  <definition name="manager.TawWsFlow.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawWsFlow"/>
+    <put name="body"   value="../sysadmin/manager/TawWsFlow/remove.jsp"/>
+  </definition>
+
+  <definition name="query.TawWsFlow.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="../sysadmin/query/TawWsFlow/SearchByPK.jsp"/>
+  </definition>
+-->
+  <!-- <<<<<<<<<<<<<< TawWsModule >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawWsModule.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawWsModule Entry"/>
+    <put name="body"   value="/manager/TawWsModule/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawWsModule.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawWsModule Summary"/>
+    <put name="body"   value="/manager/TawWsModule/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawWsModule.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawWsModule"/>
+    <put name="body"   value="/manager/TawWsModule/view.jsp"/>
+  </definition>
+  <definition name="manager.TawWsModule.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawWsModule"/>
+    <put name="body"   value="/manager/TawWsModule/remove.jsp"/>
+  </definition>
+  <definition name="query.TawWsModule.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawWsModule/SearchByPK.jsp"/>
+  </definition>
+
+  <!-- <<<<<<<<<<<<<< TpmWsTree >>>>>>>>>>>>>>> -->
+  <definition name="manager.TpmWsTree.entry" extends="doc.mainLayout">
+    <put name="title"  value="TpmWsTree Entry"/>
+    <put name="body"   value="/manager/TpmWsTree/entry.jsp"/>
+  </definition>
+  <definition name="manager.TpmWsTree.summary" extends="doc.mainLayout">
+    <put name="title"  value="TpmWsTree Summary"/>
+    <put name="body"   value="/manager/TpmWsTree/summary.jsp"/>
+  </definition>
+  <definition name="manager.TpmWsTree.view" extends="doc.mainLayout">
+    <put name="title"  value="View TpmWsTree"/>
+    <put name="body"   value="/manager/TpmWsTree/view.jsp"/>
+  </definition>
+  <definition name="manager.TpmWsTree.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TpmWsTree"/>
+    <put name="body"   value="/manager/TpmWsTree/remove.jsp"/>
+  </definition>
+  <definition name="query.TpmWsTree.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TpmWsTree/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawOkd >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawOkb.entry" extends="doc.mainLayout">
+    <put name="title"  value="TawOkb Entry"/>
+    <put name="body"   value="/manager/TawOkb/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawOkb.summary" extends="doc.mainLayout">
+    <put name="title"  value="TawOkb Summary"/>
+    <put name="body"   value="/manager/TawOkb/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawOkb.view" extends="doc.mainLayout">
+    <put name="title"  value="View TawOkb"/>
+    <put name="body"   value="/manager/TawOkb/view.jsp"/>
+  </definition>
+  <definition name="manager.TawOkb.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TawOkb"/>
+    <put name="body"   value="/manager/TawOkb/remove.jsp"/>
+  </definition>
+  <definition name="query.TawOkb.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TawOkb/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawBoard >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawBoard.entry" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawBoard/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawBoard.summary" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawBoard/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawBoard.view" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawBoard/view.jsp"/>
+  </definition>
+  <definition name="manager.TawBoard.remove" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawBoard/remove.jsp"/>
+  </definition>
+  <definition name="query.TawBoard.SearchByPK" extends="info.Layout">
+    <put name="body"   value="/query/TawBoard/SearchByPK.jsp"/>
+  </definition>
+
+  <!-- <<<<<<<<<<<<<< TawInformation >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawInformation.entry" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawInformation/entry.jsp"/>
+  </definition>
+  <definition name="manager.TawInformation.summary" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawInformation/summary.jsp"/>
+  </definition>
+  <definition name="manager.TawInformation.view" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawInformation/view.jsp"/>
+  </definition>
+  <definition name="manager.TawInformation.remove" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawInformation/remove.jsp"/>
+  </definition>
+  <definition name="manager.TawInformation.query" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawInformation/query.jsp"/>
+  </definition>
+  <definition name="manager.TawInformation.queryList" extends="info.Layout">
+    <put name="body"   value="/infopub/manager/TawInformation/querylist.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TawFileUpload >>>>>>>>>>>>>>> -->
+  <definition name="manager.TawFileUpload.input" extends="info.Layout" >
+     <put name="body"   value="/infopub/manager/TawFileUpload/uploadfile.jsp"/>
+  </definition>
+  <!--  修改人：白鹏 修改时间：2003-08-28 修改目的：在工单管理中增加附件上传功能-->
+  <definition name="manager.TawFileUpload.upload" extends="info.Layout" >
+     <put name="body"   value="/worksheet/manager/TawFileUpload/uploadfile.jsp"/>
+  </definition>
+</tiles-definitions>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<collect-info>
+	<collect-column>
+		<column-name>isReject</column-name>
+		<hql>from BaseMain main,BaseLink link where main.id=link.mainId and main.id=:mainId</hql>
+		<compare-value></compare-value>
+		<column-value>1</column-value>
+		<default-value>0</default-value>
+		<muli-type></muli-type>
+	</collect-column>
+</collect-info>

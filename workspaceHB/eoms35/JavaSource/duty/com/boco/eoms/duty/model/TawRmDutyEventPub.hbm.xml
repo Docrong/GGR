@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.boco.eoms.duty.model.TawRmDutyEventPub" table="taw_rm_dutyevent_pub" >
+             <id name="id" type="java.lang.String">
+                <column name="ID" length="32" />
+                <generator class="uuid.hex" />
+            </id>
+            <property name="flag" column="FLAG" length="50">
+            </property>
+            <property name="eventid" column="EVENTID" length="32" >
+            </property>
+            <property name="title" column="TITLE" length="200" >
+            </property>
+            <property name="datatime" column="DATATIME" length="200" >
+            </property>
+            <property name="starttime" column="STARTTIME" length="200" >
+            </property>
+            <property name="endtime" column="ENDTIME" length="200" >
+            </property>
+            <property name="oid" column="OID" precision="22" scale="0">
+            </property>
+            <property name="man" column="MAN" length="100" >
+            </property>
+            <property name="pubstatus" column="PUBSTATUS" length="10">
+            </property>
+    </class>
+</hibernate-mapping>

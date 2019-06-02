@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_6.dtd">
+<workflow>
+  <initial-actions>
+    <action id="6" name="NewSendMore" view="派发(一派多)">
+      <results>
+        <unconditional-result id="6" old-status="Finished" status="Queued" step="5" subFlow="newstation_sub" />
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="5" name="派单人">
+    </step>
+  </steps>
+</workflow>

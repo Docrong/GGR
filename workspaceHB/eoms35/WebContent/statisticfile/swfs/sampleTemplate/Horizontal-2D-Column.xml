@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Horizontal 2DColumn" minimum_value="0" maximum_value="60">
+      <hints enabled="no"/>
+      <values decimal_places="0" position="center"/>
+      <animation enabled="no" speed="10"/>
+	  <names>
+	    <font bold="no" type="Verdana"/>
+	  </names>
+      <column_chart block_space = "10" column_space = "5" left_space = "130" right_space="30" up_space="5" down_space="5">
+        <border enabled="yes" size="1" auto_color="no" color="0x8F8E8E"/>  
+        <background enabled="yes"/>
+      </column_chart>
+    </chart>
+    <workspace>      
+      <chart_area width="400" height="300" y="50" x="20" deep="0">
+	  <background type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xFFFFFF</color>
+	      <color>0xF4E1C4</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="-1.7"/>
+	  </background>
+	  <border enabled="yes" color="0xB54001" />
+	  </chart_area>
+      <base_area enabled="no"/>
+      <name text="The 10 Richest Americans"/>
+      <subname text="in bil. "/>
+	  <grid>
+	    <values>
+		  <captions position="top" />
+		  <lines color="Gray" />
+		</values>
+	  </grid>
+      <y_axis smart="yes" />
+    </workspace>
+  </type>
+</root>

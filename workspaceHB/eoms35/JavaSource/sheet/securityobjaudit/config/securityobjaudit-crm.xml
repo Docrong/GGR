@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+	<base>
+		<InterfaceUser>chenyong</InterfaceUser>
+		<SendRoleId>297e58995bad468e015bad4f4a5b000d</SendRoleId>
+		<AcceptGroupId>4302</AcceptGroupId>
+		<AcceptRoleId>297e58995baeb3b9015bb245705d0047</AcceptRoleId>
+		<SendImmediately>true</SendImmediately>
+		<InvokeReplyAll>false</InvokeReplyAll>
+	</base>
+	<newWorkSheet>
+		<content columnName="title" defauleValue="" interfaceName="title" />
+		<content columnName="mainISMPSheetId" defauleValue="" interfaceName="mainISMPSheetId" />
+		<content columnName="mainUserId" defauleValue="" interfaceName="mainUserId" />
+		<content columnName="mainAcceptTime" defauleValue="" interfaceName="mainAcceptTime" />
+		<content columnName="mainDealTime" defauleValue="" interfaceName="mainDealTime" />
+		<content columnName="mainProvince" defauleValue="" interfaceName="mainProvince" />
+		<content columnName="mainCity" defauleValue="" interfaceName="mainCity" />
+		<content columnName="mainSendWay" defauleValue="" interfaceName="mainSendWay" />
+		
+		<content columnName="mainTaskName" defauleValue="" interfaceName="mainTaskName" />
+		<content columnName="mainTaskId" defauleValue="" interfaceName="mainTaskId" />
+		<content columnName="mainWorkId" defauleValue="" interfaceName="mainWorkId" />
+		<content columnName="mainWorkName" defauleValue="" interfaceName="mainWorkName" />
+		<content columnName="mainCheckTime" defauleValue="" interfaceName="mainCheckTime" />
+		<content columnName="mainProDes" defauleValue="" interfaceName="mainProDes" />
+		<content columnName="mainSecurityIP" defauleValue="" interfaceName="mainSecurityIP" />
+		<content columnName="mainSecurityName" defauleValue="" interfaceName="mainSecurityName" />
+		<content columnName="mainSecurityID" defauleValue="" interfaceName="mainSecurityID" />
+		<content columnName="mainOperateName" defauleValue="" interfaceName="mainOperateName" />
+		
+		<content columnName="phaseId" interfaceName="" defauleValue="Audit" />
+		
+	</newWorkSheet>
+	
+	<untreadWorkSheet>
+		<content columnName="serialNo" interfaceName="orderID" defauleValue="" />
+		<content columnName="linkReject" interfaceName="linkReject" defauleValue="" />
+		
+		<content columnName="operateType" interfaceName="" defauleValue="107" />
+		<content columnName="phaseId" interfaceName="" defauleValue="QualityInspection" />
+	</untreadWorkSheet>
+	<checkinWorkSheet>
+		<content columnName="serialNo" interfaceName="orderID" defauleValue="" />
+		<content columnName="endResult" interfaceName="orderarchiveramark" defauleValue="" />
+		
+		<content columnName="operateType" interfaceName="" defauleValue="18" />
+		<content columnName="phaseId" interfaceName="" defauleValue="Over" />
+		<content columnName="hasNextTaskFlag" interfaceName="" defauleValue="true" />
+	</checkinWorkSheet>
+</boco>
+

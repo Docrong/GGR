@@ -1,0 +1,506 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+
+<struts-config>
+
+  <!-- ============ Form beans ============ -->
+  <form-beans>
+    <form-bean type="com.boco.eoms.testcard.controller.TawTestcardForm" name="tawTestcardForm"/>
+    <form-bean type="com.boco.eoms.testcard.controller.TawTestcardManagerForm" name="tawTestcardManagerForm"/>
+    <form-bean type="com.boco.eoms.eventmanager.controller.TawCopyForm" name="tawCopyForm"/>
+    <form-bean type="com.boco.eoms.eventmanager.controller.TawEventDicForm" name="tawEventDicForm"/>
+    <form-bean type="com.boco.eoms.eventmanager.controller.TawFaultRecordForm" name="tawFaultRecordForm"/>
+    <form-bean name="tawStatForm" type="com.boco.eoms.sparepart.controller.TawStatForm" />
+    <form-bean name="tawTestcardTestingForm" type="com.boco.eoms.testcard.controller.TawTestcardTestingForm"/>
+    <form-bean name="tawTestcardApplyForm" type="com.boco.eoms.testcard.controller.TawTestcardApplyForm"/>
+  </form-beans>
+
+  <!-- ============ Global forwards ============ -->
+  <global-forwards type="org.apache.struts.action.ActionForward">
+    <forward name="failure" path="error.page"/>
+    <forward name="success" path="/success.jsp"/>
+    <forward name="error" path="error.page"/>
+    <forward name="timeout" path="/timeout.jsp"/>
+    <forward name="nopriv" path="/nopriv.jsp"/>
+    <forward name="ifIccid" path="/manager/TawTestcard/ifIccid.jsp"/>
+    <!--Add by WangHeqi 2004/06  测试卡模块和事件管理模块配置文件-->
+    <forward name="err" path="/sysadmin/goto.jsp"/>
+  </global-forwards>
+
+  <!-- ============ Action Mapping definitions ============ -->
+  <action-mappings type="org.apache.struts.action.ActionMapping">
+    <!--<<<<<<<<<<<<<<<<<<<TawTestcard>>>>>>>>>>>>>>>>>>>>-->
+    <action path="/TawTestcard/add" parameter="ADD" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/entry.jsp"/>
+    </action>
+    <action path="/TawTestcard/load" parameter="READY" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+      scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/load.jsp"/>
+    </action>
+    <action path="/TawTestcard/toload" parameter="LOAD" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcard/load.do"/>
+    <forward name="error" path="/manager/TawTestcard/error.jsp"/>
+    <forward name="falsePage" path="/manager/TawTestcard/load.jsp"/>
+    </action>
+    <action path="/TawTestcard/export" parameter="forward" type="com.boco.eoms.common.controller.DispatchForward">
+    <forward name="forward" path="/manager/TawTestcard/export.jsp"/>
+    </action>
+    <action path="/TawTestcard/toexport" parameter="EXPORT" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+      scope="request" name="tawTestcardForm" validate="false">
+    <forward name="forward" path="/manager/TawTestcard/filedownload.jsp"/>
+    </action>
+    <action path="/TawTestcard/edit" parameter="VIEW" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/edit.jsp"/>
+    </action>
+   <action path="/TawTestcard/save" parameter="SAVE" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcard/add.do" redirect="true"/>
+    </action>
+    <action path="/TawTestcard/editsave" parameter="UPDATE" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/edit.do" redirect="true"/>
+    </action>
+    <action path="/TawTestcard/editactivate" parameter="UPDATEACTIVATE" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/actsearch.do" redirect="true"/>
+    </action>
+   <action path="/TawTestcard/view" parameter="VIEW" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/view.jsp"/>
+    </action>
+   <action path="/TawTestcard/remove" parameter="REMOVE" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/remove.jsp"/>
+    </action>
+   <action path="/TawTestcard/list" parameter="LIST" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/summary.jsp"/>
+    </action>
+   <action path="/TawTestcard/search" parameter="SEARCH" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/select.jsp"/>
+    </action>
+   <action path="/TawTestcard/searchdo" parameter="SEARCHDO" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/summary.jsp"/>
+    </action>
+   <action path="/TawTestcard/trash" parameter="TRASH" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcard/search.do"/>
+    </action>
+     <action path="/TawTestcard/edittrash" parameter="TRASH" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/editlist.do"/>
+    </action>
+      <action path="/TawTestcard/batchtrash" parameter="BATCHTRASH" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/editlist.do"/>
+    </action>
+   <action path="/TawTestcard/createNumberPage" parameter="CREATENUMBERPAGE" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/createNumber.jsp"/>
+    </action>
+   <action path="/TawTestcard/createNumber" parameter="CREATENUMBER" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+   
+    </action>
+    <!--<<<<<<<<<<<<<<<<<<<TawTestcardApply>>>>>>>>>>>>>>>>>>>>-->
+   <action path="/TawTestcardApply/add" parameter="ADD" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/newApplyForm.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/edit" parameter="EDIT" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/editApplyForm.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/save" parameter="SAVE" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="successsave" path="/query/TawTestcard/searchCardNoAlive.jsp"/>
+    <forward name="successupdate" path="/TawTestcardApply/list.do?status=9"/>
+    </action>
+   <action path="/TawTestcardApply/list" parameter="LIST" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/listForms.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/view" parameter="VIEW" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/viewApply.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/searchcard" parameter="SEARCHCARD" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/searchCardNoAlive.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/searchcarddo" parameter="SEARCHCARDDO" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/searchCardNoAliveDO.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/submitcards" parameter="SUBMITCARDS" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/TawTestcardApply/list.do?status=9"/>
+    </action>
+   <action path="/TawTestcardApply/submitaudit" parameter="SUBMITAUDIT" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/TawTestcardApply/list.do?status=9"/>
+    </action>
+   <action path="/TawTestcardApply/auditpage" parameter="AUDITPAGE" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/auditpage.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/audit" parameter="AUDIT" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/TawTestcardApply/list.do?status=10"/>
+    </action>
+   <action path="/TawTestcardApply/listauditinfo" parameter="LISTAUDITINFO" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/listaiditinfo.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/del" parameter="DEL" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/delapply.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/deldo" parameter="DELDO" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/TawTestcardApply/list.do?status=9"/>
+    </action>
+   <action path="/TawTestcardApply/search" parameter="SEARCH" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/searchForm.jsp"/>
+    </action>
+   <action path="/TawTestcardApply/searchdo" parameter="SEARCHDO" type="com.boco.eoms.testcard.controller.TawTestcardApplyAction"
+     scope="request" name="tawTestcardApplyForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/searchFormDO.jsp"/>
+    </action>
+    <!--<<<<<<<<<<<<<<<<<<<TawTestcardApply>>>>>>>>>>>>>>>>>>>>-->
+	
+    <!--<<<<<<<<<<<<<<<<<<<TawTestcardManager>>>>>>>>>>>>>>>>>>>>-->
+   <action path="/TawTestcardManager/select" parameter="SELECT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/select.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/edit" parameter="SELECT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/edit.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/actsearch" parameter="SELECT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/activateSearch.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/use" parameter="SELECT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/use.jsp"/>
+ 
+    </action>
+    <action path="/TawTestcardManager/presentiment" parameter="PRESENTIMENT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/presentiment.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/scrap" parameter="SELECT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/scrap.jsp"/>
+    </action>
+    <action path="/TawTestcard/stat" parameter="STAT" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawStatForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/stat.jsp"/>
+    </action>
+    
+    <action path="/TawTestcard/toStatPage" parameter="TOSTATPAGE" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/activateStat.jsp"/>
+    </action>
+    
+    <action path="/TawTestcard/activateStat" parameter="ACTIVATESTAT" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawStatForm" validate="false">
+    <forward name="success" path="/query/TawTestcard/activateStatResult.jsp"/>
+    </action>
+    
+    
+    <action path="/TawTestcard/statlist" parameter="STATLIST" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcard/staticAliveList.jsp"/>
+    </action>
+   	<action path="/TawTestcardManager/returnselect" parameter="RETURNSELECT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/returnselect.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/borrowdo" parameter="RETURNSELECT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/borrow.jsp"/>
+    </action>
+  	<action path="/TawTestcardManager/selectlist" parameter="SELECTLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/selectlist.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/uselist" parameter="SELECTLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/uselist.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/scraplist" parameter="SELECTLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/scraplist.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/editlist" parameter="SELECTLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/editlist.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/activatelist" parameter="UNACTIVATELIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/unActivateList.jsp"/>
+    </action>
+  
+  	<action path="/TawTestcardManager/returnselectlist" parameter="RETURNSELECTLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction" scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/returnselectlist.jsp"/>
+    </action>
+    
+    <action path="/TawTestcardManager/incept" parameter="INCEPT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/incept.jsp"/>
+    </action>
+    
+    <action path="/TawTestcardManager/returnborrowlist" parameter="RETURNBORROWLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/borrowlist.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/add" parameter="ADD" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/entry.jsp"/>
+    </action>
+    
+    <action path="/TawTestcardManager/receedit" parameter="RECEEDIT" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction" 
+       scope="request" name="tawTestcardForm" validate="true">
+      <forward name="success" path="/configbox/listbox/listbox_rece.jsp" />
+    </action>
+    
+    <action path="/TawTestcardManager/touse" parameter="TOUSE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/useentry.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/toscrap" parameter="ADD" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/scrapentry.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/toedit" parameter="TOEDIT" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/editpage.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/toactivate" parameter="TOEDIT" type="com.boco.eoms.testcard.controller.TawTestcardAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/editActivate.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/save" parameter="SAVE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="checkfileno" path="/manager/TawTestcardManager/checkFileErr.jsp"/>
+    <forward name="success" path="/TawTestcardManager/select.do" redirect="true"/>
+    </action>
+    <action path="/TawTestcardManager/usesave" parameter="USESAVE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardTestingForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/use.do"/>
+    </action>
+    <action path="/TawTestcardManager/scrapsave" parameter="SAVE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/scrap.do"/>
+    </action>
+   <action path="/TawTestcardManager/search" parameter="SEARCH" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/search.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/used" parameter="SEARCHUSED" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardTestingForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/used.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/scraped" parameter="SEARCH" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/scraped.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/searchdo" parameter="SEARCHDO" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/list.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/usedo" parameter="SEARCHTESTED" type="com.boco.eoms.testcard.controller.TawTestcardTestingAction"
+     scope="request" name="tawTestcardTestingForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardTesting/testedlist.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/scrapdo" parameter="SEARCHDO" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/scrapedlist.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/view" parameter="VIEW" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/view.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/useview" parameter="VIEW" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/useview.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/scrapview" parameter="VIEW" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/scrapview.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/remove" parameter="REMOVE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/remove.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/trash" parameter="TRASH" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/search.do"/>
+    </action>
+   <action path="/TawTestcardManager/return" parameter="RETURN" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/return.jsp"/>
+    </action>
+    
+    <action path="/TawTestcardManager/accede" parameter="ACCEDE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/incept.do"/>
+    </action>
+    
+    <action path="/TawTestcardManager/returnborrownote" parameter="RETURNBORROWNOTE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/returnborrownote.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/renew" parameter="RENEW" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/manager/TawTestcardManager/renew.jsp"/>
+    </action>
+   <action path="/TawTestcardManager/returnupdate" parameter="RETURNUPDATE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/returnselect.do"/>
+    </action>
+   <action path="/TawTestcardManager/renewupdate" parameter="RENEWUPDATE" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/returnselect.do"/>
+   </action>
+    <!--<<<<<<<<<<<<<<<<<<<TawCopy>>>>>>>>>>>>>>>>>>>>-->
+    <action path="/TawFaultsheet/copyadd" parameter="ADD" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+     scope="request" name="tawCopyForm" validate="false">
+    <forward name="success" path="/manager/TawCopy/entry.jsp"/>
+    </action>
+   <action path="/TawFaultsheet/copysave" parameter="SAVE" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+     scope="request" name="tawCopyForm" validate="false">
+    <forward name="success" path="/TawFaultsheet/copylist.do"/>
+    </action>
+    <action path="/TawFaultsheet/copylist" parameter="LIST" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+     scope="request" name="tawCopyForm" validate="false">
+    <forward name="success" path="/eventmanager/manager/TawCopy/summary.jsp"/>
+    </action>
+    <action path="/TawFaultsheet/copyedit" parameter="EDIT" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+     scope="request" name="tawCopyForm" validate="false">
+    <forward name="success" path="/eventmanager/manager/TawCopy/entry.jsp"/>
+    </action>
+    <action path="/TawFaultsheet/copytrash" parameter="TRASH" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+      scope="request" name="tawCopyForm" validate="false">
+      <forward name="success" path="/TawFaultsheet/copyselect.do"/>
+    </action>
+    <action path="/TawFaultsheet/copyview" parameter="VIEW" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+      scope="request" name="tawCopyForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawCopy/view.jsp"/>
+    </action>
+    <action path="/TawFaultsheet/copyremove" parameter="REMOVE" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+      scope="request" name="tawCopyForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawCopy/remove.jsp"/>
+    </action>
+    <action path="/TawFaultsheet/copyselect" parameter="SELECT" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+      scope="request" name="tawCopyForm" validate="false">
+      <forward name="success" path="/eventmanager/query/TawCopy/select.jsp"/>
+    </action>
+    <action path="/TawFaultsheet/copyselectlist" parameter="SELECTLLIST" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+      scope="session" name="tawCopyForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawCopy/summary.jsp"/>
+    </action>
+    <action path="/TawCopyForm/excel" parameter="EXCEL" type="com.boco.eoms.eventmanager.controller.TawCopyAction"
+      scope="request" name="tawCopyForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawCopy/excel.jsp"/>
+    </action>
+    <!--<<<<<<<<<<<<<<<<<<<TawEventDic>>>>>>>>>>>>>>>>>>>>>>-->
+    <action path="/TawEventDic/tree" parameter="tree" type="com.boco.eoms.eventmanager.controller.TawEventDicAction"
+      scope="request" name="tawEventDicForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawEventDic/tree.jsp"/>
+    </action>
+    <action path="/TawEventDic/add" parameter="ADD" type="com.boco.eoms.eventmanager.controller.TawEventDicAction"
+      scope="request" name="tawEventDicForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawEventDic/entry.jsp"/>
+    </action>
+    <action path="/TawEventDic/save" parameter="SAVE" type="com.boco.eoms.eventmanager.controller.TawEventDicAction"
+      scope="request" name="tawEventDicForm" validate="false">
+      <forward name="success" path="/TawEventDic/tree.do"/>
+    </action>
+    <action path="/TawEventDic/edit" parameter="EDIT" type="com.boco.eoms.eventmanager.controller.TawEventDicAction"
+      scope="request" name="tawEventDicForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawEventDic/entry.jsp"/>
+    </action>
+    <action path="/TawEventDic/remove" parameter="TRASH" type="com.boco.eoms.eventmanager.controller.TawEventDicAction"
+      scope="request" name="tawEventDicForm" validate="false">
+      <forward name="success" path="/TawEventDic/tree.do"/>
+    </action>
+    <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TawFaultRecord>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+    <action path="/TawFaultRecord/add" parameter="ADD" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false">
+      <forward name="success" path="//manager/TawFaultRecord/entry.jsp"/>
+    </action>
+    <action path="/TawFaultRecord/save" parameter="SAVE" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false" input="eventmanager.manager.TawFaultRecord.entry">
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/view.jsp"/>
+      <forward name="duty" path="/manager/TawFaultRecord/forward.jsp" />
+    </action>
+    <action path="/TawFaultRecord/edit" parameter="EDIT" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/edit.jsp"/>
+    </action>
+    <action path="/TawFaultRecord/search" parameter="SEARCH" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/search.jsp"/>
+    </action>
+    <action path="/TawFaultRecord/list" parameter="LIST" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false" >
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/list.jsp"/>
+    </action>
+    <action path="/TawFaultRecord/view" parameter="VIEW" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/view.jsp"/>
+    </action>
+    <action path="/TawFaultRecord/remove" parameter="REMOVE" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/remove.jsp"/>
+    </action>
+    <action path="/TawFaultRecord/trash" parameter="TRASH" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/trash.jsp"/>
+    </action>
+    <action path="/TawFaultRecord/upload" parameter="UPLOAD" type="com.boco.eoms.eventmanager.controller.TawFaultRecordAction"
+      scope="request" name="tawFaultRecordForm" validate="false">
+      <forward name="success" path="/eventmanager/manager/TawFaultRecord/upload.jsp"/>
+    </action>
+    <!-- add by xudongsuo 20071214 for 测试卡清查功能 start-->
+    <action path="/TawTestcardManager/cleardo" parameter="CLEARDO" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/cleardo.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/clearlist" parameter="CLEARLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/clearlist.jsp"/>
+    </action>
+       <action path="/TawTestcardManager/clearadd" parameter="CLEARADD" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/TawTestcardManager/clearlist.do"/>
+    </action>
+    <action path="/TawTestcardManager/clearquery" parameter="CLEARQUERY" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/clearquery.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/clearquerylist" parameter="CLEARQUERYLIST" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/clearquerylist.jsp"/>
+    </action>
+    <action path="/TawTestcardManager/clearhistory" parameter="CLEARHISTORY" type="com.boco.eoms.testcard.controller.TawTestcardManagerAction"
+     scope="request" name="tawTestcardManagerForm" validate="false">
+    <forward name="success" path="/query/TawTestcardManager/clearhistory.jsp"/>
+    </action>
+    <!-- add by xudongsuo 20071214 for 测试卡清查功能 end-->
+  </action-mappings>
+  <message-resources parameter="conifg/ApplicationResources-eventmanger.properties"/>
+</struts-config>

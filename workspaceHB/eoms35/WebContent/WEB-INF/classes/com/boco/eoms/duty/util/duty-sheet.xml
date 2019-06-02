@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts description="公用">
+<dict id="sheet" description="工单">
+<item id="故障流程" name="故障流程" value="commonfault" description="commonfault"/>
+<item id="投诉流程" name="投诉流程" value="complaint" description="complaint"/>
+<item id="通用任务流程" name="通用任务流程" value="commontask" description="commontask"/>
+<item id="网络优化工单" name="网络优化工单" value="netoptimize" description="netoptimize"/>
+</dict>
+</dicts>

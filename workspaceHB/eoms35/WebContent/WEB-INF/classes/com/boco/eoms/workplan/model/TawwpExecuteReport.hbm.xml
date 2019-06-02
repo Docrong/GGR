@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpExecuteReport"
+        table="TAW_WP_EXECUTEREPORT"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpExecuteReport.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="remark"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="REMARK"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="startDate"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="STARTDATE"
+            length="19"
+            not-null="false"
+        />
+
+        <property
+            name="endDate"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="ENDDATE"
+            length="19"
+            not-null="false"
+        />
+
+        <property
+            name="deptId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="DEPTID"
+            length="10"
+            not-null="true"
+        />
+
+        <property
+            name="crtime"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CRTIME"
+            length="19"
+            not-null="true"
+        />
+
+        <property
+            name="content"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CONTENT"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="advice"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="ADVICE"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="reportFlag"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="REPORTFLAG"
+            length="1"
+            not-null="false"
+        />
+
+        <property
+            name="reportType"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="REPORTTYPE"
+            length="1"
+            not-null="false"
+        />
+
+        <property
+            name="reportUser"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="REPORTUSER"
+            length="20"
+            not-null="true"
+        />
+
+        <many-to-one
+            name="tawwpMonthPlan"
+            class="com.boco.eoms.workplan.model.TawwpMonthPlan"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTH_PLAN_ID"
+            not-null="true"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpExecuteReport.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

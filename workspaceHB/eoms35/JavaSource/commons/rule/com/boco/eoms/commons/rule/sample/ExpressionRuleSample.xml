@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleEngine>
+	<expStyles>
+		<expStyle id="rule1Expression"
+			style=" ( $parameter != $l{springbean.getNames} || false ) &amp;&amp; $text ? $r{springbean.getName} : 3 " />
+	</expStyles>
+	
+	<dict dictSql="select t.itemname as name ,t.itemid as id from taw_system_dictitem t where t.dictid=" dictTypeSql="select t.dictid as id,t.dictname as name from taw_system_dicttype t"/>
+	
+	<rules>
+		<rule
+			className="com.boco.eoms.commons.rule.service.ExpressionRuleService"
+			id="ExpressionRule">
+			<input>
+				<parameter name="rule1InputParameter1Sample"
+					type="com.boco.eoms.commons.rule.sample.Rule1InputParameter1Sample" />
+				<parameter name="rule1InputParameter2Sample"
+					type="com.boco.eoms.commons.rule.sample.Rule1InputParameter2Sample" />					
+			</input>
+			<output>
+				<parameter
+					expression="#rule1InputParameter1Sample.age>5 &amp;&amp; #rule1InputParameter1Sample.name=='qjb'?#rule1InputParameter1Sample.result:#rule1InputParameter1Sample.getStr(#rule1InputParameter1Sample.name)"
+					name="rule1OutputParameter1Sample"
+					type="java.lang.String"
+					drl="" expStyleId="" />
+
+				<parameter
+					expression="#rule1InputParameter1Sample.age>5?#rule1InputParameter1Sample.setAge(5):#rule1InputParameter1Sample.setAge(6),#rule1InputParameter1Sample"
+					name="rule1OutputParameter2Sample"
+					type="com.boco.eoms.commons.rule.sample.Rule1InputParameter1Sample"
+					drl="" expStyleId="" />
+			</output>
+			<listeners>
+				<listener
+					name="com.boco.eoms.commons.rule.sample.Rule1ListenerSample" />
+				<listener
+					name="com.boco.eoms.commons.rule.listener.RuleCheckListener" />
+			</listeners>
+		</rule>
+	</rules>
+</ruleEngine>

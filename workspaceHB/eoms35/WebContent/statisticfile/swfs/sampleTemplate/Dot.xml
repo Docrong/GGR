@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+
+    <chart type="Dot" minimum_value="-20" maximum_value="50" minimum_argument="0" maximum_argument="40">
+      <animation enabled="yes" speed="50" appearance="alpha" type="step"/>
+      <values show="no"/>
+      <dot_chart />
+	  <hints enabled="yes" width="100" auto_size="no" text="{VALUE}">
+	    <background color="0xF4E1C4"/>
+		<border color="0x0xB54001"/>
+	  </hints>
+    </chart>
+    <workspace>      
+	  <background enabled="yes" type="gradient" gradient_type="linear">
+			<colors>
+			  <color>0xFFFFFF</color>
+			  <color>0xF4E1C4</color>
+			</colors>
+			<alphas>
+			  <alpha>100</alpha>
+			  <alpha>100</alpha>
+			</alphas>
+			<ratios>
+			  <ratio>0</ratio>
+			  <ratio>0xFF</ratio>
+			</ratios>
+			<matrix r="-1.7"/>
+     </background>
+	  <chart_area width="300" height="250" y="50" x="60" deep="0" enabled="no">
+	 </chart_area>
+      <base_area enabled="no"/>
+    </workspace>
+  </type>
+</root>

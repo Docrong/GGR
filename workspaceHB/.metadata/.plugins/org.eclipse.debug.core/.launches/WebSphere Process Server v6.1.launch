@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="com.ibm.wbit.runtime.v61.launchConfigurationType">
+<stringAttribute key="com.ibm.debug.wsa.attr_vm_name" value="IBM J9 VM"/>
+<intAttribute key="com.ibm.debug.wsa.attr_was_version" value="3"/>
+<stringAttribute key="com.ibm.debug.wsa.attr_vm_version" value="1.5.0"/>
+<stringAttribute key="server-id" value="wps_61"/>
+</launchConfiguration>

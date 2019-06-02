@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--CircuitOperation-START-->    
+
+    <bean id="ICircuitOperationMainDAO"
+		class="com.boco.eoms.sheet.circuitoperation.dao.hibernate.CircuitOperationMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="ICircuitOperationLinkDAO"
+		class="com.boco.eoms.sheet.circuitoperation.dao.hibernate.CircuitOperationLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ICircuitOperationTaskDAO"
+		class="com.boco.eoms.sheet.circuitoperation.dao.hibernate.CircuitOperationTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="CircuitOperationTask"
+		class="com.boco.eoms.sheet.circuitoperation.model.CircuitOperationTask" autowire="byName">
+     </bean>
+    <bean id="CircuitOperationLink"
+		class="com.boco.eoms.sheet.circuitoperation.model.CircuitOperationLink"
+		autowire="byName" />
+	<bean id="CircuitOperationMain"
+		class="com.boco.eoms.sheet.circuitoperation.model.CircuitOperationMain"
+		autowire="byName" />
+	<bean id="iCircuitOperationTask"
+		class="com.boco.eoms.sheet.circuitoperation.task.impl.CircuitOperationTaskImpl"
+		autowire="byName" />
+	<bean id="iCircuitOperationTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitoperation.service.impl.CircuitOperationTaskManagerImpl">
+				<property name="taskModelObject" ref="CircuitOperationTask" />
+				<property name="taskDAO">
+					<ref bean="ICircuitOperationTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/circuitoperationConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iCircuitOperationFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitoperation.service.impl.CircuitOperationFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCircuitOperationLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitoperation.service.impl.CircuitOperationLinkManagerImpl">
+				<property name="linkObject" ref="CircuitOperationLink"/>
+				<property name="linkDAO">
+				  <ref bean="ICircuitOperationLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iCircuitOperationMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitoperation.service.impl.CircuitOperationMainManagerImpl">
+			    <property name="mainObject" ref="CircuitOperationMain" />
+				<property name="mainDAO">
+				 <ref bean="ICircuitOperationMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iCircuitOperationQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>CircuitOperationProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/circuitoperation-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iCircuitOperationQo"
+		class="com.boco.eoms.sheet.circuitoperation.qo.impl.CircuitOperationQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="CircuitOperationMain" />
+		<property name="poLink" value="CircuitOperationLink" />
+		<property name="aliasMain" value="circuitOperationMain" />
+		<property name="aliasLink" value="circuitOperationLink" />
+		<property name="poTask" value="CircuitOperationTask" />
+	    <property name="aliasTask" value="circuitOperationTask" />			
+	</bean>
+
+	<bean id="CircuitOperation" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.circuitoperation.webapp.action.CircuitOperationMethod">
+				<property name="businessFlowService" >
+					<ref bean="iCircuitOperationFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iCircuitOperationLinkManager" />
+				<property name="mainService"
+					ref="iCircuitOperationMainManager" />
+				<property name="sheetTask"
+					ref="CircuitOperationTask" />
+				<property name="taskService"
+					ref="iCircuitOperationTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/circuitoperation-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+     <!--CircuitOperation-END-->  
+</beans>

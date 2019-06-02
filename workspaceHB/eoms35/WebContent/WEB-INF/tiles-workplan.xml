@@ -1,0 +1,127 @@
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+  "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+
+<tiles-definitions>
+  <definition name="doc.mainLayout" path="/template/classicLayout.jsp">
+    <put name="title"  value="Title"/>
+    <put name="header" value="/template/header.jsp"/>
+    <put name="menu"   value="/template/menu.jsp"/>
+    <put name="footer" value="/template/footer.jsp"/>
+    <put name="body"   value="/template/main.jsp"/>
+  </definition>
+
+  <definition name="error.page" extends="doc.mainLayout">
+    <put name="title"  value="Error"/>
+    <put name="body"   value="/failure.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TAWGZCONTENT >>>>>>>>>>>>>>> -->
+  <definition name="manager.TAWGZCONTENT.entry" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZCONTENT Entry"/>
+    <put name="body"   value="/manager/TAWGZCONTENT/entry.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZCONTENT.summary" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZCONTENT Summary"/>
+    <put name="body"   value="/manager/TAWGZCONTENT/summary.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZCONTENT.view" extends="doc.mainLayout">
+    <put name="title"  value="View TAWGZCONTENT"/>
+    <put name="body"   value="/manager/TAWGZCONTENT/view.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZCONTENT.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TAWGZCONTENT"/>
+    <put name="body"   value="/manager/TAWGZCONTENT/remove.jsp"/>
+  </definition>
+  <definition name="query.TAWGZCONTENT.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TAWGZCONTENT/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TAWGZCYCLE >>>>>>>>>>>>>>> -->
+  <definition name="manager.TAWGZCYCLE.entry" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZCYCLE Entry"/>
+    <put name="body"   value="/manager/TAWGZCYCLE/entry.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZCYCLE.summary" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZCYCLE Summary"/>
+    <put name="body"   value="/manager/TAWGZCYCLE/summary.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZCYCLE.view" extends="doc.mainLayout">
+    <put name="title"  value="View TAWGZCYCLE"/>
+    <put name="body"   value="/manager/TAWGZCYCLE/view.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZCYCLE.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TAWGZCYCLE"/>
+    <put name="body"   value="/manager/TAWGZCYCLE/remove.jsp"/>
+  </definition>
+  <definition name="query.TAWGZCYCLE.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TAWGZCYCLE/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TAWGZPLAN >>>>>>>>>>>>>>> -->
+  <definition name="manager.TAWGZPLAN.entry" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZPLAN Entry"/>
+    <put name="body"   value="/manager/TAWGZPLAN/entry.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZPLAN.summary" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZPLAN Summary"/>
+    <put name="body"   value="/manager/TAWGZPLAN/summary.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZPLAN.view" extends="doc.mainLayout">
+    <put name="title"  value="View TAWGZPLAN"/>
+    <put name="body"   value="/manager/TAWGZPLAN/view.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZPLAN.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TAWGZPLAN"/>
+    <put name="body"   value="/manager/TAWGZPLAN/remove.jsp"/>
+  </definition>
+  <definition name="query.TAWGZPLAN.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TAWGZPLAN/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TAWGZPLANITEM >>>>>>>>>>>>>>> -->
+  <definition name="manager.TAWGZPLANITEM.entry" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZPLANITEM Entry"/>
+    <put name="body"   value="/manager/TAWGZPLANITEM/entry.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZPLANITEM.summary" extends="doc.mainLayout">
+    <put name="title"  value="TAWGZPLANITEM Summary"/>
+    <put name="body"   value="/manager/TAWGZPLANITEM/summary.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZPLANITEM.view" extends="doc.mainLayout">
+    <put name="title"  value="View TAWGZPLANITEM"/>
+    <put name="body"   value="/manager/TAWGZPLANITEM/view.jsp"/>
+  </definition>
+  <definition name="manager.TAWGZPLANITEM.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TAWGZPLANITEM"/>
+    <put name="body"   value="/manager/TAWGZPLANITEM/remove.jsp"/>
+  </definition>
+  <definition name="query.TAWGZPLANITEM.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TAWGZPLANITEM/SearchByPK.jsp"/>
+  </definition>
+  <!-- <<<<<<<<<<<<<< TAWOBJECT >>>>>>>>>>>>>>> -->
+  <definition name="manager.TAWOBJECT.entry" extends="doc.mainLayout">
+    <put name="title"  value="TAWOBJECT Entry"/>
+    <put name="body"   value="/manager/TAWOBJECT/entry.jsp"/>
+  </definition>
+  <definition name="manager.TAWOBJECT.summary" extends="doc.mainLayout">
+    <put name="title"  value="TAWOBJECT Summary"/>
+    <put name="body"   value="/manager/TAWOBJECT/summary.jsp"/>
+  </definition>
+  <definition name="manager.TAWOBJECT.view" extends="doc.mainLayout">
+    <put name="title"  value="View TAWOBJECT"/>
+    <put name="body"   value="/manager/TAWOBJECT/view.jsp"/>
+  </definition>
+  <definition name="manager.TAWOBJECT.remove" extends="doc.mainLayout">
+    <put name="title"  value="Remove TAWOBJECT"/>
+    <put name="body"   value="/manager/TAWOBJECT/remove.jsp"/>
+  </definition>
+  <definition name="query.TAWOBJECT.SearchByPK" extends="doc.mainLayout">
+    <put name="title"  value="SearchByPK"/>
+    <put name="body"   value="/query/TAWOBJECT/SearchByPK.jsp"/>
+  </definition>
+
+</tiles-definitions>

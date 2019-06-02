@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Data Sources Definitions =================================== -->
+  <!--
+    Define your Struts data sources in a file called struts-data-sources.xml and place
+    it in your merge directory.
+  -->
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+    <form-bean
+      name="tawWorkdaySetForm"
+      type="com.boco.eoms.commons.workdayset.webapp.form.TawWorkdaySetForm"
+    />
+
+    <!--
+         If you have non XDoclet forms, define them in a file called struts-forms.xml and
+         place it in your merge directory.
+    -->
+  </form-beans>
+
+  <!-- ========== Global Exceptions Definitions =================================== -->
+      <global-exceptions>
+        <exception type="java.lang.Exception"
+            key="errors.general"
+            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
+
+
+  <!-- ========== Global Forward Definitions =================================== -->
+      <global-forwards>
+        <forward name="mainMenu" path="/mainMenu.html" redirect="true"/>
+    </global-forwards>
+   
+     <!-- ========== Global Forward Definitions =================================== -->
+     
+
+  <!-- ========== Action Mapping Definitions =================================== -->
+   <action-mappings>
+
+       <!-- Forwards to the mainMenu tile definition -->
+    <action path="/mainMenu" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/mainMenu.jsp"/>
+
+    <action path="/TawWorkdaySetAction" 
+    	type="com.boco.eoms.commons.workdayset.webapp.action.TawWorkdaySetAction"
+        name = "tawWorkdaySetForm"
+        scope="request"
+        input="mainMenu"
+        parameter="method"
+        unknown="false"
+        validate="false">
+      <set-property
+        property="cancellable"
+        value="true"
+        />
+      <forward
+        name="main"
+        path="/WEB-INF/pages/tawWorkdaySet/tawWorkDaySetter.jsp"
+     	redirect="false"
+        contextRelative="true"
+        />
+      </action>
+     
+
+    <!-- Action to flush cache -->
+    <action path="/tawWorkdaySet" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/tawWorkdaySet/tawWorkDaySetter.jsp" name="tawWorkdaySetForm"/>
+        
+	<action path="/flush" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/flushCache.jsp" roles="admin"/>
+  </action-mappings>
+
+  <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+      <message-resources parameter="config/ApplicationResources"/>
+
+      <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+
+</struts-config>

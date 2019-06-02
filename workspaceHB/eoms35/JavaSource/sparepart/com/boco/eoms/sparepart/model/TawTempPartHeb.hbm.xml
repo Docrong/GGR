@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.sparepart.model.TempPartHeb"  table="TAW_SP_TEMP_PART">
+
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="USER_ID" length="32" name="userId" type="string"/>
+<property column="ORDER_ID" length="32" name="orderId" type="string"/>
+<property column="SPAREPART_ID" length="32" name="sparepartId" type="string"/>
+</class>
+</hibernate-mapping>

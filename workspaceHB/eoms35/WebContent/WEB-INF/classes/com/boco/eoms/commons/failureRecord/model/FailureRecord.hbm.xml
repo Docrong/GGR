@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.commons.failureRecord.model.FailureRecord"
+		table="Failure_Record">
+
+		<id name="id" column="id" unsaved-value="null">
+
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+			</generator>
+		</id>
+		<property name="alarmed" column="alarmed" length="80"
+			not-null="false" unique="false">
+		</property>
+		<property name="title" column="title" length="255"
+			not-null="false" unique="false">
+		</property>
+		<property name="faultstarttime" column="faultstarttime"
+			length="20" not-null="false" unique="false">
+		</property>
+		<property name="faultendtime" column="faultendtime" length="20"
+			not-null="false" unique="false">
+		</property>
+		<property name="faulttype1" column="faulttype1" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="faulttype2" column="faulttype2" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="faulttype3" column="faulttype3" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="faulttype4" column="faulttype4" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="faultregion" column="faultregion" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="faultjudge" column="faultjudge" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="sheettemplatename" column="sheettemplatename"
+			length="50" not-null="false" unique="false">
+		</property>
+		<property name="faulttype5" column="faulttype5" length="31"
+			not-null="false" unique="false">
+		</property>
+		<property name="faultdetail" column="faultdetail" length="255"
+			not-null="false" unique="false">
+		</property>
+		<property name="todeptid" column="todeptid" length="20"
+			not-null="false" unique="false">
+		</property>
+		<property name="todutyroom" column="todutyroom" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="odutyroomid" column="odutyroomid" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="todutyroomen" column="todutyroomen" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="faultsource" column="faultsource" length="50"
+			not-null="false" unique="false">
+		</property>
+		<property name="faultstatus" column="faultstatus" length="20"
+			not-null="false" unique="false">
+		</property>
+	</class>
+</hibernate-mapping>
+

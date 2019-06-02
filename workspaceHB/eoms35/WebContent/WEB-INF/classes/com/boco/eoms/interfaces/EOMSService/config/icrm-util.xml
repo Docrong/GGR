@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+    <ServiceUrl>http://10.32.1.26:9006/webattemp/services/IRMSService?WSDL</ServiceUrl>
+    <SendImmediately>true</SendImmediately>
+    <uploadType>ftp</uploadType>
+    <sheet>
+    	<item sheettype="31" url="http://10.21.1.106:9000/krms/services/addKnowledgeService1?wsdl" />
+    	<item sheettype="32" url="http://10.131.54.56:8999/axis/services/CRMProcessSheet?wsdl" />
+    	<item sheettype="33" url="http://10.21.1.106:9000/krms/services/addKnowledgeService3?wsdl" />
+    	<item sheettype="34" url="http://10.21.1.106:9000/krms/services/addKnowledgeService4?wsdl" />
+    	<item sheettype="56" url="http://10.131.55.11:8780/csp/services/si/CRMProcessSheet?wsdl" />
+    	<item sheettype="57" url="http://10.131.55.11:8780/csp/services/si/CRMProcessSheet?wsdl" />
+    </sheet>
+    <dict>
+    	<permitResult><!-- 审批结果 -->
+    		<item dictid="1010908" interfacecode="0" />
+    		<item dictid="1010909" interfacecode="1" />
+    	</permitResult>
+
+	</dict>
+</boco>
+

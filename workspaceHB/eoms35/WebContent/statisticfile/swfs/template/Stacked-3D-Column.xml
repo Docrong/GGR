@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Stacked 3DColumn">
+      <animation appearance="alpha" speed="5"/>
+      <column_chart column_space="0">
+	    <background alpha="70"/>
+        <block_names>
+          <font size="8" type="Verdana"/>
+        </block_names>
+      </column_chart>
+      <hints enabled="no"/>
+      <names show="no"/>
+      <values show="no"/>
+    </chart>
+    <workspace>
+  	  <name text="U.S. Population">
+	    <font type="Verdana"/>
+	  </name>
+      <background enabled="yes" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xF1F6F9</color>
+	      <color>0x095D8B</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="1.58"/>
+	  </background>
+      <chart_area height="260" width="480" y="50" x="50">
+<background enabled="no"/>
+<border enabled="no"/>
+	  </chart_area>
+      <base_area enabled="no"/>
+      <grid>
+        <values>
+          <captions>
+            <font size="9" type="verdana_embed_tf" color="Black"/>
+          </captions>
+		  <lines color="Gray" />
+        </values>
+      </grid>   
+	<y_axis smart="yes" />
+    </workspace>
+    <legend enabled="yes" x="440" y="50">
+      <values enabled="no"/>
+      <header names="Groups"/>
+      <names width="150"/>
+      <scroller enabled="no"/>
+      <border enabled="no"/>
+      <background enabled="no"/>
+    </legend> 
+  </type>
+</root>

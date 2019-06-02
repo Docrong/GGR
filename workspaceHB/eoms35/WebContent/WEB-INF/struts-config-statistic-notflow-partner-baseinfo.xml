@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config> 
+
+	<!-- ========== Data Sources Definitions =================================== -->
+	<!--
+		Define your Struts data sources in a file called struts-data-sources.xml and place
+		it in your merge directory.
+	-->
+
+	<!-- ========== Form Bean Definitions =================================== -->
+	<form-beans>
+		<form-bean
+       name="statForm"
+       type="com.boco.eoms.commons.statistic.base.webapp.form.StatForm"
+    /> 
+   
+	</form-beans>
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward name="selectFile" path="/selectFile.do" />
+		<forward name="logout" path="/logout.jsp" />
+      	<forward
+          name="fail"
+          path="/common/fail.jsp"
+          redirect="false"
+          contextRelative="true"
+      	/>
+      	
+      	<!-- 用户没有权限的提示页面 -->
+	    <forward name="noAssign" 
+		     path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/noAssign.jsp" redirect="false"
+		     contextRelative="true"/>
+		     
+	</global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+	<action-mappings>
+		<action path="/stat"
+			type="com.boco.eoms.commons.statistic.notflow.partner.baseinfo.webapp.action.BaseinfoAction"
+			name="statForm" scope="request" parameter="method"
+			unknown="false" validate="false" attribute="baseinfoStatMethod"> 
+			<set-property property="cancellable" value="true" />
+				
+			  <!-- 显示统计详细信息页面 sheet-->
+		      <forward name="user_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/user/list.jsp" redirect="false"
+		          contextRelative="true" />
+		      <forward name="dept_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/dept/list.jsp" redirect="false"
+		          contextRelative="true" />  
+			  <!-- 显示工单查询页面 -->
+		      <forward name="user_statistic" 
+				  path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/user/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+			  <forward name="dept_statistic" 
+				  path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/dept/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+			  <!-- 显示结果页面 -->
+	          <forward name="statisticresult" 
+		          path="/WEB-INF/pages/statistic/common/resultHtml.jsp" redirect="false"
+		          contextRelative="true"/>
+
+
+    	</action>
+		<action path="/apparatusStat"
+			type="com.boco.eoms.commons.statistic.notflow.partner.baseinfo.webapp.action.ApparatusAction"
+			name="statForm" scope="request" parameter="method"
+			unknown="false" validate="false" attribute="apparatusStatMethod"> 
+			<set-property property="cancellable" value="true" />
+				
+			  <!-- 显示统计详细信息页面 sheet-->
+		      <forward name="apparatus_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/apparatus/list.jsp" redirect="false"
+		          contextRelative="true" />
+		      
+			  <!-- 显示工单查询页面 -->
+		      <forward name="apparatus_statistic" 
+				  path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/apparatus/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+			  <!-- 显示结果页面 -->
+	          <forward name="statisticresult" 
+		          path="/WEB-INF/pages/statistic/common/resultHtml.jsp" redirect="false"
+		          contextRelative="true"/>
+
+    	</action>
+    	
+    	<action path="/oilStat"
+			type="com.boco.eoms.commons.statistic.notflow.partner.baseinfo.webapp.action.OilAction"
+			name="statForm" scope="request" parameter="method"
+			unknown="false" validate="false" attribute="apparatusStatMethod"> 
+			<set-property property="cancellable" value="true" />
+				
+			  <!-- 显示统计详细信息页面 sheet-->
+		      <forward name="oil_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/oil/list.jsp" redirect="false"
+		          contextRelative="true" />
+		      
+			  <!-- 显示工单查询页面 -->
+		      <forward name="oil_statistic" 
+				  path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/oil/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+			  <!-- 显示结果页面 -->
+	          <forward name="statisticresult" 
+		          path="/WEB-INF/pages/statistic/common/resultHtml.jsp" redirect="false"
+		          contextRelative="true"/>
+
+    	</action>
+    	
+    	<action path="/carStat"
+			type="com.boco.eoms.commons.statistic.notflow.partner.baseinfo.webapp.action.CarAction"
+			name="statForm" scope="request" parameter="method"
+			unknown="false" validate="false" attribute="apparatusStatMethod"> 
+			<set-property property="cancellable" value="true" />
+				
+			  <!-- 显示统计详细信息页面 sheet-->
+		      <forward name="car_statisticsheetlist"
+			      path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/car/list.jsp" redirect="false"
+		          contextRelative="true" />
+		      
+			  <!-- 显示工单查询页面 -->
+		      <forward name="car_statistic" 
+				  path="/WEB-INF/pages/statistic/notflow/partner/baseinfo/car/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+			  <!-- 显示结果页面 -->
+	          <forward name="statisticresult" 
+		          path="/WEB-INF/pages/statistic/common/resultHtml.jsp" redirect="false"
+		          contextRelative="true"/>
+
+    	</action>
+	</action-mappings>
+
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+	<message-resources parameter="config/statistic/base-config/ApplicationResources-statistic"
+		key="statistic" />
+	<message-resources parameter="config/statistic/task-config/ApplicationResources-statistic-task"
+		key="statistictask" />
+	<!-- ========== Validator plugin ===================  -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml" />
+	</plug-in>
+
+</struts-config>

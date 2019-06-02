@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+   <bean id="preallocatedDao" class="com.boco.eoms.sheetflowline.dao.hibernate.PreAllocatedDaoHibernate" autowire="byName">
+	</bean>
+	<bean id="autoDealSopDao" class="com.boco.eoms.sheetflowline.dao.hibernate.AutoDealSOPDaoHibernate" autowire="byName">
+	</bean>
+	<bean id="preAllocatedMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.boco.eoms.sheetflowline.mgr.impl.PreAllocatedMgrImpl">
+			<property name="preallocatedDao" ref="preallocatedDao"/>
+			</bean>
+			</property>
+	</bean>
+	<bean id="autoDealSopMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean class="com.boco.eoms.sheetflowline.mgr.impl.AutoDealSOPMgrImpl">
+			<property name="autoDealSopDao" ref="autoDealSopDao"/>
+			</bean>
+			</property>
+	</bean>
+</beans>

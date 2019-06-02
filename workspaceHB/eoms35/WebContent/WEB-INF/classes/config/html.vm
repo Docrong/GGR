@@ -1,0 +1,13 @@
+<html>
+
+<head></head>
+<body>
+
+<h1>This is the html mail</h1>
+<h2>Today's message is:<em>$msg</em></h2>
+
+<img src="/boco.gif">
+</body>
+
+
+</html>

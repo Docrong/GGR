@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 注册3.0版本id转name接口 -->
+	<bean id="statBaseDeptId2name_v30"
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV30Impl"
+		autowire="byName">
+		<property name="ID2NameV30BeanId">
+			<value>dept2IdV30</value>
+		</property>
+	</bean>
+	
+	<!-- 注册 人员id转name接口 -->
+	<bean id="statBaseUserId2name_v30"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV30Impl"
+		  autowire="byName">
+		<property name="ID2NameV30BeanId">
+			<value>user2IdV30</value>
+		</property>
+	</bean>
+	
+	<!-- 注册 字典id转name接口 -->
+	<bean id="statDictId2name_v30"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV30Impl"
+		  autowire="byName">
+		  <property name="ID2NameV30BeanId">
+			<value>dict2IdV30</value>
+		</property>
+	</bean>
+	
+	<bean id="user2IdV30"
+		class="com.boco.eoms.commons.statistic.base.dao.impl.ID2NameUserDAOV30Impl" />
+   	<bean id="dept2IdV30"
+		class="com.boco.eoms.commons.statistic.base.dao.impl.ID2NameDeptDAOV30Impl" />
+   	<bean id="dict2IdV30"
+		class="com.boco.eoms.commons.statistic.base.dao.impl.ID2NameDictDAOV30Impl" />
+</beans>

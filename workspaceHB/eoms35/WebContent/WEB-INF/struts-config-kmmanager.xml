@@ -1,0 +1,2432 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="kmTableDictForm"    type="com.boco.eoms.km.table.webapp.form.KmTableDictForm" />
+		<form-bean name="kmTableGeneralForm" type="com.boco.eoms.km.table.webapp.form.KmTableGeneralForm" />
+		<form-bean name="kmTableThemeForm"   type="com.boco.eoms.km.table.webapp.form.KmTableThemeForm" />
+		<form-bean name="kmTableColumnForm"  type="com.boco.eoms.km.table.webapp.form.KmTableColumnForm" />
+
+		<form-bean name="kmContentsForm"		  type="com.boco.eoms.km.knowledge.webapp.form.KmContentsForm" />
+		<form-bean name="kmContentsHistoryForm"   type="com.boco.eoms.km.knowledge.webapp.form.KmContentsHistoryForm" />
+		<form-bean name="kmContentsOpinionForm"	  type="com.boco.eoms.km.knowledge.webapp.form.KmContentsOpinionForm" />
+		<form-bean name="kmContentsDictForm"	  type="com.boco.eoms.km.knowledge.webapp.form.KmContentsDictForm" />
+		<form-bean name="kmContentsSubscribeForm" type="com.boco.eoms.km.knowledge.webapp.form.KmContentsSubscribeForm"></form-bean>
+		<form-bean name="kmContentsApplyForm"     type="com.boco.eoms.km.knowledge.webapp.form.KmContentsApplyForm"/>
+			
+		<form-bean name="kmOperateDateLogForm" type="com.boco.eoms.km.log.webapp.form.KmOperateDateLogForm" />
+		<form-bean name="kmOperateLogForm"	   type="com.boco.eoms.km.log.webapp.form.KmOperateLogForm" />
+		<form-bean name="kmOperateScoreForm"   type="com.boco.eoms.km.statics.webapp.form.KmOperateScoreForm" />
+		
+		<form-bean name="fileForm"       type="com.boco.eoms.km.file.webapp.form.KmFileForm"/>
+		<form-bean name="kmFileTreeForm" type="com.boco.eoms.km.file.webapp.form.KmFileTreeForm"/>
+		<form-bean name="kmSearchForm"   type="com.boco.eoms.km.search.webapp.form.KmSearchForm"/>
+		<form-bean name="kmRuleForm"     type="com.boco.eoms.km.rule.webapp.form.KmRuleForm"/>
+		
+		<form-bean name="baseStatisticForm"	              type="com.boco.eoms.km.statics.webapp.form.BaseStatisticForm"/>
+		<form-bean name="personalAuditStatisticForm"      type="com.boco.eoms.km.statics.webapp.form.PersonalAuditStatisticForm"/>
+		<form-bean name="deptContributeStatisticForm"     type="com.boco.eoms.km.statics.webapp.form.DeptContributeStatisticForm"/>
+		<form-bean name="knowledgeChangesStatisticForm"   type="com.boco.eoms.km.statics.webapp.form.KnowledgeChangesStatisticForm"/>
+		<form-bean name="personalContributeStatisticForm" type="com.boco.eoms.km.statics.webapp.form.PersonalContributeStatisticForm"/>
+		<form-bean name="personalStatisticForm"           type="com.boco.eoms.km.statics.webapp.form.PersonalStatisticForm"/>		
+		<form-bean name="personalUseStatisticForm"        type="com.boco.eoms.km.statics.webapp.form.PersonalUseStatisticForm"/>
+		<form-bean name="personalApplyStatisticForm"        type="com.boco.eoms.km.statics.webapp.form.PersonalApplyStatisticForm"/>
+
+		<form-bean name="kmExamChoiceForm"          type="com.boco.eoms.km.exam.webapp.form.KmExamChoiceForm"	/>
+		<form-bean name="kmExamQuestionsForm"	    type="com.boco.eoms.km.exam.webapp.form.KmExamQuestionsForm"/>
+		<form-bean name="kmExamSpecialtyForm"       type="com.boco.eoms.km.exam.webapp.form.KmExamSpecialtyForm"	/>
+		<form-bean name="kmExamTestForm"            type="com.boco.eoms.km.exam.webapp.form.KmExamTestForm"/>
+		<form-bean name="kmExamTestTypeForm"        type="com.boco.eoms.km.exam.webapp.form.KmExamTestTypeForm"/>		
+		<form-bean name="kmExamTestTypeContentForm" type="com.boco.eoms.km.exam.webapp.form.KmExamTestTypeContentForm"/>
+		<form-bean name="kmExamAnswersForm"         type="com.boco.eoms.km.exam.webapp.form.KmExamAnswersForm"/>
+		<form-bean name="kmExamAttendForm"          type="com.boco.eoms.km.exam.webapp.form.KmExamAttendForm"/>
+		<form-bean name="kmExamPublicForm"          type="com.boco.eoms.km.exam.webapp.form.KmExamPublicForm"/>
+		
+		<form-bean name="trainRequireForm"     type="com.boco.eoms.km.train.webapp.form.TrainRequireForm"/>
+		<form-bean name="trainRecordForm"      type="com.boco.eoms.km.train.webapp.form.TrainRecordForm"/>
+		<form-bean name="trainInformationForm" type="com.boco.eoms.km.train.webapp.form.TrainInformationForm"/>
+		<form-bean name="trainSpecialtyForm"   type="com.boco.eoms.km.train.webapp.form.TrainSpecialtyForm"/>
+		<form-bean name="trainEnterForm"       type="com.boco.eoms.km.train.webapp.form.TrainEnterForm"/>
+		<form-bean name="trainFeedbackForm"    type="com.boco.eoms.km.train.webapp.form.TrainFeedbackForm"/>
+		<form-bean name="trainPlanForm"        type="com.boco.eoms.km.train.webapp.form.TrainPlanForm"/>
+		
+		<form-bean name="kmAuditerForm"     type="com.boco.eoms.km.kmAuditer.webapp.form.KmAuditerForm" />
+		<form-bean name="kmAuditerStepForm" type="com.boco.eoms.km.kmAuditerStep.webapp.form.KmAuditerStepForm"/>
+		<form-bean name="kmOperateForm"     type="com.boco.eoms.km.kmOperate.webapp.form.KmOperateForm"/>
+		
+		<form-bean name="kmExpertBasicForm" type="com.boco.eoms.km.expert.webapp.form.KmExpertBasicForm" />
+		<form-bean name="kmExpertCetForm"   type="com.boco.eoms.km.expert.webapp.form.KmExpertCetForm" />
+		<form-bean name="kmExpertComForm"   type="com.boco.eoms.km.expert.webapp.form.KmExpertComForm" />
+		<form-bean name="kmExpertEduForm"   type="com.boco.eoms.km.expert.webapp.form.KmExpertEduForm" />
+		<form-bean name="kmExpertExpForm"   type="com.boco.eoms.km.expert.webapp.form.KmExpertExpForm" />
+		<form-bean name="kmExpertTrainForm" type="com.boco.eoms.km.expert.webapp.form.KmExpertTrainForm" />
+		<form-bean name="kmExpertGroupForm" type="com.boco.eoms.km.expert.webapp.form.KmExpertGroupForm" />
+		<form-bean name="kmExpertPhotoForm" type="com.boco.eoms.km.expert.webapp.form.KmExpertPhotoForm" />
+		
+		<form-bean name="kmLessonForm"	type="com.boco.eoms.km.lesson.webapp.form.KmLessonForm" />
+		<form-bean name="lessonAnaysisForm" type="com.boco.eoms.km.lesson.webapp.form.LessonAnaysisForm" />
+		<form-bean name="kmExpertAnswerForm" type="com.boco.eoms.km.expert.webapp.form.KmExpertAnswerForm" />
+		
+		<form-bean name="kmAskQuestionForm" type="com.boco.eoms.km.ask.webapp.form.KmAskQuestionForm"/>
+		<form-bean name="kmAskReplyForm" type="com.boco.eoms.km.ask.webapp.form.KmAskReplyForm"/>
+		<form-bean name="kmAskSpecialityForm" type="com.boco.eoms.km.ask.webapp.form.KmAskSpecialityForm"/>
+		<form-bean name="kmAskCommentForm" type="com.boco.eoms.km.ask.webapp.form.KmAskCommentForm"/>
+		<form-bean name="kmAskCountScoreForm" type="com.boco.eoms.km.ask.webapp.form.KmAskCountScoreForm"/>
+		     <form-bean name="kmsystemCptroomForm"
+			type="com.boco.eoms.km.cptroom.webapp.form.KmsystemCptroomForm" />
+		<form-bean name="kmsysteminfoForm"                
+			type="com.boco.eoms.km.configInfo.webapp.form.KmsysteminfoForm" />
+		<form-bean name="kmuserRoomForm"
+			type="com.boco.eoms.km.configInfo.webapp.form.KmuserRoomForm" />		
+       	<form-bean
+			type="com.boco.eoms.km.duty.webapp.form.KmassignworkForm"
+			name="kmassignworkForm" />
+	<form-bean
+			type="com.boco.eoms.km.duty.webapp.form.KmrecordPerForm"
+			name="kmrecordPerForm" />
+			
+	<form-bean type="com.boco.eoms.km.duty.webapp.form.KmrecordForm"
+			name="kmrecordForm" />		
+			
+	<form-bean
+			type="com.boco.eoms.km.duty.webapp.form.KmrecordSubForm"
+			name="kmrecordSubForm" />		
+	<form-bean
+			type="com.boco.eoms.km.duty.webapp.form.KmdutyfileForm"
+			name="kmdutyfileForm" />
+	<form-bean
+			type="com.boco.eoms.km.duty.webapp.form.KmhangoverForm"
+			name="kmhangoverForm" />		
+	<form-bean
+			type="com.boco.eoms.km.duty.webapp.form.KmchangedutyForm"
+			name="kmchangedutyForm" />
+	
+	<form-bean name="kmScoreSetForm"
+		type="com.boco.eoms.km.score.webapp.form.KmScoreSetForm" />
+	<form-bean name="kmScoreTreeForm"
+	    type="com.boco.eoms.km.score.webapp.form.KmScoreTreeForm"/>
+	<form-bean name="kmScoreWeightForm"
+	  type="com.boco.eoms.km.score.webapp.form.KmScoreWeightForm"/>			
+	
+	</form-beans>
+	
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	
+	<global-forwards>
+	
+	    <forward name="notdutymaster" path="/common/notdutymaster.jsp" redirect="false" contextRelative="true"/>
+		<forward name="success" path="/common/success.jsp"
+			redirect="false" contextRelative="true" />
+		<forward name="nopriv" path="/common/nopriv.jsp"
+			redirect="false" contextRelative="true" />
+		<forward name="fail" path="/common/failure.jsp" redirect="false"
+			contextRelative="true" />
+		<forward name="notonduty" path="/common/notonduty.jsp" redirect="false"
+			contextRelative="true"/>	
+	</global-forwards>
+	
+	<!-- ========== Action Mapping Definitions =================================== -->
+	<action-mappings>
+	
+	    <!-- 知识模型首页 -->
+		<action path="/kmIndexs"
+			type="com.boco.eoms.km.index.webapp.action.KmIndexAction"
+			scope="request" input="mainMenu" parameter="method" unknown="false"
+			validate="false">
+		</action>
+		
+		<action path="/kmTableDicts"
+			type="com.boco.eoms.km.table.webapp.action.KmTableDictAction"
+			name="kmTableDictForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmTableDict/kmTableDictForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmTableDict/kmTableDictList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 知识模型管理 -->
+		<action path="/kmTableGenerals"
+			type="com.boco.eoms.km.table.webapp.action.KmTableGeneralAction"
+			name="kmTableGeneralForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmTableGeneral/kmTableGeneralForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmTableGeneral/kmTableGeneralList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmTableGeneral/kmTableGeneralTree.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 知识主题管理 -->
+		<action path="/kmTableThemes"
+			type="com.boco.eoms.km.table.webapp.action.KmTableThemeAction"
+			name="kmTableThemeForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmTableTheme/kmTableThemeTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmTableTheme/kmTableThemeForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="audit"
+				path="/WEB-INF/pages/kmmanager/kmAuditer/kmAuditerForm.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 知识字段管理 -->
+		<action path="/kmTableColumns"
+			type="com.boco.eoms.km.table.webapp.action.KmTableColumnAction"
+			name="kmTableColumnForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="add"
+				path="/WEB-INF/pages/kmmanager/kmTableColumn/kmTableColumnAdd.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmTableColumn/kmTableColumnEdit.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmTableColumn/kmTableColumnList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="success1"
+				path="/WEB-INF/pages/kmmanager/kmTableColumn/success.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="addLayout"
+				path="/WEB-INF/pages/kmmanager/kmTableColumn/addLayout.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 知识内容管理 -->
+		<action path="/kmContentss"
+			type="com.boco.eoms.km.knowledge.webapp.action.KmContentsAction"
+			name="kmContentsForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="add"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsAdd.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsEdit.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="allList"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsAllList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detailDraft"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsDetailDraft.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="query"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsQuery.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="complexQuery"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsComplexQuery.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="queryList"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsQueryList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="isNotLeaf"
+				path="/WEB-INF/pages/kmmanager/kmContents/isNotLeaf.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="notFindGeneralList"
+				path="/WEB-INF/pages/kmmanager/kmContents/notFindGeneralList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detailHistory"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsDetailHistory.jsp" 
+				redirect="false" contextRelative="true" />	
+			<forward name="recycle"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmRecycle.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="backRecycle"	path="/kmContentss.do?method=recycle" />	
+			<forward name="kmdraft" 
+				path="/WEB-INF/pages/kmmanager/kmContents/kmMyDraftList.jsp"
+				redirect="false" contextRelative="true" />			
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 知识订阅 -->
+		<action path="/kmContentsSubscribes"
+			type="com.boco.eoms.km.knowledge.webapp.action.KmContentsSubscribeAction"
+			name="kmContentsForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="subscribed"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsSubscribe.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="subscribeCreateUser"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsSubscribeCreateUser.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="subscribeTable"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsSubscribeTable.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listSubscribe"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsSubscribeList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmContents/subscribeList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 知识收藏 -->
+		<action path="/kmContentsCollects"
+			type="com.boco.eoms.km.knowledge.webapp.action.KmContentsCollectAction"
+			name="kmContentsCollectForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="listCollect"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsCollectList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="collectFail"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsCollectFail.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmContentsHistorys"
+			type="com.boco.eoms.km.knowledge.webapp.action.KmContentsHistoryAction"
+			name="kmContentsHistoryForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmContentsHistory/kmContentsHistoryForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmContentsHistory/kmContentsHistoryList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmContentsOpinions"
+			type="com.boco.eoms.km.knowledge.webapp.action.KmContentsOpinionAction"
+			name="kmContentsOpinionForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmContentsOpinion/kmContentsOpinionForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmContentsOpinion/kmContentsOpinionList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmContentsDicts"
+			type="com.boco.eoms.km.knowledge.webapp.action.KmContentsDictAction"
+			name="kmContentsDictForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmContentsDict/kmContentsDictForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmContentsDict/kmContentsDictList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action  path="/kmContentsApplys"
+		  type="com.boco.eoms.km.knowledge.webapp.action.KmContentsApplyAction"
+		  name="kmContentsApplyForm"  scope="request"  input="mainMenu"
+		  parameter="method"  unknown="false" validate="false">
+			<set-property  property="cancellable" value="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmContentsApply/kmContentsApplyForm.jsp"
+			  redirect="false"  contextRelative="true" />
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmContentsApply/kmContentsApplyList.jsp"
+			  redirect="false"  contextRelative="true" />
+			 <forward name="detail"
+			  path="/WEB-INF/pages/kmmanager/kmContentsApply/kmContentsApplyDetail.jsp"
+			  redirect="false"  contextRelative="true" />
+			  <forward name="applyRank"
+			  path="/WEB-INF/pages/kmmanager/kmContentsApply/kmContentsApplyRank.jsp"
+			  redirect="false"  contextRelative="true" />
+			  <forward name="rankDetail"
+			  path="/WEB-INF/pages/kmmanager/kmContentsApply/kmContentsApplyRankDetail.jsp"
+			  redirect="false"  contextRelative="true" />
+		</action>
+
+		<action path="/kmOperateDateLogs"
+			type="com.boco.eoms.km.log.webapp.action.KmOperateDateLogAction"
+			name="kmOperateDateLogForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmOperateDateLog/kmOperateDateLogForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmOperateDateLog/kmOperateDateLogList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmOperateLogs"
+			type="com.boco.eoms.km.log.webapp.action.KmOperateLogAction"
+			name="kmOperateLogForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmOperateLog/kmOperateLogForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmOperateLog/kmOperateLogList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmOperateScores"
+			type="com.boco.eoms.km.statics.webapp.action.KmOperateScoreAction"
+			name="kmOperateScoreForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmOperateScore/kmOperateScoreForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmOperateScore/kmOperateScoreList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/files"
+			type="com.boco.eoms.km.file.webapp.action.KmFileAction"
+			name="fileForm" scope="request" input="mainMenu" parameter="method"
+			unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/KmFiles/fileForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/KmFiles/fileList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="allList"
+				path="/WEB-INF/pages/kmmanager/KmFiles/fileAllList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/KmFiles/kmFileDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detailHistory"
+				path="/WEB-INF/pages/kmmanager/KmFiles/kmFileHisDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="maxLength"
+				path="/WEB-INF/pages/kmmanager/KmFiles/maxLength.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="filequerylist"
+				path="/WEB-INF/pages/kmmanager/KmFiles/fileQueryList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="filequerypage"
+				path="/WEB-INF/pages/kmmanager/KmFiles/fileQuery.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmFileTrees"
+			type="com.boco.eoms.km.file.webapp.action.KmFileTreeAction"
+			name="kmFileTreeForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/KmFiles/kmFileTreeTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/KmFiles/kmFileTreeForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="audit"
+				path="/WEB-INF/pages/kmmanager/kmAuditer/kmAuditerForm.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/baseStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.BaseStatisticAction"
+			name="baseStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/baseStatisticForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/baseStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 识使审核情况统计 -->
+		<action path="/personalAuditStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.PersonalAuditStatisticAction"
+			name="personalAuditStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="deptList"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/deptAuditStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/personalAuditStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/deptContributeStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.DeptContributeStatisticAction"
+			name="deptContributeStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/deptContributeStatisticForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/deptContributeStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/knowledgeChangesStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.KnowledgeChangesStatisticAction"
+			name="knowledgeChangesStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/knowledgeChangesStatisticForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/knowledgeChangesStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/personalContributeStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.PersonalContributeStatisticAction"
+			name="personalContributeStatisticForm" scope="request"
+			input="mainMenu" parameter="method" unknown="false"
+			validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/personalContributeStatisticForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/personalContributeStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 识使贡献情况统计 -->
+		<action path="/personalStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.PersonalStatisticAction"
+			name="personalStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="deptList"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/deptStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/personalStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 识使使用情况统计 -->
+		<action path="/personalUseStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.PersonalUseStatisticAction"
+			name="personalUseStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="deptList"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/deptUseStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/personalUseStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<!-- 按知识库统计 -->
+		<action path="/generalStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.GeneralStatisticAction"
+			name="generalStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/generalStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<!-- 按申请知识情况统计 -->
+		<action path="/personalApplyStatistics"
+			type="com.boco.eoms.km.statics.webapp.action.PersonalApplyStatisticAction"
+			name="personalApplyStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="deptList"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/deptApplyStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/personalApplyStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		<!-- 知识排行 -->
+		<action path="/scoreOrderStatistic"
+			type="com.boco.eoms.km.statics.webapp.action.ScoreOrderStatisticAction"
+			name="scoreOrderStatisticForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="knowledgeUsedOrderList"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/knowledgeUsedOrderList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="knowledgeUsedOrderForMain"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/knowledgeUsedOrderForMain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="knowledgeMonthUsedOrderList"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/knowledgeMonthUsedOrderList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="knowledgeMonthUsedOrderForMain"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/knowledgeMonthUsedOrderForMain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="monthUserScoreOrderList"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/monthUserScoreOrderList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="monthUserScoreOrderForMain"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/monthUserScoreOrderForMain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="monthKnowledgeCountOrder"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/monthKnowledgeCountOrder.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="monthKnowledgeCountOrderForMain"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/monthKnowledgeCountOrderForMain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="userKnowledScoreOrder"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/userKnowledScoreOrder.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="userKnowledScoreOrderForMain"
+				path="/WEB-INF/pages/kmmanager/kmStatistic/userKnowledScoreOrderForMain.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		<action path="/kmRules"
+			type="com.boco.eoms.km.rule.webapp.action.KmRuleAction"
+			name="kmRuleForm" scope="request" input="mainMenu" parameter="method"
+			unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmRule/kmRuleForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmRule/kmRuleList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmRule/kmRuleTree.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmSearchs"
+			type="com.boco.eoms.km.search.webapp.action.KmSearchAction"
+			name="kmSearchForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmSearch/kmRuleForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmSearch/kmRuleList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmSearch/kmRuleTree.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamChoices"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamChoiceAction"
+			name="kmExamChoiceForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamChoice/kmExamChoiceForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamChoice/kmExamChoiceList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamQuestionss"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamQuestionsAction"
+			name="kmExamQuestionsForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamQuestions/kmExamQuestionsForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamQuestions/kmExamQuestionsList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listQuestions"
+				path="/WEB-INF/pages/kmmanager/kmExamQuestions/kmExamQuestions.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="choicelist"
+				path="/WEB-INF/pages/kmmanager/kmExamQuestions/kmExamQuestionsChoiceList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="showlist"
+				path="/WEB-INF/pages/kmmanager/kmExamQuestions/kmExamQuestionsShowList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="upload"
+				path="/WEB-INF/pages/kmmanager/kmExamQuestions/kmExamUpload.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="falsePage"
+				path="/WEB-INF/pages/kmmanager/kmExamQuestions/false.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamSpecialtys"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamSpecialtyAction"
+			name="kmExamSpecialtyForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmExamSpecialty/kmExamSpecialtyTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamSpecialty/kmExamSpecialtyForm.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamTests"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamTestAction"
+			name="kmExamTestForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamTest/kmExamTestForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="editRandom"
+				path="/WEB-INF/pages/kmmanager/kmExamTest/kmExamTestRandomForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamTest/kmExamTestList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="paper"
+				path="/WEB-INF/pages/kmmanager/kmExamTest/kmExamPaper.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamTestTypes"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamTestTypeAction"
+			name="kmExamTestTypeForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamTestType/kmExamTestTypeForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamTestType/kmExamTestTypeList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamTestTypeContents"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamTestTypeContentAction"
+			name="kmExamTestTypeContentForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamTestTypeContent/kmExamTestTypeContentForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamTestTypeContent/kmExamTestTypeContentList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamAnswerss"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamAnswersAction"
+			name="kmExamAnswersForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamAnswers/kmExamAnswersForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamAnswers/kmExamAnswersList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamAttends"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamAttendAction"
+			name="kmExamAttendForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamTestList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="attend"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamTestForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="read"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendReadList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="attendRead"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendReadForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="noRead"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendNoReadList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="attendNoRead"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendNoReadForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="fail"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendFail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="fail1"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendFail1.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="fail2"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendFail2.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="fail3"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamAttendFail3.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listIsPublic"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamIsPublicList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="formIsPublic"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamIsPublicForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="report"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/report.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="attendRandom"
+				path="/WEB-INF/pages/kmmanager/kmExamAttend/kmExamTestRandomForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmExamPublics"
+			type="com.boco.eoms.km.exam.webapp.action.KmExamPublicAction"
+			name="kmExamPublicForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExamPublic/kmExamPublicForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExamPublic/kmExamPublicList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+
+		<action path="/trainRequires"
+			type="com.boco.eoms.km.train.webapp.action.TrainRequireAction"
+			name="trainRequireForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmTrainRequire/trainRequireForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmTrainRequire/trainRequireDetail.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmTrainRequire/trainRequireList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listMust"
+				path="/WEB-INF/pages/kmmanager/kmTrainRequire/trainRequireNoList.jsp"
+				redirect="false" contextRelative="true" />					
+			<forward name="excelJsp"
+				path="/WEB-INF/pages/kmmanager/kmExcelFiles/excel.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/trainInformations"
+		  type="com.boco.eoms.km.train.webapp.action.TrainInformationAction"
+		  name="trainInformationForm" scope="request" input="mainMenu"
+		  parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable"  value="true" />
+			<forward  name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmTrainInformation/trainInformationForm.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmTrainInformation/trainInformationList.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+
+		<action path="/trainRecords"
+			type="com.boco.eoms.km.train.webapp.action.TrainRecordAction"
+			name="trainRecordForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmTrainRecord/trainRecordForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmTrainRecord/trainRecordDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmTrainRecord/trainRecordList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listPersonal"
+				path="/WEB-INF/pages/kmmanager/kmTrainRecord/personalStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listAll"
+				path="/WEB-INF/pages/kmmanager/kmTrainRecord/allStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listSpecialty"
+				path="/WEB-INF/pages/kmmanager/kmTrainRecord/specialtyStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listDept"
+				path="/WEB-INF/pages/kmmanager/kmTrainRecord/deptStatisticList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action  path="/trainSpecialtys"
+		  type="com.boco.eoms.km.train.webapp.action.TrainSpecialtyAction"
+		  name="trainSpecialtyForm" scope="request"
+		  input="mainMenu"
+		  parameter="method" unknown="false"  validate="false">
+			<set-property  property="cancellable" value="true"	/>
+			<forward  name="tree"
+			  path="/WEB-INF/pages/kmmanager/kmTrainSpecialty/trainSpecialtyTree.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmTrainSpecialty/trainSpecialtyForm.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		
+		<action path="/trainEnters"
+		  type="com.boco.eoms.km.train.webapp.action.TrainEnterAction"
+		  name="trainEnterForm" scope="request" 
+		   input="mainMenu"
+		  parameter="method"  unknown="false"  validate="false"	>
+			<set-property  property="cancellable"  value="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/trainEnter/trainEnterForm.jsp"
+			  redirect="false"  contextRelative="true"/>
+			<forward  name="list"
+			  path="/WEB-INF/pages/kmmanager/trainEnter/trainEnterList.jsp"
+			  redirect="false" contextRelative="true"/>
+			 <forward  name="enterFalse"
+			  path="/WEB-INF/pages/kmmanager/trainEnter/trainEnterFalse.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		
+		<action  path="/trainFeedbacks"
+		  type="com.boco.eoms.km.train.webapp.action.TrainFeedbackAction"
+		  name="trainFeedbackForm" scope="request"
+		  input="mainMenu" parameter="method" unknown="false"  validate="false">
+			<set-property  property="cancellable" value="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/trainFeedback/trainFeedbackForm.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/trainFeedback/trainFeedbackList.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+
+		<action path="/trainPlans"
+			type="com.boco.eoms.km.train.webapp.action.TrainPlanAction"
+			name="trainPlanForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/trainPlan/trainPlanForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/trainPlan/trainPlanDetail.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/trainPlan/trainPlanList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/trainPlan/trainPlanDetail.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 根据分类查询相对应的知识 -->
+		<action path="/themes"
+			type="com.boco.eoms.km.table.webapp.action.KmTableThemeAction"
+			name="kmTableThemeForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmTableThemeTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmContents/kmContentsList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		<!-- 审核人配置 -->
+		<action path="/kmAuditers"
+			type="com.boco.eoms.km.kmAuditer.webapp.action.KmAuditerAction"
+			name="kmAuditerForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmAuditer/kmAuditerForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmAuditer/kmAuditerList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmAuditerSteps"
+			type="com.boco.eoms.km.kmAuditerStep.webapp.action.KmAuditerStepAction"
+			name="kmAuditerStepForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmAuditerStep/kmAuditerStepForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmAuditerStep/kmAuditerStepList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="contentAudit"
+				path="/WEB-INF/pages/kmmanager/kmAuditerStep/kmContentAudite.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="fileAudit"
+				path="/WEB-INF/pages/kmmanager/kmAuditerStep/kmFileAudite.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="contentUnAuditList"
+				path="/WEB-INF/pages/kmmanager/kmAuditerStep/kmContentUnAuditerList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="fileUnAuditList"
+				path="/WEB-INF/pages/kmmanager/kmAuditerStep/kmFileUnAuditerList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="contentUnAudit"
+				path="/kmmanager/kmAuditerSteps.do?method=getContentUnAuditList"
+				redirect="false" contextRelative="true" />
+			<forward name="fileUnAudit"
+				path="/kmmanager/kmAuditerSteps.do?method=getFileUnAuditList"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/kmOperates"
+			type="com.boco.eoms.km.kmOperate.webapp.action.KmOperateAction"
+			name="kmOperateForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmOperate/kmOperateForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmOperate/kmOperateList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="userTree"
+				path="/WEB-INF/pages/kmmanager/kmOperate/kmUserTree.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- 知识接口管理 -->
+		<action path="/kmContentsInterface"
+			type="com.boco.eoms.km.interfaces.webapp.action.KmContentsInterfaceAction"
+			name="kmContentsForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="CommonFaultAdd"
+				path="/WEB-INF/pages/kmmanager/kmInterface/addFaultKnowledge.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="CommonFaultLeaveAdd"
+				path="/WEB-INF/pages/kmmanager/kmInterface/addFaultKnowledge.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="complaintAdd"
+				path="/WEB-INF/pages/kmmanager/kmInterface/addFaultKnowledge.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="searchForward"
+				path="/WEB-INF/pages/kmmanager/kmInterface/searchList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="error"
+				path="/WEB-INF/pages/kmmanager/kmInterface/error.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		
+		<!-- ========== 专家管理-专家基本信息 =========== -->
+		<action path="/kmExpertBasics"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertBasicAction"
+			name="kmExpertBasicForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="newExpert"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/newExpert.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detailExpert"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/detailExpert.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertBasicForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertBasicList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertBasicDetail.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- ========== 专家管理 cet =========== -->
+		<action path="/kmExpertCets"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertCetAction"
+			name="kmExpertCetForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertCetForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertCetList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listDetail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertCetListDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertCetDetail.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- ========== 专家管理 com =========== -->
+		<action path="/kmExpertComs"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertComAction"
+			name="kmExpertComForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertComForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertComList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listDetail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertComListDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertComDetail.jsp"
+				redirect="false" contextRelative="true" />				
+		</action>
+
+		<!-- ========== 专家管理 edu =========== -->
+		<action path="/kmExpertEdus"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertEduAction"
+			name="kmExpertEduForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertEduForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertEduList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listDetail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertEduListDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertEduDetail.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- ========== 专家管理 exp =========== -->
+		<action path="/kmExpertExps"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertExpAction"
+			name="kmExpertExpForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertExpForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertExpList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listDetail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertExpListDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertExpDetail.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- ========== 专家管理 train =========== -->
+		<action path="/kmExpertTrains"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertTrainAction"
+			name="kmExpertTrainForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertTrainForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertTrainList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listDetail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertTrainListDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertTrainDetail.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- ========== 专家管理-专家头像管理 =========== -->
+		<action path="/kmExpertPhoto"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertPhotoAction"
+			name="kmExpertPhotoForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="uploadPhoto"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertUploadPhotol.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detailPhoto"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertDetailPhotol.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="getUserPhoto"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/getUserPhoto.jsp"
+				redirect="false" contextRelative="true" />						
+		</action>
+		
+		<!-- ========== 专家管理-专家列表树形菜单 =========== -->
+		<action path="/kmExpertMenu"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertMenuAction"
+			scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertMenuTree.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<!-- ========== 专家管理-专家部门人员树形菜单 =========== -->
+		<action path="/kmExpertTree"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertTreeAction"
+			scope="request" input="mainMenu" 
+			parameter="method" unknown="false" validate="false">
+		</action>
+
+		<!-- ========== 专家管理-团队管理 =========== -->
+		<action path="/kmExpertGroup"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertGroupAction"
+			name="kmExpertGroupForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />				
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertGroupForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertGroupList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmExpertBasic/kmExpertGroupDetail.jsp"
+				redirect="false" contextRelative="true" />				
+		</action>
+
+
+		<!-- ========== 专家管理-知识问答 =========== -->
+		<action path="/kmExpertAnswer"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertAnswerAction"
+			name="kmExpertAnswerForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />	
+			<forward name="search"
+				path="/kmmanager/kmExpertAnswer.do?method=search"
+				redirect="false" contextRelative="true" />	
+			<forward name="newQuestion"
+				path="/WEB-INF/pages/kmmanager/kmExpertAnswer/kmExpertAnswerForm.jsp"
+				redirect="false" contextRelative="true" />	
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertAnswer/kmExpertAnswerForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listQuestion"
+				path="/WEB-INF/pages/kmmanager/kmExpertAnswer/kmExpertAnswerList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detailQuestion"
+				path="/WEB-INF/pages/kmmanager/kmExpertAnswer/kmExpertAnswerDetail.jsp"
+				redirect="false" contextRelative="true" />	
+			<forward name="selectUrlList"
+				path="/WEB-INF/pages/kmmanager/kmExpertAnswer/kmExpertAnswerSelectUrl.jsp"
+				redirect="false" contextRelative="true" />			
+		</action>
+
+
+		<!-- 课程管理 -->
+		<action path="/kmLesson"
+			type="com.boco.eoms.km.lesson.webapp.action.KmLessonAction"
+			name="kmLessonForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmLesson/kmLessonForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/kmmanager/kmLesson/kmLessonDetail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="search"
+				path="/WEB-INF/pages/kmmanager/kmLesson/kmLessonSearch.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmLesson/kmLessonList.jsp"
+				redirect="false" contextRelative="true" />				
+		</action>
+
+		<!-- 课程信息分析 -->
+		<action path="/lessonAnaysiss"
+			type="com.boco.eoms.km.lesson.webapp.action.LessonAnaysisAction"
+			name="lessonAnaysisForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmCreatlesson/lessonAnaysisForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmCreatlesson/lessonAnaysisList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		<!-- 导入积分管理 -->
+		<action path="/inputScore"
+			type="com.boco.eoms.km.score.webapp.action.KmInputScoreAction"
+			name="kmInputScoreActionForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/score/lessonAnaysisForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/score/inputScoreList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="historyList"
+				path="/WEB-INF/pages/kmmanager/score/inputScoreHistoryList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		<!-- 知识问答 -->
+		<action  path="/kmAskQuestions"
+		  type="com.boco.eoms.km.ask.webapp.action.KmAskQuestionAction"
+		  name="kmAskQuestionForm"  scope="request" input="mainMenu"
+		  parameter="method" unknown="false"  validate="false">
+			<set-property property="cancellable"  value="true"/>
+			<forward  name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskQuestionForm.jsp"
+			  redirect="false"  contextRelative="true"/>
+			
+			<forward  name="attendReply"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskQuestionReply.jsp"
+			  redirect="false"  contextRelative="true"/>
+			<forward  name="attendVote"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskQuestionVote.jsp"
+			  redirect="false"  contextRelative="true"/>
+			<forward  name="attendSolve"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskQuestionSolve.jsp"
+			  redirect="false"  contextRelative="true"/>
+			<forward name="listAll"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskQuestionAllList.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskQuestionList.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="add"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskQuestionAdd.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="tree"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/kmAskSpecialityTree.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="voteDetail"
+			  path="/WEB-INF/pages/kmmanager/kmAskQuestion/voteDetail.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		
+		<action  path="/kmAskReplys"
+		  type="com.boco.eoms.km.ask.webapp.action.KmAskReplyAction"
+		  name="kmAskReplyForm" scope="request" input="mainMenu"
+		  parameter="method" unknown="false" validate="false">
+			<set-property  property="cancellable"  value="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmAskReply/kmAskReplyForm.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmAskReply/kmAskReplyList.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		
+		<action path="/kmAskSpecialitys"
+		  type="com.boco.eoms.km.ask.webapp.action.KmAskSpecialityAction"
+		  name="kmAskSpecialityForm" scope="request" input="mainMenu" 
+		  parameter="method"  unknown="false" validate="false">
+			<set-property property="cancellable" value="true"/>
+			<forward name="tree"
+			  path="/WEB-INF/pages/kmmanager/kmAskSpeciality/kmAskSpecialityTree.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmAskSpeciality/kmAskSpecialityForm.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+				
+		<!-- 专家打分 -->
+		<action path="/expertScore"
+			type="com.boco.eoms.km.expert.webapp.action.KmExpertScoreAction"
+			name="kmExpertScoreForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmExpertScore/expertScoreList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listAll"
+				path="/WEB-INF/pages/kmmanager/kmExpertScore/expertScoreList.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmExpertScore/kmExpertScoreTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="expertScoresOrder"
+				path="/WEB-INF/pages/kmmanager/kmExpertScore/expertScoreOrder.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/kmExpertScore/success.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		<action  path="/kmAskComments"
+		  type="com.boco.eoms.km.ask.webapp.action.KmAskCommentAction"
+		  name="kmAskCommentForm"  scope="request"
+		  input="mainMenu"  parameter="method"
+		  unknown="false" validate="false">
+			<set-property property="cancellable"  value="true"/>
+			<forward  name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmAskComment/kmAskCommentForm.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmAskComment/kmAskCommentList.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		
+		<action path="/kmAskVotes"
+		  type="com.boco.eoms.km.ask.webapp.action.KmAskVoteAction"
+		  name="kmAskVoteForm"  scope="request"  input="mainMenu"
+		  parameter="method"  unknown="false" validate="false">
+			<set-property  property="cancellable"  value="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmAskVote/kmAskVoteForm.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmAskVote/kmAskVoteList.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		
+			<action path="/kmCptroomBasicDataCfg"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/kmmanager/kmSystemCptroom/kmSystemCptroomTree.jsp"/>
+		<action path="/kmsystemCptrooms"
+			type="com.boco.eoms.km.cptroom.webapp.action.KmsystemCptroomAction"
+			name="kmsystemCptroomForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmSystemCptroom/kmSystemCptroomForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmSystemCptroom/kmSystemCptroomTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="search" path="/kmCptroomBasicDataCfg.do"
+				redirect="true" />
+		</action>	
+			
+		
+		<action path="/Kmsysteminfo/getroom" parameter="GETROOM"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="false" />
+		
+			
+		<!-- <<<<<<<<<<<<<< TawRmSysteminfo >>>>>>>>>>>>>>> -->
+		<action path="/Kmsysteminfo/add" parameter="ADD"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/kmSysteminfo/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>	
+
+		<action path="/Kmsysteminfo/select_room"
+			parameter="SELECT_ROOM"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/kmSysteminfo/select_room.jsp"
+				redirect="false" contextRelative="true" />
+		</action>	
+
+		<action path="/Kmsysteminfo/edit" parameter="EDIT"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/kmSysteminfo/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmsysteminfo/list" parameter="LIST"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/kmSysteminfo/summary.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmsysteminfo/view" parameter="VIEW"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/kmSysteminfo/view.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmsysteminfo/remove" parameter="REMOVE"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/kmSysteminfo/remove.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmsysteminfo/trash" parameter="TRASH"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="false">
+			<forward name="success" path="/Kmsysteminfo/list.do" />
+		</action>
+		<action path="/Kmsysteminfo/save" parameter="SAVE"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmsysteminfoAction"
+			scope="request" name="kmsysteminfoForm" validate="true"
+			input="duty.manager.TawRmSysteminfo.entry">
+			<forward name="success" path="/Kmsysteminfo/add.do" />
+		</action>
+			
+		<!-- <<<<<<<<<<<<<< KmuserRoom >>>>>>>>>>>>>>> -->
+		<action path="/KmuserRoom/new" parameter="NEW"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmuserRoom/new.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/KmuserRoom/saveNew" parameter="SAVENEW"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success"
+				path="/KmuserRoom/new.do?save=true" />
+		</action>
+		<action path="/KmuserRoom/add" parameter="ADD"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmuserRoom/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/KmuserRoom/edit" parameter="EDIT"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmuserRoom/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/KmuserRoom/list" parameter="LIST"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmuserRoom/summary.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/KmuserRoom/view" parameter="VIEW"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmuserRoom/view.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/KmuserRoom/remove" parameter="REMOVE"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmuserRoom/remove.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/KmuserRoom/trash" parameter="TRASH"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="false">
+			<forward name="success" path="/KmuserRoom/list.do" />
+		</action>
+		<action path="/KmuserRoom/save" parameter="SAVE"
+			type="com.boco.eoms.km.configInfo.webapp.action.KmuserRoomAction"
+			scope="request" name="kmuserRoomForm" validate="true"
+			input="duty.manager.KmuserRoom.entry">
+			<forward name="success" path="/KmuserRoom/list.do" />
+			<forward name="cancel" redirect="true"
+				path="/do/KmuserRoom/list" />
+		</action>
+		
+		<!-- <<<<<<<<<<<<<< Kmassignwork >>>>>>>>>>>>>>> -->
+		<action path="/Kmassignwork/select_room"
+			parameter="SELECTROOM"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/select_room.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/select_time"
+			parameter="SELECTTIME"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/select_time.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="other"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/select_time_other.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="notsysteminfo"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/notsysteminfo.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/assign" parameter="ASSIGN"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/assign.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="other"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/assign_other.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/save_assign"
+			parameter="SAVEASSIGN"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/save_assign.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/query" parameter="QUERY"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/selectTree.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/queryDuty" parameter="QUERYDUTY"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/query.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/query_result"
+			parameter="QUERYRESULT"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/query_result.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/add" parameter="ADD"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/export" parameter="EXPORT"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false" />
+
+		<action path="/Kmassignwork/edit" parameter="EDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/list" parameter="LIST"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/summary.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/view" parameter="VIEW" 
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/view.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/remove" parameter="REMOVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmassignwork/remove.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmassignwork/trash" parameter="TRASH"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="false">
+			<forward name="success" path="/Kmassignwork/list.do" />
+		</action>
+		<action path="/Kmassignwork/save" parameter="SAVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmassignworkAction"
+			scope="request" name="kmassignworkForm" validate="true"
+			input="duty.manager.Kmassignwork.entry">
+			<forward name="success" path="/Kmassignwork/list.do" />
+			<forward name="cancel" redirect="true"
+				path="/do/Kmassignwork/list" />
+		</action>
+		
+		<!--KmrecordPer -->
+		<action path="/KmrecordPer/selectroom" parameter="SELECTROOM"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordPerAction"
+			scope="request" name="kmrecordPerForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordPer/selectroom.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/KmrecordPer/getroom" parameter="GETROOM"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordPerAction"
+			scope="request" name="kmrecordPerForm" validate="false" />
+		<action path="/KmrecordPer/selectDate" parameter="SELECTDATE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordPerAction"
+			scope="request" name="kmrecordPerForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordPer/selectdate.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+
+		<action path="/KmrecordPer/showconfig" parameter="SHOWCONFIG"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordPerAction"
+			scope="request" name="kmrecordPerForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordPer/showconfig.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+
+		<action path="/KmrecordPer/showresult" parameter="SHOWRESULT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordPerAction"
+			scope="request" name="kmrecordPerForm" validate="false">
+			<forward name="success"
+				path="/KmrecordPer/showconfig.do" />
+		</action>
+		
+		<!-- <<<<<<<<<<<<<< Kmrecord >>>>>>>>>>>>>>> -->
+
+		<action path="/Kmrecord/add" parameter="ADD"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/duty.manager.TawRmRecord.entry" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/record" parameter="RECORD"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/AddRecord.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<!-- 浣曟瘏 begin by20070122-->
+		<action path="/Kmrecord/checkhold" parameter="CHECKHOLD"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/checkhold.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/checkdetail" parameter="CHECKDETAIL"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/checkdetail.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/checklist" parameter="CHECKLIST"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/checksheetlist.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<!--end
+		-->
+		<action path="/Kmrecord/recordmain" parameter="RECORDMAIN"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/AddRecordMain.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/ynRecordmain" parameter="YNRECORDMAIN"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/YnAddRecordMain.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/ynsavemain" parameter="YNSAVEMAIN"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/ynRecordmain.do" />
+		</action>
+		<action path="/manager/KmrecordPer/checkRoom"  parameter="CHECKROOM" type="com.boco.eoms.km.duty.webapp.action.KmrecordAction" scope="request">	
+		</action>
+		<action path="/Kmrecord/savemain" parameter="SAVEMAIN"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/recordmain.do" />
+		</action>
+		<!--
+			<action path="/Kmrecord/savedef" parameter="SAVEDEF" type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/record.do"/>
+			</action>
+		-->
+		<action path="/Kmrecord/saveper" parameter="SAVEPER"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/record.do" />
+		</action>
+		<action path="/Kmrecord/deleteper" parameter="DELETEPER"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/record.do" />
+		</action>
+		<action path="/Kmrecord/updateper" parameter="UPDATEPER"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/record.do" />
+		</action>
+		<action path="/Kmrecord/saveperedit" parameter="SAVEPEREDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/viewedit.do" />
+		</action>
+		<action path="/Kmrecord/deleteperedit"
+			parameter="DELETEPEREDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/viewedit.do" />
+		</action>
+		<action path="/Kmrecord/updateperedit"
+			parameter="UPDATEPEREDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/viewedit.do" />
+		</action>
+		<action path="/Kmrecord/viewmain" parameter="VIEWMAIN"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/ViewMain.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/editmain" parameter="EDITMAIN"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/EditMain.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/updatemain" parameter="UPDATEMAIN"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/editmain.do" />
+		</action>
+		<action path="/Kmrecord/savedefedit" parameter="SAVEDEFEDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/viewedit.do" />
+		</action>
+		<action path="/Kmrecord/devolve" parameter="DEVOLVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/mergerecord.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="notexchangetime"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/notexchangetime.jsp"
+				redirect="false" contextRelative="true" />
+			<!--<forward name="success" path="manager/TawRmRecord/devolve.jsp"/>-->
+		</action>
+		<action path="/Kmrecord/yndevolve" parameter="YNDEVOLVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/ynMergerecord.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="notexchangetime"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/notexchangetime.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/coalition" parameter="COALITION"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/devolve.do" />
+			<forward name="norigth"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/noright.jsp" redirect="false"
+				contextRelative="true" />
+			<!--<forward name="success" path="/WEB-INF/pages/kmmanager/Kmrecord/devolve.jsp" redirect="false"  contextRelative="true"/>-->
+		</action>
+		<action path="/Kmrecord/oldcoalition" parameter="OLDCOALITION"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/yndevolve.do" />
+			<forward name="norigth"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/noright.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/exchange" parameter="EXCHANGE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/exchange.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="success2"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/exchange2.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="success3"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/exchange3.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/ynexchange" parameter="EXCHANGE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/ynexchange.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/submit" parameter="SUBMIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false"><!--
+			<forward redirect="true" name="success" path="/logoff.jsp" />
+			--><forward name="passwordwrong"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/wrong.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/submit2" parameter="SUBMIT2"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="passwordwrong"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/wrong.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/submit3" parameter="SUBMIT3"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="passwordwrong"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/wrong.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/savemerge" parameter="SAVEMERGE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward redirect="false" name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/savemerge.jsp"
+				contextRelative="true" />
+			<forward name="norigth"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/noright.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/query" parameter="QUERY"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/SearchByPK.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/search" parameter="SEARCH"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/summary.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="ynsuccess"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/ynsummary.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/report" parameter="REPORT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/report.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/monthReport" parameter="MONTHREPORT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/summary.jsp" />
+		</action>
+		<action path="/Kmrecord/export" parameter="EXPORT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/summary.jsp" />
+		</action>
+
+		<action path="/Kmrecord/search7days" parameter="SEARCH7DAYS"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/search7days.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+
+		<action path="/Kmrecord/edit" parameter="EDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/edit.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/list" parameter="LIST"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/summary.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/view" parameter="VIEW"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/view.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="ynsuccess"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/ynview.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/remove" parameter="REMOVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="duty.manager.Kmrecord.remove" />
+		</action>
+		<action path="/Kmrecord/trash" parameter="TRASH"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/list.do" />
+		</action>
+		<action path="/Kmrecord/save" parameter="SAVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="true"
+			input="manager.TawRmRecord.AddRecord">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/savesuccess.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="purview" path="/TawRmRecord/error.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="cancel" redirect="true"
+				path="/do/TawRmRecord/list" />
+		</action>
+		<action path="/Kmrecord/logoff" parameter="LOGOFF"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/logoff.jsp" />
+		</action>
+		<action path="/Kmrecord/queryedit" parameter="QUERYEDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/SearchEdit.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/viewedit" parameter="VIEWEDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/edit.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/searchedit" parameter="SEARCHEDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/summaryedit.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/saveedit" parameter="SAVEEDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="true"
+			input="manager.TawRmRecord.AddRecord">
+			<forward name="success" path="/Kmrecord/viewedit.do" />
+			<forward name="purview" path="/TawRmRecord/error.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+
+		<action path="/Kmrecord/querydelete" parameter="QUERYDELETE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/SearchDelete.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="nopriv"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/passwordwrong.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/searchdelete"
+			parameter="SEARCHDELETE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/summarydelete.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/viewdelete" parameter="VIEWDELETE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmrecord/viewdelete.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmrecord/dodelete" parameter="DODELETE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false" />
+
+		<action path="/Kmrecord/audit" parameter="AUDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="goto.jsp" />
+		</action>
+		<action path="/Kmrecord/auditBatch" parameter="AUDITBATCH"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordAction"
+			scope="request" name="kmrecordForm" validate="false">
+			<forward name="success" path="/Kmrecord/search.do" />
+		</action>
+
+
+		<!-- <<<<<<<<<<<<<< KmrecordSub >>>>>>>>>>>>>>> -->
+		<action path="/KmrecordSub/add" parameter="ADD"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordSubAction"
+			scope="request" name="kmrecordSubForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordSub/entry.jsp" />
+		</action>
+		<action path="/KmrecordSub/edit" parameter="EDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordSubAction"
+			scope="request" name="kmrecordSubForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordSub/entry.jsp" />
+		</action>
+		<action path="/KmrecordSub/list" parameter="LIST"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordSubAction"
+			scope="request" name="kmrecordSubForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordSub/summary.jsp" />
+		</action>
+		<action path="/KmrecordSub/view" parameter="VIEW"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordSubAction"
+			scope="request" name="kmrecordSubForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordSub/view.jsp" />
+		</action>
+		<action path="/KmrecordSub/remove" parameter="REMOVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordSubAction"
+			scope="request" name="kmrecordSubForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/KmrecordSub/remove.jsp" />
+		</action>
+		<action path="/KmrecordSub/trash" parameter="TRASH"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordSubAction"
+			scope="request" name="kmrecordSubForm" validate="false">
+			<forward name="success" path="/KmrecordSub/list.do" />
+		</action>
+		<action path="/KmrecordSub/save" parameter="SAVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmrecordSubAction"
+			scope="request" name="kmrecordSubForm" validate="true"
+			input="duty.manager.TawRmRecordSub.entry">
+			<forward name="success" path="/KmrecordSub/list.do" />
+			<forward name="cancel" redirect="true"
+				path="/do/KmrecordSub/list" />
+		</action>
+		
+		<!-- <<<<<<<<<<<<<< TawRmDutyfile >>>>>>>>>>>>>>> -->
+		<action path="/Kmdutyfile/dutyfile" parameter="DUTYFILE"
+			type="com.boco.eoms.km.duty.webapp.action.KmdutyfileAction"
+			scope="request" name="kmdutyfileForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmdutyfile/dutyfile.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmdutyfile/save" parameter="SAVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmdutyfileAction"
+			scope="request" name="kmdutyfileForm" validate="true"
+			input="WEB-INF.pages.kmmanager.Kmdutyfile.dutyfile">
+			<forward name="success" path="/Kmdutyfile/dutyfile.do" />
+		</action>
+		<action path="/Kmdutyfile/delete" parameter="DELETE"
+			type="com.boco.eoms.km.duty.webapp.action.KmdutyfileAction"
+			scope="request" name="kmdutyfileForm" validate="false">
+			<forward name="success" path="/Kmdutyfile/dutyfile.do" />
+		</action>
+			<action path="/KmrecordSearch"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/kmmanager/Kmrecord/queryRoom.jsp" />
+			
+		<!-- <<<<<<<<<<<<<< TawRmHangover >>>>>>>>>>>>>>> -->
+		<action path="/Kmhangover/show" parameter="SHOW"
+			type="com.boco.eoms.km.duty.webapp.action.KmhangoverAction"
+			scope="request" name="kmhangoverForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmhangover/show.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmhangover/save" parameter="SAVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmhangoverAction"
+			scope="request" name="kmhangoverForm" validate="false">
+			<forward name="success" path="/Kmhangover/show.do" />
+		</action>	
+		
+		<!-- <<<<<<<<<<<<<< TawRmChangeduty >>>>>>>>>>>>>>> -->
+
+		<action path="/Kmchangeduty/select_time"
+			parameter="SELECTTIME"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/roomTree.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="noroom"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/no_room.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/selectRoom"
+			parameter="SELECTROOM"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false" />
+
+		<action path="/Kmchangeduty/selectDate"
+			parameter="SELECTDATE"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/select_time.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/apply" parameter="APPLY"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/apply.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/save_apply" parameter="SAVEAPPLY"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/Kmchangeduty/apply.do?SAVEFLAG=true" />
+		</action>
+		<action path="/Kmchangeduty/query_apply"
+			parameter="QUERYAPPLY"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/query_apply.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="noroom"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/no_room.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/transact_apply"
+			parameter="TRANSACTAPPLY"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/Kmchangeduty/query_apply.do?TRANSACTFLAG=true" />
+		</action>
+		<action path="/Kmchangeduty/select_history"
+			parameter="SELECTHISTORY"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="KmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/select_history.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/add" parameter="ADD"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/edit" parameter="EDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/entry.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/list" parameter="LIST"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/query_history.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/view" parameter="VIEW"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/view.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/remove" parameter="REMOVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/remove.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/trash" parameter="TRASH"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success" path="/Kmchangeduty/list.do" />
+		</action>
+		<action path="/Kmchangeduty/save" parameter="SAVE"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="true"
+			input="duty.manager.TawRmChangeduty.entry">
+			<forward name="success" path="/Kmchangeduty/list.do" />
+			<forward name="cancel" redirect="true"
+				path="/do/TawRmChangeduty/list" />
+		</action>
+		
+		<action path="/Kmchangeduty/manager" parameter="SELECTTREE"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/selectTree.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/query_audit"
+			parameter="QUERYAUDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/WEB-INF/pages/kmmanager/Kmchangeduty/audit.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/Kmchangeduty/transact_audit"
+			parameter="TRANSAUDIT"
+			type="com.boco.eoms.km.duty.webapp.action.KmchangedutyAction"
+			scope="request" name="kmchangedutyForm" validate="false">
+			<forward name="success"
+				path="/Kmchangeduty/query_audit.do?SAVEFLAG=true" />
+		</action>
+		<action
+		  path="/kmAskCountScores"
+		  type="com.boco.eoms.km.ask.webapp.action.KmAskCountScoreAction"
+		  name="kmAskCountScoreForm"
+		  scope="request"
+		  input="mainMenu"
+		  parameter="method"
+		  unknown="false"
+		  validate="false"
+		>
+			<set-property
+			  property="cancellable"
+			  value="true"
+			/>
+			<forward
+			  name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmAskCountScore/kmAskCountScoreForm.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="list"
+			  path="/WEB-INF/pages/kmmanager/kmAskCountScore/kmAskCountScoreList.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+		</action>
+		
+		<action path="/kmScoreSets"
+			type="com.boco.eoms.km.score.webapp.action.KmScoreSetAction"
+			name="kmScoreSetForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="tree"
+				path="/WEB-INF/pages/kmmanager/kmScoreSet/kmScoreTreeTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/kmmanager/kmScoreSet/kmScoreSetForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/kmmanager/kmScoreSet/kmScoreSetList.jsp"
+				redirect="false" contextRelative="true" />
+		</action>
+		
+		<action path="/kmScoreTrees"
+		  type="com.boco.eoms.km.score.webapp.action.KmScoreTreeAction"
+		  name="kmScoreTreeForm" scope="request" input="mainMenu"
+		  parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true"/>
+			<forward name="tree"
+			  path="/WEB-INF/pages/kmmanager/kmScoreTree/kmScoreTreeTree.jsp"
+			  redirect="false" contextRelative="true" />
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmScoreTree/kmScoreTreeForm.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		
+		<action path="/kmScoreWeights"
+		  type="com.boco.eoms.km.score.webapp.action.KmScoreWeightAction"
+		  name="kmScoreWeightForm" scope="request" input="mainMenu"
+		  parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true"/>
+			<forward name="tree"
+			  path="/WEB-INF/pages/kmmanager/kmScoreWeight/kmScoreWeightTree.jsp"
+			  redirect="false" contextRelative="true" />			
+			<forward name="addedit"
+			  path="/WEB-INF/pages/kmmanager/kmScoreWeight/kmScoreWeightForm.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="edit"
+			  path="/WEB-INF/pages/kmmanager/kmScoreWeight/kmScoreWeightEditForm.jsp"
+			  redirect="false" contextRelative="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmScoreWeight/kmScoreWeightList.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+		  <action path="/kmContentsMains"
+		  type="com.boco.eoms.km.knowledge.webapp.action.KmContentsMainAction"
+		   scope="request" input="mainMenu"
+		  parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true"/>
+			<forward name="list"
+			  path="/WEB-INF/pages/kmmanager/kmContents/kmContentsMain.jsp"
+			  redirect="false" contextRelative="true"/>
+		</action>
+	</action-mappings>
+	
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+	
+	<message-resources parameter="com/boco/eoms/km/config/applicationResource-kmmanager" />
+	<message-resources parameter="com/boco/eoms/duty/config/ApplicationResources-duty" />
+	
+    <!-- ========== Validator plugin =================== -->
+    
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+
+
+</struts-config>

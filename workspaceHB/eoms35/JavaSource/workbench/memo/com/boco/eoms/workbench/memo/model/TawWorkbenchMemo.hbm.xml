@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.workbench.memo.model.TawWorkbenchMemo"
+            table="taw_workbench_memo"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="deleted"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="title"
+                length="255"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                length="255"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="userid"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="creattime"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="level"
+                length="20"
+                not-null="false"
+                unique="true" 
+                 column="memolevel"
+        >
+
+        </property>
+
+        <property
+            name="sendflag"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="sendtime"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="reciever"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+        </property>
+
+        <property
+            name="sendmanner"
+                length="255"
+                  not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+
+    </class>    
+
+</hibernate-mapping>
+

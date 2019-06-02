@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans> 
+		<form-bean
+		  name="acceptSheetRuleForm"
+		  type="com.boco.eoms.sheet.acceptsheetrule.webapp.form.AcceptSheetRuleForm"
+		/>
+	</form-beans>
+	<!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+    </global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward
+		  name="success"
+		  path="/common/success.jsp"
+		  redirect="false"
+		  contextRelative="true"
+		/>
+		<forward
+		  name="nopriv"
+		  path="/common/nopriv.jsp"
+		  redirect="false"
+		  contextRelative="true"
+		/>
+		<forward
+		  name="fail"
+		  path="/common/failure.jsp"
+		  redirect="false"
+		  contextRelative="true"
+		/>
+    </global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+
+	<action-mappings>
+		<action
+		  path="/acceptsheetrule"
+		  type="com.boco.eoms.sheet.acceptsheetrule.webapp.action.AcceptSheetRuleAction"
+		  name="acceptSheetRuleForm"
+		  scope="request"
+		  input="mainMenu"
+		  parameter="method"
+		  unknown="false"
+		  validate="false"
+		>
+			<set-property
+			  property="cancellable"
+			  value="true"
+			/>
+			<forward
+			  name="edit"
+			  path="/WEB-INF/pages/wfworksheet/acceptsheetrule/acceptSheetRuleDetail.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="add"
+			  path="/WEB-INF/pages/wfworksheet/acceptsheetrule/acceptSheetRuleForm.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward
+			  name="list"
+			  path="/WEB-INF/pages/wfworksheet/acceptsheetrule/acceptSheetRuleList.jsp"
+			  redirect="false"
+			  contextRelative="true"
+			/>
+			<forward name="tpl-user-xtree" path="/templates/user/tpl-user-xtree.jsp" redirect="false"/>
+		</action>
+	</action-mappings>
+ 	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+	  <message-resources parameter="config/ApplicationResources" key="common"/>
+      <message-resources parameter="config/ApplicationResources-sheet-acceptsheetrule" key="sheet"/>
+      <message-resources parameter="config/ApplicationResources-sheet-acceptsheetrule" key="acceptsheetrule"/>
+	<!-- ========== Validator plugin ===================  -->
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+		value="/WEB-INF/validator-rules.xml,
+		/WEB-INF/validator-rules-custom.xml,
+		/WEB-INF/validation.xml" />
+		</plug-in>
+
+</struts-config>

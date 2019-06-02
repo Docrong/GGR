@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- Add new Managers here -->
+
+	<!--TawWorkbenchNetDisk-DAO START-->
+	<bean id="failureRecordDao"
+		class="com.boco.eoms.commons.failureRecord.dao.hibernate.FailureRecordDaoHibernate"
+		autowire="byName" />
+		<bean id="failureRecordMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.failureRecord.mgr.impl.FailureRecordMgrImpl">
+				<property name="failureRecordDao"
+					ref="failureRecordDao" />
+			
+			</bean>
+		</property>
+	</bean>
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

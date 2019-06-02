@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts description="日志类型">
+	<dict id="userType" description="">
+		<item id="0" name="维护调度人员" description="维护调度人员" />
+		<item id="1" name="维护工程师" description="维护工程师" />
+		<item id="2" name="维护支持人员" description="维护支持人员" />
+		<item id="3" name="协查员" description="协查员" />
+		<item id="4" name="协查请求人" description="协查请求人" />
+		<item id="5" name="VIP客户" description="VIP客户" />
+		
+	</dict>	
+
+</dicts>

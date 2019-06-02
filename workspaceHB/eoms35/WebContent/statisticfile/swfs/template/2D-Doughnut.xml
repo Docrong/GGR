@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+
+    <workspace>
+      <chart_area width="400" height="240" x="20" y="30" deep="0">
+	  <background enabled="yes" type="gradient" gradient_type="linear">
+			<colors>
+			  <color>0xFFFFFF</color>
+			  <color>0xF4E1C4</color>
+			</colors>
+			<alphas>
+			  <alpha>100</alpha>
+			  <alpha>100</alpha>
+			</alphas>
+			<ratios>
+			  <ratio>0</ratio>
+			  <ratio>0xFF</ratio>
+			</ratios>
+			<matrix r="-1.7"/>
+     </background>
+	 <border enabled="yes" color="0xB54001"/>
+	  </chart_area>
+	  <base_area enabled="no"/>
+    </workspace>
+    <chart type="2D Doughnut">
+      <animation enabled="yes" speed="10" type="step"/>
+      <names show="no"/>
+      <values show="no" postfix="%"/>
+      <pie_chart radius="100" x="300" y="150" rotation="5" inner_radius="40">
+        <border enabled="yes" color="0xF4E1C4"/> 
+      </pie_chart>	  
+      <hints width="170">
+	    <border color="0xB54001"/>
+	    <background color="0xF4E1C4"/>
+	  </hints>
+    </chart>
+	<legend enabled="yes" x="22" y="60">
+	  <background enabled="no"/>
+	  <border enabled="no"/>
+	  <scroller enabled="no"/>
+      <names width="120"/>
+      <values width="40"/>
+      <header values="%" names="Name"/>
+    </legend>
+  </type>
+</root>

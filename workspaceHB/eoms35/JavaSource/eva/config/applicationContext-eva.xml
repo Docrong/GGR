@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- Add new Managers here -->
+    
+    <!--EvaTree-DAO START-->
+    <bean id="evaTreeDao" class="com.boco.eoms.eva.dao.hibernate.EvaTreeDaoHibernate" autowire="byName"/>
+    <!--EvaTree-DAO END-->
+    <!--EvaTree-START-->    
+    <bean id="IevaTreeMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaTreeMgrImpl">
+                <property name="evaTreeDao" ref="evaTreeDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaTree-END-->
+    
+    <!--EvaKpi-DAO START-->
+    <bean id="evaKpiDao" class="com.boco.eoms.eva.dao.hibernate.EvaKpiDaoHibernate" autowire="byName"/>
+    <!--EvaKpi-DAO END-->
+    <!--EvaKpi-START-->    
+    <bean id="IevaKpiMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaKpiMgrImpl">
+                <property name="evaKpiDao" ref="evaKpiDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaKpi-END-->
+    
+    <!--EvaTemplate-DAO START-->
+    <bean id="evaTemplateDao" class="com.boco.eoms.eva.dao.hibernate.EvaTemplateDaoHibernate" autowire="byName"/>
+    <!--EvaTemplate-DAO END-->
+    <!--EvaTemplate-START-->    
+    <bean id="IevaTemplateMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaTemplateMgrImpl">
+                <property name="evaTemplateDao" ref="evaTemplateDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaTemplate-END-->
+    
+    <!--EvaTask-DAO START-->
+    <bean id="evaTaskDao" class="com.boco.eoms.eva.dao.hibernate.EvaTaskDaoHibernate" autowire="byName"/>
+    <!--EvaTask-DAO END-->
+    <!--EvaTask-START-->    
+    <bean id="IevaTaskMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaTaskMgrImpl">
+                <property name="evaTaskDao" ref="evaTaskDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaTask-END-->
+    
+    <!--EvaTaskDetail-DAO START-->
+    <bean id="evaTaskDetailDao" class="com.boco.eoms.eva.dao.hibernate.EvaTaskDetailDaoHibernate" autowire="byName"/>
+    <!--EvaTaskDetail-DAO END-->
+    <!--EvaTaskDetail-START-->    
+    <bean id="IevaTaskDetailMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaTaskDetailMgrImpl">
+                <property name="evaTaskDetailDao" ref="evaTaskDetailDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaTaskDetail-END-->
+    
+    <!--EvaKpiInstance-DAO START-->
+    <bean id="evaKpiInstanceDao" class="com.boco.eoms.eva.dao.hibernate.EvaKpiInstanceDaoHibernate" autowire="byName"/>
+    <!--EvaKpiInstance-DAO END-->
+    <!--EvaKpiInstance-START-->    
+    <bean id="IevaKpiInstanceMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaKpiInstanceMgrImpl">
+                <property name="evaKpiInstanceDao" ref="evaKpiInstanceDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaKpiInstance-END-->
+    
+    <!--EvaOrg-DAO START-->
+    <bean id="evaOrgDao" class="com.boco.eoms.eva.dao.hibernate.EvaOrgDaoHibernate" autowire="byName"/>
+    <!--EvaOrg-DAO END-->
+    <!--EvaOrg-START-->    
+    <bean id="IevaOrgMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaOrgMgrImpl">
+                <property name="evaOrgDao" ref="evaOrgDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaOrg-END-->
+
+    <!--EvaAuditInfo-DAO START-->
+    <bean id="evaAuditInfoDao" class="com.boco.eoms.eva.dao.hibernate.EvaAuditInfoDaoHibernate" autowire="byName"/>
+    <!--EvaAuditInfo-DAO END-->
+    <!--EvaAuditInfo-START-->    
+    <bean id="IevaAuditInfoMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaAuditInfoMgrImpl">
+                <property name="evaAuditInfoDao" ref="evaAuditInfoDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaAuditInfo-END-->
+    
+    <!--EvaAuditInfo-DAO START-->
+    <bean id="evaReportInfoDao" class="com.boco.eoms.eva.dao.hibernate.EvaReportInfoDaoHibernate" autowire="byName"/>
+    <!--EvaAuditInfo-DAO END-->
+    <!--EvaAuditInfo-START-->    
+    <bean id="IevaReportInfoMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.eva.mgr.impl.EvaReportInfoMgrImpl">
+                <property name="evaReportInfoDao" ref="evaReportInfoDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--EvaAuditInfo-END-->
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

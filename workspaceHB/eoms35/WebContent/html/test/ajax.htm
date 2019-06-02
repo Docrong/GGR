@@ -1,0 +1,47 @@
+<!--
+用ajax方式载入的页面模板
+-->
+
+<table class="formTable">
+  <tr>
+  	<td class="label">工单标题</td>
+	<td colspan="3">
+		<input type="text" class="text max" alt="allowBlank:false,vtext:'请输入工单标题'"/>
+	</td>
+  </tr>
+  
+  <tr>
+    <td class="label">派发人</td>
+    <td class="content">管理员</td>
+    <td class="label">派单部门</td>
+    <td class="content">省公司</td>
+  </tr>
+  <tr>
+  	<td class="label">派单角色</td>
+	<td colspan="3">
+      <select id="sendRoleId" name="sendRoleId">
+      	<option value="8a1581b7168e67bc01168e6e0dfc0042">重大活动应急保障任务组织人(BOCOTEST-交换网-汇接网)</option>
+		<option value="8a1581b7168e67bc01168e6e0e0c0043">重大活动应急保障任务组织人(BOCOTEST-交换网-软交换)</option>
+		<option value="402881e8190ce56801190cece6a00002">我的虚拟组</option>
+		<option value="8a8092ea1636c487011636d064680006">安全维护组(BOCOTEST-无线专业-GPRS)</option>
+		<option value="8a1580ea193b0bff01193b1a3b8b0003">测试子角色类型(省公司-无线专业)</option>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">派单人联系方式</td>
+    <td>
+      <input type="text" class="text" name="sendContact" value="" alt="allowBlank:false"/>
+    </td>
+    <td class="label">派往部门</td>
+    <td>
+      <input type="text" class="text"  readonly="readonly" name="showDept"  value=""/>
+    </td>
+  </tr>
+</table>
+
+
+<script type="text/javascript">
+	//测试JS是否执行
+	eoms.log("script loaded");
+</script>

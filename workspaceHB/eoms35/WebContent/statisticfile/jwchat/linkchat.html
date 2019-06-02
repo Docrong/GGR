@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>运维通</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="shared.js"></script>
+    <script type="text/javascript" src="browsercheck.js"></script>
+    <script type="text/javascript" src="sounds.js"></script>
+    <script type="text/javascript" src="statusLed.js"></script>
+<!-- JabberConnection -->
+    <script type="text/javascript" src="jsjac.js"></script>
+<!-- Debugger -->
+    <script type="text/javascript" src="Debugger.js"></script>
+  </head>
+  
+  <body>
+    <script language="JavaScript">
+window.session = { 
+   options: { gapi_location: true },
+   start: function(session){ // can also use window.session global.
+   if (session.first_session.visits > 1){
+     alert('Hi again from ' + session.location.address.city);
+    } else {
+     if (session.current_session.referrer_info.host.contains('facebook')){
+       alert('Hi there from '+ session.location.address.city +'. How about liking us on facebook?');
+     } else if (session.current_session.search.engine){
+        alert('Did you find what you were looking for from ' + session.current_session.search.engine + '?');
+     }  
+   }
+  }
+}
+     /* open("chat.html?jid=boco_lwm@133.0.254.244",
+                      "chatW"+makeWindowName("boco_lwm@133.0.254.244"),
+                      "width=320,height=390,resizable=yes");*/
+                      
+     // window.open('chat.html?jid=boco_lwm@133.0.254.244','boco_zk','width=180,height=390,resizable=yes');
+     
+     
+     
+     /************************************************************************
+ *                           ******  INIT  *******
+ ************************************************************************
+ */
+var con, Debug, srcW;
+function init() {
+
+  /* initialise debugger */
+  if (!Debug || typeof(Debug) == 'undefined' || !Debug.start) {
+    if (typeof(Debugger) != 'undefined')
+      Debug = new Debugger(DEBUG_LVL,'JWChat ' + cutResource(jid));
+    else {
+      Debug = new Object();
+      Debug.log = function() {};
+      Debug.start = function() {};
+    }
+  }
+  if (DEBUG &&  (!USE_DEBUGJID || DEBUGJID == cutResource(jid)))
+    Debug.start();
+  
+  Debug.log("jid: "+jid+"\npass: "+pass,2);
+
+  /* get some refs to static elements */
+  statusLed = frames["jwc_main"].document.getElementById('statusLed');
+  statusMsg = frames["jwc_main"].document.getElementById('statusMsg');
+  fmd = frames["jwc_main"].iRoster.document;
+  
+  /* set title */
+  document.title = "运维通 - " + nick;
+
+  /* set nick */
+  frames["jwc_main"].document.getElementById('myNickname').innerHTML = nick;  
+
+  /* init empty roster */
+  roster = new Roster();
+  
+  /* ***
+   * create new connection
+   */
+  var oArg = {oDbg: Debug, httpbase: HTTPBASE, timerval: timerval};
+  
+  if (BACKEND_TYPE == 'binding')
+    con = new JSJaCHttpBindingConnection(oArg);
+  else
+    con = new JSJaCHttpPollingConnection(oArg);
+  
+  /* register handlers */
+  con.registerHandler('iq',handleIQSet);
+  con.registerHandler('presence',handlePresence);
+  con.registerHandler('message',handleMessage);
+  con.registerHandler('message',handleMessageError);
+  con.registerHandler('ondisconnect',handleDisconnect);
+  con.registerHandler('onconnect',handleConnected);
+  con.registerHandler('onerror',handleConError);
+  
+  /* connect to remote */
+  oArg = {domain:JABBERSERVER,username:jid.substring(0,jid.indexOf('@')),resource:jid.substring(jid.indexOf('/')+1),pass:pass,register:register}
+  
+  if (BACKEND_TYPE == 'binding') {
+    if (opener.connect_port && !isNaN(opener.connect_port))
+      oArg.port = opener.connect_port;
+    if (opener.connect_host && opener.connect_host != '')
+      oArg.host = opener.connect_host;
+    if (opener && opener.connect_secure)
+      oArg.secure = true;
+    alert('debug-oArg'+oArg.port + ': '+ oArg.host + ' : ' + oArg.secure);  
+  }
+  con.connect(oArg);
+}
+     
+     
+     
+     function Chat2user(jid) {
+        roster = new Roster(iq.getQuery().childNodes,fmd);
+        iq = new JSJaCIQ();
+        iq.setIQ(null,'get','roster_1');
+        iq.setQuery('jabber:iq:roster');
+        var user = roster.getUserByJID(cutResource(jid));
+        if(user && typeof(user.type) != 'undefined' && user.type == 'groupchat')
+          return openGroupchat(jid);
+        if (!isGateway(jid))
+          return roster.openChat(jid);
+      }
+     
+     
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts description="重大事件保障工单">
+	<dict id="mainOperateType" description="处理方法">	
+		<item id="0" name="新建派发" description="新建派发" />
+		<item id="22" name="草稿保存" description="草稿保存" />
+		<item id="3" name="草稿派发" description="草稿派发" />
+	    <item id="6" name="处理回复通过" description="处理回复通过" />
+		<item id="7" name="处理回复不通过" description="处理回复不通过" />
+		<item id="4" name="驳回上一级" description="驳回上一级" />
+		<item id="54" name="重新派发" description="重新派发" />
+		<item id="8" name="移交" description="移交" />
+	    <item id="88" name="转审" description="转审" />
+		<item id="30" name="会审" description="会审" />	
+		<item id="-13" name="强制归档" description="强制归档" />	
+		<item id="-14" name="强制作废" description="强制作废" />
+		<item id="-12" name="作废" description="作废" />
+		<item id="-10" name="抄送" description="抄送" />	
+		<item id="-15" name="抄送确认" description="抄送确认" />
+		<item id="9" name="阶段回复" description="阶段回复" />	
+		<item id="-11" name="阶段通知" description="阶段通知" />
+		<item id="10" name="分派" description="分派" />
+		<item id="11" name="分派回复" description="分派回复" />
+		<item id="55" name="会审回复" description="会审回复" />		
+		<item id="61" name="确认受理" description="确认受理" />
+		<item id="102" name="退回" description="退回" />	
+			
+		<item id="90" name="完成方案，提交审核" description="完成方案，提交审核" />
+		
+		<item id="91" name="审核方案" description="审核方案" />		
+		<item id="911" name="审核通过" description="审核通过" />
+		<item id="912" name="审核不通过" description="审核不通过" />
+		
+		<item id="92" name="审批方案" description="审批方案" />
+		<item id="921" name="审批通过" description="审批通过" />
+		<item id="922" name="审批不通过" description="审批不通过" />
+
+		<item id="93" name="完成实施，提交结束申请" description="完成实施，提交结束申请" />
+		
+		<item id="94" name="审核结束申请" description="审核结束申请" />
+		<item id="941" name="审核通过" description="审核通过" />
+		<item id="942" name="审核不通过" description="审核不通过" />
+				
+		<item id="95" name="完成保障报告，提交审核" description="完成保障报告，提交审核" />
+				
+		<item id="96" name="审核保障报告" description="审核保障报告" />
+		<item id="961" name="审核通过无需修订" description="审核通过无需修订" />
+		<item id="962" name="审核通过需修订" description="审核通过需修订" />
+		<item id="963" name="审核不通过" description="审核不通过" />
+		
+		<item id="97" name="完成预案修订，提交预案" description="完成预案修订，提交预案" />
+		<item id="18" name="归档" description="归档" />
+        <item id="111" name="完成实施/提交结束申请(等待被调工单完成)" description="完成实施/提交结束申请(等待被调工单完成)" />
+		
+	</dict>
+	<dict id="activeTemplateId" description="处理方法">
+	    <item id="cc" name="抄送" description="抄送" />
+	    <item id="reply" name="阶段回复" description="阶段回复" />
+	    <item id="advice" name="阶段通知" description="阶段通知" />	
+		<item id="DraftTask" name="草稿" description="草稿" />
+		<item id="reject" name="驳回" description="驳回" />
+		
+
+		<item id="MakeTask" name="方案制定中" description="方案制定中" />
+		<item id="AuditTask" name="待审核" description="待审核" />
+		<item id="ApprovalTask" name="待审批" description="待审批" />
+		<item id="PerformTask" name="实施中" description="实施中" />		
+		<item id="AuditEndTask" name="待审核" description="待审核" />		
+		<item id="AssessmentTask" name="评估中" description="评估中" />
+		<item id="AuditReportTask" name="待审核" description="待审核" />
+		<item id="ModifyTask" name="预案修订中" description="预案修订中" />
+		<item id="HoldTask" name="待归档" description="待归档" />
+		<item id="" name="新增工单" description="新增工单" />
+	</dict>
+</dicts>
+
+

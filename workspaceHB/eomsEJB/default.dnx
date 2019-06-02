@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--xtools2_universal_type_manager-->
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.0/notation" xmlns:uml="http://www.eclipse.org/uml2/2.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.2/Umlnotation" xmi:id="_a-BwcVB8EdyLHLRGKoyYGw" type="Class" name="default.dnx">
+  <children xmi:id="_dRjSQFB8EdyLHLRGKoyYGw">
+    <children xmi:id="_dRscMFB8EdyLHLRGKoyYGw" type="ImageCompartment">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_dRscMVB8EdyLHLRGKoyYGw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_dR2NMFB8EdyLHLRGKoyYGw" type="Stereotype">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dR2NMVB8EdyLHLRGKoyYGw" type="Kind">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dR2NMlB8EdyLHLRGKoyYGw" type="Name">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dR2NM1B8EdyLHLRGKoyYGw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_dR2NNFB8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dR2NNVB8EdyLHLRGKoyYGw" visible="false" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_dR2NNlB8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dR2NN1B8EdyLHLRGKoyYGw" visible="false" type="RealizationListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_dR2NOFB8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dR2NOVB8EdyLHLRGKoyYGw" visible="false" type="RequiredInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_dR2NOlB8EdyLHLRGKoyYGw" filtering="Automatic" filteringKeys="Other interface"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dR2NO1B8EdyLHLRGKoyYGw" type="ProvidedInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_dR2NPFB8EdyLHLRGKoyYGw" filtering="Automatic" filteringKeys="Other interface"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_dTfL8FB8EdyLHLRGKoyYGw" visible="false" type="StructureCompartment">
+      <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_dTfL8VB8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_dRjSQVB8EdyLHLRGKoyYGw" showStereotype="Label"/>
+    <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23LinkService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_dRjSQlB8EdyLHLRGKoyYGw" x="11412" y="8559"/>
+  </children>
+  <children xmi:id="_iHo3cFB8EdyLHLRGKoyYGw">
+    <children xmi:id="_iHo3c1B8EdyLHLRGKoyYGw" type="ImageCompartment">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_iHo3dFB8EdyLHLRGKoyYGw" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_iHo3dVB8EdyLHLRGKoyYGw" type="Stereotype">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3dlB8EdyLHLRGKoyYGw" type="Kind">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3d1B8EdyLHLRGKoyYGw" type="Name">
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3eFB8EdyLHLRGKoyYGw" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_iHo3eVB8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3elB8EdyLHLRGKoyYGw" visible="false" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_iHo3e1B8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3fFB8EdyLHLRGKoyYGw" visible="false" type="RealizationListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_iHo3fVB8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3flB8EdyLHLRGKoyYGw" visible="false" type="RequiredInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_iHo3f1B8EdyLHLRGKoyYGw" filtering="Automatic" filteringKeys="Other interface"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3gFB8EdyLHLRGKoyYGw" type="ProvidedInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_iHo3gVB8EdyLHLRGKoyYGw" filtering="Automatic" filteringKeys="Other interface"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <children xmi:id="_iHo3glB8EdyLHLRGKoyYGw" visible="false" type="StructureCompartment">
+      <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_iHo3g1B8EdyLHLRGKoyYGw"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_iHo3cVB8EdyLHLRGKoyYGw" showStereotype="Label"/>
+    <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MainService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_iHo3clB8EdyLHLRGKoyYGw" x="13314" y="7925"/>
+  </children>
+  <children xmi:id="_VM2TgFSDEdy2EbYq68pV2w">
+    <children xmi:id="_VM_dcFSDEdy2EbYq68pV2w" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_VM_dcVSDEdy2EbYq68pV2w" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_VNJOcFSDEdy2EbYq68pV2w" type="Stereotype"/>
+    <children xmi:id="_VNJOcVSDEdy2EbYq68pV2w" type="Kind"/>
+    <children xmi:id="_VNJOclSDEdy2EbYq68pV2w" type="Name"/>
+    <children xmi:id="_dtw9MGLpEd2-M_YZhAAvkg" type="Parent"/>
+    <children xmi:id="_VNJOc1SDEdy2EbYq68pV2w" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_VNJOdFSDEdy2EbYq68pV2w"/>
+    </children>
+    <children xmi:id="_VNJOdVSDEdy2EbYq68pV2w" visible="false" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_VNJOdlSDEdy2EbYq68pV2w"/>
+    </children>
+    <children xmi:id="_VNJOd1SDEdy2EbYq68pV2w" visible="false" type="RealizationListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_VNJOeFSDEdy2EbYq68pV2w"/>
+    </children>
+    <children xmi:id="_VNJOeVSDEdy2EbYq68pV2w" visible="false" type="RequiredInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_VNJOelSDEdy2EbYq68pV2w" filtering="Automatic" filteringKeys="Other interface"/>
+    </children>
+    <children xmi:id="_VNJOe1SDEdy2EbYq68pV2w" type="ProvidedInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_VNJOfFSDEdy2EbYq68pV2w" filtering="Automatic" filteringKeys="Other interface"/>
+    </children>
+    <children xmi:id="_VNJOfVSDEdy2EbYq68pV2w" visible="false" type="StructureCompartment">
+      <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_VNJOflSDEdy2EbYq68pV2w"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23RoleService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_VM2TgVSDEdy2EbYq68pV2w" fontName="宋体" showStereotype="Label"/>
+    <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23RoleService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VM2TglSDEdy2EbYq68pV2w" x="16801" y="2219"/>
+  </children>
+  <children xmi:id="_usUpMFxzEdyW2ICbCRutBQ">
+    <children xmi:id="_usUpM1xzEdyW2ICbCRutBQ" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_usUpNFxzEdyW2ICbCRutBQ" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_usUpNVxzEdyW2ICbCRutBQ" type="Stereotype"/>
+    <children xmi:id="_usUpNlxzEdyW2ICbCRutBQ" type="Kind"/>
+    <children xmi:id="_usUpN1xzEdyW2ICbCRutBQ" type="Name"/>
+    <children xmi:id="_dt6HIGLpEd2-M_YZhAAvkg" type="Parent"/>
+    <children xmi:id="_usUpOFxzEdyW2ICbCRutBQ" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_usUpOVxzEdyW2ICbCRutBQ"/>
+    </children>
+    <children xmi:id="_usUpOlxzEdyW2ICbCRutBQ" visible="false" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_usUpO1xzEdyW2ICbCRutBQ"/>
+    </children>
+    <children xmi:id="_usdzIFxzEdyW2ICbCRutBQ" visible="false" type="RealizationListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_usdzIVxzEdyW2ICbCRutBQ"/>
+    </children>
+    <children xmi:id="_usdzIlxzEdyW2ICbCRutBQ" visible="false" type="RequiredInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_usdzI1xzEdyW2ICbCRutBQ" filtering="Automatic" filteringKeys="Other interface"/>
+    </children>
+    <children xmi:id="_usdzJFxzEdyW2ICbCRutBQ" type="ProvidedInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_usdzJVxzEdyW2ICbCRutBQ" filtering="Automatic" filteringKeys="Other interface"/>
+    </children>
+    <children xmi:id="_usdzJlxzEdyW2ICbCRutBQ" visible="false" type="StructureCompartment">
+      <styles xmi:type="umlnotation:UMLShapeCompartmentStyle" xmi:id="_usdzJ1xzEdyW2ICbCRutBQ"/>
+      <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23SaveDataService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_usUpMVxzEdyW2ICbCRutBQ" fontName="宋体" showStereotype="Label"/>
+    <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23SaveDataService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_usUpMlxzEdyW2ICbCRutBQ" x="2536" y="4121"/>
+  </children>
+  <children xmi:id="_g43nQGLpEd2-M_YZhAAvkg">
+    <children xmi:id="_g5wYEGLpEd2-M_YZhAAvkg" type="ImageCompartment">
+      <layoutConstraint xmi:type="notation:Size" xmi:id="_g5wYEWLpEd2-M_YZhAAvkg" width="1320" height="1320"/>
+    </children>
+    <children xmi:id="_g5wYEmLpEd2-M_YZhAAvkg" type="Stereotype"/>
+    <children xmi:id="_g5wYE2LpEd2-M_YZhAAvkg" type="Kind"/>
+    <children xmi:id="_g5wYFGLpEd2-M_YZhAAvkg" type="Name"/>
+    <children xmi:id="_g5wYFWLpEd2-M_YZhAAvkg" type="Parent"/>
+    <children xmi:id="_g5wYFmLpEd2-M_YZhAAvkg" type="AttributeCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_g5wYF2LpEd2-M_YZhAAvkg"/>
+    </children>
+    <children xmi:id="_g5wYGGLpEd2-M_YZhAAvkg" visible="false" type="OperationCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_g5wYGWLpEd2-M_YZhAAvkg"/>
+    </children>
+    <children xmi:id="_g5wYGmLpEd2-M_YZhAAvkg" visible="false" type="RealizationListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_g5wYG2LpEd2-M_YZhAAvkg"/>
+    </children>
+    <children xmi:id="_g5wYHGLpEd2-M_YZhAAvkg" visible="false" type="RequiredInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_g5wYHWLpEd2-M_YZhAAvkg" filtering="Automatic" filteringKeys="Other interface"/>
+    </children>
+    <children xmi:id="_g5wYHmLpEd2-M_YZhAAvkg" type="ProvidedInterfaceListCompartment">
+      <styles xmi:type="umlnotation:UMLListCompartmentStyle" xmi:id="_g5wYH2LpEd2-M_YZhAAvkg" filtering="Automatic" filteringKeys="Other interface"/>
+    </children>
+    <styles xmi:type="umlnotation:UMLComponentStyle" xmi:id="_g43nQWLpEd2-M_YZhAAvkg" fontName="宋体" showStereotype="Label"/>
+    <element xmi:type="uml:Component" href="mmi:///#sessionBean%5EURI=platform:/resource/eomsEJB/ejbModule/META-INF/ejb-jar.xml%23MessageService%5Bproject%5Eid=eomsEJB%5D$uml.Component"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g43nQmLpEd2-M_YZhAAvkg" x="13631" y="10144"/>
+  </children>
+  <styles xmi:type="umlnotation:UMLDiagramStyle" xmi:id="_a-BwclB8EdyLHLRGKoyYGw"/>
+</notation:Diagram>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_6.dtd">
+<workflow>
+  <initial-actions>
+    <action id="5" name="Draft" view="保存">
+      <results>
+        <unconditional-result id="5" old-status="Finished" status="Queued" step="1" />
+      </results>
+    </action>
+    <action id="8" name="NewSend" view="派发">
+      <results>
+        <unconditional-result id="8" old-status="Finished" status="Queued" step="2" />
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="1" name="起草工单省网管中心">
+      <actions>
+        <action id="7" name="Send" view="派发">
+          <results>
+            <unconditional-result id="7" old-status="Finished" status="Queued" step="2" ifMakeCopyFor="true"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="省计费中心">
+      <actions>
+        <action id="10" name="BackToUp" view="回复上级">
+          <results>
+            <unconditional-result id="10" old-status="Finished" status="Queued" step="3"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="起草工单省网管中心">
+      <actions>
+        <action id="14" name="Hold" view="归档">
+          <results>
+            <unconditional-result id="14" old-status="Finished" status="Queued" step="4"/>
+          </results>
+        </action>
+        <action id="16" name="BackToDownReject" view="驳回">
+          <results>
+            <unconditional-result id="16" old-status="Finished" status="Queued" step="2"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="4" name="归档">
+    </step>
+  </steps>
+</workflow>

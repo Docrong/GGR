@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.Papers"
+            table="taw_papers"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="title"
+            	column="title"
+                length="255"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+	<property
+            name="insertTime"
+            	column="insert_time"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="insertUserId"
+            	column="insert_user_id"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deptId"
+            	column="dept_id"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deleted"
+            	column="deleted"
+                length="2"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+
+		<property
+            name="accessoriesId"
+            	column="accessories_id"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

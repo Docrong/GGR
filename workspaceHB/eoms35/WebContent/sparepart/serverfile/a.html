@@ -1,0 +1,636 @@
+
+
+
+
+<HTML xmlns:v xmlns:BOCO="BOCO Inter-Telecom">
+<html>
+<head>
+<title>重大故障上报工单_工单详细信息</title>
+<STYLE>
+v\:*{behavior:url(#default#VML);}
+</STYLE>
+<link rel="stylesheet" href="/EOMS_J2EE/css/table_style.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+//弹出模态窗口
+function popup(sURL){
+	dWinOrnaments = "status:no;help:no;scroll:auto;resizable:no;dialogHeight:450px;dialogWidth:480px;";
+	dWin = showModalDialog(sURL, window, dWinOrnaments);
+}
+//-->
+</SCRIPT>
+<import namespace=BOCO implementation="/EOMS_J2EE/css/button/genericButton.htc"/>
+</head>
+
+<body topmargin=0 marginheight=0 leftmargin=0 marginwidth=0 >
+<br>
+<!---正文开始------------------------------------------------------------------------------------------>
+<table cellSpacing="0" cellPadding="0" width="95%" border="0" align=center>
+  <tr>
+	<td class="table_title" align="center">&nbsp;&nbsp;显示&nbsp;</td>  </tr>
+  <tr>
+</table>
+
+
+<br><br>
+
+ 
+<table border="0" cellspacing="1" cellpadding="1" width="95%" align="center">
+<tr>
+<td align="right">  
+</td></tr>
+</table>
+<P>
+<div  id="flow" style="POSITION: absolute;LEFT:20px" align="justify" >
+
+  
+
+<a href="javascript:popup('detailNode.do?id=8a9282c10c5c8487010c5cad3fd1001d');" >
+
+</a>
+
+
+<v:roundrect style='Z-INDEX: 1001; TOP: 180.0px;WIDTH: 90px;HEIGHT: 68px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#F73809'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='3pt,3pt,3pt,3pt' style='font-size:12pt;color:white'><br>省公司<br>系统管理员</v:TextBox>
+<v:fill type = 'gradient' color2 = '#F69679'></v:fill>
+</v:roundrect>
+
+
+
+<a href="javascript:popup('detailcontent.do?id=8a9282c10c5c8487010c5cad3fd1001e');" ><v:line style='Z-INDEX: 1001;  LEFT: 45.0px; TOP: 68.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '12.0px,112.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='5pt' on = 't' string ='派发<->接受'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 45.0px; TOP: 68.0px;POSITION: absolute;' from = '0px,0px' to = '0.0px,112.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'none' endarrow = 'classic'></v:Stroke>
+</v:line>
+</a>
+
+
+<v:roundrect style='visibility:hidden; LEFT: 0px; TOP: 540px;POSITION: absolute;'></v:roundrect>
+
+</div>
+<!---正文结束------------------------------------------------------------------------------------------>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<HTML xmlns:v xmlns:BOCO="BOCO Inter-Telecom">
+<html>
+<head>
+<title>任务工单_工单详细信息</title>
+<STYLE>
+v\:*{behavior:url(#default#VML);}
+</STYLE>
+<link rel="stylesheet" href="/EOMS_J2EE/css/table_style.css" type="text/css">
+<SCRIPT LANGUAGE="JavaScript">
+
+<!--
+//选定区域打印
+function printit() {
+  htmlcode=window.document.body.innerHTML;
+  sprnstr="<!--startprint-->";
+  eprnstr="<!--endprint-->";
+  var prnhtml=htmlcode.substr(htmlcode.indexOf(sprnstr)+17);
+  prnhtml=prnhtml.substr(prnhtml.indexOf(sprnstr)+17);
+  prnhtml=prnhtml.substring(0,prnhtml.indexOf(eprnstr));
+  window.document.body.innerHTML=prnhtml;
+  window.print();
+  window.document.body.innerHTML=htmlcode;
+  window.location.href=window.location.href;
+}
+//弹出模态窗口
+function popup(sURL){
+	dWinOrnaments = "status:no;help:no;scroll:auto;resizable:no;dialogHeight:450px;dialogWidth:480px;";
+	dWin = showModalDialog(sURL, window, dWinOrnaments);
+}
+//-->
+</SCRIPT>
+<import namespace=BOCO implementation="/EOMS_J2EE/css/button/genericButton.htc"/>
+</head>
+
+<body topmargin=0 marginheight=0 leftmargin=0 marginwidth=0 >
+<br>
+<!---正文开始------------------------------------------------------------------------------------------>
+
+
+
+
+
+
+<br>
+
+
+
+
+  <table border="0" cellspacing="1" cellpadding="1" width="95%" align="center">
+    <tr><td align="right" >
+  
+
+		 
+     
+		<BOCO:genericButton>
+
+        <a href="accept.do?nodeId=8a9281950c13afcb010c242b4fba34e4&amp;worksheetId=8a9281950c13afcb010c24005cdb33e6&amp;sheetId=HN-2-060630-013-00006&amp;dealType=2">接受</a>
+
+		</BOCO:genericButton>&nbsp;&nbsp;&nbsp;&nbsp;
+
+  
+
+		 
+     
+		<BOCO:genericButton>
+
+        <a href="rejectdone.do?nodeId=8a9281950c13afcb010c242b4fba34e4&amp;worksheetId=8a9281950c13afcb010c24005cdb33e6&amp;sheetId=HN-2-060630-013-00006&amp;dealType=4">驳回</a>
+
+		</BOCO:genericButton>&nbsp;&nbsp;&nbsp;&nbsp;
+
+  
+  </td></tr>
+  </table>
+
+  <div  id="flow" style="POSITION: relative;LEFT:20px" >
+  <a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c24005cdb33e7');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 0.0px; TOP: 0.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#F73809'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>运行维护部</front><br><front size=9>李学东</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#F69679'></v:fill>
+</v:roundrect>
+</a>
+
+
+<v:roundrect style='Z-INDEX: 1001; TOP: 0.0px;WIDTH: 80px;HEIGHT: 60px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#F73809'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:12pt;color:white'><front size=5>株洲分公司</front><br>
+<front size=5>株洲分公司管理员</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#F69679'></v:fill>
+</v:roundrect>
+<br>
+<br>
+<v:roundrect style='Z-INDEX: 1001; LEFT: 0.0px; TOP: 180.0px;WIDTH: 60px;HEIGHT: 60px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:12pt;color:white'><front size=5>移动部</front><br><front size=9>郑世伟</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<v:roundrect style='Z-INDEX: 1001; LEFT: 90.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 76px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#F73809'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>省公司</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#F69679'></v:fill>
+</v:roundrect>
+
+
+<v:roundrect style='Z-INDEX: 1001; LEFT: 180.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>岳阳分公司</front><br><front size=9>岳阳管理员</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba34ea');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 270.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>株洲分公司</front><br><front size=9>zz_gdgl</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 0.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>株洲交换中心</front><br><front size=9>陈江波</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba34ed');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 360.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>湘潭分公司</front><br><front size=9>xt_jdy</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 90.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>湘潭交换中心</front><br><front size=9>陈放</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba34f0');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 450.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>娄底分公司</front><br><front size=9>李进</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 180.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>娄底交换中心</front><br><front size=9>李进</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba34f3');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 540.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>常德分公司</front><br><front size=9>cd_gdgl</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 270.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>常德交换中心</front><br><front size=9>吴纯</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba34f6');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 630.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>吉首分公司</front><br><front size=9>吉首分公司管理员</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 360.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>吉首运行维护部</front><br><front size=9>肖亮</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba34f9');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 720.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>张家界分公司</front><br><front size=9>张家界分公司管理员</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 450.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 76px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>龙维志</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<v:roundrect style='Z-INDEX: 1001; LEFT: 540.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 76px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>龙维志</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba34fc');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 810.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>邵阳分公司</front><br><front size=9>陈宝元</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 630.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>邵阳运行维护部</front><br><front size=9>李昆梅</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<v:roundrect style='Z-INDEX: 1001; LEFT: 900.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>长沙分公司</front><br><front size=9>cs_gdgl</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba3502');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 990.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>怀化分公司</front><br><front size=9>怀化分公司管理员</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 720.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>怀化维护部</front><br><front size=9>HH_YangRongHai</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<v:roundrect style='Z-INDEX: 1001; LEFT: 810.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>怀化交换中心</front><br><front size=9>HH_ZhangZhiQiang</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba3505');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 1080.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>衡阳分公司</front><br><front size=9>衡阳分公司管理员</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 900.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>衡阳交换中心</front><br><front size=9>易炜</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba3508');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 1170.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>益阳分公司</front><br><front size=9>yiy_gdgl</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 990.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>益阳交换中心</front><br><front size=9>李静</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba350b');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 1260.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>永州分公司</front><br><front size=9>yz_gdgl1</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 1080.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>永州交换中心</front><br><front size=9>封莉</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailNode.do?id=8a9281950c13afcb010c242b4fba350e');" ><v:roundrect style='Z-INDEX: 1001; LEFT: 1350.0px; TOP: 180.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>郴州分公司</front><br><front size=9>cz_jd1</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+</a><v:roundrect style='Z-INDEX: 1001; LEFT: 1170.0px; TOP: 360.0px;WIDTH: 80px;HEIGHT: 92px;POSITION: absolute;' arcsize = '4321f' coordsize = '21600,21600' fillcolor = '#006699'>
+<v:Stroke startarrow = 'none' endarrow = 'none'></v:Stroke>
+<v:shadow on='t' type='single' color='#d7d7d7' offset='3pt,3pt'></v:shadow>
+<v:TextBox inset='5pt,5pt,5pt,5pt' style='font-size:8pt;color:white'><front size=9>郴州网管中心</front><br><front size=9>郭亚丽</front></v:TextBox>
+<v:fill type = 'gradient' color2 = '#5aaeef'></v:fill>
+</v:roundrect>
+
+
+<a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c24388e2b3566');" ><v:line style='Z-INDEX: 1001;  LEFT: 1030.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-287.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='送审<->审核'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 1030.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c243f836b357d');" ><v:line style='Z-INDEX: 1001;  LEFT: 1030.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-197.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 1030.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c24005cdb3415');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '12.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='送审<->审核'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '0.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34e4');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '102.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '90.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'none' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34e7');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '192.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34ea');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '282.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34ed');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '372.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '360.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34f0');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '462.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '450.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34f3');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '552.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '540.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34f6');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '642.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '630.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34f9');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '732.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '720.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34fc');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '822.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '810.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba34ff');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '912.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '900.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba3502');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '1002.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '990.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba3505');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '1092.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '1080.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba3508');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '1182.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '1170.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba350b');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '1272.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '1260.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c242b4fba350e');" ><v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;;WIDTH:100px' from = '12px,0px' to = '1362.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='派发<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 40.0px; TOP: 92.0px;POSITION: absolute;' from = '0px,0px' to = '1350.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c2f49f1954023');" ><v:line style='Z-INDEX: 1001;  LEFT: 580.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-287.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 580.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c324e7f4346c3');" ><v:line style='Z-INDEX: 1001;  LEFT: 400.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-287.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 400.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c2450753035d1');" ><v:line style='Z-INDEX: 1001;  LEFT: 310.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-287.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 310.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c24d8272a37f6');" ><v:line style='Z-INDEX: 1001;  LEFT: 850.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-197.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 850.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c31d4693c41ed');" ><v:line style='Z-INDEX: 1001;  LEFT: 1120.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-197.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 1120.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c333bfabc492a');" ><v:line style='Z-INDEX: 1001;  LEFT: 760.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-287.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 760.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c335380964970');" ><v:line style='Z-INDEX: 1001;  LEFT: 760.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-197.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 760.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c24427f853588');" ><v:line style='Z-INDEX: 1001;  LEFT: 1390.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-197.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 1390.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c2451868135e4');" ><v:line style='Z-INDEX: 1001;  LEFT: 1300.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-197.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 1300.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c24528c1935f6');" ><v:line style='Z-INDEX: 1001;  LEFT: 490.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-287.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 490.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c2452956035f9');" ><v:line style='Z-INDEX: 1001;  LEFT: 1210.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-197.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 1210.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-180.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><a href="javascript:popup('detailcontent.do?id=8a9281950c13afcb010c3215e0e1451d');" ><v:line style='Z-INDEX: 1001;  LEFT: 670.0px; TOP: 272.0px;POSITION: absolute;;WIDTH:100px' to = '-17px,0px' from = '-287.0px,88.0px' strokecolor = '#000099' strokeweight = '1pt'>
+<v:path textpathok = 't'></v:path>
+<v:textpath style='font:normal normal normal 12pt Arial' on = 't' string ='转派<->回复'/></v:line>
+<v:line style='Z-INDEX: 1001;  LEFT: 670.0px; TOP: 272.0px;POSITION: absolute;' from = '0px,0px' to = '-270.0px,88.0px' strokecolor = '#006699' strokeweight = '1pt'>
+<v:Stroke startarrow = 'classic' endarrow = 'classic'></v:Stroke>
+</v:line>
+
+</a><v:roundrect style='visibility:hidden; LEFT: 0px; TOP: 720px;POSITION: absolute;'></v:roundrect>  </div>
+  </table>
+  <!---正文结束------------------------------------------------------------------------------------------>
+  </body>
+  </html>
+

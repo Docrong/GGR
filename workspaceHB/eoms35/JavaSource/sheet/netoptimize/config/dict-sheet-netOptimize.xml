@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="网络优化工单">
+	<dict id="mainOperateType" description="处理方法">	
+		<item id="0" name="新建派发" description="新建派发" />
+		<item id="22" name="保存草稿" description="保存草稿" />
+		<item id="3" name="草稿派发" description="草稿派发" />
+		<item id="8" name="移交" description="移交" />	
+		<item id="-13" name="强制归档" description="强制归档" />	
+		<item id="-14" name="强制作废" description="强制作废" />
+		<item id="-12" name="作废" description="作废" />
+		<item id="-10" name="抄送" description="抄送" />	
+		<item id="-15" name="抄送确认" description="抄送确认" />
+		<item id="9" name="阶段回复" description="阶段回复" />	
+		<item id="-11" name="阶段通知" description="阶段通知" />
+		<item id="10" name="分派" description="分派" />
+		<item id="11" name="分派回复" description="分派回复" />	
+		<item id="4" name="驳回上一级" description="驳回上一级" />
+		<item id="7" name="处理回复不通过" description="处理回复不通过" />
+		<item id="6" name="处理回复通过" description="处理回复通过" />
+		<item id="55" name="会审回复" description="会审回复" />	
+		<item id="30" name="会审" description="会审" />	
+		<item id="88" name="转审" description="转审" />
+		
+		<item id="1" name="直接实施" description="直接实施" />
+		<item id="67" name="无需实施" description="无需实施" />
+		<item id="2" name="制定方案，提交审核" description="制定方案，提交审核" />
+		<item id="56" name="审批方案" description="审批方案" />
+		<item id="5" name="审批不通过" description="审批不通过" />
+		<item id="66" name="审批通过" description="审批通过" />
+		<item id="64" name="验证实施结果，提交评定结果" description="验证实施结果，提交评定结果" />
+		<item id="46" name="制订方案" description="制订方案" />
+		<item id="62" name="完成配置，反馈实施结果" description="完成配置，反馈实施结果" />
+		<item id="18" name="归档" description="归档" />
+		<item id="80" name="需求受理" description="需求受理" />
+		<item id="61" name="工单受理" description="工单受理" />
+		<item id="111" name="实施(等待被调工单完成)" description="实施(等待被调工单完成)" />
+		<item id="20" name="重新派发" description="重新派发" />
+			
+	</dict>
+	<dict id="activeTemplateId" description="处理方法">	
+	    <item id="cc" name="抄送" description="抄送" />
+	    <item id="reply" name="阶段回复" description="阶段回复" />
+	    <item id="advice" name="阶段通知" description="阶段通知" />	
+		<item id="draftTask" name="草稿" description="草稿" />
+		<item id="AcceptTask" name="需求受理中" description="需求受理中" />
+		<item id="ProjectCreateTask" name="方案制定中" description="方案制定中" />
+		<item id="AuditTask" name="审批中" description="审批中"/>
+		<item id="ExcuteTask" name="实施中" description="实施中" />
+		<item id="ResultEvaluateTask" name="实施结果评估中" description="实施结果评估中" />
+		<item id="report" name="试点总结编写中" description="试点总结编写中" />
+		<item id="rejectTask" name="驳回" description="驳回" />
+		<item id="HoldTask" name="待归档" description="待归档" />
+		<item id="" name="新增工单" description="新增工单" />
+	</dict>
+</dicts>
+

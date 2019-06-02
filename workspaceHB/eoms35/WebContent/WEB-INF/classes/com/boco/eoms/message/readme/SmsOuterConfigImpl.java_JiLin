@@ -1,0 +1,47 @@
+package com.boco.eoms.message.readme;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.sql.DataSource;
+
+import com.boco.eoms.base.util.ApplicationContextHolder;
+import com.boco.eoms.commons.loging.BocoLog;
+import com.boco.eoms.message.dao.ISmsOuterConfig;
+import com.boco.eoms.message.mgr.impl.SmsMonitorManagerImpl;
+
+public class SmsOuterConfigImpl_JiLin implements ISmsOuterConfig {
+	public boolean sendSms(String mobiles, String content) {
+		content=content.trim();
+		boolean returnStr = true;
+
+			DataSource db = (DataSource)ApplicationContextHolder.getInstance().getBean("msgdatasource");
+			Statement stmt = null;
+			Connection conn = null;
+			try {			
+				conn = db.getConnection();
+				stmt = conn.createStatement();
+				content = new String(content.getBytes("GB2312"),"ISO-8859-1");
+				String sql = "insert into taw_hie_monitor (mobile,content) values ('"+ mobiles + "','" + content + "')";
+				
+				stmt.execute(sql);
+				
+			} catch (Exception e) {
+				returnStr = false;
+				e.printStackTrace();
+			} finally {
+				try {
+					if (stmt != null) {
+						stmt.close();
+					}
+					if (conn != null && !conn.isClosed()) {
+						conn.close();
+					}
+				} catch (SQLException e) {
+					BocoLog.error(SmsMonitorManagerImpl.class, e.getMessage());
+				}
+			}
+		return returnStr;
+	}
+}

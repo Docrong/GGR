@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+ 
+	<bean id="IAlgorithmMainDAO"
+		class="com.boco.eoms.sheet.algorithm.dao.hibernate.AlgorithmMainDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="IAlgorithmLinkDAO"
+		class="com.boco.eoms.sheet.algorithm.dao.hibernate.AlgorithmLinkDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="IAlgorithmTaskDAO"
+		class="com.boco.eoms.sheet.algorithm.dao.hibernate.AlgorithmTaskDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="AlgorithmTask"
+		class="com.boco.eoms.sheet.algorithm.model.AlgorithmTask"
+		autowire="byName">
+	</bean>
+	<bean id="AlgorithmLink"
+		class="com.boco.eoms.sheet.algorithm.model.AlgorithmLink"
+		autowire="byName" />
+	<bean id="AlgorithmMain"
+		class="com.boco.eoms.sheet.algorithm.model.AlgorithmMain"
+		autowire="byName" />
+	<bean id="iAlgorithmTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.algorithm.service.impl.AlgorithmTaskManagerImpl">
+				<property name="taskModelObject" ref="AlgorithmTask" />
+				<property name="taskDAO">
+					<ref bean="IAlgorithmTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/algorithmTaskConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iAlgorithmFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.algorithm.service.impl.AlgorithmFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iAlgorithmLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.algorithm.service.impl.AlgorithmLinkManagerImpl">
+				<property name="linkObject" ref="AlgorithmLink" />
+				<property name="linkDAO">
+					<ref bean="IAlgorithmLinkDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>   
+	<bean id="iAlgorithmMainManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.algorithm.service.impl.AlgorithmMainManagerImpl">
+				<property name="mainObject" ref="AlgorithmMain" />
+				<property name="mainDAO">
+					<ref bean="IAlgorithmMainDAO" />
+				</property>
+				<property name="workSheetQO">
+					<ref bean="iAlgorithmQo" />
+				</property>
+				<property name="flowTemplateName">
+					<value>AlgorithmProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/algorithm-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="iAlgorithmQo"
+		class="com.boco.eoms.sheet.algorithm.qo.impl.AlgorithmQoImpl"
+		autowire="byName" singleton="false">
+		<property name="poMain" value="AlgorithmMain" />
+		<property name="poLink" value="AlgorithmLink" />
+		<property name="poTask" value="AlgorithmTask" />
+		<property name="aliasMain" value="algorithmMain" />
+		<property name="aliasLink" value="algorithmLink" />
+		<property name="aliasTask" value="algorithmTask" />
+
+	</bean>
+
+	<bean id="Algorithm" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.algorithm.webapp.action.AlgorithmMethod">
+				<property name="businessFlowService">
+					<ref bean="iAlgorithmFlowManager" />
+				</property>
+				<property name="linkService"
+					ref="iAlgorithmLinkManager" />
+				<property name="mainService"
+					ref="iAlgorithmMainManager" />
+				<property name="sheetTask" ref="AlgorithmTask" />
+				<property name="taskService"
+					ref="iAlgorithmTaskManager" />
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/algorithm-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+
+	
+	
+	
+</beans>

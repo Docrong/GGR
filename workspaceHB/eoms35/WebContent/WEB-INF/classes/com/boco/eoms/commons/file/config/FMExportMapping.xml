@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<description>a map file for our new template system</description>
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMExportHeader">
+		<map-to xml="header" />
+		<field name="col" type="integer">
+			<bind-xml name="col" node="attribute" />
+		</field>
+		<field name="headerName" type="string" />
+		<field name="fieldName" type="string" />
+		<field name="type" type="string" />
+		<field name="length" type="integer" />
+		<field name="isNull" type="string" />
+	</class>
+
+
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMExportHeaders">
+		<map-to xml="headers" />
+		<!-- 
+		<field name="startCol" type="integer">
+			<bind-xml name="startCol" node="attribute" />
+		</field>
+		<field name="endCol" type="integer">
+			<bind-xml name="endCol" node="attribute" />
+		</field>
+		-->
+		<field name="startRow" type="integer">
+			<bind-xml name="startRow" node="attribute" />
+		</field>
+		<field name="endRow" type="integer">
+			<bind-xml name="endRow" node="attribute" />
+		</field>
+
+		<field name="header"
+			type="com.boco.eoms.commons.file.config.model.FMExportHeader"
+			collection="collection" />
+	</class>
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMExportFont">
+		<field name="family" type="string">
+			<bind-xml name="family" node="attribute" />
+		</field>
+		<field name="weight" type="string">
+			<bind-xml name="weight" node="attribute" />
+		</field>
+		<field name="style" type="string">
+			<bind-xml name="style" node="attribute" />
+		</field>
+		<field name="size" type="integer">
+			<bind-xml name="size" node="attribute" />
+		</field>
+		<field name="color" type="string">
+			<bind-xml name="color" node="attribute" />
+		</field>	
+		<field name="text" type="string">
+			<bind-xml name="text" node="attribute" />
+		</field>	
+	</class>
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMExportTitle">
+		<map-to xml="title" />
+		<field name="startCol" type="integer">
+			<bind-xml name="startCol" node="attribute" />
+		</field>
+		<field name="endCol" type="integer">
+			<bind-xml name="endCol" node="attribute" />
+		</field>
+		<field name="startRow" type="integer">
+			<bind-xml name="startRow" node="attribute" />
+		</field>
+		<field name="endRow" type="integer">
+			<bind-xml name="endRow" node="attribute" />
+		</field>
+		<field name="font" type="com.boco.eoms.commons.file.config.model.FMExportFont" />
+	</class>
+
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMExportTitles">
+		<map-to xml="titles" />
+		<field name="title"
+			type="com.boco.eoms.commons.file.config.model.FMExportTitle" collection="collection" />
+	</class>
+
+
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMExportPage">
+		<map-to xml="page" />
+		
+		<field name="name" type="string">
+			<bind-xml name="name" node="attribute" />
+		</field>
+
+		<field name="num" type="integer">
+			<bind-xml name="num" node="attribute" />
+		</field>
+		<field name="className" type="string">
+			<bind-xml name="className" node="attribute" />
+		</field>		
+
+		<field name="titles"
+			type="com.boco.eoms.commons.file.config.model.FMExportTitles"/>
+			
+		<field name="headers"
+			type="com.boco.eoms.commons.file.config.model.FMExportHeaders"  collection="collection"/>
+	</class>
+
+	<class
+		name="com.boco.eoms.commons.file.config.model.FMExportPages">
+		<map-to xml="pages" />
+		<field name="page"
+			type="com.boco.eoms.commons.file.config.model.FMExportPage" collection="collection"/>
+	</class>
+
+
+</mapping>

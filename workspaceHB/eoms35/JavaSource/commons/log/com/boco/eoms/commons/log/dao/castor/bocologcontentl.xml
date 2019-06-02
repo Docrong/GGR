@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bocologcontents siteName="DAY DAY UP">
+	<contents id="1">
+		<userid>admin</userid>
+		<modeid>9988</modeid>
+		<loglevel>debug</loglevel>
+		<operid>998866</operid>
+		<remark>mm</remark>
+		<savetime>/shangdi</savetime>
+		<ramoteip>2008</ramoteip>
+		<saveyear>admin</saveyear>
+		<savemonth>9988</savemonth>
+		<saveday>998866</saveday>
+		<message>/shangdi</message>
+		<modelname>998866</modelname>
+		<opername> /shangdi </opername>
+		<classname>classanme</classname>
+		<filepathandname>filapathandname</filepathandname>
+	</contents>
+</bocologcontents>

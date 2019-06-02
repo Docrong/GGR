@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="BusinessPilot" description="新业务试点流程">
+   <flow-define id="BusinessPilotProcess" description="新业务试点工单">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="pilot" role="" condition="" name="派发"/>
+       <to-phase-id id="draft" role="" condition="" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="draft" name="草稿" type="operate">   
+        <to-phase-id id="pilot" role="" condition="" name="派发"/>
+     </phase-id> 
+     <phase-id id="pilot" name="新业务试点方案实施" type="operate">  
+        <to-phase-id id="callProcess" role="" condition="" name="启动变更工单"/>
+        <to-phase-id id="strategy" role="" condition="" name="测试通过"/>
+        <to-phase-id id="hold" role="" condition="" name="测试不通过"/>
+     </phase-id>     
+     <phase-id id="strategy" name="制定维护策略" type="operate">
+        <to-phase-id id="prepare" role="" condition="" name="交维准备"/>
+     </phase-id>
+     <phase-id id="prepare" name="新业务试点交维准备" type="operate">
+     	<to-phase-id id="run" role="" condition="" name="试运行"/>
+     </phase-id>
+     <phase-id id="run" name="试运行" type="operate">
+     	<to-phase-id id="check" role="" condition="" name="检查技术规范"/>
+     </phase-id>
+     <phase-id id="check" name="检查是否需要修改技术规范" type="operate">
+     	<to-phase-id id="report" role="" condition="" name="提交试点运行报告"/>
+     </phase-id>
+     <phase-id id="report" name="提交新业务试点运行报告" type="operate">
+     	<to-phase-id id="note" role="" condition="" name="等待通知"/>
+     </phase-id>
+     <phase-id id="note" name="等待通知" type="operate">
+     	<to-phase-id id="note" role="" condition="" name="延期"/>
+     </phase-id>
+     <phase-id id="hold" name="归档工单" type="operate">      
+     </phase-id>
+     <phase-id id="callProcess" name="启动网络变更工单" type="operate">      
+     </phase-id>
+  </flow-define>
+</WorkFlowRule>

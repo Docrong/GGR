@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title></title>
+  <!-- HTTP 1.1 -->
+  <meta http-equiv="Cache-Control" content="no-store"/>
+  <!-- HTTP 1.0 -->
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <!-- Prevents caching at the Proxy Server -->
+  <meta http-equiv="Expires" content="0"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" type="text/css" media="all" href="../simplicity/theme.css" />
+</head>
+<body>
+<div id="page">
+	<div id="header">header
+		<div id="switchLocale">switchLocale</div>	
+		<div id="branding">branding</div>
+		<div id="search">search</div>
+	</div>
+
+	<div id="content" class="clearfix">
+		<div id="main">main</div>
+	</div>
+	<div id="footer">
+		    <div id="divider"><div></div></div>
+    <span class="left">Version 1.9.3 |
+        <span id="validators">
+            <a href="http://validator.w3.org/check?uri=referer">XHTML Valid</a> |
+            <a href="http://jigsaw.w3.org/css-validator/validator-uri.html">CSS Valid</a>
+        </span>
+        <c:if test="${pageContext.request.remoteUser != null}">
+        | <fmt:message key="user.status"/> <authz:authentication operation="fullName"/>
+        </c:if>
+    </span>
+    <span class="right">
+        &copy; 2006 <a href="http://www.raibledesigns.com">Your Company Here</a>
+    </span>
+	</div>
+</div>
+</body>
+</html>
+

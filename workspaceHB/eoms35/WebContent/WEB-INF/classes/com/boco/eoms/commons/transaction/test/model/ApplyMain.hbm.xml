@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC	"-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd" >
+
+<hibernate-mapping>
+    <class name="com.boco.eoms.commons.transaction.test.model.ApplyMain" table="trans_test_01">
+        <id name="id" column="id" type="string">
+            <generator class="increment"></generator>
+        </id>
+
+        <property name="name" column="name" type="string" />
+        <property name="sex" column="sex" type="string" />
+    </class>
+</hibernate-mapping>

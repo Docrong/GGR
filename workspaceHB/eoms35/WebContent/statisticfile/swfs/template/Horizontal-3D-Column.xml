@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Horizontal 3DColumn" minimum_value="0">
+      <animation enabled="yes" speed="30" type="step" appearance="size"/>
+      <values decimal_places="3" y_offset="-3">
+        <font type="verdana_embed_tf" color="0x044768"/>
+      </values>
+      <names>
+        <font type="verdana_embed_tf" color="Black"/>
+      </names>
+      <hints enabled="no"/>
+      <column_chart block_space = "10" column_space = "10" left_space = "60" right_space = "40" up_space = "10"  down_space = "20" deep="6">
+        <border enabled="no"/>
+        <background auto_color="no" color="0x056492"/>
+      </column_chart>
+    </chart>
+    <workspace>
+      <base_area enabled="no" />
+      <chart_area x="30" y="30" deep="4">
+      <background color="Gray" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xC9D1DD</color>
+	      <color>0x8591A1</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="1.57"/>
+	  </background>
+	  </chart_area>
+	  <grid>	    
+	    <values lines_step="5">
+		<captions y_offset="-25" />
+	    </values>
+	  </grid>
+    </workspace>
+  </type>
+</root>

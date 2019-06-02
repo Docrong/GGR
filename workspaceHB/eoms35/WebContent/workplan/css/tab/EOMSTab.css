@@ -1,0 +1,9 @@
+BODY {
+	BACKGROUND-COLOR: #ece9d8
+}
+BOCO\:EOMSTab {
+	POSITION: relative; leftImage: url(images/tabLeft.gif); centerImage: url(images/tabCenter.gif); rightImage: url(images/tabRight.gif); leftImageOver: url(images/tabLeftOver.gif); centerImageOver: url(images/tabCenterOver.gif); rightImageOver: url(images/tabRightOver.gif); leftImageDown: url(images/tabLeftDown.gif); centerImageDown: url(images/tabCenterDown.gif); rightImageDown: url(images/tabRightDown.gif)
+}
+BOCO\:EOMSTabPage {
+	OVERFLOW: hidden; POSITION: absolute; TOP: -500px; lightShadow: #E3E0D0; midShadow: #D0CEBF; pageBorder: #919B9C; lightColor: #FCFCFE; darkColor: #F4F3EE
+}

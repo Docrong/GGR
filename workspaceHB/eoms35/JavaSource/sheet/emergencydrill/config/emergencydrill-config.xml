@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="EmergencyDrill" description="应急预案演练工单">
+   <flow-define id="EmergencyDrillProcess" description="应急预案演练工单">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="MakeProgramTask" role="dealPerformer@366" condition="${operateType}==0" name="新建派发"/>
+       <to-phase-id id="DraftTask" role="" condition="${operateType}==22" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="DraftTask" name="草稿" type="operate">       
+       <to-phase-id id="MakeProgramTask" role="dealPerformer@366" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id>
+     <phase-id id="RejectTask" name="被驳回" type="operate">       
+       <to-phase-id id="MakeProgramTask" role="dealPerformer@366" condition="${operateType}==54" name="重新派发"/>
+     </phase-id> 
+     <phase-id id="MakeProgramTask" name="方案制定中" type="operate">       
+       <to-phase-id id="AuditProgramTask" role="dealPerformer@365" condition="${operateType}==91" name="完成方案，提交审核"/>
+        <to-phase-id id="RejectTask" role="" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id> 
+     <phase-id id="AuditProgramTask" name="待审核" type="operate">       
+       <to-phase-id id="ImplementProgramTask" role="dealPerformer@367" condition="${operateType}==921" name="审核方案/通过"/>
+       <to-phase-id id="MakeProgramTask" role="" condition="${operateType}==922" name="审核方案/不通过/驳回"/>
+     </phase-id> 
+      <phase-id id="ImplementProgramTask" name="实施中" type="operate">       
+       <to-phase-id id="SubmitSummaryTask" role="dealPerformer@366" condition="${operateType}==93" name="完成演练，提交演练结果"/>
+        <to-phase-id id="AuditProgramTask" role="" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id>
+      <phase-id id="SubmitSummaryTask" name="报告编写中" type="operate">       
+       <to-phase-id id="AuditSummaryTask" role="dealPerformer@365" condition="${operateType}==94" name="演练总结，提交总结报告"/>
+       <to-phase-id id="ImplementProgramTask" role="" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id>
+     <phase-id id="AuditSummaryTask" name="待审核" type="operate">       
+       <to-phase-id id="HoldTask" role="dealPerformer@365" condition="${operateType}==951" name="审核总结报告/通过"/>
+       <to-phase-id id="SubmitSummaryTask" role="" condition="${operateType}==952" name="审核总结报告/不通过/驳回"/>
+       <to-phase-id id="AmendmentProgramTask" role="dealPerformer@366" condition="${operateType}==953" name="审核总结报告/通过修订预案"/>
+     </phase-id>
+     <phase-id id="AmendmentProgramTask" name="预案修订中" type="operate">       
+       <to-phase-id id="HoldTask" role="" condition="${operateType}==96" name="完成总结报告修改，提交预案"/>
+         <to-phase-id id="AuditSummaryTask" role="" condition="${operateType}==4" name="驳回上一级"/>
+     </phase-id>
+     
+     <phase-id id="HoldTask" name="待归档" type="operate">   
+              <to-phase-id id="AuditSummaryTask" role="" condition="${operateType}==102" name="退回"/>  
+              <to-phase-id id="AmendmentProgramTask" role="" condition="${operateType}==102" name="退回"/>    
+     </phase-id>
+  </flow-define>
+</WorkFlowRule>

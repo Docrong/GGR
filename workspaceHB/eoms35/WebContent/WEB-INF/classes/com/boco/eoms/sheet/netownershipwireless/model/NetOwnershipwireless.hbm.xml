@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.netownershipwireless.model.NetOwnershipwireless"
+            table="CommonFault_Net_Team_WX"
+    >
+
+    <id
+        name="id"
+        column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+		<property name="netId" />
+		<property name="netName" />
+		<property name="netType" />
+		<property name="city" />
+		<property name="county" />
+		<property name="cityId" />
+		<property name="countyId" />
+		<property name="saveTime" />
+		<property name="createUserId" />
+		<property name="createDeptId" />
+		<property name="createTime" />
+		<property name="teamRoleId" />
+		<property name="centerId" />
+		<property name="deleted" />
+		<property name="eomsCounty" />
+		<property name="eomsCountyId" />
+		<property name="eomsCity" />
+		<property name="eomsCityId" />
+		<property name="ifAutotran" />
+		<property name="ccObject" />
+		<property name="netNameByEdis" />
+		
+		<property name="tttype" />
+		<property name="ifgs" />
+		<property name="ifmz" />
+		<property name="ifgj" />
+		<property name="workstatprop" />
+		<property name="classes" />
+		<property name="ttRoleId" />
+		<property name="remark4" />
+		<property name="zhuanye" />
+		
+    </class>    
+
+</hibernate-mapping>
+

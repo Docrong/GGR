@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.commonfault.model.Filedowninfo"
+            table="filedowninfo"
+    >
+
+    <id
+        name="id"
+            column="id"
+        
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+   <generator class="assigned">
+
+    </generator>
+
+    </id>
+       
+		<property name="year" column="year" />
+		<property name="month" column="month"/>
+		<property name="filename" column="filename"/>
+  		<property name="filepath" column="filepath"/>
+
+    </class>    
+
+</hibernate-mapping>
+

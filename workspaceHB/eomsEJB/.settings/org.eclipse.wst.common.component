@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="eomsEJB">
+        <module-type module-type-id="jst.ejb">
+            <version>2.1</version>
+        </module-type>
+        <wb-resource deploy-path="/" source-path="/ejbModule"/>
+        <dependent-module deploy-path="/" handle="module:/resource/eomsEJBClient/eomsEJBClient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="ejbModule"/>
+        <property name="ClientProject" value="eomsEJBClient"/>
+        <property name="ClientJARURI" value="eomsEJBClient.jar"/>
+    </wb-module>
+</project-modules>

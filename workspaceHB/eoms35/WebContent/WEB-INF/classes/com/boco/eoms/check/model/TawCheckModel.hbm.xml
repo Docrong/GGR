@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.check.model.TawCheckModel"  table="taw_check_model">
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="MODEL_NAME" length="100" name="modelName" type="string"/>
+<property column="MODEL_PERSON" length="100" name="modelPerson" type="string"/>
+<property column="MODEL_TYPE" length="100" name="modelType" type="string"/>
+<property column="MODEL_TARGER_NAME" length="100" name="modelTargerName" type="string"/>
+<property column="MODEL_TARGER" length="100" name="modelTarger" type="string"/>
+<property column="MODEL_REMARK" length="100" name="modelRemark" type="string"/>
+<property column="MODEL_DELETED" length="2" name="modelDeleted" type="string"/>
+<property column="TARGER_MODEL_TYPE" length="100" name="targerModelType" type="integer"/>
+<property column="TABLE_NAME" length="100" name="tableName" type="string"/>
+<property column="MODEL_ALIAS_NAME" length="100" name="modelAliasName" type="string"/>
+<property column="MODEL_START_ROW" length="100" name="modelStartRow" type="integer"/>
+<property column="MODEL_START_COL" length="100" name="modelStartCol" type="integer"/>
+<property column="MODEL_SORT" length="100" name="modelSort" type="string"/>
+<property column="TYPE_FLAG" length="100" name="typeFlag" type="string"/>
+<property column="MODEL_FULL_SCORE" length="100" name="modelFullScore" type="string"/>
+
+</class>
+</hibernate-mapping>

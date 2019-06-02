@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans> 
+		
+	 <form-bean
+      name="tawSystemAreaForm"
+      type="com.boco.eoms.commons.system.area.webapp.form.TawSystemAreaForm"
+    />
+	</form-beans>
+	 <!-- ========== Global Exceptions Definitions =================================== -->
+      <global-exceptions>
+        <exception type="java.lang.Exception"
+            key="errors.general"
+            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
+
+  <!-- ========== Global Forward Definitions =================================== -->
+      <global-forwards>
+        <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
+        <!-- Forwards specified in actions -->        
+        <forward name="addUser" path="/editUser.do?method=Add&amp;amp;from=list" redirect="true"/>
+        <forward name="cancelUser" path="/editUser.do?method=Cancel"/>
+        <forward name="deleteUser" path="/editUser.do?method=Delete"/>
+        <forward name="updateUser" path="/userProfile.do"/>
+        <!-- Forwards for links used in Menu -->
+        <forward name="editProfile" path="/editProfile.do"/>
+        <forward name="editUser" path="/editUser.do"/>
+        <forward name="viewUsers" path="/users.do" redirect="true"/>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+    </global-forwards>
+
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+
+
+<action-mappings>
+<action path="/areaBasicDataCfg" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/tawSystemArea/tawSystemAreaTree.jsp"/>
+<action
+      path="/tawSystemAreas"
+      type="com.boco.eoms.commons.system.area.webapp.action.TawSystemAreaAction"
+      name="tawSystemAreaForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawSystemArea/tawSystemAreaForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawSystemArea/tawSystemAreaList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/area/tawSystemAreas.do"
+        redirect="true"
+        contextRelative="true"
+      />
+    </action>
+    <action
+      path="/editTawSystemArea"
+      type="com.boco.eoms.commons.system.area.webapp.action.TawSystemAreaAction"
+      name="tawSystemAreaForm"
+      scope="request"
+      input="list"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawSystemArea/tawSystemAreaForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawSystemArea/tawSystemAreaList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/area/tawSystemAreas.do"
+        redirect="true"
+        contextRelative="true"
+      />
+    </action>
+    <action
+      path="/saveTawSystemArea"
+      type="com.boco.eoms.commons.system.area.webapp.action.TawSystemAreaAction"
+      name="tawSystemAreaForm"
+      scope="request"
+      input="edit"
+      parameter="method"
+      unknown="false"
+      validate="true"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="edit"
+        path="/WEB-INF/pages/tawSystemArea/tawSystemAreaForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="list"
+        path="/WEB-INF/pages/tawSystemArea/tawSystemAreaList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="search"
+        path="/area/tawSystemAreas.do"
+        redirect="true"
+        contextRelative="true"
+      />
+    </action>
+	
+</action-mappings>
+	
+ <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+      <message-resources parameter="config/ApplicationResources"/>
+
+      <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+</struts-config>
+

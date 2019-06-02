@@ -1,0 +1,194 @@
+#tabContainer {
+	width: 400px;
+}
+
+#tabs {
+	float:left;
+	width:100%;
+	background:#DAE0D2 url("bg.gif") repeat-x bottom;
+	line-height:normal;
+}
+
+#tabs ul {
+	margin:0;
+	padding:14px 10px 0;
+	list-style:none;
+}
+
+#tabs li {
+	float:left;
+	background:url("left.gif") no-repeat left top;
+	margin:0;
+	padding:0 0 0 9px;
+}
+
+#tabs span {
+	float:left;
+	display:block;
+	background:url("right.gif") no-repeat right top;
+	padding:5px 15px 4px 6px;
+	text-decoration:none;
+	color:#321;
+}
+
+#tabs li.blue {
+	background:url("leftBlue.gif") no-repeat left top;
+}
+
+#tabs span.blue {
+	background:url("rightBlue.gif") no-repeat right top;
+}
+
+
+#tabs li.red {
+	background:url("leftRed.gif") no-repeat left top;
+}
+
+#tabs span.red {
+	background:url("rightRed.gif") no-repeat right top;
+}
+
+
+#tabs li.green {
+	background:url("leftGreen.gif") no-repeat left top;
+}
+
+#tabs span.green {
+	background:url("rightGreen.gif") no-repeat right top;
+}
+
+
+#tabs li.darkgreen {
+	background:url("leftDarkGreen.gif") no-repeat left top;
+}
+
+#tabs span.darkgreen {
+	background:url("rightDarkGreen.gif") no-repeat right top;
+}
+
+
+#tabs li.orange {
+	background:url("leftOrange.gif") no-repeat left top;
+}
+
+#tabs span.orange {
+	background:url("rightOrange.gif") no-repeat right top;
+}
+
+
+#tabs .current {
+	/* background-image:url("left_on.gif"); */
+}
+
+#tabs .current span {
+	/* background-image:url("right_on.gif"); */
+	color:black;
+	padding-bottom:5px;
+	font-weight: bold;
+}
+
+#tabs .bluecurrent {
+	background-image:url("leftBlue.gif");
+}
+
+#tabs .bluecurrent span {
+	background-image:url("rightBlue.gif");
+	color:black;
+	padding-bottom:5px;
+	font-weight: bold;
+}
+
+#tabs .redcurrent {
+	background-image:url("leftRed.gif");
+}
+
+#tabs .redcurrent span {
+	background-image:url("rightRed.gif");
+	padding-bottom:5px;
+	font-weight: bold;
+}
+
+#tabs .greencurrent {
+	background-image:url("leftGreen.gif");
+}
+
+#tabs .greencurrent span {
+	background-image:url("rightGreen.gif");
+	color:black;
+	padding-bottom:5px;
+	font-weight: bold;
+}
+
+#tabs .darkgreencurrent {
+	background-image:url("leftDarkGreen.gif");
+}
+
+#tabs .darkgreencurrent span {
+	background-image:url("rightDarkGreen.gif");
+	color:black;
+	padding-bottom:5px;
+	font-weight: bold;
+}
+
+#tabs .orangecurrent {
+	background-image:url("leftOrange.gif");
+}
+
+#tabs .orangecurrent span {
+	background-image:url("rightOrange.gif");
+	color:black;
+	padding-bottom:5px;
+	font-weight: bold;
+}
+
+.tabHandle {
+	border: 0px;
+	display: inline;
+	/* cursor: move; */
+}
+
+#tabPanels {
+}
+
+.Panel {
+	background: #dedad5;
+	padding: 5px;
+	border: 1px solid black;
+	border-top: 0px;
+}
+
+.bluePanel {
+	background: #acc6d5;
+	padding: 5px;
+	border: 1px solid black;
+	border-top: 0px;
+}
+
+.redPanel {
+	background: #e6d2cd;
+	padding: 5px;
+	border: 1px solid black;
+	border-top: 0px;
+}
+
+.greenPanel {
+	background: #94ee83;
+	padding: 5px;
+	border: 1px solid black;
+	border-top: 0px;
+}
+
+.darkgreenPanel {
+	background: #08ea08;
+	padding: 5px;
+	border: 1px solid black;
+	border-top: 0px;
+}
+
+.orangePanel {
+	background: #ee8d10;
+	padding: 5px;
+	border: 1px solid black;
+	border-top: 0px;
+	color: white;
+}

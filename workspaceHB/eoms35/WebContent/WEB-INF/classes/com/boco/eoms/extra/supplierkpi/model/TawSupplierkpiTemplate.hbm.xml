@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.extra.supplierkpi.model.TawSupplierkpiTemplate"
+            table="taw_supplierkpi_template"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="assessStatus"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="assessInstanceId"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="creator"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="templateName"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="serviceType"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="specialType"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

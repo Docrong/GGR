@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- <!DOCTYPE document SYSTEM "E:\projects\boco\eoms3.5\01-Project\EOMS-V3.5\source0.1\web\WEB-INF\classes\com\boco\eoms\commons\file\config\FMExportMapping.dtd"> -->
+<pages>
+	<page num="0" className="com.boco.eoms.TawRmUser" name="页码一">
+		<titles>
+			<title startRow="1" endRow="2" startCol="15" endCol="19">
+				<font family="宋体" weight="bold" style="italic" size="30"
+					color="red" text="${area1}区地${year1}年" />
+			</title>
+			<title startRow="7" endRow="11" startCol="20" endCol="40">
+				<font family="宋体" weight="bold" style="italic" size="30" color="red" text="欢迎，欢迎"/>
+			</title>
+		</titles>
+ 
+		<headers startCol="4" endCol="43" startRow="1" endRow="5">
+			<header col="1">
+					<!-- 显示名称 -->
+					<headerName>联系人名称</headerName>
+					<!-- 字段名称 -->
+					<fieldName>contactName</fieldName>
+					<!-- 字段类型 -->
+					<type>String</type>
+					<!-- 字段长度 -->
+					<length>50</length>
+					<!-- 是否可以为空 -->
+					<isNull>false</isNull>
+				</header>
+				<header col="2">
+					<headerName>所属部门名称</headerName>
+					<fieldName>deptName</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+				<header col="3">
+					<headerName>联系人职务</headerName>
+					<fieldName>position</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+					<header col="4">
+					<headerName>联系人电话号码</headerName>
+					<fieldName>tele</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+					<header col="5">
+					<headerName>联系人地址</headerName>
+					<fieldName>address</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+					<header col="6">
+					<headerName>联系人电子邮件地址</headerName>
+					<fieldName>email</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+		</headers>
+
+
+		<headers startCol="0" endCol="9" startRow="6" endRow="10">
+			<header col="1">
+					<!-- 显示名称 -->
+					<headerName>联系人名称</headerName>
+					<!-- 字段名称 -->
+					<fieldName>contactName</fieldName>
+					<!-- 字段类型 -->
+					<type>String</type>
+					<!-- 字段长度 -->
+					<length>50</length>
+					<!-- 是否可以为空 -->
+					<isNull>false</isNull>
+				</header>
+				<header col="2">
+					<headerName>所属部门名称</headerName>
+					<fieldName>deptName</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+				<header col="3">
+					<headerName>联系人职务</headerName>
+					<fieldName>position</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+					<header col="4">
+					<headerName>联系人电话号码</headerName>
+					<fieldName>tele</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+					<header col="5">
+					<headerName>联系人地址</headerName>
+					<fieldName>address</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+					<header col="6">
+					<headerName>联系人电子邮件地址</headerName>
+					<fieldName>email</fieldName>
+					<type>String</type>
+					<length>50</length>
+					<isNull>true</isNull>
+				</header>
+		</headers>
+	</page>
+
+ 
+</pages>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<serviceId>
+		<userServiceId></userServiceId>
+		<deptServiceId></deptServiceId>
+		<roomServiceId></roomServiceId>
+	</serviceId>
+	<statDay>2</statDay>
+	<switchQualityCheck>1</switchQualityCheck>
+</root>

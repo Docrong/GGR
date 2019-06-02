@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.job.model.TawCommonsJobsort"
+            table="taw_commons_jobsort"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="deleted"
+                length="5"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="jobClassName"
+                length="2000"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="jobSortName"
+                length="200"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="500"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="maxExecuteTime"
+                length="50"
+                not-null="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

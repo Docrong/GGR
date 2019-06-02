@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="IGroupComplaintMainDao" class="com.boco.eoms.sheet.groupcomplaint.dao.hibernate.GroupComplaintMainDaoHibernate" autowire="byName">
+	
+      </bean>
+	<bean id="IGroupComplaintLinkDao" class="com.boco.eoms.sheet.groupcomplaint.dao.hibernate.GroupComplaintLinkDaoHibernate" autowire="byName">
+	  
+      </bean>
+
+	<bean id="iGroupComplaintTaskDAO" class="com.boco.eoms.sheet.groupcomplaint.dao.hibernate.GroupComplaintTaskDAOHibernate" autowire="byName">
+      
+      </bean>
+</beans>

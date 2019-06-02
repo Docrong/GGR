@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.message.model.SmsContentTemplate"
+            table="sms_content_template"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="name"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        
+        <property
+            name="content"
+                length="3000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="remark"
+                length="3000"
+                not-null="false"
+                unique="false"
+                column="remark"
+        >
+
+        </property>
+
+                
+        <property
+            name="deleted"
+                length="5"
+                not-null="false"
+                unique="false"
+                column="deleted"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

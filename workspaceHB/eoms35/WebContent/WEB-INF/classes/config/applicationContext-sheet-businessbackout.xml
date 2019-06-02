@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--BusinessBackout-START-->    
+
+    <bean id="IBusinessBackoutMainDAO"
+		class="com.boco.eoms.sheet.businessbackout.dao.hibernate.BusinessBackoutMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IBusinessBackoutLinkDAO"
+		class="com.boco.eoms.sheet.businessbackout.dao.hibernate.BusinessBackoutLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IBusinessBackoutTaskDAO"
+		class="com.boco.eoms.sheet.businessbackout.dao.hibernate.BusinessBackoutTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="BusinessBackoutTask"
+		class="com.boco.eoms.sheet.businessbackout.task.impl.BusinessBackoutTaskImpl" autowire="byName">
+     </bean>
+    <bean id="BusinessBackoutLink"
+		class="com.boco.eoms.sheet.businessbackout.model.BusinessBackoutLink"
+		autowire="byName" />
+	<bean id="BusinessBackoutMain"
+		class="com.boco.eoms.sheet.businessbackout.model.BusinessBackoutMain"
+		autowire="byName" />
+	<bean id="ibusinessbackoutTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessbackout.service.impl.BusinessBackoutTaskManagerImpl">
+				<property name="taskModelObject" ref="BusinessBackoutTask" />
+				<property name="taskDAO">
+					<ref bean="IBusinessBackoutTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/BusinessBackoutTaskConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iBusinessBackoutFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessbackout.service.impl.BusinessBackoutFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iBusinessBackoutLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessbackout.service.impl.BusinessBackoutLinkManagerImpl">
+				<property name="linkObject" ref="BusinessBackoutLink"/>
+				<property name="linkDAO">
+				  <ref bean="IBusinessBackoutLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iBusinessBackoutMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessbackout.service.impl.BusinessBackoutMainManagerImpl">
+			    <property name="mainObject" ref="BusinessBackoutMain" />
+				<property name="mainDAO">
+				 <ref bean="IBusinessBackoutMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iBusinessBackoutQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>BusinessBackoutProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/businessbackout-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iBusinessBackoutQo"
+		class="com.boco.eoms.sheet.businessbackout.qo.impl.BusinessBackoutQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="BusinessBackoutMain" />
+		<property name="poLink" value="BusinessBackoutLink" />
+		<property name="aliasMain" value="businessBackoutMain" />
+		<property name="aliasLink" value="businessBackoutLink" />
+		<property name="poTask" value="BusinessBackoutTaskImpl" />
+	    <property name="aliasTask" value="businessBackoutTask" />			
+	</bean>
+
+	<bean id="BusinessBackout" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessbackout.webapp.action.BusinessBackoutMethod">
+				<property name="businessFlowService" >
+					<ref bean="iBusinessBackoutFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iBusinessBackoutLinkManager" />
+				<property name="mainService"
+					ref="iBusinessBackoutMainManager" />
+				<property name="sheetTask"
+					ref="BusinessBackoutTask" />
+				<property name="taskService"
+					ref="ibusinessbackoutTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/businessbackout-config.xml</value>
+				</property>				
+			</bean>
+		</property>
+	</bean>        
+	<bean id="iBusinessBackoutCrmService" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessbackout.service.impl.BusinessBackoutCrmManagerImpl">
+			</bean>
+		</property>
+	</bean>
+	<bean id="iBusinessBackoutInterfaceManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businessbackout.service.impl.BusinessBackoutInterfaceManagerImpl">
+			</bean>
+		</property>
+	</bean>
+     <!--BusinessBackout-END-->  
+</beans>

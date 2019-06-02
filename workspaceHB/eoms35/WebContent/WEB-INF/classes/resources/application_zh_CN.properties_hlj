@@ -1,0 +1,1827 @@
+------------Public label begin------------
+label.yes=\u662f
+label.no=\u5426
+label.ok=\u786e\u5b9a
+label.submit=\u63d0\u4ea4
+label.process=\u6267\u884c
+label.query=\u67e5\u8be2
+label.save=\u4fdd\u5b58
+label.cancel=\u8fd4\u56de
+label.reset=\u91cd\u7f6e
+label.rigor=\u7cbe\u786e\u67e5\u8be2
+label.print=\u6253\u5370
+label.sent=\u53d1\u9001
+label.next=\u4e0b\u4e00\u9875
+label.continue=\u7ee7\u7eed
+label.fill=\u586b\u5199
+label.finish=\u5b8c\u6210
+label.edit=\u7f16\u8f91
+label.add=\u65b0\u589e
+label.view=\u663e\u793a
+label.remove=\u5220\u9664
+label.list=\u5217\u8868
+label.config=\u914d\u7f6e
+label.analyze=\u7ec6\u5316\u89d2\u8272
+label.year=\u5e74
+label.month=\u6708
+label.day=\u65e5
+label.v_priv=\u663e\u793a\u6743\u9650
+label.come=\u8fdb\u5165
+label.e_priv=\u914d\u7f6e\u6743\u9650
+label.nextp=\u4e0b\u4e00\u6b65
+label.transmit = \u6d3e\u53d1
+label.reply = \u56de\u590d
+label.reject= \u9a73\u56de
+label.close = \u7ed3\u675f
+label.pagetitle=\u6b22\u8fce\u4f7f\u7528\u7535\u5b50\u8fd0\u7ef4\u7cfb\u7edf
+label.select=\u9009\u62e9
+label.back=\u8fd4\u56de
+label.success=\u64cd\u4f5c\u6267\u884c\u6210\u529f\uff01
+label.failure=\u64cd\u4f5c\u6267\u884c\u5931\u8d25\uff01
+label.timeout=\u767b\u9646\u8d85\u65f6\uff0c\u8bf7\u91cd\u65b0\u767b\u9646\u3002
+label.nopriv=\u5bf9\u4e0d\u8d77\uff0c\u60a8\u6ca1\u6709\u6267\u884c\u8be5\u9879\u64cd\u4f5c\u7684\u6743\u5229\uff0c\u8bf7\u4e0e\u7ba1\u7406\u5458\u8054\u7cfb\u3002
+label.p_because=\u56e0\u4e3a\u60a8\u662f\u666e\u901a\u7528\u6237,
+label.modi=\u4fee\u6539
+label.publish=\u53d1\u5e03
+label.checkpublish=\u63d0\u4ea4\u5ba1\u6838
+label.board=\u4e13\u9898
+label.all=\u6240\u6709
+label.classify=\u5f52\u7c7b
+label.delboardmsg=\u60a8\u786e\u5b9e\u8981\u5220\u9664\u8fd9\u4e2a\u4e13\u9898\u5417\uff1f
+label.information=\u4fe1\u606f\u53d1\u5e03
+label.chat=\u4e1a\u52a1\u8bba\u575b
+label.check=\u5ba1\u6838
+label.checkPass=\u5ba1\u6838\u901a\u8fc7
+label.boardadmin=\u4e13\u9898\u7ba1\u7406
+label.nextPage=\u4e0b\u4e00\u9875
+label.prePage=\u4e0a\u4e00\u9875
+label.firstPage=\u9996\u9875
+label.lastPage=\u672b\u9875
+label.left=\u539f\u5217\u8868
+label.rightt=\u5176\u4ed6\u5217\u8868
+label.rightb=\u76ee\u6807\u5217\u8868
+label.add1=\u589e\u52a0->
+label.remove1=\u5220\u9664<-
+label.alladd=\u5168\u52a0>>
+label.alldel=\u5168\u5220<<
+label.alerto=\u8be5\u64cd\u4f5c\u5df2\u5b58\u5728\u4e8e\u53f3\u8fb9\u5217\u8868\u4e2d\uff01\u8bf7\u91cd\u65b0\u9009\u62e9
+label.alertr=\u8be5\u89d2\u8272\u5df2\u5b58\u5728\u4e8e\u53f3\u8fb9\u5217\u8868\u4e2d\uff01\u8bf7\u91cd\u65b0\u9009\u62e9
+label.addoper=\u6dfb\u52a0\u64cd\u4f5c
+label.adddomid=\u914d\u7f6e\u57df
+label.savesuccess=\u4fdd\u5b58\u6210\u529f\uff01
+label.info=\u63d0\u793a\u9875
+label.logoff=\u9000\u51fa
+label.mywork={0} ,\u60a8\u597d\uff01\u60a8\u6709 {1} \u5f20\u5de5\u5355\u672a\u5904\u7406\uff0c\u8bf7\u53ca\u65f6\u5904\u7406\u3002
+label.minute=\u5206\u949f
+label.deptTree=\u90e8\u95e8\u6811
+label.hide=\u9690\u85cf
+label.selall=\u5168\u9009
+label.domain=\u57df\u4fe1\u606f\u6811\u56fe
+label.recover=\u6062\u590d\u5220\u9664
+label.delforever=\u6c38\u4e45\u5220\u9664
+
+------------Public error begin------------
+error.nopriv=\u5bf9\u4e0d\u8d77\uff0c{0} \u60a8\u6ca1\u6709\u6267\u884c\u8be5\u9879\u64cd\u4f5c\u7684\u6743\u5229\uff0c\u8bf7\u4e0e\u7ba1\u7406\u5458\u8054\u7cfb\u3002
+errors.nousers_roles=\u8bf7\u9009\u62e9\u4eba\u5458\uff01
+errors.header=<hr>\u9519\u8bef\u53d1\u751f\uff1a
+errors.footer=<hr>\u8bf7\u66f4\u6b63\uff01
+error.null=Blank input is not valid for field {0}.
+error.general={0}
+error.notfound=Not found!
+error.object.notfound=Object {0} was not found (probabaly has been removed)!
+error.save.fail=Error on saving object {0}
+error.invalid=Invalid input for field {0}: "{1}"
+error.password=Field {0} and it's confirmation are not equal
+errors.required={0} \u4e3a\u5fc5\u586b\u9879.
+errors.minlength={0} \u5fc5\u987b\u4e0d\u5c11\u4e8e{1} .
+errors.maxlength={0} \u5fc5\u987b\u4e0d\u5927\u4e8e {1} \u5b57\u7b26.
+errors.invalid={0} \u662f\u65e0\u6548\u7684.
+errors.byte={0} must have type of byte.
+errors.short={0} must have type of short.
+errors.integer={0} \u5fc5\u987b\u662f\u5927\u4e8e\u96f6\u7684\u6574\u6570.
+errors.long={0} must have type of long.
+errors.float={0} must have type of float.
+errors.double={0} must have type of double.
+errors.date={0} is not a date.
+errors.range={0} \u5fc5\u987b\u5728 {1} - {2} \u8303\u56f4\u4ee5\u5185.
+errors.creditcard={0} not a valid credit card.
+errors.email={0} \u4e0d\u662f\u6709\u6548\u7684email\u5730\u5740.
+errors.board.duplicate={0} \u8f93\u5165\u91cd\u540d
+errors.master.noExist={0} \u7248\u4e3b\u4e0d\u5b58\u5728
+errors.board.levelErr={0} \u4e0a\u4e00\u7ea7\u9009\u62e9\u9519\u8bef\uff0c\u4e0d\u80fd\u662f\u81ea\u5df1\u6216\u81ea\u5df1\u7684\u4e0b\u4e00\u7ea7
+errors.database.duplicate=Key duplication error when inserting object {0}
+errors.password=\u5bc6\u7801\u786e\u8ba4\u6709\u8bef\uff0c\u8bf7\u91cd\u8bd5\uff01
+errors.nouserid=\u8be5\u7528\u6237\u4e0d\u5b58\u5728\uff0c\u8bf7\u91cd\u8bd5\uff01
+not.available=N/A
+erroes.duplicate={0} \u5df2\u5b9a\u4e49\uff0c\u8bf7\u67e5\u9605\uff01
+errors.exceedMaxId={0} \u5df2\u8d85\u8fc7\u6700\u5927\u5b50\u90e8\u95e8\u6570\uff0c\u8bf7\u8054\u7cfb\u7ba1\u7406\u5458\uff01
+------------Public error end------------
+
+
+------------Public variable begin------------
+list.page.length=15
+pager.header.title=\u7ed3\u679c\u8bb0\u5f55\u96c6:
+pager.max.page.index=300
+date.format=yyyy-mm-dd hh:mm:ss
+timestamp.maskmsg=Invalid Timestamp type value
+SaveSessionBean.wrf_UserPwd=\u5bc6\u7801
+SaveSessionBean.wrf_UserID=\u7528\u6237ID
+SaveSessionBean.selectRoom=\u7cfb\u7edf\u68c0\u6d4b\u5230\u60a8\u5c5e\u4e8e\u591a\u4e2a\u673a\u623f\uff0c\u8bf7\u9009\u62e9\u4e00\u4e2a\u8fdb\u5165\uff01
+SaveSessionBean.selectWorkserial=\u7cfb\u7edf\u68c0\u6d4b\u5230\u60a8\u5c5e\u4e8e\u591a\u4e2a\u73ed\u6b21\uff0c\u8bf7\u9009\u62e9\u4e00\u4e2a\u8fdb\u5165\uff01
+------------Public variable end------------
+
+TawJob.JobId=
+TawJob.title=\u6211\u7684\u5de5\u4f5c\u5ba4\u914d\u7f6e
+
+TawMemo.memoTitle=\u6807\u9898
+TawMemo.content=\u5185\u5bb9
+TawMemo.createtime=\u751f\u6210\u65f6\u95f4
+TawMemo.memo=\u4fbf\u7b3a
+TawMemo.sent=\u53d1\u9001
+TawMemo.author=\u53d1\u9001\u8005
+TawMemo.reader=\u63a5\u6536\u8005
+
+
+-------------dzbg--------------------
+TAWORDERRECORD.ORDERID=\u7f16\u53f7
+TAWORDERRECORD.CHANGETIME=\u4fee\u6539\u65f6\u95f4
+TAWORDERRECORD.SYSTEMNAME=\u7cfb\u7edf\u65f6\u95f4
+TAWORDERRECORD.HOSTNAME=\u4e3b\u673a\u540d
+TAWORDERRECORD.IMPLEMPERSON=\u4fee\u6539\u53e3\u4ee4\u8005
+TAWORDERRECORD.DOCMENTS=\u76f8\u5173\u63cf\u8ff0
+TAWORDERRECORD.ID=ID
+
+TAWCHANGERECORD.SYSTEMNAME=\u7cfb\u7edf\u540d\u79f0
+TAWCHANGERECORD.STARTTIME=\u5f00\u59cb\u65f6\u95f4
+TAWCHANGERECORD.ENDTIME=\u7ed3\u675f\u65f6\u95f4
+TAWCHANGERECORD.TAPEID=\u78c1\u5e26\u7f16\u53f7
+TAWCHANGERECORD.IMPLEMPERSON=\u64cd\u505a\u4eba\u5458
+TAWCHANGERECORD.iD=\u7f16\u53f7
+
+TAWHARDRECORD.HDATE=\u66f4\u6539\u8bb0\u5f55\u65e5\u671f
+TAWHARDRECORD.FACTORYID=\u5382\u5bb6\u7f16\u53f7
+TAWHARDRECORD.ELECTIID=\u7535\u8def\u677f\u7f16\u53f7
+TAWHARDRECORD.JIJAID=\u673a\u67b6\u7f16\u53f7
+TAWHARDRECORD.CHANGEREASON=\u66f4\u6362\u539f\u56e0
+TAWHARDRECORD.CEJIEGO=\u6d4b\u8bd5\u7ed3\u679c
+TAWHARDRECORD.CEZHE=\u6d4b\u8bd5\u8005
+TAWHARDRECORD.CHANGEPERSON=\u66f4\u6362\u8005
+TAWHARDRECORD.iD=\u7f16\u53f7
+
+TAWSOFTMENDLIST.NETTYPE=\u7f51\u5143\u7c7b\u522b
+TAWSOFTMENDLIST.NETID=\u7f51\u5143\u7f16\u53f7
+TAWSOFTMENDLIST.FACTORY=\u5382\u5546
+TAWSOFTMENDLIST.SOFTNAME=\u7248\u672c\u540d\u79f0
+TAWSOFTMENDLIST.MENDNAME=\u8865\u4e01\u540d\u79f0
+TAWSOFTMENDLIST.INSTALLBASE=\u88c5\u8f7d\u4f9d\u636e
+TAWSOFTMENDLIST.INSTALLTIME=\u88c5\u8f7d\u65e5\u671f
+TAWSOFTMENDLIST.INSTALLINSTRU=\u88c5\u8f7d\u8bf4\u660e
+TAWSOFTMENDLIST.FOAMANGER=\u5b89\u6392\u7f51\u5143
+TAWSOFTMENDLIST.FILLPERSON=\u586b\u8868\u4eba
+TAWSOFTMENDLIST.iD=\u7f16\u53f7
+
+TAWSOFTRECORD.NETTYPE=\u7f51\u7edc\u7c7b\u578b
+TAWSOFTRECORD.NETNAME=\u7f51\u7edc\u540d\u79f0
+TAWSOFTRECORD.SOFTTYPE=\u8f6f\u4ef6\u7c7b\u578b
+TAWSOFTRECORD.CHANGESOFT=\u4e4b\u524d\u8f6f\u4ef6\u7248\u672c
+TAWSOFTRECORD.SOFTMEND=\u4e4b\u540e\u8f6f\u4ef6\u7248\u672c
+TAWSOFTRECORD.SOFTTAGT=\u66f4\u6539\u76ee\u7684
+TAWSOFTRECORD.DOCMID=\u66f4\u6539\u4f9d\u636e
+TAWSOFTRECORD.INSTALLTIME=\u88c5\u8f7d\u8d77\u59cb\u65f6\u95f4
+TAWSOFTRECORD.INSTALLENDTIME=\u88c5\u8f7d\u7ed3\u675f\u65f6\u95f4
+TAWSOFTRECORD.FINSHED=\u5b8c\u6210\u60c5\u51b5
+TAWSOFTRECORD.QUESTIONIMPLEM=\u9057\u7559\u95ee\u9898
+TAWSOFTRECORD.FACTORYENGINER=\u5382\u5bb6&\u5de5\u7a0b\u5e08
+TAWSOFTRECORD.JUCONTROLLER=\u7ef4\u62a4\u4eba\u5458
+TAWSOFTRECORD.JUTELOGER=\u8d1f\u8d23\u4eba
+TAWSOFTRECORD.DOCM=\u5907\u6ce8
+TAWSOFTRECORD.iD=\u7f16\u53f7
+
+TAWSYSTEMRECORD.SDATE=\u5907\u4efd\u65e5\u671f
+TAWSYSTEMRECORD.STIME=\u5907\u4efd\u65f6\u95f4
+TAWSYSTEMRECORD.SYSTEMNAME=\u7cfb\u7edf\u540d\u79f0
+TAWSYSTEMRECORD.HOSTNAME=\u4e3b\u673a\u540d
+TAWSYSTEMRECORD.DOCMCON=\u5907\u4efd\u5185\u5bb9
+TAWSYSTEMRECORD.DOCMGARD=\u5907\u4efd\u7ea7\u522b
+TAWSYSTEMRECORD.TAPEID=\u78c1\u5e26\u7f16\u53f7
+TAWSYSTEMRECORD.IMPLEMPERSON=\u5907\u4efd\u4eba
+TAWSYSTEMRECORD.iD=\u7f16\u53f7
+-------------dzbg--------------------
+
+
+------------Module zlgl begin------------
+TawHieConf.taskType=\u4e1a\u52a1\u7c7b\u578b
+TawHieConf.faultType=\u6545\u969c\u7c7b\u578b
+TawHieConf.dealDept=\u5904\u7406\u90e8\u95e8
+TawHieConf.hieType=\u9636\u6bb5\u7c7b\u578b
+TawHieConf.hieTimeLimit=\u65f6\u9650\u5b9a\u4e49
+TawHieConf.hieTimeType=\u65f6\u9650\u7c7b\u578b
+TawHieConf.comments=\u6ce8\u91ca
+TawHieConf.cbsjjg=\u50ac\u529e\u65f6\u95f4\u95f4\u9694
+TawHieConf.jjcd=\u7d27\u6025\u7a0b\u5ea6
+TawHieConf.title=\u670d\u52a1
+
+TawSmsApply.title=\u77ed\u4fe1\u8ba2\u9605
+TawSmsApply.applyer=\u7ba1\u7406\u5458
+TawSmsApply.hieId=\u8ba2\u9605SMS\u7684\u7f16\u53f7
+TawSmsApply.proposer=\u77ed\u4fe1\u63a5\u6536\u8005
+TawSmsApply.proposerType=\u77ed\u4fe1\u63a5\u6536\u8005\u7c7b\u578b
+TawSmsApply.hieStyle=\u901a\u77e5\u65b9\u5f0f
+TawSmsApply.startTime=\u5f00\u59cb\u50ac\u529e\u65f6\u95f4
+TawSmsApply.endTime=\u7ed3\u675f\u50ac\u529e\u65f6\u95f4
+TawSmsApply.hieInterval=\u50ac\u529e\u95f4\u9694\u65f6\u95f4\uff08\u5206\u949f\uff09
+TawSmsApply.hieAmount=\u6700\u5927\u5141\u8bb8\u50ac\u529e\u7684\u6b21\u6570
+TawSmsApply.hieNightAllow=\u662f\u5426\u5141\u8bb8\u665a\u4e0a\u901a\u77e5
+TawSmsApply.always=\u8ba2\u9605\u662f\u5426\u6c38\u4e45
+TawSmsApply.comments=\u6ce8\u91ca
+TawSmsApply.first=\uff0d\uff0d\u7b2c\u4e00\u6b65\uff08\u9009\u62e9\u77ed\u4fe1\u63a5\u6536\u8005\uff09
+TawSmsApply.second=\uff0d\uff0d\u7b2c\u4e8c\u6b65\uff08\u9009\u62e9\u77ed\u4fe1\u670d\u52a1\uff09
+
+TawLog.year=\u5e74
+TawLog.month=\u6708
+TawLog.day=\u65e5
+TawLog.deptId=\u6240\u5c5e\u90e8\u95e8
+TawLog.content=\u64cd\u4f5c\u5185\u5bb9
+TawLog.operType=\u4e8b\u52a1\u7c7b\u578b
+TawLog.operTime=\u64cd\u4f5c\u65f6\u95f4
+TawLog.userId=\u64cd\u4f5c\u4eba\u5458
+TawLog.title=\u65e5\u5fd7
+TawLog.remoteAddr=\u8bbf\u95eeIP
+TawLog.operSort=\u64cd\u4f5c\u5206\u7c7b
+
+TawApparatusroom.name=\u673a\u623f
+TawApparatusroom.roomName=\u673a\u623f\u540d\u79f0
+TawApparatusroom.manager=\u8d1f\u8d23\u4eba
+TawApparatusroom.tempManager=\u4e34\u65f6\u8d1f\u8d23\u4eba
+TawApparatusroom.deptId=\u6240\u5c5e\u90e8\u95e8
+TawApparatusroom.endtime=\u7ed3\u675f\u65f6\u95f4
+TawApparatusroom.phone=\u7535\u8bdd
+TawApparatusroom.mobile=\u624b\u673a
+TawApparatusroom.fax=\u4f20\u771f
+TawApparatusroom.address=\u5730\u5740
+TawApparatusroom.deleted=deleted
+TawApparatusroom.notes=\u6ce8\u91ca
+TawApparatusroom.id=id
+
+TawUserRoom.ordercode=ordercode
+TawUserRoom.flag=flag
+TawUserRoom.userId=userId
+TawUserRoom.roomId=roomId
+
+TawDept.deptName=\u90e8\u95e8\u540d\u79f0
+TawDept.parentDept=\u4e0a\u7ea7\u90e8\u95e8
+TawDept.manager=\u7ba1\u7406\u4eba
+TawDept.tempManager=\u4e34\u65f6\u7ba1\u7406\u4eba
+TawDept.stopTime=\u7ed3\u675f\u65f6\u95f4
+TawDept.deptType=\u90e8\u95e8\u7c7b\u578b
+TawDept.phone=\u7535\u8bdd
+TawDept.mobile=\u624b\u673a
+TawDept.fax=\u4f20\u771f
+TawDept.notes=\u6ce8\u91ca
+TawDept.ordercode=ordercode
+TawDept.regionflag=\u90e8\u95e8/\u5730\u533a
+TawDept.regionflag0=\u90e8\u95e8
+TawDept.regionflag1=\u5730\u533a
+TawDept.deptId=\u90e8\u95e8ID
+TawDept.name=\u90e8\u95e8
+
+TawRmUser.id=ID
+TawRmUser.userName=\u4eba\u5458\u59d3\u540d
+TawRmUser.password=\u767b\u5f55\u5bc6\u7801
+TawRmUser.psconfig=\u786e\u8ba4\u5bc6\u7801
+TawRmUser.deptId=\u6240\u5c5e\u90e8\u95e8
+TawRmUser.phone=\u7535\u8bdd
+TawRmUser.email=\u7535\u5b50\u90ae\u4ef6
+TawRmUser.mobile=\u624b\u673a
+TawRmUser.mbcomments=\u591a\u4e2a\u624b\u673a\u7528\u201c\uff0c\u201d\u5206\u9694\u3002
+TawRmUser.fax=\u4f20\u771f
+TawRmUser.deleted=deleted
+TawRmUser.notes=\u5907\u6ce8
+TawRmUser.userId=\u4eba\u5458ID\u53f7
+TawRmUser.name=\u4eba\u5458
+TawRmUser.degree=\u7528\u6237\u7c7b\u578b
+TawRmUser.district=\u6240\u5c5e\u5730\u5e02
+
+TawApplication.appName=\u6a21\u5757\u540d\u79f0
+TawApplication.notes=\u6ce8\u91ca
+TawApplication.privDept=privDept
+TawApplication.privRoom=privRoom
+TawApplication.privNe=privNe
+TawApplication.appId=\u6a21\u5757ID
+TawApplication.title=\u6a21\u5757
+
+TawOperate.operName=\u64cd\u4f5c\u540d\u79f0
+TawOperate.appId=\u6a21\u5757ID
+TawOperate.appName=\u6240\u5c5e\u6a21\u5757
+TawOperate.notes=\u6ce8\u91ca
+TawOperate.operId=\u64cd\u4f5cID
+TawOperate.title=\u64cd\u4f5c
+
+TawRmGroup.groupName=\u7528\u6237\u7ec4\u540d\u79f0
+TawRmGroup.notes=\u6ce8\u91ca
+TawRmGroup.groupId=\u7528\u6237\u7ec4ID
+
+TawRole.roleName=\u89d2\u8272\u540d\u79f0
+TawRole.domainName=\u6240\u5c5e\u57df
+TawRole.notes=\u6ce8\u91ca
+TawRole.roleId=\u89d2\u8272ID
+TawRole.title=\u89d2\u8272
+TawRole.roleCreater=\u89d2\u8272\u521b\u5efa\u8005ID
+TawRole.rolePriv=\u89d2\u8272\u5305\u542b\u7684\u64cd\u4f5c\u540d\u79f0
+
+
+TawUserGroup.userId=userId
+TawUserGroup.groupId=groupId
+
+TawRolePriv.roleId=roleId
+TawRolePriv.privId=privId
+TawRolePriv.privType=privType
+
+TawDomain.domainName=domainName
+TawDomain.domainType=domainType
+TawDomain.dept=\u90e8\u95e8
+TawDomain.room=\u673a\u623f
+TawDomain.other=\u5176\u5b83
+
+TawGroupPrivDom.domainType=\u57df\u7c7b\u578b
+TawGroupPrivDom.groupId=\u7528\u6237\u7ec4ID
+TawGroupPrivDom.privId=\u6743\u9650ID
+TawGroupPrivDom.privType=\u6743\u9650\u7c7b\u578b
+TawGroupPrivDom.domainId=\u57dfID
+TawGroupPrivDom.domainName=\u57df\u540d\u79f0
+TawGroupPrivDom.privName=\u6743\u9650\u540d\u79f0
+TawGroupPrivDom.groupName=\u7528\u6237\u7ec4\u540d\u79f0
+
+TawThirdDom.domainName=domainName
+TawThirdDom.deleted=deleted
+TawThirdDom.domainId=domainId
+TawThirdDom.domainType=domainType
+
+TawUserPrivDom.domainType=\u57df\u7c7b\u578b
+TawUserPrivDom.whoId=whoId
+TawUserPrivDom.deleted=deleted
+TawUserPrivDom.timestamp=\u65f6\u95f4\u6233
+TawUserPrivDom.userId=\u7528\u6237ID
+TawUserPrivDom.privId=\u6743\u9650ID
+TawUserPrivDom.privType=\u6743\u9650\u7c7b\u578b
+TawUserPrivDom.domainId=\u57dfID
+TawUserPrivDom.domainName=\u57df\u540d\u79f0
+TawUserPrivDom.privName=\u6743\u9650\u540d\u79f0
+TawUserPrivDom.batch=\u6279\u91cf\u914d\u7f6e
+
+TawWsDict.dictName=\u540d\u79f0
+TawWsDict.sysType=\u7cfb\u7edf\u4e13\u7528
+TawWsDict.deleted=\u5220\u9664
+TawWsDict.remark=\u6ce8\u91ca
+TawWsDict.code=\u4ee3\u7801
+TawWsDict.dictId=ID
+TawWsDict.dictId.maskmsg=ID
+TawWsDict.dictType=\u6240\u5c5e\u7c7b\u578b
+TawWsDict.title=\u5b57\u5178\u8868
+
+TawWsDictType.dictTypelabel=\u5b57\u5178\u7c7b\u578b\u540d\u79f0
+TawWsDictType.wsClass=\u6240\u5c5e\u6a21\u5757
+TawWsDictType.deleted=\u5220\u9664
+TawWsDictType.remark=\u6ce8\u91ca
+TawWsDictType.dictType=\u7c7b\u578bID
+TawWsDictType.page=\u5b57\u5178\u7c7b\u578b
+TawWsDictType.oper=\u64cd\u4f5c
+
+TawWsModule.moduleName=\u6a21\u5757\u540d\u79f0
+TawWsModule.comments=\u6a21\u5757\u8bf4\u660e
+TawWsModule.moduleId=ID
+------------Module zlgl end------------
+
+
+
+------------Module woorksheet begin------------
+Worksheet.acceptResume=\u63a5\u5355\u786e\u8ba4
+Worksheet.myWorkList=\u672a\u5904\u7406
+Worksheet.otherWorkList=\u5df2\u5904\u7406
+Worksheet.hold=\u5f52\u6863
+Worksheet.cancel=\u64a4\u6d88
+Worksheet.stat=\u64a4\u6d88
+Worksheet.deal=\u5904\u7406
+Worksheet.stopLimit=\u89c4\u5b9a\u5b8c\u6210\u65f6\u9650
+Worksheet.holdLimit=\u5f52\u6863\u65f6\u9650
+Worksheet.resumeLimit=\u53d7\u7406\u65f6\u9650
+Worksheet.replyLimit=\u56de\u590d\u65f6\u9650
+
+TawFaultsheet.fromDept=\u7533\u544a\u90e8\u95e8
+TawFaultsheet.toDept=\u6d3e\u5f80\u90e8\u95e8
+TawFaultsheet.filler=\u7533\u544a\u4eba
+TawFaultsheet.contact=\u8054\u7cfb\u65b9\u5f0f
+TawFaultsheet.faultType=\u6545\u969c\u7c7b\u578b
+TawFaultsheet.faultClass=\u7d27\u6025\u7a0b\u5ea6
+TawFaultsheet.reportTime=\u7533\u544a\u65f6\u95f4
+TawFaultsheet.stopTime=\u5904\u7406\u7ed3\u675f\u65f6\u95f4
+TawFaultsheet.startTime=\u6545\u969c\u5f00\u59cb\u65f6\u95f4
+TawFaultsheet.endTime=\u6545\u969c\u7ed3\u675f\u65f6\u95f4
+TawFaultsheet.holdTime=\u5f52\u6863\u65f6\u95f4
+TawFaultsheet.title=\u4e3b\u9898\uff08\u544a\u8b66\u6807\u9898\uff09
+TawFaultsheet.dealResult=\u6545\u969c\u521d\u6b65\u5904\u7406\u7ed3\u679c
+TawFaultsheet.dealAdvice=\u6545\u969c\u5904\u7406\u5efa\u8bae
+TawFaultsheet.comments=\u6545\u969c\u63cf\u8ff0
+TawFaultsheet.status=\u5904\u7406\u72b6\u6001
+TawFaultsheet.substatus=substatus
+TawFaultsheet.hide=hide
+TawFaultsheet.satisfaction=\u6ee1\u610f\u7a0b\u5ea6
+TawFaultsheet.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawFaultsheet.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+
+TawFsReply.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawFsReply.toDept=\u6240\u5c5e\u90e8\u95e8
+TawFsReply.acceptor=\u53d7\u7406\u4eba
+TawFsReply.contact=\u8054\u7cfb\u65b9\u5f0f
+TawFsReply.faultClass=\u7d27\u6025\u7a0b\u5ea6
+TawFsReply.resumeTime=\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawFsReply.replyTime=\u56de\u590d\u65f6\u95f4
+TawFsReply.rejectCause=\u9000\u56de\u5904\u7406\u539f\u56e0
+TawFsReply.sendCause=\u6d3e\u53d1\u5904\u7406\u4fe1\u606f
+TawFsReply.dealResult=\u9636\u6bb5\u5904\u7406\u7ed3\u679c
+TawFsReply.finallyResult=\u6700\u7ec8\u5904\u7406\u7ed3\u679c
+TawFsReply.insertTime=\u6d3e\u5355\u65f6\u95f4
+TawFsReply.id=id
+
+TawFsReply.reply=\u56de\u590d
+TawFsReply.tempDeal=\u53ea\u662f\u9636\u6bb5\u6027\u5904\u7406
+TawFsReply.OK=\u5904\u7406\u5b8c\u6bd5\uff0c\u56de\u590d
+TawFsReply.dealStyle="\u5904\u7406\u5b8c\u6bd5\uff0c\u56de\u590d" \u6216 "\u53ea\u662f\u9636\u6bb5\u6027\u5904\u7406"
+
+TawSoftware.fromDept=\u7533\u544a\u90e8\u95e8
+TawSoftware.toDept=\u6d3e\u5f80\u90e8\u95e8
+TawSoftware.filler=\u7533\u544a\u4eba
+TawSoftware.contact=\u8054\u7cfb\u65b9\u5f0f
+TawSoftware.faultType=\u6545\u969c\u7c7b\u578b
+TawSoftware.faultClass=\u7d27\u6025\u7a0b\u5ea6
+TawSoftware.reportTime=\u7533\u544a\u65f6\u95f4
+TawSoftware.stopTime=\u5904\u7406\u7ed3\u675f\u65f6\u95f4
+TawSoftware.startTime=\u6545\u969c\u5f00\u59cb\u65f6\u95f4
+TawSoftware.endTime=\u5e94\u8be5\u5b8c\u6210\u65f6\u95f4
+TawSoftware.holdTime=\u5f52\u6863\u65f6\u95f4
+TawSoftware.status=\u5904\u7406\u72b6\u6001
+TawSoftware.substatus=substatus
+TawSoftware.hide=hide
+TawSoftware.satisfaction=\u6ee1\u610f\u7a0b\u5ea6
+TawSoftware.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawSoftware.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawSoftware.specialty=\u6240\u5c5e\u4e13\u4e1a
+TawSoftware.loadingNet=\u88c5\u8f7d\u7f51\u5143
+TawSoftware.plan=\u8ba1\u5212\u5b89\u6392
+TawSoftware.method=\u6267\u884c\u65b9\u5f0f
+TawSoftware.explan=\u529f\u80fd\u8bf4\u660e
+TawSoftware.softType=\u8f6f\u4ef6\u7c7b\u578b
+TawSoftware.versionPatch=\u7248\u672c\u6216\u8865\u4e01\u53f7
+TawSoftware.effectPay=\u662f\u5426\u5f71\u54cd\u8ba1\u8d39
+TawSoftware.effectCommu=\u662f\u5426\u5f71\u54cd\u901a\u8baf
+TawSoftware.title=\u4e3b\u9898
+TawSoftware.timeLimit=\u5904\u7406\u65f6\u9650
+
+TawSoftwareReply.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawSoftwareReply.toDept=\u6240\u5c5e\u90e8\u95e8
+TawSoftwareReply.acceptor=\u53d7\u7406\u4eba
+TawSoftwareReply.contact=\u8054\u7cfb\u65b9\u5f0f
+TawSoftwareReply.faultClass=\u7d27\u6025\u7a0b\u5ea6
+TawSoftwareReply.resumeTime=\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawSoftwareReply.replyTime=\u56de\u590d\u65f6\u95f4
+TawSoftwareReply.rejectCause=\u9000\u56de\u5904\u7406\u539f\u56e0
+TawSoftwareReply.sendCause=\u6d3e\u53d1\u5904\u7406\u4fe1\u606f
+TawSoftwareReply.dealResult=\u9636\u6bb5\u5904\u7406\u7ed3\u679c
+TawSoftwareReply.finallyResult=\u6700\u7ec8\u5904\u7406\u7ed3\u679c
+TawSoftwareReply.insertTime=\u6d3e\u5355\u65f6\u95f4
+TawSoftwareReply.id=id
+
+TawSoftwareReply.reply=\u56de\u590d
+TawSoftwareReply.tempDeal=\u53ea\u662f\u9636\u6bb5\u6027\u5904\u7406
+TawSoftwareReply.OK=\u5904\u7406\u5b8c\u6bd5\uff0c\u56de\u590d
+TawSoftwareReply.dealStyle="\u5904\u7406\u5b8c\u6bd5\uff0c\u56de\u590d" \u6216 "\u53ea\u662f\u9636\u6bb5\u6027\u5904\u7406"
+
+
+TawDatasheet.fromDept=\u6d3e\u5355\u90e8\u95e8
+TawDatasheet.toDept=\u6d3e\u5f80\u90e8\u95e8
+TawDatasheet.filler=\u6d3e\u5355\u4eba
+TawDatasheet.contact=\u8054\u7cfb\u65b9\u5f0f
+TawDatasheet.reportTime=\u6d3e\u5355\u65f6\u95f4
+TawDatasheet.stopTime=\u53d7\u7406\u7ed3\u675f\u65f6\u95f4
+TawDatasheet.endTime=\u6838\u67e5\u5e94\u5b8c\u6210\u65f6\u95f4
+TawDatasheet.holdTime=\u5f52\u6863\u65f6\u95f4
+TawDatasheet.title=\u4e3b\u9898\uff08\u544a\u8b66\u6807\u9898\uff09
+TawDatasheet.dealAdvice=\u4fee\u6539\u8bbe\u5907\u540d\u79f0
+TawDatasheet.comments=\u4fee\u6539\u8981\u6c42\u53ca\u5185\u5bb9
+TawDatasheet.status=\u5de5\u5355\u72b6\u6001
+TawDatasheet.substatus=substatus
+TawDatasheet.hide=hide
+TawDatasheet.satisfaction=\u6ee1\u610f\u7a0b\u5ea6
+TawDatasheet.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawDatasheet.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawDatasheet.dealCause=\u4fee\u6539\u539f\u56e0\u53ca\u4f9d\u636e
+TawDatasheet.specialty=\u6240\u5c5e\u4e13\u4e1a
+TawDatasheet.faultClass=\u5904\u7406\u65f6\u9650
+TawDatasheet.title=\u4e3b\u9898
+
+TawDataReply.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawDataReply.toDept=\u53d7\u7406\u6240\u5c5e\u90e8\u95e8
+TawDataReply.acceptor=\u53d7\u7406\u4eba
+TawDataReply.contact=\u8054\u7cfb\u65b9\u5f0f
+TawDataReply.faultClass=\u7d27\u6025\u7a0b\u5ea6
+TawDataReply.resumeTime=\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawDataReply.replyTime=\u6838\u67e5\u5b8c\u6210\u65f6\u95f4
+TawDataReply.rejectOpinion=\u9000\u56de\u91cd\u65b0\u6838\u67e5\u539f\u56e0
+TawDataReply.finallyResult=\u6838\u67e5\u7ed3\u679c
+TawDataReply.id=id
+TawDataReply.insertTime=\u6d3e\u5355\u65f6\u95f4
+
+TawPlansheet.toDept=\u53d7\u7406\u90e8\u95e8
+TawPlansheet.filler=\u6d3e\u5355\u4eba
+TawPlansheet.contact=\u8054\u7cfb\u65b9\u5f0f
+TawPlansheet.reportTime=\u6d3e\u5355\u65f6\u95f4
+TawPlansheet.holdTime=\u5f52\u6863\u65f6\u95f4
+TawPlansheet.title=\u4efb\u52a1\u6807\u9898
+TawPlansheet.dealAdvice=\u4fee\u6539\u8bbe\u5907\u540d\u79f0
+TawPlansheet.comments=\u4efb\u52a1\u5185\u5bb9
+TawPlansheet.status=\u5de5\u5355\u72b6\u6001
+TawPlansheet.substatus=substatus
+TawPlansheet.hide=hide
+TawPlansheet.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawPlansheet.dealCause=\u4fee\u6539\u539f\u56e0
+TawPlansheet.faultClass=\u5904\u7406\u65f6\u9650
+TawPlansheet.holder=\u5f52\u6863\u4eba
+TawPlansheet.cooperantDept=\u534f\u529e\u90e8\u95e8
+
+TawPlansheet.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawPlansheet.fromDept=\u6d3e\u5355\u90e8\u95e8
+TawPlansheet.creator=\u6d3e\u5355\u4eba
+TawPlansheet.creatorContact=\u8054\u7cfb\u65b9\u5f0f
+TawPlansheet.sendTime=\u6d3e\u5355\u65f6\u95f4
+TawPlansheet.stopLimited=\u8981\u6c42\u5b8c\u6210\u65f6\u95f4
+TawPlansheet.endTime=\u5904\u7406\u7ed3\u675f\u65f6\u95f4
+TawPlansheet.stopTime=\u4efb\u52a1\u5b8c\u6210\u65f6\u95f4
+TawPlansheet.specialty=\u6240\u5c5e\u4e13\u4e1a
+TawPlansheet.equipmentName=\u8bbe\u5907\u540d\u79f0
+TawPlansheet.equipmentSite=\u8bbe\u5907\u5730\u70b9
+TawPlansheet.originalNote=\u539f\u59cb\u8bb0\u5f55
+TawPlansheet.archiveMan=\u5f52\u6863\u4eba
+TawPlansheet.archiveTime=\u5f52\u6863\u65f6\u95f4
+TawPlansheet.archiveLimited=\u5f52\u6863\u65f6\u9650
+TawPlansheet.archiveContact=\u8054\u7cfb\u7535\u8bdd
+TawPlansheet.archiveAdvice=\u5f52\u6863\u610f\u89c1
+TawPlansheet.satisfaction=\u6ee1\u610f\u7a0b\u5ea6
+TawPlansheet.fromSystem=\u5de5\u5355\u6765\u6e90
+
+TawPlanReply.contact=\u8054\u7cfb\u65b9\u5f0f
+TawPlanReply.faultClass=\u7d27\u6025\u7a0b\u5ea6
+TawPlanReply.resumeTime=\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawPlanReply.replyTime=\u64cd\u4f5c\u5b8c\u6210\u65f6\u95f4
+TawPlanReply.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawPlanReply.finallyResult=\u6700\u7ec8\u5904\u7406\u7ed3\u679c
+TawPlanReply.id=id
+TawPlanReply.insertTime=\u6d3e\u5355\u65f6\u95f4
+
+TawPlanReply.taskId=\u5de5\u5355\u53f7
+TawPlanReply.sender=\u6d3e\u5355\u4eba
+TawPlanReply.toDept=\u63a5\u5355\u5355\u4f4d
+TawPlanReply.receiver=\u63a5\u5355\u4eba
+TawPlanReply.RContact=\u8054\u7cfb\u65b9\u5f0f
+TawPlanReply.sendTime=\u6d3e\u53d1\u65f6\u95f4
+TawPlanReply.acceptor=\u786e\u8ba4\u4eba
+TawPlanReply.acceptTime=\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawPlanReply.replier=\u56de\u590d\u4eba
+TawPlanReply.ReContact=\u8054\u7cfb\u65b9\u5f0f
+TawPlanReply.replyTime=\u56de\u590d\u65f6\u95f4
+TawPlanReply.receiveClass=\u53d7\u7406\u7d27\u6025\u7a0b\u5ea6
+TawPlanReply.rejectAdvice=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawPlanReply.satisfaction=\u6ee1\u610f\u7a0b\u5ea6
+TawPlanReply.sendCause=\u6d3e\u53d1\u539f\u56e0
+TawPlanReply.acceptLimited=\u786e\u8ba4\u65f6\u9650
+TawPlanReply.replyLimited=\u56de\u590d\u65f6\u9650
+TawPlanReply.finallyResult=\u6700\u7ec8\u5904\u7406\u7ed3\u679c
+TawPlanReply.describe=\u73b0\u8c61\u63cf\u8ff0
+TawPlanReply.testResulte=\u6d4b\u8bd5\u7ed3\u679c
+TawPlanReply.resultAnalysis=\u7ed3\u679c\u5206\u6790
+TawPlanReply.effectScope=\u5f71\u54cd\u8303\u56f4
+TawPlanReply.solution=\u89e3\u51b3\u65b9\u6848
+TawPlanReply.auditIdea=\u5ba1\u9605\u610f\u89c1
+TawPlanReply.stopTime=\u4efb\u52a1\u5b8c\u6210\u65f6\u95f4
+TawPlanReply.sendType=\u6d3e\u53d1\u7c92\u5ea6
+TawPlanReply.receiveType=\u63a5\u6536\u7c7b\u578b
+
+
+TawFaultReport.fromDept=\u6d3e\u5355\u90e8\u95e8
+TawFaultReport.toDept=\u6d3e\u5f80\u90e8\u95e8
+TawFaultReport.filler=\u62a5\u544a\u4eba
+TawFaultReport.contact=\u8054\u7cfb\u65b9\u5f0f
+TawFaultReport.faultRegion=\u6545\u969c\u5730\u70b9
+TawFaultReport.faultEquip=\u6545\u969c\u8bbe\u5907
+TawFaultReport.reportTime=\u62a5\u544a\u65f6\u95f4
+TawFaultReport.stopTime=\u5904\u7406\u7ed3\u675f\u65f6\u95f4
+TawFaultReport.startTime=\u6545\u969c\u53d1\u751f\u65f6\u95f4
+TawFaultReport.compliantTime=\u5730\u5e02\u4fdd\u969c\u65f6\u95f4
+TawFaultReport.endTime=\u6d88\u9664\u6545\u969c\u65f6\u95f4
+TawFaultReport.holdTime=\u6d88\u969c\u5f52\u6863\u65f6\u95f4
+TawFaultReport.dealResult=\u6545\u969c\u5904\u7406\u60c5\u51b5
+TawFaultReport.dealAdvice=\u6545\u969c\u5f71\u54cd\u8303\u56f4
+TawFaultReport.comments=\u6545\u969c\u73b0\u8c61\u63cf\u8ff0
+TawFaultReport.status=\u5de5\u5355\u72b6\u6001
+TawFaultReport.substatus=substatus
+TawFaultReport.hide=hide
+TawFaultReport.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawFaultReport.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawFaultReport.dealCause=\u4fee\u6539\u539f\u56e0
+TawFaultReport.specialty=\u6240\u5c5e\u4e13\u4e1a
+TawFaultReport.timeLimit=\u5904\u7406\u65f6\u9650
+TawFaultReport.holder=\u5f52\u6863\u4eba
+TawFaultReport.title=\u4e3b\u9898
+
+TawReportReply.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawReportReply.toDept=\u53d7\u7406\u90e8\u95e8
+TawReportReply.acceptor=\u53d7\u7406\u4eba
+TawReportReply.contact=\u8054\u7cfb\u65b9\u5f0f
+TawReportReply.resumeTime=\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawReportReply.replyTime=\u53d7\u7406\u65f6\u95f4
+TawReportReply.rejectOption=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawReportReply.finallyResult=\u6700\u7ec8\u5904\u7406\u7ed3\u679c
+TawReportReply.insertTime=\u6d3e\u5355\u65f6\u95f4
+TawReportReply.id=id
+
+TawCompliantsheet.fromDept=\u6d3e\u5355\u5355\u4f4d
+TawCompliantsheet.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawCompliantsheet.filler=\u6d3e\u5355\u4eba
+TawCompliantsheet.contact=\u8054\u7cfb\u65b9\u5f0f
+TawCompliantsheet.reportTime=\u6d3e\u5355\u65f6\u95f4
+TawCompliantsheet.stopTime=\u5904\u7406\u7ed3\u675f\u65f6\u95f4
+TawCompliantsheet.comments=\u6545\u969c\u4fe1\u606f
+TawCompliantsheet.status=\u5de5\u5355\u72b6\u6001
+TawCompliantsheet.hide=hide
+TawCompliantsheet.deleted=deleted
+TawCompliantsheet.satisfaction=\u6ee1\u610f\u7a0b\u5ea6
+TawCompliantsheet.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawCompliantsheet.toDept=\u53d7\u7406\u90e8\u95e8
+TawCompliantsheet.faultClass=\u5904\u7406\u65f6\u9650
+TawCompliantsheet.title=\u4e3b\u9898\uff08\u7528\u6237\u7533\u544a\u6807\u9898\uff09
+TawCompliantsheet.holdTime=\u5f52\u6863\u65f6\u95f4
+TawCompliantsheet.title=\u4e3b\u9898
+
+TawCompliantReply.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawCompliantReply.toDept=\u6240\u5c5e\u90e8\u95e8
+TawCompliantReply.acceptor=\u53d7\u7406\u4eba
+TawCompliantReply.contact=\u8054\u7cfb\u65b9\u5f0f
+TawCompliantReply.replyTime=\u56de\u590d\u65f6\u95f4
+TawCompliantReply.finallyResult=\u6700\u7ec8\u5904\u7406\u7ed3\u679c
+TawCompliantReply.id=id
+
+TawBadboard.fromDept=\u7533\u544a\u90e8\u95e8
+TawBadboard.toDept=\u6d3e\u5f80\u90e8\u95e8
+TawBadboard.filler=\u7533\u544a\u4eba
+TawBadboard.contact=\u8054\u7cfb\u65b9\u5f0f
+TawBadboard.reportTime=\u7533\u544a\u65f6\u95f4
+TawBadboard.stopTime=\u5904\u7406\u7ed3\u675f\u65f6\u95f4
+TawBadboard.startTime=\u6545\u969c\u5f00\u59cb\u65f6\u95f4
+TawBadboard.endTime=\u89c4\u5b9a\u5b8c\u6210\u65f6\u95f4
+TawBadboard.holdTime=\u5f52\u6863\u65f6\u95f4
+TawBadboard.status=\u5904\u7406\u72b6\u6001
+TawBadboard.substatus=substatus
+TawBadboard.hide=hide
+TawBadboard.satisfaction=\u6ee1\u610f\u7a0b\u5ea6
+TawBadboard.rejectOpinion=\u9000\u56de\u5904\u7406\u610f\u89c1
+TawBadboard.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawBadboard.manufacturer=\u5382\u5546\u540d\u79f0
+TawBadboard.comment=\u5de5\u5355\u5185\u5bb9
+TawBadboard.badboardClass=\u574f\u677f\u7c7b\u578b
+TawBadboard.method=\u6267\u884c\u65b9\u5f0f
+TawBadboard.explan=\u9644\u52a0\u8bf4\u660e
+TawBadboard.sn=\u5e8f\u5217\u53f7
+TawBadboard.productSN=\u574f\u4ef6\u4ea7\u54c1\u53f7
+TawBadboard.effectPay=\u662f\u5426\u5f71\u54cd\u8ba1\u8d39
+TawBadboard.effectCommu=\u662f\u5426\u5f71\u54cd\u901a\u8baf
+TawBadboard.title=\u4e3b\u9898
+TawBadboard.timeLimit=\u5904\u7406\u65f6\u9650
+TawBadboard.productTime=\u751f\u4ea7\u65e5\u671f
+TawBadboard.faultTime=\u6545\u969c\u53d1\u751f\u65f6\u95f4
+
+TawBadboardReply.taskId=\u5de5\u5355\u6d41\u6c34\u53f7
+TawBadboardReply.toDept=\u6240\u5c5e\u90e8\u95e8
+TawBadboardReply.acceptor=\u53d7\u7406\u4eba
+TawBadboardReply.contact=\u8054\u7cfb\u65b9\u5f0f
+TawBadboardReply.faultClass=\u7d27\u6025\u7a0b\u5ea6
+TawBadboardReply.resumeTime=\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawBadboardReply.replyTime=\u56de\u590d\u65f6\u95f4
+TawBadboardReply.rejectCause=\u9000\u56de\u5904\u7406\u539f\u56e0
+TawBadboardReply.sendCause=\u6d3e\u53d1\u5904\u7406\u4fe1\u606f
+TawBadboardReply.dealResult=\u9636\u6bb5\u5904\u7406\u7ed3\u679c
+TawBadboardReply.finallyResult=\u6700\u7ec8\u5904\u7406\u7ed3\u679c
+TawBadboardReply.insertTime=\u6d3e\u5355\u65f6\u95f4
+TawBadboardReply.id=id
+TawBadboardReply.reply=\u56de\u590d
+TawBadboardReply.tempDeal=\u53ea\u662f\u9636\u6bb5\u6027\u5904\u7406
+TawBadboardReply.OK=\u5904\u7406\u5b8c\u6bd5\uff0c\u56de\u590d
+TawBadboardReply.dealStyle="\u5904\u7406\u5b8c\u6bd5\uff0c\u56de\u590d" \u6216 "\u53ea\u662f\u9636\u6bb5\u6027\u5904\u7406"
+
+TawDealstep.dealer=\u5904\u7406\u4eba
+TawDealstep.dealtime=\u5904\u7406\u65f6\u95f4
+TawDealstep.oper=\u5904\u7406\u64cd\u4f5c
+TawDealstep.fromregion=\u5904\u7406\u90e8\u95e8
+TawDealstep.toregion=\u76ee\u6807\u90e8\u95e8
+
+TawWrfMonitor.worksheetId=worksheetId
+TawWrfMonitor.worksheetClass=worksheetClass
+TawWrfMonitor.regionId=regionId
+TawWrfMonitor.filler=filler
+TawWrfMonitor.fillTime=fillTime
+TawWrfMonitor.toTarget=toTarget
+TawWrfMonitor.targetClass=targetClass
+TawWrfMonitor.hieTimeLimit=hieTimeLimit
+TawWrfMonitor.hieClass=hieClass
+TawWrfMonitor.hieStyle=hieStyle
+TawWrfMonitor.hieArrive=hieArrive
+TawWrfMonitor.hieGrade=hieGrade
+TawWrfMonitor.hieCount=hieCount
+TawWrfMonitor.hieComment=hieComment
+TawWrfMonitor.hieClose=hieClose
+TawWrfMonitor.hieInterval=hieInterval
+TawWrfMonitor.hieAmount=hieAmount
+TawWrfMonitor.monitorId=monitorId
+
+TawWsFlow.comments=comments
+TawWsFlow.moduleId=moduleId
+TawWsFlow.fromDept=fromDept
+TawWsFlow.toDept=toDept
+TawWsFlow.type=type
+TawWsFlow.title=\u5de5\u5355\u6d41\u7a0b\u914d\u7f6e
+TawWsFlow.wstypeslect=\u9009\u62e9\u5de5\u5355\u7c7b\u578b
+TawWsFlow.fromdeptslect=\u9009 \u62e9 \u6d3e \u5355 \u90e8 \u95e8
+TawWsFlow.todeptslect=\u914d \u7f6e \u6d3e \u5f80 \u90e8 \u95e8
+------------Module worksheet end------------
+
+
+
+------------Module nav_tree begin------------
+TpmWsTree.taskid=taskid
+TpmWsTree.deptid=deptid
+TpmWsTree.dealstatus=dealstatus
+TpmWsTree.wsClass=wsClass
+TpmWsTree.id=id
+------------Module nav_tree end------------
+
+------------Module TawOkb begin------------
+TawOkb.okbId =\u7f16\u53f7
+TawOkb.faultType =\u7f51\u7edc\u7c7b\u578b
+TawOkb.regionCode =\u5730\u533a\u7f16\u7801
+TawOkb.speciality =\u4e13\u4e1a\u7f51\u7c7b\u522b
+TawOkb.equipId =\u8bbe\u5907\u540d\u79f0
+TawOkb.equipType =\u8bbe\u5907\u7c7b\u578b
+TawOkb.manufacturer =\u8bbe\u5907\u5382\u5546
+TawOkb.dealtimeLimit =\u5904\u7406\u65f6\u9650
+TawOkb.timeType=\u5c0f\u65f6
+TawOkb.achieveMethod =\u5f52\u6863\u7c7b\u578b
+TawOkb.achievePerson =\u5f52\u6863\u4eba
+TawOkb.achieveTime =\u5f52\u6863\u65f6\u95f4
+TawOkb.conceredPerson =\u76f8\u5173\u5904\u7406\u4eba
+TawOkb.keyWord =\u5173\u952e\u5b57
+TawOkb.faultDescription =\u6545\u969c\u63cf\u8ff0
+TawOkb.faultAnolyize =\u6545\u969c\u5206\u6790
+TawOkb.resovlProcess =\u5904\u7406\u8fc7\u7a0b
+TawOkb.comments =\u8865\u5145\u8bf4\u660e
+------------Module TawOkb end------------
+
+
+
+------------Module duty begin------------
+duty.notonduty=\u5bf9\u4e0d\u8d77,\u60a8\u73b0\u5728\u4e0d\u5728\u503c\u73ed\u72b6\u6001,\u65e0\u6cd5\u4f7f\u7528\u8be5\u529f\u80fd\u3002
+TawRmAssignSub.workserial=\u73ed\u6b21
+TawRmAssignSub.dutyman=\u503c\u73ed\u4eba\u5458
+TawRmAssignSub.notes=\u5907\u6ce8\uff0c\u6682\u65f6\u4e0d\u7528
+TawRmAssignSub.id=\u73ed\u6b21\u7f16\u53f7
+
+TawRmAssignwork.regionId=\u5730\u533a\u7f16\u53f7
+TawRmAssignwork.roomId=\u673a\u623f\u7f16\u53f7
+TawRmAssignwork.dutydate=\u503c\u73ed\u65e5\u671f
+TawRmAssignwork.workid=\u4e00\u5929\u6709\u591a\u4e2a\u73ed\uff0c\u5176\u4e2d\u7684\u6b21\u5e8f
+TawRmAssignwork.flag=\u662f\u5426\u7ed3\u675f
+TawRmAssignwork.dutymaster=\u503c\u73ed\u73ed\u957f
+TawRmAssignwork.starttimeDefined=\u73ed\u6b21\u5f00\u59cb\u65f6\u95f4
+TawRmAssignwork.endtimeDefined=\u73ed\u6b21\u7ed3\u675f\u65f6\u95f4
+TawRmAssignwork.smsflag=\u5f00\u59cb\u4e3a0\uff0c\u77ed\u4fe1\u901a\u77e5\u4e0b\u4e2a\u73ed\u6b21\u540e\u4e3a1
+TawRmAssignwork.notes=\u5907\u6ce8\uff0c\u6682\u65f6\u4e0d\u7528
+TawRmAssignwork.id=\u6392\u73ed\u7f16\u53f7
+TawRmAssignwork.tablename=\u673a\u623f\u6392\u73ed\u7ba1\u7406
+TawRmAssignwork.select_room=\u9009\u62e9\u673a\u623f
+TawRmAssignwork.begin_date=\u5f00\u59cb\u65f6\u95f4
+TawRmAssignwork.end_date=\u7ed3\u675f\u65f6\u95f4
+TawRmAssignwork.assign_type=\u6392\u73ed\u65b9\u5f0f
+TawRmAssignwork.begin_dutyman=\u8d77\u59cb\u4eba
+TawRmAssignwork.usernum=\u6bcf\u73ed\u4eba\u6570
+TawRmAssignwork.teamnum=\u6bcf\u5929\u73ed\u6570
+TawRmAssignwork.to=\u5230
+TawRmAssignwork.assign=\u6392\u73ed
+TawRmAssignwork.apparatusroom=\u673a\u623f
+TawRmAssignwork.savesuccess=\u4fdd\u5b58\u6210\u529f\uff01
+TawRmAssignwork.alertnoassign=\u672c\u65f6\u95f4\u6bb5\u5185\u6ca1\u6709\u6392\u73ed\uff01
+TawRmAssignwork.SHUOMING\uff1dflag\u9ed8\u8ba4\u4e3a0
+TawRmAssignwork.cycle=\u4e2a\u5468\u671f\u7684\u6392\u73ed
+
+TawUserRoom.ordercode=\u6392\u73ed\u7684\u987a\u5e8f
+TawUserRoom.flag=\u662f\u5426\u53c2\u52a0\u503c\u73ed
+TawUserRoom.userId=\u7528\u6237\u7f16\u53f7
+TawUserRoom.roomId=\u673a\u623f\u7f16\u53f7
+TawUserRoom.SHUOMING\uff1dflag\uff1d1\u4e0d\u53c2\u52a0\u6392\u73edordercode>1000
+TawUserRoom.btn_new=\u914d\u7f6e\u7528\u6237
+TawUserRoom.btn_add=\u589e\u52a0
+TawUserRoom.btn_del=\u5220\u9664
+TawUserRoom.btn_add_all=\u5168\u52a0
+TawUserRoom.btn_del_all=\u5168\u5220
+TawUserRoom.room_user_all=\u5168\u90e8\u4eba\u5458
+TawUserRoom.room_user_true=\u672c\u673a\u623f\u53c2\u52a0\u4eba\u5458
+TawUserRoom.room_user_false=\u672c\u673a\u623f\u4e0d\u53c2\u52a0\u4eba\u5458
+TawUserRoom.savesuccess=\u4fdd\u5b58\u6210\u529f\uff01
+
+TawRmExchange.exchangetime=\u4ea4\u63a5\u73ed\u65f6\u95f4
+TawRmExchange.roomId=\u673a\u623f\u7f16\u53f7
+TawRmExchange.id=\u4ea4\u63a5\u73ed\u7f16\u53f7
+
+TawRmSysteminfo.deptId=\u90e8\u95e8\u7f16\u53f7
+TawRmSysteminfo.maxerrortime=\u4ea4\u63a5\u73ed\u6700\u5927\u8bef\u5dee\u65f6\u95f4
+TawRmSysteminfo.maxdutynum=\u503c\u73ed\u4eba\u6570
+TawRmSysteminfo.exRequest=\u6362\u73ed\u7533\u8bf7\u77ed\u4fe1
+TawRmSysteminfo.exAnswer=\u6362\u73ed\u7b54\u590d\u77ed\u4fe1
+TawRmSysteminfo.dutyInform=\u503c\u73ed\u77ed\u4fe1\u63d0\u9192
+TawRmSysteminfo.roomId=\u673a\u623f\u7f16\u53f7
+TawRmSysteminfo.SHUOMING=\u8bbe\u8ba1\u7684\u4ea4\u63a5\u73ed\u65f6\u95f4\u5728TawRmExchange\u4e2d
+TawRmSysteminfo.select_room=\u9009\u62e9\u673a\u623f
+TawRmSysteminfo.enter_room=\u786e\u8ba4
+TawRmSysteminfo.tablename=\u503c\u73ed\u7cfb\u7edf\u53c2\u6570\u8bbe\u7f6e
+TawRmSysteminfo.maxerrortime_unit=\uff08\u5206\u949f\uff09
+TawRmSysteminfo.maxdutynum_unit=\u4eba/\u73ed
+TawRmSysteminfo.roomName=\u673a\u623f\u540d\u79f0
+TawRmSysteminfo.apparatusroom=\u673a\u623f
+TawRmSysteminfo.savesuccess=\u4fdd\u5b58\u6210\u529f\uff01
+TawRmSysteminfo.btn_new=\u673a\u623f\u8bbe\u7f6e
+TawRmSysteminfo.btn_add=\u589e\u52a0
+TawRmSysteminfo.btn_del=\u5220\u9664
+TawRmSysteminfo.hour_unit=\u65f6
+TawRmSysteminfo.minute_unit=\u5206
+
+TawRmGuestform.tablename=\u51fa\u5165\u673a\u623f\u8bb0\u5f55
+TawRmGuestform.roomId=\u673a\u623f\u7f16\u53f7
+TawRmGuestform.inputdate=\u65e5\u671f
+TawRmGuestform.guestname=\u8bbf\u5ba2\u59d3\u540d
+TawRmGuestform.company=\u8bbf\u5ba2\u5355\u4f4d
+TawRmGuestform.sender=\u6279\u51c6\u4eba
+TawRmGuestform.department=\u6279\u51c6\u90e8\u95e8
+TawRmGuestform.dutyman=\u767b\u8bb0\u4eba
+TawRmGuestform.starttime=\u5f00\u59cb\u65f6\u95f4
+TawRmGuestform.endtime=\u7ed3\u675f\u65f6\u95f4
+TawRmGuestform.purpose=\u5de5\u4f5c\u5185\u5bb9
+TawRmGuestform.concerned=\u76f8\u5173\u7f51\u5143
+TawRmGuestform.affection=\u5bf9\u7cfb\u7edf\u7684\u5f71\u54cd
+TawRmGuestform.flag=\u662f\u5426\u786e\u8ba4
+TawRmGuestform.notes=\u5907\u6ce8
+TawRmGuestform.id=\u7f16\u53f7
+
+TawRmGuestform.view=\u67e5\u770b\u8be6\u7ec6
+TawRmGuestform.search=\u51fa\u5165\u673a\u623f\u767b\u8bb0\u67e5\u8be2
+TawRmGuestform.submit=\u786e\u8ba4
+TawRmGuestform.nosubmit=\u672a\u786e\u8ba4
+TawRmGuestform.nolimit=\u4e0d\u9650
+TawRmGuestform.offduty=\u51fa\u5165\u673a\u623f\u767b\u8bb0\u786e\u8ba4
+
+TawRmRecord.tablename=\u503c\u73ed\u8bb0\u5f55
+TawRmRecord.personrecord=\u4e2a\u4eba\u65e5\u5fd7
+TawRmRecord.workrecord=\u5de5\u4f5c\u65e5\u5fd7
+TawRmRecord.mergerecord=\u5408\u5e76\u65e5\u5fd7
+
+TawRmRecord.regionId=\u5730\u533a\u7f16\u53f7
+TawRmRecord.roomId=\u673a\u623f\u7f16\u53f7
+TawRmRecord.flag=\u5b8c\u6210\u72b6\u6001
+TawRmRecord.starttime=\u63a5\u73ed\u65f6\u95f4
+TawRmRecord.endtime=\u4ea4\u73ed\u65f6\u95f4
+TawRmRecord.weather=\u5929\u6c14\u60c5\u51b5
+TawRmRecord.temperature=\u6e29\u5ea6
+TawRmRecord.wet=\u6e7f\u5ea6
+TawRmRecord.dutydate=\u503c\u73ed\u65e5\u671f
+TawRmRecord.clean=\u536b\u751f\u60c5\u51b5
+TawRmRecord.clean1=\u536b\u751f\u60c5\u51b51
+TawRmRecord.conditioner=\u673a\u623f\u73af\u5883
+TawRmRecord.hander=\u4ea4\u73ed\u4eba\u5458
+TawRmRecord.dutyman=\u503c\u73ed\u4eba\u5458
+TawRmRecord.receiver=\u63a5\u73ed\u4eba\u5458
+TawRmRecord.dutymanname=\u4ea4\u73ed\u4eba\u59d3\u540d
+TawRmRecord.dutymanpassword=\u4ea4\u73ed\u4eba\u5bc6\u7801
+TawRmRecord.receivername=\u63a5\u73ed\u4eba\u59d3\u540d
+TawRmRecord.receiverpassword=\u63a5\u73ed\u4eba\u5bc6\u7801
+TawRmRecord.dutyrecord=\u503c\u73ed\u8bb0\u5f55
+TawRmRecord.notes=\u5907\u6ce8
+TawRmRecord.id=\u503c\u73ed\u7f16\u53f7
+
+TawRmRecord.exchange=\u4ea4\u63a5\u73ed
+
+TawRmRecord.baseinfo=\u57fa\u672c\u4fe1\u606f
+TawRmRecord.receivertime=\u63a5\u73ed\u65f6\u95f4
+TawRmRecord.circumstance=\u5929\u6c14\u60c5\u51b5
+TawRmRecord.accessories=\u9644\u4ef6
+TawRmRecord.handerpassword=\u4ea4\u73ed\u4eba\u5bc6\u7801
+TawRmRecord.receiverpassword=\u63a5\u73ed\u4eba\u5bc6\u7801
+TawRmRecord.logoff=\u60a8\u5df2\u7ecf\u6210\u529f\u9000\u51fa\u503c\u73ed\u7cfb\u7edf\u3002
+TawRmRecord.notonduty=\u5bf9\u4e0d\u8d77,\u60a8\u73b0\u5728\u4e0d\u5728\u503c\u73ed\u72b6\u6001,\u65e0\u6cd5\u4f7f\u7528\u8be5\u529f\u80fd\u3002
+TawRmRecord.notdutymaster=\u5bf9\u4e0d\u8d77,\u60a8\u4e0d\u662f\u503c\u73ed\u73ed\u957f,\u65e0\u6cd5\u4f7f\u7528\u8be5\u529f\u80fd\u3002
+TawRmRecord.notexchangtime1=\u5bf9\u4e0d\u8d77,\u76ee\u524d\u4e0d\u662f\u4ea4\u63a5\u73ed\u65f6\u95f4,\u65e0\u6cd5\u4f7f\u7528\u8be5\u529f\u80fd\u3002
+TawRmRecord.notexchangtime2=\u5e94\u8be5\u5728
+TawRmRecord.notexchangtime3=\u7684\u524d\u540e
+TawRmRecord.notexchangtime4=\u5206\u949f\u5185\u4ea4\u63a5\u3002
+TawRmRecord.notnextworkserial=\u4e0b\u73ed\u6b21\u65e0\u6392\u73ed
+
+TawRmRecordSub.roomId=\u673a\u623f\u7f16\u53f7
+TawRmRecordSub.workserial=\u73ed\u6b21\u7f16\u53f7
+TawRmRecordSub.dutyman=\u503c\u73ed\u4eba
+TawRmRecordSub.starttime=\u503c\u73ed\u5f00\u59cb\u65f6\u95f4
+TawRmRecordSub.endtime=\u503c\u73ed\u7ed3\u675f\u65f6\u95f4
+TawRmRecordSub.starttimeDefined=\u89c4\u5b9a\u63a5\u73ed\u65f6\u95f4
+TawRmRecordSub.endtimeDefined=\u89c4\u5b9a\u4ea4\u73ed\u65f6\u95f4
+TawRmRecordSub.statement=\u5de5\u4f5c\u7eaa\u8981
+TawRmRecordSub.workflag=\u5de5\u4f5c\u72b6\u6001
+TawRmRecordSub.status=\u65e5\u5fd7\u72b6\u6001
+TawRmRecordSub.notes=\u5907\u6ce8
+TawRmRecordSub.id=id
+
+TawRmDutyfile.workserial=workserial
+TawRmDutyfile.filename=filename
+TawRmDutyfile.encodename=encodename
+TawRmDutyfile.dutyman=dutyman
+TawRmDutyfile.transtime=transtime
+TawRmDutyfile.class_no=class_no
+TawRmDutyfile.notes=notes
+TawRmDutyfile.id=id
+
+TawRmChangeduty.roomId=roomId
+TawRmChangeduty.inputdate=inputdate
+TawRmChangeduty.workserial1=\u539f\u503c\u73ed\u65e5\u671f\u7684\u73ed\u6b21
+TawRmChangeduty.workserial2=\u5e0c\u671b\u503c\u73ed\u65e5\u671f\u7684\u73ed\u6b21
+TawRmChangeduty.expireddate=expireddate
+TawRmChangeduty.hander=\u8bf7\u6c42\u4eba
+TawRmChangeduty.receiver=\u63a5\u6536\u4eba
+TawRmChangeduty.flag=\u72b6\u6001
+TawRmChangeduty.id=\u5e8f\u53f7
+TawRmChangeduty.tablename=\u4ea4\u6362\u73ed\u7ba1\u7406
+TawRmChangeduty.apply=\u7533\u8bf7
+TawRmChangeduty.operate=\u64cd\u4f5c
+TawRmChangeduty.know=\u77e5\u9053\u4e86
+TawRmChangeduty.withdraw=\u64a4\u6d88
+TawRmChangeduty.agree=\u540c\u610f
+TawRmChangeduty.disagree=\u4e0d\u540c\u610f
+TawRmChangeduty.flag_agree=\u5bf9\u65b9\u540c\u610f
+TawRmChangeduty.flag_disagree=\u5bf9\u65b9\u4e0d\u540c\u610f
+TawRmChangeduty.flag_noanswer=\u672a\u7b54\u590d
+TawRmChangeduty.alert_no_sent=\u672c\u4eba\u6ca1\u6709\u53d1\u51fa\u7684\u6362\u73ed\u8bf7\u6c42
+TawRmChangeduty.alert_no_receive=\u672c\u4eba\u6ca1\u6709\u6536\u5230\u7684\u6362\u73ed\u8bf7\u6c42
+TawRmChangeduty.sent_apply=\u672c\u4eba\u53d1\u51fa\u7684\u6362\u73ed\u8bf7\u6c42
+TawRmChangeduty.receive_apply=\u672c\u4eba\u6536\u5230\u7684\u6362\u73ed\u8bf7\u6c42
+TawRmChangeduty.select=\u9009\u62e9
+TawRmChangeduty.starttime=\u503c\u73ed\u5f00\u59cb\u65f6\u95f4
+TawRmChangeduty.dutyman=\u503c\u73ed\u4eba
+TawRmChangeduty.datetime1=\u539f\u503c\u73ed\u65e5\u671f
+TawRmChangeduty.datetime2=\u5e0c\u671b\u503c\u73ed\u65e5\u671f
+TawRmChangeduty.savesuccess=\u4fdd\u5b58\u6210\u529f\uff01
+TawRmChangeduty.transactsuccess=\u5904\u7406\u6210\u529f\uff01
+TawRmChangeduty.alertnohander=\u672c\u4eba\u5728\u6b64\u65f6\u95f4\u65e0\u6392\u73ed\uff01
+TawRmChangeduty.alertnoreceiver=\u5728\u6b64\u65f6\u95f4\u65e0\u4eba\u53ef\u6362\u73ed\uff01
+TawRmChangeduty.alertcannotapply=\u65e0\u6cd5\u7533\u8bf7\u4ea4\u6362\u73ed\uff01
+
+TawRmHangover.hangquestion=\u9057\u7559\u95ee\u9898
+TawRmHangover.prehangquestion=\u4e0a\u73ed\u6b21\u9057\u7559\u95ee\u9898
+TawRmHangover.thishangquestion=\u672c\u73ed\u6b21\u9057\u7559\u95ee\u9898
+------------Module duty end------------
+
+
+
+
+
+------------Module infopub begin------------
+TawBoard.parentId=\u4e0a\u4e00\u7ea7\u4e13\u9898
+TawBoard.boardName=\u4e13\u9898\u540d\u79f0
+TawBoard.boardAdmin=\u7248\u4E3B
+TawBoard.deptId=\u90e8\u95e8
+TawBoard.operSendNo=operSendNo
+TawBoard.operCheckNo=operCheckNo
+TawBoard.operReadNo=operReadNo
+TawBoard.editSelfNo=editSelfNo
+TawBoard.editNo=editNo
+TawBoard.delNo=delNo
+TawBoard.createTime=\u521b\u5efa\u65f6\u95f4
+TawBoard.modiTime=\u6700\u540e\u4fee\u6539\u65f6\u95f4
+TawBoard.childNum=childNum
+TawBoard.articleNum=\u6587\u7ae0\u6570
+TawBoard.infoType=infoType
+TawBoard.comments=\u6ce8\u91ca
+TawBoard.operType=operType
+TawBoard.deleted=deleted
+TawBoard.boardId=boardId
+TawBoard.keepTime=\u4fe1\u606f\u4fdd\u7559\u65f6\u95f4
+TawBoard.Message=0\u8868\u793a\u4e00\u76f4\u4fdd\u7559
+TawBoard.current=\u5f53\u524d\u4e13\u9898
+
+TawInformation.information=\u4fe1\u606f
+TawInformation.parentId=parentId
+TawInformation.boardId=boardId
+TawInformation.childNum=childNum
+TawInformation.userId=\u7528\u6237\u540d
+TawInformation.deptId=\u90e8\u95e8
+TawInformation.topic=\u4e3b\u9898
+TawInformation.body=\u5185\u5bb9
+TawInformation.dateTime=\u53d1\u8868\u65f6\u95f4
+TawInformation.modiUser=\u4fee\u6539\u4eba
+TawInformation.modiTime=\u4fee\u6539\u65f6\u95f4
+TawInformation.delTime=\u5220\u9664\u65f6\u95f4
+TawInformation.hitNum=\u70b9\u51fb\u6570
+TawInformation.attachName=\u9644\u4ef6
+TawInformation.modEffected=\u5f71\u54cd\u7684\u6a21\u5757
+TawInformation.timeLimited=\u5b8c\u6210\u671f\u9650
+TawInformation.confirmed=\u786e\u8ba4
+TawInformation.deleted=\u5220\u9664\u6807\u5fd7
+TawInformation.infoType=\u4fe1\u606f\u7c7b\u578b
+TawInformation.checkInfo=\u5ba1\u6838\u6807\u5fd7
+TawInformation.important=\u91cd\u8981\u7a0b\u5ea6
+TawInformation.operType=operType
+TawInformation.id=id
+TawInformation.comefrom=\u6765\u6e90
+TawInformation.author=\u62df\u7a3f\u4eba
+TawInformation.importance=\u91cd\u8981\u6027
+TawInformation.checkList=\u5f85\u5ba1\u6838\u4fe1\u606f
+TawInformation.day=\u5929
+TawInformation.query=\u67e5\u8be2
+TawInformation.result=\u7ed3\u679c
+
+taw.page=\u9875
+taw.total=\u5171
+taw.piece=\u6761
+taw.pageDescription=\u9875\u8bb0\u5f55 \u5f53\u524d\u5728\u7b2c
+taw.attach=\u9644\u4ef6
+taw.pasteImg=\u8d34\u56fe
+------------Module inforpub end------------
+
+
+------------Module workplan begin------------
+
+TAWGZCONTENT.PLANID=\u4f5c\u4e1a\u8ba1\u5212\u7f16\u53f7
+TAWGZCONTENT.NETID=\u7f51\u5143\u7f16\u53f7
+TAWGZCONTENT.DATETIME=\u586b\u5199\u65f6\u95f4
+TAWGZCONTENT.CONTENT=\u5b8c\u6210\u5b50\u9879\u76ee\u7f16\u53f7\u5e8f\u5217
+TAWGZCONTENT.REMARK=\u5907\u6ce8
+TAWGZCONTENT.CONTENTID=\u7f16\u53f7
+TAWGZCONTENT.PLANNAME=\u4f5c\u4e1a\u8ba1\u5212\u540d\u79f0
+TAWGZCONTENT.CYCLENAME=\u5468\u671f
+TAWGZCONTENT.NETNAME=\u7f51\u5143
+TAWGZCONTENT.ROOMNAME=\u673a\u623f
+TAWGZCONTENT.PLANCONTENT=\u4f5c\u4e1a\u8ba1\u5212\u5185\u5bb9
+TAWGZCONTENT.USERID=\u586b\u5199\u4eba
+
+TAWGZCYCLE.MYNAME=\u5468\u671f
+TAWGZCYCLE.REMARK=\u5907\u6ce8
+TAWGZCYCLE.CYCLEID=\u5468\u671f\u6807\u8bc6
+
+TAWGZPLAN.MYNAME=\u4f5c\u4e1a\u8ba1\u5212\u540d\u79f0
+TAWGZPLAN.CONTENT=\u4f5c\u4e1a\u8ba1\u5212\u5185\u5bb9
+TAWGZPLAN.REMARK=\u5907\u6ce8
+TAWGZPLAN.MYTIME=\u65f6\u95f4(\u9884\u7559)
+TAWGZPLAN.CYCLEID=\u5468\u671f\u6807\u8bc6
+TAWGZPLAN.TNETTREEID=\u4e0a\u7ea7\u7f51\u5143
+TAWGZPLAN.PLANID=\u4f5c\u4e1a\u8ba1\u5212\u7f16\u53f7
+TAWGZPLAN.DEPTID=\u6267\u884c\u90e8\u95e8\u7f16\u53f7
+TAWGZPLAN.DEPTNAME=\u6267\u884c\u90e8\u95e8
+TAWGZPLAN.MANAGER=\u8d1f\u8d23\u4eba
+TAWGZPLAN.TMANAGER=\u4e34\u65f6\u8d1f\u8d23\u4eba
+
+TAWGZPLANITEM.PLANID=\u4f5c\u4e1a\u8ba1\u5212\u7f16\u53f7
+TAWGZPLANITEM.MYNAME=\u5b50\u9879\u76ee\u540d\u79f0
+TAWGZPLANITEM.REMARK=\u5b50\u9879\u76ee\u8bf4\u660e
+TAWGZPLANITEM.PLANITEMID=\u5b50\u9879\u76ee\u7f16\u53f7
+
+TAWOBJECT.INTNAME=\u7f51\u5143\u540d\u79f0
+TAWOBJECT.INTCLASS=\u7f51\u5143\u7ea7\u522b
+TAWOBJECT.INTROOMID=\u6240\u5728\u673a\u623f
+TAWOBJECT.INTPARENTID=\u4e0a\u7ea7\u7f51\u5143
+TAWOBJECT.INTLEAF=\u53f6\u5b50
+TAWOBJECT.INTFLAG=\u6807\u8bb0
+TAWOBJECT.INTPROVINCEID=\u6240\u5728\u7701\u7f16\u53f7
+TAWOBJECT.INTREGION=\u6240\u5728\u5e02\u7f16\u53f7
+TAWOBJECT.INTID=\u7f51\u5143\u7f16\u53f7
+TAWOBJECT.DEPTID=\u6240\u5c5e\u90e8\u95e8ID
+TAWOBJECT.DEPTNAME=\u6240\u5c5e\u90e8\u95e8
+------------Module workplan end--------------
+
+-------------dzbg--------------------
+TAWORDERRECORD.ORDERID=\u7f16\u53f7
+TAWORDERRECORD.CHANGETIME=\u4fee\u6539\u65f6\u95f4
+TAWORDERRECORD.SYSTEMNAME=\u7cfb\u7edf\u540d\u79f0
+TAWORDERRECORD.HOSTNAME=\u4e3b\u673a\u540d
+TAWORDERRECORD.IMPLEMPERSON=\u4fee\u6539\u53e3\u4ee4\u8005
+TAWORDERRECORD.DOCMENTS=\u76f8\u5173\u63cf\u8ff0
+TAWORDERRECORD.ID=ID
+TAWORDERRECORD.title=\u53e3\u4ee4\u4fee\u6539\u8bb0\u5f55
+
+TAWCHANGERECORD.SYSTEMNAME=\u7cfb\u7edf\u540d\u79f0
+TAWCHANGERECORD.STARTTIME=\u5f00\u59cb\u65f6\u95f4
+TAWCHANGERECORD.ENDTIME=\u7ed3\u675f\u65f6\u95f4
+TAWCHANGERECORD.TAPEID=\u78c1\u5e26\u7f16\u53f7
+TAWCHANGERECORD.IMPLEMPERSON=\u64cd\u505a\u4eba\u5458
+TAWCHANGERECORD.iD=\u7f16\u53f7
+TAWCHANGERECORD.title=\u5907\u4efd\u78c1\u5e26\u66f4\u6362\u8bb0\u5f55
+
+TAWHARDRECORD.HDATE=\u66f4\u6539\u8bb0\u5f55\u65e5\u671f
+TAWHARDRECORD.FACTORYID=\u5382\u5bb6\u7f16\u53f7
+TAWHARDRECORD.ELECTIID=\u7535\u8def\u677f\u7f16\u53f7
+TAWHARDRECORD.JIJAID=\u673a\u67b6\u7f16\u53f7
+TAWHARDRECORD.CHANGEREASON=\u66f4\u6362\u539f\u56e0
+TAWHARDRECORD.CEJIEGO=\u6d4b\u8bd5\u7ed3\u679c
+TAWHARDRECORD.CEZHE=\u6d4b\u8bd5\u8005
+TAWHARDRECORD.CHANGEPERSON=\u66f4\u6362\u8005
+TAWHARDRECORD.iD=\u7f16\u53f7
+TAWHARDRECORD.title=\u786c\u4ef6\u66f4\u6362\u8bb0\u5f55
+
+TAWSOFTMENDLIST.NETTYPE=\u7f51\u5143\u7c7b\u522b
+TAWSOFTMENDLIST.NETID=\u7f51\u5143\u7f16\u53f7
+TAWSOFTMENDLIST.FACTORY=\u5382\u5546
+TAWSOFTMENDLIST.SOFTNAME=\u7248\u672c\u540d\u79f0
+TAWSOFTMENDLIST.MENDNAME=\u8865\u4e01\u540d\u79f0
+TAWSOFTMENDLIST.INSTALLBASE=\u88c5\u8f7d\u4f9d\u636e
+TAWSOFTMENDLIST.INSTALLTIME=\u88c5\u8f7d\u65e5\u671f
+TAWSOFTMENDLIST.INSTALLINSTRU=\u88c5\u8f7d\u8bf4\u660e
+TAWSOFTMENDLIST.FOAMANGER=\u5b89\u6392\u7f51\u5143
+TAWSOFTMENDLIST.FILLPERSON=\u586b\u8868\u4eba
+TAWSOFTMENDLIST.iD=\u7f16\u53f7
+TAWSOFTMENDLIST.title=\u8f6f\u4ef6\u7248\u672c\u53ca\u8865\u4e01\u6e05\u5355
+
+TAWSOFTRECORD.NETTYPE=\u7f51\u7edc\u7c7b\u578b
+TAWSOFTRECORD.NETNAME=\u7f51\u7edc\u540d\u79f0
+TAWSOFTRECORD.SOFTTYPE=\u8f6f\u4ef6\u7c7b\u578b
+TAWSOFTRECORD.CHANGESOFT=\u4e4b\u524d\u8f6f\u4ef6\u7248\u672c
+TAWSOFTRECORD.SOFTMEND=\u4e4b\u540e\u8f6f\u4ef6\u7248\u672c
+TAWSOFTRECORD.SOFTTAGT=\u66f4\u6539\u76ee\u7684
+TAWSOFTRECORD.DOCMID=\u66f4\u6539\u4f9d\u636e
+TAWSOFTRECORD.INSTALLTIME=\u88c5\u8f7d\u8d77\u59cb\u65f6\u95f4
+TAWSOFTRECORD.INSTALLENDTIME=\u88c5\u8f7d\u7ed3\u675f\u65f6\u95f4
+TAWSOFTRECORD.FINSHED=\u5b8c\u6210\u60c5\u51b5
+TAWSOFTRECORD.QUESTIONIMPLEM=\u9057\u7559\u95ee\u9898
+TAWSOFTRECORD.FACTORYENGINER=\u5382\u5bb6&\u5de5\u7a0b\u5e08
+TAWSOFTRECORD.JUCONTROLLER=\u7ef4\u62a4\u4eba\u5458
+TAWSOFTRECORD.JUTELOGER=\u8d1f\u8d23\u4eba
+TAWSOFTRECORD.DOCM=\u5907\u6ce8
+TAWSOFTRECORD.iD=\u7f16\u53f7
+TAWSOFTRECORD.title=\u8f6f\u4ef6\u7248\u672c\u53ca\u8865\u4e01\u66f4\u6539\u8bb0\u5f55
+
+TAWSYSTEMRECORD.SDATE=\u5907\u4efd\u65e5\u671f
+TAWSYSTEMRECORD.STIME=\u5907\u4efd\u65f6\u95f4
+TAWSYSTEMRECORD.SYSTEMNAME=\u7cfb\u7edf\u540d\u79f0
+TAWSYSTEMRECORD.HOSTNAME=\u4e3b\u673a\u540d
+TAWSYSTEMRECORD.DOCMCON=\u5907\u4efd\u5185\u5bb9
+TAWSYSTEMRECORD.DOCMGARD=\u5907\u4efd\u7ea7\u522b
+TAWSYSTEMRECORD.TAPEID=\u78c1\u5e26\u7f16\u53f7
+TAWSYSTEMRECORD.IMPLEMPERSON=\u5907\u4efd\u4eba
+TAWSYSTEMRECORD.iD=\u7f16\u53f7
+TAWSYSTEMRECORD.title=\u7cfb\u7edf\u5907\u4efd\u8bb0\u5f55
+-------------dzbg--------------------
+------------Module Datum start---------------
+TawDatum.topic=\u8d44\u6599\u6807\u9898
+TawDatum.author=\u63d0\u4ea4\u4eba
+TawDatum.dateTime=\u53d1\u5e03\u65f6\u95f4
+TawInformation.body=\u7b80\u4ecb
+------------Module Datum end---------------
+
+------------Module zygl begin------------
+TawResType.resType=\u8d44\u6e90\u7c7b\u578b
+TawResType.netRes=\u7f51\u7edc\u8d44\u6e90
+TawResLink.name=\u94fe\u8def
+TawResLink.depId=\u6240\u5c5e\u90e8\u95e8
+TawResLink.protoclType=\u534f\u8bae\u7c7b\u578b
+TawResLink.linkId=\u94fe\u8def\u7f16\u53f7
+TawResLink.linkDes=\u94fe\u8def\u63cf\u8ff0
+TawRes.name=\u8d44\u6e90
+TawRes.all=\u5168\u90e8
+
+TawResLine.name=\u7ebf\u8def
+TawResLine.startPhyPort=\u8d77\u59cb\u7269\u7406\u7aef\u53e3
+TawResLine.endPhyPort=\u76ee\u7684\u7269\u7406\u7aef\u53e3
+TawResLine.lineType=\u7ebf\u8def\u7c7b\u578b
+TawResLine.lineId=\u7ebf\u8def\u7f16\u53f7
+TawResLine.transposition=\u4f20\u8f93\u4f4d\u7f6e
+TawResLine.bandwidth=\u5e26\u5bbd
+
+TawResIP.name=IP\u8d44\u6e90
+TawResIP.ip=IP\u5730\u5740
+TawResIP.subnet=\u5b50\u7f51\u63a9\u7801
+TawResIP.userInfo=\u7528\u6237\u4fe1\u606f
+TawResIP.linkId=\u94fe\u8def\u7f16\u53f7
+TawResIP.logicPort=\u903b\u8f91\u7aef\u53e3
+TawResIP.devId=\u8bbe\u5907\u7f16\u53f7
+
+TawResLinknode.name=\u94fe\u8def\u63a5\u70b9
+TawResLinknode.protocoltype=\u534f\u8bae\u7c7b\u578b
+TawResLinknode.inport=\u5165\u7aef\u53e3
+TawResLinknode.outport=\u51fa\u7aef\u53e3
+TawResLinknode.line_id=\u7ebf\u8def\u7f16\u53f7
+TawResLinknode.inportsign=\u5165\u7aef\u53e3\u6807\u8bc6
+TawResLinknode.outportsign=\u51fa\u7aef\u53e3\u6807\u8bc6
+TawResLinknode.operate=\u63a5\u70b9\u64cd\u4f5c
+
+TawRes.manufacturer=\u5382\u5546
+TawRes.model=\u578b\u53f7
+TawRes.content=\u5bb9\u91cf
+TawRes.position=\u4f4d\u7f6e
+TawRes.eleload=\u8d1f\u8f7d\u7535\u6d41
+TawRes.dept=\u6240\u5c5e\u90e8\u95e8
+
+TawResUps.name=UPS\u7535\u6e90
+TawResUps.upsName=\u540d\u79f0
+TawResUps.devDes=\u8bbe\u5907\u63cf\u8ff0
+
+TawResStorage.name=\u84c4\u7535\u6c60
+TawResStorage.layerDevType=\u5c42\u8f7d\u8bbe\u5907\u7c7b\u578b
+TawResStorage.groupNum=\u7ec4\u6570
+TawResStorage.useTime=\u4f7f\u7528\u65f6\u95f4
+TawResStorage.useLife=\u4f7f\u7528\u5bff\u547d
+
+TawResAir.name=\u7a7a\u8c03
+TawResAir.wetScope=\u6e7f\u5ea6\u8303\u56f4
+TawResAir.temScope=\u6e29\u5ea6\u8303\u56f4
+TawResAir.filterLife=\u8fc7\u6ee4\u5668\u5bff\u547d
+TawResAir.supplyPower=\u4f9b\u7535\u529f\u7387
+
+TawResOnoff.name=\u5f00\u5173\u7535\u6e90
+TawResOnoff.pressload=\u8d1f\u8f7d\u7535\u538b
+
+TawResOil.name=\u6cb9\u673a
+TawResOil.ratingPower=\u989d\u5b9a\u529f\u7387
+
+TawRes.eleName=\u7535\u8def\u540d\u79f0
+TawRes.eleId=\u7535\u8def\u4ee3\u53f7
+TawRes.rate=\u901f\u7387
+
+TawResOut.name=\u8f93\u5165\u53e3\u69fd\u8def\u4fe1\u606f
+TawResOut.groundIn=\u5730\u9762\u8f93\u5165\u53e3
+TawResOut.ddfPosClockDev=\u65f6\u949f\u8bbe\u5907DDF\u4f4d\u7f6e
+TawResOut.ddfPosTransDev=\u4f20\u8f93\u8bbe\u5907DDF\u4f4d\u7f6e
+
+TawResIn.name=\u8f93\u51fa\u53e3\u69fd\u8def\u4fe1\u606f
+TawResIn.orgId=\u7ec4\u7ec7\u4ee3\u53f7
+TawResIn.ddfPosDev=\u8bbe\u5907DDF\u4f4d\u7f6e
+TawResIn.posThat=\u5bf9\u7aef\u4f4d\u7f6e
+TawResIn.openDate=\u5f00\u901a\u65f6\u95f4
+
+TawResUser.userType=\u7528\u6237\u7c7b\u578b
+TawResUser.rowRec=\u884c
+TawResUser.colum=\u5217
+TawResUser.frame=\u6846
+TawResUser.solt=\u69fd
+TawResUser.boardInId=\u677f\u5185\u7f16\u53f7
+TawResUser.boardDes=\u5355\u677f\u63cf\u8ff0
+TawResUser.moduleId=\u6a21\u5757\u53f7
+TawResUser.devId=\u8bbe\u5907\u53f7
+TawResUser.name=\u7528\u6237\u7ebf\u8d44\u6e90
+
+TawResRelay.name=\u4e2d\u7ee7\u7ebf\u8d44\u6e90
+TawResRelay.portType=\u7aef\u53e3\u7c7b\u578b
+TawResRelay.rowRec=\u884c
+TawResRelay.colum=\u5217
+TawResRelay.frame=\u6846
+TawResRelay.solt=\u69fd
+TawResRelay.boardInE1Id=\u677f\u5185E1\u53f7
+TawResRelay.boardName=\u5355\u677f\u540d\u79f0
+TawResRelay.signType=\u4fe1\u4ee4\u7c7b\u578b
+TawResRelay.moduleId=\u6a21\u5757\u53f7
+TawResRelay.linkId=\u94fe\u8def\u53f7
+
+TawResSign.name=\u4fe1\u4ee4\u8d44\u6e90
+TawResSign.signsortId=\u4fe1\u4ee4\u8d44\u6e90\u7c7b\u578b
+TawResSign.rowRec=\u884c
+TawResSign.colum=\u5217
+TawResSign.frame=\u6846
+TawResSign.solt=\u69fd
+TawResSign.boardInE1Id=\u677f\u5185E1\u53f7
+TawResSign.boardName=\u5355\u677f\u540d\u79f0
+TawResSign.moduleId=\u6a21\u5757\u53f7
+TawResSign.devId=\u8bbe\u5907\u53f7
+
+TawResServer.name=\u670d\u52a1\u5668
+TawResServer.netType=\u7f51\u7edc\u7c7b\u578b
+TawResServer.deptName=\u6240\u5c5e\u90e8\u95e8
+TawResServer.serverName=\u670d\u52a1\u5668\u540d\u79f0
+TawResServer.serverPos=\u4f4d\u7f6e
+TawResServer.serverIp=IP\u5730\u5740
+TawResServer.serverDes=\u670d\u52a1\u5668\u63cf\u8ff0
+TawResServer.cpuNum=CPU\u4e2a\u6570
+TawResServer.port=\u5230\u4ea4\u6362\u673a\u7aef\u53e3
+
+TawResDev.name=\u6570\u636e\u8bbe\u5907
+TawResDev.netType=\u7f51\u7edc\u7c7b\u578b
+TawResDev.devType=\u8bbe\u5907\u7c7b\u578b
+TawResDev.factory=\u5382\u5546
+TawResDev.devModel=\u8bbe\u5907\u578b\u53f7
+TawResDev.version=\u7248\u672c\u4fe1\u606f
+TawResDev.devName=\u8bbe\u5907\u540d\u79f0
+TawResDev.devId=\u8bbe\u5907\u7f16\u53f7
+TawResDev.deptName=\u6240\u5c5e\u90e8\u95e8
+TawResDev.phypos=\u7269\u7406\u4f4d\u7f6e
+TawResDev.devIp=\u7ba1\u7406IP\u5730\u5740
+TawResDev.powerPos=\u7535\u6e90\u4f4d\u7f6e
+TawResDev.powerType=\u7535\u6e90\u7c7b\u578b
+
+TawResCard.name=\u677f\u5361
+TawResCard.netType=\u7f51\u7edc\u7c7b\u578b
+TawResCard.devType=\u8bbe\u5907\u7c7b\u578b
+TawResCard.boardName=\u5355\u677f\u540d\u79f0
+TawResCard.slotId=\u69fd\u53f7
+TawResCard.childCardNum=\u5b50\u5361\u6570\u91cf
+TawResCard.devId=\u8bbe\u5907\u7f16\u53f7
+TawResCard.portNum=\u7aef\u53e3\u6570\u91cf
+TawResCard.cardModel=\u578b\u53f7
+
+TawResPort.name=\u7aef\u53e3
+TawResPort.netType=\u7f51\u7edc\u7c7b\u578b
+TawResPort.devType=\u8bbe\u5907\u7c7b\u578b
+TawResPort.parentType=\u5173\u8054\u7c7b\u578b
+TawResPort.nameId=\u540d\u79f0(\u7f16\u53f7)
+TawResPort.portType=\u7aef\u53e3\u7c7b\u578b
+TawResPort.ip=IP\u5730\u5740
+TawResPort.portId=\u7aef\u53e3\u7f16\u53f7
+TawResPort.childPortNum=\u5b50\u7aef\u53e3\u6570\u91cf
+TawResPort.portDes=\u7aef\u53e3\u63cf\u8ff0
+TawResPort.terminal=\u7ec8\u7aef\u76ee\u7684\u5730
+TawResPort.transPosition=\u4f20\u8f93\u4f4d\u7f6e
+TawResPort.position=\u4ea4\u6362\u4f4d\u7f6e
+
+------------Module zygl end------------
+
+
+
+------------Module OtherAdmin start---------------
+TawHrDept.deptName=\u5355\u4f4d\u540d\u79f0
+TawHrDept.parentDept=\u4e0a\u7ea7\u5355\u4f4d
+TawHrDept.manager=\u8d1f\u8d23\u4eba
+TawHrDept.phone=\u7535\u8bdd
+TawHrDept.mobile=\u624b\u673a
+TawHrDept.fax=\u4f20\u771f
+TawHrDept.regionflag=\u90e8\u95e8\u7c7b\u578b
+TawHrDept.notes=\u6ce8\u91ca
+TawHrDept.regionflag0=\u5185\u90e8
+TawHrDept.regionflag1=\u5382\u5bb6
+TawHrDept.regionflag2=\u5408\u4f5c\u4f19\u4f34
+TawHrDept.regionflag3=\u5ba2\u6237
+TawHrDept.regionflag4=\u5176\u4ed6
+TawHrDept.name=\u7b2c\u4e09\u65b9\u5382\u5bb6
+------------Module OtherAdmin end---------------
+
+------------Module OtherAdmin taw_hr_info start---------------
+TawHrInfo.name=\u7b2c\u4e09\u65b9\u4eba\u5458
+TawHrInfo.userName=\u59d3\u540d
+TawHrInfo.sex=\u6027\u522b
+TawHrInfo.birthday=\u51fa\u751f\u65e5\u671f
+TawHrInfo.native_province=\u7c4d\u8d2f
+TawHrInfo.nation=\u6c11\u65cf
+TawHrInfo.partisan=\u515a\u6d3e
+TawHrInfo.phone=\u7535\u8bdd
+TawHrInfo.postal_code=\u90ae\u653f\u7f16\u7801
+TawHrInfo.mobile=\u624b\u673a
+TawHrInfo.fax=\u4f20\u771f
+TawHrInfo.mail=\u7535\u5b50\u90ae\u4ef6
+TawHrInfo.address=\u901a\u8baf\u5730\u5740
+TawHrInfo.dept_id=\u6240\u5c5e\u90e8\u95e8
+TawHrInfo.profession=\u4e13\u4e1a
+TawHrInfo.situation=\u804c\u52a1
+TawHrInfo.situation_class=\u6280\u672f\u804c\u79f0
+TawHrInfo.educational=\u5b66\u5386
+TawHrInfo.university=\u6bd5\u4e1a\u9662\u6821
+TawHrInfo.graduate_time=\u6bd5\u4e1a\u65f6\u95f4
+TawHrInfo.foreign_language=\u5916\u8bed\u8bed\u79cd\u53ca\u7a0b\u5ea6
+TawHrInfo.work_experience=\u5de5\u4f5c\u7ecf\u5386
+TawHrInfo.work_exploit=\u5de5\u4f5c\u4e1a\u7ee9
+TawHrInfo.notes=\u5907\u6ce8
+------------Module OtherAdmin taw_hr_info end---------------
+
+------------Module OtherAdmin TawSurvey start---------------
+TawSurvey.name=\u8c03\u67e5\u4e3b\u9898
+TawSurvey.title=\u4e3b\u9898
+TawSurvey.fashion=\u6295\u7968\u65b9\u5f0f
+TawSurvey.viewflag=\u9996\u9875\u662f\u5426\u663e\u793a
+TawSurvey.notes=\u8c03\u67e5\u5185\u5bb9
+TawSurveyStep.content=\u8c03\u67e5\u5185\u5bb9
+TawSurvey.fashion0=\u5355\u9009
+TawSurvey.fashion1=\u591a\u9009
+TawSurvey.viewflag0=\u9996\u9875\u5448\u73b0
+TawSurvey.viewflag1=\u4e0d\u5448\u73b0
+TawSurveyStep.num=\u521d\u59cb\u5316\u6570\u76ee
+TawSurvey.poll=\u5728\u7ebf\u8c03\u67e5
+TawSurvey.ok=\u6295\u7968
+------------Module OtherAdmin TawSurvey end---------------
+
+-- Begin of Assess --
+
+Check_Label.Del = \u5220\u9664
+Check_Label.Add = \u586b\u52a0
+Check_Label.NoPass = \u5ba1\u6838\u4e0d\u901a\u8fc7
+Check_Label.Save = \u4fdd\u5b58
+Check_Label.Edit = \u4fee\u6539
+Check_Label.Audit = \u5ba1\u6838
+Check_Label.FinishAudit = \u5ba1\u6838\u5b8c\u6210
+Check_Label.FillAudit = \u586b\u5199\u5ba1\u6279\u8868
+Check_Label.SeeAuditForm = \u67e5\u770b\u5ba1\u6279\u8868
+Check_Label.Stat = \u7edf\u8ba1
+
+Check_Label.NewNoSubmit = \u65b0\u5efa\u672a\u63d0\u4ea4
+Check_Label.BeenSubmited = \u5df2\u63d0\u4ea4
+Check_Label.BeenAudited = \u5df2\u5ba1\u6279
+Check_Label.ForAudited = \u5f85\u5ba1\u6279
+Check_Label.List = \u8003\u6838\u8868\u5217\u8868
+
+
+ -- TawDictPost ---
+TawDictPost.Post_Name_Duty = \u5c97\u4f4d\u540d\u79f0\u91cd\u590d\uff01
+TawDictPost.Name = \u5c97\u4f4d
+TawDictPost.Post_Name = \u5c97\u4f4d\u540d\u79f0
+TawDictPost.Dept_Name = \u90e8\u95e8\u540d\u79f0
+TawDictPost.Check_Man_Name = \u5ba1\u6838\u4eba
+TawDictPost.Browse_Man_Name = \u9605\u8bfb\u4eba
+TawDictPost.Comments = \u5907\u6ce8\uff1a
+
+  -- TawDictPostKPI --
+TawDictPostKPI.Name = KPI\u53ca\u6743\u91cd
+TawDictPostKPI.KPI_Name_Duty = \u540c\u4e00\u4e2a\u5c97\u4f4d\u7684KPI\u91cd\u590d!
+TawDictPostKPI.Select_Post = \u9009\u62e9\u5c97\u4f4d
+TawDictPostKPI.KPI_Name = KPI\u540d\u79f0
+TawDictPostKPI.Weigh = \u6743\u91cd(%)
+TawDictPostKPI.Is_Must = \u662f\u5426\u5fc5\u9009
+TawDictPostKPI.Select_KPI = \u9009\u62e9KPI
+
+  -- TawCheckMainForm --
+TawCheckMainForm.No = \u5e8f\u53f7
+
+TawCheckMainForm.Name = \u8003\u6838\u8868
+TawCheckMainForm.Check_Type = \u8003\u6838\u7c7b\u578b
+TawCheckMainForm.Check_Month = \u8003\u6838\u6708\u5ea6
+TawCheckMainForm.Check_Year = \u8003\u6838\u5e74\u5ea6
+TawCheckMainForm.Doc_Author = \u88ab\u8003\u6838\u4eba
+TawCheckMainForm.Doc_Created = \u521b\u5efa\u65f6\u95f4
+TawCheckMainForm.Check_Man = \u8003\u6838\u4eba
+TawCheckMainForm.Browse_Man = \u9605\u8bfb\u4eba
+TawCheckMainForm.Doc_Status = \u8003\u6838\u8868\u72b6\u6001
+TawCheckMainForm.Finally_Score = \u8bc4\u5ba1\u540e\u5206\u6570
+
+  -- TawCheckKPIForm --
+TawCheckKPIForm.KPI_Name = KPI\u540d\u79f0
+TawCheckKPIForm.Weigh = \u6743\u91cd
+TawCheckKPIForm.Completion = \u5b8c\u6210\u60c5\u51b5
+TawCheckKPIForm.Check_Score = \u8bc4\u5ba1\u8bc4\u5206
+TawCheckKPIForm.Comments = \u8bc4\u5ba1\u8bf4\u660e
+
+   -- TaCheckAuditForm
+TawCheckAuditForm.Name = \u5ba1\u6838\u8868
+TawCheckAuditForm.Audit_Man = \u5ba1\u6838\u4eba
+
+TawCheckAuditForm.Audit_Time = \u5ba1\u6838\u65f6\u95f4
+TawCheckAuditForm.Audit_Comments = \u5ba1\u6838\u610f\u89c1
+
+
+--SPAREPART--------------------------------------------------------------
+
+TAWSTORAGE.createok=\u4ed3\u5e93\u521b\u5efa\u6210\u529f\uff01
+TAWSTORAGE.deleteok=\u4ed3\u5e93\u5220\u9664\u6210\u529f\uff01
+TAWSTORAGE.updateok=\u4ed3\u5e93\u4fee\u6539\u6210\u529f\uff01
+ --order--
+load.one=\u5907\u4ef6\u501f\u7528\u51fa\u5e93\u5355
+serviceout.one=\u5907\u4ef6\u7ef4\u4fee\u51fa\u5e93\u5355
+fault.one=\u5907\u4ef6\u5f85\u4fee\u5355
+reject.one=\u5907\u4ef6\u62a5\u5e9f\u5355
+transfer.one=\u5907\u54c1\u5907\u4ef6\u8f6c\u5e93\u5355
+order.term=\u9009\u62e9\u64cd\u4f5c\u5907\u4ef6\u7684\u5c5e\u6027\u6761\u4ef6
+order.view=\u8bf7\u9009\u62e9\u64cd\u4f5c\u7684\u5907\u4ef6
+view.choosed=\u5df2\u7ecf\u9009\u62e9\u7684\u5907\u4ef6
+order.over=\u4f60\u9009\u62e9\u7684\u5907\u4ef6\u5df2\u7ecf\u64cd\u4f5c\u6210\u529f\uff01
+--sparepart----
+
+-------------------------TawInfMaintainerForm-----------------------------------
+
+TawInfMaintainer.Name=\u7ef4\u62a4\u4eba\u5458\u8d44\u6599
+TawInfMaintainer.Select_Dept=\u9009\u62e9\u90e8\u95e8
+TawInfMaintainer.DepName=\u6240\u5c5e\u90e8\u95e8
+TawInfMaintainer.Maintainer_Name=\u59d3\u540d
+TawInfMaintainer.Maintainer_Sex=\u6027\u522b
+TawInfMaintainer.Tele=\u8054\u7cfb\u7535\u8bdd
+TawInfMaintainer.Tele_Mobile=\u79fb\u52a8\u7535\u8bdd
+TawInfMaintainer.Tele_Home=\u5bb6\u5ead\u7535\u8bdd
+TawInfMaintainer.Email=E-Mail
+TawInfMaintainer.Special=\u4e2a\u4eba\u4e13\u957f
+
+--------------------------------TawInfCmdForm----------------------------------
+
+TawInfCmd.Name=\u547d\u4ee4\u5e93\u8d44\u6599
+TawInfCmd.Cmdswich=\u547d\u4ee4\u6240\u5c5e\u4ea4\u6362\u673a
+TawInfCmd.Select_swich=\u9009\u62e9\u4ea4\u6362\u673a
+TawInfCmd.Cmd_id=\u547d\u4ee4\u7f16\u53f7
+TawInfCmd.Cmd_name=\u547d\u4ee4\u540d\u79f0
+TawInfCmd.Cmd_param=\u547d\u4ee4\u53c2\u6570
+TawInfCmd.Param_scope=\u53c2\u6570\u7684\u53d6\u503c\u8303\u56f4
+TawInfCmd.Cmd_des=\u547d\u4ee4\u7684\u57fa\u672c\u63cf\u8ff0
+
+-----------------------------------TawInfIp------------------------------------
+
+TawInfIp.Name=\u7528\u6237IP\u5730\u5740\u8d44\u6599
+TawInfIp.User_id=\u7528\u6237\u7f16\u53f7
+TawInfIp.User_name=\u7528\u6237\u59d3\u540d
+TawInfIp.Dept_name=\u90e8\u95e8
+TawInfIp.User_address=\u7528\u6237IP\u5730\u5740
+TawInfIp.User_tel=\u8054\u7cfb\u7535\u8bdd
+TawInfIp.User_type=\u7528\u6237\u7c7b\u578b
+TawInfIp.Dev_port=\u6570\u636e\u8bbe\u5907\u7aef\u53e3
+TawInfIp.Dev_id=\u8bbe\u5907\u7f16\u53f7
+TawInfIp.User_logic=\u7528\u6237\u903b\u8f91\u7535\u8def\u53f7
+TawInfIp.Logicport=\u903b\u8f91\u7aef\u53e3
+TawInfIp.Remark=\u5907\u6ce8
+
+---------------------------------TawInfAppu------------------------------------
+
+TawInfAppu.Name=\u9644\u4ef6\u8d44\u6599
+TawInfAppu.InfSortName=\u8d44\u6599\u7c7b\u522b
+TawInfAppu.InfInfoId=\u8d44\u6599\u7f16\u53f7
+TawInfAppu.InfInfoName=\u8d44\u6599\u540d\u79f0
+TawInfAppu.DeptName=\u8d44\u6599\u6240\u5c5e\u90e8\u95e8
+TawInfAppu.InfUpName=\u4e0a\u4f20\u4eba
+TawInfAppu.InfUpfileName=\u4e0a\u4f20\u6587\u4ef6\u540d
+TawInfAppu.InfUpTime=\u4e0a\u4f20\u65f6\u95f4
+
+-------------------------------TawResEle2m-------------------------------------
+
+TawResEle2m.Name=2M\u7535\u8def
+TawResEle2m.trunk=\u6240\u5728\u5e72\u7ebf
+TawResEle2m.system_id=\u7cfb\u7edf\u7f16\u53f7
+TawResEle2m.ground_2m=\u843d\u57302M\u3001PQ
+TawResEle2m.condirect=\u901a\u8fbe\u65b9\u5411
+TawResEle2m.ele_id=\u7535\u8def\u4ee3\u53f7
+TawResEle2m.ele_type=\u7535\u8def\u7c7b\u578b
+TawResEle2m.org_id=\u7ec4\u7ec7\u4ee3\u53f7
+TawResEle2m.watchpos=\u76d1\u63a7\u4f4d\u7f6e
+TawResEle2m.devinfo_this=\u672c\u7aef\u8bbe\u5907\u4fe1\u606f
+TawResEle2m.devinfo_that=\u5bf9\u7aef\u8bbe\u5907\u4fe1\u606f
+TawResEle2m.ddf_transdev=\u4f20\u8f93\u8bbe\u5907DDF
+TawResEle2m.ddf_user=\u7528\u6237DDF
+TawResEle2m.userrelay=\u7528\u6237\u4e2d\u7ee7\u6027\u8d28
+TawResEle2m.opendate=\u5f00\u901a\u65e5\u671f
+TawResEle2m.move_id=\u8c03\u5355\u53f7
+TawResEle2m.remark=\u5907\u6ce8
+TawResEle2m.user_devinfo=\u7528\u6237\u8bbe\u5907\u4fe1\u606f
+TawResEle2m.user_info=\u7528\u6237\u4fe1\u606f
+TawResEle2m.info_155m=155M\u4fe1\u606f
+TawResEle2m.info_alldis=\u5168\u7a0b\u4fe1\u606f
+TawResEle2m.info_group=\u7fa4\u6b21\u4fe1\u606f
+TawResEle2m.terminal_a=\u7ec8\u7aef\u70b9A
+TawResEle2m.terminal_acon=\u7ec8\u7aef\u70b9A\u4e92\u8054\u5730\u5740
+TawResEle2m.terminal_z=\u7ec8\u7aef\u70b9Z
+TawResEle2m.terminal_zcon=\u7ec8\u7aef\u70b9Z\u4e92\u8054\u5730\u5740
+TawResEle2m.openrecord=\u5f00\u901a\u8bb0\u5f55
+
+--------------------------------TawResEle155m----------------------------------
+
+TawResEle155m.Name=155M\u7535\u8def
+TawResEle155m.dept_name=\u90e8\u95e8\u540d\u79f0
+TawResEle155m.system_id=\u7cfb\u7edf\u7f16\u53f7
+TawResEle155m.unite_id=\u7edf\u4e00\u7f16\u53f7
+TawResEle155m.id_155m=155M\u5e8f\u53f7
+TawResEle155m.condirect=\u901a\u8fbe\u65b9\u5411
+TawResEle155m.ele_name=\u7535\u8def\u540d\u79f0
+TawResEle155m.ele_id=\u7535\u8def\u4ee3\u53f7
+TawResEle155m.ele_type=\u7535\u8def\u7c7b\u578b
+TawResEle155m.layout=\u914d\u7ebf\u60c5\u51b5
+TawResEle155m.router_alldis=\u5168\u7a0b\u8def\u7531
+TawResEle155m.router_group=\u7fa4\u6b21\u8def\u7531
+TawResEle155m.terminal_a=\u7ec8\u7aef\u5730\u70b9A
+TawResEle155m.terminal_z=\u7ec8\u7aef\u5730\u70b9Z
+TawResEle155m.open_date=\u5f00\u901a\u65f6\u95f4
+TawResEle155m.dev_ddfodf=\u8bbe\u5907DDF/ODF
+TawResEle155m.relaypos_2m=\u4e2d\u7ee7\u4f4d\u7f6e\uff082M\u4f4d\u7f6e\uff09
+TawResEle155m.move_id=\u8c03\u5355\u53f7
+TawResEle155m.otherinfo=\u5176\u4ed6\u4fe1\u606f
+TawResEle155m.trunk=\u6240\u5728\u5e72\u7ebf
+TawResEle155m.dev_this=\u672c\u7aef\u8bbe\u5907
+TawResEle155m.dev_that=\u5bf9\u7aef\u8bbe\u5907
+TawResEle155m.ip_this=\u672c\u7aefIP\u5730\u5740
+TawResEle155m.ip_that=\u5bf9\u7aefIP\u5730\u5740
+TawResEle155m.ip_self=\u81ea\u7528IP\u5730\u5740
+TawResEle155m.openrecord=\u5f00\u901a\u8bb0\u5f55
+
+--------------------------------TawResLineinfo---------------------------------
+
+TawResLineinfo.Name=\u7ebf\u8def\u4fe1\u606f
+TawResLineinfo.dept_name=\u90e8\u95e8\u540d\u79f0
+TawResLineinfo.rayline_name=\u5149\u7f06\u540d\u79f0
+TawResLineinfo.rayline_type=\u5149\u7f06\u7c7b\u522b
+TawResLineinfo.fibrecore_id=\u7ea4\u82af\u53f7
+TawResLineinfo.opendev_name=\u5f00\u901a\u8bbe\u5907\u540d\u79f0
+TawResLineinfo.fibrecore_type=\u7ea4\u82af\u7c7b\u522b
+TawResLineinfo.pos_this=\u627f\u7aef\u4f4d\u7f6e
+TawResLineinfo.pos_that=\u5bf9\u7aef\u4f4d\u7f6e
+TawResLineinfo.opendate=\u5f00\u901a\u65e5\u671f
+TawResLineinfo.remark=\u5907\u6ce8
+TawResLineinfo.correlation=\u5bf9\u5e94\u5173\u7cfb
+TawResLineinfo.move_id=\u8c03\u5355\u53f7
+TawResLineinfo.router_alldis=\u5168\u7a0b\u8def\u7531
+TawResLineinfo.openrecord=\u5f00\u901a\u8bb0\u5f55
+
+--------------------------------TawResClient-----------------------------------
+
+TawResClient.Name=\u5927\u5ba2\u6237\u4fe1\u606f
+TawResClient.dept_name=\u90e8\u95e8\u540d\u79f0
+TawResClient.ele_id=\u7535\u8def\u4ee3\u53f7
+TawResClient.client_name=\u5ba2\u6237\u540d\u79f0
+TawResClient.city_ddf=\u57ce\u57df\u7f51DDF
+TawResClient.city_odf=\u57ce\u57df\u7f51ODF
+TawResClient.city_devtype=\u57ce\u57df\u7f51\u8bbe\u5907\u7c7b\u578b
+TawResClient.user_ddf=\u7528\u6237DDF
+TawResClient.user_odf=\u7528\u6237ODF
+TawResClient.user_devtype=\u7528\u6237\u8bbe\u5907\u7c7b\u578b
+TawResClient.oper_type=\u4e1a\u52a1\u7c7b\u578b
+TawResClient.rate_grade=\u901f\u7387\u7b49\u7ea7
+TawResClient.user_address=\u7528\u6237\u8be6\u7ec6\u5730\u5740
+TawResClient.start_date=\u8d77\u79df\u65e5\u671f
+TawResClient.open_date=\u5f00\u901a\u65e5\u671f
+TawResClient.link_man=\u8054\u7cfb\u4eba
+TawResClient.link_tel=\u8054\u7cfb\u7535\u8bdd
+TawResClient.open_record=\u5f00\u901a\u8bb0\u5f55
+TawResClient.run_analysis=\u8fd0\u884c\u8d28\u91cf\u5206\u6790
+TawResClient.client_info=\u5ba2\u6237\u4fe1\u606f
+
+-- End Of Assess --
+
+--------------------------------TawInfSort-------------------------------------
+
+TawInfSort.Name=\u8d44\u6599\u7c7b\u522b
+TawInfSort.inf_sort_name=\u8d44\u6599\u7c7b\u522b\u540d\u79f0
+
+-- End Of Assess --
+
+---  Begin Of defination of TawReplDuty  -------------
+TawReplDuty.OldDutyMan =\u88ab\u66ff\u73ed\u4eba
+TawReplDuty.NewDutyMan =\u66ff\u73ed\u4eba
+TawReplDuty.ReplDutyName = \u66ff\u73ed
+TawReplDuty.ReplReason = \u66ff\u73ed\u539f\u56e0
+
+--- End of defination of TawReplDuty -------------------
+
+--SPAREPART--------------------------------------------------------------
+
+--lable---------
+sparepart.objecttype=\u5907\u4ef6\u7c7b\u578b
+sparepart.version=\u5907\u4ef6\u578b\u53f7
+sparepart.nettype=\u7f51\u7edc\u7c7b\u578b
+sparepart.necode=\u7f51\u5143\u7c7b\u578b
+sparepart.supplier=\u4f9b\u8d27\u5382\u5546
+sparepart.objectname=\u5907\u4ef6\u540d\u79f0
+sparepart.serialno=\u5907\u4ef6\u5e8f\u5217\u53f7
+sparepart.operator=\u7ecf\u624b\u4eba
+sparepart.note=\u5907\u6ce8
+sparepart.state=\u72b6\u6001
+sparepart.sum=\u6570\u91cf
+sparepart.return=\u539f\u4ef6\u8fd4\u56de
+sparepart.mangle=\u635f\u574f
+sparepart.new=\u65b0\u4ef6
+sparepart.msg=\u5907\u4ef6\u4fe1\u606f
+sparepart.servicein=\u5907\u4ef6\u7ef4\u4fee\u56de\u5e93
+sparepart.return=\u5907\u4ef6\u5f52\u8fd8
+sparepart.update=\u5907\u4ef6\u4fee\u6539
+sparepart.addnew=\u65b0\u4ef6\u5165\u5e93
+sparepart.timein=\u8d77\u59cb\u65f6\u95f4
+sparepart.timeend=\u7ec8\u6b62\u65f6\u95f4
+
+storage=\u4ed3\u5e93
+storage.choose=\u9009\u62e9\u4ed3\u5e93
+storage.select=\u8bf7\u9009\u62e9\u4e00\u4e2a\u4ed3\u5e93
+storage.name=\u4ed3\u5e93\u540d\u79f0
+storage.note=\u4ed3\u5e93\u5907\u6ce8
+storage.admin=\u4ed3\u5e93\u7ba1\u7406
+storage.update=\u4ed3\u5e93\u4fee\u6539
+storage.create=\u4ed3\u5e93\u521b\u5efa
+storage.stat=\u5e93\u5b58\u7edf\u8ba1
+storage.query=\u5e93\u5b58\u67e5\u8be2
+
+class.name=\u540d\u79f0
+class.note=\u5907\u6ce8
+class.choose=\u8bf7\u9009\u62e9\u4e00\u4e2a\u7c7b\u578b
+class.maintenance=\u7c7b\u578b\u7ef4\u62a4
+class.msg=\u7c7b\u578b\u4fe1\u606f
+class.update=\u7c7b\u578b\u4fee\u6539
+
+stat.view=\u5e93\u5b58\u7edf\u8ba1\u7ed3\u679c\u663e\u793a
+query.view=\u5e93\u5b58\u67e5\u8be2\u7ed3\u679c\u663e\u793a
+
+order.operater=\u7ecf\u624b\u4eba
+order.proposer=\u7533\u8bf7\u4eba
+order.prop_dept=\u7533\u8bf7\u4eba\u90e8\u95e8
+order.prop_tel=\u7533\u8bf7\u4eba\u7535\u8bdd
+order.note=\u5907\u6ce8
+
+--lable end------------------------------------
+
+TAWSTORAGE.createok=\u4ed3\u5e93\u521b\u5efa\u6210\u529f\uff01
+TAWSTORAGE.deleteok=\u4ed3\u5e93\u5220\u9664\u6210\u529f\uff01
+TAWSTORAGE.updateok=\u4ed3\u5e93\u4fee\u6539\u6210\u529f\uff01
+ --order--
+load.one=\u5907\u4ef6\u501f\u7528\u51fa\u5e93\u5355
+serviceout.one=\u5907\u4ef6\u7ef4\u4fee\u51fa\u5e93\u5355
+fault.one=\u5907\u4ef6\u5f85\u4fee\u5355
+reject.one=\u5907\u4ef6\u62a5\u5e9f\u5355
+transfer.one=\u5907\u54c1\u5907\u4ef6\u8f6c\u5e93\u5355
+order.term=\u9009\u62e9\u64cd\u4f5c\u5907\u4ef6\u7684\u5c5e\u6027\u6761\u4ef6
+order.view=\u8bf7\u9009\u62e9\u64cd\u4f5c\u7684\u5907\u4ef6
+view.choosed=\u5df2\u7ecf\u9009\u62e9\u7684\u5907\u4ef6
+order.over=\u4f60\u9009\u62e9\u7684\u5907\u4ef6\u5df2\u7ecf\u64cd\u4f5c\u6210\u529f\uff01
+--sparepart----
+
+-- End Of Assess --
+
+-----------------------------------InfAddressBook-------------------------------
+TawInfAddressBook.company=\u516c\u53f8\u540d\u79f0
+TawInfAddressBook.deptName=\u6240\u5c5e\u90e8\u95e8
+TawInfAddressBook.specialty=\u6240\u5c5e\u4e13\u4e1a
+TawInfAddressBook.duty=\u804c\u52a1
+TawInfAddressBook.name=\u59d3\u540d
+TawInfAddressBook.groupName=\u7ec4\u522b
+TawInfAddressBook.mobile=\u79fb\u52a8\u7535\u8bdd
+TawInfAddressBook.officeTel=\u529e\u516c\u7535\u8bdd
+TawInfAddressBook.smart=\u5c0f\u7075\u901a
+TawInfAddressBook.email=\u7535\u5b50\u90ae\u7bb1
+TawInfAddressBook.remark=\u5907\u6ce8
+TawInfAddressBook.recType=\u6240\u5c5e\u7c7b\u522b
+TawInfAddressBook.select=\u9009\u62e9\u7fa4\u7ec4
+
+TawInfAddressBook.label=\u4e2a\u4eba\u901a\u8baf\u7c3f
+TawInfAddressBook.groupMail=\u7fa4\u53d1\u90ae\u4ef6
+TawInfAddressBook.maySelect=\u5f85\u9009\u5217\u8868
+TawInfAddressBook.receive=\u6536\u4ef6\u4eba\u5217\u8868
+
+-----------------------------------end------------------------------------------
+
+--- qlh: TawSoftwareSheet   ------
+TawSoftwareForm.TawSoftwareSheet =\u8f6f\u4ef6\u7248\u672c\u5de5\u5355
+
+TawSoftwareForm.Creator =\u6d3e\u5355\u4eba
+TawSoftwareForm.CreatorContact =\u8054\u7cfb\u65b9\u5f0f
+TawSoftwareForm.SendTime =\u6d3e\u5355\u65f6\u95f4
+TawSoftwareForm.StopLimited =\u8981\u6c42\u5b8c\u6210\u65f6\u95f4
+TawSoftwareForm.EndTime =\u5904\u7406\u7ed3\u675f\u65f6\u95f4
+TawSoftwareForm.StopTime =\u4efb\u52a1\u5b8c\u6210\u65f6\u95f4
+TawSoftwareForm.Specialty =\u6240\u5c5e\u4e13\u4e1a
+TawSoftwareForm.Title =\u4e3b\u9898
+TawSoftwareForm.Explan =\u529f\u80fd\u8bf4\u660e
+TawSoftwareForm.SoftType =\u8f6f\u4ef6\u7c7b\u578b
+TawSoftwareForm.UpdateNet =\u8ba1\u5212\u66f4\u65b0\u5c40\u70b9
+TawSoftwareForm.UpdateReson =\u66f4\u65b0\u76ee\u7684
+TawSoftwareForm.SoftwareRunTime =\u8f6f\u4ef6\u5347\u7ea7/\u8865\u4e01\u6295\u5165\u8fd0\u884c\u65f6\u95f4
+TawSoftwareForm.EffectRange =\u9884\u8ba1\u5f71\u54cd\u4e1a\u52a1\u8303\u56f4\u53ca\u65f6\u95f4
+TawSoftwareForm.PlanTime =\u8ba1\u5212\u6267\u884c\u65f6\u95f4
+TawSoftwareForm.MachineType = \u673a\u578b
+TawSoftwareForm.FactoryTel =\u5382\u5bb6\u7535\u8bdd
+TawSoftwareForm.OldPatch = \u539f\u8865\u4e01\u53f7
+TawSoftwareForm.NewPatch =\u65b0\u8865\u4e01\u53f7
+TawSoftwareForm.OldEdition =\u539f\u7248\u672c
+TawSoftwareForm.NewEdition =\u65b0\u7248\u672c
+TawSoftwareForm.EffectPay =\u662f\u5426\u5f71\u54cd\u8ba1\u8d39
+TawSoftwareForm.EffectCommu =\u662f\u5426\u5f71\u54cd\u901a\u4fe1
+TawSoftwareForm.ArchiveMan =\u5f52\u6863\u4eba
+TawSoftwareForm.ArchiveTime =\u5f52\u6863\u65f6\u95f4
+TawSoftwareForm.ArchiveLimit=\u5f52\u6863\u65f6\u9650
+TawSoftwareForm.ArchiveContact =\u8054\u7cfb\u7535\u8bdd
+TawSoftwareForm.ArchiveAdvice =\u5f52\u6863\u610f\u89c1
+TawSoftwareForm.Satisfaction =\u6ee1\u610f\u7a0b\u5ea6
+TawSoftwareForm.FromSystem =\u5de5\u5355\u6765\u6e90
+
+
+TawSoftwareReplyForm.Receiver =\u63a5\u5355\u4eba
+TawSoftwareReplyForm.RContact =\u63a5\u5355\u4eba\u8054\u7cfb\u65b9\u5f0f
+TawSoftwareReplyForm.SendTime = \u6d3e\u53d1\u65f6\u95f4
+TawSoftwareReplyForm.Acceptor = \u786e\u8ba4\u4eba
+TawSoftwareReplyForm.AContact =\u786e\u8ba4\u4eba\u8054\u7cfb\u65b9\u5f0f
+TawSoftwareReplyForm.AcceptTime =\u786e\u8ba4\u53d7\u7406\u65f6\u95f4
+TawSoftwareReplyForm.Replier =\u56de\u590d\u4eba
+TawSoftwareReplyForm.ReContact =\u786e\u8ba4\u4eba\u8054\u7cfb\u65b9\u5f0f
+TawSoftwareReplyForm.ReplyTime =\u56de\u590d\u65f6\u95f4
+TawSoftwareReplyForm.RecieveClass =\u53d7\u7406\u7d27\u6025\u7a0b\u5ea6
+TawSoftwareReplyForm.RejectAdvice =\u9000\u56de\u5904\u7406\u610f\u89c1
+TawSoftwareReplyForm.Satisfaction =\u6ee1\u610f\u7a0b\u5ea6
+TawSoftwareReplyForm.SendCause =\u6d3e\u53d1(\u91cd\u65b0\u6d3e\u53d1)\u539f\u56e0
+TawSoftwareReplyForm.AcceptLimited =\u786e\u8ba4\u65f6\u9650
+TawSoftwareReplyForm.DealLimited =\u56de\u590d\u65f6\u9650
+TawSoftwareReplyForm.DealResult =\u5904\u7406(\u6838\u67e5)\u7ed3\u679c
+TawSoftwareReplyForm.TestResult =\u6d4b\u8bd5\u7ed3\u679c
+TawSoftwareReplyForm.LookResult =\u89c2\u5bdf\u7ed3\u679c
+TawSoftwareReplyForm.ChargeAdvice =\u4e3b\u7ba1\u90e8\u95e8\u610f\u89c1
+TawSoftwareReplyForm.StopTime =\u4efb\u52a1\u5b8c\u6210\u65f6\u95f4
+
+----  End of Softwaresheet -----------
+
+-- chenjiao TasksheetForm   --
+
+TawTasksheetForm.taskType =\u4efb\u52a1\u7c7b\u578b
+TawTasksheetForm.comments =\u4efb\u52a1\u5185\u5bb9
+TawTasksheetForm.stopAlert =\u662f\u5426\u63d0\u524d\u63d0\u9192
+
+TawTaskReplyForm.exit =\u9000\u51fa
+TawTaskReplyForm.show =\u663e\u793a \u4efb\u52a1\u5de5\u5355
+TawTaskReplyForm.acceptor =\u63a5\u5355\u4eba
+TawTaskReplyForm.contact =\u8054\u7cfb\u65b9\u5f0f
+
+-- chenjiao TasksheetForm end --

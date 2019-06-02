@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+
+		<form-bean name="tawSystemDeptForm"
+			type="com.boco.eoms.commons.system.dept.webapp.form.TawSystemDeptForm" />
+
+	</form-beans>
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<!-- ajax template forwards -->
+		<forward name="tpl-dept-xtree"
+			path="/templates/dept/tpl-dept-xtree.jsp" redirect="false"
+			contextRelative="true" />
+		<forward name="tpl-dept-layoutTree"
+			path="/templates/dept/tpl-dept-layoutTree.jsp" redirect="false"
+			contextRelative="true" />
+	</global-forwards>
+
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+
+
+	<action-mappings>
+		<action path="/deptBasicDataCfg"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/tawSystemDept/tawSystemDeptTree.jsp" />
+		<action path="/deptBasicDataCfgPartner"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/tawSystemDept/tawSystemDeptPartnerTree.jsp" />
+		<action path="/deptBasicDataCfgAccessory"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/tawSystemDept/partnerDeptAccessory.jsp" />
+		<action path="/tawSystemDeptIndex"
+			type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/tawSystemDept/tawSystemDeptIndex.jsp" />
+		<action path="/" type="org.apache.struts.actions.ForwardAction"
+			parameter="/WEB-INF/pages/tawSystemDept/tawSystemDeptIndex.jsp" />
+		<action path="/tawSystemDepts"
+			type="com.boco.eoms.commons.system.dept.webapp.action.TawSystemDeptAction"
+			name="tawSystemDeptForm" scope="request" input="mainMenu"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="view"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptIndex.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptTree.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="listExits"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptList.jsp?id=0"
+				redirect="false" contextRelative="true" />
+			<forward name="search" path="/tawSystemDepts.do"
+				redirect="true" contextRelative="true" />
+			<forward name="searchExits"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptExits.jsp?id=0"
+				redirect="false" contextRelative="true" />
+			<forward name="success"
+				path="/WEB-INF/pages/tawSystemUser/success.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="failure"
+				path="/WEB-INF/pages/tawSystemUser/failure.jsp" redirect="false"
+				contextRelative="true" />
+		</action>
+		<action path="/editTawSystemDept"
+			type="com.boco.eoms.commons.system.dept.webapp.action.TawSystemDeptAction"
+			name="tawSystemDeptForm" scope="request" input="list"
+			parameter="method" unknown="false" validate="false">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptTree.jsp?id=0"
+				redirect="false" contextRelative="true" />
+			<forward name="listExits"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptList.jsp?id=0"
+				redirect="false" contextRelative="true" />
+			<forward name="search" path="/dept/tawSystemDepts.do"
+				redirect="true" contextRelative="true" />
+			<forward name="searchExits"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptExits.jsp?id=0"
+				redirect="false" contextRelative="true" />
+			<forward name="comebackdel" path="/dept/tawSystemDepts.do"
+				redirect="true" contextRelative="true" />
+		</action>
+		<action path="/saveTawSystemDept"
+			type="com.boco.eoms.commons.system.dept.webapp.action.TawSystemDeptAction"
+			name="tawSystemDeptForm" scope="request" input="edit"
+			parameter="method" unknown="false" validate="true">
+			<set-property property="cancellable" value="true" />
+			<forward name="edit"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptForm.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptTree.jsp?id=0"
+				redirect="false" contextRelative="true" />
+			<forward name="listExits"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptList.jsp?id=0"
+				redirect="false" contextRelative="true" />
+			<forward name="search" path="/dept/tawSystemDepts.do"
+				redirect="true" contextRelative="true" />
+			<forward name="searchExits"
+				path="/WEB-INF/pages/tawSystemDept/tawSystemDeptExits.jsp?id=0"
+				redirect="false" contextRelative="true" />
+		</action>
+
+
+	</action-mappings>
+
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+
+	<message-resources parameter="config/ApplicationResources" />
+
+	<!-- ========== Validator plugin ===================  -->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml" />
+	</plug-in>
+</struts-config>

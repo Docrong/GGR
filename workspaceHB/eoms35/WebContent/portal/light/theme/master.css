@@ -1,0 +1,205 @@
+.portal-container {position: absolute; color: #5C225D; background:url("../images/portal-bg2.png");}
+.portal-header { padding : 10 5 5 5; text-align:right; font-size:12; font-family: Verdana, helvetica, arial; background:url("../images/portal-bg2.png") no-repeat left top; height:100;}
+.portal-header-logo {position: absolute; left:0;top:0; color: #6299CD; font-size:20; font-family: Verdana, helvetica, arial; background:url("../images/lightLogo.png"); height:80; width:200;}
+.portal-header-title { display: block; text-align:center; color: #5C225D; font-size:20; font-family: Verdana, helvetica, arial; }
+.portal-header-title-view { color: #5C225D; font-size:20; font-family: Verdana, helvetica, arial; }
+.portal-header-title-edit {color: #5C225D; font-size:20; font-family: Verdana, helvetica, arial; border-color: #5C225D; border-style: solid; border-width: 1px;}
+.portal-header-menu-item {padding : 5 5 5 5; text-align:right; }
+.portal-header-menu-item-separater { width:1; height:6; border-left: thin solid #000000; font-size:8; }
+.portal-header-menu-item A:link {text-decoration: none; color:#5C225D; padding : 5 5 5 5; font-size:10; font-family: Verdana, helvetica, arial;}
+.portal-header-menu-item A:visited {text-decoration: none; color:#5C225D;}
+.portal-header-menu-item A:active { text-decoration: none; color:#5C225D;}
+.portal-header-menu-item A:hover { text-decoration: underline; color:#6299CD;}
+.portal-body { margin: 0 0 0 0;}
+.portal-footer {position: absolute; font-size:12; font-family: Verdana, helvetica, arial;}
+.portal-footer A:link {text-decoration: none; color: #5C225D;}
+.portal-footer A:visited {text-decoration: none; color: #5C225D;}
+.portal-footer A:active { text-decoration: none; color: #5C225D;} 
+.portal-footer A:hover { text-decoration: underline; color: #5C225D;}
+
+.portal-tab-container {width: 400px;}
+.portal-tabs {float:left; width:100%; font-size:12; font-family: Verdana, helvetica, arial;}
+.portal-tabs ul {margin:0;	padding:14px 10px 0; list-style:none;}
+.portal-tabs li {float:left; background:url("../images/left.gif") no-repeat left top; margin:0; padding:0 0 0 9px;}
+.portal-tabs span {float:left;	display:block; background:url("../images/right.gif") no-repeat right top; padding:5px 15px 4px 6px;	text-decoration:none; color:#321;}
+.portal-tabs li.blue {background:url("../images/leftBlue.gif") no-repeat left top;}
+.portal-tabs span.blue {background:url("../images/rightBlue.gif") no-repeat right top;}
+.portal-tabs li.red {background:url("../images/leftRed.gif") no-repeat left top;}
+.portal-tabs span.red {background:url("../images/rightRed.gif") no-repeat right top;}
+.portal-tabs li.green {background:url("../images/leftGreen.gif") no-repeat left top;}
+.portal-tabs span.green {background:url("../images/rightGreen.gif") no-repeat right top;}
+.portal-tabs li.darkgreen {background:url("../images/leftDarkGreen.gif") no-repeat left top;}
+.portal-tabs span.darkgreen {background:url("../images/rightDarkGreen.gif") no-repeat right top;}
+.portal-tabs li.orange {background:url("../images/leftOrange.gif") no-repeat left top;}
+.portal-tabs span.orange {background:url("../images/rightOrange.gif") no-repeat right top;}
+.portal-tabs .current span {color:black; padding-bottom:5px; font-weight: bold;}
+.portal-tabs .bluecurrent {background-image:url("../images/leftBlue.gif");}
+.portal-tabs .bluecurrent span {background-image:url("../images/rightBlue.gif");color:black;padding-bottom:5px;font-weight: bold;}
+.portal-tabs .redcurrent {	background-image:url("../images/leftRed.gif");}
+.portal-tabs .redcurrent span {background-image:url("../images/rightRed.gif");	padding-bottom:5px;	font-weight: bold;}
+.portal-tabs .greencurrent {background-image:url("../images/leftGreen.gif");}
+.portal-tabs .greencurrent span {background-image:url("../images/rightGreen.gif");	color:black;padding-bottom:5px;	font-weight: bold;}
+.portal-tabs .darkgreencurrent {background-image:url("../images/leftDarkGreen.gif");}
+.portal-tabs .darkgreencurrent span {background-image:url("../images/rightDarkGreen.gif");	color:black;padding-bottom:5px;	font-weight: bold;}
+.portal-tabs .orangecurrent {background-image:url("../images/leftOrange.gif");}
+.portal-tabs .orangecurrent span {background-image:url("../images/rightOrange.gif");color:black;padding-bottom:5px;font-weight: bold;}
+.portal-tab-handle {border: 0px;display: inline;}
+.portal-tab-button {border: 0px;display: inline;cursor:pointer;	cursor:hand;padding : 0 0 0 5px;}
+.portal-tab-panels {}
+.portal-tab-panel {background: #ffffff;padding: 5px;}
+.portal-tab-panel_blue {background: #acc6d5;padding: 5px;border: 1px solid black;border-top: 0px;}
+.portal-tab-panel_red {	background: #e6d2cd;	padding: 5px;	border: 1px solid black;	border-top: 0px;}
+.portal-tab-panel_green {background: #94ee83;padding: 5px;border: 1px solid black;border-top: 0px;}
+.portal-tab-panel_darkgreen {background: #08ea08;padding: 5px;border: 1px solid black;border-top: 0px;}
+.portal-tab-panel_orange {background: #ee8d10;padding: 5px;border: 1px solid black;border-top: 0px;color: white;}
+
+.portlet {height:auto; }
+.portlet-header { z-index: 2; visibility:visible; color: #FFFFFF; background-color: #5C225D;  padding : 5 25 5 5; text-align:left; font-size:12; font-family: Verdana, helvetica, arial; }
+.portlet-header A:link {text-decoration: none; color: #FFFFFF;}
+.portlet-header A:visited {text-decoration: none; color: #FFFFFF;}
+.portlet-header A:active { text-decoration: none; color: #FFFFFF;} 
+.portlet-header A:hover { text-decoration: underline; color: #5C225D;}
+.portlet-header-button {position: absolute;}
+.portlet-body { }
+.portlet span.portlet { color: #000000; text-align:left; font-size:12; font-family: Verdana, helvetica, arial; padding : 10 0 0 5; display: block; }
+.portlet-popup { color: #000000; background-color: #EEF6FF; border-color: #6299CD; border-style: solid; border-width: 1px; padding : 5 25 5 5; text-align:left; font-size:12; font-family: Verdana, helvetica, arial; }
+
+.portlet-rss { color: #000000; text-align:left;  font-family: Verdana, helvetica, arial; padding : 0 0 0 5; display: block; }
+.portlet-rss A:link {text-decoration: none; color: #0000ff;}
+.portlet-rss A:visited {text-decoration: none; color: #0000ff;}
+.portlet-rss A:active { text-decoration: none; color: #0000ff;} 
+.portlet-rss A:hover { text-decoration: underline; color: #5C225D;}
+
+.portlet2 {border-top: thin solid #5C225D; border-bottom: thin solid #5C225D; border-left: thin solid #5C225D; border-right: thin solid #5C225D; background-color: #ffffff;  font-size:12; font-family: Verdana, helvetica, arial;  padding : 0 0 0 0; }
+.portlet2 span.portlet { text-align:left; font-size:12; font-family: Verdana, helvetica, arial; padding : 0 0 10 5; display: block; }
+.portlet2-header { clear: both; background-color: #5C225D; color: #ffffff; height: 20; font-size:12; display: block; text-align:right;}
+.portlet2-header-title { float: left; text-align: left;  color: #ffffff; padding : 0 5 0 5;}
+.portlet2-header-button { text-align:right; }
+.portlet2-header A:link {text-decoration: none; color: #FFFFFF;}
+.portlet2-header A:visited {text-decoration: none; color: #FFFFFF;}
+.portlet2-header A:active { text-decoration: none; color: #FFFFFF;} 
+.portlet2-header A:hover { text-decoration: underline; color: #5C225D;}
+
+.portlet-link { text-align:right; padding : 10 0 5 0; font-size:12; font-family: Verdana, helvetica, arial; }
+.portlet-link A:link {text-decoration: none; color: #5C225D;}
+.portlet-link A:visited {text-decoration: none; color: #5C225D;}
+.portlet-link A:active { text-decoration: none; color: #5C225D;} 
+.portlet-link A:hover { text-decoration: underline; color: #6299CD;}
+
+.portlet-footer {color: #6299CD; text-align:left; font-size:10; font-family: Verdana, helvetica, arial; padding : 10 0 5 5;}
+.portlet-footer A:link {text-decoration: none; color: #5C225D;}
+.portlet-footer A:visited {text-decoration: none; color: #5C225D;}
+.portlet-footer A:active { text-decoration: none; color: #5C225D;} 
+.portlet-footer A:hover { text-decoration: underline; color: #6299CD;}
+
+.portlet-form-group {border: thin solid #5C225D; background-color: #ffffff;  font-size:12; font-family: Verdana, helvetica, arial;  margin : 5 5 5 5; }
+.portlet-form-label { color: #000000; font-family: Tahoma, Arial; font-size: 12px; }
+.portlet-form-label-i { color: #000000; font-family: Tahoma, Arial; font-style: italic; font-size: 12px; }
+.portlet-form-field { color: #6299CD; font-family: Tahoma, Arial; font-size: 12px; }
+.portlet-form-input-field { border-color: #5C225D; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; }
+.portlet-form-select { color: #000000;   border-color: #5C225D; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; }
+.portlet-form-radio { color: #000000;  border-color: #5C225D; font-family: Arial; font-size: 12px; }
+.portlet-form-check { color: #000000;  border-color: #5C225D; font-family: Arial; font-size: 12px; }
+.portlet-form-icon { border: 0px; }
+.portlet-form-field-label {}
+.portlet-icon-label { }
+.portlet-dlg-icon-label {}
+.portlet-form-button { color: #ffffff; background-color: #fe9900; border-color: #965A00; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; margin: 0 0 0 4;}
+.portlet-form-button-disabled { color: #000000; background-color: #B5B1AC; border-color: #B5B1AC; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; }
+.portlet-form-textarea-field { border-color: #5C225D; border-style: hidden; border-width: 0px; font-family: Arial; font-size: 12px; }
+
+.portlet-table-td-left {text-align:left; padding : 0 0 5 5; font-size:12; font-family: Verdana, helvetica, arial;}
+.portlet-table-td-center {text-align:center;padding : 0 0 5 0; font-size:12; font-family: Verdana, helvetica, arial;}
+.portlet-table-td-right {text-align:right; padding : 10 0 5 0; font-size:12; font-family: Verdana, helvetica, arial;}
+
+
+.portlet-font{}
+.portlet-font-dim{}
+.portlet-msg-status {}
+.portlet-msg-info {}
+.portlet-msg-error {}
+.portlet-msg-alert {}
+.portlet-msg-success{}
+.portlet-section-header{}
+.portlet-section-body{}
+.portlet-section-alternate{}
+.portlet-section-selected{}
+.portlet-section-subheader{}
+.portlet-section-footer{}
+.portlet-section-text{}
+.portlet-menu {}
+.portlet-menu-item {}
+.portlet-menu-item-selected {}
+.portlet-menu-item-hover {}
+.portlet-menu-item-hover-selected {}
+.portlet-menu-cascade-item {}
+.portlet-menu-cascade-item-selected {}
+.portlet-menu-description {}
+.portlet-menu-caption {}
+/* #### J2EE Web Application's CSS #### */
+.mainpage    {	width:780; }
+.logo { width:113; height:42; background-image: url(/online/images/traf2.jpg); background-repeat: no-repeat;}
+
+.header { width:780; height:59; background-image: url(/online/images/header.gif); }
+.mainHeader { width:780; height:59; padding : 10 0 0 0; background-color: #5C225D; }
+
+.menu    {width: 120 ; height: 400; vertical-align: top;  background-color: #ffffff; }
+.menuHeader {width:100%; padding-top : 10px; padding-bottom : 0px; padding-left : 0px;
+		   color: #0000ff;  font-weight: bold; font-size:10; font-family: Verdana, helvetica, arial; }
+.menuItem {width:100%; padding-top : 10px; padding-bottom : 0px; padding-left : 10px;
+		   color: #0000ff; font-size:10; font-family: Verdana, helvetica, arial; }  
+.menuItem A:link {text-decoration: none; color:#5C225D;}
+.menuItem A:visited {text-decoration: none; color:#5C225D;}
+.menuItem A:active {background: #FFFFFF; text-decoration: none; color:#5C225D;}
+.menuItem A:hover {background: #FFFFFF; text-decoration: underline; color:#5C225D;}
+.menuItemSeparater { width:100; height:1; border-bottom: thin solid #5C225D;  font-size:1;}
+.menuItemSeparater1 { width:1; height:4; border-left: thin solid #ffffff; font-size:6; }
+.menuItemSeparater2 { width:1; height:6; border-left: thin solid #5C225D; font-size:8; }
+
+.context {width: 660 ; text-align: center; vertical-align: top; padding : 0 0 0 0; }
+.statusBar { width: 660 ; text-align: right; padding-top : 0px; padding-right : 10px; font-size:10;
+		  font-family: Verdana, helvetica, arial; color: #FFFFFF; }
+		  
+.statusBar A:link {text-decoration: none; color: #FFFFFF;}
+.statusBar A:visited {text-decoration: none; color: #FFFFFF;}
+.statusBar A:active { text-decoration: none; color: #FFFFFF;} 
+.statusBar A:hover { text-decoration: none; color: #FFFFFF;}
+
+.content {width: 660 ; text-align: center; vertical-align: top; padding : 0 0 0 30; font-size:12;
+		  font-family: Verdana, helvetica, arial; }
+
+.messageHeader { text-align:left; font-weight: bold; font-size:20; padding : 0 0 10 0;  font-family: Verdana, helvetica, arial;  color: #5C225D; }
+.messageHeader1 { text-align:left; font-weight: bold; font-size:18; padding : 20 0 10 0;  font-family: Verdana, helvetica, arial;  color: #5C225D; }
+.messageHeader2 { text-align:left; font-weight: bold; font-size:16; padding : 30 0 0 0;  font-family: Verdana, helvetica, arial; color: #5C225D; }
+
+.cleft {text-align:left; padding : 10 0 5 5; font-size:12; font-family: Verdana, helvetica, arial;}
+.ccenter {text-align:center;padding : 10 0 5 0;}
+.cHightCenter {text-align:center; padding : 10 0 5 0; background-color:#d7f1d7; color:#5C225D; font-weight: bold;}
+.cLowCenter {text-align:center;padding : 10 0 5 0; background-color:#ded3df;}
+.cright {text-align:right; padding : 10 0 5 0;}
+
+.tableHeader {text-align: center; font-weight: bold; background-color:#d7f1d7;}
+.oddRow { text-align:left; background-color:#faffe5; }
+.evenRow { text-align:left; background-color:#e1f4e1; }
+
+
+SELECT { border-color: #CCCCCC; border-style: solid; border-width: 1px; }
+.form-label { color: #000000; font-family: Tahoma, Arial; font-size: 12px; }
+.form-label-i { color: #000000; font-family: Tahoma, Arial; font-style: italic; font-size: 12px; }
+.form-field { color: #000000; font-family: Tahoma, Arial; font-size: 12px; }
+.form-input-field { border-color: #5C225D; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; }
+.form-select { color: #000000;   border-color: #5C225D; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; }
+.form-radio { color: #000000;  border-color: #5C225D; font-family: Arial; font-size: 12px; }
+.form-check { color: #000000;  border-color: #5C225D; font-family: Arial; font-size: 12px; }
+.form-icon { border: 0px; }
+.form-button { color: #ffffff; background-color: #fe9900; border-color: #965A00; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; margin: 0 0 0 4;}
+.form-button-disabled { color: #000000; background-color: #B5B1AC; border-color: #B5B1AC; border-style: solid; border-width: 1px; font-family: Arial; font-size: 12px; }
+.form-textarea-field { border-color: #5C225D; border-style: hidden; border-width: 0px; font-family: Arial; font-size: 12px; }
+
+.footerPanel {text-align: right; width: 100%; height:70;  padding : 40 0 0 100; background-color: #ffffff; }
+.footerPanel A:link {text-decoration: none; color:#5C225D; font-size:14;}
+.footerPanel A:visited {text-decoration: none; color:#5C225D; font-size:14;}
+.footerPanel A:active {background: #FFFFFF; text-decoration: none; color:#5C225D; font-size:14;}
+.footerPanel A:hover {background: #FFFFFF; text-decoration: underline; color:#5C225D; font-size:14;}
+.footerCopyRight {text-align: center; width: 100%; font-size:10;}
+.cfooter {text-align:left; font-size:10; font-family: Verdana, helvetica, arial;}

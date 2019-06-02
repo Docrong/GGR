@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+		<!-- 注册3.5版本id转name接口 -->
+	<!-- 注册 部门id转name接口 -->
+	<bean id="statBaseDeptId2name_v35"
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV35Impl"
+		autowire="byName">
+		<property name="ID2NameV35BeanId">
+			<value>tawSystemDeptDao</value>
+		</property>
+	</bean>
+	
+	<!-- 注册 人员id转name接口 -->
+	<bean id="statBaseUserId2name_v35"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV35Impl"
+		  autowire="byName">
+		<property name="ID2NameV35BeanId">
+			<value>tawSystemUserDao</value>
+		</property>
+	</bean>
+	
+	<!-- 注册 字典id转name接口 -->
+	<bean id="statDictId2name_v35"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV35Impl"
+		  autowire="byName">
+		<property name="ID2NameV35BeanId">
+			<value>ItawSystemDictTypeDao</value>
+		</property>
+	</bean>
+	
+	<!-- 注册 大角色id转name接口 -->
+	<bean id="statRoleId2name_v35"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV35Impl"
+		  autowire="byName">
+		<property name="ID2NameV35BeanId">
+			<value>tawSystemRoleDao</value>
+		</property>
+	</bean>
+	
+	<!-- 注册 小角色id转name接口 -->
+	<bean id="statSubRoleId2name_v35"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV35Impl"
+		  autowire="byName">
+		<property name="ID2NameV35BeanId">
+			<value>tawSystemSubRoleDao</value>
+		</property>
+	</bean>
+	
+	<!-- 注册地域id转name接口 -->
+	<bean id="statAreaId2name_v35"
+		  class="com.boco.eoms.commons.statistic.base.mgr.impl.StatID2NameV35Impl"
+		  autowire="byName">
+		<property name="ID2NameV35BeanId">
+			<value>tawSystemAreaDao</value>
+		</property>
+	</bean>
+</beans>

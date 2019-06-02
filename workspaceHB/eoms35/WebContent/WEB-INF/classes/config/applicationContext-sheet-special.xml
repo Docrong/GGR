@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+  
+    <!--TawSheetSpecial-DAO START-->
+    <bean id="tawSheetSpecialDao" class="com.boco.eoms.commons.sheet.special.dao.hibernate.TawSheetSpecialDaoHibernate" autowire="byName"/>
+    <!--TawSheetSpecial-DAO END-->
+    <!--TawSheetSpecial-START-->    
+    <bean id="ItawSheetSpecialManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.commons.sheet.special.service.impl.TawSheetSpecialManagerImpl">
+                <property name="dao" ref="tawSheetSpecialDao"/>
+                 <property name="daojdbc" ref="TawSheetSpecialJdbc"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawSheetSpecial-END-->
+    <bean id="TawSheetSpecialJdbc" class="com.boco.eoms.commons.sheet.special.dao.hibernate.TawSheetSpecialJdbcImpl" autowire="byName"/>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

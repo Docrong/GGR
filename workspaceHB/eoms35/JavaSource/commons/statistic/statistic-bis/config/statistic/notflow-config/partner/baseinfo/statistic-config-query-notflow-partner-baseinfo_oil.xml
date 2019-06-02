@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>合作伙伴基本信息油机统计</title>
+	<est-module-id>43</est-module-id>
+
+	<kpi-define><!-- 可重复 -->
+		<name>oilStatByType</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="area_id" />
+		<condition-param page-name="dept_id" />
+		<condition-param page-name="type_true" />
+
+		<summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>app.area_id</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>areaDeptTreeDao_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+
+		<summary-define>
+			<id>s2</id><!--受理部门-->
+			<sequence></sequence>
+			<column>app.dept_id</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>areaDeptTreeDao_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+
+		<summary-define>
+			<id>s3</id><!--受理部门-->
+			<sequence></sequence>
+			<column>app.power</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+
+		<auto-append-groupby>true</auto-append-groupby>
+
+		<stat-detail-vo>
+			com.boco.eoms.commons.statistic.notflow.partner.baseinfo.vo.StatDetailVOSPartnerOil
+		</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>pnr_partner_oil app</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<!--<from>	(select count(*) num,area_id,dept_id,type,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.dept_id) dept_name,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.area_id)area_name 
+				from pnr_partner_apparatus t where dept_id like '%@dept_id@%' and area_id like '%@area_id@%' and type like '%%'  group by area_id,dept_id,type) ddd</from>-->
+			<!-- 	<where></where>可为空 -->
+			<where>
+				dept_id like '%@dept_id@%' and area_id like
+				'%@area_id@%' and power like '%@type_true@%'
+			</where>
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+				<list-hsql>
+					select  kind,count(kind) num from pnr_partner_oil 
+					where dept_id = '@s2@' and area_id like
+				'@s1@' and power = '@s3@' group by kind
+				</list-hsql>
+				
+				<list-count>select count(*) from (select  kind,count(kind) num from pnr_partner_oil 
+					where dept_id = '@s2@' and area_id like
+				'@s1@' and power = '@s3@' group by kind)</list-count>
+			</field-define>
+
+		</query-define>
+	</kpi-define>
+
+	<kpi-define><!-- 可重复 -->
+		<name>oilStatByState</name>
+		<kpi-caption></kpi-caption>
+		<condition-param page-name="area_id" />
+		<condition-param page-name="state_true" />
+		<condition-param page-name="dept_id" />
+		<condition-param page-name="type_true" />
+
+		<summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>app.dept_id</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>areaDeptTreeDao_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+
+		<summary-define>
+			<id>s2</id><!--受理部门-->
+			<sequence></sequence>
+			<column>app.kind</column><!-- 汇总字段 -->
+			<id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+		<summary-define>
+			<id>s3</id><!--受理部门-->
+			<sequence></sequence>
+			<column>app.state</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段-->
+		</summary-define>
+
+
+		<stat-detail-vo>
+			com.boco.eoms.commons.statistic.notflow.partner.baseinfo.vo.StatDetailVOSPartnerOil
+		</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>pnr_partner_oil app</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<!--<from>	(select count(*) num,area_id,dept_id,type,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.dept_id) dept_name,(select pd.nodename from pnr_areadepttree pd where pd.node_id = t.area_id)area_name 
+				from pnr_partner_apparatus t where dept_id like '%@dept_id@%' and area_id like '%@area_id@%' and type like '%%'  group by area_id,dept_id,type) ddd</from>-->
+			<!-- 	<where></where>可为空 -->
+			<where>
+				area_id like '%@area_id@%' and dept_id like
+				'%@dept_id@%' and kind like '%@type_true@%' and state
+				like '%@state_true@%'
+			</where>
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(*)</stat-sql>
+
+			</field-define>
+
+		</query-define>
+	</kpi-define>
+</KpiConfig>

@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpYearPlan"
+        table="TAW_WP_YEARPLAN"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--
+                  To add non XDoclet generator parameters, create a file named
+                  hibernate-generator-params-TawwpYearPlan.xml
+                  containing the additional parameters and place it in your merge dir.
+              -->
+            </generator>
+        </id>
+
+        <property
+            name="deptId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="DEPTID"
+            length="10"
+            not-null="true"
+        />
+         <property
+            name="isApp"
+            type="java.lang.String"
+            insert="true"
+            access="property"
+            column="ISAPP"
+            length="10"
+            not-null="false"
+        />
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NAMES"
+            length="100"
+            not-null="true"
+        />
+
+        <property
+            name="yearFlag"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="YEARFLAG"
+            length="100"
+            not-null="true"
+        />
+
+        <property
+            name="remark"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="REMARK"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="netList"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NETLIST"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="content"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CONTENT"
+            length="100"
+            not-null="false"
+        />
+
+        <property
+            name="sysTypeId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="SYSTYPEID"
+            length="10"
+            not-null="false"
+        />
+
+        <property
+            name="netTypeId"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="NETTYPEID"
+            length="10"
+            not-null="false"
+        />
+	<property
+            name="typeIndex"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="TYPEINDEX"
+            length="10"
+            not-null="false"
+        />
+        <property
+            name="state"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATE"
+            length="2"
+            not-null="true"
+        />
+
+        <property
+            name="deleted"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DELETED"
+            length="1"
+            not-null="true"
+        />
+
+        <property
+            name="cruser"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CRUSER"
+            length="20"
+            not-null="true"
+        />
+
+        <property
+            name="crtime"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CRTIME"
+            length="19"
+            not-null="true"
+        />
+
+        <property
+            name="unicomType"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="UNICOMTYPE"
+            length="30"
+            not-null="false"
+        />
+
+        <property
+            name="reportFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="REPORTFLAG"
+            length="2"
+            not-null="false"
+        />
+        <property
+            name="modelId"
+            type="java.lang.String"
+            update="false"
+            insert="false"
+            access="property"
+            column="model_plan_id"
+            length="2"
+            not-null="false"
+        />
+
+        <many-to-one
+            name="tawwpModelPlan"
+            class="com.boco.eoms.workplan.model.TawwpModelPlan"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MODEL_PLAN_ID"
+            not-null="false"
+        />
+
+        <set
+            name="tawwpYearChecks"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+            sort="unsorted"
+        >
+
+              <key
+                  column="YEAR_PLAN_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpYearCheck"
+              />
+
+        </set>
+
+        <set
+            name="tawwpYearExecutes"
+            lazy="true"
+            inverse="true"
+            cascade="all"
+            sort="unsorted"
+        >
+
+              <key
+                  column="YEAR_PLAN_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpYearExecute"
+              />
+
+        </set>
+
+        <set
+            name="tawwpMonthPlans"
+            lazy="true"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="YEAR_PLAN_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpMonthPlan"
+              />
+
+        </set>
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpYearPlan.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+   
+<beans>
+ <!-- 统计工具基础模块 -->
+ <import resource="classpath:config/statistic/base-config/applicationContext-statistic-base.xml" />
+ 
+ <!-- 非流程 -->
+ <import resource="classpath:config/statistic/notflow-config/applicationContext-statistic-notflow.xml" />
+ 
+ <!-- 统计工具实现一般故障工单模块 --> 
+ <import resource="classpath:config/statistic/commontask-config/applicationContext-statistic-commontask.xml" />
+
+ <!-- 统计工具实现新业务正式实施工单模块 -->
+ <import resource="classpath:config/statistic/businessoperation-config/applicationContext-statistic-businessoperation.xml" />
+ 
+ <!-- 统计工具实现软件变更工单模块 -->
+ <import resource="classpath:config/statistic/softchange-config/applicationContext-statistic-softchange.xml" />
+ 
+ <!-- 统计工具实现新业务设计工单模块 -->
+ <import resource="classpath:config/statistic/businessplan-config/applicationContext-statistic-businessplan.xml" />
+
+ <import resource="classpath:config/statistic/complaint-config/applicationContext-statistic-complaint.xml" />
+
+<!-- 统计工具实现网络综合调整模块 -->
+ <import resource="classpath:config/statistic/netchange-config/applicationContext-statistic-netchange.xml" />
+
+<!-- 统计工具实现新业务试点工单模块 -->
+ <import resource="classpath:config/statistic/businesspilot-config/applicationContext-statistic-businesspilot.xml" />
+
+<!-- 统计工具实现一般故障工单模块 -->
+ <import resource="classpath:config/statistic/commonfault-config/applicationContext-statistic-commonfault.xml" />
+ 
+  <!-- 统计工具实现电路调度工单模块 -->
+ <import resource="classpath:config/statistic/circuitdispatch-config/applicationContext-statistic-circuitdispatch.xml" />
+ 
+ <!-- 统计工具实现网络数据管理模块 -->
+ <import resource="classpath:config/statistic/netdata-config/applicationContext-statistic-netdata.xml" />
+
+<!-- 定制统计模块 -->
+ <import resource="classpath:config/statistic/customstat-config/applicationContext-statistic-customstat.xml" />
+ 
+  <!-- 统计工具实现网络优化模块 -->
+ <import resource="classpath:config/statistic/netOptimize-config/applicationContext-statistic-netOptimize.xml" />
+ 
+ <!-- 统计工具实现IT需求申请工单模块 -->
+ <import resource="classpath:config/statistic/itrequirement-config/applicationContext-statistic-itrequirement.xml" />
+ 
+ <!-- 统计工具实现安全管理-安全评估模块 -->
+ <import resource="classpath:config/statistic/securityevaluate-config/applicationContext-statistic-securityevaluate.xml" />
+
+ <!-- 统计工具实现应急演练工单模块 -->
+ <import resource="classpath:config/statistic/emergencydrill-config/applicationContext-statistic-emergencydrill.xml" />
+ 
+  <!-- 统计工具实现IT需求开发工单模块 -->
+ <import resource="classpath:config/statistic/itsoftchange-config/applicationContext-statistic-itsoftchange.xml" />
+ 
+ <!-- 流程管理-流程变更流程工单模块 -->
+ <import resource="classpath:config/statistic/processchange-config/applicationContext-statistic-processchange.xml" />
+ 
+<!-- 人力资源管理模块 -->
+ <import resource="classpath:config/statistic/operuser-config/applicationContext-statistic-operuser.xml" />
+
+ <!-- 统计工具实现日志管理统计 -->
+ <import resource="classpath:config/statistic/logstat-config/applicationContext-statistic-logstat.xml" />
+<!-- 工单监控 -->
+ <import resource="classpath:config/statistic/flowcontrol-config/applicationContext-statistic-flowcontrol.xml" />
+
+
+
+</beans>    

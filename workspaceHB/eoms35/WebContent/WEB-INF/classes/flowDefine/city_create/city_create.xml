@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_6.dtd">
+<workflow>
+  <initial-actions>
+    <action id="6" name="Draft" view="保存">
+      <results>
+        <unconditional-result id="6" old-status="Finished" status="Queued" step="1" />
+      </results>
+    </action>
+    <action id="7" name="NewToAudit" view="提交审核">
+      <results>
+        <unconditional-result id="7" old-status="Finished" status="Queued" step="2" />
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="1" name="县公司">
+      <actions>
+        <action id="11" name="SendToAudit" view="提交审核">
+          <results>
+            <unconditional-result id="11" old-status="Finished" status="Queued" step="2"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="2" name="分公司主任">
+      <actions>
+        <action id="14" name="AuditPassSend" view="审核通过派发">
+          <results>
+            <unconditional-result id="14" old-status="Finished" status="Queued" step="12"/>
+          </results>
+        </action>
+        <action id="36" name="AuditRejectToUp" view="审核不通过驳回">
+          <results>
+            <unconditional-result id="36" old-status="Finished" status="Queued" step="1"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="12" name="分公司网络部">
+      <actions>
+        <action id="62" name="Transmit" view="转派">
+          <results>
+            <unconditional-result id="62" old-status="Finished" status="Queued" step="22"/>
+          </results>
+        </action>
+        <action id="66" name="RejectDoneToTop" view="驳回">
+          <results>
+            <unconditional-result id="66" old-status="Finished" status="Queued" step="1"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="22" name="省网管中心">
+      <actions>
+        <action id="64" name="Transmit" view="转派">
+          <results>
+            <unconditional-result id="64" old-status="Finished" status="Queued" step="27"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="27" name="省计费中心">
+      <actions>
+        <action id="48" name="BackToUp" view="回复上级">
+          <results>
+            <unconditional-result id="48" old-status="Finished" status="Queued" step="46"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="32" name="完成">
+    </step>
+    <step id="39" name="分公司网络部">
+      <actions>
+        <action id="56" name="Hold" view="归档">
+          <results>
+            <unconditional-result id="56" old-status="Finished" status="Queued" step="32"/>
+          </results>
+        </action>
+        <action id="60" name="BackToDownReject" view="处理回复不通过">
+          <results>
+            <unconditional-result id="60" old-status="Finished" status="Queued" step="46"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="46" name="省网管中心">
+      <actions>
+        <action id="54" name="BackToDownReject" view="处理回复不通过">
+          <results>
+            <unconditional-result id="54" old-status="Finished" status="Queued" step="27"/>
+          </results>
+        </action>
+        <action id="58" name="BackToUp" view="回复上级">
+          <results>
+            <unconditional-result id="58" old-status="Finished" status="Queued" step="39"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="本地网仪表配置">
+	<dict id="maintenUnitId" description="车辆类型">
+		<item id="1110101" name="车辆类型1" description="车辆类型1" />
+		<item id="1110102" name="车辆类型2" description="车辆类型2" />
+		<item id="1110103" name="车辆类型3" description="车辆类型3" />
+	</dict>
+	
+</dicts>
+
+

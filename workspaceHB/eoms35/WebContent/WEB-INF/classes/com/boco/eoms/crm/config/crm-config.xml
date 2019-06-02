@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+    <ServiceUrl>http://10.21.1.106:9000/krms/services/addKnowledgeService?wsdl</ServiceUrl>
+    <SendImmediately>true</SendImmediately>
+    <uploadType>ftp</uploadType>
+    <sheet>
+    	<item sheettype="31" url="http://171.0.0.52:9006/interface/services/CRMProcessSheet?wsdl"/>
+    	<item sheettype="32" url="http://171.0.0.52:9006/interface/services/CRMProcessSheet?wsdl"/>
+    	<item sheettype="33" url="http://171.0.0.52:9006/interface/services/CRMProcessSheet?wsdl"/>
+    	<item sheettype="34" url="http://171.0.0.52:9006/interface/services/CRMProcessSheet?wsdl"/>
+    	<!--item sheettype="32" url="http://10.131.54.56:8999/axis/services/CRMProcessSheet?wsdl" /-->
+    	<!--item sheettype="33" url="http://10.25.15.240:8080/krms/services/addKnowledgeService3?wsdl" /-->
+    	<!--item sheettype="34" url="http://10.25.15.240:8080/krms/services/addKnowledgeService4?wsdl" /-->
+    	<item sheettype="57" url="http://10.25.15.51/ngcrm/services/cci/crmService?wsdl" />
+    	<!-- item sheettype="56" url="http://10.25.15.51/ngcrm/services/cci/crmService?wsdl" /-->
+    	<item sheettype="56" url="http://10.25.144.144:8084/ngcrm/services/cci/crmService?wsdl" />
+    </sheet>
+    <dict>
+    	<prodType>
+    	    <item dictid="101230103" interfacecode="9" />
+    	</prodType>
+    	<sender>
+    		<item dictid="alarm" interfacecode="BOCO_WNMS" />
+    		<!--<item dictid="shengdongli" interfacecode="BOCO_ZHGJ" />-->
+    	</sender>
+			<interfaceSender>
+				<item dictid="8aa0813b1c6defcc011c6e611ae80017" interfacecode="BOCO_WNMS" />	
+    		<!--<item dictid="8a03beb41ef40a17011f2f8d9c332a66" interfacecode="BOCO_ZHGJ" /> 		-->
+    	</interfaceSender>
+    	<customLevel>
+    		<item dictid="101104701" interfacecode="A1" />
+    		<item dictid="101104702" interfacecode="A2" />
+    		<item dictid="101104703" interfacecode="B1" />
+    		<item dictid="101104704" interfacecode="B2" />
+    		<item dictid="101104705" interfacecode="C" />
+    		<item dictid="101104706" interfacecode="D" />
+    	</customLevel>
+    	<portAInterfaceType>
+    		<item dictid="101101601" interfacecode="电口" />
+    		<item dictid="101101602" interfacecode="光口" />
+    		<item dictid="101101603" interfacecode="以太口" />
+    	</portAInterfaceType>
+    	<serviceType>
+    		<item dictid="101100101" interfacecode="1" />
+    		<item dictid="101100102" interfacecode="2" />
+    		<item dictid="101100103" interfacecode="3" />
+    		<item dictid="101100104" interfacecode="4" />
+    		<item dictid="101100105" interfacecode="5" />
+    		<item dictid="101100106" interfacecode="999" />
+    	</serviceType>
+    	<serviceType3>
+    		<item dictid="101230101" interfacecode="1" />
+    		<item dictid="101230102" interfacecode="2" />
+    		<item dictid="101230103" interfacecode="4" />
+    	</serviceType3>
+    	<serviceType4>
+    		<item dictid="101230101" interfacecode="GPRS" />
+    		<item dictid="101230102" interfacecode="2" />
+    		<item dictid="101230103" interfacecode="传输专线" />
+    	</serviceType4>
+    	<productType>
+    		<item dictid="101230101" interfacecode="0" />
+    		<item dictid="101230102" interfacecode="2" />
+    		<item dictid="101230103" interfacecode="9" />
+    	</productType>
+    	
+			<taskType>
+    		<item dictid="101010201" interfacecode="1" />
+    		<item dictid="101010202" interfacecode="0" />
+    	</taskType>
+    	<dealPerformerType>
+    		<item dictid="user" interfacecode="0" />
+    		<item dictid="dept" interfacecode="1" />
+    		<item dictid="subrole" interfacecode="2" />
+    	</dealPerformerType>
+    	<urgentDegree>
+    		<item dictid="101010201" interfacecode="紧急" />
+    		<item dictid="101010202" interfacecode="一般" />
+    		<item dictid="101010203" interfacecode="003" />
+    		<item dictid="101010204" interfacecode="004" />
+    	</urgentDegree>
+    	<yesOrNo>
+    		<item dictid="1030101" interfacecode="是" />
+    		<item dictid="1030102" interfacecode="否" />
+    	</yesOrNo>
+		
+		<bigAreaFlag>
+    		<item dictid="1030801" interfacecode="0" />
+    		<item dictid="1030802" interfacecode="1" />
+			<item dictid="1030803" interfacecode="2" />
+    		<item dictid="1030804" interfacecode="3" />
+    	</bigAreaFlag>
+
+		<portInterfaceType>
+    		<item dictid="101101501" interfacecode="电口" />
+    		<item dictid="101101502" interfacecode="光口" />
+			<item dictid="101101503" interfacecode="以太口" />
+    	</portInterfaceType>
+
+		  <affectedAreas><!-- 集团投诉影响范围 -->
+			
+   			<item dictid="101100301" interfacecode="本地" />
+   			<item dictid="101100302" interfacecode="全网" />
+			<item dictid="101100303" interfacecode="本地与全网" />
+   		</affectedAreas>
+    	<ecsiType><!-- EC/SI类型 -->
+    		<item dictid="MAS承载类" interfacecode="1" />
+    		<item dictid="ADC承载类" interfacecode="2" />
+    		<item dictid="其他" interfacecode="3" />
+    	</ecsiType>
+    	<connectType><!-- 接入类型 -->
+    		<item dictid="101010201" interfacecode="互联网" />
+    		<item dictid="101010202" interfacecode="专线" />
+    	</connectType>
+    	<holdStatisfied><!-- 归档满意度 -->
+    		<item dictid="101010501" interfacecode="很满意" />
+    		<item dictid="101010504" interfacecode="满意" />
+    		<item dictid="101010502" interfacecode="一般" />
+    		<item dictid="101010503" interfacecode="不满意" />
+    	</holdStatisfied>
+    	<ipAddressAssign><!-- IP地址分配方式 -->
+    		<item dictid="101100801" interfacecode="静态" />
+    		<item dictid="101100802" interfacecode="动态" />
+    		<item dictid="101100803" interfacecode="RADIUS" />
+    	</ipAddressAssign>
+    	<apnRouterMode><!-- APN路由方式 -->
+    		<item dictid="101100901" interfacecode="APN路由" />
+    		<item dictid="101100902" interfacecode="IP路由" />
+    	</apnRouterMode>
+    	<transferMode><!-- 传输方式 -->
+    		<item dictid="101101001" interfacecode="专网直连" />
+    		<item dictid="101101002" interfacecode="互联网隧道方式" />
+    	</transferMode>
+    	<comProtocol><!-- 通信协议 -->
+    		<item dictid="101101401" interfacecode="CMPP2.0" />
+    		<item dictid="101101402" interfacecode="CMPP3.0" />
+    		<item dictid="101101403" interfacecode="SMPP" />
+    	</comProtocol>
+    	<nameListSetType><!-- 黑白名单设置方式 -->
+    		<item dictid="101101401" interfacecode="" />
+    		<item dictid="101101402" interfacecode="" />
+    	</nameListSetType>
+    	<connectGatewayBandwidth>
+    		<item dictid="101101302" interfacecode="秒" />
+    		<item dictid="101101301" interfacecode="条" />
+    	</connectGatewayBandwidth>
+    	
+    		<dealResult><!-- 处理结果 -->
+   			<item dictid="410" interfacecode="101040101" />
+   			<item dictid="414" interfacecode="101040102" />
+   		</dealResult>
+		<businessChangeDealResult><!-- 处理结果 -->
+   			<item dictid="410" interfacecode="101102001" />
+   			<item dictid="414" interfacecode="101102002" />
+   		</businessChangeDealResult>
+		<businessBackoutDealResult><!-- 处理结果 -->
+   			<item dictid="410" interfacecode="101105101" />
+   			<item dictid="414" interfacecode="101105102" />
+   		</businessBackoutDealResult>
+		<isOccupied><!-- 是否已预占 -->
+   			<item dictid="410" interfacecode="101101701" />
+   			<item dictid="414" interfacecode="101101702" />
+   		</isOccupied>
+		<compProp><!-- 投诉性质 -->
+   			<item dictid="有理由" interfacecode="101061001" />
+   			<item dictid="无理由" interfacecode="101061002" />
+   		</compProp>
+		<isReplied><!-- 是否已答复客户 -->
+   			<item dictid="是" interfacecode="1030101" />
+   			<item dictid="否" interfacecode="1030102" />
+   		</isReplied>
+		<isCorrect><!-- 工单派单是否准确 -->
+   			<item dictid="是" interfacecode="1030101" />
+   			<item dictid="否" interfacecode="1030102" />
+   		</isCorrect>
+	<customBrand>
+		<item dictid="101060407" interfacecode="30" />
+    		<item dictid="101060403" interfacecode="40" />
+    		<item dictid="101060404" interfacecode="20" />
+		<item dictid="101060402" interfacecode="50" />
+    		<item dictid="101060401" interfacecode="60" />
+    		<item dictid="101060405" interfacecode="70" />
+		<item dictid="101060406" interfacecode="10" />
+	</customBrand>
+    <groupComplaintCustomLevel>
+    	<item dictid="101104701" interfacecode="A1" />
+    	<item dictid="101104702" interfacecode="A2" />
+    	<item dictid="101104703" interfacecode="B1" />
+    	<item dictid="101104704" interfacecode="B1" />
+    	<item dictid="101104705" interfacecode="C" />
+    	<item dictid="101104706" interfacecode="D" />
+    </groupComplaintCustomLevel>
+	<transfBusiness>
+    	<item dictid="101104901" interfacecode="电路出租" />
+		<item dictid="101104902" interfacecode="语音专线" />
+		<item dictid="101104903" interfacecode="CMNET接入" />
+		<item dictid="101104904" interfacecode="MAS专线" />
+		<item dictid="101104905" interfacecode="专用ANP专线" />
+    </transfBusiness>
+
+	<startDealCity>
+		<item dictid="湖北" interfacecode="HB" />
+	</startDealCity>
+	<customAttribution>
+	    <item dictid="1801" interfacecode="HB.WH" />
+	    <item dictid="1802" interfacecode="HB.YC" />
+	    <item dictid="1803" interfacecode="HB.ES" />
+	    <item dictid="1804" interfacecode="HB.JZ" />
+	    <item dictid="1805" interfacecode="HB.JH" />
+	    <item dictid="1806" interfacecode="HB.JM" />
+	    <item dictid="1807" interfacecode="HB.HS" />
+	    <item dictid="1808" interfacecode="HB.EZ" />
+	    <item dictid="1809" interfacecode="HB.XN" />
+	    <item dictid="1810" interfacecode="HB.HG" />
+	    <item dictid="1811" interfacecode="HB.XY" />
+	    <item dictid="1812" interfacecode="HB.SZ" />
+	    <item dictid="1813" interfacecode="HB.SY" />
+	    <item dictid="1814" interfacecode="HB.XG" />
+	    <item dictid="1815" interfacecode="HB.TM" />
+	    <item dictid="1816" interfacecode="HB.QJ" />
+	</customAttribution>
+	<mainFaultResponseLevel>
+    		<item dictid="101030401" interfacecode="一级响应" />
+    		<item dictid="101030402" interfacecode="二级响应" />
+    		<item dictid="101030403" interfacecode="三级响应" />
+    	</mainFaultResponseLevel>
+	</dict>
+</boco>
+

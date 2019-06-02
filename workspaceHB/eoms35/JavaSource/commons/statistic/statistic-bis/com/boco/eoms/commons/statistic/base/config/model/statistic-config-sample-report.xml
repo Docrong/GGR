@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<report-config>
+	<title>kpi统计</title>
+
+
+	<!-- ********按(角色)统计 ********************** -->
+	<report-define>
+		<kpi-define-name>base_intime_role</kpi-define-name>
+		<name>base_intime_role</name>
+		<caption>基础统计-按角色统计</caption>
+		<!--<use-jsp-head></use-jsp-head> /web/**/*/*.jsp -->
+
+		<view-row-span-max>2</view-row-span-max>
+		<enable-summary-span>false</enable-summary-span>
+
+
+		<report-summary>
+			<id>s2</id>
+			<sequence>1</sequence>
+			<view-name>人员</view-name>
+			<view-width>20%</view-width>
+			<code-to-name>tawSystemUserDao</code-to-name>
+		</report-summary>
+		<report-summary>
+			<id>s1</id>
+			<sequence>2</sequence>
+			<view-name>角色</view-name>
+			<view-width>20%</view-width>
+			<code-to-name>tawSystemSubRoleDao</code-to-name>
+		</report-summary>
+
+		<report-field><!-- 可重复 -->
+			<id>f1</id>
+			<sequence>1</sequence>
+			<view-name>总工单数</view-name>
+			<view-width>10%</view-width>
+
+			<view-row-index>1</view-row-index><!-- 从1开始 -->
+			<view-row-span>1</view-row-span>
+			<view-column-span>2</view-column-span>
+
+		</report-field>
+		<report-field><!-- 可重复 -->
+			<id>f2</id>
+			<sequence>2</sequence>
+
+			<view-name>总工单数2</view-name>
+			<view-width>10%</view-width>
+
+			<view-row-index>2</view-row-index><!-- 从1开始 -->
+			<view-row-span>1</view-row-span>
+			<view-column-span>1</view-column-span>
+
+		</report-field>
+
+		<report-field><!-- 可重复 -->
+			<id>f3</id>
+<prefix></prefix>
+<postfix></postfix>
+			<expression>f1</expression>
+			<sequence>3</sequence>
+			<view-name>总工单数3</view-name>
+			<view-width>10%</view-width>
+
+			<view-row-index>2</view-row-index><!-- 从1开始 -->
+			<view-row-span>1</view-row-span>
+			<view-column-span>1</view-column-span>
+			
+		</report-field>
+		
+		
+	</report-define>
+
+</report-config>
+

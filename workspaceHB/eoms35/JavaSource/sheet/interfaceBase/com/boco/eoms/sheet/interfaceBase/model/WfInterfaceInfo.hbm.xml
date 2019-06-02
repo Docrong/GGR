@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.sheet.interfaceBase.model.WfInterfaceInfo"
+		table="wf_interfaceinfo">
+		<id name="id" column="id">
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="mainBeanId" />
+		<property name="linkBeanId" />
+		<property name="sheetType" />
+		<property name="serviceType" />
+		<property name="interfaceType" />
+		<property name="methodType" />
+		<property name="sheetKey" />
+		<property name="linkId" />
+		<property name="createTime" />
+		<property name="sendTime" />
+		<property name="isSended" />
+		<property name="remark" />
+	</class>
+
+</hibernate-mapping>
+

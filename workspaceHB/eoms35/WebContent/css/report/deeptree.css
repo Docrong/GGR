@@ -1,0 +1,31 @@
+BODY {
+	FONT-SIZE: 9pt; CURSOR: default; FONT-FAMILY: verdana;BORER:0
+}
+A {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; COLOR: black; PADDING-TOP: 0px; TEXT-DECORATION: none
+}
+IMG {
+	vertical-align:bottom;PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; CURSOR: hand; PADDING-TOP:0px;height:18px;
+}
+SPAN {
+	BORDER-RIGHT: #f1f1f1 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #f1f1f1 1px solid; PADDING-LEFT: 1px; LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #f1f1f1 1px solid;  COLOR: black; PADDING-TOP: 0px; BORDER-BOTTOM: #f1f1f1 1px solid; PADDING-BOTTOM: 0px; POSITION: relative; TOP: 0px; TEXT-DECORATION: none;height:18px;
+}
+SPAN.clsMouseOver {
+	BORDER-RIGHT: #0A246A 1px solid; BORDER-TOP: #0A246A 1px solid; BORDER-LEFT: #0A246A 1px solid; BORDER-BOTTOM: #0A246A 1px solid; BACKGROUND-COLOR: #B1B9CF
+}
+SPAN.clsMouseDown {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid; BACKGROUND-COLOR: #999999
+}
+SPAN.clsCurrentHasFocus {
+	BORDER-RIGHT: #0A246A 1px solid; BORDER-TOP: #0A246A 1px solid; BORDER-LEFT: #0A246A 1px solid; BORDER-BOTTOM: #0A246A 1px solid; BACKGROUND-COLOR: #ffffff
+}
+SPAN.clsCurrentNoFocus {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; BORDER-LEFT: #999999 1px solid; BORDER-BOTTOM: #999999 1px solid; BACKGROUND-COLOR: #f1f1f1
+}
+SPAN.clsUnavailable {
+	COLOR: #888888
+}
+INPUT {
+    WIDTH:15px;
+    HEIGHT:15px;
+}

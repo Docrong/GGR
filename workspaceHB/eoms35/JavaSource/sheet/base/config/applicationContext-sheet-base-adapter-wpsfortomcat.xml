@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+ <!-- remote ejb 
+	<bean id="WorkflowManager"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean"
+		lazy-init="true">
+		<property name="jndiName">
+			<value>com/ibm/bpe/api/BusinessFlowManagerHome</value>
+		</property>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">
+					${java.naming.factory.initial}
+				</prop>
+				<prop key="java.naming.provider.url">
+					${java.naming.provider.url}
+				</prop>
+			</props>
+		</property>
+		<property name="businessInterface">
+			<value>com.ibm.bpe.api.BusinessFlowManager</value>
+		</property>
+	</bean>
+
+	<bean id="HumanTaskManager"
+		class="org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean"
+		lazy-init="true">
+		<property name="jndiName">
+			<value>com/ibm/task/api/HumanTaskManagerHome</value>
+		</property>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">
+					${java.naming.factory.initial}
+				</prop>
+				<prop key="java.naming.provider.url">
+					${java.naming.provider.url}
+				</prop>
+			</props>
+		</property>
+		<property name="businessInterface">
+			<value>com.ibm.task.api.HumanTaskManager</value>
+		</property>
+	</bean>
+	-->
+<!-- local ejb -->
+	<!-- 
+		<bean id="WorkflowManager"
+		    class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">	
+		<property name="jndiName">
+		<value>java:comp/env/ejb/LocalBusinessFlowManagerHome</value>
+		</property>
+		<property name="businessInterface">
+		<value>com.ibm.bpe.api.LocalBusinessFlowManager</value>
+		</property>
+		</bean>
+	-->
+	<bean id="BusinessFlowAdapterService"
+		class="com.boco.eoms.sheet.base.adapter.service.wps.WPSBusinessFlowAdapterServiceImpl">
+		<property name="safeService">
+			<ref bean="WorkflowSecutiryService" />
+		</property>
+		<property name="engineService">
+			<ref bean="WorkflowEngineService" />
+		</property>
+	</bean>
+	
+	<bean id="WorkflowEngineService"
+		class="com.boco.eoms.sheet.base.adapter.service.wps.WPSEngineServiceImpl">
+
+		
+	</bean>
+	
+	<bean id="WorkflowSecutiryService"
+		class="com.boco.eoms.sheet.base.adapter.service.wps.WPSSecutiryServiceImpl" autowire="byName" singleton="false"/>
+	
+	<bean id="WPSQueryHelper"
+		class="com.boco.eoms.sheet.base.adapter.service.wps.WPSQueryHelper">
+
+		<property name="activityInstanceId">
+			<value>TASK.TKIID</value>
+		</property>
+		<property name="taskInstancePropertyFile">
+			<value>/config/taskInstance_wps.properties</value>
+		</property>
+		<property name="activityWorkitemQueryPropertyFile">
+			<value>/config/activityWorkitemQuery_wps.properties</value>
+		</property>
+		<property name="activityWorkitemPropertyFile">
+			<value>/config/activityWorkitem_wps.properties</value>
+		</property>
+		<property name="processInstanceQueryPropertyFile">
+			<value>/config/processInstanceQuery_wps.properties</value>
+		</property>
+		<property name="processInstancePropertyFile">
+			<value>/config/processInstance_wps.properties</value>
+		</property>
+		<property name="taskModelPropertyFile">
+			<value>/config/taskModelQuery_wps.properties</value>
+		</property>
+	</bean>
+</beans>

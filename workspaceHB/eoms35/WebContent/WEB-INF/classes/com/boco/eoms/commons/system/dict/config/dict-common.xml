@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="major" description="专业">
+		<item id="1" name="开发工程师" description="开发工程师" />
+		<item id="2" name="测试工程师" description="测试工程师" />
+	</dict>
+</dicts>

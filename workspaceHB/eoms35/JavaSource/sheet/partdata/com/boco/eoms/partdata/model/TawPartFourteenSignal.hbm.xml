@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.partdata.model.TawPartFourteenSignal"
+            table="part_FourteenSignal"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+	<property
+            name="userid"
+            	column="user_id"
+                length="20"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="updatedate"
+            	column="update_date"
+                length="20"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="signalnum"
+            	column="SIGNAL_NUM"
+                length="4"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="signalvalue"
+            	column="SIGNAL_VALUE"
+                length="4"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+
+    </class>    
+
+</hibernate-mapping>
+

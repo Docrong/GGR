@@ -1,0 +1,37 @@
+package id4roeydjc31o07djc3pzy2;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#com.boco.common.security.service.factory.AbstractAccountManagerDaoFactory:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.factory.SecurityManagerDaoFactory:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.service.factory.LdapDaoFactory:oiref><oihard>
+@__modelType reference 
+*/
+class reference38 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

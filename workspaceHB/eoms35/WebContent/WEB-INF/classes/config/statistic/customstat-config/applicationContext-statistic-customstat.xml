@@ -1,0 +1,89 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- sample config file  , 
+			create new config file in your module -->
+<beans>
+	<!-- 配置信息类 -->
+	<bean id="statCustomConfigManager"
+		class="com.boco.eoms.commons.statistic.customstat.mgr.impl.StatCustomConfigManager"
+		autowire="byName">
+		
+		<!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
+		<property name="reloadConfig">
+			<value>true</value>
+		</property>
+		
+		<!-- 定制统计配置文件路径 -->
+		<property name="customConfigFilePath">
+			<value>classpath:config/statistic/customstat-config/statistic-custom-config.xml</value>
+		</property>
+		
+		<!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  在statistic-custom-config.xml中配置-->
+        
+        <!-- 配置quary算法文件路径 key为excel中配置的参数，value对应文件名称 在statistic-custom-config.xml中配置 -->
+		
+		<property name="excelConverter" ref="statBaseExcelConverter"/>
+	</bean>
+	
+	<!-- 总体管理类 -->
+	<bean id="statCustomManager" 
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
+		<property name="statConfigManager" ref="statCustomConfigManager" />
+		
+		<property name="statJdbcDAO" ref="statBaseJdbcDAO" />
+		<property name="statExcelConverter" ref="statBaseExcelConverter" />
+		<!-- property name="statDetailDAO" ref="statDetailDAOOracle" /-->
+		
+		<property name="statExportExcel" ref="statBaseExportExcel"></property>
+
+		<!-- 订制统计访问数据库接口 -->
+		<property name="customStatHibernateDAO" ref="customStatHibernateDAO"></property>
+		
+	</bean>
+
+	<!-- 统计工具任务工单实现类 -->
+	<bean id="customStatMethod"
+		class="com.boco.eoms.commons.statistic.customstat.webapp.action.CustomStatMethodImpl">
+		<property name="statManager" ref="statCustomManager" />
+	</bean>
+		
+	<!-- 订制统计访问数据库 -->
+	<bean id="customStatHibernateDAO"
+		class="com.boco.eoms.commons.statistic.base.dao.impl.CustomStatHibernateDAOImpl"
+		autowire="byName">
+	</bean>
+	
+	
+	
+	
+	
+		<bean id="stSubscriptionDao" class="com.boco.eoms.commons.statistic.customstat.dao.hibernate.StSubscriptionDaoHibernate" autowire="byName"/>
+    
+	  <bean id="IstSubscriptionManager" parent="txProxyTemplate">
+	       <property name="target">
+	           <bean class="com.boco.eoms.commons.statistic.customstat.mgr.impl.StSubscriptionManagerImpl">
+	               <property name="stSubscriptionDao" ref="stSubscriptionDao"/>
+	           </bean>
+	       </property>
+	   </bean>
+	 
+	    <bean id="tawCommonsJobsubscibeDao" class="com.boco.eoms.commons.job.dao.hibernate.TawCommonsJobsubscibeDaoHibernate" autowire="byName"/>
+	   
+	   <bean id="stjob" parent="txProxyTemplate">
+	       <property name="target">
+	           <bean class="com.boco.eoms.commons.statistic.customstat.dao.hibernate.StJob">
+	               <property name="tawCommonsJobsubscibeDao" ref="tawCommonsJobsubscibeDao"/>
+	           </bean>
+	       </property>
+	   </bean>
+	   
+	   <bean id="CustomstatRemindDao" class="com.boco.eoms.commons.statistic.customstat.dao.hibernate.CustomstatRemindDaoHibernate" autowire="byName"/>
+	   <bean id="CustomstatRemindManager" parent="txProxyTemplate">
+	       <property name="target">
+	           <bean class="com.boco.eoms.commons.statistic.customstat.mgr.impl.CustomstatRemindManagerImpl">
+	               <property name="customstatRemindDao" ref="CustomstatRemindDao"/>
+	           </bean>
+	       </property>
+	   </bean> 
+</beans>

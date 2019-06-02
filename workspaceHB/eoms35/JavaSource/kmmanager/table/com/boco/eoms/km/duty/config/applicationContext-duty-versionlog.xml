@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<bean id="dutyVersionHandler"
+		class="com.boco.eoms.version.DefaultVersionHandler">
+		<property name="versionMgr" ref="versionMgrImpl" />
+		<property name="versions">
+			<list>
+				<bean class="com.boco.eoms.version.MoudleVersion">
+					<!-- 模块名称 -->
+					<property name="name">
+						<value>值班管理</value>
+					</property>
+					<!-- 模块负责人 -->
+					<property name="principal">
+						<value>姜城</value>
+					</property>
+					<!-- 模块补丁号,6245patch_作业计划（SVN编号patch|bug_模块）;“模块补丁号”中的“SVN编号”为研发人员解决这个问题最后一次提交代码入库时SVN产生的编号。 -->
+					<property name="patch">
+						<value>B5patch_值班管理</value>
+					</property>
+					<!-- 补丁描述 -->
+					<property name="patchDesc">
+						<value>值班管理B5全模块</value>
+					</property>
+					<!-- 补丁时间2009.4.9(补丁提交的时间) -->
+					<property name="onDate">
+						<value>2009-6-1</value>
+					</property>
+					<!-- 补丁负责人 -->
+					<property name="patchPrincipal">
+						<value>龚玉峰</value>
+					</property>
+					<!-- https://10.0.2.1/eoms/dev/branches/platform/0903/0903_bug (处理问题的SVN路径) -->
+					<property name="svn">
+						<value>https://10.0.2.1/eoms/dev/branches/platform/CMCC/trunk/eoms/</value>
+					</property>
+					<!-- 问题版本号 -->
+					<property name="problem">
+						<value>B5</value>
+					</property>
+					<!-- 类型 -->
+					<property name="type">
+						<value>MODULE</value>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+</beans>

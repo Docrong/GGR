@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Data Sources Definitions =================================== -->
+  <!--
+    Define your Struts data sources in a file called struts-data-sources.xml and place
+    it in your merge directory.
+  -->
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+  <form-bean
+       name="multiPageForm"
+       type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"
+    /> 
+    
+    <!--bean for ApplyProcess end-->
+  </form-beans>
+
+  <!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions> 
+        <exception type="java.lang.Exception"
+            key="errors.general"
+            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+	</global-exceptions>
+
+  <!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward name="selectFile" path="/selectFile.do" />
+		<forward name="logout" path="/logout.jsp" />
+		<forward name="error"
+			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+			contextRelative="true" />
+	</global-forwards>
+
+  <!-- ========== Action Mapping Definitions =================================== -->
+   <action-mappings>
+   
+    <!--applyProcess action begin-->
+    
+    <action path="/Require"
+			type="com.boco.eoms.sheet.require.webapp.action.RequirementAction"
+			name="multiPageForm" scope="request" parameter="method"
+			unknown="false" validate="false" attribute="require"> 
+			<set-property property="cancellable" value="true" />
+			<forward name="draw"
+				path="/WEB-INF/pages/wfworksheet/require/draw.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="kpi"
+				path="/WEB-INF/pages/wfworksheet/require/statisticKPI.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="rolekpi"
+				path="/WEB-INF/pages/wfworksheet/require/statisticRoleKPI.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="new"
+				path="/WEB-INF/pages/wfworksheet/require/main.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="inputNew"
+				path="/WEB-INF/pages/wfworksheet/require/inputmain.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="dealpage"
+				path="/WEB-INF/pages/wfworksheet/require/dealpage.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="inputDealpage"
+				path="/WEB-INF/pages/wfworksheet/require/inputdealpage.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="reject"
+				path="/WEB-INF/pages/wfworksheet/require/reject.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="inputReject"
+				path="/WEB-INF/pages/wfworksheet/require/inputreject.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/wfworksheet/require/detail.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="draft"
+				path="/WEB-INF/pages/wfworksheet/require/inputmain.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="cancel"
+				path="/WEB-INF/pages/wfworksheet/require/inputmain.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="delete"
+				path="/WEB-INF/pages/wfworksheet/require/inputmain.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="hold"
+				path="/WEB-INF/pages/wfworksheet/require/inputmain.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/wfworksheet/require/list.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="success"
+				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="portal"
+				path="/WEB-INF/pages/wfworksheet/require/portal.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="history"
+				path="/WEB-INF/pages/wfworksheet/require/history.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="pic"
+                path="/WEB-INF/pages/wfworksheet/require/pic.jsp"
+                redirect="false" contextRelative="true"/>
+            <forward name="holdlist"
+				path="/WEB-INF/pages/wfworksheet/require/mainlist.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="startlist"
+				path="/WEB-INF/pages/wfworksheet/require/mainlist.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="query"
+		         path="/WEB-INF/pages/wfworksheet/require/query.jsp" redirect="false"
+		         contextRelative="true" />
+
+	         <forward name="queryInput"
+		         path="/WEB-INF/pages/wfworksheet/require/queryinput.jsp" redirect="false"
+		         contextRelative="true" />
+		
+	         <forward name="querylist"
+		          path="/WEB-INF/pages/wfworksheet/require/querylist.jsp" redirect="false"
+		          contextRelative="true" />
+		      <forward name="inputcancel"
+		          path="/WEB-INF/pages/wfworksheet/require/cancel.jsp" redirect="false"
+		          contextRelative="true" />
+	          <forward name="operatesuccess"
+		          path="/WEB-INF/pages/wfworksheet/common/operate_success.jsp" redirect="false"
+		          contextRelative="true" /> 
+		     <forward name="maindetail" 
+		         path="/WEB-INF/pages/wfworksheet/require/detail.jsp" redirect="false"
+		         contextRelative="true" />
+		         
+		      <forward name="statisticsheetlist"
+			      path="/WEB-INF/pages/wfworksheet/require/statistic/statisticsheetlist.jsp" redirect="false"
+		          contextRelative="true" /> 
+		
+		      <forward name="statistic" 
+				  path="/WEB-INF/pages/wfworksheet/require/statistic/statistic.jsp" redirect="false"
+				  contextRelative="true"/>
+    
+	         <forward name="statisticresult" 
+		          path="/WEB-INF/pages/wfworksheet/common/statistic/rowresult.jsp" redirect="false"
+		          contextRelative="true"/> 	
+		     <forward name="split"
+				path="/WEB-INF/pages/wfworksheet/require/split.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="transfer"
+			path="/WEB-INF/pages/wfworksheet/require/transfer.jsp"	
+			redirect="false" contextRelative="true" />
+			<forward name="forceHold"
+			path="/WEB-INF/pages/wfworksheet/require/forceHold.jsp"	
+			redirect="false" contextRelative="true" />
+			<forward name="getLinkOperatePage"
+				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
+				redirect="false" contextRelative="true" />
+		</action>
+  </action-mappings>
+
+  <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+      <message-resources parameter="config/ApplicationResources-sheet" key="sheet"/>
+      <message-resources parameter="config/ApplicationResources-sheet-requirement" key="requirement"/>
+	<message-resources parameter="config/ApplicationResources-statistic"
+		key="statistic" />
+      <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+
+</struts-config>

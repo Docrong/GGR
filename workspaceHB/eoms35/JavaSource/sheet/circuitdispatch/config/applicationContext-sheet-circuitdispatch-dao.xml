@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="ICircuitDispatchMainDao" class="com.boco.eoms.sheet.circuitdispatch.dao.hibernate.CircuitDispatchMainDaoHibernate" autowire="byName">
+	
+      </bean>
+	<bean id="ICircuitDispatchLinkDao" class="com.boco.eoms.sheet.circuitdispatch.dao.hibernate.CircuitDispatchLinkDaoHibernate" autowire="byName">
+	  
+      </bean>
+
+	<bean id="iCircuitDispatchTaskDAO" class="com.boco.eoms.sheet.circuitdispatch.dao.hibernate.CircuitDispatchTaskDAOHibernate" autowire="byName">
+      
+      </bean>
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+  <cell id="1" type="InitialActionCell" height="30" width="100" x="261" y="62" />
+  <cell id="2" type="StepCell" height="30" width="100" x="459" y="64" />
+  <cell id="3" type="StepCell" height="30" width="100" x="843" y="56" />
+  <cell id="4" type="StepCell" height="30" width="100" x="475" y="270" />
+  <connector id="90" linewidth="1.0" color="-16777216" labelx="449" labely="0" from="0" to="0" start="261,62" end="459,64">
+    <routing id="90" x="408" y="80" />
+  </connector>
+  <connector id="91" linewidth="1.0" color="-16777216" labelx="0" labely="794" from="0" to="0" start="261,62" end="475,270">
+    <routing id="91" x="322" y="272" />
+  </connector>
+  <connector id="92" linewidth="1.0" color="-16777216" labelx="0" labely="466" from="0" to="0" start="459,64" end="475,270">
+    <routing id="92" x="516" y="180" />
+  </connector>
+  <connector id="93" linewidth="1.0" color="-16777216" labelx="997" labely="203" from="0" to="0" start="475,270" end="843,56">
+    <routing id="93" x="898" y="283" />
+  </connector>
+  <channel id="chl-1" y1="0" y2="200" text="建单人" />
+  <channel id="chl-2" y1="200" y2="400" text="地市核查组" />
+</layout>
+

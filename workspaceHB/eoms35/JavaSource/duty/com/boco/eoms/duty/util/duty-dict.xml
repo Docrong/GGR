@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="weather" description="天气">
+		<item id="晴" name="晴" description="晴" />
+		<item id="阴" name="阴" description="阴" />
+		<item id="雨" name="雨" description="雨" />
+		<item id="雪" name="雪" description="雪" />
+		<item id="多云" name="多云" description="多云" />
+		<item id="大风" name="大风" description="大风" />
+	</dict>   
+	<dict id="clean" description="清洁">
+		<item id="清洁" name="清洁" description="清洁" />
+		<item id="不清洁" name="不清洁" description="不清洁" />
+		<item id="基本清洁" name="基本清洁" description="基本清洁" />
+	</dict>
+	<dict id="conditioner" description="表现">
+		<item id="好" name="好" description="好" />
+		<item id="良" name="良" description="良" />
+		<item id="差" name="差" description="差" />
+		<item id="一般" name="一般" description="一般" />
+	</dict>
+		<dict id="flag" description="">
+		<item id="0" name="管理员审核" description="管理员审核" />
+		<item id="1" name="审核通过" description="审核通过" />
+		<item id="2" name="审核不通过" description="审核不通过" />
+	</dict>	
+	<dict id="faultflag" description="星级">
+		<item id="1" name="★" description="等级1" />
+		<item id="2" name="★★" description="等级2" />
+		<item id="3" name="★★★" description="等级3" />
+		<item id="4" name="★★★★" description="等级4" />
+		<!-- item id="5" name="★★★★★" description="等级5" /-->
+	</dict>
+	<dict id="faultType" description="故障事件">
+		<item id="1" name="故障(传输)" description="故障(传输)" />
+		<item id="2" name="故障(交换)" description="故障(交换)" />
+		<item id="3" name="故障(数据)" description="故障(数据)" />
+		<item id="4" name="故障(无线)" description="故障(无线)" />
+		<item id="5" name="故障(动环)" description="故障(动环)" />
+		<item id="6" name="故障(网管)" description="故障(网管)" />
+		<item id="7" name="故障(安全)" description="故障(安全)" />
+		<item id="8" name="网调割接" description="网调割接" />
+		<item id="9" name="重要的社会或灾害事件" description="重要的社会或灾害事件" />
+		<item id="10" name="投诉" description="投诉" />
+		<item id="11" name="通知" description="通知" />
+	</dict>
+	<dict id="complateFlag" description="">
+		<item id="1" name="完成" description="完成" />
+		<item id="2" name="未完成" description="未完成" />
+	</dict>
+	    <dict id="speciality" description="专业名称">
+	    <item id="0" name="传输" description="传输" />
+		<item id="1" name="EOMS" description="EOMS" />
+		<item id="2" name="无线" description="无线" />
+		<item id="3" name="大客户" description="大客户" />
+	</dict>
+	 <dict id="netState" description="状态">
+	    <item id="0" name="草稿" description="草稿" />
+		<item id="1" name="已发布" description="已发布" />
+	    <item id="2" name="已关闭" description="已关闭" />
+	</dict>
+	    <dict id="netSubState" description="状态">
+	    <item id="0" name="未完成" description="未完成" />
+		<item id="1" name="已完成" description="已完成" />
+	</dict>
+	 <dict id="expertState" description="状态">
+	    <!-- item id="0" name="很好(★★★★★)" description="很好" /-->
+		<item id="1" name="★★★★" description="重大" />
+		<item id="2" name="★★★" description="很重要" />
+		<item id="3" name="★★" description="重要" />
+		<item id="4" name="★" description="一般" />
+	</dict>
+	<dict id="faultIsAppEffectId" description="是否影响业务">
+		<item id="0" name="否" description="不影响业务" />
+		<item id="1" name="是" description="影响业务" />
+	</dict>
+	<dict id="faultIsFirstFind" description="监控室第一时间发现">
+		<item id="0" name="否" description="不是监控室第一时间发现" />
+		<item id="1" name="是" description="是监控室第一时间发现" />
+	</dict>
+	<dict id="faultEstate" description="归 档">
+		<item id="0" name="未归档" description="未归档" />
+		<item id="1" name="已归档" description="已归档" />
+	</dict>
+	<dict id="faultPropertyRight" description="光缆产权">
+		<item id="1" name="自建" description="自建" />
+		<item id="2" name="租用" description="租用" />
+	</dict>
+	<dict id="faultfilialeId" description="公司所在地区">
+		<item id="1" name="昆明" description="昆明" />
+		<item id="2" name="大理" description="大理" />
+		<item id="3" name="楚雄" description="楚雄" />
+		<item id="4" name="红河" description="红河" />
+		<item id="5" name="文山" description="文山" />
+		<item id="6" name="玉溪" description="玉溪" />
+		<item id="7" name="丽江" description="丽江" />
+		<item id="8" name="迪庆" description="迪庆" />
+		<item id="9" name="临沧" description="临沧" />
+		<item id="10" name="曲靖" description="曲靖" />
+		<item id="11" name="昭通" description="昭通" />
+		<item id="12" name="普洱" description="普洱" />
+		<item id="13" name="德宏" description="德宏" />
+		<item id="14" name="怒江" description="怒江" />
+		<item id="15" name="版纳" description="版纳" />
+		<item id="16" name="保山" description="保山" />
+	</dict>
+	<dict id="attemperSpeciality" description="专业名称">
+		<item id="1" name="其它" description="网调专业名称-其它" />
+		<item id="2" name="计费" description="网调专业名称-计费" />
+		<item id="3" name="安全" description="网调专业名称-安全" />
+		<item id="4" name="互联互通" description="网调专业名称-互联互通" />
+		<item id="5" name="网管" description="网调专业名称-网管" />
+		<item id="6" name="无线" description="网调专业名称-无线" />
+		<item id="7" name="动力环境" description="网调专业名称-动力环境" />
+		<item id="8" name="数据" description="网调专业名称-数据" />
+		<item id="9" name="传输" description="网调专业名称-传输" />
+		<item id="10" name="交换" description="网调专业名称-交换" />
+	</dict>
+	<dict id="attemperSpecialitySub" description="传输专业名称">
+		<item id="1" name="国干传送网" description="传输专业-国干传送网" />
+		<item id="2" name="省干一平面" description="传输专业-省干一平面" />
+		<item id="3" name="省干二平面" description="传输专业-省干二平面" />
+		<item id="4" name="本地网" description="网调专业名称-本地网" />
+		<item id="5" name="时钟、时间同步网" description="传输专业-时钟、时间同步网" />
+	</dict>
+	<dict id="attemperResult" description="网调结果">
+		<item id="1" name="核实已完成(影响业务)" description="网调结果-核实已完成(影响业务)" />
+		<item id="2" name="核实已完成(未影响业务)" description="网调结果-核实已完成(未影响业务)" />
+		<item id="3" name="核实未完成(未影响业务)" description="网调结果-核实未完成(未影响业务)" />
+		<item id="4" name="核实未完成(影响业务)" description="网调结果-核实未完成(影响业务)" />
+	</dict>
+	<dict id="contrastIfSwitch" description="SDH是否正常倒换">
+		<item id="1" name="是" description="是" />
+		<item id="2" name="否" description="否" />
+	</dict>
+	<dict id="caleClassList" description="光缆级别">
+		<item id="1" name="国干" description="光缆级别-国干" />
+		<item id="2" name="省干" description="光缆级别-省干" />
+		<item id="3" name="本地网" description="光缆级别-本地网" />
+	</dict>
+	<dict id="attemperStatus" description="状态">
+		<!-- item id="0" name="草稿" description="状态-草稿" /-->
+		<item id="1" name="未结束" description="状态-未结束" />
+		<item id="2" name="已结束" description="状态-已结束" />
+		<item id="3" name="已删除" description="状态-已删除" />
+	</dict>
+	<dict id="attemperStatus2" description="可用状态">
+		<item id="1" name="未结束" description="状态-未结束" />
+		<item id="2" name="已结束" description="状态-已结束" />
+	</dict>
+	<dict id="attemperDays" description="时间段">
+		<item id="1" name="1天" description="1天" />
+		<item id="5" name="5天" description="5天" />
+		<item id="10" name="10天" description="10天" />
+		<item id="20" name="20天" description="20天" />
+		<item id="30" name="30天" description="30天" />
+	</dict>
+	<dict id="eventRegions" description="云南地市">
+		<item id="1" name="省公司" description="167" />
+		<item id="2" name="昆明" description="170" />
+		<item id="3" name="大理" description="146" />
+		<item id="4" name="楚雄" description="168" />
+		<item id="5" name="红河" description="145" />
+		<item id="6" name="文山" description="164" />
+		<item id="7" name="玉溪" description="143" />
+		<item id="8" name="丽江" description="176" />
+		<item id="9" name="迪庆" description="152" />
+		<item id="10" name="临沧" description="150" />
+		<item id="11" name="曲靖" description="144" />
+		<item id="12" name="昭通" description="160" />
+		<item id="13" name="普洱" description="171" />
+		<item id="14" name="德宏" description="153" />
+		<item id="15" name="怒江" description="158" />
+		<item id="16" name="版纳" description="156" />
+		<item id="17" name="保山" description="159" />
+	</dict>
+	<dict id="roomList" description="云南机房列表">
+		<item id="1" name="省网管中心集中监控室" description="167" />
+		<item id="2" name="楚雄网络部监控机房" description="168" />
+		<item id="3" name="丽江移动五楼交换机房" description="176" />
+		<item id="4" name="普洱交换维护中心" description="183" />
+		<item id="5" name="红河网络部中心机房" description="145" />
+		<item id="6" name="大理新桥北移动机房" description="146" />
+		<item id="7" name="玉溪公司网络部集中监控机房" description="143" />
+		<item id="8" name="迪庆分公司新局4楼机房" description="152" />
+		<item id="9" name="临沧网络部五楼传输机房" description="173" />
+		<item id="10" name="曲靖新大楼机房" description="144" />
+		<item id="11" name="昆明网管中心监控机房" description="170" />
+	</dict>
+</dicts>  

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.km.expert.model.KmExpertEdu"
+		table="KM_EXPERT_EDU">
+
+		<id name="id" column="id" unsaved-value="null">
+
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+
+			</generator>
+
+		</id>
+
+		<property name="expertEduSch" column="EXPERT_EDU_SCH"
+			length="100" not-null="true" unique="false">
+
+		</property>
+
+		<property name="expertEduEdu" column="EXPERT_EDU_EDU"
+			length="30" not-null="true" unique="false">
+
+		</property>
+
+		<property name="expertEduStart" column="EXPERT_EDU_START"
+			length="50" not-null="true" unique="false">
+
+		</property>
+
+		<property name="expertEduEnd" column="EXPERT_EDU_END"
+			length="50" not-null="true" unique="false">
+
+		</property>
+
+		<property name="expertEduPro" column="EXPERT_EDU_PRO"
+			length="50" not-null="true" unique="false">
+
+		</property>
+
+		<property name="expertEduProName" column="EXPERT_EDU_PRO_NAME"
+			length="150" not-null="true" unique="false">
+
+		</property>
+
+		<property name="expertEduCity" column="EXPERT_EDU_CITY"
+			length="30" not-null="false" unique="false">
+
+		</property>
+
+		<property name="expertEduDes" column="EXPERT_EDU_DES"
+			length="500" not-null="false" unique="false">
+
+		</property>
+
+		<property name="userId" column="USER_ID" length="32"
+			not-null="true" unique="false">
+
+		</property>
+
+
+	</class>
+
+</hibernate-mapping>
+

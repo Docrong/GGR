@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.commons.system.role.model.TawSystemSubRole"
+		table="taw_system_sub_role">
+
+		<id name="id" column="id" unsaved-value="null">
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="area" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="deptId" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="leaf" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="limitCount" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="parentId" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="roleId" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="subRoleName" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="type1" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="type2" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="type3" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="type4" length="10" not-null="false"
+			unique="true">
+
+		</property>
+
+		<property name="logo" length="100" not-null="true"
+			unique="true">
+
+		</property>
+		<property name="deleted" length="10" not-null="true"
+			unique="true">
+
+		</property>
+
+		<property name="version" length="50" not-null="false" unique="false"/>
+		
+		<property name="county"  length="50" not-null="false" unique="false"/>
+
+
+	</class>
+
+</hibernate-mapping>
+

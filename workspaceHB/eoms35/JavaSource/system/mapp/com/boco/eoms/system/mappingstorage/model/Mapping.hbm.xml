@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.system.mappingstorage.model.Mapping"
+            table="mappingstorage"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="app_code"
+            	column="app_code"
+                length="32"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+    <property name="new_table"
+              column="new_table"
+              length="32"
+              not-null="true"
+              unique="true"
+        >
+    </property>
+
+	<property
+            name="app_name"
+            	column="app_name"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	
+
+	<property
+            name="context"
+            	column="context"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        
+        <property
+            name="deleted"
+            	column="deleted"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="beanid"
+            	column="beanid"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="SafeAudit" description="安全审计工单流程">
+   <flow-define id="SafeAuditProcess" description="安全审计工单流程">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="EvaluateMaterialHumTask" role="dealPerformer@335" condition="${operateType}==0" name="新建派发"/>
+       <to-phase-id id="DraftHumTask" role="" condition="${operateType}==22" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="DraftHumTask" name="草稿" type="operate">       
+       <to-phase-id id="EvaluateMaterialHumTask" role="dealPerformer@335" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id> 
+     <phase-id id="ByRejectHumTask" name="驳回" type="operate">       
+       <to-phase-id id="EvaluateMaterialHumTask" role="dealPerformer@335" condition="${operateType}==53" name="重新派发"/>
+     </phase-id>     
+     
+     <phase-id id="EvaluateMaterialHumTask" name="评估材料准备中" type="operate">       
+       <to-phase-id id="EditReportHumTask" role="dealPerformer@333" condition="${operateType}==90" name="提交材料"/>
+         <to-phase-id id="ByRejectHumTask" role="" condition="${operateType}==4" name="驳回"/>
+      </phase-id>     
+      
+     <phase-id id="EditReportHumTask" name="编写报告中" type="operate">
+       <to-phase-id id="ApprovingHumTask" role="dealPerformer@334" condition="${operateType}==91" name="完成安全审计，提交审批"/>
+         <to-phase-id id="EvaluateMaterialHumTask" role="" condition="${operateType}==4" name="驳回评估"/>
+     </phase-id>
+     
+     <phase-id id="ApprovingHumTask" name="待审批" type="operate">
+     	<to-phase-id id="EditReportHumTask" role="dealPerformer@333" condition="${operateType}==922" name="审批安全审计报告不通过"/> 
+     	<to-phase-id id="HoldHumTask" role="dealPerformer@333" condition="${operateType}==921" name="审批安全审计报告通过"/>
+     </phase-id>     
+     <phase-id id="HoldHumTask" name="归档" type="operate">
+     	 <to-phase-id id="ApprovingHumTask" role="" condition="${operateType}==17" name="退回"/>        
+     </phase-id>
+  </flow-define>
+</WorkFlowRule>

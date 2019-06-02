@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+	<infoPub>
+	    <faultPub>8aa082eb2c3d8dd4012c3ec96bf2006a,8a2f94ee3bdd133c013bdd55b65b03fb</faultPub><!-- 临时故障公告id，可配置多个，中间用逗号隔开-->
+	    <upGrade>8aa082eb2c3d8dd4012c3ec991f8006b,8a2f94ee3bdd133c013bdd5500090356</upGrade><!-- 升级公告id ，可配置多个，中间用逗号隔开-->
+	</infoPub>
+	<!-- 此处配置发布至接口公告的专题id，可配置多个，中间用逗号隔开-->
+	<threadInterFace>8aa082eb2c3d8dd4012c3ec96bf2006a,8aa082eb2c3d8dd4012c3ec991f8006b</threadInterFace>
+
+	<webservice>
+		<url>http://localhost:9080/eoms35/services/SuperviseTaskInterface?wsdl</url> <!--服务支撑的，服务端地址  -->
+		<targetNamespace>http://api/</targetNamespace>
+		
+		
+	
+	</webservice>
+</boco>

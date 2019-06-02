@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="faulttype1" description="故障类型">
+		<item id="1" name="话务网故障" description="话务网故障" />
+		<item id="2" name="无线侧故障" description="无线侧故障" />
+		<item id="3" name="传输网、同步网故障" description="传输网、同步网" />
+		<item id="4" name="数据网故障" description="数据网故障" />
+		<item id="5" name="支撑网故障" description="支撑网故障" />
+		<item id="6" name="网络安全故障" description="网络安全故障" />
+		<item id="7" name="动力环境故障" description="动力环境故障" />
+	</dict>
+	<dict id="faulttype2" description="设备类型">
+		<item id="1" name="OMC" description="OMC" />
+		<item id="2" name="MSC/VLR" description="MSC/VLR" />
+		<item id="3" name="HLR" description="HLR" />
+		<item id="4" name="GMSC" description="GMSC" />
+		<item id="5" name="MSCServer" description="MSCServer" />
+		<item id="6" name="MGW" description="MGW" />
+		<item id="7" name="HSTP" description="HSTP" />
+		<item id="8" name="TMSC" description="TMSC" />
+		<item id="9" name="GYSSA/TMG" description="GYSSA/TMG" />
+		<item id="10" name="IP承载网" description="IP承载网" />
+		<item id="11" name="SCP/AIP" description="SCP/AIP" />
+		<item id="12" name="TC" description="SCP/AIP" />
+	</dict>
+	<dict id="faultregion" description="故障所属地州">
+		<item id="GY" name="贵阳" description="北京" />
+
+	</dict>
+
+	<dict id="faultjudge" description="故障重要程度">
+		<item id="1" name="急" description="急" />
+
+	</dict>
+
+	<dict id="sheettemplatename" description="设备所属厂家">
+		<item id="1" name="NEC" description="NEC" />
+
+	</dict>
+
+	<dict id="faultstatus" description="故障工单状态">
+		<item id="1" name="撤销" description="撤销" />
+		<item id="2" name="派发" description="派发" />
+
+	</dict>
+
+</dicts>

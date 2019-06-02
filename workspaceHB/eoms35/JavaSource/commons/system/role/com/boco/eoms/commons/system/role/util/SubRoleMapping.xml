@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<description>a map file for our new template system</description>
+
+	<class
+		name="com.boco.eoms.commons.system.role.util.SubRoleMapping">
+		<map-to xml="subRoleMapping" />
+		<field name="businessName" type="string">
+			<bind-xml name="businessName" node="attribute" />
+		</field>
+		<field name="columnName" type="string" />
+		<field name="num" type="integer" />
+		<field name="pojoName" type="string" />
+		<field name="pojoPrimaryKey" type="string" />
+
+	</class>
+
+
+
+	<class
+		name="com.boco.eoms.commons.system.role.util.SubRoleSchema">
+		<map-to xml="SubRoleSchema" />
+		<field name="subRoleMapping"
+			type="com.boco.eoms.commons.system.role.util.SubRoleMapping"
+			collection="collection" />
+	</class>
+
+</mapping>

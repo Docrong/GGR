@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpExecuteFlag"
+        table="taw_wp_executeflag"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpAddonsTable.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="yearPlanId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="year_plan_id"
+            length="32"
+            not-null="true"
+        />
+
+        <property
+            name="monthPlanId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="month_plan_id"
+            length="32"
+            not-null="true"
+        />
+
+        <property
+            name="monthFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="monthflag"
+            length="32"
+            not-null="false"
+        />
+
+        <property
+            name="executedate"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="executedate"
+            length="32"
+            not-null="false"
+        />
+
+        <property
+            name="executer"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="executer"
+            length="50"
+            not-null="false"
+        />
+
+		  <property
+            name="state"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="state"
+            length="5"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpAddonsTable.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

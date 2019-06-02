@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+	<!-- ========== Data Sources Definitions =================================== -->
+	<!--
+		Define your Struts data sources in a file called struts-data-sources.xml and place
+		it in your merge directory.
+	-->
+
+	<!-- ========== Form Bean Definitions =================================== -->
+	<form-beans>
+		<form-bean name="multiPageForm"
+			type="com.boco.eoms.sheet.numberapply.webapp.action.NumberApplyFrom" />
+
+		<!--bean for EsmProcess end-->
+	</form-beans>
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<forward name="selectFile" path="/selectFile.do" />
+		<forward name="logout" path="/logout.jsp" />
+		<forward name="error"
+			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+			contextRelative="true" />
+	</global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+	<action-mappings>
+		<action path="/numberapply"
+			type="com.boco.eoms.sheet.numberapply.webapp.action.NumberApplyAction"
+			name="multiPageForm" scope="request" input="error" parameter="method"
+			unknown="false" validate="false" attribute="NumberApply">
+			<set-property property="cancellable" value="true" />
+<!-- add by zhouzhe begin -->
+			<forward name="hlrnew"
+				path="/WEB-INF/pages/wfworksheet/numberapply/hlr_new.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="mscnew"
+				path="/WEB-INF/pages/wfworksheet/numberapply/msc_new.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="hlrlist"
+				path="/WEB-INF/pages/wfworksheet/numberapply/listhrl.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="hlrdetail"
+				path="/WEB-INF/pages/wfworksheet/numberapply/hlr_detail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="mscdetail"
+				path="/WEB-INF/pages/wfworksheet/numberapply/msc_detail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="msclist"
+				path="/WEB-INF/pages/wfworksheet/numberapply/listmsc.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="showList" path="/numberapply?method=showList"/>
+			<forward name="hlrsuccess"
+				path="/WEB-INF/pages/wfworksheet/numberapply/hlr_success.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="batchinto"
+				path="/WEB-INF/pages/wfworksheet/numberapply/batchinto.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="batchDealError"
+				path="/WEB-INF/pages/wfworksheet/numberapply/batchDealError.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="Manual"
+				path="/WEB-INF/pages/wfworksheet/numberapply/manual.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="commondid"
+				path="/WEB-INF/pages/wfworksheet/numberapply/commondid.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="commond24"
+				path="/WEB-INF/pages/wfworksheet/numberapply/commond24.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="commond14"
+				path="/WEB-INF/pages/wfworksheet/numberapply/commond14.jsp"
+				redirect="false" contextRelative="true" />
+			
+<!-- add by zhouzhe end -->
+			<forward name="new"
+				path="/WEB-INF/pages/wfworksheet/numberapply/main.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="inputNew"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="dealpage"
+				path="/WEB-INF/pages/wfworksheet/numberapply/dealpage.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="inputDealpage"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputdealpage.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="reject"
+				path="/WEB-INF/pages/wfworksheet/numberapply/reject.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="inputReject"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputreject.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="detail"
+				path="/WEB-INF/pages/wfworksheet/numberapply/detail.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="draft"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="cancel"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="delete"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="hold"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputmain.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="list"
+				path="/WEB-INF/pages/wfworksheet/numberapply/list.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="success"
+				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="successMessage"
+				path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="portal"
+				path="/WEB-INF/pages/wfworksheet/numberapply/portal.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="split"
+				path="/WEB-INF/pages/wfworksheet/numberapply/split.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="history"
+				path="/WEB-INF/pages/wfworksheet/numberapply/history.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="draw"
+                path="/WEB-INF/pages/wfworksheet/numberapply/draw.jsp"
+                redirect="false" contextRelative="true"/>
+            <forward name="pic"
+                path="/WEB-INF/pages/wfworksheet/numberapply/pic.jsp"
+                redirect="false" contextRelative="true"/>
+            <forward name="holdlist"
+                path="/WEB-INF/pages/wfworksheet/numberapply/mainlist.jsp" 
+                redirect="false" contextRelative="true" />
+			<forward name="mainlist"
+				path="/WEB-INF/pages/wfworksheet/numberapply/mainlist.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="startlist"
+				path="/WEB-INF/pages/wfworksheet/numberapply/mainlist.jsp"
+				redirect="false" contextRelative="true" />
+		    <forward name="maindetail"
+				path="/WEB-INF/pages/wfworksheet/numberapply/detail.jsp"
+				redirect="false" contextRelative="true" />
+           <forward name="query"
+                path="/WEB-INF/pages/wfworksheet/numberapply/query.jsp"
+                redirect="false" contextRelative="true" />
+	        <forward name="queryInput"
+		        path="/WEB-INF/pages/wfworksheet/numberapply/queryinput.jsp"
+		        redirect="false" contextRelative="true" />		
+	        <forward name="querylist"
+		        path="/WEB-INF/pages/wfworksheet/numberapply/querylist.jsp"
+		        redirect="false" contextRelative="true" />
+		     <forward name="templates" 
+		        path="/WEB-INF/pages/wfworksheet/numberapply/templates.jsp"
+		        redirect="false" contextRelative="true"/>
+		    <forward name="dealTemplates" 
+		        path="/WEB-INF/pages/wfworksheet/numberapply/dealTemplates.jsp"
+		        redirect="false" contextRelative="true"/>
+		    <forward name="dealTemplateDetail" 
+		        path="/WEB-INF/pages/wfworksheet/numberapply/dealTemplateDetail.jsp"
+		        redirect="false" contextRelative="true"/>
+		    <forward name="sheetAccessories" 
+		        path="/WEB-INF/pages/wfworksheet/numberapply/sheetAccessories.jsp"
+		        redirect="false" contextRelative="true"/>
+		   <forward name="showInvokeRelationShipList" 
+		        path="/WEB-INF/pages/wfworksheet/numberapply/showInvokeRelationShipList.jsp"
+		        redirect="false" contextRelative="true"/>	   
+		   <forward name="batchDealPage" 
+		        path="/WEB-INF/pages/wfworksheet/numberapply/batchDealPage.jsp"
+		        redirect="false" contextRelative="true"/>
+		   <forward name="transfer"
+				path="/WEB-INF/pages/wfworksheet/numberapply/transfer.jsp"	
+				redirect="false" contextRelative="true" />
+			<forward name="forceHold"
+				path="/WEB-INF/pages/wfworksheet/numberapply/forceHold.jsp"	
+				redirect="false" contextRelative="true" />
+			<forward name="adminlist"
+				path="/WEB-INF/pages/wfworksheet/numberapply/adminlist.jsp" redirect="false"
+				contextRelative="true" />
+			<forward name="event"
+				path="/WEB-INF/pages/wfworksheet/numberapply/event.jsp" redirect="false"
+				contextRelative="true" />
+	        <forward name="inputEvent"
+				path="/WEB-INF/pages/wfworksheet/numberapply/inputevent.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="saveInfo" path="/numberapply?method=showDetailPage"/>
+		    <forward name="saveInfoAndExit" path="/numberapply.do?method=showListsendundo"/>   
+			<forward name="cancellist"
+				path="/WEB-INF/pages/wfworksheet/numberapply/mainlist.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="remark"
+				path="/WEB-INF/pages/wfworksheet/numberapply/remark.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="phaseBackToUp"
+				path="/WEB-INF/pages/wfworksheet/numberapply/phaseBackToUp.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="phaseAdvice"
+				path="/WEB-INF/pages/wfworksheet/numberapply/phaseBackToUp.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="showDraftList" path="/numberapply?method=showDraftList"/>	
+		    <forward name="draftList" path="/WEB-INF/pages/wfworksheet/numberapply/draftList.jsp" redirect="false"
+				contextRelative="true"/> 		
+			<forward name="showWorkFlow"
+				path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
+				redirect="false" contextRelative="true" />
+			<forward name="getLinkOperatePage"
+				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
+				redirect="false" contextRelative="true" />								
+			<forward name="cc"
+				path="/WEB-INF/pages/wfworksheet/numberapply/makeCopy.jsp"
+				redirect="false" contextRelative="true" />			
+			<forward name="shoWholeWorkFlow"
+				path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="showSetpInfoPage"
+				path="/WEB-INF/pages/wfworksheet/numberapply/showStepInfoPage.jsp"
+				redirect="false" contextRelative="true" />				
+			<forward name="dealReplyAccept"
+				path="/WEB-INF/pages/wfworksheet/numberapply/dealReplyAccept.jsp" 
+				redirect="false" contextRelative="true" />
+			<forward name="dealReplyReject"
+				path="/WEB-INF/pages/wfworksheet/numberapply/dealReplyReject.jsp" 
+				redirect="false" contextRelative="true" />					
+		     <forward name="showWorkFlowInstance"
+				path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
+				redirect="false" contextRelative="true" />
+												
+		 </action>
+	</action-mappings>
+
+	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+	<message-resources parameter="config/ApplicationResources-sheet" key="sheet" />
+	<message-resources
+		parameter="config/ApplicationResources-sheet-numberapply" key="numberapply" />
+</struts-config>

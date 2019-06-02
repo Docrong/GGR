@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+  <cell id="1" type="InitialActionCell" height="30" width="100" x="154" y="34" />
+  <cell id="2" type="StepCell" height="30" width="100" x="339" y="35" />
+  <cell id="3" type="StepCell" height="30" width="100" x="494" y="37" />
+  <cell id="4" type="StepCell" height="30" width="100" x="815" y="36" />
+  <cell id="5" type="StepCell" height="30" width="100" x="339" y="136" />
+  <cell id="6" type="StepCell" height="30" width="100" x="495" y="221" />
+  <cell id="7" type="StepCell" height="30" width="100" x="339" y="307" />
+  <cell id="8" type="StepCell" height="30" width="100" x="495" y="404" />
+  <cell id="9" type="StepCell" height="30" width="100" x="495" y="482" />
+  <cell id="10" type="StepCell" height="30" width="100" x="614" y="580" />
+  <cell id="11" type="StepCell" height="30" width="100" x="614" y="671" />
+  <cell id="12" type="StepCell" height="30" width="100" x="723" y="758" />
+  <cell id="13" type="StepCell" height="30" width="100" x="722" y="843" />
+  <cell id="14" type="StepCell" height="30" width="100" x="721" y="932" />
+  <cell id="15" type="StepCell" height="30" width="100" x="721" y="1031" />
+  <connector id="90" linewidth="1.0" color="-16777216" labelx="424" labely="-2000" from="0" to="0" start="154,34" end="339,35" />
+  <connector id="91" linewidth="1.0" color="-16777216" labelx="155" labely="857" from="0" to="0" start="154,34" end="339,136">
+    <routing id="91" x="191" y="148" />
+  </connector>
+  <connector id="92" linewidth="1.0" color="-16777216" labelx="0" labely="746" from="0" to="0" start="339,35" end="339,136" />
+  <connector id="93" linewidth="1.0" color="-16777216" labelx="279" labely="844" from="0" to="0" start="494,37" end="339,136">
+    <routing id="93" x="525" y="144" />
+  </connector>
+  <connector id="94" linewidth="1.0" color="-16777216" labelx="1248" labely="163" from="0" to="0" start="339,136" end="494,37">
+    <routing id="94" x="564" y="153" />
+  </connector>
+  <connector id="95" linewidth="1.0" color="-16777216" labelx="1061" labely="741" from="0" to="0" start="339,136" end="495,221">
+    <routing id="95" x="538" y="163" />
+  </connector>
+  <connector id="96" linewidth="1.0" color="-16777216" labelx="0" labely="879" from="0" to="0" start="339,136" end="339,307" />
+  <connector id="97" linewidth="1.0" color="-16777216" labelx="-19" labely="808" from="0" to="0" start="495,221" end="339,307">
+    <routing id="97" x="542" y="324" />
+  </connector>
+  <connector id="98" linewidth="1.0" color="-16777216" labelx="551" labely="939" from="0" to="0" start="339,307" end="495,404">
+    <routing id="98" x="388" y="419" />
+  </connector>
+  <connector id="99" linewidth="1.0" color="-16777216" labelx="343" labely="918" from="0" to="0" start="339,307" end="495,482">
+    <routing id="99" x="387" y="495" />
+  </connector>
+  <connector id="910" linewidth="1.0" color="-16777216" labelx="1636" labely="63" from="0" to="0" start="495,404" end="614,580">
+    <routing id="910" x="661" y="420" />
+  </connector>
+  <connector id="911" linewidth="1.0" color="-16777216" labelx="1348" labely="707" from="0" to="0" start="495,482" end="614,580">
+    <routing id="911" x="661" y="498" />
+  </connector>
+  <connector id="912" linewidth="1.0" color="-16777216" labelx="0" labely="639" from="0" to="0" start="614,580" end="614,671">
+    <routing id="912" x="649" y="644" />
+  </connector>
+  <connector id="913" linewidth="1.0" color="-16777216" labelx="0" labely="8033" from="0" to="0" start="614,671" end="614,580">
+    <routing id="913" x="680" y="646" />
+  </connector>
+  <connector id="914" linewidth="1.0" color="-16777216" labelx="931" labely="722" from="0" to="0" start="614,671" end="723,758">
+    <routing id="914" x="772" y="686" />
+  </connector>
+  <connector id="915" linewidth="1.0" color="-16777216" labelx="-48" labely="911" from="0" to="0" start="614,671" end="721,932">
+    <routing id="915" x="659" y="947" />
+  </connector>
+  <connector id="916" linewidth="1.0" color="-16777216" labelx="5000" labely="709" from="0" to="0" start="723,758" end="722,843" />
+  <connector id="917" linewidth="1.0" color="-16777216" labelx="1000" labely="644" from="0" to="0" start="722,843" end="721,932" />
+  <connector id="918" linewidth="1.0" color="-16777216" labelx="0" labely="768" from="0" to="0" start="721,932" end="721,1031" />
+  <connector id="919" linewidth="1.0" color="-16777216" labelx="1203" labely="732" from="0" to="0" start="721,1031" end="815,36">
+    <routing id="919" x="880" y="1051" />
+  </connector>
+  <channel id="chl-1" y1="0" y2="90" text="申请人" />
+  <channel id="chl-2" y1="90" y2="180" text="审核人" />
+  <channel id="chl-3" y1="180" y2="270" text="传输专线开通人" />
+  <channel id="chl-4" y1="270" y2="360" text="业务资源分配人" />
+  <channel id="chl-5" y1="360" y2="450" text="网关数据制作人" />
+  <channel id="chl-6" y1="450" y2="540" text="支撑数据制作人" />
+  <channel id="chl-7" y1="540" y2="630" text="BOSS数据录入" />
+  <channel id="chl-8" y1="630" y2="720" text="BOSS数据确认" />
+  <channel id="chl-9" y1="720" y2="810" text="MAS服务器开发" />
+  <channel id="chl-10" y1="810" y2="900" text="客户设备安装" />
+  <channel id="chl-11" y1="900" y2="990" text="业务测试" />
+  <channel id="chl-12" y1="990" y2="1080" text="开通确认" />
+</layout>
+

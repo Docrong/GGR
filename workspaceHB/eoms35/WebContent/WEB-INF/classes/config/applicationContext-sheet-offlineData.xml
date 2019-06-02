@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+ 
+	<bean id="IOfflineDataMainDAO"
+		class="com.boco.eoms.sheet.offlineData.dao.hibernate.OfflineDataMainDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="IOfflineDataLinkDAO"
+		class="com.boco.eoms.sheet.offlineData.dao.hibernate.OfflineDataLinkDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="IOfflineDataTaskDAO"
+		class="com.boco.eoms.sheet.offlineData.dao.hibernate.OfflineDataTaskDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="IOfflineDataInfoListDAO"
+		class="com.boco.eoms.sheet.offlineData.dao.hibernate.OfflineDataInfoListDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="OfflineDataTask"
+		class="com.boco.eoms.sheet.offlineData.model.OfflineDataTask"
+		autowire="byName">
+	</bean>
+	<bean id="OfflineDataLink"
+		class="com.boco.eoms.sheet.offlineData.model.OfflineDataLink"
+		autowire="byName" />
+	<bean id="OfflineDataMain"
+		class="com.boco.eoms.sheet.offlineData.model.OfflineDataMain"
+		autowire="byName" />
+	<bean id="iOfflineDataTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.offlineData.service.impl.OfflineDataTaskManagerImpl">
+				<property name="taskModelObject" ref="OfflineDataTask" />
+				<property name="taskDAO">
+					<ref bean="IOfflineDataTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+					<value>/config/offlineDataTaskConfig.properties</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iOfflineDataFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.offlineData.service.impl.OfflineDataFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iOfflineDataLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.offlineData.service.impl.OfflineDataLinkManagerImpl">
+				<property name="linkObject" ref="OfflineDataLink" />
+				<property name="linkDAO">
+					<ref bean="IOfflineDataLinkDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>   
+	<bean id="iOfflineDataMainManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.offlineData.service.impl.OfflineDataMainManagerImpl">
+				<property name="mainObject" ref="OfflineDataMain" />
+				<property name="mainDAO">
+					<ref bean="IOfflineDataMainDAO" />
+				</property>
+				<property name="workSheetQO">
+					<ref bean="iOfflineDataQo" />
+				</property>
+				<property name="flowTemplateName">
+					<value>OfflineDataProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/offlineData-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iOfflineDataInfoListManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.offlineData.service.impl.OfflineDataInfoListManagerImpl">
+				<property name="infoListDao">
+					<ref bean="IOfflineDataInfoListDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="iOfflineDataQo"
+		class="com.boco.eoms.sheet.offlineData.qo.impl.OfflineDataQoImpl"
+		autowire="byName" singleton="false">
+		<property name="poMain" value="OfflineDataMain" />
+		<property name="poLink" value="OfflineDataLink" />
+		<property name="poTask" value="OfflineDataTask" />
+		<property name="aliasMain" value="offlineDataMain" />
+		<property name="aliasLink" value="offlineDataLink" />
+		<property name="aliasTask" value="offlineDataTask" />
+
+	</bean>
+
+	<bean id="OfflineData" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.offlineData.webapp.action.OfflineDataMethod">
+				<property name="businessFlowService">
+					<ref bean="iOfflineDataFlowManager" />
+				</property>
+				<property name="linkService"
+					ref="iOfflineDataLinkManager" />
+				<property name="mainService"
+					ref="iOfflineDataMainManager" />
+				<property name="sheetTask" ref="OfflineDataTask" />
+				<property name="taskService"
+					ref="iOfflineDataTaskManager" />
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/offlineData-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+
+	
+	
+	
+</beans>

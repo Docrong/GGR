@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!-- sample config file  , 
+			create new config file in your module -->
+<beans>
+
+	<bean id="statSampleConfigManager"
+		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
+		autowire="byName" >
+		<property name="configFilePath">
+			<value>classpath:config/kpi-config-base.xml</value>
+		</property>	
+	</bean>
+
+	<bean id="statSampleManager" 
+				class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
+		<property name="statJdbcDAO" ref="statBaseJdbcDAO" />
+		<property name="statExcelConverter" ref="statBaseExcelConverter" />
+		<property name="statDetailDAO" ref="statDetailDAOInformix" />
+	</bean>
+
+	<bean id="sampleStatMethod"
+				class="com.boco.eoms.commons.statistic.sample.webapp.action.SampleStatMethod">
+		<property name="statManager" ref="statSampleManager" />
+	</bean>
+
+</beans>

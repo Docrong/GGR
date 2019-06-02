@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<form-beans>
+	  <form-bean
+        name="tawWorkbenchFolderForm"
+        type="com.boco.eoms.workbench.netdisk.webapp.form.TawWorkbenchFolderForm"
+      />
+      <form-bean
+        name="tawWorkbenchFolderShareForm"
+        type="com.boco.eoms.workbench.netdisk.webapp.form.TawWorkbenchFolderShareForm"
+      />
+      <form-bean
+        name="tawWorkbenchNetDiskFileForm"
+        type="com.boco.eoms.workbench.netdisk.webapp.form.TawWorkbenchNetDiskFileForm"
+      />
+	</form-beans>
+
+	<!-- ========== Global Exceptions Definitions =================================== -->
+	<global-exceptions>
+		<!-- 
+			<exception type="java.lang.Exception" key="errors.general"
+			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+		-->
+	</global-exceptions>
+
+	<!-- ========== Global Forward Definitions =================================== -->
+	<global-forwards>
+		<!-- mainMenu应该做一个网络U盘的欢迎界面，尚未实现-->
+		<forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
+		<forward
+          name="success"
+          path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskSuccess.jsp"
+          redirect="false"
+          contextRelative="true"
+      	/>
+      	<forward
+          name="fail"
+          path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFail.jsp"
+          redirect="false"
+          contextRelative="true"
+      	/>
+	</global-forwards>
+
+	<!-- ========== Action Mapping Definitions =================================== -->
+
+
+	<action-mappings>
+	
+	<action
+      path="/tawWorkbenchNetDisks"
+      type="com.boco.eoms.workbench.netdisk.webapp.action.TawWorkbenchNetDiskAction"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="netDiskMain"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskMain.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    
+    <action
+      path="/tawWorkbenchFolders"
+      type="com.boco.eoms.workbench.netdisk.webapp.action.TawWorkbenchNetDiskAction"
+      name="tawWorkbenchFolderForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="folderEdit"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFolderForm.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="folderShare"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFolderShare.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    
+    <action
+      path="/tawWorkbenchFiles"
+      type="com.boco.eoms.workbench.netdisk.webapp.action.TawWorkbenchNetDiskAction"
+      name="tawWorkbenchNetDiskFileForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="fileListMain"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFileListMain.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="fileList"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFileList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="fileListShareToMe"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFileListShareToMe.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    
+    <action
+      path="/searchFiles"
+      type="com.boco.eoms.workbench.netdisk.webapp.action.TawWorkbenchNetDiskAction"
+      name="tawWorkbenchNetDiskFileForm"
+      scope="request"
+      input="mainMenu"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        name="searchIndex"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFileSearch.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+      <forward
+        name="searchList"
+        path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFileSearchList.jsp"
+        redirect="false"
+        contextRelative="true"
+      />
+    </action>
+    
+	</action-mappings>	
+	
+
+	<controller nocache="true" inputForward="true" maxFileSize="100M" />
+		 <message-resources parameter="config/ApplicationResources-workbench-netdisk"/>
+	<!-- ========== Validator plugin ===================  -->
+	<!-- 
+		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+		value="/WEB-INF/validator-rules.xml,
+		/WEB-INF/validator-rules-custom.xml,
+		/WEB-INF/validation.xml" />
+		</plug-in>
+	-->
+</struts-config>

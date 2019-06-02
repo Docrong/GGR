@@ -1,0 +1,367 @@
+<%@ page contentType="text/html; charset=GB2312" %>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/jstl-core.tld" prefix="c" %>
+<%@ taglib uri="/WEB-INF/app.tld" prefix="eoms" %>
+<%@ page import ="com.boco.eoms.common.tree.WKTree"%>
+<%@ page import="java.util.*,java.text.SimpleDateFormat,com.boco.eoms.infopub.util.*"%>
+<%@ page import="com.boco.eoms.common.util.*,com.boco.eoms.common.controller.*"%>
+<script type="text/javascript" src="../inc/ubbcode.js"></script>
+<%
+String path = request.getContextPath();
+WKTree wk_tree = new WKTree();
+String strTree = wk_tree.strWKTree(1);
+String url = "";
+String dept1 = "";
+String wsClass = "-1";
+int board=Integer.parseInt((String)request.getAttribute("infoType"));
+String sdomIds = "";
+//String url = StaticMethod.null2String(request.getParameter("url"),"");
+
+String parentId=String.valueOf(request.getParameter("parentId"));
+String boardId=String.valueOf(request.getParameter("boardId"));
+String infoType=String.valueOf(request.getParameter("infoType"));
+SaveSessionBeanForm saveSessionBeanForm =
+          (SaveSessionBeanForm)request.getSession().getAttribute("SaveSessionBeanForm");
+String userId=saveSessionBeanForm.getWrf_UserID();
+String userName=saveSessionBeanForm.getWrf_UserName();
+String deptName=saveSessionBeanForm.getWrf_DeptName();
+Date currentDate = new Date();
+SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+String date = dateFormat.format(currentDate);
+//out.println(date);
+String attText="";
+String attValue="";
+String imgText="";
+String imgValue="";
+
+Object attachObj=request.getAttribute("attachName");
+Object imgObj=request.getAttribute("imgName");
+if (attachObj!=null)
+{
+  attValue=attachObj.toString();
+  attText=StaticFunction.getShortName(attValue);
+}
+if (imgObj!=null)
+{
+  imgValue=imgObj.toString();
+  imgText=StaticFunction.getShortName(imgValue);
+}
+
+%>
+
+<style type="text/css">
+#tree {position: absolute;
+visibility: hidden;
+left: 74%; top: 6%;
+z-index:2;
+background-color:#ECF2FE;
+padding:6px;
+border-top:1px solid #FeFeFe;
+border-left:1px solid #FeFeFe;
+border-right:3px solid #8E9295;
+border-bottom:3px solid #8E9295;
+}
+</style>
+<script language="javascript">
+<%if(board==1){%>
+function save_sel_id(listNum){
+  var parent_id="";
+  var sel_idStr="";
+  var i = 0;
+
+  if (document.tawInformationForm.allId!=undefined) {
+    if (document.tawInformationForm.allId.length==undefined){
+
+      if (document.tawInformationForm.allId.checked){
+        sel_idStr=document.tawInformationForm.allId.value;
+      }
+    }
+    for(i=0;i<tawInformationForm.allId.length;i++){
+      	if(document.tawInformationForm.allId[i].checked){
+           if (sel_idStr==""){
+              sel_idStr=document.tawInformationForm.allId[i].value;
+            }
+            else{
+              sel_idStr=sel_idStr + "," + document.tawInformationForm.allId[i].value;
+            }
+      	}
+
+    }
+  }
+  return sel_idStr;
+
+}
+<%}%>
+
+function onSave(flag)
+{
+<%if(board==1){%>
+  var parent_id="";
+  var sel_idStr="";
+  var i = 0;
+  var board=<%=board%>;
+if(board==1){
+    for(i=0;i<tawInformationForm.deptId.length;i++){
+      //alert(tawInformationForm.allId.length);
+      	if(document.tawInformationForm.deptId[i].checked){
+           if (sel_idStr==""){
+              sel_idStr=document.tawInformationForm.deptId[i].value;
+            }
+            else{
+              //alert(document.tawInformationForm.allId[i].value)
+              sel_idStr=sel_idStr + "," + document.tawInformationForm.deptId[i].value;
+            }
+      	}
+
+    }
+    //alert(sel_idStr);
+  document.tawInformationForm.allId.value=sel_idStr;
+//alert(document.tawInformationForm.allId.value);
+  //return false;
+}
+<%}%>
+  if (trim(tawInformationForm.topic.value)=="")
+  {
+    alert("主题不能为空");
+    return false;
+  }
+    if (trim(tawInformationForm.timeLimited.value)=="")
+  {
+    alert("失效时间不能为空");
+    return false;
+  }
+  else if (tawInformationForm.body.value.length>1000)
+  {
+    alert("")
+  }
+  tawInformationForm.checkInfo.value=flag;
+  tawInformationForm.attachName.value=IFrame1.tawFileUploadForm.fileValue.value;
+  tawInformationForm.imgName.value=IFrame1.tawFileUploadForm.imgValue.value;
+  //alert(tawInformationForm.attachName.value);
+  tawInformationForm.submit();
+  return true;
+}
+function trim(TempStr)
+        {
+         return TempStr = TempStr.replace(/(^\s*)|(\s*$)/g, "");
+        }
+function info_onclick1() {
+  //alert(document.tawInformationForm.smsflag.value);
+	if(document.tawInformationForm.smsflag.value=="1")
+	{
+	document.tawInformationForm.smsflag.value="2";
+	}
+	else
+	{
+	document.tawInformationForm.smsflag.value="1";
+	}
+      //alert(document.tawInformationForm.smsflag.value);
+}
+
+function dispProvince() {
+  if(tawInformationForm.provincechk.checked==true) {
+    td1.style.display="block";
+  }
+  else {
+    td1.style.display="none";
+  }
+}
+
+</script>
+
+<LINK title="style" href="<%=request.getContextPath()%>/css/wsstyle.css" type="text/css" rel="stylesheet">
+	<link rel="StyleSheet" href="<%=request.getContextPath()%>/css/tree.css" type="text/css">
+	<script type="text/javascript" src="<%=request.getContextPath()%>/css/onlytree.js"></script>
+        <script type="text/javascript" src="<%=request.getContextPath()%>/css/finallytree.js"></script>
+        <script language="javascript" src="<%=request.getContextPath()%>/css/table_calendar.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
+<script type="text/javascript">
+        //fromDept,toDept
+
+
+	</script>
+
+<html:form  action="/TawInformation/save" >
+<SCRIPT language=javascript>
+<!--
+//以下四行用于日历显示
+var outObject;
+var old_dd = null;
+writeCalender();
+bltSetDay(bltTheYear,bltTheMonth);
+//-->
+</SCRIPT>
+<html:hidden property="strutsAction"/>
+<input type="hidden" name="path" id="path" value="<%=path%>">
+<input type="hidden" name="sdomids" id="sdomids" value="<%=sdomIds%>">
+
+
+<!--<input type="hidden" name="boardId" value="<%=boardId%>">-->
+<!--<input type="hidden" name="parentId" value="<%=parentId%>">-->
+<c:choose>
+      <c:when test="${requestScope['tawInformationForm'].strutsAction == 1}">
+        <html:hidden property="parentId" value="<%=parentId%>" />
+        <html:hidden property="boardId" value="<%=boardId%>" />
+        <html:hidden property="infoType" value="<%=infoType%>" />
+      </c:when>
+      <c:otherwise>
+        <html:hidden property="id"/>
+        <html:hidden property="boardId"/>
+        <html:hidden property="parentId"/>
+        <html:hidden property="infoType"/>
+</c:otherwise></c:choose>
+<table align="center" width="90%" cellspacing="1" border="0" cellpadding="1">
+<tr>
+  <td width="100%" class="table_title">
+    <c:choose>
+      <c:when test="${requestScope['tawInformationForm'].strutsAction == 1}">
+        <bean:message key="label.add"/>
+      </c:when>
+      <c:otherwise>
+        <bean:message key="label.edit"/>
+      </c:otherwise>
+    </c:choose>
+    &nbsp;<bean:message key="TawInformation.information"/>
+  </td>
+</tr>
+</table>
+<div id="tree" style="#tree">
+<font face="宋体" style="font-size: 9pt" COLOR="#990000" ><B><bean:message key="label.deptTree"/></B>&nbsp;[&nbsp;<A HREF="javascript:headerDisplay(0);"><bean:message key="label.hide"/></A>&nbsp;]</font>
+		  <BR>
+<%if(board==1){%>
+<script type="text/javascript">
+var path=document.all.path.value;
+var domids = "";
+var Tree = new Array;
+<%=strTree%>
+if( domids == "")
+   createTree9(Tree,1,0,path,"","",
+   "window.tawInformationForm.deptId","selMore",
+   "window.tawInformationForm.deptId","window.tawInformationForm.deptName","tree");
+
+else
+   createTree10(Tree,1,0,path,domids,"",
+   "window.tawInformationForm.allId","selOnly",
+   "window.tawInformationForm.deptId","window.tawInformationForm.deptName","tree");
+
+javascript:headerDisplay(0);
+</script>
+<%}%>
+</div>
+<table border="0" width="90%" cellspacing="1" cellpadding="1" class="table_show" align=center>
+<tr class="tr_show">
+  <td width="25%" class="clsfth"><bean:message key="TawInformation.topic"/></td>
+  <td width="75%">
+    <html:text property="topic" size="20" maxlength="50" styleClass="clstext"/><font color="red">**</font>
+  </td>
+</tr>
+<tr class="tr_show">
+  <td width="25%" class="clsfth">发布人</td>
+  <td width="75%"><%=deptName%> <%=userName%></td>
+</tr>
+<%--<tr class="tr_show">
+  <td width="25%" class="clsfth"><bean:message key="TawInformation.author"/></td>
+  <td width="75%"><%=userName%></td>
+</tr>--%>
+<tr class="tr_show">
+  <td width="25%" class="clsfth"><bean:message key="TawInformation.importance"/></td>
+  <td width="75%">
+ <% if(board==1){%>
+    <html:select property="important" value="2">
+      <html:options collection="IMPORTANTS" property="value" labelProperty="label"/>
+    </html:select>
+    <% } else { %>
+    <select name="important">
+      <option value="1">普通</option>
+      <option value="3">置顶</option>
+    </select>
+    <% } %>
+  </td>
+</tr>
+<tr>
+  <td width="25%" class="clsfth">外系统发布</td>
+  <td width="75%" class="clsfth" >
+    <table>
+      <tr>
+        <td><input name="provincechk" type="checkbox" onclick="dispProvince();"></td>
+        <td id="td1" style="display:none">
+          <select name="pro_sel">
+            <option value="KFZX">客服中心</option>
+
+          </select>
+        </td>
+      </tr>
+    </table>
+
+  </td>
+</tr>
+
+
+      <%
+              if(board==1){%>
+<tr class="tr_show">
+  <td class="clsfth">接收部门</td>
+
+        <td colSpan="3">
+        <html:text property="deptName" size="30" readonly="true"/>
+        <A href="javascript:headerDisplay(1)">
+            <font face="宋体" style="font-size: 9pt"><bean:message key="label.deptTree"/></FONT>
+        </A>&nbsp;&nbsp;<input type="checkbox" name="smsflag" value="1" onclick="info_onclick1()" > 发送短信</td>
+        <html:hidden property="deptId"/>
+        <html:hidden property="allId"/>
+    </td>
+</tr>
+             <%}
+      %>
+<tr class="tr_show">
+  <td width="25%" class="clsfth" align="right"><bean:message key="TawInformation.dateTime"/></td>
+  <td width="75%" align="left">
+    <c:choose>
+      <c:when test="${requestScope['tawInformationForm'].strutsAction == 1}">
+        <html:text styleClass="clstext" name="tawInformationForm" property="dateTime"  value="<%=date%>" readonly="true" size="20" onfocus="setday(this)"  />
+      </c:when>
+      <c:otherwise>
+        <bean:write name="tawInformationForm" property="dateTime" />
+      </c:otherwise>
+    </c:choose>
+  </td>
+</tr>
+<tr class="tr_show">
+  <td width="25%" class="clsfth" align="right">失效时间</td>
+ <td width="75%">
+        <html:text styleClass="clstext" name="tawInformationForm" property="timeLimited"  value="" readonly="true" size="20" onfocus="setday(this)"  />
+  </td>
+</tr>
+<tr class="tr_show">
+  <td width="25%" class="clsfth" align="right">内容</td>
+  <td width="75%" align="left"><html:textarea property="body" rows="12" cols="80" styleClass="clstext"/></td>
+</tr>
+<tr class="tr_show">
+  <td colspan=2 class="clsthd2" align="center"><%pageContext.include("getubb.jsp");%></td>
+</tr>
+<tr class="tr_show">
+<html:hidden property="checkInfo"/>
+<html:hidden property="attachName"/>
+<html:hidden property="imgName"/>
+<%
+String operID=StaticVariable.INFORM_ADD_CHK[Integer.parseInt(infoType)-1]+"";
+String operID1=StaticVariable.INFORM_ADD[Integer.parseInt(infoType)-1]+"";
+String domainType=(StaticVariable.INFORM_DOMAIN_TYPE+Integer.parseInt(infoType))+"";
+%>
+<td align="right" colspan="2">
+<eoms:Validate userID="<%=userId%>" operID='<%=operID%>' domain="<%=boardId%>" domainType="<%=domainType%>" >
+      <input type="button" Class="clsbtn2" value="<bean:message key="label.checkpublish"/>" onclick="return onSave(1);">
+</eoms:Validate>
+<eoms:Validate userID="<%=userId%>" operID='<%=operID1%>' domain="<%=boardId%>" domainType="<%=domainType%>" >
+      <input type="button" Class="clsbtn2" value="发布" onclick="return onSave(0);">
+</eoms:Validate>
+      <input type="button" Class="clsbtn2" value="<bean:message key="label.cancel"/>" onclick="history.back();">
+</td>
+</tr>
+</table>
+</html:form>
+<!--<IFRAME ID=IFrame1 FRAMEBORDER=0 width="100%" SCROLLING=NO SRC="../infopub/manager/TawFileUpload/uploadfile.jsp?attValue=<%=attValue.trim()%>&attText=<%=attText.trim()%>"></IFRAME>-->
+<IFRAME ID=IFrame1 FRAMEBORDER=0 width="80%" SCROLLING=NO SRC="file.do?attValue=<%=attValue.trim()%>&attText=<%=attText.trim()%>&imgValue=<%=imgValue.trim()%>&imgText=<%=imgText.trim()%>"></IFRAME>
+

@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+	Table{
+		align:center;
+		border:0;
+		cellSpacing:1;
+		width:100%;
+		cellPadding:0;
+		font-size:9pt
+	}
+	TH
+	{
+	    PADDING-RIGHT: 0px;
+	    PADDING-LEFT: 0px;
+	    BACKGROUND-IMAGE: url(..\..\images\topbk.gif);
+	    PADDING-BOTTOM: 4px;
+	    MARGIN: 2px;
+	    PADDING-TOP: 4px;
+	    BACKGROUND-COLOR: dark-blue
+	}
+</style>
+</head>
+<body>
+<script language="javascript" type="text/javascript" src="xtree.js"></script>
+<script language="javascript">
+
+	var xmlDom = new ActiveXObject("MSXML2.DOMDocument");
+	xmlDom.async=false;
+	xmlDom.load("region.xml?r="+Math.random());
+
+	
+	var xslDom = new ActiveXObject("MSXML2.DOMDocument");
+	xslDom.async=false;
+	xslDom.load("transrsxml.xsl?r="+Math.random());
+
+	
+	document.write(xmlDom.transformNode(xslDom));
+
+</script>
+
+</body>
+</html>

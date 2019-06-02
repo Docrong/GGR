@@ -1,0 +1,129 @@
+#calendar {
+	background:#e0edfd;
+	padding:0 2px 2px;
+}
+
+.cal_table {
+	width:180px;
+	border:1px solid #C3DAF9;
+	background-color:#f7f7f7;
+}
+#calendar,#selectYear,#selectMonth {z-index:+999;position:absolute;}
+
+.cal_date {color:#6d84b4;font-size:12px;text-decoration:none;}
+
+.cal_today {font-weight:bold;}
+#cal_time {padding:3px;}
+#selectMonth {margin-left:47px;margin-top:1px}
+#captioncell {padding:2px;font-family:arial; font-size:12px;color:#fff}
+.cal_menu {font-family:arial; border:1px solid #a0a0a0;background:#FFFFDD}
+
+table.cal_days {
+	width:100%;
+}
+table.cal_days th{
+	border-collapse:separate;
+	text-align:center;
+	font-weight:bold;
+	background-color:#F9F7ED;
+	padding:2px 0;
+}
+table.cal_days td{
+	border-collapse:separate;
+	text-align:center;
+	border:1px solid #fff;
+}
+table.cal_days a {
+	background-color:#EBFEFE;
+	font-family:arial,helvetica,tahoma,sans-serif;
+	display:block;
+	cursor:pointer;
+	line-height:1.6em;
+	padding: 2px;
+	text-align:center;
+	text-decoration:none;
+}
+table.cal_days a.cal_selected{
+	background-color:#5D91BC;
+	color:#fff;
+}
+table.cal_days a:hover, table.cal_days a.cal_weekend:hover {
+	padding: 1px;
+	background-color:#5D91BC;
+	border:1px solid #7EADD9;
+	color:#fff;
+}
+table.cal_days a.cal_disabled, table.cal_days a:hover.cal_disabled{
+	cursor:default;
+	color:#bbbbbb;
+	background-color:#fff;
+	border:0;
+	padding: 2px;
+}
+table.cal_days a.cal_weekend {
+	background-color:#fdecec;
+	color:#b6a176;
+}
+#cal_content {
+	padding:2px;
+	background-color:#fff;
+}
+.cal_row_top {
+	background-color:#0000aa;
+	height:26px;
+}
+.cal_row_bottom {
+	text-align:center;
+	padding:4px 0;
+}
+.cal_row_bottom input {
+	margin:0 5px;
+}
+
+#caption-left{
+	text-align:left;
+	width:18px;
+}
+#caption-left a{
+	display:block;
+	width:16px;
+	height:16px;
+	margin-left:4px;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+	background:url(img/left.gif) no-repeat;
+	text-decoration:none !important;
+}
+#caption-left a:hover, #caption-right a:hover{
+	opacity:1;
+	filter:alpha(opacity=100);
+}
+#captioncell{
+	width:140px;
+	white-space:nowrap;
+	text-align:center;
+}
+#captioncell a{
+	height:1em;
+	color:#fff;
+	background:url(img/drop.gif) no-repeat right 100%;
+	padding-right:12px;
+	text-decoration:none !important;
+}
+#captioncell a:hover{
+	background-position:right 0;
+}
+#caption-right{
+	text-align:right;
+	width:14px;
+}
+#caption-right a{
+	display:block;
+	width:10px;
+	height:16px;
+	margin-right:4px;
+	opacity:0.6;
+	filter:alpha(opacity=60);
+	background:url(img/right.gif) no-repeat;
+	text-decoration:none !important;
+}

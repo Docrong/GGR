@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mapping>
+	<class name="com.boco.eoms.commons.log.model.castor.TawCommonLogFileDeploy">
+		<map-to xml="bocologs" />
+		<field name="id" type="integer">
+			<bind-xml name="id" node="attribute" />
+		</field>
+		<field name="userid" type="string" />
+		<field name="modeid" type="string" />
+		<field name="operid" type="string" />
+		<field name="filepath" type="string" />
+		<field name="savetime" type="string" />	
+	</class>
+
+	<class name="com.boco.eoms.commons.log.model.castor.TawCommonLogFileDeployMapping">
+		<map-to xml="eomsbocolog" />
+		<field name="siteName" type="string">
+			<bind-xml name="siteName" node="attribute" />
+		</field>
+		<field name="eomsbocolog" type="com.boco.eoms.commons.log.model.castor.TawCommonLogFileDeploy"
+			collection="collection" />
+	</class>
+</mapping>

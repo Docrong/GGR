@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ <!--SoftChange-START-->    
+
+    <bean id="ISoftChangeMainDAO"
+		class="com.boco.eoms.sheet.softchange.dao.hibernate.SoftChangeMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="ISoftChangeLinkDAO"
+		class="com.boco.eoms.sheet.softchange.dao.hibernate.SoftChangeLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="ISoftChangeTaskDAO"
+		class="com.boco.eoms.sheet.softchange.dao.hibernate.SoftChangeTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="SoftChangeTask"
+		class="com.boco.eoms.sheet.softchange.model.SoftChangeTask" autowire="byName">
+     </bean>
+    <bean id="SoftChangeLink"
+		class="com.boco.eoms.sheet.softchange.model.SoftChangeLink"
+		autowire="byName" />
+	<bean id="SoftChangeMain"
+		class="com.boco.eoms.sheet.softchange.model.SoftChangeMain"
+		autowire="byName" />
+	<bean id="isoftchangeTask"
+		class="com.boco.eoms.sheet.softchange.task.impl.SoftChangeTaskImpl"
+		autowire="byName" />
+	<bean id="isoftchangeTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.softchange.service.impl.SoftChangeTaskManagerImpl">
+				<property name="taskModelObject" ref="SoftChangeTask" />
+				<property name="taskDAO">
+					<ref bean="ISoftChangeTaskDAO" />
+				</property>
+			<property name="taskConfigPath">
+			       <value>/config/softchangeTaskConfig.properties</value>
+		        </property>	
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iSoftChangeFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.softchange.service.impl.SoftChangeFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iSoftChangeLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.softchange.service.impl.SoftChangeLinkManagerImpl">
+				<property name="linkObject" ref="SoftChangeLink"/>
+				<property name="linkDAO">
+				  <ref bean="ISoftChangeLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iSoftChangeMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.softchange.service.impl.SoftChangeMainManagerImpl">
+			    <property name="mainObject" ref="SoftChangeMain" />
+				<property name="mainDAO">
+				 <ref bean="ISoftChangeMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iSoftChangeQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>SoftChangeMainProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/softchange-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iSoftChangeQo"
+		class="com.boco.eoms.sheet.softchange.qo.impl.SoftChangeQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="SoftChangeMain" />
+		<property name="poLink" value="SoftChangeLink" />
+	    <property name="aliasMain" value="softChangeMain" />
+		<property name="aliasLink" value="softChangeLink" />
+		<property name="poTask" value="SoftChangeTask" />
+	    <property name="aliasTask" value="softChangeTask" />			
+	</bean>
+
+	<bean id="SoftChange" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.softchange.webapp.action.SoftChangeMethod">
+				<property name="businessFlowService" >
+					<ref bean="iSoftChangeFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iSoftChangeLinkManager" />
+				<property name="mainService"
+					ref="iSoftChangeMainManager" />
+				<property name="sheetTask"
+					ref="SoftChangeTask" />
+				<property name="taskService"
+					ref="isoftchangeTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/softchange-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+     <!--SoftChange-END-->  
+</beans>

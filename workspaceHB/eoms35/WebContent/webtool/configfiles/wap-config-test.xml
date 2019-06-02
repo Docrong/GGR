@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<wapNodes>
+    <wapDBConnections name="连接池配置">
+        <wapDBConnection dbName="测试连接池" dbId="1258">
+            <description>此连接池为测试所用</description>
+            <dbConnectionUrl>jdbc:mysql//:10.0.6.14:1537:eoms</dbConnectionUrl>
+            <userName>test</userName>
+            <password>1</password>
+            <DbType>mysql</DbType>
+            <DB_Charset>utf-8</DB_Charset>
+        </wapDBConnection>
+    </wapDBConnections>
+
+    <wapNode wapNodeID="9727" name="wap系统1" description="wap系统1描述" dbName="测试连接池" dbId="1258">
+		<card cardId="7847766_9727" name="登录页面" description="用于用户登录" title="用户登录" mainFlag="true">
+			<wmlTag type="Text" tagKey="2" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">用户名：</wmlTag>
+			<wmlTag type="Input" tagKey="3" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapInputTag">
+                <input type="text" name="username" value="" default_str="" emptyok="false" size="20" maxlength="20" />
+            </wmlTag>
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            <wmlTag type="Text" tagKey="5" orderId="5" class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">密码：</wmlTag>
+            <wmlTag type="Input" tagKey="6" orderId="6" class="com.boco.eoms.mobilewap.base.tag.imp.WapInputTag">
+                <input type="password" name="password" value="" default_str="" emptyok="false" size="20" maxlength="20" />
+            </wmlTag>
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            <wmlTag type="Anchor" tagKey="7" orderId="7" class="com.boco.eoms.mobilewap.base.tag.imp.WapAnchorTag">
+                <anchor type="accept">提交
+                    <go href="wap?cardId=11111111_9727" method="post">
+                    <!--<go href="wap?cardId=11111115_9727" method="post">-->
+                        <postField name="username" value="$(username)" />
+                        <postField name="password" value="$(password)" />
+                    </go>
+                </anchor>
+            </wmlTag>
+            <!-- 
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=51529393_9727&amp;username=testname&amp;password=wokao">[NEXT]</a>
+            </wmlTag>
+             -->
+		</card>
+		
+		<card cardId="11111111_9727" name="登录提交校验" title="校验" description="用于验证用户登录是否成功">
+			<wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.check.CheckUser" method="checkLogon" isList="false" name="neibulei" isPageination="false" pageSize="0" verOrDis="verify" verifyMethod="isEqual([@neibulei],1)" isDisplayNext="true" inPutParam="[@username],[@password]" paramTypes="String,String">
+                	*%51529393_9727%验证成功@:*%11111113_9727%验证失败
+                </sysClass>
+            </wmlTag>
+		</card>
+		
+		<card cardId="11111112_9727" name="成功页面" title="成功" description="显示校验成功的页面">
+			<wmlTag type="Text" tagKey="1" orderId="1" class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">欢迎光临验证成功页面</wmlTag>
+            
+            <wmlTag type="Br" tagKey="2" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+			<wmlTag type="Href" tagKey="3" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		<card cardId="11111113_9727" name="失败页面" title="成功" description="显示校验失败的页面">
+			<wmlTag type="Text" tagKey="2" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">验证失败了!!!</wmlTag>
+            
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		
+		
+		<card cardId="51529393_9727" name="登录提交页面" title="欢迎登录" description="用于验证用户登录是否成功">
+     
+            <wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="workSheetList" isList="true" name="neibulei" isPageination="true" pageSize="3" verOrDis="display" verifyMethod="" isDisplayNext="true" inPutParam="[@username]" paramTypes="String">
+                	<a href="wap?cardId=11111114_9727&amp;sheetId=[@neibuleiList:sheetId]&amp;username=[@username]">用户名：[@neibuleiList:username]状态：[@neibuleiList:state]日期：[@neibuleiList:date]</a>
+                </sysClass>
+            </wmlTag>
+            
+			 
+			<wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <!-- 
+            <wmlTag type="Image" tagKey="1" orderId="1" class="com.boco.eoms.mobilewap.base.tag.imp.WapImageTag">
+                <img type="class" src="" alt="" height="128" width="128" align="middle" />
+            </wmlTag>
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            <wmlTag type="SelectStatic" tagKey="3" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSelectStaticTag">
+                <select name="staticselect" multiple="false">
+                    <option value="aaaa">aaaa</option>
+                    <option value="bbbb" onpick="wap?cardId=7847766_9727">页面</option>
+                </select>
+            </wmlTag>
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+             -->
+            
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		
+		<card cardId="11111114_9727" name="工单内容" title="正确显示" description="显示工单详细信息页面">
+		
+			<wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="getWorksheet" isList="true" name="Worksheet" isPageination="false" pageSize="3" verOrDis="display" verifyMethod="" isDisplayNext="true" inPutParam="[@sheetId]" paramTypes="String">
+                	工单编号：[@WorksheetList:sheetId]<br/>
+                	派单人：[@WorksheetList:username]<br/>
+                	状态：[@WorksheetList:state]<br/>
+                	标题：[@WorksheetList:title]<br/>
+                	内容：[@WorksheetList:content]<br/>
+                	日期：[@WorksheetList:date]<br/>
+                	回复：[@WorksheetList:remark]
+                </sysClass>
+            </wmlTag>
+		
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <!-- 对指定的纪录执行receiveWorkSheet方法 -->
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=11111115_9727&amp;sheetId=[@sheetId]&amp;username=[@username]">接收</a>
+            </wmlTag>
+            
+            <!-- 对指定的纪录执行referWorkSheet方法 -->
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=11111116_9727&amp;sheetId=[@sheetId]&amp;username=[@username]">驳回</a>
+            </wmlTag>
+            
+            <!-- 对指定的纪录执行replayWorkSheet方法 -->
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=11111121_9727&amp;sheetId=[@sheetId]&amp;username=[@username]">回复</a> 
+            </wmlTag>
+            
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=51529393_9727&amp;username=[@username]">返回</a>  
+            </wmlTag>
+            
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		<card cardId="11111121_9727" name="工单内容" title="正确显示" description="显示工单详细信息页面">
+		
+			<wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="getWorksheet" isList="true" name="Worksheet" isPageination="false" pageSize="3" verOrDis="display" verifyMethod="" isDisplayNext="true" inPutParam="[@sheetId]" paramTypes="String">
+                	ID：[@WorksheetList:sheetId]<br/>
+                	用户名：[@WorksheetList:username]<br/>
+                	状态：[@WorksheetList:state]<br/>
+                	标题：[@WorksheetList:title]<br/>
+                	内容：[@WorksheetList:content]<br/>
+                	日期：[@WorksheetList:date]<br/>
+                	批注：[@WorksheetList:remark]
+                </sysClass>
+            </wmlTag>
+		
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <!-- 增加remark的输入框 -->
+
+            <wmlTag type="Text" tagKey="2" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">批注：</wmlTag>
+			<wmlTag type="Input" tagKey="3" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapInputTag">
+                <input type="text" name="remark" value="" default_str="" emptyok="false" size="20" maxlength="20" />
+            </wmlTag>
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+
+            
+            <!-- 对指定的纪录执行replayWorkSheet方法 -->
+            
+             <!--
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=11111117_9727&amp;sheetId=[@sheetId]&amp;remark=$(remark)&amp;username=[@username]">确定</a>
+            </wmlTag>
+             -->
+             
+            <wmlTag type="Anchor" tagKey="7" orderId="7" class="com.boco.eoms.mobilewap.base.tag.imp.WapAnchorTag">
+                <anchor type="accept" method="post">确定
+                    <go href="wap?cardId=11111117_9727">
+                        <postField name="username" value="[@username]" />
+                        <postField name="sheetId" value="[@sheetId]" />
+                        <postField name="remark" value="$(remark)" />
+                    </go>
+                </anchor>
+            </wmlTag>
+            
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=51529393_9727&amp;username=[@username]">返回</a>
+            </wmlTag>
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		
+		
+		
+		
+		<card cardId="11111115_9727" name="receiveWorkSheet操作" title="显示" description="对指定的纪录执行receiveWorkSheet方法">
+		
+			<wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="receiveWorkSheet" isList="false" name="Worksheet" isPageination="false" pageSize="0" verOrDis="verify" verifyMethod="isEqual([@Worksheet],true)" isDisplayNext="true" inPutParam="[@sheetId],[@username]" paramTypes="String,String">
+					修改成功@:修改失败
+                </sysClass>
+            </wmlTag>
+            
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="getWorksheet" isList="true" name="Worksheet" isPageination="false" pageSize="3" verOrDis="display" verifyMethod="" isDisplayNext="true" inPutParam="[@sheetId]" paramTypes="String">
+                	ID：[@WorksheetList:sheetId]<br/>
+                	用户名：[@WorksheetList:username]<br/>
+                	状态：[@WorksheetList:state]<br/>
+                	标题：[@WorksheetList:title]<br/>
+                	内容：[@WorksheetList:content]<br/>
+                	日期：[@WorksheetList:date]<br/>
+                	批注：[@WorksheetList:remark]
+                </sysClass>
+            </wmlTag>
+		
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=51529393_9727&amp;username=[@username]">返回</a>
+            </wmlTag>
+			<wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		
+		<card cardId="11111116_9727" name="referWorkSheet操作" title="显示" description="对指定的纪录执行referWorkSheet方法">
+			<wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="referWorkSheet" isList="false" name="Worksheet" isPageination="false" pageSize="0" verOrDis="verify" verifyMethod="isEqual([@Worksheet],true)" isDisplayNext="true" inPutParam="[@sheetId],[@username]" paramTypes="String,String">
+					修改成功@:修改失败
+                </sysClass>
+            </wmlTag>
+            
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="getWorksheet" isList="true" name="Worksheet" isPageination="false" pageSize="3" verOrDis="display" verifyMethod="" isDisplayNext="true" inPutParam="[@sheetId]" paramTypes="String">
+                	ID：[@WorksheetList:sheetId]<br/>
+                	用户名：[@WorksheetList:username]<br/>
+                	状态：[@WorksheetList:state]<br/>
+                	标题：[@WorksheetList:title]<br/>
+                	内容：[@WorksheetList:content]<br/>
+                	日期：[@WorksheetList:date]<br/>
+                	批注：[@WorksheetList:remark]
+                </sysClass>
+            </wmlTag>
+		
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=51529393_9727&amp;username=[@username]">返回</a>
+            </wmlTag>
+			<wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		<card cardId="11111117_9727" name="replayWorkSheet操作" title="显示" description="对指定的纪录执行replayWorkSheet方法">
+			<wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="replayWorkSheet" isList="false" name="Worksheet" isPageination="false" pageSize="0" verOrDis="verify" verifyMethod="isEqual([@Worksheet],true)" isDisplayNext="true" inPutParam="[@sheetId],[@username],[@remark]" paramTypes="String,String,String">
+					修改成功@:修改失败
+                </sysClass>
+            </wmlTag>
+            
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            
+            <wmlTag type="SysClass" tagKey="1" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapSysClassTag">
+                <sysClass classUrl="com.boco.eoms.mobilewap.module.worksheet.WorksheetModule" method="getWorksheet" isList="true" name="Worksheet" isPageination="false" pageSize="3" verOrDis="display" verifyMethod="" isDisplayNext="true" inPutParam="[@sheetId]" paramTypes="String">
+                	ID：[@WorksheetList:sheetId]<br/>
+                	用户名：[@WorksheetList:username]<br/>
+                	状态：[@WorksheetList:state]<br/>
+                	标题：[@WorksheetList:title]<br/>
+                	内容：[@WorksheetList:content]<br/>
+                	日期：[@WorksheetList:date]<br/>
+                	批注：[@WorksheetList:remark]
+                </sysClass>
+            </wmlTag>
+		
+            <wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+            <wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap?cardId=51529393_9727&amp;username=[@username]">返回</a>
+            </wmlTag>
+			<wmlTag type="Br" tagKey="4" orderId="4" class="com.boco.eoms.mobilewap.base.tag.imp.WapBrTag">
+            	<br/>
+            </wmlTag>
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+		
+		
+		
+		
+		<card cardId="12345678_9727" name="结果显示页面" title="显示" description="显示数据库的返回数据">
+			<wmlTag type="Text" tagKey="2" orderId="2" class="com.boco.eoms.mobilewap.base.tag.imp.WapTextTag">[@name]显示</wmlTag>
+			<wmlTag type="Href" tagKey="2" orderId="3" class="com.boco.eoms.mobilewap.base.tag.imp.WapHrefTag">
+                <a href="wap">回首页</a>
+            </wmlTag>
+		</card>
+		
+    </wapNode>
+
+</wapNodes>
+

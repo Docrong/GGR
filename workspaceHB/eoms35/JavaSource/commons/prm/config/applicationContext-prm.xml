@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="SampleService"
+		class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
+		<property name="values">
+			<list>
+				<bean class="com.boco.eoms.prm.model.P2P">
+					<property name="name"><value>property1</value></property>
+					<property name="toName"><value>toproperty1</value></property>
+					<property name="type"><value>java.lang.String</value></property>
+				</bean>
+				<bean class="com.boco.eoms.prm.model.P2P">
+					<property name="name"><value>property2</value></property>
+					<property name="toName"><value>toproperty2</value></property>
+					<property name="type"><value>java.lang.String</value></property>					
+				</bean>
+				<bean class="com.boco.eoms.prm.model.P2P">
+					<property name="name"><value>property3</value></property>
+					<property name="toName"><value>toproperty3</value></property>
+					<property name="type"><value>java.lang.String</value></property>					
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>

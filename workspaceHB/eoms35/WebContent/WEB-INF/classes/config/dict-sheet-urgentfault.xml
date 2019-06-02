@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="重大故障流程">
+	<dict id="subOperateType" description="派发类型">
+		<item id="91" name="事中上报" description="事中上报" />
+		<item id="92" name="事后上报" description="事后上报" />
+	</dict>
+	<dict id="mainOperateType" description="操作类型">
+		<item id="91" name="事中上报" description="事中上报" />
+		<item id="92" name="事后上报" description="事后上报" />		
+		<item id="22" name="草稿保存" description="草稿保存" />
+		<item id="3" name="草稿派发" description="草稿派发" />	
+		<item id="53" name="重新派发" description="重新派发" />	
+		<item id="913" name="报障确认" description="报障确认" />
+		<item id="914" name="报障驳回" description="报障驳回" />
+		<item id="923" name="上报确认" description="上报确认" />
+		<item id="924" name="上报驳回" description="上报驳回" />		
+		<item id="93" name="销障上报" description="销障上报" />
+		<item id="933" name="销障确认" description="销障确认" />
+		<item id="934" name="驳回销障" description="驳回销障" />
+		<item id="94" name="完成故障报告" description="完成故障报告" />
+		<item id="95" name="完成故障总结" description="完成故障总结" />
+		<item id="18" name="归档" description="归档" />
+		<item id="8" name="移交" description="移交" />
+		<item id="4" name="驳回上一级" description="驳回上一级" />	
+		<item id="-13" name="强制归档" description="强制归档" />	
+		<item id="-14" name="强制作废" description="强制作废" />
+		<item id="-12" name="作废" description="作废" />	
+		<item id="-10" name="抄送" description="抄送" />	
+		<item id="-15" name="抄送确认" description="抄送确认" />
+		<item id="9" name="阶段回复" description="阶段回复" />	
+		<item id="-11" name="阶段通知" description="阶段通知" />
+		<item id="61" name="确认受理" description="确认受理" />
+		<item id="10" name="分派" description="分派" />
+		<item id="11" name="分派回复" description="分派回复" />
+    	<item id="55" name="会审回复" description="会审回复" />
+     	<item id="88" name="转审" description="转审" />
+   		<item id="30" name="会审" description="会审" /> 										
+	</dict>
+
+	<dict id="activeTemplateId" description="活动名称">
+	    <item id="cc" name="抄送" description="抄送" />
+	    <item id="reply" name="阶段回复" description="阶段回复" />
+	    <item id="advice" name="阶段通知" description="阶段通知" />		
+		<item id="DraftHumTask" name="草稿" description="草稿" />
+		<item id="BackHumTask" name="驳回" description="驳回" />
+		<item id="MiddleReportAffirmHumTask" name="报障待确认" description="报障待确认" />
+		<item id="BackReportAffirmHumTask" name="上报待确认" description="上报待确认" />
+		<item id="SolveFaultHumTask" name="待销障" description="待销障" />
+		<item id="SolveFaultAffirmHumTask" name="销障待确认" description="销障待确认" />
+		<item id="ReportHumTask" name="报告中" description="报告中" />
+		<item id="SumUpHumTask" name="总结中" description="总结中" />
+		<item id="HoldHumTask" name="待归档" description="待归档" />
+		<item id="" name="新增工单" description="新增工单" />
+	</dict>
+</dicts>
+

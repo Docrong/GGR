@@ -1,0 +1,1068 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id>53</est-module-id>
+
+	
+	<!--******************************************************************
+********    按(部门)统计 (按受理部门)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>intimeStatByRevDept</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!-- 
+		<condition-param page-name="sendDeptId"/> 
+		-->
+		<condition-param page-name="revDeptId" markflg="true"/>
+	
+		<summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>est.operatedeptid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status!=3 and est.status&gt;=0 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
+			<where>est.status  in(-1,-2,-12,-14,-13) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 撤销数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status  in(-1,-2,-12,-14,-13) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query3</name>
+
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 接单 总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null  and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query4</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.completeflag = 2 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f4</id><!-- 接单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f11</id><!-- 接单 及时数-->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f3)-f4</stat-sql>
+<!-- est.operatedeptid='@s1@' 原为sendDeptId可疑 -->
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status&gt;0 and est1.operatetype=61 and est1.completeflag = 2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operatedeptid is not null and est1.operatedeptid='@s1@'  and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query5</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--est.operatetype in (4,64,7) 表示驳回，延期审批驳回，退回，处理回复不通过，除了4以外，其他值都需要去具体的工单的dict-sheetXXX.xml里找，这部分需要流程提供-->
+			<where>est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f5</id><!-- 驳回工单总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null  and est.operatedeptid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query6</name>
+		
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f6</id><!-- 驳回工单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f10</id><!-- 驳回工单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f5)-f6</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.operatetype in (4,914,924) and est1.completeflag = 2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operatedeptid is not null and est1.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query7</name>
+			
+			<from>est_urgentfault est </from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f7</id><!-- 未接单 总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query8</name>
+		
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f8</id><!-- 未接单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f9</id><!-- 未接单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f7)-f8</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status not in(3,1) and est1.status&gt;=0 and est1.est_data_status=0 and est1.completeflag = 2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operatedeptid is not null and est1.operatedeptid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query9</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--5表示处理完成-->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in (@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f12</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query10</name>
+		
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status=2 and est.operatetype in (94,95) and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in(@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f16</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f15</id>
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f12)-f16</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status=2 and est1.operatetype in (94,95) and est1.completeflag=2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operatedeptid is not null and est1.operatedeptid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query11</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in(@revDeptId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f13</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query12</name>
+			
+			<from>est_urgentfault est </from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid in(@revDeptId@)  and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f18</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f17</id>
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f13)-f18</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid is not null and est.operatedeptid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status not in(3,1) and est1.status&gt;=0 and est1.est_data_status=1 and est1.completeflag=2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operatedeptid is not null and est1.operatedeptid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+
+	</kpi-define>	
+	
+	
+	
+	<!--******************************************************************
+********    按(受理人)统计***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>intimeStatByRevUser</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!-- 
+		<condition-param page-name="sendDeptId"/> 
+		-->
+		<condition-param page-name="revUserId" markflg="true"/>
+	
+		<summary-define>
+			<id>s1</id><!--受理人-->
+			<sequence></sequence>
+			<column>est.operateuserid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status!=3 and est.status&gt;=0  and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in (@revUserId@)  and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0  and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
+			<where>est.status  in(-1,-2,-12,-14,-13) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid in (@revUserId@)</where><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 撤销数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status  in(-1,-2,-12,-14,-13) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid='@s1@'
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query3</name>
+
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in (@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 接单 总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query4</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.completeflag = 2 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid in (@revUserId@)  and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f4</id><!-- 接单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f11</id><!-- 接单 及时数-->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f3)-f4</stat-sql>
+<!-- est.operateuserid='@s1@' 原为sendDeptId可疑 -->
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status=2 and est1.operatetype=61 and est1.completeflag = 2 and est1.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateuserid is not null  and est1.operateuserid='@s1@'  and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query5</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--est.operatetype in (4,64,7) 表示驳回，延期审批驳回，退回，处理回复不通过，除了4以外，其他值都需要去具体的工单的dict-sheetXXX.xml里找，这部分需要流程提供-->
+			<where>est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in (@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f5</id><!-- 驳回工单总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null  and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query6</name>
+		
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in (@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f6</id><!-- 驳回工单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f10</id><!-- 驳回工单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f5)-f6</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.operatetype=4 and est1.completeflag = 2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateuserid is not null and est1.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query7</name>
+			
+			<from>est_urgentfault est </from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in (@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f7</id><!-- 未接单 总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query8</name>
+		
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in (@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f8</id><!-- 未接单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f9</id><!-- 未接单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f7)-f8</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status=0 and est1.completeflag = 2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateuserid is not null and est1.operateuserid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query9</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--5表示处理完成-->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in (@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f12</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query10</name>
+		
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status=2 and est.operatetype in (94,95) and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in(@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f16</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f15</id>
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f12)-f16</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@'  and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status=2 and est1.operatetype in (94,95) and est1.completeflag=2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateuserid is not null and est1.operateuserid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query11</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in(@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f13</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query12</name>
+			
+			<from>est_urgentfault est </from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid in(@revUserId@) and (est.mainifrecord is null or est.mainifrecord=0)</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f18</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f17</id>
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f13)-f18</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid is not null and est.operateuserid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status not in(3,1) and est1.status&gt;=0 and est1.est_data_status=1 and est1.completeflag=2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateuserid is not null and est1.operateuserid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+
+	</kpi-define>	
+	
+	
+	
+	<!--******************************************************************
+********    按(角色)统计***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>intimeStatByRevRole</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!-- 
+		<condition-param page-name="sendDeptId"/> 
+		-->
+		<condition-param page-name="revRoleId" markflg="true"/>
+	
+		<summary-define>
+			<id>s1</id><!--受理人-->
+			<sequence></sequence>
+			<column>est.operateroleid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status!=3 and est.status&gt;=0  and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0  and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
+			<where>est.status  in(-1,-2,-12,-14,-13) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@)</where><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 撤销数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status  in(-1,-2,-12,-14,-13) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query3</name>
+
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 接单 总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and LENGTH(est.operateroleid)=32 and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query4</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.completeflag = 2 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f4</id><!-- 接单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and LENGTH(est.operateroleid)=32 and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f11</id><!-- 接单 及时数-->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f3)-f4</stat-sql>
+<!-- est.operateroleid='@s1@' 原为sendDeptId可疑 -->
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.est_data_status&gt;0 and est.operatetype=61 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status=2 and est1.operatetype=61 and est1.completeflag = 2 and est1.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateroleid is not null and est1.operateroleid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0) and LENGTH(est1.operateroleid)=32)and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query5</name>
+
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--est.operatetype in (4,64,7) 表示驳回，延期审批驳回，退回，处理回复不通过，除了4以外，其他值都需要去具体的工单的dict-sheetXXX.xml里找，这部分需要流程提供-->
+			<where>est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f5</id><!-- 驳回工单总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query6</name>
+		
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f6</id><!-- 驳回工单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f10</id><!-- 驳回工单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f5)-f6</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est.operatetype in (4,914,924) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.operatetype=4 and est1.completeflag = 2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateroleid is not null and est1.operateroleid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0)and LENGTH(est1.operateroleid)=32) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query7</name>
+			
+			<from>est_urgentfault est </from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f7</id><!-- 未接单 总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query8</name>
+		
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f8</id><!-- 未接单-超时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.completeflag = 2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+			<field-define><!-- 可重复 -->
+				<id>f9</id><!-- 未接单-及时数 -->
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f7)-f8</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=0 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status=0 and est1.completeflag = 2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateroleid is not null and est1.operateroleid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0) and LENGTH(est1.operateroleid)=32)and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query9</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 --><!--5表示处理完成-->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in (@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f12</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query10</name>
+		
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status!=3 and est.status&gt;=0 and est.est_data_status=2 and est.operatetype in (94,95) and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in(@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f16</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f15</id>
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f12)-f16</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status!=3 and est.status&gt;=0 and est. est_data_status=2 and est.operatetype in (94,95) and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status!=3 and est1.status&gt;=0 and est1.est_data_status=2 and est1.operatetype in (94,95) and est1.completeflag=2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateroleid is not null and est1.operateroleid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0) and LENGTH(est1.operateroleid)=32) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query11</name>
+			
+			<from>est_urgentfault est</from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in(@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f13</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query12</name>
+			
+			<from>est_urgentfault est </from><!-- 不可为空 -->
+			<where>est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid in(@revRoleId@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f18</id><!-- 确认受理-总数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est. est_data_status=1 and est.completeflag=2 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f17</id>
+				<sequence>1</sequence>
+
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f13)-f18</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.senduserid,est.senddeptid,est.status,est.sendtime from est_urgentfault est where est.status not in(3,1) and est.status&gt;=0 and est.est_data_status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid is not null  and est.operateroleid='@s1@' and (est.mainifrecord is null or est.mainifrecord=0) and est.mainid not in (select distinct est1.mainid from est_urgentfault est1 where est1.status not in(3,1) and est1.status&gt;=0 and est1.est_data_status=1 and est1.completeflag=2 and est1.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est1.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est1.operateroleid is not null and est1.operateroleid='@s1@' and (est1.mainifrecord is null or est1.mainifrecord=0) and LENGTH(est1.operateroleid)=32) and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+		</query-define>
+
+	</kpi-define>	
+</KpiConfig>

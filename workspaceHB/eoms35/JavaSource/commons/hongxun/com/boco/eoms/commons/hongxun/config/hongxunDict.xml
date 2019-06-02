@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dicts description="日志类型">
+	<dict id="com_name" description="">
+		<item id="应急通信领导小组" name="应急通信领导小组" description="应急通信领导小组" />
+		<item id="应急通信办公室" name="应急通信办公室" description="应急通信办公室" />
+		<item id="交换保障小组" name="交换保障小组" description="交换保障小组" />
+		<item id="无线保障小组" name="无线保障小组" description="无线保障小组" />
+		<item id="传输保障小组" name="传输保障小组" description="传输保障小组" />
+		<item id="网管监控小组" name="网管监控小组" description="网管监控小组" />
+		<item id="网管支撑系统保障小组" name="网管支撑系统保障小组" description="网管支撑系统保障小组" />
+		<item id="宣传小组" name="宣传小组" description="宣传小组" />
+		<item id="物资保障小组" name="物资保障小组" description="物资保障小组" />
+		<item id="后勤保障小组" name="后勤保障小组" description="后勤保障小组" />
+	</dict>	
+		<dict id="xiaozu_name" description="">
+		<item id="主任" name="主任" description="主任" />
+		<item id="副主任" name="副主任" description="副主任" />
+		<item id="组长" name="组长" description="组长" />
+		<item id="副组长" name="副组长" description="副组长" />
+		<item id="信息员" name="信息员" description="信息员" />
+		<item id="成员" name="成员" description="成员" />
+	</dict>	
+</dicts>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.boco.eoms.commons.statistic.base.model.StatisticFileInfo" table="est_statisticfileinfo">
+
+    <id name="id" column="id" unsaved-value="null">
+
+	    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+	    <generator class="uuid.hex"></generator>
+    </id>
+
+    	<property name="subscibeId" length="1000"></property>
+    	
+    	<property name="subscriberDeptId" length="100"></property>
+    	
+    	<property name="subscriberId" length="100"></property>
+    	
+    	<property name="statName" length="100"></property>
+    	
+    	<property name="reportType" length="100"></property>
+    	
+    	<property name="reportYear" length="100"></property>
+    	
+    	<property name="reportSeason" length="100"></property>
+    	
+    	<property name="reportMonth" length="100"></property>
+    	
+    	<property name="reportWeek" length="100"></property>
+    	
+    	<property name="reportDate" length="100"></property>
+
+    	<property name="fileSize" length="1000"></property>
+    	
+    	<property name="beginTime" length="100"></property>
+		
+		<property name="endTime" length="100"></property>
+
+    	<property name="saveTime" length="1000"></property>
+    	
+    	<property name="checked" length="10"></property>
+    	
+    	<property name="checkerId" length="100"></property>
+    	
+    	<property name="checkTime" length="100"></property>
+    	
+    	<property name="detailId" length="100"></property>
+    	
+    	<property name="customDetail" length="1000"></property>
+    	
+    	<property name="excelFilePath" length="1000"></property>
+    	
+    	<property name="excelFileName" length="50"></property>
+    	
+    	<property name="htmlFilePath" length="1000"></property>
+    	
+    	<property name="subId" length="100"></property>
+    	
+    	<property name="readedState" length="10"></property>
+    	
+    </class>
+
+</hibernate-mapping>
+

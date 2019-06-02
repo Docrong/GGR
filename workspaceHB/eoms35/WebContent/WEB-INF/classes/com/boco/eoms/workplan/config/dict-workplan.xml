@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="typeIndex" description="专业"> 
+		<item id="0" name="无线网" description="无线网" />
+        <item id="1" name="数据网" description="数据网" />
+       	<item id="2" name="汇接局" description="汇接局" />
+      	<item id="3" name="端局"   description="端局" />
+       	<item id="4" name="关口局" description="关口局" />
+        <item id="5" name="HLR"   description="HLR" />
+       	<item id="6" name="智能网" description="智能网" />
+      	<item id="7" name="其他"   description="其他" />
+	</dict> 
+	<dict id="cycle" description="周期"> 
+		<item id="0" name="其他" description="其他" />
+        <item id="1" name="天" description="天" />
+       	<item id="2" name="周" description="周" />
+      	<item id="3" name="半月"   description="半月" />
+       	<item id="4" name="月" description="月" />
+        <item id="5" name="季度"   description="季度" />
+       	<item id="6" name="半年" description="半年" />
+      	<item id="7" name="年"   description="年" />
+      	<item id="8" name="两月"   description="两月" />
+      	<item id="9" name="四月"   description="四月" /> 
+	</dict>
+	<dict id="yearFlag" description="年"> 
+		<item id="2008" name="2008" description="2008" />
+        <item id="2009" name="2009" description="2009" />
+       	<item id="2010" name="2010" description="2010" />
+      	 
+	</dict>
+	<dict id="monthFlag" description="月"> 
+		<item id="01" name="01" description="01" />
+        <item id="02" name="02" description="02" />
+        <item id="03" name="03" description="03" />
+        <item id="04" name="04" description="04" />
+        <item id="05" name="05" description="05" />
+        <item id="06" name="06" description="06" />
+        <item id="07" name="07" description="07" />
+        <item id="08" name="08" description="08" />
+       	<item id="09" name="09" description="09" />
+       	<item id="10" name="10" description="10" />
+       	<item id="11" name="11" description="11" />
+ 		<item id="12" name="12" description="12" />
+	</dict>
+	<dict id="normalFlag" description="">
+		<item id="1" name="正常" description="正常" />
+		<item id="0" name="非正常" description="非正常" />
+	</dict>   　
+</dicts>

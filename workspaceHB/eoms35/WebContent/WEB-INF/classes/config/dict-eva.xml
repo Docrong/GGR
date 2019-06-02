@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="考核字典">
+	<dict id="cycle" description="数据来源">
+		<item id="year" name="年" description="年" />
+		<item id="quarter" name="季度" description="季度" />
+		<item id="month" name="月" description="月" />
+		<!-- item id="week" name="周" description="周" /-->
+	</dict>
+	<dict id="orgType" description="组织类型">
+		<item id="subRole" name="角色" description="角色" />
+		<item id="dept" name="部门" description="部门" />
+		<item id="user" name="人员" description="用户" />
+	</dict>
+	<dict id="templateStatus" description="模板状态">
+		<!-- item id="template_draft" name="草稿" description="草稿" /-->
+		<item id="template_distributed" name="已下发" description="已下发" />
+		<item id="template_audit_wait" name="待审核" description="待审核" />
+		<item id="template_reported" name="已上报" description="已上报（审核通过）" />
+		<item id="template_audit_reject" name="驳回" description="驳回" />
+	</dict>
+	<dict id="activated" description="激活状态">
+		<item id="0" name="未激活" description="未激活" />
+		<item id="1" name="已激活" description="已激活" />
+	</dict>
+</dicts>
+
+

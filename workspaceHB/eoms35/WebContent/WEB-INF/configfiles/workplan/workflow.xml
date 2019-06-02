@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<flows>
+  <flowmodel>
+    <flow serial="0" name="模版流程处理">
+      <step serial="0" name="本部门审批" flag="0" deptid="-1" checkuser="" roles="695" type="0"/>
+      <!--step serial="1" name="上级部门审批" flag="3" deptid="-1" checkuser="" roles="695" type="0"/-->
+    </flow>
+  </flowmodel>
+  <flowyear>
+    <flow serial="0" name="年度流程处理">
+      <step serial="0" name="本部门审批" flag="0" deptid="-1" checkuser="" roles="150801" type="0"/>
+      <!--step serial="1" name="分公司审批" flag="2" deptid="-1" checkuser="" roles="628" type="0"/>
+      <step serial="2" name="省公司审批" flag="4" deptid="1" checkuser="" roles="628" type="0"/-->
+    </flow>
+  </flowyear>
+  <flowmonth>
+    <flow serial="0" name="月度流程处理">
+      <step serial="0" name="本部门审批" flag="0" deptid="-1" checkuser="" roles="150802" type="0"/>
+      <!--step serial="1" name="分公司审批" flag="2" deptid="-1" checkuser="" roles="638" type="0"/>
+      <step serial="2" name="省公司审批" flag="4" deptid="1" checkuser="" roles="638" type="0"/-->
+    </flow>
+  </flowmonth>
+  <flowexecute>
+    <flow serial="0" name="月度流程处理">
+      <step serial="0" name="本部门审批" flag="0" deptid="-1" checkuser="" roles="150801" type="0"/>
+      <!--<step serial="1" name="上级部门审批" flag="3" deptid="-1" checkuser="" roles="695" type="0"/>-->
+    </flow>
+  </flowexecute>
+</flows>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.extra.supplierkpi.model.TawSupplierkpiInstanceAss"
+            table="Taw_Supplierkpi_InstanceAss"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="assessAttitude"
+                length="256"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="assessLevel"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="subRole"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="assessStatus"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="assessTime"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="instanceId"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="realAssessor"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="serviceType"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="specialType"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="supplierId"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="timeLatitude"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="degree"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="year"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

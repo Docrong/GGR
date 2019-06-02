@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpModelGroup"
+        table="TAW_WP_MODELGROUP"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpModelGroup.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="name"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="NAMES"
+            length="100"
+            not-null="true"
+        />
+
+        <property
+            name="deleted"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="DELETED"
+            length="1"
+            not-null="true"
+        />
+
+        <many-to-one
+            name="parentModelGroup"
+            class="com.boco.eoms.workplan.model.TawwpModelGroup"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="PARENT_MODEL_GROUP_ID"
+            not-null="false"
+        />
+
+        <set
+            name="childModelGroups"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            sort="unsorted"
+        >
+
+              <key
+                  column="PARENT_MODEL_GROUP_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpModelGroup"
+              />
+
+        </set>
+
+        <set
+            name="tawwpModelExecutes"
+            lazy="true"
+            inverse="true"
+            cascade="all-delete-orphan"
+            sort="unsorted"
+        >
+
+              <key
+                  column="MODEL_GROUP_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpModelExecute"
+              />
+
+        </set>
+
+        <many-to-one
+            name="tawwpModelPlan"
+            class="com.boco.eoms.workplan.model.TawwpModelPlan"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MODEL_PLAN_ID"
+            not-null="false"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpModelGroup.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

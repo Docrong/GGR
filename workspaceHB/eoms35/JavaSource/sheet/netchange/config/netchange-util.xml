@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+    <InterfaceUser>test21</InterfaceUser>
+    <InterfaceSender>8aa082831be9487e011be95470b00012</InterfaceSender>
+    <InterfaceSubRole>8a158c4b1bafc0d7011bafd0f6aa0005</InterfaceSubRole>
+    <ServiceUrl>http://10.31.1.120/SheetStateSync/SheetStateSync3.asmx</ServiceUrl>
+    <EnableService>false</EnableService>
+    <dict>
+    	<levelone>1</levelone>
+    	<leveltwo>2</leveltwo>
+    </dict>
+</boco>
+

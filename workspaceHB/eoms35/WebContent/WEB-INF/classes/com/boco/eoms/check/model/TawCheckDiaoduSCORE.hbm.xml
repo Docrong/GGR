@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.boco.eoms.check.model.TawCheckDiaoduSCORE" table="taw_check_score_diaodu">
+   <id column="SCORE_ID" name="score_id" type="string">
+    <generator class="uuid.hex"/>
+   </id>
+  <property column="SCORE_AREA_ID" length="100" name="score_area_id" type="string"/>
+  <property column="SCORE_AREA_NAME" length="100" name="score_area_name" type="string"/>
+  <property column="SCORE_YEAR" length="100" name="score_year" type="string"/>
+  <property column="SCORE_MONTH" length="100" name="score_month" type="string"/>
+  <property column="T42" length="100" name="t42" type="double"/>
+  <property column="T42_FULL" length="100" name="t42_full" type="double"/>
+  <property column="T42_SCORE" length="100" name="t42_score" type="double"/>
+  <property column="T43" length="100" name="t43" type="double"/>
+  <property column="T43_FULL" length="100" name="t43_full" type="double"/>
+  <property column="T43_SCORE" length="100" name="t43_score" type="double"/>
+  <property column="T45" length="100" name="t45" type="double"/>
+  <property column="T45_FULL" length="100" name="t45_full" type="double"/>
+  <property column="T45_SCORE" length="100" name="t45_score" type="double"/>
+  <property column="T49" length="100" name="t49" type="double"/>
+  <property column="T49_FULL" length="100" name="t49_full" type="double"/>
+  <property column="T49_SCORE" length="100" name="t49_score" type="double"/>
+  <property column="T411" length="100" name="t411" type="double"/>
+  <property column="T411_FULL" length="100" name="t411_full" type="double"/>
+  <property column="T411_SCORE" length="100" name="t411_score" type="double"/>
+  <property column="T65" length="100" name="t65" type="double"/>
+  <property column="T65_FULL" length="100" name="t65_full" type="double"/>
+  <property column="T65_SCORE" length="100" name="t65_score" type="double"/>
+  <property column="T66" length="100" name="t66" type="double"/>
+  <property column="T66_FULL" length="100" name="t66_full" type="double"/>
+  <property column="T66_SCORE" length="100" name="t66_score" type="double"/>
+  <property column="T412" length="100" name="t412" type="double"/>
+  <property column="T412_FULL" length="100" name="t412_full" type="double"/>
+  <property column="T412_SCORE" length="100" name="t412_score" type="double"/>
+  <property column="T413" length="100" name="t413" type="double"/>
+  <property column="T413_FULL" length="100" name="t413_full" type="double"/>
+  <property column="T413_SCORE" length="100" name="t413_score" type="double"/>
+  <property column="T414" length="100" name="t414" type="double"/>
+  <property column="T414_FULL" length="100" name="t414_full" type="double"/>
+  <property column="T414_SCORE" length="100" name="t414_score" type="double"/>
+  <property column="T415" length="100" name="t415" type="double"/>
+  <property column="T415_FULL" length="100" name="t415_full" type="double"/>
+  <property column="T415_SCORE" length="100" name="t415_score" type="double"/>
+  <property column="T416" length="100" name="t416" type="double"/>
+  <property column="T416_FULL" length="100" name="t416_full" type="double"/>
+  <property column="T416_SCORE" length="100" name="t416_score" type="double"/>
+  <property column="T417" length="100" name="t417" type="double"/>
+  <property column="T417_FULL" length="100" name="t417_full" type="double"/>
+  <property column="T417_SCORE" length="100" name="t417_score" type="double"/>    
+  <property column="T418" length="100" name="t418" type="double"/>
+  <property column="T418_FULL" length="100" name="t418_full" type="double"/>
+  <property column="T418_SCORE" length="100" name="t418_score" type="double"/>
+  <property column="T419" length="100" name="t419" type="double"/>
+  <property column="T419_FULL" length="100" name="t419_full" type="double"/>
+  <property column="T419_SCORE" length="100" name="t419_score" type="double"/>
+  <property column="T420" length="100" name="t420" type="double"/>
+  <property column="T420_FULL" length="100" name="t420_full" type="double"/>
+  <property column="T420_SCORE" length="100" name="t420_score" type="double"/>      
+  <property column="T421" length="100" name="t421" type="double"/>
+  <property column="T421_FULL" length="100" name="t421_full" type="double"/>
+  <property column="T421_SCORE" length="100" name="t421_score" type="double"/>
+  <property column="T422" length="100" name="t422" type="double"/>
+  <property column="T422_FULL" length="100" name="t422_full" type="double"/>
+  <property column="T422_SCORE" length="100" name="t422_score" type="double"/>
+  <property column="T423" length="100" name="t423" type="double"/>
+  <property column="T423_FULL" length="100" name="t423_full" type="double"/>
+  <property column="T423_SCORE" length="100" name="t423_score" type="double"/>
+  <property column="T424" length="100" name="t424" type="double"/>
+  <property column="T424_FULL" length="100" name="t424_full" type="double"/>
+  <property column="T424_SCORE" length="100" name="t424_score" type="double"/>
+  <property column="FULL_SCORE" length="100" name="full_score" type="double"/>
+  <property column="SCORE_DELETED" length="100" name="score_deleted" type="string"/>
+  </class>
+</hibernate-mapping>

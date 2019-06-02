@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id>45</est-module-id>
+
+	
+	<!--******************************************************************
+********    按(部门)统计 (按受理部门统计)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>succeedStatBydept_kpi4</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!--  condition-param page-name="sendDeptId"/>-->
+		<condition-param page-name="revDeptId" markflg="true"/>
+		
+		<summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>est.operatedeptid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.netchange.vo.StatDetailVONetchange</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_netchange est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where> est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid in (@revDeptId@) and  est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operatedeptid is not null </where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--完成工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid='@s1@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+					and est.operatedeptid is not null
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+	
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<from>est_netchange est</from><!-- 不可为空 -->
+			<where> est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid in (@revDeptId@) and  est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operatetype=113 and est.linkExcuteResult='101090301' 
+			and est.operatedeptid is not null
+			</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 实施成功工单数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid='@s1@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operatetype=113 and est.linkExcuteResult='101090301'
+				 and est.operatedeptid is not null
+				 </list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+
+	</kpi-define>
+	
+	<!--******************************************************************
+********    按(角色)统计 (按受理角色统计)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>succeedStatByrole_kpi4</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!--  condition-param page-name="sendDeptId"/>-->
+		<condition-param page-name="revRoleid" markflg="true" />
+		
+		<summary-define>
+			<id>s1</id><!--受理角色-->
+			<sequence></sequence>
+			<column>est.operateroleid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.netchange.vo.StatDetailVONetchange</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_netchange est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where> est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid in (@revRoleid@) and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operateroleid is not null and LENGTH(est.operateroleid)=32 </where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--实施完成工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est  where  est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid='@s1@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32
+					and est.operateroleid is not null
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+	
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<from>est_netchange est</from><!-- 不可为空 -->
+			<where> est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid in (@revRoleid@) and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operatetype=113 and est.linkExcuteResult='101090301' and est.operateroleid is not null and LENGTH(est.operateroleid)=32</where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!--实施成功工单数  -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where  est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid='@s1@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operatetype=113 and est.linkExcuteResult='101090301'
+				    and est.operateroleid is not null and LENGTH(est.operateroleid)=32
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+
+	</kpi-define>
+	<!--******************************************************************
+********    按(人员)统计 (按受理人统计)  ***************************************************
+******************************************************************* -->
+<kpi-define><!-- 可重复 -->
+		<name>succeedStatByuser_kpi4</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<!--  condition-param page-name="sendDeptId"/>-->
+		<condition-param page-name="revUserid" markflg="true" />
+		
+		<summary-define>
+			<id>s1</id><!--受理人-->
+			<sequence></sequence>
+			<column>est.operateuserid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.netchange.vo.StatDetailVONetchange</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_netchange est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where> est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid in (@revUserid@)
+			       and  est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operateuserid is not null </where><!-- 可为空 -->
+
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--实施完成工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where  est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid='@s1@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+					and est.operateuserid is not null
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+
+		</query-define>
+		
+	
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+
+			<from>est_netchange est</from><!-- 不可为空 -->
+			<where> est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid in (@revUserid@)
+		    and	est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operatetype=113 and est.linkExcuteResult='101090301' and est.operateuserid is not null </where><!-- 可为空 -->
+			<order-by></order-by><!-- 可为空 -->
+
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 实施成功工单数 -->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.sendtime,est.senddeptid from est_netchange est where  est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid='@s1@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and est.operatetype=113 and est.linkExcuteResult='101090301'
+				    and est.operateuserid is not null
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+	
+
+	</kpi-define>
+</KpiConfig>

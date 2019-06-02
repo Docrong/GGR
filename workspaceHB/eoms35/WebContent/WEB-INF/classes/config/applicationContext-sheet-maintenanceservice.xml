@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="IMaintenanceServiceMainDAO"
+		class="com.boco.eoms.sheet.maintenanceservice.dao.hibernate.MaintenanceServiceMainDAOHibernate" autowire="byName">
+      </bean>
+	<bean id="IMaintenanceServiceLinkDAO"
+		class="com.boco.eoms.sheet.maintenanceservice.dao.hibernate.MaintenanceServiceLinkDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="IMaintenanceServiceTaskDAO"
+		class="com.boco.eoms.sheet.maintenanceservice.dao.hibernate.MaintenanceServiceTaskDAOHibernate" autowire="byName">
+     </bean>
+     <bean id="MaintenanceServiceTask"
+		class="com.boco.eoms.sheet.maintenanceservice.model.MaintenanceServiceTask" autowire="byName">
+     </bean>
+    <bean id="MaintenanceServiceLink"
+		class="com.boco.eoms.sheet.maintenanceservice.model.MaintenanceServiceLink"
+		autowire="byName" />
+	<bean id="MaintenanceServiceMain"
+		class="com.boco.eoms.sheet.maintenanceservice.model.MaintenanceServiceMain"
+		autowire="byName" />
+	<bean id="iMaintenanceServiceTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.maintenanceservice.service.impl.MaintenanceServiceTaskManagerImpl">
+				<property name="taskModelObject" ref="MaintenanceServiceTask" />
+				<property name="taskDAO">
+					<ref bean="IMaintenanceServiceTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/maintenanceserviceTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>	
+	<bean id="iMaintenanceServiceFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.maintenanceservice.service.impl.MaintenanceServiceFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iMaintenanceServiceLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.maintenanceservice.service.impl.MaintenanceServiceLinkManagerImpl">
+				<property name="linkObject" ref="MaintenanceServiceLink"/>
+				<property name="linkDAO">
+				  <ref bean="IMaintenanceServiceLinkDAO"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iMaintenanceServiceMainManager" parent="txProxyTemplate">
+	<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.maintenanceservice.service.impl.MaintenanceServiceMainManagerImpl">
+			    <property name="mainObject" ref="MaintenanceServiceMain" />
+				<property name="mainDAO">
+				 <ref bean="IMaintenanceServiceMainDAO" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iMaintenanceServiceQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>MaintenanceService</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/maintenanceservice-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iMaintenanceServiceQo"
+		class="com.boco.eoms.sheet.maintenanceservice.qo.impl.MaintenanceServiceQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="MaintenanceServiceMain" />
+		<property name="poLink" value="MaintenanceServiceLink" />
+		<property name="poTask" value="MaintenanceServiceTask" />
+		<property name="aliasMain" value="maintenanceserviceMain" />
+		<property name="aliasLink" value="maintenanceserviceLink" />
+		<property name="aliasTask" value="maintenanceserviceTask" />
+
+	</bean>
+
+	<bean id="MaintenanceService" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.maintenanceservice.webapp.action.MaintenanceServiceMethod">
+				<property name="businessFlowService" >
+					<ref bean="iMaintenanceServiceFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iMaintenanceServiceLinkManager" />
+				<property name="mainService"
+					ref="iMaintenanceServiceMainManager" />
+				<property name="sheetTask"
+					ref="MaintenanceServiceTask" />
+				<property name="taskService"
+					ref="iMaintenanceServiceTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/maintenanceservice-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>        
+
+</beans>

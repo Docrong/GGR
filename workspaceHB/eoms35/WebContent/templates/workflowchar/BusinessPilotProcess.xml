@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<layout>
+  <image x="187" y="42"/>
+  <cell id="1" type="InitialActionCell" height="30.0" width="100.0" x="269.0" y="175.0"/>
+  <cell id="2" type="StepCell" height="30.0" width="100.0" x="187.0" y="261.0"/>
+  <cell id="7" type="StepCell" height="34.0" width="160.0" x="868.0" y="380.0"/>
+  <cell id="9" type="StepCell" height="35.0" width="116.0" x="1008.0" y="182.0"/>
+  <cell id="6" type="StepCell" height="37.0" width="140.0" x="700.0" y="663.0"/>
+  <cell id="8" type="StepCell" height="30.0" width="100.0" x="819.0" y="201.0"/>
+  <cell id="12" type="StepCell" height="60.0" width="144.0" x="404.0" y="42.0"/>
+  <cell id="3" type="StepCell" height="38.0" width="167.0" x="381.0" y="366.0"/>
+  <cell id="10" type="StepCell" height="37.0" width="113.0" x="555.0" y="185.0"/>
+  <cell id="5" type="StepCell" height="38.0" width="138.0" x="706.0" y="382.0"/>
+  <cell id="4" type="StepCell" height="35.0" width="180.0" x="520.0" y="515.0"/>
+ <cell id="11" type="StepCell" height="60.0" width="144.0" x="353.0" y="8.0"/>
+  
+  <connector id="94" linewidth="1.0" color="-16777216" labelx="429.0" labely="292.0" from="0" to="0">
+    <routing id="94" x="475" y="437"/>
+    <routing id="94" x="559" y="437"/>
+  </connector>
+  <connector id="96" linewidth="1.0" color="-16777216" labelx="198.0" labely="606.0" from="0" to="0">
+    <routing id="96" x="631" y="521"/>
+    <routing id="96" x="631" y="401"/>
+  </connector>
+  <connector id="910" linewidth="1.0" color="-16777216" labelx="447.0" labely="368.0" from="0" to="0">
+    <routing id="910" x="924" y="216"/>
+    <routing id="910" x="960" y="216"/>
+  </connector>
+  <connector id="97" linewidth="1.0" color="-16777216" labelx="654.0" labely="460.0" from="0" to="0">
+    <routing id="97" x="775" y="542"/>
+    <routing id="97" x="775" y="587"/>
+  </connector>
+  <connector id="48" linewidth="1.0" color="-16777216" labelx="793.0" labely="361.0" from="0" to="0">
+    <routing id="48" x="499" y="209"/>
+    <routing id="48" x="499" y="281"/>
+  </connector>
+  <connector id="92" linewidth="1.0" color="-16777216" labelx="56.0" labely="650.0" from="0" to="0">
+    <routing id="92" x="235" y="365"/>
+    <routing id="92" x="235" y="401"/>
+  </connector>
+  <connector id="99" linewidth="1.0" color="-16777216" labelx="573.0" labely="662.0" from="0" to="0">
+    <routing id="99" x="924" y="312"/>
+    <routing id="99" x="864" y="312"/>
+  </connector>
+  <connector id="911" linewidth="1.0" color="-16777216" labelx="500.0" labely="500.0" from="0" to="0">
+    <routing id="911" x="1124" y="217"/>
+    <routing id="911" x="1124" y="252"/>
+    <routing id="911" x="1159" y="252"/>
+    <routing id="911" x="1159" y="217"/>
+  </connector>
+  <connector id="91" linewidth="1.0" color="-16777216" labelx="596.0" labely="481.0" from="0" to="0">
+    <routing id="91" x="235" y="185"/>
+    <routing id="91" x="235" y="233"/>
+  </connector>
+  <connector id="912" linewidth="1.0" color="-16777216" labelx="435.0" labely="263.0" from="0" to="0">
+    <routing id="912" x="1140" y="216"/>
+    <routing id="912" x="1164" y="216"/>
+  </connector>
+  <connector id="98" linewidth="1.0" color="-16777216" labelx="974.0" labely="477.0" from="0" to="0">
+    <routing id="98" x="907" y="677"/>
+    <routing id="98" x="943" y="677"/>
+  </connector>
+  <connector id="93" linewidth="1.0" color="-16777216" labelx="615.0" labely="395.0" from="0" to="0">
+    <routing id="93" x="439" y="245"/>
+    <routing id="93" x="439" y="197"/>
+  </connector>
+  <connector id="95" linewidth="1.0" color="-16777216" labelx="940.0" labely="545.0" from="0" to="0">
+    <routing id="95" x="607" y="377"/>
+    <routing id="95" x="607" y="353"/>
+  </connector>
+  <connector id="90" linewidth="1.0" color="-16777216" labelx="243.0" labely="389.0" from="0" to="0">
+    <routing id="90" x="331" y="377"/>
+    <routing id="90" x="331" y="377"/>
+  </connector>
+  
+   
+  <channel id="chl-0" y1="0" y2="135" text="其他流程/系统/信息库"/>
+  <channel id="chl-1" y1="135" y2="310" text="建单人"/>
+  <channel id="chl-2" y1="310" y2="456" text="新业务支撑组"/>
+  <channel id="chl-3" y1="456" y2="576" text="维护规程管理组"/>
+  <channel id="chl-3" y1="576" y2="750" text="新业务维护组"/>
+</layout>

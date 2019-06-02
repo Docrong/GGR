@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.commons.system.cptroom.model.TawSystemCptroom"
+		table="taw_system_cptroom">
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="increment">
+
+			</generator>
+
+		</id>
+
+		<property name="address" length="100">
+
+		</property>
+
+		<property name="deleted" length="10">
+
+		</property>
+
+		<property name="deptid" length="20">
+
+		</property>
+
+		<property name="endtime" length="50">
+
+		</property>
+
+		<property name="fax" length="50">
+
+		</property>
+
+		<property name="manager" length="30">
+
+		</property>
+
+		<property name="mobile" length="50">
+
+		</property>
+
+		<property name="notes" length="255">
+
+		</property>
+
+		<property name="phone" length="50">
+
+		</property>
+
+		<property name="roomname" length="50">
+
+		</property>
+
+		<property name="tempmanager" length="30">
+
+		</property>
+
+		<property name="leaf" length="50">
+
+		</property>
+
+		<property name="parentid" length="50">
+
+		</property>
+
+	</class>
+
+</hibernate-mapping>
+

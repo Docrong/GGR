@@ -1,0 +1,84 @@
+BODY {
+	background-color: #E2F1FC;
+	scrollbar-face-color: #F7F7F7; scrollbar-shadow-color: #90a0a0; scrollbar-highlight-color: #F6F8FD; scrollbar-3dlight-color: #FFFFFF; scrollbar-darkshadow-color: #FFFFFF; scrollbar-track-color: #FFFFFF; scrollbar-arrow-color: #90a0a0
+}
+TD {
+	FONT-SIZE: 12px;
+	COLOR: #006699;
+}
+
+A {
+	TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #006699
+}
+A:visited {
+	COLOR: #006699
+}
+A:active {
+	COLOR: #006699
+}
+A:hover {
+	COLOR: #b5ae0d
+}
+.fonten {
+	FONT-SIZE: 10px; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+.fontunline {
+	TEXT-DECORATION: underline
+}
+.stdedit_en {
+	PADDING-LEFT: 2px; PADDING-RIGHT: 2px; BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #666666 1px solid; FONT-SIZE: 10px; BORDER-LEFT: #666666 1px solid; COLOR: #000000; BORDER-BOTTOM: #cccccc 1px solid; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #ffffff
+}
+.stbuttom_en {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #eeeeee 1px solid; FONT-SIZE: 10px; BORDER-LEFT: #eeeeee 1px solid; BORDER-BOTTOM: #666666 1px solid; FONT-FAMILY: "Verdana", "Tahoma", "Arial"; HEIGHT: 18px; BACKGROUND-COLOR: #cccccc
+}
+.fonten_2 {
+	FONT-SIZE: 9px; FONT-FAMILY: "Geneva", "Arial"
+}
+.stbuttom_en_2 {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #eeeeee 1px solid; FONT-SIZE: 10px; BORDER-LEFT: #eeeeee 1px solid; BORDER-BOTTOM: #666666 1px solid; FONT-FAMILY: "Verdana", "Tahoma", "Arial"; HEIGHT: 18px; BACKGROUND-COLOR: #aaaaaa
+}
+.sun {
+	COLOR: #cc0000
+}
+.orange {
+	COLOR: #ff6600
+}
+.lemon {
+	COLOR: #ffcc00
+}
+.tree {
+	COLOR: #339900
+}
+.sky {
+	COLOR: #0099ff
+}
+.grape {
+	COLOR: #4a43a8
+}
+.snow {
+	COLOR: #999999
+}
+.grey {
+	COLOR: #999999
+}
+.night {
+	COLOR: #000000
+}
+.stdedit_en12 {
+	BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #666666 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #666666 1px solid; COLOR: #000000; BORDER-BOTTOM: #cccccc 1px solid; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"; BACKGROUND-COLOR: #ffffff
+}
+
+.clsBtn {
+	background-image: url(../images/public/button.jpg);
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-position: center center;
+	padding: 0px;
+	border: 0 0 0 0;
+	cursor: hand;
+	height: 20px;
+	width: 60px;
+}

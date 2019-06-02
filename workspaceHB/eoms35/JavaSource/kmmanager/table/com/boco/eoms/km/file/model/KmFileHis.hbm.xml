@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.km.file.model.KmFileHis"
+            table="KM_FILES_HIS"
+    >
+
+    <id
+        name="hisId"
+            column="HISID"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+    
+  	<property
+            name="fileId"
+            	column="id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>  
+
+	<property
+            name="fileName"
+            	column="FILENAME"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="expand"
+            	column="EXPAND"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="userId"
+            	column="USERID"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="deptId"
+            	column="DEPTID"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="phone"
+            	column="PHONE"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="uploadTime"
+            	column="UPLOADTIME"
+                length="7"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="fileSize"
+            	column="FILESIZE"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="fileGrade"
+            	column="FILEGRADE"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="keywords"
+            	column="KEYWORDS"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="fileAbstract"
+            	column="ABSTRACT"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="fileState"
+            	column="FILESTATE"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="clickCount"
+            	column="CLICKCOUNT"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+    <property
+            name="nodeId"
+            	column="MAPPING_NODE_ID"
+                length="24"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+     <property
+            name="mappingName"
+            	column="MAPPING_NAME"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+     <property
+            name="state"
+            	column="STATE"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+     <property
+            name="version"
+            	column="VERSION"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>   
+         
+          
+    </class>    
+
+</hibernate-mapping>
+

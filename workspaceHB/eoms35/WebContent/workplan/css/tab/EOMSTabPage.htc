@@ -1,0 +1,137 @@
+<head>
+	<public:component tagName="EOMSTabPage">
+		<meta http-equiv="MSThemeCompatible" content="yes">
+		<public:defaults viewLinkContent viewInheritStyle="false" contentEditable="false" tabStop="false" />
+		<public:attach event="oncontentready" onevent="initElement()" />
+		<public:attach event="onpropertychange" onevent="elementPropertyChange()" />
+		<public:attach event="ondetach" onevent="cleanupElement()" />
+		<public:method name="initPageConector" />
+		<public:method name="contentObject" />
+		<public:method name="unload" />
+	</public:component>
+	
+	<style>
+		body
+		{
+			border-right: 1px solid;
+			border-bottom: 1px solid;
+			width: 0px;
+			cursor: default;
+		}
+		#tabConnector
+		{
+			height: 1px;
+			width: 23px;
+			position: absolute;
+			top: 0px;
+			left: 1px;
+			overflow: hidden;
+		}
+		#tabPageShadowMid
+		{
+			border-right: 1px solid;
+			border-bottom: 1px solid;
+			height: 100%;
+			width: 100%;
+		}
+		#tabPageBorder
+		{
+			border: 1px solid;
+			height: 100%;
+			width: 100%;
+		}
+		#tabContent
+		{
+			padding: 5px, 0px, 0px, 5px;
+			border: 1px solid;
+			height: 100%;
+			width: 100%;
+			/*overflow: hidden;*/
+		}
+	</style>
+	
+	<script language="jscript">
+		function initElement() {
+			var html = element.innerHTML ;
+			element.innerHTML = "" ;
+			tabContent.innerHTML = html ;
+			elementSetStyle() ;
+			element.innerHTML = tabBody.innerHTML;
+//			alert(window.document.styleSheets.item(0).owningElement.outerHTML);
+			window.document.styleSheets.item(0).owningElement.attachEvent("onload", elementSetStyle) ;
+		}
+		function cleanupElement() {
+//			window.document.styleSheets.item(0).owningElement.detachEvent("onload", elementSetStyle) ;
+		}
+		function unload() {
+			return cleanupElement() ;
+		}
+		function elementSetStyle() {
+			with (document.body.style) {
+				borderRightColor = element.currentStyle.lightShadow ;
+				borderBottomColor = element.currentStyle.lightShadow ;
+				filter = "progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorStr=" + element.currentStyle.lightColor + ", endColorStr=" + element.currentStyle.darkColor + ")" ;
+			}
+			with (tabConnector.style) {
+				backgroundColor = element.currentStyle.lightColor ;
+			}
+			with (tabPageShadowMid.style) {
+				borderRightColor = element.currentStyle.midShadow ;
+				borderBottomColor = element.currentStyle.midShadow ;
+			}
+			with (tabPageBorder.style) {
+				borderColor = element.currentStyle.pageBorder ;
+				if (element.currentStyle.pageBorder2ndColor) {
+					borderRightWidth = "0px" ;
+					borderBottomWidth = "0px" ;
+				}
+				else {
+					borderRightWidth = "1px" ;
+					borderBottomWidth = "1px" ;
+				}
+			}
+			with (tabContent.style) {
+				borderColor = element.currentStyle.lightColor ;
+			}
+		}
+		function initPageConector(newLeft, newWidth) {
+			with (tabConnector.style) {
+				left = newLeft ;
+				width = newWidth ;
+			}
+		}
+		function contentObject() {
+			return document.all("tabContent") ;
+		}
+		function elementPropertyChange() {
+			
+		
+		}
+		function elementOnSelect() {
+			with (window.event) {
+				cancelBubble = true ;
+				returnValue = false ;
+			}
+			return false ;
+		}
+		function elementOnContextMenu() {
+			with (window.event) {
+				cancelBubble = true ;
+				returnValue = false ;
+			}
+			return false ;
+		}
+	</script>
+</head>
+
+<body id="tabBody">
+	<span id="tabConnector"></span>
+	<div id="tabPageShadowMid">
+		<div id="tabPageBorder">
+			<div id="tabContent">
+				
+			</div>
+		</div>
+	</div>
+</body>
+

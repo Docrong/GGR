@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.workbench.netdisk.model.TawWorkbenchNetDiskFile"
+            table="taw_netdisk_file"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="fileName"
+            	column="file_name"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="mappingName"
+            	column="mapping_name"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="userId"
+            	column="user_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="folderMappingId"
+            	column="folder_mapping_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="expand"
+            	column="expand"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="uploadTime"
+            	column="upload_time"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+        <property
+            name="fileSize"
+            	column="file_size"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+                <property
+            name="scanTimes"
+            	column="scan_times"
+                length="12"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class name="com.boco.eoms.check.model.TawCheckGSMDATA" table="taw_quality_data_gsm">
+     <id column="GSM_ID" name="gsm_id" type="string">
+       <generator class="uuid.hex"/>
+     </id>
+ <property column="FIRST_RESULT" length="100" name="first_result" type="timestamp"/>
+ <property column="COMPRESS_DATE" length="100" name="compress_date" type="timestamp"/>
+ <property column="NE_ID" length="100" name="ne_id" type="integer"/>
+ <property column="NE_TYPE" length="100" name="ne_type" type="integer"/>
+ <property column="PROVINCE_ID" length="100" name="province_id" type="integer"/>
+ <property column="PROVINCE_ZH" length="100" name="province_zh" type="string"/>
+ <property column="REGION_ID" length="100" name="region_id" type="integer"/>
+ <property column="REGION_ZH" length="100" name="region_zh" type="string"/>
+ <property column="NE_ZH" length="100" name="ne_zh" type="string"/>
+ <property column="G42" length="100" name="g42" type="double"/>
+ <property column="G43" length="100" name="g43" type="double"/>
+ <property column="G45" length="100" name="g45" type="double"/>
+ <property column="G49" length="100" name="g49" type="double"/>
+ <property column="G411" length="100" name="g411" type="double"/>
+ <property column="G65" length="100" name="g65" type="double"/>
+ <property column="G66" length="100" name="g66" type="double"/>
+ <property column="INSERT_TIME" length="100" name="insert_time" type="timestamp"/>
+ <property column="DELETED" length="100" name="deleted" type="string"/>
+  </class>
+</hibernate-mapping>

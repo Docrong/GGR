@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="ITRequirement" description="IT需求申请流程">
+   <flow-define id="ITRequirementProcess" description="IT需求申请流程">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="AuditTask" role="dealPerformer@319" condition="${operateType}==0" name="新建申请"/>
+       <to-phase-id id="DraftTask" role="" condition="${operateType}==22" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="DraftTask" name="草稿" type="operate">       
+       <to-phase-id id="AuditTask" role="dealPerformer@319" condition="${operateType}==3" name="草稿申请"/>
+     </phase-id>
+     <phase-id id="RejectTask" name="被驳回" type="operate">       
+       <to-phase-id id="AuditTask" role="dealPerformer@319" condition="${operateType}==54" name="重新申请"/>
+     </phase-id> 
+     <phase-id id="AuditTask" name="待审核" type="operate">       
+       <to-phase-id id="AnalysisTask" role="dealPerformer@320" condition="${operateType}==911" name="审批通过"/>
+       <to-phase-id id="RejectTask"  role="" condition="${operateType}==912" name="审批不通过"/>     
+     </phase-id> 
+     <phase-id id="AnalysisTask" name="需求分析" type="operate"> 
+      <to-phase-id id="RejectTask"   role="" condition="${operateType}==925" name="无需变更"/>      
+       <to-phase-id id="OperateTask"  role="dealPerformer@323" condition="${operateType}==924" name="配置实现"/>
+       <to-phase-id id="DevAuditTask" role="dealPerformer@321" condition="${operateType}==923" name="需开发需审批"/>
+       <to-phase-id id="ReplyTask"    role="dealPerformer@320" condition="${operateType}==922" name="需开发不需审批"/>
+       <to-phase-id id="AddInfoTask" role="" condition="${operateType}==921" name="需要补充信息"/>   
+       <to-phase-id id="AuditTask"   role="" condition="${operateType}==4" name="驳回审批"/>  
+     </phase-id>
+     
+     <phase-id id="AddInfoTask" name="补充需求" type="operate">  
+        <to-phase-id id="AnalysisTask" role="" condition="${operateType}==93" name="提交需求分析"/>    
+     </phase-id> 
+     <phase-id id="DevAuditTask" name="需求开发审批中" type="operate">  
+        <to-phase-id id="ReplyTask"    role="" condition="${operateType}==941" name="本期实现"/> 
+        <to-phase-id id="TempSaveTask" role="" condition="${operateType}==942" name="下期实现"/>   
+     </phase-id>  
+     
+     <phase-id id="OperateTask" name="需求实现中" type="operate">  
+        <to-phase-id id="ConfirmHoldTask" role="" condition="${operateType}==95" name="实施完成，提交归档"/> 
+        <to-phase-id id="AnalysisTask"    role="" condition="${operateType}==4" name="驳回需求分析"/>  
+     </phase-id>  
+     <phase-id id="TempSaveTask" name="待暂存确认" type="operate">  
+     </phase-id>
+     <phase-id id="ReplyTask" name="需求实施中" type="operate">  
+        <to-phase-id id="HoldTask"      role="" condition="${operateType}==97" name="回复申请待归档"/> 
+        <to-phase-id id="AnalysisTask"  role=""  condition="${operateType}==4" name="驳回需求分析"/> 
+        <to-phase-id id="DevAuditTask"  role="" condition="${operateType}==4" name="驳回开发审批"/>  
+     </phase-id>                 
+      <phase-id id="ConfirmHoldTask" name="完成待归档" type="operate">
+      <to-phase-id id="OperateTask"  role="" condition="${operateType}==101" name="测试不通过，退回"/>
+      
+     </phase-id>              
+     <phase-id id="HoldTask" name="回复申请待归档" type="operate">
+     <to-phase-id id="ReplyTask" role="" condition="${operateType}==102" name="退回"/>
+     </phase-id>     
+  </flow-define>
+</WorkFlowRule>

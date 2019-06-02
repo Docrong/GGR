@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.mofficedata.model.MofficeDataMain"
+            table="mofficedata_main"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+        <property name="sheetId" />
+		<property name="title" />
+		<property name="sheetAcceptLimit" />
+		<property name="sheetCompleteLimit" />
+		<property name="sendTime" />
+		<property name="sendOrgType" />
+		<property name="sendUserId" />
+		<property name="sendDeptId" />
+		<property name="sendRoleId" />
+		<property name="sendContact" />
+		<property name="endTime" />
+		<property name="endResult" />
+		<property name="status" />
+		<property name="holdStatisfied" />
+		<property name="endUserId" />
+		<property name="endDeptId" />
+		<property name="endRoleId" />
+		<property name="deleted" />
+		<property name="piid" />
+		<property name="parentSheetName" />
+		<property name="parentSheetId" />
+		<property name="sheetTemplateName" />
+		<property name="sheetAccessories" />
+		<property name="correlationKey" />
+		<property name="parentCorrelation" />
+		<property name="toDeptId" />
+		<property name="templateFlag" />
+		<property name="cancelReason" />
+		<property name="sendYear" />
+		<property name="sendMonth" />
+		<property name="sendDay" />
+		<property name="invokeMode" />
+		<property name="parentPhaseName" />
+		<property name="sendObject" />
+    
+   
+   
+	
+		<property  name="mainDataNo" />				 				 	
+ 	
+		<property  name="mainMajorType" />				 				 	
+ 	
+		<property  name="mainNetType" />				 				 	
+ 	
+		<property  name="mainDeviceFa" />				 				 	
+ 	
+		<property  name="mainDescRemark" />				 				 	
+ 	
+		<property  name="mainStyle1" />				 				 	
+ 	
+		<property  name="mainStyle2" />				 				 	
+ 	
+		<property  name="mainStyle3" />				 				 	
+ 	
+		<property  name="mainStyle4" />				 				 	
+ 	
+		<property  name="mainStyle5" />				 				 	
+ 	
+		<property  name="mainStyleTime1" />				 				 	
+ 	
+		<property  name="mainStyleTime2" />	
+		
+		<property  name="mainStyle6" />			
+		<property  name="mainStyle7" />			
+		<property  name="mainStyle8" />			
+		<property  name="mainStyle9" />			
+		<property  name="mainStyle10" />						 				 	
+		<property  name="mainNetTypeOne" />
+		<property  name="mainNetTypeTwo" />
+		<property  name="mainNetTypeThree" />
+		<property  name="mainChangeSource" />
+		<property  name="linkDesignKey" />	
+		<property  name="linkPlanStartTime" />
+		<property  name="linkPlanEndTime" />
+		
+		<!-- add by weichao 20170329 begin -->
+		<property  name="mainSendModeType" />
+		<!-- add by weichao 20170329 end -->
+</class>    
+</hibernate-mapping>

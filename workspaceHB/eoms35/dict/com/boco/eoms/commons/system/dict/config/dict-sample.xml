@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="公用">
+	<dict id="major" description="专业">
+		<item id="1" name="开发工程师" description="开发工程师" />
+		<item id="2" name="测试工程师" description="测试工程师" />
+	</dict>
+
+	<dict id="exigence" description="紧急程度">
+		<item id="1" name="高" description="高" />
+		<item id="2" name="中" description="低" />
+	</dict>
+
+	<dict id="3" description="测试">
+		<item id="1" name="成功" description="成功" />
+		<item id="2" name="失败" description="失败" />
+	</dict>	
+</dicts>
+
+

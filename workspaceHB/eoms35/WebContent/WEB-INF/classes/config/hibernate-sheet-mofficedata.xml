@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+
+
+<property name="show_sql">true</property>
+ 	<mapping resource="com/boco/eoms/sheet/mofficedata/model/MofficeDataMain.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/sheet/mofficedata/model/MofficeDataLink.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/sheet/mofficedata/model/MofficeDataTask.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/sheet/mofficedata/model/MofficeDataSubLink.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/sheet/mofficedata/model/MofficeDataBuisType.hbm.xml"/>
+ 	<mapping resource="com/boco/eoms/sheet/mofficedata/model/MofficeDataProMatch.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
+

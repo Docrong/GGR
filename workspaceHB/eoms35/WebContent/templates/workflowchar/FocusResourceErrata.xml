@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+  <cell id="1" type="InitialActionCell" height="30" width="100" x="285" y="36" />
+  <cell id="2" type="StepCell" height="30" width="100" x="682" y="34" />
+  <cell id="3" type="StepCell" height="30" width="100" x="426" y="141" />
+  <cell id="4" type="StepCell" height="30" width="100" x="428" y="247" />
+  <cell id="5" type="StepCell" height="30" width="100" x="429" y="351" />
+  <connector id="90" linewidth="1.0" color="-16777216" labelx="0" labely="759" from="0" to="0" start="285,36" end="426,141">
+    <routing id="90" x="328" y="149" />
+  </connector>
+  <connector id="91" linewidth="1.0" color="-16777216" labelx="0" labely="566" from="0" to="0" start="426,141" end="428,247">
+    <routing id="91" x="484" y="207" />
+  </connector>
+  <connector id="92" linewidth="1.0" color="-16777216" labelx="691" labely="11" from="0" to="0" start="426,141" end="682,34">
+    <routing id="92" x="743" y="158" />
+  </connector>
+  <connector id="93" linewidth="1.0" color="-16777216" labelx="-4000" labely="514" from="0" to="0" start="428,247" end="429,351" />
+  <connector id="94" linewidth="1.0" color="-16777216" labelx="0" labely="474" from="0" to="0" start="428,247" end="426,141">
+    <routing id="94" x="446" y="208" />
+  </connector>
+  <connector id="95" linewidth="1.0" color="-16777216" labelx="1058" labely="532" from="0" to="0" start="429,351" end="426,141">
+    <routing id="95" x="326" y="361" />
+    <routing id="95" x="326" y="160" />
+  </connector>
+  <channel id="chl-1" y1="0" y2="100" text="申请人" />
+  <channel id="chl-2" y1="100" y2="200" text="监控部" />
+  <channel id="chl-3" y1="200" y2="300" text="传输网部" />
+  <channel id="chl-4" y1="300" y2="400" text="地市" />
+</layout>
+

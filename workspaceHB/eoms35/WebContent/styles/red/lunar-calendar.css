@@ -1,0 +1,30 @@
+/* for LunarCalendar.js */
+
+.x-date-inner span {
+ word-break:keep-all;
+ white-space:nowrap;
+}
+.x-date-inner td {
+  padding:0px;
+  height:45px;
+  width:45px;
+  text-align:center;
+  vertical-align:middle;
+}
+.x-date-inner th,.x-date-inner a {
+  font-size:12px;
+  text-align:center;
+}
+
+.x-date-inner a:hover, .x-date-inner .x-date-disabled a:hover {
+  background:transparent;
+}
+.x-date-inner .x-date-selected a {
+  background:transparent;
+}
+.x-date-changed a em{
+  text-decoration:underline;
+}
+.x-date-notworkday{
+  background-color:#eee;
+}

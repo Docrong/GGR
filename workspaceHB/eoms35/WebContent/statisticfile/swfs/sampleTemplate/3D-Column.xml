@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+
+    <chart type="3DColumn">
+      <animation enabled="yes" speed="30" type="step" appearance="size"/>
+      <values decimal_places="0" rotation="-90">
+        <font type="verdana_embed_tf" color="#808080"/>
+      </values>
+      <names rotation="25" placement="chart" position="bottom">
+        <font type="verdana_embed_tf" color="#808080"/>
+      </names>
+      <hints enabled="no"/>
+      <column_chart block_space = "10" column_space = "10" left_space = "10" right_space = "10" up_space = "70"  down_space = "0">
+        <border enabled="no"/>
+        <background auto_color="no" color="#808080"/>
+      </column_chart>
+    </chart>
+    <workspace >
+	  <name text=" "/>
+      <base_area enabled="no" />
+      <chart_area width="300" height="100" x="30" y="30" deep="4">
+      <background color="Black" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xC9D1DD</color>
+	      <color>0x8591A1</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="1.57"/>
+	  </background>
+	  </chart_area>
+    </workspace>
+  </type>
+</root>

@@ -1,0 +1,292 @@
+<%@ page contentType="text/html; charset=ISO-8859"%>
+<%@ page language="java" import="java.util.*,java.lang.*, org.apache.struts.util.*,com.boco.eoms.duty.util.DutyMgrLocator"%>
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html" %>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean" %>
+<%@ taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %>
+<%@ taglib uri="/WEB-INF/jstl-core.tld" prefix="c" %>
+
+<head>
+<title>ֵ������</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
+</head>
+<body>
+<SCRIPT LANGUAGE=javascript>
+<!--
+function add_Time()
+{
+   var selected_spr_text = "";
+   selected_spr_value=document.all.tawRmSysteminfoForm.sHour.value+":"+document.tawRmSysteminfoForm.sMinute.value;
+   var sel_sprlen=document.all.tawRmSysteminfoForm.sTime.options.length-1;
+
+   var exist_flag=1;
+   var j=0;
+   for(j=0;j<=sel_sprlen;j++)
+   {
+     if(document.tawRmSysteminfoForm.sTime.options[j].value==selected_spr_value)
+     {
+       exist_flag=0;
+       break;
+     }
+   }
+
+   if(exist_flag)
+   {
+     if (sel_sprlen >= 0){
+     	var i=0;
+        var k=0;
+     	for(j=0;j<=sel_sprlen;j++)
+     	{
+     		if(selected_spr_value > document.tawRmSysteminfoForm.sTime.options[j].value)
+     		{
+                    i=j;
+                    k=1;
+     		}
+     	}
+
+        if (k==0){
+            i--;
+        }
+        for (j=sel_sprlen;j>i;j--)
+        {
+ 		  selected_spr_text = document.all.tawRmSysteminfoForm.sTime.options[j].text;
+     		  var test1 = new Option(selected_spr_text);
+     		  test1.value=document.all.tawRmSysteminfoForm.sTime.options[j].value;
+     		  document.all.tawRmSysteminfoForm.sTime.options[j+1]=test1;
+ 	 }
+         var test1=new Option(document.all.tawRmSysteminfoForm.sHour.value+":"+document.all.tawRmSysteminfoForm.sMinute.value);
+       	 test1.value=selected_spr_value;
+         document.all.sTime.options[i+1]=test1;
+
+     }else{
+     	var test1=new Option(document.all.tawRmSysteminfoForm.sHour.value+":"+document.all.tawRmSysteminfoForm.sMinute.value);
+     	test1.value=selected_spr_value;
+     	document.all.sTime.options[0]=test1;
+     }
+
+   }
+   else alert(" ��ʱ����Ѵ������ұ��б��У�������ѡ��");
+
+}
+function del_Time()
+{
+  var sel_sprindex=document.all.tawRmSysteminfoForm.sTime.selectedIndex;
+  if(sel_sprindex!=-1)
+    document.all.tawRmSysteminfoForm.sTime.options[sel_sprindex]=null;
+}
+
+function sent_submit()
+{
+var sel_sprlen=document.tawRmSysteminfoForm.sTime.options.length-1;
+//��������Ű�Ĵ���
+if(<%=DutyMgrLocator.getAttributes().getDutyOtherAssign().equals(request.getAttribute("roomId"))?"true":"false"%> && sel_sprlen>1)
+  {
+  //alert("��ʾ:�û�ÿ��ֻ����}����!");
+  //return;
+  }
+if (sel_sprlen >= 0){
+document.all.tawRmSysteminfoForm.exchangetime.value =  document.all.tawRmSysteminfoForm.sTime.options[0].value;
+if (sel_sprlen >= 1){
+for (i=1;i<=sel_sprlen;i++){
+document.all.tawRmSysteminfoForm.exchangetime.value =  document.all.tawRmSysteminfoForm.exchangetime.value + "," + document.all.tawRmSysteminfoForm.sTime.options[i].value;
+}
+}
+document.tawRmSysteminfoForm.action="../TawRmSysteminfo/save.do";
+document.tawRmSysteminfoForm.submit();
+}else{
+alert ("����ָ�����Ӱ�ʱ��");
+}
+}
+//-->
+</SCRIPT>
+<br>
+<html:form method="post" action="/TawRmSysteminfo/save">
+<html:hidden property="strutsAction"/>
+<input type="hidden" name="SAVEFLAG" value="<%=String.valueOf(request.getAttribute("SAVEFLAG"))%>"/>
+<table cellpadding="0" cellspacing="0" border="0" width="500" align="center">
+<tr>
+<td>
+
+
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+<td class="table_title" width="100%" align="center">
+
+<%=request.getAttribute("ROOMNAME") %>
+&nbsp;
+<bean:message key="TawRmSysteminfo.apparatusroom"/>
+&nbsp;
+<bean:message key="TawRmSysteminfo.tablename"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%
+String saveflag = String.valueOf(request.getAttribute("SAVEFLAG"));
+if (saveflag.trim().equals("true"))
+{
+%>
+<bean:message key="TawRmSysteminfo.savesuccess"/>
+<%
+}
+%>
+  </td>
+</tr>
+  <tr>
+<td>
+<table border="0" width="600" cellspacing="1" cellpadding="1" class="table_show" align=center>
+<html:hidden property="roomId" />
+<html:hidden property="deptId" />
+    <tr class="tr_show">
+</td><td width="30%"  class="clsfth"><bean:message key="TawRmSysteminfo.maxdutynum"/></td>
+<td width="70%">
+<html:select property="maxdutynum">
+<html:options collection="MAXDUTYNUM" property="value"  labelProperty="label"/>
+</html:select>
+<bean:message key="TawRmSysteminfo.maxdutynum_unit"/>
+</td>
+</tr>
+
+    <tr class="tr_show">
+<td width="30%" class="clsfth"><bean:message key="TawRmSysteminfo.maxerrortime"/></td>
+<td width="70%">
+<html:select property="maxerrortime">
+<html:options collection="MAXERRORTIME" property="value"  labelProperty="label"/>
+</html:select>
+<bean:message key="TawRmSysteminfo.maxerrortime_unit"/>
+</td>
+</tr>
+
+
+<tr class="tr_show">
+<td width="30%" class="clsfth"><bean:message key="TawRmExchange.exchangetime"/></td>
+<td width="70%">
+<table>
+<tr>
+<td width="45%" align="left">
+<select name="sHour" >
+<%
+for (int i=0;i<24;i++){
+if (i<10){
+%>
+<option value="0<%=i%>"><%=i%></option>
+<%}else{%>
+<option value="<%=i%>"><%=i%></option>
+<%}}%>
+</select>
+<bean:message key="TawRmSysteminfo.hour_unit"/>
+<select name="sMinute" >
+<%
+for (int i=0;i<60;i++){
+if (i<10){
+%>
+<option value="0<%=i%>"><%=i%></option>
+<%}else{%>
+<option value="<%=i%>"><%=i%></option>
+<%}}%>
+</select>
+<bean:message key="TawRmSysteminfo.minute_unit"/>
+</td>
+<td width="25%" align="middle"  class="clsfth">
+<input type=button Class="clsbtn2" name=add value =<bean:message key="TawRmSysteminfo.btn_add"/> onclick="javascript:add_Time();">
+<p>
+<input type=button Class="clsbtn2" name=del value =<bean:message key="TawRmSysteminfo.btn_del"/> onclick="javascript:del_Time();">
+</td>
+<td width="35%" align="middle">
+<c:choose>
+<c:when test="${requestScope['tawRmSysteminfoForm'].strutsAction == 1}">
+<select name="sTime" size=8 style="width:80">
+</select>
+</c:when>
+<c:otherwise>
+<%
+Vector vector_exchangetime = (Vector)request.getAttribute("exchangetime");
+%>
+<select name="sTime" size=8 style="width:80">
+<%
+for (int i=0;i<vector_exchangetime.size();i++){
+%>
+<option value="<%=vector_exchangetime.elementAt(i)%>"><%=vector_exchangetime.elementAt(i)%></option>
+<%
+}
+%>
+</select>
+</c:otherwise>
+</c:choose>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+
+<input type="hidden" name="exchangetime" value = "">
+    <tr class="tr_show">
+<td width="30%" class="clsfth"><bean:message key="TawRmSysteminfo.exRequest"/></td>
+<td width="70%">
+<font size="2" face="Tahoma">
+<html:select property="exRequest">
+<html:options collection="EXREQUEST" property="value"  labelProperty="label"/>
+</html:select>
+</font>
+</td>
+</tr>
+    <tr class="tr_show">
+<td width="30%" class="clsfth"><bean:message key="TawRmSysteminfo.exAnswer"/></td>
+<td width="70%">
+<font size="2" face="Tahoma">
+<html:select property="exAnswer">
+<html:options collection="EXANSWER" property="value"  labelProperty="label"/>
+</html:select>
+</font>
+</td>
+</tr>
+    <tr class="tr_show">
+<td width="30%" class="clsfth"><bean:message key="TawRmSysteminfo.dutyInform"/></td>
+<td width="70%">
+<font size="2" face="Tahoma">
+<html:select property="dutyInform">
+<html:options collection="DUTYINFORM" property="value"  labelProperty="label"/>
+</html:select>
+</font>
+</td>
+</tr>
+    <tr class="tr_show">
+<td width="30%" class="clsfth">���Ӱ���ʽ</td>
+<td width="70%">
+<font size="2" face="Tahoma">
+<html:select property="exchangeFlag">
+<html:options collection="LISTFLAG" property="value"  labelProperty="label"/>
+</html:select>
+</font>
+</td>
+</tr>
+              <logic:messagesPresent>
+                <bean:message key="errors.header"/>
+                <ul>
+                  <html:messages id="error">
+                    <li>
+                      <bean:write name="error"/>
+                    </li>
+                  </html:messages>
+                </ul>
+                <hr/>
+              </logic:messagesPresent>
+  </table>
+</td>
+</tr>
+  <tr>
+<td>
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr align="right" height="32" valign="middle">
+<td>
+      <input type=button Class="clsbtn2" name=save value=<bean:message key="label.save"/> onclick="sent_submit();">
+      <INPUT id=transmit type=button Class="clsbtn2" value='<bean:message key="TawUserRoom.btn_new"/>'  name=button Onclick="window.location.href ='../TawUserRoom/new.do?roomId=<bean:write name="tawRmSysteminfoForm" property="roomId"/>'">&nbsp;&nbsp;
+
+  </td>
+</tr>
+</table>
+</td>
+</tr>
+  </table>
+</td>
+</tr>
+</table>
+</html:form>
+</body>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+    <ServiceUrl>http://10.31.1.120/SheetStateSync/SheetStateSync3.asmx</ServiceUrl>
+    <AttachCnName>设计施工相关数据</AttachCnName>
+    <EnableService>false</EnableService>
+    <dict>
+    	<!-- 设计阶段，设计页面 -->
+    	<item url="http://10.32.1.26:9006/webattemp/raptor/subsystem/attempX/eoms/index.jsp" operateType="design" />
+    	<!-- 审核、施工阶段，查看设计页面 -->
+    	<item url="http://10.32.1.26:9006/webattemp/raptor/subsystem/attempX/eoms/index.jsp" operateType="designinfo" />
+    	<!-- 施工阶段，施工页面 -->
+    	<item url="http://10.32.1.26:9006/webattemp/raptor/subsystem/attempX/eoms/index.jsp" operateType="execute" />
+    	<!-- 设计阶段，选择已有设计方案页面 -->
+    	<item url="http://10.32.1.26:9006/webattemp/raptor/subsystem/attempX/eoms/eoms_attemp_sheet.jsp" operateType="selectdesign" />
+    	<!-- 设计阶段，选择已有设计方案页面 -->
+    	<item url="http://10.32.1.26:9006/webattemp/raptor/subsystem/attempX/eoms/index.jsp" operateType="hold" />
+    </dict>
+</boco>
+

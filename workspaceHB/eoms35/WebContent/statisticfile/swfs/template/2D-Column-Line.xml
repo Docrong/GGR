@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<root>
+<type> 
+    <system> 
+      <refresh enabled="yes"/> 
+    </system>  
+    <chart type="2DColumn" minimum_value="0" maximum_value="10"> 
+      <animation enabled="yes" speed="30" type="step" appearance="size"/>  
+      <values decimal_places="0" show="yes"/>  
+      <hints enabled="no"/>  
+      <column_chart column_space="0"> 
+        <border enabled="no"/>  
+        <background auto_color="no" color="0xBE8910" alpha="100"/> 
+      </column_chart> 
+    </chart>  
+    <chart type="2DLine" maximum_value="10" minimum_value="0"> 
+      <animation enabled="yes" speed="50" type="all" appearance="size"/>  
+      <values show="yes" decimal_places="0" prefix="" postfix=""> 
+        <font type="Tempus Sans ITC" size="14"/> 
+      </values>  
+      <arguments show="no" decimal_places="0"></arguments>
+      <hints enabled="no"/>  
+      <line_chart left_space="50" right_space="50" smoothing_enabled="no">
+      	<!--改变颜色--> 
+        <lines color="0xFFFF00" size="2" auto_color="no"/>  
+        <dots> 
+          <background auto_color="no" color="0xFBAB00"/>  
+          <border enabled="yes" size="2" color="0xFDCF6C"/> 
+        </dots> 
+      </line_chart> 
+    </chart>
+    <workspace width="700" height="500"> 
+      <base_area enabled="no"/>  
+      <chart_area width="600" height="400" deep="" y="50" x="50">
+        <background color="0xD9D9F3"/>
+      </chart_area>  
+      <name text=" "/>  
+      <background enabled="yes" type="gradient" gradient_type="linear"> 
+        <colors> 
+          <color>0xD7D7D7</color>  
+          <color>0xFFFFFF</color> 
+        </colors>  
+        <alphas> 
+          <alpha>100</alpha>  
+          <alpha>100</alpha> 
+        </alphas>  
+        <ratios> 
+          <ratio>0</ratio>  
+          <ratio>0xFF</ratio> 
+        </ratios>  
+        <matrix r="50"/> 
+      </background>  
+      <grid chart="2DColumn"> 
+        <values lines_step="5" start="0" end="100"> 
+          <lines color="0xC7C7C7"/>  
+          <captions position="right"> 
+            <font size="12" color="0x878787" type="Tempus Sans ITC"/> 
+          </captions> 
+        </values> 
+      </grid>  
+      <grid chart="2DLine"> 
+        <arguments lines_step="5" start="0" end="10"> 
+          <lines color="0xCCCCCC"/>  
+          <captions> 
+            <font size="10" color="0x878787" type="Tempus Sans ITC"/> 
+          </captions> 
+        </arguments>  
+        <values lines_step="5" left_space="50" right_space="50" start="0" end="100"> 
+          <lines color="0xC7C7C7"/>  
+          <captions> 
+            <font size="10" color="0x878787" type="Tempus Sans ITC"/> 
+          </captions> 
+        </values> 
+      </grid>  
+    </workspace> 
+  </type>
+</root>

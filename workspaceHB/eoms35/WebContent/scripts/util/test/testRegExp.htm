@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//ZH-CN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <title>正则表达式测试</title> 
+  <script type="text/javascript" charset="utf-8" src="/eoms/scripts/base/eoms.js"></script>
+  <script type="text/javascript">
+  	function testRegExp(){
+		var rstr = document.getElementById('reg').value;
+		var tstr = document.getElementById('teststr').value;
+		var r = new RegExp(rstr, "g");
+		alert(r.test(tstr));
+	}
+	//验证萨班斯用户名
+	function testSarbanes(){
+		var tstr = document.getElementById('teststr').value;		
+		alert(/[A-Z]+/.test(tstr) 
+		   && /[a-z]+/.test(tstr) 
+		   && /[0-9]+/.test(tstr)
+		   && /^[A-Za-z0-9]{8,}$/.test(tstr));
+	}
+  </script>
+</head>
+<body>
+	输入表达式：<input type="text" id="reg" size="30"><br/>
+	测试字符串：<input type="text" id="teststr" size="30"><br/>
+	<input type="button" value="验证输入的表达式" onclick="javascript:testRegExp();"/>
+	<input type="button" value="验证萨班斯用户名" onclick="javascript:testSarbanes();"/>
+	
+</body>
+</html>

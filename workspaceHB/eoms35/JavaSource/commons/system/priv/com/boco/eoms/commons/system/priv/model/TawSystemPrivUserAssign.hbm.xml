@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class
+		name="com.boco.eoms.commons.system.priv.model.TawSystemPrivUserAssign"
+		table="taw_system_priv_userassign">
+
+		<id name="id" column="id" unsaved-value="null">
+
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+
+			</generator>
+
+		</id>
+
+		<property name="currentprivid" length="500">
+
+		</property>
+
+		<property name="currentprivname" length="200">
+
+		</property>
+
+		<property name="hide" length="100">
+
+		</property>
+
+		<property name="isonepriv" length="500">
+
+		</property>
+
+		<property name="leaf" length="50">
+
+		</property>
+
+		<property name="ordercode" length="50">
+
+		</property>
+
+		<property name="parentprivid" length="500">
+
+		</property>
+
+		<property name="parentprivname" length="200">
+
+		</property>
+
+		<property name="remark" length="200">
+
+		</property>
+
+		<property name="userid" length="100">
+
+		</property>
+		<property name="url" length="500">
+
+		</property>
+		<property name="hrefTarget" length="500">
+
+		</property>
+		<property name="menuid" length="100">
+
+		</property>
+		<property name="isapp" length="5" not-null="false"></property>
+		
+		<property name="orderby" length="2" not-null="false">
+
+		</property>
+	</class>
+
+</hibernate-mapping>
+

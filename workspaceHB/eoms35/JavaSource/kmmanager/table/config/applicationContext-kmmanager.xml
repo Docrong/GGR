@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="kmFilesAttributes"
+		class="com.boco.eoms.km.file.util.KmFilesAttributes">
+		<!-- 根路径windows环境下的配置-->
+		<property name="netDiskRootPath">
+			<value>D:/kmfiles</value>
+		</property>
+		<!-- 根路径Unix环境下的配置 绝对路径-->
+		<!-- <property name="netDiskRootPath">
+			<value>/downloads</value>
+			</property> -->
+		<!-- 最大单个上传文件限制（单位MB）-->
+		<property name="maxFileSize">
+			<value>300</value>
+		</property>
+	</bean>
+
+	<bean id="kmFileMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.file.mgr.impl.KmFileMgrImpl">
+				<property name="fileDao" ref="kmFileDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmFileDao"
+		class="com.boco.eoms.km.file.dao.hibernate.KmFileDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmFileTreeMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.file.mgr.impl.KmFileTreeMgrImpl">
+				<property name="kmFileTreeDao" ref="kmFileTreeDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmFileTreeDao"
+		class="com.boco.eoms.km.file.dao.hibernate.KmFileTreeDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmContentsMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.knowledge.mgr.impl.KmContentsMgrImpl">
+				<property name="kmTableCacheMgr" ref="kmTableCacheMgr" />
+				<property name="kmOperateDateLogMgr"
+					ref="kmOperateDateLogMgr" />
+				<property name="kmOperateLogMgr" ref="kmOperateLogMgr" />
+				<property name="kmContentsDao" ref="kmContentsDao" />
+				<property name="kmContentsDaoJdbc"
+					ref="kmContentsDaoJdbc" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmContentsDao"
+		class="com.boco.eoms.km.knowledge.dao.hibernate.KmContentsDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmContentsDaoJdbc"
+		class="com.boco.eoms.km.knowledge.dao.jdbc.KmContentsDaoJdbc"
+		autowire="byName" />
+
+	<!-- 知识订阅的spring ioc -->
+	<!-- 知识订阅的spring ioc -->
+	<bean id="kmContentsSubscribeMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.knowledge.mgr.impl.KmContentsSubscribeMgrImpl">
+				<property name="kmContentsSubscribeDao"
+					ref="kmContentsSubscribeDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmContentsSubscribeDao"
+		class="com.boco.eoms.km.knowledge.dao.hibernate.KmContentsSubscribeDaoHibernate"
+		autowire="byName" />
+
+	<!-- 知识收藏spring ioc -->
+	<bean id="kmContentsCollectMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.knowledge.mgr.impl.KmContentsCollectMgrImpl">
+				<property name="kmContentsCollectDao"
+					ref="kmContentsCollectDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmContentsCollectDao"
+		class="com.boco.eoms.km.knowledge.dao.hibernate.KmContentsCollectDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmContentsOpinionMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.knowledge.mgr.impl.KmContentsOpinionMgrImpl">
+				<property name="kmContentsOpinionDao"
+					ref="kmContentsOpinionDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmContentsOpinionDao"
+		class="com.boco.eoms.km.knowledge.dao.hibernate.KmContentsOpinionDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmContentsDictMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.knowledge.mgr.impl.KmContentsDictMgrImpl">
+				<property name="kmContentsDictDao"
+					ref="kmContentsDictDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmContentsDictDao"
+		class="com.boco.eoms.km.knowledge.dao.hibernate.KmContentsDictDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmContentsHistoryMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.knowledge.mgr.impl.KmContentsHistoryMgrImpl">
+				<property name="kmContentsHistoryDao"
+					ref="kmContentsHistoryDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmContentsHistoryDao"
+		class="com.boco.eoms.km.knowledge.dao.hibernate.KmContentsHistoryDaoHibernate"
+		autowire="byName" />
+	<bean id="kmOperateDateLogMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.log.mgr.impl.KmOperateDateLogMgrImpl">
+				<property name="kmOperateDateLogDao"
+					ref="kmOperateDateLogDao" />
+				<property name="kmOperateScoreMgr"
+					ref="kmOperateScoreMgr" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmOperateDateLogDao"
+		class="com.boco.eoms.km.log.dao.hibernate.KmOperateDateLogDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmOperateLogMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.log.mgr.impl.KmOperateLogMgrImpl">
+				<property name="kmOperateLogDao" ref="kmOperateLogDao" />
+				<property name="kmOperateScoreMgr"
+					ref="kmOperateScoreMgr" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmOperateLogDao"
+		class="com.boco.eoms.km.log.dao.hibernate.KmOperateLogDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmOperateScoreMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.KmOperateScoreMgrImpl">
+				<property name="kmOperateScoreDao"
+					ref="kmOperateScoreDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmOperateScoreDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.KmOperateScoreDaoHibernate"
+		autowire="byName" />
+	<bean id="kmTableColumnMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.table.mgr.impl.KmTableColumnMgrImpl">
+				<property name="kmTableColumnDao"
+					ref="kmTableColumnDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmTableColumnDao"
+		class="com.boco.eoms.km.table.dao.hibernate.KmTableColumnDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmTableDictMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.table.mgr.impl.KmTableDictMgrImpl">
+				<property name="kmTableDictDao" ref="kmTableDictDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmTableDictDao"
+		class="com.boco.eoms.km.table.dao.hibernate.KmTableDictDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmTableGeneralMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.table.mgr.impl.KmTableGeneralMgrImpl">
+				<property name="kmTableGeneralDao"
+					ref="kmTableGeneralDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmTableGeneralDao"
+		class="com.boco.eoms.km.table.dao.hibernate.KmTableGeneralDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmTableThemeMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.table.mgr.impl.KmTableThemeMgrImpl">
+				<property name="kmTableThemeDao" ref="kmTableThemeDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmTableThemeDao"
+		class="com.boco.eoms.km.table.dao.hibernate.KmTableThemeDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmTableCacheMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.cache.mgr.imp.KmTableCacheMgrImp">
+				<property name="kmTableCacheDaoJdbc"
+					ref="kmTableCacheDaoJdbc" />
+				<property name="kmTableGeneralDao"
+					ref="kmTableGeneralDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmTableCacheDaoJdbc"
+		class="com.boco.eoms.km.cache.dao.jdbc.KmTableCacheDaoJdbc"
+		autowire="byName" />
+
+	<!-- 统计部分 spring bean -->
+	<bean id="baseStatisticMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.BaseStatisticMgrImpl">
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="baseStatisticDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.BaseStatisticDaoHibernate"
+		autowire="byName" />
+	
+	<bean id="deptContributeStatisticMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.DeptContributeStatisticMgrImpl">
+				<property name="deptContributeStatisticDao"
+					ref="deptContributeStatisticDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="deptContributeStatisticDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.DeptContributeStatisticDaoHibernate"
+		autowire="byName" />
+
+	<bean id="knowledgeChangesStatisticMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.KnowledgeChangesStatisticMgrImpl">
+				<property name="knowledgeChangesStatisticDao"
+					ref="knowledgeChangesStatisticDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="knowledgeChangesStatisticDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.KnowledgeChangesStatisticDaoHibernate"
+		autowire="byName" />
+
+	<bean id="personalAuditStatisticMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.PersonalAuditStatisticMgrImpl">
+				<property name="personalAuditStatisticDao"
+					ref="personalAuditStatisticDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="personalAuditStatisticDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.PersonalAuditStatisticDaoHibernate"
+		autowire="byName" />
+
+	<bean id="personalContributeStatisticMgr"
+		parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.PersonalContributeStatisticMgrImpl">
+				<property name="personalContributeStatisticDao"
+					ref="personalContributeStatisticDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="personalContributeStatisticDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.PersonalContributeStatisticDaoHibernate"
+		autowire="byName" />
+	
+	<bean id="personalStatisticMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.PersonalStatisticMgrImpl">
+				<property name="personalStatisticDao"
+					ref="personalStatisticDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="personalStatisticDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.PersonalStatisticDaoHibernate"
+		autowire="byName" />
+
+	<bean id="personalUseStatisticMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.statics.mgr.impl.PersonalUseStatisticMgrImpl">
+				<property name="personalUseStatisticDao"
+					ref="personalUseStatisticDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="personalUseStatisticDao"
+		class="com.boco.eoms.km.statics.dao.hibernate.PersonalUseStatisticDaoHibernate"
+		autowire="byName" />
+
+	<bean id="kmRuleMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.rule.mgr.impl.KmRuleMgrImpl">
+				<property name="kmRuleDao" ref="kmRuleDao" />
+				<property name="kmContentsDaoJdbc"
+					ref="kmContentsDaoJdbc" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="kmRuleDao"
+		class="com.boco.eoms.km.rule.dao.hibernate.KmRuleDaoHibernate"
+		autowire="byName" />	
+			
+		<bean id="kmExamChoiceMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamChoiceMgrImpl">
+				<property name="kmExamChoiceDao" ref="kmExamChoiceDao" />
+			</bean>
+		</property>
+	</bean>
+
+		
+	<bean id="kmAuditerMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.kmAuditer.mgr.impl.KmAuditerMgrImpl">
+				<property name="kmAuditerDao" ref="kmAuditerDao" />
+			</bean>
+		</property>
+	</bean>
+
+
+
+	<bean id="kmExamChoiceDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamChoiceDaoHibernate"
+		autowire="byName" />
+		
+		<bean id="kmExamQuestionsMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamQuestionsMgrImpl">
+				<property name="kmExamQuestionsDao" ref="kmExamQuestionsDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamQuestionsDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamQuestionsDaoHibernate"
+		autowire="byName" />
+		
+		<bean id="kmExamTestMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamTestMgrImpl">
+				<property name="kmExamTestDao" ref="kmExamTestDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamTestDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamTestDaoHibernate"
+		autowire="byName" />
+
+<bean id="kmExamTestTypeMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamTestTypeMgrImpl">
+				<property name="kmExamTestTypeDao" ref="kmExamTestTypeDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamTestTypeDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamTestTypeDaoHibernate"
+		autowire="byName" />
+		
+		<bean id="kmExamTestTypeContentMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamTestTypeContentMgrImpl">
+				<property name="kmExamTestTypeContentDao" ref="kmExamTestTypeContentDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamTestTypeContentDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamTestTypeContentDaoHibernate"
+		autowire="byName" />
+		
+		<bean id="kmExamSpecialtyMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamSpecialtyMgrImpl">
+				<property name="kmExamSpecialtyDao" ref="kmExamSpecialtyDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamSpecialtyDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamSpecialtyDaoHibernate"
+		autowire="byName" />
+		
+		<bean id="kmExamAnswersMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamAnswersMgrImpl">
+				<property name="kmExamAnswersDao" ref="kmExamAnswersDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamAnswersDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamAnswersDaoHibernate"
+		autowire="byName" />
+		
+	<bean id="kmExamPublicMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamPublicMgrImpl">
+				<property name="kmExamPublicDao" ref="kmExamPublicDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamPublicDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamPublicDaoHibernate"
+		autowire="byName" />
+		
+	<bean id="kmExamAttendMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.exam.mgr.impl.KmExamAttendMgrImpl">
+				<property name="kmExamAttendDao" ref="kmExamAttendDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmExamAttendDao"
+		class="com.boco.eoms.km.exam.dao.hibernate.KmExamAttendDaoHibernate"
+		autowire="byName" />
+	
+
+	<bean id="kmAuditerDao"
+		class="com.boco.eoms.km.kmAuditer.dao.hibernate.KmAuditerDaoHibernate"
+		autowire="byName" />
+		
+	<bean id="kmAuditerStepMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.km.kmAuditerStep.mgr.impl.KmAuditerStepMgrImpl">
+				<property name="kmAuditerStepDao" ref="kmAuditerStepDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="kmAuditerStepDao"
+		class="com.boco.eoms.km.kmAuditerStep.dao.hibernate.KmAuditerStepDaoHibernate"
+		autowire="byName" />
+
+</beans>
+
+
+
+

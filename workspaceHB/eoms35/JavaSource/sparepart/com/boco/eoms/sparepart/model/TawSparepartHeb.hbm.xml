@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.sparepart.model.SparepartHeb"  table="TAW_SP_SPAREPART">
+
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="OBJECTTYPE" length="32" name="objecttype" type="string"/>
+<property column="VERSION" length="40" name="version"  type="string"/>
+<property column="OBJECTNAME" length="40" name="objectname" type="string"/>
+<property column="NETTYPE" length="32" name="nettype" type="string"/>
+<property column="SERIALNO" length="64" name="serialno" type="string"/>
+<property column="MADEIN" length="30" name="madein" type="integer"/>
+<property column="SUPPLIER" length="32" name="supplier" type="string"/>
+<property column="OPERATOR" length="64" name="operator" type="string"/>
+<property column="INTIME" length="7" name="intime" type="date"/>
+<property column="OUTTIME" length="7" name="outtime" type="date"/>
+<property column="STATE" length="5" name="state" type="integer"/>
+<property column="EXCEPTIONNOTE" length="255" name="exceptionnote" type="string"/>
+<property column="STORAGEID" length="32" name="storageid" type="string"/>
+<property column="NOTE" length="255" name="note" type="string"/>
+<property column="NECODE" length="5" name="necode" type="integer"/>
+<property column="SWVERSION" length="50" name="swversion" type="string"/>
+<property column="CONTRACT" length="50" name="contract" type="string"/>
+<property column="HWVERSION" length="10" name="hwversion" type="string"/>
+<property column="UPDATETIME" length="7" name="updatetime" type="date"/>
+<property column="PRODUCTCODE" length="40" name="productcode" type="string"/>
+<property column="MANAGECODE" length="40" name="managecode" type="string"/>
+<property column="EXPIRE" length="7" name="expire" type="date"/>
+<property column="UNITS" length="10" name="units" type="string"/>
+<property column="PROFORM" length="5" name="proform" type="integer"/>
+<property column="POSITION" length="1024" name="position" type="string"/>
+<property column="LOANNUM" length="5" name="loannum" type="integer"/>
+<property column="REPAIRNUM" length="5" name="repairnum" type="integer"/>
+<property column="MONEY" length="25" name="money" type="string"/>
+<property column="DEPT_ID" length="32" name="deptId" type="string"/>
+<property column="SHEETID" length="64" name="sheetid" type="string"/>
+<property column="WARRANTY_FLAG" length="5" name="warrantyFlag" type="integer"/>
+<property column="STOPPRODUCT_FLAG" length="5" name="stopproductFlag" type="integer"/>
+<property column="SPAREPART_FLAG" length="5" name="sparepartFlag" type="integer"/>
+<property column="BORROW_STATE" length="5" name="borrowState" type="integer"/>
+<property column="ORG_SERIAL_NO" length="64" name="orgSerialNo" type="string"/>
+<property column="ACCESSORY" length="50" name="accessory" type="string"/>
+<property column="THEFILE" length="100" name="thefile" type="string"/>
+<property column="SUBDEPT" length="5" name="subdept" type="integer"/>
+<property column="PROPOSER" length="64" name="proposer" type="string"/>
+<property column="COMPANY" length="64" name="company" type="string"/>
+<property column="OBJTYPE" length="64" name="objtype" type="string"/>
+<property column="REPAIR_ENDTIME" length="64" name="repairEndtime" type="string"/>
+<property column="REPAIRTIME" length="64" name="repairtime" type="string"/>
+<property column="FIXE" length="64" name="fixe" type="string"/>
+<property column="DELETED" length="1" name="deleted" type="string"/>
+<property column="PARTTYPE" length="5" name="parttype" type="string"/>
+<property column="CHECKSUM" length="5" name="checksum" type="string"/>
+<property column="DESCRIBE" length="100" name="describe" type="string"/>
+</class>
+</hibernate-mapping>

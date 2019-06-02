@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.sheetflowline.model.PreAllocated"
+		table="PREALLOCATED">
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+			</generator>
+		</id>
+
+
+		<property name="dutyLeader" column="DUTYLEADER" length="32" not-null="true" unique="false">
+		</property>
+
+		<property name="startTime" column="STARTTIME" length="32" not-null="true" unique="false">
+		</property>
+
+		<property name="endTime" column="ENDTIME" length="5" not-null="true" unique="false">
+		</property>
+
+		<property name="netTypeOne" column="NETTYPEONE" length="32" not-null="true" unique="false">
+		</property>
+
+		<property name="netTypeTwo" column="NETTYPETWO" length="32" not-null="true" unique="false">
+		</property>
+
+		<property name="netTypeThree" column="NETTYPETHREE" length="32" not-null="false" unique="false">
+		</property>
+
+		<property name="vendor" column="VENDOR" length="50" not-null="true" unique="false">
+		</property>
+
+		<property name="dutyUserId" column="DUTYUSERID" length="64" not-null="true" unique="false">
+		</property>
+
+		<property name="faultResponseLevel" column="FAULTRESPONSELEVEL" length="32" not-null="true" unique="false">
+		</property>
+
+		<property name="count" column="COUNT" length="5" not-null="true" unique="false">
+		</property>
+
+		<property name="isopen" column="ISOPEN" length="1" not-null="true" unique="false">
+		</property>
+
+		<property name="createTime" column="CREATETIME" length="50" not-null="true" unique="false">
+		</property>
+
+		<property name="createUser" column="CREATEUSER" length="50" not-null="true" unique="false">
+		</property>
+		<property name="alreadyCount" column="ALREADYCOUNT" length="5" not-null="true" unique="false">
+		</property>
+
+	
+	</class>
+
+</hibernate-mapping>
+

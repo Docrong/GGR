@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpMonthExecuteUser"
+        table="TAW_WP_MONTHEXECUTEUSER"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpMonthExecuteUser.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="executer"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="EXECUTER"
+            length="100"
+            not-null="false"
+        />
+
+        <property
+            name="executerType"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="EXECUTERTYPE"
+            length="1"
+            not-null="false"
+        />
+
+        <property
+            name="executeRoom"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="EXECUTEROOM"
+            length="100"
+            not-null="false"
+        />
+
+        <property
+            name="executeDuty"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="EXECUTEDUTY"
+            length="1"
+            not-null="false"
+        />
+
+        <property
+            name="yearFlag"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="YEARFLAG"
+            length="4"
+            not-null="true"
+        />
+
+        <property
+            name="monthFlag"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="MONTHFLAG"
+            length="2"
+            not-null="true"
+        />
+
+        <property
+            name="content"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CONTENT"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="reportDate"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="REPORTDATE"
+            length="19"
+            not-null="false"
+        />
+
+        <property
+            name="state"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATE"
+            length="1"
+            not-null="true"
+        />
+        
+        <many-to-one
+            name="tawwpMonthPlan"
+            class="com.boco.eoms.workplan.model.TawwpMonthPlan"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MONTH_PLAN_ID"
+            not-null="true"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpMonthExecuteUser.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

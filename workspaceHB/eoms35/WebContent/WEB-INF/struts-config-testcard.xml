@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+
+  <!-- ========== Data Sources Definitions =================================== -->
+  <!--
+    Define your Struts data sources in a file called struts-data-sources.xml and place
+    it in your merge directory.
+  -->
+
+  <!-- ========== Form Bean Definitions =================================== -->
+  <form-beans>
+
+    <!--
+         If you have non XDoclet forms, define them in a file called struts-forms.xml and
+         place it in your merge directory.
+    -->
+		<form-bean name="tawRmTestcardForm"
+			type="com.boco.eoms.otherwise.webapp.form.TawRmTestcardForm" />
+		<form-bean name="tawRmInoutRecordForm"
+			type="com.boco.eoms.otherwise.webapp.form.TawRmInoutRecordForm" />
+		<form-bean name="tawRmRenewalForm"
+			type="com.boco.eoms.otherwise.webapp.form.TawRmRenewalForm" />
+  </form-beans>
+
+  <!-- ========== Global Exceptions Definitions =================================== -->
+      <global-exceptions>
+        <exception type="java.lang.Exception"
+            key="errors.general"
+            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
+
+  <!-- ========== Global Forward Definitions =================================== -->
+      <global-forwards>
+		<forward name="failure" path="/common/fail.jsp"
+			contextRelative="true" />
+		<forward name="success" path="/success.jsp"
+			contextRelative="true" />
+		<forward name="error" path="/error.jsp" contextRelative="true" />
+		<forward name="timeout" path="/timeout.jsp"
+			contextRelative="true" />
+		<forward name="cancel" path="/servlet/main.do" />
+		<forward name="nopriv" path="/nopriv.jsp"
+			contextRelative="true" />
+		<forward name="notonduty" path="/notonduty.jsp" />
+		<forward name="notdutymaster" path="/notdutymaster.jsp" />
+		<forward name="notselectperson" path="/notselectperson.jsp" />
+		<forward name="configdup" path="/configdup.jsp" />
+		<forward name="noWorkserialData" path="/noWorkserialData.jsp" />
+		<forward name="successok" path="/common/success.jsp"
+			redirect="false" contextRelative="true" />
+		<forward name="sms" path="/common/smsfailure.jsp"
+			redirect="false" contextRelative="true" />
+		<forward name="fail" path="/common/fail.jsp" redirect="false"
+			contextRelative="true" />
+		<forward name="notonduty1" path="/duty/notonduty1.jsp" redirect="false" contextRelative="true" />
+    </global-forwards>
+
+  <!-- ========== Action Mapping Definitions =================================== -->
+   <action-mappings>
+    <action
+      path="/tawRmTestcards"
+      type="com.boco.eoms.otherwise.webapp.action.TawRmTestcardAction"
+      name="tawRmTestcardForm" scope="request" input="main" parameter="method"
+      unknown="false" validate="false">
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+	  <forward name="testcardMain"
+			path="/WEB-INF/pages/tawRmTestcard/main.jsp" redirect="false"
+			contextRelative="true" />
+      <forward
+        contextRelative="true"
+        name="main"
+        path="/WEB-INF/pages/tawRmTestcard/tawRmTestcardTree.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="edit"
+        path="/WEB-INF/pages/tawRmTestcard/tawRmTestcardForm.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="list"
+        path="/WEB-INF/pages/tawRmTestcard/tawRmTestcardList.jsp"
+        redirect="false"
+      />
+	  <forward name="testCardSearch"
+		path="/WEB-INF/pages/tawRmTestcard/tawRmTestcardSearch.jsp"
+		redirect="false" contextRelative="true" />
+		
+	  <forward name="warning"
+		path="/WEB-INF/pages/tawRmTestcard/warning.jsp" redirect="false"
+		contextRelative="true" />
+		
+	  <forward name="statTestCard"
+		path="/WEB-INF/pages/tawRmTestcard/statTestCard.jsp" redirect="false"
+		contextRelative="true" />
+		
+	  <forward name="statTestCardList"
+		path="/WEB-INF/pages/tawRmTestcard/statTestCardList.jsp" redirect="false"
+		contextRelative="true" />
+		
+	  <forward name="viewContent"
+		path="/WEB-INF/pages/tawRmTestcard/viewContent.jsp" redirect="false"
+		contextRelative="true" />
+    </action>
+    
+    <action
+      path="/tawRmInoutRecords"
+      type="com.boco.eoms.otherwise.webapp.action.TawRmInoutRecordAction"
+      name="tawRmInoutRecordForm"
+      scope="request"
+      input="main"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        contextRelative="true"
+        name="main"
+        path="/WEB-INF/pages/tawRmInoutRecord/tawRmInoutRecordTree.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="edit"
+        path="/WEB-INF/pages/tawRmInoutRecord/tawRmInoutRecordForm.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="list"
+        path="/WEB-INF/pages/tawRmInoutRecord/tawRmInoutRecordList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="outEdit"
+        path="/WEB-INF/pages/tawRmInoutRecord/outEdit.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="inEdit"
+        path="/WEB-INF/pages/tawRmInoutRecord/inEdit.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="outStorage"
+        path="/WEB-INF/pages/tawRmInoutRecord/outStorage.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="inStorage"
+        path="/WEB-INF/pages/tawRmInoutRecord/inStorage.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="inoutRecordRearch"
+        path="/WEB-INF/pages/tawRmInoutRecord/inoutRecordRearch.jsp"
+        redirect="false"
+      />
+	  <forward name="statInoutRecord"
+		path="/WEB-INF/pages/tawRmInoutRecord/statInoutRecord.jsp" redirect="false"
+		contextRelative="true" />
+		
+	  <forward name="statInoutRecordList"
+		path="/WEB-INF/pages/tawRmInoutRecord/statInoutRecordList.jsp" redirect="false"
+		contextRelative="true" />
+    </action>
+	<action
+      path="/tawRmRenewals"
+      type="com.boco.eoms.otherwise.webapp.action.TawRmRenewalAction"
+      name="tawRmRenewalForm"
+      scope="request"
+      input="main"
+      parameter="method"
+      unknown="false"
+      validate="false"
+    >
+      <set-property
+        property="cancellable"
+        value="true"
+      />
+      <forward
+        contextRelative="true"
+        name="main"
+        path="/WEB-INF/pages/tawRmRenewal/tawRmRenewalTree.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="edit"
+        path="/WEB-INF/pages/tawRmRenewal/tawRmRenewalForm.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="list"
+        path="/WEB-INF/pages/tawRmRenewal/tawRmRenewalList.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="renewEdit"
+        path="/WEB-INF/pages/tawRmRenewal/renewEdit.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="renewDate"
+        path="/WEB-INF/pages/tawRmRenewal/renewDate.jsp"
+        redirect="false"
+      />
+      <forward
+        contextRelative="true"
+        name="renewRecordRearch"
+        path="/WEB-INF/pages/tawRmRenewal/renewRecordSearch.jsp"
+        redirect="false"
+      />
+    </action>
+    
+       <!-- Forwards to the mainMenu tile definition -->
+    <action path="/mainMenu" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/mainMenu.jsp"/>
+
+    <!-- Action to flush cache -->
+    <action path="/flush" type="org.apache.struts.actions.ForwardAction"
+        parameter="/WEB-INF/pages/flushCache.jsp" roles="admin"/>
+
+  </action-mappings>
+
+  <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+      <message-resources parameter="config/ApplicationResources-duty"/>
+
+      <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" 
+                      value="/WEB-INF/validator-rules.xml,
+                             /WEB-INF/validator-rules-custom.xml,
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
+
+</struts-config>

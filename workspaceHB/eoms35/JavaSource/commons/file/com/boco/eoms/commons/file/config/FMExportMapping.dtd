@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated from FMExportSample.xml by XMLBuddy -->
+<!ELEMENT fieldName (#PCDATA)>
+<!ELEMENT font EMPTY>
+<!ATTLIST font color NMTOKEN #REQUIRED family NMTOKEN #REQUIRED size NMTOKEN 
+	#REQUIRED style NMTOKEN #REQUIRED text CDATA #REQUIRED weight NMTOKEN 
+	#REQUIRED >
+<!ELEMENT header (headerName,fieldName,type,length,isNull)>
+<!ATTLIST header col NMTOKEN #REQUIRED>
+<!ELEMENT headerName (#PCDATA)>
+<!ELEMENT headers (header+)>
+<!ATTLIST headers endCol NMTOKEN #REQUIRED endRow NMTOKEN #REQUIRED startCol 
+	NMTOKEN #REQUIRED startRow NMTOKEN #REQUIRED >
+<!ELEMENT isNull (#PCDATA)>
+<!ELEMENT length (#PCDATA)>
+<!ELEMENT page (titles,headers+)>
+<!ATTLIST page className NMTOKEN #REQUIRED name NMTOKEN #REQUIRED num NMTOKEN 
+	#REQUIRED >
+<!ELEMENT pages (page+)>
+<!ELEMENT title (font)>
+<!ATTLIST title endCol NMTOKEN #REQUIRED endRow NMTOKEN #REQUIRED startCol 
+	NMTOKEN #REQUIRED startRow NMTOKEN #REQUIRED >
+<!ELEMENT titles (title+)>
+<!ELEMENT type (#PCDATA)>

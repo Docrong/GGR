@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.km.lesson.model.LessonAnaysis"
+		table="km_exam_attend">
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+			</generator>
+		</id>
+
+		<property name="testID" column="test_id" length="32"
+			not-null="true" unique="false">
+
+		</property>
+
+		<property name="attendUser" column="attend_user" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="attendDept" column="attend_dept" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="attendTime" column="attend_time" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="attendOverTime" column="attend_over_time"
+			length="32" not-null="false" unique="false">
+
+		</property>
+
+		<property name="score" column="score" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="isRead" column="is_read" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="isPublic" column="is_public" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="readUser" column="read_user" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="readDept" column="read_dept" length="32"
+			not-null="false" unique="false">
+
+		</property>
+
+	</class>
+
+</hibernate-mapping>
+

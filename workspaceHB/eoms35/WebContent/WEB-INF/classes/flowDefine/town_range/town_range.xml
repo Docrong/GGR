@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE workflow PUBLIC "-//OpenSymphony Group//DTD OSWorkflow 2.8//EN" "http://www.opensymphony.com/osworkflow/workflow_2_6.dtd">
+<workflow>
+  <initial-actions>
+    <action id="4" name="Draft" view="保存">
+      <results>
+        <unconditional-result id="4" old-status="Finished" status="Queued" step="1" />
+      </results>
+    </action>
+    <action id="31" name="NewSend" view="派发">
+      <results>
+        <unconditional-result id="31" old-status="Finished" status="Queued" step="3" />
+      </results>
+    </action>
+  </initial-actions>
+  <steps>
+    <step id="1" name="起草工单（县公司一）">
+      <actions>
+        <action id="30" name="Send" view="派发">
+          <results>
+            <unconditional-result id="30" old-status="Finished" status="Queued" step="3"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="3" name="县公司二">
+      <actions>
+        <action id="26" name="BackToUp" view="回复上级">
+          <results>
+            <unconditional-result id="26" old-status="Finished" status="Queued" step="24"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="10" name="县公司一的上级分公司">
+      <actions>
+        <action id="16" name="Transmit" view="转派">
+          <results>
+            <unconditional-result id="16" old-status="Finished" status="Queued" step="14" ifMakeCopyFor="true"/>
+          </results>
+        </action>
+        <action id="46" name="RejectDoneToUp" view="驳回到上一级">
+          <results>
+            <unconditional-result id="46" old-status="Finished" status="Queued" step="1"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="14" name="工单处理，省计费中心">
+      <actions>
+        <action id="36" name="BackToUp" view="回复上级">
+          <results>
+            <unconditional-result id="36" old-status="Finished" status="Queued" step="34"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="21" name="完成">
+    </step>
+    <step id="24" name="工单（县公司一）">
+      <actions>
+        <action id="28" name="Transmit" view="转派">
+          <results>
+            <unconditional-result id="28" old-status="Finished" status="Queued" step="10" ifMakeCopyFor="true"/>
+          </results>
+        </action>
+        <action id="63" name="BackToDownReject" view="处理回复不通过">
+          <results>
+            <unconditional-result id="63" old-status="Finished" status="Queued" step="3"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+    <step id="34" name="县公司一的上级分公司">
+      <actions>
+        <action id="42" name="Hold" view="归档">
+          <results>
+            <unconditional-result id="42" old-status="Finished" status="Queued" step="21"/>
+          </results>
+        </action>
+        <action id="65" name="BackToDownReject" view="处理回复不通过">
+          <results>
+            <unconditional-result id="65" old-status="Finished" status="Queued" step="14"/>
+          </results>
+        </action>
+      </actions>
+    </step>
+  </steps>
+</workflow>

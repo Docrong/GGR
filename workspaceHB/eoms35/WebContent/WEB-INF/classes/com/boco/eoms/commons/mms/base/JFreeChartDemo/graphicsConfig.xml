@@ -1,0 +1,31 @@
+<GraphicConfig>
+ <!--图形报表配置，需要与算法配置相对应配置,可以配置多个-->
+ <graphic-report>
+  <name>commonfault_T_resolve_byuser</name><!--唯一标识统计图形报表-->
+  <title>数据篇</title><!--图形报表标题-->
+  
+  <!--add by lizhenyou-->
+  <select-type>line,column,columnline,pie</select-type><!--标识当前可以选择的图形报表类型，取值范围:column\line\columnline\pie  的任意组合-->
+  <!--add end-->
+
+  <!--配置分组的字段，需要与算法配置中的SummaryDefine节点相对应，可以配置多个
+   id:与算法配置的id对应，标识分组字段的数据id
+   name:标识分组字段的名字
+  -->
+ <summary-define id="s1" name="处理人" id2name-service="statBaseUserId2name_v35"/>
+  <!--<summary-define id="s2" name="网络分类" id2name-service="statDictId2name_v35"/>
+  <summary-define id="s3" name="地域" id2name-service="statAreaId2name_v35"/>-->
+
+
+  <!--配置指标字段，需要与算法配置中的FieldDefine节点相对应，可以配置多个
+   id:与算法配置的id对应,标识指标字段的数据id
+   name:标识指标字段的名字，图例的名字 
+   type:识该指标需要绘制的图形样式：线，柱，饼。取值范围：line,column,pie 可以省略，默认为select-type中的除columnline的值
+   如果是选择线柱结合的情况必须要配置 type属性
+  -->
+  <field-define id="f1" name="投诉量" type="column"/>
+<field-define id="f2" name="覆盖" type="column"/>
+<field-define id="f3" name="质量" type="line"/>
+<field-define id="f4" name="拥塞" type="column"/>
+ </graphic-report>
+</GraphicConfig>

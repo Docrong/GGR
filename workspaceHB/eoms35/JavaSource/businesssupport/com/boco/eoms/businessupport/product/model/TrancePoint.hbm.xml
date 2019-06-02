@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+
+	<class name="com.boco.eoms.businessupport.product.model.TrancePoint"
+		table="b_trancePoint">
+
+		<id name="id" column="id" unsaved-value="null">
+
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+
+			</generator>
+
+		</id>
+
+		<property name="orderSheetId" column="orderSheetId"
+			not-null="true" unique="false">
+
+		</property>
+
+		<property name="portEngineRoomName" column="portEngineRoomName"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="portInterfaceType" column="portInterfaceType"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="portDeviceName" column="portDeviceName"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="portCustAidPerson" column="portCustAidPerson"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="portACustAidPhone" column="portACustAidPhone"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="portDetailAdd" column="portDetailAdd"
+			not-null="true" unique="false">
+
+		</property>
+
+		<property name="sevPointContact" column="sevPointContact"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="sevPointContactPhone"
+			column="sevPointContactPhone" not-null="false" unique="false">
+
+		</property>
+
+		<property name="sevPointContactEmail"
+			column="sevPointContactEmail" not-null="false" unique="false">
+
+		</property>
+
+		<property name="sevPointContactAdd" column="sevPointContactAdd"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="fiberEquipName" column="fiberEquipName"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="fiberEquipCode" column="fiberEquipCode"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="siteEquipCode" column="siteEquipCode"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="siteName" column="siteName" not-null="false"
+			unique="false">
+
+		</property>
+
+		<property name="accessSiteIden" column="accessSiteIden"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="remark" column="remark" not-null="false"
+			unique="false">
+
+		</property>
+		<property name="fiberNum" column="fiberNum" not-null="false"
+			unique="false">
+
+		</property>
+
+		<property name="fiberLength" column="fiberLength"
+			not-null="false" unique="false">
+
+		</property>
+
+		<property name="fiberOwner" column="fiberOwner" not-null="false"
+			unique="false">
+
+		</property>
+				<property name="userEquipDescribe" column="userEquipDescribe" not-null="false"
+			unique="false">
+
+		</property>
+		<property name="accesPortDescribe" column="accesPortDescribe" not-null="false"
+			unique="false">
+
+		</property>
+
+	</class>
+
+</hibernate-mapping>
+

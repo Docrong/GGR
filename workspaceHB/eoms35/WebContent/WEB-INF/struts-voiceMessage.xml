@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!-- Generated with Karapan Sapi Struts Generator --><!-- Visit http://www.javanovic.com         --><struts-config>
+    <!-- ============ DataSource Pool ============ -->
+
+  <!-- ============ Form beans ============ -->
+  <form-beans>
+    <form-bean type="com.boco.eoms.voiceMessage.controller.TawHieDefForm" name="tawHieDefForm" />
+    <form-bean type="com.boco.eoms.commons.voiceMessage.webapp.form.TawHieApplyForm" name="tawHieApplyForm" />
+  </form-beans>
+
+  <!-- ============ Global forwards ============ -->
+  <global-forwards type="org.apache.struts.action.ActionForward">
+    <forward name="failure" path="/../failure.jsp" />
+    <forward name="success1" path="/../success.jsp" />
+    <forward name="success3" path="/../success.jsp" />
+    <forward name="success" path="/../success.jsp" />
+    <forward name="error" path="/../failure.jsp" />
+    <forward name="timeout" path="/../timeout.jsp" />
+    <forward name="nopriv" path="/../nopriv.jsp" />
+  </global-forwards>
+
+  <!-- ============ Action Mapping definitions ============ -->
+  <action-mappings type="org.apache.struts.action.ActionMapping">
+
+    <!-- <<<<<<<<<<<<<< TawHieApply >>>>>>>>>>>>>>> -->
+    <action path="/TawHieApply/add" parameter="ADD" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/entry.jsp" />
+    </action>
+    <action path="/TawHieApply/add2" parameter="ADD2" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/entry2.jsp" />
+    </action>
+    <action path="/TawHieApply/edit" parameter="EDIT" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/edit.jsp" />
+    </action>
+    <action path="/TawHieApply/list" parameter="LIST" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/summary.jsp" />
+    </action>
+    <action path="/TawHieApply/view" parameter="VIEW" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/view.jsp" />
+    </action>
+    <action path="/TawHieApply/remove" parameter="REMOVE" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/remove.jsp" />
+    </action>
+    <action path="/TawHieApply/trash" parameter="TRASH" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" redirect="true" path="/TawHieApply/list.do" />
+      <forward name="cancel" redirect="true" path="/TawHieApply/list.do" />
+    </action>
+    <action path="/TawHieApply/save" parameter="SAVE" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="true" input="/TawHieApply/add.do">
+      <forward name="success" redirect="true" path="/TawHieApply/list.do" />
+      <forward name="duplicate" path="/TawHieDef/add.do" />
+    </action>
+    <action path="/TawHieApply/update" parameter="SAVE2" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="true" input="/TawHieApply/edit.do">
+      <forward name="success" redirect="true" path="/TawHieApply/list.do" />
+      <forward name="duplicate" path="/TawHieApply/edit.do" />
+    </action>
+    <action path="/TawHieApply/searchdo" parameter="SEARCHDO" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="session" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/query/TawHieApply/searchdo.jsp" />
+    </action>
+    <action path="/TawHieApply/search" parameter="SEARCH" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/query/TawHieApply/search.jsp" />
+    </action>
+    <action path="/TawHieApply/vipdo" parameter="VIPDO" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="session" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/query/TawHieApply/vipdo.jsp" />
+    </action>
+    <action path="/TawHieApply/vip" parameter="VIP" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/query/TawHieApply/vip.jsp" />
+    </action>
+    <action path="/TawHieApply/assistantdo" parameter="ASSISTANTDO" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="session" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/query/TawHieApply/assistantdo.jsp" />
+    </action>
+    <action path="/TawHieApply/assistant" parameter="ASSISTANT" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/query/TawHieApply/assistant.jsp" />
+    </action>
+    <action path="/TawHieApply/conf" parameter="CONF" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/conference.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/addconf" parameter="ADDCONF" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="session" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/confmember.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/allmems" parameter="ALLMEMS" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="session" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/confmember.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/addmems" parameter="ADDMEMS" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="session" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/listconfinfo.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/listconfdo" parameter="LISTCONFDO" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="session" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/confdo.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/listconf" parameter="LISTCONF" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/conf.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/listconmem" parameter="LISTCONMEM" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/listconfmem.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/ast" parameter="AST" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/addast.jsp" />
+    </action>
+    <action path="/TawHieApply/addast" parameter="ADDAST" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/../success.jsp" />
+    </action>
+    <action path="/TawHieApply/addvip" parameter="ADDVIP" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/manager/TawHieApply/addvip.jsp" />
+    </action>
+    <action path="/TawHieApply/addvipdo" parameter="ADDVIPDO" type="com.boco.eoms.voiceMessage.controller.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/../success.jsp" />
+    </action>
+    <action path="/TawHieApply/adduser" parameter="ADDUSER" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/adduser.jsp" redirect="false"  contextRelative="true" />
+    </action>
+       
+    <action path="/TawHieApply/adduserdo" parameter="ADDUSERDO" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/TawHieApply/listtuser.do" />
+    </action>
+      <action path="/TawHieApply/listtuser" parameter="LISTTUSER" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/listtuser.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+     <action path="/TawHieApply/queryuser" parameter="QUERYUSER" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/queryuser.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/queryuserdo" parameter="QUERYUSERDO" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/listtuser.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    
+    <action path="/TawHieApply/redupdate" parameter="REDUPDATE" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/WEB-INF/pages/tawCommonVoiceMessage/redupdate.jsp" redirect="false"  contextRelative="true" />
+    </action>
+    <action path="/TawHieApply/redupdatedo" parameter="REDUPDATEDO" type="com.boco.eoms.commons.voiceMessage.webapp.action.TawHieApplyAction" scope="request" name="tawHieApplyForm" validate="false">
+      <forward name="success" path="/TawHieApply/listtuser.do" />
+    </action>
+
+    <!-- <<<<<<<<<<<<<< TawHieDef >>>>>>>>>>>>>>> -->
+    <action path="/TawHieDef/add" parameter="ADD" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="false">
+      <forward name="success" path="/manager/TawHieDef/entry.jsp" />
+    </action>
+    <action path="/TawHieDef/edit" parameter="EDIT" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="false">
+      <forward name="success" path="/manager/TawHieDef/entry2.jsp" />
+    </action>
+    <action path="/TawHieDef/list" parameter="LIST" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="false">
+      <forward name="success" path="/manager/TawHieDef/summary.jsp" />
+    </action>
+    <action path="/TawHieDef/view" parameter="VIEW" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="false">
+      <forward name="success" path="/manager/TawHieDef/view.jsp" />
+    </action>
+    <action path="/TawHieDef/remove" parameter="REMOVE" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="false">
+      <forward name="success" path="/manager/TawHieDef/remove.jsp" />
+    </action>
+    <action path="/TawHieDef/trash" parameter="TRASH" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="false">
+      <forward name="success" redirect="true" path="/TawHieDef/list.do" />
+      <forward name="cancel" redirect="true" path="/TawHieDef/list.do" />
+    </action>
+    <action path="/TawHieDef/save" parameter="SAVE" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="true" input="/TawHieDef/add.do">
+      <forward name="success" redirect="true" path="/TawHieDef/list.do" />
+      <forward name="duplicate" path="/TawHieDef/add.do" />
+    </action>
+    <action path="/TawHieDef/save2" parameter="SAVE2" type="com.boco.eoms.voiceMessage.controller.TawHieDefAction" scope="request" name="tawHieDefForm" validate="true" input="/TawHieDef/edit.do">
+      <forward name="success" redirect="true" path="/TawHieDef/list.do" />
+      <forward name="duplicate" path="/TawHieDef/edit.do" />
+    </action>
+
+  </action-mappings>
+
+  <!--controller contentType="text/html;charset=GB2312" locale="true" processorClass="org.apache.struts.tiles.TilesRequestProcessor" /-->
+
+  <!-- ========== Message Resources Definitions =========================== -->
+  <message-resources parameter="resources.application_zh_CN" />
+
+  <!-- ========== Plug Ins Defiguration ================================== -->
+  <!-- Add multiple validator resource files by setting the pathname property -->
+      <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validator-rules.xml,
+                                                  /WEB-INF/validation.xml" />
+      </plug-in>
+
+  <!--plug-in className="org.apache.struts.tiles.TilesPlugin">
+    <set-property property="definitions-config" value="/WEB-INF/tiles-def.xml" />
+    <set-property property="moduleAware" value="true" />
+  </plug-in-->
+
+</struts-config>

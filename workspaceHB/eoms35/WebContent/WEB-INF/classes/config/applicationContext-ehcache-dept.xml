@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="deptCache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="appCacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>com.boco.eoms.commons.system.dept.DEPT_CATCH</value>
+		</property>
+		<!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
+		<property name="maxElementsInMemory">
+			<value>100001</value>
+		</property>
+		<property name="overflowToDisk">
+			<value>true</value>
+		</property>
+		<property name="eternal">
+			<value>true</value>
+		</property>
+		<property name="timeToLive">
+			<value>600</value>
+		</property>
+		<property name="timeToIdle">
+			<value>600</value>
+		</property>
+		<property name="diskPersistent">
+			<value>false</value>
+		</property>
+		<property name="diskExpiryThreadIntervalSeconds">
+			<value>120</value>
+		</property>
+
+	</bean>
+
+
+
+	<bean id="deptCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
+		<property name="cache">
+			<ref local="deptCache" />
+		</property>
+	</bean>
+
+	<bean id="deptCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="deptCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*getNextLevecDepts</value>
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="deptBaseCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>deptCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 自动更新缓存 -->
+	<bean id="deptFlushCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="deptFlushCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*saveTawSystemDept</value>
+				<value>.*removeTawSystemDeptforCatch</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="deptFlushCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
+		<property name="cache">
+			<ref local="deptCache" />
+		</property>
+		<property name="method">
+			<props>
+				<prop
+					key="com.boco.eoms.commons.system.dept.service.impl.TawSystemDeptManagerImpl.saveTawSystemDept">
+					DeptCacheKeyCallback
+				</prop>
+				<prop
+					key="com.boco.eoms.commons.system.dept.service.impl.TawSystemDeptManagerImpl.removeTawSystemDeptforCatch">
+					DeptCacheKeyCallback
+				</prop>
+
+			</props>
+		</property>
+	</bean>
+
+	<bean id="deptBaseFlushCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>deptFlushCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="DeptCacheKeyCallback"
+		class="com.boco.eoms.commons.system.dept.cache.DeptCacheKeyCallback" />
+
+	<bean id="ItawSystemDeptManagerFlush"
+		parent="deptBaseFlushCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.dept.service.impl.TawSystemDeptManagerImpl">
+				<property name="tawSystemDeptDao"
+					ref="tawSystemDeptDao" />
+			</bean>
+		</property>
+	</bean>
+	<bean id="ItawSystemDeptSaveManagerFlush"
+		parent="deptBaseCacheProxy">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.dept.service.impl.TawSystemDeptManagerImpl">
+				<property name="tawSystemDeptDao"
+					ref="tawSystemDeptDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="DeptMgrImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.commons.system.dept.service.impl.DeptMgrImpl">
+				<property name="tawSystemDeptManager"
+					ref="ItawSystemDeptSaveManagerFlush" />
+				<property name="tawSystemDeptDao"
+					ref="tawSystemDeptDao" />
+			</bean>
+		</property>
+	</bean>
+
+</beans>

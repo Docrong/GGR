@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.km.statics.model.KmOperateScore"
+            table="KM_OPERATE_SCORE"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="operateName"
+            	column="OPERATE_NAME"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="score"
+            	column="SCORE"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="operateId"
+            	column="OPERATE_ID"
+                length="20"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        
+    </class>    
+
+</hibernate-mapping>
+

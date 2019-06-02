@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping
+>
+    <class
+            name="com.boco.eoms.message.model.SmsUserLog"
+            table="sms_user_log"
+    >
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+        <property
+            name="userName"
+                length="32"
+                not-null="false"
+                unique="false"
+                column="userName"
+        >
+        </property>
+        <property
+            name="mobile"
+                length="50"
+                not-null="false"
+                unique="false"
+                column="mobile"
+        >
+        </property>
+        <property
+            name="dateTime"
+                length="200"
+                not-null="false"
+                unique="false"
+                column="dateTime"
+        >
+
+        </property>
+        <property
+            name="team"
+                length="30"
+                not-null="true"
+                unique="false"
+                column="team"
+        >
+        </property>
+        <property
+            name="status"
+                length="10"
+                not-null="false"
+                unique="false"
+                column="status"
+        >
+        </property>
+        <property
+            name="dept"
+                length="10"
+                not-null="false"
+                unique="false"
+                column="dept"
+        >
+        </property>
+        
+        
+        <property
+            name="content"
+                length="10"
+                not-null="false"
+                unique="false"
+                column="content"
+        >
+        </property>
+        <property
+            name="timeRemark"
+                length="100"
+                not-null="false"
+                unique="false"
+                column="timeRemark"
+        >
+        </property>
+        <property
+            name="teamName"
+                length="100"
+                not-null="false"
+                unique="false"
+                column="teamName"
+        >
+        </property>
+        
+
+    </class>    
+
+</hibernate-mapping>
+

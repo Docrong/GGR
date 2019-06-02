@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+  <bean id="iAutoT1CrmDAO"
+		class="com.boco.eoms.sheet.autoCrm.dao.hibernate.AutoT1CrmDAOHibernate"
+		autowire="byName">
+	</bean>
+	<bean id="iAutoT1CrmManagerImpl" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.autoCrm.service.impl.AutoT1CrmManagerImpl">
+				<property name="autoT1CrmDAO">
+					<ref bean="iAutoT1CrmDAO" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

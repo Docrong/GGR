@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--所有标签名称都为固定值,不能修改,否则无法解析. -->
+<KpiConfig>
+	<title>kpi统计</title>
+	<est-module-id>42</est-module-id>
+
+	
+	<!--******************************************************************
+********    按(部门)统计 (受理部门)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>intimeStatByRevDept</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param page-name="revDeptId" markflag="true"/>
+
+
+		
+		<summary-define>
+			<id>s1</id><!--受理部门-->
+			<sequence></sequence>
+			<column>est.operatedeptid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.circuitdispatch.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operatedeptid in (@revDeptId@)</where><!-- 可为空 -->
+			
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operatedeptid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operatedeptid=@s1@
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
+			<where>
+			est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operatedeptid=@s1@ and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operatedeptid=@s1@)
+			</where><!-- 可为空 -->
+			
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 撤销数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operatedeptid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operatedeptid=@s1@ and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operatedeptid=@s1@)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 接单-超时数 -->
+				<sequence>1</sequence>
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f1)-f2</stat-sql>
+				<list-hsql>
+				select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operatedeptid 
+				from est_circuitdispatch est 
+				where est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operatedeptid =@s1@
+				and est.mainid not in(select distinct est.mainid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operatedeptid=@s1@ and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operatedeptid=@s1@))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+
+	</kpi-define>	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+<!--******************************************************************
+********    按(处理人)统计 (处理人)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>intimeStatByRevUser</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param page-name="revUserId" markflag="true"/>
+
+		<summary-define>
+			<id>s1</id><!--受理人-->
+			<sequence></sequence>
+			<column>est.operateuserid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.circuitdispatch.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateuserid in (@revUserId@)</where><!-- 可为空 -->
+			
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operateuserid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateuserid='@s1@'
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
+			<where>
+			est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateuserid='@s1@' and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operateuserid='@s1@')
+			</where><!-- 可为空 -->
+			
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 撤销数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operateuserid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateuserid='@s1@' and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operateuserid='@s1@')
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 接单-超时数 -->
+				<sequence>1</sequence>
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f1)-f2</stat-sql>
+				<list-hsql>
+				select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operateuserid 
+				from est_circuitdispatch est 
+				where est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateuserid='@s1@'
+				and est.mainid not in(select distinct est.mainid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateuserid='@s1@' and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operateuserid='@s1@'))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+	</kpi-define>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--******************************************************************
+********    按(受理角色)统计 (受理角色)  ***************************************************
+******************************************************************* -->
+	<kpi-define><!-- 可重复 -->
+		<name>intimeStatByRevRole</name>
+		<kpi-caption></kpi-caption>
+
+		<condition-param page-name="beginTime"/>
+		<condition-param page-name="endTime"/>
+		<condition-param page-name="revRoleid" markflag="true"/>
+
+
+		
+		<summary-define>
+			<id>s1</id><!--受理角色-->
+			<sequence></sequence>
+			<column>est.operateroleid</column><!-- 汇总字段 -->
+			<!--id2name-service>tawSystemDeptDao</id2name-service-->
+			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+			
+		</summary-define>
+
+		<stat-detail-vo>com.boco.eoms.commons.statistic.circuitdispatch.vo.StatDetailVO</stat-detail-vo><!--显示DetailVO-->
+
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateroleid in (@revRoleId@)</where><!-- 可为空 -->
+			
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,estp.linkExecuteEndDate,est.operatetime,est.operateroleid from est_circuitdispatch est ,est_circuitdispatch estp where est.status=1 and est.OPERATETYPE=113 and estp.mainid=est.mainid and estp.operatetype=110 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateroleid=@s1@
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query1</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+			<where>est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateroleid in (@revRoleId@)</where><!-- 可为空 -->
+			
+
+			<field-define><!-- 可重复 -->
+				<id>f1</id><!--总工单数-->
+				<sequence>1</sequence>
+
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+					select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operateroleid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and est.operateroleid=@s1@
+				</list-hsql>
+				
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+		
+		<query-define><!-- 可重复 -->
+			<name>query2</name>
+			<!-- sql片段,用于jdbc统计(分子) -->
+			<from>est_circuitdispatch est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
+			<where>
+			est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateroleid=@s1@ and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operateroleid=@s1@)
+			</where><!-- 可为空 -->
+			
+			<field-define><!-- 可重复 -->
+				<id>f2</id><!-- 撤销数 -->
+				<sequence>1</sequence>
+				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>count(distinct est.mainid)</stat-sql>
+
+				<list-hsql>
+				select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operateroleid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateroleid=@s1@ and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operateroleid=@s1@)
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+			
+			<field-define><!-- 可重复 -->
+				<id>f3</id><!-- 接单-超时数 -->
+				<sequence>1</sequence>
+				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+				<stat-sql>new Integer(f1)-f2</stat-sql>
+				<list-hsql>
+				select distinct est.mainid,est.sheetid,est.title,est.linkExecuteEndDate,est.endtime,est.operateroleid 
+				from est_circuitdispatch est 
+				where est.status=1 and est.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateroleid =@s1@
+				and est.mainid not in(select distinct est.mainid from est_circuitdispatch est where est.status=1 and est.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  and est.operateroleid=@s1@ and est.OPERATETYPE=113 and est.operatetime&lt;(select estp.linkExecuteEndDate from est_circuitdispatch estp where estp.mainid=est.mainid and estp.operatetype=110 and rownum=1 and estp.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and estp.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and estp.operateroleid=@s1@))
+				</list-hsql>
+				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
+			</field-define>
+		</query-define>
+		
+		
+	</kpi-define>	
+	
+	
+	
+	
+	
+	
+</KpiConfig>

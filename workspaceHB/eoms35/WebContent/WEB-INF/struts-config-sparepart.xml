@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+<struts-config>
+  <form-beans>
+    <form-bean name="tawStorageForm" type="com.boco.eoms.sparepart.controller.TawStorageForm" />
+    <form-bean name="tawSparepartForm" type="com.boco.eoms.sparepart.controller.TawSparepartForm" />
+    <form-bean name="tawClassMsgForm" type="com.boco.eoms.sparepart.controller.TawClassMsgForm" />
+    <form-bean name="tawOrderForm" type="com.boco.eoms.sparepart.controller.TawOrderForm" />
+    <form-bean name="tawQueryForm" type="com.boco.eoms.sparepart.controller.TawQueryForm" />
+    <form-bean name="EarlyWarningForm" type="com.boco.eoms.sparepart.controller.EarlyWarningForm" />
+    <form-bean name="tawRemindForm" type="com.boco.eoms.sparepart.controller.TawRemindForm" />
+    <form-bean name="tawTreeForm" type="com.boco.eoms.sparepart.controller.TawTreeForm" />
+    <form-bean name="upLoadsForm" type="com.boco.eoms.sparepart.controller.UpLoadForm" />
+    <form-bean name="tawBorrowForm" type="com.boco.eoms.sparepart.controller.TawBorrowForm" />
+  </form-beans>
+  <global-forwards>
+    <forward name="failure" path="/../failure.jsp" />
+    <forward name="success1" path="/../success.jsp" />
+    <forward name="success" path="/../success.jsp" />
+    <forward name="error" path="/../failure.jsp" />
+    <forward name="timeout" path="/../timeout.jsp" />
+    <forward name="nopriv" path="/../nopriv.jsp" />
+    <forward name="check" path="/ok.jsp" />
+    <forward name="ok" path="/ok.jsp" />
+    <forward name="noData" path="/ok.jsp" />
+  </global-forwards>
+  <action-mappings>
+    <action name="tawStorageForm" parameter="VIEW" path="/storage/view" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false">
+      <forward name="ok" path="/manager/storage/view.jsp" />
+    </action>
+    <action name="tawStorageForm" parameter="CREATE" path="/storage/create" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false">
+      <forward name="ok" path="/manager/storage/create.jsp" />
+    </action>
+    <action name="tawStorageForm" parameter="INSERT" path="/storage/insert" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false" />
+    <action name="tawStorageForm" parameter="EDIT" path="/storage/edit" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false">
+      <forward name="ok" path="/manager/storage/edit.jsp" />
+    </action>
+    <action name="tawStorageForm" parameter="UPDATE" path="/storage/update" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false" />
+    <action name="tawStorageForm" parameter="DROP" path="/storage/drop" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false" />
+    <action name="tawStorageForm" parameter="CHOOSE" path="/storage/choose" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false">
+      <forward name="ok" path="/manager/storage/choose.jsp" />
+    </action>
+    <action name="tawStorageForm" parameter="CHOOSED" path="/storage/choosed" scope="request" type="com.boco.eoms.sparepart.controller.TawStorageAction" validate="false" />
+    <action name="tawClassMsgForm" parameter="TEST" path="/storage/test" scope="request" type="com.boco.eoms.sparepart.controller.testAction" validate="false">
+      <forward name="ok" path="dong.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="CLASS" path="/storage/class" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/class.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="EDITCLASS" path="/storage/editclass" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/editclass.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="UPDATECLASS" path="/storage/updateclass" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false" />
+    <action name="tawClassMsgForm" parameter="DROPCLASS" path="/storage/dropclass" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false" />
+    <action name="tawClassMsgForm" parameter="CLASSTREE" path="/storage/classtree" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/classtree.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="ADDCLASS" path="/storage/addclass" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/addclass.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="INSERTCLASS" path="/storage/insertclass" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false" />
+    <action name="tawClassMsgForm" parameter="SPNAME" path="/storage/spname" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/spname.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="NAMEVIEW" path="/storage/nameview" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/nameview.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="VIEW" path="/class/view" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/view.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="ADD" path="/class/add" scope="request" type="com.boco.eoms.sparepart.controller.TawClassMsgAction" validate="false">
+      <forward name="ok" path="/manager/class/add.jsp" />
+    </action>
+    <action name="tawTreeForm" parameter="VIEW" path="/tree/view" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false">
+      <forward name="ok" path="/manager/tree/view.jsp" />
+    </action>
+	  <action name="tawTreeForm" parameter="SUBDEPT" path="/tree/subDept" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false">
+      <forward name="ok" path="/manager/tree/subDept.jsp" />
+    </action>
+    <action name="tawTreeForm" parameter="ADD" path="/tree/add" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false">
+      <forward name="ok" path="/manager/tree/add.jsp" />
+    </action>
+    <action name="tawTreeForm" parameter="NETROOT" path="/tree/netroot" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false">
+      <forward name="ok" path="/manager/tree/netroot.jsp" />
+    </action>
+    <action name="tawTreeForm" parameter="TYPE" path="/tree/type" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false">
+      <forward name="ok" path="/manager/tree/type.jsp" />
+    </action>
+    <action name="tawTreeForm" parameter="EDIT" path="/tree/edit" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false">
+      <forward name="ok" path="/manager/tree/edit.jsp" />
+    </action>
+    <action name="tawTreeForm" parameter="DROP" path="/tree/drop" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false" />
+    <action name="tawTreeForm" parameter="INSERT" path="/tree/insert" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false" />
+    <action name="tawTreeForm" parameter="UPDATE" path="/tree/update" scope="request" type="com.boco.eoms.sparepart.controller.TawTreeAction" validate="false" />
+    <action name="tawSparepartForm" parameter="NEWVIEW" path="/part/newview" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/newview.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="NEWVIEW2" path="/part/newview2" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/newview2.jsp" />
+    </action>    
+    <!--  <action name="tawSparepartForm" parameter="INAPP" path="/part/inapp" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/inapp.jsp" />
+    </action>-->
+    <action name="tawOrderForm" parameter="INAPP" path="/part/inapp" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/part/inapp.jsp" />
+    </action>    
+    <!--  <action name="tawSparepartForm" parameter="OUTAPP" path="/part/outapp" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/outapp.jsp" />
+    </action>-->
+    <action name="tawOrderForm" parameter="OUTAPP" path="/part/outapp" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/part/outapp.jsp" />
+    </action>    
+    <action name="tawSparepartForm" parameter="INCHECK" path="/part/incheck" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/incheck.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="INCHECKDETAIL" path="/part/incheckdetail" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/incheckdetail.jsp" />
+    </action>    
+    <action name="tawSparepartForm" parameter="INCHECKOK" path="/part/incheckOK" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      
+    </action>
+    <action name="tawSparepartForm" parameter="INCHECKNO" path="/part/incheckNO" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      
+    </action>              
+    <action name="tawSparepartForm" parameter="INPASS" path="/part/inpass" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/inpass.jsp" />
+    </action>   
+    <action name="tawSparepartForm" parameter="INPASSDETAIL" path="/part/inpassdetail" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/inpassdetail.jsp" />
+    </action>   
+    <action name="tawSparepartForm" parameter="INPASSOK" path="/part/inpassOK" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+
+    </action>  
+    <action name="tawSparepartForm" parameter="INPASSNO" path="/part/inpassNO" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+
+    </action>          
+    <action name="tawSparepartForm" parameter="OUTCHECK" path="/part/outcheck" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/outcheck.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="OUTPASS" path="/part/outpass" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/outpass.jsp" />
+    </action>    
+    <action name="tawSparepartForm" parameter="APPBACK" path="/part/appback" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/appback.jsp" />
+    </action>   
+    <action name="tawSparepartForm" parameter="APPBACKDETAIL" path="/part/appbackdetail" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/appbackdetail.jsp" />
+    </action>       
+    <action name="tawSparepartForm" parameter="APPBACKCHECK" path="/part/appbackcheck" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+
+    </action>             
+    <action name="tawSparepartForm" parameter="ADDFAULTPART" path="/part/addFaultPart" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/addFaultPart.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="ADDFAULTPARTSUBMIT" path="/part/addFaultPartSubmit" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/AddFaultPartEnd.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="REVIEW" path="/part/review" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+    </action>
+    <action name="tawSparepartForm" parameter="ADD" path="/part/add" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="checkfileno" path="/manager/order/checkFileErr.jsp" />
+      <forward name="uploadfileno" path="/manager/order/uploadFileErr.jsp" />
+      <forward name="addfaultpartend" path="/manager/part/AddFaultPartEnd.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="LOAD" path="/part/load" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/part/load.jsp" />
+    </action>
+    <action name="tawBorrowForm" parameter="BORROW" path="/part/borrow" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/borrow/borrow_index.jsp" />
+    </action>
+    <action name="tawBorrowForm" parameter="ADD" path="/borrow/add" scope="request" type="com.boco.eoms.sparepart.controller.TawBorrowAction" validate="false">
+      <forward name="borrow_renew" path="/manager/borrow/borrow_renew.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="USED" path="/part/used" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/order.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="SERVICEOUT" path="/part/serviceout" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/order.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="FAULT" path="/part/fault" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/order.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="REJECT" path="/part/reject" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/order.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="ENLARGE" path="/part/enlarge" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/order.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="TRANSFER" path="/part/transfer" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/order.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="TERM" path="/part/term" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/part/term.jsp" />
+      <forward name="toview" path="/part/view.do" />
+      <forward name="upload" path="/manager/order/uploadfile.jsp" />
+      <forward name="newsparepart" path="/part/newview2.do" />
+    </action>
+    <action name="upLoadsForm" parameter="UPLOAD" path="/part/upload" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/part/newview.do" />
+    </action>
+    <action name="upLoadsForm" parameter="UPLOADOVER" path="/part/uploadover" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/part/newview.jsp" />
+      <forward name="checkfileno" path="/manager/order/checkFileErr.jsp" />
+      <forward name="uploadfileno" path="/manager/order/uploadFileErr.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="RETURN" path="/part/return" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/return.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="FORRETURN" path="/part/forreturn" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/forreturn.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="RETURNCONTENT" path="/part/returncontent" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/returncontent.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="RETURNOVER" path="/part/returnover" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false" />
+    <action name="tawOrderForm" parameter="SERVICEIN" path="/part/servicein" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/servicein.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="SERVICECONTENT" path="/part/servicecontent" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/order/servicecontent.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="SERVICEOVER" path="/part/serviceover" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false" />
+    <action name="tawOrderForm" parameter="BACK" path="/part/back" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/back/view.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="BACKCONTENT" path="/part/backcontent" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/back/content.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="BACKOVER" path="/part/backover" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false" />
+    <action name="tawSparepartForm" parameter="VIEW" path="/part/view" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/view.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="OVER" path="/part/over" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false" />
+    <action name="tawClassMsgForm" parameter="UPDATETERM" path="/part/updateterm" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/updateterm.jsp" />
+    </action>
+    <!--add by wqw 20070704 为了查询导出-->
+    <action name="tawClassMsgForm" parameter="FINDTERM" path="/part/findterm" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/findterm.jsp" />
+    </action>
+    
+    <action name="tawClassMsgForm" parameter="UPDATETERM" path="/charge/updateterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/charge/updateterm.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="UPDATEVIEW" path="/part/updateview" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/updateview.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="LOADVIEW" path="/part/loadview" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/loadview.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="UPDATEVIEW" path="/charge/updateview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/charge/updateview.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="UPDATEPAGE" path="/part/updatepage" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/updatepage.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="AMPLYVIEW" path="/part/amplyview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/manager/part/amplyview.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="UPDATEPAGE" path="/charge/updatepage" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/manager/part/serialno.jsp" />
+    </action>
+    <action name="upLoadsForm" parameter="BATCHPART" path="/part/batchpart" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/batchpart.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="REMOVELOAD" path="/part/removeload" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/removeterm.jsp" />
+    </action>
+    <action name="tawOrderForm" parameter="Forremove" path="/part/forremove" scope="request" type="com.boco.eoms.sparepart.controller.TawOrderAction" validate="false">
+      <forward name="ok" path="/manager/part/forremove.jsp" />     
+    </action>
+    <action name="tawSparepartForm" parameter="REMOVE" path="/part/remove" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/remove.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="REMOVEOVER" path="/part/removeover" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false" />
+    <action name="tawSparepartForm" parameter="UPDATEOVER" path="/part/updateover" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false" />
+    <action name="tawSparepartForm" parameter="DROP" path="/part/drop" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false" />
+    <action name="upLoadsForm" parameter="BATCHOVER" path="/part/batchover" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/manager/part/success.jsp" />
+      <forward name="checkno" path="/manager/part/failurecheck.jsp" />
+      <forward name="importno" path="/manager/part/failureimport.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="SERIALNO" path="/part/serialno" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/manager/part/serialno.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="SERIALNOEND" path="/part/serialnoend" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/manager/part/serialnoend.jsp" />
+      <forward name="no" path="/manager/part/serialnoerr.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="TERM" path="/query/term" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/part/term.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="FINDLOAD" path="/part/findload" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/manager/part/findload.jsp" />
+    </action>
+    <action name="tawStatForm" parameter="STATALL" path="/query/stat" scope="request" type="com.boco.eoms.sparepart.controller.TawStatAction" validate="false">
+      <forward name="ok" path="/query/part/statall.jsp" />
+    </action>
+    <action name="tawStatForm" parameter="STATLIST" path="/query/statlist" scope="request" type="com.boco.eoms.sparepart.controller.TawStatAction" validate="false">
+      <forward name="ok" path="/query/part/statuselist.jsp" />
+    </action>
+    <action name="tawStatForm" parameter="STATLIST" path="/query/statlistfault" scope="request" type="com.boco.eoms.sparepart.controller.TawStatAction" validate="false">
+      <forward name="ok" path="/query/part/statlistfault.jsp" />
+    </action>
+    <action name="tawStatForm" parameter="STATLIST" path="/query/statlistout" scope="request" type="com.boco.eoms.sparepart.controller.TawStatAction" validate="false">
+      <forward name="ok" path="/query/part/statlistout.jsp" />
+    </action>
+    <action name="tawStatForm" parameter="STATLIST" path="/query/statlistload" scope="request" type="com.boco.eoms.sparepart.controller.TawStatAction" validate="false">
+      <forward name="ok" path="/query/part/statlistload.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="TERM" path="/query/borrow_query" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/manager/borrow/borrow_term.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="VIEW" path="/query/view" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/part/view.jsp" />
+    </action>
+        <!--add by dww 20070814 为了导出备件的信息-->
+    <action name="tawQueryForm" parameter="VIEWTOEXP" path="/query/viewtoexp" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/part/viewtoexp.jsp" />
+    </action>    
+    <!--add by wqw 20070705 为了导出备件的历史状态-->
+    <action name="tawQueryForm" parameter="LOAD" path="/query/load" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/part/load.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="SECONDSTAT" path="/query/secondstat" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/stat/secondstat.jsp" />
+    </action>
+    <action name="tawBorrowForm" parameter="VIEW" path="/query/borrow_view" scope="request" type="com.boco.eoms.sparepart.controller.TawBorrowAction" validate="false">
+      <forward name="ok" path="/manager/borrow/borrow_view.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="STATTERM" path="/query/statterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/stat/statterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="STATVIEW" path="/query/statview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/stat/statview.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="ORDERTERM" path="/query/orderterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/order/orderterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="ORDERVIEW" path="/query/orderview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/order/orderview.jsp" />
+    </action>
+    <!-- 用于统计结果的导出 -->
+    <action name="tawQueryForm" parameter="ORDERVIEWTOEXP" path="/query/orderviewtoexp" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/order/orderviewtoexp.jsp" />
+    </action>    
+    <action name="tawOrderForm" parameter="ORDERPART" path="/query/orderpart" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/order/orderpart.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="SERVICETERM" path="/query/serviceterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/service/serviceterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="SERVICEVIEW" path="/query/serviceview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/service/serviceview.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="CHARGETERM" path="/query/chargeterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/charge/chargeterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="CHARGEVIEW" path="/query/chargeview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/charge/chargeview.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="OUTTERM" path="/query/outterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/out/outterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="OUTVIEW" path="/query/outview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/out/outview.jsp" />
+    </action>
+    <action name="tawClassMsgForm" parameter="LOANTERM" path="/query/loanterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/loan/loanterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="LOANVIEW" path="/query/loanview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/loan/loanview.jsp" />
+    </action>
+    <!-- dww 增加仪器仪表检测 start -->
+    <action name="tawClassMsgForm" parameter="CHECKTERM" path="/query/checkterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/loan/checkterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="CHECKVIEW" path="/query/checkview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/loan/checkview.jsp" />
+    </action>  
+    <!-- dww 增加仪器仪表检测 end -->  
+    <action name="tawClassMsgForm" parameter="REPAIRTERM" path="/query/repairterm" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/repair/repairterm.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="REPAIRVIEW" path="/query/repairview" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/repair/repairview.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="TOEXPORT" path="/part/toexport" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/query/part/toexport.jsp" />
+    </action>
+    <action name="tawSparepartForm" parameter="TOEXPORTALL" path="/part/toexportall" scope="request" type="com.boco.eoms.sparepart.controller.TawSparepartAction" validate="false">
+      <forward name="ok" path="/query/part/toexport.jsp" />
+    </action>
+    <action name="tawQueryForm" parameter="EARLYWARING" path="/query/earlywaring" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="ok" path="/query/earlywarning/list.jsp" />
+    </action>
+    <action name="EarlyWarningForm" parameter="EARLYWARINGLIST" path="/query/earlywarninglist" scope="request" type="com.boco.eoms.sparepart.controller.TawQueryAction" validate="false">
+      <forward name="storage" path="/manager/storage/view.jsp" />
+      <forward name="sparepart" path="/query/part/view.jsp" />
+    </action>
+    <action name="tawRemindForm" parameter="SETPART" path="/stock/setpart" scope="request" type="com.boco.eoms.sparepart.controller.TawRemindAction" validate="false">
+      <forward name="ok" path="/manager/stock/setpart.jsp" />
+    </action>
+    <action name="tawRemindForm" parameter="OVERPART" path="/stock/overpart" scope="request" type="com.boco.eoms.sparepart.controller.TawRemindAction" validate="false" />
+    <action name="tawRemindForm" parameter="SETORDER" path="/stock/setorder" scope="request" type="com.boco.eoms.sparepart.controller.TawRemindAction" validate="false">
+      <forward name="ok" path="/manager/stock/setorder.jsp" />
+    </action>
+    <action name="tawRemindForm" parameter="OVERORDER" path="/stock/overorder" scope="request" type="com.boco.eoms.sparepart.controller.TawRemindAction" validate="false" />
+  </action-mappings>
+  <message-resources parameter="resources.application_zh_CN" />
+  <!--<message-resources parameter="config/ApplicationResources-sparepart_zh_CN.properties" />-->
+</struts-config>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<bean id="commonfaultRoleConfigMgr" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.commonfault.tool.mgr.impl.CommonfaultRoleConfigMgrImpl">
+				<property name="commonfaultRoleConfigDao" ref="commonfaultRoleConfigDao" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="commonfaultRoleConfigDao"
+		class="com.boco.eoms.sheet.commonfault.tool.dao.hibernate.CommonfaultRoleConfigDaoHibernate"
+		autowire="byName" />
+
+
+</beans>
+
+
+
+
+
+
+
+
+

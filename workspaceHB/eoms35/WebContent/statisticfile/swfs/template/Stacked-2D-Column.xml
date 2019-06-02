@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Stacked 2DColumn">
+      <animation enabled="yes" speed="30" type="step" appearance="size"/>
+      <values decimal_places="1" />
+      <captions show="yes" text="{VALUE}">
+        <font type="verdana_embed_tf" color="0x444444"/>
+      </captions>
+      <hints enabled="no"/>
+      <column_chart block_space = "10" column_space = "10" left_space = "10" right_space = "10" up_space = "70"  down_space = "0">
+        <border enabled="no"/>
+		<block_names>
+		  <font size="8" type="Verdana" color="White"/>
+		</block_names>
+      </column_chart>
+    </chart>
+    <workspace>
+ 	  <name text="U.S. Population Growth by Race">
+	    <font color="White" type="Verdana"/>
+	  </name>
+      <base_area enabled="no" />
+      <chart_area x="30" y="30" deep="4">
+      <background color="Gray" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xC9D1DD</color>
+	      <color>0x8591A1</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="1.57"/>
+	  </background>
+	  </chart_area>
+    </workspace>    
+  </type>  
+</root>

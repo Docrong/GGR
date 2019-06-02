@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.FaultCircuit"
+            table="taw_rm_fault_circuit"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="title"
+            	column="title"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="sequenceNo"
+            	column="sequence_no"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="beginTime"
+            	column="begin_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="endTime"
+            	column="end_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="resumeTime"
+            	column="resume_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="agentId"
+            	column="agent_id"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="typeId"
+            	column="type_id"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="fromTo"
+            	column="from_to"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="filialeId"
+            	column="filiale_id"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="propertyRight"
+            	column="property_right"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="isAppEffect"
+            	column="is_app_effect"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="serialNos"
+            	column="serial_nos"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="greffier"
+            	column="greffier"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="inputUserId"
+            	column="input_user_id"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="inputTime"
+            	column="input_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="faultComment"
+            	column="fault_comment"
+                length="2000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="roomId"
+            	column="room_id"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="recordPerId"
+            	column="record_per_id"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="typeIdList"
+            	column="type_id_list"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="timeSlot"
+            	column="time_slot"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="resumeTimeSlot"
+            	column="resume_time_slot"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="fromBeginTime"
+            	column="from_begin_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="toBeginTime"
+            	column="to_begin_time"
+                length="25"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="faultTypeName"
+            	column="fault_type_name"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+     
+     	<property
+            name="faultDot"
+            	column="fault_dot"
+                length="2000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="faultCause"
+            	column="fault_cause"
+                length="2000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="resumeMethod"
+            	column="resume_method"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="dealUser"
+            	column="deal_user"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="linkPhone"
+            	column="link_phone"
+                length="100"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        
+    <property
+            name="appEffect"
+            	column="app_effect"
+                length="2000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+
+    </class>    
+
+</hibernate-mapping>
+

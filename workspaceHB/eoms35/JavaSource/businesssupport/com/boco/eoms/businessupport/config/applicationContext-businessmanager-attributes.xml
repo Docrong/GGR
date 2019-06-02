@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="iResourceXmlImplFJ"
+		class="com.boco.eoms.businessupport.interfaces.service.impl.ResourceXmlImplFJ">
+	</bean>
+	<bean id="iResourceXmlImplJl"
+		class="com.boco.eoms.businessupport.interfaces.service.impl.ResourceXmlImplJl">
+	</bean>
+</beans>
+

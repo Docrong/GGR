@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<bean id="workplanUserCache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager">
+			<ref bean="appCacheManager" />
+		</property>
+		<property name="cacheName">
+			<value>com.boco.eoms.commons.system.user.WORKPLANUSER_CACHE</value>
+		</property>
+		<!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
+		<property name="maxElementsInMemory">
+			<value>100001</value>
+		</property>
+		<property name="overflowToDisk">
+			<value>true</value>
+		</property>
+		<property name="eternal">
+			<value>true</value>
+		</property>
+		<property name="timeToLive">
+			<value>86400</value>
+		</property>
+		<property name="timeToIdle">
+			<value>600</value>
+		</property>
+		<property name="diskPersistent">
+			<value>false</value>
+		</property>
+		<property name="diskExpiryThreadIntervalSeconds">
+			<value>120</value>
+		</property>
+
+	</bean>
+
+
+	<bean id="workplanUserCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
+		<property name="cache">
+			<ref local="workplanUserCache" />
+		</property>
+	</bean>
+
+	<bean id="workplanUserCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="workplanUserCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*getWorkplanUser</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="workplanUserCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>workplanUserCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean id="TawWorkplanCacheBean" parent="workplanUserCacheProxy">
+		<property name="target">
+			<bean class="com.boco.eoms.workplan.cache.TawWorkplanCacheBean" />
+		</property>
+	</bean>
+	<!-- 自动更新缓存 -->
+
+
+	<bean id="workplanUserFlushCachePointCut"
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="workplanUserFlushCacheInterceptor" />
+		</property>
+		<property name="patterns">
+			<list>
+				<value>.*addWorkplanCache</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="workplanUserFlushCacheInterceptor"
+		class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
+		<property name="cache">
+			<ref local="workplanUserCache" />
+		</property>
+		<property name="method">
+			<props>
+				<prop
+					key="com.boco.eoms.workplan.cache.TawWorkplanCacheBean.getWorkplanUser">
+					com.boco.eoms.workplan.cache.TawWorkplanCacheBean.getWorkplanUser
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="workplanUserBaseFlushCacheProxy"
+		class="org.springframework.aop.framework.ProxyFactoryBean"
+		abstract="true">
+		<property name="interceptorNames">
+			<list>
+				<value>workplanUserFlushCachePointCut</value>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="workplanUserFlushCacheBean" parent="workplanUserBaseFlushCacheProxy">
+		<property name="target">
+			<bean class="com.boco.eoms.workplan.cache.TawWorkplanCacheBean" />
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="GB2312"?>
+<boco>
+    <newWorkSheet>
+    	<content columnName="eomsSheetId" interfaceEnName="emosSheetId" interfaceCnName="工单流水号" defauleValue="" />
+    	<content columnName="mainAlarmNum" interfaceEnName="alarmSheetId" interfaceCnName="网管告警流水号" defauleValue="" />
+    	<content columnName="" interfaceEnName="sheetState" interfaceCnName="工单状态" defauleValue="运行中" />
+    	<content columnName="mainAlarmId" interfaceEnName="alarmId" interfaceCnName="网管告警ID" defauleValue="" />
+    	<content columnName="" interfaceEnName="operator" interfaceCnName="操作人" defauleValue="告警自动派单"/>
+    	<content columnName="" interfaceEnName="operateDepartment" interfaceCnName="操作人部门" defauleValue="网管中心集中监控部"/>
+    	<content columnName="" interfaceEnName="operateRole" interfaceCnName="操作人当前角色" defauleValue="故障建单人"/>
+    	<content columnName="" interfaceEnName="operateContact" interfaceCnName="操作人联系方式" defauleValue=""/>
+    	<content columnName="mainFaultGenerantTime" interfaceEnName="operateTime" interfaceCnName="操作时间" defauleValue="" />
+    	<content columnName="mainAlarmLevel" interfaceEnName="alarmLevel" interfaceCnName="网管告警级别" defauleValue="" />
+    	<content columnName="sheetAcceptLimit" interfaceEnName="sheetAcceptLimit" interfaceCnName="工单受理时限" defauleValue="" />
+    	<content columnName="sheetCompleteLimit" interfaceEnName="sheetHandleLimit" interfaceCnName="工单处理时限" defauleValue="" />
+    	<content columnName="mainCompleteLimitT1" interfaceEnName="T1HandleLimit" interfaceCnName="T1处理时限" defauleValue="" />
+    	<content columnName="mainCompleteLimitT2" interfaceEnName="T2HandleLimit" interfaceCnName="T2处理时限" defauleValue="" />
+    	<content columnName="mainCompleteLimitT3" interfaceEnName="T3HandleLimit" interfaceCnName="T3处理时限" defauleValue="" />
+    	<content columnName="" interfaceEnName="dispatchMode" interfaceCnName="派单方式" defauleValue="自动" />
+    	<content columnName="mainNeId" interfaceEnName="neId" interfaceCnName="网元ID" defauleValue="" />
+    	<content columnName="mainNetName" interfaceEnName="neName" interfaceCnName="网元名称" defauleValue="" />
+    	<content columnName="mainEquipmentFactory" interfaceEnName="devFirm" interfaceCnName="故障设备厂商" defauleValue="" type="dict"/>
+    	<content columnName="mainEquipmentModel" interfaceEnName="devModel" interfaceCnName="故障设备型号" defauleValue="" />
+    	<content columnName="mainFaultGenerantPriv" interfaceEnName="province" interfaceCnName="故障省份" defauleValue="" />
+    	<content columnName="toDeptId" interfaceEnName="city" interfaceCnName="故障地市" defauleValue="" type="areacode"/>
+    	<content columnName="mainFaultGenerantTime" interfaceEnName="faultHappenTime" interfaceCnName="故障发生时间" defauleValue="" />
+    	<content columnName="mainFaultDiscoverableMode" interfaceEnName="faultFindMode" interfaceCnName="故障发现方式" defauleValue="" type="dict"/>
+    	<content columnName="mainIfAffectOperation" interfaceEnName="ifEffectBusiness" interfaceCnName="是否影响业务" defauleValue="" type="dict"/>
+    	<content columnName="mainPretreatment" interfaceEnName="specialSheetDesc" interfaceCnName="特殊工单说明" defauleValue="" type="dict"/>
+		<content columnName="mainDetectFaultTime" interfaceEnName="faultFindTime" interfaceCnName="故障发现时间" defauleValue="" />
+		<content columnName="mainSendSystem" interfaceEnName="alarmTitle" interfaceCnName="告警标题" defauleValue="" />
+		<content columnName="mainLocatinf" interfaceEnName="alm_devinfo" interfaceCnName="OLT设备端口信息" defauleValue="" />
+	</newWorkSheet>
+    <dealSheet>
+    	<content columnName="emosSheetId" interfaceEnName="emosSheetId" interfaceCnName="工单流水号" defauleValue="" />
+    	<content columnName="linkFaultAvoidTime" interfaceEnName="coveryTime" interfaceCnName="恢复时间" defauleValue="" />
+	</dealSheet>
+    <replySheet>
+    	<content columnName="emosSheetId" interfaceEnName="emosSheetId" interfaceCnName="工单流水号" defauleValue="" />
+    	<content columnName="remark" interfaceEnName="feedback" interfaceCnName="描述" defauleValue="" />
+	</replySheet>
+	
+    <newWorkSheetJZXN>
+    	<content columnName="sheetId" interfaceEnName="sheetid" interfaceCnName="工单流水号" defauleValue="" />
+    	<content columnName="mainNeId" interfaceEnName="mainneid" interfaceCnName="网元ID" defauleValue="" />
+    	<content columnName="mainNetName" interfaceEnName="mainnetname" interfaceCnName="网元名称" defauleValue="" />
+    	<content columnName="mainAlarmDesc" interfaceEnName="mainalarmdesc" interfaceCnName="告警描述" defauleValue="" />
+    	<content columnName="mainSendSystem" interfaceEnName="mainsendsystem" interfaceCnName="告警标题" defauleValue="" />
+    	<content columnName="toDeptId" interfaceEnName="todeptid" interfaceCnName="故障地市" defauleValue=""/>
+    	<content columnName="sheetCompleteLimit" interfaceEnName="sheetcompletelimit" interfaceCnName="工单处理时限" defauleValue="" />
+    	<content columnName="sheetAcceptLimit" interfaceEnName="sheetacceptlimit" interfaceCnName="工单受理时限" defauleValue="" />
+    	<content columnName="mainFaultGenerantTime" interfaceEnName="mainfaultgeneranttime" interfaceCnName="操作时间" defauleValue="" />
+	</newWorkSheetJZXN>
+</boco>
+

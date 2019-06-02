@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="GBK"?>
+<sheet-mappings>
+	<sheet-type tableid="CommonFault" name="" beanid="iCommonFaultKnowLedgeService" />
+	<sheet-type tableid="complaint" name="" beanid="iComplaintKnowLedgeService" />
+</sheet-mappings>

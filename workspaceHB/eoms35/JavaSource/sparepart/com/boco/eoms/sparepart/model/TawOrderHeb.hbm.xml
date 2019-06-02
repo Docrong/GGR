@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.boco.eoms.sparepart.model.OrderHeb"  table="TAW_SP_ORDER">
+
+<id column="ID" name="id" type="string">
+<generator class="uuid.hex"/>
+</id>
+<property column="STORAGEID" length="32" name="storageid" type="string"/>
+<property column="OPERATER" length="64" name="operater" type="string"/>
+<property column="PROPOSER" length="10" name="proposer" type="string"/>
+<property column="PROP_DEPT" length="64" name="propDept" type="string"/>
+<property column="PROP_TEL" length="32" name="propTel" type="string"/>
+<property column="STARTDATE" length="7" name="stratdate" type="date"/>
+<property column="OVERDATE" length="7" name="overdate" type="date"/>
+<property column="STATE" length="5" name="state" type="integer"/>
+<property column="TYPE" length="5" name="type" type="integer"/>
+<property column="NOTE" length="255" name="note" type="string"/>
+<property column="ACCESSORY" length="255" name="accessory" type="string"/>
+<property column="SHEETID" length="32" name="sheetid" type="string"/>
+<property column="OVERGAY" length="32" name="overgay" type="string"/>
+<property column="REASON" length="32" name="reason" type="string"/>
+<property column="STATION" length="32" name="station" type="string"/>
+<property column="FIXE" length="32" name="fixe" type="string"/>
+<property column="VERSION" length="32" name="version" type="string"/>
+<property column="SERIALNO" length="32" name="serialno" type="string"/>
+<property column="OBJTYPE" length="32" name="objtype" type="string"/>
+<property column="ENAME" length="32" name="ename" type="string"/>
+<property column="ADVICES" length="32" name="advices" type="string"/>
+</class>
+</hibernate-mapping>

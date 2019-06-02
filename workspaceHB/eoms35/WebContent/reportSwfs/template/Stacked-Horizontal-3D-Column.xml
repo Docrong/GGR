@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<root>
+  <type>
+  <system>
+   <refresh enabled='yes'/>
+  </system>
+    <chart type="Stacked Horizontal 3DColumn">>
+      <animation appearance="alpha" speed="5"/>
+      <column_chart column_space="0">
+	    <background alpha="70"/>
+        <block_names>
+          <font size="9" type="Verdana"/>
+        </block_names>
+      </column_chart>
+      <hints enabled="no"/>
+	<captions show="no" />
+    </chart>
+    <workspace>
+  	  <name text="U.S. Population">
+	    <font type="Verdana"/>
+	  </name>
+      <background enabled="yes" type="gradient" gradient_type="linear">
+	    <colors>
+ 		  <color>0xF1F6F9</color>
+	      <color>0x095D8B</color>
+	    </colors>
+	    <alphas>
+	      <alpha>100</alpha>
+		  <alpha>100</alpha>
+	    </alphas>
+	  	<ratios>
+	      <ratio>0</ratio>
+		  <ratio>0xFF</ratio>
+	    </ratios>
+	    <matrix r="1.58"/>
+	  </background>
+      <chart_area height="260" width="400" y="50" x="80">
+<background enabled="no"/>
+<border enabled="no"/>
+	  </chart_area>
+      <base_area enabled="no"/>
+      <grid>
+        <values lines_step="20" start="0" end="200">
+          <captions>
+            <font size="9" type="verdana_embed_tf" color="Black"/>
+          </captions>
+		  <lines color="Gray" />
+        </values>
+      </grid>   
+    </workspace> 
+  </type>
+</root>

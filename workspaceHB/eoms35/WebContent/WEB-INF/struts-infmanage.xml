@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+
+<struts-config>
+  <!-- ============ Form beans ============ -->
+  <form-beans>
+    <form-bean name="tawInfMaintainerForm" type="com.boco.eoms.infmanage.controller.TawInfMaintainerForm"/>
+	<form-bean name="tawInfCmdForm" type="com.boco.eoms.infmanage.controller.TawInfCmdForm"/>
+	<form-bean name="tawInfIpForm" type="com.boco.eoms.infmanage.controller.TawInfIpForm"/>
+	<form-bean name="tawInfInfoForm" type="com.boco.eoms.infmanage.controller.TawInfInfoForm"/>
+	<form-bean name="tawFileUploadForm" type="com.boco.eoms.infmanage.controller.TawFileUploadForm"/>
+        <form-bean name="tawInfSortForm" type="com.boco.eoms.infmanage.controller.TawInfSortForm"/>
+        <form-bean type="com.boco.eoms.infmanage.controller.TawInfAddressBookForm" name="tawInfAddressBookForm"/>
+        <form-bean type="com.boco.eoms.infmanage.controller.TawInfGroupForm" name="tawInfGroupForm"/>
+         <!--===========================begin jintong===============================-->
+       <form-bean name="CollsheetForm" type="com.boco.eoms.infmanage.controller.CollsheetForm" />
+       <form-bean name="projectForm" type="com.boco.eoms.infmanage.controller.ProjectForm" />
+ <!--      <form-bean name="projectTaskForm" type="com.boco.eoms.infmanage.controller.ProjectTaskForm" />
+ -->
+
+    <!--===========================end jintong ===============================-->
+  </form-beans>
+
+  <!-- ============ Global forwards ============ -->
+  <global-forwards type="org.apache.struts.action.ActionForward">
+    <forward name="failure" path="../failure.jsp"/>
+    <forward name="success" path="../success.jsp"/>
+    <forward name="error" path="../failure.jsp"/>
+    <forward name="timeout" path="../timeout.jsp"/>
+    <forward name="nopriv" path="../nopriv.jsp"/>
+    <forward name="ifIccid" path="../testcard/manager/TawTestcard/ifIccid.jsp" />
+
+  </global-forwards>
+
+  <!-- ============ Action Mapping definitions ============ -->
+  <action-mappings type="org.apache.struts.action.ActionMapping">
+   <!--=====================================================-->
+    <action path="/project/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+          <forward name="success" path="/infmanage/manager/project/add.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+     <action path="/project/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+         scope="request" name="projectForm" validate="false">
+         <forward name="success" path="/project/list.do"/>
+     </action>
+      <action path="/project/list" parameter="LIST" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/list.jsp"/>
+      </action>
+      <action path="/project/mylist" parameter="MYLIST" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/list.jsp" redirect="false"  contextRelative="true"/>
+      </action>
+
+     <action path="/project/query" parameter="QUERY" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/query.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/project/querydone" parameter="QUERYDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+       <forward name="success" path="/infmanage/query/project/querylist.jsp" redirect="false"  contextRelative="true"/>
+      </action>
+    <action path="/project/view" parameter="VIEW" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/manager/project/view.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+    <action path="/project/update" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/manager/project/update.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+    <action path="/project/updatedone" parameter="UPDATEDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/project/list.do" redirect="true"/>
+	</action>
+    <action path="/project/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/manager/project/remove.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+    <action path="/project/deldone" parameter="DELDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/project/list.do"/>
+	</action>
+
+    <action path="/project/pro_track" parameter="MYLIST2" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/pro_track.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/pro_trackdone" parameter="TRACKDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/pro_tracklist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/project/pro_check" parameter="MYLIST2" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/pro_check.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/pro_checkdone" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/manager/project/pro_check_update.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/pro_checkdonesave" parameter="PROCHECKDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/project/pro_checklist.do"/>
+    </action>
+    <action path="/project/pro_checklist" parameter="PROCHECKLIST" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/pro_auditlist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+
+
+ <!--子任务管理        begin-->
+    <action path="/project/query1" parameter="QUERY" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/query1.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/myproject" parameter="MYLIST2" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/list1.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/childtask_distri" parameter="DISTRI" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/manager/project/addtask.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+     <action path="/project/savetask" parameter="SAVETASK" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/project/mylist1.do"/>
+    </action>
+
+    <action path="/project/mylist1" parameter="MYLIST1" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/list1.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/tasklist" parameter="TASKLIST" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/tasklist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+   <action path="/project/querytasklist" parameter="QUERYTASKLIST" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/querytasklist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/taskview" parameter="TASKVIEW" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/manager/project/taskview.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/taskupdate" parameter="TASKUPDATE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/manager/project/taskupdate.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/project/taskupdatedone" parameter="TASKUPDATEDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+        <forward name="success" path="/project/tasklist.do" redirect="true"/>
+    </action>
+   <action path="/project/taskdel" parameter="TASKDEL" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/manager/project/taskdel.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+   <action path="/project/taskdeldone" parameter="TASKDELDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/project/tasklist.do"/>
+    </action>
+    <action path="/project/mytask" parameter="MYTASK" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/query/project/mytask.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/updatetasksign" parameter="UPDATETASKSIGN" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/infmanage/manager/project/updatetasksign.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/project/updatetasksigndone" parameter="UPDATETASKSIGNDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+           scope="request" name="projectForm" validate="false">
+           <forward name="success" path="/project/mytask.do"/>
+    </action>
+
+    <action path="/project/childtask_track" parameter="MYTASK1" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/mytask_track.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/task_trackdone" parameter="TRACKDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/task_tracklist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+     <action path="/project/querytask_trackdone" parameter="QUERYTRACKDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/task_tracklist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <action path="/project/childtask_check" parameter="MYTASK1" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/mytask_check.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+     <action path="/project/task_checkdone" parameter="TASKUPDATE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/manager/project/task_check_update.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+     <action path="/project/task_checkdonesave" parameter="TASKCHECKDONE" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/project/task_checklist.do"/>
+    </action>
+
+    <action path="/project/task_checklist" parameter="TASKCHECKLIST" type="com.boco.eoms.infmanage.controller.ProjectAction"
+	scope="request" name="projectForm" validate="false">
+      <forward name="success" path="/infmanage/query/project/task_auditlist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+
+
+ <!--子任务管理       end    by jintong-->
+
+<!--===========================begin jintong===============================-->
+       <action path="/Collsheet/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+    scope="request" name="CollsheetForm" validate="false">
+      <forward name="success" path="/infmanage/manager/Collsheet/add.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+	<action path="/Collsheet/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+	scope="request" name="CollsheetForm" validate="false">
+	  <forward name="success" path="/Collsheet/add.do"/>
+	</action>
+	<action path="/Collsheet/query" parameter="QUERY" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+    scope="request" name="CollsheetForm" validate="false">
+	  <forward name="success" path="/infmanage/query/Collsheet/query.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+        <action path="/Collsheet/querydone" parameter="QUERYDONE" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+    scope="request" name="CollsheetForm" validate="false">
+	  <forward name="success" path="/infmanage/query/Collsheet/list.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/Collsheet/list" parameter="LIST" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+	scope="session" name="CollsheetForm" validate="false">
+	  <forward name="success" path="/infmanage/query/Collsheet/list.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/Collsheet/view" parameter="VIEW" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+	scope="request" name="CollsheetForm" validate="false">
+      <forward name="success" path="/infmanage/manager/Collsheet/view.jsp"/>
+	</action>
+	<action path="/Collsheet/update" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+	scope="request" name="CollsheetForm" validate="false">
+      <forward name="success" path="/infmanage/manager/Collsheet/update.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/Collsheet/updatedone" parameter="UPDATEDONE" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+	scope="request" name="CollsheetForm" validate="false">
+      <forward name="success" path="/Collsheet/list.do" redirect="true"/>
+	</action>
+	<action path="/Collsheet/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+	scope="request" name="CollsheetForm" validate="false">
+      <forward name="success" path="/infmanage/manager/Collsheet/remove.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/Collsheet/deldone" parameter="DELDONE" type="com.boco.eoms.infmanage.controller.CollsheetAction"
+	scope="request" name="CollsheetForm" validate="false">
+      <forward name="success" path="/Collsheet/list.do"/>
+	</action>
+    <!--===========================end jintong ==============================-->
+
+	<!--<<<<<<<<<<<<<<<<<<<<<<<TawInfMaintainerForm>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+    <action path="/TawInfMaintainer/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+    scope="request" name="tawInfMaintainerForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfmaintainer/add.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+	<action path="/TawInfMaintainer/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+	scope="request" name="tawInfMaintainerForm" validate="false">
+	  <forward name="success" path="/TawInfMaintainer/add.do"/>
+	</action>
+	<action path="/TawInfMaintainer/query" parameter="QUERY" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+     scope="request" name="tawInfMaintainerForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfmaintainer/query.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfMaintainer/list" parameter="LIST" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+	scope="session" name="tawInfMaintainerForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfmaintainer/list.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfMaintainer/view" parameter="VIEW" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+	scope="request" name="tawInfMaintainerForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfmaintainer/view.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfMaintainer/update" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+	scope="request" name="tawInfMaintainerForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfmaintainer/update.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfMaintainer/updatedone" parameter="UPDATEDONE" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+	scope="request" name="tawInfMaintainerForm" validate="false">
+      <forward name="success" path="/TawInfMaintainer/list.do" redirect="true"/>
+	</action>
+	<action path="/TawInfMaintainer/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+	scope="request" name="tawInfMaintainerForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfmaintainer/remove.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfMaintainer/deldone" parameter="DELDONE" type="com.boco.eoms.infmanage.controller.TawInfMaintainerAction"
+	scope="request" name="tawInfMaintainerForm" validate="false">
+      <forward name="success" path="/TawInfMaintainer/list.do"/>
+	</action>
+
+	<!--<<<<<<<<<<<<<<<<<<<<<<<<<<<TawInfCmdForm>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<action path="/TawInfCmd/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfcmd/add.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfCmd/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/TawInfCmd/add.do"/>
+	</action>
+	<action path="/TawInfCmd/query" parameter="QUERY" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfcmd/query.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfCmd/list" parameter="LIST" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfcmd/list.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfCmd/view" parameter="VIEW" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfcmd/view.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfCmd/update" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfcmd/update.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfCmd/updatedone" parameter="UPDATEDONE" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/TawInfCmd/list.do" redirect="true"/>
+	</action>
+	<action path="/TawInfCmd/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfcmd/remove.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfCmd/deldone" parameter="DELDONE" type="com.boco.eoms.infmanage.controller.TawInfCmdAction"
+	scope="request" name="tawInfCmdForm" validate="false">
+	  <forward name="success" path="/TawInfCmd/list.do" redirect="true"/>
+	</action>
+
+	<!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TawInfIpForm>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<action path="/TawInfIp/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfip/add.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfIp/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/TawInfIp/add.do"/>
+	</action>
+	<action path="/TawInfIp/query" parameter="QUERY" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfip/query.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfIp/list" parameter="LIST" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfip/list.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfIp/view" parameter="VIEW" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfip/view.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfIp/update" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfip/update.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfIp/updatedone" parameter="UPDATEDONE" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/TawInfIp/list.do" redirect="true"/>
+	</action>
+	<action path="/TawInfIp/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfip/remove.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfIp/deldone" parameter="DELDONE" type="com.boco.eoms.infmanage.controller.TawInfIpAction"
+	scope="request" name="tawInfIpForm" validate="false">
+	  <forward name="success" path="/TawInfIp/list.do" redirect="true"/>
+	</action>
+
+	<!--<<<<<<<<<<<<<<<<<<<<<<<<<<<TawInfAppuForm>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<action path="/TawInfAppu/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfappu/add.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfAppu/query" parameter="QUERY" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfappu/query.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfAppu/list" parameter="LIST" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="session" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfappu/list.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfAppu/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/TawInfAppu/add.do"/>
+	</action>
+	<action path="/TawInfAppu/file" parameter="FILE" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawfileupload/uploadfile.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+	<action path="/TawInfAppu/view" parameter="VIEW" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfappu/view.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfAppu/update" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfappu/update.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfAppu/updatedone" parameter="UPDATEDONE" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/TawInfAppu/list.do" redirect="true"/>
+	</action>
+	<action path="/TawInfAppu/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfappu/remove.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfAppu/deldone" parameter="DELDONE" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="request" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/TawInfAppu/list.do" redirect="true"/>
+	</action>
+       <!--<<<<<<<<<<<<<<<<<<<<<<<taken>>>>>>>>>>>>>>>>>>>>>>>>-->
+       	<action path="/TawInfAppu/taker" parameter="TAKEN" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="session" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/TawInfAppu/list.do"/>
+	</action>
+       	<action path="/TawInfAppu/listtaken" parameter="LISTTAKEN" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="session" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/infmanage/query/tawinfappu/ListTake.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+       	<action path="/TawInfAppu/removetaker" parameter="REMOVETAKEN" type="com.boco.eoms.infmanage.controller.TawInfAppuAction"
+	scope="session" name="tawInfInfoForm" validate="false">
+	  <forward name="success" path="/TawInfAppu/listtaken.do"/>
+	</action>
+
+	<!--<<<<<<<<<<<<<<<<<<<<<<<<<TawFileUploadForm>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<action path="/TawFileUpload/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawFileUploadAction"
+	scope="request" name="tawFileUploadForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawfileupload/uploadfile.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawFileUpload/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.TawFileUploadAction"
+	scope="request" name="tawFileUploadForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawfileupload/uploadfile.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+
+    <action path="/TawInfAddressBook/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfaddressbook/add.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+      <forward name="success" path="/TawInfAddressBook/add.do"/>
+    </action>
+   <action path="/TawInfAddressBook/query" parameter="QUERY" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+      <forward name="success" path="/infmanage/query/tawinfaddressbook/query.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/queryDo" parameter="QUERYDO" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="session" name="tawInfAddressBookForm" validate="false">
+      <forward name="success" path="/infmanage/query/tawinfaddressbook/query_result.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/view" parameter="VIEW" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfaddressbook/view.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/edit" parameter="EDIT" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/infmanage/manager/tawinfaddressbook/edit.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/editsave" parameter="EDITSAVE" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/TawInfAddressBook/queryDo.do" redirect="true"/>
+    </action>
+    <action path="/TawInfAddressBook/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/infmanage/manager/tawinfaddressbook/del.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/delDo" parameter="DELDO" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/TawInfAddressBook/queryDo.do"/>
+    </action>
+    <action path="/TawInfAddressBook/addGroup" parameter="ADDGROUP" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/infmanage/manager/tawinfaddressbook/addgroup.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/addGroupDo" parameter="ADDGROUPDO" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/TawInfAddressBook/add.do"/>
+    <forward name="edit" path="/TawInfAddressBook/edit.do"/>
+    </action>
+
+    <action path="/TawInfAddressBook/mail" parameter="MAIL" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/infmanage/query/tawinfaddressbook/findgroup.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/mailTo" parameter="MAILTO" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/infmanage/query/tawinfaddressbook/maillist.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/count" parameter="COUNT" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+               scope="request" name="tawInfAddressBookForm" validate="false">
+    <forward name="success" path="/infmanage/manager/tawinfaddressbook/toback.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfAddressBook/config" parameter="CONF" type="com.boco.eoms.infmanage.controller.TawInfAddressBookAction"
+      scope="request" name="tawInfAddressBookForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfaddressbook/config.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+
+    <!--<<<<<<<<<<<<<<<<<<<<<<<<<<<<TawInfSortForm>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<action path="/TawInfSort/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawInfSortAction"
+	scope="request" name="tawInfSortForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfsort/add.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfSort/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.TawInfSortAction"
+	scope="request" name="tawInfSortForm" validate="false">
+	  <forward name="success" path="/TawInfSort/add.do"/>
+	</action>
+	<action path="/TawInfSort/list" parameter="LIST" type="com.boco.eoms.infmanage.controller.TawInfSortAction"
+	scope="session" name="tawInfSortForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfsort/list.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfSort/update" parameter="UPDATE" type="com.boco.eoms.infmanage.controller.TawInfSortAction"
+	scope="request" name="tawInfSortForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfsort/update.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfSort/updatedone" parameter="UPDATEDONE" type="com.boco.eoms.infmanage.controller.TawInfSortAction"
+	scope="request" name="tawInfSortForm" validate="false">
+	  <forward name="success" path="/TawInfSort/list.do" redirect="true"/>
+	</action>
+	<action path="/TawInfSort/del" parameter="DEL" type="com.boco.eoms.infmanage.controller.TawInfSortAction"
+	scope="request" name="tawInfSortForm" validate="false">
+	  <forward name="success" path="/infmanage/manager/tawinfsort/remove.jsp" redirect="false"  contextRelative="true"/>
+	</action>
+	<action path="/TawInfSort/deldone" parameter="DELDONE" type="com.boco.eoms.infmanage.controller.TawInfSortAction"
+	scope="request" name="tawInfSortForm" validate="false">
+	  <forward name="success" path="/TawInfSort/list.do" redirect="true"/>
+	</action>
+
+    <action path="/TawInfGroup/add" parameter="ADD" type="com.boco.eoms.infmanage.controller.TawInfGroupAction"
+               scope="request" name="tawInfGroupForm" validate="false">
+      <forward name="success" path="/infmanage/manager/tawinfgroup/add.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfGroup/save" parameter="SAVE" type="com.boco.eoms.infmanage.controller.TawInfGroupAction"
+               scope="request" name="tawInfGroupForm" validate="false">
+      <forward name="success" path="/TawInfGroup/queryDo.do"/>
+    </action>
+    <action path="/TawInfGroup/queryDo" parameter="QUERYDO" type="com.boco.eoms.infmanage.controller.TawInfGroupAction"
+               scope="session" name="tawInfGroupForm" validate="false">
+      <forward name="success" path="/infmanage/query/tawinfgroup/query_result.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfGroup/edit" parameter="EDIT" type="com.boco.eoms.infmanage.controller.TawInfGroupAction"
+               scope="request" name="tawInfGroupForm" validate="false">
+    <forward name="success" path="/infmanage/manager/tawinfgroup/edit.jsp" redirect="false"  contextRelative="true"/>
+    </action>
+    <action path="/TawInfGroup/editsave" parameter="EDITSAVE" type="com.boco.eoms.infmanage.controller.TawInfGroupAction"
+               scope="request" name="tawInfGroupForm" validate="false">
+    <forward name="success" path="/TawInfGroup/queryDo.do" redirect="true"/>
+    </action>
+    <action path="/TawInfGroup/delDo" parameter="DELDO" type="com.boco.eoms.infmanage.controller.TawInfGroupAction"
+               scope="request" name="tawInfGroupForm" validate="false">
+    <forward name="success" path="/TawInfGroup/queryDo.do"/>
+    </action>
+      </action-mappings>
+
+  <!-- ========== Message Resources Definitions =========================== -->
+  <message-resources parameter="resources.application_zh_CN"/>
+
+</struts-config>

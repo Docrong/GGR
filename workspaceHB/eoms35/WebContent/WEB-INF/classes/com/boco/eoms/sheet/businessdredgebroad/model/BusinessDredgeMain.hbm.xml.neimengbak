@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.businessdredge.model.BusinessDredgebroadMain"
+            table="BusinessDredgebroad_main"
+    >
+
+    <id
+        name="id"
+        column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+        <property name="sheetId" />
+		<property name="title" />
+		<property name="sheetAcceptLimit" />
+		<property name="sheetCompleteLimit" />
+		<property name="sendTime" />
+		<property name="sendOrgType" />
+		<property name="sendUserId" />
+		<property name="sendDeptId" />
+		<property name="sendRoleId" />
+		<property name="sendContact" />
+		<property name="endTime" />
+		<property name="endResult" />
+		<property name="status" />
+		<property name="holdStatisfied" />
+		<property name="endUserId" />
+		<property name="endDeptId" />
+		<property name="endRoleId" />
+		<property name="deleted" />
+		<property name="piid" />
+		<property name="parentSheetName" />
+		<property name="parentSheetId" />
+		<property name="sheetTemplateName" />
+		<property name="sheetAccessories" />
+		<property name="correlationKey" />
+		<property name="parentCorrelation" />
+		<property name="toDeptId" />
+		<property name="templateFlag" />
+		<property name="cancelReason" />
+		<property name="invokeMode" />
+		<property name="parentPhaseName" />
+		
+		<!-- GPRS -->
+
+		<property name="urgentDegree" />
+
+		<property name="businesstype1" />
+
+		<property name="bdeptContact" />
+
+		<property name="bdeptContactPhone" />
+
+		<property name="customNo" />
+
+		<property name="customName" />		
+
+		<property name="customContact" />
+
+		<property name="customContactPhone" />
+
+		<property name="customContactAdd" />
+
+		<property name="customContactPost" />
+
+		<property name="customTrade" />
+
+		<property name="customContactEmail" />
+
+		<property name="customLevel" />
+
+		<property name="brequirementDesc" />
+
+		<property name="factureArea" />
+
+		<property name="apnName" />
+		
+		<property name="ipAddressAssign" />
+		
+		<property name="apnRouterMode" />
+
+		<property name="apnIPPool" />
+
+		<property name="transferMode" />
+		
+		<property name="appServerIPAdd" />
+
+		<property name="doubleGGSN" />
+		
+		<property name="secondIPPool" />
+		
+		<property name="isRadiusValidate" />
+
+		<property name="radiusValidateIPAdd" />
+
+		<property name="simHLR" />
+
+		<property name="terminalNum" />
+
+		<property name="numDetail" />
+		
+		<property name="volumeAssessment" />
+
+                
+		<!-- GPRS结束 -->
+		
+		
+		<!--彩信开始  -->
+
+		<property name="bcode" />
+
+		<property name="siName" />
+
+		<property name="siEnterpriseCode" />
+
+		<property name="siServerCode" />
+
+		<property name="siConnectMMSGatewayID" />
+
+		<property name="siIPAdd" />
+
+		<property name="siUplinkUrl" />
+
+		<property name="isConnectMISC" />
+
+		<property name="comProtocol" />
+
+		<property name="connectGatewayBandwidth" />
+
+		<property name="maxConnections" />
+
+		<property name="maxUnderFlow" />
+
+		<property name="maxUplinkFlow" />
+
+		<property name="portRateIsDown" />
+
+		<property name="flowControlPriority" />
+
+		<property name="appProgramme" />
+
+		<!--彩信结束  -->
+		
+		<!-- 短信开始 -->
+
+		<property name="nameListSetType" />
+
+		<property name="smsSigned" />
+
+		<property name="enterpriseCode" />
+
+		<property name="serverCode" />
+
+		<property name="connectPoint" />
+
+		<property name="hostIPAdd" />
+
+		<property name="connectGateway" />
+
+		<property name="gatewayCode" />
+		<property name="factureTime" />
+		
+		<property name="authenticationModel" />
+		
+		<property name="singleWordsBit" />
+
+                <!--短信结束  -->
+		
+		<!-- 传输专线开始 -->
+
+		<property name="cityA" />
+
+		<property name="cityZ" />
+
+		<property name="bandwidth" />
+
+		<property name="amount" />
+
+		<property name="portA" />
+
+		<property name="portAInterfaceType" />
+
+		<property name="portADetailAdd" />
+
+		<property name="portABDeviceName" />
+
+		<property name="portABDevicePort" />
+		
+		<property name="portAContactPhone" />
+
+		<property name="portZ" />
+
+		<property name="portZInterfaceType" />
+
+		<property name="portZBDeviceName" />
+
+		<property name="portZBDevicePort" />
+
+		<property name="portZContactPhone" />
+		<!--传输专线结束  -->
+		<!-- 是否是客服派单 -->
+		<property name="isCustomerFlag" />
+		
+		
+		 <!--集团新规范-->
+		 <property name="provinceName" />
+		 <property name="cityName" />
+		 <property name="countyName" />
+		 <property name="cmanagerPhone" />
+		 <property name="cmanagerContactPhone" />
+		 <property name="productName" />
+    <!-- GPRS -->
+    <property name="numDetailFile" />
+    <!-- 短信、彩信 -->
+    <property name="enterpriseType" />
+    <!-- 短信 -->
+    <property name="connectGatewayName" />
+    <property name="connectGatewayID" />
+    <!--彩信  -->
+    <property name="siconnectMMSGatewayName" />
+    <!-- 传输专线 -->
+    <property name="confCRMTicketNo" />
+    <property name="transfBusiness" />
+
+    <!-- 内蒙新增字段 -->
+	
+	<!-- 客户信息 -->
+	<property name="mainClientLongitude" />
+    <property name="mainClientLatitude" />
+    <property name="mainClientBusUser" />
+    <property name="mainClientBusPhone" />
+    <property name="mainDataUpdateStatus" />
+    <property name="mainDataChangeInfo" />
+    <property name="mainRemark" />
+    
+    <!-- 客户开通业务信息表 -->
+    <property name="mainBusSLAKeepRegister" />
+    <property name="mainBusDredgeDate" />
+    <property name="mainBusServiceEndTime" />
+    <property name="mainDataChangeInfomate" />
+    
+    <!-- 传输专线 -->
+    <property name="mainCircuitCode" />
+    <property name="mainCircuitBusUse" />
+    <property name="mainRate" />
+    <property name="mainCircuitInterfaceType" />
+    <property name="mainOfficeDirection" />
+    <property name="mainStartEngineA" />
+    <property name="mainATransferPort" />
+    <property name="mainATransferEquipDDF" />
+    <property name="mainABusEquipDDF" />
+    <property name="mainABusMachineRoom" />
+    <property name="mainASDXC1" />
+    <property name="mainASDXC2" />
+    <property name="mainUdhcpStage" />
+    <property name="mainStartEngineZ" />
+    <property name="mainZTransferPort" />
+    <property name="mainZTransferEquipDDF" />
+    <property name="mainZBusMachineRoom" />
+    <property name="mainZBusEquipName" />
+    <property name="mainZBusEquipDDF" />
+    <property name="mainZSDXC1" />
+    <property name="mainZSDXC2" />
+    <property name="mainCircuitWay" />
+    <property name="mainDifRoomJumpList" />
+    <property name="mainCircuitLevel" />
+    <property name="mainCircuitRequire" />
+    <property name="mainBusinessType" />
+    <property name="mainCompleteTime" />
+    <property name="mainMelodyUnits" />
+    <property name="mainCircuitEqisType" />
+    
+    <!-- GPRS专线 -->
+    <property name="mainAPNNumber" />
+    <property name="mainGGSNEquipName" />
+    <property name="mainGGSNPortNews" />
+    <property name="mainGREAddress" />
+    <property name="mainRubeIPAddress" />
+    <property name="mainEndIPAddress" />
+    <property name="mainSwitchInType" />
+    <property name="mainCircuitNumber" />
+    <property name="mainFTTxNumber" />
+    <property name="mainSwitchInClientDate" />
+    <property name="mainUpdateDate" />
+    <property name="mainDataChangeStatus" />
+    <property name="mainDataChangeNews" />
+    <property name="greTunnelName" />
+    <property name="greAddress" />
+    <!-- 短彩信信息专线 -->
+    <property name="mainServiceNumType" />
+    <property name="mainDxCxServiceNumber" />
+    <property name="mainConferType" />
+    <property name="mainGatewayIPAddress" />
+    <property name="mainGatewayName" />
+    <property name="mainTerminalIPAddress" />
+    <property name="mainGiveBusPort" />
+    <property name="mainGatewayUser" />
+    <property name="businessFlowRestrictions" />
+    <property name="busyleisureFlowControl" />		
+    <!-- 语音专线 -->
+    <property name="mainUserCode" />
+    <property name="mainOAReferenceNo" />
+    <property name="mainCallType" />
+    <property name="mainClientSoundAdd" />
+    <property name="mainSoundNumber" />
+    <property name="mainTricky" />
+    <property name="mainBusinesType" />
+    <property name="mainDetailType" /> 
+    <property name="mainCallerOpenBrand" />
+    <property name="mainCallerBeArea" />
+    <property name="mainBusinessOpenArea" />
+    <property name="mainDialType" />
+    <property name="mainIfOpenLocaPhone" />
+    <property name="mainIfOpenBordPhone" />
+    <property name="mainIfOpenIntePhone" />
+    <property name="mainClientCallerNum" />
+    <property name="mainCallerAlterType" />
+    <property name="mainCalloutRange" />
+    <property name="mainSignalType" />
+    <property name="mainSignalCoding" />
+    <property name="mainRelayCount" />
+    <property name="mainChargingExplain" />
+    <property name="mainClientEngineAdd" />
+    <property name="mainClientEqiupBrand" />
+    <property name="mainModel" />
+    <property name="mainEquipPortInfo" />
+    <property name="mainPropertyRight" />
+    <property name="mainApplyProductName" />
+    <property name="mainClientNeedDesc" />
+    <property name="mainTakeEffectTime" />
+    <property name="mainProductCode" />
+
+    <property name="mainIfCallerNumVPN" />
+    <property name="mainDetailDial" />
+    <property name="mainCalloutForm" />
+    <property name="mainDetailCalloutRange" />
+    <property name="mainDetailCalloutForm" />
+    <property name="mainSignalConfer" />
+    
+    <property name="mainCircuitSheetId" />
+    <property name="mainIsCircuitComplete" />
+    <property name="mainCircuitName" />
+    
+    <property name="fiberEquipName" />
+    <property name="fiberEquipCode" />
+    <property name="siteEquipCode" />
+    <property name="siteName" />
+    <property name="accessSiteIden" />
+    <property name="code" />   
+    
+    <!--start 内蒙新增字段 20100518-->
+    <!-- 语音专线 -->   
+    <property name="linkEOEquip" />
+    <property name="linkRelayPortName" />
+    <property name="linkSignalPortName" />
+    <property name="linkRelaysName" />
+    <property name="linkRouteName" />
+    <property name="linkSchemeType" /> 
+    <property name="linkPBXToGWName" /> 
+    <property name="linkIPToGWName" /> 
+    <property name="linkIMSToGwName" /> 
+    <property name="linkPBXRouteName" /> 
+    <property name="linkONUName" />
+    <property name="linkONUPort" />
+    <property name="linkSpeRelayCirCount" />
+    <property name="linkSpeRelayRouCount" />
+    <property name="linkVPMN" />
+    <!-- 短信专线 -->  
+    <property name="businessRange" />
+    <property name="accessGradeNum" />
+    <property name="brandRange" />
+    <property name="accessDSMP" />
+    <property name="isFee" />
+    <property name="chineseName" />
+    <property name="englishName" />
+    <property name="flowFreeTime" />
+    <property name="sendAndReceLimit" />
+    <!-- 彩信专线 -->  
+    <property name="accessCode" />
+    <property name="provisionURL" />
+    <property name="businessName" />
+    <property name="businessGradeFlag" />
+    <property name="feeType" />
+    <property name="infoFee" />
+    <property name="isSuptMmsFlux" />
+    <property name="mmsFlow" />
+    <property name="companyIdleTime" />
+    <property name="accessGateway" />
+    <!--end 内蒙新增字段 20100518-->  
+    </class>    
+
+</hibernate-mapping>
+

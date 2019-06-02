@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.boco.eoms.check.model.TawCheckTarger" table="taw_check_targer">
+ <id column="TARGER_ID" name="targer_id" type="string">
+   <generator class="uuid.hex"/>
+</id>
+ <property column="TARGER_MODEL_TYPE" length="100" name="targer_model_type" type="integer"/>
+ <property column="TARGER_TYPE" length="100" name="targer_type" type="integer"/>
+ <property column="TARGER_NAME" length="100" name="targer_name" type="integer"/>
+ <property column="TARGER_PER" length="100" name="targer_per" type="string"/>
+ <property column="TARGER_BASE" length="100" name="targer_base" type="double"/>
+ <property column="TARGER_SCORE_BASE" length="100" name="targer_score_base" type="double"/>
+ <property column="TARGER_SCORE_FULL" length="100" name="targer_score_full" type="double"/>
+ <property column="TARGER_ADD" length="100" name="targer_add" type="double"/>
+ <property column="TARGER_SCORE_ADD" length="100" name="targer_score_add" type="double"/>
+ <property column="TARGER_DEL" length="100" name="targer_del" type="double"/>
+ <property column="TARGER_SCORE_DEL" length="100" name="targer_score_del" type="double"/>
+ <property column="TARGER_REMARKD" length="100" name="targer_remarkd" type="string"/>
+ <property column="TARGER_DELETED" length="100" name="targer_deleted" type="string"/>
+ <property column="TARGER_PRIN" length="100" name="targer_prin" type="string"/>
+ </class>
+</hibernate-mapping>

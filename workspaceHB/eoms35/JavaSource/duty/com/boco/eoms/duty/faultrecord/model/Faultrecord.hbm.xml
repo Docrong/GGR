@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.boco.eoms.duty.faultrecord.model.Faultrecord"  table="Duty_Faultrecord">
+    <!-- jcs-cache usage="nonstrict-read-write"/ -->
+    <id column="ID" name="id" type="string">
+        <generator class="uuid.hex"/>
+    </id>
+    <property column="USER_ID" length="32" name="userId" type="string" not-null="true"/>
+    <property column="DEPT_ID" length="32" name="deptId" type="string"/>
+    <property column="INSERT_TIME" length="7" name="insertTime" type="timestamp"/>
+    <property column="DEL_FLAG" length="5" name="delFlag" type="integer"/>
+    <property column="ACCESSORIES" length="50" name="accessories" type="string"/>
+
+    <property column="START_TIME" length="20" name="startTime" type="timestamp"/>
+    <property column="NETWORK_NAME" length="50" name="networkName" type="string"/>
+    <property column="DEVICE_VENDOR" length="5" name="devVendor" type="integer"/>
+    <property column="DEVICE_TYPE" length="5" name="devicetype" type="integer"/>
+    <property column="FAULT_UNIT_LEVEL" length="5" name="faultUnitLevel" type="integer"/>
+    <property column="FAULT_LEVEL" length="5" name="faultLevel" type="integer"/>
+    <property column="FAULT_CONTENT" length="1000" name="faultContent" type="string"/>
+    <property column="FAULT_RESULT" length="1000" name="faultResult" type="string"/>
+    <property column="DECLARE_USER" length="50" name="declareUser" type="string"/>
+    <property column="DECLARE_TIME" length="20" name="declareTime" type="timestamp"/>
+    <property column="DEAL_USER" length="50" name="dealUser" type="string"/>
+    <property column="DEAL_TIME" length="20" name="dealTime" type="timestamp"/>
+    <property column="END_TIME" length="20" name="endTime" type="timestamp"/>
+    <property column="SOLVE_CLASS" length="5" name="problemSolveInfo" type="integer"/>
+    <property column="TOTAL_TIME" length="30" name="totalTime" type="string"/>
+    <property column="OPER_HALT_TIME" length="30" name="operHaltTime" type="string"/>
+    <property column="REMARK" length="1000" name="remark" type="string"/>
+    </class>
+</hibernate-mapping>

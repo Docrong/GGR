@@ -1,0 +1,70 @@
+package id27uzrdjc31o07djc36qu8;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id43kmldjc31o07djc3g4vi.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.authentication:oiref>
+@__hidden 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#id123qndjc31o07djc3gfpp.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.service:oiref>
+@__hidden 
+*/
+class reference6 {
+}/**
+@__ref <oiref:design#Class#id1i4podjc31o07djc3gxvc.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.exception:oiref>
+@__hidden 
+*/
+class reference8 {
+}/**
+@__ref <oiref:design#Class#idkgnudjc31o07djc3hjja.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#com.boco.common.security.crypto:oiref>
+@__hidden 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.crypto.Base64Encoder:oiref><oihard>
+@__modelType reference
+@__imported
+@__hiddenMember <oiref:java#Member#com.boco.common.security.crypto.Base64Encoder#encode#(#java.lang.String#)#:oiref>
+@__hidden 
+*/
+class reference90 {
+}/**
+@__ref <oiref:java#Class#com.boco.common.security.exception.SecurityManagerDaoException:oiref><oihard>
+@__modelType reference
+@__imported
+@__hidden 
+*/
+class reference91 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#com.boco.common.security.crypto.Base64Encoder:oiref>=0,10,360,150,0:oigroup>
+<oigroup:<oiref:design#Class#id43kmldjc31o07djc3g4vi.diagram:oiref>=10,10,99,57,1:oigroup>
+<oigroup:<oiref:java#Class#com.boco.common.security.exception.SecurityManagerDaoException:oiref>=0,10,440,162,0:oigroup>
+<oigroup:<oiref:design#Class#id1i4podjc31o07djc3gxvc.diagram:oiref>=117,78,74,57,1:oigroup>
+<oigroup:<oiref:design#Class#id123qndjc31o07djc3gfpp.diagram:oiref>=133,71,60,57,1:oigroup>
+<oigroup:<oiref:design#Class#idkgnudjc31o07djc3hjja.diagram:oiref>=47,8,54,57,1:oigroup>
+*/
+class __positions {
+}

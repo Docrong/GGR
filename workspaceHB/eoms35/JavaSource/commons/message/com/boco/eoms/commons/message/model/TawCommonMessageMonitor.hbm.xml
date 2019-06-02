@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.message.model.TawCommonMessageMonitor"
+            table="taw_common_messagemonitor"
+    >
+
+    <id
+        name="monitorId"
+            column="monitorid"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="urgent"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="cycle"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="dispatcher"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="dispatchTime"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieAmount"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieArrive"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieClose"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieContent"
+                length="500"
+        >
+
+        </property>
+
+        <property
+            name="hieCount"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieId"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieInterval"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieTimeLimit"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="hieWay"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="nightAllow"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="receiver"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="receiverType"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="regionId"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="taskId"
+                length="100"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

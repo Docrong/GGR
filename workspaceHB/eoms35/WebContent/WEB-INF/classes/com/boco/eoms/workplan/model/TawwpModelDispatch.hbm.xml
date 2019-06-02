@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpModelDispatch"
+        table="TAW_WP_MODELDISPATCH"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpModelDispatch.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="sendDeptId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SENDDEPTID"
+            length="10"
+            not-null="true"
+        />
+
+        <property
+            name="sendCrtime"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SENDCRTIME"
+            length="19"
+            not-null="true"
+        />
+
+        <property
+            name="sendUser"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="SENDUSER"
+            length="20"
+            not-null="false"
+        />
+
+        <property
+            name="inceptDeptId"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INCEPTDEPTID"
+            length="10"
+            not-null="false"
+        />
+
+        <property
+            name="inceptCrtime"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INCEPTCRTIME"
+            length="19"
+            not-null="true"
+        />
+
+        <property
+            name="inceptUser"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="INCEPTUSER"
+            length="20"
+            not-null="false"
+        />
+
+        <property
+            name="state"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="STATE"
+            length="2"
+            not-null="true"
+        />
+
+        <property
+            name="content"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="CONTENT"
+            length="200"
+            not-null="false"
+        />
+
+        <property
+            name="yearFlag"
+            type="java.lang.String"
+            update="true"
+            insert="true"
+            access="property"
+            column="YEARFLAG"
+            length="4"
+            not-null="true"
+        />
+
+        <many-to-one
+            name="tawwpModelDispatch"
+            class="com.boco.eoms.workplan.model.TawwpModelDispatch"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="PARENT_MODEL_DISPATCH_ID"
+            not-null="false"
+        />
+
+        <set
+            name="childModelDispatch"
+            lazy="true"
+            inverse="true"
+            cascade="save-update"
+            sort="unsorted"
+        >
+
+              <key
+                  column="PARENT_MODEL_DISPATCH_ID"
+              >
+              </key>
+
+              <one-to-many
+                  class="com.boco.eoms.workplan.model.TawwpModelDispatch"
+              />
+
+        </set>
+
+        <many-to-one
+            name="tawwpModelPlan"
+            class="com.boco.eoms.workplan.model.TawwpModelPlan"
+            cascade="none"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="MODEL_PLAN_ID"
+            not-null="true"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpModelDispatch.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

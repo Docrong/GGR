@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<layout>
+   <image x="0" y="135"/>
+  <cell id="1" type="InitialActionCell" height="30.0" width="100.0" x="82.0" y="162.0"/>
+  <cell id="2" type="StepCell" height="30.0" width="100.0" x="222.0" y="162.0"/>
+  <cell id="3" type="StepCell" height="30.0" width="100.0" x="383.0" y="162.0"/>
+  <cell id="4" type="StepCell" height="30.0" width="100.0" x="265.0" y="347.0"/>
+  <cell id="5" type="StepCell" height="30.0" width="100.0" x="500.0" y="162.0"/>
+  <cell id="6" type="StepCell" height="30.0" width="100.0" x="509.0" y="553.0"/>
+  <cell id="7" type="StepCell" height="30.0" width="100.0" x="602.0" y="347.0"/>
+  <cell id="8" type="StepCell" height="30.0" width="100.0" x="701.0" y="162.0"/>
+  <cell id="9" type="StepCell" height="30.0" width="100.0" x="803.0" y="347.0"/>
+  <cell id="10" type="StepCell" height="30.0" width="100.0" x="934.0" y="162.0"/>  
+  <cell id="11" type="StepCell" height="30.0" width="100.0" x="1167.0" y="356.0"/>   
+  <cell id="12" type="StepCell" height="30.0" width="100.0" x="1170.0" y="162.0"/>
+   
+  <connector id="90" linewidth="1.0" color="-16777216" labelx="10.0" labely="464.0" from="0" to="0">
+    <routing id="90" x="132" y="228"/>
+    <routing id="90" x="132" y="372"/>
+  </connector>
+  <connector id="91" linewidth="1.0" color="-16777216" labelx="488.0" labely="250.0" from="0" to="0">
+    <routing id="91" x="132" y="144"/>
+    <routing id="91" x="276" y="144"/>
+  </connector>
+  <connector id="92" linewidth="1.0" color="-16777216" labelx="404.0" labely="527.0" from="0" to="0">
+    <routing id="92" x="276" y="228"/>
+    <routing id="92" x="276" y="312"/>
+  </connector>
+  <connector id="93" linewidth="1.0" color="-16777216" labelx="905.0" labely="562.0" from="0" to="0">
+    <routing id="93" x="336" y="180"/>
+    <routing id="93" x="336" y="336"/>
+  </connector>
+  <connector id="94" linewidth="1.0" color="-16777216" labelx="495.0" labely="-10.0" from="0" to="0">
+    <routing id="94" x="540" y="372"/>
+    <routing id="94" x="540" y="252"/>
+  </connector>
+  <connector id="95" linewidth="1.0" color="-16777216" labelx="957.0" labely="546.0" from="0" to="0">
+    <routing id="95" x="432" y="348"/>
+    <routing id="95" x="432" y="228"/>
+  </connector>
+  <connector id="96" linewidth="1.0" color="-16777216" labelx="115.0" labely="625.0" from="0" to="0">
+    <routing id="96" x="564" y="288"/>
+    <routing id="96" x="564" y="420"/>
+  </connector>
+  <connector id="97" linewidth="1.0" color="-16777216" labelx="0.0" labely="509.0" from="0" to="0">
+    <routing id="97" x="504" y="360"/>
+    <routing id="97" x="432" y="360"/>
+  </connector>
+  <connector id="98" linewidth="1.0" color="-16777216" labelx="920.0" labely="448.0" from="0" to="0">
+    <routing id="98" x="672" y="576"/>
+    <routing id="98" x="672" y="420"/>
+  </connector>
+  <connector id="99" linewidth="1.0" color="-16777216" labelx="965.0" labely="455.0" from="0" to="0">
+    <routing id="99" x="312" y="564"/>
+    <routing id="99" x="312" y="420"/>
+  </connector>
+  <connector id="910" linewidth="1.0" color="-16777216" labelx="500.0" labely="500.0" from="0" to="0">
+    <routing id="910" x="588" y="420"/>
+    <routing id="910" x="588" y="288"/>
+  </connector>
+  <connector id="911" linewidth="1.0" color="-16777216" labelx="382.0" labely="315.0" from="0" to="0">
+    <routing id="911" x="672" y="300"/>
+    <routing id="911" x="744" y="300"/>
+  </connector>
+  <connector id="912" linewidth="1.0" color="-16777216" labelx="47.0" labely="362.0" from="0" to="0">
+    <routing id="912" x="636" y="420"/>
+    <routing id="912" x="636" y="564"/>
+  </connector>
+  <connector id="913" linewidth="1.0" color="-16777216" labelx="862.0" labely="258.0" from="0" to="0">
+    <routing id="913" x="828" y="180"/>
+    <routing id="913" x="828" y="288"/>
+  </connector>
+  <connector id="914" linewidth="1.0" color="-16777216" labelx="907.0" labely="281.0" from="0" to="0">
+    <routing id="914" x="636" y="180"/>
+    <routing id="914" x="635" y="291"/>
+  </connector>
+  <connector id="915" linewidth="1.0" color="-16777216" labelx="860.0" labely="793.0" from="0" to="0">
+    <routing id="915" x="876" y="264"/>
+    <routing id="915" x="936" y="264"/>
+  </connector>  
+  <connector id="916" linewidth="1.0" color="-16777216" labelx="539.0" labely="636.0" from="0" to="0">
+    <routing id="916" x="804" y="300"/>
+    <routing id="916" x="768" y="300"/>
+  </connector>
+  <connector id="917" linewidth="1.0" color="-16777216" labelx="500.0" labely="474.0" from="0" to="0">
+    <routing id="917" x="1056" y="180"/>
+    <routing id="917" x="1128" y="180"/>
+  </connector> 
+  <connector id="918" linewidth="1.0" color="-16777216" labelx="5.0" labely="489.0" from="0" to="0">
+    <routing id="918" x="984" y="228"/>
+    <routing id="918" x="984" y="384"/>
+  </connector>
+  <connector id="919" linewidth="1.0" color="-16777216" labelx="910.0" labely="371.0" from="0" to="0">
+    <routing id="919" x="852" y="180"/>
+    <routing id="919" x="852" y="288"/>
+  </connector>
+  <connector id="920" linewidth="1.0" color="-16777216" labelx="500.0" labely="500.0" from="0" to="0">
+    <routing id="920" x="1296" y="372"/>
+    <routing id="920" x="1296" y="168"/>
+  </connector> 
+  <connector id="921" linewidth="1.0" color="-16777216" labelx="961.0" labely="659.0" from="0" to="0">
+    <routing id="921" x="1032" y="360"/>
+    <routing id="921" x="1032" y="228"/>
+  </connector> 
+  <connector id="922" linewidth="1.0" color="-16777216" labelx="393.0" labely="577.0" from="0" to="0">
+    <routing id="922" x="1188" y="240"/>
+    <routing id="922" x="1188" y="300"/>
+  </connector>
+  <connector id="923" linewidth="1.0" color="-16777216" labelx="450.0" labely="200.0" from="0" to="0">
+    <routing id="923" x="1188" y="140"/>
+    <routing id="923" x="1000" y="140"/>
+  </connector>
+  <channel id="chl-0" y1="0" y2="240" text="建单人(应急预案管理员)"/>
+  <channel id="chl-1" y1="240" y2="480" text="应急通信保障工作组"/>
+  <channel id="chl-1" y1="480" y2="720" text="应急通信负责人"/>
+</layout>

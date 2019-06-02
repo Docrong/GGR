@@ -1,0 +1,7 @@
+.box{
+	/*width:300px;
+	height:350px;*/
+	background-repeat:repeat-x;
+	background-color:#fff;
+	background-image:url(../img/boxbg.gif);
+}

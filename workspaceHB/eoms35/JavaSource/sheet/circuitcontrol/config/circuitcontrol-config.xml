@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="CircuitControl" description="电路调度申请工单">
+  <flow-define id="CircuitControl" description="电路调度申请工单" tasknamespace="http://CircuitControl" linkservicename="" dictfilename="dict-sheet-circuitcontrol" name="CircuitControl">
+    <phase-id id="receive" name="新建工单" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="FirstApproval" role="" condition="${operateType}==0" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发" />
+      <to-phase-id id="DraftTask" role="" condition="${operateType}==22" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="保存草稿" />
+    </phase-id>
+    <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
+    <phase-id id="FirstApproval" name="一次审批" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="SecondApproval" role="" condition="${operateType}==101" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="审批通过" />
+    </phase-id>
+    <phase-id id="SecondApproval" name="二次审批" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
+      <to-phase-id id="HoldTask" role="" condition="${operateType}==102" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="审批通过" />
+      <to-phase-id id="FirstApproval" role="" condition="${operateType}==103" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="审批不通过" />
+    </phase-id>
+  </flow-define>
+</WorkFlowRule>
+

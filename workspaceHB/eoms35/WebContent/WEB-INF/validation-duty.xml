@@ -1,0 +1,174 @@
+<!-- Generated with Karapan Sapi Struts Generator -->
+<!-- Visit http://www.javanovic.com         -->
+
+<form-validation>
+  <formset>
+    <form name="tawWsDictForm">
+      <field property="dictName" depends="required,maxLength">
+        <arg0 key="TawWsDict.dictName"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>20</var-value>
+        </var>
+      </field>
+      <field property="sysType" depends="short">
+        <arg0 key="TawWsDict.sysType"/>
+      </field>
+      <field property="deleted" depends="short">
+        <arg0 key="TawWsDict.deleted"/>
+      </field>
+      <field property="remark" depends="maxLength">
+        <arg0 key="TawWsDict.remark"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>255</var-value>
+        </var>
+      </field>
+      <field property="code" depends="maxLength">
+        <arg0 key="TawWsDict.code"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>5</var-value>
+        </var>
+      </field>
+      <field property="dictId" depends="required,integer">
+        <arg0 key="TawWsDict.dictId"/>
+      </field>
+      <field property="dictType" depends="required,integer">
+        <arg0 key="TawWsDict.dictType"/>
+      </field>
+    </form>
+
+
+    <form name="tawWsDictTypeForm">
+      <field property="dictTypelabel" depends="required,maxLength">
+        <arg0 key="TawWsDictType.dictTypelabel"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>30</var-value>
+        </var>
+      </field>
+      <field property="wsClass" depends="required,short">
+        <arg0 key="TawWsDictType.wsClass"/>
+      </field>
+      <field property="deleted" depends="short">
+        <arg0 key="TawWsDictType.deleted"/>
+      </field>
+      <field property="remark" depends="maxLength">
+        <arg0 key="TawWsDictType.remark"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>255</var-value>
+        </var>
+      </field>
+      <field property="dictType" depends="required,integer">
+        <arg0 key="TawWsDictType.dictType"/>
+      </field>
+    </form>
+
+   <form name="tawRmGuestformForm">
+			<field property="guestname" depends="required,maxlength">
+				<arg0 key="TawRmGuestform.guestname"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="company" depends="required,maxlength">
+				<arg0 key="TawRmGuestform.company"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="dutyman" depends="required,maxlength">
+				<arg0 key="TawRmGuestform.dutyman"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="sender" depends="required,maxlength">
+				<arg0 key="TawRmGuestform.sender"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="department" depends="required,maxlength">
+				<arg0 key="TawRmGuestform.department"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>30</var-value>
+				</var>
+			</field>
+			<field property="purpose" depends="required,maxlength">
+				<arg0 key="TawRmGuestform.purpose"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="concerned" depends="maxlength">
+				<arg0 key="TawRmGuestform.concerned"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="affection" depends="maxlength">
+				<arg0 key="TawRmGuestform.affection"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+			<field property="notes" depends="maxlength">
+				<arg0 key="TawRmGuestform.notes"/>
+				<arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>255</var-value>
+				</var>
+			</field>
+    </form>
+
+
+    <form name="tawWsModuleForm">
+      <field property="moduleName" depends="required,maxLength">
+        <arg0 key="TawWsModule.moduleName"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>50</var-value>
+        </var>
+      </field>
+      <field property="comments" depends="maxLength">
+        <arg0 key="TawWsModule.comments"/>
+        <arg1 name="maxlength" key="${var:maxlength}" resource="false"/>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>255</var-value>
+        </var>
+      </field>
+      <field property="moduleId" depends="required,integer">
+        <arg0 key="TawWsModule.moduleId"/>
+      </field>
+    </form>
+
+
+  </formset>
+</form-validation>

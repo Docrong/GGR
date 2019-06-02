@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.boco.eoms.crm.model.CrmWaitInfo" table="CRM_WAIT_INFO">
+    <id name="id" column="id">
+        <generator class="uuid.hex">
+        </generator>
+    </id>
+        <property name="sheetType" />
+       	<property name="serviceType" />
+		<property name="serialNo" />
+		<property name="sendtime" />
+		<property name="isSended" />
+		<property name="ndeptContact" />
+		<property name="ndeptContactPhone" />
+		<property name="compProp" />
+		<property name="isReplied" />
+		<property name="isCorrect" />
+		<property name="issueEliminatTime" />
+		<property name="affectedAreas" />
+		<property name="issueEliminatReason" />
+		<property name="dealDesc" />
+		<property name="dealResult" />
+		<property name="apnid" />
+		<property name="loginUserName" />
+		<property name="loginUserPassWord" />
+		<property name="netResCapacity" />
+		<property name="clientPgmCapacity" />
+		<property name="expectFinishdays" />
+		<property name="circuitCode" />
+		<property name="phaseReployDesc" />
+		<property name="isDeferReploy" />
+		<property name="opType" />
+		<property name="opDesc" />
+		<property name="interfaceType" />
+		<property name="createTime" />
+		<property name="returnType" />
+		<property name="attachRef" />
+    </class>    
+
+</hibernate-mapping>
+

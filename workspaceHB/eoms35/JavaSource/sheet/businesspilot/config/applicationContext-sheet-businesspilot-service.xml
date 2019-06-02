@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="BusinessPilotLink"
+		class="com.boco.eoms.sheet.businesspilot.model.BusinessPilotLink"
+		autowire="byName" />
+	<bean id="BusinessPilotMain"
+		class="com.boco.eoms.sheet.businesspilot.model.BusinessPilotMain"
+		autowire="byName" />
+	
+	<bean id="iBusinessPilotTask"
+		class="com.boco.eoms.sheet.businesspilot.task.impl.BusinessPilotTaskImpl"
+		autowire="byName" />
+
+	<bean id="BusinessPilotTask"
+		class="com.boco.eoms.sheet.businesspilot.task.impl.BusinessPilotTask"
+		autowire="byName" />
+		
+	<bean id="iBusinessPilotTaskManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businesspilot.service.impl.BusinessPilotTaskManagerImpl">
+				<property name="taskModelObject" ref="BusinessPilotTask" />
+				<property name="taskDAO">
+					<ref bean="iBusinessPilotTaskDAO" />
+				</property>
+				<property name="taskConfigPath">
+			       <value>/config/businesspilotTaskConfig.properties</value>
+		        </property>				
+			</bean>
+		</property>
+	</bean>		
+		
+	<bean id="iBusinessPilotFlowManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businesspilot.service.impl.BusinessPilotFlowManagerImpl">
+				<property name="businessFlowAdapterService">
+					<ref bean="BusinessFlowAdapterService" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iBusinessPilotLinkManager" parent="txProxyTemplate">
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businesspilot.service.impl.BusinessPilotLinkManagerImpl">
+				<property name="linkObject" ref="BusinessPilotLink"/>
+				<property name="linkDAO">
+				  <ref bean="IBusinessPilotLinkDao"/>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="iBusinessPilotMainManager" parent="txProxyTemplate">
+	<property name="target">
+	  
+			<bean
+				class="com.boco.eoms.sheet.businesspilot.service.impl.BusinessPilotMainManagerImpl">
+			    <property name="mainObject" ref="BusinessPilotMain" />
+				<property name="mainDAO">
+				 <ref bean="IBusinessPilotMainDao" />
+				 </property>
+				 <property name="workSheetQO">
+					<ref bean="iBusinessPilotQo" />
+				</property>
+				 <property name="flowTemplateName">
+					<value>BusinessPilotProcess</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/businesspilot-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean> 
+
+   <bean id="iBusinessPilotQo"
+		class="com.boco.eoms.sheet.businesspilot.qo.impl.BusinessPilotQoImpl"
+		autowire="byName" singleton="false" >
+		<property name="poMain" value="BusinessPilotMain" />
+		<property name="poLink" value="BusinessPilotLink" />
+		<property name="aliasMain" value="BusinessPilotMain" />
+		<property name="aliasLink" value="BusinessPilotLink" />
+		<property name="poTask" value="BusinessPilotTask" />
+	    <property name="aliasTask" value="businesspilotTask" />			
+	</bean>
+   
+
+
+	<bean id="BusinessPilot" parent="txProxyTemplate"> 
+		<property name="target">
+			<bean
+				class="com.boco.eoms.sheet.businesspilot.webapp.action.BusinessPilotSheetMethod">
+				<property name="businessFlowService" >
+					<ref bean="iBusinessPilotFlowManager" />
+			   </property>
+				<property name="linkService" 
+					ref="iBusinessPilotLinkManager" />
+				<property name="mainService"
+					ref="iBusinessPilotMainManager" />
+				<property name="sheetTask"
+					ref="BusinessPilotTask" />
+				<property name="taskService"
+					ref="iBusinessPilotTaskManager" />	
+				<property name="pageLength">
+					<value>15</value>
+				</property>
+				<property name="roleConfigPath">
+					<value>classpath:config/businesspilot-config.xml</value>
+				</property>
+			</bean>
+		</property>
+	</bean>	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

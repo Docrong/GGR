@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+   <bean id="dealTypeConfigDao" class="com.boco.eoms.sheet.dealtypeconfig.dao.hibernate.DealTypeConfigDAOImpl" autowire="byName"/>
+    <bean id="iDealTypeConfigManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean class="com.boco.eoms.sheet.dealtypeconfig.service.impl.DealTypeConfigManagerImpl">
+                <property name="dao" ref="dealTypeConfigDao"/>
+	        </bean>
+        </property>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

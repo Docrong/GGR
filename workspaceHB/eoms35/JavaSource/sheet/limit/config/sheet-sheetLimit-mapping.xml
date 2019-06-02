@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TimeMappings>
+	 <time-model modelName="故障处理工单" flowName="CommonFaultMainFlowProcess" taskFlowName="CommonFaultMainFlowProcess">
+        <time-filter name="level1" dictId="1010304" sub="" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainFaultResponseLevel" cnName="故障处理响应级别"/>
+        </time-filter>
+        <time-filter name="specialty1" dictId="1010104" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class4" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class4" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类(三级)"/>
+        </time-filter>
+        <except-Task taskName="ExamineHumTask"/>
+    </time-model>
+	 <time-model modelName="电路调度工单" flowName="CircuitDispatchMainFlowProcess" taskFlowName="CircuitDispatchMainFlowProcess,CircuitDispatchSubFlowProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类(三级)"/>
+        </time-filter>
+        <time-filter name="specialty4" dictId="1010103" sub="" htmlType="dict" businessName="class4" size="10">
+        	<sheet-info name="mainEquipmentFactory" cnName="设备厂家"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="网络综合调整工单" flowName="NetChangeMainProcess" taskFlowName="NetChangeMainProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类(三级)"/>
+        </time-filter>
+        <time-filter name="specialty4" dictId="1010103" sub="" htmlType="dict" businessName="class4" size="10">
+        	<sheet-info name="mainEquipmentFactory" cnName="设备厂家"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="软件变更工单" flowName="SoftChangeMainProcess" taskFlowName="SoftChangeMainProcess,SoftChangeSubProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetTypeOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetTypeTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetTypeThree" cnName="网络分类(三级)"/>
+        </time-filter>
+        <time-filter name="specialty4" dictId="1010103" sub="" htmlType="dict" businessName="class4" size="10">
+        	<sheet-info name="mainFactory" cnName="设备厂家"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="网络数据管理工单" flowName="NetDataMainProcess" taskFlowName="NetDataMainProcess,NetDataSubProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetTypeOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetTypeTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetTypeThree" cnName="网络分类(三级)"/>
+        </time-filter>
+        <time-filter name="specialty4" dictId="1010103" sub="" htmlType="dict" businessName="class4" size="10">
+        	<sheet-info name="mainFactory" cnName="设备厂家"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="账号权限申请工单" flowName="AccountPopedomApplyProcess" taskFlowName="AccountPopedomApplyProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="netType1" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="netType2" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="netType3" cnName="网络分类(三级)"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="业务拆除工单" flowName="BusinessBackoutProcess" taskFlowName="BusinessBackoutMainFlowProcess,BusinessBackoutSubFlowProcess">
+    </time-model>
+	 <time-model modelName="业务变更工单" flowName="BusinessChangeProcess" taskFlowName="BusinessChangeMainFlowProcess,BusinessChangeSubFlowProcess">
+    </time-model>
+	 <time-model modelName="业务开通工单" flowName="BusinessDredgeMainFlowProcess" taskFlowName="BusinessDredgeMainFlowProcess,BusinessDredgeSubFlowProcess">
+    </time-model>
+	 <time-model modelName="新业务正式实施工单" flowName="BusinessOperationProcess" taskFlowName="BusinessOperationProcess">
+    </time-model>
+	 <time-model modelName="新业务试点工单" flowName="BusinessPilotProcess" taskFlowName="BusinessPilotProcess">
+    </time-model>
+	 <time-model modelName="新业务设计工单" flowName="BusinessPlanProcess" taskFlowName="BusinessPlanProcess">
+    </time-model>
+	 <time-model modelName="通用任务工单" flowName="CommonTaskMainFlowProcess" taskFlowName="CommonTaskMainFlowProcess,CommonTaskSubFlowProcess">
+    </time-model>
+	 <time-model modelName="投诉处理工单" flowName="ComplaintProcess" taskFlowName="ComplaintProcess">
+        <time-filter name="specialty1" dictId="1010601" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="complaintType1" cnName="投诉分类一级类别"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="complaintType2" cnName="投诉分类二级类别"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="class4" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="complaintType" cnName="投诉分类三级类别"/>
+        </time-filter>
+        <time-filter name="specialty4" dictId="" sub="" htmlType="dict" businessName="class4" size="10">
+        	<sheet-info name="complaintType4" cnName="投诉分类四级类别"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="应急预案演练工单" flowName="EmergencyDrillProcess" taskFlowName="EmergencyDrillProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类一"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类二"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类三"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="重大事件保障工单" flowName="GreatEventProcess" taskFlowName="GreatEventProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类（一级）"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类（二级）"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类（三级）"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="集团投诉工单" flowName="GroupComplaintProcess" taskFlowName="GroupComplaintProcess">
+        <time-filter name="specialty1" dictId="1011002" sub="" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="bservType" cnName="工单业务类型"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="IT需求申请工单" flowName="ITRequirementProcess" taskFlowName="ITRequirementProcess">
+    </time-model>
+	 <time-model modelName="IT需求开发工单" flowName="ITSoftChangeProcess" taskFlowName="ITSoftChangeProcess">
+    </time-model>
+	 <time-model modelName="网络优化工单" flowName="NetOptimizeProcess" taskFlowName="NetOptimizeProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类一级"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类二级"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类三级"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="流程变更工单" flowName="ProcessChangeProcess" taskFlowName="ProcessChangeProcess">
+    </time-model>
+	 <time-model modelName="资源确认工单" flowName="ResourceAffirmProcess" taskFlowName="ResourceAffirmMainFlowProcess,ResourceAffirmSubFlowProcess">
+    </time-model>
+	 <time-model modelName="安全审计工单" flowName="SafeAuditProcess" taskFlowName="SafeAuditProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainSafeAuditType1" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainSafeAuditType2" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainSafeAuditType3" cnName="网络分类(三级)"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="安全问题处理工单" flowName="SecurityDealProcess" taskFlowName="SecurityDealProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类(三级)"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="安全评估工单" flowName="SecurityEvaluateProcess" taskFlowName="SecurityEvaluateProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类(三级)"/>
+        </time-filter>
+    </time-model>
+	 <time-model modelName="紧急故障管理工单" flowName="UrgentFaultMainFlowProcess" taskFlowName="UrgentFaultMainFlowProcess">
+        <time-filter name="specialty1" dictId="1010104" sub="class2" htmlType="dict" businessName="class1" size="10">
+        	<sheet-info name="mainNetSortOne" cnName="网络分类(一级)"/>
+        </time-filter>
+        <time-filter name="specialty2" dictId="" sub="class3" htmlType="dict" businessName="class2" size="10">
+        	<sheet-info name="mainNetSortTwo" cnName="网络分类(二级)"/>
+        </time-filter>
+        <time-filter name="specialty3" dictId="" sub="" htmlType="dict" businessName="class3" size="10">
+        	<sheet-info name="mainNetSortThree" cnName="网络分类(三级)"/>
+        </time-filter>
+    </time-model>
+</TimeMappings>

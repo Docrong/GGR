@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.workdayset.model.TawWorkdaySet"
+            table="taw_workdayset"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="areaId"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="createTime"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="deleted"
+                length="5"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                length="10"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                length="10"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="status"
+                length="5"
+                not-null="false"
+        >
+
+        </property>
+        <property
+            name="cover"
+                length="5"
+                not-null="false"
+        >
+
+        </property>
+        <property
+            name="userId"
+                length="30"
+                not-null="false"
+        >
+
+        </property>
+
+        <property
+            name="workDate"
+                length="30"
+                not-null="false"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

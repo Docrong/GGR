@@ -1,0 +1,65 @@
+
+
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<link rel="stylesheet" href="../../include/style.css">
+<TITLE></TITLE>
+<SCRIPT language=javascript src="../../include/public.js"></SCRIPT>	
+<script language="javascript">
+
+function Addsubnet()
+         {
+window.parent.ShowList.location.href="AddIp.asp"
+         }
+
+</script>
+<base target = "ShowList">
+</HEAD>
+<BODY>
+
+<form id=form1 name=form1 action="list.asp" method=post>
+  <TABLE cellSpacing=0 cellPadding=0  border=1 width="60%" bordercolordark="#FFFFFF" bordercolorlight="#66CCFF" bgcolor=#F3F3F3 align="center">
+    <TR> 
+      <TD colspan=4 align=center class="tabletitle">IP???? -- ???IP??</TD>
+    </TR>
+    <TR> 
+      <TD align=center>????:</TD>
+      <td align="center"> 
+        <div align="left"> 
+          <select name="search_type">
+            <option value="1">????</option>
+            <option value="2">??IP??</option>
+          </select>
+        </div>
+      </td>
+    </TR>
+    <TR> 
+      <TD align=center>IP??:</TD>
+      <td align="center"> 
+        <div align="left"> 
+          <input type="text" name="ip1" size="5" maxlength="3"  onkeyup="checknum1(this)">
+          .
+          <input type="text" name="ip2" size="5" maxlength="3"    onkeyup="checknum1(this)">
+          .
+          <input type="text" name="ip3" size="5" maxlength="3"   onkeyup="checknum1(this)">
+          . 
+          <input type="text" name="ip4" size="5" maxlength="3"   onkeyup="checknum1(this)">
+          (????)</div>
+      </td>
+    </TR>
+    <TR> 
+      <TD colspan=4 align=center> 
+        
+        <INPUT id=button type=button value="????" name=button Onclick="javascript:Addsubnet();">
+        &nbsp;&nbsp;&nbsp;&nbsp; 
+        
+        <INPUT  type=submit value="????" name=submit  >
+      </TD>
+      
+    </TR>
+  </TABLE>
+</form>
+</BODY>
+</HTML>

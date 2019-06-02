@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	
+    
+	<bean id="sender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	  <property name="host">
+	   <value>boco.com.cn</value>
+	  </property>
+	</bean>
+    <bean id="messageemail" class="com.boco.eoms.commons.message.msg.dao.TawCommonMessageEmail">
+	  <property name="to">
+	   <value>panlong@boco.com.cn</value>
+	  </property>
+	  <property name="from">
+	  <value>panlong@boco.com.cn</value>
+	  </property>
+
+	   <property name="subject">
+	    <value>EOMS消息提示</value>
+	  </property>
+	  <property name="plainTextTemplate">
+	    <value>./WebContent/WEB-INF/classes/config/plainText.vm</value>
+	   
+	  </property>
+	  <property name="htmlTemplate">
+	  <value>./WebContent/WEB-INF/classes/config/html.vm</value>
+	  </property>
+	  <property name="velocityEngine">
+	   <bean class="org.springframework.ui.velocity.VelocityEngineFactoryBean" />
+	  </property>
+	</bean>
+	
+	 <bean id="messagemobile" class="com.boco.eoms.commons.message.msg.dao.TawCommonMessageMobile">
+	  <property name="sms_host_ip">
+	   <value>10.0.0.8</value>
+	  </property>
+	  <property name="sms_port">
+	  <value>7890</value>
+	  </property>
+	   <property name="sms_user">
+	    <value>925111</value>
+	  </property>
+	  <property name="sms_pwd">
+	    <value>8888</value>
+	  </property>
+	  <property name="sms_icp_code">
+	  <value>1111</value>
+	  </property>
+	  <property name="sms_icp_id">
+	  <value>925111</value>
+	  </property>
+	  
+	</bean>
+
+</beans>
+

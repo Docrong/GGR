@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- <!DOCTYPE document SYSTEM "E:\projects\boco\eoms3.5\01-Project\EOMS-V3.5\source0.1\web\WEB-INF\classes\com\boco\eoms\commons\file\config\FMExportMapping.dtd"> -->
+<pages>
+	<page num="0" className="com.boco.eoms.TawRmUser" name="页码友一友">
+		<titles>
+			<title startRow="1" endRow="2" startCol="15" endCol="19">
+				<font family="宋体" weight="bold" style="italic" size="30"
+					color="red" text="${area1}区地${year1}年" />
+			</title>
+			<title startRow="7" endRow="11" startCol="20" endCol="40">
+				<font family="宋体" weight="bold" style="italic" size="30" color="red" text="欢迎，欢迎"/>
+			</title>
+		</titles>
+
+		<headers startCol="4" endCol="43" startRow="1" endRow="5">
+			<header col="4">
+				<headerName>备注</headerName>
+				<fieldName>memo</fieldName>
+				<type>String</type>
+				<length>50</length>
+				<isNull>true</isNull>
+			</header>
+
+			<header col="5">
+				<headerName>姓名</headerName>
+				<fieldName>name</fieldName>
+				<type>String</type>
+				<length>50</length>
+				<isNull>true</isNull>
+			</header>
+		</headers>
+
+
+		<headers startCol="0" endCol="9" startRow="6" endRow="10">
+			<header col="4">
+				<headerName>备注</headerName>
+				<fieldName>memo</fieldName>
+				<type>String</type>
+				<length>50</length>
+				<isNull>true</isNull>
+			</header>
+
+			<header col="5">
+				<headerName>姓名</headerName>
+				<fieldName>name</fieldName>
+				<type>String</type>
+				<length>50</length>
+				<isNull>true</isNull>
+			</header>
+		</headers>
+	</page>
+
+
+	<page num="1" className="com.boco.eoms.TawRmUser" name="页码2">
+		<titles>
+			<title startRow="1" endRow="2" startCol="15" endCol="19">
+				<font family="宋体" weight="bold" style="italic" size="12"
+					color="red" text="${area1}地区${year1}年" />
+			</title>
+			<title startRow="7" endRow="11" startCol="20" endCol="40">
+				<font family="宋体" weight="bold" style="italic" size="12"
+					color="red" text="欢迎，欢迎" />
+			</title>
+		</titles>
+
+		<headers startCol="4" endCol="43" startRow="1" endRow="5">
+			<header col="4">
+				<headerName>备注</headerName>
+				<fieldName>memo</fieldName>
+				<type>String</type>
+				<length>50</length>
+				<isNull>true</isNull>
+			</header>
+
+			<header col="5">
+				<headerName>姓名</headerName>
+				<fieldName>name</fieldName>
+				<type>String</type>
+				<length>50</length>
+				<isNull>true</isNull>
+			</header>
+		</headers>
+	</page>
+</pages>

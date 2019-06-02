@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.workbench.infopub.model.Forums"
+		table="IFP_FORUMS">
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex" />
+		</id>
+
+		<property name="createrId" length="50" not-null="false"
+			unique="true" column="creater_id">
+
+		</property>
+
+		<property name="createTime" length="50" not-null="false"
+			unique="true" column="create_time">
+
+		</property>
+
+		<property name="description" length="1024" not-null="false"
+			unique="true" column="description">
+
+		</property>
+
+		<property name="title" length="50" not-null="false"
+			unique="true" column="title">
+
+		</property>
+
+		<property name="parentId" length="50" not-null="false"
+			unique="true" column="parent_id">
+
+		</property>
+
+		<property name="isLeaf" length="10" not-null="false"
+			unique="true" column="is_leaf" />
+		
+		<property name="isDel" length="10" not-null="false"
+			unique="true" column="is_del" />
+
+	</class>
+
+</hibernate-mapping>
+

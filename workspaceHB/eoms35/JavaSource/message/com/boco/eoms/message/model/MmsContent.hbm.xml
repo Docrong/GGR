@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.message.model.MmsContent"
+            table="mms_content"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="monitorId"
+                length="32"
+                not-null="false"
+                unique="false"
+                column="monitor_id"
+        >
+
+        </property>
+        
+        <property
+            name="contentId"
+                length="32"
+                not-null="false"
+                unique="false"
+                column="content_id"
+        >
+
+        </property>
+
+        <property
+            name="content"
+                length="500"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="contentType"
+                length="5"
+                not-null="false"
+                unique="false"
+                column="content_type"
+        >
+
+        </property>
+
+        <property
+            name="position"
+                length="2"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+            name="deleted"
+                length="2"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+    </class>    
+
+</hibernate-mapping>
+

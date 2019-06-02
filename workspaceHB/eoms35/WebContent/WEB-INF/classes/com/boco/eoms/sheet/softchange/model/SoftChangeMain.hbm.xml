@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.softchange.model.SoftChangeMain"
+            table="SoftChange_main"
+    >
+
+    <id
+        name="id"
+        column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+        <property name="sheetId" />
+		<property name="title" />
+		<property name="sheetAcceptLimit" />
+		<property name="sheetCompleteLimit" />
+		<property name="sendTime" />
+		<property name="sendOrgType" />
+		<property name="sendUserId" />
+		<property name="sendDeptId" />
+		<property name="sendRoleId" />
+		<property name="sendContact" />
+		<property name="endTime" />
+		<property name="endResult" />
+		<property name="status" />
+		<property name="holdStatisfied" />
+		<property name="endUserId" />
+		<property name="endDeptId" />
+		<property name="endRoleId" />
+		<property name="deleted" />
+		<property name="piid" />
+		<property name="parentSheetName" />
+		<property name="parentSheetId" />
+		<property name="sheetTemplateName" />
+		<property name="sheetAccessories" />
+		<property name="correlationKey" />
+		<property name="parentCorrelation" />
+		<property name="toDeptId" />
+		<property name="templateFlag" />
+		<property name="cancelReason" />
+	    <property name="sendYear" />
+		<property name="sendMonth" />
+		<property name="sendDay" />
+        <property name="parentPhaseName" />
+        <property name="invokeMode" />
+        
+		<property name="mainNetTypeOne" />
+		<property name="mainNetTypeTwo" />
+		<property name="mainNetTypeThree" />
+		<property name="mainIsSecurity" />
+
+		<property name="mainIsConnect" />
+
+		<property name="mainFactory" />
+
+		<property name="mainApplyReason" />
+
+		<property name="mainCellInfo" />
+
+		<property name="mainSoftCDKey" />
+
+		<property name="mainSoftPatchKey" />
+
+		<property name="mainSoftDetail" />
+
+		<property name="mainIsAllow" />
+
+		<property name="mainAllowKey" />
+
+		<property name="mainIsBack" />
+
+		<property name="mainChangeSource" />
+
+		<property name="mainParentProcessName" />
+
+		<property name="mainIsNeedDesign" />
+
+		<property name="mainDesignId" />
+		<property name="mainrejecttimes" />
+		<property name="mainifrecord" />
+		<property name="mainExecuteEndDate" />
+		<property name="mainIfDemonstrateCase" />
+		<property name="mainCaseKeywords" />
+		<property name="mainAssortSpeciality" />		
+
+     <property name="linkCompleteLimitTime" />
+     <property name="linkDesignKey" />
+     <property name="linkDesignComment" />
+     <property name="linkInvolvedProvince" />
+     <property name="linkInvolvedCity" />
+     <property name="linkRiskEstimate" />
+     <property name="linkEffectAnalyse" />
+     <property name="firstNodeAccessories" />
+     
+      <property name="mainSoftCDKeyOne" />
+       <property name="mainSoftCDKeyTwo" />
+        <property name="mainSoftPatchKeyOne" />
+         <property name="mainSoftPatchKeyTwo" />
+         
+           <property name="maincellinfo1" />        
+  <property name="maincellinfo2" />         
+  <property name="mainsoftcdkey1" />       
+  <property name="mainsoftcdkey2" />        
+  <property name="mainsoftpatchkey1" />
+  <property name="mainsoftpatchkey2" />     
+  <property name="mainisallow1" />          
+  <property name="mainisallow2" />          
+  <property name="mainallowkey1" />         
+  <property name="mainallowkey2" />         
+  <property name="mainsoftdetail1" />       
+  <property name="mainsoftdetail2" />
+         
+    </class>    
+
+</hibernate-mapping>
+

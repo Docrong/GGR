@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	<class name="com.boco.eoms.km.table.model.KmTableTheme"
+		table="KM_TABLE_THEME">
+
+		<id name="id" column="id" unsaved-value="null">
+			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+			<generator class="uuid.hex">
+			</generator>
+		</id>
+
+		<property name="createUser" column="CREATE_USER" length="32"
+			not-null="true" unique="false">
+		</property>
+
+		<property name="createDept" column="CREATE_DEPT" length="32"
+			not-null="true" unique="false">
+		</property>
+
+		<property name="createTime" column="CREATE_TIME" length="50"
+			not-null="true" unique="false">
+		</property>
+
+		<property name="themeName" column="THEME_NAME" length="50"
+			not-null="true" unique="false">
+		</property>
+
+		<property name="isOpen" column="IS_OPEN" length="32"
+			not-null="true" unique="false">
+		</property>
+
+		<property name="isDeleted" column="IS_DELETED" length="32"
+			not-null="false" unique="false">
+		</property>
+
+		<property name="orderBy" column="ORDER_BY" length="32"
+			not-null="true" unique="false">
+		</property>
+
+		<property name="isUsed" column="IS_USED" length="32"
+			not-null="false" unique="false">
+		</property>
+
+		<property name="nodeId" column="node_id" length="32"
+			not-null="false" unique="false">
+		</property>
+
+		<property name="parentNodeId" column="parent_node_id"
+			length="32" not-null="false" unique="false">
+		</property>
+
+		<property name="leaf" column="leaf" length="32" not-null="false"
+			unique="false">
+		</property>
+
+		<property name="tableId" column="TABLE_ID" length="32"
+			not-null="false" unique="false">
+		</property>
+
+		<property name="hasParentOperate" column="HAS_PARENT_OPERATE" length="10"
+			not-null="false" unique="false">
+		</property>
+	</class>
+
+</hibernate-mapping>
+

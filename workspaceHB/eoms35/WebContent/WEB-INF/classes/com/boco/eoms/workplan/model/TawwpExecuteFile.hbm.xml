@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+>
+    <class
+        name="com.boco.eoms.workplan.model.TawwpExecuteFile"
+        table="TAW_WP_EXECUTEFILE"
+        dynamic-update="false"
+        dynamic-insert="false"
+        select-before-update="false"
+        optimistic-lock="version"
+    >
+
+        <id
+            name="id"
+            column="ID"
+            type="java.lang.String"
+            length="32"
+            unsaved-value="null"
+        >
+            <generator class="uuid.hex">
+              <!--  
+                  To add non XDoclet generator parameters, create a file named 
+                  hibernate-generator-params-TawwpExecuteFile.xml 
+                  containing the additional parameters and place it in your merge dir. 
+              --> 
+            </generator>
+        </id>
+
+        <property
+            name="fileName"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="FILENAME"
+            length="250"
+            not-null="true"
+        />
+
+        <property
+            name="fileCodeName"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="FILECODENAME"
+            length="50"
+            not-null="true"
+        />
+
+        <property
+            name="fileSize"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="FILESIZE"
+            length="15"
+            not-null="true"
+        />
+
+        <property
+            name="cruser"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CRUSER"
+            length="20"
+            not-null="true"
+        />
+
+        <property
+            name="crtime"
+            type="java.lang.String"
+            update="false"
+            insert="true"
+            access="property"
+            column="CRTIME"
+            length="19"
+            not-null="true"
+        />
+
+        <many-to-one
+            name="tawwpExecuteContent"
+            class="com.boco.eoms.workplan.model.TawwpExecuteContent"
+            cascade="all"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTE_CONTENT_ID"
+            not-null="true"
+        /> 
+
+        <many-to-one
+            name="tawwpExecuteContentUser"
+            class="com.boco.eoms.workplan.model.TawwpExecuteContentUser"
+            cascade="all"
+            outer-join="auto"
+            update="true"
+            insert="true"
+            access="property"
+            column="EXECUTE_CONTENT_USER_ID"
+            not-null="true"
+        />
+
+        <!--
+            To add non XDoclet property mappings, create a file named
+                hibernate-properties-TawwpExecuteFile.xml
+            containing the additional properties and place it in your merge dir.
+        -->
+
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="GBK"?>
+<root>
+	<!--周期线图-->
+	<report id="1" 
+			name="网络投诉量周期统计报表"
+			type="2DLine" 
+			path="/AnyReport/reportmodule/template/2DLineSamlp.xml" 
+			swfpath="/AnyReport/reportmodule/swfs/2DLine.swf"
+			outpath="/AnyReport/resultxml/">
+			
+		<query>
+		
+			<block name="ARGUMENT">
+				<reference>yes</reference>				
+				<type>line</type>
+				<cycle>yes</cycle><!--是否需要周期分割表示-->
+				<sql>
+					<!--<value>VAL</value>-->
+					<time>NAME</time><!--是用时间作为NAME/ARGUMENT-->
+					<!--<time>ARGUMENT</time>-->
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<assort operate="=" requestname="city" columnname="CITY" setname="false" setargument="true">
+						<sql>SELECT NAME FROM CITYTABLE WHERE ID = ?</sql>
+					</assort>
+					<!-- <assort operate="="  requestname="页面参数" columnname="表字段" setname="false" setargument="false"/> -->
+					<group></group>
+					<order></order>
+				</sql>
+			</block>
+			
+		</query>
+	</report>
+	
+	<!--无周期线图-->
+	<report id="2" 
+			name="多指标投诉量报表"
+			type="2DLine" 
+			path="/AnyReport/reportmodule/template/2DLineSamlp.xml" 
+			swfpath="/AnyReport/reportmodule/swfs/2DLine.swf"
+			outpath="/AnyReport/resultxml/">
+			
+		<query>
+		
+			<block name="ARGUMENT">
+				<reference>yes</reference>				
+				<type>multiline</type>
+				<cycle>no</cycle><!--是否需要周期分割表示-->
+				<sql>
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<assort operate="=" requestname="usetype" columnname="USETYPE" setname="false" setargument="true">
+						<sql>SELECT NAME FROM USETYPE WHERE ID = ?</sql>
+					</assort>
+					<assort operate="=" requestname="city" columnname="CITY" setname="true" setargument="false">
+						<sql>SELECT NAME FROM CITYTABLE WHERE ID = ?</sql>
+					</assort>
+					<group></group>
+					<order></order>
+				</sql>
+			</block>
+			
+		</query>
+	</report>
+	
+	<!--周期、多类多指标-->
+	<report id="3" name="各地市投诉量周期统计报表"
+			type="2DColumn" 
+			path="/AnyReport/reportmodule/template/2D-Column.xml" 
+			swfpath="/AnyReport/reportmodule/swfs/2DColumn.swf"
+			outpath="/AnyReport/resultxml/">
+			
+		<query>
+			<block name="ARGUMENT">
+				<reference>yes</reference>				
+				<type>multicolumn</type>
+				<cycle>yes</cycle>
+				<sql>
+					<time>ARGUMENT</time>
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<parameter operate="=" requestname="usetype" columnname="usetype"  type="OR"/>
+					<assort operate="=" requestname="city" columnname="city" setname="true" setargument="false">
+							<sql>SELECT NAME FROM CITYTABLE WHERE ID = ?</sql>
+					</assort>			
+					<group></group>
+					<order></order>
+				</sql>
+			</block>
+		</query>
+	</report>
+	
+	<!--线柱-->
+	<report id="4" name="各地市投诉量投诉比例报表"
+			auto="no"
+			type="2D-Column-Line" 
+			path="/AnyReport/reportmodule/template/2DColumnLineEample.xml" 
+			swfpath="/AnyReport/reportmodule/swfs/2DColumn_Line.swf"
+			outpath="/AnyReport/resultxml/">
+				
+		<query>
+		
+			<block name="@所占该城市总投诉比例" chart_type="2DLine">
+				<reference>no</reference>				
+				<type>multiline</type>
+				<cycle>no</cycle>
+				<sql>
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<!-- 计算各个城市投诉比例 -->	
+					<assort operate="=" requestname="city" columnname="city" setname="false" setargument="true">
+							<sql>SELECT NAME FROM CITYTABLE WHERE ID = ?</sql>
+					</assort>										
+					<group></group>
+					<order></order>
+				</sql>
+				<sql>
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<assort operate="=" requestname="usetypes" columnname="usetype" setname="false" setargument="true">
+						<sql>SELECT NAME FROM USETYPE WHERE ID = ?</sql>
+					</assort>
+					<assort operate="=" requestname="city" columnname="city" setname="true" setargument="false">
+						<sql>SELECT NAME FROM CITYTABLE WHERE ID = ?</sql>
+					</assort>														
+					<group></group>
+					<order></order>
+				</sql>
+			</block>
+			
+			<block name="" chart_type="2DColumn">
+				<reference>yes</reference>				
+				<type>multicolumns</type>
+				<cycle>no</cycle>
+				<sql>
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<assort operate="=" requestname="city" columnname="city" setname="true" setargument="false">
+							<sql>SELECT NAME FROM CITYTABLE WHERE ID = ?</sql>
+					</assort>
+					<assort operate="=" requestname="usetype" columnname="usetype" setname="false" setargument="true">
+							<sql>SELECT NAME FROM USETYPE WHERE ID = ?</sql>
+					</assort>			
+					<group></group>
+					<order></order>
+				</sql>
+			</block>
+			
+		</query>
+	</report>
+	
+	<!-- 饼图（无周期）-->
+	<report id="5" 
+			name="网络投诉量比例"
+			type="2DPie" 
+			path="/AnyReport/reportmodule/template/2D-Pie.xml" 
+			swfpath="/AnyReport/reportmodule/swfs/2DPie.swf"
+			outpath="/AnyReport/resultxml/">
+			
+		<query>
+		
+			<block name="ARGUMENT">
+				<reference>yes</reference>				
+				<type>pie</type>
+				<cycle>no</cycle><!--是否需要周期分割表示-->
+				<sql>
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<parameter operate="=" requestname="usetype" columnname="usetype"  type="OR"/>
+					<assort operate="=" requestname="city" columnname="CITY" setname="true" setargument="false">
+						<sql>SELECT NAME FROM CITYTABLE WHERE ID = ?</sql>
+					</assort>
+					<group></group>
+					<order></order>
+				</sql>
+			</block>
+			
+		</query>
+	</report>
+	
+	<!-- 饼图（周期）-->
+	<report id="6" 
+			name="投诉量周期比例"
+			type="3DPie" 
+			path="/AnyReport/reportmodule/template/3D-Pie.xml" 
+			swfpath="/AnyReport/reportmodule/swfs/3DPie.swf"
+			outpath="/AnyReport/resultxml/">
+			
+		<query>
+		
+			<block name="ARGUMENT">
+				<reference>yes</reference>				
+				<type>pie</type>
+				<cycle>yes</cycle><!--是否需要周期分割表示-->
+				<sql>
+					<time>NAME</time>
+					<select>
+						SELECT COUNT(*) AS VAL FROM USERTABLE WHERE MONTHS &gt;= ? AND MONTHS &lt;= ? AND 
+					</select>
+					<parameter operate="=" requestname="usetype" columnname="usetype"  type="OR"/>
+					<assort operate="=" requestname="city" columnname="CITY" setname="false" setargument="false"/>
+					<group></group>
+					<order></order>
+				</sql>
+			</block>
+			
+		</query>
+	</report>
+</root>

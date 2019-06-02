@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.commons.log.model.TawCommonLogDeploy"
+            table="taw_common_logdeploy"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="beginnotetime"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="filesavepath"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="isdebug"
+                length="2"
+        >
+
+        </property>
+
+        <property
+            name="loglevel"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="modelid"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="modelname"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="noteremark"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="operdesc"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="operid"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="opername"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="userid"
+                length="100"
+        >
+
+        </property>
+
+        <property
+            name="savetype"
+                length="10"
+        >
+
+        </property>
+
+        <property
+            name="filecutsize"
+                length="200"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

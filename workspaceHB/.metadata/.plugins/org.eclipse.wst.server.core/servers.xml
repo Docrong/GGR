@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<servers>
+  <server auto-publish-setting="1" auto-publish-time="5" baseServerName="server1" hostname="localhost" id="wps_61" isHotMethodReplace="true" isOptimiziedForDevelopmentEnv="false" isRunServerWithWorkspaceResources="true" isSecurityEnabled="true" isUTCEnabled="false" isZeroBinaryEnabled="true" name="WebSphere Process Server v6.1" runtime-id="wps.v61" sca-test-environment="true" securityPasswd="{xor}PjsyNjE=" securityUserId="admin" server-type="com.ibm.ws.ast.st.v61.server.bi" server-type-id="com.ibm.ws.ast.st.v61.server.bi" serverConnectionType="SOAP" serverOrbBootstrapPortNum="2809" serverSoapConnectorPortNum="8880" timestamp="2" webSphereProfileName="wps">
+    <list key="modules" value0="eoms35EAR::org.eclipse.jst.j2ee.server:eoms35EAR::jst.ear::1.4"/>
+  </server>
+</servers>

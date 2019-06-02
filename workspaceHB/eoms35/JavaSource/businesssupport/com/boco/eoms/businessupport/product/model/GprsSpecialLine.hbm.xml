@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="com.boco.eoms.businessupport.product.model.GprsSpecialLine"
+            table="b_gprsSpecialLine">
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+    </id>
+        <property name="orderSheet_Id"/>
+	      <property name="longitudeA"/>	
+	      <property name="latitudeA"/>			
+	      <property name="detailAddGPRS"/>			
+	      <property name="contactUserGPRS"/>			
+	      <property name="contactPhoneGPRS"/>		
+	      <property name="longitudeGPRS"/>			
+	      <property name="latitudeGPRS"/>			
+	      <property name="businessBandwidth"/>		
+	      <property name="businessAmount"/>		    
+	      <property name="connectType"/>			   
+	      <property name="tunnelType"/>			
+	      <property name="groupCustomIP"/>						
+	      <property name="radiusAddress"/>			
+	      <property name="groupCustomIPDetail"/>		
+	      <property name="apnName"/>					
+	      <property name="ipAddressAssign"/>			
+	      <property name="connectPortNameA"/>	
+	      <property name="connectPortLengthA"/>		
+	      <property name="allowConnectA"/>			
+	      <property name="planFinishDaysA"/>			
+          <property name="portANetDeptUserA"/>		
+	      <property name="portANetDeptPhoneA"/>		
+	      <property name="portADealDesc"/>           
+	      <property name="remark"/>	
+	      <property name="specialtyType"/>
+	      <property name="deleted"/>			    	
+	      <property name="circuitSheetId"/>
+	      <property name="circuitName"/>
+	      
+	      
+	      <property name="apnScopeName"/>
+	      <property name="apnType"/>	          
+			<property name="endIDDividType"/>	          
+			<property name="isDoubleGGSN"/>	  
+			<property name="apnRootMethod"/>	         
+			<property name="transferInputMethod"/>	        
+			<property name="manYouProperty"/>	           
+			<property name="planExeEndPointNum"/>	       
+			<property name="firstApnAddAndNum"/>	          
+			<property name="secondApnAddAndNum"/>	            
+			<property name="greIpAdd"/>	        
+			<property name="simAdnHlrScope"/>	           
+			<property name="applyPurpose"/>
+			<property name="gprsBusinessTechCase"/>		            
+			<property name="userInputRouterIP"/>	
+			<property name="userAppServerIP"/>          
+			<property name="userIsRadiusValid"/>	           
+			<property name="userRadiusValidateIPAdd"/>	     
+			<property name="endPortNum"/>	           
+			<property name="numberDecrpt"/>	         
+			<property name="businessNumAssessment"/>	
+			<property name="apnIndex"/>	   
+			
+		    <property name="userIsUserNet"/>			    	
+	        <property name="userSpecifyDevNeed"/>  
+	    
+			<property name="apointComputHouseName"/>	
+			<property name="zpointComputerHorseName"/>
+			
+			<property name="portAInterfaceType"/>
+			<property name="portZInterfaceType"/>
+			
+			<property name="portABDeviceName"/>
+			<property name="portZBDeviceName"/>
+			
+			<property name="apointLocalPerson"/>
+			<property name="zpointLocalPerson"/>
+			
+			<property name="portAContactPhone"/>	
+			<property name="portZContactPhone"/>
+			
+			<property name="portADetailAdd"/>	
+			<property name="portZDetailAdd"/>
+			
+			<property name="interfaceCustomConnPerson"/>
+			<property name="interfaceCustomConnPersonZ"/>
+			
+			<property name="interfaceCustomConnPhone"/>	
+			<property name="interfaceCustomConnPhoneZ"/>
+			
+			<property name="interfaceCustomConnMail"/>	
+			<property name="interfaceCustomConnMailZ"/>
+			
+			<property name="interfaceCustomConnAdd"/>	
+			<property name="interfaceCustomConnAddZ"/>
+			
+			<property name="fiberEquipNameA"/>
+			<property name="fiberEquipNameZ"/>
+			
+			<property name="fiberEquipCodeA"/>
+			<property name="fiberEquipCodeZ"/>
+			
+			<property name="siteEquipCodeA"/>	
+			<property name="siteEquipCodeZ"/>
+			
+			<property name="siteNameA"/>	
+			<property name="siteNameZ"/>
+			
+			<property name="accessSiteIdenA"/>	
+			<property name="accessSiteIdenZ"/>
+			
+			<property name="fiberLengthA"/>	
+			<property name="fiberLengthZ"/>
+			
+			<property name="fiberOwnerA"/>	
+			<property name="fiberOwnerZ"/>
+			
+			<property name="isGetInterfaceA"/>	
+			<property name="isGetInterfaceZ"/>
+			<property name="getInterfaceNoA"/>	
+			<property name="getInterfaceNoZ"/>
+			<property name="theLastOpinionA"/>	
+			<property name="theLastOpinionZ"/>
+			
+
+
+	      <property name="userStardAddA"/>	
+	      <property name="userStardAddZ"/>
+
+	      <property name="userSiteHA"/>	
+	      <property name="userSiteHZ"/>
+	
+	      <property name="userSiteAA"/>	
+	      <property name="userSiteAZ"/>
+
+	      <property name="userIsHaveDivA"/>	
+	      <property name="userIsHaveDivZ"/>
+
+	      <property name="isNeedBuyA"/>
+	      <property name="isNeedBuyZ"/>
+
+	      <property name="theDevNeededA"/>	
+	      <property name="theDevNeededZ"/>
+
+	      <property name="interfacePointTypeA"/>	
+	      <property name="interfacePointTypeZ"/>
+
+	      <property name="isOkBetweenUserA"/>	
+	      <property name="isOkBetweenUserZ"/>
+
+	      <property name="noInputResonA"/>	
+	      <property name="noInputResonZ"/>
+
+	      <property name="buildMethodA"/>
+	      <property name="buildMethodZ"/>
+
+	      <property name="interfacePointAddA"/>
+	      <property name="interfacePointAddZ"/>     
+	      
+	      <property name="portZBDevicePort"/> 
+	      
+	      	     <property name="interfaceSiteNameA"/>
+	      <property name="interfaceEquipCodeA"/>
+
+	      <property name="interfaceSiteNameZ"/>
+	      <property name="interfaceEquipCodeZ"/>
+	      
+	      <property name="isDeviceAllowOpenA"/>
+		  <property name="isDeviceAllowOpenZ"/>	
+		
+		  <property name="isNeedAddCardA"/>
+		  <property name="isNeedAddCardZ"/>
+		
+		  <property name="cardTypeA"/>
+		  <property name="cardTypeZ"/>
+		
+		  <property name="cardNumA"/>
+		  <property name="cardNumZ"/>
+		  
+		  	<property name="fiberAcount"/>
+	        <property name="fiberAroute"/>
+			<property name="fiberZcount"/>
+	  		<property name="fiberZroute"/>
+	   		<property name="promise"/>  
+			<property name="whours"/>
+			
+			<property name="linkDesinTypeA"/>
+			<property name="linkDesinTypeZ"/>
+		  
+			<property name="fiberOwnerAfiberEquipNameA"/>
+			<property name="fiberOwnerAfiberEquipNameZ"/>
+			<property name="buildTypeA"/>
+	
+			<property name="buildTypeZ"/>
+			<property name="portABDeviceType"/>
+			<property name="portZBDeviceType"/>
+			
+			<property name="tradeId"/>
+			
+	
+    </class>    
+
+</hibernate-mapping>
+

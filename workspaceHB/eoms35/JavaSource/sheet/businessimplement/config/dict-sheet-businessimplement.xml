@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="GBK"?>
+<dicts description="宽带业务拆除工单">
+	<dict id="mainOperateType" description="处理方法">	
+		<item id="0" name="新建派发" description="新建派发" />		
+		<item id="22" name="草稿保存" description="草稿保存" />
+		<item id="3" name="草稿派发" description="草稿派发" />
+		<item id="54" name="重新派发" description="重新派发" />		
+		<item id="46" name="开通情况回复" description="开通情况回复" />
+		<item id="6" name="处理回复通过" description="处理回复通过" />
+		<item id="7" name="不通过退回" description="不通过退回" />
+		<item id="18" name="归档" description="归档" />
+		<item id="4" name="驳回上一级" description="驳回上一级" />
+		<item id="8" name="移交" description="移交" />
+	    <item id="88" name="转审" description="转审" />
+		<item id="30" name="会审" description="会审" />
+		<item id="55" name="会审回复" description="会审回复" />		
+        <item id="-13" name="强制归档" description="强制归档" />	
+		<item id="-14" name="强制作废" description="强制作废" />
+		<item id="-12" name="作废" description="作废" />
+		<item id="-10" name="抄送" description="抄送" />	
+		<item id="-15" name="抄送确认" description="抄送确认" />
+		<item id="9" name="阶段回复" description="阶段回复" />	
+		<item id="-11" name="阶段通知" description="阶段通知" />
+		<item id="10" name="分派" description="分派" />
+		<item id="11" name="分派回复" description="分派回复" />	
+		<item id="61" name="确认受理" description="确认受理" />
+		
+		
+		<item id="91" name="定单审核通过" description="定单审核通过" />
+		<item id="93" name="最后施工一公里提交" description="最后施工一公里提交" />
+		<item id="930" name="光纤设备提交" description="光纤设备提交" />
+		
+		<item id="933" name="派传输电路调度" description="派传输电路调度" />
+		<item id="934" name="派包含PON配置" description="派包含PON配置" />
+		<item id="935" name="派GGSN" description="派GGSN" />
+		<item id="936" name="派光纤调度" description="派光纤调度" />
+		<item id="937" name="派客户端勘查" description="派客户端勘查" />
+		
+		<item id="92" name="提交电路调度" description="提交电路调度" />
+		<item id="95" name="APN资源配置" description="APN资源配置" />
+		<item id="960" name="提交城域网配置" description="提交城域网配置" />
+		<item id="961" name="提交传输电路调度" description="提交传输电路调度" />
+		<item id="97" name="传输电路调度" description="传输电路调度" />
+		<item id="94" name="业务测试" description="业务测试" />
+		<item id="941" name="APN业务测试" description="APN业务测试" />
+		<item id="98" name="业务测试完成" description="业务测试完成" />
+		
+		<item id="17" name="退回验证" description="退回验证" />
+		
+		<item id="18" name="归档" description="归档" />
+		
+		<item id="71" name="建设条件" description="建设条件" />
+		<item id="711" name="建设条件具备" description="建设条件具备" />
+	    <item id="712" name="建设条件不具备" description="建设条件不具备" />
+	    <item id="777" name="提交光纤设备" description="提交光纤设备" />
+	    
+	    <item id="72" name="修改设计方案完成" description="修改设计方案完成" />
+	    <item id="73" name="审核完成" description="审核完成" />
+	    <item id="74" name="反馈" description="反馈" />
+	    <item id="741" name="城域网配置反馈" description="城域网配置反馈" />
+	    <item id="742" name="APN资源反馈" description="APN资源反馈" />
+	    <item id="743" name="传输电路调度反馈" description="传输电路调度反馈" />
+	    <item id="744" name="包含PON配置反馈" description="包含PON配置反馈" />
+	    <item id="745" name="GGSN反馈" description="GGSN反馈" />
+	    <item id="746" name="光纤调度反馈" description="光纤调度反馈" />
+	    <item id="747" name="客户端勘查反馈" description="客户端勘查反馈" />
+		 <item id="748" name="HLR数据制作反馈" description="HLR数据制作反馈" />
+		<item id="75" name="业务测试完成" description="业务测试完成" />
+		<item id="76" name="开通确认完成" description="开通确认完成" />
+		
+		
+	</dict>
+	
+	
+
+	<dict id="activeTemplateId" description="节点名称">
+	    <item id="cc" name="抄送" description="抄送" />
+	    <item id="reply" name="阶段回复" description="阶段回复" />
+	    <item id="advice" name="阶段通知" description="阶段通知" />
+	    <item id="" name="新增工单" description="新增工单" />	
+		<item id="DraftTask" name="草稿" description="草稿" />
+		<item id="RejectTask" name="被驳回" description="被驳回" />
+		
+		<item id="ImplementDealTask" name="定单审核" description="定单审核" />
+		<item id="ProjectDealTask" name="最后一公里施工" description="最后一公里施工" />
+		
+		
+		<item id="ModifyDesignTask" name="修改设计方案" description="修改设计方案" />
+		<item id="AuditDesignTask" name="审核设计方案" description="审核设计方案" />
+		
+		
+		<item id="CityNetTask" name="城域网配置" description="城域网配置" />
+		<item id="TrasitionTask" name="传输电路调度" description="传输电路调度" />	
+			
+		<item id="ApnTask" name="APN资源" description="APN资源" />
+		<item id="GGSNTask" name="GGSN" description="GGSN" />
+		
+
+		
+		<item id="BusinessTestTask" name="网络端到端测试" description="网络端到端测试" />
+		<item id="DredgeAffirmTask" name="开通确认" description="开通确认" />
+		<item id="HoldTask" name="待归档" description="待归档" />
+		
+		<item id="PONConfigTask" name="包含PON配置" description="包含PON配置" />
+		<item id="FDDITask" name="光纤调度" description="光纤调度" />
+		<item id="ClientTask" name="客户端勘查" description="客户端勘查" />
+		<item id="HLRTask" name="HLR数据制作" description="HLR数据制作" />
+	
+		
+		
+	</dict>
+</dicts>
+

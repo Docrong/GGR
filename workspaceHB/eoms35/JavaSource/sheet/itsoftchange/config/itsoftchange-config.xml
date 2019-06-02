@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkFlowRule name="ITSoftChange" description="IT需求开发流程">
+   <flow-define id="ITSoftChangeProcess" description="IT需求开发流程">
+     <phase-id id="receive" type="receive">
+       <to-phase-id id="OperateTask" role="dealPerformer@341" condition="${operateType}==0" name="新建派发"/>
+       <to-phase-id id="DraftTask" role="" condition="${operateType}==22" name="保存草稿"/>   
+     </phase-id>
+     <phase-id id="DraftTask" name="草稿" type="operate">       
+       <to-phase-id id="OperateTask" role="dealPerformer@341" condition="${operateType}==3" name="草稿派发"/>
+     </phase-id>
+     <phase-id id="RejectTask" name="被驳回" type="operate">       
+       <to-phase-id id="OperateTask" role="dealPerformer@341" condition="${operateType}==54" name="重新派发"/>
+     </phase-id> 
+     <phase-id id="OperateTask" name="开发中" type="operate"> 
+         <to-phase-id id="TestTask" role="dealPerformer@340" condition="${operateType}==91" name="完成开发，提交测试"/>
+         <to-phase-id id="RejectTask"  condition="${operateType}==90" name="被驳回"/>
+     </phase-id> 
+     <phase-id id="TestTask" name="测试中" type="operate"> 
+        <to-phase-id id="OnlineTask"  role="" condition="${operateType}==921" name="测试通过"/> 
+        <to-phase-id id="OperateTask" role="" condition="${operateType}==922" name="测试不通过"/>  
+     </phase-id>    
+     <phase-id id="OnlineTask" name="待上线" type="operate">  
+        <to-phase-id id="HoldTask" role="" condition="${operateType}==93" name="待归档"/>  
+        <to-phase-id id="TestTask" role="" condition="${operateType}==4" name="驳回需求申请人测试"/>   
+     </phase-id> 
+             
+     <phase-id id="HoldTask" name="待归档" type="operate">
+     <to-phase-id id="OnlineTask" role="" condition="${operateType}==102" name="退回"/>
+     </phase-id>     
+  </flow-define>
+</WorkFlowRule>

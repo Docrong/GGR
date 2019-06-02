@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.duty.model.TawRmDutyEvent"
+            table="taw_rm_dutyevent"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="inputuser"
+            	column="inputuser"
+                length="25"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="inputdate"
+            	column="inputdate"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+            	column="flag"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="eventtitle"
+            	column="eventtitle"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="beginTime"
+            	column="beginTime"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="complateFlag"
+            	column="complateFlag"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="endtime"
+            	column="endtime"
+                length="50"
+                not-null="false"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="faultType"
+            	column="faultType"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+		
+		 <property
+            name="falultid"
+            	column="falultid"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+        </property>
+        <property
+            name="isSubmit"
+            	column="isSubmit"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+        
+         <property
+            name="deptid"
+            	column="deptid"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+        
+         <property
+            name="accessories"
+            	column="accessories"
+                length="100"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+    
+        
+        <property
+            name="workserial"
+            	column="workserial"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+ 
+        <property
+            name="finishworkserial"
+            	column="finishworkserial"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+        
+        <property
+            name="regionlist"
+            	column="regionlist"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+        
+        <property
+            name="roomid"
+            	column="roomid"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+        
+        <property
+            name="sheetid"
+            	column="sheetid"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>   
+        
+        <property
+            name="faultCommontId"
+            	column="faultCommontId"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>   
+        
+        <property
+            name="faultEquipmentId"
+            	column="faultEquipmentId"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>   
+        
+        <property
+            name="faultCircuitId"
+            	column="faultCircuitId"
+                length="32"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>   
+ 
+        <property
+            name="pubstatus"
+            	column="pubstatus"
+                length="10"
+                not-null="false"
+                unique="true"
+        >
+	
+        </property>
+ 
+       
+    </class>    
+
+</hibernate-mapping>
+

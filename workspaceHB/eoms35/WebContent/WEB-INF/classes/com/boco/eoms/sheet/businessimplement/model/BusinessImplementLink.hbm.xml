@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.sheet.businessimplement.model.BusinessImplementLink"
+            table="BusinessImplement_link"
+    >
+
+    <id
+        name="id"
+        column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="assigned">
+
+    </generator>
+
+    </id>
+       <property name="mainId" />
+       	<property name="nodeAcceptLimit" />
+		<property name="nodeCompleteLimit" />
+
+		<property name="operateType" />
+		<property name="operateTime" />
+		<property name="operaterContact" />     		
+		<property name="operateOrgType" />
+		<property name="operateUserId" />
+		<property name="operateDeptId" />
+		<property name="operateRoleId" />
+		<property name="toOrgType" />
+		<property name="toOrgUserId" />
+		<property name="toOrgDeptId" />
+		<property name="toOrgRoleId" />
+		<property name="acceptFlag" />
+		<property name="acceptTime" />
+		<property name="completeFlag" />
+		<property name="completeTime" />
+		<property name="preLinkId" />
+		<property name="parentLinkId" />
+		<property name="firstLinkId" />
+		<property name="piid" />
+		<property name="aiid" />
+		<property name="activeTemplateId" />
+		<property name="nodeTemplateName" />
+		<property name="correlationKey" />
+		<property name="nodeAccessories" />
+		<property name="templateFlag" />
+		<property name="templateName" />
+		<property name="templateCreateUserId" />
+		<property name="transferReason" />
+		<property name="remark" />
+		<property name="operateYear" />
+		<property name="operateMonth" />
+		<property name="operateDay" />	
+		
+		
+				<property name="linkAsinger" />
+		<property name="linkAsingConnPhone" />
+		<property name="linkAsingDept" />	
+				<property name="linkAsingTime" />
+		<property name="linkIsAsingment" />
+		<property name="linkNoOpinition" />	
+				<property name="linkDealMethod" />
+		<property name="linkReturnOpinition" />
+		<property name="linkArugmentlevel" />	
+				<property name="linkNeedFinishTime" />
+		<property name="linkAcceptDept" />
+		<property name="linkSenderOpinition" />	
+				<property name="linkArgument" />
+				
+		<property name="linkNetDeptConnPerson" />
+		<property name="linkNetDeptConnPersonPhone" />	
+				<property name="linkProjectDeptPerson" />
+		<property name="linkProjectDeptPersonPhone" />
+		<property name="linkDealResourt" />	
+				<property name="linkDealDescription" />
+		<property name="linkTrasitionEleNumber" />
+		<property name="linkGroupAddAndIp" />	
+				<property name="linkRemark" />
+				
+				
+		<property name="linkDoResourt" />
+		<property name="linkEleNeed" />	
+				<property name="linkStartA" />
+		<property name="linkACompteHome" />
+		<property name="linkABusinessDDF" />	
+				<property name="linkADevHost" />
+		<property name="linkATrasitionDDF" />
+		<property name="linkScopeTrasitionHost" />	
+				<property name="linkEndZ" />
+		<property name="linkDevType" />
+		<property name="linkFailureResson" />	
+		
+		
+		
+		
+				<property name="linkDesinResourt" />
+		<property name="linkDesinType" />
+		<property name="linkIPAddress" />	
+				<property name="linkSubNetNumber" />
+		<property name="linkGetWay" />
+		<property name="linkVLAN" />	
+		
+						<property name="linkEleCallResourt" />
+		<property name="linkGroupUserAddressZone" />
+		<property name="linkDealDescriptin" />	
+				<property name="linkTestReport" />
+		<property name="linkOne" />
+
+		
+		
+														
+		
+</class>    
+
+</hibernate-mapping>
+

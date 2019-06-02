@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="com.boco.eoms.parter.baseinfo.contract.model.TawContractPay"
+            table="pnr_contractpay"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="uuid.hex">
+
+    </generator>
+
+    </id>
+
+	<property
+            name="contractname"
+            	column="contractname"
+                length="128"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="payer"
+            	column="payer"
+                length="128"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="operator"
+            	column="operator"
+                length="128"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+	<property
+            name="paymethod"
+            	column="paymethod"
+                length="128"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="payaccount"
+            	column="payaccount"
+                length="128"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="money"
+            	column="money"
+                length="128"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="paytime"
+            	column="paytime"
+                length="128"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="remark"
+            	column="remark"
+                length="1000"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="accessory"
+            	column="accessory"
+                length="200"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+	<property
+            name="contractid"
+            	column="contractid"
+                length="100"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+	
+
+        
+    </class>    
+
+</hibernate-mapping>
+

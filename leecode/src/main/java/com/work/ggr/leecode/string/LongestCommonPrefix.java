@@ -13,7 +13,6 @@ package com.work.ggr.leecode.string;
 输入: ["dog","racecar","car"]
 输出: ""
 解释: 输入不存在公共前缀。
-说明:
    
 所有输入只包含小写字母 a-z 。
  * @author gr

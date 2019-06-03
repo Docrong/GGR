@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment xmlns="http://xml.apache.org/axis/wsdd/"
+	xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+	<service name="ManagerUser" provider="java:RPC">
+		<parameter name="className"
+			value="com.hoo.service.ManagerUser" />
+		<parameter name="allowedMethods" value="*" />
+		<parameter name="scope" value="request" /> <!-- 这里的urn:User和new QName("urn:User", "User")这里是对应的 -->
+		<beanMapping qname="myNSD:User" xmlns:myNSD="urn:User"
+			languageSpecificType="java:com.hoo.entity.User" />
+	</service>
+</deployment>

@@ -8,7 +8,7 @@ import javax.xml.rpc.ServiceException;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 
-public class ServiceClient {
+public class HelloServiceClient {
 
 	public static void main(String[] args) {
 			// TODO Auto-generated method stub
@@ -29,10 +29,8 @@ public class ServiceClient {
 				String result = (String) call.invoke(new Object[]{info});
 				System.out.println(result);
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

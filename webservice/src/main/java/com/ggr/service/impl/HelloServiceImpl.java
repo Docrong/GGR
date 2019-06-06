@@ -8,5 +8,8 @@ public class HelloServiceImpl implements HelloService {
 	public String sayHello(String info) {
 		return "HELLO--"+info;
 	}
+	public String sayHello2param(String name,String age) {
+		return "hello param2--"+name+",---"+age;
+	}
 
 }

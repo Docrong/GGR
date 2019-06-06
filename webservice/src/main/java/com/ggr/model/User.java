@@ -9,6 +9,7 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = 6063348856926077052L;
 
+
 	private String username;
 	private int age;
 	private float money;

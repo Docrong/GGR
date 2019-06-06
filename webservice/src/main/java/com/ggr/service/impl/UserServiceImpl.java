@@ -1,6 +1,7 @@
 package com.ggr.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,7 @@ public class UserServiceImpl {
 	*/
 	 
 	public User getUser(String username,int age){
-	 
+	 System.out.println(new Date()+"接收参数:"+username+","+age);
 	User theu=new User();
 	 
 	theu.setUsername(username);

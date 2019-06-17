@@ -31,7 +31,7 @@ public class HelloServiceClient {
 			} catch (ServiceException e) {
 				e.printStackTrace();
 			} catch (RemoteException e) {
-				e.printStackTrace();
+				e.printStackTrace(); 
 			}
 
 	}

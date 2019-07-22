@@ -10,7 +10,7 @@ import org.apache.axis.client.Service;
 import org.apache.axis.encoding.ser.BeanDeserializerFactory;
 import org.apache.axis.encoding.ser.BeanSerializerFactory;
 
-public class TestClient {
+public class SimpleObjectClientTest {
 
 	public static void main(String[] args) throws RemoteException, MalformedURLException {
 		test5();

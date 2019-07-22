@@ -1,5 +1,7 @@
 package com.ggr.client;
 
+import java.util.Hashtable;
+
 public class Test2 {
 
 	
@@ -11,5 +13,9 @@ public class Test2 {
 		System.out.println(bill);
 		
 		System.out.println(311.5-247);
+		
+		Hashtable table=new Hashtable<>();
+		table.put("1", "value1");
+		System.out.println(table);
 	}
 }

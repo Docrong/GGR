@@ -1,5 +1,7 @@
 package com.work.ggr.leecode.hash;
 
+import com.ibm.ws.webservices.xml.wassysapp.systemAppPort;
+
 /**
  给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
 
@@ -16,34 +18,49 @@ public class 两个链表转数字之和 {
 
 	public static void main(String[] args) {
 		ListNode l1=new ListNode(2);
-		l1.setNext(new ListNode(4));
-		l1.setNext(new ListNode(3));
-		System.out.println(l1.next.val);
+		l1.next=new ListNode(4);
+		l1.next.next=new ListNode(3);
+		ListNode l2=new ListNode(5);
+		l2.next=new ListNode(6);
+		l2.next.next=new ListNode(4);
+		
+		addTwoNumbers(l1,l2);
 	}
 
 	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		return l2;
-
-	}
+		ListNode result = l1;
+        //两链表各元素相加
+        while(l2!=null){
+            l1.val=l1.val+l2.val;
+            l2=l2.next;
+            if(l1.next==null){
+                l1.next = new ListNode(0);
+            }
+            l1 = l1.next;
+        }
+        //判断每个元素是否大于10
+        l1=result;
+        while(l1.next!=null){
+            if(l1.val>9){
+                l1.next.val=l1.next.val+l1.val/10;
+                l1.val=l1.val%10;
+            }
+            if(l1.next.val==0&&l1.next.next==null){
+                l1.next=null;
+            }else{
+                l1=l1.next;
+            }
+        }
+        //判断最后一个元素是否大于10
+        if(l1.val>9){
+            l1.next=new ListNode(0);
+            l1.next.val=l1.next.val+l1.val/10;
+            l1.val=l1.val%10;
+        }
+        System.out.println(result.val);
+        System.out.println(result.next.val);
+        return result;
+    }
+	
 }
 
-
-   class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) { val = x; }
-	public int getVal() {
-		return val;
-	}
-	public void setVal(int val) {
-		this.val = val;
-	}
-	public ListNode getNext() {
-		return next;
-	}
-	public void setNext(ListNode next) {
-		this.next = next;
-	}
-      
-  }
- 

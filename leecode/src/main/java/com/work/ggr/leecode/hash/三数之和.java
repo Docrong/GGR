@@ -2,9 +2,7 @@ package com.work.ggr.leecode.hash;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * 例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，
@@ -16,7 +14,7 @@ import java.util.Set;
  *
  */
 
-public class 三数之和 {
+public class 三数之和 {  
 
 	public static void main(String[] args) {
 		int[] nums=new int[] {-1, 0, 1, 2, -1, -4};
@@ -47,7 +45,7 @@ public class 三数之和 {
 		List result=new ArrayList();
 		Arrays.sort(nums);
 		for(int i=0;i<nums.length-2;i++) {
-			if(i==0||(i>0&&nums[i]!=nums[i-1])) {
+			if(i==0||(nums[i]!=nums[i-1])) {
 				int index1=i+1;
 				int index2=nums.length-1;
 				while (index1<index2) {

@@ -5,6 +5,18 @@
 		<testFolder url="file://$MODULE_DIR$/src/test/java"/>
 		<excludeFolder url="file://$MODULE_DIR$/target"/>
 	</contentEntry>
+	<lib name="json-lib-1.1-jdk13.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/json-lib-1.1-jdk13.jar!/"/>
+	</lib>
+	<lib name="axis-ant.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/axis-ant.jar!/"/>
+	</lib>
+	<lib name="axis.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/axis.jar!/"/>
+	</lib>
+	<lib name="com.ibm.ws.webservices.thinclient_7.0.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/com.ibm.ws.webservices.thinclient_7.0.0.jar!/"/>
+	</lib>
 	<lib name="Maven: org.yaml:snakeyaml:1.23" scope="RUNTIME"/>
 	<lib name="Maven: org.springframework.boot:spring-boot-starter-test:2.1.4.RELEASE" scope="TEST"/>
 	<lib name="Maven: org.springframework.boot:spring-boot-test:2.1.4.RELEASE" scope="TEST"/>
@@ -26,7 +38,6 @@
 	<lib name="Maven: org.springframework:spring-test:5.1.6.RELEASE" scope="TEST"/>
 	<lib name="Maven: org.xmlunit:xmlunit-core:2.6.2" scope="TEST"/>
 	<levels>
-		<level name="axis" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot-starter:2.1.4.RELEASE" value="project"/>
 		<level name="Maven: org.springframework.boot:spring-boot:2.1.4.RELEASE" value="project"/>
 		<level name="Maven: org.springframework:spring-context:5.1.6.RELEASE" value="project"/>

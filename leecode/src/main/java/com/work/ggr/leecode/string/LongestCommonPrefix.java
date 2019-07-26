@@ -13,7 +13,7 @@ package com.work.ggr.leecode.string;
 输入: ["dog","racecar","car"]
 输出: ""
 解释: 输入不存在公共前缀。
-   
+
 所有输入只包含小写字母 a-z 。
  * @author gr
  */
@@ -23,7 +23,7 @@ public class LongestCommonPrefix {
 		String[]strs=new String[] {"flower","flow","flight"};
 		System.out.println(longestCommonPrefix(strs));;
 	}
-	
+
 	static public String longestCommonPrefix(String[] strs) {
 		StringBuffer sb=new StringBuffer();
 		if(strs.length==1)
@@ -47,5 +47,6 @@ public class LongestCommonPrefix {
 		}
 		
 		return sb.toString();
+
     }
 }

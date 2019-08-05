@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6c0d4a5-ced4-4a48-b056-79788f58d9dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/server.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/MapTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/SAXReaderTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/test2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leecode.eml" beforeDir="false" afterPath="$PROJECT_DIR$/leecode.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/backTracking/斐波那契数组拆分.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/backTracking/斐波那契数组拆分.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/string/电话号码的字母组合.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/string/电话号码的字母组合.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/config/server.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/SAXReaderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/SAXReaderTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +46,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -151,7 +146,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.test2">
+  <component name="RunManager" selected="Application.SAXReaderTest">
     <configuration name="子集" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.hash.子集" />
       <module name="leecode" />
@@ -272,8 +267,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.test2" />
         <item itemvalue="Application.SAXReaderTest" />
+        <item itemvalue="Application.test2" />
         <item itemvalue="Application.MapTest" />
         <item itemvalue="Application.子集" />
       </list>
@@ -312,7 +307,7 @@
       <workItem from="1564709309205" duration="575000" />
       <workItem from="1564714056623" duration="3847000" />
       <workItem from="1564967007226" duration="7373000" />
-      <workItem from="1564974471679" duration="3869000" />
+      <workItem from="1564974471679" duration="7808000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1564133025631</created>

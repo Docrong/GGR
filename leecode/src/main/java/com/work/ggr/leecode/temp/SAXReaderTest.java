@@ -23,11 +23,16 @@ public class SAXReaderTest {
             Element root = doc.getRootElement();
             // 获取根节点一下的子元素
             List<Element> list = root.elements();
-            String mainNetWork1 = "101060107te";
+            String mainNetWork1 = "101060107";
             String mainNetWork2 = "101060105";
             String mainNetWork3 = "10106010502";
+            String mainNetWork4 = "10106010502";
+            String mainNetWork5 = "10106010502";
+            String mainNetWork6 = "10106010502";
+            String mainNetWork7 = "10106010502";
             String defaultallowtime = "";
             String allowtime = "";
+            List xml2list=new ArrayList();
             for (Element item : list) {
 
                 if ("MySql".equals(item.getName())) {
@@ -51,6 +56,7 @@ public class SAXReaderTest {
 
                 }
 
+
                 if ("timeLimit".equals(item.getName())) {
                     System.out.println("设置使用时间");
                     List<Element> list1 = item.elements();
@@ -63,24 +69,25 @@ public class SAXReaderTest {
                             map.put(ele.getName(), ele.getStringValue());
                         }
                         System.out.println(map);
-                        if (map.get("network1").equals(mainNetWork1) && map.get("network2").equals(mainNetWork2) &&
+                        xml2list.add(map);
+                       /* if (map.get("network1").equals(mainNetWork1) && map.get("network2").equals(mainNetWork2) &&
                                 map.get("network3").equals(mainNetWork3)) {
                             allowtime = map.get("allowtime");
                         }
                         if (map.get("network1").equals("") && map.get("network2").equals("") &&
                                 map.get("network3").equals("")) {
                             defaultallowtime = map.get("allowtime");
-                        }
+                        }*/
                     }
-                    if (allowtime.equals("")) {
+                /*    if (allowtime.equals("")) {
                         allowtime = defaultallowtime;
                     }
                     System.out.println("延迟时间是:" + allowtime);
-                    System.out.println("默认时限是:" + defaultallowtime);
+                    System.out.println("默认时限是:" + defaultallowtime);*/
                 }
 
             }
-            String sheetCompleteLimit="2019-08-04 09:37:20";
+            /*String sheetCompleteLimit="2019-08-04 09:37:20";
             SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Calendar calendar=Calendar.getInstance();
             Date completeLimitDate=sdf.parse(sheetCompleteLimit);
@@ -89,7 +96,39 @@ public class SAXReaderTest {
             System.out.println(calendar.getTime());
             calendar.add(Calendar.HOUR,Integer.parseInt(allowtime));
             System.out.println(calendar.getTime());
-            System.out.println(completeLimitDate);
+            System.out.println(completeLimitDate);*/
+            System.out.println(xml2list);
+            for (int i = 0; i < xml2list.size(); i++) {
+                Map map= (Map) xml2list.get(i);
+                String network1=String.valueOf(map.get("network1"));
+                String network2=String.valueOf(map.get("network2"));
+                String network3=String.valueOf(map.get("network3"));
+                String network4=String.valueOf(map.get("network4"));
+                String network5=String.valueOf(map.get("network5"));
+                String network6=String.valueOf(map.get("network6"));
+                String network7=String.valueOf(map.get("network7"));
+                if(network1.equals("")&&network2.equals("")&&network3.equals("")&&network4.equals("")&&network5.equals("")
+                        &&network6.equals("")&&network7.equals("")){
+                    defaultallowtime = String.valueOf(map.get("allowtime"));
+                }else {
+                      if ((network1.equals("")||network1.equals(mainNetWork1))&&
+                              (network2.equals("")||network1.equals(mainNetWork2))&&
+                              (network3.equals("")||network1.equals(mainNetWork3))&&
+                              (network4.equals("")||network1.equals(mainNetWork4))&&
+                              (network5.equals("")||network1.equals(mainNetWork5))&&
+                              (network6.equals("")||network1.equals(mainNetWork6))&&
+                              (network7.equals("")||network1.equals(mainNetWork7))){
+                          allowtime = String.valueOf(map.get("allowtime"));
+                      }
+
+                }
+            }
+            if (allowtime.equals("")) {
+                allowtime = defaultallowtime;
+            }
+            System.out.println("延迟时间是:" + allowtime);
+            System.out.println("默认时限是:" + defaultallowtime);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

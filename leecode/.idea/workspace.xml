@@ -2,128 +2,79 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6c0d4a5-ced4-4a48-b056-79788f58d9dd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/leecode.eml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/hash/两个链表转数字之和.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/hash/两个链表转数字之和.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/面试题目/java面试题.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/面试题目/java面试题.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../webservice/src/main/java/com/ggr/client/Test2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../webservice/src/main/java/com/ggr/client/Test2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/server.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/MapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/SAXReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp/test2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leecode.eml" beforeDir="false" afterPath="$PROJECT_DIR$/leecode.eml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/backTracking/斐波那契数组拆分.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/backTracking/斐波那契数组拆分.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/string/电话号码的字母组合.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/string/电话号码的字母组合.java" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
     <option name="GROUP_DATA_SOURCES" value="true" />
     <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
+    <option name="GROUP_CONTENTS" value="true" />
     <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="true" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="true" />
     <option name="HIDDEN_KINDS">
       <set />
     </option>
     <expand />
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="12702585">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.46" value="1" />
-          <entry key="project.opened" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="1-SNAPSHOT" value="1" />
-          <entry key="java" value="9" />
-          <entry key="xml" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="JAVA" value="9" />
-          <entry key="UML" value="1" />
-          <entry key="XML" value="2" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="3" />
-        </counts>
-      </usages-collector>
-    </session>
+  <component name="ExecutionTargetDialog" filtered="false">
+    <checked>
+      <node key="061e39da-2223-4904-bd15-1e2f07a9b3eb" />
+    </checked>
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/hash/两个链表转数字之和.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hoo/TheAxis1Test.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="268">
-              <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+  <component name="FavoritesManager">
+    <favorites_list name="leecode" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/hash/两个链表转数字之和.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/hoo/TheAxis1TestTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hoo/TheAxis1Test.java" />
-      </list>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\.m2\repository" />
+        <option name="userSettingsFile" value="C:\Users\gr\.m2\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
     </option>
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="leecode" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-      </expand>
-      <select />
-    </treeState>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="85" />
@@ -131,126 +82,45 @@
     <option name="width" value="1750" />
     <option name="height" value="970" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="hoo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="ggr" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="ggr" type="462c0819:PsiDirectoryNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="leecode" type="b2602c69:ProjectViewProjectNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="work" type="462c0819:PsiDirectoryNode" />
-              <item name="ggr" type="462c0819:PsiDirectoryNode" />
-              <item name="leecode" type="462c0819:PsiDirectoryNode" />
-              <item name="hash" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectId" id="1OqnZMy2zXdPbmf675F3LJKhjR6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="oracle" />
+    <property name="Downloaded.Files.Path.Enabled" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="ToolWindowBuild.ShowToolbar" value="false" />
+    <property name="ToolWindowFind.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1563767119954" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1564653482151" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="SQL&#10;JAVA" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+    <property name="jdk.selected.PYTHON_MODULE" value="Python 3.6" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/temp" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36551723" />
-    <property name="settings.editor.selected.configurable" value="copyright" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -259,6 +129,15 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gr\Documents\GGR\leecode\src\main\java\com\work\ggr\leecode\temp" />
+      <recent name="C:\Users\gr\Documents\GGR\leecode\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="MapTest" />
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -272,9 +151,74 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.两个链表转数字之和">
+  <component name="RunManager" selected="Application.test2">
     <configuration name="子集" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.hash.子集" />
+      <module name="leecode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.ggr.leecode.hash.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.temp.MapTest" />
+      <module name="leecode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.ggr.leecode.temp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SAXReaderTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.temp.SAXReaderTest" />
+      <module name="leecode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.ggr.leecode.temp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="电话号码的字母组合" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.string.电话号码的字母组合" />
+      <module name="leecode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.ggr.leecode.string.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="两个链表转数字之和" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.hash.两个链表转数字之和" />
+      <module name="leecode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.ggr.leecode.hash.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="三数之和" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.hash.三数之和" />
       <module name="leecode" />
       <extension name="coverage">
         <pattern>
@@ -299,6 +243,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.work.ggr.leecode.temp.test2" />
+      <module name="leecode" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.work.ggr.leecode.temp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LeecodeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="leecode" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.work.ggr.LeecodeApplication" />
@@ -307,15 +264,30 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.两个链表转数字之和" />
-      <item itemvalue="Spring Boot.LeecodeApplication" />
       <item itemvalue="Application.子集" />
+      <item itemvalue="Application.MapTest" />
+      <item itemvalue="Application.SAXReaderTest" />
+      <item itemvalue="Spring Boot.LeecodeApplication" />
+      <item itemvalue="Application.test2" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.test2" />
+        <item itemvalue="Application.SAXReaderTest" />
+        <item itemvalue="Application.MapTest" />
         <item itemvalue="Application.子集" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="allServicesViewState">
+      <serviceView>
+        <treeState>
+          <expand />
+          <select />
+        </treeState>
+      </serviceView>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -329,173 +301,69 @@
       <updated>1559187154890</updated>
       <workItem from="1559187167235" duration="116000" />
       <workItem from="1563765360781" duration="1792000" />
+      <workItem from="1564129136084" duration="6284000" />
+      <workItem from="1564360270581" duration="5955000" />
+      <workItem from="1564366279313" duration="373000" />
+      <workItem from="1564367871592" duration="1020000" />
+      <workItem from="1564647023463" duration="963000" />
+      <workItem from="1564652553912" duration="375000" />
+      <workItem from="1564652975193" duration="876000" />
+      <workItem from="1564708385162" duration="655000" />
+      <workItem from="1564709309205" duration="575000" />
+      <workItem from="1564714056623" duration="3847000" />
+      <workItem from="1564967007226" duration="7373000" />
+      <workItem from="1564974471679" duration="3869000" />
     </task>
+    <task id="LOCAL-00001" summary="提交">
+      <created>1564133025631</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564133025631</updated>
+    </task>
+    <task id="LOCAL-00002" summary="提交">
+      <created>1564135448843</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1564135448843</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1908000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="840" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.230563" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Image Layers" order="2" />
-      <window_info id="Designer" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Capture Tool" order="5" />
-      <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32909605" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32909605" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Spring" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32909605" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.32909605" />
-      <window_info anchor="right" id="JSF" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Database" order="5" weight="0.30026808" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" weight="0.3297587" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
   </component>
-  <component name="editorHistoryManager">
-    <entry file="uml://MAVEN/com.ggr:leecode:0.0.1-SNAPSHOT">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>MAVEN</ID>
-          <OriginalElement>com.ggr:leecode:0.0.1-SNAPSHOT</OriginalElement>
-          <nodes>
-            <node x="" y="">com.ggr:leecode:0.0.1-SNAPSHOT</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot:jar:2.1.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot:jar:2.1.4.RELEASE/org.springframework:spring-context:jar:5.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot:jar:2.1.4.RELEASE/org.springframework:spring-context:jar:5.1.6.RELEASE/org.springframework:spring-aop:jar:5.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot:jar:2.1.4.RELEASE/org.springframework:spring-context:jar:5.1.6.RELEASE/org.springframework:spring-beans:jar:5.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot:jar:2.1.4.RELEASE/org.springframework:spring-context:jar:5.1.6.RELEASE/org.springframework:spring-expression:jar:5.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-autoconfigure:jar:2.1.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.4.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.4.RELEASE/ch.qos.logback:logback-classic:jar:1.2.3/ch.qos.logback:logback-core:jar:1.2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.4.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.4.RELEASE/org.apache.logging.log4j:log4j-to-slf4j:jar:2.11.2/org.apache.logging.log4j:log4j-api:jar:2.11.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-starter-logging:jar:2.1.4.RELEASE/org.slf4j:jul-to-slf4j:jar:1.7.26</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/javax.annotation:javax.annotation-api:jar:1.3.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework:spring-core:jar:5.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.springframework:spring-core:jar:5.1.6.RELEASE/org.springframework:spring-jcl:jar:5.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter:jar:2.1.4.RELEASE/org.yaml:snakeyaml:jar:1.23</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-test:jar:2.1.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.springframework.boot:spring-boot-test-autoconfigure:jar:2.1.4.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0/net.minidev:json-smart:jar:2.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0/net.minidev:json-smart:jar:2.3/net.minidev:accessors-smart:jar:1.2</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0/net.minidev:json-smart:jar:2.3/net.minidev:accessors-smart:jar:1.2/org.ow2.asm:asm:jar:5.0.4</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/com.jayway.jsonpath:json-path:jar:2.4.0/org.slf4j:slf4j-api:jar:1.7.26</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/junit:junit:jar:4.12</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.assertj:assertj-core:jar:3.11.1</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.mockito:mockito-core:jar:2.23.4</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.mockito:mockito-core:jar:2.23.4/net.bytebuddy:byte-buddy:jar:1.9.12</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.mockito:mockito-core:jar:2.23.4/net.bytebuddy:byte-buddy-agent:jar:1.9.12</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.mockito:mockito-core:jar:2.23.4/org.objenesis:objenesis:jar:2.6</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.hamcrest:hamcrest-core:jar:1.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.hamcrest:hamcrest-library:jar:1.3</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.skyscreamer:jsonassert:jar:1.5.0</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.skyscreamer:jsonassert:jar:1.5.0/com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.springframework:spring-test:jar:5.1.6.RELEASE</node>
-            <node x="" y="">org.springframework.boot:spring-boot-starter-test:jar:2.1.4.RELEASE/org.xmlunit:xmlunit-core:jar:2.6.2</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.3116302186878728" x="996.0" y="430.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>All</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/hash/子集.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hoo/client/UserServiceClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/hash/两个链表转数字之和.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/work/ggr/leecode/hash/ListNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/hoo/TheAxis1TestTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hoo/NewFile.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hoo/TheAxis1Test.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="29" column="11" lean-forward="true" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="提交" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="masterDetails">
     <states>
@@ -525,10 +393,11 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
+          <last-edited>leecode</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.36551723" />
               </list>
             </option>
           </splitter-proportions>
@@ -540,7 +409,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.36551723" />
               </list>
             </option>
           </splitter-proportions>
@@ -582,6 +451,20 @@
           </splitter-proportions>
         </settings>
       </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.36551723" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
     </states>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="" />
   </component>
 </project>

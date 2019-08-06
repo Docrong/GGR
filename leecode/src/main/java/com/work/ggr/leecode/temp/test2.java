@@ -13,15 +13,16 @@ import java.util.*;
 public class test2 {
     public static void main(String[] args) throws ParseException, DocumentException {
 
-        Map m=new HashMap();m.put("2","");
+        Map m=new HashMap();
+        m.put("2","");
         System.out.println(m);
-        System.out.println(String.valueOf(m.get("2")).toString());
+        System.out.println(String.valueOf(m.get("2")));
         // 创建SAXReader对象
         SAXReader reader = new SAXReader();
         // 读取XML文件结构
         File file = new File("config/server.xml");
         System.out.println(file.getAbsolutePath());
-        Document doc = (Document) reader.read(file);
+        Document doc = reader.read(file);
         // 获取XML文件根节点
         Element root = doc.getRootElement();
         // 获取根节点一下的子元素
@@ -73,5 +74,6 @@ public class test2 {
         calendar.add(Calendar.HOUR,Integer.parseInt(allowtime));
         System.out.println(calendar.getTime());
         System.out.println(completeLimitDate);
+
     }
 }

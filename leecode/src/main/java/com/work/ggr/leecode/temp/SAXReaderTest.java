@@ -5,8 +5,10 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SAXReaderTest {
     public static void main(String[] args) {
@@ -32,7 +34,7 @@ public class SAXReaderTest {
             String mainNetWork7 = "10106010502";
             String defaultallowtime = "";
             String allowtime = "";
-            List xml2list=new ArrayList();
+            List xml2list = new ArrayList();
             for (Element item : list) {
 
                 if ("MySql".equals(item.getName())) {
@@ -99,27 +101,27 @@ public class SAXReaderTest {
             System.out.println(completeLimitDate);*/
             System.out.println(xml2list);
             for (int i = 0; i < xml2list.size(); i++) {
-                Map map= (Map) xml2list.get(i);
-                String network1=String.valueOf(map.get("network1"));
-                String network2=String.valueOf(map.get("network2"));
-                String network3=String.valueOf(map.get("network3"));
-                String network4=String.valueOf(map.get("network4"));
-                String network5=String.valueOf(map.get("network5"));
-                String network6=String.valueOf(map.get("network6"));
-                String network7=String.valueOf(map.get("network7"));
-                if(network1.equals("")&&network2.equals("")&&network3.equals("")&&network4.equals("")&&network5.equals("")
-                        &&network6.equals("")&&network7.equals("")){
+                Map map = (Map) xml2list.get(i);
+                String network1 = String.valueOf(map.get("network1"));
+                String network2 = String.valueOf(map.get("network2"));
+                String network3 = String.valueOf(map.get("network3"));
+                String network4 = String.valueOf(map.get("network4"));
+                String network5 = String.valueOf(map.get("network5"));
+                String network6 = String.valueOf(map.get("network6"));
+                String network7 = String.valueOf(map.get("network7"));
+                if (network1.equals("") && network2.equals("") && network3.equals("") && network4.equals("") && network5.equals("")
+                        && network6.equals("") && network7.equals("")) {
                     defaultallowtime = String.valueOf(map.get("allowtime"));
-                }else {
-                      if ((network1.equals("")||network1.equals(mainNetWork1))&&
-                              (network2.equals("")||network1.equals(mainNetWork2))&&
-                              (network3.equals("")||network1.equals(mainNetWork3))&&
-                              (network4.equals("")||network1.equals(mainNetWork4))&&
-                              (network5.equals("")||network1.equals(mainNetWork5))&&
-                              (network6.equals("")||network1.equals(mainNetWork6))&&
-                              (network7.equals("")||network1.equals(mainNetWork7))){
-                          allowtime = String.valueOf(map.get("allowtime"));
-                      }
+                } else {
+                    if (( network1.equals(mainNetWork1)) &&
+                            (network2.equals("") || network2.equals(mainNetWork2)) &&
+                            (network3.equals("") || network3.equals(mainNetWork3)) &&
+                            (network4.equals("") || network4.equals(mainNetWork4)) &&
+                            (network5.equals("") || network5.equals(mainNetWork5)) &&
+                            (network6.equals("") || network6.equals(mainNetWork6)) &&
+                            (network7.equals("") || network7.equals(mainNetWork7))) {
+                        allowtime = String.valueOf(map.get("allowtime"));
+                    }
 
                 }
             }

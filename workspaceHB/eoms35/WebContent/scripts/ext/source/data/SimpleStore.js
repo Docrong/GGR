@@ -16,14 +16,14 @@
  * @constructor
  * @param {Object} config
  */
-Ext.data.SimpleStore = function(config){
+Ext.data.SimpleStore = function (config) {
     Ext.data.SimpleStore.superclass.constructor.call(this, {
         reader: new Ext.data.ArrayReader({
                 id: config.id
             },
             Ext.data.Record.create(config.fields)
         ),
-        proxy : new Ext.data.MemoryProxy(config.data)
+        proxy: new Ext.data.MemoryProxy(config.data)
     });
     this.load();
 };

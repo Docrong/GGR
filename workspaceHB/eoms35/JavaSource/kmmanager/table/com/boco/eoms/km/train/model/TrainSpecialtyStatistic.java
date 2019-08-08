@@ -12,75 +12,74 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Fri Jul 10 10:50:46 CST 2009
  * </p>
- * 
+ *
  * @author lvweihua
  * @version 1.0
- * 
  */
 public class TrainSpecialtyStatistic extends BaseObject {
 
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    /**
+     * 主键
+     */
+    private String id;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * 专业名字
-	 */
-	private String trainSpeciality;
-	
-	/**
-	 *  培训次数
-	 */
-	private Integer trainCount;
-	
-	/**
-	 * 培训天数
-	 */
-	private Integer timeCount;
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public boolean equals(Object o) {
-		if( o instanceof TrainSpecialtyStatistic ) {
-			TrainSpecialtyStatistic trainEnter=(TrainSpecialtyStatistic)o;
-			if (this.id != null || this.id.equals(trainEnter.getId())) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+    /**
+     * 专业名字
+     */
+    private String trainSpeciality;
 
-	public String getTrainSpeciality() {
-		return trainSpeciality;
-	}
+    /**
+     * 培训次数
+     */
+    private Integer trainCount;
 
-	public void setTrainSpeciality(String trainSpeciality) {
-		this.trainSpeciality = trainSpeciality;
-	}
+    /**
+     * 培训天数
+     */
+    private Integer timeCount;
 
-	public Integer getTrainCount() {
-		return trainCount;
-	}
+    public boolean equals(Object o) {
+        if (o instanceof TrainSpecialtyStatistic) {
+            TrainSpecialtyStatistic trainEnter = (TrainSpecialtyStatistic) o;
+            if (this.id != null || this.id.equals(trainEnter.getId())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
-	public void setTrainCount(Integer trainCount) {
-		this.trainCount = trainCount;
-	}
+    public String getTrainSpeciality() {
+        return trainSpeciality;
+    }
 
-	public Integer getTimeCount() {
-		return timeCount;
-	}
+    public void setTrainSpeciality(String trainSpeciality) {
+        this.trainSpeciality = trainSpeciality;
+    }
 
-	public void setTimeCount(Integer timeCount) {
-		this.timeCount = timeCount;
-	}
+    public Integer getTrainCount() {
+        return trainCount;
+    }
+
+    public void setTrainCount(Integer trainCount) {
+        this.trainCount = trainCount;
+    }
+
+    public Integer getTimeCount() {
+        return timeCount;
+    }
+
+    public void setTimeCount(Integer timeCount) {
+        this.timeCount = timeCount;
+    }
 }

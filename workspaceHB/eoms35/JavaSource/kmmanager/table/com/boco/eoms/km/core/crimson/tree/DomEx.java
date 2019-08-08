@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -70,44 +70,42 @@ import org.w3c.dom.DOMException;
  * @author David Brownell
  * @version $Revision: 1.1.1.1 $
  */
-class DomEx extends DOMException
-{
-    static String messageString (Locale locale, int code)
-    {
-	switch (code) {
-	  case INDEX_SIZE_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-000");
-	  case DOMSTRING_SIZE_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-001");
-	  case HIERARCHY_REQUEST_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-002");
-	  case WRONG_DOCUMENT_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-003");
-	  case INVALID_CHARACTER_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-004");
-	  case NO_DATA_ALLOWED_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-005");
-	  case NO_MODIFICATION_ALLOWED_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-006");
-	  case NOT_FOUND_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-007");
-	  case NOT_SUPPORTED_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-008");
-	  case INUSE_ATTRIBUTE_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-009");
-	  case INVALID_STATE_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-010");
-	  case SYNTAX_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-011");
-	  case INVALID_MODIFICATION_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-012");
-	  case NAMESPACE_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-013");
-	  case INVALID_ACCESS_ERR:
-	    return XmlDocument.catalog.getMessage (locale, "D-014");
-	  default:
-	    return XmlDocument.catalog.getMessage (locale, "D-900");
-	}
+class DomEx extends DOMException {
+    static String messageString(Locale locale, int code) {
+        switch (code) {
+            case INDEX_SIZE_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-000");
+            case DOMSTRING_SIZE_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-001");
+            case HIERARCHY_REQUEST_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-002");
+            case WRONG_DOCUMENT_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-003");
+            case INVALID_CHARACTER_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-004");
+            case NO_DATA_ALLOWED_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-005");
+            case NO_MODIFICATION_ALLOWED_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-006");
+            case NOT_FOUND_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-007");
+            case NOT_SUPPORTED_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-008");
+            case INUSE_ATTRIBUTE_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-009");
+            case INVALID_STATE_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-010");
+            case SYNTAX_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-011");
+            case INVALID_MODIFICATION_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-012");
+            case NAMESPACE_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-013");
+            case INVALID_ACCESS_ERR:
+                return XmlDocument.catalog.getMessage(locale, "D-014");
+            default:
+                return XmlDocument.catalog.getMessage(locale, "D-900");
+        }
     }
 
     /**
@@ -115,9 +113,8 @@ class DomEx extends DOMException
      * corresponding to the given error code, using the default
      * locale for the message.
      */
-    public DomEx (short code)
-    {
-	super (code, messageString (Locale.getDefault (), code));
+    public DomEx(short code) {
+        super(code, messageString(Locale.getDefault(), code));
     }
 
     /**
@@ -125,8 +122,7 @@ class DomEx extends DOMException
      * corresponding to the given error code and using the specified
      * locale for the message.
      */
-    public DomEx (Locale locale, short code)
-    {
-	super (code, messageString (locale, code));
+    public DomEx(Locale locale, short code) {
+        super(code, messageString(locale, code));
     }
 }

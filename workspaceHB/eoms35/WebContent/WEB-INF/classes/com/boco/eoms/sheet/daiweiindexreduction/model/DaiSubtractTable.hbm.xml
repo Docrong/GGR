@@ -1,299 +1,299 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-<class name="com.boco.eoms.sheet.daiweiindexreduction.model.DaiSubtractTable" table="DAISUBTRACTSINGLE_TABLE">
-	            
-    <id name="id" column="id" unsaved-value="not null">
+    <class name="com.boco.eoms.sheet.daiweiindexreduction.model.DaiSubtractTable" table="DAISUBTRACTSINGLE_TABLE">
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+        <id name="id" column="id" unsaved-value="not null">
 
-    </generator>
-    </id>
-    				            
-    <property name="serialId"
-            column="serialId">
-    </property>
-    		            
-    <property name="title"
-            column="title">
-    </property>
-    		            
-    <property name="finalOpinion"
-            column="finalOpinion">
-    </property>
-    		            
-    <property name="finalCompleteLimit"
-            column="finalCompleteLimit">
-    </property>
-    		            
-    <property name="preliminaryOpinion"
-            column="preliminaryOpinion">
-    </property>
-    		            
-    <property name="preliminaryExplanation"
-            column="preliminaryExplanation">
-    </property>
-    		            
-    <property name="firstRejection"
-            column="firstRejection">    <!-- 第一次驳回说明 -->
-    </property>
-    		            
-    <property name="secondRejection"
-            column="secondRejection">
-    </property>
-    		            
-    <property name="subtractProfessional"
-            column="subtractProfessional">
-    </property>
-    		            
-    <property name="subtractrCategory"
-            column="subtractrCategory">
-    </property>
-    		            
-    <property name="applicationReduction"
-            column="applicationReduction">
-    </property>
-    		            
-    <property name="reserveA" 
-            column="reserveA">    <!-- 存取上传的excel表 -->
-    </property>
-    
-     <property name="reserveB"
-            column="reserveB">    <!-- 单表与main表关联id -->
-    </property>
-    
-    
-     <property name="reserveC"
-            column="reserveC">    <!-- 核减理是否成立的   是或否 -->
-    </property>
-    
-    
-    <property name="reserveD"
-            column="reserveD">    <!-- 存取 初审说明 -->
-    </property>
-    
-      <property name="reserveE"
-            column="reserveE">
-    </property>
-    
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
+
+            </generator>
+        </id>
+
+        <property name="serialId"
+                  column="serialId">
+        </property>
+
+        <property name="title"
+                  column="title">
+        </property>
+
+        <property name="finalOpinion"
+                  column="finalOpinion">
+        </property>
+
+        <property name="finalCompleteLimit"
+                  column="finalCompleteLimit">
+        </property>
+
+        <property name="preliminaryOpinion"
+                  column="preliminaryOpinion">
+        </property>
+
+        <property name="preliminaryExplanation"
+                  column="preliminaryExplanation">
+        </property>
+
+        <property name="firstRejection"
+                  column="firstRejection">    <!-- 第一次驳回说明 -->
+        </property>
+
+        <property name="secondRejection"
+                  column="secondRejection">
+        </property>
+
+        <property name="subtractProfessional"
+                  column="subtractProfessional">
+        </property>
+
+        <property name="subtractrCategory"
+                  column="subtractrCategory">
+        </property>
+
+        <property name="applicationReduction"
+                  column="applicationReduction">
+        </property>
+
+        <property name="reserveA"
+                  column="reserveA">    <!-- 存取上传的excel表 -->
+        </property>
+
+        <property name="reserveB"
+                  column="reserveB">    <!-- 单表与main表关联id -->
+        </property>
+
+
+        <property name="reserveC"
+                  column="reserveC">    <!-- 核减理是否成立的   是或否 -->
+        </property>
+
+
+        <property name="reserveD"
+                  column="reserveD">    <!-- 存取 初审说明 -->
+        </property>
+
+        <property name="reserveE"
+                  column="reserveE">
+        </property>
+
         <property name="reserveF"
-            column="reserveF">
-    </property>
-    
-    
-         <property name="reserveG"
-            column="reserveG">
-    </property>
-    
-    
-         <property name="reserveH"
-            column="reserveH">
-    </property>
-   
-   <property name="mainSubtractContent"
-            column="mainSubtractContent">
-    </property>
-    
-  <property name="mainWork"
-            column="mainWork">
-    </property>
-    
-      <property name="mainDispatchTime"
-            column="mainDispatchTime">
-    </property>
-    
-      <property name="mainFaultClass"
-            column="mainFaultClass">
-    </property>
-    
-      <property name="mainFaultDurat"
-            column="mainFaultDurat">
-    </property>
-    
-      <property name="mainProDurat"
-            column="mainProDurat">
-    </property>
-    
-      <property name="mainAlertTittle"
-            column="mainAlertTittle">
-    </property>
-    
-      <property name="mainNetworkName"
-            column="mainNetworkName">
-    </property>
-    
-      <property name="mainFaultFaTime"
-            column="mainFaultFaTime">
-    </property>
-    
-      <property name="mainFaultQiTime"
-            column="mainFaultQiTime">
-    </property>
-    
-      <property name="mainAppllyTime"
-            column="mainAppllyTime">
-    </property>
-      
-      
-      <property name="mainFaultLevel"
-            column="mainFaultLevel">
-    </property>
-    
-      <property name="mainAlarmID"
-            column="mainAlarmID">
-    </property>
-    
-      <property name="mainAlarmDescribe"
-            column="mainAlarmDescribe">
-    </property>
-    
-      <property name="mainFinalMeasures"
-            column="mainFinalMeasures">
-    </property>
-    
-      <property name="mainFinalCtiy"
-            column="mainFinalCtiy">
-    </property>
-    
-      <property name="mainFinalTeam"
-            column="mainFinalTeam">
-    </property>
-    
-      <property name="mainFinalCounty"
-            column="mainFinalCounty">
-    </property>
-    
-      <property name="mainDaiCounty"
-            column="mainDaiCounty">
-    </property>
-    
-      <property name="mainFinalAttributes"
-            column="mainFinalAttributes">
-    </property>
-    
-      <property name="mainT1staff"
-            column="mainT1staff">
-    </property>
-    
-    
-      <property name="mainT1Type"
-            column="mainT1Type">
-    </property>
-    
-      <property name="mainT1Time"
-            column="mainT1Time">
-    </property>
-    
-      <property name="mainT1Instructions"
-            column="mainT1Instructions">
-    </property>
-    
-      <property name="mainT2Time"
-            column="mainT2Time">
-    </property>
-    
-      <property name="mainT2Limit"
-            column="mainT2Limit">
-    </property>
-    
-      <property name="mainT2TimeOut"
-            column="mainT2TimeOut">
-    </property>
-    
-      <property name="mainApplyExtension"
-            column="mainApplyExtension">
-    </property>
-    
-      <property name="mainFailureManu"
-            column="mainFailureManu">
-    </property>
-    
-      <property name="mainInspectionRejected"
-            column="mainInspectionRejected">
-    </property>
-    
-      <property name="mainRejectionTime"
-            column="mainRejectionTime">
-    </property>
-    
-    
-      <property name="mainFailureFaTime"
-            column="mainFailureFaTime">
-    </property>
-    
-      <property name="mainAttributionLevel"
-            column="mainAttributionLevel">
-    </property>
-    
-      <property name="mainAttributionLeve2"
-            column="mainAttributionLeve2">
-    </property>
-    
-      <property name="mainAttributionLeve3"
-            column="mainAttributionLeve3">
-    </property>  
-    
-    <property name="mainT2FinalDepartment"
-            column="mainT2FinalDepartment">
-    </property>
-    
-      <property name="mainT2FinalMan"
-            column="mainT2FinalMan">
-    </property>
-    
-      <property name="mainT2FinalTime"
-            column="mainT2FinalTime">
-    </property>
-    
-      <property name="mainUpload"
-            column="mainUpload">
-    </property>
-    
-      <property name="mainPhoneReceived"
-            column="mainPhoneReceived">
-    </property>  
-    
-    <property name="mainPhoneReceipt"
-            column="mainPhoneReceipt">
-    </property>
-    
-    
-      <property name="mainRject"
-            column="mainRject">
-    </property>
-    
-      <property name="mainT2ToT1"
-            column="mainT2ToT1">
-    </property>
-    
-      <property name="mainT2Reason"
-            column="mainT2Reason">
-    </property>  
-    
-    <property name="mainShenTime"
-            column="mainShenTime">
-    </property>
-    
-      <property name="mainShenTimes"
-            column="mainShenTimes">
-    </property>
-    
-      <property name="mainRejectReason"
-            column="mainRejectReason">
-    </property>
-    
-       <property name="mainRecoveryDuration"
-            column="mainRecoveryDuration">
-    </property>
-    
-       <property name="hjstatus"
-            column="hjstatus">
-    </property>
-</class>    
+                  column="reserveF">
+        </property>
+
+
+        <property name="reserveG"
+                  column="reserveG">
+        </property>
+
+
+        <property name="reserveH"
+                  column="reserveH">
+        </property>
+
+        <property name="mainSubtractContent"
+                  column="mainSubtractContent">
+        </property>
+
+        <property name="mainWork"
+                  column="mainWork">
+        </property>
+
+        <property name="mainDispatchTime"
+                  column="mainDispatchTime">
+        </property>
+
+        <property name="mainFaultClass"
+                  column="mainFaultClass">
+        </property>
+
+        <property name="mainFaultDurat"
+                  column="mainFaultDurat">
+        </property>
+
+        <property name="mainProDurat"
+                  column="mainProDurat">
+        </property>
+
+        <property name="mainAlertTittle"
+                  column="mainAlertTittle">
+        </property>
+
+        <property name="mainNetworkName"
+                  column="mainNetworkName">
+        </property>
+
+        <property name="mainFaultFaTime"
+                  column="mainFaultFaTime">
+        </property>
+
+        <property name="mainFaultQiTime"
+                  column="mainFaultQiTime">
+        </property>
+
+        <property name="mainAppllyTime"
+                  column="mainAppllyTime">
+        </property>
+
+
+        <property name="mainFaultLevel"
+                  column="mainFaultLevel">
+        </property>
+
+        <property name="mainAlarmID"
+                  column="mainAlarmID">
+        </property>
+
+        <property name="mainAlarmDescribe"
+                  column="mainAlarmDescribe">
+        </property>
+
+        <property name="mainFinalMeasures"
+                  column="mainFinalMeasures">
+        </property>
+
+        <property name="mainFinalCtiy"
+                  column="mainFinalCtiy">
+        </property>
+
+        <property name="mainFinalTeam"
+                  column="mainFinalTeam">
+        </property>
+
+        <property name="mainFinalCounty"
+                  column="mainFinalCounty">
+        </property>
+
+        <property name="mainDaiCounty"
+                  column="mainDaiCounty">
+        </property>
+
+        <property name="mainFinalAttributes"
+                  column="mainFinalAttributes">
+        </property>
+
+        <property name="mainT1staff"
+                  column="mainT1staff">
+        </property>
+
+
+        <property name="mainT1Type"
+                  column="mainT1Type">
+        </property>
+
+        <property name="mainT1Time"
+                  column="mainT1Time">
+        </property>
+
+        <property name="mainT1Instructions"
+                  column="mainT1Instructions">
+        </property>
+
+        <property name="mainT2Time"
+                  column="mainT2Time">
+        </property>
+
+        <property name="mainT2Limit"
+                  column="mainT2Limit">
+        </property>
+
+        <property name="mainT2TimeOut"
+                  column="mainT2TimeOut">
+        </property>
+
+        <property name="mainApplyExtension"
+                  column="mainApplyExtension">
+        </property>
+
+        <property name="mainFailureManu"
+                  column="mainFailureManu">
+        </property>
+
+        <property name="mainInspectionRejected"
+                  column="mainInspectionRejected">
+        </property>
+
+        <property name="mainRejectionTime"
+                  column="mainRejectionTime">
+        </property>
+
+
+        <property name="mainFailureFaTime"
+                  column="mainFailureFaTime">
+        </property>
+
+        <property name="mainAttributionLevel"
+                  column="mainAttributionLevel">
+        </property>
+
+        <property name="mainAttributionLeve2"
+                  column="mainAttributionLeve2">
+        </property>
+
+        <property name="mainAttributionLeve3"
+                  column="mainAttributionLeve3">
+        </property>
+
+        <property name="mainT2FinalDepartment"
+                  column="mainT2FinalDepartment">
+        </property>
+
+        <property name="mainT2FinalMan"
+                  column="mainT2FinalMan">
+        </property>
+
+        <property name="mainT2FinalTime"
+                  column="mainT2FinalTime">
+        </property>
+
+        <property name="mainUpload"
+                  column="mainUpload">
+        </property>
+
+        <property name="mainPhoneReceived"
+                  column="mainPhoneReceived">
+        </property>
+
+        <property name="mainPhoneReceipt"
+                  column="mainPhoneReceipt">
+        </property>
+
+
+        <property name="mainRject"
+                  column="mainRject">
+        </property>
+
+        <property name="mainT2ToT1"
+                  column="mainT2ToT1">
+        </property>
+
+        <property name="mainT2Reason"
+                  column="mainT2Reason">
+        </property>
+
+        <property name="mainShenTime"
+                  column="mainShenTime">
+        </property>
+
+        <property name="mainShenTimes"
+                  column="mainShenTimes">
+        </property>
+
+        <property name="mainRejectReason"
+                  column="mainRejectReason">
+        </property>
+
+        <property name="mainRecoveryDuration"
+                  column="mainRecoveryDuration">
+        </property>
+
+        <property name="hjstatus"
+                  column="hjstatus">
+        </property>
+    </class>
 </hibernate-mapping>
 

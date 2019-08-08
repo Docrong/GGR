@@ -22,19 +22,19 @@ public class EmailMonitorDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String applyId = "SpLlUeEqXgBoOzUbAkEwCfAyJtEhMnEp";
-        emailMonitor.setApplyId(applyId);        
+        emailMonitor.setApplyId(applyId);
 
         java.lang.String content = "TaTfFtYhYgEaSrTzAuLoBbDwAqLmJyQvJzQxZqUwYmSrOcUeNpPbMiAjIsDtPoSuNiXuYhEiIbWfVsPvVmNrTgEbIjCfTtZcRyPpNqKiEkHkVpBkCuNnNaPbJoUuIpDpMgByKlFbUdDaEcAyXoZyTeRvVoGaNyMxPmBpIaLqNcKsQmReLhCbFoSsIiLgGxSlQiFfDiYoXoHiHdYiJsCqCmDnQqYzHpLrMcQkDcVkAtYmWtNnKzGdFzWjNvVrZvEiXtXxNiYxZrOjKzMmAuUfToWyAuSlWoFkFlIaMeOdZbNrFaCbFdHbFwYpYyCkScNvLeElAqJdHqZzWcUqVaGlSyYiOtDzSxVuNuMcIcPkOtMfPcLbWqVuHpYkOhKoEmZeYdCjKsRgLzCmDxVpCqWlOyZoLeYmCnUdKoOrXyQuQfNcHkPkFsKgYfUjQrUbGjPfYpVdExLlRaTvIgCwRmXoOaXyTeLeLpWjEwVmMiVwMyPlHnSrKmLc";
-        emailMonitor.setContent(content);        
+        emailMonitor.setContent(content);
 
         java.util.Date dispatchTime = new java.util.Date();
-        emailMonitor.setDispatchTime(dispatchTime);        
+        emailMonitor.setDispatchTime(dispatchTime);
 
         java.lang.String email = "email1604385387@dev.java.net";
-        emailMonitor.setAddressee(email);        
+        emailMonitor.setAddressee(email);
 
         java.lang.String receiverId = "PbRyTySzCcOxLhJtBdUzMwNlXlQiNi";
-        emailMonitor.setReceiverId(receiverId);        
+        emailMonitor.setReceiverId(receiverId);
 
         dao.saveEmailMonitor(emailMonitor);
 
@@ -66,15 +66,15 @@ public class EmailMonitorDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String applyId = "OxMsLtArQoDxFwBdVgYrKuBoMnVqFfHw";
-        emailMonitor.setApplyId(applyId);        
+        emailMonitor.setApplyId(applyId);
         java.lang.String content = "YgHxBaJaDcTqMuCvXtUxQnDiToEzVaFpQdXhReJvYaNqDqGxSuJqFaXeOiYuBdMdHmVpWqHiZzLpCeYdQhGjJzApJcJpEdIiIkUdTnChLiCiHtTpUjGdHtPqGlFvAsSpNgMpEuOgThAlHlZcTiPiOpJpYiIzDvEiSqWePgRhBfOrSeUuLcBcWwKnKnKqWaTuAfLaSgFvXaOhRiGiOtNpAsTlSiBgCgKcGyWpUfSuDbRqHpXtTiOyHwMmZhCuArQtHkUsYtPuZxUaUyJdSxQwUvXiSnCvExGvBvZnSuNcPxRzRxLgRyGfGeGcIxEtWhOcRlSwBdCcOnUrCeEiDtIhCdEdWwDgNuLzRkHwKeQvXbSkOjImXmBnQlZoCdPfSrFtSqBvBvMxGuJoXaDwBbYnNmWkTbQsCwHhIyKdUvHoCdRyMyGrYqUdRrJpFuPfVeIqBoCwTcQfSeRwNsXtDyNeAzDxZaDeXdPiTvYcQpBsVkLbYnMzFiQw";
-        emailMonitor.setContent(content);        
+        emailMonitor.setContent(content);
         java.util.Date dispatchTime = new java.util.Date();
-        emailMonitor.setDispatchTime(dispatchTime);        
+        emailMonitor.setDispatchTime(dispatchTime);
         java.lang.String email = "email2075958184@dev.java.net";
-        emailMonitor.setAddressee(email);        
+        emailMonitor.setAddressee(email);
         java.lang.String receiverId = "TzDbVnTiVjNjCsZwEzRwVsMeDyRhUi";
-        emailMonitor.setReceiverId(receiverId);        
+        emailMonitor.setReceiverId(receiverId);
 
         dao.saveEmailMonitor(emailMonitor);
 

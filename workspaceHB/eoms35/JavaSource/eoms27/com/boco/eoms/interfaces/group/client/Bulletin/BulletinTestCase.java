@@ -1,6 +1,6 @@
 ﻿/**
  * BulletinTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -11,14 +11,14 @@ public class BulletinTestCase extends junit.framework.TestCase {
     public BulletinTestCase(java.lang.String name) {
         super(name);
     }
+
     public void test1BulletinSoapNewBulletin() throws Exception {
         com.boco.eoms.interfaces.group.client.Bulletin.BulletinSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.Bulletin.BulletinSoapStub)
-                          new com.boco.eoms.interfaces.group.client.Bulletin.BulletinLocator().getBulletinSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.Bulletin.BulletinLocator().getBulletinSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -37,10 +37,9 @@ public class BulletinTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.Bulletin.BulletinSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.Bulletin.BulletinSoapStub)
-                          new com.boco.eoms.interfaces.group.client.Bulletin.BulletinLocator().getBulletinSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.Bulletin.BulletinLocator().getBulletinSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -59,10 +58,9 @@ public class BulletinTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.Bulletin.BulletinSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.Bulletin.BulletinSoapStub)
-                          new com.boco.eoms.interfaces.group.client.Bulletin.BulletinLocator().getBulletinSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.Bulletin.BulletinLocator().getBulletinSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }

@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.groupcheck.service.IGroupCheckFlowManager;
  * <p>
  * Wed Nov 08 15:11:38 GMT+08:00 2017
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class GroupCheckFlowManagerImpl extends BusinessFlowServiceImpl implements IGroupCheckFlowManager {
- 
- }
+
+public class GroupCheckFlowManagerImpl extends BusinessFlowServiceImpl implements IGroupCheckFlowManager {
+
+}

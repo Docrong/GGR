@@ -4,105 +4,105 @@ import java.io.Serializable;
 
 import com.boco.eoms.base.webapp.form.BaseForm;
 
-public class TawRmDutyEventSubForm extends BaseForm implements Serializable{
-	private String id;
+public class TawRmDutyEventSubForm extends BaseForm implements Serializable {
+    private String id;
 
-	private String eventid;
+    private String eventid;
 
-	private String happentime;
+    private String happentime;
 
-	private String worksheetid;
+    private String worksheetid;
 
-	private String recordman;
+    private String recordman;
 
-	private String recordtime;
+    private String recordtime;
 
-	private String content;
+    private String content;
 
-	private String remark;
-	
-	private String roomid;
-	
-	private String deptid;
+    private String remark;
 
-	public String getContent() {
-		return content;
-	}
+    private String roomid;
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    private String deptid;
 
-	public String getEventid() {
-		return eventid;
-	}
+    public String getContent() {
+        return content;
+    }
 
-	public void setEventid(String eventid) {
-		this.eventid = eventid;
-	}
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-	public String getHappentime() {
-		return happentime;
-	}
+    public String getEventid() {
+        return eventid;
+    }
 
-	public void setHappentime(String happentime) {
-		this.happentime = happentime;
-	}
+    public void setEventid(String eventid) {
+        this.eventid = eventid;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getHappentime() {
+        return happentime;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setHappentime(String happentime) {
+        this.happentime = happentime;
+    }
 
-	public String getRecordman() {
-		return recordman;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setRecordman(String recordman) {
-		this.recordman = recordman;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getRecordtime() {
-		return recordtime;
-	}
+    public String getRecordman() {
+        return recordman;
+    }
 
-	public void setRecordtime(String recordtime) {
-		this.recordtime = recordtime;
-	}
+    public void setRecordman(String recordman) {
+        this.recordman = recordman;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public String getRecordtime() {
+        return recordtime;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public void setRecordtime(String recordtime) {
+        this.recordtime = recordtime;
+    }
 
-	public String getWorksheetid() {
-		return worksheetid;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public void setWorksheetid(String worksheetid) {
-		this.worksheetid = worksheetid;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public String getRoomid() {
-		return roomid;
-	}
+    public String getWorksheetid() {
+        return worksheetid;
+    }
 
-	public void setRoomid(String roomid) {
-		this.roomid = roomid;
-	}
+    public void setWorksheetid(String worksheetid) {
+        this.worksheetid = worksheetid;
+    }
 
-	public String getDeptid() {
-		return deptid;
-	}
+    public String getRoomid() {
+        return roomid;
+    }
 
-	public void setDeptid(String deptid) {
-		this.deptid = deptid;
-	}
+    public void setRoomid(String roomid) {
+        this.roomid = roomid;
+    }
+
+    public String getDeptid() {
+        return deptid;
+    }
+
+    public void setDeptid(String deptid) {
+        this.deptid = deptid;
+    }
 
 }

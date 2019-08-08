@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,28 +13,28 @@
             table="Supervise_Task_MainDuty"
     >
 
-    <id
-        name="id"
-            column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="deleted" />
-		<property name="workflowType" />
-		<property name="sheetid" />
-		<property name="sendtime" />
-		<property name="workflowStatus" />
-		<property name="errorSource" />
-		<property name="cityid" />
-		<property name="userid" />
-		<property name="deptid" />
-		<property name="errorDesc" />
-		<property name="expectGoal" />
- 
-</class>    
+        </id>
+        <property name="deleted"/>
+        <property name="workflowType"/>
+        <property name="sheetid"/>
+        <property name="sendtime"/>
+        <property name="workflowStatus"/>
+        <property name="errorSource"/>
+        <property name="cityid"/>
+        <property name="userid"/>
+        <property name="deptid"/>
+        <property name="errorDesc"/>
+        <property name="expectGoal"/>
+
+    </class>
 </hibernate-mapping>

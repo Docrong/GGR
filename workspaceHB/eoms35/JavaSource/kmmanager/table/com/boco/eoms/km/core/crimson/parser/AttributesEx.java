@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -70,8 +70,7 @@ import org.xml.sax.Attributes;
  * @author David Brownell
  * @version $Revision: 1.1 $
  */
-public interface AttributesEx extends Attributes
-{
+public interface AttributesEx extends Attributes {
     /**
      * Returns true if the attribute was specified in the document.
      * <em> This method only relates to document editing; there is no
@@ -80,7 +79,7 @@ public interface AttributesEx extends Attributes
      *
      * @param i the index of the attribute in the list.
      */
-    public boolean isSpecified (int i);
+    public boolean isSpecified(int i);
 
     /**
      * Returns the default value of the specified attribute, or null
@@ -92,7 +91,7 @@ public interface AttributesEx extends Attributes
      *
      * @param i the index of the attribute in the list.
      */
-    public String getDefault (int i);
+    public String getDefault(int i);
 
     /**
      * Returns the name of the ID attribute for the associated element,
@@ -100,5 +99,5 @@ public interface AttributesEx extends Attributes
      * name can be inferred from methods in the base class; but if none
      * was provided, this will be the only way this name can be determined.
      */
-    public String getIdAttributeName ();
+    public String getIdAttributeName();
 }

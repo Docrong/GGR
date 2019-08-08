@@ -1,6 +1,7 @@
 package com.boco.eoms.commons.db.util;
 
 // eoms class
+
 import com.boco.eoms.commons.db.properties.XMLProperties;
 
 public class PropertyFile {

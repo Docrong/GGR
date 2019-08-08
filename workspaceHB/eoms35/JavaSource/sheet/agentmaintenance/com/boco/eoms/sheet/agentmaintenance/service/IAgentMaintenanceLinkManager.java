@@ -6,11 +6,11 @@
 package com.boco.eoms.sheet.agentmaintenance.service;
 
 import com.boco.eoms.sheet.base.service.ILinkService;
+
 import java.util.Map;
 
 public interface IAgentMaintenanceLinkManager
-	extends ILinkService
-{
+        extends ILinkService {
 
-	public abstract Map getLastLinkBeforeHold(String s, String s1, String s2);
+    public abstract Map getLastLinkBeforeHold(String s, String s1, String s2);
 }

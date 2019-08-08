@@ -11,10 +11,10 @@ import com.boco.eoms.sheet.groupcomplaint.service.IGroupComplaintTaskManager;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class GroupComplaintTaskManagerImpl extends TaskServiceImpl implements IGroupComplaintTaskManager{
+public class GroupComplaintTaskManagerImpl extends TaskServiceImpl implements IGroupComplaintTaskManager {
 
 }

@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.daiweiindexreduction.service.IDaiWeiIndexReductionFlo
  * <p>
  * Tue Aug 01 17:34:54 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public class DaiWeiIndexReductionFlowManagerImpl extends BusinessFlowServiceImpl implements IDaiWeiIndexReductionFlowManager {
- 
- }
+
+public class DaiWeiIndexReductionFlowManagerImpl extends BusinessFlowServiceImpl implements IDaiWeiIndexReductionFlowManager {
+
+}

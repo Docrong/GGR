@@ -1,90 +1,91 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
 
-		<form-bean name="netOwnershipForm"
-			type="com.boco.eoms.sheet.netownership.webapp.form.NetOwnershipForm" />
+        <form-bean name="netOwnershipForm"
+                   type="com.boco.eoms.sheet.netownership.webapp.form.NetOwnershipForm"/>
 
-		<!--
-			If you have non XDoclet forms, define them in a file called struts-forms.xml and
-			place it in your merge directory.
-		-->
-	</form-beans>
+        <!--
+            If you have non XDoclet forms, define them in a file called struts-forms.xml and
+            place it in your merge directory.
+        -->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="error"
-			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
-			contextRelative="true" />
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="error"
+                 path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+                 contextRelative="true"/>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
-			
-		<action path="/netownership"
-			type="com.boco.eoms.sheet.netownership.webapp.action.NetOwnershipAction"
-			name="netOwnershipForm" scope="request" input="error"
-			parameter="method" unknown="false" validate="false">
-			<forward name="input"
-				path="/WEB-INF/pages/wfworksheet/netownership/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="success"
-				path="/WEB-INF/pages/wfworksheet/netownership/save_success.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="query"
-				path="/WEB-INF/pages/wfworksheet/netownership/query.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="querylist"
-				path="/WEB-INF/pages/wfworksheet/netownership/querylist.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/wfworksheet/netownership/detail.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="delete"
-				path="/WEB-INF/pages/wfworksheet/netownership/delete_success.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="falsePage"
-				path="/WEB-INF/pages/wfworksheet/netownership/false.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="excel"
-				path="/WEB-INF/pages/wfworksheet/netownership/netUpload.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="excelNoRecod"
-				path="/WEB-INF/pages/wfworksheet/netownership/netNoRecod.jsp" 
-				redirect="false" contextRelative="true" />
-		</action>
-		
-	</action-mappings>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+        <action path="/netownership"
+                type="com.boco.eoms.sheet.netownership.webapp.action.NetOwnershipAction"
+                name="netOwnershipForm" scope="request" input="error"
+                parameter="method" unknown="false" validate="false">
+            <forward name="input"
+                     path="/WEB-INF/pages/wfworksheet/netownership/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/wfworksheet/netownership/save_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="query"
+                     path="/WEB-INF/pages/wfworksheet/netownership/query.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="querylist"
+                     path="/WEB-INF/pages/wfworksheet/netownership/querylist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/wfworksheet/netownership/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="delete"
+                     path="/WEB-INF/pages/wfworksheet/netownership/delete_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="falsePage"
+                     path="/WEB-INF/pages/wfworksheet/netownership/false.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="excel"
+                     path="/WEB-INF/pages/wfworksheet/netownership/netUpload.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="excelNoRecod"
+                     path="/WEB-INF/pages/wfworksheet/netownership/netNoRecod.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
 
-	<message-resources parameter="config/ApplicationResources" />
+    </action-mappings>
 
-	<!-- ========== Validator plugin ===================  -->
-	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-		<set-property property="pathnames"
-			value="/WEB-INF/validator-rules.xml,
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+    <message-resources parameter="config/ApplicationResources"/>
+
+    <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
-                             /WEB-INF/validation.xml" />
-	</plug-in>
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
 
 </struts-config>

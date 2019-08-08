@@ -7,24 +7,24 @@ package com.boco.eoms.roleWorkflow.mgr;
 
 import com.boco.eoms.base.service.Manager;
 import com.boco.eoms.roleWorkflow.model.TawSystemRoleWorkflow;
+
 import java.util.List;
 
 public interface ITawSystemRoleWorkflowManager
-	extends Manager
-{
+        extends Manager {
 
-	public abstract List getTawSystemWorkflows();
+    public abstract List getTawSystemWorkflows();
 
-	public abstract TawSystemRoleWorkflow getTawSystemWorkflow(long l);
+    public abstract TawSystemRoleWorkflow getTawSystemWorkflow(long l);
 
-	public abstract void saveTawSystemWorkflow(TawSystemRoleWorkflow tawsystemroleworkflow);
+    public abstract void saveTawSystemWorkflow(TawSystemRoleWorkflow tawsystemroleworkflow);
 
-	public abstract void removeTawSystemWorkflow(long l)
-		throws Exception;
+    public abstract void removeTawSystemWorkflow(long l)
+            throws Exception;
 
-	public abstract TawSystemRoleWorkflow getTawSystemWorkflowByName(String s)
-		throws Exception;
+    public abstract TawSystemRoleWorkflow getTawSystemWorkflowByName(String s)
+            throws Exception;
 
-	public abstract TawSystemRoleWorkflow getTawSystemWorkflowByBeanId(String s)
-		throws Exception;
+    public abstract TawSystemRoleWorkflow getTawSystemWorkflowByBeanId(String s)
+            throws Exception;
 }

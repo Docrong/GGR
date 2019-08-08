@@ -20,37 +20,37 @@ import com.boco.eoms.parter.baseinfo.contract.util.TawContractConstants;
 
 public class SmsUserLogAction extends BaseAction {
 
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-		SmsUserLogForm smsUserLogForm = (SmsUserLogForm) form;
-		ISmsMobilesTemplateManager mgr = (ISmsMobilesTemplateManager) getBean("IsmsMobilesTemplateManager");
-		
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TawContractConstants.TAWCONTRACT_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		Map map=(Map)mgr.searchUser(pageIndex,pageSize,smsUserLogForm);
-		List list = (List) map.get("result");
-		request.setAttribute("tawContractList", list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("logList");
-	}
-	
-	public ActionForward searchList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		ISmsMobilesTemplateManager mgr = (ISmsMobilesTemplateManager) getBean("IsmsMobilesTemplateManager");
-		// 取某版块对象
-		List list = mgr.getNodes4Team();
-		request.setAttribute("teamList", list);
-		return mapping.findForward("searchForm");
-		
-	}
+        SmsUserLogForm smsUserLogForm = (SmsUserLogForm) form;
+        ISmsMobilesTemplateManager mgr = (ISmsMobilesTemplateManager) getBean("IsmsMobilesTemplateManager");
+
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TawContractConstants.TAWCONTRACT_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        Map map = (Map) mgr.searchUser(pageIndex, pageSize, smsUserLogForm);
+        List list = (List) map.get("result");
+        request.setAttribute("tawContractList", list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("logList");
+    }
+
+    public ActionForward searchList(ActionMapping mapping, ActionForm form,
+                                    HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        ISmsMobilesTemplateManager mgr = (ISmsMobilesTemplateManager) getBean("IsmsMobilesTemplateManager");
+        // 取某版块对象
+        List list = mgr.getNodes4Team();
+        request.setAttribute("teamList", list);
+        return mapping.findForward("searchForm");
+
+    }
 }

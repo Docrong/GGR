@@ -30,325 +30,326 @@ import com.boco.eoms.duty.test.dao.GuiCamera;
 import com.boco.eoms.duty.util.DutyMgrLocator;
 
 public class TawRmCycleTableAction extends Action {
-	private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.ConnectionPool
-			.getInstance();
+    private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.ConnectionPool
+            .getInstance();
 
-	private static int PAGE_LENGTH = 20;
-	// 整合调整关于国际化
-	static {
-		ResourceBundle prop = ResourceBundle
-				.getBundle("resources.application_zh_CN");
-		try {
-			PAGE_LENGTH = Integer.parseInt(prop.getString("list.page.length"));
-		} catch (Exception e) {
-		}
-	}
+    private static int PAGE_LENGTH = 20;
 
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		ActionForward myforward = null;
-		String myaction = mapping.getParameter();
+    // 整合调整关于国际化
+    static {
+        ResourceBundle prop = ResourceBundle
+                .getBundle("resources.application_zh_CN");
+        try {
+            PAGE_LENGTH = Integer.parseInt(prop.getString("list.page.length"));
+        } catch (Exception e) {
+        }
+    }
 
-		if (isCancelled(request)) {
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response) {
+        ActionForward myforward = null;
+        String myaction = mapping.getParameter();
 
-			return mapping.findForward("cancel");
-		}
+        if (isCancelled(request)) {
 
-		if ("".equalsIgnoreCase(myaction)) {
-			myforward = mapping.findForward("failure");
-		} else if ("VIEW".equalsIgnoreCase(myaction)) {
-			myforward = performView(mapping, form, request, response);
-		} else if ("EDIT".equalsIgnoreCase(myaction)) {
-			myforward = performEdit(mapping, form, request, response);
-		} else if ("ADD".equalsIgnoreCase(myaction)) {
-			myforward = performAdd(mapping, form, request, response);
-		} else if ("SAVE".equalsIgnoreCase(myaction)) {
-			try {
-				myforward = performSave(mapping, form, request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+            return mapping.findForward("cancel");
+        }
 
-		} else if ("REMOVE".equalsIgnoreCase(myaction)) {
-			myforward = performRemove(mapping, form, request, response);
-		} else if ("TRASH".equalsIgnoreCase(myaction)) {
-			myforward = performTrash(mapping, form, request, response);
-		} else if ("LIST".equalsIgnoreCase(myaction)) {
-			myforward = performList(mapping, form, request, response);
-		} else if ("SUBMIT".equalsIgnoreCase(myaction)) {
-			myforward = performSubmit(mapping, form, request, response);
-		} else {
-			myforward = mapping.findForward("failure");
-		}
-		return myforward;
-	}
+        if ("".equalsIgnoreCase(myaction)) {
+            myforward = mapping.findForward("failure");
+        } else if ("VIEW".equalsIgnoreCase(myaction)) {
+            myforward = performView(mapping, form, request, response);
+        } else if ("EDIT".equalsIgnoreCase(myaction)) {
+            myforward = performEdit(mapping, form, request, response);
+        } else if ("ADD".equalsIgnoreCase(myaction)) {
+            myforward = performAdd(mapping, form, request, response);
+        } else if ("SAVE".equalsIgnoreCase(myaction)) {
+            try {
+                myforward = performSave(mapping, form, request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-	/**
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	private ActionForward performSubmit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
+        } else if ("REMOVE".equalsIgnoreCase(myaction)) {
+            myforward = performRemove(mapping, form, request, response);
+        } else if ("TRASH".equalsIgnoreCase(myaction)) {
+            myforward = performTrash(mapping, form, request, response);
+        } else if ("LIST".equalsIgnoreCase(myaction)) {
+            myforward = performList(mapping, form, request, response);
+        } else if ("SUBMIT".equalsIgnoreCase(myaction)) {
+            myforward = performSubmit(mapping, form, request, response);
+        } else {
+            myforward = mapping.findForward("failure");
+        }
+        return myforward;
+    }
 
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
-		try {
-			String timeTag = StaticMethod.getCurrentDateTime("yyyyMMddHHmmss");
-			String uploadPath = DutyMgrLocator.getAttributes()
-					.getDutyRootPath()
-					+ "/";
-			String sysTemPaht = request.getRealPath("/"); // 取当前系统路径
-			String path = sysTemPaht + uploadPath + timeTag;
+    /**
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     */
+    private ActionForward performSubmit(ActionMapping mapping, ActionForm form,
+                                        HttpServletRequest request, HttpServletResponse response) {
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
 
-			GuiCamera cam = new GuiCamera(path, "png");//
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+        try {
+            String timeTag = StaticMethod.getCurrentDateTime("yyyyMMddHHmmss");
+            String uploadPath = DutyMgrLocator.getAttributes()
+                    .getDutyRootPath()
+                    + "/";
+            String sysTemPaht = request.getRealPath("/"); // 取当前系统路径
+            String path = sysTemPaht + uploadPath + timeTag;
 
-			cam.snapShot();
+            GuiCamera cam = new GuiCamera(path, "png");//
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mapping.findForward("success");
+            cam.snapShot();
 
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mapping.findForward("success");
 
-	/**
-	 * 列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	private ActionForward performList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		List list = new ArrayList();
-		TawRmCycleTableDAO tawRmCycleTableDAO = null;
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
-		String roomId = request.getParameter("roomId");
-		if (roomId == null) {
-			roomId = (String) request.getAttribute("roomId");
-		}
-		request.setAttribute("roomId", roomId);
-		try {
-			tawRmCycleTableDAO = new TawRmCycleTableDAO(ds);
+    }
 
-			list = tawRmCycleTableDAO.getCycleTable(roomId);
-			request.setAttribute("AddonsList", list);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mapping.findForward("success");
-	}
+    /**
+     * 列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     */
+    private ActionForward performList(ActionMapping mapping, ActionForm form,
+                                      HttpServletRequest request, HttpServletResponse response) {
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        List list = new ArrayList();
+        TawRmCycleTableDAO tawRmCycleTableDAO = null;
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+        String roomId = request.getParameter("roomId");
+        if (roomId == null) {
+            roomId = (String) request.getAttribute("roomId");
+        }
+        request.setAttribute("roomId", roomId);
+        try {
+            tawRmCycleTableDAO = new TawRmCycleTableDAO(ds);
 
-	private ActionForward performTrash(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            list = tawRmCycleTableDAO.getCycleTable(roomId);
+            request.setAttribute("AddonsList", list);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mapping.findForward("success");
+    }
 
-	/**
-	 * 删除
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	private ActionForward performRemove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
+    private ActionForward performTrash(ActionMapping mapping, ActionForm form,
+                                       HttpServletRequest request, HttpServletResponse response) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-		String id = request.getParameter("id");
-		TawRmCycleTableDAO tawRmCycleTableDAO = null;
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
-		String roomId = request.getParameter("roomId");
-		request.setAttribute("roomId", roomId);
+    /**
+     * 删除
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     */
+    private ActionForward performRemove(ActionMapping mapping, ActionForm form,
+                                        HttpServletRequest request, HttpServletResponse response) {
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
 
-		try {
-			tawRmCycleTableDAO = new TawRmCycleTableDAO(ds);
-			tawRmCycleTableDAO.deleteTable(id);
+        String id = request.getParameter("id");
+        TawRmCycleTableDAO tawRmCycleTableDAO = null;
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+        String roomId = request.getParameter("roomId");
+        request.setAttribute("roomId", roomId);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mapping.findForward("success");
-	}
+        try {
+            tawRmCycleTableDAO = new TawRmCycleTableDAO(ds);
+            tawRmCycleTableDAO.deleteTable(id);
 
-	/**
-	 * 保存
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	private ActionForward performSave(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String userId = sessionform.getUserid();
-		TawRmCycleTableBO tawRmCycleTableBO = null;
-		TawRmCycleTableForm tawRmCycleTableForm = (TawRmCycleTableForm) form;
-		// request.setCharacterEncoding("utf-8");
-		// response.setCharacterEncoding("utf-8");
-		// response.setContentType("text/html; charset=GBK");
-		String roomid = request.getParameter("roomId");
-		System.out.println(request.getParameter("name"));
-		String timeTag = StaticMethod.getCurrentDateTime("yyyyMMddHHmmss");
-		String timeDate = StaticMethod
-				.getCurrentDateTime("yyyy-MM-dd HH:mm:ss");
-		String uploadPath = DutyMgrLocator.getAttributes().getDutyRootPath()
-				+ "/" + roomid + "/";
-		String dbPath = uploadPath + timeTag + ".xls";
-		String sysTemPaht = request.getRealPath("/"); // 取当前系统路径
-		String path = sysTemPaht + uploadPath;
-		String filePath = sysTemPaht + dbPath;
-		File tempFile = new File(path);
-		if (!tempFile.exists()) {
-			tempFile.mkdir();
-		}
-		request.setAttribute("roomId", roomid);
-		FormFile file = tawRmCycleTableForm.getThisFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mapping.findForward("success");
+    }
 
-		try {
-			InputStream stream = file.getInputStream(); // 把文件读入
-			OutputStream outputStream = new FileOutputStream(filePath); // 建立一个上传文件的输出流
+    /**
+     * 保存
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    private ActionForward performSave(ActionMapping mapping, ActionForm form,
+                                      HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String userId = sessionform.getUserid();
+        TawRmCycleTableBO tawRmCycleTableBO = null;
+        TawRmCycleTableForm tawRmCycleTableForm = (TawRmCycleTableForm) form;
+        // request.setCharacterEncoding("utf-8");
+        // response.setCharacterEncoding("utf-8");
+        // response.setContentType("text/html; charset=GBK");
+        String roomid = request.getParameter("roomId");
+        System.out.println(request.getParameter("name"));
+        String timeTag = StaticMethod.getCurrentDateTime("yyyyMMddHHmmss");
+        String timeDate = StaticMethod
+                .getCurrentDateTime("yyyy-MM-dd HH:mm:ss");
+        String uploadPath = DutyMgrLocator.getAttributes().getDutyRootPath()
+                + "/" + roomid + "/";
+        String dbPath = uploadPath + timeTag + ".xls";
+        String sysTemPaht = request.getRealPath("/"); // 取当前系统路径
+        String path = sysTemPaht + uploadPath;
+        String filePath = sysTemPaht + dbPath;
+        File tempFile = new File(path);
+        if (!tempFile.exists()) {
+            tempFile.mkdir();
+        }
+        request.setAttribute("roomId", roomid);
+        FormFile file = tawRmCycleTableForm.getThisFile();
 
-			int bytesRead = 0;
-			byte[] buffer = new byte[8192];
-			while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
-				outputStream.write(buffer, 0, bytesRead);
-			}
-			outputStream.close();
-			stream.close();
-			//
+        try {
+            InputStream stream = file.getInputStream(); // 把文件读入
+            OutputStream outputStream = new FileOutputStream(filePath); // 建立一个上传文件的输出流
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		try {
-			String loginType = UtilMgrLocator.getEOMSAttributes()
-					.getLoginType();
-			if ("sso".equals(loginType)) {
-				tawRmCycleTableForm.setRemark(tawRmCycleTableForm.getRemark());
-				tawRmCycleTableForm.setName(tawRmCycleTableForm.getName());
-			 } else {
-				tawRmCycleTableForm.setRemark(new String(tawRmCycleTableForm
-						.getRemark().getBytes("ISO-8859-1"), "UTF-8"));
-				tawRmCycleTableForm.setName(new String(tawRmCycleTableForm
-						.getName().getBytes("ISO-8859-1"), "UTF-8"));
-			} 
+            int bytesRead = 0;
+            byte[] buffer = new byte[8192];
+            while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+            outputStream.close();
+            stream.close();
+            //
 
-			// 内蒙修改
-			tawRmCycleTableBO = new TawRmCycleTableBO(ds);
-			tawRmCycleTableForm.setCreatTime(timeDate);
-			tawRmCycleTableForm.setCreatUser(userId);
-			tawRmCycleTableForm.setUrl(dbPath);
-			tawRmCycleTableForm.setRoomId(roomid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            String loginType = UtilMgrLocator.getEOMSAttributes()
+                    .getLoginType();
+            if ("sso".equals(loginType)) {
+                tawRmCycleTableForm.setRemark(tawRmCycleTableForm.getRemark());
+                tawRmCycleTableForm.setName(tawRmCycleTableForm.getName());
+            } else {
+                tawRmCycleTableForm.setRemark(new String(tawRmCycleTableForm
+                        .getRemark().getBytes("ISO-8859-1"), "UTF-8"));
+                tawRmCycleTableForm.setName(new String(tawRmCycleTableForm
+                        .getName().getBytes("ISO-8859-1"), "UTF-8"));
+            }
 
-			tawRmCycleTableBO.insert(tawRmCycleTableForm);
+            // 内蒙修改
+            tawRmCycleTableBO = new TawRmCycleTableBO(ds);
+            tawRmCycleTableForm.setCreatTime(timeDate);
+            tawRmCycleTableForm.setCreatUser(userId);
+            tawRmCycleTableForm.setUrl(dbPath);
+            tawRmCycleTableForm.setRoomId(roomid);
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return mapping.findForward("success");
-	}
+            tawRmCycleTableBO.insert(tawRmCycleTableForm);
 
-	private ActionForward performAdd(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String roomId = request.getParameter("roomId");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mapping.findForward("success");
+    }
 
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
-		try {
-			request.setAttribute("roomId", roomId);
+    private ActionForward performAdd(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response) {
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String roomId = request.getParameter("roomId");
 
-		} catch (Exception e) {
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+        try {
+            request.setAttribute("roomId", roomId);
 
-			e.printStackTrace();
+        } catch (Exception e) {
 
-		}
-		return mapping.findForward("success");
-	}
+            e.printStackTrace();
 
-	private ActionForward performEdit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        }
+        return mapping.findForward("success");
+    }
 
-	/**
-	 * 显示
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	private ActionForward performView(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
+    private ActionForward performEdit(ActionMapping mapping, ActionForm form,
+                                      HttpServletRequest request, HttpServletResponse response) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-		TawRmCycleTableDAO tawRmCycleTableDAO = null;
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
+    /**
+     * 显示
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     */
+    private ActionForward performView(ActionMapping mapping, ActionForm form,
+                                      HttpServletRequest request, HttpServletResponse response) {
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
 
-		String id = request.getParameter("id");
-		String roomId = request.getParameter("roomId");
-		request.setAttribute("typeId", roomId);
+        TawRmCycleTableDAO tawRmCycleTableDAO = null;
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
 
-		try {
-			tawRmCycleTableDAO = new TawRmCycleTableDAO(ds);
-			String url = tawRmCycleTableDAO.getAddonsUrl(id);
-			String systemPath = request.getRealPath("/");
-			systemPath = StaticMethod.getWebPath();
+        String id = request.getParameter("id");
+        String roomId = request.getParameter("roomId");
+        request.setAttribute("typeId", roomId);
 
-			String path = systemPath + "/" + url;
-			File file = new File(path);
-			// 读到流中
-			InputStream inStream = new FileInputStream("/" + file);// 文件的存放路径
-			// 设置输出的格式
-			response.reset();
-			response.setContentType("application/x-msdownload;charset=GBK");
-			response.setCharacterEncoding("UTF-8");
-			String fileName = URLEncoder.encode(file.getName(), "UTF-8");
-			response.setHeader("Content-Disposition", "attachment; filename="
-					+ new String(fileName.getBytes("UTF-8"), "GBK"));
+        try {
+            tawRmCycleTableDAO = new TawRmCycleTableDAO(ds);
+            String url = tawRmCycleTableDAO.getAddonsUrl(id);
+            String systemPath = request.getRealPath("/");
+            systemPath = StaticMethod.getWebPath();
 
-			// 循环取出流中的数据
-			byte[] b = new byte[128];
-			int len;
-			while ((len = inStream.read(b)) > 0)
-				response.getOutputStream().write(b, 0, len);
-			inStream.close();
+            String path = systemPath + "/" + url;
+            File file = new File(path);
+            // 读到流中
+            InputStream inStream = new FileInputStream("/" + file);// 文件的存放路径
+            // 设置输出的格式
+            response.reset();
+            response.setContentType("application/x-msdownload;charset=GBK");
+            response.setCharacterEncoding("UTF-8");
+            String fileName = URLEncoder.encode(file.getName(), "UTF-8");
+            response.setHeader("Content-Disposition", "attachment; filename="
+                    + new String(fileName.getBytes("UTF-8"), "GBK"));
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+            // 循环取出流中的数据
+            byte[] b = new byte[128];
+            int len;
+            while ((len = inStream.read(b)) > 0)
+                response.getOutputStream().write(b, 0, len);
+            inStream.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.ITaskService;
  * <p>
  * Fri Sep 28 14:06:48 CST 2012
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICityCustomTaskManager extends ITaskService {
- 
- }
+
+public interface ICityCustomTaskManager extends ITaskService {
+
+}

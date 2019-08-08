@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_workdayset"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="areaId"
+                name="areaId"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="createTime"
+                name="createTime"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="deleted"
+                name="deleted"
                 length="5"
                 not-null="false"
         >
@@ -53,7 +53,7 @@
         </property>
 
         <property
-            name="endTime"
+                name="endTime"
                 length="10"
                 not-null="false"
         >
@@ -61,7 +61,7 @@
         </property>
 
         <property
-            name="startTime"
+                name="startTime"
                 length="10"
                 not-null="false"
         >
@@ -69,21 +69,21 @@
         </property>
 
         <property
-            name="status"
+                name="status"
                 length="5"
                 not-null="false"
         >
 
         </property>
         <property
-            name="cover"
+                name="cover"
                 length="5"
                 not-null="false"
         >
 
         </property>
         <property
-            name="userId"
+                name="userId"
                 length="30"
                 not-null="false"
         >
@@ -91,14 +91,14 @@
         </property>
 
         <property
-            name="workDate"
+                name="workDate"
                 length="30"
                 not-null="false"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

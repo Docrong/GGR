@@ -1,11 +1,11 @@
 package com.boco.eoms.infmanage.controller;
 
 import org.apache.struts.action.ActionForm;
+
 import java.util.Collection;
 
 public class TawInfCmdForm
-    extends ActionForm
-{
+        extends ActionForm {
     // 记录ID
     private int id;
 
@@ -32,95 +32,78 @@ public class TawInfCmdForm
     // 部门ID
     private int deptId;
 
-    public TawInfCmdForm()
-    {
+    public TawInfCmdForm() {
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getCmdSwich()
-    {
+    public String getCmdSwich() {
         return cmdSwich;
     }
 
-    public void setCmdSwich(String cmdSwich)
-    {
+    public void setCmdSwich(String cmdSwich) {
         this.cmdSwich = cmdSwich;
     }
 
-    public String getCmdId()
-    {
+    public String getCmdId() {
         return cmdId;
     }
 
-    public void setCmdId(String cmdId)
-    {
+    public void setCmdId(String cmdId) {
         this.cmdId = cmdId;
     }
 
-    public String getCmdName()
-    {
+    public String getCmdName() {
         return cmdName;
     }
 
-    public void setCmdName(String cmdName)
-    {
+    public void setCmdName(String cmdName) {
         this.cmdName = cmdName;
     }
 
-    public String getCmdParam()
-    {
+    public String getCmdParam() {
         return cmdParam;
     }
 
-    public void setCmdParam(String cmdParam)
-    {
+    public void setCmdParam(String cmdParam) {
         this.cmdParam = cmdParam;
     }
 
-    public String getParamScope()
-    {
+    public String getParamScope() {
         return paramScope;
     }
 
-    public void setParamScope(String paramScope)
-    {
+    public void setParamScope(String paramScope) {
         this.paramScope = paramScope;
     }
 
-    public String getCmdDes()
-    {
+    public String getCmdDes() {
         return cmdDes;
     }
 
-    public void setCmdDes(String cmdDes)
-    {
+    public void setCmdDes(String cmdDes) {
         this.cmdDes = cmdDes;
     }
 
-    public java.util.Collection getCollectionSwich()
-    {
+    public java.util.Collection getCollectionSwich() {
         return collectionSwich;
     }
 
-    public void setCollectionSwich(java.util.Collection collectionSwich)
-    {
+    public void setCollectionSwich(java.util.Collection collectionSwich) {
         this.collectionSwich = collectionSwich;
     }
-    public int getDeptId()
-    {
+
+    public int getDeptId() {
         return deptId;
     }
-    public void setDeptId(int deptId)
-    {
+
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
 

@@ -18,11 +18,10 @@ import com.boco.eoms.base.dao.Dao;
  * <p>
  * Date:2007-8-3 14:29:53
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
-public interface ITemplateDAO extends Dao{
+public interface ITemplateDAO extends Dao {
 
 }

@@ -5,188 +5,188 @@ import java.util.Date;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawSheetRelationForm extends BaseForm implements
-		java.io.Serializable {
+        java.io.Serializable {
 
-	private String parentId;
+    private String parentId;
 
-	private String parentFlowName;
-	
-	private String parentFlowCnName;
+    private String parentFlowName;
 
-	private String parentTitle;
+    private String parentFlowCnName;
 
-	private String parentSheetId;
-	
-	private String parentProcessId;
+    private String parentTitle;
 
-	private String currentId;
+    private String parentSheetId;
 
-	private String currentFlowName;
-	
-	private String currentFlowCnName;
+    private String parentProcessId;
 
-	private String currentTitle;
+    private String currentId;
 
-	private String currentSheetId;
-	
-	private String currentProcessId;
+    private String currentFlowName;
 
-	private String userId;
+    private String currentFlowCnName;
 
-	private String subRoleId;
+    private String currentTitle;
 
-	private String invokeTime;
-	
-	private int invokeState;
-	
-	private String taskName;
-	
-	private String taskCnName;
-	
+    private String currentSheetId;
 
-	public String getCurrentFlowName() {
-		return currentFlowName;
-	}
+    private String currentProcessId;
 
-	public void setCurrentFlowName(String currentFlowName) {
-		this.currentFlowName = currentFlowName;
-	}
+    private String userId;
 
-	public String getCurrentId() {
-		return currentId;
-	}
+    private String subRoleId;
 
-	public void setCurrentId(String currentId) {
-		this.currentId = currentId;
-	}
+    private String invokeTime;
 
-	public String getCurrentProcessId() {
-		return currentProcessId;
-	}
+    private int invokeState;
 
-	public void setCurrentProcessId(String currentProcessId) {
-		this.currentProcessId = currentProcessId;
-	}
+    private String taskName;
 
-	public String getCurrentSheetId() {
-		return currentSheetId;
-	}
+    private String taskCnName;
 
-	public void setCurrentSheetId(String currentSheetId) {
-		this.currentSheetId = currentSheetId;
-	}
 
-	public String getCurrentTitle() {
-		return currentTitle;
-	}
+    public String getCurrentFlowName() {
+        return currentFlowName;
+    }
 
-	public void setCurrentTitle(String currentTitle) {
-		this.currentTitle = currentTitle;
-	}
+    public void setCurrentFlowName(String currentFlowName) {
+        this.currentFlowName = currentFlowName;
+    }
 
-	public int getInvokeState() {
-		return invokeState;
-	}
+    public String getCurrentId() {
+        return currentId;
+    }
 
-	public void setInvokeState(int invokeState) {
-		this.invokeState = invokeState;
-	}
+    public void setCurrentId(String currentId) {
+        this.currentId = currentId;
+    }
 
-	public String getInvokeTime() {
-		return invokeTime;
-	}
+    public String getCurrentProcessId() {
+        return currentProcessId;
+    }
 
-	public void setInvokeTime(String invokeTime) {
-		this.invokeTime = invokeTime;
-	}
+    public void setCurrentProcessId(String currentProcessId) {
+        this.currentProcessId = currentProcessId;
+    }
 
-	public String getParentFlowName() {
-		return parentFlowName;
-	}
+    public String getCurrentSheetId() {
+        return currentSheetId;
+    }
 
-	public void setParentFlowName(String parentFlowName) {
-		this.parentFlowName = parentFlowName;
-	}
+    public void setCurrentSheetId(String currentSheetId) {
+        this.currentSheetId = currentSheetId;
+    }
 
-	public String getParentId() {
-		return parentId;
-	}
+    public String getCurrentTitle() {
+        return currentTitle;
+    }
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
+    public void setCurrentTitle(String currentTitle) {
+        this.currentTitle = currentTitle;
+    }
 
-	public String getParentProcessId() {
-		return parentProcessId;
-	}
+    public int getInvokeState() {
+        return invokeState;
+    }
 
-	public void setParentProcessId(String parentProcessId) {
-		this.parentProcessId = parentProcessId;
-	}
+    public void setInvokeState(int invokeState) {
+        this.invokeState = invokeState;
+    }
 
-	public String getParentSheetId() {
-		return parentSheetId;
-	}
+    public String getInvokeTime() {
+        return invokeTime;
+    }
 
-	public void setParentSheetId(String parentSheetId) {
-		this.parentSheetId = parentSheetId;
-	}
+    public void setInvokeTime(String invokeTime) {
+        this.invokeTime = invokeTime;
+    }
 
-	public String getParentTitle() {
-		return parentTitle;
-	}
+    public String getParentFlowName() {
+        return parentFlowName;
+    }
 
-	public void setParentTitle(String parentTitle) {
-		this.parentTitle = parentTitle;
-	}
+    public void setParentFlowName(String parentFlowName) {
+        this.parentFlowName = parentFlowName;
+    }
 
-	public String getSubRoleId() {
-		return subRoleId;
-	}
+    public String getParentId() {
+        return parentId;
+    }
 
-	public void setSubRoleId(String subRoleId) {
-		this.subRoleId = subRoleId;
-	}
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
 
-	public String getTaskName() {
-		return taskName;
-	}
+    public String getParentProcessId() {
+        return parentProcessId;
+    }
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
-	}
+    public void setParentProcessId(String parentProcessId) {
+        this.parentProcessId = parentProcessId;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getParentSheetId() {
+        return parentSheetId;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setParentSheetId(String parentSheetId) {
+        this.parentSheetId = parentSheetId;
+    }
 
-	public String getCurrentFlowCnName() {
-		return currentFlowCnName;
-	}
+    public String getParentTitle() {
+        return parentTitle;
+    }
 
-	public void setCurrentFlowCnName(String currentFlowCnName) {
-		this.currentFlowCnName = currentFlowCnName;
-	}
+    public void setParentTitle(String parentTitle) {
+        this.parentTitle = parentTitle;
+    }
 
-	public String getParentFlowCnName() {
-		return parentFlowCnName;
-	}
+    public String getSubRoleId() {
+        return subRoleId;
+    }
 
-	public void setParentFlowCnName(String parentFlowCnName) {
-		this.parentFlowCnName = parentFlowCnName;
-	}
+    public void setSubRoleId(String subRoleId) {
+        this.subRoleId = subRoleId;
+    }
 
-	public String getTaskCnName() {
-		return taskCnName;
-	}
+    public String getTaskName() {
+        return taskName;
+    }
 
-	public void setTaskCnName(String taskCnName) {
-		this.taskCnName = taskCnName;
-	}
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
-	
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getCurrentFlowCnName() {
+        return currentFlowCnName;
+    }
+
+    public void setCurrentFlowCnName(String currentFlowCnName) {
+        this.currentFlowCnName = currentFlowCnName;
+    }
+
+    public String getParentFlowCnName() {
+        return parentFlowCnName;
+    }
+
+    public void setParentFlowCnName(String parentFlowCnName) {
+        this.parentFlowCnName = parentFlowCnName;
+    }
+
+    public String getTaskCnName() {
+        return taskCnName;
+    }
+
+    public void setTaskCnName(String taskCnName) {
+        this.taskCnName = taskCnName;
+    }
+
+
 }

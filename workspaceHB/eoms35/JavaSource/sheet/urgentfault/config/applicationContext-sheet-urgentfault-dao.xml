@@ -3,11 +3,14 @@
 
 <beans>
 
-	<bean id="IUrgentFaultMainDao" class="com.boco.eoms.sheet.urgentfault.dao.hibernate.UrgentFaultMainDaoHibernate" autowire="byName">
-      </bean>
-	<bean id="IUrgentFaultLinkDao" class="com.boco.eoms.sheet.urgentfault.dao.hibernate.UrgentFaultLinkDaoHibernate" autowire="byName">
-      </bean>
+    <bean id="IUrgentFaultMainDao" class="com.boco.eoms.sheet.urgentfault.dao.hibernate.UrgentFaultMainDaoHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="IUrgentFaultLinkDao" class="com.boco.eoms.sheet.urgentfault.dao.hibernate.UrgentFaultLinkDaoHibernate"
+          autowire="byName">
+    </bean>
 
-	<bean id="iUrgentFaultTaskDAO" class="com.boco.eoms.sheet.urgentfault.dao.hibernate.UrgentFaultTaskDAOHibernate" autowire="byName">
-      </bean>
+    <bean id="iUrgentFaultTaskDAO" class="com.boco.eoms.sheet.urgentfault.dao.hibernate.UrgentFaultTaskDAOHibernate"
+          autowire="byName">
+    </bean>
 </beans>

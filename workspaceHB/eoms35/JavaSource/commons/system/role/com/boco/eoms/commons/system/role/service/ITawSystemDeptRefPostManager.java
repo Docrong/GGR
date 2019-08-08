@@ -15,6 +15,7 @@ public interface ITawSystemDeptRefPostManager extends Manager {
 
     /**
      * Gets tawSystemDeptRefPost's information based on id.
+     *
      * @param id the tawSystemDeptRefPost's id
      * @return tawSystemDeptRefPost populated tawSystemDeptRefPost object
      */
@@ -22,19 +23,25 @@ public interface ITawSystemDeptRefPostManager extends Manager {
 
     /**
      * Saves a tawSystemDeptRefPost's information
+     *
      * @param tawSystemDeptRefPost the object to be saved
      */
     public void saveTawSystemDeptRefPost(TawSystemDeptRefPost tawSystemDeptRefPost);
 
     /**
      * Removes a tawSystemDeptRefPost from the database by id
+     *
      * @param id the tawSystemDeptRefPost's id
      */
     public void removeTawSystemDeptRefPost(final String id);
+
     public Map getTawSystemDeptRefPosts(final Integer curPage, final Integer pageSize);
+
     public Map getTawSystemDeptRefPosts(final Integer curPage, final Integer pageSize, final String whereStr);
+
     /**
-     * 获取部门下的岗位列表 
+     * 获取部门下的岗位列表
+     *
      * @param deptId
      * @return <TawSystemPost>
      */

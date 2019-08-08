@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.transprovincial.service.ITransprovincialTaskManager;
  * <p>
  * Thu Sep 27 14:32:21 CST 2012
  * </p>
- * 
+ *
  * @author ph
  * @version 3.5
- * 
  */
- 
- public class TransprovincialTaskManagerImpl extends TaskServiceImpl implements  ITransprovincialTaskManager {
- 
- }
+
+public class TransprovincialTaskManagerImpl extends TaskServiceImpl implements ITransprovincialTaskManager {
+
+}

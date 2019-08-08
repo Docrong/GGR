@@ -3,27 +3,25 @@ package com.boco.eoms.infmanage.bo;
 import java.sql.*;
 import javax.sql.*;
 import java.io.*;
+
 import com.boco.eoms.common.bo.BO;
 
 import com.boco.eoms.infmanage.controller.*;
 import com.boco.eoms.common.util.StaticMethod;
 
 public class TawInfAppuBO
-    extends BO
-{
-    public TawInfAppuBO(com.boco.eoms.db.util.ConnectionPool ds)
-    {
+        extends BO {
+    public TawInfAppuBO(com.boco.eoms.db.util.ConnectionPool ds) {
         super(ds);
     }
 
-    public String getQueryCondition(TawInfInfoForm form, String sdomIds)
-    {
+    public String getQueryCondition(TawInfInfoForm form, String sdomIds) {
         String condition = "";
         boolean markWhere = true;
 
         // taw_inf_info a,taw_inf_sort b,taw_rm_user c
         condition =
-            " where a.inf_sort_id=b.inf_sort_id and a.inf_up_id=c.userid and a.dept_id=d.deptid";
+                " where a.inf_sort_id=b.inf_sort_id and a.inf_up_id=c.userid and a.dept_id=d.deptid";
 
 
         // ��¼ID
@@ -59,35 +57,27 @@ public class TawInfAppuBO
 
         // ���ϱ��
         if (!StaticMethod.null2String(form.getInfInfoId()).trim().equals(
-            ""))
-        {
-            if (!markWhere)
-            {
+                "")) {
+            if (!markWhere) {
                 condition = condition + " Where a.inf_info_id LIKE '%" +
-                    form.getInfInfoId().trim() + "%'";
+                        form.getInfInfoId().trim() + "%'";
                 markWhere = true;
-            }
-            else
-            {
+            } else {
                 condition = condition + " AND a.inf_info_id LIKE '%" +
-                    form.getInfInfoId().trim() + "%'";
+                        form.getInfInfoId().trim() + "%'";
             }
         }
 
         // �������
         if (!StaticMethod.null2String(form.getInfInfoName()).trim().equals(
-            ""))
-        {
-            if (!markWhere)
-            {
+                "")) {
+            if (!markWhere) {
                 condition = condition + " where a.inf_info_name LIKE '%" +
-                    form.getInfInfoName().trim() + "%'";
+                        form.getInfInfoName().trim() + "%'";
                 markWhere = true;
-            }
-            else
-            {
+            } else {
                 condition = condition + " AND a.inf_info_name LIKE '%" +
-                    form.getInfInfoName().trim() + "%'";
+                        form.getInfInfoName().trim() + "%'";
             }
         }
 
@@ -106,18 +96,14 @@ public class TawInfAppuBO
         }*/
 
         // �û�IP��ַ
-        if (!StaticMethod.null2String(form.getInfUpName()).trim().equals(""))
-        {
-            if (!markWhere)
-            {
+        if (!StaticMethod.null2String(form.getInfUpName()).trim().equals("")) {
+            if (!markWhere) {
                 condition = condition + " where c.user_name LIKE '%" +
-                    form.getInfUpName().trim() + "%'";
+                        form.getInfUpName().trim() + "%'";
                 markWhere = true;
-            }
-            else
-            {
+            } else {
                 condition = condition + " AND c.user_name LIKE '%" +
-                    form.getInfUpName().trim() + "%'";
+                        form.getInfUpName().trim() + "%'";
             }
         }
 

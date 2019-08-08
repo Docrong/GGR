@@ -19,10 +19,9 @@ import com.boco.eoms.sheet.base.service.ITemplateService;
  * <p>
  * Date:2007-8-3 14:32:40
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class TemplateServiceImpl implements ITemplateService {
     private ITemplateDAO templateDAO;
@@ -35,8 +34,7 @@ public class TemplateServiceImpl implements ITemplateService {
     }
 
     /**
-     * @param templateDAO
-     *            the templateDAO to set
+     * @param templateDAO the templateDAO to set
      */
     public void setTemplateDAO(ITemplateDAO templateDAO) {
         this.templateDAO = templateDAO;

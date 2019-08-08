@@ -18,13 +18,17 @@ import com.boco.common.security.service.dao.ldap.factory.LdapOperation;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author weis
  * @version 1.0
  */
 public abstract class BaseLdapDAO implements BaseDAO {
 
-    /** constructor */
-    public BaseLdapDAO() {}
+    /**
+     * constructor
+     */
+    public BaseLdapDAO() {
+    }
 
 
     /**

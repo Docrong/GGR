@@ -35,7 +35,7 @@ public class ThreadAuditHistoryManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         threadAuditHistoryDao.expects(once()).method("getThreadAuditHistorys")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List threadAuditHistorys = threadAuditHistoryManager.getThreadAuditHistorys(null);
         assertTrue(threadAuditHistorys.size() == 1);
@@ -45,7 +45,7 @@ public class ThreadAuditHistoryManagerTest extends BaseManagerTestCase {
     public void testGetThreadAuditHistory() throws Exception {
         // set expected behavior on dao
         threadAuditHistoryDao.expects(once()).method("getThreadAuditHistory")
-            .will(returnValue(new ThreadAuditHistory()));
+                .will(returnValue(new ThreadAuditHistory()));
         ThreadAuditHistory threadAuditHistory = threadAuditHistoryManager.getThreadAuditHistory(threadAuditHistoryId);
         assertTrue(threadAuditHistory != null);
         threadAuditHistoryDao.verify();
@@ -56,7 +56,7 @@ public class ThreadAuditHistoryManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         threadAuditHistoryDao.expects(once()).method("saveThreadAuditHistory")
-            .with(same(threadAuditHistory)).isVoid();
+                .with(same(threadAuditHistory)).isVoid();
 
         threadAuditHistoryManager.saveThreadAuditHistory(threadAuditHistory);
         threadAuditHistoryDao.verify();
@@ -69,7 +69,7 @@ public class ThreadAuditHistoryManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         threadAuditHistoryDao.expects(once()).method("saveThreadAuditHistory")
-            .with(same(threadAuditHistory)).isVoid();
+                .with(same(threadAuditHistory)).isVoid();
         threadAuditHistoryManager.saveThreadAuditHistory(threadAuditHistory);
         threadAuditHistoryDao.verify();
 

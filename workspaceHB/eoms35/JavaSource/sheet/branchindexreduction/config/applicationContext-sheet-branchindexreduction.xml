@@ -1,132 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
 
     <bean id="IBranchIndexReductionMainDAO"
-		class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.BranchIndexReductionMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IBranchIndexReductionLinkDAO"
-		class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.BranchIndexReductionLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IBranchIndexReductionTaskDAO"
-		class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.BranchIndexReductionTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="BranchIndexReductionTask"
-		class="com.boco.eoms.sheet.branchindexreduction.model.BranchIndexReductionTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.BranchIndexReductionMainDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="IBranchIndexReductionLinkDAO"
+          class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.BranchIndexReductionLinkDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="IBranchIndexReductionTaskDAO"
+          class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.BranchIndexReductionTaskDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="BranchIndexReductionTask"
+          class="com.boco.eoms.sheet.branchindexreduction.model.BranchIndexReductionTask" autowire="byName">
+    </bean>
     <bean id="BranchIndexReductionLink"
-		class="com.boco.eoms.sheet.branchindexreduction.model.BranchIndexReductionLink"
-		autowire="byName" />
-	<bean id="BranchIndexReductionMain"
-		class="com.boco.eoms.sheet.branchindexreduction.model.BranchIndexReductionMain"
-		autowire="byName" />
-	<bean id="iBranchIndexReductionTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionTaskManagerImpl">
-				<property name="taskModelObject" ref="BranchIndexReductionTask" />
-				<property name="taskDAO">
-					<ref bean="IBranchIndexReductionTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-			       <value>/config/branchindexreductionTaskConfig.properties</value>
-		        </property>				
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iBranchIndexReductionFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iBranchIndexReductionLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionLinkManagerImpl">
-				<property name="linkObject" ref="BranchIndexReductionLink"/>
-				<property name="linkDAO">
-				  <ref bean="IBranchIndexReductionLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iBranchIndexReductionMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionMainManagerImpl">
-			    <property name="mainObject" ref="BranchIndexReductionMain" />
-				<property name="mainDAO">
-				 <ref bean="IBranchIndexReductionMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iBranchIndexReductionQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>BranchIndexReduction</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/branchindexreduction-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
-
-   <bean id="iBranchIndexReductionQo"
-		class="com.boco.eoms.sheet.branchindexreduction.qo.impl.BranchIndexReductionQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="BranchIndexReductionMain" />
-		<property name="poLink" value="BranchIndexReductionLink" />
-		<property name="poTask" value="BranchIndexReductionTask" />
-		<property name="aliasMain" value="branchindexreductionMain" />
-		<property name="aliasLink" value="branchindexreductionLink" />
-		<property name="aliasTask" value="branchindexreductionTask" />
-
-	</bean>
-
-	<bean id="BranchIndexReduction" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.branchindexreduction.webapp.action.BranchIndexReductionMethod">
-				<property name="businessFlowService" >
-					<ref bean="iBranchIndexReductionFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iBranchIndexReductionLinkManager" />
-				<property name="mainService"
-					ref="iBranchIndexReductionMainManager" />
-				<property name="sheetTask"
-					ref="BranchIndexReductionTask" />
-				<property name="taskService"
-					ref="iBranchIndexReductionTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/branchindexreduction-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
-	
-	 <bean id="subtractTableMgr" parent="txProxyTemplate">
+          class="com.boco.eoms.sheet.branchindexreduction.model.BranchIndexReductionLink"
+          autowire="byName"/>
+    <bean id="BranchIndexReductionMain"
+          class="com.boco.eoms.sheet.branchindexreduction.model.BranchIndexReductionMain"
+          autowire="byName"/>
+    <bean id="iBranchIndexReductionTaskManager" parent="txProxyTemplate">
         <property name="target">
             <bean
-                class="com.boco.eoms.sheet.branchindexreduction.service.impl.SubtractTableMgrImpl">
-                <property name="subtractTableDao" ref="subtractTableDao" />
+                    class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionTaskManagerImpl">
+                <property name="taskModelObject" ref="BranchIndexReductionTask"/>
+                <property name="taskDAO">
+                    <ref bean="IBranchIndexReductionTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/branchindexreductionTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBranchIndexReductionFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBranchIndexReductionLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionLinkManagerImpl">
+                <property name="linkObject" ref="BranchIndexReductionLink"/>
+                <property name="linkDAO">
+                    <ref bean="IBranchIndexReductionLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBranchIndexReductionMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.branchindexreduction.service.impl.BranchIndexReductionMainManagerImpl">
+                <property name="mainObject" ref="BranchIndexReductionMain"/>
+                <property name="mainDAO">
+                    <ref bean="IBranchIndexReductionMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iBranchIndexReductionQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>BranchIndexReduction</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/branchindexreduction-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="iBranchIndexReductionQo"
+          class="com.boco.eoms.sheet.branchindexreduction.qo.impl.BranchIndexReductionQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="BranchIndexReductionMain"/>
+        <property name="poLink" value="BranchIndexReductionLink"/>
+        <property name="poTask" value="BranchIndexReductionTask"/>
+        <property name="aliasMain" value="branchindexreductionMain"/>
+        <property name="aliasLink" value="branchindexreductionLink"/>
+        <property name="aliasTask" value="branchindexreductionTask"/>
+
+    </bean>
+
+    <bean id="BranchIndexReduction" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.branchindexreduction.webapp.action.BranchIndexReductionMethod">
+                <property name="businessFlowService">
+                    <ref bean="iBranchIndexReductionFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iBranchIndexReductionLinkManager"/>
+                <property name="mainService"
+                          ref="iBranchIndexReductionMainManager"/>
+                <property name="sheetTask"
+                          ref="BranchIndexReductionTask"/>
+                <property name="taskService"
+                          ref="iBranchIndexReductionTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/branchindexreduction-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="subtractTableMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.branchindexreduction.service.impl.SubtractTableMgrImpl">
+                <property name="subtractTableDao" ref="subtractTableDao"/>
             </bean>
         </property>
     </bean>
     <bean id="subtractTableDao"
-        class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.SubtractTableDaoHibernate"
-        autowire="byName" /> 
-               
+          class="com.boco.eoms.sheet.branchindexreduction.dao.hibernate.SubtractTableDaoHibernate"
+          autowire="byName"/>
+
 
 </beans>

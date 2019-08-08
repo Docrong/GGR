@@ -16,8 +16,8 @@ public class InfoTypeDetailForm extends ActionForm {
     private String hdTopicPath = "";
     private String hdParentId = "";
     private String[] selectPrvlg = null;
-    private String topicTypeId="1";
-    private String topicTypeName="";
+    private String topicTypeId = "1";
+    private String topicTypeName = "";
 
     public String getActId() {
         return actId;

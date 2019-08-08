@@ -1,6 +1,6 @@
 ﻿/**
  * InterSwitchAlarmServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -28,11 +28,10 @@ public class InterSwitchAlarmServiceLocator extends org.apache.axis.client.Servi
     }
 
     public com.boco.eoms.interfaces.wnms.client.InterSwitchAlarm getInterSwitchAlarm() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(InterSwitchAlarm_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getInterSwitchAlarm(endpoint);
@@ -43,8 +42,7 @@ public class InterSwitchAlarmServiceLocator extends org.apache.axis.client.Servi
             com.boco.eoms.interfaces.wnms.client.InterSwitchAlarmSoapBindingStub _stub = new com.boco.eoms.interfaces.wnms.client.InterSwitchAlarmSoapBindingStub(portAddress, this);
             _stub.setPortName(getInterSwitchAlarmWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -61,8 +59,7 @@ public class InterSwitchAlarmServiceLocator extends org.apache.axis.client.Servi
                 _stub.setPortName(getInterSwitchAlarmWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -80,8 +77,7 @@ public class InterSwitchAlarmServiceLocator extends org.apache.axis.client.Servi
         String inputPortName = portName.getLocalPart();
         if ("InterSwitchAlarm".equals(inputPortName)) {
             return getInterSwitchAlarm();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;

@@ -13,12 +13,12 @@ import com.boco.eoms.workbench.netdisk.model.TawWorkbenchNetDiskFolderShare;
 
 public interface InterfaceConfigurationGroupDao {
 
-	public void save(InterfaceConfigurationGroup interfaceConfigurationGroup);
+    public void save(InterfaceConfigurationGroup interfaceConfigurationGroup);
 
-	public List getModuleTree(String nodid);
+    public List getModuleTree(String nodid);
 
-	public void removeInterfaceConfigurationGroup(
-			InterfaceConfigurationGroup interfaceConfigurationGroup);
+    public void removeInterfaceConfigurationGroup(
+            InterfaceConfigurationGroup interfaceConfigurationGroup);
 
-	public InterfaceConfigurationGroup getInterfaceConfigurationGroup(String id);
+    public InterfaceConfigurationGroup getInterfaceConfigurationGroup(String id);
 }

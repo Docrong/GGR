@@ -1,7 +1,7 @@
 
 package com.boco.eoms.sheet.securitydeal.dao;
 
-public interface ISecurityDealTaskDAO{
+public interface ISecurityDealTaskDAO {
 
 }
 

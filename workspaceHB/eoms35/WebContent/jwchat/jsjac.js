@@ -30,7 +30,7 @@ var JSJACHBC_MAXPAUSE = 120;
 
 /*** END CONFIG ***/
 
-String.prototype.htmlEnc = function() {
+String.prototype.htmlEnc = function () {
     var str = this.replace(/&/g, "&amp;");
     str = str.replace(/</g, "&lt;");
     str = str.replace(/>/g, "&gt;");
@@ -38,7 +38,7 @@ String.prototype.htmlEnc = function() {
     str = str.replace(/\n/g, "<br />");
     return str;
 };
-Date.jab2date = function(ts) {
+Date.jab2date = function (ts) {
     var date = new Date(Date.UTC(ts.substr(0, 4), ts.substr(5, 2) - 1, ts.substr(8, 2), ts.substr(11, 2), ts.substr(14, 2), ts.substr(17, 2)));
     if (ts.substr(ts.length - 6, 1) != 'Z') {
         var offset = new Date();
@@ -50,11 +50,11 @@ Date.jab2date = function(ts) {
     }
     return date;
 };
-Date.hrTime = function(ts) {
+Date.hrTime = function (ts) {
     return Date.jab2date(ts).toLocaleString();
 };
-Date.prototype.jabberDate = function() {
-    var padZero = function(i) {
+Date.prototype.jabberDate = function () {
+    var padZero = function (i) {
         if (i < 10) return "0" + i;
         return i;
     };
@@ -66,33 +66,41 @@ Date.prototype.jabberDate = function() {
     jDate += padZero(this.getUTCSeconds()) + "Z";
     return jDate;
 };
-Number.max = function(A, B) {
-    return (A > B) ? A: B;
+Number.max = function (A, B) {
+    return (A > B) ? A : B;
 };
 var hexcase = 0;
 var b64pad = "=";
 var chrsz = 8;
+
 function hex_sha1(s) {
     return binb2hex(core_sha1(str2binb(s), s.length * chrsz));
 }
+
 function b64_sha1(s) {
     return binb2b64(core_sha1(str2binb(s), s.length * chrsz));
 }
+
 function str_sha1(s) {
     return binb2str(core_sha1(str2binb(s), s.length * chrsz));
 }
+
 function hex_hmac_sha1(key, data) {
     return binb2hex(core_hmac_sha1(key, data));
 }
+
 function b64_hmac_sha1(key, data) {
     return binb2b64(core_hmac_sha1(key, data));
 }
+
 function str_hmac_sha1(key, data) {
     return binb2str(core_hmac_sha1(key, data));
 }
+
 function sha1_vm_test() {
     return hex_sha1("abc") == "a9993e364706816aba3e25717850c26c9cd0d89d";
 }
+
 function core_sha1(x, len) {
     x[len >> 5] |= 0x80 << (24 - len % 32);
     x[((len + 64 >> 9) << 4) + 15] = len;
@@ -126,20 +134,23 @@ function core_sha1(x, len) {
     }
     return Array(a, b, c, d, e);
 }
+
 function sha1_ft(t, b, c, d) {
     if (t < 20) return (b & c) | ((~b) & d);
     if (t < 40) return b ^ c ^ d;
     if (t < 60) return (b & c) | (b & d) | (c & d);
     return b ^ c ^ d;
 }
+
 function sha1_kt(t) {
     return (t < 20) ? 1518500249 : (t < 40) ? 1859775393 : (t < 60) ? -1894007588 : -899497514;
 }
+
 function core_hmac_sha1(key, data) {
     var bkey = str2binb(key);
     if (bkey.length > 16) bkey = core_sha1(bkey, key.length * chrsz);
     var ipad = Array(16),
-    opad = Array(16);
+        opad = Array(16);
     for (var i = 0; i < 16; i++) {
         ipad[i] = bkey[i] ^ 0x36363636;
         opad[i] = bkey[i] ^ 0x5C5C5C5C;
@@ -147,31 +158,36 @@ function core_hmac_sha1(key, data) {
     var hash = core_sha1(ipad.concat(str2binb(data)), 512 + data.length * chrsz);
     return core_sha1(opad.concat(hash), 512 + 160);
 }
+
 function rol(num, cnt) {
     return (num << cnt) | (num >>> (32 - cnt));
 }
+
 function str2binb(str) {
     var bin = Array();
     var mask = (1 << chrsz) - 1;
     for (var i = 0; i < str.length * chrsz; i += chrsz)
-    bin[i >> 5] |= (str.charCodeAt(i / chrsz) & mask) << (32 - chrsz - i % 32);
+        bin[i >> 5] |= (str.charCodeAt(i / chrsz) & mask) << (32 - chrsz - i % 32);
     return bin;
 }
+
 function binb2str(bin) {
     var str = "";
     var mask = (1 << chrsz) - 1;
     for (var i = 0; i < bin.length * 32; i += chrsz)
-    str += String.fromCharCode((bin[i >> 5] >>> (32 - chrsz - i % 32)) & mask);
+        str += String.fromCharCode((bin[i >> 5] >>> (32 - chrsz - i % 32)) & mask);
     return str;
 }
+
 function binb2hex(binarray) {
-    var hex_tab = hexcase ? "0123456789ABCDEF": "0123456789abcdef";
+    var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
     var str = "";
     for (var i = 0; i < binarray.length * 4; i++) {
         str += hex_tab.charAt((binarray[i >> 2] >> ((3 - i % 4) * 8 + 4)) & 0xF) + hex_tab.charAt((binarray[i >> 2] >> ((3 - i % 4) * 8)) & 0xF);
     }
     return str;
 }
+
 function binb2b64(binarray) {
     var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     var str = "";
@@ -184,27 +200,35 @@ function binb2b64(binarray) {
     }
     return str.replace(/AAA\=(\=*?)$/, '$1');
 }
+
 function hex_md5(s) {
     return binl2hex(core_md5(str2binl(s), s.length * chrsz));
 }
+
 function b64_md5(s) {
     return binl2b64(core_md5(str2binl(s), s.length * chrsz));
 }
+
 function str_md5(s) {
     return binl2str(core_md5(str2binl(s), s.length * chrsz));
 }
+
 function hex_hmac_md5(key, data) {
     return binl2hex(core_hmac_md5(key, data));
 }
+
 function b64_hmac_md5(key, data) {
     return binl2b64(core_hmac_md5(key, data));
 }
+
 function str_hmac_md5(key, data) {
     return binl2str(core_hmac_md5(key, data));
 }
+
 function md5_vm_test() {
     return hex_md5("abc") == "900150983cd24fb0d6963f7d28e17f72";
 }
+
 function core_md5(x, len) {
     x[len >> 5] |= 0x80 << ((len) % 32);
     x[(((len + 64) >>> 9) << 4) + 14] = len;
@@ -288,26 +312,32 @@ function core_md5(x, len) {
     }
     return Array(a, b, c, d);
 }
+
 function md5_cmn(q, a, b, x, s, t) {
     return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);
 }
+
 function md5_ff(a, b, c, d, x, s, t) {
     return md5_cmn((b & c) | ((~b) & d), a, b, x, s, t);
 }
+
 function md5_gg(a, b, c, d, x, s, t) {
     return md5_cmn((b & d) | (c & (~d)), a, b, x, s, t);
 }
+
 function md5_hh(a, b, c, d, x, s, t) {
     return md5_cmn(b ^ c ^ d, a, b, x, s, t);
 }
+
 function md5_ii(a, b, c, d, x, s, t) {
     return md5_cmn(c ^ (b | (~d)), a, b, x, s, t);
 }
+
 function core_hmac_md5(key, data) {
     var bkey = str2binl(key);
     if (bkey.length > 16) bkey = core_md5(bkey, key.length * chrsz);
     var ipad = Array(16),
-    opad = Array(16);
+        opad = Array(16);
     for (var i = 0; i < 16; i++) {
         ipad[i] = bkey[i] ^ 0x36363636;
         opad[i] = bkey[i] ^ 0x5C5C5C5C;
@@ -315,36 +345,42 @@ function core_hmac_md5(key, data) {
     var hash = core_md5(ipad.concat(str2binl(data)), 512 + data.length * chrsz);
     return core_md5(opad.concat(hash), 512 + 128);
 }
+
 function safe_add(x, y) {
     var lsw = (x & 0xFFFF) + (y & 0xFFFF);
     var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
     return (msw << 16) | (lsw & 0xFFFF);
 }
+
 function bit_rol(num, cnt) {
     return (num << cnt) | (num >>> (32 - cnt));
 }
+
 function str2binl(str) {
     var bin = Array();
     var mask = (1 << chrsz) - 1;
     for (var i = 0; i < str.length * chrsz; i += chrsz)
-    bin[i >> 5] |= (str.charCodeAt(i / chrsz) & mask) << (i % 32);
+        bin[i >> 5] |= (str.charCodeAt(i / chrsz) & mask) << (i % 32);
     return bin;
 }
+
 function binl2str(bin) {
     var str = "";
     var mask = (1 << chrsz) - 1;
     for (var i = 0; i < bin.length * 32; i += chrsz)
-    str += String.fromCharCode((bin[i >> 5] >>> (i % 32)) & mask);
+        str += String.fromCharCode((bin[i >> 5] >>> (i % 32)) & mask);
     return str;
 }
+
 function binl2hex(binarray) {
-    var hex_tab = hexcase ? "0123456789ABCDEF": "0123456789abcdef";
+    var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
     var str = "";
     for (var i = 0; i < binarray.length * 4; i++) {
         str += hex_tab.charAt((binarray[i >> 2] >> ((i % 4) * 8 + 4)) & 0xF) + hex_tab.charAt((binarray[i >> 2] >> ((i % 4) * 8)) & 0xF);
     }
     return str;
 }
+
 function binl2b64(binarray) {
     var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     var str = "";
@@ -357,6 +393,7 @@ function binl2b64(binarray) {
     }
     return str;
 }
+
 function utf8t2d(t) {
     t = t.replace(/\r\n/g, "\n");
     var d = new Array;
@@ -375,8 +412,7 @@ function utf8t2d(t) {
         else if ((c > 127) && (c < 2048)) {
             d[d.length] = ((c >> 6) | 192);
             d[d.length] = ((c & 63) | 128);
-        }
-        else {
+        } else {
             d[d.length] = ((c >> 12) | 224);
             d[d.length] = (((c >> 6) & 63) | 128);
             d[d.length] = ((c & 63) | 128);
@@ -384,6 +420,7 @@ function utf8t2d(t) {
     }
     return d;
 }
+
 function utf8d2t(d) {
     var r = new Array;
     var i = 0;
@@ -391,18 +428,17 @@ function utf8d2t(d) {
         if (d[i] < 128) {
             r[r.length] = String.fromCharCode(d[i]);
             i++;
-        }
-        else if ((d[i] > 191) && (d[i] < 224)) {
+        } else if ((d[i] > 191) && (d[i] < 224)) {
             r[r.length] = String.fromCharCode(((d[i] & 31) << 6) | (d[i + 1] & 63));
             i += 2;
-        }
-        else {
+        } else {
             r[r.length] = String.fromCharCode(((d[i] & 15) << 12) | ((d[i + 1] & 63) << 6) | (d[i + 2] & 63));
             i += 3;
         }
     }
     return r.join("");
 }
+
 function b64arrays() {
     var b64s = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
     b64 = new Array();
@@ -412,6 +448,7 @@ function b64arrays() {
         f64[b64s.charAt(i)] = i;
     }
 }
+
 function b64d2t(d) {
     var r = new Array;
     var i = 0;
@@ -433,6 +470,7 @@ function b64d2t(d) {
     var t = r.join("");
     return t;
 }
+
 function b64t2d(t) {
     var d = new Array;
     var i = 0;
@@ -448,17 +486,19 @@ function b64t2d(t) {
     if (t.length % 4 == 3) d = d.slice(0, d.length - 1);
     return d;
 }
-if (typeof(atob) == 'undefined' || typeof(btoa) == 'undefined') b64arrays();
-if (typeof(atob) == 'undefined') {
-    atob = function(s) {
+
+if (typeof (atob) == 'undefined' || typeof (btoa) == 'undefined') b64arrays();
+if (typeof (atob) == 'undefined') {
+    atob = function (s) {
         return utf8d2t(b64t2d(s));
     }
 }
-if (typeof(btoa) == 'undefined') {
-    btoa = function(s) {
+if (typeof (btoa) == 'undefined') {
+    btoa = function (s) {
         return b64d2t(utf8t2d(s));
     }
 }
+
 function cnonce(size) {
     var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     var cnonce = '';
@@ -467,135 +507,141 @@ function cnonce(size) {
     }
     return cnonce;
 }
-function JSJaCJSON() {}
-JSJaCJSON.toString = function(obj) {
+
+function JSJaCJSON() {
+}
+
+JSJaCJSON.toString = function (obj) {
     var m = {
-        '\b': '\\b',
-        '\t': '\\t',
-        '\n': '\\n',
-        '\f': '\\f',
-        '\r': '\\r',
-        '"': '\\"',
-        '\\': '\\\\'
-    },
-    s = {
-        array: function(x) {
-            var a = ['['],
-            b,
-            f,
-            i,
-            l = x.length,
-            v;
-            for (i = 0; i < l; i += 1) {
-                v = x[i];
-                f = s[typeof v];
-                if (f) {
-                    v = f(v);
-                    if (typeof v == 'string') {
-                        if (b) {
-                            a[a.length] = ',';
+            '\b': '\\b',
+            '\t': '\\t',
+            '\n': '\\n',
+            '\f': '\\f',
+            '\r': '\\r',
+            '"': '\\"',
+            '\\': '\\\\'
+        },
+        s = {
+            array: function (x) {
+                var a = ['['],
+                    b,
+                    f,
+                    i,
+                    l = x.length,
+                    v;
+                for (i = 0; i < l; i += 1) {
+                    v = x[i];
+                    f = s[typeof v];
+                    if (f) {
+                        v = f(v);
+                        if (typeof v == 'string') {
+                            if (b) {
+                                a[a.length] = ',';
+                            }
+                            a[a.length] = v;
+                            b = true;
                         }
-                        a[a.length] = v;
-                        b = true;
                     }
                 }
-            }
-            a[a.length] = ']';
-            return a.join('');
-        },
-        'boolean': function(x) {
-            return String(x);
-        },
-        'null': function(x) {
-            return "null";
-        },
-        number: function(x) {
-            return isFinite(x) ? String(x) : 'null';
-        },
-        object: function(x) {
-            if (x) {
-                if (x instanceof Array) {
-                    return s.array(x);
-                }
-                var a = ['{'],
-                b,
-                f,
-                i,
-                v;
-                for (i in x) {
-                    if (x.hasOwnProperty(i)) {
-                        v = x[i];
-                        f = s[typeof v];
-                        if (f) {
-                            v = f(v);
-                            if (typeof v == 'string') {
-                                if (b) {
-                                    a[a.length] = ',';
+                a[a.length] = ']';
+                return a.join('');
+            },
+            'boolean': function (x) {
+                return String(x);
+            },
+            'null': function (x) {
+                return "null";
+            },
+            number: function (x) {
+                return isFinite(x) ? String(x) : 'null';
+            },
+            object: function (x) {
+                if (x) {
+                    if (x instanceof Array) {
+                        return s.array(x);
+                    }
+                    var a = ['{'],
+                        b,
+                        f,
+                        i,
+                        v;
+                    for (i in x) {
+                        if (x.hasOwnProperty(i)) {
+                            v = x[i];
+                            f = s[typeof v];
+                            if (f) {
+                                v = f(v);
+                                if (typeof v == 'string') {
+                                    if (b) {
+                                        a[a.length] = ',';
+                                    }
+                                    a.push(s.string(i), ':', v);
+                                    b = true;
                                 }
-                                a.push(s.string(i), ':', v);
-                                b = true;
                             }
                         }
                     }
+                    a[a.length] = '}';
+                    return a.join('');
                 }
-                a[a.length] = '}';
-                return a.join('');
+                return 'null';
+            },
+            string: function (x) {
+                if (/["\\\x00-\x1f]/.test(x)) {
+                    x = x.replace(/([\x00-\x1f\\"])/g,
+                        function (a, b) {
+                            var c = m[b];
+                            if (c) {
+                                return c;
+                            }
+                            c = b.charCodeAt();
+                            return '\\u00' + Math.floor(c / 16).toString(16) + (c % 16).toString(16);
+                        });
+                }
+                return '"' + x + '"';
             }
-            return 'null';
-        },
-        string: function(x) {
-            if (/["\\\x00-\x1f]/.test(x)) {
-                x = x.replace(/([\x00-\x1f\\"])/g,
-                function(a, b) {
-                    var c = m[b];
-                    if (c) {
-                        return c;
-                    }
-                    c = b.charCodeAt();
-                    return '\\u00' + Math.floor(c / 16).toString(16) + (c % 16).toString(16);
-                });
-            }
-            return '"' + x + '"';
-        }
-    };
-    switch (typeof(obj)) {
-    case 'object':
-        return s.object(obj);
-    case 'array':
-        return s.array(obj);
+        };
+    switch (typeof (obj)) {
+        case 'object':
+            return s.object(obj);
+        case 'array':
+            return s.array(obj);
     }
 };
-JSJaCJSON.parse = function(str) {
+JSJaCJSON.parse = function (str) {
     try {
-        return ! (/[^,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]/.test(str.replace(/"(\\.|[^"\\])*"/g, ''))) && eval('(' + str + ')');
-    } catch(e) {
+        return !(/[^,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t]/.test(str.replace(/"(\\.|[^"\\])*"/g, ''))) && eval('(' + str + ')');
+    } catch (e) {
         return false;
     }
 };
-function XmlHttp() {}
-XmlHttp.create = function() {
+
+function XmlHttp() {
+}
+
+XmlHttp.create = function () {
     try {
         if (window.XMLHttpRequest) {
             var req = new XMLHttpRequest();
             if (req.readyState == null) {
                 req.readyState = 1;
                 req.addEventListener("load",
-                function() {
-                    req.readyState = 4;
-                    if (typeof req.onreadystatechange == "function") req.onreadystatechange();
-                },
-                false);
+                    function () {
+                        req.readyState = 4;
+                        if (typeof req.onreadystatechange == "function") req.onreadystatechange();
+                    },
+                    false);
             }
             return req;
         }
         if (window.ActiveXObject) {
             return new ActiveXObject(XmlHttp.getPrefix() + ".XmlHttp");
         }
+    } catch (ex) {
     }
-    catch(ex) {}
     throw new Error("Your browser does not support XmlHttp objects");
 };
-XmlHttp.getPrefix = function() {
+XmlHttp.getPrefix = function () {
     if (XmlHttp.prefix) return XmlHttp.prefix;
     var prefixes = ["MSXML2", "Microsoft", "MSXML", "MSXML3"];
     var o;
@@ -603,13 +649,17 @@ XmlHttp.getPrefix = function() {
         try {
             o = new ActiveXObject(prefixes[i] + ".XmlHttp");
             return XmlHttp.prefix = prefixes[i];
+        } catch (ex) {
         }
-        catch(ex) {};
+        ;
     }
     throw new Error("Could not find an installed XML parser");
 };
-function XmlDocument() {}
-XmlDocument.create = function(name, ns) {
+
+function XmlDocument() {
+}
+
+XmlDocument.create = function (name, ns) {
     name = name || 'foo';
     ns = ns || '';
     try {
@@ -619,11 +669,11 @@ XmlDocument.create = function(name, ns) {
             if (doc.readyState == null) {
                 doc.readyState = 1;
                 doc.addEventListener("load",
-                function() {
-                    doc.readyState = 4;
-                    if (typeof doc.onreadystatechange == "function") doc.onreadystatechange();
-                },
-                false);
+                    function () {
+                        doc.readyState = 4;
+                        if (typeof doc.onreadystatechange == "function") doc.onreadystatechange();
+                    },
+                    false);
             }
         } else if (window.ActiveXObject) {
             doc = new ActiveXObject(XmlDocument.getPrefix() + ".DomDocument");
@@ -632,7 +682,7 @@ XmlDocument.create = function(name, ns) {
             try {
                 if (ns != '') doc.appendChild(doc.createElement(name)).setAttribute('xmlns', ns);
                 else doc.appendChild(doc.createElement(name));
-            } catch(dex) {
+            } catch (dex) {
                 doc = document.implementation.createDocument(ns, name, null);
                 if (doc.documentElement == null) doc.appendChild(doc.createElement(name));
                 if (ns != '' && doc.documentElement.getAttribute('xmlns') != ns) {
@@ -641,13 +691,12 @@ XmlDocument.create = function(name, ns) {
             }
         }
         return doc;
-    }
-    catch(ex) {
+    } catch (ex) {
         alert(ex.name + ": " + ex.message);
     }
     throw new Error("Your browser does not support XmlDocument objects");
 };
-XmlDocument.getPrefix = function() {
+XmlDocument.getPrefix = function () {
     if (XmlDocument.prefix) return XmlDocument.prefix;
     var prefixes = ["MSXML2", "Microsoft", "MSXML", "MSXML3"];
     var o;
@@ -655,16 +704,17 @@ XmlDocument.getPrefix = function() {
         try {
             o = new ActiveXObject(prefixes[i] + ".DomDocument");
             return XmlDocument.prefix = prefixes[i];
+        } catch (ex) {
         }
-        catch(ex) {};
+        ;
     }
     throw new Error("Could not find an installed XML parser");
 };
-if (typeof(Document) != 'undefined' && window.DOMParser) {
-    Document.prototype.loadXML = function(s) {
+if (typeof (Document) != 'undefined' && window.DOMParser) {
+    Document.prototype.loadXML = function (s) {
         var doc2 = (new DOMParser()).parseFromString(s, "text/xml");
         while (this.hasChildNodes())
-        this.removeChild(this.lastChild);
+            this.removeChild(this.lastChild);
         for (var i = 0; i < doc2.childNodes.length; i++) {
             this.appendChild(this.importNode(doc2.childNodes[i], true));
         }
@@ -672,20 +722,20 @@ if (typeof(Document) != 'undefined' && window.DOMParser) {
 }
 if (window.XMLSerializer && window.Node && Node.prototype && Node.prototype.__defineGetter__) {
     XMLDocument.prototype.__defineGetter__("xml",
-    function() {
-        return (new XMLSerializer()).serializeToString(this);
-    });
+        function () {
+            return (new XMLSerializer()).serializeToString(this);
+        });
     Document.prototype.__defineGetter__("xml",
-    function() {
-        return (new XMLSerializer()).serializeToString(this);
-    });
+        function () {
+            return (new XMLSerializer()).serializeToString(this);
+        });
     Node.prototype.__defineGetter__("xml",
-    function() {
-        return (new XMLSerializer()).serializeToString(this);
-    });
+        function () {
+            return (new XMLSerializer()).serializeToString(this);
+        });
 }
 var JSJaCBuilder = {
-    buildNode: function(doc, elementName) {
+    buildNode: function (doc, elementName) {
         var element, ns = arguments[4];
         if (arguments[2]) if (JSJaCBuilder._isStringOrNumber(arguments[2]) || (arguments[2] instanceof Array)) {
             element = this._createElement(doc, elementName, ns);
@@ -701,18 +751,19 @@ var JSJaCBuilder = {
         if (arguments[3]) JSJaCBuilder._children(doc, element, arguments[3], ns);
         return element;
     },
-    _createElement: function(doc, elementName, ns) {
+    _createElement: function (doc, elementName, ns) {
         try {
             if (ns) return doc.createElementNS(ns, elementName);
-        } catch(ex) {}
+        } catch (ex) {
+        }
         var el = doc.createElement(elementName);
         if (ns) el.setAttribute("xmlns", ns);
         return el;
     },
-    _text: function(doc, text) {
+    _text: function (doc, text) {
         return doc.createTextNode(text);
     },
-    _children: function(doc, element, children, ns) {
+    _children: function (doc, element, children, ns) {
         if (typeof children == 'object') {
             for (var i in children) {
                 if (children.hasOwnProperty(i)) {
@@ -737,13 +788,13 @@ var JSJaCBuilder = {
             }
         }
     },
-    _attributes: function(attributes) {
+    _attributes: function (attributes) {
         var attrs = [];
         for (attribute in attributes)
-        if (attributes.hasOwnProperty(attribute)) attrs.push(attribute + '="' + attributes[attribute].toString().htmlEnc() + '"');
+            if (attributes.hasOwnProperty(attribute)) attrs.push(attribute + '="' + attributes[attribute].toString().htmlEnc() + '"');
         return attrs.join(" ");
     },
-    _isStringOrNumber: function(param) {
+    _isStringOrNumber: function (param) {
         return (typeof param == 'string' || typeof param == 'number');
     }
 };
@@ -787,12 +838,14 @@ var NS_FEATURE_IQAUTH = "http://jabber.org/features/iq-auth";
 var NS_FEATURE_IQREGISTER = "http://jabber.org/features/iq-register";
 var NS_FEATURE_COMPRESS = "http://jabber.org/features/compress";
 var NS_COMPRESS = "http://jabber.org/protocol/compress";
+
 function STANZA_ERROR(code, type, cond) {
     if (window == this) return new STANZA_ERROR(code, type, cond);
     this.code = code;
     this.type = type;
     this.cond = cond;
 }
+
 var ERR_BAD_REQUEST = STANZA_ERROR("400", "modify", "bad-request");
 var ERR_CONFLICT = STANZA_ERROR("409", "cancel", "conflict");
 var ERR_FEATURE_NOT_IMPLEMENTED = STANZA_ERROR("501", "cancel", "feature-not-implemented");
@@ -814,51 +867,55 @@ var ERR_RESOURCE_CONSTRAINT = STANZA_ERROR("500", "wait", "resource-constraint")
 var ERR_SERVICE_UNAVAILABLE = STANZA_ERROR("503", "cancel", "service-unavailable");
 var ERR_SUBSCRIPTION_REQUIRED = STANZA_ERROR("407", "auth", "subscription-required");
 var ERR_UNEXPECTED_REQUEST = STANZA_ERROR("400", "wait", "unexpected-request");
+
 function JSJaCConsoleLogger(level) {
     this.level = level || 4;
-    this.start = function() {};
-    this.log = function(msg, level) {
+    this.start = function () {
+    };
+    this.log = function (msg, level) {
         level = level || 0;
         if (level > this.level) return;
-        if (typeof(console) == 'undefined') return;
+        if (typeof (console) == 'undefined') return;
         try {
             switch (level) {
-            case 0:
-                console.warn(msg);
-                break;
-            case 1:
-                console.error(msg);
-                break;
-            case 2:
-                console.info(msg);
-                break;
-            case 4:
-                console.debug(msg);
-                break;
-            default:
-                console.log(msg);
-                break;
+                case 0:
+                    console.warn(msg);
+                    break;
+                case 1:
+                    console.error(msg);
+                    break;
+                case 2:
+                    console.info(msg);
+                    break;
+                case 4:
+                    console.debug(msg);
+                    break;
+                default:
+                    console.log(msg);
+                    break;
             }
-        } catch(e) {
+        } catch (e) {
             try {
                 console.log(msg)
-            } catch(e) {}
+            } catch (e) {
+            }
         }
     };
-    this.setLevel = function(level) {
+    this.setLevel = function (level) {
         this.level = level;
         return this;
     };
-    this.getLevel = function() {
+    this.getLevel = function () {
         return this.level;
     };
 }
+
 function JSJaCCookie(name, value, secs) {
     if (window == this) return new JSJaCCookie(name, value, secs);
     this.name = name;
     this.value = value;
     this.secs = secs;
-    this.write = function() {
+    this.write = function () {
         if (this.secs) {
             var date = new Date();
             date.setTime(date.getTime() + (this.secs * 1000));
@@ -866,26 +923,27 @@ function JSJaCCookie(name, value, secs) {
         } else var expires = "";
         document.cookie = this.getName() + "=" + this.getValue() + expires + "; path=/";
     };
-    this.erase = function() {
+    this.erase = function () {
         var c = new JSJaCCookie(this.getName(), "", -1);
         c.write();
     };
-    this.getName = function() {
+    this.getName = function () {
         return this.name;
     };
-    this.setName = function(name) {
+    this.setName = function (name) {
         this.name = name;
         return this;
     };
-    this.getValue = function() {
+    this.getValue = function () {
         return this.value;
     };
-    this.setValue = function(value) {
+    this.setValue = function (value) {
         this.value = value;
         return this;
     };
 }
-JSJaCCookie.read = function(name) {
+
+JSJaCCookie.read = function (name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
@@ -895,16 +953,18 @@ JSJaCCookie.read = function(name) {
     }
     throw new JSJaCCookieException("Cookie not found");
 };
-JSJaCCookie.get = function(name) {
+JSJaCCookie.get = function (name) {
     return JSJaCCookie.read(name).getValue();
 };
-JSJaCCookie.remove = function(name) {
+JSJaCCookie.remove = function (name) {
     JSJaCCookie.read(name).erase();
 };
+
 function JSJaCCookieException(msg) {
     this.message = msg;
     this.name = "CookieException";
 }
+
 function JSJaCError(code, type, condition) {
     var xmldoc = XmlDocument.create("error", "jsjac");
     xmldoc.documentElement.setAttribute('code', code);
@@ -912,12 +972,14 @@ function JSJaCError(code, type, condition) {
     xmldoc.documentElement.appendChild(xmldoc.createElement(condition)).setAttribute('xmlns', 'urn:ietf:params:xml:ns:xmpp-stanzas');
     return xmldoc.documentElement;
 }
+
 var JSJACJID_FORBIDDEN = ['"', ' ', '&', '\'', '/', ':', '<', '>', '@'];
+
 function JSJaCJID(jid) {
     this._node = '';
     this._domain = '';
     this._resource = '';
-    if (typeof(jid) == 'string') {
+    if (typeof (jid) == 'string') {
         if (jid.indexOf('@') != -1) {
             this.setNode(jid.substring(0, jid.indexOf('@')));
             jid = jid.substring(jid.indexOf('@') + 1);
@@ -933,49 +995,50 @@ function JSJaCJID(jid) {
         this.setResource(jid.resource);
     }
 }
-JSJaCJID.prototype.getNode = function() {
+
+JSJaCJID.prototype.getNode = function () {
     return this._node;
 };
-JSJaCJID.prototype.getDomain = function() {
+JSJaCJID.prototype.getDomain = function () {
     return this._domain;
 };
-JSJaCJID.prototype.getResource = function() {
+JSJaCJID.prototype.getResource = function () {
     return this._resource;
 };
-JSJaCJID.prototype.setNode = function(node) {
+JSJaCJID.prototype.setNode = function (node) {
     JSJaCJID._checkNodeName(node);
     this._node = node || '';
     return this;
 };
-JSJaCJID.prototype.setDomain = function(domain) {
+JSJaCJID.prototype.setDomain = function (domain) {
     if (!domain || domain == '') throw new JSJaCJIDInvalidException("domain name missing");
     JSJaCJID._checkNodeName(domain);
     this._domain = domain;
     return this;
 };
-JSJaCJID.prototype.setResource = function(resource) {
+JSJaCJID.prototype.setResource = function (resource) {
     this._resource = resource || '';
     return this;
 };
-JSJaCJID.prototype.toString = function() {
+JSJaCJID.prototype.toString = function () {
     var jid = '';
     if (this.getNode() && this.getNode() != '') jid = this.getNode() + '@';
     jid += this.getDomain();
     if (this.getResource() && this.getResource() != "") jid += '/' + this.getResource();
     return jid;
 };
-JSJaCJID.prototype.removeResource = function() {
+JSJaCJID.prototype.removeResource = function () {
     return this.setResource();
 };
-JSJaCJID.prototype.clone = function() {
+JSJaCJID.prototype.clone = function () {
     return new JSJaCJID(this.toString());
 };
-JSJaCJID.prototype.isEntity = function(jid) {
+JSJaCJID.prototype.isEntity = function (jid) {
     if (typeof jid == 'string') jid = (new JSJaCJID(jid));
     jid.removeResource();
     return (this.clone().removeResource().toString() === jid.toString());
 };
-JSJaCJID._checkNodeName = function(nodeprep) {
+JSJaCJID._checkNodeName = function (nodeprep) {
     if (!nodeprep || nodeprep == '') return;
     for (var i = 0; i < JSJACJID_FORBIDDEN.length; i++) {
         if (nodeprep.indexOf(JSJACJID_FORBIDDEN[i]) != -1) {
@@ -983,10 +1046,12 @@ JSJaCJID._checkNodeName = function(nodeprep) {
         }
     }
 };
+
 function JSJaCJIDInvalidException(message) {
     this.message = message;
     this.name = "JSJaCJIDInvalidException";
 }
+
 function JSJaCKeys(func, oDbg) {
     var seed = Math.random();
     this._k = new Array();
@@ -994,7 +1059,8 @@ function JSJaCKeys(func, oDbg) {
     if (oDbg) this.oDbg = oDbg;
     else {
         this.oDbg = {};
-        this.oDbg.log = function() {};
+        this.oDbg.log = function () {
+        };
     }
     if (func) {
         for (var i = 1; i < JSJAC_NKEYS; i++) {
@@ -1003,87 +1069,90 @@ function JSJaCKeys(func, oDbg) {
         }
     }
     this._indexAt = JSJAC_NKEYS - 1;
-    this.getKey = function() {
+    this.getKey = function () {
         return this._k[this._indexAt--];
     };
-    this.lastKey = function() {
+    this.lastKey = function () {
         return (this._indexAt == 0);
     };
-    this.size = function() {
+    this.size = function () {
         return this._k.length;
     };
-    this._getSuspendVars = function() {
+    this._getSuspendVars = function () {
         return ('_k,_indexAt').split(',');
     }
 }
+
 var JSJACPACKET_USE_XMLNS = true;
+
 function JSJaCPacket(name) {
     this.name = name;
-    if (typeof(JSJACPACKET_USE_XMLNS) != 'undefined' && JSJACPACKET_USE_XMLNS) this.doc = XmlDocument.create(name, 'jabber:client');
+    if (typeof (JSJACPACKET_USE_XMLNS) != 'undefined' && JSJACPACKET_USE_XMLNS) this.doc = XmlDocument.create(name, 'jabber:client');
     else this.doc = XmlDocument.create(name, '');
 }
-JSJaCPacket.prototype.pType = function() {
+
+JSJaCPacket.prototype.pType = function () {
     return this.name;
 };
-JSJaCPacket.prototype.getDoc = function() {
+JSJaCPacket.prototype.getDoc = function () {
     return this.doc;
 };
-JSJaCPacket.prototype.getNode = function() {
+JSJaCPacket.prototype.getNode = function () {
     if (this.getDoc() && this.getDoc().documentElement) return this.getDoc().documentElement;
     else return null;
 };
-JSJaCPacket.prototype.setTo = function(to) {
+JSJaCPacket.prototype.setTo = function (to) {
     if (!to || to == '') this.getNode().removeAttribute('to');
-    else if (typeof(to) == 'string') this.getNode().setAttribute('to', to);
+    else if (typeof (to) == 'string') this.getNode().setAttribute('to', to);
     else this.getNode().setAttribute('to', to.toString());
     return this;
 };
-JSJaCPacket.prototype.setFrom = function(from) {
+JSJaCPacket.prototype.setFrom = function (from) {
     if (!from || from == '') this.getNode().removeAttribute('from');
-    else if (typeof(from) == 'string') this.getNode().setAttribute('from', from);
+    else if (typeof (from) == 'string') this.getNode().setAttribute('from', from);
     else this.getNode().setAttribute('from', from.toString());
     return this;
 };
-JSJaCPacket.prototype.setID = function(id) {
+JSJaCPacket.prototype.setID = function (id) {
     if (!id || id == '') this.getNode().removeAttribute('id');
     else this.getNode().setAttribute('id', id);
     return this;
 };
-JSJaCPacket.prototype.setType = function(type) {
+JSJaCPacket.prototype.setType = function (type) {
     if (!type || type == '') this.getNode().removeAttribute('type');
     else this.getNode().setAttribute('type', type);
     return this;
 };
-JSJaCPacket.prototype.setXMLLang = function(xmllang) {
+JSJaCPacket.prototype.setXMLLang = function (xmllang) {
     if (!xmllang || xmllang == '') this.getNode().removeAttribute('xml:lang');
     else this.getNode().setAttribute('xml:lang', xmllang);
     return this;
 };
-JSJaCPacket.prototype.getTo = function() {
+JSJaCPacket.prototype.getTo = function () {
     return this.getNode().getAttribute('to');
 };
-JSJaCPacket.prototype.getFrom = function() {
+JSJaCPacket.prototype.getFrom = function () {
     return this.getNode().getAttribute('from');
 };
-JSJaCPacket.prototype.getToJID = function() {
+JSJaCPacket.prototype.getToJID = function () {
     return new JSJaCJID(this.getTo());
 };
-JSJaCPacket.prototype.getFromJID = function() {
+JSJaCPacket.prototype.getFromJID = function () {
     return new JSJaCJID(this.getFrom());
 };
-JSJaCPacket.prototype.getID = function() {
+JSJaCPacket.prototype.getID = function () {
     return this.getNode().getAttribute('id');
 };
-JSJaCPacket.prototype.getType = function() {
+JSJaCPacket.prototype.getType = function () {
     return this.getNode().getAttribute('type');
 };
-JSJaCPacket.prototype.getXMLLang = function() {
+JSJaCPacket.prototype.getXMLLang = function () {
     return this.getNode().getAttribute('xml:lang');
 };
-JSJaCPacket.prototype.getXMLNS = function() {
+JSJaCPacket.prototype.getXMLNS = function () {
     return this.getNode().namespaceURI;
 };
-JSJaCPacket.prototype.getChild = function(name, ns) {
+JSJaCPacket.prototype.getChild = function (name, ns) {
     if (!this.getNode()) {
         return null;
     }
@@ -1104,61 +1173,62 @@ JSJaCPacket.prototype.getChild = function(name, ns) {
     }
     return null;
 }
-JSJaCPacket.prototype.getChildVal = function(name, ns) {
+JSJaCPacket.prototype.getChildVal = function (name, ns) {
     var node = this.getChild(name, ns);
     var ret = '';
     if (node && node.hasChildNodes()) {
         for (var i = 0; i < node.childNodes.length; i++)
-        if (node.childNodes.item(i).nodeValue) ret += node.childNodes.item(i).nodeValue;
+            if (node.childNodes.item(i).nodeValue) ret += node.childNodes.item(i).nodeValue;
     }
     return ret;
 };
-JSJaCPacket.prototype.clone = function() {
+JSJaCPacket.prototype.clone = function () {
     return JSJaCPacket.wrapNode(this.getNode());
 };
-JSJaCPacket.prototype.isError = function() {
+JSJaCPacket.prototype.isError = function () {
     return (this.getType() == 'error');
 };
-JSJaCPacket.prototype.errorReply = function(stanza_error) {
+JSJaCPacket.prototype.errorReply = function (stanza_error) {
     var rPacket = this.clone();
     rPacket.setTo(this.getFrom());
     rPacket.setFrom();
     rPacket.setType('error');
     rPacket.appendNode('error', {
-        code: stanza_error.code,
-        type: stanza_error.type
-    },
-    [[stanza_error.cond]]);
+            code: stanza_error.code,
+            type: stanza_error.type
+        },
+        [[stanza_error.cond]]);
     return rPacket;
 };
 JSJaCPacket.prototype.xml = typeof XMLSerializer != 'undefined' ?
-function() {
-    var r = (new XMLSerializer()).serializeToString(this.getNode());
-    if (typeof(r) == 'undefined') r = (new XMLSerializer()).serializeToString(this.doc);
-    return r
-}: function() {
-    return this.getDoc().xml
-};
-JSJaCPacket.prototype._getAttribute = function(attr) {
+    function () {
+        var r = (new XMLSerializer()).serializeToString(this.getNode());
+        if (typeof (r) == 'undefined') r = (new XMLSerializer()).serializeToString(this.doc);
+        return r
+    } : function () {
+        return this.getDoc().xml
+    };
+JSJaCPacket.prototype._getAttribute = function (attr) {
     return this.getNode().getAttribute(attr);
 };
-JSJaCPacket.prototype._replaceNode = function(aNode) {
+JSJaCPacket.prototype._replaceNode = function (aNode) {
     for (var i = 0; i < aNode.attributes.length; i++)
-    if (aNode.attributes.item(i).nodeName != 'xmlns') this.getNode().setAttribute(aNode.attributes.item(i).nodeName, aNode.attributes.item(i).nodeValue);
+        if (aNode.attributes.item(i).nodeName != 'xmlns') this.getNode().setAttribute(aNode.attributes.item(i).nodeName, aNode.attributes.item(i).nodeValue);
     for (var i = 0; i < aNode.childNodes.length; i++)
-    if (this.getDoc().importNode) this.getNode().appendChild(this.getDoc().importNode(aNode.childNodes.item(i), true));
-    else this.getNode().appendChild(aNode.childNodes.item(i).cloneNode(true));
+        if (this.getDoc().importNode) this.getNode().appendChild(this.getDoc().importNode(aNode.childNodes.item(i), true));
+        else this.getNode().appendChild(aNode.childNodes.item(i).cloneNode(true));
 };
-JSJaCPacket.prototype._setChildNode = function(nodeName, nodeValue) {
+JSJaCPacket.prototype._setChildNode = function (nodeName, nodeValue) {
     var aNode = this.getChild(nodeName);
     var tNode = this.getDoc().createTextNode(nodeValue);
     if (aNode) try {
         aNode.replaceChild(tNode, aNode.firstChild);
-    } catch(e) {}
+    } catch (e) {
+    }
     else {
         try {
             aNode = this.getDoc().createElementNS(this.getNode().namespaceURI, nodeName);
-        } catch(ex) {
+        } catch (ex) {
             aNode = this.getDoc().createElement(nodeName)
         }
         this.getNode().appendChild(aNode);
@@ -1166,78 +1236,82 @@ JSJaCPacket.prototype._setChildNode = function(nodeName, nodeValue) {
     }
     return aNode;
 };
-JSJaCPacket.prototype.buildNode = function(elementName) {
+JSJaCPacket.prototype.buildNode = function (elementName) {
     return JSJaCBuilder.buildNode(this.getDoc(), elementName, arguments[1], arguments[2]);
 };
-JSJaCPacket.prototype.appendNode = function(element) {
+JSJaCPacket.prototype.appendNode = function (element) {
     if (typeof element == 'object') {
         return this.getNode().appendChild(element)
     } else {
         return this.getNode().appendChild(this.buildNode(element, arguments[1], arguments[2], null, this.getNode().namespaceURI));
     }
 };
+
 function JSJaCPresence() {
     this.base = JSJaCPacket;
     this.base('presence');
 }
+
 JSJaCPresence.prototype = new JSJaCPacket;
-JSJaCPresence.prototype.setStatus = function(status) {
+JSJaCPresence.prototype.setStatus = function (status) {
     this._setChildNode("status", status);
     return this;
 };
-JSJaCPresence.prototype.setShow = function(show) {
+JSJaCPresence.prototype.setShow = function (show) {
     if (show == 'chat' || show == 'away' || show == 'xa' || show == 'dnd') this._setChildNode("show", show);
     return this;
 };
-JSJaCPresence.prototype.setPriority = function(prio) {
+JSJaCPresence.prototype.setPriority = function (prio) {
     this._setChildNode("priority", prio);
     return this;
 };
-JSJaCPresence.prototype.setPresence = function(show, status, prio) {
+JSJaCPresence.prototype.setPresence = function (show, status, prio) {
     if (show) this.setShow(show);
     if (status) this.setStatus(status);
     if (prio) this.setPriority(prio);
     return this;
 };
-JSJaCPresence.prototype.getStatus = function() {
+JSJaCPresence.prototype.getStatus = function () {
     return this.getChildVal('status');
 };
-JSJaCPresence.prototype.getShow = function() {
+JSJaCPresence.prototype.getShow = function () {
     return this.getChildVal('show');
 };
-JSJaCPresence.prototype.getPriority = function() {
+JSJaCPresence.prototype.getPriority = function () {
     return this.getChildVal('priority');
 };
+
 function JSJaCIQ() {
     this.base = JSJaCPacket;
     this.base('iq');
 }
+
 JSJaCIQ.prototype = new JSJaCPacket;
-JSJaCIQ.prototype.setIQ = function(to, type, id) {
+JSJaCIQ.prototype.setIQ = function (to, type, id) {
     if (to) this.setTo(to);
     if (type) this.setType(type);
     if (id) this.setID(id);
     return this;
 };
-JSJaCIQ.prototype.setQuery = function(xmlns) {
+JSJaCIQ.prototype.setQuery = function (xmlns) {
     var query;
     try {
         query = this.getDoc().createElementNS(xmlns, 'query');
-    } catch(e) {
+    } catch (e) {
         query = this.getDoc().createElement('query');
     }
     if (query && query.getAttribute('xmlns') != xmlns) query.setAttribute('xmlns', xmlns);
     this.getNode().appendChild(query);
     return query;
 };
-JSJaCIQ.prototype.getQuery = function() {
+JSJaCIQ.prototype.getQuery = function () {
     return this.getNode().getElementsByTagName('query').item(0);
 };
-JSJaCIQ.prototype.getQueryXMLNS = function() {
+JSJaCIQ.prototype.getQueryXMLNS = function () {
     if (this.getQuery()) return this.getQuery().namespaceURI;
     else return null;
 };
-JSJaCIQ.prototype.reply = function(payload) {
+JSJaCIQ.prototype.reply = function (payload) {
     var rIQ = this.clone();
     rIQ.setTo(this.getFrom());
     rIQ.setType('result');
@@ -1246,62 +1320,65 @@ JSJaCIQ.prototype.reply = function(payload) {
         else if (payload.constructor == Array) {
             var node = rIQ.getChild();
             for (var i = 0; i < payload.length; i++)
-            if (typeof payload[i] == 'string') node.appendChild(rIQ.getDoc().loadXML(payload[i]));
-            else if (typeof payload[i] == 'object') node.appendChild(payload[i]);
-        }
-        else if (typeof payload == 'object') rIQ.getChild().appendChild(payload);
+                if (typeof payload[i] == 'string') node.appendChild(rIQ.getDoc().loadXML(payload[i]));
+                else if (typeof payload[i] == 'object') node.appendChild(payload[i]);
+        } else if (typeof payload == 'object') rIQ.getChild().appendChild(payload);
     }
     return rIQ;
 };
+
 function JSJaCMessage() {
     this.base = JSJaCPacket;
     this.base('message');
 }
+
 JSJaCMessage.prototype = new JSJaCPacket;
-JSJaCMessage.prototype.setBody = function(body) {
+JSJaCMessage.prototype.setBody = function (body) {
     this._setChildNode("body", body);
     return this;
 };
-JSJaCMessage.prototype.setSubject = function(subject) {
+JSJaCMessage.prototype.setSubject = function (subject) {
     this._setChildNode("subject", subject);
     return this;
 };
-JSJaCMessage.prototype.setThread = function(thread) {
+JSJaCMessage.prototype.setThread = function (thread) {
     this._setChildNode("thread", thread);
     return this;
 };
-JSJaCMessage.prototype.getThread = function() {
+JSJaCMessage.prototype.getThread = function () {
     return this.getChildVal('thread');
 };
-JSJaCMessage.prototype.getBody = function() {
+JSJaCMessage.prototype.getBody = function () {
     return this.getChildVal('body');
 };
-JSJaCMessage.prototype.getSubject = function() {
+JSJaCMessage.prototype.getSubject = function () {
     return this.getChildVal('subject')
 };
-JSJaCPacket.wrapNode = function(node) {
+JSJaCPacket.wrapNode = function (node) {
     var aNode;
     switch (node.nodeName.toLowerCase()) {
-    case 'presence':
-        aNode = new JSJaCPresence();
-        break;
-    case 'message':
-        aNode = new JSJaCMessage();
-        break;
-    case 'iq':
-        aNode = new JSJaCIQ();
-        break;
-    default:
-        return null;
+        case 'presence':
+            aNode = new JSJaCPresence();
+            break;
+        case 'message':
+            aNode = new JSJaCMessage();
+            break;
+        case 'iq':
+            aNode = new JSJaCIQ();
+            break;
+        default:
+            return null;
     }
     aNode._replaceNode(node);
     return aNode;
 };
+
 function JSJaCConnection(oArg) {
     if (oArg && oArg.oDbg && oArg.oDbg.log) this.oDbg = oArg.oDbg;
     else {
         this.oDbg = new Object();
-        this.oDbg.log = function() {};
+        this.oDbg.log = function () {
+        };
     }
     if (oArg && oArg.httpbase) this._httpbase = oArg.httpbase;
     if (oArg && oArg.allow_plain) this.allow_plain = oArg.allow_plain;
@@ -1320,7 +1397,8 @@ function JSJaCConnection(oArg) {
     this._sendRawCallbacks = new Array();
     if (oArg && oArg.timerval) this.setPollInterval(oArg.timerval);
 }
-JSJaCConnection.prototype.connect = function(oArg) {
+
+JSJaCConnection.prototype.connect = function (oArg) {
     this._setStatus('connecting');
     this.domain = oArg.domain || 'localhost';
     this.username = oArg.username;
@@ -1342,26 +1420,26 @@ JSJaCConnection.prototype.connect = function(oArg) {
     this._req[slot] = this._setupRequest(true);
     var reqstr = this._getInitialRequestString();
     this.oDbg.log(reqstr, 4);
-    this._req[slot].r.onreadystatechange = JSJaC.bind(function() {
-        if (this._req[slot].r.readyState == 4) {
-            this.oDbg.log("async recv: " + this._req[slot].r.responseText, 4);
-            this._handleInitialResponse(slot);
-        }
-    },
-    this);
-    if (typeof(this._req[slot].r.onerror) != 'undefined') {
-        this._req[slot].r.onerror = JSJaC.bind(function(e) {
-            this.oDbg.log('XmlHttpRequest error', 1);
-            return false;
+    this._req[slot].r.onreadystatechange = JSJaC.bind(function () {
+            if (this._req[slot].r.readyState == 4) {
+                this.oDbg.log("async recv: " + this._req[slot].r.responseText, 4);
+                this._handleInitialResponse(slot);
+            }
         },
         this);
+    if (typeof (this._req[slot].r.onerror) != 'undefined') {
+        this._req[slot].r.onerror = JSJaC.bind(function (e) {
+                this.oDbg.log('XmlHttpRequest error', 1);
+                return false;
+            },
+            this);
     }
     this._req[slot].r.send(reqstr);
 };
-JSJaCConnection.prototype.connected = function() {
+JSJaCConnection.prototype.connected = function () {
     return this._connected;
 };
-JSJaCConnection.prototype.disconnect = function() {
+JSJaCConnection.prototype.disconnect = function () {
     this._setStatus('disconnecting');
     if (!this.connected()) return;
     this._connected = false;
@@ -1375,14 +1453,15 @@ JSJaCConnection.prototype.disconnect = function() {
     this._req[slot].r.send(request);
     try {
         JSJaCCookie.read('JSJaC_State').erase();
-    } catch(e) {}
+    } catch (e) {
+    }
     this.oDbg.log("Disconnected: " + this._req[slot].r.responseText, 2);
     this._handleEvent('ondisconnect');
 };
-JSJaCConnection.prototype.getPollInterval = function() {
+JSJaCConnection.prototype.getPollInterval = function () {
     return this._timerval;
 };
-JSJaCConnection.prototype.registerHandler = function(event) {
+JSJaCConnection.prototype.registerHandler = function (event) {
     event = event.toLowerCase();
     var eArg = {
         handler: arguments[arguments.length - 1],
@@ -1395,61 +1474,62 @@ JSJaCConnection.prototype.registerHandler = function(event) {
     if (arguments.length > 4) eArg.type = arguments[3];
     if (!this._events[event]) this._events[event] = new Array(eArg);
     else this._events[event] = this._events[event].concat(eArg);
-    this._events[event] = this._events[event].sort(function(a, b) {
+    this._events[event] = this._events[event].sort(function (a, b) {
         var aRank = 0;
         var bRank = 0;
-        with(a) {
+        with (a) {
             if (type == '*') aRank++;
             if (childNS == '*') aRank++;
             if (childName == '*') aRank++;
         }
-        with(b) {
+        with (b) {
             if (type == '*') bRank++;
             if (childNS == '*') bRank++;
             if (childName == '*') bRank++;
         }
         if (aRank > bRank) return 1;
-        if (aRank < bRank) return - 1;
+        if (aRank < bRank) return -1;
         return 0;
     });
     this.oDbg.log("registered handler for event '" + event + "'", 2);
 };
-JSJaCConnection.prototype.unregisterHandler = function(event, handler) {
+JSJaCConnection.prototype.unregisterHandler = function (event, handler) {
     event = event.toLowerCase();
     if (!this._events[event]) return;
     var arr = this._events[event],
-    res = new Array();
+        res = new Array();
     for (var i = 0; i < arr.length; i++)
-    if (arr[i].handler != handler) res.push(arr[i]);
+        if (arr[i].handler != handler) res.push(arr[i]);
     if (arr.length != res.length) {
         this._events[event] = res;
         this.oDbg.log("unregistered handler for event '" + event + "'", 2);
     }
 };
-JSJaCConnection.prototype.registerIQGet = function(childName, childNS, handler) {
+JSJaCConnection.prototype.registerIQGet = function (childName, childNS, handler) {
     this.registerHandler('iq', childName, childNS, 'get', handler);
 };
-JSJaCConnection.prototype.registerIQSet = function(childName, childNS, handler) {
+JSJaCConnection.prototype.registerIQSet = function (childName, childNS, handler) {
     this.registerHandler('iq', childName, childNS, 'set', handler);
 };
-JSJaCConnection.prototype.resume = function() {
+JSJaCConnection.prototype.resume = function () {
     try {
         this._setStatus('resuming');
         var s = unescape(JSJaCCookie.read('JSJaC_State').getValue());
         this.oDbg.log('read cookie: ' + s, 2);
         var o = JSJaCJSON.parse(s);
         for (var i in o)
-        if (o.hasOwnProperty(i)) this[i] = o[i];
+            if (o.hasOwnProperty(i)) this[i] = o[i];
         if (this._keys) {
             this._keys2 = new JSJaCKeys();
             var u = this._keys2._getSuspendVars();
             for (var i = 0; i < u.length; i++)
-            this._keys2[u[i]] = this._keys[u[i]];
+                this._keys2[u[i]] = this._keys[u[i]];
             this._keys = this._keys2;
         }
         try {
             JSJaCCookie.read('JSJaC_State').erase();
-        } catch(e) {}
+        } catch (e) {
+        }
         if (this._connected) {
             this._handleEvent('onresume');
             setTimeout(JSJaC.bind(this._resume, this), this.getPollInterval());
@@ -1457,13 +1537,13 @@ JSJaCConnection.prototype.resume = function() {
             this._inQto = setInterval(JSJaC.bind(this._checkInQ, this), JSJAC_CHECKINQUEUEINTERVAL);
         }
         return (this._connected === true);
-    } catch(e) {
+    } catch (e) {
         if (e.message) this.oDbg.log("Resume failed: " + e.message, 1);
         else this.oDbg.log("Resume failed: " + e, 1);
         return false;
     }
 };
-JSJaCConnection.prototype.send = function(packet, cb, arg) {
+JSJaCConnection.prototype.send = function (packet, cb, arg) {
     if (!packet || !packet.pType) {
         this.oDbg.log("no packet: " + packet, 1);
         return false;
@@ -1477,51 +1557,51 @@ JSJaCConnection.prototype.send = function(packet, cb, arg) {
         this._handleEvent(packet.pType() + '_out', packet);
         this._handleEvent("packet_out", packet);
         this._pQueue = this._pQueue.concat(packet.xml());
-    } catch(e) {
+    } catch (e) {
         this.oDbg.log(e.toString(), 1);
         return false;
     }
     return true;
 };
-JSJaCConnection.prototype.sendIQ = function(iq, handlers, arg) {
+JSJaCConnection.prototype.sendIQ = function (iq, handlers, arg) {
     if (!iq || iq.pType() != 'iq') {
         return false;
     }
     handlers = handlers || {};
     var error_handler = handlers.error_handler ||
-    function(aIq) {
-        this.oDbg.log(iq.xml(), 1);
-    };
+        function (aIq) {
+            this.oDbg.log(iq.xml(), 1);
+        };
     var result_handler = handlers.result_handler ||
-    function(aIq) {
-        this.oDbg.log(aIq.xml(), 2);
-    };
+        function (aIq) {
+            this.oDbg.log(aIq.xml(), 2);
+        };
     var default_handler = handlers.default_handler ||
-    function(aIq) {
-        this.oDbg.log(aIq.xml(), 2);
-    };
-    var iqHandler = function(aIq, arg) {
+        function (aIq) {
+            this.oDbg.log(aIq.xml(), 2);
+        };
+    var iqHandler = function (aIq, arg) {
         switch (aIq.getType()) {
-        case 'error':
-            error_handler(aIq);
-            break;
-        case 'result':
-            result_handler(aIq, arg);
-            break;
-        default:
-            default_handler(aIq, arg);
+            case 'error':
+                error_handler(aIq);
+                break;
+            case 'result':
+                result_handler(aIq, arg);
+                break;
+            default:
+                default_handler(aIq, arg);
         }
     };
     return this.send(iq, iqHandler, arg);
 };
-JSJaCConnection.prototype.setPollInterval = function(timerval) {
+JSJaCConnection.prototype.setPollInterval = function (timerval) {
     if (timerval && !isNaN(timerval)) this._timerval = timerval;
     return this._timerval;
 };
-JSJaCConnection.prototype.status = function() {
+JSJaCConnection.prototype.status = function () {
     return this._status;
 };
-JSJaCConnection.prototype.suspend = function() {
+JSJaCConnection.prototype.suspend = function () {
     clearTimeout(this._timeout);
     clearInterval(this._interval);
     clearInterval(this._inQto);
@@ -1535,7 +1615,7 @@ JSJaCConnection.prototype.suspend = function() {
             var uo = this[u[i]]._getSuspendVars();
             var o = new Object();
             for (var j = 0; j < uo.length; j++)
-            o[uo[j]] = this[u[i]][uo[j]];
+                o[uo[j]] = this[u[i]][uo[j]];
         } else var o = this[u[i]];
         s[u[i]] = o;
     }
@@ -1550,11 +1630,11 @@ JSJaCConnection.prototype.suspend = function() {
         }
         this._connected = false;
         this._setStatus('suspending');
-    } catch(e) {
+    } catch (e) {
         this.oDbg.log("Failed reading cookie 'JSJaC_State': " + e.message);
     }
 };
-JSJaCConnection.prototype._abort = function() {
+JSJaCConnection.prototype._abort = function () {
     clearTimeout(this._timeout);
     clearInterval(this._inQto);
     clearInterval(this._interval);
@@ -1564,7 +1644,7 @@ JSJaCConnection.prototype._abort = function() {
     this._handleEvent('ondisconnect');
     this._handleEvent('onerror', JSJaCError('500', 'cancel', 'service-unavailable'));
 };
-JSJaCConnection.prototype._checkInQ = function() {
+JSJaCConnection.prototype._checkInQ = function () {
     for (var i = 0; i < this._inQ.length && i < 10; i++) {
         var item = this._inQ[0];
         this._inQ = this._inQ.slice(1, this._inQ.length);
@@ -1577,12 +1657,12 @@ JSJaCConnection.prototype._checkInQ = function() {
         }
     }
 };
-JSJaCConnection.prototype._checkQueue = function() {
-	  //alert("_checkQueue");
+JSJaCConnection.prototype._checkQueue = function () {
+    //alert("_checkQueue");
     if (this._pQueue.length != 0) this._process();
     return true;
 };
-JSJaCConnection.prototype._doAuth = function() {
+JSJaCConnection.prototype._doAuth = function () {
     if (this.has_sasl && this.authtype == 'nonsasl') this.oDbg.log("Warning: SASL present but not used", 1);
     if (!this._doSASLAuth() && !this._doLegacyAuth()) {
         this.oDbg.log("Auth failed for authtype " + this.authtype, 1);
@@ -1591,18 +1671,18 @@ JSJaCConnection.prototype._doAuth = function() {
     }
     return true;
 };
-JSJaCConnection.prototype._doInBandReg = function() {
+JSJaCConnection.prototype._doInBandReg = function () {
     if (this.authtype == 'saslanon' || this.authtype == 'anonymous') return;
     var iq = new JSJaCIQ();
     iq.setType('set');
     iq.setID('reg1');
     iq.appendNode("query", {
-        xmlns: "jabber:iq:register"
-    },
-    [["username", this.username], ["password", this.pass]]);
+            xmlns: "jabber:iq:register"
+        },
+        [["username", this.username], ["password", this.pass]]);
     this.send(iq, this._doInBandRegDone);
 };
-JSJaCConnection.prototype._doInBandRegDone = function(iq) {
+JSJaCConnection.prototype._doInBandRegDone = function (iq) {
     if (iq && iq.getType() == 'error') {
         this.oDbg.log("registration failed for " + this.username, 0);
         this._handleEvent('onerror', iq.getChild('error'));
@@ -1611,18 +1691,18 @@ JSJaCConnection.prototype._doInBandRegDone = function(iq) {
     this.oDbg.log(this.username + " registered succesfully", 0);
     this._doAuth();
 };
-JSJaCConnection.prototype._doLegacyAuth = function() {
+JSJaCConnection.prototype._doLegacyAuth = function () {
     if (this.authtype != 'nonsasl' && this.authtype != 'anonymous') return false;
     var iq = new JSJaCIQ();
     iq.setIQ(this.server, 'get', 'auth1');
     iq.appendNode('query', {
-        xmlns: 'jabber:iq:auth'
-    },
-    [['username', this.username]]);
+            xmlns: 'jabber:iq:auth'
+        },
+        [['username', this.username]]);
     this.send(iq, this._doLegacyAuth2);
     return true;
 };
-JSJaCConnection.prototype._doLegacyAuth2 = function(iq) {
+JSJaCConnection.prototype._doLegacyAuth2 = function (iq) {
     if (!iq || iq.getType() != 'result') {
         if (iq && iq.getType() == 'error') this._handleEvent('onerror', iq.getChild('error'));
         this.disconnect();
@@ -1632,19 +1712,19 @@ JSJaCConnection.prototype._doLegacyAuth2 = function(iq) {
     var iq = new JSJaCIQ();
     iq.setIQ(this.server, 'set', 'auth2');
     query = iq.appendNode('query', {
-        xmlns: 'jabber:iq:auth'
-    },
-    [['username', this.username], ['resource', this.resource]]);
+            xmlns: 'jabber:iq:auth'
+        },
+        [['username', this.username], ['resource', this.resource]]);
     if (use_digest) {
         query.appendChild(iq.buildNode('digest', {
-            xmlns: 'jabber:iq:auth'
-        },
-        hex_sha1(this.streamid + this.pass)));
+                xmlns: 'jabber:iq:auth'
+            },
+            hex_sha1(this.streamid + this.pass)));
     } else if (this.allow_plain) {
         query.appendChild(iq.buildNode('password', {
-            xmlns: 'jabber:iq:auth'
-        },
-        this.pass));
+                xmlns: 'jabber:iq:auth'
+            },
+            this.pass));
     } else {
         this.oDbg.log("no valid login mechanism found", 1);
         this.disconnect();
@@ -1652,13 +1732,13 @@ JSJaCConnection.prototype._doLegacyAuth2 = function(iq) {
     }
     this.send(iq, this._doLegacyAuthDone);
 };
-JSJaCConnection.prototype._doLegacyAuthDone = function(iq) {
+JSJaCConnection.prototype._doLegacyAuthDone = function (iq) {
     if (iq.getType() != 'result') {
         if (iq.getType() == 'error') this._handleEvent('onerror', iq.getChild('error'));
         this.disconnect();
     } else this._handleEvent('onconnect');
 };
-JSJaCConnection.prototype._doSASLAuth = function() {
+JSJaCConnection.prototype._doSASLAuth = function () {
     if (this.authtype == 'nonsasl' || this.authtype == 'anonymous') return false;
     if (this.authtype == 'saslanon') {
         if (this.mechs['ANONYMOUS']) {
@@ -1682,7 +1762,7 @@ JSJaCConnection.prototype._doSASLAuth = function() {
     }
     return false;
 };
-JSJaCConnection.prototype._doSASLAuthDigestMd5S1 = function(el) {
+JSJaCConnection.prototype._doSASLAuthDigestMd5S1 = function (el) {
     if (el.nodeName != "challenge") {
         this.oDbg.log("challenge missing", 1);
         this._handleEvent('onerror', JSJaCError('401', 'auth', 'not-authorized'));
@@ -1710,7 +1790,7 @@ JSJaCConnection.prototype._doSASLAuthDigestMd5S1 = function(el) {
         this._sendRaw("<response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>" + binb2b64(str2binb(rPlain)) + "</response>", this._doSASLAuthDigestMd5S2);
     }
 };
-JSJaCConnection.prototype._doSASLAuthDigestMd5S2 = function(el) {
+JSJaCConnection.prototype._doSASLAuthDigestMd5S2 = function (el) {
     if (el.nodeName == 'failure') {
         if (el.xml) this.oDbg.log("auth error: " + el.xml, 1);
         else this.oDbg.log("auth error", 1);
@@ -1734,24 +1814,24 @@ JSJaCConnection.prototype._doSASLAuthDigestMd5S2 = function(el) {
     if (el.nodeName == 'success') this._reInitStream(this.domain, this._doStreamBind);
     else this._sendRaw("<response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'/>", this._doSASLAuthDone);
 };
-JSJaCConnection.prototype._doSASLAuthDone = function(el) {
+JSJaCConnection.prototype._doSASLAuthDone = function (el) {
     if (el.nodeName != 'success') {
         this.oDbg.log("auth failed", 1);
         this._handleEvent('onerror', JSJaCError('401', 'auth', 'not-authorized'));
         this.disconnect();
     } else this._reInitStream(this.domain, this._doStreamBind);
 };
-JSJaCConnection.prototype._doStreamBind = function() {
+JSJaCConnection.prototype._doStreamBind = function () {
     var iq = new JSJaCIQ();
     iq.setIQ(this.domain, 'set', 'bind_1');
     iq.appendNode("bind", {
-        xmlns: "urn:ietf:params:xml:ns:xmpp-bind"
-    },
-    [["resource", this.resource]]);
+            xmlns: "urn:ietf:params:xml:ns:xmpp-bind"
+        },
+        [["resource", this.resource]]);
     this.oDbg.log(iq.xml());
     this.send(iq, this._doXMPPSess);
 };
-JSJaCConnection.prototype._doXMPPSess = function(iq) {
+JSJaCConnection.prototype._doXMPPSess = function (iq) {
     if (iq.getType() != 'result' || iq.getType() == 'error') {
         this.disconnect();
         if (iq.getType() == 'error') this._handleEvent('onerror', iq.getChild('error'));
@@ -1762,20 +1842,20 @@ JSJaCConnection.prototype._doXMPPSess = function(iq) {
     iq = new JSJaCIQ();
     iq.setIQ(this.domain, 'set', 'sess_1');
     iq.appendNode("session", {
-        xmlns: "urn:ietf:params:xml:ns:xmpp-session"
-    },
-    []);
+            xmlns: "urn:ietf:params:xml:ns:xmpp-session"
+        },
+        []);
     this.oDbg.log(iq.xml());
     this.send(iq, this._doXMPPSessDone);
 };
-JSJaCConnection.prototype._doXMPPSessDone = function(iq) {
+JSJaCConnection.prototype._doXMPPSessDone = function (iq) {
     if (iq.getType() != 'result' || iq.getType() == 'error') {
         this.disconnect();
         if (iq.getType() == 'error') this._handleEvent('onerror', iq.getChild('error'));
         return;
     } else this._handleEvent('onconnect');
 };
-JSJaCConnection.prototype._handleEvent = function(event, arg) {
+JSJaCConnection.prototype._handleEvent = function (event, arg) {
     event = event.toLowerCase();
     this.oDbg.log("incoming event '" + event + "'", 3);
     if (!this._events[event]) return;
@@ -1791,15 +1871,14 @@ JSJaCConnection.prototype._handleEvent = function(event, arg) {
                         this.oDbg.log(aEvent.childName + "/" + aEvent.childNS + "/" + aEvent.type + " => match for handler " + aEvent.handler, 3);
                     }
                     if (aEvent.handler.call(this, arg)) break;
-                }
-                else if (aEvent.handler.call(this)) break;
-            } catch(e) {
+                } else if (aEvent.handler.call(this)) break;
+            } catch (e) {
                 this.oDbg.log(aEvent.handler + "\n>>>" + e.name + ": " + e.message, 1);
             }
         }
     }
 };
-JSJaCConnection.prototype._handlePID = function(aJSJaCPacket) {
+JSJaCConnection.prototype._handlePID = function (aJSJaCPacket) {
     if (!aJSJaCPacket.getID()) return false;
     for (var i in this._regIDs) {
         if (this._regIDs.hasOwnProperty(i) && this._regIDs[i] && i == aJSJaCPacket.getID()) {
@@ -1812,7 +1891,7 @@ JSJaCConnection.prototype._handlePID = function(aJSJaCPacket) {
                     this._unregisterPID(pID);
                     return true;
                 }
-            } catch(e) {
+            } catch (e) {
                 this.oDbg.log(e.name + ": " + e.message);
                 this._unregisterPID(pID);
                 return true;
@@ -1821,7 +1900,7 @@ JSJaCConnection.prototype._handlePID = function(aJSJaCPacket) {
     }
     return false;
 };
-JSJaCConnection.prototype._handleResponse = function(req) {
+JSJaCConnection.prototype._handleResponse = function (req) {
     var rootEl = this._parseResponse(req);
     if (!rootEl) return;
     for (var i = 0; i < rootEl.childNodes.length; i++) {
@@ -1834,7 +1913,7 @@ JSJaCConnection.prototype._handleResponse = function(req) {
         this._inQ = this._inQ.concat(rootEl.childNodes.item(i));
     }
 };
-JSJaCConnection.prototype._parseStreamFeatures = function(doc) {
+JSJaCConnection.prototype._parseStreamFeatures = function (doc) {
     if (!doc) {
         this.oDbg.log("nothing to parse ... aborting", 1);
         return false;
@@ -1844,10 +1923,10 @@ JSJaCConnection.prototype._parseStreamFeatures = function(doc) {
     else {
         var errors = doc.getElementsByTagName("error");
         for (var i = 0; i < errors.length; i++)
-        if (errors.item(i).namespaceURI == "http://etherx.jabber.org/streams") {
-            errorTag = errors.item(i);
-            break;
-        }
+            if (errors.item(i).namespaceURI == "http://etherx.jabber.org/streams") {
+                errorTag = errors.item(i);
+                break;
+            }
     }
     if (errorTag) {
         this._setStatus("internal_server_error");
@@ -1864,13 +1943,13 @@ JSJaCConnection.prototype._parseStreamFeatures = function(doc) {
     var lMec1 = doc.getElementsByTagName("mechanisms");
     this.has_sasl = false;
     for (var i = 0; i < lMec1.length; i++)
-    if (lMec1.item(i).getAttribute("xmlns") == "urn:ietf:params:xml:ns:xmpp-sasl") {
-        this.has_sasl = true;
-        var lMec2 = lMec1.item(i).getElementsByTagName("mechanism");
-        for (var j = 0; j < lMec2.length; j++)
-        this.mechs[lMec2.item(j).firstChild.nodeValue] = true;
-        break;
-    }
+        if (lMec1.item(i).getAttribute("xmlns") == "urn:ietf:params:xml:ns:xmpp-sasl") {
+            this.has_sasl = true;
+            var lMec2 = lMec1.item(i).getElementsByTagName("mechanism");
+            for (var j = 0; j < lMec2.length; j++)
+                this.mechs[lMec2.item(j).firstChild.nodeValue] = true;
+            break;
+        }
     this.has_sasl = false;
     if (this.has_sasl) this.oDbg.log("SASL detected", 2);
     else {
@@ -1879,7 +1958,7 @@ JSJaCConnection.prototype._parseStreamFeatures = function(doc) {
     }
     return true;
 };
-JSJaCConnection.prototype._process = function(timerval) {
+JSJaCConnection.prototype._process = function (timerval) {
     if (!this.connected()) {
         this.oDbg.log("Connection lost ...", 1);
         if (this._interval) clearInterval(this._interval);
@@ -1889,7 +1968,7 @@ JSJaCConnection.prototype._process = function(timerval) {
     if (this._timeout) clearTimeout(this._timeout);
     var slot = this._getFreeSlot();
     if (slot < 0) return;
-    if (typeof(this._req[slot]) != 'undefined' && typeof(this._req[slot].r) != 'undefined' && this._req[slot].r.readyState != 4) {
+    if (typeof (this._req[slot]) != 'undefined' && typeof (this._req[slot].r) != 'undefined' && this._req[slot].r.readyState != 4) {
         this.oDbg.log("Slot " + slot + " is not ready");
         return;
     }
@@ -1899,43 +1978,44 @@ JSJaCConnection.prototype._process = function(timerval) {
     }
     if (!this.isPolling()) this.oDbg.log("Found working slot at " + slot, 2);
     this._req[slot] = this._setupRequest(true);
-    this._req[slot].r.onreadystatechange = JSJaC.bind(function() {
-        if (!this.connected()) return;
-        if (this._req[slot].r.readyState == 4) {
-            this._setStatus('processing');
-            this.oDbg.log("async recv: " + this._req[slot].r.responseText, 4);
-            this._handleResponse(this._req[slot]);
-            if (this._pQueue.length) {
-                this._timeout = setTimeout(JSJaC.bind(this._process, this), 100);
-            } else {
-                this.oDbg.log("scheduling next poll in " + this.getPollInterval() + " msec", 4);
-                this._timeout = setTimeout(JSJaC.bind(this._process, this), this.getPollInterval());
-            }
-        }
-    },
-    this);
-    try {
-        this._req[slot].r.onerror = JSJaC.bind(function() {
+    this._req[slot].r.onreadystatechange = JSJaC.bind(function () {
             if (!this.connected()) return;
-            this._errcnt++;
-            this.oDbg.log('XmlHttpRequest error (' + this._errcnt + ')', 1);
-            if (this._errcnt > JSJAC_ERR_COUNT) {
-                this._abort();
-                return false;
+            if (this._req[slot].r.readyState == 4) {
+                this._setStatus('processing');
+                this.oDbg.log("async recv: " + this._req[slot].r.responseText, 4);
+                this._handleResponse(this._req[slot]);
+                if (this._pQueue.length) {
+                    this._timeout = setTimeout(JSJaC.bind(this._process, this), 100);
+                } else {
+                    this.oDbg.log("scheduling next poll in " + this.getPollInterval() + " msec", 4);
+                    this._timeout = setTimeout(JSJaC.bind(this._process, this), this.getPollInterval());
+                }
             }
-            this._setStatus('onerror_fallback');
-            setTimeout(JSJaC.bind(this._resume, this), this.getPollInterval());
-            return false;
         },
         this);
-    } catch(e) {}
+    try {
+        this._req[slot].r.onerror = JSJaC.bind(function () {
+                if (!this.connected()) return;
+                this._errcnt++;
+                this.oDbg.log('XmlHttpRequest error (' + this._errcnt + ')', 1);
+                if (this._errcnt > JSJAC_ERR_COUNT) {
+                    this._abort();
+                    return false;
+                }
+                this._setStatus('onerror_fallback');
+                setTimeout(JSJaC.bind(this._resume, this), this.getPollInterval());
+                return false;
+            },
+            this);
+    } catch (e) {
+    }
     var reqstr = this._getRequestString();
-    if (typeof(this._rid) != 'undefined') this._req[slot].rid = this._rid;
+    if (typeof (this._rid) != 'undefined') this._req[slot].rid = this._rid;
     this.oDbg.log("sending: " + reqstr, 4);
     //alert("sending: " + reqstr);
     this._req[slot].r.send(reqstr);
 };
-JSJaCConnection.prototype._registerPID = function(pID, cb, arg) {
+JSJaCConnection.prototype._registerPID = function (pID, cb, arg) {
     if (!pID || !cb) return false;
     this._regIDs[pID] = new Object();
     this._regIDs[pID].cb = cb;
@@ -1946,25 +2026,25 @@ JSJaCConnection.prototype._registerPID = function(pID, cb, arg) {
 JSJaCConnection.prototype._sendEmpty = function JSJaCSendEmpty() {
     var slot = this._getFreeSlot();
     this._req[slot] = this._setupRequest(true);
-    this._req[slot].r.onreadystatechange = JSJaC.bind(function() {
-        if (this._req[slot].r.readyState == 4) {
-            this.oDbg.log("async recv: " + this._req[slot].r.responseText, 4);
-            this._getStreamID(slot);
-        }
-    },
-    this);
-    if (typeof(this._req[slot].r.onerror) != 'undefined') {
-        this._req[slot].r.onerror = JSJaC.bind(function(e) {
-            this.oDbg.log('XmlHttpRequest error', 1);
-            return false;
+    this._req[slot].r.onreadystatechange = JSJaC.bind(function () {
+            if (this._req[slot].r.readyState == 4) {
+                this.oDbg.log("async recv: " + this._req[slot].r.responseText, 4);
+                this._getStreamID(slot);
+            }
         },
         this);
+    if (typeof (this._req[slot].r.onerror) != 'undefined') {
+        this._req[slot].r.onerror = JSJaC.bind(function (e) {
+                this.oDbg.log('XmlHttpRequest error', 1);
+                return false;
+            },
+            this);
     }
     var reqstr = this._getRequestString();
     this.oDbg.log("sending: " + reqstr, 4);
     this._req[slot].r.send(reqstr);
 };
-JSJaCConnection.prototype._sendRaw = function(xml, cb, arg) {
+JSJaCConnection.prototype._sendRaw = function (xml, cb, arg) {
     if (cb) this._sendRawCallbacks.push({
         fn: cb,
         arg: arg
@@ -1974,7 +2054,7 @@ JSJaCConnection.prototype._sendRaw = function(xml, cb, arg) {
     this._process();
     return true;
 };
-JSJaCConnection.prototype._setStatus = function(status) {
+JSJaCConnection.prototype._setStatus = function (status) {
     if (!status || status == '') return;
     if (status != this._status) {
         this._status = status;
@@ -1982,12 +2062,13 @@ JSJaCConnection.prototype._setStatus = function(status) {
         this._handleEvent('status_changed', status);
     }
 };
-JSJaCConnection.prototype._unregisterPID = function(pID) {
+JSJaCConnection.prototype._unregisterPID = function (pID) {
     if (!this._regIDs[pID]) return false;
     this._regIDs[pID] = null;
     this.oDbg.log("unregistered " + pID, 3);
     return true;
 };
+
 function JSJaCHttpBindingConnection(oArg) {
     this.base = JSJaCConnection;
     this.base(oArg);
@@ -1999,8 +2080,9 @@ function JSJaCHttpBindingConnection(oArg) {
     this._pause = 0;
     this._wait = JSJACHBC_MAX_WAIT;
 }
+
 JSJaCHttpBindingConnection.prototype = new JSJaCConnection();
-JSJaCHttpBindingConnection.prototype.inherit = function(oArg) {
+JSJaCHttpBindingConnection.prototype.inherit = function (oArg) {
     this.domain = oArg.domain || 'localhost';
     this.username = oArg.username;
     this.resource = oArg.resource;
@@ -2017,7 +2099,7 @@ JSJaCHttpBindingConnection.prototype.inherit = function(oArg) {
     this._inQto = setInterval(JSJaC.bind(this._checkInQ, this), JSJAC_CHECKINQUEUEINTERVAL);
     this._timeout = setTimeout(JSJaC.bind(this._process, this), this.getPollInterval());
 };
-JSJaCHttpBindingConnection.prototype.setPollInterval = function(timerval) {
+JSJaCHttpBindingConnection.prototype.setPollInterval = function (timerval) {
     if (timerval && !isNaN(timerval)) {
         if (!this.isPolling()) this._timerval = 100;
         else if (this._min_polling && timerval < this._min_polling * 1000) this._timerval = this._min_polling * 1000;
@@ -2026,21 +2108,21 @@ JSJaCHttpBindingConnection.prototype.setPollInterval = function(timerval) {
     }
     return this._timerval;
 };
-JSJaCHttpBindingConnection.prototype.isPolling = function() {
+JSJaCHttpBindingConnection.prototype.isPolling = function () {
     return (this._hold == 0)
 };
-JSJaCHttpBindingConnection.prototype._getFreeSlot = function() {
+JSJaCHttpBindingConnection.prototype._getFreeSlot = function () {
     for (var i = 0; i < this._hold + 1; i++)
-    if (typeof(this._req[i]) == 'undefined' || typeof(this._req[i].r) == 'undefined' || this._req[i].r.readyState == 4) return i;
-    return - 1;
+        if (typeof (this._req[i]) == 'undefined' || typeof (this._req[i].r) == 'undefined' || this._req[i].r.readyState == 4) return i;
+    return -1;
 };
-JSJaCHttpBindingConnection.prototype._getHold = function() {
+JSJaCHttpBindingConnection.prototype._getHold = function () {
     return this._hold;
 };
-JSJaCHttpBindingConnection.prototype._getRequestString = function(raw, last) {
+JSJaCHttpBindingConnection.prototype._getRequestString = function (raw, last) {
     raw = raw || '';
     var reqstr = '';
-    if (this._rid <= this._last_rid && typeof(this._last_requests[this._rid]) != 'undefined') reqstr = this._last_requests[this._rid].xml;
+    if (this._rid <= this._last_rid && typeof (this._last_requests[this._rid]) != 'undefined') reqstr = this._last_requests[this._rid].xml;
     else {
         var xml = '';
         while (this._pQueue.length) {
@@ -2070,12 +2152,12 @@ JSJaCHttpBindingConnection.prototype._getRequestString = function(raw, last) {
         this._last_requests[this._rid].xml = reqstr;
         this._last_rid = this._rid;
         for (var i in this._last_requests)
-        if (this._last_requests.hasOwnProperty(i) && i < this._rid - this._hold) delete(this._last_requests[i]);
+            if (this._last_requests.hasOwnProperty(i) && i < this._rid - this._hold) delete (this._last_requests[i]);
     }
     //alert("reqstr-------------: " + reqstr);
     return reqstr;
 };
-JSJaCHttpBindingConnection.prototype._getInitialRequestString = function() {
+JSJaCHttpBindingConnection.prototype._getInitialRequestString = function () {
     var reqstr = "<body content='text/xml; charset=utf-8' hold='" + this._hold + "' xmlns='http://jabber.org/protocol/httpbind' to='" + this.authhost + "' wait='" + this._wait + "' rid='" + this._rid + "'";
     if (this.host || this.port) reqstr += " route='xmpp:" + this.host + ":" + this.port + "'";
     if (this.secure) reqstr += " secure='" + this.secure + "'";
@@ -2093,7 +2175,7 @@ JSJaCHttpBindingConnection.prototype._getInitialRequestString = function() {
     reqstr += "/>";
     return reqstr;
 };
-JSJaCHttpBindingConnection.prototype._getStreamID = function(slot) {
+JSJaCHttpBindingConnection.prototype._getStreamID = function (slot) {
     this.oDbg.log(this._req[slot].r.responseText, 4);
     if (!this._req[slot].r.responseXML || !this._req[slot].r.responseXML.documentElement) {
         this._handleEvent('onerror', JSJaCError('503', 'cancel', 'service-unavailable'));
@@ -2112,14 +2194,14 @@ JSJaCHttpBindingConnection.prototype._getStreamID = function(slot) {
     if (this.register) this._doInBandReg();
     else this._doAuth();
 };
-JSJaCHttpBindingConnection.prototype._getSuspendVars = function() {
+JSJaCHttpBindingConnection.prototype._getSuspendVars = function () {
     return ('host,port,secure,_rid,_last_rid,_wait,_min_polling,_inactivity,_hold,_last_requests,_pause').split(',');
 };
-JSJaCHttpBindingConnection.prototype._handleInitialResponse = function(slot) {
+JSJaCHttpBindingConnection.prototype._handleInitialResponse = function (slot) {
     try {
         this.oDbg.log(this._req[slot].r.getAllResponseHeaders(), 4);
         this.oDbg.log(this._req[slot].r.responseText, 4);
-    } catch(ex) {
+    } catch (ex) {
         this.oDbg.log("No response", 4);
     }
     if (this._req[slot].r.status != 200 || !this._req[slot].r.responseXML) {
@@ -2156,7 +2238,7 @@ JSJaCHttpBindingConnection.prototype._handleInitialResponse = function(slot) {
     this._interval = setInterval(JSJaC.bind(this._checkQueue, this), JSJAC_CHECKQUEUEINTERVAL);
     this._getStreamID(slot);
 };
-JSJaCHttpBindingConnection.prototype._parseResponse = function(req) {
+JSJaCHttpBindingConnection.prototype._parseResponse = function (req) {
     if (!this.connected() || !req) return null;
     var r = req.r;
     try {
@@ -2178,7 +2260,7 @@ JSJaCHttpBindingConnection.prototype._parseResponse = function(req) {
             setTimeout(JSJaC.bind(this._resume, this), this.getPollInterval());
             return null;
         }
-    } catch(e) {
+    } catch (e) {
         this.oDbg.log("XMLHttpRequest error: status not available", 1);
         this._errcnt++;
         if (this._errcnt > JSJAC_ERR_COUNT) {
@@ -2203,7 +2285,7 @@ JSJaCHttpBindingConnection.prototype._parseResponse = function(req) {
         this._handleEvent('onerror', JSJaCError('500', 'wait', 'internal-server-error'));
         return null;
     }
-    if (typeof(req.rid) != 'undefined' && this._last_requests[req.rid]) {
+    if (typeof (req.rid) != 'undefined' && this._last_requests[req.rid]) {
         if (this._last_requests[req.rid].handled) {
             this.oDbg.log("already handled " + req.rid, 2);
             return null;
@@ -2224,28 +2306,28 @@ JSJaCHttpBindingConnection.prototype._parseResponse = function(req) {
     this._errcnt = 0;
     return r.responseXML.documentElement;
 };
-JSJaCHttpBindingConnection.prototype._reInitStream = function(to, cb, arg) {
+JSJaCHttpBindingConnection.prototype._reInitStream = function (to, cb, arg) {
     this._reinit = true;
     cb.call(this, arg);
 };
-JSJaCHttpBindingConnection.prototype._resume = function() {
-	  //alert("_resume");
+JSJaCHttpBindingConnection.prototype._resume = function () {
+    //alert("_resume");
     if (this._pause == 0 && this._rid >= this._last_rid) this._rid = this._last_rid - 1;
     this._process();
 };
-JSJaCHttpBindingConnection.prototype._setHold = function(hold) {
+JSJaCHttpBindingConnection.prototype._setHold = function (hold) {
     if (!hold || isNaN(hold) || hold < 0) hold = 0;
     else if (hold > JSJACHBC_MAX_HOLD) hold = JSJACHBC_MAX_HOLD;
     this._hold = hold;
     return this._hold;
 };
-JSJaCHttpBindingConnection.prototype._setupRequest = function(async) {
+JSJaCHttpBindingConnection.prototype._setupRequest = function (async) {
     var req = new Object();
     var r = XmlHttp.create();
     try {
         r.open("POST", this._httpbase, async);
         r.setRequestHeader('Content-Type', 'text/xml; charset=utf-8');
-    } catch(e) {
+    } catch (e) {
         this.oDbg.log(e, 1);
     }
     req.r = r;
@@ -2253,7 +2335,7 @@ JSJaCHttpBindingConnection.prototype._setupRequest = function(async) {
     req.rid = this._rid;
     return req;
 };
-JSJaCHttpBindingConnection.prototype._suspend = function() {
+JSJaCHttpBindingConnection.prototype._suspend = function () {
     if (this._pause == 0) return;
     var slot = this._getFreeSlot();
     this._req[slot] = this._setupRequest(false);
@@ -2275,20 +2357,22 @@ JSJaCHttpBindingConnection.prototype._suspend = function() {
     this.oDbg.log("Disconnecting: " + reqstr, 4);
     this._req[slot].r.send(reqstr);
 };
+
 function JSJaCHttpPollingConnection(oArg) {
     this.base = JSJaCConnection;
     this.base(oArg);
     JSJACPACKET_USE_XMLNS = false;
 }
+
 JSJaCHttpPollingConnection.prototype = new JSJaCConnection();
-JSJaCHttpPollingConnection.prototype.isPolling = function() {
+JSJaCHttpPollingConnection.prototype.isPolling = function () {
     return true;
 };
-JSJaCHttpPollingConnection.prototype._getFreeSlot = function() {
-    if (typeof(this._req[0]) == 'undefined' || typeof(this._req[0].r) == 'undefined' || this._req[0].r.readyState == 4) return 0;
-    else return - 1;
+JSJaCHttpPollingConnection.prototype._getFreeSlot = function () {
+    if (typeof (this._req[0]) == 'undefined' || typeof (this._req[0].r) == 'undefined' || this._req[0].r.readyState == 4) return 0;
+    else return -1;
 };
-JSJaCHttpPollingConnection.prototype._getInitialRequestString = function() {
+JSJaCHttpPollingConnection.prototype._getInitialRequestString = function () {
     var reqstr = "0";
     if (JSJAC_HAVEKEYS) {
         this._keys = new JSJaCKeys(b64_sha1, this.oDbg);
@@ -2302,7 +2386,7 @@ JSJaCHttpPollingConnection.prototype._getInitialRequestString = function() {
     reqstr += ">";
     return reqstr;
 };
-JSJaCHttpPollingConnection.prototype._getRequestString = function(raw, last) {
+JSJaCHttpPollingConnection.prototype._getRequestString = function (raw, last) {
     var reqstr = this._sid;
     if (JSJAC_HAVEKEYS) {
         reqstr += ";" + this._keys.getKey();
@@ -2320,7 +2404,7 @@ JSJaCHttpPollingConnection.prototype._getRequestString = function(raw, last) {
     if (last) reqstr += '</stream:stream>';
     return reqstr;
 };
-JSJaCHttpPollingConnection.prototype._getStreamID = function() {
+JSJaCHttpPollingConnection.prototype._getStreamID = function () {
     if (this._req[0].r.responseText == '') {
         this.oDbg.log("waiting for stream id", 2);
         this._timeout = setTimeout(JSJaC.bind(this._sendEmpty, this), 1000);
@@ -2336,7 +2420,7 @@ JSJaCHttpPollingConnection.prototype._getStreamID = function() {
         doc = XmlDocument.create("doc");
         doc.loadXML(response);
         if (!this._parseStreamFeatures(doc)) return;
-    } catch(e) {
+    } catch (e) {
         this.oDbg.log("loadXML: " + e.toString(), 1);
     }
     this._connected = true;
@@ -2345,10 +2429,10 @@ JSJaCHttpPollingConnection.prototype._getStreamID = function() {
     //alert("_getStreamID");
     this._process(this._timerval);
 };
-JSJaCHttpPollingConnection.prototype._getSuspendVars = function() {
+JSJaCHttpPollingConnection.prototype._getSuspendVars = function () {
     return new Array();
 };
-JSJaCHttpPollingConnection.prototype._handleInitialResponse = function() {
+JSJaCHttpPollingConnection.prototype._handleInitialResponse = function () {
     this.oDbg.log(this._req[0].r.getAllResponseHeaders(), 4);
     var aPList = this._req[0].r.getResponseHeader('Set-Cookie');
     aPList = aPList.split(";");
@@ -2362,7 +2446,7 @@ JSJaCHttpPollingConnection.prototype._handleInitialResponse = function() {
     this._inQto = setInterval(JSJaC.bind(this._checkInQ, this), JSJAC_CHECKINQUEUEINTERVAL);
     this._getStreamID();
 };
-JSJaCHttpPollingConnection.prototype._parseResponse = function(r) {
+JSJaCHttpPollingConnection.prototype._parseResponse = function (r) {
     var req = r.r;
     if (!this.connected()) return null;
     if (req.status != 200) {
@@ -2388,20 +2472,20 @@ JSJaCHttpPollingConnection.prototype._parseResponse = function(r) {
             if (aArg[0] == 'ID') sid = aArg[1];
         }
     }
-    if (typeof(sid) != 'undefined' && sid.indexOf(':0') != -1) {
+    if (typeof (sid) != 'undefined' && sid.indexOf(':0') != -1) {
         switch (sid.substring(0, sid.indexOf(':0'))) {
-        case '0':
-            this.oDbg.log("invalid response:" + req.responseText, 1);
-            break;
-        case '-1':
-            this.oDbg.log("Internal Server Error", 1);
-            break;
-        case '-2':
-            this.oDbg.log("Bad Request", 1);
-            break;
-        case '-3':
-            this.oDbg.log("Key Sequence Error", 1);
-            break;
+            case '0':
+                this.oDbg.log("invalid response:" + req.responseText, 1);
+                break;
+            case '-1':
+                this.oDbg.log("Internal Server Error", 1);
+                break;
+            case '-2':
+                this.oDbg.log("Bad Request", 1);
+                break;
+            case '-3':
+                this.oDbg.log("Key Sequence Error", 1);
+                break;
         }
         this._setStatus('internal_server_error');
         clearTimeout(this._timeout);
@@ -2435,48 +2519,51 @@ JSJaCHttpPollingConnection.prototype._parseResponse = function(r) {
             return doc;
         }
         return doc;
-    } catch(e) {
+    } catch (e) {
         this.oDbg.log("parse error:" + e.message, 1);
     }
-    return null;;
+    return null;
+    ;
 };
-JSJaCHttpPollingConnection.prototype._reInitStream = function(to, cb, arg) {
+JSJaCHttpPollingConnection.prototype._reInitStream = function (to, cb, arg) {
     this._sendRaw("<stream:stream xmlns:stream='http://etherx.jabber.org/streams' xmlns='jabber:client' to='" + to + "' version='1.0'>", cb, arg);
 };
-JSJaCHttpPollingConnection.prototype._resume = function() {
-	  //alert("_resume");
+JSJaCHttpPollingConnection.prototype._resume = function () {
+    //alert("_resume");
     this._process(this._timerval);
 };
-JSJaCHttpPollingConnection.prototype._setupRequest = function(async) {
+JSJaCHttpPollingConnection.prototype._setupRequest = function (async) {
     var r = XmlHttp.create();
     try {
         r.open("POST", this._httpbase, async);
         if (r.overrideMimeType) r.overrideMimeType('text/plain; charset=utf-8');
         r.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    } catch(e) {
+    } catch (e) {
         this.oDbg.log(e, 1);
     }
     var req = new Object();
     req.r = r;
     return req;
 };
-JSJaCHttpPollingConnection.prototype._suspend = function() {};
-JSJaCHttpPollingConnection._parseTree = function(s) {
+JSJaCHttpPollingConnection.prototype._suspend = function () {
+};
+JSJaCHttpPollingConnection._parseTree = function (s) {
     try {
         var r = XmlDocument.create("body", "foo");
-        if (typeof(r.loadXML) != 'undefined') {
+        if (typeof (r.loadXML) != 'undefined') {
             r.loadXML(s);
             return r.documentElement;
         } else if (window.DOMParser) return (new DOMParser()).parseFromString(s, "text/xml").documentElement;
-    } catch(e) {}
+    } catch (e) {
+    }
     return null;
 };
 var JSJaC = {
     Version: '$Rev: 456 $',
-    require: function(libraryName) {
+    require: function (libraryName) {
         document.write('<script type="text/javascript" src="' + libraryName + '"></script>');
     },
-    load: function() {
+    load: function () {
         var includes = ['xmlextras', 'jsextras', 'crypt', 'JSJaCConfig', 'JSJaCConstants', 'JSJaCCookie', 'JSJaCJSON', 'JSJaCJID', 'JSJaCBuilder', 'JSJaCPacket', 'JSJaCError', 'JSJaCKeys', 'JSJaCConnection', 'JSJaCHttpPollingConnection', 'JSJaCHttpBindingConnection', 'JSJaCConsoleLogger'];
         var scripts = document.getElementsByTagName("script");
         var path = './';
@@ -2487,10 +2574,10 @@ var JSJaC = {
             }
         }
         for (var i = 0; i < includes.length; i++)
-        this.require(path + includes[i] + '.js');
+            this.require(path + includes[i] + '.js');
     },
-    bind: function(fn, obj, arg) {
-        return function() {
+    bind: function (fn, obj, arg) {
+        return function () {
             if (arg) fn.apply(obj, arg);
             else fn.apply(obj);
         };

@@ -13,406 +13,359 @@ import com.boco.eoms.common.util.StaticMethod;
  * <p>
  * Thu Apr 02 14:11:03 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() 李江红
  * @moudle.getVersion() 3.5
- * 
  */
 public class AttemperSubForm extends BaseForm implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	public final static String STRUTSACTION_ADD = "1";
-	public final static String STRUTSACTION_EDIT = "2";
-	public final static String STRUTSACTION_ISSUANCE ="3"; // 发布
-	public final static String STRUTSACTION_DEAL = "4"; // 处理
-	public final static String STRUTSACTION_VIEW = "5"; // 查看
-	public final static String STRUTSACTION_FINISH = "6"; // 结束
-	public final static String STRUTSACTION_DEL = "7"; // 删除
-	
-	/**
-	 * 锟斤拷锟�
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    private static final long serialVersionUID = 1L;
+    public final static String STRUTSACTION_ADD = "1";
+    public final static String STRUTSACTION_EDIT = "2";
+    public final static String STRUTSACTION_ISSUANCE = "3"; // 发布
+    public final static String STRUTSACTION_DEAL = "4"; // 处理
+    public final static String STRUTSACTION_VIEW = "5"; // 查看
+    public final static String STRUTSACTION_FINISH = "6"; // 结束
+    public final static String STRUTSACTION_DEL = "7"; // 删除
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 锟斤拷锟�
+     */
+    private String id;
 
-	/**
-	 *
-	 * 网调ID号
-	 *
-	 */
-	private String attemperId;
-   
-	public void setAttemperId(String attemperId){
-		this.attemperId= attemperId;       
-	}
-   
-	public String getAttemperId(){
-		return this.attemperId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * 录入部门
-	 *
-	 */
-	private String deptId;
-   
-	public void setDeptId(String deptId){
-		this.deptId= deptId;       
-	}
-   
-	public String getDeptId(){
-		return this.deptId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * 录入人
-	 *
-	 */
-	private String cruser;
-   
-	public void setCruser(String cruser){
-		this.cruser= cruser;       
-	}
-   
-	public String getCruser(){
-		return this.cruser;
-	}
+    /**
+     * 网调ID号
+     */
+    private String attemperId;
 
-	/**
-	 *
-	 * 录入时间
-	 *
-	 */
-	private String crtime;
-   
-	public void setCrtime(String crtime){
-		this.crtime= crtime;       
-	}
-   
-	public String getCrtime(){
-		return this.crtime;
-	}
+    public void setAttemperId(String attemperId) {
+        this.attemperId = attemperId;
+    }
 
-	/**
-	 *
-	 * 预计开始时间
-	 *
-	 */
-	private String intendBeginTime;
-   
-	public void setIntendBeginTime(String intendBeginTime){
-		this.intendBeginTime= intendBeginTime;       
-	}
-   
-	public String getIntendBeginTime(){
-		return this.intendBeginTime;
-	}
+    public String getAttemperId() {
+        return this.attemperId;
+    }
 
-	/**
-	 *
-	 * 预计结束时间
-	 *
-	 */
-	private String intendEndTime;
-   
-	public void setIntendEndTime(String intendEndTime){
-		this.intendEndTime= intendEndTime;       
-	}
-   
-	public String getIntendEndTime(){
-		return this.intendEndTime;
-	}
+    /**
+     * 录入部门
+     */
+    private String deptId;
 
-	/**
-	 *
-	 * 持续时间
-	 *
-	 */
-	private String persistTimes;
-   
-	public void setPersistTimes(String persistTimes){
-		this.persistTimes= persistTimes;       
-	}
-   
-	public String getPersistTimes(){
-		return this.persistTimes;
-	}
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
 
-	/**
-	 *
-	 * 是否影响业务
-	 *
-	 */
-	private String isAppEffect;
-   
-	public void setIsAppEffect(String isAppEffect){
-		this.isAppEffect= isAppEffect;       
-	}
-   
-	public String getIsAppEffect(){
-		return this.isAppEffect;
-	}
+    public String getDeptId() {
+        return this.deptId;
+    }
 
-	/**
-	 *
-	 * 影响业务
-	 *
-	 */
-	private String effectOperation;
-   
-	public void setEffectOperation(String effectOperation){
-		this.effectOperation= effectOperation;       
-	}
-   
-	public String getEffectOperation(){
-		return StaticMethod.nullObject2String(this.effectOperation).trim();
-	}
+    /**
+     * 录入人
+     */
+    private String cruser;
 
-	/**
-	 *
-	 * 主题
-	 *
-	 */
-	private String title;
-   
-	public void setTitle(String title){
-		this.title= title;       
-	}
-   
-	public String getTitle(){
-		return StaticMethod.nullObject2String(this.title).trim();
-	}
+    public void setCruser(String cruser) {
+        this.cruser = cruser;
+    }
 
-	/**
-	 *
-	 * 注意事项
-	 *
-	 */
-	private String content;
-   
-	public void setContent(String content){
-		this.content= content;       
-	}
-   
-	public String getContent(){
-		return StaticMethod.nullObject2String(this.content).trim();
-	}
+    public String getCruser() {
+        return this.cruser;
+    }
 
-	/**
-	 *
-	 * 备注
-	 *
-	 */
-	private String remark;
-   
-	public void setRemark(String remark){
-		this.remark= remark;       
-	}
-   
-	public String getRemark(){
-		return StaticMethod.nullObject2String(this.remark).trim();
-	}
+    /**
+     * 录入时间
+     */
+    private String crtime;
 
-	/**
-	 *
-	 * 网调结果
-	 *
-	 */
-	private String resultType;
-   
-	public void setResultType(String resultType){
-		this.resultType= resultType;       
-	}
-   
-	public String getResultType(){
-		return StaticMethod.nullObject2String(this.resultType).trim();
-	}
+    public void setCrtime(String crtime) {
+        this.crtime = crtime;
+    }
 
-	/**
-	 *
-	 * 网调结果
-	 *
-	 */
-	private String result;
-   
-	public void setResult(String result){
-		this.result= result;       
-	}
-   
-	public String getResult(){
-		return StaticMethod.nullObject2String(this.result).trim();
-	}
+    public String getCrtime() {
+        return this.crtime;
+    }
 
-	/**
-	 *
-	 * 状态
-	 *
-	 */
-	private String status;
-   
-	public void setStatus(String status){
-		this.status= status;       
-	}
-   
-	public String getStatus(){
-		return this.status;
-	}
+    /**
+     * 预计开始时间
+     */
+    private String intendBeginTime;
 
-	/**
-	 *
-	 * 归档时间
-	 *
-	 */
-	private String holdTime;
-   
-	public void setHoldTime(String holdTime){
-		this.holdTime= holdTime;       
-	}
-   
-	public String getHoldTime(){
-		return this.holdTime;
-	}
+    public void setIntendBeginTime(String intendBeginTime) {
+        this.intendBeginTime = intendBeginTime;
+    }
 
-	/**
-	 *
-	 * 结束人
-	 *
-	 */
-	private String finishUser;
-   
-	public void setFinishUser(String finishUser){
-		this.finishUser= finishUser;       
-	}
-   
-	public String getFinishUser(){
-		return this.finishUser;
-	}
+    public String getIntendBeginTime() {
+        return this.intendBeginTime;
+    }
 
-	/**
-	 *
-	 * 附件标识
-	 *
-	 */
-	private String serial;
-   
-	public void setSerial(String serial){
-		this.serial= serial;       
-	}
-   
-	public String getSerial(){
-		return this.serial;
-	}
+    /**
+     * 预计结束时间
+     */
+    private String intendEndTime;
 
-	/**
-	 *
-	 * 是否删除
-	 *
-	 */
-	private String deleted;
-   
-	public void setDeleted(String deleted){
-		this.deleted= deleted;       
-	}
-   
-	public String getDeleted(){
-		return this.deleted;
-	}
+    public void setIntendEndTime(String intendEndTime) {
+        this.intendEndTime = intendEndTime;
+    }
 
-	/**
-	 *
-	 * 是否生成对比表
-	 *
-	 */
-	private String ifContrastReport;
-   
-	public void setIfContrastReport(String ifContrastReport){
-		this.ifContrastReport= ifContrastReport;       
-	}
-   
-	public String getIfContrastReport(){
-		return this.ifContrastReport;
-	}
+    public String getIntendEndTime() {
+        return this.intendEndTime;
+    }
 
-	/**
-	 *
-	 * 时间段
-	 *
-	 */
-	private String days;
-   
-	public void setDays(String days){
-		this.days= days;       
-	}
-   
-	public String getDays(){
-		return this.days;
-	}
+    /**
+     * 持续时间
+     */
+    private String persistTimes;
 
-	/**
-	 *
-	 * 设备所属部门
-	 *
-	 */
-	private String netDept;
-   
-	public void setNetDept(String netDept){
-		this.netDept= netDept;       
-	}
-   
-	public String getNetDept(){
-		return this.netDept;
-	}
+    public void setPersistTimes(String persistTimes) {
+        this.persistTimes = persistTimes;
+    }
 
-	/**
-	 *
-	 * 传输专业
-	 *
-	 */
-	private String subSpeciality;
-   
-	public void setSubSpeciality(String subSpeciality){
-		this.subSpeciality= subSpeciality;       
-	}
-   
-	public String getSubSpeciality(){
-		return this.subSpeciality;
-	}
-	
-	/*
-	 * 
-	 * 动作
-	 */
-	private String strutsAction;
+    public String getPersistTimes() {
+        return this.persistTimes;
+    }
 
-	public String getStrutsAction() {
-		return strutsAction;
-	}
+    /**
+     * 是否影响业务
+     */
+    private String isAppEffect;
 
-	public void setStrutsAction(String strutsAction) {
-		this.strutsAction = strutsAction;
-	}
-	
-	/**
-	 * 是否要结束网调标识
-	 */
-	private int ifFinishAttemper;
+    public void setIsAppEffect(String isAppEffect) {
+        this.isAppEffect = isAppEffect;
+    }
 
-	public int getIfFinishAttemper() {
-		return ifFinishAttemper;
-	}
+    public String getIsAppEffect() {
+        return this.isAppEffect;
+    }
 
-	public void setIfFinishAttemper(int ifFinishAttemper) {
-		this.ifFinishAttemper = ifFinishAttemper;
-	}
+    /**
+     * 影响业务
+     */
+    private String effectOperation;
+
+    public void setEffectOperation(String effectOperation) {
+        this.effectOperation = effectOperation;
+    }
+
+    public String getEffectOperation() {
+        return StaticMethod.nullObject2String(this.effectOperation).trim();
+    }
+
+    /**
+     * 主题
+     */
+    private String title;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return StaticMethod.nullObject2String(this.title).trim();
+    }
+
+    /**
+     * 注意事项
+     */
+    private String content;
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getContent() {
+        return StaticMethod.nullObject2String(this.content).trim();
+    }
+
+    /**
+     * 备注
+     */
+    private String remark;
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getRemark() {
+        return StaticMethod.nullObject2String(this.remark).trim();
+    }
+
+    /**
+     * 网调结果
+     */
+    private String resultType;
+
+    public void setResultType(String resultType) {
+        this.resultType = resultType;
+    }
+
+    public String getResultType() {
+        return StaticMethod.nullObject2String(this.resultType).trim();
+    }
+
+    /**
+     * 网调结果
+     */
+    private String result;
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getResult() {
+        return StaticMethod.nullObject2String(this.result).trim();
+    }
+
+    /**
+     * 状态
+     */
+    private String status;
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    /**
+     * 归档时间
+     */
+    private String holdTime;
+
+    public void setHoldTime(String holdTime) {
+        this.holdTime = holdTime;
+    }
+
+    public String getHoldTime() {
+        return this.holdTime;
+    }
+
+    /**
+     * 结束人
+     */
+    private String finishUser;
+
+    public void setFinishUser(String finishUser) {
+        this.finishUser = finishUser;
+    }
+
+    public String getFinishUser() {
+        return this.finishUser;
+    }
+
+    /**
+     * 附件标识
+     */
+    private String serial;
+
+    public void setSerial(String serial) {
+        this.serial = serial;
+    }
+
+    public String getSerial() {
+        return this.serial;
+    }
+
+    /**
+     * 是否删除
+     */
+    private String deleted;
+
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getDeleted() {
+        return this.deleted;
+    }
+
+    /**
+     * 是否生成对比表
+     */
+    private String ifContrastReport;
+
+    public void setIfContrastReport(String ifContrastReport) {
+        this.ifContrastReport = ifContrastReport;
+    }
+
+    public String getIfContrastReport() {
+        return this.ifContrastReport;
+    }
+
+    /**
+     * 时间段
+     */
+    private String days;
+
+    public void setDays(String days) {
+        this.days = days;
+    }
+
+    public String getDays() {
+        return this.days;
+    }
+
+    /**
+     * 设备所属部门
+     */
+    private String netDept;
+
+    public void setNetDept(String netDept) {
+        this.netDept = netDept;
+    }
+
+    public String getNetDept() {
+        return this.netDept;
+    }
+
+    /**
+     * 传输专业
+     */
+    private String subSpeciality;
+
+    public void setSubSpeciality(String subSpeciality) {
+        this.subSpeciality = subSpeciality;
+    }
+
+    public String getSubSpeciality() {
+        return this.subSpeciality;
+    }
+
+    /*
+     *
+     * 动作
+     */
+    private String strutsAction;
+
+    public String getStrutsAction() {
+        return strutsAction;
+    }
+
+    public void setStrutsAction(String strutsAction) {
+        this.strutsAction = strutsAction;
+    }
+
+    /**
+     * 是否要结束网调标识
+     */
+    private int ifFinishAttemper;
+
+    public int getIfFinishAttemper() {
+        return ifFinishAttemper;
+    }
+
+    public void setIfFinishAttemper(int ifFinishAttemper) {
+        this.ifFinishAttemper = ifFinishAttemper;
+    }
 
 
 }

@@ -6,19 +6,19 @@ import com.boco.eoms.sheet.resourceaffirm.task.IResourceAffirmTask;
 import com.boco.eoms.sheet.base.webapp.action.ProcessListDisplaytagDecoratorHelper;
 
 public class ListDisplaytagDecoratorHelper extends
-		ProcessListDisplaytagDecoratorHelper {
-	public String getUrgentDegree() {
-		IResourceAffirmTask task = (IResourceAffirmTask) getCurrentRowObject();
+        ProcessListDisplaytagDecoratorHelper {
+    public String getUrgentDegree() {
+        IResourceAffirmTask task = (IResourceAffirmTask) getCurrentRowObject();
         ID2NameService service = (ID2NameService) ApplicationContextHolder
-           .getInstance().getBean("ID2NameGetServiceCatch");
+                .getInstance().getBean("ID2NameGetServiceCatch");
         String name = service.id2Name(task.getUrgentDegree(), "ItawSystemDictTypeDao");
         return name;
     }
-	
-	public String getBusinessType() {
-		IResourceAffirmTask task = (IResourceAffirmTask) getCurrentRowObject();
+
+    public String getBusinessType() {
+        IResourceAffirmTask task = (IResourceAffirmTask) getCurrentRowObject();
         ID2NameService service = (ID2NameService) ApplicationContextHolder
-           .getInstance().getBean("ID2NameGetServiceCatch");
+                .getInstance().getBean("ID2NameGetServiceCatch");
         String name = service.id2Name(task.getBusinessType(), "ItawSystemDictTypeDao");
         return name;
     }

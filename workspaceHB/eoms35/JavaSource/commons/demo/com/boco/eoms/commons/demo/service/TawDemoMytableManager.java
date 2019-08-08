@@ -15,6 +15,7 @@ public interface TawDemoMytableManager extends Manager {
 
     /**
      * Gets tawDemoMytable's information based on id.
+     *
      * @param id the tawDemoMytable's id
      * @return tawDemoMytable populated tawDemoMytable object
      */
@@ -22,17 +23,20 @@ public interface TawDemoMytableManager extends Manager {
 
     /**
      * Saves a tawDemoMytable's information
+     *
      * @param tawDemoMytable the object to be saved
      */
     public void saveTawDemoMytable(TawDemoMytable tawDemoMytable);
 
     /**
      * Removes a tawDemoMytable from the database by id
+     *
      * @param id the tawDemoMytable's id
      */
     public void removeTawDemoMytable(final String id);
-    
+
     public Map getTawDemoMytables(final Integer curPage, final Integer pageSize, final String whereStr);
+
     public Map getTawDemoMytables(final Integer curPage, final Integer pageSize);
 }
 

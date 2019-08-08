@@ -14,12 +14,10 @@ import java.util.*;*/
 // Referenced classes of package com.boco.eoms.sheet.SafetyProblem.service.impl:
 //			SafetyProblemTaskManagerImpl
 
-public class SafetyProblemTaskManagerImplGZ extends SafetyProblemTaskManagerImpl
-{
+public class SafetyProblemTaskManagerImplGZ extends SafetyProblemTaskManagerImpl {
 
-	public SafetyProblemTaskManagerImplGZ()
-	{
-	}
+    public SafetyProblemTaskManagerImplGZ() {
+    }
 
 	/*public HashMap getUndoTaskByOverTime(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length)
 		throws Exception

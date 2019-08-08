@@ -9,8 +9,7 @@ import com.boco.eoms.sheet.base.model.BaseMain;
 import com.boco.eoms.sheet.base.service.IMainService;
 
 public interface IAgentMaintenanceMainManager
-	extends IMainService
-{
+        extends IMainService {
 
-	public abstract BaseMain getMainBySourceId(String s, String s1);
+    public abstract BaseMain getMainBySourceId(String s, String s1);
 }

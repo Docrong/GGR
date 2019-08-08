@@ -1,79 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class name="com.boco.eoms.km.expert.model.KmExpertScore"
-		table="KM_EXPERT_SCORE">
+    <class name="com.boco.eoms.km.expert.model.KmExpertScore"
+           table="KM_EXPERT_SCORE">
 
-		<id name="id" column="id" unsaved-value="null">
+        <id name="id" column="id" unsaved-value="null">
 
-			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-			<generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-			</generator>
+            </generator>
 
-		</id>
+        </id>
 
-		<property name="createTime" column="CREATE_TIME"
-		 length="20" not-null="true" unique="false">
+        <property name="createTime" column="CREATE_TIME"
+                  length="20" not-null="true" unique="false">
 
-		</property>
-		
-		<property name="typeFlag" column="TYPE_FLAG"
-		 length="10" not-null="true" unique="false">
+        </property>
 
-		</property>
+        <property name="typeFlag" column="TYPE_FLAG"
+                  length="10" not-null="true" unique="false">
 
-		<property name="expertUserId" column="EXPERT_USER_ID"
-			length="32" not-null="true" unique="false">
+        </property>
 
-		</property>
+        <property name="expertUserId" column="EXPERT_USER_ID"
+                  length="32" not-null="true" unique="false">
 
-		<property name="problemNum" column="PROBLEM_NUM"
-			length="10" not-null="false" unique="false">
+        </property>
 
-		</property>
-		
-		<property name="answerNum" column="ANSWER_NUM"
-		 length="10" not-null="false" unique="false">
+        <property name="problemNum" column="PROBLEM_NUM"
+                  length="10" not-null="false" unique="false">
 
-		</property>
-		
-		<property name="answerSati" column="ANSWER_SATI"
-			length="10" not-null="false" unique="false">
+        </property>
 
-		</property>
+        <property name="answerNum" column="ANSWER_NUM"
+                  length="10" not-null="false" unique="false">
 
-		<property name="caseNum" column="CASE_NUM"
-		 length="10" not-null="false" unique="false">
+        </property>
 
-		</property>
+        <property name="answerSati" column="ANSWER_SATI"
+                  length="10" not-null="false" unique="false">
 
-		<property name="baseScore" column="BASE_SCORE"
-		 length="10" not-null="false" unique="false">
+        </property>
 
-		</property> 
-		
-		<property name="knowledgeScore" column="KNOWLEDGE_SCORE"
-		 length="10" not-null="false" unique="false">
+        <property name="caseNum" column="CASE_NUM"
+                  length="10" not-null="false" unique="false">
 
-		</property>
-		
-		<property name="answerScore" column="ANSWER_SCORE"
-		 length="10" not-null="false" unique="false">
+        </property>
 
-		</property>
-		
-		<property name="inputScore" column="INPUT_SCORE"
-		 length="10" not-null="false" unique="false">
+        <property name="baseScore" column="BASE_SCORE"
+                  length="10" not-null="false" unique="false">
 
-		</property>
+        </property>
 
-	</class>
+        <property name="knowledgeScore" column="KNOWLEDGE_SCORE"
+                  length="10" not-null="false" unique="false">
+
+        </property>
+
+        <property name="answerScore" column="ANSWER_SCORE"
+                  length="10" not-null="false" unique="false">
+
+        </property>
+
+        <property name="inputScore" column="INPUT_SCORE"
+                  length="10" not-null="false" unique="false">
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

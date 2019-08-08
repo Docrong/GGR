@@ -35,7 +35,7 @@ public class TawSystemOrganizationProxyManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemOrganizationProxyDao.expects(once()).method("getTawSystemOrganizationProxys")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSystemOrganizationProxys = tawSystemOrganizationProxyManager.getTawSystemOrganizationProxys(null);
         assertTrue(tawSystemOrganizationProxys.size() == 1);
@@ -45,7 +45,7 @@ public class TawSystemOrganizationProxyManagerTest extends BaseManagerTestCase {
     public void testGetTawSystemOrganizationProxy() throws Exception {
         // set expected behavior on dao
         tawSystemOrganizationProxyDao.expects(once()).method("getTawSystemOrganizationProxy")
-            .will(returnValue(new TawSystemOrganizationProxy()));
+                .will(returnValue(new TawSystemOrganizationProxy()));
         TawSystemOrganizationProxy tawSystemOrganizationProxy = tawSystemOrganizationProxyManager.getTawSystemOrganizationProxy(tawSystemOrganizationProxyId);
         assertTrue(tawSystemOrganizationProxy != null);
         tawSystemOrganizationProxyDao.verify();
@@ -56,7 +56,7 @@ public class TawSystemOrganizationProxyManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemOrganizationProxyDao.expects(once()).method("saveTawSystemOrganizationProxy")
-            .with(same(tawSystemOrganizationProxy)).isVoid();
+                .with(same(tawSystemOrganizationProxy)).isVoid();
 
         tawSystemOrganizationProxyManager.saveTawSystemOrganizationProxy(tawSystemOrganizationProxy);
         tawSystemOrganizationProxyDao.verify();
@@ -69,7 +69,7 @@ public class TawSystemOrganizationProxyManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemOrganizationProxyDao.expects(once()).method("saveTawSystemOrganizationProxy")
-            .with(same(tawSystemOrganizationProxy)).isVoid();
+                .with(same(tawSystemOrganizationProxy)).isVoid();
         tawSystemOrganizationProxyManager.saveTawSystemOrganizationProxy(tawSystemOrganizationProxy);
         tawSystemOrganizationProxyDao.verify();
 

@@ -11,23 +11,22 @@ package com.boco.eoms.commons.file.exception;
  * <p>
  * Mar 27, 2007 9:27:00 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class FMImportFileException extends FMException {
 
-	public FMImportFileException() {
-		super();
-	}
+    public FMImportFileException() {
+        super();
+    }
 
-	public FMImportFileException(String errorMessage) {
-		super(errorMessage);
-	}
+    public FMImportFileException(String errorMessage) {
+        super(errorMessage);
+    }
 
-	public FMImportFileException(Throwable cause) {
-		super(cause);
-	}
+    public FMImportFileException(Throwable cause) {
+        super(cause);
+    }
 
 }

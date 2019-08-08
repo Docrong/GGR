@@ -15,46 +15,50 @@ import com.boco.eoms.commons.statistic.base.mgr.impl.ExcelConverter;
 
 /**
  * @author liuxy
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 
 public interface IStatConfigManager {
-	public String getConfigFilePath();
-	
-	public void setConfigFilePath(String configFilePath);
+    public String getConfigFilePath();
 
-	public KpiConfig getKpiConfig()throws Exception;
-	public KpiConfig getKpiConfig(String KpiConfigURL) throws Exception;
-	
-	public KpiConfig reloadKpiConfig()throws Exception;
-	
-	public int writeConfigFile(String path, Object cfg);
+    public void setConfigFilePath(String configFilePath);
 
-	public String getReportConfigFilePath() ;
+    public KpiConfig getKpiConfig() throws Exception;
 
-	public void setReportConfigFilePath(String reportConfigFilePath);
-	public ReportConfig reloadReportConfig() throws Exception ;
-	public ReportConfig getReportConfig() throws Exception ;
-	
-	public Excel getExcelConfig(String excelConfigURL) throws Exception;
-	
-	public Excel getExcelConfig(String excelConfigURL,String[] dyColumSelectids,int sheetIndex) throws Exception;
-	
-	public String getExcelConfigFilePath() ;
-	public void setExcelConfigFilePath(String reportConfigFilePath);
-	
-	public ExcelConverter getExcelConverter() ;
+    public KpiConfig getKpiConfig(String KpiConfigURL) throws Exception;
 
-	public void setExcelConverter(ExcelConverter excelConverter);
-	
-	public Map getExcelConfigMap();
+    public KpiConfig reloadKpiConfig() throws Exception;
 
-	public void setExcelConfigMap(Map excelConfigMap);
-	
-	public Map getQueryCongigMap();
+    public int writeConfigFile(String path, Object cfg);
 
-	public void setQueryCongigMap(Map queryCongigMap);
+    public String getReportConfigFilePath();
+
+    public void setReportConfigFilePath(String reportConfigFilePath);
+
+    public ReportConfig reloadReportConfig() throws Exception;
+
+    public ReportConfig getReportConfig() throws Exception;
+
+    public Excel getExcelConfig(String excelConfigURL) throws Exception;
+
+    public Excel getExcelConfig(String excelConfigURL, String[] dyColumSelectids, int sheetIndex) throws Exception;
+
+    public String getExcelConfigFilePath();
+
+    public void setExcelConfigFilePath(String reportConfigFilePath);
+
+    public ExcelConverter getExcelConverter();
+
+    public void setExcelConverter(ExcelConverter excelConverter);
+
+    public Map getExcelConfigMap();
+
+    public void setExcelConfigMap(Map excelConfigMap);
+
+    public Map getQueryCongigMap();
+
+    public void setQueryCongigMap(Map queryCongigMap);
 
 }

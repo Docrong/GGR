@@ -37,6 +37,7 @@ import com.boco.eoms.sheet.commonfaultpack.service.ICommonFaultPackMainManager;
 import com.boco.eoms.sheet.interfaceBase.util.InterfaceUtilProperties;
 import com.boco.eoms.sheet.netownershipwireless.service.INetOwnershipwirelessManager;
 import com.boco.eoms.util.InterfaceUtil;
+
 import java.io.PrintStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -49,194 +50,190 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CommonfaultSheet
-{
- 
+public class CommonfaultSheet {
 
-  public String acceptSheet(String opDetail,List taskList,String serCaller)
-  {
-    String result = "";
-    try {
-      InterfaceUtil interfaceUtil = new InterfaceUtil();
-      HashMap sheetMap = new HashMap();
-      HashMap columnMap = new HashMap();
-      HashMap sheetMap1 = new HashMap();
-      Map valueMap = new HashMap();
-      ICommonFaultMainManager mainservice = (ICommonFaultMainManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
-      ICommonFaultTaskManager taskservice = (ICommonFaultTaskManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultTaskManager");
-      ICommonFaultLinkManager linkservice = (ICommonFaultLinkManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultLinkManager");
-      WPSEngineServiceMethod sm = new WPSEngineServiceMethod();
-      InterfaceUtilProperties properties = new InterfaceUtilProperties();
-      
-      String operateUserId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateUserId");
-      String operateDeptId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateDeptId");
-      String operateRoleId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateRoleId");
-      String operaterContact = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operaterContact");
+
+    public String acceptSheet(String opDetail, List taskList, String serCaller) {
+        String result = "";
+        try {
+            InterfaceUtil interfaceUtil = new InterfaceUtil();
+            HashMap sheetMap = new HashMap();
+            HashMap columnMap = new HashMap();
+            HashMap sheetMap1 = new HashMap();
+            Map valueMap = new HashMap();
+            ICommonFaultMainManager mainservice = (ICommonFaultMainManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
+            ICommonFaultTaskManager taskservice = (ICommonFaultTaskManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultTaskManager");
+            ICommonFaultLinkManager linkservice = (ICommonFaultLinkManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultLinkManager");
+            WPSEngineServiceMethod sm = new WPSEngineServiceMethod();
+            InterfaceUtilProperties properties = new InterfaceUtilProperties();
+
+            String operateUserId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateUserId");
+            String operateDeptId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateDeptId");
+            String operateRoleId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateRoleId");
+            String operaterContact = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operaterContact");
 //      String operate_time = StaticMethod.getCurrentDateTime();
-      
-      Calendar calendar2 = Calendar.getInstance();
-	  calendar2.add(13, -5);
-	  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-	  String operate_time = sdf.format(calendar2.getTime());
 
-      String nodeName = "acceptSheet";
-      System.out.println("commonfaultsheet.acceptSheet内对应的nodeName======" + nodeName);
+            Calendar calendar2 = Calendar.getInstance();
+            calendar2.add(13, -5);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String operate_time = sdf.format(calendar2.getTime());
 
-      if ((opDetail != null) && (!"".equals(opDetail))) {
-        String filePath = StaticMethod.getFilePathForUrl("classpath:config/commonfaultsheet.xml");
-        sheetMap = interfaceUtil.xmlElements(opDetail, sheetMap, "FieldContent");
+            String nodeName = "acceptSheet";
+            System.out.println("commonfaultsheet.acceptSheet内对应的nodeName======" + nodeName);
 
-        valueMap = properties.getMapFromXml(sheetMap, filePath, nodeName);
-        String sheet_id = StaticMethod.nullObject2String(sheetMap.get("sheetid"));
-        if ((sheet_id != null) && (!"".equals(sheet_id))) {
-          CommonFaultMain main = (CommonFaultMain)mainservice.getMainByAlarmId(sheet_id);
-          int status = StaticMethod.nullObject2int(main.getStatus());
+            if ((opDetail != null) && (!"".equals(opDetail))) {
+                String filePath = StaticMethod.getFilePathForUrl("classpath:config/commonfaultsheet.xml");
+                sheetMap = interfaceUtil.xmlElements(opDetail, sheetMap, "FieldContent");
 
-          if (status != 0) {
-            result = "Status=-1;sheetDetail=;Errlist=工单流水号为" + sheet_id + "的工单未处于运行状态,无法进行受理状态更新操作！";
-            return result;
-          }
-         
+                valueMap = properties.getMapFromXml(sheetMap, filePath, nodeName);
+                String sheet_id = StaticMethod.nullObject2String(sheetMap.get("sheetid"));
+                if ((sheet_id != null) && (!"".equals(sheet_id))) {
+                    CommonFaultMain main = (CommonFaultMain) mainservice.getMainByAlarmId(sheet_id);
+                    int status = StaticMethod.nullObject2int(main.getStatus());
 
-          if ((taskList != null) && (taskList.size() > 0)) {
-            CommonFaultTask task = (CommonFaultTask)taskList.get(0);
-            valueMap.put("operateDeptId", operateDeptId);
-            valueMap.put("operaterContact", operaterContact);
+                    if (status != 0) {
+                        result = "Status=-1;sheetDetail=;Errlist=工单流水号为" + sheet_id + "的工单未处于运行状态,无法进行受理状态更新操作！";
+                        return result;
+                    }
 
-            valueMap.put("operateUserId", operateUserId);
-            valueMap.put("operateRoleId", operateRoleId);
-            valueMap.put("operateTime", operate_time);
-            valueMap.put("mainId", main.getId());
-            valueMap.put("aiid", task.getId());
-            valueMap.put("toOrgRoleId", task.getOperateRoleId());
-            valueMap.put("linkFaultDealInfo", serCaller);
-            try
-            {
-              sheetMap1.put("main", main);
-              sheetMap1.put("link", linkservice.getLinkObject().getClass().newInstance());
-              sheetMap1.put("operate", "dealPerformer@java.lang.String,dealPerformerLeader@java.lang.String,dealPerformerType@java.lang.String,copyPerformer@java.lang.String,copyPerformerLeader@java.lang.String,copyPerformerType@java.lang.String,auditPerformer@java.lang.String,auditPerformerLeader@java.lang.String,auditPerformerType@java.lang.String,phaseId@java.lang.String,beanId@java.lang.String,mainClassName@java.lang.String,linkClassName@java.lang.String,hasNextTaskFlag@java.lang.String,reInvokeCount@java.lang.Integer,subAuditPerformer@java.lang.String,subAuditPerformerLeader@java.lang.String,subAuditPerformerType@java.lang.String,linkBeanId@java.lang.String,interfaceType@java.lang.String,methodType@java.lang.String,sendType@java.lang.String,extendPerformer@java.lang.String,extendPerformerLeader@java.lang.String,extendPerformerType@java.lang.String,extendKey1@java.lang.String,extendKey2@java.lang.String");
-              columnMap.put("selfSheet", sheetMap1);
-            } catch (IllegalAccessException e) {
-              e.printStackTrace();
-              result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口报错,详细内容为" + e.getMessage();
-              return result;
-            } catch (InstantiationException e) {
-              e.printStackTrace();
-              result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口报错,详细内容为" + e.getMessage();
-              return result;
+
+                    if ((taskList != null) && (taskList.size() > 0)) {
+                        CommonFaultTask task = (CommonFaultTask) taskList.get(0);
+                        valueMap.put("operateDeptId", operateDeptId);
+                        valueMap.put("operaterContact", operaterContact);
+
+                        valueMap.put("operateUserId", operateUserId);
+                        valueMap.put("operateRoleId", operateRoleId);
+                        valueMap.put("operateTime", operate_time);
+                        valueMap.put("mainId", main.getId());
+                        valueMap.put("aiid", task.getId());
+                        valueMap.put("toOrgRoleId", task.getOperateRoleId());
+                        valueMap.put("linkFaultDealInfo", serCaller);
+                        try {
+                            sheetMap1.put("main", main);
+                            sheetMap1.put("link", linkservice.getLinkObject().getClass().newInstance());
+                            sheetMap1.put("operate", "dealPerformer@java.lang.String,dealPerformerLeader@java.lang.String,dealPerformerType@java.lang.String,copyPerformer@java.lang.String,copyPerformerLeader@java.lang.String,copyPerformerType@java.lang.String,auditPerformer@java.lang.String,auditPerformerLeader@java.lang.String,auditPerformerType@java.lang.String,phaseId@java.lang.String,beanId@java.lang.String,mainClassName@java.lang.String,linkClassName@java.lang.String,hasNextTaskFlag@java.lang.String,reInvokeCount@java.lang.Integer,subAuditPerformer@java.lang.String,subAuditPerformerLeader@java.lang.String,subAuditPerformerType@java.lang.String,linkBeanId@java.lang.String,interfaceType@java.lang.String,methodType@java.lang.String,sendType@java.lang.String,extendPerformer@java.lang.String,extendPerformerLeader@java.lang.String,extendPerformerType@java.lang.String,extendKey1@java.lang.String,extendKey2@java.lang.String");
+                            columnMap.put("selfSheet", sheetMap1);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                            result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口报错,详细内容为" + e.getMessage();
+                            return result;
+                        } catch (InstantiationException e) {
+                            e.printStackTrace();
+                            result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口报错,详细内容为" + e.getMessage();
+                            return result;
+                        }
+                        try {
+                            sm.claimTask(task.getId(), valueMap, columnMap, operateUserId);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口报错,详细内容为" + e.getMessage();
+                            return result;
+                        }
+
+                        result = "Status=0;Errlist=";
+                    } else {
+                        result = "Status=-1;Errlist=工单流水号为" + sheet_id + "的工单未处于待受理状态,无法进行受理状态更新操作！";
+                        return result;
+                    }
+                } else {
+                    result = "Status=-1;Errlist=工单受理状态更新请求接口传入参数不正确,请查证！";
+                    return result;
+                }
+            } else {
+                result = "Status=-1;Errlist=工单受理状态更新请求接口没有传入opDetail参数,请查证！";
+                return result;
             }
-            try {
-              sm.claimTask(task.getId(), valueMap, columnMap, operateUserId);
-            } catch (Exception e) {
-              e.printStackTrace();
-              result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口报错,详细内容为" + e.getMessage();
-              return result;
-            }
-            
-            result = "Status=0;Errlist=";
-          } else {
-            result = "Status=-1;Errlist=工单流水号为" + sheet_id + "的工单未处于待受理状态,无法进行受理状态更新操作！";
             return result;
-          }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口出错！详细信息为" + e.getMessage();
         }
-        else {
-          result = "Status=-1;Errlist=工单受理状态更新请求接口传入参数不正确,请查证！";
-          return result;
-        }
-      } else {
-        result = "Status=-1;Errlist=工单受理状态更新请求接口没有传入opDetail参数,请查证！";
         return result;
-      }
-      return result;
-    } catch (Exception e) {
-      e.printStackTrace();
-      result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口出错！详细信息为" + e.getMessage();
-    }return result;
-  }
+    }
 
-  public String replySheet(String serCaller,String opDetail)
-  {
-    String result = "";
-    try {
-      InterfaceUtil interfaceUtil = new InterfaceUtil();
-      ICommonFaultMainManager mainservice = (ICommonFaultMainManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
-      ICommonFaultTaskManager taskservice = (ICommonFaultTaskManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultTaskManager");
-      ICommonFaultLinkManager linkservice = (ICommonFaultLinkManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultLinkManager");
-      WPSEngineServiceMethod sm = new WPSEngineServiceMethod();
-      HashMap sheetMap = new HashMap();
-      HashMap columnMap = new HashMap();
-      HashMap sheetMap1 = new HashMap();
-      InterfaceUtilProperties properties = new InterfaceUtilProperties();
-      String nodeName = "dealSheet";
-      System.out.println("commonfaultsheet.dealSheet内对应的nodeName======" + nodeName);
-      String filePath = StaticMethod.getFilePathForUrl("classpath:config/commonfaultsheet.xml");
-      if ((opDetail != null) && (!"".equals(opDetail))) {
-        sheetMap = interfaceUtil.xmlElements(opDetail, sheetMap, "FieldContent");
-        Map valueMap = properties.getMapFromXml(sheetMap, filePath, nodeName);
+    public String replySheet(String serCaller, String opDetail) {
+        String result = "";
+        try {
+            InterfaceUtil interfaceUtil = new InterfaceUtil();
+            ICommonFaultMainManager mainservice = (ICommonFaultMainManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
+            ICommonFaultTaskManager taskservice = (ICommonFaultTaskManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultTaskManager");
+            ICommonFaultLinkManager linkservice = (ICommonFaultLinkManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultLinkManager");
+            WPSEngineServiceMethod sm = new WPSEngineServiceMethod();
+            HashMap sheetMap = new HashMap();
+            HashMap columnMap = new HashMap();
+            HashMap sheetMap1 = new HashMap();
+            InterfaceUtilProperties properties = new InterfaceUtilProperties();
+            String nodeName = "dealSheet";
+            System.out.println("commonfaultsheet.dealSheet内对应的nodeName======" + nodeName);
+            String filePath = StaticMethod.getFilePathForUrl("classpath:config/commonfaultsheet.xml");
+            if ((opDetail != null) && (!"".equals(opDetail))) {
+                sheetMap = interfaceUtil.xmlElements(opDetail, sheetMap, "FieldContent");
+                Map valueMap = properties.getMapFromXml(sheetMap, filePath, nodeName);
 
-        String sheet_id = StaticMethod.nullObject2String(sheetMap.get("sheetid"));//传过来的是  告警流水号
-        
-        String operateUserId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateUserId");
-        String operateDeptId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateDeptId");
-        String operateRoleId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateRoleId");
-        String operaterContact = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operaterContact");
-        String operate_time = StaticMethod.getCurrentDateTime();
-        if ((sheet_id != null) && (!"".equals(sheet_id))) {
-          CommonFaultMain main = (CommonFaultMain)mainservice.getMainByAlarmId(sheet_id);
-          int status = StaticMethod.nullObject2int(main.getStatus());
-          
+                String sheet_id = StaticMethod.nullObject2String(sheetMap.get("sheetid"));//传过来的是  告警流水号
 
-          if (status != 0) {
-            result = "Status=-1;sheetDetail=;Errlist=工单流水号为" + sheet_id + "的工单未处于运行状态,无法进行受理状态更新操作！";
-            return result;
-          }
-          String sheetKey = StaticMethod.nullObject2String(main.getId());
-          String condition = " sheetKey = '" + sheetKey + "' and taskstatus in ('2','8') and taskName ='SecondExcuteHumTask' ";//未接单
-          List taskList = taskservice.getTasksByCondition(condition);
+                String operateUserId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateUserId");
+                String operateDeptId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateDeptId");
+                String operateRoleId = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operateRoleId");
+                String operaterContact = XmlManage.getFile("/config/commonfaultsheet.xml").getProperty("operate.operaterContact");
+                String operate_time = StaticMethod.getCurrentDateTime();
+                if ((sheet_id != null) && (!"".equals(sheet_id))) {
+                    CommonFaultMain main = (CommonFaultMain) mainservice.getMainByAlarmId(sheet_id);
+                    int status = StaticMethod.nullObject2int(main.getStatus());
 
-          if ((taskList != null) && (taskList.size() > 0)) {
-            CommonFaultTask task = (CommonFaultTask)taskList.get(0);
-            String taskstatus = task.getTaskStatus();
-            if("2".equals(taskstatus)){
-            	//未接单
-            	System.out.println("in not acce by lyg="+main.getSheetId());
-            	acceptSheet(opDetail,taskList,serCaller);
-            }
-            valueMap.put("operateDeptId", operateDeptId);
-            valueMap.put("operaterContact", operaterContact);
 
-            valueMap.put("operateUserId", operateUserId);
-            valueMap.put("operateRoleId", operateRoleId);
-            valueMap.put("mainId", main.getId());
-            valueMap.put("operateTime", operate_time);
-            valueMap.put("aiid", task.getId());
-            
-            valueMap.put("linkFaultDealInfo", serCaller);
-            Date mainAlarmSolveDate = main.getMainAlarmSolveDate();
-            SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String linkFaultAvoidTime = "";
-            if(mainAlarmSolveDate != null){
-            	linkFaultAvoidTime = dateformat.format(mainAlarmSolveDate);
-            	System.out.println("linkFaultAvoidTime=lyg="+linkFaultAvoidTime);
-            }
-            
-            valueMap.put("linkFaultAvoidTime",linkFaultAvoidTime);
+                    if (status != 0) {
+                        result = "Status=-1;sheetDetail=;Errlist=工单流水号为" + sheet_id + "的工单未处于运行状态,无法进行受理状态更新操作！";
+                        return result;
+                    }
+                    String sheetKey = StaticMethod.nullObject2String(main.getId());
+                    String condition = " sheetKey = '" + sheetKey + "' and taskstatus in ('2','8') and taskName ='SecondExcuteHumTask' ";//未接单
+                    List taskList = taskservice.getTasksByCondition(condition);
 
-            Map sheetMainMap = SheetBeanUtils.bean2Map(main);
-            valueMap.putAll(sheetMainMap);
-            sheetMap1.put("main", main);
-            sheetMap1.put("link", linkservice.getLinkObject().getClass().newInstance());
-            sheetMap1.put("operate", "dealPerformer@java.lang.String,dealPerformerLeader@java.lang.String,dealPerformerType@java.lang.String,copyPerformer@java.lang.String,copyPerformerLeader@java.lang.String,copyPerformerType@java.lang.String,auditPerformer@java.lang.String,auditPerformerLeader@java.lang.String,auditPerformerType@java.lang.String,phaseId@java.lang.String,beanId@java.lang.String,mainClassName@java.lang.String,linkClassName@java.lang.String,hasNextTaskFlag@java.lang.String,reInvokeCount@java.lang.Integer,subAuditPerformer@java.lang.String,subAuditPerformerLeader@java.lang.String,subAuditPerformerType@java.lang.String,linkBeanId@java.lang.String,interfaceType@java.lang.String,methodType@java.lang.String,sendType@java.lang.String,extendPerformer@java.lang.String,extendPerformerLeader@java.lang.String,extendPerformerType@java.lang.String,extendKey1@java.lang.String,extendKey2@java.lang.String");
-            columnMap.put("selfSheet", sheetMap1);
-            String mainAlarmId = StaticMethod.nullObject2String(main.getMainAlarmId());
-            String mainFaultResponseLevel = StaticMethod.nullObject2String(main.getMainFaultResponseLevel());
-            String linkDealStep = StaticMethod.nullObject2String(valueMap.get("linkdealdesc"));
-            String sendContact = StaticMethod.nullObject2String(main.getSendContact());
-            
-            Date operateTime = SheetUtils.stringToDate(operate_time);
-            boolean inrule = false;
-            String obj = "";
-            System.out.println("lizhi:mainAlarmSolveDate=" + mainAlarmSolveDate + "sendContact=" + sendContact + "operateTime=" + operateTime + "mainFaultResponseLevel=" + mainFaultResponseLevel + "mainAlarmId=" + mainAlarmId + "linkDealStep=" + linkDealStep);
+                    if ((taskList != null) && (taskList.size() > 0)) {
+                        CommonFaultTask task = (CommonFaultTask) taskList.get(0);
+                        String taskstatus = task.getTaskStatus();
+                        if ("2".equals(taskstatus)) {
+                            //未接单
+                            System.out.println("in not acce by lyg=" + main.getSheetId());
+                            acceptSheet(opDetail, taskList, serCaller);
+                        }
+                        valueMap.put("operateDeptId", operateDeptId);
+                        valueMap.put("operaterContact", operaterContact);
+
+                        valueMap.put("operateUserId", operateUserId);
+                        valueMap.put("operateRoleId", operateRoleId);
+                        valueMap.put("mainId", main.getId());
+                        valueMap.put("operateTime", operate_time);
+                        valueMap.put("aiid", task.getId());
+
+                        valueMap.put("linkFaultDealInfo", serCaller);
+                        Date mainAlarmSolveDate = main.getMainAlarmSolveDate();
+                        SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        String linkFaultAvoidTime = "";
+                        if (mainAlarmSolveDate != null) {
+                            linkFaultAvoidTime = dateformat.format(mainAlarmSolveDate);
+                            System.out.println("linkFaultAvoidTime=lyg=" + linkFaultAvoidTime);
+                        }
+
+                        valueMap.put("linkFaultAvoidTime", linkFaultAvoidTime);
+
+                        Map sheetMainMap = SheetBeanUtils.bean2Map(main);
+                        valueMap.putAll(sheetMainMap);
+                        sheetMap1.put("main", main);
+                        sheetMap1.put("link", linkservice.getLinkObject().getClass().newInstance());
+                        sheetMap1.put("operate", "dealPerformer@java.lang.String,dealPerformerLeader@java.lang.String,dealPerformerType@java.lang.String,copyPerformer@java.lang.String,copyPerformerLeader@java.lang.String,copyPerformerType@java.lang.String,auditPerformer@java.lang.String,auditPerformerLeader@java.lang.String,auditPerformerType@java.lang.String,phaseId@java.lang.String,beanId@java.lang.String,mainClassName@java.lang.String,linkClassName@java.lang.String,hasNextTaskFlag@java.lang.String,reInvokeCount@java.lang.Integer,subAuditPerformer@java.lang.String,subAuditPerformerLeader@java.lang.String,subAuditPerformerType@java.lang.String,linkBeanId@java.lang.String,interfaceType@java.lang.String,methodType@java.lang.String,sendType@java.lang.String,extendPerformer@java.lang.String,extendPerformerLeader@java.lang.String,extendPerformerType@java.lang.String,extendKey1@java.lang.String,extendKey2@java.lang.String");
+                        columnMap.put("selfSheet", sheetMap1);
+                        String mainAlarmId = StaticMethod.nullObject2String(main.getMainAlarmId());
+                        String mainFaultResponseLevel = StaticMethod.nullObject2String(main.getMainFaultResponseLevel());
+                        String linkDealStep = StaticMethod.nullObject2String(valueMap.get("linkdealdesc"));
+                        String sendContact = StaticMethod.nullObject2String(main.getSendContact());
+
+                        Date operateTime = SheetUtils.stringToDate(operate_time);
+                        boolean inrule = false;
+                        String obj = "";
+                        System.out.println("lizhi:mainAlarmSolveDate=" + mainAlarmSolveDate + "sendContact=" + sendContact + "operateTime=" + operateTime + "mainFaultResponseLevel=" + mainFaultResponseLevel + "mainAlarmId=" + mainAlarmId + "linkDealStep=" + linkDealStep);
 //            if ((mainAlarmSolveDate != null) && (!"".equals(sendContact)) && (operateTime.after(mainAlarmSolveDate)) && (!"101030401".equals(mainFaultResponseLevel)))
 //            {
 //              ICommonFaultAutoManager autoservice = (ICommonFaultAutoManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultAutoManager");
@@ -251,92 +248,87 @@ public class CommonfaultSheet
 //              else {
 //                inrule = false;
 //              }
-              if (inrule)
-              {
-                System.out.println("---自动归档---mainAlarmId=" + mainAlarmId + "--mainFaultRespondseLevel=" + mainFaultResponseLevel + "--linkDealStep=" + linkDealStep);
+                        if (inrule) {
+                            System.out.println("---自动归档---mainAlarmId=" + mainAlarmId + "--mainFaultRespondseLevel=" + mainFaultResponseLevel + "--linkDealStep=" + linkDealStep);
 
-                valueMap.put("hasNextTaskFlag", "true");
-                valueMap.put("phaseId", "");
-                Calendar calendar = Calendar.getInstance();
-                CommonFaultLink linkbean = (CommonFaultLink)linkservice.getLinkObject().getClass().newInstance();
-                linkbean.setId(UUIDHexGenerator.getInstance().getID());
-                linkbean.setMainId(StaticMethod.nullObject2String(main.getId()));
-                linkbean.setOperateTime(calendar.getTime());
-                linkbean.setOperateType(new Integer(18));
-                linkbean.setOperateDay(calendar.get(5));
-                linkbean.setOperateMonth(calendar.get(2) + 1);
-                linkbean.setOperateYear(calendar.get(1));
-                linkbean.setOperateUserId(StaticMethod.nullObject2String(main.getSendUserId()));
-                linkbean.setOperateDeptId(StaticMethod.nullObject2String(main.getSendDeptId()));
-                linkbean.setOperateRoleId(StaticMethod.nullObject2String(main.getSendRoleId()));
-                linkbean.setOperaterContact(StaticMethod.nullObject2String(main.getSendContact()));
-                linkbean.setToOrgRoleId("");
-                linkbean.setToOrgType(new Integer(0));
-                linkbean.setAcceptFlag(new Integer(2));
-                linkbean.setCompleteFlag(new Integer(2));
-                linkbean.setActiveTemplateId("HoldHumTask");
-                linkservice.addLink(linkbean);
-                if (main != null)
-                {
-                  main.setEndResult(obj);
-                  main.setStatus(new Integer(1));
-                  main.setHoldStatisfied(Integer.valueOf(1030301));
-                  mainservice.addMain(main);
-                }
-                CommonFaultTask taskhold = new CommonFaultTask();
-                try
-                {
-                  taskhold.setId(UUIDHexGenerator.getInstance().getID());
-                }
-                catch (Exception e3)
-                {
-                  e3.printStackTrace();
-                }
-                taskhold.setTaskName("HoldHumTask");
-                taskhold.setTaskDisplayName("待归档");
-                taskhold.setFlowName("CommonFaultMainFlowProcess");
-                taskhold.setSendTime(new Date());
-                taskhold.setSheetKey(StaticMethod.nullObject2String(main.getId()));
-                taskhold.setTaskStatus("5");
-                taskhold.setSheetId(StaticMethod.nullObject2String(main.getSheetId()));
-                taskhold.setTitle(StaticMethod.nullObject2String(main.getTitle()));
-                taskhold.setOperateType("subrole");
-                taskhold.setCreateTime(new Date());
-                taskhold.setCreateYear(calendar.get(1));
-                taskhold.setCreateMonth(calendar.get(2) + 1);
-                taskhold.setCreateDay(calendar.get(5));
-                taskhold.setOperateRoleId(StaticMethod.nullObject2String(main.getSendRoleId()));
-                taskhold.setTaskOwner(StaticMethod.nullObject2String(main.getSendUserId()));
-                taskhold.setOperateType("subrole");
-                taskhold.setIfWaitForSubTask("false");
-                taskhold.setParentTaskId("_AI:" + UUIDHexGenerator.getInstance().getID());
-                taskhold.setPreLinkId(linkbean.getId());
-                taskservice.addTask(taskhold);
-              }
+                            valueMap.put("hasNextTaskFlag", "true");
+                            valueMap.put("phaseId", "");
+                            Calendar calendar = Calendar.getInstance();
+                            CommonFaultLink linkbean = (CommonFaultLink) linkservice.getLinkObject().getClass().newInstance();
+                            linkbean.setId(UUIDHexGenerator.getInstance().getID());
+                            linkbean.setMainId(StaticMethod.nullObject2String(main.getId()));
+                            linkbean.setOperateTime(calendar.getTime());
+                            linkbean.setOperateType(new Integer(18));
+                            linkbean.setOperateDay(calendar.get(5));
+                            linkbean.setOperateMonth(calendar.get(2) + 1);
+                            linkbean.setOperateYear(calendar.get(1));
+                            linkbean.setOperateUserId(StaticMethod.nullObject2String(main.getSendUserId()));
+                            linkbean.setOperateDeptId(StaticMethod.nullObject2String(main.getSendDeptId()));
+                            linkbean.setOperateRoleId(StaticMethod.nullObject2String(main.getSendRoleId()));
+                            linkbean.setOperaterContact(StaticMethod.nullObject2String(main.getSendContact()));
+                            linkbean.setToOrgRoleId("");
+                            linkbean.setToOrgType(new Integer(0));
+                            linkbean.setAcceptFlag(new Integer(2));
+                            linkbean.setCompleteFlag(new Integer(2));
+                            linkbean.setActiveTemplateId("HoldHumTask");
+                            linkservice.addLink(linkbean);
+                            if (main != null) {
+                                main.setEndResult(obj);
+                                main.setStatus(new Integer(1));
+                                main.setHoldStatisfied(Integer.valueOf(1030301));
+                                mainservice.addMain(main);
+                            }
+                            CommonFaultTask taskhold = new CommonFaultTask();
+                            try {
+                                taskhold.setId(UUIDHexGenerator.getInstance().getID());
+                            } catch (Exception e3) {
+                                e3.printStackTrace();
+                            }
+                            taskhold.setTaskName("HoldHumTask");
+                            taskhold.setTaskDisplayName("待归档");
+                            taskhold.setFlowName("CommonFaultMainFlowProcess");
+                            taskhold.setSendTime(new Date());
+                            taskhold.setSheetKey(StaticMethod.nullObject2String(main.getId()));
+                            taskhold.setTaskStatus("5");
+                            taskhold.setSheetId(StaticMethod.nullObject2String(main.getSheetId()));
+                            taskhold.setTitle(StaticMethod.nullObject2String(main.getTitle()));
+                            taskhold.setOperateType("subrole");
+                            taskhold.setCreateTime(new Date());
+                            taskhold.setCreateYear(calendar.get(1));
+                            taskhold.setCreateMonth(calendar.get(2) + 1);
+                            taskhold.setCreateDay(calendar.get(5));
+                            taskhold.setOperateRoleId(StaticMethod.nullObject2String(main.getSendRoleId()));
+                            taskhold.setTaskOwner(StaticMethod.nullObject2String(main.getSendUserId()));
+                            taskhold.setOperateType("subrole");
+                            taskhold.setIfWaitForSubTask("false");
+                            taskhold.setParentTaskId("_AI:" + UUIDHexGenerator.getInstance().getID());
+                            taskhold.setPreLinkId(linkbean.getId());
+                            taskservice.addTask(taskhold);
+                        }
 //            }
-            sm.dealSheet(sheetKey, valueMap, columnMap, operateUserId, taskservice);
-            result = "Status=0;Errlist=";
-          } else {
-            result = "Status=-1;Errlist=工单流水号为" + sheet_id + "的工单未在T2环节,无法进行工单处理完成提交操作！";
+                        sm.dealSheet(sheetKey, valueMap, columnMap, operateUserId, taskservice);
+                        result = "Status=0;Errlist=";
+                    } else {
+                        result = "Status=-1;Errlist=工单流水号为" + sheet_id + "的工单未在T2环节,无法进行工单处理完成提交操作！";
+                        return result;
+                    }
+                } else {
+                    result = "Status=-1;Errlist=工单受理状态更新请求接口传入参数不正确,请查证！";
+                    return result;
+                }
+            } else {
+                result = "Status=-1;Errlist=工单受理状态更新请求接口没有传入opDetail参数,请查证！";
+                return result;
+            }
             return result;
-          }
+        } catch (Exception e) {
+            e.printStackTrace();
+            result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口出错！详细信息为" + e.getMessage();
         }
-        else {
-          result = "Status=-1;Errlist=工单受理状态更新请求接口传入参数不正确,请查证！";
-          return result;
-        }
-      } else {
-        result = "Status=-1;Errlist=工单受理状态更新请求接口没有传入opDetail参数,请查证！";
         return result;
-      }
-      return result;
-    } catch (Exception e) {
-      e.printStackTrace();
-      result = "Status=-1;sheetDetail=;Errlist=工单受理状态更新请求接口出错！详细信息为" + e.getMessage();
-    }return result;
-  }
+    }
 
-  
+
 //  public String getCCSheetListService(String opDetail)
 //  {
 //    String result = "";

@@ -38,7 +38,7 @@ public abstract class BaseStrutsTestCase extends MockStrutsTestCase {
     protected User user = null;
     protected ResourceBundle rb = null;
     protected WebApplicationContext ctx = null;
-    
+
     //~ Constructors ===========================================================
 
     public BaseStrutsTestCase(String name) {
@@ -57,27 +57,27 @@ public abstract class BaseStrutsTestCase extends MockStrutsTestCase {
     //~ Methods ================================================================
 
     protected void setUp() throws Exception {
-        super.setUp();       
-        
+        super.setUp();
+
         // initialize Spring
         String pkg = ClassUtils.classPackageAsResourcePath(Constants.class);
         MockServletContext sc = new MockServletContext("");
         System.out.println(pkg);
         sc.addInitParameter(ContextLoader.CONFIG_LOCATION_PARAM,
                 "classpath*:/config/applicationContext-all.xml");
-        
+
         ServletContextListener contextListener = new ContextLoaderListener();
         ServletContextEvent event = new ServletContextEvent(sc);
-        contextListener.contextInitialized(event); 
-        
+        contextListener.contextInitialized(event);
+
         // magic bridge to make StrutsTestCase aware of Spring's Context
         getSession().getServletContext().setAttribute(
-                WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, 
+                WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE,
                 sc.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE));
-        
+
         ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(
-        		    getSession().getServletContext());
-        
+                getSession().getServletContext());
+
         // populate the userForm and place into session
         UserManager userMgr = (UserManager) ctx.getBean("userManager");
         user = userMgr.getUserByUsername("tomcat");
@@ -88,7 +88,7 @@ public abstract class BaseStrutsTestCase extends MockStrutsTestCase {
         mailSender.setPort(2525);
         mailSender.setHost("localhost");
     }
-    
+
     public void tearDown() throws Exception {
         super.tearDown();
         ctx = null;

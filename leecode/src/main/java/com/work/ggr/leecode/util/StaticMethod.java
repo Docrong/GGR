@@ -15,8 +15,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-
-
 /**
  * <p>
  * Title: eoms
@@ -37,7 +35,6 @@ import java.util.regex.Pattern;
 public class StaticMethod {
 
 
-
     /**
      * classpath标识
      */
@@ -52,19 +49,15 @@ public class StaticMethod {
     public final static URL URI = StaticMethod.class.getResource("/");
 
 
-
-
     public StaticMethod() {
     }
 
     /**
      * 将method对象转换成package.class.method(parametertypes)
      *
-     * @param method
-     *            方法对象
+     * @param method 方法对象
      * @return package.class.method(parametertypes)
      */
-
 
 
     public static String method2class(Method method) {
@@ -89,11 +82,10 @@ public class StaticMethod {
     /**
      * 取filePath的绝对路径
      *
-     * @param filePath
-     *            文件路径
-     * @deprecated 尽量命名用getFileUrl及getFilePathForUrl替代
-     * @see StaticMethod#getClasspath()
+     * @param filePath 文件路径
      * @return
+     * @see StaticMethod#getClasspath()
+     * @deprecated 尽量命名用getFileUrl及getFilePathForUrl替代
      */
     public static String getFilePath(String filePath) {
         if (filePath != null) {
@@ -211,22 +203,21 @@ public class StaticMethod {
     /**
      * 读java包时返回的路径
      *
-     * @param filePath
-     *            文件路径
+     * @param filePath 文件路径
      * @return
      * @throws FileNotFoundException
      */
     public static String getFilePathForUrl(String filePath)
             throws FileNotFoundException {
-        System.out.println("filePath=================="+filePath);
+        System.out.println("filePath==================" + filePath);
         URL url = getFileUrl(filePath);
         return url.getFile();
     }
 
     /**
-     * @see 字符处理方法：将首字符转换为大写
      * @param string
      * @return
+     * @see 字符处理方法：将首字符转换为大写
      */
     public static String firstToUpperCase(String string) {
         String post = string.substring(1, string.length());
@@ -235,11 +226,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param para String 中文字符串
+     * @return String para的标准格式的串
      * @see 将中文格式转换成标准格式
      * @see 例如：StaticMethod.getString("中文");
-     * @param para
-     *            String 中文字符串
-     * @return String para的标准格式的串
      */
     public static String getString(String para) {
         String reStr = "";
@@ -252,11 +242,9 @@ public class StaticMethod {
     }
 
     /**
-     * @see 修改iso到GB2312
-     *
-     * @param para
-     *            String
+     * @param para String
      * @return String
+     * @see 修改iso到GB2312
      */
 
     public static String getPageString(String para) {
@@ -281,7 +269,7 @@ public class StaticMethod {
 
     /**
      * @see 得到一指定分隔符号分隔的vector 如：Vector nn =
-     *      StaticMethod.getVector("2003-4-5","-");
+     * StaticMethod.getVector("2003-4-5","-");
      */
     public static Vector getVector(String string, String tchar) {
         StringTokenizer token = new StringTokenizer(string, tchar);
@@ -299,11 +287,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 将一个字符串按照一定长度截为一个List
-     *
      * @param str
      * @param size
      * @return
+     * @see 将一个字符串按照一定长度截为一个List
      */
     public static ArrayList getArrayList(String str, int size) {
         ArrayList vec = new ArrayList();
@@ -325,11 +312,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 得到一指定分隔符号分隔的ArrayList
-     *
      * @param string
      * @param tchar
      * @return
+     * @see 得到一指定分隔符号分隔的ArrayList
      */
     public static ArrayList getArrayList(String string, String tchar) {
         StringTokenizer token = new StringTokenizer(string, tchar);
@@ -347,13 +333,11 @@ public class StaticMethod {
     }
 
     /**
-     * @see 判断id值是否包含在数组中
-     * @param id
-     *            int id
-     * @param array
-     *            集合 数组
+     * @param id    int id
+     * @param array 集合 数组
      * @return
      * @throws Exception
+     * @see 判断id值是否包含在数组中
      */
     public static boolean fHasId(int id, ArrayList array) throws Exception {
 
@@ -374,11 +358,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 得到两个集合的交集，返回一个新的集合
-     *
      * @param array1
      * @param array2
      * @return
+     * @see 得到两个集合的交集，返回一个新的集合
      */
     public static ArrayList getArrayList(ArrayList array1, ArrayList array2) {
 
@@ -398,11 +381,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 得到两个集合的叉集，返回一个新的集合，即：在array1中，不在array2中
-     *
      * @param array1
      * @param array2
      * @return
+     * @see 得到两个集合的叉集，返回一个新的集合，即：在array1中，不在array2中
      */
     public static ArrayList getArrayList2(ArrayList array1, ArrayList array2) {
 
@@ -548,7 +530,6 @@ public class StaticMethod {
     }
 
     /**
-     *
      * @param list1
      * @param list2
      * @return
@@ -728,11 +709,11 @@ public class StaticMethod {
     /**
      * 字符串处理方法：
      *
-     * @see TokenizerString
      * @param str
      * @param dim
      * @param returndim
      * @return
+     * @see TokenizerString
      */
     public static String[] TokenizerString2(String str, String dim,
                                             boolean returndim) {
@@ -746,7 +727,6 @@ public class StaticMethod {
     }
 
     /**
-     *
      * @param v
      * @param l
      * @return
@@ -1082,7 +1062,6 @@ public class StaticMethod {
     }
 
     /**
-     *
      * @param sentence
      * @param oStart
      * @param oEnd
@@ -1172,7 +1151,6 @@ public class StaticMethod {
     }
 
     /**
-     *
      * @param in
      * @return
      */
@@ -1232,7 +1210,6 @@ public class StaticMethod {
     }
 
     /**
-     *
      * @param current
      * @param total
      * @param per_page
@@ -1579,11 +1556,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param disday int 和当前距离的天数
+     * @return String para的标准时间格式的串 例如：返回'2003-8-10'
      * @see 得到时间字符串
      * @see 例如：StaticMethod.getDateString(-1),可以返回昨天的时间字符串
-     * @param disday
-     *            int 和当前距离的天数
-     * @return String para的标准时间格式的串 例如：返回'2003-8-10'
      */
     public static String getDateString(int disday) {
         String ls_display = "";
@@ -1610,11 +1586,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param disday int 和当前距离的天数
+     * @return String para的标准时间格式的串 例如：返回'2003-8-10'
      * @see 得到时间字符串
      * @see 例如：StaticMethod.getDateString(-1),可以返回昨天的时间字符串
-     * @param disday
-     *            int 和当前距离的天数
-     * @return String para的标准时间格式的串 例如：返回'2003-8-10'
      */
     public static String getDateString(String strDateLimit, int disday) {
         Calendar c = Calendar.getInstance();
@@ -1630,11 +1605,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param disday int 和当前距离的天数
+     * @return String para的标准时间格式的串,例如：返回'2003-8-10 00:00:00'
      * @see 得到时间字符串
      * @see 例如：StaticMethod.getDateString(-1),可以返回昨天的时间字符串
-     * @param disday
-     *            int 和当前距离的天数
-     * @return String para的标准时间格式的串,例如：返回'2003-8-10 00:00:00'
      */
 
     public static String getTimeString(int disday) {
@@ -1655,11 +1629,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param disday int 和当前距离的天数
+     * @return String para的标准时间格式的串,例如：返回2003-8-10 00:00:00
      * @see 得到时间字符串
      * @see 例如：StaticMethod.getDateString(-1),可以返回昨天的时间字符串
-     * @param disday
-     *            int 和当前距离的天数
-     * @return String para的标准时间格式的串,例如：返回2003-8-10 00:00:00
      */
 
     public static String getCurrentTimeString(int disday) {
@@ -1680,11 +1653,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param disday int 和当前距离的天数
+     * @return String para的标准时间格式的串,例如：返回'2003-8-10 00:00:00'
      * @see 得到某一天开始的时间字符串
      * @see 例如：StaticMethod.getDateString(-1),可以返回昨天的时间字符串
-     * @param disday
-     *            int 和当前距离的天数
-     * @return String para的标准时间格式的串,例如：返回'2003-8-10 00:00:00'
      */
 
     public static String getTimeBeginString(int disday) {
@@ -1702,11 +1674,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param disday int 和当前距离的天数
+     * @return String para的标准时间格式的串,例如：返回'2003-8-10 00:00:00'
      * @see 得到某一天结束的时间字符串
      * @see 例如：StaticMethod.getDateString(-1),可以返回昨天的时间字符串
-     * @param disday
-     *            int 和当前距离的天数
-     * @return String para的标准时间格式的串,例如：返回'2003-8-10 00:00:00'
      */
 
     public static String getTimeEndString(int disday) {
@@ -1724,11 +1695,10 @@ public class StaticMethod {
     }
 
     /**
+     * @param disday int 和当前距离的天数
+     * @return String para的标准时间格式的串,例如：返回'2003-8-10 16:00:00'
      * @see 得到时间字符串
      * @see 例如：StaticMethod.getTimeString(-1,16),可以返回昨天的时间字符串
-     * @param disday
-     *            int 和当前距离的天数
-     * @return String para的标准时间格式的串,例如：返回'2003-8-10 16:00:00'
      */
 
     public static String getTimeString(int disday, int hour) {
@@ -1846,29 +1816,24 @@ public class StaticMethod {
     }
 
     /**
-     * @see 由运维系统发送工单确认信息，到客服系统
-     * @param operateId
-     *            KF工单流水号
-     * @param dealId
-     *            KF工单派单号
-     * @param userId
-     *            EOMS处理人
-     * @param dealDept
-     *            EOMS处理部门 根据编码表获取KF 的部门ID
-     * @param contact
-     *            EOMS联系方式
+     * @param operateId KF工单流水号
+     * @param dealId    KF工单派单号
+     * @param userId    EOMS处理人
+     * @param dealDept  EOMS处理部门 根据编码表获取KF 的部门ID
+     * @param contact   EOMS联系方式
      * @return XML格式字符串 <?xml version="1.0" encoding="UTF-8"?>
-     *         <SOAP-ENV:Envelope
-     *         xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
-     *         xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-     *         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     *         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-     *         xmlns:ns="urn:KFWebService"> <SOAP-ENV:Body
-     *         encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
-     *         <ns:CONFIRM-CPLT><CONFIRM-CPLT><FLOW-NO></FLOW-NO> <DEAL-ID>
-     *         </DEAL-ID> <PROCESS-UNIT></PROCESS-UNIT> <PROCESS-NAME>
-     *         </PROCESS-NAME> <CONTACTOR-TEL></CONTACTOR-TEL> </CONFIRM-CPLT>
-     *         </ns:CONFIRM-CPLT> </SOAP-ENV:Body> </SOAP-ENV:Envelope>
+     * <SOAP-ENV:Envelope
+     * xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+     * xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+     * xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     * xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     * xmlns:ns="urn:KFWebService"> <SOAP-ENV:Body
+     * encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+     * <ns:CONFIRM-CPLT><CONFIRM-CPLT><FLOW-NO></FLOW-NO> <DEAL-ID>
+     * </DEAL-ID> <PROCESS-UNIT></PROCESS-UNIT> <PROCESS-NAME>
+     * </PROCESS-NAME> <CONTACTOR-TEL></CONTACTOR-TEL> </CONFIRM-CPLT>
+     * </ns:CONFIRM-CPLT> </SOAP-ENV:Body> </SOAP-ENV:Envelope>
+     * @see 由运维系统发送工单确认信息，到客服系统
      */
 
     public static String confirmMSGEOMS21860(String operateId, String dealId,
@@ -1908,26 +1873,17 @@ public class StaticMethod {
     }
 
     /**
-     * @see 由运维系统发送工单回复信息，到客服系统
-     * @param operateId
-     *            KF工单流水号
-     * @param dealID
-     *            KF 派单号
-     * @param userId
-     *            处理人
-     * @param dealDept
-     *            处理部门更具编码表获取KF 的部门ID
-     * @param proTime
-     *            处理时间
-     * @param finallyResult
-     *            最终处理结果。如果是退回，可以为空。
-     * @param rejectCause
-     *            故障原因可以为空
-     * @param Status
-     *            对应运维EOMS工单主要有两个回复操作，处理结束（status = 0）和处理未结束(status=1)
-     * @param areaCode
-     *            地区代码
+     * @param operateId     KF工单流水号
+     * @param dealID        KF 派单号
+     * @param userId        处理人
+     * @param dealDept      处理部门更具编码表获取KF 的部门ID
+     * @param proTime       处理时间
+     * @param finallyResult 最终处理结果。如果是退回，可以为空。
+     * @param rejectCause   故障原因可以为空
+     * @param Status        对应运维EOMS工单主要有两个回复操作，处理结束（status = 0）和处理未结束(status=1)
+     * @param areaCode      地区代码
      * @return XML格式化字符串
+     * @see 由运维系统发送工单回复信息，到客服系统
      */
     public static String returnMSGEOMS21860(String operateId, String dealId,
                                             String userId, int dealDept, String proTime, String finallyResult,
@@ -1981,8 +1937,8 @@ public class StaticMethod {
     }
 
     /**
-     * @see 得到当前时刻的时间字符串
      * @return String para的标准时间格式的串,例如：返回'2003-08-09 16:00:00'
+     * @see 得到当前时刻的时间字符串
      */
     public static String getLocalString() {
         java.util.Date currentDate = new java.util.Date();
@@ -2028,9 +1984,9 @@ public class StaticMethod {
     }
 
     /**
-     * @see 根据参数str,得到标准的时间字符串
      * @param str
      * @returnpara的标准时间格式的串,例如：返回'2003-08-09 16:00:00'
+     * @see 根据参数str,得到标准的时间字符串
      */
     public static String getLocalString(String str) {
         String time = "";
@@ -2111,10 +2067,9 @@ public class StaticMethod {
     }
 
     /**
-     * @see 转换时间方法：转换格式，如时间“2002-1-12”转换成字符串“020112”
-     * @param DateStr
-     *            “2002-1-12”
+     * @param DateStr “2002-1-12”
      * @return “020112”
+     * @see 转换时间方法：转换格式，如时间“2002-1-12”转换成字符串“020112”
      */
     public static String getYYMMDD() {
         return getYYMMDD(getCurrentDateTime());
@@ -2170,10 +2125,9 @@ public class StaticMethod {
     }
 
     /**
-     * @see 时间转换方法：根据传入的分钟数,得到转化后的天，小时和分钟值
-     * @param times
-     *            int
+     * @param times int
      * @return ArrayList 保存这些值的集合，0位置保存天，1位置保存小时，2位置保存分钟
+     * @see 时间转换方法：根据传入的分钟数,得到转化后的天，小时和分钟值
      */
     public static ArrayList getDHMString(long times) {
         long day;
@@ -2201,7 +2155,6 @@ public class StaticMethod {
     }
 
     /**
-     *
      * 时间转换方法：根据输入的格式(String _dtFormat)得到当前时间格式得到当前的系统时间 Add By ChengJiWu
      *
      * @param _dtFormat
@@ -2229,10 +2182,8 @@ public class StaticMethod {
     }
 
     /**
-     * @param strDate
-     *            时间型的字符串
-     * @param _dtFormat
-     *            形如"yyyy-MM-dd HH:mm:ss"的字符串 把 strDate 时间字符串 转换为 _dtFormat 格式
+     * @param strDate   时间型的字符串
+     * @param _dtFormat 形如"yyyy-MM-dd HH:mm:ss"的字符串 把 strDate 时间字符串 转换为 _dtFormat 格式
      * @return
      */
     public static String getCurrentDateTime(String strDate, String _dtFormat) {
@@ -2249,7 +2200,6 @@ public class StaticMethod {
     }
 
     /**
-     *
      * @param vec1
      * @param vec2
      * @return
@@ -2277,13 +2227,11 @@ public class StaticMethod {
     }
 
     /**
+     * @param OriStr 分割符号为“，”情况下，“,Str1,Str2,Str3” 或 “Str1,Str2,Str3，”或
+     *               “，Str1,Str2,Str3，”等
+     * @param dim    分割符号，如“，”
+     * @return Str1, Str2, Str3
      * @see 格式化字符串
-     * @param OriStr
-     *            分割符号为“，”情况下，“,Str1,Str2,Str3” 或 “Str1,Str2,Str3，”或
-     *            “，Str1,Str2,Str3，”等
-     * @param dim
-     *            分割符号，如“，”
-     * @return Str1,Str2,Str3
      */
     public static String right(String str, int i) {
         String sc = "";
@@ -2296,11 +2244,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 字符串处理方法
-     *
      * @param str
      * @param i
      * @return
+     * @see 字符串处理方法
      */
     public static String left(String str, int i) {
         String sc = "";
@@ -2312,11 +2259,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 字符串处理方法
-     *
      * @param OriStr
      * @param dim
      * @return
+     * @see 字符串处理方法
      */
     public static String getFormatStr(String OriStr, String dim) {
         // OriStr 不能为空；
@@ -2336,8 +2282,8 @@ public class StaticMethod {
     }
 
     /**
-     * @see 时间处理方法
      * @return
+     * @see 时间处理方法
      */
     public static synchronized int getSingleId() {
         int ret = 0;
@@ -2349,12 +2295,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 时间处理方法：for applysheet 2005-09-27 add by chenyuanshu
-     *
-     * @see 将millonSecond转换成时:分:秒
-     * @param millonSecond
-     *            long
+     * @param millonSecond long
      * @return String
+     * @see 时间处理方法：for applysheet 2005-09-27 add by chenyuanshu
+     * @see 将millonSecond转换成时:分:秒
      */
     public static String convert(long millonSecond) {
         int totalsecond = (int) millonSecond / 1000;
@@ -2376,10 +2320,9 @@ public class StaticMethod {
     }
 
     /**
+     * @throws Exception 输入参数：如下所示： 参数名称 参数类型 参数说明 备注 historyTime String 历史步骤时间
+     *                   nowTime String 当前步骤时间 输出：步骤之间历时（单位小时）
      * @see 计算步骤之间历时
-     * @throws Exception
-     *             输入参数：如下所示： 参数名称 参数类型 参数说明 备注 historyTime String 历史步骤时间
-     *             nowTime String 当前步骤时间 输出：步骤之间历时（单位小时）
      */
     public static int getTimeIntervals(String historyTime, String nowTime) {
         String[] timeHistory = subTimeString(historyTime);
@@ -2417,10 +2360,9 @@ public class StaticMethod {
     }
 
     /**
+     * @throws Exception 输入参数：如下所示： 参数名称 参数类型 参数说明 备注 historyTime String 历史步骤时间
+     *                   nowTime String 当前步骤时间 输出：步骤之间历时（单位分钟）
      * @see 计算步骤之间历时
-     * @throws Exception
-     *             输入参数：如下所示： 参数名称 参数类型 参数说明 备注 historyTime String 历史步骤时间
-     *             nowTime String 当前步骤时间 输出：步骤之间历时（单位分钟）
      */
     public static int getTimeDistance(String historyTime, String nowTime) {
         String[] timeHistory = subTimeString(historyTime);
@@ -2476,10 +2418,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 转换时间的方法：
      * @param timeInSeconds
      * @param time2
      * @return
+     * @see 转换时间的方法：
      */
     public static String calcHMS(long timeInSeconds, long time2) {
         long hours = 0;
@@ -2504,10 +2446,10 @@ public class StaticMethod {
     }
 
     /**
-     * @see 转换时间方法
      * @param year
      * @param month
      * @return
+     * @see 转换时间方法
      */
     public static int getMonthLastDay(int year, int month) {
 
@@ -2524,9 +2466,9 @@ public class StaticMethod {
     }
 
     /**
-     * @see 获取当前时间（Date类型）
-     * @author qinmin
      * @return
+     * @author qinmin
+     * @see 获取当前时间（Date类型）
      */
     public static Date getLocalTime() {
         Calendar cal = Calendar.getInstance();
@@ -2538,9 +2480,9 @@ public class StaticMethod {
     /**
      * 字符类型转换函数（String->long）
      *
-     * @author qinmin
      * @param str
      * @return
+     * @author qinmin
      */
     public static long getLongValue(String str) {
         long i = 0;
@@ -2562,13 +2504,11 @@ public class StaticMethod {
     /**
      * 给对象的一个String型的属性赋值
      *
-     * @author xqz
-     *
      * @param obj
-     * @param attributeName
-     *            属性名
+     * @param attributeName 属性名
      * @param value
      * @return
+     * @author xqz
      */
     public static Object invokeStringMethod(Object obj, String attributeName,
                                             String value) throws Exception {
@@ -2576,8 +2516,8 @@ public class StaticMethod {
             String setMethod = "set"
                     + StaticMethod.firstToUpperCase(attributeName);
             Method setterMethod = obj.getClass().getMethod(setMethod,
-                    new Class[] { String.class });
-            return setterMethod.invoke(obj, new Object[] { value });
+                    new Class[]{String.class});
+            return setterMethod.invoke(obj, new Object[]{value});
         } catch (Exception e) {
             throw e;
         }
@@ -2586,15 +2526,14 @@ public class StaticMethod {
     /**
      * list转换为vector
      *
-     * @param list
-     *            java.util.list
+     * @param list java.util.list
      * @return 返回 java.util.vector
      */
     public static Vector list2vector(List list) {
         Vector vector = new Vector();
         if (null != list && !list.isEmpty()) {
 
-            for (Iterator it = list.iterator(); it.hasNext();) {
+            for (Iterator it = list.iterator(); it.hasNext(); ) {
                 vector.add(it.next());
             }
         }
@@ -2641,14 +2580,11 @@ public class StaticMethod {
     }
 
 
-
     /**
      * 删除尾部空格
      *
-     * @param str
-     *            字符串
-     * @param removedStr
-     *            要删除的尾部字符串
+     * @param str        字符串
+     * @param removedStr 要删除的尾部字符串
      * @return
      */
     public static String removeLastStr(String str, String removedStr) {
@@ -2658,11 +2594,6 @@ public class StaticMethod {
         }
         return result;
     }
-
-
-
-
-
 
 
     public static int getByMonthToNum(String year, String month)
@@ -2725,19 +2656,19 @@ public class StaticMethod {
     }
 
 
-
     /**
      * 根据时间字符串（yyyy-mm-dd hh:mm:ss） 加上一定的分钟数，返回一个加和后的时间字符串
      * add by gongyfueng for duty
+     *
      * @param str 时间字符串， int minute
      * @return str
      */
-    public static String getDateForMinute (String str ,int minute){
-        String time  = "";
-        try{
+    public static String getDateForMinute(String str, int minute) {
+        String time = "";
+        try {
             GregorianCalendar cal = String2Cal(str);
-            cal.add(cal.MINUTE , minute);
-            time  = String.valueOf(cal.get(cal.YEAR));
+            cal.add(cal.MINUTE, minute);
+            time = String.valueOf(cal.get(cal.YEAR));
             time = time + "-"
                     + String.valueOf(cal.get(cal.MONTH) + 1);
             time = time + "-"
@@ -2749,7 +2680,7 @@ public class StaticMethod {
             time = time + ":"
                     + String.valueOf(cal.get(cal.SECOND));
             System.out.println(time);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return time;
@@ -2767,23 +2698,24 @@ public class StaticMethod {
 
     /**
      * 判断字符串是否可以转换成数字类型
+     *
      * @param str
      * @return
      */
-    public static boolean isNumber(String str){
-        if(str==null || "".equals(str)){
+    public static boolean isNumber(String str) {
+        if (str == null || "".equals(str)) {
             return false;
         }
         Pattern pattern = Pattern.compile("(-?[0-9]+[\\.][0-9]+)|(-?[0-9]+)");
-        Matcher  matcher = pattern.matcher(str);
-        if(!matcher.matches()){
+        Matcher matcher = pattern.matcher(str);
+        if (!matcher.matches()) {
             return false;
         }
         return true;
     }
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 //		System.out.println(StaticMethod.getLocalString());
 //		System.out.println(StaticMethod.getLocalString(0));
 //		System.out.println(StaticMethod.getLocalString(-1));
@@ -2792,8 +2724,8 @@ public class StaticMethod {
     }
 
 
-    public static  boolean isChineseCharacter(String chineseStr) {
-        try{
+    public static boolean isChineseCharacter(String chineseStr) {
+        try {
             char[] charArray = chineseStr.toCharArray();
             for (int i = 0; i < charArray.length; i++) {
                 if ((charArray[i] >= 0x4e00) && (charArray[i] <= 0x9fa5)) {
@@ -2803,7 +2735,7 @@ public class StaticMethod {
                 }
             }
             return false;
-        }catch(Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -2815,15 +2747,15 @@ public class StaticMethod {
         Random random = new Random();
         String charOrNum = null;
         //参数length，表示生成几位随机数  
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
 
             charOrNum = random.nextInt(2) % 2 == 0 ? "char" : "num";
             //输出字母还是数字  
-            if("char".equalsIgnoreCase(charOrNum) ) {
+            if ("char".equalsIgnoreCase(charOrNum)) {
                 //输出是大写字母还是小写字母  
                 int temp = random.nextInt(2) % 2 == 0 ? 65 : 97;
-                val.append((char)(random.nextInt(26) + temp));
-            } else if("num".equalsIgnoreCase(charOrNum) ) {
+                val.append((char) (random.nextInt(26) + temp));
+            } else if ("num".equalsIgnoreCase(charOrNum)) {
                 val.append(String.valueOf(random.nextInt(10)));
             }
         }
@@ -2838,7 +2770,7 @@ public class StaticMethod {
         Random random = new Random();
 
         //参数length，表示生成几位随机数  
-        for(int i = 0; i < length; i++) {
+        for (int i = 0; i < length; i++) {
             val.append(String.valueOf(random.nextInt(10)));
         }
         return val.toString();
@@ -2846,9 +2778,9 @@ public class StaticMethod {
 
 
     /**
-     * 手机号验证 
+     * 手机号验证
      *
-     * @param  str
+     * @param str
      * @return 验证通过返回true
      */
     public static boolean isPhoneNumber(String phone) {
@@ -2862,9 +2794,9 @@ public class StaticMethod {
     }
 
     /**
-     * 身份证验证 
+     * 身份证验证
      *
-     * @param  str
+     * @param str
      * @return 验证通过返回true
      */
     public static boolean isIdcard(String idcard) {
@@ -2878,24 +2810,24 @@ public class StaticMethod {
     }
 
 
-    public static String replaceSensitiveChar(String word){
-        if(word.contains("<")){
+    public static String replaceSensitiveChar(String word) {
+        if (word.contains("<")) {
             word = word.replace("<", "＜");
         }
-        if(word.contains(">")){
+        if (word.contains(">")) {
             word = word.replace(">", "＞");
         }
-        if(word.contains("\'")){
+        if (word.contains("\'")) {
             word = word.replace("\'", "＇");
         }
-        if(word.contains("\"")){
+        if (word.contains("\"")) {
             word = word.replace("\"", "＂");
         }
 
-        if(word.contains("(")){
+        if (word.contains("(")) {
             word = word.replace("(", "（");
         }
-        if(word.contains(")")){
+        if (word.contains(")")) {
             word = word.replace(")", "）");
         }
 

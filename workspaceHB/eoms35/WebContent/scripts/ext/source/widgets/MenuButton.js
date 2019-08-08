@@ -19,7 +19,7 @@
  * @param {String/HTMLElement/Element} renderTo The element to append the button to
  * @param {Object} config The config object
  */
-Ext.SplitButton = function(renderTo, config){
+Ext.SplitButton = function (renderTo, config) {
     Ext.SplitButton.superclass.constructor.call(this, renderTo, config);
     /**
      * @event arrowclick
@@ -27,11 +27,11 @@ Ext.SplitButton = function(renderTo, config){
      * @param {SplitButton} this
      * @param {EventObject} e The click event
      */
-    this.addEvents({"arrowclick":true});
+    this.addEvents({"arrowclick": true});
 };
 
 Ext.extend(Ext.SplitButton, Ext.Button, {
-    render : function(renderTo){
+    render: function (renderTo) {
         // this is one sweet looking template!
         var tpl = new Ext.Template(
             '<table cellspacing="0" class="x-btn-menu-wrap x-btn"><tr><td>',
@@ -44,145 +44,145 @@ Ext.extend(Ext.SplitButton, Ext.Button, {
         );
         var btn = tpl.append(renderTo, [this.text, this.type], true);
         var btnEl = btn.child("button");
-        if(this.cls){
+        if (this.cls) {
             btn.addClass(this.cls);
         }
-        if(this.icon){
-            btnEl.setStyle('background-image', 'url(' +this.icon +')');
+        if (this.icon) {
+            btnEl.setStyle('background-image', 'url(' + this.icon + ')');
         }
-        if(this.iconCls){
+        if (this.iconCls) {
             btnEl.addClass(this.iconCls);
-            if(!this.cls){
+            if (!this.cls) {
                 btn.addClass(this.text ? 'x-btn-text-icon' : 'x-btn-icon');
             }
         }
         this.el = btn;
-        if(this.handleMouseEvents){
+        if (this.handleMouseEvents) {
             btn.on("mouseover", this.onMouseOver, this);
             btn.on("mouseout", this.onMouseOut, this);
             btn.on("mousedown", this.onMouseDown, this);
             btn.on("mouseup", this.onMouseUp, this);
         }
         btn.on(this.clickEvent, this.onClick, this);
-        if(this.tooltip){
-            if(typeof this.tooltip == 'object'){
+        if (this.tooltip) {
+            if (typeof this.tooltip == 'object') {
                 Ext.QuickTips.tips(Ext.apply({
-                      target: btnEl.id
+                    target: btnEl.id
                 }, this.tooltip));
             } else {
                 btnEl.dom[this.tooltipType] = this.tooltip;
             }
         }
-        if(this.arrowTooltip){
+        if (this.arrowTooltip) {
             btn.child("button:nth(2)").dom[this.tooltipType] = this.arrowTooltip;
         }
-        if(this.hidden){
+        if (this.hidden) {
             this.hide();
         }
-        if(this.disabled){
+        if (this.disabled) {
             this.disable();
         }
-        if(this.pressed){
+        if (this.pressed) {
             this.el.addClass("x-btn-pressed");
         }
-        if(Ext.isIE && !Ext.isIE7){
+        if (Ext.isIE && !Ext.isIE7) {
             this.autoWidth.defer(1, this);
-        }else{
+        } else {
             this.autoWidth();
         }
-        if(this.menu){
+        if (this.menu) {
             this.menu.on("show", this.onMenuShow, this);
             this.menu.on("hide", this.onMenuHide, this);
         }
     },
 
     // private
-    autoWidth : function(){
-        if(this.el){
+    autoWidth: function () {
+        if (this.el) {
             var tbl = this.el.child("table:first");
             var tbl2 = this.el.child("table:last");
             this.el.setWidth("auto");
             tbl.setWidth("auto");
-            if(Ext.isIE7 && Ext.isStrict){
+            if (Ext.isIE7 && Ext.isStrict) {
                 var ib = this.el.child('button:first');
-                if(ib && ib.getWidth() > 20){
+                if (ib && ib.getWidth() > 20) {
                     ib.clip();
-                    ib.setWidth(Ext.util.TextMetrics.measure(ib, this.text).width+ib.getFrameWidth('lr'));
+                    ib.setWidth(Ext.util.TextMetrics.measure(ib, this.text).width + ib.getFrameWidth('lr'));
                 }
             }
-            if(this.minWidth){
-                if(this.hidden){
+            if (this.minWidth) {
+                if (this.hidden) {
                     this.el.beginMeasure();
                 }
-                if((tbl.getWidth()+tbl2.getWidth()) < this.minWidth){
-                    tbl.setWidth(this.minWidth-tbl2.getWidth());
+                if ((tbl.getWidth() + tbl2.getWidth()) < this.minWidth) {
+                    tbl.setWidth(this.minWidth - tbl2.getWidth());
                 }
-                if(this.hidden){
+                if (this.hidden) {
                     this.el.endMeasure();
                 }
             }
-            this.el.setWidth(tbl.getWidth()+tbl2.getWidth());
-        } 
+            this.el.setWidth(tbl.getWidth() + tbl2.getWidth());
+        }
     },
     /**
      * Sets this button's click handler
      * @param {Function} handler The function to call when the button is clicked
      * @param {Object} scope (optional) Scope for the function passed above
      */
-    setHandler : function(handler, scope){
+    setHandler: function (handler, scope) {
         this.handler = handler;
-        this.scope = scope;  
+        this.scope = scope;
     },
-    
+
     /**
      * Sets this button's arrow click handler
      * @param {Function} handler The function to call when the arrow is clicked
      * @param {Object} scope (optional) Scope for the function passed above
      */
-    setArrowHandler : function(handler, scope){
+    setArrowHandler: function (handler, scope) {
         this.arrowHandler = handler;
-        this.scope = scope;  
+        this.scope = scope;
     },
-    
+
     /**
      * Focus the button
      */
-    focus : function(){
-        if(this.el){
+    focus: function () {
+        if (this.el) {
             this.el.child("button:first").focus();
         }
     },
 
     // private
-    onClick : function(e){
+    onClick: function (e) {
         e.preventDefault();
-        if(!this.disabled){
-            if(e.getTarget(".x-btn-menu-arrow-wrap")){
-                if(this.menu && !this.menu.isVisible()){
+        if (!this.disabled) {
+            if (e.getTarget(".x-btn-menu-arrow-wrap")) {
+                if (this.menu && !this.menu.isVisible()) {
                     this.menu.show(this.el, this.menuAlign);
                 }
                 this.fireEvent("arrowclick", this, e);
-                if(this.arrowHandler){
+                if (this.arrowHandler) {
                     this.arrowHandler.call(this.scope || this, this, e);
                 }
-            }else{
+            } else {
                 this.fireEvent("click", this, e);
-                if(this.handler){
+                if (this.handler) {
                     this.handler.call(this.scope || this, this, e);
                 }
             }
         }
     },
     // private
-    onMouseDown : function(e){
-        if(!this.disabled){
+    onMouseDown: function (e) {
+        if (!this.disabled) {
             Ext.fly(e.getTarget("table")).addClass("x-btn-click");
         }
     },
     // private
-    onMouseUp : function(e){
+    onMouseUp: function (e) {
         Ext.fly(e.getTarget("table")).removeClass("x-btn-click");
-    }   
+    }
 });
 
 // backwards compat

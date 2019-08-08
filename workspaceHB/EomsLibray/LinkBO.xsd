@@ -1,208 +1,216 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://EomsLibray">
-	<xsd:complexType name="LinkBO">
-		<xsd:annotation>
-      <xsd:documentation>wps中各个流程中，记录用户每次操作的bo的基类，所有流程中的link对象均需要继承该对象&#13;
-方法&#13;
-1.在自己的Library中的Dependencies中将eomsTemplate加入。&#13;
-2.是在BO--&gt;Properties--&gt;Desciption--&gt;Inherit from中选中本基类。&#13;
-3.在自己的linkbo中填入自己的特色字段</xsd:documentation>
-    </xsd:annotation>
-		<xsd:sequence>
-			<xsd:element minOccurs="0" name="id" type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>link表主键</xsd:documentation>
+            targetNamespace="http://EomsLibray">
+    <xsd:complexType name="LinkBO">
+        <xsd:annotation>
+            <xsd:documentation>wps中各个流程中，记录用户每次操作的bo的基类，所有流程中的link对象均需要继承该对象&#13;
+                方法&#13;
+                1.在自己的Library中的Dependencies中将eomsTemplate加入。&#13;
+                2.是在BO--&gt;Properties--&gt;Desciption--&gt;Inherit from中选中本基类。&#13;
+                3.在自己的linkbo中填入自己的特色字段
+            </xsd:documentation>
         </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="mainId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>关联的main的主键</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="nodeAcceptLimit"
-				type="xsd:dateTime">
-				<xsd:annotation>
-          <xsd:documentation>每次操作时用户所填写的接单时限</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="nodeCompleteLimit"
-				type="xsd:dateTime">
-				<xsd:annotation>
-          <xsd:documentation>每次操作时用户所填写的完成时限</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateType"
-				type="xsd:int">
-				<xsd:annotation>
-          <xsd:documentation>操作名称ID</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateTime"
-				type="xsd:dateTime">
-				<xsd:annotation>
-          <xsd:documentation>操作时间（sysdate）</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateOrgType"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>操作人的身份类型&#13;
-1.部门&#13;
-2.角色&#13;
-3.个人&#13;
-</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateUserId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>操作人员userid</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateDeptId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>操作人员所属部门</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateRoleId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>操作人员所属岗位+</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="toOrgType"
-				type="xsd:int">
-				<xsd:annotation>
-          <xsd:documentation>目标对象的类型&#13;
-1.部门&#13;
-2.角色&#13;
-3.个人</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="toOrgUserId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>目标对象用户id</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="toOrgDeptId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>目标对象所属部门id</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="toOrgRoleId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>目标对象所属岗位id</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="acceptFlag"
-				type="xsd:int">
-				<xsd:annotation>
-          <xsd:documentation>接单是否超时标识&#13;
-1.超时&#13;
-0.不超时</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="acceptTime"
-				type="xsd:dateTime">
-				<xsd:annotation>
-          <xsd:documentation>接单时间</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="completeFlag"
-				type="xsd:int">
-				<xsd:annotation>
-          <xsd:documentation>完成超时标识&#13;
-1.超时&#13;
-2.正常</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="completeTime"
-				type="xsd:dateTime">
-				<xsd:annotation>
-          <xsd:documentation>完成时间</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="preLinkId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>上一条link的id</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="parentLinkId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>父流程的linkid&#13;
-即产生子流程的那条link的主键</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="firstLinkId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>对应每个工单中的第一条link的主键</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="piid" type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>流程实例号，根据所属的流程不同而不同（不同实例或者不同的父子流程中）</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="aiid" type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>操作所对应的active的实例id</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="activeTemplateId"
-				type="xsd:string">
-				<xsd:annotation>
-          
-        <xsd:documentation>WPS的stepID，通常都是一个humantask的id，注意这个id不是humantask的实例id</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="nodeTemplateName"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>模板名称&#13;
-为将来可能出现的模板方式预留，在卓越流程中暂时还没有发现有用到</xsd:documentation>
-        </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="nodeAccessories"
-				type="xsd:string" />
-			<xsd:element minOccurs="0" name="correlationKey"
-				type="xsd:string" />
-			<xsd:element minOccurs="0" name="tkid" type="xsd:string" />			<xsd:element minOccurs="0" name="templateFlag"
-				type="xsd:int">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="templateName"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="templateCreateUserId"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="transferReason"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="remark"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operaterContact"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateYear"
-				type="xsd:int">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateMonth"
-				type="xsd:int">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="operateDay"
-				type="xsd:int">
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="id" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>link表主键</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="mainId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>关联的main的主键</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="nodeAcceptLimit"
+                         type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>每次操作时用户所填写的接单时限</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="nodeCompleteLimit"
+                         type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>每次操作时用户所填写的完成时限</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateType"
+                         type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation>操作名称ID</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateTime"
+                         type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>操作时间（sysdate）</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateOrgType"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>操作人的身份类型&#13;
+                        1.部门&#13;
+                        2.角色&#13;
+                        3.个人&#13;
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateUserId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>操作人员userid</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateDeptId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>操作人员所属部门</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateRoleId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>操作人员所属岗位+</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="toOrgType"
+                         type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation>目标对象的类型&#13;
+                        1.部门&#13;
+                        2.角色&#13;
+                        3.个人
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="toOrgUserId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>目标对象用户id</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="toOrgDeptId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>目标对象所属部门id</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="toOrgRoleId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>目标对象所属岗位id</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="acceptFlag"
+                         type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation>接单是否超时标识&#13;
+                        1.超时&#13;
+                        0.不超时
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="acceptTime"
+                         type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>接单时间</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="completeFlag"
+                         type="xsd:int">
+                <xsd:annotation>
+                    <xsd:documentation>完成超时标识&#13;
+                        1.超时&#13;
+                        2.正常
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="completeTime"
+                         type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>完成时间</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="preLinkId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>上一条link的id</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="parentLinkId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>父流程的linkid&#13;
+                        即产生子流程的那条link的主键
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="firstLinkId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>对应每个工单中的第一条link的主键</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="piid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>流程实例号，根据所属的流程不同而不同（不同实例或者不同的父子流程中）</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="aiid" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>操作所对应的active的实例id</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="activeTemplateId"
+                         type="xsd:string">
+                <xsd:annotation>
+
+                    <xsd:documentation>WPS的stepID，通常都是一个humantask的id，注意这个id不是humantask的实例id</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="nodeTemplateName"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>模板名称&#13;
+                        为将来可能出现的模板方式预留，在卓越流程中暂时还没有发现有用到
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="nodeAccessories"
+                         type="xsd:string"/>
+            <xsd:element minOccurs="0" name="correlationKey"
+                         type="xsd:string"/>
+            <xsd:element minOccurs="0" name="tkid" type="xsd:string"/>
+
+            <xsd:element minOccurs="0" name="templateFlag"
+                         type="xsd:int">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="templateName"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="templateCreateUserId"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="transferReason"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="remark"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operaterContact"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateYear"
+                         type="xsd:int">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateMonth"
+                         type="xsd:int">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="operateDay"
+                         type="xsd:int">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
 
 </xsd:schema>

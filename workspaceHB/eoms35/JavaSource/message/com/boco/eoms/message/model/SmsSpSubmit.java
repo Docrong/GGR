@@ -5,20 +5,20 @@ import java.util.Date;
 import com.boco.eoms.base.model.BaseObject;
 
 public class SmsSpSubmit extends BaseObject {
-	
-	private String id;
-	
-	private String msgContent;
-	
-	private String desttermId;
-	
-/*	private String atTime;*/
-	
-	private Date sendTime;
-	
-	private int msgFormat;
-	
-	private int msgLevel;
+
+    private String id;
+
+    private String msgContent;
+
+    private String desttermId;
+
+    /*	private String atTime;*/
+
+    private Date sendTime;
+
+    private int msgFormat;
+
+    private int msgLevel;
 	
 	
 	
@@ -37,72 +37,54 @@ public class SmsSpSubmit extends BaseObject {
 
 */
 
-	public String getDesttermId() {
-		return desttermId;
-	}
+    public String getDesttermId() {
+        return desttermId;
+    }
 
 
+    public void setDesttermId(String desttermId) {
+        this.desttermId = desttermId;
+    }
 
 
-	public void setDesttermId(String desttermId) {
-		this.desttermId = desttermId;
-	}
+    public String getId() {
+        return id;
+    }
 
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
 
-	public String getId() {
-		return id;
-	}
+    public String getMsgContent() {
+        return msgContent;
+    }
 
 
+    public void setMsgContent(String msgContent) {
+        this.msgContent = msgContent;
+    }
 
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public int getMsgFormat() {
+        return msgFormat;
+    }
 
 
+    public void setMsgFormat(int msgFormat) {
+        this.msgFormat = msgFormat;
+    }
 
 
-	public String getMsgContent() {
-		return msgContent;
-	}
+    public int getMsgLevel() {
+        return msgLevel;
+    }
 
 
-
-
-	public void setMsgContent(String msgContent) {
-		this.msgContent = msgContent;
-	}
-
-
-
-
-	public int getMsgFormat() {
-		return msgFormat;
-	}
-
-
-
-
-	public void setMsgFormat(int msgFormat) {
-		this.msgFormat = msgFormat;
-	}
-
-
-
-
-	public int getMsgLevel() {
-		return msgLevel;
-	}
-
-
-
-
-	public void setMsgLevel(int msgLevel) {
-		this.msgLevel = msgLevel;
-	}
+    public void setMsgLevel(int msgLevel) {
+        this.msgLevel = msgLevel;
+    }
 
 
 /*
@@ -120,17 +102,14 @@ public class SmsSpSubmit extends BaseObject {
 */
 
 
-
-	public Date getSendTime() {
-		return sendTime;
-	}
-
+    public Date getSendTime() {
+        return sendTime;
+    }
 
 
-
-	public void setSendTime(Date sendTime) {
-		this.sendTime = sendTime;
-	}
+    public void setSendTime(Date sendTime) {
+        this.sendTime = sendTime;
+    }
 
 /*
 
@@ -149,9 +128,9 @@ public class SmsSpSubmit extends BaseObject {
 */
 
 
-	public boolean equals(Object o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean equals(Object o) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }

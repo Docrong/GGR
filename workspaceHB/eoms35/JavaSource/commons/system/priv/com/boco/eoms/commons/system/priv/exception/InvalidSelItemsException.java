@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.system.priv.exception;
 
@@ -9,12 +9,12 @@ package com.boco.eoms.commons.system.priv.exception;
  */
 public class InvalidSelItemsException extends MenuBaseException {
 
-	public InvalidSelItemsException() {
-		this("No invalid items for select.");
-	}
+    public InvalidSelItemsException() {
+        this("No invalid items for select.");
+    }
 
-	public InvalidSelItemsException(String errorMessage) {
-		super(errorMessage);
-	}
+    public InvalidSelItemsException(String errorMessage) {
+        super(errorMessage);
+    }
 
 }

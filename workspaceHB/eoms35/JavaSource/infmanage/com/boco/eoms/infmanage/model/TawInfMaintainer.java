@@ -1,7 +1,6 @@
 package com.boco.eoms.infmanage.model;
 
-public class TawInfMaintainer
-{
+public class TawInfMaintainer {
     // 维护人员编号
     private int maintainerId;
 
@@ -32,107 +31,86 @@ public class TawInfMaintainer
     // 个人专长
     private String special;
 
-    public TawInfMaintainer()
-    {
+    public TawInfMaintainer() {
     }
 
-    public int getMaintainerId()
-    {
+    public int getMaintainerId() {
         return maintainerId;
     }
 
-    public void setMaintainerId(int maintainerId)
-    {
+    public void setMaintainerId(int maintainerId) {
         this.maintainerId = maintainerId;
     }
 
-    public String getMaintainerName()
-    {
+    public String getMaintainerName() {
         return maintainerName;
     }
 
-    public void setMaintainerName(String maintainerName)
-    {
+    public void setMaintainerName(String maintainerName) {
         this.maintainerName = maintainerName;
     }
 
-    public String getMaintainerSex()
-    {
+    public String getMaintainerSex() {
         return maintainerSex;
     }
 
-    public void setMaintainerSex(String maintainerSex)
-    {
+    public void setMaintainerSex(String maintainerSex) {
         this.maintainerSex = maintainerSex;
     }
 
-    public int getDeptId()
-    {
+    public int getDeptId() {
         return deptId;
     }
 
-    public void setDeptId(int deptId)
-    {
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
 
-    public String getDeptName()
-    {
+    public String getDeptName() {
         return deptName;
     }
 
-    public void setDeptName(String deptName)
-    {
+    public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
 
-    public String getTele()
-    {
+    public String getTele() {
         return tele;
     }
 
-    public void setTele(String tele)
-    {
+    public void setTele(String tele) {
         this.tele = tele;
     }
 
-    public String getTeleMobile()
-    {
+    public String getTeleMobile() {
         return teleMobile;
     }
 
-    public void setTeleMobile(String teleMobile)
-    {
+    public void setTeleMobile(String teleMobile) {
         this.teleMobile = teleMobile;
     }
 
-    public String getTeleHome()
-    {
+    public String getTeleHome() {
         return teleHome;
     }
 
-    public void setTeleHome(String teleHome)
-    {
+    public void setTeleHome(String teleHome) {
         this.teleHome = teleHome;
     }
 
-    public String getEmail()
-    {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getSpecial()
-    {
+    public String getSpecial() {
         return special;
     }
 
-    public void setSpecial(String special)
-    {
+    public void setSpecial(String special) {
         this.special = special;
     }
 

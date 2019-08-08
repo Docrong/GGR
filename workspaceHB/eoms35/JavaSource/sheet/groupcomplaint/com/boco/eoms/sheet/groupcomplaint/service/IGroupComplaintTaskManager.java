@@ -10,10 +10,10 @@ import com.boco.eoms.sheet.base.service.ITaskService;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public interface IGroupComplaintTaskManager extends ITaskService{
+public interface IGroupComplaintTaskManager extends ITaskService {
 
 }

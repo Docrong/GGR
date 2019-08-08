@@ -15,7 +15,7 @@
  * Creates a new Radio
  * @param {Object} config Configuration options
  */
-Ext.form.Radio = function(){
+Ext.form.Radio = function () {
     Ext.form.Radio.superclass.constructor.apply(this, arguments);
 };
 Ext.extend(Ext.form.Radio, Ext.form.Checkbox, {
@@ -25,7 +25,7 @@ Ext.extend(Ext.form.Radio, Ext.form.Checkbox, {
      * If this radio is part of a group, it will return the selected value
      * @return {String}
      */
-    getGroupValue : function(){
-        return this.el.up('form').child('input[name='+this.el.dom.name+']:checked', true).value;
+    getGroupValue: function () {
+        return this.el.up('form').child('input[name=' + this.el.dom.name + ']:checked', true).value;
     }
 });

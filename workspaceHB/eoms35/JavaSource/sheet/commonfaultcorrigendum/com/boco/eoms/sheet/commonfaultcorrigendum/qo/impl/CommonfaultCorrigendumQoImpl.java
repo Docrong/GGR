@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.commonfaultcorrigendum.qo.ICommonfaultCorrigendumQo;
  * <p>
  * Mon Sep 29 11:24:17 CST 2014
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CommonfaultCorrigendumQoImpl extends WorkSheetQOImpl implements ICommonfaultCorrigendumQo {
- 
- }
+
+public class CommonfaultCorrigendumQoImpl extends WorkSheetQOImpl implements ICommonfaultCorrigendumQo {
+
+}

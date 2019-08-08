@@ -13,18 +13,18 @@ import com.ggr.model.User;
 
 @Repository("userDao")
 public class UserDaoImpl extends SqlSessionDaoSupport implements IUserDao {
-	
-	
-	@Resource
-    public void setSuperSessionFactory(SqlSessionFactory sessionFactory){
-    	this.setSqlSessionFactory(sessionFactory);
+
+
+    @Resource
+    public void setSuperSessionFactory(SqlSessionFactory sessionFactory) {
+        this.setSqlSessionFactory(sessionFactory);
     }
-	
-	
-	public List<User> selectAll() {
-		// TODO Auto-generated method stub
-		List<User> users = this.getSqlSession().selectList("getUser");
-		return users;
-	}
+
+
+    public List<User> selectAll() {
+        // TODO Auto-generated method stub
+        List<User> users = this.getSqlSession().selectList("getUser");
+        return users;
+    }
 
 }

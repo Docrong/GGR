@@ -20,10 +20,9 @@ import com.boco.eoms.commons.system.dict.exceptions.DocumentCreateException;
  * <p>
  * Date:May 23, 2007 5:23:47 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictXMLDom4jDocumentFactory {
 
@@ -52,8 +51,7 @@ public class DictXMLDom4jDocumentFactory {
     }
 
     /**
-     * @param register
-     *            the register to set
+     * @param register the register to set
      */
     public void setRegister(Properties register) {
         this.register = register;
@@ -67,7 +65,7 @@ public class DictXMLDom4jDocumentFactory {
 
     public Document getDocument(String key) throws DocumentCreateException {
         //xml地址
-        String xmlPath = "classpath:config/"+key+".xml";
+        String xmlPath = "classpath:config/" + key + ".xml";
         try {
             if (cache.containsKey(key)) {
                 return (Document) cache.get(key);

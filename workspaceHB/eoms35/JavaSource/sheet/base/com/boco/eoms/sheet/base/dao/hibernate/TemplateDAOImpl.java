@@ -19,11 +19,10 @@ import com.boco.eoms.sheet.base.dao.ITemplateDAO;
  * <p>
  * Date:2007-8-3 14:30:08
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
-public class TemplateDAOImpl extends BaseSheetDaoHibernate implements ITemplateDAO{
+public class TemplateDAOImpl extends BaseSheetDaoHibernate implements ITemplateDAO {
 
 }

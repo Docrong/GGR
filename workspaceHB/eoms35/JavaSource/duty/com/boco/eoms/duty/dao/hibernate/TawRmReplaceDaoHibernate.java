@@ -54,12 +54,12 @@ public class TawRmReplaceDaoHibernate extends BaseDaoHibernate implements ITawRm
 
     /**
      * @see com.boco.eoms.duty.dao.TawRmReplaceDao#saveTawRmReplace(TawRmReplace tawRmReplace)
-     */    
+     */
     public void saveTawRmReplace(final TawRmReplace tawRmReplace) {
         if ((tawRmReplace.getId() == null) || (tawRmReplace.getId().equals("")))
-			getHibernateTemplate().save(tawRmReplace);
-		else
-			getHibernateTemplate().saveOrUpdate(tawRmReplace);
+            getHibernateTemplate().save(tawRmReplace);
+        else
+            getHibernateTemplate().saveOrUpdate(tawRmReplace);
     }
 
     /**
@@ -68,41 +68,44 @@ public class TawRmReplaceDaoHibernate extends BaseDaoHibernate implements ITawRm
     public void removeTawRmReplace(final String id) {
         getHibernateTemplate().delete(getTawRmReplace(id));
     }
+
     /**
-     * @see com.boco.eoms.duty.dao.TawRmReplaceDao#getTawRmReplaces(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.duty.dao.TawRmReplaceDao#getTawRmReplaces(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawRmReplaces(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawRmReplaces(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawRmReplace
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawRmReplace";
-              if(whereStr!=null && whereStr.length()>0)
-            		     queryStr += whereStr;
-         					Query query = session.createQuery(queryStr);
-						
-							List result = query.list();
-							HashMap map = new HashMap();
-							
-							map.put("result", result);
-							return map;
+                String queryStr = "from TawRmReplace";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                Query query = session.createQuery(queryStr);
+
+                List result = query.list();
+                HashMap map = new HashMap();
+
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmReplaceDao#getTawRmReplaces(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawRmReplaces(final Integer curPage, final Integer pageSize) {
-			return this.getTawRmReplaces(curPage,pageSize,null);
-		}
+        return this.getTawRmReplaces(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmReplaceDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawRmReplace obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
-	
-	
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawRmReplace obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
+
+
 }

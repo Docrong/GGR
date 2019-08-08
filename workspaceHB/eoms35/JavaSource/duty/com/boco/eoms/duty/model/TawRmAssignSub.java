@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------
+//---------------------------------------------------------
 // Application: Application Name
 // Author     : Author
 // File       : TawRmAssignSub.java
@@ -12,34 +12,40 @@
 package com.boco.eoms.duty.model;
 
 public class TawRmAssignSub {
-  private int workserial;
-  private String dutyman;
-  private String notes;
-  private int id;
+    private int workserial;
+    private String dutyman;
+    private String notes;
+    private int id;
 
-  public int getWorkserial() {
-    return workserial;
-  }
-  public String getDutyman() {
-    return dutyman;
-  }
-  public String getNotes() {
-    return notes;
-  }
-  public int getId() {
-    return id;
-  }
+    public int getWorkserial() {
+        return workserial;
+    }
 
-  public void setWorkserial(int workserial) {
-    this.workserial = workserial;
-  }
-  public void setDutyman(String dutyman) {
-    this.dutyman = dutyman;
-  }
-  public void setNotes(String notes) {
-    this.notes = notes;
-  }
-  public void setId(int id) {
-    this.id = id;
-  }
+    public String getDutyman() {
+        return dutyman;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setWorkserial(int workserial) {
+        this.workserial = workserial;
+    }
+
+    public void setDutyman(String dutyman) {
+        this.dutyman = dutyman;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

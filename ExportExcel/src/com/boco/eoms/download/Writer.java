@@ -14,7 +14,7 @@ import javax.sql.DataSource;
 
 import com.boco.eoms.servlet.ExportExcel;
 
-public class Writer extends Thread{ 
+public class Writer extends Thread {
     private CountDownLatch countDownLatch;
     private DataSource ds;
     private Connection conn;
@@ -23,100 +23,101 @@ public class Writer extends Thread{
     private String fileName;
     private static int threadCount;
     private int countTest;
-    public Writer(CountDownLatch countDownLatch, DataSource ds, String currentSql, String[] chineseName, String fileName,int countTest) { 
+
+    public Writer(CountDownLatch countDownLatch, DataSource ds, String currentSql, String[] chineseName, String fileName, int countTest) {
         this.countDownLatch = countDownLatch;
         this.ds = ds;
         this.currentSql = currentSql;
         this.chineseName = chineseName;
         this.fileName = fileName;
         threadCount++;
-        this.countTest=countTest;
-        
-    } 
+        this.countTest = countTest;
+
+    }
 
     public static int getThreadCount() {
-		return threadCount;
-	}
-    
-    public int getCountTest(){
-    	return countTest;
+        return threadCount;
     }
-    
-	@Override
-    public void run() { 
-        System.out.println("Ïß³Ì"+Thread.currentThread().getName()+"ÕýÔÚÐ´ÈëÊý¾Ý..."); 
+
+    public int getCountTest() {
+        return countTest;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("ï¿½ß³ï¿½" + Thread.currentThread().getName() + "ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...");
         Statement ssel = null;
         ResultSet rs = null;
-		StringBuilder body = new StringBuilder();
-		int columnNum = chineseName.length;
-		int j = 1;
-        try { 
-    		
-        	File file = new File(fileName);
-    		PrintWriter writer = new PrintWriter(new BufferedOutputStream(new FileOutputStream(file)));
-    		long startTimne = System.currentTimeMillis();
-    		conn = ds.getConnection();
-        	ssel = conn.createStatement();
-        	rs = ssel.executeQuery(currentSql);
-        	long endTime = System.currentTimeMillis();
-        	System.out.println("Ïß³Ì"+Thread.currentThread().getName() + "ÓÃÊ±="+((endTime-startTimne)/1000)+"Ãë");
-			while(rs.next()){
-				body.append("\r\n<Row>\r\n");
-				for(int k=0;k<columnNum;k++){
-					body.append("<Cell><Data ss:Type=\"String\">");
-					//System.out.println(englishName[k] + "=" + rs.getString(englishName[k])); 
-					body.append(rs.getString(chineseName[k]));
-					body.append("</Data></Cell>");
-				}
-				body.append("\r\n</Row>");
-				if (j%1000==0) {
-					writer.print(body);
-					writer.flush();
-					body.setLength(0);
-				}
-				 j++;
-			}
-			writer.print(body);
-			writer.flush();
-			body = null;
-			writer.close();
-            System.out.println("Ïß³Ì"+Thread.currentThread().getName()+"Ð´ÈëÊý¾ÝÍê±Ï£¬µÈ´ýÆäËûÏß³ÌÐ´ÈëÍê±Ï"); 
-        } catch (Exception e) { 
-			try {
-				conn.rollback();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-            e.printStackTrace(); 
-        } finally {
-			try {
-				synchronized (Writer.class) {
-					threadCount--;
-					countTest--;
-				
-					Writer.class.notifyAll();
-				}
+        StringBuilder body = new StringBuilder();
+        int columnNum = chineseName.length;
+        int j = 1;
+        try {
 
-				
-				if(rs!=null){
-					rs.close();
-				}
-				if(ssel!=null){
-					ssel.close();
-				}
-				if(conn!=null){
-					conn.close();
-				}
-				//cp.close(conn);
-				//cp.printDebug();
-				countDownLatch.countDown();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-        System.out.println("ËùÓÐÏß³ÌÐ´ÈëÍê±Ï£¬¼ÌÐø´¦ÀíÆäËûÈÎÎñ..."); 
-    } 
+            File file = new File(fileName);
+            PrintWriter writer = new PrintWriter(new BufferedOutputStream(new FileOutputStream(file)));
+            long startTimne = System.currentTimeMillis();
+            conn = ds.getConnection();
+            ssel = conn.createStatement();
+            rs = ssel.executeQuery(currentSql);
+            long endTime = System.currentTimeMillis();
+            System.out.println("ï¿½ß³ï¿½" + Thread.currentThread().getName() + "ï¿½ï¿½Ê±=" + ((endTime - startTimne) / 1000) + "ï¿½ï¿½");
+            while (rs.next()) {
+                body.append("\r\n<Row>\r\n");
+                for (int k = 0; k < columnNum; k++) {
+                    body.append("<Cell><Data ss:Type=\"String\">");
+                    //System.out.println(englishName[k] + "=" + rs.getString(englishName[k]));
+                    body.append(rs.getString(chineseName[k]));
+                    body.append("</Data></Cell>");
+                }
+                body.append("\r\n</Row>");
+                if (j % 1000 == 0) {
+                    writer.print(body);
+                    writer.flush();
+                    body.setLength(0);
+                }
+                j++;
+            }
+            writer.print(body);
+            writer.flush();
+            body = null;
+            writer.close();
+            System.out.println("ï¿½ß³ï¿½" + Thread.currentThread().getName() + "Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½");
+        } catch (Exception e) {
+            try {
+                conn.rollback();
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            e.printStackTrace();
+        } finally {
+            try {
+                synchronized (Writer.class) {
+                    threadCount--;
+                    countTest--;
+
+                    Writer.class.notifyAll();
+                }
+
+
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ssel != null) {
+                    ssel.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+                //cp.close(conn);
+                //cp.printDebug();
+                countDownLatch.countDown();
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½...");
+    }
 
 }

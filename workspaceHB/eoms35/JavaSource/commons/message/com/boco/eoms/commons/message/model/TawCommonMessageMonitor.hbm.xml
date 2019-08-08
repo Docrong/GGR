@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,160 +13,160 @@
             table="taw_common_messagemonitor"
     >
 
-    <id
-        name="monitorId"
-            column="monitorid"
-            unsaved-value="null"
-    >
+        <id
+                name="monitorId"
+                column="monitorid"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="urgent"
+                name="urgent"
                 length="50"
         >
 
         </property>
 
         <property
-            name="cycle"
+                name="cycle"
                 length="100"
         >
 
         </property>
 
         <property
-            name="dispatcher"
+                name="dispatcher"
                 length="100"
         >
 
         </property>
 
         <property
-            name="dispatchTime"
+                name="dispatchTime"
                 length="100"
         >
 
         </property>
 
         <property
-            name="endTime"
+                name="endTime"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieAmount"
+                name="hieAmount"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieArrive"
+                name="hieArrive"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieClose"
+                name="hieClose"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieContent"
+                name="hieContent"
                 length="500"
         >
 
         </property>
 
         <property
-            name="hieCount"
+                name="hieCount"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieId"
+                name="hieId"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieInterval"
+                name="hieInterval"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieTimeLimit"
+                name="hieTimeLimit"
                 length="100"
         >
 
         </property>
 
         <property
-            name="hieWay"
+                name="hieWay"
                 length="100"
         >
 
         </property>
 
         <property
-            name="nightAllow"
+                name="nightAllow"
                 length="100"
         >
 
         </property>
 
         <property
-            name="receiver"
+                name="receiver"
                 length="100"
         >
 
         </property>
 
         <property
-            name="receiverType"
+                name="receiverType"
                 length="100"
         >
 
         </property>
 
         <property
-            name="regionId"
+                name="regionId"
                 length="100"
         >
 
         </property>
 
         <property
-            name="startTime"
+                name="startTime"
                 length="100"
         >
 
         </property>
 
         <property
-            name="taskId"
+                name="taskId"
                 length="100"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_repository_upgrade"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="repositoryId"
-            	column="repository_id"
+        <property
+                name="repositoryId"
+                column="repository_id"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="beforeHardwareRepository"
-            	column="before_hardware_repository"
+        <property
+                name="beforeHardwareRepository"
+                column="before_hardware_repository"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="beforeSoftwareRepository"
-            	column="before_software_repository"
+        <property
+                name="beforeSoftwareRepository"
+                column="before_software_repository"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="beforePatch"
-            	column="before_patch"
+        <property
+                name="beforePatch"
+                column="before_patch"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="hardwareRepository"
-            	column="hardware_repository"
+        <property
+                name="hardwareRepository"
+                column="hardware_repository"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="softwareRepository"
-            	column="software_repository"
+        <property
+                name="softwareRepository"
+                column="software_repository"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="patch"
-            	column="patch"
+        <property
+                name="patch"
+                column="patch"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="content"
-            	column="content"
+        <property
+                name="content"
+                column="content"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="reason"
-            	column="reason"
+        <property
+                name="reason"
+                column="reason"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -116,9 +116,9 @@
 
         </property>
 
-	<property
-            name="approval"
-            	column="approval"
+        <property
+                name="approval"
+                column="approval"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -126,31 +126,31 @@
 
         </property>
 
-	<property
-            name="uptime"
-            	column="uptime"
+        <property
+                name="uptime"
+                column="uptime"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-	<property
-            name="upNum"
-            	column="up_num"
+        <property
+                name="upNum"
+                column="up_num"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="sheetkey"
-            	column="sheetkey"
+                name="sheetkey"
+                column="sheetkey"
                 not-null="false"
                 unique="false"
         >
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

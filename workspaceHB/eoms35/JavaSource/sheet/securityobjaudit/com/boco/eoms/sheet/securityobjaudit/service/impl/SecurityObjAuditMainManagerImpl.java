@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.securityobjaudit.service.ISecurityObjAuditMainManager
  * <p>
  * Tue Apr 25 11:41:14 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAuditMainManagerImpl extends MainService implements ISecurityObjAuditMainManager {
- 
- }
+
+public class SecurityObjAuditMainManagerImpl extends MainService implements ISecurityObjAuditMainManager {
+
+}

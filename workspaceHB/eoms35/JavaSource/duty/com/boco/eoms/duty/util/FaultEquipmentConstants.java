@@ -10,15 +10,14 @@ package com.boco.eoms.duty.util;
  * <p>
  * Sun Mar 29 09:02:44 CST 2009
  * </p>
- * 
+ *
  * @author 李江红
  * @version 3.5
- * 
  */
 public class FaultEquipmentConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String FAULTEQUIPMENT_LIST = "faultEquipmentList";
+
+    /**
+     * list key
+     */
+    public final static String FAULTEQUIPMENT_LIST = "faultEquipmentList";
 }

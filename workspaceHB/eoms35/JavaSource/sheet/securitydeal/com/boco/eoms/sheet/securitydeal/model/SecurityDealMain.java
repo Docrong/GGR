@@ -8,92 +8,88 @@ import com.boco.eoms.sheet.base.model.BaseSubMain;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="SecurityDealMain.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="SecurityDealmain"
  */
-public class SecurityDealMain extends BaseMain
-{
+public class SecurityDealMain extends BaseMain {
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainNetSortOne;
+     * @dicttype
+     */
+    private java.lang.String mainNetSortOne;
 
     /**
-	 *
-	 */
-     private java.lang.String mainNetSortTwo;
+     *
+     */
+    private java.lang.String mainNetSortTwo;
 
     /**
-	 *
-	 */
-     private java.lang.String mainNetSortThree;
+     *
+     */
+    private java.lang.String mainNetSortThree;
 
     /**
-	 *
-	 * @textarea
-	 */
-     private java.lang.String mainSecurityDealRequire;
+     * @textarea
+     */
+    private java.lang.String mainSecurityDealRequire;
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainNetSortOne() {
-            return mainNetSortOne;
-     }
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainNetSortOne() {
+        return mainNetSortOne;
+    }
 
-     public void setMainNetSortOne(java.lang.String mainNetSortOne) {
-           this.mainNetSortOne = mainNetSortOne;
-     }
+    public void setMainNetSortOne(java.lang.String mainNetSortOne) {
+        this.mainNetSortOne = mainNetSortOne;
+    }
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainNetSortTwo() {
-            return mainNetSortTwo;
-     }
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainNetSortTwo() {
+        return mainNetSortTwo;
+    }
 
-     public void setMainNetSortTwo(java.lang.String mainNetSortTwo) {
-           this.mainNetSortTwo = mainNetSortTwo;
-     }
+    public void setMainNetSortTwo(java.lang.String mainNetSortTwo) {
+        this.mainNetSortTwo = mainNetSortTwo;
+    }
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainNetSortThree() {
-            return mainNetSortThree;
-     }
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainNetSortThree() {
+        return mainNetSortThree;
+    }
 
-     public void setMainNetSortThree(java.lang.String mainNetSortThree) {
-           this.mainNetSortThree = mainNetSortThree;
-     }
+    public void setMainNetSortThree(java.lang.String mainNetSortThree) {
+        this.mainNetSortThree = mainNetSortThree;
+    }
 
-	/**
-	 * @hibernate.property value="2000"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainSecurityDealRequire() {
-            return mainSecurityDealRequire;
-     }
+    /**
+     * @return
+     * @hibernate.property value="2000"
+     * @eoms.show
+     */
+    public java.lang.String getMainSecurityDealRequire() {
+        return mainSecurityDealRequire;
+    }
 
-     public void setMainSecurityDealRequire(java.lang.String mainSecurityDealRequire) {
-           this.mainSecurityDealRequire = mainSecurityDealRequire;
-     }
+    public void setMainSecurityDealRequire(java.lang.String mainSecurityDealRequire) {
+        this.mainSecurityDealRequire = mainSecurityDealRequire;
+    }
 
 }

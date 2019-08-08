@@ -1,65 +1,70 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-	<base>
-	    <InterfaceUser>shilinlin</InterfaceUser>
-		<SendRoleId>shilinlin</SendRoleId>
-		<AcceptGroupId>800212</AcceptGroupId>
-		<AcceptRoleId>test2</AcceptRoleId>
-		<SendImmediately>false</SendImmediately>
-		<ComplaintTypeDictId>1010625</ComplaintTypeDictId>
-		<ComplaintType1></ComplaintType1>
-		<ComplaintType2></ComplaintType2>
-	</base>
+    <base>
+        <InterfaceUser>shilinlin</InterfaceUser>
+        <SendRoleId>shilinlin</SendRoleId>
+        <AcceptGroupId>800212</AcceptGroupId>
+        <AcceptRoleId>test2</AcceptRoleId>
+        <SendImmediately>false</SendImmediately>
+        <ComplaintTypeDictId>1010625</ComplaintTypeDictId>
+        <ComplaintType1></ComplaintType1>
+        <ComplaintType2></ComplaintType2>
+    </base>
     <newWorkSheet>
-        <content columnName="title" interfaceName="title" defauleValue="" />
-        <content columnName="sheetAcceptLimit" interfaceName="sheetAcceptLimit"   />
-        <content columnName="sheetCompleteLimit" interfaceName="sheetCompleteLimit"   />
-        
-        <content columnName="Tooperateroleid" interfaceName="Tooperateroleid" defauleValue="" />
-        <content columnName="mainSheetType" interfaceName="mainSheetType" defauleValue="10185010201" />
-      <content columnName="parentSheetName" interfaceName="parentSheetName" defauleValue="iComplaintMainManager" />
-		<content columnName="mainComurgentDegree" interfaceName="mainComurgentDegree" defauleValue="" />
-		<content columnName="complaintType" interfaceName="complaintType" defauleValue="" />
-		<content columnName="type" interfaceName="type" defauleValue="complaint" />
-		<content columnName="mainCombtype1" interfaceName="bdeptContact" defauleValue="" />
-		<content columnName="mainCombdeptContact" interfaceName="bdeptContactPhone" defauleValue="" />
-		<content columnName="mainCombdeptContactPhone" interfaceName="IslargeAreaComplaints" defauleValue=""  dictNodePath="yesOrNo"/><!-- 是否大面积投诉 -->>
+        <content columnName="title" interfaceName="title" defauleValue=""/>
+        <content columnName="sheetAcceptLimit" interfaceName="sheetAcceptLimit"/>
+        <content columnName="sheetCompleteLimit" interfaceName="sheetCompleteLimit"/>
 
-		<content columnName="mainrepeatComTimes" interfaceName="mainrepeatComTimes" defauleValue="" />
-		<content columnName="mainComcustomerName" interfaceName="mainComcustomerName" defauleValue="" />
-		<content columnName="mainComcustomPhone" interfaceName="mainComcustomPhone" defauleValue="" />
-		<content columnName="mainComcustomBrand" interfaceName="mainComcustomBrand" defauleValue="" dictNodePath="customBrand"/>
-		<content columnName="mainComstartDealCity" interfaceName="mainComstartDealCity" defauleValue="18"  />
-		
-		<content columnName="mainComcustomAttribution" interfaceName="mainComcustomAttribution" defauleValue="" />
-		<content columnName="mainComfaultTime" interfaceName="mainComfaultTime" defauleValue="" />
-		<content columnName="mainComTime" interfaceName="mainComTime" defauleValue="" />
-		<content columnName="mainComtNum" interfaceName="mainComtNum" defauleValue="" /> 
-		<content columnName="mainComfaultSite" interfaceName="mainComfaultSite" defauleValue="" />
-		<content columnName="mainComterminalType" interfaceName="mainComterminalType" defauleValue="" />
-		<content columnName="mainComDesc" interfaceName="mainComDesc" defauleValue="" />
-		<content columnName="mainCompreDealResult" interfaceName="mainCompreDealResult" defauleValue="" />
-		
-		<content columnName="mainInterfaceSheetType" interfaceName="" defauleValue="net" />
-		<content columnName="phaseId" interfaceName="" defauleValue="TaskCreateAuditHumTask" />
-		<content columnName="sendUserId" interfaceName="" defauleValue="yinyong" />
-		<content columnName="nodeAcceptLimit" interfaceName="sheetAcceptLimit" defauleValue="" />
-        <content columnName="nodeCompleteLimit" interfaceName="sheetCompleteLimit" defauleValue="" />
-        <content columnName="acceptTimeLimit" interfaceName="sheetAcceptLimit" defauleValue="" />
-		<content columnName="completeTimeLimit" interfaceName="sheetCompleteLimit" defauleValue="" />
-       <content columnName="sheetTemplateName" interfaceName="" defauleValue="AgentMaintenanceMainFlowProcess" />
-	</newWorkSheet>
-   
-	 <affirmWorkSheet>
-    <content columnName="sheetId" interfaceName="sheetId" defauleValue="" />
-    <content columnName="operateUserId" interfaceName="operateUserId"  defauleValue="" />
-    <content columnName="operateTime" interfaceName="operateTime"  defauleValue="" />
-    <content columnName="operateContact" interfaceName="operateContact"  defauleValue="" />
-    <content columnName="operateType" interfaceName="operateType"  defauleValue="" />
-    <content columnName="opDesc" interfaceName="opDesc"  defauleValue="" />
-    <content columnName="beanId"  interfaceName=""  defauleValue="iAgentMaintenanceMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceLink" />
+        <content columnName="Tooperateroleid" interfaceName="Tooperateroleid" defauleValue=""/>
+        <content columnName="mainSheetType" interfaceName="mainSheetType" defauleValue="10185010201"/>
+        <content columnName="parentSheetName" interfaceName="parentSheetName" defauleValue="iComplaintMainManager"/>
+        <content columnName="mainComurgentDegree" interfaceName="mainComurgentDegree" defauleValue=""/>
+        <content columnName="complaintType" interfaceName="complaintType" defauleValue=""/>
+        <content columnName="type" interfaceName="type" defauleValue="complaint"/>
+        <content columnName="mainCombtype1" interfaceName="bdeptContact" defauleValue=""/>
+        <content columnName="mainCombdeptContact" interfaceName="bdeptContactPhone" defauleValue=""/>
+        <content columnName="mainCombdeptContactPhone" interfaceName="IslargeAreaComplaints" defauleValue=""
+                 dictNodePath="yesOrNo"/><!-- 是否大面积投诉 -->
+        >
+
+        <content columnName="mainrepeatComTimes" interfaceName="mainrepeatComTimes" defauleValue=""/>
+        <content columnName="mainComcustomerName" interfaceName="mainComcustomerName" defauleValue=""/>
+        <content columnName="mainComcustomPhone" interfaceName="mainComcustomPhone" defauleValue=""/>
+        <content columnName="mainComcustomBrand" interfaceName="mainComcustomBrand" defauleValue=""
+                 dictNodePath="customBrand"/>
+        <content columnName="mainComstartDealCity" interfaceName="mainComstartDealCity" defauleValue="18"/>
+
+        <content columnName="mainComcustomAttribution" interfaceName="mainComcustomAttribution" defauleValue=""/>
+        <content columnName="mainComfaultTime" interfaceName="mainComfaultTime" defauleValue=""/>
+        <content columnName="mainComTime" interfaceName="mainComTime" defauleValue=""/>
+        <content columnName="mainComtNum" interfaceName="mainComtNum" defauleValue=""/>
+        <content columnName="mainComfaultSite" interfaceName="mainComfaultSite" defauleValue=""/>
+        <content columnName="mainComterminalType" interfaceName="mainComterminalType" defauleValue=""/>
+        <content columnName="mainComDesc" interfaceName="mainComDesc" defauleValue=""/>
+        <content columnName="mainCompreDealResult" interfaceName="mainCompreDealResult" defauleValue=""/>
+
+        <content columnName="mainInterfaceSheetType" interfaceName="" defauleValue="net"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="TaskCreateAuditHumTask"/>
+        <content columnName="sendUserId" interfaceName="" defauleValue="yinyong"/>
+        <content columnName="nodeAcceptLimit" interfaceName="sheetAcceptLimit" defauleValue=""/>
+        <content columnName="nodeCompleteLimit" interfaceName="sheetCompleteLimit" defauleValue=""/>
+        <content columnName="acceptTimeLimit" interfaceName="sheetAcceptLimit" defauleValue=""/>
+        <content columnName="completeTimeLimit" interfaceName="sheetCompleteLimit" defauleValue=""/>
+        <content columnName="sheetTemplateName" interfaceName="" defauleValue="AgentMaintenanceMainFlowProcess"/>
+    </newWorkSheet>
+
+    <affirmWorkSheet>
+        <content columnName="sheetId" interfaceName="sheetId" defauleValue=""/>
+        <content columnName="operateUserId" interfaceName="operateUserId" defauleValue=""/>
+        <content columnName="operateTime" interfaceName="operateTime" defauleValue=""/>
+        <content columnName="operateContact" interfaceName="operateContact" defauleValue=""/>
+        <content columnName="operateType" interfaceName="operateType" defauleValue=""/>
+        <content columnName="opDesc" interfaceName="opDesc" defauleValue=""/>
+        <content columnName="beanId" interfaceName="" defauleValue="iAgentMaintenanceMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceLink"/>
     </affirmWorkSheet>
 </boco>
 

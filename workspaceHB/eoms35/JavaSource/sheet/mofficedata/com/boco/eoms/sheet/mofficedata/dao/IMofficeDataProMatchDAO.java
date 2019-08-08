@@ -18,25 +18,24 @@ import com.boco.eoms.sheet.mofficedata.model.MofficeDataProMatch;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
 
 public interface IMofficeDataProMatchDAO extends Dao {
-	public void saveOrUpdate(MofficeDataProMatch obj) throws HibernateException;
+    public void saveOrUpdate(MofficeDataProMatch obj) throws HibernateException;
 
-	public List getProMatchObjects(String mainId)throws HibernateException;
+    public List getProMatchObjects(String mainId) throws HibernateException;
 
-	public HashMap getProMatchsByCondition(String hql, Integer pageIndex, Integer pageSize)throws HibernateException;
+    public HashMap getProMatchsByCondition(String hql, Integer pageIndex, Integer pageSize) throws HibernateException;
 
-	public List getProMatchObjectByCorreKey(String tkid)throws HibernateException;
+    public List getProMatchObjectByCorreKey(String tkid) throws HibernateException;
 
-	public List getProMatchObjectByPreLinkId(String prelinkId)throws HibernateException;
+    public List getProMatchObjectByPreLinkId(String prelinkId) throws HibernateException;
 
-	public List getProMatchObjectById(String id)throws HibernateException;
+    public List getProMatchObjectById(String id) throws HibernateException;
 
-	public boolean delObj(MofficeDataProMatch mo)throws HibernateException;
+    public boolean delObj(MofficeDataProMatch mo) throws HibernateException;
 
 }

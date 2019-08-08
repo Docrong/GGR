@@ -4,93 +4,108 @@
 <!-- sample config file  , 
 			create new config file in your module -->
 <beans>
-	<!-- 配置信息类 -->
-	<bean id="statFlowcontrolConfigManager"
-		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
-		autowire="byName">
-		<!-- 统计算法配置文件路径 在子模块中新建配置文件 
-		-->
-		<property name="configFilePath">
-			<value>classpath:config/statistic-config-query-task.xml</value>
-		</property>
-		
-		<!-- Excel配置文件路径 在子模块中新建配置文件
-		-->
-		<property name="excelConfigFilePath">
-			<value>classpath:config/statistic-config-excel-task.xls</value>
-		</property>
-		
-		<!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
-		<property name="reloadConfig">
-			<value>true</value>
-		</property>
-		
-		<!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
-		<property name="excelConfigMap">
-           <map>
-              <entry key="flowcontrol_oracle"><value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_oracle.xls</value></entry>
-              <entry key="flowcontrol_informix"><value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_informix.xls</value></entry>
-            
-            <entry key="flowcontrol_user_oracle"><value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_user_oracle.xls</value></entry>
-            <entry key="flowcontrol_user_informix"><value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_user_informix.xls</value></entry>
-           </map>
+    <!-- 配置信息类 -->
+    <bean id="statFlowcontrolConfigManager"
+          class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
+          autowire="byName">
+        <!-- 统计算法配置文件路径 在子模块中新建配置文件
+        -->
+        <property name="configFilePath">
+            <value>classpath:config/statistic-config-query-task.xml</value>
         </property>
-        
-        
+
+        <!-- Excel配置文件路径 在子模块中新建配置文件
+        -->
+        <property name="excelConfigFilePath">
+            <value>classpath:config/statistic-config-excel-task.xls</value>
+        </property>
+
+        <!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
+        <property name="reloadConfig">
+            <value>true</value>
+        </property>
+
+        <!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
+        <property name="excelConfigMap">
+            <map>
+                <entry key="flowcontrol_oracle">
+                    <value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_oracle.xls</value>
+                </entry>
+                <entry key="flowcontrol_informix">
+                    <value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_informix.xls</value>
+                </entry>
+
+                <entry key="flowcontrol_user_oracle">
+                    <value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_user_oracle.xls</value>
+                </entry>
+                <entry key="flowcontrol_user_informix">
+                    <value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_user_informix.xls</value>
+                </entry>
+            </map>
+        </property>
+
+
         <!-- 配置quary算法文件路径 key为excel中配置的参数，value对应文件名称  -->
         <property name="queryCongigMap">
-           <map>
-              <entry key="flowcontrol_oracle"><value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_oracle.xml</value></entry>
-              <entry key="flowcontrol_informix"><value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_informix.xml</value></entry>
-          
-              <entry key="flowcontrol_user_oracle"><value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_user_oracle.xml</value></entry>
-              <entry key="flowcontrol_user_informix"><value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_user_informix.xml</value></entry>
-           
-           </map>
+            <map>
+                <entry key="flowcontrol_oracle">
+                    <value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_oracle.xml</value>
+                </entry>
+                <entry key="flowcontrol_informix">
+                    <value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_informix.xml</value>
+                </entry>
+
+                <entry key="flowcontrol_user_oracle">
+                    <value>classpath:config/statistic/flowcontrol-config/oracle/flowcontrol_user_oracle.xml</value>
+                </entry>
+                <entry key="flowcontrol_user_informix">
+                    <value>classpath:config/statistic/flowcontrol-config/informix/flowcontrol_user_informix.xml</value>
+                </entry>
+
+            </map>
         </property>
-		
-		<!-- Excel解析类 		 
-			目前使用applicationContext-statistic-base.xml中的配置 
-			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
-		<property name="excelConverter" ref="statBaseExcelConverter"/>
-	</bean>
-	
-	<!-- 统计工具需要实现的类
-	<bean id= "istatisticTool"
-		class="com.boco.eoms.commons.statistic.task.config.ist.StatisticToolTask">
-	</bean>-->
-	
-	<!-- 总体管理类 -->
-	<bean id="statFlowcontrolManager" 
-		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
-		<property name="statConfigManager" ref="statFlowcontrolConfigManager" />
 
-		<!-- 详细列表的VO类  -->
-		<property name="statDetailVOName">
-			<value>com.boco.eoms.commons.statistic.base.vo.StatDetailVO</value>
-		</property>
-		
-		<!-- <property name="statisticTool" ref="istatisticTool"></property> -->
-		
-		<!-- 
-			以下3个对象目前使用applicationContext-statistic-base.xml中的配置 
-			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.
-		-->
-		<property name="statJdbcDAO" ref="statBaseJdbcDAO" />
-		<property name="statExcelConverter" ref="statBaseExcelConverter" />
-		<property name="statDetailDAO" ref="defaultDetailDAO" />
+        <!-- Excel解析类
+            目前使用applicationContext-statistic-base.xml中的配置
+            如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
+        <property name="excelConverter" ref="statBaseExcelConverter"/>
+    </bean>
 
-		<property name="statExportExcel" ref="statBaseExportExcel"></property>
-		
-	
-		
-	</bean>
+    <!-- 统计工具需要实现的类
+    <bean id= "istatisticTool"
+        class="com.boco.eoms.commons.statistic.task.config.ist.StatisticToolTask">
+    </bean>-->
 
-	<!-- 统计工具任务工单实现类 -->
-	<bean id="flowcontrolStatMethod"
-		class="com.boco.eoms.commons.statistic.flowcontrol.webapp.action.FlowcontrolStatMethodImpl">
-		<property name="statManager" ref="statFlowcontrolManager" />
-	</bean>
-	
+    <!-- 总体管理类 -->
+    <bean id="statFlowcontrolManager"
+          class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
+        <property name="statConfigManager" ref="statFlowcontrolConfigManager"/>
+
+        <!-- 详细列表的VO类  -->
+        <property name="statDetailVOName">
+            <value>com.boco.eoms.commons.statistic.base.vo.StatDetailVO</value>
+        </property>
+
+        <!-- <property name="statisticTool" ref="istatisticTool"></property> -->
+
+        <!--
+            以下3个对象目前使用applicationContext-statistic-base.xml中的配置
+            如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.
+        -->
+        <property name="statJdbcDAO" ref="statBaseJdbcDAO"/>
+        <property name="statExcelConverter" ref="statBaseExcelConverter"/>
+        <property name="statDetailDAO" ref="defaultDetailDAO"/>
+
+        <property name="statExportExcel" ref="statBaseExportExcel"></property>
+
+
+    </bean>
+
+    <!-- 统计工具任务工单实现类 -->
+    <bean id="flowcontrolStatMethod"
+          class="com.boco.eoms.commons.statistic.flowcontrol.webapp.action.FlowcontrolStatMethodImpl">
+        <property name="statManager" ref="statFlowcontrolManager"/>
+    </bean>
+
 
 </beans>

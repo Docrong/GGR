@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 
@@ -18,186 +19,187 @@ import com.boco.eoms.sheet.base.util.UUIDHexGenerator;
 import com.boco.eoms.sheet.base.webapp.action.BaseSheet;
 import com.boco.eoms.sheet.arithmeticmodify.model.ArithmeticModifyMain;
 
-public  class ArithmeticModifyMethod extends BaseSheet {
-	public String getPageColumnName() {
-		
-		return super.getPageColumnName()+"gatherPerformer@java.lang.String,gatherPerformerLeader@java.lang.String,"
-		+ "gatherPerformerType@java.lang.String,gatherPhaseId@java.lang.String,";
-		
-	}
-   /* (non-Javadoc)
+public class ArithmeticModifyMethod extends BaseSheet {
+    public String getPageColumnName() {
+
+        return super.getPageColumnName() + "gatherPerformer@java.lang.String,gatherPerformerLeader@java.lang.String,"
+                + "gatherPerformerType@java.lang.String,gatherPhaseId@java.lang.String,";
+
+    }
+
+    /* (non-Javadoc)
      * @see com.boco.eoms.sheet.base.webapp.action.IBaseSheet#getInterfaceObjMap(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
      */
     public HashMap getInterfaceObjMap(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response) throws Exception {
+                                      HttpServletRequest request, HttpServletResponse response) throws Exception {
         // TODO Auto-generated method stub
         HashMap hashMap = new HashMap();
 //    	String taskName = StaticMethod.nullObject2String(request
 //    			.getParameter("activeTemplateId"));
 //    	String operatName = StaticMethod.nullObject2String(request.getParameter("operateName"));
-    	HashMap sheetMap = new HashMap();
-		String sheetKey = StaticMethod.nullObject2String(request
-				.getParameter("mainId"));
-		BaseMain main = (BaseMain) this.getMainService().getMainObject().getClass().newInstance();
-		BaseMain tmpMain = (BaseMain) this.getMainService().getMainObject().getClass().newInstance();
-		if(!sheetKey.equals("")){
-			sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));			
-		} 
-		if(!sheetKey.equals("")){
-			tmpMain = this.getMainService().getSingleMainPO(sheetKey);
-			if(tmpMain != null && tmpMain.getId().equals(sheetKey)){
-				main = tmpMain;
-			}else{
-				main.setId(sheetKey);
-			}
-		} 
-		sheetMap.put("main", main);	
-		sheetMap.put("link", getLinkService().getLinkObject().getClass().newInstance());
-		sheetMap.put("operate", getPageColumnName());
-		hashMap.put("selfSheet",sheetMap);
-    	
-    	return hashMap;
+        HashMap sheetMap = new HashMap();
+        String sheetKey = StaticMethod.nullObject2String(request
+                .getParameter("mainId"));
+        BaseMain main = (BaseMain) this.getMainService().getMainObject().getClass().newInstance();
+        BaseMain tmpMain = (BaseMain) this.getMainService().getMainObject().getClass().newInstance();
+        if (!sheetKey.equals("")) {
+            sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+        }
+        if (!sheetKey.equals("")) {
+            tmpMain = this.getMainService().getSingleMainPO(sheetKey);
+            if (tmpMain != null && tmpMain.getId().equals(sheetKey)) {
+                main = tmpMain;
+            } else {
+                main.setId(sheetKey);
+            }
+        }
+        sheetMap.put("main", main);
+        sheetMap.put("link", getLinkService().getLinkObject().getClass().newInstance());
+        sheetMap.put("operate", getPageColumnName());
+        hashMap.put("selfSheet", sheetMap);
+
+        return hashMap;
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.sheet.base.webapp.action.IBaseSheet#dealFlowEngineMap(org.apache.struts.action.ActionMapping,
      *      org.apache.struts.action.ActionForm,
      *      javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse)
      */
     public void dealFlowEngineMap(ActionMapping mapping, ActionForm form,
-    		HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	super.dealFlowEngineMap(mapping, form, request, response);
-		String operateType = StaticMethod.nullObject2String(request
-				.getParameter("operateType"));
-		String gatherPhaseId = StaticMethod.nullObject2String(request
-				.getParameter("gatherPhaseId"));
-		String taskName = StaticMethod.nullObject2String(request
-				.getParameter("activeTemplateId"));
-		if(taskName.equals("")){
-			taskName = StaticMethod.nullObject2String(request
-					.getParameter("taskName"));			
-		}
-		HashMap sheetMap = this.getFlowEngineMap();
-		Map operate = (HashMap)sheetMap.get("operate");
-		Map mainMap = (HashMap)sheetMap.get("main");
-		Map linkMap = (HashMap)sheetMap.get("link");
-		linkMap.put("serviceId", mainMap.get("serviceId"));
- 		HashMap sessionMap = new HashMap();
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-		.getSession().getAttribute("sessionform");
-		sessionMap.put("userId", sessionform.getUserid());
-		sessionMap.put("password", sessionform.getPassword());
-		String[] dealperformers = (StaticMethod.nullObject2String(operate.get("dealPerformer"))).split(",");
+                                  HttpServletRequest request, HttpServletResponse response) throws Exception {
+        super.dealFlowEngineMap(mapping, form, request, response);
+        String operateType = StaticMethod.nullObject2String(request
+                .getParameter("operateType"));
+        String gatherPhaseId = StaticMethod.nullObject2String(request
+                .getParameter("gatherPhaseId"));
+        String taskName = StaticMethod.nullObject2String(request
+                .getParameter("activeTemplateId"));
+        if (taskName.equals("")) {
+            taskName = StaticMethod.nullObject2String(request
+                    .getParameter("taskName"));
+        }
+        HashMap sheetMap = this.getFlowEngineMap();
+        Map operate = (HashMap) sheetMap.get("operate");
+        Map mainMap = (HashMap) sheetMap.get("main");
+        Map linkMap = (HashMap) sheetMap.get("link");
+        linkMap.put("serviceId", mainMap.get("serviceId"));
+        HashMap sessionMap = new HashMap();
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        sessionMap.put("userId", sessionform.getUserid());
+        sessionMap.put("password", sessionform.getPassword());
+        String[] dealperformers = (StaticMethod.nullObject2String(operate.get("dealPerformer"))).split(",");
 //	    if(taskName.equals("DraftTask")){
 //	    	operate.put("phaseId","PermitTask");
 //			operate.put("operateType","3");
 //		}
-		if(taskName.equals("reply") || taskName.equals("advice"))
-		{   
-			Map link = (HashMap) sheetMap.get("link");
-			link.put("id", "");
-			sheetMap.put("link", link);
-		}
-		if(dealperformers.length>1){			
-			String corrKey = "";
-			String tmp = "";
-			for(int i=0;i<dealperformers.length;i++){
-				tmp =  UUIDHexGenerator.getInstance().getID();
-				if(dealperformers.length == 1){
-					corrKey = tmp;
-				}else{
-					if(corrKey.equals("")){
-						corrKey = tmp;
-					}else{
-						corrKey = corrKey + "," + tmp;	
-					}				
-				}
-			}
-			System.out.println("corrKey"+corrKey);
-			operate.put("extendKey2",gatherPhaseId);
-			operate.put("extendKey1", corrKey);
-			sheetMap.put("operate", operate);
+        if (taskName.equals("reply") || taskName.equals("advice")) {
+            Map link = (HashMap) sheetMap.get("link");
+            link.put("id", "");
+            sheetMap.put("link", link);
+        }
+        if (dealperformers.length > 1) {
+            String corrKey = "";
+            String tmp = "";
+            for (int i = 0; i < dealperformers.length; i++) {
+                tmp = UUIDHexGenerator.getInstance().getID();
+                if (dealperformers.length == 1) {
+                    corrKey = tmp;
+                } else {
+                    if (corrKey.equals("")) {
+                        corrKey = tmp;
+                    } else {
+                        corrKey = corrKey + "," + tmp;
+                    }
+                }
+            }
+            System.out.println("corrKey" + corrKey);
+            operate.put("extendKey2", gatherPhaseId);
+            operate.put("extendKey1", corrKey);
+            sheetMap.put("operate", operate);
 
-		}
-		this.setFlowEngineMap(sheetMap);  
+        }
+        this.setFlowEngineMap(sheetMap);
     }
-    
-  
+
+
     public Map getProcessOjbectAttribute() {
-     	Map  attributeMap = new HashMap();
-     	attributeMap.put("dealPerformer","dealPerformer");
-        attributeMap.put("copyPerformer","copyPerformer");
-     	attributeMap.put("auditPerformer","auditPerformer");
-     	attributeMap.put("subAuditPerformer","subAuditPerformer");
-     	attributeMap.put("objectName", "operate");
-  		return attributeMap;	
- 	}
-    
+        Map attributeMap = new HashMap();
+        attributeMap.put("dealPerformer", "dealPerformer");
+        attributeMap.put("copyPerformer", "copyPerformer");
+        attributeMap.put("auditPerformer", "auditPerformer");
+        attributeMap.put("subAuditPerformer", "subAuditPerformer");
+        attributeMap.put("objectName", "operate");
+        return attributeMap;
+    }
+
     public Map getParameterMap() {
-		return this.getParameterMap();
-	}    
-    
+        return this.getParameterMap();
+    }
+
     public Map getAttachmentAttributeOfOjbect() {
-		Map objectMap = new HashMap();		
-		List mainAttachmentAttributes = new ArrayList();
-		mainAttachmentAttributes.add("sheetAccessories");
-		List linkAttachmentAttributes = new ArrayList();
-		linkAttachmentAttributes.add("nodeAccessories");
-		objectMap.put("mainObject", mainAttachmentAttributes);
-		objectMap.put("linkObject", linkAttachmentAttributes);
-		return objectMap;
-	}
+        Map objectMap = new HashMap();
+        List mainAttachmentAttributes = new ArrayList();
+        mainAttachmentAttributes.add("sheetAccessories");
+        List linkAttachmentAttributes = new ArrayList();
+        linkAttachmentAttributes.add("nodeAccessories");
+        objectMap.put("mainObject", mainAttachmentAttributes);
+        objectMap.put("linkObject", linkAttachmentAttributes);
+        return objectMap;
+    }
 
-	 public void showInputDealPage(ActionMapping mapping, ActionForm form,
-	 			HttpServletRequest request, HttpServletResponse response)
-	 			throws Exception {
-	 		super.showInputDealPage(mapping, form, request, response);
-	 		// 取上条TASK
-	 		String taskName = StaticMethod.nullObject2String(request
-	 				.getParameter("activeTemplateId"));
-	 		if(taskName.equals("")){
-	 			taskName = StaticMethod.nullObject2String(request
-	 					.getParameter("taskName"));
-	 		}
+    public void showInputDealPage(ActionMapping mapping, ActionForm form,
+                                  HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        super.showInputDealPage(mapping, form, request, response);
+        // 取上条TASK
+        String taskName = StaticMethod.nullObject2String(request
+                .getParameter("activeTemplateId"));
+        if (taskName.equals("")) {
+            taskName = StaticMethod.nullObject2String(request
+                    .getParameter("taskName"));
+        }
 
-	 		//碰到需要驳回操作的节点时，去取上一个Task记录
-	 		if (taskName.equals("PermitTask") || taskName.equals("RequireConfirmTask")|| taskName.equals("DeployImplementTask")||
-	 				taskName.equals("ResultConfirmTask")|| taskName.equals("CheckDataSameTask") || taskName.equals("ResultCheckTask") || 
-	 				taskName.equals("TargetCheckTask") || taskName.equals("TargetConfirmTask") || taskName.equals("FormalDeployTask") || 
-	 				 taskName.equals("PublishNoticeTask") || taskName.equals("HoldTask")) {
-	 			//下面这个方法写在base类中，会取出4个值，传递到inputdealpage页面中
-	 			super.setParentTaskOperateWhenRejct(request);
-	 		}
-	 	}
+        //碰到需要驳回操作的节点时，去取上一个Task记录
+        if (taskName.equals("PermitTask") || taskName.equals("RequireConfirmTask") || taskName.equals("DeployImplementTask") ||
+                taskName.equals("ResultConfirmTask") || taskName.equals("CheckDataSameTask") || taskName.equals("ResultCheckTask") ||
+                taskName.equals("TargetCheckTask") || taskName.equals("TargetConfirmTask") || taskName.equals("FormalDeployTask") ||
+                taskName.equals("PublishNoticeTask") || taskName.equals("HoldTask")) {
+            //下面这个方法写在base类中，会取出4个值，传递到inputdealpage页面中
+            super.setParentTaskOperateWhenRejct(request);
+        }
+    }
 
-	public String getProcessTemplateName() {
-		// TODO Auto-generated method stub
-		return "ArithmeticModifyProcess";
-	}
+    public String getProcessTemplateName() {
+        // TODO Auto-generated method stub
+        return "ArithmeticModifyProcess";
+    }
 
-	public String getSheetAttachCode() {
-		// TODO Auto-generated method stub
-		return "arithmeticmodify";
-	}  
+    public String getSheetAttachCode() {
+        // TODO Auto-generated method stub
+        return "arithmeticmodify";
+    }
 
-	public Map initMap(Map map, List attach, String type) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	public void showDetailPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		super.showDetailPage(mapping, form, request, response);
-		String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"), "");
-		String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
-		ArithmeticModifyMain main = (ArithmeticModifyMain)this.getMainService().getSingleMainPO(sheetKey);
-		if(!preLinkId.equals("")){
-			request.setAttribute("preLink", this.getLinkService().getSingleLinkPO(preLinkId));
-		}	
-	}	
-	
+    public Map initMap(Map map, List attach, String type) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void showDetailPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        // TODO Auto-generated method stub
+        super.showDetailPage(mapping, form, request, response);
+        String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"), "");
+        String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+        ArithmeticModifyMain main = (ArithmeticModifyMain) this.getMainService().getSingleMainPO(sheetKey);
+        if (!preLinkId.equals("")) {
+            request.setAttribute("preLink", this.getLinkService().getSingleLinkPO(preLinkId));
+        }
+    }
+
 //	/**
 //	 * 同组模式待处理列表（本角色已接单未处理工单） 
 //	 * @param mapping

@@ -1,6 +1,6 @@
 /**
  * CRMProcessSheetTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -11,14 +11,14 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
     public CRMProcessSheetTestCase(java.lang.String name) {
         super(name);
     }
+
     public void test1CRMProcessSheetHttpSoap12EndpointReplyWorkSheet() throws Exception {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -37,10 +37,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -59,10 +58,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -81,10 +79,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -103,10 +100,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap12Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -125,10 +121,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -147,10 +142,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -169,10 +163,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -191,10 +184,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -213,10 +205,9 @@ public class CRMProcessSheetTestCase extends junit.framework.TestCase {
         com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub binding;
         try {
             binding = (com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub)
-                          new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.huawei.boss.wsinterface.gate.CRMProcessSheetLocator().getCRMProcessSheetHttpSoap11Endpoint();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }

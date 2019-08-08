@@ -2,42 +2,67 @@
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-/** @author Hibernate CodeGenerator */
+/**
+ * @author Hibernate CodeGenerator
+ */
 public class InterfaceLog implements Serializable {
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String id;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private int fromSystem;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String sheetId;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String sheetType;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String serSupplier;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String serCaller;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String serMethod;
 
-    /** nullable persistent field */
-    private  Timestamp callTime;
+    /**
+     * nullable persistent field
+     */
+    private Timestamp callTime;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String result;
 
-    /** nullable persistent field */
+    /**
+     * nullable persistent field
+     */
     private String sourceData;
 
-    /** full constructor */
+    /**
+     * full constructor
+     */
     public InterfaceLog(int fromSystem, String sheetId, String sheetType, String serSupplier, String serCaller, String serMethod, Timestamp callTime, String result, String sourceData) {
         this.fromSystem = fromSystem;
         this.sheetId = sheetId;
@@ -50,7 +75,9 @@ public class InterfaceLog implements Serializable {
         this.sourceData = sourceData;
     }
 
-    /** default constructor */
+    /**
+     * default constructor
+     */
     public InterfaceLog() {
     }
 
@@ -136,7 +163,7 @@ public class InterfaceLog implements Serializable {
 
     public String toString() {
         return new ToStringBuilder(this)
-            .toString();
+                .toString();
     }
 
 }

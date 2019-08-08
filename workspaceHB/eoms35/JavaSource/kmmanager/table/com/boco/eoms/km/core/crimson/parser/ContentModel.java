@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -80,10 +80,9 @@ import java.io.*;
  *
  * @author Arthur van Hoff
  * @author David Brownell
- * @version 	$Revision: 1.1.1.1 $ 
+ * @version $Revision: 1.1.1.1 $
  */
-final class ContentModel
-{
+final class ContentModel {
     /**
      * Type. Either '*', '?', '+'; or connectives ',', '|'; or
      * zero for content that's an element.
@@ -107,74 +106,74 @@ final class ContentModel
     // be nice to have a lower cost cache, e.g. numbering elements and
     // using byte arrays.
     //
-    private SimpleHashtable	cache = new SimpleHashtable ();
+    private SimpleHashtable cache = new SimpleHashtable();
 
 
     /**
      * Create a content model for an element.
      */
-    public ContentModel (String element) {
-	this.type = 0;
-	this.content = element;
+    public ContentModel(String element) {
+        this.type = 0;
+        this.content = element;
     }
 
     /**
      * Create a content model of a particular type.
      * Normally used to specify a frequency, or to start a connective.
      */
-    public ContentModel (char type, ContentModel content) {
-	this.type = type;
-	this.content = content;
+    public ContentModel(char type, ContentModel content) {
+        this.type = type;
+        this.content = content;
     }
 
     /**
      * Return true if the content model could
      * match an empty input stream.
      */
-    public boolean empty () {
-	// if it matters, this could cache as a simple boolean!
+    public boolean empty() {
+        // if it matters, this could cache as a simple boolean!
 
-	switch (type) {
-	  case '*':
-	  case '?':
-	    return true;
+        switch (type) {
+            case '*':
+            case '?':
+                return true;
 
-	  case '+':
-	  case 0:
-	    return false;
+            case '+':
+            case 0:
+                return false;
 
-	  case '|':
-	    if (content instanceof ContentModel
-		    && ((ContentModel)content).empty ()) {
-		return true;
-	    }
-	    for (ContentModel m = (ContentModel)next;
-		    m != null;
-		    m = m.next) {
-		if (m.empty ())
-		    return true;
-	    }
-	    return false;
+            case '|':
+                if (content instanceof ContentModel
+                        && ((ContentModel) content).empty()) {
+                    return true;
+                }
+                for (ContentModel m = (ContentModel) next;
+                     m != null;
+                     m = m.next) {
+                    if (m.empty())
+                        return true;
+                }
+                return false;
 
-	  case ',':
-	    if (content instanceof ContentModel) {
-		if (!((ContentModel)content).empty ()) {
-		    return false;
-		}
-	    } else {
-		return false;
-	    }
-	    for (ContentModel m = (ContentModel)next;
-		    m != null;
-		    m = m.next) {
-		if (!m.empty ())
-		    return false;
-	    }
-	    return true;
+            case ',':
+                if (content instanceof ContentModel) {
+                    if (!((ContentModel) content).empty()) {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+                for (ContentModel m = (ContentModel) next;
+                     m != null;
+                     m = m.next) {
+                    if (!m.empty())
+                        return false;
+                }
+                return true;
 
-	  default:
-	    throw new InternalError ();
-	}
+            default:
+                throw new InternalError();
+        }
     }
 
 
@@ -182,108 +181,108 @@ final class ContentModel
      * Return true if the token could potentially be the
      * first token in the input stream.
      */
-    public boolean first (String token) {
-	Boolean		b = (Boolean) cache.get (token);
-	boolean		retval;
+    public boolean first(String token) {
+        Boolean b = (Boolean) cache.get(token);
+        boolean retval;
 
-	if (b != null)
-	    return b.booleanValue ();
+        if (b != null)
+            return b.booleanValue();
 
-	// if we had no cached result, compute it
-	switch (type) {
-	  case '*':
-	  case '?':
-	  case '+':
-	  case 0:
-	    if (content instanceof String)
-		retval = (content == token);
-	    else
-		retval = ((ContentModel)content).first (token);
-	    break;
+        // if we had no cached result, compute it
+        switch (type) {
+            case '*':
+            case '?':
+            case '+':
+            case 0:
+                if (content instanceof String)
+                    retval = (content == token);
+                else
+                    retval = ((ContentModel) content).first(token);
+                break;
 
-	  case ',':
-	    if (content instanceof String)
-		retval = (content == token);
-	    else if (((ContentModel)content).first (token))
-		retval = true;
-	    else if (!((ContentModel)content).empty ())
-		retval = false;
-	    else if (next != null)
-		retval = ((ContentModel)next).first (token);
-	    else
-		retval = false;
-	    break;
+            case ',':
+                if (content instanceof String)
+                    retval = (content == token);
+                else if (((ContentModel) content).first(token))
+                    retval = true;
+                else if (!((ContentModel) content).empty())
+                    retval = false;
+                else if (next != null)
+                    retval = ((ContentModel) next).first(token);
+                else
+                    retval = false;
+                break;
 
-	  case '|':
-	    if (content instanceof String && content == token)
-		retval = true;
-	    else if (((ContentModel)content).first (token))
-		retval = true;
-	    else if (next != null)
-		retval = ((ContentModel)next).first (token);
-	    else
-		retval = false;
-	    break;
+            case '|':
+                if (content instanceof String && content == token)
+                    retval = true;
+                else if (((ContentModel) content).first(token))
+                    retval = true;
+                else if (next != null)
+                    retval = ((ContentModel) next).first(token);
+                else
+                    retval = false;
+                break;
 
-	  default:
-	    throw new InternalError ();
-	}
+            default:
+                throw new InternalError();
+        }
 
-	// store the result, so we can be faster next time
-	if (retval)
-	    cache.put (token, Boolean.TRUE);
-	else
-	    cache.put (token, Boolean.FALSE);
+        // store the result, so we can be faster next time
+        if (retval)
+            cache.put(token, Boolean.TRUE);
+        else
+            cache.put(token, Boolean.FALSE);
 
-	return retval;
+        return retval;
     }
 
 
     /**
      * Convert to a string (for debugging).
      *
-    public String toString () {
-	return toString (true);
-    }
+     public String toString () {
+     return toString (true);
+     }
 
-    private String contentString ()
-    {
-	if (content instanceof ContentModel)
-	    return ((ContentModel)content).toString (false);
-	else
-	    return (String) content;
-    }
+     private String contentString ()
+     {
+     if (content instanceof ContentModel)
+     return ((ContentModel)content).toString (false);
+     else
+     return (String) content;
+     }
 
-    private String toString (boolean isOuter)
-    {
-	String	temp = contentString ();
+     private String toString (boolean isOuter)
+     {
+     String	temp = contentString ();
 
-	switch (type) {
-	  case '*':
-	  case '?':
-	  case '+':
-	    if (isOuter && temp.charAt (0) != '(')
-		return "(" + temp + type + ")";
-	    else
-		return temp + type;
+     switch (type) {
+     case '*':
+     case '?':
+     case '+':
+     if (isOuter && temp.charAt (0) != '(')
+     return "(" + temp + type + ")";
+     else
+     return temp + type;
 
-	  case 0:
-	    if (isOuter)
-		return "(" + temp + ")";
-	    else
-		return temp;
+     case 0:
+     if (isOuter)
+     return "(" + temp + ")";
+     else
+     return temp;
 
-	  case ',':
-	  case '|':
-	    if (next == null)
-		return temp;
-	    for (ContentModel m = next; m != null; m = m.next)
-		temp += type + m.contentString ();
-	    return "(" + temp + ")";
+     case ',':
+     case '|':
+     if (next == null)
+     return temp;
+     for (ContentModel m = next; m != null; m = m.next)
+     temp += type + m.contentString ();
+     return "(" + temp + ")";
 
-	  default:
-	    throw new InternalError ("foo");
-	}
-    }
-    /**/
+     default:
+     throw new InternalError ("foo");
+     }
+     }
+     /**/
 }

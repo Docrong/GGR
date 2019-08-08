@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="pnr_lanmetermgr"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="maintenUnitId"
+                name="maintenUnitId"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="maintenUnitIdCou"
+                name="maintenUnitIdCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="maintenUnitIdRem"
+                name="maintenUnitIdRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -54,7 +54,7 @@
         </property>
 
         <property
-            name="OTDR"
+                name="OTDR"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="OTDRCou"
+                name="OTDRCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -72,7 +72,7 @@
         </property>
 
         <property
-            name="OTDRRem"
+                name="OTDRRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -81,7 +81,7 @@
         </property>
 
         <property
-            name="lighCableFinder"
+                name="lighCableFinder"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -90,7 +90,7 @@
         </property>
 
         <property
-            name="lighCableFinderCou"
+                name="lighCableFinderCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -99,7 +99,7 @@
         </property>
 
         <property
-            name="lighCableFinderRem"
+                name="lighCableFinderRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -108,7 +108,7 @@
         </property>
 
         <property
-            name="groundFinder"
+                name="groundFinder"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -117,7 +117,7 @@
         </property>
 
         <property
-            name="groundFinderCou"
+                name="groundFinderCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -126,7 +126,7 @@
         </property>
 
         <property
-            name="groundFinderRem"
+                name="groundFinderRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -135,7 +135,7 @@
         </property>
 
         <property
-            name="portableGPS"
+                name="portableGPS"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -144,7 +144,7 @@
         </property>
 
         <property
-            name="portableGPSCou"
+                name="portableGPSCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -153,7 +153,7 @@
         </property>
 
         <property
-            name="portableGPSRem"
+                name="portableGPSRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -162,7 +162,7 @@
         </property>
 
         <property
-            name="autoFiberWeld"
+                name="autoFiberWeld"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -171,7 +171,7 @@
         </property>
 
         <property
-            name="autoFiberWeldCou"
+                name="autoFiberWeldCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -180,7 +180,7 @@
         </property>
 
         <property
-            name="autoFiberWeldRem"
+                name="autoFiberWeldRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -189,7 +189,7 @@
         </property>
 
         <property
-            name="fiberStrip"
+                name="fiberStrip"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -198,7 +198,7 @@
         </property>
 
         <property
-            name="fiberStripCou"
+                name="fiberStripCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -207,7 +207,7 @@
         </property>
 
         <property
-            name="fiberStripRem"
+                name="fiberStripRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -216,7 +216,7 @@
         </property>
 
         <property
-            name="losetubeStrip"
+                name="losetubeStrip"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -225,7 +225,7 @@
         </property>
 
         <property
-            name="losetubeStripCou"
+                name="losetubeStripCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -234,7 +234,7 @@
         </property>
 
         <property
-            name="losetubeStripRem"
+                name="losetubeStripRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -243,7 +243,7 @@
         </property>
 
         <property
-            name="pspStrip"
+                name="pspStrip"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -252,7 +252,7 @@
         </property>
 
         <property
-            name="pspStripCou"
+                name="pspStripCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -261,7 +261,7 @@
         </property>
 
         <property
-            name="pspStripRem"
+                name="pspStripRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -270,7 +270,7 @@
         </property>
 
         <property
-            name="lighCableReame"
+                name="lighCableReame"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -279,7 +279,7 @@
         </property>
 
         <property
-            name="lighCableReameCou"
+                name="lighCableReameCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -288,7 +288,7 @@
         </property>
 
         <property
-            name="lighCableReameRem"
+                name="lighCableReameRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -297,7 +297,7 @@
         </property>
 
         <property
-            name="beamTubeFinde"
+                name="beamTubeFinde"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -306,7 +306,7 @@
         </property>
 
         <property
-            name="beamTubeFindeCou"
+                name="beamTubeFindeCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -315,7 +315,7 @@
         </property>
 
         <property
-            name="beamTubeFindeRem"
+                name="beamTubeFindeRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -324,7 +324,7 @@
         </property>
 
         <property
-            name="fiberAmputat"
+                name="fiberAmputat"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -333,7 +333,7 @@
         </property>
 
         <property
-            name="fiberAmputatCou"
+                name="fiberAmputatCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -342,7 +342,7 @@
         </property>
 
         <property
-            name="fiberAmputatRem"
+                name="fiberAmputatRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -351,7 +351,7 @@
         </property>
 
         <property
-            name="VLinker"
+                name="VLinker"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -360,7 +360,7 @@
         </property>
 
         <property
-            name="VLinkerCou"
+                name="VLinkerCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -369,7 +369,7 @@
         </property>
 
         <property
-            name="VLinkerRem"
+                name="VLinkerRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -378,7 +378,7 @@
         </property>
 
         <property
-            name="scavPump"
+                name="scavPump"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -387,7 +387,7 @@
         </property>
 
         <property
-            name="scavPumpCou"
+                name="scavPumpCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -396,7 +396,7 @@
         </property>
 
         <property
-            name="scavPumpRem"
+                name="scavPumpRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -405,7 +405,7 @@
         </property>
 
         <property
-            name="fiberRecognizer"
+                name="fiberRecognizer"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -414,7 +414,7 @@
         </property>
 
         <property
-            name="fiberRecognizerCou"
+                name="fiberRecognizerCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -423,7 +423,7 @@
         </property>
 
         <property
-            name="fiberRecognizerRem"
+                name="fiberRecognizerRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -432,7 +432,7 @@
         </property>
 
         <property
-            name="mechSpecTool"
+                name="mechSpecTool"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -441,7 +441,7 @@
         </property>
 
         <property
-            name="mechSpecToolCou"
+                name="mechSpecToolCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -450,7 +450,7 @@
         </property>
 
         <property
-            name="mechSpecToolRem"
+                name="mechSpecToolRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -459,7 +459,7 @@
         </property>
 
         <property
-            name="dynamo"
+                name="dynamo"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -468,7 +468,7 @@
         </property>
 
         <property
-            name="dynamoCou"
+                name="dynamoCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -477,7 +477,7 @@
         </property>
 
         <property
-            name="dynamoRem"
+                name="dynamoRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -486,7 +486,7 @@
         </property>
 
         <property
-            name="mainterCar"
+                name="mainterCar"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -495,7 +495,7 @@
         </property>
 
         <property
-            name="mainterCarCou"
+                name="mainterCarCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -504,7 +504,7 @@
         </property>
 
         <property
-            name="mainterCarRem"
+                name="mainterCarRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -513,7 +513,7 @@
         </property>
 
         <property
-            name="waterPump"
+                name="waterPump"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -522,7 +522,7 @@
         </property>
 
         <property
-            name="waterPumpCou"
+                name="waterPumpCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -531,7 +531,7 @@
         </property>
 
         <property
-            name="waterPumpRem"
+                name="waterPumpRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -540,7 +540,7 @@
         </property>
 
         <property
-            name="mobileGps"
+                name="mobileGps"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -549,7 +549,7 @@
         </property>
 
         <property
-            name="mobileGpsCou"
+                name="mobileGpsCou"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -558,7 +558,7 @@
         </property>
 
         <property
-            name="mobileGpsRem"
+                name="mobileGpsRem"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -566,7 +566,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

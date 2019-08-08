@@ -7,7 +7,6 @@ package com.boco.eoms.sheet.commontask.model;
 
 import com.boco.eoms.sheet.base.task.ITask;
 import com.boco.eoms.sheet.base.task.impl.TaskImpl;
- 
-public class CommonTaskTaskUndo extends TaskImpl implements ITask
-{
+
+public class CommonTaskTaskUndo extends TaskImpl implements ITask {
 }

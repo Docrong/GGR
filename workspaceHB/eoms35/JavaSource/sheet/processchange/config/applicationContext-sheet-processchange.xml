@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--ProcessChange-START-->    
+    <!--ProcessChange-START-->
 
     <bean id="IProcessChangeMainDAO"
-		class="com.boco.eoms.sheet.processchange.dao.hibernate.ProcessChangeMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IProcessChangeLinkDAO"
-		class="com.boco.eoms.sheet.processchange.dao.hibernate.ProcessChangeLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IProcessChangeTaskDAO"
-		class="com.boco.eoms.sheet.processchange.dao.hibernate.ProcessChangeTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="ProcessChangeTask"
-		class="com.boco.eoms.sheet.processchange.model.ProcessChangeTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.processchange.dao.hibernate.ProcessChangeMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IProcessChangeLinkDAO"
+          class="com.boco.eoms.sheet.processchange.dao.hibernate.ProcessChangeLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IProcessChangeTaskDAO"
+          class="com.boco.eoms.sheet.processchange.dao.hibernate.ProcessChangeTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="ProcessChangeTask"
+          class="com.boco.eoms.sheet.processchange.model.ProcessChangeTask" autowire="byName">
+    </bean>
     <bean id="ProcessChangeLink"
-		class="com.boco.eoms.sheet.processchange.model.ProcessChangeLink"
-		autowire="byName" />
-	<bean id="ProcessChangeMain"
-		class="com.boco.eoms.sheet.processchange.model.ProcessChangeMain"
-		autowire="byName" />
-	<bean id="iprocesschangeTask"
-		class="com.boco.eoms.sheet.processchange.task.impl.ProcessChangeTaskImpl"
-		autowire="byName" />
-	<bean id="iprocesschangeTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeTaskManagerImpl">
-				<property name="taskModelObject" ref="ProcessChangeTask" />
-				<property name="taskDAO">
-					<ref bean="IProcessChangeTaskDAO"/>
-				</property>
-				<property name="taskConfigPath">
-			       <value>/config/processchangeTaskConfig.properties</value>
-		        </property>
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iProcessChangeFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iProcessChangeLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeLinkManagerImpl">
-				<property name="linkObject" ref="ProcessChangeLink"/>
-				<property name="linkDAO">
-				  <ref bean="IProcessChangeLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iProcessChangeMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeMainManagerImpl">
-			    <property name="mainObject" ref="ProcessChangeMain" />
-				<property name="mainDAO">
-				 <ref bean="IProcessChangeMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iProcessChangeQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>ProcessChangeProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/processchange-config.xml</value>
-				</property>			
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.processchange.model.ProcessChangeLink"
+          autowire="byName"/>
+    <bean id="ProcessChangeMain"
+          class="com.boco.eoms.sheet.processchange.model.ProcessChangeMain"
+          autowire="byName"/>
+    <bean id="iprocesschangeTask"
+          class="com.boco.eoms.sheet.processchange.task.impl.ProcessChangeTaskImpl"
+          autowire="byName"/>
+    <bean id="iprocesschangeTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeTaskManagerImpl">
+                <property name="taskModelObject" ref="ProcessChangeTask"/>
+                <property name="taskDAO">
+                    <ref bean="IProcessChangeTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/processchangeTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iProcessChangeFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iProcessChangeLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeLinkManagerImpl">
+                <property name="linkObject" ref="ProcessChangeLink"/>
+                <property name="linkDAO">
+                    <ref bean="IProcessChangeLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iProcessChangeMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.processchange.service.impl.ProcessChangeMainManagerImpl">
+                <property name="mainObject" ref="ProcessChangeMain"/>
+                <property name="mainDAO">
+                    <ref bean="IProcessChangeMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iProcessChangeQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>ProcessChangeProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/processchange-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iProcessChangeQo"
-		class="com.boco.eoms.sheet.processchange.qo.impl.ProcessChangeQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="ProcessChangeMain" />
-		<property name="poLink" value="ProcessChangeLink" />
-		<property name="aliasMain" value="processChangeMain" />
-		<property name="aliasLink" value="processChangeLink" />	
-	    <property name="poTask" value="ProcessChangeTask" />
-	    <property name="aliasTask" value="processChangeTask" />		
-	</bean>
+    <bean id="iProcessChangeQo"
+          class="com.boco.eoms.sheet.processchange.qo.impl.ProcessChangeQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="ProcessChangeMain"/>
+        <property name="poLink" value="ProcessChangeLink"/>
+        <property name="aliasMain" value="processChangeMain"/>
+        <property name="aliasLink" value="processChangeLink"/>
+        <property name="poTask" value="ProcessChangeTask"/>
+        <property name="aliasTask" value="processChangeTask"/>
+    </bean>
 
-	<bean id="ProcessChange" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.processchange.webapp.action.ProcessChangeMethod">
-				<property name="businessFlowService" >
-					<ref bean="iProcessChangeFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iProcessChangeLinkManager" />
-				<property name="mainService"
-					ref="iProcessChangeMainManager" />
-				<property name="sheetTask"
-					ref="ProcessChangeTask" />
-				<property name="taskService"
-					ref="iprocesschangeTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/processchange-config.xml</value>
-				</property>				
-			</bean>
-		</property>
-	</bean>        
-     <!--ProcessChange-END-->  
+    <bean id="ProcessChange" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.processchange.webapp.action.ProcessChangeMethod">
+                <property name="businessFlowService">
+                    <ref bean="iProcessChangeFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iProcessChangeLinkManager"/>
+                <property name="mainService"
+                          ref="iProcessChangeMainManager"/>
+                <property name="sheetTask"
+                          ref="ProcessChangeTask"/>
+                <property name="taskService"
+                          ref="iprocesschangeTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/processchange-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--ProcessChange-END-->
 </beans>

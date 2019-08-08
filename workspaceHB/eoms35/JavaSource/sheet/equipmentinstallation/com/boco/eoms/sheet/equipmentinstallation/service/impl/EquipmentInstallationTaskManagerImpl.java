@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.equipmentinstallation.service.IEquipmentInstallationT
  * <p>
  * Tue Oct 09 14:09:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class EquipmentInstallationTaskManagerImpl extends TaskServiceImpl implements  IEquipmentInstallationTaskManager {
- 
- }
+
+public class EquipmentInstallationTaskManagerImpl extends TaskServiceImpl implements IEquipmentInstallationTaskManager {
+
+}

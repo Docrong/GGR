@@ -29,15 +29,14 @@ import com.boco.eoms.commons.system.dict.util.Util;
  * <p>
  * Date:2007-10-30 9:42:21
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictAction extends BaseAction {
     /**
      * xml的下拉框字典关联
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -46,7 +45,7 @@ public class DictAction extends BaseAction {
      * @throws Exception
      */
     public ActionForward forXML(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response)
+                                HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         //字典关系id
         String relationId = RequestUtils.getStringParameter(request,
@@ -67,7 +66,7 @@ public class DictAction extends BaseAction {
         JSONObject j = new JSONObject();
         JSONArray json = new JSONArray();
         if (list != null && !list.isEmpty()) {
-            for (Iterator it = list.iterator(); it.hasNext();) {
+            for (Iterator it = list.iterator(); it.hasNext(); ) {
                 IDictItem item = (IDictItem) it.next();
                 JSONObject jitem = new JSONObject();
                 jitem.put("text", item.getItemName());

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.statistic.base.config.excel;
 
@@ -10,45 +10,45 @@ import java.io.Serializable;
  *
  * 超连接
  */
-public class TableCellLink  implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8018726572628575885L;
+public class TableCellLink implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -8018726572628575885L;
 
-	/**
-	 * 超连接
-	 */
-	private String Link = null;
-	
-	/**
-	 * 单元格内容
-	 */
-	private String showText = null;
-	
-	private String target = "_blank";
+    /**
+     * 超连接
+     */
+    private String Link = null;
 
-	public String getShowText() {
-		return showText;
-	}
+    /**
+     * 单元格内容
+     */
+    private String showText = null;
 
-	public void setShowText(String showText) {
-		this.showText = showText;
-	}
+    private String target = "_blank";
 
-	public String getLink() {
-		return Link;
-	}
+    public String getShowText() {
+        return showText;
+    }
 
-	public void setLink(String link) {
-		Link = link;
-	}
+    public void setShowText(String showText) {
+        this.showText = showText;
+    }
 
-	public String getTarget() {
-		return target;
-	}
+    public String getLink() {
+        return Link;
+    }
 
-	public void setTarget(String target) {
-		this.target = target;
-	}
+    public void setLink(String link) {
+        Link = link;
+    }
+
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        this.target = target;
+    }
 }

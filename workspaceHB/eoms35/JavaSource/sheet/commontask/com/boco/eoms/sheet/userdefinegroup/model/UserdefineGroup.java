@@ -11,162 +11,161 @@ import java.util.Date;
 
 /**
  * @author wangjianhua@boco.com.cn
- * 
+ * <p>
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
 public class UserdefineGroup implements Serializable {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
-	private String id;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	private String dealRoleId;
-	
-	private String dealRoleName;
-	
-	private String dealUserId;
-	
-	private String dealUserName;
-	
-	private String dealDeptId;
-	
-	private String dealDeptName;
-	
-	private String flowId;
-	
-	private String flowName;
-	
-	private String userId;
-	
-	private String remark1;
-	
-	private String remark2;
-	
-	private Date createDate;
-	
-	private String defineName;
+    private String id;
 
-	public String getDealDeptName() {
-		return dealDeptName;
-	}
+    private String dealRoleId;
 
-	public void setDealDeptName(String dealDeptName) {
-		this.dealDeptName = dealDeptName;
-	}
+    private String dealRoleName;
 
-	public String getDealRoleName() {
-		return dealRoleName;
-	}
+    private String dealUserId;
 
-	public void setDealRoleName(String dealRoleName) {
-		this.dealRoleName = dealRoleName;
-	}
+    private String dealUserName;
 
-	public String getDealUserName() {
-		return dealUserName;
-	}
+    private String dealDeptId;
 
-	public void setDealUserName(String dealUserName) {
-		this.dealUserName = dealUserName;
-	}
+    private String dealDeptName;
 
-	public String getFlowId() {
-		return flowId;
-	}
+    private String flowId;
 
-	public void setFlowId(String flowId) {
-		this.flowId = flowId;
-	}
+    private String flowName;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+    private String userId;
 
-	public Date getCreateDate() {
-		return createDate;
-	}
+    private String remark1;
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+    private String remark2;
 
-	public String getDealDeptId() {
-		return dealDeptId;
-	}
+    private Date createDate;
 
-	public void setDealDeptId(String dealDeptId) {
-		this.dealDeptId = dealDeptId;
-	}
+    private String defineName;
 
-	public String getDealRoleId() {
-		return dealRoleId;
-	}
+    public String getDealDeptName() {
+        return dealDeptName;
+    }
 
-	public void setDealRoleId(String dealRoleId) {
-		this.dealRoleId = dealRoleId;
-	}
+    public void setDealDeptName(String dealDeptName) {
+        this.dealDeptName = dealDeptName;
+    }
 
-	public String getDealUserId() {
-		return dealUserId;
-	}
+    public String getDealRoleName() {
+        return dealRoleName;
+    }
 
-	public void setDealUserId(String dealUserId) {
-		this.dealUserId = dealUserId;
-	}
+    public void setDealRoleName(String dealRoleName) {
+        this.dealRoleName = dealRoleName;
+    }
+
+    public String getDealUserName() {
+        return dealUserName;
+    }
+
+    public void setDealUserName(String dealUserName) {
+        this.dealUserName = dealUserName;
+    }
+
+    public String getFlowId() {
+        return flowId;
+    }
+
+    public void setFlowId(String flowId) {
+        this.flowId = flowId;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getDealDeptId() {
+        return dealDeptId;
+    }
+
+    public void setDealDeptId(String dealDeptId) {
+        this.dealDeptId = dealDeptId;
+    }
+
+    public String getDealRoleId() {
+        return dealRoleId;
+    }
+
+    public void setDealRoleId(String dealRoleId) {
+        this.dealRoleId = dealRoleId;
+    }
+
+    public String getDealUserId() {
+        return dealUserId;
+    }
+
+    public void setDealUserId(String dealUserId) {
+        this.dealUserId = dealUserId;
+    }
 
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getRemark1() {
-		return remark1;
-	}
+    public String getRemark1() {
+        return remark1;
+    }
 
-	public void setRemark1(String remark1) {
-		this.remark1 = remark1;
-	}
+    public void setRemark1(String remark1) {
+        this.remark1 = remark1;
+    }
 
-	public String getRemark2() {
-		return remark2;
-	}
+    public String getRemark2() {
+        return remark2;
+    }
 
-	public void setRemark2(String remark2) {
-		this.remark2 = remark2;
-	}
+    public void setRemark2(String remark2) {
+        this.remark2 = remark2;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public String getFlowName() {
-		return flowName;
-	}
+    public String getFlowName() {
+        return flowName;
+    }
 
-	public void setFlowName(String flowName) {
-		this.flowName = flowName;
-	}
+    public void setFlowName(String flowName) {
+        this.flowName = flowName;
+    }
 
-	public String getDefineName() {
-		return defineName;
-	}
+    public String getDefineName() {
+        return defineName;
+    }
 
-	public void setDefineName(String defineName) {
-		this.defineName = defineName;
-	}
-	
-	
+    public void setDefineName(String defineName) {
+        this.defineName = defineName;
+    }
+
 
 }

@@ -16,12 +16,11 @@ import com.boco.eoms.sheet.base.dao.ILinkDAO;
  * <p>
  * Thu May 10 09:23:09 CST 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public interface IFocusResourceErrataLinkDAO extends ILinkDAO {
- 	 public List getLinksBycondition(String condition, String linkName) throws HibernateException;
- }
+
+public interface IFocusResourceErrataLinkDAO extends ILinkDAO {
+    public List getLinksBycondition(String condition, String linkName) throws HibernateException;
+}

@@ -6,6 +6,7 @@
 package com.boco.eoms.commons.db.bocopool;
 
 // java standard library
+
 import java.util.Map;
 import java.sql.Savepoint;
 import java.sql.SQLWarning;
@@ -47,9 +48,8 @@ public class BocoConnection implements Connection {
 
     /**
      * minimal constructor
-     * 
-     * @param Connection,
-     *            one physical database connection
+     *
+     * @param Connection, one physical database connection
      */
     public BocoConnection(Connection conn) {
         this.conn = conn;
@@ -58,19 +58,16 @@ public class BocoConnection implements Connection {
         this.inuse = false;
         try {
             this.setAutoCommit(false); // 锟斤拷璁剧疆鏄剧ず浜嬪姟鎺у埗
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, e.getMessage());
         }
     }
 
     /**
      * Constructor
-     * 
-     * @param boolean
-     *            _bAutoCommit
-     * @param Connection,
-     *            one physical database connection
+     *
+     * @param boolean     _bAutoCommit
+     * @param Connection, one physical database connection
      */
     public BocoConnection(boolean _bAutoCommit, Connection conn) {
         this.conn = conn;
@@ -79,8 +76,7 @@ public class BocoConnection implements Connection {
         this.inuse = false;
         try {
             this.setAutoCommit(_bAutoCommit);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, e.getMessage());
         }
     }
@@ -118,8 +114,7 @@ public class BocoConnection implements Connection {
         try {
             conn.getMetaData();
             _bReturn = true;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             BocoLog.error(this, e.getMessage());
         }
 
@@ -139,8 +134,7 @@ public class BocoConnection implements Connection {
             if (conn != null) {
                 conn.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, "杩炴帴閲婃斁閿欒: " + e.getMessage());
         }
     }
@@ -149,7 +143,7 @@ public class BocoConnection implements Connection {
      * com.boco.eoms.commons.db.bocopool.BocoConnection.close() Description: Set
      * current connection not be using, that is mean other client can get this
      * connection from connection pool and use.
-     * 
+     *
      * @return boolean, if be using, return false, else return true.
      */
     public void close() {
@@ -176,7 +170,7 @@ public class BocoConnection implements Connection {
     }
 
     public PreparedStatement prepareStatement(String sql, int resultSetType,
-            int resultSetConcurrency) throws SQLException {
+                                              int resultSetConcurrency) throws SQLException {
         return conn.prepareStatement(sql, resultSetType, resultSetConcurrency);
     }
 
@@ -186,7 +180,7 @@ public class BocoConnection implements Connection {
     }
 
     public CallableStatement prepareCall(java.lang.String sql,
-            int resultSetType, int resultSetConcurrency) throws SQLException {
+                                         int resultSetType, int resultSetConcurrency) throws SQLException {
         return conn.prepareCall(sql, resultSetType, resultSetConcurrency);
     }
 
@@ -276,7 +270,7 @@ public class BocoConnection implements Connection {
     }
 
     public Statement createStatement(int resultSetType,
-            int resultSetConcurrency, int resultSetHoldability)
+                                     int resultSetConcurrency, int resultSetHoldability)
             throws SQLException {
         /** @todo: Implement this java.sql.Connection method */
         throw new java.lang.UnsupportedOperationException(
@@ -284,7 +278,7 @@ public class BocoConnection implements Connection {
     }
 
     public PreparedStatement prepareStatement(String sql, int resultSetType,
-            int resultSetConcurrency, int resultSetHoldability)
+                                              int resultSetConcurrency, int resultSetHoldability)
             throws SQLException {
         /** @todo: Implement this java.sql.Connection method */
         throw new java.lang.UnsupportedOperationException(
@@ -292,7 +286,7 @@ public class BocoConnection implements Connection {
     }
 
     public CallableStatement prepareCall(String sql, int resultSetType,
-            int resultSetConcurrency, int resultSetHoldability)
+                                         int resultSetConcurrency, int resultSetHoldability)
             throws SQLException {
         /** @todo: Implement this java.sql.Connection method */
         throw new java.lang.UnsupportedOperationException(
@@ -360,8 +354,7 @@ public class BocoConnection implements Connection {
     }
 
     /**
-     * @param connectionUseCount
-     *            the connectionUseCount to set
+     * @param connectionUseCount the connectionUseCount to set
      */
     public void setConnectionUseCount(int connectionUseCount) {
         ConnectionUseCount = connectionUseCount;

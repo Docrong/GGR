@@ -27,10 +27,9 @@ import com.boco.eoms.commons.system.dict.util.Util;
  * <p>
  * Date:2007-10-25 16:31:06
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictRelationDaoXML implements IDictRelationDao {
     /**
@@ -39,8 +38,7 @@ public class DictRelationDaoXML implements IDictRelationDao {
     private DictXMLDom4jDocumentFactory dictXMLDom4jDocumentFactory;
 
     /**
-     * @param dictXMLDom4jDocumentFactory
-     *            the dictXMLDom4jDocumentFactory to set
+     * @param dictXMLDom4jDocumentFactory the dictXMLDom4jDocumentFactory to set
      */
     public void setDictXMLDom4jDocumentFactory(
             DictXMLDom4jDocumentFactory dictXMLDom4jDocumentFactory) {
@@ -49,12 +47,12 @@ public class DictRelationDaoXML implements IDictRelationDao {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.dao.IDictRelationDao#findRelation(java.lang.Object,
      *      java.lang.Object)
      */
     public IDictRelationItem findRelationItem(Object relationId,
-            Object sourceItemId) throws DictDAOException {
+                                              Object sourceItemId) throws DictDAOException {
         //取document
         Document doc = this.getDocument(relationId);
         //查询某个item关系
@@ -83,7 +81,7 @@ public class DictRelationDaoXML implements IDictRelationDao {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.dao.IDictRelationDao#findRelations(java.lang.Object)
      */
     public IDictRelation findRelation(Object relationId)
@@ -105,7 +103,7 @@ public class DictRelationDaoXML implements IDictRelationDao {
         relation.setSourceDictId(element.attributeValue("sourceDictId"));
         //构建dict-relation子结点
         List items = new ArrayList();
-        for (Iterator it = element.elementIterator(); it.hasNext();) {
+        for (Iterator it = element.elementIterator(); it.hasNext(); ) {
             Element elem = (Element) it.next();
             //将 item-relation xml 结点 mapping成对象
             DictRelationItemXML item = new DictRelationItemXML();
@@ -123,7 +121,7 @@ public class DictRelationDaoXML implements IDictRelationDao {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.dao.IDictRelationDao#findRelationItems(java.lang.Object)
      */
     public List findRelationItems(Object relationId) throws DictDAOException {
@@ -138,7 +136,7 @@ public class DictRelationDaoXML implements IDictRelationDao {
         }
         //构建dict-relation子结点
         List items = new ArrayList();
-        for (Iterator it = element.elementIterator(); it.hasNext();) {
+        for (Iterator it = element.elementIterator(); it.hasNext(); ) {
             Element elem = (Element) it.next();
             //将 item-relation xml 结点 mapping成对象
             DictRelationItemXML item = new DictRelationItemXML();
@@ -155,7 +153,7 @@ public class DictRelationDaoXML implements IDictRelationDao {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.dao.IDictRelationDao#findRelationButItems(java.lang.Object)
      */
     public IDictRelation findRelationButItems(Object relationId)
@@ -179,9 +177,8 @@ public class DictRelationDaoXML implements IDictRelationDao {
 
     /**
      * 通过factory获取document
-     * 
-     * @param dictId
-     *            key&id 格式
+     *
+     * @param dictId key&id 格式
      * @return
      * @throws DictDAOException
      */

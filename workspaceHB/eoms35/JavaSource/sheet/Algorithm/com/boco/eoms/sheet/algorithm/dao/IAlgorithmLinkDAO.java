@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.dao.ILinkDAO;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public interface IAlgorithmLinkDAO extends ILinkDAO {
- 
- }
+
+public interface IAlgorithmLinkDAO extends ILinkDAO {
+
+}

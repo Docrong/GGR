@@ -10,9 +10,7 @@ import com.boco.eoms.sheet.base.dao.hibernate.TaskDAOImpl;
 import com.boco.eoms.sheet.complaint.dao.IComplaintTaskDAO;
 
 /**
- * @author 
- *
- * TODO To change the template for this generated type comment go to
+ * @author TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ComplaintTaskDAOHibernate extends TaskDAOImpl implements IComplaintTaskDAO {

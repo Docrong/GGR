@@ -1,297 +1,350 @@
 var Calendar_outObject;
 var Calendar_old_dd = null;
-function setday(tt,obj) //Ö÷µ÷º¯Êý
+
+function setday(tt, obj) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
-  if (arguments.length >  2){alert("¶Ô²»Æð£¡´«Èë±¾¿Ø¼þµÄ²ÎÊýÌ«¶à£¡");return;}
-  if (arguments.length == 0){alert("¶Ô²»Æð£¡ÄúÃ»ÓÐ´«»Ø±¾¿Ø¼þÈÎºÎ²ÎÊý£¡");return;}
-  var dads  = document.all.bltDateLayer.style;var th = tt;
-  var ttop  = tt.offsetTop;     //TT¿Ø¼þµÄ¶¨Î»µã¸ß
-  var thei  = tt.clientHeight;  //TT¿Ø¼þ±¾ÉíµÄ¸ß
-  var tleft = tt.offsetLeft;    //TT¿Ø¼þµÄ¶¨Î»µã¿í
-  var ttyp  = tt.type;          //TT¿Ø¼þµÄÀàÐÍ
-  while (tt = tt.offsetParent){ttop+=tt.offsetTop; tleft+=tt.offsetLeft;}
-  dads.top  = (ttyp=="image")? ttop+thei : ttop+thei+6;
-  dads.left = tleft;
-  Calendar_outObject = (arguments.length == 1) ? th : obj;
-  dads.display = '';
-  event.returnValue=false;
+    if (arguments.length > 2) {
+        alert("ï¿½Ô²ï¿½ï¿½ð£¡´ï¿½ï¿½ë±¾ï¿½Ø¼ï¿½ï¿½Ä²ï¿½ï¿½ï¿½Ì«ï¿½à£¡");
+        return;
+    }
+    if (arguments.length == 0) {
+        alert("ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð´ï¿½ï¿½Ø±ï¿½ï¿½Ø¼ï¿½ï¿½ÎºÎ²ï¿½ï¿½ï¿½ï¿½ï¿½");
+        return;
+    }
+    var dads = document.all.bltDateLayer.style;
+    var th = tt;
+    var ttop = tt.offsetTop;     //TTï¿½Ø¼ï¿½ï¿½Ä¶ï¿½Î»ï¿½ï¿½ï¿½
+    var thei = tt.clientHeight;  //TTï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½
+    var tleft = tt.offsetLeft;    //TTï¿½Ø¼ï¿½ï¿½Ä¶ï¿½Î»ï¿½ï¿½ï¿½
+    var ttyp = tt.type;          //TTï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    while (tt = tt.offsetParent) {
+        ttop += tt.offsetTop;
+        tleft += tt.offsetLeft;
+    }
+    dads.top = (ttyp == "image") ? ttop + thei : ttop + thei + 6;
+    dads.left = tleft;
+    Calendar_outObject = (arguments.length == 1) ? th : obj;
+    dads.display = '';
+    event.returnValue = false;
 }
 
-var MonHead = new Array(12);    		   //¶¨ÒåÑôÀúÖÐÃ¿¸öÔÂµÄ×î´óÌìÊý
-    MonHead[0] = 31; MonHead[1] = 28; MonHead[2] = 31; MonHead[3] = 30; MonHead[4]  = 31; MonHead[5]  = 30;
-    MonHead[6] = 31; MonHead[7] = 31; MonHead[8] = 30; MonHead[9] = 31; MonHead[10] = 30; MonHead[11] = 31;
+var MonHead = new Array(12);    		   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+MonHead[0] = 31;
+MonHead[1] = 28;
+MonHead[2] = 31;
+MonHead[3] = 30;
+MonHead[4] = 31;
+MonHead[5] = 30;
+MonHead[6] = 31;
+MonHead[7] = 31;
+MonHead[8] = 30;
+MonHead[9] = 31;
+MonHead[10] = 30;
+MonHead[11] = 31;
 
-var bltTheYear=new Date().getFullYear(); //¶¨ÒåÄêµÄ±äÁ¿µÄ³õÊ¼Öµ
-var bltTheMonth=new Date().getMonth()+1; //¶¨ÒåÔÂµÄ±äÁ¿µÄ³õÊ¼Öµ
-var bltWDay=new Array(37);               //¶¨ÒåÐ´ÈÕÆÚµÄÊý×é
+var bltTheYear = new Date().getFullYear(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ä³ï¿½Ê¼Öµ
+var bltTheMonth = new Date().getMonth() + 1; //ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ±ï¿½ï¿½ï¿½ï¿½Ä³ï¿½Ê¼Öµ
+var bltWDay = new Array(37);               //ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
 var m_yy, m_mm, m_dd;
-function document.onclick() //ÈÎÒâµã»÷Ê±¹Ø±Õ¸Ã¿Ø¼þ
+
+function document
+
+.
+onclick() //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ø±Õ¸Ã¿Ø¼ï¿½
 {
-  with(window.event.srcElement)
-  { if (tagName != "INPUT" && getAttribute("Author")==null)
-    document.all.bltDateLayer.style.display="none";
-  }
+    with (window.event.srcElement) {
+        if (tagName != "INPUT" && getAttribute("Author") == null)
+            document.all.bltDateLayer.style.display = "none";
+    }
 }
 
-function bltWriteHead(yy,mm)  //Íù head ÖÐÐ´Èëµ±Ç°µÄÄêÓëÔÂ
-  { document.all.bltYearHead.innerText  = yy;
+function bltWriteHead(yy, mm)  //ï¿½ï¿½ head ï¿½ï¿½Ð´ï¿½ëµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+{
+    document.all.bltYearHead.innerText = yy;
     document.all.bltMonthHead.innerText = mm;
-  }
-
-function tmpSelectYearInnerHTML(strYear) //Äê·ÝµÄÏÂÀ­¿ò
-{
-  if (strYear.match(/\D/)!=null){alert("Äê·ÝÊäÈë²ÎÊý²»ÊÇÊý×Ö£¡");return;}
-  var m = (strYear) ? strYear : new Date().getFullYear();
-  if (m < 1000 || m > 9999) {alert("Äê·ÝÖµ²»ÔÚ 1000 µ½ 9999 Ö®¼ä£¡");return;}
-  var n = m - 10;
-  if (n < 1000) n = 1000;
-  if (n + 26 > 9999) n = 9974;
-  var s = "<select Author=blt name=tmpSelectYear style='font-size: 12px' "
-     s += "onblur='document.all.tmpSelectYearLayer.style.display=\"none\"' "
-     s += "onchange='document.all.tmpSelectYearLayer.style.display=\"none\";"
-     s += "bltTheYear = this.value; bltSetDay(bltTheYear,bltTheMonth)'>\r\n";
-  var selectInnerHTML = s;
-  for (var i = n; i < n + 26; i++)
-  {
-    if (i == m)
-       {selectInnerHTML += "<option value='" + i + "' selected>" + i + "Äê" + "</option>\r\n";}
-    else {selectInnerHTML += "<option value='" + i + "'>" + i + "Äê" + "</option>\r\n";}
-  }
-  selectInnerHTML += "</select>";
-  document.all.tmpSelectYearLayer.style.display="";
-  document.all.tmpSelectYearLayer.innerHTML = selectInnerHTML;
-  document.all.tmpSelectYear.focus();
 }
 
-function tmpSelectMonthInnerHTML(strMonth) //ÔÂ·ÝµÄÏÂÀ­¿ò
+function tmpSelectYearInnerHTML(strYear) //ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
-  if (strMonth.match(/\D/)!=null){alert("ÔÂ·ÝÊäÈë²ÎÊý²»ÊÇÊý×Ö£¡");return;}
-  var m = (strMonth) ? strMonth : new Date().getMonth() + 1;
-  var s = "<select Author=blt name=tmpSelectMonth style='font-size: 12px' "
-     s += "onblur='document.all.tmpSelectMonthLayer.style.display=\"none\"' "
-     s += "onchange='document.all.tmpSelectMonthLayer.style.display=\"none\";"
-     s += "bltTheMonth = this.value; bltSetDay(bltTheYear,bltTheMonth)'>\r\n";
-  var selectInnerHTML = s;
-  for (var i = 1; i < 13; i++)
-  {
-    if (i == m)
-       {selectInnerHTML += "<option value='"+i+"' selected>"+i+"ÔÂ"+"</option>\r\n";}
-    else {selectInnerHTML += "<option value='"+i+"'>"+i+"ÔÂ"+"</option>\r\n";}
-  }
-  selectInnerHTML += "</select>";
-  document.all.tmpSelectMonthLayer.style.display="";
-  document.all.tmpSelectMonthLayer.innerHTML = selectInnerHTML;
-  document.all.tmpSelectMonth.focus();
+    if (strYear.match(/\D/) != null) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½");
+        return;
+    }
+    var m = (strYear) ? strYear : new Date().getFullYear();
+    if (m < 1000 || m > 9999) {
+        alert("ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ 1000 ï¿½ï¿½ 9999 Ö®ï¿½ä£¡");
+        return;
+    }
+    var n = m - 10;
+    if (n < 1000) n = 1000;
+    if (n + 26 > 9999) n = 9974;
+    var s = "<select Author=blt name=tmpSelectYear style='font-size: 12px' "
+    s += "onblur='document.all.tmpSelectYearLayer.style.display=\"none\"' "
+    s += "onchange='document.all.tmpSelectYearLayer.style.display=\"none\";"
+    s += "bltTheYear = this.value; bltSetDay(bltTheYear,bltTheMonth)'>\r\n";
+    var selectInnerHTML = s;
+    for (var i = n; i < n + 26; i++) {
+        if (i == m) {
+            selectInnerHTML += "<option value='" + i + "' selected>" + i + "ï¿½ï¿½" + "</option>\r\n";
+        } else {
+            selectInnerHTML += "<option value='" + i + "'>" + i + "ï¿½ï¿½" + "</option>\r\n";
+        }
+    }
+    selectInnerHTML += "</select>";
+    document.all.tmpSelectYearLayer.style.display = "";
+    document.all.tmpSelectYearLayer.innerHTML = selectInnerHTML;
+    document.all.tmpSelectYear.focus();
 }
 
-function closeLayer()               //Õâ¸ö²ãµÄ¹Ø±Õ
-  {
-    document.all.bltDateLayer.style.display="none";
-  }
+function tmpSelectMonthInnerHTML(strMonth) //ï¿½Â·Ýµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+{
+    if (strMonth.match(/\D/) != null) {
+        alert("ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½");
+        return;
+    }
+    var m = (strMonth) ? strMonth : new Date().getMonth() + 1;
+    var s = "<select Author=blt name=tmpSelectMonth style='font-size: 12px' "
+    s += "onblur='document.all.tmpSelectMonthLayer.style.display=\"none\"' "
+    s += "onchange='document.all.tmpSelectMonthLayer.style.display=\"none\";"
+    s += "bltTheMonth = this.value; bltSetDay(bltTheYear,bltTheMonth)'>\r\n";
+    var selectInnerHTML = s;
+    for (var i = 1; i < 13; i++) {
+        if (i == m) {
+            selectInnerHTML += "<option value='" + i + "' selected>" + i + "ï¿½ï¿½" + "</option>\r\n";
+        } else {
+            selectInnerHTML += "<option value='" + i + "'>" + i + "ï¿½ï¿½" + "</option>\r\n";
+        }
+    }
+    selectInnerHTML += "</select>";
+    document.all.tmpSelectMonthLayer.style.display = "";
+    document.all.tmpSelectMonthLayer.innerHTML = selectInnerHTML;
+    document.all.tmpSelectMonth.focus();
+}
 
-function document.onkeydown()
-  {
-    if (window.event.keyCode==27)document.all.bltDateLayer.style.display="none";
-  }
+function closeLayer()               //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹Ø±ï¿½
+{
+    document.all.bltDateLayer.style.display = "none";
+}
 
-function IsPinYear(year)            //ÅÐ¶ÏÊÇ·ñÈòÆ½Äê
-  {
-    if (0==year%4&&((year%100!=0)||(year%400==0))) return true;else return false;
-  }
+function document
 
-function GetMonthCount(year,month)  //ÈòÄê¶þÔÂÎª29Ìì
-  {
-    var c=MonHead[month-1];if((month==2)&&IsPinYear(year)) c++;return c;
-  }
+.
+onkeydown()
+{
+    if (window.event.keyCode == 27) document.all.bltDateLayer.style.display = "none";
+}
 
-function GetDOW(day,month,year)     //ÇóÄ³ÌìµÄÐÇÆÚ¼¸
-  {
-    var dt=new Date(year,month-1,day).getDay()/7; return dt;
-  }
+function IsPinYear(year)            //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Æ½ï¿½ï¿½
+{
+    if (0 == year % 4 && ((year % 100 != 0) || (year % 400 == 0))) return true; else return false;
+}
 
-function bltPrevY()  //ÍùÇ°·­ Year
-  {
-    if(bltTheYear > 999 && bltTheYear <10000){bltTheYear--;}
-    else{alert("Äê·Ý³¬³ö·¶Î§£¨1000-9999£©£¡");}
-    bltSetDay(bltTheYear,bltTheMonth);
-  }
-function bltNextY()  //Íùºó·­ Year
-  {
-    if(bltTheYear > 999 && bltTheYear <10000){bltTheYear++;}
-    else{alert("Äê·Ý³¬³ö·¶Î§£¨1000-9999£©£¡");}
-    bltSetDay(bltTheYear,bltTheMonth);
-  }
+function GetMonthCount(year, month)  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª29ï¿½ï¿½
+{
+    var c = MonHead[month - 1];
+    if ((month == 2) && IsPinYear(year)) c++;
+    return c;
+}
+
+function GetDOW(day, month, year)     //ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½
+{
+    var dt = new Date(year, month - 1, day).getDay() / 7;
+    return dt;
+}
+
+function bltPrevY()  //ï¿½ï¿½Ç°ï¿½ï¿½ Year
+{
+    if (bltTheYear > 999 && bltTheYear < 10000) {
+        bltTheYear--;
+    } else {
+        alert("ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½1000-9999ï¿½ï¿½ï¿½ï¿½");
+    }
+    bltSetDay(bltTheYear, bltTheMonth);
+}
+
+function bltNextY()  //ï¿½ï¿½ï¿½ï¿½ Year
+{
+    if (bltTheYear > 999 && bltTheYear < 10000) {
+        bltTheYear++;
+    } else {
+        alert("ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½1000-9999ï¿½ï¿½ï¿½ï¿½");
+    }
+    bltSetDay(bltTheYear, bltTheMonth);
+}
+
 function bltToday()  //Today Button
-  {
+{
     bltTheYear = new Date().getFullYear();
-    bltTheMonth = new Date().getMonth()+1;
-    bltSetDay(bltTheYear,bltTheMonth);
-  }
-function bltPrevM()  //ÍùÇ°·­ÔÂ·Ý
-  {
-    if(bltTheMonth>1){bltTheMonth--}else{bltTheYear--;bltTheMonth=12;}
-    bltSetDay(bltTheYear,bltTheMonth);
-  }
-function bltNextM()  //Íùºó·­ÔÂ·Ý
-  {
-    if(bltTheMonth==12){bltTheYear++;bltTheMonth=1}else{bltTheMonth++}
-    bltSetDay(bltTheYear,bltTheMonth);
-  }
+    bltTheMonth = new Date().getMonth() + 1;
+    bltSetDay(bltTheYear, bltTheMonth);
+}
 
-function bltSetDay(yy,mm)   //Ö÷ÒªµÄÐ´³ÌÐò**********
+function bltPrevM()  //ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Â·ï¿½
 {
-  bltWriteHead(yy,mm);
-  for (var i = 0; i < 37; i++)
-  {
-  	bltWDay[i]=""
-  };  //½«ÏÔÊ¾¿òµÄÄÚÈÝÈ«²¿Çå¿Õ
-  var day1 = 1,firstday = new Date(yy,mm-1,1).getDay();  //Ä³ÔÂµÚÒ»ÌìµÄÐÇÆÚ¼¸
-  for( var i = firstday; day1 < GetMonthCount(yy,mm)+1; i++)
-  {
-  	bltWDay[i]=day1;
-  	day1++;
-  }
-  for( var i = 0; i < 37; i++)
-  { var da = eval("document.all.bltDay"+i)     //ÊéÐ´ÐÂµÄÒ»¸öÔÂµÄÈÕÆÚÐÇÆÚÅÅÁÐ
-    if (bltWDay[i]!="")
-    {
-    	da.innerHTML = "<b>" + bltWDay[i] + "</b>";
-      da.style.backgroundColor = (yy == new Date().getFullYear() &&
-//      mm == new Date().getMonth()+1 && bltWDay[i] == new Date().getDate()) ? "#FFD700" : "#ADD8E6";
-      mm == new Date().getMonth()+1 && bltWDay[i] == new Date().getDate()) ? "#ADD8E6" : "#ADD8E6";
-      da.style.cursor="hand"
+    if (bltTheMonth > 1) {
+        bltTheMonth--
+    } else {
+        bltTheYear--;
+        bltTheMonth = 12;
     }
-    else
-    {
-    	da.innerHTML="";
-    	da.style.backgroundColor="";
-    	da.style.cursor="default";
-   	}
-  }
+    bltSetDay(bltTheYear, bltTheMonth);
 }
 
-function setDayTime()
+function bltNextM()  //ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½
 {
-	//×¢£ºÔÚÕâÀïÄã¿ÉÒÔÊä³ö¸Ä³ÉÄãÏëÒªµÄ¸ñÊ½
-	if( m_yy != null && m_mm != null && m_dd != null )
-	{
-		if( document.all("m_hour").value == '-' || document.all("m_min").value == '-' )	//Èç¹ûÃ»Ñ¡Ê±¼ä
-			Calendar_outObject.value= m_yy + "-" + m_mm + "-" + m_dd;
-		else
-  		Calendar_outObject.value= m_yy + "-" + m_mm + "-" + m_dd + " " + document.all("m_hour").value + ":" + document.all("m_min").value + ":00";
-  }
-  closeLayer();
-}
-function bltDayClick( n, obj )  //µã»÷ÏÔÊ¾¿òÑ¡È¡ÈÕÆÚ£¬Ö÷ÊäÈëº¯Êý*************
-{
-  var yy = bltTheYear;
-  var mm = bltTheMonth;
-  m_yy = yy;
-  if (mm < 10)
-  {
-    m_mm = "0" + mm;
-  }
-  else
-  {
-    m_mm = "" + mm;
-  }
-  if (Calendar_outObject)
-  {
-    if (!n)
-    {
-    	Calendar_outObject.value="";
-    	return;
+    if (bltTheMonth == 12) {
+        bltTheYear++;
+        bltTheMonth = 1
+    } else {
+        bltTheMonth++
     }
-    if ( n < 10 )
-		{
-			m_dd = "0" + n;
-		}
-		else
-		{
-			m_dd = "" + n;
-		}
-		if( Calendar_old_dd != null )
-			Calendar_old_dd.style.backgroundColor = "#ADD8E6";
-		Calendar_old_dd = obj;
-		obj.style.backgroundColor = "#FFD700";
-  }
-  else
-  {
-  	closeLayer();
-  	alert("Êä³öÓÐÎó£¡");
-  }
-  setDayTime();
+    bltSetDay(bltTheYear, bltTheMonth);
 }
 
-function calendarOutput(){
-  document.writeln('<style>Label{font-size:12px;background-color:#48AFFE;cursor:hand;border:1px solid #485555;height:18px;padding:2 2 2 2;}</style>');
-  document.writeln('<div id=bltDateLayer style="position: absolute; width: 142; height: 166; z-index: 9998; display: none">');
-  document.writeln('<span id=tmpSelectYearLayer  style="z-index: 9999;position: absolute;top: 2; left: 18;display: none"></span>');
-  document.writeln('<span id=tmpSelectMonthLayer style="z-index: 9999;position: absolute;top: 2; left: 75;display: none"></span>');
-  document.writeln('<table border=0 cellspacing=1 cellpadding=0 width=142 height=160 bgcolor=#808080 onselectstart="return false">');
-  document.writeln('  <tr><td width=142 height=23 bgcolor=#FFFFFF><table border=0 cellspacing=1 cellpadding=0 width=140 height=23>');
-  document.writeln('      <tr align=center><td width=20 align=center bgcolor=#808080 style="font-size:12px;cursor: hand;color: #FFD700" ');
-  document.writeln('        onclick="bltPrevM()" title="ÏòÇ°·­Ò»ÔÂ" Author=blt><b Author=blt>&lt;&lt;</b>');
-  document.writeln('        </td><td width=100 align=center style="font-size:12px;cursor:default" Author=blt>');
-  document.writeln('        <span Author=blt id=bltYearHead onclick="tmpSelectYearInnerHTML(this.innerText)"></span>&nbsp;Äê&nbsp;<span');
-  document.writeln('         id=bltMonthHead Author=blt onclick="tmpSelectMonthInnerHTML(this.innerText)"></span>&nbsp;ÔÂ</td>');
-  document.writeln('        <td width=20 bgcolor=#808080 align=center style="font-size:12px;cursor: hand;color: #FFD700" ');
-  document.writeln('         onclick="bltNextM()" title="Íùºó·­Ò»ÔÂ" Author=blt><b Author=blt>&gt;&gt;</b></td></tr>');
-  document.writeln('    </table></td></tr>');
-  document.writeln('  <tr><td width=142 height=18 bgcolor=#808080>');
-  document.writeln('<table border=0 cellspacing=0 cellpadding=0 width=140 height=1 style="cursor:default">');
-  document.writeln('<tr align=center><td style="font-size:12px;color:#FFFFFF" Author=blt>ÈÕ</td>');
-  document.writeln('<td style="font-size:12px;color:#FFFFFF" Author=blt>Ò»</td><td style="font-size:12px;color:#FFFFFF" Author=blt>¶þ</td>');
-  document.writeln('<td style="font-size:12px;color:#FFFFFF" Author=blt>Èý</td><td style="font-size:12px;color:#FFFFFF" Author=blt>ËÄ</td>');
-  document.writeln('<td style="font-size:12px;color:#FFFFFF" Author=blt>Îå</td><td style="font-size:12px;color:#FFFFFF" Author=blt>Áù</td></tr>');
-  document.writeln('</table></td></tr>');
-  document.writeln('  <tr><td width=142 height=120>');
-  document.writeln('    <table border=0 cellspacing=1 cellpadding=0 width=140 height=120 bgcolor=#FFFFFF Author=blt style=font-size:12px> ');
-  var n=0; for (j=0;j<6;j++){ document.writeln (' <tr align=center>'); for (i=0;i<7;i++){
-  document.writeln('<td width=20 height=20 id=bltDay'+n+' style="font-size:12px" Author=blt onclick=bltDayClick(this.innerText,this)></td>');n++;}
-  document.writeln('</tr>');}
-  document.writeln('      <tr align=center>');
-  document.writeln('        <td align=center colspan=4 Author=blt >');
-  document.writeln('         <select name="m_hour" Author=blt style=font-size:12px>');
-  for( j = 0; j < 24; j++ )
-  {
-  	if( j < 10 )
-  		document.writeln('         <option value="0' + j + '">' + j + '</option>');
-  	else
-  		document.writeln('         <option value="' + j + '">' + j + '</option>');
-  }
-  document.writeln('         </select>Ê±</td>');
-  document.writeln('        <td align=center colspan=4 Author=blt>');
-  document.writeln('         <select name="m_min" Author=blt style=font-size:12px>');
-  for( j = 0; j < 60; j++ )
-  {
-  	if( j < 10 )
-  		document.writeln('         <option value="0' + j + '">' + j + '</option>');
-  	else
-  		document.writeln('         <option value="' + j + '">' + j + '</option>');
-  }
-  document.writeln('         </select>·Ö');
-  document.writeln('         </td></tr>');
-  document.writeln('         <tr>');
-  document.writeln('        <td colspan=4 align=center Author=blt>');
-  document.writeln('         <Label onclick=setDayTime()>È· ¶¨</Label>');
-  document.writeln('        </td>');
-  
-  document.writeln('        <td colspan=4 align=center Author=blt>');
-  document.writeln('         <Label onclick=closeLayer()>È¡ Ïû</Label>');
-  document.writeln('         &nbsp;</td></tr>');
-  document.writeln('    </table></td></tr><tr><td>');
-  document.writeln('        <table border=0 cellspacing=1 cellpadding=0 width=100% bgcolor=#FFFFFF>');
-  document.writeln('          <tr><td Author=blt align=left><Label Author=blt title="ÏòÇ°·­Ò»Äê" onclick="bltPrevY()" ');
-  document.writeln('             onfocus="this.blur()">< </Label> <Label Author=blt title="ÏòÇ°·­Ò»ÔÂ" ');
-  document.writeln('             onclick="bltPrevM()" onfocus="this.blur()"><<</Label></td><td ');
-  document.writeln('             Author=blt align=center><Label Author=blt onclick="bltToday()" ');
-  document.writeln('             onfocus="this.blur()" title="ÏÖÔÚµÄÄêÔÂ">½ñ Ìì</Label></td><td ');
-  document.writeln('             Author=blt align=right><Label Author=blt onclick="bltNextM()" ');
-  document.writeln('             onfocus="this.blur()" title="Íùºó·­Ò»ÔÂ">>></Label> <Label ');
-  document.writeln('             Author=blt title="Íùºó·­Ò»Äê" onclick="bltNextY()"');
-  document.writeln('             onfocus="this.blur()"> ></Label></td>');
-  document.writeln('</tr></table></td></tr></table></div>');
-  bltSetDay(bltTheYear,bltTheMonth);
+function bltSetDay(yy, mm)   //ï¿½ï¿½Òªï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½**********
+{
+    bltWriteHead(yy, mm);
+    for (var i = 0; i < 37; i++) {
+        bltWDay[i] = ""
+    }
+    ;  //ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½
+    var day1 = 1, firstday = new Date(yy, mm - 1, 1).getDay();  //Ä³ï¿½Âµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½
+    for (var i = firstday; day1 < GetMonthCount(yy, mm) + 1; i++) {
+        bltWDay[i] = day1;
+        day1++;
+    }
+    for (var i = 0; i < 37; i++) {
+        var da = eval("document.all.bltDay" + i)     //ï¿½ï¿½Ð´ï¿½Âµï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (bltWDay[i] != "") {
+            da.innerHTML = "<b>" + bltWDay[i] + "</b>";
+            da.style.backgroundColor = (yy == new Date().getFullYear() &&
+                //      mm == new Date().getMonth()+1 && bltWDay[i] == new Date().getDate()) ? "#FFD700" : "#ADD8E6";
+                mm == new Date().getMonth() + 1 && bltWDay[i] == new Date().getDate()) ? "#ADD8E6" : "#ADD8E6";
+            da.style.cursor = "hand"
+        } else {
+            da.innerHTML = "";
+            da.style.backgroundColor = "";
+            da.style.cursor = "default";
+        }
+    }
 }
+
+function setDayTime() {
+    //×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä¸ï¿½Ê½
+    if (m_yy != null && m_mm != null && m_dd != null) {
+        if (document.all("m_hour").value == '-' || document.all("m_min").value == '-')	//ï¿½ï¿½ï¿½Ã»Ñ¡Ê±ï¿½ï¿½
+            Calendar_outObject.value = m_yy + "-" + m_mm + "-" + m_dd;
+        else
+            Calendar_outObject.value = m_yy + "-" + m_mm + "-" + m_dd + " " + document.all("m_hour").value + ":" + document.all("m_min").value + ":00";
+    }
+    closeLayer();
+}
+
+function bltDayClick(n, obj)  //ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ñ¡È¡ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ëº¯ï¿½ï¿½*************
+{
+    var yy = bltTheYear;
+    var mm = bltTheMonth;
+    m_yy = yy;
+    if (mm < 10) {
+        m_mm = "0" + mm;
+    } else {
+        m_mm = "" + mm;
+    }
+    if (Calendar_outObject) {
+        if (!n) {
+            Calendar_outObject.value = "";
+            return;
+        }
+        if (n < 10) {
+            m_dd = "0" + n;
+        } else {
+            m_dd = "" + n;
+        }
+        if (Calendar_old_dd != null)
+            Calendar_old_dd.style.backgroundColor = "#ADD8E6";
+        Calendar_old_dd = obj;
+        obj.style.backgroundColor = "#FFD700";
+    } else {
+        closeLayer();
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+    }
+    setDayTime();
+}
+
+function calendarOutput() {
+    document.writeln('<style>Label{font-size:12px;background-color:#48AFFE;cursor:hand;border:1px solid #485555;height:18px;padding:2 2 2 2;}</style>');
+    document.writeln('<div id=bltDateLayer style="position: absolute; width: 142; height: 166; z-index: 9998; display: none">');
+    document.writeln('<span id=tmpSelectYearLayer  style="z-index: 9999;position: absolute;top: 2; left: 18;display: none"></span>');
+    document.writeln('<span id=tmpSelectMonthLayer style="z-index: 9999;position: absolute;top: 2; left: 75;display: none"></span>');
+    document.writeln('<table border=0 cellspacing=1 cellpadding=0 width=142 height=160 bgcolor=#808080 onselectstart="return false">');
+    document.writeln('  <tr><td width=142 height=23 bgcolor=#FFFFFF><table border=0 cellspacing=1 cellpadding=0 width=140 height=23>');
+    document.writeln('      <tr align=center><td width=20 align=center bgcolor=#808080 style="font-size:12px;cursor: hand;color: #FFD700" ');
+    document.writeln('        onclick="bltPrevM()" title="ï¿½ï¿½Ç°ï¿½ï¿½Ò»ï¿½ï¿½" Author=blt><b Author=blt>&lt;&lt;</b>');
+    document.writeln('        </td><td width=100 align=center style="font-size:12px;cursor:default" Author=blt>');
+    document.writeln('        <span Author=blt id=bltYearHead onclick="tmpSelectYearInnerHTML(this.innerText)"></span>&nbsp;ï¿½ï¿½&nbsp;<span');
+    document.writeln('         id=bltMonthHead Author=blt onclick="tmpSelectMonthInnerHTML(this.innerText)"></span>&nbsp;ï¿½ï¿½</td>');
+    document.writeln('        <td width=20 bgcolor=#808080 align=center style="font-size:12px;cursor: hand;color: #FFD700" ');
+    document.writeln('         onclick="bltNextM()" title="ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½" Author=blt><b Author=blt>&gt;&gt;</b></td></tr>');
+    document.writeln('    </table></td></tr>');
+    document.writeln('  <tr><td width=142 height=18 bgcolor=#808080>');
+    document.writeln('<table border=0 cellspacing=0 cellpadding=0 width=140 height=1 style="cursor:default">');
+    document.writeln('<tr align=center><td style="font-size:12px;color:#FFFFFF" Author=blt>ï¿½ï¿½</td>');
+    document.writeln('<td style="font-size:12px;color:#FFFFFF" Author=blt>Ò»</td><td style="font-size:12px;color:#FFFFFF" Author=blt>ï¿½ï¿½</td>');
+    document.writeln('<td style="font-size:12px;color:#FFFFFF" Author=blt>ï¿½ï¿½</td><td style="font-size:12px;color:#FFFFFF" Author=blt>ï¿½ï¿½</td>');
+    document.writeln('<td style="font-size:12px;color:#FFFFFF" Author=blt>ï¿½ï¿½</td><td style="font-size:12px;color:#FFFFFF" Author=blt>ï¿½ï¿½</td></tr>');
+    document.writeln('</table></td></tr>');
+    document.writeln('  <tr><td width=142 height=120>');
+    document.writeln('    <table border=0 cellspacing=1 cellpadding=0 width=140 height=120 bgcolor=#FFFFFF Author=blt style=font-size:12px> ');
+    var n = 0;
+    for (j = 0; j < 6; j++) {
+        document.writeln(' <tr align=center>');
+        for (i = 0; i < 7; i++) {
+            document.writeln('<td width=20 height=20 id=bltDay' + n + ' style="font-size:12px" Author=blt onclick=bltDayClick(this.innerText,this)></td>');
+            n++;
+        }
+        document.writeln('</tr>');
+    }
+    document.writeln('      <tr align=center>');
+    document.writeln('        <td align=center colspan=4 Author=blt >');
+    document.writeln('         <select name="m_hour" Author=blt style=font-size:12px>');
+    for (j = 0; j < 24; j++) {
+        if (j < 10)
+            document.writeln('         <option value="0' + j + '">' + j + '</option>');
+        else
+            document.writeln('         <option value="' + j + '">' + j + '</option>');
+    }
+    document.writeln('         </select>Ê±</td>');
+    document.writeln('        <td align=center colspan=4 Author=blt>');
+    document.writeln('         <select name="m_min" Author=blt style=font-size:12px>');
+    for (j = 0; j < 60; j++) {
+        if (j < 10)
+            document.writeln('         <option value="0' + j + '">' + j + '</option>');
+        else
+            document.writeln('         <option value="' + j + '">' + j + '</option>');
+    }
+    document.writeln('         </select>ï¿½ï¿½');
+    document.writeln('         </td></tr>');
+    document.writeln('         <tr>');
+    document.writeln('        <td colspan=4 align=center Author=blt>');
+    document.writeln('         <Label onclick=setDayTime()>È· ï¿½ï¿½</Label>');
+    document.writeln('        </td>');
+
+    document.writeln('        <td colspan=4 align=center Author=blt>');
+    document.writeln('         <Label onclick=closeLayer()>È¡ ï¿½ï¿½</Label>');
+    document.writeln('         &nbsp;</td></tr>');
+    document.writeln('    </table></td></tr><tr><td>');
+    document.writeln('        <table border=0 cellspacing=1 cellpadding=0 width=100% bgcolor=#FFFFFF>');
+    document.writeln('          <tr><td Author=blt align=left><Label Author=blt title="ï¿½ï¿½Ç°ï¿½ï¿½Ò»ï¿½ï¿½" onclick="bltPrevY()" ');
+    document.writeln('             onfocus="this.blur()">< </Label> <Label Author=blt title="ï¿½ï¿½Ç°ï¿½ï¿½Ò»ï¿½ï¿½" ');
+    document.writeln('             onclick="bltPrevM()" onfocus="this.blur()"><<</Label></td><td ');
+    document.writeln('             Author=blt align=center><Label Author=blt onclick="bltToday()" ');
+    document.writeln('             onfocus="this.blur()" title="ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½">ï¿½ï¿½ ï¿½ï¿½</Label></td><td ');
+    document.writeln('             Author=blt align=right><Label Author=blt onclick="bltNextM()" ');
+    document.writeln('             onfocus="this.blur()" title="ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½">>></Label> <Label ');
+    document.writeln('             Author=blt title="ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½" onclick="bltNextY()"');
+    document.writeln('             onfocus="this.blur()"> ></Label></td>');
+    document.writeln('</tr></table></td></tr></table></div>');
+    bltSetDay(bltTheYear, bltTheMonth);
+}
+
 document.onload = calendarOutput();

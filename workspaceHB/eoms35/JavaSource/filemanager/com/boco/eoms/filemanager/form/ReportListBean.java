@@ -30,11 +30,12 @@ public class ReportListBean {
     private String dealUserName;
     private String replyInfo;
     private String acceptContact;
-    private String[] fileUrl=null;
+    private String[] fileUrl = null;
     private String deadline;
-    
+
     //wangsixuan add:
     private String isAudit;
+
     public String getFlowId() {
         return flowId;
     }
@@ -195,19 +196,19 @@ public class ReportListBean {
         this.deadline = deadline;
     }
 
-	public int getReject() {
-		return reject;
-	}
+    public int getReject() {
+        return reject;
+    }
 
-	public void setReject(int reject) {
-		this.reject = reject;
-	}
+    public void setReject(int reject) {
+        this.reject = reject;
+    }
 
-	public String getIsAudit() {
-		return isAudit;
-	}
+    public String getIsAudit() {
+        return isAudit;
+    }
 
-	public void setIsAudit(String isAudit) {
-		this.isAudit = isAudit;
-	}
+    public void setIsAudit(String isAudit) {
+        this.isAudit = isAudit;
+    }
 }

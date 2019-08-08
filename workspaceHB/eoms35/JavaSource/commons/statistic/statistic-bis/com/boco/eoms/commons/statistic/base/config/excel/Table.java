@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.statistic.base.config.excel;
 
@@ -10,197 +10,197 @@ import java.io.Serializable;
  *
  * sheet中绘制的表
  */
-public class Table implements Serializable  {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6265003310640399743L;
-	/**
-	 * table的样式
-	 */
-	private String id="list-table";
-	private String border="1";
-	private String cellspacing="1";
-	private String cellpadding="1";
-	private String classtype = "table_show";
-	private String center = "center";
-	
-	/**
-	 * 表格的style属性
-	 */
-	private String style = null;  
-	
-	private TableColWidth[]  tableColWidth = null;
-	
-	private TableContent tableHead = null;
-	
-	private TableContent tableBody = null;
-	
-	private TableContent tableFoot = null;
-	
-	/**
-	 * 配置文件table的属性
-	 */
-	private int width= 0;
-	
-	private int head_start= 0;
-	
-	private int head_end= 0;
-	
-	private int body_start= 0;
-	
-	private int body_end= 0;
-	
-	private int foot_start= 0;
-	
-	private int foot_end= 0;
-	
-	
-	public TableContent getTableBody() {
-		return tableBody;
-	}
+public class Table implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = -6265003310640399743L;
+    /**
+     * table的样式
+     */
+    private String id = "list-table";
+    private String border = "1";
+    private String cellspacing = "1";
+    private String cellpadding = "1";
+    private String classtype = "table_show";
+    private String center = "center";
 
-	public void setTableBody(TableContent tableBody) {
-		this.tableBody = tableBody;
-	}
+    /**
+     * 表格的style属性
+     */
+    private String style = null;
 
-	public TableContent getTableFoot() {
-		return tableFoot;
-	}
+    private TableColWidth[] tableColWidth = null;
 
-	public void setTableFoot(TableContent tableFoot) {
-		this.tableFoot = tableFoot;
-	}
+    private TableContent tableHead = null;
 
-	public TableContent getTableHead() {
-		return tableHead;
-	}
+    private TableContent tableBody = null;
 
-	public void setTableHead(TableContent tableHead) {
-		this.tableHead = tableHead;
-	}
+    private TableContent tableFoot = null;
 
-	public TableColWidth[] getTableColWidth() {
-		return tableColWidth;
-	}
+    /**
+     * 配置文件table的属性
+     */
+    private int width = 0;
 
-	public void setTableColWidth(TableColWidth[] tableColWidth) {
-		this.tableColWidth = tableColWidth;
-	}
+    private int head_start = 0;
 
-	public String getStyle() {
-		return style;
-	}
+    private int head_end = 0;
 
-	public void setStyle(String style) {
-		this.style = style;
-	}
+    private int body_start = 0;
 
-	public String getId() {
-		return id;
-	}
+    private int body_end = 0;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    private int foot_start = 0;
 
-	public String getBorder() {
-		return border;
-	}
+    private int foot_end = 0;
 
-	public void setBorder(String border) {
-		this.border = border;
-	}
 
-	public String getCellspacing() {
-		return cellspacing;
-	}
+    public TableContent getTableBody() {
+        return tableBody;
+    }
 
-	public void setCellspacing(String cellspacing) {
-		this.cellspacing = cellspacing;
-	}
+    public void setTableBody(TableContent tableBody) {
+        this.tableBody = tableBody;
+    }
 
-	public String getCellpadding() {
-		return cellpadding;
-	}
+    public TableContent getTableFoot() {
+        return tableFoot;
+    }
 
-	public void setCellpadding(String cellpadding) {
-		this.cellpadding = cellpadding;
-	}
+    public void setTableFoot(TableContent tableFoot) {
+        this.tableFoot = tableFoot;
+    }
 
-	public String getClasstype() {
-		return classtype;
-	}
+    public TableContent getTableHead() {
+        return tableHead;
+    }
 
-	public void setClasstype(String classtype) {
-		this.classtype = classtype;
-	}
+    public void setTableHead(TableContent tableHead) {
+        this.tableHead = tableHead;
+    }
 
-	public String getCenter() {
-		return center;
-	}
+    public TableColWidth[] getTableColWidth() {
+        return tableColWidth;
+    }
 
-	public void setCenter(String center) {
-		this.center = center;
-	}
+    public void setTableColWidth(TableColWidth[] tableColWidth) {
+        this.tableColWidth = tableColWidth;
+    }
 
-	public int getWidth() {
-		return width;
-	}
+    public String getStyle() {
+        return style;
+    }
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
+    public void setStyle(String style) {
+        this.style = style;
+    }
 
-	public int getHead_start() {
-		return head_start;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setHead_start(int head_start) {
-		this.head_start = head_start;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public int getHead_end() {
-		return head_end;
-	}
+    public String getBorder() {
+        return border;
+    }
 
-	public void setHead_end(int head_end) {
-		this.head_end = head_end;
-	}
+    public void setBorder(String border) {
+        this.border = border;
+    }
 
-	public int getBody_start() {
-		return body_start;
-	}
+    public String getCellspacing() {
+        return cellspacing;
+    }
 
-	public void setBody_start(int body_start) {
-		this.body_start = body_start;
-	}
+    public void setCellspacing(String cellspacing) {
+        this.cellspacing = cellspacing;
+    }
 
-	public int getBody_end() {
-		return body_end;
-	}
+    public String getCellpadding() {
+        return cellpadding;
+    }
 
-	public void setBody_end(int body_end) {
-		this.body_end = body_end;
-	}
+    public void setCellpadding(String cellpadding) {
+        this.cellpadding = cellpadding;
+    }
 
-	public int getFoot_start() {
-		return foot_start;
-	}
+    public String getClasstype() {
+        return classtype;
+    }
 
-	public void setFoot_start(int foot_start) {
-		this.foot_start = foot_start;
-	}
+    public void setClasstype(String classtype) {
+        this.classtype = classtype;
+    }
 
-	public int getFoot_end() {
-		return foot_end;
-	}
+    public String getCenter() {
+        return center;
+    }
 
-	public void setFoot_end(int foot_end) {
-		this.foot_end = foot_end;
-	}
+    public void setCenter(String center) {
+        this.center = center;
+    }
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHead_start() {
+        return head_start;
+    }
+
+    public void setHead_start(int head_start) {
+        this.head_start = head_start;
+    }
+
+    public int getHead_end() {
+        return head_end;
+    }
+
+    public void setHead_end(int head_end) {
+        this.head_end = head_end;
+    }
+
+    public int getBody_start() {
+        return body_start;
+    }
+
+    public void setBody_start(int body_start) {
+        this.body_start = body_start;
+    }
+
+    public int getBody_end() {
+        return body_end;
+    }
+
+    public void setBody_end(int body_end) {
+        this.body_end = body_end;
+    }
+
+    public int getFoot_start() {
+        return foot_start;
+    }
+
+    public void setFoot_start(int foot_start) {
+        this.foot_start = foot_start;
+    }
+
+    public int getFoot_end() {
+        return foot_end;
+    }
+
+    public void setFoot_end(int foot_end) {
+        this.foot_end = foot_end;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 }

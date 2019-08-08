@@ -5,6 +5,6 @@
 <%@ taglib uri="/WEB-INF/jstl-core.tld" prefix="c" %>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="eoms" %>
 <form name="test">
-<eoms:attachment idList="" idField="idlist" appCode="worksheet"/>
-<eoms:attachment idList="227" idField="idlist" appCode="worksheet" viewFlag="Y"/>
+    <eoms:attachment idList="" idField="idlist" appCode="worksheet"/>
+    <eoms:attachment idList="227" idField="idlist" appCode="worksheet" viewFlag="Y"/>
 </form>

@@ -10,15 +10,14 @@ package com.boco.eoms.duty.util;
  * <p>
  * Sun Mar 29 12:55:57 CST 2009
  * </p>
- * 
+ *
  * @author 李江红
  * @version 3.5
- * 
  */
 public class FaultCircuitConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String FAULTCIRCUIT_LIST = "faultCircuitList";
+
+    /**
+     * list key
+     */
+    public final static String FAULTCIRCUIT_LIST = "faultCircuitList";
 }

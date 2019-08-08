@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Wed Nov 08 15:11:38 GMT+08:00 2017
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public interface IGroupCheckMainManager extends IMainService {
- 
- }
+
+public interface IGroupCheckMainManager extends IMainService {
+
+}

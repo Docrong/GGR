@@ -36,7 +36,7 @@ public class TaskplanManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         taskplanDao.expects(once()).method("getTaskplans")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List taskplans = taskplanManager.getTaskplans(null);
         assertTrue(taskplans.size() == 1);
@@ -46,7 +46,7 @@ public class TaskplanManagerTest extends BaseManagerTestCase {
     public void testGetTaskplan() throws Exception {
         // set expected behavior on dao
         taskplanDao.expects(once()).method("getTaskplan")
-            .will(returnValue(new Taskplan()));
+                .will(returnValue(new Taskplan()));
         Taskplan taskplan = taskplanManager.getTaskplan(taskplanId);
         assertTrue(taskplan != null);
         taskplanDao.verify();
@@ -57,7 +57,7 @@ public class TaskplanManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         taskplanDao.expects(once()).method("saveTaskplan")
-            .with(same(taskplan)).isVoid();
+                .with(same(taskplan)).isVoid();
 
         taskplanManager.saveTaskplan(taskplan);
         taskplanDao.verify();
@@ -70,7 +70,7 @@ public class TaskplanManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         taskplanDao.expects(once()).method("saveTaskplan")
-            .with(same(taskplan)).isVoid();
+                .with(same(taskplan)).isVoid();
         taskplanManager.saveTaskplan(taskplan);
         taskplanDao.verify();
 

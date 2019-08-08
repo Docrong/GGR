@@ -8,303 +8,300 @@ import com.boco.eoms.sheet.base.model.BaseSubLink;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="GreatEventLink.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="GreatEventlink"
  */
-public class GreatEventLink extends BaseLink
-{
+public class GreatEventLink extends BaseLink {
 
     /**
-	 * @texttype
-	 */
-     private java.lang.String linkPermisObject;
+     * @texttype
+     */
+    private java.lang.String linkPermisObject;
 
     /**
-	 * @texttype
-	 */
-     private java.lang.String linkResReadyResult;
+     * @texttype
+     */
+    private java.lang.String linkResReadyResult;
 
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkGreatSecurityProgram;
+     * @accesstype
+     */
+    private java.lang.String linkGreatSecurityProgram;
 
     /**
-	 * @dicttype
-	 */
-     private java.lang.String linkAuditAdvice;
+     * @dicttype
+     */
+    private java.lang.String linkAuditAdvice;
 
     /**
-	 * @textarea
-	 */
-     private java.lang.String linkAuditResult;
+     * @textarea
+     */
+    private java.lang.String linkAuditResult;
 
     /**
-	 * @dicttype
-	 */
-     private java.lang.String linkPermisAdvice;
+     * @dicttype
+     */
+    private java.lang.String linkPermisAdvice;
 
     /**
-	 * @textarea
-	 */
-     private java.lang.String linkPermisResult;
+     * @textarea
+     */
+    private java.lang.String linkPermisResult;
 
     /**
-	 * @textarea
-	 */
-     private java.lang.String linkSencePerformSummary;
+     * @textarea
+     */
+    private java.lang.String linkSencePerformSummary;
 
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkSencePerformReport;
+     * @accesstype
+     */
+    private java.lang.String linkSencePerformReport;
 
     /**
-	 * @dicttype
-	 */
-     private java.lang.String linkIfStartChangeProcess;
-     
-     /**
- 	 * @dicttype
- 	 */
-      private java.lang.String linkIfModifyPlans;
+     * @dicttype
+     */
+    private java.lang.String linkIfStartChangeProcess;
 
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkSenceSecuritySummary;
+     * @dicttype
+     */
+    private java.lang.String linkIfModifyPlans;
 
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkSenceSecurityReport;
+     * @accesstype
+     */
+    private java.lang.String linkSenceSecuritySummary;
 
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkAssessReport;
+     * @accesstype
+     */
+    private java.lang.String linkSenceSecurityReport;
 
     /**
-	 * @textarea
-	 */
-     private java.lang.String linkAmendPlanHelp;
-     
+     * @accesstype
+     */
+    private java.lang.String linkAssessReport;
+
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkEmergencyPlan;
+     * @textarea
+     */
+    private java.lang.String linkAmendPlanHelp;
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkPermisObject() {
-            return linkPermisObject;
-     }
+    /**
+     * @accesstype
+     */
+    private java.lang.String linkEmergencyPlan;
 
-     public void setLinkPermisObject(java.lang.String linkPermisObject) {
-           this.linkPermisObject = linkPermisObject;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkPermisObject() {
+        return linkPermisObject;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkResReadyResult() {
-            return linkResReadyResult;
-     }
+    public void setLinkPermisObject(java.lang.String linkPermisObject) {
+        this.linkPermisObject = linkPermisObject;
+    }
 
-     public void setLinkResReadyResult(java.lang.String linkResReadyResult) {
-           this.linkResReadyResult = linkResReadyResult;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkResReadyResult() {
+        return linkResReadyResult;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkGreatSecurityProgram() {
-            return linkGreatSecurityProgram;
-     }
+    public void setLinkResReadyResult(java.lang.String linkResReadyResult) {
+        this.linkResReadyResult = linkResReadyResult;
+    }
 
-     public void setLinkGreatSecurityProgram(java.lang.String linkGreatSecurityProgram) {
-           this.linkGreatSecurityProgram = linkGreatSecurityProgram;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkGreatSecurityProgram() {
+        return linkGreatSecurityProgram;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkAuditAdvice() {
-            return linkAuditAdvice;
-     }
+    public void setLinkGreatSecurityProgram(java.lang.String linkGreatSecurityProgram) {
+        this.linkGreatSecurityProgram = linkGreatSecurityProgram;
+    }
 
-     public void setLinkAuditAdvice(java.lang.String linkAuditAdvice) {
-           this.linkAuditAdvice = linkAuditAdvice;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAuditAdvice() {
+        return linkAuditAdvice;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkAuditResult() {
-            return linkAuditResult;
-     }
+    public void setLinkAuditAdvice(java.lang.String linkAuditAdvice) {
+        this.linkAuditAdvice = linkAuditAdvice;
+    }
 
-     public void setLinkAuditResult(java.lang.String linkAuditResult) {
-           this.linkAuditResult = linkAuditResult;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAuditResult() {
+        return linkAuditResult;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkPermisAdvice() {
-            return linkPermisAdvice;
-     }
+    public void setLinkAuditResult(java.lang.String linkAuditResult) {
+        this.linkAuditResult = linkAuditResult;
+    }
 
-     public void setLinkPermisAdvice(java.lang.String linkPermisAdvice) {
-           this.linkPermisAdvice = linkPermisAdvice;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkPermisAdvice() {
+        return linkPermisAdvice;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkPermisResult() {
-            return linkPermisResult;
-     }
+    public void setLinkPermisAdvice(java.lang.String linkPermisAdvice) {
+        this.linkPermisAdvice = linkPermisAdvice;
+    }
 
-     public void setLinkPermisResult(java.lang.String linkPermisResult) {
-           this.linkPermisResult = linkPermisResult;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkPermisResult() {
+        return linkPermisResult;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkSencePerformSummary() {
-            return linkSencePerformSummary;
-     }
+    public void setLinkPermisResult(java.lang.String linkPermisResult) {
+        this.linkPermisResult = linkPermisResult;
+    }
 
-     public void setLinkSencePerformSummary(java.lang.String linkSencePerformSummary) {
-           this.linkSencePerformSummary = linkSencePerformSummary;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkSencePerformSummary() {
+        return linkSencePerformSummary;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkSencePerformReport() {
-            return linkSencePerformReport;
-     }
+    public void setLinkSencePerformSummary(java.lang.String linkSencePerformSummary) {
+        this.linkSencePerformSummary = linkSencePerformSummary;
+    }
 
-     public void setLinkSencePerformReport(java.lang.String linkSencePerformReport) {
-           this.linkSencePerformReport = linkSencePerformReport;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkSencePerformReport() {
+        return linkSencePerformReport;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkIfStartChangeProcess() {
-            return linkIfStartChangeProcess;
-     }
+    public void setLinkSencePerformReport(java.lang.String linkSencePerformReport) {
+        this.linkSencePerformReport = linkSencePerformReport;
+    }
 
-     public void setLinkIfStartChangeProcess(java.lang.String linkIfStartChangeProcess) {
-           this.linkIfStartChangeProcess = linkIfStartChangeProcess;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkIfStartChangeProcess() {
+        return linkIfStartChangeProcess;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkSenceSecuritySummary() {
-            return linkSenceSecuritySummary;
-     }
+    public void setLinkIfStartChangeProcess(java.lang.String linkIfStartChangeProcess) {
+        this.linkIfStartChangeProcess = linkIfStartChangeProcess;
+    }
 
-     public void setLinkSenceSecuritySummary(java.lang.String linkSenceSecuritySummary) {
-           this.linkSenceSecuritySummary = linkSenceSecuritySummary;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkSenceSecuritySummary() {
+        return linkSenceSecuritySummary;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkSenceSecurityReport() {
-            return linkSenceSecurityReport;
-     }
+    public void setLinkSenceSecuritySummary(java.lang.String linkSenceSecuritySummary) {
+        this.linkSenceSecuritySummary = linkSenceSecuritySummary;
+    }
 
-     public void setLinkSenceSecurityReport(java.lang.String linkSenceSecurityReport) {
-           this.linkSenceSecurityReport = linkSenceSecurityReport;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkSenceSecurityReport() {
+        return linkSenceSecurityReport;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkAssessReport() {
-            return linkAssessReport;
-     }
+    public void setLinkSenceSecurityReport(java.lang.String linkSenceSecurityReport) {
+        this.linkSenceSecurityReport = linkSenceSecurityReport;
+    }
 
-     public void setLinkAssessReport(java.lang.String linkAssessReport) {
-           this.linkAssessReport = linkAssessReport;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAssessReport() {
+        return linkAssessReport;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkAmendPlanHelp() {
-            return linkAmendPlanHelp;
-     }
+    public void setLinkAssessReport(java.lang.String linkAssessReport) {
+        this.linkAssessReport = linkAssessReport;
+    }
 
-     public void setLinkAmendPlanHelp(java.lang.String linkAmendPlanHelp) {
-           this.linkAmendPlanHelp = linkAmendPlanHelp;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAmendPlanHelp() {
+        return linkAmendPlanHelp;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkEmergencyPlan() {
-            return linkEmergencyPlan;
-     }
+    public void setLinkAmendPlanHelp(java.lang.String linkAmendPlanHelp) {
+        this.linkAmendPlanHelp = linkAmendPlanHelp;
+    }
 
-     public void setLinkEmergencyPlan(java.lang.String linkEmergencyPlan) {
-           this.linkEmergencyPlan = linkEmergencyPlan;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkEmergencyPlan() {
+        return linkEmergencyPlan;
+    }
 
-	public java.lang.String getLinkIfModifyPlans() {
-		return linkIfModifyPlans;
-	}
+    public void setLinkEmergencyPlan(java.lang.String linkEmergencyPlan) {
+        this.linkEmergencyPlan = linkEmergencyPlan;
+    }
 
-	public void setLinkIfModifyPlans(java.lang.String linkIfModifyPlans) {
-		this.linkIfModifyPlans = linkIfModifyPlans;
-	}
+    public java.lang.String getLinkIfModifyPlans() {
+        return linkIfModifyPlans;
+    }
 
+    public void setLinkIfModifyPlans(java.lang.String linkIfModifyPlans) {
+        this.linkIfModifyPlans = linkIfModifyPlans;
+    }
 
 
 }

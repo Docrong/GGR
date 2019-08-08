@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,79 +13,42 @@
             table="ota_stat_report"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
-
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
-
-    </generator>
-
-    </id>
-
-	<property
-            name="mmsreport_template_id"
-            	column="mmsreport_template_id"
-                length="32"
-                not-null="false"
-                unique="false"
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
         >
 
-        </property>
-        
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
+
+            </generator>
+
+        </id>
+
         <property
-            name="mmsreport_id"
-            	column="mmsreport_id"
+                name="mmsreport_template_id"
+                column="mmsreport_template_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="reportName"
-            	column="reportName"
-                length="255"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
-         <property
-            name="reportType"
-            	column="reportType"
+                name="mmsreport_id"
+                column="mmsreport_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
+
         <property
-            name="userid"
-            	column="userid"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-        </property>
-        <property
-            name="createTime"
-            	column="createTime"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
-	<property
-            name="ExcelID"
-            	column="ExcelID"
+                name="reportName"
+                column="reportName"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -93,37 +56,74 @@
 
         </property>
 
-	<property
-            name="picID"
-            	column="picId"
-                length="255"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-
-	<property
-            name="htmlID"
-            	column="htmlID"
+        <property
+                name="reportType"
+                column="reportType"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
         <property
-            name="footInfo"
-            	column="footInfo"
+                name="userid"
+                column="userid"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        <property
+                name="createTime"
+                column="createTime"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="ExcelID"
+                column="ExcelID"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+        <property
+                name="picID"
+                column="picId"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="htmlID"
+                column="htmlID"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="footInfo"
+                column="footInfo"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

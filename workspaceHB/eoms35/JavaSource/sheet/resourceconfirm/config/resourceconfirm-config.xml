@@ -1,56 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WorkFlowRule name="ResourceConfirm" description="资源确认工单">
-  <flow-define id="ResourceConfirmProcess" description="资源确认工单" tasknamespace="http://" linkservicename="" dictfilename="" name="ResourceConfirm">
-    <phase-id id="receive" name="新建工单" type="receive" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="DraftTask" role="dealPerformer@" condition="${operateType}==22" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="草稿保存" />
-      <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==0" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发" />
-    </phase-id>
-    <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==3" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="草稿派发" />
-    </phase-id>
-    <phase-id id="RejectTask" name="被驳回" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==54" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="重新派发" />
-    </phase-id>
-    <phase-id id="HandleTask" name="处理回复" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="HoldTask" role="dealPerformer@" condition="${operateType}==206" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="处理回复" />
-      <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==4" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="驳回" />
-    </phase-id>
-    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
-    <phase-id id="AcceptTask" name="资源确认受理" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==200" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="资源确认受理" />
-      <to-phase-id id="RejectTask" role="dealPerformer@" condition="${operateType}==4" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="驳回" />
-    </phase-id>
-    <phase-id id="ExplorateTask" name="现场勘查" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="UserTask" role="dealPerformer@" condition="${operateType}==2011" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="派用户端资源勘查单" />
-      <to-phase-id id="AccessTask" role="dealPerformer@" condition="${operateType}==2012" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="派接入点资源勘查单" />
-      <to-phase-id id="CityTask" role="dealPerformer@" condition="${operateType}==2013" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="派城域网端口查询单" />
-      <to-phase-id id="HandleTask" role="dealPerformer@" condition="${operateType}==2015" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="资源不满足/退回客服" />
-      <to-phase-id id="TransfereTask" role="dealPerformer@" condition="${operateType}==2016" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="派传输设备查勘" />
-      <to-phase-id id="TransferlTask" role="dealPerformer@" condition="${operateType}==2017" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="派传输线路查勘" />
-      <to-phase-id id="MakeTask" role="dealPerformer@" condition="${operateType}==2014" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="派组网方案" />
-    </phase-id>
-    <phase-id id="UserTask" name="用户端资源勘查" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==202" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="用户端资源勘查反馈" />
-    </phase-id>
-    <phase-id id="AccessTask" name="接入点资源勘查" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==203" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="接入点资源勘查反馈" />
-    </phase-id>
-    <phase-id id="CityTask" name="城域网端口查询" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==204" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="城域网端口查询反馈" />
-    </phase-id>
-    <phase-id id="TransfereTask" name="传输设备查勘" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==207" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="传输设备勘查反馈" />
-    </phase-id>
-    <phase-id id="TransferlTask" name="传输线路查勘" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==208" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="传输线路查勘反馈" />
-    </phase-id>
-    <phase-id id="MakeTask" name="组网方案制作" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="AuditTask" role="dealPerformer@" condition="${operateType}==205" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="提交审核" />
-    </phase-id>
-    <phase-id id="AuditTask" name="接入方案审核" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="HandleTask" role="dealPerformer@" condition="${operateType}==2091" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="审核通过" />
-      <to-phase-id id="MakeTask" role="dealPerformer@" condition="${operateType}==2092" operatetype="" stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="审核不通过/修改" />
-    </phase-id>
-  </flow-define>
+    <flow-define id="ResourceConfirmProcess" description="资源确认工单" tasknamespace="http://" linkservicename=""
+                 dictfilename="" name="ResourceConfirm">
+        <phase-id id="receive" name="新建工单" type="receive" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="DraftTask" role="dealPerformer@" condition="${operateType}==22" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="草稿保存"/>
+            <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==0" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="新建派发"/>
+        </phase-id>
+        <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==3" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="草稿派发"/>
+        </phase-id>
+        <phase-id id="RejectTask" name="被驳回" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==54" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="重新派发"/>
+        </phase-id>
+        <phase-id id="HandleTask" name="处理回复" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="HoldTask" role="dealPerformer@" condition="${operateType}==206" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="处理回复"/>
+            <to-phase-id id="AcceptTask" role="dealPerformer@" condition="${operateType}==4" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="驳回"/>
+        </phase-id>
+        <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false"/>
+        <phase-id id="AcceptTask" name="资源确认受理" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==200" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="资源确认受理"/>
+            <to-phase-id id="RejectTask" role="dealPerformer@" condition="${operateType}==4" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="驳回"/>
+        </phase-id>
+        <phase-id id="ExplorateTask" name="现场勘查" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="UserTask" role="dealPerformer@" condition="${operateType}==2011" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="派用户端资源勘查单"/>
+            <to-phase-id id="AccessTask" role="dealPerformer@" condition="${operateType}==2012" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="派接入点资源勘查单"/>
+            <to-phase-id id="CityTask" role="dealPerformer@" condition="${operateType}==2013" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="派城域网端口查询单"/>
+            <to-phase-id id="HandleTask" role="dealPerformer@" condition="${operateType}==2015" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="资源不满足/退回客服"/>
+            <to-phase-id id="TransfereTask" role="dealPerformer@" condition="${operateType}==2016" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="派传输设备查勘"/>
+            <to-phase-id id="TransferlTask" role="dealPerformer@" condition="${operateType}==2017" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="派传输线路查勘"/>
+            <to-phase-id id="MakeTask" role="dealPerformer@" condition="${operateType}==2014" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="派组网方案"/>
+        </phase-id>
+        <phase-id id="UserTask" name="用户端资源勘查" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==202" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="用户端资源勘查反馈"/>
+        </phase-id>
+        <phase-id id="AccessTask" name="接入点资源勘查" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==203" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="接入点资源勘查反馈"/>
+        </phase-id>
+        <phase-id id="CityTask" name="城域网端口查询" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==204" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="城域网端口查询反馈"/>
+        </phase-id>
+        <phase-id id="TransfereTask" name="传输设备查勘" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==207" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="传输设备勘查反馈"/>
+        </phase-id>
+        <phase-id id="TransferlTask" name="传输线路查勘" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ExplorateTask" role="dealPerformer@" condition="${operateType}==208" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="传输线路查勘反馈"/>
+        </phase-id>
+        <phase-id id="MakeTask" name="组网方案制作" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="AuditTask" role="dealPerformer@" condition="${operateType}==205" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="提交审核"/>
+        </phase-id>
+        <phase-id id="AuditTask" name="接入方案审核" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="HandleTask" role="dealPerformer@" condition="${operateType}==2091" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="审核通过"/>
+            <to-phase-id id="MakeTask" role="dealPerformer@" condition="${operateType}==2092" operatetype=""
+                         stepdisplay="true" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="审核不通过/修改"/>
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>
 

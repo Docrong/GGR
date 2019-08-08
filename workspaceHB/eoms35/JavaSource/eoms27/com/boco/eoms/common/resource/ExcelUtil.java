@@ -65,7 +65,7 @@ public class ExcelUtil {
     public static void XML2Excel(String doc_str, String excel_file_path) {
 
         Document doc = XmlUtil.getNewDoc(doc_str);
-        XML2Excel(doc,excel_file_path);
+        XML2Excel(doc, excel_file_path);
 
     }
 
@@ -136,7 +136,7 @@ public class ExcelUtil {
 
         HSSFRow row;
         HSSFCell cell;
-        Element node_row,node_cnd,node_col;
+        Element node_row, node_cnd, node_col;
 
         for (int i = 0; i < num_rows; i++) {
             num_all_col = 0;
@@ -144,16 +144,16 @@ public class ExcelUtil {
             node_row = (Element) node_rows.item(i);
 
 
-            if(node_row.getAttribute("bgcolor")!=null){
+            if (node_row.getAttribute("bgcolor") != null) {
                 String color = node_row.getAttribute("bgcolor");
-                if(color=="2"){
+                if (color == "2") {
                     style.setFillBackgroundColor(HSSFColor.RED.index);
-                }else if(color=="1"){
+                } else if (color == "1") {
                     style.setFillBackgroundColor(HSSFColor.BLUE_GREY.index);
-                }else{
+                } else {
                     style.setFillBackgroundColor(HSSFColor.WHITE.index);
                 }
-            }else{
+            } else {
                 style.setFillBackgroundColor(HSSFColor.WHITE.index);
             }
 

@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionForm;
  * ��ַ�������к������|׵�130��������� 12��3��
  * To change this template use File | Settings | File Templates.
  */
-public class ReportMgrBean{
+public class ReportMgrBean {
     private String reportId;
     private String topicId;
     private String schemeId;

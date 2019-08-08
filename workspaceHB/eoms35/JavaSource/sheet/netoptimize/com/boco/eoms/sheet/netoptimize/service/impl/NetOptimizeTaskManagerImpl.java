@@ -12,10 +12,10 @@ import com.boco.eoms.sheet.netoptimize.service.INetOptimizeTaskManager;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class NetOptimizeTaskManagerImpl extends TaskServiceImpl implements INetOptimizeTaskManager{
+public class NetOptimizeTaskManagerImpl extends TaskServiceImpl implements INetOptimizeTaskManager {
 
 }

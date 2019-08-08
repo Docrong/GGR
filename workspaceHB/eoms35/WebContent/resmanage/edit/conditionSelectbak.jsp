@@ -1,45 +1,46 @@
-<%@page contentType="text/html;charset=ISO8859_1"%>
-<%@page import="com.boco.eoms.resmanage.query.*"%>
-<%@page import="java.util.*"%>
-<%@include file="../power.jsp"%>
+<%@page contentType="text/html;charset=ISO8859_1" %>
+<%@page import="com.boco.eoms.resmanage.query.*" %>
+<%@page import="java.util.*" %>
+<%@include file="../power.jsp" %>
 <%
-/**
-*@ E-DIS (ËÄ´¨Ê¡)
-*@ Copyright : (c) 2003
-*@ Company : BOCO.
-*@ ×ÊÁÏ²éÑ¯Ä£¿é
-*@ author LiuYang
-*@ version 1.0
-*@ date    2003-05-09
-**/
+    /**
+     *@ E-DIS (ËÄ´¨Ê¡)
+     *@ Copyright : (c) 2003
+     *@ Company : BOCO.
+     *@ ×ÊÁÏ²éÑ¯Ä£¿é
+     *@ author LiuYang
+     *@ version 1.0
+     *@ date    2003-05-09
+     **/
 %>
 <html>
 <head>
-<title>Ìõ¼þÑ¡Ôñ</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO8859_1">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
+    <title>Ìõ¼þÑ¡Ôñ</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO8859_1">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
 </head>
 <script language=javascript>
-function goSearch()
-{
-	condition.action = "queryResult.jsp";
-}
-function goStat()
-{
-	condition.action = "statSelect.jsp";
-}
-function gofilter()
-{
-	condition.action = "conditionSelect.jsp";
-	condition.submit();
-}
+    function goSearch() {
+        condition.action = "queryResult.jsp";
+    }
+
+    function goStat() {
+        condition.action = "statSelect.jsp";
+    }
+
+    function gofilter() {
+        condition.action = "conditionSelect.jsp";
+        condition.submit();
+    }
 </script>
 <body>
 <table bgcolor="#dddddd" width='100%'>
-<tr><td align=center width='100%' colspan=2><font size=2><B>²éÑ¯Ìõ¼þÑ¡Ôñ</B></font></td></tr>
-<form name=condition method=post>
-<tr class=td_label>
-<%
+    <tr>
+        <td align=center width='100%' colspan=2><font size=2><B>²éÑ¯Ìõ¼þÑ¡Ôñ</B></font></td>
+    </tr>
+    <form name=condition method=post>
+        <tr class=td_label>
+                <%
 //String classid = request.getParameter("class");
 //String typeid = request.getParameter("type");
 String sId = null;
@@ -134,14 +135,15 @@ for(int i = 0; i < otV.size(); i ++)
 	}
 }
 %>
-<tr class=td_label>
-<input type=hidden name=class value=<%=classid%>>
-<input type=hidden name=type value=<%=typeid%>>
-<input type=hidden name=id value=<%=sId%>>
-<td width='100%' align=center colspan=2><input type=submit name=go value='²éÑ¯' onclick='javascript:goSearch()'></td>
-<!--<td width='50%' align=center><input type=submit name=submit value='Í³¼Æ' onclick='javascript:goStat()'></td>-->
-</tr>
-</form>
+        <tr class=td_label>
+            <input type=hidden name=class value=<%=classid%>>
+            <input type=hidden name=type value=<%=typeid%>>
+            <input type=hidden name=id value=<%=sId%>>
+            <td width='100%' align=center colspan=2><input type=submit name=go value='²éÑ¯'
+                                                           onclick='javascript:goSearch()'></td>
+            <!--<td width='50%' align=center><input type=submit name=submit value='Í³¼Æ' onclick='javascript:goStat()'></td>-->
+        </tr>
+    </form>
 </table>
 </body>
 </html>

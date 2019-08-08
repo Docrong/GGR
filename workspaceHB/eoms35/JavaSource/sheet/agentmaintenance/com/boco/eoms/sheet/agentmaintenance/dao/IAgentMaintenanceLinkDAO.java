@@ -6,11 +6,11 @@
 package com.boco.eoms.sheet.agentmaintenance.dao;
 
 import com.boco.eoms.sheet.base.dao.ILinkDAO;
+
 import java.util.Map;
 
 public interface IAgentMaintenanceLinkDAO
-	extends ILinkDAO
-{
+        extends ILinkDAO {
 
-	public abstract Map getLastLinkBeforeHold(String s, String s1, String s2);
+    public abstract Map getLastLinkBeforeHold(String s, String s1, String s2);
 }

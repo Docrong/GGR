@@ -10,23 +10,23 @@ import com.boco.eoms.base.util.ConvertUtil;
 
 /**
  * @author mraible
- *
- * Test to verify that BeanUtils.copyProperties is working for 
+ * <p>
+ * Test to verify that BeanUtils.copyProperties is working for
  * nested POJOs and Forms.
  */
 public class NestedFormTest extends TestCase {
     protected final Log log = LogFactory.getLog(getClass());
     private User user = null;
     private UserForm userForm = null;
-    
+
     protected void setUp() throws Exception {
         super.setUp();
     }
-    
+
     protected void tearDown() throws Exception {
         super.tearDown();
     }
-    
+
     public void testCopyPOJOToFormAndBack() throws Exception {
         // pojo -> form
         user = new User();

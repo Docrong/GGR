@@ -15,96 +15,87 @@ import com.boco.eoms.km.expert.model.KmExpertAnswer;
  * <p>
  * 2009-07-27
  * </p>
- * 
+ *
  * @author daizhigang
  * @version 1.0
- * 
  */
 
 public interface KmExpertAnswerMgr {
-	
-	/**
-	 * 取所有问题记录列表
-	 * 
-	 * @return 返回所有问题记录列表
-	 */
-	public List getKmExpertAnswers();
 
-	/**
-	 * 分页取所有问题记录列表
-	 * 
-	 * 
-	 * @return 返回某用户提出的问题记录
-	 */
-	public Map getKmExpertAnswers(final Integer curPage, final Integer pageSize);
+    /**
+     * 取所有问题记录列表
+     *
+     * @return 返回所有问题记录列表
+     */
+    public List getKmExpertAnswers();
 
-	/**
-	 * 分页取所有问题记录列表
-	 * 
-	 * 
-	 * @return 返回某用户提出的问题记录
-	 */
-	public Map getKmExpertAnswers(final Integer curPage, final Integer pageSize, final String whereSql);
-	
-	/**
-	 * 根据主键查询问题记录
-	 * 
-	 * @param id 主键
-	 * 
-	 * @return 返回某id的问题记录
-	 */
-	public KmExpertAnswer getKmExpertAnswer(final String id);
+    /**
+     * 分页取所有问题记录列表
+     *
+     * @return 返回某用户提出的问题记录
+     */
+    public Map getKmExpertAnswers(final Integer curPage, final Integer pageSize);
 
-	/**
-	 * 保存问题记录
-	 * 
-	 * @param kmExpertAnswer 问题记录
-	 */
-	public void saveKmExpertAnswer(KmExpertAnswer kmExpertAnswer);
+    /**
+     * 分页取所有问题记录列表
+     *
+     * @return 返回某用户提出的问题记录
+     */
+    public Map getKmExpertAnswers(final Integer curPage, final Integer pageSize, final String whereSql);
 
-	/**
-	 * 
-	 * 根据主键删除问题记录
-	 * 
-	 * @param id 主键
-	 * 
-	 */
-	public void removeKmExpertAnswer(final String id);
+    /**
+     * 根据主键查询问题记录
+     *
+     * @param id 主键
+     * @return 返回某id的问题记录
+     */
+    public KmExpertAnswer getKmExpertAnswer(final String id);
 
-	/**
-	 * 根据用户ID查询该用户提出的问题记录
-	 * 
-	 * @param userId 用户ID
-	 * 
-	 * @return 返回某用户提出的问题记录
-	 */
-	public Map getKmExpertAnswerBySendUserId(final String userId);
+    /**
+     * 保存问题记录
+     *
+     * @param kmExpertAnswer 问题记录
+     */
+    public void saveKmExpertAnswer(KmExpertAnswer kmExpertAnswer);
+
+    /**
+     * 根据主键删除问题记录
+     *
+     * @param id 主键
+     */
+    public void removeKmExpertAnswer(final String id);
+
+    /**
+     * 根据用户ID查询该用户提出的问题记录
+     *
+     * @param userId 用户ID
+     * @return 返回某用户提出的问题记录
+     */
+    public Map getKmExpertAnswerBySendUserId(final String userId);
 
 
-	/**
-	 * 根据用户ID分页查询该用户提出的问题记录
-	 * 
-	 * @param userId 用户ID
-	 * 
-	 * @return 返回某用户提出的问题记录
-	 */
-	public Map getKmExpertAnswerBySendUserId(final Integer curPage, final Integer pageSize, final String userId, final String state);
-	
-	
-	/**
-	 * 根据用户ID查询该用户回答的问题记录
-	 * 
-	 * @param userId 用户ID
-	 * 
-	 * @return 返回某用户回答的问题记录
-	 */
-	public Map getKmExpertAnswerByAnswerUserId(final String userId);
-	/**
-	 * 根据用户ID分页查询该用户回答的问题记录
-	 * 
-	 * @param userId 用户ID
-	 * 
-	 * @return 返回某用户回答的问题记录
-	 */
-	public Map getKmExpertAnswerByAnswerUserId(final Integer curPage, final Integer pageSize, final String userId, final String state);
+    /**
+     * 根据用户ID分页查询该用户提出的问题记录
+     *
+     * @param userId 用户ID
+     * @return 返回某用户提出的问题记录
+     */
+    public Map getKmExpertAnswerBySendUserId(final Integer curPage, final Integer pageSize, final String userId, final String state);
+
+
+    /**
+     * 根据用户ID查询该用户回答的问题记录
+     *
+     * @param userId 用户ID
+     * @return 返回某用户回答的问题记录
+     */
+    public Map getKmExpertAnswerByAnswerUserId(final String userId);
+
+    /**
+     * 根据用户ID分页查询该用户回答的问题记录
+     *
+     * @param userId 用户ID
+     * @return 返回某用户回答的问题记录
+     */
+    public Map getKmExpertAnswerByAnswerUserId(final Integer curPage, final Integer pageSize, final String userId, final String state);
 }

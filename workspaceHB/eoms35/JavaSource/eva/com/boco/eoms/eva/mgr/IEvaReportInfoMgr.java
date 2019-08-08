@@ -9,16 +9,16 @@ import com.boco.eoms.eva.model.EvaReportInfo;
 
 public interface IEvaReportInfoMgr {
 
-	public IEvaReportInfoDao getEvaReportInfoDao();
+    public IEvaReportInfoDao getEvaReportInfoDao();
 
-	public void setEvaReportInfoDao(IEvaReportInfoDao ReportInfoDao);
+    public void setEvaReportInfoDao(IEvaReportInfoDao ReportInfoDao);
 
-	public void saveEvaReportInfo(EvaReportInfo evaReportInfo);
+    public void saveEvaReportInfo(EvaReportInfo evaReportInfo);
 
-	public EvaReportInfo getEvaReportInfo(String id);
+    public EvaReportInfo getEvaReportInfo(String id);
 
-	public void removeEvaReportInfo(EvaReportInfo evaReportInfo);
-	
-	public List getReportInfoByCondition(String conditions);
+    public void removeEvaReportInfo(EvaReportInfo evaReportInfo);
+
+    public List getReportInfoByCondition(String conditions);
 
 }

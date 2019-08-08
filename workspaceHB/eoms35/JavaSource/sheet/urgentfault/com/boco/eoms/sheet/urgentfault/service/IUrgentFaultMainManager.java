@@ -15,32 +15,35 @@ import com.boco.eoms.sheet.base.service.IMainService;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface IUrgentFaultMainManager extends IMainService {
-	/**
-	 * 互调关系列表
-	 * 
-	 * @return
-	 * @throws SheetException
-	 */
-	public abstract List showInvokeRelationShipList(String mainId) throws SheetException;
-	/**
-	 * 找到有互调环节的处理工单
-	 * @param mainId
-	 * @return
-	 * @throws SheetException
-	 */
-	public  BaseLink getHasInvokeBaseLink(String mainId) throws SheetException;
-	/**
-	 * 取流程的名称
-	 * 
-	 * @return
-	 * @throws SheetException
-	 */
-	public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
+    /**
+     * 互调关系列表
+     *
+     * @return
+     * @throws SheetException
+     */
+    public abstract List showInvokeRelationShipList(String mainId) throws SheetException;
+
+    /**
+     * 找到有互调环节的处理工单
+     *
+     * @param mainId
+     * @return
+     * @throws SheetException
+     */
+    public BaseLink getHasInvokeBaseLink(String mainId) throws SheetException;
+
+    /**
+     * 取流程的名称
+     *
+     * @return
+     * @throws SheetException
+     */
+    public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
 
 
 }

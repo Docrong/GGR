@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.securityobjattribute.dao.ISecurityObjAttributeTaskDAO
  * <p>
  * Tue Apr 25 11:43:03 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAttributeTaskDAOHibernate extends TaskDAOImpl implements  ISecurityObjAttributeTaskDAO {
- 
- }
+
+public class SecurityObjAttributeTaskDAOHibernate extends TaskDAOImpl implements ISecurityObjAttributeTaskDAO {
+
+}

@@ -14,6 +14,7 @@ public class TawSupplierkpiInstanceAssManagerImpl extends BaseManager implements
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSupplierkpiInstanceAssDao(TawSupplierkpiInstanceAssDao dao) {
@@ -47,27 +48,31 @@ public class TawSupplierkpiInstanceAssManagerImpl extends BaseManager implements
     public void removeTawSupplierkpiInstanceAss(final String id) {
         dao.removeTawSupplierkpiInstanceAss(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSupplierkpiInstanceAsss(final int curPage, final int pageSize) {
-        return dao.getTawSupplierkpiInstanceAsss(curPage, pageSize,null);
+        return dao.getTawSupplierkpiInstanceAsss(curPage, pageSize, null);
     }
+
     public Map getTawSupplierkpiInstanceAsss(final int curPage, final int pageSize, final String whereStr) {
         return dao.getTawSupplierkpiInstanceAsss(curPage, pageSize, whereStr);
     }
+
     public TawSupplierkpiInstanceAss getTawSupplierkpiInstanceAssBySpecialType(final String specialType) {
-    	return dao.getTawSupplierkpiInstanceAssBySpecialType(specialType);
+        return dao.getTawSupplierkpiInstanceAssBySpecialType(specialType);
     }
+
     public List getNodesFromInstanceAss(final String whereStr) {
-    	return dao.getNodesFromInstanceAss(whereStr);
+        return dao.getNodesFromInstanceAss(whereStr);
     }
 
     public List getStaticEntitis(final String modelId, final String reportTime, final String specialType, final String kpiId) {
-    	return dao.getStaticEntitis(modelId, reportTime, specialType, kpiId);
+        return dao.getStaticEntitis(modelId, reportTime, specialType, kpiId);
     }
-    
+
     public List getVerticalStaticEntitis(final String modelId, final String reportTime, final String specialType, final String kpiId, final String manufacturerId) {
-    	return dao.getVerticalStaticEntitis(modelId, reportTime, specialType, kpiId, manufacturerId);
+        return dao.getVerticalStaticEntitis(modelId, reportTime, specialType, kpiId, manufacturerId);
     }
 }

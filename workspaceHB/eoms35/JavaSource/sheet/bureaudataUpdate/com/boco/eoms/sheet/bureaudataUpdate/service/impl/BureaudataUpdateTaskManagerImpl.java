@@ -11,6 +11,6 @@ import com.boco.eoms.sheet.bureaudataUpdate.dao.IBureaudataUpdateTaskDAO;
 import com.boco.eoms.sheet.bureaudataUpdate.service.IBureaudataUpdateTaskManager;
 
 
-public class BureaudataUpdateTaskManagerImpl extends TaskServiceImpl implements  IBureaudataUpdateTaskManager{
-	
+public class BureaudataUpdateTaskManagerImpl extends TaskServiceImpl implements IBureaudataUpdateTaskManager {
+
 }

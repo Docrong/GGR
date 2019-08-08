@@ -15,6 +15,7 @@ import java.util.Iterator;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author weis
  * @version 1.0
  */

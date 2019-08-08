@@ -8,16 +8,16 @@ import java.io.Serializable;
  */
 public class TawInterFacePortaAttributes implements Serializable {
 
-	private String webserviceurl;
+    private String webserviceurl;
 
-	public String getWebserviceurl() {
-		return webserviceurl;
-	}
+    public String getWebserviceurl() {
+        return webserviceurl;
+    }
 
-	public void setWebserviceurl(String webserviceurl) {
-		this.webserviceurl = webserviceurl;
-	}
+    public void setWebserviceurl(String webserviceurl) {
+        this.webserviceurl = webserviceurl;
+    }
 
-	
+
 }
 

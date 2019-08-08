@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.db.test;
 
 // Junit library
+
 import junit.framework.TestCase;
 
 // eoms class
@@ -24,7 +25,7 @@ public class EomsDataSourceTest extends TestCase {
      */
     protected void setUp() throws Exception {
         super.setUp();
- 
+
         _objDataSource.setUser("eoms35");
         _objDataSource.setPassword("eoms35");
         _objDataSource.setUrl("jdbc:oracle:thin:@10.0.6.6:1521:eoms");
@@ -37,7 +38,7 @@ public class EomsDataSourceTest extends TestCase {
         _objDataSource.setMaxUseCounts(20);
         _objDataSource.setCharset("ZHS16GBK");
         _objDataSource.setDefaultAutoCommit(true);
-        
+
     }
 
     /* (non-Javadoc)
@@ -48,7 +49,7 @@ public class EomsDataSourceTest extends TestCase {
     }
 
     public void testGetConnection() throws Exception {
-        BocoConnection _objConn = (BocoConnection)_objDataSource.getConnection();
+        BocoConnection _objConn = (BocoConnection) _objDataSource.getConnection();
         assertNotNull(_objConn);
         BocoLog.info(this, "获取数据库连接成功！");
         assertTrue(_objConn.isUse());

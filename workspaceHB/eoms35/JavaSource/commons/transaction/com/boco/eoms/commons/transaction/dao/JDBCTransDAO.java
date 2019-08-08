@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.transaction.dao;
 
 // java standard library
+
 import java.sql.Connection;
 
 /**
@@ -17,7 +18,7 @@ public class JDBCTransDAO {
 
     /**
      * minimal constructor
-     * 
+     *
      * @param conn
      */
     public JDBCTransDAO(Connection conn) {

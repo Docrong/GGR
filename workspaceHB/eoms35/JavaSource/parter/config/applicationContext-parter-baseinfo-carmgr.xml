@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
-    
-    
+
     <!--CarMgr-DAO START-->
-    <bean id="carMgrDao" class="com.boco.eoms.parter.baseinfo.carmgr.dao.hibernate.CarMgrDaoHibernate" autowire="byName"/>
+    <bean id="carMgrDao" class="com.boco.eoms.parter.baseinfo.carmgr.dao.hibernate.CarMgrDaoHibernate"
+          autowire="byName"/>
     <!--CarMgr-DAO END-->
-    <!--CarMgr-START-->    
+    <!--CarMgr-START-->
     <bean id="IcarMgrManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.parter.baseinfo.carmgr.service.impl.CarMgrManagerImpl">

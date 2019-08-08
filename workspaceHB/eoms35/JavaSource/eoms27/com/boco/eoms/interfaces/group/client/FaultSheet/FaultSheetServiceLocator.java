@@ -1,6 +1,6 @@
 ﻿/**
  * FaultSheetServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -28,11 +28,10 @@ public class FaultSheetServiceLocator extends org.apache.axis.client.Service imp
     }
 
     public com.boco.eoms.interfaces.group.client.FaultSheet.FaultSheet getFaultSheet() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(FaultSheet_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getFaultSheet(endpoint);
@@ -43,8 +42,7 @@ public class FaultSheetServiceLocator extends org.apache.axis.client.Service imp
             com.boco.eoms.interfaces.group.client.FaultSheet.FaultSheetSoapBindingStub _stub = new com.boco.eoms.interfaces.group.client.FaultSheet.FaultSheetSoapBindingStub(portAddress, this);
             _stub.setPortName(getFaultSheetWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -61,8 +59,7 @@ public class FaultSheetServiceLocator extends org.apache.axis.client.Service imp
                 _stub.setPortName(getFaultSheetWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -80,8 +77,7 @@ public class FaultSheetServiceLocator extends org.apache.axis.client.Service imp
         String inputPortName = portName.getLocalPart();
         if ("FaultSheet".equals(inputPortName)) {
             return getFaultSheet();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;

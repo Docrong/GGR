@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,76 +13,76 @@
             table="taw_commons_accessories"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="accessoriesCnName"
+                name="accessoriesCnName"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="accessoriesEnName"
+                name="accessoriesEnName"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="accessoriesName"
+                name="accessoriesName"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="accessoriesPath"
+                name="accessoriesPath"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="accessoriesSize"
+                name="accessoriesSize"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="accessoriesUploader"
+                name="accessoriesUploader"
                 length="50"
         >
 
         </property>
 
         <property
-            name="accessoriesUploadTime"
+                name="accessoriesUploadTime"
                 length="50"
         >
 
         </property>
 
         <property
-            name="appCode"
+                name="appCode"
                 length="50"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

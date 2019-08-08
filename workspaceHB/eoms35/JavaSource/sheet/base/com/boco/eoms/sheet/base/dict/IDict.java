@@ -16,10 +16,9 @@ package com.boco.eoms.sheet.base.dict;
  * <p>
  * Date:2007-8-3 11:05:46
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public interface IDict {
 
@@ -37,7 +36,7 @@ public interface IDict {
 
     /**
      * 名称，例 public static final String QUERY_ALL_NAME = "全部";
-     * 
+     *
      * @return
      */
     public String getName();
@@ -45,17 +44,17 @@ public interface IDict {
     /**
      * 取值，例查询全部默认数值，供以后查询判断是否为查询全部，select标签是否应加入全部 <option
      * value="QUERY_ALL_DEFAULT">全部 </option>
-     * 
+     *
      * @return
      */
     public String getValue();
 
     /**
      * 取描述信息
-     * 
+     *
      * @return
      */
     public String getDescription();
 
- 
+
 }

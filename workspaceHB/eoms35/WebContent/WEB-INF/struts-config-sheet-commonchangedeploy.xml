@@ -1,162 +1,163 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
-		<!--bean for EsmProcess end-->
-	</form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
+        <!--bean for EsmProcess end-->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		<forward name="error"
-			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
-			contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+        <forward name="error"
+                 path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+                 contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
-	
-	
-		<action path="/commonchangedeploy"
-			type="com.boco.eoms.sheet.commonchangedeploy.webapp.action.CommonChangeDeployAction"
-			name="multiPageForm" scope="request" input="error" parameter="method"
-			unknown="false" validate="false" attribute="CommonChangeDeploy">
-			<set-property property="cancellable" value="true" />
-				<forward name="success"
-					path="/WEB-INF/pages/wfworksheet/common/new_sheet_success.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="successMessage"
-					path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newInputNew"
-					path="/WEB-INF/pages/wfworksheet/commonchangedeploy/inputmain.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newDetail"
-					path="/WEB-INF/pages/wfworksheet/commonchangedeploy/detail.jsp"
-					redirect="false" contextRelative="true" />
-			    <forward name="newShowInputDealPage" 
-			        path="/WEB-INF/pages/wfworksheet/commonchangedeploy/inputdealpage.jsp"
-			        redirect="false" contextRelative="true"/>			    		  					   			           
-			    <forward name="newHistory"
-					path="/WEB-INF/pages/wfworksheet/commonchangedeploy/history.jsp"
-					redirect="false" contextRelative="true" />		   
-				<forward name="newMaindetail"
-					path="/WEB-INF/pages/wfworksheet/commonchangedeploy/detail.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newTransfer"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/transfer.jsp"	
-					redirect="false" contextRelative="true" />
-				<forward name="newSplit"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/split.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newShowInputConfirmAndCCPage" 
-			        path="/WEB-INF/pages/wfworksheet/common/sheet/showConfirmAndCCPage.jsp"
-			        redirect="false" contextRelative="true"/>
-			     <forward name="newSheetAccessories" 
-			        path="/WEB-INF/pages/wfworksheet/common/sheet/sheetAccessories.jsp"
-			        redirect="false" contextRelative="true"/>
-			     <forward name="newRemark"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/remark.jsp" 
-					redirect="false" contextRelative="true" />
-				 <forward name="newQuerylist"
-			        path="/WEB-INF/pages/wfworksheet/common/sheet/querylist.jsp"
-			        redirect="false" contextRelative="true" />
-			    <forward name="newQuery"
-			        path="/WEB-INF/pages/wfworksheet/common/sheet/query.jsp"
-			        redirect="false" contextRelative="true" />
-			    <forward name="newPortal"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/portal.jsp"
-					redirect="false" contextRelative="true" />
-				 <forward name="newPhaseAdvice"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/phaseBackToUp.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="newCC"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/makeCopy.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newOpenDealTemplate" 
-			        path="/WEB-INF/pages/wfworksheet/common/sheet/openDealTemplate.jsp"
-			        redirect="false" contextRelative="true"/>
-			    <forward name="newForceHold"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/forceHold.jsp"	
-					redirect="false" contextRelative="true" />			
-			   	<forward name="newStartlist"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newCancellist"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="newMainlist"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="newList"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/list.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newHoldlist"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="newAdminlist"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/adminlist.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="newDealReplyAccept"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/dealReplyAccept.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="newDealReplyReject"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/dealReplyReject.jsp" 
-					redirect="false" contextRelative="true" />	
-				<forward name="newDraw"
-	                path="/WEB-INF/pages/wfworksheet/common/sheet/draw.jsp"
-	                redirect="false" contextRelative="true"/>      
-	            <forward name="newDraftList" 
-				 	path="/WEB-INF/pages/wfworksheet/common/sheet/draftList.jsp" 
-					redirect="false" contextRelative="true"/>
-				<forward name="newPhaseBackToUp"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/phaseBackToUp.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="newTemplates" 
-			        path="/WEB-INF/pages/wfworksheet/common/sheet/templates.jsp"
-			        redirect="false" contextRelative="true"/>
-			    <forward name="newDealTemplates" 
-			        path="/WEB-INF/pages/wfworksheet/common/sheet/dealTemplates.jsp"
-			        redirect="false" contextRelative="true"/>
-			    <forward name="newShowWorkFlow"
-					path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newShowWorkFlowInstance"
-					path="/WEB-INF/pages/wfworksheet/common/newWorkFlowInstance.jsp"
-					redirect="false" contextRelative="true" />
-				<forward name="newGetLinkOperatePage"
-					path="/WEB-INF/pages/wfworksheet/common/sheet/linkOperatePage.jsp" 
-					redirect="false" contextRelative="true" />
-				<forward name="pic"
-                    path="/WEB-INF/pages/wfworksheet/commonchangedeploy/pic.jsp"
-                    redirect="false" contextRelative="true"/>																		
-		 </action>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
 
-	</action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources parameter="config/ApplicationResources-sheet" key="sheet" />
-	<message-resources
-		parameter="config/ApplicationResources-sheet-commonchangedeploy" key="commonchangedeploy" />
+        <action path="/commonchangedeploy"
+                type="com.boco.eoms.sheet.commonchangedeploy.webapp.action.CommonChangeDeployAction"
+                name="multiPageForm" scope="request" input="error" parameter="method"
+                unknown="false" validate="false" attribute="CommonChangeDeploy">
+            <set-property property="cancellable" value="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/wfworksheet/common/new_sheet_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="successMessage"
+                     path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newInputNew"
+                     path="/WEB-INF/pages/wfworksheet/commonchangedeploy/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newDetail"
+                     path="/WEB-INF/pages/wfworksheet/commonchangedeploy/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newShowInputDealPage"
+                     path="/WEB-INF/pages/wfworksheet/commonchangedeploy/inputdealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newHistory"
+                     path="/WEB-INF/pages/wfworksheet/commonchangedeploy/history.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newMaindetail"
+                     path="/WEB-INF/pages/wfworksheet/commonchangedeploy/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newTransfer"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/transfer.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newSplit"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/split.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newShowInputConfirmAndCCPage"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/showConfirmAndCCPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newSheetAccessories"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/sheetAccessories.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newRemark"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/remark.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newQuerylist"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/querylist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newQuery"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/query.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newPortal"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/portal.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newPhaseAdvice"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newCC"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/makeCopy.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newOpenDealTemplate"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/openDealTemplate.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newForceHold"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/forceHold.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newStartlist"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newCancellist"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newMainlist"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newList"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/list.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newHoldlist"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newAdminlist"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/adminlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newDealReplyAccept"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/dealReplyAccept.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newDealReplyReject"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/dealReplyReject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newDraw"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/draw.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newDraftList"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/draftList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newPhaseBackToUp"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newTemplates"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/templates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newDealTemplates"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/dealTemplates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newShowWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newShowWorkFlowInstance"
+                     path="/WEB-INF/pages/wfworksheet/common/newWorkFlowInstance.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="newGetLinkOperatePage"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet/linkOperatePage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="pic"
+                     path="/WEB-INF/pages/wfworksheet/commonchangedeploy/pic.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources-sheet" key="sheet"/>
+    <message-resources
+            parameter="config/ApplicationResources-sheet-commonchangedeploy" key="commonchangedeploy"/>
 </struts-config>
 
 

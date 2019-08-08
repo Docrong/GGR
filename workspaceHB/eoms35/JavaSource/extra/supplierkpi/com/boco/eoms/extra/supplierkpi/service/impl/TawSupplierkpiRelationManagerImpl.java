@@ -14,6 +14,7 @@ public class TawSupplierkpiRelationManagerImpl extends BaseManager implements IT
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSupplierkpiRelationDao(TawSupplierkpiRelationDao dao) {
@@ -47,16 +48,19 @@ public class TawSupplierkpiRelationManagerImpl extends BaseManager implements IT
     public void removeTawSupplierkpiRelation(final String id) {
         dao.removeTawSupplierkpiRelation(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSupplierkpiRelations(final int curPage, final int pageSize) {
-        return dao.getTawSupplierkpiRelations(curPage, pageSize,null);
+        return dao.getTawSupplierkpiRelations(curPage, pageSize, null);
     }
+
     public Map getTawSupplierkpiRelations(final int curPage, final int pageSize, final String whereStr) {
         return dao.getTawSupplierkpiRelations(curPage, pageSize, whereStr);
     }
-    public List getTawSupplierkpiRelationsByAssessInstanceId(final String assessInstanceId){
-    	return dao.getTawSupplierkpiRelationsByAssessInstanceId(assessInstanceId);
+
+    public List getTawSupplierkpiRelationsByAssessInstanceId(final String assessInstanceId) {
+        return dao.getTawSupplierkpiRelationsByAssessInstanceId(assessInstanceId);
     }
 }

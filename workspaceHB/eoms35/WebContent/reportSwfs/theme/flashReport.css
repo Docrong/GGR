@@ -1,19 +1,1 @@
-#Layer1 {
-
-	position:absolute;
-
-	left:0px;
-
-	top:0px;
-
-	width:100%;
-
-	height:20px;
-
-	z-index:1000;
-
-	background-color: #FFFFFF;
-
-	visibility: visible;
-
-}
+#Layer1 {    position: absolute;    left: 0px;    top: 0px;    width: 100%;    height: 20px;    z-index: 1000;    background-color: #FFFFFF;    visibility: visible;}

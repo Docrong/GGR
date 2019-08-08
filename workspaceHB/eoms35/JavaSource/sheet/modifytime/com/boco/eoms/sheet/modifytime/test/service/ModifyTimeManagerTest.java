@@ -35,7 +35,7 @@ public class ModifyTimeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         modifytimeDao.expects(once()).method("getModifyTimes")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List modifytimes = modifytimeManager.getModifyTimes();
         assertTrue(modifytimes.size() == 1);
@@ -45,7 +45,7 @@ public class ModifyTimeManagerTest extends BaseManagerTestCase {
     public void testGetModifyTime() throws Exception {
         // set expected behavior on dao
         modifytimeDao.expects(once()).method("getModifyTime")
-            .will(returnValue(new ModifyTime()));
+                .will(returnValue(new ModifyTime()));
         ModifyTime modifytime = modifytimeManager.getModifyTime(modifytimeId);
         assertTrue(modifytime != null);
         modifytimeDao.verify();
@@ -56,7 +56,7 @@ public class ModifyTimeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         modifytimeDao.expects(once()).method("saveModifyTime")
-            .with(same(modifytime)).isVoid();
+                .with(same(modifytime)).isVoid();
 
         modifytimeManager.saveModifyTime(modifytime);
         modifytimeDao.verify();

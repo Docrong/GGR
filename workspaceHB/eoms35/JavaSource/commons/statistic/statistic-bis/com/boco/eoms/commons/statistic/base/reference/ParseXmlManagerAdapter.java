@@ -16,21 +16,20 @@ import java.util.Properties;
  *
  * @author 曲静�\uFFFD
  * @version 1.0
- *
  */
 public abstract class ParseXmlManagerAdapter implements IParseXmlManager {
 
-	/**
-	 * castor mapping 文件路径
-	 */
-	protected Properties mappingPath;
+    /**
+     * castor mapping 文件路径
+     */
+    protected Properties mappingPath;
 
-	public Properties getMappingPath() {
-		return mappingPath;
-	}
+    public Properties getMappingPath() {
+        return mappingPath;
+    }
 
-	public void setMappingPath(Properties mappingPath) {
-		this.mappingPath = mappingPath;
-	}
+    public void setMappingPath(Properties mappingPath) {
+        this.mappingPath = mappingPath;
+    }
 
 }

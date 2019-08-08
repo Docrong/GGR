@@ -10,23 +10,22 @@ package com.boco.eoms.commons.rule.tool.exception;
  * <p>
  * May 10, 2007 10:34:35 AM
  * </p>
- * 
+ *
  * @author ��
  * @version 1.0
- * 
  */
 public class RuleToolJdbcException extends RuleToolException {
 
-	public RuleToolJdbcException() {
-		super();
-	}
+    public RuleToolJdbcException() {
+        super();
+    }
 
-	public RuleToolJdbcException(String errorMessage) {
-		super(errorMessage);
-	}
+    public RuleToolJdbcException(String errorMessage) {
+        super(errorMessage);
+    }
 
-	public RuleToolJdbcException(Throwable cause) {
-		super(cause);
-	}
+    public RuleToolJdbcException(Throwable cause) {
+        super(cause);
+    }
 
 }

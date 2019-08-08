@@ -17,61 +17,62 @@ import com.boco.eoms.km.ask.dao.KmAskVoteDao;
  * <p>
  * Fri Aug 14 15:39:20 CST 2009
  * </p>
- * 
+ *
  * @author lvweihua
  * @version 1.0
- * 
  */
 public class KmAskVoteMgrImpl implements KmAskVoteMgr {
- 
-	private KmAskVoteDao  kmAskVoteDao;
- 	
-	public KmAskVoteDao getKmAskVoteDao() {
-		return this.kmAskVoteDao;
-	}
- 	
-	public void setKmAskVoteDao(KmAskVoteDao kmAskVoteDao) {
-		this.kmAskVoteDao = kmAskVoteDao;
-	}
- 	
+
+    private KmAskVoteDao kmAskVoteDao;
+
+    public KmAskVoteDao getKmAskVoteDao() {
+        return this.kmAskVoteDao;
+    }
+
+    public void setKmAskVoteDao(KmAskVoteDao kmAskVoteDao) {
+        this.kmAskVoteDao = kmAskVoteDao;
+    }
+
     public List getKmAskVotes() {
-    	return kmAskVoteDao.getKmAskVotes();
+        return kmAskVoteDao.getKmAskVotes();
     }
-    
+
     /**
-	 * 根据questionId查询所有投票信息
-	 * @param questionId
-	 * @return
-	 */
-	public List getKmAskVoteByQuestionId(final String questionId){
-		return kmAskVoteDao.getKmAskVoteByQuestionId(questionId);
-	}
-    
-	/**
-	 * 根据问题id和投票人id查询投票信息
-	 * @param questionId
-	 * @param userId
-	 * @return
-	 */
-	public KmAskVote getKmAskVote(final String questionId,final String userId){
-		return kmAskVoteDao.getKmAskVote(questionId, userId);
-	}
-	
+     * 根据questionId查询所有投票信息
+     *
+     * @param questionId
+     * @return
+     */
+    public List getKmAskVoteByQuestionId(final String questionId) {
+        return kmAskVoteDao.getKmAskVoteByQuestionId(questionId);
+    }
+
+    /**
+     * 根据问题id和投票人id查询投票信息
+     *
+     * @param questionId
+     * @param userId
+     * @return
+     */
+    public KmAskVote getKmAskVote(final String questionId, final String userId) {
+        return kmAskVoteDao.getKmAskVote(questionId, userId);
+    }
+
     public KmAskVote getKmAskVote(final String id) {
-    	return kmAskVoteDao.getKmAskVote(id);
+        return kmAskVoteDao.getKmAskVote(id);
     }
-    
+
     public void saveKmAskVote(KmAskVote kmAskVote) {
-    	kmAskVoteDao.saveKmAskVote(kmAskVote);
+        kmAskVoteDao.saveKmAskVote(kmAskVote);
     }
-    
+
     public void removeKmAskVote(final String id) {
-    	kmAskVoteDao.removeKmAskVote(id);
+        kmAskVoteDao.removeKmAskVote(id);
     }
-    
+
     public Map getKmAskVotes(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmAskVoteDao.getKmAskVotes(curPage, pageSize, whereStr);
-	}
-	
+                             final String whereStr) {
+        return kmAskVoteDao.getKmAskVotes(curPage, pageSize, whereStr);
+    }
+
 }

@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-  
+
     <!--TawSheetSpecial-DAO START-->
-    <bean id="tawSheetExpertDao" class="com.boco.eoms.commons.sheet.expert.dao.hibernate.TawSheetExpertDaoHibernate" autowire="byName"/>
+    <bean id="tawSheetExpertDao" class="com.boco.eoms.commons.sheet.expert.dao.hibernate.TawSheetExpertDaoHibernate"
+          autowire="byName"/>
     <!--TawSheetSpecial-DAO END-->
-    <!--TawSheetSpecial-START-->    
+    <!--TawSheetSpecial-START-->
     <bean id="ItawSheetExpertManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.commons.sheet.expert.service.impl.TawSheetExpertManagerImpl">
                 <property name="dao" ref="tawSheetExpertDao"/>
-           </bean>
+            </bean>
         </property>
     </bean>
-  
+
 </beans>
 
 

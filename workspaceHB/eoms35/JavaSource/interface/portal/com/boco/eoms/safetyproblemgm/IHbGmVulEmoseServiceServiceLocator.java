@@ -1,6 +1,6 @@
 /**
  * IHbGmVulEmoseServiceServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -43,11 +43,10 @@ public class IHbGmVulEmoseServiceServiceLocator extends org.apache.axis.client.S
     }
 
     public com.boco.eoms.safetyproblemgm.IHbGmVulEmoseService getIHbGmVulEmoseServicePort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(IHbGmVulEmoseServicePort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getIHbGmVulEmoseServicePort(endpoint);
@@ -58,8 +57,7 @@ public class IHbGmVulEmoseServiceServiceLocator extends org.apache.axis.client.S
             com.boco.eoms.safetyproblemgm.IHbGmVulEmoseServiceServiceSoapBindingStub _stub = new com.boco.eoms.safetyproblemgm.IHbGmVulEmoseServiceServiceSoapBindingStub(portAddress, this);
             _stub.setPortName(getIHbGmVulEmoseServicePortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -80,8 +78,7 @@ public class IHbGmVulEmoseServiceServiceLocator extends org.apache.axis.client.S
                 _stub.setPortName(getIHbGmVulEmoseServicePortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -99,8 +96,7 @@ public class IHbGmVulEmoseServiceServiceLocator extends org.apache.axis.client.S
         java.lang.String inputPortName = portName.getLocalPart();
         if ("IHbGmVulEmoseServicePort".equals(inputPortName)) {
             return getIHbGmVulEmoseServicePort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -122,22 +118,20 @@ public class IHbGmVulEmoseServiceServiceLocator extends org.apache.axis.client.S
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("IHbGmVulEmoseServicePort".equals(portName)) {
+
+        if ("IHbGmVulEmoseServicePort".equals(portName)) {
             setIHbGmVulEmoseServicePortEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

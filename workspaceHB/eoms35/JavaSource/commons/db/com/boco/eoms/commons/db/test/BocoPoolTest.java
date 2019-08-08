@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.db.test;
 
 // eoms library
+
 import com.boco.eoms.commons.db.bocopool.BocoConnection;
 import com.boco.eoms.commons.db.bocopool.ConnectionPool;
 import com.boco.eoms.commons.db.bocopool.DBConnectionPool;
@@ -48,20 +49,20 @@ public class BocoPoolTest extends Thread {
         _objConnPool = ConnectionPool.getInstance().getPool();
         _objConn = _objConnPool.getConnection();
         BocoLog.debug(this, "Thread: [" + this.toString() + "], get Connection: ["
-                    + _objConn.toString() + "]");
+                + _objConn.toString() + "]");
     }
 
     private void releaseConnection() {
         _objConn.close();
 
         BocoLog.debug(this, "Thread: [" + this.toString() + "], Close Connection: ["
-                    + _objConn.toString() + "]");
+                + _objConn.toString() + "]");
 
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Thread#run()
      */
     public void run() {
@@ -69,8 +70,7 @@ public class BocoPoolTest extends Thread {
 
         try {
             sleep(_lWaitTimetoRelease);
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             BocoLog.error(this, "Thread: [" + this.toString() + "], error message: ["
                     + e.getMessage() + "]");
         }

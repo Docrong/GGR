@@ -15,6 +15,7 @@ import javax.ejb.HomeHandle;
 import javax.ejb.RemoveException;
 import javax.rmi.CORBA.Stub;
 import javax.rmi.CORBA.Util;
+
 import org.omg.CORBA.SystemException;
 import org.omg.CORBA.portable.ApplicationException;
 import org.omg.CORBA.portable.OutputStream;
@@ -23,23 +24,23 @@ import org.omg.CORBA.portable.ServantObject;
 import org.omg.CORBA_2_3.portable.InputStream;
 
 public class _EJBHome_Stub extends Stub implements EJBHome {
-    
+
     private static final String[] _type_ids = {
-        "RMI:javax.ejb.EJBHome:0000000000000000"
+            "RMI:javax.ejb.EJBHome:0000000000000000"
     };
-    
-    public String[] _ids() { 
+
+    public String[] _ids() {
         return _type_ids;
     }
-    
+
     public void remove(Handle arg0) throws RemoteException, RemoveException {
-        while(true) {
+        while (true) {
             if (!Util.isLocal(this)) {
                 InputStream in = null;
                 try {
                     try {
                         OutputStream out = _request("remove__javax_ejb_Handle", true);
-                        Util.writeAbstractObject(out,arg0);
+                        Util.writeAbstractObject(out, arg0);
                         _invoke(out);
                         return;
                     } catch (ApplicationException ex) {
@@ -58,18 +59,18 @@ public class _EJBHome_Stub extends Stub implements EJBHome {
                     _releaseReply(in);
                 }
             } else {
-                ServantObject so = _servant_preinvoke("remove__javax_ejb_Handle",javax.ejb.EJBHome.class);
+                ServantObject so = _servant_preinvoke("remove__javax_ejb_Handle", javax.ejb.EJBHome.class);
                 if (so == null) {
                     continue;
                 }
                 try {
-                    Handle arg0Copy = (Handle) Util.copyObject(arg0,_orb());
-                    ((javax.ejb.EJBHome)so.servant).remove(arg0Copy);
+                    Handle arg0Copy = (Handle) Util.copyObject(arg0, _orb());
+                    ((javax.ejb.EJBHome) so.servant).remove(arg0Copy);
                     return;
                 } catch (Throwable ex) {
-                    Throwable exCopy = (Throwable)Util.copyObject(ex,_orb());
+                    Throwable exCopy = (Throwable) Util.copyObject(ex, _orb());
                     if (exCopy instanceof RemoveException) {
-                        throw (RemoveException)exCopy;
+                        throw (RemoveException) exCopy;
                     }
                     throw Util.wrapException(exCopy);
                 } finally {
@@ -78,15 +79,15 @@ public class _EJBHome_Stub extends Stub implements EJBHome {
             }
         }
     }
-    
+
     public void remove(Object arg0) throws RemoteException, RemoveException {
-        while(true) {
+        while (true) {
             if (!Util.isLocal(this)) {
                 InputStream in = null;
                 try {
                     try {
                         OutputStream out = _request("remove__java_lang_Object", true);
-                        Util.writeAny(out,arg0);
+                        Util.writeAny(out, arg0);
                         _invoke(out);
                         return;
                     } catch (ApplicationException ex) {
@@ -105,18 +106,18 @@ public class _EJBHome_Stub extends Stub implements EJBHome {
                     _releaseReply(in);
                 }
             } else {
-                ServantObject so = _servant_preinvoke("remove__java_lang_Object",javax.ejb.EJBHome.class);
+                ServantObject so = _servant_preinvoke("remove__java_lang_Object", javax.ejb.EJBHome.class);
                 if (so == null) {
                     continue;
                 }
                 try {
-                    Object arg0Copy = (Object) Util.copyObject(arg0,_orb());
-                    ((javax.ejb.EJBHome)so.servant).remove(arg0Copy);
+                    Object arg0Copy = (Object) Util.copyObject(arg0, _orb());
+                    ((javax.ejb.EJBHome) so.servant).remove(arg0Copy);
                     return;
                 } catch (Throwable ex) {
-                    Throwable exCopy = (Throwable)Util.copyObject(ex,_orb());
+                    Throwable exCopy = (Throwable) Util.copyObject(ex, _orb());
                     if (exCopy instanceof RemoveException) {
-                        throw (RemoveException)exCopy;
+                        throw (RemoveException) exCopy;
                     }
                     throw Util.wrapException(exCopy);
                 } finally {
@@ -125,15 +126,15 @@ public class _EJBHome_Stub extends Stub implements EJBHome {
             }
         }
     }
-    
+
     public EJBMetaData getEJBMetaData() throws RemoteException {
-        while(true) {
+        while (true) {
             if (!Util.isLocal(this)) {
                 InputStream in = null;
                 try {
                     try {
                         OutputStream out = _request("_get_EJBMetaData", true);
-                        in = (InputStream)_invoke(out);
+                        in = (InputStream) _invoke(out);
                         return (EJBMetaData) in.read_value(EJBMetaData.class);
                     } catch (ApplicationException ex) {
                         in = (InputStream) ex.getInputStream();
@@ -148,15 +149,15 @@ public class _EJBHome_Stub extends Stub implements EJBHome {
                     _releaseReply(in);
                 }
             } else {
-                ServantObject so = _servant_preinvoke("_get_EJBMetaData",javax.ejb.EJBHome.class);
+                ServantObject so = _servant_preinvoke("_get_EJBMetaData", javax.ejb.EJBHome.class);
                 if (so == null) {
                     continue;
                 }
                 try {
-                    EJBMetaData result = ((javax.ejb.EJBHome)so.servant).getEJBMetaData();
-                    return (EJBMetaData)Util.copyObject(result,_orb());
+                    EJBMetaData result = ((javax.ejb.EJBHome) so.servant).getEJBMetaData();
+                    return (EJBMetaData) Util.copyObject(result, _orb());
                 } catch (Throwable ex) {
-                    Throwable exCopy = (Throwable)Util.copyObject(ex,_orb());
+                    Throwable exCopy = (Throwable) Util.copyObject(ex, _orb());
                     throw Util.wrapException(exCopy);
                 } finally {
                     _servant_postinvoke(so);
@@ -164,15 +165,15 @@ public class _EJBHome_Stub extends Stub implements EJBHome {
             }
         }
     }
-    
+
     public HomeHandle getHomeHandle() throws RemoteException {
-        while(true) {
+        while (true) {
             if (!Util.isLocal(this)) {
                 InputStream in = null;
                 try {
                     try {
                         OutputStream out = _request("_get_homeHandle", true);
-                        in = (InputStream)_invoke(out);
+                        in = (InputStream) _invoke(out);
                         return (HomeHandle) in.read_abstract_interface(HomeHandle.class);
                     } catch (ApplicationException ex) {
                         in = (InputStream) ex.getInputStream();
@@ -187,15 +188,15 @@ public class _EJBHome_Stub extends Stub implements EJBHome {
                     _releaseReply(in);
                 }
             } else {
-                ServantObject so = _servant_preinvoke("_get_homeHandle",javax.ejb.EJBHome.class);
+                ServantObject so = _servant_preinvoke("_get_homeHandle", javax.ejb.EJBHome.class);
                 if (so == null) {
                     continue;
                 }
                 try {
-                    HomeHandle result = ((javax.ejb.EJBHome)so.servant).getHomeHandle();
-                    return (HomeHandle)Util.copyObject(result,_orb());
+                    HomeHandle result = ((javax.ejb.EJBHome) so.servant).getHomeHandle();
+                    return (HomeHandle) Util.copyObject(result, _orb());
                 } catch (Throwable ex) {
-                    Throwable exCopy = (Throwable)Util.copyObject(ex,_orb());
+                    Throwable exCopy = (Throwable) Util.copyObject(ex, _orb());
                     throw Util.wrapException(exCopy);
                 } finally {
                     _servant_postinvoke(so);

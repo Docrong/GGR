@@ -1,137 +1,168 @@
 package com.boco.gr.model;
-/**
- * ×ÊÁÏÎÄµµ
- * */
-public class TawRiskDocument{
-	private String id;//Ö÷¼ü
-	private String deleted;//É¾³ý±êÊ¶£¬0-Õý³££»1-ÒÑÉ¾³ý
-	private String riskType;//»·½ÚinitDicId="67801"
-	private String isShow;//ÊÇ·ñÊÓÍ¼ÖÐ³ÊÏÖ
-	
-	private String docTitle;//×ÊÁÏ±êÌâ
-	private String docDesc;//×ÊÁÏÃèÊö
-	private String docLinkName;//¹ØÁª ¸½¼þ±ítaw_commons_accessoriesµÄ accessoriesname
-	
-	private String uploadTime;//ÉÏ´«Ê±¼ä
-	private String uploadUserId;//ÉÏ´«ÈË-ID
-	private String uploadUserDeptid;//ÉÏ´«ÈË²¿ÃÅ-ID
-	private String uploadUserPhone;//ÉÏ´«ÈËÁªÏµ·½Ê½
-	
-	private String updateTime;//×îºóÒ»´ÎÐÞ¸ÄÊ±¼ä
-	private String updateUserId;//×îºóÒ»´ÎÐÞ¸ÄÈË-ID
-	private String updateUserDeptid;//×îºóÒ»´ÎÐÞ¸ÄÈË²¿ÃÅ-ID
-	private String updateUserPhone;//×îºóÒ»´ÎÐÞ¸ÄÈËÁªÏµ·½Ê½
-	
-	private String sysNo;//±àºÅ
-	
-	
-	public TawRiskDocument() {
-		super();
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getDeleted() {
-		return deleted;
-	}
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
-	public String getDocTitle() {
-		return docTitle;
-	}
-	public void setDocTitle(String docTitle) {
-		this.docTitle = docTitle;
-	}
-	public String getDocDesc() {
-		return docDesc;
-	}
-	public void setDocDesc(String docDesc) {
-		this.docDesc = docDesc;
-	}
-	public String getUploadTime() {
-		return uploadTime;
-	}
-	public void setUploadTime(String uploadTime) {
-		this.uploadTime = uploadTime;
-	}
-	public String getUploadUserId() {
-		return uploadUserId;
-	}
-	public void setUploadUserId(String uploadUserId) {
-		this.uploadUserId = uploadUserId;
-	}
-	public String getUploadUserDeptid() {
-		return uploadUserDeptid;
-	}
-	public void setUploadUserDeptid(String uploadUserDeptid) {
-		this.uploadUserDeptid = uploadUserDeptid;
-	}
-	public String getDocLinkName() {
-		return docLinkName;
-	}
-	public void setDocLinkName(String docLinkName) {
-		this.docLinkName = docLinkName;
-	}
-	public String getRiskType() {
-		if(riskType==null){
-			riskType="";
-		}
-		return riskType;
-	}
-	public void setRiskType(String riskType) {
-		this.riskType = riskType;
-	}
-	public String getUploadUserPhone() {
-		return uploadUserPhone;
-	}
-	public void setUploadUserPhone(String uploadUserPhone) {
-		this.uploadUserPhone = uploadUserPhone;
-	}
-	public String getUpdateTime() {
-		return updateTime;
-	}
-	public void setUpdateTime(String updateTime) {
-		this.updateTime = updateTime;
-	}
-	public String getUpdateUserId() {
-		return updateUserId;
-	}
-	public void setUpdateUserId(String updateUserId) {
-		this.updateUserId = updateUserId;
-	}
-	public String getUpdateUserDeptid() {
-		return updateUserDeptid;
-	}
-	public void setUpdateUserDeptid(String updateUserDeptid) {
-		this.updateUserDeptid = updateUserDeptid;
-	}
-	public String getUpdateUserPhone() {
-		return updateUserPhone;
-	}
-	public void setUpdateUserPhone(String updateUserPhone) {
-		this.updateUserPhone = updateUserPhone;
-	}
-	public String getIsShow() {
-		if(isShow==null){
-			isShow="";
-		}
-		return isShow;
-	}
-	public void setIsShow(String isShow) {
-		this.isShow = isShow;
-	}
-	public String getSysNo() {
-		return sysNo;
-	}
-	public void setSysNo(String sysNo) {
-		this.sysNo = sysNo;
-	}
 
-	
-	
-	
+/**
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½
+ */
+public class TawRiskDocument {
+    private String id;//ï¿½ï¿½ï¿½ï¿½
+    private String deleted;//É¾ï¿½ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½0-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1-ï¿½ï¿½É¾ï¿½ï¿½
+    private String riskType;//ï¿½ï¿½ï¿½ï¿½initDicId="67801"
+    private String isShow;//ï¿½Ç·ï¿½ï¿½ï¿½Í¼ï¿½Ð³ï¿½ï¿½ï¿½
+
+    private String docTitle;//ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½
+    private String docDesc;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private String docLinkName;//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½taw_commons_accessoriesï¿½ï¿½ accessoriesname
+
+    private String uploadTime;//ï¿½Ï´ï¿½Ê±ï¿½ï¿½
+    private String uploadUserId;//ï¿½Ï´ï¿½ï¿½ï¿½-ID
+    private String uploadUserDeptid;//ï¿½Ï´ï¿½ï¿½Ë²ï¿½ï¿½ï¿½-ID
+    private String uploadUserPhone;//ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ê½
+
+    private String updateTime;//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Þ¸ï¿½Ê±ï¿½ï¿½
+    private String updateUserId;//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½-ID
+    private String updateUserDeptid;//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½Ë²ï¿½ï¿½ï¿½-ID
+    private String updateUserPhone;//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Ê½
+
+    private String sysNo;//ï¿½ï¿½ï¿½
+
+
+    public TawRiskDocument() {
+        super();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getDocTitle() {
+        return docTitle;
+    }
+
+    public void setDocTitle(String docTitle) {
+        this.docTitle = docTitle;
+    }
+
+    public String getDocDesc() {
+        return docDesc;
+    }
+
+    public void setDocDesc(String docDesc) {
+        this.docDesc = docDesc;
+    }
+
+    public String getUploadTime() {
+        return uploadTime;
+    }
+
+    public void setUploadTime(String uploadTime) {
+        this.uploadTime = uploadTime;
+    }
+
+    public String getUploadUserId() {
+        return uploadUserId;
+    }
+
+    public void setUploadUserId(String uploadUserId) {
+        this.uploadUserId = uploadUserId;
+    }
+
+    public String getUploadUserDeptid() {
+        return uploadUserDeptid;
+    }
+
+    public void setUploadUserDeptid(String uploadUserDeptid) {
+        this.uploadUserDeptid = uploadUserDeptid;
+    }
+
+    public String getDocLinkName() {
+        return docLinkName;
+    }
+
+    public void setDocLinkName(String docLinkName) {
+        this.docLinkName = docLinkName;
+    }
+
+    public String getRiskType() {
+        if (riskType == null) {
+            riskType = "";
+        }
+        return riskType;
+    }
+
+    public void setRiskType(String riskType) {
+        this.riskType = riskType;
+    }
+
+    public String getUploadUserPhone() {
+        return uploadUserPhone;
+    }
+
+    public void setUploadUserPhone(String uploadUserPhone) {
+        this.uploadUserPhone = uploadUserPhone;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateUserId() {
+        return updateUserId;
+    }
+
+    public void setUpdateUserId(String updateUserId) {
+        this.updateUserId = updateUserId;
+    }
+
+    public String getUpdateUserDeptid() {
+        return updateUserDeptid;
+    }
+
+    public void setUpdateUserDeptid(String updateUserDeptid) {
+        this.updateUserDeptid = updateUserDeptid;
+    }
+
+    public String getUpdateUserPhone() {
+        return updateUserPhone;
+    }
+
+    public void setUpdateUserPhone(String updateUserPhone) {
+        this.updateUserPhone = updateUserPhone;
+    }
+
+    public String getIsShow() {
+        if (isShow == null) {
+            isShow = "";
+        }
+        return isShow;
+    }
+
+    public void setIsShow(String isShow) {
+        this.isShow = isShow;
+    }
+
+    public String getSysNo() {
+        return sysNo;
+    }
+
+    public void setSysNo(String sysNo) {
+        this.sysNo = sysNo;
+    }
+
+
 }

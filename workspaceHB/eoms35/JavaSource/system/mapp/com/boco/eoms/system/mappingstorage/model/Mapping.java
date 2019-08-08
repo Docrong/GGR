@@ -12,128 +12,117 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Wed Apr 08 09:10:47 CST 2009
  * </p>
- * 
+ *
  * @author sam
  * @version 1.0
- * 
  */
 public class Mapping extends BaseObject {
 
-	/**
-	 * 锟斤拷锟�
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    /**
+     * 锟斤拷锟�
+     */
+    private String id;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * app_code
-	 *
-	 */
-	private String app_code;
-   
-	public void setApp_code(String app_code){
-		this.app_code= app_code;       
-	}
-   
-	public String getApp_code(){
-		return this.app_code;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * app_name
-	 *
-	 */
-	private String app_name;
-   
-	public void setApp_name(String app_name){
-		this.app_name= app_name;       
-	}
-   
-	public String getApp_name(){
-		return this.app_name;
-	}
+    /**
+     * app_code
+     */
+    private String app_code;
 
-	/**
-	 *
-	 * mapping_table
-	 *
-	 */
-	
+    public void setApp_code(String app_code) {
+        this.app_code = app_code;
+    }
 
-	/**
-	 *
-	 * context
-	 *
-	 */
-	private String context;
-   
-	public void setContext(String context){
-		this.context= context;       
-	}
-   
-	public String getContext(){
-		return this.context;
-	}
+    public String getApp_code() {
+        return this.app_code;
+    }
 
-	/**
-	 *
-	 * mapping_id
-	 *
-	 */
-	
-	private String new_table;
-	public void setNew_table(String new_table){
-		this.new_table=new_table;
-	}
-	public String getNew_table(){
-		return new_table;
-	}
-	
-	private String deleted;
-	
-	
+    /**
+     * app_name
+     */
+    private String app_name;
+
+    public void setApp_name(String app_name) {
+        this.app_name = app_name;
+    }
+
+    public String getApp_name() {
+        return this.app_name;
+    }
+
+    /**
+     *
+     * mapping_table
+     *
+     */
 
 
-	
+    /**
+     * context
+     */
+    private String context;
 
-	public String getDeleted() {
-		return deleted;
-	}
+    public void setContext(String context) {
+        this.context = context;
+    }
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
-	
-	private String beanid;
-	
+    public String getContext() {
+        return this.context;
+    }
 
-	public String getBeanid() {
-		return beanid;
-	}
+    /**
+     * mapping_id
+     */
 
-	public void setBeanid(String beanid) {
-		this.beanid = beanid;
-	}
+    private String new_table;
 
-	public boolean equals(Object o) {
-		if( o instanceof Mapping ) {
-			Mapping mapping=(Mapping)o;
-			if (this.id != null || this.id.equals(mapping.getId())) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+    public void setNew_table(String new_table) {
+        this.new_table = new_table;
+    }
+
+    public String getNew_table() {
+        return new_table;
+    }
+
+    private String deleted;
+
+
+    public String getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
+
+    private String beanid;
+
+
+    public String getBeanid() {
+        return beanid;
+    }
+
+    public void setBeanid(String beanid) {
+        this.beanid = beanid;
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof Mapping) {
+            Mapping mapping = (Mapping) o;
+            if (this.id != null || this.id.equals(mapping.getId())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

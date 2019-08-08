@@ -35,7 +35,7 @@ public class SmsMobilesTemplateManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsMobilesTemplateDao.expects(once()).method("getSmsMobilesTemplates")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List smsMobilesTemplates = smsMobilesTemplateManager.getSmsMobilesTemplates(null);
         assertTrue(smsMobilesTemplates.size() == 1);
@@ -45,7 +45,7 @@ public class SmsMobilesTemplateManagerTest extends BaseManagerTestCase {
     public void testGetSmsMobilesTemplate() throws Exception {
         // set expected behavior on dao
         smsMobilesTemplateDao.expects(once()).method("getSmsMobilesTemplate")
-            .will(returnValue(new SmsMobilesTemplate()));
+                .will(returnValue(new SmsMobilesTemplate()));
         SmsMobilesTemplate smsMobilesTemplate = smsMobilesTemplateManager.getSmsMobilesTemplate(smsMobilesTemplateId);
         assertTrue(smsMobilesTemplate != null);
         smsMobilesTemplateDao.verify();
@@ -56,7 +56,7 @@ public class SmsMobilesTemplateManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsMobilesTemplateDao.expects(once()).method("saveSmsMobilesTemplate")
-            .with(same(smsMobilesTemplate)).isVoid();
+                .with(same(smsMobilesTemplate)).isVoid();
 
         smsMobilesTemplateManager.saveSmsMobilesTemplate(smsMobilesTemplate);
         smsMobilesTemplateDao.verify();
@@ -70,7 +70,7 @@ public class SmsMobilesTemplateManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsMobilesTemplateDao.expects(once()).method("saveSmsMobilesTemplate")
-            .with(same(smsMobilesTemplate)).isVoid();
+                .with(same(smsMobilesTemplate)).isVoid();
         smsMobilesTemplateManager.saveSmsMobilesTemplate(smsMobilesTemplate);
         smsMobilesTemplateDao.verify();
 

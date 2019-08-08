@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.securityobjattribute.service.ISecurityObjAttributeTas
  * <p>
  * Tue Apr 25 11:43:03 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAttributeTaskManagerImpl extends TaskServiceImpl implements  ISecurityObjAttributeTaskManager {
- 
- }
+
+public class SecurityObjAttributeTaskManagerImpl extends TaskServiceImpl implements ISecurityObjAttributeTaskManager {
+
+}

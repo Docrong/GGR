@@ -10,40 +10,40 @@ import com.boco.eoms.sheet.ptnpretreatmentrule.model.PtnPretreatmentRule;
 import com.boco.eoms.sheet.ptnpretreatmentrule.service.IPtnPretreatmentRuleManger;
 
 public class PtnPretreatmentRuleMangerImpl extends BaseManager implements
-		IPtnPretreatmentRuleManger {
-	
-	private IPtnPretreatmentRuleDAO dao;
+        IPtnPretreatmentRuleManger {
 
-	public IPtnPretreatmentRuleDAO getDao() {
-		return dao;
-	}
+    private IPtnPretreatmentRuleDAO dao;
 
-	public void setDao(IPtnPretreatmentRuleDAO dao) {
-		this.dao = dao;  
-	}
+    public IPtnPretreatmentRuleDAO getDao() {
+        return dao;
+    }
 
-	public Map getRuleListByCondition(final Integer pageSize, final Integer pageIndex, final String condition) {
-		return this.dao.getRuleListByCondition(pageSize, pageIndex, condition);
-	}
+    public void setDao(IPtnPretreatmentRuleDAO dao) {
+        this.dao = dao;
+    }
 
-	public Object getObject(Class clazz, Serializable id) {
-		return this.dao.getObject(clazz, id);
-	}
+    public Map getRuleListByCondition(final Integer pageSize, final Integer pageIndex, final String condition) {
+        return this.dao.getRuleListByCondition(pageSize, pageIndex, condition);
+    }
 
-	public List getObjects(Class clazz) {
-		return this.dao.getObjects(clazz);
-	}
+    public Object getObject(Class clazz, Serializable id) {
+        return this.dao.getObject(clazz, id);
+    }
 
-	public void saveObject(Object o) {
-		this.dao.saveObject(o);
-	}
+    public List getObjects(Class clazz) {
+        return this.dao.getObjects(clazz);
+    }
 
-	public void deleteObjectById(String id) {
-		this.dao.removeObject(PtnPretreatmentRule.class, id);
-	}
+    public void saveObject(Object o) {
+        this.dao.saveObject(o);
+    }
 
-	public List getListByCondition(String condition) {
-		return this.dao.getListByCondition(condition);
-	}
-	
+    public void deleteObjectById(String id) {
+        this.dao.removeObject(PtnPretreatmentRule.class, id);
+    }
+
+    public List getListByCondition(String condition) {
+        return this.dao.getListByCondition(condition);
+    }
+
 }

@@ -15,7 +15,7 @@ public class UserActionTest extends BaseStrutsTestCase {
         super.setUp();
         getMockRequest().setUserRole("admin");
     }
-    
+
     public void testCancel() throws Exception {
         setRequestPathInfo("/editUser");
         addRequestParameter("method", "Cancel");
@@ -24,7 +24,7 @@ public class UserActionTest extends BaseStrutsTestCase {
         verifyForward("mainMenu");
         verifyNoActionErrors();
     }
-    
+
     public void testEdit() throws Exception {
 
     }

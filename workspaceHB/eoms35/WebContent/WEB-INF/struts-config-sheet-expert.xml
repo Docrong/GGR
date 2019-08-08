@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
-	<form-beans> 
-		
-		<form-bean
-      name="tawSheetExpertForm"
-      type="com.boco.eoms.commons.sheet.expert.webapp.form.TawSheetExpertForm"
-      />
-	</form-beans>
-	 <!-- ========== Global Exceptions Definitions =================================== -->
-      <global-exceptions>
+    <form-beans>
+
+        <form-bean
+                name="tawSheetExpertForm"
+                type="com.boco.eoms.commons.sheet.expert.webapp.form.TawSheetExpertForm"
+        />
+    </form-beans>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
         <exception type="java.lang.Exception"
-            key="errors.general"
-            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+                   key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
     </global-exceptions>
 
-  <!-- ========== Global Forward Definitions =================================== -->
-      <global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
         <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
-        <!-- Forwards specified in actions -->        
+        <!-- Forwards specified in actions -->
         <forward name="addUser" path="/editUser.do?method=Add&amp;amp;from=list" redirect="true"/>
         <forward name="cancelUser" path="/editUser.do?method=Cancel"/>
         <forward name="deleteUser" path="/editUser.do?method=Delete"/>
@@ -34,123 +35,123 @@
     </global-forwards>
 
 
-	<!-- ========== Action Mapping Definitions =================================== -->
+    <!-- ========== Action Mapping Definitions =================================== -->
 
 
-<action-mappings>
-    <action path="/expertBasicDataCfg" type="org.apache.struts.actions.ForwardAction"
-        parameter="/WEB-INF/pages/tawSheetExpert/tawCommonExpertTree.jsp"/>
-	
-   <action
-      path="/tawSheetExpert"
-      type="com.boco.eoms.commons.sheet.expert.webapp.action.TawSheetExpertAction"
-      name="tawSheetExpertForm"
-      scope="request"
-      input="mainMenu"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSheetExpert.html"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-    <action
-      path="/editTawSheetExpert"
-      type="com.boco.eoms.commons.sheet.expert.webapp.action.TawSheetExpertAction"
-      name="tawSheetExpertForm"
-      scope="request"
-      input="list"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSheetExpert.html"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-    <action
-      path="/saveTawSheetExpert"
-      type="com.boco.eoms.commons.sheet.expert.webapp.action.TawSheetExpertAction"
-      name="tawSheetExpertForm"
-      scope="request"
-      input="edit"
-      parameter="method"
-      unknown="false"
-      validate="true"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSheetExpert.html"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-	</action-mappings>
-	
- <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <action-mappings>
+        <action path="/expertBasicDataCfg" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/tawSheetExpert/tawCommonExpertTree.jsp"/>
 
-      <message-resources parameter="config/ApplicationResources"/>
-      <message-resources parameter="config/ApplicationResources-sheet-expert" key="expertForm"/>
-	<message-resources parameter="config/ApplicationResources-statistic"
-		key="statistic" />
-      <!-- ========== Validator plugin ===================  -->
+        <action
+                path="/tawSheetExpert"
+                type="com.boco.eoms.commons.sheet.expert.webapp.action.TawSheetExpertAction"
+                name="tawSheetExpertForm"
+                scope="request"
+                input="mainMenu"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSheetExpert.html"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+        <action
+                path="/editTawSheetExpert"
+                type="com.boco.eoms.commons.sheet.expert.webapp.action.TawSheetExpertAction"
+                name="tawSheetExpertForm"
+                scope="request"
+                input="list"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSheetExpert.html"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+        <action
+                path="/saveTawSheetExpert"
+                type="com.boco.eoms.commons.sheet.expert.webapp.action.TawSheetExpertAction"
+                name="tawSheetExpertForm"
+                scope="request"
+                input="edit"
+                parameter="method"
+                unknown="false"
+                validate="true"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSheetExpert/tawSheetExpertList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSheetExpert.html"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+    <message-resources parameter="config/ApplicationResources"/>
+    <message-resources parameter="config/ApplicationResources-sheet-expert" key="expertForm"/>
+    <message-resources parameter="config/ApplicationResources-statistic"
+                       key="statistic"/>
+    <!-- ========== Validator plugin ===================  -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" 
+        <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
                              /WEB-INF/validation.xml"/>

@@ -10,12 +10,12 @@ import com.boco.eoms.base.util.ant.AntHolder;
 
 /**
  * @author xqz
- *
+ * <p>
  * TODO To 刷新wps人员列表
  */
 public class RoleStaticMethod {
-	public static void reFlushWpsUser(){
-		String targetName = "wps-userlist";
-		AntHolder.getInstance().execute(targetName);
-	}
+    public static void reFlushWpsUser() {
+        String targetName = "wps-userlist";
+        AntHolder.getInstance().execute(targetName);
+    }
 }

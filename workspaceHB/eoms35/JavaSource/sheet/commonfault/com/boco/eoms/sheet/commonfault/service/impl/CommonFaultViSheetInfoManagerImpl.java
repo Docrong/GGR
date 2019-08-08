@@ -11,28 +11,28 @@ import com.boco.eoms.sheet.commonfault.service.ICommonFaultViSheetInfoManager;
 
 public class CommonFaultViSheetInfoManagerImpl implements ICommonFaultViSheetInfoManager {
 
-	private ICommonFaultViSheetInfoDAO infoDao;
-	
-	public ICommonFaultViSheetInfoDAO getInfoDao() {
-		return infoDao;
-	}
+    private ICommonFaultViSheetInfoDAO infoDao;
 
-	public void setInfoDao(ICommonFaultViSheetInfoDAO infoDao) {
-		this.infoDao = infoDao;
-	}
+    public ICommonFaultViSheetInfoDAO getInfoDao() {
+        return infoDao;
+    }
 
-	public CommonFaultViSheetInfo getCommonFaultViSheetInfoBymainId(String id) throws Exception {
-		
-		return infoDao.getCommonFaultViSheetInfoBymainId(id);
-	}
+    public void setInfoDao(ICommonFaultViSheetInfoDAO infoDao) {
+        this.infoDao = infoDao;
+    }
 
-	public void saveOrUpdate(CommonFaultViSheetInfo obj) throws Exception {
-		infoDao.saveOrUpdate(obj);
-		
-	}
+    public CommonFaultViSheetInfo getCommonFaultViSheetInfoBymainId(String id) throws Exception {
 
-	public CommonFaultViSheetInfo getCommonFaultViSheetInfoByVisId(String mid, String vid) throws Exception {
-		return infoDao.getCommonFaultViSheetInfoByVisId(mid,vid);
-	}
-	
+        return infoDao.getCommonFaultViSheetInfoBymainId(id);
+    }
+
+    public void saveOrUpdate(CommonFaultViSheetInfo obj) throws Exception {
+        infoDao.saveOrUpdate(obj);
+
+    }
+
+    public CommonFaultViSheetInfo getCommonFaultViSheetInfoByVisId(String mid, String vid) throws Exception {
+        return infoDao.getCommonFaultViSheetInfoByVisId(mid, vid);
+    }
+
 }

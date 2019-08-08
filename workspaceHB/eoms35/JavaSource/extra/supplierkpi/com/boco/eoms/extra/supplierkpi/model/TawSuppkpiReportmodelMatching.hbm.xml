@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,83 +13,83 @@
             table="taw_suppkpi_reportmodel_match"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
-    
+        </id>
+
         <property
-            name="modelId"
+                name="modelId"
                 length="50"
                 not-null="false"
                 unique="false"
-        > 
-        
-        </property>    
-    
-        <property
-            name="kpiItemId"
-                length="50"
-                not-null="false"
-                unique="false"
-        > 
-        
+        >
+
         </property>
-        
+
         <property
-            name="reportcol"
+                name="kpiItemId"
                 length="50"
                 not-null="false"
                 unique="false"
-        > 
-        
-        </property>             
+        >
+
+        </property>
 
         <property
-            name="createMan"
+                name="reportcol"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="createMan"
                 length="30"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-                        
-        <property
-            name="deleteTime"
-                length="20"
-                not-null="false"
-                unique="false"
-        > 
-        
-        </property> 
 
         <property
-            name="createTime"
+                name="deleteTime"
                 length="20"
                 not-null="false"
                 unique="false"
-        > 
-        
-        </property>        
-        
+        >
+
+        </property>
+
         <property
-            name="state"
+                name="createTime"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="state"
                 length="10"
                 not-null="false"
                 unique="false"
-        > 
-        
-        </property>               
-        
-    </class>    
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

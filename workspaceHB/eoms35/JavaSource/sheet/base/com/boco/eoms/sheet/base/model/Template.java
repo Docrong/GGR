@@ -16,10 +16,9 @@ package com.boco.eoms.sheet.base.model;
  * <p>
  * Date:2007-8-3 11:00:33
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Template {
 

@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -90,38 +90,35 @@ import org.w3c.dom.Node;
  * @author David Brownell
  * @version $Revision: 1.3 $
  */
-public class TreeWalker
-{
+public class TreeWalker {
     // yes, this is really a "TreeIterator" but the DOM WG plans to
     // use such names in Level 2 ... so, we avoid it for now.  (note
     // that they've also discussed a "TreeWalker" that's rather more
     // complex than this iterator...)
 
-    private Node	startPoint;
-    private Node	current;
+    private Node startPoint;
+    private Node current;
 
     /**
      * Constructs a tree walker starting at the given node.
      */
-    public TreeWalker (Node initial)
-    {
-	if (initial == null) {
-	    throw new IllegalArgumentException (XmlDocument.catalog.
-				getMessage (Locale.getDefault (), "TW-004"));
-	}
-	if (!(initial instanceof NodeBase)) { 
-	    throw new IllegalArgumentException (XmlDocument.catalog.
-				getMessage (Locale.getDefault (), "TW-003"));
-	}
-	startPoint = current = initial;
+    public TreeWalker(Node initial) {
+        if (initial == null) {
+            throw new IllegalArgumentException(XmlDocument.catalog.
+                    getMessage(Locale.getDefault(), "TW-004"));
+        }
+        if (!(initial instanceof NodeBase)) {
+            throw new IllegalArgumentException(XmlDocument.catalog.
+                    getMessage(Locale.getDefault(), "TW-003"));
+        }
+        startPoint = current = initial;
     }
 
     /**
      * Returns the current node.
      */
-    public Node getCurrent ()
-    {
-	return current;
+    public Node getCurrent() {
+        return current;
     }
 
     /**
@@ -132,60 +129,59 @@ public class TreeWalker
      *
      * @return the next node (which becomes current), or else null
      */
-    public Node getNext ()
-    {
-	Node	next;
+    public Node getNext() {
+        Node next;
 
-	if (current == null)
-	    return null;
+        if (current == null)
+            return null;
 
-	switch (current.getNodeType ()) {
-	  case Node.DOCUMENT_FRAGMENT_NODE:
-	  case Node.DOCUMENT_NODE:
-	  case Node.ELEMENT_NODE:
-	  case Node.ENTITY_REFERENCE_NODE:
-	    //
-	    // For elements that can have children, visit those
-	    // children before any siblings (i.e. depth first)
-	    // and after visiting this node (i.e. preorder)
-	    //
-	    next = current.getFirstChild ();
-	    if (next != null) {
-		current = next;
-		return next;
-	    }
-	    // FALLTHROUGH
+        switch (current.getNodeType()) {
+            case Node.DOCUMENT_FRAGMENT_NODE:
+            case Node.DOCUMENT_NODE:
+            case Node.ELEMENT_NODE:
+            case Node.ENTITY_REFERENCE_NODE:
+                //
+                // For elements that can have children, visit those
+                // children before any siblings (i.e. depth first)
+                // and after visiting this node (i.e. preorder)
+                //
+                next = current.getFirstChild();
+                if (next != null) {
+                    current = next;
+                    return next;
+                }
+                // FALLTHROUGH
 
-	  case Node.ATTRIBUTE_NODE:
-	    // NOTE:  attributes "should" have children ...
+            case Node.ATTRIBUTE_NODE:
+                // NOTE:  attributes "should" have children ...
 
-	  case Node.CDATA_SECTION_NODE:
-	  case Node.COMMENT_NODE:
-	  case Node.DOCUMENT_TYPE_NODE:
-	  case Node.ENTITY_NODE:
-	  case Node.NOTATION_NODE:
-	  case Node.PROCESSING_INSTRUCTION_NODE:
-	  case Node.TEXT_NODE:
-	    //
-	    // For childless nodes, only look at siblings.  If no
-	    // siblings, climb the tree till we get to a spot there
-	    // are siblings, or till we terminate our walk.
-	    //
-	    for (Node here = current;
-		    here != null && here != startPoint;
-		    here = here.getParentNode ()) {
-		next = here.getNextSibling ();
-		if (next != null) {
-		    current = next;
-		    return next;
-		}
-	    }
-	    current = null;
-	    return null;
-	}
-	throw new InternalError (((NodeBase)startPoint).getMessage ("TW-000", 
-				new Object [] { Short.toString (current.
-					getNodeType ()) }));
+            case Node.CDATA_SECTION_NODE:
+            case Node.COMMENT_NODE:
+            case Node.DOCUMENT_TYPE_NODE:
+            case Node.ENTITY_NODE:
+            case Node.NOTATION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.TEXT_NODE:
+                //
+                // For childless nodes, only look at siblings.  If no
+                // siblings, climb the tree till we get to a spot there
+                // are siblings, or till we terminate our walk.
+                //
+                for (Node here = current;
+                     here != null && here != startPoint;
+                     here = here.getParentNode()) {
+                    next = here.getNextSibling();
+                    if (next != null) {
+                        current = next;
+                        return next;
+                    }
+                }
+                current = null;
+                return null;
+        }
+        throw new InternalError(((NodeBase) startPoint).getMessage("TW-000",
+                new Object[]{Short.toString(current.
+                        getNodeType())}));
     }
 
 
@@ -197,33 +193,32 @@ public class TreeWalker
      * @param tag the tag to match, or null to indicate all elements
      * @return the next matching element, or else null
      */
-    public Element getNextElement (String tag)
-    {
-	for (Node next = getNext ();
-		next != null;
-		next = getNext ()) {
-	    if (next.getNodeType () == Node.ELEMENT_NODE
-		    && (tag == null || tag.equals (next.getNodeName ())))
-		return (Element) next;
-	}
-	current = null;
-	return null;
+    public Element getNextElement(String tag) {
+        for (Node next = getNext();
+             next != null;
+             next = getNext()) {
+            if (next.getNodeType() == Node.ELEMENT_NODE
+                    && (tag == null || tag.equals(next.getNodeName())))
+                return (Element) next;
+        }
+        current = null;
+        return null;
     }
 
     /**
      * Namespace version
      */
     public Element getNextElement(String nsURI, String localName) {
-	for (Node next = getNext(); next != null; next = getNext()) {
-	    if (next.getNodeType() == Node.ELEMENT_NODE
-                && (nsURI == null || nsURI.equals(next.getNamespaceURI()))
-                && (localName == null ||
+        for (Node next = getNext(); next != null; next = getNext()) {
+            if (next.getNodeType() == Node.ELEMENT_NODE
+                    && (nsURI == null || nsURI.equals(next.getNamespaceURI()))
+                    && (localName == null ||
                     localName.equals(next.getLocalName()))) {
-		return (Element)next;
+                return (Element) next;
             }
-	}
-	current = null;
-	return null;
+        }
+        current = null;
+        return null;
     }
 
 
@@ -234,9 +229,8 @@ public class TreeWalker
      * traversal, the sequence of nodes returned by <em>getNext()</em>
      * will differ accordingly.
      */
-    public void reset ()
-    {
-	current = startPoint;
+    public void reset() {
+        current = startPoint;
     }
 
 
@@ -248,35 +242,34 @@ public class TreeWalker
      *
      * @return the next node (which becomes current), or else null
      * @throws IllegalStateException if the current node is null
-     *	or has no parent (it is a Document or DocumentFragment)
+     *                               or has no parent (it is a Document or DocumentFragment)
      */
-    public Node removeCurrent ()
-    {
-	if (current == null)
-	    throw new IllegalStateException (((NodeBase)startPoint).
-						getMessage ("TW-001"));
+    public Node removeCurrent() {
+        if (current == null)
+            throw new IllegalStateException(((NodeBase) startPoint).
+                    getMessage("TW-001"));
 
-	Node	toRemove = current;
-	Node	parent = current.getParentNode ();
-	Node	retval = null;
+        Node toRemove = current;
+        Node parent = current.getParentNode();
+        Node retval = null;
 
-	if (parent == null)
-	    throw new IllegalStateException (((NodeBase)startPoint).
-	    					getMessage ("TW-002"));
-	
-	//
-	// Don't look at children, just siblings/parents
-	//
-	for (Node here = current;
-		here != null && here != startPoint;
-		here = here.getParentNode ()) {
-	    retval = here.getNextSibling ();
-	    if (retval != null) {
-		current = retval;
-		break;
-	    }
-	}
-	parent.removeChild (toRemove);
-	return retval;
+        if (parent == null)
+            throw new IllegalStateException(((NodeBase) startPoint).
+                    getMessage("TW-002"));
+
+        //
+        // Don't look at children, just siblings/parents
+        //
+        for (Node here = current;
+             here != null && here != startPoint;
+             here = here.getParentNode()) {
+            retval = here.getNextSibling();
+            if (retval != null) {
+                current = retval;
+                break;
+            }
+        }
+        parent.removeChild(toRemove);
+        return retval;
     }
 }

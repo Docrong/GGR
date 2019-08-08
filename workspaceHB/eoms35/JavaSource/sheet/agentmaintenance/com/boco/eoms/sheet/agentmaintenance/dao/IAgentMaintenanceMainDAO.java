@@ -9,8 +9,7 @@ import com.boco.eoms.sheet.base.dao.IMainDAO;
 import com.boco.eoms.sheet.base.model.BaseMain;
 
 public interface IAgentMaintenanceMainDAO
-	extends IMainDAO
-{
+        extends IMainDAO {
 
-	public abstract BaseMain getMainBySourceId(String s, String s1);
+    public abstract BaseMain getMainBySourceId(String s, String s1);
 }

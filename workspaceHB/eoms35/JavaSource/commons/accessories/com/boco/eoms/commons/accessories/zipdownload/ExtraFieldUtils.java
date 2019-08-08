@@ -24,7 +24,6 @@ import java.util.zip.ZipException;
 
 /**
  * ZipExtraField related methods
- *
  */
 // CheckStyle:HideUtilityClassConstructorCheck OFF (bc)
 public class ExtraFieldUtils {
@@ -49,8 +48,8 @@ public class ExtraFieldUtils {
      *
      * <p>The given class must have a no-arg constructor and implement
      * the {@link ZipExtraField ZipExtraField interface}.</p>
-     * @param c the class to register
      *
+     * @param c the class to register
      * @since 1.1
      */
     public static void register(Class c) {
@@ -69,14 +68,15 @@ public class ExtraFieldUtils {
     /**
      * Create an instance of the approriate ExtraField, falls back to
      * {@link UnrecognizedExtraField UnrecognizedExtraField}.
+     *
      * @param headerId the header identifier
      * @return an instance of the appropiate ExtraField
-     * @exception InstantiationException if unable to instantiate the class
-     * @exception IllegalAccessException if not allowed to instatiate the class
+     * @throws InstantiationException if unable to instantiate the class
+     * @throws IllegalAccessException if not allowed to instatiate the class
      * @since 1.1
      */
     public static ZipExtraField createExtraField(ZipShort headerId)
-        throws InstantiationException, IllegalAccessException {
+            throws InstantiationException, IllegalAccessException {
         Class c = (Class) implementations.get(headerId);
         if (c != null) {
             return (ZipExtraField) c.newInstance();
@@ -89,10 +89,11 @@ public class ExtraFieldUtils {
     /**
      * Split the array into ExtraFields and populate them with the
      * give data.
+     *
      * @param data an array of bytes
      * @return an array of ExtraFields
-     * @since 1.1
      * @throws ZipException on error
+     * @since 1.1
      */
     public static ZipExtraField[] parse(byte[] data) throws ZipException {
         Vector v = new Vector();
@@ -102,7 +103,7 @@ public class ExtraFieldUtils {
             int length = (new ZipShort(data, start + 2)).getValue();
             if (start + WORD + length > data.length) {
                 throw new ZipException("data starting at " + start
-                    + " is in unknown format");
+                        + " is in unknown format");
             }
             try {
                 ZipExtraField ze = createExtraField(headerId);
@@ -117,7 +118,7 @@ public class ExtraFieldUtils {
         }
         if (start != data.length) { // array not exhausted
             throw new ZipException("data starting at " + start
-                + " is in unknown format");
+                    + " is in unknown format");
         }
 
         ZipExtraField[] result = new ZipExtraField[v.size()];
@@ -127,6 +128,7 @@ public class ExtraFieldUtils {
 
     /**
      * Merges the local file data fields of the given ZipExtraFields.
+     *
      * @param data an array of ExtraFiles
      * @return an array of bytes
      * @since 1.1
@@ -140,9 +142,9 @@ public class ExtraFieldUtils {
         int start = 0;
         for (int i = 0; i < data.length; i++) {
             System.arraycopy(data[i].getHeaderId().getBytes(),
-                             0, result, start, 2);
+                    0, result, start, 2);
             System.arraycopy(data[i].getLocalFileDataLength().getBytes(),
-                             0, result, start + 2, 2);
+                    0, result, start + 2, 2);
             byte[] local = data[i].getLocalFileDataData();
             System.arraycopy(local, 0, result, start + WORD, local.length);
             start += (local.length + WORD);
@@ -152,6 +154,7 @@ public class ExtraFieldUtils {
 
     /**
      * Merges the central directory fields of the given ZipExtraFields.
+     *
      * @param data an array of ExtraFields
      * @return an array of bytes
      * @since 1.1
@@ -165,9 +168,9 @@ public class ExtraFieldUtils {
         int start = 0;
         for (int i = 0; i < data.length; i++) {
             System.arraycopy(data[i].getHeaderId().getBytes(),
-                             0, result, start, 2);
+                    0, result, start, 2);
             System.arraycopy(data[i].getCentralDirectoryLength().getBytes(),
-                             0, result, start + 2, 2);
+                    0, result, start + 2, 2);
             byte[] local = data[i].getCentralDirectoryData();
             System.arraycopy(local, 0, result, start + WORD, local.length);
             start += (local.length + WORD);

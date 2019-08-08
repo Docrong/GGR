@@ -1,38 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WorkFlowRule name="Transprovincial" description="跨省集客业务工单">
-  <flow-define id="Transprovincial" description="跨省集客业务工单" tasknamespace="http://Transprovincial" linkservicename="" dictfilename="dict-sheet-transprovincial" name="Transprovincial">
-    <phase-id id="receive" name="新增工单" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="Assignment" role="" condition="${operateType}==0" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="提交申请" />
-    </phase-id>
-    <phase-id id="AffirmHumTask" name="回复建单人" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="HoldTask" role="" condition="${operateType}==110" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="回复通过" />
-      <to-phase-id id="CompletionTask" role="" condition="${operateType}==111" operatetype="" stepdisplay="false" workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="回复不通过" />
-    </phase-id>
-    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
-    <phase-id id="Assignment" name="分派" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ProjectDesign" role="" condition="${operateType}==102" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="分派完成" />
-    </phase-id>
-    <phase-id id="ProjectExamine" name="方案审核" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ProjectConstract" role="" condition="${operateType}==105" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="施工" />
-    </phase-id>
-    <phase-id id="AcceptanceExamine" name="验收审核" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="CompletionTask" role="" condition="${operateType}==108" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="验收审核通过" />
-    </phase-id>
-    <phase-id id="CompletionTask" name="开通完成" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="AffirmHumTask" role="" condition="${operateType}==109" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="完成" />
-    </phase-id>
-    <phase-id id="ProjectDesign" name="方案设计" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="SubmitExamine" role="" condition="${operateType}==103" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="设计完成" />
-    </phase-id>
-    <phase-id id="ProjectConstract" name="方案施工" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="SubmibAcceptance" role="" condition="${operateType}==106" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="施工完成" />
-    </phase-id>
-    <phase-id id="SubmitExamine" name="提交审核" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ProjectExamine" role="" condition="${operateType}==104" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="审核通过" />
-    </phase-id>
-    <phase-id id="SubmibAcceptance" name="提交验收" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="AcceptanceExamine" role="" condition="${operateType}==107" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="提交验收结果" />
-    </phase-id>
-  </flow-define>
+    <flow-define id="Transprovincial" description="跨省集客业务工单" tasknamespace="http://Transprovincial" linkservicename=""
+                 dictfilename="dict-sheet-transprovincial" name="Transprovincial">
+        <phase-id id="receive" name="新增工单" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="Assignment" role="" condition="${operateType}==0" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="提交申请"/>
+        </phase-id>
+        <phase-id id="AffirmHumTask" name="回复建单人" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="HoldTask" role="" condition="${operateType}==110" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="回复通过"/>
+            <to-phase-id id="CompletionTask" role="" condition="${operateType}==111" operatetype="" stepdisplay="false"
+                         workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="回复不通过"/>
+        </phase-id>
+        <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false"/>
+        <phase-id id="Assignment" name="分派" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ProjectDesign" role="" condition="${operateType}==102" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="分派完成"/>
+        </phase-id>
+        <phase-id id="ProjectExamine" name="方案审核" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ProjectConstract" role="" condition="${operateType}==105" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="施工"/>
+        </phase-id>
+        <phase-id id="AcceptanceExamine" name="验收审核" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="CompletionTask" role="" condition="${operateType}==108" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="验收审核通过"/>
+        </phase-id>
+        <phase-id id="CompletionTask" name="开通完成" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="AffirmHumTask" role="" condition="${operateType}==109" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="完成"/>
+        </phase-id>
+        <phase-id id="ProjectDesign" name="方案设计" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="SubmitExamine" role="" condition="${operateType}==103" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="设计完成"/>
+        </phase-id>
+        <phase-id id="ProjectConstract" name="方案施工" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="SubmibAcceptance" role="" condition="${operateType}==106" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="施工完成"/>
+        </phase-id>
+        <phase-id id="SubmitExamine" name="提交审核" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ProjectExamine" role="" condition="${operateType}==104" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="审核通过"/>
+        </phase-id>
+        <phase-id id="SubmibAcceptance" name="提交验收" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="AcceptanceExamine" role="" condition="${operateType}==107" operatetype=""
+                         stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="提交验收结果"/>
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>
 

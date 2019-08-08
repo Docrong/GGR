@@ -35,7 +35,7 @@ public class TawRmTestcardManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmTestcardDao.expects(once()).method("getTawRmTestcards")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawRmTestcards = tawRmTestcardManager.getTawRmTestcards(null);
         assertTrue(tawRmTestcards.size() == 1);
@@ -45,7 +45,7 @@ public class TawRmTestcardManagerTest extends BaseManagerTestCase {
     public void testGetTawRmTestcard() throws Exception {
         // set expected behavior on dao
         tawRmTestcardDao.expects(once()).method("getTawRmTestcard")
-            .will(returnValue(new TawRmTestcard()));
+                .will(returnValue(new TawRmTestcard()));
         TawRmTestcard tawRmTestcard = tawRmTestcardManager.getTawRmTestcard(tawRmTestcardId);
         assertTrue(tawRmTestcard != null);
         tawRmTestcardDao.verify();
@@ -56,7 +56,7 @@ public class TawRmTestcardManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmTestcardDao.expects(once()).method("saveTawRmTestcard")
-            .with(same(tawRmTestcard)).isVoid();
+                .with(same(tawRmTestcard)).isVoid();
 
         tawRmTestcardManager.saveTawRmTestcard(tawRmTestcard);
         tawRmTestcardDao.verify();
@@ -83,7 +83,7 @@ public class TawRmTestcardManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmTestcardDao.expects(once()).method("saveTawRmTestcard")
-            .with(same(tawRmTestcard)).isVoid();
+                .with(same(tawRmTestcard)).isVoid();
         tawRmTestcardManager.saveTawRmTestcard(tawRmTestcard);
         tawRmTestcardDao.verify();
 

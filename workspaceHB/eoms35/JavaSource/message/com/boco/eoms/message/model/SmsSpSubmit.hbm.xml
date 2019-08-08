@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="sp_submit"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null" 
-    >
-	
-            
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="native">
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-  </generator>  
 
-    </id>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="native">
+
+            </generator>
+
+        </id>
 
         <property
-            name="msgContent"
+                name="msgContent"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -36,9 +36,9 @@
         >
 
         </property>
-        
+
         <property
-            name="desttermId"
+                name="desttermId"
                 length="21"
                 not-null="false"
                 unique="false"
@@ -68,7 +68,7 @@
         </property> -->
 
         <property
-            name="sendTime"
+                name="sendTime"
                 length="30"
                 not-null="true"
                 unique="false"
@@ -78,7 +78,7 @@
         </property>
 
         <property
-            name="msgFormat"
+                name="msgFormat"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -86,17 +86,17 @@
         >
 
         </property>
-        
+
         <property
-            name="msgLevel"
+                name="msgLevel"
                 length="10"
                 not-null="false"
                 unique="false"
                 column="msglevel"
-        > 
- 
+        >
+
         </property>
-        
+
         <!--  property
             name="status"
                 length="10"
@@ -105,9 +105,9 @@
                 column="status"
         >
 
-        </property>   -->     
-        
-    </class>    
+        </property>   -->
+
+    </class>
 
 </hibernate-mapping>
 

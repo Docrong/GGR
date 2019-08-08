@@ -6,90 +6,90 @@ import com.boco.eoms.workbench.memo.webapp.form.TawWorkbenchMemoSendLogForm;
 
 public class TawWorkbenchMemoSendLogActionTest extends BaseStrutsTestCase {
 
-	public TawWorkbenchMemoSendLogActionTest(String name) {
-		super(name);
-	}
+    public TawWorkbenchMemoSendLogActionTest(String name) {
+        super(name);
+    }
 
-	public void testAdd() throws Exception {
-		setRequestPathInfo("/saveTawWorkbenchMemoSendLog");
-		addRequestParameter("method", "Save");
+    public void testAdd() throws Exception {
+        setRequestPathInfo("/saveTawWorkbenchMemoSendLog");
+        addRequestParameter("method", "Save");
 
-		TawWorkbenchMemoSendLogForm tawWorkbenchMemoSendLogForm = new TawWorkbenchMemoSendLogForm();
-		// set required fields
+        TawWorkbenchMemoSendLogForm tawWorkbenchMemoSendLogForm = new TawWorkbenchMemoSendLogForm();
+        // set required fields
 
-		request.setAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY,
-				tawWorkbenchMemoSendLogForm);
+        request.setAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY,
+                tawWorkbenchMemoSendLogForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 
-	public void testSearch() {
-		setRequestPathInfo("/tawWorkbenchMemoSendLogs");
-		addRequestParameter("method", "Search");
+    public void testSearch() {
+        setRequestPathInfo("/tawWorkbenchMemoSendLogs");
+        addRequestParameter("method", "Search");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("list");
-		assertNotNull(request
-				.getAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_LIST));
-	}
+        verifyNoActionErrors();
+        verifyForward("list");
+        assertNotNull(request
+                .getAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_LIST));
+    }
 
-	public void testEdit() throws Exception {
-		setRequestPathInfo("/editTawWorkbenchMemoSendLog");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testEdit() throws Exception {
+        setRequestPathInfo("/editTawWorkbenchMemoSendLog");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
-		assertNotNull(request
-				.getAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY));
+        verifyNoActionErrors();
+        verifyForward("edit");
+        assertNotNull(request
+                .getAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY));
 
-	}
+    }
 
-	public void testSave() throws Exception {
-		setRequestPathInfo("/editTawWorkbenchMemoSendLog");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testSave() throws Exception {
+        setRequestPathInfo("/editTawWorkbenchMemoSendLog");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		TawWorkbenchMemoSendLogForm tawWorkbenchMemoSendLogForm = (TawWorkbenchMemoSendLogForm) request
-				.getAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY);
-		assertNotNull(tawWorkbenchMemoSendLogForm);
+        TawWorkbenchMemoSendLogForm tawWorkbenchMemoSendLogForm = (TawWorkbenchMemoSendLogForm) request
+                .getAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY);
+        assertNotNull(tawWorkbenchMemoSendLogForm);
 
-		setRequestPathInfo("/saveTawWorkbenchMemoSendLog");
-		addRequestParameter("method", "Save");
+        setRequestPathInfo("/saveTawWorkbenchMemoSendLog");
+        addRequestParameter("method", "Save");
 
-		// update the form's required string fields and add it back to the
-		// request
+        // update the form's required string fields and add it back to the
+        // request
 
-		request.setAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY,
-				tawWorkbenchMemoSendLogForm);
+        request.setAttribute(MemoConstants.TAWWORKBENCHMEMOSENDLOG_KEY,
+                tawWorkbenchMemoSendLogForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
+        verifyNoActionErrors();
+        verifyForward("edit");
 
-		// verify success messages
-		verifyActionMessages(new String[] { "tawWorkbenchMemoSendLog.updated" });
+        // verify success messages
+        verifyActionMessages(new String[]{"tawWorkbenchMemoSendLog.updated"});
 
-	}
+    }
 
-	public void testRemove() throws Exception {
-		setRequestPathInfo("/editTawWorkbenchMemoSendLog");
-		addRequestParameter("method", "Delete");
-		addRequestParameter("id", "2");
+    public void testRemove() throws Exception {
+        setRequestPathInfo("/editTawWorkbenchMemoSendLog");
+        addRequestParameter("method", "Delete");
+        addRequestParameter("id", "2");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 }

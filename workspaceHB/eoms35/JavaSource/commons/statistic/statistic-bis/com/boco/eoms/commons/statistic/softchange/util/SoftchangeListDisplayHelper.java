@@ -16,7 +16,7 @@ import com.boco.eoms.commons.statistic.softchange.vo.StatDetailVOSoftchange;
 
 /**
  * @author Administrator
- * 
+ * <p>
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
@@ -46,20 +46,20 @@ public class SoftchangeListDisplayHelper extends TableDecorator {
 		
 	}*/
 
-	public String getSenduser() {
-		StatDetailVOSoftchange vo = (StatDetailVOSoftchange) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenduserid(), "statBaseUserId2name_v35");
-	}
+    public String getSenduser() {
+        StatDetailVOSoftchange vo = (StatDetailVOSoftchange) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenduserid(), "statBaseUserId2name_v35");
+    }
 
-	public String getSenddept() {
-		StatDetailVOSoftchange vo = (StatDetailVOSoftchange) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenddeptid(), "statBaseDeptId2name_v35");
+    public String getSenddept() {
+        StatDetailVOSoftchange vo = (StatDetailVOSoftchange) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenddeptid(), "statBaseDeptId2name_v35");
 
-	}
+    }
 
-	public String getStatus() {
-		StatDetailVOSoftchange vo = (StatDetailVOSoftchange) getCurrentRowObject();
-		return StatUtil.getStatusName(vo.getStatus());
+    public String getStatus() {
+        StatDetailVOSoftchange vo = (StatDetailVOSoftchange) getCurrentRowObject();
+        return StatUtil.getStatusName(vo.getStatus());
 
-	}
+    }
 }

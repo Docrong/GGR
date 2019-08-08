@@ -8,30 +8,26 @@ package com.boco.eoms.sheet.agentmaintenance.service.impl;
 import com.boco.eoms.sheet.agentmaintenance.dao.IAgentMaintenanceLinkDAO;
 import com.boco.eoms.sheet.agentmaintenance.service.IAgentMaintenanceLinkManager;
 import com.boco.eoms.sheet.base.service.impl.LinkServiceImpl;
+
 import java.util.Map;
 
 public class AgentMaintenanceLinkManagerImpl extends LinkServiceImpl
-	implements IAgentMaintenanceLinkManager
-{
+        implements IAgentMaintenanceLinkManager {
 
-	private IAgentMaintenanceLinkDAO dao;
+    private IAgentMaintenanceLinkDAO dao;
 
-	public AgentMaintenanceLinkManagerImpl()
-	{
-	}
+    public AgentMaintenanceLinkManagerImpl() {
+    }
 
-	public Map getLastLinkBeforeHold(String sourceId, String type, String operatedeptid)
-	{
-		return dao.getLastLinkBeforeHold(sourceId, type, operatedeptid);
-	}
+    public Map getLastLinkBeforeHold(String sourceId, String type, String operatedeptid) {
+        return dao.getLastLinkBeforeHold(sourceId, type, operatedeptid);
+    }
 
-	public IAgentMaintenanceLinkDAO getDao()
-	{
-		return dao;
-	}
+    public IAgentMaintenanceLinkDAO getDao() {
+        return dao;
+    }
 
-	public void setDao(IAgentMaintenanceLinkDAO dao)
-	{
-		this.dao = dao;
-	}
+    public void setDao(IAgentMaintenanceLinkDAO dao) {
+        this.dao = dao;
+    }
 }

@@ -1,7 +1,6 @@
 package com.boco.eoms.sheet.circuitcontrol.dao;
 
 
-
 /**
  * <p>
  * Title:电路调度申请工单
@@ -12,12 +11,11 @@ package com.boco.eoms.sheet.circuitcontrol.dao;
  * <p>
  * Sun Sep 29 16:51:15 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICircuitControlTaskDAO  {
- 
- }
+
+public interface ICircuitControlTaskDAO {
+
+}

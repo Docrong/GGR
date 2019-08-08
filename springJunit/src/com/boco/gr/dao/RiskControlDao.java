@@ -7,6 +7,7 @@ import com.boco.gr.model.TawRiskDocument;
 
 
 public interface RiskControlDao {
-	public void saveTawRiskDocument(TawRiskDocument t);//±£´æ-×ÊÁÏÎÄµµ
-	public Map getTawRiskDocumentList(Map maptj);
+    public void saveTawRiskDocument(TawRiskDocument t);//ï¿½ï¿½ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½
+
+    public Map getTawRiskDocumentList(Map maptj);
 }

@@ -2,6 +2,7 @@
 package com.boco.eoms.commons.db.containerpool;
 
 // java standard library
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,7 +16,7 @@ import com.boco.eoms.commons.loging.BocoLog;
 /**
  * Referenced classes of package com.boco.eoms.commons.db.containerpool:
  * BocoDataSource
- * 
+ *
  * @author Sandy.wei
  * @version 3.5
  */
@@ -45,8 +46,7 @@ public class WebLogicDataSource extends BocoDataSource {
                     throw new SQLException(
                             "Cannot get datasource from Weblogic!");
                 }
-            }
-            catch (NamingException e) {
+            } catch (NamingException e) {
                 BocoLog.error(this, "NamingException is thrown! "
                         + e.getMessage());
                 throw new SQLException("Cannot get datasource from Weblogic!");
@@ -69,8 +69,7 @@ public class WebLogicDataSource extends BocoDataSource {
         if (connection == null) {
             BocoLog.error(this, "Connection is null.");
             throw new SQLException("Connection is null.");
-        }
-        else {
+        } else {
             return connection;
         }
     }

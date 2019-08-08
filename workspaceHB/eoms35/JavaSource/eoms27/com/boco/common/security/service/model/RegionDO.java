@@ -16,85 +16,87 @@ import java.util.Vector;
  * <p>Description: The object of Region Data Object </p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */
 
 public class RegionDO
-    implements Principal, Serializable, Comparable {
+        implements Principal, Serializable, Comparable {
 
-  private String regionID;
-  private String name;
-  private String comment;
-  private Vector parentHierarchy = new Vector();
-  private Vector rangeList = new Vector();
+    private String regionID;
+    private String name;
+    private String comment;
+    private Vector parentHierarchy = new Vector();
+    private Vector rangeList = new Vector();
 
-  public String getRegionID() {
-    return regionID;
-  }
-
-  public void setRegionID(String regionID) {
-    this.regionID = regionID;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
-  public void addParentHierarchy(String name) {
-    this.parentHierarchy.add(name);
-  }
-
-  public void removeParentHierarchy(String name) {
-    this.parentHierarchy.remove(name);
-  }
-
-  public Vector getParentHierarchy() {
-    return this.parentHierarchy;
-  }
-
-  public Vector getRangeList(){
-    return this.rangeList;
-  }
-  public void setRangeList(Vector newVec){
-    this.rangeList = newVec;
-  }
-
-  public int hashCode() {
-    return this.regionID.hashCode();
-  }
-
-  public boolean equals(Object obj) {
-    RegionDO rdo = (RegionDO) obj;
-    if (rdo.hashCode() == this.hashCode()) {
-      return true;
+    public String getRegionID() {
+        return regionID;
     }
-    else {
-      return false;
-    }
-  }
 
-  public String toString() {
-    return "Region ID: " + getRegionID() + "\n" +
-        "Region Name: " + getName() + "\n" +
-        "Description: " + getComment() + "\n" +
-        "Parent Hierarchy: " + getParentHierarchy() + "\n";
-  }
-  public int compareTo(Object o) {
-    RegionDO r = (RegionDO)o;
-    return this.getName().compareTo(r.getName());
-  }
+    public void setRegionID(String regionID) {
+        this.regionID = regionID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public void addParentHierarchy(String name) {
+        this.parentHierarchy.add(name);
+    }
+
+    public void removeParentHierarchy(String name) {
+        this.parentHierarchy.remove(name);
+    }
+
+    public Vector getParentHierarchy() {
+        return this.parentHierarchy;
+    }
+
+    public Vector getRangeList() {
+        return this.rangeList;
+    }
+
+    public void setRangeList(Vector newVec) {
+        this.rangeList = newVec;
+    }
+
+    public int hashCode() {
+        return this.regionID.hashCode();
+    }
+
+    public boolean equals(Object obj) {
+        RegionDO rdo = (RegionDO) obj;
+        if (rdo.hashCode() == this.hashCode()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String toString() {
+        return "Region ID: " + getRegionID() + "\n" +
+                "Region Name: " + getName() + "\n" +
+                "Description: " + getComment() + "\n" +
+                "Parent Hierarchy: " + getParentHierarchy() + "\n";
+    }
+
+    public int compareTo(Object o) {
+        RegionDO r = (RegionDO) o;
+        return this.getName().compareTo(r.getName());
+    }
 
 }

@@ -16,77 +16,74 @@ import com.boco.eoms.sparepart.model.TawRemind;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.0
  */
 
 public class TawRemindDAO
-      extends DAO{
+        extends DAO {
 
-    public TawRemindDAO(){
+    public TawRemindDAO() {
     }
 
-    public TawRemindDAO(ConnectionPool ds){
+    public TawRemindDAO(ConnectionPool ds) {
         super(ds);
     }
 
-    public void insertRemind(TawRemind tawRemind){
-        com.boco.eoms.db.util.BocoConnection conn=null;
-        conn=ds.getConnection();
-        PreparedStatement pstmt=null;
+    public void insertRemind(TawRemind tawRemind) {
+        com.boco.eoms.db.util.BocoConnection conn = null;
+        conn = ds.getConnection();
+        PreparedStatement pstmt = null;
 
-        String sql=
-              "INSERT INTO taw_sp_remind(storageid,object,type,upperlimit,lowerlimit,"+
-              "limitdate,sendmsg) VALUES (?,?,?,?,?,?,?)";
-        try{
-            pstmt=conn.prepareStatement(sql);
+        String sql =
+                "INSERT INTO taw_sp_remind(storageid,object,type,upperlimit,lowerlimit," +
+                        "limitdate,sendmsg) VALUES (?,?,?,?,?,?,?)";
+        try {
+            pstmt = conn.prepareStatement(sql);
 
-            pstmt.setString(1,tawRemind.getStorageid());
-            pstmt.setString(2,tawRemind.getObject());
-            pstmt.setInt(3,tawRemind.getType());
-            pstmt.setString(4,tawRemind.getUpperlimit());
-            pstmt.setString(5,tawRemind.getLowerlimit());
-            pstmt.setString(6,tawRemind.getLimitdate());
-            pstmt.setString(7,tawRemind.getSendmsg());
+            pstmt.setString(1, tawRemind.getStorageid());
+            pstmt.setString(2, tawRemind.getObject());
+            pstmt.setInt(3, tawRemind.getType());
+            pstmt.setString(4, tawRemind.getUpperlimit());
+            pstmt.setString(5, tawRemind.getLowerlimit());
+            pstmt.setString(6, tawRemind.getLimitdate());
+            pstmt.setString(7, tawRemind.getSendmsg());
 
             pstmt.executeUpdate();
             conn.commit();
-        }
-        catch(SQLException ex){
+        } catch (SQLException ex) {
             rollback(conn);
             ex.printStackTrace();
-        }
-        finally{
+        } finally {
             close(pstmt);
             close(conn);
         }
     }
 
-    public List getTawRemind(String SQL){
-        ArrayList list=new ArrayList();
-        com.boco.eoms.db.util.BocoConnection conn=null;
-        PreparedStatement pstmt=null;
-        ResultSet rs=null;
-        try{
-            conn=ds.getConnection();
-            String sql="select id,storageid,object,type,upperlimit,lowerlimit,"+
-                  "limitdate,sendmsg,note from taw_sp_remind "+SQL;
-            pstmt=conn.prepareStatement(sql);
-            rs=pstmt.executeQuery();
-            while(rs.next()){
-                TawRemind tawOrder=new TawRemind();
-                populate(tawOrder,rs);
+    public List getTawRemind(String SQL) {
+        ArrayList list = new ArrayList();
+        com.boco.eoms.db.util.BocoConnection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = ds.getConnection();
+            String sql = "select id,storageid,object,type,upperlimit,lowerlimit," +
+                    "limitdate,sendmsg,note from taw_sp_remind " + SQL;
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                TawRemind tawOrder = new TawRemind();
+                populate(tawOrder, rs);
                 list.add(tawOrder);
             }
             close(rs);
             close(pstmt);
-        }
-        catch(SQLException e){
+        } catch (SQLException e) {
             close(rs);
             close(pstmt);
             e.printStackTrace();
-        }
-        finally{
+        } finally {
             close(conn);
         }
         return list;

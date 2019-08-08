@@ -9,9 +9,9 @@ import java.util.GregorianCalendar;
 
 public class DateUtil {
 
-	// 用来全局控制 上一周，本周，下一周的周数变化
+    // 用来全局控制 上一周，本周，下一周的周数变化
     private static int weeks = 0;
-   
+
     // 获得当前日期与本周一相差的天数
     private int getMondayPlus() {
         Calendar cd = Calendar.getInstance();
@@ -69,22 +69,23 @@ public class DateUtil {
         DateFormat df = DateFormat.getDateInstance();
         String preMonday = df.format(monday);
         return preMonday;
-    } 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		DateUtil du = new DateUtil();
-		System.out.println(du.getCurrentMonday());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-		try {
-			Date d = sdf.parse(du.getCurrentMonday());
-			System.out.println(d);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        DateUtil du = new DateUtil();
+        System.out.println(du.getCurrentMonday());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+        try {
+            Date d = sdf.parse(du.getCurrentMonday());
+            System.out.println(d);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 }

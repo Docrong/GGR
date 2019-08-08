@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class
-		name="com.boco.eoms.commons.system.role.model.TawSystemRoleImport"
-		table="taw_system_role_import">
+    <class
+            name="com.boco.eoms.commons.system.role.model.TawSystemRoleImport"
+            table="taw_system_role_import">
 
-		<id name="id" column="id" unsaved-value="null">
+        <id name="id" column="id" unsaved-value="null">
 
-			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-			<generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-			</generator>
+            </generator>
 
-		</id>
+        </id>
 
-		<property name="memo" length="255" column="memo">
+        <property name="memo" length="255" column="memo">
 
-		</property>
+        </property>
 
-		<property name="roleId" length="50" column="role_id">
+        <property name="roleId" length="50" column="role_id">
 
-		</property>
+        </property>
 
-		<property name="subRoleId" length="50" column="sub_role_id">
+        <property name="subRoleId" length="50" column="sub_role_id">
 
-		</property>
+        </property>
 
-		<property name="version" length="50" not-null="true"
-			unique="true" column="version">
+        <property name="version" length="50" not-null="true"
+                  unique="true" column="version">
 
-		</property>
+        </property>
 
-		<property name="versionAt" not-null="true" column="version_at">
+        <property name="versionAt" not-null="true" column="version_at">
 
-		</property>
-		
-		<property name="accessoriesId" not-null="false" column="accessories_id"/>
-	</class>
+        </property>
+
+        <property name="accessoriesId" not-null="false" column="accessories_id"/>
+    </class>
 
 </hibernate-mapping>
 

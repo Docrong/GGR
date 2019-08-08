@@ -14,6 +14,7 @@ public class TawSystemUserRefPostManagerImpl extends BaseManager implements ITaw
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSystemUserRefPostDao(TawSystemUserRefPostDao dao) {
@@ -47,12 +48,14 @@ public class TawSystemUserRefPostManagerImpl extends BaseManager implements ITaw
     public void removeTawSystemUserRefPost(final String id) {
         dao.removeTawSystemUserRefPost(new Long(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSystemUserRefPosts(final Integer curPage, final Integer pageSize) {
-        return dao.getTawSystemUserRefPosts(curPage, pageSize,null);
+        return dao.getTawSystemUserRefPosts(curPage, pageSize, null);
     }
+
     public Map getTawSystemUserRefPosts(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawSystemUserRefPosts(curPage, pageSize, whereStr);
     }

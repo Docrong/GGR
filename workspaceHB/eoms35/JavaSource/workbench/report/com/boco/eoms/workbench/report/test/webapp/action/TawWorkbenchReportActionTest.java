@@ -69,7 +69,7 @@ public class TawWorkbenchReportActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawWorkbenchReport.updated"});
+        verifyActionMessages(new String[]{"tawWorkbenchReport.updated"});
 
     }
 

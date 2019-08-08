@@ -1,13 +1,13 @@
 /**
  * EomsTicket.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
 package com.boco.eoms.interfaces.eomsReplyTicket;
 
-public class EomsTicket  implements java.io.Serializable {
+public class EomsTicket implements java.io.Serializable {
     private java.lang.String compContent;
 
     private java.lang.String compTime;
@@ -32,32 +32,32 @@ public class EomsTicket  implements java.io.Serializable {
     }
 
     public EomsTicket(
-           java.lang.String compContent,
-           java.lang.String compTime,
-           java.lang.String eomsSeq,
-           java.lang.String place,
-           java.lang.String serviceName,
-           java.lang.String ticketSeq,
-           java.lang.String userCity,
-           java.lang.String userPhone,
-           java.lang.String userProv,
-           java.lang.String workerPhone) {
-           this.compContent = compContent;
-           this.compTime = compTime;
-           this.eomsSeq = eomsSeq;
-           this.place = place;
-           this.serviceName = serviceName;
-           this.ticketSeq = ticketSeq;
-           this.userCity = userCity;
-           this.userPhone = userPhone;
-           this.userProv = userProv;
-           this.workerPhone = workerPhone;
+            java.lang.String compContent,
+            java.lang.String compTime,
+            java.lang.String eomsSeq,
+            java.lang.String place,
+            java.lang.String serviceName,
+            java.lang.String ticketSeq,
+            java.lang.String userCity,
+            java.lang.String userPhone,
+            java.lang.String userProv,
+            java.lang.String workerPhone) {
+        this.compContent = compContent;
+        this.compTime = compTime;
+        this.eomsSeq = eomsSeq;
+        this.place = place;
+        this.serviceName = serviceName;
+        this.ticketSeq = ticketSeq;
+        this.userCity = userCity;
+        this.userPhone = userPhone;
+        this.userProv = userProv;
+        this.workerPhone = workerPhone;
     }
 
 
     /**
      * Gets the compContent value for this EomsTicket.
-     * 
+     *
      * @return compContent
      */
     public java.lang.String getCompContent() {
@@ -67,7 +67,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the compContent value for this EomsTicket.
-     * 
+     *
      * @param compContent
      */
     public void setCompContent(java.lang.String compContent) {
@@ -77,7 +77,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the compTime value for this EomsTicket.
-     * 
+     *
      * @return compTime
      */
     public java.lang.String getCompTime() {
@@ -87,7 +87,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the compTime value for this EomsTicket.
-     * 
+     *
      * @param compTime
      */
     public void setCompTime(java.lang.String compTime) {
@@ -97,7 +97,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the eomsSeq value for this EomsTicket.
-     * 
+     *
      * @return eomsSeq
      */
     public java.lang.String getEomsSeq() {
@@ -107,7 +107,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the eomsSeq value for this EomsTicket.
-     * 
+     *
      * @param eomsSeq
      */
     public void setEomsSeq(java.lang.String eomsSeq) {
@@ -117,7 +117,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the place value for this EomsTicket.
-     * 
+     *
      * @return place
      */
     public java.lang.String getPlace() {
@@ -127,7 +127,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the place value for this EomsTicket.
-     * 
+     *
      * @param place
      */
     public void setPlace(java.lang.String place) {
@@ -137,7 +137,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the serviceName value for this EomsTicket.
-     * 
+     *
      * @return serviceName
      */
     public java.lang.String getServiceName() {
@@ -147,7 +147,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the serviceName value for this EomsTicket.
-     * 
+     *
      * @param serviceName
      */
     public void setServiceName(java.lang.String serviceName) {
@@ -157,7 +157,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the ticketSeq value for this EomsTicket.
-     * 
+     *
      * @return ticketSeq
      */
     public java.lang.String getTicketSeq() {
@@ -167,7 +167,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the ticketSeq value for this EomsTicket.
-     * 
+     *
      * @param ticketSeq
      */
     public void setTicketSeq(java.lang.String ticketSeq) {
@@ -177,7 +177,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the userCity value for this EomsTicket.
-     * 
+     *
      * @return userCity
      */
     public java.lang.String getUserCity() {
@@ -187,7 +187,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the userCity value for this EomsTicket.
-     * 
+     *
      * @param userCity
      */
     public void setUserCity(java.lang.String userCity) {
@@ -197,7 +197,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the userPhone value for this EomsTicket.
-     * 
+     *
      * @return userPhone
      */
     public java.lang.String getUserPhone() {
@@ -207,7 +207,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the userPhone value for this EomsTicket.
-     * 
+     *
      * @param userPhone
      */
     public void setUserPhone(java.lang.String userPhone) {
@@ -217,7 +217,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the userProv value for this EomsTicket.
-     * 
+     *
      * @return userProv
      */
     public java.lang.String getUserProv() {
@@ -227,7 +227,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the userProv value for this EomsTicket.
-     * 
+     *
      * @param userProv
      */
     public void setUserProv(java.lang.String userProv) {
@@ -237,7 +237,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Gets the workerPhone value for this EomsTicket.
-     * 
+     *
      * @return workerPhone
      */
     public java.lang.String getWorkerPhone() {
@@ -247,7 +247,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     /**
      * Sets the workerPhone value for this EomsTicket.
-     * 
+     *
      * @param workerPhone
      */
     public void setWorkerPhone(java.lang.String workerPhone) {
@@ -255,6 +255,7 @@ public class EomsTicket  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof EomsTicket)) return false;
         EomsTicket other = (EomsTicket) obj;
@@ -265,42 +266,43 @@ public class EomsTicket  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.compContent==null && other.getCompContent()==null) || 
-             (this.compContent!=null &&
-              this.compContent.equals(other.getCompContent()))) &&
-            ((this.compTime==null && other.getCompTime()==null) || 
-             (this.compTime!=null &&
-              this.compTime.equals(other.getCompTime()))) &&
-            ((this.eomsSeq==null && other.getEomsSeq()==null) || 
-             (this.eomsSeq!=null &&
-              this.eomsSeq.equals(other.getEomsSeq()))) &&
-            ((this.place==null && other.getPlace()==null) || 
-             (this.place!=null &&
-              this.place.equals(other.getPlace()))) &&
-            ((this.serviceName==null && other.getServiceName()==null) || 
-             (this.serviceName!=null &&
-              this.serviceName.equals(other.getServiceName()))) &&
-            ((this.ticketSeq==null && other.getTicketSeq()==null) || 
-             (this.ticketSeq!=null &&
-              this.ticketSeq.equals(other.getTicketSeq()))) &&
-            ((this.userCity==null && other.getUserCity()==null) || 
-             (this.userCity!=null &&
-              this.userCity.equals(other.getUserCity()))) &&
-            ((this.userPhone==null && other.getUserPhone()==null) || 
-             (this.userPhone!=null &&
-              this.userPhone.equals(other.getUserPhone()))) &&
-            ((this.userProv==null && other.getUserProv()==null) || 
-             (this.userProv!=null &&
-              this.userProv.equals(other.getUserProv()))) &&
-            ((this.workerPhone==null && other.getWorkerPhone()==null) || 
-             (this.workerPhone!=null &&
-              this.workerPhone.equals(other.getWorkerPhone())));
+        _equals = true &&
+                ((this.compContent == null && other.getCompContent() == null) ||
+                        (this.compContent != null &&
+                                this.compContent.equals(other.getCompContent()))) &&
+                ((this.compTime == null && other.getCompTime() == null) ||
+                        (this.compTime != null &&
+                                this.compTime.equals(other.getCompTime()))) &&
+                ((this.eomsSeq == null && other.getEomsSeq() == null) ||
+                        (this.eomsSeq != null &&
+                                this.eomsSeq.equals(other.getEomsSeq()))) &&
+                ((this.place == null && other.getPlace() == null) ||
+                        (this.place != null &&
+                                this.place.equals(other.getPlace()))) &&
+                ((this.serviceName == null && other.getServiceName() == null) ||
+                        (this.serviceName != null &&
+                                this.serviceName.equals(other.getServiceName()))) &&
+                ((this.ticketSeq == null && other.getTicketSeq() == null) ||
+                        (this.ticketSeq != null &&
+                                this.ticketSeq.equals(other.getTicketSeq()))) &&
+                ((this.userCity == null && other.getUserCity() == null) ||
+                        (this.userCity != null &&
+                                this.userCity.equals(other.getUserCity()))) &&
+                ((this.userPhone == null && other.getUserPhone() == null) ||
+                        (this.userPhone != null &&
+                                this.userPhone.equals(other.getUserPhone()))) &&
+                ((this.userProv == null && other.getUserProv() == null) ||
+                        (this.userProv != null &&
+                                this.userProv.equals(other.getUserProv()))) &&
+                ((this.workerPhone == null && other.getWorkerPhone() == null) ||
+                        (this.workerPhone != null &&
+                                this.workerPhone.equals(other.getWorkerPhone())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -343,7 +345,7 @@ public class EomsTicket  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(EomsTicket.class, true);
+            new org.apache.axis.description.TypeDesc(EomsTicket.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://vo.jcss.hy.wri.com", "EomsTicket"));
@@ -430,24 +432,24 @@ public class EomsTicket  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

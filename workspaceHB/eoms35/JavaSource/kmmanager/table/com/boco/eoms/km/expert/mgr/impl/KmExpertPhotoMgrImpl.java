@@ -14,28 +14,27 @@ import com.boco.eoms.km.expert.mgr.KmExpertPhotoMgr;
  * <p>
  * Mon Jun 15 19:14:24 CST 2009
  * </p>
- * 
+ *
  * @author zhangxb
  * @version 1.0
- * 
  */
 public class KmExpertPhotoMgrImpl implements KmExpertPhotoMgr {
-	
-	private KmExpertPhotoDao kmExpertPhotoDao;
 
-	public KmExpertPhotoDao getKmExpertPhotoDao() {
-		return kmExpertPhotoDao;
-	}
+    private KmExpertPhotoDao kmExpertPhotoDao;
 
-	public void setKmExpertPhotoDao(KmExpertPhotoDao kmExpertPhotoDao) {
-		this.kmExpertPhotoDao = kmExpertPhotoDao;
-	}
-	
-	public KmExpertPhoto getKmExpertPhotoByUserId(String userId) {
-		return kmExpertPhotoDao.getKmExpertPhotoByUserId(userId);
-	}
+    public KmExpertPhotoDao getKmExpertPhotoDao() {
+        return kmExpertPhotoDao;
+    }
 
-	public void saveKmExpertPhoto(KmExpertPhoto kmExpertPhoto) {
-		kmExpertPhotoDao.saveKmExpertPhoto(kmExpertPhoto);
-	}
+    public void setKmExpertPhotoDao(KmExpertPhotoDao kmExpertPhotoDao) {
+        this.kmExpertPhotoDao = kmExpertPhotoDao;
+    }
+
+    public KmExpertPhoto getKmExpertPhotoByUserId(String userId) {
+        return kmExpertPhotoDao.getKmExpertPhotoByUserId(userId);
+    }
+
+    public void saveKmExpertPhoto(KmExpertPhoto kmExpertPhoto) {
+        kmExpertPhotoDao.saveKmExpertPhoto(kmExpertPhoto);
+    }
 }

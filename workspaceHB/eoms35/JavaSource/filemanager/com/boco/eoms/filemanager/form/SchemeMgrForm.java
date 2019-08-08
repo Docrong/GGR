@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionForm;
  * ��ַ�������к������|׵�130��������� 12��3��
  * To change this template use File | Settings | File Templates.
  */
-public class SchemeMgrForm  extends ActionForm {
+public class SchemeMgrForm extends ActionForm {
     private String act;
     private String schemeId;
     private String topicId;
@@ -26,7 +26,7 @@ public class SchemeMgrForm  extends ActionForm {
     private String createUserName;
     private String acceptDeptId;
     private String acceptDeptName;
-    private String[] fileUrl=null;
+    private String[] fileUrl = null;
     private String specialtyId;
     private String specialtyName;
     private String sendContact;
@@ -38,39 +38,39 @@ public class SchemeMgrForm  extends ActionForm {
     private String schemeTime;
     private String combinType;
     private String combinTypeName;
-    
-//wagnsixuan add
+
+    //wagnsixuan add
     private String auditUserId; //审核人ID
     private String reportUserId; //接收人ID
     private String auditUserName; //审核人NAME
     private String reportUserName; //接收人NAME
     private String isAudit;//是否审核
 
-	public String getIsAudit() {
-		return isAudit;
-	}
+    public String getIsAudit() {
+        return isAudit;
+    }
 
-	public void setIsAudit(String isAudit) {
-		this.isAudit = isAudit;
-	}
+    public void setIsAudit(String isAudit) {
+        this.isAudit = isAudit;
+    }
 
-	public String getAuditUserId() {
-		return auditUserId;
-	}
+    public String getAuditUserId() {
+        return auditUserId;
+    }
 
-	public void setAuditUserId(String auditUserId) {
-		this.auditUserId = auditUserId;
-	}
+    public void setAuditUserId(String auditUserId) {
+        this.auditUserId = auditUserId;
+    }
 
-	public String getReportUserId() {
-		return reportUserId;
-	}
+    public String getReportUserId() {
+        return reportUserId;
+    }
 
-	public void setReportUserId(String reportUserId) {
-		this.reportUserId = reportUserId;
-	}
+    public void setReportUserId(String reportUserId) {
+        this.reportUserId = reportUserId;
+    }
 
-	public String getAct() {
+    public String getAct() {
         return act;
     }
 
@@ -254,35 +254,35 @@ public class SchemeMgrForm  extends ActionForm {
         this.schemeTime = schemeTime;
     }
 
-	public String getCombinType() {
-		return combinType;
-	}
+    public String getCombinType() {
+        return combinType;
+    }
 
-	public void setCombinType(String combinType) {
-		this.combinType = combinType;
-	}
+    public void setCombinType(String combinType) {
+        this.combinType = combinType;
+    }
 
-	public String getCombinTypeName() {
-		return combinTypeName;
-	}
+    public String getCombinTypeName() {
+        return combinTypeName;
+    }
 
-	public void setCombinTypeName(String combinTypeName) {
-		this.combinTypeName = combinTypeName;
-	}
+    public void setCombinTypeName(String combinTypeName) {
+        this.combinTypeName = combinTypeName;
+    }
 
-	public String getAuditUserName() {
-		return auditUserName;
-	}
+    public String getAuditUserName() {
+        return auditUserName;
+    }
 
-	public void setAuditUserName(String auditUserName) {
-		this.auditUserName = auditUserName;
-	}
+    public void setAuditUserName(String auditUserName) {
+        this.auditUserName = auditUserName;
+    }
 
-	public String getReportUserName() {
-		return reportUserName;
-	}
+    public String getReportUserName() {
+        return reportUserName;
+    }
 
-	public void setReportUserName(String reportUserName) {
-		this.reportUserName = reportUserName;
-	}
+    public void setReportUserName(String reportUserName) {
+        this.reportUserName = reportUserName;
+    }
 }

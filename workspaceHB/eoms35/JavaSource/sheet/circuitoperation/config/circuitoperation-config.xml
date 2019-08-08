@@ -1,34 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WorkFlowRule name="CircuitOperation" description="电路调度流程">
-  <flow-define id="CircuitOperationProcess" description="电路调度流程" tasknamespace="http://" linkservicename="" dictfilename="" name="CircuitOperation">
-    <phase-id id="receive" name="新建工单" type="receive" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="DraftTask" role="" condition="${operateType}==22" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="保存草稿" />
-      <to-phase-id id="MakeZTask" role="" condition="${operateType}==0" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发" />
-    </phase-id>
-    <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="MakeZTask" role="" condition="${operateType}==3" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="草稿派发" />
-    </phase-id>
-    <phase-id id="RejectTask" name="被驳回" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="MakeZTask" role="" condition="${operateType}==54" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="重新派发" />
-    </phase-id>
-    <phase-id id="DateATask" name="A端业务侧数据制作以及确认" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="HoldTask" role="dealPerformer@" condition="${operateType}==203" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="A端业务侧数据制作以及确认" />
-    </phase-id>
-    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
-    <phase-id id="MakeZTask" name="Z端业务侧方案制作" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="MakeTTask" role="" condition="${operateType}==200" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="Z端业务侧方案制作" />
-      <to-phase-id id="RejectTask" role="" condition="${operateType}==4" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="驳回" />
-    </phase-id>
-    <phase-id id="DateZTask" name="Z端业务侧数据制作以及确认" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="HoldTask" role="dealPerformer@" condition="${operateType}==204" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="Z端业务侧数据制作以及确认" />
-    </phase-id>
-    <phase-id id="MakeTTask" name="传输侧电路调度方案制作" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="BackTask" role="dealPerformer@" condition="${operateType}==201" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="传输侧电路调度方案制作" />
-    </phase-id>
-    <phase-id id="BackTask" name="实施结果反馈" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="DateZTask" role="dealPerformer@" condition="${operateType}==202" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="实施结果反馈" />
-      <to-phase-id id="DateATask" role="dealPerformer@" condition="${operateType}==202" operatetype=""  workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="实施结果反馈" />
-    </phase-id>
-  </flow-define>
+    <flow-define id="CircuitOperationProcess" description="电路调度流程" tasknamespace="http://" linkservicename=""
+                 dictfilename="" name="CircuitOperation">
+        <phase-id id="receive" name="新建工单" type="receive" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="DraftTask" role="" condition="${operateType}==22" operatetype="" workflowdisplay="false"
+                         isrejecttask="false" roleid="" commonoperatetype="" name="保存草稿"/>
+            <to-phase-id id="MakeZTask" role="" condition="${operateType}==0" operatetype="" workflowdisplay="false"
+                         isrejecttask="false" roleid="" commonoperatetype="" name="新建派发"/>
+        </phase-id>
+        <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="MakeZTask" role="" condition="${operateType}==3" operatetype="" workflowdisplay="false"
+                         isrejecttask="false" roleid="" commonoperatetype="" name="草稿派发"/>
+        </phase-id>
+        <phase-id id="RejectTask" name="被驳回" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="MakeZTask" role="" condition="${operateType}==54" operatetype="" workflowdisplay="false"
+                         isrejecttask="false" roleid="" commonoperatetype="" name="重新派发"/>
+        </phase-id>
+        <phase-id id="DateATask" name="A端业务侧数据制作以及确认" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="HoldTask" role="dealPerformer@" condition="${operateType}==203" operatetype=""
+                         workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="A端业务侧数据制作以及确认"/>
+        </phase-id>
+        <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false"/>
+        <phase-id id="MakeZTask" name="Z端业务侧方案制作" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="MakeTTask" role="" condition="${operateType}==200" operatetype="" workflowdisplay="false"
+                         isrejecttask="false" roleid="" commonoperatetype="" name="Z端业务侧方案制作"/>
+            <to-phase-id id="RejectTask" role="" condition="${operateType}==4" operatetype="" workflowdisplay="false"
+                         isrejecttask="false" roleid="" commonoperatetype="" name="驳回"/>
+        </phase-id>
+        <phase-id id="DateZTask" name="Z端业务侧数据制作以及确认" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="HoldTask" role="dealPerformer@" condition="${operateType}==204" operatetype=""
+                         workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="Z端业务侧数据制作以及确认"/>
+        </phase-id>
+        <phase-id id="MakeTTask" name="传输侧电路调度方案制作" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="BackTask" role="dealPerformer@" condition="${operateType}==201" operatetype=""
+                         workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="传输侧电路调度方案制作"/>
+        </phase-id>
+        <phase-id id="BackTask" name="实施结果反馈" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="DateZTask" role="dealPerformer@" condition="${operateType}==202" operatetype=""
+                         workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="实施结果反馈"/>
+            <to-phase-id id="DateATask" role="dealPerformer@" condition="${operateType}==202" operatetype=""
+                         workflowdisplay="false" isrejecttask="false" roleid="" commonoperatetype="" name="实施结果反馈"/>
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>
 

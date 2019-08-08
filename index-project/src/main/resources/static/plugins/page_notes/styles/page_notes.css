@@ -1,96 +1,90 @@
 ﻿#pageNotesHost {
     font-size: 12px;
-    color:#4a4a4a;
+    color: #4a4a4a;
     height: 100%;
 }
 
 #pageNotesHostBtn a {
     background: url('images/notes_on.png');
-    background: url('images/notes_on.svg'),linear-gradient(transparent, transparent);
+    background: url('images/notes_on.svg'), linear-gradient(transparent, transparent);
 }
 
 .hashover #pageNotesHostBtn a:hover {
     background: url('images/notes_hover.png');
-    background: url('images/notes_hover.svg'),linear-gradient(transparent, transparent);
+    background: url('images/notes_hover.svg'), linear-gradient(transparent, transparent);
 }
 
 #pageNotesHostBtn a.selected, #pageNotesHostBtn a.selected:hover {
     background: url('images/notes_off.png');
-    background: url('images/notes_off.svg'),linear-gradient(transparent, transparent);
+    background: url('images/notes_off.svg'), linear-gradient(transparent, transparent);
 }
 
 #footnotesButton {
     background: url('images/footnotes.png') no-repeat center center;
-    background: url('images/footnotes.svg') no-repeat center center,linear-gradient(transparent, transparent);
+    background: url('images/footnotes.svg') no-repeat center center, linear-gradient(transparent, transparent);
 }
 
 #footnotesButton:hover {
     background: url('images/footnotes_hover.png') no-repeat center center;
-    background: url('images/footnotes_hover.svg') no-repeat center center,linear-gradient(transparent, transparent);
+    background: url('images/footnotes_hover.svg') no-repeat center center, linear-gradient(transparent, transparent);
 }
 
 #footnotesButton.sitemapToolbarButtonSelected, #footnotesButton.sitemapToolbarButtonSelected:hover {
     background: url('images/footnotes_on.png') no-repeat center center;
-    background: url('images/footnotes_on.svg') no-repeat center center,linear-gradient(transparent, transparent);
+    background: url('images/footnotes_on.svg') no-repeat center center, linear-gradient(transparent, transparent);
 }
 
 .nextPageButton {
     background: url('images/forward.png') no-repeat center center;
-    background: url('images/forward.svg') no-repeat center center,linear-gradient(transparent, transparent);    
+    background: url('images/forward.svg') no-repeat center center, linear-gradient(transparent, transparent);
 }
 
 .nextPageButton:hover {
     background: url('images/forward_hover.png') no-repeat center center;
-    background: url('images/forward_hover.svg') no-repeat center center,linear-gradient(transparent, transparent);    
+    background: url('images/forward_hover.svg') no-repeat center center, linear-gradient(transparent, transparent);
 }
 
 .prevPageButton {
     background: url('images/back.png') no-repeat center center;
-    background: url('images/back.svg') no-repeat center center,linear-gradient(transparent, transparent);    
+    background: url('images/back.svg') no-repeat center center, linear-gradient(transparent, transparent);
 }
 
 .prevPageButton:hover {
     background: url('images/back_hover.png') no-repeat center center;
-    background: url('images/back_hover.svg') no-repeat center center,linear-gradient(transparent, transparent);    
+    background: url('images/back_hover.svg') no-repeat center center, linear-gradient(transparent, transparent);
 }
 
-#pageNotesScrollContainer 
-{
+#pageNotesScrollContainer {
     overflow: auto;
     width: 100%;
     /*height: 100%;*/
     -webkit-overflow-scrolling: touch;
-}    
+}
 
-#pageNotesContainer 
-{
+#pageNotesContainer {
     /*padding: 10px 10px 10px 12px;*/
 }
 
-#pageNotesContent 
-{
-	overflow: visible;
+#pageNotesContent {
+    overflow: visible;
 }
 
-.pageNoteContainer 
-{
+.pageNoteContainer {
     padding: 10px;
 }
 
-.pageNoteName 
-{
+.pageNoteName {
     font-family: 'Trebuchet MS';
-	font-size: 14px;
+    font-size: 14px;
     font-weight: bold;
-	margin-bottom: 5px;
-	/*text-decoration: underline;*/
-	white-space: nowrap;
+    margin-bottom: 5px;
+    /*text-decoration: underline;*/
+    white-space: nowrap;
 }
 
-.pageNote 
-{
+.pageNote {
     line-height: 21px;
-	/*margin-bottom: 20px;*/
+    /*margin-bottom: 20px;*/
 }
 
 .widgetNoteContainer {
@@ -144,9 +138,9 @@ div.annnoteline {
     display: inline-block;
     vertical-align: top;
     font-family: 'Trebuchet MS';
-	font-size: 14px;
+    font-size: 14px;
     font-weight: bold;
-	margin-bottom: 5px;    
+    margin-bottom: 5px;
 }
 
 .noteLink {

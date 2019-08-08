@@ -6,8 +6,8 @@ import java.util.Map;
 
 import com.boco.eoms.base.service.Manager;
 import com.boco.eoms.message.model.MmsContent;
+
 /**
- * 
  * <p>
  * Title:
  * </p>
@@ -17,10 +17,9 @@ import com.boco.eoms.message.model.MmsContent;
  * <p>
  * Date:2009-3-11 下午02:00:09
  * </p>
- * 
+ *
  * @author 孙圣泰
  * @version 3.5.1
- *
  */
 public interface IMmsContentManager extends Manager {
     /**
@@ -30,6 +29,7 @@ public interface IMmsContentManager extends Manager {
 
     /**
      * Gets mmsContent's information based on id.
+     *
      * @param id the mmsContent's id
      * @return mmsContent populated mmsContent object
      */
@@ -37,18 +37,22 @@ public interface IMmsContentManager extends Manager {
 
     /**
      * Saves a mmsContent's information
+     *
      * @param mmsContent the object to be saved
      */
     public void saveMmsContent(MmsContent mmsContent);
 
     /**
      * Removes a mmsContent from the database by id
+     *
      * @param id the mmsContent's id
      */
     public void removeMmsContent(final String id);
+
     public Map getMmsContents(final Integer curPage, final Integer pageSize);
+
     public Map getMmsContents(final Integer curPage, final Integer pageSize, final String whereStr);
-  
+
     public List retriveMmsContents(String monitorId);
 }
 

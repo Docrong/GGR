@@ -35,7 +35,7 @@ public class NBProductsManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         nbproductsDao.expects(once()).method("getNBProductss")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List nbproductss = nbproductsManager.getNBProductss();
         assertTrue(nbproductss.size() == 1);
@@ -45,7 +45,7 @@ public class NBProductsManagerTest extends BaseManagerTestCase {
     public void testGetNBProducts() throws Exception {
         // set expected behavior on dao
         nbproductsDao.expects(once()).method("getNBProducts")
-            .will(returnValue(new NBProducts()));
+                .will(returnValue(new NBProducts()));
         NBProducts nbproducts = nbproductsManager.getNBProducts(nbproductsId);
         assertTrue(nbproducts != null);
         nbproductsDao.verify();
@@ -56,7 +56,7 @@ public class NBProductsManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         nbproductsDao.expects(once()).method("saveNBProducts")
-            .with(same(nbproducts)).isVoid();
+                .with(same(nbproducts)).isVoid();
 
         nbproductsManager.saveNBProducts(nbproducts);
         nbproductsDao.verify();

@@ -19,10 +19,10 @@ import org.hibernate.Session;
 import org.hibernate.Query;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate3.HibernateCallback;
+
 /**
- * 
  * @author panlong
- *下午05:38:59
+ * 下午05:38:59
  */
 public class TawSheetSpecialDaoHibernate extends BaseDaoHibernate implements TawSheetSpecialDao, ID2NameDAO {
 
@@ -62,12 +62,12 @@ public class TawSheetSpecialDaoHibernate extends BaseDaoHibernate implements Taw
 
     /**
      * @see com.boco.eoms.commons.sheet.special.dao.TawSheetSpecialDao#saveTawSheetSpecial(TawSheetSpecial tawSheetSpecial)
-     */    
+     */
     public void saveTawSheetSpecial(final TawSheetSpecial tawSheetSpecial) {
         if ((tawSheetSpecial.getId() == null) || (tawSheetSpecial.getId().equals("")))
-			getHibernateTemplate().save(tawSheetSpecial);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSheetSpecial);
+            getHibernateTemplate().save(tawSheetSpecial);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSheetSpecial);
     }
 
     /**
@@ -76,96 +76,107 @@ public class TawSheetSpecialDaoHibernate extends BaseDaoHibernate implements Taw
     public void removeTawSheetSpecial(final Integer id) {
         getHibernateTemplate().delete(id);
     }
+
     /**
      * ���ڷ�ҳ��ʾ
      * curPage ��ǰҳ��
      * pageSize ÿҳ��ʾ��
      * whereStr where�������䣬������"where"��ͷ,����Ϊ��
      */
-    public Map getTawSheetSpecials(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSheetSpecials(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSheetSpecial
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSheetSpecial";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSheetSpecial";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							int total = ((Integer) session.createQuery(queryCountStr).iterate()
-									.next()).intValue();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", new Integer(total));
-							map.put("result", result);
-							return map;
+                int total = ((Integer) session.createQuery(queryCountStr).iterate()
+                        .next()).intValue();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", new Integer(total));
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSheetSpecials(final Integer curPage, final Integer pageSize) {
-			return this.getTawSheetSpecials(curPage,pageSize,null);
+        return this.getTawSheetSpecials(curPage, pageSize, null);
     }
-    
+
     /**
      * 根据专业ID查询专业信息
+     *
      * @param areaid
      * @return
      */
-    public TawSheetSpecial getSpecialByspecialId(String specialid){
-    	String hql = " from TawSheetSpecial spe where spe.speid='"+specialid+"'";
-    	return (TawSheetSpecial)getHibernateTemplate().find(hql).get(0);
+    public TawSheetSpecial getSpecialByspecialId(String specialid) {
+        String hql = " from TawSheetSpecial spe where spe.speid='" + specialid + "'";
+        return (TawSheetSpecial) getHibernateTemplate().find(hql).get(0);
     }
+
     /**
      * 查询某专业的下一级专业信息
+     *
      * @param specialid
      * @return
      */
-    public List getSonspecialByspecialId(String specialid){
-    	String hql = " from TawSheetSpecial spe where spe.parspeid='"+specialid+"'";
-    	return (ArrayList)getHibernateTemplate().find(hql);
+    public List getSonspecialByspecialId(String specialid) {
+        String hql = " from TawSheetSpecial spe where spe.parspeid='" + specialid + "'";
+        return (ArrayList) getHibernateTemplate().find(hql);
     }
+
     /**
      * 查询同级专业信息
+     *
      * @param parentspecialid
      * @param ordercode
      * @return
      */
-    public List getSameLevelspecial(String parentspecialid,Integer ordercode){
-    	String hql = " from TawSheetSpecial spe where spe.parspeid='"+parentspecialid+"' and spe.ordercode='"+ordercode+"'";
-    	return (ArrayList)getHibernateTemplate().find(hql);
+    public List getSameLevelspecial(String parentspecialid, Integer ordercode) {
+        String hql = " from TawSheetSpecial spe where spe.parspeid='" + parentspecialid + "' and spe.ordercode='" + ordercode + "'";
+        return (ArrayList) getHibernateTemplate().find(hql);
     }
+
     /**
      * 查询某专业是否存在
+     *
      * @param specialname
      * @return
      */
-    public boolean isExitspecialName(String specialid){
-    	String hql = " from TawSheetSpecial spe where spe.speid='"+specialid+"'";
-    	List list = (ArrayList)getHibernateTemplate().find(hql);
-    	if( list != null && list.size() >0 ){
-    		return true;
-    	}else{
-    		return false;
-    	}
+    public boolean isExitspecialName(String specialid) {
+        String hql = " from TawSheetSpecial spe where spe.speid='" + specialid + "'";
+        List list = (ArrayList) getHibernateTemplate().find(hql);
+        if (list != null && list.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
+
     /**
      * 查询某专业的所有子专业信息
+     *
      * @param specialid
      * @return
      */
-    public List getAllSonspecialByspecialid(String specialid){
-    	String hql = " from TawSheetSpecial spe where spe.speid like '"+specialid+"%' and spe.speid !='"+specialid+"'";
-    	return (ArrayList)getHibernateTemplate().find(hql);
+    public List getAllSonspecialByspecialid(String specialid) {
+        String hql = " from TawSheetSpecial spe where spe.speid like '" + specialid + "%' and spe.speid !='" + specialid + "'";
+        return (ArrayList) getHibernateTemplate().find(hql);
     }
-    
-    
+
+
     /*
      * id2name，即字典id转为字典名称 added by zhangying
-     * 
+     *
      * @see com.boco.eoms.base.dao.ID2NameDAO#id2Name(java.lang.String)
      */
     public String id2Name(final String id) throws DictDAOException {
@@ -186,11 +197,11 @@ public class TawSheetSpecialDaoHibernate extends BaseDaoHibernate implements Taw
 
                 if (list != null && !list.isEmpty()) {
                     //不为空则取dept
-                	tawSpecial = (TawSheetSpecial) list.iterator().next();
+                    tawSpecial = (TawSheetSpecial) list.iterator().next();
                 } else {
                     //为空，写入将部门名称设为未知联系人
-                	tawSpecial = new TawSheetSpecial();
-                	tawSpecial.setSpecialname(Util.idNoName());
+                    tawSpecial = new TawSheetSpecial();
+                    tawSpecial.setSpecialname(Util.idNoName());
                 }
                 return tawSpecial;
             }
@@ -198,7 +209,7 @@ public class TawSheetSpecialDaoHibernate extends BaseDaoHibernate implements Taw
 
         TawSheetSpecial special = null;
         try {
-        	special = (TawSheetSpecial) getHibernateTemplate().execute(callback);
+            special = (TawSheetSpecial) getHibernateTemplate().execute(callback);
         } catch (Exception e) {
             //若有异常则抛出daoexception,加入DAoException是为了解藕，若抛出hibernateException，这样在换orm时，如ibatis，service就要换异常捕捉
             throw new DictDAOException(e);

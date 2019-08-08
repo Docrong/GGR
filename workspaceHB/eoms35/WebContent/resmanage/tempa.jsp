@@ -1,14 +1,14 @@
-<%@ page import="com.boco.eoms.resmanage.regex.*"%>
+<%@ page import="com.boco.eoms.resmanage.regex.*" %>
 <%
-Pattern p=null; //ÕýÔò±í´ïÊ½
-Matcher m=null; //²Ù×÷µÄ×Ö·û´®
-boolean b;
-String s=null;
-StringBuffer sb=null;
-int i=0;
- //×Ö·û´®Æ¥Åä£¬ÕâÊÇ²»·ûºÏµÄ
-p = Pattern.compile("a*b");
-m = p.matcher("baaaaab");
-b = m.matches();
-out.println(b+"<br>");
+    Pattern p = null; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+    Matcher m = null; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+    boolean b;
+    String s = null;
+    StringBuffer sb = null;
+    int i = 0;
+    //ï¿½Ö·ï¿½ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½Ïµï¿½
+    p = Pattern.compile("a*b");
+    m = p.matcher("baaaaab");
+    b = m.matches();
+    out.println(b + "<br>");
 %>

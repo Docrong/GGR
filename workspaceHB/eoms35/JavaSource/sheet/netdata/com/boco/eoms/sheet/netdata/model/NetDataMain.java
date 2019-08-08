@@ -7,426 +7,406 @@ import com.boco.eoms.sheet.base.model.BaseMain;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="NetDataMain.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="NetDatamain"
  */
-public class NetDataMain extends BaseMain
-{
+public class NetDataMain extends BaseMain {
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainNetTypeOne;
-     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainNetTypeTwo;
-     
-     /**
-	 * @dicttype
-	 */
-     private java.lang.String mainNetTypeThree;
+     * @dicttype
+     */
+    private java.lang.String mainNetTypeOne;
+    /**
+     * @dicttype
+     */
+    private java.lang.String mainNetTypeTwo;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainIsSecurity;
+     * @dicttype
+     */
+    private java.lang.String mainNetTypeThree;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainIsConnect;
+     * @dicttype
+     */
+    private java.lang.String mainIsSecurity;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainFactory;
+     * @dicttype
+     */
+    private java.lang.String mainIsConnect;
 
     /**
-	 *
-	 * @textarea
-	 */
-     private java.lang.String mainCellInfo;
+     * @dicttype
+     */
+    private java.lang.String mainFactory;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainChangeSource;
+     * @textarea
+     */
+    private java.lang.String mainCellInfo;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainParentSheetId;
+     * @dicttype
+     */
+    private java.lang.String mainChangeSource;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainIsNeedDesign;
+     * @texttype
+     */
+    private java.lang.String mainParentSheetId;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainDesignId;
-     
-     
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainNetDataCommont;
-     
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.Integer mainRejectTimes;
-     
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.Integer mainIfrecord;
-      
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.util.Date mainExecuteEndDate;
-     
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainAssortSpeciality;
-     
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainIfDemonstrateCase;
-     
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainCaseKeywords;
-     
-     //方案制定步骤的字段
-     private java.util.Date linkCompleteLimitTime;
-     private java.lang.String linkDesignKey;
-     private java.lang.String linkDesignComment;
-     private java.lang.String linkInvolvedProvince;
-     private java.lang.String linkInvolvedCity;
-     private java.lang.String linkRiskEstimate;
-     private java.lang.String linkEffectAnalyse;
-     private java.lang.String firstNodeAccessories;
-     
-	/**
-	 * @return the mainNetDataCommont
-	 */
-	public java.lang.String getMainNetDataCommont() {
-		return mainNetDataCommont;
-	}
+     * @dicttype
+     */
+    private java.lang.String mainIsNeedDesign;
 
-	/**
-	 * @param mainNetDataCommont the mainNetDataCommont to set
-	 */
-	public void setMainNetDataCommont(java.lang.String mainNetDataCommont) {
-		this.mainNetDataCommont = mainNetDataCommont;
-	}
-
-	/**
-	 * @return the mainParentSheetId
-	 */
-	public java.lang.String getMainParentSheetId() {
-		return mainParentSheetId;
-	}
-
-	/**
-	 * @param mainParentSheetId the mainParentSheetId to set
-	 */
-	public void setMainParentSheetId(java.lang.String mainParentSheetId) {
-		this.mainParentSheetId = mainParentSheetId;
-	}
-
-	/**
-	 * @return the mainRejectTimes
-	 */
-	public java.lang.Integer getMainRejectTimes() {
-		return mainRejectTimes;
-	}
-
-	/**
-	 * @param mainRejectTimes the mainRejectTimes to set
-	 */
-	public void setMainRejectTimes(java.lang.Integer mainRejectTimes) {
-		this.mainRejectTimes = mainRejectTimes;
-	}
-
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainIsSecurity() {
-            return mainIsSecurity;
-     }
-
-     public void setMainIsSecurity(java.lang.String mainIsSecurity) {
-           this.mainIsSecurity = mainIsSecurity;
-     }
-
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainIsConnect() {
-            return mainIsConnect;
-     }
-
-     public void setMainIsConnect(java.lang.String mainIsConnect) {
-           this.mainIsConnect = mainIsConnect;
-     }
-
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainFactory() {
-            return mainFactory;
-     }
-
-     public void setMainFactory(java.lang.String mainFactory) {
-           this.mainFactory = mainFactory;
-     }
-
-	/**
-	 * @hibernate.property value="255"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainCellInfo() {
-            return mainCellInfo;
-     }
-
-     public void setMainCellInfo(java.lang.String mainCellInfo) {
-           this.mainCellInfo = mainCellInfo;
-     }
-
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainChangeSource() {
-            return mainChangeSource;
-     }
-
-     public void setMainChangeSource(java.lang.String mainChangeSource) {
-           this.mainChangeSource = mainChangeSource;
-     }
+    /**
+     * @texttype
+     */
+    private java.lang.String mainDesignId;
 
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainIsNeedDesign() {
-            return mainIsNeedDesign;
-     }
+    /**
+     * @texttype
+     */
+    private java.lang.String mainNetDataCommont;
 
-     public void setMainIsNeedDesign(java.lang.String mainIsNeedDesign) {
-           this.mainIsNeedDesign = mainIsNeedDesign;
-     }
+    /**
+     * @texttype
+     */
+    private java.lang.Integer mainRejectTimes;
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainDesignId() {
-            return mainDesignId;
-     }
+    /**
+     * @texttype
+     */
+    private java.lang.Integer mainIfrecord;
 
-     public void setMainDesignId(java.lang.String mainDesignId) {
-           this.mainDesignId = mainDesignId;
-     }
-     
- 	/**
- 	 * @hibernate.property value="50"
- 	 * @eoms.show
- 	 * @return
- 	 */
-	public java.lang.String getMainNetTypeOne() {
-		return mainNetTypeOne;
-	}
+    /**
+     * @texttype
+     */
+    private java.util.Date mainExecuteEndDate;
 
-	public void setMainNetTypeOne(java.lang.String mainNetTypeOne) {
-		this.mainNetTypeOne = mainNetTypeOne;
-	}
+    /**
+     * @texttype
+     */
+    private java.lang.String mainAssortSpeciality;
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	
-	public java.lang.String getMainNetTypeThree() {
-		return mainNetTypeThree;
-	}
+    /**
+     * @texttype
+     */
+    private java.lang.String mainIfDemonstrateCase;
 
-	public void setMainNetTypeThree(java.lang.String mainNetTypeThree) {
-		this.mainNetTypeThree = mainNetTypeThree;
-	}
+    /**
+     * @texttype
+     */
+    private java.lang.String mainCaseKeywords;
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	
-	public java.lang.String getMainNetTypeTwo() {
-		return mainNetTypeTwo;
-	}
+    //方案制定步骤的字段
+    private java.util.Date linkCompleteLimitTime;
+    private java.lang.String linkDesignKey;
+    private java.lang.String linkDesignComment;
+    private java.lang.String linkInvolvedProvince;
+    private java.lang.String linkInvolvedCity;
+    private java.lang.String linkRiskEstimate;
+    private java.lang.String linkEffectAnalyse;
+    private java.lang.String firstNodeAccessories;
 
-	public void setMainNetTypeTwo(java.lang.String mainNetTypeTwo) {
-		this.mainNetTypeTwo = mainNetTypeTwo;
-	}
-	
-	/**
-	 * @hibernate.property  
-	 * @eoms.show
-	 * @return
-	 */
-	public java.util.Date getMainExecuteEndDate() {
-		return mainExecuteEndDate;
-	}
+    /**
+     * @return the mainNetDataCommont
+     */
+    public java.lang.String getMainNetDataCommont() {
+        return mainNetDataCommont;
+    }
 
-	public void setMainExecuteEndDate(java.util.Date mainExecuteEndDate) {
-		this.mainExecuteEndDate = mainExecuteEndDate;
-	}
-	
-	/**
-	 * @hibernate.property  
-	 * @eoms.show
-	 * @return
-	 */
-	public java.lang.Integer getMainIfrecord() {
-		return mainIfrecord;
-	}
+    /**
+     * @param mainNetDataCommont the mainNetDataCommont to set
+     */
+    public void setMainNetDataCommont(java.lang.String mainNetDataCommont) {
+        this.mainNetDataCommont = mainNetDataCommont;
+    }
 
-	public void setMainIfrecord(java.lang.Integer mainIfrecord) {
-		this.mainIfrecord = mainIfrecord;
-	}
+    /**
+     * @return the mainParentSheetId
+     */
+    public java.lang.String getMainParentSheetId() {
+        return mainParentSheetId;
+    }
 
-	public java.lang.String getMainAssortSpeciality() {
-		return mainAssortSpeciality;
-	}
+    /**
+     * @param mainParentSheetId the mainParentSheetId to set
+     */
+    public void setMainParentSheetId(java.lang.String mainParentSheetId) {
+        this.mainParentSheetId = mainParentSheetId;
+    }
 
-	public void setMainAssortSpeciality(java.lang.String mainAssortSpeciality) {
-		this.mainAssortSpeciality = mainAssortSpeciality;
-	}
+    /**
+     * @return the mainRejectTimes
+     */
+    public java.lang.Integer getMainRejectTimes() {
+        return mainRejectTimes;
+    }
 
-	public java.lang.String getMainCaseKeywords() {
-		return mainCaseKeywords;
-	}
+    /**
+     * @param mainRejectTimes the mainRejectTimes to set
+     */
+    public void setMainRejectTimes(java.lang.Integer mainRejectTimes) {
+        this.mainRejectTimes = mainRejectTimes;
+    }
 
-	public void setMainCaseKeywords(java.lang.String mainCaseKeywords) {
-		this.mainCaseKeywords = mainCaseKeywords;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainIsSecurity() {
+        return mainIsSecurity;
+    }
 
-	public java.lang.String getMainIfDemonstrateCase() {
-		return mainIfDemonstrateCase;
-	}
+    public void setMainIsSecurity(java.lang.String mainIsSecurity) {
+        this.mainIsSecurity = mainIsSecurity;
+    }
 
-	public void setMainIfDemonstrateCase(java.lang.String mainIfDemonstrateCase) {
-		this.mainIfDemonstrateCase = mainIfDemonstrateCase;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainIsConnect() {
+        return mainIsConnect;
+    }
 
-	public java.lang.String getFirstNodeAccessories() {
-		return firstNodeAccessories;
-	}
+    public void setMainIsConnect(java.lang.String mainIsConnect) {
+        this.mainIsConnect = mainIsConnect;
+    }
 
-	public void setFirstNodeAccessories(java.lang.String firstNodeAccessories) {
-		this.firstNodeAccessories = firstNodeAccessories;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainFactory() {
+        return mainFactory;
+    }
 
-	public java.util.Date getLinkCompleteLimitTime() {
-		return linkCompleteLimitTime;
-	}
+    public void setMainFactory(java.lang.String mainFactory) {
+        this.mainFactory = mainFactory;
+    }
 
-	public void setLinkCompleteLimitTime(java.util.Date linkCompleteLimitTime) {
-		this.linkCompleteLimitTime = linkCompleteLimitTime;
-	}
+    /**
+     * @return
+     * @hibernate.property value="255"
+     * @eoms.show
+     */
+    public java.lang.String getMainCellInfo() {
+        return mainCellInfo;
+    }
 
-	public java.lang.String getLinkDesignComment() {
-		return linkDesignComment;
-	}
+    public void setMainCellInfo(java.lang.String mainCellInfo) {
+        this.mainCellInfo = mainCellInfo;
+    }
 
-	public void setLinkDesignComment(java.lang.String linkDesignComment) {
-		this.linkDesignComment = linkDesignComment;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainChangeSource() {
+        return mainChangeSource;
+    }
 
-	public java.lang.String getLinkDesignKey() {
-		return linkDesignKey;
-	}
+    public void setMainChangeSource(java.lang.String mainChangeSource) {
+        this.mainChangeSource = mainChangeSource;
+    }
 
-	public void setLinkDesignKey(java.lang.String linkDesignKey) {
-		this.linkDesignKey = linkDesignKey;
-	}
 
-	public java.lang.String getLinkEffectAnalyse() {
-		return linkEffectAnalyse;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainIsNeedDesign() {
+        return mainIsNeedDesign;
+    }
 
-	public void setLinkEffectAnalyse(java.lang.String linkEffectAnalyse) {
-		this.linkEffectAnalyse = linkEffectAnalyse;
-	}
+    public void setMainIsNeedDesign(java.lang.String mainIsNeedDesign) {
+        this.mainIsNeedDesign = mainIsNeedDesign;
+    }
 
-	public java.lang.String getLinkInvolvedCity() {
-		return linkInvolvedCity;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainDesignId() {
+        return mainDesignId;
+    }
 
-	public void setLinkInvolvedCity(java.lang.String linkInvolvedCity) {
-		this.linkInvolvedCity = linkInvolvedCity;
-	}
+    public void setMainDesignId(java.lang.String mainDesignId) {
+        this.mainDesignId = mainDesignId;
+    }
 
-	public java.lang.String getLinkInvolvedProvince() {
-		return linkInvolvedProvince;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainNetTypeOne() {
+        return mainNetTypeOne;
+    }
 
-	public void setLinkInvolvedProvince(java.lang.String linkInvolvedProvince) {
-		this.linkInvolvedProvince = linkInvolvedProvince;
-	}
+    public void setMainNetTypeOne(java.lang.String mainNetTypeOne) {
+        this.mainNetTypeOne = mainNetTypeOne;
+    }
 
-	public java.lang.String getLinkRiskEstimate() {
-		return linkRiskEstimate;
-	}
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
 
-	public void setLinkRiskEstimate(java.lang.String linkRiskEstimate) {
-		this.linkRiskEstimate = linkRiskEstimate;
-	}
+    public java.lang.String getMainNetTypeThree() {
+        return mainNetTypeThree;
+    }
 
+    public void setMainNetTypeThree(java.lang.String mainNetTypeThree) {
+        this.mainNetTypeThree = mainNetTypeThree;
+    }
+
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+
+    public java.lang.String getMainNetTypeTwo() {
+        return mainNetTypeTwo;
+    }
+
+    public void setMainNetTypeTwo(java.lang.String mainNetTypeTwo) {
+        this.mainNetTypeTwo = mainNetTypeTwo;
+    }
+
+    /**
+     * @return
+     * @hibernate.property
+     * @eoms.show
+     */
+    public java.util.Date getMainExecuteEndDate() {
+        return mainExecuteEndDate;
+    }
+
+    public void setMainExecuteEndDate(java.util.Date mainExecuteEndDate) {
+        this.mainExecuteEndDate = mainExecuteEndDate;
+    }
+
+    /**
+     * @return
+     * @hibernate.property
+     * @eoms.show
+     */
+    public java.lang.Integer getMainIfrecord() {
+        return mainIfrecord;
+    }
+
+    public void setMainIfrecord(java.lang.Integer mainIfrecord) {
+        this.mainIfrecord = mainIfrecord;
+    }
+
+    public java.lang.String getMainAssortSpeciality() {
+        return mainAssortSpeciality;
+    }
+
+    public void setMainAssortSpeciality(java.lang.String mainAssortSpeciality) {
+        this.mainAssortSpeciality = mainAssortSpeciality;
+    }
+
+    public java.lang.String getMainCaseKeywords() {
+        return mainCaseKeywords;
+    }
+
+    public void setMainCaseKeywords(java.lang.String mainCaseKeywords) {
+        this.mainCaseKeywords = mainCaseKeywords;
+    }
+
+    public java.lang.String getMainIfDemonstrateCase() {
+        return mainIfDemonstrateCase;
+    }
+
+    public void setMainIfDemonstrateCase(java.lang.String mainIfDemonstrateCase) {
+        this.mainIfDemonstrateCase = mainIfDemonstrateCase;
+    }
+
+    public java.lang.String getFirstNodeAccessories() {
+        return firstNodeAccessories;
+    }
+
+    public void setFirstNodeAccessories(java.lang.String firstNodeAccessories) {
+        this.firstNodeAccessories = firstNodeAccessories;
+    }
+
+    public java.util.Date getLinkCompleteLimitTime() {
+        return linkCompleteLimitTime;
+    }
+
+    public void setLinkCompleteLimitTime(java.util.Date linkCompleteLimitTime) {
+        this.linkCompleteLimitTime = linkCompleteLimitTime;
+    }
+
+    public java.lang.String getLinkDesignComment() {
+        return linkDesignComment;
+    }
+
+    public void setLinkDesignComment(java.lang.String linkDesignComment) {
+        this.linkDesignComment = linkDesignComment;
+    }
+
+    public java.lang.String getLinkDesignKey() {
+        return linkDesignKey;
+    }
+
+    public void setLinkDesignKey(java.lang.String linkDesignKey) {
+        this.linkDesignKey = linkDesignKey;
+    }
+
+    public java.lang.String getLinkEffectAnalyse() {
+        return linkEffectAnalyse;
+    }
+
+    public void setLinkEffectAnalyse(java.lang.String linkEffectAnalyse) {
+        this.linkEffectAnalyse = linkEffectAnalyse;
+    }
+
+    public java.lang.String getLinkInvolvedCity() {
+        return linkInvolvedCity;
+    }
+
+    public void setLinkInvolvedCity(java.lang.String linkInvolvedCity) {
+        this.linkInvolvedCity = linkInvolvedCity;
+    }
+
+    public java.lang.String getLinkInvolvedProvince() {
+        return linkInvolvedProvince;
+    }
+
+    public void setLinkInvolvedProvince(java.lang.String linkInvolvedProvince) {
+        this.linkInvolvedProvince = linkInvolvedProvince;
+    }
+
+    public java.lang.String getLinkRiskEstimate() {
+        return linkRiskEstimate;
+    }
+
+    public void setLinkRiskEstimate(java.lang.String linkRiskEstimate) {
+        this.linkRiskEstimate = linkRiskEstimate;
+    }
 
 
 }

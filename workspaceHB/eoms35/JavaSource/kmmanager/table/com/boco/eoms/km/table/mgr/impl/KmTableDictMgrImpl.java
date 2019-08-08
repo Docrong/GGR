@@ -17,42 +17,41 @@ import com.boco.eoms.km.table.dao.KmTableDictDao;
  * <p>
  * Mon Mar 02 14:55:43 CST 2009
  * </p>
- * 
+ *
  * @author 吕卫华
  * @version 1.0
- * 
  */
 public class KmTableDictMgrImpl implements KmTableDictMgr {
- 
-	private KmTableDictDao  kmTableDictDao;
- 	
-	public KmTableDictDao getKmTableDictDao() {
-		return this.kmTableDictDao;
-	}
- 	
-	public void setKmTableDictDao(KmTableDictDao kmTableDictDao) {
-		this.kmTableDictDao = kmTableDictDao;
-	}
- 	
+
+    private KmTableDictDao kmTableDictDao;
+
+    public KmTableDictDao getKmTableDictDao() {
+        return this.kmTableDictDao;
+    }
+
+    public void setKmTableDictDao(KmTableDictDao kmTableDictDao) {
+        this.kmTableDictDao = kmTableDictDao;
+    }
+
     public List getKmTableDicts() {
-    	return kmTableDictDao.getKmTableDicts();
+        return kmTableDictDao.getKmTableDicts();
     }
-    
+
     public KmTableDict getKmTableDict(final String id) {
-    	return kmTableDictDao.getKmTableDict(id);
+        return kmTableDictDao.getKmTableDict(id);
     }
-    
+
     public void saveKmTableDict(KmTableDict kmTableDict) {
-    	kmTableDictDao.saveKmTableDict(kmTableDict);
+        kmTableDictDao.saveKmTableDict(kmTableDict);
     }
-    
+
     public void removeKmTableDict(final String id) {
-    	kmTableDictDao.removeKmTableDict(id);
+        kmTableDictDao.removeKmTableDict(id);
     }
-    
+
     public Map getKmTableDicts(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmTableDictDao.getKmTableDicts(curPage, pageSize, whereStr);
-	}
-	
+                               final String whereStr) {
+        return kmTableDictDao.getKmTableDicts(curPage, pageSize, whereStr);
+    }
+
 }

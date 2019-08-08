@@ -1,13 +1,13 @@
 /**
  * NeListType.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhhead.interfaces;
 
-public class NeListType  implements java.io.Serializable {
+public class NeListType implements java.io.Serializable {
     private com.boco.eoms.gzjhhead.interfaces.NeNumberType[] neNumber;
 
     public NeListType() {
@@ -30,6 +30,7 @@ public class NeListType  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof NeListType)) return false;
         NeListType other = (NeListType) obj;
@@ -40,15 +41,16 @@ public class NeListType  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.neNumber==null && other.getNeNumber()==null) || 
-             (this.neNumber!=null &&
-              java.util.Arrays.equals(this.neNumber, other.getNeNumber())));
+        _equals = true &&
+                ((this.neNumber == null && other.getNeNumber() == null) ||
+                        (this.neNumber != null &&
+                                java.util.Arrays.equals(this.neNumber, other.getNeNumber())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -56,12 +58,12 @@ public class NeListType  implements java.io.Serializable {
         __hashCodeCalc = true;
         int _hashCode = 1;
         if (getNeNumber() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getNeNumber());
+            for (int i = 0;
+                 i < java.lang.reflect.Array.getLength(getNeNumber());
                  i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getNeNumber(), i);
                 if (obj != null &&
-                    !obj.getClass().isArray()) {
+                        !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }

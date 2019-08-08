@@ -5,103 +5,103 @@ import com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleImportForm;
 
 public class TawSystemRoleImportActionTest extends BaseStrutsTestCase {
 
-	public TawSystemRoleImportActionTest(String name) {
-		super(name);
-	}
+    public TawSystemRoleImportActionTest(String name) {
+        super(name);
+    }
 
-	public void testAdd() throws Exception {
-		setRequestPathInfo("/saveTawSystemRoleImport");
-		addRequestParameter("method", "Save");
+    public void testAdd() throws Exception {
+        setRequestPathInfo("/saveTawSystemRoleImport");
+        addRequestParameter("method", "Save");
 
-		TawSystemRoleImportForm tawSystemRoleImportForm = new TawSystemRoleImportForm();
-		// set required fields
-		tawSystemRoleImportForm
-				.setRoleId("SjZcAuFfLqZbKiGkCeCiJaTwFxWnFnChCqKtTkTlTdPsFkLeTh");
-		tawSystemRoleImportForm
-				.setSubRoleId("JoIqGyHgLmNqWzXqKdXxKoOiHuHuIfGzGaIeNgIqYjOhKxBjCo");
-		tawSystemRoleImportForm
-				.setVersion("TcQkDtLrPyZfSdJiObFoVnGyYkIbToHsBbDyFlMlWvCdPyGbHw");
-		tawSystemRoleImportForm.setVersionAt("KgAtEoFwXeZwRyChWgWxKnGtA");
+        TawSystemRoleImportForm tawSystemRoleImportForm = new TawSystemRoleImportForm();
+        // set required fields
+        tawSystemRoleImportForm
+                .setRoleId("SjZcAuFfLqZbKiGkCeCiJaTwFxWnFnChCqKtTkTlTdPsFkLeTh");
+        tawSystemRoleImportForm
+                .setSubRoleId("JoIqGyHgLmNqWzXqKdXxKoOiHuHuIfGzGaIeNgIqYjOhKxBjCo");
+        tawSystemRoleImportForm
+                .setVersion("TcQkDtLrPyZfSdJiObFoVnGyYkIbToHsBbDyFlMlWvCdPyGbHw");
+        tawSystemRoleImportForm.setVersionAt("KgAtEoFwXeZwRyChWgWxKnGtA");
 
-		// request.setAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY,
-		// tawSystemRoleImportForm);
+        // request.setAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY,
+        // tawSystemRoleImportForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 
-	public void testSearch() {
-		setRequestPathInfo("/tawSystemRoleImports");
-		addRequestParameter("method", "Search");
+    public void testSearch() {
+        setRequestPathInfo("/tawSystemRoleImports");
+        addRequestParameter("method", "Search");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("list");
-		// assertNotNull(request.getAttribute(Constants.TAWSYSTEMROLEIMPORT_LIST));
-	}
+        verifyNoActionErrors();
+        verifyForward("list");
+        // assertNotNull(request.getAttribute(Constants.TAWSYSTEMROLEIMPORT_LIST));
+    }
 
-	public void testEdit() throws Exception {
-		setRequestPathInfo("/editTawSystemRoleImport");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testEdit() throws Exception {
+        setRequestPathInfo("/editTawSystemRoleImport");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
-		// assertNotNull(request.getAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY));
+        verifyNoActionErrors();
+        verifyForward("edit");
+        // assertNotNull(request.getAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY));
 
-	}
+    }
 
-	public void testSave() throws Exception {
-		setRequestPathInfo("/editTawSystemRoleImport");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testSave() throws Exception {
+        setRequestPathInfo("/editTawSystemRoleImport");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		// TawSystemRoleImportForm tawSystemRoleImportForm =
-		// (TawSystemRoleImportForm)
-		// request.getAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY);
-		// assertNotNull(tawSystemRoleImportForm);
+        // TawSystemRoleImportForm tawSystemRoleImportForm =
+        // (TawSystemRoleImportForm)
+        // request.getAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY);
+        // assertNotNull(tawSystemRoleImportForm);
 
-		setRequestPathInfo("/saveTawSystemRoleImport");
-		addRequestParameter("method", "Save");
-		TawSystemRoleImportForm tawSystemRoleImportForm = new TawSystemRoleImportForm();
-		// update the form's required string fields and add it back to the
-		// request
-		tawSystemRoleImportForm
-				.setRoleId("JbAvDkRiJtTlRmQjBcZgTcUbPxIvJjArVxUvSsIwWbApQpIfQt");
-		tawSystemRoleImportForm
-				.setSubRoleId("EvWyRzYeKeFnCjLhZmDxDwCoTmRoSsTvYfHcVbPhVbMaWlXiPs");
-		tawSystemRoleImportForm
-				.setVersion("ClRiQhRvJdUxZcZxPrDlYmLeZdHdQhZgFzByIuIxCnApQqPzRz");
-		tawSystemRoleImportForm.setVersionAt("LoTzOaUyAyZmBeVvCwNmLtWpP");
+        setRequestPathInfo("/saveTawSystemRoleImport");
+        addRequestParameter("method", "Save");
+        TawSystemRoleImportForm tawSystemRoleImportForm = new TawSystemRoleImportForm();
+        // update the form's required string fields and add it back to the
+        // request
+        tawSystemRoleImportForm
+                .setRoleId("JbAvDkRiJtTlRmQjBcZgTcUbPxIvJjArVxUvSsIwWbApQpIfQt");
+        tawSystemRoleImportForm
+                .setSubRoleId("EvWyRzYeKeFnCjLhZmDxDwCoTmRoSsTvYfHcVbPhVbMaWlXiPs");
+        tawSystemRoleImportForm
+                .setVersion("ClRiQhRvJdUxZcZxPrDlYmLeZdHdQhZgFzByIuIxCnApQqPzRz");
+        tawSystemRoleImportForm.setVersionAt("LoTzOaUyAyZmBeVvCwNmLtWpP");
 
-		// request.setAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY,
-		// tawSystemRoleImportForm);
+        // request.setAttribute(Constants.TAWSYSTEMROLEIMPORT_KEY,
+        // tawSystemRoleImportForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
+        verifyNoActionErrors();
+        verifyForward("edit");
 
-		// verify success messages
-		verifyActionMessages(new String[] { "tawSystemRoleImport.updated" });
+        // verify success messages
+        verifyActionMessages(new String[]{"tawSystemRoleImport.updated"});
 
-	}
+    }
 
-	public void testRemove() throws Exception {
-		setRequestPathInfo("/editTawSystemRoleImport");
-		addRequestParameter("method", "Delete");
-		addRequestParameter("id", "2");
+    public void testRemove() throws Exception {
+        setRequestPathInfo("/editTawSystemRoleImport");
+        addRequestParameter("method", "Delete");
+        addRequestParameter("id", "2");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 }

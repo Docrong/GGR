@@ -2,7 +2,7 @@
 
 <html>
 <head>
-<title>обть</title>
+    <title>обть</title>
 </head>
 
 <body>

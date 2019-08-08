@@ -1,74 +1,73 @@
 package com.boco.eoms.testcard.model;
 
 public class TawTestcardTesting {
-  private String iccid;
-  private String msisdn;
-  private String testtime;
-  private String outcome;
-  private String conner;
-  private String leave;
-  private String accessories;
-  public String getConner() {
-    return conner;
-  }
+    private String iccid;
+    private String msisdn;
+    private String testtime;
+    private String outcome;
+    private String conner;
+    private String leave;
+    private String accessories;
 
-  public String getOutcome() {
-    return outcome;
-  }
+    public String getConner() {
+        return conner;
+    }
 
-  public String getTesttime() {
-    return testtime;
-  }
+    public String getOutcome() {
+        return outcome;
+    }
 
-
-
-  public void setIccid(String iccid) {
-    this.iccid = iccid;
-  }
-
-  public void setConner(String conner) {
-    this.conner = conner;
-  }
-
-  public void setOutcome(String outcome) {
-    this.outcome = outcome;
-  }
-
-  public void setTesttime(String testtime) {
-    this.testtime = testtime;
-  }
+    public String getTesttime() {
+        return testtime;
+    }
 
 
+    public void setIccid(String iccid) {
+        this.iccid = iccid;
+    }
 
-  public void setLeave(String leave) {
-    this.leave = leave;
-  }
-  
-  public String getAccessories() {
-	    return accessories;
-	  }
+    public void setConner(String conner) {
+        this.conner = conner;
+    }
 
-  public void setAccessories(String accessories) {
-    this.accessories = accessories;
-  }
+    public void setOutcome(String outcome) {
+        this.outcome = outcome;
+    }
 
-  public void setMsisdn(String msisdn) {
-	    this.msisdn = msisdn;
-	  }
+    public void setTesttime(String testtime) {
+        this.testtime = testtime;
+    }
 
-  
-  public String getIccid() {
-    return iccid;
-  }
 
-  public String getLeave() {
-    return leave;
-  }
+    public void setLeave(String leave) {
+        this.leave = leave;
+    }
 
-  public String getMsisdn() {
-    return msisdn;
-  }
+    public String getAccessories() {
+        return accessories;
+    }
 
-  public TawTestcardTesting() {
-  }
+    public void setAccessories(String accessories) {
+        this.accessories = accessories;
+    }
+
+    public void setMsisdn(String msisdn) {
+        this.msisdn = msisdn;
+    }
+
+
+    public String getIccid() {
+        return iccid;
+    }
+
+    public String getLeave() {
+        return leave;
+    }
+
+    public String getMsisdn() {
+        return msisdn;
+    }
+
+    public TawTestcardTesting() {
+    }
 }

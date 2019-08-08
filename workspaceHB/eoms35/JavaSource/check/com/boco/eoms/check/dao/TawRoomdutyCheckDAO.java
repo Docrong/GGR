@@ -20,47 +20,51 @@ import com.boco.eoms.workplan.model.TawwpAddonsTable;
 
 public class TawRoomdutyCheckDAO extends DAO {
 
-	public TawRoomdutyCheckDAO(ConnectionPool ds) {
-		super(ds);
-		// TODO Auto-generated constructor stub
-	}
+    public TawRoomdutyCheckDAO(ConnectionPool ds) {
+        super(ds);
+        // TODO Auto-generated constructor stub
+    }
 
-	public TawRoomdutyCheckDAO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	/*
-	 *   ֵ��Ѳ��ʹ��
-	 *   added by ly. 
-	 * */
-	public TawRoomdutyCheck getTawRoomdutyCheck (String roomId, String state) {
-		Session s = HibernateUtil.currentSession();
-		String hSql = "";
-		List l = null;
-		TawRoomdutyCheck tawRoomdutyCheck = null;
-		hSql = "from TawRoomdutyCheck as tawRoomdutyCheck where tawRoomdutyCheck.roomid='"
-				+ roomId + "' and tawRoomdutyCheck.state='" + state + "'";
-		Query query = s.createQuery(hSql);
-		query.setCacheable(true);
-		l = query.list();
-		if (l.size() > 0) {
-			tawRoomdutyCheck = (TawRoomdutyCheck) l.get(0);
-			Hibernate.initialize(tawRoomdutyCheck);		
-			return tawRoomdutyCheck;
-		} else {
-			return null;
-		}
-		
-	}
+    public TawRoomdutyCheckDAO() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	
-	
-	
-/*	
-	*//**   �����¼����
-	 * @param args
-	 *//*
+    /*
+     *   ֵ��Ѳ��ʹ��
+     *   added by ly.
+     * */
+    public TawRoomdutyCheck getTawRoomdutyCheck(String roomId, String state) {
+        Session s = HibernateUtil.currentSession();
+        String hSql = "";
+        List l = null;
+        TawRoomdutyCheck tawRoomdutyCheck = null;
+        hSql = "from TawRoomdutyCheck as tawRoomdutyCheck where tawRoomdutyCheck.roomid='"
+                + roomId + "' and tawRoomdutyCheck.state='" + state + "'";
+        Query query = s.createQuery(hSql);
+        query.setCacheable(true);
+        l = query.list();
+        if (l.size() > 0) {
+            tawRoomdutyCheck = (TawRoomdutyCheck) l.get(0);
+            Hibernate.initialize(tawRoomdutyCheck);
+            return tawRoomdutyCheck;
+        } else {
+            return null;
+        }
+
+    }
+
+
+
+
+    /*
+     */
+
+    /**
+     * �����¼����
+     *
+     * @param args
+     *//*
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("begin----------------------------------------------------------");
@@ -101,60 +105,57 @@ public class TawRoomdutyCheckDAO extends DAO {
 		System.out.println("finish!----------------------------------------------------------");
 		
 	}*/
+    public void insertTawRoomdutyCheck(String roomId, String addonsTableIDS) {
+        // TODO Auto-generated method stub
+        try {
+            Session s = HibernateUtil.currentSession();
+            TawRoomdutyCheck tawRoomDutyCheck = null;
+            TawwpAddonsTable tawwpAddonsTable = null;
 
-	public void insertTawRoomdutyCheck(String roomId, String addonsTableIDS) {
-		// TODO Auto-generated method stub
-		try {
-		Session s = HibernateUtil.currentSession();
-		TawRoomdutyCheck tawRoomDutyCheck = null;
-		TawwpAddonsTable tawwpAddonsTable = null; 
-		
-		String[] addonsTableId = null;
-		tawRoomDutyCheck = new TawRoomdutyCheck(roomId, "1", "2", "", "", "1");
-		
-		if (addonsTableIDS.endsWith(","))
-			addonsTableIDS = addonsTableIDS.substring(0, addonsTableIDS.lastIndexOf(","));
-		addonsTableId = addonsTableIDS.split(",");
-		for (int i = 0; i < addonsTableId.length; i++) {
-			tawwpAddonsTable = (TawwpAddonsTable) s.load(TawwpAddonsTable.class, addonsTableId[i]);
-			tawRoomDutyCheck.getAddonstable().add(tawwpAddonsTable);
-		}
-		s.save(tawRoomDutyCheck);		
-		s.beginTransaction().commit();
-		}
-		catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+            String[] addonsTableId = null;
+            tawRoomDutyCheck = new TawRoomdutyCheck(roomId, "1", "2", "", "", "1");
 
-	public void modifyTawRoomdutyCheck(String tawRoomDutyCheckId, String addonsTableIDS) {
-		// TODO Auto-generated method stub
-		Session s = HibernateUtil.currentSession();
-		TawRoomdutyCheck tawRoomDutyCheck = null;
-		TawwpAddonsTable tawwpAddonsTable = null; 
-		
-		String[] addonsTableId = null;
-		tawRoomDutyCheck = (TawRoomdutyCheck) s.load(TawRoomdutyCheck.class, tawRoomDutyCheckId);
-		tawRoomDutyCheck.getAddonstable().clear();
-		if (addonsTableIDS.endsWith(","))
-			addonsTableIDS = addonsTableIDS.substring(0, addonsTableIDS.lastIndexOf(","));
-		addonsTableId = addonsTableIDS.split(",");
-		for (int i = 0; i < addonsTableId.length; i++) {
-			tawwpAddonsTable = (TawwpAddonsTable) s.load(TawwpAddonsTable.class, addonsTableId[i]);
-			tawRoomDutyCheck.getAddonstable().add(tawwpAddonsTable);
-		}
-		s.update(tawRoomDutyCheck);
-		s.beginTransaction().commit();
-		
-		
-		
-	}
+            if (addonsTableIDS.endsWith(","))
+                addonsTableIDS = addonsTableIDS.substring(0, addonsTableIDS.lastIndexOf(","));
+            addonsTableId = addonsTableIDS.split(",");
+            for (int i = 0; i < addonsTableId.length; i++) {
+                tawwpAddonsTable = (TawwpAddonsTable) s.load(TawwpAddonsTable.class, addonsTableId[i]);
+                tawRoomDutyCheck.getAddonstable().add(tawwpAddonsTable);
+            }
+            s.save(tawRoomDutyCheck);
+            s.beginTransaction().commit();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-	/*
-	 * 	��ѯ��ϵ��
-	 * */	
+    }
+
+    public void modifyTawRoomdutyCheck(String tawRoomDutyCheckId, String addonsTableIDS) {
+        // TODO Auto-generated method stub
+        Session s = HibernateUtil.currentSession();
+        TawRoomdutyCheck tawRoomDutyCheck = null;
+        TawwpAddonsTable tawwpAddonsTable = null;
+
+        String[] addonsTableId = null;
+        tawRoomDutyCheck = (TawRoomdutyCheck) s.load(TawRoomdutyCheck.class, tawRoomDutyCheckId);
+        tawRoomDutyCheck.getAddonstable().clear();
+        if (addonsTableIDS.endsWith(","))
+            addonsTableIDS = addonsTableIDS.substring(0, addonsTableIDS.lastIndexOf(","));
+        addonsTableId = addonsTableIDS.split(",");
+        for (int i = 0; i < addonsTableId.length; i++) {
+            tawwpAddonsTable = (TawwpAddonsTable) s.load(TawwpAddonsTable.class, addonsTableId[i]);
+            tawRoomDutyCheck.getAddonstable().add(tawwpAddonsTable);
+        }
+        s.update(tawRoomDutyCheck);
+        s.beginTransaction().commit();
+
+
+    }
+
+    /*
+     * 	��ѯ��ϵ��
+     * */
 /*	public static void main(String[] args) {
 		
 		System.out.println("begin----------------------------------------------------------");
@@ -173,13 +174,13 @@ public class TawRoomdutyCheckDAO extends DAO {
 		
 	}*/
 
-	public List getTableMapByRoomdutycheckid(String tawRoomdutyCheckId) {
-		// TODO Auto-generated method stub
-		Session s = HibernateUtil.currentSession();
-		String hql = "from TawRoomdutycAddonstable as t where t.tawRoomdutyCheck='" + tawRoomdutyCheckId + "'";
-		Query q = s.createQuery(hql);		
-		return q.list();
-	}
+    public List getTableMapByRoomdutycheckid(String tawRoomdutyCheckId) {
+        // TODO Auto-generated method stub
+        Session s = HibernateUtil.currentSession();
+        String hql = "from TawRoomdutycAddonstable as t where t.tawRoomdutyCheck='" + tawRoomdutyCheckId + "'";
+        Query q = s.createQuery(hql);
+        return q.list();
+    }
 	
 /*
 	
@@ -202,60 +203,59 @@ public class TawRoomdutyCheckDAO extends DAO {
 		s.close();
 		System.out.println("finish!");
 	}
-*/	
-	
-	
-	/*
-	 * 	��������ѯ��j��
-	 * */
-	public static void main(String[] args) {
-		Session s = HibernateUtil.currentSession();
-		String hql = "from TawRoomdutycAddonstable as t where t.tawRoomdutyCheck.roomid='410' and t.tawWpAddonstable.name like '%����%'";
-		Query q = s.createQuery(hql);
-		TawRoomdutycAddonstable rel = null;
-		List l = q.list();
-		for (int i = 0; i < l.size(); i++) {
-			rel = (TawRoomdutycAddonstable) l.get(i);
-			System.out.println(rel.getTawRoomdutyCheck().getId() + "-------------" + rel.getTawRmAddonsTable().getId() + "---==" + rel.getDataurl() ); 		
-		}		
-	}
+*/
 
-	public List getRelForm(String hql) {
-		// TODO Auto-generated method stub
-		Session s = HibernateUtil.currentSession();
-		Query q = s.createQuery(hql);
-		List l = q.list();		
-		return l;
-	}
 
-	public void updateTawRoomDutyCheck(String tawRoomDutyCheckId) {
-		// TODO Auto-generated method stub
-		Session s = HibernateUtil.currentSession();
-		Transaction tr = s.beginTransaction();
-		TawRoomdutyCheck tawRoomdutyCheck = null;
-		tawRoomdutyCheck = (TawRoomdutyCheck) s.load(TawRoomdutyCheck.class, tawRoomDutyCheckId);
-		tawRoomdutyCheck.setState("2");	//�޸�stateΪ2�� ��ʾ�ѹ鵵
-		s.save(tawRoomdutyCheck);	
-		tr.commit();
-	}
-	
-	public String getTableMapByRoomdutyDataurl(String dataUrl) {
-		// TODO Auto-generated method stub
-		String checkType="";
-		Session s = HibernateUtil.currentSession();
-		TawRoomdutycAddonstable tawRoomdutycAddonstable=null;
-		String hql = "from TawRoomdutycAddonstable as t where t.dataurl='" + dataUrl + "'";
-		Query q = s.createQuery(hql);
-		
-		List list= q.list();
-		if(list.size()>0){
-			tawRoomdutycAddonstable=(TawRoomdutycAddonstable)list.get(0);
-			checkType=tawRoomdutycAddonstable.getTawRoomdutyCheck().getChecktype();
-		}
-		return checkType;
-	}
-	
-	
-	
+    /*
+     * 	��������ѯ��j��
+     * */
+    public static void main(String[] args) {
+        Session s = HibernateUtil.currentSession();
+        String hql = "from TawRoomdutycAddonstable as t where t.tawRoomdutyCheck.roomid='410' and t.tawWpAddonstable.name like '%����%'";
+        Query q = s.createQuery(hql);
+        TawRoomdutycAddonstable rel = null;
+        List l = q.list();
+        for (int i = 0; i < l.size(); i++) {
+            rel = (TawRoomdutycAddonstable) l.get(i);
+            System.out.println(rel.getTawRoomdutyCheck().getId() + "-------------" + rel.getTawRmAddonsTable().getId() + "---==" + rel.getDataurl());
+        }
+    }
+
+    public List getRelForm(String hql) {
+        // TODO Auto-generated method stub
+        Session s = HibernateUtil.currentSession();
+        Query q = s.createQuery(hql);
+        List l = q.list();
+        return l;
+    }
+
+    public void updateTawRoomDutyCheck(String tawRoomDutyCheckId) {
+        // TODO Auto-generated method stub
+        Session s = HibernateUtil.currentSession();
+        Transaction tr = s.beginTransaction();
+        TawRoomdutyCheck tawRoomdutyCheck = null;
+        tawRoomdutyCheck = (TawRoomdutyCheck) s.load(TawRoomdutyCheck.class, tawRoomDutyCheckId);
+        tawRoomdutyCheck.setState("2");    //�޸�stateΪ2�� ��ʾ�ѹ鵵
+        s.save(tawRoomdutyCheck);
+        tr.commit();
+    }
+
+    public String getTableMapByRoomdutyDataurl(String dataUrl) {
+        // TODO Auto-generated method stub
+        String checkType = "";
+        Session s = HibernateUtil.currentSession();
+        TawRoomdutycAddonstable tawRoomdutycAddonstable = null;
+        String hql = "from TawRoomdutycAddonstable as t where t.dataurl='" + dataUrl + "'";
+        Query q = s.createQuery(hql);
+
+        List list = q.list();
+        if (list.size() > 0) {
+            tawRoomdutycAddonstable = (TawRoomdutycAddonstable) list.get(0);
+            checkType = tawRoomdutycAddonstable.getTawRoomdutyCheck().getChecktype();
+        }
+        return checkType;
+    }
+
+
 }
  

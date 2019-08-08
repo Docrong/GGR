@@ -4,72 +4,76 @@
 <!-- sample config file  , 
 			create new config file in your module -->
 <beans>
-	<!-- 配置信息类 -->
-	<bean id="statTaskConfigManager"
-		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
-		autowire="byName">
-		<!-- 统计算法配置文件路径 在子模块中新建配置文件 
-		<property name="configFilePath">
-			<value>classpath:config/statistic-config-query-task.xml</value>
-		</property>-->
-		
-		<!-- Excel配置文件路径 在子模块中新建配置文件
-		<property name="excelConfigFilePath">
-			<value>classpath:config/statistic-config-excel-task.xls</value>
-		</property>-->
-		
-		<!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
-		<property name="reloadConfig">
-			<value>true</value>
-		</property>
-		
-		<!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
-		<property name="excelConfigMap">
-           <map>
-              <entry key="statistic-config-excel-netchange"><value>classpath:config/statistic-config-excel-netchange.xls</value></entry>
-           </map>
+    <!-- 配置信息类 -->
+    <bean id="statTaskConfigManager"
+          class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
+          autowire="byName">
+        <!-- 统计算法配置文件路径 在子模块中新建配置文件
+        <property name="configFilePath">
+            <value>classpath:config/statistic-config-query-task.xml</value>
+        </property>-->
+
+        <!-- Excel配置文件路径 在子模块中新建配置文件
+        <property name="excelConfigFilePath">
+            <value>classpath:config/statistic-config-excel-task.xls</value>
+        </property>-->
+
+        <!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
+        <property name="reloadConfig">
+            <value>true</value>
         </property>
-        
+
+        <!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
+        <property name="excelConfigMap">
+            <map>
+                <entry key="statistic-config-excel-netchange">
+                    <value>classpath:config/statistic-config-excel-netchange.xls</value>
+                </entry>
+            </map>
+        </property>
+
         <!-- 配置quary算法文件路径 key为excel中配置的参数，value对应文件名称  -->
         <property name="queryCongigMap">
-           <map>
-              <entry key="statistic-config-query-netchange"><value>classpath:config/statistic-config-query-netchange.xml</value></entry>
-           </map>
+            <map>
+                <entry key="statistic-config-query-netchange">
+                    <value>classpath:config/statistic-config-query-netchange.xml</value>
+                </entry>
+            </map>
         </property>
-		
-		<!-- Excel解析类 		 
-			目前使用applicationContext-statistic-base.xml中的配置 
-			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
-		<property name="excelConverter" ref="statBaseExcelConverter"/>
-	</bean>
-	<!-- Task总体管理类 -->
-	<bean id="statTaskManager" 
-		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
-		<property name="statConfigManager" ref="statTaskConfigManager" />
 
-		<!-- 详细列表的VO类  -->
-		<property name="statDetailVOName">
-			<value>com.boco.eoms.commons.statistic.task.vo.StatDetailVOTask</value>
-		</property>
+        <!-- Excel解析类
+            目前使用applicationContext-statistic-base.xml中的配置
+            如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
+        <property name="excelConverter" ref="statBaseExcelConverter"/>
+    </bean>
+    <!-- Task总体管理类 -->
+    <bean id="statTaskManager"
+          class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
+        <property name="statConfigManager" ref="statTaskConfigManager"/>
 
-		<!-- 
-			以下3个对象目前使用applicationContext-statistic-base.xml中的配置 
-			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.
-		-->
-		<property name="statJdbcDAO" ref="statBaseJdbcDAO" />
-		<property name="statExcelConverter" ref="statBaseExcelConverter" />
-		<property name="statDetailDAO" ref="statDetailDAOInformix" />
+        <!-- 详细列表的VO类  -->
+        <property name="statDetailVOName">
+            <value>com.boco.eoms.commons.statistic.task.vo.StatDetailVOTask</value>
+        </property>
 
-		<property name="statExportExcel" ref="statBaseExportExcel"></property>
-		
-		<!-- 订制统计访问数据库接口 -->
-		<property name="customStatHibernateDAO" ref="customStatHibernateDAO"></property>
-		
-	</bean>
+        <!--
+            以下3个对象目前使用applicationContext-statistic-base.xml中的配置
+            如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.
+        -->
+        <property name="statJdbcDAO" ref="statBaseJdbcDAO"/>
+        <property name="statExcelConverter" ref="statBaseExcelConverter"/>
+        <property name="statDetailDAO" ref="statDetailDAOInformix"/>
 
-	<!-- 统计工具任务工单实现类 -->
-	<bean id="taskStatMethod"
-		class="com.boco.eoms.commons.statistic.task.webapp.action.TaskStatMethodImpl">
-		<property name="statManager" ref="statTaskManager" />
-	</bean>
+        <property name="statExportExcel" ref="statBaseExportExcel"></property>
+
+        <!-- 订制统计访问数据库接口 -->
+        <property name="customStatHibernateDAO" ref="customStatHibernateDAO"></property>
+
+    </bean>
+
+    <!-- 统计工具任务工单实现类 -->
+    <bean id="taskStatMethod"
+          class="com.boco.eoms.commons.statistic.task.webapp.action.TaskStatMethodImpl">
+        <property name="statManager" ref="statTaskManager"/>
+    </bean>
 </beans>

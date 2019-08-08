@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.db.test;
 
 // eoms classes
+
 import com.boco.eoms.commons.loging.BocoLog;
 import com.boco.eoms.commons.db.test.util.ConnectionPoolCheck;
 
@@ -20,7 +21,7 @@ public class PoolMainTest extends Thread {
     private long _lInervalTime;
 
     /**
-     * 
+     *
      * @param int _iUserCounts, Thread counts.
      * @prama long _lHoldConnTime, Use connection for how long time.
      * @param long _lInervalTime, How long time to create one thread.
@@ -35,8 +36,7 @@ public class PoolMainTest extends Thread {
             _objPoolMain._lHoldConnTime = (new Long(args[1])).longValue();
             _objPoolMain._lInervalTime = (new Long(args[2])).longValue();
             _objPoolMain.exec();
-        }
-        else {
+        } else {
             BocoLog.info(null, "Input parameter numbers error, should be three!");
         }
 
@@ -59,8 +59,7 @@ public class PoolMainTest extends Thread {
     public void waitfor(long _ltime) {
         try {
             sleep(_ltime);
-        }
-        catch (InterruptedException e) {
+        } catch (InterruptedException e) {
             BocoLog.error(this, "Thread: [" + this.toString() + "], error message: ["
                     + e.getMessage() + "]");
         }

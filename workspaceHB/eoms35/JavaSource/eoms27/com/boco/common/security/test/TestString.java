@@ -7,27 +7,28 @@ import java.util.Vector;
  * <p>Description: Authentication and Authorization System via LDAP</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Company: BOCO</p>
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */
 
 public class TestString {
-  public TestString() {
+    public TestString() {
 
-    Vector a = new Vector();
-    a.add("z");
-    a.add("y");
-    a.add("x");
-    a.add("w");
+        Vector a = new Vector();
+        a.add("z");
+        a.add("y");
+        a.add("x");
+        a.add("w");
 
 //
 
-    System.out.println(a);
+        System.out.println(a);
 
-  }
+    }
 
-  public static void main(String[] args) {
-         System.out.println(System.getProperties());
+    public static void main(String[] args) {
+        System.out.println(System.getProperties());
 //    TestString testString1 = new TestString();
 //
 //    StringBuffer sb = new StringBuffer("uid=wzw,ou=users,dc=boco,dc=com");
@@ -49,6 +50,6 @@ public class TestString {
 //    System.out.println(a.toCharArray());
 //    System.out.println(a.toCharArray().toString());
 
-  }
+    }
 
 }

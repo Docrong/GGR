@@ -1,30 +1,31 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//ZH-CN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <title>ÕýÔò±í´ïÊ½²âÊÔ</title> 
-  <script type="text/javascript" charset="utf-8" src="/eoms/scripts/base/eoms.js"></script>
-  <script type="text/javascript">
-  	function testRegExp(){
-		var rstr = document.getElementById('reg').value;
-		var tstr = document.getElementById('teststr').value;
-		var r = new RegExp(rstr, "g");
-		alert(r.test(tstr));
-	}
-	//ÑéÖ¤Èø°àË¹ÓÃ»§Ãû
-	function testSarbanes(){
-		var tstr = document.getElementById('teststr').value;		
-		alert(/[A-Z]+/.test(tstr) 
-		   && /[a-z]+/.test(tstr) 
-		   && /[0-9]+/.test(tstr)
-		   && /^[A-Za-z0-9]{8,}$/.test(tstr));
-	}
-  </script>
+    <title>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½</title>
+    <script type="text/javascript" charset="utf-8" src="/eoms/scripts/base/eoms.js"></script>
+    <script type="text/javascript">
+        function testRegExp() {
+            var rstr = document.getElementById('reg').value;
+            var tstr = document.getElementById('teststr').value;
+            var r = new RegExp(rstr, "g");
+            alert(r.test(tstr));
+        }
+
+        //ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ë¹ï¿½Ã»ï¿½ï¿½ï¿½
+        function testSarbanes() {
+            var tstr = document.getElementById('teststr').value;
+            alert(/[A-Z]+/.test(tstr)
+                && /[a-z]+/.test(tstr)
+                && /[0-9]+/.test(tstr)
+                && /^[A-Za-z0-9]{8,}$/.test(tstr));
+        }
+    </script>
 </head>
 <body>
-	ÊäÈë±í´ïÊ½£º<input type="text" id="reg" size="30"><br/>
-	²âÊÔ×Ö·û´®£º<input type="text" id="teststr" size="30"><br/>
-	<input type="button" value="ÑéÖ¤ÊäÈëµÄ±í´ïÊ½" onclick="javascript:testRegExp();"/>
-	<input type="button" value="ÑéÖ¤Èø°àË¹ÓÃ»§Ãû" onclick="javascript:testSarbanes();"/>
-	
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½<input type="text" id="reg" size="30"><br/>
+ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½<input type="text" id="teststr" size="30"><br/>
+<input type="button" value="ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ê½" onclick="javascript:testRegExp();"/>
+<input type="button" value="ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½Ë¹ï¿½Ã»ï¿½ï¿½ï¿½" onclick="javascript:testSarbanes();"/>
+
 </body>
 </html>

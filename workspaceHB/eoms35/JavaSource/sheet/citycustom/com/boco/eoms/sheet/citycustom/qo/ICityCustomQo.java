@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.citycustom.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Fri Sep 28 14:06:48 CST 2012
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICityCustomQo extends IWorkSheetQO {
- 
- }
+
+public interface ICityCustomQo extends IWorkSheetQO {
+
+}

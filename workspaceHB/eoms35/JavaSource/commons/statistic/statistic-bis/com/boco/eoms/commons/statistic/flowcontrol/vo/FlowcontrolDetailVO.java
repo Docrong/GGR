@@ -5,8 +5,8 @@ import java.util.Date;
 import com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO;
 
 public class FlowcontrolDetailVO extends StatDetailVO {
-	private String sheettype;
-	private Date completetimelimit;
+    private String sheettype;
+    private Date completetimelimit;
 //	   String sheetkey=vo.getSheetkey();
 //	   String taskid=vo.getTaskid();
 //	   String taskname=vo.getTaskname();
@@ -14,85 +14,85 @@ public class FlowcontrolDetailVO extends StatDetailVO {
 //	   String piid=vo.getPiid();
 //	   String taskstatus=vo.getTaskstatus();
 //	   String prelinkid=vo.getPrelinkid();
-	
-	private String sheetkey;
-	private String taskid;
-	private String taskname;
-	private String operateroleid;
-	private String piid;
-	private String taskstatus;
-	private String prelinkid;
 
-	public Date getCompletetimelimit() {
-		return completetimelimit;
-	}
+    private String sheetkey;
+    private String taskid;
+    private String taskname;
+    private String operateroleid;
+    private String piid;
+    private String taskstatus;
+    private String prelinkid;
 
-	public void setCompletetimelimit(Date completetimelimit) {
-		this.completetimelimit = completetimelimit;
-	}
+    public Date getCompletetimelimit() {
+        return completetimelimit;
+    }
 
-	public String getSheettype() {
-		return sheettype;
-	}
+    public void setCompletetimelimit(Date completetimelimit) {
+        this.completetimelimit = completetimelimit;
+    }
 
-	public void setSheettype(String sheettype) {
-		this.sheettype = sheettype;
-	}
+    public String getSheettype() {
+        return sheettype;
+    }
 
-	public String getSheetkey() {
-		return sheetkey;
-	}
+    public void setSheettype(String sheettype) {
+        this.sheettype = sheettype;
+    }
 
-	public void setSheetkey(String sheetkey) {
-		this.sheetkey = sheetkey;
-	}
+    public String getSheetkey() {
+        return sheetkey;
+    }
 
-	public String getTaskid() {
-		return taskid;
-	}
+    public void setSheetkey(String sheetkey) {
+        this.sheetkey = sheetkey;
+    }
 
-	public void setTaskid(String taskid) {
-		this.taskid = taskid;
-	}
+    public String getTaskid() {
+        return taskid;
+    }
 
-	public String getTaskname() {
-		return taskname;
-	}
+    public void setTaskid(String taskid) {
+        this.taskid = taskid;
+    }
 
-	public void setTaskname(String taskname) {
-		this.taskname = taskname;
-	}
+    public String getTaskname() {
+        return taskname;
+    }
 
-	public String getOperateroleid() {
-		return operateroleid;
-	}
+    public void setTaskname(String taskname) {
+        this.taskname = taskname;
+    }
 
-	public void setOperateroleid(String operateroleid) {
-		this.operateroleid = operateroleid;
-	}
+    public String getOperateroleid() {
+        return operateroleid;
+    }
 
-	public String getPiid() {
-		return piid;
-	}
+    public void setOperateroleid(String operateroleid) {
+        this.operateroleid = operateroleid;
+    }
 
-	public void setPiid(String piid) {
-		this.piid = piid;
-	}
+    public String getPiid() {
+        return piid;
+    }
 
-	public String getTaskstatus() {
-		return taskstatus;
-	}
+    public void setPiid(String piid) {
+        this.piid = piid;
+    }
 
-	public void setTaskstatus(String taskstatus) {
-		this.taskstatus = taskstatus;
-	}
+    public String getTaskstatus() {
+        return taskstatus;
+    }
 
-	public String getPrelinkid() {
-		return prelinkid;
-	}
+    public void setTaskstatus(String taskstatus) {
+        this.taskstatus = taskstatus;
+    }
 
-	public void setPrelinkid(String prelinkid) {
-		this.prelinkid = prelinkid;
-	}
-	
+    public String getPrelinkid() {
+        return prelinkid;
+    }
+
+    public void setPrelinkid(String prelinkid) {
+        this.prelinkid = prelinkid;
+    }
+
 }

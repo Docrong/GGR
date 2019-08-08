@@ -15,7 +15,6 @@ import com.boco.eoms.commons.statistic.base.util.Constants;
  *
  * @author ��
  * @version 1.0
- *
  */
 public class Util {
 
@@ -32,10 +31,8 @@ public class Util {
      * ͨ��ע����dict.xml��key����ֵ����(dictId)�γ�xml dao��Ҫ���dictId
      * �磺key=sample,dictId=major ��������sampe&major
      *
-     * @param key
-     *            ע����dict.xml��key
-     * @param id
-     *            �ֵ����
+     * @param key ע����dict.xml��key
+     * @param id  �ֵ����
      * @return key=sample,dictId=major ��������sampe&major
      */
     public static String constituteDictId(String key, String id) {
@@ -45,8 +42,7 @@ public class Util {
     /**
      * ȡ�ֵ�xml��ַ
      *
-     * @param dictId
-     *            �磺key&major
+     * @param dictId �磺key&major
      * @return classpath:com/boco/eoms/sample.xml
      */
     public static String getDictKey(String dictId) {
@@ -56,8 +52,7 @@ public class Util {
     /**
      * ȡ�ֵ����id
      *
-     * @param dictId
-     *            �磺key&major
+     * @param dictId �磺key&major
      * @return major
      */
     public static String getId(String dictId) {

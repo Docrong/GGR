@@ -1,6 +1,6 @@
 /**
  * KnowledgeSendServiceServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the IBM Web services WSDL2Java emitter.
  * cf170819.19 v52708210711
@@ -12,8 +12,8 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
 
     public KnowledgeSendServiceServiceLocator() {
         super(com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-           "http://client.knowledge.eoms.boco.com/eomsMain/services/KnowledgeSendService",
-           "KnowledgeSendServiceService"));
+                "http://client.knowledge.eoms.boco.com/eomsMain/services/KnowledgeSendService",
+                "KnowledgeSendServiceService"));
 
         context.setLocatorName("com.boco.eoms.knowledge.client.KnowledgeSendServiceServiceLocator");
     }
@@ -33,8 +33,7 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
         String overriddingEndpoint = (String) context.getOverriddingEndpointURIs().get("KnowledgeSendService");
         if (overriddingEndpoint != null) {
             return overriddingEndpoint;
-        }
-        else {
+        } else {
             return knowledgeSendService_address;
         }
     }
@@ -53,11 +52,10 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
     }
 
     public com.boco.eoms.knowledge.client.KnowledgeSendService getKnowledgeSendService() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(getKnowledgeSendServiceAddress());
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             return null; // 不太可能，因为 URL 已在 WSDL2Java 中得到验证
         }
         return getKnowledgeSendService(endpoint);
@@ -65,12 +63,12 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
 
     public com.boco.eoms.knowledge.client.KnowledgeSendService getKnowledgeSendService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         com.boco.eoms.knowledge.client.KnowledgeSendService _stub =
-            (com.boco.eoms.knowledge.client.KnowledgeSendService) getStub(
-                knowledgeSendServicePortName,
-                (String) getPort2NamespaceMap().get(knowledgeSendServicePortName),
-                com.boco.eoms.knowledge.client.KnowledgeSendService.class,
-                "com.boco.eoms.knowledge.client.KnowledgeSendServiceSoapBindingStub",
-                portAddress.toString());
+                (com.boco.eoms.knowledge.client.KnowledgeSendService) getStub(
+                        knowledgeSendServicePortName,
+                        (String) getPort2NamespaceMap().get(knowledgeSendServicePortName),
+                        com.boco.eoms.knowledge.client.KnowledgeSendService.class,
+                        "com.boco.eoms.knowledge.client.KnowledgeSendServiceSoapBindingStub",
+                        portAddress.toString());
         if (_stub instanceof com.ibm.ws.webservices.engine.client.Stub) {
             ((com.ibm.ws.webservices.engine.client.Stub) _stub).setPortName(knowledgeSendServiceWSDDPortName);
         }
@@ -87,8 +85,7 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
             if (com.boco.eoms.knowledge.client.KnowledgeSendService.class.isAssignableFrom(serviceEndpointInterface)) {
                 return getKnowledgeSendService();
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("WSWS3273E: 错误：接口没有存根实现：  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -103,8 +100,7 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
         String inputPortName = portName.getLocalPart();
         if ("KnowledgeSendService".equals(inputPortName)) {
             return getKnowledgeSendService();
-        }
-        else  {
+        } else {
             throw new javax.xml.rpc.ServiceException();
         }
     }
@@ -123,8 +119,8 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
         if (port2NamespaceMap == null) {
             port2NamespaceMap = new java.util.HashMap();
             port2NamespaceMap.put(
-               "KnowledgeSendService",
-               "http://schemas.xmlsoap.org/wsdl/soap/");
+                    "KnowledgeSendService",
+                    "http://schemas.xmlsoap.org/wsdl/soap/");
         }
         return port2NamespaceMap;
     }
@@ -137,9 +133,9 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
             String serviceNamespace = getServiceName().getNamespaceURI();
             for (java.util.Iterator i = getPort2NamespaceMap().keySet().iterator(); i.hasNext(); ) {
                 ports.add(
-                    com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-                        serviceNamespace,
-                        (String) i.next()));
+                        com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
+                                serviceNamespace,
+                                (String) i.next()));
             }
         }
         return ports.iterator();
@@ -149,14 +145,13 @@ public class KnowledgeSendServiceServiceLocator extends com.ibm.ws.webservices.m
         if (portName == null) {
             throw new javax.xml.rpc.ServiceException("WSWS3062E: 错误：portName 不应为 null。");
         }
-        if  (portName.getLocalPart().equals("KnowledgeSendService")) {
-            return new javax.xml.rpc.Call[] {
-                createCall(portName, "main", "mainRequest"),
-                createCall(portName, "saveXmlValue", "saveXmlValueRequest"),
-                createCall(portName, "searchXmlValue", "searchXmlValueRequest"),
+        if (portName.getLocalPart().equals("KnowledgeSendService")) {
+            return new javax.xml.rpc.Call[]{
+                    createCall(portName, "main", "mainRequest"),
+                    createCall(portName, "saveXmlValue", "saveXmlValueRequest"),
+                    createCall(portName, "searchXmlValue", "searchXmlValueRequest"),
             };
-        }
-        else {
+        } else {
             throw new javax.xml.rpc.ServiceException("WSWS3062E: 错误：portName 不应为 null。");
         }
     }

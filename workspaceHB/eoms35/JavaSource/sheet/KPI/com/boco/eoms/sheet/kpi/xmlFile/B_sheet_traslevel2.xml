@@ -1,41 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kpi>
-     <cnname>地区, 工单总量, 处理及时率, 平均处理时长(分钟),平均接单时长（分钟）,超时工单量,驳回工单量,地区号</cnname>
-     <enname>tableA,tableB,tableC,tableD,tableE,tableF,tableG,deptid</enname>
-     <sql> select nvl(getareaname(areaid),'湖北') tableA,count(id) tableB,round((1-sum(ifouttime)/count(id))*100,2)||'%' tableC,round(avg(dealusetime),2) tableD,round(avg(acceptusetime),2)tableE,sum(ifouttime)tableF,sum(ifrefuse) tableG ,nvl(areaid,'18' )deptid from (
-select id,max(sheetid)sheetid,max(sendtime)sendtime,max(title)title,max(areaid)areaid,max(t1trstime)t1trstime,max(t2accepttime)t2accepttime,max(t2completetime)t2completetime,max(t2acceptlimit)t2acceptlimit
-,max(t2completelimit)t2completelimit,decode(max(t2completetime),'',ifbigtime(sysdate,max(t2completelimit)),ifbigtime(max(t2completetime),max(t2completelimit)),1,'0') ifouttime,abs(round((max(t2completetime)-max(t1trstime))*24*60,2)) dealusetime,abs(round((max(t2accepttime)-max(t1trstime))*24*60,2)) acceptusetime ,max(t2userid)t2userid,max(t2username)t2username,max(ifrefuse)ifrefuse 
-from (
-select m1.id,m1.sheetid,m1.sendtime,m1.title,m1.mainalarmnum,
-m1.todeptid areaid,
-l2.operatetime-0 t1trstime,
-l3.operatetime-0 t2accepttime,
-l4.operatetime-0 t2completetime,
-l2.nodeacceptlimit-0 t2acceptlimit,
-l2.nodecompletelimit-0 t2completelimit,
-l4.completeflag,
-l4.operateuserid t2userid,
-getusername(l4.operateuserid) t2username,
-l4.operatedeptid,
-decode(l5.id,'',0,1) ifrefuse
-From commonfault_main m1,commonfault_link l1
-,(select  m.id,max(l.operatetime)operatetime,operatetype,activetemplateid from commonfault_main m,commonfault_link l 
-          where m.id = l.mainid and m.sendtime &gt;to_date('{2}','yyyy-mm-dd hh24:mi:ss') and m.sendtime&lt;to_date('{1}','yyyy-mm-dd hh24:mi:ss') and l.operatetype in (1,61,46,7)
-                  group by m.id,operatetype,activetemplateid 
-    ) t0 
-,commonfault_link l2
-,commonfault_link l3 
-,commonfault_link l4 
-,commonfault_link l5 
- where m1.sendtime &gt;to_date('{2}','yyyy-mm-dd hh24:mi:ss') and m1.sendtime&lt;to_date('{1}','yyyy-mm-dd hh24:mi:ss')
-  and m1.id =l1.mainid and l1.mainid = t0.id and l1.operatetime = t0.operatetime and l1.operatetype = t0.operatetype and m1.status in (0,1) and m1.deleted=0
- and l2.operatetype(+) = '1' and l2.activetemplateid(+)='FirstExcuteHumTask'  and l1.id= l2.id(+)
- and l3.operatetype(+) = '61' and l3.activetemplateid(+)='SecondExcuteHumTask'  and l1.id= l3.id(+)
- and l4.operatetype(+) = '46' and l4.activetemplateid(+)='SecondExcuteHumTask' and l1.id= l4.id(+)
- and l5.operatetype(+) = '7' and l5.activetemplateid(+)='SecondExcuteHumTask' and l1.id= l5.id(+)
+    <cnname>地区, 工单总量, 处理及时率, 平均处理时长(分钟),平均接单时长（分钟）,超时工单量,驳回工单量,地区号</cnname>
+    <enname>tableA,tableB,tableC,tableD,tableE,tableF,tableG,deptid</enname>
+    <sql>select nvl(getareaname(areaid),'湖北') tableA,count(id) tableB,round((1-sum(ifouttime)/count(id))*100,2)||'%'
+        tableC,round(avg(dealusetime),2) tableD,round(avg(acceptusetime),2)tableE,sum(ifouttime)tableF,sum(ifrefuse)
+        tableG ,nvl(areaid,'18' )deptid from (
+        select
+        id,max(sheetid)sheetid,max(sendtime)sendtime,max(title)title,max(areaid)areaid,max(t1trstime)t1trstime,max(t2accepttime)t2accepttime,max(t2completetime)t2completetime,max(t2acceptlimit)t2acceptlimit
+        ,max(t2completelimit)t2completelimit,decode(max(t2completetime),'',ifbigtime(sysdate,max(t2completelimit)),ifbigtime(max(t2completetime),max(t2completelimit)),1,'0')
+        ifouttime,abs(round((max(t2completetime)-max(t1trstime))*24*60,2))
+        dealusetime,abs(round((max(t2accepttime)-max(t1trstime))*24*60,2)) acceptusetime
+        ,max(t2userid)t2userid,max(t2username)t2username,max(ifrefuse)ifrefuse
+        from (
+        select m1.id,m1.sheetid,m1.sendtime,m1.title,m1.mainalarmnum,
+        m1.todeptid areaid,
+        l2.operatetime-0 t1trstime,
+        l3.operatetime-0 t2accepttime,
+        l4.operatetime-0 t2completetime,
+        l2.nodeacceptlimit-0 t2acceptlimit,
+        l2.nodecompletelimit-0 t2completelimit,
+        l4.completeflag,
+        l4.operateuserid t2userid,
+        getusername(l4.operateuserid) t2username,
+        l4.operatedeptid,
+        decode(l5.id,'',0,1) ifrefuse
+        From commonfault_main m1,commonfault_link l1
+        ,(select m.id,max(l.operatetime)operatetime,operatetype,activetemplateid from commonfault_main
+        m,commonfault_link l
+        where m.id = l.mainid and m.sendtime &gt;to_date('{2}','yyyy-mm-dd hh24:mi:ss') and m.sendtime&lt;to_date('{1}','yyyy-mm-dd
+        hh24:mi:ss') and l.operatetype in (1,61,46,7)
+        group by m.id,operatetype,activetemplateid
+        ) t0
+        ,commonfault_link l2
+        ,commonfault_link l3
+        ,commonfault_link l4
+        ,commonfault_link l5
+        where m1.sendtime &gt;to_date('{2}','yyyy-mm-dd hh24:mi:ss') and m1.sendtime&lt;to_date('{1}','yyyy-mm-dd
+        hh24:mi:ss')
+        and m1.id =l1.mainid and l1.mainid = t0.id and l1.operatetime = t0.operatetime and l1.operatetype =
+        t0.operatetype and m1.status in (0,1) and m1.deleted=0
+        and l2.operatetype(+) = '1' and l2.activetemplateid(+)='FirstExcuteHumTask' and l1.id= l2.id(+)
+        and l3.operatetype(+) = '61' and l3.activetemplateid(+)='SecondExcuteHumTask' and l1.id= l3.id(+)
+        and l4.operatetype(+) = '46' and l4.activetemplateid(+)='SecondExcuteHumTask' and l1.id= l4.id(+)
+        and l5.operatetype(+) = '7' and l5.activetemplateid(+)='SecondExcuteHumTask' and l1.id= l5.id(+)
 
-)group by id ) group by areaid</sql>
-   <a>N,filename=B_sheet_traslevel2_B1,N,N,N,filename=B_sheet_traslevel2_B5,filename=B_sheet_traslevel2_B6</a>
-   <groupby> todeptid</groupby>
+        )group by id ) group by areaid
+    </sql>
+    <a>N,filename=B_sheet_traslevel2_B1,N,N,N,filename=B_sheet_traslevel2_B5,filename=B_sheet_traslevel2_B6</a>
+    <groupby>todeptid</groupby>
 
 </kpi>

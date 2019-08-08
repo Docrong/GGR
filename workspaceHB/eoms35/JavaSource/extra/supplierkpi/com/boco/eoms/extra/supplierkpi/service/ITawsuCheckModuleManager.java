@@ -15,6 +15,7 @@ public interface ITawsuCheckModuleManager extends Manager {
 
     /**
      * Gets tawsuCheckModule's information based on id.
+     *
      * @param id the tawsuCheckModule's id
      * @return tawsuCheckModule populated tawsuCheckModule object
      */
@@ -22,16 +23,20 @@ public interface ITawsuCheckModuleManager extends Manager {
 
     /**
      * Saves a tawsuCheckModule's information
+     *
      * @param tawsuCheckModule the object to be saved
      */
     public void saveTawsuCheckModule(TawsuCheckModule tawsuCheckModule);
 
     /**
      * Removes a tawsuCheckModule from the database by id
+     *
      * @param id the tawsuCheckModule's id
      */
     public void removeTawsuCheckModule(final String id);
+
     public Map getTawsuCheckModules(final int curPage, final int pageSize);
+
     public Map getTawsuCheckModules(final int curPage, final int pageSize, final String whereStr);
 }
 

@@ -1,6 +1,6 @@
 /**
  * FaultDetails.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -9,6 +9,7 @@ package com.boco.eoms.gzjhhead.interfaces;
 
 public class FaultDetails extends org.apache.axis.AxisFault {
     public java.lang.String parameters;
+
     public java.lang.String getParameters() {
         return this.parameters;
     }
@@ -16,7 +17,7 @@ public class FaultDetails extends org.apache.axis.AxisFault {
     public FaultDetails() {
     }
 
-      public FaultDetails(java.lang.String parameters) {
+    public FaultDetails(java.lang.String parameters) {
         this.parameters = parameters;
     }
 

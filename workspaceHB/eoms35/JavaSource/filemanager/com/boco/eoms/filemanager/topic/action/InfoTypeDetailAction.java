@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Vector;
+
 import com.boco.eoms.common.util.StaticMethod;
 import com.boco.eoms.commons.system.session.form.TawSystemSessionForm;
 
@@ -41,11 +42,11 @@ public class InfoTypeDetailAction extends Action {
                                  HttpServletRequest request,
                                  HttpServletResponse response)
             throws Exception {
-    	TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-    	if(!"admin".equals(saveSessionBeanForm.getUserid())){
-    		return mapping.findForward("nopriv");
-    	}
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        if (!"admin".equals(saveSessionBeanForm.getUserid())) {
+            return mapping.findForward("nopriv");
+        }
         String onlyTopic = request.getParameter("onlyTopic");
 
         try {
@@ -150,7 +151,7 @@ public class InfoTypeDetailAction extends Action {
 
             if (strFlag.equals("3")) {
 //保存记录
-            	String[] strPrivilege = objForm.getSelectPrvlg();
+                String[] strPrivilege = objForm.getSelectPrvlg();
 //System.out.println("getSelectPrvlg go here "+strPrivilege)  ;
                 if (strPrivilege != null && strPrivilege.length > 0) {
                     for (int i = 0; i < strPrivilege.length; i++) {
@@ -159,10 +160,10 @@ public class InfoTypeDetailAction extends Action {
                 }
 
                 if (!strHdId.equals("")) {
-                	//得到有效途径
-                	String strPath = LBCommonFunc.getForPathFolder(objForm.getHdTopicPath(), FILE_SEPARATOR) + objForm.getTopicPath();
-                	//更新
-                	LbUpdateInfoType objUpdate = new LbUpdateInfoType(m_con);
+                    //得到有效途径
+                    String strPath = LBCommonFunc.getForPathFolder(objForm.getHdTopicPath(), FILE_SEPARATOR) + objForm.getTopicPath();
+                    //更新
+                    LbUpdateInfoType objUpdate = new LbUpdateInfoType(m_con);
                     String[] strParamArray = {
                             objForm.getTopicName(),
                             strPath,
@@ -208,28 +209,28 @@ public class InfoTypeDetailAction extends Action {
                 request.setAttribute("newenable", "");
                 request.setAttribute("saveenable", "");
                 request.setAttribute("deleteenable", "");
-                
+
                 return mapping.findForward("success");
             }
             if (strFlag.equals("4")) {
-            	//创建新类别
-            	
-            	if ("-1".equals(strHdId)){
-                	strHdId = "0";
-                	objForm.setHdId(strHdId);
-                	objForm.setHdClassId("1");
+                //创建新类别
+
+                if ("-1".equals(strHdId)) {
+                    strHdId = "0";
+                    objForm.setHdId(strHdId);
+                    objForm.setHdClassId("1");
                     objForm.setHdTopicPath("Topic");
 //                    String strPath = objForm.getHdTopicPath() + FILE_SEPARATOR + objForm.getHdClassId();
 //                    objForm.setHdTopicPath(strPath);
-                    
-                }else{
-                	showDetail(strHdId, request, objForm, m_con);
-                	String strPath = LBCommonFunc.getForPathFolder(objForm.getHdTopicPath(), FILE_SEPARATOR) + objForm.getTopicPath();
-                	String strClassId = objForm.getHdClassId();
+
+                } else {
+                    showDetail(strHdId, request, objForm, m_con);
+                    String strPath = LBCommonFunc.getForPathFolder(objForm.getHdTopicPath(), FILE_SEPARATOR) + objForm.getTopicPath();
+                    String strClassId = objForm.getHdClassId();
                     strClassId = Integer.toString(Integer.parseInt(strClassId) + 1);
                     objForm.setHdClassId(strClassId);
                 }
-            	
+
                 objForm.setHdParentId(objForm.getHdId());
                 objForm.setHdId("");
                 objForm.setTopicName("");
@@ -238,8 +239,7 @@ public class InfoTypeDetailAction extends Action {
                 objForm.setTopicMemo("");
                 objForm.setTopicTypeId("");
                 objForm.setTopicTypeName("");
-                
-                
+
 
                 request.setAttribute("htmlTopicId", "&nbsp;");
                 request.setAttribute("htmlTopicPath", objForm.getHdTopicPath());

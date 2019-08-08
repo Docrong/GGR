@@ -10,15 +10,14 @@ package com.boco.eoms.businessupport.product.util;
  * <p>
  * Sun May 16 14:18:55 CST 2010
  * </p>
- * 
+ *
  * @author lizhigang
  * @version 3.5
- * 
  */
 public class BusinessupportConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String BUSINESSUPPORT_LIST = "businessupportList";
+
+    /**
+     * list key
+     */
+    public final static String BUSINESSUPPORT_LIST = "businessupportList";
 }

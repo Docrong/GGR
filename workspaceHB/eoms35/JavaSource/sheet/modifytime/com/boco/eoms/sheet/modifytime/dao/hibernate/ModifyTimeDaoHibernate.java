@@ -54,12 +54,12 @@ public class ModifyTimeDaoHibernate extends BaseDaoHibernate implements IModifyT
 
     /**
      * @see com.boco.eoms.sheet.modifytime.dao.ModifyTimeDao#saveModifyTime(ModifyTime modifytime)
-     */    
+     */
     public void saveModifyTime(final ModifyTime modifytime) {
         if ((modifytime.getId() == null) || (modifytime.getId().equals("")))
-			getHibernateTemplate().save(modifytime);
-		else
-			getHibernateTemplate().saveOrUpdate(modifytime);
+            getHibernateTemplate().save(modifytime);
+        else
+            getHibernateTemplate().saveOrUpdate(modifytime);
     }
 
     /**
@@ -68,53 +68,57 @@ public class ModifyTimeDaoHibernate extends BaseDaoHibernate implements IModifyT
     public void removeModifyTime(final String id) {
         getHibernateTemplate().delete(getModifyTime(id));
     }
+
     /**
-     * @see com.boco.eoms.sheet.modifytime.dao.ModifyTimeDao#getModifyTimes(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.sheet.modifytime.dao.ModifyTimeDao#getModifyTimes(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getModifyTimes(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getModifyTimes(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the modifytime
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from ModifyTime";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from ModifyTime";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.sheet.modifytime.dao.ModifyTimeDao#getModifyTimes(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getModifyTimes(final Integer curPage, final Integer pageSize) {
-			return this.getModifyTimes(curPage,pageSize,null);
-		}
+        return this.getModifyTimes(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.sheet.modifytime.dao.ModifyTimeDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from ModifyTime obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from ModifyTime obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
+
     /**
-	 * @see com.boco.eoms.sheet.modifytime.dao.IModifyTimeDao#getModifyTimesByCondition(java.lang.String)
-	 */
-	public List getModifyTimesByCondition(String condition) {
-		String hql ="";//"from ModifyTime where 1=1 ";
-		hql += condition;
-		return getHibernateTemplate().find(hql);		
-	}
+     * @see com.boco.eoms.sheet.modifytime.dao.IModifyTimeDao#getModifyTimesByCondition(java.lang.String)
+     */
+    public List getModifyTimesByCondition(String condition) {
+        String hql = "";//"from ModifyTime where 1=1 ";
+        hql += condition;
+        return getHibernateTemplate().find(hql);
+    }
 }

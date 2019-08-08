@@ -35,7 +35,7 @@ public class TawSystemCodeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemCodeDao.expects(once()).method("getTawSystemCodes")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSystemCodes = tawSystemCodeManager.getTawSystemCodes(null);
         assertTrue(tawSystemCodes.size() == 1);
@@ -45,7 +45,7 @@ public class TawSystemCodeManagerTest extends BaseManagerTestCase {
     public void testGetTawSystemCode() throws Exception {
         // set expected behavior on dao
         tawSystemCodeDao.expects(once()).method("getTawSystemCode")
-            .will(returnValue(new TawSystemCode()));
+                .will(returnValue(new TawSystemCode()));
         TawSystemCode tawSystemCode = tawSystemCodeManager.getTawSystemCode(tawSystemCodeId);
         assertTrue(tawSystemCode != null);
         tawSystemCodeDao.verify();
@@ -56,7 +56,7 @@ public class TawSystemCodeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemCodeDao.expects(once()).method("saveTawSystemCode")
-            .with(same(tawSystemCode)).isVoid();
+                .with(same(tawSystemCode)).isVoid();
 
         tawSystemCodeManager.saveTawSystemCode(tawSystemCode);
         tawSystemCodeDao.verify();
@@ -69,7 +69,7 @@ public class TawSystemCodeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemCodeDao.expects(once()).method("saveTawSystemCode")
-            .with(same(tawSystemCode)).isVoid();
+                .with(same(tawSystemCode)).isVoid();
         tawSystemCodeManager.saveTawSystemCode(tawSystemCode);
         tawSystemCodeDao.verify();
 

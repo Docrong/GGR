@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_expert_sub"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="malfunctionName"
+                name="malfunctionName"
                 length="128"
                 not-null="true"
         >
@@ -35,7 +35,7 @@
         </property>
 
         <property
-            name="malfunctionDeal"
+                name="malfunctionDeal"
                 length="128"
                 not-null="true"
         >
@@ -43,7 +43,7 @@
         </property>
 
         <property
-            name="score"
+                name="score"
                 length="32"
                 not-null="true"
         >
@@ -51,28 +51,28 @@
         </property>
 
         <property
-            name="addMan"
+                name="addMan"
                 length="32"
                 not-null="false"
         >
 
         </property>
         <property
-            name="addTime"
+                name="addTime"
                 length="32"
                 not-null="true"
         >
 
         </property>
         <property
-            name="mainId"
+                name="mainId"
                 length="32"
                 not-null="true"
         >
 
         </property>
-       
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

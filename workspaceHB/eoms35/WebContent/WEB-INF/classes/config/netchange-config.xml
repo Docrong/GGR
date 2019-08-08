@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WorkFlowRule name="NetChange" description="网络综合调整流程">
-   <flow-define id="NetChangeMainProcess" description="网络综合调整工单">
-     <phase-id id="receive" type="receive">
-       <to-phase-id id="ProjectCreateTask" role="dealPerformer@250" condition="${operateType}==0" name="新增派发"/>
-       <to-phase-id id="DraftTask" role="" condition="${operateType}==22" name="保存草稿"/>   
-     </phase-id>
-     <phase-id id="DraftTask" name="草稿" type="operate">       
-       <to-phase-id id="ProjectCreateTask" role="dealPerformer@250" condition="${operateType}==3" name="草稿派发"/>
-     </phase-id> 
-     <phase-id id="RejectTask" name="被驳回" type="operate">       
-       <to-phase-id id="ProjectCreateTask" role="dealPerformer@250" condition="${operateType}==54" name="派发"/>
-     </phase-id> 
-     <phase-id id="ProjectCreateTask" name="方案制定" type="operate">       
-       <to-phase-id id="AuditTask" role="dealPerformer@250" condition="${operateType}==110" name="提交审核"/>
-       <to-phase-id id="RejectTask" role="" condition="${operateType}==4" name="驳回"/>
-     </phase-id>     
-     <phase-id id="AuditTask" name="审核" type="operate">
-       <to-phase-id id="PermitTask" role="dealPerformer@251" condition="${operateType}==116" name="提交审批"/>
-        <to-phase-id id="ProjectCreateTask" role="" condition="${operateType}==123" name="审核不通过/驳回"/>
-     </phase-id>
-     <phase-id id="PermitTask" name="审批" type="operate">
-     	<to-phase-id id="ExecuteTask" role="dealPerformer@250" condition="${operateType}==111" name="实施"/>
-       <to-phase-id id="RejectTask" role="" condition="${operateType}==121" name="驳回申请"/>
-        <to-phase-id id="ProjectCreateTask" role="" condition="${operateType}==122" name="重新制定方案"/>
-        <to-phase-id id="AuditTask" role="" condition="${operateType}==4" name="驳回"/>
-     </phase-id>
-     <phase-id id="ExecuteTask" name="实施" type="operate">
-     	<to-phase-id id="TestTask" role="dealPerformer@250" condition="${operateType}==113" name="提交综合测试"/>
-     	<to-phase-id id="PermitTask" role="" condition="${operateType}==4" name="驳回"/>
-     </phase-id>
-     <phase-id id="TestTask" name="综合测试" type="operate">
-     	<to-phase-id id="HoldTask" role="" condition="${operateType}==114" name="归档"/>
-     	<to-phase-id id="ExecuteTask" role="" condition="${operateType}==4" name="驳回"/>
-     </phase-id>
-     <phase-id id="HoldTask" name="归档" type="operate">
-     </phase-id>
-  </flow-define>
+    <flow-define id="NetChangeMainProcess" description="网络综合调整工单">
+        <phase-id id="receive" type="receive">
+            <to-phase-id id="ProjectCreateTask" role="dealPerformer@250" condition="${operateType}==0" name="新增派发"/>
+            <to-phase-id id="DraftTask" role="" condition="${operateType}==22" name="保存草稿"/>
+        </phase-id>
+        <phase-id id="DraftTask" name="草稿" type="operate">
+            <to-phase-id id="ProjectCreateTask" role="dealPerformer@250" condition="${operateType}==3" name="草稿派发"/>
+        </phase-id>
+        <phase-id id="RejectTask" name="被驳回" type="operate">
+            <to-phase-id id="ProjectCreateTask" role="dealPerformer@250" condition="${operateType}==54" name="派发"/>
+        </phase-id>
+        <phase-id id="ProjectCreateTask" name="方案制定" type="operate">
+            <to-phase-id id="AuditTask" role="dealPerformer@250" condition="${operateType}==110" name="提交审核"/>
+            <to-phase-id id="RejectTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="AuditTask" name="审核" type="operate">
+            <to-phase-id id="PermitTask" role="dealPerformer@251" condition="${operateType}==116" name="提交审批"/>
+            <to-phase-id id="ProjectCreateTask" role="" condition="${operateType}==123" name="审核不通过/驳回"/>
+        </phase-id>
+        <phase-id id="PermitTask" name="审批" type="operate">
+            <to-phase-id id="ExecuteTask" role="dealPerformer@250" condition="${operateType}==111" name="实施"/>
+            <to-phase-id id="RejectTask" role="" condition="${operateType}==121" name="驳回申请"/>
+            <to-phase-id id="ProjectCreateTask" role="" condition="${operateType}==122" name="重新制定方案"/>
+            <to-phase-id id="AuditTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="ExecuteTask" name="实施" type="operate">
+            <to-phase-id id="TestTask" role="dealPerformer@250" condition="${operateType}==113" name="提交综合测试"/>
+            <to-phase-id id="PermitTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="TestTask" name="综合测试" type="operate">
+            <to-phase-id id="HoldTask" role="" condition="${operateType}==114" name="归档"/>
+            <to-phase-id id="ExecuteTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="HoldTask" name="归档" type="operate">
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>

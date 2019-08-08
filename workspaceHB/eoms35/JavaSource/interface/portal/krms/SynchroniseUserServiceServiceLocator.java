@@ -1,6 +1,6 @@
 /**
  * SynchroniseUserServiceServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the IBM Web services WSDL2Java emitter.
  * cf130745.06 v111407041203
@@ -12,8 +12,8 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
 
     public SynchroniseUserServiceServiceLocator() {
         super(com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-           "http://krms/services/synUserService",
-           "SynchroniseUserServiceService"));
+                "http://krms/services/synUserService",
+                "SynchroniseUserServiceService"));
 
         context.setLocatorName("krms.SynchroniseUserServiceServiceLocator");
     }
@@ -23,7 +23,7 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
         context.setLocatorName("krms.SynchroniseUserServiceServiceLocator");
     }
 
-    // ÓÃÓÚ»ñÈ¡ synUserService µÄ´úÀíÀà
+    // ï¿½ï¿½ï¿½Ú»ï¿½È¡ synUserService ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½
     private final java.lang.String synUserService_address = "http://krms/services/synUserService";
 
     public java.lang.String getSynUserServiceAddress() {
@@ -33,8 +33,7 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
         String overriddingEndpoint = (String) context.getOverriddingEndpointURIs().get("synUserService");
         if (overriddingEndpoint != null) {
             return overriddingEndpoint;
-        }
-        else {
+        } else {
             return synUserService_address;
         }
     }
@@ -53,24 +52,23 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
     }
 
     public krms.SynchroniseUserService getSynUserService() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(getSynUserServiceAddress());
-        }
-        catch (java.net.MalformedURLException e) {
-            return null; // ²»Ì«¿ÉÄÜ£¬ÒòÎª URL ÒÑÔÚ WSDL2Java ÖÐµÃµ½ÑéÖ¤
+        } catch (java.net.MalformedURLException e) {
+            return null; // ï¿½ï¿½Ì«ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Îª URL ï¿½ï¿½ï¿½ï¿½ WSDL2Java ï¿½ÐµÃµï¿½ï¿½ï¿½Ö¤
         }
         return getSynUserService(endpoint);
     }
 
     public krms.SynchroniseUserService getSynUserService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         krms.SynchroniseUserService _stub =
-            (krms.SynchroniseUserService) getStub(
-                synUserServicePortName,
-                (String) getPort2NamespaceMap().get(synUserServicePortName),
-                krms.SynchroniseUserService.class,
-                "krms.SynUserServiceSoapBindingStub",
-                portAddress.toString());
+                (krms.SynchroniseUserService) getStub(
+                        synUserServicePortName,
+                        (String) getPort2NamespaceMap().get(synUserServicePortName),
+                        krms.SynchroniseUserService.class,
+                        "krms.SynUserServiceSoapBindingStub",
+                        portAddress.toString());
         if (_stub instanceof com.ibm.ws.webservices.engine.client.Stub) {
             ((com.ibm.ws.webservices.engine.client.Stub) _stub).setPortName(synUserServiceWSDDPortName);
         }
@@ -87,11 +85,10 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
             if (krms.SynchroniseUserService.class.isAssignableFrom(serviceEndpointInterface)) {
                 return getSynUserService();
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
-        throw new javax.xml.rpc.ServiceException("WSWS3273E: ´íÎó£º½Ó¿ÚÃ»ÓÐ´æ¸ùÊµÏÖ£º  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+        throw new javax.xml.rpc.ServiceException("WSWS3273E: ï¿½ï¿½ï¿½ó£º½Ó¿ï¿½Ã»ï¿½Ð´ï¿½ï¿½Êµï¿½Ö£ï¿½  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
     }
 
     /**
@@ -103,8 +100,7 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
         String inputPortName = portName.getLocalPart();
         if ("synUserService".equals(inputPortName)) {
             return getSynUserService();
-        }
-        else  {
+        } else {
             throw new javax.xml.rpc.ServiceException();
         }
     }
@@ -123,8 +119,8 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
         if (port2NamespaceMap == null) {
             port2NamespaceMap = new java.util.HashMap();
             port2NamespaceMap.put(
-               "synUserService",
-               "http://schemas.xmlsoap.org/wsdl/soap/");
+                    "synUserService",
+                    "http://schemas.xmlsoap.org/wsdl/soap/");
         }
         return port2NamespaceMap;
     }
@@ -137,9 +133,9 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
             String serviceNamespace = getServiceName().getNamespaceURI();
             for (java.util.Iterator i = getPort2NamespaceMap().keySet().iterator(); i.hasNext(); ) {
                 ports.add(
-                    com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-                        serviceNamespace,
-                        (String) i.next()));
+                        com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
+                                serviceNamespace,
+                                (String) i.next()));
             }
         }
         return ports.iterator();
@@ -147,15 +143,14 @@ public class SynchroniseUserServiceServiceLocator extends com.ibm.ws.webservices
 
     public javax.xml.rpc.Call[] getCalls(javax.xml.namespace.QName portName) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
-        if  (portName.getLocalPart().equals("synUserService")) {
-            return new javax.xml.rpc.Call[] {
-                createCall(portName, "synchroniseUser", "synchroniseUserRequest"),
+        if (portName.getLocalPart().equals("synUserService")) {
+            return new javax.xml.rpc.Call[]{
+                    createCall(portName, "synchroniseUser", "synchroniseUserRequest"),
             };
-        }
-        else {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+        } else {
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
     }
 }

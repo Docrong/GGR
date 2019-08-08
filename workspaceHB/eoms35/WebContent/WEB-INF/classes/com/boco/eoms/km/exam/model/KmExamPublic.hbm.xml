@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_EXAM_PUBLIC"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="testId"
-            	column="TEST_ID"
+        <property
+                name="testId"
+                column="TEST_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="createUser"
-            	column="CREATE_USER"
+        <property
+                name="createUser"
+                column="CREATE_USER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="createDept"
-            	column="CREATE_DEPT"
+        <property
+                name="createDept"
+                column="CREATE_DEPT"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="createTime"
-            	column="CREATE_TIME"
+        <property
+                name="createTime"
+                column="CREATE_TIME"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="description"
-            	column="DESCRIPTION"
+        <property
+                name="description"
+                column="DESCRIPTION"
                 length="1000"
                 not-null="false"
                 unique="false"
@@ -76,8 +76,8 @@
 
         </property>
 
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

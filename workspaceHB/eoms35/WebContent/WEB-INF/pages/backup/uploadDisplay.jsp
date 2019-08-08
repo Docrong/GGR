@@ -1,4 +1,4 @@
-<%@ include file="/common/taglibs.jsp"%>
+<%@ include file="/common/taglibs.jsp" %>
 
 <title><fmt:message key="display.title"/></title>
 <content tag="heading"><fmt:message key="display.heading"/></content>
@@ -27,7 +27,7 @@
     </tr>
     <tr>
         <th class="tallCell">File Location:</th>
-        <td>The file has been written to: <br />
+        <td>The file has been written to: <br/>
             <a href="<c:out value='${url}'/>">${filePath}</a>
         </td>
     </tr>
@@ -35,9 +35,9 @@
         <td></td>
         <td class="buttonBar">
             <input type="button" class="button" name="done" value="Done"
-                onclick="location.href='<html:rewrite forward="mainMenu"/>'" />
+                   onclick="location.href='<html:rewrite forward="mainMenu"/>'"/>
             <input type="button" class="button" style="width: 120px" value="Upload Another"
-                onclick="location.href='<html:rewrite forward="selectFile"/>'" />
+                   onclick="location.href='<html:rewrite forward="selectFile"/>'"/>
         </td>
     </tr>
 </table>

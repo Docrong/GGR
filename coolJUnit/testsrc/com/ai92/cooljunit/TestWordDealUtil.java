@@ -1,62 +1,69 @@
 package com.ai92.cooljunit;
 
 import static org.junit.Assert.*;
+
 import junit.framework.JUnit4TestAdapter;
 
 import org.junit.Test;
 
 public class TestWordDealUtil {
 
-	//²âÊÔwordFormat4DB Ò»°ãµÄ´¦ÀíÇé¿ö
-	@Test public void wordFormat4DBNormal(){
-		String target = "employeeInfo";
-		String result = WordDealUtil.wordFormat4DB(target);
-		
-		assertEquals("employee_info", result);
-	}
-	
-	//²âÊÔnullÊ±µÄ´¦ÀíÇé¿ö
-	@Test public void wordFormat4DBNull(){
-		String target = null;
-		String result = WordDealUtil.wordFormat4DB(target);
-		
-		assertNull(result);
-	}
-	
-	//²âÊÔ¿Õ×Ö·û´®Ê±µÄ´¦ÀíÇé¿ö
-	@Test public void wordFormat4DBEmpty(){
-		String target = "";
-		String result = WordDealUtil.wordFormat4DB(target);
-		
-		assertEquals("", result);
-	}
-	
-	//²âÊÔµ±Ê××ÖÄ¸´óÐ´Ê±µÄÇé¿ö
-	@Test public void wordFormat4DBegin(){
-		String target = "EmployeeInfo";
-		String result = WordDealUtil.wordFormat4DB(target);
-		
-		assertEquals("employee_info", result);
-	}
-	
-	//²âÊÔµ±Î²×ÖÄ¸Îª´óÐ´Ê±µÄÇé¿ö
-	@Test public void wordFormat4DBEnd(){
-		String target = "employeeInfoA";
-		String result = WordDealUtil.wordFormat4DB(target);
-		
-		assertEquals("employee_info_a", result);
-	}
-	
-	//²âÊÔ¶à¸öÏàÁ¬×ÖÄ¸´óÐ´Ê±µÄÇé¿ö
-	@Test public void wordFormat4DBTogether(){
-		String target = "employeeAInfo";
-		String result = WordDealUtil.wordFormat4DB(target);
-		
-		assertEquals("employee_a_info", result);
-	}
-	
-	public static junit.framework.Test suite() { 
-	    return new JUnit4TestAdapter(TestWordDealUtil.class); 
-	}
+    //ï¿½ï¿½ï¿½ï¿½wordFormat4DB Ò»ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    @Test
+    public void wordFormat4DBNormal() {
+        String target = "employeeInfo";
+        String result = WordDealUtil.wordFormat4DB(target);
+
+        assertEquals("employee_info", result);
+    }
+
+    //ï¿½ï¿½ï¿½ï¿½nullÊ±ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    @Test
+    public void wordFormat4DBNull() {
+        String target = null;
+        String result = WordDealUtil.wordFormat4DB(target);
+
+        assertNull(result);
+    }
+
+    //ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ê±ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    @Test
+    public void wordFormat4DBEmpty() {
+        String target = "";
+        String result = WordDealUtil.wordFormat4DB(target);
+
+        assertEquals("", result);
+    }
+
+    //ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ð´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+    @Test
+    public void wordFormat4DBegin() {
+        String target = "EmployeeInfo";
+        String result = WordDealUtil.wordFormat4DB(target);
+
+        assertEquals("employee_info", result);
+    }
+
+    //ï¿½ï¿½ï¿½Ôµï¿½Î²ï¿½ï¿½Ä¸Îªï¿½ï¿½Ð´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+    @Test
+    public void wordFormat4DBEnd() {
+        String target = "employeeInfoA";
+        String result = WordDealUtil.wordFormat4DB(target);
+
+        assertEquals("employee_info_a", result);
+    }
+
+    //ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ð´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+    @Test
+    public void wordFormat4DBTogether() {
+        String target = "employeeAInfo";
+        String result = WordDealUtil.wordFormat4DB(target);
+
+        assertEquals("employee_a_info", result);
+    }
+
+    public static junit.framework.Test suite() {
+        return new JUnit4TestAdapter(TestWordDealUtil.class);
+    }
 
 }

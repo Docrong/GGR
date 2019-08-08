@@ -17,26 +17,26 @@ import com.boco.eoms.commons.ui.bo.TawSystemTreeBo;
 
 public class TawCommonLogtestAppfus extends BaseAction {
 
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// TODO Auto-generated method stub
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // TODO Auto-generated method stub
 
-		return mapping.findForward("list");
-	}
-	
-public String getNodes(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String nodeId = request.getParameter("node");
+        return mapping.findForward("list");
+    }
 
-		ITawCommonLogSearchBo treebo = (ITawCommonLogSearchBo) ApplicationContextHolder
-		.getInstance().getBean("iTawCommonLogSearchBo");
-		JSONArray jsonRoot = treebo.getSmsServiceTreeXml(nodeId, "aa1");
+    public String getNodes(ActionMapping mapping, ActionForm form,
+                           HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String nodeId = request.getParameter("node");
 
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-		return null;
-	}
-	
+        ITawCommonLogSearchBo treebo = (ITawCommonLogSearchBo) ApplicationContextHolder
+                .getInstance().getBean("iTawCommonLogSearchBo");
+        JSONArray jsonRoot = treebo.getSmsServiceTreeXml(nodeId, "aa1");
+
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+        return null;
+    }
+
 }

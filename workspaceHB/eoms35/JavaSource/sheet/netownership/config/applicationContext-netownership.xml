@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--NetData-START-->    
+    <!--NetData-START-->
 
     <bean id="INetOwnershipDAO"
-		class="com.boco.eoms.sheet.netownership.dao.hibernate.NetOwnershipDAOHibernate" autowire="byName">
+          class="com.boco.eoms.sheet.netownership.dao.hibernate.NetOwnershipDAOHibernate" autowire="byName">
     </bean>
-	<bean id="NetOwnership"
-		class="com.boco.eoms.sheet.netownership.model.NetOwnership"
-		autowire="byName" />
-	<bean id="iNetOwnershipManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.netownership.service.impl.NetOwnershipManagerImpl">
-			    <property name="netObject" ref="NetOwnership" />
-				<property name="netDAO">
-					<ref bean="INetOwnershipDAO" />
-				 </property>
-				 <property name="netQo">
-					<ref bean="iNetOwnershipQo" />
-				</property>
-			</bean>
-		</property>
-	</bean> 
+    <bean id="NetOwnership"
+          class="com.boco.eoms.sheet.netownership.model.NetOwnership"
+          autowire="byName"/>
+    <bean id="iNetOwnershipManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.netownership.service.impl.NetOwnershipManagerImpl">
+                <property name="netObject" ref="NetOwnership"/>
+                <property name="netDAO">
+                    <ref bean="INetOwnershipDAO"/>
+                </property>
+                <property name="netQo">
+                    <ref bean="iNetOwnershipQo"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iNetOwnershipQo"
-		class="com.boco.eoms.sheet.netownership.qo.impl.NetOwnershipQoImpl"
-		autowire="byName" singleton="false" >
-   	<property name="poNet" value="NetOwnership"/>
-    <property name="aliasNet" value="netOwnership"/>  
+    <bean id="iNetOwnershipQo"
+          class="com.boco.eoms.sheet.netownership.qo.impl.NetOwnershipQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poNet" value="NetOwnership"/>
+        <property name="aliasNet" value="netOwnership"/>
 
-   </bean>
+    </bean>
 
 </beans>

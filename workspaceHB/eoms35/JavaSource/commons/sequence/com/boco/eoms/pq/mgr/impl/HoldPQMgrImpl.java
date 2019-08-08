@@ -21,112 +21,112 @@ import com.boco.eoms.sequence.util.SequenceLocator;
 
 public class HoldPQMgrImpl extends BaseManager implements IHoldPQMgr {
 
-	private IHoldPQDao holdPQDao;
+    private IHoldPQDao holdPQDao;
 
-	public void setHoldPQDao(IHoldPQDao holdPQDao) {
-		this.holdPQDao = holdPQDao;
-	}
+    public void setHoldPQDao(IHoldPQDao holdPQDao) {
+        this.holdPQDao = holdPQDao;
+    }
 
-	public void cancelHoldPQ(String jobId) throws CancelPQErrorException {
-		// 从数据库中取出任务
-		HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
-		if (!Constants.DELETED.equals(holdPQ.getDeleted())
-				&& Constants.Q_STATUS_WAITING.equals(holdPQ.getStatus())) { // 未删除并且等待执行的任务
-			holdPQDao.delHoldPQ(holdPQ);
-		}
-	}
+    public void cancelHoldPQ(String jobId) throws CancelPQErrorException {
+        // 从数据库中取出任务
+        HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
+        if (!Constants.DELETED.equals(holdPQ.getDeleted())
+                && Constants.Q_STATUS_WAITING.equals(holdPQ.getStatus())) { // 未删除并且等待执行的任务
+            holdPQDao.delHoldPQ(holdPQ);
+        }
+    }
 
-	public void cancelHoldPQs() throws CancelPQErrorException {
-		List list = holdPQDao.listHoldPQs(Constants.Q_STATUS_WAITING,
-				Constants.UNDELETED);
-		for (Iterator it = list.iterator(); it.hasNext();) {
-			HoldPQ holdPQ = (HoldPQ) it.next();
-			holdPQDao.delHoldPQ(holdPQ);
-		}
-	}
+    public void cancelHoldPQs() throws CancelPQErrorException {
+        List list = holdPQDao.listHoldPQs(Constants.Q_STATUS_WAITING,
+                Constants.UNDELETED);
+        for (Iterator it = list.iterator(); it.hasNext(); ) {
+            HoldPQ holdPQ = (HoldPQ) it.next();
+            holdPQDao.delHoldPQ(holdPQ);
+        }
+    }
 
-	public void doHoldPQs() throws DoPQErrorException {
-		// 所有job存入MQ并执行MQ
-		ISequenceFacade sequenceFacade = SequenceLocator.getSequenceFacade();
-		Sequence initMQSequence = null;
-		try {
-			initMQSequence = sequenceFacade.getSequence("holdMQ");
-		} catch (SequenceNotFoundException e) {
-			e.printStackTrace();
-		}
-		List list = holdPQDao.listHoldPQs(Constants.Q_STATUS_ERROR,
-				Constants.UNDELETED);
-		for (Iterator it = list.iterator(); it.hasNext();) {
-			HoldPQ holdPQ = (HoldPQ) it.next();
-			Job job = holdPQ.convert2Job();
-			sequenceFacade.putMQ(job, initMQSequence);
-		}
-		initMQSequence.setChanged();
-		sequenceFacade.doJob(initMQSequence);
-	}
+    public void doHoldPQs() throws DoPQErrorException {
+        // 所有job存入MQ并执行MQ
+        ISequenceFacade sequenceFacade = SequenceLocator.getSequenceFacade();
+        Sequence initMQSequence = null;
+        try {
+            initMQSequence = sequenceFacade.getSequence("holdMQ");
+        } catch (SequenceNotFoundException e) {
+            e.printStackTrace();
+        }
+        List list = holdPQDao.listHoldPQs(Constants.Q_STATUS_ERROR,
+                Constants.UNDELETED);
+        for (Iterator it = list.iterator(); it.hasNext(); ) {
+            HoldPQ holdPQ = (HoldPQ) it.next();
+            Job job = holdPQ.convert2Job();
+            sequenceFacade.putMQ(job, initMQSequence);
+        }
+        initMQSequence.setChanged();
+        sequenceFacade.doJob(initMQSequence);
+    }
 
-	public void doHoldPQ(String jobId) throws DoPQErrorException {
-		// 根据jobId查找并转换job
-		HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
-		Job job = holdPQ.convert2Job();
+    public void doHoldPQ(String jobId) throws DoPQErrorException {
+        // 根据jobId查找并转换job
+        HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
+        Job job = holdPQ.convert2Job();
 
-		// job存入MQ并执行MQ
-		ISequenceFacade sequenceFacade = SequenceLocator.getSequenceFacade();
-		Sequence initMQSequence = null;
-		try {
-			initMQSequence = sequenceFacade.getSequence("holdMQ");
-		} catch (SequenceNotFoundException e) {
-			e.printStackTrace();
-		}
-		sequenceFacade.putMQ(job, initMQSequence);
-		initMQSequence.setChanged();
-		sequenceFacade.doJob(initMQSequence);
-	}
+        // job存入MQ并执行MQ
+        ISequenceFacade sequenceFacade = SequenceLocator.getSequenceFacade();
+        Sequence initMQSequence = null;
+        try {
+            initMQSequence = sequenceFacade.getSequence("holdMQ");
+        } catch (SequenceNotFoundException e) {
+            e.printStackTrace();
+        }
+        sequenceFacade.putMQ(job, initMQSequence);
+        initMQSequence.setChanged();
+        sequenceFacade.doJob(initMQSequence);
+    }
 
-	public String putHoldPQ(Job job) throws PutPQErrorException {
-		// job存入PQ
-		HoldPQ holdPQ = new HoldPQ(job);
-		holdPQDao.saveHoldPQ(holdPQ);
-		return holdPQDao.saveHoldPQ(holdPQ);
-	}
+    public String putHoldPQ(Job job) throws PutPQErrorException {
+        // job存入PQ
+        HoldPQ holdPQ = new HoldPQ(job);
+        holdPQDao.saveHoldPQ(holdPQ);
+        return holdPQDao.saveHoldPQ(holdPQ);
+    }
 
-	public String[] putHoldPQs(List jobList) throws PutPQErrorException {
-		String[] jobIds = new String[] {};
-		List idList = new ArrayList();
-		for (Iterator it = jobList.iterator(); it.hasNext();) {
-			Job job = (Job) it.next();
-			String jobId = putHoldPQ(job);
-			idList.add(jobId);
-		}
-		jobIds = (String[]) idList.toArray();
-		return jobIds;
-	}
+    public String[] putHoldPQs(List jobList) throws PutPQErrorException {
+        String[] jobIds = new String[]{};
+        List idList = new ArrayList();
+        for (Iterator it = jobList.iterator(); it.hasNext(); ) {
+            Job job = (Job) it.next();
+            String jobId = putHoldPQ(job);
+            idList.add(jobId);
+        }
+        jobIds = (String[]) idList.toArray();
+        return jobIds;
+    }
 
-	public void delHoldPQ(String jobId) {
-		HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
-		if (null != holdPQ) {
-			holdPQDao.delHoldPQ(holdPQ);
-		}
-	}
+    public void delHoldPQ(String jobId) {
+        HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
+        if (null != holdPQ) {
+            holdPQDao.delHoldPQ(holdPQ);
+        }
+    }
 
-	public void removeHoldPQ(String jobId) {
-		HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
-		if (null != holdPQ) {
-			holdPQDao.removeHoldPQ(holdPQ);
-		}
-	}
+    public void removeHoldPQ(String jobId) {
+        HoldPQ holdPQ = holdPQDao.getHoldPQ(jobId);
+        if (null != holdPQ) {
+            holdPQDao.removeHoldPQ(holdPQ);
+        }
+    }
 
-	public List listHoldPQs(String status, String deleted) {
-		return holdPQDao.listHoldPQs(status, deleted);
-	}
+    public List listHoldPQs(String status, String deleted) {
+        return holdPQDao.listHoldPQs(status, deleted);
+    }
 
-	public Map listHoldPQs(final Integer curPage, final Integer pageSize,
-			final String status, final String deleted) {
-		return holdPQDao.listHoldPQs(curPage, pageSize, status, deleted);
-	}
+    public Map listHoldPQs(final Integer curPage, final Integer pageSize,
+                           final String status, final String deleted) {
+        return holdPQDao.listHoldPQs(curPage, pageSize, status, deleted);
+    }
 
-	public HoldPQ getHoldPQ(String jobId) {
-		return holdPQDao.getHoldPQ(jobId);
-	}
+    public HoldPQ getHoldPQ(String jobId) {
+        return holdPQDao.getHoldPQ(jobId);
+    }
 
 }

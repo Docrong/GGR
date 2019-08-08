@@ -54,12 +54,12 @@ public class TawRmLogUniteDaoHibernate extends BaseDaoHibernate implements ITawR
 
     /**
      * @see com.boco.eoms.duty.dao.TawRmLogUniteDao#saveTawRmLogUnite(TawRmLogUnite tawRmLogUnite)
-     */    
+     */
     public void saveTawRmLogUnite(final TawRmLogUnite tawRmLogUnite) {
         if ((tawRmLogUnite.getId() == null) || (tawRmLogUnite.getId().equals("")))
-			getHibernateTemplate().save(tawRmLogUnite);
-		else
-			getHibernateTemplate().saveOrUpdate(tawRmLogUnite);
+            getHibernateTemplate().save(tawRmLogUnite);
+        else
+            getHibernateTemplate().saveOrUpdate(tawRmLogUnite);
     }
 
     /**
@@ -68,44 +68,47 @@ public class TawRmLogUniteDaoHibernate extends BaseDaoHibernate implements ITawR
     public void removeTawRmLogUnite(final String id) {
         getHibernateTemplate().delete(getTawRmLogUnite(id));
     }
+
     /**
-     * @see com.boco.eoms.duty.dao.TawRmLogUniteDao#getTawRmLogUnites(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.duty.dao.TawRmLogUniteDao#getTawRmLogUnites(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawRmLogUnites(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawRmLogUnites(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawRmLogUnite
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawRmLogUnite";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawRmLogUnite";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue() * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmLogUniteDao#getTawRmLogUnites(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawRmLogUnites(final Integer curPage, final Integer pageSize) {
-			return this.getTawRmLogUnites(curPage,pageSize,null);
-		}
+        return this.getTawRmLogUnites(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmLogUniteDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawRmLogUnite obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawRmLogUnite obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

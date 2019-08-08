@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_rm_logunite"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="workerNames"
-            	column="worker_names"
+                name="workerNames"
+                column="worker_names"
                 length="255"
                 not-null="true"
                 unique="true"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="planContent"
-            	column="plan_content"
+                name="planContent"
+                column="plan_content"
                 length="5000"
                 not-null="true"
                 unique="true"
@@ -47,8 +47,8 @@
         </property>
 
         <property
-            name="workOrder"
-            	column="work_order"
+                name="workOrder"
+                column="work_order"
                 length="10000"
                 not-null="true"
                 unique="true"
@@ -57,8 +57,8 @@
         </property>
 
         <property
-            name="workbenchMemo"
-            	column="workbench_memo"
+                name="workbenchMemo"
+                column="workbench_memo"
                 length="2000"
                 not-null="true"
                 unique="true"
@@ -67,8 +67,8 @@
         </property>
 
         <property
-            name="dispatchRecord"
-            	column="dispatch_record"
+                name="dispatchRecord"
+                column="dispatch_record"
                 length="2000"
                 not-null="true"
                 unique="true"
@@ -77,8 +77,8 @@
         </property>
 
         <property
-            name="visitRecord"
-            	column="visit_record"
+                name="visitRecord"
+                column="visit_record"
                 length="2000"
                 not-null="true"
                 unique="true"
@@ -87,8 +87,8 @@
         </property>
 
         <property
-            name="loanRecord"
-            	column="loan_record"
+                name="loanRecord"
+                column="loan_record"
                 length="2000"
                 not-null="true"
                 unique="true"
@@ -97,8 +97,8 @@
         </property>
 
         <property
-            name="reliefRecord"
-            	column="relief_record"
+                name="reliefRecord"
+                column="relief_record"
                 length="2000"
                 not-null="true"
                 unique="true"
@@ -107,8 +107,8 @@
         </property>
 
         <property
-            name="beginTime"
-            	column="begin_time"
+                name="beginTime"
+                column="begin_time"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -117,8 +117,8 @@
         </property>
 
         <property
-            name="endTime"
-            	column="end_time"
+                name="endTime"
+                column="end_time"
                 length="2000"
                 not-null="true"
                 unique="true"
@@ -127,8 +127,8 @@
         </property>
 
         <property
-            name="userId"
-            	column="user_id"
+                name="userId"
+                column="user_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -137,8 +137,8 @@
         </property>
 
         <property
-            name="roomId"
-            	column="room_id"
+                name="roomId"
+                column="room_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -147,8 +147,8 @@
         </property>
 
         <property
-            name="workSerial"
-            	column="work_serial"
+                name="workSerial"
+                column="work_serial"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -157,8 +157,8 @@
         </property>
 
         <property
-            name="assessorId"
-            	column="assessor_id"
+                name="assessorId"
+                column="assessor_id"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -167,8 +167,8 @@
         </property>
 
         <property
-            name="auditingReason"
-            	column="auditing_reason"
+                name="auditingReason"
+                column="auditing_reason"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -177,15 +177,15 @@
         </property>
 
         <property
-            name="auditingTime"
-            	column="auditing_time"
+                name="auditingTime"
+                column="auditing_time"
                 length="30"
                 not-null="false"
                 unique="true"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

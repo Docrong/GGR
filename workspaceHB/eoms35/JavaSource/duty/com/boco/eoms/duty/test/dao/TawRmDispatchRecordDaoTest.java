@@ -22,22 +22,22 @@ public class TawRmDispatchRecordDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String fileName = "IwQgTpXaUoDjVwNqDvGyUgHpAxQiBeQmJcTsMaXuZrOoOoOuMv";
-        tawRmDispatchRecord.setFileName(fileName);        
+        tawRmDispatchRecord.setFileName(fileName);
 
         java.lang.String fileSource = "GoReGzHjKlKeSwRxDlSzNqXjMlPsOzIoUoAzUcRlBvFlDpVcOa";
-        tawRmDispatchRecord.setFileSource(fileSource);        
+        tawRmDispatchRecord.setFileSource(fileSource);
 
         java.lang.String fileProperty = "EiEcOzCkZvOfUeFaWxNwHkOqGqYrZgNxZkRuEnIaCpCaNdDmZh";
-        tawRmDispatchRecord.setFileProperty(fileProperty);        
+        tawRmDispatchRecord.setFileProperty(fileProperty);
 
         java.lang.String dispatchDept = "EjJuNfAgZpVbYeDrAbZxOuArRwSwPmBzJoYcNcRlDkFmGkJtDg";
-        tawRmDispatchRecord.setDispatchDept(dispatchDept);        
+        tawRmDispatchRecord.setDispatchDept(dispatchDept);
 
         java.lang.String dispatcher = "OrJsEzOpYsVbFxQxUiJvEqNsSiMbHn";
-        tawRmDispatchRecord.setDispatcher(dispatcher);        
+        tawRmDispatchRecord.setDispatcher(dispatcher);
 
         java.lang.String receiver = "AhItNrHhRgUfEqQvQmIfZhYwGbPcZz";
-        tawRmDispatchRecord.setReceiver(receiver);        
+        tawRmDispatchRecord.setReceiver(receiver);
 
         dao.saveTawRmDispatchRecord(tawRmDispatchRecord);
 
@@ -70,17 +70,17 @@ public class TawRmDispatchRecordDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String fileName = "TtJbDtNnLcYuAjDjQrYjFdGwOgBpZcYbHtAnMdYvMkQrRnRhUp";
-        tawRmDispatchRecord.setFileName(fileName);        
+        tawRmDispatchRecord.setFileName(fileName);
         java.lang.String fileSource = "KyUeDlXjRvGpRjBgZvPzJmVfCaZcBaIsRzBdHhHmYuVnOkYsMs";
-        tawRmDispatchRecord.setFileSource(fileSource);        
+        tawRmDispatchRecord.setFileSource(fileSource);
         java.lang.String fileProperty = "AuJbAaVpQxOtByBkSgRcYlNjWfUnUtOhFrXvIkQqNoSfBcJuNv";
-        tawRmDispatchRecord.setFileProperty(fileProperty);        
+        tawRmDispatchRecord.setFileProperty(fileProperty);
         java.lang.String dispatchDept = "KrAgSyUlZtAyPtRrYrRjCcGdNhCdMwBfCjJoOgJuIwPpDsDhBp";
-        tawRmDispatchRecord.setDispatchDept(dispatchDept);        
+        tawRmDispatchRecord.setDispatchDept(dispatchDept);
         java.lang.String dispatcher = "QkIfNeIkZwPhJfEhXvFlPhSnWeIoBp";
-        tawRmDispatchRecord.setDispatcher(dispatcher);        
+        tawRmDispatchRecord.setDispatcher(dispatcher);
         java.lang.String receiver = "TaDaYeCtLpItGoEjSiEdNlOyGwCqCe";
-        tawRmDispatchRecord.setReceiver(receiver);        
+        tawRmDispatchRecord.setReceiver(receiver);
 
         dao.saveTawRmDispatchRecord(tawRmDispatchRecord);
 

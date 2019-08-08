@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_TRAIN_FEEDBACK"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="feedbackUser"
-            	column="FEEDBACK_USER"
+        <property
+                name="feedbackUser"
+                column="FEEDBACK_USER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="trainFeedbackDept"
-            	column="TRAIN_FEEDBACK_DEPT"
+        <property
+                name="trainFeedbackDept"
+                column="TRAIN_FEEDBACK_DEPT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="trainFeedbackTel"
-            	column="TRAIN_FEEDBACK_TEL"
+        <property
+                name="trainFeedbackTel"
+                column="TRAIN_FEEDBACK_TEL"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="trainFeedbackContent"
-            	column="TRAIN_FEEDBACK_CONTENT"
+        <property
+                name="trainFeedbackContent"
+                column="TRAIN_FEEDBACK_CONTENT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="trainFeedbackTime"
-            	column="TRAIN_FEEDBACK_TIME"
+        <property
+                name="trainFeedbackTime"
+                column="TRAIN_FEEDBACK_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="trainFeedbackRemark"
-            	column="TRAIN_FEEDBACK_REMARK"
+        <property
+                name="trainFeedbackRemark"
+                column="TRAIN_FEEDBACK_REMARK"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="trainPlanId"
-            	column="TRAIN_PLAN_ID"
+        <property
+                name="trainPlanId"
+                column="TRAIN_PLAN_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -96,8 +96,8 @@
 
         </property>
 
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

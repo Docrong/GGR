@@ -280,27 +280,27 @@
             diskPersistent="false"
             diskExpiryThreadIntervalSeconds="120"
             memoryStoreEvictionPolicy="LRU"
-     />
-	<cache name="com.boco.eoms.commons.system.dept.DEPT_CATCH" maxElementsInMemory="10001"
-		eternal="true" timeToIdleSeconds="600" timeToLiveSeconds="600"
-		overflowToDisk="true">
-		<!-- 
-			<cacheEventListenerFactory 
-			class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" 
-			properties="replicatePuts = false, 
-			replicateUpdates = true, 
-			replicateRemovals = true, 
-			replicateUpdatesViaCopy = false, 
-			replicateAsynchronously = false"/>  -->
-		<cacheEventListenerFactory
-			class="com.boco.eoms.commons.cache.event.EHCacheEventListenerFactory"
-			properties="key=123,key1=321" />
-	</cache>
-	<cache name="com.boco.eoms.system.mapp.MAPP_CATCH" maxElementsInMemory="10001"
-	       eternal="true" timeToIdleSeconds="600" timeToLiveSeconds="600"
-		   overflowToDisk="true">
-		   <cacheEventListenerFactory
-			class="com.boco.eoms.commons.cache.event.EHCacheEventListenerFactory"
-			properties="key=123,key1=321" />
-	</cache>
+    />
+    <cache name="com.boco.eoms.commons.system.dept.DEPT_CATCH" maxElementsInMemory="10001"
+           eternal="true" timeToIdleSeconds="600" timeToLiveSeconds="600"
+           overflowToDisk="true">
+        <!--
+            <cacheEventListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"
+            properties="replicatePuts = false,
+            replicateUpdates = true,
+            replicateRemovals = true,
+            replicateUpdatesViaCopy = false,
+            replicateAsynchronously = false"/>  -->
+        <cacheEventListenerFactory
+                class="com.boco.eoms.commons.cache.event.EHCacheEventListenerFactory"
+                properties="key=123,key1=321"/>
+    </cache>
+    <cache name="com.boco.eoms.system.mapp.MAPP_CATCH" maxElementsInMemory="10001"
+           eternal="true" timeToIdleSeconds="600" timeToLiveSeconds="600"
+           overflowToDisk="true">
+        <cacheEventListenerFactory
+                class="com.boco.eoms.commons.cache.event.EHCacheEventListenerFactory"
+                properties="key=123,key1=321"/>
+    </cache>
 </ehcache>

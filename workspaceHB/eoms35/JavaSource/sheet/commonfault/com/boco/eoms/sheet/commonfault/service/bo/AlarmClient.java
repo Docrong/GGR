@@ -13,109 +13,97 @@ import com.boco.eoms.commons.util.xml.XmlManage;
 import com.boco.eoms.sheet.interfaceBase.util.InterfaceUtilProperties;
 import com.chinamobile.eoms.service.SheetStateSync3Locator;
 import com.chinamobile.eoms.service.SheetStateSync3SoapStub;
+
 import java.io.PrintStream;
 import java.net.URL;
 import java.util.Date;
+
 import org.dom4j.*;
 
-public class AlarmClient
-{
+public class AlarmClient {
 
-	private static SheetStateSync3SoapServiceSoapBindingStub tyBinding = null;
-	private static SheetStateSync3SoapStub binding = null;
+    private static SheetStateSync3SoapServiceSoapBindingStub tyBinding = null;
+    private static SheetStateSync3SoapStub binding = null;
 
-	public AlarmClient()
-	{
-	}
+    public AlarmClient() {
+    }
 
-	public static String syncSheetState(String serSupplier, String opDetail)
-		throws Exception
-	{
-		System.out.println("½Ó¿Ú opDetail = "+opDetail);
-		String result = "";
-		loadSheetStateService(serSupplier);
-		if (binding != null){
-			result = binding.syncSheetState(serSupplier, "", "", "", opDetail);
-		    System.out.println("½Ó¿Ú11result = "+"result");
-		    
-		}else if(tyBinding != null){
-			result = tyBinding.syncSheetState(serSupplier, "", "", "", opDetail);
-		 System.out.println("½Ó¿Ú 2result = "+"result");
-		}
-		return result;
-	}
+    public static String syncSheetState(String serSupplier, String opDetail)
+            throws Exception {
+        System.out.println("ï¿½Ó¿ï¿½ opDetail = " + opDetail);
+        String result = "";
+        loadSheetStateService(serSupplier);
+        if (binding != null) {
+            result = binding.syncSheetState(serSupplier, "", "", "", opDetail);
+            System.out.println("ï¿½Ó¿ï¿½11result = " + "result");
 
-	private static void loadSheetStateService(String serSupplier)
-		throws Exception
-	{
-		System.out.println("start loadSheetStateService");
-		String ServiceRooter = XmlManage.getFile("/config/commonfault-util.xml").getProperty("ServiceRooter");
-		System.out.println("¸æ¾¯·þÎñÌá¹©·½ ServiceRooter:" + ServiceRooter);
-		String filePath = StaticMethod.getFilePathForUrl("classpath:config/commonfault-util.xml");
-		String getIrmsStr = InterfaceUtilProperties.getInstance().getDictIdByInterfaceCode(filePath, "serviceUrl", serSupplier);
-		System.out.println("¸æ¾¯·þÎñµØÖ· getIrmsStr:" + getIrmsStr);
-		URL alarmCreateUrl = new URL(getIrmsStr);
-		int ms = 0;
-		String timeout = StaticMethod.nullObject2String(XmlManage.getFile("/config/commonfault-util.xml").getProperty("connecttimeout"));
-		if (timeout.length() > 0)
-			try
-			{
-				ms = Integer.parseInt(timeout);
-			}
-			catch (Exception err)
-			{
-				System.out.println("Ã»ÓÐÕÒµ½½Ó¿Ú³¬Ê±ÉèÖÃ£¬Ê¹ÓÃÄ¬ÈÏÖµ");
-			}
-		if (ServiceRooter != null && ServiceRooter.equals("tongyong"))
-		{
-			tyBinding = (SheetStateSync3SoapServiceSoapBindingStub)(new SheetStateSync3SoapServiceLocator()).getSheetStateSync3SoapPort(alarmCreateUrl);
-			if (ms > 0)
-				tyBinding.setTimeout(ms);
-			System.out.println("»ñµÃ½Ó¿ÚÁ¬½Ó---Í¨ÓÃ");
-		} else
-		{
-			binding = (SheetStateSync3SoapStub)(new SheetStateSync3Locator()).getSheetStateSync3Soap(alarmCreateUrl);
-			if (ms > 0)
-				binding.setTimeout(ms);
-		}
-	}
+        } else if (tyBinding != null) {
+            result = tyBinding.syncSheetState(serSupplier, "", "", "", opDetail);
+            System.out.println("ï¿½Ó¿ï¿½ 2result = " + "result");
+        }
+        return result;
+    }
 
-	private static void buildEmosXML(Element recordInfo, String cnname, String name, Object object)
-	{
-		Element filedInfo = recordInfo.addElement("fieldInfo");
-		Element fieldCnName = filedInfo.addElement("fieldCnName");
-		fieldCnName.setText(cnname);
-		Element fieldEnName = filedInfo.addElement("fieldEnName");
-		fieldEnName.setText(name);
-		Element fieldContent = filedInfo.addElement("fieldContent");
-		fieldContent.setText(object.toString());
-	}
+    private static void loadSheetStateService(String serSupplier)
+            throws Exception {
+        System.out.println("start loadSheetStateService");
+        String ServiceRooter = XmlManage.getFile("/config/commonfault-util.xml").getProperty("ServiceRooter");
+        System.out.println("ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ ServiceRooter:" + ServiceRooter);
+        String filePath = StaticMethod.getFilePathForUrl("classpath:config/commonfault-util.xml");
+        String getIrmsStr = InterfaceUtilProperties.getInstance().getDictIdByInterfaceCode(filePath, "serviceUrl", serSupplier);
+        System.out.println("ï¿½æ¾¯ï¿½ï¿½ï¿½ï¿½ï¿½Ö· getIrmsStr:" + getIrmsStr);
+        URL alarmCreateUrl = new URL(getIrmsStr);
+        int ms = 0;
+        String timeout = StaticMethod.nullObject2String(XmlManage.getFile("/config/commonfault-util.xml").getProperty("connecttimeout"));
+        if (timeout.length() > 0)
+            try {
+                ms = Integer.parseInt(timeout);
+            } catch (Exception err) {
+                System.out.println("Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½Ó¿Ú³ï¿½Ê±ï¿½ï¿½ï¿½Ã£ï¿½Ê¹ï¿½ï¿½Ä¬ï¿½ï¿½Öµ");
+            }
+        if (ServiceRooter != null && ServiceRooter.equals("tongyong")) {
+            tyBinding = (SheetStateSync3SoapServiceSoapBindingStub) (new SheetStateSync3SoapServiceLocator()).getSheetStateSync3SoapPort(alarmCreateUrl);
+            if (ms > 0)
+                tyBinding.setTimeout(ms);
+            System.out.println("ï¿½ï¿½Ã½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½---Í¨ï¿½ï¿½");
+        } else {
+            binding = (SheetStateSync3SoapStub) (new SheetStateSync3Locator()).getSheetStateSync3Soap(alarmCreateUrl);
+            if (ms > 0)
+                binding.setTimeout(ms);
+        }
+    }
 
-	public static void main(String args[])
-	{
-		try
-		{
-			SheetStateSync3SoapServiceLocator locator = new SheetStateSync3SoapServiceLocator();
-	//		locator.setSheetStateSync3SoapPortEndpointAddress("http://10.30.198.164:9000/SheetStateSync");
-			locator.setSheetStateSync3SoapPortEndpointAddress("http://10.30.172.15:9000/SheetStateSync");
-			SheetStateSync3SoapServiceSoapBindingStub binding = (SheetStateSync3SoapServiceSoapBindingStub)locator.getSheetStateSync3SoapPort();
-			binding.setTimeout(60000);
-			String alive = binding.isAlive();
-			Document dom4jDoc = DocumentHelper.createDocument();
-			Element opDetailElement = dom4jDoc.addElement("opDetail");
-			Element recordInfo = opDetailElement.addElement("recordInfo");
-			buildEmosXML(recordInfo, "Íø¹Ü¸æ¾¯ID", "alarmId", "BOCO_WNMS_762591260_2256541824_1497814915_3274358119");
-			buildEmosXML(recordInfo, "EOMS¹¤µ¥ID", "sheetNo", "HB-051-140528-11072");
-			buildEmosXML(recordInfo, "¹¤µ¥×´Ì¬", "sheetStatus", "T1");
-			buildEmosXML(recordInfo, "×´Ì¬Ê±¼ä", "statusTime", (new Date()).toString());
-			String ret = binding.syncSheetState("boco", "boco", "boco", "boco", dom4jDoc.asXML());
-			System.out.println(ret);
-			System.out.println(alive);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+    private static void buildEmosXML(Element recordInfo, String cnname, String name, Object object) {
+        Element filedInfo = recordInfo.addElement("fieldInfo");
+        Element fieldCnName = filedInfo.addElement("fieldCnName");
+        fieldCnName.setText(cnname);
+        Element fieldEnName = filedInfo.addElement("fieldEnName");
+        fieldEnName.setText(name);
+        Element fieldContent = filedInfo.addElement("fieldContent");
+        fieldContent.setText(object.toString());
+    }
+
+    public static void main(String args[]) {
+        try {
+            SheetStateSync3SoapServiceLocator locator = new SheetStateSync3SoapServiceLocator();
+            //		locator.setSheetStateSync3SoapPortEndpointAddress("http://10.30.198.164:9000/SheetStateSync");
+            locator.setSheetStateSync3SoapPortEndpointAddress("http://10.30.172.15:9000/SheetStateSync");
+            SheetStateSync3SoapServiceSoapBindingStub binding = (SheetStateSync3SoapServiceSoapBindingStub) locator.getSheetStateSync3SoapPort();
+            binding.setTimeout(60000);
+            String alive = binding.isAlive();
+            Document dom4jDoc = DocumentHelper.createDocument();
+            Element opDetailElement = dom4jDoc.addElement("opDetail");
+            Element recordInfo = opDetailElement.addElement("recordInfo");
+            buildEmosXML(recordInfo, "ï¿½ï¿½ï¿½Ü¸æ¾¯ID", "alarmId", "BOCO_WNMS_762591260_2256541824_1497814915_3274358119");
+            buildEmosXML(recordInfo, "EOMSï¿½ï¿½ï¿½ï¿½ID", "sheetNo", "HB-051-140528-11072");
+            buildEmosXML(recordInfo, "ï¿½ï¿½ï¿½ï¿½×´Ì¬", "sheetStatus", "T1");
+            buildEmosXML(recordInfo, "×´Ì¬Ê±ï¿½ï¿½", "statusTime", (new Date()).toString());
+            String ret = binding.syncSheetState("boco", "boco", "boco", "boco", dom4jDoc.asXML());
+            System.out.println(ret);
+            System.out.println(alive);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

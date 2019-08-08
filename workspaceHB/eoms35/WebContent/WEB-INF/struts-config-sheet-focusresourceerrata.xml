@@ -1,201 +1,203 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
-		<!--bean for EsmProcess end-->
-	</form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
+        <!--bean for EsmProcess end-->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		<forward name="error"
-			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
-			contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+        <forward name="error"
+                 path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+                 contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
-		<action path="/focusresourceerrata"
-			type="com.boco.eoms.sheet.focusresourceerrata.webapp.action.FocusResourceErrataAction"
-			name="multiPageForm" scope="request" input="error" parameter="method"
-			unknown="false" validate="false" attribute="FocusResourceErrata">
-			<set-property property="cancellable" value="true" />
-			<forward name="new"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/main.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputNew"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="dealpage"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputDealpage"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputdealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="reject"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/reject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputReject"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputreject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="detail"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/detail.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draft"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="cancel"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="delete"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="hold"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/list.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="success"
-				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="successMessage"
-				path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="portal"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/portal.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="split"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/split.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="history"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/history.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draw"
-                path="/WEB-INF/pages/wfworksheet/focusresourceerrata/draw.jsp"
-                redirect="false" contextRelative="true"/>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
+        <action path="/focusresourceerrata"
+                type="com.boco.eoms.sheet.focusresourceerrata.webapp.action.FocusResourceErrataAction"
+                name="multiPageForm" scope="request" input="error" parameter="method"
+                unknown="false" validate="false" attribute="FocusResourceErrata">
+            <set-property property="cancellable" value="true"/>
+            <forward name="new"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/main.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputNew"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealpage"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputDealpage"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputdealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="reject"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/reject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputReject"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputreject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="detail"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draft"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cancel"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="delete"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="hold"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/list.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="successMessage"
+                     path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="portal"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/portal.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="split"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/split.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="history"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/history.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draw"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/draw.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="pic"
-                path="/WEB-INF/pages/wfworksheet/focusresourceerrata/pic.jsp"
-                redirect="false" contextRelative="true"/>
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/pic.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="holdlist"
-                path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp" 
-                redirect="false" contextRelative="true" />
-			<forward name="mainlist"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="startlist"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp"
-				redirect="false" contextRelative="true" />
-		    <forward name="maindetail"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/detail.jsp"
-				redirect="false" contextRelative="true" />
-           <forward name="query"
-                path="/WEB-INF/pages/wfworksheet/focusresourceerrata/query.jsp"
-                redirect="false" contextRelative="true" />
-	        <forward name="queryInput"
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/queryinput.jsp"
-		        redirect="false" contextRelative="true" />		
-	        <forward name="querylist"
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/querylist.jsp"
-		        redirect="false" contextRelative="true" />
-		     <forward name="templates" 
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/templates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplates" 
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealTemplates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplateDetail" 
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealTemplateDetail.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="sheetAccessories" 
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/sheetAccessories.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="showInvokeRelationShipList" 
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/showInvokeRelationShipList.jsp"
-		        redirect="false" contextRelative="true"/>	   
-		   <forward name="batchDealPage" 
-		        path="/WEB-INF/pages/wfworksheet/focusresourceerrata/batchDealPage.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="transfer"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/transfer.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="forceHold"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/forceHold.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="adminlist"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/adminlist.jsp" redirect="false"
-				contextRelative="true" />
-			<forward name="event"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/event.jsp" redirect="false"
-				contextRelative="true" />
-	        <forward name="inputEvent"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputevent.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="saveInfo" path="/focusresourceerrata.do?method=showDetailPage"/>
-		    <forward name="saveInfoAndExit" path="/focusresourceerrata.do?method=showListsendundo"/>   
-			<forward name="cancellist"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="remark"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/remark.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseBackToUp"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseAdvice"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="showDraftList" path="/focusresourceerrata.do?method=showDraftList"/>	
-		    <forward name="draftList" path="/WEB-INF/pages/wfworksheet/focusresourceerrata/draftList.jsp" redirect="false"
-				contextRelative="true"/> 		
-			<forward name="showWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="getLinkOperatePage"
-				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
-				redirect="false" contextRelative="true" />								
-			<forward name="cc"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/makeCopy.jsp"
-				redirect="false" contextRelative="true" />			
-			<forward name="shoWholeWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="showSetpInfoPage"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/showStepInfoPage.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="dealReplyAccept"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealReplyAccept.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="dealReplyReject"
-				path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealReplyReject.jsp" 
-				redirect="false" contextRelative="true" />					
-		      <forward name="showWorkFlowInstance"
-				path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
-				redirect="false" contextRelative="true" />						
-		 </action>
-	</action-mappings>
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="mainlist"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="startlist"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="maindetail"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="query"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/query.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="queryInput"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/queryinput.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="querylist"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/querylist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="templates"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/templates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplates"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealTemplates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplateDetail"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealTemplateDetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="sheetAccessories"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/sheetAccessories.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showInvokeRelationShipList"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/showInvokeRelationShipList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="batchDealPage"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/batchDealPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="transfer"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/transfer.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="forceHold"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/forceHold.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="adminlist"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/adminlist.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="event"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/event.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="inputEvent"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/inputevent.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="saveInfo" path="/focusresourceerrata.do?method=showDetailPage"/>
+            <forward name="saveInfoAndExit" path="/focusresourceerrata.do?method=showListsendundo"/>
+            <forward name="cancellist"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="remark"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/remark.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseBackToUp"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseAdvice"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showDraftList" path="/focusresourceerrata.do?method=showDraftList"/>
+            <forward name="draftList" path="/WEB-INF/pages/wfworksheet/focusresourceerrata/draftList.jsp"
+                     redirect="false"
+                     contextRelative="true"/>
+            <forward name="showWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="getLinkOperatePage"
+                     path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cc"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/makeCopy.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="shoWholeWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showSetpInfoPage"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/showStepInfoPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyAccept"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealReplyAccept.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyReject"
+                     path="/WEB-INF/pages/wfworksheet/focusresourceerrata/dealReplyReject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showWorkFlowInstance"
+                     path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+    </action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources parameter="config/ApplicationResources-sheet" key="sheet" />
-	<message-resources
-		parameter="config/ApplicationResources-sheet-focusresourceerrata" key="focusresourceerrata" />
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources-sheet" key="sheet"/>
+    <message-resources
+            parameter="config/ApplicationResources-sheet-focusresourceerrata" key="focusresourceerrata"/>
 </struts-config>

@@ -5,7 +5,6 @@ import java.util.Date;
 
 import com.boco.eoms.sheet.base.model.BaseMain;
 
-public class BureaudataSaveMain extends BaseMain
-{
+public class BureaudataSaveMain extends BaseMain {
 
 }

@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-	<base>
-		<InterfaceUser>test</InterfaceUser>
-		<SendRoleId>8a03bef02161183a012161afd7e10dcb</SendRoleId>
-		<AcceptGroupId>361</AcceptGroupId>
-		<AcceptRoleId>8a03bef02161183a012161b392e50df4</AcceptRoleId>
-		<SendImmediately>true</SendImmediately>
-	</base>
-	<rootNeTypeId>1010104</rootNeTypeId>
-	
-	<trancePort>
-		<content columnName="id" interfaceCnName="产品id" interfaceEnName="portId" defauleValue="" />
-		<content columnName="accessSiteIdenA" interfaceCnName="接入站点ID" interfaceEnName="accessSiteIden" defauleValue="" />
-		<content columnName="interfaceSiteNameA" interfaceCnName="接入站点名称" interfaceEnName="siteName" defauleValue="" />
-		<content columnName="interfaceEquipCodeA" interfaceCnName="接入设备名称" interfaceEnName="siteEquipCode" defauleValue="" />
-		<content columnName="userStardAddA" interfaceCnName="客户地址" interfaceEnName="portACustAidPhone" defauleValue="" />
-		<content columnName="customName" interfaceCnName="客户名称" interfaceEnName="portCustAidPerson" defauleValue="" />
-		<content columnName="fiberAcount" interfaceCnName="光缆纤芯个数" interfaceEnName="fiberNum" defauleValue="" />
-		<content columnName="fiberLengthA" interfaceCnName="最后一公里光缆长度" interfaceEnName="fiberLength" defauleValue="" />
-		<content columnName="fiberOwnerA" interfaceCnName="光缆产权" interfaceEnName="fiberOwner" defauleValue="" />
-	</trancePort>
-	
+    <base>
+        <InterfaceUser>test</InterfaceUser>
+        <SendRoleId>8a03bef02161183a012161afd7e10dcb</SendRoleId>
+        <AcceptGroupId>361</AcceptGroupId>
+        <AcceptRoleId>8a03bef02161183a012161b392e50df4</AcceptRoleId>
+        <SendImmediately>true</SendImmediately>
+    </base>
+    <rootNeTypeId>1010104</rootNeTypeId>
+
+    <trancePort>
+        <content columnName="id" interfaceCnName="产品id" interfaceEnName="portId" defauleValue=""/>
+        <content columnName="accessSiteIdenA" interfaceCnName="接入站点ID" interfaceEnName="accessSiteIden"
+                 defauleValue=""/>
+        <content columnName="interfaceSiteNameA" interfaceCnName="接入站点名称" interfaceEnName="siteName" defauleValue=""/>
+        <content columnName="interfaceEquipCodeA" interfaceCnName="接入设备名称" interfaceEnName="siteEquipCode"
+                 defauleValue=""/>
+        <content columnName="userStardAddA" interfaceCnName="客户地址" interfaceEnName="portACustAidPhone" defauleValue=""/>
+        <content columnName="customName" interfaceCnName="客户名称" interfaceEnName="portCustAidPerson" defauleValue=""/>
+        <content columnName="fiberAcount" interfaceCnName="光缆纤芯个数" interfaceEnName="fiberNum" defauleValue=""/>
+        <content columnName="fiberLengthA" interfaceCnName="最后一公里光缆长度" interfaceEnName="fiberLength" defauleValue=""/>
+        <content columnName="fiberOwnerA" interfaceCnName="光缆产权" interfaceEnName="fiberOwner" defauleValue=""/>
+    </trancePort>
+
     <portDesign>
-		<content columnName="customName" interfaceCnName="客户名称" interfaceEnName="applyId" defauleValue="" />
-		<content columnName="userStardAddA" interfaceCnName="客户地址" interfaceEnName="customContactAdd" defauleValue="" />
-		<content columnName="businessRequireDesc" interfaceCnName="需求描述" interfaceEnName="requirementDesc" defauleValue="" />
-		<content columnName="businessBandwidth" interfaceCnName="业务带宽" interfaceEnName="bandwidth" defauleValue=""/>
-		<content columnName="portAInterfaceType" interfaceCnName="端口类型" interfaceEnName="portType" defauleValue="" />
-		<content columnName="ipNeedNum" interfaceCnName="互联需求数量" interfaceEnName="interconIPAddNum" defauleValue="" />
-		<content columnName="ipServerNeedNum" interfaceCnName="客户应用服务需求数量" interfaceEnName="cusAppServIPAddNum" defauleValue="" />
-		<content columnName="Promise" interfaceCnName="网络部承诺的开通时间" interfaceEnName="openDate" defauleValue=""/>
-		<content columnName="interfacePointTypeA" interfaceCnName="接入点类型" interfaceEnName="interfacePointType" defauleValue=""/>
-		<content columnName="linkDesinType" interfaceCnName="接入方式" interfaceEnName="portInterfaceType" defauleValue=""/>
-		<content columnName="fiberLengthA" interfaceCnName="光缆长度" interfaceEnName="fiberLength" defauleValue=""/>
-		<content columnName="fiberOwnerA" interfaceCnName="产权" interfaceEnName="fiberOwner" defauleValue=""/>
-		<content columnName="accessSiteIdenA" interfaceCnName="接入点" interfaceEnName="accessSiteIden" defauleValue=""/>
-		<content columnName="fiberEquipNameA" interfaceCnName="光纤设备名称" interfaceEnName="accesPortDescribe" defauleValue=""/>
-		<content columnName="fiberAcount" interfaceCnName="纤芯个数" interfaceEnName="fiberNum" defauleValue=""/>
-		<content columnName="buildMethodA" interfaceCnName="敷设方式" interfaceEnName="buildMethod" defauleValue=""/>
-		<content columnName="Whours" interfaceCnName="建设工期预计（工作日）" interfaceEnName="expectFinishdays" defauleValue=""/>
-		<content columnName="apointComputHouseName" interfaceCnName="用户机房" interfaceEnName="houseName" defauleValue=""/>
-		<content columnName="id" interfaceCnName="产品id" interfaceEnName="productId" defauleValue=""/>
-	</portDesign>
+        <content columnName="customName" interfaceCnName="客户名称" interfaceEnName="applyId" defauleValue=""/>
+        <content columnName="userStardAddA" interfaceCnName="客户地址" interfaceEnName="customContactAdd" defauleValue=""/>
+        <content columnName="businessRequireDesc" interfaceCnName="需求描述" interfaceEnName="requirementDesc"
+                 defauleValue=""/>
+        <content columnName="businessBandwidth" interfaceCnName="业务带宽" interfaceEnName="bandwidth" defauleValue=""/>
+        <content columnName="portAInterfaceType" interfaceCnName="端口类型" interfaceEnName="portType" defauleValue=""/>
+        <content columnName="ipNeedNum" interfaceCnName="互联需求数量" interfaceEnName="interconIPAddNum" defauleValue=""/>
+        <content columnName="ipServerNeedNum" interfaceCnName="客户应用服务需求数量" interfaceEnName="cusAppServIPAddNum"
+                 defauleValue=""/>
+        <content columnName="Promise" interfaceCnName="网络部承诺的开通时间" interfaceEnName="openDate" defauleValue=""/>
+        <content columnName="interfacePointTypeA" interfaceCnName="接入点类型" interfaceEnName="interfacePointType"
+                 defauleValue=""/>
+        <content columnName="linkDesinType" interfaceCnName="接入方式" interfaceEnName="portInterfaceType" defauleValue=""/>
+        <content columnName="fiberLengthA" interfaceCnName="光缆长度" interfaceEnName="fiberLength" defauleValue=""/>
+        <content columnName="fiberOwnerA" interfaceCnName="产权" interfaceEnName="fiberOwner" defauleValue=""/>
+        <content columnName="accessSiteIdenA" interfaceCnName="接入点" interfaceEnName="accessSiteIden" defauleValue=""/>
+        <content columnName="fiberEquipNameA" interfaceCnName="光纤设备名称" interfaceEnName="accesPortDescribe"
+                 defauleValue=""/>
+        <content columnName="fiberAcount" interfaceCnName="纤芯个数" interfaceEnName="fiberNum" defauleValue=""/>
+        <content columnName="buildMethodA" interfaceCnName="敷设方式" interfaceEnName="buildMethod" defauleValue=""/>
+        <content columnName="Whours" interfaceCnName="建设工期预计（工作日）" interfaceEnName="expectFinishdays" defauleValue=""/>
+        <content columnName="apointComputHouseName" interfaceCnName="用户机房" interfaceEnName="houseName" defauleValue=""/>
+        <content columnName="id" interfaceCnName="产品id" interfaceEnName="productId" defauleValue=""/>
+    </portDesign>
 </boco>

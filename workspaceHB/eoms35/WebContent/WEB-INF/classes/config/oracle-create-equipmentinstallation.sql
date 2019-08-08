@@ -1,239 +1,249 @@
-
-
 create table EQUIPMENTINSTALLATION_LINK
 (
-    ID                 VARCHAR2(32) not null,
-  MAINID               VARCHAR2(50),
-  NODEACCEPTLIMIT      DATE,
-  NODECOMPLETELIMIT    DATE,
-  OPERATETYPE          NUMBER,
-  OPERATETIME          DATE,
-  OPERATEUSERID        VARCHAR2(30),
-  OPERATEORGTYPE       VARCHAR2(10),
-  OPERATERCONTACT      VARCHAR2(50),
-  TOORGTYPE            NUMBER,
-  TOORGUSERID          VARCHAR2(50),
-  TOROLEID             NUMBER,
-  ACCEPTFLAG           NUMBER,
-  ACCEPTTIME           DATE,
-  COMPLETEFLAG         NUMBER,
-  COMPLETETIME         DATE,
-  PRELINKID            VARCHAR2(50),
-  PARENTLINKID         VARCHAR2(50),
-  FIRSTLINKID          VARCHAR2(50),
-  PIID                 VARCHAR2(50),
-  AIID                 VARCHAR2(50),
-  ACTIVETEMPLATEID     VARCHAR2(50),
-  NODETEMPLATENAME     VARCHAR2(50),
-  NODEACCESSORIES      VARCHAR2(50),
-  TOORGDEPTID          VARCHAR2(35),
-  TOORGROLEID          VARCHAR2(35),
-  OPERATEROLEID        VARCHAR2(35),
-  OPERATEDEPTID        VARCHAR2(35),
-  CORRELATIONKEY       VARCHAR2(50),
-  TEMPLATEFLAG         VARCHAR2(20),
-  TEMPLATENAME         VARCHAR2(100),
-  TEMPLATECREATEUSERID VARCHAR2(100),
-  TRANSFERREASON       VARCHAR2(2000),
-  REMARK               VARCHAR2(2000),
-  OPERATEYEAR          NUMBER,
-  OPERATEMONTH         NUMBER,
-  OPERATEDAY           NUMBER,
-  LINKDESCR			VARCHAR2(2000) ,
-  LINKRESERVED1			VARCHAR2(1000) ,
-  LINKRESERVED2			VARCHAR2(1000) ,
-  LINKRESERVED3			VARCHAR2(1000) ,
-  LINKRESERVED4			VARCHAR2(1000) ,
-  LINKRESERVED5			VARCHAR2(1000) ,
-  LINKEQUIPMENTTYPE			VARCHAR2(1000) ,
-  LINKEQUIPMENTNUM			VARCHAR2(1000) ,
-  LINKEQUIPMENTTIME			DATE,
-  LINKEQUIPMENTAGREE			VARCHAR2(1000) ,
-  LINKUSERRECEIPT			VARCHAR2(1000) ,
-  LINKINFORMATION			VARCHAR2(1000) ,
-  LINKSCENEPHOTO			VARCHAR2(1000) ,
-  LINKCHARGEPHOTO			VARCHAR2(1000) ,
-  LINKSENDOBJECT           VARCHAR2(2000)
+    ID                   VARCHAR2(32) not null,
+    MAINID               VARCHAR2(50),
+    NODEACCEPTLIMIT      DATE,
+    NODECOMPLETELIMIT    DATE,
+    OPERATETYPE          NUMBER,
+    OPERATETIME          DATE,
+    OPERATEUSERID        VARCHAR2(30),
+    OPERATEORGTYPE       VARCHAR2(10),
+    OPERATERCONTACT      VARCHAR2(50),
+    TOORGTYPE            NUMBER,
+    TOORGUSERID          VARCHAR2(50),
+    TOROLEID             NUMBER,
+    ACCEPTFLAG           NUMBER,
+    ACCEPTTIME           DATE,
+    COMPLETEFLAG         NUMBER,
+    COMPLETETIME         DATE,
+    PRELINKID            VARCHAR2(50),
+    PARENTLINKID         VARCHAR2(50),
+    FIRSTLINKID          VARCHAR2(50),
+    PIID                 VARCHAR2(50),
+    AIID                 VARCHAR2(50),
+    ACTIVETEMPLATEID     VARCHAR2(50),
+    NODETEMPLATENAME     VARCHAR2(50),
+    NODEACCESSORIES      VARCHAR2(50),
+    TOORGDEPTID          VARCHAR2(35),
+    TOORGROLEID          VARCHAR2(35),
+    OPERATEROLEID        VARCHAR2(35),
+    OPERATEDEPTID        VARCHAR2(35),
+    CORRELATIONKEY       VARCHAR2(50),
+    TEMPLATEFLAG         VARCHAR2(20),
+    TEMPLATENAME         VARCHAR2(100),
+    TEMPLATECREATEUSERID VARCHAR2(100),
+    TRANSFERREASON       VARCHAR2(2000),
+    REMARK               VARCHAR2(2000),
+    OPERATEYEAR          NUMBER,
+    OPERATEMONTH         NUMBER,
+    OPERATEDAY           NUMBER,
+    LINKDESCR            VARCHAR2(2000),
+    LINKRESERVED1        VARCHAR2(1000),
+    LINKRESERVED2        VARCHAR2(1000),
+    LINKRESERVED3        VARCHAR2(1000),
+    LINKRESERVED4        VARCHAR2(1000),
+    LINKRESERVED5        VARCHAR2(1000),
+    LINKEQUIPMENTTYPE    VARCHAR2(1000),
+    LINKEQUIPMENTNUM     VARCHAR2(1000),
+    LINKEQUIPMENTTIME    DATE,
+    LINKEQUIPMENTAGREE   VARCHAR2(1000),
+    LINKUSERRECEIPT      VARCHAR2(1000),
+    LINKINFORMATION      VARCHAR2(1000),
+    LINKSCENEPHOTO       VARCHAR2(1000),
+    LINKCHARGEPHOTO      VARCHAR2(1000),
+    LINKSENDOBJECT       VARCHAR2(2000)
 );
 alter table EQUIPMENTINSTALLATION_LINK
-  add primary key (id)
-  using index
-  tablespace EXPLDB01
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 1M
-    minextents 1
-    maxextents unlimited
-  );
-
-
+    add primary key (id)
+        using index
+            tablespace EXPLDB01
+            pctfree 10
+            initrans 2
+            maxtrans 255
+            storage
+            (
+            initial 1 M
+            minextents 1
+            maxextents unlimited
+            );
 
 
 
 create table EQUIPMENTINSTALLATION_MAIN
 (
-   ID                 VARCHAR2(32) not null,
-  SHEETID             VARCHAR2(50),
-  TITLE               VARCHAR2(100),
-  SHEETACCEPTLIMIT    DATE,
-  SHEETCOMPLETELIMIT  DATE,
-  SENDTIME            DATE,
-  SENDORGTYPE         VARCHAR2(25),
-  SENDUSERID          VARCHAR2(30),
-  SENDCONTACT         VARCHAR2(30),
-  SHEETACCESSORIES    VARCHAR2(100),
-  ENDTIME             DATE,
-  ENDRESULT           VARCHAR2(30),
-  STATUS              NUMBER,
-  HOLDSTATISFIED      NUMBER,
-  ENDUSERID           VARCHAR2(50),
-  DELETED             NUMBER,
-  PIID                VARCHAR2(50),
-  SHEETTEMPLATENAME   VARCHAR2(50),
-  PARENTSHEETNAME     VARCHAR2(50),
-  PARENTSHEETID       VARCHAR2(50),
-  CORRELATIONKEY      VARCHAR2(50),
-  PARENTCORRELATION   VARCHAR2(50),
-  TODEPTID            VARCHAR2(50),
-  SENDDEPTID          VARCHAR2(35),
-  SENDROLEID          VARCHAR2(35),
-  ENDROLEID           VARCHAR2(35),
-  ENDDEPTID           VARCHAR2(35),
-  TEMPLATEFLAG        VARCHAR2(20),
-  CANCELREASON        VARCHAR2(100),
-  SENDYEAR            NUMBER,
-  SENDMONTH           NUMBER,
-  SENDDAY             NUMBER,
-  PARENTPHASENAME     VARCHAR2(50),
-  INVOKEMODE          VARCHAR2(50),
-  MAINCOMPLAINTSHEETID			VARCHAR2(1000) ,
-  MAINCOMPLAINTER			VARCHAR2(1000) ,
-  MAINCOMPLAINTNUM			VARCHAR2(1000) ,
-  MAINUSERSTAR			VARCHAR2(1000) ,
-  MAINEQUIPMENTTYPE			VARCHAR2(1000) ,
-  MAINCITY			VARCHAR2(1000) ,
-  MAINADDRESS			VARCHAR2(1000) ,
-  MAINCOMPLAINTREASONS			VARCHAR2(1000) ,
-  MAINDESCR			VARCHAR2(1000) ,
-  MAINTYPICALSCENARIO			VARCHAR2(1000) ,
-  MAINCHILDSCENARIO			VARCHAR2(1000) ,
-  MAINISEQUIPMENTFEE			VARCHAR2(1000) ,
-  MAINSIGNPHOTO			VARCHAR2(1000) ,
-  MAINRESERVED1			VARCHAR2(1000) ,
-  MAINRESERVED2			VARCHAR2(1000) ,
-  MAINRESERVED3			VARCHAR2(1000) ,
-  MAINRESERVED4			VARCHAR2(1000) ,
-  MAINRESERVED5			VARCHAR2(1000) ,
-  SENDOBJECT           VARCHAR2(2000)
+    ID                   VARCHAR2(32) not null,
+    SHEETID              VARCHAR2(50),
+    TITLE                VARCHAR2(100),
+    SHEETACCEPTLIMIT     DATE,
+    SHEETCOMPLETELIMIT   DATE,
+    SENDTIME             DATE,
+    SENDORGTYPE          VARCHAR2(25),
+    SENDUSERID           VARCHAR2(30),
+    SENDCONTACT          VARCHAR2(30),
+    SHEETACCESSORIES     VARCHAR2(100),
+    ENDTIME              DATE,
+    ENDRESULT            VARCHAR2(30),
+    STATUS               NUMBER,
+    HOLDSTATISFIED       NUMBER,
+    ENDUSERID            VARCHAR2(50),
+    DELETED              NUMBER,
+    PIID                 VARCHAR2(50),
+    SHEETTEMPLATENAME    VARCHAR2(50),
+    PARENTSHEETNAME      VARCHAR2(50),
+    PARENTSHEETID        VARCHAR2(50),
+    CORRELATIONKEY       VARCHAR2(50),
+    PARENTCORRELATION    VARCHAR2(50),
+    TODEPTID             VARCHAR2(50),
+    SENDDEPTID           VARCHAR2(35),
+    SENDROLEID           VARCHAR2(35),
+    ENDROLEID            VARCHAR2(35),
+    ENDDEPTID            VARCHAR2(35),
+    TEMPLATEFLAG         VARCHAR2(20),
+    CANCELREASON         VARCHAR2(100),
+    SENDYEAR             NUMBER,
+    SENDMONTH            NUMBER,
+    SENDDAY              NUMBER,
+    PARENTPHASENAME      VARCHAR2(50),
+    INVOKEMODE           VARCHAR2(50),
+    MAINCOMPLAINTSHEETID VARCHAR2(1000),
+    MAINCOMPLAINTER      VARCHAR2(1000),
+    MAINCOMPLAINTNUM     VARCHAR2(1000),
+    MAINUSERSTAR         VARCHAR2(1000),
+    MAINEQUIPMENTTYPE    VARCHAR2(1000),
+    MAINCITY             VARCHAR2(1000),
+    MAINADDRESS          VARCHAR2(1000),
+    MAINCOMPLAINTREASONS VARCHAR2(1000),
+    MAINDESCR            VARCHAR2(1000),
+    MAINTYPICALSCENARIO  VARCHAR2(1000),
+    MAINCHILDSCENARIO    VARCHAR2(1000),
+    MAINISEQUIPMENTFEE   VARCHAR2(1000),
+    MAINSIGNPHOTO        VARCHAR2(1000),
+    MAINRESERVED1        VARCHAR2(1000),
+    MAINRESERVED2        VARCHAR2(1000),
+    MAINRESERVED3        VARCHAR2(1000),
+    MAINRESERVED4        VARCHAR2(1000),
+    MAINRESERVED5        VARCHAR2(1000),
+    SENDOBJECT           VARCHAR2(2000)
 );
-alter table EQUIPMENTINSTALLATION_MAIN add constraint EQUIPMENTINSTALLATION_MAIN_PK primary key (id)  using index;
-
-
-
-
-
+alter table EQUIPMENTINSTALLATION_MAIN
+    add constraint EQUIPMENTINSTALLATION_MAIN_PK primary key (id) using index;
 
 
 
 create table EQUIPMENTINSTALLATION_TASK
 (
-  ID                VARCHAR2(50) not null,
-  TASKNAME          VARCHAR2(50),
-  TASKDISPLAYNAME   VARCHAR2(50),
-  CREATETIME        DATE,
-  TASKSTATUS        VARCHAR2(50),
-  PROCESSID         VARCHAR2(50),
-  SHEETKEY          VARCHAR2(50),
-  SHEETID           VARCHAR2(50),
-  TITLE             VARCHAR2(255),
-  ACCEPTTIMELIMIT   DATE,
-  COMPLETETIMELIMIT DATE,
-  OPERATEROLEID     VARCHAR2(50),
-  TASKOWNER         VARCHAR2(50),
-  PRELINKID         VARCHAR2(50),
-  FLOWNAME          VARCHAR2(50),
-  SUBTASKFLAG       VARCHAR2(10) default 'false',
-  OPERATETYPE       VARCHAR2(25),
-  CURRENTLINKID     VARCHAR2(255),
-  PARENTTASKID      VARCHAR2(50),
-  IFWAITFORSUBTASK  VARCHAR2(50),
-  SUBTASKDEALFALG   VARCHAR2(50),
-  CREATEYEAR        NUMBER,
-  CREATEMONTH       NUMBER,
-  CREATEDAY         NUMBER,
-  SENDTIME          DATE,
-  preDealDept       VARCHAR2(50),
-  preDealUserId 	VARCHAR2(50),
-  correlationKey 	VARCHAR2(100),
-  levelId           VARCHAR2(100),
- parentLevelId     VARCHAR2(100)
+    ID                VARCHAR2(50) not null,
+    TASKNAME          VARCHAR2(50),
+    TASKDISPLAYNAME   VARCHAR2(50),
+    CREATETIME        DATE,
+    TASKSTATUS        VARCHAR2(50),
+    PROCESSID         VARCHAR2(50),
+    SHEETKEY          VARCHAR2(50),
+    SHEETID           VARCHAR2(50),
+    TITLE             VARCHAR2(255),
+    ACCEPTTIMELIMIT   DATE,
+    COMPLETETIMELIMIT DATE,
+    OPERATEROLEID     VARCHAR2(50),
+    TASKOWNER         VARCHAR2(50),
+    PRELINKID         VARCHAR2(50),
+    FLOWNAME          VARCHAR2(50),
+    SUBTASKFLAG       VARCHAR2(10) default 'false',
+    OPERATETYPE       VARCHAR2(25),
+    CURRENTLINKID     VARCHAR2(255),
+    PARENTTASKID      VARCHAR2(50),
+    IFWAITFORSUBTASK  VARCHAR2(50),
+    SUBTASKDEALFALG   VARCHAR2(50),
+    CREATEYEAR        NUMBER,
+    CREATEMONTH       NUMBER,
+    CREATEDAY         NUMBER,
+    SENDTIME          DATE,
+    preDealDept       VARCHAR2(50),
+    preDealUserId     VARCHAR2(50),
+    correlationKey    VARCHAR2(100),
+    levelId           VARCHAR2(100),
+    parentLevelId     VARCHAR2(100)
 );
-alter table EQUIPMENTINSTALLATION_TASK add constraint EQUIPMENTINSTALLATION_TASK_PK primary key (id)  using index;
-
-
+alter table EQUIPMENTINSTALLATION_TASK
+    add constraint EQUIPMENTINSTALLATION_TASK_PK primary key (id) using index;
 
 
 --创建索引
-create index i_equipmentinstallation_a on equipmentinstallation_task (taskowner,createtime) TABLESPACE users ;
-create index i_equipmentinstallation_b on equipmentinstallation_task (createtime)TABLESPACE users ;
-create index i_equipmentinstallation_c on equipmentinstallation_task (taskstatus)TABLESPACE users ;
-create index i_equipmentinstallation_d on equipmentinstallation_task (sheetkey)TABLESPACE users ;
-create index i_equipmentinstallation_e on equipmentinstallation_main (sendtime,senduserid)TABLESPACE users ;
-create index i_equipmentinstallation_f on equipmentinstallation_main (sheetid)TABLESPACE users ;
-create index i_equipmentinstallation_g on equipmentinstallation_link (aiid)TABLESPACE users ;
-create index i_equipmentinstallation_h on equipmentinstallation_link (mainid)TABLESPACE  users ;
-
+create index i_equipmentinstallation_a on equipmentinstallation_task (taskowner, createtime) TABLESPACE users;
+create index i_equipmentinstallation_b on equipmentinstallation_task (createtime) TABLESPACE users;
+create index i_equipmentinstallation_c on equipmentinstallation_task (taskstatus) TABLESPACE users;
+create index i_equipmentinstallation_d on equipmentinstallation_task (sheetkey) TABLESPACE users;
+create index i_equipmentinstallation_e on equipmentinstallation_main (sendtime, senduserid) TABLESPACE users;
+create index i_equipmentinstallation_f on equipmentinstallation_main (sheetid) TABLESPACE users;
+create index i_equipmentinstallation_g on equipmentinstallation_link (aiid) TABLESPACE users;
+create index i_equipmentinstallation_h on equipmentinstallation_link (mainid) TABLESPACE users;
 
 
 --插入流程SQL语句
-insert into taw_system_workflow(id,name,flowid,sheetid,remark,mainservicebeanid)
- values('24','EquipmentInstallation','24','24','设备安装流程流程','iEquipmentInstallationMainManager');
+insert into taw_system_workflow(id, name, flowid, sheetid, remark, mainservicebeanid)
+values ('24', 'EquipmentInstallation', '24', '24', '设备安装流程流程', 'iEquipmentInstallationMainManager');
 
 --插入附件
 insert into TAW_SYSTEM_APPLICATION (APP_ID, APP_NAME, NOTES, DOMAIN_TYPE)
 values ('33', '设备安装流程流程', '设备安装流程流程', 33);
 
 insert into TAW_COMMONS_ACCESSORIESCONFIG (ALLOWFILETYPE, APPCODE, APPNAME, MAXSIZE, PATH, APPID, ID)
-values ('xls,txt,doc,jpg,gif', 'equipmentinstallation', '设备安装流程流程', 1024, '/sheet/equipmentinstallation', 33, '297e5899665771c201665771c2800000');
+values ('xls,txt,doc,jpg,gif', 'equipmentinstallation', '设备安装流程流程', 1024, '/sheet/equipmentinstallation', 33,
+        '297e5899665771c201665771c2800000');
 
 --插入角色
-insert into taw_system_role(role_id,deleted,parent_id,role_name,roletype_id,workflow_flag,leaf) values('146','0','0','建单人','1','24','1');
-insert into taw_system_role(role_id,deleted,parent_id,role_name,roletype_id,workflow_flag,leaf) values('147','0','0','分公司网优中心主任','1','24','1');
-insert into taw_system_role(role_id,deleted,parent_id,role_name,roletype_id,workflow_flag,leaf) values('148','0','0','分公司代维人员','1','24','1');
+insert into taw_system_role(role_id, deleted, parent_id, role_name, roletype_id, workflow_flag, leaf)
+values ('146', '0', '0', '建单人', '1', '24', '1');
+insert into taw_system_role(role_id, deleted, parent_id, role_name, roletype_id, workflow_flag, leaf)
+values ('147', '0', '0', '分公司网优中心主任', '1', '24', '1');
+insert into taw_system_role(role_id, deleted, parent_id, role_name, roletype_id, workflow_flag, leaf)
+values ('148', '0', '0', '分公司代维人员', '1', '24', '1');
 
 --插入菜单
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800001', '199801', '1', '新增工单', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showNewSheetPage', '0', '0', 1);
+values ('297e5899665771c201665771c2800001', '199801', '1', '新增工单', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showNewSheetPage', '0', '0', 1);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
 values ('297e5899665771c201665771c2800002', '199803', '0', '待处理工单', '1998', null, null, '0', '0', 3);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800003', '19980301', '1', '待办工单', '199803', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showListsendundo', '0', '0', 1);
+values ('297e5899665771c201665771c2800003', '19980301', '1', '待办工单', '199803', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showListsendundo', '0', '0', 1);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800004', '199807', '1', '工单查询', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showQueryPage', '0', '0', 7);
+values ('297e5899665771c201665771c2800004', '199807', '1', '工单查询', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showQueryPage', '0', '0', 7);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800005', '199808', '1', '工单处理模板', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=getDealTemplatesByUserId&&type=templateManage', '0', '0', 8);
+values ('297e5899665771c201665771c2800005', '199808', '1', '工单处理模板', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=getDealTemplatesByUserId&&type=templateManage',
+        '0', '0', 8);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800006', '199809', '1', '工单模板管理', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=getTemplatesByUserId&&type=templateManage', '0', '0', 9);
+values ('297e5899665771c201665771c2800006', '199809', '1', '工单模板管理', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=getTemplatesByUserId&&type=templateManage', '0',
+        '0', 9);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800007', '199810', '1', '管理者工单', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showListForAdmin', '0', '0', 10);
+values ('297e5899665771c201665771c2800007', '199810', '1', '管理者工单', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showListForAdmin', '0', '0', 10);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800008', '1998', '0', '设备安装流程流程', '10', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showDrawing', '0', '0', 142);
+values ('297e5899665771c201665771c2800008', '1998', '0', '设备安装流程流程', '10', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showDrawing', '0', '0', 142);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800009', '199802', '1', '草稿列表', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showDraftList', '0', '0', 2);
+values ('297e5899665771c201665771c2800009', '199802', '1', '草稿列表', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showDraftList', '0', '0', 2);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
 values ('297e5899665771c201665771c280000a', '199804', '0', '已处理工单', '1998', null, null, '0', '0', 4);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c280000b','19980402','1','建立工单','199804', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showOwnStarterList','0','0',2);
+values ('297e5899665771c201665771c280000b', '19980402', '1', '建立工单', '199804', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showOwnStarterList', '0', '0', 2);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c280000c', '19980401', '1', '处理工单', '199804', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showListsenddone', '0', '0', 1);
+values ('297e5899665771c201665771c280000c', '19980401', '1', '处理工单', '199804', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showListsenddone', '0', '0', 1);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c280000d', '199805', '1', '已归档工单', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showHoldedList', '0', '0', 5);
+values ('297e5899665771c201665771c280000d', '199805', '1', '已归档工单', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showHoldedList', '0', '0', 5);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c280000e', '199806', '1', '已作废工单', '1998', null, '/sheet/equipmentinstallation/equipmentinstallation.do?method=showCancelList', '0', '0', 6);
+values ('297e5899665771c201665771c280000e', '199806', '1', '已作废工单', '1998', null,
+        '/sheet/equipmentinstallation/equipmentinstallation.do?method=showCancelList', '0', '0', 6);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c280000f', '199811', '1', '超时时间设置', '1998', null, '/sheet/overtimetip/overtimetip.do?flowName=EquipmentInstallation', '0', '0', 11);
+values ('297e5899665771c201665771c280000f', '199811', '1', '超时时间设置', '1998', null,
+        '/sheet/overtimetip/overtimetip.do?flowName=EquipmentInstallation', '0', '0', 11);
 insert into TAW_SYSTEM_PRIV_OPERATION (ID, CODE, ISAPP, NAME, PARENTCODE, REMARK, URL, DELETED, HIDED, ORDERBY)
-values ('297e5899665771c201665771c2800010', '199812', '1', '工单处理时限配置', '1998', null, '/sheet/newSheetLimit/sheetLimit.do?method=getLevelLimitList&&flowName=EquipmentInstallation', '0', '0', 30);
+values ('297e5899665771c201665771c2800010', '199812', '1', '工单处理时限配置', '1998', null,
+        '/sheet/newSheetLimit/sheetLimit.do?method=getLevelLimitList&&flowName=EquipmentInstallation', '0', '0', 30);

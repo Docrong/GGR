@@ -13,10 +13,10 @@
  * @constructor
  * @param {Object} config Configuration options
  */
-Ext.form.Form = function(config){
+Ext.form.Form = function (config) {
     Ext.form.Form.superclass.constructor.call(this, null, config);
     this.url = this.url || this.action;
-    if(!this.root){
+    if (!this.root) {
         this.root = new Ext.form.Layout(Ext.applyIf({
             id: Ext.id()
         }, config));
@@ -48,30 +48,30 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
     /**
      * @cfg {String} buttonAlign Valid values are "left," "center" and "right" (defaults to "center")
      */
-    buttonAlign:'center',
+    buttonAlign: 'center',
 
     /**
      * @cfg {Number} minButtonWidth Minimum width of all buttons in pixels (defaults to 75)
      */
-    minButtonWidth:75,
+    minButtonWidth: 75,
 
     /**
      * @cfg {String} labelAlign Valid values are "left," "top" and "right" (defaults to "left").
      * This property cascades to child containers if not set.
      */
-    labelAlign:'left',
+    labelAlign: 'left',
 
     /**
      * @cfg {Boolean} monitorValid If true the form monitors its valid state <b>client-side</b> and
      * fires a looping event with that state. This is required to bind buttons to the valid
      * state using the config value formBind:true on the button.
      */
-    monitorValid : false,
+    monitorValid: false,
 
     /**
      * @cfg {Number} monitorPoll The milliseconds to poll valid state, ignored if monitorValid is not true (defaults to 200)
      */
-    monitorPoll : 200,
+    monitorPoll: 200,
 
     /**
      * Opens a new {@link Ext.form.Column} container in the layout stack. If fields are passed after the config, the
@@ -83,10 +83,10 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * @param {Field} etc (optional)
      * @return Column The column container object
      */
-    column : function(c){
+    column: function (c) {
         var col = new Ext.form.Column(c);
         this.start(col);
-        if(arguments.length > 1){ // duplicate code required because of Opera
+        if (arguments.length > 1) { // duplicate code required because of Opera
             this.add.apply(this, Array.prototype.slice.call(arguments, 1));
             this.end();
         }
@@ -103,10 +103,10 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * @param {Field} etc (optional)
      * @return FieldSet The fieldset container object
      */
-    fieldset : function(c){
+    fieldset: function (c) {
         var fs = new Ext.form.FieldSet(c);
         this.start(fs);
-        if(arguments.length > 1){ // duplicate code required because of Opera
+        if (arguments.length > 1) { // duplicate code required because of Opera
             this.add.apply(this, Array.prototype.slice.call(arguments, 1));
             this.end();
         }
@@ -123,10 +123,10 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * @param {Field} etc (optional)
      * @return Layout The container object
      */
-    container : function(c){
+    container: function (c) {
         var l = new Ext.form.Layout(c);
         this.start(l);
-        if(arguments.length > 1){ // duplicate code required because of Opera
+        if (arguments.length > 1) { // duplicate code required because of Opera
             this.add.apply(this, Array.prototype.slice.call(arguments, 1));
             this.end();
         }
@@ -138,9 +138,13 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * @param {Object} container A Ext.form.Layout or subclass of Layout
      * @return {Form} this
      */
-    start : function(c){
+    start: function (c) {
         // cascade label info
-        Ext.applyIf(c, {'labelAlign': this.active.labelAlign, 'labelWidth': this.active.labelWidth, 'itemCls': this.active.itemCls});
+        Ext.applyIf(c, {
+            'labelAlign': this.active.labelAlign,
+            'labelWidth': this.active.labelWidth,
+            'itemCls': this.active.itemCls
+        });
         this.active.stack.push(c);
         c.ownerCt = this.active;
         this.active = c;
@@ -151,8 +155,8 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * Closes the current open container
      * @return {Form} this
      */
-    end : function(){
-        if(this.active == this.root){
+    end: function () {
+        if (this.active == this.root) {
             return this;
         }
         this.active = this.active.ownerCt;
@@ -168,15 +172,15 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * @param {Field} etc. (optional)
      * @return {Form} this
      */
-    add : function(){
+    add: function () {
         this.active.stack.push.apply(this.active.stack, arguments);
         var r = [];
-        for(var i = 0, a = arguments, len = a.length; i < len; i++) {
-            if(a[i].isFormField){
+        for (var i = 0, a = arguments, len = a.length; i < len; i++) {
+            if (a[i].isFormField) {
                 r.push(a[i]);
             }
         }
-        if(r.length > 0){
+        if (r.length > 0) {
             Ext.form.Form.superclass.add.apply(this, r);
         }
         return this;
@@ -187,36 +191,38 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * @param {String/HTMLElement/Element} container The element this component should be rendered into
      * @return {Form} this
      */
-    render : function(ct){
+    render: function (ct) {
         ct = Ext.get(ct);
         var o = this.autoCreate || {
             tag: 'form',
-            method : this.method || 'POST',
-            id : this.id || Ext.id()
+            method: this.method || 'POST',
+            id: this.id || Ext.id()
         };
         this.initEl(ct.createChild(o));
 
         this.root.render(this.el);
 
-        this.items.each(function(f){
-            f.render('x-form-el-'+f.id);
+        this.items.each(function (f) {
+            f.render('x-form-el-' + f.id);
         });
 
-        if(this.buttons.length > 0){
+        if (this.buttons.length > 0) {
             // tables are required to maintain order and for correct IE layout
-            var tb = this.el.createChild({cls:'x-form-btns-ct', cn: {
-                cls:"x-form-btns x-form-btns-"+this.buttonAlign,
-                html:'<table cellspacing="0"><tbody><tr></tr></tbody></table><div class="x-clear"></div>'
-            }}, null, true);
+            var tb = this.el.createChild({
+                cls: 'x-form-btns-ct', cn: {
+                    cls: "x-form-btns x-form-btns-" + this.buttonAlign,
+                    html: '<table cellspacing="0"><tbody><tr></tr></tbody></table><div class="x-clear"></div>'
+                }
+            }, null, true);
             var tr = tb.getElementsByTagName('tr')[0];
-            for(var i = 0, len = this.buttons.length; i < len; i++) {
+            for (var i = 0, len = this.buttons.length; i < len; i++) {
                 var b = this.buttons[i];
                 var td = document.createElement('td');
                 td.className = 'x-form-btn-td';
                 b.render(tr.appendChild(td));
             }
         }
-        if(this.monitorValid){ // initialize after render
+        if (this.monitorValid) { // initialize after render
             this.startMonitoring();
         }
         return this;
@@ -230,16 +236,16 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * @param {Object} scope (optional) The scope of the handler function
      * @return {Ext.Button}
      */
-    addButton : function(config, handler, scope){
+    addButton: function (config, handler, scope) {
         var bc = {
             handler: handler,
             scope: scope,
             minWidth: this.minButtonWidth,
-            hideParent:true
+            hideParent: true
         };
-        if(typeof config == "string"){
+        if (typeof config == "string") {
             bc.text = config;
-        }else{
+        } else {
             Ext.apply(bc, config);
         }
         var btn = new Ext.Button(null, bc);
@@ -251,12 +257,12 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
      * Starts monitoring of the valid state of this form. Usually this is done by passing the config
      * option "monitorValid"
      */
-    startMonitoring : function(){
-        if(!this.bound){
+    startMonitoring: function () {
+        if (!this.bound) {
             this.bound = true;
             Ext.TaskMgr.start({
-                run : this.bindHandler,
-                interval : this.monitorPoll || 200,
+                run: this.bindHandler,
+                interval: this.monitorPoll || 200,
                 scope: this
             });
         }
@@ -265,25 +271,25 @@ Ext.extend(Ext.form.Form, Ext.form.BasicForm, {
     /**
      * Stops monitoring of the valid state of this form
      */
-    stopMonitoring : function(){
+    stopMonitoring: function () {
         this.bound = false;
     },
 
     // private
-    bindHandler : function(){
-        if(!this.bound){
+    bindHandler: function () {
+        if (!this.bound) {
             return false; // stops binding
         }
         var valid = true;
-        this.items.each(function(f){
-            if(!f.isValid(true)){
+        this.items.each(function (f) {
+            if (!f.isValid(true)) {
                 valid = false;
                 return false;
             }
         });
-        for(var i = 0, len = this.buttons.length; i < len; i++){
+        for (var i = 0, len = this.buttons.length; i < len; i++) {
             var btn = this.buttons[i];
-            if(btn.formBind === true && btn.disabled === valid){
+            if (btn.formBind === true && btn.disabled === valid) {
                 btn.setDisabled(!valid);
             }
         }

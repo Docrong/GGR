@@ -1,396 +1,419 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id></est-module-id>
+    <title>kpi统计</title>
+    <est-module-id></est-module-id>
 
-	
-	<!--******************************************************************
+
+    <!--******************************************************************
 ********    按(部门)统计 (按受理部门统计)  ***************************************************
 ******************************************************************* -->
-	<kpi-define><!-- 可重复 -->
-		<name>securityevaluate_intime_bydept</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>securityevaluate_intime_bydept</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<!--  condition-param page-name="sendDeptId"/>-->
-		<condition-param page-name="revDeptId" markflg="true" />
-		
-		<summary-define>
-			<id>s1</id><!--受理部门-->
-			<sequence></sequence>
-			<column>link.operatedeptid</column><!-- 汇总字段 -->
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-			                 
-		</summary-define>
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <!--  condition-param page-name="sendDeptId"/>-->
+        <condition-param page-name="revDeptId" markflg="true"/>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.securityevaluate.vo.SecurityevaluateStatDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <summary-define>
+            <id>s1</id><!--受理部门-->
+            <sequence></sequence>
+            <column>link.operatedeptid</column><!-- 汇总字段 -->
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>securityevaluate_main main,securityevaluate_link link </from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
-			<where>main.id=link.mainid and main.status=1 and link.operatetype=90 
-			       and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			       and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null
-			</where><!-- 可为空 -->
+        </summary-define>
+
+        <stat-detail-vo>com.boco.eoms.commons.statistic.securityevaluate.vo.SecurityevaluateStatDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
+
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null
+            </where><!-- 可为空 -->
 
 
-			<field-define><!-- 可重复 -->
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
 
-				<list-hsql>
-					    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime 
-                        from securityevaluate_main main,securityevaluate_link link 
-                        where main.id=link.mainid and main.status=1 and link.operatetype=90 
-			              and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			              and link.operatedeptid=@s1@ and link.operatedeptid is not null
-			              order by main.sendtime desc 
-				</list-hsql>
-				
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operatedeptid=@s1@ and link.operatedeptid is not null
+                    order by main.sendtime desc
+                </list-hsql>
 
-		</query-define>
-		
-	
-		
-		<query-define><!-- 可重复 -->
-			<name>query3</name>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
 
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
-			<where>main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-			       and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			       and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null
-			</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+        </query-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 方案原因导致失败数 -->
-				<sequence>1</sequence>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				
-				<list-hsql>
-					  select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
-				    from securityevaluate_main main,securityevaluate_link link 
-            where main.id=link.mainid and  main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-                  and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			            and link.operatedeptid=@s1@ and link.operatedeptid is not null
-			            order by main.sendtime desc 
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
-			<where>
-			    main.id=link.mainid and  main.status=1  and link.operatetype=90 
-			    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			    and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null
-          and link.mainid not in (select distinct link.mainid 
-                                  from securityevaluate_main main,securityevaluate_link 
-                                  where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-			                                  and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			                                  and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null)
-			</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 实施未达到预计效果的工单数 -->
-				<sequence>1</sequence>
+        <query-define><!-- 可重复 -->
+            <name>query3</name>
 
-				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>new Integer(f1)-new Integer(f3)</stat-sql>
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
 
-				<list-hsql>
-				  select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime 
-          from securityevaluate_main main,securityevaluate_link link 
-          where main.id=link.mainid and  main.status=1  and link.operatetype=90 
-			          and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			          and link.operatedeptid=@s1@ and link.operatedeptid is not null
-                and link.mainid not in (select distinct link.mainid 
-                                        from securityevaluate_main main,securityevaluate_link 
-                                        where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-			                                        and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-                                              and link.operatedeptid=@s1@ and link.operatedeptid is not null)
-			                                        order by main.sendtime desc 
-				    
-					
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-			
-		
-			
-		</query-define>
-		
-		
-	
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 方案原因导致失败数 -->
+                <sequence>1</sequence>
 
-	</kpi-define>
-	
-	<!--******************************************************************
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operatedeptid=@s1@ and link.operatedeptid is not null
+                    order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
+            <where>
+                main.id=link.mainid and main.status=1 and link.operatetype=90
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null
+                and link.mainid not in (select distinct link.mainid
+                from securityevaluate_main main,securityevaluate_link
+                where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operatedeptid in (@revDeptId@) and link.operatedeptid is not null)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 实施未达到预计效果的工单数 -->
+                <sequence>1</sequence>
+
+                <stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>new Integer(f1)-new Integer(f3)</stat-sql>
+
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operatedeptid=@s1@ and link.operatedeptid is not null
+                    and link.mainid not in (select distinct link.mainid
+                    from securityevaluate_main main,securityevaluate_link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operatedeptid=@s1@ and link.operatedeptid is not null)
+                    order by main.sendtime desc
+
+
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+
+        </query-define>
+
+
+    </kpi-define>
+
+    <!--******************************************************************
 ********    按(角色)统计 (按受理角色统计)  ***************************************************
 ******************************************************************* -->
-	<kpi-define><!-- 可重复 -->
-		<name>securityevaluate_intime_byrole</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>securityevaluate_intime_byrole</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<!--  condition-param page-name="sendDeptId"/>-->
-		<condition-param page-name="revRoleid" markflg="true" />
-		
-		<summary-define>
-			<id>s1</id><!--受理角色-->
-			<sequence></sequence>
-			<column>link.operateroleid</column><!-- 汇总字段 -->
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-			
-		</summary-define>
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <!--  condition-param page-name="sendDeptId"/>-->
+        <condition-param page-name="revRoleid" markflg="true"/>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.securityevaluate.vo.SecurityevaluateStatDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <summary-define>
+            <id>s1</id><!--受理角色-->
+            <sequence></sequence>
+            <column>link.operateroleid</column><!-- 汇总字段 -->
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
-			<where>main.id=link.mainid and main.status=1 and link.operatetype=90 
-			        and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			        and link.operateroleid in (@revRoleid@) and link.operateroleid is not null</where><!-- 可为空 -->
-			<field-define><!-- 可重复 -->
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
+        </summary-define>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.securityevaluate.vo.SecurityevaluateStatDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<list-hsql>
-					    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime 
-              from securityevaluate_main main,securityevaluate_link link 
-              where main.id=link.mainid and main.status=1 and link.operatetype=90 
-			              and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			              and link.operateroleid='@s1@' and link.operateroleid is not null
-			              order by main.sendtime desc 
-				</list-hsql>
-				  
-				
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-		</query-define>
-		
-	
-		
-		<query-define><!-- 可重复 -->
-			<name>query3</name>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateroleid in (@revRoleid@) and link.operateroleid is not null
+            </where><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
 
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
-			<where> main.id=link.mainid and  main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-              and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			        and link.operateroleid in (@revRoleid@) and link.operateroleid is not null</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 方案原因导致失败数 -->
-				<sequence>1</sequence>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateroleid='@s1@' and link.operateroleid is not null
+                    order by main.sendtime desc
+                </list-hsql>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
 
-				<list-hsql>
-				   	select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime
-				    from securityevaluate_main main,securityevaluate_link link 
-            where main.id=link.mainid and  main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-                  and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			            and link.operateroleid='@s1@' and link.operateroleid is not null
-			            order by main.sendtime desc 
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
-			<where>main.id=link.mainid and  main.status=1  and link.operatetype=90 
-			    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			    and link.operateroleid in (@revRoleid@) and link.operateroleid is not null
-          and link.mainid not in (select distinct link.mainid 
-                                  from securityevaluate_main main,securityevaluate_link 
-                                  where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-			                            and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			                            and link.operateroleid in (@revRoleid@) and link.operateroleid is not null)
-				     </where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 实施未达到预计效果的工单数 -->
-				<sequence>1</sequence>
+        </query-define>
 
-				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>new Integer(f1)-new Integer(f3)</stat-sql>
 
-				<list-hsql>
-				  select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime 
-          from securityevaluate_main main,securityevaluate_link link 
-          where main.id=link.mainid and  main.status=1  and link.operatetype=90 
-			    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			    and link.operateroleid='@s1@' and link.operateroleid is not null
-          and link.mainid not in (select distinct link.mainid 
-                                  from securityevaluate_main main,securityevaluate_link 
-                                  where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-			                            and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			                            and link.operateroleid='@s1@' and link.operateroleid is not null)
-			                            order by main.sendtime desc 
-				    
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-			
-		
-			
-		</query-define>
-		
-		
-	
+        <query-define><!-- 可重复 -->
+            <name>query3</name>
 
-	</kpi-define>
-	<!--******************************************************************
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateroleid in (@revRoleid@) and link.operateroleid is not null
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 方案原因导致失败数 -->
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateroleid='@s1@' and link.operateroleid is not null
+                    order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateroleid in (@revRoleid@) and link.operateroleid is not null
+                and link.mainid not in (select distinct link.mainid
+                from securityevaluate_main main,securityevaluate_link
+                where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateroleid in (@revRoleid@) and link.operateroleid is not null)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 实施未达到预计效果的工单数 -->
+                <sequence>1</sequence>
+
+                <stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>new Integer(f1)-new Integer(f3)</stat-sql>
+
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateroleid='@s1@' and link.operateroleid is not null
+                    and link.mainid not in (select distinct link.mainid
+                    from securityevaluate_main main,securityevaluate_link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateroleid='@s1@' and link.operateroleid is not null)
+                    order by main.sendtime desc
+
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+
+        </query-define>
+
+
+    </kpi-define>
+    <!--******************************************************************
 ********    按(人员)统计 (按受理人统计)  ***************************************************
 ******************************************************************* -->
-<kpi-define><!-- 可重复 -->
-		<name>securityevaluate_intime_byuser</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>securityevaluate_intime_byuser</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<!--  condition-param page-name="sendDeptId"/>-->
-		<condition-param page-name="revUserid" markflg="true"/>
-		
-		<summary-define>
-			<id>s1</id><!--受理人-->
-			<sequence></sequence>
-			<column>link.operateuserid</column><!-- 汇总字段 -->
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-			                 
-		</summary-define>
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <!--  condition-param page-name="sendDeptId"/>-->
+        <condition-param page-name="revUserid" markflg="true"/>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.securityevaluate.vo.SecurityevaluateStatDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <summary-define>
+            <id>s1</id><!--受理人-->
+            <sequence></sequence>
+            <column>link.operateuserid</column><!-- 汇总字段 -->
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
-			<where>main.id=link.mainid and main.status=1 and link.operatetype=90 
-			        and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			        and link.operateuserid in (@revUserid@) and link.operateuserid is not null </where><!-- 可为空 -->
-			
-			<field-define><!-- 可重复 -->
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
+        </summary-define>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.securityevaluate.vo.SecurityevaluateStatDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<list-hsql>
-				   	  select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime 
-              from securityevaluate_main main,securityevaluate_link link 
-              where main.id=link.mainid and main.status=1 and link.operatetype=90 
-			              and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			              and link.operateuserid='@s1@' and link.operateuserid is not null
-			              order by main.sendtime desc 
-				</list-hsql>
-				  
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-		</query-define>
-		
-	<query-define><!-- 可重复 -->
-			<name>query3</name>
-			
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
-			<where> main.id=link.mainid and  main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-              and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			        and link.operateuserid in (@revUserid@) and link.operateuserid is not null  </where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateuserid in (@revUserid@) and link.operateuserid is not null
+            </where><!-- 可为空 -->
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 实施未达到预计效果的工单数 -->
-				<sequence>1</sequence>
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
 
-				<list-hsql>
-					  select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime
-				    from securityevaluate_main main,securityevaluate_link link 
-            where main.id=link.mainid and  main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-                  and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			            and link.operateuserid='@s1@' and link.operateuserid is not null
-			            order by main.sendtime desc 
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateuserid='@s1@' and link.operateuserid is not null
+                    order by main.sendtime desc
+                </list-hsql>
 
-			<from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
-					
-			<where>main.id=link.mainid and  main.status=1  and link.operatetype=90 
-			    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			    and link.operateuserid in (@revUserid@) and link.operateuserid is not null
-          and link.mainid not in (select distinct link.mainid 
-                                  from securityevaluate_main main,securityevaluate_link 
-                                  where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-			                            and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			                            and link.operateuserid in (@revUserid@) and link.operateuserid is not null)
-			</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 方案原因导致失败数 -->
-				<sequence>1</sequence>
+        </query-define>
 
-				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>new Integer(f1)-new Integer(f3)</stat-sql>
+        <query-define><!-- 可重复 -->
+            <name>query3</name>
 
-				<list-hsql>
-					select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime 
-          from securityevaluate_main main,securityevaluate_link link 
-          where main.id=link.mainid and  main.status=1  and link.operatetype=90 
-			    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			    and link.operateuserid='@s1@' and link.operateuserid is not null
-          and link.mainid not in (select distinct link.mainid 
-                                  from securityevaluate_main main,securityevaluate_link 
-                                  where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
-			                            and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-			                            and link.operateuserid='@s1@' and link.operateuserid is not null)
-			                            order by main.sendtime desc 
-				    
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateuserid in (@revUserid@) and link.operateuserid is not null
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
 
-	</kpi-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 实施未达到预计效果的工单数 -->
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateuserid='@s1@' and link.operateuserid is not null
+                    order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <from>securityevaluate_main main,securityevaluate_link link</from><!-- 不可为空 -->
+
+            <where>main.id=link.mainid and main.status=1 and link.operatetype=90
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateuserid in (@revUserid@) and link.operateuserid is not null
+                and link.mainid not in (select distinct link.mainid
+                from securityevaluate_main main,securityevaluate_link
+                where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and link.operateuserid in (@revUserid@) and link.operateuserid is not null)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 方案原因导致失败数 -->
+                <sequence>1</sequence>
+
+                <stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>new Integer(f1)-new Integer(f3)</stat-sql>
+
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime
+                    from securityevaluate_main main,securityevaluate_link link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateuserid='@s1@' and link.operateuserid is not null
+                    and link.mainid not in (select distinct link.mainid
+                    from securityevaluate_main main,securityevaluate_link
+                    where main.id=link.mainid and main.status=1 and link.operatetype=90 and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and link.operateuserid='@s1@' and link.operateuserid is not null)
+                    order by main.sendtime desc
+
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+    </kpi-define>
 </KpiConfig>

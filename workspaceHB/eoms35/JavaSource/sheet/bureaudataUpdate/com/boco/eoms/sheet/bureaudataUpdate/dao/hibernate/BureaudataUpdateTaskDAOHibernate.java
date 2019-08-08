@@ -11,5 +11,5 @@ import com.boco.eoms.sheet.base.util.Constants;
 import com.boco.eoms.sheet.bureaudataUpdate.dao.IBureaudataUpdateTaskDAO;
 
 public class BureaudataUpdateTaskDAOHibernate extends TaskDAOImpl implements IBureaudataUpdateTaskDAO {
-	
+
 }

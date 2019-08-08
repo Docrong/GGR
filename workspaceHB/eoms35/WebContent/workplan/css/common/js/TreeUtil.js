@@ -1,74 +1,70 @@
 /********************************************************************************
- Copyright (c) 2002,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+ Copyright (c) 2002,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
  All rights reserved.
- Filename £ºcomm.js
- Abstract £º³£ÓÃÊ÷ÐÍ½á¹¹Êý¾Ý²Ù×÷¼¯
- Version¡¡£º2.0
- Author   £ºLiu Guoyuan
- Finished Date £º2002-08-30
- Last Modified £º2003-01-16
+ Filename ï¿½ï¿½comm.js
+ Abstract ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½á¹¹ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½
+ Versionï¿½ï¿½ï¿½ï¿½2.0
+ Author   ï¿½ï¿½Liu Guoyuan
+ Finished Date ï¿½ï¿½2002-08-30
+ Last Modified ï¿½ï¿½2003-01-16
 
-********************************************************************************/
+ ********************************************************************************/
 
-function hasSubNode(obj){
-//ÅÐ¶ÏÊ÷Í¼²Ëµ¥µÄÑ¡ÔñÏîÊÇ·ñÓÐ×Ó½áµã
-  var nodeIndex = obj.selectedIndex; 
-  var strNodeName = obj.options[nodeIndex].text; 
-  var curNodeClass = parseInt(strNodeName.substring(0,1));//È¡µ±Ç°½áµã¼¶Êý
-  if (nodeIndex == obj.length-1){ //×îºóÒ»¸ö½ÚµãÊ±£¬²»ÓÃÅÐ¶Ï
-    return false;
-  }else{
-    var nextNodeClass = parseInt(obj.options[nodeIndex+1].text.substring(0,1));//È¡ÏÂÒ»¸ö½áµã¼¶Êý
-    if (nextNodeClass>curNodeClass){//ÓÐ×Ó½áµã
-      return true;
+function hasSubNode(obj) {
+//ï¿½Ð¶ï¿½ï¿½ï¿½Í¼ï¿½Ëµï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ó½ï¿½ï¿½
+    var nodeIndex = obj.selectedIndex;
+    var strNodeName = obj.options[nodeIndex].text;
+    var curNodeClass = parseInt(strNodeName.substring(0, 1));//È¡ï¿½ï¿½Ç°ï¿½ï¿½ã¼¶ï¿½ï¿½
+    if (nodeIndex == obj.length - 1) { //ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
+        return false;
+    } else {
+        var nextNodeClass = parseInt(obj.options[nodeIndex + 1].text.substring(0, 1));//È¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ã¼¶ï¿½ï¿½
+        if (nextNodeClass > curNodeClass) {//ï¿½ï¿½ï¿½Ó½ï¿½ï¿½
+            return true;
+        } else {
+            return false;
+        }
     }
-    else{
-      return false;
-    }
-  }
 }
 
-function builderTree(sourceObject,targetObject)
-{
-//Éú³ÉÊ÷ÐÍ²Ëµ¥
-//Êý¾Ý¸ñÊ½£ºID£¬CLASS£¬NAME;  ¶ÔÓ¦IDÖµ£¬¼¶±ð£¬Ãû³Æ
-//Èç 1,1,È«¹ú;2,2,±±¾©;
-	var numargs = arguments.length; //·µ»ØµÄ²ÎÊýÊýÁ¿
-	if (numargs>0){
-		var sObject=eval(sourceObject);
-		var tObject=eval(targetObject);
-	}
-	else{
-		var sObject=eval("document.form1.treeCode");       //Ô´¶ÔÏó£ºÔ´Êý¾ÝËùÔÚ¶ÔÏó,Ô´Êý¾Ý¸ñÊ½Îª "id,class,name;"¡¡Èç"1000,1,È«¹ú;1001,2,±±¾©;"
-		var tObject=eval("document.form1.selectTree");    //Ä¿±ê¶ÔÏó
-	}
-	var name,count;
-	var treeCode=new Array();
-	treeCode=sObject.value.split(";");
-	count=treeCode.length-1;
-	j=0;
-	for (i=0;i<count;i++){
-		var treeCodeItem=new Array(3);
-		treeCodeItem=treeCode[i].split(",");
-		nodeId=treeCodeItem[0];        //½ÚµãID
-		nodeClass=treeCodeItem[1];     //½Úµã¼¶Êý
-		nodeName=treeCodeItem[2];      //½ÚµãÃû³Æ
-		name=nodeClass+"¼¶";
-		for (k=1;k<=nodeClass;k++){
-			name=name+"...";
-		}
-		tObject.options.length=j+1;
-		if (nodeClass==0){
-			tObject.options[j].className="OptionRedColor";
-			nodeName="¡¤¡¤¡¤"+nodeName+"¡¤¡¤¡¤";
-		}
-		else{
-			nodeName=name+"|"+nodeName;
-		}
-		tObject.options[j].text=nodeName;
-		tObject.options[j].value=nodeId;
-		tObject.options[j].classvalue=nodeClass;
-		j++;
-	}
-	tObject.options[0].selected=true;
+function builderTree(sourceObject, targetObject) {
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í²Ëµï¿½
+//ï¿½ï¿½ï¿½Ý¸ï¿½Ê½ï¿½ï¿½IDï¿½ï¿½CLASSï¿½ï¿½NAME;  ï¿½ï¿½Ó¦IDÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ï¿½ï¿½ 1,1,È«ï¿½ï¿½;2,2,ï¿½ï¿½ï¿½ï¿½;
+    var numargs = arguments.length; //ï¿½ï¿½ï¿½ØµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (numargs > 0) {
+        var sObject = eval(sourceObject);
+        var tObject = eval(targetObject);
+    } else {
+        var sObject = eval("document.form1.treeCode");       //Ô´ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½,Ô´ï¿½ï¿½ï¿½Ý¸ï¿½Ê½Îª "id,class,name;"ï¿½ï¿½ï¿½ï¿½"1000,1,È«ï¿½ï¿½;1001,2,ï¿½ï¿½ï¿½ï¿½;"
+        var tObject = eval("document.form1.selectTree");    //Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
+    }
+    var name, count;
+    var treeCode = new Array();
+    treeCode = sObject.value.split(";");
+    count = treeCode.length - 1;
+    j = 0;
+    for (i = 0; i < count; i++) {
+        var treeCodeItem = new Array(3);
+        treeCodeItem = treeCode[i].split(",");
+        nodeId = treeCodeItem[0];        //ï¿½Úµï¿½ID
+        nodeClass = treeCodeItem[1];     //ï¿½Úµã¼¶ï¿½ï¿½
+        nodeName = treeCodeItem[2];      //ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+        name = nodeClass + "ï¿½ï¿½";
+        for (k = 1; k <= nodeClass; k++) {
+            name = name + "...";
+        }
+        tObject.options.length = j + 1;
+        if (nodeClass == 0) {
+            tObject.options[j].className = "OptionRedColor";
+            nodeName = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + nodeName + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+        } else {
+            nodeName = name + "|" + nodeName;
+        }
+        tObject.options[j].text = nodeName;
+        tObject.options[j].value = nodeId;
+        tObject.options[j].classvalue = nodeClass;
+        j++;
+    }
+    tObject.options[0].selected = true;
 }

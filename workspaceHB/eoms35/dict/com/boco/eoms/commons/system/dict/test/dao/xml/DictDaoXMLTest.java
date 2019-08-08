@@ -20,10 +20,9 @@ import com.boco.eoms.commons.system.dict.util.Constants;
  * <p>
  * Date:2007-10-24 14:30:14
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictDaoXMLTest extends ConsoleTestCase {
     private IDictDao dictDaoXML;
@@ -35,7 +34,6 @@ public class DictDaoXMLTest extends ConsoleTestCase {
         super.setUp();
         dictDaoXML = (IDictDao) this.getBean("DictDaoXML");
     }
-
 
 
     public void testFindItem() {
@@ -59,7 +57,7 @@ public class DictDaoXMLTest extends ConsoleTestCase {
 
             assertNotNull(list);
             assertFalse(list.isEmpty());
-            for (Iterator it = list.iterator(); it.hasNext();) {
+            for (Iterator it = list.iterator(); it.hasNext(); ) {
                 IDictItem item = (IDictItem) it.next();
                 //若为1则断方开发工程师
                 if ("1".equals(item.getItemId())) {

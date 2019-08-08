@@ -1,165 +1,166 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
-		<!--bean for EsmProcess end-->
-	</form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
+        <!--bean for EsmProcess end-->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		<forward name="error"
-			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
-			contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+        <forward name="error"
+                 path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+                 contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
-	
-	
-		<action path="/resdispatch"
-			type="com.boco.eoms.sheet.resdispatch.webapp.action.ResDispatchAction"
-			name="multiPageForm" scope="request" input="error" parameter="method"
-			unknown="false" validate="false" attribute="ResDispatch">
-			<set-property property="cancellable" value="true" />
-			<forward name="new"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/main.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputNew"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="dealpage"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/dealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputDealpage"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/inputdealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="reject"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/reject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputReject"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/inputreject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="detail"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/detail.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draft"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="cancel"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="delete"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="hold"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/list.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="success"
-				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="portal"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/portal.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="split"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/split.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="history"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/history.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draw"
-                path="/WEB-INF/pages/wfworksheet/resdispatch/draw.jsp"
-                redirect="false" contextRelative="true"/>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
+
+
+        <action path="/resdispatch"
+                type="com.boco.eoms.sheet.resdispatch.webapp.action.ResDispatchAction"
+                name="multiPageForm" scope="request" input="error" parameter="method"
+                unknown="false" validate="false" attribute="ResDispatch">
+            <set-property property="cancellable" value="true"/>
+            <forward name="new"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/main.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputNew"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealpage"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/dealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputDealpage"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/inputdealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="reject"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/reject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputReject"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/inputreject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="detail"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draft"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cancel"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="delete"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="hold"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/list.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="portal"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/portal.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="split"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/split.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="history"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/history.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draw"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/draw.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="pic"
-                path="/WEB-INF/pages/wfworksheet/resdispatch/pic.jsp"
-                redirect="false" contextRelative="true"/>
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/pic.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="holdlist"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="startlist"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/mainlist.jsp"
-				redirect="false" contextRelative="true" />
-		    <forward name="maindetail"
-				path="/WEB-INF/pages/wfworksheet/resdispatch/detail.jsp"
-				redirect="false" contextRelative="true" />
-	        <forward name="query"
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/query.jsp"
-		        redirect="false" contextRelative="true" />
-	        <forward name="queryInput"
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/queryinput.jsp"
-		        redirect="false" contextRelative="true" />		
-	        <forward name="querylist"
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/querylist.jsp"
-		        redirect="false" contextRelative="true" />
-	        <forward name="statisticsheetlist"
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/statistic/statisticsheetlist.jsp"
-		        redirect="false" contextRelative="true" /> 		
-	        <forward name="statistic" 
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/statistic/statistic.jsp"
-		        redirect="false" contextRelative="true"/>    
-	        <forward name="statisticresult" 
-		        path="/WEB-INF/pages/wfworksheet/common/statistic/rowresult.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="templates" 
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/templates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplates" 
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/dealTemplates.jsp"
-		        redirect="false" contextRelative="true"/>     
-		    <forward name="templateDetail" 
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/templateDetail.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplateDetail" 
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/dealTemplateDetail.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="editTemplate" 
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/editTemplate.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplates" 
-		        path="/WEB-INF/pages/wfworksheet/resdispatch/editDealTemplate.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="getLinkOperatePage"
-				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
-				redirect="false" contextRelative="true" />
-		 </action>
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="startlist"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="maindetail"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="query"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/query.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="queryInput"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/queryinput.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="querylist"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/querylist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="statisticsheetlist"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/statistic/statisticsheetlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="statistic"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/statistic/statistic.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="statisticresult"
+                     path="/WEB-INF/pages/wfworksheet/common/statistic/rowresult.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="templates"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/templates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplates"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/dealTemplates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="templateDetail"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/templateDetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplateDetail"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/dealTemplateDetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="editTemplate"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/editTemplate.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplates"
+                     path="/WEB-INF/pages/wfworksheet/resdispatch/editDealTemplate.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="getLinkOperatePage"
+                     path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
 
-	</action-mappings>
+    </action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources parameter="config/ApplicationResources-sheet"
-		key="sheet" />
-	<message-resources
-		parameter="config/ApplicationResources-sheet-resdispatch" key="resdispatch" />
-	<message-resources parameter="config/ApplicationResources-statistic"
-		key="statistic" />
-	<!-- ========== Validator plugin ===================  -->
-	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-		<set-property property="pathnames"
-			value="/WEB-INF/validator-rules.xml,
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources-sheet"
+                       key="sheet"/>
+    <message-resources
+            parameter="config/ApplicationResources-sheet-resdispatch" key="resdispatch"/>
+    <message-resources parameter="config/ApplicationResources-statistic"
+                       key="statistic"/>
+    <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
-                             /WEB-INF/validation.xml" />
-	</plug-in>
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
 
 </struts-config>

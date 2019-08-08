@@ -10,11 +10,11 @@ public interface IFaultrecordDao extends Dao {
 
     public List getFaultrecords(Faultrecord faultrecord);
 
-	public void saveFaultrecord(final Faultrecord faultrecord);
-	
-	public Faultrecord getFaultrecord(final String id);
-	
-	public Map getFaultrecords(final Integer curPage, final Integer pageSize,final String whereStr);
+    public void saveFaultrecord(final Faultrecord faultrecord);
 
-	public void removeFaultrecord(final String id);
+    public Faultrecord getFaultrecord(final String id);
+
+    public Map getFaultrecords(final Integer curPage, final Integer pageSize, final String whereStr);
+
+    public void removeFaultrecord(final String id);
 }

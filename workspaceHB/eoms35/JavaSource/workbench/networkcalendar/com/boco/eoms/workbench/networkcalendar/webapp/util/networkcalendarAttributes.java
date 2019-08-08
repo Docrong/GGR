@@ -10,70 +10,69 @@ package com.boco.eoms.workbench.networkcalendar.webapp.util;
  * <p>
  * Date:Apr 15, 2008 1:42:00 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class networkcalendarAttributes {
 
-	/**
-	 * 控制值班类型
-	 */
-	private String dutyOtherAssign;
+    /**
+     * 控制值班类型
+     */
+    private String dutyOtherAssign;
 
-	public String getDutyOtherAssign() {
-		return dutyOtherAssign;
-	}
+    public String getDutyOtherAssign() {
+        return dutyOtherAssign;
+    }
 
-	public void setDutyOtherAssign(String dutyOtherAssign) {
-		this.dutyOtherAssign = dutyOtherAssign;
-	}
-	
-	/**
-	 * 上传路径设置
-	 */
-	private String dutyRootPath;
+    public void setDutyOtherAssign(String dutyOtherAssign) {
+        this.dutyOtherAssign = dutyOtherAssign;
+    }
 
-	public String getDutyRootPath() {
-		return dutyRootPath;
-	}
+    /**
+     * 上传路径设置
+     */
+    private String dutyRootPath;
 
-	public void setDutyRootPath(String dutyRootPath) {
-		this.dutyRootPath = dutyRootPath;
-	}
-	
-	/**
-	 * 上传路径设置
-	 */
-	private String dutyOldPath;
+    public String getDutyRootPath() {
+        return dutyRootPath;
+    }
 
-	public String getDutyOldPath() {
-		return dutyOldPath;
-	}
+    public void setDutyRootPath(String dutyRootPath) {
+        this.dutyRootPath = dutyRootPath;
+    }
 
-	public void setDutyOldPath(String dutyOldPath) {
-		this.dutyOldPath = dutyOldPath;
-	}
-	
-	private String serverId;
+    /**
+     * 上传路径设置
+     */
+    private String dutyOldPath;
 
-	public String getServerId() {
-		return serverId;
-	}
+    public String getDutyOldPath() {
+        return dutyOldPath;
+    }
 
-	public void setServerId(String serverId) {
-		this.serverId = serverId;
-	}
-	
-	private String sendSMsgAvailable;
+    public void setDutyOldPath(String dutyOldPath) {
+        this.dutyOldPath = dutyOldPath;
+    }
 
-	public String getSendSMsgAvailable() {
-		return sendSMsgAvailable;
-	}
+    private String serverId;
 
-	public void setSendSMsgAvailable(String sendSMsgAvailable) {
-		this.sendSMsgAvailable = sendSMsgAvailable;
-	}
+    public String getServerId() {
+        return serverId;
+    }
+
+    public void setServerId(String serverId) {
+        this.serverId = serverId;
+    }
+
+    private String sendSMsgAvailable;
+
+    public String getSendSMsgAvailable() {
+        return sendSMsgAvailable;
+    }
+
+    public void setSendSMsgAvailable(String sendSMsgAvailable) {
+        this.sendSMsgAvailable = sendSMsgAvailable;
+    }
 
 }

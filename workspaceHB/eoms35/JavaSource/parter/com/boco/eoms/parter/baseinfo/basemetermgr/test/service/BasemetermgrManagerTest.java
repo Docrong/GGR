@@ -35,7 +35,7 @@ public class BasemetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         basemetermgrDao.expects(once()).method("getBasemetermgrs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List basemetermgrs = basemetermgrManager.getBasemetermgrs(null);
         assertTrue(basemetermgrs.size() == 1);
@@ -45,7 +45,7 @@ public class BasemetermgrManagerTest extends BaseManagerTestCase {
     public void testGetBasemetermgr() throws Exception {
         // set expected behavior on dao
         basemetermgrDao.expects(once()).method("getBasemetermgr")
-            .will(returnValue(new Basemetermgr()));
+                .will(returnValue(new Basemetermgr()));
         Basemetermgr basemetermgr = basemetermgrManager.getBasemetermgr(basemetermgrId);
         assertTrue(basemetermgr != null);
         basemetermgrDao.verify();
@@ -56,7 +56,7 @@ public class BasemetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         basemetermgrDao.expects(once()).method("saveBasemetermgr")
-            .with(same(basemetermgr)).isVoid();
+                .with(same(basemetermgr)).isVoid();
 
         basemetermgrManager.saveBasemetermgr(basemetermgr);
         basemetermgrDao.verify();
@@ -69,7 +69,7 @@ public class BasemetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         basemetermgrDao.expects(once()).method("saveBasemetermgr")
-            .with(same(basemetermgr)).isVoid();
+                .with(same(basemetermgr)).isVoid();
         basemetermgrManager.saveBasemetermgr(basemetermgr);
         basemetermgrDao.verify();
 

@@ -1,398 +1,433 @@
 <?xml version="1.0" encoding="GBK"?>
 <boco>
-	<!-- 掌上运维接口类型配置 -->
-	<interfaceType>
-		
-		<dataService>dataService</dataService><!-- 工单详情 -->
-		<dealSheet>dealSheet</dealSheet><!-- 工单处理完成提交请求接口 -->
-		<acceptSheet>acceptSheet</acceptSheet><!-- 工单受理状态更新请求接口 -->
-		<sheetList>sheetList</sheetList><!-- 待办工单列表查询接口 -->
-		<rejectSheet>rejectSheet</rejectSheet><!-- 工单驳回接口 -->
-		<historyList>historyList</historyList><!-- 工单流转环节服务接口 -->
-		<csSheet>csSheet</csSheet><!-- 工单抄送接口 -->
-		<inquirySheet>inquirySheet</inquirySheet><!-- 工单综合查询接口 -->
-		<finishSheetList>finishSheetList</finishSheetList><!-- 已办工单列表查询接口 -->
-		<transferSheet>transferSheet</transferSheet><!-- 工单指定接口 -->
-		<readSheet>readSheet</readSheet><!-- 工单已阅接口 -->
-	</interfaceType>
-	<dataService>
-		<content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue="" />
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单主题" defauleValue=""/>
-		<content columnName="Operate_user" interfaceEnName="Operate_user" interfaceCnName="操作人姓名" defauleValue="" />
-		<content columnName="sendTime" interfaceEnName="Operate_time" interfaceCnName="发起时间" defauleValue="" />
-		<content columnName="taskStatus" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue="" />
-		<content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue="" />
-		<content columnName="mainCompleteLimitT2" interfaceEnName="T2_dealtime_lmt" interfaceCnName="T2阶段处理时限" defauleValue="" />
-		
-		<content columnName="complaintDesc" interfaceEnName="Complaint_info" interfaceCnName="投诉内容" defauleValue="" />
+    <!-- 掌上运维接口类型配置 -->
+    <interfaceType>
 
-		</dataService>
-	
-	<acceptSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号 -->
-		<content columnName=""  interfaceName="Sheet_status"  defauleValue=""/><!-- 工单状态 -->
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!-- 处理人账号-->
-		<content columnName="operateTime"  interfaceName="Accept_time"  defauleValue=""/><!-- 故障受理时间 -->
-		<content columnName="beanId"  interfaceName=""  defauleValue="iGroupComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink" />
-		<content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="61" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept" />
-		<content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0" />		<!-- 超时标记-->	
-	</acceptSheet>
-	
-	<dealSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号 -->
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号  -->
-		<content columnName="operateTime"  interfaceName="Operate_time"  defauleValue=""/><!--处理完成时间  -->
-		<content columnName="operaterContact" interfaceName="Operate_contact" defauleValue="" /> <!-- 操作人联系方式  --> 
-		<content columnName=""  interfaceName="Sheet_status"  defauleValue=""/><!--工单状态  -->
-		<content columnName="status"  interfaceName=""  defauleValue="0"/>
-		<content columnName="beanId"  interfaceName=""  defauleValue="iGroupComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink" />
-		<content columnName="phaseId" interfaceName="" defauleValue="CheckingHumTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="46" />
-		
-		
-		<content columnName="ndeptContact" interfaceName="Linkman" defauleValue="" />
-		<content columnName="ndeptContactPhone" interfaceName="Linkman_phone" defauleValue="" />
-		
-		<content columnName="compProp" interfaceName="Complaint_nature" defauleValue="" />
-		<content columnName="isReplied" interfaceName="Is_answered" defauleValue="" />
-		<content columnName="isCorrect" interfaceName="Is_right" defauleValue="" />
-		<content columnName="affectedAreas" interfaceName="Complaint_range" defauleValue="" />
-		<content columnName="issueEliminatTime" interfaceName="Eliminate_time" defauleValue="" />
-		<content columnName="dealResult" interfaceName="Dispose_result" defauleValue="" />
-		<content columnName="issueEliminatReason" interfaceName="Reason_solution" defauleValue="" />
-		<content columnName="faultClassification" interfaceName="Cause_classification" defauleValue="" />
-		<content columnName="faultReason" interfaceName="Fault_text" defauleValue="" />
-		<content columnName="gradeSLA" interfaceName="SLAcode" defauleValue="" />
-		<content columnName="linkCity" interfaceName="City" defauleValue="" />
-		<content columnName="linkArea" interfaceName="County" defauleValue="" />
-		<content columnName="electricCode" interfaceName="Line_num" defauleValue="" />
-		<content columnName="dealDesc" interfaceName="Solution" defauleValue="" />
-	</dealSheet>
-		<content columnName=""  interfaceName="User_id"  defauleValue=""/><!--当前待办人  -->
-		<content columnName=""  interfaceName="Sheet_status"  defauleValue=""/><!--工单状态  -->
-		<content columnName=""  interfaceName="NETWORK_SORT"  defauleValue=""/><!--网络类型  -->
-		<content columnName=""  interfaceName="Start_records"  defauleValue=""/><!--开始记录数  -->
-		<content columnName=""  interfaceName="End_records"  defauleValue=""/><!--结束记录数  -->
-	<sheetList>
-		<content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue="" />
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue="" />
-		<content columnName="taskstatus" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue="" />
-		<content columnName="taskname" interfaceEnName="Sheet_step" interfaceCnName="工单处理环节" defauleValue="" />
-		<content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue="" />
-		<content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue="" />
-	</sheetList>
-	<rejectSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号 -->
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号  -->
-		<content columnName="operateTime"  interfaceName="Reject_time"  defauleValue=""/><!--驳回时间  -->
-		<content columnName=""  interfaceName="Operate_task"  defauleValue=""/><!--操作类型  -->
-		<content columnName="remark"  interfaceName="Reject_desc"  defauleValue=""/><!--驳回原因  -->
-		<content columnName="beanId"  interfaceName=""  defauleValue="iGroupComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileReject" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink" />
-	</rejectSheet>
-	<historyList>
-		<content columnName="operateuserid" interfaceEnName="Operate_id" interfaceCnName="处理人姓名" defauleValue="" type="user"/>
-		<content columnName="operatercontact" interfaceEnName="User_phone" interfaceCnName="联系电话" defauleValue="" />
-		<content columnName="accepttime" interfaceEnName="Appect_time" interfaceCnName="受理时间" defauleValue=""/>
-		<content columnName="operateTime" interfaceEnName="Replay_time" interfaceCnName="回复时间" defauleValue=""/>
-		<content columnName="activetemplateid" interfaceEnName="Task_name" interfaceCnName="环节名" defauleValue=""/>
-		<content columnName="activetemplateid" interfaceEnName="Task_desc" interfaceCnName="环节描述" defauleValue="" dictPath="dict-sheet-commonfault.xml"/>
-		<content columnName="limitFlag" interfaceEnName="Limit_flag" interfaceCnName="处理超时标识" defauleValue=""/>
-		<content columnName="operatetype" interfaceEnName="Operate_result" interfaceCnName="操作类型" defauleValue="" dictPath="dict-sheet-commonfault.xml"/>
-	</historyList>
-	<csSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号 -->
-		<content columnName="operateuserid" interfaceName="Operate_userid"  defauleValue="" type="user"/><!--处理人账号  -->
-		<content columnName="operateTime"  interfaceName="Operate_time"  defauleValue=""/><!--抄送时间  -->
-		<content columnName=""  interfaceName="Operate_task"  defauleValue=""/><!--操作类型  -->
-		<content columnName=""  interfaceName="Role_id"  defauleValue=""/><!--抄送班组  -->
-	</csSheet>
-	<inquirySheet>
-		<content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
-		<content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
-		<content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
-	</inquirySheet>
-	<finishSheetList>
-		<content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
-		<content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
-		<content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
-		
-		<content columnName="status" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue="" />
-	</finishSheetList>
-	<transferSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号 -->
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号  -->
-		<content columnName="operateTime"  interfaceName="Operate_time"  defauleValue=""/><!--处理完成时间  -->
-		<content columnName=""  interfaceName="Operate_task"  defauleValue=""/><!--操作类型  -->
-		<content columnName="" interfaceName="Role_id" defauleValue="" /><!--所在班组  -->
-		<content columnName="" interfaceName="Assign_userid" defauleValue="" /><!--指定账号-->
-		<content columnName="beanId"  interfaceName=""  defauleValue="iCommonFaultMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink" />
-		<content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="61" />
-	</transferSheet> 
-	<readSheet>
-		<content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
-		<content columnName="" interfaceEnName="Operate_task" interfaceCnName="操作类型" defauleValue=""/>
-		<content columnName="operateuserid" interfaceEnName="Operate_id" interfaceCnName="处理人账号" defauleValue=""/>
-		<content columnName="operateTime" interfaceEnName="Operate_time" interfaceCnName="阅读时间" defauleValue=""/>
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileDeal" />
-	</readSheet>
-	
-	<subrole>
-		<zjsubroleid>8a9982f222885c36012298eefe7638f1</zjsubroleid><!-- 质检 -->
-		<t1subroleid>8a9982f222885c36012298ed35bf38de</t1subroleid><!-- T1 -->
-	</subrole>
-	
-	<sql>
-		<undoListSql>
-			SELECT TASK.SHEETID,
-       TASK.TITLE,
-       MAIN.MAINCOMPLETELIMITT2,
-       CASE TASKSTATUS
-         WHEN '2' THEN
-          '未接单'
-         WHEN '8' THEN
-          '接单'
-       END AS TASKSTATUS,
-       CASE TASKNAME
-         WHEN 'cc' THEN
-          '抄送'
-         WHEN 'SecondExcuteHumTask' THEN
-          '二级处理'
-         WHEN 'advice' THEN
-          '阶段通知'
-         WHEN 'reply' THEN
-          '阶段回复'
-         ELSE
-          '其他'
-       END AS TASKNAME,
-       MAIN.DEALTIME1
-  FROM GROUPCOMPLAINT_TASK TASK, GROUPCOMPLAINT_MAIN MAIN
- WHERE ((TASK.TASKOWNER = '@userId@' OR TASK.TASKOWNER = '@deptId@') OR
-       TASK.TASKOWNER IN
-       (SELECT USERREFROLE.SUBROLEID
-           FROM TAW_SYSTEM_USERREFROLE USERREFROLE
-          WHERE USERREFROLE.USERID = '@userId@'))
-   AND (TASK.TASKSTATUS = 2 OR TASK.TASKSTATUS = 8 OR TASK.TASKSTATUS = 1)
-   AND TASK.TASKDISPLAYNAME &lt;&gt; '草稿'
-   AND MAIN.ID = TASK.SHEETKEY
-   AND MAIN.DELETED &lt;&gt; '1'
-   AND (TASK.IFWAITFORSUBTASK = 'false' OR
-       (TASK.IFWAITFORSUBTASK = 'true' AND
-       TASK.ID IN (SELECT TASK1.PARENTTASKID
-                       FROM GROUPCOMPLAINT_TASK TASK1
-                      WHERE TASK1.SUBTASKFLAG = 'true'
-                        AND (TASK1.SUBTASKDEALFALG = 'false' OR
-                            TASK1.SUBTASKDEALFALG IS NULL)
-                        AND TASK1.TASKSTATUS = '5')))
-   AND TASKNAME = 'SecondExcuteHumTask'
- ORDER BY TASK.CREATETIME DESC
-		</undoListSql>
-		<ccundoListSql>
-			select task.sheetid,task.title,task.completetimelimit,
-			case taskstatus when '2' then '未接单' when '8' then  '已接单未处理' end as taskstatus,
-  			case taskname when 'cc' then '抄送' when 'SecondExcuteHumTask' then 'T2处理' else '其他' end as taskname,
-   			main.mainnetsortone,main.mainfaultresponselevel 
-			from commonfault_task task,commonfault_main main 
-			where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and main.deleted&lt;&gt;'1' and main.status=0 and task.taskname='cc' 
-			and task.id in ( select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted &lt;&gt;'1' and t3.taskowner = '@userId@' 
-			union all select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted &lt;&gt;'1' and t3.taskowner = '@deptId@' 
-			union all select t3.id from commonfault_task t3,commonfault_main m2,taw_system_userrefrole r where taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted &lt;&gt;'1' and r.subRoleid = t3.taskowner and r.userid='@userId@' 
-			union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted &lt;&gt; '1' and t1.taskowner='@userId@' 
-			union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted &lt;&gt; '1' and t1.taskowner='@deptId@' 
-			union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and m1.deleted &lt;&gt; '1' and r.userid = '@userId@') 
-			order by main.maincompletelimitt2 
-		</ccundoListSql>
+        <dataService>dataService</dataService><!-- 工单详情 -->
+        <dealSheet>dealSheet</dealSheet><!-- 工单处理完成提交请求接口 -->
+        <acceptSheet>acceptSheet</acceptSheet><!-- 工单受理状态更新请求接口 -->
+        <sheetList>sheetList</sheetList><!-- 待办工单列表查询接口 -->
+        <rejectSheet>rejectSheet</rejectSheet><!-- 工单驳回接口 -->
+        <historyList>historyList</historyList><!-- 工单流转环节服务接口 -->
+        <csSheet>csSheet</csSheet><!-- 工单抄送接口 -->
+        <inquirySheet>inquirySheet</inquirySheet><!-- 工单综合查询接口 -->
+        <finishSheetList>finishSheetList</finishSheetList><!-- 已办工单列表查询接口 -->
+        <transferSheet>transferSheet</transferSheet><!-- 工单指定接口 -->
+        <readSheet>readSheet</readSheet><!-- 工单已阅接口 -->
+    </interfaceType>
+    <dataService>
+        <content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单主题" defauleValue=""/>
+        <content columnName="Operate_user" interfaceEnName="Operate_user" interfaceCnName="操作人姓名" defauleValue=""/>
+        <content columnName="sendTime" interfaceEnName="Operate_time" interfaceCnName="发起时间" defauleValue=""/>
+        <content columnName="taskStatus" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue=""/>
+        <content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
+        <content columnName="mainCompleteLimitT2" interfaceEnName="T2_dealtime_lmt" interfaceCnName="T2阶段处理时限"
+                 defauleValue=""/>
 
-		<historySql>
-			select operateuserid,operatercontact,accepttime,operatetime,activetemplateid,operatetype,
-			case when (case when operatetype=61 then acceptflag else completeflag end)=2 then 'Y' else 'N' end as limitFlag
- 			from  commonfault_link    where mainid='@mainid@'
-                        order by operatetime
-		</historySql>
-		<!-- 工单综合查询接口sql -->
-		<!-- 工单状态为-1 全部-->
-		<inquirySheetSql-1>
-			 select distinct commonFaultMain.* 
-  			 from CommonFault_Main  commonFaultMain,
-       		      CommonFault_Link  commonFaultLink
-			 where commonFaultMain.id = commonFaultLink.mainId
-			   and commonFaultMain.templateFlag &lt;&gt; 1
-			   and commonFaultLink.templateFlag &lt;&gt; 1
-			   and commonFaultMain.deleted = '0'
-			   and commonFaultLink.operatetype in (select '4' from dual union all select '61' from dual union all select '46' from dual union all select '5' from dual union all select '-10' from dual union all select '9' from dual)
-			   @timeStart@ 
-			   @timeEnd@
-			   @mainnetsortone@
-			   @mainfaultresponselevel@
-			   @operateRoleId@
-			   @operateUserId@
-			   @formNo@
-			   @formTitle@
-			 order by commonFaultMain.sendTime desc
-		</inquirySheetSql-1>
-		<!-- 工单状态为1 草稿-->
-		<inquirySheetSql1>
-		 	select distinct commonFaultMain.* 
-  			from CommonFault_Main  commonFaultMain,
-       			 CommonFault_Task  commonFaultTask,
-       		      CommonFault_Link  commonFaultLink
- 			where commonFaultMain.id = commonFaultTask.sheetKey
- 			   and commonFaultMain.id = commonFaultLink.mainId
-  			   and commonFaultMain.templateFlag &lt;&gt; 1
-   			   and commonFaultMain.deleted &lt;&gt; '1'
-  			   and commonFaultTask.taskName = 'DraftHumTask'
-  			   and commonFaultMain.status = '0'
-			   @timeStart@ 
-			   @timeEnd@
-			   @mainnetsortone@
-			   @mainfaultresponselevel@
-			   @operateRoleId@
-			   @operateUserId@
-			   @formNo@
-			   @formTitle@
-			 order by commonFaultMain.sendTime desc
-		</inquirySheetSql1>
-		<!-- 工单状态为7 运行中-->
-		<inquirySheetSql7>
-		 	select distinct commonFaultMain.* 
-  			from CommonFault_Main  commonFaultMain,
-       		      CommonFault_Link  commonFaultLink
- 			where commonFaultMain.id = commonFaultLink.mainId
- 			   and commonFaultMain.templateFlag &lt;&gt; 1
-   			   and commonFaultMain.deleted = '0'
-  			   and commonFaultMain.status = '0'
-  			   and commonFaultLink.operatetype in (select '4' from dual union all select '61' from dual union all select '46' from dual union all select '5' from dual union all select '-10' from dual union all select '9' from dual)
-			   @timeStart@ 
-			   @timeEnd@
-			   @mainnetsortone@
-			   @mainfaultresponselevel@
-			   @operateRoleId@
-			   @operateUserId@
-			   @formNo@
-			   @formTitle@
-			 order by commonFaultMain.sendTime desc
-		</inquirySheetSql7>
-		<!-- 工单状态为4 处理完成-->
-		<inquirySheetSql4>
-		 	select distinct commonFaultMain.* 
-  			from CommonFault_Task  commonFaultTask,CommonFault_Main  commonFaultMain,
-       		      CommonFault_Link  commonFaultLink
- 			where commonFaultMain.id = commonFaultTask.sheetKey
- 			   and commonFaultMain.id = commonFaultLink.mainId
- 			   and commonFaultTask.ifWaitForSubTask = 'true'
-    		   and (commonFaultTask.taskStatus = '5' or
-       			  commonFaultTask.taskStatus &lt;&gt; '5' and
-       			  commonFaultTask.ifWaitForSubTask = 'true' and
-       			  (commonFaultTask.id not in
-       			  (select commonfaul3_.parentTaskId
-                   from commonfault_task commonfaul3_
-                   where commonfaul3_.subTaskFlag = 'true'
-                     and (commonfaul3_.subTaskDealFalg = 'false' or
-                         commonfaul3_.subTaskDealFalg is null)
-                     and commonfaul3_.taskStatus = '5')))
-    		   and commonFaultMain.deleted = '0'
-  			   and commonFaultMain.status = '0'
-			   @timeStart@ 
-			   @timeEnd@
-			   @mainnetsortone@
-			   @mainfaultresponselevel@
-			   @operateRoleId@
-			   @operateUserId@
-			   @formNo@
-			   @formTitle@
-			 order by commonFaultMain.sendTime desc
-		</inquirySheetSql4>
-		<!-- 工单状态为5 已归档-->
-		<inquirySheetSql5>
-		 	select distinct commonFaultMain.* 
-  			from CommonFault_Main  commonFaultMain,
-       		     CommonFault_Link  commonFaultLink
- 			where commonFaultMain.templateFlag &lt;&gt; 1
- 			   and commonFaultMain.id = commonFaultLink.mainId
-   			   and commonFaultMain.deleted = '0'
-  			   and commonFaultMain.status = '1'
-  			   and commonFaultLink.operatetype in (select '4' from dual union all select '61' from dual union all select '46' from dual union all select '5' from dual union all select '-10' from dual union all select '9' from dual)
-			   @timeStart@ 
-			   @timeEnd@
-			   @mainnetsortone@
-			   @mainfaultresponselevel@
-			   @operateRoleId@
-			   @operateUserId@
-			   @formNo@
-			   @formTitle@
-			 order by commonFaultMain.sendTime desc
-		</inquirySheetSql5>
-		<!-- 工单状态为6 作废-->
-		<inquirySheetSql6>
-		 	select distinct commonFaultMain.* 
-  			from CommonFault_Main  commonFaultMain,
-       		     CommonFault_Link  commonFaultLink
- 			where commonFaultMain.templateFlag &lt;&gt; 1
- 			   and commonFaultMain.id = commonFaultLink.mainId
-   			   and commonFaultMain.deleted &lt;&gt; '1'
-  			   and commonFaultMain.status = '-12'
-			   @timeStart@ 
-			   @timeEnd@
-			   @mainnetsortone@
-			   @mainfaultresponselevel@
-			   @operateRoleId@
-			   @operateUserId@
-			   @formNo@
-			   @formTitle@
-			 order by commonFaultMain.sendTime desc
-		</inquirySheetSql6>
-		<!--已办工单列表查询接口sql-->
-		<finishSheetList>	
-							select a.Sheetid,a.Title,a.Sheetcompletelimit,a.Status,
-       			task.Taskdisplayname,a.mainnetsortone,a.mainfaultresponselevel
-			from commonfault_main a,commonfault_task task
-			where task.sheetKey = a.id
-			  and a.deleted &lt;&gt; '1'
-  			  and task.taskOwner = '@User_id@'
-  			  and (task.taskStatus = '5' or
-               task.taskStatus &lt;&gt; '5' and
-               task.ifWaitForSubTask = 'true' and
-               (task.id not in
-               (select commonfaul3_.parentTaskId
-                    from commonfault_task commonfaul3_
-                   where commonfaul3_.subTaskFlag = 'true'
-                     and (commonfaul3_.subTaskDealFalg = 'false' or
-                         commonfaul3_.subTaskDealFalg is null)
-                     and commonfaul3_.taskStatus = '5')))
-  			  @Start_time@
-  			  @End_time@
-			order by task.createTime
-			
-</finishSheetList>
+        <content columnName="complaintDesc" interfaceEnName="Complaint_info" interfaceCnName="投诉内容" defauleValue=""/>
 
-<finishList>
+    </dataService>
 
-select link.linkFaultReasonSort,
-       link.linkfaultreasonsubsection ,
-       link.linkfaultreasonsubsectiontwo ,
-       link.faultdealdesc,
-       link.faultdealtime,
-       link.linkDealStep
-  from commonfault_link link,commonfault_main main
- where main.sheetId =  '@id@'
- and link.operatetype = '46'
-and main.id=link.mainid
-order by link.operatetime desc
+    <acceptSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号 -->
+        <content columnName="" interfaceName="Sheet_status" defauleValue=""/><!-- 工单状态 -->
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!-- 处理人账号-->
+        <content columnName="operateTime" interfaceName="Accept_time" defauleValue=""/><!-- 故障受理时间 -->
+        <content columnName="beanId" interfaceName="" defauleValue="iGroupComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink"/>
+        <content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="61"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept"/>
+        <content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0"/>        <!-- 超时标记-->
+    </acceptSheet>
 
-</finishList>
+    <dealSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号 -->
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号  -->
+        <content columnName="operateTime" interfaceName="Operate_time" defauleValue=""/><!--处理完成时间  -->
+        <content columnName="operaterContact" interfaceName="Operate_contact" defauleValue=""/> <!-- 操作人联系方式  -->
+        <content columnName="" interfaceName="Sheet_status" defauleValue=""/><!--工单状态  -->
+        <content columnName="status" interfaceName="" defauleValue="0"/>
+        <content columnName="beanId" interfaceName="" defauleValue="iGroupComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="CheckingHumTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="46"/>
 
-	</sql>
+
+        <content columnName="ndeptContact" interfaceName="Linkman" defauleValue=""/>
+        <content columnName="ndeptContactPhone" interfaceName="Linkman_phone" defauleValue=""/>
+
+        <content columnName="compProp" interfaceName="Complaint_nature" defauleValue=""/>
+        <content columnName="isReplied" interfaceName="Is_answered" defauleValue=""/>
+        <content columnName="isCorrect" interfaceName="Is_right" defauleValue=""/>
+        <content columnName="affectedAreas" interfaceName="Complaint_range" defauleValue=""/>
+        <content columnName="issueEliminatTime" interfaceName="Eliminate_time" defauleValue=""/>
+        <content columnName="dealResult" interfaceName="Dispose_result" defauleValue=""/>
+        <content columnName="issueEliminatReason" interfaceName="Reason_solution" defauleValue=""/>
+        <content columnName="faultClassification" interfaceName="Cause_classification" defauleValue=""/>
+        <content columnName="faultReason" interfaceName="Fault_text" defauleValue=""/>
+        <content columnName="gradeSLA" interfaceName="SLAcode" defauleValue=""/>
+        <content columnName="linkCity" interfaceName="City" defauleValue=""/>
+        <content columnName="linkArea" interfaceName="County" defauleValue=""/>
+        <content columnName="electricCode" interfaceName="Line_num" defauleValue=""/>
+        <content columnName="dealDesc" interfaceName="Solution" defauleValue=""/>
+    </dealSheet>
+    <content columnName="" interfaceName="User_id" defauleValue=""/><!--当前待办人  -->
+    <content columnName="" interfaceName="Sheet_status" defauleValue=""/><!--工单状态  -->
+    <content columnName="" interfaceName="NETWORK_SORT" defauleValue=""/><!--网络类型  -->
+    <content columnName="" interfaceName="Start_records" defauleValue=""/><!--开始记录数  -->
+    <content columnName="" interfaceName="End_records" defauleValue=""/><!--结束记录数  -->
+    <sheetList>
+        <content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
+        <content columnName="taskstatus" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue=""/>
+        <content columnName="taskname" interfaceEnName="Sheet_step" interfaceCnName="工单处理环节" defauleValue=""/>
+        <content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
+        <content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
+    </sheetList>
+    <rejectSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号 -->
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号  -->
+        <content columnName="operateTime" interfaceName="Reject_time" defauleValue=""/><!--驳回时间  -->
+        <content columnName="" interfaceName="Operate_task" defauleValue=""/><!--操作类型  -->
+        <content columnName="remark" interfaceName="Reject_desc" defauleValue=""/><!--驳回原因  -->
+        <content columnName="beanId" interfaceName="" defauleValue="iGroupComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileReject"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink"/>
+    </rejectSheet>
+    <historyList>
+        <content columnName="operateuserid" interfaceEnName="Operate_id" interfaceCnName="处理人姓名" defauleValue=""
+                 type="user"/>
+        <content columnName="operatercontact" interfaceEnName="User_phone" interfaceCnName="联系电话" defauleValue=""/>
+        <content columnName="accepttime" interfaceEnName="Appect_time" interfaceCnName="受理时间" defauleValue=""/>
+        <content columnName="operateTime" interfaceEnName="Replay_time" interfaceCnName="回复时间" defauleValue=""/>
+        <content columnName="activetemplateid" interfaceEnName="Task_name" interfaceCnName="环节名" defauleValue=""/>
+        <content columnName="activetemplateid" interfaceEnName="Task_desc" interfaceCnName="环节描述" defauleValue=""
+                 dictPath="dict-sheet-commonfault.xml"/>
+        <content columnName="limitFlag" interfaceEnName="Limit_flag" interfaceCnName="处理超时标识" defauleValue=""/>
+        <content columnName="operatetype" interfaceEnName="Operate_result" interfaceCnName="操作类型" defauleValue=""
+                 dictPath="dict-sheet-commonfault.xml"/>
+    </historyList>
+    <csSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号 -->
+        <content columnName="operateuserid" interfaceName="Operate_userid" defauleValue="" type="user"/><!--处理人账号  -->
+        <content columnName="operateTime" interfaceName="Operate_time" defauleValue=""/><!--抄送时间  -->
+        <content columnName="" interfaceName="Operate_task" defauleValue=""/><!--操作类型  -->
+        <content columnName="" interfaceName="Role_id" defauleValue=""/><!--抄送班组  -->
+    </csSheet>
+    <inquirySheet>
+        <content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
+        <content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
+        <content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
+    </inquirySheet>
+    <finishSheetList>
+        <content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
+        <content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
+        <content columnName="dealTime1" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
+
+        <content columnName="status" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue=""/>
+    </finishSheetList>
+    <transferSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号 -->
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号  -->
+        <content columnName="operateTime" interfaceName="Operate_time" defauleValue=""/><!--处理完成时间  -->
+        <content columnName="" interfaceName="Operate_task" defauleValue=""/><!--操作类型  -->
+        <content columnName="" interfaceName="Role_id" defauleValue=""/><!--所在班组  -->
+        <content columnName="" interfaceName="Assign_userid" defauleValue=""/><!--指定账号-->
+        <content columnName="beanId" interfaceName="" defauleValue="iCommonFaultMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink"/>
+        <content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="61"/>
+    </transferSheet>
+    <readSheet>
+        <content columnName="sheetId" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="" interfaceEnName="Operate_task" interfaceCnName="操作类型" defauleValue=""/>
+        <content columnName="operateuserid" interfaceEnName="Operate_id" interfaceCnName="处理人账号" defauleValue=""/>
+        <content columnName="operateTime" interfaceEnName="Operate_time" interfaceCnName="阅读时间" defauleValue=""/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileDeal"/>
+    </readSheet>
+
+    <subrole>
+        <zjsubroleid>8a9982f222885c36012298eefe7638f1</zjsubroleid><!-- 质检 -->
+        <t1subroleid>8a9982f222885c36012298ed35bf38de</t1subroleid><!-- T1 -->
+    </subrole>
+
+    <sql>
+        <undoListSql>
+            SELECT TASK.SHEETID,
+            TASK.TITLE,
+            MAIN.MAINCOMPLETELIMITT2,
+            CASE TASKSTATUS
+            WHEN '2' THEN
+            '未接单'
+            WHEN '8' THEN
+            '接单'
+            END AS TASKSTATUS,
+            CASE TASKNAME
+            WHEN 'cc' THEN
+            '抄送'
+            WHEN 'SecondExcuteHumTask' THEN
+            '二级处理'
+            WHEN 'advice' THEN
+            '阶段通知'
+            WHEN 'reply' THEN
+            '阶段回复'
+            ELSE
+            '其他'
+            END AS TASKNAME,
+            MAIN.DEALTIME1
+            FROM GROUPCOMPLAINT_TASK TASK, GROUPCOMPLAINT_MAIN MAIN
+            WHERE ((TASK.TASKOWNER = '@userId@' OR TASK.TASKOWNER = '@deptId@') OR
+            TASK.TASKOWNER IN
+            (SELECT USERREFROLE.SUBROLEID
+            FROM TAW_SYSTEM_USERREFROLE USERREFROLE
+            WHERE USERREFROLE.USERID = '@userId@'))
+            AND (TASK.TASKSTATUS = 2 OR TASK.TASKSTATUS = 8 OR TASK.TASKSTATUS = 1)
+            AND TASK.TASKDISPLAYNAME &lt;&gt; '草稿'
+            AND MAIN.ID = TASK.SHEETKEY
+            AND MAIN.DELETED &lt;&gt; '1'
+            AND (TASK.IFWAITFORSUBTASK = 'false' OR
+            (TASK.IFWAITFORSUBTASK = 'true' AND
+            TASK.ID IN (SELECT TASK1.PARENTTASKID
+            FROM GROUPCOMPLAINT_TASK TASK1
+            WHERE TASK1.SUBTASKFLAG = 'true'
+            AND (TASK1.SUBTASKDEALFALG = 'false' OR
+            TASK1.SUBTASKDEALFALG IS NULL)
+            AND TASK1.TASKSTATUS = '5')))
+            AND TASKNAME = 'SecondExcuteHumTask'
+            ORDER BY TASK.CREATETIME DESC
+        </undoListSql>
+        <ccundoListSql>
+            select task.sheetid,task.title,task.completetimelimit,
+            case taskstatus when '2' then '未接单' when '8' then '已接单未处理' end as taskstatus,
+            case taskname when 'cc' then '抄送' when 'SecondExcuteHumTask' then 'T2处理' else '其他' end as taskname,
+            main.mainnetsortone,main.mainfaultresponselevel
+            from commonfault_task task,commonfault_main main
+            where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and main.deleted&lt;&gt;'1' and
+            main.status=0 and task.taskname='cc'
+            and task.id in ( select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and
+            ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted &lt;&gt;'1' and
+            t3.taskowner = '@userId@'
+            union all select t3.id from commonfault_task t3,commonfault_main m2 where taskstatus in ('2','8') and
+            ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and m2.deleted &lt;&gt;'1' and
+            t3.taskowner = '@deptId@'
+            union all select t3.id from commonfault_task t3,commonfault_main m2,taw_system_userrefrole r where
+            taskstatus in ('2','8') and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and
+            m2.deleted &lt;&gt;'1' and r.subRoleid = t3.taskowner and r.userid='@userId@'
+            union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where
+            t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus =
+            5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted &lt;&gt; '1' and
+            t1.taskowner='@userId@'
+            union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1 where
+            t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id = t2.parenttaskid and t2.taskstatus =
+            5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and m1.status = 0 and m1.deleted &lt;&gt; '1' and
+            t1.taskowner='@deptId@'
+            union all select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1,
+            taw_system_userrefrole r where t1.ifwaitforsubtask = 'true' and t1.taskstatus in ('2', '8') and t1.id =
+            t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and t1.sheetkey = m1.id and
+            t1.taskowner=r.subRoleid and m1.status = 0 and m1.deleted &lt;&gt; '1' and r.userid = '@userId@')
+            order by main.maincompletelimitt2
+        </ccundoListSql>
+
+        <historySql>
+            select operateuserid,operatercontact,accepttime,operatetime,activetemplateid,operatetype,
+            case when (case when operatetype=61 then acceptflag else completeflag end)=2 then 'Y' else 'N' end as
+            limitFlag
+            from commonfault_link where mainid='@mainid@'
+            order by operatetime
+        </historySql>
+        <!-- 工单综合查询接口sql -->
+        <!-- 工单状态为-1 全部-->
+        <inquirySheetSql-1>
+            select distinct commonFaultMain.*
+            from CommonFault_Main commonFaultMain,
+            CommonFault_Link commonFaultLink
+            where commonFaultMain.id = commonFaultLink.mainId
+            and commonFaultMain.templateFlag &lt;&gt; 1
+            and commonFaultLink.templateFlag &lt;&gt; 1
+            and commonFaultMain.deleted = '0'
+            and commonFaultLink.operatetype in (select '4' from dual union all select '61' from dual union all select
+            '46' from dual union all select '5' from dual union all select '-10' from dual union all select '9' from
+            dual)
+            @timeStart@
+            @timeEnd@
+            @mainnetsortone@
+            @mainfaultresponselevel@
+            @operateRoleId@
+            @operateUserId@
+            @formNo@
+            @formTitle@
+            order by commonFaultMain.sendTime desc
+        </inquirySheetSql-1>
+        <!-- 工单状态为1 草稿-->
+        <inquirySheetSql1>
+            select distinct commonFaultMain.*
+            from CommonFault_Main commonFaultMain,
+            CommonFault_Task commonFaultTask,
+            CommonFault_Link commonFaultLink
+            where commonFaultMain.id = commonFaultTask.sheetKey
+            and commonFaultMain.id = commonFaultLink.mainId
+            and commonFaultMain.templateFlag &lt;&gt; 1
+            and commonFaultMain.deleted &lt;&gt; '1'
+            and commonFaultTask.taskName = 'DraftHumTask'
+            and commonFaultMain.status = '0'
+            @timeStart@
+            @timeEnd@
+            @mainnetsortone@
+            @mainfaultresponselevel@
+            @operateRoleId@
+            @operateUserId@
+            @formNo@
+            @formTitle@
+            order by commonFaultMain.sendTime desc
+        </inquirySheetSql1>
+        <!-- 工单状态为7 运行中-->
+        <inquirySheetSql7>
+            select distinct commonFaultMain.*
+            from CommonFault_Main commonFaultMain,
+            CommonFault_Link commonFaultLink
+            where commonFaultMain.id = commonFaultLink.mainId
+            and commonFaultMain.templateFlag &lt;&gt; 1
+            and commonFaultMain.deleted = '0'
+            and commonFaultMain.status = '0'
+            and commonFaultLink.operatetype in (select '4' from dual union all select '61' from dual union all select
+            '46' from dual union all select '5' from dual union all select '-10' from dual union all select '9' from
+            dual)
+            @timeStart@
+            @timeEnd@
+            @mainnetsortone@
+            @mainfaultresponselevel@
+            @operateRoleId@
+            @operateUserId@
+            @formNo@
+            @formTitle@
+            order by commonFaultMain.sendTime desc
+        </inquirySheetSql7>
+        <!-- 工单状态为4 处理完成-->
+        <inquirySheetSql4>
+            select distinct commonFaultMain.*
+            from CommonFault_Task commonFaultTask,CommonFault_Main commonFaultMain,
+            CommonFault_Link commonFaultLink
+            where commonFaultMain.id = commonFaultTask.sheetKey
+            and commonFaultMain.id = commonFaultLink.mainId
+            and commonFaultTask.ifWaitForSubTask = 'true'
+            and (commonFaultTask.taskStatus = '5' or
+            commonFaultTask.taskStatus &lt;&gt; '5' and
+            commonFaultTask.ifWaitForSubTask = 'true' and
+            (commonFaultTask.id not in
+            (select commonfaul3_.parentTaskId
+            from commonfault_task commonfaul3_
+            where commonfaul3_.subTaskFlag = 'true'
+            and (commonfaul3_.subTaskDealFalg = 'false' or
+            commonfaul3_.subTaskDealFalg is null)
+            and commonfaul3_.taskStatus = '5')))
+            and commonFaultMain.deleted = '0'
+            and commonFaultMain.status = '0'
+            @timeStart@
+            @timeEnd@
+            @mainnetsortone@
+            @mainfaultresponselevel@
+            @operateRoleId@
+            @operateUserId@
+            @formNo@
+            @formTitle@
+            order by commonFaultMain.sendTime desc
+        </inquirySheetSql4>
+        <!-- 工单状态为5 已归档-->
+        <inquirySheetSql5>
+            select distinct commonFaultMain.*
+            from CommonFault_Main commonFaultMain,
+            CommonFault_Link commonFaultLink
+            where commonFaultMain.templateFlag &lt;&gt; 1
+            and commonFaultMain.id = commonFaultLink.mainId
+            and commonFaultMain.deleted = '0'
+            and commonFaultMain.status = '1'
+            and commonFaultLink.operatetype in (select '4' from dual union all select '61' from dual union all select
+            '46' from dual union all select '5' from dual union all select '-10' from dual union all select '9' from
+            dual)
+            @timeStart@
+            @timeEnd@
+            @mainnetsortone@
+            @mainfaultresponselevel@
+            @operateRoleId@
+            @operateUserId@
+            @formNo@
+            @formTitle@
+            order by commonFaultMain.sendTime desc
+        </inquirySheetSql5>
+        <!-- 工单状态为6 作废-->
+        <inquirySheetSql6>
+            select distinct commonFaultMain.*
+            from CommonFault_Main commonFaultMain,
+            CommonFault_Link commonFaultLink
+            where commonFaultMain.templateFlag &lt;&gt; 1
+            and commonFaultMain.id = commonFaultLink.mainId
+            and commonFaultMain.deleted &lt;&gt; '1'
+            and commonFaultMain.status = '-12'
+            @timeStart@
+            @timeEnd@
+            @mainnetsortone@
+            @mainfaultresponselevel@
+            @operateRoleId@
+            @operateUserId@
+            @formNo@
+            @formTitle@
+            order by commonFaultMain.sendTime desc
+        </inquirySheetSql6>
+        <!--已办工单列表查询接口sql-->
+        <finishSheetList>
+            select a.Sheetid,a.Title,a.Sheetcompletelimit,a.Status,
+            task.Taskdisplayname,a.mainnetsortone,a.mainfaultresponselevel
+            from commonfault_main a,commonfault_task task
+            where task.sheetKey = a.id
+            and a.deleted &lt;&gt; '1'
+            and task.taskOwner = '@User_id@'
+            and (task.taskStatus = '5' or
+            task.taskStatus &lt;&gt; '5' and
+            task.ifWaitForSubTask = 'true' and
+            (task.id not in
+            (select commonfaul3_.parentTaskId
+            from commonfault_task commonfaul3_
+            where commonfaul3_.subTaskFlag = 'true'
+            and (commonfaul3_.subTaskDealFalg = 'false' or
+            commonfaul3_.subTaskDealFalg is null)
+            and commonfaul3_.taskStatus = '5')))
+            @Start_time@
+            @End_time@
+            order by task.createTime
+
+        </finishSheetList>
+
+        <finishList>
+
+            select link.linkFaultReasonSort,
+            link.linkfaultreasonsubsection ,
+            link.linkfaultreasonsubsectiontwo ,
+            link.faultdealdesc,
+            link.faultdealtime,
+            link.linkDealStep
+            from commonfault_link link,commonfault_main main
+            where main.sheetId = '@id@'
+            and link.operatetype = '46'
+            and main.id=link.mainid
+            order by link.operatetime desc
+
+        </finishList>
+
+    </sql>
 </boco>

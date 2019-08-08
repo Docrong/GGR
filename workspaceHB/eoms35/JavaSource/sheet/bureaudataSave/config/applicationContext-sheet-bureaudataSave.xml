@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--BureaudataSave-START-->    
+    <!--BureaudataSave-START-->
 
     <bean id="IBureaudataSaveMainDAO"
-		class="com.boco.eoms.sheet.bureaudataSave.dao.hibernate.BureaudataSaveMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IBureaudataSaveLinkDAO"
-		class="com.boco.eoms.sheet.bureaudataSave.dao.hibernate.BureaudataSaveLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IBureaudataSaveTaskDAO"
-		class="com.boco.eoms.sheet.bureaudataSave.dao.hibernate.BureaudataSaveTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="BureaudataSaveTask"
-		class="com.boco.eoms.sheet.bureaudataSave.model.BureaudataSaveTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.bureaudataSave.dao.hibernate.BureaudataSaveMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IBureaudataSaveLinkDAO"
+          class="com.boco.eoms.sheet.bureaudataSave.dao.hibernate.BureaudataSaveLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IBureaudataSaveTaskDAO"
+          class="com.boco.eoms.sheet.bureaudataSave.dao.hibernate.BureaudataSaveTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="BureaudataSaveTask"
+          class="com.boco.eoms.sheet.bureaudataSave.model.BureaudataSaveTask" autowire="byName">
+    </bean>
     <bean id="BureaudataSaveLink"
-		class="com.boco.eoms.sheet.bureaudataSave.model.BureaudataSaveLink"
-		autowire="byName" />
-	<bean id="BureaudataSaveMain"
-		class="com.boco.eoms.sheet.bureaudataSave.model.BureaudataSaveMain"
-		autowire="byName" />
-	<bean id="iBureaudataSaveTask"
-		class="com.boco.eoms.sheet.bureaudataSave.task.impl.BureaudataSaveTaskImpl"
-		autowire="byName" />
-	<bean id="iBureaudataSaveTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveTaskManagerImpl">
-				<property name="taskModelObject" ref="BureaudataSaveTask" />
-				<property name="taskDAO">
-					<ref bean="IBureaudataSaveTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-					<value>/config/bureaudataSaveConfig.properties</value>
-				</property>
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iBureaudataSaveFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iBureaudataSaveLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveLinkManagerImpl">
-				<property name="linkObject" ref="BureaudataSaveLink"/>
-				<property name="linkDAO">
-				  <ref bean="IBureaudataSaveLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iBureaudataSaveMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveMainManagerImpl">
-			    <property name="mainObject" ref="BureaudataSaveMain" />
-				<property name="mainDAO">
-				 <ref bean="IBureaudataSaveMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iBureaudataSaveQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>BureaudataSaveProcesses</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/bureaudatasaveprocesses-config.xml</value>
-				</property>				
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.bureaudataSave.model.BureaudataSaveLink"
+          autowire="byName"/>
+    <bean id="BureaudataSaveMain"
+          class="com.boco.eoms.sheet.bureaudataSave.model.BureaudataSaveMain"
+          autowire="byName"/>
+    <bean id="iBureaudataSaveTask"
+          class="com.boco.eoms.sheet.bureaudataSave.task.impl.BureaudataSaveTaskImpl"
+          autowire="byName"/>
+    <bean id="iBureaudataSaveTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveTaskManagerImpl">
+                <property name="taskModelObject" ref="BureaudataSaveTask"/>
+                <property name="taskDAO">
+                    <ref bean="IBureaudataSaveTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/bureaudataSaveConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBureaudataSaveFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBureaudataSaveLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveLinkManagerImpl">
+                <property name="linkObject" ref="BureaudataSaveLink"/>
+                <property name="linkDAO">
+                    <ref bean="IBureaudataSaveLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBureaudataSaveMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.bureaudataSave.service.impl.BureaudataSaveMainManagerImpl">
+                <property name="mainObject" ref="BureaudataSaveMain"/>
+                <property name="mainDAO">
+                    <ref bean="IBureaudataSaveMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iBureaudataSaveQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>BureaudataSaveProcesses</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/bureaudatasaveprocesses-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iBureaudataSaveQo"
-		class="com.boco.eoms.sheet.bureaudataSave.qo.impl.BureaudataSaveQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="BureaudataSaveMain" />
-		<property name="poLink" value="BureaudataSaveLink" />
-		<property name="aliasMain" value="BureaudataSaveMain" />
-		<property name="aliasLink" value="BureaudataSaveLink" />
-		<property name="poTask" value="BureaudataSaveTask" />
-	    <property name="aliasTask" value="BureaudataSaveTask" />			
-	</bean>
+    <bean id="iBureaudataSaveQo"
+          class="com.boco.eoms.sheet.bureaudataSave.qo.impl.BureaudataSaveQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="BureaudataSaveMain"/>
+        <property name="poLink" value="BureaudataSaveLink"/>
+        <property name="aliasMain" value="BureaudataSaveMain"/>
+        <property name="aliasLink" value="BureaudataSaveLink"/>
+        <property name="poTask" value="BureaudataSaveTask"/>
+        <property name="aliasTask" value="BureaudataSaveTask"/>
+    </bean>
 
-	<bean id="BureaudataSave" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.bureaudataSave.webapp.action.BureaudataSaveMethod">
-				<property name="businessFlowService" >
-					<ref bean="iBureaudataSaveFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iBureaudataSaveLinkManager" />
-				<property name="mainService"
-					ref="iBureaudataSaveMainManager" />
-				<property name="sheetTask"
-					ref="BureaudataSaveTask" />
-				<property name="taskService"
-					ref="iBureaudataSaveTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/bureaudatasaveprocesses-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
-     <!--BureaudataSave-END-->  
+    <bean id="BureaudataSave" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.bureaudataSave.webapp.action.BureaudataSaveMethod">
+                <property name="businessFlowService">
+                    <ref bean="iBureaudataSaveFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iBureaudataSaveLinkManager"/>
+                <property name="mainService"
+                          ref="iBureaudataSaveMainManager"/>
+                <property name="sheetTask"
+                          ref="BureaudataSaveTask"/>
+                <property name="taskService"
+                          ref="iBureaudataSaveTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/bureaudatasaveprocesses-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--BureaudataSave-END-->
 </beans>

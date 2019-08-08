@@ -22,7 +22,7 @@ import com.boco.eoms.sheet.circuitdispatch.service.ICircuitDispatchMainManager;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
@@ -30,16 +30,16 @@ public class CircuitDispatchMainManagerImpl extends MainService implements
         ICircuitDispatchMainManager {
 
 
-	public TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException {
-		ICircuitDispatchMainDAO iCircuitDispatchMainDAO = (ICircuitDispatchMainDAO)this.getMainDAO();
-		return iCircuitDispatchMainDAO.getTawSystemWorkflowByFlowTemplateName(flowTemplateName);
-	}
-
-	public BaseMain loadSinglePO(String id) {
-		ICircuitDispatchMainDAO iCircuitDispatchMainDAO = (ICircuitDispatchMainDAO)this.getMainDAO();
-		return iCircuitDispatchMainDAO.loadSinglePO(id, this.getMainObject());
+    public TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException {
+        ICircuitDispatchMainDAO iCircuitDispatchMainDAO = (ICircuitDispatchMainDAO) this.getMainDAO();
+        return iCircuitDispatchMainDAO.getTawSystemWorkflowByFlowTemplateName(flowTemplateName);
     }
-	
+
+    public BaseMain loadSinglePO(String id) {
+        ICircuitDispatchMainDAO iCircuitDispatchMainDAO = (ICircuitDispatchMainDAO) this.getMainDAO();
+        return iCircuitDispatchMainDAO.loadSinglePO(id, this.getMainObject());
+    }
+
 //	/**
 //	 * 保存网元信息
 //	 * @param sheetId
@@ -56,20 +56,22 @@ public class CircuitDispatchMainManagerImpl extends MainService implements
 //			throw new Exception("没找到sheetId="+sheetId+"对应的工单");
 //		}
 //	}
-	/**
-	 * 保存方案号
-	 * @param sheetId
-	 * @param cellInfo
-	 */
-	public void saveDesignId(String sheetId,String designId) throws Exception{
 
-		CircuitDispatchMain main = (CircuitDispatchMain)this.getMainBySheetId(sheetId);
-		if(main!=null||main.getId()!=null){
-			main.setMainResourceNo(designId);
-			this.saveOrUpdateMain(main);
-		}else{
-			throw new Exception("没找到sheetId="+sheetId+"对应的工单");
-		}
-	}
+    /**
+     * 保存方案号
+     *
+     * @param sheetId
+     * @param cellInfo
+     */
+    public void saveDesignId(String sheetId, String designId) throws Exception {
+
+        CircuitDispatchMain main = (CircuitDispatchMain) this.getMainBySheetId(sheetId);
+        if (main != null || main.getId() != null) {
+            main.setMainResourceNo(designId);
+            this.saveOrUpdateMain(main);
+        } else {
+            throw new Exception("没找到sheetId=" + sheetId + "对应的工单");
+        }
+    }
 
 }

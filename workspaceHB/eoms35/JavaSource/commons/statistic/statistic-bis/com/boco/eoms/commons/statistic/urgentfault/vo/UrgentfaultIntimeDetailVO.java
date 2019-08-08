@@ -5,79 +5,79 @@ import java.util.Date;
 import com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO;
 
 public class UrgentfaultIntimeDetailVO extends StatDetailVO {
-	
-	private String mainnetsortone;
-	
-	private String todeptid;
-	private String senduserid;
-	private String operateuserid;
-	private String sendroleid;
-	private String operateroleid;
-	private Date mainreportlimit;
-	private String linkFaultAvoidTime;
-	
-	public String getLinkFaultAvoidTime() {
-		return linkFaultAvoidTime;
-	}
 
-	public void setLinkFaultAvoidTime(String linkFaultAvoidTime) {
-		this.linkFaultAvoidTime = linkFaultAvoidTime;
-	}
+    private String mainnetsortone;
 
-	public String getMainnetsortone() {
-		return mainnetsortone;
-	}
+    private String todeptid;
+    private String senduserid;
+    private String operateuserid;
+    private String sendroleid;
+    private String operateroleid;
+    private Date mainreportlimit;
+    private String linkFaultAvoidTime;
 
-	public void setMainnetsortone(String mainnetsortone) {
-		this.mainnetsortone = mainnetsortone;
-	}
+    public String getLinkFaultAvoidTime() {
+        return linkFaultAvoidTime;
+    }
 
-	public String getTodeptid() {
-		return todeptid;
-	}
+    public void setLinkFaultAvoidTime(String linkFaultAvoidTime) {
+        this.linkFaultAvoidTime = linkFaultAvoidTime;
+    }
 
-	public void setTodeptid(String todeptid) {
-		this.todeptid = todeptid;
-	}
+    public String getMainnetsortone() {
+        return mainnetsortone;
+    }
 
-	public Date getMainreportlimit() {
-		return mainreportlimit;
-	}
+    public void setMainnetsortone(String mainnetsortone) {
+        this.mainnetsortone = mainnetsortone;
+    }
 
-	public void setMainreportlimit(Date mainreportlimit) {
-		this.mainreportlimit = mainreportlimit;
-	}
+    public String getTodeptid() {
+        return todeptid;
+    }
 
-	public String getSenduserid() {
-		return senduserid;
-	}
+    public void setTodeptid(String todeptid) {
+        this.todeptid = todeptid;
+    }
 
-	public void setSenduserid(String senduserid) {
-		this.senduserid = senduserid;
-	}
+    public Date getMainreportlimit() {
+        return mainreportlimit;
+    }
 
-	public String getOperateuserid() {
-		return operateuserid;
-	}
+    public void setMainreportlimit(Date mainreportlimit) {
+        this.mainreportlimit = mainreportlimit;
+    }
 
-	public void setOperateuserid(String operateuserid) {
-		this.operateuserid = operateuserid;
-	}
+    public String getSenduserid() {
+        return senduserid;
+    }
 
-	public String getSendroleid() {
-		return sendroleid;
-	}
+    public void setSenduserid(String senduserid) {
+        this.senduserid = senduserid;
+    }
 
-	public void setSendroleid(String sendroleid) {
-		this.sendroleid = sendroleid;
-	}
+    public String getOperateuserid() {
+        return operateuserid;
+    }
 
-	public String getOperateroleid() {
-		return operateroleid;
-	}
+    public void setOperateuserid(String operateuserid) {
+        this.operateuserid = operateuserid;
+    }
 
-	public void setOperateroleid(String operateroleid) {
-		this.operateroleid = operateroleid;
-	}
+    public String getSendroleid() {
+        return sendroleid;
+    }
+
+    public void setSendroleid(String sendroleid) {
+        this.sendroleid = sendroleid;
+    }
+
+    public String getOperateroleid() {
+        return operateroleid;
+    }
+
+    public void setOperateroleid(String operateroleid) {
+        this.operateroleid = operateroleid;
+    }
 
 }

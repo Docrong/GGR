@@ -25,20 +25,20 @@
  * See FCKConfig.TemplatesXmlPath in the configuration file.
 -->
 <Templates imagesBasePath="fck_template/images/">
-	<Template title="Image and Title" image="template1.gif">
-		<Description>One main image with a title and text that surround the image.</Description>
-		<Html>
-			<![CDATA[
+    <Template title="Image and Title" image="template1.gif">
+        <Description>One main image with a title and text that surround the image.</Description>
+        <Html>
+            <![CDATA[
 				<img style="MARGIN-RIGHT: 10px" height="100" alt="" width="100" align="left"/>
 				<h3>Type the title here</h3>
 				Type the text here
 			]]>
-		</Html>
-	</Template>
-	<Template title="Strange Template" image="template2.gif">
-		<Description>A template that defines two colums, each one with a title, and some text.</Description>
-		<Html>
-			<![CDATA[
+        </Html>
+    </Template>
+    <Template title="Strange Template" image="template2.gif">
+        <Description>A template that defines two colums, each one with a title, and some text.</Description>
+        <Html>
+            <![CDATA[
 				<table cellspacing="0" cellpadding="0" width="100%" border="0">
 					<tbody>
 						<tr>
@@ -59,12 +59,12 @@
 				</table>
 				More text goes here.
 			]]>
-		</Html>
-	</Template>
-	<Template title="Text and Table" image="template3.gif">
-		<Description>A title with some text and a table.</Description>
-		<Html>
-			<![CDATA[
+        </Html>
+    </Template>
+    <Template title="Text and Table" image="template3.gif">
+        <Description>A title with some text and a table.</Description>
+        <Html>
+            <![CDATA[
 				<table align="left" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td>
 					<h3>Title goes here</h3>
 					<p>
@@ -98,6 +98,6 @@
 					Type the text here</p>
 				</td></tr></table>
 			]]>
-		</Html>
-	</Template>
+        </Html>
+    </Template>
 </Templates>

@@ -53,12 +53,12 @@ public class AppfuseDemoDaoHibernate extends BaseDaoHibernate implements Appfuse
 
     /**
      * @see com.boco.eoms.commons.sample.dao.AppfuseDemoDao#saveAppfuseDemo(AppfuseDemo appfuseDemo)
-     */    
+     */
     public void saveAppfuseDemo(final AppfuseDemo appfuseDemo) {
         if ((appfuseDemo.getId() == null) || (appfuseDemo.getId().equals("")))
-			getHibernateTemplate().save(appfuseDemo);
-		else
-			getHibernateTemplate().saveOrUpdate(appfuseDemo);
+            getHibernateTemplate().save(appfuseDemo);
+        else
+            getHibernateTemplate().saveOrUpdate(appfuseDemo);
     }
 
     /**
@@ -68,32 +68,33 @@ public class AppfuseDemoDaoHibernate extends BaseDaoHibernate implements Appfuse
         getHibernateTemplate().delete(getAppfuseDemo(id));
     }
 
-    public Map getAppfuseDemos(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getAppfuseDemos(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the appfuseDemo
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from AppfuseDemo";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from AppfuseDemo";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							int total = ((Integer) session.createQuery(queryCountStr).iterate()
-									.next()).intValue();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", new Integer(total));
-							map.put("result", result);
-							return map;
+                int total = ((Integer) session.createQuery(queryCountStr).iterate()
+                        .next()).intValue();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", new Integer(total));
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getAppfuseDemos(final Integer curPage, final Integer pageSize) {
-			return this.getAppfuseDemos(curPage,pageSize,null);
-		}
+        return this.getAppfuseDemos(curPage, pageSize, null);
+    }
 
 }

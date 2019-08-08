@@ -35,7 +35,7 @@ public class TawRmReplaceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmReplaceDao.expects(once()).method("getTawRmReplaces")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawRmReplaces = tawRmReplaceManager.getTawRmReplaces(null);
         assertTrue(tawRmReplaces.size() == 1);
@@ -45,7 +45,7 @@ public class TawRmReplaceManagerTest extends BaseManagerTestCase {
     public void testGetTawRmReplace() throws Exception {
         // set expected behavior on dao
         tawRmReplaceDao.expects(once()).method("getTawRmReplace")
-            .will(returnValue(new TawRmReplace()));
+                .will(returnValue(new TawRmReplace()));
         TawRmReplace tawRmReplace = tawRmReplaceManager.getTawRmReplace(tawRmReplaceId);
         assertTrue(tawRmReplace != null);
         tawRmReplaceDao.verify();
@@ -56,7 +56,7 @@ public class TawRmReplaceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmReplaceDao.expects(once()).method("saveTawRmReplace")
-            .with(same(tawRmReplace)).isVoid();
+                .with(same(tawRmReplace)).isVoid();
 
         tawRmReplaceManager.saveTawRmReplace(tawRmReplace);
         tawRmReplaceDao.verify();
@@ -78,7 +78,7 @@ public class TawRmReplaceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmReplaceDao.expects(once()).method("saveTawRmReplace")
-            .with(same(tawRmReplace)).isVoid();
+                .with(same(tawRmReplace)).isVoid();
         tawRmReplaceManager.saveTawRmReplace(tawRmReplace);
         tawRmReplaceDao.verify();
 

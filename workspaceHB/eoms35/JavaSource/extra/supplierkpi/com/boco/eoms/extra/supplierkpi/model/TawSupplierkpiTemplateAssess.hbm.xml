@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_supplierkpi_templateassess"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="assessAttitude"
+                name="assessAttitude"
                 length="256"
                 not-null="false"
                 unique="false"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="assessLevel"
+                name="assessLevel"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="assessRole"
+                name="assessRole"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -54,7 +54,7 @@
         </property>
 
         <property
-            name="assessStatus"
+                name="assessStatus"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="assessTime"
+                name="assessTime"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -72,7 +72,7 @@
         </property>
 
         <property
-            name="realAssessor"
+                name="realAssessor"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -81,25 +81,16 @@
         </property>
 
         <property
-            name="templateId"
+                name="templateId"
                 length="50"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="isUpdate"
-                length="10"
-                not-null="false"
-                unique="false"
-        >
-        
-        </property>
-        
-        <property
-            name="isKpiChanged"
+                name="isUpdate"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -107,7 +98,16 @@
 
         </property>
 
-    </class>    
+        <property
+                name="isKpiChanged"
+                length="10"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

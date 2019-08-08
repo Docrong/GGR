@@ -1,13 +1,13 @@
 /**
  * AttachInfoType.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhead.interfaces;
 
-public class AttachInfoType  implements java.io.Serializable {
+public class AttachInfoType implements java.io.Serializable {
     private java.lang.String attachName;
     private int attachLength;
     private java.lang.String attachURL;
@@ -40,6 +40,7 @@ public class AttachInfoType  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof AttachInfoType)) return false;
         AttachInfoType other = (AttachInfoType) obj;
@@ -50,19 +51,20 @@ public class AttachInfoType  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.attachName==null && other.getAttachName()==null) || 
-             (this.attachName!=null &&
-              this.attachName.equals(other.getAttachName()))) &&
-            this.attachLength == other.getAttachLength() &&
-            ((this.attachURL==null && other.getAttachURL()==null) || 
-             (this.attachURL!=null &&
-              this.attachURL.equals(other.getAttachURL())));
+        _equals = true &&
+                ((this.attachName == null && other.getAttachName() == null) ||
+                        (this.attachName != null &&
+                                this.attachName.equals(other.getAttachName()))) &&
+                this.attachLength == other.getAttachLength() &&
+                ((this.attachURL == null && other.getAttachURL() == null) ||
+                        (this.attachURL != null &&
+                                this.attachURL.equals(other.getAttachURL())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

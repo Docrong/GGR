@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.groupcheck.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Wed Nov 08 15:11:38 GMT+08:00 2017
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public interface IGroupCheckQo extends IWorkSheetQO {
- 
- }
+
+public interface IGroupCheckQo extends IWorkSheetQO {
+
+}

@@ -2,25 +2,25 @@ package com.boco.eoms.commons.statistic.base.config.report;
 
 import java.io.Serializable;
 
-public class Info implements Serializable{
-	
-	private String name = null;
-	
-	private String value = null;
+public class Info implements Serializable {
 
-	public String getName() {
-		return name;
-	}
+    private String name = null;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String value = null;
 
-	public String getValue() {
-		return value;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

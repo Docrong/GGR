@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.securityobjattribute.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Tue Apr 25 11:43:03 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public interface ISecurityObjAttributeQo extends IWorkSheetQO {
- 
- }
+
+public interface ISecurityObjAttributeQo extends IWorkSheetQO {
+
+}

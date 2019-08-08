@@ -13,15 +13,14 @@ import com.boco.eoms.sheet.commonchangedeploy.service.ICommonChangeDeployMainMan
  * <p>
  * Fri Jun 12 09:08:01 CST 2009
  * </p>
- * 
+ *
  * @author yangwei
  * @version 3.5
- * 
  */
- 
- public class CommonChangeDeployMainManagerImpl extends MainService implements ICommonChangeDeployMainManager {
- 
- }
+
+public class CommonChangeDeployMainManagerImpl extends MainService implements ICommonChangeDeployMainManager {
+
+}
  
 
 

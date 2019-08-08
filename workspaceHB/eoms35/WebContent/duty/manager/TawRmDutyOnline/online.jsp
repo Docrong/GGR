@@ -1,10 +1,10 @@
 <html>
 <head>
-<title></title>
+    <title></title>
 </head>
 <script language="javascript">
-   var URL ="<%=request.getContextPath()%>/duty/TawRmDutyOnline/online.do";
-   window.open(URL,"","top=0,left=0,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=790,height=530");
+    var URL = "<%=request.getContextPath()%>/duty/TawRmDutyOnline/online.do";
+    window.open(URL, "", "top=0,left=0,toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=790,height=530");
     /*
     var cw= window.open(URL,"","fullscreen");
    cw.resizeTo(400,470);
@@ -14,5 +14,6 @@
    */
 </script>
 <body>
-</BODY></HTML>
+</BODY>
+</HTML>
 

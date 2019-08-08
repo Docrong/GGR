@@ -35,7 +35,7 @@ public class TawSupplierkpiAssessInstanceManagerTest extends BaseManagerTestCase
 
         // set expected behavior on dao
         tawSupplierkpiAssessInstanceDao.expects(once()).method("getTawSupplierkpiAssessInstances")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSupplierkpiAssessInstances = tawSupplierkpiAssessInstanceManager.getTawSupplierkpiAssessInstances(null);
         assertTrue(tawSupplierkpiAssessInstances.size() == 1);
@@ -45,7 +45,7 @@ public class TawSupplierkpiAssessInstanceManagerTest extends BaseManagerTestCase
     public void testGetTawSupplierkpiAssessInstance() throws Exception {
         // set expected behavior on dao
         tawSupplierkpiAssessInstanceDao.expects(once()).method("getTawSupplierkpiAssessInstance")
-            .will(returnValue(new TawSupplierkpiAssessInstance()));
+                .will(returnValue(new TawSupplierkpiAssessInstance()));
         TawSupplierkpiAssessInstance tawSupplierkpiAssessInstance = tawSupplierkpiAssessInstanceManager.getTawSupplierkpiAssessInstance(tawSupplierkpiAssessInstanceId);
         assertTrue(tawSupplierkpiAssessInstance != null);
         tawSupplierkpiAssessInstanceDao.verify();
@@ -56,7 +56,7 @@ public class TawSupplierkpiAssessInstanceManagerTest extends BaseManagerTestCase
 
         // set expected behavior on dao
         tawSupplierkpiAssessInstanceDao.expects(once()).method("saveTawSupplierkpiAssessInstance")
-            .with(same(tawSupplierkpiAssessInstance)).isVoid();
+                .with(same(tawSupplierkpiAssessInstance)).isVoid();
 
         tawSupplierkpiAssessInstanceManager.saveTawSupplierkpiAssessInstance(tawSupplierkpiAssessInstance);
         tawSupplierkpiAssessInstanceDao.verify();
@@ -69,7 +69,7 @@ public class TawSupplierkpiAssessInstanceManagerTest extends BaseManagerTestCase
 
         // set expected behavior on dao
         tawSupplierkpiAssessInstanceDao.expects(once()).method("saveTawSupplierkpiAssessInstance")
-            .with(same(tawSupplierkpiAssessInstance)).isVoid();
+                .with(same(tawSupplierkpiAssessInstance)).isVoid();
         tawSupplierkpiAssessInstanceManager.saveTawSupplierkpiAssessInstance(tawSupplierkpiAssessInstance);
         tawSupplierkpiAssessInstanceDao.verify();
 

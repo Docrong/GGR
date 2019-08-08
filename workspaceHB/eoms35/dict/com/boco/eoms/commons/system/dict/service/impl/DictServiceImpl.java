@@ -26,10 +26,9 @@ import com.boco.eoms.commons.system.dict.util.Util;
  * <p>
  * Date:2007-10-24 10:04:17
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictServiceImpl implements IDictService {
 
@@ -47,7 +46,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getDict(java.lang.Object,
      *      java.lang.Object)
      */
@@ -64,7 +63,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getList(java.lang.Object)
      */
     public List getDictItems(Object dictId) throws DictServiceException {
@@ -72,7 +71,7 @@ public class DictServiceImpl implements IDictService {
         try {
             list = this.dictDao.findItemList(dictId);
         } catch (DictDAOException e) {
-        	System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
             throw new DictServiceException(e);
         }
         return list;
@@ -80,7 +79,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#id2description(java.lang.Object,
      *      java.lang.Object)
      */
@@ -92,7 +91,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#id2name(java.lang.Object,
      *      java.lang.Object)
      */
@@ -104,7 +103,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#setDictDao(com.boco.eoms.commons.system.dict.dao.IDictDao)
      */
     public void setDictDao(IDictDao dictDao) throws DictServiceException {
@@ -113,7 +112,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#type2description(java.lang.Object)
      */
     public Object dictId2description(Object dictId) throws DictServiceException {
@@ -127,8 +126,7 @@ public class DictServiceImpl implements IDictService {
     }
 
     /**
-     * @param dictRelationDao
-     *            the dictRelationDao to set
+     * @param dictRelationDao the dictRelationDao to set
      */
     public void setDictRelationDao(IDictRelationDao dictRelationDao) {
         this.dictRelationDao = dictRelationDao;
@@ -136,7 +134,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getRelationItems(java.lang.Object)
      */
     public List getRelationItems(Object relationId) throws DictServiceException {
@@ -150,12 +148,12 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getRelationItem(java.lang.Object,
      *      java.lang.Object)
      */
     public IDictRelationItem getRelationItem(Object relationId,
-            Object sourceItemId) throws DictServiceException {
+                                             Object sourceItemId) throws DictServiceException {
         try {
             return this.dictRelationDao.findRelationItem(relationId,
                     sourceItemId);
@@ -167,7 +165,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getRelationButItems(java.lang.Object)
      */
     public IDictRelation getRelationButItems(Object relationId)
@@ -182,7 +180,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getRelatedList(java.lang.String,
      *      java.lang.String)
      */
@@ -200,13 +198,13 @@ public class DictServiceImpl implements IDictService {
         }
         if (item != null
                 && (item.getDestinationItemIds() != null || !"".equals(item
-                        .getDestinationItemIds().trim()))) {
+                .getDestinationItemIds().trim()))) {
             //去掉分隔符转成数组
             String[] items = item.getDestinationItemIds().split(
                     Util.getDestinationItemIdsSplit());
             //取映射后的结果
             list = this.getDictItems(Util.constituteDictId(item
-                    .getDestinationDictKey(), item.getDestinationDictId()),
+                            .getDestinationDictKey(), item.getDestinationDictId()),
                     items);
         }
         return list;
@@ -214,7 +212,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getDictItems(java.lang.String,
      *      java.lang.String[])
      */
@@ -241,7 +239,7 @@ public class DictServiceImpl implements IDictService {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.service.IDictService#getDictItems(java.lang.String)
      */
     public List getDictItemsForRelation(String relationId) throws DictServiceException {

@@ -16,7 +16,7 @@ public class TawSupplierkpiInstanceActionTest extends BaseStrutsTestCase {
 
         TawSupplierkpiInstanceForm tawSupplierkpiInstanceForm = new TawSupplierkpiInstanceForm();
         // set required fields
-       
+
         request.setAttribute(Constants.TAWSUPPLIERKPIINSTANCE_KEY, tawSupplierkpiInstanceForm);
 
         actionPerform();
@@ -72,7 +72,7 @@ public class TawSupplierkpiInstanceActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawSupplierkpiInstance.updated"});
+        verifyActionMessages(new String[]{"tawSupplierkpiInstance.updated"});
 
     }
 

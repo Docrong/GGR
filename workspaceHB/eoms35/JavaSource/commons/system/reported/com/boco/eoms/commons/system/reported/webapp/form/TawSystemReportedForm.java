@@ -3,58 +3,58 @@ package com.boco.eoms.commons.system.reported.webapp.form;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawSystemReportedForm extends BaseForm implements
-		java.io.Serializable {
+        java.io.Serializable {
 
-	private static final long serialVersionUID = -425946148555481621L;
+    private static final long serialVersionUID = -425946148555481621L;
 
-	protected String id;
+    protected String id;
 
-	protected String reportedOrg;
-	
-	protected String functionId;
-	
-	protected String modelId;
-	
-	protected String remark;
+    protected String reportedOrg;
 
-	public String getFunctionId() {
-		return functionId;
-	}
+    protected String functionId;
 
-	public void setFunctionId(String functionId) {
-		this.functionId = functionId;
-	}
+    protected String modelId;
 
-	public String getId() {
-		return id;
-	}
+    protected String remark;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getFunctionId() {
+        return functionId;
+    }
 
-	public String getModelId() {
-		return modelId;
-	}
+    public void setFunctionId(String functionId) {
+        this.functionId = functionId;
+    }
 
-	public void setModelId(String modelId) {
-		this.modelId = modelId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getModelId() {
+        return modelId;
+    }
 
-	public String getReportedOrg() {
-		return reportedOrg;
-	}
+    public void setModelId(String modelId) {
+        this.modelId = modelId;
+    }
 
-	public void setReportedOrg(String reportedOrg) {
-		this.reportedOrg = reportedOrg;
-	}
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getReportedOrg() {
+        return reportedOrg;
+    }
+
+    public void setReportedOrg(String reportedOrg) {
+        this.reportedOrg = reportedOrg;
+    }
 
 }

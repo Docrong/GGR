@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,14 +13,14 @@
             table="accept_sheet_rule"
     >
 
-   <id name="id" column="id" unsaved-value="null">
-			<generator class="uuid.hex" />
-		</id>
+        <id name="id" column="id" unsaved-value="null">
+            <generator class="uuid.hex"/>
+        </id>
 
 
-	<property
-            name="faultArea"
-            	column="faultArea"
+        <property
+                name="faultArea"
+                column="faultArea"
                 length="100"
                 not-null="false"
                 unique="true"
@@ -28,9 +28,9 @@
 
         </property>
 
-	<property
-            name="netSortOne"
-            	column="netSortOne"
+        <property
+                name="netSortOne"
+                column="netSortOne"
                 length="100"
                 not-null="true"
                 unique="true"
@@ -38,9 +38,9 @@
 
         </property>
 
-	<property
-            name="netSortTwo"
-            	column="netSortTwo"
+        <property
+                name="netSortTwo"
+                column="netSortTwo"
                 length="100"
                 not-null="false"
                 unique="true"
@@ -48,9 +48,9 @@
 
         </property>
 
-	<property
-            name="netSortThree"
-            	column="netSortThree"
+        <property
+                name="netSortThree"
+                column="netSortThree"
                 length="100"
                 not-null="false"
                 unique="true"
@@ -58,9 +58,9 @@
 
         </property>
 
-	<property
-            name="equipmentFactory"
-            	column="equipmentFactory"
+        <property
+                name="equipmentFactory"
+                column="equipmentFactory"
                 length="100"
                 not-null="false"
                 unique="true"
@@ -68,32 +68,32 @@
 
         </property>
 
-	<property
-            name="dealHuman"
-            	column="dealHuman"
+        <property
+                name="dealHuman"
+                column="dealHuman"
                 length="100"
                 not-null="true"
                 unique="true"
         >
-     </property>   
-<property
-            name="deleted"
-            	column="deleted"
+        </property>
+        <property
+                name="deleted"
+                column="deleted"
                 length="16"
                 not-null="false"
-              
+
         >
         </property>
-<property
-            name="subRole"
-            	column="subRole"
+        <property
+                name="subRole"
+                column="subRole"
                 length="100"
                 not-null="false"
                 unique="true"
         >
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

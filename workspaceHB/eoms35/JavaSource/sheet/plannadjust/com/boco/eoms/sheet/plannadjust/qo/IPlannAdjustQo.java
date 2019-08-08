@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.plannadjust.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Sat Jun 08 11:16:10 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IPlannAdjustQo extends IWorkSheetQO {
- 
- }
+
+public interface IPlannAdjustQo extends IWorkSheetQO {
+
+}

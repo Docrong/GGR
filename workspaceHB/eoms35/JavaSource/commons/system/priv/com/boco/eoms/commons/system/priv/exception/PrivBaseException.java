@@ -11,19 +11,18 @@ import com.boco.eoms.commons.exceptions.base.BusinessException;
  */
 public class PrivBaseException extends BusinessException {
 
-	public PrivBaseException() {
-		this("Base Exception for privilege.");
-	}
+    public PrivBaseException() {
+        this("Base Exception for privilege.");
+    }
 
-	public PrivBaseException(String errorMessage) {
-		super(errorMessage);
-	}
+    public PrivBaseException(String errorMessage) {
+        super(errorMessage);
+    }
 
-	public PrivBaseException(Throwable cause) {
-		super(cause);
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+    public PrivBaseException(Throwable cause) {
+        super(cause);
+        // TODO Auto-generated constructor stub
+    }
+
 
 }

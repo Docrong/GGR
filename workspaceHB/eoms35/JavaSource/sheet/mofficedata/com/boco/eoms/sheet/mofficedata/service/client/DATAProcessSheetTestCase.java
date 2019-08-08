@@ -2,11 +2,10 @@ package com.boco.eoms.sheet.mofficedata.service.client;
 
 /**
  * DATAProcessSheetTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
-
 
 
 public class DATAProcessSheetTestCase extends junit.framework.TestCase {
@@ -25,10 +24,9 @@ public class DATAProcessSheetTestCase extends junit.framework.TestCase {
         DATAProcessSheetSoapBindingStub binding;
         try {
             binding = (DATAProcessSheetSoapBindingStub)
-                          new DATAProcessSheetLocator().getEomsDataImportImplPort();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new DATAProcessSheetLocator().getEomsDataImportImplPort();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -47,10 +45,9 @@ public class DATAProcessSheetTestCase extends junit.framework.TestCase {
         DATAProcessSheetSoapBindingStub binding;
         try {
             binding = (DATAProcessSheetSoapBindingStub)
-                          new DATAProcessSheetLocator().getEomsDataImportImplPort();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new DATAProcessSheetLocator().getEomsDataImportImplPort();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -69,10 +66,9 @@ public class DATAProcessSheetTestCase extends junit.framework.TestCase {
         DATAProcessSheetSoapBindingStub binding;
         try {
             binding = (DATAProcessSheetSoapBindingStub)
-                          new DATAProcessSheetLocator().getEomsDataImportImplPort();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new DATAProcessSheetLocator().getEomsDataImportImplPort();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }

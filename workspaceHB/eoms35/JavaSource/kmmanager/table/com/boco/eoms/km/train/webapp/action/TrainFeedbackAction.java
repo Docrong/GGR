@@ -38,153 +38,153 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Fri Jul 10 10:50:47 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public final class TrainFeedbackAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增反馈信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增反馈信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-    	TrainFeedbackForm trainFeedbackForms = (TrainFeedbackForm)form;
-    	trainFeedbackForms.setFeedbackUser(this.getUserId(request));
-    	trainFeedbackForms.setTrainFeedbackDept(this.getUser(request).getDeptid());
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改反馈信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainFeedbackForm trainFeedbackForms = (TrainFeedbackForm) form;
+        trainFeedbackForms.setFeedbackUser(this.getUserId(request));
+        trainFeedbackForms.setTrainFeedbackDept(this.getUser(request).getDeptid());
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改反馈信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		TrainFeedback trainFeedback = trainFeedbackMgr.getTrainFeedback(id);
-		TrainFeedbackForm trainFeedbackForm = (TrainFeedbackForm) convert(trainFeedback);
-		updateFormBean(mapping, request, trainFeedbackForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存反馈信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
-		TrainFeedbackForm trainFeedbackForm = (TrainFeedbackForm) form;
-		boolean isNew = (null == trainFeedbackForm.getId() || "".equals(trainFeedbackForm.getId()));
-		TrainFeedback trainFeedback = (TrainFeedback) convert(trainFeedbackForm);
-		trainFeedback.setTrainFeedbackTime(StaticMethod.getLocalTime());
-		if (isNew) {
-			trainFeedbackMgr.saveTrainFeedback(trainFeedback);
-		} else {
-			trainFeedbackMgr.saveTrainFeedback(trainFeedback);
-		}
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 删除反馈信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		trainFeedbackMgr.removeTrainFeedback(id);
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 分页显示反馈信息列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainFeedbackConstants.TRAINFEEDBACK_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
-		Map map = (Map) trainFeedbackMgr.getTrainFeedbacks(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(TrainFeedbackConstants.TRAINFEEDBACK_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示反馈信息列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        TrainFeedback trainFeedback = trainFeedbackMgr.getTrainFeedback(id);
+        TrainFeedbackForm trainFeedbackForm = (TrainFeedbackForm) convert(trainFeedback);
+        updateFormBean(mapping, request, trainFeedbackForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存反馈信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
+        TrainFeedbackForm trainFeedbackForm = (TrainFeedbackForm) form;
+        boolean isNew = (null == trainFeedbackForm.getId() || "".equals(trainFeedbackForm.getId()));
+        TrainFeedback trainFeedback = (TrainFeedback) convert(trainFeedbackForm);
+        trainFeedback.setTrainFeedbackTime(StaticMethod.getLocalTime());
+        if (isNew) {
+            trainFeedbackMgr.saveTrainFeedback(trainFeedback);
+        } else {
+            trainFeedbackMgr.saveTrainFeedback(trainFeedback);
+        }
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 删除反馈信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        trainFeedbackMgr.removeTrainFeedback(id);
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 分页显示反馈信息列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainFeedbackConstants.TRAINFEEDBACK_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
+        Map map = (Map) trainFeedbackMgr.getTrainFeedbacks(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(TrainFeedbackConstants.TRAINFEEDBACK_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示反馈信息列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

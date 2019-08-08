@@ -1,13 +1,13 @@
 /**
  * EomsReply.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
 package com.boco.eoms.interfaces.eomsReplyTicket;
 
-public class EomsReply  implements java.io.Serializable {
+public class EomsReply implements java.io.Serializable {
     private java.lang.String areaType;
 
     private java.lang.String cellName;
@@ -62,62 +62,62 @@ public class EomsReply  implements java.io.Serializable {
     }
 
     public EomsReply(
-           java.lang.String areaType,
-           java.lang.String cellName,
-           java.lang.String ci,
-           java.lang.String complaintCause,
-           java.lang.String complaintType,
-           java.lang.String contactPhone,
-           java.lang.String contactor,
-           java.lang.String deviceFactory,
-           java.lang.String deviceType,
-           java.lang.String dutyReason,
-           java.lang.String hasAlarm,
-           java.lang.String isConfirmed,
-           java.lang.String isContacted,
-           java.lang.String isRepeat,
-           java.lang.String isReply,
-           java.lang.String isSolved,
-           java.lang.String major,
-           java.lang.String replier,
-           java.lang.String replyContent,
-           java.lang.String replyTime,
-           java.lang.String result,
-           java.lang.String solution,
-           java.lang.String solvedTime,
-           java.lang.String userSatisfaction,
-           java.lang.String weakoverlay) {
-           this.areaType = areaType;
-           this.cellName = cellName;
-           this.ci = ci;
-           this.complaintCause = complaintCause;
-           this.complaintType = complaintType;
-           this.contactPhone = contactPhone;
-           this.contactor = contactor;
-           this.deviceFactory = deviceFactory;
-           this.deviceType = deviceType;
-           this.dutyReason = dutyReason;
-           this.hasAlarm = hasAlarm;
-           this.isConfirmed = isConfirmed;
-           this.isContacted = isContacted;
-           this.isRepeat = isRepeat;
-           this.isReply = isReply;
-           this.isSolved = isSolved;
-           this.major = major;
-           this.replier = replier;
-           this.replyContent = replyContent;
-           this.replyTime = replyTime;
-           this.result = result;
-           this.solution = solution;
-           this.solvedTime = solvedTime;
-           this.userSatisfaction = userSatisfaction;
-           this.weakoverlay = weakoverlay;
+            java.lang.String areaType,
+            java.lang.String cellName,
+            java.lang.String ci,
+            java.lang.String complaintCause,
+            java.lang.String complaintType,
+            java.lang.String contactPhone,
+            java.lang.String contactor,
+            java.lang.String deviceFactory,
+            java.lang.String deviceType,
+            java.lang.String dutyReason,
+            java.lang.String hasAlarm,
+            java.lang.String isConfirmed,
+            java.lang.String isContacted,
+            java.lang.String isRepeat,
+            java.lang.String isReply,
+            java.lang.String isSolved,
+            java.lang.String major,
+            java.lang.String replier,
+            java.lang.String replyContent,
+            java.lang.String replyTime,
+            java.lang.String result,
+            java.lang.String solution,
+            java.lang.String solvedTime,
+            java.lang.String userSatisfaction,
+            java.lang.String weakoverlay) {
+        this.areaType = areaType;
+        this.cellName = cellName;
+        this.ci = ci;
+        this.complaintCause = complaintCause;
+        this.complaintType = complaintType;
+        this.contactPhone = contactPhone;
+        this.contactor = contactor;
+        this.deviceFactory = deviceFactory;
+        this.deviceType = deviceType;
+        this.dutyReason = dutyReason;
+        this.hasAlarm = hasAlarm;
+        this.isConfirmed = isConfirmed;
+        this.isContacted = isContacted;
+        this.isRepeat = isRepeat;
+        this.isReply = isReply;
+        this.isSolved = isSolved;
+        this.major = major;
+        this.replier = replier;
+        this.replyContent = replyContent;
+        this.replyTime = replyTime;
+        this.result = result;
+        this.solution = solution;
+        this.solvedTime = solvedTime;
+        this.userSatisfaction = userSatisfaction;
+        this.weakoverlay = weakoverlay;
     }
 
 
     /**
      * Gets the areaType value for this EomsReply.
-     * 
+     *
      * @return areaType
      */
     public java.lang.String getAreaType() {
@@ -127,7 +127,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the areaType value for this EomsReply.
-     * 
+     *
      * @param areaType
      */
     public void setAreaType(java.lang.String areaType) {
@@ -137,7 +137,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the cellName value for this EomsReply.
-     * 
+     *
      * @return cellName
      */
     public java.lang.String getCellName() {
@@ -147,7 +147,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the cellName value for this EomsReply.
-     * 
+     *
      * @param cellName
      */
     public void setCellName(java.lang.String cellName) {
@@ -157,7 +157,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the ci value for this EomsReply.
-     * 
+     *
      * @return ci
      */
     public java.lang.String getCi() {
@@ -167,7 +167,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the ci value for this EomsReply.
-     * 
+     *
      * @param ci
      */
     public void setCi(java.lang.String ci) {
@@ -177,7 +177,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the complaintCause value for this EomsReply.
-     * 
+     *
      * @return complaintCause
      */
     public java.lang.String getComplaintCause() {
@@ -187,7 +187,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the complaintCause value for this EomsReply.
-     * 
+     *
      * @param complaintCause
      */
     public void setComplaintCause(java.lang.String complaintCause) {
@@ -197,7 +197,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the complaintType value for this EomsReply.
-     * 
+     *
      * @return complaintType
      */
     public java.lang.String getComplaintType() {
@@ -207,7 +207,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the complaintType value for this EomsReply.
-     * 
+     *
      * @param complaintType
      */
     public void setComplaintType(java.lang.String complaintType) {
@@ -217,7 +217,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the contactPhone value for this EomsReply.
-     * 
+     *
      * @return contactPhone
      */
     public java.lang.String getContactPhone() {
@@ -227,7 +227,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the contactPhone value for this EomsReply.
-     * 
+     *
      * @param contactPhone
      */
     public void setContactPhone(java.lang.String contactPhone) {
@@ -237,7 +237,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the contactor value for this EomsReply.
-     * 
+     *
      * @return contactor
      */
     public java.lang.String getContactor() {
@@ -247,7 +247,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the contactor value for this EomsReply.
-     * 
+     *
      * @param contactor
      */
     public void setContactor(java.lang.String contactor) {
@@ -257,7 +257,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the deviceFactory value for this EomsReply.
-     * 
+     *
      * @return deviceFactory
      */
     public java.lang.String getDeviceFactory() {
@@ -267,7 +267,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the deviceFactory value for this EomsReply.
-     * 
+     *
      * @param deviceFactory
      */
     public void setDeviceFactory(java.lang.String deviceFactory) {
@@ -277,7 +277,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the deviceType value for this EomsReply.
-     * 
+     *
      * @return deviceType
      */
     public java.lang.String getDeviceType() {
@@ -287,7 +287,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the deviceType value for this EomsReply.
-     * 
+     *
      * @param deviceType
      */
     public void setDeviceType(java.lang.String deviceType) {
@@ -297,7 +297,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the dutyReason value for this EomsReply.
-     * 
+     *
      * @return dutyReason
      */
     public java.lang.String getDutyReason() {
@@ -307,7 +307,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the dutyReason value for this EomsReply.
-     * 
+     *
      * @param dutyReason
      */
     public void setDutyReason(java.lang.String dutyReason) {
@@ -317,7 +317,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the hasAlarm value for this EomsReply.
-     * 
+     *
      * @return hasAlarm
      */
     public java.lang.String getHasAlarm() {
@@ -327,7 +327,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the hasAlarm value for this EomsReply.
-     * 
+     *
      * @param hasAlarm
      */
     public void setHasAlarm(java.lang.String hasAlarm) {
@@ -337,7 +337,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the isConfirmed value for this EomsReply.
-     * 
+     *
      * @return isConfirmed
      */
     public java.lang.String getIsConfirmed() {
@@ -347,7 +347,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the isConfirmed value for this EomsReply.
-     * 
+     *
      * @param isConfirmed
      */
     public void setIsConfirmed(java.lang.String isConfirmed) {
@@ -357,7 +357,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the isContacted value for this EomsReply.
-     * 
+     *
      * @return isContacted
      */
     public java.lang.String getIsContacted() {
@@ -367,7 +367,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the isContacted value for this EomsReply.
-     * 
+     *
      * @param isContacted
      */
     public void setIsContacted(java.lang.String isContacted) {
@@ -377,7 +377,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the isRepeat value for this EomsReply.
-     * 
+     *
      * @return isRepeat
      */
     public java.lang.String getIsRepeat() {
@@ -387,7 +387,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the isRepeat value for this EomsReply.
-     * 
+     *
      * @param isRepeat
      */
     public void setIsRepeat(java.lang.String isRepeat) {
@@ -397,7 +397,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the isReply value for this EomsReply.
-     * 
+     *
      * @return isReply
      */
     public java.lang.String getIsReply() {
@@ -407,7 +407,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the isReply value for this EomsReply.
-     * 
+     *
      * @param isReply
      */
     public void setIsReply(java.lang.String isReply) {
@@ -417,7 +417,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the isSolved value for this EomsReply.
-     * 
+     *
      * @return isSolved
      */
     public java.lang.String getIsSolved() {
@@ -427,7 +427,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the isSolved value for this EomsReply.
-     * 
+     *
      * @param isSolved
      */
     public void setIsSolved(java.lang.String isSolved) {
@@ -437,7 +437,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the major value for this EomsReply.
-     * 
+     *
      * @return major
      */
     public java.lang.String getMajor() {
@@ -447,7 +447,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the major value for this EomsReply.
-     * 
+     *
      * @param major
      */
     public void setMajor(java.lang.String major) {
@@ -457,7 +457,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the replier value for this EomsReply.
-     * 
+     *
      * @return replier
      */
     public java.lang.String getReplier() {
@@ -467,7 +467,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the replier value for this EomsReply.
-     * 
+     *
      * @param replier
      */
     public void setReplier(java.lang.String replier) {
@@ -477,7 +477,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the replyContent value for this EomsReply.
-     * 
+     *
      * @return replyContent
      */
     public java.lang.String getReplyContent() {
@@ -487,7 +487,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the replyContent value for this EomsReply.
-     * 
+     *
      * @param replyContent
      */
     public void setReplyContent(java.lang.String replyContent) {
@@ -497,7 +497,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the replyTime value for this EomsReply.
-     * 
+     *
      * @return replyTime
      */
     public java.lang.String getReplyTime() {
@@ -507,7 +507,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the replyTime value for this EomsReply.
-     * 
+     *
      * @param replyTime
      */
     public void setReplyTime(java.lang.String replyTime) {
@@ -517,7 +517,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the result value for this EomsReply.
-     * 
+     *
      * @return result
      */
     public java.lang.String getResult() {
@@ -527,7 +527,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the result value for this EomsReply.
-     * 
+     *
      * @param result
      */
     public void setResult(java.lang.String result) {
@@ -537,7 +537,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the solution value for this EomsReply.
-     * 
+     *
      * @return solution
      */
     public java.lang.String getSolution() {
@@ -547,7 +547,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the solution value for this EomsReply.
-     * 
+     *
      * @param solution
      */
     public void setSolution(java.lang.String solution) {
@@ -557,7 +557,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the solvedTime value for this EomsReply.
-     * 
+     *
      * @return solvedTime
      */
     public java.lang.String getSolvedTime() {
@@ -567,7 +567,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the solvedTime value for this EomsReply.
-     * 
+     *
      * @param solvedTime
      */
     public void setSolvedTime(java.lang.String solvedTime) {
@@ -577,7 +577,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the userSatisfaction value for this EomsReply.
-     * 
+     *
      * @return userSatisfaction
      */
     public java.lang.String getUserSatisfaction() {
@@ -587,7 +587,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the userSatisfaction value for this EomsReply.
-     * 
+     *
      * @param userSatisfaction
      */
     public void setUserSatisfaction(java.lang.String userSatisfaction) {
@@ -597,7 +597,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Gets the weakoverlay value for this EomsReply.
-     * 
+     *
      * @return weakoverlay
      */
     public java.lang.String getWeakoverlay() {
@@ -607,7 +607,7 @@ public class EomsReply  implements java.io.Serializable {
 
     /**
      * Sets the weakoverlay value for this EomsReply.
-     * 
+     *
      * @param weakoverlay
      */
     public void setWeakoverlay(java.lang.String weakoverlay) {
@@ -615,6 +615,7 @@ public class EomsReply  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof EomsReply)) return false;
         EomsReply other = (EomsReply) obj;
@@ -625,87 +626,88 @@ public class EomsReply  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.areaType==null && other.getAreaType()==null) || 
-             (this.areaType!=null &&
-              this.areaType.equals(other.getAreaType()))) &&
-            ((this.cellName==null && other.getCellName()==null) || 
-             (this.cellName!=null &&
-              this.cellName.equals(other.getCellName()))) &&
-            ((this.ci==null && other.getCi()==null) || 
-             (this.ci!=null &&
-              this.ci.equals(other.getCi()))) &&
-            ((this.complaintCause==null && other.getComplaintCause()==null) || 
-             (this.complaintCause!=null &&
-              this.complaintCause.equals(other.getComplaintCause()))) &&
-            ((this.complaintType==null && other.getComplaintType()==null) || 
-             (this.complaintType!=null &&
-              this.complaintType.equals(other.getComplaintType()))) &&
-            ((this.contactPhone==null && other.getContactPhone()==null) || 
-             (this.contactPhone!=null &&
-              this.contactPhone.equals(other.getContactPhone()))) &&
-            ((this.contactor==null && other.getContactor()==null) || 
-             (this.contactor!=null &&
-              this.contactor.equals(other.getContactor()))) &&
-            ((this.deviceFactory==null && other.getDeviceFactory()==null) || 
-             (this.deviceFactory!=null &&
-              this.deviceFactory.equals(other.getDeviceFactory()))) &&
-            ((this.deviceType==null && other.getDeviceType()==null) || 
-             (this.deviceType!=null &&
-              this.deviceType.equals(other.getDeviceType()))) &&
-            ((this.dutyReason==null && other.getDutyReason()==null) || 
-             (this.dutyReason!=null &&
-              this.dutyReason.equals(other.getDutyReason()))) &&
-            ((this.hasAlarm==null && other.getHasAlarm()==null) || 
-             (this.hasAlarm!=null &&
-              this.hasAlarm.equals(other.getHasAlarm()))) &&
-            ((this.isConfirmed==null && other.getIsConfirmed()==null) || 
-             (this.isConfirmed!=null &&
-              this.isConfirmed.equals(other.getIsConfirmed()))) &&
-            ((this.isContacted==null && other.getIsContacted()==null) || 
-             (this.isContacted!=null &&
-              this.isContacted.equals(other.getIsContacted()))) &&
-            ((this.isRepeat==null && other.getIsRepeat()==null) || 
-             (this.isRepeat!=null &&
-              this.isRepeat.equals(other.getIsRepeat()))) &&
-            ((this.isReply==null && other.getIsReply()==null) || 
-             (this.isReply!=null &&
-              this.isReply.equals(other.getIsReply()))) &&
-            ((this.isSolved==null && other.getIsSolved()==null) || 
-             (this.isSolved!=null &&
-              this.isSolved.equals(other.getIsSolved()))) &&
-            ((this.major==null && other.getMajor()==null) || 
-             (this.major!=null &&
-              this.major.equals(other.getMajor()))) &&
-            ((this.replier==null && other.getReplier()==null) || 
-             (this.replier!=null &&
-              this.replier.equals(other.getReplier()))) &&
-            ((this.replyContent==null && other.getReplyContent()==null) || 
-             (this.replyContent!=null &&
-              this.replyContent.equals(other.getReplyContent()))) &&
-            ((this.replyTime==null && other.getReplyTime()==null) || 
-             (this.replyTime!=null &&
-              this.replyTime.equals(other.getReplyTime()))) &&
-            ((this.result==null && other.getResult()==null) || 
-             (this.result!=null &&
-              this.result.equals(other.getResult()))) &&
-            ((this.solution==null && other.getSolution()==null) || 
-             (this.solution!=null &&
-              this.solution.equals(other.getSolution()))) &&
-            ((this.solvedTime==null && other.getSolvedTime()==null) || 
-             (this.solvedTime!=null &&
-              this.solvedTime.equals(other.getSolvedTime()))) &&
-            ((this.userSatisfaction==null && other.getUserSatisfaction()==null) || 
-             (this.userSatisfaction!=null &&
-              this.userSatisfaction.equals(other.getUserSatisfaction()))) &&
-            ((this.weakoverlay==null && other.getWeakoverlay()==null) || 
-             (this.weakoverlay!=null &&
-              this.weakoverlay.equals(other.getWeakoverlay())));
+        _equals = true &&
+                ((this.areaType == null && other.getAreaType() == null) ||
+                        (this.areaType != null &&
+                                this.areaType.equals(other.getAreaType()))) &&
+                ((this.cellName == null && other.getCellName() == null) ||
+                        (this.cellName != null &&
+                                this.cellName.equals(other.getCellName()))) &&
+                ((this.ci == null && other.getCi() == null) ||
+                        (this.ci != null &&
+                                this.ci.equals(other.getCi()))) &&
+                ((this.complaintCause == null && other.getComplaintCause() == null) ||
+                        (this.complaintCause != null &&
+                                this.complaintCause.equals(other.getComplaintCause()))) &&
+                ((this.complaintType == null && other.getComplaintType() == null) ||
+                        (this.complaintType != null &&
+                                this.complaintType.equals(other.getComplaintType()))) &&
+                ((this.contactPhone == null && other.getContactPhone() == null) ||
+                        (this.contactPhone != null &&
+                                this.contactPhone.equals(other.getContactPhone()))) &&
+                ((this.contactor == null && other.getContactor() == null) ||
+                        (this.contactor != null &&
+                                this.contactor.equals(other.getContactor()))) &&
+                ((this.deviceFactory == null && other.getDeviceFactory() == null) ||
+                        (this.deviceFactory != null &&
+                                this.deviceFactory.equals(other.getDeviceFactory()))) &&
+                ((this.deviceType == null && other.getDeviceType() == null) ||
+                        (this.deviceType != null &&
+                                this.deviceType.equals(other.getDeviceType()))) &&
+                ((this.dutyReason == null && other.getDutyReason() == null) ||
+                        (this.dutyReason != null &&
+                                this.dutyReason.equals(other.getDutyReason()))) &&
+                ((this.hasAlarm == null && other.getHasAlarm() == null) ||
+                        (this.hasAlarm != null &&
+                                this.hasAlarm.equals(other.getHasAlarm()))) &&
+                ((this.isConfirmed == null && other.getIsConfirmed() == null) ||
+                        (this.isConfirmed != null &&
+                                this.isConfirmed.equals(other.getIsConfirmed()))) &&
+                ((this.isContacted == null && other.getIsContacted() == null) ||
+                        (this.isContacted != null &&
+                                this.isContacted.equals(other.getIsContacted()))) &&
+                ((this.isRepeat == null && other.getIsRepeat() == null) ||
+                        (this.isRepeat != null &&
+                                this.isRepeat.equals(other.getIsRepeat()))) &&
+                ((this.isReply == null && other.getIsReply() == null) ||
+                        (this.isReply != null &&
+                                this.isReply.equals(other.getIsReply()))) &&
+                ((this.isSolved == null && other.getIsSolved() == null) ||
+                        (this.isSolved != null &&
+                                this.isSolved.equals(other.getIsSolved()))) &&
+                ((this.major == null && other.getMajor() == null) ||
+                        (this.major != null &&
+                                this.major.equals(other.getMajor()))) &&
+                ((this.replier == null && other.getReplier() == null) ||
+                        (this.replier != null &&
+                                this.replier.equals(other.getReplier()))) &&
+                ((this.replyContent == null && other.getReplyContent() == null) ||
+                        (this.replyContent != null &&
+                                this.replyContent.equals(other.getReplyContent()))) &&
+                ((this.replyTime == null && other.getReplyTime() == null) ||
+                        (this.replyTime != null &&
+                                this.replyTime.equals(other.getReplyTime()))) &&
+                ((this.result == null && other.getResult() == null) ||
+                        (this.result != null &&
+                                this.result.equals(other.getResult()))) &&
+                ((this.solution == null && other.getSolution() == null) ||
+                        (this.solution != null &&
+                                this.solution.equals(other.getSolution()))) &&
+                ((this.solvedTime == null && other.getSolvedTime() == null) ||
+                        (this.solvedTime != null &&
+                                this.solvedTime.equals(other.getSolvedTime()))) &&
+                ((this.userSatisfaction == null && other.getUserSatisfaction() == null) ||
+                        (this.userSatisfaction != null &&
+                                this.userSatisfaction.equals(other.getUserSatisfaction()))) &&
+                ((this.weakoverlay == null && other.getWeakoverlay() == null) ||
+                        (this.weakoverlay != null &&
+                                this.weakoverlay.equals(other.getWeakoverlay())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -793,7 +795,7 @@ public class EomsReply  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(EomsReply.class, true);
+            new org.apache.axis.description.TypeDesc(EomsReply.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://vo.jcss.hy.wri.com", "EomsReply"));
@@ -985,24 +987,24 @@ public class EomsReply  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

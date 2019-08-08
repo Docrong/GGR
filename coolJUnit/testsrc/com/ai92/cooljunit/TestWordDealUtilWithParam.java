@@ -13,36 +13,38 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class TestWordDealUtilWithParam {
 
-	private String expected;
-	
-	private String target;
-	
-	@Parameters
-	public static Collection words(){
-	    return Arrays.asList(new Object[][]{
-	          {"employee_info", "employeeInfo"},	//²âÊÔwordFormat4DB Ò»°ãµÄ´¦ÀíÇé¿ö
-	          {null, null},							//²âÊÔnullÊ±µÄ´¦ÀíÇé¿ö
-	          {"", ""},								//²âÊÔ¿Õ×Ö·û´®Ê±µÄ´¦ÀíÇé¿ö
-	          {"employee_info", "EmployeeInfo"},	//²âÊÔµ±Ê××ÖÄ¸´óÐ´Ê±µÄÇé¿ö
-	          {"employee_info_a", "employeeInfoA"},	//²âÊÔµ±Î²×ÖÄ¸Îª´óÐ´Ê±µÄÇé¿ö
-	          {"employee_a_info", "employeeAInfo"}	//²âÊÔ¶à¸öÏàÁ¬×ÖÄ¸´óÐ´Ê±µÄÇé¿ö
-	    });
-	}
+    private String expected;
 
-	/**
-	 * ²ÎÊý»¯²âÊÔ±ØÐëµÄ¹¹Ôìº¯Êý
-	 * @param expected	ÆÚÍûµÄ²âÊÔ½á¹û£¬¶ÔÓ¦²ÎÊý¼¯ÖÐµÄµÚÒ»¸ö²ÎÊý
-	 * @param target	²âÊÔÊý¾Ý£¬¶ÔÓ¦²ÎÊý¼¯ÖÐµÄµÚ¶þ¸ö²ÎÊý
-	 */
-	public TestWordDealUtilWithParam(String expected , String target){
-		this.expected = expected;
-		this.target = target;
-	}
-	
-	/**
-	 * ²âÊÔ½«Java¶ÔÏóÃû³Æµ½Êý¾Ý¿âÃû³ÆµÄ×ª»»
-	 */
-	@Test public void wordFormat4DB(){
-		assertEquals(expected, WordDealUtil.wordFormat4DB(target));
-	}
+    private String target;
+
+    @Parameters
+    public static Collection words() {
+        return Arrays.asList(new Object[][]{
+                {"employee_info", "employeeInfo"},    //ï¿½ï¿½ï¿½ï¿½wordFormat4DB Ò»ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                {null, null},                            //ï¿½ï¿½ï¿½ï¿½nullÊ±ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                {"", ""},                                //ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ê±ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                {"employee_info", "EmployeeInfo"},    //ï¿½ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ð´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+                {"employee_info_a", "employeeInfoA"},    //ï¿½ï¿½ï¿½Ôµï¿½Î²ï¿½ï¿½Ä¸Îªï¿½ï¿½Ð´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+                {"employee_a_info", "employeeAInfo"}    //ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Ð´Ê±ï¿½ï¿½ï¿½ï¿½ï¿½
+        });
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ìº¯ï¿½ï¿½
+     *
+     * @param expected ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * @param target   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄµÚ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    public TestWordDealUtilWithParam(String expected, String target) {
+        this.expected = expected;
+        this.target = target;
+    }
+
+    /**
+     * ï¿½ï¿½ï¿½Ô½ï¿½Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½Æµï¿½×ªï¿½ï¿½
+     */
+    @Test
+    public void wordFormat4DB() {
+        assertEquals(expected, WordDealUtil.wordFormat4DB(target));
+    }
 }

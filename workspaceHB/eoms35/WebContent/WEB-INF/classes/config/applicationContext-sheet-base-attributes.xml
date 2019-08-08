@@ -2,23 +2,23 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-	<bean id="SheetAttributes"
-		class="com.boco.eoms.sheet.base.util.SheetAttributes">
-		<property name="pageSize">
-			<value>15</value>
-		</property>
-		<property name="regionId">
-			<value>HB</value>
-		</property>
-		<property name="sheetMaxSize">
-			<value>10000</value>
-		</property>
-		<property name="flowMaxLength">
-			<value>100</value>
-		</property>
-		<property name="serviceNum">
-			<value>1</value>
-		</property>
-	</bean>
+    <bean id="SheetAttributes"
+          class="com.boco.eoms.sheet.base.util.SheetAttributes">
+        <property name="pageSize">
+            <value>15</value>
+        </property>
+        <property name="regionId">
+            <value>HB</value>
+        </property>
+        <property name="sheetMaxSize">
+            <value>10000</value>
+        </property>
+        <property name="flowMaxLength">
+            <value>100</value>
+        </property>
+        <property name="serviceNum">
+            <value>1</value>
+        </property>
+    </bean>
 </beans>
 

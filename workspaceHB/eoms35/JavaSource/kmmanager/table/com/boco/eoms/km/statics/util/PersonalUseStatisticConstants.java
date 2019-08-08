@@ -10,15 +10,14 @@ package com.boco.eoms.km.statics.util;
  * <p>
  * Mon Mar 30 14:39:15 CST 2009
  * </p>
- * 
+ *
  * @author ljt
  * @version 0.1
- * 
  */
 public class PersonalUseStatisticConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String PERSONALUSESTATISTIC_LIST = "personalUseStatisticList";
+
+    /**
+     * list key
+     */
+    public final static String PERSONALUSESTATISTIC_LIST = "personalUseStatisticList";
 }

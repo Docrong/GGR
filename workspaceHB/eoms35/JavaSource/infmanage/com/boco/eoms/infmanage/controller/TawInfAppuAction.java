@@ -4,6 +4,7 @@ import java.util.*;
 import javax.servlet.http.*;
 //import com.boco.eoms.weekly.dao.TawWeeklyDAO;
 import java.util.ArrayList;
+
 import org.apache.commons.beanutils.*;
 import org.apache.struts.action.*;
 import com.boco.eoms.common.controller.*;
@@ -20,138 +21,122 @@ import com.boco.eoms.common.util.StaticMethod;
 import com.boco.eoms.commons.system.priv.bo.TawSystemAssignBo;
 import com.boco.eoms.commons.system.session.form.TawSystemSessionForm;
 import com.boco.eoms.commons.system.dept.service.bo.TawSystemDeptBo;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
+
 import com.boco.eoms.commons.system.user.service.bo.impl.TawSystemUserRoleBo;
+
 public class TawInfAppuAction
-    extends Action
-{
+        extends Action {
     private static int PAGE_LENGTH = 10;
     private String user_id = "";
     private String userName = "";
     private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.
-        ConnectionPool.getInstance();
+            ConnectionPool.getInstance();
 
-    public TawInfAppuAction()
-    {
+    public TawInfAppuAction() {
     }
 
     public ActionForward execute(ActionMapping actionMapping,
                                  ActionForm actionForm
-                                 , HttpServletRequest request,
-                                 HttpServletResponse response)
-    {
+            , HttpServletRequest request,
+                                 HttpServletResponse response) {
         ActionForward myforward = null;
         String myaction = actionMapping.getParameter();
 
         //session��ʱ����
-        try
-        {
+        try {
 
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
             if (saveSessionBeanForm == null)
                 return actionMapping.findForward("timeout");
             user_id = saveSessionBeanForm.getUserid();
             userName = saveSessionBeanForm.getUsername();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if ("".equalsIgnoreCase(myaction))
-        {
+        if ("".equalsIgnoreCase(myaction)) {
             myforward = actionMapping.findForward("failure");
         }
 
-        if ("ADD".equalsIgnoreCase(myaction))
-        {
+        if ("ADD".equalsIgnoreCase(myaction)) {
             myforward = performAdd(actionMapping, actionForm, request, response);
         }
 
-        if ("SAVE".equalsIgnoreCase(myaction))
-        {
+        if ("SAVE".equalsIgnoreCase(myaction)) {
             myforward = performSave(actionMapping, actionForm, request,
-                                    response);
+                    response);
         }
 
-        if ("QUERY".equalsIgnoreCase(myaction))
-        {
+        if ("QUERY".equalsIgnoreCase(myaction)) {
             myforward = performQuery(actionMapping, actionForm, request,
-                                     response);
+                    response);
         }
 
-        if ("LIST".equalsIgnoreCase(myaction))
-        {
+        if ("LIST".equalsIgnoreCase(myaction)) {
             myforward = performList(actionMapping, actionForm, request,
-                                    response);
+                    response);
         }
 
-      if ("LISTTAKEN".equalsIgnoreCase(myaction))
-      {
-          myforward = performListTaken(actionMapping, actionForm, request,
-                                  response);
-      }
+        if ("LISTTAKEN".equalsIgnoreCase(myaction)) {
+            myforward = performListTaken(actionMapping, actionForm, request,
+                    response);
+        }
 
-      if ("REMOVETAKEN".equalsIgnoreCase(myaction))
-     {
-         myforward = peformRemoveTaken(actionMapping, actionForm, request,
-                                 response);
-     }
+        if ("REMOVETAKEN".equalsIgnoreCase(myaction)) {
+            myforward = peformRemoveTaken(actionMapping, actionForm, request,
+                    response);
+        }
 
-        if ("TAKEN".equalsIgnoreCase(myaction))
-        {
+        if ("TAKEN".equalsIgnoreCase(myaction)) {
             myforward = performTaken(actionMapping, actionForm, request,
-                                    response);
+                    response);
         }
 
 
-        if ("VIEW".equalsIgnoreCase(myaction))
-        {
+        if ("VIEW".equalsIgnoreCase(myaction)) {
             myforward = performView(actionMapping, actionForm, request,
-                                    response);
+                    response);
         }
 
-        if ("UPDATE".equalsIgnoreCase(myaction))
-        {
+        if ("UPDATE".equalsIgnoreCase(myaction)) {
             myforward = performUpdate(actionMapping, actionForm, request,
-                                      response);
+                    response);
         }
 
-        if ("UPDATEDONE".equalsIgnoreCase(myaction))
-        {
+        if ("UPDATEDONE".equalsIgnoreCase(myaction)) {
             myforward = performUpdatedone(actionMapping, actionForm, request,
-                                          response);
+                    response);
         }
 
-        if ("DEL".equalsIgnoreCase(myaction))
-        {
+        if ("DEL".equalsIgnoreCase(myaction)) {
             myforward = performDel(actionMapping, actionForm, request,
-                                   response);
+                    response);
         }
 
-        if ("DELDONE".equalsIgnoreCase(myaction))
-        {
+        if ("DELDONE".equalsIgnoreCase(myaction)) {
             myforward = performDeldone(actionMapping, actionForm, request,
-                                       response);
+                    response);
         }
 
-        if ("FILE".equalsIgnoreCase(myaction))
-        {
+        if ("FILE".equalsIgnoreCase(myaction)) {
             myforward = performFile(actionMapping, actionForm, request,
-                                    response);
+                    response);
         }
         return myforward;
     }
 
     /**
      * ��ʾ��ӵ�ҳ��
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -161,45 +146,37 @@ public class TawInfAppuAction
     public ActionForward performAdd(ActionMapping actionMapping,
                                     ActionForm actionForm,
                                     HttpServletRequest request,
-                                    HttpServletResponse response)
-    {
+                                    HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
-	    //	edit by wangheqi 2.7 to 3.5
-	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-	      request.getSession().getAttribute("sessionform");
+        //	edit by wangheqi 2.7 to 3.5
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                request.getSession().getAttribute("sessionform");
 	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
 	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-	 	 //edit end
+        //edit end
 
-        if (saveSessionBeanForm == null)
-        {
+        if (saveSessionBeanForm == null) {
             return actionMapping.findForward("timeout");
         }
 
-        try
-        {
+        try {
             String sessionUserId = saveSessionBeanForm.getUserid();
             String sdomIds = "";
 
-            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN))
-            {
+            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN)) {
 //            	edit by wangheqi
                 TawSystemAssignBo privBO = null;
-            	//TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
+                //TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
                 Vector domIds = new Vector();
-                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(),com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER,com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
+                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(), com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER, com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
 
                 //domIds = tawVPBO.validatePriv(sessionUserId,
                 //                              actionMapping.getPath());
 
-                if (domIds.size() <= 0)
-                {
+                if (domIds.size() <= 0) {
                     return actionMapping.findForward("nopriv");
-                }
-                else
-                {
-                    for (int i = 0; i < domIds.size(); i++)
-                    {
+                } else {
+                    for (int i = 0; i < domIds.size(); i++) {
                         sdomIds += domIds.get(i).toString() + ",";
                     }
                     sdomIds = sdomIds.substring(0, (sdomIds.length() - 1));
@@ -210,21 +187,18 @@ public class TawInfAppuAction
             //edit by wangheqi 2.7 to 3.5
             //TawDeptBO tawBOO = new TawDeptBO(ds);
             //int regionId = tawBOO.getRegionId(saveSessionBeanForm.getDeptid());
-            Integer regionId=TawSystemDeptBo.getInstance().getRegion(saveSessionBeanForm.getDeptid(), "-1");
+            Integer regionId = TawSystemDeptBo.getInstance().getRegion(saveSessionBeanForm.getDeptid(), "-1");
 
             request.setAttribute("REGIONID", String.valueOf(regionId));
 
             //
             TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
             int sortId = 0;
-            if (StaticMethod.null2int(request.getParameter("sortId")) != 0)
-            {
+            if (StaticMethod.null2int(request.getParameter("sortId")) != 0) {
                 sortId = StaticMethod.null2int(request.getParameter("sortId"));
-            }
-            else
-            {
+            } else {
                 sortId = StaticMethod.nullObject2int(request.getAttribute(
-                    "sortId"));
+                        "sortId"));
             }
 
             String sortName = tawInfAppuDAO.getSortName(sortId);
@@ -243,22 +217,17 @@ public class TawInfAppuAction
             String day = date.substring(8, 10);
             String time = date.substring(11);
             String noon = "����";
-            if (Integer.parseInt(time.substring(0, 2)) >= 12)
-            {
+            if (Integer.parseInt(time.substring(0, 2)) >= 12) {
                 noon = "����";
             }
             String upTime = year + "��" + month + "��" + day + "��" + noon + " " +
-                time;
+                    time;
 
             form.setInfUpTime(upTime);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             actionMapping.findForward("failure");
-        }
-        finally
-        {
+        } finally {
 
         }
 
@@ -267,6 +236,7 @@ public class TawInfAppuAction
 
     /**
      * ִ����ӵĲ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -276,36 +246,32 @@ public class TawInfAppuAction
     public ActionForward performSave(ActionMapping actionMapping,
                                      ActionForm actionForm,
                                      HttpServletRequest request,
-                                     HttpServletResponse response)
-    {
+                                     HttpServletResponse response) {
         TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
         TawInfInfo tawInfInfo = new TawInfInfo();
-        try
-        {
+        try {
             HttpSession session = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-            if (saveSessionBeanForm == null)
-            {
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
 
             org.apache.commons.beanutils.BeanUtils.populate(tawInfInfo,
-                org.apache.commons.beanutils.BeanUtils.describe(form));
+                    org.apache.commons.beanutils.BeanUtils.describe(form));
 
             tawInfAppuDAO.insert(tawInfInfo);
             request.setAttribute("sortId",
-                                 String.valueOf(tawInfInfo.getInfSortId()));
+                    String.valueOf(tawInfInfo.getInfSortId()));
 
             // �������ϸ��������ߣ�����ޡ����ڣ�2004.6.10
-            if (!request.getParameter("fileValue").equals(""))
-            {
+            if (!request.getParameter("fileValue").equals("")) {
                 int id = tawInfAppuDAO.getId(form.getInfUpTime());
                 TawInfUpfile tawInfUpfile = new TawInfUpfile();
                 TawInfUpfileDAO tawInfUpfileDAO = new TawInfUpfileDAO(ds);
@@ -315,14 +281,10 @@ public class TawInfAppuAction
                 tawInfUpfileDAO.insert(tawInfUpfile);
             }
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             actionMapping.findForward("failure");
-        }
-        finally
-        {
+        } finally {
 
         }
 
@@ -331,6 +293,7 @@ public class TawInfAppuAction
 
     /**
      * ��ʾ��ѯ��ҳ��
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -340,18 +303,16 @@ public class TawInfAppuAction
     public ActionForward performQuery(ActionMapping actionMapping,
                                       ActionForm actionForm,
                                       HttpServletRequest request,
-                                      HttpServletResponse response)
-    {
+                                      HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
-        try
-        {
+        try {
             request.getSession().removeAttribute("tawInfMaintainerForm");
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
             if (saveSessionBeanForm == null)
                 return actionMapping.findForward("timeout");
@@ -359,26 +320,21 @@ public class TawInfAppuAction
             String sessionUserId = saveSessionBeanForm.getUserid();
             String sdomIds = "";
 
-            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN))
-            {
+            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN)) {
 
 //            	edit by wangheqi
                 TawSystemAssignBo privBO = null;
-            	//TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
+                //TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
                 Vector domIds = new Vector();
-                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(),com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER,com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
+                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(), com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER, com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
 
                 //domIds = tawVPBO.validatePriv(sessionUserId,
                 //                              actionMapping.getPath());
 
-                if (domIds.size() <= 0)
-                {
+                if (domIds.size() <= 0) {
                     return actionMapping.findForward("nopriv");
-                }
-                else
-                {
-                    for (int i = 0; i < domIds.size(); i++)
-                    {
+                } else {
+                    for (int i = 0; i < domIds.size(); i++) {
                         sdomIds += domIds.get(i).toString() + ",";
                     }
                     sdomIds = sdomIds.substring(0, (sdomIds.length() - 1));
@@ -390,8 +346,8 @@ public class TawInfAppuAction
 //          edit by wangheqi 2.7 to 3.5
             //TawDeptBO tawBOO = new TawDeptBO(ds);
             //int regionId = tawBOO.getRegionId(saveSessionBeanForm.getDeptid());
-            Integer regionId=TawSystemDeptBo.getInstance().getRegion(saveSessionBeanForm.getDeptid(), "-1");
-                                            
+            Integer regionId = TawSystemDeptBo.getInstance().getRegion(saveSessionBeanForm.getDeptid(), "-1");
+
             request.setAttribute("REGIONID", String.valueOf(regionId));
 
             int sortId = Integer.parseInt(request.getParameter("sortId"));
@@ -402,14 +358,10 @@ public class TawInfAppuAction
             form.setInfSortId(sortId);
             form.setInfSortName(sortName);
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             actionMapping.findForward("failure");
-        }
-        finally
-        {
+        } finally {
 
         }
 
@@ -418,6 +370,7 @@ public class TawInfAppuAction
 
     /**
      * ִ�в�ѯ�Ĳ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -427,46 +380,38 @@ public class TawInfAppuAction
     public ActionForward performList(ActionMapping actionMapping,
                                      ActionForm actionForm,
                                      HttpServletRequest request,
-                                     HttpServletResponse response)
-    {
+                                     HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
-        try
-        {
+        try {
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-            if (saveSessionBeanForm == null)
-            {
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
 
             String sessionUserId = saveSessionBeanForm.getUserid();
             String sdomIds = "";
 
-            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN))
-            {
+            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN)) {
 //            	edit by wangheqi
                 TawSystemAssignBo privBO = null;
-            	//TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
+                //TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
                 Vector domIds = new Vector();
-                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(),com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER,com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
+                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(), com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER, com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
 
                 //domIds = tawVPBO.validatePriv(sessionUserId,
                 //                              "/TawInfAppu/query");
 
-                if (domIds.size() <= 0)
-                {
+                if (domIds.size() <= 0) {
                     return actionMapping.findForward("nopriv");
-                }
-                else
-                {
-                    for (int i = 0; i < domIds.size(); i++)
-                    {
+                } else {
+                    for (int i = 0; i < domIds.size(); i++) {
                         sdomIds += domIds.get(i).toString() + ",";
                     }
                     sdomIds = sdomIds.substring(0, (sdomIds.length() - 1));
@@ -476,12 +421,9 @@ public class TawInfAppuAction
             int length = PAGE_LENGTH;
             int offset;
             String pageOffset = request.getParameter("pager.offset");
-            if (pageOffset == null || pageOffset.equals(""))
-            {
+            if (pageOffset == null || pageOffset.equals("")) {
                 offset = 0;
-            }
-            else
-            {
+            } else {
                 offset = Integer.parseInt(pageOffset);
             }
 
@@ -491,31 +433,29 @@ public class TawInfAppuAction
 
             TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
             ArrayList list = (ArrayList) tawInfAppuDAO.getList(condition,
-                offset, length);
+                    offset, length);
 
             int size = tawInfAppuDAO.getSize(
-                "taw_inf_info a,taw_inf_sort b,taw_rm_user c,taw_dept d",
-                condition);
+                    "taw_inf_info a,taw_inf_sort b,taw_rm_user c,taw_dept d",
+                    condition);
             String url = request.getContextPath() + "/infmanage" +
-                actionMapping.getPath() + ".do";
+                    actionMapping.getPath() + ".do";
             String pagerHeader = Pager.generate(offset, size, length, url);
 
             request.setAttribute("pagerHeader", pagerHeader);
             request.setAttribute("TAW_INF_INFO_LIST", list);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
+        } finally {
 
         }
 
         return actionMapping.findForward("success");
     }
+
     /**
      * ִ�в�ѯ�Ĳ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -523,48 +463,40 @@ public class TawInfAppuAction
      * @return
      */
     public ActionForward performListTaken(ActionMapping actionMapping,
-                                     ActionForm actionForm,
-                                     HttpServletRequest request,
-                                     HttpServletResponse response)
-    {
+                                          ActionForm actionForm,
+                                          HttpServletRequest request,
+                                          HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
-        try
-        {
+        try {
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-            if (saveSessionBeanForm == null)
-            {
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
 
             String sessionUserId = saveSessionBeanForm.getUserid();
             String sdomIds = "";
 
-            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN))
-            {
+            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN)) {
 //            	edit by wangheqi
                 TawSystemAssignBo privBO = null;
-            	//TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
+                //TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
                 Vector domIds = new Vector();
-                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(),com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER,com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
+                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(), com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER, com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
 
                 //domIds = tawVPBO.validatePriv(sessionUserId,
                 //                              "/TawInfAppu/query");
 
-                if (domIds.size() <= 0)
-                {
+                if (domIds.size() <= 0) {
                     return actionMapping.findForward("nopriv");
-                }
-                else
-                {
-                    for (int i = 0; i < domIds.size(); i++)
-                    {
+                } else {
+                    for (int i = 0; i < domIds.size(); i++) {
                         sdomIds += domIds.get(i).toString() + ",";
                     }
                     sdomIds = sdomIds.substring(0, (sdomIds.length() - 1));
@@ -574,39 +506,32 @@ public class TawInfAppuAction
             int length = PAGE_LENGTH;
             int offset;
             String pageOffset = request.getParameter("pager.offset");
-            if (pageOffset == null || pageOffset.equals(""))
-            {
+            if (pageOffset == null || pageOffset.equals("")) {
                 offset = 0;
-            }
-            else
-            {
+            } else {
                 offset = Integer.parseInt(pageOffset);
             }
 
             // �����ѯ���
             //TawInfAppuBO tawInfAppuBO = new TawInfAppuBO(ds);
             //String condition = tawInfAppuBO.getQueryCondition(form, sdomIds);
-            String condition = " ,taw_inf_take e where a.dept_id=d.dept_id and b.inf_sort_id=a.inf_sort_id and a.inf_up_id=c.user_id and a.id=e.info_id and e.taker_id='"+sessionUserId+"'";
+            String condition = " ,taw_inf_take e where a.dept_id=d.dept_id and b.inf_sort_id=a.inf_sort_id and a.inf_up_id=c.user_id and a.id=e.info_id and e.taker_id='" + sessionUserId + "'";
             TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
             ArrayList list = (ArrayList) tawInfAppuDAO.getList(condition,
-                offset, length);
+                    offset, length);
 
             int size = tawInfAppuDAO.getSize(
-                "taw_inf_info a,taw_inf_sort b,taw_rm_user c,taw_dept d",
-                condition);
+                    "taw_inf_info a,taw_inf_sort b,taw_rm_user c,taw_dept d",
+                    condition);
             String url = request.getContextPath() + "/infmanage" +
-                actionMapping.getPath() + ".do";
+                    actionMapping.getPath() + ".do";
             String pagerHeader = Pager.generate(offset, size, length, url);
 
             request.setAttribute("pagerHeader", pagerHeader);
             request.setAttribute("TAW_INF_INFO_LIST", list);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
+        } finally {
 
         }
 
@@ -615,6 +540,7 @@ public class TawInfAppuAction
 
     /**
      * ִ�в鿴�Ĳ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -624,73 +550,67 @@ public class TawInfAppuAction
     public ActionForward performView(ActionMapping actionMapping,
                                      ActionForm actionForm,
                                      HttpServletRequest request,
-                                     HttpServletResponse response)
-    {
+                                     HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
         TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
         TawInfInfo tawInfInfo = new TawInfInfo();
         //edit by wanheqi 2.7 to 3.5
         TawSystemUserRoleBo tawRmUserBO = TawSystemUserRoleBo.getInstance();
         //TawRmUserBO tawRmUserBO = new TawRmUserBO();
-        String user="";
-        String USER="";
-        try
-        {
+        String user = "";
+        String USER = "";
+        try {
             // �жϳ�ʱ
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-            if (saveSessionBeanForm == null)
-            {
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
-            user=saveSessionBeanForm.getUserid();
+            user = saveSessionBeanForm.getUserid();
             //��
             int id = StaticMethod.null2int(request.getParameter(
-                "id"));
+                    "id"));
             int sortId = Integer.parseInt(request.getParameter("sortId"));
             String sortName = tawInfAppuDAO.getSortName(sortId);
             tawInfInfo = tawInfAppuDAO.getById(id);
-            String locker=tawInfAppuDAO.getLocker(id);
-            if(!locker.equals("0")){
-              //TawWeeklyDAO tawWeeklyDAO=new TawWeeklyDAO(ds);
-              USER=tawRmUserBO.getUsernameByUserid(locker);
+            String locker = tawInfAppuDAO.getLocker(id);
+            if (!locker.equals("0")) {
+                //TawWeeklyDAO tawWeeklyDAO=new TawWeeklyDAO(ds);
+                USER = tawRmUserBO.getUsernameByUserid(locker);
 
             }
             org.apache.commons.beanutils.BeanUtils.populate(form,
-                org.apache.commons.beanutils.BeanUtils.describe(
-                tawInfInfo));
+                    org.apache.commons.beanutils.BeanUtils.describe(
+                            tawInfInfo));
             form.setInfSortName(sortName);
 
             // �鿴���ϸ��������ߣ�����ޡ����ڣ�2004.6.10
             TawInfUpfile tawInfUpfile = new TawInfUpfile();
             TawInfUpfileDAO tawInfUpfileDAO = new TawInfUpfileDAO(ds);
             tawInfUpfile = tawInfUpfileDAO.retrieve(form.getId());
-            if (tawInfUpfile != null)
-            {
+            if (tawInfUpfile != null) {
                 request.setAttribute("attValue", tawInfUpfile.getInfUpfileName());
                 request.setAttribute("attText", tawInfUpfile.getEncodename());
             }
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
+        } finally {
 
         }
-        request.setAttribute("locker",USER);
+        request.setAttribute("locker", USER);
         return actionMapping.findForward("success");
     }
+
     /**
      * ִ�ж��ĵĲ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -698,66 +618,60 @@ public class TawInfAppuAction
      * @return
      */
     public ActionForward performTaken(ActionMapping actionMapping,
-                                     ActionForm actionForm,
-                                     HttpServletRequest request,
-                                     HttpServletResponse response)
-    {
+                                      ActionForm actionForm,
+                                      HttpServletRequest request,
+                                      HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
         TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
-        String infoid=request.getParameter("infoid");
-        try
-        {
+        String infoid = request.getParameter("infoid");
+        try {
             // �жϳ�ʱ
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-                  String user=saveSessionBeanForm.getUserid();
-            if (saveSessionBeanForm == null)
-            {
+            String user = saveSessionBeanForm.getUserid();
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
-            String temp="";
-            for(int i=0;i<infoid.length();i++){
-              if(!infoid.substring(i,i+1).equals(",")){
-                temp=temp+infoid.substring(i,i+1);
-              }else{
-                int id=Integer.parseInt(temp);
-                int count=tawInfAppuDAO.getIfTaken("taw_inf_take","where info_id="+id+" and taker_id='"+user+"'");
-                if(count==0){
-                  tawInfAppuDAO.Taken(id,user);
-                  temp="";
-                }else{
-                  temp="";
+            String temp = "";
+            for (int i = 0; i < infoid.length(); i++) {
+                if (!infoid.substring(i, i + 1).equals(",")) {
+                    temp = temp + infoid.substring(i, i + 1);
+                } else {
+                    int id = Integer.parseInt(temp);
+                    int count = tawInfAppuDAO.getIfTaken("taw_inf_take", "where info_id=" + id + " and taker_id='" + user + "'");
+                    if (count == 0) {
+                        tawInfAppuDAO.Taken(id, user);
+                        temp = "";
+                    } else {
+                        temp = "";
+                    }
                 }
-              }
             }
-            if(!temp.equals(""))
-            {
-              int id=Integer.parseInt(temp);
-              int count=tawInfAppuDAO.getIfTaken("taw_inf_take","where info_id="+id+" and taker_id='"+user+"'");
-              if(count==0){
-                tawInfAppuDAO.Taken(id, user);
-              }
+            if (!temp.equals("")) {
+                int id = Integer.parseInt(temp);
+                int count = tawInfAppuDAO.getIfTaken("taw_inf_take", "where info_id=" + id + " and taker_id='" + user + "'");
+                if (count == 0) {
+                    tawInfAppuDAO.Taken(id, user);
+                }
 
             }
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
+        } finally {
         }
         return actionMapping.findForward("success");
     }
+
     /**
      * ɾ���ĵĲ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -765,43 +679,37 @@ public class TawInfAppuAction
      * @return
      */
     public ActionForward peformRemoveTaken(ActionMapping actionMapping,
-                                     ActionForm actionForm,
-                                     HttpServletRequest request,
-                                     HttpServletResponse response)
-    {
+                                           ActionForm actionForm,
+                                           HttpServletRequest request,
+                                           HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
         TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
-        String infoid=request.getParameter("infoid");
-        try
-        {
+        String infoid = request.getParameter("infoid");
+        try {
             // �жϳ�ʱ
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-                  String user=saveSessionBeanForm.getUserid();
-            if (saveSessionBeanForm == null)
-            {
+            String user = saveSessionBeanForm.getUserid();
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
-            tawInfAppuDAO.deletetaken(infoid,user);
-        }
-        catch (Exception e)
-        {
+            tawInfAppuDAO.deletetaken(infoid, user);
+        } catch (Exception e) {
             e.printStackTrace();
-        }
-        finally
-        {
+        } finally {
         }
         return actionMapping.findForward("success");
     }
 
     /**
      * ��ʾ�޸ĵ�ҳ��
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -811,93 +719,81 @@ public class TawInfAppuAction
     public ActionForward performUpdate(ActionMapping actionMapping,
                                        ActionForm actionForm,
                                        HttpServletRequest request,
-                                       HttpServletResponse response)
-    {
+                                       HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
-	    //	edit by wangheqi 2.7 to 3.5
-	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-	      request.getSession().getAttribute("sessionform");
+        //	edit by wangheqi 2.7 to 3.5
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                request.getSession().getAttribute("sessionform");
 	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
 	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-	 	 //edit end
+        //edit end
 
-        if (saveSessionBeanForm == null)
-        {
+        if (saveSessionBeanForm == null) {
             return actionMapping.findForward("timeout");
         }
-        String user_id=saveSessionBeanForm.getUserid();
+        String user_id = saveSessionBeanForm.getUserid();
         //edit by wanheqi 2.7 to 3.5
         TawSystemUserRoleBo tawRmUserBO = TawSystemUserRoleBo.getInstance();
         //TawRmUserBO tawRmUserBO = new TawRmUserBO();
-        try
-        {
+        try {
             int id = StaticMethod.null2int(request.getParameter(
-                "id"));
+                    "id"));
             int deptId = StaticMethod.null2int(request.getParameter("deptId"));
             String sdomIds = "";
 
             String sessionUserId = saveSessionBeanForm.getUserid();
-            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN))
-            {
+            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN)) {
 //            	edit by wangheqi
                 TawSystemAssignBo privBO = null;
-            	//TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
+                //TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
                 Vector domIds = new Vector();
-                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(),com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER,com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
+                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(), com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER, com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
 
                 //domIds = tawVPBO.validatePriv(sessionUserId,
                 //                              "/TawInfAppu/update");
 
-                if (domIds.size() <= 0)
-                {
+                if (domIds.size() <= 0) {
                     return actionMapping.findForward("nopriv");
-                }
-                else
-                {
-                    for (int i = 0; i < domIds.size(); i++)
-                    {
+                } else {
+                    for (int i = 0; i < domIds.size(); i++) {
                         sdomIds += domIds.get(i).toString() + ",";
                     }
                     sdomIds = sdomIds.substring(0, (sdomIds.length() - 1));
                 }
 
                 boolean hasPriv = false;
-                for (int i = 0; i < domIds.size(); i++)
-                {
+                for (int i = 0; i < domIds.size(); i++) {
                     if (Integer.parseInt(domIds.get(i).toString()) ==
-                        deptId)
-                    {
+                            deptId) {
                         hasPriv = true;
                         break;
                     }
                 }
-                if (!hasPriv)
-                {
+                if (!hasPriv) {
                     return actionMapping.findForward("nopriv");
                 }
             }
 
             TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(
-                ds);
-            String locker=tawInfAppuDAO.getLocker(id);
-            if(!locker.equals("0") && !locker.equals(user_id))
-            {
-              //TawWeeklyDAO tawWeeklyDAO=new TawWeeklyDAO(ds);
-              String user=tawRmUserBO.getUsernameByUserid(user_id);
-              request.setAttribute("error", "�Բ��𣬸����ϱ�"+user+"������ʱ�����޸�");
-              return actionMapping.findForward("ifIccid");
+                    ds);
+            String locker = tawInfAppuDAO.getLocker(id);
+            if (!locker.equals("0") && !locker.equals(user_id)) {
+                //TawWeeklyDAO tawWeeklyDAO=new TawWeeklyDAO(ds);
+                String user = tawRmUserBO.getUsernameByUserid(user_id);
+                request.setAttribute("error", "�Բ��𣬸����ϱ�" + user + "������ʱ�����޸�");
+                return actionMapping.findForward("ifIccid");
             }
             TawInfInfo tawInfInfo = new TawInfInfo();
-            tawInfAppuDAO.lock(user_id,id);
+            tawInfAppuDAO.lock(user_id, id);
             tawInfInfo = tawInfAppuDAO.getById(id);
 
             int sortId = Integer.parseInt(request.getParameter("sortId"));
             String sortName = tawInfAppuDAO.getSortName(sortId);
 
             org.apache.commons.beanutils.BeanUtils.populate
-                (form,
-                 org.apache.commons.beanutils.BeanUtils.describe(
-                tawInfInfo));
+                    (form,
+                            org.apache.commons.beanutils.BeanUtils.describe(
+                                    tawInfInfo));
             form.setInfSortName(sortName);
             form.setInfUpName(userName);
 
@@ -905,35 +801,29 @@ public class TawInfAppuAction
             TawInfUpfile tawInfUpfile = new TawInfUpfile();
             TawInfUpfileDAO tawInfUpfileDAO = new TawInfUpfileDAO(ds);
             tawInfUpfile = tawInfUpfileDAO.retrieve(form.getId());
-            if (tawInfUpfile != null)
-            {
-              String temp="";
-              try{
-                for(int i=0;i<tawInfUpfile.getEncodename().length();i++)
-                {
-                  if(!tawInfUpfile.getEncodename().substring(i,i+1).equals("."))
-                  {
-                    temp=temp+tawInfUpfile.getEncodename().substring(i,i+1);
-                  }else{
-                    //temp=temp+"00";
-                    break;
-                  }
+            if (tawInfUpfile != null) {
+                String temp = "";
+                try {
+                    for (int i = 0; i < tawInfUpfile.getEncodename().length(); i++) {
+                        if (!tawInfUpfile.getEncodename().substring(i, i + 1).equals(".")) {
+                            temp = temp + tawInfUpfile.getEncodename().substring(i, i + 1);
+                        } else {
+                            //temp=temp+"00";
+                            break;
+                        }
+                    }
+                } catch (Exception e) {
                 }
-              }catch(Exception e){}
-                request.setAttribute("attValue",tawInfUpfile.getInfUpfileName());
-                request.setAttribute("attName",temp+"_"+ tawInfUpfile.getInfUpfileName());
+                request.setAttribute("attValue", tawInfUpfile.getInfUpfileName());
+                request.setAttribute("attName", temp + "_" + tawInfUpfile.getInfUpfileName());
                 request.setAttribute("attText", tawInfUpfile.getEncodename());
-                request.setAttribute("attTe","");
+                request.setAttribute("attTe", "");
             }
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             actionMapping.findForward("failure");
-        }
-        finally
-        {
+        } finally {
 
         }
 
@@ -942,6 +832,7 @@ public class TawInfAppuAction
 
     /**
      * ִ���޸ĵĲ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -951,70 +842,60 @@ public class TawInfAppuAction
     public ActionForward performUpdatedone(ActionMapping actionMapping,
                                            ActionForm actionForm,
                                            HttpServletRequest request,
-                                           HttpServletResponse response)
-    {
+                                           HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
         TawInfInfo tawInfInfo = new TawInfInfo();
         TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
 
-        try
-        {
+        try {
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-            if (saveSessionBeanForm == null)
-            {
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
-            int dept_id=Integer.parseInt(saveSessionBeanForm.getDeptid());
+            int dept_id = Integer.parseInt(saveSessionBeanForm.getDeptid());
             org.apache.commons.beanutils.BeanUtils.populate(tawInfInfo,
-                org.apache.commons.beanutils.BeanUtils.describe(form));
+                    org.apache.commons.beanutils.BeanUtils.describe(form));
             tawInfAppuDAO.update(tawInfInfo);
             //�����      �����        2004.8.15
-            tawInfAppuDAO.lock("0",tawInfInfo.getId());
+            tawInfAppuDAO.lock("0", tawInfInfo.getId());
             //�����߶�������
             Date puredate = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String date = dateFormat.format(puredate);
-            tawInfAppuDAO.insertMsg(form.getId(),dept_id,date);
+            tawInfAppuDAO.insertMsg(form.getId(), dept_id, date);
             //�޸����ϸ���   ���ߣ������  ����ʱ�䣺2004.6.10
             TawInfUpfile tawInfUpfile = null;
             TawInfUpfileDAO tawInfUpfileDAO = new TawInfUpfileDAO(ds);
             tawInfUpfile = tawInfUpfileDAO.retrieve(form.getId());
 
-            if (!request.getParameter("fileValue").equals(""))
-            {
-                if (tawInfUpfile == null)
-                {
+            if (!request.getParameter("fileValue").equals("")) {
+                if (tawInfUpfile == null) {
                     //�������ҳ�����и�����������ݿ���û�и����ϵĸ�����¼���򴴽�һ�����Ϣ
                     tawInfUpfile = new TawInfUpfile();
                     tawInfUpfile.setInfoId(tawInfInfo.getId());
                     tawInfUpfile.setInfUpfileName(request.getParameter(
-                        "fileValue"));
+                            "fileValue"));
                     tawInfUpfile.setEncodename(request.getParameter(
-                        "fileText"));
+                            "fileText"));
                     tawInfUpfileDAO.insert(tawInfUpfile);
-                }
-                else
-                {
+                } else {
                     //�������ҳ�����и�����������ݿ����и����ϵĸ�����¼�����޸ĸ�����Ϣ
                     tawInfUpfile.setInfoId(tawInfInfo.getId());
                     tawInfUpfile.setInfUpfileName(request.getParameter(
-                        "fileValue"));
+                            "fileValue"));
                     tawInfUpfile.setEncodename(request.getParameter(
-                        "fileText"));
+                            "fileText"));
                     tawInfUpfileDAO.update(tawInfUpfile);
                 }
-            }
-            else
-            {
-                if (tawInfUpfile != null)
-                {
+            } else {
+                if (tawInfUpfile != null) {
                     //���ҳ����û�и���������ݿ����иù����ĸ�����¼����ɾ��ø�����Ϣ
                     tawInfUpfileDAO.delete(tawInfInfo.getId());
                 }
@@ -1028,24 +909,17 @@ public class TawInfAppuAction
             form.setInfUpTime("");
             form.setDeptId(0);
             form.setInfUpId("");
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             actionMapping.findForward("failure");
             e.printStackTrace();
-        }
-        finally
-        {
-            if (tawInfInfo != null)
-            {
+        } finally {
+            if (tawInfInfo != null) {
                 tawInfInfo = null;
             }
-            if (tawInfAppuDAO != null)
-            {
+            if (tawInfAppuDAO != null) {
                 tawInfAppuDAO = null;
             }
-            if (form != null)
-            {
+            if (form != null) {
                 form = null;
             }
         }
@@ -1054,6 +928,7 @@ public class TawInfAppuAction
 
     /**
      * ��ʾɾ���ҳ��
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -1063,22 +938,19 @@ public class TawInfAppuAction
     public ActionForward performDel(ActionMapping actionMapping,
                                     ActionForm actionForm,
                                     HttpServletRequest request,
-                                    HttpServletResponse response)
-    {
+                                    HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
 
-        try
-        {
+        try {
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-            if (saveSessionBeanForm == null)
-            {
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
 
@@ -1086,37 +958,32 @@ public class TawInfAppuAction
             String sessionUserId = saveSessionBeanForm.getUserid();
             String sdomIds = "";
             int deptId = StaticMethod.null2int(request.getParameter(
-                "deptId"));
+                    "deptId"));
             int id = StaticMethod.null2int(request.getParameter(
-                "id"));
+                    "id"));
 
-            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN))
-            {
+            if (!user_id.equalsIgnoreCase(StaticVariable.ADMIN)) {
 //            	edit by wangheqi
                 TawSystemAssignBo privBO = null;
-            	//TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
+                //TawValidatePrivBO tawVPBO = new TawValidatePrivBO(ds);
                 Vector domIds = new Vector();
-                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(),com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER,com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
+                domIds = com.boco.eoms.base.util.StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(), com.boco.eoms.base.util.StaticVariable.PRIV_ASSIGNTYPE_USER, com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_DEPT));// �����ϵͳ������Ա�򷵻�-10
 
                 //domIds = tawVPBO.validatePriv(sessionUserId,
                 //                              actionMapping.getPath());
-                if (domIds.size() <= 0)
-                {
+                if (domIds.size() <= 0) {
                     return actionMapping.findForward("nopriv");
                 }
 
                 boolean hasPriv = false;
-                for (int i = 0; i < domIds.size(); i++)
-                {
+                for (int i = 0; i < domIds.size(); i++) {
                     if (Integer.parseInt(domIds.get(i).toString()) ==
-                        deptId)
-                    {
+                            deptId) {
                         hasPriv = true;
                         break;
                     }
                 }
-                if (!hasPriv)
-                {
+                if (!hasPriv) {
                     return actionMapping.findForward("nopriv");
                 }
             }
@@ -1129,28 +996,23 @@ public class TawInfAppuAction
             int sortId = StaticMethod.null2int(request.getParameter("sortId"));
             String sortName = tawInfAppuDAO.getSortName(sortId);
             org.apache.commons.beanutils.BeanUtils.populate(form,
-                org.apache.commons.beanutils.BeanUtils.describe(
-                tawInfInfo));
+                    org.apache.commons.beanutils.BeanUtils.describe(
+                            tawInfInfo));
             form.setInfSortName(sortName);
 
             // ɾ�����ϸ��������ߣ�����ޡ����ڣ�2004.6.10
             TawInfUpfile tawInfUpfile = new TawInfUpfile();
             TawInfUpfileDAO tawInfUpfileDAO = new TawInfUpfileDAO(ds);
             tawInfUpfile = tawInfUpfileDAO.retrieve(form.getId());
-            if (tawInfUpfile != null)
-            {
+            if (tawInfUpfile != null) {
                 request.setAttribute("attValue", tawInfUpfile.getInfUpfileName());
                 request.setAttribute("attText", tawInfUpfile.getEncodename());
             }
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             actionMapping.findForward("failure");
-        }
-        finally
-        {
+        } finally {
 
         }
 
@@ -1159,6 +1021,7 @@ public class TawInfAppuAction
 
     /**
      * ִ��ɾ��Ĳ���
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -1168,28 +1031,25 @@ public class TawInfAppuAction
     public ActionForward performDeldone(ActionMapping actionMapping,
                                         ActionForm actionForm,
                                         HttpServletRequest request,
-                                        HttpServletResponse response)
-    {
+                                        HttpServletResponse response) {
         TawInfInfoForm form = (TawInfInfoForm) actionForm;
         TawInfAppuDAO tawInfAppuDAO = new TawInfAppuDAO(ds);
 
-        try
-        {
+        try {
             HttpSession httpSession = request.getSession();
-    	    //	edit by wangheqi 2.7 to 3.5
-   	 	 TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-   	      request.getSession().getAttribute("sessionform");
+            //	edit by wangheqi 2.7 to 3.5
+            TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
+                    request.getSession().getAttribute("sessionform");
    	      /*SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
    	          httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");*/
-   	 	 //edit end
+            //edit end
 
-            if (saveSessionBeanForm == null)
-            {
+            if (saveSessionBeanForm == null) {
                 return actionMapping.findForward("timeout");
             }
 
             int id = StaticMethod.null2int(request.getParameter(
-                "id"));
+                    "id"));
 
             tawInfAppuDAO.delete(id);
 
@@ -1199,13 +1059,11 @@ public class TawInfAppuAction
 
             TawInfUpfileDAO tawInfUpfileDAO = new TawInfUpfileDAO(ds);
             String filename = tawInfUpfileDAO.getFilename(form.getId());
-            if(!filename.equals(""))
-            {
-                String attArr[]=filename.split(",",0);
-                for (int i=0;i<attArr.length;i++)
-                {
+            if (!filename.equals("")) {
+                String attArr[] = filename.split(",", 0);
+                for (int i = 0; i < attArr.length; i++) {
                     String url = realPath + "infmanage" + separator + "upload" +
-                        separator + attArr[i];
+                            separator + attArr[i];
 
                     File fileObj = new File(url);
                     if (fileObj.exists())
@@ -1214,16 +1072,11 @@ public class TawInfAppuAction
             }
             tawInfUpfileDAO.delete(form.getId());
             form.setId(0);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             actionMapping.findForward("failure");
-        }
-        finally
-        {
-            if (tawInfAppuDAO != null)
-            {
+        } finally {
+            if (tawInfAppuDAO != null) {
                 tawInfAppuDAO = null;
             }
         }
@@ -1233,6 +1086,7 @@ public class TawInfAppuAction
 
     /**
      * ��ʾ��Ӹ�����ҳ��
+     *
      * @param actionMapping
      * @param actionForm
      * @param request
@@ -1242,8 +1096,7 @@ public class TawInfAppuAction
     public ActionForward performFile(ActionMapping actionMapping,
                                      ActionForm actionForm,
                                      HttpServletRequest request,
-                                     HttpServletResponse response)
-    {
+                                     HttpServletResponse response) {
         /*TawInfInfoForm form = (TawInfInfoForm) actionForm;
                  SaveSessionBeanForm saveSessionBeanForm =
             (SaveSessionBeanForm) request.getSession().getAttribute(

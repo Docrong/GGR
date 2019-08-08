@@ -6,23 +6,28 @@ import java.util.List;
 import com.boco.eoms.base.service.Manager;
 
 public interface ISchedulerManager extends Manager {
-	/**
+    /**
      * 短信轮询
+     *
      * @param tel
      * @param msg
      * @return
      */
     public boolean smsMonitorScheduler(String mobile, String content);
+
     /**
      * 彩信轮询
+     *
      * @param mobiles
      * @param subject
      * @param contentList
      * @return
      */
     public boolean mmsMonitorScheduler(String mobiles, String subject, List contentList);
+
     /**
      * 语音轮询
+     *
      * @param t_no
      * @param t_alloc_time
      * @param t_finish_time

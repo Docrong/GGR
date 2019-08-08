@@ -29,7 +29,7 @@ public class DateConverterTest extends TestCase {
                 add(Locale.ITALY);
             }
         };
-        for (Iterator localeIter = locales.iterator(); localeIter.hasNext();) {
+        for (Iterator localeIter = locales.iterator(); localeIter.hasNext(); ) {
             Locale locale = (Locale) localeIter.next();
             LocaleContextHolder.setLocale(locale);
             testConvertStringToDate();

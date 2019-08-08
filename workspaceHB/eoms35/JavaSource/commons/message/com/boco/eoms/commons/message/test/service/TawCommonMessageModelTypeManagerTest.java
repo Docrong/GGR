@@ -35,7 +35,7 @@ public class TawCommonMessageModelTypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageModelTypeDao.expects(once()).method("getTawCommonMessageModelTypes")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawCommonMessageModelTypes = tawCommonMessageModelTypeManager.getTawCommonMessageModelTypes(null);
         assertTrue(tawCommonMessageModelTypes.size() == 1);
@@ -45,7 +45,7 @@ public class TawCommonMessageModelTypeManagerTest extends BaseManagerTestCase {
     public void testGetTawCommonMessageModelType() throws Exception {
         // set expected behavior on dao
         tawCommonMessageModelTypeDao.expects(once()).method("getTawCommonMessageModelType")
-            .will(returnValue(new TawCommonMessageModelType()));
+                .will(returnValue(new TawCommonMessageModelType()));
         TawCommonMessageModelType tawCommonMessageModelType = tawCommonMessageModelTypeManager.getTawCommonMessageModelType(tawCommonMessageModelTypeId);
         assertTrue(tawCommonMessageModelType != null);
         tawCommonMessageModelTypeDao.verify();
@@ -56,7 +56,7 @@ public class TawCommonMessageModelTypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageModelTypeDao.expects(once()).method("saveTawCommonMessageModelType")
-            .with(same(tawCommonMessageModelType)).isVoid();
+                .with(same(tawCommonMessageModelType)).isVoid();
 
         tawCommonMessageModelTypeManager.saveTawCommonMessageModelType(tawCommonMessageModelType);
         tawCommonMessageModelTypeDao.verify();
@@ -69,7 +69,7 @@ public class TawCommonMessageModelTypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageModelTypeDao.expects(once()).method("saveTawCommonMessageModelType")
-            .with(same(tawCommonMessageModelType)).isVoid();
+                .with(same(tawCommonMessageModelType)).isVoid();
         tawCommonMessageModelTypeManager.saveTawCommonMessageModelType(tawCommonMessageModelType);
         tawCommonMessageModelTypeDao.verify();
 

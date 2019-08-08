@@ -6,54 +6,54 @@
  * http://www.extjs.com/license
  */
 
-(function() {
+(function () {
     var libFlyweight;
 
     Ext.lib.Dom = {
-        getViewWidth : function(full) {
+        getViewWidth: function (full) {
             return full ? this.getDocumentWidth() : this.getViewportWidth();
         },
 
-        getViewHeight : function(full) {
+        getViewHeight: function (full) {
             return full ? this.getDocumentHeight() : this.getViewportHeight();
         },
 
-        getDocumentHeight: function() {
+        getDocumentHeight: function () {
             var scrollHeight = (document.compatMode != "CSS1Compat") ? document.body.scrollHeight : document.documentElement.scrollHeight;
             return Math.max(scrollHeight, this.getViewportHeight());
         },
 
-        getDocumentWidth: function() {
+        getDocumentWidth: function () {
             var scrollWidth = (document.compatMode != "CSS1Compat") ? document.body.scrollWidth : document.documentElement.scrollWidth;
             return Math.max(scrollWidth, this.getViewportWidth());
         },
 
-        getViewportHeight: function() {
+        getViewportHeight: function () {
             var height = self.innerHeight;
             var mode = document.compatMode;
 
             if ((mode || Ext.isIE) && !Ext.isOpera) {
                 height = (mode == "CSS1Compat") ?
-                         document.documentElement.clientHeight :
-                         document.body.clientHeight;
+                    document.documentElement.clientHeight :
+                    document.body.clientHeight;
             }
 
             return height;
         },
 
-        getViewportWidth: function() {
+        getViewportWidth: function () {
             var width = self.innerWidth;
             var mode = document.compatMode;
 
             if (mode || Ext.isIE) {
                 width = (mode == "CSS1Compat") ?
-                        document.documentElement.clientWidth :
-                        document.body.clientWidth;
+                    document.documentElement.clientWidth :
+                    document.body.clientWidth;
             }
             return width;
         },
 
-        isAncestor : function(p, c) {
+        isAncestor: function (p, c) {
             p = Ext.getDom(p);
             c = Ext.getDom(c);
             if (!p || !c) {
@@ -69,8 +69,7 @@
                 while (parent) {
                     if (parent == p) {
                         return true;
-                    }
-                    else if (!parent.tagName || parent.tagName.toUpperCase() == "HTML") {
+                    } else if (!parent.tagName || parent.tagName.toUpperCase() == "HTML") {
                         return false;
                     }
                     parent = parent.parentNode;
@@ -79,87 +78,85 @@
             }
         },
 
-        getRegion : function(el) {
+        getRegion: function (el) {
             return Ext.lib.Region.getRegion(el);
         },
 
-        getY : function(el) {
+        getY: function (el) {
             return this.getXY(el)[1];
         },
 
-        getX : function(el) {
+        getX: function (el) {
             return this.getXY(el)[0];
         },
 
 
-
-
-        getXY : function(el) {
+        getXY: function (el) {
             var p, pe, b, scroll, bd = document.body;
-        el = Ext.getDom(el);
+            el = Ext.getDom(el);
 
-        if (el.getBoundingClientRect) {
-            b = el.getBoundingClientRect();
-            scroll = fly(document).getScroll();
-            return [b.left + scroll.left, b.top + scroll.top];
-        }
-        var x = 0, y = 0;
-
-        p = el;
-
-        var hasAbsolute = fly(el).getStyle("position") == "absolute";
-
-        while (p) {
-
-            x += p.offsetLeft;
-            y += p.offsetTop;
-
-            if (!hasAbsolute && fly(p).getStyle("position") == "absolute") {
-                hasAbsolute = true;
+            if (el.getBoundingClientRect) {
+                b = el.getBoundingClientRect();
+                scroll = fly(document).getScroll();
+                return [b.left + scroll.left, b.top + scroll.top];
             }
+            var x = 0, y = 0;
 
-            if (Ext.isGecko) {
-                pe = fly(p);
+            p = el;
 
-                var bt = parseInt(pe.getStyle("borderTopWidth"), 10) || 0;
-                var bl = parseInt(pe.getStyle("borderLeftWidth"), 10) || 0;
+            var hasAbsolute = fly(el).getStyle("position") == "absolute";
+
+            while (p) {
+
+                x += p.offsetLeft;
+                y += p.offsetTop;
+
+                if (!hasAbsolute && fly(p).getStyle("position") == "absolute") {
+                    hasAbsolute = true;
+                }
+
+                if (Ext.isGecko) {
+                    pe = fly(p);
+
+                    var bt = parseInt(pe.getStyle("borderTopWidth"), 10) || 0;
+                    var bl = parseInt(pe.getStyle("borderLeftWidth"), 10) || 0;
 
 
-                x += bl;
-                y += bt;
-
-
-                if (p != el && pe.getStyle('overflow') != 'visible') {
                     x += bl;
                     y += bt;
+
+
+                    if (p != el && pe.getStyle('overflow') != 'visible') {
+                        x += bl;
+                        y += bt;
+                    }
                 }
+                p = p.offsetParent;
             }
-            p = p.offsetParent;
-        }
 
-        if (Ext.isSafari && hasAbsolute) {
-            x -= bd.offsetLeft;
-            y -= bd.offsetTop;
-        }
-
-        if (Ext.isGecko && !hasAbsolute) {
-            var dbd = fly(bd);
-            x += parseInt(dbd.getStyle("borderLeftWidth"), 10) || 0;
-            y += parseInt(dbd.getStyle("borderTopWidth"), 10) || 0;
-        }
-
-        p = el.parentNode;
-        while (p && p != bd) {
-            if (!Ext.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
-                x -= p.scrollLeft;
-                y -= p.scrollTop;
+            if (Ext.isSafari && hasAbsolute) {
+                x -= bd.offsetLeft;
+                y -= bd.offsetTop;
             }
-            p = p.parentNode;
-        }
-        return [x, y];
+
+            if (Ext.isGecko && !hasAbsolute) {
+                var dbd = fly(bd);
+                x += parseInt(dbd.getStyle("borderLeftWidth"), 10) || 0;
+                y += parseInt(dbd.getStyle("borderTopWidth"), 10) || 0;
+            }
+
+            p = el.parentNode;
+            while (p && p != bd) {
+                if (!Ext.isOpera || (p.tagName != 'TR' && fly(p).getStyle("display") != "inline")) {
+                    x -= p.scrollLeft;
+                    y -= p.scrollTop;
+                }
+                p = p.parentNode;
+            }
+            return [x, y];
         },
 
-        setXY : function(el, xy) {
+        setXY: function (el, xy) {
             el = Ext.fly(el, '_setXY');
             el.position();
             var pts = el.translatePoints(xy);
@@ -171,22 +168,22 @@
             }
         },
 
-        setX : function(el, x) {
+        setX: function (el, x) {
             this.setXY(el, [x, false]);
         },
 
-        setY : function(el, y) {
+        setY: function (el, y) {
             this.setXY(el, [false, y]);
         }
     };
 
-/*
- * Portions of this file are based on pieces of Yahoo User Interface Library
- * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
- * YUI licensed under the BSD License:
- * http://developer.yahoo.net/yui/license.txt
- */
-    Ext.lib.Event = function() {
+    /*
+     * Portions of this file are based on pieces of Yahoo User Interface Library
+     * Copyright (c) 2007, Yahoo! Inc. All rights reserved.
+     * YUI licensed under the BSD License:
+     * http://developer.yahoo.net/yui/license.txt
+     */
+    Ext.lib.Event = function () {
         var loadComplete = false;
         var listeners = [];
         var unloadListeners = [];
@@ -206,10 +203,10 @@
             ADJ_SCOPE: 4,
             _interval: null,
 
-            startInterval: function() {
+            startInterval: function () {
                 if (!this._interval) {
                     var self = this;
-                    var callback = function() {
+                    var callback = function () {
                         self._tryPreloadAttach();
                     };
                     this._interval = setInterval(callback, this.POLL_INTERVAL);
@@ -217,19 +214,21 @@
                 }
             },
 
-            onAvailable: function(p_id, p_fn, p_obj, p_override) {
-                onAvailStack.push({ id:         p_id,
-                    fn:         p_fn,
-                    obj:        p_obj,
-                    override:   p_override,
-                    checkReady: false    });
+            onAvailable: function (p_id, p_fn, p_obj, p_override) {
+                onAvailStack.push({
+                    id: p_id,
+                    fn: p_fn,
+                    obj: p_obj,
+                    override: p_override,
+                    checkReady: false
+                });
 
                 retryCount = this.POLL_RETRYS;
                 this.startInterval();
             },
 
 
-            addListener: function(el, eventName, fn) {
+            addListener: function (el, eventName, fn) {
                 el = Ext.getDom(el);
                 if (!el || !fn) {
                     return false;
@@ -237,11 +236,11 @@
 
                 if ("unload" == eventName) {
                     unloadListeners[unloadListeners.length] =
-                    [el, eventName, fn];
+                        [el, eventName, fn];
                     return true;
                 }
 
-                var wrappedFn = function(e) {
+                var wrappedFn = function (e) {
                     return fn(Ext.lib.Event.getEvent(e));
                 };
 
@@ -256,19 +255,19 @@
             },
 
 
-            removeListener: function(el, eventName, fn) {
+            removeListener: function (el, eventName, fn) {
                 var i, len;
 
                 el = Ext.getDom(el);
 
-                if(!fn) {
+                if (!fn) {
                     return this.purgeElement(el, false, eventName);
                 }
 
 
                 if ("unload" == eventName) {
 
-                    for (i = 0,len = unloadListeners.length; i < len; i++) {
+                    for (i = 0, len = unloadListeners.length; i < len; i++) {
                         var li = unloadListeners[i];
                         if (li &&
                             li[0] == el &&
@@ -310,14 +309,14 @@
             },
 
 
-            getTarget: function(ev, resolveTextNode) {
+            getTarget: function (ev, resolveTextNode) {
                 ev = ev.browserEvent || ev;
                 var t = ev.target || ev.srcElement;
                 return this.resolveTextNode(t);
             },
 
 
-            resolveTextNode: function(node) {
+            resolveTextNode: function (node) {
                 if (Ext.isSafari && node && 3 == node.nodeType) {
                     return node.parentNode;
                 } else {
@@ -326,7 +325,7 @@
             },
 
 
-            getPageX: function(ev) {
+            getPageX: function (ev) {
                 ev = ev.browserEvent || ev;
                 var x = ev.pageX;
                 if (!x && 0 !== x) {
@@ -341,7 +340,7 @@
             },
 
 
-            getPageY: function(ev) {
+            getPageY: function (ev) {
                 ev = ev.browserEvent || ev;
                 var y = ev.pageY;
                 if (!y && 0 !== y) {
@@ -357,13 +356,13 @@
             },
 
 
-            getXY: function(ev) {
+            getXY: function (ev) {
                 ev = ev.browserEvent || ev;
                 return [this.getPageX(ev), this.getPageY(ev)];
             },
 
 
-            getRelatedTarget: function(ev) {
+            getRelatedTarget: function (ev) {
                 ev = ev.browserEvent || ev;
                 var t = ev.relatedTarget;
                 if (!t) {
@@ -378,13 +377,13 @@
             },
 
 
-            getTime: function(ev) {
+            getTime: function (ev) {
                 ev = ev.browserEvent || ev;
                 if (!ev.time) {
                     var t = new Date().getTime();
                     try {
                         ev.time = t;
-                    } catch(ex) {
+                    } catch (ex) {
                         this.lastError = ex;
                         return t;
                     }
@@ -394,13 +393,13 @@
             },
 
 
-            stopEvent: function(ev) {
+            stopEvent: function (ev) {
                 this.stopPropagation(ev);
                 this.preventDefault(ev);
             },
 
 
-            stopPropagation: function(ev) {
+            stopPropagation: function (ev) {
                 ev = ev.browserEvent || ev;
                 if (ev.stopPropagation) {
                     ev.stopPropagation();
@@ -410,9 +409,9 @@
             },
 
 
-            preventDefault: function(ev) {
+            preventDefault: function (ev) {
                 ev = ev.browserEvent || ev;
-                if(ev.preventDefault) {
+                if (ev.preventDefault) {
                     ev.preventDefault();
                 } else {
                     ev.returnValue = false;
@@ -420,7 +419,7 @@
             },
 
 
-            getEvent: function(e) {
+            getEvent: function (e) {
                 var ev = e || window.event;
                 if (!ev) {
                     var c = this.getEvent.caller;
@@ -436,14 +435,14 @@
             },
 
 
-            getCharCode: function(ev) {
+            getCharCode: function (ev) {
                 ev = ev.browserEvent || ev;
                 return ev.charCode || ev.keyCode || 0;
             },
 
 
-            _getCacheIndex: function(el, eventName, fn) {
-                for (var i = 0,len = listeners.length; i < len; ++i) {
+            _getCacheIndex: function (el, eventName, fn) {
+                for (var i = 0, len = listeners.length; i < len; ++i) {
                     var li = listeners[i];
                     if (li &&
                         li[this.FN] == fn &&
@@ -460,16 +459,16 @@
             elCache: {},
 
 
-            getEl: function(id) {
+            getEl: function (id) {
                 return document.getElementById(id);
             },
 
 
-            clearCache: function() {
+            clearCache: function () {
             },
 
 
-            _load: function(e) {
+            _load: function (e) {
                 loadComplete = true;
                 var EU = Ext.lib.Event;
 
@@ -480,7 +479,7 @@
             },
 
 
-            _tryPreloadAttach: function() {
+            _tryPreloadAttach: function () {
 
                 if (this.locked) {
                     return false;
@@ -496,7 +495,7 @@
 
 
                 var notAvail = [];
-                for (var i = 0,len = onAvailStack.length; i < len; ++i) {
+                for (var i = 0, len = onAvailStack.length; i < len; ++i) {
                     var item = onAvailStack[i];
                     if (item) {
                         var el = this.getEl(item.id);
@@ -541,24 +540,24 @@
             },
 
 
-            purgeElement: function(el, recurse, eventName) {
+            purgeElement: function (el, recurse, eventName) {
                 var elListeners = this.getListeners(el, eventName);
                 if (elListeners) {
-                    for (var i = 0,len = elListeners.length; i < len; ++i) {
+                    for (var i = 0, len = elListeners.length; i < len; ++i) {
                         var l = elListeners[i];
                         this.removeListener(el, l.type, l.fn);
                     }
                 }
 
                 if (recurse && el && el.childNodes) {
-                    for (i = 0,len = el.childNodes.length; i < len; ++i) {
+                    for (i = 0, len = el.childNodes.length; i < len; ++i) {
                         this.purgeElement(el.childNodes[i], recurse, eventName);
                     }
                 }
             },
 
 
-            getListeners: function(el, eventName) {
+            getListeners: function (el, eventName) {
                 var results = [], searchLists;
                 if (!eventName) {
                     searchLists = [listeners, unloadListeners];
@@ -571,16 +570,16 @@
                 for (var j = 0; j < searchLists.length; ++j) {
                     var searchList = searchLists[j];
                     if (searchList && searchList.length > 0) {
-                        for (var i = 0,len = searchList.length; i < len; ++i) {
+                        for (var i = 0, len = searchList.length; i < len; ++i) {
                             var l = searchList[i];
                             if (l && l[this.EL] === el &&
                                 (!eventName || eventName === l[this.TYPE])) {
                                 results.push({
-                                    type:   l[this.TYPE],
-                                    fn:     l[this.FN],
-                                    obj:    l[this.OBJ],
+                                    type: l[this.TYPE],
+                                    fn: l[this.FN],
+                                    obj: l[this.OBJ],
                                     adjust: l[this.ADJ_SCOPE],
-                                    index:  i
+                                    index: i
                                 });
                             }
                         }
@@ -591,11 +590,11 @@
             },
 
 
-            _unload: function(e) {
+            _unload: function (e) {
 
                 var EU = Ext.lib.Event, i, j, l, len, index;
 
-                for (i = 0,len = unloadListeners.length; i < len; ++i) {
+                for (i = 0, len = unloadListeners.length; i < len; ++i) {
                     l = unloadListeners[i];
                     if (l) {
                         var scope = window;
@@ -622,7 +621,7 @@
                         l = listeners[index];
                         if (l) {
                             EU.removeListener(l[EU.EL], l[EU.TYPE],
-                                    l[EU.FN], index);
+                                l[EU.FN], index);
                         }
                         j = j - 1;
                     }
@@ -636,7 +635,7 @@
             },
 
 
-            getScroll: function() {
+            getScroll: function () {
                 var dd = document.documentElement, db = document.body;
                 if (dd && (dd.scrollTop || dd.scrollLeft)) {
                     return [dd.scrollTop, dd.scrollLeft];
@@ -650,21 +649,21 @@
 
             doAdd: function () {
                 if (window.addEventListener) {
-                    return function(el, eventName, fn, capture) {
+                    return function (el, eventName, fn, capture) {
                         el.addEventListener(eventName, fn, (capture));
                     };
                 } else if (window.attachEvent) {
-                    return function(el, eventName, fn, capture) {
+                    return function (el, eventName, fn, capture) {
                         el.attachEvent("on" + eventName, fn);
                     };
                 } else {
-                    return function() {
+                    return function () {
                     };
                 }
             }(),
 
 
-            doRemove: function() {
+            doRemove: function () {
                 if (window.removeEventListener) {
                     return function (el, eventName, fn, capture) {
                         el.removeEventListener(eventName, fn, (capture));
@@ -674,7 +673,7 @@
                         el.detachEvent("on" + eventName, fn);
                     };
                 } else {
-                    return function() {
+                    return function () {
                     };
                 }
             }()
@@ -695,17 +694,17 @@
     E._tryPreloadAttach();
 
     Ext.lib.Ajax = {
-        request : function(method, uri, cb, data, options) {
-            if(options){
+        request: function (method, uri, cb, data, options) {
+            if (options) {
                 var hs = options.headers;
-                if(hs){
-                    for(var h in hs){
-                        if(hs.hasOwnProperty(h)){
+                if (hs) {
+                    for (var h in hs) {
+                        if (hs.hasOwnProperty(h)) {
                             this.initHeader(h, hs[h], false);
                         }
                     }
                 }
-                if(options.xmlData){
+                if (options.xmlData) {
                     this.initHeader('Content-Type', 'text/xml', false);
                     method = 'POST';
                     data = options.xmlData;
@@ -715,8 +714,8 @@
             return this.asyncRequest(method, uri, cb, data);
         },
 
-        serializeForm : function(form) {
-            if(typeof form == 'string') {
+        serializeForm: function (form) {
+            if (typeof form == 'string') {
                 form = (document.getElementById(form) || document.forms[form]);
             }
 
@@ -727,17 +726,15 @@
                 name = form.elements[i].name;
                 val = form.elements[i].value;
 
-                if (!disabled && name){
-                    switch (el.type)
-                            {
+                if (!disabled && name) {
+                    switch (el.type) {
                         case 'select-one':
                         case 'select-multiple':
                             for (var j = 0; j < el.options.length; j++) {
                                 if (el.options[j].selected) {
                                     if (Ext.isIE) {
                                         data += encodeURIComponent(name) + '=' + encodeURIComponent(el.options[j].attributes['value'].specified ? el.options[j].value : el.options[j].text) + '&';
-                                    }
-                                    else {
+                                    } else {
                                         data += encodeURIComponent(name) + '=' + encodeURIComponent(el.options[j].hasAttribute('value') ? el.options[j].value : el.options[j].text) + '&';
                                     }
                                 }
@@ -759,7 +756,7 @@
 
                             break;
                         case 'submit':
-                            if(hasSubmit == false) {
+                            if (hasSubmit == false) {
                                 data += encodeURIComponent(name) + '=' + encodeURIComponent(val) + '&';
                                 hasSubmit = true;
                             }
@@ -774,111 +771,92 @@
             return data;
         },
 
-        headers:{},
+        headers: {},
 
-        hasHeaders:false,
+        hasHeaders: false,
 
-        useDefaultHeader:true,
+        useDefaultHeader: true,
 
-        defaultPostHeader:'application/x-www-form-urlencoded',
+        defaultPostHeader: 'application/x-www-form-urlencoded',
 
-        useDefaultXhrHeader:true,
+        useDefaultXhrHeader: true,
 
-        defaultXhrHeader:'XMLHttpRequest',
+        defaultXhrHeader: 'XMLHttpRequest',
 
-        hasDefaultHeaders:true,
+        hasDefaultHeaders: true,
 
-        defaultHeaders:{},
+        defaultHeaders: {},
 
-        poll:{},
+        poll: {},
 
-        timeout:{},
+        timeout: {},
 
-        pollInterval:50,
+        pollInterval: 50,
 
-        transactionId:0,
+        transactionId: 0,
 
-        setProgId:function(id)
-        {
+        setProgId: function (id) {
             this.activeX.unshift(id);
         },
 
-        setDefaultPostHeader:function(b)
-        {
+        setDefaultPostHeader: function (b) {
             this.useDefaultHeader = b;
         },
 
-        setDefaultXhrHeader:function(b)
-        {
+        setDefaultXhrHeader: function (b) {
             this.useDefaultXhrHeader = b;
         },
 
-        setPollingInterval:function(i)
-        {
+        setPollingInterval: function (i) {
             if (typeof i == 'number' && isFinite(i)) {
                 this.pollInterval = i;
             }
         },
 
-        createXhrObject:function(transactionId)
-        {
-            var obj,http;
-            try
-            {
+        createXhrObject: function (transactionId) {
+            var obj, http;
+            try {
 
                 http = new XMLHttpRequest();
 
-                obj = { conn:http, tId:transactionId };
-            }
-            catch(e)
-            {
+                obj = {conn: http, tId: transactionId};
+            } catch (e) {
                 for (var i = 0; i < this.activeX.length; ++i) {
-                    try
-                    {
+                    try {
 
                         http = new ActiveXObject(this.activeX[i]);
 
-                        obj = { conn:http, tId:transactionId };
+                        obj = {conn: http, tId: transactionId};
                         break;
-                    }
-                    catch(e) {
+                    } catch (e) {
                     }
                 }
-            }
-            finally
-            {
+            } finally {
                 return obj;
             }
         },
 
-        getConnectionObject:function()
-        {
+        getConnectionObject: function () {
             var o;
             var tId = this.transactionId;
 
-            try
-            {
+            try {
                 o = this.createXhrObject(tId);
                 if (o) {
                     this.transactionId++;
                 }
-            }
-            catch(e) {
-            }
-            finally
-            {
+            } catch (e) {
+            } finally {
                 return o;
             }
         },
 
-        asyncRequest:function(method, uri, callback, postData)
-        {
+        asyncRequest: function (method, uri, callback, postData) {
             var o = this.getConnectionObject();
 
             if (!o) {
                 return null;
-            }
-            else {
+            } else {
                 o.conn.open(method, uri, true);
 
                 if (this.useDefaultXhrHeader) {
@@ -887,11 +865,11 @@
                     }
                 }
 
-                if(postData && this.useDefaultHeader){
+                if (postData && this.useDefaultHeader) {
                     this.initHeader('Content-Type', this.defaultPostHeader);
                 }
 
-                 if (this.hasDefaultHeaders || this.hasHeaders) {
+                if (this.hasDefaultHeaders || this.hasHeaders) {
                     this.setHeader(o);
                 }
 
@@ -902,35 +880,33 @@
             }
         },
 
-        handleReadyState:function(o, callback)
-        {
+        handleReadyState: function (o, callback) {
             var oConn = this;
 
             if (callback && callback.timeout) {
-                this.timeout[o.tId] = window.setTimeout(function() {
+                this.timeout[o.tId] = window.setTimeout(function () {
                     oConn.abort(o, callback, true);
                 }, callback.timeout);
             }
 
             this.poll[o.tId] = window.setInterval(
-                    function() {
-                        if (o.conn && o.conn.readyState == 4) {
-                            window.clearInterval(oConn.poll[o.tId]);
-                            delete oConn.poll[o.tId];
+                function () {
+                    if (o.conn && o.conn.readyState == 4) {
+                        window.clearInterval(oConn.poll[o.tId]);
+                        delete oConn.poll[o.tId];
 
-                            if(callback && callback.timeout) {
-                                window.clearTimeout(oConn.timeout[o.tId]);
-                                delete oConn.timeout[o.tId];
-                            }
-
-                            oConn.handleTransactionResponse(o, callback);
+                        if (callback && callback.timeout) {
+                            window.clearTimeout(oConn.timeout[o.tId]);
+                            delete oConn.timeout[o.tId];
                         }
+
+                        oConn.handleTransactionResponse(o, callback);
                     }
-                    , this.pollInterval);
+                }
+                , this.pollInterval);
         },
 
-        handleTransactionResponse:function(o, callback, isAbort)
-        {
+        handleTransactionResponse: function (o, callback, isAbort) {
 
             if (!callback) {
                 this.releaseObject(o);
@@ -939,16 +915,13 @@
 
             var httpStatus, responseObject;
 
-            try
-            {
+            try {
                 if (o.conn.status !== undefined && o.conn.status != 0) {
                     httpStatus = o.conn.status;
-                }
-                else {
+                } else {
                     httpStatus = 13030;
                 }
-            }
-            catch(e) {
+            } catch (e) {
 
 
                 httpStatus = 13030;
@@ -959,15 +932,13 @@
                 if (callback.success) {
                     if (!callback.scope) {
                         callback.success(responseObject);
-                    }
-                    else {
+                    } else {
 
 
                         callback.success.apply(callback.scope, [responseObject]);
                     }
                 }
-            }
-            else {
+            } else {
                 switch (httpStatus) {
 
                     case 12002:
@@ -980,8 +951,7 @@
                         if (callback.failure) {
                             if (!callback.scope) {
                                 callback.failure(responseObject);
-                            }
-                            else {
+                            } else {
                                 callback.failure.apply(callback.scope, [responseObject]);
                             }
                         }
@@ -991,8 +961,7 @@
                         if (callback.failure) {
                             if (!callback.scope) {
                                 callback.failure(responseObject);
-                            }
-                            else {
+                            } else {
                                 callback.failure.apply(callback.scope, [responseObject]);
                             }
                         }
@@ -1003,13 +972,11 @@
             responseObject = null;
         },
 
-        createResponseObject:function(o, callbackArg)
-        {
+        createResponseObject: function (o, callbackArg) {
             var obj = {};
             var headerObj = {};
 
-            try
-            {
+            try {
                 var headerStr = o.conn.getAllResponseHeaders();
                 var header = headerStr.split('\n');
                 for (var i = 0; i < header.length; i++) {
@@ -1018,8 +985,7 @@
                         headerObj[header[i].substring(0, delimitPos)] = header[i].substring(delimitPos + 2);
                     }
                 }
-            }
-            catch(e) {
+            } catch (e) {
             }
 
             obj.tId = o.tId;
@@ -1037,8 +1003,7 @@
             return obj;
         },
 
-        createExceptionObject:function(tId, callbackArg, isAbort)
-        {
+        createExceptionObject: function (tId, callbackArg, isAbort) {
             var COMM_CODE = 0;
             var COMM_ERROR = 'communication failure';
             var ABORT_CODE = -1;
@@ -1050,8 +1015,7 @@
             if (isAbort) {
                 obj.status = ABORT_CODE;
                 obj.statusText = ABORT_ERROR;
-            }
-            else {
+            } else {
                 obj.status = COMM_CODE;
                 obj.statusText = COMM_ERROR;
             }
@@ -1063,14 +1027,12 @@
             return obj;
         },
 
-        initHeader:function(label, value, isDefault)
-        {
+        initHeader: function (label, value, isDefault) {
             var headerObj = (isDefault) ? this.defaultHeaders : this.headers;
 
             if (headerObj[label] === undefined) {
                 headerObj[label] = value;
-            }
-            else {
+            } else {
 
 
                 headerObj[label] = value + "," + headerObj[label];
@@ -1078,15 +1040,13 @@
 
             if (isDefault) {
                 this.hasDefaultHeaders = true;
-            }
-            else {
+            } else {
                 this.hasHeaders = true;
             }
         },
 
 
-        setHeader:function(o)
-        {
+        setHeader: function (o) {
             if (this.hasDefaultHeaders) {
                 for (var prop in this.defaultHeaders) {
                     if (this.defaultHeaders.hasOwnProperty(prop)) {
@@ -1106,15 +1066,14 @@
             }
         },
 
-        resetDefaultHeaders:function() {
+        resetDefaultHeaders: function () {
             delete this.defaultHeaders;
             this.defaultHeaders = {};
             this.hasDefaultHeaders = false;
         },
 
-        abort:function(o, callback, isTimeout)
-        {
-            if(this.isCallInProgress(o)) {
+        abort: function (o, callback, isTimeout) {
+            if (this.isCallInProgress(o)) {
                 o.conn.abort();
                 window.clearInterval(this.poll[o.tId]);
                 delete this.poll[o.tId];
@@ -1125,44 +1084,40 @@
                 this.handleTransactionResponse(o, callback, true);
 
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         },
 
 
-        isCallInProgress:function(o)
-        {
+        isCallInProgress: function (o) {
             if (o && o.conn) {
                 return o.conn.readyState != 4 && o.conn.readyState != 0;
-            }
-            else {
+            } else {
 
                 return false;
             }
         },
 
 
-        releaseObject:function(o)
-        {
+        releaseObject: function (o) {
 
             o.conn = null;
 
             o = null;
         },
 
-        activeX:[
-        'MSXML2.XMLHTTP.3.0',
-        'MSXML2.XMLHTTP',
-        'Microsoft.XMLHTTP'
+        activeX: [
+            'MSXML2.XMLHTTP.3.0',
+            'MSXML2.XMLHTTP',
+            'Microsoft.XMLHTTP'
         ]
 
 
     };
 
 
-    Ext.lib.Region = function(t, r, b, l) {
+    Ext.lib.Region = function (t, r, b, l) {
         this.top = t;
         this[1] = t;
         this.right = r;
@@ -1172,19 +1127,19 @@
     };
 
     Ext.lib.Region.prototype = {
-        contains : function(region) {
-            return ( region.left >= this.left &&
-                     region.right <= this.right &&
-                     region.top >= this.top &&
-                     region.bottom <= this.bottom    );
+        contains: function (region) {
+            return (region.left >= this.left &&
+                region.right <= this.right &&
+                region.top >= this.top &&
+                region.bottom <= this.bottom);
 
         },
 
-        getArea : function() {
-            return ( (this.bottom - this.top) * (this.right - this.left) );
+        getArea: function () {
+            return ((this.bottom - this.top) * (this.right - this.left));
         },
 
-        intersect : function(region) {
+        intersect: function (region) {
             var t = Math.max(this.top, region.top);
             var r = Math.min(this.right, region.right);
             var b = Math.min(this.bottom, region.bottom);
@@ -1196,7 +1151,7 @@
                 return null;
             }
         },
-        union : function(region) {
+        union: function (region) {
             var t = Math.min(this.top, region.top);
             var r = Math.max(this.right, region.right);
             var b = Math.max(this.bottom, region.bottom);
@@ -1205,7 +1160,7 @@
             return new Ext.lib.Region(t, r, b, l);
         },
 
-        adjust : function(t, l, b, r) {
+        adjust: function (t, l, b, r) {
             this.top += t;
             this.left += l;
             this.right += r;
@@ -1214,7 +1169,7 @@
         }
     };
 
-    Ext.lib.Region.getRegion = function(el) {
+    Ext.lib.Region.getRegion = function (el) {
         var p = Ext.lib.Dom.getXY(el);
 
         var t = p[1];
@@ -1225,7 +1180,7 @@
         return new Ext.lib.Region(t, r, b, l);
     };
 
-    Ext.lib.Point = function(x, y) {
+    Ext.lib.Point = function (x, y) {
         if (x instanceof Array) {
             y = x[1];
             x = x[0];
@@ -1238,25 +1193,25 @@
 
 
     Ext.lib.Anim = {
-        scroll : function(el, args, duration, easing, cb, scope) {
+        scroll: function (el, args, duration, easing, cb, scope) {
             this.run(el, args, duration, easing, cb, scope, Ext.lib.Scroll);
         },
 
-        motion : function(el, args, duration, easing, cb, scope) {
+        motion: function (el, args, duration, easing, cb, scope) {
             this.run(el, args, duration, easing, cb, scope, Ext.lib.Motion);
         },
 
-        color : function(el, args, duration, easing, cb, scope) {
+        color: function (el, args, duration, easing, cb, scope) {
             this.run(el, args, duration, easing, cb, scope, Ext.lib.ColorAnim);
         },
 
-        run : function(el, args, duration, easing, cb, scope, type) {
+        run: function (el, args, duration, easing, cb, scope, type) {
             type = type || Ext.lib.AnimBase;
             if (typeof easing == "string") {
                 easing = Ext.lib.Easing[easing];
             }
             var anim = new type(el, args, duration, easing);
-            anim.animateX(function() {
+            anim.animateX(function () {
                 Ext.callback(cb, scope);
             });
             return anim;
@@ -1273,8 +1228,7 @@
     }
 
 
-
-    if(Ext.isIE) {
+    if (Ext.isIE) {
         function fnCleanUp() {
             var p = Function.prototype;
             delete p.createSequence;
@@ -1285,11 +1239,12 @@
 
             window.detachEvent("onunload", fnCleanUp);
         }
+
         window.attachEvent("onunload", fnCleanUp);
     }
 
 
-    Ext.lib.AnimBase = function(el, attributes, duration, method) {
+    Ext.lib.AnimBase = function (el, attributes, duration, method) {
         if (el) {
             this.init(el, attributes, duration, method);
         }
@@ -1297,26 +1252,26 @@
 
     Ext.lib.AnimBase.prototype = {
 
-        toString: function() {
+        toString: function () {
             var el = this.getEl();
             var id = el.id || el.tagName;
             return ("Anim " + id);
         },
 
         patterns: {
-            noNegatives:        /width|height|opacity|padding/i,
-            offsetAttribute:  /^((width|height)|(top|left))$/,
-            defaultUnit:        /width|height|top$|bottom$|left$|right$/i,
-            offsetUnit:         /\d+(em|%|en|ex|pt|in|cm|mm|pc)$/i
+            noNegatives: /width|height|opacity|padding/i,
+            offsetAttribute: /^((width|height)|(top|left))$/,
+            defaultUnit: /width|height|top$|bottom$|left$|right$/i,
+            offsetUnit: /\d+(em|%|en|ex|pt|in|cm|mm|pc)$/i
         },
 
 
-        doMethod: function(attr, start, end) {
+        doMethod: function (attr, start, end) {
             return this.method(this.currentFrame, start, end - start, this.totalFrames);
         },
 
 
-        setAttribute: function(attr, val, unit) {
+        setAttribute: function (attr, val, unit) {
             if (this.patterns.noNegatives.test(attr)) {
                 val = (val > 0) ? val : 0;
             }
@@ -1325,7 +1280,7 @@
         },
 
 
-        getAttribute: function(attr) {
+        getAttribute: function (attr) {
             var el = this.getEl();
             var val = fly(el).getStyle(attr);
 
@@ -1334,8 +1289,8 @@
             }
 
             var a = this.patterns.offsetAttribute.exec(attr) || [];
-            var pos = !!( a[3] );
-            var box = !!( a[2] );
+            var pos = !!(a[3]);
+            var box = !!(a[2]);
 
 
             if (box || (fly(el).getStyle('position') == 'absolute' && pos)) {
@@ -1348,7 +1303,7 @@
         },
 
 
-        getDefaultUnit: function(attr) {
+        getDefaultUnit: function (attr) {
             if (this.patterns.defaultUnit.test(attr)) {
                 return 'px';
             }
@@ -1356,8 +1311,8 @@
             return '';
         },
 
-        animateX : function(callback, scope) {
-            var f = function() {
+        animateX: function (callback, scope) {
+            var f = function () {
                 this.onComplete.removeListener(f);
                 if (typeof callback == "function") {
                     callback.call(scope || this, this);
@@ -1368,14 +1323,14 @@
         },
 
 
-        setRuntimeAttribute: function(attr) {
+        setRuntimeAttribute: function (attr) {
             var start;
             var end;
             var attributes = this.attributes;
 
             this.runtimeAttributes[attr] = {};
 
-            var isset = function(prop) {
+            var isset = function (prop) {
                 return (typeof prop !== 'undefined');
             };
 
@@ -1383,7 +1338,7 @@
                 return false;
             }
 
-            start = ( isset(attributes[attr]['from']) ) ? attributes[attr]['from'] : this.getAttribute(attr);
+            start = (isset(attributes[attr]['from'])) ? attributes[attr]['from'] : this.getAttribute(attr);
 
 
             if (isset(attributes[attr]['to'])) {
@@ -1403,11 +1358,11 @@
             this.runtimeAttributes[attr].end = end;
 
 
-            this.runtimeAttributes[attr].unit = ( isset(attributes[attr].unit) ) ? attributes[attr]['unit'] : this.getDefaultUnit(attr);
+            this.runtimeAttributes[attr].unit = (isset(attributes[attr].unit)) ? attributes[attr]['unit'] : this.getDefaultUnit(attr);
         },
 
 
-        init: function(el, attributes, duration, method) {
+        init: function (el, attributes, duration, method) {
 
             var isAnimated = false;
 
@@ -1439,37 +1394,37 @@
             this.totalFrames = Ext.lib.AnimMgr.fps;
 
 
-            this.getEl = function() {
+            this.getEl = function () {
                 return el;
             };
 
 
-            this.isAnimated = function() {
+            this.isAnimated = function () {
                 return isAnimated;
             };
 
 
-            this.getStartTime = function() {
+            this.getStartTime = function () {
                 return startTime;
             };
 
             this.runtimeAttributes = {};
 
 
-            this.animate = function() {
+            this.animate = function () {
                 if (this.isAnimated()) {
                     return false;
                 }
 
                 this.currentFrame = 0;
 
-                this.totalFrames = ( this.useSeconds ) ? Math.ceil(Ext.lib.AnimMgr.fps * this.duration) : this.duration;
+                this.totalFrames = (this.useSeconds) ? Math.ceil(Ext.lib.AnimMgr.fps * this.duration) : this.duration;
 
                 Ext.lib.AnimMgr.registerElement(this);
             };
 
 
-            this.stop = function(finish) {
+            this.stop = function (finish) {
                 if (finish) {
                     this.currentFrame = this.totalFrames;
                     this._onTween.fire();
@@ -1477,7 +1432,7 @@
                 Ext.lib.AnimMgr.stop(this);
             };
 
-            var onStart = function() {
+            var onStart = function () {
                 this.onStart.fire();
 
                 this.runtimeAttributes = {};
@@ -1491,17 +1446,17 @@
             };
 
 
-            var onTween = function() {
+            var onTween = function () {
                 var data = {
                     duration: new Date() - this.getStartTime(),
                     currentFrame: this.currentFrame
                 };
 
-                data.toString = function() {
+                data.toString = function () {
                     return (
-                            'duration: ' + data.duration +
-                            ', currentFrame: ' + data.currentFrame
-                            );
+                        'duration: ' + data.duration +
+                        ', currentFrame: ' + data.currentFrame
+                    );
                 };
 
                 this.onTween.fire(data);
@@ -1515,8 +1470,8 @@
                 actualFrames += 1;
             };
 
-            var onComplete = function() {
-                var actual_duration = (new Date() - startTime) / 1000 ;
+            var onComplete = function () {
+                var actual_duration = (new Date() - startTime) / 1000;
 
                 var data = {
                     duration: actual_duration,
@@ -1524,12 +1479,12 @@
                     fps: actualFrames / actual_duration
                 };
 
-                data.toString = function() {
+                data.toString = function () {
                     return (
-                            'duration: ' + data.duration +
-                            ', frames: ' + data.frames +
-                            ', fps: ' + data.fps
-                            );
+                        'duration: ' + data.duration +
+                        ', frames: ' + data.frames +
+                        ', fps: ' + data.fps
+                    );
                 };
 
                 isAnimated = false;
@@ -1551,7 +1506,7 @@
     };
 
 
-    Ext.lib.AnimMgr = new function() {
+    Ext.lib.AnimMgr = new function () {
 
         var thread = null;
 
@@ -1568,7 +1523,7 @@
         this.delay = 1;
 
 
-        this.registerElement = function(tween) {
+        this.registerElement = function (tween) {
             queue[queue.length] = tween;
             tweenCount += 1;
             tween._onStart.fire();
@@ -1576,7 +1531,7 @@
         };
 
 
-        this.unRegister = function(tween, index) {
+        this.unRegister = function (tween, index) {
             tween._onComplete.fire();
             index = index || getIndex(tween);
             if (index != -1) {
@@ -1590,14 +1545,14 @@
         };
 
 
-        this.start = function() {
+        this.start = function () {
             if (thread === null) {
                 thread = setInterval(this.run, this.delay);
             }
         };
 
 
-        this.stop = function(tween) {
+        this.stop = function (tween) {
             if (!tween) {
                 clearInterval(thread);
 
@@ -1610,36 +1565,33 @@
                 queue = [];
                 thread = null;
                 tweenCount = 0;
-            }
-            else {
+            } else {
                 this.unRegister(tween);
             }
         };
 
 
-        this.run = function() {
+        this.run = function () {
             for (var i = 0, len = queue.length; i < len; ++i) {
                 var tween = queue[i];
                 if (!tween || !tween.isAnimated()) {
                     continue;
                 }
 
-                if (tween.currentFrame < tween.totalFrames || tween.totalFrames === null)
-                {
+                if (tween.currentFrame < tween.totalFrames || tween.totalFrames === null) {
                     tween.currentFrame += 1;
 
                     if (tween.useSeconds) {
                         correctFrame(tween);
                     }
                     tween._onTween.fire();
-                }
-                else {
+                } else {
                     Ext.lib.AnimMgr.stop(tween, i);
                 }
             }
         };
 
-        var getIndex = function(anim) {
+        var getIndex = function (anim) {
             for (var i = 0, len = queue.length; i < len; ++i) {
                 if (queue[i] == anim) {
                     return i;
@@ -1649,7 +1601,7 @@
         };
 
 
-        var correctFrame = function(tween) {
+        var correctFrame = function (tween) {
             var frames = tween.totalFrames;
             var frame = tween.currentFrame;
             var expected = (tween.currentFrame * tween.duration * 1000 / tween.totalFrames);
@@ -1671,9 +1623,9 @@
         };
     };
 
-    Ext.lib.Bezier = new function() {
+    Ext.lib.Bezier = new function () {
 
-        this.getPosition = function(points, t) {
+        this.getPosition = function (points, t) {
             var n = points.length;
             var tmp = [];
 
@@ -1688,13 +1640,13 @@
                 }
             }
 
-            return [ tmp[0][0], tmp[0][1] ];
+            return [tmp[0][0], tmp[0][1]];
 
         };
     };
-    (function() {
+    (function () {
 
-        Ext.lib.ColorAnim = function(el, attributes, duration, method) {
+        Ext.lib.ColorAnim = function (el, attributes, duration, method) {
             Ext.lib.ColorAnim.superclass.constructor.call(this, el, attributes, duration, method);
         };
 
@@ -1705,7 +1657,7 @@
         var superclass = Y.ColorAnim.superclass;
         var proto = Y.ColorAnim.prototype;
 
-        proto.toString = function() {
+        proto.toString = function () {
             var el = this.getEl();
             var id = el.id || el.tagName;
             return ("ColorAnim " + id);
@@ -1718,30 +1670,30 @@
         proto.patterns.transparent = /^transparent|rgba\(0, 0, 0, 0\)$/;
 
 
-        proto.parseColor = function(s) {
+        proto.parseColor = function (s) {
             if (s.length == 3) {
                 return s;
             }
 
             var c = this.patterns.hex.exec(s);
             if (c && c.length == 4) {
-                return [ parseInt(c[1], 16), parseInt(c[2], 16), parseInt(c[3], 16) ];
+                return [parseInt(c[1], 16), parseInt(c[2], 16), parseInt(c[3], 16)];
             }
 
             c = this.patterns.rgb.exec(s);
             if (c && c.length == 4) {
-                return [ parseInt(c[1], 10), parseInt(c[2], 10), parseInt(c[3], 10) ];
+                return [parseInt(c[1], 10), parseInt(c[2], 10), parseInt(c[3], 10)];
             }
 
             c = this.patterns.hex3.exec(s);
             if (c && c.length == 4) {
-                return [ parseInt(c[1] + c[1], 16), parseInt(c[2] + c[2], 16), parseInt(c[3] + c[3], 16) ];
+                return [parseInt(c[1] + c[1], 16), parseInt(c[2] + c[2], 16), parseInt(c[3] + c[3], 16)];
             }
 
             return null;
         };
 
-        proto.getAttribute = function(attr) {
+        proto.getAttribute = function (attr) {
             var el = this.getEl();
             if (this.patterns.color.test(attr)) {
                 var val = fly(el).getStyle(attr);
@@ -1765,7 +1717,7 @@
             return val;
         };
 
-        proto.doMethod = function(attr, start, end) {
+        proto.doMethod = function (attr, start, end) {
             var val;
 
             if (this.patterns.color.test(attr)) {
@@ -1775,15 +1727,14 @@
                 }
 
                 val = 'rgb(' + Math.floor(val[0]) + ',' + Math.floor(val[1]) + ',' + Math.floor(val[2]) + ')';
-            }
-            else {
+            } else {
                 val = superclass.doMethod.call(this, attr, start, end);
             }
 
             return val;
         };
 
-        proto.setRuntimeAttribute = function(attr) {
+        proto.setRuntimeAttribute = function (attr) {
             superclass.setRuntimeAttribute.call(this, attr);
 
             if (this.patterns.color.test(attr)) {
@@ -1852,7 +1803,6 @@
         },
 
 
-
         elasticIn: function (t, b, c, d, a, p) {
             if (t == 0) {
                 return b;
@@ -1867,8 +1817,7 @@
             if (!a || a < Math.abs(c)) {
                 a = c;
                 var s = p / 4;
-            }
-            else {
+            } else {
                 var s = p / (2 * Math.PI) * Math.asin(c / a);
             }
 
@@ -1890,8 +1839,7 @@
             if (!a || a < Math.abs(c)) {
                 a = c;
                 var s = p / 4;
-            }
-            else {
+            } else {
                 var s = p / (2 * Math.PI) * Math.asin(c / a);
             }
 
@@ -1915,19 +1863,17 @@
             if (!a || a < Math.abs(c)) {
                 a = c;
                 var s = p / 4;
-            }
-            else {
+            } else {
                 var s = p / (2 * Math.PI) * Math.asin(c / a);
             }
 
             if (t < 1) {
                 return -.5 * (a * Math.pow(2, 10 * (t -= 1)) *
-                              Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
+                    Math.sin((t * d - s) * (2 * Math.PI) / p)) + b;
             }
             return a * Math.pow(2, -10 * (t -= 1)) *
-                   Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;
+                Math.sin((t * d - s) * (2 * Math.PI) / p) * .5 + c + b;
         },
-
 
 
         backIn: function (t, b, c, d, s) {
@@ -1951,7 +1897,7 @@
                 s = 1.70158;
             }
 
-            if ((t /= d / 2 ) < 1) {
+            if ((t /= d / 2) < 1) {
                 return c / 2 * (t * t * (((s *= (1.525)) + 1) * t - s)) + b;
             }
             return c / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2) + b;
@@ -1983,8 +1929,8 @@
         }
     };
 
-    (function() {
-        Ext.lib.Motion = function(el, attributes, duration, method) {
+    (function () {
+        Ext.lib.Motion = function (el, attributes, duration, method) {
             if (el) {
                 Ext.lib.Motion.superclass.constructor.call(this, el, attributes, duration, method);
             }
@@ -1997,7 +1943,7 @@
         var superclass = Y.Motion.superclass;
         var proto = Y.Motion.prototype;
 
-        proto.toString = function() {
+        proto.toString = function () {
             var el = this.getEl();
             var id = el.id || el.tagName;
             return ("Motion " + id);
@@ -2005,7 +1951,7 @@
 
         proto.patterns.points = /^points$/i;
 
-        proto.setAttribute = function(attr, val, unit) {
+        proto.setAttribute = function (attr, val, unit) {
             if (this.patterns.points.test(attr)) {
                 unit = unit || 'px';
                 superclass.setAttribute.call(this, 'left', val[0], unit);
@@ -2015,12 +1961,12 @@
             }
         };
 
-        proto.getAttribute = function(attr) {
+        proto.getAttribute = function (attr) {
             if (this.patterns.points.test(attr)) {
                 var val = [
-                        superclass.getAttribute.call(this, 'left'),
-                        superclass.getAttribute.call(this, 'top')
-                        ];
+                    superclass.getAttribute.call(this, 'left'),
+                    superclass.getAttribute.call(this, 'top')
+                ];
             } else {
                 val = superclass.getAttribute.call(this, attr);
             }
@@ -2028,7 +1974,7 @@
             return val;
         };
 
-        proto.doMethod = function(attr, start, end) {
+        proto.doMethod = function (attr, start, end) {
             var val = null;
 
             if (this.patterns.points.test(attr)) {
@@ -2040,7 +1986,7 @@
             return val;
         };
 
-        proto.setRuntimeAttribute = function(attr) {
+        proto.setRuntimeAttribute = function (attr) {
             if (this.patterns.points.test(attr)) {
                 var el = this.getEl();
                 var attributes = this.attributes;
@@ -2053,7 +1999,7 @@
                     control = [control];
                 } else {
                     var tmp = [];
-                    for (i = 0,len = control.length; i < len; ++i) {
+                    for (i = 0, len = control.length; i < len; ++i) {
                         tmp[i] = control[i];
                     }
                     control = tmp;
@@ -2063,8 +2009,7 @@
 
                 if (isset(attributes['points']['from'])) {
                     Ext.lib.Dom.setXY(el, attributes['points']['from']);
-                }
-                else {
+                } else {
                     Ext.lib.Dom.setXY(el, Ext.lib.Dom.getXY(el));
                 }
 
@@ -2075,16 +2020,16 @@
                     end = translateValues.call(this, attributes['points']['to'], start);
 
                     var pageXY = Ext.lib.Dom.getXY(this.getEl());
-                    for (i = 0,len = control.length; i < len; ++i) {
+                    for (i = 0, len = control.length; i < len; ++i) {
                         control[i] = translateValues.call(this, control[i], start);
                     }
 
 
                 } else if (isset(attributes['points']['by'])) {
-                    end = [ start[0] + attributes['points']['by'][0], start[1] + attributes['points']['by'][1] ];
+                    end = [start[0] + attributes['points']['by'][0], start[1] + attributes['points']['by'][1]];
 
-                    for (i = 0,len = control.length; i < len; ++i) {
-                        control[i] = [ start[0] + control[i][0], start[1] + control[i][1] ];
+                    for (i = 0, len = control.length; i < len; ++i) {
+                        control[i] = [start[0] + control[i][0], start[1] + control[i][1]];
                     }
                 }
 
@@ -2095,27 +2040,26 @@
                 }
 
                 this.runtimeAttributes[attr][this.runtimeAttributes[attr].length] = end;
-            }
-            else {
+            } else {
                 superclass.setRuntimeAttribute.call(this, attr);
             }
         };
 
-        var translateValues = function(val, start) {
+        var translateValues = function (val, start) {
             var pageXY = Ext.lib.Dom.getXY(this.getEl());
-            val = [ val[0] - pageXY[0] + start[0], val[1] - pageXY[1] + start[1] ];
+            val = [val[0] - pageXY[0] + start[0], val[1] - pageXY[1] + start[1]];
 
             return val;
         };
 
-        var isset = function(prop) {
+        var isset = function (prop) {
             return (typeof prop !== 'undefined');
         };
     })();
 
 
-    (function() {
-        Ext.lib.Scroll = function(el, attributes, duration, method) {
+    (function () {
+        Ext.lib.Scroll = function (el, attributes, duration, method) {
             if (el) {
                 Ext.lib.Scroll.superclass.constructor.call(this, el, attributes, duration, method);
             }
@@ -2128,20 +2072,20 @@
         var superclass = Y.Scroll.superclass;
         var proto = Y.Scroll.prototype;
 
-        proto.toString = function() {
+        proto.toString = function () {
             var el = this.getEl();
             var id = el.id || el.tagName;
             return ("Scroll " + id);
         };
 
-        proto.doMethod = function(attr, start, end) {
+        proto.doMethod = function (attr, start, end) {
             var val = null;
 
             if (attr == 'scroll') {
                 val = [
-                        this.method(this.currentFrame, start[0], end[0] - start[0], this.totalFrames),
-                        this.method(this.currentFrame, start[1], end[1] - start[1], this.totalFrames)
-                        ];
+                    this.method(this.currentFrame, start[0], end[0] - start[0], this.totalFrames),
+                    this.method(this.currentFrame, start[1], end[1] - start[1], this.totalFrames)
+                ];
 
             } else {
                 val = superclass.doMethod.call(this, attr, start, end);
@@ -2149,12 +2093,12 @@
             return val;
         };
 
-        proto.getAttribute = function(attr) {
+        proto.getAttribute = function (attr) {
             var val = null;
             var el = this.getEl();
 
             if (attr == 'scroll') {
-                val = [ el.scrollLeft, el.scrollTop ];
+                val = [el.scrollLeft, el.scrollTop];
             } else {
                 val = superclass.getAttribute.call(this, attr);
             }
@@ -2162,7 +2106,7 @@
             return val;
         };
 
-        proto.setAttribute = function(attr, val, unit) {
+        proto.setAttribute = function (attr, val, unit) {
             var el = this.getEl();
 
             if (attr == 'scroll') {

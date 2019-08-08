@@ -12,34 +12,34 @@ import com.boco.eoms.sheet.complaint.service.IComplaintSelectManager;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ComplaintSelectManagerImpl implements IComplaintSelectManager {
-	
-	private IComplaintSelectDAO complaintSelectDAO;
 
-	public IComplaintSelectDAO getComplaintSelectDAO() {
-		return complaintSelectDAO;
-	}
+    private IComplaintSelectDAO complaintSelectDAO;
 
-	public void setComplaintSelectDAO(IComplaintSelectDAO complaintSelectDAO) {
-		this.complaintSelectDAO = complaintSelectDAO;
-	}
-	
-	public String getPhoneBySheetId(String sheetId) {
-		// TODO Auto-generated method stub
-		return complaintSelectDAO.getPhoneBySheetId(sheetId);
-	}
+    public IComplaintSelectDAO getComplaintSelectDAO() {
+        return complaintSelectDAO;
+    }
 
-	public String getSheetIdsByPhone(String customPhone) {
-		// TODO Auto-generated method stub
-		return complaintSelectDAO.getSheetIdsByPhone(customPhone);
-	}
+    public void setComplaintSelectDAO(IComplaintSelectDAO complaintSelectDAO) {
+        this.complaintSelectDAO = complaintSelectDAO;
+    }
 
-	public void saveSelComplaint(ComplaintSel complaintSel) {
-		// TODO Auto-generated method stub
-		complaintSelectDAO.saveSelComplaint(complaintSel);
-	}
+    public String getPhoneBySheetId(String sheetId) {
+        // TODO Auto-generated method stub
+        return complaintSelectDAO.getPhoneBySheetId(sheetId);
+    }
+
+    public String getSheetIdsByPhone(String customPhone) {
+        // TODO Auto-generated method stub
+        return complaintSelectDAO.getSheetIdsByPhone(customPhone);
+    }
+
+    public void saveSelComplaint(ComplaintSel complaintSel) {
+        // TODO Auto-generated method stub
+        complaintSelectDAO.saveSelComplaint(complaintSel);
+    }
 }

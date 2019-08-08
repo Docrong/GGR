@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_repository"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="province"
-            	column="province"
+        <property
+                name="province"
+                column="province"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="city"
-            	column="city"
+        <property
+                name="city"
+                column="city"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="net"
-            	column="net"
+        <property
+                name="net"
+                column="net"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -56,25 +56,25 @@
 
         </property>
 
-	<property
-            name="netType"
-            	column="net_type"
+        <property
+                name="netType"
+                column="net_type"
                 length="32"
                 not-null="false"
                 unique="false"
         >
-	</property>
-	<property
-            name="driverTpye"
-            	column="driver_Tpye"
+        </property>
+        <property
+                name="driverTpye"
+                column="driver_Tpye"
                 length="32"
                 not-null="false"
                 unique="false"
         >
-	</property>
-	<property
-            name="company"
-            	column="company"
+        </property>
+        <property
+                name="company"
+                column="company"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -82,9 +82,9 @@
 
         </property>
 
-	<property
-            name="netModale"
-            	column="net_modale"
+        <property
+                name="netModale"
+                column="net_modale"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -92,9 +92,9 @@
 
         </property>
 
-	<property
-            name="hardwareRepository"
-            	column="hardware_repository"
+        <property
+                name="hardwareRepository"
+                column="hardware_repository"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -102,9 +102,9 @@
 
         </property>
 
-	<property
-            name="softwareRepository"
-            	column="software_repository"
+        <property
+                name="softwareRepository"
+                column="software_repository"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -112,9 +112,9 @@
 
         </property>
 
-	<property
-            name="patch"
-            	column="patch"
+        <property
+                name="patch"
+                column="patch"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -122,9 +122,9 @@
 
         </property>
 
-	<property
-            name="networkTime"
-            	column="network_time"
+        <property
+                name="networkTime"
+                column="network_time"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -132,9 +132,9 @@
 
         </property>
 
-	<property
-            name="state"
-            	column="state"
+        <property
+                name="state"
+                column="state"
                 length="3"
                 not-null="false"
                 unique="false"
@@ -142,9 +142,9 @@
 
         </property>
 
-	<property
-            name="deleted"
-            	column="deleted"
+        <property
+                name="deleted"
+                column="deleted"
                 length="3"
                 not-null="false"
                 unique="false"
@@ -152,8 +152,8 @@
 
         </property>
 
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

@@ -1,324 +1,354 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id>52</est-module-id> <!--最后采集的时间表id-->
+    <title>kpi统计</title>
+    <est-module-id>52</est-module-id> <!--最后采集的时间表id-->
 
-	<!-- ********按(人员)统计故障一级解决率 ********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>complaint_timeavg_byuser</name>
-		<kpi-caption></kpi-caption>
-		<!-- dbtype={String,int,datetime} -->
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param  page-name="areaid" markflg="true"/>
-		<condition-param  page-name="complainttype1" markflg="true"/>
-		<condition-param  page-name="complainttype2" markflg="true"/>
-		<condition-param  page-name="complainttype" markflg="true"/>
-		<condition-param  page-name="complainttype4" markflg="true"/>
-		<condition-param  page-name="complainttype5" markflg="true"/>
-		<condition-param  page-name="complainttype6" markflg="true"/>
-		<condition-param  page-name="complainttype7" markflg="true"/>
-		<condition-param  page-name="userByDeptid" markflg="true"/>
-		
-		<!--人员-->
-		<summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.OPERATEUSERID</column>
-			<!-- 注册 部门id转name接口 "statBaseDeptId2name_v35"-->
-			<!-- 注册 人员id转name接口 "statBaseUserId2name_v35"-->
-			<!-- 注册 字典id转name接口 "statDictId2name_v35"-->
-			<!-- 注册 大角色id转name接口 "statRoleId2name_v35"-->
-			<!-- 注册 小角色id转name接口 "statSubRoleId2name_v35"-->
-			<!-- 地域 statAreaId2name_v35 -->
-			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name-->
-		</summary-define>
-		
-		<!--网络类型-->
-		<summary-define>
-			<id>s2</id>
-			<sequence></sequence>
-			<column>est.complainttype1</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s3</id>
-			<sequence></sequence>
-			<column>est.complainttype2</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s4</id>
-			<sequence></sequence>
-			<column>est.complainttype</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s5</id>
-			<sequence></sequence>
-			<column>est.complainttype4</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s6</id>
-			<sequence></sequence>
-			<column>est.complainttype5</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s7</id>
-			<sequence></sequence>
-			<column>est.complainttype6</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s8</id>
-			<sequence></sequence>
-			<column>est.complainttype7</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<!--地域-->
-		<summary-define>
-			<id>s9</id>
-			<sequence></sequence>
-			<column>est.TODEPTID</column>
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statAreaId2name_v35</id2name-service>
-		</summary-define>
+    <!-- ********按(人员)统计故障一级解决率 ********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>complaint_timeavg_byuser</name>
+        <kpi-caption></kpi-caption>
+        <!-- dbtype={String,int,datetime} -->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="areaid" markflg="true"/>
+        <condition-param page-name="complainttype1" markflg="true"/>
+        <condition-param page-name="complainttype2" markflg="true"/>
+        <condition-param page-name="complainttype" markflg="true"/>
+        <condition-param page-name="complainttype4" markflg="true"/>
+        <condition-param page-name="complainttype5" markflg="true"/>
+        <condition-param page-name="complainttype6" markflg="true"/>
+        <condition-param page-name="complainttype7" markflg="true"/>
+        <condition-param page-name="userByDeptid" markflg="true"/>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo><!--显示DetailVO-->
+        <!--人员-->
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.OPERATEUSERID</column>
+            <!-- 注册 部门id转name接口 "statBaseDeptId2name_v35"-->
+            <!-- 注册 人员id转name接口 "statBaseUserId2name_v35"-->
+            <!-- 注册 字典id转name接口 "statDictId2name_v35"-->
+            <!-- 注册 大角色id转name接口 "statRoleId2name_v35"-->
+            <!-- 注册 小角色id转name接口 "statSubRoleId2name_v35"-->
+            <!-- 地域 statAreaId2name_v35 -->
+            <id2name-service>statBaseUserId2name_v35
+            </id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name-->
+        </summary-define>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>est_complaint est</from><!-- 不可为空 -->
-			<where>est.status=1  and est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')  
-			and est.OPERATEUSERID in (@userByDeptid@) and est.complainttype1 in (@complainttype1@)  and est.complainttype2 in (@complainttype2@)  and est.complainttype in (@complainttype@)
-			and est.TODEPTID in (@areaid@) and (est.mainifrecord is null or est.mainifrecord=0) and mainlastrepeattime is not null  and operatetype=46
-			 and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@)  and est.complainttype6 in (@complainttype6@)  and est.complainttype7 in (@complainttype7@)
-			</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+        <!--网络类型-->
+        <summary-define>
+            <id>s2</id>
+            <sequence></sequence>
+            <column>est.complainttype1</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s3</id>
+            <sequence></sequence>
+            <column>est.complainttype2</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s4</id>
+            <sequence></sequence>
+            <column>est.complainttype</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s5</id>
+            <sequence></sequence>
+            <column>est.complainttype4</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s6</id>
+            <sequence></sequence>
+            <column>est.complainttype5</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s7</id>
+            <sequence></sequence>
+            <column>est.complainttype6</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s8</id>
+            <sequence></sequence>
+            <column>est.complainttype7</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <!--地域-->
+        <summary-define>
+            <id>s9</id>
+            <sequence></sequence>
+            <column>est.TODEPTID</column>
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statAreaId2name_v35</id2name-service>
+        </summary-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f1</id>
-				<sequence>1</sequence>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title,est.complainttype1,est.todeptid, est.senduserid, est.operateuserid  from est_complaint est where 
- 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
- 					and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@'  and est.complainttype2='@s3@'  and est.complainttype='@s4@'
- 					and est.TODEPTID='@s9@'   and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@'
- 					and est.status=1  and (est.mainifrecord is null or est.mainifrecord=0) and mainlastrepeattime is not null  and operatetype=46
-				</list-hsql>
-				
-			</field-define>
-			<field-define><!-- 可重复 -->
-				<id>f2</id>
-				<sequence>1</sequence>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				<list-hsql>
-					select  est.mainid ,est.sheetid,est.title,est.complainttype1,est.todeptid, est.senduserid, est.operateuserid  from est_complaint est where 
- 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
- 					and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@'  and est.complainttype2='@s3@'  and est.complainttype='@s4@'
- 					and est.TODEPTID='@s9@'  and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@'
- 					and est.status=1  and (est.mainifrecord is null or est.mainifrecord=0) and mainlastrepeattime is not null  and operatetype=46 
-				</list-hsql>
-				
-			</field-define>
-			 <field-define><!-- 可重复 -->
-				<id>f3</id>
-				<sequence>1</sequence>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>est_complaint est</from><!-- 不可为空 -->
+            <where>est.status=1 and est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and est.OPERATEUSERID in (@userByDeptid@) and est.complainttype1 in (@complainttype1@) and
+                est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@)
+                and est.TODEPTID in (@areaid@) and (est.mainifrecord is null or est.mainifrecord=0) and
+                mainlastrepeattime is not null and operatetype=46
+                and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@) and
+                est.complainttype6 in (@complainttype6@) and est.complainttype7 in (@complainttype7@)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>round(sum((est.mainlastrepeattime-est.sendtime)*24*60*60),0)</stat-sql>
-                               <!--连接数-->
-                               <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
-				<list-hsql><!--列表字段-->
-				
-				</list-hsql>
-                                <!--连接数-->
-      </field-define>
-      <field-define><!-- 可重复 -->
-				<id>f4</id>
-				<sequence>1</sequence>
+            <field-define><!-- 可重复 -->
+                <id>f1</id>
+                <sequence>1</sequence>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>round(avg((est.mainlastrepeattime-est.sendtime)*24*60*60),0)</stat-sql>
-                               <!--连接数-->
-                               <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
-				<list-hsql><!--列表字段-->
-				
-				</list-hsql>
-                                <!--连接数-->
-      </field-define>
-		</query-define>
-		
-		
-		
-	</kpi-define>
-	
-	
-	<!-- ********按(角色)故障一级解决率 ********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>complaint_timeavg_byrole</name>
-		<kpi-caption></kpi-caption>
-		
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param  page-name="areaid" markflg="true"/>
-		<condition-param  page-name="complainttype1" markflg="true"/>
-		<condition-param  page-name="complainttype2" markflg="true"/>
-		<condition-param  page-name="complainttype" markflg="true"/>
-		<condition-param  page-name="complainttype4" markflg="true"/>
-		<condition-param  page-name="complainttype5" markflg="true"/>
-		<condition-param  page-name="complainttype6" markflg="true"/>
-		<condition-param  page-name="complainttype7" markflg="true"/>
-		<condition-param  page-name="subroleFromDeptid" markflg="true"/>
-		
-		<!--角色-->
-		<summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.OPERATEROLEID</column>
-			<id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name_v35 -->
-		</summary-define>
-		
-		<!--网络类型-->
-		<summary-define>
-			<id>s2</id>
-			<sequence></sequence>
-			<column>est.complainttype1</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s3</id>
-			<sequence></sequence>
-			<column>est.complainttype2</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s4</id>
-			<sequence></sequence>
-			<column>est.complainttype</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s5</id>
-			<sequence></sequence>
-			<column>est.complainttype4</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s6</id>
-			<sequence></sequence>
-			<column>est.complainttype5</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s7</id>
-			<sequence></sequence>
-			<column>est.complainttype6</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s8</id>
-			<sequence></sequence>
-			<column>est.complainttype7</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<!--地域-->
-		<summary-define>
-			<id>s9</id>
-			<sequence></sequence>
-			<column>est.TODEPTID</column>
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statAreaId2name_v35</id2name-service>
-		</summary-define>
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title,est.complainttype1,est.todeptid, est.senduserid,
+                    est.operateuserid from est_complaint est where
+                    est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@' and est.complainttype2='@s3@' and
+                    est.complainttype='@s4@'
+                    and est.TODEPTID='@s9@' and est.complainttype4='@s5@' and est.complainttype5='@s6@' and
+                    est.complainttype6='@s7@' and est.complainttype7='@s8@'
+                    and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and mainlastrepeattime is not
+                    null and operatetype=46
+                </list-hsql>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo><!--显示DetailVO-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f2</id>
+                <sequence>1</sequence>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>est_complaint est</from><!-- 不可为空 -->
-			<where>est.status=1  and est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and mainlastrepeattime is not null  and operatetype=46
-			and est.OPERATEROLEID in (@subroleFromDeptid@) and est.complainttype1 in (@complainttype1@) and est.complainttype2 in (@complainttype2@)  and est.complainttype in (@complainttype@)
-			and est.TODEPTID in (@areaid@) and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32 
-				 and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@)  and est.complainttype6 in (@complainttype6@)  and est.complainttype7 in (@complainttype7@)
-			</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+                <list-hsql>
+                    select est.mainid ,est.sheetid,est.title,est.complainttype1,est.todeptid, est.senduserid,
+                    est.operateuserid from est_complaint est where
+                    est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@' and est.complainttype2='@s3@' and
+                    est.complainttype='@s4@'
+                    and est.TODEPTID='@s9@' and est.complainttype4='@s5@' and est.complainttype5='@s6@' and
+                    est.complainttype6='@s7@' and est.complainttype7='@s8@'
+                    and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and mainlastrepeattime is not
+                    null and operatetype=46
+                </list-hsql>
 
-			<field-define><!-- 可重复 -->
-				<id>f1</id>
-				<sequence>1</sequence>
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id>
+                <sequence>1</sequence>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.complainttype1,est.todeptid,est.sendroleid, est.operateroleid  from est_complaint est where 
- 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and mainlastrepeattime is not null  and operatetype=46
- 				 	and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@'  and est.complainttype2='@s3@'  and est.complainttype='@s4@'
- 				 	and est.TODEPTID =@s9@ and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32  
- 				 	 and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@'
-				</list-hsql>
-				
-			</field-define>
-			<field-define><!-- 可重复 -->
-				<id>f2</id>
-				<sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>round(sum((est.mainlastrepeattime-est.sendtime)*24*60*60),0)</stat-sql>
+                <!--连接数-->
+                <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
+                <list-hsql><!--列表字段-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				<list-hsql>
-					select  est.mainid ,est.sheetid,est.title, est.complainttype1,est.todeptid,est.sendroleid, est.operateroleid  from est_complaint est where 
- 					est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') and mainlastrepeattime is not null  and operatetype=46
- 				 	and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@'  and est.complainttype2='@s3@'  and est.complainttype='@s4@'
- 				 	and est.TODEPTID='@s9@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and LENGTH(est.operateroleid)=32 
- 				 	 and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@' 
-				</list-hsql>
-				
-			</field-define>
-			<field-define><!-- 可重复 -->
-				<id>f3</id>
-				<sequence>1</sequence>
+                </list-hsql>
+                <!--连接数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f4</id>
+                <sequence>1</sequence>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>round(sum((est.mainlastrepeattime-est.sendtime)*(60*60*24)),0)</stat-sql>
-                               <!--连接数-->
-                               <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
-				<list-hsql><!--列表字段-->
-				
-				</list-hsql>
-                                <!--连接数-->
-      </field-define>
-      <field-define><!-- 可重复 -->
-				<id>f4</id>
-				<sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>round(avg((est.mainlastrepeattime-est.sendtime)*24*60*60),0)</stat-sql>
+                <!--连接数-->
+                <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
+                <list-hsql><!--列表字段-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>round(avg((est.mainlastrepeattime-est.sendtime)*(60*60*24)),0)</stat-sql>
-                               <!--连接数-->
-                               <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
-				<list-hsql><!--列表字段-->
-				
-				</list-hsql>
-                                <!--连接数-->
-      </field-define>
-		</query-define>
-		
-		
-		
-	</kpi-define>
-	
+                </list-hsql>
+                <!--连接数-->
+            </field-define>
+        </query-define>
+
+
+    </kpi-define>
+
+
+    <!-- ********按(角色)故障一级解决率 ********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>complaint_timeavg_byrole</name>
+        <kpi-caption></kpi-caption>
+
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="areaid" markflg="true"/>
+        <condition-param page-name="complainttype1" markflg="true"/>
+        <condition-param page-name="complainttype2" markflg="true"/>
+        <condition-param page-name="complainttype" markflg="true"/>
+        <condition-param page-name="complainttype4" markflg="true"/>
+        <condition-param page-name="complainttype5" markflg="true"/>
+        <condition-param page-name="complainttype6" markflg="true"/>
+        <condition-param page-name="complainttype7" markflg="true"/>
+        <condition-param page-name="subroleFromDeptid" markflg="true"/>
+
+        <!--角色-->
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.OPERATEROLEID</column>
+            <id2name-service>statSubRoleId2name_v35
+            </id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name_v35 -->
+        </summary-define>
+
+        <!--网络类型-->
+        <summary-define>
+            <id>s2</id>
+            <sequence></sequence>
+            <column>est.complainttype1</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s3</id>
+            <sequence></sequence>
+            <column>est.complainttype2</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s4</id>
+            <sequence></sequence>
+            <column>est.complainttype</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s5</id>
+            <sequence></sequence>
+            <column>est.complainttype4</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s6</id>
+            <sequence></sequence>
+            <column>est.complainttype5</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s7</id>
+            <sequence></sequence>
+            <column>est.complainttype6</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s8</id>
+            <sequence></sequence>
+            <column>est.complainttype7</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <!--地域-->
+        <summary-define>
+            <id>s9</id>
+            <sequence></sequence>
+            <column>est.TODEPTID</column>
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statAreaId2name_v35</id2name-service>
+        </summary-define>
+
+        <stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO
+        </stat-detail-vo><!--显示DetailVO-->
+
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>est_complaint est</from><!-- 不可为空 -->
+            <where>est.status=1 and est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS') and mainlastrepeattime is not null and operatetype=46
+                and est.OPERATEROLEID in (@subroleFromDeptid@) and est.complainttype1 in (@complainttype1@) and
+                est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@)
+                and est.TODEPTID in (@areaid@) and (est.mainifrecord is null or est.mainifrecord=0) and
+                LENGTH(est.operateroleid)=32
+                and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@) and
+                est.complainttype6 in (@complainttype6@) and est.complainttype7 in (@complainttype7@)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f1</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title, est.complainttype1,est.todeptid,est.sendroleid,
+                    est.operateroleid from est_complaint est where
+                    est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS') and mainlastrepeattime is not null and operatetype=46
+                    and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@' and est.complainttype2='@s3@' and
+                    est.complainttype='@s4@'
+                    and est.TODEPTID =@s9@ and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and
+                    LENGTH(est.operateroleid)=32
+                    and est.complainttype4='@s5@' and est.complainttype5='@s6@' and est.complainttype6='@s7@' and
+                    est.complainttype7='@s8@'
+                </list-hsql>
+
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f2</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+                <list-hsql>
+                    select est.mainid ,est.sheetid,est.title, est.complainttype1,est.todeptid,est.sendroleid,
+                    est.operateroleid from est_complaint est where
+                    est.ENDTIME&gt;to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS') and mainlastrepeattime is not null and operatetype=46
+                    and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@' and est.complainttype2='@s3@' and
+                    est.complainttype='@s4@'
+                    and est.TODEPTID='@s9@' and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) and
+                    LENGTH(est.operateroleid)=32
+                    and est.complainttype4='@s5@' and est.complainttype5='@s6@' and est.complainttype6='@s7@' and
+                    est.complainttype7='@s8@'
+                </list-hsql>
+
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>round(sum((est.mainlastrepeattime-est.sendtime)*(60*60*24)),0)</stat-sql>
+                <!--连接数-->
+                <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
+                <list-hsql><!--列表字段-->
+
+                </list-hsql>
+                <!--连接数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f4</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>round(avg((est.mainlastrepeattime-est.sendtime)*(60*60*24)),0)</stat-sql>
+                <!--连接数-->
+                <list-count-select-sql></list-count-select-sql><!--列表总数翻页-->
+                <list-hsql><!--列表字段-->
+
+                </list-hsql>
+                <!--连接数-->
+            </field-define>
+        </query-define>
+
+
+    </kpi-define>
+
 </KpiConfig>

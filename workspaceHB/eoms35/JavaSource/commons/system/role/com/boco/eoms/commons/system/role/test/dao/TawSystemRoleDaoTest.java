@@ -23,7 +23,7 @@ public class TawSystemRoleDaoTest extends BaseDaoTestCase {
         tawSystemRole.setDeleted(new Integer(1));
         tawSystemRole.setLeaf(new Integer(1));
         tawSystemRole.setRoleName("test");
-        
+
 
         dao.saveTawSystemRole(tawSystemRole);
 
@@ -65,15 +65,17 @@ public class TawSystemRoleDaoTest extends BaseDaoTestCase {
             assertNotNull(e.getMessage());
         }
     }
-    public void testGetDeptOfRole(){
-    	long roleId = 26;
-    	List list = dao.getDeptByRoleId(roleId);
-    	assertNotNull(list);
+
+    public void testGetDeptOfRole() {
+        long roleId = 26;
+        List list = dao.getDeptByRoleId(roleId);
+        assertNotNull(list);
     }
-    public void testGetRole(){
-    	Integer roleId = new Integer(4);
-    	TawSystemRole role = dao.getTawSystemRole(roleId,"");
-    	assertNotNull(role);
+
+    public void testGetRole() {
+        Integer roleId = new Integer(4);
+        TawSystemRole role = dao.getTawSystemRole(roleId, "");
+        assertNotNull(role);
     }
-    
+
 }

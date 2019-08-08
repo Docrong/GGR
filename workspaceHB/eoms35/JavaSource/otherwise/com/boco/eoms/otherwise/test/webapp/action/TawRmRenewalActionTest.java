@@ -78,7 +78,7 @@ public class TawRmRenewalActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawRmRenewal.updated"});
+        verifyActionMessages(new String[]{"tawRmRenewal.updated"});
 
     }
 

@@ -5,12 +5,13 @@
 
 <body>
 
-	<script language="javascript">
-	<!---
-	window.close();
+<script language="javascript">
+    <!--
+    -
+        window.close();
 
-	--->
-	</script>
+    --->
+</script>
 
 </body>
 </html>

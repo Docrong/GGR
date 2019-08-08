@@ -1,6 +1,6 @@
 /**
  * ReportExecuteServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -30,11 +30,10 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
     }
 
     public com.boco.eoms.gzjhead.interfaces.ReportInventoryPortType getReportInventoryPort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(ReportInventoryPort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getReportInventoryPort(endpoint);
@@ -45,8 +44,7 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
             com.boco.eoms.gzjhead.interfaces.ReportInventoryBindingStub _stub = new com.boco.eoms.gzjhead.interfaces.ReportInventoryBindingStub(portAddress, this);
             _stub.setPortName(getReportInventoryPortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -71,11 +69,10 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
     }
 
     public com.boco.eoms.gzjhead.interfaces.ReportExecutePortType getReportExecutePort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(ReportExecutePort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getReportExecutePort(endpoint);
@@ -86,8 +83,7 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
             com.boco.eoms.gzjhead.interfaces.ReportExecuteBindingStub _stub = new com.boco.eoms.gzjhead.interfaces.ReportExecuteBindingStub(portAddress, this);
             _stub.setPortName(getReportExecutePortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -112,11 +108,10 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
     }
 
     public com.boco.eoms.gzjhead.interfaces.AuxiliaryPortType getAuxiliaryPort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(AuxiliaryPort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getAuxiliaryPort(endpoint);
@@ -127,8 +122,7 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
             com.boco.eoms.gzjhead.interfaces.AuxiliaryBindingStub _stub = new com.boco.eoms.gzjhead.interfaces.AuxiliaryBindingStub(portAddress, this);
             _stub.setPortName(getAuxiliaryPortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -155,8 +149,7 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
                 _stub.setPortName(getAuxiliaryPortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -174,14 +167,11 @@ public class ReportExecuteServiceLocator extends org.apache.axis.client.Service 
         String inputPortName = portName.getLocalPart();
         if ("ReportInventoryPort".equals(inputPortName)) {
             return getReportInventoryPort();
-        }
-        else if ("ReportExecutePort".equals(inputPortName)) {
+        } else if ("ReportExecutePort".equals(inputPortName)) {
             return getReportExecutePort();
-        }
-        else if ("AuxiliaryPort".equals(inputPortName)) {
+        } else if ("AuxiliaryPort".equals(inputPortName)) {
             return getAuxiliaryPort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;

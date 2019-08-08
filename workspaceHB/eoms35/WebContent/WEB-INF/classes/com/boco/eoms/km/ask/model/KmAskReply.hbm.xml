@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_ASK_REPLY"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="questionId"
-            	column="QUESTION_ID"
+        <property
+                name="questionId"
+                column="QUESTION_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="answer"
-            	column="ANSWER"
+        <property
+                name="answer"
+                column="ANSWER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="conment"
-            	column="CONMENT"
+        <property
+                name="conment"
+                column="CONMENT"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="isBest"
-            	column="IS_BEST"
+        <property
+                name="isBest"
+                column="IS_BEST"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="answerUser"
-            	column="ANSWER_USER"
+        <property
+                name="answerUser"
+                column="ANSWER_USER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="answerDept"
-            	column="ANSWER_DEPT"
+        <property
+                name="answerDept"
+                column="ANSWER_DEPT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="answerTime"
-            	column="ANSWER_TIME"
+        <property
+                name="answerTime"
+                column="ANSWER_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="fileName"
-            	column="FILE_NAME"
+        <property
+                name="fileName"
+                column="FILE_NAME"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="isAnonymity"
-            	column="IS_ANONYMITY"
+        <property
+                name="isAnonymity"
+                column="IS_ANONYMITY"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -116,17 +116,17 @@
 
         </property>
 
-	<property
-            name="countVote"
-            	column="COUNT_VOTE"
+        <property
+                name="countVote"
+                column="COUNT_VOTE"
                 length="32"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

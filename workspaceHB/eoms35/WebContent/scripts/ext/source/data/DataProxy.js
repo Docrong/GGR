@@ -18,7 +18,7 @@
  * Custom implementations must implement the load method as described in
  * {@link Ext.data.HttpProxy#load}.
  */
-Ext.data.DataProxy = function(){
+Ext.data.DataProxy = function () {
     this.addEvents({
         /**
          * @event beforeload
@@ -26,7 +26,7 @@ Ext.data.DataProxy = function(){
          * @param {Object} This DataProxy object.
          * @param {Object} params The params parameter to the load function.
          */
-        beforeload : true,
+        beforeload: true,
         /**
          * @event load
          * Fires before the load method's callback is called.
@@ -34,7 +34,7 @@ Ext.data.DataProxy = function(){
          * @param {Object} o The data object.
          * @param {Object} arg The callback argument object passed to the load function.
          */
-        load : true,
+        load: true,
         /**
          * @event loadexception
          * Fires if an Exception occurs during data retrieval.
@@ -43,7 +43,7 @@ Ext.data.DataProxy = function(){
          * @param {Object} arg The callback argument object passed to the load function.
          * @param {Object} e The Exception.
          */
-        loadexception : true
+        loadexception: true
     });
     Ext.data.DataProxy.superclass.constructor.call(this);
 };

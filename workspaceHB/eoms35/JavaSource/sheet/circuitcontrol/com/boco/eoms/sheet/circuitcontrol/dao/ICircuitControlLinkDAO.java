@@ -16,12 +16,11 @@ import com.boco.eoms.sheet.base.dao.ILinkDAO;
  * <p>
  * Sun Sep 29 16:51:15 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICircuitControlLinkDAO extends ILinkDAO {
- 	 public List getLinksBycondition(String condition, String linkName) throws HibernateException;
- }
+
+public interface ICircuitControlLinkDAO extends ILinkDAO {
+    public List getLinksBycondition(String condition, String linkName) throws HibernateException;
+}

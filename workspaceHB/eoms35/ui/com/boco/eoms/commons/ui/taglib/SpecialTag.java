@@ -29,260 +29,258 @@ import com.boco.eoms.commons.ui.util.JSONUtil;
 
 /**
  * @author admin
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class SpecialTag  extends TagSupport {
+public class SpecialTag extends TagSupport {
 
 
-	// 元素的id
-	protected String id = null;
+    // 元素的id
+    protected String id = null;
 
-	// 元素的name
-	protected String name = null;
+    // 元素的name
+    protected String name = null;
 
-	// 元素的下级联动元素的id
-	protected String sub = null;
+    // 元素的下级联动元素的id
+    protected String sub = null;
 
-	// 元素初始化的字典id
-	protected String initDicId = null;
+    // 元素初始化的字典id
+    protected String initDicId = null;
 
-	// 指定从自定义的action地址取数据，而不通过字典表
-	// ds值为此action的链接地址
-	protected String ds = null;
+    // 指定从自定义的action地址取数据，而不通过字典表
+    // ds值为此action的链接地址
+    protected String ds = null;
 
-	// 元素的class
-	protected String styleClass = null;
+    // 元素的class
+    protected String styleClass = null;
 
-	// 默认选中的选项值
-	protected String defaultValue = null;
+    // 默认选中的选项值
+    protected String defaultValue = null;
 
-	// formBean名称
-	protected String form = null;
+    // formBean名称
+    protected String form = null;
 
-	// 是否可以多选
-	protected String multiple = null;
+    // 是否可以多选
+    protected String multiple = null;
 
-	// 显示行数
-	protected String size = null;
+    // 显示行数
+    protected String size = null;
 
-	// onchange事件监听，其中的JS将在doCombo之后执行
-	protected String onchange = null;
+    // onchange事件监听，其中的JS将在doCombo之后执行
+    protected String onchange = null;
 
-	// TODO 加入自定义的html属性
-	protected String attributes = null;
-	
-	//利用alt属性作为Ext框架接口
-	protected String alt = null;
-	
-	
+    // TODO 加入自定义的html属性
+    protected String attributes = null;
 
-	public int doEndTag() {
+    //利用alt属性作为Ext框架接口
+    protected String alt = null;
 
-		try {
-			String selectedValue = null;
 
-			ResourceBundle bundle = ResourceBundle
-					.getBundle(Constants.BUNDLE_KEY);
-			String selectText = bundle.getString("comboBox.select");
-			String waitText = bundle.getString("comboBox.wait");
+    public int doEndTag() {
 
-			Element defaultOp = new Element("option");
-			defaultOp.addContent(selectText);
-			defaultOp.setAttribute("value", "");
+        try {
+            String selectedValue = null;
 
-			Element disableOp = new Element("option");
-			disableOp.addContent(waitText);
-			disableOp.setAttribute("value", "");
+            ResourceBundle bundle = ResourceBundle
+                    .getBundle(Constants.BUNDLE_KEY);
+            String selectText = bundle.getString("comboBox.select");
+            String waitText = bundle.getString("comboBox.wait");
 
-			// 创建select元素
-			Element rootElement = new Element("select");
-			rootElement.setAttribute("id", id);
-			rootElement.setAttribute("name", name);
+            Element defaultOp = new Element("option");
+            defaultOp.addContent(selectText);
+            defaultOp.setAttribute("value", "");
 
-			if (ds != null) {
-				rootElement.setAttribute("ds", ds);
-			}
-			if (styleClass != null) {
-				rootElement.setAttribute("class", styleClass);
-			}
-			if (multiple != null) {
-				rootElement.setAttribute("multiple", multiple);
-			}
-			if (size != null) {
-				rootElement.setAttribute("size", size);
-			}
-			if (alt != null) {
-				rootElement.setAttribute("alt", alt);
-			}
+            Element disableOp = new Element("option");
+            disableOp.addContent(waitText);
+            disableOp.setAttribute("value", "");
 
-			// 设置subid属性和onchage事件
-			if (sub !=null ) {
-				rootElement.setAttribute("subid", sub);
-				rootElement.setAttribute("onchange",
-						"javascript:doCombo(this,'" + sub + "');"+StaticMethod.null2String(onchange));
-			}
-			else if(onchange != null){
-				rootElement.setAttribute("onchange", "javascript:"+StaticMethod.null2String(onchange));
-			}
+            // 创建select元素
+            Element rootElement = new Element("select");
+            rootElement.setAttribute("id", id);
+            rootElement.setAttribute("name", name);
 
-			if (form != null) {
-				// 是否能直接获取form名称，而不用设置？
-				selectedValue = (String) TagUtils.getInstance().lookup(pageContext, form, name, "request");
-			}
-			// 如果有initDicId，则初始化option选项
-			if (initDicId != null) {
-				rootElement.setAttribute("initDicId", initDicId);
+            if (ds != null) {
+                rootElement.setAttribute("ds", ds);
+            }
+            if (styleClass != null) {
+                rootElement.setAttribute("class", styleClass);
+            }
+            if (multiple != null) {
+                rootElement.setAttribute("multiple", multiple);
+            }
+            if (size != null) {
+                rootElement.setAttribute("size", size);
+            }
+            if (alt != null) {
+                rootElement.setAttribute("alt", alt);
+            }
 
-				if (multiple == null)
-					rootElement.addContent(defaultOp);
+            // 设置subid属性和onchage事件
+            if (sub != null) {
+                rootElement.setAttribute("subid", sub);
+                rootElement.setAttribute("onchange",
+                        "javascript:doCombo(this,'" + sub + "');" + StaticMethod.null2String(onchange));
+            } else if (onchange != null) {
+                rootElement.setAttribute("onchange", "javascript:" + StaticMethod.null2String(onchange));
+            }
 
-				// 取字典数据
-			//	ITawSystemDictTypeManager _objDictManager = (ITawSystemDictTypeManager) ApplicationContextHolder
-			//			.getInstance().getBean("ItawSystemDictTypeManager");
-				 ITawSheetSpecialManager _objSpecialManager = (ITawSheetSpecialManager)ApplicationContextHolder
-					.getInstance().getBean("ItawSheetSpecialManager");
-				
-				List list = _objSpecialManager.getSonspecialByspecialId(initDicId);
+            if (form != null) {
+                // 是否能直接获取form名称，而不用设置？
+                selectedValue = (String) TagUtils.getInstance().lookup(pageContext, form, name, "request");
+            }
+            // 如果有initDicId，则初始化option选项
+            if (initDicId != null) {
+                rootElement.setAttribute("initDicId", initDicId);
 
-				String itemName = null;
-				String itemId = null;
-				String itemCode= null;
+                if (multiple == null)
+                    rootElement.addContent(defaultOp);
 
-				// 将list转为option元素插入select元素
-				for (Iterator it = list.iterator(); it.hasNext();) {
-					TawSheetSpecial item = (TawSheetSpecial) it.next();
-					itemName = StaticMethod.null2String(item.getSpecialname());
-					itemId = StaticMethod.null2String(item.getSpeid());
-					itemCode = StaticMethod.null2String(item.getSpeid());
+                // 取字典数据
+                //	ITawSystemDictTypeManager _objDictManager = (ITawSystemDictTypeManager) ApplicationContextHolder
+                //			.getInstance().getBean("ItawSystemDictTypeManager");
+                ITawSheetSpecialManager _objSpecialManager = (ITawSheetSpecialManager) ApplicationContextHolder
+                        .getInstance().getBean("ItawSheetSpecialManager");
 
-					Element option = new Element("option").addContent(itemName);
-					option.setAttribute("value", itemCode);
-					if (form != null && itemCode.equals(selectedValue)) {
-						option.setAttribute("selected", "true");
-					} else if (itemCode.equals(defaultValue)) {
-						option.setAttribute("selected", "true");
-					}
-					rootElement.addContent(option);
-				}
-			} else {
-				rootElement.addContent(disableOp);
-				rootElement.setAttribute("disabled", "true");
+                List list = _objSpecialManager.getSonspecialByspecialId(initDicId);
 
-			}
+                String itemName = null;
+                String itemId = null;
+                String itemCode = null;
 
-			pageContext.getOut().println(JSONUtil.getStrElement(rootElement));
+                // 将list转为option元素插入select元素
+                for (Iterator it = list.iterator(); it.hasNext(); ) {
+                    TawSheetSpecial item = (TawSheetSpecial) it.next();
+                    itemName = StaticMethod.null2String(item.getSpecialname());
+                    itemId = StaticMethod.null2String(item.getSpeid());
+                    itemCode = StaticMethod.null2String(item.getSpeid());
 
-		} catch (IOException e) {
-			BocoLog.error(this, e.getMessage());
-		} catch (JspException e) {
-			BocoLog.error(this, e.getMessage());
-		}
-		return EVAL_PAGE;
-	}
-	
-	public String getId() {
-		return id;
-	}
+                    Element option = new Element("option").addContent(itemName);
+                    option.setAttribute("value", itemCode);
+                    if (form != null && itemCode.equals(selectedValue)) {
+                        option.setAttribute("selected", "true");
+                    } else if (itemCode.equals(defaultValue)) {
+                        option.setAttribute("selected", "true");
+                    }
+                    rootElement.addContent(option);
+                }
+            } else {
+                rootElement.addContent(disableOp);
+                rootElement.setAttribute("disabled", "true");
 
-	public void setId(String id) {
-		this.id = id;
-	}
+            }
 
-	public String getInitDicId() {
-		return initDicId;
-	}
+            pageContext.getOut().println(JSONUtil.getStrElement(rootElement));
 
-	public void setInitDicId(String initDicId) {
-		this.initDicId = initDicId;
-	}
+        } catch (IOException e) {
+            BocoLog.error(this, e.getMessage());
+        } catch (JspException e) {
+            BocoLog.error(this, e.getMessage());
+        }
+        return EVAL_PAGE;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getSub() {
-		return sub;
-	}
+    public String getInitDicId() {
+        return initDicId;
+    }
 
-	public void setSub(String sub) {
-		this.sub = sub;
-	}
+    public void setInitDicId(String initDicId) {
+        this.initDicId = initDicId;
+    }
 
-	public String getDs() {
-		return ds;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setDs(String ds) {
-		this.ds = ds;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getStyleClass() {
-		return styleClass;
-	}
+    public String getSub() {
+        return sub;
+    }
 
-	public void setStyleClass(String styleClass) {
-		this.styleClass = styleClass;
-	}
+    public void setSub(String sub) {
+        this.sub = sub;
+    }
 
-	public String getForm() {
-		return form;
-	}
+    public String getDs() {
+        return ds;
+    }
 
-	public void setForm(String form) {
-		this.form = form;
-	}
+    public void setDs(String ds) {
+        this.ds = ds;
+    }
 
-	public String getDefaultValue() {
-		return defaultValue;
-	}
+    public String getStyleClass() {
+        return styleClass;
+    }
 
-	public void setDefaultValue(String defaultValue) {
-		this.defaultValue = defaultValue;
-	}
+    public void setStyleClass(String styleClass) {
+        this.styleClass = styleClass;
+    }
 
-	public String getMultiple() {
-		return multiple;
-	}
+    public String getForm() {
+        return form;
+    }
 
-	public void setMultiple(String multiple) {
-		this.multiple = multiple;
-	}
+    public void setForm(String form) {
+        this.form = form;
+    }
 
-	public String getSize() {
-		return size;
-	}
+    public String getDefaultValue() {
+        return defaultValue;
+    }
 
-	public void setSize(String size) {
-		this.size = size;
-	}
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
 
-	public String getAttributes() {
-		return attributes;
-	}
+    public String getMultiple() {
+        return multiple;
+    }
 
-	public void setAttributes(String attributes) {
-		this.attributes = attributes;
-	}
+    public void setMultiple(String multiple) {
+        this.multiple = multiple;
+    }
 
-	public String getOnchange() {
-		return onchange;
-	}
+    public String getSize() {
+        return size;
+    }
 
-	public void setOnchange(String onchange) {
-		this.onchange = onchange.replaceAll("javascript:","");
-	}
+    public void setSize(String size) {
+        this.size = size;
+    }
 
-	public String getAlt() {
-		return alt;
-	}
+    public String getAttributes() {
+        return attributes;
+    }
 
-	public void setAlt(String alt) {
-		this.alt = alt;
-	}
+    public void setAttributes(String attributes) {
+        this.attributes = attributes;
+    }
+
+    public String getOnchange() {
+        return onchange;
+    }
+
+    public void setOnchange(String onchange) {
+        this.onchange = onchange.replaceAll("javascript:", "");
+    }
+
+    public String getAlt() {
+        return alt;
+    }
+
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
 }

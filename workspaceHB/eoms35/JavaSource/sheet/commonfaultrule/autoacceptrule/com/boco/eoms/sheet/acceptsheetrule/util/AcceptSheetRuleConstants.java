@@ -12,17 +12,16 @@ import java.util.List;
  * <p>
  * Wed Apr 22 09:19:35 CST 2009
  * </p>
- * 
+ *
  * @author 史闯科
  * @version 3.5
- * 
  */
 public class AcceptSheetRuleConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String ACCEPTSHEETRULE_LIST = "acceptSheetRuleList";
-	
+
+    /**
+     * list key
+     */
+    public final static String ACCEPTSHEETRULE_LIST = "acceptSheetRuleList";
+
 
 }

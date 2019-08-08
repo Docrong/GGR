@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="ota_mms_report"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="mmsReportName"
-            	column="mmsReportName"
+        <property
+                name="mmsReportName"
+                column="mmsReportName"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -36,34 +36,34 @@
 
         </property>
 
-	<property
-            name="mmsreport_template_id"
-            	column="mmsreport_template_id"
+        <property
+                name="mmsreport_template_id"
+                column="mmsreport_template_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        	<property
-            name="mmsreportType"
-            	column="mmsreporttype"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-                </property>
-        	<property
-            name="userid"
-            	column="userid"
+        <property
+                name="mmsreportType"
+                column="mmsreporttype"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
-	<property
-            name="statreport_id"
-            	column="statreport_id"
+        <property
+                name="userid"
+                column="userid"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        <property
+                name="statreport_id"
+                column="statreport_id"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -71,34 +71,34 @@
 
         </property>
 
-	<property
-            name="mmsReportCreateDate"
-            	column="mmsReportCreateDate"
+        <property
+                name="mmsReportCreateDate"
+                column="mmsReportCreateDate"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-	<property
-            name="sendStatus"
-            	column="sendStatus"
+        <property
+                name="sendStatus"
+                column="sendStatus"
                 length="200"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        	<property
-            name="sendTime"
-            	column="sendTime"
+        <property
+                name="sendTime"
+                column="sendTime"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

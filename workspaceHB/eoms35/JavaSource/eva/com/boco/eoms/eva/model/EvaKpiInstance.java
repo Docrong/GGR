@@ -12,143 +12,142 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Date:2008-11-26 下午10:28:10
  * </p>
- * 
+ *
  * @author 李秋野
  * @version 3.5.1
- * 
  */
 
 public class EvaKpiInstance extends BaseObject {
 
-	private String id;
-	private String taskDetailId;  //任务详细信息ID
-	private String time;			//选择时间
-	private String timeType; 		//时间类型
-	private String partnerId;		//合作伙伴部门ID
-	private String partnerName;		//合作伙伴部门NAME	
-	private String realScore;		//实际得分
-	private String reduceReason;	//扣分原因
-	private String remark;			//备注
-	private String isPublish;		//上报标志
-	private String createTime;		//记录创建时间
-	
-	private String taskId; //任务ID
-	private String taskName;//任务NAME 
+    private String id;
+    private String taskDetailId;  //任务详细信息ID
+    private String time;            //选择时间
+    private String timeType;        //时间类型
+    private String partnerId;        //合作伙伴部门ID
+    private String partnerName;        //合作伙伴部门NAME
+    private String realScore;        //实际得分
+    private String reduceReason;    //扣分原因
+    private String remark;            //备注
+    private String isPublish;        //上报标志
+    private String createTime;        //记录创建时间
 
-	public String getTaskId() {
-		return taskId;
-	}
+    private String taskId; //任务ID
+    private String taskName;//任务NAME
 
-	public void setTaskId(String taskId) {
-		this.taskId = taskId;
-	}
+    public String getTaskId() {
+        return taskId;
+    }
 
-	public String getTaskName() {
-		return taskName;
-	}
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
-	}
+    public String getTaskName() {
+        return taskName;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	}
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getIsPublish() {
-		return isPublish;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setIsPublish(String isPublish) {
-		this.isPublish = isPublish;
-	}
+    public String getIsPublish() {
+        return isPublish;
+    }
 
-	public String getPartnerId() {
-		return partnerId;
-	}
+    public void setIsPublish(String isPublish) {
+        this.isPublish = isPublish;
+    }
 
-	public void setPartnerId(String partnerId) {
-		this.partnerId = partnerId;
-	}
+    public String getPartnerId() {
+        return partnerId;
+    }
 
-	public String getPartnerName() {
-		return partnerName;
-	}
+    public void setPartnerId(String partnerId) {
+        this.partnerId = partnerId;
+    }
 
-	public void setPartnerName(String partnerName) {
-		this.partnerName = partnerName;
-	}
+    public String getPartnerName() {
+        return partnerName;
+    }
 
-	public String getRealScore() {
-		return realScore;
-	}
+    public void setPartnerName(String partnerName) {
+        this.partnerName = partnerName;
+    }
 
-	public void setRealScore(String realScore) {
-		this.realScore = realScore;
-	}
+    public String getRealScore() {
+        return realScore;
+    }
 
-	public String getReduceReason() {
-		return reduceReason;
-	}
+    public void setRealScore(String realScore) {
+        this.realScore = realScore;
+    }
 
-	public void setReduceReason(String reduceReason) {
-		this.reduceReason = reduceReason;
-	}
+    public String getReduceReason() {
+        return reduceReason;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setReduceReason(String reduceReason) {
+        this.reduceReason = reduceReason;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public String getTaskDetailId() {
-		return taskDetailId;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public void setTaskDetailId(String taskDetailId) {
-		this.taskDetailId = taskDetailId;
-	}
+    public String getTaskDetailId() {
+        return taskDetailId;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    public void setTaskDetailId(String taskDetailId) {
+        this.taskDetailId = taskDetailId;
+    }
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+    public String getTime() {
+        return time;
+    }
 
-	public String getTimeType() {
-		return timeType;
-	}
+    public void setTime(String time) {
+        this.time = time;
+    }
 
-	public void setTimeType(String timeType) {
-		this.timeType = timeType;
-	}
+    public String getTimeType() {
+        return timeType;
+    }
 
-	public boolean equals(Object o) {
-		return false;
-	}
+    public void setTimeType(String timeType) {
+        this.timeType = timeType;
+    }
 
-	public String toString() {
-		return null;
-	}
+    public boolean equals(Object o) {
+        return false;
+    }
 
-	public int hashCode() {
-		return 0;
-	}
+    public String toString() {
+        return null;
+    }
+
+    public int hashCode() {
+        return 0;
+    }
 
 }

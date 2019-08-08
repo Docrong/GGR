@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE hibernate-configuration
-    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-  <session-factory>
+    <session-factory>
 
- 
-<property name="show_sql">true</property>
- 	<mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyMain.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyLink.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyTask.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyHlrid.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyMscid.hbm.xml"/>
-  </session-factory>
+
+        <property name="show_sql">true</property>
+        <mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyMain.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyLink.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyTask.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyHlrid.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/numberapply/model/NumberApplyMscid.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>
 

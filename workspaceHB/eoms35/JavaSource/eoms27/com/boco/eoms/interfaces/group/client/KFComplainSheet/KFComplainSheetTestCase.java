@@ -1,6 +1,6 @@
 ﻿/**
  * KFComplainSheetTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -11,14 +11,14 @@ public class KFComplainSheetTestCase extends junit.framework.TestCase {
     public KFComplainSheetTestCase(java.lang.String name) {
         super(name);
     }
+
     public void test1KFComplainSheetSoapIsAlive() throws Exception {
         com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub)
-                          new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -37,10 +37,9 @@ public class KFComplainSheetTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub)
-                          new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -59,10 +58,9 @@ public class KFComplainSheetTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub)
-                          new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -81,10 +79,9 @@ public class KFComplainSheetTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub)
-                          new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -103,10 +100,9 @@ public class KFComplainSheetTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub)
-                          new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetLocator().getKFComplainSheetSoap();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }

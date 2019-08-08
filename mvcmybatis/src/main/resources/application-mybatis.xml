@@ -1,56 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<beans xmlns="http://www.springframework.org/schema/beans"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"  
-    xmlns:context="http://www.springframework.org/schema/context"  
-    xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc"  
-    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"  
-    xmlns:util="http://www.springframework.org/schema/util"  
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd  
     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd  
-    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">  
-      
-        <!-- 自动扫描 -->
-        <context:component-scan base-package="com.ssm">
-            <!-- 扫描时跳过 @Controller 注解的JAVA类（控制器） -->
-            <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        </context:component-scan>
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-        <!-- 加载配置文件 -->
-        <context:property-placeholder location="classpath:/jdbc.properties" />
+    <!-- 自动扫描 -->
+    <context:component-scan base-package="com.ssm">
+        <!-- 扫描时跳过 @Controller 注解的JAVA类（控制器） -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
 
-        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-            <property name="driverClassName" value="${jdbc.driver}" />
-            <property name="url" value="${jdbc.url}" />
-            <property name="username" value="${jdbc.username}" />
-            <property name="password" value="${jdbc.password}" />
-            <property name="initialSize" value="${initialSize}" />  <!--初始化连接池连接数-->
-            <property name="maxActive" value="${maxActive}" />  <!--连接池最大连接数-->
-            <property name="maxIdle" value="${maxIdle}" />  <!--连接池最大空闲-->
-            <property name="minIdle" value="${minIdle}" />  <!--连接池最小空闲-->
-            <property name="maxWait" value="${maxWait}" />  <!--连接最大等待时间-->
-        </bean>
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:/jdbc.properties"/>
 
-
-        <bean id="sqlSessionFaction" class="org.mybatis.spring.SqlSessionFactoryBean">
-            <property name="dataSource" ref="dataSource" />
-            <!-- 自动扫描mapping.xml文件 -->
-            <property name="mapperLocations" value="classpath:/mapping/*.xml" />
-        </bean>
-
-        <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-            <property name="basePackage" value="com.ggr.mapping" />
-            <property name="sqlSessionFactoryBeanName" value="sqlSessionFaction" />
-        </bean>
-
-        <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            <property name="dataSource" ref="dataSource" />
-        </bean>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="initialSize" value="${initialSize}"/>  <!--初始化连接池连接数-->
+        <property name="maxActive" value="${maxActive}"/>  <!--连接池最大连接数-->
+        <property name="maxIdle" value="${maxIdle}"/>  <!--连接池最大空闲-->
+        <property name="minIdle" value="${minIdle}"/>  <!--连接池最小空闲-->
+        <property name="maxWait" value="${maxWait}"/>  <!--连接最大等待时间-->
+    </bean>
 
 
-      
-      
-      
-</beans>  
+    <bean id="sqlSessionFaction" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 自动扫描mapping.xml文件 -->
+        <property name="mapperLocations" value="classpath:/mapping/*.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.ggr.mapping"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFaction"/>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+</beans>

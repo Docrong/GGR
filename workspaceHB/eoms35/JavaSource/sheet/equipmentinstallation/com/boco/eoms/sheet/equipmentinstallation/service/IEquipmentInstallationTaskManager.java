@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.ITaskService;
  * <p>
  * Tue Oct 09 14:09:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public interface IEquipmentInstallationTaskManager extends ITaskService {
- 
- }
+
+public interface IEquipmentInstallationTaskManager extends ITaskService {
+
+}

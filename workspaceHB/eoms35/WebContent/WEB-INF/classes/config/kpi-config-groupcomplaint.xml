@@ -2,281 +2,333 @@
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
 
-<!-- ********按(部门,人员)统计*应急事件性能监控任务及时完成率********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>esmperformancekpi_user</name>
-		<title>应急事件性能监控任务及时完成率-按部门/人员统计</title>
-		<use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
+    <!-- ********按(部门,人员)统计*应急事件性能监控任务及时完成率********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>esmperformancekpi_user</name>
+        <title>应急事件性能监控任务及时完成率-按部门/人员统计</title>
+        <use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
 
-		<summary-define>
-			<view-name>部门</view-name>
-			<column>l.operateDeptId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemDeptDao</code-to-name> 
-		</summary-define>
-		<summary-define>
-			<view-name>人员</view-name>
-			<column>l.operateUserId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemUserDao</code-to-name> 
-		</summary-define>
+        <summary-define>
+            <view-name>部门</view-name>
+            <column>l.operateDeptId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemDeptDao</code-to-name>
+        </summary-define>
+        <summary-define>
+            <view-name>人员</view-name>
+            <column>l.operateUserId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemUserDao</code-to-name>
+        </summary-define>
 
-		<query-define ><!-- 可重复 -->
-			<name>finish</name>
+        <query-define><!-- 可重复 -->
+            <name>finish</name>
 
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
-			<where>l.mainId=m.id and l.operateUserId&lt;&gt;'' and l.activeTemplateId='startPerCtrol'</where><!-- 可为空 -->
-			<order-by>l.operateDeptId,l.operateUserId</order-by><!-- 可为空 -->		
-			<between-time-column></between-time-column>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
+            <where>l.mainId=m.id and l.operateUserId&lt;&gt;'' and l.activeTemplateId='startPerCtrol'
+            </where><!-- 可为空 -->
+            <order-by>l.operateDeptId,l.operateUserId</order-by><!-- 可为空 -->
+            <between-time-column></between-time-column>
 
-			<!-- 用于计算分母,下面3行(可选) -->
-			<percent-count-sql>Select count(distinct l.mainId) from performance_link l where l.activeTemplateId='startPerCtrol'</percent-count-sql><!-- 可为空 -->
-			<percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.activeTemplateId='startPerCtrol'</percent-list-hsql><!-- 可为空 -->
-			<!-- 第3行可选,没写 -->
+            <!-- 用于计算分母,下面3行(可选) -->
+            <percent-count-sql>Select count(distinct l.mainId) from performance_link l where
+                l.activeTemplateId='startPerCtrol'
+            </percent-count-sql><!-- 可为空 -->
+            <percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                l.activeTemplateId='startPerCtrol'
+            </percent-list-hsql><!-- 可为空 -->
+            <!-- 第3行可选,没写 -->
 
-			<field-define><!-- 可重复 -->
-				<view-name>应急事件性能监控任务及时完成率</view-name>
-				<view-width>50%</view-width>
-				<as-name>f1</as-name>
-				<stat-sql>sum(case when (l.completeflag=0 and l.activeTemplateId='startPerCtrol') then 1 else 0 end)</stat-sql>
-				<need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
-				<percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
-				<percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
+            <field-define><!-- 可重复 -->
+                <view-name>应急事件性能监控任务及时完成率</view-name>
+                <view-width>50%</view-width>
+                <as-name>f1</as-name>
+                <stat-sql>sum(case when (l.completeflag=0 and l.activeTemplateId='startPerCtrol') then 1 else 0 end)
+                </stat-sql>
+                <need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
+                <percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
+                <percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
 
-				<list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.completeFlag=0 and l.activeTemplateId='startPerCtrol'</list-hsql>
-			</field-define>
-			
-		</query-define>
+                <list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                    l.completeFlag=0 and l.activeTemplateId='startPerCtrol'
+                </list-hsql>
+            </field-define>
 
-	</kpi-define>
+        </query-define>
 
-
-<!-- ********按(部门)统计*应急事件性能监控任务及时完成率********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>esmperformancekpi_dept</name>
-		<title>应急事件性能监控任务及时完成率-按部门统计</title>
-		<use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
-
-		<summary-define>
-			<view-name>部门</view-name>
-			<column>l.operateDeptId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemDeptDao</code-to-name> 
-		</summary-define>
-
-		<query-define ><!-- 可重复 -->
-			<name>finish</name>
-
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
-			<where>l.mainId=m.id and l.operateDeptId&lt;&gt;'' and l.activeTemplateId='startPerCtrol'</where><!-- 可为空 -->
-			<order-by>l.operateDeptId</order-by><!-- 可为空 -->		
-			<between-time-column></between-time-column>
-
-			<!-- 用于计算分母,下面3行(可选) -->
-			<percent-count-sql>Select count(distinct l.mainId) from performance_link l where l.activeTemplateId='startPerCtrol'</percent-count-sql><!-- 可为空 -->
-			<percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.activeTemplateId='startPerCtrol'</percent-list-hsql><!-- 可为空 -->
-			<!-- 第3行可选,没写 -->
-
-			<field-define><!-- 可重复 -->
-				<view-name>应急事件性能监控任务及时完成率</view-name>
-				<view-width>50%</view-width>
-				<as-name>f1</as-name>
-				<stat-sql>sum(case when (l.completeflag=0 and l.activeTemplateId='startPerCtrol') then 1 else 0 end)</stat-sql>
-				<need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
-				<percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
-				<percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
-
-				<list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.completeFlag=0 and l.activeTemplateId='startPerCtrol'</list-hsql>
-			</field-define>
-			
-		</query-define>
-
-	</kpi-define>
+    </kpi-define>
 
 
-<!-- ********按(部门,人员)统计*客户化报表及时完成率********************** -->
+    <!-- ********按(部门)统计*应急事件性能监控任务及时完成率********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>esmperformancekpi_dept</name>
+        <title>应急事件性能监控任务及时完成率-按部门统计</title>
+        <use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
 
-	<kpi-define><!-- 可重复 -->
-		<name>pereportKPI_user</name>
-		<title>客户化报表及时完成率-按部门/人员统计</title>
-		<use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
+        <summary-define>
+            <view-name>部门</view-name>
+            <column>l.operateDeptId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemDeptDao</code-to-name>
+        </summary-define>
 
-		<summary-define>
-			<view-name>部门</view-name>
-			<column>l.operateDeptId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemDeptDao</code-to-name> 
-		</summary-define>
-		<summary-define>
-			<view-name>人员</view-name>
-			<column>l.operateUserId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemUserDao</code-to-name> 
-		</summary-define>
+        <query-define><!-- 可重复 -->
+            <name>finish</name>
 
-		<query-define ><!-- 可重复 -->
-			<name>finish</name>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
+            <where>l.mainId=m.id and l.operateDeptId&lt;&gt;'' and l.activeTemplateId='startPerCtrol'
+            </where><!-- 可为空 -->
+            <order-by>l.operateDeptId</order-by><!-- 可为空 -->
+            <between-time-column></between-time-column>
 
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
-			<where>l.mainId=m.id and l.operateUserId&lt;&gt;'' and l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'</where><!-- 可为空 -->
-			<order-by>l.operateDeptId,l.operateUserId</order-by><!-- 可为空 -->		
-			<between-time-column></between-time-column>
+            <!-- 用于计算分母,下面3行(可选) -->
+            <percent-count-sql>Select count(distinct l.mainId) from performance_link l where
+                l.activeTemplateId='startPerCtrol'
+            </percent-count-sql><!-- 可为空 -->
+            <percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                l.activeTemplateId='startPerCtrol'
+            </percent-list-hsql><!-- 可为空 -->
+            <!-- 第3行可选,没写 -->
 
-			<!-- 用于计算分母,下面3行(可选) -->
-			<percent-count-sql>Select count(distinct l.mainId) from performance_link l where l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'</percent-count-sql><!-- 可为空 -->
-			<percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.activeTemplateId='createPerAdvice' and linkisMake='1030101'</percent-list-hsql><!-- 可为空 -->
-			<!-- 第3行可选,没写 -->
+            <field-define><!-- 可重复 -->
+                <view-name>应急事件性能监控任务及时完成率</view-name>
+                <view-width>50%</view-width>
+                <as-name>f1</as-name>
+                <stat-sql>sum(case when (l.completeflag=0 and l.activeTemplateId='startPerCtrol') then 1 else 0 end)
+                </stat-sql>
+                <need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
+                <percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
+                <percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
 
-			<field-define><!-- 可重复 -->
-				<view-name>客户化报表及时完成率</view-name>
-				<view-width>30%</view-width>
-				<as-name>f1</as-name>
-				<stat-sql>sum(case when (l.completeflag=0 and linkisMake='1030101' and activeTemplateId='createPerAdvice') then 1 else 0 end)</stat-sql>
-				<need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
-				<percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
-				<percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
+                <list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                    l.completeFlag=0 and l.activeTemplateId='startPerCtrol'
+                </list-hsql>
+            </field-define>
 
-				<list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.completeFlag=0 and l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'</list-hsql>
-			</field-define>
-			
-		</query-define>
-	</kpi-define>
-	
-<!-- ********按(部门)统计*客户化报表及时完成率********************** -->
+        </query-define>
 
-	<kpi-define><!-- 可重复 -->
-		<name>pereportKPI_dept</name>
-		<title>客户化报表及时完成率-按部门统计</title>
-		<use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
-
-		<summary-define>
-			<view-name>部门</view-name>
-			<column>l.operateDeptId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemDeptDao</code-to-name> 
-		</summary-define>
-
-		<query-define ><!-- 可重复 -->
-			<name>finish</name>
-
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
-			<where>l.mainId=m.id and l.operateDeptId&lt;&gt;'' and l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'</where><!-- 可为空 -->
-			<order-by>l.operateDeptId</order-by><!-- 可为空 -->		
-			<between-time-column></between-time-column>
-
-			<!-- 用于计算分母,下面3行(可选) -->
-			<percent-count-sql>Select count(distinct l.mainId) from performance_link l where l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'</percent-count-sql><!-- 可为空 -->
-			<percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.activeTemplateId='createPerAdvice' and linkisMake='1030101'</percent-list-hsql><!-- 可为空 -->
-			<!-- 第3行可选,没写 -->
-
-			<field-define><!-- 可重复 -->
-				<view-name>客户化报表及时完成率</view-name>
-				<view-width>30%</view-width>
-				<as-name>f1</as-name>
-				<stat-sql>sum(case when (l.completeflag=0 and linkisMake='1030101' and activeTemplateId='createPerAdvice') then 1 else 0 end)</stat-sql>
-				<need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
-				<percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
-				<percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
-
-				<list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.completeFlag=0 and l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'</list-hsql>
-			</field-define>
-			
-		</query-define>
-	</kpi-define>
+    </kpi-define>
 
 
-<!-- ********按(部门/人员)统计*性能分析任务完成及时率********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>perfinishKPI_user</name>
-		<title>性能分析任务完成及时率-按部门/人员统计</title>
-		<use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
+    <!-- ********按(部门,人员)统计*客户化报表及时完成率********************** -->
 
-		<summary-define>
-			<view-name>部门</view-name>
-			<column>l.operateDeptId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemDeptDao</code-to-name> 
-		</summary-define>
-		<summary-define>
-			<view-name>人员</view-name>
-			<column>l.operateUserId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemUserDao</code-to-name> 
-		</summary-define>
+    <kpi-define><!-- 可重复 -->
+        <name>pereportKPI_user</name>
+        <title>客户化报表及时完成率-按部门/人员统计</title>
+        <use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
 
-		<query-define ><!-- 可重复 -->
-			<name>query</name>
+        <summary-define>
+            <view-name>部门</view-name>
+            <column>l.operateDeptId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemDeptDao</code-to-name>
+        </summary-define>
+        <summary-define>
+            <view-name>人员</view-name>
+            <column>l.operateUserId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemUserDao</code-to-name>
+        </summary-define>
 
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
-			<where>l.mainId=m.id and l.operateUserId&lt;&gt;'' and l.activeTemplateId='assEssmentNetPer'</where><!-- 可为空 -->
-			<order-by>l.operateDeptId,l.operateUserId</order-by><!-- 可为空 -->		
-			<between-time-column></between-time-column>
+        <query-define><!-- 可重复 -->
+            <name>finish</name>
 
-			<!-- 用于计算分母,下面3行(可选) -->
-			<percent-count-sql>Select count(distinct l.mainId) from performance_link l where l.activeTemplateId='assEssmentNetPer'</percent-count-sql><!-- 可为空 -->
-			<percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.activeTemplateId='assEssmentNetPer'</percent-list-hsql><!-- 可为空 -->
-			<!-- 第3行可选,没写 -->
-			
-			<field-define><!-- 可重复 -->
-				<view-name>性能分析任务完成及时率</view-name>
-				<view-width>20%</view-width>
-				<as-name>f1</as-name>
-				<stat-sql>sum(case when (completeflag=0 and activeTemplateId!='assEssmentNetPer') then 1 else 0 end)</stat-sql>
-				<need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
-				<percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
-				<percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
+            <where>l.mainId=m.id and l.operateUserId&lt;&gt;'' and l.activeTemplateId='createPerAdvice' and
+                l.linkisMake='1030101'
+            </where><!-- 可为空 -->
+            <order-by>l.operateDeptId,l.operateUserId</order-by><!-- 可为空 -->
+            <between-time-column></between-time-column>
 
-				<list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.completeFlag=0 and l.activeTemplateId='assEssmentNetPer'</list-hsql>
-			</field-define>
-			
-		</query-define>
-	</kpi-define>
-	
-<!-- ********按(部门)统计*性能分析任务完成及时率********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>perfinishKPI_dept</name>
-		<title>性能分析任务完成及时率-按部门统计</title>
-		<use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
+            <!-- 用于计算分母,下面3行(可选) -->
+            <percent-count-sql>Select count(distinct l.mainId) from performance_link l where
+                l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'
+            </percent-count-sql><!-- 可为空 -->
+            <percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                l.activeTemplateId='createPerAdvice' and linkisMake='1030101'
+            </percent-list-hsql><!-- 可为空 -->
+            <!-- 第3行可选,没写 -->
 
-		<summary-define>
-			<view-name>部门</view-name>
-			<column>l.operateDeptId</column><!-- 汇总字段 -->
-			<view-width>20%</view-width>
-			<code-to-name>tawSystemDeptDao</code-to-name> 
-		</summary-define>
+            <field-define><!-- 可重复 -->
+                <view-name>客户化报表及时完成率</view-name>
+                <view-width>30%</view-width>
+                <as-name>f1</as-name>
+                <stat-sql>sum(case when (l.completeflag=0 and linkisMake='1030101' and
+                    activeTemplateId='createPerAdvice') then 1 else 0 end)
+                </stat-sql>
+                <need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
+                <percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
+                <percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
 
-		<query-define ><!-- 可重复 -->
-			<name>query</name>
+                <list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                    l.completeFlag=0 and l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'
+                </list-hsql>
+            </field-define>
 
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
-			<where>l.mainId=m.id and l.operateDeptId&lt;&gt;'' and l.activeTemplateId='assEssmentNetPer'</where><!-- 可为空 -->
-			<order-by>l.operateDeptId</order-by><!-- 可为空 -->		
-			<between-time-column></between-time-column>
+        </query-define>
+    </kpi-define>
 
-			<!-- 用于计算分母,下面3行(可选) -->
-			<percent-count-sql>Select count(distinct l.mainId) from performance_link l where l.activeTemplateId='assEssmentNetPer'</percent-count-sql><!-- 可为空 -->
-			<percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.activeTemplateId='assEssmentNetPer'</percent-list-hsql><!-- 可为空 -->
-			<!-- 第3行可选,没写 -->
-			
-			<field-define><!-- 可重复 -->
-				<view-name>性能分析任务完成及时率</view-name>
-				<view-width>20%</view-width>
-				<as-name>f1</as-name>
-				<stat-sql>sum(case when (completeflag=0 and activeTemplateId!='assEssmentNetPer') then 1 else 0 end)</stat-sql>
-				<need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
-				<percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
-				<percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
+    <!-- ********按(部门)统计*客户化报表及时完成率********************** -->
 
-				<list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and l.completeFlag=0 and l.activeTemplateId='assEssmentNetPer'</list-hsql>
-			</field-define>
-			
-		</query-define>
-	</kpi-define>
-	
+    <kpi-define><!-- 可重复 -->
+        <name>pereportKPI_dept</name>
+        <title>客户化报表及时完成率-按部门统计</title>
+        <use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
+
+        <summary-define>
+            <view-name>部门</view-name>
+            <column>l.operateDeptId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemDeptDao</code-to-name>
+        </summary-define>
+
+        <query-define><!-- 可重复 -->
+            <name>finish</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
+            <where>l.mainId=m.id and l.operateDeptId&lt;&gt;'' and l.activeTemplateId='createPerAdvice' and
+                l.linkisMake='1030101'
+            </where><!-- 可为空 -->
+            <order-by>l.operateDeptId</order-by><!-- 可为空 -->
+            <between-time-column></between-time-column>
+
+            <!-- 用于计算分母,下面3行(可选) -->
+            <percent-count-sql>Select count(distinct l.mainId) from performance_link l where
+                l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'
+            </percent-count-sql><!-- 可为空 -->
+            <percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                l.activeTemplateId='createPerAdvice' and linkisMake='1030101'
+            </percent-list-hsql><!-- 可为空 -->
+            <!-- 第3行可选,没写 -->
+
+            <field-define><!-- 可重复 -->
+                <view-name>客户化报表及时完成率</view-name>
+                <view-width>30%</view-width>
+                <as-name>f1</as-name>
+                <stat-sql>sum(case when (l.completeflag=0 and linkisMake='1030101' and
+                    activeTemplateId='createPerAdvice') then 1 else 0 end)
+                </stat-sql>
+                <need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
+                <percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
+                <percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
+
+                <list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                    l.completeFlag=0 and l.activeTemplateId='createPerAdvice' and l.linkisMake='1030101'
+                </list-hsql>
+            </field-define>
+
+        </query-define>
+    </kpi-define>
+
+
+    <!-- ********按(部门/人员)统计*性能分析任务完成及时率********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>perfinishKPI_user</name>
+        <title>性能分析任务完成及时率-按部门/人员统计</title>
+        <use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
+
+        <summary-define>
+            <view-name>部门</view-name>
+            <column>l.operateDeptId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemDeptDao</code-to-name>
+        </summary-define>
+        <summary-define>
+            <view-name>人员</view-name>
+            <column>l.operateUserId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemUserDao</code-to-name>
+        </summary-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
+            <where>l.mainId=m.id and l.operateUserId&lt;&gt;'' and l.activeTemplateId='assEssmentNetPer'
+            </where><!-- 可为空 -->
+            <order-by>l.operateDeptId,l.operateUserId</order-by><!-- 可为空 -->
+            <between-time-column></between-time-column>
+
+            <!-- 用于计算分母,下面3行(可选) -->
+            <percent-count-sql>Select count(distinct l.mainId) from performance_link l where
+                l.activeTemplateId='assEssmentNetPer'
+            </percent-count-sql><!-- 可为空 -->
+            <percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                l.activeTemplateId='assEssmentNetPer'
+            </percent-list-hsql><!-- 可为空 -->
+            <!-- 第3行可选,没写 -->
+
+            <field-define><!-- 可重复 -->
+                <view-name>性能分析任务完成及时率</view-name>
+                <view-width>20%</view-width>
+                <as-name>f1</as-name>
+                <stat-sql>sum(case when (completeflag=0 and activeTemplateId!='assEssmentNetPer') then 1 else 0 end)
+                </stat-sql>
+                <need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
+                <percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
+                <percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
+
+                <list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                    l.completeFlag=0 and l.activeTemplateId='assEssmentNetPer'
+                </list-hsql>
+            </field-define>
+
+        </query-define>
+    </kpi-define>
+
+    <!-- ********按(部门)统计*性能分析任务完成及时率********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>perfinishKPI_dept</name>
+        <title>性能分析任务完成及时率-按部门统计</title>
+        <use-jsp-head></use-jsp-head><!-- /web/**/*/*.jsp -->
+
+        <summary-define>
+            <view-name>部门</view-name>
+            <column>l.operateDeptId</column><!-- 汇总字段 -->
+            <view-width>20%</view-width>
+            <code-to-name>tawSystemDeptDao</code-to-name>
+        </summary-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>performance_main m,performance_link l</from><!-- "table-name"和"from" 不可都为空 -->
+            <where>l.mainId=m.id and l.operateDeptId&lt;&gt;'' and l.activeTemplateId='assEssmentNetPer'
+            </where><!-- 可为空 -->
+            <order-by>l.operateDeptId</order-by><!-- 可为空 -->
+            <between-time-column></between-time-column>
+
+            <!-- 用于计算分母,下面3行(可选) -->
+            <percent-count-sql>Select count(distinct l.mainId) from performance_link l where
+                l.activeTemplateId='assEssmentNetPer'
+            </percent-count-sql><!-- 可为空 -->
+            <percent-list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                l.activeTemplateId='assEssmentNetPer'
+            </percent-list-hsql><!-- 可为空 -->
+            <!-- 第3行可选,没写 -->
+
+            <field-define><!-- 可重复 -->
+                <view-name>性能分析任务完成及时率</view-name>
+                <view-width>20%</view-width>
+                <as-name>f1</as-name>
+                <stat-sql>sum(case when (completeflag=0 and activeTemplateId!='assEssmentNetPer') then 1 else 0 end)
+                </stat-sql>
+                <need-percent>true</need-percent><!-- 值true,false. 为"true"时,上级"percent-count"不可为空 -->
+                <percent-divisor-name>及时完成数</percent-divisor-name><!-- 百分比中分子显示名称 -->
+                <percent-count-name>完成总数</percent-count-name><!-- 百分比中分母显示名称 -->
+
+                <list-hsql>select distinct m from PerFormAnceMain m,PerFormAnceLink l where l.mainId=m.id and
+                    l.completeFlag=0 and l.activeTemplateId='assEssmentNetPer'
+                </list-hsql>
+            </field-define>
+
+        </query-define>
+    </kpi-define>
+
 </KpiConfig>

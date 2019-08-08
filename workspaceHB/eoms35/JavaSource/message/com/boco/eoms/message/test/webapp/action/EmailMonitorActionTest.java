@@ -56,7 +56,7 @@ public class EmailMonitorActionTest extends BaseStrutsTestCase {
     }
 
     public void testSave() throws Exception {
-    	EmailMonitorForm emailMonitorForm = new EmailMonitorForm();
+        EmailMonitorForm emailMonitorForm = new EmailMonitorForm();
         setRequestPathInfo("/editEmailMonitor");
         addRequestParameter("method", "Edit");
         addRequestParameter("id", "1");
@@ -84,7 +84,7 @@ public class EmailMonitorActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"emailMonitor.updated"});
+        verifyActionMessages(new String[]{"emailMonitor.updated"});
 
     }
 

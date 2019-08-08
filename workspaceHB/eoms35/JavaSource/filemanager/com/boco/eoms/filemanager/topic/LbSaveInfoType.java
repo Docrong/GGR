@@ -54,8 +54,8 @@ public class LbSaveInfoType {
                         pst.setString(i + 1, strParamArray[i]);
                     }
                 }
-                strInfoTypeId=Util.getSequenceId(m_con,"taw_file_mgr_topic","topic_id");
-                pst.setString(9,strInfoTypeId);
+                strInfoTypeId = Util.getSequenceId(m_con, "taw_file_mgr_topic", "topic_id");
+                pst.setString(9, strInfoTypeId);
                 pst.executeUpdate();
                 pst.close();
 //查询得到Id

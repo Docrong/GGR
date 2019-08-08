@@ -14,30 +14,30 @@ import com.boco.eoms.sheet.groupcomplaint.service.IGroupComplaintMainManager;
 
 public class GroupComplaintKnowledgeBO {
 
-	/**
-	 * 新增知识库
-	 */
-	public static String showNewknowLedage(String sheetKey,String userId) throws Exception{
-		IGroupComplaintMainManager mgr=
-			 (IGroupComplaintMainManager)ApplicationContextHolder.getInstance().getBean("iGroupComplaintMainManager");
-		ID2NameService service = (ID2NameService) ApplicationContextHolder.getInstance().getBean("ID2NameGetServiceCatch");
-		GroupComplaintMain main = (GroupComplaintMain)mgr.getSingleMainPO(sheetKey);
-		
-		Map mainMap = new HashMap();
-		if(main!=null){				
-			mainMap.put("sheetNo", main.getSheetId());
-			mainMap.put("title", main.getTitle());
-			mainMap.put("urgentDegree", service.id2Name(StaticMethod.nullObject2String(main.getUrgentDegree()),"ItawSystemDictTypeDao"));
-			/**
-			 * 因规范修改,下面屏蔽的三个字段在新规范中已经去掉
-			 */
+    /**
+     * 新增知识库
+     */
+    public static String showNewknowLedage(String sheetKey, String userId) throws Exception {
+        IGroupComplaintMainManager mgr =
+                (IGroupComplaintMainManager) ApplicationContextHolder.getInstance().getBean("iGroupComplaintMainManager");
+        ID2NameService service = (ID2NameService) ApplicationContextHolder.getInstance().getBean("ID2NameGetServiceCatch");
+        GroupComplaintMain main = (GroupComplaintMain) mgr.getSingleMainPO(sheetKey);
+
+        Map mainMap = new HashMap();
+        if (main != null) {
+            mainMap.put("sheetNo", main.getSheetId());
+            mainMap.put("title", main.getTitle());
+            mainMap.put("urgentDegree", service.id2Name(StaticMethod.nullObject2String(main.getUrgentDegree()), "ItawSystemDictTypeDao"));
+            /**
+             * 因规范修改,下面屏蔽的三个字段在新规范中已经去掉
+             */
 //			mainMap.put("btype1", main.getBtype1());
-			mainMap.put("bdeptContact", main.getBdeptContact());
+            mainMap.put("bdeptContact", main.getBdeptContact());
 //			mainMap.put("customerName", main.getCustomerName());
 //			mainMap.put("customPhone", main.getCustomPhone());
-			mainMap.put("complaintTime", main.getComplaintTime());
-			mainMap.put("faultTime", main.getFaultTime());
-			
+            mainMap.put("complaintTime", main.getComplaintTime());
+            mainMap.put("faultTime", main.getFaultTime());
+
 //			mainMap.put("complaintAdd", main.getComplaintAdd());
 //			mainMap.put("complaintDesc", main.getComplaintDesc());
 //			mainMap.put("bdeptContactPhone", service.id2Name(StaticMethod.nullObject2String(main.getBdeptContactPhone()),"ItawSystemDictTypeDao"));			
@@ -70,7 +70,7 @@ public class GroupComplaintKnowledgeBO {
 //			mainMap.put("otherUserDesc", main.getOtherUserDesc());
 //			mainMap.put("calledPartyCallC", main.getCalledPartyCallC());
 //			mainMap.put("dealAdvice", main.getDealAdvice());
-			
+
 //			mainMap.put("faultDesc", main.getfaultDesc);
 //			mainMap.put("faultArea", main.getOtherUserDesc());
 //			mainMap.put("faultRoad", main.getCalledPartyCallC());
@@ -79,11 +79,11 @@ public class GroupComplaintKnowledgeBO {
 //			mainMap.put("faultRoad2", main.getOtherUserDesc());
 //			mainMap.put("faultVill", main.getCalledPartyCallC());
 //			mainMap.put("isVisit", service.id2Name(StaticMethod.nullObject2String(main.getCallerIsIntelligentUser()),"ItawSystemDictTypeDao"));
-		}
+        }
 
-		String xml = KnowledgeMethod.getKnowledgeXml(userId, "complaint", sheetKey, mainMap, null);
-		return KnowledgeClient.loadAddKnowledgeService().saveXmlValue(xml);
-	}
+        String xml = KnowledgeMethod.getKnowledgeXml(userId, "complaint", sheetKey, mainMap, null);
+        return KnowledgeClient.loadAddKnowledgeService().saveXmlValue(xml);
+    }
 
 
 }

@@ -1,205 +1,206 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="tawWorkbenchMemoForm"
-			type="com.boco.eoms.workbench.memo.webapp.form.TawWorkbenchMemoForm" />
-		<form-bean name="tawWorkbenchMemoSendLogForm"
-			type="com.boco.eoms.workbench.memo.webapp.form.TawWorkbenchMemoSendLogForm" />
-	</form-beans>
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="tawWorkbenchMemoForm"
+                   type="com.boco.eoms.workbench.memo.webapp.form.TawWorkbenchMemoForm"/>
+        <form-bean name="tawWorkbenchMemoSendLogForm"
+                   type="com.boco.eoms.workbench.memo.webapp.form.TawWorkbenchMemoSendLogForm"/>
+    </form-beans>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="success" path="/common/success.jsp"
-			redirect="false" contextRelative="true" />
-		<forward name="fail" path="/common/fail.jsp" redirect="false"
-			contextRelative="true" />
-		<forward name="list"
-			path="/workbench/memo/tawWorkbenchMemo.do?method=search"
-			redirect="false" contextRelative="true" />
-		<forward name="notonduty" path="/duty/notonduty1.jsp" redirect="false" contextRelative="true" />
-		<forward name="timeout" path="/timeout.jsp" redirect="false" contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="success" path="/common/success.jsp"
+                 redirect="false" contextRelative="true"/>
+        <forward name="fail" path="/common/fail.jsp" redirect="false"
+                 contextRelative="true"/>
+        <forward name="list"
+                 path="/workbench/memo/tawWorkbenchMemo.do?method=search"
+                 redirect="false" contextRelative="true"/>
+        <forward name="notonduty" path="/duty/notonduty1.jsp" redirect="false" contextRelative="true"/>
+        <forward name="timeout" path="/timeout.jsp" redirect="false" contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
+    <!-- ========== Action Mapping Definitions =================================== -->
 
-	<action-mappings>
-		<action path="/tawWorkbenchMemoMain"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
-			scope="request" input="mainMenu" parameter="method" unknown="false"
-			validate="false">
-			<forward name="memoMain"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoMain.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		<action path="/tawWorkbenchMemoNodes"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
-			scope="request" input="mainMenu" parameter="method" unknown="false"
-			validate="false">
-			<forward name="memoMain"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoMain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="memoSearch"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSearch.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="searchList"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="xSearchList"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoRecordList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="xSearchreciver"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoReciveList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="xSearch"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSearchReciver.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="recordSearch"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSearchRecord.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
+    <action-mappings>
+        <action path="/tawWorkbenchMemoMain"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
+                scope="request" input="mainMenu" parameter="method" unknown="false"
+                validate="false">
+            <forward name="memoMain"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoMain.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+        <action path="/tawWorkbenchMemoNodes"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
+                scope="request" input="mainMenu" parameter="method" unknown="false"
+                validate="false">
+            <forward name="memoMain"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoMain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="memoSearch"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSearch.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="searchList"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="xSearchList"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoRecordList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="xSearchreciver"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoReciveList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="xSearch"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSearchReciver.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="recordSearch"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSearchRecord.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
 
-		</action>
+        </action>
 
-		<action path="/tawWorkbenchMemo"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
-			name="tawWorkbenchMemoForm" scope="request" input="mainMenu"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoFormEdit.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawWorkbenchMemo.do"
-				redirect="true" contextRelative="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		<action path="/editTawWorkbenchMemo"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
-			name="tawWorkbenchMemoForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawWorkbenchMemo.do"
-				redirect="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		<action path="/saveTawWorkbenchMemo"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
-			name="tawWorkbenchMemoForm" scope="request" input="edit"
-			parameter="method" unknown="false" validate="true">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawWorkbenchMemo.do"
-				redirect="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
+        <action path="/tawWorkbenchMemo"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
+                name="tawWorkbenchMemoForm" scope="request" input="mainMenu"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoFormEdit.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawWorkbenchMemo.do"
+                     redirect="true" contextRelative="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+        <action path="/editTawWorkbenchMemo"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
+                name="tawWorkbenchMemoForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawWorkbenchMemo.do"
+                     redirect="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+        <action path="/saveTawWorkbenchMemo"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoAction"
+                name="tawWorkbenchMemoForm" scope="request" input="edit"
+                parameter="method" unknown="false" validate="true">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawWorkbenchMemo.do"
+                     redirect="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
 
-		<action path="/tawWorkbenchMemoSendLogs"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoSendLogAction"
-			name="tawWorkbenchMemoForm" scope="request" input="mainMenu"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawWorkbenchMemo.do"
-				redirect="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		<action path="/editTawWorkbenchMemoSendLog"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoSendLogAction"
-			name="tawWorkbenchMemoForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="detailContent"
-				path="/WEB-INF/pages/tawWorkbenchMemo/detailContent.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawWorkbenchMemoSendLogs.do"
-				redirect="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		<action path="/saveTawWorkbenchMemoSendLog"
-			type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoSendLogAction"
-			name="tawWorkbenchMemoForm" scope="request" input="edit"
-			parameter="method" unknown="false" validate="true">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search"
-				path="/tawWorkbenchMemo.do?method=search" redirect="true" />
-			<forward name="false"
-				path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-	</action-mappings>
+        <action path="/tawWorkbenchMemoSendLogs"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoSendLogAction"
+                name="tawWorkbenchMemoForm" scope="request" input="mainMenu"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawWorkbenchMemo.do"
+                     redirect="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+        <action path="/editTawWorkbenchMemoSendLog"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoSendLogAction"
+                name="tawWorkbenchMemoForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="detailContent"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/detailContent.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawWorkbenchMemoSendLogs.do"
+                     redirect="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+        <action path="/saveTawWorkbenchMemoSendLog"
+                type="com.boco.eoms.workbench.memo.webapp.action.TawWorkbenchMemoSendLogAction"
+                name="tawWorkbenchMemoForm" scope="request" input="edit"
+                parameter="method" unknown="false" validate="true">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/tawWorkbenchMemoSendLogList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search"
+                     path="/tawWorkbenchMemo.do?method=search" redirect="true"/>
+            <forward name="false"
+                     path="/WEB-INF/pages/tawWorkbenchMemo/false.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+    </action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources
-		parameter="config/ApplicationResources-workbench-memo" />
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources
+            parameter="config/ApplicationResources-workbench-memo"/>
 
 
-	<!-- ========== Validator plugin ===================  -->
-	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-		<set-property property="pathnames"
-			value="/WEB-INF/validator-rules.xml,
+    <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
-                             /WEB-INF/validation.xml" />
-	</plug-in>
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
 </struts-config>
 

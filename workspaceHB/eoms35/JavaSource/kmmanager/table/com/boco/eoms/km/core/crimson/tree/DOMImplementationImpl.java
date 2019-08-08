@@ -2,7 +2,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -10,7 +10,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -18,7 +18,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -26,7 +26,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -49,8 +49,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -66,16 +66,19 @@ import com.boco.eoms.km.core.crimson.util.XmlNames;
  * @author Edwin Goei
  * @version $Revision: 1.5 $
  */
-public class DOMImplementationImpl implements DOMImplementation
-{
-    /** DOM implementation singleton. */
+public class DOMImplementationImpl implements DOMImplementation {
+    /**
+     * DOM implementation singleton.
+     */
     private static DOMImplementationImpl singleton =
-        new DOMImplementationImpl();
+            new DOMImplementationImpl();
 
-    /** NON-DOM: Obtain and return the single shared object */
+    /**
+     * NON-DOM: Obtain and return the single shared object
+     */
     public static DOMImplementation getDOMImplementation() {
         return singleton;
-    }  
+    }
 
     public DOMImplementationImpl() {
         // No-op
@@ -93,10 +96,10 @@ public class DOMImplementationImpl implements DOMImplementation
      * be shared with NodeBase.supports().
      */
     static boolean hasFeature0(String feature, String version) {
-	if ("XML".equalsIgnoreCase(feature)
-            || "Core".equalsIgnoreCase(feature)) {
+        if ("XML".equalsIgnoreCase(feature)
+                || "Core".equalsIgnoreCase(feature)) {
             if (version == null || "".equals(version) || "2.0".equals(version)
-                || "1.0".equals(version)) {
+                    || "1.0".equals(version)) {
                 return true;
             }
         }
@@ -108,8 +111,7 @@ public class DOMImplementationImpl implements DOMImplementation
      */
     public DocumentType createDocumentType(String qualifiedName,
                                            String publicId,
-                                           String systemId)
-    {
+                                           String systemId) {
         if (!XmlNames.isName(qualifiedName)) {
             throw new DomEx(DOMException.INVALID_CHARACTER_ERR);
         }
@@ -119,18 +121,17 @@ public class DOMImplementationImpl implements DOMImplementation
 
         // Note that DOM2 specifies that ownerDocument = null
         return new Doctype(qualifiedName, publicId, systemId,
-                           /* internalSubset */ null);
+                /* internalSubset */ null);
     }
 
     /**
-     * Creates an XML <code>Document</code> object of the specified type with 
+     * Creates an XML <code>Document</code> object of the specified type with
      * its document element.
      */
-    public Document createDocument(String namespaceURI, 
-                                   String qualifiedName, 
+    public Document createDocument(String namespaceURI,
+                                   String qualifiedName,
                                    DocumentType doctype)
-        throws DOMException
-    {
+            throws DOMException {
         // Create document and if doctype is specified appends it to the
         // document.  Note: WRONG_DOCUMENT_ERR is checked by appendChild().
         Document doc = new XmlDocument();
@@ -146,8 +147,8 @@ public class DOMImplementationImpl implements DOMImplementation
         return doc;
     }
 
-	public Object getFeature(String arg0, String arg1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getFeature(String arg0, String arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

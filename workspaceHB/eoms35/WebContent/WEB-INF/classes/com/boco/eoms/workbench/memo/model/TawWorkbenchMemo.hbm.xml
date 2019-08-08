@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_workbench_memo"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="deleted"
+                name="deleted"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="title"
+                name="title"
                 length="255"
                 not-null="false"
                 unique="true"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="content"
+                name="content"
                 length="255"
                 not-null="false"
                 unique="true"
@@ -54,7 +54,7 @@
         </property>
 
         <property
-            name="userid"
+                name="userid"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="creattime"
+                name="creattime"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -72,17 +72,17 @@
         </property>
 
         <property
-            name="level"
+                name="level"
                 length="20"
                 not-null="false"
-                unique="true" 
-                 column="memolevel"
+                unique="true"
+                column="memolevel"
         >
 
         </property>
 
         <property
-            name="sendflag"
+                name="sendflag"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -91,7 +91,7 @@
         </property>
 
         <property
-            name="sendtime"
+                name="sendtime"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -100,7 +100,7 @@
         </property>
 
         <property
-            name="reciever"
+                name="reciever"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -108,16 +108,16 @@
         </property>
 
         <property
-            name="sendmanner"
+                name="sendmanner"
                 length="255"
-                  not-null="false"
+                not-null="false"
                 unique="true"
         >
 
         </property>
 
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

@@ -1,4 +1,4 @@
-﻿<%@ include file="/common/taglibs.jsp"%>
+<%@ include file="/common/taglibs.jsp"%>
 <%@ include file="/common/header_eoms_form.jsp"%>
 <%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
 <%@page import="com.boco.eoms.base.util.StaticMethod" %>

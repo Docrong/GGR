@@ -1,35 +1,35 @@
 package com.boco.eoms.commons.mms.base.config;
 
 public class Report {
-	
-	private String id = null;
-	
-	private String type = null;
-	
-	private Sheet sheet[] = null;
 
-	public String getId() {
-		return id;
-	}
+    private String id = null;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    private String type = null;
 
-	public String getType() {
-		return type;
-	}
+    private Sheet sheet[] = null;
 
-	public void setType(String type) {
-		this.type = type;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public Sheet[] getSheet() {
-		return sheet;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setSheet(Sheet[] sheet) {
-		this.sheet = sheet;
-	}
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Sheet[] getSheet() {
+        return sheet;
+    }
+
+    public void setSheet(Sheet[] sheet) {
+        this.sheet = sheet;
+    }
 
 }

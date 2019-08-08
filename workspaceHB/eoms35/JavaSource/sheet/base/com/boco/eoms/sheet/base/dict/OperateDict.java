@@ -16,10 +16,9 @@ package com.boco.eoms.sheet.base.dict;
  * <p>
  * Date:2007-8-3 11:26:43
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class OperateDict extends DictImpl {
     /**

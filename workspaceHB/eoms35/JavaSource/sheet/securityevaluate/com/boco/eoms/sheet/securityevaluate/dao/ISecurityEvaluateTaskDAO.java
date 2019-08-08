@@ -1,7 +1,7 @@
 
 package com.boco.eoms.sheet.securityevaluate.dao;
 
-public interface ISecurityEvaluateTaskDAO{
+public interface ISecurityEvaluateTaskDAO {
 
 }
 

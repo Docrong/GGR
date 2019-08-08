@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,42 +13,32 @@
             table="eva_tree"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="nodeId"
-            	column="node_id"
+                name="nodeId"
+                column="node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-        <property
-            name="nodeName"
-            	column="node_name"
-                length="255"
-                not-null="false"
-                unique="false"
-        >
 
-        </property>
-        
         <property
-            name="nodeType"
-            	column="node_type"
+                name="nodeName"
+                column="node_name"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -57,56 +47,66 @@
         </property>
 
         <property
-            name="nodeRemark"
-            	column="node_remark"
+                name="nodeType"
+                column="node_type"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="parentNodeId"
-            	column="parent_node_id"
+                name="nodeRemark"
+                column="node_remark"
+                length="255"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="parentNodeId"
+                column="parent_node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="leaf"
-            	column="leaf"
+                name="leaf"
+                column="leaf"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="objectId"
-            	column="object_id"
+                name="objectId"
+                column="object_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="weight"
-            	column="weight"
+                name="weight"
+                column="weight"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

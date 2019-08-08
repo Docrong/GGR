@@ -1,6 +1,7 @@
 package com.boco.eoms.commons.db.bocopool;
 
 // java standard library
+
 import java.util.TimerTask;
 import java.util.ArrayList;
 
@@ -30,8 +31,7 @@ public class ConnCheckerScheduler extends TimerTask {
                 BocoLog.info(this, poolnames.get(i) + "重置定时器成功");
                 BocoLog.info(this, "检查" + poolnames.get(i) + "定时数据库连接池运行正常");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, "定时数据库连接池检查器运行错误: " + e.getMessage());
         }
     }

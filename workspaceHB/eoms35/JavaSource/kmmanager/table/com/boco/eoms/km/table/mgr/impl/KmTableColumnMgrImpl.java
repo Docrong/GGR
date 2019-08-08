@@ -17,46 +17,45 @@ import com.boco.eoms.km.table.dao.KmTableColumnDao;
  * <p>
  * Mon Mar 02 14:55:43 CST 2009
  * </p>
- * 
+ *
  * @author 吕卫华
  * @version 1.0
- * 
  */
 public class KmTableColumnMgrImpl implements KmTableColumnMgr {
- 
-	private KmTableColumnDao  kmTableColumnDao;
- 	
-	public KmTableColumnDao getKmTableColumnDao() {
-		return this.kmTableColumnDao;
-	}
- 	
-	public void setKmTableColumnDao(KmTableColumnDao kmTableColumnDao) {
-		this.kmTableColumnDao = kmTableColumnDao;
-	}
- 	
+
+    private KmTableColumnDao kmTableColumnDao;
+
+    public KmTableColumnDao getKmTableColumnDao() {
+        return this.kmTableColumnDao;
+    }
+
+    public void setKmTableColumnDao(KmTableColumnDao kmTableColumnDao) {
+        this.kmTableColumnDao = kmTableColumnDao;
+    }
+
     public List getKmTableColumns() {
-    	return kmTableColumnDao.getKmTableColumns();
+        return kmTableColumnDao.getKmTableColumns();
     }
 
     public List getKmTableColumnsByTableId(final String tableId) {
-    	return kmTableColumnDao.getKmTableColumnsByTableId(tableId);
+        return kmTableColumnDao.getKmTableColumnsByTableId(tableId);
     }
 
     public KmTableColumn getKmTableColumn(final String id) {
-    	return kmTableColumnDao.getKmTableColumn(id);
+        return kmTableColumnDao.getKmTableColumn(id);
     }
- 
+
     public void saveKmTableColumn(KmTableColumn kmTableColumn) {
-    	kmTableColumnDao.saveKmTableColumn(kmTableColumn);
+        kmTableColumnDao.saveKmTableColumn(kmTableColumn);
     }
-    
+
     public void removeKmTableColumn(final String id) {
-    	kmTableColumnDao.removeKmTableColumn(id);
+        kmTableColumnDao.removeKmTableColumn(id);
     }
-    
+
     public Map getKmTableColumns(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmTableColumnDao.getKmTableColumns(curPage, pageSize, whereStr);
-	}
-	
+                                 final String whereStr) {
+        return kmTableColumnDao.getKmTableColumns(curPage, pageSize, whereStr);
+    }
+
 }

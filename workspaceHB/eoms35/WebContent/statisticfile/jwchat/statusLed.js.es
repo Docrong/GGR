@@ -12,5 +12,5 @@ var invisibleLed = new Image();
 invisibleLed.src = "images/invisible.gif";
 var unavailableLed = new Image();
 unavailableLed.src = "images/unavailable.gif";
-var stalkerLed = new Image();  
+var stalkerLed = new Image();
 stalkerLed.src = "images/stalker.gif";

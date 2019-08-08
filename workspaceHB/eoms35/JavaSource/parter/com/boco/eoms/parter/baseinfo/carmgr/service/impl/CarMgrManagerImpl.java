@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.boco.eoms.base.service.impl.BaseManager;
@@ -17,6 +18,7 @@ public class CarMgrManagerImpl extends BaseManager implements ICarMgrManager {
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setCarMgrDao(ICarMgrDao dao) {
@@ -50,53 +52,58 @@ public class CarMgrManagerImpl extends BaseManager implements ICarMgrManager {
     public void removeCarMgr(final String id) {
         dao.removeCarMgr(new String(id));
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.carmgr.service.ICarMgrManager#getCarMgrs(final Integer curPage, final Integer pageSize)
      */
     public Map getCarMgrs(final Integer curPage, final Integer pageSize) {
-        return dao.getCarMgrs(curPage, pageSize,null);
+        return dao.getCarMgrs(curPage, pageSize, null);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.carmgr.service.ICarMgrManager#getCarMgrs(final Integer curPage, final Integer pageSize, final String whereStr)
-     */    
-    public Map getCarMgrs( Integer curPage,  Integer pageSize,  String whereStr) {
+     */
+    public Map getCarMgrs(Integer curPage, Integer pageSize, String whereStr) {
         return dao.getCarMgrs(curPage, pageSize, whereStr);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.carmgr.service.ICarMgrManager#getChildList(String parentId)
-     */     
-    public List getChildList(String parentId) {		
-		return dao.getChildList(parentId);
-	}
+     */
+    public List getChildList(String parentId) {
+        return dao.getChildList(parentId);
+    }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.carmgr.service.ICarMgrManager#xGetChildNodes(String parentId)
-     */  	
-	public JSONArray xGetChildNodes(String parentId) {
-		JSONArray json = new JSONArray();
-		List list = new ArrayList();	
-		list = this.getChildList(parentId);
+     */
+    public JSONArray xGetChildNodes(String parentId) {
+        JSONArray json = new JSONArray();
+        List list = new ArrayList();
+        list = this.getChildList(parentId);
 
-		for (Iterator rowIt = list.iterator(); rowIt.hasNext();) {
-			CarMgr obj = (CarMgr) rowIt.next();
-			JSONObject jitem = new JSONObject();
-			jitem.put("id", obj.getId());
-			jitem.put("text", obj.getCarName());
-			jitem.put("name", obj.getCarNum());
-			jitem.put("allowChild", true);
-			jitem.put("allowDelete", true);
-			if(obj.getCarNum().equals("1")){
-				jitem.put("leaf", true);   
-			}
-			json.put(jitem);
-		}
-		return json;
-	}	
-	//删除多条记录
-	 public void removeCarMgr(final String[] ids) {
-		 if (null != ids) {
-				for (int i = 0; i < ids.length; i++) {
-					this.removeCarMgr(ids[i]);
-				}
-			}
-	    }
+        for (Iterator rowIt = list.iterator(); rowIt.hasNext(); ) {
+            CarMgr obj = (CarMgr) rowIt.next();
+            JSONObject jitem = new JSONObject();
+            jitem.put("id", obj.getId());
+            jitem.put("text", obj.getCarName());
+            jitem.put("name", obj.getCarNum());
+            jitem.put("allowChild", true);
+            jitem.put("allowDelete", true);
+            if (obj.getCarNum().equals("1")) {
+                jitem.put("leaf", true);
+            }
+            json.put(jitem);
+        }
+        return json;
+    }
+
+    //删除多条记录
+    public void removeCarMgr(final String[] ids) {
+        if (null != ids) {
+            for (int i = 0; i < ids.length; i++) {
+                this.removeCarMgr(ids[i]);
+            }
+        }
+    }
 }

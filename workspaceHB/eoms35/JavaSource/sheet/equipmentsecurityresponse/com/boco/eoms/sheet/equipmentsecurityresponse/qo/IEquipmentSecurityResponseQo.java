@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.equipmentsecurityresponse.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Tue Apr 25 11:45:21 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public interface IEquipmentSecurityResponseQo extends IWorkSheetQO {
- 
- }
+
+public interface IEquipmentSecurityResponseQo extends IWorkSheetQO {
+
+}

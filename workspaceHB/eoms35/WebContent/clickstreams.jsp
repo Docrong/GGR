@@ -1,19 +1,18 @@
-<%@ include file="/common/taglibs.jsp"%>
+<%@ include file="/common/taglibs.jsp" %>
 
 <%@ page import="java.util.*,
                  com.opensymphony.clickstream.Clickstream" %>
 
 <%
-Map clickstreams = (Map) application.getAttribute("clickstreams");
-String showbots = "false";
+    Map clickstreams = (Map) application.getAttribute("clickstreams");
+    String showbots = "false";
 
-if (request.getParameter("showbots") != null)
-{
-    if (request.getParameter("showbots").equals("true"))
-        showbots = "true";
-    else if (request.getParameter("showbots").equals("both"))
-        showbots = "both";
-}
+    if (request.getParameter("showbots") != null) {
+        if (request.getParameter("showbots").equals("true"))
+            showbots = "true";
+        else if (request.getParameter("showbots").equals("both"))
+            showbots = "both";
+    }
 %>
 
 <title><fmt:message key="clickstreams.title"/></title>
@@ -25,11 +24,11 @@ if (request.getParameter("showbots") != null)
 <a href="?showbots=both">Both</a>
 
 <p>
-<% if (clickstreams.keySet().size() == 0) { %>
+        <% if (clickstreams.keySet().size() == 0) { %>
     No clickstreams in progress.
-<% } %>
+        <% } %>
 
-<%
+        <%
 Iterator it = clickstreams.keySet().iterator();
 int count = 0;
 while (it.hasNext())
@@ -50,15 +49,17 @@ while (it.hasNext())
     try {
 %>
 
-<%= count %>. <a href="viewstream.jsp?sid=<%= key %>"><b><%= (stream.getHostname() != null && !stream.getHostname().equals("") ? stream.getHostname() : "Stream") %></b></a> [<%= stream.getStream().size() %> reqs]<br />
+        <%= count %>. <a
+        href="viewstream.jsp?sid=<%= key %>"><b><%= (stream.getHostname() != null && !stream.getHostname().equals("") ? stream.getHostname() : "Stream") %>
+</b></a> [<%= stream.getStream().size() %> reqs]<br/>
 
-<%
+        <%
     }
     catch (Exception e)
     {
 %>
-    An error occurred - <%= e %><br />
-<%
+    An error occurred - <%= e %><br/>
+        <%
     }
 }
 %>

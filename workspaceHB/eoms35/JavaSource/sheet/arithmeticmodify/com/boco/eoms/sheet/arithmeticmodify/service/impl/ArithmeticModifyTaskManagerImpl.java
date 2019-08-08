@@ -11,17 +11,17 @@ import com.boco.eoms.sheet.arithmeticmodify.dao.IArithmeticModifyTaskDAO;
 import com.boco.eoms.sheet.arithmeticmodify.service.IArithmeticModifyTaskManager;
 
 
-public class ArithmeticModifyTaskManagerImpl extends TaskServiceImpl implements  IArithmeticModifyTaskManager{
+public class ArithmeticModifyTaskManagerImpl extends TaskServiceImpl implements IArithmeticModifyTaskManager {
 
-	public Integer getCountOfBrother(String sheetKey, String parentLevelId) throws SheetException {
-		IArithmeticModifyTaskDAO iarithmeticmodifyTaskDAO = (IArithmeticModifyTaskDAO)this.getTaskDAO();	
-		
-		Integer count = new Integer(0);
-		try {
-			count = iarithmeticmodifyTaskDAO.getCountOfBrother(this.getTaskModelObject(), sheetKey, parentLevelId);
-		} catch (Exception e) {
-			throw new SheetException(e);
-		}
-		return count;
-		}
+    public Integer getCountOfBrother(String sheetKey, String parentLevelId) throws SheetException {
+        IArithmeticModifyTaskDAO iarithmeticmodifyTaskDAO = (IArithmeticModifyTaskDAO) this.getTaskDAO();
+
+        Integer count = new Integer(0);
+        try {
+            count = iarithmeticmodifyTaskDAO.getCountOfBrother(this.getTaskModelObject(), sheetKey, parentLevelId);
+        } catch (Exception e) {
+            throw new SheetException(e);
+        }
+        return count;
+    }
 }

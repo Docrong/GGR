@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_workbench_contactgroup"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="deleted"
-            	column="deleted"
+                name="deleted"
+                column="deleted"
                 not-null="false"
                 unique="false"
                 length="8"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="groupName"
-               	column="group_name"
+                name="groupName"
+                column="group_name"
                 not-null="false"
                 unique="false"
                 length="50"
@@ -47,7 +47,7 @@
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 column="remark"
                 not-null="false"
                 unique="false"
@@ -57,7 +57,7 @@
         </property>
 
         <property
-            name="userId"
+                name="userId"
                 column="user_id"
                 not-null="false"
                 unique="false"
@@ -65,9 +65,9 @@
         >
 
         </property>
-        
-       <property
-            name="groupId"
+
+        <property
+                name="groupId"
                 column="group_id"
                 length="50"
                 not-null="false"
@@ -75,7 +75,7 @@
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

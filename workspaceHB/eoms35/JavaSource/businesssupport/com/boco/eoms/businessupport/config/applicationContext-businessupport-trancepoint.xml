@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
-	<bean id="businessupportMgr" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.businessupport.product.service.impl.TrancePointMgrImpl">
-				<property name="businessupportDao" ref="businessupportDao" />
-			</bean>
-		</property>
-	</bean>
+    <bean id="businessupportMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.businessupport.product.service.impl.TrancePointMgrImpl">
+                <property name="businessupportDao" ref="businessupportDao"/>
+            </bean>
+        </property>
+    </bean>
 
-	<bean id="businessupportDao"
-		class="com.boco.eoms.businessupport.product.dao.hibernate.TrancePointDaoHibernate"
-		autowire="byName" />
+    <bean id="businessupportDao"
+          class="com.boco.eoms.businessupport.product.dao.hibernate.TrancePointDaoHibernate"
+          autowire="byName"/>
 
 
 </beans>

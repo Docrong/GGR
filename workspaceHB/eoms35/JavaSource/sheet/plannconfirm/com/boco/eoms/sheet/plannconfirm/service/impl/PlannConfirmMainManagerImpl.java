@@ -18,21 +18,20 @@ import com.boco.eoms.sheet.plannconfirm.service.IPlannConfirmMainManager;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannConfirmMainManagerImpl extends MainService implements IPlannConfirmMainManager {
 
-		public List getNumber(String sendTimeStartDate,String sendTimeEndDate,String queryType) throws SheetException {
-			IPlannConfirmMainDAO iplannConfirmMainDAO = (IPlannConfirmMainDAO) getMainDAO();
-			return iplannConfirmMainDAO.getNumber(sendTimeStartDate,sendTimeEndDate,queryType);
-		}
+public class PlannConfirmMainManagerImpl extends MainService implements IPlannConfirmMainManager {
 
-		public Map getDetail(Integer curPage,Integer pageSize,String sendTimeStartDate,String sendTimeEndDate) throws SheetException {
-			IPlannConfirmMainDAO iplannConfirmMainDAO = (IPlannConfirmMainDAO) getMainDAO();
-			return iplannConfirmMainDAO.getDetail(curPage,pageSize,sendTimeStartDate,sendTimeEndDate);
-		}
- }
+    public List getNumber(String sendTimeStartDate, String sendTimeEndDate, String queryType) throws SheetException {
+        IPlannConfirmMainDAO iplannConfirmMainDAO = (IPlannConfirmMainDAO) getMainDAO();
+        return iplannConfirmMainDAO.getNumber(sendTimeStartDate, sendTimeEndDate, queryType);
+    }
+
+    public Map getDetail(Integer curPage, Integer pageSize, String sendTimeStartDate, String sendTimeEndDate) throws SheetException {
+        IPlannConfirmMainDAO iplannConfirmMainDAO = (IPlannConfirmMainDAO) getMainDAO();
+        return iplannConfirmMainDAO.getDetail(curPage, pageSize, sendTimeStartDate, sendTimeEndDate);
+    }
+}

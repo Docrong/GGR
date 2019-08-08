@@ -15,6 +15,7 @@ import com.boco.eoms.base.Constants;
 import com.boco.eoms.commons.system.role.model.TawSystemRoleType;
 import com.boco.eoms.commons.system.role.service.ITawSystemRoleTypeManager;
 import com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleTypeForm;
+
 import java.util.List;
 import java.util.Map;
 
@@ -22,11 +23,11 @@ import java.util.Map;
  * Action class to handle CRUD on a TawSystemRoleType object
  *
  * @struts.action name="tawSystemRoleTypeForm" path="/tawSystemRoleTypes" scope="request"
- *  validate="false" parameter="method" input="mainMenu"
+ * validate="false" parameter="method" input="mainMenu"
  * @struts.action name="tawSystemRoleTypeForm" path="/editTawSystemRoleType" scope="request"
- *  validate="false" parameter="method" input="list"
+ * validate="false" parameter="method" input="list"
  * @struts.action name="tawSystemRoleTypeForm" path="/saveTawSystemRoleType" scope="request"
- *  validate="true" parameter="method" input="edit"
+ * validate="true" parameter="method" input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit" path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeForm.jsp"
  * @struts.action-forward name="list" path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeList.jsp"
@@ -36,14 +37,14 @@ public final class TawSystemRoleTypeAction extends BaseAction {
     public ActionForward cancel(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         return mapping.findForward("search");
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         ActionMessages messages = new ActionMessages();
         TawSystemRoleTypeForm tawSystemRoleTypeForm = (TawSystemRoleTypeForm) form;
@@ -53,7 +54,7 @@ public final class TawSystemRoleTypeAction extends BaseAction {
         mgr.removeTawSystemRoleType(tawSystemRoleTypeForm.getRoletype_id());
 
         messages.add(ActionMessages.GLOBAL_MESSAGE,
-                     new ActionMessage("tawSystemRoleType.deleted"));
+                new ActionMessage("tawSystemRoleType.deleted"));
 
         // save messages in session, so they'll survive the redirect
         saveMessages(request.getSession(), messages);
@@ -64,7 +65,7 @@ public final class TawSystemRoleTypeAction extends BaseAction {
     public ActionForward edit(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         TawSystemRoleTypeForm tawSystemRoleTypeForm = (TawSystemRoleTypeForm) form;
 
         // if an id is passed in, look up the user - otherwise
@@ -82,7 +83,7 @@ public final class TawSystemRoleTypeAction extends BaseAction {
     public ActionForward save(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         // Extract attributes and parameters we will need
         ActionMessages messages = new ActionMessages();
@@ -96,7 +97,7 @@ public final class TawSystemRoleTypeAction extends BaseAction {
         // add success messages
         if (isNew) {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemRoleType.added"));
+                    new ActionMessage("tawSystemRoleType.added"));
 
             // save messages in session to survive a redirect
             saveMessages(request.getSession(), messages);
@@ -104,7 +105,7 @@ public final class TawSystemRoleTypeAction extends BaseAction {
             return mapping.findForward("search");
         } else {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemRoleType.updated"));
+                    new ActionMessage("tawSystemRoleType.updated"));
             saveMessages(request, messages);
 
             return mapping.findForward("search");
@@ -114,20 +115,21 @@ public final class TawSystemRoleTypeAction extends BaseAction {
     public ActionForward search(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         String pageIndexName = new org.displaytag.util.ParamEncoder("tawDemoMytableList").encodeParameterName(
-    			org.displaytag.tags.TableTagParameters.PARAMETER_PAGE); 
-	    	final Integer pageSize = new Integer(25); 
-	    	final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName))?0:(Integer.parseInt(request.getParameter(pageIndexName)) - 1)); 
+                org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = new Integer(25);
+        final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName)) ? 0 : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
 
         ITawSystemRoleTypeManager mgr = (ITawSystemRoleTypeManager) getBean("ItawSystemRoleTypeManager");
-        Map map = (Map)mgr.getTawSystemRoleTypes(pageIndex,pageSize);	
-        List list = (List)map.get("result");
+        Map map = (Map) mgr.getTawSystemRoleTypes(pageIndex, pageSize);
+        List list = (List) map.get("result");
         request.setAttribute(Constants.TAWSYSTEMROLETYPE_LIST, list);
         request.setAttribute("resultSize", map.get("total"));
 
         return mapping.findForward("list");
     }
+
     public ActionForward unspecified(ActionMapping mapping, ActionForm form,
                                      HttpServletRequest request,
                                      HttpServletResponse response)

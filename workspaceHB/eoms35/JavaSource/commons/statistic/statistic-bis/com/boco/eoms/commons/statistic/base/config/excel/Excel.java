@@ -5,54 +5,55 @@ import java.io.Serializable;
 
 /**
  * @author lizhenyou
- *
+ * <p>
  * Excel表
  */
 public class Excel implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6235900032701394061L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -6235900032701394061L;
 
-	private Sheet[] sheets = null;
-	
-	private String fileName = null; 
+    private Sheet[] sheets = null;
 
-	public String getFileName() {
-		return fileName;
-	}
+    private String fileName = null;
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+    public String getFileName() {
+        return fileName;
+    }
 
-	public Sheet[] getSheets() {
-		return sheets;
-	}
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
-	public void setSheets(Sheet[] sheets) {
-		this.sheets = sheets;
-	}
-	
-	
-	public Sheet getSheetByName(String sheetName){
-		for (int i = 0; i < sheets.length; i++) {
-			Sheet sheet = sheets[i];
-			if (sheet.getSheetName().equals(sheetName)) {
-				return sheet;
-			}
-		}
-		return null;
-	}
-	public Sheet getSheetByIndex(String index){
-		for (int i = 0; i < sheets.length; i++) {
-			Sheet sheet = sheets[i];
-			if (sheet.getSheetIndex() ==Integer.parseInt(index)) {
-				
-				return sheet;
-			}
-		}
-		return null;
-	}
+    public Sheet[] getSheets() {
+        return sheets;
+    }
+
+    public void setSheets(Sheet[] sheets) {
+        this.sheets = sheets;
+    }
+
+
+    public Sheet getSheetByName(String sheetName) {
+        for (int i = 0; i < sheets.length; i++) {
+            Sheet sheet = sheets[i];
+            if (sheet.getSheetName().equals(sheetName)) {
+                return sheet;
+            }
+        }
+        return null;
+    }
+
+    public Sheet getSheetByIndex(String index) {
+        for (int i = 0; i < sheets.length; i++) {
+            Sheet sheet = sheets[i];
+            if (sheet.getSheetIndex() == Integer.parseInt(index)) {
+
+                return sheet;
+            }
+        }
+        return null;
+    }
 }

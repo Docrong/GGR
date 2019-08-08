@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
-	<bean id="tawLocalRepositoryMgr" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.repository.mgr.impl.TawLocalRepositoryMgrImpl">
-				<property name="tawLocalRepositoryDao" ref="tawLocalRepositoryDao" />
-			</bean>
-		</property>
-	</bean>
+    <bean id="tawLocalRepositoryMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.repository.mgr.impl.TawLocalRepositoryMgrImpl">
+                <property name="tawLocalRepositoryDao" ref="tawLocalRepositoryDao"/>
+            </bean>
+        </property>
+    </bean>
 
-	<bean id="tawLocalRepositoryDao"
-		class="com.boco.eoms.repository.dao.hibernate.TawLocalRepositoryDaoHibernate"
-		autowire="byName" />
+    <bean id="tawLocalRepositoryDao"
+          class="com.boco.eoms.repository.dao.hibernate.TawLocalRepositoryDaoHibernate"
+          autowire="byName"/>
 
- <bean id="tawLocalRepositoryUpMgr" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.repository.mgr.impl.TawLocalRepositoryUpMgrImpl">
-				<property name="tawLocalRepositoryUpDao" ref="tawLocalRepositoryUpDao" />
-			</bean>
-		</property>
-	</bean>
+    <bean id="tawLocalRepositoryUpMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.repository.mgr.impl.TawLocalRepositoryUpMgrImpl">
+                <property name="tawLocalRepositoryUpDao" ref="tawLocalRepositoryUpDao"/>
+            </bean>
+        </property>
+    </bean>
 
-	<bean id="tawLocalRepositoryUpDao"
-		class="com.boco.eoms.repository.dao.hibernate.TawLocalRepositoryUpDaoHibernate"
-		autowire="byName" />
+    <bean id="tawLocalRepositoryUpDao"
+          class="com.boco.eoms.repository.dao.hibernate.TawLocalRepositoryUpDaoHibernate"
+          autowire="byName"/>
 </beans>
 
 

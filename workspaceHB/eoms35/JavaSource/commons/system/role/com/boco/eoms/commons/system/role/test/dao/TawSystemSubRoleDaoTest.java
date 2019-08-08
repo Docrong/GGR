@@ -37,7 +37,7 @@ public class TawSystemSubRoleDaoTest extends BaseDaoTestCase {
         tawSystemSubRole.setId("0");
         dao.saveTawSystemSubRole(tawSystemSubRole);
         List results = dao.getTawSystemSubRoles(20000);
-        assertTrue(results.size()==1);
+        assertTrue(results.size() == 1);
     }
 
     public void testGetTawSystemSubRole() throws Exception {
@@ -61,7 +61,7 @@ public class TawSystemSubRoleDaoTest extends BaseDaoTestCase {
     }
 
     public void testRemoveTawSystemSubRole() throws Exception {
-    	String removeId = "10";
+        String removeId = "10";
         dao.removeTawSystemSubRole(removeId);
         try {
             dao.getTawSystemSubRole(removeId);
@@ -70,29 +70,29 @@ public class TawSystemSubRoleDaoTest extends BaseDaoTestCase {
             assertNotNull(e.getMessage());
         }
     }
-    
-    public void testGetTawSystemSubRoleByLogo() throws Exception{
-    	TawSystemSubRole tawSystemSubRole = new TawSystemSubRole();
-    	tawSystemSubRole.setSubRoleName("testLogo");
-    	tawSystemSubRole.setRoleId(26);
-    	tawSystemSubRole.setDeptId("111");
-    	tawSystemSubRole.setType1("type1");
-    	tawSystemSubRole.setType2("type2");
-    	tawSystemSubRole.setType3("type3");
-    	tawSystemSubRole.setType4("type4");
-    	
-    	dao.saveTawSystemSubRole(tawSystemSubRole);
-    	assertNotNull(new Long(tawSystemSubRole.getId()));
-    	
-    	String logo = ""+tawSystemSubRole.getDeptId()+tawSystemSubRole.getType1()+tawSystemSubRole.getType2()+tawSystemSubRole.getType3()+tawSystemSubRole.getType4()+tawSystemSubRole.getRoleId();
-    	tawSystemSubRole = dao.getTawSystemSubRoleByLogo(logo);
-    	assertNotNull(tawSystemSubRole);
+
+    public void testGetTawSystemSubRoleByLogo() throws Exception {
+        TawSystemSubRole tawSystemSubRole = new TawSystemSubRole();
+        tawSystemSubRole.setSubRoleName("testLogo");
+        tawSystemSubRole.setRoleId(26);
+        tawSystemSubRole.setDeptId("111");
+        tawSystemSubRole.setType1("type1");
+        tawSystemSubRole.setType2("type2");
+        tawSystemSubRole.setType3("type3");
+        tawSystemSubRole.setType4("type4");
+
+        dao.saveTawSystemSubRole(tawSystemSubRole);
+        assertNotNull(new Long(tawSystemSubRole.getId()));
+
+        String logo = "" + tawSystemSubRole.getDeptId() + tawSystemSubRole.getType1() + tawSystemSubRole.getType2() + tawSystemSubRole.getType3() + tawSystemSubRole.getType4() + tawSystemSubRole.getRoleId();
+        tawSystemSubRole = dao.getTawSystemSubRoleByLogo(logo);
+        assertNotNull(tawSystemSubRole);
     }
-        
+
 
     public void testGetSubRoles() throws Exception {
 
-        List results = dao.getSubRoles("lisi","72");
+        List results = dao.getSubRoles("lisi", "72");
         assertTrue(results.size() > 0);
     }
 }

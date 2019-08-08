@@ -15,6 +15,7 @@ public interface ITawSupplierkpiInstanceAssManager extends Manager {
 
     /**
      * Gets tawSupplierkpiInstanceAss's information based on id.
+     *
      * @param id the tawSupplierkpiInstanceAss's id
      * @return tawSupplierkpiInstanceAss populated tawSupplierkpiInstanceAss object
      */
@@ -22,32 +23,41 @@ public interface ITawSupplierkpiInstanceAssManager extends Manager {
 
     /**
      * Saves a tawSupplierkpiInstanceAss's information
+     *
      * @param tawSupplierkpiInstanceAss the object to be saved
      */
     public void saveTawSupplierkpiInstanceAss(TawSupplierkpiInstanceAss tawSupplierkpiInstanceAss);
 
     /**
      * Removes a tawSupplierkpiInstanceAss from the database by id
+     *
      * @param id the tawSupplierkpiInstanceAss's id
      */
     public void removeTawSupplierkpiInstanceAss(final String id);
+
     public Map getTawSupplierkpiInstanceAsss(final int curPage, final int pageSize);
+
     public Map getTawSupplierkpiInstanceAsss(final int curPage, final int pageSize, final String whereStr);
+
     /**
      * 根据专业类型返回实例审核项
+     *
      * @param specialType
      * @return
      */
     public TawSupplierkpiInstanceAss getTawSupplierkpiInstanceAssBySpecialType(final String specialType);
+
     /**
      * 返回实例审核表中相应审核状态项
+     *
      * @param whereStr
      * @return
      */
     public List getNodesFromInstanceAss(final String whereStr);
-    
+
     /**
      * 横向报表返回swf实体
+     *
      * @param modelId
      * @param reportTime
      * @param specialType
@@ -55,9 +65,10 @@ public interface ITawSupplierkpiInstanceAssManager extends Manager {
      * @return
      */
     public List getStaticEntitis(final String modelId, final String reportTime, final String specialType, final String kpiId);
-    
+
     /**
      * 纵向报表返回swf实体
+     *
      * @param modelId
      * @param reportTime
      * @param specialType

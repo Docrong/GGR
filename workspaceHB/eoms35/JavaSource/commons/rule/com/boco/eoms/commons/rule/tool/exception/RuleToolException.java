@@ -12,23 +12,22 @@ import com.boco.eoms.commons.rule.exception.RuleException;
  * <p>
  * May 10, 2007 10:33:18 AM
  * </p>
- * 
+ *
  * @author ��
  * @version 1.0
- * 
  */
 public class RuleToolException extends RuleException {
 
-	public RuleToolException() {
-		super();
-	}
+    public RuleToolException() {
+        super();
+    }
 
-	public RuleToolException(String errorMessage) {
-		super(errorMessage);
-	}
+    public RuleToolException(String errorMessage) {
+        super(errorMessage);
+    }
 
-	public RuleToolException(Throwable cause) {
-		super(cause);
-	}
+    public RuleToolException(Throwable cause) {
+        super(cause);
+    }
 
 }

@@ -1,6 +1,6 @@
 /**
  * ForwardServerToTowerServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -22,10 +22,10 @@ public class ForwardServerToTowerServiceLocator extends org.apache.axis.client.S
     public ForwardServerToTowerServiceLocator(java.lang.String wsdlLoc, javax.xml.namespace.QName sName) throws javax.xml.rpc.ServiceException {
         super(wsdlLoc, sName);
     }
-    
+
     private java.lang.String ipPort = XmlManage.getFile("/config/commonfaulttowner-util.xml").getProperty("operate.ipPort");
     // Use to get a proxy class for TaskToTower
-    private java.lang.String TaskToTower_address = "http://"+ipPort+"/TowerKafkaProject/services/TaskToTower";
+    private java.lang.String TaskToTower_address = "http://" + ipPort + "/TowerKafkaProject/services/TaskToTower";
 
     public java.lang.String getTaskToTowerAddress() {
         return TaskToTower_address;
@@ -43,11 +43,10 @@ public class ForwardServerToTowerServiceLocator extends org.apache.axis.client.S
     }
 
     public com.boco.eoms.commonfaultIrontower.ForwardServerToTower getTaskToTower() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(TaskToTower_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getTaskToTower(endpoint);
@@ -58,8 +57,7 @@ public class ForwardServerToTowerServiceLocator extends org.apache.axis.client.S
             com.boco.eoms.commonfaultIrontower.TaskToTowerSoapBindingStub _stub = new com.boco.eoms.commonfaultIrontower.TaskToTowerSoapBindingStub(portAddress, this);
             _stub.setPortName(getTaskToTowerWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -80,8 +78,7 @@ public class ForwardServerToTowerServiceLocator extends org.apache.axis.client.S
                 _stub.setPortName(getTaskToTowerWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -99,8 +96,7 @@ public class ForwardServerToTowerServiceLocator extends org.apache.axis.client.S
         java.lang.String inputPortName = portName.getLocalPart();
         if ("TaskToTower".equals(inputPortName)) {
             return getTaskToTower();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -122,22 +118,20 @@ public class ForwardServerToTowerServiceLocator extends org.apache.axis.client.S
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("TaskToTower".equals(portName)) {
+
+        if ("TaskToTower".equals(portName)) {
             setTaskToTowerEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

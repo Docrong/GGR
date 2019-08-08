@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -12,238 +12,238 @@
             table="BusinessDredgebroad_main"
     >
 
-    <id
-        name="id"
-        column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="sheetId" />
-		<property name="title" />
-		<property name="sheetAcceptLimit" />
-		<property name="sheetCompleteLimit" />
-		<property name="sendTime" />
-		<property name="sendOrgType" />
-		<property name="sendUserId" />
-		<property name="sendDeptId" />
-		<property name="sendRoleId" />
-		<property name="sendContact" />
-		<property name="endTime" />
-		<property name="endResult" />
-		<property name="status" />
-		<property name="holdStatisfied" />
-		<property name="endUserId" />
-		<property name="endDeptId" />
-		<property name="endRoleId" />
-		<property name="deleted" />
-		<property name="piid" />
-		<property name="parentSheetName" />
-		<property name="parentSheetId" />
-		<property name="sheetTemplateName" />
-		<property name="sheetAccessories" />
-		<property name="correlationKey" />
-		<property name="parentCorrelation" />
-		<property name="toDeptId" />
-		<property name="templateFlag" />
-		<property name="cancelReason" />
-		<property name="invokeMode" />
-		<property name="parentPhaseName" />
-		<!-- GPRS -->
+        </id>
+        <property name="sheetId"/>
+        <property name="title"/>
+        <property name="sheetAcceptLimit"/>
+        <property name="sheetCompleteLimit"/>
+        <property name="sendTime"/>
+        <property name="sendOrgType"/>
+        <property name="sendUserId"/>
+        <property name="sendDeptId"/>
+        <property name="sendRoleId"/>
+        <property name="sendContact"/>
+        <property name="endTime"/>
+        <property name="endResult"/>
+        <property name="status"/>
+        <property name="holdStatisfied"/>
+        <property name="endUserId"/>
+        <property name="endDeptId"/>
+        <property name="endRoleId"/>
+        <property name="deleted"/>
+        <property name="piid"/>
+        <property name="parentSheetName"/>
+        <property name="parentSheetId"/>
+        <property name="sheetTemplateName"/>
+        <property name="sheetAccessories"/>
+        <property name="correlationKey"/>
+        <property name="parentCorrelation"/>
+        <property name="toDeptId"/>
+        <property name="templateFlag"/>
+        <property name="cancelReason"/>
+        <property name="invokeMode"/>
+        <property name="parentPhaseName"/>
+        <!-- GPRS -->
 
-		<property name="urgentDegree" />
+        <property name="urgentDegree"/>
 
-		<property name="businesstype1" />
+        <property name="businesstype1"/>
 
-		<property name="bdeptContact" />
+        <property name="bdeptContact"/>
 
-		<property name="bdeptContactPhone" />
+        <property name="bdeptContactPhone"/>
 
-		<property name="customNo" />
+        <property name="customNo"/>
 
-		<property name="customName" />		
+        <property name="customName"/>
 
-		<property name="customContact" />
+        <property name="customContact"/>
 
-		<property name="customContactPhone" />
+        <property name="customContactPhone"/>
 
-		<property name="customContactAdd" />
+        <property name="customContactAdd"/>
 
-		<property name="customContactPost" />
+        <property name="customContactPost"/>
 
-		<property name="customTrade" />
+        <property name="customTrade"/>
 
-		<property name="customContactEmail" />
+        <property name="customContactEmail"/>
 
-		<property name="customLevel" />
+        <property name="customLevel"/>
 
-		<property name="brequirementDesc" />
+        <property name="brequirementDesc"/>
 
-		<property name="factureArea" />
+        <property name="factureArea"/>
 
-		<property name="apnName" />
-		
-		<property name="ipAddressAssign" />
-		
-		<property name="apnRouterMode" />
+        <property name="apnName"/>
 
-		<property name="apnIPPool" />
+        <property name="ipAddressAssign"/>
 
-		<property name="transferMode" />
-		
-		<property name="appServerIPAdd" />
+        <property name="apnRouterMode"/>
 
-		<property name="doubleGGSN" />
-		
-		<property name="secondIPPool" />
-		
-		<property name="isRadiusValidate" />
+        <property name="apnIPPool"/>
 
-		<property name="radiusValidateIPAdd" />
+        <property name="transferMode"/>
 
-		<property name="simHLR" />
+        <property name="appServerIPAdd"/>
 
-		<property name="terminalNum" />
+        <property name="doubleGGSN"/>
 
-		<property name="numDetail" />
-		
-		<property name="volumeAssessment" />
-		<!-- GPRS结束 -->
-		
-		
-		<!--彩信开始  -->
+        <property name="secondIPPool"/>
 
-		<property name="bcode" />
+        <property name="isRadiusValidate"/>
 
-		<property name="siName" />
+        <property name="radiusValidateIPAdd"/>
 
-		<property name="siEnterpriseCode" />
+        <property name="simHLR"/>
 
-		<property name="siServerCode" />
+        <property name="terminalNum"/>
 
-		<property name="siConnectMMSGatewayID" />
+        <property name="numDetail"/>
 
-		<property name="siIPAdd" />
+        <property name="volumeAssessment"/>
+        <!-- GPRS结束 -->
 
-		<property name="siUplinkUrl" />
 
-		<property name="isConnectMISC" />
+        <!--彩信开始  -->
 
-		<property name="comProtocol" />
+        <property name="bcode"/>
 
-		<property name="connectGatewayBandwidth" />
+        <property name="siName"/>
 
-		<property name="maxConnections" />
+        <property name="siEnterpriseCode"/>
 
-		<property name="maxUnderFlow" />
+        <property name="siServerCode"/>
 
-		<property name="maxUplinkFlow" />
+        <property name="siConnectMMSGatewayID"/>
 
-		<property name="portRateIsDown" />
+        <property name="siIPAdd"/>
 
-		<property name="flowControlPriority" />
+        <property name="siUplinkUrl"/>
 
-		<property name="appProgramme" />
-		<!--彩信结束  -->
-		
-		<!-- 短信开始 -->
+        <property name="isConnectMISC"/>
 
-		<property name="nameListSetType" />
+        <property name="comProtocol"/>
 
-		<property name="smsSigned" />
+        <property name="connectGatewayBandwidth"/>
 
-		<property name="enterpriseCode" />
+        <property name="maxConnections"/>
 
-		<property name="serverCode" />
+        <property name="maxUnderFlow"/>
 
-		<property name="connectPoint" />
+        <property name="maxUplinkFlow"/>
 
-		<property name="hostIPAdd" />
+        <property name="portRateIsDown"/>
 
-		<property name="connectGateway" />
+        <property name="flowControlPriority"/>
 
-		<property name="gatewayCode" />
-		<property name="factureTime" />
-		
-		<property name="authenticationModel" />
-		
-		<property name="singleWordsBit" />		
-		
-		<!--短信结束  -->
-		
-		<!-- 传输专线开始 -->
+        <property name="appProgramme"/>
+        <!--彩信结束  -->
 
-		<property name="cityA" />
+        <!-- 短信开始 -->
 
-		<property name="cityZ" />
+        <property name="nameListSetType"/>
 
-		<property name="bandwidth" />
+        <property name="smsSigned"/>
 
-		<property name="amount" />
+        <property name="enterpriseCode"/>
 
-		<property name="portA" />
+        <property name="serverCode"/>
 
-		<property name="portAInterfaceType" />
+        <property name="connectPoint"/>
 
-		<property name="portADetailAdd" />
+        <property name="hostIPAdd"/>
 
-		<property name="portABDeviceName" />
+        <property name="connectGateway"/>
 
-		<property name="portABDevicePort" />
-		
-		<property name="portAContactPhone" />
+        <property name="gatewayCode"/>
+        <property name="factureTime"/>
 
-		<property name="portZ" />
+        <property name="authenticationModel"/>
 
-		<property name="portZInterfaceType" />
+        <property name="singleWordsBit"/>
 
-		<property name="portZBDeviceName" />
+        <!--短信结束  -->
 
-		<property name="portZBDevicePort" />
+        <!-- 传输专线开始 -->
 
-		<property name="portZContactPhone" />
-		<!--传输专线结束  -->
-		<!-- 是否是客服派单 -->
-		<property name="isCustomerFlag" />
-		
-		
-		 <!--集团新规范-->
-		 <property name="provinceName" />
-		 <property name="cityName" />
-		 <property name="countyName" />
-		 <property name="cmanagerPhone" />
-		 <property name="cmanagerContactPhone" />
-		 <property name="productName" />
-    <!-- GPRS -->
-    <property name="numDetailFile" />
-    <!-- 短信、彩信 -->
-    <property name="enterpriseType" />
-    <!-- 短信 -->
-    <property name="connectGatewayName" />
-    <property name="connectGatewayID" />
-    <!--彩信  -->
-    <property name="siconnectMMSGatewayName" />
-    <!-- 传输专线 -->
-    <property name="confCRMTicketNo" />
-    <property name="transfBusiness" />
-    <!-- 端点Z业务设备名称(6月份新规范添加字段，陕西本地加) -->
-	<property name="portZDeviceName" />
-	<!-- 传输专线下的子业务类型（陕西本地加） -->
-	<property name="zxType" />
-	 <!-- 厂商编码(陕西本地加) -->
-	<property name="mainFactoryCode" />	
-	<!-- 业务类型（陕西本地加） -->
-	<property name="mainBusinessType" />
-	<!-- SI工程师姓名（陕西本地加） -->
-	<property name="siEngineerName" />
-	<!-- SI工程师联系电话（陕西本地加） -->
-	<property name="siEngineerPhone" />
-	
-    </class>    
+        <property name="cityA"/>
+
+        <property name="cityZ"/>
+
+        <property name="bandwidth"/>
+
+        <property name="amount"/>
+
+        <property name="portA"/>
+
+        <property name="portAInterfaceType"/>
+
+        <property name="portADetailAdd"/>
+
+        <property name="portABDeviceName"/>
+
+        <property name="portABDevicePort"/>
+
+        <property name="portAContactPhone"/>
+
+        <property name="portZ"/>
+
+        <property name="portZInterfaceType"/>
+
+        <property name="portZBDeviceName"/>
+
+        <property name="portZBDevicePort"/>
+
+        <property name="portZContactPhone"/>
+        <!--传输专线结束  -->
+        <!-- 是否是客服派单 -->
+        <property name="isCustomerFlag"/>
+
+
+        <!--集团新规范-->
+        <property name="provinceName"/>
+        <property name="cityName"/>
+        <property name="countyName"/>
+        <property name="cmanagerPhone"/>
+        <property name="cmanagerContactPhone"/>
+        <property name="productName"/>
+        <!-- GPRS -->
+        <property name="numDetailFile"/>
+        <!-- 短信、彩信 -->
+        <property name="enterpriseType"/>
+        <!-- 短信 -->
+        <property name="connectGatewayName"/>
+        <property name="connectGatewayID"/>
+        <!--彩信  -->
+        <property name="siconnectMMSGatewayName"/>
+        <!-- 传输专线 -->
+        <property name="confCRMTicketNo"/>
+        <property name="transfBusiness"/>
+        <!-- 端点Z业务设备名称(6月份新规范添加字段，陕西本地加) -->
+        <property name="portZDeviceName"/>
+        <!-- 传输专线下的子业务类型（陕西本地加） -->
+        <property name="zxType"/>
+        <!-- 厂商编码(陕西本地加) -->
+        <property name="mainFactoryCode"/>
+        <!-- 业务类型（陕西本地加） -->
+        <property name="mainBusinessType"/>
+        <!-- SI工程师姓名（陕西本地加） -->
+        <property name="siEngineerName"/>
+        <!-- SI工程师联系电话（陕西本地加） -->
+        <property name="siEngineerPhone"/>
+
+    </class>
 
 </hibernate-mapping>
 

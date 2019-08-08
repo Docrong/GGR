@@ -17,68 +17,66 @@ import com.boco.eoms.commons.loging.BocoLog;
  * gzip). Code from <a
  * href="http://www.onjava.com/pub/a/onjava/2003/11/19/filters.html">
  * http://www.onjava.com/pub/a/onjava/2003/11/19/filters.html</a>.
- * 
+ * <p>
  * &copy; 2003 Jayson Falkner You may freely use the code both commercially and
  * non-commercially.
- * 
+ *
  * @author Matt Raible
- * 
  * @web.filter name="compressionFilter"
  */
 public class GZIPFilter extends OncePerRequestFilter {
 //	private final transient Log log = LogFactory.getLog(GZIPFilter.class);
 
-	public void doFilterInternal(HttpServletRequest request,
-			HttpServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+    public void doFilterInternal(HttpServletRequest request,
+                                 HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
-		if (isGZIPSupported(request)) {
+        if (isGZIPSupported(request)) {
 //			if (log.isDebugEnabled()) {
-			BocoLog.debug(this,"GZIP supported, compressing response");
+            BocoLog.debug(this, "GZIP supported, compressing response");
 //			}
 
-			GZIPResponseWrapper wrappedResponse = new GZIPResponseWrapper(
-					response);
+            GZIPResponseWrapper wrappedResponse = new GZIPResponseWrapper(
+                    response);
 
-			chain.doFilter(request, wrappedResponse);
-			wrappedResponse.finishResponse();
+            chain.doFilter(request, wrappedResponse);
+            wrappedResponse.finishResponse();
 
-			return;
-		}
+            return;
+        }
 
-		chain.doFilter(request, response);
-	}
+        chain.doFilter(request, response);
+    }
 
-	/**
-	 * Convenience method to test for GZIP cababilities
-	 * 
-	 * @param req
-	 *            The current user request
-	 * @return boolean indicating GZIP support
-	 */
-	private boolean isGZIPSupported(HttpServletRequest req) {
+    /**
+     * Convenience method to test for GZIP cababilities
+     *
+     * @param req The current user request
+     * @return boolean indicating GZIP support
+     */
+    private boolean isGZIPSupported(HttpServletRequest req) {
 
-		// disable gzip filter for exporting from displaytag
-		String exporting = req
-				.getParameter(TableTagParameters.PARAMETER_EXPORTING);
+        // disable gzip filter for exporting from displaytag
+        String exporting = req
+                .getParameter(TableTagParameters.PARAMETER_EXPORTING);
 
-		if (exporting != null) {
-			BocoLog.debug(this,"detected excel export, disabling filter...");
-			return false;
-		}
+        if (exporting != null) {
+            BocoLog.debug(this, "detected excel export, disabling filter...");
+            return false;
+        }
 
-		String browserEncodings = req.getHeader("accept-encoding");
-		boolean supported = ((browserEncodings != null) && (browserEncodings
-				.indexOf("gzip") != -1));
+        String browserEncodings = req.getHeader("accept-encoding");
+        boolean supported = ((browserEncodings != null) && (browserEncodings
+                .indexOf("gzip") != -1));
 
-		String userAgent = req.getHeader("user-agent");
+        String userAgent = req.getHeader("user-agent");
 
-		if ((userAgent != null) && userAgent.startsWith("httpunit")) {
-			BocoLog.debug(this,"httpunit detected, disabling filter...");
+        if ((userAgent != null) && userAgent.startsWith("httpunit")) {
+            BocoLog.debug(this, "httpunit detected, disabling filter...");
 
-			return false;
-		} else {
-			return supported;
-		}
-	}
+            return false;
+        } else {
+            return supported;
+        }
+    }
 }

@@ -10,15 +10,14 @@ package com.boco.eoms.partner.baseinfo.util;
  * <p>
  * Mon Feb 09 10:57:12 CST 2009
  * </p>
- * 
+ *
  * @author liujinlong
  * @version 3.5
- * 
  */
 public class PartnerDeptConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String PARTNERDEPT_LIST = "partnerDeptList";
+
+    /**
+     * list key
+     */
+    public final static String PARTNERDEPT_LIST = "partnerDeptList";
 }

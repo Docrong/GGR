@@ -12,71 +12,64 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Tue Mar 24 13:30:17 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() eoms
  * @moudle.getVersion() 1.0
- * 
  */
 public class KmContentsDictForm extends BaseForm implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 *
-	 * 知识ID
-	 *
-	 */
-	private java.lang.String contentId;
-   
-	public void setContentId(java.lang.String contentId){
-		this.contentId= contentId;       
-	}
-   
-	public java.lang.String getContentId(){
-		return this.contentId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * 字典ID
-	 *
-	 */
-	private java.lang.String dictId;
-   
-	public void setDictId(java.lang.String dictId){
-		this.dictId= dictId;       
-	}
-   
-	public java.lang.String getDictId(){
-		return this.dictId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * 字典类型
-	 *
-	 */
-	private java.lang.String dictType;
-   
-	public void setDictType(java.lang.String dictType){
-		this.dictType= dictType;       
-	}
-   
-	public java.lang.String getDictType(){
-		return this.dictType;
-	}
+    /**
+     * 知识ID
+     */
+    private java.lang.String contentId;
+
+    public void setContentId(java.lang.String contentId) {
+        this.contentId = contentId;
+    }
+
+    public java.lang.String getContentId() {
+        return this.contentId;
+    }
+
+    /**
+     * 字典ID
+     */
+    private java.lang.String dictId;
+
+    public void setDictId(java.lang.String dictId) {
+        this.dictId = dictId;
+    }
+
+    public java.lang.String getDictId() {
+        return this.dictId;
+    }
+
+    /**
+     * 字典类型
+     */
+    private java.lang.String dictType;
+
+    public void setDictType(java.lang.String dictType) {
+        this.dictType = dictType;
+    }
+
+    public java.lang.String getDictType() {
+        return this.dictType;
+    }
 
 }

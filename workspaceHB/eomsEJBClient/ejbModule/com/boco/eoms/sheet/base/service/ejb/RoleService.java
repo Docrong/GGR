@@ -8,5 +8,5 @@ import java.util.List;
  * Remote interface for Enterprise Bean: RoleService
  */
 public interface RoleService extends javax.ejb.EJBObject {
-	public boolean isVirtualRole(String subRoleId) throws RemoteException;
+    public boolean isVirtualRole(String subRoleId) throws RemoteException;
 }

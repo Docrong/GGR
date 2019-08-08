@@ -1,6 +1,6 @@
 /**
  * CRMProcessSheetSoap12BindingStub.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,7 +13,7 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[5];
@@ -37,8 +37,8 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://ws.huawei.com", "return"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[0] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -48,8 +48,8 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://ws.huawei.com", "return"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[1] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -71,8 +71,8 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://ws.huawei.com", "return"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -94,8 +94,8 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://ws.huawei.com", "return"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[3] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -117,19 +117,19 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://ws.huawei.com", "return"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[4] = oper;
 
     }
 
     public CRMProcessSheetSoap12BindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public CRMProcessSheetSoap12BindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public CRMProcessSheetSoap12BindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -168,8 +168,7 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
             return _call;
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", t);
         }
     }
@@ -190,12 +189,11 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -221,12 +219,11 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {serSupplier, callTime});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{serSupplier, callTime});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -252,12 +249,11 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -283,12 +279,11 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -314,12 +309,11 @@ public class CRMProcessSheetSoap12BindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{sheetType, serviceType, serialNo, serSupplier, serCaller, callerPwd, callTime, attachRef, opPerson, opCorp, opDepart, opContact, opTime, opDetail});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;

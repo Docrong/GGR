@@ -14,76 +14,75 @@ import java.util.List;
  * <p>
  * Mar 27, 2007 11:15:55 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class FMExportPage {
 
-	/**
-	 * 页码名称
-	 */
-	private String name;
+    /**
+     * 页码名称
+     */
+    private String name;
 
-	/**
-	 * 第几页
-	 */
-	private Integer num;
+    /**
+     * 第几页
+     */
+    private Integer num;
 
-	/**
-	 * list.add(object),object的包名类名
-	 */
-	private String className;
+    /**
+     * list.add(object),object的包名类名
+     */
+    private String className;
 
-	/**
-	 * 导出标题样式
-	 */
-	private FMExportTitles titles;
+    /**
+     * 导出标题样式
+     */
+    private FMExportTitles titles;
 
-	/**
-	 * xml头内存
-	 */
-	private List headers = new ArrayList();
+    /**
+     * xml头内存
+     */
+    private List headers = new ArrayList();
 
-	public String getClassName() {
-		return className;
-	}
+    public String getClassName() {
+        return className;
+    }
 
-	public void setClassName(String className) {
-		this.className = className;
-	}
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
-	public List getHeaders() {
-		return headers;
-	}
+    public List getHeaders() {
+        return headers;
+    }
 
-	public void setHeaders(List headers) {
-		this.headers = headers;
-	}
+    public void setHeaders(List headers) {
+        this.headers = headers;
+    }
 
-	public Integer getNum() {
-		return num;
-	}
+    public Integer getNum() {
+        return num;
+    }
 
-	public void setNum(Integer num) {
-		this.num = num;
-	}
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
-	public FMExportTitles getTitles() {
-		return titles;
-	}
+    public FMExportTitles getTitles() {
+        return titles;
+    }
 
-	public void setTitles(FMExportTitles titles) {
-		this.titles = titles;
-	}
+    public void setTitles(FMExportTitles titles) {
+        this.titles = titles;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }

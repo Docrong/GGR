@@ -1,264 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id></est-module-id>
+    <title>kpi统计</title>
+    <est-module-id></est-module-id>
 
-	
-	<!--******************************************************************
+
+    <!--******************************************************************
 ********    按申请单位统计  ***************************************************
 ******************************************************************* -->
-	<kpi-define><!-- 可重复 -->
-		<name>intimeByRevUnit</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>intimeByRevUnit</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param page-name="revDeptId" markflg="true"/>
-		
-		<summary-define>
-			<id>s1</id><!--受理部门-->
-			<sequence>1</sequence>
-			<column>main.senddeptid</column><!-- 汇总字段 -->
-			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-		</summary-define>
-		<stat-detail-vo>com.boco.eoms.commons.statistic.itsoftchange.vo.ItsoftchangeDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="revDeptId" markflg="true"/>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>itsoftchange_main main,itsoftchange_link link</from><!-- 不可为空 -->
-			<where>
-				 main.id=link.mainid 
-				 and main.status=1 
-				 and link.operatetype=91
-				 and main.sendtime&gt;='@beginTime@' 
-				 and main.sendtime&lt;'@endTime@'
-				 and main.senddeptid in (@revDeptId@) 
-				 and main.senddeptid is not null
-		    </where><!-- 可为空 -->
+        <summary-define>
+            <id>s1</id><!--受理部门-->
+            <sequence>1</sequence>
+            <column>main.senddeptid</column><!-- 汇总字段 -->
+            <id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+        </summary-define>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.itsoftchange.vo.ItsoftchangeDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-			<field-define>
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count (distinct link.mainid)</stat-sql>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-				<list-hsql>
-				    select distinct main.id as mainid,main.sheetid,main.title,main.sendtime,main.senddeptid,main.endtime 
-				    from itsoftchange_main main,itsoftchange_link link
-				    where main.id=link.mainid 
-				    and main.status=1  
-				    and main.sendtime&gt;='@beginTime@' 
-				    and main.sendtime&lt;'@endTime@'
-				    and link.operatetype=91 
-				    and main.senddeptid='@s1@'    
-				    order by main.sendtime desc
-				</list-hsql>
-				
-				<list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
-			</field-define>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>itsoftchange_main main,itsoftchange_link link</from><!-- 不可为空 -->
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=91
+                and main.sendtime&gt;='@beginTime@'
+                and main.sendtime&lt;'@endTime@'
+                and main.senddeptid in (@revDeptId@)
+                and main.senddeptid is not null
+            </where><!-- 可为空 -->
 
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>itsoftchange_main main,itsoftchange_link link</from>
-			
-			<where>
-		        main.id=link.mainid 
-		        and main.status=1 
-		        and link.operatetype=91 
-		        and link.operatetime&gt;main.maincompletetime
-				and main.sendtime&gt;='@beginTime@' 
-				and main.sendtime&lt;'@endTime@'
-				and main.senddeptid in (@revDeptId@) 
-				and main.senddeptid is not null
-			</where><!-- 可为空 -->
-			
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 超时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 				    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime 
- 				    from itsoftchange_main main,itsoftchange_link link  
-					where main.id=link.mainid 
-					and  main.status=1 
-					and link.operatetype=91
-					and link.operatetime&gt;main.maincompletetime
-					and main.sendtime&gt;='@beginTime@' 
-				    and main.sendtime&lt;'@endTime@'
-				    and main.senddeptid in (@s1@) 
-				    order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
+            <field-define>
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count (distinct link.mainid)</stat-sql>
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 完成及时工单数-->
-				<sequence>1</sequence>
-				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>new Integer(f1)-new Integer(f2)</stat-sql>
-				<list-hsql>
-				    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime 
-					from itsoftchange_main main,itsoftchange_link link 
-					where main.id=link.mainid 
-					and main.status=1  and link.operatetype=91
-					and link.mainid not in(
-					    select distinct link.mainid 
-					    from itsoftchange_main main,itsoftchange_link 
-					    where main.id=link.mainid 
-					    and  main.status=1 and link.operatetype=91
-					    and link.operatetime&gt;main.maincompletetime
-					    and main.sendtime&gt;='@beginTime@' 
-				        and main.sendtime&lt;'@endTime@'
-				        and main.senddeptid='@s1@'    
-					)
-					and main.sendtime&gt;='@beginTime@' 
-				    and main.sendtime&lt;'@endTime@' 
-				    and main.senddeptid='@s1@'    
-				    order by main.sendtime desc      
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
+                <list-hsql>
+                    select distinct main.id as mainid,main.sheetid,main.title,main.sendtime,main.senddeptid,main.endtime
+                    from itsoftchange_main main,itsoftchange_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and link.operatetype=91
+                    and main.senddeptid='@s1@'
+                    order by main.sendtime desc
+                </list-hsql>
 
-	</kpi-define>	
-	
-	<!--******************************************************************
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>itsoftchange_main main,itsoftchange_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=91
+                and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;='@beginTime@'
+                and main.sendtime&lt;'@endTime@'
+                and main.senddeptid in (@revDeptId@)
+                and main.senddeptid is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 超时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from itsoftchange_main main,itsoftchange_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=91
+                    and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and main.senddeptid in (@s1@)
+                    order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 完成及时工单数-->
+                <sequence>1</sequence>
+                <stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>new Integer(f1)-new Integer(f2)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from itsoftchange_main main,itsoftchange_link link
+                    where main.id=link.mainid
+                    and main.status=1 and link.operatetype=91
+                    and link.mainid not in(
+                    select distinct link.mainid
+                    from itsoftchange_main main,itsoftchange_link
+                    where main.id=link.mainid
+                    and main.status=1 and link.operatetype=91
+                    and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and main.senddeptid='@s1@'
+                    )
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and main.senddeptid='@s1@'
+                    order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+
+    </kpi-define>
+
+    <!--******************************************************************
 ********    按网管系统统计  ***************************************************
 ******************************************************************* -->
-		<kpi-define><!-- 可重复 -->
-		<name>intimeByRevAdmin</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>intimeByRevAdmin</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param page-name="mainnetsystem" markflg="true"/>
-		
-		<summary-define>
-			<id>s1</id><!--受理部门-->
-			<sequence>1</sequence>
-			<column>main.mainnetsystem</column><!-- 汇总字段 -->
-			<id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-		</summary-define>
-		<stat-detail-vo>com.boco.eoms.commons.statistic.itsoftchange.vo.ItsoftchangeDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="mainnetsystem" markflg="true"/>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>itsoftchange_main main,itsoftchange_link link</from><!-- 不可为空 -->
-			<where>
-				 main.id=link.mainid 
-				 and main.status=1 
-				 and link.operatetype=91
-				 and main.sendtime&gt;='@beginTime@' 
-				 and main.sendtime&lt;'@endTime@'
-				 and main.mainnetsystem in (@mainnetsystem@) 
-				 and (link.operatetype=91 or link.operatetype=46) 
-				 and main.mainnetsystem is not null
-		    </where><!-- 可为空 -->
+        <summary-define>
+            <id>s1</id><!--受理部门-->
+            <sequence>1</sequence>
+            <column>main.mainnetsystem</column><!-- 汇总字段 -->
+            <id2name-service>statDictId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+        </summary-define>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.itsoftchange.vo.ItsoftchangeDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-			<field-define>
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count (distinct link.mainid)</stat-sql>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>itsoftchange_main main,itsoftchange_link link</from><!-- 不可为空 -->
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=91
+                and main.sendtime&gt;='@beginTime@'
+                and main.sendtime&lt;'@endTime@'
+                and main.mainnetsystem in (@mainnetsystem@)
+                and (link.operatetype=91 or link.operatetype=46)
+                and main.mainnetsystem is not null
+            </where><!-- 可为空 -->
 
-				<list-hsql>
-				    select distinct main.id as mainid,main.sheetid,main.title,main.sendtime,main.mainnetsystem,main.endtime,main.senddeptid
-				    from itsoftchange_main main,itsoftchange_link link  
-				    where main.id=link.mainid 
-				    and main.status=1
-				    and main.sendtime&gt;='@beginTime@' 
-				    and main.sendtime&lt;'@endTime@'
-				    and link.operatetype=91  
-				    and main.mainnetsystem='@s1@'   
-				    order by main.sendtime desc
-				</list-hsql>
-				
-				<list-count-select-sql>select count (distinct link.mainid)</list-count-select-sql><!--列表总数-->
-			</field-define>
+            <field-define>
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
 
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>itsoftchange_main main,itsoftchange_link link</from>
-			
-			<where>
-		        main.id=link.mainid 
-		        and main.status=1 
-		        and link.operatetype=91 
-		        and link.operatetime&gt;main.maincompletetime
-				and main.sendtime&gt;='@beginTime@' 
-				and main.sendtime&lt;'@endTime@'
-				and main.mainnetsystem in (@mainnetsystem@) 
-				and main.mainnetsystem is not null
-			</where><!-- 可为空 -->
-			
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 超时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 				    select distinct link.mainid,main.sheetid,main.title,main.mainnetsystem,link.operatedeptid,main.sendtime,main.senddeptid 
- 				    from itsoftchange_main main,itsoftchange_link link  
-					where main.id=link.mainid 
-					and  main.status=1 
-					and link.operatetype=91 
-					and link.operatetime&gt;main.maincompletetime
-					and main.sendtime&gt;='@beginTime@' 
-				    and main.sendtime&lt;'@endTime@'
-				    and main.mainnetsystem in (@s1@)  
-				    order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count (distinct link.mainid)</stat-sql>
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 完成及时工单数-->
-				<sequence>1</sequence>
-				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>new Integer(f1)-new Integer(f2)</stat-sql>
-				<list-hsql>
-				    select distinct link.mainid,main.sheetid,main.title,main.mainnetsystem,link.operatedeptid,main.sendtime,main.senddeptid 
-					from itsoftchange_main main,itsoftchange_link link 
-					where main.id=link.mainid 
-					and main.status=1  
-					and link.operatetype=91
-					and link.mainid not in(
-					    select distinct link.mainid 
-					    from itsoftchange_main main,itsoftchange_link 
-					    where main.id=link.mainid 
-					    and  main.status=1 
-					    and link.operatetype=91
-					    and link.operatetime&gt;main.maincompletetime
-					    and main.sendtime&gt;='@beginTime@' 
-				        and main.sendtime&lt;'@endTime@' 
-					    and link.operatetime&lt;main.maincompletetime
-					)
-					and main.sendtime&gt;='@beginTime@' 
-				    and main.sendtime&lt;'@endTime@' 
-				    and main.mainnetsystem='@s1@'   
-				    order by main.sendtime desc      
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
+                <list-hsql>
+                    select distinct main.id as
+                    mainid,main.sheetid,main.title,main.sendtime,main.mainnetsystem,main.endtime,main.senddeptid
+                    from itsoftchange_main main,itsoftchange_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and link.operatetype=91
+                    and main.mainnetsystem='@s1@'
+                    order by main.sendtime desc
+                </list-hsql>
 
-	</kpi-define>
-	
+                <list-count-select-sql>select count (distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>itsoftchange_main main,itsoftchange_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=91
+                and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;='@beginTime@'
+                and main.sendtime&lt;'@endTime@'
+                and main.mainnetsystem in (@mainnetsystem@)
+                and main.mainnetsystem is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 超时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct
+                    link.mainid,main.sheetid,main.title,main.mainnetsystem,link.operatedeptid,main.sendtime,main.senddeptid
+                    from itsoftchange_main main,itsoftchange_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=91
+                    and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and main.mainnetsystem in (@s1@)
+                    order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 完成及时工单数-->
+                <sequence>1</sequence>
+                <stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>new Integer(f1)-new Integer(f2)</stat-sql>
+                <list-hsql>
+                    select distinct
+                    link.mainid,main.sheetid,main.title,main.mainnetsystem,link.operatedeptid,main.sendtime,main.senddeptid
+                    from itsoftchange_main main,itsoftchange_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=91
+                    and link.mainid not in(
+                    select distinct link.mainid
+                    from itsoftchange_main main,itsoftchange_link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=91
+                    and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and link.operatetime&lt;main.maincompletetime
+                    )
+                    and main.sendtime&gt;='@beginTime@'
+                    and main.sendtime&lt;'@endTime@'
+                    and main.mainnetsystem='@s1@'
+                    order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+
+    </kpi-define>
+
 </KpiConfig>	

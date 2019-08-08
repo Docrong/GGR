@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
-	<!-- 工单属性配置-->
-	<import
-		resource="classpath:config/applicationContext-sheet-base-attributes.xml" />
-	<!-- 工单字典 
-		<import
-		resource="classpath:config/applicationContext-sheet-dict.xml" />
-	-->
-	<!-- 工单orm转换工具 
-		<import
-		resource="classpath:config/applicationContext-sheet-orm.xml" />
-	-->
-	<import
-		resource="classpath:config/applicationContext-sheet-base-adapter-wps.xml" />
+    <!-- 工单属性配置-->
+    <import
+            resource="classpath:config/applicationContext-sheet-base-attributes.xml"/>
+    <!-- 工单字典
+        <import
+        resource="classpath:config/applicationContext-sheet-dict.xml" />
+    -->
+    <!-- 工单orm转换工具
+        <import
+        resource="classpath:config/applicationContext-sheet-orm.xml" />
+    -->
+    <import
+            resource="classpath:config/applicationContext-sheet-base-adapter-wps.xml"/>
 
-	<import
-		resource="classpath:config/applicationContext-sheet-base-service.xml" />
-	
-	<import
-		resource="classpath:config/applicationContext-kpi.xml" />
+    <import
+            resource="classpath:config/applicationContext-sheet-base-service.xml"/>
+
+    <import
+            resource="classpath:config/applicationContext-kpi.xml"/>
 
 
-	<bean id="LinkDAO"
-		class="com.boco.eoms.sheet.base.dao.hibernate.LinkDAOImpl" autowire="byName"
-		>
+    <bean id="LinkDAO"
+          class="com.boco.eoms.sheet.base.dao.hibernate.LinkDAOImpl" autowire="byName"
+    >
 
-      </bean>
+    </bean>
 
-	<bean id="LinkService" parent="txProxyTemplate">
-           <property name="target">
+    <bean id="LinkService" parent="txProxyTemplate">
+        <property name="target">
             <bean class="com.boco.eoms.sheet.base.service.impl.LinkServiceImpl">
-                <property name="linkDAO" ref="LinkDAO" />
+                <property name="linkDAO" ref="LinkDAO"/>
             </bean>
         </property>
-	</bean>
+    </bean>
 
-	<bean id="MainDAO"
-		class="com.boco.eoms.sheet.base.dao.hibernate.MainDAOImpl" autowire="byName"
-		>
+    <bean id="MainDAO"
+          class="com.boco.eoms.sheet.base.dao.hibernate.MainDAOImpl" autowire="byName"
+    >
 
-      </bean>
+    </bean>
 
 
-
-	<bean id="MainService"  parent="txProxyTemplate">
-		 <property name="target">
+    <bean id="MainService" parent="txProxyTemplate">
+        <property name="target">
             <bean class="com.boco.eoms.sheet.base.service.impl.MainServiceImpl">
-                <property name="mainDAO" ref="MainDAO" />
+                <property name="mainDAO" ref="MainDAO"/>
             </bean>
         </property>
-		
-	</bean>
-	
-	<bean id="TaskDAO"
-		class="com.boco.eoms.sheet.base.dao.hibernate.TaskDAOImpl" autowire="byName"
-		>
-	
-      </bean>
 
-	<bean id="TaskService"  parent="txProxyTemplate">
-       <property name="target">
+    </bean>
+
+    <bean id="TaskDAO"
+          class="com.boco.eoms.sheet.base.dao.hibernate.TaskDAOImpl" autowire="byName"
+    >
+
+    </bean>
+
+    <bean id="TaskService" parent="txProxyTemplate">
+        <property name="target">
             <bean class="com.boco.eoms.sheet.base.service.impl.TaskServiceImpl">
-                <property name="taskDAO" ref="TaskDAO" />
+                <property name="taskDAO" ref="TaskDAO"/>
             </bean>
         </property>
-	</bean>
-	
-	<!--TawSystemWorkflow-DAO START-->
-    <bean id="ITawSystemWorkflowDAO" class="com.boco.eoms.sheet.base.dao.hibernate.TawSystemWorkflowDAOImpl" autowire="byName">
+    </bean>
 
-      </bean>
+    <!--TawSystemWorkflow-DAO START-->
+    <bean id="ITawSystemWorkflowDAO" class="com.boco.eoms.sheet.base.dao.hibernate.TawSystemWorkflowDAOImpl"
+          autowire="byName">
+
+    </bean>
 
     <!--TawSystemWorkflow-DAO END-->
-    <!--TawSystemWorkflow-START-->    
+    <!--TawSystemWorkflow-START-->
     <bean id="ITawSystemWorkflowManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.sheet.base.service.impl.TawSystemWorkflowManagerImpl">
@@ -85,9 +85,10 @@
         </property>
     </bean>
     <!--TawSystemWorkflow-END-->
-     <bean id="IDownLoadSheetAccessiorsDAO" class="com.boco.eoms.sheet.base.dao.jdbc.DownLoadSheetAccessiorsDAOImpl" autowire="byName">
+    <bean id="IDownLoadSheetAccessiorsDAO" class="com.boco.eoms.sheet.base.dao.jdbc.DownLoadSheetAccessiorsDAOImpl"
+          autowire="byName">
     </bean>
-    
+
     <bean id="IDownLoadSheetAccessoriesService" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.sheet.base.service.impl.DownLoadSheetAccessoriesServiceImpl">

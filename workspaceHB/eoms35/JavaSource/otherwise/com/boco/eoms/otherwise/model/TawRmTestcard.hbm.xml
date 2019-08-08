@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_rm_testcard"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="cardType"
-            	column="card_type"
+                name="cardType"
+                column="card_type"
                 length="10"
                 not-null="true"
                 unique="true"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="fromProvince"
-            	column="from_province"
+                name="fromProvince"
+                column="from_province"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -47,8 +47,8 @@
         </property>
 
         <property
-            name="fromCity"
-            	column="from_city"
+                name="fromCity"
+                column="from_city"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -57,8 +57,8 @@
         </property>
 
         <property
-            name="fromCountry"
-            	column="from_country"
+                name="fromCountry"
+                column="from_country"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -67,8 +67,8 @@
         </property>
 
         <property
-            name="fromOperator"
-            	column="from_operator"
+                name="fromOperator"
+                column="from_operator"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -77,8 +77,8 @@
         </property>
 
         <property
-            name="toProvince"
-            	column="to_province"
+                name="toProvince"
+                column="to_province"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -87,8 +87,8 @@
         </property>
 
         <property
-            name="toCity"
-            	column="to_city"
+                name="toCity"
+                column="to_city"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -97,8 +97,8 @@
         </property>
 
         <property
-            name="toCountry"
-            	column="to_country"
+                name="toCountry"
+                column="to_country"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -107,8 +107,8 @@
         </property>
 
         <property
-            name="toOperator"
-            	column="to_operator"
+                name="toOperator"
+                column="to_operator"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -117,8 +117,8 @@
         </property>
 
         <property
-            name="supplyer"
-            	column="supplyer"
+                name="supplyer"
+                column="supplyer"
                 length="50"
                 not-null="true"
                 unique="true"
@@ -127,8 +127,8 @@
         </property>
 
         <property
-            name="iccid"
-            	column="iccid"
+                name="iccid"
+                column="iccid"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -137,8 +137,8 @@
         </property>
 
         <property
-            name="msisdn"
-            	column="msisdn"
+                name="msisdn"
+                column="msisdn"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -147,8 +147,8 @@
         </property>
 
         <property
-            name="imsi"
-            	column="imsi"
+                name="imsi"
+                column="imsi"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -157,8 +157,8 @@
         </property>
 
         <property
-            name="pin"
-            	column="pin"
+                name="pin"
+                column="pin"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -167,8 +167,8 @@
         </property>
 
         <property
-            name="puk"
-            	column="puk"
+                name="puk"
+                column="puk"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -177,8 +177,8 @@
         </property>
 
         <property
-            name="bootPassword"
-            	column="boot_password"
+                name="bootPassword"
+                column="boot_password"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -187,8 +187,8 @@
         </property>
 
         <property
-            name="operation"
-            	column="operation"
+                name="operation"
+                column="operation"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -197,8 +197,8 @@
         </property>
 
         <property
-            name="openAccountDate"
-            	column="open_account_date"
+                name="openAccountDate"
+                column="open_account_date"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -207,8 +207,8 @@
         </property>
 
         <property
-            name="logoutDate"
-            	column="logout_date"
+                name="logoutDate"
+                column="logout_date"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -217,8 +217,8 @@
         </property>
 
         <property
-            name="takeOverDate"
-            	column="take_over_date"
+                name="takeOverDate"
+                column="take_over_date"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -227,8 +227,8 @@
         </property>
 
         <property
-            name="state"
-            	column="state"
+                name="state"
+                column="state"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -237,8 +237,8 @@
         </property>
 
         <property
-            name="oldNumber"
-            	column="old_number"
+                name="oldNumber"
+                column="old_number"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -247,15 +247,15 @@
         </property>
 
         <property
-            name="userId"
-            	column="user_id"
+                name="userId"
+                column="user_id"
                 length="30"
                 not-null="true"
                 unique="true"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

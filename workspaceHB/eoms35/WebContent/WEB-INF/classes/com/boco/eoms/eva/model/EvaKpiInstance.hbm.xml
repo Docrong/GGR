@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,101 +13,101 @@
             table="eva_kpi_instance"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-		<property
-            name="taskDetailId"
-            	column="TASK_DETAIL_ID"
+        <property
+                name="taskDetailId"
+                column="TASK_DETAIL_ID"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="time"
-            	column="TIME"
+                name="time"
+                column="TIME"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="timeType"
-            	column="TIME_TYPE"
+                name="timeType"
+                column="TIME_TYPE"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="partnerId"
-            	column="PARTNER_ID"
+                name="partnerId"
+                column="PARTNER_ID"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="partnerName"
-            	column="PARTNER_NAME"
+                name="partnerName"
+                column="PARTNER_NAME"
                 length="255"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="realScore"
-            	column="REAL_SCORE"
+                name="realScore"
+                column="REAL_SCORE"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="reduceReason"
-            	column="REDUCE_REASON"
+                name="reduceReason"
+                column="REDUCE_REASON"
                 length="255"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="remark"
-            	column="REMARK"
+                name="remark"
+                column="REMARK"
                 length="255"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="isPublish"
-            	column="IS_PUBLISH"
+                name="isPublish"
+                column="IS_PUBLISH"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="createTime"
-            	column="CREATE_TIME"
+                name="createTime"
+                column="CREATE_TIME"
                 length="32"
                 not-null="false"
                 unique="false"
         >
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

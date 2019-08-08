@@ -35,7 +35,7 @@ public class TawCommonMessageSubscribeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageSubscribeDao.expects(once()).method("getTawCommonMessageSubscribes")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawCommonMessageSubscribes = tawCommonMessageSubscribeManager.getTawCommonMessageSubscribes(null);
         assertTrue(tawCommonMessageSubscribes.size() == 1);
@@ -45,7 +45,7 @@ public class TawCommonMessageSubscribeManagerTest extends BaseManagerTestCase {
     public void testGetTawCommonMessageSubscribe() throws Exception {
         // set expected behavior on dao
         tawCommonMessageSubscribeDao.expects(once()).method("getTawCommonMessageSubscribe")
-            .will(returnValue(new TawCommonMessageSubscribe()));
+                .will(returnValue(new TawCommonMessageSubscribe()));
         TawCommonMessageSubscribe tawCommonMessageSubscribe = tawCommonMessageSubscribeManager.getTawCommonMessageSubscribe(tawCommonMessageSubscribeId);
         assertTrue(tawCommonMessageSubscribe != null);
         tawCommonMessageSubscribeDao.verify();
@@ -56,7 +56,7 @@ public class TawCommonMessageSubscribeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageSubscribeDao.expects(once()).method("saveTawCommonMessageSubscribe")
-            .with(same(tawCommonMessageSubscribe)).isVoid();
+                .with(same(tawCommonMessageSubscribe)).isVoid();
 
         tawCommonMessageSubscribeManager.saveTawCommonMessageSubscribe(tawCommonMessageSubscribe);
         tawCommonMessageSubscribeDao.verify();
@@ -69,7 +69,7 @@ public class TawCommonMessageSubscribeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageSubscribeDao.expects(once()).method("saveTawCommonMessageSubscribe")
-            .with(same(tawCommonMessageSubscribe)).isVoid();
+                .with(same(tawCommonMessageSubscribe)).isVoid();
         tawCommonMessageSubscribeManager.saveTawCommonMessageSubscribe(tawCommonMessageSubscribe);
         tawCommonMessageSubscribeDao.verify();
 

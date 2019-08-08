@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_AUDITER"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="createTime"
-            	column="create_time"
+        <property
+                name="createTime"
+                column="create_time"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,39 +36,19 @@
 
         </property>
 
-	<property
-            name="auditType"
-            	column="audit_type"
+        <property
+                name="auditType"
+                column="audit_type"
                 length="32"
                 not-null="true"
                 unique="false"
         >
-        
+
         </property>
 
-	<property
-            name="nodeId"
-            	column="node_id"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-        
-        </property>
-        
-	<property
-            name="tableId"
-            	column="table_id"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-        
-        </property>
-        
-	<property
-            name="themeId"
-            	column="theme_id"
+        <property
+                name="nodeId"
+                column="node_id"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -76,9 +56,9 @@
 
         </property>
 
-	<property
-            name="roleId"
-            	column="role_id"
+        <property
+                name="tableId"
+                column="table_id"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -86,9 +66,9 @@
 
         </property>
 
-	<property
-            name="masterId"
-            	column="master_id"
+        <property
+                name="themeId"
+                column="theme_id"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -96,9 +76,29 @@
 
         </property>
 
-	<property
-            name="masterAudit"
-            	column="master_audit"
+        <property
+                name="roleId"
+                column="role_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="masterId"
+                column="master_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="masterAudit"
+                column="master_audit"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="isSign"
-            	column="is_sign"
+        <property
+                name="isSign"
+                column="is_sign"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -116,9 +116,9 @@
 
         </property>
 
-	<property
-            name="remark"
-            	column="remark"
+        <property
+                name="remark"
+                column="remark"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -127,7 +127,7 @@
         </property>
 
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

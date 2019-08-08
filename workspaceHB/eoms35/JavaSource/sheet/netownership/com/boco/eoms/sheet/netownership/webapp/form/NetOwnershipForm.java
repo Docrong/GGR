@@ -5,192 +5,189 @@ import org.apache.struts.upload.FormFile;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 /**
- * 
  * @author weichao
- *
  */
 public class NetOwnershipForm extends BaseForm implements java.io.Serializable {
 
-	/**
-	 * 主键id
-	 */
-	private java.lang.String id;
+    /**
+     * 主键id
+     */
+    private java.lang.String id;
 
-	/**
-	 * 网元id 
-	 */
-	private java.lang.String netId;
+    /**
+     * 网元id
+     */
+    private java.lang.String netId;
 
-	/**
-	 * 网元名称
-	 */
-	private java.lang.String netName;
+    /**
+     * 网元名称
+     */
+    private java.lang.String netName;
 
-	/**
-	 * 网元类型
-	 */
-	private java.lang.String netType;
+    /**
+     * 网元类型
+     */
+    private java.lang.String netType;
 
-	/**
-	 * 地市
-	 */
-	private java.lang.String city;
+    /**
+     * 地市
+     */
+    private java.lang.String city;
 
-	/**
-	 * 区县
-	 */
-	private java.lang.String county;
+    /**
+     * 区县
+     */
+    private java.lang.String county;
 
-	/**
-	 * 入库时间
-	 */
-	private java.lang.String  saveTime;
+    /**
+     * 入库时间
+     */
+    private java.lang.String saveTime;
 
-	/**
-	 * 创建人
-	 */
-	private java.lang.String createUserId;
+    /**
+     * 创建人
+     */
+    private java.lang.String createUserId;
 
-	/**
-	 * 创建人所属部门
-	 */
-	private java.lang.String createDeptId;
+    /**
+     * 创建人所属部门
+     */
+    private java.lang.String createDeptId;
 
-	/**
-	 * 创建时间
-	 */
-	private java.lang.String createTime;
+    /**
+     * 创建时间
+     */
+    private java.lang.String createTime;
 
-	/**
-	 * 维护班组ID
-	 */
-	private java.lang.String teamRoleId;
+    /**
+     * 维护班组ID
+     */
+    private java.lang.String teamRoleId;
 
-	/**
-	 * 运维中心Id
-	 */
-	private java.lang.String centerId;
+    /**
+     * 运维中心Id
+     */
+    private java.lang.String centerId;
 
-	/**
-	 * 删除标志位 ，0:有效,1:删除
-	 */
-	private java.lang.Integer deleted;
-	
-
-	
-	private String zhuanye;
+    /**
+     * 删除标志位 ，0:有效,1:删除
+     */
+    private java.lang.Integer deleted;
 
 
-	public java.lang.String getCreateTime() {
-		return createTime;
-	}
+    private String zhuanye;
 
-	public void setCreateTime(java.lang.String createTime) {
-		this.createTime = createTime;
-	}
 
-	public java.lang.String getSaveTime() {
-		return saveTime;
-	}
+    public java.lang.String getCreateTime() {
+        return createTime;
+    }
 
-	public void setSaveTime(java.lang.String saveTime) {
-		this.saveTime = saveTime;
-	}
+    public void setCreateTime(java.lang.String createTime) {
+        this.createTime = createTime;
+    }
 
-	public java.lang.String getCenterId() {
-		return centerId;
-	}
+    public java.lang.String getSaveTime() {
+        return saveTime;
+    }
 
-	public void setCenterId(java.lang.String centerId) {
-		this.centerId = centerId;
-	}
+    public void setSaveTime(java.lang.String saveTime) {
+        this.saveTime = saveTime;
+    }
 
-	public java.lang.String getCity() {
-		return city;
-	}
+    public java.lang.String getCenterId() {
+        return centerId;
+    }
 
-	public void setCity(java.lang.String city) {
-		this.city = city;
-	}
+    public void setCenterId(java.lang.String centerId) {
+        this.centerId = centerId;
+    }
 
-	public java.lang.String getCounty() {
-		return county;
-	}
+    public java.lang.String getCity() {
+        return city;
+    }
 
-	public void setCounty(java.lang.String county) {
-		this.county = county;
-	}
+    public void setCity(java.lang.String city) {
+        this.city = city;
+    }
 
-	public java.lang.String getCreateDeptId() {
-		return createDeptId;
-	}
+    public java.lang.String getCounty() {
+        return county;
+    }
 
-	public void setCreateDeptId(java.lang.String createDeptId) {
-		this.createDeptId = createDeptId;
-	}
+    public void setCounty(java.lang.String county) {
+        this.county = county;
+    }
 
-	public java.lang.String getCreateUserId() {
-		return createUserId;
-	}
+    public java.lang.String getCreateDeptId() {
+        return createDeptId;
+    }
 
-	public void setCreateUserId(java.lang.String createUserId) {
-		this.createUserId = createUserId;
-	}
+    public void setCreateDeptId(java.lang.String createDeptId) {
+        this.createDeptId = createDeptId;
+    }
 
-	public java.lang.Integer getDeleted() {
-		return deleted;
-	}
+    public java.lang.String getCreateUserId() {
+        return createUserId;
+    }
 
-	public void setDeleted(java.lang.Integer deleted) {
-		this.deleted = deleted;
-	}
+    public void setCreateUserId(java.lang.String createUserId) {
+        this.createUserId = createUserId;
+    }
 
-	public java.lang.String getId() {
-		return id;
-	}
+    public java.lang.Integer getDeleted() {
+        return deleted;
+    }
 
-	public void setId(java.lang.String id) {
-		this.id = id;
-	}
+    public void setDeleted(java.lang.Integer deleted) {
+        this.deleted = deleted;
+    }
 
-	public java.lang.String getNetId() {
-		return netId;
-	}
+    public java.lang.String getId() {
+        return id;
+    }
 
-	public void setNetId(java.lang.String netId) {
-		this.netId = netId;
-	}
+    public void setId(java.lang.String id) {
+        this.id = id;
+    }
 
-	public java.lang.String getNetName() {
-		return netName;
-	}
+    public java.lang.String getNetId() {
+        return netId;
+    }
 
-	public void setNetName(java.lang.String netName) {
-		this.netName = netName;
-	}
+    public void setNetId(java.lang.String netId) {
+        this.netId = netId;
+    }
 
-	public java.lang.String getNetType() {
-		return netType;
-	}
+    public java.lang.String getNetName() {
+        return netName;
+    }
 
-	public void setNetType(java.lang.String netType) {
-		this.netType = netType;
-	}
+    public void setNetName(java.lang.String netName) {
+        this.netName = netName;
+    }
 
-	public java.lang.String getTeamRoleId() {
-		return teamRoleId;
-	}
+    public java.lang.String getNetType() {
+        return netType;
+    }
 
-	public void setTeamRoleId(java.lang.String teamRoleId) {
-		this.teamRoleId = teamRoleId;
-	}
+    public void setNetType(java.lang.String netType) {
+        this.netType = netType;
+    }
 
-	public String getZhuanye() {
-		return zhuanye;
-	}
+    public java.lang.String getTeamRoleId() {
+        return teamRoleId;
+    }
 
-	public void setZhuanye(String zhuanye) {
-		this.zhuanye = zhuanye;
-	}
+    public void setTeamRoleId(java.lang.String teamRoleId) {
+        this.teamRoleId = teamRoleId;
+    }
+
+    public String getZhuanye() {
+        return zhuanye;
+    }
+
+    public void setZhuanye(String zhuanye) {
+        this.zhuanye = zhuanye;
+    }
 
 }

@@ -12,6 +12,7 @@ import javax.ejb.EJBHome;
 import javax.ejb.HomeHandle;
 import javax.rmi.CORBA.Stub;
 import javax.rmi.CORBA.Util;
+
 import org.omg.CORBA.SystemException;
 import org.omg.CORBA.portable.ApplicationException;
 import org.omg.CORBA.portable.InputStream;
@@ -20,18 +21,18 @@ import org.omg.CORBA.portable.RemarshalException;
 import org.omg.CORBA.portable.ServantObject;
 
 public class _HomeHandle_Stub extends Stub implements HomeHandle,
-Remote {
-    
+        Remote {
+
     private static final String[] _type_ids = {
-        "RMI:javax.ejb.HomeHandle:0000000000000000"
+            "RMI:javax.ejb.HomeHandle:0000000000000000"
     };
-    
-    public String[] _ids() { 
+
+    public String[] _ids() {
         return _type_ids;
     }
-    
+
     public EJBHome getEJBHome() throws RemoteException {
-        while(true) {
+        while (true) {
             if (!Util.isLocal(this)) {
                 InputStream in = null;
                 try {
@@ -52,15 +53,15 @@ Remote {
                     _releaseReply(in);
                 }
             } else {
-                ServantObject so = _servant_preinvoke("_get_EJBHome",javax.ejb.HomeHandle.class);
+                ServantObject so = _servant_preinvoke("_get_EJBHome", javax.ejb.HomeHandle.class);
                 if (so == null) {
                     continue;
                 }
                 try {
-                    EJBHome result = ((javax.ejb.HomeHandle)so.servant).getEJBHome();
-                    return (EJBHome)Util.copyObject(result,_orb());
+                    EJBHome result = ((javax.ejb.HomeHandle) so.servant).getEJBHome();
+                    return (EJBHome) Util.copyObject(result, _orb());
                 } catch (Throwable ex) {
-                    Throwable exCopy = (Throwable)Util.copyObject(ex,_orb());
+                    Throwable exCopy = (Throwable) Util.copyObject(ex, _orb());
                     throw Util.wrapException(exCopy);
                 } finally {
                     _servant_postinvoke(so);

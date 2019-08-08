@@ -7,58 +7,51 @@ package com.boco.eoms.sheet.commonfault.webapp.action;
 
 import com.boco.eoms.base.util.StaticMethod;
 import com.boco.eoms.sheet.base.webapp.action.ProcessListDisplaytagDecoratorHelper;
+
 import java.util.HashMap;
 import java.util.Map;
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.PageContext;
 
-public class ProcessListCommonFaultDisplaytagDecoratorHelper extends ProcessListDisplaytagDecoratorHelper
-{
+public class ProcessListCommonFaultDisplaytagDecoratorHelper extends ProcessListDisplaytagDecoratorHelper {
 
-	public ProcessListCommonFaultDisplaytagDecoratorHelper()
-	{
-	}
+    public ProcessListCommonFaultDisplaytagDecoratorHelper() {
+    }
 
-	public String getId()
-	{
-		Map taskMap = (HashMap)getCurrentRowObject();
-		Object object = getPageContext().getRequest().getAttribute("batchTaskMap");
-		System.out.println("ÅúÁ¿»Ø¸´"+object);
-		String inputStr = "<input name=\"batchIds\" type=\"checkbox\" disabled=\"disabled\"/>";
-		if (object != null)
-		{
-			HashMap taskNames = (HashMap)object;
-			System.out.println(taskMap.get("taskName")+"========"+taskMap.get("subTaskFlag"));
-			if (taskNames.get(taskMap.get("taskName")) != null && (taskMap.get("subTaskFlag") == null || taskMap.get("subTaskFlag").equals("false") || taskMap.get("subTaskFlag").equals("")))
-				inputStr = "<input name=\"batchIds\" type=\"checkbox\" onclick=\"selectedSelf(this)\" value=\"" + taskMap.get("taskName") + "\" id=\"" + taskMap.get("id") + "\" operateRoleId=\"" + taskMap.get("operateRoleId") + "\" ifwaitforsubtask=\"" + taskMap.get("ifWaitForSubTask") + "\"/>";
-		}
-		return inputStr;
-	}
+    public String getId() {
+        Map taskMap = (HashMap) getCurrentRowObject();
+        Object object = getPageContext().getRequest().getAttribute("batchTaskMap");
+        System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½" + object);
+        String inputStr = "<input name=\"batchIds\" type=\"checkbox\" disabled=\"disabled\"/>";
+        if (object != null) {
+            HashMap taskNames = (HashMap) object;
+            System.out.println(taskMap.get("taskName") + "========" + taskMap.get("subTaskFlag"));
+            if (taskNames.get(taskMap.get("taskName")) != null && (taskMap.get("subTaskFlag") == null || taskMap.get("subTaskFlag").equals("false") || taskMap.get("subTaskFlag").equals("")))
+                inputStr = "<input name=\"batchIds\" type=\"checkbox\" onclick=\"selectedSelf(this)\" value=\"" + taskMap.get("taskName") + "\" id=\"" + taskMap.get("id") + "\" operateRoleId=\"" + taskMap.get("operateRoleId") + "\" ifwaitforsubtask=\"" + taskMap.get("ifWaitForSubTask") + "\"/>";
+        }
+        return inputStr;
+    }
 
-	public String getTaskDisplayName()
-	{
-		Map taskMap = (HashMap)getCurrentRowObject();
-		String name = StaticMethod.nullObject2String(taskMap.get("taskDisplayName"));
-		if (name.equals("Ò»¼¶´¦Àí"))
-			name = "T1´¦Àí";
-		else
-		if (name.equals("¶þ¼¶´¦Àí"))
-			name = "T2´¦Àí";
-		else
-		if (name.equals("Èý¼¶´¦Àí"))
-			name = "T3´¦Àí";
-		if (taskMap.get("subTaskFlag") != null && taskMap.get("subTaskFlag").equals("true"))
-			name = name + "(×ÓÈÎÎñ)";
-		return name;
-	}
+    public String getTaskDisplayName() {
+        Map taskMap = (HashMap) getCurrentRowObject();
+        String name = StaticMethod.nullObject2String(taskMap.get("taskDisplayName"));
+        if (name.equals("Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))
+            name = "T1ï¿½ï¿½ï¿½ï¿½";
+        else if (name.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))
+            name = "T2ï¿½ï¿½ï¿½ï¿½";
+        else if (name.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"))
+            name = "T3ï¿½ï¿½ï¿½ï¿½";
+        if (taskMap.get("subTaskFlag") != null && taskMap.get("subTaskFlag").equals("true"))
+            name = name + "(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)";
+        return name;
+    }
 
-	public String addRowClass()
-	{
-		Map taskMap = (HashMap)getCurrentRowObject();
-		String mainFaultResponseLevel = StaticMethod.nullObject2String(taskMap.get("mainFaultResponseLevel"));
-		String color = "";
-		if (!mainFaultResponseLevel.equals(""))
-			color = " jl-level-" + mainFaultResponseLevel;
-		return super.addRowClass() + color;
-	}
+    public String addRowClass() {
+        Map taskMap = (HashMap) getCurrentRowObject();
+        String mainFaultResponseLevel = StaticMethod.nullObject2String(taskMap.get("mainFaultResponseLevel"));
+        String color = "";
+        if (!mainFaultResponseLevel.equals(""))
+            color = " jl-level-" + mainFaultResponseLevel;
+        return super.addRowClass() + color;
+    }
 }

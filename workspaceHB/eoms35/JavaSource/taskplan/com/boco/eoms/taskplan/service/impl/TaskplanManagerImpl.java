@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -18,6 +19,7 @@ public class TaskplanManagerImpl extends BaseManager implements ITaskplanManager
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTaskplanDao(ITaskplanDao dao) {
@@ -51,31 +53,35 @@ public class TaskplanManagerImpl extends BaseManager implements ITaskplanManager
     public void removeTaskplan(final String id) {
         dao.removeTaskplan(new String(id));
     }
+
     /**
      * @see com.boco.eoms.taskplan.service.ITaskplanManager#getTaskplans(final Integer curPage, final Integer pageSize)
      */
     public Map getTaskplans(final Integer curPage, final Integer pageSize) {
-        return dao.getTaskplans(curPage, pageSize,null);
+        return dao.getTaskplans(curPage, pageSize, null);
     }
+
     /**
      * @see com.boco.eoms.taskplan.service.ITaskplanManager#getTaskplans(final Integer curPage, final Integer pageSize, final String whereStr)
-     */    
+     */
     public Map getTaskplans(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTaskplans(curPage, pageSize, whereStr);
     }
+
     /**
      * @see com.boco.eoms.taskplan.service.ITaskplanManager#getChildList(String parentId)
-     */     
-    public List getChildList(String parentId) {		
-		return dao.getChildList(parentId);
-	}
+     */
+    public List getChildList(String parentId) {
+        return dao.getChildList(parentId);
+    }
+
     /**
      * @see com.boco.eoms.taskplan.service.ITaskplanManager#xGetChildNodes(String parentId)
-     */  	
-	public JSONArray xGetChildNodes(String parentId) {
-		JSONArray json = new JSONArray();
-		List list = new ArrayList();	
-		list = this.getChildList(parentId);
+     */
+    public JSONArray xGetChildNodes(String parentId) {
+        JSONArray json = new JSONArray();
+        List list = new ArrayList();
+        list = this.getChildList(parentId);
 
 		/*for (Iterator rowIt = list.iterator(); rowIt.hasNext();) {
 			Taskplan obj = (Taskplan) rowIt.next();
@@ -90,6 +96,6 @@ public class TaskplanManagerImpl extends BaseManager implements ITaskplanManager
 			}
 			json.put(jitem);
 		}*/
-		return json;
-	}	
+        return json;
+    }
 }

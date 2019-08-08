@@ -7,159 +7,135 @@ package com.boco.eoms.sheet.techniquesupporthb.model;
 
 import com.boco.eoms.sheet.base.model.BaseMain;
 
-public class TechniqueSupportHbMain extends BaseMain
-{
+public class TechniqueSupportHbMain extends BaseMain {
 
-	private String mainTechSupportType;
-	private String mainQuestionDescript;
-	private String mainInitDealOpinition;
-	private String mainSheetType;
-	private String mainCaseType;
-	private String mainSpecifyType;
-	private String mainFaultPhoneType;
-	private String mainFaultType;
-	private String mainIsMainFault;
-	private String mainDevType;
-	private String mainTrasitionDevType;
-	private String mainFaultLevel;
-	private String mainProfessional;
-	private String mainManufacturer;
+    private String mainTechSupportType;
+    private String mainQuestionDescript;
+    private String mainInitDealOpinition;
+    private String mainSheetType;
+    private String mainCaseType;
+    private String mainSpecifyType;
+    private String mainFaultPhoneType;
+    private String mainFaultType;
+    private String mainIsMainFault;
+    private String mainDevType;
+    private String mainTrasitionDevType;
+    private String mainFaultLevel;
+    private String mainProfessional;
+    private String mainManufacturer;
 
-	public TechniqueSupportHbMain()
-	{
-	}
+    public TechniqueSupportHbMain() {
+    }
 
-	public String getMainCaseType()
-	{
-		return mainCaseType;
-	}
+    public String getMainCaseType() {
+        return mainCaseType;
+    }
 
-	public void setMainCaseType(String mainCaseType)
-	{
-		this.mainCaseType = mainCaseType;
-	}
+    public void setMainCaseType(String mainCaseType) {
+        this.mainCaseType = mainCaseType;
+    }
 
-	public String getMainDevType()
-	{
-		return mainDevType;
-	}
+    public String getMainDevType() {
+        return mainDevType;
+    }
 
-	public void setMainDevType(String mainDevType)
-	{
-		this.mainDevType = mainDevType;
-	}
+    public void setMainDevType(String mainDevType) {
+        this.mainDevType = mainDevType;
+    }
 
-	public String getMainFaultPhoneType()
-	{
-		return mainFaultPhoneType;
-	}
+    public String getMainFaultPhoneType() {
+        return mainFaultPhoneType;
+    }
 
-	public void setMainFaultPhoneType(String mainFaultPhoneType)
-	{
-		this.mainFaultPhoneType = mainFaultPhoneType;
-	}
+    public void setMainFaultPhoneType(String mainFaultPhoneType) {
+        this.mainFaultPhoneType = mainFaultPhoneType;
+    }
 
-	public String getMainFaultType()
-	{
-		return mainFaultType;
-	}
+    public String getMainFaultType() {
+        return mainFaultType;
+    }
 
-	public void setMainFaultType(String mainFaultType)
-	{
-		this.mainFaultType = mainFaultType;
-	}
+    public void setMainFaultType(String mainFaultType) {
+        this.mainFaultType = mainFaultType;
+    }
 
-	public String getMainInitDealOpinition()
-	{
-		return mainInitDealOpinition;
-	}
+    public String getMainInitDealOpinition() {
+        return mainInitDealOpinition;
+    }
 
-	public void setMainInitDealOpinition(String mainInitDealOpinition)
-	{
-		this.mainInitDealOpinition = mainInitDealOpinition;
-	}
+    public void setMainInitDealOpinition(String mainInitDealOpinition) {
+        this.mainInitDealOpinition = mainInitDealOpinition;
+    }
 
-	public String getMainIsMainFault()
-	{
-		return mainIsMainFault;
-	}
+    public String getMainIsMainFault() {
+        return mainIsMainFault;
+    }
 
-	public void setMainIsMainFault(String mainIsMainFault)
-	{
-		this.mainIsMainFault = mainIsMainFault;
-	}
+    public void setMainIsMainFault(String mainIsMainFault) {
+        this.mainIsMainFault = mainIsMainFault;
+    }
 
-	public String getMainQuestionDescript()
-	{
-		return mainQuestionDescript;
-	}
+    public String getMainQuestionDescript() {
+        return mainQuestionDescript;
+    }
 
-	public void setMainQuestionDescript(String mainQuestionDescript)
-	{
-		this.mainQuestionDescript = mainQuestionDescript;
-	}
+    public void setMainQuestionDescript(String mainQuestionDescript) {
+        this.mainQuestionDescript = mainQuestionDescript;
+    }
 
-	public String getMainSheetType()
-	{
-		return mainSheetType;
-	}
+    public String getMainSheetType() {
+        return mainSheetType;
+    }
 
-	public void setMainSheetType(String mainSheetType)
-	{
-		this.mainSheetType = mainSheetType;
-	}
+    public void setMainSheetType(String mainSheetType) {
+        this.mainSheetType = mainSheetType;
+    }
 
-	public String getMainSpecifyType()
-	{
-		return mainSpecifyType;
-	}
+    public String getMainSpecifyType() {
+        return mainSpecifyType;
+    }
 
-	public void setMainSpecifyType(String mainSpecifyType)
-	{
-		this.mainSpecifyType = mainSpecifyType;
-	}
+    public void setMainSpecifyType(String mainSpecifyType) {
+        this.mainSpecifyType = mainSpecifyType;
+    }
 
-	public String getMainTechSupportType()
-	{
-		return mainTechSupportType;
-	}
+    public String getMainTechSupportType() {
+        return mainTechSupportType;
+    }
 
-	public void setMainTechSupportType(String mainTechSupportType)
-	{
-		this.mainTechSupportType = mainTechSupportType;
-	}
+    public void setMainTechSupportType(String mainTechSupportType) {
+        this.mainTechSupportType = mainTechSupportType;
+    }
 
-	public String getMainTrasitionDevType()
-	{
-		return mainTrasitionDevType;
-	}
+    public String getMainTrasitionDevType() {
+        return mainTrasitionDevType;
+    }
 
-	public void setMainTrasitionDevType(String mainTrasitionDevType)
-	{
-		this.mainTrasitionDevType = mainTrasitionDevType;
-	}
+    public void setMainTrasitionDevType(String mainTrasitionDevType) {
+        this.mainTrasitionDevType = mainTrasitionDevType;
+    }
 
-	public String getMainFaultLevel() {
-		return mainFaultLevel;
-	}
+    public String getMainFaultLevel() {
+        return mainFaultLevel;
+    }
 
-	public void setMainFaultLevel(String mainFaultLevel) {
-		this.mainFaultLevel = mainFaultLevel;
-	}
+    public void setMainFaultLevel(String mainFaultLevel) {
+        this.mainFaultLevel = mainFaultLevel;
+    }
 
-	public String getMainManufacturer() {
-		return mainManufacturer;
-	}
+    public String getMainManufacturer() {
+        return mainManufacturer;
+    }
 
-	public void setMainManufacturer(String mainManufacturer) {
-		this.mainManufacturer = mainManufacturer;
-	}
+    public void setMainManufacturer(String mainManufacturer) {
+        this.mainManufacturer = mainManufacturer;
+    }
 
-	public String getMainProfessional() {
-		return mainProfessional;
-	}
+    public String getMainProfessional() {
+        return mainProfessional;
+    }
 
-	public void setMainProfessional(String mainProfessional) {
-		this.mainProfessional = mainProfessional;
-	}
+    public void setMainProfessional(String mainProfessional) {
+        this.mainProfessional = mainProfessional;
+    }
 }

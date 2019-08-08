@@ -1,20 +1,21 @@
-﻿<%@ page language="java" pageEncoding="UTF-8"%>
-<%@ include file="/common/taglibs.jsp"%>
-<%@ include file="/common/header_eoms.jsp"%>
+﻿<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="/common/header_eoms.jsp" %>
 
 <script type="text/javascript">
-	function intoList(){
-		var undo=document.location.href;
-		location.href = '${app}/sheet/commonfault/ptnpretreatmentrule.do?method=showList';
-	}
-	window.setTimeout(intoList, 3000);
+    function intoList() {
+        var undo = document.location.href;
+        location.href = '${app}/sheet/commonfault/ptnpretreatmentrule.do?method=showList';
+    }
+
+    window.setTimeout(intoList, 3000);
 </script>
 
 <div class="successPage">
-	<h1 class="header">操作成功！</h1>
-	<div class="content">
-		您的操作已成功执行。<br/>
-	</div>
+    <h1 class="header">操作成功！</h1>
+    <div class="content">
+        您的操作已成功执行。<br/>
+    </div>
 </div>
 
-<%@ include file="/common/footer_eoms.jsp"%>
+<%@ include file="/common/footer_eoms.jsp" %>

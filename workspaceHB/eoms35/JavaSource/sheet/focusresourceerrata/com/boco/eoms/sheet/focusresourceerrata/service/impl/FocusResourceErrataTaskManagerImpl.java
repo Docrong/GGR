@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.focusresourceerrata.service.IFocusResourceErrataTaskM
  * <p>
  * Thu May 10 09:23:09 CST 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class FocusResourceErrataTaskManagerImpl extends TaskServiceImpl implements  IFocusResourceErrataTaskManager {
- 
- }
+
+public class FocusResourceErrataTaskManagerImpl extends TaskServiceImpl implements IFocusResourceErrataTaskManager {
+
+}

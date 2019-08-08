@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="voice_monitor"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="applyId"
+                name="applyId"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -35,9 +35,9 @@
         >
 
         </property>
-        
+
         <property
-            name="serviceId"
+                name="serviceId"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -45,9 +45,9 @@
         >
 
         </property>
-        
+
         <property
-            name="buizid"
+                name="buizid"
                 length="50"
                 not-null="true"
                 unique="false"
@@ -57,7 +57,7 @@
         </property>
 
         <property
-            name="content"
+                name="content"
                 length="500"
                 not-null="false"
                 unique="false"
@@ -66,7 +66,7 @@
         </property>
 
         <property
-            name="dispatchTime"
+                name="dispatchTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -74,9 +74,9 @@
         >
 
         </property>
-        
+
         <property
-            name="allocTime"
+                name="allocTime"
                 length="30"
                 not-null="true"
                 unique="false"
@@ -84,9 +84,9 @@
         >
 
         </property>
-        
+
         <property
-            name="finishTime"
+                name="finishTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -96,16 +96,16 @@
         </property>
 
         <property
-            name="dutyman"
+                name="dutyman"
                 length="30"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="dutymanNum"
+                name="dutymanNum"
                 length="36"
                 not-null="false"
                 unique="false"
@@ -115,7 +115,7 @@
         </property>
 
         <property
-            name="receiverId"
+                name="receiverId"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -123,9 +123,9 @@
         >
 
         </property>
-        
+
         <property
-            name="receiverNum"
+                name="receiverNum"
                 length="36"
                 not-null="false"
                 unique="false"
@@ -133,9 +133,9 @@
         >
 
         </property>
-        
+
         <property
-            name="senderId"
+                name="senderId"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -143,19 +143,19 @@
         >
 
         </property>
-        
+
         <property
-            name="senderNum"
+                name="senderNum"
                 length="36"
                 not-null="false"
                 unique="false"
                 column="sender_num"
         >
 
-        </property>        
-                
+        </property>
+
         <property
-            name="deleted"
+                name="deleted"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -164,7 +164,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

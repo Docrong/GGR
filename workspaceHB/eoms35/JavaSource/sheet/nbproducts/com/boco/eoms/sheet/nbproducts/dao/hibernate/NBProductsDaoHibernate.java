@@ -23,9 +23,9 @@ public class NBProductsDaoHibernate extends BaseSheetDaoHibernate implements INB
      */
     public List getNBProductss() {
         return getHibernateTemplate().find("from NBProducts as nbp where nbp.deleted = 0 order by nbp.recordTime desc");
-      
-    }   
-    
+
+    }
+
     public List getNBProductssDeleted() {
         return getHibernateTemplate().find("from NBProducts as nbp where nbp.deleted = 1 order by nbp.recordTime desc");
         
@@ -49,8 +49,8 @@ public class NBProductsDaoHibernate extends BaseSheetDaoHibernate implements INB
      * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#getNBProducts(String id)
      */
     public NBProducts getNBProducts(final String id) {
-    		NBProducts nbproducts = (NBProducts) getHibernateTemplate().get(NBProducts.class, id);
-         if (nbproducts == null) {
+        NBProducts nbproducts = (NBProducts) getHibernateTemplate().get(NBProducts.class, id);
+        if (nbproducts == null) {
             throw new ObjectRetrievalFailureException(NBProducts.class, id);
         }
         return nbproducts;
@@ -58,79 +58,82 @@ public class NBProductsDaoHibernate extends BaseSheetDaoHibernate implements INB
 
     /**
      * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#saveNBProducts(NBProducts nbproducts)
-     */    
+     */
     public void saveNBProducts(final NBProducts nbproducts) {
         if ((nbproducts.getId() == null) || (nbproducts.getId().equals("")))
-			getHibernateTemplate().save(nbproducts);
-		else
-			getHibernateTemplate().saveOrUpdate(nbproducts);
+            getHibernateTemplate().save(nbproducts);
+        else
+            getHibernateTemplate().saveOrUpdate(nbproducts);
     }
 
     /**
      * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#removeNBProducts(String id)
      */
     public void removeNBProducts(final String id) {
-    	NBProducts nbp = getNBProducts(id);
-    	nbp.setDeleted(new Integer(1));
-    	getHibernateTemplate().getSessionFactory().getCurrentSession().clear();
+        NBProducts nbp = getNBProducts(id);
+        nbp.setDeleted(new Integer(1));
+        getHibernateTemplate().getSessionFactory().getCurrentSession().clear();
         getHibernateTemplate().saveOrUpdate(nbp);
     }
-    
+
     /**
      * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#removeNBProducts(String id)
      */
     public void restoreNBProducts(final String id) {
-    	NBProducts nbp = getNBProducts(id);
-    	nbp.setDeleted(new Integer(0));
-    	getHibernateTemplate().getSessionFactory().getCurrentSession().clear();
+        NBProducts nbp = getNBProducts(id);
+        nbp.setDeleted(new Integer(0));
+        getHibernateTemplate().getSessionFactory().getCurrentSession().clear();
         getHibernateTemplate().saveOrUpdate(nbp);
     }
+
     /**
-     * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#getNBProductss(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#getNBProductss(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getNBProductss(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getNBProductss(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the nbproducts
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from NBProducts nbp";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from NBProducts nbp";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr+" order by nbp.recordTime");
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr + " order by nbp.recordTime");
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#getNBProductss(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getNBProductss(final Integer curPage, final Integer pageSize) {
-			return this.getNBProductss(curPage,pageSize,null);
-		}
+        return this.getNBProductss(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.sheet.nbproducts.dao.NBProductsDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from NBProducts obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
-	
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from NBProducts obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
+
     /**
-	 * @see com.boco.eoms.sheet.nbproducts.dao.INBProductsDao#getNBProductssByCondition(java.lang.String)
-	 */
-	public List getNBProductssByHql(String hql) {
-		return getHibernateTemplate().find(hql);		
-	}
+     * @see com.boco.eoms.sheet.nbproducts.dao.INBProductsDao#getNBProductssByCondition(java.lang.String)
+     */
+    public List getNBProductssByHql(String hql) {
+        return getHibernateTemplate().find(hql);
+    }
 }

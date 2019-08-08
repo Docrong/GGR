@@ -32,33 +32,33 @@ public class TawCommonMessageModelTypeDaoTest extends BaseDaoTestCase {
     }
 
     public void testGetTawCommonMessageModelType() throws Exception {
-    	 TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
-         tawCommonMessageModelType.setModelid("88");
-         tawCommonMessageModelType.setModelname("消息");
-         tawCommonMessageModelType.setModelremark("消息配置测试");
-         // set required fields
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+        tawCommonMessageModelType.setModelid("88");
+        tawCommonMessageModelType.setModelname("消息");
+        tawCommonMessageModelType.setModelremark("消息配置测试");
+        // set required fields
 
-         dao.saveTawCommonMessageModelType(tawCommonMessageModelType);
+        dao.saveTawCommonMessageModelType(tawCommonMessageModelType);
         TawCommonMessageModelType tawCommonMessageModelTypes = dao.getTawCommonMessageModelType(tawCommonMessageModelType.getId());
-       
-        
+
+
         assertNotNull(tawCommonMessageModelTypes);
     }
 
     public void testGetTawCommonMessageModelTypes() throws Exception {
-    	 TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
-         tawCommonMessageModelType.setModelid("88");
-         tawCommonMessageModelType.setModelname("消息");
-         tawCommonMessageModelType.setModelremark("消息配置测试");
-         // set required fields
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+        tawCommonMessageModelType.setModelid("88");
+        tawCommonMessageModelType.setModelname("消息");
+        tawCommonMessageModelType.setModelremark("消息配置测试");
+        // set required fields
 
-         dao.saveTawCommonMessageModelType(tawCommonMessageModelType);
+        dao.saveTawCommonMessageModelType(tawCommonMessageModelType);
         List results = dao.getTawCommonMessageModelTypes(tawCommonMessageModelType);
         assertTrue(results.size() > 0);
     }
 
     public void testSaveTawCommonMessageModelType() throws Exception {
-    	TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
         tawCommonMessageModelType.setModelid("88");
         tawCommonMessageModelType.setModelname("消息");
         tawCommonMessageModelType.setModelremark("消息配置测试");
@@ -70,13 +70,13 @@ public class TawCommonMessageModelTypeDaoTest extends BaseDaoTestCase {
         // update required fields
 
         dao.saveTawCommonMessageModelType(tawCommonMessageModelTypes);
-        assertSame(tawCommonMessageModelType.getModelid(),tawCommonMessageModelTypes.getModelid());
+        assertSame(tawCommonMessageModelType.getModelid(), tawCommonMessageModelTypes.getModelid());
 
     }
 
     public void testRemoveTawCommonMessageModelType() throws Exception {
-        
-    	TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
         tawCommonMessageModelType.setModelid("88");
         tawCommonMessageModelType.setModelname("消息");
         tawCommonMessageModelType.setModelremark("消息配置测试");
@@ -91,56 +91,56 @@ public class TawCommonMessageModelTypeDaoTest extends BaseDaoTestCase {
             assertNotNull(e.getMessage());
         }
     }
-    
-    public void testGetMessagType(){
-    	TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+
+    public void testGetMessagType() {
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
         tawCommonMessageModelType.setModelid("88");
         tawCommonMessageModelType.setModelname("消息");
         tawCommonMessageModelType.setModelremark("消息配置测试");
         // set required fields
         dao.saveTawCommonMessageModelType(tawCommonMessageModelType);
         TawCommonMessageModelType tawCommonMessageModelTypes = new TawCommonMessageModelType();
-      
-        tawCommonMessageModelTypes =  dao.getMessageType(tawCommonMessageModelType.getModelid());
-        
-        assertSame( tawCommonMessageModelType.getModelname(), tawCommonMessageModelTypes.getModelname());
+
+        tawCommonMessageModelTypes = dao.getMessageType(tawCommonMessageModelType.getModelid());
+
+        assertSame(tawCommonMessageModelType.getModelname(), tawCommonMessageModelTypes.getModelname());
     }
-    
-    public void testRemoveMessagType(){
-    	TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+
+    public void testRemoveMessagType() {
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
         tawCommonMessageModelType.setModelid("88");
         tawCommonMessageModelType.setModelname("消息");
         tawCommonMessageModelType.setModelremark("消息配置测试");
         // set required fields
         dao.saveTawCommonMessageModelType(tawCommonMessageModelType);
-       
-      
-       dao.removeMessageType(tawCommonMessageModelType.getModelid());
-        
-       try {
-           dao.getTawCommonMessageModelType(tawCommonMessageModelType.getId());
-           fail("tawCommonMessageModelType found in database");
-       } catch (ObjectRetrievalFailureException e) {
-           assertNotNull(e.getMessage());
-       }
+
+
+        dao.removeMessageType(tawCommonMessageModelType.getModelid());
+
+        try {
+            dao.getTawCommonMessageModelType(tawCommonMessageModelType.getId());
+            fail("tawCommonMessageModelType found in database");
+        } catch (ObjectRetrievalFailureException e) {
+            assertNotNull(e.getMessage());
+        }
     }
-    
-    
-    public void testSaveUpMessagType(){
-    	TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+
+
+    public void testSaveUpMessagType() {
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
         tawCommonMessageModelType.setModelid("88");
         tawCommonMessageModelType.setModelname("消息");
         tawCommonMessageModelType.setModelremark("消息配置测试");
         // set required fields
         dao.saveTawCommonMessageModelType(tawCommonMessageModelType);
-       
-      
-       dao.saveAndUpdatemodeltype(tawCommonMessageModelType.getModelid(), "66", "66", "消息", "xiaoxipeizhiceshi");
-        
-       TawCommonMessageModelType tawCommonMessageModelTypes = new TawCommonMessageModelType();
-       tawCommonMessageModelTypes = dao.getTawCommonMessageModelType(tawCommonMessageModelType.getId());
-      
-       assertSame(tawCommonMessageModelTypes.getModelid(),"66");
+
+
+        dao.saveAndUpdatemodeltype(tawCommonMessageModelType.getModelid(), "66", "66", "消息", "xiaoxipeizhiceshi");
+
+        TawCommonMessageModelType tawCommonMessageModelTypes = new TawCommonMessageModelType();
+        tawCommonMessageModelTypes = dao.getTawCommonMessageModelType(tawCommonMessageModelType.getId());
+
+        assertSame(tawCommonMessageModelTypes.getModelid(), "66");
     }
-    
+
 }

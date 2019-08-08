@@ -18,80 +18,80 @@ import com.ggr.model.User;
 
 public class UserServiceImplTest {
 
-	@Test
-	public void testGetEasyEg() {
-		Service service = new Service();
-		try {
-			Call call = (Call)service.createCall();
-			//ÉèÖÃµØÖ·
-			call.setTargetEndpointAddress("http://localhost:8080/webservice/services/UserServiceImpl?wsdl");
-			//ÉèÖÃÒªÖ´ÐÐµÄ·½·¨(ÒÔÏÂÁ½ÖÖ·½Ê½¶¼¿ÉÒÔ)
-			call.setOperationName("getEasyEg");
-			//ÉèÖÃÒª´«Èë²ÎÊý,Èç¹ûÃ»ÓÐÒª´«ÈëµÄ²ÎÊý£¬Ôò²»ÒªÐ´Õâ¸ö£¨²ÎÊýÃû¡¢²ÎÊýÀàÐÍ¡¢ParameterMode£©,µÚÒ»¸ö²ÎÊý°¡Ã»ÓÐ¾ßÌåÒªÇó
-			call.addParameter("param1", org.apache.axis.Constants.XSD_STRING,javax.xml.rpc.ParameterMode.IN);
-			//ÉèÖÃ·µ»ØµÄÀàÐÍ
-			call.setReturnType(org.apache.axis.Constants.XSD_STRING);
-			//µ÷ÓÃWebService·þÎñ
-			String info = "Ð¡Óã¶ù£¬ÄãºÃ£¡";
-			String result = (String) call.invoke(new Object[]{info});
-			System.out.println(result);
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		Assert.assertNotNull(service);
-		
-	}
+    @Test
+    public void testGetEasyEg() {
+        Service service = new Service();
+        try {
+            Call call = (Call) service.createCall();
+            //ï¿½ï¿½ï¿½Ãµï¿½Ö·
+            call.setTargetEndpointAddress("http://localhost:8080/webservice/services/UserServiceImpl?wsdl");
+            //ï¿½ï¿½ï¿½ï¿½ÒªÖ´ï¿½ÐµÄ·ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+            call.setOperationName("getEasyEg");
+            //ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ParameterModeï¿½ï¿½,ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¾ï¿½ï¿½ï¿½Òªï¿½ï¿½
+            call.addParameter("param1", org.apache.axis.Constants.XSD_STRING, javax.xml.rpc.ParameterMode.IN);
+            //ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+            call.setReturnType(org.apache.axis.Constants.XSD_STRING);
+            //ï¿½ï¿½ï¿½ï¿½WebServiceï¿½ï¿½ï¿½ï¿½
+            String info = "Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½";
+            String result = (String) call.invoke(new Object[]{info});
+            System.out.println(result);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        Assert.assertNotNull(service);
 
-	@Test
-	public void testGetUser() {
-		Service service = new Service();
-		try {
-			Call call = (Call)service.createCall();
-			//ÉèÖÃµØÖ·
-			call.setTargetEndpointAddress("http://localhost:8080/webservice/services/UserServiceImpl?wsdl");
-			//ÉèÖÃÒªÖ´ÐÐµÄ·½·¨(ÒÔÏÂÁ½ÖÖ·½Ê½¶¼¿ÉÒÔ)
-			call.setOperationName("getUser");
-			//ÉèÖÃÒª´«Èë²ÎÊý,Èç¹ûÃ»ÓÐÒª´«ÈëµÄ²ÎÊý£¬Ôò²»ÒªÐ´Õâ¸ö£¨²ÎÊýÃû¡¢²ÎÊýÀàÐÍ¡¢ParameterMode£©,µÚÒ»¸ö²ÎÊý°¡Ã»ÓÐ¾ßÌåÒªÇó
-			call.addParameter("param1", org.apache.axis.Constants.XSD_STRING,javax.xml.rpc.ParameterMode.IN);
-			call.addParameter("param2", org.apache.axis.Constants.XSD_INT,javax.xml.rpc.ParameterMode.IN);
-			//ÉèÖÃ·µ»ØµÄÀàÐÍ
-			QName qn=new QName("http://localhost:8080/webservice/services/UserServiceImpl" );
+    }
+
+    @Test
+    public void testGetUser() {
+        Service service = new Service();
+        try {
+            Call call = (Call) service.createCall();
+            //ï¿½ï¿½ï¿½Ãµï¿½Ö·
+            call.setTargetEndpointAddress("http://localhost:8080/webservice/services/UserServiceImpl?wsdl");
+            //ï¿½ï¿½ï¿½ï¿½ÒªÖ´ï¿½ÐµÄ·ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+            call.setOperationName("getUser");
+            //ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ParameterModeï¿½ï¿½,ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¾ï¿½ï¿½ï¿½Òªï¿½ï¿½
+            call.addParameter("param1", org.apache.axis.Constants.XSD_STRING, javax.xml.rpc.ParameterMode.IN);
+            call.addParameter("param2", org.apache.axis.Constants.XSD_INT, javax.xml.rpc.ParameterMode.IN);
+            //ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+            QName qn = new QName("http://localhost:8080/webservice/services/UserServiceImpl");
 			/*
-			 * ·µ»ØÒ»¸ö¶ÔÏóÊÇcall.setReturnType(qn,User.class);¿ÉÒÔ²»ÓÃ
-			 * µ«ÊÇÒªÉèÖÃ·´ÐòÁÐ»¯registerTypeMapping
+			 * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½call.setReturnType(qn,User.class);ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½
+			 * ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Ð»ï¿½registerTypeMapping
 			call.setReturnType(qn,User.class);
 			 */
 
-			call.registerTypeMapping(User.class, qn, BeanSerializerFactory.class, BeanDeserializerFactory.class);
-			call.setReturnClass(User.class);
-			//µ÷ÓÃWebService·þÎñ
-			String info = "testadmin£¡";
-			User user = (User) call.invoke(new Object[]{info,123});
-			System.out.println(user.getUsername());
-			System.out.println(user.getAge());
-			System.out.println(user.getMoney());
-		} catch (ServiceException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-	}
+            call.registerTypeMapping(User.class, qn, BeanSerializerFactory.class, BeanDeserializerFactory.class);
+            call.setReturnClass(User.class);
+            //ï¿½ï¿½ï¿½ï¿½WebServiceï¿½ï¿½ï¿½ï¿½
+            String info = "testadminï¿½ï¿½";
+            User user = (User) call.invoke(new Object[]{info, 123});
+            System.out.println(user.getUsername());
+            System.out.println(user.getAge());
+            System.out.println(user.getMoney());
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
-	@Test
-	public void testGetUserList() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testGetUserList() {
+        fail("Not yet implemented");
+    }
 
-	@Test
-	public void testGetUserGroup() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testGetUserGroup() {
+        fail("Not yet implemented");
+    }
 
-	@Test
-	public void testGetUserMap() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testGetUserMap() {
+        fail("Not yet implemented");
+    }
 
 }

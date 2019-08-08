@@ -53,12 +53,12 @@ public class TawsuCheckModuleDaoHibernate extends BaseDaoHibernate implements Ta
 
     /**
      * @see com.boco.eoms.commons.sample.dao.TawsuCheckModuleDao#saveTawsuCheckModule(TawsuCheckModule tawsuCheckModule)
-     */    
+     */
     public void saveTawsuCheckModule(final TawsuCheckModule tawsuCheckModule) {
         if ((tawsuCheckModule.getId() == null) || (tawsuCheckModule.getId().equals("")))
-			getHibernateTemplate().save(tawsuCheckModule);
-		else
-			getHibernateTemplate().saveOrUpdate(tawsuCheckModule);
+            getHibernateTemplate().save(tawsuCheckModule);
+        else
+            getHibernateTemplate().saveOrUpdate(tawsuCheckModule);
     }
 
     /**
@@ -67,37 +67,39 @@ public class TawsuCheckModuleDaoHibernate extends BaseDaoHibernate implements Ta
     public void removeTawsuCheckModule(final String id) {
         getHibernateTemplate().delete(getTawsuCheckModule(id));
     }
+
     /**
      * curPage
      * pageSize
      * whereStr   sql filter
      */
-    public Map getTawsuCheckModules(final int curPage, final int pageSize,final String whereStr) {
+    public Map getTawsuCheckModules(final int curPage, final int pageSize, final String whereStr) {
         // filter on properties set in the tawsuCheckModule
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawsuCheckModule";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawsuCheckModule";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize
-									* (curPage));
-							query.setMaxResults(pageSize);
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize
+                        * (curPage));
+                query.setMaxResults(pageSize);
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawsuCheckModules(final int curPage, final int pageSize) {
-			return this.getTawsuCheckModules(curPage,pageSize,null);
-		}
+        return this.getTawsuCheckModules(curPage, pageSize, null);
+    }
 
 }

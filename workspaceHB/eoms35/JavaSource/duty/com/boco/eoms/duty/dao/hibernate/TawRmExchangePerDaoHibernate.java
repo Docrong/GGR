@@ -1,7 +1,7 @@
 
 package com.boco.eoms.duty.dao.hibernate;
 
-  
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,24 +16,25 @@ import com.boco.eoms.duty.model.TawRmGuestform;
 import com.boco.eoms.duty.dao.ITawRmExchangePerDao;
 
 
-public class TawRmExchangePerDaoHibernate extends BaseDaoHibernate implements ITawRmExchangePerDao{
+public class TawRmExchangePerDaoHibernate extends BaseDaoHibernate implements ITawRmExchangePerDao {
 
-	com.boco.eoms.db.util.ConnectionPool ds;
-	TawRmExchangePer tawRmExchangePer=new TawRmExchangePer();
+    com.boco.eoms.db.util.ConnectionPool ds;
+    TawRmExchangePer tawRmExchangePer = new TawRmExchangePer();
 
-	
-	public List getTawRmExchangePer(String workserial) {
-		String hql = " from TawRmExchangePer where  workserial='"+workserial+"'";
-		return getHibernateTemplate().find(hql);
-	}
-	public void saveTawRmExchangePer(TawRmExchangePer tawRmExchangePer) {
-		
-		if ((tawRmExchangePer.getId() == null) || (tawRmExchangePer.getId().equals("")))
-			getHibernateTemplate().save(tawRmExchangePer);
-		else
-			getHibernateTemplate().save(tawRmExchangePer);
-		
-	}
+
+    public List getTawRmExchangePer(String workserial) {
+        String hql = " from TawRmExchangePer where  workserial='" + workserial + "'";
+        return getHibernateTemplate().find(hql);
+    }
+
+    public void saveTawRmExchangePer(TawRmExchangePer tawRmExchangePer) {
+
+        if ((tawRmExchangePer.getId() == null) || (tawRmExchangePer.getId().equals("")))
+            getHibernateTemplate().save(tawRmExchangePer);
+        else
+            getHibernateTemplate().save(tawRmExchangePer);
+
+    }
 
 
 }

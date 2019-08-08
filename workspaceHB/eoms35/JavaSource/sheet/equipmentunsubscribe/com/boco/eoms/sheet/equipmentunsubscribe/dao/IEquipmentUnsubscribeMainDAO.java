@@ -12,15 +12,14 @@ import com.boco.eoms.sheet.base.dao.IMainDAO;
  * <p>
  * Tue Oct 09 14:24:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public interface IEquipmentUnsubscribeMainDAO extends IMainDAO  {
- 
- }
+
+public interface IEquipmentUnsubscribeMainDAO extends IMainDAO {
+
+}
  
 
 

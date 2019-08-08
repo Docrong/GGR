@@ -22,7 +22,7 @@ public class SmsMonitorDaoTest extends BaseDaoTestCase {
 //		this.manager = manager;
 //	}
 
-//	public void setSmsMonitorDao(SmsMonitorDao dao) {
+    //	public void setSmsMonitorDao(SmsMonitorDao dao) {
 //        this.dao = dao;
 //    }
 //
@@ -44,15 +44,15 @@ public class SmsMonitorDaoTest extends BaseDaoTestCase {
 ////    	assertEquals(msg, smsMonitorBak.getContent());
 //    	dao.removeSmsMonitorBak(smsMonitorBak.getId());
 //    }
-    public void testIsDuty(){
-    	ITawRmAssignworkManager tawRmAssignworkManager = (ITawRmAssignworkManager) ApplicationContextHolder.getInstance().getBean("ItawRmAssignworkManager");
-    	String userId = "liqiuye";
-    		Date currentTime = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat(
-				"yyyy-MM-dd HH:mm:ss");
-		String dateString = formatter.format(currentTime);
-		String date = "2009-03-15 07:00:00";
-		assertTrue(tawRmAssignworkManager.isDuty(userId, date));
+    public void testIsDuty() {
+        ITawRmAssignworkManager tawRmAssignworkManager = (ITawRmAssignworkManager) ApplicationContextHolder.getInstance().getBean("ItawRmAssignworkManager");
+        String userId = "liqiuye";
+        Date currentTime = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(currentTime);
+        String date = "2009-03-15 07:00:00";
+        assertTrue(tawRmAssignworkManager.isDuty(userId, date));
     }
     /*
     public void testAddSmsMonitor() throws Exception {

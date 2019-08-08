@@ -13,6 +13,7 @@ import org.springframework.test.AbstractTransactionalDataSourceSpringContextTest
 
 /**
  * Base class for running Dao tests.
+ *
  * @author mraible
  */
 public abstract class BaseDaoTestCase extends AbstractTransactionalDataSourceSpringContextTests {
@@ -21,9 +22,9 @@ public abstract class BaseDaoTestCase extends AbstractTransactionalDataSourceSpr
 
     protected String[] getConfigLocations() {
         setAutowireMode(AUTOWIRE_BY_NAME);
-        return new String [] {"classpath*:/config/applicationContext-all.xml"};
+        return new String[]{"classpath*:/config/applicationContext-all.xml"};
     }
-    
+
     public BaseDaoTestCase() {
         // Since a ResourceBundle is not required for each class, just
         // do a simple check to see if one exists
@@ -39,6 +40,7 @@ public abstract class BaseDaoTestCase extends AbstractTransactionalDataSourceSpr
     /**
      * Utility method to populate a javabean-style object with values
      * from a Properties file
+     *
      * @param obj
      * @return Object populated object
      * @throws Exception
@@ -48,7 +50,7 @@ public abstract class BaseDaoTestCase extends AbstractTransactionalDataSourceSpr
         // its .properties file
         Map map = new HashMap();
 
-        for (Enumeration keys = rb.getKeys(); keys.hasMoreElements();) {
+        for (Enumeration keys = rb.getKeys(); keys.hasMoreElements(); ) {
             String key = (String) keys.nextElement();
             map.put(key, rb.getString(key));
         }

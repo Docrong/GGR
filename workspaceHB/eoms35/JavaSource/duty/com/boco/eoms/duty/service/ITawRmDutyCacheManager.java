@@ -4,6 +4,7 @@ import java.util.Map;
 
 public interface ITawRmDutyCacheManager {
 
-	public Map getCacheData();
-	public Map getDutyManCacheData();
+    public Map getCacheData();
+
+    public Map getDutyManCacheData();
 }

@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.plannconfirm.service.IPlannConfirmTaskManager;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannConfirmTaskManagerImpl extends TaskServiceImpl implements  IPlannConfirmTaskManager {
- 
- }
+
+public class PlannConfirmTaskManagerImpl extends TaskServiceImpl implements IPlannConfirmTaskManager {
+
+}

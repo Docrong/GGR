@@ -4,12 +4,13 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * ÅúÁ¿²âÊÔ ¹¤¾ß°ü ÖĞ²âÊÔÀà
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß°ï¿½ ï¿½Ğ²ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  * @author Ai92
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({TestWordDealUtil.class})
 public final class RunAllUtilTests {
-	public RunAllUtilTests(){}
+    public RunAllUtilTests() {
+    }
 }

@@ -4,9 +4,8 @@ import com.boco.eoms.commons.statistic.commonstat.util.CommonStatListDisplayHelp
 
 
 public class NetOptimizeStatListDisplayHelper extends
-		CommonStatListDisplayHelper {
+        CommonStatListDisplayHelper {
 //	private String senddept;
-	
-	
+
 
 }

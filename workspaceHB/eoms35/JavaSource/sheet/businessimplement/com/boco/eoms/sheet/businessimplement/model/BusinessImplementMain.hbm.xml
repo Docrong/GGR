@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -12,140 +12,140 @@
             table="BusinessImplement_main"
     >
 
-    <id
-        name="id"
-        column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="sheetId" />
-		<property name="title" />
-		<property name="sheetAcceptLimit" />
-		<property name="sheetCompleteLimit" />
-		<property name="sendTime" />
-		<property name="sendOrgType" />
-		<property name="sendUserId" />
-		<property name="sendDeptId" />
-		<property name="sendRoleId" />
-		<property name="sendContact" />
-		<property name="endTime" />
-		<property name="endResult" />
-		<property name="status" />
-		<property name="holdStatisfied" />
-		<property name="endUserId" />
-		<property name="endDeptId" />
-		<property name="endRoleId" />
-		<property name="deleted" />
-		<property name="piid" />
-		<property name="parentSheetName" />
-		<property name="parentSheetId" />
-		<property name="sheetTemplateName" />
-		<property name="sheetAccessories" />
-		<property name="correlationKey" />
-		<property name="parentCorrelation" />
-		<property name="toDeptId" />
-		<property name="templateFlag" />
-		<property name="cancelReason" />
-		<property name="invokeMode" />
+        </id>
+        <property name="sheetId"/>
+        <property name="title"/>
+        <property name="sheetAcceptLimit"/>
+        <property name="sheetCompleteLimit"/>
+        <property name="sendTime"/>
+        <property name="sendOrgType"/>
+        <property name="sendUserId"/>
+        <property name="sendDeptId"/>
+        <property name="sendRoleId"/>
+        <property name="sendContact"/>
+        <property name="endTime"/>
+        <property name="endResult"/>
+        <property name="status"/>
+        <property name="holdStatisfied"/>
+        <property name="endUserId"/>
+        <property name="endDeptId"/>
+        <property name="endRoleId"/>
+        <property name="deleted"/>
+        <property name="piid"/>
+        <property name="parentSheetName"/>
+        <property name="parentSheetId"/>
+        <property name="sheetTemplateName"/>
+        <property name="sheetAccessories"/>
+        <property name="correlationKey"/>
+        <property name="parentCorrelation"/>
+        <property name="toDeptId"/>
+        <property name="templateFlag"/>
+        <property name="cancelReason"/>
+        <property name="invokeMode"/>
 
 
- 		<property name="sendYear" />
-		<property name="sendMonth" />
-        <property name="sendDay" />
-        
-        <property name="parentPhaseName" />
-        
-        <property name="mainGroupConnPerson" />
-        <property name="mainGroupConnType" />
-        <property name="mainArgument" />
-        <property name="mainResourceAffCRMNumber" />
-        <property name="mainSpecifyType" />
-        
-        <property name="mainSendSheetModule" />
-        
-        <property name="mainGroupNumber" />
-        <property name="mainGroupName" />
-        <property name="mainGroupLevel" />
-        <property name="mainBelongPronice" />
-        
-         <property name="mainBelongCity" />
-        <property name="mainBelongZone" />
-        <property name="mainAH" />
-        <property name="mainHH" />
-        <property name="mainGprsAddress" />
-        
-        <property name="minaGprsConnPerson" />
-        <property name="mainGrpsConnPersonPhone" />
-        <property name="mainGprsA" />
-        <property name="mianGrpsH" />
-        <property name="mainBusinessWith" />
-        
-    
-        <property name="mainBusinesNumber" />
-        <property name="mainConnMethod" />
-        <property name="mainSuiDaoMethod" />
-        <property name="mainGroupUserIp" />
-        <property name="mainRadiusAddress" />
-        
-        <property name="mianGroupUserIdNeed" />
-        <property name="mainApnName" />
-        <property name="mainIpAddressMethod" />
-        <property name="mainWith" />
-        <property name="mainNumber" />
-        
-        <property name="mainCityA" />
-        <property name="mainDotA" />
-        <property name="mainDotAInterfaceType" />
-        <property name="mainAAddress" />
-        <property name="mainADevName" />
-        
-        
-        <property name="mainADevInterface" />
-        <property name="mainInterfaceAConnPerson" />
-        <property name="mainAConnPersonPhone" />
-        <property name="mainClientLeader" />
-        <property name="mainClientLeadPhone" />
-        
-         <property name="mainClientConnPerson" />
-        <property name="mainClientConnPersonPhone" />
-        <property name="mainBusinessConnPerson" />
-        <property name="mainBusinessConnPersonPhone" />
-        <property name="mainTechConnPerson" />
-        
-        
-        <property name="mainTechConnPersonPhone" />
-        <property name="mainResourceConfirmSheetInfo" />
-        
-        <property name="mainCityZ" />
-        <property name="mainDotZ" />
-        <property name="mainDotZInterfaceType" />
-        <property name="mainDotZAddress" />
-        <property name="mainZBusinessDevDot" />
-        
-        <property name="mainZConnect" />
-        <property name="mainZConnPersonPhone" />
-        <property name="mainUserIsUserNet" />
-        <property name="mainUserSpecifyDevNeed" />
-        <property name="orderSheetId" />
-        <property name="isHangFlag" />
-        
-        <property name="mainCircuitSheetId" />
-        <property name="circuitDispatchNumber" />
-        <property name="mainIsCircuitComplete" />
-        
-        <property name="mainFiberEquipName" />
-	    <property name="mainFiberEquipCode" />
-	    <property name="mainSiteEquipCode" />
-	    <property name="mainSiteName" />
-	    <property name="mainAccessSiteIden" />
-	    <property name="mainFiberCode" /> 
+        <property name="sendYear"/>
+        <property name="sendMonth"/>
+        <property name="sendDay"/>
 
-    </class>    
+        <property name="parentPhaseName"/>
+
+        <property name="mainGroupConnPerson"/>
+        <property name="mainGroupConnType"/>
+        <property name="mainArgument"/>
+        <property name="mainResourceAffCRMNumber"/>
+        <property name="mainSpecifyType"/>
+
+        <property name="mainSendSheetModule"/>
+
+        <property name="mainGroupNumber"/>
+        <property name="mainGroupName"/>
+        <property name="mainGroupLevel"/>
+        <property name="mainBelongPronice"/>
+
+        <property name="mainBelongCity"/>
+        <property name="mainBelongZone"/>
+        <property name="mainAH"/>
+        <property name="mainHH"/>
+        <property name="mainGprsAddress"/>
+
+        <property name="minaGprsConnPerson"/>
+        <property name="mainGrpsConnPersonPhone"/>
+        <property name="mainGprsA"/>
+        <property name="mianGrpsH"/>
+        <property name="mainBusinessWith"/>
+
+
+        <property name="mainBusinesNumber"/>
+        <property name="mainConnMethod"/>
+        <property name="mainSuiDaoMethod"/>
+        <property name="mainGroupUserIp"/>
+        <property name="mainRadiusAddress"/>
+
+        <property name="mianGroupUserIdNeed"/>
+        <property name="mainApnName"/>
+        <property name="mainIpAddressMethod"/>
+        <property name="mainWith"/>
+        <property name="mainNumber"/>
+
+        <property name="mainCityA"/>
+        <property name="mainDotA"/>
+        <property name="mainDotAInterfaceType"/>
+        <property name="mainAAddress"/>
+        <property name="mainADevName"/>
+
+
+        <property name="mainADevInterface"/>
+        <property name="mainInterfaceAConnPerson"/>
+        <property name="mainAConnPersonPhone"/>
+        <property name="mainClientLeader"/>
+        <property name="mainClientLeadPhone"/>
+
+        <property name="mainClientConnPerson"/>
+        <property name="mainClientConnPersonPhone"/>
+        <property name="mainBusinessConnPerson"/>
+        <property name="mainBusinessConnPersonPhone"/>
+        <property name="mainTechConnPerson"/>
+
+
+        <property name="mainTechConnPersonPhone"/>
+        <property name="mainResourceConfirmSheetInfo"/>
+
+        <property name="mainCityZ"/>
+        <property name="mainDotZ"/>
+        <property name="mainDotZInterfaceType"/>
+        <property name="mainDotZAddress"/>
+        <property name="mainZBusinessDevDot"/>
+
+        <property name="mainZConnect"/>
+        <property name="mainZConnPersonPhone"/>
+        <property name="mainUserIsUserNet"/>
+        <property name="mainUserSpecifyDevNeed"/>
+        <property name="orderSheetId"/>
+        <property name="isHangFlag"/>
+
+        <property name="mainCircuitSheetId"/>
+        <property name="circuitDispatchNumber"/>
+        <property name="mainIsCircuitComplete"/>
+
+        <property name="mainFiberEquipName"/>
+        <property name="mainFiberEquipCode"/>
+        <property name="mainSiteEquipCode"/>
+        <property name="mainSiteName"/>
+        <property name="mainAccessSiteIden"/>
+        <property name="mainFiberCode"/>
+
+    </class>
 
 </hibernate-mapping>
 

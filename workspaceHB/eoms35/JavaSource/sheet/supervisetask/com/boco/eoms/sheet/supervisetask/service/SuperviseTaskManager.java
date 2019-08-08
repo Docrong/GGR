@@ -21,45 +21,55 @@ import com.boco.eoms.sheet.supervisetask.model.SuperviseTaskRule;
 
 public interface SuperviseTaskManager {
 
-	
-	public Map supervisetaskRuleList( Integer curPage,  Integer pageSize, Map maptj);
-	public Map supervisetaskRuleList2( Integer curPage,  Integer pageSize, Map maptj);
-	public Map supervisetaskRecordList( Integer curPage,  Integer pageSize, Map maptj);
-	
-	public void savesupervisetaskRule(SuperviseTaskRule t);
-	public void savesupervisetaskRecord(SuperviseTaskRecord t);
-	
-	public SuperviseTaskRecord getSuperviseTaskRecordById(String id);
-	public SuperviseTaskRule getSuperviseTaskRuleById(String id);
-	
-	public SuperviseTaskRecord getSuperviseTaskRecordBySheetId(String id);
-	
-	public ListedRegulationMain getListedRegulationMainById( String id);
-	
-	public String exportRecordExcel( HttpServletRequest request,
-			HttpServletResponse response,List result)throws Exception;
-	
-	public Map  getUsers(List list);
-	public Map getUsersNamePhone(String[]usersarr) throws Exception;
+
+    public Map supervisetaskRuleList(Integer curPage, Integer pageSize, Map maptj);
+
+    public Map supervisetaskRuleList2(Integer curPage, Integer pageSize, Map maptj);
+
+    public Map supervisetaskRecordList(Integer curPage, Integer pageSize, Map maptj);
+
+    public void savesupervisetaskRule(SuperviseTaskRule t);
+
+    public void savesupervisetaskRecord(SuperviseTaskRecord t);
+
+    public SuperviseTaskRecord getSuperviseTaskRecordById(String id);
+
+    public SuperviseTaskRule getSuperviseTaskRuleById(String id);
+
+    public SuperviseTaskRecord getSuperviseTaskRecordBySheetId(String id);
+
+    public ListedRegulationMain getListedRegulationMainById(String id);
+
+    public String exportRecordExcel(HttpServletRequest request,
+                                    HttpServletResponse response, List result) throws Exception;
+
+    public Map getUsers(List list);
+
+    public Map getUsersNamePhone(String[] usersarr) throws Exception;
 //	public void sendSMSIVR(String[]usersarr,String[]usersPhonearr,ListedRegulationMain main,SuperviseTaskRule rule,Date dealdate,String content2) throws Exception;
-	
-	public void supervisetaskRecordAddSaveAccept(Map map)throws Exception;
-	public void supervisetaskRecordAddSaveDeal(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception;
-	
-	public void supervisetaskRecordDoneAccept(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception;
-	public void supervisetaskRecordDone(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception;
-	
-	public CommonTaskMain getCommonTaskById(String id);
-	
-	public void newBulletin1(String str);
-	public String querySheetStatus(String sheetid);
-	
-	public Map getBoardDetail2( Integer curPage,  Integer pageSize, Map maptj)throws Exception;
-	public Map BoardCountList(Integer curPage,  Integer pageSize, Map maptj)throws Exception;
-	public Map BoardCountPersonList(Integer curPage,  Integer pageSize, Map maptj)throws Exception;
-	
-	public void supervisetaskMainDutySave(SuperviseTaskMainDuty t);
+
+    public void supervisetaskRecordAddSaveAccept(Map map) throws Exception;
+
+    public void supervisetaskRecordAddSaveDeal(ActionMapping mapping, ActionForm form,
+                                               HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    public void supervisetaskRecordDoneAccept(ActionMapping mapping, ActionForm form,
+                                              HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    public void supervisetaskRecordDone(ActionMapping mapping, ActionForm form,
+                                        HttpServletRequest request, HttpServletResponse response) throws Exception;
+
+    public CommonTaskMain getCommonTaskById(String id);
+
+    public void newBulletin1(String str);
+
+    public String querySheetStatus(String sheetid);
+
+    public Map getBoardDetail2(Integer curPage, Integer pageSize, Map maptj) throws Exception;
+
+    public Map BoardCountList(Integer curPage, Integer pageSize, Map maptj) throws Exception;
+
+    public Map BoardCountPersonList(Integer curPage, Integer pageSize, Map maptj) throws Exception;
+
+    public void supervisetaskMainDutySave(SuperviseTaskMainDuty t);
 }

@@ -57,12 +57,12 @@ public class CarMgrDaoHibernate extends BaseDaoHibernate implements ICarMgrDao {
 
     /**
      * @see com.boco.eoms.parter.baseinfo.carmgr.dao.CarMgrDao#saveCarMgr(CarMgr carMgr)
-     */    
+     */
     public void saveCarMgr(final CarMgr carMgr) {
         if ((carMgr.getId() == null) || (carMgr.getId().equals("")))
-			getHibernateTemplate().save(carMgr);
-		else
-			getHibernateTemplate().saveOrUpdate(carMgr);
+            getHibernateTemplate().save(carMgr);
+        else
+            getHibernateTemplate().saveOrUpdate(carMgr);
     }
 
     /**
@@ -71,46 +71,49 @@ public class CarMgrDaoHibernate extends BaseDaoHibernate implements ICarMgrDao {
     public void removeCarMgr(final String id) {
         getHibernateTemplate().delete(getCarMgr(id));
     }
-    /**
-     * @see com.boco.eoms.parter.baseinfo.carmgr.dao.CarMgrDao#getCarMgrs(final Integer curPage, final Integer pageSize,final String whereStr)
-     */
-    public Map getCarMgrs(final Integer curPage, final Integer pageSize,final String whereStr) {
-        // filter on properties set in the carMgr
-       HibernateCallback callback = new HibernateCallback() {
-            public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from CarMgr";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+    /**
+     * @see com.boco.eoms.parter.baseinfo.carmgr.dao.CarMgrDao#getCarMgrs(final Integer curPage, final Integer pageSize, final String whereStr)
+     */
+    public Map getCarMgrs(final Integer curPage, final Integer pageSize, final String whereStr) {
+        // filter on properties set in the carMgr
+        HibernateCallback callback = new HibernateCallback() {
+            public Object doInHibernate(Session session) throws HibernateException {
+                String queryStr = "from CarMgr";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
+
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.carmgr.dao.CarMgrDao#getCarMgrs(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getCarMgrs(final Integer curPage, final Integer pageSize) {
-			return this.getCarMgrs(curPage,pageSize,null);
-		}
+        return this.getCarMgrs(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.carmgr.dao.CarMgrDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from CarMgr obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
-	
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from CarMgr obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
+
 }

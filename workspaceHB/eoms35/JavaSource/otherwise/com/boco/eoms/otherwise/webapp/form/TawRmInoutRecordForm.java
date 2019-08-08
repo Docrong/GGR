@@ -5,309 +5,310 @@ import java.io.Serializable;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawRmInoutRecordForm extends BaseForm implements Serializable {
-	
-	private String id;
-	private String testcardId;
-	private String borrowDate;
-	private String intendingReturnDate;
-	private String realReturnDate;
-	private String borrowerId;
-	private String borrowerName;
-	private String userId;
-	private String outType;
-	private String inType;
-	private String inState;
-	private String remark;
-	private String ids;
-	private String cardType;
-	private String inStorageUserId;
-	private String inStorageRemark;
-	private String borrowStartDate;
-	private String borrowEndDate;
-	private String intendingReturnStartDate;
-	private String intendingReturnEndDate;
-	private String realReturnStartDate;
-	private String realReturnEndDate;
-	private String ascriptionPlace;
-	private String msisdn;
-	private String fromProvince;
-	private String fromCity;
-	private String fromCountry;
-	private String fromOperator;
-	private String toProvince;
-	private String toCity;
-	private String toCountry;
-	private String toOperator;
-	
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-	
-	public String getTestcardId() {
-		return testcardId;
-	}
+    private String id;
+    private String testcardId;
+    private String borrowDate;
+    private String intendingReturnDate;
+    private String realReturnDate;
+    private String borrowerId;
+    private String borrowerName;
+    private String userId;
+    private String outType;
+    private String inType;
+    private String inState;
+    private String remark;
+    private String ids;
+    private String cardType;
+    private String inStorageUserId;
+    private String inStorageRemark;
+    private String borrowStartDate;
+    private String borrowEndDate;
+    private String intendingReturnStartDate;
+    private String intendingReturnEndDate;
+    private String realReturnStartDate;
+    private String realReturnEndDate;
+    private String ascriptionPlace;
+    private String msisdn;
+    private String fromProvince;
+    private String fromCity;
+    private String fromCountry;
+    private String fromOperator;
+    private String toProvince;
+    private String toCity;
+    private String toCountry;
+    private String toOperator;
 
-	public void setTestcardId(String testcardId) {
-		this.testcardId = testcardId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getBorrowDate() {
-		return borrowDate;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setBorrowDate(String borrowDate) {
-		this.borrowDate = borrowDate;
-	}
-	
-	public String getIntendingReturnDate() {
-		return intendingReturnDate;
-	}
+    public String getTestcardId() {
+        return testcardId;
+    }
 
-	public void setIntendingReturnDate(String intendingReturnDate) {
-		this.intendingReturnDate = intendingReturnDate;
-	}
-	
-	public String getRealReturnDate() {
-		return realReturnDate;
-	}
+    public void setTestcardId(String testcardId) {
+        this.testcardId = testcardId;
+    }
 
-	public void setRealReturnDate(String realReturnDate) {
-		this.realReturnDate = realReturnDate;
-	}
-	
-	public String getBorrowerId() {
-		return borrowerId;
-	}
+    public String getBorrowDate() {
+        return borrowDate;
+    }
 
-	public void setBorrowerId(String borrowerId) {
-		this.borrowerId = borrowerId;
-	}
-	
-	public String getBorrowerName() {
-		return borrowerName;
-	}
+    public void setBorrowDate(String borrowDate) {
+        this.borrowDate = borrowDate;
+    }
 
-	public void setBorrowerName(String borrowerName) {
-		this.borrowerName = borrowerName;
-	}
-	
-	public String getOutType() {
-		return outType;
-	}
+    public String getIntendingReturnDate() {
+        return intendingReturnDate;
+    }
 
-	public void setOutType(String outType) {
-		this.outType = outType;
-	}
-	
-	public String getInType() {
-		return inType;
-	}
+    public void setIntendingReturnDate(String intendingReturnDate) {
+        this.intendingReturnDate = intendingReturnDate;
+    }
 
-	public void setInType(String inType) {
-		this.inType = inType;
-	}
-	
-	public String getInState() {
-		return inState;
-	}
+    public String getRealReturnDate() {
+        return realReturnDate;
+    }
 
-	public void setInState(String inState) {
-		this.inState = inState;
-	}
-	
-	public String getRemark() {
-		return remark;
-	}
+    public void setRealReturnDate(String realReturnDate) {
+        this.realReturnDate = realReturnDate;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-	
-	public String getUserId() {
-		return userId;
-	}
+    public String getBorrowerId() {
+        return borrowerId;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
-	public String getIds() {
-		return ids;
-	}
+    public void setBorrowerId(String borrowerId) {
+        this.borrowerId = borrowerId;
+    }
 
-	public void setIds(String ids) {
-		this.ids = ids;
-	}
-	/**
-	 * @struts.validator type="required"
-	 * @hibernate.property length="30" not-null="false" unique="true"
-	 */
-	public String getInStorageUserId() {
-		return inStorageUserId;
-	}
+    public String getBorrowerName() {
+        return borrowerName;
+    }
 
-	public void setInStorageUserId(String inStorageUserId) {
-		this.inStorageUserId = inStorageUserId;
-	}
-	
-	/**
-	 * @struts.validator type="required"
-	 * @hibernate.property length="100" not-null="false" unique="true"
-	 */
-	public String getInStorageRemark() {
-		return inStorageRemark;
-	}
+    public void setBorrowerName(String borrowerName) {
+        this.borrowerName = borrowerName;
+    }
 
-	public void setInStorageRemark(String inStorageRemark) {
-		this.inStorageRemark = inStorageRemark;
-	}
+    public String getOutType() {
+        return outType;
+    }
 
-	public String getBorrowStartDate() {
-		return borrowStartDate;
-	}
+    public void setOutType(String outType) {
+        this.outType = outType;
+    }
 
-	public void setBorrowStartDate(String borrowStartDate) {
-		this.borrowStartDate = borrowStartDate;
-	}
+    public String getInType() {
+        return inType;
+    }
 
-	public String getBorrowEndDate() {
-		return borrowEndDate;
-	}
+    public void setInType(String inType) {
+        this.inType = inType;
+    }
 
-	public void setBorrowEndDate(String borrowEndDate) {
-		this.borrowEndDate = borrowEndDate;
-	}
+    public String getInState() {
+        return inState;
+    }
 
-	public String getIntendingReturnStartDate() {
-		return intendingReturnStartDate;
-	}
+    public void setInState(String inState) {
+        this.inState = inState;
+    }
 
-	public void setIntendingReturnStartDate(String intendingReturnStartDate) {
-		this.intendingReturnStartDate = intendingReturnStartDate;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public String getIntendingReturnEndDate() {
-		return intendingReturnEndDate;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public void setIntendingReturnEndDate(String intendingReturnEndDate) {
-		this.intendingReturnEndDate = intendingReturnEndDate;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getRealReturnStartDate() {
-		return realReturnStartDate;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setRealReturnStartDate(String realReturnStartDate) {
-		this.realReturnStartDate = realReturnStartDate;
-	}
+    public String getIds() {
+        return ids;
+    }
 
-	public String getRealReturnEndDate() {
-		return realReturnEndDate;
-	}
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
 
-	public void setRealReturnEndDate(String realReturnEndDate) {
-		this.realReturnEndDate = realReturnEndDate;
-	}
-	
-	public String getAscriptionPlace() {
-		return ascriptionPlace;
-	}
+    /**
+     * @struts.validator type="required"
+     * @hibernate.property length="30" not-null="false" unique="true"
+     */
+    public String getInStorageUserId() {
+        return inStorageUserId;
+    }
 
-	public void setAscriptionPlace(String ascriptionPlace) {
-		this.ascriptionPlace = ascriptionPlace;
-	}
-	
-	public String getMsisdn() {
-		return msisdn;
-	}
+    public void setInStorageUserId(String inStorageUserId) {
+        this.inStorageUserId = inStorageUserId;
+    }
 
-	public void setMsisdn(String msisdn) {
-		this.msisdn = msisdn;
-	}
-	
-	public String getCardType() {
-		return cardType;
-	}
+    /**
+     * @struts.validator type="required"
+     * @hibernate.property length="100" not-null="false" unique="true"
+     */
+    public String getInStorageRemark() {
+        return inStorageRemark;
+    }
 
-	public void setCardType(String cardType) {
-		this.cardType = cardType;
-	}
-	
-	public String getFromProvince() {
-		return fromProvince;
-	}
+    public void setInStorageRemark(String inStorageRemark) {
+        this.inStorageRemark = inStorageRemark;
+    }
 
-	public void setFromProvince(String fromProvince) {
-		this.fromProvince = fromProvince;
-	}
+    public String getBorrowStartDate() {
+        return borrowStartDate;
+    }
 
-	public String getFromCity() {
-		return fromCity;
-	}
+    public void setBorrowStartDate(String borrowStartDate) {
+        this.borrowStartDate = borrowStartDate;
+    }
 
-	public void setFromCity(String fromCity) {
-		this.fromCity = fromCity;
-	}
-	
-	public String getFromCountry() {
-		return fromCountry;
-	}
+    public String getBorrowEndDate() {
+        return borrowEndDate;
+    }
 
-	public void setFromCountry(String fromCountry) {
-		this.fromCountry = fromCountry;
-	}
+    public void setBorrowEndDate(String borrowEndDate) {
+        this.borrowEndDate = borrowEndDate;
+    }
 
-	public String getFromOperator() {
-		return fromOperator;
-	}
+    public String getIntendingReturnStartDate() {
+        return intendingReturnStartDate;
+    }
 
-	public void setFromOperator(String fromOperator) {
-		this.fromOperator = fromOperator;
-	}
-	
-	public String getToProvince() {
-		return toProvince;
-	}
+    public void setIntendingReturnStartDate(String intendingReturnStartDate) {
+        this.intendingReturnStartDate = intendingReturnStartDate;
+    }
 
-	public void setToProvince(String toProvince) {
-		this.toProvince = toProvince;
-	}
+    public String getIntendingReturnEndDate() {
+        return intendingReturnEndDate;
+    }
 
-	public String getToCity() {
-		return toCity;
-	}
+    public void setIntendingReturnEndDate(String intendingReturnEndDate) {
+        this.intendingReturnEndDate = intendingReturnEndDate;
+    }
 
-	public void setToCity(String toCity) {
-		this.toCity = toCity;
-	}
-	
-	public String getToCountry() {
-		return toCountry;
-	}
+    public String getRealReturnStartDate() {
+        return realReturnStartDate;
+    }
 
-	public void setToCountry(String toCountry) {
-		this.toCountry = toCountry;
-	}
+    public void setRealReturnStartDate(String realReturnStartDate) {
+        this.realReturnStartDate = realReturnStartDate;
+    }
 
-	public String getToOperator() {
-		return toOperator;
-	}
+    public String getRealReturnEndDate() {
+        return realReturnEndDate;
+    }
 
-	public void setToOperator(String toOperator) {
-		this.toOperator = toOperator;
-	}
-	
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    public void setRealReturnEndDate(String realReturnEndDate) {
+        this.realReturnEndDate = realReturnEndDate;
+    }
 
-	}
+    public String getAscriptionPlace() {
+        return ascriptionPlace;
+    }
+
+    public void setAscriptionPlace(String ascriptionPlace) {
+        this.ascriptionPlace = ascriptionPlace;
+    }
+
+    public String getMsisdn() {
+        return msisdn;
+    }
+
+    public void setMsisdn(String msisdn) {
+        this.msisdn = msisdn;
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
+
+    public String getFromProvince() {
+        return fromProvince;
+    }
+
+    public void setFromProvince(String fromProvince) {
+        this.fromProvince = fromProvince;
+    }
+
+    public String getFromCity() {
+        return fromCity;
+    }
+
+    public void setFromCity(String fromCity) {
+        this.fromCity = fromCity;
+    }
+
+    public String getFromCountry() {
+        return fromCountry;
+    }
+
+    public void setFromCountry(String fromCountry) {
+        this.fromCountry = fromCountry;
+    }
+
+    public String getFromOperator() {
+        return fromOperator;
+    }
+
+    public void setFromOperator(String fromOperator) {
+        this.fromOperator = fromOperator;
+    }
+
+    public String getToProvince() {
+        return toProvince;
+    }
+
+    public void setToProvince(String toProvince) {
+        this.toProvince = toProvince;
+    }
+
+    public String getToCity() {
+        return toCity;
+    }
+
+    public void setToCity(String toCity) {
+        this.toCity = toCity;
+    }
+
+    public String getToCountry() {
+        return toCountry;
+    }
+
+    public void setToCountry(String toCountry) {
+        this.toCountry = toCountry;
+    }
+
+    public String getToOperator() {
+        return toOperator;
+    }
+
+    public void setToOperator(String toOperator) {
+        this.toOperator = toOperator;
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

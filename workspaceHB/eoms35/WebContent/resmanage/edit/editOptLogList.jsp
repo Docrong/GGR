@@ -1,191 +1,178 @@
-<%@page contentType="text/html;charset=ISO8859_1"%>
-<%@page import="java.util.*"%>
-<%@page import="com.boco.eoms.resmanage.entity.*"%>
-<%@page import="com.boco.eoms.resmanage.query.*"%>
-<%@page import="mcs.common.db.*"%>
-<%@include file="../power.jsp"%>
+<%@page contentType="text/html;charset=ISO8859_1" %>
+<%@page import="java.util.*" %>
+<%@page import="com.boco.eoms.resmanage.entity.*" %>
+<%@page import="com.boco.eoms.resmanage.query.*" %>
+<%@page import="mcs.common.db.*" %>
+<%@include file="../power.jsp" %>
 <%
-/**
-*@ E-DIS (四川省)
-*@ Copyright : (c) 2003
-*@ Company : BOCO.
-*@ 显示资源列表信息
-*@ version 1.0
-**/
+    /**
+     *@ E-DIS (四川省)
+     *@ Copyright : (c) 2003
+     *@ Company : BOCO.
+     *@ 显示资源列表信息
+     *@ version 1.0
+     **/
 %>
 
 <%
 
-if(!bflag)
-out.println("<script>alert('您已经掉线，请重新登陆！');parent.location='../index.jsp';</script>");
-request.setCharacterEncoding("GBK");
+    if (!bflag)
+        out.println("<script>alert('您已经掉线，请重新登陆！');parent.location='../index.jsp';</script>");
+    request.setCharacterEncoding("GBK");
 
-if(request.getParameter("SucMsg") != null)
-{
-	%>
-	<script>
-		alert('<%=request.getParameter("SucMsg")%>');
-	</script>
-	<%
-}
-String cityId = null;
-if(request.getParameter("cityid") != null)
-	cityId = request.getParameter("cityid");
-else
-	cityId = ug.getCity() + "";
-int pageid;
-if(request.getParameter("pageid") != null)
-	pageid = Integer.parseInt(request.getParameter("pageid"));
-else
-	pageid=1;
+    if (request.getParameter("SucMsg") != null) {
+%>
+<script>
+    alert('<%=request.getParameter("SucMsg")%>');
+</script>
+<%
+    }
+    String cityId = null;
+    if (request.getParameter("cityid") != null)
+        cityId = request.getParameter("cityid");
+    else
+        cityId = ug.getCity() + "";
+    int pageid;
+    if (request.getParameter("pageid") != null)
+        pageid = Integer.parseInt(request.getParameter("pageid"));
+    else
+        pageid = 1;
 
-int iFlag;
-if(request.getParameter("flag") != null)
-	iFlag = Integer.parseInt(request.getParameter("flag"));
-else
-	iFlag = 1;
+    int iFlag;
+    if (request.getParameter("flag") != null)
+        iFlag = Integer.parseInt(request.getParameter("flag"));
+    else
+        iFlag = 1;
 
-String sId = null;
-if(request.getParameter("id") != null)
-	sId = request.getParameter("id");
-else
-	sId = "2";
-String orderColName = null;
-if(request.getParameter("orderColName") != null)
-	orderColName = request.getParameter("orderColName");
-else
-	orderColName = "";
-int orderflag =1;
-int tmpflag = 1;
+    String sId = null;
+    if (request.getParameter("id") != null)
+        sId = request.getParameter("id");
+    else
+        sId = "2";
+    String orderColName = null;
+    if (request.getParameter("orderColName") != null)
+        orderColName = request.getParameter("orderColName");
+    else
+        orderColName = "";
+    int orderflag = 1;
+    int tmpflag = 1;
 
-if(request.getParameter("orderflag") != null)
-{
-	orderflag = Integer.parseInt(request.getParameter("orderflag"));
-	if (orderflag == 1)
-		tmpflag =2;
-	if (orderflag == 2)
-		tmpflag =1;
-}
-else
-{
-	orderflag =1;
-}
+    if (request.getParameter("orderflag") != null) {
+        orderflag = Integer.parseInt(request.getParameter("orderflag"));
+        if (orderflag == 1)
+            tmpflag = 2;
+        if (orderflag == 2)
+            tmpflag = 1;
+    } else {
+        orderflag = 1;
+    }
 //操作权限
 //out.println("group id is: "+opt.getIGroup());
-int powerflag = 0;
-int pnum = entityPower.size();
-if (ug.getRoot() && opt.getIGroupManager()==1)
-{
-	//out.println("root login in ");
-	powerflag =1;
-}
+    int powerflag = 0;
+    int pnum = entityPower.size();
+    if (ug.getRoot() && opt.getIGroupManager() == 1) {
+        //out.println("root login in ");
+        powerflag = 1;
+    }
 //out.println("pnum is:"+pnum);
-if (pnum>0)
-{
-	for (int i=0;i<pnum;i++)
-	{
-		epw = (power)entityPower.get(i);
-		if (epw.getObj()==Integer.parseInt(sId))
-		{
-			//out.println("epw getObj() is:"+epw.getObj());
-	       if (opt.getIGroupManager()==1 && epw.getPower()==1)
-			{
-				powerflag = 1;
-				break;
-			}
-		}
-	}
-}
+    if (pnum > 0) {
+        for (int i = 0; i < pnum; i++) {
+            epw = (power) entityPower.get(i);
+            if (epw.getObj() == Integer.parseInt(sId)) {
+                //out.println("epw getObj() is:"+epw.getObj());
+                if (opt.getIGroupManager() == 1 && epw.getPower() == 1) {
+                    powerflag = 1;
+                    break;
+                }
+            }
+        }
+    }
 %>
 <html>
 <head>
-<title>显示资源信息列表</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO8859_1">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
+    <title>显示资源信息列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO8859_1">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
 </head>
 <body bgcolor="#eeeeee" text="#000000" class="listStyle">
 <!-- <br> <a href="editInsert.jsp?id=<%=sId%>">input </a>
- --><form action="editInsert" name="entity" method=POST >
-<table bgcolor=#dddddd width='100%' border=0 cellspacing=1>
-<%
-//加入当前位置
-entityoperate Entity = new entityoperate();
-syscolindex SysColIndex = new syscolindex();
+ -->
+<form action="editInsert" name="entity" method=POST>
+    <table bgcolor=#dddddd width='100%' border=0 cellspacing=1>
+        <%
+            //加入当前位置
+            entityoperate Entity = new entityoperate();
+            syscolindex SysColIndex = new syscolindex();
 
 //得到实体类型
-systabindex SysTab = new systabindex();
-Vector TabVect = new Vector();
-TabVect = Entity.getTabinfor(sId);
-int EntityType=0;
-int cityFlag=0;
-String tabname = null;
-String cc_location="";
-for(int i=0;i<TabVect.size();i++)
-{
-	SysTab = (systabindex)TabVect.get(i);
-	EntityType = SysTab.getFi_type();
-	tabname   = SysTab.getCc_name();
-	cityFlag  = SysTab.getCi_cityflag();
-	cc_location = SysTab.getCc_location();
-}
-out.println("<tr class=td_label>");
-out.println("<td align=left width='70%'><font size=2>"+cc_location+"->"+tabname+"列表显示</font></td>");
-if (ug.getRoot() && cityFlag==0)
-{
-  queryRes qre = new queryRes();
-  Vector ctV = new Vector();
-  cityClass ct = new cityClass();
-  ctV = qre.getCity(0);
- out.println("<td align=right width='25%'><font size=2>请您选择一个城市:</font></td><td width='25%' align=left><select name=cityid onchange='gofilter()'><option value=0>--全部--</option>");
-for(int a = 0; a < ctV.size(); a ++)
-{
-	ct = (cityClass)ctV.get(a);
-	if(ct.getId() == Integer.parseInt(cityId))
-		out.println("<option value="+ct.getId()+" selected>"+ct.getName()+"</option>");
-	else
-		out.println("<option value="+ct.getId()+">"+ct.getName()+"</option>");
-}
-out.println("</select></td>");	
-}
-out.println("</tr>");
-%>
-</table>
-<%
-Vector EntVect = new Vector();
-EntVect = Entity.getcolVec(sId,iFlag);	//得到实体Map
+            systabindex SysTab = new systabindex();
+            Vector TabVect = new Vector();
+            TabVect = Entity.getTabinfor(sId);
+            int EntityType = 0;
+            int cityFlag = 0;
+            String tabname = null;
+            String cc_location = "";
+            for (int i = 0; i < TabVect.size(); i++) {
+                SysTab = (systabindex) TabVect.get(i);
+                EntityType = SysTab.getFi_type();
+                tabname = SysTab.getCc_name();
+                cityFlag = SysTab.getCi_cityflag();
+                cc_location = SysTab.getCc_location();
+            }
+            out.println("<tr class=td_label>");
+            out.println("<td align=left width='70%'><font size=2>" + cc_location + "->" + tabname + "列表显示</font></td>");
+            if (ug.getRoot() && cityFlag == 0) {
+                queryRes qre = new queryRes();
+                Vector ctV = new Vector();
+                cityClass ct = new cityClass();
+                ctV = qre.getCity(0);
+                out.println("<td align=right width='25%'><font size=2>请您选择一个城市:</font></td><td width='25%' align=left><select name=cityid onchange='gofilter()'><option value=0>--全部--</option>");
+                for (int a = 0; a < ctV.size(); a++) {
+                    ct = (cityClass) ctV.get(a);
+                    if (ct.getId() == Integer.parseInt(cityId))
+                        out.println("<option value=" + ct.getId() + " selected>" + ct.getName() + "</option>");
+                    else
+                        out.println("<option value=" + ct.getId() + ">" + ct.getName() + "</option>");
+                }
+                out.println("</select></td>");
+            }
+            out.println("</tr>");
+        %>
+    </table>
+    <%
+        Vector EntVect = new Vector();
+        EntVect = Entity.getcolVec(sId, iFlag);    //得到实体Map
 
 //out.println("Entity name :"+Entity.getCc_name());
-Vector SysVect = new Vector();
-if(iFlag == 1)
-	SysVect = Entity.getdiscol(sId);
-else
-	SysVect = Entity.getcolinfor(sId);
-int colNum = EntVect.size();				//列信息
-if(colNum != 0)
-{
-	coldata colData = new coldata();
-	/******************	构造内容	*****************/
-	%>
-	<br><table bgcolor=#dddddd width='100%' border=0 cellspacing=1>
-	<tr>
-	<%
-	
-	for(int Col = 1; Col < SysVect.size(); Col ++)
-	{
-		SysColIndex = (syscolindex)SysVect.get(Col);
-		out.println("<td align=center><b><font size=2 color=#000000 face='Verdana, Arial, Helvetica, sans-serif'><a href=javascript:goorder("+"'"+SysColIndex.getCc_code()+"',"+tmpflag+")>"+SysColIndex.getCc_name()+"</a></font></b>");
-		if(SysColIndex.getCc_code().equals(orderColName))
-		{
-			if (orderflag == 1)
-				out.println("<image src=../images/order2.gif>");
-			if (orderflag ==2)
-				out.println("<image src=../images/order1.gif>");
-		}
-		out.println("</td>");
-	}
-	%>
-	</tr>
-	<%
+        Vector SysVect = new Vector();
+        if (iFlag == 1)
+            SysVect = Entity.getdiscol(sId);
+        else
+            SysVect = Entity.getcolinfor(sId);
+        int colNum = EntVect.size();                //列信息
+        if (colNum != 0) {
+            coldata colData = new coldata();
+            /******************	构造内容	*****************/
+    %>
+    <br>
+    <table bgcolor=#dddddd width='100%' border=0 cellspacing=1>
+        <tr>
+            <%
+
+                for (int Col = 1; Col < SysVect.size(); Col++) {
+                    SysColIndex = (syscolindex) SysVect.get(Col);
+                    out.println("<td align=center><b><font size=2 color=#000000 face='Verdana, Arial, Helvetica, sans-serif'><a href=javascript:goorder(" + "'" + SysColIndex.getCc_code() + "'," + tmpflag + ")>" + SysColIndex.getCc_name() + "</a></font></b>");
+                    if (SysColIndex.getCc_code().equals(orderColName)) {
+                        if (orderflag == 1)
+                            out.println("<image src=../images/order2.gif>");
+                        if (orderflag == 2)
+                            out.println("<image src=../images/order1.gif>");
+                    }
+                    out.println("</td>");
+                }
+            %>
+        </tr>
+            <%
 
 	String strSql = Entity.getStrSql(EntVect,cityId,orderColName,orderflag);	//得到查询的SQL语句
 	//out.println(strSql);
@@ -266,136 +253,131 @@ if(colNum != 0)
 	}
 	out.println("</table>");
 	%>
-<table width=100%>
-<tr>
-<td height=10 align=center width=60>
-<% if (rs.getPageCount()>0){%>
-<td height=20 align=right><font size=2 color=#000000 face='Verdana, Arial, Helvetica, sans-serif'>第<%=rs.getCurrentPageIndex()%>页 / 共<%=rs.getPageCount()%>页</font></td>
-<%}%>
-<td height=20 align=center>
-<%if(rs.getCurrentPageIndex() != rs.getFirstPageId())
-				  out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id="+sId+"&pageid="+rs.getFirstPageId()+"&cityid="+cityId+"&orderColName="+orderColName+"&orderflag="+orderflag+">首页</a>");%>
-				  <%if(rs.getCurrentPageIndex() != rs.getFirstPageId())
-				  out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id="+sId+"&pageid="+rs.getPreviewPageId()+"&cityid="+cityId+"&orderColName="+orderColName+"&orderflag="+orderflag+">上一页</a>");%>
-				  <%if(rs.getCurrentPageIndex() != rs.getLastPageId() && rs.getRowCount() > 15)
-				  out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id="+sId+"&pageid="+rs.getNextPageId()+"&cityid="+cityId+"&orderColName="+orderColName+"&orderflag="+orderflag+">下一页</a>");%>
-				  <%if(rs.getCurrentPageIndex() != rs.getLastPageId() && rs.getRowCount() > 15)
-				  out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id="+sId+"&pageid="+rs.getLastPageId()+"&cityid="+cityId+"&orderColName="+orderColName+"&orderflag="+orderflag+">末页</a>");%>
-				  </td>
-<td></td>
-<td></td>
-</table>
+        <table width=100%>
+            <tr>
+                <td height=10 align=center width=60>
+                        <% if (rs.getPageCount()>0){%>
+                <td height=20 align=right><font size=2 color=#000000
+                                                face='Verdana, Arial, Helvetica, sans-serif'>第<%=rs.getCurrentPageIndex()%>
+                    页 / 共<%=rs.getPageCount()%>页</font></td>
+                    <%}%>
+                <td height=20 align=center>
+                    <%
+                        if (rs.getCurrentPageIndex() != rs.getFirstPageId())
+                            out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id=" + sId + "&pageid=" + rs.getFirstPageId() + "&cityid=" + cityId + "&orderColName=" + orderColName + "&orderflag=" + orderflag + ">首页</a>");
+                    %>
+                    <%
+                        if (rs.getCurrentPageIndex() != rs.getFirstPageId())
+                            out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id=" + sId + "&pageid=" + rs.getPreviewPageId() + "&cityid=" + cityId + "&orderColName=" + orderColName + "&orderflag=" + orderflag + ">上一页</a>");
+                    %>
+                    <%
+                        if (rs.getCurrentPageIndex() != rs.getLastPageId() && rs.getRowCount() > 15)
+                            out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id=" + sId + "&pageid=" + rs.getNextPageId() + "&cityid=" + cityId + "&orderColName=" + orderColName + "&orderflag=" + orderflag + ">下一页</a>");
+                    %>
+                    <%
+                        if (rs.getCurrentPageIndex() != rs.getLastPageId() && rs.getRowCount() > 15)
+                            out.println("<font face=webdings color=#06b020>4</font><a href=editOptLogList.jsp?id=" + sId + "&pageid=" + rs.getLastPageId() + "&cityid=" + cityId + "&orderColName=" + orderColName + "&orderflag=" + orderflag + ">末页</a>");
+                    %>
+                </td>
+                <td></td>
+                <td></td>
+        </table>
 
-	<%
+            <%
 }
 else
 	out.println("<br><br><br><br><font size=2 color=#000000 face='Verdana, Arial, Helvetica, sans-serif'>No Info at This Id : "+ sId+"</font>");
 %>
-<input type=hidden name='id' value='<%=sId%>'>
-<input type=hidden name='tabid' value='<%=sId%>'>
-<input type=hidden name='cityid' value='<%=cityId%>'>
-<input type=hidden name="distabname" value='<%=tabname%>'>
-<input type=hidden name="cc_location" value='<%=cc_location%>'>
-<input type=hidden name='OptType' value='2'>
+        <input type=hidden name='id' value='<%=sId%>'>
+        <input type=hidden name='tabid' value='<%=sId%>'>
+        <input type=hidden name='cityid' value='<%=cityId%>'>
+        <input type=hidden name="distabname" value='<%=tabname%>'>
+        <input type=hidden name="cc_location" value='<%=cc_location%>'>
+        <input type=hidden name='OptType' value='2'>
 
 </form>
 <script language="javascript">
-  function inputclick()
-  {
-	  var type = <%=EntityType%>;
-	  var sId = <%=sId%>;
-	  if (type ==0)
-	  {
-		entity.action="editEntSelect.jsp?opttype=1";
-	  }
-	  else
-	  {
-		entity.action="editInsert.jsp";
-	  }
-	  if (sId==10)
-	  {
-		  //entity.action="selectRoom.jsp?id=4";
-		  entity.action="typeSelect.jsp";
-	  }
-	  entity.submit();
-  }
-  function updateclick()
-  {
-	  
-	  entity.action="editUpdate.jsp";
-	  entity.submit();
-  }
-  function deleteclick()
-  {
-	  entity.action="editSave.jsp";
-	  entity.submit();
-  }
-  function Del(form)
-{
-   var icheck=0;
-   for (var i=0;i<form.elements.length;i++)
-    {
-      var e=form.elements[i];
-      if (e.checked==true) icheck+=1;
-    }
-    if (icheck>0)
-     {
-      if ( confirm("你确定要删除这些项目吗？"))
-      {
-	   form.action="editSave.jsp";
-       form.submit();
-      }
-     }
-    else {
-     alert("你必须选中要删除的项目");
-    }
-}
-function CheckAll(form)
-  {
-  for (var i=0;i<form.elements.length;i++)
-    {
-    var e = form.elements[i];
-    if (e.name != 'chkall')
-       e.checked = form.chkall.checked;
-    }
-  }
-function edit(form){
-   var icheck=0;
-   var id=0;
-   for (var i=0;i<form.elements.length;i++)
-      {
-       var e = form.elements[i];
-       if(e.checked==true)
-		{
-			 icheck+=1;
+    function inputclick() {
+        var type = <%=EntityType%>;
+        var sId = <%=sId%>;
+        if (type == 0) {
+            entity.action = "editEntSelect.jsp?opttype=1";
+        } else {
+            entity.action = "editInsert.jsp";
         }
-      }
-   if(icheck==1) 
-   {
-	  var type = <%=EntityType%>;
-	  if (type==0)
-	  {
-		form.action="editLogUpdate.jsp";
-	  }
-	   else
-	   {
-		form.action="editUpdate.jsp";
-	   }
-	  form.submit();
-   }
-   if(icheck>1) alert("你一次只能修改一个项目！");
-   if(icheck==0) alert("你必须选择一个修改的项目");
-   }
-    function gofilter()
-{
-	entity.action = "editOptLogList.jsp";
-	entity.submit();
-}
-function  goorder(orderCol,orderflag)
-{
-	entity.action="editOptLogList.jsp?orderColName="+orderCol+"&orderflag="+orderflag;
-	entity.submit();
-}
+        if (sId == 10) {
+            //entity.action="selectRoom.jsp?id=4";
+            entity.action = "typeSelect.jsp";
+        }
+        entity.submit();
+    }
+
+    function updateclick() {
+
+        entity.action = "editUpdate.jsp";
+        entity.submit();
+    }
+
+    function deleteclick() {
+        entity.action = "editSave.jsp";
+        entity.submit();
+    }
+
+    function Del(form) {
+        var icheck = 0;
+        for (var i = 0; i < form.elements.length; i++) {
+            var e = form.elements[i];
+            if (e.checked == true) icheck += 1;
+        }
+        if (icheck > 0) {
+            if (confirm("你确定要删除这些项目吗？")) {
+                form.action = "editSave.jsp";
+                form.submit();
+            }
+        } else {
+            alert("你必须选中要删除的项目");
+        }
+    }
+
+    function CheckAll(form) {
+        for (var i = 0; i < form.elements.length; i++) {
+            var e = form.elements[i];
+            if (e.name != 'chkall')
+                e.checked = form.chkall.checked;
+        }
+    }
+
+    function edit(form) {
+        var icheck = 0;
+        var id = 0;
+        for (var i = 0; i < form.elements.length; i++) {
+            var e = form.elements[i];
+            if (e.checked == true) {
+                icheck += 1;
+            }
+        }
+        if (icheck == 1) {
+            var type = <%=EntityType%>;
+            if (type == 0) {
+                form.action = "editLogUpdate.jsp";
+            } else {
+                form.action = "editUpdate.jsp";
+            }
+            form.submit();
+        }
+        if (icheck > 1) alert("你一次只能修改一个项目！");
+        if (icheck == 0) alert("你必须选择一个修改的项目");
+    }
+
+    function gofilter() {
+        entity.action = "editOptLogList.jsp";
+        entity.submit();
+    }
+
+    function goorder(orderCol, orderflag) {
+        entity.action = "editOptLogList.jsp?orderColName=" + orderCol + "&orderflag=" + orderflag;
+        entity.submit();
+    }
 </script>
 </body>
 </html>

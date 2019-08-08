@@ -35,29 +35,30 @@ import com.boco.eoms.commons.ui.util.UIConstants;
  * Action class to handle CRUD on a TawSystemCptroom object
  *
  * @struts.action name="tawSystemCptroomForm" path="/tawSystemCptrooms" scope="request"
- *  validate="false" parameter="method" input="mainMenu"
+ * validate="false" parameter="method" input="mainMenu"
  * @struts.action name="tawSystemCptroomForm" path="/editTawSystemCptroom" scope="request"
- *  validate="false" parameter="method" input="list"
+ * validate="false" parameter="method" input="list"
  * @struts.action name="tawSystemCptroomForm" path="/saveTawSystemCptroom" scope="request"
- *  validate="true" parameter="method" input="edit"
+ * validate="true" parameter="method" input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit" path="/WEB-INF/pages/tawSystemCptroom/tawSystemCptroomForm.jsp"
  * @struts.action-forward name="list" path="/WEB-INF/pages/tawSystemCptroom/tawSystemCptroomList.jsp"
  * @struts.action-forward name="search" path="/cptroom/tawSystemCptrooms.do" redirect="true"
  */
 public final class TawSystemCptroomAction extends BaseAction {
-	TawSystemCptroomBo cptroombo = TawSystemCptroomBo.getInstance();
+    TawSystemCptroomBo cptroombo = TawSystemCptroomBo.getInstance();
+
     public ActionForward cancel(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         return mapping.findForward("search");
     }
 
     public ActionForward xdelete(ActionMapping mapping, ActionForm form,
-                                HttpServletRequest request,
-                                HttpServletResponse response)
-    throws Exception {
+                                 HttpServletRequest request,
+                                 HttpServletResponse response)
+            throws Exception {
 
         ActionMessages messages = new ActionMessages();
         TawSystemCptroomForm tawSystemCptroomForm = (TawSystemCptroomForm) form;
@@ -67,7 +68,7 @@ public final class TawSystemCptroomAction extends BaseAction {
         mgr.removeTawSystemCptroom(tawSystemCptroomForm.getId());
 
         messages.add(ActionMessages.GLOBAL_MESSAGE,
-                     new ActionMessage("tawSystemCptroom.deleted"));
+                new ActionMessage("tawSystemCptroom.deleted"));
 
         // save messages in session, so they'll survive the redirect
         saveMessages(request.getSession(), messages);
@@ -76,9 +77,9 @@ public final class TawSystemCptroomAction extends BaseAction {
     }
 
     public ActionForward xedit(ActionMapping mapping, ActionForm form,
-                              HttpServletRequest request,
-                              HttpServletResponse response)
-    throws Exception {
+                               HttpServletRequest request,
+                               HttpServletResponse response)
+            throws Exception {
         TawSystemCptroomForm tawSystemCptroomForm = (TawSystemCptroomForm) form;
 
         // if an id is passed in, look up the user - otherwise
@@ -98,9 +99,9 @@ public final class TawSystemCptroomAction extends BaseAction {
     }
 
     public ActionForward xsave(ActionMapping mapping, ActionForm form,
-                              HttpServletRequest request,
-                              HttpServletResponse response)
-    throws Exception {
+                               HttpServletRequest request,
+                               HttpServletResponse response)
+            throws Exception {
 
         // Extract attributes and parameters we will need
         ActionMessages messages = new ActionMessages();
@@ -111,33 +112,33 @@ public final class TawSystemCptroomAction extends BaseAction {
         TawSystemCptroom tawSystemCptroom = (TawSystemCptroom) convert(tawSystemCptroomForm);
         String manager = tawSystemCptroomForm.getManager();
         String tempmanager = tawSystemCptroomForm.getTempmanager();
-    	TawSystemCptroom cptroom = new TawSystemCptroom();
+        TawSystemCptroom cptroom = new TawSystemCptroom();
         String deptid = tawSystemCptroom.getDeptid();
         String parentid = tawSystemCptroom.getParentid();
-        if(parentid == null || parentid.equals("")
-				|| parentid.equals("-1")) {
-        	tawSystemCptroom.setDeleted(new Integer(0));
-        	tawSystemCptroom.setLeaf("1");
+        if (parentid == null || parentid.equals("")
+                || parentid.equals("-1")) {
+            tawSystemCptroom.setDeleted(new Integer(0));
+            tawSystemCptroom.setLeaf("1");
         } else {
-        	cptroom = cptroombo.getTawSystemCptroomById(new Integer(parentid), 0);        	
-        	tawSystemCptroom.setLeaf("1");
-        	cptroom.setLeaf("0");
-        	cptroom.setManager((manager));
-        	cptroom.setTempmanager(((tempmanager)));
-        	cptroom.setDeptid(((deptid)));
-        	mgr.saveTawSystemCptroom(cptroom);
+            cptroom = cptroombo.getTawSystemCptroomById(new Integer(parentid), 0);
+            tawSystemCptroom.setLeaf("1");
+            cptroom.setLeaf("0");
+            cptroom.setManager((manager));
+            cptroom.setTempmanager(((tempmanager)));
+            cptroom.setDeptid(((deptid)));
+            mgr.saveTawSystemCptroom(cptroom);
         }
         tawSystemCptroom.setDeleted(new Integer(0));
         tawSystemCptroom.setManager((manager));
         tawSystemCptroom.setTempmanager(((tempmanager)));
         tawSystemCptroom.setDeptid(((deptid)));
-        
+
         mgr.saveTawSystemCptroom(tawSystemCptroom);
 
         // add success messages
         if (isNew) {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemCptroom.added"));
+                    new ActionMessage("tawSystemCptroom.added"));
 
             // save messages in session to survive a redirect
             saveMessages(request.getSession(), messages);
@@ -145,108 +146,110 @@ public final class TawSystemCptroomAction extends BaseAction {
             return null;
         } else {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemCptroom.updated"));
+                    new ActionMessage("tawSystemCptroom.updated"));
             saveMessages(request, messages);
             request.setAttribute("lastNewId", deptid);
             return null;
         }
     }
-    /**
-	 * ajax请求获取某节点的详细信息。 
-	 */
-	public String xget(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String _strId = request.getParameter("id");
-		TawSystemUser tawRmUserManager = null;
-		TawSystemUser tawRmUserTempManager = null;
-		ITawSystemCptroomManager mgr = (ITawSystemCptroomManager) getBean("ItawSystemCptroomManager");
-		ITawSystemDeptManager mgrdept = (ITawSystemDeptManager) getBean("ItawSystemDeptManager");
-		
-		TawSystemCptroom _objOneOpt = new TawSystemCptroom();
-		TawSystemUserRoleBo userbo = TawSystemUserRoleBo.getInstance();
-		 
-		_objOneOpt = mgr.getTawSystemCptroomById(new Integer(_strId), StaticVariable.UNDELETED);
-		TawSystemCptroomForm tawSystemdeptForm = (TawSystemCptroomForm) convert(_objOneOpt);
-		if( !(StaticMethod.null2String(_objOneOpt.getManager()).equals("null") || _objOneOpt.getManager().equals("")) ){
-			String managername = _objOneOpt.getManager();
-			String tempmanagername = _objOneOpt.getTempmanager();
-			tawRmUserManager = userbo.getUserByuserid(managername);
-			tawRmUserTempManager =  userbo.getUserByuserid(tempmanagername);
-			tawSystemdeptForm.setManager(managername);
-			   
-			tawSystemdeptForm.setTempmanager(tempmanagername);
-			tawSystemdeptForm.setManagerName(tawRmUserManager.getUsername());
-			tawSystemdeptForm.setTempmanagerName(tawRmUserTempManager.getUsername());
-			tawSystemdeptForm.setDeptName(mgrdept.id2Name(_objOneOpt.getDeptid()));
-			
-		}
-		
-		  
-		
-		JSONObject jsonRoot = new JSONObject();
-		jsonRoot = JSONObject.fromObject(tawSystemdeptForm);
 
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-		return null;
-	}
-    
     /**
-	 * 根据父节点的id得到所有子节点的JSON数据
-	 */
-	public String getNodes(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String nodeId = request.getParameter("node");
-		
-		TawSystemTreeBo treebo = TawSystemTreeBo.getInstance();
-		JSONArray jsonRoot = treebo.getCptroomTree(nodeId,"");
+     * ajax请求获取某节点的详细信息。
+     */
+    public String xget(ActionMapping mapping, ActionForm form,
+                       HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String _strId = request.getParameter("id");
+        TawSystemUser tawRmUserManager = null;
+        TawSystemUser tawRmUserTempManager = null;
+        ITawSystemCptroomManager mgr = (ITawSystemCptroomManager) getBean("ItawSystemCptroomManager");
+        ITawSystemDeptManager mgrdept = (ITawSystemDeptManager) getBean("ItawSystemDeptManager");
 
-		
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-		return null; 
-	}
+        TawSystemCptroom _objOneOpt = new TawSystemCptroom();
+        TawSystemUserRoleBo userbo = TawSystemUserRoleBo.getInstance();
+
+        _objOneOpt = mgr.getTawSystemCptroomById(new Integer(_strId), StaticVariable.UNDELETED);
+        TawSystemCptroomForm tawSystemdeptForm = (TawSystemCptroomForm) convert(_objOneOpt);
+        if (!(StaticMethod.null2String(_objOneOpt.getManager()).equals("null") || _objOneOpt.getManager().equals(""))) {
+            String managername = _objOneOpt.getManager();
+            String tempmanagername = _objOneOpt.getTempmanager();
+            tawRmUserManager = userbo.getUserByuserid(managername);
+            tawRmUserTempManager = userbo.getUserByuserid(tempmanagername);
+            tawSystemdeptForm.setManager(managername);
+
+            tawSystemdeptForm.setTempmanager(tempmanagername);
+            tawSystemdeptForm.setManagerName(tawRmUserManager.getUsername());
+            tawSystemdeptForm.setTempmanagerName(tawRmUserTempManager.getUsername());
+            tawSystemdeptForm.setDeptName(mgrdept.id2Name(_objOneOpt.getDeptid()));
+
+        }
+
+
+        JSONObject jsonRoot = new JSONObject();
+        jsonRoot = JSONObject.fromObject(tawSystemdeptForm);
+
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+        return null;
+    }
+
+    /**
+     * 根据父节点的id得到所有子节点的JSON数据
+     */
+    public String getNodes(ActionMapping mapping, ActionForm form,
+                           HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String nodeId = request.getParameter("node");
+
+        TawSystemTreeBo treebo = TawSystemTreeBo.getInstance();
+        JSONArray jsonRoot = treebo.getCptroomTree(nodeId, "");
+
+
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+        return null;
+    }
 
     public ActionForward search(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         String pageIndexName = new org.displaytag.util.ParamEncoder("tawDemoMytableList").encodeParameterName(
-    			org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);   // ҳ��Ĳ�����,����"tawDemoMytableList"��ҳ����displayTag��id
-	    	final Integer pageSize = new Integer(25);   //ÿҳ��ʾ������
-	    	final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName))?0:(new Integer(request.getParameter(pageIndexName)).intValue() - 1));  //��ǰҳ��
+                org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);   // ҳ��Ĳ�����,����"tawDemoMytableList"��ҳ����displayTag��id
+        final Integer pageSize = new Integer(25);   //ÿҳ��ʾ������
+        final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName)) ? 0 : (new Integer(request.getParameter(pageIndexName)).intValue() - 1));  //��ǰҳ��
 
         ITawSystemCptroomManager mgr = (ITawSystemCptroomManager) getBean("ItawSystemCptroomManager");
-        Map map = (Map)mgr.getTawSystemCptrooms(pageIndex,pageSize);	//map����}��keyֵ��һ����"total",�����ܼ�¼������һ����"result"������Ҫ��ʾҳ���list
-        List list = (List)map.get("result");
-      //  request.setAttribute(Constants.TAWSYSTEMCPTROOM_LIST, list);
+        Map map = (Map) mgr.getTawSystemCptrooms(pageIndex, pageSize);    //map����}��keyֵ��һ����"total",�����ܼ�¼������һ����"result"������Ҫ��ʾҳ���list
+        List list = (List) map.get("result");
+        //  request.setAttribute(Constants.TAWSYSTEMCPTROOM_LIST, list);
         request.setAttribute("resultSize", map.get("total"));
 
         return mapping.findForward("list");
     }
+
     public ActionForward unspecified(ActionMapping mapping, ActionForm form,
                                      HttpServletRequest request,
                                      HttpServletResponse response)
             throws Exception {
         return search(mapping, form, request, response);
     }
-    public String getDataFromJson(String json) {
-		JSONArray jsonDept = JSONArray.fromString(json);
-		String returnValue = "";
-		for (Iterator it = jsonDept.iterator(); it.hasNext();) {
-			JSONObject org = (JSONObject) it.next();
-			// 部门id
-			String id = org.getString(UIConstants.JSON_ID);
 
-			returnValue = id;
-			// 部门名称
-			String name = org.getString(UIConstants.JSON_NAME);
-			// 节点类型
-			String nodeType = org.getString(UIConstants.JSON_NODETYPE);			
-			
-		}
-		return returnValue;
-	}
+    public String getDataFromJson(String json) {
+        JSONArray jsonDept = JSONArray.fromString(json);
+        String returnValue = "";
+        for (Iterator it = jsonDept.iterator(); it.hasNext(); ) {
+            JSONObject org = (JSONObject) it.next();
+            // 部门id
+            String id = org.getString(UIConstants.JSON_ID);
+
+            returnValue = id;
+            // 部门名称
+            String name = org.getString(UIConstants.JSON_NAME);
+            // 节点类型
+            String nodeType = org.getString(UIConstants.JSON_NODETYPE);
+
+        }
+        return returnValue;
+    }
 }

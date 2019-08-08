@@ -3,135 +3,134 @@ package com.boco.eoms.commons.statistic.circuitdispatch.vo;
 import java.util.Date;
 
 public class ScircuitdispatchVO {
-	private String sheetid;
-	private String title;
-	private String senduserid;
-	private String senddeptid;
-	private String status;
-	private Date sendtime;
-	private String completeflag;
-	private int mainid=0;
-	private String endtime;
-	private String operateuserid;
-	private String operateroleid;
-	
-	
-	
-	/**
-	 * @return the operateroleid
-	 */
-	public String getOperateroleid() {
-		return operateroleid;
-	}
+    private String sheetid;
+    private String title;
+    private String senduserid;
+    private String senddeptid;
+    private String status;
+    private Date sendtime;
+    private String completeflag;
+    private int mainid = 0;
+    private String endtime;
+    private String operateuserid;
+    private String operateroleid;
 
-	/**
-	 * @param operateroleid the operateroleid to set
-	 */
-	public void setOperateroleid(String operateroleid) {
-		this.operateroleid = operateroleid;
-	}
 
-	/**
-	 * @return the operateuserid
-	 */
-	public String getOperateuserid() {
-		return operateuserid;
-	}
+    /**
+     * @return the operateroleid
+     */
+    public String getOperateroleid() {
+        return operateroleid;
+    }
 
-	/**
-	 * @param operateuserid the operateuserid to set
-	 */
-	public void setOperateuserid(String operateuserid) {
-		this.operateuserid = operateuserid;
-	}
+    /**
+     * @param operateroleid the operateroleid to set
+     */
+    public void setOperateroleid(String operateroleid) {
+        this.operateroleid = operateroleid;
+    }
 
-	/**
-	 * @return the endtime
-	 */
-	public String getEndtime() {
-		return endtime;
-	}
+    /**
+     * @return the operateuserid
+     */
+    public String getOperateuserid() {
+        return operateuserid;
+    }
 
-	/**
-	 * @param endtime the endtime to set
-	 */
-	public void setEndtime(String endtime) {
-		this.endtime = endtime;
-	}
+    /**
+     * @param operateuserid the operateuserid to set
+     */
+    public void setOperateuserid(String operateuserid) {
+        this.operateuserid = operateuserid;
+    }
 
-	/**
-	 * @return the mainid
-	 */
-	public int getMainid() {
-		return mainid;
-	}
+    /**
+     * @return the endtime
+     */
+    public String getEndtime() {
+        return endtime;
+    }
 
-	/**
-	 * @param mainid the mainid to set
-	 */
-	public void setMainid(int mainid) {
-		this.mainid = mainid;
-	}
+    /**
+     * @param endtime the endtime to set
+     */
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
 
-	public String getSheetid() {
-		return sheetid;
-	}
+    /**
+     * @return the mainid
+     */
+    public int getMainid() {
+        return mainid;
+    }
 
-	public void setSheetid(String sheetid) {
-		this.sheetid = sheetid;
-	}
+    /**
+     * @param mainid the mainid to set
+     */
+    public void setMainid(int mainid) {
+        this.mainid = mainid;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getSheetid() {
+        return sheetid;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
 
-	public String getSenduserid() {
-		return senduserid;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setSenduserid(String senduserid) {
-		this.senduserid = senduserid;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getSenddeptid() {
-		return senddeptid;
-	}
+    public String getSenduserid() {
+        return senduserid;
+    }
 
-	public void setSenddeptid(String senddeptid) {
-		this.senddeptid = senddeptid;
-	}
+    public void setSenduserid(String senduserid) {
+        this.senduserid = senduserid;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getSenddeptid() {
+        return senddeptid;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setSenddeptid(String senddeptid) {
+        this.senddeptid = senddeptid;
+    }
 
-	public Date getSendtime() {
-		return sendtime;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setSendtime(Date sendtime) {
-		this.sendtime = sendtime;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	/**
-	 * @return the completeflag
-	 */
-	public String getCompleteflag() {
-		return completeflag;
-	}
+    public Date getSendtime() {
+        return sendtime;
+    }
 
-	/**
-	 * @param completeflag the completeflag to set
-	 */
-	public void setCompleteflag(String completeflag) {
-		this.completeflag = completeflag;
-	}
+    public void setSendtime(Date sendtime) {
+        this.sendtime = sendtime;
+    }
+
+    /**
+     * @return the completeflag
+     */
+    public String getCompleteflag() {
+        return completeflag;
+    }
+
+    /**
+     * @param completeflag the completeflag to set
+     */
+    public void setCompleteflag(String completeflag) {
+        this.completeflag = completeflag;
+    }
 }

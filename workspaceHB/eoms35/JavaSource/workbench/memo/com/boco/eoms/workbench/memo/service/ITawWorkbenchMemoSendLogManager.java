@@ -16,6 +16,7 @@ public interface ITawWorkbenchMemoSendLogManager extends Manager {
 
     /**
      * Gets tawWorkbenchMemoSendLog's information based on id.
+     *
      * @param id the tawWorkbenchMemoSendLog's id
      * @return tawWorkbenchMemoSendLog populated tawWorkbenchMemoSendLog object
      */
@@ -23,16 +24,20 @@ public interface ITawWorkbenchMemoSendLogManager extends Manager {
 
     /**
      * Saves a tawWorkbenchMemoSendLog's information
+     *
      * @param tawWorkbenchMemoSendLog the object to be saved
      */
     public void saveTawWorkbenchMemoSendLog(TawWorkbenchMemoSendLog tawWorkbenchMemoSendLog);
 
     /**
      * Removes a tawWorkbenchMemoSendLog from the database by id
+     *
      * @param id the tawWorkbenchMemoSendLog's id
      */
     public void removeTawWorkbenchMemoSendLog(final String id);
+
     public Map getTawWorkbenchMemoSendLogs(final Integer curPage, final Integer pageSize);
+
     public Map getTawWorkbenchMemoSendLogs(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

@@ -5,12 +5,13 @@ package com.boco.eoms.sparepart.model;
  * <p>Description: EOMS子系统</p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.7
  */
 
-public class TawTree implements java.io.Serializable{
-    public TawTree(){
+public class TawTree implements java.io.Serializable {
+    public TawTree() {
     }
 
     private String cname;
@@ -23,92 +24,91 @@ public class TawTree implements java.io.Serializable{
     private int radix;
     private int deleted;
 
-    public String getCname(){
+    public String getCname() {
         return cname;
     }
 
-    public void setCname(String cname){
-        this.cname=cname;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
-    public String getEname(){
+    public String getEname() {
         return ename;
     }
 
-    public void setEname(String ename){
-        this.ename=ename;
+    public void setEname(String ename) {
+        this.ename = ename;
     }
 
-    public String getCode(){
+    public String getCode() {
         return code;
     }
 
-    public void setCode(String code){
-        this.code=code;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note){
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public String getLayer(){
+    public String getLayer() {
         return layer;
     }
 
-    public void setLayer(String layer){
-        this.layer=layer;
+    public void setLayer(String layer) {
+        this.layer = layer;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getParentId(){
+    public int getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId){
-        this.parentId=parentId;
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
-    public int getRadix(){
+    public int getRadix() {
         return radix;
     }
 
-    public void setRadix(int radix){
-        this.radix=radix;
+    public void setRadix(int radix) {
+        this.radix = radix;
     }
 
-    public int getDeleted(){
+    public int getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(int deleted){
-        this.deleted=deleted;
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
     }
 
-    public static TawTree load(int _parentId,String _layer,int _radix,
-                               String _cname,String _note){
-        TawTree tawTree=null;
-        try{
-            tawTree=new TawTree();
+    public static TawTree load(int _parentId, String _layer, int _radix,
+                               String _cname, String _note) {
+        TawTree tawTree = null;
+        try {
+            tawTree = new TawTree();
             tawTree.setParentId(_parentId);
             tawTree.setLayer(_layer);
             tawTree.setRadix(_radix);
             tawTree.setCname(_cname);
             tawTree.setNote(_note);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            tawTree=null;
+            tawTree = null;
         }
         return tawTree;
     }

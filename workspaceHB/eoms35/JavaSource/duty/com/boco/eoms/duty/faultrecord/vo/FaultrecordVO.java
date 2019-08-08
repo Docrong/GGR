@@ -13,6 +13,7 @@ import com.boco.eoms.commons.system.dict.util.Util;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2006</p>
  * <p>Company: </p>
+ *
  * @author zhangxiaobo
  * @version 1.0
  */
@@ -21,32 +22,44 @@ public class FaultrecordVO {
 
     public FaultrecordVO() {
     }
-    
-	ITawSystemUserManager userMgr = (ITawSystemUserManager) ApplicationContextHolder
-	.getInstance().getBean("itawSystemUserManager");
-	ITawSystemDeptManager deptMgr = (ITawSystemDeptManager) ApplicationContextHolder
-	.getInstance().getBean("ItawSystemDeptManager");
-    
-    /** ������� */
+
+    ITawSystemUserManager userMgr = (ITawSystemUserManager) ApplicationContextHolder
+            .getInstance().getBean("itawSystemUserManager");
+    ITawSystemDeptManager deptMgr = (ITawSystemDeptManager) ApplicationContextHolder
+            .getInstance().getBean("ItawSystemDeptManager");
+
+    /**
+     * �������
+     */
     private String id;
-    
-    /** ������ */
+
+    /**
+     * ������
+     */
     private String userId;
-    
+
     private String userName;
-    
-    /** �������� */
+
+    /**
+     * ��������
+     */
     private String deptId;
-    
+
     private String deptName;
-    
-    /** ����ʱ�� */
+
+    /**
+     * ����ʱ��
+     */
     private String insertTime;
 
-    /** ɾ���� */
+    /**
+     * ɾ����
+     */
     private int delFlag;
 
-    /** ���� */
+    /**
+     * ����
+     */
     private String accessories;
 
     public String getId() {
@@ -79,7 +92,7 @@ public class FaultrecordVO {
     }
 
     public String getDeptName() {
-        this.deptName = deptMgr.getDeptinfobydeptid(this.deptId,"0").getDeptName();
+        this.deptName = deptMgr.getDeptinfobydeptid(this.deptId, "0").getDeptName();
         return deptName;
     }
 
@@ -108,14 +121,16 @@ public class FaultrecordVO {
     }
 
 
-  /*****************************************************************
-   * �����Ǹ��?���е�����
-   *****************************************************************/
+    /*****************************************************************
+     * �����Ǹ��?���е�����
+     *****************************************************************/
 
 
-    /** �澯ʱ�� */
+    /**
+     * �澯ʱ��
+     */
     private String startTime;
-    
+
     public String getStartTime() {
         return this.startTime;
     }
@@ -123,11 +138,13 @@ public class FaultrecordVO {
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
-  
 
-    /** ��Ԫ��� */
+
+    /**
+     * ��Ԫ���
+     */
     private String networkName;
-    
+
     public String getNetworkName() {
         return this.networkName;
     }
@@ -135,11 +152,13 @@ public class FaultrecordVO {
     public void setNetworkName(String networkName) {
         this.networkName = networkName;
     }
-  
 
-    /** �豸���� */
+
+    /**
+     * �豸����
+     */
     private int devVendor;
-    
+
     public int getDevVendor() {
         return this.devVendor;
     }
@@ -147,24 +166,26 @@ public class FaultrecordVO {
     public void setDevVendor(int devVendor) {
         this.devVendor = devVendor;
     }
-  
+
     private String devVendorName = "";
 
     public String getDevVendorName() {
-		try {
-			devVendorName = (String) DictMgrLocator.getDictService()
-					.itemId2name(
-							Util.constituteDictId("dict-plancontent",
-									"devVendor"), Integer.toString(this.getDevVendor()));
-		} catch (DictServiceException e) {
-			devVendorName = Util.idNoName();
-		}
+        try {
+            devVendorName = (String) DictMgrLocator.getDictService()
+                    .itemId2name(
+                            Util.constituteDictId("dict-plancontent",
+                                    "devVendor"), Integer.toString(this.getDevVendor()));
+        } catch (DictServiceException e) {
+            devVendorName = Util.idNoName();
+        }
         return this.devVendorName;
     }
 
-    /** �豸���� */
+    /**
+     * �豸����
+     */
     private int devicetype;
-    
+
     public int getDevicetype() {
         return this.devicetype;
     }
@@ -172,24 +193,26 @@ public class FaultrecordVO {
     public void setDevicetype(int devicetype) {
         this.devicetype = devicetype;
     }
-  
+
     private String devicetypeName = "";
 
     public String getDevicetypeName() {
-		try {
-			devicetypeName = (String) DictMgrLocator.getDictService()
-					.itemId2name(
-							Util.constituteDictId("dict-plancontent",
-									"devicetype"), Integer.toString(this.getDevicetype()));
-		} catch (DictServiceException e) {
-			devicetypeName = Util.idNoName();
-		}
+        try {
+            devicetypeName = (String) DictMgrLocator.getDictService()
+                    .itemId2name(
+                            Util.constituteDictId("dict-plancontent",
+                                    "devicetype"), Integer.toString(this.getDevicetype()));
+        } catch (DictServiceException e) {
+            devicetypeName = Util.idNoName();
+        }
         return this.devicetypeName;
     }
 
-    /** ���ϵ�Ԫ���� */
+    /**
+     * ���ϵ�Ԫ����
+     */
     private int faultUnitLevel;
-    
+
     public int getFaultUnitLevel() {
         return this.faultUnitLevel;
     }
@@ -197,24 +220,26 @@ public class FaultrecordVO {
     public void setFaultUnitLevel(int faultUnitLevel) {
         this.faultUnitLevel = faultUnitLevel;
     }
-  
+
     private String faultUnitLevelName = "";
 
     public String getFaultUnitLevelName() {
-		try {
-			faultUnitLevelName = (String) DictMgrLocator.getDictService()
-					.itemId2name(
-							Util.constituteDictId("dict-plancontent",
-									"faultUnitLevel"), Integer.toString(this.getFaultUnitLevel()));
-		} catch (DictServiceException e) {
-			faultUnitLevelName = Util.idNoName();
-		}
+        try {
+            faultUnitLevelName = (String) DictMgrLocator.getDictService()
+                    .itemId2name(
+                            Util.constituteDictId("dict-plancontent",
+                                    "faultUnitLevel"), Integer.toString(this.getFaultUnitLevel()));
+        } catch (DictServiceException e) {
+            faultUnitLevelName = Util.idNoName();
+        }
         return this.faultUnitLevelName;
     }
 
-    /** ���ϼ��� */
+    /**
+     * ���ϼ���
+     */
     private int faultLevel;
-    
+
     public int getFaultLevel() {
         return this.faultLevel;
     }
@@ -222,24 +247,26 @@ public class FaultrecordVO {
     public void setFaultLevel(int faultLevel) {
         this.faultLevel = faultLevel;
     }
-  
+
     private String faultLevelName = "";
 
     public String getFaultLevelName() {
-		try {
-			faultLevelName = (String) DictMgrLocator.getDictService()
-					.itemId2name(
-							Util.constituteDictId("dict-plancontent",
-									"faultLevel"), Integer.toString(this.getFaultLevel()));
-		} catch (DictServiceException e) {
-			faultLevelName = Util.idNoName();
-		}
+        try {
+            faultLevelName = (String) DictMgrLocator.getDictService()
+                    .itemId2name(
+                            Util.constituteDictId("dict-plancontent",
+                                    "faultLevel"), Integer.toString(this.getFaultLevel()));
+        } catch (DictServiceException e) {
+            faultLevelName = Util.idNoName();
+        }
         return this.faultLevelName;
     }
 
-    /** �������� */
+    /**
+     * ��������
+     */
     private String faultContent;
-    
+
     public String getFaultContent() {
         return this.faultContent;
     }
@@ -247,11 +274,13 @@ public class FaultrecordVO {
     public void setFaultContent(String faultContent) {
         this.faultContent = faultContent;
     }
-  
 
-    /** ���ϴ������ */
+
+    /**
+     * ���ϴ������
+     */
     private String faultResult;
-    
+
     public String getFaultResult() {
         return this.faultResult;
     }
@@ -259,11 +288,13 @@ public class FaultrecordVO {
     public void setFaultResult(String faultResult) {
         this.faultResult = faultResult;
     }
-  
 
-    /** �����걨�� */
+
+    /**
+     * �����걨��
+     */
     private String declareUser;
-    
+
     public String getDeclareUser() {
         return this.declareUser;
     }
@@ -271,11 +302,13 @@ public class FaultrecordVO {
     public void setDeclareUser(String declareUser) {
         this.declareUser = declareUser;
     }
-  
 
-    /** �걨ʱ�� */
+
+    /**
+     * �걨ʱ��
+     */
     private String declareTime;
-    
+
     public String getDeclareTime() {
         return this.declareTime;
     }
@@ -283,11 +316,13 @@ public class FaultrecordVO {
     public void setDeclareTime(String declareTime) {
         this.declareTime = declareTime;
     }
-  
 
-    /** ���ϴ����� */
+
+    /**
+     * ���ϴ�����
+     */
     private String dealUser;
-    
+
     public String getDealUser() {
         return this.dealUser;
     }
@@ -295,11 +330,13 @@ public class FaultrecordVO {
     public void setDealUser(String dealUser) {
         this.dealUser = dealUser;
     }
-  
 
-    /** ����ʱ�� */
+
+    /**
+     * ����ʱ��
+     */
     private String dealTime;
-    
+
     public String getDealTime() {
         return this.dealTime;
     }
@@ -307,11 +344,13 @@ public class FaultrecordVO {
     public void setDealTime(String dealTime) {
         this.dealTime = dealTime;
     }
-  
 
-    /** ���ϻָ� */
+
+    /**
+     * ���ϻָ�
+     */
     private String endTime;
-    
+
     public String getEndTime() {
         return this.endTime;
     }
@@ -319,11 +358,13 @@ public class FaultrecordVO {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-  
 
-    /** ������ */
+
+    /**
+     * ������
+     */
     private int problemSolveInfo;
-    
+
     public int getProblemSolveInfo() {
         return this.problemSolveInfo;
     }
@@ -331,24 +372,26 @@ public class FaultrecordVO {
     public void setProblemSolveInfo(int problemSolveInfo) {
         this.problemSolveInfo = problemSolveInfo;
     }
-  
+
     private String problemSolveInfoName = "";
 
     public String getProblemSolveInfoName() {
-		try {
-			problemSolveInfoName = (String) DictMgrLocator.getDictService()
-					.itemId2name(
-							Util.constituteDictId("dict-plancontent",
-									"problemSolveInfo"), Integer.toString(this.getProblemSolveInfo()));
-		} catch (DictServiceException e) {
-			problemSolveInfoName = Util.idNoName();
-		}
+        try {
+            problemSolveInfoName = (String) DictMgrLocator.getDictService()
+                    .itemId2name(
+                            Util.constituteDictId("dict-plancontent",
+                                    "problemSolveInfo"), Integer.toString(this.getProblemSolveInfo()));
+        } catch (DictServiceException e) {
+            problemSolveInfoName = Util.idNoName();
+        }
         return this.problemSolveInfoName;
     }
 
-    /** ������ʱ */
+    /**
+     * ������ʱ
+     */
     private String totalTime;
-    
+
     public String getTotalTime() {
         return this.totalTime;
     }
@@ -356,11 +399,13 @@ public class FaultrecordVO {
     public void setTotalTime(String totalTime) {
         this.totalTime = totalTime;
     }
-  
 
-    /** ҵ���ж� */
+
+    /**
+     * ҵ���ж�
+     */
     private String operHaltTime;
-    
+
     public String getOperHaltTime() {
         return this.operHaltTime;
     }
@@ -368,11 +413,13 @@ public class FaultrecordVO {
     public void setOperHaltTime(String operHaltTime) {
         this.operHaltTime = operHaltTime;
     }
-  
 
-    /** ��ע */
+
+    /**
+     * ��ע
+     */
     private String remark;
-    
+
     public String getRemark() {
         return this.remark;
     }
@@ -380,5 +427,5 @@ public class FaultrecordVO {
     public void setRemark(String remark) {
         this.remark = remark;
     }
-  
+
 }

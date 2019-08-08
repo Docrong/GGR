@@ -10,126 +10,126 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 
 public class TawCommonMessageAddServiceDaoTest extends BaseDaoTestCase {
 
-	private TawCommonMessageAddServiceDao dao = null;
+    private TawCommonMessageAddServiceDao dao = null;
 
-	public void setTawCommonMessageAddServiceDao(
-			TawCommonMessageAddServiceDao dao) {
-		this.dao = dao;
-	}
+    public void setTawCommonMessageAddServiceDao(
+            TawCommonMessageAddServiceDao dao) {
+        this.dao = dao;
+    }
 
-	public void testAddTawCommonMessageAddService() throws Exception {
-		TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
+    public void testAddTawCommonMessageAddService() throws Exception {
+        TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
 
-		tawCommonMessageAddService.setIssendimediat("1");
-		tawCommonMessageAddService.setIssendnight("1");
-		tawCommonMessageAddService.setMessagetype("1");
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
+        tawCommonMessageAddService.setIssendimediat("1");
+        tawCommonMessageAddService.setIssendnight("1");
+        tawCommonMessageAddService.setMessagetype("1");
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
 
-		// verify a primary key was assigned
-		assertNotNull(tawCommonMessageAddService.getId());
+        // verify a primary key was assigned
+        assertNotNull(tawCommonMessageAddService.getId());
 
-		// verify set fields are same after save
-	}
+        // verify set fields are same after save
+    }
 
-	public void testGetTawCommonMessageAddService() throws Exception {
-		TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
+    public void testGetTawCommonMessageAddService() throws Exception {
+        TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
 
-		tawCommonMessageAddService.setIssendimediat("1");
-		tawCommonMessageAddService.setIssendnight("1");
-		tawCommonMessageAddService.setMessagetype("1");
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
-		TawCommonMessageAddService tawCommonMessageAddServices = dao
-				.getTawCommonMessageAddService(tawCommonMessageAddService
-						.getId());
-		assertNotNull(tawCommonMessageAddServices);
-	}
+        tawCommonMessageAddService.setIssendimediat("1");
+        tawCommonMessageAddService.setIssendnight("1");
+        tawCommonMessageAddService.setMessagetype("1");
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
+        TawCommonMessageAddService tawCommonMessageAddServices = dao
+                .getTawCommonMessageAddService(tawCommonMessageAddService
+                        .getId());
+        assertNotNull(tawCommonMessageAddServices);
+    }
 
-	public void testGetTawCommonMessageAddServices() throws Exception {
-		TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
+    public void testGetTawCommonMessageAddServices() throws Exception {
+        TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
 
-		tawCommonMessageAddService.setIssendimediat("1");
-		tawCommonMessageAddService.setIssendnight("1");
-		tawCommonMessageAddService.setMessagetype("1");
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
-		List results = dao
-				.getTawCommonMessageAddServices(tawCommonMessageAddService);
-		assertTrue(results.size() > 0);
-	}
+        tawCommonMessageAddService.setIssendimediat("1");
+        tawCommonMessageAddService.setIssendnight("1");
+        tawCommonMessageAddService.setMessagetype("1");
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
+        List results = dao
+                .getTawCommonMessageAddServices(tawCommonMessageAddService);
+        assertTrue(results.size() > 0);
+    }
 
-	public void testSaveTawCommonMessageAddService() throws Exception {
+    public void testSaveTawCommonMessageAddService() throws Exception {
 
-		TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
+        TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
 
-		tawCommonMessageAddService.setIssendimediat("1");
-		tawCommonMessageAddService.setIssendnight("1");
-		tawCommonMessageAddService.setMessagetype("1");
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
-		TawCommonMessageAddService tawCommonMessageAddServices = dao
-				.getTawCommonMessageAddService(tawCommonMessageAddService
-						.getId());
+        tawCommonMessageAddService.setIssendimediat("1");
+        tawCommonMessageAddService.setIssendnight("1");
+        tawCommonMessageAddService.setMessagetype("1");
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
+        TawCommonMessageAddService tawCommonMessageAddServices = dao
+                .getTawCommonMessageAddService(tawCommonMessageAddService
+                        .getId());
 
-		// update required fields
+        // update required fields
 
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddServices);
-		assertSame(tawCommonMessageAddService.getId(),
-				tawCommonMessageAddServices.getId());
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddServices);
+        assertSame(tawCommonMessageAddService.getId(),
+                tawCommonMessageAddServices.getId());
 
-	}
+    }
 
-	public void testRemoveTawCommonMessageAddService() throws Exception {
-		TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
+    public void testRemoveTawCommonMessageAddService() throws Exception {
+        TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
 
-		tawCommonMessageAddService.setIssendimediat("1");
-		tawCommonMessageAddService.setIssendnight("1");
-		tawCommonMessageAddService.setMessagetype("1");
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
-		dao
-				.removeTawCommonMessageAddService(tawCommonMessageAddService
-						.getId());
-		try {
-			dao.getTawCommonMessageAddService(tawCommonMessageAddService
-					.getId());
-			fail("tawCommonMessageAddService found in database");
-		} catch (ObjectRetrievalFailureException e) {
-			assertNotNull(e.getMessage());
-		}
-	}
+        tawCommonMessageAddService.setIssendimediat("1");
+        tawCommonMessageAddService.setIssendnight("1");
+        tawCommonMessageAddService.setMessagetype("1");
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
+        dao
+                .removeTawCommonMessageAddService(tawCommonMessageAddService
+                        .getId());
+        try {
+            dao.getTawCommonMessageAddService(tawCommonMessageAddService
+                    .getId());
+            fail("tawCommonMessageAddService found in database");
+        } catch (ObjectRetrievalFailureException e) {
+            assertNotNull(e.getMessage());
+        }
+    }
 
-	public void testgetServicebyuserid() throws Exception {
+    public void testgetServicebyuserid() throws Exception {
 
-		TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
+        TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
 
-		tawCommonMessageAddService.setIssendimediat("1");
-		tawCommonMessageAddService.setIssendnight("1");
-		tawCommonMessageAddService.setMessagetype("1");
-		tawCommonMessageAddService.setUserid("admin");
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
-		List list = dao.getMesageServicebyuserids("admin");
+        tawCommonMessageAddService.setIssendimediat("1");
+        tawCommonMessageAddService.setIssendnight("1");
+        tawCommonMessageAddService.setMessagetype("1");
+        tawCommonMessageAddService.setUserid("admin");
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
+        List list = dao.getMesageServicebyuserids("admin");
 
-		// update required fields
+        // update required fields
 
-		assertTrue(list.size() > 0);
+        assertTrue(list.size() > 0);
 
-	}
+    }
 
-	public void testgetServicebyMOid() throws Exception {
+    public void testgetServicebyMOid() throws Exception {
 
-		TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
+        TawCommonMessageAddService tawCommonMessageAddService = new TawCommonMessageAddService();
 
-		tawCommonMessageAddService.setIssendimediat("1");
-		tawCommonMessageAddService.setIssendnight("1");
-		tawCommonMessageAddService.setMessagetype("1");
-		tawCommonMessageAddService.setUserid("admin");
-		tawCommonMessageAddService.setModelid("99");
-		tawCommonMessageAddService.setOperid("9988");
-		dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
-		TawCommonMessageAddService tawCommonMessageAddServices = dao
-				.getMessageService("99", "9988");
+        tawCommonMessageAddService.setIssendimediat("1");
+        tawCommonMessageAddService.setIssendnight("1");
+        tawCommonMessageAddService.setMessagetype("1");
+        tawCommonMessageAddService.setUserid("admin");
+        tawCommonMessageAddService.setModelid("99");
+        tawCommonMessageAddService.setOperid("9988");
+        dao.saveTawCommonMessageAddService(tawCommonMessageAddService);
+        TawCommonMessageAddService tawCommonMessageAddServices = dao
+                .getMessageService("99", "9988");
 
-		// update required fields
+        // update required fields
 
-		assertSame(tawCommonMessageAddService.getId(),
-				tawCommonMessageAddServices.getId());
+        assertSame(tawCommonMessageAddService.getId(),
+                tawCommonMessageAddServices.getId());
 
-	}
+    }
 }

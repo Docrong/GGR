@@ -13,50 +13,49 @@ import java.util.List;
  * <p>
  * Mar 26, 2007 11:49:23 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class FMImportSheet {
 
-	/**
-	 * 类名
-	 */
-	private String className;
+    /**
+     * 类名
+     */
+    private String className;
 
-	/**
-	 * sheetNum,标签页
-	 */
-	private Integer num;
+    /**
+     * sheetNum,标签页
+     */
+    private Integer num;
 
-	/**
-	 * 列列表
-	 */
-	private List column = new ArrayList();
+    /**
+     * 列列表
+     */
+    private List column = new ArrayList();
 
-	public List getColumn() {
-		return column;
-	}
+    public List getColumn() {
+        return column;
+    }
 
-	public void setColumn(List column) {
-		this.column = column;
-	}
+    public void setColumn(List column) {
+        this.column = column;
+    }
 
-	public Integer getNum() {
-		return num;
-	}
+    public Integer getNum() {
+        return num;
+    }
 
-	public void setNum(Integer num) {
-		this.num = num;
-	}
+    public void setNum(Integer num) {
+        this.num = num;
+    }
 
-	public String getClassName() {
-		return className;
-	}
+    public String getClassName() {
+        return className;
+    }
 
-	public void setClassName(String className) {
-		this.className = className;
-	}
+    public void setClassName(String className) {
+        this.className = className;
+    }
 
 }

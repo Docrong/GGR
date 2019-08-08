@@ -15,9 +15,9 @@ public interface TawSystemRoleTypeDao extends Dao {
 
     /**
      * Gets tawSystemRoleType's information based on primary key. An
-     * ObjectRetrievalFailureException Runtime Exception is thrown if 
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
-     * 
+     *
      * @param roletype_id the tawSystemRoleType's roletype_id
      * @return tawSystemRoleType populated tawSystemRoleType object
      */
@@ -25,17 +25,20 @@ public interface TawSystemRoleTypeDao extends Dao {
 
     /**
      * Saves a tawSystemRoleType's information
+     *
      * @param tawSystemRoleType the object to be saved
-     */    
+     */
     public void saveTawSystemRoleType(TawSystemRoleType tawSystemRoleType);
 
     /**
      * Removes a tawSystemRoleType from the database by roletype_id
+     *
      * @param roletype_id the tawSystemRoleType's roletype_id
      */
     public void removeTawSystemRoleType(final Long roletype_id);
 
     public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize);
+
     public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

@@ -4,6 +4,7 @@
 package com.boco.eoms.sheet.base.service.ejb;
 
 import commonj.sdo.DataObject;
+
 import java.lang.Exception;
 import java.lang.Object;
 import java.lang.String;
@@ -15,6 +16,7 @@ import javax.ejb.Handle;
 import javax.ejb.RemoveException;
 import javax.rmi.CORBA.Tie;
 import javax.rmi.CORBA.Util;
+
 import org.omg.CORBA.BAD_OPERATION;
 import org.omg.CORBA.ORB;
 import org.omg.CORBA.SystemException;
@@ -25,44 +27,44 @@ import org.omg.CORBA.portable.ResponseHandler;
 import org.omg.CORBA.portable.UnknownException;
 
 public class _EJSRemoteStatelessMessageService_424a1de9_Tie extends org.omg.CORBA_2_3.portable.ObjectImpl implements Tie {
-    
+
     private EJSRemoteStatelessMessageService_424a1de9 target = null;
     private ORB orb = null;
-    
+
     private static final String[] _type_ids = {
-        "RMI:com.boco.eoms.sheet.base.service.ejb.MessageService:0000000000000000", 
-        "RMI:javax.ejb.EJBObject:0000000000000000", 
-        "RMI:com.ibm.websphere.csi.CSIServant:0000000000000000", 
-        "RMI:com.ibm.websphere.csi.TransactionalObject:0000000000000000"
+            "RMI:com.boco.eoms.sheet.base.service.ejb.MessageService:0000000000000000",
+            "RMI:javax.ejb.EJBObject:0000000000000000",
+            "RMI:com.ibm.websphere.csi.CSIServant:0000000000000000",
+            "RMI:com.ibm.websphere.csi.TransactionalObject:0000000000000000"
     };
-    
+
     public void setTarget(Remote target) {
         this.target = (EJSRemoteStatelessMessageService_424a1de9) target;
     }
-    
+
     public Remote getTarget() {
         return target;
     }
-    
+
     public org.omg.CORBA.Object thisObject() {
         return this;
     }
-    
+
     public void deactivate() {
         if (orb != null) {
             orb.disconnect(this);
             _set_delegate(null);
         }
     }
-    
+
     public ORB orb() {
         return _orb();
     }
-    
+
     public void orb(ORB orb) {
         orb.connect(this);
     }
-    
+
     public void _set_delegate(Delegate del) {
         super._set_delegate(del);
         if (del != null)
@@ -70,47 +72,47 @@ public class _EJSRemoteStatelessMessageService_424a1de9_Tie extends org.omg.CORB
         else
             orb = null;
     }
-    
-    public String[] _ids() { 
+
+    public String[] _ids() {
         return _type_ids;
     }
-    
+
     public OutputStream _invoke(String method, InputStream _in, ResponseHandler reply) throws SystemException {
         try {
-            org.omg.CORBA_2_3.portable.InputStream in = 
-                (org.omg.CORBA_2_3.portable.InputStream) _in;
+            org.omg.CORBA_2_3.portable.InputStream in =
+                    (org.omg.CORBA_2_3.portable.InputStream) _in;
             switch (method.length()) {
-                case 6: 
+                case 6:
                     if (method.equals("remove")) {
                         return remove(in, reply);
                     }
-                case 7: 
+                case 7:
                     if (method.equals("sendMsg")) {
                         return sendMsg(in, reply);
                     }
-                case 8: 
+                case 8:
                     if (method.equals("closeMsg")) {
                         return closeMsg(in, reply);
                     }
-                case 11: 
+                case 11:
                     if (method.equals("_get_handle")) {
                         return _get_handle(in, reply);
                     } else if (method.equals("isIdentical")) {
                         return isIdentical(in, reply);
                     }
-                case 12: 
+                case 12:
                     if (method.equals("_get_EJBHome")) {
                         return _get_EJBHome(in, reply);
                     }
-                case 15: 
+                case 15:
                     if (method.equals("_get_primaryKey")) {
                         return _get_primaryKey(in, reply);
                     }
-                case 96: 
+                case 96:
                     if (method.equals("sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue")) {
                         return sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue(in, reply);
                     }
-                case 116: 
+                case 116:
                     if (method.equals("sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue")) {
                         return sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue(in, reply);
                     }
@@ -122,52 +124,52 @@ public class _EJSRemoteStatelessMessageService_424a1de9_Tie extends org.omg.CORB
             throw new UnknownException(ex);
         }
     }
-    
-    private OutputStream _get_EJBHome(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream _get_EJBHome(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         EJBHome result = target.getEJBHome();
         OutputStream out = reply.createReply();
-        Util.writeRemoteObject(out,result);
+        Util.writeRemoteObject(out, result);
         return out;
     }
-    
-    private OutputStream _get_primaryKey(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream _get_primaryKey(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         Object result = target.getPrimaryKey();
         OutputStream out = reply.createReply();
-        Util.writeAny(out,result);
+        Util.writeAny(out, result);
         return out;
     }
-    
-    private OutputStream remove(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream remove(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         try {
             target.remove();
         } catch (RemoveException ex) {
             String id = "IDL:javax/ejb/RemoveEx:1.0";
-            org.omg.CORBA_2_3.portable.OutputStream out = 
-                (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
+            org.omg.CORBA_2_3.portable.OutputStream out =
+                    (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
             out.write_string(id);
-            out.write_value(ex,RemoveException.class);
+            out.write_value(ex, RemoveException.class);
             return out;
         }
         OutputStream out = reply.createReply();
         return out;
     }
-    
-    private OutputStream _get_handle(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream _get_handle(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         Handle result = target.getHandle();
         OutputStream out = reply.createReply();
-        Util.writeAbstractObject(out,result);
+        Util.writeAbstractObject(out, result);
         return out;
     }
-    
-    private OutputStream isIdentical(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream isIdentical(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         EJBObject arg0 = (EJBObject) in.read_Object(EJBObject.class);
         boolean result = target.isIdentical(arg0);
         OutputStream out = reply.createReply();
         out.write_boolean(result);
         return out;
     }
-    
-    private OutputStream sendMsg(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream sendMsg(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         DataObject arg0 = (DataObject) in.read_value(DataObject.class);
         String arg1 = (String) in.read_value(String.class);
         String arg2 = (String) in.read_value(String.class);
@@ -181,17 +183,17 @@ public class _EJSRemoteStatelessMessageService_424a1de9_Tie extends org.omg.CORB
             target.sendMsg(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
         } catch (Exception ex) {
             String id = "IDL:java/lang/Ex:1.0";
-            org.omg.CORBA_2_3.portable.OutputStream out = 
-                (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
+            org.omg.CORBA_2_3.portable.OutputStream out =
+                    (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
             out.write_string(id);
-            out.write_value(ex,Exception.class);
+            out.write_value(ex, Exception.class);
             return out;
         }
         OutputStream out = reply.createReply();
         return out;
     }
-    
-    private OutputStream sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         String arg0 = (String) in.read_value(String.class);
         String arg1 = (String) in.read_value(String.class);
         String arg2 = (String) in.read_value(String.class);
@@ -202,17 +204,17 @@ public class _EJSRemoteStatelessMessageService_424a1de9_Tie extends org.omg.CORB
             target.sendMsgHie(arg0, arg1, arg2, arg3, arg4, arg5);
         } catch (Exception ex) {
             String id = "IDL:java/lang/Ex:1.0";
-            org.omg.CORBA_2_3.portable.OutputStream out = 
-                (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
+            org.omg.CORBA_2_3.portable.OutputStream out =
+                    (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
             out.write_string(id);
-            out.write_value(ex,Exception.class);
+            out.write_value(ex, Exception.class);
             return out;
         }
         OutputStream out = reply.createReply();
         return out;
     }
-    
-    private OutputStream sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream sendMsgHie__CORBA_WStringValue__CORBA_WStringValue__CORBA_WStringValue__long__CORBA_WStringValue(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         String arg0 = (String) in.read_value(String.class);
         String arg1 = (String) in.read_value(String.class);
         String arg2 = (String) in.read_value(String.class);
@@ -222,17 +224,17 @@ public class _EJSRemoteStatelessMessageService_424a1de9_Tie extends org.omg.CORB
             target.sendMsgHie(arg0, arg1, arg2, arg3, arg4);
         } catch (Exception ex) {
             String id = "IDL:java/lang/Ex:1.0";
-            org.omg.CORBA_2_3.portable.OutputStream out = 
-                (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
+            org.omg.CORBA_2_3.portable.OutputStream out =
+                    (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
             out.write_string(id);
-            out.write_value(ex,Exception.class);
+            out.write_value(ex, Exception.class);
             return out;
         }
         OutputStream out = reply.createReply();
         return out;
     }
-    
-    private OutputStream closeMsg(org.omg.CORBA_2_3.portable.InputStream in , ResponseHandler reply) throws Throwable {
+
+    private OutputStream closeMsg(org.omg.CORBA_2_3.portable.InputStream in, ResponseHandler reply) throws Throwable {
         String arg0 = (String) in.read_value(String.class);
         String arg1 = (String) in.read_value(String.class);
         int arg2 = in.read_long();
@@ -240,10 +242,10 @@ public class _EJSRemoteStatelessMessageService_424a1de9_Tie extends org.omg.CORB
             target.closeMsg(arg0, arg1, arg2);
         } catch (Exception ex) {
             String id = "IDL:java/lang/Ex:1.0";
-            org.omg.CORBA_2_3.portable.OutputStream out = 
-                (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
+            org.omg.CORBA_2_3.portable.OutputStream out =
+                    (org.omg.CORBA_2_3.portable.OutputStream) reply.createExceptionReply();
             out.write_string(id);
-            out.write_value(ex,Exception.class);
+            out.write_value(ex, Exception.class);
             return out;
         }
         OutputStream out = reply.createReply();

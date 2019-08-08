@@ -7,23 +7,24 @@ import java.security.MessageDigest;
 
 /**
  * SHA加密
- * @author IBM
  *
+ * @author IBM
  */
 public class SHA {
-	/**
-	 * SHA加密算法
-	 * @param str
-	 * @return
-	 */
-	public String getKey(String str) throws Exception{
+    /**
+     * SHA加密算法
+     *
+     * @param str
+     * @return
+     */
+    public String getKey(String str) throws Exception {
 //		MD5是16位,SHA是20位（这是两种报文摘要的算法）
 //		MessageDigest md= MessageDigest.getInstance("MD5");
-		MessageDigest messageDigest=MessageDigest.getInstance("SHA-1");
-		messageDigest.update(str.getBytes());
+        MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
+        messageDigest.update(str.getBytes());
 //		String digestedPwdString = new String(messageDigest.digest());
-		String shaStr = "";//new String(Base64.encode(messageDigest.digest()));
-		System.out.println("SHA:" + shaStr);
-		return shaStr;
-	}
+        String shaStr = "";//new String(Base64.encode(messageDigest.digest()));
+        System.out.println("SHA:" + shaStr);
+        return shaStr;
+    }
 }

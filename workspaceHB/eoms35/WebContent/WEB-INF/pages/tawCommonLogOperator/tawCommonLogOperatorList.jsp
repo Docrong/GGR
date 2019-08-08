@@ -1,75 +1,72 @@
-<%@ include file="/common/taglibs.jsp"%>
-<%@ include file="/common/header_eoms.jsp"%>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="/common/header_eoms.jsp" %>
 
 <content tag="heading"><fmt:message key="tawCommonLogOperatorList.heading"/></content>
 
 <c:set var="buttons">
     <input type="button" style="margin-right: 5px"
-        onclick="location.href='<c:url value="/log/editTawCommonLogOperator.do"/>'"
-        value="<fmt:message key="button.add"/>"/>
+           onclick="location.href='<c:url value="/log/editTawCommonLogOperator.do"/>'"
+           value="<fmt:message key="button.add"/>"/>
 
     <input type="button" onclick="location.href='<html:rewrite forward="mainMenu"/>'"
-        value="<fmt:message key="button.done"/>"/>
+           value="<fmt:message key="button.done"/>"/>
 </c:set>
 
 <!-- <c:out value="${buttons}" escapeXml="false"/> -->
 
 <display:table name="tawCommonLogOperatorList" cellspacing="0" cellpadding="0"
-    id="tawCommonLogOperatorList" pagesize="25" class="table tawCommonLogOperatorList"
-    export="true" requestURI="" sort="list">
-
+               id="tawCommonLogOperatorList" pagesize="25" class="table tawCommonLogOperatorList"
+               export="true" requestURI="" sort="list">
 
 
     <display:column property="userid" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.userid"/>
-         
-   
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.userid"/>
 
 
- <%-- <display:none property="modelid" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.modelid"/>--%>
+    <%-- <display:none property="modelid" sortable="true" headerClass="sortable"
+           url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+            titleKey="tawCommonLogOperatorForm.modelid"/>--%>
 
     <display:column property="modelname" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.modelname"/>
-         
-     <%--       <display:none property="operid" sortable="true" headerClass="sortable"
-        url="/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.operid"/>--%>
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.modelname"/>
+
+    <%--       <display:none property="operid" sortable="true" headerClass="sortable"
+       url="/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+        titleKey="tawCommonLogOperatorForm.operid"/>--%>
 
     <display:column property="opername" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.opername"/>
-         
- <display:column property="beginnotetime" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.beginnotetime"/>
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.opername"/>
+
+    <display:column property="beginnotetime" sortable="true" headerClass="sortable"
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.beginnotetime"/>
 
     <display:column property="bzremark" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.bzremark"/>
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.bzremark"/>
     <display:column property="notemessage" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.notemessage"/>
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.notemessage"/>
 
     <display:column property="operatetime" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.operatetime"/>
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.operatetime"/>
 
     <display:column property="operremark" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.operremark"/>
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.operremark"/>
 
 
     <display:column property="remoteip" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.remoteip"/>
-         
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.remoteip"/>
+
     <display:column property="url" sortable="true" headerClass="sortable"
-        url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
-         titleKey="tawCommonLogOperatorForm.url"/>
+                    url="/log/editTawCommonLogOperator.do" paramId="id" paramProperty="id"
+                    titleKey="tawCommonLogOperatorForm.url"/>
 
 
     <display:setProperty name="paging.banner.item_name" value="tawCommonLogOperator"/>
@@ -82,4 +79,4 @@
     highlightTableRows("tawCommonLogOperatorList");
 </script>
 
-<%@ include file="/common/footer_eoms.jsp"%>
+<%@ include file="/common/footer_eoms.jsp" %>

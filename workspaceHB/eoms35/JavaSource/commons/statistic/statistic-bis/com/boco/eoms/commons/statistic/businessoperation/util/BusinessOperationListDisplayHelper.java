@@ -16,7 +16,7 @@ import com.boco.eoms.commons.statistic.businessoperation.vo.StatDetailVOBusiness
 
 /**
  * @author Administrator
- * 
+ * <p>
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
@@ -46,20 +46,20 @@ public class BusinessOperationListDisplayHelper extends TableDecorator {
 		
 	}*/
 
-	public String getSenduser() {
-		StatDetailVOBusinessOperation vo = (StatDetailVOBusinessOperation) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenduserid(), "statBaseUserId2name_v35");
-	}
+    public String getSenduser() {
+        StatDetailVOBusinessOperation vo = (StatDetailVOBusinessOperation) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenduserid(), "statBaseUserId2name_v35");
+    }
 
-	public String getSenddept() {
-		StatDetailVOBusinessOperation vo = (StatDetailVOBusinessOperation) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenddeptid(), "statBaseDeptId2name_v35");
+    public String getSenddept() {
+        StatDetailVOBusinessOperation vo = (StatDetailVOBusinessOperation) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenddeptid(), "statBaseDeptId2name_v35");
 
-	}
+    }
 
-	public String getStatus() {
-		StatDetailVOBusinessOperation vo = (StatDetailVOBusinessOperation) getCurrentRowObject();
-		return StatUtil.getStatusName(vo.getStatus());
+    public String getStatus() {
+        StatDetailVOBusinessOperation vo = (StatDetailVOBusinessOperation) getCurrentRowObject();
+        return StatUtil.getStatusName(vo.getStatus());
 
-	}
+    }
 }

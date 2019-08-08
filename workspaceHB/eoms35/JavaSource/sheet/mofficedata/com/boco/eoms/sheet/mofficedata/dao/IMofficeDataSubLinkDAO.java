@@ -17,14 +17,13 @@ import com.boco.eoms.sheet.mofficedata.model.MofficeDataSubLink;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
 
 public interface IMofficeDataSubLinkDAO extends Dao {
-	public void saveOrUpdate(MofficeDataSubLink obj) throws HibernateException;
+    public void saveOrUpdate(MofficeDataSubLink obj) throws HibernateException;
 
-	public List getSubLinksByHql(String hql) throws HibernateException;
+    public List getSubLinksByHql(String hql) throws HibernateException;
 }

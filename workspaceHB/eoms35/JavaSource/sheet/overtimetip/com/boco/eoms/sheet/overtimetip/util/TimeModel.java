@@ -10,45 +10,52 @@ import java.util.List;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class TimeModel {
-	private String modelName;
-	private String flowName;
-	private String taskFlowName;
-	private List timeFilter;
-	
+    private String modelName;
+    private String flowName;
+    private String taskFlowName;
+    private List timeFilter;
 
-	public String getFlowName() {
-		return flowName;
-	}
-	public void setFlowName(String flowName) {
-		this.flowName = flowName;
-	}
-	public List getTimeFilter() {
-		return timeFilter;
-	}
-	public void setTimeFilter(List timeFilter) {
-		this.timeFilter = timeFilter;
-	}
-	/**
-	 * @return Returns the modelName.
-	 */
-	public String getModelName() {
-		return modelName;
-	}
-	/**
-	 * @param modelName The modelName to set.
-	 */
-	public void setModelName(String modelName) {
-		this.modelName = modelName;
-	}
-	public String getTaskFlowName() {
-		return taskFlowName;
-	}
-	public void setTaskFlowName(String taskFlowName) {
-		this.taskFlowName = taskFlowName;
-	}
+
+    public String getFlowName() {
+        return flowName;
+    }
+
+    public void setFlowName(String flowName) {
+        this.flowName = flowName;
+    }
+
+    public List getTimeFilter() {
+        return timeFilter;
+    }
+
+    public void setTimeFilter(List timeFilter) {
+        this.timeFilter = timeFilter;
+    }
+
+    /**
+     * @return Returns the modelName.
+     */
+    public String getModelName() {
+        return modelName;
+    }
+
+    /**
+     * @param modelName The modelName to set.
+     */
+    public void setModelName(String modelName) {
+        this.modelName = modelName;
+    }
+
+    public String getTaskFlowName() {
+        return taskFlowName;
+    }
+
+    public void setTaskFlowName(String taskFlowName) {
+        this.taskFlowName = taskFlowName;
+    }
 }

@@ -16,10 +16,9 @@ package com.boco.eoms.sheet.base.dict;
  * <p>
  * Date:2007-8-3 11:06:42
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictImpl implements IDict {
 
@@ -51,24 +50,21 @@ public class DictImpl implements IDict {
     private String value;
 
     /**
-     * @param description
-     *            the description to set
+     * @param description the description to set
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * @param value
-     *            the value to set
+     * @param value the value to set
      */
     public void setValue(String value) {
         this.value = value;
@@ -76,7 +72,7 @@ public class DictImpl implements IDict {
 
     /**
      * 取描述信息
-     * 
+     *
      * @return
      */
     public String getDescription() {
@@ -85,7 +81,7 @@ public class DictImpl implements IDict {
 
     /**
      * 名称，例 public static final String QUERY_ALL_NAME = "全部";
-     * 
+     *
      * @return
      */
     public String getName() {
@@ -95,7 +91,7 @@ public class DictImpl implements IDict {
     /**
      * 取值，例查询全部默认数值，供以后查询判断是否为查询全部，select标签是否应加入全部 <option
      * value="QUERY_ALL_DEFAULT">全部 </option>
-     * 
+     *
      * @return
      */
     public String getValue() {

@@ -26,135 +26,135 @@ import org.springframework.aop.AfterReturningAdvice;
 import org.springframework.aop.MethodBeforeAdvice;
 
 public class UserSecurityAdvice implements MethodBeforeAdvice,
-		AfterReturningAdvice {
-	public final static String ACCESS_DENIED = "Access Denied: Only administrators are allowed to modify other users.";
+        AfterReturningAdvice {
+    public final static String ACCESS_DENIED = "Access Denied: Only administrators are allowed to modify other users.";
 
 //	protected final Log log = LogFactory.getLog(UserSecurityAdvice.class);
 
-	private UserCache userCache;
+    private UserCache userCache;
 
-	public void setUserCache(UserCache userCache) {
-		this.userCache = userCache;
-	}
+    public void setUserCache(UserCache userCache) {
+        this.userCache = userCache;
+    }
 
-	/**
-	 * Method to enforce security and only allow administrators to modify users.
-	 * Regular users are allowed to modify themselves.
-	 */
-	public void before(Method method, Object[] args, Object target)
-			throws Throwable {
-		SecurityContext ctx = SecurityContextHolder.getContext();
+    /**
+     * Method to enforce security and only allow administrators to modify users.
+     * Regular users are allowed to modify themselves.
+     */
+    public void before(Method method, Object[] args, Object target)
+            throws Throwable {
+        SecurityContext ctx = SecurityContextHolder.getContext();
 
-		if (ctx.getAuthentication() != null) {
-			Authentication auth = ctx.getAuthentication();
-			boolean administrator = false;
-			GrantedAuthority[] roles = auth.getAuthorities();
-			for (int i = 0; i < roles.length; i++) {
-				if (roles[i].getAuthority().equals(Constants.ADMIN_ROLE)) {
-					administrator = true;
-					break;
-				}
-			}
+        if (ctx.getAuthentication() != null) {
+            Authentication auth = ctx.getAuthentication();
+            boolean administrator = false;
+            GrantedAuthority[] roles = auth.getAuthorities();
+            for (int i = 0; i < roles.length; i++) {
+                if (roles[i].getAuthority().equals(Constants.ADMIN_ROLE)) {
+                    administrator = true;
+                    break;
+                }
+            }
 
-			User user = (User) args[0];
-			String username = user.getUsername();
+            User user = (User) args[0];
+            String username = user.getUsername();
 
-			String currentUser;
-			if (auth.getPrincipal() instanceof UserDetails) {
-				currentUser = ((UserDetails) auth.getPrincipal()).getUsername();
-			} else {
-				currentUser = String.valueOf(auth.getPrincipal());
-			}
+            String currentUser;
+            if (auth.getPrincipal() instanceof UserDetails) {
+                currentUser = ((UserDetails) auth.getPrincipal()).getUsername();
+            } else {
+                currentUser = String.valueOf(auth.getPrincipal());
+            }
 
-			if (username != null && !username.equals(currentUser)) {
-				AuthenticationTrustResolver resolver = new AuthenticationTrustResolverImpl();
-				// allow new users to signup - this is OK b/c Signup doesn't
-				// allow setting of roles
-				boolean signupUser = resolver.isAnonymous(auth);
-				if (!signupUser) {
+            if (username != null && !username.equals(currentUser)) {
+                AuthenticationTrustResolver resolver = new AuthenticationTrustResolverImpl();
+                // allow new users to signup - this is OK b/c Signup doesn't
+                // allow setting of roles
+                boolean signupUser = resolver.isAnonymous(auth);
+                if (!signupUser) {
 //					if (log.isDebugEnabled()) {
-					BocoLog.debug(this,"Verifying that '" + currentUser
-								+ "' can modify '" + username + "'");
+                    BocoLog.debug(this, "Verifying that '" + currentUser
+                            + "' can modify '" + username + "'");
 //					}
-					if (!administrator) {
-						BocoLog.warn(this,"Access Denied: '" + currentUser
-								+ "' tried to modify '" + username + "'!");
-						throw new AccessDeniedException(ACCESS_DENIED);
-					}
-				} else {
+                    if (!administrator) {
+                        BocoLog.warn(this, "Access Denied: '" + currentUser
+                                + "' tried to modify '" + username + "'!");
+                        throw new AccessDeniedException(ACCESS_DENIED);
+                    }
+                } else {
 //					if (log.isDebugEnabled()) {
-					BocoLog.debug(this,"Registering new user '" + username + "'");
+                    BocoLog.debug(this, "Registering new user '" + username + "'");
 //					}
-				}
-			}
+                }
+            }
 
-			// fix for http://issues.appfuse.org/browse/APF-96
-			// don't allow users with "user" role to upgrade to "admin" role
-			else if (username != null && username.equalsIgnoreCase(currentUser)
-					&& !administrator) {
+            // fix for http://issues.appfuse.org/browse/APF-96
+            // don't allow users with "user" role to upgrade to "admin" role
+            else if (username != null && username.equalsIgnoreCase(currentUser)
+                    && !administrator) {
 
-				// get the list of roles the user is trying add
-				Set userRoles = new HashSet();
-				if (user.getRoles() != null) {
-					for (Iterator it = user.getRoles().iterator(); it.hasNext();) {
-						Role role = (Role) it.next();
-						userRoles.add(role.getName());
-					}
-				}
+                // get the list of roles the user is trying add
+                Set userRoles = new HashSet();
+                if (user.getRoles() != null) {
+                    for (Iterator it = user.getRoles().iterator(); it.hasNext(); ) {
+                        Role role = (Role) it.next();
+                        userRoles.add(role.getName());
+                    }
+                }
 
-				// get the list of roles the user currently has
-				Set authorizedRoles = new HashSet();
-				for (int i = 0; i < roles.length; i++) {
-					authorizedRoles.add(roles[i].getAuthority());
-				}
+                // get the list of roles the user currently has
+                Set authorizedRoles = new HashSet();
+                for (int i = 0; i < roles.length; i++) {
+                    authorizedRoles.add(roles[i].getAuthority());
+                }
 
-				// if they don't match - access denied
-				// users aren't allowed to change their roles
-				if (!CollectionUtils.isEqualCollection(userRoles,
-						authorizedRoles)) {
-					BocoLog.warn(this,"Access Denied: '" + currentUser
-							+ "' tried to change their role(s)!");
-					throw new AccessDeniedException(ACCESS_DENIED);
-				}
-			}
-		}
-	}
+                // if they don't match - access denied
+                // users aren't allowed to change their roles
+                if (!CollectionUtils.isEqualCollection(userRoles,
+                        authorizedRoles)) {
+                    BocoLog.warn(this, "Access Denied: '" + currentUser
+                            + "' tried to change their role(s)!");
+                    throw new AccessDeniedException(ACCESS_DENIED);
+                }
+            }
+        }
+    }
 
-	public void afterReturning(Object returnValue, Method method,
-			Object[] args, Object target) throws Throwable {
-		User user = (User) args[0];
+    public void afterReturning(Object returnValue, Method method,
+                               Object[] args, Object target) throws Throwable {
+        User user = (User) args[0];
 
-		if (userCache != null && user.getVersion() != null) {
+        if (userCache != null && user.getVersion() != null) {
 //			if (log.isDebugEnabled()) {
-			BocoLog.debug(this,"Removing '" + user.getUsername()
-						+ "' from userCache");
+            BocoLog.debug(this, "Removing '" + user.getUsername()
+                    + "' from userCache");
 //			}
 
-			userCache.removeUserFromCache(user.getUsername());
+            userCache.removeUserFromCache(user.getUsername());
 
-			// reset the authentication object if current user
-			Authentication auth = SecurityContextHolder.getContext()
-					.getAuthentication();
-			if (auth != null && auth.getPrincipal() instanceof UserDetails) {
-				User currentUser = (User) auth.getPrincipal();
-				if (currentUser.getId().equals(user.getId())) {
-					if (!currentUser.getUsername().equalsIgnoreCase(
-							user.getUsername())) {
-						// The name of the current user changed, so the previous
-						// flush won't have done anything.
-						// Flush the old name, too.
+            // reset the authentication object if current user
+            Authentication auth = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            if (auth != null && auth.getPrincipal() instanceof UserDetails) {
+                User currentUser = (User) auth.getPrincipal();
+                if (currentUser.getId().equals(user.getId())) {
+                    if (!currentUser.getUsername().equalsIgnoreCase(
+                            user.getUsername())) {
+                        // The name of the current user changed, so the previous
+                        // flush won't have done anything.
+                        // Flush the old name, too.
 //						if (log.isDebugEnabled()) {
-						BocoLog.debug(this,"Removing '" + currentUser.getUsername()
-									+ "' from userCache");
+                        BocoLog.debug(this, "Removing '" + currentUser.getUsername()
+                                + "' from userCache");
 //						}
-						userCache
-								.removeUserFromCache(currentUser.getUsername());
-					}
-					auth = new UsernamePasswordAuthenticationToken(user, user
-							.getPassword(), user.getAuthorities());
-					SecurityContextHolder.getContext().setAuthentication(auth);
-				}
-			}
-		}
-	}
+                        userCache
+                                .removeUserFromCache(currentUser.getUsername());
+                    }
+                    auth = new UsernamePasswordAuthenticationToken(user, user
+                            .getPassword(), user.getAuthorities());
+                    SecurityContextHolder.getContext().setAuthentication(auth);
+                }
+            }
+        }
+    }
 }

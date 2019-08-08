@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,23 +13,23 @@
             table="KM_EXAM_TEST_TYPE"
     >
 
-    <id
-        name="testTypeId"
-            column="TEST_TYPE_ID"
-            unsaved-value="null"
-    >
+        <id
+                name="testTypeId"
+                column="TEST_TYPE_ID"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	
-	<property
-            name="testID"
-            	column="TEST_ID"
+
+        <property
+                name="testID"
+                column="TEST_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -37,9 +37,9 @@
 
         </property>
 
-	<property
-            name="type"
-            	column="TYPE"
+        <property
+                name="type"
+                column="TYPE"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -47,9 +47,9 @@
 
         </property>
 
-	<property
-            name="description"
-            	column="DESCRIPTION"
+        <property
+                name="description"
+                column="DESCRIPTION"
                 length="500"
                 not-null="true"
                 unique="false"
@@ -57,9 +57,9 @@
 
         </property>
 
-	<property
-            name="quantity"
-            	column="QUANTITY"
+        <property
+                name="quantity"
+                column="QUANTITY"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -67,9 +67,9 @@
 
         </property>
 
-	<property
-            name="score"
-            	column="SCORE"
+        <property
+                name="score"
+                column="SCORE"
                 length="10"
                 not-null="true"
                 unique="false"
@@ -78,7 +78,7 @@
         </property>
 
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

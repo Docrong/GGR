@@ -1,6 +1,6 @@
 ﻿/**
  * KFComplainSheetLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -28,11 +28,10 @@ public class KFComplainSheetLocator extends org.apache.axis.client.Service imple
     }
 
     public com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoap getKFComplainSheetSoap() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(KFComplainSheetSoap_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getKFComplainSheetSoap(endpoint);
@@ -43,8 +42,7 @@ public class KFComplainSheetLocator extends org.apache.axis.client.Service imple
             com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub _stub = new com.boco.eoms.interfaces.group.client.KFComplainSheet.KFComplainSheetSoapStub(portAddress, this);
             _stub.setPortName(getKFComplainSheetSoapWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -61,8 +59,7 @@ public class KFComplainSheetLocator extends org.apache.axis.client.Service imple
                 _stub.setPortName(getKFComplainSheetSoapWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -80,8 +77,7 @@ public class KFComplainSheetLocator extends org.apache.axis.client.Service imple
         String inputPortName = portName.getLocalPart();
         if ("KFComplainSheetSoap".equals(inputPortName)) {
             return getKFComplainSheetSoap();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;

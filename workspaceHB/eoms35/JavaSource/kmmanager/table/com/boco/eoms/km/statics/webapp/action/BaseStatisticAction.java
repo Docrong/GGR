@@ -34,87 +34,87 @@ import com.boco.eoms.km.statics.webapp.form.BaseStatisticForm;
  * <p>
  * Mon Mar 30 14:39:15 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() ljt
  * @moudle.getVersion() 0.1
- * 
  */
 public final class BaseStatisticAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
-	/**
-	 * 分页显示知识库统计列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				BaseStatisticConstants.BASESTATISTIC_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		BaseStatisticMgr baseStatisticMgr = (BaseStatisticMgr) getBean("baseStatisticMgr");
-		Map map = (Map) baseStatisticMgr.getBaseStatistics(pageIndex, pageSize);
-		List list = (List) map.get("result");
-		request.setAttribute(BaseStatisticConstants.BASESTATISTIC_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示知识库统计列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		try {
-			// --------------用于分页，得到当前页号-------------
-			final Integer pageIndex = new Integer(request
-					.getParameter("pageIndex"));
-			final Integer pageSize = new Integer(request
-					.getParameter("pageSize"));
-			BaseStatisticMgr baseStatisticMgr = (BaseStatisticMgr) getBean("baseStatisticMgr");
-			Map map = (Map) baseStatisticMgr.getBaseStatistics(pageIndex, pageSize);
-			List list = (List) map.get("result");
-			BaseStatistic baseStatistic = new BaseStatistic();
-			
-			//创建ATOM源
-			Factory factory = Abdera.getNewFactory();
-			Feed feed = factory.newFeed();
-			
-			// 分页
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示知识库统计列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                BaseStatisticConstants.BASESTATISTIC_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        BaseStatisticMgr baseStatisticMgr = (BaseStatisticMgr) getBean("baseStatisticMgr");
+        Map map = (Map) baseStatisticMgr.getBaseStatistics(pageIndex, pageSize);
+        List list = (List) map.get("result");
+        request.setAttribute(BaseStatisticConstants.BASESTATISTIC_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示知识库统计列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        try {
+            // --------------用于分页，得到当前页号-------------
+            final Integer pageIndex = new Integer(request
+                    .getParameter("pageIndex"));
+            final Integer pageSize = new Integer(request
+                    .getParameter("pageSize"));
+            BaseStatisticMgr baseStatisticMgr = (BaseStatisticMgr) getBean("baseStatisticMgr");
+            Map map = (Map) baseStatisticMgr.getBaseStatistics(pageIndex, pageSize);
+            List list = (List) map.get("result");
+            BaseStatistic baseStatistic = new BaseStatistic();
+
+            //创建ATOM源
+            Factory factory = Abdera.getNewFactory();
+            Feed feed = factory.newFeed();
+
+            // 分页
 /*			for (int i = 0; i < list.size(); i++) {
 				baseStatistic = (BaseStatistic) list.get(i);
 				
@@ -142,15 +142,15 @@ public final class BaseStatisticAction extends BaseAction {
 				Person person = entry.addAuthor(userId);
 				person.setName(userName);
 			}
-*/			
-			// 每页显示条数
-			feed.setText(map.get("total").toString());
-		    OutputStream os = response.getOutputStream();
-		    PrintStream ps = new PrintStream(os);
-		    feed.getDocument().writeTo(ps);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+*/
+            // 每页显示条数
+            feed.setText(map.get("total").toString());
+            OutputStream os = response.getOutputStream();
+            PrintStream ps = new PrintStream(os);
+            feed.getDocument().writeTo(ps);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

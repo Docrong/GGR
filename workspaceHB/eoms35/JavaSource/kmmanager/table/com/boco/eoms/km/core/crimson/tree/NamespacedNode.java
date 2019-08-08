@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -114,15 +114,15 @@ public abstract class NamespacedNode extends ParentNode {
             throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
         }
 
-	int index = qName.indexOf(':');
+        int index = qName.indexOf(':');
 
         // prefix == null implies reset to no default namespace
-	if (prefix == null) {
-	    if (index >= 0) {
-	    	qName = qName.substring(index + 1);
+        if (prefix == null) {
+            if (index >= 0) {
+                qName = qName.substring(index + 1);
             }
-	    return;
-	}
+            return;
+        }
 
         // Check for illegal characters
         if (!XmlNames.isUnqualifiedName(prefix)) {
@@ -130,8 +130,8 @@ public abstract class NamespacedNode extends ParentNode {
         }
 
         // Check for NAMESPACE_ERR part 1
-	if (namespaceURI == null
-            || "xml".equals(prefix)
+        if (namespaceURI == null
+                || "xml".equals(prefix)
                 && !XmlNames.SPEC_XML_URI.equals(namespaceURI)) {
             throw new DomEx(DomEx.NAMESPACE_ERR);
         }
@@ -139,20 +139,20 @@ public abstract class NamespacedNode extends ParentNode {
         if (getNodeType() == ATTRIBUTE_NODE) {
             if ("xmlns".equals(prefix)
                     && !XmlNames.SPEC_XMLNS_URI.equals(namespaceURI)
-                || "xmlns".equals(qName)) {
+                    || "xmlns".equals(qName)) {
                 throw new DomEx(DomEx.NAMESPACE_ERR);
             }
         }
 
         // Replace or add new prefix
-   	StringBuffer tmp = new StringBuffer(prefix);
-	tmp.append(':');
-	if (index < 0 ) {
-	    tmp.append(qName);
-	} else {
-	    tmp.append(qName.substring(index + 1));
+        StringBuffer tmp = new StringBuffer(prefix);
+        tmp.append(':');
+        if (index < 0) {
+            tmp.append(qName);
+        } else {
+            tmp.append(qName.substring(index + 1));
         }
-	qName = tmp.toString();
+        qName = tmp.toString();
     }
 
     /**

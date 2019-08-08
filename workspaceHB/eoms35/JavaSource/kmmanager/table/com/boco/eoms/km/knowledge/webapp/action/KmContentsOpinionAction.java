@@ -44,233 +44,233 @@ import com.boco.eoms.commons.system.session.form.TawSystemSessionForm;
  * <p>
  * Tue Mar 24 11:36:49 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() eoms
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmContentsOpinionAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增知识管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增知识管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改知识管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改知识管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		KmContentsOpinion kmContentsOpinion = kmContentsOpinionMgr.getKmContentsOpinion(id);
-		KmContentsOpinionForm kmContentsOpinionForm = (KmContentsOpinionForm) convert(kmContentsOpinion);
-		updateFormBean(mapping, request, kmContentsOpinionForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存知识管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save2(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
-		KmContentsOpinionForm kmContentsOpinionForm = (KmContentsOpinionForm) form;
-		boolean isNew = (null == kmContentsOpinionForm.getId() || "".equals(kmContentsOpinionForm.getId()));
-		KmContentsOpinion kmContentsOpinion = (KmContentsOpinion) convert(kmContentsOpinionForm);
-		if (isNew) {
-			kmContentsOpinionMgr.saveKmContentsOpinion(kmContentsOpinion);
-		} else {
-			kmContentsOpinionMgr.saveKmContentsOpinion(kmContentsOpinion);
-		}
-		return search(mapping, kmContentsOpinionForm, request, response);
-	}
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        KmContentsOpinion kmContentsOpinion = kmContentsOpinionMgr.getKmContentsOpinion(id);
+        KmContentsOpinionForm kmContentsOpinionForm = (KmContentsOpinionForm) convert(kmContentsOpinion);
+        updateFormBean(mapping, request, kmContentsOpinionForm);
+        return mapping.findForward("edit");
+    }
 
-	/**
-	 * 评论知识内容
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {		
-		// 读取：操作人信息
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request.getSession().getAttribute("sessionform");
-		String operateDeptId = sessionform.getDeptid();
-		String operateUserId = sessionform.getUserid();
-		
-		KmContentsOpinionForm kmContentsOpinionForm = (KmContentsOpinionForm) form;
-		KmContentsOpinion kmContentsOpinion = (KmContentsOpinion) convert(kmContentsOpinionForm);
-		kmContentsOpinion.setCreateDept(operateDeptId);
-		kmContentsOpinion.setCreateTime(new Date());
-		kmContentsOpinion.setCreateUser(operateUserId);
+    /**
+     * 保存知识管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save2(ActionMapping mapping, ActionForm form,
+                               HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
+        KmContentsOpinionForm kmContentsOpinionForm = (KmContentsOpinionForm) form;
+        boolean isNew = (null == kmContentsOpinionForm.getId() || "".equals(kmContentsOpinionForm.getId()));
+        KmContentsOpinion kmContentsOpinion = (KmContentsOpinion) convert(kmContentsOpinionForm);
+        if (isNew) {
+            kmContentsOpinionMgr.saveKmContentsOpinion(kmContentsOpinion);
+        } else {
+            kmContentsOpinionMgr.saveKmContentsOpinion(kmContentsOpinion);
+        }
+        return search(mapping, kmContentsOpinionForm, request, response);
+    }
 
-		// 保存：评论信息
-		KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
-		kmContentsOpinionMgr.saveKmContentsOpinion(kmContentsOpinion);
-		
-		//更新知识对应的等级
-		int grade = StaticMethod.null2int(kmContentsOpinion.getOpinionGrade());
-		if(grade >0){
-			KmContentsMgr kmContentsMgr = (KmContentsMgr) getBean("kmContentsMgr");
-			kmContentsMgr.updateKmContentsGrade(kmContentsOpinion.getTableId(), kmContentsOpinion.getContentId(), grade);
-		}
+    /**
+     * 评论知识内容
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // 读取：操作人信息
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request.getSession().getAttribute("sessionform");
+        String operateDeptId = sessionform.getDeptid();
+        String operateUserId = sessionform.getUserid();
 
-		// 记录:操作记录表-评论操作
-		KmOperateLogMgr kmOperateLogMgr = (KmOperateLogMgr) getBean("kmOperateLogMgr");
-		kmOperateLogMgr.saveKmOperateLog(kmContentsOpinion.getThemeId(), 
-				kmContentsOpinion.getTableId(), 
-				kmContentsOpinion.getContentId(),
-				KmOperateDefine.KM_OPERATE_NAME_CONTENTS_OPINION,
-				operateUserId, operateDeptId, operateUserId);
-		// 记录：日操作记录表-评论操作
-		KmOperateDateLogMgr kmOperateDateLogMgr = (KmOperateDateLogMgr) getBean("kmOperateDateLogMgr");
-		kmOperateDateLogMgr.saveKmOperateDateLog(new Date(),
-				KmOperateDefine.KM_OPERATE_NAME_CONTENTS_OPINION,
-				operateUserId, operateDeptId);
+        KmContentsOpinionForm kmContentsOpinionForm = (KmContentsOpinionForm) form;
+        KmContentsOpinion kmContentsOpinion = (KmContentsOpinion) convert(kmContentsOpinionForm);
+        kmContentsOpinion.setCreateDept(operateDeptId);
+        kmContentsOpinion.setCreateTime(new Date());
+        kmContentsOpinion.setCreateUser(operateUserId);
 
-		// 判断用户是否提出修改意见
-		if(kmContentsOpinion.getIsEdit() != null && kmContentsOpinion.getIsEdit().equals("1")){
-			// 记录:操作记录表-提出修改见议
-			kmOperateLogMgr.saveKmOperateLog(kmContentsOpinion.getThemeId(), 
-					kmContentsOpinion.getTableId(), 
-					kmContentsOpinion.getContentId(),
-					KmOperateDefine.KM_OPERATE_NAME_CONTENTS_ADVICE,
-					operateUserId, operateDeptId, operateUserId);
-			// 记录：日操作记录表-提出修改见议
-			kmOperateDateLogMgr.saveKmOperateDateLog(new Date(),
-					KmOperateDefine.KM_OPERATE_NAME_CONTENTS_ADVICE,
-					operateUserId, operateDeptId);			
-		}
+        // 保存：评论信息
+        KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
+        kmContentsOpinionMgr.saveKmContentsOpinion(kmContentsOpinion);
 
-		return mapping.findForward("success");
-	}
+        //更新知识对应的等级
+        int grade = StaticMethod.null2int(kmContentsOpinion.getOpinionGrade());
+        if (grade > 0) {
+            KmContentsMgr kmContentsMgr = (KmContentsMgr) getBean("kmContentsMgr");
+            kmContentsMgr.updateKmContentsGrade(kmContentsOpinion.getTableId(), kmContentsOpinion.getContentId(), grade);
+        }
 
-	/**
-	 * 删除知识管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		kmContentsOpinionMgr.removeKmContentsOpinion(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示知识管理列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmContentsConstants.KMCONTENTSOPINION_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
-		Map map = (Map) kmContentsOpinionMgr.getKmContentsOpinions(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(KmContentsConstants.KMCONTENTSOPINION_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示知识管理列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		try {
-			// --------------用于分页，得到当前页号-------------
-			final Integer pageIndex = new Integer(request
-					.getParameter("pageIndex"));
-			final Integer pageSize = new Integer(request
-					.getParameter("pageSize"));
-			KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
-			Map map = (Map) kmContentsOpinionMgr.getKmContentsOpinions(pageIndex, pageSize, "");
-			List list = (List) map.get("result");
-			KmContentsOpinion kmContentsOpinion = new KmContentsOpinion();
-			
-			//创建ATOM源
-			Factory factory = Abdera.getNewFactory();
-			Feed feed = factory.newFeed();
-			
-			// 分页
+        // 记录:操作记录表-评论操作
+        KmOperateLogMgr kmOperateLogMgr = (KmOperateLogMgr) getBean("kmOperateLogMgr");
+        kmOperateLogMgr.saveKmOperateLog(kmContentsOpinion.getThemeId(),
+                kmContentsOpinion.getTableId(),
+                kmContentsOpinion.getContentId(),
+                KmOperateDefine.KM_OPERATE_NAME_CONTENTS_OPINION,
+                operateUserId, operateDeptId, operateUserId);
+        // 记录：日操作记录表-评论操作
+        KmOperateDateLogMgr kmOperateDateLogMgr = (KmOperateDateLogMgr) getBean("kmOperateDateLogMgr");
+        kmOperateDateLogMgr.saveKmOperateDateLog(new Date(),
+                KmOperateDefine.KM_OPERATE_NAME_CONTENTS_OPINION,
+                operateUserId, operateDeptId);
+
+        // 判断用户是否提出修改意见
+        if (kmContentsOpinion.getIsEdit() != null && kmContentsOpinion.getIsEdit().equals("1")) {
+            // 记录:操作记录表-提出修改见议
+            kmOperateLogMgr.saveKmOperateLog(kmContentsOpinion.getThemeId(),
+                    kmContentsOpinion.getTableId(),
+                    kmContentsOpinion.getContentId(),
+                    KmOperateDefine.KM_OPERATE_NAME_CONTENTS_ADVICE,
+                    operateUserId, operateDeptId, operateUserId);
+            // 记录：日操作记录表-提出修改见议
+            kmOperateDateLogMgr.saveKmOperateDateLog(new Date(),
+                    KmOperateDefine.KM_OPERATE_NAME_CONTENTS_ADVICE,
+                    operateUserId, operateDeptId);
+        }
+
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 删除知识管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        kmContentsOpinionMgr.removeKmContentsOpinion(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示知识管理列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmContentsConstants.KMCONTENTSOPINION_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
+        Map map = (Map) kmContentsOpinionMgr.getKmContentsOpinions(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(KmContentsConstants.KMCONTENTSOPINION_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示知识管理列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        try {
+            // --------------用于分页，得到当前页号-------------
+            final Integer pageIndex = new Integer(request
+                    .getParameter("pageIndex"));
+            final Integer pageSize = new Integer(request
+                    .getParameter("pageSize"));
+            KmContentsOpinionMgr kmContentsOpinionMgr = (KmContentsOpinionMgr) getBean("kmContentsOpinionMgr");
+            Map map = (Map) kmContentsOpinionMgr.getKmContentsOpinions(pageIndex, pageSize, "");
+            List list = (List) map.get("result");
+            KmContentsOpinion kmContentsOpinion = new KmContentsOpinion();
+
+            //创建ATOM源
+            Factory factory = Abdera.getNewFactory();
+            Feed feed = factory.newFeed();
+
+            // 分页
 //			for (int i = 0; i < list.size(); i++) {
 //				kmContentsOpinion = (KmContentsOpinion) list.get(i);
 //				
@@ -298,15 +298,15 @@ public final class KmContentsOpinionAction extends BaseAction {
 //				Person person = entry.addAuthor(userId);
 //				person.setName(userName);
 //			}
-			
-			// 每页显示条数
-			feed.setText(map.get("total").toString());
-		    OutputStream os = response.getOutputStream();
-		    PrintStream ps = new PrintStream(os);
-		    feed.getDocument().writeTo(ps);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+
+            // 每页显示条数
+            feed.setText(map.get("total").toString());
+            OutputStream os = response.getOutputStream();
+            PrintStream ps = new PrintStream(os);
+            feed.getDocument().writeTo(ps);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

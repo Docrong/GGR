@@ -8,17 +8,17 @@ package com.boco.eoms.commons.system.priv.exception;
 
 /**
  * @author panlong
- * 
+ * <p>
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
 public class TawSystemPrivOperationException extends PrivBaseException {
 
-	public TawSystemPrivOperationException() {
-		this("TawSystemPrivOperationException!");
-	}
+    public TawSystemPrivOperationException() {
+        this("TawSystemPrivOperationException!");
+    }
 
-	public TawSystemPrivOperationException(String errromessage) {
-		super(errromessage);
-	}
+    public TawSystemPrivOperationException(String errromessage) {
+        super(errromessage);
+    }
 }

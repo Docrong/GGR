@@ -21,57 +21,57 @@ import java.util.Map;
  */
 public class LocaleFilter extends OncePerRequestFilter {
 
-	public void doFilterInternal(HttpServletRequest request,
-			HttpServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+    public void doFilterInternal(HttpServletRequest request,
+                                 HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
 
-		
-		String locale = request.getParameter("locale");
-		Locale preferredLocale = null;
 
-		if (locale != null) {
-			preferredLocale = new Locale(locale);
-		}
+        String locale = request.getParameter("locale");
+        Locale preferredLocale = null;
 
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			// ------------wh
-			TawSystemSessionForm sessionform = (TawSystemSessionForm) request.getSession().getAttribute("sessionform");
-			if(sessionform!=null){
-				String url = request.getRequestURI();
-				System.out.println("请求URL："+url);
-				String urls = request.getQueryString();
-				System.out.println("请求URL参数:"+urls);
-				System.out.println("用户："+sessionform.getUserid());
-				
-			}
-			//------------wh
-			if (preferredLocale == null) {
-				preferredLocale = (Locale) session
-						.getAttribute(Constants.PREFERRED_LOCALE_KEY);
-			} else {
-				session.setAttribute(Constants.PREFERRED_LOCALE_KEY,
-						preferredLocale);
-				Config.set(session, Config.FMT_LOCALE, preferredLocale);
-			}
+        if (locale != null) {
+            preferredLocale = new Locale(locale);
+        }
 
-			if (preferredLocale != null
-					&& !(request instanceof LocaleRequestWrapper)) {
-				request = new LocaleRequestWrapper(request, preferredLocale);
-				LocaleContextHolder.setLocale(preferredLocale);
-			}
-		}
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            // ------------wh
+            TawSystemSessionForm sessionform = (TawSystemSessionForm) request.getSession().getAttribute("sessionform");
+            if (sessionform != null) {
+                String url = request.getRequestURI();
+                System.out.println("请求URL：" + url);
+                String urls = request.getQueryString();
+                System.out.println("请求URL参数:" + urls);
+                System.out.println("用户：" + sessionform.getUserid());
 
-		String theme = request.getParameter("theme");
-		if (theme != null && request.isUserInRole(Constants.ADMIN_ROLE)) {
-			Map config = (Map) getServletContext().getAttribute(
-					Constants.CONFIG);
-			config.put("theme", theme);
-		}
+            }
+            //------------wh
+            if (preferredLocale == null) {
+                preferredLocale = (Locale) session
+                        .getAttribute(Constants.PREFERRED_LOCALE_KEY);
+            } else {
+                session.setAttribute(Constants.PREFERRED_LOCALE_KEY,
+                        preferredLocale);
+                Config.set(session, Config.FMT_LOCALE, preferredLocale);
+            }
 
-		chain.doFilter(request, response);
+            if (preferredLocale != null
+                    && !(request instanceof LocaleRequestWrapper)) {
+                request = new LocaleRequestWrapper(request, preferredLocale);
+                LocaleContextHolder.setLocale(preferredLocale);
+            }
+        }
 
-		// Reset thread-bound LocaleContext.
-		LocaleContextHolder.setLocaleContext(null);
-	}
+        String theme = request.getParameter("theme");
+        if (theme != null && request.isUserInRole(Constants.ADMIN_ROLE)) {
+            Map config = (Map) getServletContext().getAttribute(
+                    Constants.CONFIG);
+            config.put("theme", theme);
+        }
+
+        chain.doFilter(request, response);
+
+        // Reset thread-bound LocaleContext.
+        LocaleContextHolder.setLocaleContext(null);
+    }
 }

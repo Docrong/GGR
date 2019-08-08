@@ -19,19 +19,18 @@ import com.boco.eoms.commons.system.dict.service.ID2NameService;
  * <p>
  * Date:2007-10-19 11:11:13
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class ID2NameForDBTag extends TagSupport {
-	
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = -6089139100246144693L;
 
-	/**
+    /**
+     *
+     */
+    private static final long serialVersionUID = -6089139100246144693L;
+
+    /**
      * spring dao中的bean id
      */
     private String beanId;
@@ -55,12 +54,14 @@ public class ID2NameForDBTag extends TagSupport {
     public String getBeanId() {
         return beanId;
     }
+
     /**
      * @param beanId the beanId to set
      */
     public void setBeanId(String beanId) {
         this.beanId = beanId;
     }
+
     public int doEndTag() throws JspException {
         JspWriter out = pageContext.getOut();
         //取id2name的service

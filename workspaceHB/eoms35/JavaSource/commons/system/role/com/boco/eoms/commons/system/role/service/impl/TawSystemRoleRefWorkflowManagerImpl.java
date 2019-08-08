@@ -14,6 +14,7 @@ public class TawSystemRoleRefWorkflowManagerImpl extends BaseManager implements 
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSystemRoleRefWorkflowDao(TawSystemRoleRefWorkflowDao dao) {
@@ -47,27 +48,31 @@ public class TawSystemRoleRefWorkflowManagerImpl extends BaseManager implements 
     public void removeTawSystemRoleRefWorkflow(final String id) {
         dao.removeTawSystemRoleRefWorkflow(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSystemRoleRefWorkflows(final Integer curPage, final Integer pageSize) {
-        return dao.getTawSystemRoleRefWorkflows(curPage, pageSize,null);
+        return dao.getTawSystemRoleRefWorkflows(curPage, pageSize, null);
     }
+
     public Map getTawSystemRoleRefWorkflows(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawSystemRoleRefWorkflows(curPage, pageSize, whereStr);
     }
+
     /**
      * 根据流程名称获取有新增权限的大类角色
+     *
      * @param flowName 流程名
-     * @param type 0自启动；1外部流程启动
+     * @param type     0自启动；1外部流程启动
      * @return <TawSystemRole>
      */
-    public List getRoleBySheetName(String startSheetName,String sheetName){
-    	return dao.getRoleBySheetName(startSheetName,sheetName);
+    public List getRoleBySheetName(String startSheetName, String sheetName) {
+        return dao.getRoleBySheetName(startSheetName, sheetName);
     }
 
-	public List getTawSystemWorkflows() {
-		// TODO 自动生成方法存根
-		return null;
-	}
+    public List getTawSystemWorkflows() {
+        // TODO 自动生成方法存根
+        return null;
+    }
 }

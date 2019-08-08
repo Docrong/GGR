@@ -18,27 +18,26 @@ import com.boco.eoms.sheet.commonfault.service.ICommonFaultMainManager;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class CommonfaultKnowLedgeBO {
 
-	
-	
-	/**
-	 * 新增知识库
-	 */
-	public static String showNewknowLedage(String sheetKey,String userId) throws Exception{
-		ICommonFaultMainManager mgr=
-			 (ICommonFaultMainManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
-		ITawSystemUserManager userManager = (ITawSystemUserManager)ApplicationContextHolder.getInstance().getBean("itawSystemUserManager");
+
+    /**
+     * 新增知识库
+     */
+    public static String showNewknowLedage(String sheetKey, String userId) throws Exception {
+        ICommonFaultMainManager mgr =
+                (ICommonFaultMainManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
+        ITawSystemUserManager userManager = (ITawSystemUserManager) ApplicationContextHolder.getInstance().getBean("itawSystemUserManager");
 //		ID2NameService service = (ID2NameService) ApplicationContextHolder.getInstance().getBean("ID2NameGetServiceCatch");
-		CommonFaultMain main = (CommonFaultMain)mgr.getSingleMainPO(sheetKey);
-		TawSystemUser user = userManager.getUserByuserid(userId);
-		Map mainMap = new HashMap();
-		if(main!=null){
-			
+        CommonFaultMain main = (CommonFaultMain) mgr.getSingleMainPO(sheetKey);
+        TawSystemUser user = userManager.getUserByuserid(userId);
+        Map mainMap = new HashMap();
+        if (main != null) {
+
 //			mainMap.put("sheetNo", main.getSheetId());
 //			mainMap.put("title", main.getTitle());
 //			mainMap.put("mainFaultResponseLevel", service.id2Name(StaticMethod.nullObject2String(main.getMainFaultResponseLevel()),"ItawSystemDictTypeDao"));
@@ -59,38 +58,40 @@ public class CommonfaultKnowLedgeBO {
 //			mainMap.put("mainNetSortOne", service.id2Name(StaticMethod.nullObject2String(main.getMainNetSortOne()),"ItawSystemDictTypeDao"));
 //			mainMap.put("mainNetSortTwo", service.id2Name(StaticMethod.nullObject2String(main.getMainNetSortTwo()),"ItawSystemDictTypeDao"));
 //			mainMap.put("mainNetSortThree", service.id2Name(StaticMethod.nullObject2String(main.getMainNetSortThree()),"ItawSystemDictTypeDao"));
-			mainMap = SheetBeanUtils.bean2Map(main);
-			
-			mainMap.put("userName", user.getUsername());
-			mainMap.put("deptName", user.getDeptname());
-			mainMap.put("mobile", user.getMobile());
-		}
+            mainMap = SheetBeanUtils.bean2Map(main);
 
-		String xml = KnowledgeMethod.getKnowledgeXml(userId, "CommonFault", sheetKey, mainMap, null);
-		return KnowledgeClient.loadAddKnowledgeService().saveXmlValue(xml);
-	}
-	/**
-	 * 按网络三级类别检索工单，返回知识库查询结果页面。
-	 * @param sheetKey
-	 * @param userId
-	 * @return
-	 * @throws Exception
-	 */
-	public static String searchSheet(String sheetKey,String userId) throws Exception{
-		ICommonFaultMainManager mgr=
-			 (ICommonFaultMainManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
+            mainMap.put("userName", user.getUsername());
+            mainMap.put("deptName", user.getDeptname());
+            mainMap.put("mobile", user.getMobile());
+        }
+
+        String xml = KnowledgeMethod.getKnowledgeXml(userId, "CommonFault", sheetKey, mainMap, null);
+        return KnowledgeClient.loadAddKnowledgeService().saveXmlValue(xml);
+    }
+
+    /**
+     * 按网络三级类别检索工单，返回知识库查询结果页面。
+     *
+     * @param sheetKey
+     * @param userId
+     * @return
+     * @throws Exception
+     */
+    public static String searchSheet(String sheetKey, String userId) throws Exception {
+        ICommonFaultMainManager mgr =
+                (ICommonFaultMainManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
 //		ID2NameService service = (ID2NameService) ApplicationContextHolder.getInstance().getBean("ID2NameGetServiceCatch");
-		
-		CommonFaultMain main = (CommonFaultMain)mgr.getSingleMainPO(sheetKey);
-		Map mainMap = new HashMap();
-		if(main!=null){
+
+        CommonFaultMain main = (CommonFaultMain) mgr.getSingleMainPO(sheetKey);
+        Map mainMap = new HashMap();
+        if (main != null) {
 //			String mainNetSortThree = service.id2Name(StaticMethod.nullObject2String(main.getMainNetSortThree()),"ItawSystemDictTypeDao");
 //			String mainNetSortOne = service.id2Name(StaticMethod.nullObject2String(main.getMainNetSortOne()),"ItawSystemDictTypeDao");
 //			String mainNetSortTwo = service.id2Name(StaticMethod.nullObject2String(main.getMainNetSortTwo()),"ItawSystemDictTypeDao");
-			mainMap.put("mainNetSortThree", main.getMainNetSortThree());
-			mainMap.put("mainNetSortOne", main.getMainNetSortOne());
-			mainMap.put("mainNetSortTwo", main.getMainNetSortTwo());
-		}
+            mainMap.put("mainNetSortThree", main.getMainNetSortThree());
+            mainMap.put("mainNetSortOne", main.getMainNetSortOne());
+            mainMap.put("mainNetSortTwo", main.getMainNetSortTwo());
+        }
 //		List list = mgr.getMainList(mainMap);
 //		
 //		String sheetIds = "";
@@ -102,44 +103,46 @@ public class CommonfaultKnowLedgeBO {
 //		}
 //		if(sheetIds.length()>0)
 //			sheetIds = sheetIds.substring(0,sheetIds.length()-1);
-		
-		String xml = KnowledgeMethod.getKnowledgeXml(userId, "CommonFault", sheetKey, mainMap, null);
-		return KnowledgeClient.loadAddKnowledgeService().searchXmlValue(xml);
-		
-	}
-	/**
-	 * 新增遗留问题库
-	 * @return
-	 */
-	public static String showNewLeaveKnowLedage(String sheetKey,String userId) throws Exception{
-		
-		ICommonFaultMainManager mgr=
-			 (ICommonFaultMainManager)ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
-		ITawSystemUserManager userManager = (ITawSystemUserManager)ApplicationContextHolder.getInstance().getBean("itawSystemUserManager");
-		CommonFaultMain main = (CommonFaultMain)mgr.getSingleMainPO(sheetKey);
-		TawSystemUser user = userManager.getUserByuserid(userId);
-		
-		Map mainMap = new HashMap();
-		if(main!=null){
+
+        String xml = KnowledgeMethod.getKnowledgeXml(userId, "CommonFault", sheetKey, mainMap, null);
+        return KnowledgeClient.loadAddKnowledgeService().searchXmlValue(xml);
+
+    }
+
+    /**
+     * 新增遗留问题库
+     *
+     * @return
+     */
+    public static String showNewLeaveKnowLedage(String sheetKey, String userId) throws Exception {
+
+        ICommonFaultMainManager mgr =
+                (ICommonFaultMainManager) ApplicationContextHolder.getInstance().getBean("iCommonFaultMainManager");
+        ITawSystemUserManager userManager = (ITawSystemUserManager) ApplicationContextHolder.getInstance().getBean("itawSystemUserManager");
+        CommonFaultMain main = (CommonFaultMain) mgr.getSingleMainPO(sheetKey);
+        TawSystemUser user = userManager.getUserByuserid(userId);
+
+        Map mainMap = new HashMap();
+        if (main != null) {
 //			mainMap.put("title", main.getTitle());
 //			mainMap.put("sheetNo", main.getSheetId());
-			
+
 //			
 //			
 //			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //			String time = dateFormat.format(new Date());
 //			mainMap.put("createTime", time);
-			
-			mainMap = SheetBeanUtils.bean2Map(main);
-			
-			mainMap.put("userName", user.getUsername());
-			mainMap.put("deptName", user.getDeptname());
-			mainMap.put("mobile", user.getMobile());
 
-		}
+            mainMap = SheetBeanUtils.bean2Map(main);
 
-		String xml = KnowledgeMethod.getKnowledgeXml(userId, "CommonFaultLeave", sheetKey, mainMap, null);
-		return KnowledgeClient.loadAddKnowledgeService().saveXmlValue(xml);
-	}
+            mainMap.put("userName", user.getUsername());
+            mainMap.put("deptName", user.getDeptname());
+            mainMap.put("mobile", user.getMobile());
+
+        }
+
+        String xml = KnowledgeMethod.getKnowledgeXml(userId, "CommonFaultLeave", sheetKey, mainMap, null);
+        return KnowledgeClient.loadAddKnowledgeService().saveXmlValue(xml);
+    }
 
 }

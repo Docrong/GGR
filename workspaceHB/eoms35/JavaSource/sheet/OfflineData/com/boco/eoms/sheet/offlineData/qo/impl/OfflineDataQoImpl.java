@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.offlineData.qo.IOfflineDataQo;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class OfflineDataQoImpl extends WorkSheetQOImpl implements IOfflineDataQo {
- 
- }
+
+public class OfflineDataQoImpl extends WorkSheetQOImpl implements IOfflineDataQo {
+
+}

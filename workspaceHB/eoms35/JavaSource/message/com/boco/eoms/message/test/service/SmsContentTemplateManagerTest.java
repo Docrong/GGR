@@ -35,7 +35,7 @@ public class SmsContentTemplateManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsContentTemplateDao.expects(once()).method("getSmsContentTemplates")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List smsContentTemplates = smsContentTemplateManager.getSmsContentTemplates(null);
         assertTrue(smsContentTemplates.size() == 1);
@@ -45,7 +45,7 @@ public class SmsContentTemplateManagerTest extends BaseManagerTestCase {
     public void testGetSmsContentTemplate() throws Exception {
         // set expected behavior on dao
         smsContentTemplateDao.expects(once()).method("getSmsContentTemplate")
-            .will(returnValue(new SmsContentTemplate()));
+                .will(returnValue(new SmsContentTemplate()));
         SmsContentTemplate smsContentTemplate = smsContentTemplateManager.getSmsContentTemplate(smsContentTemplateId);
         assertTrue(smsContentTemplate != null);
         smsContentTemplateDao.verify();
@@ -56,7 +56,7 @@ public class SmsContentTemplateManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsContentTemplateDao.expects(once()).method("saveSmsContentTemplate")
-            .with(same(smsContentTemplate)).isVoid();
+                .with(same(smsContentTemplate)).isVoid();
 
         smsContentTemplateManager.saveSmsContentTemplate(smsContentTemplate);
         smsContentTemplateDao.verify();
@@ -70,7 +70,7 @@ public class SmsContentTemplateManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsContentTemplateDao.expects(once()).method("saveSmsContentTemplate")
-            .with(same(smsContentTemplate)).isVoid();
+                .with(same(smsContentTemplate)).isVoid();
         smsContentTemplateManager.saveSmsContentTemplate(smsContentTemplate);
         smsContentTemplateDao.verify();
 

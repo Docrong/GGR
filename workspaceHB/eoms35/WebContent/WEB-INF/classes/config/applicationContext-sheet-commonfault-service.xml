@@ -1,236 +1,259 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
     <bean id="CommonFaultLink"
-		class="com.boco.eoms.sheet.commonfault.model.CommonFaultLink"
-		autowire="byName" />
-	<bean id="CommonFaultMain"
-		class="com.boco.eoms.sheet.commonfault.model.CommonFaultMain"
-		autowire="byName" />
-	
-	<bean id="iCommonFaultTask"
-		class="com.boco.eoms.sheet.commonfault.task.impl.CommonFaultTaskImpl"
-		autowire="byName" />
+          class="com.boco.eoms.sheet.commonfault.model.CommonFaultLink"
+          autowire="byName"/>
+    <bean id="CommonFaultMain"
+          class="com.boco.eoms.sheet.commonfault.model.CommonFaultMain"
+          autowire="byName"/>
 
-	<bean id="CommonFaultTask"
-		class="com.boco.eoms.sheet.commonfault.task.impl.CommonFaultTask"
-		autowire="byName" />
-		
-	<bean id="iCommonFaultTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultTaskManagerImpl">
-				<property name="taskModelObject" ref="CommonFaultTask" />
-				<property name="taskDAO">
-					<ref bean="iCommonFaultTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-			       <value>/config/commonfaultTaskConfig.properties</value>
-		        </property>				
-			</bean>
-		</property>
-	</bean>		
-		
-	<bean id="iCommonFaultFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iCommonFaultLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultLinkManagerImpl">
-				<property name="linkObject" ref="CommonFaultLink"/>
-				<property name="linkDAO">
-				  <ref bean="ICommonFaultLinkDao"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iCommonFaultMainManager" parent="txProxyTemplate">
-	<property name="target">
-	  
-			<bean
-				class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultMainManagerImpl">
-			    <property name="mainObject" ref="CommonFaultMain" />
-				<property name="mainDAO">
-				 <ref bean="ICommonFaultMainDao" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iCommonFaultQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>CommonFaultMainFlowProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/commonfault-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
+    <bean id="iCommonFaultTask"
+          class="com.boco.eoms.sheet.commonfault.task.impl.CommonFaultTaskImpl"
+          autowire="byName"/>
 
-   <bean id="iCommonFaultQo"
-		class="com.boco.eoms.sheet.commonfault.qo.impl.CommonFaultQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="CommonFaultMain" />
-		<property name="poLink" value="CommonFaultLink" />
-		<property name="aliasMain" value="commonFaultMain" />
-		<property name="aliasLink" value="commonFaultLink" />
-		<property name="poTask" value="CommonFaultTask" />
-		<property name="aliasTask" value="commonFaultTask" />
-	</bean>
-   
+    <bean id="CommonFaultTask"
+          class="com.boco.eoms.sheet.commonfault.task.impl.CommonFaultTask"
+          autowire="byName"/>
+
+    <bean id="iCommonFaultTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultTaskManagerImpl">
+                <property name="taskModelObject" ref="CommonFaultTask"/>
+                <property name="taskDAO">
+                    <ref bean="iCommonFaultTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/commonfaultTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="iCommonFaultFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iCommonFaultLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultLinkManagerImpl">
+                <property name="linkObject" ref="CommonFaultLink"/>
+                <property name="linkDAO">
+                    <ref bean="ICommonFaultLinkDao"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iCommonFaultMainManager" parent="txProxyTemplate">
+        <property name="target">
+
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultMainManagerImpl">
+                <property name="mainObject" ref="CommonFaultMain"/>
+                <property name="mainDAO">
+                    <ref bean="ICommonFaultMainDao"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iCommonFaultQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>CommonFaultMainFlowProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/commonfault-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="iCommonFaultQo"
+          class="com.boco.eoms.sheet.commonfault.qo.impl.CommonFaultQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="CommonFaultMain"/>
+        <property name="poLink" value="CommonFaultLink"/>
+        <property name="aliasMain" value="commonFaultMain"/>
+        <property name="aliasLink" value="commonFaultLink"/>
+        <property name="poTask" value="CommonFaultTask"/>
+        <property name="aliasTask" value="commonFaultTask"/>
+    </bean>
 
 
-	<bean id="CommonFault" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.webapp.action.CommonFaultSheetMethod">
-				<property name="businessFlowService" >
-					<ref bean="iCommonFaultFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iCommonFaultLinkManager" />
-				<property name="mainService"
-					ref="iCommonFaultMainManager" />
-				<property name="sheetTask"
-					ref="CommonFaultTask" />
-				<property name="taskService"
-					ref="iCommonFaultTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/commonfault-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	
-	<bean id="p2pService"
-		class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
-		<property name="values">
-			<list>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>mainNetSortOne</value></property>
-					<property name="toName"><value>mainNetSortOne</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>mainNetSortTwo</value></property>
-					<property name="toName"><value>mainNetSortTwo</value></property>
-					<property name="type"><value>java.lang.String</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>mainNetSortThree</value></property>
-					<property name="toName"><value>mainNetSortThree</value></property>
-					<property name="type"><value>java.lang.String</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>mainEquipmentFactory</value></property>
-					<property name="toName"><value>mainEquipmentFactory</value></property>
-					<property name="type"><value>java.lang.String</value></property>					
-				</bean>
-				
-			</list>
-		</property>
-	</bean>	
-	
-	<bean id="iCommonFaultKnowLedgeService" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.knowledage.CommonfaultKnowLedgeServiceImpl">
-			</bean>
-		</property>
-	</bean>
-	<bean id="iCommonFaultInterfaceManagerImpl" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultInterfaceManagerImpl">
-			</bean>
-		</property>
-	</bean>
-	<bean id="CommonfaultMain2" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.webapp.action.CommonfaultMainMethod">
-				<property name="businessFlowService" >
-					<ref bean="iCommonFaultFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iCommonFaultLinkManager" />
-				<property name="mainService"
-					ref="iCommonFaultMainManager" />
-				<property name="sheetTask"
-					ref="CommonFaultTask" />
-				<property name="taskService"
-					ref="iCommonFaultTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/commonfault-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
-	<bean id="iCommonFaultAutoManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultAutoManagerImpl">
-				<property name="autoDAO">
-					<ref bean="iCommonFaultAutoDAO" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iCommonFaultHBManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultHBManagerImpl">
-				<property name="commonFaultHBDaO">
-					<ref bean="iCommonFaultHBDAO" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-		<!--Fault Pack-->
-	<bean id="ICommonFaultPackMainDAO"
-		class="com.boco.eoms.sheet.commonfaultpack.dao.hibernate.CommonFaultPackMainDAOHibernate" autowire="byName">
-      </bean> 
-	<bean id="CommonFaultPackMain"
-		class="com.boco.eoms.sheet.commonfaultpack.model.CommonFaultPackMain"
-		autowire="byName" /> 
-	<bean id="iCommonFaultPackMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfaultpack.service.impl.CommonFaultPackMainManagerImpl">
-			    <property name="mainObject" ref="CommonFaultPackMain" />
-				<property name="mainDAO">
-				 <ref bean="ICommonFaultPackMainDAO" />
-				 </property> 
-			</bean>
-		</property>
-	</bean>   
-	<bean id="CommonFaultPack" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.commonfaultpack.webapp.action.CommonFaultPackMethod">  
-				<property name="mainService"
-					ref="iCommonFaultPackMainManager" /> 
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
-	
+    <bean id="CommonFault" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.webapp.action.CommonFaultSheetMethod">
+                <property name="businessFlowService">
+                    <ref bean="iCommonFaultFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iCommonFaultLinkManager"/>
+                <property name="mainService"
+                          ref="iCommonFaultMainManager"/>
+                <property name="sheetTask"
+                          ref="CommonFaultTask"/>
+                <property name="taskService"
+                          ref="iCommonFaultTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/commonfault-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="p2pService"
+          class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
+        <property name="values">
+            <list>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>mainNetSortOne</value>
+                    </property>
+                    <property name="toName">
+                        <value>mainNetSortOne</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>mainNetSortTwo</value>
+                    </property>
+                    <property name="toName">
+                        <value>mainNetSortTwo</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>mainNetSortThree</value>
+                    </property>
+                    <property name="toName">
+                        <value>mainNetSortThree</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>mainEquipmentFactory</value>
+                    </property>
+                    <property name="toName">
+                        <value>mainEquipmentFactory</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+
+            </list>
+        </property>
+    </bean>
+
+    <bean id="iCommonFaultKnowLedgeService" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.knowledage.CommonfaultKnowLedgeServiceImpl">
+            </bean>
+        </property>
+    </bean>
+    <bean id="iCommonFaultInterfaceManagerImpl" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultInterfaceManagerImpl">
+            </bean>
+        </property>
+    </bean>
+    <bean id="CommonfaultMain2" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.webapp.action.CommonfaultMainMethod">
+                <property name="businessFlowService">
+                    <ref bean="iCommonFaultFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iCommonFaultLinkManager"/>
+                <property name="mainService"
+                          ref="iCommonFaultMainManager"/>
+                <property name="sheetTask"
+                          ref="CommonFaultTask"/>
+                <property name="taskService"
+                          ref="iCommonFaultTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/commonfault-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iCommonFaultAutoManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultAutoManagerImpl">
+                <property name="autoDAO">
+                    <ref bean="iCommonFaultAutoDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iCommonFaultHBManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfault.service.impl.CommonFaultHBManagerImpl">
+                <property name="commonFaultHBDaO">
+                    <ref bean="iCommonFaultHBDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--Fault Pack-->
+    <bean id="ICommonFaultPackMainDAO"
+          class="com.boco.eoms.sheet.commonfaultpack.dao.hibernate.CommonFaultPackMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="CommonFaultPackMain"
+          class="com.boco.eoms.sheet.commonfaultpack.model.CommonFaultPackMain"
+          autowire="byName"/>
+    <bean id="iCommonFaultPackMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfaultpack.service.impl.CommonFaultPackMainManagerImpl">
+                <property name="mainObject" ref="CommonFaultPackMain"/>
+                <property name="mainDAO">
+                    <ref bean="ICommonFaultPackMainDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="CommonFaultPack" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.commonfaultpack.webapp.action.CommonFaultPackMethod">
+                <property name="mainService"
+                          ref="iCommonFaultPackMainManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
 </beans>
 
 

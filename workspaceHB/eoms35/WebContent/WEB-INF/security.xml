@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
@@ -16,9 +16,10 @@
             <!-- It's off by default b/c Canoo WebTest doesn't support SSL out-of-the-box -->
         </property>
     </bean>
-    
-    <bean id="httpSessionContextIntegrationFilter" class="org.acegisecurity.context.HttpSessionContextIntegrationFilter"/>
-    
+
+    <bean id="httpSessionContextIntegrationFilter"
+          class="org.acegisecurity.context.HttpSessionContextIntegrationFilter"/>
+
     <bean id="logoutFilter" class="org.acegisecurity.ui.logout.LogoutFilter">
         <constructor-arg value="/index.jsp"/> <!-- URL redirected to after logout -->
         <constructor-arg>
@@ -29,7 +30,7 @@
         </constructor-arg>
         <property name="filterProcessesUrl" value="/logout.jsp"/>
     </bean>
-   
+
     <bean id="authenticationProcessingFilter" class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationFailureUrl" value="/login.jsp?error=true"/>
@@ -37,19 +38,20 @@
         <property name="filterProcessesUrl" value="/j_security_check"/>
         <property name="rememberMeServices" ref="rememberMeServices"/>
     </bean>
-    
-    <bean id="securityContextHolderAwareRequestFilter" class="org.acegisecurity.wrapper.SecurityContextHolderAwareRequestFilter"/>
-    
+
+    <bean id="securityContextHolderAwareRequestFilter"
+          class="org.acegisecurity.wrapper.SecurityContextHolderAwareRequestFilter"/>
+
     <bean id="rememberMeProcessingFilter" class="org.acegisecurity.ui.rememberme.RememberMeProcessingFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="rememberMeServices" ref="rememberMeServices"/>
     </bean>
-    
+
     <bean id="anonymousProcessingFilter" class="org.acegisecurity.providers.anonymous.AnonymousProcessingFilter">
         <property name="key" value="anonymous"/>
         <property name="userAttribute" value="anonymous,ROLE_ANONYMOUS"/>
     </bean>
-    
+
     <bean id="exceptionTranslationFilter" class="org.acegisecurity.ui.ExceptionTranslationFilter">
         <property name="authenticationEntryPoint">
             <bean class="org.acegisecurity.ui.webapp.AuthenticationProcessingFilterEntryPoint">
@@ -58,7 +60,7 @@
             </bean>
         </property>
     </bean>
-    
+
     <bean id="filterInvocationInterceptor" class="org.acegisecurity.intercept.web.FilterSecurityInterceptor">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="accessDecisionManager" ref="accessDecisionManager"/>
@@ -75,7 +77,7 @@
             </value>
         </property>
     </bean>
-    
+
     <bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
         <property name="allowIfAllAbstainDecisions" value="false"/>
         <property name="decisionVoters">
@@ -86,13 +88,13 @@
             </list>
         </property>
     </bean>
-    
-    <bean id="rememberMeServices" class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices"> 
+
+    <bean id="rememberMeServices" class="org.acegisecurity.ui.rememberme.TokenBasedRememberMeServices">
         <property name="userDetailsService" ref="userDao"/>
         <property name="key" value="appfuseRocks"/>
         <property name="parameter" value="rememberMe"/>
-    </bean> 
-  
+    </bean>
+
     <bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
         <property name="providers">
             <list>
@@ -109,38 +111,41 @@
 		<property name="passwordEncoder" ref="passwordEncoder"/>
     </bean>
      -->
-       <bean id="daoAuthenticationProvider" class="com.boco.eoms.commons.system.user.sox.support.acegi.SOXDaoAuthenticationProvider">
-         <property name="userDetailsService" ref="userDao"/>
-         <property name="userCache" ref="userCache"/>
-		<property name="passwordEncoder" ref="passwordEncoder"/>
-		<property name="tawSystemUserManager" ref="itawSystemUserManager"/>
-		
-    </bean>
-    
-    <bean id="jdbcDaoImpl"
-		class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
-		<property name="dataSource">
-			<ref bean="dataSource" />
-		</property>
-		<property name="usersByUsernameQuery">
-			<value>
-				SELECT USERID, PASSWORD FROM TAW_SYSTEM_USER WHERE
-				USERID=?
-			</value>
-		</property>
-		<property name="authoritiesByUsernameQuery">
-			<value>
-				SELECT USERID, PASSWORD FROM TAW_SYSTEM_USER WHERE
-				USERID=?
-			</value>
-		</property>
-	</bean>
+    <bean id="daoAuthenticationProvider"
+          class="com.boco.eoms.commons.system.user.sox.support.acegi.SOXDaoAuthenticationProvider">
+        <property name="userDetailsService" ref="userDao"/>
+        <property name="userCache" ref="userCache"/>
+        <property name="passwordEncoder" ref="passwordEncoder"/>
+        <property name="tawSystemUserManager" ref="itawSystemUserManager"/>
 
-    <bean id="anonymousAuthenticationProvider" class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+    </bean>
+
+    <bean id="jdbcDaoImpl"
+          class="org.acegisecurity.userdetails.jdbc.JdbcDaoImpl">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
+        <property name="usersByUsernameQuery">
+            <value>
+                SELECT USERID, PASSWORD FROM TAW_SYSTEM_USER WHERE
+                USERID=?
+            </value>
+        </property>
+        <property name="authoritiesByUsernameQuery">
+            <value>
+                SELECT USERID, PASSWORD FROM TAW_SYSTEM_USER WHERE
+                USERID=?
+            </value>
+        </property>
+    </bean>
+
+    <bean id="anonymousAuthenticationProvider"
+          class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
         <property name="key" value="anonymous"/>
     </bean>
 
-    <bean id="rememberMeAuthenticationProvider" class="org.acegisecurity.providers.rememberme.RememberMeAuthenticationProvider">
+    <bean id="rememberMeAuthenticationProvider"
+          class="org.acegisecurity.providers.rememberme.RememberMeAuthenticationProvider">
         <property name="key" value="appfuseRocks"/>
     </bean>
 
@@ -178,13 +183,13 @@
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="accessDecisionManager" ref="accessDecisionManager"/>
         <property name="objectDefinitionSource">
-             <value>
-                 com.boco.eoms.base.service.UserManager.getUsers=admin
-                 com.boco.eoms.base.service.UserManager.removeUser=admin
-             </value>
+            <value>
+                com.boco.eoms.base.service.UserManager.getUsers=admin
+                com.boco.eoms.base.service.UserManager.removeUser=admin
+            </value>
         </property>
     </bean>
-    
+
     <!-- SSL Switching: to use this, configure it in the filterChainProxy bean -->
     <bean id="channelProcessingFilter" class="org.acegisecurity.securechannel.ChannelProcessingFilter">
         <property name="channelDecisionManager" ref="channelDecisionManager"/>

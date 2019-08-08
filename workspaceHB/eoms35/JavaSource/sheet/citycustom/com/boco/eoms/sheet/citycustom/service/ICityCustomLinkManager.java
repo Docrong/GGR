@@ -14,16 +14,15 @@ import com.boco.eoms.sheet.base.service.ILinkService;
  * <p>
  * Fri Sep 28 14:06:48 CST 2012
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICityCustomLinkManager extends ILinkService {
- 		 /**
-	     * 根据条件查出所有的link对象
-	     */
-		 public List getLinksBycondition(String condition) throws Exception;
- 
- }
+
+public interface ICityCustomLinkManager extends ILinkService {
+    /**
+     * 根据条件查出所有的link对象
+     */
+    public List getLinksBycondition(String condition) throws Exception;
+
+}

@@ -17,131 +17,131 @@ import com.boco.eoms.commons.demo.webapp.form.AppfuseSampleForm;
 
 /**
  * Action class to handle CRUD on a AppfuseSample object
- * 
+ *
  * @struts.action name="appfuseSampleForm" path="/appfuseSamples"
- *                scope="request" validate="false" parameter="method"
- *                input="mainMenu"
+ * scope="request" validate="false" parameter="method"
+ * input="mainMenu"
  * @struts.action name="appfuseSampleForm" path="/editAppfuseSample"
- *                scope="request" validate="false" parameter="method"
- *                input="list"
+ * scope="request" validate="false" parameter="method"
+ * input="list"
  * @struts.action name="appfuseSampleForm" path="/saveAppfuseSample"
- *                scope="request" validate="true" parameter="method"
- *                input="edit"
+ * scope="request" validate="true" parameter="method"
+ * input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit"
- *                        path="/WEB-INF/pages/appfuseSample/appfuseSampleForm.jsp"
+ * path="/WEB-INF/pages/appfuseSample/appfuseSampleForm.jsp"
  * @struts.action-forward name="list"
- *                        path="/WEB-INF/pages/appfuseSample/appfuseSampleList.jsp"
+ * path="/WEB-INF/pages/appfuseSample/appfuseSampleList.jsp"
  * @struts.action-forward name="search" path="/appfuseSamples.html"
- *                        redirect="true"
+ * redirect="true"
  */
 public final class AppfuseSampleAction extends BaseAction {
-	public ActionForward cancel(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("search");
-	}
+    public ActionForward cancel(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("search");
+    }
 
-	public ActionForward delete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'delete' method");
-		}
+    public ActionForward delete(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'delete' method");
+        }
 
-		ActionMessages messages = new ActionMessages();
-		AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
+        ActionMessages messages = new ActionMessages();
+        AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
 
-		// Exceptions are caught by ActionExceptionHandler
-		AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
-		mgr.removeAppfuseSample(appfuseSampleForm.getId());
+        // Exceptions are caught by ActionExceptionHandler
+        AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
+        mgr.removeAppfuseSample(appfuseSampleForm.getId());
 
-		messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-				"appfuseSample.deleted"));
+        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                "appfuseSample.deleted"));
 
-		// save messages in session, so they'll survive the redirect
-		saveMessages(request.getSession(), messages);
+        // save messages in session, so they'll survive the redirect
+        saveMessages(request.getSession(), messages);
 
-		return mapping.findForward("search");
-	}
+        return mapping.findForward("search");
+    }
 
-	public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'edit' method");
-		}
+    public ActionForward edit(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'edit' method");
+        }
 
-		AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
+        AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
 
-		// if an id is passed in, look up the user - otherwise
-		// don't do anything - user is doing an add
-		if (appfuseSampleForm.getId() != null) {
-			AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
-			AppfuseSample appfuseSample = mgr
-					.getAppfuseSample(appfuseSampleForm.getId());
-			appfuseSampleForm = (AppfuseSampleForm) convert(appfuseSample);
-			updateFormBean(mapping, request, appfuseSampleForm);
-		}
+        // if an id is passed in, look up the user - otherwise
+        // don't do anything - user is doing an add
+        if (appfuseSampleForm.getId() != null) {
+            AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
+            AppfuseSample appfuseSample = mgr
+                    .getAppfuseSample(appfuseSampleForm.getId());
+            appfuseSampleForm = (AppfuseSampleForm) convert(appfuseSample);
+            updateFormBean(mapping, request, appfuseSampleForm);
+        }
 
-		return mapping.findForward("edit");
-	}
+        return mapping.findForward("edit");
+    }
 
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'save' method");
-		}
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'save' method");
+        }
 
-		// Extract attributes and parameters we will need
-		ActionMessages messages = new ActionMessages();
-		AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
-		boolean isNew = ("".equals(appfuseSampleForm.getId()) || appfuseSampleForm
-				.getId() == null);
+        // Extract attributes and parameters we will need
+        ActionMessages messages = new ActionMessages();
+        AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
+        boolean isNew = ("".equals(appfuseSampleForm.getId()) || appfuseSampleForm
+                .getId() == null);
 
-		AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
-		AppfuseSample appfuseSample = (AppfuseSample) convert(appfuseSampleForm);
-		mgr.saveAppfuseSample(appfuseSample);
+        AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
+        AppfuseSample appfuseSample = (AppfuseSample) convert(appfuseSampleForm);
+        mgr.saveAppfuseSample(appfuseSample);
 
-		// add success messages
-		if (isNew) {
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"appfuseSample.added"));
+        // add success messages
+        if (isNew) {
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "appfuseSample.added"));
 
-			// save messages in session to survive a redirect
-			saveMessages(request.getSession(), messages);
+            // save messages in session to survive a redirect
+            saveMessages(request.getSession(), messages);
 
-			return mapping.findForward("search");
-		} else {
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"appfuseSample.updated"));
-			saveMessages(request, messages);
+            return mapping.findForward("search");
+        } else {
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "appfuseSample.updated"));
+            saveMessages(request, messages);
 
-			return mapping.findForward("search");
-		}
-	}
+            return mapping.findForward("search");
+        }
+    }
 
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'search' method");
-		}
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'search' method");
+        }
 
-		AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
-		AppfuseSample appfuseSample = (AppfuseSample) convert(appfuseSampleForm);
+        AppfuseSampleForm appfuseSampleForm = (AppfuseSampleForm) form;
+        AppfuseSample appfuseSample = (AppfuseSample) convert(appfuseSampleForm);
 
-		AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
+        AppfuseSampleManager mgr = (AppfuseSampleManager) getBean("appfuseSampleManager");
 //		request.setAttribute(Constants.APPFUSESAMPLE_LIST, mgr
 //				.getAppfuseSamples(appfuseSample));
 
-		return mapping.findForward("list");
-	}
+        return mapping.findForward("list");
+    }
 
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
 }

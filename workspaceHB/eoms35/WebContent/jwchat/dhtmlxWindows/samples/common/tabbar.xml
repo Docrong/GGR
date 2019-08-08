@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <tabbar>
-	<row>
-		<tab id="a1" width='60px' selected="1">Rage
-		    <content>
-		    	<![CDATA[
+    <row>
+        <tab id="a1" width='60px' selected="1">Rage
+            <content>
+                <![CDATA[
 			<div style="font-family: Tahoma; font-size: 11px; width: 100%; height: 100%; overflow: auto;">
 				Rage began in 1984 under the previous band name, Avenger. After releasing their debut album, Prayers of Steel and their Depraved to Black EP, in 1985, Avenger changed their name to Rage due to the fact that there was another band in England that also carried the moniker of Avenger. Originally the new name was to be Furious Rage but it was eventually shortened to Rage. The first album released under the new name was Reign of Fear in 1986.
 				<br><br>
@@ -17,11 +17,11 @@
 				<br><br>
 			</div>
 			]]>
-		    </content>
-		</tab>
-		<tab id="a2" width='100px'>The X-Files
-		    <content>
-		    	<![CDATA[
+            </content>
+        </tab>
+        <tab id="a2" width='100px'>The X-Files
+            <content>
+                <![CDATA[
 			<div style="font-family: Tahoma; font-size: 11px; width: 100%; height: 100%; overflow: auto;">
 				The X-Files is an American Peabody, Golden Globe and Emmy Award-winning science fiction television series created by Chris Carter, which first aired on 10 September 1993, and ended on 19 May 2002. The show was one of the American FOX network's first major hits, and its main characters and slogans (e.g., "The Truth Is Out There," "Trust No One," "I Want to Believe") became pop culture touchstones. The X-Files is seen as a defining series of the 1990s, coinciding with the era's widespread mistrust of governments, interest in conspiracy theories and spirituality, and the belief in the existence of extraterrestrial life.[1][2]
 				<br><br>
@@ -31,7 +31,7 @@
 				<br><br>
 			</div>
 			]]>
-		    </content>
-		</tab>
-	</row>
+            </content>
+        </tab>
+    </row>
 </tabbar>

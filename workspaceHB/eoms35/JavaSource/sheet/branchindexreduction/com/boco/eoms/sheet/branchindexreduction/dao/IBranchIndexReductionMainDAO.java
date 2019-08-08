@@ -12,15 +12,14 @@ import com.boco.eoms.sheet.base.dao.IMainDAO;
  * <p>
  * Fri Jul 28 15:47:20 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public interface IBranchIndexReductionMainDAO extends IMainDAO  {
- 
- }
+
+public interface IBranchIndexReductionMainDAO extends IMainDAO {
+
+}
  
 
 

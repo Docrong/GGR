@@ -22,9 +22,9 @@ li.error {
     padding: 3px !important;
 }
 
-ul>li.error {
+ul > li.error {
     padding: 5px !important;
-    line-height:1.4em;
+    line-height: 1.4em;
 }
 
 div.message p, div.message p {

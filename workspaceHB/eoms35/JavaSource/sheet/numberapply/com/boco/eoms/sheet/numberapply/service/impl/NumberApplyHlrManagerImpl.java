@@ -9,39 +9,38 @@ import com.boco.eoms.sheet.numberapply.model.NumberApplyHlrid;
 import com.boco.eoms.sheet.numberapply.service.INumberApplyHlrManager;
 
 public class NumberApplyHlrManagerImpl implements INumberApplyHlrManager {
-	
-	private INumberApplyHlrDAO numberApplyHlrDAO;
 
-	
+    private INumberApplyHlrDAO numberApplyHlrDAO;
 
-	public INumberApplyHlrDAO getNumberApplyHlrDAO() {
-		return numberApplyHlrDAO;
-	}
 
-	public void setNumberApplyHlrDAO(INumberApplyHlrDAO numberApplyHlrDAO) {
-		this.numberApplyHlrDAO = numberApplyHlrDAO;
-	}
+    public INumberApplyHlrDAO getNumberApplyHlrDAO() {
+        return numberApplyHlrDAO;
+    }
 
-	public void delNumberApplyHlrid(NumberApplyHlrid numberApplyHlrid)
-			throws HibernateException {
-		numberApplyHlrDAO.delNumberApplyHlrid(numberApplyHlrid);
-	}
+    public void setNumberApplyHlrDAO(INumberApplyHlrDAO numberApplyHlrDAO) {
+        this.numberApplyHlrDAO = numberApplyHlrDAO;
+    }
 
-	public HashMap getAllNumberApplyHlridByMainid(String mainid,
-			Integer pageSize, Integer curPage) throws HibernateException {
-		HashMap map = numberApplyHlrDAO.getAllNumberApplyHlridByMainid(mainid, pageSize, curPage);
-		return map;
-	}
+    public void delNumberApplyHlrid(NumberApplyHlrid numberApplyHlrid)
+            throws HibernateException {
+        numberApplyHlrDAO.delNumberApplyHlrid(numberApplyHlrid);
+    }
 
-	public NumberApplyHlrid getNumberApplyHlrid(String id)
-			throws HibernateException {
-		NumberApplyHlrid numberApplyHlrid = numberApplyHlrDAO.getNumberApplyHlrid(id);
-		return numberApplyHlrid;
-	}
+    public HashMap getAllNumberApplyHlridByMainid(String mainid,
+                                                  Integer pageSize, Integer curPage) throws HibernateException {
+        HashMap map = numberApplyHlrDAO.getAllNumberApplyHlridByMainid(mainid, pageSize, curPage);
+        return map;
+    }
 
-	public void saveNumberApplyHlrid(NumberApplyHlrid numberApplyHlrid)
-			throws HibernateException {
-		numberApplyHlrDAO.saveNumberApplyHlrid(numberApplyHlrid);
-	}
-	
+    public NumberApplyHlrid getNumberApplyHlrid(String id)
+            throws HibernateException {
+        NumberApplyHlrid numberApplyHlrid = numberApplyHlrDAO.getNumberApplyHlrid(id);
+        return numberApplyHlrid;
+    }
+
+    public void saveNumberApplyHlrid(NumberApplyHlrid numberApplyHlrid)
+            throws HibernateException {
+        numberApplyHlrDAO.saveNumberApplyHlrid(numberApplyHlrid);
+    }
+
 }

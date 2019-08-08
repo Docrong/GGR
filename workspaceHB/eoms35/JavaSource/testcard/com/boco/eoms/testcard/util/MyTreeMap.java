@@ -8,26 +8,26 @@ import java.util.TreeMap;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: </p>
+ *
  * @author not attributable
  * @version 1.0
  */
 
-public class MyTreeMap{
+public class MyTreeMap {
 
-    public Map myHashMap=null;
+    public Map myHashMap = null;
 
-    public MyTreeMap(){
-        myHashMap=new TreeMap();
+    public MyTreeMap() {
+        myHashMap = new TreeMap();
     }
 
-    public void init(String key,String va){
-        if(myHashMap.containsKey(key)){
-            String temp=myHashMap.get(key).toString();
+    public void init(String key, String va) {
+        if (myHashMap.containsKey(key)) {
+            String temp = myHashMap.get(key).toString();
             myHashMap.remove(key);
-            myHashMap.put(key,temp+",'"+va+"'");
-        }
-        else{
-            myHashMap.put(key,"'"+va+"'");
+            myHashMap.put(key, temp + ",'" + va + "'");
+        } else {
+            myHashMap.put(key, "'" + va + "'");
         }
     }
 }

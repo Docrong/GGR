@@ -5,12 +5,12 @@ package com.boco.eoms.sparepart.model;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.0
  */
 
-public class TawSparepart
-{
+public class TawSparepart {
     private int id;
     private int objecttype;
     private int version;
@@ -43,7 +43,7 @@ public class TawSparepart
     private String money;
     private String contract;
     private String sheetid;
-    
+
     private String proposer;//申请人
     private String company;//所属公司
     private String objtype; //设备型号
@@ -52,318 +52,339 @@ public class TawSparepart
     private String fixe;//设备厂商
     private int checksum;
     private int parttype;
-    
-    
-  private String orgSerialNo;
-  public TawSparepart()
-    {
+
+
+    private String orgSerialNo;
+
+    public TawSparepart() {
     }
-    public int getId()
-    {
+
+    public int getId() {
         return id;
     }
-    public void setId(int id)
-    {
+
+    public void setId(int id) {
         this.id = id;
     }
-    public int getObjecttype()
-    {
+
+    public int getObjecttype() {
         return objecttype;
     }
-    public void setObjecttype(int objecttype)
-    {
+
+    public void setObjecttype(int objecttype) {
         this.objecttype = objecttype;
     }
-    public int getVersion()
-    {
+
+    public int getVersion() {
         return version;
     }
-    public void setVersion(int version)
-    {
+
+    public void setVersion(int version) {
         this.version = version;
     }
-    public int getNettype()
-    {
+
+    public int getNettype() {
         return nettype;
     }
-    public void setNettype(int nettype)
-    {
+
+    public void setNettype(int nettype) {
         this.nettype = nettype;
     }
-    public int getMadein()
-    {
+
+    public int getMadein() {
         return madein;
     }
-    public void setMadein(int madein)
-    {
+
+    public void setMadein(int madein) {
         this.madein = madein;
     }
-    public int getSupplier()
-    {
+
+    public int getSupplier() {
         return supplier;
     }
-    public void setSupplier(int supplier)
-    {
+
+    public void setSupplier(int supplier) {
         this.supplier = supplier;
     }
-    public int getState()
-    {
+
+    public int getState() {
         return state;
     }
-    public void setState(int state)
-    {
+
+    public void setState(int state) {
         this.state = state;
     }
-    public int getStorageid()
-    {
+
+    public int getStorageid() {
         return storageid;
     }
-    public void setStorageid(int storageid)
-    {
+
+    public void setStorageid(int storageid) {
         this.storageid = storageid;
     }
-    public int getNecode()
-    {
+
+    public int getNecode() {
         return necode;
     }
-    public void setNecode(int necode)
-    {
+
+    public void setNecode(int necode) {
         this.necode = necode;
     }
-    public int getSwversion()
-    {
+
+    public int getSwversion() {
         return swversion;
     }
-    public void setSwversion(int swversion)
-    {
+
+    public void setSwversion(int swversion) {
         this.swversion = swversion;
     }
-    public String getObjectname()
-    {
+
+    public String getObjectname() {
         return objectname;
     }
-    public void setObjectname(String objectname)
-    {
+
+    public void setObjectname(String objectname) {
         this.objectname = objectname;
     }
-    public String getOperator()
-    {
+
+    public String getOperator() {
         return operator;
     }
-    public void setOperator(String operator)
-    {
+
+    public void setOperator(String operator) {
         this.operator = operator;
     }
-    public String getIntime()
-    {
+
+    public String getIntime() {
         return intime;
     }
-    public void setIntime(String intime)
-    {
+
+    public void setIntime(String intime) {
         this.intime = intime;
     }
-    public String getOuttime()
-    {
+
+    public String getOuttime() {
         return outtime;
     }
-    public void setOuttime(String outtime)
-    {
+
+    public void setOuttime(String outtime) {
         this.outtime = outtime;
     }
-    public String getExceptionnote()
-    {
+
+    public String getExceptionnote() {
         return exceptionnote;
     }
-    public void setExceptionnote(String exceptionnote)
-    {
+
+    public void setExceptionnote(String exceptionnote) {
         this.exceptionnote = exceptionnote;
     }
-    public String getNote()
-    {
+
+    public String getNote() {
         return note;
     }
-    public void setNote(String note)
-    {
+
+    public void setNote(String note) {
         this.note = note;
     }
-    public String getUpdatetime()
-    {
+
+    public String getUpdatetime() {
         return updatetime;
     }
-    public void setUpdatetime(String updatetime)
-    {
+
+    public void setUpdatetime(String updatetime) {
         this.updatetime = updatetime;
     }
-    public String getProductcode()
-    {
+
+    public String getProductcode() {
         return productcode;
     }
-    public void setProductcode(String productcode)
-    {
+
+    public void setProductcode(String productcode) {
         this.productcode = productcode;
     }
-    public String getManagecode()
-    {
+
+    public String getManagecode() {
         return managecode;
     }
-    public void setManagecode(String managecode)
-    {
+
+    public void setManagecode(String managecode) {
         this.managecode = managecode;
     }
-    public String getExpire()
-    {
+
+    public String getExpire() {
         return expire;
     }
-    public void setExpire(String expire)
-    {
+
+    public void setExpire(String expire) {
         this.expire = expire;
     }
-    public String getUnits()
-    {
+
+    public String getUnits() {
         return units;
     }
-    public void setUnits(String units)
-    {
+
+    public void setUnits(String units) {
         this.units = units;
     }
-  public String getProform() {
-    return proform;
-  }
-  public void setProform(String proform) {
-    this.proform = proform;
-  }
-  public String getPosition() {
-    return position;
-  }
-  public void setPosition(String position) {
-    this.position = position;
-  }
-  public String getType() {
-    return type;
-  }
 
-  public String getSerialno() {
-    return serialno;
-  }
+    public String getProform() {
+        return proform;
+    }
 
-  public String getCname() {
-    return cname;
-  }
+    public void setProform(String proform) {
+        this.proform = proform;
+    }
 
-  public String getRepairnum() {
-    return repairnum;
-  }
+    public String getPosition() {
+        return position;
+    }
 
-  public String getLoannum() {
-    return loannum;
-  }
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
-  public String getMoney() {
-    return money;
-  }
+    public String getType() {
+        return type;
+    }
 
-  public String getContract() {
-    return contract;
-  }
+    public String getSerialno() {
+        return serialno;
+    }
 
-  public String getSheetid() {
-    return sheetid;
-  }
+    public String getCname() {
+        return cname;
+    }
 
-  public String getOrgSerialNo() {
-    return orgSerialNo;
-  }
+    public String getRepairnum() {
+        return repairnum;
+    }
 
-  public void setType(String type) {
-    this.type = type;
-  }
+    public String getLoannum() {
+        return loannum;
+    }
 
-  public void setSerialno(String serialno) {
-    this.serialno = serialno;
-  }
+    public String getMoney() {
+        return money;
+    }
 
-  public void setCname(String cname) {
-    this.cname = cname;
-  }
+    public String getContract() {
+        return contract;
+    }
 
-  public void setRepairnum(String repairnum) {
-    this.repairnum = repairnum;
-  }
+    public String getSheetid() {
+        return sheetid;
+    }
 
-  public void setLoannum(String loannum) {
-    this.loannum = loannum;
-  }
+    public String getOrgSerialNo() {
+        return orgSerialNo;
+    }
 
-  public void setMoney(String money) {
-    this.money = money;
-  }
+    public void setType(String type) {
+        this.type = type;
+    }
 
-  public void setContract(String contract) {
-    this.contract = contract;
-  }
+    public void setSerialno(String serialno) {
+        this.serialno = serialno;
+    }
 
-  public void setSheetid(String sheetid) {
-    this.sheetid = sheetid;
-  }
+    public void setCname(String cname) {
+        this.cname = cname;
+    }
 
-  public void setOrgSerialNo(String orgSerialNo) {
-    this.orgSerialNo = orgSerialNo;
-  }
-public int getSubnettype() {
-	return subnettype;
-}
-public void setSubnettype(int subnettype) {
-	this.subnettype = subnettype;
-}
-public String getCompany() {
-	return company;
-}
-public void setCompany(String company) {
-	this.company = company;
-}
-public String getFixe() {
-	return fixe;
-}
-public void setFixe(String fixe) {
-	this.fixe = fixe;
-}
-public String getObjtype() {
-	return objtype;
-}
-public void setObjtype(String objtype) {
-	this.objtype = objtype;
-}
+    public void setRepairnum(String repairnum) {
+        this.repairnum = repairnum;
+    }
 
-public String getProposer() {
-	return proposer;
-}
-public void setProposer(String proposer) {
-	this.proposer = proposer;
-}
-public String getRepair_endtime() {
-	return repair_endtime;
-}
-public void setRepair_endtime(String repair_endtime) {
-	this.repair_endtime = repair_endtime;
-}
-public String getRepairtime() {
-	return repairtime;
-}
-public void setRepairtime(String repairtime) {
-	this.repairtime = repairtime;
-}
-public int getChecksum() {
-	return checksum;
-}
-public void setChecksum(int checksum) {
-	this.checksum = checksum;
-}
+    public void setLoannum(String loannum) {
+        this.loannum = loannum;
+    }
 
-public int getParttype() {
-	return parttype;
-}
-public void setParttype(int parttype) {
-	this.parttype = parttype;
-}
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public void setContract(String contract) {
+        this.contract = contract;
+    }
+
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
+
+    public void setOrgSerialNo(String orgSerialNo) {
+        this.orgSerialNo = orgSerialNo;
+    }
+
+    public int getSubnettype() {
+        return subnettype;
+    }
+
+    public void setSubnettype(int subnettype) {
+        this.subnettype = subnettype;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getFixe() {
+        return fixe;
+    }
+
+    public void setFixe(String fixe) {
+        this.fixe = fixe;
+    }
+
+    public String getObjtype() {
+        return objtype;
+    }
+
+    public void setObjtype(String objtype) {
+        this.objtype = objtype;
+    }
+
+    public String getProposer() {
+        return proposer;
+    }
+
+    public void setProposer(String proposer) {
+        this.proposer = proposer;
+    }
+
+    public String getRepair_endtime() {
+        return repair_endtime;
+    }
+
+    public void setRepair_endtime(String repair_endtime) {
+        this.repair_endtime = repair_endtime;
+    }
+
+    public String getRepairtime() {
+        return repairtime;
+    }
+
+    public void setRepairtime(String repairtime) {
+        this.repairtime = repairtime;
+    }
+
+    public int getChecksum() {
+        return checksum;
+    }
+
+    public void setChecksum(int checksum) {
+        this.checksum = checksum;
+    }
+
+    public int getParttype() {
+        return parttype;
+    }
+
+    public void setParttype(int parttype) {
+        this.parttype = parttype;
+    }
 
 }

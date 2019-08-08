@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -125,33 +125,34 @@ import com.boco.eoms.km.core.crimson.util.XmlNames;
  * Such support basically adds a set of convenience element types, and so
  * can be implemented through element factories and document subclasses.</em>
  *
- * @see XmlDocumentBuilder
- *
  * @author David Brownell
  * @author Rajiv Mordani
  * @version $Revision: 1.9 $
+ * @see XmlDocumentBuilder
  */
-public class XmlDocument extends ParentNode implements DocumentEx
-{
+public class XmlDocument extends ParentNode implements DocumentEx {
     // package private (with jdk 1.1 'javac' bug workaround)
-    static /* final */ String           eol;
+    static /* final */ String eol;
 
     static {
-        String  temp;
-        try { temp = System.getProperty ("line.separator", "\n"); }
-        catch (SecurityException e) { temp = "\n"; }
+        String temp;
+        try {
+            temp = System.getProperty("line.separator", "\n");
+        } catch (SecurityException e) {
+            temp = "\n";
+        }
         eol = temp;
     }
 
-    static final MessageCatalog         catalog = new Catalog ();
+    static final MessageCatalog catalog = new Catalog();
 
-    private Locale              locale = Locale.getDefault ();
+    private Locale locale = Locale.getDefault();
 
-    private String              systemId;
-    private ElementFactory      factory;
+    private String systemId;
+    private ElementFactory factory;
 
     // package private
-    int                         mutationCount;
+    int mutationCount;
     boolean replaceRootElement;
 
     /**
@@ -168,22 +169,20 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * parser.  XML Namespace conformance is not tested when parsing.
      *
      * @param documentURI The URI (normally URL) of the document
-     * @param doValidate If true, validity errors are treated as fatal
-     *
-     * @exception IOException as appropriate
-     * @exception SAXException as appropriate
-     * @exception SAXParseException (with line number information)
-     *  for parsing errors
-     * @exception IllegalStateException at least when the parser
-     *  is configured incorrectly
+     * @param doValidate  If true, validity errors are treated as fatal
+     * @throws IOException           as appropriate
+     * @throws SAXException          as appropriate
+     * @throws SAXParseException     (with line number information)
+     *                               for parsing errors
+     * @throws IllegalStateException at least when the parser
+     *                               is configured incorrectly
      * @deprecated Use JAXP javax.xml.parsers package instead
      */
-    public static XmlDocument createXmlDocument (
-        String  documentURI,
-        boolean doValidate
-    ) throws IOException, SAXException
-    {
-        return createXmlDocument (new InputSource (documentURI), doValidate);
+    public static XmlDocument createXmlDocument(
+            String documentURI,
+            boolean doValidate
+    ) throws IOException, SAXException {
+        return createXmlDocument(new InputSource(documentURI), doValidate);
     }
 
 
@@ -193,19 +192,17 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * is not tested when parsing.
      *
      * @param documentURI The URI (normally URL) of the document
-     *
-     * @exception IOException as appropriate
-     * @exception SAXException as appropriate
-     * @exception SAXParseException (with line number information)
-     *  for parsing errors
-     * @exception IllegalStateException at least when the parser
-     *  is configured incorrectly
+     * @throws IOException           as appropriate
+     * @throws SAXException          as appropriate
+     * @throws SAXParseException     (with line number information)
+     *                               for parsing errors
+     * @throws IllegalStateException at least when the parser
+     *                               is configured incorrectly
      * @deprecated Use JAXP javax.xml.parsers package instead
      */
-    public static XmlDocument createXmlDocument (String documentURI)
-    throws IOException, SAXException
-    {
-        return createXmlDocument (new InputSource (documentURI), false);
+    public static XmlDocument createXmlDocument(String documentURI)
+            throws IOException, SAXException {
+        return createXmlDocument(new InputSource(documentURI), false);
     }
 
 
@@ -216,23 +213,21 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * if validation is requested, otherwise uses the non-validating
      * parser.  XML Namespace conformance is not tested when parsing.
      *
-     * @param in Holds xml document
+     * @param in         Holds xml document
      * @param doValidate If true, validity errors are treated as fatal
-     *
-     * @exception IOException as appropriate
-     * @exception SAXException as appropriate
-     * @exception SAXParseException (with line number information)
-     *  for parsing errors
-     * @exception IllegalStateException at least when the parser
-     *  is configured incorrectly
+     * @throws IOException           as appropriate
+     * @throws SAXException          as appropriate
+     * @throws SAXParseException     (with line number information)
+     *                               for parsing errors
+     * @throws IllegalStateException at least when the parser
+     *                               is configured incorrectly
      * @deprecated Use JAXP javax.xml.parsers package instead
      */
-    public static XmlDocument createXmlDocument (
-        InputStream     in,
-        boolean         doValidate
-    ) throws IOException, SAXException
-    {
-        return createXmlDocument (new InputSource (in), doValidate);
+    public static XmlDocument createXmlDocument(
+            InputStream in,
+            boolean doValidate
+    ) throws IOException, SAXException {
+        return createXmlDocument(new InputSource(in), doValidate);
     }
 
     /**
@@ -241,21 +236,19 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * if validation is requested, otherwise uses the non-validating
      * parser.  XML Namespace conformance is not tested when parsing.
      *
-     * @param in The input source of the document
+     * @param in         The input source of the document
      * @param doValidate If true, validity errors are treated as fatal
-     *
-     * @exception IOException as appropriate
-     * @exception SAXException as appropriate
-     * @exception SAXParseException (with line number information)
-     *  for parsing errors
-     * @exception IllegalStateException at least when the parser
-     *  is configured incorrectly
+     * @throws IOException           as appropriate
+     * @throws SAXException          as appropriate
+     * @throws SAXParseException     (with line number information)
+     *                               for parsing errors
+     * @throws IllegalStateException at least when the parser
+     *                               is configured incorrectly
      * @deprecated Use JAXP javax.xml.parsers package instead
      */
     public static XmlDocument createXmlDocument(InputSource in,
                                                 boolean doValidate)
-        throws IOException, SAXException
-    {
+            throws IOException, SAXException {
         // Create XMLReader allowing user to override using system property
         // String defaultReader = "org.apache.xerces.parsers.SAXParser";
         String defaultReader = "org.apache.crimson.parser.XMLReaderImpl";
@@ -282,14 +275,14 @@ public class XmlDocument extends ParentNode implements DocumentEx
 
         // Use as the ContentHandler
         xmlReader.setContentHandler(builder);
-          
+
         // org.xml.sax.ext.LexicalHandler
         String lexHandler = "http://xml.org/sax/properties/lexical-handler";
         xmlReader.setProperty(lexHandler, builder);
 
         // org.xml.sax.ext.DeclHandler
         String declHandler
-            = "http://xml.org/sax/properties/declaration-handler";
+                = "http://xml.org/sax/properties/declaration-handler";
         xmlReader.setProperty(declHandler, builder);
 
         // DTDHandler
@@ -319,9 +312,10 @@ public class XmlDocument extends ParentNode implements DocumentEx
     /**
      * Returns the locale to be used for diagnostic messages.
      */
-    public Locale       getLocale ()
-        { return locale; }
-    
+    public Locale getLocale() {
+        return locale;
+    }
+
     /**
      * Assigns the locale to be used for diagnostic messages.
      * Multi-language applications, such as web servers dealing with
@@ -332,10 +326,9 @@ public class XmlDocument extends ParentNode implements DocumentEx
      *
      * @see #chooseLocale
      */
-    public void setLocale (Locale locale)
-    {
+    public void setLocale(Locale locale) {
         if (locale == null)
-            locale = Locale.getDefault ();
+            locale = Locale.getDefault();
         this.locale = locale;
     }
 
@@ -347,33 +340,30 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * could be provided by a variety of user preference mechanisms,
      * including the HTTP <em>Accept-Language</em> header field.
      *
-     * @see com.boco.eoms.km.core.crimson.util.MessageCatalog
-     *
      * @param languages Array of language specifiers, ordered with the most
-     *  preferable one at the front.  For example, "en-ca" then "fr-ca",
-     *  followed by "zh_CN".  Both RFC 1766 and Java styles are supported.
+     *                  preferable one at the front.  For example, "en-ca" then "fr-ca",
+     *                  followed by "zh_CN".  Both RFC 1766 and Java styles are supported.
      * @return The chosen locale, or null.
+     * @see com.boco.eoms.km.core.crimson.util.MessageCatalog
      */
-    public Locale chooseLocale (String languages [])
-    {
-        Locale  l = catalog.chooseLocale (languages);
+    public Locale chooseLocale(String languages[]) {
+        Locale l = catalog.chooseLocale(languages);
 
         if (l != null)
-            setLocale (l);
+            setLocale(l);
         return l;
     }
 
-    
+
     /**
      * Writes the document in UTF-8 character encoding, as a well formed
      * XML construct.
      *
-     * @param out stream on which the document will be written 
+     * @param out stream on which the document will be written
      */
-    public void write (OutputStream out) throws IOException
-    {
-        Writer  writer = new OutputStreamWriter (out, "UTF8");
-        write (writer, "UTF-8");
+    public void write(OutputStream out) throws IOException {
+        Writer writer = new OutputStreamWriter(out, "UTF8");
+        write(writer, "UTF-8");
     }
 
     /**
@@ -391,17 +381,15 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * strongly encourage the use of UTF-8; also, all XML processors
      * are guaranteed to support it.
      *
-     * @see #write(java.io.Writer,java.lang.String)
-     *
-     * @param out stream on which the document will be written 
+     * @param out stream on which the document will be written
+     * @see #write(java.io.Writer, java.lang.String)
      */
-    public void write (Writer out) throws IOException
-    {
-        String  encoding = null;
+    public void write(Writer out) throws IOException {
+        String encoding = null;
 
         if (out instanceof OutputStreamWriter)
-            encoding = java2std (((OutputStreamWriter)out).getEncoding ());
-        write (out, encoding);
+            encoding = java2std(((OutputStreamWriter) out).getEncoding());
+        write(out, encoding);
     }
 
 
@@ -412,8 +400,7 @@ public class XmlDocument extends ParentNode implements DocumentEx
     // supposed to be ignored, note.
     //
     // package private 
-    static String java2std (String encodingName)
-    {
+    static String java2std(String encodingName) {
         if (encodingName == null)
             return null;
 
@@ -422,42 +409,42 @@ public class XmlDocument extends ParentNode implements DocumentEx
         // N=1 is the eight bit subset of UNICODE, and there
         // seem to be at least drafts for some N >10.
         //
-        if (encodingName.startsWith ("ISO8859_"))       // JDK 1.2
-            return "ISO-8859-" + encodingName.substring (8);
-        if (encodingName.startsWith ("8859_"))          // JDK 1.1
-            return "ISO-8859-" + encodingName.substring (5);
+        if (encodingName.startsWith("ISO8859_"))       // JDK 1.2
+            return "ISO-8859-" + encodingName.substring(8);
+        if (encodingName.startsWith("8859_"))          // JDK 1.1
+            return "ISO-8859-" + encodingName.substring(5);
 
         // XXX seven bit encodings ISO-2022-* ...
         // XXX EBCDIC encodings ... 
 
-        if ("ASCII7".equalsIgnoreCase (encodingName)
-                || "ASCII".equalsIgnoreCase (encodingName))
+        if ("ASCII7".equalsIgnoreCase(encodingName)
+                || "ASCII".equalsIgnoreCase(encodingName))
             return "US-ASCII";
-        
+
         //
         // All XML parsers _must_ support UTF-8 and UTF-16.
         // (UTF-16 ~= ISO-10646-UCS-2 plus surrogate pairs)
         //
-        if ("UTF8".equalsIgnoreCase (encodingName))
+        if ("UTF8".equalsIgnoreCase(encodingName))
             return "UTF-8";
-        if (encodingName.startsWith ("Unicode"))
+        if (encodingName.startsWith("Unicode"))
             return "UTF-16";
-        
+
         //
         // Some common Japanese character sets.
         //
-        if ("SJIS".equalsIgnoreCase (encodingName))
+        if ("SJIS".equalsIgnoreCase(encodingName))
             return "Shift_JIS";
-        if ("JIS".equalsIgnoreCase (encodingName))
+        if ("JIS".equalsIgnoreCase(encodingName))
             return "ISO-2022-JP";
-        if ("EUCJIS".equalsIgnoreCase (encodingName))
+        if ("EUCJIS".equalsIgnoreCase(encodingName))
             return "EUC-JP";
 
         // else we can't really do anything
         return encodingName;
     }
 
-    
+
     /**
      * Writes the document in the specified encoding, and listing
      * that encoding in the XML declaration.  The document will be
@@ -488,46 +475,43 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * XML to DOM and back without losing data about physical structures
      * and DTD information.  "Logical structure" will be preserved.
      *
+     * @param out      the writer to use when writing the document
+     * @param encoding the encoding name to use; this should be a
+     *                 standard encoding name registered with the IANA (like "UTF-8")
+     *                 not a Java-internal name (like "UTF8").
      * @see #setDoctype
      * @see #writeXml
-     *
-     * @param out the writer to use when writing the document
-     * @param encoding the encoding name to use; this should be a
-     *  standard encoding name registered with the IANA (like "UTF-8")
-     *  not a Java-internal name (like "UTF8").
      */
-    public void write (Writer out, String encoding)
-    throws IOException
-    {
+    public void write(Writer out, String encoding)
+            throws IOException {
         //
         // We put a pretty minimal declaration here, which is the
         // best we can do given SAX input and DOM.  For the moment
         // this precludes our generating "standalone" annotations.
         //
-        out.write ("<?xml version=\"1.0\"");
+        out.write("<?xml version=\"1.0\"");
         if (encoding != null) {
-            out.write (" encoding=\"");
-            out.write (encoding);
-            out.write ('\"');
+            out.write(" encoding=\"");
+            out.write(encoding);
+            out.write('\"');
         }
-        out.write ("?>");
-        out.write (eol);
-        out.write (eol);
+        out.write("?>");
+        out.write(eol);
+        out.write(eol);
 
-        writeChildrenXml (createWriteContext (out, 0));
-        out.write (eol);
-        out.flush ();
+        writeChildrenXml(createWriteContext(out, 0));
+        out.write(eol);
+        out.flush();
     }
 
     /**
      * Returns an XML write context set up not to pretty-print,
      * and which knows about the entities defined for this document.
      *
-     * @param out stream on which the document will be written 
+     * @param out stream on which the document will be written
      */
-    public XmlWriteContext createWriteContext (Writer out)
-    {
-        return new ExtWriteContext (out);
+    public XmlWriteContext createWriteContext(Writer out) {
+        return new ExtWriteContext(out);
     }
 
     /**
@@ -535,12 +519,11 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * at a specified indent level, and which knows about the entities
      * defined for this document.
      *
-     * @param out stream on which the document will be written 
+     * @param out   stream on which the document will be written
      * @param level initial indent level for pretty-printing
      */
-    public XmlWriteContext createWriteContext (Writer out, int level)
-    {
-        return new ExtWriteContext (out, level);
+    public XmlWriteContext createWriteContext(Writer out, int level) {
+        return new ExtWriteContext(out, level);
     }
 
     /**
@@ -548,15 +531,13 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * an encoding name derived from the stream in the context where
      * that is possible.
      *
-     * @see #createWriteContext(java.io.Writer)
-     * @see #createWriteContext(java.io.Writer,int)
-     *
      * @param context describes how to write the document
+     * @see #createWriteContext(java.io.Writer)
+     * @see #createWriteContext(java.io.Writer, int)
      */
-    public void writeXml (XmlWriteContext context) throws IOException
-    {
-        Writer  out = context.getWriter ();
-        String  encoding = null;
+    public void writeXml(XmlWriteContext context) throws IOException {
+        Writer out = context.getWriter();
+        String encoding = null;
 
         //
         // XXX as above, it should be possible to be "told" this name
@@ -564,56 +545,54 @@ public class XmlDocument extends ParentNode implements DocumentEx
         // or we can use the right encoding name; not both!!
         //
         if (out instanceof OutputStreamWriter)
-            encoding = java2std (((OutputStreamWriter)out).getEncoding ());
+            encoding = java2std(((OutputStreamWriter) out).getEncoding());
 
         //
         // We put a pretty minimal declaration here, which is the
         // best we can do given SAX input and DOM.  For the moment
         // this precludes our generating "standalone" annotations.
         //
-        out.write ("<?xml version=\"1.0\"");
+        out.write("<?xml version=\"1.0\"");
         if (encoding != null) {
-            out.write (" encoding=\"");
-            out.write (encoding);
-            out.write ('\"');
+            out.write(" encoding=\"");
+            out.write(encoding);
+            out.write('\"');
         }
-        out.write ("?>");
-        out.write (eol);
-        out.write (eol);
+        out.write("?>");
+        out.write(eol);
+        out.write(eol);
 
-        writeChildrenXml (context);
+        writeChildrenXml(context);
     }
 
     /**
      * Writes all the child nodes of the document, following each one
      * with the end-of-line string in use in this environment.
      */
-    public void writeChildrenXml (XmlWriteContext context) throws IOException
-    {
-        int     length = getLength ();
-        Writer  out = context.getWriter ();
+    public void writeChildrenXml(XmlWriteContext context) throws IOException {
+        int length = getLength();
+        Writer out = context.getWriter();
 
         if (length == 0)
             return;
         for (int i = 0; i < length; i++) {
-            ((NodeBase)item (i)).writeXml (context);
-            out.write (eol);
+            ((NodeBase) item(i)).writeXml(context);
+            out.write(eol);
         }
     }
 
 
     // package private -- overrides base class method
-    void checkChildType (int type)
-    throws DOMException
-    {
+    void checkChildType(int type)
+            throws DOMException {
         switch (type) {
-          case ELEMENT_NODE:
-          case PROCESSING_INSTRUCTION_NODE:
-          case COMMENT_NODE:
-          case DOCUMENT_TYPE_NODE:
-            return;
-          default:
-            throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
+            case ELEMENT_NODE:
+            case PROCESSING_INSTRUCTION_NODE:
+            case COMMENT_NODE:
+            case DOCUMENT_TYPE_NODE:
+                return;
+            default:
+                throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
         }
     }
 
@@ -622,10 +601,9 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * system ID.
      *
      * @param uri The document's system ID, as used when storing
-     *  the document.
+     *            the document.
      */
-    final public void setSystemId (String uri)
-    {
+    final public void setSystemId(String uri) {
         systemId = uri;
     }
 
@@ -639,8 +617,7 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * <em>XmlReadable</em> interface as the document is being parsed,
      * so that the correct base URI is available.
      */
-    final public String getSystemId ()
-    {
+    final public String getSystemId() {
         return systemId;
     }
 
@@ -654,33 +631,31 @@ public class XmlDocument extends ParentNode implements DocumentEx
      *
      * @param node the node to be appended.
      */
-    public Node appendChild (Node n)
-    throws DOMException
-    {
-        if (n instanceof Element && getDocumentElement () != null)
-            throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
-        if (n instanceof DocumentType && getDoctype () != null)
-            throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
-        return super.appendChild (n);
+    public Node appendChild(Node n)
+            throws DOMException {
+        if (n instanceof Element && getDocumentElement() != null)
+            throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+        if (n instanceof DocumentType && getDoctype() != null)
+            throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+        return super.appendChild(n);
     }
 
     /**
      * DOM:  Inserts the specified child node into the document.  Only one
      * element or document type node may be a child of a document.
      *
-     * @param n the node to be inserted.
+     * @param n       the node to be inserted.
      * @param refNode the node before which this is to be inserted
      */
-    public Node insertBefore (Node n, Node refNode)
-    throws DOMException
-    {
-        if (!replaceRootElement && n instanceof Element && 
-            getDocumentElement () != null)
-            throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
-        if (!replaceRootElement && n instanceof DocumentType 
-            && getDoctype () != null)
-            throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
-        return super.insertBefore (n, refNode);
+    public Node insertBefore(Node n, Node refNode)
+            throws DOMException {
+        if (!replaceRootElement && n instanceof Element &&
+                getDocumentElement() != null)
+            throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+        if (!replaceRootElement && n instanceof DocumentType
+                && getDoctype() != null)
+            throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+        return super.insertBefore(n, refNode);
     }
 
     /**
@@ -691,44 +666,48 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * @param newChild the new child to be inserted
      * @param refChild node which is to be replaced
      */
-    public Node replaceChild (Node newChild, Node refChild)
-    throws DOMException
-    {
-        if (newChild instanceof DocumentFragment ) {
+    public Node replaceChild(Node newChild, Node refChild)
+            throws DOMException {
+        if (newChild instanceof DocumentFragment) {
             int elemCount = 0;
             int docCount = 0;
             replaceRootElement = false;
             ParentNode frag = (ParentNode) newChild;
             Node temp;
             int i = 0;
-            while ((temp = frag.item (i)) != null) {
-                if (temp instanceof Element) 
+            while ((temp = frag.item(i)) != null) {
+                if (temp instanceof Element)
                     elemCount++;
 
-                 else if (temp instanceof DocumentType)
+                else if (temp instanceof DocumentType)
                     docCount++;
                 i++;
             }
             if (elemCount > 1 || docCount > 1)
-                throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
-            else 
+                throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+            else
                 replaceRootElement = true;
         }
-        return super.replaceChild (newChild, refChild);
+        return super.replaceChild(newChild, refChild);
     }
 
 
-    /** DOM: Returns the DOCUMENT_NODE node type constant. */
-    final public short getNodeType () { return DOCUMENT_NODE; }
+    /**
+     * DOM: Returns the DOCUMENT_NODE node type constant.
+     */
+    final public short getNodeType() {
+        return DOCUMENT_NODE;
+    }
 
 
-    /** DOM: returns the document type (DTD) */
-    final public DocumentType getDoctype ()
-    {
+    /**
+     * DOM: returns the document type (DTD)
+     */
+    final public DocumentType getDoctype() {
         // We ignore comments, PIs, whitespace, etc
         // and return the first (only!) doctype.
         for (int i = 0; true; i++) {
-            Node n = item (i);
+            Node n = item(i);
             if (n == null)
                 return null;
             if (n instanceof DocumentType)
@@ -743,53 +722,52 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * that will be printed.  The root element in the DTD will be what the
      * document itself provides.
      *
-     * @param dtdPublicId Holds a "public identifier" used to identify the
-     *  last part of the external DTD subset that is read into the DTD.
-     *  This may be omitted, and in any case is ignored unless a system
-     *  ID is provided.
-     * @param dtdSystemId Holds a "system identifier" (a URI) used to
-     *  identify the last part of the external DTD subset that is read
-     *  into the DTD.  This may be omitted, in which case the document
-     *  type will contain at most an internal subset.  This URI should
-     *  not be a relative URI unless the document will be accessed in a
-     *  context from which that relative URI makes sense.
+     * @param dtdPublicId    Holds a "public identifier" used to identify the
+     *                       last part of the external DTD subset that is read into the DTD.
+     *                       This may be omitted, and in any case is ignored unless a system
+     *                       ID is provided.
+     * @param dtdSystemId    Holds a "system identifier" (a URI) used to
+     *                       identify the last part of the external DTD subset that is read
+     *                       into the DTD.  This may be omitted, in which case the document
+     *                       type will contain at most an internal subset.  This URI should
+     *                       not be a relative URI unless the document will be accessed in a
+     *                       context from which that relative URI makes sense.
      * @param internalSubset Optional; this holds XML text which will
-     *  be put into the internal subset.  This must be legal syntax,
-     *  and it is not tested by this document.
+     *                       be put into the internal subset.  This must be legal syntax,
+     *                       and it is not tested by this document.
      */
-    public DocumentType setDoctype (
-        String  dtdPublicId,
-        String  dtdSystemId,
-        String  internalSubset
+    public DocumentType setDoctype(
+            String dtdPublicId,
+            String dtdSystemId,
+            String internalSubset
     ) {
-        Doctype retval = (Doctype) getDoctype ();
+        Doctype retval = (Doctype) getDoctype();
 
         if (retval != null)
-            retval.setPrintInfo (dtdPublicId, dtdSystemId,
+            retval.setPrintInfo(dtdPublicId, dtdSystemId,
                     internalSubset);
         else {
-            retval = new Doctype (dtdPublicId, dtdSystemId,
+            retval = new Doctype(dtdPublicId, dtdSystemId,
                     internalSubset);
-            retval.setOwnerDocument (this);
-            insertBefore (retval, getFirstChild ());
+            retval.setOwnerDocument(this);
+            insertBefore(retval, getFirstChild());
         }
         return retval;
     }
 
-    
+
     /**
      * DOM: Returns the content root element.
      */
-    public Element getDocumentElement ()
-    {
+    public Element getDocumentElement() {
         // We ignore comments, PIs, whitespace, etc
         // and return the first (only!) element.
         for (int i = 0; true; i++) {
-            Node n = item (i);
+            Node n = item(i);
             if (n == null)
                 return null;
             if (n instanceof Element) {
-                return (Element)n;
+                return (Element) n;
             }
         }
     }
@@ -798,21 +776,20 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * Assigns the element factory to be used by this document.
      *
      * @param factory the element factory to be used; if this is null,
-     *	all elements will be implemented by <em>ElementNode</em>.
+     *                all elements will be implemented by <em>ElementNode</em>.
      * @deprecated
      */
-    final public void setElementFactory (ElementFactory factory)
-    {
-	this.factory = factory;
+    final public void setElementFactory(ElementFactory factory) {
+        this.factory = factory;
     }
 
     /**
      * Returns the element factory to be used by this document.
+     *
      * @deprecated
      */
-    final public ElementFactory getElementFactory ()
-    {
-	return factory;
+    final public ElementFactory getElementFactory() {
+        return factory;
     }
 
 
@@ -821,25 +798,24 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * no children, attributes, or parent, by calling createElementEx.
      *
      * @param tagName the tag of the element, used to determine what
-     *  type element to create as well as what tag to assign the new node.
-     * @exception IllegalArgumentException if a mapping is defined,
-     *  but is invalid because the element can't be instantiated or
-     *  does not subclass <em>ElementNode</em>.
+     *                type element to create as well as what tag to assign the new node.
+     * @throws IllegalArgumentException if a mapping is defined,
+     *                                  but is invalid because the element can't be instantiated or
+     *                                  does not subclass <em>ElementNode</em>.
      */
     public Element createElement(String tagName)
-        throws DOMException
-    {
-        return createElementEx (tagName);
+            throws DOMException {
+        return createElementEx(tagName);
     }
 
     /**
      * <b>DOM2:</b>
+     *
      * @since DOM Level 2
      * Warning: Does not work with the deprecated ElementFactory
      */
     public Element createElementNS(String namespaceURI, String qualifiedName)
-        throws DOMException
-    {
+            throws DOMException {
         // Check arguments and throw appropriate exceptions
         ElementNode2.checkArguments(namespaceURI, qualifiedName);
         ElementNode2 retval = new ElementNode2(namespaceURI, qualifiedName);
@@ -853,30 +829,29 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * or else directly constructs an ElementNode.
      *
      * @param tagName the tag of the element, used to determine what
-     *  type element to create as well as what tag to assign the new node.
-     * @exception IllegalArgumentException if a mapping is defined,
-     *  but is invalid because the element can't be instantiated or
-     *  does not subclass <em>ElementNode</em>.
+     *                type element to create as well as what tag to assign the new node.
+     * @throws IllegalArgumentException if a mapping is defined,
+     *                                  but is invalid because the element can't be instantiated or
+     *                                  does not subclass <em>ElementNode</em>.
      * @deprecated Use the standard method createElement instead
      */
     final public ElementEx createElementEx(String tagName)
-    throws DOMException
-    {
+            throws DOMException {
         ElementNode retval;
-	
-	if (!XmlNames.isName (tagName)) {
-	    throw new DomEx (DomEx.INVALID_CHARACTER_ERR);
+
+        if (!XmlNames.isName(tagName)) {
+            throw new DomEx(DomEx.INVALID_CHARACTER_ERR);
         }
 
-	if (factory != null) {
+        if (factory != null) {
             // Ask factory to create appropriate ElementNode subtype
-	    retval = (ElementNode) factory.createElementEx(tagName);
+            retval = (ElementNode) factory.createElementEx(tagName);
             // Set the name of the ElementNode
             retval.setTag(tagName);
-	} else {
-	    retval = new ElementNode(tagName);
+        } else {
+            retval = new ElementNode(tagName);
         }
-	retval.setOwnerDocument(this);
+        retval.setOwnerDocument(this);
         return retval;
     }
 
@@ -885,35 +860,34 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * children, attributes, or parent.  This uses the element factory,
      * or else directly constructs an ElementNode.
      *
-     * @param uri The namespace used to determine what type of element to
-     *  create.  This is not stored with the element; the element must be
-     *  inserted into a DOM tree in a location where namespace declarations
-     *  cause its tag to be interpreted correctly.
+     * @param uri     The namespace used to determine what type of element to
+     *                create.  This is not stored with the element; the element must be
+     *                inserted into a DOM tree in a location where namespace declarations
+     *                cause its tag to be interpreted correctly.
      * @param tagName The tag of the element, which should not contain
-     *	any namespace prefix.
-     * @exception IllegalArgumentException When a mapping is defined,
-     *  but is invalid because the element can't be instantiated or
-     *  does not subclass <em>ElementNode</em>.
+     *                any namespace prefix.
+     * @throws IllegalArgumentException When a mapping is defined,
+     *                                  but is invalid because the element can't be instantiated or
+     *                                  does not subclass <em>ElementNode</em>.
      * @deprecated Use the standard method createElementNS instead
      */
     final public ElementEx createElementEx(String uri, String tagName)
-    throws DOMException
-    {
+            throws DOMException {
         ElementNode retval;
-	
-	if (!XmlNames.isName(tagName)) {
-            throw new DomEx (DomEx.INVALID_CHARACTER_ERR);
+
+        if (!XmlNames.isName(tagName)) {
+            throw new DomEx(DomEx.INVALID_CHARACTER_ERR);
         }
 
-	if (factory != null) {
+        if (factory != null) {
             // Ask factory to create appropriate ElementNode subtype
-	    retval = (ElementNode) factory.createElementEx(uri, tagName);
+            retval = (ElementNode) factory.createElementEx(uri, tagName);
             // Set the name of the ElementNode
             retval.setTag(tagName);
-	} else {
-	    retval = new ElementNode(tagName);
+        } else {
+            retval = new ElementNode(tagName);
         }
-	retval.setOwnerDocument(this);
+        retval.setOwnerDocument(this);
         return retval;
     }
 
@@ -921,16 +895,15 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * DOM:  returns a Text node initialized with the given text.
      *
      * @param text The contents of the text node being created, which
-     *  should never contain "<em>]]&gt;</em>".
+     *             should never contain "<em>]]&gt;</em>".
      */
-    public Text createTextNode (String text)
-    {
-        TextNode                        retval;
-        
-        retval = new TextNode ();
-        retval.setOwnerDocument (this);
+    public Text createTextNode(String text) {
+        TextNode retval;
+
+        retval = new TextNode();
+        retval.setOwnerDocument(this);
         if (text != null)
-            retval.setText (text.toCharArray ());
+            retval.setText(text.toCharArray());
         return retval;
     }
 
@@ -938,49 +911,46 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * DOM:  Returns a CDATA section initialized with the given text.
      *
      * @param text the text which the CDATA section will hold, which
-     *  should never contain "<em>]]&gt;</em>".
+     *             should never contain "<em>]]&gt;</em>".
      */
-    public CDATASection createCDATASection (String text)
-    {
-        CDataNode       retval = new CDataNode ();
+    public CDATASection createCDATASection(String text) {
+        CDataNode retval = new CDataNode();
 
         if (text != null)
-            retval.setText (text.toCharArray ());
-        retval.setOwnerDocument (this);
+            retval.setText(text.toCharArray());
+        retval.setOwnerDocument(this);
         return retval;
     }
 
     // package private ... convenience rtn, reduced mallocation
-    TextNode newText (char buf [], int offset, int len)
-    throws SAXException
-    {
-        TextNode        retval = (TextNode) createTextNode (null);
-        char            data [] = new char [len];
+    TextNode newText(char buf[], int offset, int len)
+            throws SAXException {
+        TextNode retval = (TextNode) createTextNode(null);
+        char data[] = new char[len];
 
-        System.arraycopy (buf, offset, data, 0, len);
-        retval.setText (data);
+        System.arraycopy(buf, offset, data, 0, len);
+        retval.setText(data);
         return retval;
     }
-        
+
 
     /**
      * DOM:  Returns a Processing Instruction node for the specified
      * processing target, with the given instructions.
      *
-     * @param target the target of the processing instruction
+     * @param target       the target of the processing instruction
      * @param instructions the processing instruction, which should
-     *  never contain "<em>?&gt;</em>".
+     *                     never contain "<em>?&gt;</em>".
      */
-    public ProcessingInstruction createProcessingInstruction (
-        String target,
-        String instructions
-    ) throws DOMException
-    {
-        if (!XmlNames.isName (target))
-            throw new DomEx (DomEx.INVALID_CHARACTER_ERR);
+    public ProcessingInstruction createProcessingInstruction(
+            String target,
+            String instructions
+    ) throws DOMException {
+        if (!XmlNames.isName(target))
+            throw new DomEx(DomEx.INVALID_CHARACTER_ERR);
 
-        PINode  retval = new PINode (target, instructions);
-        retval.setOwnerDocument (this);
+        PINode retval = new PINode(target, instructions);
+        retval.setOwnerDocument(this);
         return retval;
     }
 
@@ -1001,14 +971,14 @@ public class XmlDocument extends ParentNode implements DocumentEx
 
     /**
      * <b>DOM2:</b>
+     *
      * @since DOM Level 2
      */
     public Attr createAttributeNS(String namespaceURI, String qualifiedName)
-        throws DOMException
-    {
+            throws DOMException {
         AttributeNode.checkArguments(namespaceURI, qualifiedName);
         AttributeNode retval = new AttributeNode(namespaceURI, qualifiedName,
-                                                 "", true, null);
+                "", true, null);
         retval.setOwnerDocument(this);
         return retval;
     }
@@ -1017,19 +987,19 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * DOM:  creates a comment node.
      *
      * @param data The characters which will be in the comment.
-     *  This should not include the "<em>--</em>" characters.
+     *             This should not include the "<em>--</em>" characters.
      */
-    public Comment createComment (String data)
-    {
-        CommentNode retval = new CommentNode (data);
-        retval.setOwnerDocument (this);
+    public Comment createComment(String data) {
+        CommentNode retval = new CommentNode(data);
+        retval.setOwnerDocument(this);
         return retval;
     }
 
 
-    /** DOM:  returns null. */
-    public Document getOwnerDoc ()
-    {
+    /**
+     * DOM:  returns null.
+     */
+    public Document getOwnerDoc() {
         return null;
     }
 
@@ -1043,10 +1013,9 @@ public class XmlDocument extends ParentNode implements DocumentEx
     /**
      * DOM:  Creates a new document fragment.
      */
-    public DocumentFragment createDocumentFragment ()
-    {
-        DocFragNode     retval = new DocFragNode ();
-        retval.setOwnerDocument (this);
+    public DocumentFragment createDocumentFragment() {
+        DocFragNode retval = new DocFragNode();
+        retval.setOwnerDocument(this);
         return retval;
     }
 
@@ -1058,20 +1027,23 @@ public class XmlDocument extends ParentNode implements DocumentEx
      *
      * @param name the name of the the parsed entity
      */
-    public EntityReference createEntityReference (String name)
-    throws DOMException
-    {
-        if (!XmlNames.isName (name))
-            throw new DomEx (DomEx.INVALID_CHARACTER_ERR);
+    public EntityReference createEntityReference(String name)
+            throws DOMException {
+        if (!XmlNames.isName(name))
+            throw new DomEx(DomEx.INVALID_CHARACTER_ERR);
 
-        EntityRefNode retval = new EntityRefNode (name);
-        retval.setOwnerDocument (this);
+        EntityRefNode retval = new EntityRefNode(name);
+        retval.setOwnerDocument(this);
         return retval;
     }
 
 
-    /** DOM: Returns the string "#document". */
-    final public String getNodeName () { return "#document"; }
+    /**
+     * DOM: Returns the string "#document".
+     */
+    final public String getNodeName() {
+        return "#document";
+    }
 
 
     /**
@@ -1082,65 +1054,63 @@ public class XmlDocument extends ParentNode implements DocumentEx
      *
      * @param deep if true, child nodes are also cloned.
      */
-    public Node cloneNode (boolean deep)
-    {
-        XmlDocument     retval = new XmlDocument ();
+    public Node cloneNode(boolean deep) {
+        XmlDocument retval = new XmlDocument();
 
         retval.systemId = systemId;
         // XXX clone the element factory ...
 
         if (deep) {
-            Node        node;
+            Node node;
 
-            for (int i = 0; (node = item (i)) != null; i++) {
+            for (int i = 0; (node = item(i)) != null; i++) {
                 if (node instanceof DocumentType) {
                     // XXX recreate
                     continue;
                 }
-                node = node.cloneNode (true);
-                retval.changeNodeOwner (node);
-                retval.appendChild (node);
+                node = node.cloneNode(true);
+                retval.changeNodeOwner(node);
+                retval.appendChild(node);
             }
         }
 
         return retval;
     }
 
-    
+
     /**
      * Changes the "owner document" of the given node, and all child
      * and associated attribute nodes, to be this document.  If the
      * node has a parent, it is first removed from that parent.
      * <b>Obsolete</b> Use importNode method instead.
-     * 
+     *
      * @param node
-     * @exception DOMException WRONG_DOCUMENT_ERROR when attempting
-     *  to change the owner for some other DOM implementation<P>
-     *  HIERARCHY_REQUEST_ERROR when the node is a document, document
-     *  type, entity, or notation; or when it is an attribute associated
-     *  with an element whose owner is not being (recursively) changed.
+     * @throws DOMException WRONG_DOCUMENT_ERROR when attempting
+     *                      to change the owner for some other DOM implementation<P>
+     *                      HIERARCHY_REQUEST_ERROR when the node is a document, document
+     *                      type, entity, or notation; or when it is an attribute associated
+     *                      with an element whose owner is not being (recursively) changed.
      */
-    final public void changeNodeOwner (Node node)
-    throws DOMException
-    {
-        TreeWalker      walker;
-        NodeBase        n;
+    final public void changeNodeOwner(Node node)
+            throws DOMException {
+        TreeWalker walker;
+        NodeBase n;
 
-        if (node.getOwnerDocument () == this)
+        if (node.getOwnerDocument() == this)
             return;
         if (!(node instanceof NodeBase))
-            throw new DomEx (DomEx.WRONG_DOCUMENT_ERR);
+            throw new DomEx(DomEx.WRONG_DOCUMENT_ERR);
 
-        switch (node.getNodeType ()) {
-          // Documents _are_ owners; can't switch identities
-          case Node.DOCUMENT_NODE:
+        switch (node.getNodeType()) {
+            // Documents _are_ owners; can't switch identities
+            case Node.DOCUMENT_NODE:
 
-          // Entities, Notations only live in doctypes ... we
-          // don't support changing their ownership at this time
-          case Node.ENTITY_NODE:
-          case Node.NOTATION_NODE:
-          case Node.DOCUMENT_TYPE_NODE:
-            throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
+                // Entities, Notations only live in doctypes ... we
+                // don't support changing their ownership at this time
+            case Node.ENTITY_NODE:
+            case Node.NOTATION_NODE:
+            case Node.DOCUMENT_TYPE_NODE:
+                throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
         }
 
         //
@@ -1149,40 +1119,40 @@ public class XmlDocument extends ParentNode implements DocumentEx
         // a recursive call) we can't really fix anything!
         //
         if (node instanceof AttributeNode) {
-            AttributeNode       attr = (AttributeNode) node;
-            Element             scope = attr.getOwnerElement();
+            AttributeNode attr = (AttributeNode) node;
+            Element scope = attr.getOwnerElement();
 
-            if (scope != null && scope.getOwnerDocument () != this)
-                throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
+            if (scope != null && scope.getOwnerDocument() != this)
+                throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
         }
 
         // unparent node if needed
-        n = (NodeBase) node.getParentNode ();
+        n = (NodeBase) node.getParentNode();
         if (n != null)
-            n.removeChild (node);
-        
+            n.removeChild(node);
+
         // change any children (including self)
-        for (walker = new TreeWalker (node),
-                    n = (NodeBase) walker.getCurrent ();
-                n != null;
-                n = (NodeBase) walker.getNext ()) {
-            n.setOwnerDocument (this);
+        for (walker = new TreeWalker(node),
+                     n = (NodeBase) walker.getCurrent();
+             n != null;
+             n = (NodeBase) walker.getNext()) {
+            n.setOwnerDocument(this);
 
             // Elements have associated attributes, which must
             // also have owners changed.
             if (n instanceof Element) {
-                NamedNodeMap    list = n.getAttributes ();
-                int             length = list.getLength ();
+                NamedNodeMap list = n.getAttributes();
+                int length = list.getLength();
                 for (int i = 0; i < length; i++)
-                    changeNodeOwner (list.item (i));
+                    changeNodeOwner(list.item(i));
             }
         }
     }
 
     /**
-     * Returns the <code>Element</code> whose <code>ID</code> is given by 
+     * Returns the <code>Element</code> whose <code>ID</code> is given by
      * <code>elementId</code>.
-     * 
+     *
      * @since DOM Level 2
      */
     public Element getElementById(String elementId) {
@@ -1191,7 +1161,7 @@ public class XmlDocument extends ParentNode implements DocumentEx
 
     /**
      * Returns the element whose ID is given by the parameter; or null
-     * if no such element exists.  This relies on elements to know the 
+     * if no such element exists.  This relies on elements to know the
      * name of their ID attribute, as will be currently be true only if
      * the document has been parsed from XML text with a DTD using the
      * <em>XmlDocumentBuilder</em> class, or if it has been constructed
@@ -1205,27 +1175,26 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * drafts of <em>XLink</em>.
      *
      * @param id The value of the ID attribute which will be matched
-     *  by any element which is returned. 
-     * @deprecated  As of DOM level 2, replaced by the method
-     *              Document.getElementById
+     *           by any element which is returned.
+     * @deprecated As of DOM level 2, replaced by the method
+     * Document.getElementById
      */
     // Note:  HTML DOM has getElementById() with "Element" return type
-    public ElementEx getElementExById (String id)
-    {
+    public ElementEx getElementExById(String id) {
         if (id == null)
-            throw new IllegalArgumentException (getMessage ("XD-000"));
+            throw new IllegalArgumentException(getMessage("XD-000"));
 
-        TreeWalker      w = new TreeWalker (this);
-        ElementEx       element;
+        TreeWalker w = new TreeWalker(this);
+        ElementEx element;
 
-        while ((element = (ElementEx) w.getNextElement (null)) != null) {
-            String      idAttr = element.getIdAttributeName ();
-            String      value;
+        while ((element = (ElementEx) w.getNextElement(null)) != null) {
+            String idAttr = element.getIdAttributeName();
+            String value;
 
             if (idAttr == null)
                 continue;
-            value = element.getAttribute (idAttr);
-            if (value.equals (id))
+            value = element.getAttribute(idAttr);
+            if (value.equals(id))
                 return element;
         }
         return null;
@@ -1235,62 +1204,61 @@ public class XmlDocument extends ParentNode implements DocumentEx
      * @since DOM Level 2
      */
     public Node importNode(Node importedNode, boolean deep)
-        throws DOMException
-    {
+            throws DOMException {
         // First make a copy of the subtree, then change the ownerDocument
         // of the subtree.
 
         Node node = null;
 
         switch (importedNode.getNodeType()) {
-        case ATTRIBUTE_NODE:
-            node = importedNode.cloneNode(true);
-            break;
-        case DOCUMENT_FRAGMENT_NODE:
-            if (deep) {
+            case ATTRIBUTE_NODE:
                 node = importedNode.cloneNode(true);
-            } else {
-                node = new DocFragNode();
-            }
-            break;
-        case DOCUMENT_NODE:
-        case DOCUMENT_TYPE_NODE:
-            throw new DomEx(DomEx.NOT_SUPPORTED_ERR);
-        case ELEMENT_NODE:
-            node = ((ElementNode2) importedNode).createCopyForImportNode(deep);
-            break;
-        case ENTITY_NODE:
-            node = importedNode.cloneNode(deep);
-            break;
-        case ENTITY_REFERENCE_NODE:
-            node = importedNode.cloneNode(false);
-            break;
-        case NOTATION_NODE:
-        case PROCESSING_INSTRUCTION_NODE:
-        case TEXT_NODE:
-        case CDATA_SECTION_NODE:
-        case COMMENT_NODE:
-        default:
-            node = importedNode.cloneNode(false);
-            break;
+                break;
+            case DOCUMENT_FRAGMENT_NODE:
+                if (deep) {
+                    node = importedNode.cloneNode(true);
+                } else {
+                    node = new DocFragNode();
+                }
+                break;
+            case DOCUMENT_NODE:
+            case DOCUMENT_TYPE_NODE:
+                throw new DomEx(DomEx.NOT_SUPPORTED_ERR);
+            case ELEMENT_NODE:
+                node = ((ElementNode2) importedNode).createCopyForImportNode(deep);
+                break;
+            case ENTITY_NODE:
+                node = importedNode.cloneNode(deep);
+                break;
+            case ENTITY_REFERENCE_NODE:
+                node = importedNode.cloneNode(false);
+                break;
+            case NOTATION_NODE:
+            case PROCESSING_INSTRUCTION_NODE:
+            case TEXT_NODE:
+            case CDATA_SECTION_NODE:
+            case COMMENT_NODE:
+            default:
+                node = importedNode.cloneNode(false);
+                break;
         }
 
         // Change the ownerDocument of subtree root and any children
         TreeWalker walker;
         NodeBase n;
-        for (walker = new TreeWalker (node),
-                    n = (NodeBase) walker.getCurrent ();
-                n != null;
-                n = (NodeBase) walker.getNext ()) {
-            n.setOwnerDocument (this);
+        for (walker = new TreeWalker(node),
+                     n = (NodeBase) walker.getCurrent();
+             n != null;
+             n = (NodeBase) walker.getNext()) {
+            n.setOwnerDocument(this);
 
             // Elements have associated attributes, which must
             // also have owners changed.
             if (n instanceof Element) {
-                NamedNodeMap    list = n.getAttributes ();
-                int             length = list.getLength ();
+                NamedNodeMap list = n.getAttributes();
+                int length = list.getLength();
                 for (int i = 0; i < length; i++)
-                    changeNodeOwner (list.item (i));
+                    changeNodeOwner(list.item(i));
             }
         }
 
@@ -1303,119 +1271,118 @@ public class XmlDocument extends ParentNode implements DocumentEx
     // (This class is primarily motivated for use with editors.)
     //
     static final class DocFragNode extends ParentNode
-        implements DocumentFragment
-    {
+            implements DocumentFragment {
         // package private -- overrides base class method
-        void checkChildType (int type)
-        throws DOMException
-        {
+        void checkChildType(int type)
+                throws DOMException {
             switch (type) {
-              case ELEMENT_NODE:
-              case PROCESSING_INSTRUCTION_NODE:
-              case COMMENT_NODE:
-              case TEXT_NODE:
-              case CDATA_SECTION_NODE:
-              case ENTITY_REFERENCE_NODE:
-                return;
-              default:
-                throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
+                case ELEMENT_NODE:
+                case PROCESSING_INSTRUCTION_NODE:
+                case COMMENT_NODE:
+                case TEXT_NODE:
+                case CDATA_SECTION_NODE:
+                case ENTITY_REFERENCE_NODE:
+                    return;
+                default:
+                    throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
             }
         }
 
-        public void writeXml (XmlWriteContext context) throws IOException
-        {
-            this.writeChildrenXml (context);
+        public void writeXml(XmlWriteContext context) throws IOException {
+            this.writeChildrenXml(context);
         }
 
-        public Node getParentNode ()
-            { return null; }
-        
-        public void setParentNode (Node p)
-            { if (p != null) throw new IllegalArgumentException (); }
-        
-        public short getNodeType ()
-            { return DOCUMENT_FRAGMENT_NODE; }
-        
-        public String getNodeName () { 
+        public Node getParentNode() {
+            return null;
+        }
+
+        public void setParentNode(Node p) {
+            if (p != null) throw new IllegalArgumentException();
+        }
+
+        public short getNodeType() {
+            return DOCUMENT_FRAGMENT_NODE;
+        }
+
+        public String getNodeName() {
             return ("#document-fragment");
         }
-        
-        public Node cloneNode (boolean deep)
-        {
-            DocFragNode retval = new DocFragNode ();
-            ((NodeBase)retval).setOwnerDocument 
-                                ((XmlDocument)this.getOwnerDocument ());
+
+        public Node cloneNode(boolean deep) {
+            DocFragNode retval = new DocFragNode();
+            ((NodeBase) retval).setOwnerDocument
+                    ((XmlDocument) this.getOwnerDocument());
 
             if (deep) {
-                Node    node;
+                Node node;
 
-                for (int i = 0; (node = item (i)) != null; i++) {
-                    node = node.cloneNode (true);
-                    retval.appendChild (node);
+                for (int i = 0; (node = item(i)) != null; i++) {
+                    node = node.cloneNode(true);
+                    retval.appendChild(node);
                 }
             }
             return retval;
         }
 
-		public short compareDocumentPosition(Node other) throws DOMException {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+        public short compareDocumentPosition(Node other) throws DOMException {
+            // TODO Auto-generated method stub
+            return 0;
+        }
 
-		public String getBaseURI() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String getBaseURI() {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public Object getFeature(String feature, String version) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public Object getFeature(String feature, String version) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public String getTextContent() throws DOMException {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String getTextContent() throws DOMException {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public Object getUserData(String key) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public Object getUserData(String key) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public boolean isDefaultNamespace(String namespaceURI) {
-			// TODO Auto-generated method stub
-			return false;
-		}
+        public boolean isDefaultNamespace(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-		public boolean isEqualNode(Node arg) {
-			// TODO Auto-generated method stub
-			return false;
-		}
+        public boolean isEqualNode(Node arg) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-		public boolean isSameNode(Node other) {
-			// TODO Auto-generated method stub
-			return false;
-		}
+        public boolean isSameNode(Node other) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-		public String lookupNamespaceURI(String prefix) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String lookupNamespaceURI(String prefix) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public String lookupPrefix(String namespaceURI) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String lookupPrefix(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public void setTextContent(String textContent) throws DOMException {
-			// TODO Auto-generated method stub
-			
-		}
+        public void setTextContent(String textContent) throws DOMException {
+            // TODO Auto-generated method stub
 
-		public Object setUserData(String key, Object data, UserDataHandler handler) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        }
+
+        public Object setUserData(String key, Object data, UserDataHandler handler) {
+            // TODO Auto-generated method stub
+            return null;
+        }
     }
 
 
@@ -1423,63 +1390,62 @@ public class XmlDocument extends ParentNode implements DocumentEx
     // Represent entity references.
     //
     final static class EntityRefNode extends ParentNode
-        implements EntityReference
-    {
-        private String  entity;
+            implements EntityReference {
+        private String entity;
 
-        EntityRefNode (String name)
-        {
+        EntityRefNode(String name) {
             if (name == null)
-                throw new IllegalArgumentException (getMessage ("XD-002"));
+                throw new IllegalArgumentException(getMessage("XD-002"));
             entity = name;
         }
-        
+
         // package private -- overrides base class method
-        void checkChildType (int type)
-        throws DOMException
-        {
+        void checkChildType(int type)
+                throws DOMException {
             switch (type) {
-              case ELEMENT_NODE:
-              case PROCESSING_INSTRUCTION_NODE:
-              case COMMENT_NODE:
-              case TEXT_NODE:
-              case CDATA_SECTION_NODE:
-              case ENTITY_REFERENCE_NODE:
-                return;
-              default:
-                throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR);
+                case ELEMENT_NODE:
+                case PROCESSING_INSTRUCTION_NODE:
+                case COMMENT_NODE:
+                case TEXT_NODE:
+                case CDATA_SECTION_NODE:
+                case ENTITY_REFERENCE_NODE:
+                    return;
+                default:
+                    throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
             }
         }
-        public void writeXml (XmlWriteContext context)
-        throws IOException
-        {
-            if (!context.isEntityDeclared (entity))
-                throw new IOException (getMessage ("XD-003", new Object[]
-                                                        { entity }));
 
-            Writer out = context.getWriter ();
+        public void writeXml(XmlWriteContext context)
+                throws IOException {
+            if (!context.isEntityDeclared(entity))
+                throw new IOException(getMessage("XD-003", new Object[]
+                        {entity}));
 
-            out.write ('&');
-            out.write (entity);
-            out.write (';');
+            Writer out = context.getWriter();
+
+            out.write('&');
+            out.write(entity);
+            out.write(';');
         }
 
-        public short getNodeType ()
-            { return ENTITY_REFERENCE_NODE; }
-        
-        public String getNodeName ()
-            { return entity; }
-        
-        public Node cloneNode (boolean deep) { 
-            EntityRefNode retval = new EntityRefNode (entity);
-            ((NodeBase)retval).setOwnerDocument((
-                                XmlDocument)this.getOwnerDocument ());
-            if (deep) {
-                Node    node;
+        public short getNodeType() {
+            return ENTITY_REFERENCE_NODE;
+        }
 
-                for (int i = 0; (node = item (i)) != null; i++) {
-                    node = node.cloneNode (true);
-                    retval.appendChild (node);
+        public String getNodeName() {
+            return entity;
+        }
+
+        public Node cloneNode(boolean deep) {
+            EntityRefNode retval = new EntityRefNode(entity);
+            ((NodeBase) retval).setOwnerDocument((
+                    XmlDocument) this.getOwnerDocument());
+            if (deep) {
+                Node node;
+
+                for (int i = 0; (node = item(i)) != null; i++) {
+                    node = node.cloneNode(true);
+                    retval.appendChild(node);
                 }
                 // XXX
                 //throw new RuntimeException (getMessage ("XD-001"));
@@ -1487,218 +1453,222 @@ public class XmlDocument extends ParentNode implements DocumentEx
             return retval;
         }
 
-		public short compareDocumentPosition(Node other) throws DOMException {
-			// TODO Auto-generated method stub
-			return 0;
-		}
+        public short compareDocumentPosition(Node other) throws DOMException {
+            // TODO Auto-generated method stub
+            return 0;
+        }
 
-		public String getBaseURI() {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String getBaseURI() {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public Object getFeature(String feature, String version) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public Object getFeature(String feature, String version) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public String getTextContent() throws DOMException {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String getTextContent() throws DOMException {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public Object getUserData(String key) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public Object getUserData(String key) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public boolean isDefaultNamespace(String namespaceURI) {
-			// TODO Auto-generated method stub
-			return false;
-		}
+        public boolean isDefaultNamespace(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-		public boolean isEqualNode(Node arg) {
-			// TODO Auto-generated method stub
-			return false;
-		}
+        public boolean isEqualNode(Node arg) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-		public boolean isSameNode(Node other) {
-			// TODO Auto-generated method stub
-			return false;
-		}
+        public boolean isSameNode(Node other) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-		public String lookupNamespaceURI(String prefix) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String lookupNamespaceURI(String prefix) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public String lookupPrefix(String namespaceURI) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        public String lookupPrefix(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-		public void setTextContent(String textContent) throws DOMException {
-			// TODO Auto-generated method stub
-			
-		}
+        public void setTextContent(String textContent) throws DOMException {
+            // TODO Auto-generated method stub
 
-		public Object setUserData(String key, Object data, UserDataHandler handler) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+        }
+
+        public Object setUserData(String key, Object data, UserDataHandler handler) {
+            // TODO Auto-generated method stub
+            return null;
+        }
     }
 
-    class ExtWriteContext extends XmlWriteContext
-    {
-        ExtWriteContext (Writer out) { super (out); }
-        ExtWriteContext (Writer out, int level) { super (out, level); }
+    class ExtWriteContext extends XmlWriteContext {
+        ExtWriteContext(Writer out) {
+            super(out);
+        }
 
-        public boolean isEntityDeclared (String name)
-        {
-            if (super.isEntityDeclared (name))
+        ExtWriteContext(Writer out, int level) {
+            super(out, level);
+        }
+
+        public boolean isEntityDeclared(String name) {
+            if (super.isEntityDeclared(name))
                 return true;
 
-            DocumentType        doctype = getDoctype ();
+            DocumentType doctype = getDoctype();
 
             if (doctype == null)
                 return false;
             else
-                return doctype.getEntities ().getNamedItem (name) != null;
+                return doctype.getEntities().getNamedItem(name) != null;
         }
     }
 
-    static class Catalog extends MessageCatalog
-    {
-        Catalog () { super (Catalog.class); }
+    static class Catalog extends MessageCatalog {
+        Catalog() {
+            super(Catalog.class);
+        }
     }
 
-	public Node adoptNode(Node arg0) throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Node adoptNode(Node arg0) throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String getDocumentURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getDocumentURI() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public DOMConfiguration getDomConfig() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public DOMConfiguration getDomConfig() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String getInputEncoding() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getInputEncoding() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public boolean getStrictErrorChecking() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean getStrictErrorChecking() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public String getXmlEncoding() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getXmlEncoding() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public boolean getXmlStandalone() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean getXmlStandalone() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public String getXmlVersion() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getXmlVersion() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void normalizeDocument() {
-		// TODO Auto-generated method stub
-		
-	}
+    public void normalizeDocument() {
+        // TODO Auto-generated method stub
 
-	public Node renameNode(Node arg0, String arg1, String arg2) throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public void setDocumentURI(String arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Node renameNode(Node arg0, String arg1, String arg2) throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void setStrictErrorChecking(boolean arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setDocumentURI(String arg0) {
+        // TODO Auto-generated method stub
 
-	public void setXmlStandalone(boolean arg0) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	public void setXmlVersion(String arg0) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setStrictErrorChecking(boolean arg0) {
+        // TODO Auto-generated method stub
 
-	public short compareDocumentPosition(Node other) throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    }
 
-	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setXmlStandalone(boolean arg0) throws DOMException {
+        // TODO Auto-generated method stub
 
-	public Object getFeature(String feature, String version) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public String getTextContent() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setXmlVersion(String arg0) throws DOMException {
+        // TODO Auto-generated method stub
 
-	public Object getUserData(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public boolean isDefaultNamespace(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public short compareDocumentPosition(Node other) throws DOMException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	public boolean isEqualNode(Node arg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public String getBaseURI() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public boolean isSameNode(Node other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public Object getFeature(String feature, String version) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String lookupNamespaceURI(String prefix) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getTextContent() throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String lookupPrefix(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getUserData(String key) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void setTextContent(String textContent) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+    public boolean isDefaultNamespace(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public Object setUserData(String key, Object data, UserDataHandler handler) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public boolean isEqualNode(Node arg) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    public boolean isSameNode(Node other) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    public String lookupNamespaceURI(String prefix) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public String lookupPrefix(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void setTextContent(String textContent) throws DOMException {
+        // TODO Auto-generated method stub
+
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -69,7 +69,7 @@ import org.w3c.dom.*;
  * Node representing an XML processing instruction.
  *
  * <P> <em>Functionality to restore in some other way: </em>
- *
+ * <p>
  * As a convenience function, the instruction data may optionally
  * be parsed as element attributes are parsed.  There is no requirement
  * to use this particular syntax for instruction data.
@@ -79,53 +79,81 @@ import org.w3c.dom.*;
  */
 final
 //public
-class PINode extends NodeBase implements ProcessingInstruction
-{
-    private String      target;
-    private char	data [];
-        
-    /** Constructs a processing instruction node. */
-    public PINode () { }
+class PINode extends NodeBase implements ProcessingInstruction {
+    private String target;
+    private char data[];
 
-    /** Constructs a processing instruction node. */
-    public PINode (String target, String text)
-    {
-	data = text.toCharArray ();
+    /**
+     * Constructs a processing instruction node.
+     */
+    public PINode() {
+    }
+
+    /**
+     * Constructs a processing instruction node.
+     */
+    public PINode(String target, String text) {
+        data = text.toCharArray();
         this.target = target;
     }
 
-    PINode (String target, char buf [], int offset, int len)
-    {
-	data = new char [len];
-	System.arraycopy (buf, offset, data, 0, len);
+    PINode(String target, char buf[], int offset, int len) {
+        data = new char[len];
+        System.arraycopy(buf, offset, data, 0, len);
         this.target = target;
     }
 
-    /** DOM:  Returns the PROCESSING_INSTRUCTION_NODE node type. */
-    public short getNodeType () { return PROCESSING_INSTRUCTION_NODE; }
-
-    /** DOM:  Returns the processor the instruction is directed to. */
-    public String getTarget () { return target; }
-
-    /** DOM:  Assigns the processor the instruction is directed to. */
-    public void setTarget (String target) { this.target = target; }
-
-    /** DOM: Returns the text data as a string. */
-    public String getData () { return new String (data); }
-
-    /** DOM: Assigns the text data. */
-    public void setData (String data) { 
-        if (isReadonly ())
-	    throw new DomEx (DomEx.NO_MODIFICATION_ALLOWED_ERR);
-    
-        this.data = data.toCharArray (); 
+    /**
+     * DOM:  Returns the PROCESSING_INSTRUCTION_NODE node type.
+     */
+    public short getNodeType() {
+        return PROCESSING_INSTRUCTION_NODE;
     }
 
-    /** DOM: Returns the text data as a string. */
-    public String getNodeValue () { return getData (); }
+    /**
+     * DOM:  Returns the processor the instruction is directed to.
+     */
+    public String getTarget() {
+        return target;
+    }
 
-    /** DOM: Assigns the text data. */
-    public void setNodeValue (String data) { setData (data); }
+    /**
+     * DOM:  Assigns the processor the instruction is directed to.
+     */
+    public void setTarget(String target) {
+        this.target = target;
+    }
+
+    /**
+     * DOM: Returns the text data as a string.
+     */
+    public String getData() {
+        return new String(data);
+    }
+
+    /**
+     * DOM: Assigns the text data.
+     */
+    public void setData(String data) {
+        if (isReadonly())
+            throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
+
+        this.data = data.toCharArray();
+    }
+
+    /**
+     * DOM: Returns the text data as a string.
+     */
+    public String getNodeValue() {
+        return getData();
+    }
+
+    /**
+     * DOM: Assigns the text data.
+     */
+    public void setNodeValue(String data) {
+        setData(data);
+    }
 
     /**
      * Writes the processing instruction as well formed XML text.
@@ -133,86 +161,91 @@ class PINode extends NodeBase implements ProcessingInstruction
      * <P> <em> Doesn't currently check for the <b>?&gt;</b> substrings
      * in PI data, which are illegal </em>
      */
-    public void writeXml (XmlWriteContext context) throws IOException
-    {
-	Writer	out = context.getWriter ();
+    public void writeXml(XmlWriteContext context) throws IOException {
+        Writer out = context.getWriter();
 
-        out.write ("<?");
-        out.write (target);
+        out.write("<?");
+        out.write(target);
         if (data != null) {
-            out.write (' ');
-            out.write (data);
+            out.write(' ');
+            out.write(data);
         }
-        out.write ("?>");
+        out.write("?>");
     }
 
-    /** Returns a new processing instruction with the same content as this. */
-    public Node cloneNode (boolean deep) { 
-    	PINode retval = new PINode (target, data, 0, data.length); 
-	retval.setOwnerDocument ((XmlDocument) this.getOwnerDocument ());
-	return retval;
+    /**
+     * Returns a new processing instruction with the same content as this.
+     */
+    public Node cloneNode(boolean deep) {
+        PINode retval = new PINode(target, data, 0, data.length);
+        retval.setOwnerDocument((XmlDocument) this.getOwnerDocument());
+        return retval;
     }
 
-    /** Returns the PI target name. */
-    public String getNodeName () { return target; }
+    /**
+     * Returns the PI target name.
+     */
+    public String getNodeName() {
+        return target;
+    }
 
-	public short compareDocumentPosition(Node other) throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public short compareDocumentPosition(Node other) throws DOMException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getBaseURI() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Object getFeature(String feature, String version) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getFeature(String feature, String version) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String getTextContent() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getTextContent() throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Object getUserData(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getUserData(String key) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public boolean isDefaultNamespace(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isDefaultNamespace(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean isEqualNode(Node arg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isEqualNode(Node arg) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean isSameNode(Node other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isSameNode(Node other) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public String lookupNamespaceURI(String prefix) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupNamespaceURI(String prefix) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String lookupPrefix(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupPrefix(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void setTextContent(String textContent) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setTextContent(String textContent) throws DOMException {
+        // TODO Auto-generated method stub
 
-	public Object setUserData(String key, Object data, UserDataHandler handler) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

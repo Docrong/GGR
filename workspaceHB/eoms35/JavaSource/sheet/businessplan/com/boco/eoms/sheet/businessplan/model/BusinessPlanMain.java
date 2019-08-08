@@ -7,153 +7,145 @@ import com.boco.eoms.sheet.base.model.BaseMain;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="BusinessPlanMain.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="BusinessPlanmain"
  */
-public class BusinessPlanMain extends BaseMain
-{
+public class BusinessPlanMain extends BaseMain {
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainProductType;
+     * @texttype
+     */
+    private java.lang.String mainProductType;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainProductName;
+     * @dicttype
+     */
+    private java.lang.String mainProductName;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainProductCode;
+     * @texttype
+     */
+    private java.lang.String mainProductCode;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainReqType;
+     * @dicttype
+     */
+    private java.lang.String mainReqType;
 
     /**
-	 *
-	 * @textarea
-	 */
-     private java.lang.String mainTecDesc;
+     * @textarea
+     */
+    private java.lang.String mainTecDesc;
 
     /**
-	 *
-	 * @accesstype
-	 */
-     private java.lang.String mainStandard;
-     
-     private String mainProductTypeTwo;
+     * @accesstype
+     */
+    private java.lang.String mainStandard;
+
+    private String mainProductTypeTwo;
 
 
-    private Integer mainifrecord; 
-    
-	public Integer getMainifrecord() {
-		return mainifrecord;
-	}
+    private Integer mainifrecord;
 
-	public void setMainifrecord(Integer mainifrecord) {
-		this.mainifrecord = mainifrecord;
-	}
+    public Integer getMainifrecord() {
+        return mainifrecord;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainProductType() {
-            return mainProductType;
-     }
+    public void setMainifrecord(Integer mainifrecord) {
+        this.mainifrecord = mainifrecord;
+    }
 
-     public void setMainProductType(java.lang.String mainProductType) {
-           this.mainProductType = mainProductType;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainProductType() {
+        return mainProductType;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainProductName() {
-            return mainProductName;
-     }
+    public void setMainProductType(java.lang.String mainProductType) {
+        this.mainProductType = mainProductType;
+    }
 
-     public void setMainProductName(java.lang.String mainProductName) {
-           this.mainProductName = mainProductName;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainProductName() {
+        return mainProductName;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainProductCode() {
-            return mainProductCode;
-     }
+    public void setMainProductName(java.lang.String mainProductName) {
+        this.mainProductName = mainProductName;
+    }
 
-     public void setMainProductCode(java.lang.String mainProductCode) {
-           this.mainProductCode = mainProductCode;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainProductCode() {
+        return mainProductCode;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainReqType() {
-            return mainReqType;
-     }
+    public void setMainProductCode(java.lang.String mainProductCode) {
+        this.mainProductCode = mainProductCode;
+    }
 
-     public void setMainReqType(java.lang.String mainReqType) {
-           this.mainReqType = mainReqType;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainReqType() {
+        return mainReqType;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainTecDesc() {
-            return mainTecDesc;
-     }
+    public void setMainReqType(java.lang.String mainReqType) {
+        this.mainReqType = mainReqType;
+    }
 
-     public void setMainTecDesc(java.lang.String mainTecDesc) {
-           this.mainTecDesc = mainTecDesc;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainTecDesc() {
+        return mainTecDesc;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainStandard() {
-            return mainStandard;
-     }
+    public void setMainTecDesc(java.lang.String mainTecDesc) {
+        this.mainTecDesc = mainTecDesc;
+    }
 
-     public void setMainStandard(java.lang.String mainStandard) {
-           this.mainStandard = mainStandard;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainStandard() {
+        return mainStandard;
+    }
 
-	public String getMainProductTypeTwo() {
-		return mainProductTypeTwo;
-	}
+    public void setMainStandard(java.lang.String mainStandard) {
+        this.mainStandard = mainStandard;
+    }
 
-	public void setMainProductTypeTwo(String mainProductTypeTwo) {
-		this.mainProductTypeTwo = mainProductTypeTwo;
-	}
+    public String getMainProductTypeTwo() {
+        return mainProductTypeTwo;
+    }
+
+    public void setMainProductTypeTwo(String mainProductTypeTwo) {
+        this.mainProductTypeTwo = mainProductTypeTwo;
+    }
 
 }

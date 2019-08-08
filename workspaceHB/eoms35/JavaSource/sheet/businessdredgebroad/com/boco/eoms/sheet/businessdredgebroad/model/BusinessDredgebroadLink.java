@@ -8,179 +8,177 @@ import com.boco.eoms.sheet.base.model.BaseSubLink;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="BusinessDredgebroadbroadLink.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="BusinessDredgebroadbroadlink"
  */
-public class BusinessDredgebroadLink extends BaseLink
-{
+public class BusinessDredgebroadLink extends BaseLink {
 
-	private String ndeptContact;
+    private String ndeptContact;
 
-	private String ndeptContactPhone;
+    private String ndeptContactPhone;
 
-	private String dealResult;
+    private String dealResult;
 
-	private String dealDesc;
-	
-	private String apnID;
+    private String dealDesc;
 
-	private String loginUserName;
+    private String apnID;
 
-	private String loginUserPassWord;
+    private String loginUserName;
 
-	private String netResCapacity;
+    private String loginUserPassWord;
 
-	private String expectFinishdays;
+    private String netResCapacity;
 
-	private String circuitCode;
+    private String expectFinishdays;
 
-	private String clientPgmCapacity;
-	private String auditResult;
+    private String circuitCode;
 
-	private String rejectReason;
-	//新集团规范
-	//传输
-	private String testReport;
-	
-	private java.lang.String linkNetType;
-	
-	//从接单到回单时长
-	private String swichConfTime ;
+    private String clientPgmCapacity;
+    private String auditResult;
 
-	public String getApnID() {
-		return apnID;
-	}
+    private String rejectReason;
+    //新集团规范
+    //传输
+    private String testReport;
 
-	public void setApnID(String apnID) {
-		this.apnID = apnID;
-	}
+    private java.lang.String linkNetType;
 
-	public String getAuditResult() {
-		return auditResult;
-	}
+    //从接单到回单时长
+    private String swichConfTime;
 
-	public void setAuditResult(String auditResult) {
-		this.auditResult = auditResult;
-	}
+    public String getApnID() {
+        return apnID;
+    }
 
-	public String getCircuitCode() {
-		return circuitCode;
-	}
+    public void setApnID(String apnID) {
+        this.apnID = apnID;
+    }
 
-	public void setCircuitCode(String circuitCode) {
-		this.circuitCode = circuitCode;
-	}
+    public String getAuditResult() {
+        return auditResult;
+    }
 
-	public String getClientPgmCapacity() {
-		return clientPgmCapacity;
-	}
+    public void setAuditResult(String auditResult) {
+        this.auditResult = auditResult;
+    }
 
-	public void setClientPgmCapacity(String clientPgmCapacity) {
-		this.clientPgmCapacity = clientPgmCapacity;
-	}
+    public String getCircuitCode() {
+        return circuitCode;
+    }
 
-	public String getDealDesc() {
-		return dealDesc;
-	}
+    public void setCircuitCode(String circuitCode) {
+        this.circuitCode = circuitCode;
+    }
 
-	public void setDealDesc(String dealDesc) {
-		this.dealDesc = dealDesc;
-	}
+    public String getClientPgmCapacity() {
+        return clientPgmCapacity;
+    }
 
-	public String getDealResult() {
-		return dealResult;
-	}
+    public void setClientPgmCapacity(String clientPgmCapacity) {
+        this.clientPgmCapacity = clientPgmCapacity;
+    }
 
-	public void setDealResult(String dealResult) {
-		this.dealResult = dealResult;
-	}
+    public String getDealDesc() {
+        return dealDesc;
+    }
 
-	public String getExpectFinishdays() {
-		return expectFinishdays;
-	}
+    public void setDealDesc(String dealDesc) {
+        this.dealDesc = dealDesc;
+    }
 
-	public void setExpectFinishdays(String expectFinishdays) {
-		this.expectFinishdays = expectFinishdays;
-	}
+    public String getDealResult() {
+        return dealResult;
+    }
 
-	public String getLoginUserName() {
-		return loginUserName;
-	}
+    public void setDealResult(String dealResult) {
+        this.dealResult = dealResult;
+    }
 
-	public void setLoginUserName(String loginUserName) {
-		this.loginUserName = loginUserName;
-	}
+    public String getExpectFinishdays() {
+        return expectFinishdays;
+    }
 
-	public String getLoginUserPassWord() {
-		return loginUserPassWord;
-	}
+    public void setExpectFinishdays(String expectFinishdays) {
+        this.expectFinishdays = expectFinishdays;
+    }
 
-	public void setLoginUserPassWord(String loginUserPassWord) {
-		this.loginUserPassWord = loginUserPassWord;
-	}
+    public String getLoginUserName() {
+        return loginUserName;
+    }
 
-	public String getNdeptContact() {
-		return ndeptContact;
-	}
+    public void setLoginUserName(String loginUserName) {
+        this.loginUserName = loginUserName;
+    }
 
-	public void setNdeptContact(String ndeptContact) {
-		this.ndeptContact = ndeptContact;
-	}
+    public String getLoginUserPassWord() {
+        return loginUserPassWord;
+    }
 
-	public String getNdeptContactPhone() {
-		return ndeptContactPhone;
-	}
+    public void setLoginUserPassWord(String loginUserPassWord) {
+        this.loginUserPassWord = loginUserPassWord;
+    }
 
-	public void setNdeptContactPhone(String ndeptContactPhone) {
-		this.ndeptContactPhone = ndeptContactPhone;
-	}
+    public String getNdeptContact() {
+        return ndeptContact;
+    }
 
-	public String getNetResCapacity() {
-		return netResCapacity;
-	}
+    public void setNdeptContact(String ndeptContact) {
+        this.ndeptContact = ndeptContact;
+    }
 
-	public void setNetResCapacity(String netResCapacity) {
-		this.netResCapacity = netResCapacity;
-	}
+    public String getNdeptContactPhone() {
+        return ndeptContactPhone;
+    }
 
-	public String getRejectReason() {
-		return rejectReason;
-	}
+    public void setNdeptContactPhone(String ndeptContactPhone) {
+        this.ndeptContactPhone = ndeptContactPhone;
+    }
 
-	public void setRejectReason(String rejectReason) {
-		this.rejectReason = rejectReason;
-	}
+    public String getNetResCapacity() {
+        return netResCapacity;
+    }
 
-	public java.lang.String getLinkNetType() {
-		return linkNetType;
-	}
+    public void setNetResCapacity(String netResCapacity) {
+        this.netResCapacity = netResCapacity;
+    }
 
-	public void setLinkNetType(java.lang.String linkNetType) {
-		this.linkNetType = linkNetType;
-	}
+    public String getRejectReason() {
+        return rejectReason;
+    }
 
-	public String getTestReport() {
-		return testReport;
-	}
+    public void setRejectReason(String rejectReason) {
+        this.rejectReason = rejectReason;
+    }
 
-	public void setTestReport(String testReport) {
-		this.testReport = testReport;
-	}
+    public java.lang.String getLinkNetType() {
+        return linkNetType;
+    }
 
-	public String getSwichConfTime() {
-		return swichConfTime;
-	}
+    public void setLinkNetType(java.lang.String linkNetType) {
+        this.linkNetType = linkNetType;
+    }
 
-	public void setSwichConfTime(String swichConfTime) {
-		this.swichConfTime = swichConfTime;
-	}
-	
+    public String getTestReport() {
+        return testReport;
+    }
+
+    public void setTestReport(String testReport) {
+        this.testReport = testReport;
+    }
+
+    public String getSwichConfTime() {
+        return swichConfTime;
+    }
+
+    public void setSwichConfTime(String swichConfTime) {
+        this.swichConfTime = swichConfTime;
+    }
+
 }

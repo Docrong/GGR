@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-	<base>
-	    <InterfaceUser>pengguangjun</InterfaceUser>
-		<InterfaceRole>297e58996347e53e016347ecbea40005</InterfaceRole>
-	</base>
-	
-	<T1>
-		<userId>huxing</userId>
-		<deptId>10701</deptId>
-		<subRoleId>297e58996347e53e016347eebfcb000d</subRoleId>
-		<contact>18700000000</contact>
-	</T1>
-	
-	<T2>
-		<userId>huxing</userId>
-		<deptId>10701</deptId>
-		<subRoleId>297e58996347e53e016347ef57680010</subRoleId>
-		<contact>18700000000</contact>
-	</T2>
-	
-	<T2>
-		<userId>huxing</userId>
-		<deptId>10701</deptId>
-		<subRoleId>297e58996347e53e016347edb82e0008</subRoleId>
-		<contact>18700000000</contact>
-	</T2>
-	
+    <base>
+        <InterfaceUser>pengguangjun</InterfaceUser>
+        <InterfaceRole>297e58996347e53e016347ecbea40005</InterfaceRole>
+    </base>
+
+    <T1>
+        <userId>huxing</userId>
+        <deptId>10701</deptId>
+        <subRoleId>297e58996347e53e016347eebfcb000d</subRoleId>
+        <contact>18700000000</contact>
+    </T1>
+
+    <T2>
+        <userId>huxing</userId>
+        <deptId>10701</deptId>
+        <subRoleId>297e58996347e53e016347ef57680010</subRoleId>
+        <contact>18700000000</contact>
+    </T2>
+
+    <T2>
+        <userId>huxing</userId>
+        <deptId>10701</deptId>
+        <subRoleId>297e58996347e53e016347edb82e0008</subRoleId>
+        <contact>18700000000</contact>
+    </T2>
+
     <newWorkSheet>
-        <content columnName="title" interfaceName="title" defauleValue="" />
-        
-        <content columnName="mainProductInstance" interfaceName="id"   />
-        <content columnName="mainCustomerName" interfaceName="username"   />
-        <content columnName="mainBusinessType" interfaceName="bustype"   />
-        <content columnName="mainCircuitCode" interfaceName="eleid"   />
-        <content columnName="mainFailCity" interfaceName="city"   />
-        <content columnName="mainCheckState" interfaceName="Desc"   />
-        <content columnName="mainReserved1" interfaceName="Remark1"   />
-        <content columnName="mainReserved2" interfaceName="Remark2"   />
-        <content columnName="mainSheetNun" interfaceName="sheetnum"   />
-        <content columnName="mainLineArea" interfaceName="area"   />
-        <content columnName="mainCaller" interfaceName="serCaller"   />
-		
-		<content columnName="phaseId" interfaceName="" defauleValue="" />
-	</newWorkSheet>
-   
+        <content columnName="title" interfaceName="title" defauleValue=""/>
+
+        <content columnName="mainProductInstance" interfaceName="id"/>
+        <content columnName="mainCustomerName" interfaceName="username"/>
+        <content columnName="mainBusinessType" interfaceName="bustype"/>
+        <content columnName="mainCircuitCode" interfaceName="eleid"/>
+        <content columnName="mainFailCity" interfaceName="city"/>
+        <content columnName="mainCheckState" interfaceName="Desc"/>
+        <content columnName="mainReserved1" interfaceName="Remark1"/>
+        <content columnName="mainReserved2" interfaceName="Remark2"/>
+        <content columnName="mainSheetNun" interfaceName="sheetnum"/>
+        <content columnName="mainLineArea" interfaceName="area"/>
+        <content columnName="mainCaller" interfaceName="serCaller"/>
+
+        <content columnName="phaseId" interfaceName="" defauleValue=""/>
+    </newWorkSheet>
+
 </boco>
 

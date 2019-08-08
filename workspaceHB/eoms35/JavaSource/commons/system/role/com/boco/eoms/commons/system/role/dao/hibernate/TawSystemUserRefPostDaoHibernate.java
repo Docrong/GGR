@@ -53,12 +53,12 @@ public class TawSystemUserRefPostDaoHibernate extends BaseDaoHibernate implement
 
     /**
      * @see com.boco.eoms.commons.system.role.dao.TawSystemUserRefPostDao#saveTawSystemUserRefPost(TawSystemUserRefPost tawSystemUserRefPost)
-     */    
+     */
     public void saveTawSystemUserRefPost(final TawSystemUserRefPost tawSystemUserRefPost) {
         if ((tawSystemUserRefPost.getId() == null) || (tawSystemUserRefPost.getId().equals("")))
-			getHibernateTemplate().save(tawSystemUserRefPost);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSystemUserRefPost);
+            getHibernateTemplate().save(tawSystemUserRefPost);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSystemUserRefPost);
     }
 
     /**
@@ -67,37 +67,39 @@ public class TawSystemUserRefPostDaoHibernate extends BaseDaoHibernate implement
     public void removeTawSystemUserRefPost(final Long id) {
         getHibernateTemplate().delete(getTawSystemUserRefPost(id));
     }
+
     /**
      * curPage
      * pageSize
      * whereStr   sql filter
      */
-    public Map getTawSystemUserRefPosts(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSystemUserRefPosts(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSystemUserRefPost
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSystemUserRefPost";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSystemUserRefPost";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSystemUserRefPosts(final Integer curPage, final Integer pageSize) {
-			return this.getTawSystemUserRefPosts(curPage,pageSize,null);
-		}
+        return this.getTawSystemUserRefPosts(curPage, pageSize, null);
+    }
 
 }

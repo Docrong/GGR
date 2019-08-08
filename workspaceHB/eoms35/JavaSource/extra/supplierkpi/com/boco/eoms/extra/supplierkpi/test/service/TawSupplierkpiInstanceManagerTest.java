@@ -35,7 +35,7 @@ public class TawSupplierkpiInstanceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSupplierkpiInstanceDao.expects(once()).method("getTawSupplierkpiInstances")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         //List tawSupplierkpiInstances = tawSupplierkpiInstanceManager.getTawSupplierkpiInstances(null);
         //assertTrue(tawSupplierkpiInstances.size() == 1);
@@ -45,7 +45,7 @@ public class TawSupplierkpiInstanceManagerTest extends BaseManagerTestCase {
     public void testGetTawSupplierkpiInstance() throws Exception {
         // set expected behavior on dao
         tawSupplierkpiInstanceDao.expects(once()).method("getTawSupplierkpiInstance")
-            .will(returnValue(new TawSupplierkpiInstance()));
+                .will(returnValue(new TawSupplierkpiInstance()));
         TawSupplierkpiInstance tawSupplierkpiInstance = tawSupplierkpiInstanceManager.getTawSupplierkpiInstance(tawSupplierkpiInstanceId);
         assertTrue(tawSupplierkpiInstance != null);
         tawSupplierkpiInstanceDao.verify();
@@ -56,7 +56,7 @@ public class TawSupplierkpiInstanceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSupplierkpiInstanceDao.expects(once()).method("saveTawSupplierkpiInstance")
-            .with(same(tawSupplierkpiInstance)).isVoid();
+                .with(same(tawSupplierkpiInstance)).isVoid();
 
         tawSupplierkpiInstanceManager.saveTawSupplierkpiInstance(tawSupplierkpiInstance);
         tawSupplierkpiInstanceDao.verify();
@@ -69,7 +69,7 @@ public class TawSupplierkpiInstanceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSupplierkpiInstanceDao.expects(once()).method("saveTawSupplierkpiInstance")
-            .with(same(tawSupplierkpiInstance)).isVoid();
+                .with(same(tawSupplierkpiInstance)).isVoid();
         tawSupplierkpiInstanceManager.saveTawSupplierkpiInstance(tawSupplierkpiInstance);
         tawSupplierkpiInstanceDao.verify();
 

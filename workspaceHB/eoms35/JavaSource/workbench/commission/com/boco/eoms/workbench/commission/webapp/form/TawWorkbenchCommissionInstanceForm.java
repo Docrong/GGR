@@ -3,105 +3,105 @@ package com.boco.eoms.workbench.commission.webapp.form;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawWorkbenchCommissionInstanceForm extends BaseForm implements
-		java.io.Serializable {
+        java.io.Serializable {
 
-	private String id;
+    private String id;
 
-	private String deleted;
+    private String deleted;
 
-	private String userId;
+    private String userId;
 
-	private String userName;
+    private String userName;
 
-	private String moduleId;
+    private String moduleId;
 
-	private String moduleName;
+    private String moduleName;
 
-	private String trustorId;
+    private String trustorId;
 
-	private String trustorName;
+    private String trustorName;
 
-	private String startTime;
+    private String startTime;
 
-	private String endTime;
+    private String endTime;
 
-	public String getDeleted() {
-		return deleted;
-	}
+    public String getDeleted() {
+        return deleted;
+    }
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
 
-	public String getEndTime() {
-		return endTime;
-	}
+    public String getEndTime() {
+        return endTime;
+    }
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getModuleId() {
-		return moduleId;
-	}
+    public String getModuleId() {
+        return moduleId;
+    }
 
-	public void setModuleId(String moduleId) {
-		this.moduleId = moduleId;
-	}
+    public void setModuleId(String moduleId) {
+        this.moduleId = moduleId;
+    }
 
-	public String getModuleName() {
-		return moduleName;
-	}
+    public String getModuleName() {
+        return moduleName;
+    }
 
-	public void setModuleName(String moduleName) {
-		this.moduleName = moduleName;
-	}
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
 
-	public String getStartTime() {
-		return startTime;
-	}
+    public String getStartTime() {
+        return startTime;
+    }
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 
-	public String getTrustorId() {
-		return trustorId;
-	}
+    public String getTrustorId() {
+        return trustorId;
+    }
 
-	public void setTrustorId(String trustorId) {
-		this.trustorId = trustorId;
-	}
+    public void setTrustorId(String trustorId) {
+        this.trustorId = trustorId;
+    }
 
-	public String getTrustorName() {
-		return trustorName;
-	}
+    public String getTrustorName() {
+        return trustorName;
+    }
 
-	public void setTrustorName(String trustorName) {
-		this.trustorName = trustorName;
-	}
+    public void setTrustorName(String trustorName) {
+        this.trustorName = trustorName;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

@@ -54,12 +54,12 @@ public class MetermgrDaoHibernate extends BaseDaoHibernate implements IMetermgrD
 
     /**
      * @see com.boco.eoms.parter.baseinfo.metermgr.dao.MetermgrDao#saveMetermgr(Metermgr metermgr)
-     */    
+     */
     public void saveMetermgr(final Metermgr metermgr) {
         if ((metermgr.getId() == null) || (metermgr.getId().equals("")))
-			getHibernateTemplate().save(metermgr);
-		else
-			getHibernateTemplate().saveOrUpdate(metermgr);
+            getHibernateTemplate().save(metermgr);
+        else
+            getHibernateTemplate().saveOrUpdate(metermgr);
     }
 
     /**
@@ -68,45 +68,48 @@ public class MetermgrDaoHibernate extends BaseDaoHibernate implements IMetermgrD
     public void removeMetermgr(final String id) {
         getHibernateTemplate().delete(getMetermgr(id));
     }
+
     /**
-     * @see com.boco.eoms.parter.baseinfo.metermgr.dao.MetermgrDao#getMetermgrs(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.parter.baseinfo.metermgr.dao.MetermgrDao#getMetermgrs(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getMetermgrs(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getMetermgrs(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the metermgr
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from Metermgr";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from Metermgr";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.metermgr.dao.MetermgrDao#getMetermgrs(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getMetermgrs(final Integer curPage, final Integer pageSize) {
-			return this.getMetermgrs(curPage,pageSize,null);
-		}
+        return this.getMetermgrs(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.metermgr.dao.MetermgrDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from Metermgr obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from Metermgr obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

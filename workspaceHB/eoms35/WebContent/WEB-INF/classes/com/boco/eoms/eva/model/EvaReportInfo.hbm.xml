@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,42 +13,22 @@
             table="eva_report_info"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
-
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
-
-    </generator>
-
-    </id>
-
-        <property
-            name="taskId"
-            	column="task_id"
-                length="32"
-                not-null="false"
-                unique="false"
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
         >
 
-        </property>
-        
-        <property
-            name="time"
-            	column="time"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-        </property>
-        
+            </generator>
+
+        </id>
+
         <property
-            name="timeType"
-            	column="time_type"
+                name="taskId"
+                column="task_id"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -57,66 +37,86 @@
         </property>
 
         <property
-            name="partnerId"
-            	column="partner_id"
+                name="time"
+                column="time"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="partnerName"
-            	column="partner_name"
+                name="timeType"
+                column="time_type"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="partnerId"
+                column="partner_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="partnerName"
+                column="partner_name"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="isPublish"
-            	column="is_publish"
+                name="isPublish"
+                column="is_publish"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="createTime"
-            	column="create_time"
+                name="createTime"
+                column="create_time"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="totalWeight"
-            	column="total_weight"
+                name="totalWeight"
+                column="total_weight"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="totalScore"
-            	column="total_score"
+                name="totalScore"
+                column="total_score"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

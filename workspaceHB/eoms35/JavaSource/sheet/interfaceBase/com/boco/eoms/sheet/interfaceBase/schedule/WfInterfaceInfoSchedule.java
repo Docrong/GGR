@@ -9,11 +9,11 @@ import com.boco.eoms.sheet.interfaceBase.util.InterfaceJobStatic;
 
 public class WfInterfaceInfoSchedule implements Job {
 
-	private WfInterfaceInfoBo wfBo = WfInterfaceInfoBo.getInstance();
+    private WfInterfaceInfoBo wfBo = WfInterfaceInfoBo.getInstance();
 
-	public void execute(JobExecutionContext context)
-			throws JobExecutionException {
-		//屏蔽 by lyg
+    public void execute(JobExecutionContext context)
+            throws JobExecutionException {
+        //屏蔽 by lyg
 //		boolean ifExceuteJob=InterfaceJobStatic.isIfExcuteJob();
 //		if (!ifExceuteJob) {
 //			BocoLog.info(WfInterfaceInfoSchedule.class, "Job is running wait for next Schedule");
@@ -28,7 +28,7 @@ public class WfInterfaceInfoSchedule implements Job {
 //			BocoLog.info(WfInterfaceInfoSchedule.class, "Job is running over");
 //			InterfaceJobStatic.setIfExcuteJob(true);
 //		}
-	}
+    }
 
 //	public static void main(String args[]) {
 //		for(int i =0;i<100;i++){

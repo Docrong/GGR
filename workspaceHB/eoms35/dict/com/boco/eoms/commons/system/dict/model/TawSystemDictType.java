@@ -4,6 +4,7 @@
 package com.boco.eoms.commons.system.dict.model;
 
 // java standard library
+
 import java.io.Serializable;
 
 // eoms class
@@ -15,10 +16,10 @@ import com.boco.eoms.base.model.BaseObject;
  * mapping file.
  * <p>
  * <a href="TawSystemDictType.java.html"><i>View Source</i></a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="Taw_System_DictType"
  */
@@ -27,37 +28,38 @@ public class TawSystemDictType extends BaseObject implements Serializable {
     // properties
     private Integer id; // required
 
-    private String dictId; 
+    private String dictId;
 
     private String dictCode;
 
     private String dictName;
 
-    private Integer moduleId; 
+    private Integer moduleId;
 
-    private String moduleName; 
+    private String moduleName;
 
     private String dictRemark;
 
     private String parentDictId;
 
     private Integer sysType;
-    
+
     private Integer leaf;
 
-/**
- * 叶子节点
- * @return
- */
+    /**
+     * 叶子节点
+     *
+     * @return
+     */
     public Integer getLeaf() {
-		return leaf;
-	}
+        return leaf;
+    }
 
-	public void setLeaf(Integer leaf) {
-		this.leaf = leaf;
-	}
+    public void setLeaf(Integer leaf) {
+        this.leaf = leaf;
+    }
 
-	/**
+    /**
      * Default Constructor
      */
     public TawSystemDictType() {
@@ -71,25 +73,25 @@ public class TawSystemDictType extends BaseObject implements Serializable {
     }
 
     /**
+     * @return
      * @hibernate.property length="50" not-null="true" unique="true"
      * @struts.validator type="required"
      * @eoms.show
      * @eoms.cn name="字典类型"
-     * @return
      */
     public String getDictName() {
         return dictName;
     }
 
     public String getDictCode() {
-		return dictCode;
-	}
+        return dictCode;
+    }
 
-	public void setDictCode(String dictCode) {
-		this.dictCode = dictCode;
-	}
+    public void setDictCode(String dictCode) {
+        this.dictCode = dictCode;
+    }
 
-	/**
+    /**
      * @struts.validator type="required"
      * @hibernate.property length="50" not-null="true"
      */
@@ -98,21 +100,21 @@ public class TawSystemDictType extends BaseObject implements Serializable {
     }
 
     /**
+     * @return
      * @hibernate.property length="50" not-null="true"
      * @struts.validator type="required"
      * @eoms.show
      * @eoms.cn name="所属模块"
-     * @return
      */
     public String getModuleName() {
         return moduleName;
     }
 
     /**
+     * @return
      * @hibernate.property length="256"
      * @eoms.show
      * @eoms.cn name="字典备注"
-     * @return
      */
     public String getDictRemark() {
         return dictRemark;
@@ -140,17 +142,17 @@ public class TawSystemDictType extends BaseObject implements Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.base.model.BaseObject#equals(java.lang.Object)
      */
-    
+
     public boolean equals(Object o) {
         return false;
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.base.model.BaseObject#hashCode()
      */
 
@@ -160,7 +162,7 @@ public class TawSystemDictType extends BaseObject implements Serializable {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.base.model.BaseObject#toString()
      */
 

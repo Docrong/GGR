@@ -6,17 +6,15 @@
 package com.boco.eoms.sheetflowline.util;
 
 
-public class StaticVariable
-{
+public class StaticVariable {
 
-	public static final int DUTYTYPE_DAYTIME = 1;
-	public static final int DUTYTYPE_NIGHT = 2;
-	public static final String SPECAIL_JIAOHUAN = "JH";
-	public static final String SPECAIL_CHUANSHU = "CS";
-	public static final String SPECAIL_SHUJU = "SJ";
-	public static final String SPECAIL_OTHER = "Other";
+    public static final int DUTYTYPE_DAYTIME = 1;
+    public static final int DUTYTYPE_NIGHT = 2;
+    public static final String SPECAIL_JIAOHUAN = "JH";
+    public static final String SPECAIL_CHUANSHU = "CS";
+    public static final String SPECAIL_SHUJU = "SJ";
+    public static final String SPECAIL_OTHER = "Other";
 
-	public StaticVariable()
-	{
-	}
+    public StaticVariable() {
+    }
 }

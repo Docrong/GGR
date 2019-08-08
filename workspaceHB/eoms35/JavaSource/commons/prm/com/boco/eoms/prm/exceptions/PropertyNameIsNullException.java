@@ -19,25 +19,24 @@ import java.io.PrintWriter;
  * <p>
  * Date:2007-8-6 21:16:48
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class PropertyNameIsNullException extends PRMException {
 
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = -1064790562459462146L;
+     *
+     */
+    private static final long serialVersionUID = -1064790562459462146L;
 
-	public PropertyNameIsNullException(String msg) {
+    public PropertyNameIsNullException(String msg) {
         super(msg);
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
@@ -47,7 +46,7 @@ public class PropertyNameIsNullException extends PRMException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace()
      */
     public void printStackTrace() {
@@ -57,7 +56,7 @@ public class PropertyNameIsNullException extends PRMException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace(java.io.PrintStream)
      */
     public void printStackTrace(PrintStream s) {
@@ -67,7 +66,7 @@ public class PropertyNameIsNullException extends PRMException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace(java.io.PrintWriter)
      */
     public void printStackTrace(PrintWriter w) {

@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Thu Sep 27 14:32:21 CST 2012
  * </p>
- * 
+ *
  * @author ph
  * @version 3.5
- * 
  */
- 
- public interface ITransprovincialMainManager extends IMainService {
- 
- }
+
+public interface ITransprovincialMainManager extends IMainService {
+
+}

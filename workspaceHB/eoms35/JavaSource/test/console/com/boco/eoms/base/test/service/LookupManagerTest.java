@@ -30,7 +30,7 @@ public class LookupManagerTest extends BaseManagerTestCase {
         List testData = new ArrayList();
         testData.add(role);
         lookupDao.expects(once()).method("getRoles")
-                 .withNoArguments().will(returnValue(testData));
+                .withNoArguments().will(returnValue(testData));
 
         List roles = mgr.getAllRoles();
         assertTrue(roles.size() > 0);

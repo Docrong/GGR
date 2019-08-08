@@ -11,32 +11,27 @@ import com.boco.eoms.sheet.tool.complaintmsgconfig.mgr.IComplaintSheetMsgConfigM
 
 import commonj.sdo.DataObject;
 
-public class ComplaintSheetSmsUtils
-{
+public class ComplaintSheetSmsUtils {
 
-	public ComplaintSheetSmsUtils()
-	{
-	}
+    public ComplaintSheetSmsUtils() {
+    }
 
-	public String changeSender(String receivers, DataObject mainObject, String workflowName, String sheetKey, String sheetId, String title, Integer receiveType, 
-			String receiverId, String acceptLimitTime, String dealLimitTime, String taskCnName)
-	{
-		if ("Ò»¼¶´¦Àí".equals(taskCnName))
-		{
-			String faultArea = StaticMethod.nullObject2String(mainObject.get("customAttribution"));
-			String complaintType = StaticMethod.nullObject2String(mainObject.get("bdeptContactPhone"));
-			System.out.println("=====faultArea=======" + faultArea + "&&&" + complaintType);
-			IComplaintSheetMsgConfigMgr mgr = (IComplaintSheetMsgConfigMgr)ApplicationContextHolder.getInstance().getBean("complaintSheetMsgConfigMgr");
-			String tempUser = mgr.getNotifyUser(faultArea, complaintType);
-			System.out.println("====tempUser====" + tempUser);
-			if (!"".equals(tempUser))
-			{
-				tempUser = tempUser.replaceAll(",", "#1,");
-				receivers = receivers + "#" + 1 + "," + tempUser;
-				System.out.println("=====taskCnName=======" + taskCnName + "&&&" + receivers);
-			}
-		}
-		System.out.println("=====Ò»¼¶´¦Àí=======" + taskCnName + receivers);
-		return receivers;
-	}
+    public String changeSender(String receivers, DataObject mainObject, String workflowName, String sheetKey, String sheetId, String title, Integer receiveType,
+                               String receiverId, String acceptLimitTime, String dealLimitTime, String taskCnName) {
+        if ("Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".equals(taskCnName)) {
+            String faultArea = StaticMethod.nullObject2String(mainObject.get("customAttribution"));
+            String complaintType = StaticMethod.nullObject2String(mainObject.get("bdeptContactPhone"));
+            System.out.println("=====faultArea=======" + faultArea + "&&&" + complaintType);
+            IComplaintSheetMsgConfigMgr mgr = (IComplaintSheetMsgConfigMgr) ApplicationContextHolder.getInstance().getBean("complaintSheetMsgConfigMgr");
+            String tempUser = mgr.getNotifyUser(faultArea, complaintType);
+            System.out.println("====tempUser====" + tempUser);
+            if (!"".equals(tempUser)) {
+                tempUser = tempUser.replaceAll(",", "#1,");
+                receivers = receivers + "#" + 1 + "," + tempUser;
+                System.out.println("=====taskCnName=======" + taskCnName + "&&&" + receivers);
+            }
+        }
+        System.out.println("=====Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½=======" + taskCnName + receivers);
+        return receivers;
+    }
 }

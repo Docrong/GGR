@@ -43,161 +43,161 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Fri Jul 10 10:50:46 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public final class TrainEnterAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增报名信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增报名信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-    	TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
-    	TrainEnterForm trainEnterForm = (TrainEnterForm)form;
-    	trainEnterForm.setEnterName(this.getUserId(request));
-    	trainEnterForm.setTrainEnterDept(this.getUser(request).getDeptid());
-    	String trainPlanId = StaticMethod.null2String(request.getParameter("trainPlanId"));
-    	TrainPlan trainPlan = trainPlanMgr.getTrainPlan(trainPlanId);
-    	Date trainEndTime = trainPlan.getTrainEndTime();
-    	Date date = StaticMethod.getLocalTime();
-    	if(date.after(trainEndTime)){
-			return mapping.findForward("enterFalse");//时间已经过了 不能报名
-		}
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改报名信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
+        TrainEnterForm trainEnterForm = (TrainEnterForm) form;
+        trainEnterForm.setEnterName(this.getUserId(request));
+        trainEnterForm.setTrainEnterDept(this.getUser(request).getDeptid());
+        String trainPlanId = StaticMethod.null2String(request.getParameter("trainPlanId"));
+        TrainPlan trainPlan = trainPlanMgr.getTrainPlan(trainPlanId);
+        Date trainEndTime = trainPlan.getTrainEndTime();
+        Date date = StaticMethod.getLocalTime();
+        if (date.after(trainEndTime)) {
+            return mapping.findForward("enterFalse");//时间已经过了 不能报名
+        }
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改报名信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		TrainEnter trainEnter = trainEnterMgr.getTrainEnter(id);
-		TrainEnterForm trainEnterForm = (TrainEnterForm) convert(trainEnter);
-		updateFormBean(mapping, request, trainEnterForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存报名信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
-		TrainEnterForm trainEnterForm = (TrainEnterForm) form;
-		boolean isNew = (null == trainEnterForm.getId() || "".equals(trainEnterForm.getId()));
-		TrainEnter trainEnter = (TrainEnter) convert(trainEnterForm);
-		trainEnter.setTrainEnterTime(StaticMethod.getLocalTime());
-		if (isNew) {
-			trainEnterMgr.saveTrainEnter(trainEnter);
-		} else {
-			trainEnterMgr.saveTrainEnter(trainEnter);
-		}
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 删除报名信息
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		trainEnterMgr.removeTrainEnter(id);
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 分页显示报名信息列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainEnterConstants.TRAINENTER_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
-		Map map = (Map) trainEnterMgr.getTrainEnters(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(TrainEnterConstants.TRAINENTER_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示报名信息列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        TrainEnter trainEnter = trainEnterMgr.getTrainEnter(id);
+        TrainEnterForm trainEnterForm = (TrainEnterForm) convert(trainEnter);
+        updateFormBean(mapping, request, trainEnterForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存报名信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
+        TrainEnterForm trainEnterForm = (TrainEnterForm) form;
+        boolean isNew = (null == trainEnterForm.getId() || "".equals(trainEnterForm.getId()));
+        TrainEnter trainEnter = (TrainEnter) convert(trainEnterForm);
+        trainEnter.setTrainEnterTime(StaticMethod.getLocalTime());
+        if (isNew) {
+            trainEnterMgr.saveTrainEnter(trainEnter);
+        } else {
+            trainEnterMgr.saveTrainEnter(trainEnter);
+        }
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 删除报名信息
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        trainEnterMgr.removeTrainEnter(id);
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 分页显示报名信息列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainEnterConstants.TRAINENTER_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
+        Map map = (Map) trainEnterMgr.getTrainEnters(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(TrainEnterConstants.TRAINENTER_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示报名信息列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

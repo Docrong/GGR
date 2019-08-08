@@ -6,6 +6,7 @@ import java.io.*;
 import java.sql.*;
 import java.util.*;
 import javax.sql.*;
+
 import com.boco.eoms.common.util.*;
 import com.boco.eoms.infmanage.model.*;
 //import com.boco.eoms.jbzl.model.*;
@@ -13,24 +14,20 @@ import com.boco.eoms.common.util.CacheManager;
 import com.boco.eoms.common.dao.*;
 
 public class TawInfUpfileDAO
-    extends DAO
-{
-    public TawInfUpfileDAO(com.boco.eoms.db.util.ConnectionPool ds)
-    {
+        extends DAO {
+    public TawInfUpfileDAO(com.boco.eoms.db.util.ConnectionPool ds) {
         super(ds);
     }
 
-    public void insert(TawInfUpfile tawInfUpfile) throws SQLException
-    {
+    public void insert(TawInfUpfile tawInfUpfile) throws SQLException {
         String sql;
         sql = "INSERT INTO taw_inf_upfile"
-            + "(info_id, inf_upfile_name, encodename)"
-            + " VALUES (?, ?, ?)";
+                + "(info_id, inf_upfile_name, encodename)"
+                + " VALUES (?, ?, ?)";
         com.boco.eoms.db.util.BocoConnection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        try
-        {
+        try {
             conn = ds.getConnection();
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, tawInfUpfile.getInfoId());
@@ -39,17 +36,13 @@ public class TawInfUpfileDAO
             pstmt.executeUpdate();
             pstmt.close();
             conn.commit();
-        }
-        catch (SQLException sqle)
-        {
-          //  close(rs);
-        //    close(pstmt);
-        //    rollback(conn);
-         //   sqle.printStackTrace();
-         //   throw sqle;
-        }
-        finally
-        {
+        } catch (SQLException sqle) {
+            //  close(rs);
+            //    close(pstmt);
+            //    rollback(conn);
+            //   sqle.printStackTrace();
+            //   throw sqle;
+        } finally {
             close(conn);
         }
     }
@@ -91,15 +84,13 @@ public class TawInfUpfileDAO
         }
     }*/
 
-    public void update(TawInfUpfile tawInfUpfile) throws SQLException
-    {
+    public void update(TawInfUpfile tawInfUpfile) throws SQLException {
         com.boco.eoms.db.util.BocoConnection conn = null;
         PreparedStatement pstmt = null;
-        try
-        {
+        try {
             conn = ds.getConnection();
             String sql =
-                "UPDATE taw_inf_upfile SET inf_upfile_name=?, encodename=? WHERE info_id=?";
+                    "UPDATE taw_inf_upfile SET inf_upfile_name=?, encodename=? WHERE info_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, tawInfUpfile.getInfUpfileName());
             pstmt.setString(2, tawInfUpfile.getEncodename());
@@ -107,15 +98,11 @@ public class TawInfUpfileDAO
             pstmt.executeUpdate();
             close(pstmt);
             conn.commit();
-        }
-        catch (SQLException e)
-        {
-         //   close(pstmt);
-          //  rollback(conn);
-         //   e.printStackTrace();
-        }
-        finally
-        {
+        } catch (SQLException e) {
+            //   close(pstmt);
+            //  rollback(conn);
+            //   e.printStackTrace();
+        } finally {
             close(conn);
         }
     }
@@ -150,62 +137,51 @@ public class TawInfUpfileDAO
         }
     }*/
 
-    public void delete(int infoId) throws SQLException
-    {
+    public void delete(int infoId) throws SQLException {
         com.boco.eoms.db.util.BocoConnection conn = null;
         PreparedStatement pstmt = null;
-        try
-        {
+        try {
             conn = ds.getConnection();
             String sql =
-                "DELETE FROM taw_inf_upfile WHERE info_id=?";
+                    "DELETE FROM taw_inf_upfile WHERE info_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, infoId);
             pstmt.executeUpdate();
             close(pstmt);
             conn.commit();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             close(pstmt);
-           // rollback(conn);
-          //  e.printStackTrace();
-        }
-        finally
-        {
+            // rollback(conn);
+            //  e.printStackTrace();
+        } finally {
             close(conn);
         }
     }
 
-    public String getFilename(int infoId) throws SQLException
-    {
+    public String getFilename(int infoId) throws SQLException {
         String filename = "";
         com.boco.eoms.db.util.BocoConnection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        try
-        {
+        try {
             conn = ds.getConnection();
             String sql =
-                "SELECT * FROM taw_inf_upfile WHERE info_id=?";
+                    "SELECT * FROM taw_inf_upfile WHERE info_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, infoId);
             rs = pstmt.executeQuery();
-           if(rs.next())
-            {filename = StaticMethod.dbNull2String(rs.getString("inf_upfile_name"));}
+            if (rs.next()) {
+                filename = StaticMethod.dbNull2String(rs.getString("inf_upfile_name"));
+            }
             close(rs);
             close(pstmt);
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             close(rs);
             close(pstmt);
-          //  rollback(conn);
-          //  e.printStackTrace();
-        }
-        finally
-        {
+            //  rollback(conn);
+            //  e.printStackTrace();
+        } finally {
             close(conn);
         }
         return filename;
@@ -240,42 +216,35 @@ public class TawInfUpfileDAO
     }*/
 
     public TawInfUpfile retrieve(int infoId) throws
-        SQLException
-    {
+            SQLException {
         TawInfUpfile tawInfUpfile = null;
         com.boco.eoms.db.util.BocoConnection conn = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
-        try
-        {
+        try {
             conn = ds.getConnection();
             String sql =
-                "SELECT * FROM taw_inf_upfile WHERE info_id=?";
+                    "SELECT * FROM taw_inf_upfile WHERE info_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setInt(1, infoId);
             rs = pstmt.executeQuery();
-            if (rs.next())
-            {
+            if (rs.next()) {
                 tawInfUpfile = new TawInfUpfile();
                 tawInfUpfile.setInfoId(rs.getInt("info_id"));
                 tawInfUpfile.setInfUpfileName(StaticMethod.dbNull2String(rs.
-                    getString("inf_upfile_name")));
+                        getString("inf_upfile_name")));
                 tawInfUpfile.setEncodename(StaticMethod.dbNull2String(rs.
-                    getString("encodename")));
+                        getString("encodename")));
             }
             close(rs);
             close(pstmt);
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             close(rs);
             close(pstmt);
-          //  rollback(conn);
-           // e.printStackTrace();
-        }
-        finally
-        {
+            //  rollback(conn);
+            // e.printStackTrace();
+        } finally {
             close(conn);
         }
         return tawInfUpfile;

@@ -1,7 +1,10 @@
 package com.boco.eoms.filemanager.extra.statistic.bo;
+
 import com.boco.eoms.common.log.BocoLog;
+
 import java.util.*;
 import java.lang.Object;
+
 import org.apache.struts.action.*;
 import org.hibernate.HibernateException;
 
@@ -19,24 +22,22 @@ import com.boco.eoms.filemanager.extra.statistic.dao.*;
 
 
 public class AutoStatisticBO {
-  Map actionFormMap;
-  TawSystemSessionForm saveSessionBeanForm;
-  String userId;
-  int deptId;
+    Map actionFormMap;
+    TawSystemSessionForm saveSessionBeanForm;
+    String userId;
+    int deptId;
 
 
-  public AutoStatisticBO() {
-  }
+    public AutoStatisticBO() {
+    }
 
 
+    public List listAllSubscribe() throws
+            Exception {
+        AutoStatisticDAO statisticDAO = new AutoStatisticDAO();
+        List list = statisticDAO.listAllSubscribe();
+        return list;
+    }
 
 
-  public List listAllSubscribe() throws
-       Exception {
-     AutoStatisticDAO statisticDAO = new AutoStatisticDAO();
-     List list = statisticDAO.listAllSubscribe();
-     return list;
-   }
-
-
-  }
+}

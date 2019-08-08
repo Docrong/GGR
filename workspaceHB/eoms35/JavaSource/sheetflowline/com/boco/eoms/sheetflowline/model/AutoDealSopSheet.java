@@ -7,58 +7,48 @@ package com.boco.eoms.sheetflowline.model;
 
 import java.util.Date;
 
-public class AutoDealSopSheet
-{
+public class AutoDealSopSheet {
 
-	private String id;
-	private String ruleId;
-	private String sheetId;
-	private Date createTime;
+    private String id;
+    private String ruleId;
+    private String sheetId;
+    private Date createTime;
 
-	public AutoDealSopSheet(String ruleId, String sheetId, Date createTime)
-	{
-		this.ruleId = ruleId;
-		this.sheetId = sheetId;
-		this.createTime = createTime;
-	}
+    public AutoDealSopSheet(String ruleId, String sheetId, Date createTime) {
+        this.ruleId = ruleId;
+        this.sheetId = sheetId;
+        this.createTime = createTime;
+    }
 
-	public Date getCreateTime()
-	{
-		return createTime;
-	}
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	public void setCreateTime(Date createTime)
-	{
-		this.createTime = createTime;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public String getId()
-	{
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id)
-	{
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getRuleId()
-	{
-		return ruleId;
-	}
+    public String getRuleId() {
+        return ruleId;
+    }
 
-	public void setRuleId(String ruleId)
-	{
-		this.ruleId = ruleId;
-	}
+    public void setRuleId(String ruleId) {
+        this.ruleId = ruleId;
+    }
 
-	public String getSheetId()
-	{
-		return sheetId;
-	}
+    public String getSheetId() {
+        return sheetId;
+    }
 
-	public void setSheetId(String sheetId)
-	{
-		this.sheetId = sheetId;
-	}
+    public void setSheetId(String sheetId) {
+        this.sheetId = sheetId;
+    }
 }

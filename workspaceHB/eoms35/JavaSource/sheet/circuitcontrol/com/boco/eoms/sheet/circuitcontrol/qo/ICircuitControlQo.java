@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.circuitcontrol.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Sun Sep 29 16:51:15 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICircuitControlQo extends IWorkSheetQO {
- 
- }
+
+public interface ICircuitControlQo extends IWorkSheetQO {
+
+}

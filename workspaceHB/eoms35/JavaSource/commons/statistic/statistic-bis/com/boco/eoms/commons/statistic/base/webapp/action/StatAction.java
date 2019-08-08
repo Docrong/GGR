@@ -12,124 +12,120 @@ import com.boco.eoms.commons.statistic.base.util.StatUtil;
 
 
 public class StatAction extends BaseAction {
-	/**
-	 * 显示kpi结果页面
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward performStatistic(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception{		
-		IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
+    /**
+     * 显示kpi结果页面
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward performStatistic(ActionMapping mapping, ActionForm form,
+                                          HttpServletRequest request, HttpServletResponse response) throws Exception {
+        IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
 //		String servletPath = getServlet().getServletContext().getRealPath("");//WebServer path		
-		statMethod.performStatistic(mapping, form, request, response);
-		
-		String reportFromType = String.valueOf(request.getAttribute("reportFromType"));
-		ActionForward actionForward = null;
-		if("StatFrom".equalsIgnoreCase(reportFromType))
-		{
-			//StatFrom 统计报表
-			actionForward = mapping.findForward("statisticresult");
-		}
-		else if("graphicsFrom".equalsIgnoreCase(reportFromType))
-		{
-			//graphicsFrom 图形报表
-			actionForward = mapping.findForward("showGraphicsStatisticPage");
-		}
-		else if("StatFrom_graphicsFrom".equalsIgnoreCase(reportFromType))
-		{
-			//同时显示统计和图形报表
-			actionForward = mapping.findForward("showStatAndGraphicsStatisticPage");
-		}
+        statMethod.performStatistic(mapping, form, request, response);
+
+        String reportFromType = String.valueOf(request.getAttribute("reportFromType"));
+        ActionForward actionForward = null;
+        if ("StatFrom".equalsIgnoreCase(reportFromType)) {
+            //StatFrom 统计报表
+            actionForward = mapping.findForward("statisticresult");
+        } else if ("graphicsFrom".equalsIgnoreCase(reportFromType)) {
+            //graphicsFrom 图形报表
+            actionForward = mapping.findForward("showGraphicsStatisticPage");
+        } else if ("StatFrom_graphicsFrom".equalsIgnoreCase(reportFromType)) {
+            //同时显示统计和图形报表
+            actionForward = mapping.findForward("showStatAndGraphicsStatisticPage");
+        }
         return actionForward;
-		
-	}
-	
-	/**
-	 * 显示kpi查询页面
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showStatisticPage(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception{
-		
-		String findForward = request.getParameter("findForward");
-		String excelConfigURL =request.getParameter("excelConfigURL");
-		String findListForward =request.getParameter("findListForward");
-		StatUtil.validataParameter(findForward,excelConfigURL,findListForward);
-		
-		IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
-		statMethod.showStatisticPage(mapping, form, request, response);
-		
+
+    }
+
+    /**
+     * 显示kpi查询页面
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showStatisticPage(ActionMapping mapping, ActionForm form,
+                                           HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        String findForward = request.getParameter("findForward");
+        String excelConfigURL = request.getParameter("excelConfigURL");
+        String findListForward = request.getParameter("findListForward");
+        StatUtil.validataParameter(findForward, excelConfigURL, findListForward);
+
+        IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
+        statMethod.showStatisticPage(mapping, form, request, response);
+
         return mapping.findForward(findForward);
-		
-	}
-	
-	/**
-	 * kpi页面点击数字产生工单列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showStatisticSheetList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception{
-		IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
-		statMethod.showStatisticSheetList(mapping, form, request, response);
-		
-		String findListForward =request.getParameter("findListForward");
-		
-        return  mapping.findForward(findListForward);//mapping.findForward("statisticsheetlist");
-	}
-	
-	/**
-	 * 显示图形报表
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showGraphicsStatisticPage(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception{
-		
-		IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
-		statMethod.showGraphicsStatisticPage(mapping, form, request, response);
-		return mapping.findForward("showGraphicsStatisticPage");
-	}
-	
-	/**
-	 * 按照统计接入规范 接入门户系统
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward buildStatObject(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)throws Exception{
-		IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
-		statMethod.buildStatObject(mapping, form, request, response);
-		
-		return null;
-	}
-	
-	
-	
+
+    }
+
+    /**
+     * kpi页面点击数字产生工单列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showStatisticSheetList(ActionMapping mapping, ActionForm form,
+                                                HttpServletRequest request, HttpServletResponse response) throws Exception {
+        IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
+        statMethod.showStatisticSheetList(mapping, form, request, response);
+
+        String findListForward = request.getParameter("findListForward");
+
+        return mapping.findForward(findListForward);//mapping.findForward("statisticsheetlist");
+    }
+
+    /**
+     * 显示图形报表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showGraphicsStatisticPage(ActionMapping mapping, ActionForm form,
+                                                   HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
+        statMethod.showGraphicsStatisticPage(mapping, form, request, response);
+        return mapping.findForward("showGraphicsStatisticPage");
+    }
+
+    /**
+     * 按照统计接入规范 接入门户系统
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward buildStatObject(ActionMapping mapping, ActionForm form,
+                                         HttpServletRequest request, HttpServletResponse response) throws Exception {
+        IStatMethod statMethod = (IStatMethod) getBean(mapping.getAttribute());
+        statMethod.buildStatObject(mapping, form, request, response);
+
+        return null;
+    }
+
+
 //	//*************************定制统计*************************************
 //	
 //	/**

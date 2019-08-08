@@ -1,10 +1,9 @@
-function isSelectCity(formName,selectName)//ÊÇ·ñÑ¡ÔñÁË³ÇÊÐ
+function isSelectCity(formName, selectName)//ï¿½Ç·ï¿½Ñ¡ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½
 {
-	if (formName.fi_city.value=="0")
-	{
-		alert("ÄãÃ»ÓÐÑ¡Ôñ³ÇÊÐ");
-		formName.fi_city.options[0].selected=true;
-		formName.fi_city.focus();
-		return;
-	}
+    if (formName.fi_city.value == "0") {
+        alert("ï¿½ï¿½Ã»ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½");
+        formName.fi_city.options[0].selected = true;
+        formName.fi_city.focus();
+        return;
+    }
 }

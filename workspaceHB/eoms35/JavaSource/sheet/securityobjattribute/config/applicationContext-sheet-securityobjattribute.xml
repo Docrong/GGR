@@ -1,119 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
 
     <bean id="ISecurityObjAttributeMainDAO"
-		class="com.boco.eoms.sheet.securityobjattribute.dao.hibernate.SecurityObjAttributeMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="ISecurityObjAttributeLinkDAO"
-		class="com.boco.eoms.sheet.securityobjattribute.dao.hibernate.SecurityObjAttributeLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="ISecurityObjAttributeTaskDAO"
-		class="com.boco.eoms.sheet.securityobjattribute.dao.hibernate.SecurityObjAttributeTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="SecurityObjAttributeTask"
-		class="com.boco.eoms.sheet.securityobjattribute.model.SecurityObjAttributeTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.securityobjattribute.dao.hibernate.SecurityObjAttributeMainDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="ISecurityObjAttributeLinkDAO"
+          class="com.boco.eoms.sheet.securityobjattribute.dao.hibernate.SecurityObjAttributeLinkDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="ISecurityObjAttributeTaskDAO"
+          class="com.boco.eoms.sheet.securityobjattribute.dao.hibernate.SecurityObjAttributeTaskDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="SecurityObjAttributeTask"
+          class="com.boco.eoms.sheet.securityobjattribute.model.SecurityObjAttributeTask" autowire="byName">
+    </bean>
     <bean id="SecurityObjAttributeLink"
-		class="com.boco.eoms.sheet.securityobjattribute.model.SecurityObjAttributeLink"
-		autowire="byName" />
-	<bean id="SecurityObjAttributeMain"
-		class="com.boco.eoms.sheet.securityobjattribute.model.SecurityObjAttributeMain"
-		autowire="byName" />
-	<bean id="iSecurityObjAttributeTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeTaskManagerImpl">
-				<property name="taskModelObject" ref="SecurityObjAttributeTask" />
-				<property name="taskDAO">
-					<ref bean="ISecurityObjAttributeTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-			       <value>/config/securityobjattributeTaskConfig.properties</value>
-		        </property>				
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iSecurityObjAttributeFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iSecurityObjAttributeLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeLinkManagerImpl">
-				<property name="linkObject" ref="SecurityObjAttributeLink"/>
-				<property name="linkDAO">
-				  <ref bean="ISecurityObjAttributeLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iSecurityObjAttributeMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeMainManagerImpl">
-			    <property name="mainObject" ref="SecurityObjAttributeMain" />
-				<property name="mainDAO">
-				 <ref bean="ISecurityObjAttributeMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iSecurityObjAttributeQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>SecurityObjAttribute</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/securityobjattribute-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.securityobjattribute.model.SecurityObjAttributeLink"
+          autowire="byName"/>
+    <bean id="SecurityObjAttributeMain"
+          class="com.boco.eoms.sheet.securityobjattribute.model.SecurityObjAttributeMain"
+          autowire="byName"/>
+    <bean id="iSecurityObjAttributeTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeTaskManagerImpl">
+                <property name="taskModelObject" ref="SecurityObjAttributeTask"/>
+                <property name="taskDAO">
+                    <ref bean="ISecurityObjAttributeTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/securityobjattributeTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSecurityObjAttributeFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSecurityObjAttributeLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeLinkManagerImpl">
+                <property name="linkObject" ref="SecurityObjAttributeLink"/>
+                <property name="linkDAO">
+                    <ref bean="ISecurityObjAttributeLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSecurityObjAttributeMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.securityobjattribute.service.impl.SecurityObjAttributeMainManagerImpl">
+                <property name="mainObject" ref="SecurityObjAttributeMain"/>
+                <property name="mainDAO">
+                    <ref bean="ISecurityObjAttributeMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iSecurityObjAttributeQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>SecurityObjAttribute</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/securityobjattribute-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iSecurityObjAttributeQo"
-		class="com.boco.eoms.sheet.securityobjattribute.qo.impl.SecurityObjAttributeQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="SecurityObjAttributeMain" />
-		<property name="poLink" value="SecurityObjAttributeLink" />
-		<property name="poTask" value="SecurityObjAttributeTask" />
-		<property name="aliasMain" value="securityobjattributeMain" />
-		<property name="aliasLink" value="securityobjattributeLink" />
-		<property name="aliasTask" value="securityobjattributeTask" />
+    <bean id="iSecurityObjAttributeQo"
+          class="com.boco.eoms.sheet.securityobjattribute.qo.impl.SecurityObjAttributeQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="SecurityObjAttributeMain"/>
+        <property name="poLink" value="SecurityObjAttributeLink"/>
+        <property name="poTask" value="SecurityObjAttributeTask"/>
+        <property name="aliasMain" value="securityobjattributeMain"/>
+        <property name="aliasLink" value="securityobjattributeLink"/>
+        <property name="aliasTask" value="securityobjattributeTask"/>
 
-	</bean>
+    </bean>
 
-	<bean id="SecurityObjAttribute" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.securityobjattribute.webapp.action.SecurityObjAttributeMethod">
-				<property name="businessFlowService" >
-					<ref bean="iSecurityObjAttributeFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iSecurityObjAttributeLinkManager" />
-				<property name="mainService"
-					ref="iSecurityObjAttributeMainManager" />
-				<property name="sheetTask"
-					ref="SecurityObjAttributeTask" />
-				<property name="taskService"
-					ref="iSecurityObjAttributeTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/securityobjattribute-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
+    <bean id="SecurityObjAttribute" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.securityobjattribute.webapp.action.SecurityObjAttributeMethod">
+                <property name="businessFlowService">
+                    <ref bean="iSecurityObjAttributeFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iSecurityObjAttributeLinkManager"/>
+                <property name="mainService"
+                          ref="iSecurityObjAttributeMainManager"/>
+                <property name="sheetTask"
+                          ref="SecurityObjAttributeTask"/>
+                <property name="taskService"
+                          ref="iSecurityObjAttributeTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/securityobjattribute-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
 </beans>

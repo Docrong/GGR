@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,111 +13,111 @@
             table="taw_common_logdeploy"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="beginnotetime"
+                name="beginnotetime"
                 length="10"
         >
 
         </property>
 
         <property
-            name="filesavepath"
+                name="filesavepath"
                 length="100"
         >
 
         </property>
 
         <property
-            name="isdebug"
+                name="isdebug"
                 length="2"
         >
 
         </property>
 
         <property
-            name="loglevel"
+                name="loglevel"
                 length="100"
         >
 
         </property>
 
         <property
-            name="modelid"
+                name="modelid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="modelname"
+                name="modelname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="noteremark"
+                name="noteremark"
                 length="50"
         >
 
         </property>
 
         <property
-            name="operdesc"
+                name="operdesc"
                 length="100"
         >
 
         </property>
 
         <property
-            name="operid"
+                name="operid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="opername"
+                name="opername"
                 length="100"
         >
 
         </property>
 
         <property
-            name="userid"
+                name="userid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="savetype"
+                name="savetype"
                 length="10"
         >
 
         </property>
 
         <property
-            name="filecutsize"
+                name="filecutsize"
                 length="200"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

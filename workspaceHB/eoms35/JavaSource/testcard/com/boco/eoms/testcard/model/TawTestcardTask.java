@@ -2,54 +2,54 @@ package com.boco.eoms.testcard.model;
 
 public class TawTestcardTask {
 
-	private int id;
+    private int id;
 
-	private int formId;
-	
-	private String auditOrg;
-	
-	private String auditType;
-	
-	private int taskStatus;
+    private int formId;
 
-	public String getAuditOrg() {
-		return auditOrg;
-	}
+    private String auditOrg;
 
-	public void setAuditOrg(String auditOrg) {
-		this.auditOrg = auditOrg;
-	}
+    private String auditType;
 
-	public String getAuditType() {
-		return auditType;
-	}
+    private int taskStatus;
 
-	public void setAuditType(String auditType) {
-		this.auditType = auditType;
-	}
+    public String getAuditOrg() {
+        return auditOrg;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setAuditOrg(String auditOrg) {
+        this.auditOrg = auditOrg;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public String getAuditType() {
+        return auditType;
+    }
 
-	public int getTaskStatus() {
-		return taskStatus;
-	}
+    public void setAuditType(String auditType) {
+        this.auditType = auditType;
+    }
 
-	public void setTaskStatus(int taskStatus) {
-		this.taskStatus = taskStatus;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public int getFormId() {
-		return formId;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setFormId(int formId) {
-		this.formId = formId;
-	}
-	
+    public int getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(int taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+
+    public int getFormId() {
+        return formId;
+    }
+
+    public void setFormId(int formId) {
+        this.formId = formId;
+    }
+
 }

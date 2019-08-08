@@ -1,22 +1,22 @@
-<%@ include file="/common/taglibs.jsp"%>
+<%@ include file="/common/taglibs.jsp" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Array Grid Example</title> 
-<link rel="stylesheet" type="text/css" href="${app}/scripts/ext/resources/css/ext-all.css"/>
-<link rel="stylesheet" type="text/css" href="${app}/scripts/ext/resources/css/ytheme-aero.css"/>
-<link rel="stylesheet" type="text/css" href="${app}/styles/ext-adpter.css"/>
-<!-- Common Styles -->
-<style type="text/css">
-#detail{
-	padding:10px;
-}
-</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Array Grid Example</title>
+    <link rel="stylesheet" type="text/css" href="${app}/scripts/ext/resources/css/ext-all.css"/>
+    <link rel="stylesheet" type="text/css" href="${app}/scripts/ext/resources/css/ytheme-aero.css"/>
+    <link rel="stylesheet" type="text/css" href="${app}/styles/ext-adpter.css"/>
+    <!-- Common Styles -->
+    <style type="text/css">
+        #detail {
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 <!-- loading -->
 <div id="loading">
-<div class="loading-indicator">Loading...</div>
+    <div class="loading-indicator">Loading...</div>
 </div>
 
 <!--LOADING LIBS -->
@@ -31,7 +31,7 @@
 
 
 <div id="search" class="x-layout-inactive-content">
-  <div id="search-form"></div>
+    <div id="search-form"></div>
 </div>
 
 <div id="detail" class="x-layout-inactive-content">

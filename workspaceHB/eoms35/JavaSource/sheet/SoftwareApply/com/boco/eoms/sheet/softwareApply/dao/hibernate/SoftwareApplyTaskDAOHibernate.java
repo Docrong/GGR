@@ -11,5 +11,5 @@ import com.boco.eoms.sheet.base.util.Constants;
 import com.boco.eoms.sheet.softwareApply.dao.ISoftwareApplyTaskDAO;
 
 public class SoftwareApplyTaskDAOHibernate extends TaskDAOImpl implements ISoftwareApplyTaskDAO {
-	
+
 }

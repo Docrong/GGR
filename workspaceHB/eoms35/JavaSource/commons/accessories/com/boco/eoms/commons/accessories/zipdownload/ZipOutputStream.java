@@ -50,7 +50,6 @@ import java.util.zip.ZipException;
  * the {@link #STORED STORED} method, here setting the CRC and
  * uncompressed size information is required before {@link
  * #putNextEntry putNextEntry} can be called.</p>
- *
  */
 public class ZipOutputStream extends FilterOutputStream {
 
@@ -235,6 +234,7 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Creates a new ZIP OutputStream filtering the underlying stream.
+     *
      * @param out the outputstream to zip
      * @since 1.1
      */
@@ -245,9 +245,10 @@ public class ZipOutputStream extends FilterOutputStream {
     /**
      * Creates a new ZIP OutputStream writing to a File.  Will use
      * random access if possible.
+     *
      * @param file the file to zip to
-     * @since 1.14
      * @throws IOException on error
+     * @since 1.14
      */
     public ZipOutputStream(File file) throws IOException {
         super(null);
@@ -275,6 +276,7 @@ public class ZipOutputStream extends FilterOutputStream {
      * <p>For seekable streams, you don't need to calculate the CRC or
      * uncompressed size for {@link #STORED} entries before
      * invoking {@link #putNextEntry}.
+     *
      * @return true if seekable
      * @since 1.17
      */
@@ -288,6 +290,7 @@ public class ZipOutputStream extends FilterOutputStream {
      * <p>For a list of possible values see <a
      * href="http://java.sun.com/j2se/1.5.0/docs/guide/intl/encoding.doc.html">http://java.sun.com/j2se/1.5.0/docs/guide/intl/encoding.doc.html</a>.
      * Defaults to the platform's default character encoding.</p>
+     *
      * @param encoding the encoding value
      * @since 1.3
      */
@@ -299,7 +302,6 @@ public class ZipOutputStream extends FilterOutputStream {
      * The encoding to use for filenames and the file comment.
      *
      * @return null if using the platform's default character encoding.
-     *
      * @since 1.3
      */
     public String getEncoding() {
@@ -310,8 +312,8 @@ public class ZipOutputStream extends FilterOutputStream {
      * Finishs writing the contents and closes this as well as the
      * underlying stream.
      *
-     * @since 1.1
      * @throws IOException on error
+     * @since 1.1
      */
     public void finish() throws IOException {
         closeEntry();
@@ -328,8 +330,8 @@ public class ZipOutputStream extends FilterOutputStream {
     /**
      * Writes all necessary data for this entry.
      *
-     * @since 1.1
      * @throws IOException on error
+     * @since 1.1
      */
     public void closeEntry() throws IOException {
         if (entry == null) {
@@ -355,18 +357,18 @@ public class ZipOutputStream extends FilterOutputStream {
         } else if (raf == null) {
             if (entry.getCrc() != realCrc) {
                 throw new ZipException("bad CRC checksum for entry "
-                                       + entry.getName() + ": "
-                                       + Long.toHexString(entry.getCrc())
-                                       + " instead of "
-                                       + Long.toHexString(realCrc));
+                        + entry.getName() + ": "
+                        + Long.toHexString(entry.getCrc())
+                        + " instead of "
+                        + Long.toHexString(realCrc));
             }
 
             if (entry.getSize() != written - dataStart) {
                 throw new ZipException("bad size for entry "
-                                       + entry.getName() + ": "
-                                       + entry.getSize()
-                                       + " instead of "
-                                       + (written - dataStart));
+                        + entry.getName() + ": "
+                        + entry.getSize()
+                        + " instead of "
+                        + (written - dataStart));
             }
         } else { /* method is STORED and we used RandomAccessFile */
             long size = written - dataStart;
@@ -394,13 +396,14 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Begin writing next entry.
+     *
      * @param ze the entry to write
-     * @since 1.1
      * @throws IOException on error
+     * @since 1.1
      */
     public void putNextEntry(ZipEntry ze) throws IOException {
         closeEntry();
-  
+
         entry = ze;
         entries.addElement(entry);
 
@@ -416,12 +419,12 @@ public class ZipOutputStream extends FilterOutputStream {
         if (entry.getMethod() == STORED && raf == null) {
             if (entry.getSize() == -1) {
                 throw new ZipException("uncompressed size is required for"
-                                       + " STORED method when not writing to a"
-                                       + " file");
+                        + " STORED method when not writing to a"
+                        + " file");
             }
             if (entry.getCrc() == -1) {
                 throw new ZipException("crc checksum is required for STORED"
-                                       + " method when not writing to a file");
+                        + " method when not writing to a file");
             }
             entry.setCompressedSize(entry.getSize());
         }
@@ -435,6 +438,7 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Set the file comment.
+     *
      * @param comment the comment
      * @since 1.1
      */
@@ -446,15 +450,16 @@ public class ZipOutputStream extends FilterOutputStream {
      * Sets the compression level for subsequent entries.
      *
      * <p>Default is Deflater.DEFAULT_COMPRESSION.</p>
+     *
      * @param level the compression level.
      * @throws IllegalArgumentException if an invalid compression level is specified.
      * @since 1.1
      */
     public void setLevel(int level) {
         if (level < Deflater.DEFAULT_COMPRESSION
-            || level > Deflater.BEST_COMPRESSION) {
+                || level > Deflater.BEST_COMPRESSION) {
             throw new IllegalArgumentException(
-                "Invalid compression level: " + level);
+                    "Invalid compression level: " + level);
         }
         hasCompressionLevelChanged = (this.level != level);
         this.level = level;
@@ -464,6 +469,7 @@ public class ZipOutputStream extends FilterOutputStream {
      * Sets the default compression method for subsequent entries.
      *
      * <p>Default is DEFLATED.</p>
+     *
      * @param method an <code>int</code> from java.util.zip.ZipEntry
      * @since 1.1
      */
@@ -473,7 +479,8 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Writes bytes to ZIP entry.
-     * @param b the byte array to write
+     *
+     * @param b      the byte array to write
      * @param offset the start position to write from
      * @param length the number of bytes to write
      * @throws IOException on error
@@ -499,9 +506,10 @@ public class ZipOutputStream extends FilterOutputStream {
      * Writes a single byte to ZIP entry.
      *
      * <p>Delegates to the three arg method.</p>
+     *
      * @param b the byte to write
-     * @since 1.14
      * @throws IOException on error
+     * @since 1.14
      */
     public void write(int b) throws IOException {
         byte[] buff = new byte[1];
@@ -513,7 +521,7 @@ public class ZipOutputStream extends FilterOutputStream {
      * Closes this output stream and releases any system resources
      * associated with the stream.
      *
-     * @exception  IOException  if an I/O error occurs.
+     * @throws IOException if an I/O error occurs.
      * @since 1.14
      */
     public void close() throws IOException {
@@ -531,7 +539,7 @@ public class ZipOutputStream extends FilterOutputStream {
      * Flushes this output stream and forces any buffered output bytes
      * to be written out to the stream.
      *
-     * @exception  IOException  if an I/O error occurs.
+     * @throws IOException if an I/O error occurs.
      * @since 1.14
      */
     public void flush() throws IOException {
@@ -570,8 +578,8 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Writes next block of compressed data to the output stream.
-     * @throws IOException on error
      *
+     * @throws IOException on error
      * @since 1.14
      */
     protected final void deflate() throws IOException {
@@ -583,9 +591,9 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Writes the local file header entry
+     *
      * @param ze the entry to write
      * @throws IOException on error
-     *
      * @since 1.1
      */
     protected void writeLocalFileHeader(ZipEntry ze) throws IOException {
@@ -662,9 +670,9 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Writes the data descriptor entry.
+     *
      * @param ze the entry to write
      * @throws IOException on error
-     *
      * @since 1.1
      */
     protected void writeDataDescriptor(ZipEntry ze) throws IOException {
@@ -682,9 +690,9 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Writes the central file header entry.
+     *
      * @param ze the entry to write
      * @throws IOException on error
-     *
      * @since 1.1
      */
     protected void writeCentralFileHeader(ZipEntry ze) throws IOException {
@@ -780,8 +788,8 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Writes the &quot;End of central dir record&quot;.
-     * @throws IOException on error
      *
+     * @throws IOException on error
      * @since 1.1
      */
     protected void writeCentralDirectoryEnd() throws IOException {
@@ -815,6 +823,7 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Convert a Date object to a DOS date/time field.
+     *
      * @param time the <code>Date</code> to convert
      * @return the date as a <code>ZipLong</code>
      * @since 1.1
@@ -827,6 +836,7 @@ public class ZipOutputStream extends FilterOutputStream {
      * Convert a Date object to a DOS date/time field.
      *
      * <p>Stolen from InfoZip's <code>fileio.c</code></p>
+     *
      * @param t number of milliseconds since the epoch
      * @return the date as a byte array
      * @since 1.26
@@ -840,12 +850,12 @@ public class ZipOutputStream extends FilterOutputStream {
             return DOS_TIME_MIN;
         }
         int month = time.getMonth() + 1;
-        long value =  ((year - 1980) << 25)
-            |         (month << 21)
-            |         (time.getDate() << 16)
-            |         (time.getHours() << 11)
-            |         (time.getMinutes() << 5)
-            |         (time.getSeconds() >> 1);
+        long value = ((year - 1980) << 25)
+                | (month << 21)
+                | (time.getDate() << 16)
+                | (time.getHours() << 11)
+                | (time.getMinutes() << 5)
+                | (time.getSeconds() >> 1);
         return ZipLong.getBytes(value);
         // CheckStyle:MagicNumberCheck ON
     }
@@ -853,10 +863,10 @@ public class ZipOutputStream extends FilterOutputStream {
     /**
      * Retrieve the bytes for the given String in the encoding set for
      * this Stream.
+     *
      * @param name the string to get bytes from
      * @return the bytes as a byte array
      * @throws ZipException on error
-     *
      * @since 1.3
      */
     protected byte[] getBytes(String name) throws ZipException {
@@ -873,9 +883,9 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Write bytes to output or random access file.
+     *
      * @param data the byte array to write
      * @throws IOException on error
-     *
      * @since 1.14
      */
     protected final void writeOut(byte[] data) throws IOException {
@@ -884,15 +894,15 @@ public class ZipOutputStream extends FilterOutputStream {
 
     /**
      * Write bytes to output or random access file.
-     * @param data the byte array to write
+     *
+     * @param data   the byte array to write
      * @param offset the start position to write from
      * @param length the number of bytes to write
      * @throws IOException on error
-     *
      * @since 1.14
      */
     protected final void writeOut(byte[] data, int offset, int length)
-        throws IOException {
+            throws IOException {
         if (raf != null) {
             raf.write(data, offset, length);
         } else {
@@ -903,6 +913,7 @@ public class ZipOutputStream extends FilterOutputStream {
     /**
      * Assumes a negative integer really is a positive integer that
      * has wrapped around and re-creates the original value.
+     *
      * @param i the value to treat as unsigned int.
      * @return the unsigned int as a long.
      * @since 1.34

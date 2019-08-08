@@ -12,180 +12,179 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Date:2008-11-20 上午11:02:55
  * </p>
- * 
+ *
  * @author 李秋野
  * @version 3.5.1
- * 
  */
 
 public class EvaKpi extends BaseObject {
 
-	/**
-	 * 主键
-	 */
-	private String id;
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 * 指标名称
-	 */
-	private String kpiName;
+    /**
+     * 指标名称
+     */
+    private String kpiName;
 
-	/**
-	 * 周期
-	 */
-	private String cycle;
+    /**
+     * 周期
+     */
+    private String cycle;
 
-	/**
-	 * 阀值
-	 */
-	private Float threshold;
+    /**
+     * 阀值
+     */
+    private Float threshold;
 
-	/**
-	 * 规则组ID
-	 */
-	private String ruleGroupId;
+    /**
+     * 规则组ID
+     */
+    private String ruleGroupId;
 
-	/**
-	 * 创建人
-	 */
-	private String creator;
+    /**
+     * 创建人
+     */
+    private String creator;
 
-	/**
-	 * 创建时间
-	 */
-	private String createTime;
+    /**
+     * 创建时间
+     */
+    private String createTime;
 
-	/**
-	 * 备注
-	 */
-	private String remark;
+    /**
+     * 备注
+     */
+    private String remark;
 
-	/**
-	 * 删除标志
-	 */ 
-	private String deleted;
-	
-	/**
-	 * 考核算法
-	 */
-	private String algorithm;
+    /**
+     * 删除标志
+     */
+    private String deleted;
 
-	/**
-	 * 指标的考核分数，为了页面显示用，数据库中并不存在此字段
-	 */
-	private Float evaScore;
-	
-	/**
-	 * 指标的权重，为了页面显示用，数据库中并不存在此字段
-	 */
-	private Float weight;
+    /**
+     * 考核算法
+     */
+    private String algorithm;
 
-	public Float getWeight() {
-		return weight;
-	}
+    /**
+     * 指标的考核分数，为了页面显示用，数据库中并不存在此字段
+     */
+    private Float evaScore;
 
-	public void setWeight(Float weight) {
-		this.weight = weight;
-	}
+    /**
+     * 指标的权重，为了页面显示用，数据库中并不存在此字段
+     */
+    private Float weight;
 
-	public Float getEvaScore() {
-		return evaScore;
-	}
+    public Float getWeight() {
+        return weight;
+    }
 
-	public void setEvaScore(Float evaScore) {
-		this.evaScore = evaScore;
-	}
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	}
+    public Float getEvaScore() {
+        return evaScore;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public void setEvaScore(Float evaScore) {
+        this.evaScore = evaScore;
+    }
 
-	public String getCreator() {
-		return creator;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public String getCycle() {
-		return cycle;
-	}
+    public String getCreator() {
+        return creator;
+    }
 
-	public void setCycle(String cycle) {
-		this.cycle = cycle;
-	}
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getCycle() {
+        return cycle;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setCycle(String cycle) {
+        this.cycle = cycle;
+    }
 
-	public String getKpiName() {
-		return kpiName;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setKpiName(String kpiName) {
-		this.kpiName = kpiName;
-	}
-	
-	public String getRemark() {
-		return remark;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getKpiName() {
+        return kpiName;
+    }
 
-	public String getRuleGroupId() {
-		return ruleGroupId;
-	}
+    public void setKpiName(String kpiName) {
+        this.kpiName = kpiName;
+    }
 
-	public void setRuleGroupId(String ruleGroupId) {
-		this.ruleGroupId = ruleGroupId;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public Float getThreshold() {
-		return threshold;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public void setThreshold(Float threshold) {
-		this.threshold = threshold;
-	}
+    public String getRuleGroupId() {
+        return ruleGroupId;
+    }
 
-	public String getDeleted() {
-		return deleted;
-	}
+    public void setRuleGroupId(String ruleGroupId) {
+        this.ruleGroupId = ruleGroupId;
+    }
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+    public Float getThreshold() {
+        return threshold;
+    }
 
-	public boolean equals(Object o) {
-		return false;
-	}
+    public void setThreshold(Float threshold) {
+        this.threshold = threshold;
+    }
 
-	public String toString() {
-		return null;
-	}
+    public String getDeleted() {
+        return deleted;
+    }
 
-	public int hashCode() {
-		return id.hashCode();
-	}
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
 
-	public String getAlgorithm() {
-		return algorithm;
-	}
+    public boolean equals(Object o) {
+        return false;
+    }
 
-	public void setAlgorithm(String algorithm) {
-		this.algorithm = algorithm;
-	}
+    public String toString() {
+        return null;
+    }
+
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    public String getAlgorithm() {
+        return algorithm;
+    }
+
+    public void setAlgorithm(String algorithm) {
+        this.algorithm = algorithm;
+    }
 
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- 
+
     <!--ModifyTime-DAO START-->
-    <bean id="modifytimeDao" class="com.boco.eoms.sheet.modifytime.dao.hibernate.ModifyTimeDaoHibernate" autowire="byName"/>
+    <bean id="modifytimeDao" class="com.boco.eoms.sheet.modifytime.dao.hibernate.ModifyTimeDaoHibernate"
+          autowire="byName"/>
     <!--ModifyTime-DAO END-->
-    <!--ModifyTime-START-->    
+    <!--ModifyTime-START-->
     <bean id="ImodifytimeManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.sheet.modifytime.service.impl.ModifyTimeManagerImpl">

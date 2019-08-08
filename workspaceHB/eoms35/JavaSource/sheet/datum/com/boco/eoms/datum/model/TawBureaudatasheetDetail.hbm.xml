@@ -1,51 +1,51 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-	"-//Hibernate/Hibernate Mapping DTD//EN"
-	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping package="com.boco.eoms.datum.model">
-	<class
-		name="TawBureaudatasheetDetail"
-		table="TAW_BUREAUDATASHEET_DETAIL"
-	>
-		<meta attribute="sync-DAO">true</meta>
-		<id
-			name="id"
-			type="string"
-			column="id"
-		>
-			<generator class="sequence"/>
-		</id>
+    <class
+            name="TawBureaudatasheetDetail"
+            table="TAW_BUREAUDATASHEET_DETAIL"
+    >
+        <meta attribute="sync-DAO">true</meta>
+        <id
+                name="id"
+                type="string"
+                column="id"
+        >
+            <generator class="sequence"/>
+        </id>
 
-		<property
-			name="sheetid"
-			column="SHEETID"
-			type="string"
-			not-null="true"
-			length="30"
-		/>
-		<property
-			name="segmentid"
-			column="SEGMENTID"
-			type="integer"
-			not-null="true"
-			length="22"
-		/>
-		<property
-			name="hlrsignalid"
-			column="HLRSIGNALID"
-			type="string"
-			not-null="false"
-			length="20"
-		/>
-		<property
-			name="prehlrsignalid"
-			column="PREHLRSIGNALID"
-			type="string"
-			not-null="false"
-			length="20"
-		/>
+        <property
+                name="sheetid"
+                column="SHEETID"
+                type="string"
+                not-null="true"
+                length="30"
+        />
+        <property
+                name="segmentid"
+                column="SEGMENTID"
+                type="integer"
+                not-null="true"
+                length="22"
+        />
+        <property
+                name="hlrsignalid"
+                column="HLRSIGNALID"
+                type="string"
+                not-null="false"
+                length="20"
+        />
+        <property
+                name="prehlrsignalid"
+                column="PREHLRSIGNALID"
+                type="string"
+                not-null="false"
+                length="20"
+        />
 
 
-	</class>	
+    </class>
 </hibernate-mapping>

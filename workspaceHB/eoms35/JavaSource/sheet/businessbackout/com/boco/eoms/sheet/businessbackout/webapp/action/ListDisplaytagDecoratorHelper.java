@@ -7,19 +7,19 @@ import com.boco.eoms.sheet.base.webapp.action.ProcessListDisplaytagDecoratorHelp
 import com.boco.eoms.sheet.businessbackout.task.IBusinessBackoutTask;
 
 public class ListDisplaytagDecoratorHelper extends ProcessListDisplaytagDecoratorHelper {
-	public String getUrgentDegree() {
-		System.out.println("****************Test*******");
-		IBusinessBackoutTask task = (IBusinessBackoutTask) getCurrentRowObject();
+    public String getUrgentDegree() {
+        System.out.println("****************Test*******");
+        IBusinessBackoutTask task = (IBusinessBackoutTask) getCurrentRowObject();
         ID2NameService service = (ID2NameService) ApplicationContextHolder
-           .getInstance().getBean("ID2NameGetServiceCatch");
+                .getInstance().getBean("ID2NameGetServiceCatch");
         String name = service.id2Name(task.getUrgentDegree(), "ItawSystemDictTypeDao");
         return name;
     }
-	
-	public String getBusinessType() {
-		IBusinessBackoutTask task = (IBusinessBackoutTask) getCurrentRowObject();
+
+    public String getBusinessType() {
+        IBusinessBackoutTask task = (IBusinessBackoutTask) getCurrentRowObject();
         ID2NameService service = (ID2NameService) ApplicationContextHolder
-           .getInstance().getBean("ID2NameGetServiceCatch");
+                .getInstance().getBean("ID2NameGetServiceCatch");
         String name = service.id2Name(task.getBusinessType(), "ItawSystemDictTypeDao");
         return name;
     }

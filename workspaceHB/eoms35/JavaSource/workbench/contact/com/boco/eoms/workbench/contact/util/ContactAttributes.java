@@ -1,7 +1,6 @@
 package com.boco.eoms.workbench.contact.util;
 
 /**
- * 
  * <p>
  * Title:个人通讯录
  * </p>
@@ -11,26 +10,23 @@ package com.boco.eoms.workbench.contact.util;
  * <p>
  * Date:2008-5-27 19:08:50
  * </p>
- * 
- * @author 龚玉峰
- * @version  
  *
+ * @author 龚玉峰
  */
 public class ContactAttributes {
 
-	/**
-	 * 根路径
-	 */
-	private String contactRootPath;
+    /**
+     * 根路径
+     */
+    private String contactRootPath;
 
-	public String getContactRootPath() {
-		return contactRootPath;
-	}
+    public String getContactRootPath() {
+        return contactRootPath;
+    }
 
-	public void setContactRootPath(String contactRootPath) {
-		this.contactRootPath = contactRootPath;
-	}
-	
- 
-	
+    public void setContactRootPath(String contactRootPath) {
+        this.contactRootPath = contactRootPath;
+    }
+
+
 }

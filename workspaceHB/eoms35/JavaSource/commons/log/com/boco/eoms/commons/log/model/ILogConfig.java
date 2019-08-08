@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.log.model;
 
@@ -13,78 +13,78 @@ package com.boco.eoms.commons.log.model;
  * <p>
  * Date:Jun 11, 2008 1:36:47 PM
  * </p>
- * 
+ *
  * @author 王蓓颖
  * @version 1.0
- * 
+ *
  */
 public interface ILogConfig {
-	
-	/**
-	 * @return the modelId
-	 */
-	public String getModelId();
 
-	/**
-	 * @param modelId the modelId to set
-	 */
-	public void setModelId(String modelId);
+    /**
+     * @return the modelId
+     */
+    public String getModelId();
 
-	/**
-	 * @return the modelName
-	 */
-	public String getModelName();
+    /**
+     * @param modelId the modelId to set
+     */
+    public void setModelId(String modelId);
 
-	/**
-	 * @param modelName the modelName to set
-	 */
-	public void setModelName(String modelName);
+    /**
+     * @return the modelName
+     */
+    public String getModelName();
 
-	/**
-	 * @return the operDesc
-	 */
-	public String getOperDesc();
+    /**
+     * @param modelName the modelName to set
+     */
+    public void setModelName(String modelName);
 
-	/**
-	 * @param operDesc the operDesc to set
-	 */
-	public void setOperDesc(String operDesc);
+    /**
+     * @return the operDesc
+     */
+    public String getOperDesc();
 
-	/**
-	 * @return the operId
-	 */
-	public String getOperId();
+    /**
+     * @param operDesc the operDesc to set
+     */
+    public void setOperDesc(String operDesc);
 
-	/**
-	 * @param operId the operId to set
-	 */
-	public void setOperId(String operId);
+    /**
+     * @return the operId
+     */
+    public String getOperId();
 
-	/**
-	 * @return the operName
-	 */
-	public String getOperName();
+    /**
+     * @param operId the operId to set
+     */
+    public void setOperId(String operId);
 
-	/**
-	 * @param operName the operName to set
-	 */
-	public void setOperName(String operName);
-	
-	/**
-	 * @return the operName
-	 */
-	public String getLeaf();
+    /**
+     * @return the operName
+     */
+    public String getOperName();
 
-	/**
-	 * @param operName the operName to set
-	 */
-	public void setLeaf(String leaf);
-	
-	
-	public String getStatus() ;
+    /**
+     * @param operName the operName to set
+     */
+    public void setOperName(String operName);
 
-	/**
-	 * @param operName the operName to set
-	 */
-	public void setStatus(String status) ;
+    /**
+     * @return the operName
+     */
+    public String getLeaf();
+
+    /**
+     * @param operName the operName to set
+     */
+    public void setLeaf(String leaf);
+
+
+    public String getStatus();
+
+    /**
+     * @param operName the operName to set
+     */
+    public void setStatus(String status);
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,159 +13,159 @@
             table="taw_common_logoperator"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="beginnotetime"
+                name="beginnotetime"
                 length="10"
         >
 
         </property>
 
         <property
-            name="bzremark"
+                name="bzremark"
                 length="200"
         >
 
         </property>
 
         <property
-            name="currentday"
+                name="currentday"
                 length="50"
         >
 
         </property>
 
         <property
-            name="currentmonth"
+                name="currentmonth"
                 length="200"
         >
 
         </property>
 
         <property
-            name="issucess"
+                name="issucess"
                 length="2"
         >
 
         </property>
 
         <property
-            name="modelid"
+                name="modelid"
                 length="50"
         >
 
         </property>
 
         <property
-            name="modelname"
+                name="modelname"
                 length="50"
         >
 
         </property>
 
         <property
-            name="notemessage"
+                name="notemessage"
                 length="500"
         >
 
         </property>
 
         <property
-            name="operatetime"
+                name="operatetime"
                 length="20"
         >
 
         </property>
 
         <property
-            name="operid"
+                name="operid"
                 length="200"
         >
 
         </property>
 
         <property
-            name="opername"
+                name="opername"
                 length="200"
         >
 
         </property>
 
         <property
-            name="operremark"
+                name="operremark"
                 length="200"
         >
 
         </property>
 
         <property
-            name="remoteip"
+                name="remoteip"
                 length="50"
         >
 
         </property>
 
         <property
-            name="url"
+                name="url"
                 length="200"
         >
 
         </property>
 
         <property
-            name="userid"
+                name="userid"
                 length="200"
         >
 
         </property>
         <property
-            name="username"
+                name="username"
                 length="50"
         >
 
         </property>
-        
+
         <property
-            name="deptid"
+                name="deptid"
                 length="100"
         >
 
         </property>
-        
+
         <property
-            name="deptname"
+                name="deptname"
                 length="100"
         >
 
         </property>
-        
+
         <property
-            name="areaid"
+                name="areaid"
                 length="50"
         >
 
         </property>
-        
+
         <property
-            name="areaname"
+                name="areaname"
                 length="100"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

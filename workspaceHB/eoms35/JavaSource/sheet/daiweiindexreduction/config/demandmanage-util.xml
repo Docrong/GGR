@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-	<!-- 周中是放假的时间 -->
-	<isWeekend>
-	2017-10-02,2017-10-03,2017-10-04,
-	2017-10-05,2017-10-06
-	</isWeekend>
-	<!-- 周末上上班时间的 -->
-	<isWeekday>
-	2017-9-30
-	</isWeekday>
-	<!-- 不在派单时间内是否允许派单  为true则不做校验 -->
-	<sendSheet>true</sendSheet>
+    <!-- 周中是放假的时间 -->
+    <isWeekend>
+        2017-10-02,2017-10-03,2017-10-04,
+        2017-10-05,2017-10-06
+    </isWeekend>
+    <!-- 周末上上班时间的 -->
+    <isWeekday>
+        2017-9-30
+    </isWeekday>
+    <!-- 不在派单时间内是否允许派单  为true则不做校验 -->
+    <sendSheet>true</sendSheet>
 </boco>	

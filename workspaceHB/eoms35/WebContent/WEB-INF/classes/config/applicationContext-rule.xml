@@ -1,90 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-	<bean id="businessDictJdbcDao"
-		class="com.boco.eoms.commons.rule.tool.dao.impl.BusinessDictJdbcDaoImpl">
-		<property name="dataSource">
-			<ref bean="dataSource" />
-		</property>
+    <bean id="businessDictJdbcDao"
+          class="com.boco.eoms.commons.rule.tool.dao.impl.BusinessDictJdbcDaoImpl">
+        <property name="dataSource">
+            <ref bean="dataSource"/>
+        </property>
 
-	</bean>
-	<bean id="businessDictService" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.rule.tool.service.impl.BusinessDictServiceImpl">
-				<property name="businessDictJdbcDao"
-					ref="businessDictJdbcDao" />
-			</bean>
-		</property>
-	</bean>
+    </bean>
+    <bean id="businessDictService" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.rule.tool.service.impl.BusinessDictServiceImpl">
+                <property name="businessDictJdbcDao"
+                          ref="businessDictJdbcDao"/>
+            </bean>
+        </property>
+    </bean>
 
-	<bean id="ruleXMLDom4jDocumentFactoryService"
-		class="com.boco.eoms.commons.rule.tool.service.impl.RuleXMLDom4jDocumentFactoryServiceImpl">
-		<property name="saxReader">
-			<bean class="org.dom4j.io.SAXReader" />
-		</property>
-	</bean>
-	
-	<bean id="ruleXMLService" class="com.boco.eoms.commons.rule.tool.service.impl.RuleXMLServiceImpl">
-		<property name="ruleDom4jDao">
-			<ref local="ruleDom4jDao"/>
-		</property>
-	</bean>
+    <bean id="ruleXMLDom4jDocumentFactoryService"
+          class="com.boco.eoms.commons.rule.tool.service.impl.RuleXMLDom4jDocumentFactoryServiceImpl">
+        <property name="saxReader">
+            <bean class="org.dom4j.io.SAXReader"/>
+        </property>
+    </bean>
 
-	<bean id="ruleDom4jDao"
-		class="com.boco.eoms.commons.rule.tool.dao.impl.RuleDom4jDaoImpl" />
+    <bean id="ruleXMLService" class="com.boco.eoms.commons.rule.tool.service.impl.RuleXMLServiceImpl">
+        <property name="ruleDom4jDao">
+            <ref local="ruleDom4jDao"/>
+        </property>
+    </bean>
 
-
-
-	<bean id="ruleAttributesService"
-		class="com.boco.eoms.commons.rule.tool.service.impl.RuleAttributesServiceImpl"
-		autowire="byName" />
+    <bean id="ruleDom4jDao"
+          class="com.boco.eoms.commons.rule.tool.dao.impl.RuleDom4jDaoImpl"/>
 
 
-
-	<bean id="ruleAttributes"
-		class="com.boco.eoms.commons.rule.util.RuleAttributes">
-		<property name="rules">
-			<list>
-				<ref local="ruleSample" />
-				<ref local="expressionRuleSample" />
-			</list>
-		</property>
-		<property name="pageSize">
-			<value>5</value>
-		</property>
-	</bean>
+    <bean id="ruleAttributesService"
+          class="com.boco.eoms.commons.rule.tool.service.impl.RuleAttributesServiceImpl"
+          autowire="byName"/>
 
 
+    <bean id="ruleAttributes"
+          class="com.boco.eoms.commons.rule.util.RuleAttributes">
+        <property name="rules">
+            <list>
+                <ref local="ruleSample"/>
+                <ref local="expressionRuleSample"/>
+            </list>
+        </property>
+        <property name="pageSize">
+            <value>5</value>
+        </property>
+    </bean>
 
-	<bean id="ruleSample"
-		class="com.boco.eoms.commons.rule.tool.model.Rule">
-		<property name="id">
-			<value>1</value>
-		</property>
-		<property name="name">
-			<value>规则路由sample</value>
-		</property>
-		<property name="xmlPath">
-			<!-- <value>classpath:com/boco/eoms/commons/rule/sample/RuleSample.xml</value> -->
-			<value>d:/RuleSample.xml</value>
-		</property>
-	</bean>
 
-	<bean id="expressionRuleSample"
-		class="com.boco.eoms.commons.rule.tool.model.Rule">
-		<property name="id">
-			<value>2</value>
-		</property>
-		<property name="name">
-			<value>规则表达式配置sample</value>
-		</property>
-		<property name="xmlPath">
-			<!-- <value>classpath:com/boco/eoms/commons/rule/sample/ExpressionRuleSample.xml</value> -->
-			<value>d:/ExpressionRuleSample.xml</value>
-		</property>
-	</bean>
+    <bean id="ruleSample"
+          class="com.boco.eoms.commons.rule.tool.model.Rule">
+        <property name="id">
+            <value>1</value>
+        </property>
+        <property name="name">
+            <value>规则路由sample</value>
+        </property>
+        <property name="xmlPath">
+            <!-- <value>classpath:com/boco/eoms/commons/rule/sample/RuleSample.xml</value> -->
+            <value>d:/RuleSample.xml</value>
+        </property>
+    </bean>
+
+    <bean id="expressionRuleSample"
+          class="com.boco.eoms.commons.rule.tool.model.Rule">
+        <property name="id">
+            <value>2</value>
+        </property>
+        <property name="name">
+            <value>规则表达式配置sample</value>
+        </property>
+        <property name="xmlPath">
+            <!-- <value>classpath:com/boco/eoms/commons/rule/sample/ExpressionRuleSample.xml</value> -->
+            <value>d:/ExpressionRuleSample.xml</value>
+        </property>
+    </bean>
 
 
 </beans>

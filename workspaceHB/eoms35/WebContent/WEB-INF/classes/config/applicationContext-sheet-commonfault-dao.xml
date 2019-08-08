@@ -3,22 +3,27 @@
 
 <beans>
 
-	<bean id="ICommonFaultMainDao" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultMainDaoHibernate" autowire="byName">
-	
-      </bean>
-	<bean id="ICommonFaultLinkDao" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultLinkDaoHibernate" autowire="byName">
-	  
-      </bean>
+    <bean id="ICommonFaultMainDao" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultMainDaoHibernate"
+          autowire="byName">
 
-	<bean id="iCommonFaultTaskDAO" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultTaskDAOHibernate" autowire="byName">
-      
-      </bean>
-     
-     <bean id="iCommonFaultAutoDAO" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultAutoDaoHibernate" autowire="byName">
-      
-      </bean>
-      
-     <bean id="iCommonFaultHBDAO" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultHBDaoHibernate" autowire="byName">
-      
-      </bean>
+    </bean>
+    <bean id="ICommonFaultLinkDao" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultLinkDaoHibernate"
+          autowire="byName">
+
+    </bean>
+
+    <bean id="iCommonFaultTaskDAO" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultTaskDAOHibernate"
+          autowire="byName">
+
+    </bean>
+
+    <bean id="iCommonFaultAutoDAO" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultAutoDaoHibernate"
+          autowire="byName">
+
+    </bean>
+
+    <bean id="iCommonFaultHBDAO" class="com.boco.eoms.sheet.commonfault.dao.hibernate.CommonFaultHBDaoHibernate"
+          autowire="byName">
+
+    </bean>
 </beans>

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.sheet.netchange.service.impl;
 
@@ -11,6 +11,6 @@ import com.boco.eoms.sheet.netchange.service.INetChangeFlowManager;
  *
  */
 public class NetChangeFlowManagerImpl extends BusinessFlowServiceImpl implements
-		INetChangeFlowManager {
+        INetChangeFlowManager {
 
 }

@@ -8,6 +8,5 @@ package com.boco.eoms.sheet.techniquesupporthb.service;
 import com.boco.eoms.sheet.base.service.ILinkService;
 
 public interface ITechniqueSupportHbLinkManager
-	extends ILinkService
-{
+        extends ILinkService {
 }

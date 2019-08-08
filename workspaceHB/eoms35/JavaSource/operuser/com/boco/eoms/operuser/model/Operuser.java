@@ -12,255 +12,224 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Tue Mar 31 09:42:13 CST 2009
  * </p>
- * 
+ *
  * @author xiang
  * @version 35
- * 
  */
 public class Operuser extends BaseObject {
-	
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 *
-	 * name
-	 *
-	 */
-	private java.lang.String name;
-   
-	public void setName(java.lang.String name){
-		this.name= name;       
-	}
-   
-	public java.lang.String getName(){
-		return this.name;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * deptid
-	 *
-	 */
-	private java.lang.String deptid;
-   
-	public void setDeptid(java.lang.String deptid){
-		this.deptid= deptid;       
-	}
-   
-	public java.lang.String getDeptid(){
-		return this.deptid;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * deptname
-	 *
-	 */
-	private java.lang.String deptname;
-   
-	public void setDeptname(java.lang.String deptname){
-		this.deptname= deptname;       
-	}
-   
-	public java.lang.String getDeptname(){
-		return this.deptname;
-	}
+    /**
+     * name
+     */
+    private java.lang.String name;
 
-	/**
-	 *
-	 * sex
-	 *
-	 */
-	private java.lang.String sex;
-   
-	public void setSex(java.lang.String sex){
-		this.sex= sex;       
-	}
-   
-	public java.lang.String getSex(){
-		return this.sex;
-	}
+    public void setName(java.lang.String name) {
+        this.name = name;
+    }
 
-	/**
-	 *
-	 * subarea
-	 *
-	 */
-	private java.lang.String subarea;
-   
-	public void setSubarea(java.lang.String subarea){
-		this.subarea= subarea;       
-	}
-   
-	public java.lang.String getSubarea(){
-		return this.subarea;
-	}
+    public java.lang.String getName() {
+        return this.name;
+    }
 
-	/**
-	 *
-	 * savetime
-	 *
-	 */
-	private java.util.Date savetime;
-   
-	public void setSavetime(java.util.Date savetime){
-		this.savetime= savetime;       
-	}
-   
-	public java.util.Date getSavetime(){
-		return this.savetime;
-	}
+    /**
+     * deptid
+     */
+    private java.lang.String deptid;
 
-	/**
-	 *
-	 * majortype
-	 *
-	 */
-	private java.lang.String majortype;
-   
-	public void setMajortype(java.lang.String majortype){
-		this.majortype= majortype;       
-	}
-   
-	public java.lang.String getMajortype(){
-		return this.majortype;
-	}
+    public void setDeptid(java.lang.String deptid) {
+        this.deptid = deptid;
+    }
 
-	/**
-	 *
-	 * birthday
-	 *
-	 */
-	private java.util.Date birthday;
-	
-	public java.util.Date getBirthday() {
-		return birthday;
-	}
+    public java.lang.String getDeptid() {
+        return this.deptid;
+    }
 
-	public void setBirthday(java.util.Date birthday) {
-		this.birthday = birthday;
-	}
-	
-	
-	/**
-	 *
-	 * jobtype
-	 *
-	 */
-	private java.lang.String jobtype;
-   
-	public void setJobtype(java.lang.String jobtype){
-		this.jobtype= jobtype;       
-	}
-   
-	public java.lang.String getJobtype(){
-		return this.jobtype;
-	}
+    /**
+     * deptname
+     */
+    private java.lang.String deptname;
 
-	/**
-	 *
-	 * joblevele
-	 *
-	 */
-	private java.lang.String joblevele;
-   
-	public void setJoblevele(java.lang.String joblevele){
-		this.joblevele= joblevele;       
-	}
-   
-	public java.lang.String getJoblevele(){
-		return this.joblevele;
-	}
+    public void setDeptname(java.lang.String deptname) {
+        this.deptname = deptname;
+    }
 
-	/**
-	 *
-	 * schoollevel
-	 *
-	 */
-	private java.lang.String schoollevel;
-   
-	public void setSchoollevel(java.lang.String schoollevel){
-		this.schoollevel= schoollevel;       
-	}
-   
-	public java.lang.String getSchoollevel(){
-		return this.schoollevel;
-	}
+    public java.lang.String getDeptname() {
+        return this.deptname;
+    }
 
-	/**
-	 *
-	 * powerlevel
-	 *
-	 */
-	private java.lang.String powerlevel;
-   
-	public void setPowerlevel(java.lang.String powerlevel){
-		this.powerlevel= powerlevel;       
-	}
-   
-	public java.lang.String getPowerlevel(){
-		return this.powerlevel;
-	}
+    /**
+     * sex
+     */
+    private java.lang.String sex;
 
-	/**
-	 *
-	 * prizelevel
-	 *
-	 */
-	private java.lang.String prizelevel;
-   
-	public void setPrizelevel(java.lang.String prizelevel){
-		this.prizelevel= prizelevel;       
-	}
-   
-	public java.lang.String getPrizelevel(){
-		return this.prizelevel;
-	}
+    public void setSex(java.lang.String sex) {
+        this.sex = sex;
+    }
 
-	/**
-	 *
-	 * worklevel
-	 *
-	 */
-	private java.lang.String worklevel;
-   
-	public void setWorklevel(java.lang.String worklevel){
-		this.worklevel= worklevel;       
-	}
-   
-	public java.lang.String getWorklevel(){
-		return this.worklevel;
-	}
+    public java.lang.String getSex() {
+        return this.sex;
+    }
 
-	/**
-	 *
-	 * remark
-	 *
-	 */
-	private java.lang.String remark;
-   
-	public void setRemark(java.lang.String remark){
-		this.remark= remark;       
-	}
-   
-	public java.lang.String getRemark(){
-		return this.remark;
-	}
+    /**
+     * subarea
+     */
+    private java.lang.String subarea;
 
-	/**
-	 * 节点Id（按规则生成）
-	 *//*
+    public void setSubarea(java.lang.String subarea) {
+        this.subarea = subarea;
+    }
+
+    public java.lang.String getSubarea() {
+        return this.subarea;
+    }
+
+    /**
+     * savetime
+     */
+    private java.util.Date savetime;
+
+    public void setSavetime(java.util.Date savetime) {
+        this.savetime = savetime;
+    }
+
+    public java.util.Date getSavetime() {
+        return this.savetime;
+    }
+
+    /**
+     * majortype
+     */
+    private java.lang.String majortype;
+
+    public void setMajortype(java.lang.String majortype) {
+        this.majortype = majortype;
+    }
+
+    public java.lang.String getMajortype() {
+        return this.majortype;
+    }
+
+    /**
+     * birthday
+     */
+    private java.util.Date birthday;
+
+    public java.util.Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(java.util.Date birthday) {
+        this.birthday = birthday;
+    }
+
+
+    /**
+     * jobtype
+     */
+    private java.lang.String jobtype;
+
+    public void setJobtype(java.lang.String jobtype) {
+        this.jobtype = jobtype;
+    }
+
+    public java.lang.String getJobtype() {
+        return this.jobtype;
+    }
+
+    /**
+     * joblevele
+     */
+    private java.lang.String joblevele;
+
+    public void setJoblevele(java.lang.String joblevele) {
+        this.joblevele = joblevele;
+    }
+
+    public java.lang.String getJoblevele() {
+        return this.joblevele;
+    }
+
+    /**
+     * schoollevel
+     */
+    private java.lang.String schoollevel;
+
+    public void setSchoollevel(java.lang.String schoollevel) {
+        this.schoollevel = schoollevel;
+    }
+
+    public java.lang.String getSchoollevel() {
+        return this.schoollevel;
+    }
+
+    /**
+     * powerlevel
+     */
+    private java.lang.String powerlevel;
+
+    public void setPowerlevel(java.lang.String powerlevel) {
+        this.powerlevel = powerlevel;
+    }
+
+    public java.lang.String getPowerlevel() {
+        return this.powerlevel;
+    }
+
+    /**
+     * prizelevel
+     */
+    private java.lang.String prizelevel;
+
+    public void setPrizelevel(java.lang.String prizelevel) {
+        this.prizelevel = prizelevel;
+    }
+
+    public java.lang.String getPrizelevel() {
+        return this.prizelevel;
+    }
+
+    /**
+     * worklevel
+     */
+    private java.lang.String worklevel;
+
+    public void setWorklevel(java.lang.String worklevel) {
+        this.worklevel = worklevel;
+    }
+
+    public java.lang.String getWorklevel() {
+        return this.worklevel;
+    }
+
+    /**
+     * remark
+     */
+    private java.lang.String remark;
+
+    public void setRemark(java.lang.String remark) {
+        this.remark = remark;
+    }
+
+    public java.lang.String getRemark() {
+        return this.remark;
+    }
+
+    /**
+     * 节点Id（按规则生成）
+     *//*
 	private String nodeId;
 	
 	public String getNodeId() {
@@ -272,8 +241,8 @@ public class Operuser extends BaseObject {
 	}
 	
 	*//**
-	 * 父节点Id
-	 *//*
+     * 父节点Id
+     *//*
 	private String parentNodeId;
 	
 	public String getParentNodeId() {
@@ -284,9 +253,11 @@ public class Operuser extends BaseObject {
 		this.parentNodeId = parentNodeId;
 	}
 	
-	*//**
-	 * 是否叶节点
-	 *//*
+	*/
+
+    /**
+     * 是否叶节点
+     *//*
 	private String leaf;
 	
 	public String getLeaf() {
@@ -296,20 +267,18 @@ public class Operuser extends BaseObject {
 	public void setLeaf(String leaf) {
 		this.leaf = leaf;
 	}*/
+    public boolean equals(Object o) {
+        if (o instanceof Operuser) {
+            Operuser operuser = (Operuser) o;
+            if (this.id != null || this.id.equals(operuser.getId())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
-	public boolean equals(Object o) {
-		if( o instanceof Operuser ) {
-			Operuser operuser=(Operuser)o;
-			if (this.id != null || this.id.equals(operuser.getId())) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
-
-	
 
 }

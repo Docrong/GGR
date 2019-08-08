@@ -6,105 +6,105 @@ package com.boco.eoms.filemanager.form;
  * To change this template use File | Settings | File Templates.
  */
 public class AuditListBean {
-	private int auditId;
+    private int auditId;
 
-	private String flowId;
+    private String flowId;
 
-	private int statusOld;
+    private int statusOld;
 
-	private int statusNew;
+    private int statusNew;
 
-	private String status;
+    private String status;
 
-	private String auditUserId;
+    private String auditUserId;
 
-	private String auditTime;
+    private String auditTime;
 
-	private String auditInfo;
+    private String auditInfo;
 
-	private String auditUserName;
+    private String auditUserName;
 
-	private String reportName;
+    private String reportName;
 
-	public String getAuditUserName() {
-		return auditUserName;
-	}
+    public String getAuditUserName() {
+        return auditUserName;
+    }
 
-	public void setAuditUserName(String auditUserName) {
-		this.auditUserName = auditUserName;
-	}
+    public void setAuditUserName(String auditUserName) {
+        this.auditUserName = auditUserName;
+    }
 
-	public String getReportName() {
-		return reportName;
-	}
+    public String getReportName() {
+        return reportName;
+    }
 
-	public void setReportName(String reportName) {
-		this.reportName = reportName;
-	}
+    public void setReportName(String reportName) {
+        this.reportName = reportName;
+    }
 
-	public String getAuditInfo() {
-		return auditInfo;
-	}
+    public String getAuditInfo() {
+        return auditInfo;
+    }
 
-	public void setAuditInfo(String auditInfo) {
-		this.auditInfo = auditInfo;
-	}
+    public void setAuditInfo(String auditInfo) {
+        this.auditInfo = auditInfo;
+    }
 
-	public String getAuditTime() {
-		return auditTime;
-	}
+    public String getAuditTime() {
+        return auditTime;
+    }
 
-	public void setAuditTime(String auditTime) {
-		this.auditTime = auditTime;
-	}
+    public void setAuditTime(String auditTime) {
+        this.auditTime = auditTime;
+    }
 
-	public String getAuditUserId() {
-		return auditUserId;
-	}
+    public String getAuditUserId() {
+        return auditUserId;
+    }
 
-	public void setAuditUserId(String auditUserId) {
-		this.auditUserId = auditUserId;
-	}
+    public void setAuditUserId(String auditUserId) {
+        this.auditUserId = auditUserId;
+    }
 
-	public int getAuditId() {
-		return auditId;
-	}
+    public int getAuditId() {
+        return auditId;
+    }
 
-	public void setAuditId(int auditId) {
-		this.auditId = auditId;
-	}
+    public void setAuditId(int auditId) {
+        this.auditId = auditId;
+    }
 
-	
-	public String getFlowId() {
-		return flowId;
-	}
 
-	public void setFlowId(String flowId) {
-		this.flowId = flowId;
-	}
+    public String getFlowId() {
+        return flowId;
+    }
 
-	public int getStatusNew() {
-		return statusNew;
-	}
+    public void setFlowId(String flowId) {
+        this.flowId = flowId;
+    }
 
-	public void setStatusNew(int statusNew) {
-		this.statusNew = statusNew;
-	}
+    public int getStatusNew() {
+        return statusNew;
+    }
 
-	public int getStatusOld() {
-		return statusOld;
-	}
+    public void setStatusNew(int statusNew) {
+        this.statusNew = statusNew;
+    }
 
-	public void setStatusOld(int statusOld) {
-		this.statusOld = statusOld;
-	}
+    public int getStatusOld() {
+        return statusOld;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setStatusOld(int statusOld) {
+        this.statusOld = statusOld;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
 }

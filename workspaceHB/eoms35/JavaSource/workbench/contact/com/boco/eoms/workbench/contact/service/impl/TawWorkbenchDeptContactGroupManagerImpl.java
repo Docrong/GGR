@@ -9,6 +9,7 @@ import com.boco.eoms.workbench.contact.dao.TawWorkbenchDeptContactGroupDao;
 import com.boco.eoms.workbench.contact.model.TawWorkbenchContactGroup;
 import com.boco.eoms.workbench.contact.model.TawWorkbenchDeptContactGroup;
 import com.boco.eoms.workbench.contact.service.ITawWorkbenchDeptContactGroupManager;
+
 /**
  * <p>
  * Title:部门通讯录
@@ -19,16 +20,16 @@ import com.boco.eoms.workbench.contact.service.ITawWorkbenchDeptContactGroupMana
  * <p>
  * Date:Jun 30, 2008 20:30:30 PM
  * </p>
- * 
+ *
  * @author 孙圣泰
  * @version 3.5.1
- * 
  */
 public class TawWorkbenchDeptContactGroupManagerImpl extends BaseManager implements ITawWorkbenchDeptContactGroupManager {
     private TawWorkbenchDeptContactGroupDao dao;
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawWorkbenchDeptContactGroupDao(TawWorkbenchDeptContactGroupDao dao) {
@@ -62,30 +63,36 @@ public class TawWorkbenchDeptContactGroupManagerImpl extends BaseManager impleme
     public void removeTawWorkbenchDeptContactGroup(final String id) {
         dao.removeTawWorkbenchDeptContactGroup(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawWorkbenchDeptContactGroups(final Integer curPage, final Integer pageSize) {
-        return dao.getTawWorkbenchDeptContactGroups(curPage, pageSize,null);
+        return dao.getTawWorkbenchDeptContactGroups(curPage, pageSize, null);
     }
+
     public Map getTawWorkbenchDeptContactGroups(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawWorkbenchDeptContactGroups(curPage, pageSize, whereStr);
     }
+
     public List getSonsById(String parentid) {
-		return dao.getSonsById(parentid);
-	}
-    public List getNextLevecGroups(String nodid ,String user_id, String deleted){
-		return dao.getNextLevecGroups(nodid,user_id,deleted);
-	}
-    public int getMaxGroupId(){
-    	return dao.getMaxGroupId();
-    } 
-    public TawWorkbenchDeptContactGroup getTawWorkbenchDeptContactGroupById(final String id){
-    	return dao.getTawWorkbenchDeptContactGroupById(id);
+        return dao.getSonsById(parentid);
     }
 
-	public List getOwnerGroup(String nodid, String userId, String deleted) {
-		return dao.getOwnerGroup(nodid, userId, deleted);
-	}
-   
+    public List getNextLevecGroups(String nodid, String user_id, String deleted) {
+        return dao.getNextLevecGroups(nodid, user_id, deleted);
+    }
+
+    public int getMaxGroupId() {
+        return dao.getMaxGroupId();
+    }
+
+    public TawWorkbenchDeptContactGroup getTawWorkbenchDeptContactGroupById(final String id) {
+        return dao.getTawWorkbenchDeptContactGroupById(id);
+    }
+
+    public List getOwnerGroup(String nodid, String userId, String deleted) {
+        return dao.getOwnerGroup(nodid, userId, deleted);
+    }
+
 }

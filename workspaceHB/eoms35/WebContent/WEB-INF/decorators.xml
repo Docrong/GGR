@@ -1,7 +1,7 @@
 <decorators defaultdir="/decorators">
     <excludes>
         <pattern>/resources/*</pattern>
-    </excludes> 
+    </excludes>
     <decorator name="default" page="default.jsp">
         <pattern>/*</pattern>
     </decorator>

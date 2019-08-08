@@ -9,12 +9,12 @@ package com.boco.eoms.commons.system.priv.exception;
  */
 public class AuthBaseException extends PrivBaseException {
 
-	public AuthBaseException() {
-		this("Base Exception for Authention.");
-	}
+    public AuthBaseException() {
+        this("Base Exception for Authention.");
+    }
 
-	public AuthBaseException(String errorMessage) {
-		super(errorMessage);
-	}
+    public AuthBaseException(String errorMessage) {
+        super(errorMessage);
+    }
 
 }

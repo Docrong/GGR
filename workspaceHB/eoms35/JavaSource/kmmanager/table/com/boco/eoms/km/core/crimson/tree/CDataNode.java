@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -76,69 +76,75 @@ import org.w3c.dom.*;
  * @version $Revision: 1.2 $
  */
 //public
-class CDataNode extends TextNode implements CDATASection
-{
+class CDataNode extends TextNode implements CDATASection {
     /**
      * Constructs a CDATA text object with no text.
      */
-    public CDataNode () { }
+    public CDataNode() {
+    }
 
-        
+
     /**
      * Constructs CDATA text object by copying text from the input buffer.
      */
-    public CDataNode (char buf [], int offset, int len)
-    {
-	super (buf, offset, len);
+    public CDataNode(char buf[], int offset, int len) {
+        super(buf, offset, len);
     }
 
     /**
      * Constructs a CDATA text object by copying text from the string.
      */
-    public CDataNode (String s)
-    {
-	super (s);
+    public CDataNode(String s) {
+        super(s);
     }
 
     /**
      * Writes the text, breaking this into multiple CDATA sections
      * if necessary to escape <em>[[&lt;</em> in the data.
      */
-    public void writeXml (XmlWriteContext context) throws IOException
-    {
-	Writer	out = context.getWriter ();
-	out.write ("<![CDATA[");
-	for (int i = 0; i < data.length; i++) {
-	    char c = data [i];
+    public void writeXml(XmlWriteContext context) throws IOException {
+        Writer out = context.getWriter();
+        out.write("<![CDATA[");
+        for (int i = 0; i < data.length; i++) {
+            char c = data[i];
 
-	    // embedded "]]>" needs to be split into adjacent
-	    // CDATA blocks ... can be split at either point
-	    if (c == ']') {
-		if ((i + 2) < data.length
-			&& data [i + 1] == ']'
-			&& data [i + 2] == '>') {
-		    out.write ("]]]><![CDATA[");
-		    continue;
-		}
-	    }
-	    out.write (c);
-	}
-	out.write ("]]>");
+            // embedded "]]>" needs to be split into adjacent
+            // CDATA blocks ... can be split at either point
+            if (c == ']') {
+                if ((i + 2) < data.length
+                        && data[i + 1] == ']'
+                        && data[i + 2] == '>') {
+                    out.write("]]]><![CDATA[");
+                    continue;
+                }
+            }
+            out.write(c);
+        }
+        out.write("]]>");
     }
 
     // DOM support
 
-    /** DOM: Returns the CDATA_SECTION_NODE node type constant. */
-    public short getNodeType () { return CDATA_SECTION_NODE; }
-
-    /** Returns a new CDATA section with the same content as this. */
-    public Node cloneNode (boolean deep)
-    {
-    	CDataNode retval = new CDataNode (data, 0, data.length);
-	retval.setOwnerDocument ((XmlDocument)this.getOwnerDocument ());
-	return retval;
+    /**
+     * DOM: Returns the CDATA_SECTION_NODE node type constant.
+     */
+    public short getNodeType() {
+        return CDATA_SECTION_NODE;
     }
 
-    /** Returns the string "#cdata-section".*/
-    public String getNodeName () { return "#cdata-section"; }
+    /**
+     * Returns a new CDATA section with the same content as this.
+     */
+    public Node cloneNode(boolean deep) {
+        CDataNode retval = new CDataNode(data, 0, data.length);
+        retval.setOwnerDocument((XmlDocument) this.getOwnerDocument());
+        return retval;
+    }
+
+    /**
+     * Returns the string "#cdata-section".
+     */
+    public String getNodeName() {
+        return "#cdata-section";
+    }
 }

@@ -17,28 +17,27 @@ import com.boco.eoms.commons.rule.util.RuleAttributes;
  * <p>
  * Date:May 23, 2007 10:43:50 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class RuleAttributesServiceImpl implements IRuleAttributesService {
 
-	/**
-	 * 规则属性配置
-	 */
-	private RuleAttributes ruleAttributes;
+    /**
+     * 规则属性配置
+     */
+    private RuleAttributes ruleAttributes;
 
-	public Rule findRuleById(String id) throws RuleToolException {
-		return ruleAttributes.findRuleById(id);
-	}
+    public Rule findRuleById(String id) throws RuleToolException {
+        return ruleAttributes.findRuleById(id);
+    }
 
-	public List listRules() throws RuleToolException {
-		return ruleAttributes.getRules();
-	}
+    public List listRules() throws RuleToolException {
+        return ruleAttributes.getRules();
+    }
 
-	public void setRuleAttributes(RuleAttributes ruleAttributes) {
-		this.ruleAttributes = ruleAttributes;
-	}
+    public void setRuleAttributes(RuleAttributes ruleAttributes) {
+        this.ruleAttributes = ruleAttributes;
+    }
 
 }

@@ -4,144 +4,143 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author
- * 接口轮训表
+ * @author 接口轮训表
  */
 public class WfInterfaceInfo implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -2888101240531764428L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -2888101240531764428L;
 
-	private String id;
-	
-	private String mainBeanId;	
-	
-	private String linkBeanId;
+    private String id;
 
-	private String sheetType; // 工单类别:如业务开通
+    private String mainBeanId;
 
-	private String serviceType; // 业务类别：如短信业务
+    private String linkBeanId;
 
-	private String interfaceType; // 接口类型：如告警接口
-	
-	private String methodType;	//接口方法类型：如新增
+    private String sheetType; // 工单类别:如业务开通
 
-	private String sheetKey;	//工单id
+    private String serviceType; // 业务类别：如短信业务
 
-	private String linkId;		//link表id
+    private String interfaceType; // 接口类型：如告警接口
 
-	private Date createTime;	//建立时间
+    private String methodType;    //接口方法类型：如新增
 
-	private Date sendTime;		//发送成功时间
+    private String sheetKey;    //工单id
 
-	private String isSended;	//是否已发送 0未发送，1已发送
+    private String linkId;        //link表id
 
-	private String remark;
+    private Date createTime;    //建立时间
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    private Date sendTime;        //发送成功时间
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    private String isSended;    //是否已发送 0未发送，1已发送
 
-	public String getId() {
-		return id;
-	}
+    private String remark;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	public String getInterfaceType() {
-		return interfaceType;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setInterfaceType(String interfaceType) {
-		this.interfaceType = interfaceType;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getIsSended() {
-		return isSended;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setIsSended(String isSended) {
-		this.isSended = isSended;
-	}
+    public String getInterfaceType() {
+        return interfaceType;
+    }
 
-	public String getLinkId() {
-		return linkId;
-	}
+    public void setInterfaceType(String interfaceType) {
+        this.interfaceType = interfaceType;
+    }
 
-	public void setLinkId(String linkId) {
-		this.linkId = linkId;
-	}
+    public String getIsSended() {
+        return isSended;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setIsSended(String isSended) {
+        this.isSended = isSended;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getLinkId() {
+        return linkId;
+    }
 
-	public Date getSendTime() {
-		return sendTime;
-	}
+    public void setLinkId(String linkId) {
+        this.linkId = linkId;
+    }
 
-	public void setSendTime(Date sendTime) {
-		this.sendTime = sendTime;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public String getServiceType() {
-		return serviceType;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public void setServiceType(String serviceType) {
-		this.serviceType = serviceType;
-	}
+    public Date getSendTime() {
+        return sendTime;
+    }
 
-	public String getSheetKey() {
-		return sheetKey;
-	}
+    public void setSendTime(Date sendTime) {
+        this.sendTime = sendTime;
+    }
 
-	public void setSheetKey(String sheetKey) {
-		this.sheetKey = sheetKey;
-	}
+    public String getServiceType() {
+        return serviceType;
+    }
 
-	public String getSheetType() {
-		return sheetType;
-	}
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
 
-	public void setSheetType(String sheetType) {
-		this.sheetType = sheetType;
-	}
+    public String getSheetKey() {
+        return sheetKey;
+    }
 
-	public String getLinkBeanId() {
-		return linkBeanId;
-	}
+    public void setSheetKey(String sheetKey) {
+        this.sheetKey = sheetKey;
+    }
 
-	public void setLinkBeanId(String linkBeanId) {
-		this.linkBeanId = linkBeanId;
-	}
+    public String getSheetType() {
+        return sheetType;
+    }
 
-	public String getMainBeanId() {
-		return mainBeanId;
-	}
+    public void setSheetType(String sheetType) {
+        this.sheetType = sheetType;
+    }
 
-	public void setMainBeanId(String mainBeanId) {
-		this.mainBeanId = mainBeanId;
-	}
+    public String getLinkBeanId() {
+        return linkBeanId;
+    }
 
-	public String getMethodType() {
-		return methodType;
-	}
+    public void setLinkBeanId(String linkBeanId) {
+        this.linkBeanId = linkBeanId;
+    }
 
-	public void setMethodType(String methodType) {
-		this.methodType = methodType;
-	}
+    public String getMainBeanId() {
+        return mainBeanId;
+    }
+
+    public void setMainBeanId(String mainBeanId) {
+        this.mainBeanId = mainBeanId;
+    }
+
+    public String getMethodType() {
+        return methodType;
+    }
+
+    public void setMethodType(String methodType) {
+        this.methodType = methodType;
+    }
 
 }

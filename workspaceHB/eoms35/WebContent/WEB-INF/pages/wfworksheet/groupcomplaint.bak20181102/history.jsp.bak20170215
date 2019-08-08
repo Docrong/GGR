@@ -1,4 +1,4 @@
-﻿<%@ include file="/common/taglibs.jsp"%>
+<%@ include file="/common/taglibs.jsp"%>
 <div id="history" class="panel">
   <div class="tabtool-history-detail">&nbsp;
 	<a href="#" onclick="javascript:switcher.toggle();return false"><bean:message bundle="sheet" key="sheet.showDetail"/></a>

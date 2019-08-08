@@ -24,34 +24,33 @@ import com.boco.eoms.sheet.base.model.BaseLink;
  * <p>
  * Date:2007-8-3 14:31:16
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public interface ILinkService {
 
     /**
-     * @see 获取具体的link
      * @param id
      * @return
      * @throws Exception
+     * @see 获取具体的link
      */
     public BaseLink getSingleLinkPO(String id) throws Exception;
 
     /**
-     * @see 根据sql语句获取link集合
      * @param sql
      * @return
      * @throws Exception
+     * @see 根据sql语句获取link集合
      */
     public List getLinksByMainId(String mainId) throws Exception;
 
     /**
-     * @see 根据sql语句获取link集合
      * @param sql
      * @return
      * @throws Exception
+     * @see 根据sql语句获取link集合
      */
     public abstract List getLinksBySql(String sql) throws Exception;
 
@@ -65,52 +64,54 @@ public interface ILinkService {
 
     /**
      * 保存link至db
-     * 
-     * @param obj
-     *            orm对象
+     *
+     * @param obj orm对象
      */
     public String addLink(Object obj) throws Exception;
-    
-    /**
-	 * 根据用户ID查找出他的所有模板（带分页）
-	 * @author wangjianhua
-	 * @date 2008-07-22
-	 * @param userId
-	 * @return sheets列表
-	 * @throws SheetException
-	 */
-	public abstract List getDealTemplatesByUserIds(String userId, Integer curPage, Integer pageSize, int[] aTotal, String linkName, String codition) throws SheetException;
 
+    /**
+     * 根据用户ID查找出他的所有模板（带分页）
+     *
+     * @param userId
+     * @return sheets列表
+     * @throws SheetException
+     * @author wangjianhua
+     * @date 2008-07-22
+     */
+    public abstract List getDealTemplatesByUserIds(String userId, Integer curPage, Integer pageSize, int[] aTotal, String linkName, String codition) throws SheetException;
 
 
     public String getOperateRoleId(String operateRoleId);
 
     public String getOperateUserId(String operateRoleId);
-    
+
     /**
-	 * 根据task表里的id，查找link表的操作记录
-	 * @param aiid
-	 * @return
-	 * @throws HibernateException
-	 */
+     * 根据task表里的id，查找link表的操作记录
+     *
+     * @param aiid
+     * @return
+     * @throws HibernateException
+     */
     public List getLinkOperateByAiid(String aiid, String linkName);
-    
-        /**
-	 * 删除link对象
-	 * @param aiid
-	 * @return
-	 * @throws HibernateException
-	 */
+
+    /**
+     * 删除link对象
+     *
+     * @param aiid
+     * @return
+     * @throws HibernateException
+     */
     public void removeLink(Object obj);
-    
-	/**
-	 * 清除当前session
-	 */
-	public void clearObjectOfCurrentSession();
-	/**
-	 * 当有两个相同标识不同实体时执行
-	 */
+
+    /**
+     * 清除当前session
+     */
+    public void clearObjectOfCurrentSession();
+
+    /**
+     * 当有两个相同标识不同实体时执行
+     */
     public void mergeObject(Object obj);
-    
-    public List getLinksBycondition(String condition, String linkName) ;
+
+    public List getLinksBycondition(String condition, String linkName);
 }

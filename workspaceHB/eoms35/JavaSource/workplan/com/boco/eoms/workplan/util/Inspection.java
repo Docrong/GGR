@@ -1,106 +1,106 @@
 package com.boco.eoms.workplan.util;
 
 public class Inspection {
-	private String netID;//字段中文名
-	private String netName;//字段英文名
-	private String cmdID;//字段内容
-	private String cmdName;//字段中文名
-	private String taskID;//字段英文名
-	private String taskName;//字段内容
-	
-	private String executeTime;//字段中文名
-	private String executeStatus;//字段英文名
-	private String executeResult;//字段内容
-	
-	private String executeFTP;//字段中文名
-	private String urlPath;//字段中文名
+    private String netID;//字段中文名
+    private String netName;//字段英文名
+    private String cmdID;//字段内容
+    private String cmdName;//字段中文名
+    private String taskID;//字段英文名
+    private String taskName;//字段内容
 
-	public String getNetID() {
-		return netID;
-	}
+    private String executeTime;//字段中文名
+    private String executeStatus;//字段英文名
+    private String executeResult;//字段内容
 
-	public void setNetID(String netID) {
-		this.netID = netID;
-	}
+    private String executeFTP;//字段中文名
+    private String urlPath;//字段中文名
 
-	public String getNetName() {
-		return netName;
-	}
+    public String getNetID() {
+        return netID;
+    }
 
-	public void setNetName(String netName) {
-		this.netName = netName;
-	}
+    public void setNetID(String netID) {
+        this.netID = netID;
+    }
 
-	public String getCmdID() {
-		return cmdID;
-	}
+    public String getNetName() {
+        return netName;
+    }
 
-	public void setCmdID(String cmdID) {
-		this.cmdID = cmdID;
-	}
+    public void setNetName(String netName) {
+        this.netName = netName;
+    }
 
-	public String getCmdName() {
-		return cmdName;
-	}
+    public String getCmdID() {
+        return cmdID;
+    }
 
-	public void setCmdName(String cmdName) {
-		this.cmdName = cmdName;
-	}
+    public void setCmdID(String cmdID) {
+        this.cmdID = cmdID;
+    }
 
-	public String getTaskID() {
-		return taskID;
-	}
+    public String getCmdName() {
+        return cmdName;
+    }
 
-	public void setTaskID(String taskID) {
-		this.taskID = taskID;
-	}
+    public void setCmdName(String cmdName) {
+        this.cmdName = cmdName;
+    }
 
-	public String getTaskName() {
-		return taskName;
-	}
+    public String getTaskID() {
+        return taskID;
+    }
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
-	}
+    public void setTaskID(String taskID) {
+        this.taskID = taskID;
+    }
 
-	public String getExecuteTime() {
-		return executeTime;
-	}
+    public String getTaskName() {
+        return taskName;
+    }
 
-	public void setExecuteTime(String executeTime) {
-		this.executeTime = executeTime;
-	}
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
-	public String getExecuteStatus() {
-		return executeStatus;
-	}
+    public String getExecuteTime() {
+        return executeTime;
+    }
 
-	public void setExecuteStatus(String executeStatus) {
-		this.executeStatus = executeStatus;
-	}
+    public void setExecuteTime(String executeTime) {
+        this.executeTime = executeTime;
+    }
 
-	public String getExecuteResult() {
-		return executeResult;
-	}
+    public String getExecuteStatus() {
+        return executeStatus;
+    }
 
-	public void setExecuteResult(String executeResult) {
-		this.executeResult = executeResult;
-	}
+    public void setExecuteStatus(String executeStatus) {
+        this.executeStatus = executeStatus;
+    }
 
-	public String getExecuteFTP() {
-		return executeFTP;
-	}
+    public String getExecuteResult() {
+        return executeResult;
+    }
 
-	public void setExecuteFTP(String executeFTP) {
-		this.executeFTP = executeFTP;
-	}
+    public void setExecuteResult(String executeResult) {
+        this.executeResult = executeResult;
+    }
 
-	public String getUrlPath() {
-		return urlPath;
-	}
+    public String getExecuteFTP() {
+        return executeFTP;
+    }
 
-	public void setUrlPath(String urlPath) {
-		this.urlPath = urlPath;
-	}
-	
+    public void setExecuteFTP(String executeFTP) {
+        this.executeFTP = executeFTP;
+    }
+
+    public String getUrlPath() {
+        return urlPath;
+    }
+
+    public void setUrlPath(String urlPath) {
+        this.urlPath = urlPath;
+    }
+
 }

@@ -9,275 +9,275 @@ import org.apache.struts.action.ActionMapping;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class EvaKpiInstanceForm extends BaseForm implements
-		java.io.Serializable {
+        java.io.Serializable {
 
-	/**
-	 * 任务主键
-	 */
-	protected String id;
+    /**
+     * 任务主键
+     */
+    protected String id;
 
-	/**
-	 * 任务id
-	 */
-	protected String taskId;
+    /**
+     * 任务id
+     */
+    protected String taskId;
 
-	/**
-	 * 指标id
-	 */
-	protected String kpiId;
+    /**
+     * 指标id
+     */
+    protected String kpiId;
 
-	/**
-	 * 指标权重
-	 */
-	protected Float weight;
+    /**
+     * 指标权重
+     */
+    protected Float weight;
 
-	/**
-	 * 指标在表格中占据行数
-	 */
-	protected String rowspan;
+    /**
+     * 指标在表格中占据行数
+     */
+    protected String rowspan;
 
-	/**
-	 * 指标在表格中占据列数
-	 */
-	protected String colspan;
+    /**
+     * 指标在表格中占据列数
+     */
+    protected String colspan;
 
-	/**
-	 * 指标所属行列表列表编号（相当于行号）
-	 */
-	protected String listNo;
+    /**
+     * 指标所属行列表列表编号（相当于行号）
+     */
+    protected String listNo;
 
-	/**
-	 * 指标对应节点id
-	 */
-	protected String nodeId;
+    /**
+     * 指标对应节点id
+     */
+    protected String nodeId;
 
-	/**
-	 * 指标对应父节点id
-	 */
-	protected String parentNodeId;
+    /**
+     * 指标对应父节点id
+     */
+    protected String parentNodeId;
 
-	/**
-	 * 指标对应节点叶子标志
-	 */
-	protected String leaf;
-	protected String instanceId; 	//详细信息主键
-	protected String taskDetailId;  //任务详细信息ID
-	protected String time;			//选择时间
-	protected String timeType; 		//时间类型
-	protected String partnerId;		//合作伙伴部门ID
-	protected String partnerName;		//合作伙伴部门NAME	
-	protected String realScore;		//实际得分
-	protected String reduceReason;	//扣分原因
-	protected String remark;			//备注
-	protected String isPublish;		//上报标志
-	protected String createTime;		//记录创建时间
-	
-	
-	protected String algorithm;  //算法
-	
-	protected List multiScore; //报表查询应用的多月份分数
-	protected String taskName;//任务NAME 
-	
-	public String getTaskName() {
-		return taskName;
-	}
+    /**
+     * 指标对应节点叶子标志
+     */
+    protected String leaf;
+    protected String instanceId;    //详细信息主键
+    protected String taskDetailId;  //任务详细信息ID
+    protected String time;            //选择时间
+    protected String timeType;        //时间类型
+    protected String partnerId;        //合作伙伴部门ID
+    protected String partnerName;        //合作伙伴部门NAME
+    protected String realScore;        //实际得分
+    protected String reduceReason;    //扣分原因
+    protected String remark;            //备注
+    protected String isPublish;        //上报标志
+    protected String createTime;        //记录创建时间
 
-	public void setTaskName(String taskName) {
-		this.taskName = taskName;
-	}
 
-	public List getMultiScore() {
-		return multiScore;
-	}
+    protected String algorithm;  //算法
 
-	public void setMultiScore(List multiScore) {
-		this.multiScore = multiScore;
-	}
+    protected List multiScore; //报表查询应用的多月份分数
+    protected String taskName;//任务NAME
 
-	public String getColspan() {
-		return colspan;
-	}
+    public String getTaskName() {
+        return taskName;
+    }
 
-	public void setColspan(String colspan) {
-		this.colspan = colspan;
-	}
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	}
+    public List getMultiScore() {
+        return multiScore;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public void setMultiScore(List multiScore) {
+        this.multiScore = multiScore;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getColspan() {
+        return colspan;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setColspan(String colspan) {
+        this.colspan = colspan;
+    }
 
-	public String getInstanceId() {
-		return instanceId;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	public void setInstanceId(String instanceId) {
-		this.instanceId = instanceId;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public String getIsPublish() {
-		return isPublish;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setIsPublish(String isPublish) {
-		this.isPublish = isPublish;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getKpiId() {
-		return kpiId;
-	}
+    public String getInstanceId() {
+        return instanceId;
+    }
 
-	public void setKpiId(String kpiId) {
-		this.kpiId = kpiId;
-	}
+    public void setInstanceId(String instanceId) {
+        this.instanceId = instanceId;
+    }
 
-	public String getLeaf() {
-		return leaf;
-	}
+    public String getIsPublish() {
+        return isPublish;
+    }
 
-	public void setLeaf(String leaf) {
-		this.leaf = leaf;
-	}
+    public void setIsPublish(String isPublish) {
+        this.isPublish = isPublish;
+    }
 
-	public String getListNo() {
-		return listNo;
-	}
+    public String getKpiId() {
+        return kpiId;
+    }
 
-	public void setListNo(String listNo) {
-		this.listNo = listNo;
-	}
+    public void setKpiId(String kpiId) {
+        this.kpiId = kpiId;
+    }
 
-	public String getNodeId() {
-		return nodeId;
-	}
+    public String getLeaf() {
+        return leaf;
+    }
 
-	public void setNodeId(String nodeId) {
-		this.nodeId = nodeId;
-	}
+    public void setLeaf(String leaf) {
+        this.leaf = leaf;
+    }
 
-	public String getParentNodeId() {
-		return parentNodeId;
-	}
+    public String getListNo() {
+        return listNo;
+    }
 
-	public void setParentNodeId(String parentNodeId) {
-		this.parentNodeId = parentNodeId;
-	}
+    public void setListNo(String listNo) {
+        this.listNo = listNo;
+    }
 
-	public String getPartnerId() {
-		return partnerId;
-	}
+    public String getNodeId() {
+        return nodeId;
+    }
 
-	public void setPartnerId(String partnerId) {
-		this.partnerId = partnerId;
-	}
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
 
-	public String getPartnerName() {
-		return partnerName;
-	}
+    public String getParentNodeId() {
+        return parentNodeId;
+    }
 
-	public void setPartnerName(String partnerName) {
-		this.partnerName = partnerName;
-	}
+    public void setParentNodeId(String parentNodeId) {
+        this.parentNodeId = parentNodeId;
+    }
 
-	public String getRealScore() {
-		return realScore;
-	}
+    public String getPartnerId() {
+        return partnerId;
+    }
 
-	public void setRealScore(String realScore) {
-		this.realScore = realScore;
-	}
+    public void setPartnerId(String partnerId) {
+        this.partnerId = partnerId;
+    }
 
-	public String getReduceReason() {
-		return reduceReason;
-	}
+    public String getPartnerName() {
+        return partnerName;
+    }
 
-	public void setReduceReason(String reduceReason) {
-		this.reduceReason = reduceReason;
-	}
+    public void setPartnerName(String partnerName) {
+        this.partnerName = partnerName;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public String getRealScore() {
+        return realScore;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public void setRealScore(String realScore) {
+        this.realScore = realScore;
+    }
 
-	public String getRowspan() {
-		return rowspan;
-	}
+    public String getReduceReason() {
+        return reduceReason;
+    }
 
-	public void setRowspan(String rowspan) {
-		this.rowspan = rowspan;
-	}
+    public void setReduceReason(String reduceReason) {
+        this.reduceReason = reduceReason;
+    }
 
-	public String getTaskDetailId() {
-		return taskDetailId;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public void setTaskDetailId(String taskDetailId) {
-		this.taskDetailId = taskDetailId;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public String getTaskId() {
-		return taskId;
-	}
+    public String getRowspan() {
+        return rowspan;
+    }
 
-	public void setTaskId(String taskId) {
-		this.taskId = taskId;
-	}
+    public void setRowspan(String rowspan) {
+        this.rowspan = rowspan;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    public String getTaskDetailId() {
+        return taskDetailId;
+    }
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+    public void setTaskDetailId(String taskDetailId) {
+        this.taskDetailId = taskDetailId;
+    }
 
-	public String getTimeType() {
-		return timeType;
-	}
+    public String getTaskId() {
+        return taskId;
+    }
 
-	public void setTimeType(String timeType) {
-		this.timeType = timeType;
-	}
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
 
-	public Float getWeight() {
-		return weight;
-	}
+    public String getTime() {
+        return time;
+    }
 
-	public void setWeight(Float weight) {
-		this.weight = weight;
-	}
+    public void setTime(String time) {
+        this.time = time;
+    }
 
-	/**
-	 * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
-	 *      javax.servlet.http.HttpServletRequest)
-	 */
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// reset any boolean data types to false
+    public String getTimeType() {
+        return timeType;
+    }
 
-	}
+    public void setTimeType(String timeType) {
+        this.timeType = timeType;
+    }
 
-	public String getAlgorithm() {
-		return algorithm;
-	}
+    public Float getWeight() {
+        return weight;
+    }
 
-	public void setAlgorithm(String algorithm) {
-		this.algorithm = algorithm;
-	}
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
+
+    /**
+     * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
+     * javax.servlet.http.HttpServletRequest)
+     */
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        // reset any boolean data types to false
+
+    }
+
+    public String getAlgorithm() {
+        return algorithm;
+    }
+
+    public void setAlgorithm(String algorithm) {
+        this.algorithm = algorithm;
+    }
 
 
 }

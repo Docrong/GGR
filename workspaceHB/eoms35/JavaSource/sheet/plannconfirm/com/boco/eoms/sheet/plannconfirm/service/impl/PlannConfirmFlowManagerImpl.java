@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.plannconfirm.service.IPlannConfirmFlowManager;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannConfirmFlowManagerImpl extends BusinessFlowServiceImpl implements IPlannConfirmFlowManager {
- 
- }
+
+public class PlannConfirmFlowManagerImpl extends BusinessFlowServiceImpl implements IPlannConfirmFlowManager {
+
+}

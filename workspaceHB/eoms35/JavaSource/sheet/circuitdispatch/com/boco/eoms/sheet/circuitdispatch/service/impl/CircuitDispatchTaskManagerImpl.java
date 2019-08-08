@@ -11,10 +11,10 @@ import com.boco.eoms.sheet.circuitdispatch.service.ICircuitDispatchTaskManager;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class CircuitDispatchTaskManagerImpl extends TaskServiceImpl implements ICircuitDispatchTaskManager{
+public class CircuitDispatchTaskManagerImpl extends TaskServiceImpl implements ICircuitDispatchTaskManager {
 
 }

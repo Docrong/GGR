@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_TRAIN_INFORMATION"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="trainName"
-            	column="TRAIN_NAME"
+        <property
+                name="trainName"
+                column="TRAIN_NAME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="trainGrade"
-            	column="TRAIN_GRADE"
+        <property
+                name="trainGrade"
+                column="TRAIN_GRADE"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="trainAddress"
-            	column="TRAIN_ADDRESS"
+        <property
+                name="trainAddress"
+                column="TRAIN_ADDRESS"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="trainTime"
-            	column="TRAIN_TIME"
+        <property
+                name="trainTime"
+                column="TRAIN_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="trainBeginTime"
-            	column="TRAIN_BEGIN_TIME"
+        <property
+                name="trainBeginTime"
+                column="TRAIN_BEGIN_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="trainEndTime"
-            	column="TRAIN_END_TIME"
+        <property
+                name="trainEndTime"
+                column="TRAIN_END_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="trainDept"
-            	column="TRAIN_DEPT"
+        <property
+                name="trainDept"
+                column="TRAIN_DEPT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="trainDocument"
-            	column="TRAIN_DOCUMENT"
+        <property
+                name="trainDocument"
+                column="TRAIN_DOCUMENT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="trainVender"
-            	column="TRAIN_VENDER"
+        <property
+                name="trainVender"
+                column="TRAIN_VENDER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -116,9 +116,9 @@
 
         </property>
 
-	<property
-            name="trainSpeciality"
-            	column="TRAIN_SPECIALITY"
+        <property
+                name="trainSpeciality"
+                column="TRAIN_SPECIALITY"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -126,47 +126,47 @@
 
         </property>
 
-	<property
-            name="trainType"
-            	column="TRAIN_TYPE"
+        <property
+                name="trainType"
+                column="TRAIN_TYPE"
                 length="32"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-	
-	<property
-            name="trainScore"
-            	column="TRAIN_SCORE"
+
+        <property
+                name="trainScore"
+                column="TRAIN_SCORE"
                 length="32"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-        
-     <property
-            name="trainFeedback"
-            	column="TRAIN_FEEDBACK"
+
+        <property
+                name="trainFeedback"
+                column="TRAIN_FEEDBACK"
                 length="32"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-        
-     <property
-            name="trainInternal"
-            	column="TRAIN_INTERNAL"
+
+        <property
+                name="trainInternal"
+                column="TRAIN_INTERNAL"
                 length="32"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

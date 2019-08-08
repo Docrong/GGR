@@ -43,6 +43,7 @@ import com.boco.common.security.service.model.UserDO;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author weis
  * @version 1.0
  */
@@ -50,39 +51,37 @@ import com.boco.common.security.service.model.UserDO;
 public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     private static SystemConfig sc = SystemConfig.getInstance();
-    protected static String[]  USER_OBJECT_CLASS =
-        {"person","organizationalperson","inetorgperson","ecuser","vtuser-11"};
+    protected static String[] USER_OBJECT_CLASS =
+            {"person", "organizationalperson", "inetorgperson", "ecuser", "vtuser-11"};
 
-    public UserLdapDAO() {}
+    public UserLdapDAO() {
+    }
 
     /**
      * user class directory context -- Suffix
      */
-    public static String getUserDNSuffix()
-    {
+    public static String getUserDNSuffix() {
         return sc.userDNSuffix;
     }
 
     /**
-     *user class directory context -- preffix
+     * user class directory context -- preffix
      */
-    public static String getUserDNPreffix()
-    {
+    public static String getUserDNPreffix() {
         return sc.userDNPrefix;
     }
 
-    public static String[] getUserObjectClass()
-    {
+    public static String[] getUserObjectClass() {
         return USER_OBJECT_CLASS;
     }
 
     public String getPermissionDirectoryContext() {
         return sc.permissionCtxDN;
-  }
+    }
 
     public static String getRangeDirectoryContext() {
-    return sc.rangeCtxDN;
-  }
+        return sc.rangeCtxDN;
+    }
 
     public static final String calcUserDN(String usrname) {
 
@@ -93,7 +92,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
     }
 
     public UserDO createUser(UserDO user)
-        throws ObjectAlreadyExistException, SecurityManagerDaoException {
+            throws ObjectAlreadyExistException, SecurityManagerDaoException {
 
         LdapOperation ldap = null;
         //Note: the userName must equals to userID, In Ldap, userName is equals to uid, ("sn")
@@ -106,17 +105,16 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             //check if the user has already exist.
             //String userCtxDN = getUserClassDirectoryContext();
             String userCtxDN = getUserDNSuffix();
-            ldap.searchSubtree(userCtxDN,"uid=" + userUid);
+            ldap.searchSubtree(userCtxDN, "uid=" + userUid);
 
-            if(ldap.nextResult())
+            if (ldap.nextResult())
                 throw new ObjectAlreadyExistException("The user " + user + "has already exist.");
 
             //create the domain
             Attributes attributes = new BasicAttributes(true);
             Attribute attr = new BasicAttribute("objectclass");
             attr.add("top");
-            for(int i=0;i<USER_OBJECT_CLASS.length;i++)
-            {
+            for (int i = 0; i < USER_OBJECT_CLASS.length; i++) {
                 attr.add(USER_OBJECT_CLASS[i]);
             }
 
@@ -124,89 +122,74 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             //attributes.put("objectClass",
             //                new String[]{"top", "person", "organizationalPerson", "inetOrgPerson", "ecUser"});
             attributes.put("uid", userUid);
-            attributes.put("sn",user.getName());
-            attributes.put("cn",user.getFullName());
+            attributes.put("sn", user.getName());
+            attributes.put("cn", user.getFullName());
 
             // Encode the password use Base64
             //String password = Base64Encoder.encode(user.getPassword());
             String password = user.getPassword();
             //System.out.println("the user's password is : " + password);
-            attributes.put("userPassword",password);
-            attributes.put("vtprincipal","username:"+userUid);
+            attributes.put("userPassword", password);
+            attributes.put("vtprincipal", "username:" + userUid);
 
-            if(user.getProperty("eaRegionID")!=null)
-            {
-                attributes.put("eaRegionID",(String)user.getProperty("eaRegionID"));
+            if (user.getProperty("eaRegionID") != null) {
+                attributes.put("eaRegionID", (String) user.getProperty("eaRegionID"));
             }
 
-            if(user.getProperty("description")!=null)
-            {
-                attributes.put("description",(String)user.getProperty("description"));
+            if (user.getProperty("description") != null) {
+                attributes.put("description", (String) user.getProperty("description"));
             }
 
             // mail address, support multiple values
-            if (user.getProperty("mail") != null)
-            {
+            if (user.getProperty("mail") != null) {
                 attributes.put("mail", user.getProperty("mail"));
             }
 
-            if (user.getProperty("SecurityHost") != null)
-            {
+            if (user.getProperty("SecurityHost") != null) {
                 attributes.put("eaSecurityHost", user.getProperty("SecurityHost"));
             }
 
-            if (user.getProperty("LogonTime") != null)
-            {
+            if (user.getProperty("LogonTime") != null) {
                 attributes.put("eaLogonTime", user.getProperty("LogonTime"));
             }
 
-            if(user.getProperty("homePostalAddress")!=null)
-            {
-                attributes.put("homePostalAddress",(String)user.getProperty("homePostalAddress"));
+            if (user.getProperty("homePostalAddress") != null) {
+                attributes.put("homePostalAddress", (String) user.getProperty("homePostalAddress"));
             }
-            if(user.getProperty("PostalCode")!=null)
-            {
-                attributes.put("PostalCode",(String)user.getProperty("PostalCode"));
+            if (user.getProperty("PostalCode") != null) {
+                attributes.put("PostalCode", (String) user.getProperty("PostalCode"));
             }
-            if (user.getProperty("mobile") != null)
-            {
-                attributes.put("mobile", (String)user.getProperty("mobile"));
+            if (user.getProperty("mobile") != null) {
+                attributes.put("mobile", (String) user.getProperty("mobile"));
             }
-            if (user.getProperty("telephoneNumber") != null)
-            {
-                attributes.put("telephoneNumber", (String)user.getProperty("telephoneNumber"));
+            if (user.getProperty("telephoneNumber") != null) {
+                attributes.put("telephoneNumber", (String) user.getProperty("telephoneNumber"));
             }
 
-            if (user.getProperty("ExpiredTime") != null)
-            {
-                attributes.put("eaExpiredTime", (String)user.getProperty("ExpiredTime"));
+            if (user.getProperty("ExpiredTime") != null) {
+                attributes.put("eaExpiredTime", (String) user.getProperty("ExpiredTime"));
             }
 
-            if (user.getProperty("PasswdExpiredTime") != null)
-            {
-                attributes.put("eaPasswdExpiredTime", (String)user.getProperty("PasswdExpiredTime"));
+            if (user.getProperty("PasswdExpiredTime") != null) {
+                attributes.put("eaPasswdExpiredTime", (String) user.getProperty("PasswdExpiredTime"));
             }
 
-            if (user.getProperty("LockFlag") != null)
-            {
-                attributes.put("eaLockFlag", (String)user.getProperty("LockFlag"));
+            if (user.getProperty("LockFlag") != null) {
+                attributes.put("eaLockFlag", (String) user.getProperty("LockFlag"));
             }
 
-            if (user.getProperty("Relationship") != null)
-            {
-                attributes.put("eaRelationship", (String)user.getProperty("Relationship"));
+            if (user.getProperty("Relationship") != null) {
+                attributes.put("eaRelationship", (String) user.getProperty("Relationship"));
             }
 
             //增加人员所属部门信息   add by jerry
-            if(user.getProperty("deptId") != null){
-              attributes.put("departmentnumber",(String)user.getProperty("deptId"));
+            if (user.getProperty("deptId") != null) {
+                attributes.put("departmentnumber", (String) user.getProperty("deptId"));
             }
 
             String userDN = "uid=" + userUid + "," + getUserDNSuffix();
-            LdapOperation.addElement(userDN,attributes);
-        }
-        catch (NamingException e)
-        {
+            LdapOperation.addElement(userDN, attributes);
+        } catch (NamingException e) {
             throw new SecurityManagerDaoException("Count not create user : " + user, e);
         }
 //        catch(Exception e)
@@ -241,7 +224,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
      * true is returned and the user parameter is not longer valid. Return false
      * on any failure.
      *
-     * @param  user  reference on the user to be deleted.
+     * @param user reference on the user to be deleted.
      * @throws ObjectNotExistException , SecurityManagerDaoException
      */
     public void deleteUser(UserDO user) throws ObjectNotExistException, SecurityManagerDaoException {
@@ -274,19 +257,18 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     /**
      * update user information
-     *
-     *   cn - common name (full name)
-     *   sn - surname (required by ldap class person) , keep it same as uid
-     *   userPassword - user password , defined in class inetOrgPerson , empty password should allowed
-     *   mail - mail address (support multiple value)
-     *   telephoneNumber - telephone number (support multiple value)
+     * <p>
+     * cn - common name (full name)
+     * sn - surname (required by ldap class person) , keep it same as uid
+     * userPassword - user password , defined in class inetOrgPerson , empty password should allowed
+     * mail - mail address (support multiple value)
+     * telephoneNumber - telephone number (support multiple value)
      *
      * @param user user to update
      * @throws ObjectNotExistException , SecurityManagerDaoException
      */
     public void updateUser(UserDO user)
-            throws ObjectNotExistException, SecurityManagerDaoException
-    {
+            throws ObjectNotExistException, SecurityManagerDaoException {
 
         LdapOperation ldap = null;
         UserDO oldUser = null;
@@ -308,7 +290,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             // check if the object has required schema
             String[] attids = {"objectClass"};
 
-           // System.out.println(userDN);
+            // System.out.println(userDN);
 
             Attributes attrs = ldap.getDirContext().getAttributes(userDN, attids);
             NamingEnumeration valueEnum = attrs.get("objectClass").getAll();
@@ -325,100 +307,93 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
                         new BasicAttribute("objectClass", "ecUser")));
 
             // check full name
-             if (!oldUser.getFullName().equals(user.getFullName()))
-            vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE, new BasicAttribute("cn", user.getFullName())));
+            if (!oldUser.getFullName().equals(user.getFullName()))
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE, new BasicAttribute("cn", user.getFullName())));
 
             // check userPassword
-           // System.out.println("The new password is: " + user.getPassword());
+            // System.out.println("The new password is: " + user.getPassword());
             //System.out.println("The old passwd after encode: " + oldUser.getPassword());
             //String newPassword = Base64Encoder.encode(user.getPassword());
             //System.out.println("The new password after encode: " + newPassword);
 
-            if(user.getPassword() != null && !user.getPassword().equals(""))
-            {
+            if (user.getPassword() != null && !user.getPassword().equals("")) {
 //                System.out.println("&*&*&*&*&*&*passwd is not null&*&*&*&*&*&*&");
                 String newpassword = Base64Encoder.encode(user.getPassword());
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                        new BasicAttribute("userPassword", newpassword)));
+                        new BasicAttribute("userPassword", newpassword)));
             }
 
             if (user.getProperty("eaRegionID") != null)
-               vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                       new BasicAttribute("eaRegionID", (String)user.getProperty("eaRegionID"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("eaRegionID", (String) user.getProperty("eaRegionID"))));
 
             if (user.getProperty("PostalCode") != null)
-                           vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                   new BasicAttribute("PostalCode", (String)user.getProperty("PostalCode"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("PostalCode", (String) user.getProperty("PostalCode"))));
 
             if (user.getProperty("mail") != null)
-               vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                       new BasicAttribute("mail", (String)user.getProperty("mail"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("mail", (String) user.getProperty("mail"))));
 
             if (user.getProperty("eaRegisterTime") != null)
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("eaRegisterTime", (String)user.getProperty("eaRegisterTime"))));
+                        new BasicAttribute("eaRegisterTime", (String) user.getProperty("eaRegisterTime"))));
 
             if (user.getProperty("SecurityHost") != null)
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("eaSecurityHost", (String)user.getProperty("SecurityHost"))));
+                        new BasicAttribute("eaSecurityHost", (String) user.getProperty("SecurityHost"))));
 
             if (user.getProperty("LogonTime") != null)
-                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("eaLogonTime", (String)user.getProperty("LogonTime"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("eaLogonTime", (String) user.getProperty("LogonTime"))));
 
             if (user.getProperty("ExpiredTime") != null)
-                  vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                         new BasicAttribute("eaExpiredTime", (String)user.getProperty("ExpiredTime"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("eaExpiredTime", (String) user.getProperty("ExpiredTime"))));
 
             if (user.getProperty("telephoneNumber") != null)
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("telephoneNumber", (String)user.getProperty("telephoneNumber"))));
+                        new BasicAttribute("telephoneNumber", (String) user.getProperty("telephoneNumber"))));
 
             if (user.getProperty("mobile") != null)
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("mobile", (String)user.getProperty("mobile"))));
+                        new BasicAttribute("mobile", (String) user.getProperty("mobile"))));
 
             if (user.getProperty("homePostalAddress") != null)
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("homePostalAddress", (String)user.getProperty("homePostalAddress"))));
+                        new BasicAttribute("homePostalAddress", (String) user.getProperty("homePostalAddress"))));
 
             if (user.getProperty("description") != null)
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("description", (String)user.getProperty("description"))));
+                        new BasicAttribute("description", (String) user.getProperty("description"))));
 
             if (user.getProperty("PasswdExpiredTime") != null)
-                            vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                    new BasicAttribute("eaPasswdExpiredTime", (String)user.getProperty("PasswdExpiredTime"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("eaPasswdExpiredTime", (String) user.getProperty("PasswdExpiredTime"))));
 
             if (user.getProperty("LockFlag") != null)
-                            vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                    new BasicAttribute("eaLockFlag", (String)user.getProperty("LockFlag"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("eaLockFlag", (String) user.getProperty("LockFlag"))));
 
             //获得人员所属部门id  add by jerry
             if (user.getProperty("deptId") != null)
-                            vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                     new BasicAttribute("departmentnumber", (String)user.getProperty("deptId"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("departmentnumber", (String) user.getProperty("deptId"))));
 
             ModificationItem[] mods = new ModificationItem[1];
-            LdapOperation.modifyAttributes(userDN, (ModificationItem[])vec.toArray(mods));
+            LdapOperation.modifyAttributes(userDN, (ModificationItem[]) vec.toArray(mods));
 
-        }
-        catch (NamingException e)
-        {
+        } catch (NamingException e) {
             throw new SecurityManagerDaoException("Count not create user : " + user, e);
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             throw new SecurityManagerDaoException("Count not create user : " + user, e);
-        }
-        finally {
+        } finally {
             closeLdap(ldap);
         }
     }
 
     public void addPropertiesOfUser(UserDO user)
-            throws ObjectNotExistException, SecurityManagerDaoException
-    {
+            throws ObjectNotExistException, SecurityManagerDaoException {
         LdapOperation ldap = null;
         UserDO oldUser = null;
         try {
@@ -437,8 +412,8 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
             //There are mutli-values of mail, to add
             if (user.getProperty("mail") != null)
-                  vec.add(new ModificationItem(DirContext.ADD_ATTRIBUTE,
-                                 new BasicAttribute("mail", (String)user.getProperty("mail"))));
+                vec.add(new ModificationItem(DirContext.ADD_ATTRIBUTE,
+                        new BasicAttribute("mail", (String) user.getProperty("mail"))));
 
             /*if(user.getProperty("SecurityHost")!=null)
             {
@@ -447,18 +422,16 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             } */
 
             if (user.getProperty("LogonTime") != null)
-           // {
+                // {
                 vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                        new BasicAttribute("eaLogonTime", (String)user.getProperty("LogonTime"))));
+                        new BasicAttribute("eaLogonTime", (String) user.getProperty("LogonTime"))));
 
-                ModificationItem[] mods = new ModificationItem[1];
-                LdapOperation.modifyAttributes(userDN, (ModificationItem[])vec.toArray(mods));
+            ModificationItem[] mods = new ModificationItem[1];
+            LdapOperation.modifyAttributes(userDN, (ModificationItem[]) vec.toArray(mods));
             //}
 
 
-        }
-        catch (NamingException e)
-        {
+        } catch (NamingException e) {
             throw new SecurityManagerDaoException("Count not create user : " + user, e);
         }
 //        catch(IOException e)
@@ -472,7 +445,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 //
 //        }
         finally {
-                closeLdap(ldap);
+            closeLdap(ldap);
         }
 
     }
@@ -503,23 +476,23 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
         oa = ldap.getResultAttributeObject("eaRegionID");
         if (oa != null)
-           usr.setProperty("eaRegionID", oa);
+            usr.setProperty("eaRegionID", oa);
 
-        oa=ldap.getResultAttributeObject("eaLogonTime");
-        if(oa!=null)
-            usr.setProperty("LogonTime",oa);
+        oa = ldap.getResultAttributeObject("eaLogonTime");
+        if (oa != null)
+            usr.setProperty("LogonTime", oa);
 
-        oa=ldap.getResultAttributeObject("eaExpiredTime");
-        if(oa!=null)
-           usr.setProperty("ExpiredTime",oa);
+        oa = ldap.getResultAttributeObject("eaExpiredTime");
+        if (oa != null)
+            usr.setProperty("ExpiredTime", oa);
 
-        oa=ldap.getResultAttributeObject("PostalCode");
-        if(oa!=null)
-           usr.setProperty("PostalCode",oa);
+        oa = ldap.getResultAttributeObject("PostalCode");
+        if (oa != null)
+            usr.setProperty("PostalCode", oa);
 
-        oa=ldap.getResultAttributeObject("eaSecurityHost");
-        if(oa!=null)
-            usr.setProperty("SecurityHost",oa);
+        oa = ldap.getResultAttributeObject("eaSecurityHost");
+        if (oa != null)
+            usr.setProperty("SecurityHost", oa);
 
         oa = ldap.getResultAttributeObject("mobile");
         if (oa != null)
@@ -541,9 +514,9 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
         if (oa != null)
             usr.setProperty("PasswdExpiredTime", oa);
 
-          oa = ldap.getResultAttributeObject("departmentnumber");
-          if (oa != null)
-              usr.setProperty("departmentnumber", oa);
+        oa = ldap.getResultAttributeObject("departmentnumber");
+        if (oa != null)
+            usr.setProperty("departmentnumber", oa);
 
         return usr;
     }
@@ -571,16 +544,16 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             usr.setProperty("LogonTime", attrs.get("LogonTime").get());
 
         if (attrs.get("eaRegionID") != null)
-                    usr.setProperty("eaRegionID", attrs.get("eaRegionID").get());
+            usr.setProperty("eaRegionID", attrs.get("eaRegionID").get());
 
         if (attrs.get("ExpiredTime") != null)
-                    usr.setProperty("ExpiredTime", attrs.get("ExpiredTime").get());
+            usr.setProperty("ExpiredTime", attrs.get("ExpiredTime").get());
 
         if (attrs.get("SecurityHost") != null)
-                    usr.setProperty("SecurityHost", attrs.get("SecurityHost").get());
+            usr.setProperty("SecurityHost", attrs.get("SecurityHost").get());
 
         if (attrs.get("PostalCode") != null)
-                    usr.setProperty("PostalCode", attrs.get("PostalCode").get());
+            usr.setProperty("PostalCode", attrs.get("PostalCode").get());
 
         if (attrs.get("mail") != null)
             usr.setProperty("mail", attrs.get("mail").get());
@@ -597,7 +570,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
         if (attrs.get("description") != null)
             usr.setProperty("description", attrs.get("description").get());
 
-          if (attrs.get("departmentnumber") != null)
+        if (attrs.get("departmentnumber") != null)
             usr.setProperty("departmentnumber", attrs.get("departmentnumber").get());
 
         return usr;
@@ -607,7 +580,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
      * Load all the user data and attributes. On success a reference on the user
      * is returned, otherwise NULL is returned.
      *
-     * @param  name  User's identification name.
+     * @param name User's identification name.
      * @return Return a reference on a new created User object.
      * @throws SecurityManagerDaoException
      */
@@ -640,40 +613,39 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
      * Load all the user data and attributes. On success a reference on the user
      * is returned, otherwise NULL is returned.
      *
-     * @param  name  User's full name.
+     * @param name User's full name.
      * @return Return a vector of all reference on a new created User object.
      * @throws ObjectNotExistException ,SecurityManagerDaoException
      */
     public Vector lookupUserWithUserName(String name) throws SecurityManagerDaoException {
 
-    	LdapOperation ldap = null;
-    	UserDO user = null;
-    	Vector vct = new Vector();
+        LdapOperation ldap = null;
+        UserDO user = null;
+        Vector vct = new Vector();
 
-    	try {
-    		ldap = getLdap();
+        try {
+            ldap = getLdap();
 
-    		String userCtxDN = getUserDNSuffix();
-    		ldap.searchSubtree(userCtxDN, "cn=" + name);
+            String userCtxDN = getUserDNSuffix();
+            ldap.searchSubtree(userCtxDN, "cn=" + name);
 
-    		while (ldap.nextResult()) {
-    			user = createUserFromResult(ldap);
-    			vct.add(user);
-    		}
+            while (ldap.nextResult()) {
+                user = createUserFromResult(ldap);
+                vct.add(user);
+            }
 
-    	} catch (Exception e) {
-    		throw new SecurityManagerDaoException("Can not find user id: " + name, e);
+        } catch (Exception e) {
+            throw new SecurityManagerDaoException("Can not find user id: " + name, e);
 
-    	} finally {
-    		closeLdap(ldap);
-    	}
+        } finally {
+            closeLdap(ldap);
+        }
 
-    	return vct;
+        return vct;
     }
 
     public UserDO lookupUser(UserDO user)
-            throws SecurityManagerDaoException
-    {
+            throws SecurityManagerDaoException {
         String userName = user.getName();
         return lookupUser(userName);
     }
@@ -715,7 +687,6 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
      *
      * @param index start index
      * @param count count
-     *
      * @return Return a vector of strings holding the user identification key .
      * @throws SecurityManagerDaoException
      */
@@ -756,8 +727,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
     /**
      * Return the number of user in the system.
      *
-     * @return
-     *      Return the number of users in the system.
+     * @return Return the number of users in the system.
      * @throws SecurityManagerDaoException
      */
     public int getUsersCount() throws SecurityManagerDaoException {
@@ -791,55 +761,55 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     /**
      * remove one of the user's relationship table
+     *
      * @param usr
      * @param relationship - the String of the relationship
      * @throws ObjectNotExistException
      * @throws SecurityManagerDaoException
      */
     public void removeRelationship(Object usr, String relationship)
-                throws ObjectNotExistException, SecurityManagerDaoException {
-            LdapOperation ldap = null;
+            throws ObjectNotExistException, SecurityManagerDaoException {
+        LdapOperation ldap = null;
 
-            String usrname = getUserName(usr);
-            String usrdn = calcUserDN(usrname);
+        String usrname = getUserName(usr);
+        String usrdn = calcUserDN(usrname);
 
-            try {
-                ldap = getLdap();
+        try {
+            ldap = getLdap();
 
-                // check if the relationship exist in the user
-                String searchDN = getUserDNSuffix();
-                String searchFilter = "(&(" + getUserDNPreffix() + usrname + ")(eaRelationship=" + relationship + "))";
+            // check if the relationship exist in the user
+            String searchDN = getUserDNSuffix();
+            String searchFilter = "(&(" + getUserDNPreffix() + usrname + ")(eaRelationship=" + relationship + "))";
 
-                ldap.searchOneLevel(searchDN, searchFilter);
-                if (ldap.nextResult())
-                {
+            ldap.searchOneLevel(searchDN, searchFilter);
+            if (ldap.nextResult()) {
 //                    throw new ObjectNotExistException(relationship + " not exist in this user");
 
                 BasicAttribute attr = new BasicAttribute("eaRelationship", relationship);
                 ModificationItem mod = new ModificationItem(DirContext.REMOVE_ATTRIBUTE, attr);
                 ModificationItem[] mods = {mod};
                 LdapOperation.modifyAttributes(usrdn, mods);
-                }
-
-            } catch (NamingException e) {
-                throw new SecurityManagerDaoException("Can not remove the relationship of the user : " + usrdn, e);
-
-            } finally {
-                closeLdap(ldap);
             }
+
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Can not remove the relationship of the user : " + usrdn, e);
+
+        } finally {
+            closeLdap(ldap);
         }
+    }
 
     /**
      * You can use this function to create and update the relation. if the relation is already exist in the table, remove is first and add the new one.
      * in relation, the permissionID is equal to the primary key, one permissionID has only one relationship item.
+     *
      * @param user
      * @param relationship
      * @throws SecurityManagerDaoException
      * @throws ObjectAlreadyExistException
      */
-    public void setRelationship(UserDO user,String relationship)
-            throws SecurityManagerDaoException,ObjectNotExistException,ObjectAlreadyExistException
-    {
+    public void setRelationship(UserDO user, String relationship)
+            throws SecurityManagerDaoException, ObjectNotExistException, ObjectAlreadyExistException {
         LdapOperation ldap = null;
         String username = user.getName();
         String usrdn = calcUserDN(username);
@@ -848,16 +818,14 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             ldap = getLdap();
 
             int pos = relationship.indexOf("-::-");
-            String newPermID = relationship.substring(0,pos);
+            String newPermID = relationship.substring(0, pos);
             Vector oldPerm = getPermissionList(user);
             Iterator it = oldPerm.iterator();
-            for(int i=0; i<oldPerm.size();i++)
-            {
-                PermissionDO pdo = (PermissionDO)it.next();
-                if(newPermID.equals(pdo.getPermissionID()))
-                {
-                    String removeRelationship = getUserRelationship(user,newPermID);
-                    removeRelationship(user,removeRelationship);
+            for (int i = 0; i < oldPerm.size(); i++) {
+                PermissionDO pdo = (PermissionDO) it.next();
+                if (newPermID.equals(pdo.getPermissionID())) {
+                    String removeRelationship = getUserRelationship(user, newPermID);
+                    removeRelationship(user, removeRelationship);
                 }
             }
 
@@ -866,25 +834,22 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             ModificationItem[] mods = {mod};
             LdapOperation.modifyAttributes(usrdn, mods);
 
-        }
-        catch(NamingException ex)
-        {
+        } catch (NamingException ex) {
             throw new SecurityManagerDaoException("Can not remove the relationship of the user : " + usrdn, ex);
+        } finally {
+            closeLdap(ldap);
         }
-         finally {
-                closeLdap(ldap);
-            }
     }
 
     /**
      * get the relationship String from the PermissionID that the user's have.
      * The relationship like: permissionID-::-DataRange1::DataRange2
+     *
      * @param user
      * @param permissionID
      * @return
      */
-    public String getUserRelationship(UserDO user,String permissionID)
-    {
+    public String getUserRelationship(UserDO user, String permissionID) {
         String relationship = new String();
 
         LdapOperation ldap = null;
@@ -895,35 +860,32 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             ldap = getLdap();
 
             String searchDN = getUserDNSuffix();
-             String searchFilter = getUserDNPreffix() + username;
+            String searchFilter = getUserDNPreffix() + username;
 
-             String[] attr = {"eaRelationship"};
-             ldap.setReturningAttributes(attr);
-             ldap.searchOneLevel(searchDN, searchFilter);
+            String[] attr = {"eaRelationship"};
+            ldap.setReturningAttributes(attr);
+            ldap.searchOneLevel(searchDN, searchFilter);
 
-             Set setRelationshipList = null;
-             if (ldap.nextResult()) {
-                 setRelationshipList = ldap.getAllResultAttributeValues("eaRelationship");
-             }
-             ldap.resetSearch();
+            Set setRelationshipList = null;
+            if (ldap.nextResult()) {
+                setRelationshipList = ldap.getAllResultAttributeValues("eaRelationship");
+            }
+            ldap.resetSearch();
 
-            if(setRelationshipList != null)
-            {
+            if (setRelationshipList != null) {
                 Iterator it = setRelationshipList.iterator();
 
-                while(it.hasNext()){
-                    String rs = (String)it.next();
+                while (it.hasNext()) {
+                    String rs = (String) it.next();
                     int pos = rs.indexOf("-::-");
-                    String pid = rs.substring(0,pos);
-                    if(permissionID.equals(pid))
-                    {
+                    String pid = rs.substring(0, pos);
+                    if (permissionID.equals(pid)) {
                         relationship = rs;
                     }
                 }
             }
 
-        }catch (NamingException ex)
-        {
+        } catch (NamingException ex) {
             ex.printStackTrace();
         }
 
@@ -933,15 +895,15 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
     /**
      * get the DataRange set through the permissionID which the you have.
      * the RangeDO are in the set.
+     *
      * @param user
      * @param permissionID
      * @return
      * @throws SecurityManagerDaoException
      * @throws ObjectNotExistException
      */
-    public Vector getRangeByPermissionID(UserDO user,String permissionID)
-        throws SecurityManagerDaoException,ObjectNotExistException
-    {
+    public Vector getRangeByPermissionID(UserDO user, String permissionID)
+            throws SecurityManagerDaoException, ObjectNotExistException {
         LdapOperation ldap = null;
 
         Set vec = new HashSet();
@@ -949,31 +911,28 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
         try {
             ldap = getLdap();
 
-            String relationship = getUserRelationship(user,permissionID);
+            String relationship = getUserRelationship(user, permissionID);
             int position = relationship.indexOf("-::-");
-            String range = relationship.substring(position+4,relationship.length());
+            String range = relationship.substring(position + 4, relationship.length());
             String[] rangeID = range.split("::");
 
-                    for(int i=0; i<rangeID.length;i++)
-                    {
-                        try {
-                        String rangeCtxDN = getRangeDirectoryContext();
-                        String filter = "(&(objectClass=ecDataRange)(eaDataRangeID=" + rangeID[i] + "))";
+            for (int i = 0; i < rangeID.length; i++) {
+                try {
+                    String rangeCtxDN = getRangeDirectoryContext();
+                    String filter = "(&(objectClass=ecDataRange)(eaDataRangeID=" + rangeID[i] + "))";
 
-                        ldap.searchSubtree(rangeCtxDN, filter);
-                        if (ldap.nextResult()) {
-                            RangeDO rangedo = RangeManager.lookupRange(rangeID[i]);
-                            vec.add(rangedo);
-                         }else{
+                    ldap.searchSubtree(rangeCtxDN, filter);
+                    if (ldap.nextResult()) {
+                        RangeDO rangedo = RangeManager.lookupRange(rangeID[i]);
+                        vec.add(rangedo);
+                    } else {
 //                            DataRangeID.addElement(rangeID[i]);
-                        }
                     }
-                    catch(NamingException e1)
-                    {
-                        System.out.println("Something is wrong ");
-                        e1.printStackTrace();
-                    }
-                  }
+                } catch (NamingException e1) {
+                    System.out.println("Something is wrong ");
+                    e1.printStackTrace();
+                }
+            }
         } catch (NamingException e) {
 
             throw new SecurityManagerDaoException("Can not get relationship list of " + user, e);
@@ -982,15 +941,14 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             closeLdap(ldap);
         }
 
-    Vector dataRange = new Vector();
-    Iterator it = vec.iterator();
-    for(int i=0; i<vec.size(); i++)
-    {
-        RangeDO rangedo = (RangeDO)it.next();
-        dataRange.addElement(rangedo);
-    }
+        Vector dataRange = new Vector();
+        Iterator it = vec.iterator();
+        for (int i = 0; i < vec.size(); i++) {
+            RangeDO rangedo = (RangeDO) it.next();
+            dataRange.addElement(rangedo);
+        }
 
-    return dataRange;
+        return dataRange;
     }
 
 
@@ -1000,7 +958,8 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     /**
      * set role to group
-     * @param usr user object
+     *
+     * @param usr  user object
      * @param role role to add
      * @throws ObjectAlreadyExistException , SecurityManagerDaoException
      */
@@ -1044,7 +1003,8 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     /**
      * remove role from group
-     * @param usr user object
+     *
+     * @param usr  user object
      * @param role role to remove
      * @throws ObjectNotExistException , SecurityManagerDaoException
      */
@@ -1078,13 +1038,14 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
         } catch (NamingException e) {
             throw new SecurityManagerDaoException("Can not set role of user : " + usrdn, e);
 
-        }finally {
+        } finally {
             closeLdap(ldap);
         }
     }
 
     /**
      * get roles belong to the group
+     *
      * @param usr user object
      * @return vector containg roles assigned to the user
      * @throws SecurityManagerDaoException
@@ -1156,6 +1117,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     /**
      * clear all roles
+     *
      * @param usr user to clear roles
      * @throws SecurityManagerDaoException
      */
@@ -1182,15 +1144,15 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     /**
      * set user's Data Range.
-     * @param user - user object
+     *
+     * @param user  - user object
      * @param range - DataRange Object
      * @throws ObjectNotExistException
      * @throws ObjectAlreadyExistException
      * @throws SecurityManagerDaoException
      */
     public void setRange(Object user, Object range)
-            throws ObjectNotExistException, ObjectAlreadyExistException, SecurityManagerDaoException
-    {
+            throws ObjectNotExistException, ObjectAlreadyExistException, SecurityManagerDaoException {
         LdapOperation ldap = null;
         String userName = getUserName(user);
         String userDN = calcUserDN(userName);
@@ -1198,38 +1160,36 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
         String rangeDN;
         try {
             ldap = getLdap();
-            rangeDN = RangeLdapDAO.searchRangeDN(ldap,range);
+            rangeDN = RangeLdapDAO.searchRangeDN(ldap, range);
 
             //check if the Range exist in this user
             String searchDN = getUserDNSuffix();
             String searchFilter = "(&(" + getUserDNPreffix() + userName + ")(eaDataRangeDN=" + rangeDN + "))";
-            ldap.searchOneLevel(searchDN,searchFilter);
-            if(ldap.nextResult())
+            ldap.searchOneLevel(searchDN, searchFilter);
+            if (ldap.nextResult())
                 throw new ObjectAlreadyExistException(rangeDN + " already exist in this user");
             ldap.resetSearch();
 
             //Add the range to the user
-            BasicAttribute attr = new BasicAttribute("eaDataRangeDN",rangeDN);
+            BasicAttribute attr = new BasicAttribute("eaDataRangeDN", rangeDN);
             ModificationItem mod = new ModificationItem(DirContext.ADD_ATTRIBUTE, attr);
             ModificationItem[] mods = {mod};
-            LdapOperation.modifyAttributes(userDN,mods);
-        }
-        catch (NamingException ex)
-        {
+            LdapOperation.modifyAttributes(userDN, mods);
+        } catch (NamingException ex) {
             throw new SecurityManagerDaoException("Can not set Range of user : " + userDN, ex);
         }
     }
 
     /**
      * remove range from a given user
-     * @param user - user object
+     *
+     * @param user  - user object
      * @param range - data range object
      * @throws ObjectNotExistException
      * @throws SecurityManagerDaoException
      */
-    public void removeRange(Object user,Object range)
-            throws ObjectNotExistException, SecurityManagerDaoException
-    {
+    public void removeRange(Object user, Object range)
+            throws ObjectNotExistException, SecurityManagerDaoException {
         LdapOperation ldap = null;
         String userName = getUserName(user);
         String userDN = calcUserDN(userName);
@@ -1237,32 +1197,29 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
         String rangeDN;
         try {
             ldap = getLdap();
-            rangeDN = RangeLdapDAO.searchRangeDN(ldap,range);
+            rangeDN = RangeLdapDAO.searchRangeDN(ldap, range);
 
             //check if the Range exist in this user
             String searchDN = getUserDNSuffix();
             String searchFilter = "(&(" + getUserDNPreffix() + userName + ")(eaDataRangeDN=" + rangeDN + "))";
-            ldap.searchOneLevel(searchDN,searchFilter);
-            if(!ldap.nextResult())
+            ldap.searchOneLevel(searchDN, searchFilter);
+            if (!ldap.nextResult())
                 throw new ObjectNotExistException(rangeDN + " does not exist in this user");
             ldap.resetSearch();
 
             //Add the range to the user
-            BasicAttribute attr = new BasicAttribute("eaDataRangeDN",rangeDN);
+            BasicAttribute attr = new BasicAttribute("eaDataRangeDN", rangeDN);
             ModificationItem mod = new ModificationItem(DirContext.REMOVE_ATTRIBUTE, attr);
             ModificationItem[] mods = {mod};
-            LdapOperation.modifyAttributes(userDN,mods);
-        }
-        catch (NamingException ex)
-        {
+            LdapOperation.modifyAttributes(userDN, mods);
+        } catch (NamingException ex) {
             throw new SecurityManagerDaoException("Can not remove Range of user : " + userDN, ex);
         }
     }
 
-     public Vector getRangeList(Object user)
-            throws SecurityManagerDaoException
-     {
-         LdapOperation ldap = null;
+    public Vector getRangeList(Object user)
+            throws SecurityManagerDaoException {
+        LdapOperation ldap = null;
 
         String usrname = getUserName(user);
         String usrdn = calcUserDN(usrname);
@@ -1277,33 +1234,28 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
             String[] attr = {"eaDataRangeDN"};
             ldap.setReturningAttributes(attr);
-            ldap.searchOneLevel(searchDN,searchFilter);
+            ldap.searchOneLevel(searchDN, searchFilter);
 
             Set setRangeDN = null;
-            if(ldap.nextResult())
-            {
+            if (ldap.nextResult()) {
                 setRangeDN = ldap.getAllResultAttributeValues("eaDataRangeDN");
             }
             ldap.resetSearch();
 
-            if(setRangeDN != null)
-            {
+            if (setRangeDN != null) {
                 Iterator it = setRangeDN.iterator();
-                String[] attrs = {"eaDataRangeID","cn","businessCategory","description"};
+                String[] attrs = {"eaDataRangeID", "cn", "businessCategory", "description"};
 
-                while (it.hasNext())
-                {
+                while (it.hasNext()) {
                     String rangeDN = (String) it.next();
                     try {
-                        Attributes atts = ldap.getDirContext().getAttributes(rangeDN,attrs);
+                        Attributes atts = ldap.getDirContext().getAttributes(rangeDN, attrs);
                         RangeDO range = RangeLdapDAO.createRangeFromAttributes(atts);
-                        if(range != null)
+                        if (range != null)
                             vec.add(range);
-                    }
-                    catch(NamingException ex)
-                    {
+                    } catch (NamingException ex) {
                         try {
-                            BasicAttribute ba = new BasicAttribute("eaDataRangeID",rangeDN);
+                            BasicAttribute ba = new BasicAttribute("eaDataRangeID", rangeDN);
                             ModificationItem mod = new ModificationItem(DirContext.REMOVE_ATTRIBUTE, ba);
                             ModificationItem[] mods = {mod};
                             LdapOperation.modifyAttributes(usrdn, mods);
@@ -1314,19 +1266,18 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
                     ldap.resetSearch();
                 }
             }
-        }catch (NamingException ne)
-        {
+        } catch (NamingException ne) {
             throw new SecurityManagerDaoException("Can not get role list of " + user, ne);
         } finally {
             closeLdap(ldap);
         }
-         return vec;
-     }
-
+        return vec;
+    }
 
 
     /**
      * get groups the user belonged to
+     *
      * @param usr user to retrieve
      */
     public Vector getDepartmentList(Object usr) throws SecurityManagerDaoException {
@@ -1359,34 +1310,31 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             closeLdap(ldap);
         }
 
-       return vec;
+        return vec;
 
     }
 
     public Vector searchUsers(Map filter)
-        throws SecurityManagerDaoException
-    {
+            throws SecurityManagerDaoException {
         Vector result = new Vector();
         LdapOperation ldap = null;
-        try
-        {
+        try {
             ldap = getLdap();
-            String s = (String)filter.get("uid");
-            String s1 = (String)filter.get("name");
-            String s2 = (String)filter.get("regionID");
-            String s3 = (String)filter.get("roleID");
+            String s = (String) filter.get("uid");
+            String s1 = (String) filter.get("name");
+            String s2 = (String) filter.get("regionID");
+            String s3 = (String) filter.get("roleID");
             StringBuffer stringbuffer = new StringBuffer("(&(objectClass=ecUser)");
-            if(s != null)
+            if (s != null)
                 stringbuffer.append("(uid=").append(s).append(")");
-            if(s1 != null)
+            if (s1 != null)
                 stringbuffer.append("(cn=").append(s1).append(")");
-            if(s2 != null)
+            if (s2 != null)
                 stringbuffer.append("(eaRegionID=").append(s2).append(")");
             Object obj = null;
-            if(s3 != null && !s3.equalsIgnoreCase("*"))
-            {
+            if (s3 != null && !s3.equalsIgnoreCase("*")) {
                 String s4 = RoleLdapDAO.lookupRoleDN(ldap, s3);
-                if(s4 != null)
+                if (s4 != null)
                     stringbuffer.append("(eaRoleDN=").append(s4).append(")");
             }
             stringbuffer.append(")");
@@ -1396,32 +1344,27 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
             System.out.println("The filter is: " + s5);
             //ldap.searchOneLevel(s6, s5);
-            ldap.searchSubtree(s6,s5);
+            ldap.searchSubtree(s6, s5);
             //UserDO user;
             while (ldap.nextResult()) {
                 UserDO usr = createUserFromResult(ldap);
                 result.add(usr);
             }
-        }
-        catch(Exception exception)
-        {
+        } catch (Exception exception) {
             throw new SecurityManagerDaoException("Failed to count users", exception);
-        }
-        finally
-        {
+        } finally {
             closeLdap(ldap);
         }
         return result;
     }
 
     public void lockUser(UserDO user)
-            throws ObjectNotExistException, SecurityManagerDaoException
-    {
+            throws ObjectNotExistException, SecurityManagerDaoException {
         String userName = user.getName();
 //        UserDO user = new UserDO();
 //        user.setName(userName);
 
-         LdapOperation ldap = null;
+        LdapOperation ldap = null;
         UserDO oldUser = null;
 
         try {
@@ -1443,7 +1386,7 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
             // check if the object has required schema
             String[] attids = {"objectClass"};
 
-           // System.out.println(userDN);
+            // System.out.println(userDN);
 
             Attributes attrs = ldap.getDirContext().getAttributes(userDN, attids);
             NamingEnumeration valueEnum = attrs.get("objectClass").getAll();
@@ -1466,19 +1409,16 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 //            System.out.println("The lock flage is: " + user.getProperty("LockFlag"));
 
             if (user.getProperty("LockFlag") != null)
-                            vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                    new BasicAttribute("eaLockFlag", (String)user.getProperty("LockFlag"))));
+                vec.add(new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                        new BasicAttribute("eaLockFlag", (String) user.getProperty("LockFlag"))));
 
 
             ModificationItem[] mods = new ModificationItem[1];
-            LdapOperation.modifyAttributes(userDN, (ModificationItem[])vec.toArray(mods));
+            LdapOperation.modifyAttributes(userDN, (ModificationItem[]) vec.toArray(mods));
 
-        }
-        catch (NamingException e)
-        {
+        } catch (NamingException e) {
             throw new SecurityManagerDaoException("Count not create user : " + user, e);
-        }
-        finally {
+        } finally {
             closeLdap(ldap);
         }
 
@@ -1486,127 +1426,123 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
 
     /**
      * Get the relationship list of the user
+     *
      * @param user
      * @return
      * @throws SecurityManagerDaoException
      */
 
     public Vector getPermissionList(UserDO user)
-            throws SecurityManagerDaoException,ObjectNotExistException {
+            throws SecurityManagerDaoException, ObjectNotExistException {
 
-            LdapOperation ldap = null;
+        LdapOperation ldap = null;
 
-            String usrname = user.getName();
-            String usrdn = calcUserDN(usrname);
+        String usrname = user.getName();
+        String usrdn = calcUserDN(usrname);
 
-            Vector vec = new Vector();
+        Vector vec = new Vector();
 
-            try {
-                ldap = getLdap();
+        try {
+            ldap = getLdap();
 
-                // check if the usr has alreay exist in the group
-                String searchDN = getUserDNSuffix();
-                String searchFilter = getUserDNPreffix() + usrname;
+            // check if the usr has alreay exist in the group
+            String searchDN = getUserDNSuffix();
+            String searchFilter = getUserDNPreffix() + usrname;
 
-                String[] attr = {"eaRelationship"};
-                ldap.setReturningAttributes(attr);
-                ldap.searchOneLevel(searchDN, searchFilter);
+            String[] attr = {"eaRelationship"};
+            ldap.setReturningAttributes(attr);
+            ldap.searchOneLevel(searchDN, searchFilter);
 
-                Set setRelationshipList = null;
-                if (ldap.nextResult()) {
-                    setRelationshipList = ldap.getAllResultAttributeValues("eaRelationship");
-                }
-
-                ldap.resetSearch();
-
-                if(setRelationshipList !=null)
-                {
-                    Iterator it = setRelationshipList.iterator();
-                    String attrs[] = {"eaPermissionID"};
-                    while(it.hasNext()){
-                        String relationship = (String)it.next();
-                        int position = relationship.indexOf("-::-");
-                        String permissionID = relationship.substring(0,position);
-
-                        try {
-                            String permissionCtxDN = getPermissionDirectoryContext();
-                            String filter = "(&(objectClass=ecPermission)(eaPermissionID=" + permissionID + "))";
-                            ldap.searchSubtree(permissionCtxDN, filter);
-                            if (ldap.nextResult()) {
-                                PermissionDO pdo= PermissionManager.lookupPermission(permissionID);
-                                vec.addElement(pdo);
-                             }else{
-                                BasicAttribute ba = new BasicAttribute("eaRelationship",relationship);
-                                ModificationItem mod = new ModificationItem(DirContext.REMOVE_ATTRIBUTE, ba);
-                                ModificationItem[] mods = {mod};
-                                LdapOperation.modifyAttributes(usrdn, mods);
-                            }
-                        }
-                        catch(NamingException e1)
-                        {
-                            System.out.println("Something is wrong ");
-                            e1.printStackTrace();
-                        }
-                    }
-                }
-            } catch (NamingException e) {
-
-                throw new SecurityManagerDaoException("Can not get relationship list of " + user, e);
-
-            } finally {
-                closeLdap(ldap);
+            Set setRelationshipList = null;
+            if (ldap.nextResult()) {
+                setRelationshipList = ldap.getAllResultAttributeValues("eaRelationship");
             }
 
-            return vec;
+            ldap.resetSearch();
+
+            if (setRelationshipList != null) {
+                Iterator it = setRelationshipList.iterator();
+                String attrs[] = {"eaPermissionID"};
+                while (it.hasNext()) {
+                    String relationship = (String) it.next();
+                    int position = relationship.indexOf("-::-");
+                    String permissionID = relationship.substring(0, position);
+
+                    try {
+                        String permissionCtxDN = getPermissionDirectoryContext();
+                        String filter = "(&(objectClass=ecPermission)(eaPermissionID=" + permissionID + "))";
+                        ldap.searchSubtree(permissionCtxDN, filter);
+                        if (ldap.nextResult()) {
+                            PermissionDO pdo = PermissionManager.lookupPermission(permissionID);
+                            vec.addElement(pdo);
+                        } else {
+                            BasicAttribute ba = new BasicAttribute("eaRelationship", relationship);
+                            ModificationItem mod = new ModificationItem(DirContext.REMOVE_ATTRIBUTE, ba);
+                            ModificationItem[] mods = {mod};
+                            LdapOperation.modifyAttributes(usrdn, mods);
+                        }
+                    } catch (NamingException e1) {
+                        System.out.println("Something is wrong ");
+                        e1.printStackTrace();
+                    }
+                }
+            }
+        } catch (NamingException e) {
+
+            throw new SecurityManagerDaoException("Can not get relationship list of " + user, e);
+
+        } finally {
+            closeLdap(ldap);
         }
 
+        return vec;
+    }
+
     public Vector getRangeList(UserDO user)
-            throws SecurityManagerDaoException,ObjectNotExistException {
+            throws SecurityManagerDaoException, ObjectNotExistException {
 
-            LdapOperation ldap = null;
+        LdapOperation ldap = null;
 
-            String usrname = user.getName();
-            String usrdn = calcUserDN(usrname);
+        String usrname = user.getName();
+        String usrdn = calcUserDN(usrname);
 
 //            Vector vec = new Vector();
-            Set vec = new HashSet();
+        Set vec = new HashSet();
 
 //        System.out.println("here is in range list [" + usrdn +"]");
 
-            try {
-                ldap = getLdap();
+        try {
+            ldap = getLdap();
 
-                // check if the usr has alreay exist in the group
-                String searchDN = getUserDNSuffix();
-                String searchFilter = getUserDNPreffix() + usrname;
+            // check if the usr has alreay exist in the group
+            String searchDN = getUserDNSuffix();
+            String searchFilter = getUserDNPreffix() + usrname;
 
-                String[] attr = {"eaRelationship"};
-                ldap.setReturningAttributes(attr);
-                ldap.searchOneLevel(searchDN, searchFilter);
+            String[] attr = {"eaRelationship"};
+            ldap.setReturningAttributes(attr);
+            ldap.searchOneLevel(searchDN, searchFilter);
 
-                Set setRelationshipList = new HashSet();
-                if (ldap.nextResult()) {
-                    setRelationshipList = ldap.getAllResultAttributeValues("eaRelationship");
-                }
+            Set setRelationshipList = new HashSet();
+            if (ldap.nextResult()) {
+                setRelationshipList = ldap.getAllResultAttributeValues("eaRelationship");
+            }
 
-                ldap.resetSearch();
+            ldap.resetSearch();
 
 
-                if(setRelationshipList !=null)
-                {
-                    Iterator it = setRelationshipList.iterator();
-                    String attrs[] = {"eaDataRangeID"};
-                    Vector DataRangeID = new Vector();
+            if (setRelationshipList != null) {
+                Iterator it = setRelationshipList.iterator();
+                String attrs[] = {"eaDataRangeID"};
+                Vector DataRangeID = new Vector();
 
-                    while(it.hasNext()){
-                        String relationship = (String)it.next();
-                        int position = relationship.indexOf("-::-");
-                        String range = relationship.substring(position+4,relationship.length());
-                        String[] rangeID = range.split("::");
+                while (it.hasNext()) {
+                    String relationship = (String) it.next();
+                    int position = relationship.indexOf("-::-");
+                    String range = relationship.substring(position + 4, relationship.length());
+                    String[] rangeID = range.split("::");
 
-                        for(int i=0; i<rangeID.length;i++)
-                        {
-                            try {
+                    for (int i = 0; i < rangeID.length; i++) {
+                        try {
                             String rangeCtxDN = getRangeDirectoryContext();
                             String filter = "(&(objectClass=ecDataRange)(eaDataRangeID=" + rangeID[i] + "))";
 
@@ -1617,39 +1553,36 @@ public class UserLdapDAO extends BaseLdapDAO implements UserDAO {
                                 RangeDO rangedo = RangeManager.lookupRange(rangeID[i]);
 //                                PermissionDO pdo= PermissionManager.lookupPermission(rangeID);
                                 vec.add(rangedo);
-                             }else{
+                            } else {
                                 DataRangeID.addElement(rangeID[i]);
 //                                BasicAttribute ba = new BasicAttribute("eaRelationship",relationship);
 //                                ModificationItem mod = new ModificationItem(DirContext.REMOVE_ATTRIBUTE, ba);
 //                                ModificationItem[] mods = {mod};
 //                                ldap.modifyAttributes(usrdn, mods);
                             }
-                        }
-                        catch(NamingException e1)
-                        {
+                        } catch (NamingException e1) {
                             System.out.println("Something is wrong ");
                             e1.printStackTrace();
                         }
-                      }
+                    }
                 }
-             }
-            } catch (NamingException e) {
-
-                throw new SecurityManagerDaoException("Can not get relationship list of " + user, e);
-
-            } finally {
-                closeLdap(ldap);
             }
+        } catch (NamingException e) {
+
+            throw new SecurityManagerDaoException("Can not get relationship list of " + user, e);
+
+        } finally {
+            closeLdap(ldap);
+        }
 
         Vector dataRange = new Vector();
         Iterator it = vec.iterator();
-        for(int i=0; i<vec.size(); i++)
-        {
-            RangeDO rangedo = (RangeDO)it.next();
+        for (int i = 0; i < vec.size(); i++) {
+            RangeDO rangedo = (RangeDO) it.next();
             dataRange.addElement(rangedo);
         }
 
         return dataRange;
-        }
+    }
 
 }

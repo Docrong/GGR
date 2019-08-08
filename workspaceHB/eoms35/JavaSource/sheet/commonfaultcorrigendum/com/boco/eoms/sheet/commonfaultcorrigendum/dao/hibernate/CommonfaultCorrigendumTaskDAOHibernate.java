@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.commonfaultcorrigendum.dao.ICommonfaultCorrigendumTas
  * <p>
  * Mon Sep 29 11:24:17 CST 2014
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CommonfaultCorrigendumTaskDAOHibernate extends TaskDAOImpl implements  ICommonfaultCorrigendumTaskDAO {
- 
- }
+
+public class CommonfaultCorrigendumTaskDAOHibernate extends TaskDAOImpl implements ICommonfaultCorrigendumTaskDAO {
+
+}

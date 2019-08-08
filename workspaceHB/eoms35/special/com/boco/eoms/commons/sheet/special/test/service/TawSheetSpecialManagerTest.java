@@ -11,10 +11,10 @@ import com.boco.eoms.commons.sheet.special.service.impl.TawSheetSpecialManagerIm
 
 import org.jmock.Mock;
 import org.springframework.orm.ObjectRetrievalFailureException;
+
 /**
- * 
  * @author panlong
- *下午05:40:05
+ * 下午05:40:05
  */
 public class TawSheetSpecialManagerTest extends BaseManagerTestCase {
     private final Integer tawSheetSpecialId = new Integer(1);
@@ -39,7 +39,7 @@ public class TawSheetSpecialManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSheetSpecialDao.expects(once()).method("getTawSheetSpecials")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSheetSpecials = tawSheetSpecialManager.getTawSheetSpecials(null);
         assertTrue(tawSheetSpecials.size() == 1);
@@ -49,7 +49,7 @@ public class TawSheetSpecialManagerTest extends BaseManagerTestCase {
     public void testGetTawSheetSpecial() throws Exception {
         // set expected behavior on dao
         tawSheetSpecialDao.expects(once()).method("getTawSheetSpecial")
-            .will(returnValue(new TawSheetSpecial()));
+                .will(returnValue(new TawSheetSpecial()));
         TawSheetSpecial tawSheetSpecial = tawSheetSpecialManager.getTawSheetSpecial(tawSheetSpecialId);
         assertTrue(tawSheetSpecial != null);
         tawSheetSpecialDao.verify();
@@ -60,9 +60,9 @@ public class TawSheetSpecialManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSheetSpecialDao.expects(once()).method("saveTawSheetSpecial")
-            .with(same(tawSheetSpecial)).isVoid();
+                .with(same(tawSheetSpecial)).isVoid();
 
-        tawSheetSpecialManager.saveTawSheetSpecial(tawSheetSpecial,"");
+        tawSheetSpecialManager.saveTawSheetSpecial(tawSheetSpecial, "");
         tawSheetSpecialDao.verify();
     }
 
@@ -73,8 +73,8 @@ public class TawSheetSpecialManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSheetSpecialDao.expects(once()).method("saveTawSheetSpecial")
-            .with(same(tawSheetSpecial)).isVoid();
-        tawSheetSpecialManager.saveTawSheetSpecial(tawSheetSpecial,"");
+                .with(same(tawSheetSpecial)).isVoid();
+        tawSheetSpecialManager.saveTawSheetSpecial(tawSheetSpecial, "");
         tawSheetSpecialDao.verify();
 
         // reset expectations

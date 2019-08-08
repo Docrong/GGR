@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-	"-//Hibernate/Hibernate Mapping DTD//EN"
-	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 
 <hibernate-mapping>
-	<class name="com.boco.eoms.datum.model.TawBureaudataApply"
-		table="TAW_BUREAUDATA_APPLY">
+    <class name="com.boco.eoms.datum.model.TawBureaudataApply"
+           table="TAW_BUREAUDATA_APPLY">
 
-		<id name="id" column="id">
-			<generator class="assigned">
-			</generator>
-		</id>
-		<property name="city" />
-		<property name="worktype" />
-		<property name="year" />
-		<property name="flowid" />
-	</class>
+        <id name="id" column="id">
+            <generator class="assigned">
+            </generator>
+        </id>
+        <property name="city"/>
+        <property name="worktype"/>
+        <property name="year"/>
+        <property name="flowid"/>
+    </class>
 </hibernate-mapping>

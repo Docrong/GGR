@@ -1,6 +1,6 @@
 ﻿/**
  * FaultSheetSoapBindingStub.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,7 +13,7 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[12];
@@ -24,8 +24,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "isAliveReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[0] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -46,8 +46,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "cancelWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[1] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -69,8 +69,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "checkinWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -92,8 +92,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "confirmWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[3] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -124,8 +124,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "newWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[4] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -146,8 +146,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "notifyWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[5] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -179,8 +179,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "renewWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[6] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -205,8 +205,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "replyWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[7] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -227,8 +227,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "suggestWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[8] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -246,8 +246,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "syncAlarmWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[9] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -268,8 +268,8 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "urgeWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[10] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -290,19 +290,19 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "withdrawWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[11] = oper;
 
     }
 
     public FaultSheetSoapBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public FaultSheetSoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public FaultSheetSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -341,8 +341,7 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
             return _call;
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", t);
         }
     }
@@ -363,12 +362,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {serSupplier});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{serSupplier});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -394,12 +392,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, cancelAdvice});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, cancelAdvice});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -425,12 +422,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, closeCorp, closePerson, closeDepart, closeContact, closeTime, new java.lang.Integer(satisfaction), closeAdvice});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, closeCorp, closePerson, closeDepart, closeContact, closeTime, new java.lang.Integer(satisfaction), closeAdvice});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -456,12 +452,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, new java.lang.Integer(urgent), deadline});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, new java.lang.Integer(urgent), deadline});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -487,12 +482,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, new java.lang.Integer(urgent), deadline, new java.lang.Integer(faultType), faultTitle, faultOccurTime, faultDescription, initialResult, faultAdvice, alarmId});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, new java.lang.Integer(urgent), deadline, new java.lang.Integer(faultType), faultTitle, faultOccurTime, faultDescription, initialResult, faultAdvice, alarmId});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -518,12 +512,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, stepResult});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, stepResult});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -549,12 +542,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, new java.lang.Integer(urgent), deadline, resendReason, new java.lang.Integer(faultType), faultTitle, faultOccurTime, faultDescription, initialResult, faultAdvice, alarmId});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, new java.lang.Integer(urgent), deadline, resendReason, new java.lang.Integer(faultType), faultTitle, faultOccurTime, faultDescription, initialResult, faultAdvice, alarmId});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -580,12 +572,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, recoverTime, outOfServiceTime, new java.lang.Integer(newWorkType), new java.lang.Integer(serviceType), endResult});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, recoverTime, outOfServiceTime, new java.lang.Integer(newWorkType), new java.lang.Integer(serviceType), endResult});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -611,12 +602,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, suggestion});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, suggestion});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -642,12 +632,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, alarmId, alarmStatus, statusTime});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, alarmId, alarmStatus, statusTime});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -673,12 +662,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, urgeAdvice});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, urgeAdvice});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -704,12 +692,11 @@ public class FaultSheetSoapBindingStub extends org.apache.axis.client.Stub imple
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, withdrawReason});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, withdrawReason});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;

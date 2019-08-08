@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
     <!-- Add new Managers here -->
-    
+
     <!--TawWorkbenchCommissionPreset-DAO START-->
-    <bean id="tawWorkbenchCommissionPresetDao" class="com.boco.eoms.workbench.commission.dao.hibernate.TawWorkbenchCommissionPresetDaoHibernate" autowire="byName"/>
+    <bean id="tawWorkbenchCommissionPresetDao"
+          class="com.boco.eoms.workbench.commission.dao.hibernate.TawWorkbenchCommissionPresetDaoHibernate"
+          autowire="byName"/>
     <!--TawWorkbenchCommissionPreset-DAO END-->
-    <!--TawWorkbenchCommissionPreset-START-->    
+    <!--TawWorkbenchCommissionPreset-START-->
     <bean id="ItawWorkbenchCommissionPresetMgr" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.commission.mgr.impl.TawWorkbenchCommissionPresetMgrImpl">
@@ -16,11 +18,13 @@
         </property>
     </bean>
     <!--TawWorkbenchCommissionPreset-END-->
-    
+
     <!--TawWorkbenchCommissionInstance-DAO START-->
-    <bean id="tawWorkbenchCommissionInstanceDao" class="com.boco.eoms.workbench.commission.dao.hibernate.TawWorkbenchCommissionInstanceDaoHibernate" autowire="byName"/>
+    <bean id="tawWorkbenchCommissionInstanceDao"
+          class="com.boco.eoms.workbench.commission.dao.hibernate.TawWorkbenchCommissionInstanceDaoHibernate"
+          autowire="byName"/>
     <!--TawWorkbenchCommissionInstance-DAO END-->
-    <!--TawWorkbenchCommissionInstance-START-->    
+    <!--TawWorkbenchCommissionInstance-START-->
     <bean id="ItawWorkbenchCommissionInstanceMgr" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.commission.mgr.impl.TawWorkbenchCommissionInstanceMgrImpl">
@@ -29,13 +33,13 @@
         </property>
     </bean>
     <!--TawWorkbenchCommissionInstance-END-->
-    
+
     <bean id="CommissionMgrAPI"
-		class="com.boco.eoms.workbench.commission.mgr.impl.CommissionMgrImpl" >
-		<property name="tawWorkbenchCommissionInstanceMgr"
-			ref="ItawWorkbenchCommissionInstanceMgr" />
-	</bean>
-    
+          class="com.boco.eoms.workbench.commission.mgr.impl.CommissionMgrImpl">
+        <property name="tawWorkbenchCommissionInstanceMgr"
+                  ref="ItawWorkbenchCommissionInstanceMgr"/>
+    </bean>
+
 </beans>
 
 

@@ -1,45 +1,45 @@
 package com.boco.eoms.duty.model;
 
 public class TawDutyCache {
-	private int roomId;//机房ID
-	
-	private String userId;//用户ID
-	
-	private String beginTime;//值班起始时间
-	
-	private String endTime;//值班终止时间
+    private int roomId;//机房ID
 
-	public String getBeginTime() {
-		return beginTime;
-	}
+    private String userId;//用户ID
 
-	public void setBeginTime(String beginTime) {
-		this.beginTime = beginTime;
-	}
+    private String beginTime;//值班起始时间
 
-	public String getEndTime() {
-		return endTime;
-	}
+    private String endTime;//值班终止时间
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    public String getBeginTime() {
+        return beginTime;
+    }
 
-	public int getRoomId() {
-		return roomId;
-	}
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
-	}
+    public String getEndTime() {
+        return endTime;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
-	
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+
 }

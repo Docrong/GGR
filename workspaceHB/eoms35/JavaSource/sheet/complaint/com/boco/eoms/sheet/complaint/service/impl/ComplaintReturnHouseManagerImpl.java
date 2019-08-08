@@ -27,38 +27,42 @@ import com.boco.eoms.sheet.nbproducts.model.NBProducts;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ComplaintReturnHouseManagerImpl extends BaseManager implements
-IComplaintReturnHouseManager {
-	public IComplaintReturnHouseDAO complaintReturnHouseDao;
+        IComplaintReturnHouseManager {
+    public IComplaintReturnHouseDAO complaintReturnHouseDao;
 
-	public IComplaintReturnHouseDAO getComplaintReturnHouseDao() {
-		return complaintReturnHouseDao;
-	}
-	public void setComplaintReturnHouseDao(
-			IComplaintReturnHouseDAO complaintReturnHouseDao) {
-		this.complaintReturnHouseDao = complaintReturnHouseDao;
-	}
-	public void saveReturnHouse(ComplaintReturnHouse complaintreturnhouse) {
-		// TODO Auto-generated method stub
-		this.complaintReturnHouseDao.saveReturnHorse(complaintreturnhouse);
-		
-	}
-	public Map getReturnHouse(String userid,final String queryStr, 
-	          final Integer curPage,final Integer pageSize) {
-		
-		return this.complaintReturnHouseDao.getReturnHorse(userid, queryStr, curPage, pageSize);
-	}
-	public ComplaintReturnHouse getReturnHouseByid(String id){
-		return complaintReturnHouseDao.getReturnHouseByid(id);
-		
-	}
-	
+    public IComplaintReturnHouseDAO getComplaintReturnHouseDao() {
+        return complaintReturnHouseDao;
+    }
 
-	//	private int applyTime;
+    public void setComplaintReturnHouseDao(
+            IComplaintReturnHouseDAO complaintReturnHouseDao) {
+        this.complaintReturnHouseDao = complaintReturnHouseDao;
+    }
+
+    public void saveReturnHouse(ComplaintReturnHouse complaintreturnhouse) {
+        // TODO Auto-generated method stub
+        this.complaintReturnHouseDao.saveReturnHorse(complaintreturnhouse);
+
+    }
+
+    public Map getReturnHouse(String userid, final String queryStr,
+                              final Integer curPage, final Integer pageSize) {
+
+        return this.complaintReturnHouseDao.getReturnHorse(userid, queryStr, curPage, pageSize);
+    }
+
+    public ComplaintReturnHouse getReturnHouseByid(String id) {
+        return complaintReturnHouseDao.getReturnHouseByid(id);
+
+    }
+
+
+    //	private int applyTime;
 //	
 //	private String deferSwitch;
 //	
@@ -80,12 +84,12 @@ IComplaintReturnHouseManager {
 //	public void setApplyTime(int applyTime) {
 //		this.applyTime = applyTime;
 //	}
-	/**
-	 * 通过告警号获取工单
-	 * @param alarmId 告警号
-	 * @return
-	 * @throws HibernateException
-	 */
+    /**
+     * 通过告警号获取工单
+     * @param alarmId 告警号
+     * @return
+     * @throws HibernateException
+     */
 //	public BaseMain getMainByAlarmId(String alarmId){
 //		IComplaintMainDAO iComplaintMainDAO = (IComplaintMainDAO)this.getMainDAO();
 //		return iComplaintMainDAO.getMainByAlarmId(alarmId, this.getMainObject());
@@ -157,5 +161,5 @@ IComplaintReturnHouseManager {
 //    	return iComplaintMainDAO.getHoldedSheetListByTime(this.getMainObject(), startTime, endTime);
 //    }
 
-	
+
 }

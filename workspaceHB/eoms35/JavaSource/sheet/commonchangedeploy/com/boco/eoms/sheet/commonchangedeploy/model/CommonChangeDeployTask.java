@@ -14,13 +14,12 @@ import com.boco.eoms.sheet.base.task.impl.TaskImpl;
  * <p>
  * Fri Jun 12 09:08:01 CST 2009
  * </p>
- * 
+ *
  * @author yangwei
  * @version 3.5
- * 
  */
- 
- public class CommonChangeDeployTask extends  TaskImpl implements ITask {
+
+public class CommonChangeDeployTask extends TaskImpl implements ITask {
 
 
- }
+}

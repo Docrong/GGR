@@ -1,114 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
     <class name="com.boco.eoms.businessupport.order.model.OrderSheet"
-            table="b_orderSheet">
+           table="b_orderSheet">
 
-    <id name="id" column="id" unsaved-value="null">
-    
-    <generator class="assigned">
-    </generator>
-    </id>
-    <property name="pruductId" />
-	<property name="orderType" />
-	<property name="mainProductInstanceCode" />
-	<property name="orderNumber" />
-	<property name="urgentDegree" />
-	<property name="creatTime" />
-	<property name="endTime" />
-	<property name="completeLimit" />
-	<property name="p_order_id" />
-	<property name="status" />
-	<property name="isCompleted" />
-	<property name="orderBuisnessType" />	
-	<property name="orderBuisnessMark" />	
-	<property name="changeTime" />	
-	<property name="cancelTime" />	
-	<property name="businessCode" />	
-	<property name="title" />	
-	<property name="customNo" />
-	<property name="customName" />
-	<property name="cmanagerContactPhone" />
-	<property name="customContact" />
-	<property name="customContactPhone" />
-	<property name="productName" />
-	<property name="customLevel" />
-	<property name="provinceName" />
-	<property name="cityName" />
-	<property name="countyName" />
-	<property name="bdeptContact" />
-	<property name="bdeptContactPhone" />
-	<property name="isNonLocal" />	
-	<property name="productKind" />	
-	<property name="productID" />	
-	<property name="productSN" />
-	<property name="groupDealContact" />	
-	<property name="groupDealContactPhone" />		
-	<property name="groupTechContact" />
-	<property name="cmanagerPhone" />
-	<property name="groupTechContactPhone" />
-	<property name="crmSpecialLineNo" />
-	<property name="brequirementDesc" />	
-	<property name="transfBusiness" />
-	<property name="deleted" />
-	<property name="specialtyType" />
-	<property name="resourceId" />
-	
-	
-	<property name="needDesc" />               
+        <id name="id" column="id" unsaved-value="null">
 
-	<property name="costomBelongSpecify" />     
-	<property name="customAdd" />               
-	<property name="clientConnPerson" />       
-	<property name="clientConnPersonPhone" />   
-	<property name="customConnMail" />          
-	<property name="customManagerDept" />       
-	<property name="customManagerMail" />      
-	<property name="projectManagerName" />      
-	<property name="projectManagerPhone" />      
+            <generator class="assigned">
+            </generator>
+        </id>
+        <property name="pruductId"/>
+        <property name="orderType"/>
+        <property name="mainProductInstanceCode"/>
+        <property name="orderNumber"/>
+        <property name="urgentDegree"/>
+        <property name="creatTime"/>
+        <property name="endTime"/>
+        <property name="completeLimit"/>
+        <property name="p_order_id"/>
+        <property name="status"/>
+        <property name="isCompleted"/>
+        <property name="orderBuisnessType"/>
+        <property name="orderBuisnessMark"/>
+        <property name="changeTime"/>
+        <property name="cancelTime"/>
+        <property name="businessCode"/>
+        <property name="title"/>
+        <property name="customNo"/>
+        <property name="customName"/>
+        <property name="cmanagerContactPhone"/>
+        <property name="customContact"/>
+        <property name="customContactPhone"/>
+        <property name="productName"/>
+        <property name="customLevel"/>
+        <property name="provinceName"/>
+        <property name="cityName"/>
+        <property name="countyName"/>
+        <property name="bdeptContact"/>
+        <property name="bdeptContactPhone"/>
+        <property name="isNonLocal"/>
+        <property name="productKind"/>
+        <property name="productID"/>
+        <property name="productSN"/>
+        <property name="groupDealContact"/>
+        <property name="groupDealContactPhone"/>
+        <property name="groupTechContact"/>
+        <property name="cmanagerPhone"/>
+        <property name="groupTechContactPhone"/>
+        <property name="crmSpecialLineNo"/>
+        <property name="brequirementDesc"/>
+        <property name="transfBusiness"/>
+        <property name="deleted"/>
+        <property name="specialtyType"/>
+        <property name="resourceId"/>
 
-	<property name="groupCustomBusinessScope" />     
 
-	<property name="businesBelongCity" />          
+        <property name="needDesc"/>
 
-	<property name="isOutPutPreResouce" />        
+        <property name="costomBelongSpecify"/>
+        <property name="customAdd"/>
+        <property name="clientConnPerson"/>
+        <property name="clientConnPersonPhone"/>
+        <property name="customConnMail"/>
+        <property name="customManagerDept"/>
+        <property name="customManagerMail"/>
+        <property name="projectManagerName"/>
+        <property name="projectManagerPhone"/>
 
-	<property name="groupCustomBusinessType" />     
-	<property name="groupCustomNo" />             
-	<property name="groupCustomAdd" />            
-	<property name="groupCustomMail" />             
-	<property name="groupCustomBusinesType" />             
-	<property name="customConnMain" />            
+        <property name="groupCustomBusinessScope"/>
 
-	<property name="projectName" />    
+        <property name="businesBelongCity"/>
 
-	<property name="stationNumber" />     		
-	<property name="eleNumber" />     		
-	
-	<property name="remark" />		           
-	<property name="netResCapacity" />		
-	<property name="clientPgmCapacity" />		
-	<property name="expectFinishdays" />		
-	<property name="circuitCode" />		
-	
+        <property name="isOutPutPreResouce"/>
 
-	<property name="businessInfoGPRS" /> 
-	 
-	<property name="checkPerson" />
-	<property name="checkDepmt" />
-	<property name="checkPhone" />
-	<property name="checkMail" />
-	<property name="checkComments" />
-	<property name="checkTime" />
-	<property name="planExecuteTime" />
-	
-	<property name="accessories" />
-    </class>    
+        <property name="groupCustomBusinessType"/>
+        <property name="groupCustomNo"/>
+        <property name="groupCustomAdd"/>
+        <property name="groupCustomMail"/>
+        <property name="groupCustomBusinesType"/>
+        <property name="customConnMain"/>
+
+        <property name="projectName"/>
+
+        <property name="stationNumber"/>
+        <property name="eleNumber"/>
+
+        <property name="remark"/>
+        <property name="netResCapacity"/>
+        <property name="clientPgmCapacity"/>
+        <property name="expectFinishdays"/>
+        <property name="circuitCode"/>
+
+
+        <property name="businessInfoGPRS"/>
+
+        <property name="checkPerson"/>
+        <property name="checkDepmt"/>
+        <property name="checkPhone"/>
+        <property name="checkMail"/>
+        <property name="checkComments"/>
+        <property name="checkTime"/>
+        <property name="planExecuteTime"/>
+
+        <property name="accessories"/>
+    </class>
 
 </hibernate-mapping>
 

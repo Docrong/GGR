@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <log-configs modelId="aa2" modelName="bbb发">
-	<log-config operId="1" operName="aa" operDesc="aa-desc发送到">
-        	<log-config operId="2" operName="bb" operDesc="rrrr">
-        		<log-config operId="4" operName="fc" operDesc="fc-desc" />
-        		<log-config operId="5" operName="dc" operDesc="dc-desc" />
-        	</log-config>
-	        <log-config operId="3" operName="cc" operDesc="cc-desc" />
-	</log-config>
+    <log-config operId="1" operName="aa" operDesc="aa-desc发送到">
+        <log-config operId="2" operName="bb" operDesc="rrrr">
+            <log-config operId="4" operName="fc" operDesc="fc-desc"/>
+            <log-config operId="5" operName="dc" operDesc="dc-desc"/>
+        </log-config>
+        <log-config operId="3" operName="cc" operDesc="cc-desc"/>
+    </log-config>
 </log-configs>

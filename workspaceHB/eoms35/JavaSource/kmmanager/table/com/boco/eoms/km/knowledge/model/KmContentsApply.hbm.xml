@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class name="com.boco.eoms.km.knowledge.model.KmContentsApply"
-		table="KM_CONTENTS_APPLY">
+    <class name="com.boco.eoms.km.knowledge.model.KmContentsApply"
+           table="KM_CONTENTS_APPLY">
 
-		<id name="id" column="id" unsaved-value="null">
-			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-			<generator class="uuid.hex">
-			</generator>
-		</id>
+        <id name="id" column="id" unsaved-value="null">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
+            </generator>
+        </id>
 
-		<property name="applyUser" column="APPLY_USER" length="32"
-			not-null="true" unique="false">
-		</property>
+        <property name="applyUser" column="APPLY_USER" length="32"
+                  not-null="true" unique="false">
+        </property>
 
-		<property name="applyDept" column="APPLY_DEPT" length="32"
-			not-null="true" unique="false">
-		</property>
+        <property name="applyDept" column="APPLY_DEPT" length="32"
+                  not-null="true" unique="false">
+        </property>
 
-		<property name="applyDate" column="APPLY_DATE" length="32"
-			not-null="true" unique="false">
-		</property>
+        <property name="applyDate" column="APPLY_DATE" length="32"
+                  not-null="true" unique="false">
+        </property>
 
-		<property name="applyTable" column="APPLY_TABLE"
-			length="200" not-null="true" unique="false">
-		</property>
+        <property name="applyTable" column="APPLY_TABLE"
+                  length="200" not-null="true" unique="false">
+        </property>
 
-		<property name="applyTitle" column="APPLY_TITLE"
-			length="200" not-null="true" unique="false">
-		</property>
-		
-		<property name="applyTheme" column="APPLY_THEME"
-			length="200" not-null="true" unique="false">
-		</property>
+        <property name="applyTitle" column="APPLY_TITLE"
+                  length="200" not-null="true" unique="false">
+        </property>
 
-		<property name="applyContent" column="APPLY_CONTENT"
-			length="200" not-null="true" unique="false">
-		</property>
+        <property name="applyTheme" column="APPLY_THEME"
+                  length="200" not-null="true" unique="false">
+        </property>
 
-		<property name="isAdd" column="IS_ADD" length="32"
-			not-null="true" unique="false">
-		</property>
+        <property name="applyContent" column="APPLY_CONTENT"
+                  length="200" not-null="true" unique="false">
+        </property>
 
-		<property name="contentId" column="CONTENT_ID" length="32"
-			not-null="false" unique="false">
-		</property>
+        <property name="isAdd" column="IS_ADD" length="32"
+                  not-null="true" unique="false">
+        </property>
 
-		<property name="fileName" column="FILE_NAME" length="100"
-			not-null="false" unique="false">
-		</property>
-		
-		
-	</class>
+        <property name="contentId" column="CONTENT_ID" length="32"
+                  not-null="false" unique="false">
+        </property>
+
+        <property name="fileName" column="FILE_NAME" length="100"
+                  not-null="false" unique="false">
+        </property>
+
+
+    </class>
 
 </hibernate-mapping>
 

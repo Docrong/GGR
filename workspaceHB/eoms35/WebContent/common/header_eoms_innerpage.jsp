@@ -1,8 +1,8 @@
-<%@ include file="/common/header.jsp"%>
+<%@ include file="/common/header.jsp" %>
 <style type="text/css">
-body{
-	 background-image:none;
-}
+    body {
+        background-image: none;
+    }
 </style>
 </head>
 

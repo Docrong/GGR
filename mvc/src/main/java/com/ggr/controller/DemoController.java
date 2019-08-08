@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DemoController {
 
     @RequestMapping("/index")
-    public String index(){
-    	System.out.println("ceshi");
+    public String index() {
+        System.out.println("ceshi");
         return "demo";
     }
 }

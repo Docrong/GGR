@@ -14,6 +14,7 @@ public interface ITawSystemRoleTypeManager extends Manager {
 
     /**
      * Gets tawSystemRoleType's information based on roletype_id.
+     *
      * @param roletype_id the tawSystemRoleType's roletype_id
      * @return tawSystemRoleType populated tawSystemRoleType object
      */
@@ -21,16 +22,20 @@ public interface ITawSystemRoleTypeManager extends Manager {
 
     /**
      * Saves a tawSystemRoleType's information
+     *
      * @param tawSystemRoleType the object to be saved
      */
     public void saveTawSystemRoleType(TawSystemRoleType tawSystemRoleType);
 
     /**
      * Removes a tawSystemRoleType from the database by roletype_id
+     *
      * @param roletype_id the tawSystemRoleType's roletype_id
      */
     public void removeTawSystemRoleType(final String roletype_id);
+
     public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize);
+
     public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

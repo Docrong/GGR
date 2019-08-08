@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.system.priv.test.dao;
 
@@ -16,32 +16,32 @@ import com.boco.eoms.commons.system.priv.model.TawSystemPrivUserAssign;
  */
 public class TawSystemPrivMenuCommonDaoTest extends BaseDaoTestCase {
 
-	private TawSystemPrivMenuCommonDao dao = null;
+    private TawSystemPrivMenuCommonDao dao = null;
 
-	public void setTawSystemPrivMenuCommonDao(TawSystemPrivMenuCommonDao dao) {
-		this.dao = dao;
-	}
+    public void setTawSystemPrivMenuCommonDao(TawSystemPrivMenuCommonDao dao) {
+        this.dao = dao;
+    }
 
-	/**
-	 * 测试DAO层getSpecMenuItems函数实现
-	 */
-	public void testGetSpecMenuItems() throws Exception {
-		String _strMenuCode = "1001";
-		TawSystemPrivUserAssign _objTmp = new TawSystemPrivUserAssign();
+    /**
+     * 测试DAO层getSpecMenuItems函数实现
+     */
+    public void testGetSpecMenuItems() throws Exception {
+        String _strMenuCode = "1001";
+        TawSystemPrivUserAssign _objTmp = new TawSystemPrivUserAssign();
 
-		List _objReturn = dao.getSpecMenuItems(_strMenuCode);
-		Iterator _objIterator = _objReturn.iterator();
-		while (_objIterator.hasNext()) {
-			_objTmp = (TawSystemPrivUserAssign) _objIterator.next();
-			System.out.println("itemId: " + _objTmp.getCurrentprivid());
-			System.out.println("ItemName: " + _objTmp.getCurrentprivname());
-			System.out.println("parentItemId: " + _objTmp.getParentprivid());
-			System.out
-					.println("parentItemName: " + _objTmp.getParentprivname());
-			System.out.println("isLeaf: " + _objTmp.getLeaf());
-			System.out.println("isHide: " + _objTmp.getHide());
-			System.out.println("url: " + _objTmp.getUrl());
-			System.out.println("isOnePriv: " + _objTmp.getIsonepriv());
-		}
-	}
+        List _objReturn = dao.getSpecMenuItems(_strMenuCode);
+        Iterator _objIterator = _objReturn.iterator();
+        while (_objIterator.hasNext()) {
+            _objTmp = (TawSystemPrivUserAssign) _objIterator.next();
+            System.out.println("itemId: " + _objTmp.getCurrentprivid());
+            System.out.println("ItemName: " + _objTmp.getCurrentprivname());
+            System.out.println("parentItemId: " + _objTmp.getParentprivid());
+            System.out
+                    .println("parentItemName: " + _objTmp.getParentprivname());
+            System.out.println("isLeaf: " + _objTmp.getLeaf());
+            System.out.println("isHide: " + _objTmp.getHide());
+            System.out.println("url: " + _objTmp.getUrl());
+            System.out.println("isOnePriv: " + _objTmp.getIsonepriv());
+        }
+    }
 }

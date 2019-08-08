@@ -14,8 +14,8 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import com.boco.eoms.base.dao.hibernate.BaseDaoHibernate;
 import com.boco.eoms.message.dao.IMmsContentDao;
 import com.boco.eoms.message.model.MmsContent;
+
 /**
- * 
  * <p>
  * Title:
  * </p>
@@ -25,10 +25,9 @@ import com.boco.eoms.message.model.MmsContent;
  * <p>
  * Date:2008-5-5 下午03:37:38
  * </p>
- * 
+ *
  * @author 孙圣泰
  * @version 3.5.1
- *
  */
 public class MmsContentDaoHibernate extends BaseDaoHibernate implements IMmsContentDao {
 
@@ -54,12 +53,12 @@ public class MmsContentDaoHibernate extends BaseDaoHibernate implements IMmsCont
 
     /**
      * @see com.boco.eoms.message.dao.MmsContentDao#saveMmsContent(MmsContent mmsContent)
-     */    
+     */
     public void saveMmsContent(final MmsContent mmsContent) {
         if ((mmsContent.getId() == null) || (mmsContent.getId().equals("")))
-			getHibernateTemplate().save(mmsContent);
-		else
-			getHibernateTemplate().saveOrUpdate(mmsContent);
+            getHibernateTemplate().save(mmsContent);
+        else
+            getHibernateTemplate().saveOrUpdate(mmsContent);
     }
 
     /**
@@ -68,56 +67,57 @@ public class MmsContentDaoHibernate extends BaseDaoHibernate implements IMmsCont
     public void removeMmsContent(final String id) {
         getHibernateTemplate().delete(getMmsContent(id));
     }
+
     /**
      * ���ڷ�ҳ��ʾ
      * curPage ��ǰҳ��
      * pageSize ÿҳ��ʾ��
      * whereStr where�������䣬������"where"��ͷ,����Ϊ��
      */
-    public Map getMmsContents(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getMmsContents(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the mmsContent
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from MmsContent";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from MmsContent";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							int total = ((Integer) session.createQuery(queryCountStr).iterate()
-									.next()).intValue();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", new Integer(total));
-							map.put("result", result);
-							return map;
+                int total = ((Integer) session.createQuery(queryCountStr).iterate()
+                        .next()).intValue();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", new Integer(total));
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getMmsContents(final Integer curPage, final Integer pageSize) {
-			return this.getMmsContents(curPage,pageSize,null);
-		}
+        return this.getMmsContents(curPage, pageSize, null);
+    }
 
-	
-	
-	public void delete(MmsContent mmsContent) {
-		removeMmsContent(mmsContent.getId());
-		
-	}
 
-	public void deleteForever(String id) {
-		removeMmsContent(id);
-		
-	}
-	
-	public List retriveMmsContents(String monitorId) {
-		String hql = "from MmsContent where monitorId='"+monitorId+"' order by position";		
-		return getHibernateTemplate().find(hql);
-	}
+    public void delete(MmsContent mmsContent) {
+        removeMmsContent(mmsContent.getId());
+
+    }
+
+    public void deleteForever(String id) {
+        removeMmsContent(id);
+
+    }
+
+    public List retriveMmsContents(String monitorId) {
+        String hql = "from MmsContent where monitorId='" + monitorId + "' order by position";
+        return getHibernateTemplate().find(hql);
+    }
 
 
 }

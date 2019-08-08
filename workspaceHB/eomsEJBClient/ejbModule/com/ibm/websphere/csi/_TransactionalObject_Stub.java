@@ -7,12 +7,12 @@ import java.lang.String;
 import javax.rmi.CORBA.Stub;
 
 public class _TransactionalObject_Stub extends Stub implements TransactionalObject {
-    
+
     private static final String[] _type_ids = {
-        "RMI:com.ibm.websphere.csi.TransactionalObject:0000000000000000"
+            "RMI:com.ibm.websphere.csi.TransactionalObject:0000000000000000"
     };
-    
-    public String[] _ids() { 
+
+    public String[] _ids() {
         return _type_ids;
     }
 }

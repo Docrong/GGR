@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.statistic.base.config.excel;
 
@@ -12,9 +12,9 @@ import java.io.Serializable;
  */
 public class TableBody extends TableContent implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8353679361163092352L;
-	
+    /**
+     *
+     */
+    private static final long serialVersionUID = -8353679361163092352L;
+
 }

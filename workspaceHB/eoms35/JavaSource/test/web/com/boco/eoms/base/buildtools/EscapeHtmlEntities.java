@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.base.buildtools;
 
@@ -12,7 +12,7 @@ import org.apache.tools.ant.filters.ChainableReader;
 
 /**
  * @author Mika
- * 
+ *
  */
 public class EscapeHtmlEntities extends BaseParamFilterReader implements ChainableReader {
 
@@ -21,7 +21,7 @@ public class EscapeHtmlEntities extends BaseParamFilterReader implements Chainab
     /** Data that must be read from, if not null. */
     private String queuedData = null;
     private String mode;
-    
+
     public EscapeHtmlEntities() {
         super();
     }
@@ -29,7 +29,7 @@ public class EscapeHtmlEntities extends BaseParamFilterReader implements Chainab
     public EscapeHtmlEntities(final Reader rdr) {
         super(rdr);
     }
-    
+
     /* (non-Javadoc)
      * @see java.io.FilterReader#read()
      */
@@ -63,10 +63,10 @@ public class EscapeHtmlEntities extends BaseParamFilterReader implements Chainab
      * @return
      */
     private String handleEntities(String queuedData2) {
-        if(ESCAPE.equalsIgnoreCase(mode)){
+        if (ESCAPE.equalsIgnoreCase(mode)) {
             return StringEscapeUtils.escapeHtml(queuedData2);
         } else {
-            return  StringEscapeUtils.unescapeHtml(queuedData2);
+            return StringEscapeUtils.unescapeHtml(queuedData2);
         }
     }
 

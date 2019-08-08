@@ -11,13 +11,16 @@ import com.boco.eoms.commons.failureRecord.webapp.form.FailureRecordForm;
 
 
 public interface FailureRecordDao {
-	public Map getMonitoringLog(final Integer curPage, final Integer pageSize,FailureRecordForm failureRecordForm);
-		
-	public FailureRecord getFailureRecord(final String id); 
-	public void save(FailureRecord failureRecord);
-	public void removeFailureRecord(
-			FailureRecord failureRecord);
-	public FailureRecord findFailureRecord(String id);
+    public Map getMonitoringLog(final Integer curPage, final Integer pageSize, FailureRecordForm failureRecordForm);
+
+    public FailureRecord getFailureRecord(final String id);
+
+    public void save(FailureRecord failureRecord);
+
+    public void removeFailureRecord(
+            FailureRecord failureRecord);
+
+    public FailureRecord findFailureRecord(String id);
 
 
 }

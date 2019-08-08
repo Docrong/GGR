@@ -9,17 +9,23 @@ package com.boco.eoms.commons.transaction.test.model;
 import java.io.Serializable;
 
 /**
- * 
+ *
  */
 public class ApplyDetail implements Serializable {
 
-    /** The composite primary key value. */
+    /**
+     * The composite primary key value.
+     */
     private String id;
 
-    /** The value of the simple Name property. */
+    /**
+     * The value of the simple Name property.
+     */
     private String name;
 
-    /** The value of the simple remark property. */
+    /**
+     * The value of the simple remark property.
+     */
     private String remark;
 
     /**
@@ -30,7 +36,7 @@ public class ApplyDetail implements Serializable {
 
     /**
      * Constructor of instances given a simple primary key
-     * 
+     *
      * @param id
      */
     public ApplyDetail(String id) {

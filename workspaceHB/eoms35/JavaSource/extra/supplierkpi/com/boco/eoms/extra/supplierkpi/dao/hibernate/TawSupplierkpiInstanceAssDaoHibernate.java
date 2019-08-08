@@ -57,12 +57,12 @@ public class TawSupplierkpiInstanceAssDaoHibernate extends BaseDaoHibernate impl
 
     /**
      * @see com.boco.eoms.commons.sample.dao.TawSupplierkpiInstanceAssDao#saveTawSupplierkpiInstanceAss(TawSupplierkpiInstanceAss tawSupplierkpiInstanceAss)
-     */    
+     */
     public void saveTawSupplierkpiInstanceAss(final TawSupplierkpiInstanceAss tawSupplierkpiInstanceAss) {
         if ((tawSupplierkpiInstanceAss.getId() == null) || (tawSupplierkpiInstanceAss.getId().equals("")))
-			getHibernateTemplate().save(tawSupplierkpiInstanceAss);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSupplierkpiInstanceAss);
+            getHibernateTemplate().save(tawSupplierkpiInstanceAss);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSupplierkpiInstanceAss);
     }
 
     /**
@@ -71,107 +71,108 @@ public class TawSupplierkpiInstanceAssDaoHibernate extends BaseDaoHibernate impl
     public void removeTawSupplierkpiInstanceAss(final String id) {
         getHibernateTemplate().delete(getTawSupplierkpiInstanceAss(id));
     }
+
     /**
      * curPage
      * pageSize
      * whereStr   sql filter
      */
-    public Map getTawSupplierkpiInstanceAsss(final int curPage, final int pageSize,final String whereStr) {
+    public Map getTawSupplierkpiInstanceAsss(final int curPage, final int pageSize, final String whereStr) {
         // filter on properties set in the tawSupplierkpiInstanceAss
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSupplierkpiInstanceAss";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSupplierkpiInstanceAss";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize
-									* curPage);
-							query.setMaxResults(pageSize);
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize
+                        * curPage);
+                query.setMaxResults(pageSize);
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSupplierkpiInstanceAsss(final int curPage, final int pageSize) {
-			return this.getTawSupplierkpiInstanceAsss(curPage,pageSize,null);
-		}
-    
+        return this.getTawSupplierkpiInstanceAsss(curPage, pageSize, null);
+    }
+
     public TawSupplierkpiInstanceAss getTawSupplierkpiInstanceAssBySpecialType(final String specialType) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-            	String currentTime = StaticMethod.getCurrentDateTime();
-        		int date = Integer.parseInt(currentTime.substring(8, 10));
-        		String py = SuppStaticVariable.getLocalString(date, 0);
-        		String year = py.substring(0, 4);
-        		String month = py.substring(5, 7);
-            	String queryStr = "from TawSupplierkpiInstanceAss where year='" + year +"' and timeLatitude='" + month +"' and specialType='" + specialType + "'";
-				Query query = session.createQuery(queryStr);
-				query.setFirstResult(0);
+                String currentTime = StaticMethod.getCurrentDateTime();
+                int date = Integer.parseInt(currentTime.substring(8, 10));
+                String py = SuppStaticVariable.getLocalString(date, 0);
+                String year = py.substring(0, 4);
+                String month = py.substring(5, 7);
+                String queryStr = "from TawSupplierkpiInstanceAss where year='" + year + "' and timeLatitude='" + month + "' and specialType='" + specialType + "'";
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(0);
                 query.setMaxResults(1);
-				List list = query.list();
-				TawSupplierkpiInstanceAss tawSupplierkpiInstanceAss = new TawSupplierkpiInstanceAss();
+                List list = query.list();
+                TawSupplierkpiInstanceAss tawSupplierkpiInstanceAss = new TawSupplierkpiInstanceAss();
 
                 if (list != null && !list.isEmpty()) {
-                	tawSupplierkpiInstanceAss = (TawSupplierkpiInstanceAss) list.iterator().next();
+                    tawSupplierkpiInstanceAss = (TawSupplierkpiInstanceAss) list.iterator().next();
                 }
                 return tawSupplierkpiInstanceAss;
             }
         };
         return (TawSupplierkpiInstanceAss) getHibernateTemplate().execute(callback);
     }
-    
+
     public List getNodesFromInstanceAss(final String whereStr) {
-    	return getHibernateTemplate().find(whereStr);
+        return getHibernateTemplate().find(whereStr);
     }
-    
+
     public List getStaticEntitis(final String modelId, final String reportTime, final String specialType, final String kpiId) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-            	String reportcol = getReportCol(modelId, kpiId);
-            	String queryStr = "";
-            	//如果是代维
-            	if (specialType.indexOf("10402") != -1) {
-            		queryStr = "select t3.deptName,t1." + reportcol +" from TawSuppkpiReportStorage as t1,TawSystemSubRole as t2,TawSystemDept as t3 where t1.fillRole=t2.id and t2.deptId=t3.deptId and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime +"' and t1.modelId='" + modelId +"'";
-            	}
-            	else {
-            		queryStr = "select t2.supplierName,t1." + reportcol +" from TawSuppkpiReportStorage as t1,TawSupplierkpiInfo as t2 where t1.manufacturerId=t2.id and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime +"' and t1.modelId='" + modelId +"'";
-            	}
-				Query query = session.createQuery(queryStr);
-				List list = query.list();
-				List entityList = new ArrayList();
-				for (int i = 0; i < list.size(); i++) {
-					Object[] obj = (Object[])list.get(i);
-					StatisticEntity entity = new StatisticEntity();				
-					entity.setName(StaticMethod.nullObject2String(obj[0]));				
-					entity.setValue(StaticMethod.getFloatValue(obj[1].toString()));
-					entityList.add(entity);
-				}
+                String reportcol = getReportCol(modelId, kpiId);
+                String queryStr = "";
+                //如果是代维
+                if (specialType.indexOf("10402") != -1) {
+                    queryStr = "select t3.deptName,t1." + reportcol + " from TawSuppkpiReportStorage as t1,TawSystemSubRole as t2,TawSystemDept as t3 where t1.fillRole=t2.id and t2.deptId=t3.deptId and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime + "' and t1.modelId='" + modelId + "'";
+                } else {
+                    queryStr = "select t2.supplierName,t1." + reportcol + " from TawSuppkpiReportStorage as t1,TawSupplierkpiInfo as t2 where t1.manufacturerId=t2.id and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime + "' and t1.modelId='" + modelId + "'";
+                }
+                Query query = session.createQuery(queryStr);
+                List list = query.list();
+                List entityList = new ArrayList();
+                for (int i = 0; i < list.size(); i++) {
+                    Object[] obj = (Object[]) list.get(i);
+                    StatisticEntity entity = new StatisticEntity();
+                    entity.setName(StaticMethod.nullObject2String(obj[0]));
+                    entity.setValue(StaticMethod.getFloatValue(obj[1].toString()));
+                    entityList.add(entity);
+                }
                 return entityList;
             }
         };
         return (List) getHibernateTemplate().execute(callback);
     }
-    
+
     public String getReportCol(final String modelId, final String kpiId) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "select distinct(reportcol) from TawSuppkpiReportmodelMatching where modelId='" + modelId +"' and kpiitemid='" + kpiId +"'";
-				Query query = session.createQuery(queryStr);
-				query.setFirstResult(0);
+                String queryStr = "select distinct(reportcol) from TawSuppkpiReportmodelMatching where modelId='" + modelId + "' and kpiitemid='" + kpiId + "'";
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(0);
                 query.setMaxResults(1);
-				List list = query.list();
-				String reportcol = "";
+                List list = query.list();
+                String reportcol = "";
 
                 if (list != null && !list.isEmpty()) {
-                	reportcol = list.iterator().next().toString();
+                    reportcol = list.iterator().next().toString();
                 }
                 return reportcol;
             }
@@ -180,42 +181,41 @@ public class TawSupplierkpiInstanceAssDaoHibernate extends BaseDaoHibernate impl
     }
 
     public List getVerticalStaticEntitis(final String modelId, final String reportTime, final String specialType, final String kpiId, final String manufacturerId) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-            	String reportcol = getReportCol(modelId, kpiId);
-            	String queryStr = "";
-            	//如果是代维
-            	if (specialType.indexOf("10402") != -1) {
-            		queryStr = "select t3.deptName,t1." + reportcol +" from TawSuppkpiReportStorage as t1,TawSystemSubRole as t2,TawSystemDept as t3 where t1.fillRole=t2.id and t2.deptId=t3.deptId and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime +"' and t1.modelId='" + modelId +"'";
-            	}
-            	else {
-            		queryStr = "select t1.reportTime,t1." + reportcol +" from TawSuppkpiReportStorage as t1,TawSupplierkpiInfo as t2 where t1.manufacturerId=t2.id and t2.id='" + manufacturerId + "' and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime +"' and t1.modelId='" + modelId +"'";
-            	}
-				Query query = session.createQuery(queryStr);
-				List list = query.list();
-				List entityList = new ArrayList();
-				for (int i = 0; i < list.size(); i++) {
-					Object[] obj = (Object[])list.get(i);
-					String reportTime = StaticMethod.nullObject2String(obj[0]);
-					String reportTimeName = "";
-					if (null != reportTime && !"".equals(reportTime)) {
-						if ("one".equals(reportTime)) {
-							reportTimeName = "第一季度";
-						} else if ("two".equals(reportTime)) {
-							reportTimeName = "第二季度";
-						} else if ("three".equals(reportTime)) {
-							reportTimeName = "第三季度";
-						} else if ("four".equals(reportTime)) {
-							reportTimeName = "第四季度";
-						} else {
-							reportTimeName = reportTime;
-						}
-					}
-					StatisticEntity entity = new StatisticEntity();				
-					entity.setName(reportTimeName);				
-					entity.setValue(StaticMethod.getFloatValue(obj[1].toString()));
-					entityList.add(entity);
-				}
+                String reportcol = getReportCol(modelId, kpiId);
+                String queryStr = "";
+                //如果是代维
+                if (specialType.indexOf("10402") != -1) {
+                    queryStr = "select t3.deptName,t1." + reportcol + " from TawSuppkpiReportStorage as t1,TawSystemSubRole as t2,TawSystemDept as t3 where t1.fillRole=t2.id and t2.deptId=t3.deptId and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime + "' and t1.modelId='" + modelId + "'";
+                } else {
+                    queryStr = "select t1.reportTime,t1." + reportcol + " from TawSuppkpiReportStorage as t1,TawSupplierkpiInfo as t2 where t1.manufacturerId=t2.id and t2.id='" + manufacturerId + "' and t1.specialType='" + specialType + "' and t1.reportTime='" + reportTime + "' and t1.modelId='" + modelId + "'";
+                }
+                Query query = session.createQuery(queryStr);
+                List list = query.list();
+                List entityList = new ArrayList();
+                for (int i = 0; i < list.size(); i++) {
+                    Object[] obj = (Object[]) list.get(i);
+                    String reportTime = StaticMethod.nullObject2String(obj[0]);
+                    String reportTimeName = "";
+                    if (null != reportTime && !"".equals(reportTime)) {
+                        if ("one".equals(reportTime)) {
+                            reportTimeName = "第一季度";
+                        } else if ("two".equals(reportTime)) {
+                            reportTimeName = "第二季度";
+                        } else if ("three".equals(reportTime)) {
+                            reportTimeName = "第三季度";
+                        } else if ("four".equals(reportTime)) {
+                            reportTimeName = "第四季度";
+                        } else {
+                            reportTimeName = reportTime;
+                        }
+                    }
+                    StatisticEntity entity = new StatisticEntity();
+                    entity.setName(reportTimeName);
+                    entity.setValue(StaticMethod.getFloatValue(obj[1].toString()));
+                    entityList.add(entity);
+                }
                 return entityList;
             }
         };

@@ -19,23 +19,23 @@ import com.boco.eoms.sheet.base.service.IHumanTaskService;
  * <p>
  * Date:2007-8-3 14:46:55
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class HumanTaskServiceImpl implements IHumanTaskService {
 
-    
+
     private IHumanTaskAdapterService humanTaskAdapterService;
-    
-    
+
+
     /**
      * @return the humanTaskAdapterService
      */
     public IHumanTaskAdapterService getHumanTaskAdapterService() {
         return humanTaskAdapterService;
     }
+
     /**
      * @param humanTaskAdapterService the humanTaskAdapterService to set
      */
@@ -43,11 +43,12 @@ public class HumanTaskServiceImpl implements IHumanTaskService {
             IHumanTaskAdapterService humanTaskAdapterService) {
         this.humanTaskAdapterService = humanTaskAdapterService;
     }
-	/* (non-Javadoc)
-	 * @see com.boco.eoms.sheet.base.service.IHumanTaskService#driveProcess()
-	 */
-	public String driveProcess() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+    /* (non-Javadoc)
+     * @see com.boco.eoms.sheet.base.service.IHumanTaskService#driveProcess()
+     */
+    public String driveProcess() throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

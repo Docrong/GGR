@@ -6,37 +6,37 @@ package com.boco.eoms.commons.accessories.zip;
  * Copyright 2004 Sun Microsystems, Inc. All rights reserved.
  * SUN PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
- 
+
 
 import java.io.IOException;
 
 /**
  * Signals that a Zip exception of some sort has occurred.
  *
- * @author  unascribed
+ * @author unascribed
  * @version 1.16 12/19/03
- * @see     java.io.IOException
- * @since   JDK1.0
+ * @see java.io.IOException
+ * @since JDK1.0
  */
 
 public
 class ZipException extends IOException {
     /**
-     * Constructs an <code>ZipException</code> with <code>null</code> 
-     * as its error detail message. 
+     * Constructs an <code>ZipException</code> with <code>null</code>
+     * as its error detail message.
      */
     public ZipException() {
-	super();
+        super();
     }
 
     /**
-     * Constructs an <code>ZipException</code> with the specified detail 
+     * Constructs an <code>ZipException</code> with the specified detail
      * message.
      *
-     * @param   s   the detail message.
+     * @param s the detail message.
      */
 
     public ZipException(String s) {
-	super(s);
+        super(s);
     }
 }

@@ -53,12 +53,12 @@ public class TawSystemOrganizationProxyDaoHibernate extends BaseDaoHibernate imp
 
     /**
      * @see com.boco.eoms.commons.system.role.dao.TawSystemOrganizationProxyDao#saveTawSystemOrganizationProxy(TawSystemOrganizationProxy tawSystemOrganizationProxy)
-     */    
+     */
     public void saveTawSystemOrganizationProxy(final TawSystemOrganizationProxy tawSystemOrganizationProxy) {
         if ((tawSystemOrganizationProxy.getId() == null) || (tawSystemOrganizationProxy.getId().equals("")))
-			getHibernateTemplate().save(tawSystemOrganizationProxy);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSystemOrganizationProxy);
+            getHibernateTemplate().save(tawSystemOrganizationProxy);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSystemOrganizationProxy);
     }
 
     /**
@@ -68,37 +68,38 @@ public class TawSystemOrganizationProxyDaoHibernate extends BaseDaoHibernate imp
         getHibernateTemplate().delete(getTawSystemOrganizationProxy(id));
     }
 
-    public Map getTawSystemOrganizationProxys(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSystemOrganizationProxys(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSystemOrganizationProxy
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSystemOrganizationProxy";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSystemOrganizationProxy";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSystemOrganizationProxys(final Integer curPage, final Integer pageSize) {
-			return this.getTawSystemOrganizationProxys(curPage,pageSize,null);
-		}
-    
-	public List getMain(){
-		String hql = "from SeSpecificationMain m,zhuoyue_hlj:SeSpecificationLink k where m.id=k.id";
-		return getHibernateTemplate().find(hql);
-	}
+        return this.getTawSystemOrganizationProxys(curPage, pageSize, null);
+    }
+
+    public List getMain() {
+        String hql = "from SeSpecificationMain m,zhuoyue_hlj:SeSpecificationLink k where m.id=k.id";
+        return getHibernateTemplate().find(hql);
+    }
 
 }

@@ -12,15 +12,14 @@ import com.boco.eoms.sheet.base.dao.IMainDAO;
  * <p>
  * Sun Sep 29 16:51:15 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICircuitControlMainDAO extends IMainDAO  {
- 
- }
+
+public interface ICircuitControlMainDAO extends IMainDAO {
+
+}
  
 
 

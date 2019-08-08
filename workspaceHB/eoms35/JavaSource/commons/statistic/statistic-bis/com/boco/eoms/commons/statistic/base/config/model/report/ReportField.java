@@ -1,104 +1,104 @@
 package com.boco.eoms.commons.statistic.base.config.model.report;
 
 public class ReportField {
-	private String id;
-	
-	private String expression;
-	
-	private String prefix; //前缀
-	private String postfix; //后缀
-	
-	private int sequence;
+    private String id;
 
-	private String viewName;
+    private String expression;
 
-	private String viewWidth;
+    private String prefix; //前缀
+    private String postfix; //后缀
 
-	private int viewRowSpan;
-	
-	private int viewRowIndex;
-	
-	private int viewColumnSpan;
+    private int sequence;
 
-	public String getId() {
-		return id;
-	}
+    private String viewName;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    private String viewWidth;
 
-	public int getSequence() {
-		return sequence;
-	}
+    private int viewRowSpan;
 
-	public void setSequence(int sequence) {
-		this.sequence = sequence;
-	}
+    private int viewRowIndex;
 
-	public int getViewColumnSpan() {
-		return viewColumnSpan;
-	}
+    private int viewColumnSpan;
 
-	public void setViewColumnSpan(int viewColumnSpan) {
-		this.viewColumnSpan = viewColumnSpan;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getViewName() {
-		return viewName;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setViewName(String viewName) {
-		this.viewName = viewName;
-	}
+    public int getSequence() {
+        return sequence;
+    }
 
-	public int getViewRowIndex() {
-		return viewRowIndex;
-	}
+    public void setSequence(int sequence) {
+        this.sequence = sequence;
+    }
 
-	public void setViewRowIndex(int viewRowIndex) {
-		this.viewRowIndex = viewRowIndex;
-	}
+    public int getViewColumnSpan() {
+        return viewColumnSpan;
+    }
 
-	public int getViewRowSpan() {
-		return viewRowSpan;
-	}
+    public void setViewColumnSpan(int viewColumnSpan) {
+        this.viewColumnSpan = viewColumnSpan;
+    }
 
-	public void setViewRowSpan(int viewRowSpan) {
-		this.viewRowSpan = viewRowSpan;
-	}
+    public String getViewName() {
+        return viewName;
+    }
 
-	public String getViewWidth() {
-		return viewWidth;
-	}
+    public void setViewName(String viewName) {
+        this.viewName = viewName;
+    }
 
-	public void setViewWidth(String viewWidth) {
-		this.viewWidth = viewWidth;
-	}
+    public int getViewRowIndex() {
+        return viewRowIndex;
+    }
 
-	public String getExpression() {
-		return expression;
-	}
+    public void setViewRowIndex(int viewRowIndex) {
+        this.viewRowIndex = viewRowIndex;
+    }
 
-	public void setExpression(String expression) {
-		this.expression = expression;
-	}
+    public int getViewRowSpan() {
+        return viewRowSpan;
+    }
 
-	public String getPostfix() {
-		return postfix;
-	}
+    public void setViewRowSpan(int viewRowSpan) {
+        this.viewRowSpan = viewRowSpan;
+    }
 
-	public void setPostfix(String postfix) {
-		this.postfix = postfix;
-	}
+    public String getViewWidth() {
+        return viewWidth;
+    }
 
-	public String getPrefix() {
-		return prefix;
-	}
+    public void setViewWidth(String viewWidth) {
+        this.viewWidth = viewWidth;
+    }
 
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
-	
-	
+    public String getExpression() {
+        return expression;
+    }
+
+    public void setExpression(String expression) {
+        this.expression = expression;
+    }
+
+    public String getPostfix() {
+        return postfix;
+    }
+
+    public void setPostfix(String postfix) {
+        this.postfix = postfix;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+
 }

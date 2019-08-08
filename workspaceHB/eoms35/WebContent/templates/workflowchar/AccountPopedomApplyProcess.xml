@@ -1,41 +1,41 @@
 <?xml version="1.0"?>
 <layout>
-  <image x="36" y="61"/>
-  <cell id="1" type="InitialActionCell" height="30.0" width="100.0" x="106.0" y="70.0"/>
-  <cell id="4" type="StepCell" height="30.0" width="100.0" x="523.0" y="61.0"/>
-  <cell id="6" type="StepCell" height="30.0" width="100.0" x="687.0" y="67.0"/>
-  <cell id="2" type="StepCell" height="30.0" width="100.0" x="305.0" y="67.0"/>
-  <cell id="5" type="StepCell" height="30.0" width="121.0" x="288.0" y="332.0"/>
-  <cell id="3" type="StepCell" height="36.0" width="121.0" x="288.0" y="193.0"/>
-  <connector id="91" linewidth="1.0" color="-16777216" labelx="495.0" labely="579.0" from="0" to="0">
-    <routing id="91" x="228" y="84"/>
-    <routing id="91" x="240" y="84"/>
-  </connector>
-  <connector id="90" linewidth="1.0" color="-16777216" labelx="53.0" labely="699.0" from="0" to="0">
-    <routing id="90" x="156" y="168"/>
-    <routing id="90" x="156" y="216"/>
-  </connector>
-  <connector id="94" linewidth="1.0" color="-16777216" labelx="346.0" labely="375.0" from="0" to="0">
-    <routing id="94" x="384" y="156"/>
-    <routing id="94" x="588" y="156"/>
-  </connector>
-  <connector id="93" linewidth="1.0" color="-16777216" labelx="500.0" labely="500.0" from="0" to="0">
-    <routing id="93" x="348" y="240"/>
-    <routing id="93" x="348" y="324"/>
-  </connector>
-  <connector id="95" linewidth="1.0" color="-16777216" labelx="540.0" labely="308.0" from="0" to="0">
-    <routing id="95" x="552" y="120"/>
-    <routing id="95" x="372" y="120"/>
-  </connector>
-  <connector id="92" linewidth="1.0" color="-16777216" labelx="500.0" labely="500.0" from="0" to="0">
-    <routing id="92" x="348" y="109"/>
-    <routing id="92" x="348" y="156"/>
-  </connector>
-  <connector id="96" linewidth="1.0" color="-16777216" labelx="981.0" labely="225.0" from="0" to="0">
-    <routing id="96" x="732" y="336"/>
-    <routing id="96" x="734" y="264"/>
-  </connector>
-  <channel id="chl-0" y1="0" y2="133.0" text="账号申请人"/>
-  <channel id="chl-1" y1="133.0" y2="261.0" text="安全管理员"/>
-  <channel id="chl-2" y1="261.0" y2="380.0" text="账号配置员"/>
+    <image x="36" y="61"/>
+    <cell id="1" type="InitialActionCell" height="30.0" width="100.0" x="106.0" y="70.0"/>
+    <cell id="4" type="StepCell" height="30.0" width="100.0" x="523.0" y="61.0"/>
+    <cell id="6" type="StepCell" height="30.0" width="100.0" x="687.0" y="67.0"/>
+    <cell id="2" type="StepCell" height="30.0" width="100.0" x="305.0" y="67.0"/>
+    <cell id="5" type="StepCell" height="30.0" width="121.0" x="288.0" y="332.0"/>
+    <cell id="3" type="StepCell" height="36.0" width="121.0" x="288.0" y="193.0"/>
+    <connector id="91" linewidth="1.0" color="-16777216" labelx="495.0" labely="579.0" from="0" to="0">
+        <routing id="91" x="228" y="84"/>
+        <routing id="91" x="240" y="84"/>
+    </connector>
+    <connector id="90" linewidth="1.0" color="-16777216" labelx="53.0" labely="699.0" from="0" to="0">
+        <routing id="90" x="156" y="168"/>
+        <routing id="90" x="156" y="216"/>
+    </connector>
+    <connector id="94" linewidth="1.0" color="-16777216" labelx="346.0" labely="375.0" from="0" to="0">
+        <routing id="94" x="384" y="156"/>
+        <routing id="94" x="588" y="156"/>
+    </connector>
+    <connector id="93" linewidth="1.0" color="-16777216" labelx="500.0" labely="500.0" from="0" to="0">
+        <routing id="93" x="348" y="240"/>
+        <routing id="93" x="348" y="324"/>
+    </connector>
+    <connector id="95" linewidth="1.0" color="-16777216" labelx="540.0" labely="308.0" from="0" to="0">
+        <routing id="95" x="552" y="120"/>
+        <routing id="95" x="372" y="120"/>
+    </connector>
+    <connector id="92" linewidth="1.0" color="-16777216" labelx="500.0" labely="500.0" from="0" to="0">
+        <routing id="92" x="348" y="109"/>
+        <routing id="92" x="348" y="156"/>
+    </connector>
+    <connector id="96" linewidth="1.0" color="-16777216" labelx="981.0" labely="225.0" from="0" to="0">
+        <routing id="96" x="732" y="336"/>
+        <routing id="96" x="734" y="264"/>
+    </connector>
+    <channel id="chl-0" y1="0" y2="133.0" text="账号申请人"/>
+    <channel id="chl-1" y1="133.0" y2="261.0" text="安全管理员"/>
+    <channel id="chl-2" y1="261.0" y2="380.0" text="账号配置员"/>
 </layout>

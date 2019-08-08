@@ -1,6 +1,7 @@
 package com.boco.eoms.sparepart.controller;
 
 import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.*;
 import org.apache.struts.upload.*;
 
@@ -8,7 +9,7 @@ import org.apache.struts.upload.*;
  * <p>Title:UpLoadForm</p>
  */
 
-public class UpLoadForm extends ActionForm{
+public class UpLoadForm extends ActionForm {
 
     protected FormFile theFile;
     private String note;
@@ -17,55 +18,60 @@ public class UpLoadForm extends ActionForm{
     private String sheetNames[];
     private String scoreYear;
     private String scoreMonth;
-    public FormFile getTheFile(){
+
+    public FormFile getTheFile() {
         return theFile;
     }
 
-    public void setTheFile(FormFile theFile){
-        this.theFile=theFile;
+    public void setTheFile(FormFile theFile) {
+        this.theFile = theFile;
     }
 
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note){
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
+
     public String getOrderId() {
-    return orderId;
+        return orderId;
     }
+
     public void setOrderId(String orderId) {
-    this.orderId = orderId;
+        this.orderId = orderId;
     }
+
     public String getOrderType() {
-    return orderType;
+        return orderType;
     }
+
     public void setOrderType(String orderType) {
-    this.orderType = orderType;
+        this.orderType = orderType;
     }
 
-	public String[] getSheetNames() {
-		return sheetNames;
-	}
+    public String[] getSheetNames() {
+        return sheetNames;
+    }
 
-	public void setSheetNames(String[] sheetNames) {
-		this.sheetNames = sheetNames;
-	}
+    public void setSheetNames(String[] sheetNames) {
+        this.sheetNames = sheetNames;
+    }
 
-	public String getScoreMonth() {
-		return scoreMonth;
-	}
+    public String getScoreMonth() {
+        return scoreMonth;
+    }
 
-	public void setScoreMonth(String scoreMonth) {
-		this.scoreMonth = scoreMonth;
-	}
+    public void setScoreMonth(String scoreMonth) {
+        this.scoreMonth = scoreMonth;
+    }
 
-	public String getScoreYear() {
-		return scoreYear;
-	}
+    public String getScoreYear() {
+        return scoreYear;
+    }
 
-	public void setScoreYear(String scoreYear) {
-		this.scoreYear = scoreYear;
-	}
+    public void setScoreYear(String scoreYear) {
+        this.scoreYear = scoreYear;
+    }
 }

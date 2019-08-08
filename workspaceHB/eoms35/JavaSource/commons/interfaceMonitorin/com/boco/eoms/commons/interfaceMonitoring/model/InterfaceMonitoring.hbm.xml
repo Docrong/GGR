@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class
-		name="com.boco.eoms.commons.interfaceMonitoring.model.InterfaceMonitoring"
-		table="INTERFACE_MONITORING">
+    <class
+            name="com.boco.eoms.commons.interfaceMonitoring.model.InterfaceMonitoring"
+            table="INTERFACE_MONITORING">
 
-		<id name="id" column="id" unsaved-value="null">
+        <id name="id" column="id" unsaved-value="null">
 
-			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-			<generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-			</generator>
+            </generator>
 
-		</id>
+        </id>
 
-		<property name="callingTime" column="CALLING_TIME" length="50"
-			not-null="false" unique="false">
+        <property name="callingTime" column="CALLING_TIME" length="50"
+                  not-null="false" unique="false">
 
-		</property>
+        </property>
 
-		<property name="callingSide" column="CALLING_SIDE" length="50"
-			not-null="false" unique="false">
+        <property name="callingSide" column="CALLING_SIDE" length="50"
+                  not-null="false" unique="false">
 
-		</property>
+        </property>
 
-		<property name="provider" column="PROVIDER" length="100"
-			not-null="false" unique="false">
+        <property name="provider" column="PROVIDER" length="100"
+                  not-null="false" unique="false">
 
-		</property>
+        </property>
 
-		<property name="interFaceType" column="INTERFACE_TYPE"
-			length="100" not-null="false" unique="false">
+        <property name="interFaceType" column="INTERFACE_TYPE"
+                  length="100" not-null="false" unique="false">
 
-		</property>
+        </property>
 
-	
 
-		<property name="interFaceMethod" column="INTERFACE_METHOD"
-			length="50" not-null="false" unique="false">
+        <property name="interFaceMethod" column="INTERFACE_METHOD"
+                  length="50" not-null="false" unique="false">
 
-		</property>
-		<property name="success" column="SUCCESS" length="50"
-			not-null="false" unique="false">
+        </property>
+        <property name="success" column="SUCCESS" length="50"
+                  not-null="false" unique="false">
 
-		</property>
-		<property name="exceptionLog" column="EXCEPTION_LOG" length="500"
-			not-null="false" unique="false">
+        </property>
+        <property name="exceptionLog" column="EXCEPTION_LOG" length="500"
+                  not-null="false" unique="false">
 
-		</property>
-		<property name="keyword" column="KEYWORD" length="100"
-			not-null="false" unique="false">
+        </property>
+        <property name="keyword" column="KEYWORD" length="100"
+                  not-null="false" unique="false">
 
-		</property>
-		<property name="text" column="TEXT" length="500"
-			not-null="false" unique="false">
+        </property>
+        <property name="text" column="TEXT" length="500"
+                  not-null="false" unique="false">
 
-		</property>
-			<property name="serSupplier" column="serSupplier" length="20"
-			not-null="false" unique="false">
+        </property>
+        <property name="serSupplier" column="serSupplier" length="20"
+                  not-null="false" unique="false">
 
-		</property>
-			<property name="serCaller" column="serCaller" length="20"
-			not-null="false" unique="false">
+        </property>
+        <property name="serCaller" column="serCaller" length="20"
+                  not-null="false" unique="false">
 
-		</property>
-			<property name="sheetKey" column="sheet_key" length="50"
-			not-null="false" unique="false">
+        </property>
+        <property name="sheetKey" column="sheet_key" length="50"
+                  not-null="false" unique="false">
 
-		</property>
-			<property name="method" column="method" length="50"
-			not-null="false" unique="false">
+        </property>
+        <property name="method" column="method" length="50"
+                  not-null="false" unique="false">
 
-		</property>
+        </property>
 
-<property name="callDirection" column="CALL_DIRECTION" length="50"
-			not-null="false" unique="false">
+        <property name="callDirection" column="CALL_DIRECTION" length="50"
+                  not-null="false" unique="false">
 
-		</property>
-	</class>
+        </property>
+    </class>
 
 </hibernate-mapping>
 

@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.branchindexreduction.qo.IBranchIndexReductionQo;
  * <p>
  * Fri Jul 28 15:47:20 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public class BranchIndexReductionQoImpl extends WorkSheetQOImpl implements IBranchIndexReductionQo {
- 
- }
+
+public class BranchIndexReductionQoImpl extends WorkSheetQOImpl implements IBranchIndexReductionQo {
+
+}

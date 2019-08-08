@@ -1,6 +1,6 @@
 /**
  * EomsServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -42,11 +42,10 @@ public class EomsServiceLocator extends org.apache.axis.client.Service implement
     }
 
     public com.boco.eoms.sheet.groupcomplaint.zhzw.Eoms2IomService getEoms2IomServicePort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(Eoms2IomServicePort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getEoms2IomServicePort(endpoint);
@@ -57,8 +56,7 @@ public class EomsServiceLocator extends org.apache.axis.client.Service implement
             com.boco.eoms.sheet.groupcomplaint.zhzw.EomsServiceSoapBindingStub _stub = new com.boco.eoms.sheet.groupcomplaint.zhzw.EomsServiceSoapBindingStub(portAddress, this);
             _stub.setPortName(getEoms2IomServicePortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -79,8 +77,7 @@ public class EomsServiceLocator extends org.apache.axis.client.Service implement
                 _stub.setPortName(getEoms2IomServicePortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -98,8 +95,7 @@ public class EomsServiceLocator extends org.apache.axis.client.Service implement
         java.lang.String inputPortName = portName.getLocalPart();
         if ("Eoms2IomServicePort".equals(inputPortName)) {
             return getEoms2IomServicePort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -121,22 +117,20 @@ public class EomsServiceLocator extends org.apache.axis.client.Service implement
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("Eoms2IomServicePort".equals(portName)) {
+
+        if ("Eoms2IomServicePort".equals(portName)) {
             setEoms2IomServicePortEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

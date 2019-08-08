@@ -35,7 +35,7 @@ public class SmsLogManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsLogDao.expects(once()).method("getSmsLogs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List smsLogs = smsLogManager.getSmsLogs(null);
         assertTrue(smsLogs.size() == 1);
@@ -45,7 +45,7 @@ public class SmsLogManagerTest extends BaseManagerTestCase {
     public void testGetSmsLog() throws Exception {
         // set expected behavior on dao
         smsLogDao.expects(once()).method("getSmsLog")
-            .will(returnValue(new SmsLog()));
+                .will(returnValue(new SmsLog()));
         SmsLog smsLog = smsLogManager.getSmsLog(smsLogId);
         assertTrue(smsLog != null);
         smsLogDao.verify();
@@ -56,7 +56,7 @@ public class SmsLogManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsLogDao.expects(once()).method("saveSmsLog")
-            .with(same(smsLog)).isVoid();
+                .with(same(smsLog)).isVoid();
 
         smsLogManager.saveSmsLog(smsLog);
         smsLogDao.verify();
@@ -76,7 +76,7 @@ public class SmsLogManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsLogDao.expects(once()).method("saveSmsLog")
-            .with(same(smsLog)).isVoid();
+                .with(same(smsLog)).isVoid();
         smsLogManager.saveSmsLog(smsLog);
         smsLogDao.verify();
 

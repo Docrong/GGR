@@ -55,12 +55,12 @@ public class TaskplanDaoHibernate extends BaseDaoHibernate implements ITaskplanD
 
     /**
      * @see com.boco.eoms.taskplan.dao.TaskplanDao#saveTaskplan(Taskplan taskplan)
-     */    
+     */
     public void saveTaskplan(final Taskplan taskplan) {
         if ((taskplan.getId() == null) || (taskplan.getId().equals("")))
-			getHibernateTemplate().save(taskplan);
-		else
-			getHibernateTemplate().saveOrUpdate(taskplan);
+            getHibernateTemplate().save(taskplan);
+        else
+            getHibernateTemplate().saveOrUpdate(taskplan);
     }
 
     /**
@@ -69,47 +69,50 @@ public class TaskplanDaoHibernate extends BaseDaoHibernate implements ITaskplanD
     public void removeTaskplan(final String id) {
         getHibernateTemplate().delete(getTaskplan(id));
     }
+
     /**
-     * @see com.boco.eoms.taskplan.dao.TaskplanDao#getTaskplans(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.taskplan.dao.TaskplanDao#getTaskplans(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTaskplans(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTaskplans(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the taskplan
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from Taskplan";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from Taskplan";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.taskplan.dao.TaskplanDao#getTaskplans(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTaskplans(final Integer curPage, final Integer pageSize) {
-			return this.getTaskplans(curPage,pageSize,null);
-		}
+        return this.getTaskplans(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.taskplan.dao.TaskplanDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql =""; 
-		if(parentId.equals("-1")){
-			hql = " from Taskplan obj order by obj.id";
-		}
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = "";
+        if (parentId.equals("-1")) {
+            hql = " from Taskplan obj order by obj.id";
+        }
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

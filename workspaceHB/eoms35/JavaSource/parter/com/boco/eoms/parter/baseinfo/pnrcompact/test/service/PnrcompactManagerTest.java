@@ -35,7 +35,7 @@ public class PnrcompactManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         pnrcompactDao.expects(once()).method("getPnrcompacts")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List pnrcompacts = pnrcompactManager.getPnrcompacts(null);
         assertTrue(pnrcompacts.size() == 1);
@@ -45,7 +45,7 @@ public class PnrcompactManagerTest extends BaseManagerTestCase {
     public void testGetPnrcompact() throws Exception {
         // set expected behavior on dao
         pnrcompactDao.expects(once()).method("getPnrcompact")
-            .will(returnValue(new Pnrcompact()));
+                .will(returnValue(new Pnrcompact()));
         Pnrcompact pnrcompact = pnrcompactManager.getPnrcompact(pnrcompactId);
         assertTrue(pnrcompact != null);
         pnrcompactDao.verify();
@@ -56,7 +56,7 @@ public class PnrcompactManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         pnrcompactDao.expects(once()).method("savePnrcompact")
-            .with(same(pnrcompact)).isVoid();
+                .with(same(pnrcompact)).isVoid();
 
         pnrcompactManager.savePnrcompact(pnrcompact);
         pnrcompactDao.verify();
@@ -69,7 +69,7 @@ public class PnrcompactManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         pnrcompactDao.expects(once()).method("savePnrcompact")
-            .with(same(pnrcompact)).isVoid();
+                .with(same(pnrcompact)).isVoid();
         pnrcompactManager.savePnrcompact(pnrcompact);
         pnrcompactDao.verify();
 

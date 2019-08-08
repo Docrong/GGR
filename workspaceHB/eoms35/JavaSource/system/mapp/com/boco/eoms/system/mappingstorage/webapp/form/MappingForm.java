@@ -12,114 +12,104 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Wed Apr 08 09:10:47 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() sam
  * @moudle.getVersion() 1.0
- * 
  */
 public class MappingForm extends BaseForm implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 锟斤拷锟�
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 锟斤拷锟�
+     */
+    private String id;
 
-	/**
-	 *
-	 * app_code
-	 *
-	 */
-	private String app_code;
-   
-	public void setApp_code(String app_code){
-		this.app_code= app_code;       
-	}
-   
-	public String getApp_code(){
-		return this.app_code;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * app_name
-	 *
-	 */
-	private String app_name;
-   
-	public void setApp_name(String app_name){
-		this.app_name= app_name;       
-	}
-   
-	public String getApp_name(){
-		return this.app_name;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * app_code
+     */
+    private String app_code;
+
+    public void setApp_code(String app_code) {
+        this.app_code = app_code;
+    }
+
+    public String getApp_code() {
+        return this.app_code;
+    }
+
+    /**
+     * app_name
+     */
+    private String app_name;
+
+    public void setApp_name(String app_name) {
+        this.app_name = app_name;
+    }
+
+    public String getApp_name() {
+        return this.app_name;
+    }
 
 
+    /**
+     * context
+     */
+    private String context;
 
-	/**
-	 *
-	 * context
-	 *
-	 */
-	private String context;
-   
-	public void setContext(String context){
-		this.context= context;       
-	}
-   
-	public String getContext(){
-		return this.context;
-	}
-	
-	/*
-	 * new_table
-	 */
-	private String new_table;
-	public void setNew_table(String new_table){
-		this.new_table=new_table;
-	}
-	public String getNew_table(){
-		return new_table;
-	}
+    public void setContext(String context) {
+        this.context = context;
+    }
 
-	/**
-	 *
-	 * mapping_id
-	 *
-	 */
-	
-	
-	private String deleted="0";
+    public String getContext() {
+        return this.context;
+    }
 
-	public String getDeleted() {
-		return deleted;
-	}
+    /*
+     * new_table
+     */
+    private String new_table;
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
-	
-	private String beanid;
+    public void setNew_table(String new_table) {
+        this.new_table = new_table;
+    }
 
-	public String getBeanid() {
-		return beanid;
-	}
+    public String getNew_table() {
+        return new_table;
+    }
 
-	public void setBeanid(String beanid) {
-		this.beanid = beanid;
-	}
-	
-	
+    /**
+     * mapping_id
+     */
+
+
+    private String deleted = "0";
+
+    public String getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
+
+    private String beanid;
+
+    public String getBeanid() {
+        return beanid;
+    }
+
+    public void setBeanid(String beanid) {
+        this.beanid = beanid;
+    }
 
 
 }

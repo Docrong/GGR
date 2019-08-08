@@ -39,14 +39,14 @@ public class StatReportMgrAction extends Action {
             throws Exception {
         ActionForward myforward = null;
         TawSystemAssignBo privBO = null;
-          //Ȩ���ж�
+        //Ȩ���ж�
         TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-        request.getSession().getAttribute("sessionform");
+                request.getSession().getAttribute("sessionform");
         if (saveSessionBeanForm == null) {
             return new ActionForward("/timeout.jsp");
         }
         String userId = saveSessionBeanForm.getUserid();
-        
+
         privBO = TawSystemAssignBo.getInstance();
         //StaticMethod.list2vector(privBO.getPermissions(saveSessionBeanForm.getUserid(),com.boco.eoms.base.util.StaticVariable.OPERATOR_REPORT_STAT_ID,com.boco.eoms.base.util.StaticVariable.PRIV_TYPE_REGION_CPTROOM));
 //        if (!privBO.hasPermission4region(userId, SchemeMgrDAO.OPERATOR_REPORT_STAT_ID)) {
@@ -68,15 +68,15 @@ public class StatReportMgrAction extends Action {
     private ActionForward performPrepare(ActionMapping mapping, ActionForm form,
                                          HttpServletRequest request,
                                          HttpServletResponse response) {
-         StatForm myForm = (StatForm) form;
+        StatForm myForm = (StatForm) form;
         try {
             TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-            request.getSession().getAttribute("sessionform");
+                    request.getSession().getAttribute("sessionform");
             if (saveSessionBeanForm == null) {
                 return mapping.findForward("timeout");
             }
-        myForm.setAct("stat");
-        myForm.setStatType(ReportMgrStat.STAT_TYPE_DEPT);
+            myForm.setAct("stat");
+            myForm.setStatType(ReportMgrStat.STAT_TYPE_DEPT);
         } catch (Exception e) {
             e.printStackTrace();
             return mapping.findForward("failure");
@@ -91,15 +91,15 @@ public class StatReportMgrAction extends Action {
         StatForm myForm = (StatForm) form;
         try {
             TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm)
-            request.getSession().getAttribute("sessionform");
+                    request.getSession().getAttribute("sessionform");
             if (saveSessionBeanForm == null) {
                 return mapping.findForward("timeout");
             }
-            ReportMgrStat stat=new ReportMgrStat(myForm);
-            Vector result=stat.getStatReulst();
+            ReportMgrStat stat = new ReportMgrStat(myForm);
+            Vector result = stat.getStatReulst();
             stat.release();
-            request.setAttribute("StatType",myForm.getStatType()+"");
-            request.setAttribute("StatResult",result);
+            request.setAttribute("StatType", myForm.getStatType() + "");
+            request.setAttribute("StatResult", result);
         } catch (Exception e) {
             e.printStackTrace();
             return mapping.findForward("failure");

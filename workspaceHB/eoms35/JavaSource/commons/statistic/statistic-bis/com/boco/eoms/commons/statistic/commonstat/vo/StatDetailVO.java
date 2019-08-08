@@ -4,92 +4,92 @@ import java.util.Date;
 
 public class StatDetailVO {
 
-	private String sheetid;
-	private String title;
-	private String senduserid;
-	private String senddeptid;
-	private String status;
-	private Date sendtime;
-	
-	
-	private String completeflag;
-	
-	private String mainid="";
-	
+    private String sheetid;
+    private String title;
+    private String senduserid;
+    private String senddeptid;
+    private String status;
+    private Date sendtime;
 
-	/**
-	 * @return the mainid
-	 */
-	public String getMainid() {
-		return mainid;
-	}
 
-	/**
-	 * @param mainid the mainid to set
-	 */
-	public void setMainid(String mainid) {
-		this.mainid = mainid;
-	}
+    private String completeflag;
 
-	public String getSheetid() {
-		return sheetid;
-	}
+    private String mainid = "";
 
-	public void setSheetid(String sheetid) {
-		this.sheetid = sheetid;
-	}
 
-	public String getTitle() {
-		return title;
-	}
+    /**
+     * @return the mainid
+     */
+    public String getMainid() {
+        return mainid;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    /**
+     * @param mainid the mainid to set
+     */
+    public void setMainid(String mainid) {
+        this.mainid = mainid;
+    }
 
-	public String getSenduserid() {
-		return senduserid;
-	}
+    public String getSheetid() {
+        return sheetid;
+    }
 
-	public void setSenduserid(String senduserid) {
-		this.senduserid = senduserid;
-	}
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
 
-	public String getSenddeptid() {
-		return senddeptid;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setSenddeptid(String senddeptid) {
-		this.senddeptid = senddeptid;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getSenduserid() {
+        return senduserid;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setSenduserid(String senduserid) {
+        this.senduserid = senduserid;
+    }
 
-	public Date getSendtime() {
-		return sendtime;
-	}
+    public String getSenddeptid() {
+        return senddeptid;
+    }
 
-	public void setSendtime(Date sendtime) {
-		this.sendtime = sendtime;
-	}
+    public void setSenddeptid(String senddeptid) {
+        this.senddeptid = senddeptid;
+    }
 
-	/**
-	 * @return the completeflag
-	 */
-	public String getCompleteflag() {
-		return completeflag;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	/**
-	 * @param completeflag the completeflag to set
-	 */
-	public void setCompleteflag(String completeflag) {
-		this.completeflag = completeflag;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getSendtime() {
+        return sendtime;
+    }
+
+    public void setSendtime(Date sendtime) {
+        this.sendtime = sendtime;
+    }
+
+    /**
+     * @return the completeflag
+     */
+    public String getCompleteflag() {
+        return completeflag;
+    }
+
+    /**
+     * @param completeflag the completeflag to set
+     */
+    public void setCompleteflag(String completeflag) {
+        this.completeflag = completeflag;
+    }
 }

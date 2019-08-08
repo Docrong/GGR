@@ -14,115 +14,107 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Date:May 21, 2008 3:31:20 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
+
 /**
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="myappfuse_test"
- * 
  */
 public class dutyWork extends BaseObject {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -621109313487845702L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -621109313487845702L;
 
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	private String dutydate;
-	
-	private String starttimeDefined;
-	
-	private String endtimeDefined;
-	
-	private String username;
-	
-	private String mobile;
+    /**
+     * 主键
+     */
+    private String id;
 
-	
+    private String dutydate;
 
-	
-	
+    private String starttimeDefined;
 
-	
-	
-	public boolean equals(Object o) {
-		if (o instanceof Forums) {
-			Thread thread = (Thread) o;
-			if (this.id != null || this.id.equals(thread.getId())) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+    private String endtimeDefined;
 
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+    private String username;
 
-	
-	public String getId() {
-		return id;
-	}
+    private String mobile;
 
-	public void setId(String id) {
-		this.id = id;
-	}
 
-	public String getMobile() {
-		return mobile;
-	}
+    public boolean equals(Object o) {
+        if (o instanceof Forums) {
+            Thread thread = (Thread) o;
+            if (this.id != null || this.id.equals(thread.getId())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
-	
 
-	public String getDutydate() {
-		return dutydate;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setDutydate(String dutydate) {
-		this.dutydate = dutydate;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getEndtimeDefined() {
-		return endtimeDefined;
-	}
+    public String getMobile() {
+        return mobile;
+    }
 
-	public void setEndtimeDefined(String endtimeDefined) {
-		this.endtimeDefined = endtimeDefined;
-	}
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
-	public String getStarttimeDefined() {
-		return starttimeDefined;
-	}
 
-	public void setStarttimeDefined(String starttimeDefined) {
-		this.starttimeDefined = starttimeDefined;
-	}
+    public String getDutydate() {
+        return dutydate;
+    }
 
-	public String getUsername() {
-		return username;
-	}
+    public void setDutydate(String dutydate) {
+        this.dutydate = dutydate;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getEndtimeDefined() {
+        return endtimeDefined;
+    }
 
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public void setEndtimeDefined(String endtimeDefined) {
+        this.endtimeDefined = endtimeDefined;
+    }
+
+    public String getStarttimeDefined() {
+        return starttimeDefined;
+    }
+
+    public void setStarttimeDefined(String starttimeDefined) {
+        this.starttimeDefined = starttimeDefined;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 }

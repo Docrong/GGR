@@ -1,159 +1,158 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-  
-	<bean id="subRoleCache" 
-		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-		<property name="cacheManager">
-			<ref bean="appCacheManager" />
-		</property>
-		<property name="cacheName">
-			<value>com.boco.eoms.commons.system.subRole.SUBROLE_CATCH</value>
-		</property>
-		<!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
-		<property name="maxElementsInMemory">
-			<value>100001</value>
-		</property>
-		<property name="overflowToDisk">
-			<value>true</value>
-		</property>
-		<property name="eternal">
-			<value>true</value>
-		</property>
-		<property name="timeToLive">
-			<value>600</value>
-		</property>
-		<property name="timeToIdle">
-			<value>600</value>
-		</property>
-		<property name="diskPersistent">
-			<value>false</value>
-		</property>
-		<property name="diskExpiryThreadIntervalSeconds">
-			<value>120</value>
-		</property>
 
-	</bean>
+    <bean id="subRoleCache"
+          class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager">
+            <ref bean="appCacheManager"/>
+        </property>
+        <property name="cacheName">
+            <value>com.boco.eoms.commons.system.subRole.SUBROLE_CATCH</value>
+        </property>
+        <!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
+        <property name="maxElementsInMemory">
+            <value>100001</value>
+        </property>
+        <property name="overflowToDisk">
+            <value>true</value>
+        </property>
+        <property name="eternal">
+            <value>true</value>
+        </property>
+        <property name="timeToLive">
+            <value>600</value>
+        </property>
+        <property name="timeToIdle">
+            <value>600</value>
+        </property>
+        <property name="diskPersistent">
+            <value>false</value>
+        </property>
+        <property name="diskExpiryThreadIntervalSeconds">
+            <value>120</value>
+        </property>
 
-    
-    
-	<bean id="subRoleCacheInterceptor"
-		class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
-		<property name="cache">
-			<ref local="subRoleCache" />
-		</property>
-	</bean>
-
-	<bean id="subRoleCachePointCut"
-		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="advice">
-			<ref local="subRoleCacheInterceptor" />
-		</property>
-		<property name="patterns">
-			<list>
-				<value>.*get*</value>
-			</list>
-		</property>
-	</bean>
+    </bean>
 
 
-	<bean id="subRoleBaseCacheProxy"
-		class="org.springframework.aop.framework.ProxyFactoryBean"
-		abstract="true">
-		<property name="interceptorNames">
-			<list>
-				<value>subRoleCachePointCut</value>
-				<value>txInterceptor</value>
-			</list>
-		</property>
-	</bean>
+    <bean id="subRoleCacheInterceptor"
+          class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
+        <property name="cache">
+            <ref local="subRoleCache"/>
+        </property>
+    </bean>
 
-	<!-- 自动更新缓存 -->
-	<bean id="subRoleFlushCachePointCut"
-		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="advice">
-			<ref local="subRoleFlushCacheInterceptor" />
-		</property>
-		<property name="patterns">
-			<list>
-				<value>.*save*</value>
-				<value>.*remove*</value>
-				<value>.*create*</value>
-				<value>.*delete*</value>
-			</list>
-		</property>
-	</bean>
+    <bean id="subRoleCachePointCut"
+          class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice">
+            <ref local="subRoleCacheInterceptor"/>
+        </property>
+        <property name="patterns">
+            <list>
+                <value>.*get*</value>
+            </list>
+        </property>
+    </bean>
 
-	<bean id="subRoleFlushCacheInterceptor"
-		class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
-		<property name="cache">
-			<ref local="subRoleCache" />
-		</property>
-		<property name="method">
-			<props>
-				<prop
-					key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.createSubRolesByDept">
-					RoleCacheKeyCallback
-				</prop>		
-				<prop
-					key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.deleteSubRoles">
-					RoleCacheKeyCallback
-				</prop>	
-				<prop
-					key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.deleteSubRolesByRoleId">
-					RoleCacheKeyCallback
-				</prop>	
-				<prop
-					key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.removeTawSystemSubRole">
-					RoleCacheKeyCallback
-				</prop>	
-				<prop
-					key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.saveTawSystemSubRole">
-					RoleCacheKeyCallback
-				</prop>	
-				<prop
-					key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.saveTawSystemSubRoles">
-					RoleCacheKeyCallback
-				</prop>					
-			</props>
-		</property>
-	</bean>
 
-	<bean id="subRoleBaseFlushCacheProxy"
-		class="org.springframework.aop.framework.ProxyFactoryBean"
-		abstract="true">
-		<property name="interceptorNames">
-			<list>
-				<value>subRoleFlushCachePointCut</value>
-				<value>txInterceptor</value>
-			</list>
-		</property>
-	</bean>
-	
-	
-	<bean id="subRoleCacheKeyCallback"
-		class="com.boco.eoms.commons.system.role.cache.RoleCacheKeyCallback" />
+    <bean id="subRoleBaseCacheProxy"
+          class="org.springframework.aop.framework.ProxyFactoryBean"
+          abstract="true">
+        <property name="interceptorNames">
+            <list>
+                <value>subRoleCachePointCut</value>
+                <value>txInterceptor</value>
+            </list>
+        </property>
+    </bean>
 
-	<bean id="ItawSystemSubRoleManagerFlush"
-		parent="subRoleBaseFlushCacheProxy">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.role.service.impl.TawSystemSubRoleManagerImpl">
-				<property name="tawSystemSubRoleDao" ref="tawSystemSubRoleDao"/>
+    <!-- 自动更新缓存 -->
+    <bean id="subRoleFlushCachePointCut"
+          class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice">
+            <ref local="subRoleFlushCacheInterceptor"/>
+        </property>
+        <property name="patterns">
+            <list>
+                <value>.*save*</value>
+                <value>.*remove*</value>
+                <value>.*create*</value>
+                <value>.*delete*</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="subRoleFlushCacheInterceptor"
+          class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
+        <property name="cache">
+            <ref local="subRoleCache"/>
+        </property>
+        <property name="method">
+            <props>
+                <prop
+                        key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.createSubRolesByDept">
+                    RoleCacheKeyCallback
+                </prop>
+                <prop
+                        key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.deleteSubRoles">
+                    RoleCacheKeyCallback
+                </prop>
+                <prop
+                        key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.deleteSubRolesByRoleId">
+                    RoleCacheKeyCallback
+                </prop>
+                <prop
+                        key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.removeTawSystemSubRole">
+                    RoleCacheKeyCallback
+                </prop>
+                <prop
+                        key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.saveTawSystemSubRole">
+                    RoleCacheKeyCallback
+                </prop>
+                <prop
+                        key="com.boco.eoms.commons.system.role.service.ITawSystemSubRoleManager.saveTawSystemSubRoles">
+                    RoleCacheKeyCallback
+                </prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="subRoleBaseFlushCacheProxy"
+          class="org.springframework.aop.framework.ProxyFactoryBean"
+          abstract="true">
+        <property name="interceptorNames">
+            <list>
+                <value>subRoleFlushCachePointCut</value>
+                <value>txInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="subRoleCacheKeyCallback"
+          class="com.boco.eoms.commons.system.role.cache.RoleCacheKeyCallback"/>
+
+    <bean id="ItawSystemSubRoleManagerFlush"
+          parent="subRoleBaseFlushCacheProxy">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.role.service.impl.TawSystemSubRoleManagerImpl">
+                <property name="tawSystemSubRoleDao" ref="tawSystemSubRoleDao"/>
                 <property name="userRoleDao" ref="tawSystemUserRefRoleDao"/>
-			</bean>
-		</property>
-	</bean>
-	<bean id="ItawSystemSubRoleSaveManagerFlush"
-		parent="subRoleBaseCacheProxy">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.role.service.impl.TawSystemSubRoleManagerImpl">
-				<property name="tawSystemSubRoleDao" ref="tawSystemSubRoleDao"/>
+            </bean>
+        </property>
+    </bean>
+    <bean id="ItawSystemSubRoleSaveManagerFlush"
+          parent="subRoleBaseCacheProxy">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.role.service.impl.TawSystemSubRoleManagerImpl">
+                <property name="tawSystemSubRoleDao" ref="tawSystemSubRoleDao"/>
                 <property name="userRoleDao" ref="tawSystemUserRefRoleDao"/>
-			</bean>
-		</property>
-	</bean>
+            </bean>
+        </property>
+    </bean>
 
 </beans>

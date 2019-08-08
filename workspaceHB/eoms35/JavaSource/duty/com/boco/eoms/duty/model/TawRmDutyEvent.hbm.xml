@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_rm_dutyevent"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="inputuser"
-            	column="inputuser"
+                name="inputuser"
+                column="inputuser"
                 length="25"
                 not-null="false"
                 unique="true"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="inputdate"
-            	column="inputdate"
+                name="inputdate"
+                column="inputdate"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -47,8 +47,8 @@
         </property>
 
         <property
-            name="flag"
-            	column="flag"
+                name="flag"
+                column="flag"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -57,8 +57,8 @@
         </property>
 
         <property
-            name="eventtitle"
-            	column="eventtitle"
+                name="eventtitle"
+                column="eventtitle"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -67,8 +67,8 @@
         </property>
 
         <property
-            name="beginTime"
-            	column="beginTime"
+                name="beginTime"
+                column="beginTime"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -77,8 +77,8 @@
         </property>
 
         <property
-            name="complateFlag"
-            	column="complateFlag"
+                name="complateFlag"
+                column="complateFlag"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -87,8 +87,8 @@
         </property>
 
         <property
-            name="endtime"
-            	column="endtime"
+                name="endtime"
+                column="endtime"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -97,146 +97,146 @@
         </property>
 
         <property
-            name="faultType"
-            	column="faultType"
+                name="faultType"
+                column="faultType"
                 length="10"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
-		
-		 <property
-            name="falultid"
-            	column="falultid"
+
+        <property
+                name="falultid"
+                column="falultid"
                 length="32"
                 not-null="false"
                 unique="true"
         >
         </property>
         <property
-            name="isSubmit"
-            	column="isSubmit"
+                name="isSubmit"
+                column="isSubmit"
                 length="32"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
-        
-         <property
-            name="deptid"
-            	column="deptid"
+
+        <property
+                name="deptid"
+                column="deptid"
                 length="32"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
-        
-         <property
-            name="accessories"
-            	column="accessories"
+
+        <property
+                name="accessories"
+                column="accessories"
                 length="100"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
-    
-        
+
+
         <property
-            name="workserial"
-            	column="workserial"
+                name="workserial"
+                column="workserial"
                 length="10"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
- 
+
         <property
-            name="finishworkserial"
-            	column="finishworkserial"
+                name="finishworkserial"
+                column="finishworkserial"
                 length="10"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
-        
+
         <property
-            name="regionlist"
-            	column="regionlist"
+                name="regionlist"
+                column="regionlist"
                 length="32"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
-        
+
         <property
-            name="roomid"
-            	column="roomid"
+                name="roomid"
+                column="roomid"
                 length="10"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
-        
+
         <property
-            name="sheetid"
-            	column="sheetid"
+                name="sheetid"
+                column="sheetid"
                 length="32"
                 not-null="false"
                 unique="true"
         >
-	
-        </property>   
-        
+
+        </property>
+
         <property
-            name="faultCommontId"
-            	column="faultCommontId"
+                name="faultCommontId"
+                column="faultCommontId"
                 length="32"
                 not-null="false"
                 unique="true"
         >
-	
-        </property>   
-        
+
+        </property>
+
         <property
-            name="faultEquipmentId"
-            	column="faultEquipmentId"
+                name="faultEquipmentId"
+                column="faultEquipmentId"
                 length="32"
                 not-null="false"
                 unique="true"
         >
-	
-        </property>   
-        
+
+        </property>
+
         <property
-            name="faultCircuitId"
-            	column="faultCircuitId"
+                name="faultCircuitId"
+                column="faultCircuitId"
                 length="32"
                 not-null="false"
                 unique="true"
         >
-	
-        </property>   
- 
+
+        </property>
+
         <property
-            name="pubstatus"
-            	column="pubstatus"
+                name="pubstatus"
+                column="pubstatus"
                 length="10"
                 not-null="false"
                 unique="true"
         >
-	
+
         </property>
- 
-       
-    </class>    
+
+
+    </class>
 
 </hibernate-mapping>
 

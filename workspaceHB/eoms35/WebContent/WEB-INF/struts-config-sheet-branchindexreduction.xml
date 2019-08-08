@@ -1,256 +1,258 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
-		<form-beans> 
+    <form-beans>
         <form-bean
-          name="SubtractTableForm"
-          type="com.boco.eoms.sheet.branchindexreduction.webapp.form.SubtractTableForm"/>
+                name="SubtractTableForm"
+                type="com.boco.eoms.sheet.branchindexreduction.webapp.form.SubtractTableForm"/>
         <form-bean name="FileUploadForm"
-			type="com.boco.eoms.sheet.branchindexreduction.webapp.form.FileUploadForm" />
-			
-	    <form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
+                   type="com.boco.eoms.sheet.branchindexreduction.webapp.form.FileUploadForm"/>
+
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
     </form-beans>
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
-		<!--bean for EsmProcess end-->
-	</form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
+        <!--bean for EsmProcess end-->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		<forward name="error"
-			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
-			contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+        <forward name="error"
+                 path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+                 contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	
- 
-      <action-mappings>
+    <!-- ========== Action Mapping Definitions =================================== -->
+
+
+    <action-mappings>
         <action
-          path="/subtracttablesupload"
-          type="com.boco.eoms.sheet.branchindexreduction.webapp.action.SubtractTableUploadAction"
-          name="FileUploadForm"
-          scope="request"
-          input="mainMenu"
-          parameter="method"
-          unknown="false"
-          validate="false">
+                path="/subtracttablesupload"
+                type="com.boco.eoms.sheet.branchindexreduction.webapp.action.SubtractTableUploadAction"
+                name="FileUploadForm"
+                scope="request"
+                input="mainMenu"
+                parameter="method"
+                unknown="false"
+                validate="false">
             <set-property
-              property="cancellable"
-              value="true"/>
+                    property="cancellable"
+                    value="true"/>
             <forward
-              name="edit"
-              path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableForm.jsp"
-              redirect="false"
-              contextRelative="true"/>
+                    name="edit"
+                    path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableForm.jsp"
+                    redirect="false"
+                    contextRelative="true"/>
             <forward
-              name="list"
-              path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableSearch.jsp"
-              redirect="false"
-              contextRelative="true"/>
+                    name="list"
+                    path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableSearch.jsp"
+                    redirect="false"
+                    contextRelative="true"/>
             <forward
-              name="detail"
-              path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableDetail.jsp"
-              redirect="false"
-              contextRelative="true"/>
+                    name="detail"
+                    path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableDetail.jsp"
+                    redirect="false"
+                    contextRelative="true"/>
         </action>
     </action-mappings>
-    
-	<action-mappings>
-		<action path="/branchindexreduction"
-			type="com.boco.eoms.sheet.branchindexreduction.webapp.action.BranchIndexReductionAction"
-			name="multiPageForm" scope="request" input="error" parameter="method"
-			unknown="false" validate="false" attribute="BranchIndexReduction">
-			<set-property property="cancellable" value="true" />
-			<forward name="new"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/main.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputNew"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="dealpage"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputDealpage"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputdealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="reject"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/reject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputReject"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputreject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="detail"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/detail.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draft"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="cancel"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="delete"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="hold"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/list.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="success"
-				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="successMessage"
-				path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="portal"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/portal.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="split"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/split.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="history"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/history.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draw"
-                path="/WEB-INF/pages/wfworksheet/branchindexreduction/draw.jsp"
-                redirect="false" contextRelative="true"/>
-            <forward name="pic"
-                path="/WEB-INF/pages/wfworksheet/branchindexreduction/pic.jsp"
-                redirect="false" contextRelative="true"/>
-            <forward name="holdlist"
-                path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp" 
-                redirect="false" contextRelative="true" />
-			<forward name="mainlist"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="startlist"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp"
-				redirect="false" contextRelative="true" />
-		    <forward name="maindetail"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/detail.jsp"
-				redirect="false" contextRelative="true" />
-           <forward name="query"
-                path="/WEB-INF/pages/wfworksheet/branchindexreduction/query.jsp"
-                redirect="false" contextRelative="true" />
-	        <forward name="queryInput"
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/queryinput.jsp"
-		        redirect="false" contextRelative="true" />		
-	        <forward name="querylist"
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/querylist.jsp"
-		        redirect="false" contextRelative="true" />
-		     <forward name="templates" 
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/templates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplates" 
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealTemplates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplateDetail" 
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealTemplateDetail.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="sheetAccessories" 
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/sheetAccessories.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="showInvokeRelationShipList" 
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/showInvokeRelationShipList.jsp"
-		        redirect="false" contextRelative="true"/>	   
-		   <forward name="batchDealPage" 
-		        path="/WEB-INF/pages/wfworksheet/branchindexreduction/batchDealPage.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="transfer"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/transfer.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="forceHold"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/forceHold.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="adminlist"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/adminlist.jsp" redirect="false"
-				contextRelative="true" />
-			<forward name="event"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/event.jsp" redirect="false"
-				contextRelative="true" />
-	        <forward name="inputEvent"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputevent.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="saveInfo" path="/branchindexreduction.do?method=showDetailPage"/>
-		    <forward name="saveInfoAndExit" path="/branchindexreduction.do?method=showListsendundo"/>   
-			<forward name="cancellist"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="remark"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/remark.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseBackToUp"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseAdvice"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="showDraftList" path="/branchindexreduction.do?method=showDraftList"/>	
-		    <forward name="draftList" path="/WEB-INF/pages/wfworksheet/branchindexreduction/draftList.jsp" redirect="false"
-				contextRelative="true"/> 		
-			<forward name="showWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="getLinkOperatePage"
-				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
-				redirect="false" contextRelative="true" />								
-			<forward name="cc"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/makeCopy.jsp"
-				redirect="false" contextRelative="true" />			
-			<forward name="shoWholeWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="showSetpInfoPage"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/showStepInfoPage.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="dealReplyAccept"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealReplyAccept.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="dealReplyReject"
-				path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealReplyReject.jsp" 
-				redirect="false" contextRelative="true" />					
-		      <forward name="showWorkFlowInstance"
-				path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
-				redirect="false" contextRelative="true" />
-			<forward
-              	name="subtractTableSearch"
-              	path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableSearch.jsp"
-             	redirect="false"
-              	contextRelative="true"/>
-             <forward
-              	name="unWork"
-              	path="/WEB-INF/pages/wfworksheet/branchindexreduction/unWork.jsp"
-             	redirect="false"
-              	contextRelative="true"/>
-             <forward name="nopriv"
-			path="/sheetPriv.jsp"
-			contextRelative="true" />
-		 </action>
-	</action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources parameter="config/ApplicationResources-sheet" key="sheet" />
-	<message-resources
-		parameter="config/ApplicationResources-sheet-branchindexreduction" key="branchindexreduction" />
+    <action-mappings>
+        <action path="/branchindexreduction"
+                type="com.boco.eoms.sheet.branchindexreduction.webapp.action.BranchIndexReductionAction"
+                name="multiPageForm" scope="request" input="error" parameter="method"
+                unknown="false" validate="false" attribute="BranchIndexReduction">
+            <set-property property="cancellable" value="true"/>
+            <forward name="new"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/main.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputNew"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealpage"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputDealpage"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputdealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="reject"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/reject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputReject"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputreject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="detail"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draft"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cancel"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="delete"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="hold"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/list.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="successMessage"
+                     path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="portal"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/portal.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="split"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/split.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="history"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/history.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draw"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/draw.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="pic"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/pic.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="holdlist"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="mainlist"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="startlist"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="maindetail"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="query"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/query.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="queryInput"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/queryinput.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="querylist"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/querylist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="templates"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/templates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplates"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealTemplates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplateDetail"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealTemplateDetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="sheetAccessories"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/sheetAccessories.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showInvokeRelationShipList"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/showInvokeRelationShipList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="batchDealPage"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/batchDealPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="transfer"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/transfer.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="forceHold"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/forceHold.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="adminlist"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/adminlist.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="event"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/event.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="inputEvent"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/inputevent.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="saveInfo" path="/branchindexreduction.do?method=showDetailPage"/>
+            <forward name="saveInfoAndExit" path="/branchindexreduction.do?method=showListsendundo"/>
+            <forward name="cancellist"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="remark"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/remark.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseBackToUp"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseAdvice"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showDraftList" path="/branchindexreduction.do?method=showDraftList"/>
+            <forward name="draftList" path="/WEB-INF/pages/wfworksheet/branchindexreduction/draftList.jsp"
+                     redirect="false"
+                     contextRelative="true"/>
+            <forward name="showWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="getLinkOperatePage"
+                     path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cc"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/makeCopy.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="shoWholeWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showSetpInfoPage"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/showStepInfoPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyAccept"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealReplyAccept.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyReject"
+                     path="/WEB-INF/pages/wfworksheet/branchindexreduction/dealReplyReject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showWorkFlowInstance"
+                     path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward
+                    name="subtractTableSearch"
+                    path="/WEB-INF/pages/wfworksheet/branchindexreduction/subtractTableSearch.jsp"
+                    redirect="false"
+                    contextRelative="true"/>
+            <forward
+                    name="unWork"
+                    path="/WEB-INF/pages/wfworksheet/branchindexreduction/unWork.jsp"
+                    redirect="false"
+                    contextRelative="true"/>
+            <forward name="nopriv"
+                     path="/sheetPriv.jsp"
+                     contextRelative="true"/>
+        </action>
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources-sheet" key="sheet"/>
+    <message-resources
+            parameter="config/ApplicationResources-sheet-branchindexreduction" key="branchindexreduction"/>
 </struts-config>

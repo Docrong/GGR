@@ -1,123 +1,121 @@
 
-BODY
-{
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²;
-    FONT-SIZE: 9pt
-	/*
+BODY {
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô²;
+    FONT-SIZE: 9pt /*
 	background-repeat: no-repeat; 
 	background-image: url('../../images/cover/main_bg.gif'); 
 	background-color: #F5F5F5;
 	BACKGROUND-ATTACHMENT: fixed; 
 	*/
 
-	background-color:#0070CA;
-	SCROLLBAR-SHADOW-COLOR: #999999;
-	SCROLLBAR-ARROW-COLOR: #555555;
-	SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
-	SCROLLBAR-BASE-COLOR: #e0e0e0;
+    background-color: #0070CA;
+    SCROLLBAR-SHADOW-COLOR: #999999;
+    SCROLLBAR-ARROW-COLOR: #555555;
+    SCROLLBAR-DARKSHADOW-COLOR: #ffffff;
+    SCROLLBAR-BASE-COLOR: #e0e0e0;
 }
-TD
-{
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²;
+
+TD {
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô²;
     FONT-SIZE: 9pt
-    bgcolor:#000080;
+    bgcolor: #000080;
 }
-A:link
-{
+
+A:link {
     COLOR: 006699;
     TEXT-DECORATION: none
 }
-A:active
-{
+
+A:active {
     COLOR: red;
     TEXT-DECORATION: none
 }
-A:visited
-{
+
+A:visited {
     COLOR: 006699;
     TEXT-DECORATION: none
 }
-A
-{
+
+A {
     COLOR: blue;
     TEXT-DECORATION: underline
 }
-.buttons
-{
+
+.buttons {
     BACKGROUND-COLOR: #4f78d9;
     BORDER-BOTTOM-COLOR: #99ccff;
     BORDER-LEFT-COLOR: #99ccff;
     BORDER-RIGHT-COLOR: #99ccff;
     BORDER-TOP-COLOR: #99ccff;
     COLOR: white;
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²,trebuchet, Arial, geneva;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô², trebuchet, Arial, geneva;
     FONT-SIZE: 9pt;
     FONT-WEIGHT: bold
 }
-.buttons02
-{
+
+.buttons02 {
     BACKGROUND-COLOR: #006699;
     BORDER-BOTTOM: black 1px groove;
     BORDER-LEFT: #99ccff 1px ridge;
     BORDER-RIGHT: black 1px groove;
     BORDER-TOP: #99ccff 1px ridge;
     COLOR: white;
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²,trebuchet, Arial, geneva;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô², trebuchet, Arial, geneva;
     FONT-SIZE: 9pt
 }
-.buttonshui
-{
+
+.buttonshui {
     BACKGROUND-COLOR: #4f78d9;
     BORDER-BOTTOM: black 1px groove;
     BORDER-LEFT: #99ccff 1px ridge;
     BORDER-RIGHT: black 1px groove;
     BORDER-TOP: #99ccff 1px ridge;
     COLOR: white;
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²,trebuchet, Arial, geneva;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô², trebuchet, Arial, geneva;
     FONT-SIZE: 9pt;
     LETTER-SPACING: -1pt
 }
-.select
-{
+
+.select {
     BACKGROUND-COLOR: white;
     BORDER-BOTTOM-COLOR: white;
     BORDER-LEFT-COLOR: white;
     BORDER-RIGHT-COLOR: white;
     BORDER-TOP-COLOR: white;
     COLOR: black;
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²,trebuchet, Arial, geneva;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô², trebuchet, Arial, geneva;
     FONT-SIZE: 9pt
 }
-.text
-{
+
+.text {
     BACKGROUND-COLOR: #000080;
     COLOR: #ffffff;
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²,trebuchet, Arial, geneva;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô², trebuchet, Arial, geneva;
     FONT-SIZE: 9pt
 }
-.includebutton
-{
-    FONT-FAMILY: ËÎÌå,¿¬Ìå,ºÚÌå,Ó×Ô²,trebuchet, Arial, geneva;
+
+.includebutton {
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Ô², trebuchet, Arial, geneva;
     FONT-SIZE: 9pt
 }
-TABLE
-{
+
+TABLE {
     FONT-SIZE: 9pt
 }
-AREA
-{
+
+AREA {
     CURSOR: hand;
     TEXT-DECORATION: underline
 }
-MAP
-{
+
+MAP {
     CURSOR: hand;
     TEXT-DECORATION: underline
 }
-TD.MENU
-{
-    colspan:3;
-	bgcolor:#000080;
-	height:19
-	valign:bottom
+
+TD.MENU {
+    colspan: 3;
+    bgcolor: #000080;
+    height: 19
+    valign: bottom
 }

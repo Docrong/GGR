@@ -15,56 +15,56 @@ import java.security.Principal;
  * <p>Description: Simple Principal </p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */
 
 public class SimplePrincipal
-    implements Principal, Serializable {
+        implements Principal, Serializable {
 
-  String name = null;
-  String dispalyName = null;
+    String name = null;
+    String dispalyName = null;
 
-  public SimplePrincipal(String newName) {
-    this.name = newName;
-    this.dispalyName = newName;
-  }
-
-  public SimplePrincipal(String newName, String newDisplayName) {
-    this.name = newName;
-    this.dispalyName = newDisplayName;
-  }
-
-  public boolean equals(Object obj) {
-    if (! (obj instanceof Principal)) {
-      return false;
+    public SimplePrincipal(String newName) {
+        this.name = newName;
+        this.dispalyName = newName;
     }
 
-    String newName = ( (Principal) obj).getName();
-    boolean flag = false;
-    if (name == null) {
-      flag = (newName == null);
+    public SimplePrincipal(String newName, String newDisplayName) {
+        this.name = newName;
+        this.dispalyName = newDisplayName;
     }
-    else {
-      flag = name.equals(newName);
+
+    public boolean equals(Object obj) {
+        if (!(obj instanceof Principal)) {
+            return false;
+        }
+
+        String newName = ((Principal) obj).getName();
+        boolean flag = false;
+        if (name == null) {
+            flag = (newName == null);
+        } else {
+            flag = name.equals(newName);
+        }
+        return flag;
+
     }
-    return flag;
 
-  }
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
 
-  public int hashCode() {
-    return name != null ? name.hashCode() : 0;
-  }
+    public String toString() {
+        return name;
+    }
 
-  public String toString() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public String getName() {
-    return name;
-  }
-
-  public String getDisplayName() {
-    return dispalyName;
-  }
+    public String getDisplayName() {
+        return dispalyName;
+    }
 }

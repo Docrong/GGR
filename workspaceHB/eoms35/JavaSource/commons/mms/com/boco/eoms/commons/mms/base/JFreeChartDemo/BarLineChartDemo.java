@@ -48,10 +48,8 @@ import com.boco.eoms.commons.statistic.base.config.graphic.GraphicReport;
 import com.boco.eoms.commons.statistic.base.config.graphic.SummaryDefine;
 import com.boco.eoms.commons.statistic.base.util.GraphicsReportUtil;
 
-public class BarLineChartDemo extends ApplicationFrame
-{
-    public BarLineChartDemo(String s)
-    {
+public class BarLineChartDemo extends ApplicationFrame {
+    public BarLineChartDemo(String s) {
         super(s);
         JFreeChart jfreechart = createChart();
 //        FileOutputStream fos_jpg = null;
@@ -72,92 +70,76 @@ public class BarLineChartDemo extends ApplicationFrame
         chartpanel.setPreferredSize(new Dimension(500, 270));
         setContentPane(chartpanel);
     }
-    
+
     /**
      * 线柱结合 数据转换
+     *
      * @param list
      * @param configig
      * @param type
      * @return
      */
-    private static CategoryDataset ConverterList2CategoryDatasetBarAndLine(List list,GraphicReport configig,String type)
-    {
-    	DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-    	if(!validateType(type))
-    	{
-    		System.err.println("请查看配置的报表类型值是否正确 取值范围 type: column 柱图 ，line 线图 ，columnline 柱线结合图");
-    		return dataset;
-    	}
-    	
-		SummaryDefine[] sds = configig.getSummaryDefines();
-		FieldDefine[] fds = configig.getFieldDefines();
-		for(int i=0;i<list.size();i++)
-		{
-			Map map = (Map)list.get(i);
-			String summaryValue = "";
-			for(int j=0;j<sds.length;j++)
-			{
-				SummaryDefine sd = sds[j];
-				if(summaryValue != null && !summaryValue.equalsIgnoreCase(""))
-				{
-					summaryValue+="#";
-				}
-				//id2name
-				String summaryid = (String)map.get(sd.getId());
-				String summaryName = summaryid;//StatUtil.id2Name(summaryid, sd.getId2nameService());
-				summaryValue += summaryName;
-			}
-			
-			if(type.equalsIgnoreCase("line"))
-			{
-				for(int k=0; k<fds.length ;k++)
-				{
-					FieldDefine fd = fds[k];
-					String fieldValue = String.valueOf(map.get(fd.getId()));
-					if(fd.getType().equalsIgnoreCase("line"))
-					{
+    private static CategoryDataset ConverterList2CategoryDatasetBarAndLine(List list, GraphicReport configig, String type) {
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        if (!validateType(type)) {
+            System.err.println("请查看配置的报表类型值是否正确 取值范围 type: column 柱图 ，line 线图 ，columnline 柱线结合图");
+            return dataset;
+        }
+
+        SummaryDefine[] sds = configig.getSummaryDefines();
+        FieldDefine[] fds = configig.getFieldDefines();
+        for (int i = 0; i < list.size(); i++) {
+            Map map = (Map) list.get(i);
+            String summaryValue = "";
+            for (int j = 0; j < sds.length; j++) {
+                SummaryDefine sd = sds[j];
+                if (summaryValue != null && !summaryValue.equalsIgnoreCase("")) {
+                    summaryValue += "#";
+                }
+                //id2name
+                String summaryid = (String) map.get(sd.getId());
+                String summaryName = summaryid;//StatUtil.id2Name(summaryid, sd.getId2nameService());
+                summaryValue += summaryName;
+            }
+
+            if (type.equalsIgnoreCase("line")) {
+                for (int k = 0; k < fds.length; k++) {
+                    FieldDefine fd = fds[k];
+                    String fieldValue = String.valueOf(map.get(fd.getId()));
+                    if (fd.getType().equalsIgnoreCase("line")) {
 //						int fv = Integer.parseInt(fieldValue);
-						double fv = Double.parseDouble(fieldValue);
-						dataset.addValue(fv, fd.getName(), summaryValue);
-					}
-				}
-			}
-			
-			else if(type.equalsIgnoreCase("column"))
-			{
-				for(int k=0; k<fds.length ;k++)
-				{
-					FieldDefine fd = fds[k];
-					String fieldValue = String.valueOf(map.get(fd.getId()));
-					if(fd.getType().equalsIgnoreCase("column"))
-					{
+                        double fv = Double.parseDouble(fieldValue);
+                        dataset.addValue(fv, fd.getName(), summaryValue);
+                    }
+                }
+            } else if (type.equalsIgnoreCase("column")) {
+                for (int k = 0; k < fds.length; k++) {
+                    FieldDefine fd = fds[k];
+                    String fieldValue = String.valueOf(map.get(fd.getId()));
+                    if (fd.getType().equalsIgnoreCase("column")) {
 //						int fv = Integer.parseInt(fieldValue);
-						double fv = Double.parseDouble(fieldValue);
-						dataset.addValue(fv, summaryValue, fd.getName());
-					}
-				}
-			}
-		}
-		return dataset;
+                        double fv = Double.parseDouble(fieldValue);
+                        dataset.addValue(fv, summaryValue, fd.getName());
+                    }
+                }
+            }
+        }
+        return dataset;
     }
-    
-    private static boolean validateType(String type)
-    {
-    	boolean f = false;
+
+    private static boolean validateType(String type) {
+        boolean f = false;
 //    	type: column 柱图 ，line 线图 ，columnline 柱线结合图
-    	String[] str = MMSConstants.G_TYPE;
-    	for(int i=0;i<str.length;i++)
-    	{
-    		if(str[i].equalsIgnoreCase(type))
-    		{
-    			f = true;
-    		}
-    	}
-    	return f;
+        String[] str = MMSConstants.G_TYPE;
+        for (int i = 0; i < str.length; i++) {
+            if (str[i].equalsIgnoreCase(type)) {
+                f = true;
+            }
+        }
+        return f;
     }
-    
-    private static CategoryDataset createDataset1()
-    {
+
+    private static CategoryDataset createDataset1() {
         String s = "S1";
         String s1 = "S2";
         String s2 = "S3";
@@ -197,8 +179,7 @@ public class BarLineChartDemo extends ApplicationFrame
         return defaultcategorydataset;
     }
 
-    private static CategoryDataset createDataset2()
-    {
+    private static CategoryDataset createDataset2() {
         String s = "S4";
         String s1 = "Category 1";
         String s2 = "Category 2";
@@ -220,37 +201,36 @@ public class BarLineChartDemo extends ApplicationFrame
         return defaultcategorydataset;
     }
 
-    private static JFreeChart createChart()
-    {
-    	//===================
-    	JFreeCharCreater jcc = new JFreeCharCreater();
+    private static JFreeChart createChart() {
+        //===================
+        JFreeCharCreater jcc = new JFreeCharCreater();
         List list = jcc.initList();
         String gath = "E:\\work\\shanxi\\src\\commons\\mms\\com\\boco\\eoms\\commons\\mms\\base\\JFreeChartDemo\\graphicsConfig.xml";
         GraphicConfig gc = null;
         String gconfig = com.boco.eoms.commons.statistic.base.util.FileUtil.readFile(gath);
         try {
-			gc = (GraphicConfig)GraphicsReportUtil.xml2object(GraphicConfig.class, gconfig);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		CategoryDataset d1 = ConverterList2CategoryDatasetBarAndLine(list,gc.getGraphicReports()[0],"column");
+            gc = (GraphicConfig) GraphicsReportUtil.xml2object(GraphicConfig.class, gconfig);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        CategoryDataset d1 = ConverterList2CategoryDatasetBarAndLine(list, gc.getGraphicReports()[0], "column");
 //		jcc.printDataSet(d1);
-		CategoryDataset d2 = ConverterList2CategoryDatasetBarAndLine(list,gc.getGraphicReports()[0],"line");
-		jcc.printDataSet(d2);
-    	//===================
-    	
+        CategoryDataset d2 = ConverterList2CategoryDatasetBarAndLine(list, gc.getGraphicReports()[0], "line");
+        jcc.printDataSet(d2);
+        //===================
+
         JFreeChart jfreechart = ChartFactory.createBarChart("Dual Axis Chart", "Category", "Value", d1/*createDataset1()*/, PlotOrientation.VERTICAL, false, true, false);
         jfreechart.setBackgroundPaint(Color.white);
-        CategoryPlot categoryplot = (CategoryPlot)jfreechart.getPlot();
+        CategoryPlot categoryplot = (CategoryPlot) jfreechart.getPlot();
         CategoryItemRenderer renderer = categoryplot.getRenderer();
-		renderer.setItemLabelGenerator(new StandardCategoryItemLabelGenerator());
-		
+        renderer.setItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+
         //以下设置，将按照指定格式，制定内容显示每个柱的数值。可以显示柱名称，所占百分比
-	    // 设置柱子上数值的字体
-		renderer.setItemLabelFont(new Font("宋体", Font.PLAIN, 8));
-		renderer.setItemLabelsVisible(true);
-		renderer.setItemLabelPaint(Color.RED);
-        
+        // 设置柱子上数值的字体
+        renderer.setItemLabelFont(new Font("宋体", Font.PLAIN, 8));
+        renderer.setItemLabelsVisible(true);
+        renderer.setItemLabelPaint(Color.RED);
+
         categoryplot.setBackgroundPaint(new Color(238, 238, 255));
         categoryplot.setDomainAxisLocation(AxisLocation.BOTTOM_OR_RIGHT);
         CategoryDataset categorydataset = d2;//createDataset2();
@@ -268,7 +248,7 @@ public class BarLineChartDemo extends ApplicationFrame
         NumberAxis numberaxis1 = new NumberAxis("Percent");
         numberaxis1.setNumberFormatOverride(NumberFormat.getPercentInstance());
         categoryplot.setRangeAxis(1, numberaxis1);
-        
+
         categoryplot.setRenderer(1, lineandshaperenderer);
         categoryplot.setDatasetRenderingOrder(DatasetRenderingOrder.FORWARD);
         LegendTitle legendtitle = new LegendTitle(categoryplot.getRenderer(0));
@@ -287,14 +267,12 @@ public class BarLineChartDemo extends ApplicationFrame
         return jfreechart;
     }
 
-    public static JPanel createDemoPanel()
-    {
+    public static JPanel createDemoPanel() {
         JFreeChart jfreechart = createChart();
         return new ChartPanel(jfreechart);
     }
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         BarLineChartDemo dualaxisdemo1 = new BarLineChartDemo("Dual Axis Demo 1");
         dualaxisdemo1.pack();
         RefineryUtilities.centerFrameOnScreen(dualaxisdemo1);

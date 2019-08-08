@@ -9,14 +9,13 @@ import com.boco.eoms.sheet.connectTest.bo.ConnectTestBo;
 import com.boco.eoms.sheet.interfaceBase.util.InterfaceJobStatic;
 
 
-
 public class ConnectTestSchedule implements Job {
-	
-	private ConnectTestBo connectBo = ConnectTestBo.getInstance();
 
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		// TODO 自动生成方法存根
-		//屏蔽 by lyg
+    private ConnectTestBo connectBo = ConnectTestBo.getInstance();
+
+    public void execute(JobExecutionContext arg0) throws JobExecutionException {
+        // TODO 自动生成方法存根
+        //屏蔽 by lyg
 //		boolean ifExceuteJob=InterfaceJobStatic.isIfExcuteJob();
 //		if (!ifExceuteJob) {
 //			BocoLog.info(ConnectTestSchedule.class, "Job is running wait for next Schedule");
@@ -31,6 +30,6 @@ public class ConnectTestSchedule implements Job {
 //			BocoLog.info(ConnectTestSchedule.class, "Job is running over");
 //			InterfaceJobStatic.setIfExcuteJob(true);
 //		}
-	}
+    }
 
 }

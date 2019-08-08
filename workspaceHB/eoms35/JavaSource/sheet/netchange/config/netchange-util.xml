@@ -6,8 +6,8 @@
     <ServiceUrl>http://10.31.1.120/SheetStateSync/SheetStateSync3.asmx</ServiceUrl>
     <EnableService>false</EnableService>
     <dict>
-    	<levelone>1</levelone>
-    	<leveltwo>2</leveltwo>
+        <levelone>1</levelone>
+        <leveltwo>2</leveltwo>
     </dict>
 </boco>
 

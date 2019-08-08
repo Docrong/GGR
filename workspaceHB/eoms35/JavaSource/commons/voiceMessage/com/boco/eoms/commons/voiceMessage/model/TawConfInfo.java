@@ -1,114 +1,114 @@
 package com.boco.eoms.commons.voiceMessage.model;
 
 public class TawConfInfo {
-	
-	private int confNo;
-	
-	private String confName;
-	
-	private int confTrunkNo;
-	
-	private String confOrganizer;
-	
-	private String confBeginTime;
-	
-	private String confEndTime;
-	
-	private String confState;
-	
-	private String confRecord;
-	
-	private String confRFile;
-	
-	private String isCallout;
-	
-	private String confMemName;
 
-	public int getConfNo() {
-		return confNo;
-	}
+    private int confNo;
 
-	public void setConfNo(int confNo) {
-		this.confNo = confNo;
-	}
+    private String confName;
 
-	public String getConfName() {
-		return confName;
-	}
+    private int confTrunkNo;
 
-	public void setConfName(String confName) {
-		this.confName = confName;
-	}
+    private String confOrganizer;
 
-	public int getConfTrunkNo() {
-		return confTrunkNo;
-	}
+    private String confBeginTime;
 
-	public void setConfTrunkNo(int confTrunkNo) {
-		this.confTrunkNo = confTrunkNo;
-	}
+    private String confEndTime;
 
-	public String getConfOrganizer() {
-		return confOrganizer;
-	}
+    private String confState;
 
-	public void setConfOrganizer(String confOrganizer) {
-		this.confOrganizer = confOrganizer;
-	}
+    private String confRecord;
 
-	public String getConfBeginTime() {
-		return confBeginTime;
-	}
+    private String confRFile;
 
-	public void setConfBeginTime(String confBeginTime) {
-		this.confBeginTime = confBeginTime;
-	}
+    private String isCallout;
 
-	public String getConfEndTime() {
-		return confEndTime;
-	}
+    private String confMemName;
 
-	public void setConfEndTime(String confEndTime) {
-		this.confEndTime = confEndTime;
-	}
+    public int getConfNo() {
+        return confNo;
+    }
 
-	public String getConfState() {
-		return confState;
-	}
+    public void setConfNo(int confNo) {
+        this.confNo = confNo;
+    }
 
-	public void setConfState(String confState) {
-		this.confState = confState;
-	}
+    public String getConfName() {
+        return confName;
+    }
 
-	public String getConfRFile() {
-		return confRFile;
-	}
+    public void setConfName(String confName) {
+        this.confName = confName;
+    }
 
-	public void setConfRFile(String confRFile) {
-		this.confRFile = confRFile;
-	}
+    public int getConfTrunkNo() {
+        return confTrunkNo;
+    }
 
-	public String getIsCallout() {
-		return isCallout;
-	}
+    public void setConfTrunkNo(int confTrunkNo) {
+        this.confTrunkNo = confTrunkNo;
+    }
 
-	public void setIsCallout(String isCallout) {
-		this.isCallout = isCallout;
-	}
+    public String getConfOrganizer() {
+        return confOrganizer;
+    }
 
-	public String getConfMemName() {
-		return confMemName;
-	}
+    public void setConfOrganizer(String confOrganizer) {
+        this.confOrganizer = confOrganizer;
+    }
 
-	public void setConfMemName(String confMemName) {
-		this.confMemName = confMemName;
-	}
+    public String getConfBeginTime() {
+        return confBeginTime;
+    }
 
-	public String getConfRecord() {
-		return confRecord;
-	}
+    public void setConfBeginTime(String confBeginTime) {
+        this.confBeginTime = confBeginTime;
+    }
 
-	public void setConfRecord(String confRecord) {
-		this.confRecord = confRecord;
-	}
+    public String getConfEndTime() {
+        return confEndTime;
+    }
+
+    public void setConfEndTime(String confEndTime) {
+        this.confEndTime = confEndTime;
+    }
+
+    public String getConfState() {
+        return confState;
+    }
+
+    public void setConfState(String confState) {
+        this.confState = confState;
+    }
+
+    public String getConfRFile() {
+        return confRFile;
+    }
+
+    public void setConfRFile(String confRFile) {
+        this.confRFile = confRFile;
+    }
+
+    public String getIsCallout() {
+        return isCallout;
+    }
+
+    public void setIsCallout(String isCallout) {
+        this.isCallout = isCallout;
+    }
+
+    public String getConfMemName() {
+        return confMemName;
+    }
+
+    public void setConfMemName(String confMemName) {
+        this.confMemName = confMemName;
+    }
+
+    public String getConfRecord() {
+        return confRecord;
+    }
+
+    public void setConfRecord(String confRecord) {
+        this.confRecord = confRecord;
+    }
 }

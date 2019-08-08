@@ -13,6 +13,7 @@ public class TawSystemRoleTypeManagerImpl extends BaseManager implements ITawSys
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSystemRoleTypeDao(TawSystemRoleTypeDao dao) {
@@ -46,12 +47,14 @@ public class TawSystemRoleTypeManagerImpl extends BaseManager implements ITawSys
     public void removeTawSystemRoleType(final String roletype_id) {
         dao.removeTawSystemRoleType(new Long(roletype_id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize) {
-        return dao.getTawSystemRoleTypes(curPage, pageSize,null);
+        return dao.getTawSystemRoleTypes(curPage, pageSize, null);
     }
+
     public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawSystemRoleTypes(curPage, pageSize, whereStr);
     }

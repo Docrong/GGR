@@ -16,20 +16,19 @@ import com.boco.eoms.sheet.securityobjattribute.service.ISecurityObjAttributeLin
  * <p>
  * Tue Apr 25 11:43:03 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAttributeLinkManagerImpl extends LinkServiceImpl implements ISecurityObjAttributeLinkManager {
-  		/**
-	     * 根据条件查出所有的link对象
-	     */
-	    public List getLinksBycondition(String condition) throws Exception {    	
-	    	ISecurityObjAttributeLinkDAO dao = (ISecurityObjAttributeLinkDAO)this.getLinkDAO();
-	        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
-	        return list;
-	    }
- 
- }
+
+public class SecurityObjAttributeLinkManagerImpl extends LinkServiceImpl implements ISecurityObjAttributeLinkManager {
+    /**
+     * 根据条件查出所有的link对象
+     */
+    public List getLinksBycondition(String condition) throws Exception {
+        ISecurityObjAttributeLinkDAO dao = (ISecurityObjAttributeLinkDAO) this.getLinkDAO();
+        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
+        return list;
+    }
+
+}

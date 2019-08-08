@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="GBK"?>
 <sheet-mappings>
-	<sheet-type typeid="31" name="">
-		<service-type typeid="1" name="GPRS" beanid="iResourceAffirmCrmService"/>
-		<service-type typeid="2" name="" beanid="iResourceAffirmCrmService"/>
-		<service-type typeid="3" name="" beanid="iResourceAffirmCrmService"/>
-		<service-type typeid="4" name="" beanid="iResourceConfirmCrmService"/>
-		<service-type typeid="5" name="" beanid="iResourceAffirmCrmService"/>
-		<service-type typeid="999" name="" beanid="iResourceAffirmCrmService"/>
-	</sheet-type>           
-	<sheet-type typeid="32" name="">
-		<service-type typeid="1" name="GPRS" beanid="iBusinessDredgeCrmService"/>
-		<service-type typeid="2" name="" beanid="iBusinessDredgeCrmService"/>
-		<service-type typeid="3" name="" beanid="iBusinessDredgeCrmService"/>
-		<service-type typeid="4" name="" beanid="iBusinessImplementCrmService"/>
-		<service-type typeid="5" name="" beanid="iBusinessDredgeCrmService"/>
-		<service-type typeid="999" name="" beanid="iBusinessDredgeCrmService"/>
-	</sheet-type> 
-	<sheet-type typeid="33" name="">
-		<service-type typeid="1" name="GPRS" beanid="iBusinessChangeCrmService"/>
-		<service-type typeid="2" name="" beanid="iBusinessChangeCrmService"/>
-		<service-type typeid="3" name="" beanid="iBusinessChangeCrmService"/>
-		<service-type typeid="4" name="" beanid="iBusinessChangeCrmService"/>
-		<service-type typeid="5" name="" beanid="iBusinessChangeCrmService"/>
-		<service-type typeid="999" name="" beanid="iBusinessChangeCrmService"/>
-	</sheet-type> 
-	<sheet-type typeid="34" name="">
-		<service-type typeid="1" name="GPRS" beanid="iBusinessBackoutCrmService"/>
-		<service-type typeid="2" name="" beanid="iBusinessBackoutCrmService"/>
-		<service-type typeid="3" name="" beanid="iBusinessBackoutCrmService"/>
-		<service-type typeid="4" name="" beanid="iBusinessBackoutCrmService"/>
-		<service-type typeid="5" name="" beanid="iBusinessBackoutCrmService"/>
-		<service-type typeid="999" name="" beanid="iBusinessBackoutCrmService"/>
-	</sheet-type> 
-	<sheet-type typeid="56" name="">
-		<service-type typeid="1" name="GPRS" beanid="iComplaintCrmService"/>
-		<service-type typeid="2" name="" beanid="iComplaintCrmService"/>
-		<service-type typeid="3" name="" beanid="iComplaintCrmService"/>
-		<service-type typeid="4" name="" beanid="iComplaintCrmService"/>
-		<service-type typeid="999" name="" beanid="iComplaintCrmService"/>
-	</sheet-type> 
-	<sheet-type typeid="57" name="">
-		<service-type typeid="1" name="GPRS" beanid="iGroupComplaintCrmService"/>
-		<service-type typeid="2" name="" beanid="iGroupComplaintCrmService"/>
-		<service-type typeid="3" name="" beanid="iGroupComplaintCrmService"/>
-		<service-type typeid="4" name="" beanid="iGroupComplaintCrmService"/>
-		<service-type typeid="999" name="" beanid="iGroupComplaintCrmService"/>
-	</sheet-type>
-	<sheet-type typeid="1" name="">
-		<service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
-		<service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
-		<service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
-	</sheet-type> 
-	<sheet-type typeid="60" name="">
-		<service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
-	</sheet-type> 
-	<sheet-type typeid="61" name="">
-		<service-type typeid="1" name="" beanid="iAgentMaintenanceCrmService"/>
-	</sheet-type> 
-	
-	<sheet-type typeid="101" name="">
-		<service-type typeid="1" name="" beanid="iFocusResourceErrataCrmService"/>
-	</sheet-type>
-	
-	<sheet-type typeid="70" name="">
-		<service-type typeid="1" name="" beanid="iSecurityObjAttributeCrmService"/>
-	</sheet-type>
-	
-	<sheet-type typeid="71" name="">
-		<service-type typeid="1" name="" beanid="iSecurityObjAuditCrmService"/>
-	</sheet-type>
-	
-	<sheet-type typeid="72" name="">
-		<service-type typeid="1" name="" beanid="iEquipmentSecurityResponseCrmService"/>
-	</sheet-type>
-	
-	<sheet-type typeid="85" name="">
-		<service-type typeid="1" name="" beanid="iSafetyProblemGMCrmService"/>
-	</sheet-type>
+    <sheet-type typeid="31" name="">
+        <service-type typeid="1" name="GPRS" beanid="iResourceAffirmCrmService"/>
+        <service-type typeid="2" name="" beanid="iResourceAffirmCrmService"/>
+        <service-type typeid="3" name="" beanid="iResourceAffirmCrmService"/>
+        <service-type typeid="4" name="" beanid="iResourceConfirmCrmService"/>
+        <service-type typeid="5" name="" beanid="iResourceAffirmCrmService"/>
+        <service-type typeid="999" name="" beanid="iResourceAffirmCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="32" name="">
+        <service-type typeid="1" name="GPRS" beanid="iBusinessDredgeCrmService"/>
+        <service-type typeid="2" name="" beanid="iBusinessDredgeCrmService"/>
+        <service-type typeid="3" name="" beanid="iBusinessDredgeCrmService"/>
+        <service-type typeid="4" name="" beanid="iBusinessImplementCrmService"/>
+        <service-type typeid="5" name="" beanid="iBusinessDredgeCrmService"/>
+        <service-type typeid="999" name="" beanid="iBusinessDredgeCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="33" name="">
+        <service-type typeid="1" name="GPRS" beanid="iBusinessChangeCrmService"/>
+        <service-type typeid="2" name="" beanid="iBusinessChangeCrmService"/>
+        <service-type typeid="3" name="" beanid="iBusinessChangeCrmService"/>
+        <service-type typeid="4" name="" beanid="iBusinessChangeCrmService"/>
+        <service-type typeid="5" name="" beanid="iBusinessChangeCrmService"/>
+        <service-type typeid="999" name="" beanid="iBusinessChangeCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="34" name="">
+        <service-type typeid="1" name="GPRS" beanid="iBusinessBackoutCrmService"/>
+        <service-type typeid="2" name="" beanid="iBusinessBackoutCrmService"/>
+        <service-type typeid="3" name="" beanid="iBusinessBackoutCrmService"/>
+        <service-type typeid="4" name="" beanid="iBusinessBackoutCrmService"/>
+        <service-type typeid="5" name="" beanid="iBusinessBackoutCrmService"/>
+        <service-type typeid="999" name="" beanid="iBusinessBackoutCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="56" name="">
+        <service-type typeid="1" name="GPRS" beanid="iComplaintCrmService"/>
+        <service-type typeid="2" name="" beanid="iComplaintCrmService"/>
+        <service-type typeid="3" name="" beanid="iComplaintCrmService"/>
+        <service-type typeid="4" name="" beanid="iComplaintCrmService"/>
+        <service-type typeid="999" name="" beanid="iComplaintCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="57" name="">
+        <service-type typeid="1" name="GPRS" beanid="iGroupComplaintCrmService"/>
+        <service-type typeid="2" name="" beanid="iGroupComplaintCrmService"/>
+        <service-type typeid="3" name="" beanid="iGroupComplaintCrmService"/>
+        <service-type typeid="4" name="" beanid="iGroupComplaintCrmService"/>
+        <service-type typeid="999" name="" beanid="iGroupComplaintCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="1" name="">
+        <service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
+        <service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
+        <service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="60" name="">
+        <service-type typeid="1" name="" beanid="iCommonTaskCrmService"/>
+    </sheet-type>
+    <sheet-type typeid="61" name="">
+        <service-type typeid="1" name="" beanid="iAgentMaintenanceCrmService"/>
+    </sheet-type>
+
+    <sheet-type typeid="101" name="">
+        <service-type typeid="1" name="" beanid="iFocusResourceErrataCrmService"/>
+    </sheet-type>
+
+    <sheet-type typeid="70" name="">
+        <service-type typeid="1" name="" beanid="iSecurityObjAttributeCrmService"/>
+    </sheet-type>
+
+    <sheet-type typeid="71" name="">
+        <service-type typeid="1" name="" beanid="iSecurityObjAuditCrmService"/>
+    </sheet-type>
+
+    <sheet-type typeid="72" name="">
+        <service-type typeid="1" name="" beanid="iEquipmentSecurityResponseCrmService"/>
+    </sheet-type>
+
+    <sheet-type typeid="85" name="">
+        <service-type typeid="1" name="" beanid="iSafetyProblemGMCrmService"/>
+    </sheet-type>
 </sheet-mappings>

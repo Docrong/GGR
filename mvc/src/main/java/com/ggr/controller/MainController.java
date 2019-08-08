@@ -16,7 +16,7 @@ public class MainController {
 
     @RequestMapping(value = "savePerson", method = RequestMethod.GET)
     @ResponseBody
-    public String savePerson(){
+    public String savePerson() {
         personService.savePerson();
         return "success!";
     }

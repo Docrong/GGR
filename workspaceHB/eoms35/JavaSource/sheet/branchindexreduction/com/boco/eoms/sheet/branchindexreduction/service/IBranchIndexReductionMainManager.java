@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Fri Jul 28 15:47:20 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public interface IBranchIndexReductionMainManager extends IMainService {
- 
- }
+
+public interface IBranchIndexReductionMainManager extends IMainService {
+
+}

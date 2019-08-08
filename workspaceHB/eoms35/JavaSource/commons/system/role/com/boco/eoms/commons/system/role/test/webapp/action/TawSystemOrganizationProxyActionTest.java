@@ -72,7 +72,7 @@ public class TawSystemOrganizationProxyActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawSystemOrganizationProxy.updated"});
+        verifyActionMessages(new String[]{"tawSystemOrganizationProxy.updated"});
 
     }
 

@@ -17,9 +17,7 @@ import com.boco.eoms.sheet.complaint.dao.IComplaintLinkDAO;
 import com.boco.eoms.sheet.complaint.model.ComplaintLink;
 
 /**
- * @author 
- *
- * TODO To change the template for this generated type comment go to
+ * @author TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ComplaintLinkDaoHibernate extends LinkDAO implements

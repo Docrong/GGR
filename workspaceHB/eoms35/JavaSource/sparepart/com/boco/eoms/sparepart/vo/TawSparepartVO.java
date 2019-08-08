@@ -3,542 +3,493 @@ package com.boco.eoms.sparepart.vo;
 import java.util.Date;
 
 public class TawSparepartVO {
-	private String id;
-	
-    public String getId()
-    {
+    private String id;
+
+    public String getId() {
         return id;
     }
-    public void setId(String id)
-    {
+
+    public void setId(String id) {
         this.id = id;
     }
 
-	private String objecttype;
-	
-    public String getObjecttype()
-    {
+    private String objecttype;
+
+    public String getObjecttype() {
         return objecttype;
     }
-    public void setObjecttype(String objecttype)
-    {
+
+    public void setObjecttype(String objecttype) {
         this.objecttype = objecttype;
     }
 
-	public String getObjectname()
-    {
+    public String getObjectname() {
         return objectname;
     }
-    public void setObjectname(String objectname)
-    {
+
+    public void setObjectname(String objectname) {
         this.objectname = objectname;
     }
 
-	private String version;
-	
-    public String getVersion()
-    {
+    private String version;
+
+    public String getVersion() {
         return version;
     }
-    public void setVersion(String version)
-    {
+
+    public void setVersion(String version) {
         this.version = version;
     }
-    
-	private String objectname;
 
-	private String nettype;
+    private String objectname;
 
-	public String getNettype()
-    {
+    private String nettype;
+
+    public String getNettype() {
         return nettype;
     }
-    public void setNettype(String nettype)
-    {
+
+    public void setNettype(String nettype) {
         this.nettype = nettype;
     }
 
-	private String serialno;
+    private String serialno;
 
-	public String getSerialno()
-    {
+    public String getSerialno() {
         return serialno;
     }
-    public void setSerialno(String serialno)
-    {
+
+    public void setSerialno(String serialno) {
         this.serialno = serialno;
     }
 
-	private Integer madein;
+    private Integer madein;
 
-	public Integer getMadein()
-    {
+    public Integer getMadein() {
         return madein;
     }
-    public void setMadein(Integer madein)
-    {
+
+    public void setMadein(Integer madein) {
         this.madein = madein;
     }
-    
-	private String supplier;
 
-	public String getSupplier()
-    {
+    private String supplier;
+
+    public String getSupplier() {
         return supplier;
     }
-    public void setSupplier(String supplier)
-    {
+
+    public void setSupplier(String supplier) {
         this.supplier = supplier;
     }
 
-	private String operator;
+    private String operator;
 
-	public String getOperator()
-    {
+    public String getOperator() {
         return operator;
     }
-    public void setOperator(String operator)
-    {
+
+    public void setOperator(String operator) {
         this.operator = operator;
     }
 
-	private Date intime;
+    private Date intime;
 
-	public Date getIntime()
-    {
+    public Date getIntime() {
         return intime;
     }
-    public void setIntime(Date intime)
-    {
+
+    public void setIntime(Date intime) {
         this.intime = intime;
     }
 
-	private Date outtime;
+    private Date outtime;
 
-	public Date getOuttime()
-    {
+    public Date getOuttime() {
         return outtime;
     }
-    public void setOuttime(Date outtime)
-    {
+
+    public void setOuttime(Date outtime) {
         this.outtime = outtime;
     }
 
-	private Integer state;
+    private Integer state;
 
-	public Integer getState()
-    {
+    public Integer getState() {
         return state;
     }
-    public void setState(Integer state)
-    {
+
+    public void setState(Integer state) {
         this.state = state;
     }
 
-	private String exceptionnote;
+    private String exceptionnote;
 
-	public String getExceptionnote()
-    {
+    public String getExceptionnote() {
         return exceptionnote;
     }
-    public void setState(String exceptionnote)
-    {
+
+    public void setState(String exceptionnote) {
         this.exceptionnote = exceptionnote;
     }
 
-	private String storageid;
+    private String storageid;
 
-	public String getStorageid()
-    {
+    public String getStorageid() {
         return storageid;
     }
-    public void setStorageid(String storageid)
-    {
+
+    public void setStorageid(String storageid) {
         this.storageid = storageid;
     }
 
-	private String note;
+    private String note;
 
-	public String getNote()
-    {
+    public String getNote() {
         return note;
     }
-    public void setNote(String note)
-    {
+
+    public void setNote(String note) {
         this.note = note;
     }
 
-	private Integer necode;
+    private Integer necode;
 
-	public Integer getNecode()
-    {
+    public Integer getNecode() {
         return necode;
     }
-    public void setNecode(Integer necode)
-    {
+
+    public void setNecode(Integer necode) {
         this.necode = necode;
     }
 
-	private String swversion;
+    private String swversion;
 
-	public String getSwversion()
-    {
+    public String getSwversion() {
         return swversion;
     }
-    public void setSwversion(String swversion)
-    {
+
+    public void setSwversion(String swversion) {
         this.swversion = swversion;
     }
 
-	private String contract;
+    private String contract;
 
-	public String getContract()
-    {
+    public String getContract() {
         return contract;
     }
-    public void setContract(String contract)
-    {
+
+    public void setContract(String contract) {
         this.contract = contract;
     }
 
-	private String hwversion;
+    private String hwversion;
 
-	public String getHwversion()
-    {
+    public String getHwversion() {
         return hwversion;
     }
-    public void setHwversion(String hwversion)
-    {
+
+    public void setHwversion(String hwversion) {
         this.hwversion = hwversion;
     }
 
-	private Date updatetime;
+    private Date updatetime;
 
-	public Date getUpdatetime()
-    {
+    public Date getUpdatetime() {
         return updatetime;
     }
-    public void setUpdatetime(Date updatetime)
-    {
+
+    public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
     }
 
-	private String productcode;
+    private String productcode;
 
-	public String getProductcode()
-    {
+    public String getProductcode() {
         return productcode;
     }
-    public void setProductcode(String productcode)
-    {
+
+    public void setProductcode(String productcode) {
         this.productcode = productcode;
     }
 
-	private String managecode;
+    private String managecode;
 
-	public String getManagecode()
-    {
+    public String getManagecode() {
         return managecode;
     }
-    public void setManagecode(String managecode)
-    {
+
+    public void setManagecode(String managecode) {
         this.managecode = managecode;
     }
 
-	private Date expire;
+    private Date expire;
 
-	public Date getExpire()
-    {
+    public Date getExpire() {
         return expire;
     }
-    public void setExpire(Date expire)
-    {
+
+    public void setExpire(Date expire) {
         this.expire = expire;
     }
 
-	private String units;
+    private String units;
 
-	public String getUnits()
-    {
+    public String getUnits() {
         return units;
     }
-    public void setUnits(String units)
-    {
+
+    public void setUnits(String units) {
         this.units = units;
     }
 
-	private Integer proform;
+    private Integer proform;
 
-	public Integer getProform()
-    {
+    public Integer getProform() {
         return proform;
     }
-    public void setProform(Integer proform)
-    {
+
+    public void setProform(Integer proform) {
         this.proform = proform;
     }
 
-	private String position;
+    private String position;
 
-	public String getPosition()
-    {
+    public String getPosition() {
         return position;
     }
-    public void setPosition(String position)
-    {
+
+    public void setPosition(String position) {
         this.position = position;
     }
 
-	private Integer loannum;
+    private Integer loannum;
 
-	public Integer getLoannum()
-    {
+    public Integer getLoannum() {
         return loannum;
     }
-    public void setLoannum(Integer loannum)
-    {
+
+    public void setLoannum(Integer loannum) {
         this.loannum = loannum;
     }
 
-	private Integer repairnum;
+    private Integer repairnum;
 
-	public Integer getRepairnum()
-    {
+    public Integer getRepairnum() {
         return repairnum;
     }
-    public void setRepairnum(Integer repairnum)
-    {
+
+    public void setRepairnum(Integer repairnum) {
         this.repairnum = repairnum;
     }
 
-	private String money;
+    private String money;
 
-	public String getMoney()
-    {
+    public String getMoney() {
         return money;
     }
-    public void setMoney(String money)
-    {
+
+    public void setMoney(String money) {
         this.money = money;
     }
 
-	private String deptId;
+    private String deptId;
 
-	public String getDeptId()
-    {
+    public String getDeptId() {
         return deptId;
     }
-    public void setDeptId(String deptId)
-    {
+
+    public void setDeptId(String deptId) {
         this.deptId = deptId;
     }
 
-	private String sheetid;
+    private String sheetid;
 
-	public String getSheetid()
-    {
+    public String getSheetid() {
         return sheetid;
     }
-    public void setSheetid(String sheetid)
-    {
+
+    public void setSheetid(String sheetid) {
         this.sheetid = sheetid;
     }
 
-	private Integer warrantyFlag;
+    private Integer warrantyFlag;
 
-	public Integer getWarrantyFlag()
-    {
+    public Integer getWarrantyFlag() {
         return warrantyFlag;
     }
-    public void setWarrantyFlag(Integer warrantyFlag)
-    {
+
+    public void setWarrantyFlag(Integer warrantyFlag) {
         this.warrantyFlag = warrantyFlag;
     }
 
-	private Integer stopproductFlag;
+    private Integer stopproductFlag;
 
-	public Integer getStopproductFlag()
-    {
+    public Integer getStopproductFlag() {
         return stopproductFlag;
     }
-    public void setStopproductFlag(Integer stopproductFlag)
-    {
+
+    public void setStopproductFlag(Integer stopproductFlag) {
         this.stopproductFlag = stopproductFlag;
     }
 
-	private Integer sparepartFlag;
+    private Integer sparepartFlag;
 
-	public Integer getSparepartFlag()
-    {
+    public Integer getSparepartFlag() {
         return sparepartFlag;
     }
-    public void setSparepartFlag(Integer sparepartFlag)
-    {
+
+    public void setSparepartFlag(Integer sparepartFlag) {
         this.sparepartFlag = sparepartFlag;
     }
 
-	private Integer borrowState;
+    private Integer borrowState;
 
-	public Integer getBorrowState()
-    {
+    public Integer getBorrowState() {
         return borrowState;
     }
-    public void setBorrowState(Integer borrowState)
-    {
+
+    public void setBorrowState(Integer borrowState) {
         this.borrowState = borrowState;
     }
 
-	private String orgSerialNo;
+    private String orgSerialNo;
 
-	public String getOrgSerialNo()
-    {
+    public String getOrgSerialNo() {
         return orgSerialNo;
     }
-    public void setOrgSerialNo(String orgSerialNo)
-    {
+
+    public void setOrgSerialNo(String orgSerialNo) {
         this.orgSerialNo = orgSerialNo;
     }
 
-	private String accessory;
+    private String accessory;
 
-	public String getAccessory()
-    {
+    public String getAccessory() {
         return accessory;
     }
-    public void setAccessory(String accessory)
-    {
+
+    public void setAccessory(String accessory) {
         this.accessory = accessory;
     }
 
-	private String thefile;
+    private String thefile;
 
-	public String getThefile()
-    {
+    public String getThefile() {
         return thefile;
     }
-    public void setThefile(String thefile)
-    {
+
+    public void setThefile(String thefile) {
         this.thefile = thefile;
     }
 
-	private Integer subdept;
+    private Integer subdept;
 
-	public Integer getSubdept()
-    {
+    public Integer getSubdept() {
         return subdept;
     }
-    public void setSubdept(Integer subdept)
-    {
+
+    public void setSubdept(Integer subdept) {
         this.subdept = subdept;
     }
 
-	private String proposer;
+    private String proposer;
 
-	public String getProposer()
-    {
+    public String getProposer() {
         return proposer;
     }
-    public void setProposer(String proposer)
-    {
+
+    public void setProposer(String proposer) {
         this.proposer = proposer;
     }
 
-	private String company;
+    private String company;
 
-	public String getCompany()
-    {
+    public String getCompany() {
         return company;
     }
-    public void setCompany(String company)
-    {
+
+    public void setCompany(String company) {
         this.company = company;
     }
 
-	private String objtype;
+    private String objtype;
 
-	public String getObjtype()
-    {
+    public String getObjtype() {
         return objtype;
     }
-    public void setObjtype(String objtype)
-    {
+
+    public void setObjtype(String objtype) {
         this.objtype = objtype;
     }
 
-	private String repairEndtime;
+    private String repairEndtime;
 
-	public String getRepairEndtime()
-    {
+    public String getRepairEndtime() {
         return repairEndtime;
     }
-    public void setRepairEndtime(String repairEndtime)
-    {
+
+    public void setRepairEndtime(String repairEndtime) {
         this.repairEndtime = repairEndtime;
     }
 
-	private String repairtime;
+    private String repairtime;
 
-	public String getRepairtime()
-    {
+    public String getRepairtime() {
         return repairtime;
     }
-    public void setRepairtime(String repairtime)
-    {
+
+    public void setRepairtime(String repairtime) {
         this.repairtime = repairtime;
     }
 
-	private String fixe;
+    private String fixe;
 
-	public String getFixe()
-    {
+    public String getFixe() {
         return fixe;
     }
-    public void setFixe(String fixe)
-    {
+
+    public void setFixe(String fixe) {
         this.fixe = fixe;
     }
 
-	private String deleted;
+    private String deleted;
 
-	public String getDeleted()
-    {
+    public String getDeleted() {
         return deleted;
     }
-    public void setDeleted(String deleted)
-    {
+
+    public void setDeleted(String deleted) {
         this.deleted = deleted;
     }
 
-	private Integer parttype;
+    private Integer parttype;
 
-	public Integer getParttype()
-    {
+    public Integer getParttype() {
         return parttype;
     }
-    public void setParttype(Integer parttype)
-    {
+
+    public void setParttype(Integer parttype) {
         this.parttype = parttype;
     }
 
-	private Integer checksum;
+    private Integer checksum;
 
-	public Integer getChecksum()
-    {
+    public Integer getChecksum() {
         return checksum;
     }
-    public void setChecksum(Integer checksum)
-    {
+
+    public void setChecksum(Integer checksum) {
         this.checksum = checksum;
     }
 
-	private String describe;
+    private String describe;
 
-	public String getDescribe()
-    {
+    public String getDescribe() {
         return describe;
     }
-    public void setChecksum(String describe)
-    {
+
+    public void setChecksum(String describe) {
         this.describe = describe;
     }
 

@@ -22,22 +22,22 @@ public class SmsServiceDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String deleted = "C";
-        smsService.setDeleted(deleted);        
+        smsService.setDeleted(deleted);
 
         java.lang.String isSendImediat = "M";
-        smsService.setIsSendImediat(isSendImediat);        
+        smsService.setIsSendImediat(isSendImediat);
 
         java.lang.String isSendNight = "Q";
-        smsService.setIsSendNight(isSendNight);        
- 
+        smsService.setIsSendNight(isSendNight);
+
         java.lang.String msgType = "Z";
-        smsService.setMsgType(msgType);        
+        smsService.setMsgType(msgType);
 
         java.lang.String name = "OtSnVpWhJhZsMrUvLsNlYwNmBmKjXqZhSoKoPbXqEgIfAmJoFvIgDjJiDgNdEgZwIgBwDqVpMwZsZjNqTaEvJaFfPqZjLmJlPrRg";
-        smsService.setName(name);        
+        smsService.setName(name);
 
         java.lang.String userId = "AsPpOkVrPvAzTtJsVrHcYzAtNlJbBi";
-        smsService.setUserId(userId);        
+        smsService.setUserId(userId);
 
         dao.saveSmsService(smsService);
 
@@ -70,19 +70,19 @@ public class SmsServiceDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String deleted = "L";
-        smsService.setDeleted(deleted);        
+        smsService.setDeleted(deleted);
         java.lang.String isSendImediat = "U";
-        smsService.setIsSendImediat(isSendImediat);        
+        smsService.setIsSendImediat(isSendImediat);
         java.lang.String isSendNight = "W";
-        smsService.setIsSendNight(isSendNight);        
+        smsService.setIsSendNight(isSendNight);
         java.lang.String moduleId = "JaAcAtSoWxBvQuYkLaZaJuFwWzPjSaAn";
         java.lang.String moduleName = "TqQzQjUlPfTdOxFxQjYrPaLhVkTkJfBmMnMvHjPlUeXwTqTeIy";
         java.lang.String msgType = "M";
-        smsService.setMsgType(msgType);        
+        smsService.setMsgType(msgType);
         java.lang.String name = "XsFmIaTzZdRiVuJpVoBsRxZcPyIhLwTeFmXiApDfJdCxPgBrUqWhNeBrAlFuJoOgPeXwKpHxWyXuCuBtYmBdAkZxGkCrVyUqOjGz";
-        smsService.setName(name);         
+        smsService.setName(name);
         java.lang.String userId = "BfUfWiNxGxCwSwSoPbTyVrCtTeIgBx";
-        smsService.setUserId(userId);        
+        smsService.setUserId(userId);
 
         dao.saveSmsService(smsService);
 

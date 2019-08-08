@@ -35,7 +35,7 @@ public class TawRmRenewalManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmRenewalDao.expects(once()).method("getTawRmRenewals")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawRmRenewals = tawRmRenewalManager.getTawRmRenewals(null);
         assertTrue(tawRmRenewals.size() == 1);
@@ -45,7 +45,7 @@ public class TawRmRenewalManagerTest extends BaseManagerTestCase {
     public void testGetTawRmRenewal() throws Exception {
         // set expected behavior on dao
         tawRmRenewalDao.expects(once()).method("getTawRmRenewal")
-            .will(returnValue(new TawRmRenewal()));
+                .will(returnValue(new TawRmRenewal()));
         TawRmRenewal tawRmRenewal = tawRmRenewalManager.getTawRmRenewal(tawRmRenewalId);
         assertTrue(tawRmRenewal != null);
         tawRmRenewalDao.verify();
@@ -56,7 +56,7 @@ public class TawRmRenewalManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmRenewalDao.expects(once()).method("saveTawRmRenewal")
-            .with(same(tawRmRenewal)).isVoid();
+                .with(same(tawRmRenewal)).isVoid();
 
         tawRmRenewalManager.saveTawRmRenewal(tawRmRenewal);
         tawRmRenewalDao.verify();
@@ -71,7 +71,7 @@ public class TawRmRenewalManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmRenewalDao.expects(once()).method("saveTawRmRenewal")
-            .with(same(tawRmRenewal)).isVoid();
+                .with(same(tawRmRenewal)).isVoid();
         tawRmRenewalManager.saveTawRmRenewal(tawRmRenewal);
         tawRmRenewalDao.verify();
 

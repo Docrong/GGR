@@ -1,43 +1,41 @@
 /*
 ------------------------------------------------------------------------------------
-Copyright (c) 2002,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+Copyright (c) 2002,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
 All rights reserved.
-Filename £ºprint.js
-Abstract £º³£ÓÃ´òÓ¡º¯Êý
-Version¡¡£º1.0
-Author   £ºLiu Guoyuan
-Finished Date £º2003-03-19
-Last Modified £º2003-03-20
+Filename ï¿½ï¿½print.js
+Abstract ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½
+Versionï¿½ï¿½ï¿½ï¿½1.0
+Author   ï¿½ï¿½Liu Guoyuan
+Finished Date ï¿½ï¿½2003-03-19
+Last Modified ï¿½ï¿½2003-03-20
 -------------------------------------------------------------------------------------
 */
 
-with (document)
-{//Êä³öÑùÊ½±í¼°IE´òÓ¡¿Ø¼þ
-	write ("<style type=\"text/css\" media=\"print\">");
-	write ("  .noPrint{visibility:hidden}");
-	write ("</style>");
-	write ("<OBJECT classid=CLSID:8856F961-340A-11D0-A96B-00C04FD705A2 height=0 id=WB width=0></object>");
+with (document) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½IEï¿½ï¿½Ó¡ï¿½Ø¼ï¿½
+    write("<style type=\"text/css\" media=\"print\">");
+    write("  .noPrint{visibility:hidden}");
+    write("</style>");
+    write("<OBJECT classid=CLSID:8856F961-340A-11D0-A96B-00C04FD705A2 height=0 id=WB width=0></object>");
 }
-function doPrintSetup()
-{//´òÓ¡ÉèÖÃ
-	WB.ExecWB(8,1);
+
+function doPrintSetup() {//ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½
+    WB.ExecWB(8, 1);
 }
-function doPrintPreview()
-{//´òÓ¡Ô¤ÀÀ
-	WB.ExecWB(7,1);
+
+function doPrintPreview() {//ï¿½ï¿½Ó¡Ô¤ï¿½ï¿½
+    WB.ExecWB(7, 1);
 }
-function doPrint()
-{
-	window.print();
+
+function doPrint() {
+    window.print();
 }
-function showPrintBar()
-{
-	with (document)
-	{
-		write ("<div align=\"center\" class=\"noprint\">");
-		write ("  <input type=\"button\" name=\"doBack\" value=\" &lt;&lt;·µ»Ø  \" onClick=\"history.go(-1)\">");
-		write ("  <input type=\"button\" name=\"doPrintPreview\" onClick=\"WB.ExecWB(8,1)\" value=\"´òÓ¡ÉèÖÃ\">");
-		write ("  <input type=\"button\" name=\"doPrint\" value=\"  ´òÓ¡&gt;&gt; \" onClick=\"doPrint()\">");
-		write ("</div>")
-	}
+
+function showPrintBar() {
+    with (document) {
+        write("<div align=\"center\" class=\"noprint\">");
+        write("  <input type=\"button\" name=\"doBack\" value=\" &lt;&lt;ï¿½ï¿½ï¿½ï¿½  \" onClick=\"history.go(-1)\">");
+        write("  <input type=\"button\" name=\"doPrintPreview\" onClick=\"WB.ExecWB(8,1)\" value=\"ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½\">");
+        write("  <input type=\"button\" name=\"doPrint\" value=\"  ï¿½ï¿½Ó¡&gt;&gt; \" onClick=\"doPrint()\">");
+        write("</div>")
+    }
 }

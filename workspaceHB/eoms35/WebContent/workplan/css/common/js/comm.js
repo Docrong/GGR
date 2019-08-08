@@ -1,479 +1,475 @@
 /********************************************************************************
- Copyright (c) 2002,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+ Copyright (c) 2002,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
  All rights reserved.
- Filename £ºcomm.js
- Abstract £º¹«¹²JavaScriptº¯Êý¼¯
- Version¡¡£º2.0
- Author   £ºLiu Guoyuan
- Finished Date £º2002-08-30
- Last Modified £º2004-08-12
+ Filename ï¿½ï¿½comm.js
+ Abstract ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½JavaScriptï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ Versionï¿½ï¿½ï¿½ï¿½2.0
+ Author   ï¿½ï¿½Liu Guoyuan
+ Finished Date ï¿½ï¿½2002-08-30
+ Last Modified ï¿½ï¿½2004-08-12
 
- ÐÞ¸Ä¼ÇÂ¼£º
-   2004-04-25
-    Ìí¼Ó showMsg(msg,hidePage) ·½·¨ ,ÔÚÒ³ÃæÏÔÊ¾ÌáÊ¾ÐÅÏ¢
-********************************************************************************/
-var	sepi=0;
-var box =0;
-function tableTR(){
-	sepi=1-sepi;
-	if (sepi == 1) {
-		S="<tr bgcolor='#EDF1F8' align='center' class=\"TableBodyOut\" onMouseOver=\"this.className='TableBodyOver'\" onMouseOut=\"this.className='TableBodyOut';\" >";
-	}else{
-		S="<tr bgcolor='#D5E0F7' align='center' class=\"TableBodyOut\" onMouseOver=\"this.className='TableBodyOver'\" onMouseOut=\"this.className='TableBodyOut';\">";
-	}
-	document.write(S);
-}
-function tableTD(c){
-	box=1-box;
-	if (box == 1) {
-		C="<input name=\"mid\" type=\"checkbox\" style='backcolor:#EDF1F8;border: 1.0px #9CB9F5;' value='"+c+"' onclick=\"TableBgLock(this)\">";
-	}else{
-		C="<input name=\"mid\" type=\"checkbox\" style='backcolor:#D5E0F7;border: 1.0px #9CB9F5;' value='"+c+"' onclick=\"TableBgLock(this)\">";
-	}
-	document.write(C);
-}
-function TableBgLock(Obj){
-	if(!Obj.checked){
-		Obj.style.backgroundColor='';
-	}else{
-		Obj.style.backgroundColor='#ABCBE2';
-	}
+ ï¿½Þ¸Ä¼ï¿½Â¼ï¿½ï¿½
+ 2004-04-25
+ ï¿½ï¿½ï¿½ showMsg(msg,hidePage) ï¿½ï¿½ï¿½ï¿½ ,ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢
+ ********************************************************************************/
+var sepi = 0;
+var box = 0;
+
+function tableTR() {
+    sepi = 1 - sepi;
+    if (sepi == 1) {
+        S = "<tr bgcolor='#EDF1F8' align='center' class=\"TableBodyOut\" onMouseOver=\"this.className='TableBodyOver'\" onMouseOut=\"this.className='TableBodyOut';\" >";
+    } else {
+        S = "<tr bgcolor='#D5E0F7' align='center' class=\"TableBodyOut\" onMouseOver=\"this.className='TableBodyOver'\" onMouseOut=\"this.className='TableBodyOut';\">";
+    }
+    document.write(S);
 }
 
-function SelectItem(strValue,ObjName,selMode){
-/*º¯Êý¹¦ÄÜ£ºÑ¡ÖÐ²Ëµ¥(¶àÑ¡¿ò¡¢µ¥Ñ¡¿ò)¼ÇÂ¼
-  ²ÎÊýËµÃ÷£º
-  strValue:¡¡Êý×Ö»ò×Ö·û
-     Öµ£¬ÓÃÓÚÓë²Ëµ¥ÖµÆ¥Åä£¬¸ÃÄÚÈÝÒ»°ãÀ´×ÔÊý¾Ý¿âÖÐ£¬Èç¹û²Ëµ¥Îª¶àÑ¡£¬ÔòÊýÖµÖ®¼äÓÃ¡°,¡±(¶ººÅ)·Ö¸ô£¬Èç"24,33,25,23"
-  ObjName:
-     ²Ëµ¥Ãû³Æ,¿ÉÓÃÈ«Ãû,Èç£º"document.form1.selMenu",Ò²¿ÉÓÃËõÐ´£¬Èç"selMenu"
-  selMode:
-     Ñ¡ÔñÄ£Ê½£¬Ä¬ÈÏ0µ¥Ñ¡£¬1¶àÑ¡¡£
-*/
-	var numargs = arguments.length; //·µ»ØµÄ²ÎÊýÊýÁ¿
-	var sourceObject;               //½øÐÐÆ¥ÅäµÄ²Ëµ¥¶ÔÏó
-	var isFinded = false;           //ÊÇ·ñÕÒµ½Æ¥ÅäÄÚÈÝ
-	
-	if (numargs>1){
-		if (ObjName.search(/\./g)<0)         //¶ÔÏóÃû³Æ²»°üº¬"."
-			sourceObject=document.getElementsByName(ObjName)[0];
-		else
-			sourceObject=eval(ObjName);
-	}else{
-		sourceObject=eval("document.all.selectTree"); //ÉèÖÃÈ±Ê¡¶ÔÏó
-	}
-	
-	if (sourceObject.type=="radio"){//µ¥Ñ¡¿ò
-	  var aoRadio = document.getElementsByName(ObjName);
-	  for (var i=0;i<aoRadio.length;i++){
-	    if (aoRadio[i].value == strValue) aoRadio[i].checked = true; 
-	  } 
-	}
-	else{//²Ëµ¥
-  	if ((""+strValue)==""){
-  	  sourceObject.options[0].selected=true;
-  	}else{
-  	  if (selMode==1){ //¶àÑ¡²Ëµ¥
-    		for (i=0;i<sourceObject.options.length;i++){    		  
-      		sourceObject.options[i].selected=false;  //Çå³ýÔ­ÓÐÑ¡Ôñ
-    		}
-   	    var aryID=strValue.split(",");
-      	if (aryID.length==0) return;
-      	for (var j=0;j<aryID.length;j++){
-      		for (var i=0;i<sourceObject.options.length;i++){    		  
-      			if (sourceObject.options[i].value==aryID[j]){
-      			  sourceObject.options[i].selected = true;
-      			  isFinded = true;
-      				break;
-      			}
-      		}
-      	}
-  	  }else{//µ¥Ñ¡²Ëµ¥
-    		var	count=sourceObject.options.length;
-    		for (var i=0;i<count;i++){
-    			if (sourceObject.options[i].value==(""+strValue)){
-    			  sourceObject.options[i].selected = true;
-    				isFinded = true;
-    				break;
-    			}
-    		}
-  	  }
-  		if (!isFinded) sourceObject.options[0].selected=true;;
-  	}
-  }
+function tableTD(c) {
+    box = 1 - box;
+    if (box == 1) {
+        C = "<input name=\"mid\" type=\"checkbox\" style='backcolor:#EDF1F8;border: 1.0px #9CB9F5;' value='" + c + "' onclick=\"TableBgLock(this)\">";
+    } else {
+        C = "<input name=\"mid\" type=\"checkbox\" style='backcolor:#D5E0F7;border: 1.0px #9CB9F5;' value='" + c + "' onclick=\"TableBgLock(this)\">";
+    }
+    document.write(C);
 }
 
-function OpenWin(theURL,winName,features) {
-  newWindow=window.open(theURL,winName,features);
-  newWindow.focus();
+function TableBgLock(Obj) {
+    if (!Obj.checked) {
+        Obj.style.backgroundColor = '';
+    } else {
+        Obj.style.backgroundColor = '#ABCBE2';
+    }
 }
-function OpenCenterWindow(theURL,winName,width,height,features) { 
-//´ò¿ªÓÀÔ¶¾ÓÖÐµÄ´°¿Ú
-    var window_width = width;
-    var window_height = height;
-    var newfeatures= features;
-    var window_top = (screen.height-window_height)/2;
-    var window_left = (screen.width-window_width)/2;
-    newWindow=window.open(''+ theURL + '',''+ winName + '','width=' + window_width + ',height=' + window_height + ',top=' + window_top + ',left=' + window_left + ',' + features + '');
+
+function SelectItem(strValue, ObjName, selMode) {
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½Ñ¡ï¿½Ð²Ëµï¿½(ï¿½ï¿½Ñ¡ï¿½ò¡¢µï¿½Ñ¡ï¿½ï¿½)ï¿½ï¿½Â¼
+      ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+      strValue:ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ö·ï¿½
+         Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ÖµÆ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Îªï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÖ®ï¿½ï¿½ï¿½Ã¡ï¿½,ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½"24,33,25,23"
+      ObjName:
+         ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½,ï¿½ç£º"document.form1.selMenu",Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½"selMenu"
+      selMode:
+         Ñ¡ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ä¬ï¿½ï¿½0ï¿½ï¿½Ñ¡ï¿½ï¿½1ï¿½ï¿½Ñ¡ï¿½ï¿½
+    */
+    var numargs = arguments.length; //ï¿½ï¿½ï¿½ØµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    var sourceObject;               //ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Ä²Ëµï¿½ï¿½ï¿½ï¿½ï¿½
+    var isFinded = false;           //ï¿½Ç·ï¿½ï¿½Òµï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+    if (numargs > 1) {
+        if (ObjName.search(/\./g) < 0)         //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½ï¿½ï¿½"."
+            sourceObject = document.getElementsByName(ObjName)[0];
+        else
+            sourceObject = eval(ObjName);
+    } else {
+        sourceObject = eval("document.all.selectTree"); //ï¿½ï¿½ï¿½ï¿½È±Ê¡ï¿½ï¿½ï¿½ï¿½
+    }
+
+    if (sourceObject.type == "radio") {//ï¿½ï¿½Ñ¡ï¿½ï¿½
+        var aoRadio = document.getElementsByName(ObjName);
+        for (var i = 0; i < aoRadio.length; i++) {
+            if (aoRadio[i].value == strValue) aoRadio[i].checked = true;
+        }
+    } else {//ï¿½Ëµï¿½
+        if (("" + strValue) == "") {
+            sourceObject.options[0].selected = true;
+        } else {
+            if (selMode == 1) { //ï¿½ï¿½Ñ¡ï¿½Ëµï¿½
+                for (i = 0; i < sourceObject.options.length; i++) {
+                    sourceObject.options[i].selected = false;  //ï¿½ï¿½ï¿½Ô­ï¿½ï¿½Ñ¡ï¿½ï¿½
+                }
+                var aryID = strValue.split(",");
+                if (aryID.length == 0) return;
+                for (var j = 0; j < aryID.length; j++) {
+                    for (var i = 0; i < sourceObject.options.length; i++) {
+                        if (sourceObject.options[i].value == aryID[j]) {
+                            sourceObject.options[i].selected = true;
+                            isFinded = true;
+                            break;
+                        }
+                    }
+                }
+            } else {//ï¿½ï¿½Ñ¡ï¿½Ëµï¿½
+                var count = sourceObject.options.length;
+                for (var i = 0; i < count; i++) {
+                    if (sourceObject.options[i].value == ("" + strValue)) {
+                        sourceObject.options[i].selected = true;
+                        isFinded = true;
+                        break;
+                    }
+                }
+            }
+            if (!isFinded) sourceObject.options[0].selected = true;
+            ;
+        }
+    }
+}
+
+function OpenWin(theURL, winName, features) {
+    newWindow = window.open(theURL, winName, features);
     newWindow.focus();
 }
-function OpenActionWindow(theURL,vArguments,width,height,features) { 
-//´ò¿ªÓÀÔ¶¾ÓÖÐµÄÄ£Ê½´°¿Ú
+
+function OpenCenterWindow(theURL, winName, width, height, features) {
+//ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ÐµÄ´ï¿½ï¿½ï¿½
     var window_width = width;
     var window_height = height;
-    var newfeatures= features;
-    var return_value = window.showModalDialog(""+theURL+"",""+vArguments+"","dialogWidth:"+window_width+"px;dialogHeight:"+window_height+"px;scroll:no;status:no;help:no");
+    var newfeatures = features;
+    var window_top = (screen.height - window_height) / 2;
+    var window_left = (screen.width - window_width) / 2;
+    newWindow = window.open('' + theURL + '', '' + winName + '', 'width=' + window_width + ',height=' + window_height + ',top=' + window_top + ',left=' + window_left + ',' + features + '');
+    newWindow.focus();
+}
+
+function OpenActionWindow(theURL, vArguments, width, height, features) {
+//ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Ðµï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
+    var window_width = width;
+    var window_height = height;
+    var newfeatures = features;
+    var return_value = window.showModalDialog("" + theURL + "", "" + vArguments + "", "dialogWidth:" + window_width + "px;dialogHeight:" + window_height + "px;scroll:no;status:no;help:no");
     return return_value;
 }
 
-//È«²¿Ñ¡ÖÐ¶àÑ¡°´Å¥
-var checkAllFlag=0;
-function checkAll(obj)
-{
-	if (checkAllFlag==0){
-		if(obj.length>1){
-			for(var i=0;i<obj.length;i++)
-				obj[i].checked=true;
-				document.all.selectall.checked=true;
-		}
-		else{
-			document.all.selectall.checked=true;
-			obj.checked=true;
-		}
-		checkAllFlag=1;
-	}
-	else{
-		if(obj.length>1)
-		{
-			for(var i=0;i<obj.length;i++)
-				obj[i].checked=false;
-				document.all.selectall.checked=false;
-		}
-		else
-		{	
-			document.all.selectall.checked=false;
-			obj.checked=false;
-		}
-		checkAllFlag=0;
-	}
+//È«ï¿½ï¿½Ñ¡ï¿½Ð¶ï¿½Ñ¡ï¿½ï¿½Å¥
+var checkAllFlag = 0;
+
+function checkAll(obj) {
+    if (checkAllFlag == 0) {
+        if (obj.length > 1) {
+            for (var i = 0; i < obj.length; i++)
+                obj[i].checked = true;
+            document.all.selectall.checked = true;
+        } else {
+            document.all.selectall.checked = true;
+            obj.checked = true;
+        }
+        checkAllFlag = 1;
+    } else {
+        if (obj.length > 1) {
+            for (var i = 0; i < obj.length; i++)
+                obj[i].checked = false;
+            document.all.selectall.checked = false;
+        } else {
+            document.all.selectall.checked = false;
+            obj.checked = false;
+        }
+        checkAllFlag = 0;
+    }
 }
 
-function SwitchAll(form)
-{
-//½»»»¶àÑ¡°´Å¥
-	var form=eval(form);
-	count=parseInt(form.elements.length);
-	if (count==0) return false;
-	if (count==1)
-	{
-		form.mid.checked = !form.mid.checked;
-		return true;
-	}
-	for (var i = 0; i < count; i++) 
-	{
-		var e = form.mid[i];
-		e.checked = !e.checked;
-	}
-	return true;
+function SwitchAll(form) {
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Å¥
+    var form = eval(form);
+    count = parseInt(form.elements.length);
+    if (count == 0) return false;
+    if (count == 1) {
+        form.mid.checked = !form.mid.checked;
+        return true;
+    }
+    for (var i = 0; i < count; i++) {
+        var e = form.mid[i];
+        e.checked = !e.checked;
+    }
+    return true;
 }
 
-function modify(form)
-{
-//ÐÞ¸ÄÑ¡ÖÐ¼ÇÂ¼
-	var form=eval(form);
-	var e,count,eTest
-	var selectFlag = "FALSE";
-	var selectCount = 0;
-	var firstSelected;
-	count=parseInt(form.elements.length);
-	if (count==0) return;
-	if (count==1)
-	{
-		//if (form.mid.checked)
-		//{
-			selectFlag = "TRUE";
-			e = form.mid
-		//}
-	}
-	else
-	{
-		for (var i = 0; i < count; i++) 
-		{
-			var eTest = form.mid[i];
-			if (eTest.checked)
-			{
-				e = eTest;
-				selectFlag = "TRUE";
-				selectCount++;
-				if (selectCount>1)
-				{
-					alert ("×î¶àÑ¡ÔñÒ»Ìõ¼ÇÂ¼£¡");
-					return;
-				}
-			}
-		}
-	}
-	if (selectFlag=="FALSE") 
-	{	alert("ÇëÑ¡Ôñ¼ÇÂ¼£¡");return;
-	}
-	else
-	{	URL=GetFileName("modify")+"?id="+e.value;
-		window.location = URL ;	
-	}
+function modify(form) {
+//ï¿½Þ¸ï¿½Ñ¡ï¿½Ð¼ï¿½Â¼
+    var form = eval(form);
+    var e, count, eTest
+    var selectFlag = "FALSE";
+    var selectCount = 0;
+    var firstSelected;
+    count = parseInt(form.elements.length);
+    if (count == 0) return;
+    if (count == 1) {
+        //if (form.mid.checked)
+        //{
+        selectFlag = "TRUE";
+        e = form.mid
+        //}
+    } else {
+        for (var i = 0; i < count; i++) {
+            var eTest = form.mid[i];
+            if (eTest.checked) {
+                e = eTest;
+                selectFlag = "TRUE";
+                selectCount++;
+                if (selectCount > 1) {
+                    alert("ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½");
+                    return;
+                }
+            }
+        }
+    }
+    if (selectFlag == "FALSE") {
+        alert("ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½ï¿½");
+        return;
+    } else {
+        URL = GetFileName("modify") + "?id=" + e.value;
+        window.location = URL;
+    }
 }
 
-function del(object)
-{
-//É¾³ýËùÓÐÑ¡ÖÐ¼ÇÂ¼
-	var form=eval(object);
-	var selectFlag = "FALSE"
-	count=parseInt(form.elements.length);
-	if (count==0) return;
-	if (count==1)
-	{
-		if (form.mid.checked) selectFlag = "TRUE";
-	}
-	else
-	{
-		for (var i = 0; i < count; i++) 
-		{
-			var e = form.mid[i];
-			if (e.checked){selectFlag = "TRUE";break;}
-		}
-	}
-	if (selectFlag=="FALSE") {alert("ÇëÑ¡Ôñ¼ÇÂ¼£¡");return;}
-	if (confirm("ÄãÈ·¶¨ÒªÉ¾³ýÑ¡¶¨µÄ¼ÇÂ¼Âð£¿"))
-	{
-		var	form=eval(form);
-		URL=GetFileName("delete")
-		form.action=URL;
-		form.submit();
-	}
+function del(object) {
+//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð¼ï¿½Â¼
+    var form = eval(object);
+    var selectFlag = "FALSE"
+    count = parseInt(form.elements.length);
+    if (count == 0) return;
+    if (count == 1) {
+        if (form.mid.checked) selectFlag = "TRUE";
+    } else {
+        for (var i = 0; i < count; i++) {
+            var e = form.mid[i];
+            if (e.checked) {
+                selectFlag = "TRUE";
+                break;
+            }
+        }
+    }
+    if (selectFlag == "FALSE") {
+        alert("ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½ï¿½");
+        return;
+    }
+    if (confirm("ï¿½ï¿½È·ï¿½ï¿½ÒªÉ¾ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ä¼ï¿½Â¼ï¿½ï¿½")) {
+        var form = eval(form);
+        URL = GetFileName("delete")
+        form.action = URL;
+        form.submit();
+    }
 }
 
-function del2(object)
-{
-//É¾³ýËùÓÐÑ¡ÖÐ¼ÇÂ¼
-	var form=eval(object);
-	var selectFlag = "FALSE"
-	count=parseInt(form.elements.length);
-	if (count==0) return;
-	if (count==1)
-	{
-		if (form.mid.checked) selectFlag = "TRUE";
-	}
-	else
-	{
-		for (var i = 0; i < count; i++) 
-		{
-			var e = form.mid[i];
-			if (e.checked){selectFlag = "TRUE";break;}
-		}
-	}
-	if (selectFlag=="FALSE") {alert("ÇëÑ¡Ôñ¼ÇÂ¼£¡");return;}
-	if (confirm("ÄãÈ·¶¨Òª¼¶ÁªÊÕ»Ø¸ÃÓÃ»§ËùÓÐÊÚ³öµÄ¸ÃÈ¨ÏÞÂð£¿"))
-	{
-		var	form=eval(form);
-		URL="user_privs_delete2.jsp" //GetFileName("delete")
-		form.action=URL;
-		form.submit();
-	}
+function del2(object) {
+//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð¼ï¿½Â¼
+    var form = eval(object);
+    var selectFlag = "FALSE"
+    count = parseInt(form.elements.length);
+    if (count == 0) return;
+    if (count == 1) {
+        if (form.mid.checked) selectFlag = "TRUE";
+    } else {
+        for (var i = 0; i < count; i++) {
+            var e = form.mid[i];
+            if (e.checked) {
+                selectFlag = "TRUE";
+                break;
+            }
+        }
+    }
+    if (selectFlag == "FALSE") {
+        alert("ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½ï¿½");
+        return;
+    }
+    if (confirm("ï¿½ï¿½È·ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Õ»Ø¸ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½ï¿½Ä¸ï¿½È¨ï¿½ï¿½ï¿½ï¿½")) {
+        var form = eval(form);
+        URL = "user_privs_delete2.jsp" //GetFileName("delete")
+        form.action = URL;
+        form.submit();
+    }
 }
 
-function del3(object)
-{
-//É¾³ýËùÓÐÑ¡ÖÐ¼ÇÂ¼
-	var form=eval(object);
-	var selectFlag = "FALSE"
-	count=parseInt(form.elements.length);
-	if (count==0) return;
-	if (count==1)
-	{
-		if (form.mid.checked) selectFlag = "TRUE";
-	}
-	else
-	{
-		for (var i = 0; i < count; i++) 
-		{
-			var e = form.mid[i];
-			if (e.checked){selectFlag = "TRUE";break;}
-		}
-	}
-	if (selectFlag=="FALSE") {alert("ÇëÑ¡Ôñ¼ÇÂ¼£¡");return;}
-	if (confirm("ÄãÈ·¶¨Òª¼¶ÁªÉ¾³ý¸ÃÓÃ»§ËùÓÐ´´½¨µÄ¶ÔÏóÂð£¿"))
-	{
-		var	form=eval(form);
-		URL="user_delete3.jsp" //GetFileName("delete")
-		form.action=URL;
-		form.submit();
-	}
+function del3(object) {
+//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½Ð¼ï¿½Â¼
+    var form = eval(object);
+    var selectFlag = "FALSE"
+    count = parseInt(form.elements.length);
+    if (count == 0) return;
+    if (count == 1) {
+        if (form.mid.checked) selectFlag = "TRUE";
+    } else {
+        for (var i = 0; i < count; i++) {
+            var e = form.mid[i];
+            if (e.checked) {
+                selectFlag = "TRUE";
+                break;
+            }
+        }
+    }
+    if (selectFlag == "FALSE") {
+        alert("ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½ï¿½");
+        return;
+    }
+    if (confirm("ï¿½ï¿½È·ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½")) {
+        var form = eval(form);
+        URL = "user_delete3.jsp" //GetFileName("delete")
+        form.action = URL;
+        form.submit();
+    }
 }
 
 
-function GetFileName(actionFileName)
-{
-  //loadJS("page.js");
-	//return getFileName(action);
-	var arrayURL = new Array();
-	var tempURL = new String();
-	var sURL = new String();
-	tempURL = window.location + "";
-	arrayURL = tempURL.split("/");
-	tempURL=arrayURL[arrayURL.length-1];
-	var fileExtName = tempURL.substr(tempURL.indexOf("."),4); //ÎÄ¼þÀ©Õ¹Ãû
-	tempURL=tempURL.substr(0,tempURL.indexOf(fileExtName));
-	if (tempURL.indexOf("_manage")>=0){
-		sURL = tempURL.substr(0,tempURL.indexOf("_manage"));
-	}
-	else{
-		if (tempURL.indexOf("_init")>=0){
-			sURL=tempURL.substr(0,tempURL.indexOf("_init"));
-		}else{
-			if (tempURL.indexOf("_list")>=0){
-				sURL=tempURL.substr(0,tempURL.indexOf("_list"));
-			}
-			else{
-				sURL = tempURL;
-			}
-		}
-	}
-	sURL += "_";
-	switch (actionFileName){
-		case "add": sURL += "add"+fileExtName;break;
-		case "modify": sURL += "modify"+fileExtName;break;
-		case "delete": sURL += "delete"+fileExtName;break;
-	  default : sURL += actionFileName+fileExtName;
-	}
-	return sURL;
+function GetFileName(actionFileName) {
+    //loadJS("page.js");
+    //return getFileName(action);
+    var arrayURL = new Array();
+    var tempURL = new String();
+    var sURL = new String();
+    tempURL = window.location + "";
+    arrayURL = tempURL.split("/");
+    tempURL = arrayURL[arrayURL.length - 1];
+    var fileExtName = tempURL.substr(tempURL.indexOf("."), 4); //ï¿½Ä¼ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½
+    tempURL = tempURL.substr(0, tempURL.indexOf(fileExtName));
+    if (tempURL.indexOf("_manage") >= 0) {
+        sURL = tempURL.substr(0, tempURL.indexOf("_manage"));
+    } else {
+        if (tempURL.indexOf("_init") >= 0) {
+            sURL = tempURL.substr(0, tempURL.indexOf("_init"));
+        } else {
+            if (tempURL.indexOf("_list") >= 0) {
+                sURL = tempURL.substr(0, tempURL.indexOf("_list"));
+            } else {
+                sURL = tempURL;
+            }
+        }
+    }
+    sURL += "_";
+    switch (actionFileName) {
+        case "add":
+            sURL += "add" + fileExtName;
+            break;
+        case "modify":
+            sURL += "modify" + fileExtName;
+            break;
+        case "delete":
+            sURL += "delete" + fileExtName;
+            break;
+        default :
+            sURL += actionFileName + fileExtName;
+    }
+    return sURL;
 }
 
-function ClearInput(object,text){
-//Çå³ý±íµ¥ÄÚÈÝ
-	var object=eval(object);
-	var sValue=object.value;
-	if (object.value==text) object.value=""
+function ClearInput(object, text) {
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    var object = eval(object);
+    var sValue = object.value;
+    if (object.value == text) object.value = ""
 }
 
-function RestoreInput(object,text){
-//»Ö¸´±íµ¥ÄÚÈÝ
-	var object=eval(object);
-	var text=text;
-	if (object.value=="") object.value=text;
+function RestoreInput(object, text) {
+//ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    var object = eval(object);
+    var text = text;
+    if (object.value == "") object.value = text;
 }
 
-//Éú³ÉÊ÷ÐÍ²Ëµ¥
-//Êý¾Ý¸ñÊ½£ºID£¬CLASS£¬NAME;  ¶ÔÓ¦IDÖµ£¬¼¶±ð£¬Ãû³Æ
-//Èç 1,1,È«¹ú;2,2,±±¾©;
-function BuilderSelectTree(sourceObject,targetObject){
-	var numargs = arguments.length; //·µ»ØµÄ²ÎÊýÊýÁ¿
-	if (numargs>0){
-		var sObject=eval(sourceObject);
-		var tObject=eval(targetObject);
-	}
-	else{
-		var sObject=eval("document.form1.treeCode");       //Ô´¶ÔÏó£ºÔ´Êý¾ÝËùÔÚ¶ÔÏó,Ô´Êý¾Ý¸ñÊ½Îª "id,class,name;"¡¡Èç"1000,1,È«¹ú;1001,2,±±¾©;"
-		var tObject=eval("document.form1.selectTree");    //Ä¿±ê¶ÔÏó
-	}
-	var name,count;
-	var treeCode=new Array();
-	treeCode=sObject.value.split(";");
-	count=treeCode.length-1;
-	j=0;
-	for (i=0;i<count;i++){
-		var treeCodeItem=new Array(3);
-		treeCodeItem=treeCode[i].split(",");
-		nodeId=treeCodeItem[0];        //½ÚµãID
-		nodeClass=treeCodeItem[1];     //½Úµã¼¶Êý
-		nodeName=treeCodeItem[2];      //½ÚµãÃû³Æ
-		name=nodeClass+"¼¶";
-		for (k=1;k<=nodeClass;k++){
-			name=name+"...";
-		}
-		tObject.options.length=j+1;
-		if (nodeClass==0){
-			tObject.options[j].className="OptionRedColor";
-			nodeName="¡¤¡¤¡¤"+nodeName+"¡¤¡¤¡¤";
-		}
-		else{
-			nodeName=name+"|"+nodeName;
-		}
-		tObject.options[j].text=nodeName;
-		tObject.options[j].value=nodeId;
-		tObject.options[j].classvalue=nodeClass;
-		j++;
-	}
-	tObject.options[0].selected=true;
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í²Ëµï¿½
+//ï¿½ï¿½ï¿½Ý¸ï¿½Ê½ï¿½ï¿½IDï¿½ï¿½CLASSï¿½ï¿½NAME;  ï¿½ï¿½Ó¦IDÖµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//ï¿½ï¿½ 1,1,È«ï¿½ï¿½;2,2,ï¿½ï¿½ï¿½ï¿½;
+function BuilderSelectTree(sourceObject, targetObject) {
+    var numargs = arguments.length; //ï¿½ï¿½ï¿½ØµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (numargs > 0) {
+        var sObject = eval(sourceObject);
+        var tObject = eval(targetObject);
+    } else {
+        var sObject = eval("document.form1.treeCode");       //Ô´ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½,Ô´ï¿½ï¿½ï¿½Ý¸ï¿½Ê½Îª "id,class,name;"ï¿½ï¿½ï¿½ï¿½"1000,1,È«ï¿½ï¿½;1001,2,ï¿½ï¿½ï¿½ï¿½;"
+        var tObject = eval("document.form1.selectTree");    //Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½
+    }
+    var name, count;
+    var treeCode = new Array();
+    treeCode = sObject.value.split(";");
+    count = treeCode.length - 1;
+    j = 0;
+    for (i = 0; i < count; i++) {
+        var treeCodeItem = new Array(3);
+        treeCodeItem = treeCode[i].split(",");
+        nodeId = treeCodeItem[0];        //ï¿½Úµï¿½ID
+        nodeClass = treeCodeItem[1];     //ï¿½Úµã¼¶ï¿½ï¿½
+        nodeName = treeCodeItem[2];      //ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
+        name = nodeClass + "ï¿½ï¿½";
+        for (k = 1; k <= nodeClass; k++) {
+            name = name + "...";
+        }
+        tObject.options.length = j + 1;
+        if (nodeClass == 0) {
+            tObject.options[j].className = "OptionRedColor";
+            nodeName = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + nodeName + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+        } else {
+            nodeName = name + "|" + nodeName;
+        }
+        tObject.options[j].text = nodeName;
+        tObject.options[j].value = nodeId;
+        tObject.options[j].classvalue = nodeClass;
+        j++;
+    }
+    tObject.options[0].selected = true;
 }
 
 /***************************
- ÔÚÒ³ÃæÏÔÊ¾ÌáÊ¾ÐÅÏ¢´°¿Ú
- ²ÎÊý£º
-   msg :      ÌáÊ¾ÐÅÏ¢£¬ÎÞ²ÎÊýÊ±Òþ²ØÌáÊ¾´°¿Ú
-   hidePage : ÊÇ·ñÒþ²ØÒ³ÃæÏÔÊ¾,Ä¬ÈÏfalse,ÔÚÔ­Ò³ÃæÉÏÏÔÊ¾ÌáÊ¾£¬
-***************************/
-function showMsg(msg,hidePage){
-  if (hidePage){
-    document.body.innerHTML = "";
-  }
-  if (typeof(divMsgWin00001)=="object"){//ÌáÊ¾´°¿ÚÒÑ¾­´´½¨
-    if (msg == null){
-      divMsgWin00001.style.display = "none";
-    }else{
-      divMsgWin00001.style.display = "block";
-      divMsgWinText00001.innerText = msg;
+ ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ msg :      ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Þ²ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+ hidePage : ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ê¾,Ä¬ï¿½ï¿½false,ï¿½ï¿½Ô­Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê¾ï¿½ï¿½
+ ***************************/
+function showMsg(msg, hidePage) {
+    if (hidePage) {
+        document.body.innerHTML = "";
     }
-  }else{
-    if (msg == null){
-      alert ("showMsg():ÇëÊäÈëÌáÊ¾ÐÅÏ¢²ÎÊý£¡"); 
-      return;
-    }
-    var msg="<DIV "+
-            " id=\"divMsgWin00001\""+
-            " style=\"Z-INDEX: 300;"+
-            " padding:0;WIDTH: 308px;"+
-            " position: absolute; "+
-            " font-size:14px;"+
-            " border:1 #99ccff solid;"+
-            " background-color:#ffffff;"+
-            " left:expression((document.body.clientWidth+document.body.scrollLeft-308)/2);"+
-            " top:expression((document.body.clientHeight+document.body.scrollTop-120)/2)\""+
-            ">"+
-            "<table width=100%  border=0 cellspacing=2 cellpadding=2>"+
-            "  <tr>"+
-            "    <td rowspan=2><IMG src="+getPath()+"/images/background/msgbg.gif border=0></td>"+
-            "    <td valign=bottom id=divMsgWinText00001 style=\"font-size:14px;\">¡¡"+msg+"</td>"+
-            "  </tr>"+
-            "  <tr height=16>"+
-            "    <td valign=bottom><IMG src="+getPath()+"/images/background/processbar.gif border=0></td>"+
-            "  </tr>"+
-            "</table>"+
-            "<table>"+
+    if (typeof (divMsgWin00001) == "object") {//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (msg == null) {
+            divMsgWin00001.style.display = "none";
+        } else {
+            divMsgWin00001.style.display = "block";
+            divMsgWinText00001.innerText = msg;
+        }
+    } else {
+        if (msg == null) {
+            alert("showMsg():ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            return;
+        }
+        var msg = "<DIV " +
+            " id=\"divMsgWin00001\"" +
+            " style=\"Z-INDEX: 300;" +
+            " padding:0;WIDTH: 308px;" +
+            " position: absolute; " +
+            " font-size:14px;" +
+            " border:1 #99ccff solid;" +
+            " background-color:#ffffff;" +
+            " left:expression((document.body.clientWidth+document.body.scrollLeft-308)/2);" +
+            " top:expression((document.body.clientHeight+document.body.scrollTop-120)/2)\"" +
+            ">" +
+            "<table width=100%  border=0 cellspacing=2 cellpadding=2>" +
+            "  <tr>" +
+            "    <td rowspan=2><IMG src=" + getPath() + "/images/background/msgbg.gif border=0></td>" +
+            "    <td valign=bottom id=divMsgWinText00001 style=\"font-size:14px;\">ï¿½ï¿½" + msg + "</td>" +
+            "  </tr>" +
+            "  <tr height=16>" +
+            "    <td valign=bottom><IMG src=" + getPath() + "/images/background/processbar.gif border=0></td>" +
+            "  </tr>" +
+            "</table>" +
+            "<table>" +
             "</DIV>";
-    var oDIV = document.createElement("DIV");
-    document.body.insertAdjacentElement("beforeEnd",oDIV);
-    oDIV.outerHTML = msg;
-  }
+        var oDIV = document.createElement("DIV");
+        document.body.insertAdjacentElement("beforeEnd", oDIV);
+        oDIV.outerHTML = msg;
+    }
 }
 
-//´ÓÏàÍ¬Ä¿Â¼¶ÁÈ¡JSÎÄ¼þ
-function loadJS(src){
-	var script=document.getElementsByTagName("SCRIPT");
-	for(var i=0;i<script.length;i++){
-		var s=script[i].src;
-		if(s.indexOf(src)>=0) return;
-		if(s.indexOf("/common/js/comm.js")!=-1){jsPath=s.replace("comm.js","")}
-	}
-	var oScript = document.createElement("<SCRIPT>");
-	oScript.src = jsPath+src;
-	script[0].insertAdjacentElement("afterEnd",oScript);
+//ï¿½ï¿½ï¿½ï¿½Í¬Ä¿Â¼ï¿½ï¿½È¡JSï¿½Ä¼ï¿½
+function loadJS(src) {
+    var script = document.getElementsByTagName("SCRIPT");
+    for (var i = 0; i < script.length; i++) {
+        var s = script[i].src;
+        if (s.indexOf(src) >= 0) return;
+        if (s.indexOf("/common/js/comm.js") != -1) {
+            jsPath = s.replace("comm.js", "")
+        }
+    }
+    var oScript = document.createElement("<SCRIPT>");
+    oScript.src = jsPath + src;
+    script[0].insertAdjacentElement("afterEnd", oScript);
 }
 
-//»ñÈ¡µ±Ç°ÍøÕ¾Ïà¶ÔÂ·¾¶
-function getPath(){
-	var script=document.getElementsByTagName("SCRIPT");
-	for(var i=0;i<script.length;i++){
-		var s=script[i].src.toLowerCase()
-		if(s.indexOf("/common/js/comm.js")!=-1){jsPath=s.replace("/common/js/comm.js","")}
-	}
-  return jsPath;
+//ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+function getPath() {
+    var script = document.getElementsByTagName("SCRIPT");
+    for (var i = 0; i < script.length; i++) {
+        var s = script[i].src.toLowerCase()
+        if (s.indexOf("/common/js/comm.js") != -1) {
+            jsPath = s.replace("/common/js/comm.js", "")
+        }
+    }
+    return jsPath;
 }

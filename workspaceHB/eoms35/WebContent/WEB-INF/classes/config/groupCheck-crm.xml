@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-	<base>
-	    <SendUserId>pengguangjun</SendUserId>
-	    <SendDeptId>12201</SendDeptId>
-	    <SendContact>13871248608</SendContact>
-		<SendRoleId>297e58995f9af455015f9b03cdfb0012</SendRoleId>
-	</base>
+    <base>
+        <SendUserId>pengguangjun</SendUserId>
+        <SendDeptId>12201</SendDeptId>
+        <SendContact>13871248608</SendContact>
+        <SendRoleId>297e58995f9af455015f9b03cdfb0012</SendRoleId>
+    </base>
 </boco>

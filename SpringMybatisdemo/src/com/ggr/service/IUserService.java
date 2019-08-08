@@ -6,6 +6,6 @@ import com.ggr.model.User;
 
 
 public interface IUserService {
-	public abstract List<User> selectAll();
+    public abstract List<User> selectAll();
 
 }

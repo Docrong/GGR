@@ -22,46 +22,46 @@ public class TawRmTestcardDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String ascriptionPlace = "YsKqTbEfLnTvKfRlWcUgAyToRlBpOl";
-       // tawRmTestcard.setAscriptionPlace(ascriptionPlace);        
+        // tawRmTestcard.setAscriptionPlace(ascriptionPlace);
 
         java.lang.String visitPlace = "UmArNlWmPaHkKoBmPzOaKkOzPaJkLj";
-       // tawRmTestcard.setVisitPlace(visitPlace);        
+        // tawRmTestcard.setVisitPlace(visitPlace);
 
         java.lang.String supplyer = "VdBeHzDrBzEjTqTaGdAyIrScKnDqEeUvWjByDiSxYfEmKoItFu";
-        tawRmTestcard.setSupplyer(supplyer);        
+        tawRmTestcard.setSupplyer(supplyer);
 
         java.lang.String iccid = "RoToHkQnKxSpSmWyWkLpGrIhDoYsGz";
-        tawRmTestcard.setIccid(iccid);        
+        tawRmTestcard.setIccid(iccid);
 
         java.lang.String msisdn = "QzNkPeXxSrImBoClBkNrZdTjQqHjOq";
-        tawRmTestcard.setMsisdn(msisdn);        
+        tawRmTestcard.setMsisdn(msisdn);
 
         java.lang.String imsi = "VyYlVaFsHmYgFiCvInJrBdVpIpNcXr";
-        tawRmTestcard.setImsi(imsi);        
+        tawRmTestcard.setImsi(imsi);
 
         java.lang.String pin = "VoXyHuZhGvNfGfIpJrGuFmQxLbNoUc";
-        tawRmTestcard.setPin(pin);        
+        tawRmTestcard.setPin(pin);
 
         java.lang.String puk = "ExIoWfEiGqQzEkIpSlErNgPsDfPcOd";
-        tawRmTestcard.setPuk(puk);        
+        tawRmTestcard.setPuk(puk);
 
         java.lang.String operation = "KhEnBuNpXdVvXpXdQiPhUmPxMiPgXn";
-        tawRmTestcard.setOperation(operation);        
+        tawRmTestcard.setOperation(operation);
 
         java.lang.String openAccountDate = "JnDjGcThPtWoEqOyOxGcMiBdKxEcQy";
-        tawRmTestcard.setOpenAccountDate(openAccountDate);        
+        tawRmTestcard.setOpenAccountDate(openAccountDate);
 
         java.lang.String logoutDate = "DwJxWzHyNkYjKqScTuBmFkAaBkNxJc";
-        tawRmTestcard.setLogoutDate(logoutDate);        
+        tawRmTestcard.setLogoutDate(logoutDate);
 
         java.lang.String takeOverDate = "DpKtVrTeWzTkWwNcNyLsWzYgUdItUz";
-        tawRmTestcard.setTakeOverDate(takeOverDate);        
+        tawRmTestcard.setTakeOverDate(takeOverDate);
 
         java.lang.String state = "CzEyCwJmEyYsKfQgHlMbNkOoFmNbBy";
-        tawRmTestcard.setState(state);        
+        tawRmTestcard.setState(state);
 
         java.lang.String oldNumber = "XpAxGfEoOxEvGpHpGbFgRnGlVsTyKz";
-        tawRmTestcard.setOldNumber(oldNumber);        
+        tawRmTestcard.setOldNumber(oldNumber);
 
         dao.saveTawRmTestcard(tawRmTestcard);
 
@@ -102,33 +102,33 @@ public class TawRmTestcardDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String ascriptionPlace = "QmGoCgXcWsBgEgZpTlOyXuVoCyKmCq";
-       // tawRmTestcard.setAscriptionPlace(ascriptionPlace);        
+        // tawRmTestcard.setAscriptionPlace(ascriptionPlace);
         java.lang.String visitPlace = "VuIzFwJhDvPpWlSpFaQhQaAaJcNyOk";
-       // tawRmTestcard.setVisitPlace(visitPlace);        
+        // tawRmTestcard.setVisitPlace(visitPlace);
         java.lang.String supplyer = "KzIyOzNbZbPxViSoSwGmLgCwPoEhMqRbXtMqBrAmPvToScUbUj";
-        tawRmTestcard.setSupplyer(supplyer);        
+        tawRmTestcard.setSupplyer(supplyer);
         java.lang.String iccid = "TkSaDpGaJlScDoHqQhIhNjWhGdMiYv";
-        tawRmTestcard.setIccid(iccid);        
+        tawRmTestcard.setIccid(iccid);
         java.lang.String msisdn = "XyHhShNdDtKbKeJtLvHdQoBhHqTzLi";
-        tawRmTestcard.setMsisdn(msisdn);        
+        tawRmTestcard.setMsisdn(msisdn);
         java.lang.String imsi = "QaFcDyJdVxTpHgKoKzPdFiViDyKeVf";
-        tawRmTestcard.setImsi(imsi);        
+        tawRmTestcard.setImsi(imsi);
         java.lang.String pin = "YtSkGqGbIeCrBbNmHfFwNtJyVmSbWx";
-        tawRmTestcard.setPin(pin);        
+        tawRmTestcard.setPin(pin);
         java.lang.String puk = "FfWcWaJkOzPfNlCrLhVbVsXfOnYhVt";
-        tawRmTestcard.setPuk(puk);        
+        tawRmTestcard.setPuk(puk);
         java.lang.String operation = "EsFxCkYtEkMzXaQeQmTkTvJnJnVuZv";
-        tawRmTestcard.setOperation(operation);        
+        tawRmTestcard.setOperation(operation);
         java.lang.String openAccountDate = "AsPkMvMiWmQbUcXpNyBbMgTfHeFqNm";
-        tawRmTestcard.setOpenAccountDate(openAccountDate);        
+        tawRmTestcard.setOpenAccountDate(openAccountDate);
         java.lang.String logoutDate = "WmPiYiXrXkLjBsMjEcKePpYnTdGrVc";
-        tawRmTestcard.setLogoutDate(logoutDate);        
+        tawRmTestcard.setLogoutDate(logoutDate);
         java.lang.String takeOverDate = "LqKfKfEaWaOnThNnEyPzLmSdGzEsTb";
-        tawRmTestcard.setTakeOverDate(takeOverDate);        
+        tawRmTestcard.setTakeOverDate(takeOverDate);
         java.lang.String state = "GwEaJnRvUiSlRvNuQkOvEeUcZjRsYt";
-        tawRmTestcard.setState(state);        
+        tawRmTestcard.setState(state);
         java.lang.String oldNumber = "KcSsSsRzIqUjLoGmCaDmFmXwZnTiQl";
-        tawRmTestcard.setOldNumber(oldNumber);        
+        tawRmTestcard.setOldNumber(oldNumber);
 
         dao.saveTawRmTestcard(tawRmTestcard);
 

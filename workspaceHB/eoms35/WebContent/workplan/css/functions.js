@@ -1,59 +1,49 @@
 /***************************
-// ÓÃÓÚÒ³Ãæ¹«ÓÃ¹¦ÄÜ
-/***************************/
+ // ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æ¹«ï¿½Ã¹ï¿½ï¿½ï¿½
+ /***************************/
 
-//µ¯³öÄ£Ì¬´°¿Ú
-function popupModal(sURL,params){
-	if (params)
-	{
-		dWin = showModalDialog(sURL, window, params);
-	}
-	else{
-		dWin = showModalDialog(sURL, window, "status:no;help:no;scroll:auto;resizable:yes;dialogHeight:450px;dialogWidth:480px;");
-	}
+//ï¿½ï¿½ï¿½ï¿½Ä£Ì¬ï¿½ï¿½ï¿½ï¿½
+function popupModal(sURL, params) {
+    if (params) {
+        dWin = showModalDialog(sURL, window, params);
+    } else {
+        dWin = showModalDialog(sURL, window, "status:no;help:no;scroll:auto;resizable:yes;dialogHeight:450px;dialogWidth:480px;");
+    }
 }
 
-function JustifyNull1(field)
-{
-  var Ret = true
-  var str = "" + field.value
-  if(str.length)
-  {
-    for(var i=0;i<str.length;i++)
-    if(str.charAt(i)!=" ")
-      break
-    if(i>=str.length)
-      field.value = ""
-  }
-  if (field.value.length==0)
-    Ret = false
-  return (Ret)
-}// ÅÐ¶ÏÊäÈë×Ö¶ÎÊÇ·ñÎª¿Õ
-
-function  compareLength( field,minLength,maxLength,msg )
-{
-  var totallength=0;
-
-  for (var i=0;i<field.value.length;i++)
-  {
-    var str = field.value;
-    var intCode=str.charCodeAt(i);
-
-    if (intCode>=0&&intCode<=128)
-    {
-      totallength=totallength+1;	//·ÇÖÐÎÄµ¥¸ö×Ö·û³¤¶È¼Ó 1
+function JustifyNull1(field) {
+    var Ret = true
+    var str = "" + field.value
+    if (str.length) {
+        for (var i = 0; i < str.length; i++)
+            if (str.charAt(i) != " ")
+                break
+        if (i >= str.length)
+            field.value = ""
     }
-    else
-    {
-      totallength=totallength+2;	//ÖÐÎÄ×Ö·û³¤¶ÈÔò¼Ó 2
-    }
-    if ( totallength<minLength||totallength>maxLength )
-    {
-      alert( msg );
-      field.focus();
-      return false;
-    }
-  } //end for
-  return true;
-} //Ó¢ÎÄ×Ö·ûºÍÖÐÎÄ×Ö·û³¤¶ÈµÄ±È½Ï
+    if (field.value.length == 0)
+        Ret = false
+    return (Ret)
+}// ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½
+
+function compareLength(field, minLength, maxLength, msg) {
+    var totallength = 0;
+
+    for (var i = 0; i < field.value.length; i++) {
+        var str = field.value;
+        var intCode = str.charCodeAt(i);
+
+        if (intCode >= 0 && intCode <= 128) {
+            totallength = totallength + 1;	//ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½È¼ï¿½ 1
+        } else {
+            totallength = totallength + 2;	//ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2
+        }
+        if (totallength < minLength || totallength > maxLength) {
+            alert(msg);
+            field.focus();
+            return false;
+        }
+    } //end for
+    return true;
+} //Ó¢ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ÈµÄ±È½ï¿½
 

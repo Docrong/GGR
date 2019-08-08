@@ -12,15 +12,14 @@ import com.boco.eoms.commons.exceptions.base.BusinessException;
  * <p>
  * Date:2007-10-24 10:00:48
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictException extends BusinessException {
 
     /**
-     *  
+     *
      */
     public DictException() {
         super();

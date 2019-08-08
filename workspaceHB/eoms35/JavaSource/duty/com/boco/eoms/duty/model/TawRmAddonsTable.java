@@ -1,108 +1,108 @@
 package com.boco.eoms.duty.model;
 
- 
-public class TawRmAddonsTable  {
-	private String id; // 标识
 
-	private String name; // 中文名
+public class TawRmAddonsTable {
+    private String id; // 标识
 
-	private String remark; // 备注
+    private String name; // 中文名
 
-	private String model; // 模块
+    private String remark; // 备注
 
-	private String url;// 地址
+    private String model; // 模块
 
-	private String roomId; // 机房名称
+    private String url;// 地址
 
-	// private String deptId; // 名称
+    private String roomId; // 机房名称
 
-	private String creatUser; // 创建人
+    // private String deptId; // 名称
 
-	private String creatTime; // 创建时间
-	private String roomName ; 
-	private String deleted;
+    private String creatUser; // 创建人
 
-	public String getDeleted() {
-		return deleted;
-	}
+    private String creatTime; // 创建时间
+    private String roomName;
+    private String deleted;
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+    public String getDeleted() {
+        return deleted;
+    }
 
-	public String getId() {
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
 
-		return id;
-	}
+    public String getId() {
 
-	public void setId(String id) {
-		this.id = id;
+        return id;
+    }
 
-	}
+    public void setId(String id) {
+        this.id = id;
 
-	public String getCreatTime() {
-		return creatTime;
-	}
+    }
 
-	public void setCreatTime(String creatTime) {
-		this.creatTime = creatTime;
-	}
+    public String getCreatTime() {
+        return creatTime;
+    }
 
-	public String getCreatUser() {
-		return creatUser;
-	}
+    public void setCreatTime(String creatTime) {
+        this.creatTime = creatTime;
+    }
 
-	public void setCreatUser(String creatUser) {
-		this.creatUser = creatUser;
-	}
+    public String getCreatUser() {
+        return creatUser;
+    }
 
-	public String getModel() {
-		return model;
-	}
+    public void setCreatUser(String creatUser) {
+        this.creatUser = creatUser;
+    }
 
-	public void setModel(String model) {
-		this.model = model;
-	}
+    public String getModel() {
+        return model;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setModel(String model) {
+        this.model = model;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public String getRoomId() {
-		return roomId;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
-	}
+    public String getRoomId() {
+        return roomId;
+    }
 
-	public String getUrl() {
-		return url;
-	}
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+    public String getUrl() {
+        return url;
+    }
 
-	public String getRoomName() {
-		return roomName;
-	}
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
-	public void setRoomName(String roomName) {
-		this.roomName = roomName;
-	}
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
 
 /*	
 	CREATE TABLE informix.taw_rm_addons(

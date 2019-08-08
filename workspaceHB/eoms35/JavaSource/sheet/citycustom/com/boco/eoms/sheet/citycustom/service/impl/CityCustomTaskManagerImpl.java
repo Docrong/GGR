@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.citycustom.service.ICityCustomTaskManager;
  * <p>
  * Fri Sep 28 14:06:48 CST 2012
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CityCustomTaskManagerImpl extends TaskServiceImpl implements  ICityCustomTaskManager {
- 
- }
+
+public class CityCustomTaskManagerImpl extends TaskServiceImpl implements ICityCustomTaskManager {
+
+}

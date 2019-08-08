@@ -19,13 +19,13 @@ FlowViewWorkSpace.FLOW_PATH = FlowViewWorkSpace.BASE_PATH + "/flowview";
  * 建立工作空间
  */
 FlowViewWorkSpace.build = function (webAppPath) {
- 	//引入所需要的资源，资源加载顺序不能更改
-	FlowViewWorkSpace.BASE_PATH = webAppPath + FlowViewWorkSpace.BASE_PATH;
+    //引入所需要的资源，资源加载顺序不能更改
+    FlowViewWorkSpace.BASE_PATH = webAppPath + FlowViewWorkSpace.BASE_PATH;
     FlowViewWorkSpace.FLOW_PATH = webAppPath + FlowViewWorkSpace.FLOW_PATH;
-	//
-	BuildLibrary.loadCSS(FlowViewWorkSpace.FLOW_PATH + "/css/flowview.css", "GB2312");
+    //
+    BuildLibrary.loadCSS(FlowViewWorkSpace.FLOW_PATH + "/css/flowview.css", "GB2312");
 
-	//
+    //
     BuildLibrary.loadJS(FlowViewWorkSpace.BASE_PATH + "/util/Toolkit.js", "GB2312");
     BuildLibrary.loadJS(FlowViewWorkSpace.BASE_PATH + "/base/eoms.js", "UTF-8");
     BuildLibrary.loadJS(FlowViewWorkSpace.BASE_PATH + "/util/util.js");
@@ -40,6 +40,7 @@ FlowViewWorkSpace.build = function (webAppPath) {
  */
 function BuildLibrary() {
 }
+
 BuildLibrary.loadJS = function (url, charset) {
     if (!charset) {
         charset = "UTF-8";

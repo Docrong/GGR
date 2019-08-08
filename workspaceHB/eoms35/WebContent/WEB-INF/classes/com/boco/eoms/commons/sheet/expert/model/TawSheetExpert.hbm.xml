@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,116 +13,116 @@
             table="taw_sheet_expert"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="increment">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="increment">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="expertName"
+                name="expertName"
                 length="50"
         >
 
         </property>
 
         <property
-            name="postName"
+                name="postName"
                 length="50"
         >
 
         </property>
 
         <property
-            name="deptId"
+                name="deptId"
                 length="50"
         >
 
         </property>
 
         <property
-            name="phone"
+                name="phone"
                 length="50"
         >
 
         </property>
 
         <property
-            name="email"
+                name="email"
                 length="50"
         >
 
         </property>
 
         <property
-            name="postStartTime"
+                name="postStartTime"
                 length="100"
         >
 
         </property>
 
         <property
-            name="postEndTime"
+                name="postEndTime"
                 length="100"
         >
 
         </property>
 
         <property
-            name="expertType"
+                name="expertType"
                 length="50"
         >
 
         </property>
 
         <property
-            name="acceptCount"
+                name="acceptCount"
                 length="50"
         >
-       </property>
-       
-       <property
-            name="speId"
+        </property>
+
+        <property
+                name="speId"
                 length="100"
         >
 
         </property>
 
         <property
-            name="expertState"
+                name="expertState"
                 length="100"
         >
 
         </property>
 
         <property
-            name="stateStartTime"
+                name="stateStartTime"
                 length="50"
         >
 
         </property>
 
         <property
-            name="stateEndTime"
+                name="stateEndTime"
                 length="50"
         >
-         </property>
-         
-          <property
-            name="deleted"
+        </property>
+
+        <property
+                name="deleted"
                 length="10"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

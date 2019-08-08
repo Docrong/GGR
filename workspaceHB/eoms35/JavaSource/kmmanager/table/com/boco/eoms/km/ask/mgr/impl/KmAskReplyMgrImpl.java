@@ -17,51 +17,51 @@ import com.boco.eoms.km.ask.dao.KmAskReplyDao;
  * <p>
  * Tue Aug 04 15:52:08 CST 2009
  * </p>
- * 
+ *
  * @author lvweihua
  * @version 1.0
- * 
  */
 public class KmAskReplyMgrImpl implements KmAskReplyMgr {
- 
-	private KmAskReplyDao  kmAskReplyDao;
- 	
-	public KmAskReplyDao getKmAskReplyDao() {
-		return this.kmAskReplyDao;
-	}
- 	
-	public void setKmAskReplyDao(KmAskReplyDao kmAskReplyDao) {
-		this.kmAskReplyDao = kmAskReplyDao;
-	}
- 	
+
+    private KmAskReplyDao kmAskReplyDao;
+
+    public KmAskReplyDao getKmAskReplyDao() {
+        return this.kmAskReplyDao;
+    }
+
+    public void setKmAskReplyDao(KmAskReplyDao kmAskReplyDao) {
+        this.kmAskReplyDao = kmAskReplyDao;
+    }
+
     public List getKmAskReplys() {
-    	return kmAskReplyDao.getKmAskReplys();
+        return kmAskReplyDao.getKmAskReplys();
     }
-    
+
     /**
-	 * 根据问题查询所有回答
-	 * @param questionId
-	 * @return
-	 */
-	public List getKmAskReplysByQuestionId(final String questionId){
-		return kmAskReplyDao.getKmAskReplysByQuestionId(questionId);
-	}
-    
+     * 根据问题查询所有回答
+     *
+     * @param questionId
+     * @return
+     */
+    public List getKmAskReplysByQuestionId(final String questionId) {
+        return kmAskReplyDao.getKmAskReplysByQuestionId(questionId);
+    }
+
     public KmAskReply getKmAskReply(final String id) {
-    	return kmAskReplyDao.getKmAskReply(id);
+        return kmAskReplyDao.getKmAskReply(id);
     }
-    
+
     public void saveKmAskReply(KmAskReply kmAskReply) {
-    	kmAskReplyDao.saveKmAskReply(kmAskReply);
+        kmAskReplyDao.saveKmAskReply(kmAskReply);
     }
-    
+
     public void removeKmAskReply(final String id) {
-    	kmAskReplyDao.removeKmAskReply(id);
+        kmAskReplyDao.removeKmAskReply(id);
     }
-    
+
     public Map getKmAskReplys(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmAskReplyDao.getKmAskReplys(curPage, pageSize, whereStr);
-	}
-	
+                              final String whereStr) {
+        return kmAskReplyDao.getKmAskReplys(curPage, pageSize, whereStr);
+    }
+
 }

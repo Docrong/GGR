@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.focusresourceerrata.service.IFocusResourceErrataFlowM
  * <p>
  * Thu May 10 09:23:09 CST 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class FocusResourceErrataFlowManagerImpl extends BusinessFlowServiceImpl implements IFocusResourceErrataFlowManager {
- 
- }
+
+public class FocusResourceErrataFlowManagerImpl extends BusinessFlowServiceImpl implements IFocusResourceErrataFlowManager {
+
+}

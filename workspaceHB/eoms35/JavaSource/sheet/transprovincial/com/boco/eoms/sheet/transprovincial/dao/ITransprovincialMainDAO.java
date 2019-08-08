@@ -12,15 +12,14 @@ import com.boco.eoms.sheet.base.dao.IMainDAO;
  * <p>
  * Thu Sep 27 14:32:21 CST 2012
  * </p>
- * 
+ *
  * @author ph
  * @version 3.5
- * 
  */
- 
- public interface ITransprovincialMainDAO extends IMainDAO  {
- 
- }
+
+public interface ITransprovincialMainDAO extends IMainDAO {
+
+}
  
 
 

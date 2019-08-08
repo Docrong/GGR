@@ -56,12 +56,12 @@ public class TawSheetAccessDaoHibernate extends BaseDaoHibernate implements ITaw
 
     /**
      * @see com.boco.eoms.sheet.tool.access.dao.TawSheetAccessDao#saveTawSheetAccess(TawSheetAccess tawSheetAccess)
-     */    
+     */
     public void saveTawSheetAccess(final TawSheetAccess tawSheetAccess) {
         if ((tawSheetAccess.getId() == null) || (tawSheetAccess.getId().equals("")))
-			getHibernateTemplate().save(tawSheetAccess);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSheetAccess);
+            getHibernateTemplate().save(tawSheetAccess);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSheetAccess);
     }
 
     /**
@@ -70,101 +70,105 @@ public class TawSheetAccessDaoHibernate extends BaseDaoHibernate implements ITaw
     public void removeTawSheetAccess(final Integer id) {
         getHibernateTemplate().delete(getTawSheetAccess(id));
     }
+
     /**
-     * @see com.boco.eoms.sheet.tool.access.dao.TawSheetAccessDao#getTawSheetAccesss(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.sheet.tool.access.dao.TawSheetAccessDao#getTawSheetAccesss(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawSheetAccesss(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSheetAccesss(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSheetAccess
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSheetAccess";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSheetAccess";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.sheet.tool.access.dao.TawSheetAccessDao#getTawSheetAccesss(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawSheetAccesss(final Integer curPage, final Integer pageSize) {
-			return this.getTawSheetAccesss(curPage,pageSize,null);
-		}
+        return this.getTawSheetAccesss(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.sheet.tool.access.dao.TawSheetAccessDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawSheetAccess obj where obj.parAccessid='"
-			+ parentId + "'";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawSheetAccess obj where obj.parAccessid='"
+                + parentId + "'";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 
-	public TawSheetAccess getAccessByAccessId(String accessid) {
-		String hql = " from TawSheetAccess obj where obj.accessid='"+accessid+"'";
-        return (TawSheetAccess)getHibernateTemplate().find(hql).get(TawSystemAreaUtil.AREA_DEFAULT_INTVAL);
-	}
+    public TawSheetAccess getAccessByAccessId(String accessid) {
+        String hql = " from TawSheetAccess obj where obj.accessid='" + accessid + "'";
+        return (TawSheetAccess) getHibernateTemplate().find(hql).get(TawSystemAreaUtil.AREA_DEFAULT_INTVAL);
+    }
 
-	public List getAllSonAccessByAreaid(String accessid) {
-		String hql = " from TawSheetAccess obj where obj.accessid like '"+accessid+"%'";
-   	 return (ArrayList)getHibernateTemplate().find(hql);
-	}
+    public List getAllSonAccessByAreaid(String accessid) {
+        String hql = " from TawSheetAccess obj where obj.accessid like '" + accessid + "%'";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 
-	public List getSameLevelAccess(String paraccessid, Integer ordercode) {
-		 String hql = " from TawSheetAccess obj where obj.parAccessid='"+paraccessid+"' and sysarea.ordercode='"+ordercode+"'";
-    	 return (ArrayList)getHibernateTemplate().find(hql);
-	}
+    public List getSameLevelAccess(String paraccessid, Integer ordercode) {
+        String hql = " from TawSheetAccess obj where obj.parAccessid='" + paraccessid + "' and sysarea.ordercode='" + ordercode + "'";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 
-	public List getSonAccessByAccessId(String accessid) {
-		 String hql = " from TawSheetAccess obj where obj.accessid like '"+accessid+"%'";
-    	 return (ArrayList)getHibernateTemplate().find(hql);
-	}
+    public List getSonAccessByAccessId(String accessid) {
+        String hql = " from TawSheetAccess obj where obj.accessid like '" + accessid + "%'";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 
-	public boolean isExitTaskName(String processname,String taskname) {
-		 String hql = " from TawSheetAccess obj where obj.processname='"+processname+"' and obj.taskname='"+taskname+"'";
-    	 List list = (ArrayList)getHibernateTemplate().find(hql);
-    	 if( list != null && list.size() >0 ){
-    		 return true;
-    	 }else{
-    	   return false;
-    	 }
-	}
+    public boolean isExitTaskName(String processname, String taskname) {
+        String hql = " from TawSheetAccess obj where obj.processname='" + processname + "' and obj.taskname='" + taskname + "'";
+        List list = (ArrayList) getHibernateTemplate().find(hql);
+        if (list != null && list.size() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	/**
-	 * 根据PROCESSNAME TASKNAME查询流程附件模板
-	 * @param processname
-	 * @param taskname
-	 * @return
-	 */
-	public TawSheetAccess getAccessByPronameAndTaskname(String processname,String taskname){
-		String hql = " from TawSheetAccess obj where obj.processname='"+processname+"' and obj.taskname='"+taskname+"'";
-		 if( taskname==null || taskname.equals("")){
-			 hql=" from TawSheetAccess obj where obj.processname='"+processname+"' and (obj.taskname is null or obj.taskname='')";
-		 }
-		 
-    	 List list = (ArrayList)getHibernateTemplate().find(hql);
-    	
-    	 TawSheetAccess access = new TawSheetAccess();
-    	 
-    	 if( list !=null && list.size()>0){
-    		 access = (TawSheetAccess)list.get(0);
-    	 }else{
-    		 access = null;
-    	 }
-    	 return access;
-	}
-	
-	
+    /**
+     * 根据PROCESSNAME TASKNAME查询流程附件模板
+     *
+     * @param processname
+     * @param taskname
+     * @return
+     */
+    public TawSheetAccess getAccessByPronameAndTaskname(String processname, String taskname) {
+        String hql = " from TawSheetAccess obj where obj.processname='" + processname + "' and obj.taskname='" + taskname + "'";
+        if (taskname == null || taskname.equals("")) {
+            hql = " from TawSheetAccess obj where obj.processname='" + processname + "' and (obj.taskname is null or obj.taskname='')";
+        }
+
+        List list = (ArrayList) getHibernateTemplate().find(hql);
+
+        TawSheetAccess access = new TawSheetAccess();
+
+        if (list != null && list.size() > 0) {
+            access = (TawSheetAccess) list.get(0);
+        } else {
+            access = null;
+        }
+        return access;
+    }
+
+
 }

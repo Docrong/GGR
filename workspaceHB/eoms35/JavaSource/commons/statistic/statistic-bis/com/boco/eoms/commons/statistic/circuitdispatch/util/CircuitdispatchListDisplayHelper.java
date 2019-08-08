@@ -7,24 +7,24 @@ import com.boco.eoms.commons.statistic.circuitdispatch.vo.StatDetailVOCircuitdis
 
 
 public class CircuitdispatchListDisplayHelper extends TableDecorator {
-	
-public String getSenduser(){
-		
-	StatDetailVOCircuitdispatch vo = (StatDetailVOCircuitdispatch) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenduserid(), "statBaseUserId2name_v35");
-		
-	}
-	
-	public String getSenddept() {
-		StatDetailVOCircuitdispatch vo = (StatDetailVOCircuitdispatch) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenddeptid(), "statBaseDeptId2name_v35");
 
-	}
+    public String getSenduser() {
 
-	public String getStatus() {
-		StatDetailVOCircuitdispatch vo = (StatDetailVOCircuitdispatch) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getStatus(),"statSubRoleId2name_v35");
+        StatDetailVOCircuitdispatch vo = (StatDetailVOCircuitdispatch) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenduserid(), "statBaseUserId2name_v35");
 
-	}
+    }
+
+    public String getSenddept() {
+        StatDetailVOCircuitdispatch vo = (StatDetailVOCircuitdispatch) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenddeptid(), "statBaseDeptId2name_v35");
+
+    }
+
+    public String getStatus() {
+        StatDetailVOCircuitdispatch vo = (StatDetailVOCircuitdispatch) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getStatus(), "statSubRoleId2name_v35");
+
+    }
 
 }

@@ -14,8 +14,8 @@ public class StrTrans {
     }
 
     public static String replaceStr(String srcStr, String oldStr, String newStr) {
-        String leftStr,rightStr;
-        int leftDot,rightDot;
+        String leftStr, rightStr;
+        int leftDot, rightDot;
         if (Util.isNull(srcStr)) {
             srcStr = "";
         } else {
@@ -47,11 +47,11 @@ public class StrTrans {
                 .replaceAll("&", "&amp;")
                 .replaceAll("<", "&lt;")
                 .replaceAll(">", "&gt;")
-                .replaceAll("\r\n","&lt;br&gt;")
-                .replaceAll("\n\r","&lt;br&gt;")
-                .replaceAll("\n","&lt;br&gt;")
-                .replaceAll("\"","&#92;&#34;")
-                .replaceAll("\\\\","&#92;&#92;");
+                .replaceAll("\r\n", "&lt;br&gt;")
+                .replaceAll("\n\r", "&lt;br&gt;")
+                .replaceAll("\n", "&lt;br&gt;")
+                .replaceAll("\"", "&#92;&#34;")
+                .replaceAll("\\\\", "&#92;&#92;");
     }
 
     public static String repalceFromHtml(String ValStr) {

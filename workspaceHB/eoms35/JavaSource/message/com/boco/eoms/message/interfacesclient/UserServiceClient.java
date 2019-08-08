@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.util.Collection;
 import java.util.HashMap;
 import javax.xml.namespace.QName;
+
 import org.codehaus.xfire.XFireRuntimeException;
 import org.codehaus.xfire.aegis.AegisBindingProvider;
 import org.codehaus.xfire.annotations.AnnotationServiceFactory;
@@ -24,9 +25,9 @@ public class UserServiceClient {
 
     public UserServiceClient() {
         create0();
-        Endpoint UserServicePortTypeLocalEndpointEP = service0 .addEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServicePortTypeLocalEndpoint"), new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServicePortTypeLocalBinding"), "xfire.local://UserService");
+        Endpoint UserServicePortTypeLocalEndpointEP = service0.addEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServicePortTypeLocalEndpoint"), new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServicePortTypeLocalBinding"), "xfire.local://UserService");
         endpoints.put(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServicePortTypeLocalEndpoint"), UserServicePortTypeLocalEndpointEP);
-        Endpoint UserServiceHttpPortEP = service0 .addEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServiceHttpPort"), new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServiceHttpBinding"), "http://10.32.2.136:8085/UserService/services/UserService");
+        Endpoint UserServiceHttpPortEP = service0.addEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServiceHttpPort"), new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServiceHttpBinding"), "http://10.32.2.136:8085/UserService/services/UserService");
         endpoints.put(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServiceHttpPort"), UserServiceHttpPortEP);
     }
 
@@ -66,7 +67,7 @@ public class UserServiceClient {
     }
 
     public UserServicePortType getUserServicePortTypeLocalEndpoint() {
-        return ((UserServicePortType)(this).getEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServicePortTypeLocalEndpoint")));
+        return ((UserServicePortType) (this).getEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServicePortTypeLocalEndpoint")));
     }
 
     public UserServicePortType getUserServicePortTypeLocalEndpoint(String url) {
@@ -76,7 +77,7 @@ public class UserServiceClient {
     }
 
     public UserServicePortType getUserServiceHttpPort() {
-        return ((UserServicePortType)(this).getEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServiceHttpPort")));
+        return ((UserServicePortType) (this).getEndpoint(new QName("http://10.32.2.136:8085/UserService/services/userservice", "UserServiceHttpPort")));
     }
 
     public UserServicePortType getUserServiceHttpPort(String url) {
@@ -86,19 +87,19 @@ public class UserServiceClient {
     }
 
     public static void main(String[] args) {
-        
+
 
         UserServiceClient client = new UserServiceClient();
-        
-		//create a default service endpoint
+
+        //create a default service endpoint
         UserServicePortType service = client.getUserServiceHttpPort();
-        
-		//TODO: Add custom client code here
-        		//
-        		//service.yourServiceOperationHere();
-        
-		System.out.println("test client completed");
-        		System.exit(0);
+
+        //TODO: Add custom client code here
+        //
+        //service.yourServiceOperationHere();
+
+        System.out.println("test client completed");
+        System.exit(0);
     }
 
 }

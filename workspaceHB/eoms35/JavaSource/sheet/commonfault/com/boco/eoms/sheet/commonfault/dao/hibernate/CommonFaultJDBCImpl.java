@@ -5,7 +5,7 @@ import com.boco.eoms.sheet.commonfault.dao.ICommonFaultJDBC;
 
 public class CommonFaultJDBCImpl extends BaseDaoJdbc implements ICommonFaultJDBC {
 
-	public void updateSql(String sql){
-		getJdbcTemplate().execute(sql);
-	}
+    public void updateSql(String sql) {
+        getJdbcTemplate().execute(sql);
+    }
 }

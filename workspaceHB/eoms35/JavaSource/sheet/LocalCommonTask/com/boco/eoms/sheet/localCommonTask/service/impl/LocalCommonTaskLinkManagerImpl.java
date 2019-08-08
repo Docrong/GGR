@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.localCommonTask.service.ILocalCommonTaskLinkManager;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class LocalCommonTaskLinkManagerImpl extends LinkServiceImpl implements ILocalCommonTaskLinkManager {
- 
- }
+
+public class LocalCommonTaskLinkManagerImpl extends LinkServiceImpl implements ILocalCommonTaskLinkManager {
+
+}

@@ -11,10 +11,10 @@ import com.boco.eoms.sheet.businesspilot.service.IBusinessPilotTaskManager;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class BusinessPilotTaskManagerImpl extends TaskServiceImpl implements IBusinessPilotTaskManager{
+public class BusinessPilotTaskManagerImpl extends TaskServiceImpl implements IBusinessPilotTaskManager {
 
 }

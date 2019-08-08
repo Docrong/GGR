@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WorkFlowRule name="Complaint" description="投诉处理流程">
-   <flow-define id="ComplaintProcess" description="投诉处理流程">
-     <phase-id id="receive" type="receive">
-       <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@214" condition="${operateType}==0" name="新建派发"/>
-       <to-phase-id id="DraftHumTask" role="dealPerformer@214" condition="${operateType}==22" name="保存草稿"/>   
-     </phase-id>
-     <phase-id id="DraftHumTask" name="草稿" type="operate">       
-       <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@214" condition="${operateType}==3" name="草稿派发"/>
-     </phase-id> 
-     <phase-id id="ByRejectHumTask" name="驳回" type="operate">       
-       <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@214" condition="${operateType}==53" name="重新派发"/>
-     </phase-id>     
-     <phase-id id="FirstExcuteHumTask" name="一级处理" type="operate">       
-       <to-phase-id id="SecondExcuteHumTask" role="dealPerformer@215" condition="${operateType}==1" name="移交T2处理"/>
-       <to-phase-id id="CheckingHumTask" role="dealPerformer@217" condition="${operateType}==46" name="处理完成"/>
-       <to-phase-id id="ByRejectHumTask" role="" condition="${operateType}==4" name="驳回"/> 
-     </phase-id>     
-     <phase-id id="SecondExcuteHumTask" name="二级处理" type="operate">
-       <to-phase-id id="CheckingHumTask" role="dealPerformer@217" condition="${operateType}==46" name="处理完成"/>
-       <to-phase-id id="FirstExcuteHumTask" role="" condition="${operateType}==4" name="驳回"/>
-     </phase-id>
-     <phase-id id="CheckingHumTask" name="质检" type="operate">
-     	<to-phase-id id="FirstExcuteHumTask" role="" condition="" name="质检不通过"/>
-     	<to-phase-id id="SecondExcuteHumTask" role="" condition="" name="质检不通过"/>
-     	<to-phase-id id="HoldHumTask" role="" condition="" name="质检通过"/>
-     </phase-id>
-     <phase-id id="HoldHumTask" name="归档工单" type="operate">
-     	<to-phase-id id="FirstExcuteHumTask" role="" condition="" name="退回"/>
-     	<to-phase-id id="SecondExcuteHumTask" role="" condition="" name="退回"/>           
-     </phase-id>
-  </flow-define>
+    <flow-define id="ComplaintProcess" description="投诉处理流程">
+        <phase-id id="receive" type="receive">
+            <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@214" condition="${operateType}==0" name="新建派发"/>
+            <to-phase-id id="DraftHumTask" role="dealPerformer@214" condition="${operateType}==22" name="保存草稿"/>
+        </phase-id>
+        <phase-id id="DraftHumTask" name="草稿" type="operate">
+            <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@214" condition="${operateType}==3" name="草稿派发"/>
+        </phase-id>
+        <phase-id id="ByRejectHumTask" name="驳回" type="operate">
+            <to-phase-id id="FirstExcuteHumTask" role="dealPerformer@214" condition="${operateType}==53" name="重新派发"/>
+        </phase-id>
+        <phase-id id="FirstExcuteHumTask" name="一级处理" type="operate">
+            <to-phase-id id="SecondExcuteHumTask" role="dealPerformer@215" condition="${operateType}==1" name="移交T2处理"/>
+            <to-phase-id id="CheckingHumTask" role="dealPerformer@217" condition="${operateType}==46" name="处理完成"/>
+            <to-phase-id id="ByRejectHumTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="SecondExcuteHumTask" name="二级处理" type="operate">
+            <to-phase-id id="CheckingHumTask" role="dealPerformer@217" condition="${operateType}==46" name="处理完成"/>
+            <to-phase-id id="FirstExcuteHumTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="CheckingHumTask" name="质检" type="operate">
+            <to-phase-id id="FirstExcuteHumTask" role="" condition="" name="质检不通过"/>
+            <to-phase-id id="SecondExcuteHumTask" role="" condition="" name="质检不通过"/>
+            <to-phase-id id="HoldHumTask" role="" condition="" name="质检通过"/>
+        </phase-id>
+        <phase-id id="HoldHumTask" name="归档工单" type="operate">
+            <to-phase-id id="FirstExcuteHumTask" role="" condition="" name="退回"/>
+            <to-phase-id id="SecondExcuteHumTask" role="" condition="" name="退回"/>
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>

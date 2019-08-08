@@ -28,99 +28,98 @@ import com.boco.eoms.km.statics.util.StatisticMethod;
  * <p>
  * Mon Mar 30 14:39:14 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() ljt
  * @moudle.getVersion() 0.1
- * 
  */
 public final class PersonalContributeStatisticAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
-	
-	/**
-	 * 分页显示知识编写人本期（周、月、季、年）知识贡献情况统计表列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {				
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				PersonalContributeStatisticConstants.PERSONALCONTRIBUTESTATISTIC_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
 
-		String startDate = StaticMethod.null2String(request.getParameter("startDate"));
-		String endDate = StaticMethod.null2String(request.getParameter("endDate"));		
-		
-		java.util.Date startDateTime = null;
-		java.util.Date endDateTime = null;
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
 
-		//默认统计一周的指标
-		if("".equals(endDate)){
-			endDate = StaticMethod.getCurrentDateTime("yyyy-MM-dd");
-			endDateTime = StatisticMethod.stringToDate(endDate + " 23:59:59" , "yyyy-MM-dd HH:mm:ss");
 
-			java.util.Date newDate = StatisticMethod.countDate(endDateTime, -6);
-			startDate = StatisticMethod.dateToString(newDate, "yyyy-MM-dd");
-			startDateTime = StatisticMethod.stringToDate(startDate, "yyyy-MM-dd");
-		}
-		else {
-			endDateTime = StatisticMethod.stringToDate(endDate + " 23:59:59" , "yyyy-MM-dd HH:mm:ss");
-			startDateTime = StatisticMethod.stringToDate(startDate, "yyyy-MM-dd");
-		}
+    /**
+     * 分页显示知识编写人本期（周、月、季、年）知识贡献情况统计表列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                PersonalContributeStatisticConstants.PERSONALCONTRIBUTESTATISTIC_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
 
-		PersonalContributeStatisticMgr statisticMgr = (PersonalContributeStatisticMgr) getBean("personalContributeStatisticMgr");
-		Map map = (Map) statisticMgr.getPersonalContributeStatistics(pageIndex, pageSize, startDateTime, endDateTime);
-		List list = (List) map.get("result");
-		request.setAttribute(PersonalContributeStatisticConstants.PERSONALCONTRIBUTESTATISTIC_LIST, list);
-		
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
+        String startDate = StaticMethod.null2String(request.getParameter("startDate"));
+        String endDate = StaticMethod.null2String(request.getParameter("endDate"));
 
-		request.setAttribute("startDate", startDate);
-		request.setAttribute("endDate", endDate);
-		
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示知识编写人本期（周、月、季、年）知识贡献情况统计表列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		try {
+        java.util.Date startDateTime = null;
+        java.util.Date endDateTime = null;
+
+        //默认统计一周的指标
+        if ("".equals(endDate)) {
+            endDate = StaticMethod.getCurrentDateTime("yyyy-MM-dd");
+            endDateTime = StatisticMethod.stringToDate(endDate + " 23:59:59", "yyyy-MM-dd HH:mm:ss");
+
+            java.util.Date newDate = StatisticMethod.countDate(endDateTime, -6);
+            startDate = StatisticMethod.dateToString(newDate, "yyyy-MM-dd");
+            startDateTime = StatisticMethod.stringToDate(startDate, "yyyy-MM-dd");
+        } else {
+            endDateTime = StatisticMethod.stringToDate(endDate + " 23:59:59", "yyyy-MM-dd HH:mm:ss");
+            startDateTime = StatisticMethod.stringToDate(startDate, "yyyy-MM-dd");
+        }
+
+        PersonalContributeStatisticMgr statisticMgr = (PersonalContributeStatisticMgr) getBean("personalContributeStatisticMgr");
+        Map map = (Map) statisticMgr.getPersonalContributeStatistics(pageIndex, pageSize, startDateTime, endDateTime);
+        List list = (List) map.get("result");
+        request.setAttribute(PersonalContributeStatisticConstants.PERSONALCONTRIBUTESTATISTIC_LIST, list);
+
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+
+        request.setAttribute("startDate", startDate);
+        request.setAttribute("endDate", endDate);
+
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示知识编写人本期（周、月、季、年）知识贡献情况统计表列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        try {
 			/*
 			// --------------用于分页，得到当前页号-------------
 			final Integer pageIndex = new Integer(request
@@ -170,9 +169,9 @@ public final class PersonalContributeStatisticAction extends BaseAction {
 		    OutputStream os = response.getOutputStream();
 		    PrintStream ps = new PrintStream(os);
 		    feed.getDocument().writeTo(ps);*/
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

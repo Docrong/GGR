@@ -22,12 +22,14 @@ import com.boco.eoms.security.service.model.RegionDO;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author weis
  * @version 1.0
  */
 public interface RegionDAO {
-     /**
+    /**
      * name of the region
+     *
      * @param region region object to persist
      * @throws com.boco.common.security.exception.ObjectAlreadyExistException , SecurityManagerDaoException;
      */
@@ -35,6 +37,7 @@ public interface RegionDAO {
 
     /**
      * remove region object
+     *
      * @param region region object to remove , the parameter may be Region Object or id of the region
      * @throws com.boco.common.security.exception.ObjectNotExistException , SecurityManagerDaoException;
      */
@@ -42,6 +45,7 @@ public interface RegionDAO {
 
     /**
      * update region information
+     *
      * @param region region object to update
      * @throws com.boco.common.security.exception.ObjectNotExistException , SecurityManagerDaoException;
      */
@@ -49,6 +53,7 @@ public interface RegionDAO {
 
     /**
      * get all regions
+     *
      * @return vector of regions
      * @throws com.boco.common.security.exception.SecurityManagerDaoException
      */
@@ -74,6 +79,7 @@ public interface RegionDAO {
 
     /**
      * get parent region
+     *
      * @param rgnid rgn id to retrieve
      * @return parent region object , null if no parent region found
      */
@@ -81,6 +87,7 @@ public interface RegionDAO {
 
     /**
      * get sub region
+     *
      * @param id id of the region
      * @return sub region ids in hieracht order
      */
@@ -92,6 +99,7 @@ public interface RegionDAO {
 
     /**
      * get departments belong to a region
+     *
      * @param region region to retrieve
      * @return vector containing department collections
      * @throws com.boco.common.security.exception.SecurityManagerDaoException
@@ -99,5 +107,6 @@ public interface RegionDAO {
     public Vector getDepartmentList(RegionDO region) throws SecurityManagerDaoException;
 
     public void addRange(RegionDO region, RangeDO range) throws ObjectNotExistException, SecurityManagerDaoException;
-    public void removeRange(RegionDO region,RangeDO range) throws ObjectNotExistException, SecurityManagerDaoException;
+
+    public void removeRange(RegionDO region, RangeDO range) throws ObjectNotExistException, SecurityManagerDaoException;
 }

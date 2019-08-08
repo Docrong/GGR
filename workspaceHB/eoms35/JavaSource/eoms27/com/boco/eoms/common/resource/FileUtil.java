@@ -55,22 +55,24 @@ import java.util.Properties;
 
 
 /**
- *  FileUtil class.
- *  <br>
- *  Contains static methods for file access.
+ * FileUtil class.
+ * <br>
+ * Contains static methods for file access.
  */
 public class FileUtil {
-    /** log4j category */
+    /**
+     * log4j category
+     */
     private final static Category cat = Category.getInstance(FileUtil.class);
 
 
     /**
-     *  Read the text file whose fullpath is specified by the input <code>file</code> parameter,
-     *  and return the StringBuffer object containing its content.
+     * Read the text file whose fullpath is specified by the input <code>file</code> parameter,
+     * and return the StringBuffer object containing its content.
      *
      * @param file the file fullpath
-     * @return     the StringBuffer object containing the file content
-     * @exception Exception if any error occurs.
+     * @return the StringBuffer object containing the file content
+     * @throws Exception if any error occurs.
      */
     public static StringBuffer read(String file) throws Exception {
         BufferedReader in = null;
@@ -92,13 +94,13 @@ public class FileUtil {
 
 
     /**
-     *  Read the Java properties file specified by the input <code>propsFile</code>
-     *  parameter, and use its content to instance a new Properties object.
+     * Read the Java properties file specified by the input <code>propsFile</code>
+     * parameter, and use its content to instance a new Properties object.
      *
-     *  @param     propsFile the name of the Java Properties file to read
-     *  @return    the Properties object containing the properties readed
-     *             from the input file
-     *  @exception Exception if any error occcurs.
+     * @param propsFile the name of the Java Properties file to read
+     * @return the Properties object containing the properties readed
+     * from the input file
+     * @throws Exception if any error occcurs.
      */
     public static Properties getProperties(String propsFile) throws Exception {
         return getProperties(propsFile, false);
@@ -106,15 +108,15 @@ public class FileUtil {
 
 
     /**
-     *  Read the Java properties file specified by the input <code>propsFile</code>
-     *  parameter, and use its content to instance a new Properties object.
+     * Read the Java properties file specified by the input <code>propsFile</code>
+     * parameter, and use its content to instance a new Properties object.
      *
-     *  @param     propsFile        the name of the Java Properties file to read
-     *  @     addToSystemProsp true to add the retrieved properties to the global
-     *                              System properties; false otherwise.
-     *  @return    the Properties object containing the properties readed
-     *             from the input file
-     *  @exception Exception if any error occcurs.
+     * @param propsFile the name of the Java Properties file to read
+     * @return the Properties object containing the properties readed
+     * from the input file
+     * @throws Exception if any error occcurs.
+     * @ addToSystemProsp true to add the retrieved properties to the global
+     * System properties; false otherwise.
      */
     public static Properties getProperties(String propsFile, boolean addToSystemProps) throws Exception {
         FileInputStream fis = null;
@@ -175,15 +177,15 @@ public class FileUtil {
     //0:success
     //1:value is not exist
     //2:delete failure
-    public static int deleteFile(String fileName){
-        int result=0;
+    public static int deleteFile(String fileName) {
+        int result = 0;
         File file = new File(fileName);
-        if(file.exists()){
-            if(!file.delete())
-               result = 2;
+        if (file.exists()) {
+            if (!file.delete())
+                result = 2;
 
-        }else{
-            result=1;
+        } else {
+            result = 1;
         }
         return result;
 

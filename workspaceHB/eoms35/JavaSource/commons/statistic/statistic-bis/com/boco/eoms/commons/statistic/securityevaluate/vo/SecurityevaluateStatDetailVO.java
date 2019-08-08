@@ -3,77 +3,76 @@
 import com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO;
 
 public class SecurityevaluateStatDetailVO extends StatDetailVO {
-	
-	private String overtimeDept="及时";
 
-	private String mainid;
-	
-	private String sheetid;
-	
-	private String title;
-	
-	private String senddeptid;
-	
-	private String operateuserid;
-	
-	private String endtime;
+    private String overtimeDept = "及时";
 
-	public String getOvertimeDept() {
-		return overtimeDept;
-	}
+    private String mainid;
 
-	public void setOvertimeDept(String overtimeDept) {
-		this.overtimeDept = overtimeDept;
-	}
+    private String sheetid;
 
-	public String getMainid() {
-		return mainid;
-	}
+    private String title;
 
-	public void setMainid(String mainid) {
-		this.mainid = mainid;
-	}
+    private String senddeptid;
 
-	public String getSheetid() {
-		return sheetid;
-	}
+    private String operateuserid;
 
-	public void setSheetid(String sheetid) {
-		this.sheetid = sheetid;
-	}
+    private String endtime;
 
-	public String getTitle() {
-		return title;
-	}
+    public String getOvertimeDept() {
+        return overtimeDept;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setOvertimeDept(String overtimeDept) {
+        this.overtimeDept = overtimeDept;
+    }
 
-	public String getSenddeptid() {
-		return senddeptid;
-	}
+    public String getMainid() {
+        return mainid;
+    }
 
-	public void setSenddeptid(String senddeptid) {
-		this.senddeptid = senddeptid;
-	}
+    public void setMainid(String mainid) {
+        this.mainid = mainid;
+    }
 
-	public String getOperateuserid() {
-		return operateuserid;
-	}
+    public String getSheetid() {
+        return sheetid;
+    }
 
-	public void setOperateuserid(String operateuserid) {
-		this.operateuserid = operateuserid;
-	}
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
 
-	public String getEndtime() {
-		return endtime;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setEndtime(String endtime) {
-		this.endtime = endtime;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	
+    public String getSenddeptid() {
+        return senddeptid;
+    }
+
+    public void setSenddeptid(String senddeptid) {
+        this.senddeptid = senddeptid;
+    }
+
+    public String getOperateuserid() {
+        return operateuserid;
+    }
+
+    public void setOperateuserid(String operateuserid) {
+        this.operateuserid = operateuserid;
+    }
+
+    public String getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
+
 
 }

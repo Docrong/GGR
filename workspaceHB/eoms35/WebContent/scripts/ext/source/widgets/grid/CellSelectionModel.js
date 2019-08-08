@@ -13,46 +13,46 @@
  * @constructor
  * @param {Object} config The object containing the configuration of this model.
  */
-Ext.grid.CellSelectionModel = function(config){
+Ext.grid.CellSelectionModel = function (config) {
     Ext.apply(this, config);
 
     this.selection = null;
 
     this.addEvents({
         /**
-	     * @event beforerowselect
-	     * Fires before a cell is selected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected row index
-	     * @param {Number} colIndex The selected cell index
-	     */
-	    "beforecellselect" : true,
+         * @event beforerowselect
+         * Fires before a cell is selected.
+         * @param {SelectionModel} this
+         * @param {Number} rowIndex The selected row index
+         * @param {Number} colIndex The selected cell index
+         */
+        "beforecellselect": true,
         /**
-	     * @event cellselect
-	     * Fires when a cell is selected.
-	     * @param {SelectionModel} this
-	     * @param {Number} rowIndex The selected row index
-	     * @param {Number} colIndex The selected cell index
-	     */
-	    "cellselect" : true,
+         * @event cellselect
+         * Fires when a cell is selected.
+         * @param {SelectionModel} this
+         * @param {Number} rowIndex The selected row index
+         * @param {Number} colIndex The selected cell index
+         */
+        "cellselect": true,
         /**
-	     * @event selectionchange
-	     * Fires when the active selection changes.
-	     * @param {SelectionModel} this
-	     * @param {Object} selection null for no selection or an object (o) with two properties
-	        <ul>
-	        <li>o.record: the record object for the row the selection is in</li>
-	        <li>o.cell: An array of [rowIndex, columnIndex]</li>
-	        </ul>
-	     */
-	    "selectionchange" : true
+         * @event selectionchange
+         * Fires when the active selection changes.
+         * @param {SelectionModel} this
+         * @param {Object} selection null for no selection or an object (o) with two properties
+         <ul>
+         <li>o.record: the record object for the row the selection is in</li>
+         <li>o.cell: An array of [rowIndex, columnIndex]</li>
+         </ul>
+         */
+        "selectionchange": true
     });
 };
 
-Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel,  {
+Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel, {
 
     /** @ignore */
-    initEvents : function(){
+    initEvents: function () {
         this.grid.on("mousedown", this.handleMouseDown, this);
         this.grid.getGridEl().on(Ext.isIE ? "keydown" : "keypress", this.handleKeyDown, this);
         var view = this.grid.view;
@@ -60,33 +60,33 @@ Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel,  {
         view.on("rowupdated", this.onRowUpdated, this);
         view.on("beforerowremoved", this.clearSelections, this);
         view.on("beforerowsinserted", this.clearSelections, this);
-        if(this.grid.isEditor){
-            this.grid.on("beforeedit", this.beforeEdit,  this);
+        if (this.grid.isEditor) {
+            this.grid.on("beforeedit", this.beforeEdit, this);
         }
     },
 
-	//private
-    beforeEdit : function(e){
+    //private
+    beforeEdit: function (e) {
         this.select(e.row, e.column, false, true, e.record);
     },
 
-	//private
-    onRowUpdated : function(v, index, r){
-        if(this.selection && this.selection.record == r){
+    //private
+    onRowUpdated: function (v, index, r) {
+        if (this.selection && this.selection.record == r) {
             v.onCellSelect(index, this.selection.cell[1]);
         }
     },
 
-	//private
-    onViewChange : function(){
+    //private
+    onViewChange: function () {
         this.clearSelections(true);
     },
 
-	/**
-	 * Returns the currently selected cell,.
-	 * @return {Object} The selected cell or null if none selected.
-	 */
-    getSelectedCell : function(){
+    /**
+     * Returns the currently selected cell,.
+     * @return {Object} The selected cell or null if none selected.
+     */
+    getSelectedCell: function () {
         return this.selection ? this.selection.cell : null;
     },
 
@@ -94,10 +94,10 @@ Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel,  {
      * Clears all selections.
      * @param {Boolean} true to prevent the gridview from being notified about the change.
      */
-    clearSelections : function(preventNotify){
+    clearSelections: function (preventNotify) {
         var s = this.selection;
-        if(s){
-            if(preventNotify !== true){
+        if (s) {
+            if (preventNotify !== true) {
                 this.grid.view.onCellDeselect(s.cell[0], s.cell[1]);
             }
             this.selection = null;
@@ -109,19 +109,20 @@ Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel,  {
      * Returns true if there is a selection.
      * @return {Boolean}
      */
-    hasSelection : function(){
+    hasSelection: function () {
         return this.selection ? true : false;
     },
 
     /** @ignore */
-    handleMouseDown : function(e, t){
+    handleMouseDown: function (e, t) {
         var v = this.grid.getView();
-        if(this.isLocked()){
+        if (this.isLocked()) {
             return;
-        };
+        }
+        ;
         var row = v.findRowIndex(t);
         var cell = v.findCellIndex(t);
-        if(row !== false && cell !== false){
+        if (row !== false && cell !== false) {
             this.select(row, cell);
         }
     },
@@ -131,18 +132,18 @@ Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel,  {
      * @param {Number} rowIndex
      * @param {Number} collIndex
      */
-    select : function(rowIndex, colIndex, preventViewNotify, preventFocus, /*internal*/ r){
-        if(this.fireEvent("beforecellselect", this, rowIndex, colIndex) !== false){
+    select: function (rowIndex, colIndex, preventViewNotify, preventFocus, /*internal*/ r) {
+        if (this.fireEvent("beforecellselect", this, rowIndex, colIndex) !== false) {
             this.clearSelections();
             r = r || this.grid.dataSource.getAt(rowIndex);
             this.selection = {
-                record : r,
-                cell : [rowIndex, colIndex]
+                record: r,
+                cell: [rowIndex, colIndex]
             };
-            if(!preventViewNotify){
+            if (!preventViewNotify) {
                 var v = this.grid.getView();
                 v.onCellSelect(rowIndex, colIndex);
-                if(preventFocus !== true){
+                if (preventFocus !== true) {
                     v.focusCell(rowIndex, colIndex);
                 }
             }
@@ -151,86 +152,87 @@ Ext.extend(Ext.grid.CellSelectionModel, Ext.grid.AbstractSelectionModel,  {
         }
     },
 
-	//private
-    isSelectable : function(rowIndex, colIndex, cm){
+    //private
+    isSelectable: function (rowIndex, colIndex, cm) {
         return !cm.isHidden(colIndex);
     },
 
     /** @ignore */
-    handleKeyDown : function(e){
-        if(!e.isNavKeyPress()){
+    handleKeyDown: function (e) {
+        if (!e.isNavKeyPress()) {
             return;
         }
         var g = this.grid, s = this.selection;
-        if(!s){
+        if (!s) {
             e.stopEvent();
-            var cell = g.walkCells(0, 0, 1, this.isSelectable,  this);
-            if(cell){
+            var cell = g.walkCells(0, 0, 1, this.isSelectable, this);
+            if (cell) {
                 this.select(cell[0], cell[1]);
             }
             return;
         }
         var sm = this;
-        var walk = function(row, col, step){
-            return g.walkCells(row, col, step, sm.isSelectable,  sm);
+        var walk = function (row, col, step) {
+            return g.walkCells(row, col, step, sm.isSelectable, sm);
         };
         var k = e.getKey(), r = s.cell[0], c = s.cell[1];
         var newCell;
 
-        switch(k){
-             case e.TAB:
-                 if(e.shiftKey){
-                     newCell = walk(r, c-1, -1);
-                 }else{
-                     newCell = walk(r, c+1, 1);
-                 }
-             break;
-             case e.DOWN:
-                 newCell = walk(r+1, c, 1);
-             break;
-             case e.UP:
-                 newCell = walk(r-1, c, -1);
-             break;
-             case e.RIGHT:
-                 newCell = walk(r, c+1, 1);
-             break;
-             case e.LEFT:
-                 newCell = walk(r, c-1, -1);
-             break;
-             case e.ENTER:
-                 if(g.isEditor && !g.editing){
+        switch (k) {
+            case e.TAB:
+                if (e.shiftKey) {
+                    newCell = walk(r, c - 1, -1);
+                } else {
+                    newCell = walk(r, c + 1, 1);
+                }
+                break;
+            case e.DOWN:
+                newCell = walk(r + 1, c, 1);
+                break;
+            case e.UP:
+                newCell = walk(r - 1, c, -1);
+                break;
+            case e.RIGHT:
+                newCell = walk(r, c + 1, 1);
+                break;
+            case e.LEFT:
+                newCell = walk(r, c - 1, -1);
+                break;
+            case e.ENTER:
+                if (g.isEditor && !g.editing) {
                     g.startEditing(r, c);
                     e.stopEvent();
                     return;
                 }
-             break;
-        };
-        if(newCell){
+                break;
+        }
+        ;
+        if (newCell) {
             this.select(newCell[0], newCell[1]);
             e.stopEvent();
         }
     },
 
-    acceptsNav : function(row, col, cm){
+    acceptsNav: function (row, col, cm) {
         return !cm.isHidden(col) && cm.isCellEditable(col, row);
     },
 
-    onEditorKey : function(field, e){
+    onEditorKey: function (field, e) {
         var k = e.getKey(), newCell, g = this.grid, ed = g.activeEditor;
-        if(k == e.TAB){
-            if(e.shiftKey){
-                newCell = g.walkCells(ed.row, ed.col-1, -1, this.acceptsNav, this);
-            }else{
-                newCell = g.walkCells(ed.row, ed.col+1, 1, this.acceptsNav, this);
+        if (k == e.TAB) {
+            if (e.shiftKey) {
+                newCell = g.walkCells(ed.row, ed.col - 1, -1, this.acceptsNav, this);
+            } else {
+                newCell = g.walkCells(ed.row, ed.col + 1, 1, this.acceptsNav, this);
             }
             e.stopEvent();
-        }else if(k == e.ENTER && !e.ctrlKey){
+        } else if (k == e.ENTER && !e.ctrlKey) {
             ed.completeEdit();
             e.stopEvent();
-        }else if(k == e.ESC){
+        } else if (k == e.ESC) {
             ed.cancelEdit();
         }
-        if(newCell){
+        if (newCell) {
             g.startEditing(newCell[0], newCell[1]);
         }
     }

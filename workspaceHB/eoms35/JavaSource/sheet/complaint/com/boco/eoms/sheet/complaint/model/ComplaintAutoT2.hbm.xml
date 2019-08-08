@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,34 +13,34 @@
             table="complaint_autot2"
     >
 
-    <id
-        name="id"
-            column="id"
-        
-    >
+        <id
+                name="id"
+                column="id"
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+        >
 
-    </generator>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </id>
-       
-		<property name="complaintType1" />
-		<property name="complaintType2" />
-		<property name="complaintType3" />
-  		<property name="complaintType4" />
-  		<property name="complaintType5" />
-  		<property name="complaintType6" />
-  		<property name="complaintType7" />
-  		<property name="faultSite" />
-  		<property name="colseSwitch" /> 		
-  		<property name="autoAcceptRoleT1" />
-  		<property name="dealRoleT2" />
-  		<property name="remark1" />
-  		<property name="remark2" />
-  		<property name="createDate" />
-    </class>    
+            </generator>
+
+        </id>
+
+        <property name="complaintType1"/>
+        <property name="complaintType2"/>
+        <property name="complaintType3"/>
+        <property name="complaintType4"/>
+        <property name="complaintType5"/>
+        <property name="complaintType6"/>
+        <property name="complaintType7"/>
+        <property name="faultSite"/>
+        <property name="colseSwitch"/>
+        <property name="autoAcceptRoleT1"/>
+        <property name="dealRoleT2"/>
+        <property name="remark1"/>
+        <property name="remark2"/>
+        <property name="createDate"/>
+    </class>
 
 </hibernate-mapping>
 

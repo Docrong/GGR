@@ -6,14 +6,15 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.ggr.entity.Person;
+
 @Mapper
-public interface  PersonMapper {
+public interface PersonMapper {
 
     int deleteByPrimaryKey(Long id);
 
     @Insert("insert into Person (username,address)values(#{username},#{address})")
     int insert(Person record);
-    
+
     void insertAnother(Person person);
 
     int insertSelective(Person record);

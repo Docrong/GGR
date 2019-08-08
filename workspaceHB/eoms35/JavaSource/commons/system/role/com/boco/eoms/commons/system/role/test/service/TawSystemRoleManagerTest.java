@@ -34,7 +34,7 @@ public class TawSystemRoleManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemRoleDao.expects(once()).method("getTawSystemRoles")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSystemRoles = tawSystemRoleManager.getTawSystemRoles();
         assertTrue(tawSystemRoles.size() == 1);
@@ -44,7 +44,7 @@ public class TawSystemRoleManagerTest extends BaseManagerTestCase {
     public void TestGetTawSystemRole() throws Exception {
         // set expected behavior on dao
         tawSystemRoleDao.expects(once()).method("getTawSystemRole")
-            .will(returnValue(new TawSystemRole()));
+                .will(returnValue(new TawSystemRole()));
         TawSystemRole tawSystemRole = tawSystemRoleManager.getTawSystemRole(tawSystemRoleId);
         assertTrue(tawSystemRole != null);
         tawSystemRoleDao.verify();
@@ -55,7 +55,7 @@ public class TawSystemRoleManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemRoleDao.expects(once()).method("saveTawSystemRole")
-            .with(same(tawSystemRole)).isVoid();
+                .with(same(tawSystemRole)).isVoid();
 
         tawSystemRoleManager.saveTawSystemRole(tawSystemRole);
         tawSystemRoleDao.verify();
@@ -68,7 +68,7 @@ public class TawSystemRoleManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemRoleDao.expects(once()).method("saveTawSystemRole")
-            .with(same(tawSystemRole)).isVoid();
+                .with(same(tawSystemRole)).isVoid();
         tawSystemRoleManager.saveTawSystemRole(tawSystemRole);
         tawSystemRoleDao.verify();
 

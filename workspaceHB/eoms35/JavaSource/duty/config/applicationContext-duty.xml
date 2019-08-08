@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-	<import
-		resource="classpath:config/applicationContext-duty-attributes.xml" />
+    <import
+            resource="classpath:config/applicationContext-duty-attributes.xml"/>
 
-	<!--TawRmDispatchRecord-DAO START-->
-    <bean id="tawRmDispatchRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDispatchRecordDaoHibernate" autowire="byName"/>
+    <!--TawRmDispatchRecord-DAO START-->
+    <bean id="tawRmDispatchRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDispatchRecordDaoHibernate"
+          autowire="byName"/>
     <!--TawRmDispatchRecord-DAO END-->
-    <!--TawRmDispatchRecord-START-->    
+    <!--TawRmDispatchRecord-START-->
     <bean id="ITawRmDispatchRecordManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmDispatchRecordManagerImpl">
@@ -18,11 +19,12 @@
         </property>
     </bean>
     <!--TawRmDispatchRecord-END-->
-    
+
     <!--TawRmLoanRecord-DAO START-->
-    <bean id="tawRmLoanRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmLoanRecordDaoHibernate" autowire="byName"/>
+    <bean id="tawRmLoanRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmLoanRecordDaoHibernate"
+          autowire="byName"/>
     <!--TawRmLoanRecord-DAO END-->
-    <!--TawRmLoanRecord-START-->    
+    <!--TawRmLoanRecord-START-->
     <bean id="ITawRmLoanRecordManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmLoanRecordManagerImpl">
@@ -30,8 +32,8 @@
             </bean>
         </property>
     </bean>
-    
-     <!--TawRmArticle-DAO START-->
+
+    <!--TawRmArticle-DAO START-->
     <bean id="tawRmArticleDao" class="com.boco.eoms.duty.dao.hibernate.TawRmArticleDaoHibernate" autowire="byName"/>
     <!--TawRmArticle-DAO END-->
     <!--TawRmArticle-START   -->
@@ -42,8 +44,8 @@
             </bean>
         </property>
     </bean>
-     
-     <!--TawNetTransfer-DAO START-->
+
+    <!--TawNetTransfer-DAO START-->
     <bean id="tawNetTransferDao" class="com.boco.eoms.duty.dao.hibernate.TawNetTransferDaoHibernate" autowire="byName"/>
     <!--TawNetTransfer-DAO END-->
     <!--TawRmLoanRecord-START   -->
@@ -54,11 +56,12 @@
             </bean>
         </property>
     </bean>
-     
+
     <!--TawNetTransfer-DAO-END-->
-    
+
     <!--TawNetTransferSub-DAO START-->
-    <bean id="tawNetTransferSubDao" class="com.boco.eoms.duty.dao.hibernate.TawNetTransferSubDaoHibernate" autowire="byName"/>
+    <bean id="tawNetTransferSubDao" class="com.boco.eoms.duty.dao.hibernate.TawNetTransferSubDaoHibernate"
+          autowire="byName"/>
     <!--TawNetTransfer-DAO END-->
     <!--TawRmLoanRecord-START   -->
     <bean id="ITawNetTransferSubManager" parent="txProxyTemplate">
@@ -68,7 +71,7 @@
             </bean>
         </property>
     </bean>
-     
+
     <!--TawNetTransferSub-END-->
     <!--TawExpertInfo-DAO START-->
     <bean id="tawExpertInfoDao" class="com.boco.eoms.duty.dao.hibernate.TawExpertInfoDaoHibernate" autowire="byName"/>
@@ -81,9 +84,9 @@
             </bean>
         </property>
     </bean>
-     
+
     <!--TawExpertInfo-DAO-END-->
-    
+
     <!--TawExpertSub-DAO START-->
     <bean id="tawExpertSubDao" class="com.boco.eoms.duty.dao.hibernate.TawExpertSubDaoHibernate" autowire="byName"/>
     <!--TawExpert-DAO END-->
@@ -95,13 +98,13 @@
             </bean>
         </property>
     </bean>
-     
+
     <!--TawExpertSub-END-->
-    
+
     <!--TawRmLogUnite-DAO START-->
     <bean id="tawRmLogUniteDao" class="com.boco.eoms.duty.dao.hibernate.TawRmLogUniteDaoHibernate" autowire="byName"/>
     <!--TawRmLogUnite-DAO END-->
-    <!--TawRmLogUnite-START-->    
+    <!--TawRmLogUnite-START-->
     <bean id="ITawRmLogUniteManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmLogUniteManagerImpl">
@@ -110,11 +113,12 @@
         </property>
     </bean>
     <!--TawRmLogUnite-END-->
-    
+
     <!--TawRmPlanContent-DAO START-->
-    <bean id="tawRmPlanContentDao" class="com.boco.eoms.duty.dao.hibernate.TawRmPlanContentDaoHibernate" autowire="byName"/>
+    <bean id="tawRmPlanContentDao" class="com.boco.eoms.duty.dao.hibernate.TawRmPlanContentDaoHibernate"
+          autowire="byName"/>
     <!--TawRmPlanContent-DAO END-->
-    <!--TawRmPlanContent-START-->    
+    <!--TawRmPlanContent-START-->
     <bean id="ITawRmPlanContentManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmPlanContentManagerImpl">
@@ -123,11 +127,12 @@
         </property>
     </bean>
     <!--TawRmPlanContent-END-->
-    
+
     <!--TawRmReliefRecord-DAO START-->
-    <bean id="tawRmReliefRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmReliefRecordDaoHibernate" autowire="byName"/>
+    <bean id="tawRmReliefRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmReliefRecordDaoHibernate"
+          autowire="byName"/>
     <!--TawRmReliefRecord-DAO END-->
-    <!--TawRmReliefRecord-START-->    
+    <!--TawRmReliefRecord-START-->
     <bean id="ITawRmReliefRecordManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmReliefRecordManagerImpl">
@@ -136,11 +141,12 @@
         </property>
     </bean>
     <!--TawRmReliefRecord-END-->
-    
+
     <!--TawRmVisitRecord-DAO START-->
-    <bean id="tawRmVisitRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmVisitRecordDaoHibernate" autowire="byName"/>
+    <bean id="tawRmVisitRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmVisitRecordDaoHibernate"
+          autowire="byName"/>
     <!--TawRmVisitRecord-DAO END-->
-    <!--TawRmVisitRecord-START-->    
+    <!--TawRmVisitRecord-START-->
     <bean id="ITawRmVisitRecordManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmVisitRecordManagerImpl">
@@ -149,11 +155,12 @@
         </property>
     </bean>
     <!--TawRmVisitRecord-END-->
-    
+
     <!--TawRmWorkorderRecord-DAO START-->
-    <bean id="tawRmWorkorderRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmWorkorderRecordDaoHibernate" autowire="byName"/>
+    <bean id="tawRmWorkorderRecordDao" class="com.boco.eoms.duty.dao.hibernate.TawRmWorkorderRecordDaoHibernate"
+          autowire="byName"/>
     <!--TawRmWorkorderRecord-DAO END-->
-    <!--TawRmWorkorderRecord-START-->    
+    <!--TawRmWorkorderRecord-START-->
     <bean id="ITawRmWorkorderRecordManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmWorkorderRecordManagerImpl">
@@ -163,11 +170,12 @@
         </property>
     </bean>
     <!--TawRmWorkorderRecord-END-->
-    <bean id="tawRmWorkOrderRecordJdbc" class="com.boco.eoms.duty.dao.hibernate.TawRmWorkOrderJdbcImpl" autowire="byName"/>
-    
- 	<bean id="tawRmReplaceDaoJdbc" class="com.boco.eoms.duty.dao.jdbc.TawRmReplaceDaoJDBC" autowire="byName"/>
+    <bean id="tawRmWorkOrderRecordJdbc" class="com.boco.eoms.duty.dao.hibernate.TawRmWorkOrderJdbcImpl"
+          autowire="byName"/>
 
- 	<bean id="tawRmReplaceDao" class="com.boco.eoms.duty.dao.hibernate.TawRmReplaceDaoHibernate" autowire="byName"/>   
+    <bean id="tawRmReplaceDaoJdbc" class="com.boco.eoms.duty.dao.jdbc.TawRmReplaceDaoJDBC" autowire="byName"/>
+
+    <bean id="tawRmReplaceDao" class="com.boco.eoms.duty.dao.hibernate.TawRmReplaceDaoHibernate" autowire="byName"/>
     <bean id="ItawRmReplaceManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmReplaceManagerImpl">
@@ -178,16 +186,16 @@
             </bean>
         </property>
     </bean>
-    
+
     <!-- TawRmAssignwork -->
     <bean id="ItawRmAssignworkManager" parent="txProxyTemplate">
         <property name="target">
-            <bean class="com.boco.eoms.duty.service.impl.TawRmAssignworkManagerImpl" />
+            <bean class="com.boco.eoms.duty.service.impl.TawRmAssignworkManagerImpl"/>
         </property>
     </bean>
-    
+
     <!-- Faultrecord -->
-	<bean id="faultrecordDao" class="com.boco.eoms.duty.dao.hibernate.FaultrecordDaoHibernate" autowire="byName"/>
+    <bean id="faultrecordDao" class="com.boco.eoms.duty.dao.hibernate.FaultrecordDaoHibernate" autowire="byName"/>
 
     <bean id="FaultrecordBO" parent="txProxyTemplate">
         <property name="target">
@@ -196,11 +204,12 @@
             </bean>
         </property>
     </bean>
-        
-     <!--ITawRmExchangePerManager-START-->  
-    <bean id="tawRmExchangePerDao" class="com.boco.eoms.duty.dao.hibernate.TawRmExchangePerDaoHibernate" autowire="byName"/>
+
+    <!--ITawRmExchangePerManager-START-->
+    <bean id="tawRmExchangePerDao" class="com.boco.eoms.duty.dao.hibernate.TawRmExchangePerDaoHibernate"
+          autowire="byName"/>
     <!--tawRmExchangePerDao-DAO END-->
-    <!--ITawRmExchangePerManager-START-->    
+    <!--ITawRmExchangePerManager-START-->
     <bean id="tawRmExchangePerManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmExchangePerManagerImpl">
@@ -208,10 +217,10 @@
             </bean>
         </property>
     </bean>
-        <!--tawRmDao-DAO START-->
+    <!--tawRmDao-DAO START-->
     <bean id="tawRmDutyEventDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDutyEventDaoHibernate" autowire="byName"/>
     <!--tawRmDutyenventDao-DAO END-->
-      <!--ITawRmDutyEnventManager-START--> 
+    <!--ITawRmDutyEnventManager-START-->
     <bean id="ITawRmDutyEnventManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmDutyEventManagerImpl">
@@ -221,9 +230,10 @@
     </bean>
 
     <!--tawRmDutyEventPubDao-DAO START-->
-    <bean id="tawRmDutyEventPubDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDutyEventPubDaoHibernate" autowire="byName"/>
+    <bean id="tawRmDutyEventPubDao" class="com.boco.eoms.duty.dao.hibernate.TawRmDutyEventPubDaoHibernate"
+          autowire="byName"/>
     <!--tawRmDutyEventPubDao-DAO END-->
-    <!--ITawRmDutyEventPubManager-START--> 
+    <!--ITawRmDutyEventPubManager-START-->
     <bean id="tawRmDutyEnventPubManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmDutyEventPubManagerImpl">
@@ -231,9 +241,9 @@
             </bean>
         </property>
     </bean>
-     <!--ITawRmDutyEventPubDaoManager END-->
+    <!--ITawRmDutyEventPubDaoManager END-->
 
-    <!--ITawRmDutyCacheManager-START-->    
+    <!--ITawRmDutyCacheManager-START-->
     <bean id="ITawRmDutyCacheManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.duty.service.impl.TawRmDutyCacheManagerImpl"/>

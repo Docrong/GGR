@@ -10,6 +10,7 @@ import org.apache.commons.logging.LogFactory;
  * Time: 14:10:31
  * To change this template use File | Settings | File Templates.
  */
+
 /**
  * Created by IntelliJ IDEA.
  * User: admin
@@ -23,6 +24,7 @@ public class Logger {
 
     /**
      * return the global log instance .
+     *
      * @return
      */
     public static Log getLog() {

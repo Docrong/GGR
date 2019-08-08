@@ -21,10 +21,10 @@ import com.boco.eoms.sheet.overtimetip.util.OvertimeTipUtil;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class AlgorithmTaskManagerImpl extends TaskServiceImpl implements  IAlgorithmTaskManager {}
+
+public class AlgorithmTaskManagerImpl extends TaskServiceImpl implements IAlgorithmTaskManager {
+}

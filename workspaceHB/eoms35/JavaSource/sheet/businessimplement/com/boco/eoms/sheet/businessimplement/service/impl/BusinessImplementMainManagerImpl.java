@@ -11,16 +11,17 @@ import com.boco.eoms.sheet.commonfault.dao.ICommonFaultMainDAO;
 
 public class BusinessImplementMainManagerImpl extends MainService implements IBusinessImplementMainManager {
 
-	/**
-	 * 通过定单号获取工单
-	 * @param orderSheetId 定单号
-	 * @return
-	 * @throws HibernateException
-	 */
-	public BaseMain getMainByOrderSheetId(String orderSheetId){
-		IBusinessImplementMainDAO iBusinessImplementMainDAO = (IBusinessImplementMainDAO)this.getMainDAO();
-		return iBusinessImplementMainDAO.getMainByOrderSheetId(orderSheetId);
-	}
+    /**
+     * 通过定单号获取工单
+     *
+     * @param orderSheetId 定单号
+     * @return
+     * @throws HibernateException
+     */
+    public BaseMain getMainByOrderSheetId(String orderSheetId) {
+        IBusinessImplementMainDAO iBusinessImplementMainDAO = (IBusinessImplementMainDAO) this.getMainDAO();
+        return iBusinessImplementMainDAO.getMainByOrderSheetId(orderSheetId);
+    }
 
 
 }

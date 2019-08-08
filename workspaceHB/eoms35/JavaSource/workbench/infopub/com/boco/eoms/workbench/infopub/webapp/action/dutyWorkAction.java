@@ -74,7 +74,6 @@ import com.huawei.csp.si.service.BulletinLocator;
 import com.huawei.csp.si.service.BulletinPortType;
 
 /**
- * 
  * <p>
  * Title:信息发布中的信息
  * </p>
@@ -84,129 +83,130 @@ import com.huawei.csp.si.service.BulletinPortType;
  * <p>
  * Date:May 24, 2008 4:57:45 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
 public final class dutyWorkAction extends BaseAction {
-	private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.ConnectionPool
-	.getInstance();
+    private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.ConnectionPool
+            .getInstance();
 
-	public ActionForward getduty(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String contentPath = request.getScheme() + "://" + request.getLocalAddr() + ":" + request.getLocalPort() +  request.getContextPath();
-		
-		TawSystemCptroom tawSystemCptroom = null;
-		List list = null;
-		dutyWorkDao dutyWorkDao = new dutyWorkDao();
-		list = dutyWorkDao.getdutyWorkList();
-		
-		//start
-				
+    public ActionForward getduty(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String contentPath = request.getScheme() + "://" + request.getLocalAddr() + ":" + request.getLocalPort() + request.getContextPath();
+
+        TawSystemCptroom tawSystemCptroom = null;
+        List list = null;
+        dutyWorkDao dutyWorkDao = new dutyWorkDao();
+        list = dutyWorkDao.getdutyWorkList();
+
+        //start
+
 //		 创建ATOM源
-		Factory factory = Abdera.getNewFactory();
-		Feed dutyfeed = factory.newFeed();
-		// 分页
-		for (int i = 0; i < list.size(); i++) {
-			tawSystemCptroom = (TawSystemCptroom) list.get(i);
-			Entry entry = dutyfeed.insertEntry();
-			entry.setTitle(tawSystemCptroom.getRoomname());
-			entry.setSummary(tawSystemCptroom.getId()+"");
-			entry.setContent(contentPath+"/workbench/infopub/dutyWorkAction.do?id="+tawSystemCptroom.getId()+"&method=getdutyList");
-		}
-		OutputStream os = response.getOutputStream();
-		PrintStream ps = new PrintStream(os);
-		dutyfeed.getDocument().writeTo(ps);		 
-		//end		
-		return null;
-	}
-	public ActionForward getdutyList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		int roomId = Integer.parseInt(request.getParameter("id"));
-		String time =StaticMethod.getCurrentDateTime("yyyy-MM-dd");
-		List list = null;
-		dutyWorkDao dutyWorkDao = new dutyWorkDao();
-		list = dutyWorkDao.getdutyList(roomId,time);
-		//start
-				
+        Factory factory = Abdera.getNewFactory();
+        Feed dutyfeed = factory.newFeed();
+        // 分页
+        for (int i = 0; i < list.size(); i++) {
+            tawSystemCptroom = (TawSystemCptroom) list.get(i);
+            Entry entry = dutyfeed.insertEntry();
+            entry.setTitle(tawSystemCptroom.getRoomname());
+            entry.setSummary(tawSystemCptroom.getId() + "");
+            entry.setContent(contentPath + "/workbench/infopub/dutyWorkAction.do?id=" + tawSystemCptroom.getId() + "&method=getdutyList");
+        }
+        OutputStream os = response.getOutputStream();
+        PrintStream ps = new PrintStream(os);
+        dutyfeed.getDocument().writeTo(ps);
+        //end
+        return null;
+    }
+
+    public ActionForward getdutyList(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        int roomId = Integer.parseInt(request.getParameter("id"));
+        String time = StaticMethod.getCurrentDateTime("yyyy-MM-dd");
+        List list = null;
+        dutyWorkDao dutyWorkDao = new dutyWorkDao();
+        list = dutyWorkDao.getdutyList(roomId, time);
+        //start
+
 //		 创建ATOM源
-		Factory factory = Abdera.getNewFactory();
-		Feed dutyfeedList = factory.newFeed();
-		// 分页
-		for (int i = 0; i < list.size(); i++) {
-			dutyWork dutyWork = new dutyWork();
-			dutyWork = (dutyWork)list.get(i);
-			Entry entry = dutyfeedList.insertEntry();
-			entry.setTitle(dutyWork.getUsername());
-		}
-		OutputStream os = response.getOutputStream();
-		PrintStream ps = new PrintStream(os);
-		dutyfeedList.getDocument().writeTo(ps);		 
-		//end		
-		return null;
-	}
-	private Hashtable performDailyExecuteList(ActionMapping mapping,
-			ActionForm actionForm, HttpServletRequest request,
-			HttpServletResponse response) {
-		// 获取当前用户的session中的信息
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
+        Factory factory = Abdera.getNewFactory();
+        Feed dutyfeedList = factory.newFeed();
+        // 分页
+        for (int i = 0; i < list.size(); i++) {
+            dutyWork dutyWork = new dutyWork();
+            dutyWork = (dutyWork) list.get(i);
+            Entry entry = dutyfeedList.insertEntry();
+            entry.setTitle(dutyWork.getUsername());
+        }
+        OutputStream os = response.getOutputStream();
+        PrintStream ps = new PrintStream(os);
+        dutyfeedList.getDocument().writeTo(ps);
+        //end
+        return null;
+    }
 
-		String deptId = saveSessionBeanForm.getDeptid(); // 当前部门编号
-		String userId = saveSessionBeanForm.getUserid(); // 当前用户�?
+    private Hashtable performDailyExecuteList(ActionMapping mapping,
+                                              ActionForm actionForm, HttpServletRequest request,
+                                              HttpServletResponse response) {
+        // 获取当前用户的session中的信息
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
 
-		// List stubUserList = saveSessionBeanForm.getStubUserList(); //代理信息集合
-		List stubUserList = saveSessionBeanForm.getStubUserList();
-		// 初始化数�?
-		ITawwpExecuteMgr tawwpExecuteMgr = (ITawwpExecuteMgr) getBean("tawwpExecuteMgr");
-		Hashtable monthPlanVOHash = null;
-		Hashtable tempHash = null;
-		Enumeration tempkeys = null;
-		String monthPlanId = "";
-		TawwpMonthPlanVO tawwpMonthPlanVO = null;
-		TawwpStubUserVO tawwpStubUserVO = null;
-		List stubMonthPlanList = new ArrayList();
-		List listKey = null;
-		// 获取执行作业计划集合
-		try {
-			monthPlanVOHash = tawwpExecuteMgr.listExecutePlanNew(userId, String
-					.valueOf(deptId));
+        String deptId = saveSessionBeanForm.getDeptid(); // 当前部门编号
+        String userId = saveSessionBeanForm.getUserid(); // 当前用户�?
 
-			// 如果代理信息存在
-			if (stubUserList != null) {
+        // List stubUserList = saveSessionBeanForm.getStubUserList(); //代理信息集合
+        List stubUserList = saveSessionBeanForm.getStubUserList();
+        // 初始化数�?
+        ITawwpExecuteMgr tawwpExecuteMgr = (ITawwpExecuteMgr) getBean("tawwpExecuteMgr");
+        Hashtable monthPlanVOHash = null;
+        Hashtable tempHash = null;
+        Enumeration tempkeys = null;
+        String monthPlanId = "";
+        TawwpMonthPlanVO tawwpMonthPlanVO = null;
+        TawwpStubUserVO tawwpStubUserVO = null;
+        List stubMonthPlanList = new ArrayList();
+        List listKey = null;
+        // 获取执行作业计划集合
+        try {
+            monthPlanVOHash = tawwpExecuteMgr.listExecutePlanNew(userId, String
+                    .valueOf(deptId));
 
-				for (int i = 0; i < stubUserList.size(); i++) {
-					// 获取代理信息VO对象
-					tawwpStubUserVO = (TawwpStubUserVO) stubUserList.get(i);
-					// 获取代理申请人需要执行的月度作业计划
-					tempHash = new Hashtable();
-					tempHash = tawwpExecuteMgr.listExecutePlan(tawwpStubUserVO
-							.getCruser(), String.valueOf(deptId));
-					if (tempHash.size() != 0) {
-						// 取出全部月度作业计划编号
-						tempkeys = tempHash.keys();
+            // 如果代理信息存在
+            if (stubUserList != null) {
 
-						while (tempkeys.hasMoreElements()) {
-							monthPlanId = (String) tempkeys.nextElement();
-							// 获取月度作业计划VO对象,并修改代理标志位
-							tawwpMonthPlanVO = (TawwpMonthPlanVO) (tempHash
-									.get(monthPlanId));
-							tawwpMonthPlanVO.setStubFlag("1");
-							tawwpMonthPlanVO.setUserByStub(tawwpStubUserVO
-									.getCruser()); // 修改被代理用户名
-						}
-						stubMonthPlanList.add(tempHash);
-					}
-				}
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return monthPlanVOHash;
-	}
+                for (int i = 0; i < stubUserList.size(); i++) {
+                    // 获取代理信息VO对象
+                    tawwpStubUserVO = (TawwpStubUserVO) stubUserList.get(i);
+                    // 获取代理申请人需要执行的月度作业计划
+                    tempHash = new Hashtable();
+                    tempHash = tawwpExecuteMgr.listExecutePlan(tawwpStubUserVO
+                            .getCruser(), String.valueOf(deptId));
+                    if (tempHash.size() != 0) {
+                        // 取出全部月度作业计划编号
+                        tempkeys = tempHash.keys();
+
+                        while (tempkeys.hasMoreElements()) {
+                            monthPlanId = (String) tempkeys.nextElement();
+                            // 获取月度作业计划VO对象,并修改代理标志位
+                            tawwpMonthPlanVO = (TawwpMonthPlanVO) (tempHash
+                                    .get(monthPlanId));
+                            tawwpMonthPlanVO.setStubFlag("1");
+                            tawwpMonthPlanVO.setUserByStub(tawwpStubUserVO
+                                    .getCruser()); // 修改被代理用户名
+                        }
+                        stubMonthPlanList.add(tempHash);
+                    }
+                }
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return monthPlanVOHash;
+    }
 
 }

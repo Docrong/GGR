@@ -1,6 +1,6 @@
 /**
  * GroupFaultServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.3 Oct 05, 2005 (05:23:37 EDT) WSDL2Java emitter.
  */
@@ -40,11 +40,10 @@ public class GroupFaultServiceLocator extends org.apache.axis.client.Service imp
     }
 
     public com.boco.eoms.sheet.commonfault.interfaces.GroupFault_PortType getGroupFault() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(GroupFault_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getGroupFault(endpoint);
@@ -55,8 +54,7 @@ public class GroupFaultServiceLocator extends org.apache.axis.client.Service imp
             com.boco.eoms.sheet.commonfault.interfaces.GroupFaultSoapBindingStub _stub = new com.boco.eoms.sheet.commonfault.interfaces.GroupFaultSoapBindingStub(portAddress, this);
             _stub.setPortName(getGroupFaultWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -77,8 +75,7 @@ public class GroupFaultServiceLocator extends org.apache.axis.client.Service imp
                 _stub.setPortName(getGroupFaultWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -96,8 +93,7 @@ public class GroupFaultServiceLocator extends org.apache.axis.client.Service imp
         java.lang.String inputPortName = portName.getLocalPart();
         if ("GroupFault".equals(inputPortName)) {
             return getGroupFault();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -119,22 +115,20 @@ public class GroupFaultServiceLocator extends org.apache.axis.client.Service imp
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("GroupFault".equals(portName)) {
+
+        if ("GroupFault".equals(portName)) {
             setGroupFaultEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

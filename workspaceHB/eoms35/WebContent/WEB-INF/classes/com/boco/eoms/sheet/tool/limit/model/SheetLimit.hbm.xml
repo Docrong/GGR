@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -12,103 +12,103 @@
             table="wf_sheet_limit"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
-
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="increment">
-
-    </generator>
-
-    </id>
-
-        <property
-            name="deptId"
-                length="50"
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
         >
 
-        </property>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="increment">
+
+            </generator>
+
+        </id>
 
         <property
-            name="moudleId"
-                length="50"
-        >
-
-        </property>
-        
-        <property
-            name="specialty1"
+                name="deptId"
                 length="50"
         >
 
         </property>
 
         <property
-            name="specialty2"
+                name="moudleId"
                 length="50"
         >
 
         </property>
-            
-       
-         <property
-            name="specialty3"
+
+        <property
+                name="specialty1"
                 length="50"
         >
+
         </property>
-        
-         <property
-            name="specialty4"
+
+        <property
+                name="specialty2"
+                length="50"
+        >
+
+        </property>
+
+
+        <property
+                name="specialty3"
                 length="50"
         >
         </property>
 
         <property
-            name="t1Limit"
-                length="50"
-        >
-        </property>
-        
-        <property
-            name="t2Limit"
-                length="50"
-        >
-        </property>
-        
-         <property
-            name="t3Limit"
-                length="50"
-        >
-        </property>
-        
-        <property
-            name="acceptLimit"
-                length="50"
-        >
-        </property>
-        
-        <property
-            name="replyLimit"
-                length="50"
-        >
-        </property>
-        
-        <property
-            name="stepId"
-                length="50"
-        >
-        </property>
-        
-        <property
-            name="roleName"
+                name="specialty4"
                 length="50"
         >
         </property>
 
-    </class>    
+        <property
+                name="t1Limit"
+                length="50"
+        >
+        </property>
+
+        <property
+                name="t2Limit"
+                length="50"
+        >
+        </property>
+
+        <property
+                name="t3Limit"
+                length="50"
+        >
+        </property>
+
+        <property
+                name="acceptLimit"
+                length="50"
+        >
+        </property>
+
+        <property
+                name="replyLimit"
+                length="50"
+        >
+        </property>
+
+        <property
+                name="stepId"
+                length="50"
+        >
+        </property>
+
+        <property
+                name="roleName"
+                length="50"
+        >
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

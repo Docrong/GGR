@@ -24,74 +24,79 @@ import com.boco.eoms.common.dao.DAO;
  * @version 2.7
  */
 public class TawHieSendDAO extends DAO {
-	public TawHieSendDAO(com.boco.eoms.db.util.ConnectionPool ds) {
-		super(ds);
-	}
-	/**
-	 * add by lixiaoming
-	 * @return
-	 * @throws SQLException
-	 */
-	public TawHieSendDAO() {
-		super();
-	}
+    public TawHieSendDAO(com.boco.eoms.db.util.ConnectionPool ds) {
+        super(ds);
+    }
 
-	/**
-	 * add by lixiaoming
-	 * @return
-	 * @throws SQLException
-	 */
-	public int selectHeader() throws SQLException {
-		com.boco.eoms.db.util.BocoConnection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int header = 0;
-		try {
-			conn = ds.getConnection();
-			String sql = "select * from taw_hie_header";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				header = rs.getInt(1);
-			}
-			close(pstmt);
-			conn.commit();
-		} catch (SQLException e) {
-			close(pstmt);
+    /**
+     * add by lixiaoming
+     *
+     * @return
+     * @throws SQLException
+     */
+    public TawHieSendDAO() {
+        super();
+    }
 
-			e.printStackTrace();
-		} finally {
-			close(conn);
-		}
-		return header;
-	}
-	/**
-	 * add by lixiaoming
-	 * @return
-	 * @throws SQLException
-	 */
-	public void updateHeader(int i) throws SQLException {
-		com.boco.eoms.db.util.BocoConnection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = null;
-                 System.out.println("--111i---"+i);
-		i++;
-                System.out.println("--222i---"+i);
-		if(i > 255){
-			i = 0;
-		}
-		try {
-			conn = ds.getConnection();
-			sql = "update taw_hie_header set header = " + i;
-			pstmt = conn.prepareStatement(sql);
-			pstmt.executeUpdate();
-			conn.commit();
-                        close(pstmt);
-		} catch (SQLException e) {
-			close(pstmt);
-			e.printStackTrace();
-		} finally {
-			close(conn);
-		}
-	}
+    /**
+     * add by lixiaoming
+     *
+     * @return
+     * @throws SQLException
+     */
+    public int selectHeader() throws SQLException {
+        com.boco.eoms.db.util.BocoConnection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int header = 0;
+        try {
+            conn = ds.getConnection();
+            String sql = "select * from taw_hie_header";
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            if (rs.next()) {
+                header = rs.getInt(1);
+            }
+            close(pstmt);
+            conn.commit();
+        } catch (SQLException e) {
+            close(pstmt);
+
+            e.printStackTrace();
+        } finally {
+            close(conn);
+        }
+        return header;
+    }
+
+    /**
+     * add by lixiaoming
+     *
+     * @return
+     * @throws SQLException
+     */
+    public void updateHeader(int i) throws SQLException {
+        com.boco.eoms.db.util.BocoConnection conn = null;
+        PreparedStatement pstmt = null;
+        String sql = null;
+        System.out.println("--111i---" + i);
+        i++;
+        System.out.println("--222i---" + i);
+        if (i > 255) {
+            i = 0;
+        }
+        try {
+            conn = ds.getConnection();
+            sql = "update taw_hie_header set header = " + i;
+            pstmt = conn.prepareStatement(sql);
+            pstmt.executeUpdate();
+            conn.commit();
+            close(pstmt);
+        } catch (SQLException e) {
+            close(pstmt);
+            e.printStackTrace();
+        } finally {
+            close(conn);
+        }
+    }
 }

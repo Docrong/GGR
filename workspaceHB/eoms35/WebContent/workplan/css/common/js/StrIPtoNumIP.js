@@ -1,57 +1,50 @@
 /*
 ========================================================================
-Copyright (c) 2002,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+Copyright (c) 2002,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
 All rights reserved.
-Filename £ºStrIPtoNumIP.js
-Abstract £º±ê×¼IP×ª»»ÎªÊý×ÖIP
-Version  £º1.0
-Author   £ºLiu Guoyuan
-finished date £º2002-09-30
-Last Modify £º2002-09-30
+Filename ï¿½ï¿½StrIPtoNumIP.js
+Abstract ï¿½ï¿½ï¿½ï¿½×¼IP×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½IP
+Version  ï¿½ï¿½1.0
+Author   ï¿½ï¿½Liu Guoyuan
+finished date ï¿½ï¿½2002-09-30
+Last Modify ï¿½ï¿½2002-09-30
 ========================================================================
 */
 
-function hex2dec(i_hex)
-{
-//Ê®Áù½øÖÆ×ª»»Ê®½øÖÆ
-	i_dec=parseInt("0x"+i_hex);
-	return i_dec;
-}
-function dec2hex(i_dec)
-{
-//Ê®½øÖÆ×ª»»Ê®Áù½øÖÆ
-	i_hex=parseInt(i_dec);
-	i_hex=i_hex.toString(16);
-	if (i_hex.length==1){i_hex="0"+i_hex}
-	return i_hex;
+function hex2dec(i_hex) {
+//Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½
+    i_dec = parseInt("0x" + i_hex);
+    return i_dec;
 }
 
-function StrIPtoNumIP(ip)
-{
-//IPµØÖ·×ª»»ÎªÊý×Ö
-	var result="";
-	var ip=ip;
-	if (ip=="")
-	{
-		result=0;
-	}
-	else
-	{
-		if(ip=="255.255.255.255")
-		{
-			result=-1;
-		}
-		else
-		{
-			strIP=new Array(4);
-			strIP=ip.split(".");
-			for (i=0;i<strIP.length;i++)
-			{
-				strIP[i]=dec2hex(strIP[i]);
-				result=result+strIP[i]+"";
-			}
-			result=hex2dec(result);
-		}
-	}
-	return result;
+function dec2hex(i_dec) {
+//Ê®ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    i_hex = parseInt(i_dec);
+    i_hex = i_hex.toString(16);
+    if (i_hex.length == 1) {
+        i_hex = "0" + i_hex
+    }
+    return i_hex;
+}
+
+function StrIPtoNumIP(ip) {
+//IPï¿½ï¿½Ö·×ªï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+    var result = "";
+    var ip = ip;
+    if (ip == "") {
+        result = 0;
+    } else {
+        if (ip == "255.255.255.255") {
+            result = -1;
+        } else {
+            strIP = new Array(4);
+            strIP = ip.split(".");
+            for (i = 0; i < strIP.length; i++) {
+                strIP[i] = dec2hex(strIP[i]);
+                result = result + strIP[i] + "";
+            }
+            result = hex2dec(result);
+        }
+    }
+    return result;
 }

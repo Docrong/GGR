@@ -35,7 +35,7 @@ public class TawBureauDataManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawBureauDataDao.expects(once()).method("getTawBureauDatas")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawBureauDatas = tawBureauDataManager.getTawBureauDatas(null);
         assertTrue(tawBureauDatas.size() == 1);
@@ -45,7 +45,7 @@ public class TawBureauDataManagerTest extends BaseManagerTestCase {
     public void testGetTawBureauData() throws Exception {
         // set expected behavior on dao
         tawBureauDataDao.expects(once()).method("getTawBureauData")
-            .will(returnValue(new TawBureauData()));
+                .will(returnValue(new TawBureauData()));
         TawBureauData tawBureauData = tawBureauDataManager.getTawBureauData(tawBureauDataId);
         assertTrue(tawBureauData != null);
         tawBureauDataDao.verify();
@@ -56,7 +56,7 @@ public class TawBureauDataManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawBureauDataDao.expects(once()).method("saveTawBureauData")
-            .with(same(tawBureauData)).isVoid();
+                .with(same(tawBureauData)).isVoid();
 
         tawBureauDataManager.saveTawBureauData(tawBureauData);
         tawBureauDataDao.verify();
@@ -69,7 +69,7 @@ public class TawBureauDataManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawBureauDataDao.expects(once()).method("saveTawBureauData")
-            .with(same(tawBureauData)).isVoid();
+                .with(same(tawBureauData)).isVoid();
         tawBureauDataManager.saveTawBureauData(tawBureauData);
         tawBureauDataDao.verify();
 

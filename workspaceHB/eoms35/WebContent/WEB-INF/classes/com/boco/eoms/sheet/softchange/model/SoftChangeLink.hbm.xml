@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -12,127 +12,127 @@
             table="SoftChange_link"
     >
 
-    <id
-        name="id"
-        column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-       <property name="mainId" />
-       	<property name="nodeAcceptLimit" />
-		<property name="nodeCompleteLimit" />
-		<property name="operaterContact" />        
-		<property name="operateType" />
-		<property name="operateTime" />
-		<property name="operateOrgType" />
-		<property name="operateUserId" />
-		<property name="operateDeptId" />
-		<property name="operateRoleId" />
-		<property name="toOrgType" />
-		<property name="toOrgUserId" />
-		<property name="toOrgDeptId" />
-		<property name="toOrgRoleId" />
-		<property name="acceptFlag" />
-		<property name="acceptTime" />
-		<property name="completeFlag" />
-		<property name="completeTime" />
-		<property name="preLinkId" />
-		<property name="parentLinkId" />
-		<property name="firstLinkId" />
-		<property name="piid" />
-		<property name="aiid" />
-		<property name="activeTemplateId" />
-		<property name="nodeTemplateName" />
-		<property name="correlationKey" />
-		<property name="nodeAccessories" />
-		<property name="templateFlag" />
-		<property name="templateName" />
-		<property name="templateCreateUserId" />
-		<property name="transferReason" />
-		<property name="remark" />
-	    <property name="operateYear" />
-		<property name="operateMonth" />
-		<property name="operateDay" />
-		
-		
-		<property name="linkCompleteLimitTime" />
+        </id>
+        <property name="mainId"/>
+        <property name="nodeAcceptLimit"/>
+        <property name="nodeCompleteLimit"/>
+        <property name="operaterContact"/>
+        <property name="operateType"/>
+        <property name="operateTime"/>
+        <property name="operateOrgType"/>
+        <property name="operateUserId"/>
+        <property name="operateDeptId"/>
+        <property name="operateRoleId"/>
+        <property name="toOrgType"/>
+        <property name="toOrgUserId"/>
+        <property name="toOrgDeptId"/>
+        <property name="toOrgRoleId"/>
+        <property name="acceptFlag"/>
+        <property name="acceptTime"/>
+        <property name="completeFlag"/>
+        <property name="completeTime"/>
+        <property name="preLinkId"/>
+        <property name="parentLinkId"/>
+        <property name="firstLinkId"/>
+        <property name="piid"/>
+        <property name="aiid"/>
+        <property name="activeTemplateId"/>
+        <property name="nodeTemplateName"/>
+        <property name="correlationKey"/>
+        <property name="nodeAccessories"/>
+        <property name="templateFlag"/>
+        <property name="templateName"/>
+        <property name="templateCreateUserId"/>
+        <property name="transferReason"/>
+        <property name="remark"/>
+        <property name="operateYear"/>
+        <property name="operateMonth"/>
+        <property name="operateDay"/>
 
-		<property name="linkDesignComment" />
 
-		<property name="linkInvolvedProvince" />
+        <property name="linkCompleteLimitTime"/>
 
-		<property name="linkInvolvedCity" />
+        <property name="linkDesignComment"/>
 
-		<property name="linkDesignKey" />
+        <property name="linkInvolvedProvince"/>
 
-		<property name="linkRiskEstimate" />
+        <property name="linkInvolvedCity"/>
 
-		<property name="linkEffectAnalyse" />
+        <property name="linkDesignKey"/>
 
-		<property name="linkIsCheck" />
+        <property name="linkRiskEstimate"/>
 
-		<property name="linkCheckComment" />
+        <property name="linkEffectAnalyse"/>
 
-		<property name="linkPermitResult" />
+        <property name="linkIsCheck"/>
 
-		<property name="linkPermitIdea" />
+        <property name="linkCheckComment"/>
 
-		<property name="linkManager" />
+        <property name="linkPermitResult"/>
 
-		<property name="linkContact" />
+        <property name="linkPermitIdea"/>
 
-		<property name="linkPlanStartTime" />
+        <property name="linkManager"/>
 
-		<property name="linkPlanEndTime" />
+        <property name="linkContact"/>
 
-		<property name="linkCellInfo" />
+        <property name="linkPlanStartTime"/>
 
-		<property name="linkIsEffectBusiness" />
+        <property name="linkPlanEndTime"/>
 
-		<property name="linkEffectCondition" />
+        <property name="linkCellInfo"/>
 
-		<property name="linkNetManage" />
+        <property name="linkIsEffectBusiness"/>
 
-		<property name="linkBusinessDept" />
+        <property name="linkEffectCondition"/>
 
-		<property name="linkIsSendToFront" />
+        <property name="linkNetManage"/>
 
-		<property name="linkCutResult" />
+        <property name="linkBusinessDept"/>
 
-		<property name="linkIsPlan" />
+        <property name="linkIsSendToFront"/>
 
-		<property name="linkCutComment" />
+        <property name="linkCutResult"/>
 
-		<property name="linkBusinessComment" />
+        <property name="linkIsPlan"/>
 
-		<property name="linkTestResult" />
+        <property name="linkCutComment"/>
 
-		<property name="linkAlertRecord" />
+        <property name="linkBusinessComment"/>
 
-		<property name="linkUnnormalComment" />
+        <property name="linkTestResult"/>
 
-		<property name="linkCutAnalyse" />
+        <property name="linkAlertRecord"/>
 
-		<property name="linkIsUpdateWork" />
+        <property name="linkUnnormalComment"/>
 
-		<property name="linkWorkUpdateAdvice" />
+        <property name="linkCutAnalyse"/>
 
-		<property name="linkSoftVersionUpdate" />
+        <property name="linkIsUpdateWork"/>
 
-		<property name="linkNextPlan" />
+        <property name="linkWorkUpdateAdvice"/>
 
-		<property name="linkIsNeedProject" />
+        <property name="linkSoftVersionUpdate"/>
 
-		<property name="linkProjectComment" />
-		
-		<property name="linkFailedReason" />
+        <property name="linkNextPlan"/>
 
-</class>    
+        <property name="linkIsNeedProject"/>
+
+        <property name="linkProjectComment"/>
+
+        <property name="linkFailedReason"/>
+
+    </class>
 
 </hibernate-mapping>
 

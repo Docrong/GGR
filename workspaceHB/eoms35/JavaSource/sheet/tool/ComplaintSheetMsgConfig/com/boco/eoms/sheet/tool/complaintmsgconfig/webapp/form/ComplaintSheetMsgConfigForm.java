@@ -12,97 +12,88 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Mon Sep 14 10:06:54 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() qinmin
  * @moudle.getVersion() 1.0
- * 
  */
 public class ComplaintSheetMsgConfigForm extends BaseForm implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 锟斤拷锟�
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 锟斤拷锟�
+     */
+    private String id;
 
-	/**
-	 *
-	 * 订阅者ID
-	 *
-	 */
-	private String userId;
-   
-	public void setUserId(String userId){
-		this.userId= userId;       
-	}
-   
-	public String getUserId(){
-		return this.userId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * 故障区域ID
-	 *
-	 */
-	private String areaId;
-   
-	public void setAreaId(String areaId){
-		this.areaId= areaId;       
-	}
-   
-	public String getAreaId(){
-		return this.areaId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * 投诉类型
-	 *
-	 */
-	private String complaintType;
-   
-	public void setComplaintType(String complaintType){
-		this.complaintType= complaintType;       
-	}
-   
-	public String getComplaintType(){
-		return this.complaintType;
-	}
+    /**
+     * 订阅者ID
+     */
+    private String userId;
 
-	/**
-	 *
-	 * 需通知的领导ID
-	 *
-	 */
-	private String notifyUserIds;
-   
-	public void setNotifyUserIds(String notifyUserIds){
-		this.notifyUserIds= notifyUserIds;       
-	}
-   
-	public String getNotifyUserIds(){
-		return this.notifyUserIds;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserId() {
+        return this.userId;
+    }
+
+    /**
+     * 故障区域ID
+     */
+    private String areaId;
+
+    public void setAreaId(String areaId) {
+        this.areaId = areaId;
+    }
+
+    public String getAreaId() {
+        return this.areaId;
+    }
+
+    /**
+     * 投诉类型
+     */
+    private String complaintType;
+
+    public void setComplaintType(String complaintType) {
+        this.complaintType = complaintType;
+    }
+
+    public String getComplaintType() {
+        return this.complaintType;
+    }
+
+    /**
+     * 需通知的领导ID
+     */
+    private String notifyUserIds;
+
+    public void setNotifyUserIds(String notifyUserIds) {
+        this.notifyUserIds = notifyUserIds;
+    }
+
+    public String getNotifyUserIds() {
+        return this.notifyUserIds;
+    }
 
 
-	protected String accessoriesId;
-	
-	public String getAccessoriesId() {
-		return accessoriesId;
-	}
-	
-	public void setAccessoriesId(String accessoriesId) {
-		this.accessoriesId = accessoriesId;
-	}
+    protected String accessoriesId;
+
+    public String getAccessoriesId() {
+        return accessoriesId;
+    }
+
+    public void setAccessoriesId(String accessoriesId) {
+        this.accessoriesId = accessoriesId;
+    }
 
 }

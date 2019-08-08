@@ -1,149 +1,173 @@
-
 <link rel="stylesheet" href="../css/table_style.css" type="text/css">
 <form name="monthplaitem">
-  <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
-    <tr>
-      <td width="700"  align="right" >
-        <select size='1' name='yearid'><option value='2003'>2003</option><option value='2004'>2004</option><option value='2005' selected>2005</option><option value='2006'>2006</option><option value='2007'>2007</option><option value='2008'>2008</option><option value='2009'>2009</option></select>Äê<select size='1' name='monthid'><option value='01'>01</option><option value='02'>02</option><option value='03'>03</option><option value='04'>04</option><option value='05'>05</option><option value='06'>06</option><option value='07'>07</option><option value='08' selected>08</option><option value='09'>09</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option></select>ÔÂ
-        <input type="button" value="ÔÂ¶ÈÑ¡Ôñ" name="B1" onclick="onMonth()"  Class="clsbtn2">
-      </td>
-    </tr>
-  </table>
+    <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
+        <tr>
+            <td width="700" align="right">
+                <select size='1' name='yearid'>
+                    <option value='2003'>2003</option>
+                    <option value='2004'>2004</option>
+                    <option value='2005' selected>2005</option>
+                    <option value='2006'>2006</option>
+                    <option value='2007'>2007</option>
+                    <option value='2008'>2008</option>
+                    <option value='2009'>2009</option>
+                </select>ï¿½ï¿½<select size='1' name='monthid'>
+                <option value='01'>01</option>
+                <option value='02'>02</option>
+                <option value='03'>03</option>
+                <option value='04'>04</option>
+                <option value='05'>05</option>
+                <option value='06'>06</option>
+                <option value='07'>07</option>
+                <option value='08' selected>08</option>
+                <option value='09'>09</option>
+                <option value='10'>10</option>
+                <option value='11'>11</option>
+                <option value='12'>12</option>
+            </select>ï¿½ï¿½
+                <input type="button" value="ï¿½Â¶ï¿½Ñ¡ï¿½ï¿½" name="B1" onclick="onMonth()" Class="clsbtn2">
+            </td>
+        </tr>
+    </table>
 </form>
 <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
-  <tr>
-    <td width="700" align="center" valign="middle" class="table_title">
-      2005Äê08ÔÂÍ³¼ÆÊý¾Ý
-    </td>
-  </tr>
+    <tr>
+        <td width="700" align="center" valign="middle" class="table_title">
+            2005ï¿½ï¿½08ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+    </tr>
 </table>
 <br>
-<table border="0"  cellspacing="1" cellpadding="1" class="table_show" align="center">
-  <tr class="td_label">
-    <td rowspan="2">²¿ÃÅ</td>
-    <td colspan="3">Ìì</td>
-    <td colspan="3">ÖÜ</td>
-    <td colspan="3">°ëÔÂ</td>
-    <td colspan="3">ÔÂ</td>
-    <td colspan="3">¼¾¶È</td>
-    <td colspan="3">°ëÄê</td>
-    <td colspan="3">Äê</td>
-    <td colspan="3">ÆäËû</td>
-    <td colspan="3">×Ü¼Æ</td>
-    <td rowspan="2">¼°Ê±ÂÊ</td>
-    <td rowspan="2">Íê³ÉÂÊ</td>
-    <td rowspan="2">ÖÆ¶¨¼°Ê±ÂÊ</td>
-    <td rowspan="2">µÃ·Ö</td>
-  </tr>
+<table border="0" cellspacing="1" cellpadding="1" class="table_show" align="center">
+    <tr class="td_label">
+        <td rowspan="2">ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½</td>
+        <td colspan="3">ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan="3">ï¿½Ü¼ï¿½</td>
+        <td rowspan="2">ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td rowspan="2">ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td rowspan="2">ï¿½Æ¶ï¿½ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td rowspan="2">ï¿½Ã·ï¿½</td>
+    </tr>
 
-  <tr class="td_label">
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-    <td >×ÜÊý</td>
-    <td >¼°Ê±Êý</td>
-    <td >Íê³ÉÊý</td>
-  </tr>
-
-
-  <a href='../tawgzstat/statdetpreport.do?yearid=2005&monthid=08&deptid=109'><tr class="tr_show">
-    <td  height="16">×Ó²¿ÃÅÒ»</td>
-    <td  height="16">16</td>
-    <td  height="16">1</td>
-    <td  height="16">1</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">16</td>
-    <td  height="16">1</td>
-    <td  height="16">1</td>
-
-    <td  height="16">6.25%</td>
+    <tr class="td_label">
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+    </tr>
 
 
-    <td  height="16">6.25%</td>
-    
-    <td  height="16">0.0%</td>
+    <a href='../tawgzstat/statdetpreport.do?yearid=2005&monthid=08&deptid=109'>
+        <tr class="tr_show">
+            <td height="16">ï¿½Ó²ï¿½ï¿½ï¿½Ò»</td>
+            <td height="16">16</td>
+            <td height="16">1</td>
+            <td height="16">1</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">16</td>
+            <td height="16">1</td>
+            <td height="16">1</td>
 
-    <td  height="16">-17.</td>
-  </tr></a>
-  <a href='../tawgzstat/statdetpreport.do?yearid=2005&monthid=08&deptid=109'><tr class="tr_show">
-    <td  height="16">×Ó²¿ÃÅ¶þ</td>
-    <td  height="16">16</td>
-    <td  height="16">1</td>
-    <td  height="16">1</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">0</td>
-    <td  height="16">16</td>
-    <td  height="16">1</td>
-    <td  height="16">1</td>
-
-    <td  height="16">6.25%</td>
+            <td height="16">6.25%</td>
 
 
-    <td  height="16">6.25%</td>
-    
-    <td  height="16">0.0%</td>
+            <td height="16">6.25%</td>
 
-    <td  height="16">-17.</td>
-  </tr></a>
+            <td height="16">0.0%</td>
+
+            <td height="16">-17.</td>
+        </tr>
+    </a>
+    <a href='../tawgzstat/statdetpreport.do?yearid=2005&monthid=08&deptid=109'>
+        <tr class="tr_show">
+            <td height="16">ï¿½Ó²ï¿½ï¿½Å¶ï¿½</td>
+            <td height="16">16</td>
+            <td height="16">1</td>
+            <td height="16">1</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">0</td>
+            <td height="16">16</td>
+            <td height="16">1</td>
+            <td height="16">1</td>
+
+            <td height="16">6.25%</td>
+
+
+            <td height="16">6.25%</td>
+
+            <td height="16">0.0%</td>
+
+            <td height="16">-17.</td>
+        </tr>
+    </a>
 
 </table>

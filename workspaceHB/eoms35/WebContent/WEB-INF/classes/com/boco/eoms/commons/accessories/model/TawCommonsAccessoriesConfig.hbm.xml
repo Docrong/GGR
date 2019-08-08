@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,59 +13,59 @@
             table="taw_commons_accessoriesconfig"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
-    </generator>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
+            </generator>
 
-    </id>
-       <property
-            name="appId"
+        </id>
+        <property
+                name="appId"
                 length="50"
         >
 
         </property>
         <property
-            name="allowFileType"
-                length="50"
-        >
-
-        </property>
-
-        <property
-            name="appCode"
+                name="allowFileType"
                 length="50"
         >
 
         </property>
 
         <property
-            name="appName"
+                name="appCode"
                 length="50"
         >
 
         </property>
 
         <property
-            name="maxSize"
+                name="appName"
                 length="50"
         >
 
         </property>
 
         <property
-            name="path"
+                name="maxSize"
                 length="50"
         >
 
         </property>
 
-    </class>    
+        <property
+                name="path"
+                length="50"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

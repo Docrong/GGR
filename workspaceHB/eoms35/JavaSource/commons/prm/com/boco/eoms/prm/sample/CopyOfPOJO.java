@@ -16,10 +16,9 @@ package com.boco.eoms.prm.sample;
  * <p>
  * Date:2007-8-7 14:38:07
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class CopyOfPOJO {
     private String toproperty1;
@@ -36,8 +35,7 @@ public class CopyOfPOJO {
     }
 
     /**
-     * @param toproperty1
-     *            the toproperty1 to set
+     * @param toproperty1 the toproperty1 to set
      */
     public void setToproperty1(String toproperty1) {
         this.toproperty1 = toproperty1;
@@ -51,8 +49,7 @@ public class CopyOfPOJO {
     }
 
     /**
-     * @param toproperty2
-     *            the toproperty2 to set
+     * @param toproperty2 the toproperty2 to set
      */
     public void setToproperty2(String toproperty2) {
         this.toproperty2 = toproperty2;
@@ -66,8 +63,7 @@ public class CopyOfPOJO {
     }
 
     /**
-     * @param toproperty3
-     *            the toproperty3 to set
+     * @param toproperty3 the toproperty3 to set
      */
     public void setToproperty3(String toproperty3) {
         this.toproperty3 = toproperty3;

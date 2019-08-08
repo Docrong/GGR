@@ -3,66 +3,66 @@ package com.boco.eoms.commons.hongxun.webapp.form;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawCommonHongXunForm extends BaseForm implements
-java.io.Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	private String com_name;
+        java.io.Serializable {
 
-	private String xiaozu_name;
+    private static final long serialVersionUID = 1L;
+    private String com_name;
 
-	private String name;
+    private String xiaozu_name;
 
-	private String tel;
+    private String name;
 
-	private String zhize;
+    private String tel;
 
-	private String remark;
+    private String zhize;
 
-	public String getCom_name() {
-		return com_name;
-	}
+    private String remark;
 
-	public void setCom_name(String com_name) {
-		this.com_name = com_name;
-	}
+    public String getCom_name() {
+        return com_name;
+    }
 
-	public String getXiaozu_name() {
-		return xiaozu_name;
-	}
+    public void setCom_name(String com_name) {
+        this.com_name = com_name;
+    }
 
-	public void setXiaozu_name(String xiaozu_name) {
-		this.xiaozu_name = xiaozu_name;
-	}
+    public String getXiaozu_name() {
+        return xiaozu_name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setXiaozu_name(String xiaozu_name) {
+        this.xiaozu_name = xiaozu_name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getTel() {
-		return tel;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
+    public String getTel() {
+        return tel;
+    }
 
-	public String getZhize() {
-		return zhize;
-	}
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
 
-	public void setZhize(String zhize) {
-		this.zhize = zhize;
-	}
+    public String getZhize() {
+        return zhize;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setZhize(String zhize) {
+        this.zhize = zhize;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 }

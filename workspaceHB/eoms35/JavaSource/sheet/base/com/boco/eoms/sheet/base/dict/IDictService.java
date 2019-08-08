@@ -18,15 +18,14 @@ import java.util.Map;
  * <p>
  * Date:2007-8-3 11:47:30
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public interface IDictService {
     /**
      * 通过value值取描述
-     * 
+     *
      * @param value
      * @param map
      * @return
@@ -35,7 +34,7 @@ public interface IDictService {
 
     /**
      * 通过value取名称
-     * 
+     *
      * @param value
      * @param map
      * @return

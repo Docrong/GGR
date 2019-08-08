@@ -4,6 +4,6 @@ import com.boco.eoms.base.dao.Dao;
 
 public interface IIPSpecialLineJdbc extends Dao {
 
-	//select maxcode 
-	public String getMaxCode();
+    //select maxcode
+    public String getMaxCode();
 }

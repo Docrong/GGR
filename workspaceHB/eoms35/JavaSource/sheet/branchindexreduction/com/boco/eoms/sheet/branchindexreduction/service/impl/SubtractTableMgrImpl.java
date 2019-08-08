@@ -7,54 +7,55 @@ import com.boco.eoms.sheet.branchindexreduction.dao.ISubtractTableDao;
 import com.boco.eoms.sheet.branchindexreduction.model.SubtractTable;
 import com.boco.eoms.sheet.branchindexreduction.service.ISubtractTableMgr;
 
-public class SubtractTableMgrImpl implements ISubtractTableMgr{
-	private ISubtractTableDao subtractTableDao;
-	
+public class SubtractTableMgrImpl implements ISubtractTableMgr {
+    private ISubtractTableDao subtractTableDao;
 
-	public ISubtractTableDao getSubtractTableDao() {
-		return subtractTableDao;
-	}
 
-	public void setSubtractTableDao(ISubtractTableDao subtractTableDao) {
-		this.subtractTableDao = subtractTableDao;
-	}
+    public ISubtractTableDao getSubtractTableDao() {
+        return subtractTableDao;
+    }
 
-	
-	public SubtractTable getSubtractTable(String id) {
-		
-		return subtractTableDao.getSubtractTable(id);
-	}
+    public void setSubtractTableDao(ISubtractTableDao subtractTableDao) {
+        this.subtractTableDao = subtractTableDao;
+    }
 
-	public List getSubtractTables() {
-		// TODO Auto-generated method stub
-		return subtractTableDao.getSubtractTables();
-	}
 
-	public Map getSubtractTables(Integer curPage, Integer pageSize, String whereStr) {
-		// TODO Auto-generated method stub
-		return subtractTableDao.getSubtractTables(curPage, pageSize, whereStr);
-	}
+    public SubtractTable getSubtractTable(String id) {
 
-	public void removeSubtractTable(String id) {
-		subtractTableDao.removeSubtractTable(id);
-		
-	}
-	
-	public void removeSubtractTable(final String[] ids) {
-	        if (null != ids) {
-	            for (int i = 0; i < ids.length; i++) {
-	                this.removeSubtractTable(ids[i]);
-	            }
-	        }
-	    }
-	public void saveSubtractTable(SubtractTable subtractTable) {
-		subtractTableDao.saveSubtractTable(subtractTable);
-		
-	}
+        return subtractTableDao.getSubtractTable(id);
+    }
 
-	public List getSubtractTablesByCondition(String condition) {
-		
-		return subtractTableDao.getSubtractTablesByCondition(condition);
-	}
+    public List getSubtractTables() {
+        // TODO Auto-generated method stub
+        return subtractTableDao.getSubtractTables();
+    }
+
+    public Map getSubtractTables(Integer curPage, Integer pageSize, String whereStr) {
+        // TODO Auto-generated method stub
+        return subtractTableDao.getSubtractTables(curPage, pageSize, whereStr);
+    }
+
+    public void removeSubtractTable(String id) {
+        subtractTableDao.removeSubtractTable(id);
+
+    }
+
+    public void removeSubtractTable(final String[] ids) {
+        if (null != ids) {
+            for (int i = 0; i < ids.length; i++) {
+                this.removeSubtractTable(ids[i]);
+            }
+        }
+    }
+
+    public void saveSubtractTable(SubtractTable subtractTable) {
+        subtractTableDao.saveSubtractTable(subtractTable);
+
+    }
+
+    public List getSubtractTablesByCondition(String condition) {
+
+        return subtractTableDao.getSubtractTablesByCondition(condition);
+    }
 
 }

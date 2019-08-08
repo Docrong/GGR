@@ -29,171 +29,171 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Mon Jun 15 18:07:23 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() zhangxb
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmExpertCetAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增证书管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增证书管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改证书管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改证书管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		if(!id.equals("")){
-			KmExpertCet kmExpertCet = kmExpertCetMgr.getKmExpertCet(id);
-			KmExpertCetForm kmExpertCetForm = (KmExpertCetForm) convert(kmExpertCet);
-			updateFormBean(mapping, request, kmExpertCetForm);
-		}
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存证书管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
-		KmExpertCetForm kmExpertCetForm = (KmExpertCetForm) form;
-		boolean isNew = (null == kmExpertCetForm.getId() || "".equals(kmExpertCetForm.getId()));
-		KmExpertCet kmExpertCet = (KmExpertCet) convert(kmExpertCetForm);
-		if (isNew) {
-			kmExpertCetMgr.saveKmExpertCet(kmExpertCet);
-		} else {
-			kmExpertCetMgr.saveKmExpertCet(kmExpertCet);
-		}
-		
-		request.setAttribute("operType", "save");
-		
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 删除证书管理
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        if (!id.equals("")) {
+            KmExpertCet kmExpertCet = kmExpertCetMgr.getKmExpertCet(id);
+            KmExpertCetForm kmExpertCetForm = (KmExpertCetForm) convert(kmExpertCet);
+            updateFormBean(mapping, request, kmExpertCetForm);
+        }
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存证书管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
+        KmExpertCetForm kmExpertCetForm = (KmExpertCetForm) form;
+        boolean isNew = (null == kmExpertCetForm.getId() || "".equals(kmExpertCetForm.getId()));
+        KmExpertCet kmExpertCet = (KmExpertCet) convert(kmExpertCetForm);
+        if (isNew) {
+            kmExpertCetMgr.saveKmExpertCet(kmExpertCet);
+        } else {
+            kmExpertCetMgr.saveKmExpertCet(kmExpertCet);
+        }
+
+        request.setAttribute("operType", "save");
+
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 删除证书管理
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
 //		String id = StaticMethod.null2String(request.getParameter("id"));
 //		kmExpertCetMgr.removeKmExpertCet(id);
-		String[] ids = request.getParameterValues("ids");
-		kmExpertCetMgr.removeKmExpertCets(ids);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示证书管理列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
-		String userId = StaticMethod.null2String(request.getParameter("userId"));
-		
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmExpertCetConstants.KMEXPERTCET_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        String[] ids = request.getParameterValues("ids");
+        kmExpertCetMgr.removeKmExpertCets(ids);
+        return search(mapping, form, request, response);
+    }
 
-		KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
-		Map map = (Map) kmExpertCetMgr.getKmExpertCetsByUserId(pageIndex, pageSize, userId);
-		List list = (List) map.get("result");
-		
-		request.setAttribute(KmExpertCetConstants.KMEXPERTCET_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		
-		request.setAttribute("userId", userId);
-		
-		return mapping.findForward("list");
-	}
+    /**
+     * 分页显示证书管理列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-	public ActionForward listDetail(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		search(mapping, form, request, response);
-		return mapping.findForward("listDetail");
-	}
+        String userId = StaticMethod.null2String(request.getParameter("userId"));
 
-	/**
-	 * 分页显示证书管理列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmExpertCetConstants.KMEXPERTCET_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+
+        KmExpertCetMgr kmExpertCetMgr = (KmExpertCetMgr) getBean("kmExpertCetMgr");
+        Map map = (Map) kmExpertCetMgr.getKmExpertCetsByUserId(pageIndex, pageSize, userId);
+        List list = (List) map.get("result");
+
+        request.setAttribute(KmExpertCetConstants.KMEXPERTCET_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+
+        request.setAttribute("userId", userId);
+
+        return mapping.findForward("list");
+    }
+
+    public ActionForward listDetail(ActionMapping mapping, ActionForm form,
+                                    HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        search(mapping, form, request, response);
+        return mapping.findForward("listDetail");
+    }
+
+    /**
+     * 分页显示证书管理列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

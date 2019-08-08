@@ -5,57 +5,59 @@ package com.boco.eoms.sparepart.model;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.0
  */
 
-public class TawStorage{
+public class TawStorage {
     private String note;
     private String storagename;
     private int id;
     private String deptname;
     private String deptid;
-    public TawStorage(){
+
+    public TawStorage() {
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note){
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public String getStoragename(){
+    public String getStoragename() {
         return storagename;
     }
 
-  public String getDeptid() {
-    return deptid;
-  }
-
-  public String getDeptname() {
-    return deptname;
-  }
-
-  public void setStoragename(String storagename){
-        this.storagename=storagename;
+    public String getDeptid() {
+        return deptid;
     }
 
-  public void setDeptid(String deptid) {
-    this.deptid = deptid;
-  }
+    public String getDeptname() {
+        return deptname;
+    }
 
-  public void setDeptname(String deptname) {
-    this.deptname = deptname;
-  }
+    public void setStoragename(String storagename) {
+        this.storagename = storagename;
+    }
+
+    public void setDeptid(String deptid) {
+        this.deptid = deptid;
+    }
+
+    public void setDeptname(String deptname) {
+        this.deptname = deptname;
+    }
 
 }

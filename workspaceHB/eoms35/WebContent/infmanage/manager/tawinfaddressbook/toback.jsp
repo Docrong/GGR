@@ -1,17 +1,17 @@
 <%
-   String mail = (String)request.getAttribute("mail");
+    String mail = (String) request.getAttribute("mail");
 %>
-<body >
+<body>
 <form>
 
-<script language="javascript">
+    <script language="javascript">
 
-    var mail;
-    mail = "<%=mail%>";
-    window.location.href='mailto:'+mail;
-    window.close();
+        var mail;
+        mail = "<%=mail%>";
+        window.location.href = 'mailto:' + mail;
+        window.close();
 
-</script>
+    </script>
 
 </form>
 </body>

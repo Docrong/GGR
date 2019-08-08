@@ -28,12 +28,12 @@ import java.util.zip.ZipException;
  * same, but they don't have to be.  {@link
  * java.util.zip.ZipOutputStream java.util.zip.ZipOutputStream} will
  * only use the local file data in both places.</p>
- *
  */
 public interface ZipExtraField {
 
     /**
      * The Header-ID.
+     *
      * @return the header id
      * @since 1.1
      */
@@ -42,6 +42,7 @@ public interface ZipExtraField {
     /**
      * Length of the extra field in the local file data - without
      * Header-ID or length specifier.
+     *
      * @return the length of the field in the local file data
      * @since 1.1
      */
@@ -50,6 +51,7 @@ public interface ZipExtraField {
     /**
      * Length of the extra field in the central directory - without
      * Header-ID or length specifier.
+     *
      * @return the length of the field in the central directory
      * @since 1.1
      */
@@ -58,6 +60,7 @@ public interface ZipExtraField {
     /**
      * The actual data to put into local file data - without Header-ID
      * or length specifier.
+     *
      * @return the data
      * @since 1.1
      */
@@ -66,6 +69,7 @@ public interface ZipExtraField {
     /**
      * The actual data to put central directory - without Header-ID or
      * length specifier.
+     *
      * @return the data
      * @since 1.1
      */
@@ -73,13 +77,13 @@ public interface ZipExtraField {
 
     /**
      * Populate data from this array as if it was in local file data.
-     * @param data an array of bytes
+     *
+     * @param data   an array of bytes
      * @param offset the start offset
      * @param length the number of bytes in the array from offset
-     *
-     * @since 1.1
      * @throws ZipException on error
+     * @since 1.1
      */
     void parseFromLocalFileData(byte[] data, int offset, int length)
-        throws ZipException;
+            throws ZipException;
 }

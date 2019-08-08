@@ -9,9 +9,8 @@ import com.boco.eoms.sheet.base.dao.ITaskDAO;
 import org.hibernate.HibernateException;
 
 public interface ITechniqueSupportHbTaskDAO
-	extends ITaskDAO
-{
+        extends ITaskDAO {
 
-	public abstract Integer getCountOfBrother(Object obj, String s, String s1)
-		throws HibernateException;
+    public abstract Integer getCountOfBrother(Object obj, String s, String s1)
+            throws HibernateException;
 }

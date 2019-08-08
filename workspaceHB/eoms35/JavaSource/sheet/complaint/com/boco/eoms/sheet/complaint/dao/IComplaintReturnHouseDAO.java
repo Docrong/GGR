@@ -21,18 +21,17 @@ import com.boco.eoms.sheet.complaint.model.ComplaintReturnHouse;
 import com.boco.eoms.sheet.nbproducts.model.NBProducts;
 
 /**
- * @author
- *
- * TODO To change the template for this generated type comment go to
+ * @author TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface IComplaintReturnHouseDAO extends Dao {
-	
-	public abstract void saveReturnHorse(ComplaintReturnHouse complaintreturnhouse);
-	
-	public abstract Map getReturnHorse(String userid,final String queryStr, 
-	          final Integer curPage,final Integer pageSize);
-	public ComplaintReturnHouse getReturnHouseByid(String id);
+
+    public abstract void saveReturnHorse(ComplaintReturnHouse complaintreturnhouse);
+
+    public abstract Map getReturnHorse(String userid, final String queryStr,
+                                       final Integer curPage, final Integer pageSize);
+
+    public ComplaintReturnHouse getReturnHouseByid(String id);
 
 
 }

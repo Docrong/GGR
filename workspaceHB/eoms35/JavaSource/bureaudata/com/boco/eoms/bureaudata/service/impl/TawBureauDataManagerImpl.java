@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.boco.eoms.base.service.impl.BaseManager;
@@ -17,6 +18,7 @@ public class TawBureauDataManagerImpl extends BaseManager implements ITawBureauD
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawBureauDataDao(ITawBureauDataDao dao) {
@@ -50,45 +52,49 @@ public class TawBureauDataManagerImpl extends BaseManager implements ITawBureauD
     public void removeTawBureauData(final String id) {
         dao.removeTawBureauData(new String(id));
     }
+
     /**
      * @see com.boco.eoms.bureaudata.service.ITawBureauDataManager#getTawBureauDatas(final Integer curPage, final Integer pageSize)
      */
     public Map getTawBureauDatas(final Integer curPage, final Integer pageSize) {
-        return dao.getTawBureauDatas(curPage, pageSize,null);
+        return dao.getTawBureauDatas(curPage, pageSize, null);
     }
+
     /**
      * @see com.boco.eoms.bureaudata.service.ITawBureauDataManager#getTawBureauDatas(final Integer curPage, final Integer pageSize, final String whereStr)
-     */    
+     */
     public Map getTawBureauDatas(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawBureauDatas(curPage, pageSize, whereStr);
     }
+
     /**
      * @see com.boco.eoms.bureaudata.service.ITawBureauDataManager#getChildList(String parentId)
-     */     
-    public List getChildList(String parentId) {		
-		return dao.getChildList(parentId);
-	}
+     */
+    public List getChildList(String parentId) {
+        return dao.getChildList(parentId);
+    }
+
     /**
      * @see com.boco.eoms.bureaudata.service.ITawBureauDataManager#xGetChildNodes(String parentId)
-     */  	
-	public JSONArray xGetChildNodes(String parentId) {
-		JSONArray json = new JSONArray();
-		List list = new ArrayList();	
-		list = this.getChildList(parentId);
+     */
+    public JSONArray xGetChildNodes(String parentId) {
+        JSONArray json = new JSONArray();
+        List list = new ArrayList();
+        list = this.getChildList(parentId);
 
-		for (Iterator rowIt = list.iterator(); rowIt.hasNext();) {
-			TawBureauData obj = (TawBureauData) rowIt.next();
-			JSONObject jitem = new JSONObject();
-			jitem.put("id", obj.getId());
-			jitem.put("text", obj.getBigNet());
-			jitem.put("name", obj.getBigNet());
-			jitem.put("allowChild", true);
-			jitem.put("allowDelete", true);
-			if(obj.getCrusdata().equals("1")){
-				jitem.put("leaf", true);
-			}
-			json.put(jitem);
-		}
-		return json;
-	}	
+        for (Iterator rowIt = list.iterator(); rowIt.hasNext(); ) {
+            TawBureauData obj = (TawBureauData) rowIt.next();
+            JSONObject jitem = new JSONObject();
+            jitem.put("id", obj.getId());
+            jitem.put("text", obj.getBigNet());
+            jitem.put("name", obj.getBigNet());
+            jitem.put("allowChild", true);
+            jitem.put("allowDelete", true);
+            if (obj.getCrusdata().equals("1")) {
+                jitem.put("leaf", true);
+            }
+            json.put(jitem);
+        }
+        return json;
+    }
 }

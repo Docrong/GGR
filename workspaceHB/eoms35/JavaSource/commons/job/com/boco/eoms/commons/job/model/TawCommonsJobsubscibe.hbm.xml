@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,29 +13,29 @@
             table="taw_commons_jobsubscibe"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="deleted"
+                name="deleted"
                 length="50"
 
-         >
+        >
 
         </property>
 
         <property
-            name="jobSortId"
+                name="jobSortId"
                 length="50"
                 not-null="true"
         >
@@ -43,7 +43,7 @@
         </property>
 
         <property
-            name="jobCycle"
+                name="jobCycle"
                 length="50"
                 not-null="true"
         >
@@ -51,7 +51,7 @@
         </property>
 
         <property
-            name="jobType"
+                name="jobType"
                 length="50"
                 not-null="true"
         >
@@ -59,7 +59,7 @@
         </property>
 
         <property
-            name="subId"
+                name="subId"
                 length="50"
                 not-null="true"
         >
@@ -67,7 +67,7 @@
         </property>
 
         <property
-            name="subscriberDeptId"
+                name="subscriberDeptId"
                 length="50"
                 not-null="false"
         >
@@ -75,7 +75,7 @@
         </property>
 
         <property
-            name="subscriberId"
+                name="subscriberId"
                 length="50"
                 not-null="false"
         >
@@ -83,14 +83,14 @@
         </property>
 
         <property
-            name="subscribeTime"
+                name="subscribeTime"
                 length="50"
                 not-null="false"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

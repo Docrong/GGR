@@ -4,9 +4,9 @@ import com.boco.eoms.base.util.ApplicationContextHolder;
 
 public class PQConfigLocator {
 
-	public static PQConfig getPQConfig() {
-		return (PQConfig) ApplicationContextHolder.getInstance().getBean(
-				"pqConfig");
-	}
+    public static PQConfig getPQConfig() {
+        return (PQConfig) ApplicationContextHolder.getInstance().getBean(
+                "pqConfig");
+    }
 
 }

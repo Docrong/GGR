@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:bo="http://EomsLibray" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://EomsLibray">
-  <xsd:annotation>
-    <xsd:appinfo source="wid.federated.schema"/>
-  </xsd:annotation>
-  <xsd:include schemaLocation="../ControlBO.xsd"/>
-  <xsd:include schemaLocation="../TaskBO.xsd"/>
-  <xsd:include schemaLocation="../OpertrateBO.xsd"/>
-  <xsd:include schemaLocation="../LinkBO.xsd"/>
-  <xsd:include schemaLocation="../MainBO.xsd"/>
+<xsd:schema xmlns:bo="http://EomsLibray" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://EomsLibray">
+    <xsd:annotation>
+        <xsd:appinfo source="wid.federated.schema"/>
+    </xsd:annotation>
+    <xsd:include schemaLocation="../ControlBO.xsd"/>
+    <xsd:include schemaLocation="../TaskBO.xsd"/>
+    <xsd:include schemaLocation="../OpertrateBO.xsd"/>
+    <xsd:include schemaLocation="../LinkBO.xsd"/>
+    <xsd:include schemaLocation="../MainBO.xsd"/>
 </xsd:schema>

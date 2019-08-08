@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.ITaskService;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
- 
- public interface IMofficeDataTaskManager extends ITaskService {
- 
- }
+
+public interface IMofficeDataTaskManager extends ITaskService {
+
+}

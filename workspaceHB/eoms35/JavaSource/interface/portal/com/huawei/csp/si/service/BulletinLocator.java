@@ -1,20 +1,21 @@
 /**
  * BulletinLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.huawei.csp.si.service;
+
 import com.boco.eoms.util.InterfaceUtilVariable;
 import com.boco.eoms.util.BulletinMgrLocator;
 
 public class BulletinLocator extends org.apache.axis.client.Service implements com.huawei.csp.si.service.Bulletin {
 
     // Use to get a proxy class for BulletinHttpPort
-	
+
     private final java.lang.String BulletinHttpPort_address = BulletinMgrLocator.getAttributes().getBulletinHttpPortAddress();
-  
+
     public java.lang.String getBulletinHttpPortAddress() {
         return BulletinHttpPort_address;
     }
@@ -31,11 +32,10 @@ public class BulletinLocator extends org.apache.axis.client.Service implements c
     }
 
     public com.huawei.csp.si.service.BulletinPortType getBulletinHttpPort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(BulletinHttpPort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getBulletinHttpPort(endpoint);
@@ -46,8 +46,7 @@ public class BulletinLocator extends org.apache.axis.client.Service implements c
             com.huawei.csp.si.service.BulletinHttpBindingStub _stub = new com.huawei.csp.si.service.BulletinHttpBindingStub(portAddress, this);
             _stub.setPortName(getBulletinHttpPortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -64,8 +63,7 @@ public class BulletinLocator extends org.apache.axis.client.Service implements c
                 _stub.setPortName(getBulletinHttpPortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -83,8 +81,7 @@ public class BulletinLocator extends org.apache.axis.client.Service implements c
         String inputPortName = portName.getLocalPart();
         if ("BulletinHttpPort".equals(inputPortName)) {
             return getBulletinHttpPort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;

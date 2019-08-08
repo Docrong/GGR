@@ -3,7 +3,7 @@ package com.boco.eoms.sparepart.controller;
 
 import com.boco.eoms.base.webapp.form.BaseForm;
 
-public class TawStorageForm extends BaseForm implements java.io.Serializable{
+public class TawStorageForm extends BaseForm implements java.io.Serializable {
 
     private String id;
     private String note;
@@ -11,46 +11,46 @@ public class TawStorageForm extends BaseForm implements java.io.Serializable{
     private String deptName;
     private String deptId;
 
-    public TawStorageForm(){
+    public TawStorageForm() {
     }
 
-    public String getId(){
+    public String getId() {
         return id;
     }
 
-    public void setId(String id){
-        this.id=id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note){
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public String getStoragename(){
+    public String getStoragename() {
         return storagename;
     }
 
-  public String getDeptId() {
-    return deptId;
-  }
-
-  public String getDeptName() {
-    return deptName;
-  }
-
-  public void setStoragename(String storagename){
-        this.storagename=storagename;
+    public String getDeptId() {
+        return deptId;
     }
 
-  public void setDeptId(String deptId) {
-    this.deptId = deptId;
-  }
+    public String getDeptName() {
+        return deptName;
+    }
 
-  public void setDeptName(String deptName) {
-    this.deptName = deptName;
-  }
+    public void setStoragename(String storagename) {
+        this.storagename = storagename;
+    }
+
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 }

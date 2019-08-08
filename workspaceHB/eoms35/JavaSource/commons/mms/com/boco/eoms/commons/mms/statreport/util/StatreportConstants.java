@@ -10,15 +10,14 @@ package com.boco.eoms.commons.mms.statreport.util;
  * <p>
  * Wed Feb 18 11:35:28 CST 2009
  * </p>
- * 
+ *
  * @author 李振友
  * @version 3.5
- * 
  */
 public class StatreportConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String STATREPORT_LIST = "statreportList";
+
+    /**
+     * list key
+     */
+    public final static String STATREPORT_LIST = "statreportList";
 }

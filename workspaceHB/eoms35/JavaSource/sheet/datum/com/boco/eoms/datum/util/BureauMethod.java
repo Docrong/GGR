@@ -14,328 +14,336 @@ import com.boco.eoms.datum.service.ITawBureaudataCityzoneManager;
 import com.boco.eoms.datum.service.ITawBureaudataHlrDAOManager;
 
 import java.io.*;
+
 import com.boco.RW_Excel.excel.Workbook;
 import com.boco.RW_Excel.excel.Sheet;
 import com.boco.RW_Excel.excel.Cell;
 import com.boco.RW_Excel.excel.read.biff.BiffException;
+
 import java.util.*;
 
 public class BureauMethod {
-  static PropertyFile PROP = PropertyFile.getInstance();
-  public BureauMethod() {
-  }
+    static PropertyFile PROP = PropertyFile.getInstance();
 
-  /**
-   * Added by Matao 2007-11-09
-   * Ìí¼ÓÁËÌõÊýµÄÏÞÖÆ£¬×î´óÌõÊýÎª500
-   * @param ips InputStream
-   * @param sheetId int
-   * @return String
-   */
-  public String isStandard(InputStream ips, int sheetId) {
-    String resultStr = "";
-    if (ips != null) {
-      int maxListSize = 50000;
-      Workbook workBook = null;
-      Cell[] row = null;
-      try {
-        workBook = Workbook.getWorkbook(ips);
-        int sheetNum = 0; //Ä¬ÈÏÖ»´¦ÀíµÚÒ»¸ö¹¤×÷±¡
-        Sheet sheet = workBook.getSheet(sheetNum);
-        int size = sheet.getRows();
-        System.out.println("size:" + size);
-        if (sheetId == 1) { //Î´È·¶¨HLR¹éÊôµÄºÅ¶Î
-          size -= 3;
-          row = sheet.getRow(2);
-          if (!(row[3].getContents().matches("\\d\\d\\d\\d"))) {
-            resultStr = "¡¶Î´È·¶¨HLR¹éÊôµÄºÅ¶Î¡·Ä£°æÎÄ¼þÖÐ¸ñÊ½²»¶Ô";
-          }
-        } else if (sheetId == 2) { //±ä¸üÅú¸´±í
-          row = sheet.getRow(2);
-          size -= 3;
-          if ((row[4].getContents().matches("\\d\\d\\d\\d")) || !(row[5].getContents().matches("\\d\\d\\d\\d"))) {
-            resultStr = "¡¶±ä¸üÅú¸´±í¡·Ä£°æÎÄ¼þÖÐ¸ñÊ½²»¶Ô";
-          }
-        } else if (sheetId == 3) { //ÏÖÓÐHLRºÍºÅ¶ÎµÄ¶ÔÓ¦
-          row = sheet.getRow(2);
-          size -=2;
-          if (row.length < 8 || row[1].getContents().trim().equals("") || row[2].getContents().trim().equals("") || row[5].getContents().trim().equals("") || row[7].getContents().trim().equals("") ) {
-            resultStr = "¡¶ÏÖÓÐHLRºÍºÅ¶ÎµÄ¶ÔÓ¦¹ØÏµ¡·Ä£°æÎÄ¼þÖÐ¸ñÊ½²»¶Ô";
-          }
-        } else if (sheetId == 4) { //HLRÁÐ±í
-          row = sheet.getRow(0);
-          size -= 1;
-          if (row.length != 3) {
-            resultStr = "¡¶HLRÁÐ±í¡·Ä£°æÎÄ¼þÖÐ¸ñÊ½²»¶Ô";
-          }
-        }
-        if(size > maxListSize){
-            resultStr = "Ä£°æÎÄ¼þÖÐ¼ÇÂ¼µÄÌõÊý²»ÄÜ´óÓÚ"+ maxListSize +"£¬Èç¹û´óÓÚ"+ maxListSize +"£¬Çë·ÖÅúµ¼Èë!";
-          }
-      } catch (Exception ex) {
-        resultStr = "ËùÉÏ´«µÄÎÄ¼þÎÞ·¨ÕýÈ·¶ÁÈ¡£¬Çë¼ì²éÊÇ·ñÊÇExcelÄ£°æÎÄ¼þ!";
-        ex.printStackTrace();
-      }
+    public BureauMethod() {
     }
-    return resultStr;
-  }
 
-
-  /**
-   * Added by Matao 2007-11-09
-   * ¼ì²é³ÇÊÐÊÇ·ñÕýÈ·Ê±£¬ÏÈ°ÑËùÓÐµÄ³ÇÊÐÐÅÏ¢POÒÔ³ÇÊÐÃû³ÆÎªKey·ÅÈëµ½MapÖÐ£¬È»ºóÓÃ³ÇÊÐÇøºÅ´ÓMapÖÐÈ¡³ö³ÇÊÐÐÅÏ¢PO
-   * @param ips InputStream
-   * @param bureauno String
-   * @throws Exception Èç¹û³öÏÖÇøºÅ²»Æ¥Åä»òºÅÂë¶ÎÊý¾Ý²»×¼È·µÄÇé¿ö¾Í»áÅ×³öÒì³£
-   * @return List Èç¹ûÔÚ¶ÁÈ¡Ò»ÇÐË³Àû¾Í°Ñ·ÖÎö³öÀ´µÄÊý¾Ý·ÅÈëµ½ListÖÐ
-   */
-  public List getNobelonghlr(InputStream ips, String bureauId, Set citySetOutput) throws Exception {
-    ArrayList list = new ArrayList();
-    TawBureaudataCityzone cityPO = null;
-    String cellcontents[] = null;
-    bureauId = bureauId + ";";
-    if(citySetOutput == null){
-      citySetOutput = new HashSet();
-    }
-    if (ips != null) { //ÎÄ¼þ´æÔÚ
-      Workbook workBook = Workbook.getWorkbook(ips);
-      int sheetNum = 0; //Ä¬ÈÏÖ»´¦ÀíµÚÒ»¸ö¹¤×÷±¡
-      Sheet sheet = workBook.getSheet(sheetNum);
-      int rows = sheet.getRows(); //×ÜÐÐÊý
-      Cell[] celltitle = null;
-      Cell[] cell = null;
-      int endcol = 0; //±íÍ·ÖÐ·ÇÊý×ÖÁÐµÄÎ»ÖÃ
-      //¿ªÊ¼¿ªÊ¼´¦Àí±íÍ·,È¡µ½±íÍ·µÄµÚÒ»¸ö·ÇÊý×ÖÁÐµÄÁÐºÅ
-      celltitle = sheet.getRow(2);
-      for (int i = 3; i < celltitle.length; i++) {
-        if (!(celltitle[i].getContents()).matches("\\d\\d\\d\\d")) {
-          break;
-        }
-        endcol = i;
-      }
-      ITawBureaudataCityzoneManager mgr = (ITawBureaudataCityzoneManager) ApplicationContextHolder
-		.getInstance().getBean("iTawBureaudataCityzoneManager");
-      ITawBureaudataBasicDAOManager base = (ITawBureaudataBasicDAOManager) ApplicationContextHolder
-		.getInstance().getBean("iTawBureaudataBasicDAOManager");
-      Map cityMap = mgr.getAllCityIntoMapKeyZoneNum();
-      Set bdBasicSet = base.getAllBureaudataBasic();
-      //¿ªÊ¼´¦ÀíÊý¾Ý,´ÓµÚËÄÐÐ¿ªÊ¼´¦ÀíÊý¾Ý£¬´¦ÀíÊý¾ÝµÄÁÐµÄÓÐÐ§·¶Î§Îª£º1~endcol
-      for (int i = 3; i < rows; i++) {
-        cell = sheet.getRow(i); //
-        if(cell[0].getContents().indexOf("ºþ±±")<0){
-          continue;
-        }
-        cityPO = (TawBureaudataCityzone)cityMap.get(new Integer(cell[2].getContents()).toString());
-        citySetOutput.add(cityPO);
-        if (cityPO == null) { //Ã»ÓÐÕÒµ½ÏàÓ¦µÄ³ÇÊÐ
-          String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐµ¥Ôª¸ñ<b>" + StaticMethod.getExcelPosition(i+1,3) + "</b>µÄ³ÇÊÐÇøºÅ[" + cell[2].getContents() + "]²»´æÔÚ£¬Çë¼ì²é";
-          throw new Exception(errorInfo);
-        } else {
-          for (int j = 3; j <= endcol; j++) {
-              if (!cell[j].getContents().equals("")) {
-                //È¡µ½¿ªÊ¼ºÍ½áÊøµÄºÅ¶Î
-                cellcontents = (cell[j].getContents()).split(",");
-                for (int k = 0; k < cellcontents.length; k++) {
-                  //¶ÔÐÎÈç£º767-779½øÐÐÏ¸·Ö
-                  String[] strArrTmp = cellcontents[k].split("-");
-                  int beginSegment = 0; int endSegment = 0;
-                  try {
-                    beginSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[0]);
-                    endSegment = 0;
-                    if (strArrTmp.length < 2) {
-                      endSegment = beginSegment;
-                    } else {
-                      endSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[1]);
+    /**
+     * Added by Matao 2007-11-09
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª500
+     *
+     * @param ips     InputStream
+     * @param sheetId int
+     * @return String
+     */
+    public String isStandard(InputStream ips, int sheetId) {
+        String resultStr = "";
+        if (ips != null) {
+            int maxListSize = 50000;
+            Workbook workBook = null;
+            Cell[] row = null;
+            try {
+                workBook = Workbook.getWorkbook(ips);
+                int sheetNum = 0; //Ä¬ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                Sheet sheet = workBook.getSheet(sheetNum);
+                int size = sheet.getRows();
+                System.out.println("size:" + size);
+                if (sheetId == 1) { //Î´È·ï¿½ï¿½HLRï¿½ï¿½ï¿½ï¿½ï¿½ÄºÅ¶ï¿½
+                    size -= 3;
+                    row = sheet.getRow(2);
+                    if (!(row[3].getContents().matches("\\d\\d\\d\\d"))) {
+                        resultStr = "ï¿½ï¿½Î´È·ï¿½ï¿½HLRï¿½ï¿½ï¿½ï¿½ï¿½ÄºÅ¶Î¡ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½";
                     }
-                  } catch (Exception ex) {
-                    ex.printStackTrace();
-                    String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐµ¥Ôª¸ñ<b>" + StaticMethod.getExcelPosition(i+1,j+1) + "</b>µÄÊý¾Ý[" + cell[j].getContents() + "]´íÎó£¬Çë¼ì²é";
-                    throw new Exception(errorInfo);
-                  }
-                  if(beginSegment > endSegment){
-                    int dataTmp = beginSegment;
-                    beginSegment = endSegment;
-                    endSegment = dataTmp;
-                  }
-                  for(int segTmp = beginSegment; segTmp <= endSegment; segTmp++){
-                    if(bdBasicSet.contains(new Integer(segTmp))){
-                      String errorInfo = "ºÅ¶ÎÖµ:<b>" + segTmp + "</b>ÒÑ´æÔÚ,ÓëÄ£°æÎÄ¼þÖÐµ¥Ôª¸ñ<b>" + StaticMethod.getExcelPosition(i+1,j+1) + "</b>µÄÊý¾Ý[" + cell[j].getContents() + "]ÖØ¸´£¬Çë¼ì²é!";
-                      throw new Exception(errorInfo);
+                } else if (sheetId == 2) { //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    row = sheet.getRow(2);
+                    size -= 3;
+                    if ((row[4].getContents().matches("\\d\\d\\d\\d")) || !(row[5].getContents().matches("\\d\\d\\d\\d"))) {
+                        resultStr = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½";
                     }
-                    TawBureaudataBasic nobelongPO = new TawBureaudataBasic();
-                    nobelongPO.setPrezonenum(new Integer(cityPO.getZonenum()));
-                    nobelongPO.setZonenum(new Integer(cityPO.getZonenum()));
-                    nobelongPO.setBelongflag(new Integer(0));
-                    nobelongPO.setSegmentid(new Integer(segTmp));
-                    nobelongPO.setNewbureauid(bureauId);
-                    list.add(nobelongPO);
-                  }
+                } else if (sheetId == 3) { //ï¿½ï¿½ï¿½ï¿½HLRï¿½ÍºÅ¶ÎµÄ¶ï¿½Ó¦
+                    row = sheet.getRow(2);
+                    size -= 2;
+                    if (row.length < 8 || row[1].getContents().trim().equals("") || row[2].getContents().trim().equals("") || row[5].getContents().trim().equals("") || row[7].getContents().trim().equals("")) {
+                        resultStr = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HLRï¿½ÍºÅ¶ÎµÄ¶ï¿½Ó¦ï¿½ï¿½Ïµï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½";
+                    }
+                } else if (sheetId == 4) { //HLRï¿½Ð±ï¿½
+                    row = sheet.getRow(0);
+                    size -= 1;
+                    if (row.length != 3) {
+                        resultStr = "ï¿½ï¿½HLRï¿½Ð±ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½";
+                    }
                 }
-              }
-          }
+                if (size > maxListSize) {
+                    resultStr = "Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½" + maxListSize + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + maxListSize + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
+                }
+            } catch (Exception ex) {
+                resultStr = "ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Þ·ï¿½ï¿½ï¿½È·ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ExcelÄ£ï¿½ï¿½ï¿½Ä¼ï¿½!";
+                ex.printStackTrace();
+            }
         }
-      }
-      workBook.close();
+        return resultStr;
     }
-    return list;
-  }
 
-  /**
-   * Added by Matao 2007-11-09
-   * ´Ó¡¶BOSSÕÊ»§ºÅÂëÊ¡ÄÚµ÷ÕûÅú¸´±í.xls¡·ºÍ¡¶ÖÇÄÜÍøÕÊ»§ºÅÂëÊ¡ÄÚµ÷ÕûÅú¸´±í.xls¡·ÎÄ¼þÖÐÈ¡³öÊý¾Ý·Åµ½ListÖÐ
-   * ¼ì²é³ÇÊÐÇøºÅÊÇ·ñÕýÈ·Ê±£¬ÏÈ°ÑËùÓÐµÄ³ÇÊÐÐÅÏ¢POÒÔ³ÇÊÐÃû³ÆÎªKey·ÅÈëµ½MapÖÐ£¬È»ºóÓÃ³ÇÊÐÃû³Æ´ÓMapÖÐÈ¡³ö³ÇÊÐÐÅÏ¢PO
-   * @param ips InputStream
-   * @param bureauno String
-   * @throws Exception Èç¹û³öÏÖÇøºÅ²»Æ¥Åä»òºÅÂë¶ÎÊý¾Ý²»×¼È·µÄÇé¿ö¾Í»áÅ×³öÒì³£
-   * @return List Èç¹ûÔÚ¶ÁÈ¡Ò»ÇÐË³Àû¾Í°Ñ·ÖÎö³öÀ´µÄÊý¾Ý·ÅÈëµ½ListÖÐ
-   */
-  public List getApprove(InputStream ips, String bureauId, Set citySetOutput) throws Exception,
-      BiffException {
-    ArrayList list = new ArrayList();
-    TawBureaudataCityzone preCityPO = null;
-   TawBureaudataCityzone cityPO = null;
-   String cellcontents[] = null;
-   bureauId = bureauId + ";";
-   if(citySetOutput == null){
-     citySetOutput = new HashSet();
-   }
-   if (ips != null) { //ÎÄ¼þ´æÔÚ
-     Workbook workBook = Workbook.getWorkbook(ips);
-     int sheetNum = 0; //Ä¬ÈÏÖ»´¦ÀíµÚÒ»¸ö¹¤×÷±¡
-     Sheet sheet = workBook.getSheet(sheetNum);
-     int rows = sheet.getRows(); //×ÜÐÐÊý
-     Cell[] celltitle = null;
-     Cell[] cell = null;
-     int endcol = 0; //±íÍ·ÖÐ·ÇÊý×ÖÁÐµÄÎ»ÖÃ
-     //¿ªÊ¼¿ªÊ¼´¦Àí±íÍ·,È¡µ½±íÍ·µÄµÚÒ»¸ö·ÇÊý×ÖÁÐµÄÁÐºÅ
-     celltitle = sheet.getRow(2);
-     for (int i = 5; i < celltitle.length; i++) {
-       if (!(celltitle[i].getContents()).matches("\\d\\d\\d\\d")) {
-         break;
-       }
-       endcol = i;
-     }
-     ITawBureaudataCityzoneManager mgr = (ITawBureaudataCityzoneManager) ApplicationContextHolder
-		.getInstance().getBean("iTawBureaudataCityzoneManager");
-     Map cityMap = mgr.getAllCityIntoMapKeyZoneNum();
-     //¿ªÊ¼´¦ÀíÊý¾Ý,´ÓµÚËÄÐÐ¿ªÊ¼´¦ÀíÊý¾Ý£¬´¦ÀíÊý¾ÝµÄÁÐµÄÓÐÐ§·¶Î§Îª£º1~endcol
-     for (int i = 3; i < rows; i++) {
-       cell = sheet.getRow(i); //
-       if(cell[0].getContents().indexOf("ºþ±±")<0){
-         continue;
-       }
-       preCityPO = (TawBureaudataCityzone)cityMap.get(cell[2].getContents().toString());
-       cityPO = (TawBureaudataCityzone)cityMap.get(cell[4].getContents().toString());
-       citySetOutput.add(cityPO);
-       if (preCityPO == null) { //Ã»ÓÐÕÒµ½ÏàÓ¦µÄ³ÇÊÐ
-         String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐ<b>" + StaticMethod.getExcelPosition(i+1,3) + "</b>µÄ³ÇÊÐÇøºÅ[" + cell[2].getContents() + "]²»´æÔÚ£¬Çë¼ì²é";
-         throw new Exception(errorInfo);
-       } else if (cityPO == null) { //Ã»ÓÐÕÒµ½ÏàÓ¦µÄ³ÇÊÐ
-         String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐ<b>" + StaticMethod.getExcelPosition(i+1,5) + "</b>µÄ³ÇÊÐÇøºÅ[" + cell[4].getContents() + "]²»´æÔÚ£¬Çë¼ì²é";
-         throw new Exception(errorInfo);
-       } else {
-         for (int j = 5; j <= endcol; j++) {
-           try {
-             if (!cell[j].getContents().equalsIgnoreCase("")) {
-               //È¡µ½¿ªÊ¼ºÍ½áÊøµÄºÅ¶Î
-               cellcontents = (cell[j].getContents()).split(",");
-               for (int k = 0; k < cellcontents.length; k++) {
-                 //¶ÔÐÎÈç£º767-779½øÐÐÏ¸·Ö
-                 String[] strArrTmp = cellcontents[k].split("-");
-                 int beginSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[0]);
-                 int endSegment = 0;
-                 if(strArrTmp.length < 2){
-                   endSegment = beginSegment;
-                 }else{
-                   endSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[1]);
-                 }
-                 for(int segTmp = beginSegment; segTmp <= endSegment; segTmp++){
-                   TawBureaudataBasic nobelongPO = new TawBureaudataBasic();
-                   nobelongPO.setPrezonenum(new Integer(cityPO.getZonenum()));
-                   nobelongPO.setZonenum(new Integer(cityPO.getZonenum()));
-                   nobelongPO.setBelongflag(new Integer(0));
-                   nobelongPO.setSegmentid(new Integer(segTmp));
-                   nobelongPO.setNewbureauid(bureauId);
-                   list.add(nobelongPO);
-                 }
-               }
-             }
-           } catch (Exception ex) {
-             ex.printStackTrace();
-             String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐ<b>" + StaticMethod.getExcelPosition(i+1,j+1) + "</b>µÄÊý¾Ý[" + cell[j].getContents() + "]´íÎó£¬Çë¼ì²é";
-             throw new Exception(errorInfo);
-           }
-         }
-       }
-     }
-     workBook.close();
-   }
-   return list;
-  }
 
-  /**
-   * Added by Matao 2007-11-09
-   * ´Ó¡¶È«Ê¡ºÅ¶Î¹éÊô»ã×Ü±í.xls¡·ÎÄ¼þÖÐÈ¡³öÊý¾Ý·Åµ½ListÖÐ
-   * ¼ì²é³ÇÊÐÇøºÅÊÇ·ñÕýÈ·Ê±£¬ÏÈ°ÑËùÓÐµÄ³ÇÊÐÐÅÏ¢POÒÔ³ÇÊÐÃû³ÆÎªKey·ÅÈëµ½MapÖÐ£¬È»ºóÓÃ³ÇÊÐÃû³Æ´ÓMapÖÐÈ¡³ö³ÇÊÐÐÅÏ¢PO
-   * @param ips InputStream
-   * @param bureauno String
-   * @throws Exception Èç¹û³öÏÖÇøºÅ²»Æ¥Åä»òºÅÂë¶ÎÊý¾Ý²»×¼È·µÄÇé¿ö¾Í»áÅ×³öÒì³£
-   * @return List Èç¹ûÔÚ¶ÁÈ¡Ò»ÇÐË³Àû¾Í°Ñ·ÖÎö³öÀ´µÄÊý¾Ý·ÅÈëµ½ListÖÐ
-   */
-  public List getBureaudataHLR(InputStream ips) throws Exception,
-      BiffException {
-    ArrayList list = new ArrayList();
-    if (ips != null) { //ÎÄ¼þ´æÔÚ
-      Workbook workBook = Workbook.getWorkbook(ips);
-      int sheetNum = 0; //Ä¬ÈÏÖ»´¦ÀíµÚÒ»¸ö¹¤×÷±¡
-      Sheet sheet = workBook.getSheet(sheetNum);
-      int rows = sheet.getRows(); //×ÜÐÐÊý
-      Cell[] cell = null;
-      
-      ITawBureaudataCityzoneManager mgr = (ITawBureaudataCityzoneManager) ApplicationContextHolder
-		.getInstance().getBean("iTawBureaudataCityzoneManager");
-      ITawBureaudataHlrDAOManager hlr = (ITawBureaudataHlrDAOManager) ApplicationContextHolder
-		.getInstance().getBean("iTawBureaudataHlrDAOManager");
-      Map cityMap = mgr.getAllCityIntoMapKeyCityName();
-      Map hlrMap = hlr.getAllHLRIntoMapKeySignalId();
-      //¿ªÊ¼´¦ÀíÊý¾Ý,´ÓµÚËÄÐÐ¿ªÊ¼´¦ÀíÊý¾Ý£¬´¦ÀíÊý¾ÝµÄÁÐµÄÓÐÐ§·¶Î§Îª£º1~endcol
-      for (int i = 2; i < rows; i++) {
-        cell = sheet.getRow(i); //
-        String cityName = StaticMethod.null2String(cell[1].getContents());
-        String hlrSignalId = StaticMethod.null2String(cell[5].getContents());
-        if(cityName.equals("") || hlrSignalId.equals("")){
-          continue;
+    /**
+     * Added by Matao 2007-11-09
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·Ê±ï¿½ï¿½ï¿½È°ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢POï¿½Ô³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªKeyï¿½ï¿½ï¿½ëµ½Mapï¿½Ð£ï¿½È»ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å´ï¿½Mapï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢PO
+     *
+     * @param ips      InputStream
+     * @param bureauno String
+     * @return List ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½È¡Ò»ï¿½ï¿½Ë³ï¿½ï¿½ï¿½Í°Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ëµ½Listï¿½ï¿½
+     * @throws Exception ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½×¼È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½×³ï¿½ï¿½ì³£
+     */
+    public List getNobelonghlr(InputStream ips, String bureauId, Set citySetOutput) throws Exception {
+        ArrayList list = new ArrayList();
+        TawBureaudataCityzone cityPO = null;
+        String cellcontents[] = null;
+        bureauId = bureauId + ";";
+        if (citySetOutput == null) {
+            citySetOutput = new HashSet();
         }
-        TawBureaudataCityzone cityPO = (TawBureaudataCityzone)cityMap.get(cityName);
-        TawBureaudataHlr hlrPo = (TawBureaudataHlr)hlrMap.get(hlrSignalId.replace('.','-'));
-        if (cityPO == null) { //Ã»ÓÐÕÒµ½ÏàÓ¦µÄ³ÇÊÐ
-          String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐ<b>" + StaticMethod.getExcelPosition(i+1,2) + "</b>µÄ³ÇÊÐ[" + cityName + "]²»´æÔÚ£¬Çë¼ì²é";
-          throw new Exception(errorInfo);
-        }else if (hlrPo == null) { //Ã»ÓÐÕÒµ½ÏàÓ¦µÄHLRÐÅÏ¢
-          String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐ<b>" + StaticMethod.getExcelPosition(i+1,6) + "</b>µÄHLR[" + hlrSignalId + "]²»´æÔÚ£¬Çë¼ì²é";
-          throw new Exception(errorInfo);
-        } else {
-          try {
-            int segment = Integer.parseInt(cell[7].getContents().substring(2));
-            String remark = StaticMethod.null2String((cell.length >8)?cell[8].getContents()+";":"");
-            
-            TawBureaudataBasic nobelongPO = new TawBureaudataBasic();
-            nobelongPO.setSegmentid(new Integer(segment));
-            nobelongPO.setBelongflag(new Integer(1));
-            nobelongPO.setNewbureauid(remark);
-            nobelongPO.setZonenum(new Integer(cityPO.getZonenum()));
-            nobelongPO.setHlrsignalid(hlrPo.getHlrsignalid());
-            list.add(nobelongPO);
-          } catch (Exception ex) {
-            ex.printStackTrace();
-            String errorInfo = "ÔÚÄ£°æÎÄ¼þÖÐ<b>" + StaticMethod.getExcelPosition(i+1,8) + "</b>µÄºÅ¶Î[" + cell[7].getContents() + "]¸ñÊ½²»ÕýÈ·£¬Çë¼ì²é";
-            throw new Exception(errorInfo);
-          }
+        if (ips != null) { //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+            Workbook workBook = Workbook.getWorkbook(ips);
+            int sheetNum = 0; //Ä¬ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Sheet sheet = workBook.getSheet(sheetNum);
+            int rows = sheet.getRows(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Cell[] celltitle = null;
+            Cell[] cell = null;
+            int endcol = 0; //ï¿½ï¿½Í·ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Î»ï¿½ï¿½
+            //ï¿½ï¿½Ê¼ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Í·,È¡ï¿½ï¿½ï¿½ï¿½Í·ï¿½Äµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ðºï¿½
+            celltitle = sheet.getRow(2);
+            for (int i = 3; i < celltitle.length; i++) {
+                if (!(celltitle[i].getContents()).matches("\\d\\d\\d\\d")) {
+                    break;
+                }
+                endcol = i;
+            }
+            ITawBureaudataCityzoneManager mgr = (ITawBureaudataCityzoneManager) ApplicationContextHolder
+                    .getInstance().getBean("iTawBureaudataCityzoneManager");
+            ITawBureaudataBasicDAOManager base = (ITawBureaudataBasicDAOManager) ApplicationContextHolder
+                    .getInstance().getBean("iTawBureaudataBasicDAOManager");
+            Map cityMap = mgr.getAllCityIntoMapKeyZoneNum();
+            Set bdBasicSet = base.getAllBureaudataBasic();
+            //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Óµï¿½ï¿½ï¿½ï¿½Ð¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½Ðµï¿½ï¿½ï¿½Ð§ï¿½ï¿½Î§Îªï¿½ï¿½1~endcol
+            for (int i = 3; i < rows; i++) {
+                cell = sheet.getRow(i); //
+                if (cell[0].getContents().indexOf("ï¿½ï¿½ï¿½ï¿½") < 0) {
+                    continue;
+                }
+                cityPO = (TawBureaudataCityzone) cityMap.get(new Integer(cell[2].getContents()).toString());
+                citySetOutput.add(cityPO);
+                if (cityPO == null) { //Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½Ä³ï¿½ï¿½ï¿½
+                    String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½Ôªï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, 3) + "</b>ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[" + cell[2].getContents() + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½";
+                    throw new Exception(errorInfo);
+                } else {
+                    for (int j = 3; j <= endcol; j++) {
+                        if (!cell[j].getContents().equals("")) {
+                            //È¡ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Í½ï¿½ï¿½ï¿½ï¿½ÄºÅ¶ï¿½
+                            cellcontents = (cell[j].getContents()).split(",");
+                            for (int k = 0; k < cellcontents.length; k++) {
+                                //ï¿½ï¿½ï¿½ï¿½ï¿½ç£º767-779ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½
+                                String[] strArrTmp = cellcontents[k].split("-");
+                                int beginSegment = 0;
+                                int endSegment = 0;
+                                try {
+                                    beginSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[0]);
+                                    endSegment = 0;
+                                    if (strArrTmp.length < 2) {
+                                        endSegment = beginSegment;
+                                    } else {
+                                        endSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[1]);
+                                    }
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                    String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½Ôªï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, j + 1) + "</b>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[" + cell[j].getContents() + "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+                                    throw new Exception(errorInfo);
+                                }
+                                if (beginSegment > endSegment) {
+                                    int dataTmp = beginSegment;
+                                    beginSegment = endSegment;
+                                    endSegment = dataTmp;
+                                }
+                                for (int segTmp = beginSegment; segTmp <= endSegment; segTmp++) {
+                                    if (bdBasicSet.contains(new Integer(segTmp))) {
+                                        String errorInfo = "ï¿½Å¶ï¿½Öµ:<b>" + segTmp + "</b>ï¿½Ñ´ï¿½ï¿½ï¿½,ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½Ôªï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, j + 1) + "</b>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[" + cell[j].getContents() + "]ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!";
+                                        throw new Exception(errorInfo);
+                                    }
+                                    TawBureaudataBasic nobelongPO = new TawBureaudataBasic();
+                                    nobelongPO.setPrezonenum(new Integer(cityPO.getZonenum()));
+                                    nobelongPO.setZonenum(new Integer(cityPO.getZonenum()));
+                                    nobelongPO.setBelongflag(new Integer(0));
+                                    nobelongPO.setSegmentid(new Integer(segTmp));
+                                    nobelongPO.setNewbureauid(bureauId);
+                                    list.add(nobelongPO);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            workBook.close();
         }
-      }
-      workBook.close();
+        return list;
     }
-    return list;
-  }
+
+    /**
+     * Added by Matao 2007-11-09
+     * ï¿½Ó¡ï¿½BOSSï¿½Ê»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.xlsï¿½ï¿½ï¿½Í¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê»ï¿½ï¿½ï¿½ï¿½ï¿½Ê¡ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.xlsï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ý·Åµï¿½Listï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·Ê±ï¿½ï¿½ï¿½È°ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢POï¿½Ô³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªKeyï¿½ï¿½ï¿½ëµ½Mapï¿½Ð£ï¿½È»ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½Mapï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢PO
+     *
+     * @param ips      InputStream
+     * @param bureauno String
+     * @return List ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½È¡Ò»ï¿½ï¿½Ë³ï¿½ï¿½ï¿½Í°Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ëµ½Listï¿½ï¿½
+     * @throws Exception ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½×¼È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½×³ï¿½ï¿½ì³£
+     */
+    public List getApprove(InputStream ips, String bureauId, Set citySetOutput) throws Exception,
+            BiffException {
+        ArrayList list = new ArrayList();
+        TawBureaudataCityzone preCityPO = null;
+        TawBureaudataCityzone cityPO = null;
+        String cellcontents[] = null;
+        bureauId = bureauId + ";";
+        if (citySetOutput == null) {
+            citySetOutput = new HashSet();
+        }
+        if (ips != null) { //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+            Workbook workBook = Workbook.getWorkbook(ips);
+            int sheetNum = 0; //Ä¬ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Sheet sheet = workBook.getSheet(sheetNum);
+            int rows = sheet.getRows(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Cell[] celltitle = null;
+            Cell[] cell = null;
+            int endcol = 0; //ï¿½ï¿½Í·ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Î»ï¿½ï¿½
+            //ï¿½ï¿½Ê¼ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Í·,È¡ï¿½ï¿½ï¿½ï¿½Í·ï¿½Äµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ðºï¿½
+            celltitle = sheet.getRow(2);
+            for (int i = 5; i < celltitle.length; i++) {
+                if (!(celltitle[i].getContents()).matches("\\d\\d\\d\\d")) {
+                    break;
+                }
+                endcol = i;
+            }
+            ITawBureaudataCityzoneManager mgr = (ITawBureaudataCityzoneManager) ApplicationContextHolder
+                    .getInstance().getBean("iTawBureaudataCityzoneManager");
+            Map cityMap = mgr.getAllCityIntoMapKeyZoneNum();
+            //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Óµï¿½ï¿½ï¿½ï¿½Ð¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½Ðµï¿½ï¿½ï¿½Ð§ï¿½ï¿½Î§Îªï¿½ï¿½1~endcol
+            for (int i = 3; i < rows; i++) {
+                cell = sheet.getRow(i); //
+                if (cell[0].getContents().indexOf("ï¿½ï¿½ï¿½ï¿½") < 0) {
+                    continue;
+                }
+                preCityPO = (TawBureaudataCityzone) cityMap.get(cell[2].getContents().toString());
+                cityPO = (TawBureaudataCityzone) cityMap.get(cell[4].getContents().toString());
+                citySetOutput.add(cityPO);
+                if (preCityPO == null) { //Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½Ä³ï¿½ï¿½ï¿½
+                    String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, 3) + "</b>ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[" + cell[2].getContents() + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½";
+                    throw new Exception(errorInfo);
+                } else if (cityPO == null) { //Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½Ä³ï¿½ï¿½ï¿½
+                    String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, 5) + "</b>ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[" + cell[4].getContents() + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½";
+                    throw new Exception(errorInfo);
+                } else {
+                    for (int j = 5; j <= endcol; j++) {
+                        try {
+                            if (!cell[j].getContents().equalsIgnoreCase("")) {
+                                //È¡ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Í½ï¿½ï¿½ï¿½ï¿½ÄºÅ¶ï¿½
+                                cellcontents = (cell[j].getContents()).split(",");
+                                for (int k = 0; k < cellcontents.length; k++) {
+                                    //ï¿½ï¿½ï¿½ï¿½ï¿½ç£º767-779ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½
+                                    String[] strArrTmp = cellcontents[k].split("-");
+                                    int beginSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[0]);
+                                    int endSegment = 0;
+                                    if (strArrTmp.length < 2) {
+                                        endSegment = beginSegment;
+                                    } else {
+                                        endSegment = Integer.parseInt(celltitle[j].getContents() + strArrTmp[1]);
+                                    }
+                                    for (int segTmp = beginSegment; segTmp <= endSegment; segTmp++) {
+                                        TawBureaudataBasic nobelongPO = new TawBureaudataBasic();
+                                        nobelongPO.setPrezonenum(new Integer(cityPO.getZonenum()));
+                                        nobelongPO.setZonenum(new Integer(cityPO.getZonenum()));
+                                        nobelongPO.setBelongflag(new Integer(0));
+                                        nobelongPO.setSegmentid(new Integer(segTmp));
+                                        nobelongPO.setNewbureauid(bureauId);
+                                        list.add(nobelongPO);
+                                    }
+                                }
+                            }
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                            String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, j + 1) + "</b>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[" + cell[j].getContents() + "]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+                            throw new Exception(errorInfo);
+                        }
+                    }
+                }
+            }
+            workBook.close();
+        }
+        return list;
+    }
+
+    /**
+     * Added by Matao 2007-11-09
+     * ï¿½Ó¡ï¿½È«Ê¡ï¿½Å¶Î¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü±ï¿½.xlsï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ý·Åµï¿½Listï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·Ê±ï¿½ï¿½ï¿½È°ï¿½ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢POï¿½Ô³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªKeyï¿½ï¿½ï¿½ëµ½Mapï¿½Ð£ï¿½È»ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ´ï¿½Mapï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢PO
+     *
+     * @param ips      InputStream
+     * @param bureauno String
+     * @return List ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½È¡Ò»ï¿½ï¿½Ë³ï¿½ï¿½ï¿½Í°Ñ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ëµ½Listï¿½ï¿½
+     * @throws Exception ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½×¼È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½×³ï¿½ï¿½ì³£
+     */
+    public List getBureaudataHLR(InputStream ips) throws Exception,
+            BiffException {
+        ArrayList list = new ArrayList();
+        if (ips != null) { //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+            Workbook workBook = Workbook.getWorkbook(ips);
+            int sheetNum = 0; //Ä¬ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Sheet sheet = workBook.getSheet(sheetNum);
+            int rows = sheet.getRows(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            Cell[] cell = null;
+
+            ITawBureaudataCityzoneManager mgr = (ITawBureaudataCityzoneManager) ApplicationContextHolder
+                    .getInstance().getBean("iTawBureaudataCityzoneManager");
+            ITawBureaudataHlrDAOManager hlr = (ITawBureaudataHlrDAOManager) ApplicationContextHolder
+                    .getInstance().getBean("iTawBureaudataHlrDAOManager");
+            Map cityMap = mgr.getAllCityIntoMapKeyCityName();
+            Map hlrMap = hlr.getAllHLRIntoMapKeySignalId();
+            //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Óµï¿½ï¿½ï¿½ï¿½Ð¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½Ðµï¿½ï¿½ï¿½Ð§ï¿½ï¿½Î§Îªï¿½ï¿½1~endcol
+            for (int i = 2; i < rows; i++) {
+                cell = sheet.getRow(i); //
+                String cityName = StaticMethod.null2String(cell[1].getContents());
+                String hlrSignalId = StaticMethod.null2String(cell[5].getContents());
+                if (cityName.equals("") || hlrSignalId.equals("")) {
+                    continue;
+                }
+                TawBureaudataCityzone cityPO = (TawBureaudataCityzone) cityMap.get(cityName);
+                TawBureaudataHlr hlrPo = (TawBureaudataHlr) hlrMap.get(hlrSignalId.replace('.', '-'));
+                if (cityPO == null) { //Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½Ä³ï¿½ï¿½ï¿½
+                    String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, 2) + "</b>ï¿½Ä³ï¿½ï¿½ï¿½[" + cityName + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½";
+                    throw new Exception(errorInfo);
+                } else if (hlrPo == null) { //Ã»ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½HLRï¿½ï¿½Ï¢
+                    String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, 6) + "</b>ï¿½ï¿½HLR[" + hlrSignalId + "]ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½";
+                    throw new Exception(errorInfo);
+                } else {
+                    try {
+                        int segment = Integer.parseInt(cell[7].getContents().substring(2));
+                        String remark = StaticMethod.null2String((cell.length > 8) ? cell[8].getContents() + ";" : "");
+
+                        TawBureaudataBasic nobelongPO = new TawBureaudataBasic();
+                        nobelongPO.setSegmentid(new Integer(segment));
+                        nobelongPO.setBelongflag(new Integer(1));
+                        nobelongPO.setNewbureauid(remark);
+                        nobelongPO.setZonenum(new Integer(cityPO.getZonenum()));
+                        nobelongPO.setHlrsignalid(hlrPo.getHlrsignalid());
+                        list.add(nobelongPO);
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                        String errorInfo = "ï¿½ï¿½Ä£ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½<b>" + StaticMethod.getExcelPosition(i + 1, 8) + "</b>ï¿½ÄºÅ¶ï¿½[" + cell[7].getContents() + "]ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+                        throw new Exception(errorInfo);
+                    }
+                }
+            }
+            workBook.close();
+        }
+        return list;
+    }
 
 }

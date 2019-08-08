@@ -7,9 +7,9 @@
 <!--      from the same directory that the Axis engine runs         -->
 
 <undeployment
-    xmlns="http://xml.apache.org/axis/wsdd/">
+        xmlns="http://xml.apache.org/axis/wsdd/">
 
-  <!-- Services from EomsReplyTicket WSDL service -->
+    <!-- Services from EomsReplyTicket WSDL service -->
 
-  <service name="EomsReplyTicketHttpPort"/>
+    <service name="EomsReplyTicketHttpPort"/>
 </undeployment>

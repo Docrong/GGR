@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -83,12 +83,11 @@ import com.boco.eoms.km.core.crimson.util.XmlNames;
  * @version $Revision: 1.15 $
  */
 final
-class AttributeSet implements NamedNodeMap, XmlWritable
-{
-    private boolean     readonly;
-    private Vector      list;
-    private Element     ownerElement;
-        
+class AttributeSet implements NamedNodeMap, XmlWritable {
+    private boolean readonly;
+    private Vector list;
+    private Element ownerElement;
+
     private AttributeSet() {
         // no-arg constructor
     }
@@ -96,7 +95,7 @@ class AttributeSet implements NamedNodeMap, XmlWritable
     /* Constructs an attribute list, with associated name scope. */
     // package private
     AttributeSet(Element ownerElement) {
-        list = new Vector (5);
+        list = new Vector(5);
         this.ownerElement = ownerElement;
     }
 
@@ -106,21 +105,20 @@ class AttributeSet implements NamedNodeMap, XmlWritable
      * associated with an Element.
      */
     // package private
-    AttributeSet (AttributeSet original, boolean deep)
-    {
-        int             size = original.getLength ();
+    AttributeSet(AttributeSet original, boolean deep) {
+        int size = original.getLength();
 
-        list = new Vector (size);
+        list = new Vector(size);
         for (int i = 0; i < size; i++) {
-            Node        node = original.item (i);
+            Node node = original.item(i);
 
             if (!(node instanceof AttributeNode))
-                throw new IllegalArgumentException (((NodeBase)node).
-                                                getMessage ("A-003"));
+                throw new IllegalArgumentException(((NodeBase) node).
+                        getMessage("A-003"));
 
-            AttributeNode attr = (AttributeNode)node;
+            AttributeNode attr = (AttributeNode) node;
             node = attr.cloneAttributeNode(deep);
-            list.addElement (node);
+            list.addElement(node);
         }
     }
 
@@ -136,8 +134,8 @@ class AttributeSet implements NamedNodeMap, XmlWritable
             Node node = original.item(i);
 
             if (!(node instanceof AttributeNode)) {
-                throw new IllegalArgumentException(((NodeBase)node).
-                                                   getMessage ("A-003"));
+                throw new IllegalArgumentException(((NodeBase) node).
+                        getMessage("A-003"));
             }
 
             AttributeNode attr = (AttributeNode) node;
@@ -155,8 +153,7 @@ class AttributeSet implements NamedNodeMap, XmlWritable
      * a SAX2 Attributes object
      */
     static AttributeSet createAttributeSet2(Attributes source)
-        throws DOMException
-    {
+            throws DOMException {
         AttributeSet retval = new AttributeSet();
 
         int len = source.getLength();
@@ -173,7 +170,7 @@ class AttributeSet implements NamedNodeMap, XmlWritable
             String uri;
             String qName = source.getQName(i);
             if ("xmlns".equals(qName)
-                || "xmlns".equals(XmlNames.getPrefix(qName))) {
+                    || "xmlns".equals(XmlNames.getPrefix(qName))) {
                 // Associate the right namespaceURI with "xmlns" attributes
                 uri = XmlNames.SPEC_XMLNS_URI;
             } else {
@@ -186,14 +183,14 @@ class AttributeSet implements NamedNodeMap, XmlWritable
             }
 
             AttributeNode attrNode =
-                new AttributeNode(uri, qName,
-                                  source.getValue(i),
-                                  ex == null    // remember if it was specified
-                                  ? true
-                                  : ex.isSpecified(i),
-                                  ex == null    // remember any default value
-                                  ? null
-                                  : ex.getDefault(i));
+                    new AttributeNode(uri, qName,
+                            source.getValue(i),
+                            ex == null    // remember if it was specified
+                                    ? true
+                                    : ex.isSpecified(i),
+                            ex == null    // remember any default value
+                                    ? null
+                                    : ex.getDefault(i));
             retval.list.addElement(attrNode);
         }
         return retval;
@@ -204,8 +201,7 @@ class AttributeSet implements NamedNodeMap, XmlWritable
      * a SAX2 Attributes object
      */
     static AttributeSet createAttributeSet1(Attributes source)
-        throws DOMException
-    {
+            throws DOMException {
         AttributeSet retval = new AttributeSet();
 
         int len = source.getLength();
@@ -216,38 +212,39 @@ class AttributeSet implements NamedNodeMap, XmlWritable
             ex = (AttributesEx) source;
         }
 
-	for (int i = 0; i < len; i++) {
+        for (int i = 0; i < len; i++) {
             AttributeNode1 attrNode1 = new AttributeNode1(
-                source.getQName(i),
-                source.getValue(i),
-                ex == null	// remember if it was specified
-                    ? true
-                    : ex.isSpecified(i),
-                ex == null	// remember any default value
-                    ? null
-                    : ex.getDefault(i));
-	    retval.list.addElement(attrNode1);
-	}
+                    source.getQName(i),
+                    source.getValue(i),
+                    ex == null    // remember if it was specified
+                            ? true
+                            : ex.isSpecified(i),
+                    ex == null    // remember any default value
+                            ? null
+                            : ex.getDefault(i));
+            retval.list.addElement(attrNode1);
+        }
         return retval;
     }
 
     // package private
-    void trimToSize () { list.trimToSize (); }
-
-    // package private
-    public void setReadonly ()
-    {
-        readonly = true;
-        for (int i = 0; i < list.size (); i++)
-            ((AttributeNode)list.elementAt (i)).setReadonly (true);
+    void trimToSize() {
+        list.trimToSize();
     }
 
-    public boolean isReadonly () {
+    // package private
+    public void setReadonly() {
+        readonly = true;
+        for (int i = 0; i < list.size(); i++)
+            ((AttributeNode) list.elementAt(i)).setReadonly(true);
+    }
+
+    public boolean isReadonly() {
         if (readonly)
             return true;
-        for (int i = 0; i < list.size (); i++) {
-            if (((AttributeNode)list.elementAt (i)).isReadonly ()) {
-                return true; 
+        for (int i = 0; i < list.size(); i++) {
+            if (((AttributeNode) list.elementAt(i)).isReadonly()) {
+                return true;
             }
         }
         return false;
@@ -256,7 +253,7 @@ class AttributeSet implements NamedNodeMap, XmlWritable
     // package private
     void setOwnerElement(Element e) {
         if (e != null && ownerElement != null) {
-            throw new IllegalStateException(((NodeBase)e).getMessage("A-004"));
+            throw new IllegalStateException(((NodeBase) e).getMessage("A-004"));
         }
         ownerElement = e;
 
@@ -266,31 +263,29 @@ class AttributeSet implements NamedNodeMap, XmlWritable
         for (int i = 0; i < length; i++) {
             AttributeNode node;
 
-            node = (AttributeNode)list.elementAt(i);
+            node = (AttributeNode) list.elementAt(i);
             node.setOwnerElement(null);
             node.setOwnerElement(e);
         }
     }
 
     // package private
-    String getValue (String name)
-    {
-        Attr    attr = (Attr) getNamedItem (name);
+    String getValue(String name) {
+        Attr attr = (Attr) getNamedItem(name);
 
         if (attr == null)
             return "";
         else
-            return attr.getValue ();
+            return attr.getValue();
     }
 
-    public Node getNamedItem (String name)
-    {
-        int     length = list.size ();
-        Node    value;
+    public Node getNamedItem(String name) {
+        int length = list.size();
+        Node value;
 
         for (int i = 0; i < length; i++) {
-            value = item (i);
-            if (value.getNodeName ().equals (name))
+            value = item(i);
+            if (value.getNodeName().equals(name))
                 return value;
         }
         return null;
@@ -313,8 +308,8 @@ class AttributeSet implements NamedNodeMap, XmlWritable
             if (localName.equals(iLocalName)) {
                 String iNamespaceURI = value.getNamespaceURI();
                 if (namespaceURI == iNamespaceURI ||
-                    (namespaceURI != null
-                     && namespaceURI.equals(iNamespaceURI))) {
+                        (namespaceURI != null
+                                && namespaceURI.equals(iNamespaceURI))) {
                     return value;
                 }
             }
@@ -322,31 +317,28 @@ class AttributeSet implements NamedNodeMap, XmlWritable
         return null;
     }
 
-    public int getLength ()
-    {
-        return list.size ();
+    public int getLength() {
+        return list.size();
     }
 
-    public Node item (int index)
-    {
-        if (index < 0 || index >= list.size ())
+    public Node item(int index) {
+        if (index < 0 || index >= list.size())
             return null;
-        return (Node) list.elementAt (index);
+        return (Node) list.elementAt(index);
     }
 
     public Node removeNamedItem(String name)
-        throws DOMException
-    {
+            throws DOMException {
         if (readonly) {
             throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
         }
         for (int i = 0; i < list.size(); i++) {
-            Node value = (Node)list.elementAt(i);
+            Node value = (Node) list.elementAt(i);
             if (value.getNodeName().equals(name)) {
                 // Found a match
                 list.removeElementAt(i);
 
-                AttributeNode attr = (AttributeNode)value;
+                AttributeNode attr = (AttributeNode) value;
 
                 // Replace with Attr node of default value if it has one
                 String defaultValue = attr.getDefaultValue();
@@ -371,8 +363,7 @@ class AttributeSet implements NamedNodeMap, XmlWritable
      * <b>DOM2:</b>
      */
     public Node removeNamedItemNS(String namespaceURI, String localName)
-        throws DOMException
-    {
+            throws DOMException {
         if (readonly) {
             throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
         }
@@ -383,17 +374,17 @@ class AttributeSet implements NamedNodeMap, XmlWritable
         }
 
         for (int i = 0; i < list.size(); i++) {
-            Node value = (Node)list.elementAt(i);
+            Node value = (Node) list.elementAt(i);
             String iLocalName = value.getLocalName();
             if (localName.equals(iLocalName)) {
                 String iNamespaceURI = value.getNamespaceURI();
                 if (namespaceURI == iNamespaceURI ||
-                    (namespaceURI != null
-                     && namespaceURI.equals(iNamespaceURI))) {
+                        (namespaceURI != null
+                                && namespaceURI.equals(iNamespaceURI))) {
                     // Found a match
                     list.removeElementAt(i);
 
-                    AttributeNode attr = (AttributeNode)value;
+                    AttributeNode attr = (AttributeNode) value;
 
                     // Replace with Attr node of default value if it has one
                     String defaultValue = attr.getDefaultValue();
@@ -422,32 +413,31 @@ class AttributeSet implements NamedNodeMap, XmlWritable
      * "ownerElement".
      */
     public Node setNamedItem(Node value)
-        throws DOMException
-    {
+            throws DOMException {
         if (readonly) {
             throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
         }
-	if (!(value instanceof AttributeNode) ||
+        if (!(value instanceof AttributeNode) ||
                 value.getOwnerDocument() != ownerElement.getOwnerDocument()) {
-	    throw new DomEx(DomEx.WRONG_DOCUMENT_ERR);
+            throw new DomEx(DomEx.WRONG_DOCUMENT_ERR);
         }
 
-        AttributeNode att = (AttributeNode)value;
-	if (att.getOwnerElement() != null) {
-	    throw new DomEx(DomEx.INUSE_ATTRIBUTE_ERR);
+        AttributeNode att = (AttributeNode) value;
+        if (att.getOwnerElement() != null) {
+            throw new DomEx(DomEx.INUSE_ATTRIBUTE_ERR);
         }
 
         int length = list.size();
         AttributeNode oldAtt;
         for (int i = 0; i < length; i++) {
-            oldAtt = (AttributeNode)item(i);
+            oldAtt = (AttributeNode) item(i);
             if (oldAtt.getNodeName().equals(value.getNodeName())) {
                 if (oldAtt.isReadonly()) {
                     throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
                 }
                 att.setOwnerElement(ownerElement);
                 list.setElementAt(att, i);
-		oldAtt.setOwnerElement(null);
+                oldAtt.setOwnerElement(null);
                 return oldAtt;
             }
         }
@@ -455,7 +445,7 @@ class AttributeSet implements NamedNodeMap, XmlWritable
         list.addElement(value);
         return null;
     }
-    
+
     /**
      * <b>DOM2:</b>
      * Spec technically allows other types of nodes also, but this code
@@ -466,9 +456,9 @@ class AttributeSet implements NamedNodeMap, XmlWritable
             throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
         }
 
-	if (!(arg instanceof AttributeNode) ||
-            arg.getOwnerDocument() != ownerElement.getOwnerDocument()) {
-	    throw new DomEx(DomEx.WRONG_DOCUMENT_ERR);
+        if (!(arg instanceof AttributeNode) ||
+                arg.getOwnerDocument() != ownerElement.getOwnerDocument()) {
+            throw new DomEx(DomEx.WRONG_DOCUMENT_ERR);
         }
 
         AttributeNode attr = (AttributeNode) arg;
@@ -487,17 +477,17 @@ class AttributeSet implements NamedNodeMap, XmlWritable
             String iLocalName = oldNode.getLocalName();
             String iNamespaceURI = oldNode.getNamespaceURI();
             if ((localName == iLocalName ||
-                 (localName != null && localName.equals(iLocalName)))
-                && (namespaceURI == iNamespaceURI ||
+                    (localName != null && localName.equals(iLocalName)))
+                    && (namespaceURI == iNamespaceURI ||
                     (namespaceURI != null
-                     && namespaceURI.equals(iNamespaceURI)))) {
+                            && namespaceURI.equals(iNamespaceURI)))) {
                 // Found a matching node so replace it
                 if (oldNode.isReadonly()) {
                     throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
                 }
                 attr.setOwnerElement(ownerElement);
                 list.setElementAt(attr, i);
-		oldNode.setOwnerElement(null);
+                oldNode.setOwnerElement(null);
                 return oldNode;
             }
         }
@@ -515,17 +505,16 @@ class AttributeSet implements NamedNodeMap, XmlWritable
      * are flagged as being specified in the "printed" form (or else
      * are defaulted only in the internal DTD subset).
      */
-    public void writeXml (XmlWriteContext context) throws IOException
-    {
-        Writer          out = context.getWriter ();
-        int             length = list.size ();
-        AttributeNode   tmp;
+    public void writeXml(XmlWriteContext context) throws IOException {
+        Writer out = context.getWriter();
+        int length = list.size();
+        AttributeNode tmp;
 
         for (int i = 0; i < length; i++) {
-            tmp = (AttributeNode) list.elementAt (i);
-            if (tmp.getSpecified ()) {
-                out.write (' ');
-                tmp.writeXml (context);
+            tmp = (AttributeNode) list.elementAt(i);
+            if (tmp.getSpecified()) {
+                out.write(' ');
+                tmp.writeXml(context);
             }
         }
     }
@@ -533,20 +522,18 @@ class AttributeSet implements NamedNodeMap, XmlWritable
     /**
      * Does nothing; this type of node has no children.
      */
-    public void writeChildrenXml (XmlWriteContext context) throws IOException
-    {
+    public void writeChildrenXml(XmlWriteContext context) throws IOException {
     }
 
-    public String toString ()
-    {
+    public String toString() {
         try {
-            CharArrayWriter w = new CharArrayWriter ();
-            XmlWriteContext x = new XmlWriteContext (w);
-            writeXml (x);
-            return w.toString ();
+            CharArrayWriter w = new CharArrayWriter();
+            XmlWriteContext x = new XmlWriteContext(w);
+            writeXml(x);
+            return w.toString();
 
         } catch (IOException e) {
-            return super.toString ();
+            return super.toString();
         }
     }
 }

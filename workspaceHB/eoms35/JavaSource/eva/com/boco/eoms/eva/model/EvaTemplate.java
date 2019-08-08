@@ -12,207 +12,206 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Date:2008-11-20 上午11:02:55
  * </p>
- * 
+ *
  * @author 李秋野
  * @version 3.5.1
- * 
  */
 
 public class EvaTemplate extends BaseObject {
 
-	/**
-	 * 主键
-	 */
-	private String id;
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 * 模板名称
-	 */
-	private String templateName;
+    /**
+     * 模板名称
+     */
+    private String templateName;
 
-	/**
-	 * 模板激活状态
-	 */
-	private String activated;
+    /**
+     * 模板激活状态
+     */
+    private String activated;
 
-	/**
-	 * 创建人
-	 */
-	private String creator;
+    /**
+     * 创建人
+     */
+    private String creator;
 
-	/**
-	 * 创建时间
-	 */
-	private String createTime;
+    /**
+     * 创建时间
+     */
+    private String createTime;
 
-	/**
-	 * 创建人组织
-	 */
-	private String creatorOrgId;
+    /**
+     * 创建人组织
+     */
+    private String creatorOrgId;
 
-	/**
-	 * 周期
-	 */
-	private String cycle;
+    /**
+     * 周期
+     */
+    private String cycle;
 
-	/**
-	 * 起始时间
-	 */
-	private String startTime;
+    /**
+     * 起始时间
+     */
+    private String startTime;
 
-	/**
-	 * 结束时间
-	 */
-	private String endTime;
+    /**
+     * 结束时间
+     */
+    private String endTime;
 
-	/**
-	 * 备注
-	 */
-	private String remark;
-	
-	/**
-	 * 模板类型ID
-	 */
-	private String templateTypeId;
+    /**
+     * 备注
+     */
+    private String remark;
 
-	/**
-	 * 删除标志
-	 */
-	private String deleted;
+    /**
+     * 模板类型ID
+     */
+    private String templateTypeId;
 
-	/**
-	 * 模板处理单位类型（EvaConstants.ORG_ROLE, EvaConstants.ORG_DEPT,
-	 * EvaConstants.ORG_USER）
-	 */
-	private String orgType;
-	
-	/**
-	 * 模板总分（仅作为页面显示总分用，数据库中不存在此字段）
-	 */
-	private Float totalScore;
+    /**
+     * 删除标志
+     */
+    private String deleted;
 
-	public String getTemplateTypeId() {
-		return templateTypeId;
-	}
+    /**
+     * 模板处理单位类型（EvaConstants.ORG_ROLE, EvaConstants.ORG_DEPT,
+     * EvaConstants.ORG_USER）
+     */
+    private String orgType;
 
-	public void setTemplateTypeId(String templateTypeId) {
-		this.templateTypeId = templateTypeId;
-	}
+    /**
+     * 模板总分（仅作为页面显示总分用，数据库中不存在此字段）
+     */
+    private Float totalScore;
 
-	public Float getTotalScore() {
-		return totalScore;
-	}
+    public String getTemplateTypeId() {
+        return templateTypeId;
+    }
 
-	public void setTotalScore(Float totalScore) {
-		this.totalScore = totalScore;
-	}
+    public void setTemplateTypeId(String templateTypeId) {
+        this.templateTypeId = templateTypeId;
+    }
 
-	public String getOrgType() {
-		return orgType;
-	}
+    public Float getTotalScore() {
+        return totalScore;
+    }
 
-	public void setOrgType(String orgType) {
-		this.orgType = orgType;
-	}
+    public void setTotalScore(Float totalScore) {
+        this.totalScore = totalScore;
+    }
 
-	public String getDeleted() {
-		return deleted;
-	}
+    public String getOrgType() {
+        return orgType;
+    }
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+    public void setOrgType(String orgType) {
+        this.orgType = orgType;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	}
+    public String getDeleted() {
+        return deleted;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
 
-	public String getCreator() {
-		return creator;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public String getCreatorOrgId() {
-		return creatorOrgId;
-	}
+    public String getCreator() {
+        return creator;
+    }
 
-	public void setCreatorOrgId(String creatorOrgId) {
-		this.creatorOrgId = creatorOrgId;
-	}
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
 
-	public String getCycle() {
-		return cycle;
-	}
+    public String getCreatorOrgId() {
+        return creatorOrgId;
+    }
 
-	public void setCycle(String cycle) {
-		this.cycle = cycle;
-	}
+    public void setCreatorOrgId(String creatorOrgId) {
+        this.creatorOrgId = creatorOrgId;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getCycle() {
+        return cycle;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setCycle(String cycle) {
+        this.cycle = cycle;
+    }
 
-	public String getEndTime() {
-		return endTime;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getStartTime() {
-		return startTime;
-	}
+    public String getEndTime() {
+        return endTime;
+    }
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public String getStartTime() {
+        return startTime;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 
-	public String getTemplateName() {
-		return templateName;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public void setTemplateName(String templateName) {
-		this.templateName = templateName;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public String getActivated() {
-		return activated;
-	}
+    public String getTemplateName() {
+        return templateName;
+    }
 
-	public void setActivated(String activated) {
-		this.activated = activated;
-	}
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName;
+    }
 
-	public boolean equals(Object o) {
-		return false;
-	}
+    public String getActivated() {
+        return activated;
+    }
 
-	public String toString() {
-		return null;
-	}
+    public void setActivated(String activated) {
+        this.activated = activated;
+    }
 
-	public int hashCode() {
-		return 0;
-	}
+    public boolean equals(Object o) {
+        return false;
+    }
+
+    public String toString() {
+        return null;
+    }
+
+    public int hashCode() {
+        return 0;
+    }
 
 }

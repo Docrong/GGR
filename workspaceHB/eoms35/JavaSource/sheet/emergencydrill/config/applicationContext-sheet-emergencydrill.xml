@@ -1,122 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--EmergencyDrill-START-->    
+    <!--EmergencyDrill-START-->
 
     <bean id="IEmergencyDrillMainDAO"
-		class="com.boco.eoms.sheet.emergencydrill.dao.hibernate.EmergencyDrillMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IEmergencyDrillLinkDAO"
-		class="com.boco.eoms.sheet.emergencydrill.dao.hibernate.EmergencyDrillLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IEmergencyDrillTaskDAO"
-		class="com.boco.eoms.sheet.emergencydrill.dao.hibernate.EmergencyDrillTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="EmergencyDrillTask"
-		class="com.boco.eoms.sheet.emergencydrill.model.EmergencyDrillTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.emergencydrill.dao.hibernate.EmergencyDrillMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IEmergencyDrillLinkDAO"
+          class="com.boco.eoms.sheet.emergencydrill.dao.hibernate.EmergencyDrillLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IEmergencyDrillTaskDAO"
+          class="com.boco.eoms.sheet.emergencydrill.dao.hibernate.EmergencyDrillTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="EmergencyDrillTask"
+          class="com.boco.eoms.sheet.emergencydrill.model.EmergencyDrillTask" autowire="byName">
+    </bean>
     <bean id="EmergencyDrillLink"
-		class="com.boco.eoms.sheet.emergencydrill.model.EmergencyDrillLink"
-		autowire="byName" />
-	<bean id="EmergencyDrillMain"
-		class="com.boco.eoms.sheet.emergencydrill.model.EmergencyDrillMain"
-		autowire="byName" />
-	<bean id="iemergencydrillTask"
-		class="com.boco.eoms.sheet.emergencydrill.task.impl.EmergencyDrillTaskImpl"
-		autowire="byName" />
-	<bean id="iemergencydrillTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillTaskManagerImpl">
-				<property name="taskModelObject" ref="EmergencyDrillTask" />
-				<property name="taskDAO">
-					<ref bean="IEmergencyDrillTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-					<value>/config/emergencydrillTaskConfig.properties</value>
-				</property>
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iEmergencyDrillFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iEmergencyDrillLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillLinkManagerImpl">
-				<property name="linkObject" ref="EmergencyDrillLink"/>
-				<property name="linkDAO">
-				  <ref bean="IEmergencyDrillLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iEmergencyDrillMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillMainManagerImpl">
-			    <property name="mainObject" ref="EmergencyDrillMain" />
-				<property name="mainDAO">
-				 <ref bean="IEmergencyDrillMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iEmergencyDrillQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>EmergencyDrillProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/emergencydrill-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.emergencydrill.model.EmergencyDrillLink"
+          autowire="byName"/>
+    <bean id="EmergencyDrillMain"
+          class="com.boco.eoms.sheet.emergencydrill.model.EmergencyDrillMain"
+          autowire="byName"/>
+    <bean id="iemergencydrillTask"
+          class="com.boco.eoms.sheet.emergencydrill.task.impl.EmergencyDrillTaskImpl"
+          autowire="byName"/>
+    <bean id="iemergencydrillTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillTaskManagerImpl">
+                <property name="taskModelObject" ref="EmergencyDrillTask"/>
+                <property name="taskDAO">
+                    <ref bean="IEmergencyDrillTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/emergencydrillTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iEmergencyDrillFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iEmergencyDrillLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillLinkManagerImpl">
+                <property name="linkObject" ref="EmergencyDrillLink"/>
+                <property name="linkDAO">
+                    <ref bean="IEmergencyDrillLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iEmergencyDrillMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.emergencydrill.service.impl.EmergencyDrillMainManagerImpl">
+                <property name="mainObject" ref="EmergencyDrillMain"/>
+                <property name="mainDAO">
+                    <ref bean="IEmergencyDrillMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iEmergencyDrillQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>EmergencyDrillProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/emergencydrill-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iEmergencyDrillQo"
-		class="com.boco.eoms.sheet.emergencydrill.qo.impl.EmergencyDrillQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="EmergencyDrillMain" />
-		<property name="poLink" value="EmergencyDrillLink" />
-		<property name="poTask" value="EmergencyDrillTask" />
-	   <property name="aliasTask" value="emergencyDrillTask" />
-		<property name="aliasMain" value="emergencyDrillMain" />
-		<property name="aliasLink" value="emergencyDrillLink" />
-		
-	</bean>
+    <bean id="iEmergencyDrillQo"
+          class="com.boco.eoms.sheet.emergencydrill.qo.impl.EmergencyDrillQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="EmergencyDrillMain"/>
+        <property name="poLink" value="EmergencyDrillLink"/>
+        <property name="poTask" value="EmergencyDrillTask"/>
+        <property name="aliasTask" value="emergencyDrillTask"/>
+        <property name="aliasMain" value="emergencyDrillMain"/>
+        <property name="aliasLink" value="emergencyDrillLink"/>
 
-	<bean id="EmergencyDrill" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.emergencydrill.webapp.action.EmergencyDrillMethod">
-				<property name="businessFlowService" >
-					<ref bean="iEmergencyDrillFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iEmergencyDrillLinkManager" />
-				<property name="mainService"
-					ref="iEmergencyDrillMainManager" />
-				<property name="sheetTask"
-					ref="EmergencyDrillTask" />
-				<property name="taskService"
-					ref="iemergencydrillTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/emergencydrill-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
-     <!--EmergencyDrill-END-->  
+    </bean>
+
+    <bean id="EmergencyDrill" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.emergencydrill.webapp.action.EmergencyDrillMethod">
+                <property name="businessFlowService">
+                    <ref bean="iEmergencyDrillFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iEmergencyDrillLinkManager"/>
+                <property name="mainService"
+                          ref="iEmergencyDrillMainManager"/>
+                <property name="sheetTask"
+                          ref="EmergencyDrillTask"/>
+                <property name="taskService"
+                          ref="iemergencydrillTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/emergencydrill-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--EmergencyDrill-END-->
 </beans>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
     <!--TawWorkbenchMemo-DAO START-->
-    <bean id="tawWorkbenchMemoDao" class="com.boco.eoms.workbench.memo.dao.hibernate.TawWorkbenchMemoDaoHibernate" autowire="byName"/>
+    <bean id="tawWorkbenchMemoDao" class="com.boco.eoms.workbench.memo.dao.hibernate.TawWorkbenchMemoDaoHibernate"
+          autowire="byName"/>
     <!--TawWorkbenchMemo-DAO END-->
-    <!--TawWorkbenchMemo-START-->    
+    <!--TawWorkbenchMemo-START-->
     <bean id="ItawWorkbenchMemoManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.memo.service.impl.TawWorkbenchMemoManagerImpl">
@@ -16,12 +17,13 @@
         </property>
     </bean>
     <!--TawWorkbenchMemo-END-->
-    
-    
+
+
     <!--TawWorkbenchMemoSendLog-DAO START-->
-    <bean id="tawWorkbenchMemoSendLogDao" class="com.boco.eoms.workbench.memo.dao.hibernate.TawWorkbenchMemoSendLogDaoHibernate" autowire="byName"/>
+    <bean id="tawWorkbenchMemoSendLogDao"
+          class="com.boco.eoms.workbench.memo.dao.hibernate.TawWorkbenchMemoSendLogDaoHibernate" autowire="byName"/>
     <!--TawWorkbenchMemoSendLog-DAO END-->
-    <!--TawWorkbenchMemoSendLog-START-->    
+    <!--TawWorkbenchMemoSendLog-START-->
     <bean id="ItawWorkbenchMemoSendLogManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.memo.service.impl.TawWorkbenchMemoSendLogManagerImpl">
@@ -29,16 +31,16 @@
             </bean>
         </property>
     </bean>
-    
-       
+
+
     <bean id="memoAttributes"
-		class="com.boco.eoms.workbench.memo.util.MemoAttributes">
-	 
-		<property name="memoServerID">
-			<value>123456789</value>
-		</property>
-		 
-	</bean>
+          class="com.boco.eoms.workbench.memo.util.MemoAttributes">
+
+        <property name="memoServerID">
+            <value>123456789</value>
+        </property>
+
+    </bean>
 </beans>
 
 

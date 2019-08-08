@@ -6,12 +6,9 @@ package com.boco.eoms.common.fileupload;
 // Source File Name:   SmartUploadException.java
 
 
+public class SmartUploadException extends Exception {
 
-public class SmartUploadException extends Exception
-{
-
-    SmartUploadException(String desc)
-    {
+    SmartUploadException(String desc) {
         super(desc);
     }
 }

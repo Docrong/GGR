@@ -55,12 +55,12 @@ public class TawSystemCodeDaoHibernate extends BaseDaoHibernate implements ITawS
 
     /**
      * @see com.boco.eoms.commons.system.code.dao.TawSystemCodeDao#saveTawSystemCode(TawSystemCode tawSystemCode)
-     */    
+     */
     public void saveTawSystemCode(final TawSystemCode tawSystemCode) {
         if ((tawSystemCode.getId() == null) || (tawSystemCode.getId().equals("")))
-			getHibernateTemplate().save(tawSystemCode);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSystemCode);
+            getHibernateTemplate().save(tawSystemCode);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSystemCode);
     }
 
     /**
@@ -69,53 +69,56 @@ public class TawSystemCodeDaoHibernate extends BaseDaoHibernate implements ITawS
     public void removeTawSystemCode(final String id) {
         getHibernateTemplate().delete(getTawSystemCode(id));
     }
+
     /**
-     * @see com.boco.eoms.commons.system.code.dao.TawSystemCodeDao#getTawSystemCodes(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.commons.system.code.dao.TawSystemCodeDao#getTawSystemCodes(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawSystemCodes(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSystemCodes(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSystemCode
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSystemCode";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSystemCode";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
-            } 
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
+            }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.commons.system.code.dao.TawSystemCodeDao#getTawSystemCodes(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawSystemCodes(final Integer curPage, final Integer pageSize) {
-			return this.getTawSystemCodes(curPage,pageSize,null);
-		}
+        return this.getTawSystemCodes(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.commons.system.code.dao.TawSystemCodeDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawSystemCode obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawSystemCode obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 
-	public List getTawSystemCodes(String whereStr) {
-		String queryStr = "from TawSystemCode";
-		if (whereStr != null && whereStr.length() > 0) {
-			queryStr += " " + whereStr;
-		}
-		return (ArrayList) getHibernateTemplate().find(queryStr);
-	}
+    public List getTawSystemCodes(String whereStr) {
+        String queryStr = "from TawSystemCode";
+        if (whereStr != null && whereStr.length() > 0) {
+            queryStr += " " + whereStr;
+        }
+        return (ArrayList) getHibernateTemplate().find(queryStr);
+    }
 }

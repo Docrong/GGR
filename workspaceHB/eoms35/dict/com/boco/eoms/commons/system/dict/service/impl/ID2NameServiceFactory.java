@@ -13,16 +13,15 @@ import com.boco.eoms.commons.system.dict.service.ID2NameService;
  * <p>
  * Date:2007-11-8 15:47:03
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class ID2NameServiceFactory {
 
     /**
      * 获取db的id2nameService
-     * 
+     *
      * @return db的id2nameService
      */
     public static ID2NameService getId2nameServiceDB() {

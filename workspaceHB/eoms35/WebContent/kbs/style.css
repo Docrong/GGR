@@ -1,73 +1,72 @@
-A
-{
+A {
     COLOR: #000099;
     TEXT-DECORATION: none
 }
-A:hover
-{
+
+A:hover {
     COLOR: red;
     TEXT-DECORATION: none
 }
-.table
-{
+
+.table {
     BACKGROUND-COLOR: #99ccff
 }
-BODY
-{
+
+BODY {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-TD
-{
+
+TD {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-TABLE
-{
+
+TABLE {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-P
-{
+
+P {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-DIV
-{
+
+DIV {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-BR
-{
+
+BR {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-LI
-{
+
+LI {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-SELECT
-{
+
+SELECT {
     FONT-SIZE: 9pt;
     COLOR: #000000;
     LINE-HEIGHT: 18px
 }
-FORM
-{
+
+FORM {
     FONT-SIZE: 9pt;
     COLOR: #000000;
-    margin-top:0
+    margin-top: 0
 }
-BODY
-{
+
+BODY {
     SCROLLBAR-FACE-COLOR: #c7d0e7;
     SCROLLBAR-HIGHLIGHT-COLOR: #006699;
     SCROLLBAR-SHADOW-COLOR: #006699;
@@ -76,52 +75,52 @@ BODY
     SCROLLBAR-TRACK-COLOR: #dddddd;
     SCROLLBAR-DARKSHADOW-COLOR: #ffffff
 }
-.border
-{
+
+.border {
     BORDER-RIGHT: #999999 1pt dotted;
     BORDER-TOP: #999999 1pt dotted;
     BORDER-LEFT: #999999 1pt dotted;
     BORDER-BOTTOM: #999999 1pt dotted
 }
-INPUT
-{
+
+INPUT {
     FONT-SIZE: 9pt;
-    FONT-FAMILY: ËÎÌå;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½;
     HEIGHT: 20px
 }
-INPUT.index
-{
+
+INPUT.index {
     FONT-SIZE: 9pt;
-    FONT-FAMILY: ËÎÌå;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½;
     HEIGHT: 16px
 }
-INPUT.bgInput
-{
+
+INPUT.bgInput {
     FONT-SIZE: 9pt;
     BACKGROUND: #cccccc;
     LINE-HEIGHT: 20px
 }
-#glowtext
-{
-    FILTER: glow(color=red,strength=5);
+
+#glowtext {
+    FILTER: glow(color=red, strength=5);
     WIDTH: 100%
 }
-.TableTitle
-{
+
+.TableTitle {
     FONT-WEIGHT: 600;
     FONT-SIZE: 14px;
     COLOR: #330099;
     LINE-HEIGHT: 40px;
-    FONT-FAMILY: ËÎÌå, Arial
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, Arial
 }
-.TableSubTitle
-{
+
+.TableSubTitle {
     FONT-WEIGHT: 600;
     FONT-SIZE: 9pt;
     COLOR: darkslateblue;
-    FONT-FAMILY: ËÎÌå, Arial
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, Arial
 }
-.button
-{
+
+.button {
     BACKGROUND-COLOR: #99ccff
 }

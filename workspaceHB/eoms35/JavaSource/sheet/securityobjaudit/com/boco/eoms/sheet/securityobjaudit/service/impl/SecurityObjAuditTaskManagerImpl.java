@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.securityobjaudit.service.ISecurityObjAuditTaskManager
  * <p>
  * Tue Apr 25 11:41:14 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAuditTaskManagerImpl extends TaskServiceImpl implements  ISecurityObjAuditTaskManager {
- 
- }
+
+public class SecurityObjAuditTaskManagerImpl extends TaskServiceImpl implements ISecurityObjAuditTaskManager {
+
+}

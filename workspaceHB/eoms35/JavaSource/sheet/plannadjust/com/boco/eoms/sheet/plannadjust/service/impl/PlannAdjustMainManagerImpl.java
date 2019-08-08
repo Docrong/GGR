@@ -18,21 +18,20 @@ import com.boco.eoms.sheet.plannadjust.service.IPlannAdjustMainManager;
  * <p>
  * Sat Jun 08 11:16:09 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannAdjustMainManagerImpl extends MainService implements IPlannAdjustMainManager {
- 
-		public List getNumber(String sendTimeStartDate,String sendTimeEndDate,String queryType) throws SheetException {
-			IPlannAdjustMainDAO iplannAdjustMainDAO = (IPlannAdjustMainDAO) getMainDAO();
-			return iplannAdjustMainDAO.getNumber(sendTimeStartDate,sendTimeEndDate,queryType);
-		}
 
-		public Map getDetail(Integer curPage,Integer pageSize,String sendTimeStartDate,String sendTimeEndDate) throws SheetException {
-			IPlannAdjustMainDAO iplannAdjustMainDAO = (IPlannAdjustMainDAO) getMainDAO();
-			return iplannAdjustMainDAO.getDetail(curPage,pageSize,sendTimeStartDate,sendTimeEndDate);
-		}
- }
+public class PlannAdjustMainManagerImpl extends MainService implements IPlannAdjustMainManager {
+
+    public List getNumber(String sendTimeStartDate, String sendTimeEndDate, String queryType) throws SheetException {
+        IPlannAdjustMainDAO iplannAdjustMainDAO = (IPlannAdjustMainDAO) getMainDAO();
+        return iplannAdjustMainDAO.getNumber(sendTimeStartDate, sendTimeEndDate, queryType);
+    }
+
+    public Map getDetail(Integer curPage, Integer pageSize, String sendTimeStartDate, String sendTimeEndDate) throws SheetException {
+        IPlannAdjustMainDAO iplannAdjustMainDAO = (IPlannAdjustMainDAO) getMainDAO();
+        return iplannAdjustMainDAO.getDetail(curPage, pageSize, sendTimeStartDate, sendTimeEndDate);
+    }
+}

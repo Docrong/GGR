@@ -1,6 +1,6 @@
 /**
  * SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -13,14 +13,14 @@ public class SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub extends org.apac
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[1];
         _initOperationDesc1();
     }
 
-    private static void _initOperationDesc1(){
+    private static void _initOperationDesc1() {
         org.apache.axis.description.OperationDesc oper;
         org.apache.axis.description.ParameterDesc param;
         oper = new org.apache.axis.description.OperationDesc();
@@ -37,12 +37,12 @@ public class SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub extends org.apac
     }
 
     public SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -51,56 +51,56 @@ public class SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub extends org.apac
         } else {
             super.service = service;
         }
-        ((org.apache.axis.client.Service)super.service).setTypeMappingVersion("1.2");
-            java.lang.Class cls;
-            javax.xml.namespace.QName qName;
-            javax.xml.namespace.QName qName2;
-            java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-            java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-            java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
-            java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://ws.vispractice.com/MsgHeader", "MsgHeader");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.commons.system.user.synchronous.MsgHeader.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        ((org.apache.axis.client.Service) super.service).setTypeMappingVersion("1.2");
+        java.lang.Class cls;
+        javax.xml.namespace.QName qName;
+        javax.xml.namespace.QName qName2;
+        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
+        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
+        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+        java.lang.Class simplelistsf = org.apache.axis.encoding.ser.SimpleListSerializerFactory.class;
+        java.lang.Class simplelistdf = org.apache.axis.encoding.ser.SimpleListDeserializerFactory.class;
+        qName = new javax.xml.namespace.QName("http://ws.vispractice.com/MsgHeader", "MsgHeader");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.commons.system.user.synchronous.MsgHeader.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputCollection");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.commons.system.user.synchronous.OutputItem[].class;
-            cachedSerClasses.add(cls);
-            qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputItem");
-            qName2 = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputItem");
-            cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
-            cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
+        qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputCollection");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.commons.system.user.synchronous.OutputItem[].class;
+        cachedSerClasses.add(cls);
+        qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputItem");
+        qName2 = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputItem");
+        cachedSerFactories.add(new org.apache.axis.encoding.ser.ArraySerializerFactory(qName, qName2));
+        cachedDeserFactories.add(new org.apache.axis.encoding.ser.ArrayDeserializerFactory());
 
-            qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputItem");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.commons.system.user.synchronous.OutputItem.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "OutputItem");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.commons.system.user.synchronous.OutputItem.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvRequest");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvRequest.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvRequest");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvRequest.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://ws.vispractice.com/SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrv", "SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
     }
 
@@ -146,24 +146,22 @@ public class SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub extends org.apac
                         java.lang.Object x = cachedSerFactories.get(i);
                         if (x instanceof Class) {
                             java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                    cachedSerFactories.get(i);
                             java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                    cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
-                        }
-                        else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
+                        } else if (x instanceof javax.xml.rpc.encoding.SerializerFactory) {
                             org.apache.axis.encoding.SerializerFactory sf = (org.apache.axis.encoding.SerializerFactory)
-                                 cachedSerFactories.get(i);
+                                    cachedSerFactories.get(i);
                             org.apache.axis.encoding.DeserializerFactory df = (org.apache.axis.encoding.DeserializerFactory)
-                                 cachedDeserFactories.get(i);
+                                    cachedDeserFactories.get(i);
                             _call.registerTypeMapping(cls, qName, sf, df, false);
                         }
                     }
                 }
             }
             return _call;
-        }
-        catch (java.lang.Throwable _t) {
+        } catch (java.lang.Throwable _t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", _t);
         }
     }
@@ -184,22 +182,22 @@ public class SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvBindingStub extends org.apac
 
         setRequestHeaders(_call);
         setAttachments(_call);
- try {        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {payload});
+        try {
+            java.lang.Object _resp = _call.invoke(new java.lang.Object[]{payload});
 
-        if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
-            extractAttachments(_call);
-            try {
-                return (com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse) _resp;
-            } catch (java.lang.Exception _exception) {
-                return (com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse.class);
+            if (_resp instanceof java.rmi.RemoteException) {
+                throw (java.rmi.RemoteException) _resp;
+            } else {
+                extractAttachments(_call);
+                try {
+                    return (com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse) _resp;
+                } catch (java.lang.Exception _exception) {
+                    return (com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse) org.apache.axis.utils.JavaUtils.convert(_resp, com.boco.eoms.commons.system.user.synchronous.SB_HR_HRMIS_InquiryHRNETEmployeeInfoSrvResponse.class);
+                }
             }
+        } catch (org.apache.axis.AxisFault axisFaultException) {
+            throw axisFaultException;
         }
-  } catch (org.apache.axis.AxisFault axisFaultException) {
-  throw axisFaultException;
-}
     }
 
 }

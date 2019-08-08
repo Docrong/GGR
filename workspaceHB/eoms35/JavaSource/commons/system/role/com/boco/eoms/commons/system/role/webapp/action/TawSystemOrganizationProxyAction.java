@@ -28,11 +28,11 @@ import java.util.Map;
  * Action class to handle CRUD on a TawSystemOrganizationProxy object
  *
  * @struts.action name="tawSystemOrganizationProxyForm" path="/tawSystemOrganizationProxys" scope="request"
- *  validate="false" parameter="method" input="mainMenu"
+ * validate="false" parameter="method" input="mainMenu"
  * @struts.action name="tawSystemOrganizationProxyForm" path="/editTawSystemOrganizationProxy" scope="request"
- *  validate="false" parameter="method" input="list"
+ * validate="false" parameter="method" input="list"
  * @struts.action name="tawSystemOrganizationProxyForm" path="/saveTawSystemOrganizationProxy" scope="request"
- *  validate="true" parameter="method" input="edit"
+ * validate="true" parameter="method" input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit" path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyForm.jsp"
  * @struts.action-forward name="list" path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyList.jsp"
@@ -42,14 +42,14 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
     public ActionForward cancel(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         return mapping.findForward("search");
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         ActionMessages messages = new ActionMessages();
         TawSystemOrganizationProxyForm tawSystemOrganizationProxyForm = (TawSystemOrganizationProxyForm) form;
@@ -59,7 +59,7 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
         mgr.removeTawSystemOrganizationProxy(tawSystemOrganizationProxyForm.getId());
 
         messages.add(ActionMessages.GLOBAL_MESSAGE,
-                     new ActionMessage("tawSystemOrganizationProxy.deleted"));
+                new ActionMessage("tawSystemOrganizationProxy.deleted"));
 
         // save messages in session, so they'll survive the redirect
         saveMessages(request.getSession(), messages);
@@ -70,7 +70,7 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
     public ActionForward edit(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         TawSystemOrganizationProxyForm tawSystemOrganizationProxyForm = (TawSystemOrganizationProxyForm) form;
 
         // if an id is passed in, look up the user - otherwise
@@ -81,14 +81,14 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
             tawSystemOrganizationProxyForm = (TawSystemOrganizationProxyForm) convert(tawSystemOrganizationProxy);
             updateFormBean(mapping, request, tawSystemOrganizationProxyForm);
         }
-        
+
         TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-		.getSession().getAttribute("sessionform");
-		String operuserid = sessionform.getUserid();
-		ITawSystemUserRefRoleManager userRoleMgr = (ITawSystemUserRefRoleManager) getBean("itawSystemUserRefRoleManager");
-		List roleList = userRoleMgr.getSubRoleByUserId(operuserid,RoleConstants.ROLETYPE_SUBROLE);
-		
-		request.setAttribute("roleList", roleList);
+                .getSession().getAttribute("sessionform");
+        String operuserid = sessionform.getUserid();
+        ITawSystemUserRefRoleManager userRoleMgr = (ITawSystemUserRefRoleManager) getBean("itawSystemUserRefRoleManager");
+        List roleList = userRoleMgr.getSubRoleByUserId(operuserid, RoleConstants.ROLETYPE_SUBROLE);
+
+        request.setAttribute("roleList", roleList);
 
         return mapping.findForward("edit");
     }
@@ -96,16 +96,16 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
     public ActionForward save(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         // Extract attributes and parameters we will need
         ActionMessages messages = new ActionMessages();
         TawSystemOrganizationProxyForm tawSystemOrganizationProxyForm = (TawSystemOrganizationProxyForm) form;
         boolean isNew = ("".equals(tawSystemOrganizationProxyForm.getId()) || tawSystemOrganizationProxyForm.getId() == null);
-        
+
         TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-		.getSession().getAttribute("sessionform");
-		String operuserid = sessionform.getUserid();
+                .getSession().getAttribute("sessionform");
+        String operuserid = sessionform.getUserid();
 
         ITawSystemOrganizationProxyManager mgr = (ITawSystemOrganizationProxyManager) getBean("ItawSystemOrganizationProxyManager");
         TawSystemOrganizationProxy tawSystemOrganizationProxy = (TawSystemOrganizationProxy) convert(tawSystemOrganizationProxyForm);
@@ -116,7 +116,7 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
         // add success messages
         if (isNew) {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemOrganizationProxy.added"));
+                    new ActionMessage("tawSystemOrganizationProxy.added"));
 
             // save messages in session to survive a redirect
             saveMessages(request.getSession(), messages);
@@ -124,7 +124,7 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
             return mapping.findForward("search");
         } else {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemOrganizationProxy.updated"));
+                    new ActionMessage("tawSystemOrganizationProxy.updated"));
             saveMessages(request, messages);
 
             return mapping.findForward("search");
@@ -134,20 +134,21 @@ public final class TawSystemOrganizationProxyAction extends BaseAction {
     public ActionForward search(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         String pageIndexName = new org.displaytag.util.ParamEncoder("tawDemoMytableList").encodeParameterName(
-    			org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);   // ҳ��Ĳ�����,����"tawDemoMytableList"��ҳ����displayTag��id
-	    	final Integer pageSize = new Integer(25);   //ÿҳ��ʾ������
-	    	final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName))?0:(Integer.parseInt(request.getParameter(pageIndexName)) - 1));  //��ǰҳ��
+                org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);   // ҳ��Ĳ�����,����"tawDemoMytableList"��ҳ����displayTag��id
+        final Integer pageSize = new Integer(25);   //ÿҳ��ʾ������
+        final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName)) ? 0 : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));  //��ǰҳ��
 
         ITawSystemOrganizationProxyManager mgr = (ITawSystemOrganizationProxyManager) getBean("ItawSystemOrganizationProxyManager");
-        Map map = (Map)mgr.getTawSystemOrganizationProxys(pageIndex,pageSize);	//map����}��keyֵ��һ����"total",�����ܼ�¼������һ����"result"������Ҫ��ʾҳ���list
-        List list = (List)map.get("result");
+        Map map = (Map) mgr.getTawSystemOrganizationProxys(pageIndex, pageSize);    //map����}��keyֵ��һ����"total",�����ܼ�¼������һ����"result"������Ҫ��ʾҳ���list
+        List list = (List) map.get("result");
         request.setAttribute(Constants.TAWSYSTEMORGANIZATIONPROXY_LIST, list);
         request.setAttribute("resultSize", map.get("total"));
 
         return mapping.findForward("list");
     }
+
     public ActionForward unspecified(ActionMapping mapping, ActionForm form,
                                      HttpServletRequest request,
                                      HttpServletResponse response)

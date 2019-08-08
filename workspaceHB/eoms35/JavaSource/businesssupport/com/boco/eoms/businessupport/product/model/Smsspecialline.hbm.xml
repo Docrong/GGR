@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,58 +13,58 @@
             table="B_smsspecialline"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
-	<property name="orderSheet_Id"/>
-	<property
-            name="cableModem"
-            	column="cableModem"
+        </id>
+        <property name="orderSheet_Id"/>
+        <property
+                name="cableModem"
+                column="cableModem"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="scopeOfBusiness"
-            	column="scopeOfBusiness"
+        <property
+                name="scopeOfBusiness"
+                column="scopeOfBusiness"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="hostAddress"
-            	column="hostAddress"
+        <property
+                name="hostAddress"
+                column="hostAddress"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="upUrl"
-            	column="upUrl"
+        <property
+                name="upUrl"
+                column="upUrl"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="provisionURL"
-            	column="provisionURL"
+        <property
+                name="provisionURL"
+                column="provisionURL"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -72,18 +72,18 @@
 
         </property>
 
-	<property
-            name="ifCable"
-            	column="ifCable"
+        <property
+                name="ifCable"
+                column="ifCable"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="useAccord"
-            	column="useAccord"
+        <property
+                name="useAccord"
+                column="useAccord"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -91,9 +91,9 @@
 
         </property>
 
-	<property
-            name="businessLimit"
-            	column="businessLimit"
+        <property
+                name="businessLimit"
+                column="businessLimit"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -101,9 +101,9 @@
 
         </property>
 
-	<property
-            name="businessName"
-            	column="businessName"
+        <property
+                name="businessName"
+                column="businessName"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -111,18 +111,18 @@
 
         </property>
 
-	<property
-            name="businessCode"
-            	column="businessCode"
+        <property
+                name="businessCode"
+                column="businessCode"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="ipAdressType"
-            	column="ipAdressType"
+        <property
+                name="ipAdressType"
+                column="ipAdressType"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -130,27 +130,27 @@
 
         </property>
 
-	<property
-            name="ipAdress"
-            	column="ipAdress"
+        <property
+                name="ipAdress"
+                column="ipAdress"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="billingType"
-            	column="billingType"
+        <property
+                name="billingType"
+                column="billingType"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="informationFeeds"
-            	column="informationFeeds"
+        <property
+                name="informationFeeds"
+                column="informationFeeds"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -158,256 +158,255 @@
 
         </property>
 
-	<property
-            name="illustrate"
-            	column="illustrate"
+        <property
+                name="illustrate"
+                column="illustrate"
                 not-null="false"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="productNum"
-            	column="productNum"
+        <property
+                name="productNum"
+                column="productNum"
                 not-null="false"
                 unique="false"
         >
 
         </property>
- <property name="deleted"/>	
-	    
-	    <property name="ipNeedNum"/>			    	
-	    <property name="ipServerNeedNum"/>	
-	    
-	    <property name="userIsUserNet"/>			    	
-	    <property name="userSpecifyDevNeed"/>
-	    			<property name="apointComputHouseName"/>	
-			<property name="zpointComputerHorseName"/>
-			
-			<property name="portAInterfaceType"/>
-			<property name="portZInterfaceType"/>
-			
-			<property name="portABDeviceName"/>
-			<property name="portZBDeviceName"/>
-			
-			<property name="apointLocalPerson"/>
-			<property name="zpointLocalPerson"/>
-			
-			<property name="portAContactPhone"/>	
-			<property name="portZContactPhone"/>
-			
-			<property name="portADetailAdd"/>	
-			<property name="portZDetailAdd"/>
-			
-			<property name="interfaceCustomConnPerson"/>
-			<property name="interfaceCustomConnPersonZ"/>
-			
-			<property name="interfaceCustomConnPhone"/>	
-			<property name="interfaceCustomConnPhoneZ"/>
-			
-			<property name="interfaceCustomConnMail"/>	
-			<property name="interfaceCustomConnMailZ"/>
-			
-			<property name="interfaceCustomConnAdd"/>	
-			<property name="interfaceCustomConnAddZ"/>
-			
-			<property name="fiberEquipNameA"/>
-			<property name="fiberEquipNameZ"/>
-			
-			<property name="fiberEquipCodeA"/>
-			<property name="fiberEquipCodeZ"/>
-			
-			<property name="siteEquipCodeA"/>	
-			<property name="siteEquipCodeZ"/>
-			
-			<property name="siteNameA"/>	
-			<property name="siteNameZ"/>
-			
-			<property name="accessSiteIdenA"/>	
-			<property name="accessSiteIdenZ"/>
-			
-			<property name="fiberLengthA"/>	
-			<property name="fiberLengthZ"/>
-			
-			<property name="fiberOwnerA"/>	
-			<property name="fiberOwnerZ"/>	
-			
-			<property name="isGetInterfaceA"/>	
-			<property name="isGetInterfaceZ"/>
-			<property name="getInterfaceNoA"/>	
-			<property name="getInterfaceNoZ"/>
-			<property name="theLastOpinionA"/>	
-			<property name="theLastOpinionZ"/>
-			
-			<property name="circuitName"/>
-			<property name="circuitSheetId"/>	
-			
-			
-	      <property name="userStardAddA"/>	
-	      <property name="userStardAddZ"/>
+        <property name="deleted"/>
 
-	      <property name="userSiteHA"/>	
-	      <property name="userSiteHZ"/>
-	
-	      <property name="userSiteAA"/>	
-	      <property name="userSiteAZ"/>
+        <property name="ipNeedNum"/>
+        <property name="ipServerNeedNum"/>
 
-	      <property name="userIsHaveDivA"/>	
-	      <property name="userIsHaveDivZ"/>
+        <property name="userIsUserNet"/>
+        <property name="userSpecifyDevNeed"/>
+        <property name="apointComputHouseName"/>
+        <property name="zpointComputerHorseName"/>
 
-	      <property name="isNeedBuyA"/>
-	      <property name="isNeedBuyZ"/>
+        <property name="portAInterfaceType"/>
+        <property name="portZInterfaceType"/>
 
-	      <property name="theDevNeededA"/>	
-	      <property name="theDevNeededZ"/>
+        <property name="portABDeviceName"/>
+        <property name="portZBDeviceName"/>
 
-	      <property name="interfacePointTypeA"/>	
-	      <property name="interfacePointTypeZ"/>
+        <property name="apointLocalPerson"/>
+        <property name="zpointLocalPerson"/>
 
-	      <property name="isOkBetweenUserA"/>	
-	      <property name="isOkBetweenUserZ"/>
+        <property name="portAContactPhone"/>
+        <property name="portZContactPhone"/>
 
-	      <property name="noInputResonA"/>	
-	      <property name="noInputResonZ"/>
+        <property name="portADetailAdd"/>
+        <property name="portZDetailAdd"/>
 
-	      <property name="buildMethodA"/>
-	      <property name="buildMethodZ"/>
+        <property name="interfaceCustomConnPerson"/>
+        <property name="interfaceCustomConnPersonZ"/>
 
-	      <property name="interfacePointAddA"/>
-	      <property name="interfacePointAddZ"/>
-			
-		  <property name="portZBDevicePort"/> 
-		 
-		  <property name="interfaceSiteNameA"/>
-	      <property name="interfaceEquipCodeA"/>
+        <property name="interfaceCustomConnPhone"/>
+        <property name="interfaceCustomConnPhoneZ"/>
 
-	      <property name="interfaceSiteNameZ"/>
-	      <property name="interfaceEquipCodeZ"/>
-	      
-	       <property name="isDeviceAllowOpenA"/>
-		  <property name="isDeviceAllowOpenZ"/>	
-		
-		  <property name="isNeedAddCardA"/>
-		  <property name="isNeedAddCardZ"/>
-		
-		  <property name="cardTypeA"/>
-		  <property name="cardTypeZ"/>
-		
-		  <property name="cardNumA"/>
-		  <property name="cardNumZ"/>
-		  
-		  	<property name="fiberAcount"/>
-	        <property name="fiberAroute"/>
-			<property name="fiberZcount"/>
-	  		<property name="fiberZroute"/>
-	   		<property name="promise"/>  
-			<property name="whours"/>
-			<property name="buildTypeA"/>
-	
-			<property name="buildTypeZ"/>
-			<property name="portABDeviceType"/>
-			<property name="portZBDeviceType"/>
-		
-			<property name="requirmentArea"/>
-			<property name="portNum"/>
-			<property name="portType"/>
-			
-			<property name="tradeId"/>
-  
-	<property name="inputMethodDuanXin"/>
+        <property name="interfaceCustomConnMail"/>
+        <property name="interfaceCustomConnMailZ"/>
+
+        <property name="interfaceCustomConnAdd"/>
+        <property name="interfaceCustomConnAddZ"/>
+
+        <property name="fiberEquipNameA"/>
+        <property name="fiberEquipNameZ"/>
+
+        <property name="fiberEquipCodeA"/>
+        <property name="fiberEquipCodeZ"/>
+
+        <property name="siteEquipCodeA"/>
+        <property name="siteEquipCodeZ"/>
+
+        <property name="siteNameA"/>
+        <property name="siteNameZ"/>
+
+        <property name="accessSiteIdenA"/>
+        <property name="accessSiteIdenZ"/>
+
+        <property name="fiberLengthA"/>
+        <property name="fiberLengthZ"/>
+
+        <property name="fiberOwnerA"/>
+        <property name="fiberOwnerZ"/>
+
+        <property name="isGetInterfaceA"/>
+        <property name="isGetInterfaceZ"/>
+        <property name="getInterfaceNoA"/>
+        <property name="getInterfaceNoZ"/>
+        <property name="theLastOpinionA"/>
+        <property name="theLastOpinionZ"/>
+
+        <property name="circuitName"/>
+        <property name="circuitSheetId"/>
 
 
-	<property name="protocolDuanXin"/>
+        <property name="userStardAddA"/>
+        <property name="userStardAddZ"/>
 
-	<property name="brandScope"/>
+        <property name="userSiteHA"/>
+        <property name="userSiteHZ"/>
 
+        <property name="userSiteAA"/>
+        <property name="userSiteAZ"/>
 
-	<property name="isfee"/>
+        <property name="userIsHaveDivA"/>
+        <property name="userIsHaveDivZ"/>
 
-	<property name="enterpriseCNName"/>
+        <property name="isNeedBuyA"/>
+        <property name="isNeedBuyZ"/>
 
-	<property name="enterpriseENname"/>
+        <property name="theDevNeededA"/>
+        <property name="theDevNeededZ"/>
 
-	<property name="enterpriseStreamBusy"/>
+        <property name="interfacePointTypeA"/>
+        <property name="interfacePointTypeZ"/>
 
-	<property name="enterpriseStreamLazy"/>
+        <property name="isOkBetweenUserA"/>
+        <property name="isOkBetweenUserZ"/>
 
-	<property name="erterpriseLevel"/>
+        <property name="noInputResonA"/>
+        <property name="noInputResonZ"/>
 
+        <property name="buildMethodA"/>
+        <property name="buildMethodZ"/>
 
-	<property name="customLevel"/>      
- 
+        <property name="interfacePointAddA"/>
+        <property name="interfacePointAddZ"/>
 
-	<property name="isSupportUpCaiXinStream"/>
-	<property name="limitSendAndRecScope"/>
-         
-	<property name="computerAdd"/>
+        <property name="portZBDevicePort"/>
 
+        <property name="interfaceSiteNameA"/>
+        <property name="interfaceEquipCodeA"/>
 
-	<property name="userIsHaveNet"/>
+        <property name="interfaceSiteNameZ"/>
+        <property name="interfaceEquipCodeZ"/>
 
-	<property name="userBusinessIntallAdd"/>
+        <property name="isDeviceAllowOpenA"/>
+        <property name="isDeviceAllowOpenZ"/>
 
-	<property name="userIsNeedMasServer"/>
+        <property name="isNeedAddCardA"/>
+        <property name="isNeedAddCardZ"/>
 
+        <property name="cardTypeA"/>
+        <property name="cardTypeZ"/>
 
-	<property name="productType"/>
+        <property name="cardNumA"/>
+        <property name="cardNumZ"/>
 
-	<property name="productInstanceName"/>
+        <property name="fiberAcount"/>
+        <property name="fiberAroute"/>
+        <property name="fiberZcount"/>
+        <property name="fiberZroute"/>
+        <property name="promise"/>
+        <property name="whours"/>
+        <property name="buildTypeA"/>
 
-	<property name="businessSLABook"/>
+        <property name="buildTypeZ"/>
+        <property name="portABDeviceType"/>
+        <property name="portZBDeviceType"/>
 
-	<property name="inputDevNoAndName"/>
+        <property name="requirmentArea"/>
+        <property name="portNum"/>
+        <property name="portType"/>
 
-	<property name="userUseDevPort"/>
+        <property name="tradeId"/>
 
-	<property name="inputDevPortStatue"/>
-
- 
-	<property name="serverNumberType"/>
-
-
-	<property name="isinputDSMP"/>
-
-
-	<property name="isgetFee"/>
-    
-	<property name="inputLevelNumber"/>
-     
-	<property name="lagerinterfaceNumber"/>
-
-
-   
-	<property name="duanxinSing"/>
-
-	<property name="scopeMakeScope"/>
-
-	<property name="timeMakeScope"/>
-   
-	<property name="inputDot"/>
-
-
-	<property name="computerIpAdd"/>
-
-
-	<property name="inputNetWayBandWidth"/>
+        <property name="inputMethodDuanXin"/>
 
 
-	<property name="lagerDownStream"/>
-  
-	<property name="lagerUptStream"/>
+        <property name="protocolDuanXin"/>
 
-	<property name="portSpeed"/>
-    
-	<property name="rightModule"/>
-     
-	<property name="feeBit"/>
+        <property name="brandScope"/>
 
-	<property name="nameSheetMethod"/>
- 
- 
-    </class>    
+
+        <property name="isfee"/>
+
+        <property name="enterpriseCNName"/>
+
+        <property name="enterpriseENname"/>
+
+        <property name="enterpriseStreamBusy"/>
+
+        <property name="enterpriseStreamLazy"/>
+
+        <property name="erterpriseLevel"/>
+
+
+        <property name="customLevel"/>
+
+
+        <property name="isSupportUpCaiXinStream"/>
+        <property name="limitSendAndRecScope"/>
+
+        <property name="computerAdd"/>
+
+
+        <property name="userIsHaveNet"/>
+
+        <property name="userBusinessIntallAdd"/>
+
+        <property name="userIsNeedMasServer"/>
+
+
+        <property name="productType"/>
+
+        <property name="productInstanceName"/>
+
+        <property name="businessSLABook"/>
+
+        <property name="inputDevNoAndName"/>
+
+        <property name="userUseDevPort"/>
+
+        <property name="inputDevPortStatue"/>
+
+
+        <property name="serverNumberType"/>
+
+
+        <property name="isinputDSMP"/>
+
+
+        <property name="isgetFee"/>
+
+        <property name="inputLevelNumber"/>
+
+        <property name="lagerinterfaceNumber"/>
+
+
+        <property name="duanxinSing"/>
+
+        <property name="scopeMakeScope"/>
+
+        <property name="timeMakeScope"/>
+
+        <property name="inputDot"/>
+
+
+        <property name="computerIpAdd"/>
+
+
+        <property name="inputNetWayBandWidth"/>
+
+
+        <property name="lagerDownStream"/>
+
+        <property name="lagerUptStream"/>
+
+        <property name="portSpeed"/>
+
+        <property name="rightModule"/>
+
+        <property name="feeBit"/>
+
+        <property name="nameSheetMethod"/>
+
+
+    </class>
 
 </hibernate-mapping>
 

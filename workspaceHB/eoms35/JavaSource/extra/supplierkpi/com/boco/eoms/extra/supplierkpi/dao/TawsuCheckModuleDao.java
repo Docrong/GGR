@@ -16,9 +16,9 @@ public interface TawsuCheckModuleDao extends Dao {
 
     /**
      * Gets tawsuCheckModule's information based on primary key. An
-     * ObjectRetrievalFailureException Runtime Exception is thrown if 
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
-     * 
+     *
      * @param id the tawsuCheckModule's id
      * @return tawsuCheckModule populated tawsuCheckModule object
      */
@@ -26,20 +26,24 @@ public interface TawsuCheckModuleDao extends Dao {
 
     /**
      * Saves a tawsuCheckModule's information
+     *
      * @param tawsuCheckModule the object to be saved
-     */    
+     */
     public void saveTawsuCheckModule(TawsuCheckModule tawsuCheckModule);
 
     /**
      * Removes a tawsuCheckModule from the database by id
+     *
      * @param id the tawsuCheckModule's id
      */
     public void removeTawsuCheckModule(final String id);
+
     /**
      * curPage
      * pageSize
      */
     public Map getTawsuCheckModules(final int curPage, final int pageSize);
+
     public Map getTawsuCheckModules(final int curPage, final int pageSize, final String whereStr);
 }
 

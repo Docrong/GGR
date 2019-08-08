@@ -7,25 +7,25 @@ import com.boco.eoms.eva.model.EvaOrg;
 
 public interface IEvaOrgMgr {
 
-	public IEvaOrgDao getEvaOrgDao();
+    public IEvaOrgDao getEvaOrgDao();
 
-	public void setEvaOrgDao(IEvaOrgDao orgDao);
+    public void setEvaOrgDao(IEvaOrgDao orgDao);
 
-	public void saveEvaOrg(EvaOrg evaOrg);
+    public void saveEvaOrg(EvaOrg evaOrg);
 
-	public EvaOrg getEvaOrg(String id);
+    public EvaOrg getEvaOrg(String id);
 
-	public void removeEvaOrg(EvaOrg evaOrg);
+    public void removeEvaOrg(EvaOrg evaOrg);
 
-	public List getOrgsByTempletId(String templateId);
+    public List getOrgsByTempletId(String templateId);
 
-	public void removeOrgOfTemplate(String templateId);
+    public void removeOrgOfTemplate(String templateId);
 
-	public List getTempletByUserId(String userId, String actionType,
-			String status);
-	
-	public List getTaskByConditions(String conditions);
-	
-	public EvaOrg getLatestTaskByTaskId(String taskId);
+    public List getTempletByUserId(String userId, String actionType,
+                                   String status);
+
+    public List getTaskByConditions(String conditions);
+
+    public EvaOrg getLatestTaskByTaskId(String taskId);
 
 }

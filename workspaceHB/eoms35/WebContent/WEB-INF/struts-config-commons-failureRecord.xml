@@ -1,86 +1,85 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
-	<form-beans>
-		<form-bean name="failureRecordForm"
-			type="com.boco.eoms.commons.failureRecord.webapp.form.FailureRecordForm" />
+    <form-beans>
+        <form-bean name="failureRecordForm"
+                   type="com.boco.eoms.commons.failureRecord.webapp.form.FailureRecordForm"/>
 
-	</form-beans>
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<!-- 
-			<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-		-->
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <!--
+            <exception type="java.lang.Exception" key="errors.general"
+            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
+        -->
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="mainMenu" path="/mainMenu.do" redirect="true" />
-		<forward name="success"
-			path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskSuccess.jsp"
-			redirect="false" contextRelative="true" />
-		<forward name="fail"
-			path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFail.jsp"
-			redirect="false" contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
+        <forward name="success"
+                 path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskSuccess.jsp"
+                 redirect="false" contextRelative="true"/>
+        <forward name="fail"
+                 path="/WEB-INF/pages/tawWorkbenchNetDisk/tawWorkbenchNetDiskFail.jsp"
+                 redirect="false" contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-
-
-	<action-mappings>
-
-		<action path="/failureRecord"
-			type="com.boco.eoms.commons.failureRecord.webapp.action.FailureRecordAction"
-			name="failureRecordForm" scope="request" input="mainMenu"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="success"
-				path="/WEB-INF/pages/failureRecord/failureRecord.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="FailureRecordList"
-				path="/WEB-INF/pages/failureRecord/failureRecordList.jsp"
-				redirect="false" contextRelative="true" />
-						<forward name="detail"
-				path="/WEB-INF/pages/failureRecord/failureRecordDetail.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="List"
-				path="/failureRecord/failureRecord.do?method=failureRecordList"
-				redirect="false" contextRelative="true" />
-			<forward name="failureRecordsuccess"
-				path="/failureRecord/failureRecord.do?method=failureRecordList"
-				redirect="false" contextRelative="true" />
-				
-				<forward name="InterfaceSuccess"
-				path="/failureRecord/failureRecord.do?method=failureRecordList"
-				redirect="false" contextRelative="true" />
-				
-				<forward name="edit"
-				path="/WEB-INF/pages/failureRecord/failureRecordEdit.jsp"
-				redirect="false" contextRelative="true" />
-		
-		
-		</action>
+    <!-- ========== Action Mapping Definitions =================================== -->
 
 
+    <action-mappings>
+
+        <action path="/failureRecord"
+                type="com.boco.eoms.commons.failureRecord.webapp.action.FailureRecordAction"
+                name="failureRecordForm" scope="request" input="mainMenu"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/failureRecord/failureRecord.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="FailureRecordList"
+                     path="/WEB-INF/pages/failureRecord/failureRecordList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="detail"
+                     path="/WEB-INF/pages/failureRecord/failureRecordDetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="List"
+                     path="/failureRecord/failureRecord.do?method=failureRecordList"
+                     redirect="false" contextRelative="true"/>
+            <forward name="failureRecordsuccess"
+                     path="/failureRecord/failureRecord.do?method=failureRecordList"
+                     redirect="false" contextRelative="true"/>
+
+            <forward name="InterfaceSuccess"
+                     path="/failureRecord/failureRecord.do?method=failureRecordList"
+                     redirect="false" contextRelative="true"/>
+
+            <forward name="edit"
+                     path="/WEB-INF/pages/failureRecord/failureRecordEdit.jsp"
+                     redirect="false" contextRelative="true"/>
 
 
-	</action-mappings>
+        </action>
 
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources
-		parameter="config/ApplicationResources-commons-FailureRecord" />
-	<!-- ========== Validator plugin ===================  -->
-	<!-- 
-		<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-		<set-property property="pathnames"
-		value="/WEB-INF/validator-rules.xml,
-		/WEB-INF/validator-rules-custom.xml,
-		/WEB-INF/validation.xml" />
-		</plug-in>
-	-->
+    </action-mappings>
+
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources
+            parameter="config/ApplicationResources-commons-FailureRecord"/>
+    <!-- ========== Validator plugin ===================  -->
+    <!--
+        <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+        value="/WEB-INF/validator-rules.xml,
+        /WEB-INF/validator-rules-custom.xml,
+        /WEB-INF/validation.xml" />
+        </plug-in>
+    -->
 </struts-config>

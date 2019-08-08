@@ -6,100 +6,100 @@ import com.boco.eoms.commons.system.user.service.ITawSystemUserManager;
 
 public class TawTestcardAuditInfo {
 
-	ITawSystemUserManager userMgr = (ITawSystemUserManager) ApplicationContextHolder
-	.getInstance().getBean("itawSystemUserManager");
+    ITawSystemUserManager userMgr = (ITawSystemUserManager) ApplicationContextHolder
+            .getInstance().getBean("itawSystemUserManager");
 
-	private int id;
+    private int id;
 
-	private String auditUser;
+    private String auditUser;
 
-	private String auditUserName;
+    private String auditUserName;
 
-	private String auditTime;
-	
-	private String auditInfo;
-	
-	private String status;
-	
-	private String statusname;
+    private String auditTime;
 
-	private int formId;
-	
-	public int getFormId() {
-		return formId;
-	}
+    private String auditInfo;
 
-	public void setFormId(int formId) {
-		this.formId = formId;
-	}
+    private String status;
 
-	public String getAuditInfo() {
-		return auditInfo;
-	}
+    private String statusname;
 
-	public void setAuditInfo(String auditInfo) {
-		this.auditInfo = auditInfo;
-	}
+    private int formId;
 
-	public String getAuditTime() {
-		return auditTime;
-	}
+    public int getFormId() {
+        return formId;
+    }
 
-	public void setAuditTime(String auditTime) {
-		this.auditTime = auditTime;
-	}
+    public void setFormId(int formId) {
+        this.formId = formId;
+    }
 
-	public String getAuditUser() {
-		return auditUser;
-	}
+    public String getAuditInfo() {
+        return auditInfo;
+    }
 
-	public void setAuditUser(String auditUser) {
-		this.auditUser = auditUser;
-	}
+    public void setAuditInfo(String auditInfo) {
+        this.auditInfo = auditInfo;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public String getAuditTime() {
+        return auditTime;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setAuditTime(String auditTime) {
+        this.auditTime = auditTime;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getAuditUser() {
+        return auditUser;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setAuditUser(String auditUser) {
+        this.auditUser = auditUser;
+    }
 
-	public String getStatusname() {
-    	if(StaticMethod.null2String(this.status).equals("9")){
-    		this.statusname="草稿";
-    	}
-    	if(StaticMethod.null2String(this.status).equals("10")){
-    		this.statusname="待审核";
-    	}
-    	if(StaticMethod.null2String(this.status).equals("11")){
-    		this.statusname="驳回";
-    	}
-    	if(StaticMethod.null2String(this.status).equals("12")){
-    		this.statusname="审核通过";
-    	}
-		return statusname;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setStatusname(String statusname) {
-		this.statusname = statusname;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getAuditUserName() {
-		this.auditUserName = userMgr.getUserByuserid(auditUser).getUsername();
-		return auditUserName;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setAuditUserName(String auditUserName) {
-		this.auditUserName = auditUserName;
-	}
-	
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatusname() {
+        if (StaticMethod.null2String(this.status).equals("9")) {
+            this.statusname = "草稿";
+        }
+        if (StaticMethod.null2String(this.status).equals("10")) {
+            this.statusname = "待审核";
+        }
+        if (StaticMethod.null2String(this.status).equals("11")) {
+            this.statusname = "驳回";
+        }
+        if (StaticMethod.null2String(this.status).equals("12")) {
+            this.statusname = "审核通过";
+        }
+        return statusname;
+    }
+
+    public void setStatusname(String statusname) {
+        this.statusname = statusname;
+    }
+
+    public String getAuditUserName() {
+        this.auditUserName = userMgr.getUserByuserid(auditUser).getUsername();
+        return auditUserName;
+    }
+
+    public void setAuditUserName(String auditUserName) {
+        this.auditUserName = auditUserName;
+    }
+
 }

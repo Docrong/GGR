@@ -1,36 +1,39 @@
 package com.boco.eoms.commons.util.xml;
+
 /**
- * µ¥ÀıÀà,¿ØÖÆÍ¬Ê±ÏÂÔØÓÃ»§Êı
- * @author gr
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
  *
+ * @author gr
  */
 public class UserCount {
 
-	private static UserCount user=new UserCount();
+    private static UserCount user = new UserCount();
 
-	private static int count=0;//ÏÂÔØÓÃ»§Êı
-	private static int maxCount=10;//×î´óÏÂÔØÓÃ»§Êı
-	
-	public static UserCount getUser(){
-		return user;
-	}
-	
-	public static int getCount(){
-		return count;
-	}
-	public static void setCount(){
-		count=maxCount;
-	}
-	public static int getMaxCount(){
-		return maxCount;
-	}
-	
-	public synchronized void login(){
-		count++;
-	}
-	
-	public synchronized void logout(){
-		count--;
-	}
+    private static int count = 0;//ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+    private static int maxCount = 10;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½
+
+    public static UserCount getUser() {
+        return user;
+    }
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount() {
+        count = maxCount;
+    }
+
+    public static int getMaxCount() {
+        return maxCount;
+    }
+
+    public synchronized void login() {
+        count++;
+    }
+
+    public synchronized void logout() {
+        count--;
+    }
 
 }

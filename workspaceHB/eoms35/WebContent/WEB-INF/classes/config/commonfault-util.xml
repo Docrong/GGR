@@ -1,310 +1,328 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-       <InterfaceUser>alarm</InterfaceUser>
+    <InterfaceUser>alarm</InterfaceUser>
     <InterfaceSender>8aa0813b1c6defcc011c6e611ae80017</InterfaceSender>
-    
+
     <InterfaceRole>191</InterfaceRole>
-        <InterfaceSubRole>8aa0813b1c6f2386011c6f39c8350027</InterfaceSubRole>
-    
-    <ServiceUrl>http://10.30.172.14:9000/SheetStateSync</ServiceUrl>    
+    <InterfaceSubRole>8aa0813b1c6f2386011c6f39c8350027</InterfaceSubRole>
+
+    <ServiceUrl>http://10.30.172.14:9000/SheetStateSync</ServiceUrl>
     <GroupFault_address>http://10.25.88.18:8010/usi-fccos-ws/services/GroupFault</GroupFault_address>
-    
-    
+
+
     <minutecounts>5</minutecounts><!--每次轮询时查询的时间间隔，单位分钟，每次轮询的间隔一定要小于这个数(轮询时间间隔-这个配置>1)，以免照成漏掉工单-->
     <T1DealPerson>fangmin</T1DealPerson><!--默认T1接单和处理人-->
     <T1DealPersonMobile>85608099</T1DealPersonMobile><!--默认T1接单和处理人的电话-->
     <T1DealPersonDept>12201</T1DealPersonDept><!--默认T1接单和处理人的部门-->
-    <AutotransmitAll>false</AutotransmitAll><!--主要是为了查询更早时间的标识，false的话那就查询上面配置那个时间间隔段内的工单，true的话按照下面的WhereSql中的时间段进行查询-->
-    <WhereSql> and main.sendTime&gt;=to_date('2012-01-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and main.sendTime&lt;=to_date('2012-02-01 23:59:59','yyyy-mm-dd hh24:mi:ss')</WhereSql>
-    
+    <AutotransmitAll>false
+    </AutotransmitAll><!--主要是为了查询更早时间的标识，false的话那就查询上面配置那个时间间隔段内的工单，true的话按照下面的WhereSql中的时间段进行查询-->
+    <WhereSql>and main.sendTime&gt;=to_date('2012-01-01 00:00:00','yyyy-mm-dd hh24:mi:ss') and main.sendTime&lt;=to_date('2012-02-01
+        23:59:59','yyyy-mm-dd hh24:mi:ss')
+    </WhereSql>
+
     <EnableService>true</EnableService>
     <connecttimeout>1000</connecttimeout>
     <rootNeTypeId>1010104</rootNeTypeId>
-        <SendImmediately>true</SendImmediately>
-        
-    <!--一点监控配置信息begin-->    
-    <pilotcity>1802,1812,1810,1811,1813,1805,1815,1816,1809,1801,1806,1804,1814,1807,1808,1803</pilotcity><!--集中监控试点地市-->
+    <SendImmediately>true</SendImmediately>
+
+    <!--一点监控配置信息begin-->
+    <pilotcity>1802,1812,1810,1811,1813,1805,1815,1816,1809,1801,1806,1804,1814,1807,1808,1803
+    </pilotcity><!--集中监控试点地市-->
     <AutoUser>fangmin</AutoUser><!--T1自动转单人-->
     <AutoSubRole>8aa0813b1c6f2386011c6f39c8350027</AutoSubRole><!--T1自动转单角色-->
-	<ignoreRoleId>8005106</ignoreRoleId><!--集中监控维护班组角色Id-->
-	<ignoreDeptId>12101,1,12103,125</ignoreDeptId><!--可以看到集中监控维护班组角色的DeptId-->
-	<ignoreAreaId>18</ignoreAreaId><!--一级地市的parentAreaId的值-->
-	<faultResponseLevel>101030401</faultResponseLevel><!--非自动转单的故障处理响应级别-->
-	<!--一点监控配置信息end-->
-	
-    <!--故障地市对应抄送begin-->   
- <cc1801>8a9e6396532c0e19012016dc05db0d03</cc1801>
- <cc1802>8a9e6396532c0e19012016dc05db0d04</cc1802>
- <cc1803>8a9e6396532c0e19012016dc05db0d05</cc1803>
- <cc1804>8a9e6396532c0e19012016dc05db0d06</cc1804>
- <cc1805>8a9e6396532c0e19012016dc05db0d07</cc1805>
- <cc1806>8a9e6396532c0e19012016dc05db0d08</cc1806>
- <cc1807>8a9e6396532c0e19012016dc05db0d09</cc1807>
- <cc1808>8a9e6396532c0e19012016dc05db0d10</cc1808>
- <cc1809>8a9e6396532c0e19012016dc05db0d11</cc1809>
- <cc1810>8a9e6396532c0e19012016dc05db0d12</cc1810>
- <cc1811>8a9e6396532c0e19012016dc05db0d13</cc1811>
- <cc1812>8a9e6396532c0e19012016dc05db0d14</cc1812>
- <cc1813>8a9e6396532c0e19012016dc05db0d15</cc1813>
- <cc1814>8a9e6396532c0e19012016dc05db0d16</cc1814>
- <cc1815>8a9e6396532c0e19012016dc05db0d01</cc1815>
- <cc1816>8a9e6396532c0e19012016dc05db0d02</cc1816>
-	<!--故障地市对应抄送end-->
-    
+    <ignoreRoleId>8005106</ignoreRoleId><!--集中监控维护班组角色Id-->
+    <ignoreDeptId>12101,1,12103,125</ignoreDeptId><!--可以看到集中监控维护班组角色的DeptId-->
+    <ignoreAreaId>18</ignoreAreaId><!--一级地市的parentAreaId的值-->
+    <faultResponseLevel>101030401</faultResponseLevel><!--非自动转单的故障处理响应级别-->
+    <!--一点监控配置信息end-->
+
+    <!--故障地市对应抄送begin-->
+    <cc1801>8a9e6396532c0e19012016dc05db0d03</cc1801>
+    <cc1802>8a9e6396532c0e19012016dc05db0d04</cc1802>
+    <cc1803>8a9e6396532c0e19012016dc05db0d05</cc1803>
+    <cc1804>8a9e6396532c0e19012016dc05db0d06</cc1804>
+    <cc1805>8a9e6396532c0e19012016dc05db0d07</cc1805>
+    <cc1806>8a9e6396532c0e19012016dc05db0d08</cc1806>
+    <cc1807>8a9e6396532c0e19012016dc05db0d09</cc1807>
+    <cc1808>8a9e6396532c0e19012016dc05db0d10</cc1808>
+    <cc1809>8a9e6396532c0e19012016dc05db0d11</cc1809>
+    <cc1810>8a9e6396532c0e19012016dc05db0d12</cc1810>
+    <cc1811>8a9e6396532c0e19012016dc05db0d13</cc1811>
+    <cc1812>8a9e6396532c0e19012016dc05db0d14</cc1812>
+    <cc1813>8a9e6396532c0e19012016dc05db0d15</cc1813>
+    <cc1814>8a9e6396532c0e19012016dc05db0d16</cc1814>
+    <cc1815>8a9e6396532c0e19012016dc05db0d01</cc1815>
+    <cc1816>8a9e6396532c0e19012016dc05db0d02</cc1816>
+    <!--故障地市对应抄送end-->
+
     <LimitOfQC>admin</LimitOfQC><!-- 质检权限人员配置 add by shangwentao 20130705-->
-	 <!--一点监控配置信息begin 无线专业 add by fengmin--> 
+    <!--一点监控配置信息begin 无线专业 add by fengmin-->
     <relationCS>1010104010702</relationCS>
     <relationDH>1010104010701</relationDH>
     <ttTypeyj>101031901</ttTypeyj>
     <ttTypexj>101031902</ttTypexj>
-	<!--一点监控配置信息end  无线专业 add by fengmin-->
-    
+    <!--一点监控配置信息end  无线专业 add by fengmin-->
+
     <dict>
-    	<serviceUrl>
-    		    		  <item dictid="http://10.30.172.14:9000/SheetStateSync" interfacecode="BOCO_WNMS" />
-    	</serviceUrl>
-    	<levelone dictId="101030401">
-    		    	<completeLimitT1>30</completeLimitT1>
-	    	<completeLimitT2>90</completeLimitT2>
-	    	<completeLimitT3>120</completeLimitT3>
-	    	<replyLimit>240</replyLimit>
-	    	<acceptLimit>30</acceptLimit>
-    	</levelone>
-    	<leveltwo dictId="101030402">
-	    		    <completeLimitT1>90</completeLimitT1>
-	    	<completeLimitT2>510</completeLimitT2>
-	    	<completeLimitT3>300</completeLimitT3>
-	    	<replyLimit>900</replyLimit>
-	    	<acceptLimit>30</acceptLimit>
-    	</leveltwo>
-		<levelthree dictId="101030403">
-	    	<completeLimitT1>180</completeLimitT1>
-	    	<completeLimitT2>1080</completeLimitT2>
-	    	<completeLimitT3>180</completeLimitT3>
-	    	<replyLimit>1440</replyLimit>
-	    	<acceptLimit>30</acceptLimit>
-    	</levelthree>
-    	<autosheet>101030503</autosheet>
-    	<personsheet>101030501</personsheet>
+        <serviceUrl>
+            <item dictid="http://10.30.172.14:9000/SheetStateSync" interfacecode="BOCO_WNMS"/>
+        </serviceUrl>
+        <levelone dictId="101030401">
+            <completeLimitT1>30</completeLimitT1>
+            <completeLimitT2>90</completeLimitT2>
+            <completeLimitT3>120</completeLimitT3>
+            <replyLimit>240</replyLimit>
+            <acceptLimit>30</acceptLimit>
+        </levelone>
+        <leveltwo dictId="101030402">
+            <completeLimitT1>90</completeLimitT1>
+            <completeLimitT2>510</completeLimitT2>
+            <completeLimitT3>300</completeLimitT3>
+            <replyLimit>900</replyLimit>
+            <acceptLimit>30</acceptLimit>
+        </leveltwo>
+        <levelthree dictId="101030403">
+            <completeLimitT1>180</completeLimitT1>
+            <completeLimitT2>1080</completeLimitT2>
+            <completeLimitT3>180</completeLimitT3>
+            <replyLimit>1440</replyLimit>
+            <acceptLimit>30</acceptLimit>
+        </levelthree>
+        <autosheet>101030503</autosheet>
+        <personsheet>101030501</personsheet>
     </dict>
     <newWorkSheet>
-        <content columnName="title" interfaceName="alarmTitle" defauleValue="" />
-		<content columnName="mainAlarmNum" interfaceName="alarmId" defauleValue="" />
-		<content columnName="mainAlarmId" interfaceName="alarmStaId" defauleValue="" />
-		<content columnName="mainFaultGenerantTime" interfaceName="alarmCreateTime" defauleValue="" />
-		<content columnName="mainNetName" interfaceName="neName" defauleValue="" />
-		<content columnName="mainNeId" interfaceName="neId" defauleValue="" />
-		<!--content columnName="mainFaultResponseLevel" interfaceName="alarmLevel" defauleValue="" / -->
-		<content columnName="mainAlarmLogicSort" interfaceName="alarmType" defauleValue="" />
-		<content columnName="mainAlarmLogicSortSub" interfaceName="alarmSubType" defauleValue="" />
-		<content columnName="mainAlarmSource" interfaceName="" defauleValue="告警标准化" /> <!--alarmLocation hongbo 2010-01-21 -->
-		<content columnName="mainAlarmDesc" interfaceName="alarmDetail" defauleValue="" />
-		<content columnName="mainEquipmentModel" interfaceName="equipType" defauleValue="" />
-		<content columnName="mainEquipmentFactory" interfaceName="alarmVendor" defauleValue="" rootDictId="1010103"/>
-		<content columnName="mainFaultResponseLevel" interfaceName="alarmHandleLevel" defauleValue="" dictNodePath="mainFaultResponseLevel"/>
-		<content columnName="mainAlarmLevel" interfaceName="alarmLevel" defauleValue="" />
-		<content columnName="mainFaultFirstDealDesc" interfaceName="alarmAutoHandle" defauleValue="" />
-		
-		<!--***************************** 新增设备名称字段 ************************************** -->
-		<content columnName="EquipmentName" interfaceName="EquipmentName" defauleValue="" />
-		<!--***************************** 新增设备名称字段end *********************************** -->
-		<content columnName="mainFaultDiscoverableMode" interfaceName="" defauleValue="101030101" />
-		<content columnName="mainIfAffectOperation" interfaceName="" defauleValue="1030102" />
-		<content columnName="mainPretreatment" interfaceName="" defauleValue="1030102" />
-		<content columnName="status" interfaceName="" defauleValue="0" />
-		<content columnName="beanId" interfaceName="" defauleValue="iCommonFaultMainManager" />
-		<content columnName="roleId" interfaceName="" defauleValue="205" />
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink" />
-		<content columnName="method" interfaceName="" defauleValue="performAdd" />
-		<content columnName="linkIsBack" interfaceName="" defauleValue="0" />
-		<content columnName="isCustomerFlag" interfaceName="" defauleValue="1" />
-		<content columnName="phaseId" interfaceName="" defauleValue="FirstExcuteTask" />
-		<content columnName="sendUserId" interfaceName="sender" defauleValue="" dictNodePath="sender"/>
-		<content columnName="operateRoleId" interfaceName="interfaceSender" defauleValue="" dictNodePath="interfaceSender"/>
-		<content columnName="sheetTemplateName" interfaceName="" defauleValue="CommonFaultMainFlowProcess" />
-		<content columnName="mainDetectFaultTime" interfaceName="time_stamp" defauleValue="" />
-		<content columnName="mainSendSystem" interfaceName="send_system" defauleValue="" />
-		<content columnName="mainTowerId" interfaceName="towerId" defauleValue="" />
-		<content columnName="mainTownerName" interfaceName="towername" defauleValue="" /><!-- 站址名称 -->
-		<content columnName="mainTownerDeviceId" interfaceName="towerneid" defauleValue="" /><!-- 铁塔站址资源编码  -->
-		<content columnName="mainTownerRoomId" interfaceName="ResID" defauleValue="" /><!-- 铁塔机房资源编码 -->
-		
-		<content columnName="autoholdflag" interfaceName="autoholdflag" defauleValue="" /><!-- 归档六要素判断 -->
-		
-		<content columnName="mainLocatinf" interfaceName="locatinginformation" defauleValue="" />
-		
-		<content columnName="mainReserved1" interfaceName="alarmCity" defauleValue="" /><!-- 告警区县 -->
+        <content columnName="title" interfaceName="alarmTitle" defauleValue=""/>
+        <content columnName="mainAlarmNum" interfaceName="alarmId" defauleValue=""/>
+        <content columnName="mainAlarmId" interfaceName="alarmStaId" defauleValue=""/>
+        <content columnName="mainFaultGenerantTime" interfaceName="alarmCreateTime" defauleValue=""/>
+        <content columnName="mainNetName" interfaceName="neName" defauleValue=""/>
+        <content columnName="mainNeId" interfaceName="neId" defauleValue=""/>
+        <!--content columnName="mainFaultResponseLevel" interfaceName="alarmLevel" defauleValue="" / -->
+        <content columnName="mainAlarmLogicSort" interfaceName="alarmType" defauleValue=""/>
+        <content columnName="mainAlarmLogicSortSub" interfaceName="alarmSubType" defauleValue=""/>
+        <content columnName="mainAlarmSource" interfaceName=""
+                 defauleValue="告警标准化"/> <!--alarmLocation hongbo 2010-01-21 -->
+        <content columnName="mainAlarmDesc" interfaceName="alarmDetail" defauleValue=""/>
+        <content columnName="mainEquipmentModel" interfaceName="equipType" defauleValue=""/>
+        <content columnName="mainEquipmentFactory" interfaceName="alarmVendor" defauleValue="" rootDictId="1010103"/>
+        <content columnName="mainFaultResponseLevel" interfaceName="alarmHandleLevel" defauleValue=""
+                 dictNodePath="mainFaultResponseLevel"/>
+        <content columnName="mainAlarmLevel" interfaceName="alarmLevel" defauleValue=""/>
+        <content columnName="mainFaultFirstDealDesc" interfaceName="alarmAutoHandle" defauleValue=""/>
 
-	</newWorkSheet>
-	<!--2014/9/11 begin:add by dengpengfei -->
-	<!-- 发送人 -->
-	<InterfaceDefaultSubRole>8a9982f2222d2030012231980a120e7c</InterfaceDefaultSubRole>   <!-- 延期审批子角色id -->
+        <!--***************************** 新增设备名称字段 ************************************** -->
+        <content columnName="EquipmentName" interfaceName="EquipmentName" defauleValue=""/>
+        <!--***************************** 新增设备名称字段end *********************************** -->
+        <content columnName="mainFaultDiscoverableMode" interfaceName="" defauleValue="101030101"/>
+        <content columnName="mainIfAffectOperation" interfaceName="" defauleValue="1030102"/>
+        <content columnName="mainPretreatment" interfaceName="" defauleValue="1030102"/>
+        <content columnName="status" interfaceName="" defauleValue="0"/>
+        <content columnName="beanId" interfaceName="" defauleValue="iCommonFaultMainManager"/>
+        <content columnName="roleId" interfaceName="" defauleValue="205"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink"/>
+        <content columnName="method" interfaceName="" defauleValue="performAdd"/>
+        <content columnName="linkIsBack" interfaceName="" defauleValue="0"/>
+        <content columnName="isCustomerFlag" interfaceName="" defauleValue="1"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="FirstExcuteTask"/>
+        <content columnName="sendUserId" interfaceName="sender" defauleValue="" dictNodePath="sender"/>
+        <content columnName="operateRoleId" interfaceName="interfaceSender" defauleValue=""
+                 dictNodePath="interfaceSender"/>
+        <content columnName="sheetTemplateName" interfaceName="" defauleValue="CommonFaultMainFlowProcess"/>
+        <content columnName="mainDetectFaultTime" interfaceName="time_stamp" defauleValue=""/>
+        <content columnName="mainSendSystem" interfaceName="send_system" defauleValue=""/>
+        <content columnName="mainTowerId" interfaceName="towerId" defauleValue=""/>
+        <content columnName="mainTownerName" interfaceName="towername" defauleValue=""/><!-- 站址名称 -->
+        <content columnName="mainTownerDeviceId" interfaceName="towerneid" defauleValue=""/><!-- 铁塔站址资源编码  -->
+        <content columnName="mainTownerRoomId" interfaceName="ResID" defauleValue=""/><!-- 铁塔机房资源编码 -->
+
+        <content columnName="autoholdflag" interfaceName="autoholdflag" defauleValue=""/><!-- 归档六要素判断 -->
+
+        <content columnName="mainLocatinf" interfaceName="locatinginformation" defauleValue=""/>
+
+        <content columnName="mainReserved1" interfaceName="alarmCity" defauleValue=""/><!-- 告警区县 -->
+
+    </newWorkSheet>
+    <!--2014/9/11 begin:add by dengpengfei -->
+    <!-- 发送人 -->
+    <InterfaceDefaultSubRole>8a9982f2222d2030012231980a120e7c</InterfaceDefaultSubRole>   <!-- 延期审批子角色id -->
     <DefaultUser>EOMS</DefaultUser>
-    <DefaultPassword>EOMS</DefaultPassword> 
+    <DefaultPassword>EOMS</DefaultPassword>
     <notifyDefaultSubRole>8aa0813b1c6f2386011c6f39c8350027</notifyDefaultSubRole>  <!-- 阶段回复默认角色 -->
-	<notifyWorkSheet> <!-- 阶段回复 -->
-		<content columnName="" interfaceCnName="opType" interfaceEnName="操作类型" defauleValue="" />
-		<content columnName="remark" interfaceCnName="opDesc" interfaceEnName="阶段回复说明" defauleValue=""/>
-	</notifyWorkSheet>
-	<delayWorkSheet> <!-- 延期申请 -->
-		<content columnName="opType" interfaceCnName="opType" interfaceEnName="操作类型" defauleValue="" />
-		<content columnName="linkTransmitContent" interfaceCnName="opDesc" interfaceEnName="延期申请" defauleValue=""/>
-	</delayWorkSheet>
-   	<!--2014/9/11 end:add by dengpengfei -->
-   	
-	<!-- 故障工单批量处理操作 add by weichao 20150515 begin-->
-	<batchDeal>
-		<!-- 批量接单，显示当前账号下未接单工单的SQL -->
-		<batachClaimSQL>
-		select main.* 
-		from commonfault_task task, commonfault_main main   
-		where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and 
-			main.deleted&lt;&gt;'1' and main.status=0  and  
-			task.id in (select t3.id from commonfault_task t3,commonfault_main m2   
-						where taskstatus = '2' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and  
-							t3.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m2.deleted &lt;&gt;'1' and taskowner = '$userId$'  
-						union all   
-						select t3.id from commonfault_task t3, commonfault_main m2    
-						where taskstatus = '2' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and 
-							t3.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m2.deleted &lt;&gt;'1' and taskowner = '$deptId$'  
-						union all   
-						select t3.id from commonfault_task t3, commonfault_main m2, taw_system_userrefrole r   
-						where taskstatus = '2' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and  
-							t3.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m2.status=0 and m2.deleted &lt;&gt;'1' and r.subRoleid = t3.taskowner and r.userid='$userId$'  
-						union all   
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1   
-						where t1.ifwaitforsubtask = 'true' and t1.taskstatus='2' and t1.id = t2.parenttaskid and 
-							t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and m1.status = 0 and 
-							t1.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m1.deleted &lt;&gt; '1' and t1.taskowner='$userId$'  
-						union all  
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1  
-						where t1.ifwaitforsubtask = 'true' and t1.taskstatus ='2' and t1.id = t2.parenttaskid and 
-							t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and 
-							t1.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m1.status = 0 and m1.deleted &lt;&gt; '1' and t1.taskowner='$deptId$'   
-						union all   
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r  
-						where t1.ifwaitforsubtask = 'true' and t2.taskstatus ='2' and 
-							t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and 
-							t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and 
-							t1.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m1.deleted &lt;&gt; '1' and r.userid = '$userId$')  
-		order by  
-			task.createTime desc  		 
-		</batachClaimSQL>
-		<batachClaimSize>20</batachClaimSize><!-- 批量接单，最大接单数 -->
-		<!-- T1已接单的工单列表 add by weichao 20150527 begin -->
-		<T1CombineSQL>
-		select main.* 
-		from commonfault_task task, commonfault_main main   
-		where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and 
-			main.deleted='0' and main.status=0  and   (main.mainIfCombine='combine' or main.mainifcombine is null) and 
-			task.id in (select t3.id from commonfault_task t3,commonfault_main m2   
-						where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and  
-							t3.taskName='FirstExcuteHumTask' and m2.deleted ='0' and taskowner = '$userId$'  
-						union all   
-						select t3.id from commonfault_task t3, commonfault_main m2    
-						where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and 
-							t3.taskName='FirstExcuteHumTask' and m2.deleted ='0' and taskowner = '$deptId$'  
-						union all   
-						select t3.id from commonfault_task t3, commonfault_main m2, taw_system_userrefrole r   
-						where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and  
-							t3.taskName='FirstExcuteHumTask' and m2.status=0 and m2.deleted ='0' and r.subRoleid = t3.taskowner and r.userid='$userId$'  
-						union all   
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1   
-						where t1.ifwaitforsubtask = 'true' and t1.taskstatus='8' and t1.id = t2.parenttaskid and 
-							t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and m1.status = 0 and 
-							t1.taskName='FirstExcuteHumTask' and m1.deleted ='0' and t1.taskowner='$userId$'  
-						union all  
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1  
-						where t1.ifwaitforsubtask = 'true' and t1.taskstatus ='8' and t1.id = t2.parenttaskid and 
-							t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and 
-							t1.taskName='FirstExcuteHumTask' and m1.status = 0 and m1.deleted ='0' and t1.taskowner='$deptId$'   
-						union all   
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r  
-						where t1.ifwaitforsubtask = 'true' and t2.taskstatus ='8' and 
-							t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and 
-							t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and 
-							t1.taskName='FirstExcuteHumTask' and m1.deleted ='0' and r.userid = '$userId$')  
-		order by  
-			task.createTime desc
-		</T1CombineSQL>
-		<T1CombineSQLSize>5</T1CombineSQLSize>
-		<!-- T1已接单的工单列表 add by weichao 20150527 end -->
-		<!-- add by weichao 20150527 -->
-		<level>
-			<t101030401>3</t101030401>
-			<t101030402>2</t101030402>
-			<t101030403>1</t101030403>
-			<t101030404>1</t101030404>
-			<t101030405>1</t101030405>
-			<t101030406>1</t101030406>
-			<t101030407>2</t101030407>
-			<t101030408>1</t101030408>
-			<t101030409>1</t101030409>
-			<t101030410>3</t101030410>
-			<t101030411>2</t101030411>			
-		</level>
-		<!-- T2已接单的工单列表 add by weichao 20150601 begin -->
-		<T2CombineSQL>
-		select main.* 
-		from commonfault_task task, commonfault_main main
-		where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and 
-			main.deleted='0' and main.status=0  and  (main.mainIfCombine='combine' or main.mainifcombine is null) and main.mainAlarmSolveDate is not null and
-			task.id in (select t3.id from commonfault_task t3,commonfault_main m2   
-						where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and  
-							t3.taskName='SecondExcuteHumTask' and m2.deleted ='0' and taskowner = '$userId$'  
-						union all   
-						select t3.id from commonfault_task t3, commonfault_main m2    
-						where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and 
-							t3.taskName='SecondExcuteHumTask' and m2.deleted ='0' and taskowner = '$deptId$'  
-						union all   
-						select t3.id from commonfault_task t3, commonfault_main m2, taw_system_userrefrole r   
-						where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and  
-							t3.taskName='SecondExcuteHumTask' and m2.status=0 and m2.deleted ='0' and r.subRoleid = t3.taskowner and r.userid='$userId$'  
-						union all   
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1   
-						where t1.ifwaitforsubtask = 'true' and t1.taskstatus='8' and t1.id = t2.parenttaskid and 
-							t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and m1.status = 0 and 
-							t1.taskName='SecondExcuteHumTask' and m1.deleted ='0' and t1.taskowner='$userId$'  
-						union all  
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1  
-						where t1.ifwaitforsubtask = 'true' and t1.taskstatus ='8' and t1.id = t2.parenttaskid and 
-							t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and 
-							t1.taskName='SecondExcuteHumTask' and m1.status = 0 and m1.deleted ='0' and t1.taskowner='$deptId$'   
-						union all   
-						select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r  
-						where t1.ifwaitforsubtask = 'true' and t2.taskstatus ='8' and 
-							t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and 
-							t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and 
-							t1.taskName='SecondExcuteHumTask' and m1.deleted ='0' and r.userid = '$userId$')  
-		order by  
-			task.createTime desc
-		</T2CombineSQL>
-		<T2CombineSQLSize>5</T2CombineSQLSize>
-		<!-- T2已接单的工单列表 add by weichao 20150601 end -->
+    <notifyWorkSheet> <!-- 阶段回复 -->
+        <content columnName="" interfaceCnName="opType" interfaceEnName="操作类型" defauleValue=""/>
+        <content columnName="remark" interfaceCnName="opDesc" interfaceEnName="阶段回复说明" defauleValue=""/>
+    </notifyWorkSheet>
+    <delayWorkSheet> <!-- 延期申请 -->
+        <content columnName="opType" interfaceCnName="opType" interfaceEnName="操作类型" defauleValue=""/>
+        <content columnName="linkTransmitContent" interfaceCnName="opDesc" interfaceEnName="延期申请" defauleValue=""/>
+    </delayWorkSheet>
+    <!--2014/9/11 end:add by dengpengfei -->
 
-	</batchDeal>
-	<!-- 故障工单批量处理操作 add by weichao 20150515 begin-->
+    <!-- 故障工单批量处理操作 add by weichao 20150515 begin-->
+    <batchDeal>
+        <!-- 批量接单，显示当前账号下未接单工单的SQL -->
+        <batachClaimSQL>
+            select main.*
+            from commonfault_task task, commonfault_main main
+            where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and
+            main.deleted&lt;&gt;'1' and main.status=0 and
+            task.id in (select t3.id from commonfault_task t3,commonfault_main m2
+            where taskstatus = '2' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and
+            t3.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m2.deleted &lt;&gt;'1' and taskowner =
+            '$userId$'
+            union all
+            select t3.id from commonfault_task t3, commonfault_main m2
+            where taskstatus = '2' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and
+            t3.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m2.deleted &lt;&gt;'1' and taskowner =
+            '$deptId$'
+            union all
+            select t3.id from commonfault_task t3, commonfault_main m2, taw_system_userrefrole r
+            where taskstatus = '2' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and
+            t3.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m2.status=0 and m2.deleted &lt;&gt;'1' and
+            r.subRoleid = t3.taskowner and r.userid='$userId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1
+            where t1.ifwaitforsubtask = 'true' and t1.taskstatus='2' and t1.id = t2.parenttaskid and
+            t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and m1.status = 0 and
+            t1.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m1.deleted &lt;&gt; '1' and
+            t1.taskowner='$userId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1
+            where t1.ifwaitforsubtask = 'true' and t1.taskstatus ='2' and t1.id = t2.parenttaskid and
+            t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and
+            t1.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m1.status = 0 and m1.deleted &lt;&gt; '1'
+            and t1.taskowner='$deptId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r
+            where t1.ifwaitforsubtask = 'true' and t2.taskstatus ='2' and
+            t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and
+            t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and
+            t1.taskName in ('FirstExcuteHumTask','SecondExcuteHumTask') and m1.deleted &lt;&gt; '1' and r.userid =
+            '$userId$')
+            order by
+            task.createTime desc
+        </batachClaimSQL>
+        <batachClaimSize>20</batachClaimSize><!-- 批量接单，最大接单数 -->
+        <!-- T1已接单的工单列表 add by weichao 20150527 begin -->
+        <T1CombineSQL>
+            select main.*
+            from commonfault_task task, commonfault_main main
+            where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and
+            main.deleted='0' and main.status=0 and (main.mainIfCombine='combine' or main.mainifcombine is null) and
+            task.id in (select t3.id from commonfault_task t3,commonfault_main m2
+            where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and
+            t3.taskName='FirstExcuteHumTask' and m2.deleted ='0' and taskowner = '$userId$'
+            union all
+            select t3.id from commonfault_task t3, commonfault_main m2
+            where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and
+            t3.taskName='FirstExcuteHumTask' and m2.deleted ='0' and taskowner = '$deptId$'
+            union all
+            select t3.id from commonfault_task t3, commonfault_main m2, taw_system_userrefrole r
+            where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and
+            t3.taskName='FirstExcuteHumTask' and m2.status=0 and m2.deleted ='0' and r.subRoleid = t3.taskowner and
+            r.userid='$userId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1
+            where t1.ifwaitforsubtask = 'true' and t1.taskstatus='8' and t1.id = t2.parenttaskid and
+            t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and m1.status = 0 and
+            t1.taskName='FirstExcuteHumTask' and m1.deleted ='0' and t1.taskowner='$userId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1
+            where t1.ifwaitforsubtask = 'true' and t1.taskstatus ='8' and t1.id = t2.parenttaskid and
+            t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and
+            t1.taskName='FirstExcuteHumTask' and m1.status = 0 and m1.deleted ='0' and t1.taskowner='$deptId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r
+            where t1.ifwaitforsubtask = 'true' and t2.taskstatus ='8' and
+            t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and
+            t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and
+            t1.taskName='FirstExcuteHumTask' and m1.deleted ='0' and r.userid = '$userId$')
+            order by
+            task.createTime desc
+        </T1CombineSQL>
+        <T1CombineSQLSize>5</T1CombineSQLSize>
+        <!-- T1已接单的工单列表 add by weichao 20150527 end -->
+        <!-- add by weichao 20150527 -->
+        <level>
+            <t101030401>3</t101030401>
+            <t101030402>2</t101030402>
+            <t101030403>1</t101030403>
+            <t101030404>1</t101030404>
+            <t101030405>1</t101030405>
+            <t101030406>1</t101030406>
+            <t101030407>2</t101030407>
+            <t101030408>1</t101030408>
+            <t101030409>1</t101030409>
+            <t101030410>3</t101030410>
+            <t101030411>2</t101030411>
+        </level>
+        <!-- T2已接单的工单列表 add by weichao 20150601 begin -->
+        <T2CombineSQL>
+            select main.*
+            from commonfault_task task, commonfault_main main
+            where main.id = task.sheetkey and task.taskDisplayName&lt;&gt;'草稿' and
+            main.deleted='0' and main.status=0 and (main.mainIfCombine='combine' or main.mainifcombine is null) and
+            main.mainAlarmSolveDate is not null and
+            task.id in (select t3.id from commonfault_task t3,commonfault_main m2
+            where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and
+            t3.taskName='SecondExcuteHumTask' and m2.deleted ='0' and taskowner = '$userId$'
+            union all
+            select t3.id from commonfault_task t3, commonfault_main m2
+            where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and m2.status=0 and
+            t3.taskName='SecondExcuteHumTask' and m2.deleted ='0' and taskowner = '$deptId$'
+            union all
+            select t3.id from commonfault_task t3, commonfault_main m2, taw_system_userrefrole r
+            where taskstatus = '8' and ifwaitforsubtask = 'false' and t3.sheetkey = m2.id and
+            t3.taskName='SecondExcuteHumTask' and m2.status=0 and m2.deleted ='0' and r.subRoleid = t3.taskowner and
+            r.userid='$userId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1
+            where t1.ifwaitforsubtask = 'true' and t1.taskstatus='8' and t1.id = t2.parenttaskid and
+            t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and m1.status = 0 and
+            t1.taskName='SecondExcuteHumTask' and m1.deleted ='0' and t1.taskowner='$userId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1
+            where t1.ifwaitforsubtask = 'true' and t1.taskstatus ='8' and t1.id = t2.parenttaskid and
+            t2.taskstatus = 5 and t2.subtaskdealfalg IS NULL and t1.sheetkey = m1.id and
+            t1.taskName='SecondExcuteHumTask' and m1.status = 0 and m1.deleted ='0' and t1.taskowner='$deptId$'
+            union all
+            select t1.id from commonfault_task t1, commonfault_task t2, commonfault_main m1, taw_system_userrefrole r
+            where t1.ifwaitforsubtask = 'true' and t2.taskstatus ='8' and
+            t1.id = t2.parenttaskid and t2.taskstatus = 5 and t2.subtaskdealfalg is null and
+            t1.sheetkey = m1.id and t1.taskowner=r.subRoleid and m1.status = 0 and
+            t1.taskName='SecondExcuteHumTask' and m1.deleted ='0' and r.userid = '$userId$')
+            order by
+            task.createTime desc
+        </T2CombineSQL>
+        <T2CombineSQLSize>5</T2CombineSQLSize>
+        <!-- T2已接单的工单列表 add by weichao 20150601 end -->
 
-	<!-- add by chenzhinian 2017-11-04 begin 配置传输网自动归档的操作信息 -->
-		<ptnAutoHoldUserId>alarm</ptnAutoHoldUserId><!-- 用户userId -->
-		<ptnAutoHoldRoleId>8aa0813b1c6defcc011c6e611ae80017</ptnAutoHoldRoleId><!-- 子角色 -->
-	<!-- add by chenzhinian 2017-11-04 end 配置传输网自动归档的操作信息 -->
+    </batchDeal>
+    <!-- 故障工单批量处理操作 add by weichao 20150515 begin-->
 
-	 <mainNetSortOne>
-    101010405
+    <!-- add by chenzhinian 2017-11-04 begin 配置传输网自动归档的操作信息 -->
+    <ptnAutoHoldUserId>alarm</ptnAutoHoldUserId><!-- 用户userId -->
+    <ptnAutoHoldRoleId>8aa0813b1c6defcc011c6e611ae80017</ptnAutoHoldRoleId><!-- 子角色 -->
+    <!-- add by chenzhinian 2017-11-04 end 配置传输网自动归档的操作信息 -->
+
+    <mainNetSortOne>
+        101010405
     </mainNetSortOne>
     <isCommonfaultAlarmInfoContainsAlarmId>
-    select * from Commonfault_AlarmInfo where alarmId='@alarmId@'
+        select * from Commonfault_AlarmInfo where alarmId='@alarmId@'
     </isCommonfaultAlarmInfoContainsAlarmId>
-<getSubRoleIdByTowerId>
-    select w.ttroleid as subRoleId,w.ccobject as copyPerformer 
-from TowerId_netname t,commonfault_net_team_wx w where t.towerId = '@towerId@' AND t.netname=w.netname
+    <getSubRoleIdByTowerId>
+        select w.ttroleid as subRoleId,w.ccobject as copyPerformer
+        from TowerId_netname t,commonfault_net_team_wx w where t.towerId = '@towerId@' AND t.netname=w.netname
     </getSubRoleIdByTowerId>
-<autoArchive>
-		<sheetIdTwo>11,21,31</sheetIdTwo><!--  工单尾号 以逗号隔开-->
-		<archiveUserId>zdgd</archiveUserId><!-- 手工助手 帐号 -->
-		<archiveRoleId>8aa0813b1c6defcc011c6e611ae80017</archiveRoleId><!-- 手工助手 角色 -->
-	</autoArchive>
+    <autoArchive>
+        <sheetIdTwo>11,21,31</sheetIdTwo><!--  工单尾号 以逗号隔开-->
+        <archiveUserId>zdgd</archiveUserId><!-- 手工助手 帐号 -->
+        <archiveRoleId>8aa0813b1c6defcc011c6e611ae80017</archiveRoleId><!-- 手工助手 角色 -->
+    </autoArchive>
 </boco>
 

@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2001 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2001 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -63,14 +63,13 @@ package com.boco.eoms.km.core.crimson.tree;
  * the name ElementNode is maintained for backwards compatibility with
  * element factories which may subclass using this name.
  */
-public class ElementNode extends ElementNode2
-{
+public class ElementNode extends ElementNode2 {
     /**
      * Partially constructs an element; its tag will be assigned by the
      * element factory (or subclass), while attributes and the parent (and
      * implicitly, siblings) will be assigned when it is joined to a DOM
      * document.
-     *
+     * <p>
      * Element factories are deprecated.  For backwards compatibility only.
      */
     public ElementNode() {
@@ -102,7 +101,7 @@ public class ElementNode extends ElementNode2
     /**
      * Assigns the element's name, when the element has been
      * constructed using the default constructor.  For use by
-     * element factories potentially by custom subclasses. 
+     * element factories potentially by custom subclasses.
      *
      * @deprecated Element factories are deprecated.  For backwards
      * compatibility only.

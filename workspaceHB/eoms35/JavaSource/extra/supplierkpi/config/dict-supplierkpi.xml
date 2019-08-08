@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="GBK"?>
 <dicts description="供应商评估字典项">
-	<dict id="dataSource" description="数据来源">
-		<item id="106010101" name="手动" description="手动" />
-		<item id="106010102" name="自动" description="自动" />
-	</dict>
-	<dict id="dataType" description="数据类型">
-		<item id="106010201" name="数字" description="数字" />
-		<item id="106010202" name="百分率" description="百分率" />
-		<item id="106010203" name="文字" description="文字" />
-	</dict>
-	<dict id="statictsCycle" description="统计周期">
-		<item id="106010301" name="月" description="月" />
-		<item id="106010302" name="季度" description="季度" />
-		<item id="106010303" name="年" description="年" />
-	</dict>
-	<dict id="writeManner" description="填写方式">
-		<item id="106010401" name="手动" description="手动" />
-		<item id="106010402" name="自动" description="自动" />
-	</dict>
-	<dict id="unit" description="单位">
-		<item id="106010501" name="小时" description="小时" />
-		<item id="106010502" name="百分比" description="百分比" />
-	</dict>
-	<dict id="assessMoment" description="评估阶段">
-		<item id="106010601" name="售前" description="售前" />
-		<item id="106010602" name="售中" description="售中" />
-		<item id="106010603" name="售后" description="售后" />
-	</dict>
-	<dict id="reportType" description="报表类型">
-		<item id="106010701" name="横向报表" description="横向报表" />
-		<item id="106010702" name="纵向报表" description="纵向报表" />
-	</dict>
-	<dict id="isImpersonality" description="是否主观评价">
-		<item id="1030101" name="是" description="是" />
-		<item id="1030102" name="否" description="否" />
-	</dict>
-	<dict id="degree" description="满意度">
-		<item id="1030301" name="很满意" description="很满意" />
-		<item id="1030302" name="满意" description="满意" />
-		<item id="1030303" name="一般" description="一般" />
-		<item id="1030304" name="不满意" description="不满意" />
-		<item id="1030305" name="很不满意" description="很不满意" />
-	</dict>
+    <dict id="dataSource" description="数据来源">
+        <item id="106010101" name="手动" description="手动"/>
+        <item id="106010102" name="自动" description="自动"/>
+    </dict>
+    <dict id="dataType" description="数据类型">
+        <item id="106010201" name="数字" description="数字"/>
+        <item id="106010202" name="百分率" description="百分率"/>
+        <item id="106010203" name="文字" description="文字"/>
+    </dict>
+    <dict id="statictsCycle" description="统计周期">
+        <item id="106010301" name="月" description="月"/>
+        <item id="106010302" name="季度" description="季度"/>
+        <item id="106010303" name="年" description="年"/>
+    </dict>
+    <dict id="writeManner" description="填写方式">
+        <item id="106010401" name="手动" description="手动"/>
+        <item id="106010402" name="自动" description="自动"/>
+    </dict>
+    <dict id="unit" description="单位">
+        <item id="106010501" name="小时" description="小时"/>
+        <item id="106010502" name="百分比" description="百分比"/>
+    </dict>
+    <dict id="assessMoment" description="评估阶段">
+        <item id="106010601" name="售前" description="售前"/>
+        <item id="106010602" name="售中" description="售中"/>
+        <item id="106010603" name="售后" description="售后"/>
+    </dict>
+    <dict id="reportType" description="报表类型">
+        <item id="106010701" name="横向报表" description="横向报表"/>
+        <item id="106010702" name="纵向报表" description="纵向报表"/>
+    </dict>
+    <dict id="isImpersonality" description="是否主观评价">
+        <item id="1030101" name="是" description="是"/>
+        <item id="1030102" name="否" description="否"/>
+    </dict>
+    <dict id="degree" description="满意度">
+        <item id="1030301" name="很满意" description="很满意"/>
+        <item id="1030302" name="满意" description="满意"/>
+        <item id="1030303" name="一般" description="一般"/>
+        <item id="1030304" name="不满意" description="不满意"/>
+        <item id="1030305" name="很不满意" description="很不满意"/>
+    </dict>
 </dicts>
 
 

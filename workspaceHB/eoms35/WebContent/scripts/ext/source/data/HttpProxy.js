@@ -23,7 +23,7 @@
  * an {@link Ext.data.Connection} object.  If a Connection config is passed, the singleton {@link Ext.Ajax} object
  * will be used to make the request.
  */
-Ext.data.HttpProxy = function(conn){
+Ext.data.HttpProxy = function (conn) {
     Ext.data.HttpProxy.superclass.constructor.call(this);
     // is conn a conn config or a real conn?
     this.conn = conn;
@@ -36,7 +36,7 @@ Ext.extend(Ext.data.HttpProxy, Ext.data.DataProxy, {
      * @return {Connection} The Connection object. This object may be used to subscribe to events on
      * a finer-grained basis than the DataProxy events.
      */
-    getConnection : function(){
+    getConnection: function () {
         return this.useAjax ? Ext.Ajax : this.conn;
     },
 
@@ -57,37 +57,37 @@ Ext.extend(Ext.data.HttpProxy, Ext.data.DataProxy, {
      * @param {Object} scope The scope in which to call the callback
      * @param {Object} arg An optional argument which is passed to the callback as its second parameter.
      */
-    load : function(params, reader, callback, scope, arg){
-        if(this.fireEvent("beforeload", this, params) !== false){
-            var  o = {
-                params : params || {},
+    load: function (params, reader, callback, scope, arg) {
+        if (this.fireEvent("beforeload", this, params) !== false) {
+            var o = {
+                params: params || {},
                 request: {
-                    callback : callback,
-                    scope : scope,
-                    arg : arg
+                    callback: callback,
+                    scope: scope,
+                    arg: arg
                 },
                 reader: reader,
-                callback : this.loadResponse,
+                callback: this.loadResponse,
                 scope: this
             };
-            if(this.useAjax){
+            if (this.useAjax) {
                 Ext.applyIf(o, this.conn);
-                if(this.activeRequest){
+                if (this.activeRequest) {
                     Ext.Ajax.abort(this.activeRequest);
                 }
                 this.activeRequest = Ext.Ajax.request(o);
-            }else{
+            } else {
                 this.conn.request(o);
             }
-        }else{
-            callback.call(scope||this, null, arg, false);
+        } else {
+            callback.call(scope || this, null, arg, false);
         }
     },
 
     // private
-    loadResponse : function(o, success, response){
+    loadResponse: function (o, success, response) {
         delete this.activeRequest;
-        if(!success){
+        if (!success) {
             this.fireEvent("loadexception", this, o, response);
             o.request.callback.call(o.request.scope, null, o.request.arg, false);
             return;
@@ -95,7 +95,7 @@ Ext.extend(Ext.data.HttpProxy, Ext.data.DataProxy, {
         var result;
         try {
             result = o.reader.read(response);
-        }catch(e){
+        } catch (e) {
             this.fireEvent("loadexception", this, o, response, e);
             o.request.callback.call(o.request.scope, null, o.request.arg, false);
             return;
@@ -105,12 +105,12 @@ Ext.extend(Ext.data.HttpProxy, Ext.data.DataProxy, {
     },
 
     // private
-    update : function(dataSet){
+    update: function (dataSet) {
 
     },
 
     // private
-    updateResponse : function(dataSet){
+    updateResponse: function (dataSet) {
 
     }
 });

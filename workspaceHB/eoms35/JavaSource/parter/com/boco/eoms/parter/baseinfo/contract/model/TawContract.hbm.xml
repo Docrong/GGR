@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,41 +13,31 @@
             table="pnr_contract"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="contractName"
-            	column="contractName"
+        <property
+                name="contractName"
+                column="contractName"
                 length="128"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-<property
-            name="creatorName"
-            	column="creatorName"
-                length="128"
-                not-null="true"
-                unique="false"
-        >
-
-        </property>
-
-	<property
-            name="name_A"
-            	column="name_A"
+        <property
+                name="creatorName"
+                column="creatorName"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -55,9 +45,9 @@
 
         </property>
 
-	<property
-            name="name_B"
-            	column="name_B"
+        <property
+                name="name_A"
+                column="name_A"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -65,9 +55,9 @@
 
         </property>
 
-	<property
-            name="maintenanceRange"
-            	column="maintenanceRange"
+        <property
+                name="name_B"
+                column="name_B"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -75,9 +65,19 @@
 
         </property>
 
-	<property
-            name="right_A"
-            	column="right_A"
+        <property
+                name="maintenanceRange"
+                column="maintenanceRange"
+                length="128"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="right_A"
+                column="right_A"
                 length="255"
                 not-null="true"
                 unique="false"
@@ -85,9 +85,9 @@
 
         </property>
 
-	<property
-            name="right_B"
-            	column="right_B"
+        <property
+                name="right_B"
+                column="right_B"
                 length="255"
                 not-null="true"
                 unique="false"
@@ -95,9 +95,9 @@
 
         </property>
 
-	<property
-            name="cost"
-            	column="cost"
+        <property
+                name="cost"
+                column="cost"
                 length="16"
                 not-null="true"
                 unique="false"
@@ -105,9 +105,9 @@
 
         </property>
 
-	<property
-            name="interface_A"
-            	column="interface_A"
+        <property
+                name="interface_A"
+                column="interface_A"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -115,9 +115,9 @@
 
         </property>
 
-	<property
-            name="contact_A"
-            	column="contact_A"
+        <property
+                name="contact_A"
+                column="contact_A"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -125,9 +125,9 @@
 
         </property>
 
-	<property
-            name="interface_B"
-            	column="interface_B"
+        <property
+                name="interface_B"
+                column="interface_B"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -135,9 +135,9 @@
 
         </property>
 
-	<property
-            name="contact_B"
-            	column="contact_B"
+        <property
+                name="contact_B"
+                column="contact_B"
                 length="128"
                 not-null="false"
                 unique="false"
@@ -145,9 +145,9 @@
 
         </property>
 
-	<property
-            name="qualityCheck"
-            	column="qualityCheck"
+        <property
+                name="qualityCheck"
+                column="qualityCheck"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -155,9 +155,9 @@
 
         </property>
 
-	<property
-            name="qualityChangeDeal"
-            	column="qualityChangeDeal"
+        <property
+                name="qualityChangeDeal"
+                column="qualityChangeDeal"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -165,9 +165,9 @@
 
         </property>
 
-	<property
-            name="payType"
-            	column="payType"
+        <property
+                name="payType"
+                column="payType"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -175,9 +175,9 @@
 
         </property>
 
-	<property
-            name="payCycle"
-            	column="payCycle"
+        <property
+                name="payCycle"
+                column="payCycle"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -185,9 +185,9 @@
 
         </property>
 
-	<property
-            name="secret"
-            	column="secret"
+        <property
+                name="secret"
+                column="secret"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -195,9 +195,9 @@
 
         </property>
 
-	<property
-            name="stopCondition"
-            	column="stopCondition"
+        <property
+                name="stopCondition"
+                column="stopCondition"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -205,9 +205,9 @@
 
         </property>
 
-	<property
-            name="breachFaith"
-            	column="breachFaith"
+        <property
+                name="breachFaith"
+                column="breachFaith"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -215,9 +215,9 @@
 
         </property>
 
-	<property
-            name="beyond"
-            	column="beyond"
+        <property
+                name="beyond"
+                column="beyond"
                 length="255"
                 not-null="true"
                 unique="false"
@@ -225,9 +225,9 @@
 
         </property>
 
-	<property
-            name="timeLimit"
-            	column="timeLimit"
+        <property
+                name="timeLimit"
+                column="timeLimit"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -235,9 +235,9 @@
 
         </property>
 
-	<property
-            name="solve"
-            	column="solve"
+        <property
+                name="solve"
+                column="solve"
                 length="255"
                 not-null="true"
                 unique="false"
@@ -245,9 +245,9 @@
 
         </property>
 
-	<property
-            name="add_ons"
-            	column="add_ons"
+        <property
+                name="add_ons"
+                column="add_ons"
                 length="255"
                 not-null="true"
                 unique="false"
@@ -255,9 +255,9 @@
 
         </property>
 
-	<property
-            name="createTime"
-            	column="createTime"
+        <property
+                name="createTime"
+                column="createTime"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -265,9 +265,9 @@
 
         </property>
 
-	<property
-            name="creator"
-            	column="creator"
+        <property
+                name="creator"
+                column="creator"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -275,9 +275,9 @@
 
         </property>
 
-	<property
-            name="payed"
-            	column="payed"
+        <property
+                name="payed"
+                column="payed"
                 length="128"
                 not-null="true"
                 unique="false"
@@ -285,17 +285,17 @@
 
         </property>
 
-	<property
-            name="accessory"
-            	column="accessory"
+        <property
+                name="accessory"
+                column="accessory"
                 length="128"
                 unique="false"
         >
 
         </property>
 
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

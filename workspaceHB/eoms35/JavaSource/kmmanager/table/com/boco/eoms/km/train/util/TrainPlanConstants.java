@@ -10,15 +10,14 @@ package com.boco.eoms.km.train.util;
  * <p>
  * Fri Jul 10 10:50:46 CST 2009
  * </p>
- * 
+ *
  * @author lvweihua
  * @version 1.0
- * 
  */
 public class TrainPlanConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String TRAINPLAN_LIST = "trainPlanList";
+
+    /**
+     * list key
+     */
+    public final static String TRAINPLAN_LIST = "trainPlanList";
 }

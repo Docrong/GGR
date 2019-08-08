@@ -12,12 +12,12 @@ import java.util.List;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.0
  */
 
-public class TawOrderForm extends BaseForm implements java.io.Serializable
-{
+public class TawOrderForm extends BaseForm implements java.io.Serializable {
 
     private int id;
     private String operater;
@@ -49,258 +49,239 @@ public class TawOrderForm extends BaseForm implements java.io.Serializable
     private String sparepart_id;//����ID
     private int partType;
 
-    
 
-  private String newserialno;
-  public String getStorageid()
-    {
+    private String newserialno;
+
+    public String getStorageid() {
         return storageid;
     }
 
-    public void setStorageid(String storageid)
-    {
-        this.storageid=storageid;
+    public void setStorageid(String storageid) {
+        this.storageid = storageid;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getState()
-    {
+    public String getState() {
         return state;
     }
 
-    public void setState(String state)
-    {
-        this.state=state;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public String getOrderType()
-    {
+    public String getOrderType() {
         return orderType;
     }
 
-    public void setOrderType(String orderType)
-    {
+    public void setOrderType(String orderType) {
         this.orderType = orderType;
     }
 
-    public String getOperater()
-    {
+    public String getOperater() {
         return operater;
     }
 
-    public void setOperater(String operater)
-    {
-        this.operater=operater;
+    public void setOperater(String operater) {
+        this.operater = operater;
     }
 
-    public String getProposer()
-    {
+    public String getProposer() {
         return proposer;
     }
 
-    public void setProposer(String proposer)
-    {
-        this.proposer=proposer;
+    public void setProposer(String proposer) {
+        this.proposer = proposer;
     }
 
-    public String getProp_dept()
-    {
+    public String getProp_dept() {
         return prop_dept;
     }
 
-    public void setProp_dept(String prop_dept)
-    {
-        this.prop_dept=prop_dept;
+    public void setProp_dept(String prop_dept) {
+        this.prop_dept = prop_dept;
     }
 
-    public String getProp_tel()
-    {
+    public String getProp_tel() {
         return prop_tel;
     }
 
-    public void setProp_tel(String prop_tel)
-    {
-        this.prop_tel=prop_tel;
+    public void setProp_tel(String prop_tel) {
+        this.prop_tel = prop_tel;
     }
 
-    public String getStartdate()
-    {
+    public String getStartdate() {
         return startdate;
     }
 
-    public void setStartdate(String startdate)
-    {
-        this.startdate=startdate;
+    public void setStartdate(String startdate) {
+        this.startdate = startdate;
     }
 
-    public String getOverdate()
-    {
+    public String getOverdate() {
         return overdate;
     }
 
-    public void setOverdate(String overdate)
-    {
-        this.overdate=overdate;
+    public void setOverdate(String overdate) {
+        this.overdate = overdate;
     }
 
-    public String getNote()
-    {
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note)
-    {
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
+
     public String getOrderId() {
         return orderId;
     }
+
     public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
+
     public FormFile getTheFile() {
-      return theFile;
+        return theFile;
     }
 
-  public String getSheetid() {
-    return sheetid;
-  }
-
-  public String getOvergay() {
-    return overgay;
-  }
-
-  public List getSpList() {
-    return spList;
-  }
-
-  public String getDestStorageId() {
-    return destStorageId;
-  }
-
-  public String getNewserialno() {
-    return newserialno;
-  }
-
-  public void setTheFile(FormFile theFile) {
-      this.theFile = theFile;
+    public String getSheetid() {
+        return sheetid;
     }
 
-  public void setSheetid(String sheetid) {
-    this.sheetid = sheetid;
-  }
+    public String getOvergay() {
+        return overgay;
+    }
 
-  public void setOvergay(String overgay) {
-    this.overgay = overgay;
-  }
+    public List getSpList() {
+        return spList;
+    }
 
-  public void setSpList(List spList) {
-    this.spList = spList;
-  }
+    public String getDestStorageId() {
+        return destStorageId;
+    }
 
-  public void setDestStorageId(String destStorageId) {
-    this.destStorageId = destStorageId;
-  }
+    public String getNewserialno() {
+        return newserialno;
+    }
 
-  public void setNewserialno(String newserialno) {
-    this.newserialno = newserialno;
-  }
+    public void setTheFile(FormFile theFile) {
+        this.theFile = theFile;
+    }
 
-public String getEname() {
-	return ename;
-}
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
 
-public void setEname(String ename) {
-	this.ename = ename;
-}
+    public void setOvergay(String overgay) {
+        this.overgay = overgay;
+    }
 
-public String getFixe() {
-	return fixe;
-}
+    public void setSpList(List spList) {
+        this.spList = spList;
+    }
 
-public void setFixe(String fixe) {
-	this.fixe = fixe;
-}
+    public void setDestStorageId(String destStorageId) {
+        this.destStorageId = destStorageId;
+    }
 
-public String getObjtype() {
-	return objtype;
-}
+    public void setNewserialno(String newserialno) {
+        this.newserialno = newserialno;
+    }
 
-public void setObjtype(String objtype) {
-	this.objtype = objtype;
-}
+    public String getEname() {
+        return ename;
+    }
 
-public String getReason() {
-	return reason;
-}
+    public void setEname(String ename) {
+        this.ename = ename;
+    }
 
-public void setReason(String reason) {
-	this.reason = reason;
-}
+    public String getFixe() {
+        return fixe;
+    }
 
-public String getSerialno() {
-	return serialno;
-}
+    public void setFixe(String fixe) {
+        this.fixe = fixe;
+    }
 
-public void setSerialno(String serialno) {
-	this.serialno = serialno;
-}
+    public String getObjtype() {
+        return objtype;
+    }
 
-public String getStation() {
-	return station;
-}
+    public void setObjtype(String objtype) {
+        this.objtype = objtype;
+    }
 
-public void setStation(String station) {
-	this.station = station;
-}
+    public String getReason() {
+        return reason;
+    }
 
-public String getVersion() {
-	return version;
-}
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
-public void setVersion(String version) {
-	this.version = version;
-}
+    public String getSerialno() {
+        return serialno;
+    }
 
-public String getSparepart_id() {
-	return sparepart_id;
-}
+    public void setSerialno(String serialno) {
+        this.serialno = serialno;
+    }
 
-public void setSparepart_id(String sparepart_id) {
-	this.sparepart_id = sparepart_id;
-}
+    public String getStation() {
+        return station;
+    }
 
-public String getOperaterId() {
-	return operaterId;
-}
+    public void setStation(String station) {
+        this.station = station;
+    }
 
-public void setOperaterId(String operaterId) {
-	this.operaterId = operaterId;
-}
+    public String getVersion() {
+        return version;
+    }
 
-public String getProposerId() {
-	return proposerId;
-}
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
-public void setProposerId(String proposerId) {
-	this.proposerId = proposerId;
-}
+    public String getSparepart_id() {
+        return sparepart_id;
+    }
 
-public int getPartType() {
-	return partType;
-}
+    public void setSparepart_id(String sparepart_id) {
+        this.sparepart_id = sparepart_id;
+    }
 
-public void setPartType(int partType) {
-	this.partType = partType;
-}
+    public String getOperaterId() {
+        return operaterId;
+    }
+
+    public void setOperaterId(String operaterId) {
+        this.operaterId = operaterId;
+    }
+
+    public String getProposerId() {
+        return proposerId;
+    }
+
+    public void setProposerId(String proposerId) {
+        this.proposerId = proposerId;
+    }
+
+    public int getPartType() {
+        return partType;
+    }
+
+    public void setPartType(int partType) {
+        this.partType = partType;
+    }
 
 }

@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.ITaskService;
  * <p>
  * Mon Sep 29 11:24:17 CST 2014
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICommonfaultCorrigendumTaskManager extends ITaskService {
- 
- }
+
+public interface ICommonfaultCorrigendumTaskManager extends ITaskService {
+
+}

@@ -1,86 +1,86 @@
-<?xml version="1.0" encoding="UTF-8"?>  
-<beans xmlns="http://www.springframework.org/schema/beans"  
-    xmlns:context="http://www.springframework.org/schema/context"  
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-    xsi:schemaLocation="  
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
         http://www.springframework.org/schema/beans       
         http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
         http://www.springframework.org/schema/context  
-        http://www.springframework.org/schema/context/spring-context-3.2.xsd">  
-  
-<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">     
-    <property name="driverClassName">     
-        <value>oracle.jdbc.driver.OracleDriver</value>     
-    </property>     
-    <property name="url">                
-        <value>jdbc:oracle:thin:@172.16.100.7:1521:orcl</value>     
-     </property>     
-    <property name="username">     
-        <value>riskcontrol</value>     
-    </property>     
-    <property name="password">     
-        <value>riskcontrol</value>     
-    </property>     
-</bean> 
- 
- 
-	<!-- Hibernate SessionFactory -->
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="hibernateProperties">
-			<props>
-				<!-- oracle -->
-				
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.OracleDialect
-				</prop>
-				
-				<!-- Informix	 
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.InformixDialect
-					</prop>
-				-->
-					
-				
-				<!--
-					<prop key="hibernate.connection.provider_class">  
-					org.hibernate.connection.C3P0ConnectionProvider  
-					</prop>
-				 -->
-				<prop key="hibernate.query.substitutions">
-					true 'Y', false 'N'
-				</prop>
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-				<prop key="hibernate.cache.provider_class">
-					org.hibernate.cache.EhCacheProvider
-				</prop>
-				<prop key="hibernate.cache.use_query_cache">true</prop>
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName">
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:oracle:thin:@172.16.100.7:1521:orcl</value>
+        </property>
+        <property name="username">
+            <value>riskcontrol</value>
+        </property>
+        <property name="password">
+            <value>riskcontrol</value>
+        </property>
+    </bean>
 
-				<!-- Create/update the database tables automatically when the JVM starts up
-					<prop key="hibernate.hbm2ddl.auto">update</prop> -->
-				<!--Turn batching off for better error messages under PostgreSQL--> 
-					<prop key="hibernate.jdbc.batch_size">0</prop>
-			</props>
-			</property>
-		<property name="configLocations">
-			<list>
-				<!-- 加入hibernate 配置文件 -->
-				<value>classpath:com/boco/gr/config/hibernate-partner-riskControl.xml</value>
-				</list>
-			</property>
-	</bean>
-    <!-- 设置HibernateDaoSupport抽象类-->  
-    <bean id="hibernateDaoSupport"  
-        class="org.springframework.orm.hibernate3.support.HibernateDaoSupport"  
-        abstract="true">  
-        <property name="sessionFactory" ref="sessionFactory" />  
-    </bean>  
 
-  	<bean id="riskControlDao"
-		class="com.boco.gr.dao.hibernate.RiskControlDaoHibernate" autowire="byName" >
-		<property name="sessionFactory" ref="sessionFactory"></property>
-		</bean>
-  
-      
+    <!-- Hibernate SessionFactory -->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <!-- oracle -->
+
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.OracleDialect
+                </prop>
+
+                <!-- Informix
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.InformixDialect
+                    </prop>
+                -->
+
+
+                <!--
+                    <prop key="hibernate.connection.provider_class">
+                    org.hibernate.connection.C3P0ConnectionProvider
+                    </prop>
+                 -->
+                <prop key="hibernate.query.substitutions">
+                    true 'Y', false 'N'
+                </prop>
+
+                <prop key="hibernate.cache.provider_class">
+                    org.hibernate.cache.EhCacheProvider
+                </prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+
+                <!-- Create/update the database tables automatically when the JVM starts up
+                    <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+                <!--Turn batching off for better error messages under PostgreSQL-->
+                <prop key="hibernate.jdbc.batch_size">0</prop>
+            </props>
+        </property>
+        <property name="configLocations">
+            <list>
+                <!-- 加入hibernate 配置文件 -->
+                <value>classpath:com/boco/gr/config/hibernate-partner-riskControl.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 设置HibernateDaoSupport抽象类-->
+    <bean id="hibernateDaoSupport"
+          class="org.springframework.orm.hibernate3.support.HibernateDaoSupport"
+          abstract="true">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="riskControlDao"
+          class="com.boco.gr.dao.hibernate.RiskControlDaoHibernate" autowire="byName">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+
 </beans>

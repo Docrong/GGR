@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.circuitcontrol.service.ICircuitControlMainManager;
  * <p>
  * Sun Sep 29 16:51:15 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CircuitControlMainManagerImpl extends MainService implements ICircuitControlMainManager {
- 
- }
+
+public class CircuitControlMainManagerImpl extends MainService implements ICircuitControlMainManager {
+
+}

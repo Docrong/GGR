@@ -27,63 +27,62 @@ import com.boco.eoms.sheet.base.webapp.action.SheetAction;
  * <p>
  * Wed Nov 08 15:11:38 GMT+08:00 2017
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class GroupCheckAction extends SheetAction  {
- 	
- 	 /**
-	 * showDrawing
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showDrawing(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("draw");
-	}
-	
-	
-	/**
-	 * showPic
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showPic(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("pic");
-	}
-	
-	
-	/**
-	 * showKPI
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showKPI(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("kpi");
-	}
+
+public class GroupCheckAction extends SheetAction {
+
+    /**
+     * showDrawing
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showDrawing(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("draw");
+    }
+
+
+    /**
+     * showPic
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showPic(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("pic");
+    }
+
+
+    /**
+     * showKPI
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showKPI(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("kpi");
+    }
 //	
 //	/**
 //	 * showKPI
@@ -115,12 +114,9 @@ import com.boco.eoms.sheet.base.webapp.action.SheetAction;
 //		request.setAttribute("taskList", queryList);
 //		return mapping.findForward("guoupfound");
 //	}
-	
-	
-	
-	
- 
- }
+
+
+}
  
 
 

@@ -1,449 +1,403 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 
 
+        <!--
 
-<!--
+            DTD for the Validation Configuration File, Version 1.1
 
-    DTD for the Validation Configuration File, Version 1.1
 
 
+            To allow Struts to validate your validator.xml configuration files,
 
-    To allow Struts to validate your validator.xml configuration files,
+            include the following DOCTYPE element at the beginning (after the
 
-    include the following DOCTYPE element at the beginning (after the
+            "xml" declaration):
 
-    "xml" declaration):
 
 
+            <!DOCTYPE form-validation PUBLIC
 
-    <!DOCTYPE form-validation PUBLIC
+              "-//Apache Software Foundation//DTD Struts Validation Configuration 1.1//EN"
 
-      "-//Apache Software Foundation//DTD Struts Validation Configuration 1.1//EN"
+              "http://jakarta.apache.org/struts/dtds/validation_1_1.dtd">
 
-      "http://jakarta.apache.org/struts/dtds/validation_1_1.dtd">
 
 
+            $Id: validation_1_1.dtd,v 1.1 2002/09/06 14:55:45 javanovic Exp $
 
-    $Id: validation_1_1.dtd,v 1.1 2002/09/06 14:55:45 javanovic Exp $
+        -->
 
--->
 
+        <!--
 
+             The "form-validation" element is the root of the configuration file
 
+             hierarchy, and contains nested elements for all of the other
 
+             configuration settings.
 
-<!--
+        -->
 
-     The "form-validation" element is the root of the configuration file
+        <!ELEMENT form-validation (global*, formset+)>
 
-     hierarchy, and contains nested elements for all of the other
 
-     configuration settings.
+        <!--
 
--->
+            Global "constants" may be defined for use of other elements.
 
-<!ELEMENT form-validation (global*, formset+)>
+        -->
 
+        <!ELEMENT global (constant*)>
 
 
+        <!--
 
+             The "constant" element defines a static value that can be used as
 
-<!--
+             replacement parameters within "field" elements. The "constant-name" and
 
-    Global "constants" may be defined for use of other elements.
+             "constant-value" elements define the constant's reference id and
 
--->
+             replacement value.
 
-<!ELEMENT global (constant*)>
+        -->
 
+        <!ELEMENT constant (constant-name, constant-value)>
 
+        <!ELEMENT constant-name  (#PCDATA)>
 
+        <!ELEMENT constant-value (#PCDATA)>
 
 
-<!--
+        <!--
 
-     The "constant" element defines a static value that can be used as
+              The "formset" element defines a set of forms for a locale. Formsets for
 
-     replacement parameters within "field" elements. The "constant-name" and
+              specific locales can override only those fields that change. The
 
-     "constant-value" elements define the constant's reference id and
+              localization is properly scoped, so that a formset can override just the
 
-     replacement value.
+              language, or just the country, or both.
 
--->
+        -->
 
-<!ELEMENT constant (constant-name, constant-value)>
+        <!ELEMENT formset (constant*, form+)>
 
-<!ELEMENT constant-name  (#PCDATA)>
+        <!ATTLIST formset language     CDATA #IMPLIED
 
-<!ELEMENT constant-value (#PCDATA)>
+                country      CDATA #IMPLIED >
 
 
+        <!--
 
+             The "form" element defines a set of fields to be validated. The name
 
+             corresponds to the identifer the application assigns to the form. In the
 
-<!--
+             case of the Struts framework, this is the attribute property from
 
-      The "formset" element defines a set of forms for a locale. Formsets for
+             the ActionMapping. Struts also offers the alternative of using the
 
-      specific locales can override only those fields that change. The
+             the path property as the Validator form name.
 
-      localization is properly scoped, so that a formset can override just the
+        -->
 
-      language, or just the country, or both.
+        <!ELEMENT form    (field+ )>
 
--->
+        <!ATTLIST form    name CDATA #REQUIRED>
 
-<!ELEMENT formset (constant*, form+)>
 
-<!ATTLIST formset language     CDATA #IMPLIED
+        <!--
 
-                  country      CDATA #IMPLIED >
+             The "field" element defines the properties to be validated. In a
 
+             web application, a field would also correspond to a control on
 
+             a HTML form. To validate the properties, the validator works through
 
+             a JavaBean representation, like a Struts ActionForm. The field element
 
+             can accept up to 4 attributes:
 
-<!--
 
-     The "form" element defines a set of fields to be validated. The name
 
-     corresponds to the identifer the application assigns to the form. In the
+             property        The property on the JavaBean corresponding to this
 
-     case of the Struts framework, this is the attribute property from
+                             field element.
 
-     the ActionMapping. Struts also offers the alternative of using the
 
-     the path property as the Validator form name.
 
--->
+             depends         The comma-delimited list of validators to apply against
 
-<!ELEMENT form    (field+ )>
+                             this field. For the field to succeed, all the
 
-<!ATTLIST form    name CDATA #REQUIRED>
+                             validators must succeed.
 
 
 
+             page            The JavaBean corresponding to this form may include
 
+                             a page property. Only fields with a "page" attribute
 
-<!--
+                             value that is equal to or less than the page property
 
-     The "field" element defines the properties to be validated. In a
+                             on the form JavaBean are processed. This is useful when
 
-     web application, a field would also correspond to a control on
+                             using a "wizard" approach to completing a large form,
 
-     a HTML form. To validate the properties, the validator works through
+                             to ensure that a page is not skipped.
 
-     a JavaBean representation, like a Struts ActionForm. The field element
+                             [0]
 
-     can accept up to 4 attributes:
 
 
+             indexedListProperty
 
-     property        The property on the JavaBean corresponding to this
+                             The "indexedListProperty" is the method name that will
 
-                     field element.
+                             return an array or a Collection used to retrieve the
 
+                             list and then loop through the list performing the
 
+                             validations for this field.
 
-     depends         The comma-delimited list of validators to apply against
 
-                     this field. For the field to succeed, all the
 
-                     validators must succeed.
+             fieldOrder      [:FIXME: is this still supported?]
 
+        -->
 
+        <!ELEMENT field   (msg?, arg0?, arg1?, arg2?, arg3?, var* )>
 
-     page            The JavaBean corresponding to this form may include
+        <!ATTLIST field   property CDATA #REQUIRED
 
-                     a page property. Only fields with a "page" attribute
+                depends  CDATA #IMPLIED
 
-                     value that is equal to or less than the page property
+                page     CDATA #IMPLIED
 
-                     on the form JavaBean are processed. This is useful when
+                indexedListProperty CDATA #IMPLIED >
 
-                     using a "wizard" approach to completing a large form,
 
-                     to ensure that a page is not skipped.
+        <!--
 
-                     [0]
+             The "msg" element defines a custom message key to use when one of the
 
+             validators for this field fails. Each validator has a default message
 
+             property that is used when a corresonding field msg is not specified.
 
-     indexedListProperty
+             Each validator applied to a field may have its own msg element.
 
-                     The "indexedListProperty" is the method name that will
+             The msg element accepts up to three attributes.
 
-                     return an array or a Collection used to retrieve the
 
-                     list and then loop through the list performing the
 
-                     validations for this field.
+              name        The name of the validator corresponding to this msg.
 
 
 
-     fieldOrder      [:FIXME: is this still supported?]
+              key         The key that will return the message template from a
 
--->
+                          resource bundle.
 
-<!ELEMENT field   (msg?, arg0?, arg1?, arg2?, arg3?, var* )>
 
-<!ATTLIST field   property CDATA #REQUIRED
 
-                  depends  CDATA #IMPLIED
+              resource    If set to "false", the key is taken to be a literal
 
-                  page     CDATA #IMPLIED
+                          value rather than a bundle key.
 
-                  indexedListProperty CDATA #IMPLIED >
+                          [true]
 
+        -->
 
+        <!ELEMENT msg     EMPTY>
 
+        <!ATTLIST msg     name     CDATA #IMPLIED
 
+                key      CDATA #IMPLIED
 
-<!--
+                resource CDATA #IMPLIED >
 
-     The "msg" element defines a custom message key to use when one of the
 
-     validators for this field fails. Each validator has a default message
+        <!--
 
-     property that is used when a corresonding field msg is not specified.
+             The "arg0" element defines the first replacement value to use with the
 
-     Each validator applied to a field may have its own msg element.
+             message template for this validator or this field.
 
-     The msg element accepts up to three attributes.
+             The arg0 element accepts up to three attributes.
 
 
 
-      name        The name of the validator corresponding to this msg.
+              name        The name of the validator corresponding to this msg.
 
 
 
-      key         The key that will return the message template from a
+              key         The key that will return the message template from a
 
-                  resource bundle.
+                          resource bundle.
 
 
 
-      resource    If set to "false", the key is taken to be a literal
+              resource    If set to "false", the key is taken to be a literal
 
-                  value rather than a bundle key.
+                          value rather than a bundle key.
 
-                  [true]
+                          [true]
 
--->
+        -->
 
-<!ELEMENT msg     EMPTY>
+        <!ELEMENT arg0    EMPTY>
 
-<!ATTLIST msg     name     CDATA #IMPLIED
+        <!ATTLIST arg0    name     CDATA #IMPLIED
 
-                  key      CDATA #IMPLIED
+                key      CDATA #IMPLIED
 
-                  resource CDATA #IMPLIED >
+                resource CDATA #IMPLIED >
 
 
+        <!--
 
+             The "arg1" element defines the second replacement value to use with the
 
+             message template for this validator or this field.
 
-<!--
+             The arg1 element accepts up to three attributes.
 
-     The "arg0" element defines the first replacement value to use with the
 
-     message template for this validator or this field.
 
-     The arg0 element accepts up to three attributes.
+              name        The name of the validator corresponding to this msg.
 
 
 
-      name        The name of the validator corresponding to this msg.
+              key         The key that will return the message template from a
 
+                          resource bundle.
 
 
-      key         The key that will return the message template from a
 
-                  resource bundle.
+              resource    If set to "false", the key is taken to be a literal
 
+                          value rather than a bundle key.
 
+                          [true]
 
-      resource    If set to "false", the key is taken to be a literal
+        -->
 
-                  value rather than a bundle key.
+        <!ELEMENT arg1    EMPTY>
 
-                  [true]
+        <!ATTLIST arg1    name     CDATA #IMPLIED
 
--->
+                key      CDATA #IMPLIED
 
-<!ELEMENT arg0    EMPTY>
+                resource CDATA #IMPLIED >
 
-<!ATTLIST arg0    name     CDATA #IMPLIED
 
-                  key      CDATA #IMPLIED
+        <!--
 
-                  resource CDATA #IMPLIED >
+             The "arg2" element defines the third replacement value to use with the
 
+             message template for this validator or this field.
 
+             The arg2 element accepts up to three attributes.
 
 
 
-<!--
+              name        The name of the validator corresponding to this msg.
 
-     The "arg1" element defines the second replacement value to use with the
 
-     message template for this validator or this field.
 
-     The arg1 element accepts up to three attributes.
+              key         The key that will return the message template from a
 
+                          resource bundle.
 
 
-      name        The name of the validator corresponding to this msg.
 
+              resource    If set to "false", the key is taken to be a literal
 
+                          value rather than a bundle key.
 
-      key         The key that will return the message template from a
+                          [true]
 
-                  resource bundle.
+        -->
 
+        <!ELEMENT arg2    EMPTY>
 
+        <!ATTLIST arg2    name     CDATA #IMPLIED
 
-      resource    If set to "false", the key is taken to be a literal
+                key      CDATA #IMPLIED
 
-                  value rather than a bundle key.
+                resource CDATA #IMPLIED >
 
-                  [true]
 
--->
+        <!--
 
-<!ELEMENT arg1    EMPTY>
+             The "arg3" element defines the fourth replacement value to use with the
 
-<!ATTLIST arg1    name     CDATA #IMPLIED
+             message template for this validator or this field.
 
-                  key      CDATA #IMPLIED
+             The arg0 element accepts up to three attributes.
 
-                  resource CDATA #IMPLIED >
 
 
+              name        The name of the validator corresponding to this msg.
 
 
 
-<!--
+              key         The key that will return the message template from a
 
-     The "arg2" element defines the third replacement value to use with the
+                          resource bundle.
 
-     message template for this validator or this field.
 
-     The arg2 element accepts up to three attributes.
 
+              resource    If set to "false", the key is taken to be a literal
 
+                          value rather than a bundle key.
 
-      name        The name of the validator corresponding to this msg.
+                          [true]
 
+        -->
 
+        <!ELEMENT arg3    EMPTY>
 
-      key         The key that will return the message template from a
+        <!ATTLIST arg3    name     CDATA #IMPLIED
 
-                  resource bundle.
+                key      CDATA #IMPLIED
 
+                resource CDATA #IMPLIED >
 
 
-      resource    If set to "false", the key is taken to be a literal
+        <!--
 
-                  value rather than a bundle key.
+             The "var" element can set parameters that a field may need to pass to
 
-                  [true]
+             one of its validators, such as the minimum and maximum values in a
 
--->
+             range validation. These parameters may also be referenced by one of the
 
-<!ELEMENT arg2    EMPTY>
+             arg? elements using a shell syntax: ${var:var-name}.
 
-<!ATTLIST arg2    name     CDATA #IMPLIED
+        -->
 
-                  key      CDATA #IMPLIED
+        <!ELEMENT var (var-name, var-value)>
 
-                  resource CDATA #IMPLIED >
 
+        <!--
 
+             The name of the var parameter to provide to a field's validators.
 
-<!--
+        -->
 
-     The "arg3" element defines the fourth replacement value to use with the
+        <!ELEMENT var-name  (#PCDATA)>
 
-     message template for this validator or this field.
 
-     The arg0 element accepts up to three attributes.
+        <!--
 
+             The value of the var parameter to provide to a field's validators.
 
+        -->
 
-      name        The name of the validator corresponding to this msg.
+        <!ELEMENT var-value (#PCDATA)>
 
 
-
-      key         The key that will return the message template from a
-
-                  resource bundle.
-
-
-
-      resource    If set to "false", the key is taken to be a literal
-
-                  value rather than a bundle key.
-
-                  [true]
-
--->
-
-<!ELEMENT arg3    EMPTY>
-
-<!ATTLIST arg3    name     CDATA #IMPLIED
-
-                  key      CDATA #IMPLIED
-
-                  resource CDATA #IMPLIED >
-
-
-
-
-
-<!--
-
-     The "var" element can set parameters that a field may need to pass to
-
-     one of its validators, such as the minimum and maximum values in a
-
-     range validation. These parameters may also be referenced by one of the
-
-     arg? elements using a shell syntax: ${var:var-name}.
-
--->
-
-<!ELEMENT var (var-name, var-value)>
-
-
-
-
-
-
-
-<!--
-
-     The name of the var parameter to provide to a field's validators.
-
--->
-
-<!ELEMENT var-name  (#PCDATA)>
-
-
-
-
-
-
-
-<!--
-
-     The value of the var parameter to provide to a field's validators.
-
--->
-
-<!ELEMENT var-value (#PCDATA)>
-
-
-
-<!-- eof -->
+        <!-- eof -->

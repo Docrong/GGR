@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_supplierkpi_item"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="assessContent"
+                name="assessContent"
                 length="500"
                 not-null="false"
                 unique="true"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="assessNote"
+                name="assessNote"
                 length="500"
                 not-null="false"
                 unique="true"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="createTime"
+                name="createTime"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -54,7 +54,7 @@
         </property>
 
         <property
-            name="creator"
+                name="creator"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="dataSource"
+                name="dataSource"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -72,7 +72,7 @@
         </property>
 
         <property
-            name="dataSourceImplManner"
+                name="dataSourceImplManner"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -81,7 +81,7 @@
         </property>
 
         <property
-            name="dataType"
+                name="dataType"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -90,7 +90,7 @@
         </property>
 
         <property
-            name="isImpersonality"
+                name="isImpersonality"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -99,7 +99,7 @@
         </property>
 
         <property
-            name="itemType"
+                name="itemType"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -108,7 +108,7 @@
         </property>
 
         <property
-            name="templateId"
+                name="templateId"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -117,7 +117,7 @@
         </property>
 
         <property
-            name="planGeneCycle"
+                name="planGeneCycle"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -126,7 +126,7 @@
         </property>
 
         <property
-            name="preActor"
+                name="preActor"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -135,7 +135,7 @@
         </property>
 
         <property
-            name="statictsCycle"
+                name="statictsCycle"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -144,7 +144,7 @@
         </property>
 
         <property
-            name="writeManner"
+                name="writeManner"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -153,7 +153,7 @@
         </property>
 
         <property
-            name="unit"
+                name="unit"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -162,7 +162,7 @@
         </property>
 
         <property
-            name="assessRole"
+                name="assessRole"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -171,52 +171,52 @@
         </property>
 
         <property
-            name="isAssess"
+                name="isAssess"
                 length="32"
                 not-null="false"
                 unique="true"
         >
 
         </property>
-        
+
         <property
-            name="kpiName"
+                name="kpiName"
                 length="32"
                 not-null="false"
                 unique="true"
         >
 
         </property>
-        
+
         <property
-            name="assessMoment"
+                name="assessMoment"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="assessStatus"
+                name="assessStatus"
                 length="10"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="dictId"
+                name="dictId"
                 length="100"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="deleted"
+                name="deleted"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -224,7 +224,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

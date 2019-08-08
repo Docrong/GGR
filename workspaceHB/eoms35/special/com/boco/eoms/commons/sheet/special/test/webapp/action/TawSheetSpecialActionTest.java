@@ -3,10 +3,10 @@ package com.boco.eoms.commons.sheet.special.test.webapp.action;
 import com.boco.eoms.base.webapp.action.BaseStrutsTestCase;
 import com.boco.eoms.base.Constants;
 import com.boco.eoms.commons.sheet.special.webapp.form.TawSheetSpecialForm;
+
 /**
- * 
  * @author panlong
- *下午05:40:12
+ * 下午05:40:12
  */
 public class TawSheetSpecialActionTest extends BaseStrutsTestCase {
 
@@ -76,7 +76,7 @@ public class TawSheetSpecialActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawSheetSpecial.updated"});
+        verifyActionMessages(new String[]{"tawSheetSpecial.updated"});
 
     }
 

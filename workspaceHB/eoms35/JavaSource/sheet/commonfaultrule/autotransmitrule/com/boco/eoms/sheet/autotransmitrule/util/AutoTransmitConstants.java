@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.sheet.autotransmitrule.util;
 
@@ -25,13 +25,13 @@ import com.boco.eoms.sheet.base.util.Constants;
  *
  */
 public class AutoTransmitConstants {
-	/**
-	 * 流程名
-	 */
-	public static final String sheet_name="CommonFaultMainFlowProcess"; 
-	/**
-	 * 大角色ID
-	 */
-	public static final int big_role = 192;
-	
+    /**
+     * 流程名
+     */
+    public static final String sheet_name = "CommonFaultMainFlowProcess";
+    /**
+     * 大角色ID
+     */
+    public static final int big_role = 192;
+
 }

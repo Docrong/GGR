@@ -17,43 +17,42 @@ import com.boco.eoms.sequence.util.SequenceLocator;
  * <p>
  * Date:Apr 26, 2008 11:13:10 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
 public class SequenceFacadeImplTest extends TestCase {
-	private ISequenceFacade sequenceFacade;
+    private ISequenceFacade sequenceFacade;
 
-	protected void setUp() throws Exception {
-		sequenceFacade = SequenceLocator.getSequenceFacade();
-		super.setUp();
-	}
+    protected void setUp() throws Exception {
+        sequenceFacade = SequenceLocator.getSequenceFacade();
+        super.setUp();
+    }
 
-	protected void tearDown() throws Exception {
-		super.tearDown();
-	}
+    protected void tearDown() throws Exception {
+        super.tearDown();
+    }
 
-	public void testDoJob() {
+    public void testDoJob() {
 
-		Helper helper = new Helper();
-		sequenceFacade.doJob(helper, "out",
-				new Class[] { java.lang.String.class },
-				new Object[] { "-----1-----" }, null);
+        Helper helper = new Helper();
+        sequenceFacade.doJob(helper, "out",
+                new Class[]{java.lang.String.class},
+                new Object[]{"-----1-----"}, null);
 
-		sequenceFacade.doJob(helper, "out",
-				new Class[] { java.lang.String.class },
-				new Object[] { "-----2-----" }, null);
+        sequenceFacade.doJob(helper, "out",
+                new Class[]{java.lang.String.class},
+                new Object[]{"-----2-----"}, null);
 
-		sequenceFacade.doJob(helper, "out",
-				new Class[] { java.lang.String.class },
-				new Object[] { "-----3-----" }, null);
+        sequenceFacade.doJob(helper, "out",
+                new Class[]{java.lang.String.class},
+                new Object[]{"-----3-----"}, null);
 
-	}
+    }
 
-	public void testDoJobSequence() {
+    public void testDoJobSequence() {
 //		Sequence sequence = sequenceFacade.getSequence();
-		Helper helper = new Helper();
+        Helper helper = new Helper();
 //		sequenceFacade.put(helper, "out",
 //				new Class[] { java.lang.String.class },
 //				new Object[] { "-----1-----" }, null, sequence);
@@ -82,31 +81,31 @@ public class SequenceFacadeImplTest extends TestCase {
 //				new Object[] { "-----duty3-----" }, null, dutySequence);
 //		
 //		sequenceFacade.doJob(dutySequence);
-		
-		
-		Sequence dutySequence = null;
-		try {
-			dutySequence = sequenceFacade.getSequence("duty");
-		} catch (SequenceNotFoundException e) {
-			e.printStackTrace();
-		}
-		for (int i = 0; i < 10000; i++) {
 
-			sequenceFacade.put(helper, "outtenthousand",
-					new Class[] { java.lang.String.class },
-					new Object[] { "1threadduty" + i }, null, dutySequence);
-		}
-		dutySequence.setChanged();
-		sequenceFacade.doJob(dutySequence);
-		 for (int i = 0; i < 10000; i++) {
-			SequenceLocator.getSequenceFacade().put(helper, "outtenthousand",
-					new Class[] { java.lang.String.class },
-					new Object[] { "2threadduty" + i }, null, dutySequence);
-		}
-		 dutySequence.setChanged();
-		
-		sequenceFacade.doJob(dutySequence);
 
-	}
+        Sequence dutySequence = null;
+        try {
+            dutySequence = sequenceFacade.getSequence("duty");
+        } catch (SequenceNotFoundException e) {
+            e.printStackTrace();
+        }
+        for (int i = 0; i < 10000; i++) {
+
+            sequenceFacade.put(helper, "outtenthousand",
+                    new Class[]{java.lang.String.class},
+                    new Object[]{"1threadduty" + i}, null, dutySequence);
+        }
+        dutySequence.setChanged();
+        sequenceFacade.doJob(dutySequence);
+        for (int i = 0; i < 10000; i++) {
+            SequenceLocator.getSequenceFacade().put(helper, "outtenthousand",
+                    new Class[]{java.lang.String.class},
+                    new Object[]{"2threadduty" + i}, null, dutySequence);
+        }
+        dutySequence.setChanged();
+
+        sequenceFacade.doJob(dutySequence);
+
+    }
 
 }

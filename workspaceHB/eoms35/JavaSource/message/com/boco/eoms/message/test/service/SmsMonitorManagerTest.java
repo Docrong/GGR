@@ -35,7 +35,7 @@ public class SmsMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsMonitorDao.expects(once()).method("getSmsMonitors")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List smsMonitors = smsMonitorManager.getSmsMonitors(null);
         assertTrue(smsMonitors.size() == 1);
@@ -45,7 +45,7 @@ public class SmsMonitorManagerTest extends BaseManagerTestCase {
     public void testGetSmsMonitor() throws Exception {
         // set expected behavior on dao
         smsMonitorDao.expects(once()).method("getSmsMonitor")
-            .will(returnValue(new SmsMonitor()));
+                .will(returnValue(new SmsMonitor()));
         SmsMonitor smsMonitor = smsMonitorManager.getSmsMonitor(smsMonitorId);
         assertTrue(smsMonitor != null);
         smsMonitorDao.verify();
@@ -56,7 +56,7 @@ public class SmsMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsMonitorDao.expects(once()).method("saveSmsMonitor")
-            .with(same(smsMonitor)).isVoid();
+                .with(same(smsMonitor)).isVoid();
 
         smsMonitorManager.saveSmsMonitor(smsMonitor);
         smsMonitorDao.verify();
@@ -74,7 +74,7 @@ public class SmsMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsMonitorDao.expects(once()).method("saveSmsMonitor")
-            .with(same(smsMonitor)).isVoid();
+                .with(same(smsMonitor)).isVoid();
         smsMonitorManager.saveSmsMonitor(smsMonitor);
         smsMonitorDao.verify();
 

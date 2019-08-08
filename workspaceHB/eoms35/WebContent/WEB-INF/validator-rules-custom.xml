@@ -1,20 +1,20 @@
 <!DOCTYPE form-validation PUBLIC
-     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.2.0//EN"
-     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+        "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.2.0//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
 
 <form-validation>
     <global>
         <validator name="twofields"
-            classname="com.boco.eoms.base.webapp.util.ValidationUtil"
-            method="validateTwoFields"
-            methodParams="java.lang.Object,
+                   classname="com.boco.eoms.base.webapp.util.ValidationUtil"
+                   method="validateTwoFields"
+                   methodParams="java.lang.Object,
                           org.apache.commons.validator.ValidatorAction,
                           org.apache.commons.validator.Field,
                           org.apache.struts.action.ActionMessages,
                           javax.servlet.http.HttpServletRequest"
-            depends="required"
-            msg="errors.twofields">
-        <javascript><![CDATA[
+                   depends="required"
+                   msg="errors.twofields">
+            <javascript><![CDATA[
             function validateTwoFields(form) {
                 var bValid = true;
                 var focusField = null;
@@ -62,7 +62,7 @@
                 }
             return bValid;
         }]]>
-        </javascript>
+            </javascript>
         </validator>
     </global>
 </form-validation>

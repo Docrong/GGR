@@ -22,10 +22,10 @@ public class TawWorkdaySetDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String areaId = "TpIdOxGrYqKdDcCfHpOsAbQxJnXhGsSb";
-        tawWorkdaySet.setAreaId(areaId);        
+        tawWorkdaySet.setAreaId(areaId);
 
         java.util.Date createTime = new java.util.Date();
-        tawWorkdaySet.setCreateTime(createTime.toString());        
+        tawWorkdaySet.setCreateTime(createTime.toString());
 
         dao.saveTawWorkdaySet(tawWorkdaySet);
 
@@ -54,9 +54,9 @@ public class TawWorkdaySetDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String areaId = "YbPlLzIxNyClHqZbRiCdExBrTlPcDeJj";
-        tawWorkdaySet.setAreaId(areaId);        
+        tawWorkdaySet.setAreaId(areaId);
         java.util.Date createTime = new java.util.Date();
-        tawWorkdaySet.setCreateTime(createTime.toString());        
+        tawWorkdaySet.setCreateTime(createTime.toString());
 
         dao.saveTawWorkdaySet(tawWorkdaySet);
 

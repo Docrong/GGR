@@ -9,238 +9,238 @@ import com.boco.eoms.commons.system.dict.service.impl.ID2NameServiceImpl;
 
 public class TawTestcardApply {
 
-	TawEventDicDAO DicDAO = new TawEventDicDAO();
+    TawEventDicDAO DicDAO = new TawEventDicDAO();
 
-	ITawSystemUserManager userMgr = (ITawSystemUserManager) ApplicationContextHolder
-	.getInstance().getBean("itawSystemUserManager");
+    ITawSystemUserManager userMgr = (ITawSystemUserManager) ApplicationContextHolder
+            .getInstance().getBean("itawSystemUserManager");
 
-	ID2NameService dictMgr = (ID2NameService) ApplicationContextHolder
-	.getInstance().getBean("id2nameService");
+    ID2NameService dictMgr = (ID2NameService) ApplicationContextHolder
+            .getInstance().getBean("id2nameService");
 
-	private int id;
+    private int id;
 
-	private String userId;
+    private String userId;
 
-	private String username;
-	
-	private String deptId;
+    private String username;
 
-	private String formName;
+    private String deptId;
 
-	private String cardtype;
+    private String formName;
 
-	private String cardtypename;
+    private String cardtype;
 
-	private String cardpackage;
+    private String cardtypename;
 
-	private String cardpackagename;
+    private String cardpackage;
 
-	private String leaveid;
+    private String cardpackagename;
 
-	private String leaveidname;
+    private String leaveid;
 
-	private String applyreason;
+    private String leaveidname;
 
-	private String insertTime;
+    private String applyreason;
 
-	private String status;
+    private String insertTime;
 
-	private String statusname;
+    private String status;
 
-	private String auditJson;
-	
-	private int taskId;
-	
-	private String auditOrgName;
+    private String statusname;
 
-	public String getAuditOrgName() {
-		return auditOrgName;
-	}
+    private String auditJson;
 
-	public void setAuditOrgName(String auditOrgName) {
-		this.auditOrgName = auditOrgName;
-	}
+    private int taskId;
 
-	public int getTaskId() {
-		return taskId;
-	}
+    private String auditOrgName;
 
-	public void setTaskId(int taskId) {
-		this.taskId = taskId;
-	}
+    public String getAuditOrgName() {
+        return auditOrgName;
+    }
 
-	public String getAuditJson() {
-		return auditJson;
-	}
+    public void setAuditOrgName(String auditOrgName) {
+        this.auditOrgName = auditOrgName;
+    }
 
-	public void setAuditJson(String auditJson) {
-		this.auditJson = auditJson;
-	}
+    public int getTaskId() {
+        return taskId;
+    }
 
-	public String getApplyreason() {
-		return applyreason;
-	}
+    public void setTaskId(int taskId) {
+        this.taskId = taskId;
+    }
 
-	public void setApplyreason(String applyreason) {
-		this.applyreason = applyreason;
-	}
+    public String getAuditJson() {
+        return auditJson;
+    }
 
-	public String getCardpackage() {
-		return cardpackage;
-	}
+    public void setAuditJson(String auditJson) {
+        this.auditJson = auditJson;
+    }
 
-	public void setCardpackage(String cardpackage) {
-		this.cardpackage = cardpackage;
-	}
+    public String getApplyreason() {
+        return applyreason;
+    }
 
-	public String getCardtype() {
-		return cardtype;
-	}
+    public void setApplyreason(String applyreason) {
+        this.applyreason = applyreason;
+    }
 
-	public void setCardtype(String cardtype) {
-		this.cardtype = cardtype;
-	}
+    public String getCardpackage() {
+        return cardpackage;
+    }
 
-	public String getFormName() {
-		return formName;
-	}
+    public void setCardpackage(String cardpackage) {
+        this.cardpackage = cardpackage;
+    }
 
-	public void setFormName(String formName) {
-		this.formName = formName;
-	}
+    public String getCardtype() {
+        return cardtype;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setCardtype(String cardtype) {
+        this.cardtype = cardtype;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public String getFormName() {
+        return formName;
+    }
 
-	public String getInsertTime() {
-		return insertTime;
-	}
+    public void setFormName(String formName) {
+        this.formName = formName;
+    }
 
-	public void setInsertTime(String insertTime) {
-		this.insertTime = insertTime;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getLeaveid() {
-		return leaveid;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setLeaveid(String leaveid) {
-		this.leaveid = leaveid;
-	}
+    public String getInsertTime() {
+        return insertTime;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setInsertTime(String insertTime) {
+        this.insertTime = insertTime;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getLeaveid() {
+        return leaveid;
+    }
 
-	public String getDeptId() {
-		return deptId;
-	}
+    public void setLeaveid(String leaveid) {
+        this.leaveid = leaveid;
+    }
 
-	public void setDeptId(String deptId) {
-		this.deptId = deptId;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public String getDeptId() {
+        return deptId;
+    }
 
-	public String getCardpackagename() {
-		try {
-			if (!StaticMethod.null2String(cardpackage).equals("")) {
-				this.cardpackagename = DicDAO.findName(StaticMethod
-						.null2String(cardpackage));
-			}else{
-				this.cardpackagename="";
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return cardpackagename;
-	}
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
 
-	public void setCardpackagename(String cardpackagename) {
-		this.cardpackagename = cardpackagename;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getCardtypename() {
-		if(StaticMethod.null2String(this.cardtype).equals("0")){
-			this.cardtypename="国际出访卡";
-		}
-		if(StaticMethod.null2String(this.cardtype).equals("1")){
-			this.cardtypename="国际来访卡";
-		}
-		if(StaticMethod.null2String(this.cardtype).equals("2")){
-			this.cardtypename="省际来访卡";
-		}
-		if(StaticMethod.null2String(this.cardtype).equals("3")){
-			this.cardtypename="省际出访卡";
-		}
-		if(StaticMethod.null2String(this.cardtype).equals("4")){
-			this.cardtypename="本地测试卡";
-		}
-		if(StaticMethod.null2String(this.cardtype).equals("5")){
-			this.cardtypename="省内来访卡";
-		}
-		if(StaticMethod.null2String(this.cardtype).equals("6")){
-			this.cardtypename="省内出访卡";
-		}
-		return cardtypename;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setCardtypename(String cardtypename) {
-		this.cardtypename = cardtypename;
-	}
+    public String getCardpackagename() {
+        try {
+            if (!StaticMethod.null2String(cardpackage).equals("")) {
+                this.cardpackagename = DicDAO.findName(StaticMethod
+                        .null2String(cardpackage));
+            } else {
+                this.cardpackagename = "";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cardpackagename;
+    }
 
-	public String getStatusname() {
-    	if(StaticMethod.null2String(this.status).equals("9")){
-    		this.statusname="草稿";
-    	}
-    	if(StaticMethod.null2String(this.status).equals("10")){
-    		this.statusname="待审核";
-    	}
-    	if(StaticMethod.null2String(this.status).equals("11")){
-    		this.statusname="驳回";
-    	}
-    	if(StaticMethod.null2String(this.status).equals("12")){
-    		this.statusname="审核通过";
-    	}
-		return statusname;
-	}
+    public void setCardpackagename(String cardpackagename) {
+        this.cardpackagename = cardpackagename;
+    }
 
-	public void setStatusname(String statusname) {
-		this.statusname = statusname;
-	}
+    public String getCardtypename() {
+        if (StaticMethod.null2String(this.cardtype).equals("0")) {
+            this.cardtypename = "国际出访卡";
+        }
+        if (StaticMethod.null2String(this.cardtype).equals("1")) {
+            this.cardtypename = "国际来访卡";
+        }
+        if (StaticMethod.null2String(this.cardtype).equals("2")) {
+            this.cardtypename = "省际来访卡";
+        }
+        if (StaticMethod.null2String(this.cardtype).equals("3")) {
+            this.cardtypename = "省际出访卡";
+        }
+        if (StaticMethod.null2String(this.cardtype).equals("4")) {
+            this.cardtypename = "本地测试卡";
+        }
+        if (StaticMethod.null2String(this.cardtype).equals("5")) {
+            this.cardtypename = "省内来访卡";
+        }
+        if (StaticMethod.null2String(this.cardtype).equals("6")) {
+            this.cardtypename = "省内出访卡";
+        }
+        return cardtypename;
+    }
 
-	public String getLeaveidname() {
-		leaveidname = dictMgr.id2Name(leaveid,
-		"ItawSystemDictTypeDao");
-		return leaveidname;
-	}
+    public void setCardtypename(String cardtypename) {
+        this.cardtypename = cardtypename;
+    }
 
-	public void setLeaveidname(String leaveidname) {
-		this.leaveidname = leaveidname;
-	}
+    public String getStatusname() {
+        if (StaticMethod.null2String(this.status).equals("9")) {
+            this.statusname = "草稿";
+        }
+        if (StaticMethod.null2String(this.status).equals("10")) {
+            this.statusname = "待审核";
+        }
+        if (StaticMethod.null2String(this.status).equals("11")) {
+            this.statusname = "驳回";
+        }
+        if (StaticMethod.null2String(this.status).equals("12")) {
+            this.statusname = "审核通过";
+        }
+        return statusname;
+    }
 
-	public String getUsername() {
-		this.username = userMgr.getUserByuserid(userId).getUsername();
-		return username;
-	}
+    public void setStatusname(String statusname) {
+        this.statusname = statusname;
+    }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    public String getLeaveidname() {
+        leaveidname = dictMgr.id2Name(leaveid,
+                "ItawSystemDictTypeDao");
+        return leaveidname;
+    }
+
+    public void setLeaveidname(String leaveidname) {
+        this.leaveidname = leaveidname;
+    }
+
+    public String getUsername() {
+        this.username = userMgr.getUserByuserid(userId).getUsername();
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
 }

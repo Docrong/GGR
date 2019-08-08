@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
 
     <!--OrderSheet-DAO START-->
-    <bean id="ordersheetDao" class="com.boco.eoms.businessupport.order.dao.hibernate.OrderSheetDaoHibernate" autowire="byName"/>
-    <bean id="IOrderSheetJdbc" class="com.boco.eoms.businessupport.order.dao.hibernate.OrderSheetJdbcImpl" autowire="byName"/>
+    <bean id="ordersheetDao" class="com.boco.eoms.businessupport.order.dao.hibernate.OrderSheetDaoHibernate"
+          autowire="byName"/>
+    <bean id="IOrderSheetJdbc" class="com.boco.eoms.businessupport.order.dao.hibernate.OrderSheetJdbcImpl"
+          autowire="byName"/>
     <!--OrderSheet-DAO END-->
-    <!--OrderSheet-START-->    
+    <!--OrderSheet-START-->
     <bean id="IOrderSheetManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.businessupport.order.service.impl.OrderSheetManagerImpl">

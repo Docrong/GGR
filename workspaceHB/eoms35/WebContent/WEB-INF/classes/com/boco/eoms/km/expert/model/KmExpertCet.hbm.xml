@@ -1,50 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class name="com.boco.eoms.km.expert.model.KmExpertCet"
-		table="KM_EXPERT_CET">
+    <class name="com.boco.eoms.km.expert.model.KmExpertCet"
+           table="KM_EXPERT_CET">
 
-		<id name="id" column="id" unsaved-value="null">
+        <id name="id" column="id" unsaved-value="null">
 
-			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-			<generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-			</generator>
+            </generator>
 
-		</id>
+        </id>
 
-		<property name="userId" column="user_id" length="32"
-			not-null="true" unique="false">
+        <property name="userId" column="user_id" length="32"
+                  not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="expertCetName" column="EXPERT_CET_NAME"
-			length="200" not-null="true" unique="false">
+        <property name="expertCetName" column="EXPERT_CET_NAME"
+                  length="200" not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="expertCetDate" column="EXPERT_CET_DATE"
-			length="50" not-null="true" unique="false">
+        <property name="expertCetDate" column="EXPERT_CET_DATE"
+                  length="50" not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="expertCetDetail" column="EXPERT_CET_DETAIL"
-			length="500" not-null="false" unique="false">
+        <property name="expertCetDetail" column="EXPERT_CET_DETAIL"
+                  length="500" not-null="false" unique="false">
 
-		</property>
+        </property>
 
-		<property name="expertCetPath" column="EXPERT_CET_PATH"
-			length="250" not-null="false" unique="false">
+        <property name="expertCetPath" column="EXPERT_CET_PATH"
+                  length="250" not-null="false" unique="false">
 
-		</property>
+        </property>
 
 
-	</class>
+    </class>
 
 </hibernate-mapping>
 

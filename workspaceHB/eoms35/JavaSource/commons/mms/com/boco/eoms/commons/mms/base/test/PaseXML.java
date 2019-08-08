@@ -9,16 +9,16 @@ import com.boco.eoms.commons.statistic.base.reference.ParseXmlService;
 
 public class PaseXML {
 
-	/**
-	 * @param args
-	 * @throws Exception 
-	 * @throws FileNotFoundException 
-	 */
-	public static void main(String[] args) throws FileNotFoundException, Exception {
-		// TODO Auto-generated method stub
-		String configpath = MMSConstants.REPORT_CONFIG;
-		Reports reports = (Reports) ParseXmlService.create().xml2object(
-				Reports.class, StaticMethod.getFilePathForUrl(configpath));
-	}
+    /**
+     * @param args
+     * @throws Exception
+     * @throws FileNotFoundException
+     */
+    public static void main(String[] args) throws FileNotFoundException, Exception {
+        // TODO Auto-generated method stub
+        String configpath = MMSConstants.REPORT_CONFIG;
+        Reports reports = (Reports) ParseXmlService.create().xml2object(
+                Reports.class, StaticMethod.getFilePathForUrl(configpath));
+    }
 
 }

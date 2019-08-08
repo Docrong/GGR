@@ -14,95 +14,85 @@ package com.boco.eoms.commons.statistic.base.reference;
  *
  * @author ??
  * @version 1.0
- *
  */
 public class ParseXmlService {
-        /**
-         * ????
-         */
-        private static ParseXmlService instance;
+    /**
+     * ????
+     */
+    private static ParseXmlService instance;
 
-        /**
-         * ????xml??manager
-         */
-        private IParseXmlManager mgr;
+    /**
+     * ????xml??manager
+     */
+    private IParseXmlManager mgr;
 
-        /**
-         * ??????xml2sheets?????,????xml
-         *
-         * @param cls
-         *            ??
-         * @param key
-         *            xml mapping?????????key?
-         * @param filePath
-         *            xml???????·??,???????
-         * @return ????????
-         * @see ParseXmlManagerImpl#xml2object(Class, String, String)
-         * @throws ParseXMLException
-         *             ??????????
-         */
-        public Object xml2object(Class cls, String key, String filePath)
-                        throws Exception {
-                return this.mgr.xml2object(cls, key, filePath);
-        }
+    /**
+     * ??????xml2sheets?????,????xml
+     *
+     * @param cls      ??
+     * @param key      xml mapping?????????key?
+     * @param filePath xml???????·??,???????
+     * @return ????????
+     * @throws ParseXMLException ??????????
+     * @see ParseXmlManagerImpl#xml2object(Class, String, String)
+     */
+    public Object xml2object(Class cls, String key, String filePath)
+            throws Exception {
+        return this.mgr.xml2object(cls, key, filePath);
+    }
 
-        /**
-         * ??obj?????filePath(abc.xml)
-         *
-         * @param obj
-         *            OR????
-         * @param filePath
-         *            ????????
-         * @param key
-         *            xml mapping?????????key?
-         * @throws ParseXMLException
-         *             ???????????
-         */
-        public void object2xml(Object obj, String key, String filePath)
-                        throws Exception {
-                mgr.object2xml(obj, key, filePath);
-        }
+    /**
+     * ??obj?????filePath(abc.xml)
+     *
+     * @param obj      OR????
+     * @param filePath ????????
+     * @param key      xml mapping?????????key?
+     * @throws ParseXMLException ???????????
+     */
+    public void object2xml(Object obj, String key, String filePath)
+            throws Exception {
+        mgr.object2xml(obj, key, filePath);
+    }
 
-        public Object xml2object(Class cls, String key, String filePath,boolean isMapPath)
-        throws Exception {
-                return this.mgr.xml2object(cls, key, filePath,isMapPath);
-        }
+    public Object xml2object(Class cls, String key, String filePath, boolean isMapPath)
+            throws Exception {
+        return this.mgr.xml2object(cls, key, filePath, isMapPath);
+    }
 
-        public void object2xml(Object obj, String key, String filePath,boolean isMapPath)
-        throws Exception {
-                mgr.object2xml(obj, key, filePath,isMapPath);
-        }
+    public void object2xml(Object obj, String key, String filePath, boolean isMapPath)
+            throws Exception {
+        mgr.object2xml(obj, key, filePath, isMapPath);
+    }
 
-        public Object xml2object(Class cls, String filePath)
-        throws Exception {
-                  return this.mgr.xml2object(cls, filePath);
-        }
+    public Object xml2object(Class cls, String filePath)
+            throws Exception {
+        return this.mgr.xml2object(cls, filePath);
+    }
 
-        public Object xml2objectWithKey(Class cls, String key)
-        throws Exception {
-                return this.mgr.xml2objectWithKey(cls, key);
-        }
+    public Object xml2objectWithKey(Class cls, String key)
+            throws Exception {
+        return this.mgr.xml2objectWithKey(cls, key);
+    }
 
-        /**
-         * ??й?????
-         *
-         */
-        private ParseXmlService() {
+    /**
+     * ??й?????
+     */
+    private ParseXmlService() {
 //                mgr = (IParseXmlManager) ApplicationContextHolder.getInstance()
 //                                .getBean("ParseXmlManagerImpl");
-                mgr = new  ParseXmlManagerImpl();
-        }
+        mgr = new ParseXmlManagerImpl();
+    }
 
-        /**
-         * ????ParseXmlManagerService
-         *
-         * @return ????????????
-         */
-        public static ParseXmlService create() {
-                if (instance == null) {
-                        instance = new ParseXmlService();
-                }
-                return instance;
+    /**
+     * ????ParseXmlManagerService
+     *
+     * @return ????????????
+     */
+    public static ParseXmlService create() {
+        if (instance == null) {
+            instance = new ParseXmlService();
         }
+        return instance;
+    }
 
 }

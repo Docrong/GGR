@@ -1,23 +1,26 @@
-.listTable, .table, span.pagelinks{
-	width: 98%;
+.listTable, .table, span.pagelinks {
+    width: 98%;
 }
-input.btn, input.button, input.submit, input.reset{
+
+input.btn, input.button, input.submit, input.reset {
     width: 0;
-    line-height:16px;
-    padding:0 6px 0px;
-    overflow:visible !ie;
+    line-height: 16px;
+    padding: 0 6px 0px;
+    overflow: visible !ie;
 }
+
 .listTable tr.header td, .listTable thead td, .listTable thead th, .table thead th,
 .viewer-box div, .viewer-list div,
-td.checkColumn
-{
-	word-wrap:nowrap;
-	word-break:keep-all;
+td.checkColumn {
+    word-wrap: nowrap;
+    word-break: keep-all;
 }
+
 pre, textarea, td.content {
-	word-wrap:break-word;
-	word-break:break-all;
+    word-wrap: break-word;
+    word-break: break-all;
 }
-.x-layout-panel-hd-tb{
-	width:1px;
+
+.x-layout-panel-hd-tb {
+    width: 1px;
 }

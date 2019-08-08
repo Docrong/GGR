@@ -1,6 +1,6 @@
 ﻿/**
  * InterSwitchEomsIPServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -28,11 +28,10 @@ public class InterSwitchEomsIPServiceLocator extends org.apache.axis.client.Serv
     }
 
     public com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIP getInterSwitchEomsIP() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(InterSwitchEomsIP_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getInterSwitchEomsIP(endpoint);
@@ -43,8 +42,7 @@ public class InterSwitchEomsIPServiceLocator extends org.apache.axis.client.Serv
             com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub _stub = new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub(portAddress, this);
             _stub.setPortName(getInterSwitchEomsIPWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -61,8 +59,7 @@ public class InterSwitchEomsIPServiceLocator extends org.apache.axis.client.Serv
                 _stub.setPortName(getInterSwitchEomsIPWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -80,8 +77,7 @@ public class InterSwitchEomsIPServiceLocator extends org.apache.axis.client.Serv
         String inputPortName = portName.getLocalPart();
         if ("InterSwitchEomsIP".equals(inputPortName)) {
             return getInterSwitchEomsIP();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;

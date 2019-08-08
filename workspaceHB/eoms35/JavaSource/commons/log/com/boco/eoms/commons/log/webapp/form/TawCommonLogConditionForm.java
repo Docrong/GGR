@@ -6,66 +6,66 @@ import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawCommonLogConditionForm extends BaseForm implements Serializable {
 
-	
-	private static final long serialVersionUID = 1L;
 
-	private String searchbyuser;
+    private static final long serialVersionUID = 1L;
 
-	private String searchbymodel;
+    private String searchbyuser;
 
-	private String searchbyoper;
+    private String searchbymodel;
 
-	private String searchbystarttime;
+    private String searchbyoper;
 
-	private String searchbyendtime;
+    private String searchbystarttime;
 
-	private String issucess;
+    private String searchbyendtime;
 
-	public String getIssucess() {
-		return issucess;
-	}
+    private String issucess;
 
-	public void setIssucess(String issucess) {
-		this.issucess = issucess;
-	}
+    public String getIssucess() {
+        return issucess;
+    }
 
-	public String getSearchbyendtime() {
-		return searchbyendtime;
-	}
+    public void setIssucess(String issucess) {
+        this.issucess = issucess;
+    }
 
-	public void setSearchbyendtime(String searchbyendtime) {
-		this.searchbyendtime = searchbyendtime;
-	}
+    public String getSearchbyendtime() {
+        return searchbyendtime;
+    }
 
-	public String getSearchbymodel() {
-		return searchbymodel;
-	}
+    public void setSearchbyendtime(String searchbyendtime) {
+        this.searchbyendtime = searchbyendtime;
+    }
 
-	public void setSearchbymodel(String searchbymodel) {
-		this.searchbymodel = searchbymodel;
-	}
+    public String getSearchbymodel() {
+        return searchbymodel;
+    }
 
-	public String getSearchbyoper() {
-		return searchbyoper;
-	}
+    public void setSearchbymodel(String searchbymodel) {
+        this.searchbymodel = searchbymodel;
+    }
 
-	public void setSearchbyoper(String searchbyoper) {
-		this.searchbyoper = searchbyoper;
-	}
+    public String getSearchbyoper() {
+        return searchbyoper;
+    }
 
-	public String getSearchbystarttime() {
-		return searchbystarttime;
-	}
+    public void setSearchbyoper(String searchbyoper) {
+        this.searchbyoper = searchbyoper;
+    }
 
-	public void setSearchbystarttime(String searchbystarttime) {
-		this.searchbystarttime = searchbystarttime;
-	}
+    public String getSearchbystarttime() {
+        return searchbystarttime;
+    }
 
-	public String getSearchbyuser() {
-		return searchbyuser;
-	}
+    public void setSearchbystarttime(String searchbystarttime) {
+        this.searchbystarttime = searchbystarttime;
+    }
 
-	public void setSearchbyuser(String searchbyuser) {
-		this.searchbyuser = searchbyuser;
-	}
+    public String getSearchbyuser() {
+        return searchbyuser;
+    }
+
+    public void setSearchbyuser(String searchbyuser) {
+        this.searchbyuser = searchbyuser;
+    }
 }

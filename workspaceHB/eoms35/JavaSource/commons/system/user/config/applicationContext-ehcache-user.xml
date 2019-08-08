@@ -1,151 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-	<bean id="sysuserCache"
-		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
-		<property name="cacheManager">
-			<ref bean="appCacheManager" />
-		</property>
-		<property name="cacheName">
-			<value>com.boco.eoms.commons.system.user.USER_CACHE</value>
-		</property>
-		<!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
-		<property name="maxElementsInMemory">
-			<value>100001</value>
-		</property>
-		<property name="overflowToDisk">
-			<value>true</value>
-		</property>
-		<property name="eternal">
-			<value>true</value>
-		</property>
-		<property name="timeToLive">
-			<value>600</value>
-		</property>
-		<property name="timeToIdle">
-			<value>600</value>
-		</property>
-		<property name="diskPersistent">
-			<value>false</value>
-		</property>
-		<property name="diskExpiryThreadIntervalSeconds">
-			<value>120</value>
-		</property>
+    <bean id="sysuserCache"
+          class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager">
+            <ref bean="appCacheManager"/>
+        </property>
+        <property name="cacheName">
+            <value>com.boco.eoms.commons.system.user.USER_CACHE</value>
+        </property>
+        <!-- 若ehcache.xml没有chacheName相关配置，则使用下面配置 -->
+        <property name="maxElementsInMemory">
+            <value>100001</value>
+        </property>
+        <property name="overflowToDisk">
+            <value>true</value>
+        </property>
+        <property name="eternal">
+            <value>true</value>
+        </property>
+        <property name="timeToLive">
+            <value>600</value>
+        </property>
+        <property name="timeToIdle">
+            <value>600</value>
+        </property>
+        <property name="diskPersistent">
+            <value>false</value>
+        </property>
+        <property name="diskExpiryThreadIntervalSeconds">
+            <value>120</value>
+        </property>
 
-	</bean>
-
-
-	<bean id="sysuserCacheInterceptor"
-		class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
-		<property name="cache">
-			<ref local="sysuserCache" />
-		</property>
-	</bean>
-
-	<bean id="sysuserCachePointCut"
-		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="advice">
-			<ref local="sysuserCacheInterceptor" />
-		</property>
-		<property name="patterns">
-			<list>
-				<value>.*getTawSystemUsers</value>
-				<value>.*getUserBydeptids</value>
-			</list>
-		</property>
-	</bean>
+    </bean>
 
 
-	<bean id="sysuserBaseCacheProxy"
-		class="org.springframework.aop.framework.ProxyFactoryBean"
-		abstract="true">
-		<property name="interceptorNames">
-			<list>
-				<value>sysuserCachePointCut</value>
-				<value>txInterceptor</value>
-			</list>
-		</property>
-	</bean>
+    <bean id="sysuserCacheInterceptor"
+          class="com.boco.eoms.commons.cache.support.MethodCacheInterceptor">
+        <property name="cache">
+            <ref local="sysuserCache"/>
+        </property>
+    </bean>
 
-	<!-- 自动更新缓存 -->
+    <bean id="sysuserCachePointCut"
+          class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice">
+            <ref local="sysuserCacheInterceptor"/>
+        </property>
+        <property name="patterns">
+            <list>
+                <value>.*getTawSystemUsers</value>
+                <value>.*getUserBydeptids</value>
+            </list>
+        </property>
+    </bean>
 
 
-	<bean id="sysuserFlushCachePointCut"
-		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-		<property name="advice">
-			<ref local="sysuserFlushCacheInterceptor" />
-		</property>
-		<property name="patterns">
-			<list>
-				<value>.*saveTawSystemUser</value>
-				<value>.*removeTawSystemUser</value>
-			</list>
-		</property>
-	</bean>
+    <bean id="sysuserBaseCacheProxy"
+          class="org.springframework.aop.framework.ProxyFactoryBean"
+          abstract="true">
+        <property name="interceptorNames">
+            <list>
+                <value>sysuserCachePointCut</value>
+                <value>txInterceptor</value>
+            </list>
+        </property>
+    </bean>
 
-	<bean id="sysuserFlushCacheInterceptor"
-		class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
-		<property name="cache">
-			<ref local="sysuserCache" />
-		</property>
-		<property name="method">
-			<props>
-				<prop
-					key="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl.saveTawSystemUser">
-					UserCacheKeyCallback
-				</prop>
-				<prop
-					key="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl.removeTawSystemUser">
-					UserCacheKeyCallback
-				</prop>
-			</props>
-		</property>
-	</bean>
-	<bean id="UserCacheKeyCallback"
-		class="com.boco.eoms.commons.system.user.cache.UserCacheKeyCallback" />
-	<bean id="sysuserBaseFlushCacheProxy"
-		class="org.springframework.aop.framework.ProxyFactoryBean"
-		abstract="true">
-		<property name="interceptorNames">
-			<list>
-				<value>sysuserFlushCachePointCut</value>
-				<value>txInterceptor</value>
-			</list>
-		</property>
-	</bean>
-	<bean id="ItawSystemUserManagerFlush"
-		parent="sysuserBaseFlushCacheProxy">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl">
-				<property name="tawSystemUserDao"
-					ref="tawSystemUserDao" />
-				<property name="userPasswdHistoryMgr"
-					ref="userPasswdHistoryMgr" />
-				<property name="tawSystemPrivUserAssignJdbc"
-					ref="tawSystemPrivMenuCommonDao" />
-				<property name="tawSystemPrivAssignDao"
-					ref="tawSystemPrivAssignDao" />
-			</bean>
-		</property>
-	</bean>
-	<bean id="ItawSystemUserSaveManagerFlush"
-		parent="sysuserBaseCacheProxy">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl">
-				<property name="tawSystemUserDao"
-					ref="tawSystemUserDao" />
-				<property name="userPasswdHistoryMgr"
-					ref="userPasswdHistoryMgr" />
-				<property name="tawSystemPrivUserAssignJdbc"
-					ref="tawSystemPrivMenuCommonDao" />
-				<property name="tawSystemPrivAssignDao"
-					ref="tawSystemPrivAssignDao" />
-			</bean>
-		</property>
-	</bean>
+    <!-- 自动更新缓存 -->
+
+
+    <bean id="sysuserFlushCachePointCut"
+          class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        <property name="advice">
+            <ref local="sysuserFlushCacheInterceptor"/>
+        </property>
+        <property name="patterns">
+            <list>
+                <value>.*saveTawSystemUser</value>
+                <value>.*removeTawSystemUser</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="sysuserFlushCacheInterceptor"
+          class="com.boco.eoms.commons.cache.support.MethodFlushCacheInterceptor">
+        <property name="cache">
+            <ref local="sysuserCache"/>
+        </property>
+        <property name="method">
+            <props>
+                <prop
+                        key="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl.saveTawSystemUser">
+                    UserCacheKeyCallback
+                </prop>
+                <prop
+                        key="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl.removeTawSystemUser">
+                    UserCacheKeyCallback
+                </prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="UserCacheKeyCallback"
+          class="com.boco.eoms.commons.system.user.cache.UserCacheKeyCallback"/>
+    <bean id="sysuserBaseFlushCacheProxy"
+          class="org.springframework.aop.framework.ProxyFactoryBean"
+          abstract="true">
+        <property name="interceptorNames">
+            <list>
+                <value>sysuserFlushCachePointCut</value>
+                <value>txInterceptor</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="ItawSystemUserManagerFlush"
+          parent="sysuserBaseFlushCacheProxy">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl">
+                <property name="tawSystemUserDao"
+                          ref="tawSystemUserDao"/>
+                <property name="userPasswdHistoryMgr"
+                          ref="userPasswdHistoryMgr"/>
+                <property name="tawSystemPrivUserAssignJdbc"
+                          ref="tawSystemPrivMenuCommonDao"/>
+                <property name="tawSystemPrivAssignDao"
+                          ref="tawSystemPrivAssignDao"/>
+            </bean>
+        </property>
+    </bean>
+    <bean id="ItawSystemUserSaveManagerFlush"
+          parent="sysuserBaseCacheProxy">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.user.service.impl.TawSystemUserManagerImpl">
+                <property name="tawSystemUserDao"
+                          ref="tawSystemUserDao"/>
+                <property name="userPasswdHistoryMgr"
+                          ref="userPasswdHistoryMgr"/>
+                <property name="tawSystemPrivUserAssignJdbc"
+                          ref="tawSystemPrivMenuCommonDao"/>
+                <property name="tawSystemPrivAssignDao"
+                          ref="tawSystemPrivAssignDao"/>
+            </bean>
+        </property>
+    </bean>
 
 </beans>

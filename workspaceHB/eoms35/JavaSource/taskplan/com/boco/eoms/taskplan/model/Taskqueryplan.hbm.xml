@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,218 +13,217 @@
             table="webmaster_workplan_static"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
-
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
-
-    </generator>
-
-    </id>
-      <property
-            name="deptid"
-                length="32"
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
         >
 
-        </property>
-        
-         
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
+
+            </generator>
+
+        </id>
         <property
-            name="linkid"
+                name="deptid"
                 length="32"
         >
 
         </property>
 
+
         <property
-            name="project_name"
+                name="linkid"
+                length="32"
+        >
+
+        </property>
+
+        <property
+                name="project_name"
                 length="20"
         >
 
         </property>
 
         <property
-            name="project_decompose"
+                name="project_decompose"
                 length="20"
         >
 
         </property>
 
         <property
-            name="task_decompose"
+                name="task_decompose"
                 length="1200"
         >
 
         </property>
 
         <property
-            name="stakeholders"
+                name="stakeholders"
                 length="100"
         >
 
         </property>
 
         <property
-            name="serial_mark"
+                name="serial_mark"
                 length="20"
         >
 
         </property>
 
         <property
-            name="insert_time"
+                name="insert_time"
                 length="20"
         >
 
         </property>
 
         <property
-            name="task_plan_3"
+                name="task_plan_3"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_3"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_4"
+                name="task_complete_3"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_4"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_5"
+                name="task_plan_4"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_5"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_6"
+                name="task_complete_4"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_6"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_7"
+                name="task_plan_5"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_7"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_8"
+                name="task_complete_5"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_8"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_9"
+                name="task_plan_6"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_9"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_10"
+                name="task_complete_6"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_10"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_11"
+                name="task_plan_7"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_11"
-                length="1000"
-        >
-
-        </property>
-        
-        <property
-            name="task_plan_12"
+                name="task_complete_7"
                 length="1000"
         >
 
         </property>
 
         <property
-            name="task_complete_12"
+                name="task_plan_8"
                 length="1000"
         >
 
         </property>
 
-        
+        <property
+                name="task_complete_8"
+                length="1000"
+        >
 
-    </class>    
+        </property>
+
+        <property
+                name="task_plan_9"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+                name="task_complete_9"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+                name="task_plan_10"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+                name="task_complete_10"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+                name="task_plan_11"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+                name="task_complete_11"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+                name="task_plan_12"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+                name="task_complete_12"
+                length="1000"
+        >
+
+        </property>
+
+
+    </class>
 
 </hibernate-mapping>
 

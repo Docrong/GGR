@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.algorithm.service.IAlgorithmLinkManager;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class AlgorithmLinkManagerImpl extends LinkServiceImpl implements IAlgorithmLinkManager {
- 
- }
+
+public class AlgorithmLinkManagerImpl extends LinkServiceImpl implements IAlgorithmLinkManager {
+
+}

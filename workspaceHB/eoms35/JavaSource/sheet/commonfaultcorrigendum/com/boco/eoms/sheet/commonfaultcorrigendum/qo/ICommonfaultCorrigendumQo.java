@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.commonfaultcorrigendum.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Mon Sep 29 11:24:17 CST 2014
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICommonfaultCorrigendumQo extends IWorkSheetQO {
- 
- }
+
+public interface ICommonfaultCorrigendumQo extends IWorkSheetQO {
+
+}

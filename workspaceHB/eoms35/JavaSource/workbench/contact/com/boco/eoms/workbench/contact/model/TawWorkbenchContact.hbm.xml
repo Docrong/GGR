@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_workbench_contact"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="address"
-               	column="address"
+                name="address"
+                column="address"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -37,7 +37,7 @@
         </property>
 
         <property
-            name="contactName"
+                name="contactName"
                 column="contact_name"
                 length="50"
                 not-null="false"
@@ -47,8 +47,8 @@
         </property>
 
         <property
-            name="deleted"
-               	column="deleted"
+                name="deleted"
+                column="deleted"
                 length="8"
                 not-null="false"
                 unique="false"
@@ -57,7 +57,7 @@
         </property>
 
         <property
-            name="deptId"
+                name="deptId"
                 column="dept_id"
                 length="20"
                 not-null="false"
@@ -67,7 +67,7 @@
         </property>
 
         <property
-            name="deptName"
+                name="deptName"
                 column="dept_name"
                 length="50"
                 not-null="false"
@@ -77,8 +77,8 @@
         </property>
 
         <property
-            name="email"
-                 column="email"
+                name="email"
+                column="email"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -87,7 +87,7 @@
         </property>
 
         <property
-            name="groupId"
+                name="groupId"
                 column="group_id"
                 length="50"
                 not-null="false"
@@ -97,7 +97,7 @@
         </property>
 
         <property
-            name="position"
+                name="position"
                 column="position"
                 length="50"
                 not-null="false"
@@ -107,7 +107,7 @@
         </property>
 
         <property
-            name="tele"
+                name="tele"
                 column="tele"
                 length="50"
                 not-null="false"
@@ -117,7 +117,7 @@
         </property>
 
         <property
-            name="userId"
+                name="userId"
                 column="user_id"
                 length="50"
                 not-null="false"
@@ -125,10 +125,9 @@
         >
 
         </property>
-        
-    
 
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

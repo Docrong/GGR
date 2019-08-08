@@ -15,14 +15,13 @@ package com.boco.eoms.commons.rule.tool.model;
  * <p>
  * Date:May 28, 2007 11:28:33 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 //@Retention(RetentionPolicy.RUNTIME)
 //@Target(ElementType.METHOD)
 //public @interface RuleAnnotation {
 public interface RuleAnnotation {
-	public String description();
+    public String description();
 }

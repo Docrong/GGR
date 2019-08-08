@@ -43,192 +43,193 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Fri Jul 10 10:50:46 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public final class TrainPlanAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增培训计划
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增培训计划
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-    	String userId = this.getUser(request).getUserid();
-    	String dept = this.getUser(request).getDeptid();
-    	TrainPlanForm trainPlanForm = (TrainPlanForm)form;
-    	trainPlanForm.setTrainUser(userId);
-    	trainPlanForm.setTrainDept(dept);
-    	updateFormBean(mapping, request, trainPlanForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改培训计划
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String userId = this.getUser(request).getUserid();
+        String dept = this.getUser(request).getDeptid();
+        TrainPlanForm trainPlanForm = (TrainPlanForm) form;
+        trainPlanForm.setTrainUser(userId);
+        trainPlanForm.setTrainDept(dept);
+        updateFormBean(mapping, request, trainPlanForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改培训计划
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
-		String id = StaticMethod.null2String(request.getParameter("trainPlanId"));
-		TrainPlan trainPlan = trainPlanMgr.getTrainPlan(id);
-		TrainPlanForm trainPlanForm = (TrainPlanForm) convert(trainPlan);
-		updateFormBean(mapping, request, trainPlanForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存培训计划
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
-		TrainPlanForm trainPlanForm = (TrainPlanForm) form;
-		boolean isNew = (null == trainPlanForm.getId() || "".equals(trainPlanForm.getId()));
-		TrainPlan trainPlan = (TrainPlan) convert(trainPlanForm);
-		trainPlan.setTrainSpeciality("101");
-		if (isNew) {
-			trainPlanMgr.saveTrainPlan(trainPlan);
-		} else {
-			trainPlanMgr.saveTrainPlan(trainPlan);
-		}
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 删除培训计划
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
-		String id = StaticMethod.null2String(request.getParameter("trainPlanId"));
-		trainPlanMgr.removeTrainPlan(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示培训计划列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainPlanConstants.TRAINPLAN_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
-		Map map = (Map) trainPlanMgr.getTrainPlans(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(TrainPlanConstants.TRAINPLAN_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 查看培训计划详情
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	 public ActionForward detail(ActionMapping mapping, ActionForm form,
-				HttpServletRequest request, HttpServletResponse response)
-				throws Exception {
-		 final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-		 	.getPageSize();
-		TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
-		TrainEnterMgr trainEnterMgr = (TrainEnterMgr)getBean("trainEnterMgr");
-		TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr)getBean("trainFeedbackMgr");
-		//培训计划id
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		TrainPlan trainPlan = trainPlanMgr.getTrainPlan(id);
-		TrainPlanForm trainPlanForm = (TrainPlanForm) convert(trainPlan);
-		updateFormBean(mapping, request, trainPlanForm);
-		
-		//查询该培训计划的报名情况（信息）
-		List trainEnterList = trainEnterMgr.getTrainEntersByPlanId(id);
-		request.setAttribute("trainEnterList", trainEnterList);
-		request.setAttribute("enterPageSize", new Integer(trainEnterList.size()));
-		request.setAttribute("trainEnterList1", trainEnterList);
-		//查询该培训计划的反馈情况
-		List trainFeedbackList = trainFeedbackMgr.getTrainFeedbacksByPlanId(id);
-		request.setAttribute("trainFeedbackList", trainFeedbackList);
-		request.setAttribute("FeedPageSize", new Integer(trainFeedbackList.size()));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("detail");
-	}
-	
-	/**
-	 * 分页显示培训计划列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
+        String id = StaticMethod.null2String(request.getParameter("trainPlanId"));
+        TrainPlan trainPlan = trainPlanMgr.getTrainPlan(id);
+        TrainPlanForm trainPlanForm = (TrainPlanForm) convert(trainPlan);
+        updateFormBean(mapping, request, trainPlanForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存培训计划
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
+        TrainPlanForm trainPlanForm = (TrainPlanForm) form;
+        boolean isNew = (null == trainPlanForm.getId() || "".equals(trainPlanForm.getId()));
+        TrainPlan trainPlan = (TrainPlan) convert(trainPlanForm);
+        trainPlan.setTrainSpeciality("101");
+        if (isNew) {
+            trainPlanMgr.saveTrainPlan(trainPlan);
+        } else {
+            trainPlanMgr.saveTrainPlan(trainPlan);
+        }
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 删除培训计划
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
+        String id = StaticMethod.null2String(request.getParameter("trainPlanId"));
+        trainPlanMgr.removeTrainPlan(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示培训计划列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainPlanConstants.TRAINPLAN_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
+        Map map = (Map) trainPlanMgr.getTrainPlans(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(TrainPlanConstants.TRAINPLAN_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 查看培训计划详情
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward detail(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        TrainPlanMgr trainPlanMgr = (TrainPlanMgr) getBean("trainPlanMgr");
+        TrainEnterMgr trainEnterMgr = (TrainEnterMgr) getBean("trainEnterMgr");
+        TrainFeedbackMgr trainFeedbackMgr = (TrainFeedbackMgr) getBean("trainFeedbackMgr");
+        //培训计划id
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        TrainPlan trainPlan = trainPlanMgr.getTrainPlan(id);
+        TrainPlanForm trainPlanForm = (TrainPlanForm) convert(trainPlan);
+        updateFormBean(mapping, request, trainPlanForm);
+
+        //查询该培训计划的报名情况（信息）
+        List trainEnterList = trainEnterMgr.getTrainEntersByPlanId(id);
+        request.setAttribute("trainEnterList", trainEnterList);
+        request.setAttribute("enterPageSize", new Integer(trainEnterList.size()));
+        request.setAttribute("trainEnterList1", trainEnterList);
+        //查询该培训计划的反馈情况
+        List trainFeedbackList = trainFeedbackMgr.getTrainFeedbacksByPlanId(id);
+        request.setAttribute("trainFeedbackList", trainFeedbackList);
+        request.setAttribute("FeedPageSize", new Integer(trainFeedbackList.size()));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("detail");
+    }
+
+    /**
+     * 分页显示培训计划列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

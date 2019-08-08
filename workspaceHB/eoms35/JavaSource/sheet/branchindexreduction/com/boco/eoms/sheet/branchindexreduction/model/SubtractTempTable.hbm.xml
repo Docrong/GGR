@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-<class name="com.boco.eoms.sheet.branchindexreduction.model.SubtractTempTable" table="substract">
-	       
-	<id
-        name="id"
-            column="id"
-    >     
-      <generator class="uuid.hex">
-    </generator>
-    </id>
-    <property name="rowIndex"
-            column="rowIndex">
-    </property>
-    
-    <property name="serialId"
-            column="serialId">
-    </property>
-    
-    <property name="serialKey"
-            column="serialKey">
-    </property>
-    
-    <property name="isValid"
-            column="isValid">
-    </property>
-    
-    <property name="remark"
-            column="remark">
-    </property>
-  
-  
-</class>    
+    <class name="com.boco.eoms.sheet.branchindexreduction.model.SubtractTempTable" table="substract">
+
+        <id
+                name="id"
+                column="id"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+        <property name="rowIndex"
+                  column="rowIndex">
+        </property>
+
+        <property name="serialId"
+                  column="serialId">
+        </property>
+
+        <property name="serialKey"
+                  column="serialKey">
+        </property>
+
+        <property name="isValid"
+                  column="isValid">
+        </property>
+
+        <property name="remark"
+                  column="remark">
+        </property>
+
+
+    </class>
 </hibernate-mapping>
 

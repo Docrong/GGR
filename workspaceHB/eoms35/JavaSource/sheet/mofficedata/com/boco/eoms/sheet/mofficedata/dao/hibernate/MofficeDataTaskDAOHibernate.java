@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.mofficedata.dao.IMofficeDataTaskDAO;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
- 
- public class MofficeDataTaskDAOHibernate extends TaskDAOImpl implements  IMofficeDataTaskDAO {
- 
- }
+
+public class MofficeDataTaskDAOHibernate extends TaskDAOImpl implements IMofficeDataTaskDAO {
+
+}

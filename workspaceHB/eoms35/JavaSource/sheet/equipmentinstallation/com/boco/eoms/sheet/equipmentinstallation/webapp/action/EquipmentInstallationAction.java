@@ -23,75 +23,74 @@ import com.boco.eoms.sheet.base.webapp.action.SheetAction;
  * <p>
  * Tue Oct 09 14:09:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class EquipmentInstallationAction extends SheetAction  {
- 	
- 	 /**
-	 * showDrawing
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showDrawing(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("draw");
-	}
-	
-	
-	/**
-	 * showPic
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showPic(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("pic");
-	}
-	
-	
-	/**
-	 * showKPI
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward showKPI(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("kpi");
-	}
-	
-	public ActionForward showDraftPage(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		IDownLoadSheetAccessoriesService sqlMgr=(IDownLoadSheetAccessoriesService)ApplicationContextHolder.getInstance().getBean("IDownLoadSheetAccessoriesService");
-		String sql="select areaid keyId,areaname keyName from taw_system_area where parentareaid='18' AND areaid NOT IN ('1817','1818') order by areaid";
-		List cityList = sqlMgr.getSheetAccessoriesList(sql);
-		request.setAttribute("cityList", cityList);
-		return super.showDraftPage(mapping, form, request, response);
-	}
- 
- }
+
+public class EquipmentInstallationAction extends SheetAction {
+
+    /**
+     * showDrawing
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showDrawing(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("draw");
+    }
+
+
+    /**
+     * showPic
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showPic(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("pic");
+    }
+
+
+    /**
+     * showKPI
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward showKPI(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("kpi");
+    }
+
+    public ActionForward showDraftPage(ActionMapping mapping, ActionForm form,
+                                       HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        IDownLoadSheetAccessoriesService sqlMgr = (IDownLoadSheetAccessoriesService) ApplicationContextHolder.getInstance().getBean("IDownLoadSheetAccessoriesService");
+        String sql = "select areaid keyId,areaname keyName from taw_system_area where parentareaid='18' AND areaid NOT IN ('1817','1818') order by areaid";
+        List cityList = sqlMgr.getSheetAccessoriesList(sql);
+        request.setAttribute("cityList", cityList);
+        return super.showDraftPage(mapping, form, request, response);
+    }
+
+}
  
 
 

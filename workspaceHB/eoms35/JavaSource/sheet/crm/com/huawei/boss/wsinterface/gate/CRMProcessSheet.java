@@ -1,6 +1,6 @@
 /**
  * CRMProcessSheet.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,6 +13,7 @@ public interface CRMProcessSheet extends javax.xml.rpc.Service {
     public com.huawei.boss.wsinterface.gate.CRMProcessSheetPortType getCRMProcessSheetHttpSoap12Endpoint() throws javax.xml.rpc.ServiceException;
 
     public com.huawei.boss.wsinterface.gate.CRMProcessSheetPortType getCRMProcessSheetHttpSoap12Endpoint(java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
+
     public java.lang.String getCRMProcessSheetHttpSoap11EndpointAddress();
 
     public com.huawei.boss.wsinterface.gate.CRMProcessSheetPortType getCRMProcessSheetHttpSoap11Endpoint() throws javax.xml.rpc.ServiceException;

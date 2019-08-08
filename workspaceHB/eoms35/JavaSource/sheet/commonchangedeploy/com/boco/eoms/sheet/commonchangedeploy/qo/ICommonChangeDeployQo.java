@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.commonchangedeploy.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,15 +12,14 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Fri Jun 12 09:08:01 CST 2009
  * </p>
- * 
+ *
  * @author yangwei
  * @version 3.5
- * 
  */
- 
- public interface ICommonChangeDeployQo extends IWorkSheetQO {
- 
- }
+
+public interface ICommonChangeDeployQo extends IWorkSheetQO {
+
+}
  
 
 

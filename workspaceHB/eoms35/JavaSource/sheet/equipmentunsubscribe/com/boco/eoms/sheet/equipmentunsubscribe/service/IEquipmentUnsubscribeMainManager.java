@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Tue Oct 09 14:24:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public interface IEquipmentUnsubscribeMainManager extends IMainService {
- 
- }
+
+public interface IEquipmentUnsubscribeMainManager extends IMainService {
+
+}

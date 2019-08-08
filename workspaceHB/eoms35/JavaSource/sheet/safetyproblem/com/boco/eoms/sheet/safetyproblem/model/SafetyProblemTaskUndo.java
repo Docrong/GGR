@@ -7,7 +7,6 @@ package com.boco.eoms.sheet.safetyproblem.model;
 
 import com.boco.eoms.sheet.base.task.ITask;
 import com.boco.eoms.sheet.base.task.impl.TaskImpl;
- 
-public class SafetyProblemTaskUndo extends TaskImpl implements ITask
-{
+
+public class SafetyProblemTaskUndo extends TaskImpl implements ITask {
 }

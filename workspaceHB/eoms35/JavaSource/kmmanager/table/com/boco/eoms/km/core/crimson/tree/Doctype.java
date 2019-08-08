@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -78,28 +78,26 @@ import org.xml.sax.SAXException;
  * @author David Brownell
  * @version $Revision: 1.3 $
  */
-final class Doctype extends NodeBase implements DocumentType
-{
+final class Doctype extends NodeBase implements DocumentType {
     // Stuff generated during parsing ...
-    private String	name;
-    private Nodemap	entities;
-    private Nodemap	notations;
+    private String name;
+    private Nodemap entities;
+    private Nodemap notations;
 
     // ... stuff assigned by apps separately
-    private String	publicId;
-    private String	systemId;
-    private String	internalSubset;
+    private String publicId;
+    private String systemId;
+    private String internalSubset;
 
 
     /**
      * XXX Obsolete, but keep it for backwards compatibility
      */
     // package private
-    Doctype (String pub, String sys, String subset)
-    {
-	publicId = pub;
-	systemId = sys;
-	internalSubset = subset;
+    Doctype(String pub, String sys, String subset) {
+        publicId = pub;
+        systemId = sys;
+        internalSubset = subset;
     }
 
     /**
@@ -107,22 +105,20 @@ final class Doctype extends NodeBase implements DocumentType
      */
     // package private
     Doctype(String name, String publicId, String systemId,
-            String internalSubset)
-    {
+            String internalSubset) {
         this.name = name;
         this.publicId = publicId;
-	this.systemId = systemId;
-	this.internalSubset = internalSubset;
-	entities = new Nodemap ();
-	notations = new Nodemap ();
+        this.systemId = systemId;
+        this.internalSubset = internalSubset;
+        entities = new Nodemap();
+        notations = new Nodemap();
     }
 
     // package private
-    void setPrintInfo (String pub, String sys, String subset)
-    {
-	publicId = pub;
-	systemId = sys;
-	internalSubset = subset;
+    void setPrintInfo(String pub, String sys, String subset) {
+        publicId = pub;
+        systemId = sys;
+        internalSubset = subset;
     }
 
 
@@ -130,53 +126,60 @@ final class Doctype extends NodeBase implements DocumentType
      * Writes out a textual DTD, trusting that any internal subset text
      * is in fact well formed XML.
      */
-    public void writeXml (XmlWriteContext context) throws IOException
-    {
-	Writer	out = context.getWriter ();
-	Element	root = getOwnerDocument ().getDocumentElement ();
+    public void writeXml(XmlWriteContext context) throws IOException {
+        Writer out = context.getWriter();
+        Element root = getOwnerDocument().getDocumentElement();
 
-	out.write ("<!DOCTYPE ");
-	out.write (root == null ? "UNKNOWN-ROOT" : root.getNodeName ());
+        out.write("<!DOCTYPE ");
+        out.write(root == null ? "UNKNOWN-ROOT" : root.getNodeName());
 
-	if (systemId != null) {
-	    if (publicId != null) {
-		out.write (" PUBLIC '");
-		out.write (publicId);
-		out.write ("' '");
-	    } else
-		out.write (" SYSTEM '");
-	    out.write (systemId);
-	    out.write ("'");
-	}
-	if (internalSubset != null) {
-	    out.write (XmlDocument.eol);
-	    out.write ("[");
-	    out.write (internalSubset);
-	    out.write ("]");
-	}
-	out.write (">");
-	out.write (XmlDocument.eol);
+        if (systemId != null) {
+            if (publicId != null) {
+                out.write(" PUBLIC '");
+                out.write(publicId);
+                out.write("' '");
+            } else
+                out.write(" SYSTEM '");
+            out.write(systemId);
+            out.write("'");
+        }
+        if (internalSubset != null) {
+            out.write(XmlDocument.eol);
+            out.write("[");
+            out.write(internalSubset);
+            out.write("]");
+        }
+        out.write(">");
+        out.write(XmlDocument.eol);
     }
 
-    /** DOM: Returns DOCUMENT_TYPE_NODE */
-    public short getNodeType ()
-	{ return DOCUMENT_TYPE_NODE; }
-    
-    /** DOM:  Returns the name declared for the document root node. */
-    public String getName ()
-	{ return name; }
-    
-    /** DOM:  Returns the name declared for the document root node. */
-    public String getNodeName ()
-	{ return name; }
-    
+    /**
+     * DOM: Returns DOCUMENT_TYPE_NODE
+     */
+    public short getNodeType() {
+        return DOCUMENT_TYPE_NODE;
+    }
+
+    /**
+     * DOM:  Returns the name declared for the document root node.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * DOM:  Returns the name declared for the document root node.
+     */
+    public String getNodeName() {
+        return name;
+    }
+
     /**
      * Only implement shallow clone for now, which is allowed in DOM Level 2.
      */
-    public Node cloneNode(boolean deep)
-    {
+    public Node cloneNode(boolean deep) {
         Doctype retval = new Doctype(name, publicId, systemId, internalSubset);
-        retval.setOwnerDocument((XmlDocument)getOwnerDocument());
+        retval.setOwnerDocument((XmlDocument) getOwnerDocument());
         return retval;
     }
 
@@ -184,15 +187,20 @@ final class Doctype extends NodeBase implements DocumentType
      * DOM: Returns the internal, external, and unparsed entities
      * declared in this DTD.
      */
-    public NamedNodeMap getEntities ()
-	{ return entities; }
+    public NamedNodeMap getEntities() {
+        return entities;
+    }
 
-    /** DOM: Returns the notations declared in this DTD.  */
-    public NamedNodeMap getNotations ()
-	{ return notations; }
-    
+    /**
+     * DOM: Returns the notations declared in this DTD.
+     */
+    public NamedNodeMap getNotations() {
+        return notations;
+    }
+
     /**
      * The public identifier of the external subset.
+     *
      * @since DOM Level 2
      */
     public String getPublicId() {
@@ -201,6 +209,7 @@ final class Doctype extends NodeBase implements DocumentType
 
     /**
      * The system identifier of the external subset.
+     *
      * @since DOM Level 2
      */
     public String getSystemId() {
@@ -209,6 +218,7 @@ final class Doctype extends NodeBase implements DocumentType
 
     /**
      * The internal subset as a string.
+     *
      * @since DOM Level 2
      */
     public String getInternalSubset() {
@@ -216,23 +226,24 @@ final class Doctype extends NodeBase implements DocumentType
     }
 
     protected void setOwnerDocument(XmlDocument doc) {
-	super.setOwnerDocument (doc);
-	if (entities != null)
-	    for (int i = 0; entities.item (i) != null; i++)
-		((NodeBase)entities.item (i)).setOwnerDocument (doc);
-	if (notations != null)
-	    for (int i = 0; notations.item (i) != null; i++)
-		((NodeBase)notations.item (i)).setOwnerDocument (doc);
+        super.setOwnerDocument(doc);
+        if (entities != null)
+            for (int i = 0; entities.item(i) != null; i++)
+                ((NodeBase) entities.item(i)).setOwnerDocument(doc);
+        if (notations != null)
+            for (int i = 0; notations.item(i) != null; i++)
+                ((NodeBase) notations.item(i)).setOwnerDocument(doc);
     }
 
 
-    /** Adds a notation node. */
+    /**
+     * Adds a notation node.
+     */
     // package private
-    void addNotation (String name, String pub, String sys)
-    {
-	NotationNode node = new NotationNode (name, pub, sys);
-	node.setOwnerDocument ((XmlDocument)getOwnerDocument ());
-	notations.setNamedItem (node);
+    void addNotation(String name, String pub, String sys) {
+        NotationNode node = new NotationNode(name, pub, sys);
+        node.setOwnerDocument((XmlDocument) getOwnerDocument());
+        notations.setNamedItem(node);
     }
 
     /**
@@ -240,332 +251,331 @@ final class Doctype extends NodeBase implements DocumentType
      * could be parsed or unparsed.
      */
     // package private
-    void addEntityNode (String name, String pub, String sys, String not)
-    {
-	EntityNode node = new EntityNode (name, pub, sys, not);
-	node.setOwnerDocument ((XmlDocument)getOwnerDocument ());
-	entities.setNamedItem (node);
+    void addEntityNode(String name, String pub, String sys, String not) {
+        EntityNode node = new EntityNode(name, pub, sys, not);
+        node.setOwnerDocument((XmlDocument) getOwnerDocument());
+        entities.setNamedItem(node);
     }
 
-    /** Adds an entity node for an  internal parsed entity. */
+    /**
+     * Adds an entity node for an  internal parsed entity.
+     */
     // package private
-    void addEntityNode (String name, String value)
-    {
-	if ("lt".equals (name) || "gt".equals (name)
-		|| "apos".equals (name) || "quot".equals (name)
-		|| "amp".equals (name))
-	    return;	// predeclared, immutable
+    void addEntityNode(String name, String value) {
+        if ("lt".equals(name) || "gt".equals(name)
+                || "apos".equals(name) || "quot".equals(name)
+                || "amp".equals(name))
+            return;    // predeclared, immutable
 
-	EntityNode node = new EntityNode (name, value);
-	node.setOwnerDocument ((XmlDocument)getOwnerDocument ());
-	entities.setNamedItem (node);
+        EntityNode node = new EntityNode(name, value);
+        node.setOwnerDocument((XmlDocument) getOwnerDocument());
+        entities.setNamedItem(node);
     }
 
-    /** Marks the sets of entities and notations as readonly. */
+    /**
+     * Marks the sets of entities and notations as readonly.
+     */
     // package private
-    void setReadonly ()
-    {
-	entities.readonly = true;
-	notations.readonly = true;
+    void setReadonly() {
+        entities.readonly = true;
+        notations.readonly = true;
     }
 
 
-    static class NotationNode extends NodeBase implements Notation
-    {
-	private String	notation;
-	private String	publicId;
-	private String	systemId;
+    static class NotationNode extends NodeBase implements Notation {
+        private String notation;
+        private String publicId;
+        private String systemId;
 
-	NotationNode (String name, String pub, String sys)
-	{
-	    notation = name;
-	    publicId = pub;
-	    systemId = sys;
-	}
+        NotationNode(String name, String pub, String sys) {
+            notation = name;
+            publicId = pub;
+            systemId = sys;
+        }
 
-	public String getPublicId ()
-	    { return publicId; }
+        public String getPublicId() {
+            return publicId;
+        }
 
-	public String getSystemId ()
-	    { return systemId; }
-	
-	public short getNodeType ()
-	    { return NOTATION_NODE; }
-	
-	public String getNodeName ()
-	    { return notation; }
-	
-	public Node cloneNode (boolean ignored)
-	{
-	    NotationNode retval;
+        public String getSystemId() {
+            return systemId;
+        }
 
-	    retval = new NotationNode (notation, publicId, systemId);
-	    retval.setOwnerDocument ((XmlDocument)getOwnerDocument ());
-	    return retval;
-	}
+        public short getNodeType() {
+            return NOTATION_NODE;
+        }
 
-	public void writeXml (XmlWriteContext context) throws IOException
-	{
-	    Writer out = context.getWriter ();
-	    out.write ("<!NOTATION ");
-	    out.write (notation);
-	    if (publicId != null) {
-		out.write (" PUBLIC '");
-		out.write (publicId);
-		if (systemId != null) {
-		    out.write ("' '");
-		    out.write (systemId);
-		}
-	    } else {
-		out.write (" SYSTEM '");
-		out.write (systemId);
-	    }
-	    out.write ("'>");
-	}
+        public String getNodeName() {
+            return notation;
+        }
 
-	public short compareDocumentPosition(Node other) throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+        public Node cloneNode(boolean ignored) {
+            NotationNode retval;
 
-	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            retval = new NotationNode(notation, publicId, systemId);
+            retval.setOwnerDocument((XmlDocument) getOwnerDocument());
+            return retval;
+        }
 
-	public Object getFeature(String feature, String version) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public void writeXml(XmlWriteContext context) throws IOException {
+            Writer out = context.getWriter();
+            out.write("<!NOTATION ");
+            out.write(notation);
+            if (publicId != null) {
+                out.write(" PUBLIC '");
+                out.write(publicId);
+                if (systemId != null) {
+                    out.write("' '");
+                    out.write(systemId);
+                }
+            } else {
+                out.write(" SYSTEM '");
+                out.write(systemId);
+            }
+            out.write("'>");
+        }
 
-	public String getTextContent() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public short compareDocumentPosition(Node other) throws DOMException {
+            // TODO Auto-generated method stub
+            return 0;
+        }
 
-	public Object getUserData(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public String getBaseURI() {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public boolean isDefaultNamespace(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        public Object getFeature(String feature, String version) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public boolean isEqualNode(Node arg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        public String getTextContent() throws DOMException {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public boolean isSameNode(Node other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        public Object getUserData(String key) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public String lookupNamespaceURI(String prefix) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public boolean isDefaultNamespace(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-	public String lookupPrefix(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public boolean isEqualNode(Node arg) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-	public void setTextContent(String textContent) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+        public boolean isSameNode(Node other) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-	public Object setUserData(String key, Object data, UserDataHandler handler) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public String lookupNamespaceURI(String prefix) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        public String lookupPrefix(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        public void setTextContent(String textContent) throws DOMException {
+            // TODO Auto-generated method stub
+
+        }
+
+        public Object setUserData(String key, Object data, UserDataHandler handler) {
+            // TODO Auto-generated method stub
+            return null;
+        }
     }
 
 
     // DOM permits the children to be null ... we do that consistently
-    static class EntityNode extends NodeBase implements Entity
-    {
-	private String	entityName;
+    static class EntityNode extends NodeBase implements Entity {
+        private String entityName;
 
-	private String	publicId;
-	private String	systemId;
-	private String	notation;
+        private String publicId;
+        private String systemId;
+        private String notation;
 
-	private String	value;
+        private String value;
 
-	EntityNode (String name, String pub, String sys, String not)
-	{
-	    entityName = name;
-	    publicId = pub;
-	    systemId = sys;
-	    notation = not;
-	}
+        EntityNode(String name, String pub, String sys, String not) {
+            entityName = name;
+            publicId = pub;
+            systemId = sys;
+            notation = not;
+        }
 
-	EntityNode (String name, String value)
-	{
-	    entityName = name;
-	    this.value = value;
-	}
+        EntityNode(String name, String value) {
+            entityName = name;
+            this.value = value;
+        }
 
-	public String getNodeName ()
-	    { return entityName; }
-	
-	public short getNodeType ()
-	    { return ENTITY_NODE; }
+        public String getNodeName() {
+            return entityName;
+        }
 
-	public String getPublicId ()
-	    { return publicId; }
+        public short getNodeType() {
+            return ENTITY_NODE;
+        }
 
-	public String getSystemId ()
-	    { return systemId; }
+        public String getPublicId() {
+            return publicId;
+        }
 
-	public String getNotationName ()
-	    { return notation; }
-	
-	public Node cloneNode (boolean ignored)
-	{
-	    EntityNode retval;
+        public String getSystemId() {
+            return systemId;
+        }
 
-	    retval = new EntityNode (entityName, publicId, systemId,
-			    notation);
-	    retval.setOwnerDocument ((XmlDocument)getOwnerDocument ());
-	    return retval;
-	}
+        public String getNotationName() {
+            return notation;
+        }
 
-	public void writeXml (XmlWriteContext context) throws IOException
-	{
-	    Writer out = context.getWriter ();
-	    out.write ("<!ENTITY ");
-	    out.write (entityName);
+        public Node cloneNode(boolean ignored) {
+            EntityNode retval;
 
-	    if (value == null) {
-		if (publicId != null) {
-		    out.write (" PUBLIC '");
-		    out.write (publicId);
-		    out.write ("' '");
-		} else
-		    out.write (" SYSTEM '");
-		out.write (systemId);
-		out.write ("'");
-		if (notation != null) {
-		    out.write (" NDATA ");
-		    out.write (notation);
-		}
-	    } else {
-		out.write (" \"");
-		int length = value.length ();
-		for (int i = 0; i < length; i++) {
-		    char c = value.charAt (i);
-		    if (c == '"')
-			out.write ("&quot;");
-		    else
-			out.write (c);
-		}
-		out.write ('"');
-	    }
-	    out.write (">");
-	}
+            retval = new EntityNode(entityName, publicId, systemId,
+                    notation);
+            retval.setOwnerDocument((XmlDocument) getOwnerDocument());
+            return retval;
+        }
 
-	public String getInputEncoding() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public void writeXml(XmlWriteContext context) throws IOException {
+            Writer out = context.getWriter();
+            out.write("<!ENTITY ");
+            out.write(entityName);
 
-	public String getXmlEncoding() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+            if (value == null) {
+                if (publicId != null) {
+                    out.write(" PUBLIC '");
+                    out.write(publicId);
+                    out.write("' '");
+                } else
+                    out.write(" SYSTEM '");
+                out.write(systemId);
+                out.write("'");
+                if (notation != null) {
+                    out.write(" NDATA ");
+                    out.write(notation);
+                }
+            } else {
+                out.write(" \"");
+                int length = value.length();
+                for (int i = 0; i < length; i++) {
+                    char c = value.charAt(i);
+                    if (c == '"')
+                        out.write("&quot;");
+                    else
+                        out.write(c);
+                }
+                out.write('"');
+            }
+            out.write(">");
+        }
 
-	public String getXmlVersion() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public String getInputEncoding() {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public short compareDocumentPosition(Node other) throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+        public String getXmlEncoding() {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public String getXmlVersion() {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public Object getFeature(String feature, String version) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public short compareDocumentPosition(Node other) throws DOMException {
+            // TODO Auto-generated method stub
+            return 0;
+        }
 
-	public String getTextContent() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public String getBaseURI() {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public Object getUserData(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public Object getFeature(String feature, String version) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public boolean isDefaultNamespace(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        public String getTextContent() throws DOMException {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public boolean isEqualNode(Node arg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        public Object getUserData(String key) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public boolean isSameNode(Node other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+        public boolean isDefaultNamespace(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-	public String lookupNamespaceURI(String prefix) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public boolean isEqualNode(Node arg) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-	public String lookupPrefix(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public boolean isSameNode(Node other) {
+            // TODO Auto-generated method stub
+            return false;
+        }
 
-	public void setTextContent(String textContent) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+        public String lookupNamespaceURI(String prefix) {
+            // TODO Auto-generated method stub
+            return null;
+        }
 
-	public Object setUserData(String key, Object data, UserDataHandler handler) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        public String lookupPrefix(String namespaceURI) {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
+        public void setTextContent(String textContent) throws DOMException {
+            // TODO Auto-generated method stub
+
+        }
+
+        public Object setUserData(String key, Object data, UserDataHandler handler) {
+            // TODO Auto-generated method stub
+            return null;
+        }
     }
 
-    static class Nodemap implements NamedNodeMap
-    {
-	// package private
-	boolean	readonly;
+    static class Nodemap implements NamedNodeMap {
+        // package private
+        boolean readonly;
 
-	// package private
-	java.util.Vector	list = new java.util.Vector ();
+        // package private
+        java.util.Vector list = new java.util.Vector();
 
-	// XXX copied from AttributeSet; share implementation!
-	public Node getNamedItem (String name)
-	{
-	    int	length = list.size ();
-	    Node	value;
+        // XXX copied from AttributeSet; share implementation!
+        public Node getNamedItem(String name) {
+            int length = list.size();
+            Node value;
 
-	    for (int i = 0; i < length; i++) {
-		value = item (i);
-		if (value.getNodeName ().equals (name))
-		    return value;
-	    }
-	    return null;
-	}
+            for (int i = 0; i < length; i++) {
+                value = item(i);
+                if (value.getNodeName().equals(name))
+                    return value;
+            }
+            return null;
+        }
 
         /**
          * <b>DOM2:</b>
@@ -573,45 +583,40 @@ final class Doctype extends NodeBase implements DocumentType
         public Node getNamedItemNS(String namespaceURI, String localName) {
             return null;
         }
-        
-	// XXX copied from AttributeSet; share implementation!
-	public int getLength ()
-	{
-	    return list.size ();
-	}
 
-	// XXX copied from AttributeSet; share implementation!
-	public Node item (int index)
-	{
-	    if (index < 0 || index >= list.size ())
-		return null;
-	    return (Node) list.elementAt (index);
-	}
+        // XXX copied from AttributeSet; share implementation!
+        public int getLength() {
+            return list.size();
+        }
+
+        // XXX copied from AttributeSet; share implementation!
+        public Node item(int index) {
+            if (index < 0 || index >= list.size())
+                return null;
+            return (Node) list.elementAt(index);
+        }
 
 
-	public Node removeNamedItem (String name)
-	throws DOMException
-	{
-	    throw new DomEx (DOMException.NO_MODIFICATION_ALLOWED_ERR);
-	}
+        public Node removeNamedItem(String name)
+                throws DOMException {
+            throw new DomEx(DOMException.NO_MODIFICATION_ALLOWED_ERR);
+        }
 
         /**
          * <b>DOM2:</b>
          */
         public Node removeNamedItemNS(String namespaceURI, String localName)
-            throws DOMException
-        {
-	    throw new DomEx(DOMException.NO_MODIFICATION_ALLOWED_ERR);
+                throws DOMException {
+            throw new DomEx(DOMException.NO_MODIFICATION_ALLOWED_ERR);
         }
 
-	// caller guarantees (e.g. from parser) uniqueness
-	public Node setNamedItem (Node item) throws DOMException
-	{
-	    if (readonly)
-		throw new DomEx (DOMException.NO_MODIFICATION_ALLOWED_ERR);
-	    list.addElement (item);
-	    return null;
-	}
+        // caller guarantees (e.g. from parser) uniqueness
+        public Node setNamedItem(Node item) throws DOMException {
+            if (readonly)
+                throw new DomEx(DOMException.NO_MODIFICATION_ALLOWED_ERR);
+            list.addElement(item);
+            return null;
+        }
 
         /**
          * <b>DOM2:</b>
@@ -627,63 +632,63 @@ final class Doctype extends NodeBase implements DocumentType
 
     }
 
-	public short compareDocumentPosition(Node other) throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public short compareDocumentPosition(Node other) throws DOMException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getBaseURI() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Object getFeature(String feature, String version) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getFeature(String feature, String version) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String getTextContent() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getTextContent() throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Object getUserData(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getUserData(String key) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public boolean isDefaultNamespace(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isDefaultNamespace(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean isEqualNode(Node arg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isEqualNode(Node arg) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean isSameNode(Node other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isSameNode(Node other) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public String lookupNamespaceURI(String prefix) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupNamespaceURI(String prefix) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String lookupPrefix(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupPrefix(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void setTextContent(String textContent) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setTextContent(String textContent) throws DOMException {
+        // TODO Auto-generated method stub
 
-	public Object setUserData(String key, Object data, UserDataHandler handler) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

@@ -5,17 +5,16 @@ import java.util.Date;
 
 import com.boco.eoms.sheet.base.model.BaseLink;
 
-public class BureaudataUpdateLink extends BaseLink
-{
-  
-  private String linkOperationDesc;
+public class BureaudataUpdateLink extends BaseLink {
 
-public String getLinkOperationDesc() {
-	return linkOperationDesc;
-}
+    private String linkOperationDesc;
 
-public void setLinkOperationDesc(String linkOperationDesc) {
-	this.linkOperationDesc = linkOperationDesc;
-}
+    public String getLinkOperationDesc() {
+        return linkOperationDesc;
+    }
+
+    public void setLinkOperationDesc(String linkOperationDesc) {
+        this.linkOperationDesc = linkOperationDesc;
+    }
 
 }

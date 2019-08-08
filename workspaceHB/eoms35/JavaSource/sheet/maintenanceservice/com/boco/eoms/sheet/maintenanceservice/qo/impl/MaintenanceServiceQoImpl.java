@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.maintenanceservice.qo.IMaintenanceServiceQo;
  * <p>
  * Thu Mar 16 15:48:02 CST 2017
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class MaintenanceServiceQoImpl extends WorkSheetQOImpl implements IMaintenanceServiceQo {
- 
- }
+
+public class MaintenanceServiceQoImpl extends WorkSheetQOImpl implements IMaintenanceServiceQo {
+
+}

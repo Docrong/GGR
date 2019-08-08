@@ -1,257 +1,256 @@
 /*
 ------------------------------------------------------------------------------------
-Copyright (c) 2004,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+Copyright (c) 2004,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
 All rights reserved.
-Filename £ºxwin.js
-Abstract £º¿ÉÒÆ¶¯µÄ²ã£¬Ò»°ãÓÃÓÚÒ³Ãæµ¼º½
-Version¡¡£º1.0
-Author   £ºLiu Guoyuan
-Finished Date £º2004-02-20
-Last Modified £º2004-02-20
+Filename ï¿½ï¿½xwin.js
+Abstract ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ä²ã£¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æµ¼ï¿½ï¿½
+Versionï¿½ï¿½ï¿½ï¿½1.0
+Author   ï¿½ï¿½Liu Guoyuan
+Finished Date ï¿½ï¿½2004-02-20
+Last Modified ï¿½ï¿½2004-02-20
 ------------------------------------------------------------------------------------
-¹¦ÄÜËµÃ÷£º
-1.0¡¡Éú³É¿ÉÒÆ¶¯µÄÍ¼²ã£¬´øÕ¹¿ª/¹Ø±Õ¹¦ÄÜ£¬²¢¿ÉÉèÖÃËæÆÁÄ»ÒÆ¶¯
+ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+1.0ï¿½ï¿½ï¿½ï¿½ï¿½É¿ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½Í¼ï¿½ã£¬ï¿½ï¿½Õ¹ï¿½ï¿½/ï¿½Ø±Õ¹ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Æ¶ï¿½
 ------------------------------------------------------------------------------------
-Ê¹ÓÃËµÃ÷£º
+Ê¹ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
 
-¶ÔÏóÃû£º xWin
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ xWin
 
-²ÎÊý£º
-1 id£º       Éú³ÉµÄÍ¼²ãID  (×Ô¶¯¼ÓÉÏÇ°ê¡¡°xWin_")
-2 width£º    ¿í
-3 height£º   ×îÐ¡¸ß¶È¡¡£¨×î´ó¸ß¶È¸ù¾ÝÊµ¼ÊÄÚÈÝµ÷Õû£©
-4 left£º     ×ó±ß¶¨Î»
-5 top£º      ¶¥²¿¶¨Î»
-6 title£º    ±êÌâ
-7 msg£º      ÄÚÈÝ
-8 isFollow£º ÊÇ·ñ¸úËæÆÁÄ»ÒÆ¶¯¡¡¡¡true|false ,
-¡¡¡¡¡¡¡¡¡¡¡¡ ×¢£ºµ±ÔÊÐí¸úËæÒÆ¶¯Ê±£¬xWin¶ÔÏóÊµÀýÃû±ØÐëÎª"oXWin",¼´Ö»ÔÊÐíÒ»¸öÍ¼²ã¸úËæÒÆ¶¯
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+1 idï¿½ï¿½       ï¿½ï¿½ï¿½Éµï¿½Í¼ï¿½ï¿½ID  (ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ê¡¡ï¿½xWin_")
+2 widthï¿½ï¿½    ï¿½ï¿½
+3 heightï¿½ï¿½   ï¿½ï¿½Ð¡ï¿½ß¶È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¶È¸ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½
+4 leftï¿½ï¿½     ï¿½ï¿½ß¶ï¿½Î»
+5 topï¿½ï¿½      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»
+6 titleï¿½ï¿½    ï¿½ï¿½ï¿½ï¿½
+7 msgï¿½ï¿½      ï¿½ï¿½ï¿½ï¿½
+8 isFollowï¿½ï¿½ ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½true|false ,
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½Ê±ï¿½ï¿½xWinï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª"oXWin",ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
 
-·½·¨£º
-build()¡¡Éú³ÉÍ¼²ã
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+build()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
 
-Ê¹ÓÃÊ¾Àý£º
-<!-- µ¼º½ -->
+Ê¹ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+<!-- ï¿½ï¿½ï¿½ï¿½ -->
 <script language="javascript" src="../xwin.js"></script>
 <script>
 var xWin_content = 
 "<table width='100%'  border='0' cellpadding='2' cellspacing='1' id='layNavigation'>"+
-"  <tr><td><a href='#'>¡ü·µ»Ø¶¥²¿</a></td></tr>"+
-"  <tr><td><a href='javascript:search();'>ËÑ¡¡¡¡Ë÷</a></td></tr>"+
-"  <tr><td><a href='javascript:window.close()'>¡ý¹Ø±Õ´°¿Ú</a></td></tr>"+
+"  <tr><td><a href='#'>ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½</a></td></tr>"+
+"  <tr><td><a href='javascript:search();'>ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½</a></td></tr>"+
+"  <tr><td><a href='javascript:window.close()'>ï¿½ï¿½ï¿½Ø±Õ´ï¿½ï¿½ï¿½</a></td></tr>"+
 "</table>";
-//´´½¨xWin¶ÔÏóÊµÀý
-var oXWin = new xWin("1",120,200,document.body.clientWidth-150,50,"¿ìËÙµ¼º½",xWin_content,true);
-//ÏÔÊ¾xWin¶ÔÏó
+//ï¿½ï¿½ï¿½ï¿½xWinï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
+var oXWin = new xWin("1",120,200,document.body.clientWidth-150,50,"ï¿½ï¿½ï¿½Ùµï¿½ï¿½ï¿½",xWin_content,true);
+//ï¿½ï¿½Ê¾xWinï¿½ï¿½ï¿½ï¿½
 oXWin.bulid();
 </script>
-<!-- End µ¼º½ -->
+<!-- End ï¿½ï¿½ï¿½ï¿½ -->
 -------------------------------------------------------------------------------------
 */
 
-<!--
+<
+!--
 //self.onError=null;
-var xWin_x0=0,xWin_y0=0,xWin_x1=0,xWin_y1=0;
-var xWin_offx=6,xWin_offxy=6;
-var moveable=false;
-var hover='orange',normal='slategray'; //color;
-var xWin_index=10000;//z-index;
-//¿ªÊ¼ÍÏ¶¯;
-function xWin_startDrag(obj)
-{
-  //Ëø¶¨±êÌâÀ¸;
-  obj.setCapture();
-  //¶¨Òå¶ÔÏó;
-  var win = obj.parentNode;
-  var sha = win.nextSibling;
-  //¼ÇÂ¼Êó±êºÍ²ãÎ»ÖÃ;
-  xWin_x0 = event.clientX;
-  xWin_y0 = event.clientY;
-  xWin_x1 = parseInt(win.style.left);
-  xWin_y1 = parseInt(win.style.top);
-  //¼ÇÂ¼ÑÕÉ«;
-  normal = obj.style.backgroundColor;
-  //¸Ä±ä·ç¸ñ;
-  obj.style.backgroundColor = hover;
-  win.style.borderColor = hover;
-  obj.nextSibling.style.color = hover;
-  sha.style.height = win.clientHeight+2*2;
-  sha.style.width = win.clientWidth+2*2;
-  sha.style.left = xWin_x1 + xWin_offx;
-  sha.style.top = xWin_y1 + xWin_offxy;
-  sha.style.display = "block";
-  moveable = true;
-}
-//ÍÏ¶¯;
-function xWin_drag(obj)
-{
-  var win = obj.parentNode;
-  var sha = win.nextSibling;
-  if(moveable)
-  {
-    win.style.left = xWin_x1 + event.clientX - xWin_x0;
-    win.style.top = xWin_y1 + event.clientY - xWin_y0;
-    sha.style.left = parseInt(win.style.left) + xWin_offx;
-    sha.style.top = parseInt(win.style.top) + xWin_offxy;
-  }
-}
-//Í£Ö¹ÍÏ¶¯;
-function xWin_stopDrag(obj)
-{
-  var win = obj.parentNode;
-  var sha = win.nextSibling;
-  win.style.borderColor = normal;
-  obj.style.backgroundColor = normal;
-  obj.nextSibling.style.color = normal;
-  sha.style.display = "none";
-  sha.style.left = obj.parentNode.style.left;
-  sha.style.top = obj.parentNode.style.top;
-  //·Å¿ª±êÌâÀ¸;
-  obj.releaseCapture();
-  moveable = false;
-}
-//»ñµÃ½¹µã;
-function xWin_getFocus(obj)
-{
-  xWin_index = xWin_index + 2;
-  var idx = xWin_index;
-  obj.style.zIndex=idx;
-  obj.nextSibling.style.zIndex=idx-1;
-}
-function xWin_min(obj)
-{
-  var win = obj.parentNode.parentNode;
-  var sha = win.nextSibling;
-  var tit = obj.parentNode;
-  var msg = tit.nextSibling;
-  var flg = msg.style.display=="none";
-  if(flg)
-  {
-    win.style.height = parseInt(msg.clientHeight) + parseInt(tit.clientHeight) + 2*2;
-    sha.style.height = win.style.height;
-    msg.style.display = "block";
-    obj.innerHTML = "0";
-  }
-  else
-  {
-    win.style.height = parseInt(tit.clientHeight) + 2*2;
-    sha.style.height = win.style.height;
-    obj.innerHTML = "2";
-    msg.style.display = "none";
-  }
-}
-function xWin_cls(obj)
-{
-  var win = obj.parentNode.parentNode;
-  var sha = win.nextSibling;
-  win.style.visibility = "hidden";
-  sha.style.visibility = "hidden";
-}
-//´´½¨Ò»¸ö¶ÔÏó;
-function xWin(id,w,h,l,t,tit,msg,isFollow)
-{
-  xWin_index = xWin_index+2;
-  this.id = "xWin_" + id;
-  this.width = w;
-  this.height = h;
-  this.left = l;
-  this.top = t;
-  this.zIndex = xWin_index;
-  this.title = tit;
-  this.isFollow = isFollow; 
-  this.message = msg;
-  this.obj = null;
-  this.bulid = xWin_bulid;
-}
-//³õÊ¼»¯;
-function xWin_bulid()
-{
-  var str = ""
-  + "<div id=" + this.id + " "
-  + "style='"
-  + "z-index:" + this.zIndex + ";"
-  + "width:" + this.width + ";"
-  + "height:" + this.height + ";"
-  + "left:" + this.left + ";"
-  + "top:" + this.top + ";"
-  + "background-color:" + normal + ";"
-  + "color:" + normal + ";"
-  + "font-size:12px;"
-  + "font-family:ËÎÌå;"
-  + "position:absolute;"
-  + "cursor:default;"
-  + "border:2px solid " + normal + ";"
-  + "' "
-  + "onmousedown='xWin_getFocus(this)'>"
-  + "<div "
-  + "style='"
-  + "background-color:" + normal + ";"
-  + "width:" + (this.width) + ";"
-  + "height:20;"
-  + "color:white;"
-  + "cursor:move;"
-  + "' "
-  + "onmousedown='xWin_startDrag(this)' "
-  + "onmouseup='xWin_stopDrag(this)' "
-  + "onmousemove='xWin_drag(this)' "
-  + ">"
-  + "<span style='width:" + (this.width-2*12-4) + ";padding-left:3px;font_size=12px;'>" + this.title + "</span>"
-  + "<span style='cursor:hand;width:12;border-width:0px;color:white;font-family:webdings;' onclick='xWin_min(this)'>0</span>"
-  + "<span style='cursor:hand;width:12;border-width:0px;color:white;font-family:webdings;' onclick='xWin_cls(this)'>r</span>"
-  + "</div>"
-  + "<div style='"
-  + "width:100%;"
-  + "height:" + (this.height-20-4) + ";"
-  + "background-color:white;"
-  + "line-height:14px;"
-  + "word-break:break-all;"
-  + "padding:3px;"
-  + "'>" + this.message + "</div>"
-  + "</div>"
-  + "<div style='"
-  + "width:" + this.width + ";"
-  + "height:" + this.height + ";"
-  + "top:" + this.top + ";"
-  + "left:" + this.left + ";"
-  + "z-index:" + (this.zIndex-1) + ";"
-  + "position:absolute;"
-  + "background-color:black;"
-  + "display:none;"
-  + "filter:alpha(opacity=40);"
-  + "'></div></div>";
-  document.write (str);
-  if (this.isFollow){
-    document.onload=window.setInterval("xWin_heartBeat(oXWin)",80);
-  }
-  //document.body.insertAdjacentHTML("beforeEnd",str);
+var xWin_x0 = 0, xWin_y0 = 0, xWin_x1 = 0, xWin_y1 = 0;
+var xWin_offx = 6, xWin_offxy = 6;
+var moveable = false;
+var hover = 'orange', normal = 'slategray'; //color;
+var xWin_index = 10000;//z-index;
+//ï¿½ï¿½Ê¼ï¿½Ï¶ï¿½;
+function xWin_startDrag(obj) {
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
+    obj.setCapture();
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
+    var win = obj.parentNode;
+    var sha = win.nextSibling;
+    //ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Í²ï¿½Î»ï¿½ï¿½;
+    xWin_x0 = event.clientX;
+    xWin_y0 = event.clientY;
+    xWin_x1 = parseInt(win.style.left);
+    xWin_y1 = parseInt(win.style.top);
+    //ï¿½ï¿½Â¼ï¿½ï¿½É«;
+    normal = obj.style.backgroundColor;
+    //ï¿½Ä±ï¿½ï¿½ï¿½;
+    obj.style.backgroundColor = hover;
+    win.style.borderColor = hover;
+    obj.nextSibling.style.color = hover;
+    sha.style.height = win.clientHeight + 2 * 2;
+    sha.style.width = win.clientWidth + 2 * 2;
+    sha.style.left = xWin_x1 + xWin_offx;
+    sha.style.top = xWin_y1 + xWin_offxy;
+    sha.style.display = "block";
+    moveable = true;
 }
 
-//¸úËæÆÁÄ»ÒÆ¶¯Í¼²ã
-xWin_lastScrollX = 0; xWin_lastScrollY = 0;
+//ï¿½Ï¶ï¿½;
+function xWin_drag(obj) {
+    var win = obj.parentNode;
+    var sha = win.nextSibling;
+    if (moveable) {
+        win.style.left = xWin_x1 + event.clientX - xWin_x0;
+        win.style.top = xWin_y1 + event.clientY - xWin_y0;
+        sha.style.left = parseInt(win.style.left) + xWin_offx;
+        sha.style.top = parseInt(win.style.top) + xWin_offxy;
+    }
+}
+
+//Í£Ö¹ï¿½Ï¶ï¿½;
+function xWin_stopDrag(obj) {
+    var win = obj.parentNode;
+    var sha = win.nextSibling;
+    win.style.borderColor = normal;
+    obj.style.backgroundColor = normal;
+    obj.nextSibling.style.color = normal;
+    sha.style.display = "none";
+    sha.style.left = obj.parentNode.style.left;
+    sha.style.top = obj.parentNode.style.top;
+    //ï¿½Å¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
+    obj.releaseCapture();
+    moveable = false;
+}
+
+//ï¿½ï¿½Ã½ï¿½ï¿½ï¿½;
+function xWin_getFocus(obj) {
+    xWin_index = xWin_index + 2;
+    var idx = xWin_index;
+    obj.style.zIndex = idx;
+    obj.nextSibling.style.zIndex = idx - 1;
+}
+
+function xWin_min(obj) {
+    var win = obj.parentNode.parentNode;
+    var sha = win.nextSibling;
+    var tit = obj.parentNode;
+    var msg = tit.nextSibling;
+    var flg = msg.style.display == "none";
+    if (flg) {
+        win.style.height = parseInt(msg.clientHeight) + parseInt(tit.clientHeight) + 2 * 2;
+        sha.style.height = win.style.height;
+        msg.style.display = "block";
+        obj.innerHTML = "0";
+    } else {
+        win.style.height = parseInt(tit.clientHeight) + 2 * 2;
+        sha.style.height = win.style.height;
+        obj.innerHTML = "2";
+        msg.style.display = "none";
+    }
+}
+
+function xWin_cls(obj) {
+    var win = obj.parentNode.parentNode;
+    var sha = win.nextSibling;
+    win.style.visibility = "hidden";
+    sha.style.visibility = "hidden";
+}
+
+//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
+function xWin(id, w, h, l, t, tit, msg, isFollow) {
+    xWin_index = xWin_index + 2;
+    this.id = "xWin_" + id;
+    this.width = w;
+    this.height = h;
+    this.left = l;
+    this.top = t;
+    this.zIndex = xWin_index;
+    this.title = tit;
+    this.isFollow = isFollow;
+    this.message = msg;
+    this.obj = null;
+    this.bulid = xWin_bulid;
+}
+
+//ï¿½ï¿½Ê¼ï¿½ï¿½;
+function xWin_bulid() {
+    var str = ""
+        + "<div id=" + this.id + " "
+        + "style='"
+        + "z-index:" + this.zIndex + ";"
+        + "width:" + this.width + ";"
+        + "height:" + this.height + ";"
+        + "left:" + this.left + ";"
+        + "top:" + this.top + ";"
+        + "background-color:" + normal + ";"
+        + "color:" + normal + ";"
+        + "font-size:12px;"
+        + "font-family:ï¿½ï¿½ï¿½ï¿½;"
+        + "position:absolute;"
+        + "cursor:default;"
+        + "border:2px solid " + normal + ";"
+        + "' "
+        + "onmousedown='xWin_getFocus(this)'>"
+        + "<div "
+        + "style='"
+        + "background-color:" + normal + ";"
+        + "width:" + (this.width) + ";"
+        + "height:20;"
+        + "color:white;"
+        + "cursor:move;"
+        + "' "
+        + "onmousedown='xWin_startDrag(this)' "
+        + "onmouseup='xWin_stopDrag(this)' "
+        + "onmousemove='xWin_drag(this)' "
+        + ">"
+        + "<span style='width:" + (this.width - 2 * 12 - 4) + ";padding-left:3px;font_size=12px;'>" + this.title + "</span>"
+        + "<span style='cursor:hand;width:12;border-width:0px;color:white;font-family:webdings;' onclick='xWin_min(this)'>0</span>"
+        + "<span style='cursor:hand;width:12;border-width:0px;color:white;font-family:webdings;' onclick='xWin_cls(this)'>r</span>"
+        + "</div>"
+        + "<div style='"
+        + "width:100%;"
+        + "height:" + (this.height - 20 - 4) + ";"
+        + "background-color:white;"
+        + "line-height:14px;"
+        + "word-break:break-all;"
+        + "padding:3px;"
+        + "'>" + this.message + "</div>"
+        + "</div>"
+        + "<div style='"
+        + "width:" + this.width + ";"
+        + "height:" + this.height + ";"
+        + "top:" + this.top + ";"
+        + "left:" + this.left + ";"
+        + "z-index:" + (this.zIndex - 1) + ";"
+        + "position:absolute;"
+        + "background-color:black;"
+        + "display:none;"
+        + "filter:alpha(opacity=40);"
+        + "'></div></div>";
+    document.write(str);
+    if (this.isFollow) {
+        document.onload = window.setInterval("xWin_heartBeat(oXWin)", 80);
+    }
+    //document.body.insertAdjacentHTML("beforeEnd",str);
+}
+
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä»ï¿½Æ¶ï¿½Í¼ï¿½ï¿½
+xWin_lastScrollX = 0;
+xWin_lastScrollY = 0;
+
 function xWin_heartBeat(xWinObj_Name) {
-  var obj = eval("document.all."+xWinObj_Name.id);
-	diffY = document.body.scrollTop; diffX = document.body.scrollLeft;
-	if(diffY != xWin_lastScrollY) {
-		percent = .300 * (diffY - xWin_lastScrollY);
-		if(percent > 0) percent = Math.ceil(percent);
-		else percent = Math.floor(percent);
-	  obj.style.pixelTop += percent;
-		xWin_lastScrollY = xWin_lastScrollY + percent;
-	}
-	if(diffX != xWin_lastScrollX) {
-		percent = .300 * (diffX - xWin_lastScrollX);
-		if(percent > 0) percent = Math.ceil(percent);
-		else percent = Math.floor(percent);
-	  obj.style.pixelLeft += percent;
-		xWin_lastScrollX = xWin_lastScrollX + percent;
-	}
+    var obj = eval("document.all." + xWinObj_Name.id);
+    diffY = document.body.scrollTop;
+    diffX = document.body.scrollLeft;
+    if (diffY != xWin_lastScrollY) {
+        percent = .300 * (diffY - xWin_lastScrollY);
+        if (percent > 0) percent = Math.ceil(percent);
+        else percent = Math.floor(percent);
+        obj.style.pixelTop += percent;
+        xWin_lastScrollY = xWin_lastScrollY + percent;
+    }
+    if (diffX != xWin_lastScrollX) {
+        percent = .300 * (diffX - xWin_lastScrollX);
+        if (percent > 0) percent = Math.ceil(percent);
+        else percent = Math.floor(percent);
+        obj.style.pixelLeft += percent;
+        xWin_lastScrollX = xWin_lastScrollX + percent;
+    }
 }
 
-//Êä³öµ¼º½²ãÑùÊ½±í
-document.write ("<style type='text/css'>");
-document.write ("  #layNavigation{font-size: 12px;");
-document.write ("  #layNavigation table{background-color: #003366;}");
-document.write ("  #layNavigation td{line-height: 100%;text-align: center;color: #000000;}");
-document.write ("  #layNavigation a{color: #000000;}");
-document.write ("</style>");
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
+document.write("<style type='text/css'>");
+document.write("  #layNavigation{font-size: 12px;");
+document.write("  #layNavigation table{background-color: #003366;}");
+document.write("  #layNavigation td{line-height: 100%;text-align: center;color: #000000;}");
+document.write("  #layNavigation a{color: #000000;}");
+document.write("</style>");
 //-->

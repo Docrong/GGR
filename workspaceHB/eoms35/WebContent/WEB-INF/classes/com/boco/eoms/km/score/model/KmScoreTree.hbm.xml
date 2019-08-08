@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="km_score_tree"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="nodeName"
-            	column="NODE_NAME"
+        <property
+                name="nodeName"
+                column="NODE_NAME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="userId"
-            	column="USER_ID"
+        <property
+                name="userId"
+                column="USER_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="createTime"
-            	column="CREATETIME"
+        <property
+                name="createTime"
+                column="CREATETIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="weight"
-            	column="WEIGHT"
+        <property
+                name="weight"
+                column="WEIGHT"
                 length="10"
                 not-null="true"
                 unique="false"
@@ -66,37 +66,37 @@
 
         </property>
 
-		<property
-            name="nodeId"
-            	column="node_id"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
         <property
-            name="parentNodeId"
-            	column="parent_node_id"
+                name="nodeId"
+                column="node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="leaf"
-            	column="leaf"
+                name="parentNodeId"
+                column="parent_node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+        <property
+                name="leaf"
+                column="leaf"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

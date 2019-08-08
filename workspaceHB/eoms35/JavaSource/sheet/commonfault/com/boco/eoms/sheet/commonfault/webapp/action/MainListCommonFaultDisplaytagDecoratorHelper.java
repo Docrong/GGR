@@ -7,22 +7,20 @@ package com.boco.eoms.sheet.commonfault.webapp.action;
 
 import com.boco.eoms.base.util.StaticMethod;
 import com.boco.eoms.sheet.base.webapp.action.MainListDisplaytagDecoratorHelper;
+
 import java.util.Map;
 
-public class MainListCommonFaultDisplaytagDecoratorHelper extends MainListDisplaytagDecoratorHelper
-{
+public class MainListCommonFaultDisplaytagDecoratorHelper extends MainListDisplaytagDecoratorHelper {
 
-	public MainListCommonFaultDisplaytagDecoratorHelper()
-	{
-	}
+    public MainListCommonFaultDisplaytagDecoratorHelper() {
+    }
 
-	public String addRowClass()
-	{
-		Map Map = (Map)getCurrentRowObject();
-		String mainFaultResponseLevel = StaticMethod.nullObject2String(Map.get("mainFaultResponseLevel"));
-		String color = "";
-		if (!mainFaultResponseLevel.equals(""))
-			color = " jl-level-" + mainFaultResponseLevel;
-		return super.addRowClass() + color;
-	}
+    public String addRowClass() {
+        Map Map = (Map) getCurrentRowObject();
+        String mainFaultResponseLevel = StaticMethod.nullObject2String(Map.get("mainFaultResponseLevel"));
+        String color = "";
+        if (!mainFaultResponseLevel.equals(""))
+            color = " jl-level-" + mainFaultResponseLevel;
+        return super.addRowClass() + color;
+    }
 }

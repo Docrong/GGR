@@ -16,19 +16,16 @@ import com.boco.eoms.commons.system.dict.model.IDictTagHelper;
  * <p>
  * Date:2007-10-24 19:45:26
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public interface IDictTagStrategyHelper {
     /**
      * 标签结束
-     * 
-     * @param dictTag
-     *            标签传递的属性
-     * @param pageContext
-     *            page上下文
+     *
+     * @param dictTag     标签传递的属性
+     * @param pageContext page上下文
      * @return
      * @throws JspException
      */
@@ -37,11 +34,9 @@ public interface IDictTagStrategyHelper {
 
     /**
      * 标签开始
-     * 
-     * @param dictTag
-     *            标签传递的属性
-     * @param pageContext
-     *            page上下文
+     *
+     * @param dictTag     标签传递的属性
+     * @param pageContext page上下文
      * @return
      * @throws JspException
      */

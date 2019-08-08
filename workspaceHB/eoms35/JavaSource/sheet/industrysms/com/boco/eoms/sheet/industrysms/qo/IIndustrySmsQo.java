@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.industrysms.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Mon Mar 04 17:27:01 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IIndustrySmsQo extends IWorkSheetQO {
- 
- }
+
+public interface IIndustrySmsQo extends IWorkSheetQO {
+
+}

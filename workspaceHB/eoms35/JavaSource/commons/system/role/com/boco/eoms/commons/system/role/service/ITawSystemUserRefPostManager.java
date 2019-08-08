@@ -15,6 +15,7 @@ public interface ITawSystemUserRefPostManager extends Manager {
 
     /**
      * Gets tawSystemUserRefPost's information based on id.
+     *
      * @param id the tawSystemUserRefPost's id
      * @return tawSystemUserRefPost populated tawSystemUserRefPost object
      */
@@ -22,16 +23,20 @@ public interface ITawSystemUserRefPostManager extends Manager {
 
     /**
      * Saves a tawSystemUserRefPost's information
+     *
      * @param tawSystemUserRefPost the object to be saved
      */
     public void saveTawSystemUserRefPost(TawSystemUserRefPost tawSystemUserRefPost);
 
     /**
      * Removes a tawSystemUserRefPost from the database by id
+     *
      * @param id the tawSystemUserRefPost's id
      */
     public void removeTawSystemUserRefPost(final String id);
+
     public Map getTawSystemUserRefPosts(final Integer curPage, final Integer pageSize);
+
     public Map getTawSystemUserRefPosts(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

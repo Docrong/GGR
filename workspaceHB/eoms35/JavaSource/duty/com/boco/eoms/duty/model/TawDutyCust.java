@@ -1,54 +1,54 @@
 package com.boco.eoms.duty.model;
 
 public class TawDutyCust {
-	private int id;
+    private int id;
 
-	private String userId;
+    private String userId;
 
-	private int flagId;
+    private int flagId;
 
-	private int flag;
-	
-	private String flagName;
+    private int flag;
 
-	public int getFlag() {
-		return flag;
-	}
+    private String flagName;
 
-	public void setFlag(int flag) {
-		this.flag = flag;
-	}
+    public int getFlag() {
+        return flag;
+    }
 
-	public int getFlagId() {
-		return flagId;
-	}
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
 
-	public void setFlagId(int flagId) {
-		this.flagId = flagId;
-	}
+    public int getFlagId() {
+        return flagId;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setFlagId(int flagId) {
+        this.flagId = flagId;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getFlagName() {
-		return flagName;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setFlagName(String flagName) {
-		this.flagName = flagName;
-	}
+    public String getFlagName() {
+        return flagName;
+    }
+
+    public void setFlagName(String flagName) {
+        this.flagName = flagName;
+    }
 
 }

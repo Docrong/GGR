@@ -1,13 +1,13 @@
 /**
  * _ModifyFormRequest.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhhead.interfaces;
 
-public class _ModifyFormRequest  implements java.io.Serializable {
+public class _ModifyFormRequest implements java.io.Serializable {
     private java.lang.String codeA;
     private java.lang.String codeB;
     private int attNum;
@@ -76,6 +76,7 @@ public class _ModifyFormRequest  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof _ModifyFormRequest)) return false;
         _ModifyFormRequest other = (_ModifyFormRequest) obj;
@@ -86,31 +87,32 @@ public class _ModifyFormRequest  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.codeA==null && other.getCodeA()==null) || 
-             (this.codeA!=null &&
-              this.codeA.equals(other.getCodeA()))) &&
-            ((this.codeB==null && other.getCodeB()==null) || 
-             (this.codeB!=null &&
-              this.codeB.equals(other.getCodeB()))) &&
-            this.attNum == other.getAttNum() &&
-            ((this.attachInfoList==null && other.getAttachInfoList()==null) || 
-             (this.attachInfoList!=null &&
-              this.attachInfoList.equals(other.getAttachInfoList()))) &&
-            ((this.relatedNEList==null && other.getRelatedNEList()==null) || 
-             (this.relatedNEList!=null &&
-              this.relatedNEList.equals(other.getRelatedNEList()))) &&
-            ((this.modifyType==null && other.getModifyType()==null) || 
-             (this.modifyType!=null &&
-              this.modifyType.equals(other.getModifyType()))) &&
-            ((this.noteModifyForm==null && other.getNoteModifyForm()==null) || 
-             (this.noteModifyForm!=null &&
-              this.noteModifyForm.equals(other.getNoteModifyForm())));
+        _equals = true &&
+                ((this.codeA == null && other.getCodeA() == null) ||
+                        (this.codeA != null &&
+                                this.codeA.equals(other.getCodeA()))) &&
+                ((this.codeB == null && other.getCodeB() == null) ||
+                        (this.codeB != null &&
+                                this.codeB.equals(other.getCodeB()))) &&
+                this.attNum == other.getAttNum() &&
+                ((this.attachInfoList == null && other.getAttachInfoList() == null) ||
+                        (this.attachInfoList != null &&
+                                this.attachInfoList.equals(other.getAttachInfoList()))) &&
+                ((this.relatedNEList == null && other.getRelatedNEList() == null) ||
+                        (this.relatedNEList != null &&
+                                this.relatedNEList.equals(other.getRelatedNEList()))) &&
+                ((this.modifyType == null && other.getModifyType() == null) ||
+                        (this.modifyType != null &&
+                                this.modifyType.equals(other.getModifyType()))) &&
+                ((this.noteModifyForm == null && other.getNoteModifyForm() == null) ||
+                        (this.noteModifyForm != null &&
+                                this.noteModifyForm.equals(other.getNoteModifyForm())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

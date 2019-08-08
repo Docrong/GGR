@@ -1,5 +1,5 @@
 var Quote = 0;
-var Bold  = 0;
+var Bold = 0;
 var Italic = 0;
 var Underline = 0;
 var Code = 0;
@@ -11,602 +11,625 @@ var Ra = 0;
 var Rm = 0;
 var Marquee = 0;
 var Fly = 0;
-var fanzi=0;
-var text_enter_url      = "ÇëÊäÈëÁ¬½ÓÍøÖ·";
-var text_enter_txt      = "ÇëÊäÈëÁ¬½ÓËµÃ÷";
-var text_enter_image    = "ÇëÊäÈëÍ¼Æ¬ÔÚ¸½¼þÖÐµÄÎÄ¼þÃû,¶à¸öÓÃ¶ººÅ¸ô¿ª";
-var text_enter_sound    = "ÇëÊäÈëÉùÒôÎÄ¼þÍøÖ·";
-var text_enter_swf      = "ÇëÊäÈëFLASH¶¯»­ÍøÖ·";
-var text_enter_ra      = "ÇëÊäÈëRealÒôÀÖÍøÖ·";
-var text_enter_rm      = "ÇëÊäÈëRealÓ°Æ¬ÍøÖ·";
-var text_enter_wmv      = "ÇëÊäÈëMediaÓ°Æ¬ÍøÖ·";
-var text_enter_wma      = "ÇëÊäÈëMediaÒôÀÖÍøÖ·";
-var text_enter_mov      = "ÇëÊäÈëQuickTimeÒôÀÖÍøÖ·";
-var text_enter_sw      = "ÇëÊäÈëshockwaveÒôÀÖÍøÖ·";
-var text_enter_email    = "ÇëÊäÈëÓÊ¼þÍøÖ·";
-var error_no_url        = "Äú±ØÐëÊäÈëÍøÖ·";
-var error_no_txt        = "Äú±ØÐëÁ¬½ÓËµÃ÷";
-var error_no_title      = "Äú±ØÐëÊäÈëÊ×Ò³±êÌâ";
-var error_no_email      = "Äú±ØÐëÊäÈëÓÊ¼þÍøÖ·";
-var error_no_gset       = "±ØÐëÕýÈ·°´ÕÕ¸÷Ê½ÊäÈë£¡";
-var error_no_gtxt       = "±ØÐëÊäÈëÎÄ×Ö£¡";
-var text_enter_guang1   = "ÎÄ×ÖµÄ³¤¶È¡¢ÑÕÉ«ºÍ±ß½ç´óÐ¡";
-var text_enter_guang2   = "Òª²úÉúÐ§¹ûµÄÎÄ×Ö£¡";
-var text_enter_points    = "ÇëÊäÈëÊýÖµ,Èç£º1000 (¼´ÏÞÖÆ»ý·ÖÔÚ1000µãÒÔÏÂµÄÓÃ»§²»ÄÜä¯ÀÀ¸ÃÄÚÈÝ!)";
-var error_no_points       = "Äú±ØÐëÊäÈëÊýÖµ,Èç£º1000";
-var text_enter_money    = "ÇëÊäÈëÊýÖµ,Èç£º1000 (¼´ÏÞÖÆ½ðÇ®ÔÚ1000µãÒÔÏÂµÄÓÃ»§²»ÄÜä¯ÀÀ¸ÃÄÚÈÝ!)";
-var error_no_moeny       = "Äú±ØÐëÊäÈëÊýÖµ,Èç£º1000";
-var text_enter_power    = "ÇëÊäÈëÊýÖµ,Èç£º1000 (¼´ÏÞÖÆÍþÍûÔÚ1000µãÒÔÏÂµÄÓÃ»§²»ÄÜä¯ÀÀ¸ÃÄÚÈÝ!)";
-var error_no_power       = "Äú±ØÐëÊäÈëÊýÖµ,Èç£º1000";
-var text_enter_post    = "ÇëÊäÈëÊýÖµ,Èç£º1000 (¼´ÏÞÖÆ·¢±íÎÄÕÂÔÚ1000µãÒÔÏÂµÄÓÃ»§²»ÄÜä¯ÀÀ¸ÃÄÚÈÝ!)";
-var error_no_post       = "Äú±ØÐëÊäÈëÊýÖµ,Èç£º1000";
-var text_enter_usercp    = "ÇëÊäÈëÊýÖµ,Èç£º1000 (¼´ÏÞÖÆ÷ÈÁ¦ÖµÔÚ1000µãÒÔÏÂµÄÓÃ»§²»ÄÜä¯ÀÀ¸ÃÄÚÈÝ!)";
-var error_no_usercp       = "Äú±ØÐëÊäÈëÊýÖµ,Èç£º1000";
-var text_enter_usemoney    = "ÇëÊäÈëÊýÖµ,Èç£º1000 (¼´Ö»ÓÐÓÃ»§Ö§¸¶ÁË1000µã½ðÇ®²ÅÄÜä¯ÀÀ¸ÃÄÚÈÝ!)";
-var error_no_usemoney       = "Äú±ØÐëÊäÈëÊýÖµ,Èç£º1000";
-function commentWrite(NewCode) {
-document.tawInformationForm.body.value+=NewCode;
-document.tawInformationForm.body.focus();
-return;
-}
-function storeCaret(text) {
-	if (text.createTextRange) {
-		text.caretPos = document.selection.createRange().duplicate();
-	}
-        if(event.ctrlKey && window.event.keyCode==13){i++;if (i>1) {alert('Ìû×ÓÕýÔÚ·¢³ö£¬ÇëÄÍÐÄµÈ´ý£¡');return false;}this.document.form.submit();}
-}
-function AddText(text) {
-	if (document.tawInformationForm.body.createTextRange && document.tawInformationForm.body.caretPos) {
-		var caretPos = document.tawInformationForm.body.caretPos;
-		caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ?
-		text + ' ' : text;
-	}
-	else document.tawInformationForm.body.value += text;
-	document.tawInformationForm.body.focus(caretPos);
-}
-function inputs(str)
-{
-AddText(str);
-}
-function Curl() {
-var FoundErrors = '';
-var enterURL   = prompt(text_enter_url, "http://");
-var enterTxT   = prompt(text_enter_txt, enterURL);
-if (!enterURL)    {
-FoundErrors += "\n" + error_no_url;
-}
-if (!enterTxT)    {
-FoundErrors += "\n" + error_no_txt;
-}
-if (FoundErrors)  {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[URL="+enterURL+"]"+enterTxT+"[/URL]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
-function Cimage()
-{
-  var FoundErrors = '';
-  var enterURL   = prompt(text_enter_image, IFrame1.tawFileUploadForm.fileText.value);
-  if (!enterURL)
-  {
-    FoundErrors += "\n" + error_no_url;
-  }
+var fanzi = 0;
+var text_enter_url = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·";
+var text_enter_txt = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½";
+var text_enter_image = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ú¸ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½Å¸ï¿½ï¿½ï¿½";
+var text_enter_sound = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ö·";
+var text_enter_swf = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½FLASHï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·";
+var text_enter_ra = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Realï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·";
+var text_enter_rm = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RealÓ°Æ¬ï¿½ï¿½Ö·";
+var text_enter_wmv = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MediaÓ°Æ¬ï¿½ï¿½Ö·";
+var text_enter_wma = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Mediaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·";
+var text_enter_mov = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½QuickTimeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·";
+var text_enter_sw = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½shockwaveï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·";
+var text_enter_email = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·";
+var error_no_url = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·";
+var error_no_txt = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½";
+var error_no_title = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½";
+var error_no_email = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·";
+var error_no_gset = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½Õ¸ï¿½Ê½ï¿½ï¿½ï¿½ë£¡";
+var error_no_gtxt = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½";
+var text_enter_guang1 = "ï¿½ï¿½ï¿½ÖµÄ³ï¿½ï¿½È¡ï¿½ï¿½ï¿½É«ï¿½Í±ß½ï¿½ï¿½Ð¡";
+var text_enter_guang2 = "Òªï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½";
+var text_enter_points = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000 (ï¿½ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½1000ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!)";
+var error_no_points = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000";
+var text_enter_money = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000 (ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½Ç®ï¿½ï¿½1000ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!)";
+var error_no_moeny = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000";
+var text_enter_power = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000 (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1000ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!)";
+var error_no_power = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000";
+var text_enter_post = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000 (ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1000ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!)";
+var error_no_post = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000";
+var text_enter_usercp = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000 (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½1000ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!)";
+var error_no_usercp = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000";
+var text_enter_usemoney = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000 (ï¿½ï¿½Ö»ï¿½ï¿½ï¿½Ã»ï¿½Ö§ï¿½ï¿½ï¿½ï¿½1000ï¿½ï¿½ï¿½Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!)";
+var error_no_usemoney = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ç£º1000";
 
-  if (IFrame1.tawFileUploadForm.fileValue.value=="")
-  {
-    alert("ÏÈÍ¨¹ýÉÏ´«¸½¼þÉÏ´«ÏëÒªÌùµÄÍ¼Æ¬");
-  }
-  else
-  {
-    var fileValueArr=IFrame1.tawFileUploadForm.fileValue.value.split(",");
-    var fileTextArr=IFrame1.tawFileUploadForm.fileText.value.split(",");
-    var fValue="";
-    var fText="";
-    var urlArr=enterURL.split(",");
-    enterURL="";
-    for (i=0;i<fileTextArr.length;i++)
-    {
-      flag="";
-      for (j=0;j<urlArr.length;j++)
-      {
-        if (fileTextArr[i]==urlArr[j])
-        {
-          if (enterURL=="")
-             enterURL=fileValueArr[i];
-           else
-             enterURL=enterURL + "," + fileValueArr[i];
-           flag="$";
-           break;
-        }
-      }
-      if (fValue=="")
-      {
-        fValue=fileValueArr[i] + flag;
-        fText=fileTextArr[i]
-      }
-      else
-      {
-        fText=fText + "," + fileTextArr[i];
-        fValue=fValue + "," + fileValueArr[i] + flag;
-      }
-    }
-    var urlArr1=enterURL.split(",");
-    if (urlArr1.length!=urlArr.length)
-    {
-      alert("ÌùÍ¼ÎÄ¼þÃû»ò¸ñÊ½ÊäÈëÓÐÎó£¬ºË¶ÔºóÖØÐÂÊäÈë");
-      return;
-    }
-    var ToAdd="";
-    for (i=0;i<urlArr1.length;i++)
-      ToAdd = ToAdd + "[IMG]"+urlArr1[i]+"[/IMG]";
-    IFrame1.tawFileUploadForm.fileValue.value=fValue;
-    IFrame1.tawFileUploadForm.fileText.value=fText;
-    document.tawInformationForm.body.value+=ToAdd;
+function commentWrite(NewCode) {
+    document.tawInformationForm.body.value += NewCode;
     document.tawInformationForm.body.focus();
-  }
+    return;
 }
+
+function storeCaret(text) {
+    if (text.createTextRange) {
+        text.caretPos = document.selection.createRange().duplicate();
+    }
+    if (event.ctrlKey && window.event.keyCode == 13) {
+        i++;
+        if (i > 1) {
+            alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÄµÈ´ï¿½ï¿½ï¿½');
+            return false;
+        }
+        this.document.form.submit();
+    }
+}
+
+function AddText(text) {
+    if (document.tawInformationForm.body.createTextRange && document.tawInformationForm.body.caretPos) {
+        var caretPos = document.tawInformationForm.body.caretPos;
+        caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ?
+            text + ' ' : text;
+    } else document.tawInformationForm.body.value += text;
+    document.tawInformationForm.body.focus(caretPos);
+}
+
+function inputs(str) {
+    AddText(str);
+}
+
+function Curl() {
+    var FoundErrors = '';
+    var enterURL = prompt(text_enter_url, "http://");
+    var enterTxT = prompt(text_enter_txt, enterURL);
+    if (!enterURL) {
+        FoundErrors += "\n" + error_no_url;
+    }
+    if (!enterTxT) {
+        FoundErrors += "\n" + error_no_txt;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[URL=" + enterURL + "]" + enterTxT + "[/URL]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
+}
+
+function Cimage() {
+    var FoundErrors = '';
+    var enterURL = prompt(text_enter_image, IFrame1.tawFileUploadForm.fileText.value);
+    if (!enterURL) {
+        FoundErrors += "\n" + error_no_url;
+    }
+
+    if (IFrame1.tawFileUploadForm.fileValue.value == "") {
+        alert("ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Í¼Æ¬");
+    } else {
+        var fileValueArr = IFrame1.tawFileUploadForm.fileValue.value.split(",");
+        var fileTextArr = IFrame1.tawFileUploadForm.fileText.value.split(",");
+        var fValue = "";
+        var fText = "";
+        var urlArr = enterURL.split(",");
+        enterURL = "";
+        for (i = 0; i < fileTextArr.length; i++) {
+            flag = "";
+            for (j = 0; j < urlArr.length; j++) {
+                if (fileTextArr[i] == urlArr[j]) {
+                    if (enterURL == "")
+                        enterURL = fileValueArr[i];
+                    else
+                        enterURL = enterURL + "," + fileValueArr[i];
+                    flag = "$";
+                    break;
+                }
+            }
+            if (fValue == "") {
+                fValue = fileValueArr[i] + flag;
+                fText = fileTextArr[i]
+            } else {
+                fText = fText + "," + fileTextArr[i];
+                fValue = fValue + "," + fileValueArr[i] + flag;
+            }
+        }
+        var urlArr1 = enterURL.split(",");
+        if (urlArr1.length != urlArr.length) {
+            alert("ï¿½ï¿½Í¼ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬ºË¶Ôºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            return;
+        }
+        var ToAdd = "";
+        for (i = 0; i < urlArr1.length; i++)
+            ToAdd = ToAdd + "[IMG]" + urlArr1[i] + "[/IMG]";
+        IFrame1.tawFileUploadForm.fileValue.value = fValue;
+        IFrame1.tawFileUploadForm.fileText.value = fText;
+        document.tawInformationForm.body.value += ToAdd;
+        document.tawInformationForm.body.focus();
+    }
+}
+
 function Cemail() {
-var emailAddress = prompt(text_enter_email,"");
-if (!emailAddress) { alert(error_no_email); return; }
-var ToAdd = "[EMAIL]"+emailAddress+"[/EMAIL]";
-commentWrite(ToAdd);
+    var emailAddress = prompt(text_enter_email, "");
+    if (!emailAddress) {
+        alert(error_no_email);
+        return;
+    }
+    var ToAdd = "[EMAIL]" + emailAddress + "[/EMAIL]";
+    commentWrite(ToAdd);
 }
+
 function Ccode() {
-if (Code == 0) {
-ToAdd = "[CODE]";
-document.form.code.value = " ´úÂë*";
-Code = 1;
-} else {
-ToAdd = "[/CODE]";
-document.form.code.value = " ´úÂë ";
-Code = 0;
+    if (Code == 0) {
+        ToAdd = "[CODE]";
+        document.form.code.value = " ï¿½ï¿½ï¿½ï¿½*";
+        Code = 1;
+    } else {
+        ToAdd = "[/CODE]";
+        document.form.code.value = " ï¿½ï¿½ï¿½ï¿½ ";
+        Code = 0;
+    }
+    commentWrite(ToAdd);
 }
-commentWrite(ToAdd);
-}
+
 function Cquote() {
-fontbegin="[QUOTE]";
-fontend="[/QUOTE]";
-fontchuli();
+    fontbegin = "[QUOTE]";
+    fontend = "[/QUOTE]";
+    fontchuli();
 }
+
 function Cbold() {
-fontbegin="[B]";
-fontend="[/B]";
-fontchuli();
+    fontbegin = "[B]";
+    fontend = "[/B]";
+    fontchuli();
 }
+
 function Citalic() {
-fontbegin="[I]";
-fontend="[/I]";
-fontchuli();
+    fontbegin = "[I]";
+    fontend = "[/I]";
+    fontchuli();
 }
+
 function Cunder() {
-fontbegin="[U]";
-fontend="[/U]";
-fontchuli();
+    fontbegin = "[U]";
+    fontend = "[/U]";
+    fontchuli();
 }
+
 function Ccenter() {
-fontbegin="[align=center]";
-fontend="[/align]";
-fontchuli();
+    fontbegin = "[align=center]";
+    fontend = "[/align]";
+    fontchuli();
 }
+
 function Cstrike() {
-fontbegin="[strike]";
-fontend="[/strike]";
-fontchuli();
+    fontbegin = "[strike]";
+    fontend = "[/strike]";
+    fontchuli();
 }
+
 function point() {
-var FoundErrors = '';
-var enterpoints  =prompt(text_enter_points,"1000");
-if (!enterpoints) {
-FoundErrors += "\n" + error_no_points;
+    var FoundErrors = '';
+    var enterpoints = prompt(text_enter_points, "1000");
+    if (!enterpoints) {
+        FoundErrors += "\n" + error_no_points;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[Point=" + enterpoints + "][/Point]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[Point="+enterpoints+"][/Point]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
+
 function money() {
-var FoundErrors = '';
-var entermoney  =prompt(text_enter_money,"1000");
-if (!entermoney) {
-FoundErrors += "\n" + error_no_money;
+    var FoundErrors = '';
+    var entermoney = prompt(text_enter_money, "1000");
+    if (!entermoney) {
+        FoundErrors += "\n" + error_no_money;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[Money=" + entermoney + "][/Money]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[Money="+entermoney+"][/Money]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
+
 function usemoney() {
-var FoundErrors = '';
-var entermoney  =prompt(text_enter_usemoney,"1000");
-if (!entermoney) {
-FoundErrors += "\n" + error_no_usemoney;
+    var FoundErrors = '';
+    var entermoney = prompt(text_enter_usemoney, "1000");
+    if (!entermoney) {
+        FoundErrors += "\n" + error_no_usemoney;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[UseMoney=" + entermoney + "][/UseMoney]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[UseMoney="+entermoney+"][/UseMoney]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
+
 function usercp() {
-var FoundErrors = '';
-var enterusercp  =prompt(text_enter_usercp,"1000");
-if (!enterusercp) {
-FoundErrors += "\n" + error_no_usercp;
+    var FoundErrors = '';
+    var enterusercp = prompt(text_enter_usercp, "1000");
+    if (!enterusercp) {
+        FoundErrors += "\n" + error_no_usercp;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[UserCP=" + enterusercp + "][/UserCP]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[UserCP="+enterusercp+"][/UserCP]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
+
 function power() {
-var FoundErrors = '';
-var enterpower  =prompt(text_enter_power,"1000");
-if (!enterpower) {
-FoundErrors += "\n" + error_no_power;
+    var FoundErrors = '';
+    var enterpower = prompt(text_enter_power, "1000");
+    if (!enterpower) {
+        FoundErrors += "\n" + error_no_power;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[Power=" + enterpower + "][/Power]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[Power="+enterpower+"][/Power]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
+
 function article() {
-var FoundErrors = '';
-var enterpost  =prompt(text_enter_post,"1000");
-if (!enterpost) {
-FoundErrors += "\n" + error_no_post;
+    var FoundErrors = '';
+    var enterpost = prompt(text_enter_post, "1000");
+    if (!enterpost) {
+        FoundErrors += "\n" + error_no_post;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[Post=" + enterpost + "][/Post]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[Post="+enterpost+"][/Post]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
+
 function replyview() {
-var ToAdd = "[replyview][/replyview]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
+    var ToAdd = "[replyview][/replyview]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
+
 function Csound() {
-var FoundErrors = '';
-var enterURL   = prompt(text_enter_sound, "http://");
-if (!enterURL) {
-FoundErrors += "\n" + error_no_url;
-}
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[SOUND]"+enterURL+"[/SOUND]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
+    var FoundErrors = '';
+    var enterURL = prompt(text_enter_sound, "http://");
+    if (!enterURL) {
+        FoundErrors += "\n" + error_no_url;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[SOUND]" + enterURL + "[/SOUND]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
 
 helpstat = false;
 stprompt = true;
 basic = false;
-function thelp(swtch){
-	if (swtch == 1){
-		basic = false;
-		stprompt = false;
-		helpstat = true;
-	} else if (swtch == 0) {
-		helpstat = false;
-		stprompt = false;
-		basic = true;
-	} else if (swtch == 2) {
-		helpstat = false;
-		basic = false;
-		stprompt = true;
-	}
+
+function thelp(swtch) {
+    if (swtch == 1) {
+        basic = false;
+        stprompt = false;
+        helpstat = true;
+    } else if (swtch == 0) {
+        helpstat = false;
+        stprompt = false;
+        basic = true;
+    } else if (swtch == 2) {
+        helpstat = false;
+        basic = false;
+        stprompt = true;
+    }
 }
 
 function Cswf() {
- 	if (helpstat){
-		alert("Flash\nFlash ¶¯»­.\nÓÃ·¨: [flash=¿í¶È, ¸ß¶È]Flash ÎÄ¼þµÄµØÖ·[/flash]");
-	} else if (basic) {
-		AddTxt="[flash=500,350][/flash]";
-		AddText(AddTxt);
-	} else {
-		txt2=prompt("flash¿í¶È£¬¸ß¶È","500,350");
-		if (txt2!=null) {
-                txt=prompt("Flash ÎÄ¼þµÄµØÖ·","http://");
-		if (txt!=null) {
-                          if (txt2=="") {
-			AddTxt="[flash=500,350]"+txt;
-			AddText(AddTxt);
-			AddTxt="[/flash]";
-			AddText(AddTxt);
-               } else {
-		        AddTxt="[flash="+txt2+"]"+txt;
-			AddText(AddTxt);
-			AddTxt="[/flash]";
-			AddText(AddTxt);
-		 }
-	    }
-       }
+    if (helpstat) {
+        alert("Flash\nFlash ï¿½ï¿½ï¿½ï¿½.\nï¿½Ã·ï¿½: [flash=ï¿½ï¿½ï¿½, ï¿½ß¶ï¿½]Flash ï¿½Ä¼ï¿½ï¿½Äµï¿½Ö·[/flash]");
+    } else if (basic) {
+        AddTxt = "[flash=500,350][/flash]";
+        AddText(AddTxt);
+    } else {
+        txt2 = prompt("flashï¿½ï¿½È£ï¿½ï¿½ß¶ï¿½", "500,350");
+        if (txt2 != null) {
+            txt = prompt("Flash ï¿½Ä¼ï¿½ï¿½Äµï¿½Ö·", "http://");
+            if (txt != null) {
+                if (txt2 == "") {
+                    AddTxt = "[flash=500,350]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/flash]";
+                    AddText(AddTxt);
+                } else {
+                    AddTxt = "[flash=" + txt2 + "]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/flash]";
+                    AddText(AddTxt);
+                }
+            }
+        }
     }
 }
 
 function Crm() {
-	if (helpstat) {
-               alert("realplay\n²¥·ÅrealplayÎÄ¼þ.\nÓÃ·¨: [rm=¿í¶È, ¸ß¶È]ÎÄ¼þµØÖ·[/rm]");
-	} else if (basic) {
-		AddTxt="[rm=500,350][/rm]";
-		AddText(AddTxt);
-	} else {
-		txt2=prompt("ÊÓÆµµÄ¿í¶È£¬¸ß¶È","500,350");
-		if (txt2!=null) {
-			txt=prompt("ÊÓÆµÎÄ¼þµÄµØÖ·","ÇëÊäÈë");
-			if (txt!=null) {
-				if (txt2=="") {
-					AddTxt="[rm=500,350]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/rm]";
-					AddText(AddTxt);
-				} else {
-					AddTxt="[rm="+txt2+"]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/rm]";
-					AddText(AddTxt);
-				}
-			}
-		}
-	}
+    if (helpstat) {
+        alert("realplay\nï¿½ï¿½ï¿½ï¿½realplayï¿½Ä¼ï¿½.\nï¿½Ã·ï¿½: [rm=ï¿½ï¿½ï¿½, ï¿½ß¶ï¿½]ï¿½Ä¼ï¿½ï¿½ï¿½Ö·[/rm]");
+    } else if (basic) {
+        AddTxt = "[rm=500,350][/rm]";
+        AddText(AddTxt);
+    } else {
+        txt2 = prompt("ï¿½ï¿½Æµï¿½Ä¿ï¿½È£ï¿½ï¿½ß¶ï¿½", "500,350");
+        if (txt2 != null) {
+            txt = prompt("ï¿½ï¿½Æµï¿½Ä¼ï¿½ï¿½Äµï¿½Ö·", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            if (txt != null) {
+                if (txt2 == "") {
+                    AddTxt = "[rm=500,350]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/rm]";
+                    AddText(AddTxt);
+                } else {
+                    AddTxt = "[rm=" + txt2 + "]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/rm]";
+                    AddText(AddTxt);
+                }
+            }
+        }
+    }
 }
 
 function Cwmv() {
-	if (helpstat) {
-               alert("Media Player\n²¥·ÅMedia PlayerÎÄ¼þ.\nÓÃ·¨: [mp=¿í¶È, ¸ß¶È]ÎÄ¼þµØÖ·[/mp]");
-	} else if (basic) {
-		AddTxt="[mp=500,350][/mp]";
-		AddText(AddTxt);
-	} else {
-		txt2=prompt("ÊÓÆµµÄ¿í¶È£¬¸ß¶È","500,350");
-		if (txt2!=null) {
-			txt=prompt("ÊÓÆµÎÄ¼þµÄµØÖ·","ÇëÊäÈë");
-			if (txt!=null) {
-				if (txt2=="") {
-					AddTxt="[mp=500,350]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/mp]";
-					AddText(AddTxt);
-				} else {
-					AddTxt="[mp="+txt2+"]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/mp]";
-					AddText(AddTxt);
-				}
-			}
-		}
-	}
+    if (helpstat) {
+        alert("Media Player\nï¿½ï¿½ï¿½ï¿½Media Playerï¿½Ä¼ï¿½.\nï¿½Ã·ï¿½: [mp=ï¿½ï¿½ï¿½, ï¿½ß¶ï¿½]ï¿½Ä¼ï¿½ï¿½ï¿½Ö·[/mp]");
+    } else if (basic) {
+        AddTxt = "[mp=500,350][/mp]";
+        AddText(AddTxt);
+    } else {
+        txt2 = prompt("ï¿½ï¿½Æµï¿½Ä¿ï¿½È£ï¿½ï¿½ß¶ï¿½", "500,350");
+        if (txt2 != null) {
+            txt = prompt("ï¿½ï¿½Æµï¿½Ä¼ï¿½ï¿½Äµï¿½Ö·", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            if (txt != null) {
+                if (txt2 == "") {
+                    AddTxt = "[mp=500,350]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/mp]";
+                    AddText(AddTxt);
+                } else {
+                    AddTxt = "[mp=" + txt2 + "]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/mp]";
+                    AddText(AddTxt);
+                }
+            }
+        }
+    }
 }
 
 function Cmov() {
-	if (helpstat) {
-               alert("QuickTime\n²¥·ÅQuickTimeÎÄ¼þ.\nÓÃ·¨: [qt=¿í¶È, ¸ß¶È]ÎÄ¼þµØÖ·[/qt]");
-	} else if (basic) {
-		AddTxt="[qt=500,350][/qt]";
-		AddText(AddTxt);
-	} else {
-		txt2=prompt("ÊÓÆµµÄ¿í¶È£¬¸ß¶È","500,350");
-		if (txt2!=null) {
-			txt=prompt("ÊÓÆµÎÄ¼þµÄµØÖ·","ÇëÊäÈë");
-			if (txt!=null) {
-				if (txt2=="") {
-					AddTxt="[qt=500,350]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/qt]";
-					AddText(AddTxt);
-				} else {
-					AddTxt="[qt="+txt2+"]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/qt]";
-					AddText(AddTxt);
-				}
-			}
-		}
-	}
+    if (helpstat) {
+        alert("QuickTime\nï¿½ï¿½ï¿½ï¿½QuickTimeï¿½Ä¼ï¿½.\nï¿½Ã·ï¿½: [qt=ï¿½ï¿½ï¿½, ï¿½ß¶ï¿½]ï¿½Ä¼ï¿½ï¿½ï¿½Ö·[/qt]");
+    } else if (basic) {
+        AddTxt = "[qt=500,350][/qt]";
+        AddText(AddTxt);
+    } else {
+        txt2 = prompt("ï¿½ï¿½Æµï¿½Ä¿ï¿½È£ï¿½ï¿½ß¶ï¿½", "500,350");
+        if (txt2 != null) {
+            txt = prompt("ï¿½ï¿½Æµï¿½Ä¼ï¿½ï¿½Äµï¿½Ö·", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+            if (txt != null) {
+                if (txt2 == "") {
+                    AddTxt = "[qt=500,350]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/qt]";
+                    AddText(AddTxt);
+                } else {
+                    AddTxt = "[qt=" + txt2 + "]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/qt]";
+                    AddText(AddTxt);
+                }
+            }
+        }
+    }
 }
 
 function Cdir() {
-	if (helpstat) {
-               alert("Shockwave\n²åÈëShockwaveÎÄ¼þ.\nÓÃ·¨: [dir=¿í¶È, ¸ß¶È]ÎÄ¼þµØÖ·[/dir]");
-	} else if (basic) {
-		AddTxt="[dir=500,350][/dir]";
-		AddText(AddTxt);
-	} else {
-		txt2=prompt("ShockwaveÎÄ¼þµÄ¿í¶È£¬¸ß¶È","500,350");
-		if (txt2!=null) {
-			txt=prompt("ShockwaveÎÄ¼þµÄµØÖ·","ÇëÊäÈëµØÖ·");
-			if (txt!=null) {
-				if (txt2=="") {
-					AddTxt="[dir=500,350]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/dir]";
-					AddText(AddTxt);
-				} else {
-					AddTxt="[dir="+txt2+"]"+txt;
-					AddText(AddTxt);
-					AddTxt="[/dir]";
-					AddText(AddTxt);
-				}
-			}
-		}
-	}
+    if (helpstat) {
+        alert("Shockwave\nï¿½ï¿½ï¿½ï¿½Shockwaveï¿½Ä¼ï¿½.\nï¿½Ã·ï¿½: [dir=ï¿½ï¿½ï¿½, ï¿½ß¶ï¿½]ï¿½Ä¼ï¿½ï¿½ï¿½Ö·[/dir]");
+    } else if (basic) {
+        AddTxt = "[dir=500,350][/dir]";
+        AddText(AddTxt);
+    } else {
+        txt2 = prompt("Shockwaveï¿½Ä¼ï¿½ï¿½Ä¿ï¿½È£ï¿½ï¿½ß¶ï¿½", "500,350");
+        if (txt2 != null) {
+            txt = prompt("Shockwaveï¿½Ä¼ï¿½ï¿½Äµï¿½Ö·", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·");
+            if (txt != null) {
+                if (txt2 == "") {
+                    AddTxt = "[dir=500,350]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/dir]";
+                    AddText(AddTxt);
+                } else {
+                    AddTxt = "[dir=" + txt2 + "]" + txt;
+                    AddText(AddTxt);
+                    AddTxt = "[/dir]";
+                    AddText(AddTxt);
+                }
+            }
+        }
+    }
 }
-
 
 
 function Cra() {
-var FoundErrors = '';
-var enterURL   = prompt(text_enter_ra, "http://");
-if (!enterURL) {
-FoundErrors += "\n" + error_no_url;
+    var FoundErrors = '';
+    var enterURL = prompt(text_enter_ra, "http://");
+    if (!enterURL) {
+        FoundErrors += "\n" + error_no_url;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[RA]" + enterURL + "[/RA]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[RA]"+enterURL+"[/RA]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
-}
-
 
 
 function Cfanzi() {
-fontbegin="[xray]";
-fontend="[/xray]";
-fontchuli();
+    fontbegin = "[xray]";
+    fontend = "[/xray]";
+    fontchuli();
 }
 
 function Cwma() {
-var FoundErrors = '';
-var enterURL   = prompt(text_enter_wma, "http://");
-if (!enterURL) {
-FoundErrors += "\n" + error_no_url;
-}
-if (FoundErrors) {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[wma]"+enterURL+"[/wma]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
+    var FoundErrors = '';
+    var enterURL = prompt(text_enter_wma, "http://");
+    if (!enterURL) {
+        FoundErrors += "\n" + error_no_url;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[wma]" + enterURL + "[/wma]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
 
 
 function Cmarquee() {
-fontbegin="[move]";
-fontend="[/move]";
-fontchuli();
+    fontbegin = "[move]";
+    fontend = "[/move]";
+    fontchuli();
 }
+
 function Cfly() {
-fontbegin="[fly]";
-fontend="[/fly]";
-fontchuli();
+    fontbegin = "[fly]";
+    fontend = "[/fly]";
+    fontchuli();
 }
 
 function paste(text) {
-	if (opener.document.tawInformationForm.body.createTextRange && opener.document.tawInformationForm.body.caretPos) {
-		var caretPos = opener.document.tawInformationForm.body.caretPos;
-		caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ?
-		text + ' ' : text;
-	}
-	else opener.document.tawInformationForm.body.value += text;
-	opener.document.tawInformationForm.body.focus(caretPos);
+    if (opener.document.tawInformationForm.body.createTextRange && opener.document.tawInformationForm.body.caretPos) {
+        var caretPos = opener.document.tawInformationForm.body.caretPos;
+        caretPos.text = caretPos.text.charAt(caretPos.text.length - 1) == ' ' ?
+            text + ' ' : text;
+    } else opener.document.tawInformationForm.body.value += text;
+    opener.document.tawInformationForm.body.focus(caretPos);
 }
 
-function showsize(size){
-fontbegin="[size="+size+"]";
-fontend="[/size]";
-fontchuli();
+function showsize(size) {
+    fontbegin = "[size=" + size + "]";
+    fontend = "[/size]";
+    fontchuli();
 }
 
-function showfont(font){
-fontbegin="[font="+font+"]";
-fontend="[/font]";
-fontchuli();
+function showfont(font) {
+    fontbegin = "[font=" + font + "]";
+    fontend = "[/font]";
+    fontchuli();
 }
 
-function showcolor(color){
-fontbegin="[color="+color+"]";
-fontend="[/color]";
-fontchuli();
+function showcolor(color) {
+    fontbegin = "[color=" + color + "]";
+    fontend = "[/color]";
+    fontchuli();
 }
 
-function fontchuli(){
-if ((document.selection)&&(document.selection.type == "Text")) {
-var range = document.selection.createRange();
-var ch_text=range.text;
-range.text = fontbegin + ch_text + fontend;
-}
-else {
-document.tawInformationForm.body.value=fontbegin+document.tawInformationForm.body.value+fontend;
-document.tawInformationForm.body.focus();
-}
+function fontchuli() {
+    if ((document.selection) && (document.selection.type == "Text")) {
+        var range = document.selection.createRange();
+        var ch_text = range.text;
+        range.text = fontbegin + ch_text + fontend;
+    } else {
+        document.tawInformationForm.body.value = fontbegin + document.tawInformationForm.body.value + fontend;
+        document.tawInformationForm.body.focus();
+    }
 }
 
 function Cguang() {
-var FoundErrors = '';
-var enterSET   = prompt(text_enter_guang1, "255,red,2");
-var enterTxT   = prompt(text_enter_guang2, "ÎÄ×Ö");
-if (!enterSET)    {
-FoundErrors += "\n" + error_no_gset;
-}
-if (!enterTxT)    {
-FoundErrors += "\n" + error_no_gtxt;
-}
-if (FoundErrors)  {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[glow="+enterSET+"]"+enterTxT+"[/glow]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
+    var FoundErrors = '';
+    var enterSET = prompt(text_enter_guang1, "255,red,2");
+    var enterTxT = prompt(text_enter_guang2, "ï¿½ï¿½ï¿½ï¿½");
+    if (!enterSET) {
+        FoundErrors += "\n" + error_no_gset;
+    }
+    if (!enterTxT) {
+        FoundErrors += "\n" + error_no_gtxt;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[glow=" + enterSET + "]" + enterTxT + "[/glow]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
 
 function Cying() {
-var FoundErrors = '';
-var enterSET   = prompt(text_enter_guang1, "255,blue,1");
-var enterTxT   = prompt(text_enter_guang2, "ÎÄ×Ö");
-if (!enterSET)    {
-FoundErrors += "\n" + error_no_gset;
-}
-if (!enterTxT)    {
-FoundErrors += "\n" + error_no_gtxt;
-}
-if (FoundErrors)  {
-alert("´íÎó£¡"+FoundErrors);
-return;
-}
-var ToAdd = "[SHADOW="+enterSET+"]"+enterTxT+"[/SHADOW]";
-document.tawInformationForm.body.value+=ToAdd;
-document.tawInformationForm.body.focus();
+    var FoundErrors = '';
+    var enterSET = prompt(text_enter_guang1, "255,blue,1");
+    var enterTxT = prompt(text_enter_guang2, "ï¿½ï¿½ï¿½ï¿½");
+    if (!enterSET) {
+        FoundErrors += "\n" + error_no_gset;
+    }
+    if (!enterTxT) {
+        FoundErrors += "\n" + error_no_gtxt;
+    }
+    if (FoundErrors) {
+        alert("ï¿½ï¿½ï¿½ï¿½" + FoundErrors);
+        return;
+    }
+    var ToAdd = "[SHADOW=" + enterSET + "]" + enterTxT + "[/SHADOW]";
+    document.tawInformationForm.body.value += ToAdd;
+    document.tawInformationForm.body.focus();
 }
 
-ie = (document.all)? true:false
-if (ie){
-function ctlent(eventobject){if(event.ctrlKey && window.event.keyCode==13){this.document.tawInformationForm.submit();}}
+ie = (document.all) ? true : false
+if (ie) {
+    function ctlent(eventobject) {
+        if (event.ctrlKey && window.event.keyCode == 13) {
+            this.document.tawInformationForm.submit();
+        }
+    }
 }
+
 function DoTitle(addTitle) {
-var revisedTitle;
-var currentTitle = document.tawInformationForm.subject.value;
-revisedTitle = currentTitle+addTitle;
-document.tawInformationForm.subject.value=revisedTitle;
-document.tawInformationForm.subject.focus();
-return; }
-
-function insertsmilie(smilieface){
-
-	document.tawInformationForm.body.value+=smilieface;
+    var revisedTitle;
+    var currentTitle = document.tawInformationForm.subject.value;
+    revisedTitle = currentTitle + addTitle;
+    document.tawInformationForm.subject.value = revisedTitle;
+    document.tawInformationForm.subject.focus();
+    return;
 }
-function gopreview()
-{
-document.forms[1].title.value=document.forms[0].subject.value;
-document.forms[1].body.value=document.forms[0].body.value;
-var popupWin = window.open('preview.jsp', 'preview_page', 'scrollbars=yes,width=750,height=450');
-document.forms[1].submit()
+
+function insertsmilie(smilieface) {
+
+    document.tawInformationForm.body.value += smilieface;
 }
-function openScript(url, width, height){
-	var Win = window.open(url,"openScript",'width=' + width + ',height=' + height + ',resizable=1,scrollbars=yes,menubar=no,status=yes' );
+
+function gopreview() {
+    document.forms[1].title.value = document.forms[0].subject.value;
+    document.forms[1].body.value = document.forms[0].body.value;
+    var popupWin = window.open('preview.jsp', 'preview_page', 'scrollbars=yes,width=750,height=450');
+    document.forms[1].submit()
+}
+
+function openScript(url, width, height) {
+    var Win = window.open(url, "openScript", 'width=' + width + ',height=' + height + ',resizable=1,scrollbars=yes,menubar=no,status=yes');
 }

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
     <!--Pnrcompact-DAO START-->
-    <bean id="pnrcompactDao" class="com.boco.eoms.parter.baseinfo.pnrcompact.dao.hibernate.PnrcompactDaoHibernate" autowire="byName"/>
+    <bean id="pnrcompactDao" class="com.boco.eoms.parter.baseinfo.pnrcompact.dao.hibernate.PnrcompactDaoHibernate"
+          autowire="byName"/>
     <!--Pnrcompact-DAO END-->
-    <!--Pnrcompact-START-->    
+    <!--Pnrcompact-START-->
     <bean id="IpnrcompactManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.parter.baseinfo.pnrcompact.service.impl.PnrcompactManagerImpl">

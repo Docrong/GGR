@@ -7,164 +7,162 @@ import com.boco.eoms.sheet.base.model.BaseLink;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="BusinessPlanLink.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="BusinessPlanlink"
  */
-public class BusinessPlanLink extends BaseLink
-{
+public class BusinessPlanLink extends BaseLink {
 
 
     /**
-	 * @texttype
-	 */
-     private java.lang.String linkAuditPer;
+     * @texttype
+     */
+    private java.lang.String linkAuditPer;
 
     /**
-	 * @textarea
-	 */
-     private java.lang.String linkAnalyse;
+     * @textarea
+     */
+    private java.lang.String linkAnalyse;
 
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkreport;
+     * @accesstype
+     */
+    private java.lang.String linkreport;
 
     /**
-	 * @dicttype
-	 */
-     private java.lang.String linkIsKx;
+     * @dicttype
+     */
+    private java.lang.String linkIsKx;
 
     /**
-	 * @dicttype
-	 */
-     private java.lang.String linkAuditResult;
+     * @dicttype
+     */
+    private java.lang.String linkAuditResult;
 
     /**
-	 * @textarea
-	 */
-     private java.lang.String linkAuditDesc;
+     * @textarea
+     */
+    private java.lang.String linkAuditDesc;
 
     /**
-	 * @textarea
-	 */
-     private java.lang.String linkOpion;
+     * @textarea
+     */
+    private java.lang.String linkOpion;
 
     /**
-	 * @accesstype
-	 */
-     private java.lang.String linkOpionReport;
+     * @accesstype
+     */
+    private java.lang.String linkOpionReport;
 
- 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show  
-	 * @return 
-	 */
-   	 public java.lang.String getLinkAuditPer() {
-            return linkAuditPer;
-     }
 
-     public void setLinkAuditPer(java.lang.String linkAuditPer) {
-           this.linkAuditPer = linkAuditPer;
-     }
-  
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkAnalyse() {
-            return linkAnalyse;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAuditPer() {
+        return linkAuditPer;
+    }
 
-     public void setLinkAnalyse(java.lang.String linkAnalyse) {
-           this.linkAnalyse = linkAnalyse;
-     }
+    public void setLinkAuditPer(java.lang.String linkAuditPer) {
+        this.linkAuditPer = linkAuditPer;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkreport() {
-            return linkreport;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAnalyse() {
+        return linkAnalyse;
+    }
 
-     public void setLinkreport(java.lang.String linkreport) {
-           this.linkreport = linkreport;
-     }
+    public void setLinkAnalyse(java.lang.String linkAnalyse) {
+        this.linkAnalyse = linkAnalyse;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkIsKx() {
-            return linkIsKx;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkreport() {
+        return linkreport;
+    }
 
-     public void setLinkIsKx(java.lang.String linkIsKx) {
-           this.linkIsKx = linkIsKx;
-     }
+    public void setLinkreport(java.lang.String linkreport) {
+        this.linkreport = linkreport;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkAuditResult() {
-            return linkAuditResult;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkIsKx() {
+        return linkIsKx;
+    }
 
-     public void setLinkAuditResult(java.lang.String linkAuditResult) {
-           this.linkAuditResult = linkAuditResult;
-     }
+    public void setLinkIsKx(java.lang.String linkIsKx) {
+        this.linkIsKx = linkIsKx;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkAuditDesc() {
-            return linkAuditDesc;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAuditResult() {
+        return linkAuditResult;
+    }
 
-     public void setLinkAuditDesc(java.lang.String linkAuditDesc) {
-           this.linkAuditDesc = linkAuditDesc;
-     }
+    public void setLinkAuditResult(java.lang.String linkAuditResult) {
+        this.linkAuditResult = linkAuditResult;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkOpion() {
-            return linkOpion;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkAuditDesc() {
+        return linkAuditDesc;
+    }
 
-     public void setLinkOpion(java.lang.String linkOpion) {
-           this.linkOpion = linkOpion;
-     }
+    public void setLinkAuditDesc(java.lang.String linkAuditDesc) {
+        this.linkAuditDesc = linkAuditDesc;
+    }
 
-	/**
-	 * @hibernate.property length=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getLinkOpionReport() {
-            return linkOpionReport;
-     }
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkOpion() {
+        return linkOpion;
+    }
 
-     public void setLinkOpionReport(java.lang.String linkOpionReport) {
-           this.linkOpionReport = linkOpionReport;
-     }
+    public void setLinkOpion(java.lang.String linkOpion) {
+        this.linkOpion = linkOpion;
+    }
+
+    /**
+     * @return
+     * @hibernate.property length=""
+     * @eoms.show
+     */
+    public java.lang.String getLinkOpionReport() {
+        return linkOpionReport;
+    }
+
+    public void setLinkOpionReport(java.lang.String linkOpionReport) {
+        this.linkOpionReport = linkOpionReport;
+    }
 
 }

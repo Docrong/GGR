@@ -10,15 +10,14 @@ package com.boco.eoms.commons.mms.msssubscribe.util;
  * <p>
  * Fri Feb 20 11:32:20 CST 2009
  * </p>
- * 
+ *
  * @author 李志刚
  * @version 3.5
- * 
  */
 public class MsssubscribeConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String MSSSUBSCRIBE_LIST = "msssubscribeList";
+
+    /**
+     * list key
+     */
+    public final static String MSSSUBSCRIBE_LIST = "msssubscribeList";
 }

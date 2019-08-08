@@ -8,8 +8,8 @@ import org.displaytag.decorator.TableDecorator;
 
 // 核减表
 public class SubtractTableDecorator extends TableDecorator {
-	
-                                                   
+
+
 }
 
 /**

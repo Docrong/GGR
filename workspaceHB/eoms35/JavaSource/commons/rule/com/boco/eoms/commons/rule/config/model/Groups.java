@@ -13,23 +13,22 @@ import java.util.List;
  * <p>
  * Apr 19, 2007 3:42:19 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Groups {
-	/**
-	 * 规则分组 <groups/>
-	 */
-	private List group = new ArrayList();
+    /**
+     * 规则分组 <groups/>
+     */
+    private List group = new ArrayList();
 
-	public List getGroup() {
-		return group;
-	}
+    public List getGroup() {
+        return group;
+    }
 
-	public void setGroup(List group) {
-		this.group = group;
-	}
+    public void setGroup(List group) {
+        this.group = group;
+    }
 
 }

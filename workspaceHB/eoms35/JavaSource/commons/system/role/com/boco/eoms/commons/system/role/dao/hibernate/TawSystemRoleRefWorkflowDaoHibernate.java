@@ -54,12 +54,12 @@ public class TawSystemRoleRefWorkflowDaoHibernate extends BaseDaoHibernate imple
 
     /**
      * @see com.boco.eoms.commons.system.role.dao.TawSystemRoleRefWorkflowDao#saveTawSystemRoleRefWorkflow(TawSystemRoleRefWorkflow tawSystemRoleRefWorkflow)
-     */    
+     */
     public void saveTawSystemRoleRefWorkflow(final TawSystemRoleRefWorkflow tawSystemRoleRefWorkflow) {
         if ((tawSystemRoleRefWorkflow.getId() == null) || (tawSystemRoleRefWorkflow.getId().equals("")))
-			getHibernateTemplate().save(tawSystemRoleRefWorkflow);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSystemRoleRefWorkflow);
+            getHibernateTemplate().save(tawSystemRoleRefWorkflow);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSystemRoleRefWorkflow);
     }
 
     /**
@@ -68,53 +68,56 @@ public class TawSystemRoleRefWorkflowDaoHibernate extends BaseDaoHibernate imple
     public void removeTawSystemRoleRefWorkflow(final String id) {
         getHibernateTemplate().delete(getTawSystemRoleRefWorkflow(id));
     }
+
     /**
      * curPage
      * pageSize
      * whereStr   sql filter
      */
-    public Map getTawSystemRoleRefWorkflows(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSystemRoleRefWorkflows(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSystemRoleRefWorkflow
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSystemRoleRefWorkflow";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSystemRoleRefWorkflow";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSystemRoleRefWorkflows(final Integer curPage, final Integer pageSize) {
-			return this.getTawSystemRoleRefWorkflows(curPage,pageSize,null);
-		}
+        return this.getTawSystemRoleRefWorkflows(curPage, pageSize, null);
+    }
 
     /**
      * 根据流程名称获取有新增权限的大类角色
+     *
      * @param flowName 流程名
-     * @param type 0自启动；1外部流程启动
+     * @param type     0自启动；1外部流程启动
      * @return <TawSystemRole>
      */
-    public List getRoleBySheetName(String startSheetName,String sheetName){
-    	String hql = "from TawSystemRole r,TawSystemRoleRefWorkflow t where r.roleId=t.roleid and t.startSheetName='"+startSheetName+"' and t.sheetName='"+sheetName+"'";
-    	List list = getHibernateTemplate().find(hql);
-    	List roleList = new ArrayList();
-    	for(int i=0;i<list.size();i++){
-    		roleList.add(((Object[])list.get(i))[0]);
-    	}
-    	return roleList;
+    public List getRoleBySheetName(String startSheetName, String sheetName) {
+        String hql = "from TawSystemRole r,TawSystemRoleRefWorkflow t where r.roleId=t.roleid and t.startSheetName='" + startSheetName + "' and t.sheetName='" + sheetName + "'";
+        List list = getHibernateTemplate().find(hql);
+        List roleList = new ArrayList();
+        for (int i = 0; i < list.size(); i++) {
+            roleList.add(((Object[]) list.get(i))[0]);
+        }
+        return roleList;
     }
 
 }

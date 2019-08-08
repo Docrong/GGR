@@ -3,7 +3,7 @@ package com.boco.eoms.infmanage.controller;
 import org.apache.struts.action.ActionForm;
 
 public class TawInfSortForm
-    extends ActionForm {
+        extends ActionForm {
     // 资料类别编号
     private int infSortId;
 

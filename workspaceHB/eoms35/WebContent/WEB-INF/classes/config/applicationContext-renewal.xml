@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">		
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
     <!--TawRmRenewal-DAO START-->
-    <bean id="tawRmRenewalDao" class="com.boco.eoms.otherwise.dao.hibernate.TawRmRenewalDaoHibernate" autowire="byName"/>
+    <bean id="tawRmRenewalDao" class="com.boco.eoms.otherwise.dao.hibernate.TawRmRenewalDaoHibernate"
+          autowire="byName"/>
     <!--TawRmRenewal-DAO END-->
-    <!--TawRmRenewal-START-->    
+    <!--TawRmRenewal-START-->
     <bean id="ItawRmRenewalManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.otherwise.service.impl.TawRmRenewalManagerImpl">

@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
-  <cell id="1" type="InitialActionCell" height="30" width="100" x="299" y="80" />
-  <cell id="2" type="StepCell" height="30" width="100" x="575" y="80" />
-  <cell id="3" type="StepCell" height="30" width="100" x="926" y="80" />
-  <cell id="4" type="StepCell" height="30" width="100" x="575" y="300" />
-  <connector id="90" linewidth="1.0" color="-16777216" labelx="517" labely="0" from="0" to="0" start="299,80" end="575,80" />
-  <connector id="91" linewidth="1.0" color="-16777216" labelx="-4" labely="505" from="0" to="0" start="299,80" end="575,300">
-    <routing id="91" x="351" y="314" />
-  </connector>
-  <connector id="92" linewidth="1.0" color="-16777216" labelx="1007" labely="498" from="0" to="0" start="575,300" end="926,80">
-    <routing id="92" x="978" y="315" />
-  </connector>
-  <channel id="chl-1" y1="0" y2="200" text="故障一级处理组" />
-  <channel id="chl-2" y1="200" y2="400" text="故障二级处理组" />
+    <cell id="1" type="InitialActionCell" height="30" width="100" x="299" y="80"/>
+    <cell id="2" type="StepCell" height="30" width="100" x="575" y="80"/>
+    <cell id="3" type="StepCell" height="30" width="100" x="926" y="80"/>
+    <cell id="4" type="StepCell" height="30" width="100" x="575" y="300"/>
+    <connector id="90" linewidth="1.0" color="-16777216" labelx="517" labely="0" from="0" to="0" start="299,80"
+               end="575,80"/>
+    <connector id="91" linewidth="1.0" color="-16777216" labelx="-4" labely="505" from="0" to="0" start="299,80"
+               end="575,300">
+        <routing id="91" x="351" y="314"/>
+    </connector>
+    <connector id="92" linewidth="1.0" color="-16777216" labelx="1007" labely="498" from="0" to="0" start="575,300"
+               end="926,80">
+        <routing id="92" x="978" y="315"/>
+    </connector>
+    <channel id="chl-1" y1="0" y2="200" text="故障一级处理组"/>
+    <channel id="chl-2" y1="200" y2="400" text="故障二级处理组"/>
 </layout>
 

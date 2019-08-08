@@ -1,94 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-	<bean id="appCacheManager"
-		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-		<property name="configLocation">
-			<value>classpath:ehcache.xml</value>
-		</property>
-	</bean>
+    <bean id="appCacheManager"
+          class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation">
+            <value>classpath:ehcache.xml</value>
+        </property>
+    </bean>
 
-	<bean id="ApplicationCacheMgr"
-		class="com.boco.eoms.commons.cache.application.ApplicationCacheMgr">
-		<property name="caches">
-			<list>
-				<!-- 在这里添加模块名称，与ehcache.xml中的cacheName相同 -->
-				<value>com.boco.eoms.commons.system.user.USER_CACHE</value>
-				<value>com.boco.eoms.commons.system.dept.DEPT_CATCH</value>
-				<value>com.boco.eoms.commons.system.subRole.SUBROLE_CATCH</value>
-				<value>com.boco.eoms.commons.system.dict.DICT_CATCH</value>
-				<value>com.boco.eoms.duty.DUTY_CATCH</value>
-				<value>com.boco.eoms.system.mapp.MAPP_CATCH</value>
-			</list>
-		</property>
+    <bean id="ApplicationCacheMgr"
+          class="com.boco.eoms.commons.cache.application.ApplicationCacheMgr">
+        <property name="caches">
+            <list>
+                <!-- 在这里添加模块名称，与ehcache.xml中的cacheName相同 -->
+                <value>com.boco.eoms.commons.system.user.USER_CACHE</value>
+                <value>com.boco.eoms.commons.system.dept.DEPT_CATCH</value>
+                <value>com.boco.eoms.commons.system.subRole.SUBROLE_CATCH</value>
+                <value>com.boco.eoms.commons.system.dict.DICT_CATCH</value>
+                <value>com.boco.eoms.duty.DUTY_CATCH</value>
+                <value>com.boco.eoms.system.mapp.MAPP_CATCH</value>
+            </list>
+        </property>
 
-		<property name="cacheManager">
-			<ref local="appCacheManager" />
-		</property>
-	</bean>
+        <property name="cacheManager">
+            <ref local="appCacheManager"/>
+        </property>
+    </bean>
 
-	<!-- dept组件 -->
-	<import resource="classpath:config/applicationContext-ehcache-dept.xml" />
-	<!-- user组件 -->
-	<import resource="classpath:config/applicationContext-ehcache-user.xml" />
-	<!-- role组件 -->
-	<import resource="classpath:config/applicationContext-ehcache-subrole.xml" />
-	
-	<!-- dict组件 -->
-	<import resource="classpath:config/applicationContext-ehcache-dict.xml" />
+    <!-- dept组件 -->
+    <import resource="classpath:config/applicationContext-ehcache-dept.xml"/>
+    <!-- user组件 -->
+    <import resource="classpath:config/applicationContext-ehcache-user.xml"/>
+    <!-- role组件 -->
+    <import resource="classpath:config/applicationContext-ehcache-subrole.xml"/>
 
-	<!-- duty组件 -->
-	<import resource="classpath:config/applicationContext-ehcache-duty.xml" />
-	<!-- 作业计划缓存组件 -->
-	<import resource="classpath:com/boco/eoms/workplan/config/applicationContext-ehcache-workplanUser.xml" />
-	<!-- Define transactional methods (NameMatchTransactionAttributeSource applies
-		specific attributes to methods that match to a pattern)  -->
+    <!-- dict组件 -->
+    <import resource="classpath:config/applicationContext-ehcache-dict.xml"/>
 
-	<bean id="txInterceptor"
-		class="org.springframework.transaction.interceptor.TransactionInterceptor">
-		<property name="transactionManager">
-			<ref bean="transactionManager" />
-		</property>
-		<property name="transactionAttributeSource">
-			<ref bean="txAttributes" />
-		</property>
-	</bean>
+    <!-- duty组件 -->
+    <import resource="classpath:config/applicationContext-ehcache-duty.xml"/>
+    <!-- 作业计划缓存组件 -->
+    <import resource="classpath:com/boco/eoms/workplan/config/applicationContext-ehcache-workplanUser.xml"/>
+    <!-- Define transactional methods (NameMatchTransactionAttributeSource applies
+        specific attributes to methods that match to a pattern)  -->
 
-	<!-- Define transactional methods (NameMatchTransactionAttributeSource applies
-		specific attributes to methods that match to a pattern)  -->
-	<bean id="txAttributes"
-		class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
-		<property name="properties">
-			<props>
-				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop> 
-                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop> 
-                <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop> 
-                <prop key="save*">PROPAGATION_REQUIRED</prop> 
-                <prop key="add*">PROPAGATION_REQUIRED</prop> 
-                <prop key="update*">PROPAGATION_REQUIRED</prop> 
-                <prop key="remove*">PROPAGATION_REQUIRED</prop> 
-                <prop key="*">PROPAGATION_REQUIRED</prop> 
-			</props>
-		</property>
-	</bean>
+    <bean id="txInterceptor"
+          class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager">
+            <ref bean="transactionManager"/>
+        </property>
+        <property name="transactionAttributeSource">
+            <ref bean="txAttributes"/>
+        </property>
+    </bean>
 
-	<!-- 
-	<bean id="txTransactionAttributes" class="java.util.Properties">
-		<constructor-arg type="java.util.Properties">
-			<props>
-				<prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
-				<prop key="save*">PROPAGATION_REQUIRED</prop>
-				<prop key="add*">PROPAGATION_REQUIRED</prop>
-				<prop key="update*">PROPAGATION_REQUIRED</prop>
-				<prop key="remove*">PROPAGATION_REQUIRED</prop>
-				<prop key="*">PROPAGATION_REQUIRED</prop>
-			</props>
-		</constructor-arg>
-	</bean>
+    <!-- Define transactional methods (NameMatchTransactionAttributeSource applies
+        specific attributes to methods that match to a pattern)  -->
+    <bean id="txAttributes"
+          class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+        <property name="properties">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="remove*">PROPAGATION_REQUIRED</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--
+    <bean id="txTransactionAttributes" class="java.util.Properties">
+        <constructor-arg type="java.util.Properties">
+            <props>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="save*">PROPAGATION_REQUIRED</prop>
+                <prop key="add*">PROPAGATION_REQUIRED</prop>
+                <prop key="update*">PROPAGATION_REQUIRED</prop>
+                <prop key="remove*">PROPAGATION_REQUIRED</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </constructor-arg>
+    </bean>
  -->
 
 </beans>

@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.circuitcontrol.dao.ICircuitControlTaskDAO;
  * <p>
  * Sun Sep 29 16:51:15 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CircuitControlTaskDAOHibernate extends TaskDAOImpl implements  ICircuitControlTaskDAO {
- 
- }
+
+public class CircuitControlTaskDAOHibernate extends TaskDAOImpl implements ICircuitControlTaskDAO {
+
+}

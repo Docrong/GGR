@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi" xmi:id="Deployment_1216634031156">
-  <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1216634031156" startingWeight="10" warClassLoaderPolicy="SINGLE">
-    <modules xmi:type="appdeployment:EJBModuleDeployment" xmi:id="EJBModuleDeployment_1217666443843" startingWeight="5000" uri="eomsEJB.jar"/>
-    <classloader xmi:id="Classloader_1216634031156" mode="PARENT_FIRST"/>
-  </deployedObject>
+<appdeployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+                          xmlns:appdeployment="http://www.ibm.com/websphere/appserver/schemas/5.0/appdeployment.xmi"
+                          xmi:id="Deployment_1216634031156">
+    <deployedObject xmi:type="appdeployment:ApplicationDeployment" xmi:id="ApplicationDeployment_1216634031156"
+                    startingWeight="10" warClassLoaderPolicy="SINGLE">
+        <modules xmi:type="appdeployment:EJBModuleDeployment" xmi:id="EJBModuleDeployment_1217666443843"
+                 startingWeight="5000" uri="eomsEJB.jar"/>
+        <classloader xmi:id="Classloader_1216634031156" mode="PARENT_FIRST"/>
+    </deployedObject>
 </appdeployment:Deployment>

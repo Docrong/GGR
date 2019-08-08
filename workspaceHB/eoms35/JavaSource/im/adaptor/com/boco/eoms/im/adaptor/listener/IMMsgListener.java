@@ -6,8 +6,8 @@ import org.jivesoftware.smack.packet.Message;
 
 public class IMMsgListener implements MessageListener {
 
-	public void processMessage(Chat chat, Message message) {
-		
-	}
+    public void processMessage(Chat chat, Message message) {
+
+    }
 
 }

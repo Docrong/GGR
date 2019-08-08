@@ -14,6 +14,7 @@ public class TawDemoMytableManagerImpl extends BaseManager implements TawDemoMyt
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawDemoMytableDao(TawDemoMytableDao dao) {
@@ -47,13 +48,14 @@ public class TawDemoMytableManagerImpl extends BaseManager implements TawDemoMyt
     public void removeTawDemoMytable(final String id) {
         dao.removeTawDemoMytable(new Integer(id));
     }
-    
+
     /**
-     * 
+     *
      */
     public Map getTawDemoMytables(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawDemoMytables(curPage, pageSize, whereStr);
     }
+
     public Map getTawDemoMytables(final Integer curPage, final Integer pageSize) {
         return dao.getTawDemoMytables(curPage, pageSize);
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
@@ -22,13 +22,13 @@
     <bean id="userManager" class="com.boco.eoms.base.service.impl.UserManagerImpl"/>
 
     <bean id="target" class="org.springframework.aop.framework.ProxyFactoryBean">
-      <property name="proxyInterfaces" value="com.boco.eoms.base.service.UserManager"/>
-      <property name="interceptorNames">
-         <list>
-            <idref local="userSecurityInterceptor"/>
-            <idref local="userManager"/>
-         </list>
-      </property>
+        <property name="proxyInterfaces" value="com.boco.eoms.base.service.UserManager"/>
+        <property name="interceptorNames">
+            <list>
+                <idref local="userSecurityInterceptor"/>
+                <idref local="userManager"/>
+            </list>
+        </property>
     </bean>
 
     <bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">

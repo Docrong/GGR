@@ -18,60 +18,58 @@ import com.boco.eoms.workplan.model.TawwpNet;
 
 public class TawCheckWanggDAO extends HibernateDAO {
 
-	/*public void save(TawCheckGSMDATA TawCheckGSMDATA) {
-		try {
-			Session s = HibernateUtil.currentSession();
-			HibernateUtil.currentTransaction();
-			s.save(TawCheckGSMDATA);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}*/
-	public void saveData(TawCheckGSMDATA TawCheckGSMDATA) throws Exception {
-		this.save(TawCheckGSMDATA);
-	}
-	public List getTransDataList(String sql) {
-		List list = new ArrayList();
-		try {
-			Session s = HibernateUtil.currentSession();
-			HibernateUtil.currentTransaction();
-			Query query = s.createQuery(sql);
-			list = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+    /*public void save(TawCheckGSMDATA TawCheckGSMDATA) {
+        try {
+            Session s = HibernateUtil.currentSession();
+            HibernateUtil.currentTransaction();
+            s.save(TawCheckGSMDATA);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
+    public void saveData(TawCheckGSMDATA TawCheckGSMDATA) throws Exception {
+        this.save(TawCheckGSMDATA);
+    }
 
-	public List getList(String sql, int[] pagePra) {
-		List list = new ArrayList();
-		try {
-			Session s = HibernateUtil.currentSession();
-			if (pagePra[2] <= 0) {
-				pagePra[2] = count(sql);
-			}
-			HibernateUtil.currentTransaction();
-			Query query = s.createQuery(sql);
-			query.setFirstResult(pagePra[0]);
-			query.setMaxResults(pagePra[1]);
-			list = query.list();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
+    public List getTransDataList(String sql) {
+        List list = new ArrayList();
+        try {
+            Session s = HibernateUtil.currentSession();
+            HibernateUtil.currentTransaction();
+            Query query = s.createQuery(sql);
+            list = query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 
-	public void delTransData(TawCheckGSMDATA TawCheckGSMDATA)
-	{
-		try
-		{
-			Session s=HibernateUtil.currentSession();
-			HibernateUtil.currentTransaction();
-			s.delete(TawCheckGSMDATA);
-		}catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
+    public List getList(String sql, int[] pagePra) {
+        List list = new ArrayList();
+        try {
+            Session s = HibernateUtil.currentSession();
+            if (pagePra[2] <= 0) {
+                pagePra[2] = count(sql);
+            }
+            HibernateUtil.currentTransaction();
+            Query query = s.createQuery(sql);
+            query.setFirstResult(pagePra[0]);
+            query.setMaxResults(pagePra[1]);
+            list = query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public void delTransData(TawCheckGSMDATA TawCheckGSMDATA) {
+        try {
+            Session s = HibernateUtil.currentSession();
+            HibernateUtil.currentTransaction();
+            s.delete(TawCheckGSMDATA);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

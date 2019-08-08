@@ -16,6 +16,7 @@ import com.boco.eoms.base.Constants;
 import com.boco.eoms.commons.sample.model.AppfuseDemo;
 import com.boco.eoms.commons.sample.service.IAppfuseDemoManager;
 import com.boco.eoms.commons.sample.webapp.form.AppfuseDemoForm;
+
 import java.util.List;
 import java.util.Map;
 
@@ -23,11 +24,11 @@ import java.util.Map;
  * Action class to handle CRUD on a AppfuseDemo object
  *
  * @struts.action name="appfuseDemoForm" path="/appfuseDemos" scope="request"
- *  validate="false" parameter="method" input="mainMenu"
+ * validate="false" parameter="method" input="mainMenu"
  * @struts.action name="appfuseDemoForm" path="/editAppfuseDemo" scope="request"
- *  validate="false" parameter="method" input="list"
+ * validate="false" parameter="method" input="list"
  * @struts.action name="appfuseDemoForm" path="/saveAppfuseDemo" scope="request"
- *  validate="true" parameter="method" input="edit"
+ * validate="true" parameter="method" input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit" path="/WEB-INF/pages/appfuseDemo/appfuseDemoForm.jsp"
  * @struts.action-forward name="list" path="/WEB-INF/pages/appfuseDemo/appfuseDemoList.jsp"
@@ -37,14 +38,14 @@ public final class AppfuseDemoAction extends BaseAction {
     public ActionForward cancel(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         return mapping.findForward("search");
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         ActionMessages messages = new ActionMessages();
         AppfuseDemoForm appfuseDemoForm = (AppfuseDemoForm) form;
@@ -54,7 +55,7 @@ public final class AppfuseDemoAction extends BaseAction {
         mgr.removeAppfuseDemo(appfuseDemoForm.getId());
 
         messages.add(ActionMessages.GLOBAL_MESSAGE,
-                     new ActionMessage("appfuseDemo.deleted"));
+                new ActionMessage("appfuseDemo.deleted"));
 
         // save messages in session, so they'll survive the redirect
         saveMessages(request.getSession(), messages);
@@ -65,7 +66,7 @@ public final class AppfuseDemoAction extends BaseAction {
     public ActionForward edit(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         AppfuseDemoForm appfuseDemoForm = (AppfuseDemoForm) form;
 
         // if an id is passed in, look up the user - otherwise
@@ -83,7 +84,7 @@ public final class AppfuseDemoAction extends BaseAction {
     public ActionForward save(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         // Extract attributes and parameters we will need
         ActionMessages messages = new ActionMessages();
@@ -97,7 +98,7 @@ public final class AppfuseDemoAction extends BaseAction {
         // add success messages
         if (isNew) {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("appfuseDemo.added"));
+                    new ActionMessage("appfuseDemo.added"));
 
             // save messages in session to survive a redirect
             saveMessages(request.getSession(), messages);
@@ -105,7 +106,7 @@ public final class AppfuseDemoAction extends BaseAction {
             return mapping.findForward("search");
         } else {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("appfuseDemo.updated"));
+                    new ActionMessage("appfuseDemo.updated"));
             saveMessages(request, messages);
 
             return mapping.findForward("search");
@@ -115,20 +116,21 @@ public final class AppfuseDemoAction extends BaseAction {
     public ActionForward search(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         String pageIndexName = new org.displaytag.util.ParamEncoder("tawDemoMytableList").encodeParameterName(
-    			org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);   
-	    	final int pageSize = 25;   
-	    	final int pageIndex = GenericValidator.isBlankOrNull(request.getParameter(pageIndexName))?0:(Integer.parseInt(request.getParameter(pageIndexName)) - 1);  //当前页数
+                org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final int pageSize = 25;
+        final int pageIndex = GenericValidator.isBlankOrNull(request.getParameter(pageIndexName)) ? 0 : (Integer.parseInt(request.getParameter(pageIndexName)) - 1);  //当前页数
 
         IAppfuseDemoManager mgr = (IAppfuseDemoManager) getBean("IappfuseDemoManager");
-        Map map = (Map)mgr.getAppfuseDemos(new Integer(pageIndex),new Integer(pageSize));	
-        List list = (List)map.get("result");
+        Map map = (Map) mgr.getAppfuseDemos(new Integer(pageIndex), new Integer(pageSize));
+        List list = (List) map.get("result");
         request.setAttribute(Constants.APPFUSEDEMO_LIST, list);
         request.setAttribute("resultSize", map.get("total"));
 
         return mapping.findForward("list");
     }
+
     public ActionForward unspecified(ActionMapping mapping, ActionForm form,
                                      HttpServletRequest request,
                                      HttpServletResponse response)

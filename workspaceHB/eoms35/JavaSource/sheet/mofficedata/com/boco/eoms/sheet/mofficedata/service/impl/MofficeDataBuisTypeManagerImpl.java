@@ -16,51 +16,48 @@ import com.boco.eoms.sheet.mofficedata.service.IMofficeDataBuisTypeManager;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
 
 public class MofficeDataBuisTypeManagerImpl implements IMofficeDataBuisTypeManager {
 
-	private IMofficeDataBuisTypeDAO buisTypeDao;
-	private MofficeDataBuisType buisTypeObject;
-	
-	public MofficeDataBuisType getBuisTypeObject() {
-		return buisTypeObject;
-	}
+    private IMofficeDataBuisTypeDAO buisTypeDao;
+    private MofficeDataBuisType buisTypeObject;
 
-	public void setBuisTypeObject(MofficeDataBuisType buisTypeObject) {
-		this.buisTypeObject = buisTypeObject;
-	}
+    public MofficeDataBuisType getBuisTypeObject() {
+        return buisTypeObject;
+    }
 
-	public IMofficeDataBuisTypeDAO getBuisTypeDao() {
-		return buisTypeDao;
-	}
+    public void setBuisTypeObject(MofficeDataBuisType buisTypeObject) {
+        this.buisTypeObject = buisTypeObject;
+    }
 
-	public void setBuisTypeDao(IMofficeDataBuisTypeDAO buisTypeDao) {
-		this.buisTypeDao = buisTypeDao;
-	}
+    public IMofficeDataBuisTypeDAO getBuisTypeDao() {
+        return buisTypeDao;
+    }
 
-	public void saveOrUpdate(MofficeDataBuisType obj) throws Exception {
-		buisTypeDao.saveOrUpdate(obj);
+    public void setBuisTypeDao(IMofficeDataBuisTypeDAO buisTypeDao) {
+        this.buisTypeDao = buisTypeDao;
+    }
 
-	}
+    public void saveOrUpdate(MofficeDataBuisType obj) throws Exception {
+        buisTypeDao.saveOrUpdate(obj);
 
-	public List getBuisTypeObjects() throws Exception {
-		return buisTypeDao.getBuisTypeObjects();
-	}
+    }
 
-	public List getBuisTypeObjectsByHql(String hql) throws Exception {
-		return buisTypeDao.getBuisTypeObjectsByHql(hql);
-	}
+    public List getBuisTypeObjects() throws Exception {
+        return buisTypeDao.getBuisTypeObjects();
+    }
 
-	public void clearData() throws Exception {
-		buisTypeDao.clearData();
-	}
+    public List getBuisTypeObjectsByHql(String hql) throws Exception {
+        return buisTypeDao.getBuisTypeObjectsByHql(hql);
+    }
 
-	
+    public void clearData() throws Exception {
+        buisTypeDao.clearData();
+    }
 
 
 }

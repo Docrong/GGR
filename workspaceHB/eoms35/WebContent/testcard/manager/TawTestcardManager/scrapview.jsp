@@ -1,99 +1,104 @@
-<%@ include file="/common/taglibs.jsp"%>
-<%@ include file="/common/header_eoms_form.jsp"%>
-<%@ include file="/common/xtreelibs.jsp"%>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="/common/header_eoms_form.jsp" %>
+<%@ include file="/common/xtreelibs.jsp" %>
 <center>
-<table cellSpacing="0" cellPadding="0" width="85%" border="0">
-       <tr>
-                           <td align="right" width="100%" bgColor="#f5f5f5">
-                              <div align="center">
-                              <table cellSpacing="0" borderColorDark="#ffffff" cellPadding="2" width="40%" borderColorLight="#808080" border="1">
-                                    <tr> <td  colspan="4" valign="middle" bgcolor="#E5EDF8" align="center">
-							²â ÊÔ ¿¨ ±¨ ·Ï Ïê Ï¸ ÐÅ Ï¢
-                                              </td></tr>
-<logic:present name="tawTestcardManagerForm" scope="request">
+    <table cellSpacing="0" cellPadding="0" width="85%" border="0">
+        <tr>
+            <td align="right" width="100%" bgColor="#f5f5f5">
+                <div align="center">
+                    <table cellSpacing="0" borderColorDark="#ffffff" cellPadding="2" width="40%"
+                           borderColorLight="#808080" border="1">
+                        <tr>
+                            <td colspan="4" valign="middle" bgcolor="#E5EDF8" align="center">
+                                ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Ï¸ ï¿½ï¿½ Ï¢
+                            </td>
+                        </tr>
+                        <logic:present name="tawTestcardManagerForm" scope="request">
 
-                <td noWrap width="100" class= "clsfth">¿¨ºÅ(iccid)</td>&nbsp
-                <td width="380"  >
-                      <bean:write name="tawTestcardManagerForm" property="cardid"/>
-                </td>
-                </tr>
-        <tr>
-                <td noWrap width="100" class= "clsfth">MSISDN</td>
-                <td width="380" >
-                      <bean:write name="tawTestcardManagerForm" property="msisdn"/>&nbsp
-                </td>
+                        <td noWrap width="100" class="clsfth">ï¿½ï¿½ï¿½ï¿½(iccid)</td>
+                        &nbsp
+                        <td width="380">
+                            <bean:write name="tawTestcardManagerForm" property="cardid"/>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td noWrap width="100" class="clsfth">MSISDN</td>
+                            <td width="380">
+                                <bean:write name="tawTestcardManagerForm" property="msisdn"/>&nbsp
+                            </td>
 
-        </tr>
-        <tr>
-                <td noWrap width="100" class= "clsfth">¾­ÊÖÈË</td>
-                <td width="380" >
-                      <bean:write name="tawTestcardManagerForm" property="dealer"/>&nbsp
-                </td>
-                </tr>
-        <tr>
-                <td noWrap width="100" class= "clsfth">±¨·Ï²¿ÃÅ</td>
-                <td width="380" >
-                      <bean:write name="tawTestcardManagerForm" property="leave"/>&nbsp
-                </td>
+                        </tr>
+                        <tr>
+                            <td noWrap width="100" class="clsfth">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+                            <td width="380">
+                                <bean:write name="tawTestcardManagerForm" property="dealer"/>&nbsp
+                            </td>
+                        </tr>
+                        <tr>
+                            <td noWrap width="100" class="clsfth">ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½</td>
+                            <td width="380">
+                                <bean:write name="tawTestcardManagerForm" property="leave"/>&nbsp
+                            </td>
 
-        </tr>
-        <tr>
-                <td noWrap width="100" class= "clsfth">ÁªÏµ·½Ê½</td>
-                <td colspan = 3 width="380" >
-                      <bean:write name="tawTestcardManagerForm" property="contect"/>&nbsp
-                </td>
-        </tr>
-       <tr>
-               <td noWrap width="100"  class= "clsfth">
-                     ±¨·ÏÊ±¼ä
-              </td>
-              <td width="380">
-                      <bean:write name="tawTestcardManagerForm" property="leantime"/>&nbsp
-              </td>
-       </tr>
-       <tr>
+                        </tr>
+                        <tr>
+                            <td noWrap width="100" class="clsfth">ï¿½ï¿½Ïµï¿½ï¿½Ê½</td>
+                            <td colspan=3 width="380">
+                                <bean:write name="tawTestcardManagerForm" property="contect"/>&nbsp
+                            </td>
+                        </tr>
+                        <tr>
+                            <td noWrap width="100" class="clsfth">
+                                ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+                            </td>
+                            <td width="380">
+                                <bean:write name="tawTestcardManagerForm" property="leantime"/>&nbsp
+                            </td>
+                        </tr>
+                        <tr>
+                            <td noWrap width="100" class="clsfth">
+                                ï¿½ï¿½×¢
+                            </td>
+                            <td width="380" colspan="3">
+                                <bean:write name="tawTestcardManagerForm" property="reason"/>&nbsp
+                            </td>
+                        </tr>
+                        <!--       <tr>
             <td noWrap width="100"  class= "clsfth">
-                      ±¸×¢
-                </td>
-                <td width="380" colspan="3">
-                      <bean:write name="tawTestcardManagerForm" property="reason"/>&nbsp
-                </td>
-       </tr>
-<!--       <tr>
-            <td noWrap width="100"  class= "clsfth">
-                      ¸½¼þ£º
+                      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 </td>
                 <td width="380" colspan="3">
                       <bean:write name="tawTestcardManagerForm" property="accessory"/>&nbsp
                 </td>
        </tr>
 -->
-</logic:present>
+                        </logic:present>
 
-                                           <td colspan=4>
-				                 <table bgcolor="#f2f2f2" height="30" cellpadding="0" cellspacing="0" border="0" width="100%">
-					              <tr align="right" valign="middle">
-						        <td>
+                        <td colspan=4>
+                            <table bgcolor="#f2f2f2" height="30" cellpadding="0" cellspacing="0" border="0"
+                                   width="100%">
+                                <tr align="right" valign="middle">
+                                    <td>
 
-      <html:submit styleClass="clsbtn2" onclick="window.history.back(-1)">
-        ·µ»Ø
-      </html:submit>
+                                        <html:submit styleClass="clsbtn2" onclick="window.history.back(-1)">
+                                            ï¿½ï¿½ï¿½ï¿½
+                                        </html:submit>
 
-						        </td>
-					               </tr>
+                                    </td>
+                                </tr>
 
 
-          </td>
-	</tr>
-</table>
+                                </td>
+                                </tr>
+                            </table>
 </center>
 <logic:messagesPresent>
-                  <html:messages id="error">
-	<script type="text/javascript">
-		<!--
-                    alert("<bean:write name="error"/>");
-		-->
-	</script>
-                  </html:messages>
+    <html:messages id="error">
+        <script type="text/javascript">
+            <!--
+            alert("<bean:write name="error"/>");
+            -->
+        </script>
+    </html:messages>
 </logic:messagesPresent>
 </body>

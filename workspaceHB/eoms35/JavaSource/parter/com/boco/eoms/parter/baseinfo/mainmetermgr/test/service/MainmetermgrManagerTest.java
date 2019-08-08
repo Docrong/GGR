@@ -35,7 +35,7 @@ public class MainmetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         mainmetermgrDao.expects(once()).method("getMainmetermgrs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List mainmetermgrs = mainmetermgrManager.getMainmetermgrs(null);
         assertTrue(mainmetermgrs.size() == 1);
@@ -45,7 +45,7 @@ public class MainmetermgrManagerTest extends BaseManagerTestCase {
     public void testGetMainmetermgr() throws Exception {
         // set expected behavior on dao
         mainmetermgrDao.expects(once()).method("getMainmetermgr")
-            .will(returnValue(new Mainmetermgr()));
+                .will(returnValue(new Mainmetermgr()));
         Mainmetermgr mainmetermgr = mainmetermgrManager.getMainmetermgr(mainmetermgrId);
         assertTrue(mainmetermgr != null);
         mainmetermgrDao.verify();
@@ -56,7 +56,7 @@ public class MainmetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         mainmetermgrDao.expects(once()).method("saveMainmetermgr")
-            .with(same(mainmetermgr)).isVoid();
+                .with(same(mainmetermgr)).isVoid();
 
         mainmetermgrManager.saveMainmetermgr(mainmetermgr);
         mainmetermgrDao.verify();
@@ -69,7 +69,7 @@ public class MainmetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         mainmetermgrDao.expects(once()).method("saveMainmetermgr")
-            .with(same(mainmetermgr)).isVoid();
+                .with(same(mainmetermgr)).isVoid();
         mainmetermgrManager.saveMainmetermgr(mainmetermgr);
         mainmetermgrDao.verify();
 

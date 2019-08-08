@@ -54,12 +54,12 @@ public class TawRmDispatchRecordDaoHibernate extends BaseDaoHibernate implements
 
     /**
      * @see com.boco.eoms.duty.dao.TawRmDispatchRecordDao#saveTawRmDispatchRecord(TawRmDispatchRecord tawRmDispatchRecord)
-     */    
+     */
     public void saveTawRmDispatchRecord(final TawRmDispatchRecord tawRmDispatchRecord) {
         if ((tawRmDispatchRecord.getId() == null) || (tawRmDispatchRecord.getId().equals("")))
-			getHibernateTemplate().save(tawRmDispatchRecord);
-		else
-			getHibernateTemplate().saveOrUpdate(tawRmDispatchRecord);
+            getHibernateTemplate().save(tawRmDispatchRecord);
+        else
+            getHibernateTemplate().saveOrUpdate(tawRmDispatchRecord);
     }
 
     /**
@@ -68,44 +68,47 @@ public class TawRmDispatchRecordDaoHibernate extends BaseDaoHibernate implements
     public void removeTawRmDispatchRecord(final String id) {
         getHibernateTemplate().delete(getTawRmDispatchRecord(id));
     }
+
     /**
-     * @see com.boco.eoms.duty.dao.TawRmDispatchRecordDao#getTawRmDispatchRecords(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.duty.dao.TawRmDispatchRecordDao#getTawRmDispatchRecords(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawRmDispatchRecords(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawRmDispatchRecords(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawRmDispatchRecord
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawRmDispatchRecord";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawRmDispatchRecord";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue() * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmDispatchRecordDao#getTawRmDispatchRecords(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawRmDispatchRecords(final Integer curPage, final Integer pageSize) {
-			return this.getTawRmDispatchRecords(curPage,pageSize,null);
-		}
+        return this.getTawRmDispatchRecords(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmDispatchRecordDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawRmDispatchRecord obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawRmDispatchRecord obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

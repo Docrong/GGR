@@ -1,4 +1,3 @@
-
 /**
  * <p>Title:  </p>
  * <p>Description: </p>
@@ -20,6 +19,7 @@ function LineTextView() {
     this.textPath = Toolkit.newElement("<v:textpath on='true' string=''/>");
     this.add(this.textPath);
 }
+
 LineTextView.prototype = new LineView();
 
 //

@@ -2,43 +2,45 @@ package com.boco.eoms.download;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
- 
- 
+
+
 public class RegexDemo {
- 
- 
+
+
     public static void main(String[] args) {
         /*
-         * ĞèÒª°Ñ¡°select ID as ±àºÅ, TITLE as ±êÌâ from table_a¡±
-         * ÕâÑùµÄsqlÓï¾äÖĞasÇ°µÄIDºÍTITLEÈ¡³öÀ´·ÅÔÚstringÊı×éAÀïÃæ£¬
-         * asºóÃæµÄ±àºÅºÍ±êÌâ·ÅÔÚstringÊı×éBÀïÃæ£¬
+         * ï¿½ï¿½Òªï¿½Ñ¡ï¿½select ID as ï¿½ï¿½ï¿½, TITLE as ï¿½ï¿½ï¿½ï¿½ from table_aï¿½ï¿½
+         * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sqlï¿½ï¿½ï¿½ï¿½ï¿½asÇ°ï¿½ï¿½IDï¿½ï¿½TITLEÈ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½stringï¿½ï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½æ£¬
+         * asï¿½ï¿½ï¿½ï¿½Ä±ï¿½ÅºÍ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½stringï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½æ£¬
          */
-        String input="select * from (select b.*, rownum rn from (select ID as ID, SHEETID as ¹¤µ¥ºÅ, TITLE as ±êÌâ, SHEETACCEPTLIMIT as ´¦ÀíÊ±ÏŞ, SHEETCOMPLETELIMIT as ÊÜÀíÊ±ÏŞ, SENDTIME as ÅÉµ¥Ê±¼ä, SENDUSERID as ÅÉµ¥ÈË  from commonfault_main) b where rownum <= 10) WHERE rn >= 0";
-        String regex="\\w+(?=\\s+as\\s+)";//Æ¥ÅäasÖ®Ç°µÄ×Ö¶Î
-        String regex2="(?<=\\s{1,100}as\\s{1,100})[\\w[\u4E00-\u9FA5]]+";//Æ¥ÅäasÖ®ºóµÄ×Ö¶Î
-        String[] arrA=matcherWorld(input, regex);
-        String[] arrB=matcherWorld(input, regex2);
-        System.out.println("asÖ®Ç°µÄ×Ö¶ÎÎª£º"+arrA[0]+"£¬"+arrA[1]+"£¬"+arrA[2]);
-        System.out.println("asÖ®ºóµÄ×Ö¶ÎÎª£º"+arrB[0]+"£¬"+arrB[1]+"£¬"+arrB[2]);
-         
-         
+        String input = "select * from (select b.*, rownum rn from (select ID as ID, SHEETID as ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, TITLE as ï¿½ï¿½ï¿½ï¿½, SHEETACCEPTLIMIT as ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½, SHEETCOMPLETELIMIT as ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½, SENDTIME as ï¿½Éµï¿½Ê±ï¿½ï¿½, SENDUSERID as ï¿½Éµï¿½ï¿½ï¿½  from commonfault_main) b where rownum <= 10) WHERE rn >= 0";
+        String regex = "\\w+(?=\\s+as\\s+)";//Æ¥ï¿½ï¿½asÖ®Ç°ï¿½ï¿½ï¿½Ö¶ï¿½
+        String regex2 = "(?<=\\s{1,100}as\\s{1,100})[\\w[\u4E00-\u9FA5]]+";//Æ¥ï¿½ï¿½asÖ®ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½
+        String[] arrA = matcherWorld(input, regex);
+        String[] arrB = matcherWorld(input, regex2);
+        System.out.println("asÖ®Ç°ï¿½ï¿½ï¿½Ö¶ï¿½Îªï¿½ï¿½" + arrA[0] + "ï¿½ï¿½" + arrA[1] + "ï¿½ï¿½" + arrA[2]);
+        System.out.println("asÖ®ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½Îªï¿½ï¿½" + arrB[0] + "ï¿½ï¿½" + arrB[1] + "ï¿½ï¿½" + arrB[2]);
+
+
     }
+
     /**
-     * Æ¥Åäº¯Êı
+     * Æ¥ï¿½äº¯ï¿½ï¿½
+     *
      * @param input
      * @param regex
      * @return
      */
-    public static String[] matcherWorld(String input,String regex){
-        //CASE_INSENSITIVE±íÊ¾²»Çø·Ö´óĞ¡Ğ´
-        Pattern p=Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
-        Matcher m=p.matcher(input);
-        StringBuffer result=new StringBuffer();
-        while(m.find()){
-            result.append(m.group()+",");
-        }   
-        return result.toString().split(",");       
+    public static String[] matcherWorld(String input, String regex) {
+        //CASE_INSENSITIVEï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ğ¡Ğ´
+        Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(input);
+        StringBuffer result = new StringBuffer();
+        while (m.find()) {
+            result.append(m.group() + ",");
+        }
+        return result.toString().split(",");
     }
-     
- 
+
+
 }

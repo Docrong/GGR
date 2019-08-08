@@ -35,7 +35,7 @@ public class TawCommonMessageOpertypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageOpertypeDao.expects(once()).method("getTawCommonMessageOpertypes")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawCommonMessageOpertypes = tawCommonMessageOpertypeManager.getTawCommonMessageOpertypes(null);
         assertTrue(tawCommonMessageOpertypes.size() == 1);
@@ -45,7 +45,7 @@ public class TawCommonMessageOpertypeManagerTest extends BaseManagerTestCase {
     public void testGetTawCommonMessageOpertype() throws Exception {
         // set expected behavior on dao
         tawCommonMessageOpertypeDao.expects(once()).method("getTawCommonMessageOpertype")
-            .will(returnValue(new TawCommonMessageOpertype()));
+                .will(returnValue(new TawCommonMessageOpertype()));
         TawCommonMessageOpertype tawCommonMessageOpertype = tawCommonMessageOpertypeManager.getTawCommonMessageOpertype(tawCommonMessageOpertypeId);
         assertTrue(tawCommonMessageOpertype != null);
         tawCommonMessageOpertypeDao.verify();
@@ -56,7 +56,7 @@ public class TawCommonMessageOpertypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageOpertypeDao.expects(once()).method("saveTawCommonMessageOpertype")
-            .with(same(tawCommonMessageOpertype)).isVoid();
+                .with(same(tawCommonMessageOpertype)).isVoid();
 
         tawCommonMessageOpertypeManager.saveTawCommonMessageOpertype(tawCommonMessageOpertype);
         tawCommonMessageOpertypeDao.verify();
@@ -69,7 +69,7 @@ public class TawCommonMessageOpertypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageOpertypeDao.expects(once()).method("saveTawCommonMessageOpertype")
-            .with(same(tawCommonMessageOpertype)).isVoid();
+                .with(same(tawCommonMessageOpertype)).isVoid();
         tawCommonMessageOpertypeManager.saveTawCommonMessageOpertype(tawCommonMessageOpertype);
         tawCommonMessageOpertypeDao.verify();
 

@@ -1,230 +1,237 @@
-
 // Arrays for nodes and icons
-var nodes		= new Array();;
-var openNodes	= new Array();
-var icons		= new Array(6);
+var nodes = new Array();
+;
+var openNodes = new Array();
+var icons = new Array(6);
 
 // Loads all icons that are used in the tree
 function preloadIcons() {
-	icons[0] = new Image();
-	icons[0].src = "../images/img/plus.gif";
-	icons[1] = new Image();
-	icons[1].src = "../images/img/plusbottom.gif";
-	icons[2] = new Image();
-	icons[2].src = "../images/img/minus.gif";
-	icons[3] = new Image();
-	icons[3].src = "../images/img/minusbottom.gif";
-	icons[4] = new Image();
-	icons[4].src = "../images/img/folder.gif";
-	icons[5] = new Image();
-	icons[5].src = "../images/img/folderopen.gif";
+    icons[0] = new Image();
+    icons[0].src = "../images/img/plus.gif";
+    icons[1] = new Image();
+    icons[1].src = "../images/img/plusbottom.gif";
+    icons[2] = new Image();
+    icons[2].src = "../images/img/minus.gif";
+    icons[3] = new Image();
+    icons[3].src = "../images/img/minusbottom.gif";
+    icons[4] = new Image();
+    icons[4].src = "../images/img/folder.gif";
+    icons[5] = new Image();
+    icons[5].src = "../images/img/folderopen.gif";
 }
 
 /*
-¹¦ÄÜËµÃ÷£º
-ÏµÍ³µ¼º½Ê÷µÄÏÔÊ¾£¬²»°üº¬ÐÅÏ¢·¢²¼¡¢ÒµÎñÂÛÌ³µÈÄ£¿é¡£
-¸Ãfunction±ØÐëÓëcom.boco.eoms.common.tree.ModuleTree.javaÀàÖÐµÄstrMTree()·½·¨ÁªºÏÊ¹ÓÃ
-ÀýÈç£º
+ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½Ì³ï¿½ï¿½Ä£ï¿½é¡£
+ï¿½ï¿½functionï¿½ï¿½ï¿½ï¿½ï¿½ï¿½com.boco.eoms.common.tree.ModuleTree.javaï¿½ï¿½ï¿½Ðµï¿½strMTree()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½
+ï¿½ï¿½ï¿½ç£º
 ModuleTree moduletree = new ModuleTree();
 String strTree = moduletree.strMTree(i);
-ÆäÖÐ£¬iÖµÊÇ£ºÄ£¿éµÄ±àºÅ£»
+ï¿½ï¿½ï¿½Ð£ï¿½iÖµï¿½Ç£ï¿½Ä£ï¿½ï¿½Ä±ï¿½Å£ï¿½
 
-Ê¹ÓÃ¾ÙÀý£º
+Ê¹ï¿½Ã¾ï¿½ï¿½ï¿½ï¿½ï¿½
 EOMS_J2EE/template/module_tree.jsp;
 
-²ÎÊýËµÃ÷£º
-arrName£ºTree¼¯ºÏÖµ£¬°üº¬Ê÷ÐÍ½á¹¹µÄ¸÷¸ö½ÚµãµÄ¼¯ºÏ£»
-startNode£º´Ó¸Ã½Úµã¿ªÊ¼ÏÔÊ¾Ê÷ÐÍ½á¹¹£»
-openNode£º´Ó¸Ã½Úµã¿ªÊ¼£¬Õ¹¿ªÆäËùÓÐµÄ×Ó½Úµã¡£ÈôÉèÎªÒ»¸öÐ¡ÓÚ0µÄÖµ£¬Ôò±íÊ¾£ºÊ÷ÐÍ½á¹¹È«²¿Õ¹¿ª£»
-webapp£ºwebÓ¦ÓÃµÄÃû³Æ£»
+ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+arrNameï¿½ï¿½Treeï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½á¹¹ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½Úµï¿½Ä¼ï¿½ï¿½Ï£ï¿½
+startNodeï¿½ï¿½ï¿½Ó¸Ã½Úµã¿ªÊ¼ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Í½á¹¹ï¿½ï¿½
+openNodeï¿½ï¿½ï¿½Ó¸Ã½Úµã¿ªÊ¼ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½Ó½Úµã¡£ï¿½ï¿½ï¿½ï¿½ÎªÒ»ï¿½ï¿½Ð¡ï¿½ï¿½0ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Í½á¹¹È«ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½
+webappï¿½ï¿½webÓ¦ï¿½Ãµï¿½ï¿½ï¿½ï¿½Æ£ï¿½
 */
-function createTree(arrName, startNode, openNode,webapp) {
-	nodes = arrName;
-	//alert(nodes);
-	if (nodes.length > 0) {
-		preloadIcons();
-		if (startNode == null) startNode = 0;
-		//if (openNode != 0 || openNode != null) setOpenNodes(openNode);
-                if (openNode > 0 || openNode !=null) setOpenNodes(openNode);      //´Ó£¨openNode£©´Ë½ÚµãÕ¹¿ª
+function createTree(arrName, startNode, openNode, webapp) {
+    nodes = arrName;
+    //alert(nodes);
+    if (nodes.length > 0) {
+        preloadIcons();
+        if (startNode == null) startNode = 0;
+        //if (openNode != 0 || openNode != null) setOpenNodes(openNode);
+        if (openNode > 0 || openNode != null) setOpenNodes(openNode);      //ï¿½Ó£ï¿½openNodeï¿½ï¿½ï¿½Ë½Úµï¿½Õ¹ï¿½ï¿½
 
-                if (openNode < 0) {   //Õ¹¿ªËùÓÐ½Úµã
-                  openAllNodes();
-                  //alert(openNode);
-                }
+        if (openNode < 0) {   //Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½
+            openAllNodes();
+            //alert(openNode);
+        }
 
-		if (startNode !=0) {
-			var nodeValues = nodes[getArrayId(startNode)].split("|");
-                        if(nodeValues[3] == '#'){
-    			   document.write("<img src=\"../images/img/folderopen.gif\" align=\"absbottom\" alt=\"\" />" + nodeValues[2] + "<br />");
-                        }
-                        else{
-                           document.write("<a href=\""+webapp + nodeValues[3] + "\" target=rightFrame onmouseover=\"window.status='" + nodeValues[2] + "';return true;\" onmouseout=\"window.status=' ';return true;\"><img src=\"../images/img/folderopen.gif\" align=\"absbottom\" alt=\"\" />" + nodeValues[2] + "</a><br />");
-                        }
-		} else document.write("<img src=\"../images/img/base.gif\" align=\"absbottom\" alt=\"\" />Eoms<br />");
+        if (startNode != 0) {
+            var nodeValues = nodes[getArrayId(startNode)].split("|");
+            if (nodeValues[3] == '#') {
+                document.write("<img src=\"../images/img/folderopen.gif\" align=\"absbottom\" alt=\"\" />" + nodeValues[2] + "<br />");
+            } else {
+                document.write("<a href=\"" + webapp + nodeValues[3] + "\" target=rightFrame onmouseover=\"window.status='" + nodeValues[2] + "';return true;\" onmouseout=\"window.status=' ';return true;\"><img src=\"../images/img/folderopen.gif\" align=\"absbottom\" alt=\"\" />" + nodeValues[2] + "</a><br />");
+            }
+        } else document.write("<img src=\"../images/img/base.gif\" align=\"absbottom\" alt=\"\" />Eoms<br />");
 
-		var recursedNodes = new Array();
-		addNode(startNode, recursedNodes);
-	}
+        var recursedNodes = new Array();
+        addNode(startNode, recursedNodes);
+    }
 }
+
 // Returns the position of a node in the array
 function getArrayId(node) {
-	for (i=0; i<nodes.length; i++) {
-		var nodeValues = nodes[i].split("|");
-		if (nodeValues[0]==node) return i;
-	}
+    for (i = 0; i < nodes.length; i++) {
+        var nodeValues = nodes[i].split("|");
+        if (nodeValues[0] == node) return i;
+    }
 }
+
 // Puts in array nodes that will be open
 function setOpenNodes(openNode) {
-	for (i=0; i<nodes.length; i++) {
-		var nodeValues = nodes[i].split("|");
-		if (nodeValues[0]==openNode) {
-			openNodes.push(nodeValues[0]);
-			setOpenNodes(nodeValues[1]);
-		}
-	}
+    for (i = 0; i < nodes.length; i++) {
+        var nodeValues = nodes[i].split("|");
+        if (nodeValues[0] == openNode) {
+            openNodes.push(nodeValues[0]);
+            setOpenNodes(nodeValues[1]);
+        }
+    }
 }
 
 // open all nodes
-function openAllNodes()
-{
-  for (i=0;i<nodes.length;i++) {
-    var nodeValues = nodes[i].split("|");
-      //alert(nodeValues[0]);
-      //document.write(nodeValues[0]);
-    openNodes.push(nodeValues[0]);
-      //openAllNodes();
-  }
+function openAllNodes() {
+    for (i = 0; i < nodes.length; i++) {
+        var nodeValues = nodes[i].split("|");
+        //alert(nodeValues[0]);
+        //document.write(nodeValues[0]);
+        openNodes.push(nodeValues[0]);
+        //openAllNodes();
+    }
 
 }
 
 // Checks if a node is open
 function isNodeOpen(node) {
-	for (i=0; i<openNodes.length; i++)
-		if (openNodes[i]==node) return true;
-	return false;
+    for (i = 0; i < openNodes.length; i++)
+        if (openNodes[i] == node) return true;
+    return false;
 }
+
 // Checks if a node has any children
 function hasChildNode(parentNode) {
-	for (i=0; i< nodes.length; i++) {
-		var nodeValues = nodes[i].split("|");
-		if (nodeValues[1] == parentNode) return true;
-	}
-	return false;
+    for (i = 0; i < nodes.length; i++) {
+        var nodeValues = nodes[i].split("|");
+        if (nodeValues[1] == parentNode) return true;
+    }
+    return false;
 }
+
 // Checks if a node is the last sibling
-function lastSibling (node, parentNode) {
-	var lastChild = 0;
-	for (i=0; i< nodes.length; i++) {
-		var nodeValues = nodes[i].split("|");
-		if (nodeValues[1] == parentNode)
-			lastChild = nodeValues[0];
-	}
-	if (lastChild==node) return true;
-	return false;
+function lastSibling(node, parentNode) {
+    var lastChild = 0;
+    for (i = 0; i < nodes.length; i++) {
+        var nodeValues = nodes[i].split("|");
+        if (nodeValues[1] == parentNode)
+            lastChild = nodeValues[0];
+    }
+    if (lastChild == node) return true;
+    return false;
 }
+
 // Adds a new node in the tree
 function addNode(parentNode, recursedNodes) {
-	for (var i = 0; i < nodes.length; i++) {
+    for (var i = 0; i < nodes.length; i++) {
 
-		var nodeValues = nodes[i].split("|");
+        var nodeValues = nodes[i].split("|");
 
-		if (nodeValues[1] == parentNode) {
+        if (nodeValues[1] == parentNode) {
 
-			var ls	= lastSibling(nodeValues[0], nodeValues[1]);
-			var hcn	= hasChildNode(nodeValues[0]);
-			var ino = isNodeOpen(nodeValues[0]);
+            var ls = lastSibling(nodeValues[0], nodeValues[1]);
+            var hcn = hasChildNode(nodeValues[0]);
+            var ino = isNodeOpen(nodeValues[0]);
 
-			// Write out line & empty icons
-			for (g=0; g<recursedNodes.length; g++) {
-				if (recursedNodes[g] == 1) document.write("<img src=\"../images/img/line.gif\" align=\"absbottom\" alt=\"\" />");
-				else  document.write("<img src=\"../images/img/empty.gif\" align=\"absbottom\" alt=\"\" />");
-			}
+            // Write out line & empty icons
+            for (g = 0; g < recursedNodes.length; g++) {
+                if (recursedNodes[g] == 1) document.write("<img src=\"../images/img/line.gif\" align=\"absbottom\" alt=\"\" />");
+                else document.write("<img src=\"../images/img/empty.gif\" align=\"absbottom\" alt=\"\" />");
+            }
 
-			// put in array line & empty icons
-			if (ls) recursedNodes.push(0);
-			else recursedNodes.push(1);
+            // put in array line & empty icons
+            if (ls) recursedNodes.push(0);
+            else recursedNodes.push(1);
 
-			// Write out join icons
-			if (hcn) {
-				if (ls) {
-					document.write("<a href=\"javascript: oc(" + nodeValues[0] + ", 1);\"><img id=\"join" + nodeValues[0] + "\" src=\"../images/img/");
-					 	if (ino) document.write("minus");
-						else document.write("plus");
-					document.write("bottom.gif\" align=\"absbottom\" alt=\"Open/Close node\" /></a>");
-				} else {
-					document.write("<a href=\"javascript: oc(" + nodeValues[0] + ", 0);\"><img id=\"join" + nodeValues[0] + "\" src=\"../images/img/");
-						if (ino) document.write("minus");
-						else document.write("plus");
-					document.write(".gif\" align=\"absbottom\" alt=\"Open/Close node\" /></a>");
-				}
-			} else {
-				if (ls) document.write("<img src=\"../images/img/join.gif\" align=\"absbottom\" alt=\"\" />");
-				else document.write("<img src=\"../images/img/joinbottom.gif\" align=\"absbottom\" alt=\"\" />");
-			}
+            // Write out join icons
+            if (hcn) {
+                if (ls) {
+                    document.write("<a href=\"javascript: oc(" + nodeValues[0] + ", 1);\"><img id=\"join" + nodeValues[0] + "\" src=\"../images/img/");
+                    if (ino) document.write("minus");
+                    else document.write("plus");
+                    document.write("bottom.gif\" align=\"absbottom\" alt=\"Open/Close node\" /></a>");
+                } else {
+                    document.write("<a href=\"javascript: oc(" + nodeValues[0] + ", 0);\"><img id=\"join" + nodeValues[0] + "\" src=\"../images/img/");
+                    if (ino) document.write("minus");
+                    else document.write("plus");
+                    document.write(".gif\" align=\"absbottom\" alt=\"Open/Close node\" /></a>");
+                }
+            } else {
+                if (ls) document.write("<img src=\"../images/img/join.gif\" align=\"absbottom\" alt=\"\" />");
+                else document.write("<img src=\"../images/img/joinbottom.gif\" align=\"absbottom\" alt=\"\" />");
+            }
 
-			// Start link
-                        if(nodeValues[3] != '#')
-                	  document.write("<a href=\""+ webapp + nodeValues[3] + "\" target = rightFrame onmouseover=\"window.status='" + nodeValues[2] + "';return true;\" onmouseout=\"window.status=' ';return true;\">");
+            // Start link
+            if (nodeValues[3] != '#')
+                document.write("<a href=\"" + webapp + nodeValues[3] + "\" target = rightFrame onmouseover=\"window.status='" + nodeValues[2] + "';return true;\" onmouseout=\"window.status=' ';return true;\">");
 
-			// Write out folder & page icons
-			if (hcn) {
-				document.write("<img id=\"icon" + nodeValues[0] + "\" src=\"img/folder")
-					if (ino) document.write("open");
-				document.write(".gif\" align=\"absbottom\" alt=\"Folder\" />");
-			} else document.write("<img id=\"icon" + nodeValues[0] + "\" src=\"../images/img/page.gif\" align=\"absbottom\" alt=\"Page\" />");
+            // Write out folder & page icons
+            if (hcn) {
+                document.write("<img id=\"icon" + nodeValues[0] + "\" src=\"img/folder")
+                if (ino) document.write("open");
+                document.write(".gif\" align=\"absbottom\" alt=\"Folder\" />");
+            } else document.write("<img id=\"icon" + nodeValues[0] + "\" src=\"../images/img/page.gif\" align=\"absbottom\" alt=\"Page\" />");
 
-			// Write out node name
-			document.write(nodeValues[2]);
+            // Write out node name
+            document.write(nodeValues[2]);
 
-			// End link
-			document.write("</a><br />");
+            // End link
+            document.write("</a><br />");
 
-			// If node has children write out divs and go deeper
-			if (hcn) {
-				document.write("<div nowrap id=\"div" + nodeValues[0] + "\"");
-					if (!ino) document.write(" style=\"display: none;\"");
-				document.write(">");
-				addNode(nodeValues[0], recursedNodes);
-				document.write("</div>");
-			}
+            // If node has children write out divs and go deeper
+            if (hcn) {
+                document.write("<div nowrap id=\"div" + nodeValues[0] + "\"");
+                if (!ino) document.write(" style=\"display: none;\"");
+                document.write(">");
+                addNode(nodeValues[0], recursedNodes);
+                document.write("</div>");
+            }
 
-			// remove last line or empty icon
-			recursedNodes.pop();
-		}
-	}
+            // remove last line or empty icon
+            recursedNodes.pop();
+        }
+    }
 }
+
 // Opens or closes a node
 function oc(node, bottom) {
-	var theDiv = document.getElementById("div" + node);
-	var theJoin	= document.getElementById("join" + node);
-	var theIcon = document.getElementById("icon" + node);
+    var theDiv = document.getElementById("div" + node);
+    var theJoin = document.getElementById("join" + node);
+    var theIcon = document.getElementById("icon" + node);
 
-	if (theDiv.style.display == 'none') {
-		if (bottom==1) theJoin.src = icons[3].src;
-		else theJoin.src = icons[2].src;
-		theIcon.src = icons[5].src;
-		theDiv.style.display = '';
-	} else {
-		if (bottom==1) theJoin.src = icons[1].src;
-		else theJoin.src = icons[0].src;
-		theIcon.src = icons[4].src;
-		theDiv.style.display = 'none';
-	}
+    if (theDiv.style.display == 'none') {
+        if (bottom == 1) theJoin.src = icons[3].src;
+        else theJoin.src = icons[2].src;
+        theIcon.src = icons[5].src;
+        theDiv.style.display = '';
+    } else {
+        if (bottom == 1) theJoin.src = icons[1].src;
+        else theJoin.src = icons[0].src;
+        theIcon.src = icons[4].src;
+        theDiv.style.display = 'none';
+    }
 }
+
 // Push and pop not implemented in IE(crap!    don\uFFFDt know about NS though)
-if(!Array.prototype.push) {
-	function array_push() {
-		for(var i=0;i<arguments.length;i++)
-			this[this.length]=arguments[i];
-		return this.length;
-	}
-	Array.prototype.push = array_push;
+if (!Array.prototype.push) {
+    function array_push() {
+        for (var i = 0; i < arguments.length; i++)
+            this[this.length] = arguments[i];
+        return this.length;
+    }
+
+    Array.prototype.push = array_push;
 }
-if(!Array.prototype.pop) {
-	function array_pop(){
-		lastElement = this[this.length-1];
-		this.length = Math.max(this.length-1,0);
-		return lastElement;
-	}
-	Array.prototype.pop = array_pop;
+if (!Array.prototype.pop) {
+    function array_pop() {
+        lastElement = this[this.length - 1];
+        this.length = Math.max(this.length - 1, 0);
+        return lastElement;
+    }
+
+    Array.prototype.pop = array_pop;
 }

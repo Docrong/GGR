@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE hibernate-configuration
-    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-  <session-factory>
+    <session-factory>
 
-<property name="show_sql">true</property>
-    <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRole.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRoleType.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemSubRole.hbm.xml"/>
-  	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemOrganizationProxy.hbm.xml"/>
-  	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemDeptRefPost.hbm.xml"/>
-  	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemPost.hbm.xml"/>
-  	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemUserRefPost.hbm.xml"/>
-  	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRoleRefWorkflow.hbm.xml"/>
-  	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemSubRoleRefPost.hbm.xml"/>
-  	<mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRoleImport.hbm.xml"/>
-  </session-factory>   
+        <property name="show_sql">true</property>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRole.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRoleType.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemSubRole.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemOrganizationProxy.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemDeptRefPost.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemPost.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemUserRefPost.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRoleRefWorkflow.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemSubRoleRefPost.hbm.xml"/>
+        <mapping resource="com/boco/eoms/commons/system/role/model/TawSystemRoleImport.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>
 

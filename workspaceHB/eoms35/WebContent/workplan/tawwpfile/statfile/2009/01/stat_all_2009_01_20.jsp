@@ -1,1 +1,81 @@
- <%@ include file="/workplan/header_eoms_form.jsp"%><script language='javascript'>function onMonth(){document.statyear.submit();}</script><form name='statyear'><table width='700' align=center class="listTable" ><caption>2009Äê01ÔÂÍ³¼ÆÊý¾Ý<select size='1' name='yearflag'><option value='2006'>2006</option><option value='2007'>2007</option><option value='2008'>2008</option><option value='2009'>2009</option><option value='2010'>2010</option></select>Äê<select size='1' name='monthflag'><option value='01'>01</option><option value='02'>02</option><option value='03'>03</option><option value='04'>04</option><option value='05'>05</option><option value='06'>06</option><option value='07'>07</option><option value='08'>08</option><option value='09'>09</option><option value='10'>10</option><option value='11'>11</option><option value='12'>12</option></select>ÔÂ<input type='button' value='ÔÂ¶ÈÑ¡Ôñ' name='B1' onclick='onMonth()'  class='button'> <script language='javascript'>document.forms[0].yearflag.value = '2009';document.forms[0].monthflag.value = '01';</script></caption></table></form><table class="listTable"><thead><tr > <td rowspan='2'>²¿ÃÅ</td><td colspan='3'>Ìì</td><td colspan='3'>ÖÜ</td><td colspan='3'>°ëÔÂ</td><td colspan='3'>ÔÂ</td><td colspan='3'>¼¾¶È</td><td colspan='3'>°ëÄê</td><td colspan='3'>Äê</td><td colspan='3'>ÆäËû</td><td colspan='3'>×Ü¼Æ</td><td rowspan='2'>¼°Ê±ÂÊ</td><td rowspan='2'>Íê³ÉÂÊ</td><td rowspan='2'>ÖÆ¶¨¼°Ê±ÂÊ</td><td rowspan='2'>µÃ·Ö</td></tr><tr  ><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td><td >×ÜÊý</td><td >¼°Ê±Êý</td><td >Íê³ÉÊý</td></tr></thead></table ><br><font color='blue' size=2>×¢:µã»÷ÐÐ¿ÉÒÔ²é¿´ÏêÇé<font>
+<%@ include file="/workplan/header_eoms_form.jsp" %>
+<script language='javascript'>function onMonth() {
+    document.statyear.submit();
+}</script>
+<form name='statyear'>
+    <table width='700' align=center class="listTable">
+        <caption>2009ï¿½ï¿½01ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<select size='1' name='yearflag'>
+            <option value='2006'>2006</option>
+            <option value='2007'>2007</option>
+            <option value='2008'>2008</option>
+            <option value='2009'>2009</option>
+            <option value='2010'>2010</option>
+        </select>ï¿½ï¿½<select size='1' name='monthflag'>
+            <option value='01'>01</option>
+            <option value='02'>02</option>
+            <option value='03'>03</option>
+            <option value='04'>04</option>
+            <option value='05'>05</option>
+            <option value='06'>06</option>
+            <option value='07'>07</option>
+            <option value='08'>08</option>
+            <option value='09'>09</option>
+            <option value='10'>10</option>
+            <option value='11'>11</option>
+            <option value='12'>12</option>
+        </select>ï¿½ï¿½<input type='button' value='ï¿½Â¶ï¿½Ñ¡ï¿½ï¿½' name='B1' onclick='onMonth()' class='button'>
+            <script language='javascript'>document.forms[0].yearflag.value = '2009';
+            document.forms[0].monthflag.value = '01';</script>
+        </caption>
+    </table>
+</form>
+<table class="listTable">
+    <thead>
+    <tr>
+        <td rowspan='2'>ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½ï¿½ï¿½ï¿½</td>
+        <td colspan='3'>ï¿½Ü¼ï¿½</td>
+        <td rowspan='2'>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td rowspan='2'>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td rowspan='2'>ï¿½Æ¶ï¿½ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td rowspan='2'>ï¿½Ã·ï¿½</td>
+    </tr>
+    <tr>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½</td>
+        <td>ï¿½ï¿½Ê±ï¿½ï¿½</td>
+        <td>ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+    </tr>
+    </thead>
+</table>
+<br><font color='blue' size=2>×¢:ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ô²é¿´ï¿½ï¿½ï¿½ï¿½<font>

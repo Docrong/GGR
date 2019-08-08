@@ -6,6 +6,6 @@ import com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO;
 
 
 public class ItsoftchangeListDisplayHelper extends
-		CommonStatListDisplayHelper {
+        CommonStatListDisplayHelper {
 
 }

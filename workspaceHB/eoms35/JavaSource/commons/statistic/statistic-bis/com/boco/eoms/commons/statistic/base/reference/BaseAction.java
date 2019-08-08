@@ -17,8 +17,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 
-
-
 /**
  * Implementation of <strong>Action</strong> that contains base methods for
  * Actions as well as determines with methods to call in subclasses. This class
@@ -74,231 +72,227 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
  * @author Rick Hightower (based on his ButtonNameDispatchAction)
  */
 public class BaseAction extends DispatchAction {
-        // protected final Log log = LogFactory.getLog(getClass());
+    // protected final Log log = LogFactory.getLog(getClass());
 
 //        private static final Long defaultLong = null;
 
-        static {
+    static {
 //                ConvertUtils.register(new CurrencyConverter(), Double.class);
 //                ConvertUtils.register(new DateConverter(), Date.class);
 //                ConvertUtils.register(new DateConverter(), String.class);
 //                ConvertUtils.register(new LongConverter(defaultLong), Long.class);
 //                ConvertUtils.register(new IntegerConverter(defaultLong), Integer.class);
+    }
+
+    /**
+     * Convenience method to get Spring-initialized beans
+     *
+     * @param name
+     * @return Object bean from ApplicationContext
+     */
+    public Object getBean(String name) {
+        ApplicationContext ctx = WebApplicationContextUtils
+                .getRequiredWebApplicationContext(servlet.getServletContext());
+        if (ApplicationContextHolder.getInstance().getCtx() == null) {
+            ApplicationContextHolder.getInstance().setCtx(ctx);
         }
 
-        /**
-         * Convenience method to get Spring-initialized beans
-         *
-         * @param name
-         * @return Object bean from ApplicationContext
-         */
-        public Object getBean(String name) {
-                ApplicationContext ctx = WebApplicationContextUtils
-                                .getRequiredWebApplicationContext(servlet.getServletContext());
-                if(ApplicationContextHolder.getInstance().getCtx() == null) 
-                {
-                	ApplicationContextHolder.getInstance().setCtx(ctx);
-                }
-                
-                return ctx.getBean(name);
-        }
+        return ctx.getBean(name);
+    }
 
-        /**
-         * @see com.boco.eoms.base.util.ConvertUtil#convert(java.lang.Object)
-         */
+    /**
+     * @see com.boco.eoms.base.util.ConvertUtil#convert(java.lang.Object)
+     */
 //        protected Object convert(Object o) throws Exception {
 //                return ConvertUtil.convert(o);
 //        }
 
-        /**
-         * @see com.boco.eoms.base.util.ConvertUtil#convertLists(java.lang.Object)
-         */
+    /**
+     * @see com.boco.eoms.base.util.ConvertUtil#convertLists(java.lang.Object)
+     */
 //        protected Object convertLists(Object o) throws Exception {
 //                return ConvertUtil.convertLists(o);
 //        }
 
-        /**
-         * Convenience method to initialize messages in a subclass.
-         *
-         * @param request
-         *            the current request
-         * @return the populated (or empty) messages
-         */
-        public ActionMessages getMessages(HttpServletRequest request) {
-                ActionMessages messages = null;
-                HttpSession session = request.getSession();
+    /**
+     * Convenience method to initialize messages in a subclass.
+     *
+     * @param request the current request
+     * @return the populated (or empty) messages
+     */
+    public ActionMessages getMessages(HttpServletRequest request) {
+        ActionMessages messages = null;
+        HttpSession session = request.getSession();
 
-                if (request.getAttribute(Globals.MESSAGE_KEY) != null) {
-                        messages = (ActionMessages) request
-                                        .getAttribute(Globals.MESSAGE_KEY);
-                        saveMessages(request, messages);
-                } else if (session.getAttribute(Globals.MESSAGE_KEY) != null) {
-                        messages = (ActionMessages) session
-                                        .getAttribute(Globals.MESSAGE_KEY);
-                        saveMessages(request, messages);
-                        session.removeAttribute(Globals.MESSAGE_KEY);
-                } else {
-                        messages = new ActionMessages();
-                }
-
-                return messages;
+        if (request.getAttribute(Globals.MESSAGE_KEY) != null) {
+            messages = (ActionMessages) request
+                    .getAttribute(Globals.MESSAGE_KEY);
+            saveMessages(request, messages);
+        } else if (session.getAttribute(Globals.MESSAGE_KEY) != null) {
+            messages = (ActionMessages) session
+                    .getAttribute(Globals.MESSAGE_KEY);
+            saveMessages(request, messages);
+            session.removeAttribute(Globals.MESSAGE_KEY);
+        } else {
+            messages = new ActionMessages();
         }
 
-        /**
-         * Gets the method name based on the mapping passed to it
-         */
-        private String getActionMethodWithMapping(HttpServletRequest request,
-                        ActionMapping mapping) {
-                return getActionMethod(request, mapping.getParameter());
+        return messages;
+    }
+
+    /**
+     * Gets the method name based on the mapping passed to it
+     */
+    private String getActionMethodWithMapping(HttpServletRequest request,
+                                              ActionMapping mapping) {
+        return getActionMethod(request, mapping.getParameter());
+    }
+
+    /**
+     * Gets the method name based on the prepender passed to it.
+     */
+    protected String getActionMethod(HttpServletRequest request, String prepend) {
+        String name = null;
+
+        // for backwards compatibility, try with no prepend first
+        name = request.getParameter(prepend);
+        if (name != null) {
+            // trim any whitespace around - this might happen on buttons
+            name = name.trim();
+            // lowercase first letter
+            return name.replace(name.charAt(0), Character.toLowerCase(name
+                    .charAt(0)));
         }
 
-        /**
-         * Gets the method name based on the prepender passed to it.
-         */
-        protected String getActionMethod(HttpServletRequest request, String prepend) {
-                String name = null;
+        Enumeration e = request.getParameterNames();
 
-                // for backwards compatibility, try with no prepend first
-                name = request.getParameter(prepend);
-                if (name != null) {
-                        // trim any whitespace around - this might happen on buttons
-                        name = name.trim();
-                        // lowercase first letter
-                        return name.replace(name.charAt(0), Character.toLowerCase(name
-                                        .charAt(0)));
-                }
+        while (e.hasMoreElements()) {
+            String currentName = (String) e.nextElement();
 
-                Enumeration e = request.getParameterNames();
+            if (currentName.startsWith(prepend + ".")) {
+                // if (log.isDebugEnabled()) {
+                //  BocoLog.debug(this, "calling method: " + currentName);
+                // }
 
-                while (e.hasMoreElements()) {
-                        String currentName = (String) e.nextElement();
-
-                        if (currentName.startsWith(prepend + ".")) {
-                                // if (log.isDebugEnabled()) {
-                              //  BocoLog.debug(this, "calling method: " + currentName);
-                                // }
-
-                                String[] parameterMethodNameAndArgs = StringUtils.split(
-                                                currentName, ".");
-                                name = parameterMethodNameAndArgs[1];
-                                break;
-                        }
-                }
-
-                return name;
+                String[] parameterMethodNameAndArgs = StringUtils.split(
+                        currentName, ".");
+                name = parameterMethodNameAndArgs[1];
+                break;
+            }
         }
 
-        /**
-         * Override the execute method in DispatchAction to parse URLs and forward
-         * to methods without parameters.
-         * </p>
-         * <p>
-         * This is based on the following system: <p/>
-         * <ul>
-         * <li>edit*.html -> edit method</li>
-         * <li>save*.html -> save method</li>
-         * <li>view*.html -> search method</li>
-         * </ul>
-         */
-        public ActionForward execute(ActionMapping mapping, ActionForm form,
-                        HttpServletRequest request, HttpServletResponse response)
-                        throws Exception {
+        return name;
+    }
 
-                if (isCancelled(request)) {
-                        try {
-                                getMethod("cancel");
-                                return dispatchMethod(mapping, form, request, response,
-                                                "cancel");
-                        } catch (NoSuchMethodException n) {
-                             //   BocoLog.warn(this, "No 'cancel' method found, returning null");
-                             //   return cancelled(mapping, form, request, response);
-                        }
-                }
+    /**
+     * Override the execute method in DispatchAction to parse URLs and forward
+     * to methods without parameters.
+     * </p>
+     * <p>
+     * This is based on the following system: <p/>
+     * <ul>
+     * <li>edit*.html -> edit method</li>
+     * <li>save*.html -> save method</li>
+     * <li>view*.html -> search method</li>
+     * </ul>
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-                // Check to see if methodName indicated by request parameter
-                String actionMethod = getActionMethodWithMapping(request, mapping);
+        if (isCancelled(request)) {
+            try {
+                getMethod("cancel");
+                return dispatchMethod(mapping, form, request, response,
+                        "cancel");
+            } catch (NoSuchMethodException n) {
+                //   BocoLog.warn(this, "No 'cancel' method found, returning null");
+                //   return cancelled(mapping, form, request, response);
+            }
+        }
+
+        // Check to see if methodName indicated by request parameter
+        String actionMethod = getActionMethodWithMapping(request, mapping);
 //                if (!"saveSession".equals(actionMethod)) {
 //                        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
 //                                        .getSession().getAttribute("sessionform");
-                        // String url = request.getServletPath();
-                        // boolean flag = TawSystemUserAssignBo.getInstance().isHaveUrl(url,
-                        // sessionform.getUserid());
-                        // if (flag == false && !sessionform.isIsadmin()
-                        // && !url.equals("/xtree.do")) {
-                        //
-                        //
-                        // }
-                        // if (sessionform != null) {
-                        // if (!"/xtree.do".equals(url) && !hasPermission(url, request)) {
-                        // // return XtreeAction.noOperpriv(mapping, form, request,
-                        // // response);
-                        // ActionForward forward = new ActionForward("/nopriv.jsp",
-                        // false);
-                        // forward.setContextRelative(true);
-                        // return forward;
-                        // }
-                        //
-                        // } else
+        // String url = request.getServletPath();
+        // boolean flag = TawSystemUserAssignBo.getInstance().isHaveUrl(url,
+        // sessionform.getUserid());
+        // if (flag == false && !sessionform.isIsadmin()
+        // && !url.equals("/xtree.do")) {
+        //
+        //
+        // }
+        // if (sessionform != null) {
+        // if (!"/xtree.do".equals(url) && !hasPermission(url, request)) {
+        // // return XtreeAction.noOperpriv(mapping, form, request,
+        // // response);
+        // ActionForward forward = new ActionForward("/nopriv.jsp",
+        // false);
+        // forward.setContextRelative(true);
+        // return forward;
+        // }
+        //
+        // } else
 //                        if (sessionform == null) {
 //                                // throw new Exception("��½��ʱ�������µ�½");
 //                                ActionForward forward = new ActionForward("/reload.jsp", false);
 //                                forward.setContextRelative(true);
 //                                return forward;
 //                        }
-            //    }
+        //    }
 
-                if (actionMethod != null) {
-                        return dispatchMethod(mapping, form, request, response,
-                                        actionMethod);
-                } else {
-                        String[] rules = { "edit", "save", "search", "view" };
-                        for (int i = 0; i < rules.length; i++) {
-                                // apply the rules for automatically appending the method name
-                                if (request.getServletPath().indexOf(rules[i]) > -1) {
-                                        return dispatchMethod(mapping, form, request, response,
-                                                        rules[i]);
-                                }
-                        }
+        if (actionMethod != null) {
+            return dispatchMethod(mapping, form, request, response,
+                    actionMethod);
+        } else {
+            String[] rules = {"edit", "save", "search", "view"};
+            for (int i = 0; i < rules.length; i++) {
+                // apply the rules for automatically appending the method name
+                if (request.getServletPath().indexOf(rules[i]) > -1) {
+                    return dispatchMethod(mapping, form, request, response,
+                            rules[i]);
                 }
-
-                return super.execute(mapping, form, request, response);
+            }
         }
 
-        /**
-         * Convenience method for getting an action form base on it's mapped scope.
-         *
-         * @param mapping
-         *            The ActionMapping used to select this instance
-         * @param request
-         *            The HTTP request we are processing
-         * @return ActionForm the form from the specifies scope, or null if nothing
-         *         found
-         */
-        protected ActionForm getActionForm(ActionMapping mapping,
-                        HttpServletRequest request) {
-                ActionForm actionForm = null;
+        return super.execute(mapping, form, request, response);
+    }
 
-                // Remove the obsolete form bean
-                if (mapping.getAttribute() != null) {
-                        if ("request".equals(mapping.getScope())) {
-                                actionForm = (ActionForm) request.getAttribute(mapping
-                                                .getAttribute());
-                        } else {
-                                HttpSession session = request.getSession();
-                                actionForm = (ActionForm) session.getAttribute(mapping
-                                                .getAttribute());
-                        }
-                }
+    /**
+     * Convenience method for getting an action form base on it's mapped scope.
+     *
+     * @param mapping The ActionMapping used to select this instance
+     * @param request The HTTP request we are processing
+     * @return ActionForm the form from the specifies scope, or null if nothing
+     * found
+     */
+    protected ActionForm getActionForm(ActionMapping mapping,
+                                       HttpServletRequest request) {
+        ActionForm actionForm = null;
 
-                return actionForm;
+        // Remove the obsolete form bean
+        if (mapping.getAttribute() != null) {
+            if ("request".equals(mapping.getScope())) {
+                actionForm = (ActionForm) request.getAttribute(mapping
+                        .getAttribute());
+            } else {
+                HttpSession session = request.getSession();
+                actionForm = (ActionForm) session.getAttribute(mapping
+                        .getAttribute());
+            }
         }
 
-        /**
-         * Convenience method to get the Configuration HashMap from the servlet
-         * context.
-         *
-         * @return the user's populated form from the session
-         */
+        return actionForm;
+    }
+
+    /**
+     * Convenience method to get the Configuration HashMap from the servlet
+     * context.
+     *
+     * @return the user's populated form from the session
+     */
 //        public Map getConfiguration() {
 //                Map config = (HashMap) getServlet().getServletContext().getAttribute(
 //                                Constants.CONFIG);
@@ -311,107 +305,102 @@ public class BaseAction extends DispatchAction {
 //                return config;
 //        }
 
-        /**
-         * Convenience method for removing the obsolete form bean.
-         *
-         * @param mapping
-         *            The ActionMapping used to select this instance
-         * @param request
-         *            The HTTP request we are processing
-         */
-        protected void removeFormBean(ActionMapping mapping,
-                        HttpServletRequest request) {
-                // Remove the obsolete form bean
-                if (mapping.getAttribute() != null) {
-                        if ("request".equals(mapping.getScope())) {
-                                request.removeAttribute(mapping.getAttribute());
-                        } else {
-                                HttpSession session = request.getSession();
-                                session.removeAttribute(mapping.getAttribute());
-                        }
-                }
+    /**
+     * Convenience method for removing the obsolete form bean.
+     *
+     * @param mapping The ActionMapping used to select this instance
+     * @param request The HTTP request we are processing
+     */
+    protected void removeFormBean(ActionMapping mapping,
+                                  HttpServletRequest request) {
+        // Remove the obsolete form bean
+        if (mapping.getAttribute() != null) {
+            if ("request".equals(mapping.getScope())) {
+                request.removeAttribute(mapping.getAttribute());
+            } else {
+                HttpSession session = request.getSession();
+                session.removeAttribute(mapping.getAttribute());
+            }
         }
+    }
 
-        /**
-         * Convenience method to update a formBean in it's scope
-         *
-         * @param mapping
-         *            The ActionMapping used to select this instance
-         * @param request
-         *            The HTTP request we are processing
-         * @param form
-         *            The ActionForm
-         */
-        protected void updateFormBean(ActionMapping mapping,
-                        HttpServletRequest request, ActionForm form) {
-                // Remove the obsolete form bean
-                if (mapping.getAttribute() != null) {
-                        if ("request".equals(mapping.getScope())) {
-                                request.setAttribute(mapping.getAttribute(), form);
-                        } else {
-                                HttpSession session = request.getSession();
-                                session.setAttribute(mapping.getAttribute(), form);
-                        }
-                }
+    /**
+     * Convenience method to update a formBean in it's scope
+     *
+     * @param mapping The ActionMapping used to select this instance
+     * @param request The HTTP request we are processing
+     * @param form    The ActionForm
+     */
+    protected void updateFormBean(ActionMapping mapping,
+                                  HttpServletRequest request, ActionForm form) {
+        // Remove the obsolete form bean
+        if (mapping.getAttribute() != null) {
+            if ("request".equals(mapping.getScope())) {
+                request.setAttribute(mapping.getAttribute(), form);
+            } else {
+                HttpSession session = request.getSession();
+                session.setAttribute(mapping.getAttribute(), form);
+            }
         }
+    }
 
-        /**
-         * ��ȡ��ǰ�û���Ϣ
-         *
-         * @param request
-         *            HttpServletRequest����
-         * @return ��ǰ�û���Ϣ
-         */
+    /**
+     * ��ȡ��ǰ�û���Ϣ
+     *
+     * @param request
+     *            HttpServletRequest����
+     * @return ��ǰ�û���Ϣ
+     */
 //        protected TawSystemSessionForm getUser(HttpServletRequest request) {
 //                return this.getUser(request.getSession());
 //        }
 
-        /**
-         * ��ȡ��ǰ�û���Ϣ
-         *
-         * @param session
-         *            ��ǰ�Ự��Ϣ
-         * @return ��ǰ�û���Ϣ
-         */
+    /**
+     * ��ȡ��ǰ�û���Ϣ
+     *
+     * @param session
+     *            ��ǰ�Ự��Ϣ
+     * @return ��ǰ�û���Ϣ
+     */
 //        protected TawSystemSessionForm getUser(HttpSession session) {
 //                return (TawSystemSessionForm) session.getAttribute("sessionform");
 //        }
 
-        /**
-         * ��ȡ��ǰ�û�id
-         *
-         * @param request
-         *            HttpServletRequest����
-         * @return ��ǰ�û�id
-         */
+    /**
+     * ��ȡ��ǰ�û�id
+     *
+     * @param request
+     *            HttpServletRequest����
+     * @return ��ǰ�û�id
+     */
 //        protected String getUserId(HttpServletRequest request) {
 //                TawSystemSessionForm user = this.getUser(request);
 //                return user.getUserid();
 //        }
 
-        /**
-         * ĳ���Ƿ�ӵ��ĳȨ�ޣ����жϳ����û���
-         *
-         * @param url
-         *            Ȩ��
-         * @param userId
-         *            �û�id
-         * @return ӵ��Ȩ�޷񣨲��жϳ����û���
-         */
+    /**
+     * ĳ���Ƿ�ӵ��ĳȨ�ޣ����жϳ����û���
+     *
+     * @param url
+     *            Ȩ��
+     * @param userId
+     *            �û�id
+     * @return ӵ��Ȩ�޷񣨲��жϳ����û���
+     */
 //        protected boolean hasPermission(String url, String userId) {
 //                return PrivMgrLocator.getTawSystemPrivUserAssignManager().isHaveUrl(
 //                                url, userId);
 //        }
 
-        /**
-         * �ж�session��½�����Ƿ�ӵ��ĳȨ�ޣ������Ϊ�����û�Ҳ����true
-         *
-         * @param url
-         *            Ȩ��
-         * @param request
-         *            HttpServletRequest
-         * @return ӵ��Ȩ�޷�(�����û�Ҳ�ɣ�
-         */
+    /**
+     * �ж�session��½�����Ƿ�ӵ��ĳȨ�ޣ������Ϊ�����û�Ҳ����true
+     *
+     * @param url
+     *            Ȩ��
+     * @param request
+     *            HttpServletRequest
+     * @return ӵ��Ȩ�޷�(�����û�Ҳ�ɣ�
+     */
 //        protected boolean hasPermission(String url, HttpServletRequest request) {
 //                return (hasPermission(url, this.getUserId(request)) || this.getUser(
 //                                request).isAdmin());

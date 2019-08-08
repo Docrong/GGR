@@ -42,7 +42,7 @@ public class 电话号码的字母组合 extends Object {
             strlist.add(charmap.get(str));
         }
         System.out.println(strlist);
-        for (int i=0;i<strlist.size();i++){
+        for (int i = 0; i < strlist.size(); i++) {
 
         }
 

@@ -10,15 +10,14 @@ package com.boco.eoms.partdata.util;
  * <p>
  * Tue Jul 06 14:18:23 CST 2010
  * </p>
- * 
+ *
  * @author Josh
  * @version 3.5
- * 
  */
 public class TawPartFourteenSignalConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String TAWPARTFOURTEENSIGNAL_LIST = "tawPartFourteenSignalList";
+
+    /**
+     * list key
+     */
+    public final static String TAWPARTFOURTEENSIGNAL_LIST = "tawPartFourteenSignalList";
 }

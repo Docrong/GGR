@@ -22,231 +22,223 @@ import com.boco.eoms.sheet.complaint.dao.IComplaintReturnHouseDAO;
 import com.boco.eoms.sheet.complaint.model.ComplaintReturnHouse;
 
 /**
- * @author
- *
- * TODO To change the template for this generated type comment go to
+ * @author TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class ComplaintReturnHouseDaoHibernate extends BaseSheetDaoHibernate implements
-IComplaintReturnHouseDAO {
-	public ComplaintReturnHouseDaoHibernate()
-	{
-	}
-	
-	public Map getReturnHorse(String userid,final String queryStr, 
-	          final Integer curPage,final Integer pageSize)
-	{
-		   HibernateCallback callback = new HibernateCallback() {
-		        public Object doInHibernate(Session session) throws HibernateException {        
-		            //获取任务总数的查询sql
-		        	HashMap map = new HashMap();
-		        try{
-		        	int sql_distinct = queryStr.indexOf("distinct");
-		        	
-		    		int sql_index = queryStr.indexOf("from");
-		    		int sql_orderby = queryStr.indexOf("order by");
+        IComplaintReturnHouseDAO {
+    public ComplaintReturnHouseDaoHibernate() {
+    }
 
-		    		String queryCountStr;
-		    		if (sql_distinct > 0){
-		    			int sql_comma = (queryStr.substring(sql_distinct, sql_index)).indexOf(",");
-		    			if(sql_comma>0){
-		     			queryCountStr = "select count("
-		    					+ queryStr.substring(sql_distinct, sql_distinct+sql_comma) + ") ";
-		    			}else{
-		    				queryCountStr = "select count("
-		    					+ queryStr.substring(sql_distinct, sql_index) + ") ";
-		    			}
-		    		}
-		    		else{
-		    			queryCountStr = "select count(*) ";
-		    		}
-		    		if (sql_orderby > 0)
-		    			queryCountStr += queryStr.substring(sql_index, sql_orderby);
-		    		else
-		    			queryCountStr += queryStr.substring(sql_index);
-		    		  		
-			        Integer totalCount;
-			        
-			        Query totalQuery = session.createQuery(queryCountStr);
-			        List result = totalQuery.list();
-					if (result!=null&&!result.isEmpty()) {
-						totalCount = (Integer) result.get(0);
-					} else
-						totalCount = new Integer(0);
-			        
-			        
-				    Query query = session.createQuery(queryStr);
-				    if(pageSize.intValue()!=-1)   { 
-				    query.setFirstResult(pageSize.intValue()
-							              * (curPage.intValue()));
-				    query.setMaxResults(pageSize.intValue());
-				    }
-				    List resultList = query.list();
-				    
-				    map.put("taskTotal", totalCount);
-				    map.put("taskList", resultList);
-		        }
-		        catch(Exception e){
-		        	System.out.println("-------task list error!---------");
-		        	e.printStackTrace();
-		        	throw new HibernateException("task list error");
-		        }
-				    return map;
-		        }
-		     };
-		     return (HashMap) getHibernateTemplate().execute(callback);
-	}
-	
-	
+    public Map getReturnHorse(String userid, final String queryStr,
+                              final Integer curPage, final Integer pageSize) {
+        HibernateCallback callback = new HibernateCallback() {
+            public Object doInHibernate(Session session) throws HibernateException {
+                //获取任务总数的查询sql
+                HashMap map = new HashMap();
+                try {
+                    int sql_distinct = queryStr.indexOf("distinct");
 
-	public void saveReturnHorse(ComplaintReturnHouse complaintreturnhouse)
-	{
-		if (complaintreturnhouse.getId() == null || complaintreturnhouse.getId().equals(""))
-			getHibernateTemplate().save(complaintreturnhouse);
-		else
-			getHibernateTemplate().saveOrUpdate(complaintreturnhouse);
-	}
-	
-	public ComplaintReturnHouse getReturnHouseByid(final String id) {
-		ComplaintReturnHouse complaintreturnhouse = (ComplaintReturnHouse)getHibernateTemplate().get(ComplaintReturnHouse.class, id);
-	    return complaintreturnhouse;
-	}
+                    int sql_index = queryStr.indexOf("from");
+                    int sql_orderby = queryStr.indexOf("order by");
 
-	public void clearObjectOfCurrentSession() {
-		// TODO Auto-generated method stub
-		
-	}
+                    String queryCountStr;
+                    if (sql_distinct > 0) {
+                        int sql_comma = (queryStr.substring(sql_distinct, sql_index)).indexOf(",");
+                        if (sql_comma > 0) {
+                            queryCountStr = "select count("
+                                    + queryStr.substring(sql_distinct, sql_distinct + sql_comma) + ") ";
+                        } else {
+                            queryCountStr = "select count("
+                                    + queryStr.substring(sql_distinct, sql_index) + ") ";
+                        }
+                    } else {
+                        queryCountStr = "select count(*) ";
+                    }
+                    if (sql_orderby > 0)
+                        queryCountStr += queryStr.substring(sql_index, sql_orderby);
+                    else
+                        queryCountStr += queryStr.substring(sql_index);
 
-	public Integer count(String hsql) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+                    Integer totalCount;
 
-	public void deleteMain(String id, Object mainObject) throws HibernateException {
-		// TODO Auto-generated method stub
-		
-	}
+                    Query totalQuery = session.createQuery(queryCountStr);
+                    List result = totalQuery.list();
+                    if (result != null && !result.isEmpty()) {
+                        totalCount = (Integer) result.get(0);
+                    } else
+                        totalCount = new Integer(0);
 
-	public List getAllAttachmentsBySheet(String where) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public Integer getCancelCount(Object mainObject) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+                    Query query = session.createQuery(queryStr);
+                    if (pageSize.intValue() != -1) {
+                        query.setFirstResult(pageSize.intValue()
+                                * (curPage.intValue()));
+                        query.setMaxResults(pageSize.intValue());
+                    }
+                    List resultList = query.list();
 
-	public List getCancelList(Integer curPage, Integer pageSize, Object mainObject, HashMap condition) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+                    map.put("taskTotal", totalCount);
+                    map.put("taskList", resultList);
+                } catch (Exception e) {
+                    System.out.println("-------task list error!---------");
+                    e.printStackTrace();
+                    throw new HibernateException("task list error");
+                }
+                return map;
+            }
+        };
+        return (HashMap) getHibernateTemplate().execute(callback);
+    }
 
-	public List getDraftListByUserIds(String userId, Integer curPage, Integer pageSize, int[] aTotal, Object obj) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	public List getHolds(Map condition, Integer curPage, Integer pageSize, Object mainObject) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void saveReturnHorse(ComplaintReturnHouse complaintreturnhouse) {
+        if (complaintreturnhouse.getId() == null || complaintreturnhouse.getId().equals(""))
+            getHibernateTemplate().save(complaintreturnhouse);
+        else
+            getHibernateTemplate().saveOrUpdate(complaintreturnhouse);
+    }
 
-	public Integer getHoldsCount(Object mainObject) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public ComplaintReturnHouse getReturnHouseByid(final String id) {
+        ComplaintReturnHouse complaintreturnhouse = (ComplaintReturnHouse) getHibernateTemplate().get(ComplaintReturnHouse.class, id);
+        return complaintreturnhouse;
+    }
 
-	public BaseMain getMain(String id, String className) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void clearObjectOfCurrentSession() {
+        // TODO Auto-generated method stub
 
-	public BaseMain getMainBySheetId(String sheetId, Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public HashMap getMainListBySql(String hsql, Integer curPage, Integer pageSize) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Integer count(String hsql) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public List getMainListBySql(String hsql) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void deleteMain(String id, Object mainObject) throws HibernateException {
+        // TODO Auto-generated method stub
 
-	public List getQuerySheetByCondition(String hsql, Integer curPage, Integer pageSize, int[] aTotal, String queryType) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public Integer getStarterCount(String userId, Object mainObject) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List getAllAttachmentsBySheet(String where) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public HashMap getStarterList(String userId, Integer curPage, Integer pageSize, Object mainObject, HashMap condition) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Integer getCancelCount(Object mainObject) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public List getTemplatesByUserIds(String userId, Integer curPage, Integer pageSize, int[] aTotal, Object mainObject) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List getCancelList(Integer curPage, Integer pageSize, Object mainObject, HashMap condition) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public int getXYZ(String id, Object mainObject) throws HibernateException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public List getDraftListByUserIds(String userId, Integer curPage, Integer pageSize, int[] aTotal, Object obj) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public BaseMain loadSinglePO(String id, Object obj) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List getHolds(Map condition, Integer curPage, Integer pageSize, Object mainObject) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public BaseMain loadSinglePOByProcessId(String processId, Object obj) throws HibernateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Integer getHoldsCount(Object mainObject) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void mergeObject(Object obj) {
-		// TODO Auto-generated method stub
-		
-	}
+    public BaseMain getMain(String id, String className) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void removeMain(Object baseMain) {
-		// TODO Auto-generated method stub
-		
-	}
+    public BaseMain getMainBySheetId(String sheetId, Object object) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void saveOrUpdateMain(Object main) throws HibernateException {
-		// TODO Auto-generated method stub
-		
-	}
+    public HashMap getMainListBySql(String hsql, Integer curPage, Integer pageSize) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Object getObject(Class clazz, Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List getMainListBySql(String hsql) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public List getObjects(Class clazz) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public List getQuerySheetByCondition(String hsql, Integer curPage, Integer pageSize, int[] aTotal, String queryType) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void removeObject(Class clazz, Serializable id) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Integer getStarterCount(String userId, Object mainObject) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void saveObject(Object o) {
-		// TODO Auto-generated method stub
-		
-	}
-   
+    public HashMap getStarterList(String userId, Integer curPage, Integer pageSize, Object mainObject, HashMap condition) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List getTemplatesByUserIds(String userId, Integer curPage, Integer pageSize, int[] aTotal, Object mainObject) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public int getXYZ(String id, Object mainObject) throws HibernateException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    public BaseMain loadSinglePO(String id, Object obj) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public BaseMain loadSinglePOByProcessId(String processId, Object obj) throws HibernateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void mergeObject(Object obj) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void removeMain(Object baseMain) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void saveOrUpdateMain(Object main) throws HibernateException {
+        // TODO Auto-generated method stub
+
+    }
+
+    public Object getObject(Class clazz, Serializable id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public List getObjects(Class clazz) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public void removeObject(Class clazz, Serializable id) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void saveObject(Object o) {
+        // TODO Auto-generated method stub
+
+    }
+
 //	
 //	/**
 //	 * 通过告警号获取工单

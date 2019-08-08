@@ -21,24 +21,24 @@ import com.boco.eoms.commons.loging.BocoLog;
  * <p>
  * Date:2007-10-17 14:01:00
  * </p>
- * 
+ *
  * @author wangbeiying
  */
 public class JobInitServlet extends HttpServlet {
-	/**
-	 * 初始化JobInitServlet里的轮训管理器，避免加载两次
-	 */
-	public void init() throws ServletException {
-		super.init();
+    /**
+     * 初始化JobInitServlet里的轮训管理器，避免加载两次
+     */
+    public void init() throws ServletException {
+        super.init();
 
-		try {
-			ITawCommonsJobmonitorManager tawCommonsJobmonitorManager = (ITawCommonsJobmonitorManager) ApplicationContextHolder
-					.getInstance().getBean("ItawCommonsJobmonitorManager");
-			tawCommonsJobmonitorManager.instance();
-			tawCommonsJobmonitorManager.run();
-		} catch (Exception e) {
-			BocoLog.error(e, "初始化轮循程序失败！");
-			e.printStackTrace();
-		}
-	}
+        try {
+            ITawCommonsJobmonitorManager tawCommonsJobmonitorManager = (ITawCommonsJobmonitorManager) ApplicationContextHolder
+                    .getInstance().getBean("ItawCommonsJobmonitorManager");
+            tawCommonsJobmonitorManager.instance();
+            tawCommonsJobmonitorManager.run();
+        } catch (Exception e) {
+            BocoLog.error(e, "初始化轮循程序失败！");
+            e.printStackTrace();
+        }
+    }
 }

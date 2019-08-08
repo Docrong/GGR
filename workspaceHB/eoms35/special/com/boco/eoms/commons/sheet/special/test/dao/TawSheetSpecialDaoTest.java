@@ -7,10 +7,10 @@ import com.boco.eoms.commons.sheet.special.model.TawSheetSpecial;
 import com.boco.eoms.commons.sheet.special.dao.TawSheetSpecialDao;
 
 import org.springframework.orm.ObjectRetrievalFailureException;
+
 /**
- * 
  * @author panlong
- *下午05:39:26
+ * 下午05:39:26
  */
 public class TawSheetSpecialDaoTest extends BaseDaoTestCase {
     private Integer tawSheetSpecialId = new Integer("1");
@@ -55,7 +55,7 @@ public class TawSheetSpecialDaoTest extends BaseDaoTestCase {
     }
 
     public void testRemoveTawSheetSpecial() throws Exception {
-       Integer id = new Integer(3);
+        Integer id = new Integer(3);
         dao.removeTawSheetSpecial(id);
         try {
             dao.getTawSheetSpecial(id);

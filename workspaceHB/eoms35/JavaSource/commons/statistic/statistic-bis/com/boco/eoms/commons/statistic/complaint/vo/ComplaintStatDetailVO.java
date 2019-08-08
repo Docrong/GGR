@@ -1,55 +1,56 @@
 package com.boco.eoms.commons.statistic.complaint.vo;
 
 import com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO;
+
 public class ComplaintStatDetailVO extends StatDetailVO {
-	
-	private String overtimeDept="及时";
-	private String complainttype;
-	
-	private String todeptid;
-	
-	private String sendroleid;
-	
-	private String endtime;
 
-	public String getComplainttype() {
-		return complainttype;
-	}
+    private String overtimeDept = "及时";
+    private String complainttype;
 
-	public void setComplainttype(String complainttype) {
-		this.complainttype = complainttype;
-	}
+    private String todeptid;
 
-	public String getEndtime() {
-		return endtime;
-	}
+    private String sendroleid;
 
-	public void setEndtime(String endtime) {
-		this.endtime = endtime;
-	}
+    private String endtime;
 
-	public String getSendroleid() {
-		return sendroleid;
-	}
+    public String getComplainttype() {
+        return complainttype;
+    }
 
-	public void setSendroleid(String sendroleid) {
-		this.sendroleid = sendroleid;
-	}
+    public void setComplainttype(String complainttype) {
+        this.complainttype = complainttype;
+    }
 
-	public String getTodeptid() {
-		return todeptid;
-	}
+    public String getEndtime() {
+        return endtime;
+    }
 
-	public void setTodeptid(String todeptid) {
-		this.todeptid = todeptid;
-	}
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
 
-	public String getOvertimeDept() {
-		return overtimeDept;
-	}
+    public String getSendroleid() {
+        return sendroleid;
+    }
 
-	public void setOvertimeDept(String overtimeDept) {
-		this.overtimeDept = overtimeDept;
-	}
+    public void setSendroleid(String sendroleid) {
+        this.sendroleid = sendroleid;
+    }
+
+    public String getTodeptid() {
+        return todeptid;
+    }
+
+    public void setTodeptid(String todeptid) {
+        this.todeptid = todeptid;
+    }
+
+    public String getOvertimeDept() {
+        return overtimeDept;
+    }
+
+    public void setOvertimeDept(String overtimeDept) {
+        this.overtimeDept = overtimeDept;
+    }
 
 }

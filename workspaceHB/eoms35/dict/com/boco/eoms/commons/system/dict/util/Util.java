@@ -10,16 +10,15 @@ package com.boco.eoms.commons.system.dict.util;
  * <p>
  * Date:2007-10-19 10:46:58
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Util {
 
     /**
      * 当查找不到对应id名称时显示
-     * 
+     *
      * @return
      */
     public static String idNoName() {
@@ -29,11 +28,9 @@ public class Util {
     /**
      * 通过注册过的dict.xml的key组合字典类别(dictId)形成xml dao中要求的dictId
      * 如：key=sample,dictId=major 方法返回sampe&major
-     * 
-     * @param key
-     *            注册过的dict.xml的key
-     * @param id
-     *            字典类别
+     *
+     * @param key 注册过的dict.xml的key
+     * @param id  字典类别
      * @return key=sample,dictId=major 方法返回sampe&major
      */
     public static String constituteDictId(String key, String id) {
@@ -42,9 +39,8 @@ public class Util {
 
     /**
      * 取字典xml地址
-     * 
-     * @param dictId
-     *            如：key&major
+     *
+     * @param dictId 如：key&major
      * @return classpath:com/boco/eoms/sample.xml
      */
     public static String getDictKey(String dictId) {
@@ -53,9 +49,8 @@ public class Util {
 
     /**
      * 取字典类别id
-     * 
-     * @param dictId
-     *            如：key&major
+     *
+     * @param dictId 如：key&major
      * @return major
      */
     public static String getId(String dictId) {
@@ -64,7 +59,7 @@ public class Util {
 
     /**
      * 在关联关系dict-relation.xml配置中，目的关联的多个id,以逗号隔开
-     * 
+     *
      * @return
      */
     public static String getDestinationItemIdsSplit() {

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,173 +13,121 @@
             table="part_mscid"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="headNumber"
-            	column="head_number"
+        <property
+                name="headNumber"
+                column="head_number"
                 length="16"
                 not-null="true"
                 unique="false"
-                 update="false"
+                update="false"
         >
 
         </property>
 
-	<property
-            name="numberM0"
-            	column="M0"
-                length="2"
-                not-null="true"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="numberM1"
-            	column="M1"
-                length="2"
-                not-null="true"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="numberM2"
-            	column="M2"
-                length="2"
-                not-null="true"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="numberFree"
-            	column="number_free"
-                length="2"
-                not-null="true"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="equipmentType"
-            	column="equipment_type"
-                length="2"
-                not-null="false"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="equipmentName"
-            	column="equipment_name"
-                length="32"
-                not-null="false"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="distributed"
-            	column="is_distributed"
-                length="2"
-                not-null="false"
-                unique="false"
-                
-        >
-
-        </property>
-
-	<property
-            name="areaId"
-            	column="area_id"
-                length="32"
-                not-null="false"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="areaName"
-            	column="area_name"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-
-	<property
-            name="creator"
-            	column="creator"
-                length="32"
-                not-null="true"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="createTime"
-            	column="create_time"
-                length="32"
-                not-null="false"
-                unique="false"
-                 update="false"
-        >
-
-        </property>
-
-	<property
-            name="assigner"
-            	column="assigner"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-
-	<property
-            name="assignTime"
-            	column="assign_time"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
         <property
-            name="cityname"
-            	column="CITY_NAME"
+                name="numberM0"
+                column="M0"
+                length="2"
+                not-null="true"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="numberM1"
+                column="M1"
+                length="2"
+                not-null="true"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="numberM2"
+                column="M2"
+                length="2"
+                not-null="true"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="numberFree"
+                column="number_free"
+                length="2"
+                not-null="true"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="equipmentType"
+                column="equipment_type"
+                length="2"
+                not-null="false"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="equipmentName"
+                column="equipment_name"
+                length="32"
+                not-null="false"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="distributed"
+                column="is_distributed"
+                length="2"
+                not-null="false"
+                unique="false"
+
+        >
+
+        </property>
+
+        <property
+                name="areaId"
+                column="area_id"
+                length="32"
+                not-null="false"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="areaName"
+                column="area_name"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -188,17 +136,40 @@
         </property>
 
         <property
-            name="signalname"
-            	column="SIGNAL_NUM"
+                name="creator"
+                column="creator"
+                length="32"
+                not-null="true"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="createTime"
+                column="create_time"
+                length="32"
+                not-null="false"
+                unique="false"
+                update="false"
+        >
+
+        </property>
+
+        <property
+                name="assigner"
+                column="assigner"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-                <property
-            name="equipmentfactory"
-            	column="EQUIPMENT_FACTORY"
+
+        <property
+                name="assignTime"
+                column="assign_time"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -206,7 +177,36 @@
 
         </property>
 
-    </class>    
+        <property
+                name="cityname"
+                column="CITY_NAME"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="signalname"
+                column="SIGNAL_NUM"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+        <property
+                name="equipmentfactory"
+                column="EQUIPMENT_FACTORY"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

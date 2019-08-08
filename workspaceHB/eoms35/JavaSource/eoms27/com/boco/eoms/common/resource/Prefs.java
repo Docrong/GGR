@@ -1,23 +1,23 @@
 ﻿/**
- *  The contents of this file are subject to the Mozilla Public
- *  License Version 1.1 (the "License"); you may not use this file
- *  except in compliance with the License. You may obtain a copy of
- *  the License at http://www.mozilla.org/MPL/
- *
- *  Software distributed under the License is distributed on an "AS
- *  IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
- *  implied. See the License for the specific language governing
- *  rights and limitations under the License.
- *
- *  The Original Code is nmstoolkit library.
- *
- *  The Initial Owner of the Original Code is
- *  Power Of Two S.R.L. (www.nms.com)
- *
- *  Portions created by Power Of Two S.R.L. are
- *  Copyright (C) Power Of Two S.R.L.
- *  All Rights Reserved.
- *
+ * The contents of this file are subject to the Mozilla Public
+ * License Version 1.1 (the "License"); you may not use this file
+ * except in compliance with the License. You may obtain a copy of
+ * the License at http://www.mozilla.org/MPL/
+ * <p>
+ * Software distributed under the License is distributed on an "AS
+ * IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+ * implied. See the License for the specific language governing
+ * rights and limitations under the License.
+ * <p>
+ * The Original Code is nmstoolkit library.
+ * <p>
+ * The Initial Owner of the Original Code is
+ * Power Of Two S.R.L. (www.nms.com)
+ * <p>
+ * Portions created by Power Of Two S.R.L. are
+ * Copyright (C) Power Of Two S.R.L.
+ * All Rights Reserved.
+ * <p>
  * Contributor(s):
  */
 
@@ -29,30 +29,32 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
- *  Prefs class
+ * Prefs class
  *
- * @author     Luca Fossato
- * @    22 aprile 2002
+ * @author Luca Fossato
+ * @ 22 aprile 2002
  */
 public class Prefs extends PropertyContainerImpl {
-    /** an handle to the unique DAO instance. */
+    /**
+     * an handle to the unique DAO instance.
+     */
     private static Prefs instance = null;
     private String propertiesFile;
     private String log4jPropertiesFile;
 
 
     /**
-     *  Default private constructor.
+     * Default private constructor.
      */
     private Prefs() {
     }
 
 
     /**
-     *  Configure the Prefs class using the properties file
-     *  defined by <code>propertiesFile</code> class member attribute.
+     * Configure the Prefs class using the properties file
+     * defined by <code>propertiesFile</code> class member attribute.
      *
-     * @exception  Exception  if any error occurs
+     * @throws Exception if any error occurs
      */
     public void configure() throws Exception {
         configure(propertiesFile);
@@ -60,10 +62,10 @@ public class Prefs extends PropertyContainerImpl {
 
 
     /**
-     *  Configure the Prefs class using the input properties file.
+     * Configure the Prefs class using the input properties file.
      *
-     * @param  propertiesFile the full path name of the properties file
-     * @exception  Exception  if any error occurs
+     * @param propertiesFile the full path name of the properties file
+     * @throws Exception if any error occurs
      */
     public void configure(String propertiesFile) throws Exception {
 
@@ -103,9 +105,9 @@ public class Prefs extends PropertyContainerImpl {
 
 
     /**
-     *  Get the name of the properties file.
+     * Get the name of the properties file.
      *
-     * @return    the name of the properties file.
+     * @return the name of the properties file.
      */
     public String getpropertiesFile() {
         return propertiesFile;
@@ -113,9 +115,9 @@ public class Prefs extends PropertyContainerImpl {
 
 
     /**
-     *  Get the instance of Prefs class.<br>
+     * Get the instance of Prefs class.<br>
      *
-     * @return    the instance of Prefs class.
+     * @return the instance of Prefs class.
      */
     public static synchronized Prefs instance() {
         if (instance == null)
@@ -126,9 +128,9 @@ public class Prefs extends PropertyContainerImpl {
 
 
     /**
-     *  Set the name of the properties file.
+     * Set the name of the properties file.
      *
-     * @param  v  the name of the properties file.
+     * @param v the name of the properties file.
      */
     public void setpropertiesFile(String v) {
         propertiesFile = v;
@@ -136,9 +138,9 @@ public class Prefs extends PropertyContainerImpl {
 
 
     /**
-     *  Get a String with the list of all the Prefs properties.
+     * Get a String with the list of all the Prefs properties.
      *
-     *  @return a string with the list of all the Prefs properties.
+     * @return a string with the list of all the Prefs properties.
      */
     public String toString() {
         StringWriter sw = new StringWriter();

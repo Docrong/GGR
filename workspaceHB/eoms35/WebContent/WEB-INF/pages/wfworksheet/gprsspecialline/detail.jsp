@@ -1,502 +1,513 @@
-<%@ include file="/common/taglibs.jsp"%>
-<%@ include file="/common/header_eoms_form.jsp"%>
-<%@ page import="java.util.List"%>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="/common/header_eoms_form.jsp" %>
+<%@ page import="java.util.List" %>
 <%@page import="com.boco.eoms.base.util.StaticMethod" %>
 <%@page import="com.boco.eoms.businessupport.product.webapp.form.GprsSpecialLineForm" %>
 <%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8" contentType="text/html;charset=utf-8" %>
-<% String deleted = com.boco.eoms.base.util.StaticMethod.nullObject2String(request.getParameter("deleted")); 
-String taskName = StaticMethod.nullObject2String(request.getAttribute("taskName"));
-String sheetType = StaticMethod.nullObject2String(request.getAttribute("sheetType"));
-System.out.println("@@taskNameDetail"+taskName);
-System.out.println("@@sheetTypeDetail"+sheetType);
-String taskStatus = StaticMethod.nullObject2String(request.getParameter("taskStatus"));
-String isView = StaticMethod.nullObject2String(request.getParameter("isView"));
+<% String deleted = com.boco.eoms.base.util.StaticMethod.nullObject2String(request.getParameter("deleted"));
+    String taskName = StaticMethod.nullObject2String(request.getAttribute("taskName"));
+    String sheetType = StaticMethod.nullObject2String(request.getAttribute("sheetType"));
+    System.out.println("@@taskNameDetail" + taskName);
+    System.out.println("@@sheetTypeDetail" + sheetType);
+    String taskStatus = StaticMethod.nullObject2String(request.getParameter("taskStatus"));
+    String isView = StaticMethod.nullObject2String(request.getParameter("isView"));
 %>
 <script type="text/javascript">
-function modify(){
- window.location.href='./gprsspeciallines.do?method=edit&id=${gprsspeciallineForm.id}&ordersheetid=${gprsspeciallineForm.orderSheet_Id}&sheetType=${sheetType}&taskName=${taskName}';
- }
- 
-   function initPage(){
-		v = new eoms.form.Validation({form:'gprsspeciallineForm'});   		
-		var taskName = "<%=taskName%>";	
-	  	
-	  	if(taskName!=""&&taskName!="AcceptTask"&&taskName!="ImplementDealTask"){
-	  		eoms.form.readOnlyArea('BusinessInfo');
-	  	}
-	  	
-	  	if(taskName=="AccessTask"){
-	  		eoms.form.readOnlyArea('customInfo');
-	  	}else if(taskName=="TransferlTask"){
-	  		eoms.form.readOnlyArea('customInfo');
-	  		eoms.form.readOnlyArea('interfaceInfo');
-	  	}else if(taskName=="TransfereTask"){
-	  		eoms.form.readOnlyArea('customInfo');
-	  		eoms.form.readOnlyArea('interfaceInfo');
-	  		eoms.form.readOnlyArea('transLineInfo');
-	  	}else if(taskName=="CityTask"||taskName=="CityNetTask"){
-	  		eoms.form.readOnlyArea('customInfo');
-	  		eoms.form.readOnlyArea('interfaceInfo');
-	  		eoms.form.readOnlyArea('transLineInfo');
-	  		eoms.form.readOnlyArea('transCardInfo');
-	  	}else if(taskName=="ProjectDealTask"){
-	  		eoms.form.readOnlyArea('customInfo');
-	  		eoms.form.readOnlyArea('interfaceInfo');
-	  		eoms.form.readOnlyArea('transLineInfo');
-	  		eoms.form.readOnlyArea('transCardInfo');
-	  		eoms.form.readOnlyArea('cityInfo');
-	  	}else if(taskName=="TrasitionTask"){
-	  		eoms.form.readOnlyArea('customInfo');
-	  		eoms.form.readOnlyArea('interfaceInfo');
-	  		eoms.form.readOnlyArea('transLineInfo');
-	  		eoms.form.readOnlyArea('transCardInfo');
-	  		eoms.form.readOnlyArea('cityInfo');
-	  		eoms.form.readOnlyArea('lastInfo');
-	  	}
-    } 
- </script> 
-<caption><div class="header center">GPRS专线详细信息</div></caption>
-<html:form action="gprsspeciallines.do?method=xsave" method="post" styleId="detail">
-			<input type="hidden" name="orderSheet_Id" id="orderSheet_Id" value="${gprsspeciallineForm.orderSheet_Id}"/>	
+    function modify() {
+        window.location.href = './gprsspeciallines.do?method=edit&id=${gprsspeciallineForm.id}&ordersheetid=${gprsspeciallineForm.orderSheet_Id}&sheetType=${sheetType}&taskName=${taskName}';
+    }
 
-	<br>
-<table class="formTable">
-    <tr>
-       <td class="label">APN名称</td>
-       <td class="content">
-	  	<html:errors property="apnName"/>
-       <bean:write name="gprsspeciallineForm" property="apnName" scope="request"/>  
-       </td>
-    	<td class="label">APN类型</td>
-        <td class="content">
-	  	<html:errors property="apnType"/>
-         <eoms:id2nameDB id="${gprsspeciallineForm.apnType}" beanId="ItawSystemDictTypeDao"/>
-        </td>
-    </tr>
-   <tr>
-   	 <td class="label">IP地址分配方式</td>
-     <td class="content">
-	  	<html:errors property="ipAddressAssign"/>
-	  	<bean:write name="gprsspeciallineForm" property="ipAddressAssign" scope="request"/>
-     </td>
-	 <td class="label">终端IP地址分配方式</td>
-     <td class="content">
-	  	<html:errors property="endIDDividType"/>
-       <eoms:id2nameDB id="${gprsspeciallineForm.endIDDividType}" beanId="ItawSystemDictTypeDao"/></td>
-   </tr>
- 	<tr>
-       <td class="label">终端数量</td>
-       <td class="content">
-	  	<html:errors property="endPortNum"/>
-        <bean:write name="gprsspeciallineForm" property="endPortNum" scope="request"/>
-        </td>
-        <td class="label">SIM卡HLR制作范围</td>
-        <td class="content">
-	  	<html:errors property="simAdnHlrScope"/>
-         <bean:write name="gprsspeciallineForm" property="simAdnHlrScope" scope="request"/>
-         </td>
-	</tr> 
-	<tr>
-        <td class="label">申请用途</td>
-         <td colspan='3'>
-	  	<html:errors property="applyPurpose"/>
-        <bean:write name="gprsspeciallineForm" property="applyPurpose" scope="request"/>
-         </td>
-    </tr> 
-   <tr>
-      <td class="label">业务量评估</td>
-     <td colspan='3'>
-	  	<html:errors property="businessNumAssessment"/>
-       <bean:write name="gprsspeciallineForm" property="businessNumAssessment" scope="request"/>
-     </td>
-	</tr> 
-	<tr>
-	    <td class="label">用户是否用户网站</td>
-        <td class="content">
-        <eoms:id2nameDB id="${gprsspeciallineForm.userIsUserNet}" beanId="ItawSystemDictTypeDao"/>
-        </td>
-        <td class="label">用户个性化设备需求</td>
-     	<td  class="content">
-	  		<html:errors property="userSpecifyDevNeed"/>
-         	<bean:write name="gprsspeciallineForm" property="userSpecifyDevNeed" scope="request"/>
-     	</td>
-	</tr>
-	<tr>
-       <td class="label">用户端是否进行RADIUS验证</td>
-       <td class="content">
-	  	<html:errors property="userIsRadiusValid"/>
-		<eoms:id2nameDB id="${gprsspeciallineForm.userIsRadiusValid}" beanId="ItawSystemDictTypeDao"/>
-       </td>
-       <c:if test="${gprsspeciallineForm.userIsRadiusValid=='101231002'}">
-		<td class="label">用户端RADIUS服务器IP地址</td>
-	       <td class="content">
-		  	<html:errors property="userRadiusValidateIPAdd"/>
-	         <bean:write name="gprsspeciallineForm" property="userRadiusValidateIPAdd" scope="request"/>
-	     </td>
-	    </c:if>
-	</tr>
-  </table>
-	<br>
-<%if(sheetType.equals("businessImplement")||taskName.equals("ExplorateTask")||taskName.equals("")||taskName.equals("UserTask") || taskName.equals("AccessTask") || taskName.equals("CityTask")|| taskName.equals("TransfereTask")|| taskName.equals("TransferlTask")|| taskName.equals("MakeTask")|| taskName.equals("AuditTask")|| taskName.equals("HandleTask")|| taskName.equals("HoldTask")){ %>
-   
-    <table class="formTable">	
-    <caption>客户端勘查信息</caption> 
-     <tbody id='customInfo' > 
-    <tr>
-       <td class="label">A客户端标准地址</td>
-       <td  colspan="3">
-           <bean:write name="gprsspeciallineForm" property="userStardAddA" scope="request"/> 
-		</td>
-	</tr>
-	<tr>
-       <td class="label">A客户位置经度</td>
-       <td class="content">
-	  	<html:errors property="userSiteAA"/>
-            <bean:write name="gprsspeciallineForm" property="userSiteAA" scope="request"/> 
-       </td>
-	   <td class="label">A客户位置纬度	</td>
-       <td class="content">
-      	<html:errors property="userSiteHA"/>
-           <bean:write name="gprsspeciallineForm" property="userSiteHA" scope="request"/> 
-       </td>
-    </tr>
-    <tr>
-      <td class="label">用户端设备端口类型</td>
-      <td class="content">
-	  	<html:errors property="portABDeviceType"/>
-	  	     <eoms:id2nameDB id="${gprsspeciallineForm.portABDeviceType}" beanId="ItawSystemDictTypeDao"/>
-       </td>
-      <td class="label">A建设方式</td>
-      <td class="content">
-	  	<html:errors property="buildMethodA"/>
-	  	<eoms:id2nameDB id="${gprsspeciallineForm.buildMethodA}" beanId="ItawSystemDictTypeDao"/>
-      </td>
-    </tr>
-   <tr>
-      <td class="label">A客户端是否具有设备</td>
-      <td class="content">
-	  	<html:errors property="userIsHaveDivA"/>
-	  	<eoms:id2nameDB id="${gprsspeciallineForm.userIsHaveDivA}" beanId="ItawSystemDictTypeDao"/>
-	  </td>
-	  <td class="label">A是否需要移动采购</td>
-      <td class="content">
-      	<html:errors property="isNeedBuyA"/>
-      	      <eoms:id2nameDB id="${gprsspeciallineForm.isNeedBuyA}" beanId="ItawSystemDictTypeDao"/>
-      </td>
-    </tr>
-    </tbody>
-     <tbody id="NeededA" style="display:none">
-	<tr>
-      <td class="label">A需要购买的设备</td>
-      <td colspan='3'>
-	  	<html:errors property="theDevNeededA"/>
-           <bean:write name="gprsspeciallineForm" property="theDevNeededA" scope="request"/> 
-      </td>
-    </tr>
-    </tbody>
-	</table>
-	<%} %>
-	<br>
-	<%if(sheetType.equals("businessImplement")||taskName.equals("ExplorateTask")||taskName.equals("")||taskName.equals("AccessTask") || taskName.equals("CityTask")|| taskName.equals("TransfereTask")|| taskName.equals("TransferlTask")|| taskName.equals("MakeTask")|| taskName.equals("AuditTask")|| taskName.equals("HandleTask")|| taskName.equals("HoldTask")){ %>
-	<table class="formTable">
-	<caption>接入点勘查信息</caption> 
-	<tbody id='interfaceInfo' > 
-	<tr>
-      <td class="label">A接入点机房</td>
-      <td class="content">
-	  	<html:errors property="apointComputHouseName"/>
-        <bean:write name="gprsspeciallineForm" property="apointComputHouseName" scope="request"/> 
-      </td>
-	  <td class="label">A接入点地址</td>
-      <td class="content">
-      	<html:errors property="interfacePointAddA"/>
-           <bean:write name="gprsspeciallineForm" property="interfacePointAddA" scope="request"/> 
-     </td>
-     </tr>
-	 <tr>
-		  <td class="label">A接入点站点名称（接入基站）</td>
-           <td colspan="3">
-      	   <html:errors property="interfaceSiteNameA"/>
-           <bean:write name="gprsspeciallineForm" property="interfaceSiteNameA" scope="request"/> 
-           </td>
-      </tr>
-     <tr>
-      <td class="label">A光纤设备名称</td>
-      <td class="content">
-	  	<html:errors property="fiberEquipNameA"/>
-      <bean:write name="gprsspeciallineForm" property="fiberEquipNameA" scope="request"/>
-      </td>
-      <td class="label">A光纤设备编号</td>
-      <td class="content">
-	  	<html:errors property="fiberEquipCodeA"/>
-      <bean:write name="gprsspeciallineForm" property="fiberEquipCodeA" scope="request"/>
-      </td>
-	</tr>		
-	<tr>
-      <td class="label">A纤芯个数</td>
-      <td class="content">
-        <bean:write name="gprsspeciallineForm" property="fiberAcount" scope="request"/>
-      </td>
-      	<td class="label">A接入点类型</td>
-	      <td class="content">
-		  	<html:errors property="interfacePointTypeA"/>
-		  	 <eoms:id2nameDB id="${gprsspeciallineForm.interfacePointTypeA}" beanId="ItawSystemDictTypeDao"/> 
-	      </td>
-	      
-	</tr>
-  	<tr>
-      <td class="label">A光缆路由描述</td>
-      <td colspan="3">
-	  	<html:errors property="fiberAroute"/>
-	  	<bean:write name="gprsspeciallineForm" property="fiberAroute" scope="request"/> 
-      </td>
-	</tr>
-	</tbody>
-	</table>
-	<%} %>
-	
-	<br>
-	<%if(sheetType.equals("businessImplement")||taskName.equals("ExplorateTask")||taskName.equals("")||taskName.equals("CityTask")|| taskName.equals("TransfereTask")|| taskName.equals("TransferlTask")|| taskName.equals("MakeTask")|| taskName.equals("AuditTask")|| taskName.equals("HandleTask")|| taskName.equals("HoldTask")){ %>
-	<table class="formTable">	
-	<caption>传输线路勘查信息</caption> 
-	<tbody id='transLineInfo' > 
-	<tr>
-		<td class="label">A最后一公里光缆长度(单位：皮长)</td>
-      	<td class="content">
-	  	<html:errors property="fiberLengthA"/>
-       	<bean:write name="gprsspeciallineForm" property="fiberLengthA" scope="request"/> 
-      	</td>
-	      <td class="label">A光缆产权</td>
-	      <td class="content">
-		  	<html:errors property="fiberOwnerA"/>
-	      	   <eoms:id2nameDB id="${gprsspeciallineForm.fiberOwnerA}" beanId="ItawSystemDictTypeDao"/>
-	     </td>
-	</tr>  	
-	<tr>
-		<td class="label">敷设方式</td>
-	      <td class="content">
-		  	<html:errors property="buildTypeA"/>
-		  	<bean:write name="gprsspeciallineForm" property="buildTypeA" scope="request"/> 
-	     </td>
-	     <td class="label">A客户端到接入点能否通达</td>
-      	<td class="content">
-	  	<html:errors property="isOkBetweenUserA"/>
-	  	 <eoms:id2nameDB id="${gprsspeciallineForm.isOkBetweenUserA}" beanId="ItawSystemDictTypeDao"/>
-         </td>
-     </tr>
-     <c:if test="${gprsspeciallineForm.noInputResonA=='101231001'}">
-     <tr>
-		  <td class="label">A不能接入的原因</td>
-	      <td colspan='3'>
-	      	<html:errors property="noInputResonA"/>
-	            <bean:write name="gprsspeciallineForm" property="noInputResonA" scope="request"/> 
-	       </td>
-	</tr>
-	</c:if>
-	  </tbody>
-    </table>
-      <%} %>
+    function initPage() {
+        v = new eoms.form.Validation({form: 'gprsspeciallineForm'});
+        var taskName = "<%=taskName%>";
+
+        if (taskName != "" && taskName != "AcceptTask" && taskName != "ImplementDealTask") {
+            eoms.form.readOnlyArea('BusinessInfo');
+        }
+
+        if (taskName == "AccessTask") {
+            eoms.form.readOnlyArea('customInfo');
+        } else if (taskName == "TransferlTask") {
+            eoms.form.readOnlyArea('customInfo');
+            eoms.form.readOnlyArea('interfaceInfo');
+        } else if (taskName == "TransfereTask") {
+            eoms.form.readOnlyArea('customInfo');
+            eoms.form.readOnlyArea('interfaceInfo');
+            eoms.form.readOnlyArea('transLineInfo');
+        } else if (taskName == "CityTask" || taskName == "CityNetTask") {
+            eoms.form.readOnlyArea('customInfo');
+            eoms.form.readOnlyArea('interfaceInfo');
+            eoms.form.readOnlyArea('transLineInfo');
+            eoms.form.readOnlyArea('transCardInfo');
+        } else if (taskName == "ProjectDealTask") {
+            eoms.form.readOnlyArea('customInfo');
+            eoms.form.readOnlyArea('interfaceInfo');
+            eoms.form.readOnlyArea('transLineInfo');
+            eoms.form.readOnlyArea('transCardInfo');
+            eoms.form.readOnlyArea('cityInfo');
+        } else if (taskName == "TrasitionTask") {
+            eoms.form.readOnlyArea('customInfo');
+            eoms.form.readOnlyArea('interfaceInfo');
+            eoms.form.readOnlyArea('transLineInfo');
+            eoms.form.readOnlyArea('transCardInfo');
+            eoms.form.readOnlyArea('cityInfo');
+            eoms.form.readOnlyArea('lastInfo');
+        }
+    }
+</script>
+<caption>
+    <div class="header center">GPRS专线详细信息</div>
+</caption>
+<html:form action="gprsspeciallines.do?method=xsave" method="post" styleId="detail">
+    <input type="hidden" name="orderSheet_Id" id="orderSheet_Id" value="${gprsspeciallineForm.orderSheet_Id}"/>
+
     <br>
     <table class="formTable">
-	<table class="formTable">
-	<%if(sheetType.equals("businessImplement")||taskName.equals("ExplorateTask")||taskName.equals("")||taskName.equals("TransfereTask")||
-	    taskName.equals("ProjectDealTask")||
-	    taskName.equals("CityNetTask")||
-	 	taskName.equals("TrasitionTask")||
-	 	taskName.equals("BusinessTestTask")||
-	 	taskName.equals("DredgeAffirmTask")||
-	 	taskName.equals("MakeTask")||
-	 	taskName.equals("HandleTask")||
-	 	taskName.equals("AuditTask")||
-	 	taskName.equals("HoldTask"))
-	{ %> 
-	
-	<caption>传输容量勘查信息</caption> 
-	<tbody id='transCardInfo' > 
-	<tr>
-    	<td class="label">传输容量是否满足开通</td>
-     	<td class="content">
-		  	<html:errors property="isDeviceAllowOpenA"/>
-		  	<eoms:id2nameDB id="${gprsspeciallineForm.isDeviceAllowOpenA}" beanId="ItawSystemDictTypeDao"/>
-		  	 
-		  	
-	    </td>
-         <td class="label">是否需要添加板卡</td>
-          <td class="content">
-	  	  <html:errors property="isNeedAddCardA"/>
-	  	  <eoms:id2nameDB id="${gprsspeciallineForm.isNeedAddCardA}" beanId="ItawSystemDictTypeDao"/>
-         </td>
-    </tr>
-    <c:if test="${gprsspeciallineForm.isNeedAddCardA=='101231002'}">
-    <tr>
-			<td class="label">板卡类型</td>
-     		<td class="content">
-	  			<html:errors property="cardTypeA"/>
-	  			<bean:write name="gprsspeciallineForm" property="cardTypeA" scope="request"/> 
-     		</td>
-			<td class="label">板卡数量</td>
-     		<td class="content">
-	  			<html:errors property="cardNumA"/>
-	  			<bean:write name="gprsspeciallineForm" property="cardNumA" scope="request"/> 
-     		</td>
-    </tr>
-    </c:if>
-     </tbody>
-     <br> 
-</table>
+        <tr>
+            <td class="label">APN名称</td>
+            <td class="content">
+                <html:errors property="apnName"/>
+                <bean:write name="gprsspeciallineForm" property="apnName" scope="request"/>
+            </td>
+            <td class="label">APN类型</td>
+            <td class="content">
+                <html:errors property="apnType"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.apnType}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">IP地址分配方式</td>
+            <td class="content">
+                <html:errors property="ipAddressAssign"/>
+                <bean:write name="gprsspeciallineForm" property="ipAddressAssign" scope="request"/>
+            </td>
+            <td class="label">终端IP地址分配方式</td>
+            <td class="content">
+                <html:errors property="endIDDividType"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.endIDDividType}" beanId="ItawSystemDictTypeDao"/></td>
+        </tr>
+        <tr>
+            <td class="label">终端数量</td>
+            <td class="content">
+                <html:errors property="endPortNum"/>
+                <bean:write name="gprsspeciallineForm" property="endPortNum" scope="request"/>
+            </td>
+            <td class="label">SIM卡HLR制作范围</td>
+            <td class="content">
+                <html:errors property="simAdnHlrScope"/>
+                <bean:write name="gprsspeciallineForm" property="simAdnHlrScope" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">申请用途</td>
+            <td colspan='3'>
+                <html:errors property="applyPurpose"/>
+                <bean:write name="gprsspeciallineForm" property="applyPurpose" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">业务量评估</td>
+            <td colspan='3'>
+                <html:errors property="businessNumAssessment"/>
+                <bean:write name="gprsspeciallineForm" property="businessNumAssessment" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">用户是否用户网站</td>
+            <td class="content">
+                <eoms:id2nameDB id="${gprsspeciallineForm.userIsUserNet}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+            <td class="label">用户个性化设备需求</td>
+            <td class="content">
+                <html:errors property="userSpecifyDevNeed"/>
+                <bean:write name="gprsspeciallineForm" property="userSpecifyDevNeed" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">用户端是否进行RADIUS验证</td>
+            <td class="content">
+                <html:errors property="userIsRadiusValid"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.userIsRadiusValid}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+            <c:if test="${gprsspeciallineForm.userIsRadiusValid=='101231002'}">
+                <td class="label">用户端RADIUS服务器IP地址</td>
+                <td class="content">
+                    <html:errors property="userRadiusValidateIPAdd"/>
+                    <bean:write name="gprsspeciallineForm" property="userRadiusValidateIPAdd" scope="request"/>
+                </td>
+            </c:if>
+        </tr>
+    </table>
+    <br>
+    <%if (sheetType.equals("businessImplement") || taskName.equals("ExplorateTask") || taskName.equals("") || taskName.equals("UserTask") || taskName.equals("AccessTask") || taskName.equals("CityTask") || taskName.equals("TransfereTask") || taskName.equals("TransferlTask") || taskName.equals("MakeTask") || taskName.equals("AuditTask") || taskName.equals("HandleTask") || taskName.equals("HoldTask")) { %>
+
+    <table class="formTable">
+        <caption>客户端勘查信息</caption>
+        <tbody id='customInfo'>
+        <tr>
+            <td class="label">A客户端标准地址</td>
+            <td colspan="3">
+                <bean:write name="gprsspeciallineForm" property="userStardAddA" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">A客户位置经度</td>
+            <td class="content">
+                <html:errors property="userSiteAA"/>
+                <bean:write name="gprsspeciallineForm" property="userSiteAA" scope="request"/>
+            </td>
+            <td class="label">A客户位置纬度</td>
+            <td class="content">
+                <html:errors property="userSiteHA"/>
+                <bean:write name="gprsspeciallineForm" property="userSiteHA" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">用户端设备端口类型</td>
+            <td class="content">
+                <html:errors property="portABDeviceType"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.portABDeviceType}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+            <td class="label">A建设方式</td>
+            <td class="content">
+                <html:errors property="buildMethodA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.buildMethodA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">A客户端是否具有设备</td>
+            <td class="content">
+                <html:errors property="userIsHaveDivA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.userIsHaveDivA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+            <td class="label">A是否需要移动采购</td>
+            <td class="content">
+                <html:errors property="isNeedBuyA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.isNeedBuyA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+        </tr>
+        </tbody>
+        <tbody id="NeededA" style="display:none">
+        <tr>
+            <td class="label">A需要购买的设备</td>
+            <td colspan='3'>
+                <html:errors property="theDevNeededA"/>
+                <bean:write name="gprsspeciallineForm" property="theDevNeededA" scope="request"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <%} %>
+    <br>
+    <%if (sheetType.equals("businessImplement") || taskName.equals("ExplorateTask") || taskName.equals("") || taskName.equals("AccessTask") || taskName.equals("CityTask") || taskName.equals("TransfereTask") || taskName.equals("TransferlTask") || taskName.equals("MakeTask") || taskName.equals("AuditTask") || taskName.equals("HandleTask") || taskName.equals("HoldTask")) { %>
+    <table class="formTable">
+        <caption>接入点勘查信息</caption>
+        <tbody id='interfaceInfo'>
+        <tr>
+            <td class="label">A接入点机房</td>
+            <td class="content">
+                <html:errors property="apointComputHouseName"/>
+                <bean:write name="gprsspeciallineForm" property="apointComputHouseName" scope="request"/>
+            </td>
+            <td class="label">A接入点地址</td>
+            <td class="content">
+                <html:errors property="interfacePointAddA"/>
+                <bean:write name="gprsspeciallineForm" property="interfacePointAddA" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">A接入点站点名称（接入基站）</td>
+            <td colspan="3">
+                <html:errors property="interfaceSiteNameA"/>
+                <bean:write name="gprsspeciallineForm" property="interfaceSiteNameA" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">A光纤设备名称</td>
+            <td class="content">
+                <html:errors property="fiberEquipNameA"/>
+                <bean:write name="gprsspeciallineForm" property="fiberEquipNameA" scope="request"/>
+            </td>
+            <td class="label">A光纤设备编号</td>
+            <td class="content">
+                <html:errors property="fiberEquipCodeA"/>
+                <bean:write name="gprsspeciallineForm" property="fiberEquipCodeA" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">A纤芯个数</td>
+            <td class="content">
+                <bean:write name="gprsspeciallineForm" property="fiberAcount" scope="request"/>
+            </td>
+            <td class="label">A接入点类型</td>
+            <td class="content">
+                <html:errors property="interfacePointTypeA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.interfacePointTypeA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+
+        </tr>
+        <tr>
+            <td class="label">A光缆路由描述</td>
+            <td colspan="3">
+                <html:errors property="fiberAroute"/>
+                <bean:write name="gprsspeciallineForm" property="fiberAroute" scope="request"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <%} %>
+
+    <br>
+    <%if (sheetType.equals("businessImplement") || taskName.equals("ExplorateTask") || taskName.equals("") || taskName.equals("CityTask") || taskName.equals("TransfereTask") || taskName.equals("TransferlTask") || taskName.equals("MakeTask") || taskName.equals("AuditTask") || taskName.equals("HandleTask") || taskName.equals("HoldTask")) { %>
+    <table class="formTable">
+        <caption>传输线路勘查信息</caption>
+        <tbody id='transLineInfo'>
+        <tr>
+            <td class="label">A最后一公里光缆长度(单位：皮长)</td>
+            <td class="content">
+                <html:errors property="fiberLengthA"/>
+                <bean:write name="gprsspeciallineForm" property="fiberLengthA" scope="request"/>
+            </td>
+            <td class="label">A光缆产权</td>
+            <td class="content">
+                <html:errors property="fiberOwnerA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.fiberOwnerA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">敷设方式</td>
+            <td class="content">
+                <html:errors property="buildTypeA"/>
+                <bean:write name="gprsspeciallineForm" property="buildTypeA" scope="request"/>
+            </td>
+            <td class="label">A客户端到接入点能否通达</td>
+            <td class="content">
+                <html:errors property="isOkBetweenUserA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.isOkBetweenUserA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+        </tr>
+        <c:if test="${gprsspeciallineForm.noInputResonA=='101231001'}">
+            <tr>
+                <td class="label">A不能接入的原因</td>
+                <td colspan='3'>
+                    <html:errors property="noInputResonA"/>
+                    <bean:write name="gprsspeciallineForm" property="noInputResonA" scope="request"/>
+                </td>
+            </tr>
+        </c:if>
+        </tbody>
+    </table>
+    <%} %>
+    <br>
+    <table class="formTable">
+    <table class="formTable">
+        <%
+            if (sheetType.equals("businessImplement") || taskName.equals("ExplorateTask") || taskName.equals("") || taskName.equals("TransfereTask") ||
+                    taskName.equals("ProjectDealTask") ||
+                    taskName.equals("CityNetTask") ||
+                    taskName.equals("TrasitionTask") ||
+                    taskName.equals("BusinessTestTask") ||
+                    taskName.equals("DredgeAffirmTask") ||
+                    taskName.equals("MakeTask") ||
+                    taskName.equals("HandleTask") ||
+                    taskName.equals("AuditTask") ||
+                    taskName.equals("HoldTask")) {
+        %>
+
+        <caption>传输容量勘查信息</caption>
+        <tbody id='transCardInfo'>
+        <tr>
+            <td class="label">传输容量是否满足开通</td>
+            <td class="content">
+                <html:errors property="isDeviceAllowOpenA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.isDeviceAllowOpenA}" beanId="ItawSystemDictTypeDao"/>
+
+
+            </td>
+            <td class="label">是否需要添加板卡</td>
+            <td class="content">
+                <html:errors property="isNeedAddCardA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.isNeedAddCardA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
+        </tr>
+        <c:if test="${gprsspeciallineForm.isNeedAddCardA=='101231002'}">
+            <tr>
+                <td class="label">板卡类型</td>
+                <td class="content">
+                    <html:errors property="cardTypeA"/>
+                    <bean:write name="gprsspeciallineForm" property="cardTypeA" scope="request"/>
+                </td>
+                <td class="label">板卡数量</td>
+                <td class="content">
+                    <html:errors property="cardNumA"/>
+                    <bean:write name="gprsspeciallineForm" property="cardNumA" scope="request"/>
+                </td>
+            </tr>
+        </c:if>
+        </tbody>
+        <br>
+    </table>
 
     <%} %>
-    
-    
-	<%if(taskName.equals("ImplementDealTask")||taskName.equals("ExplorateTask")||taskName.equals("CityTask")||
-	    taskName.equals("ProjectDealTask")||taskName.equals("MakeTask")||taskName.equals("")||
-	    taskName.equals("CityNetTask")||taskName.equals("AuditTask")||
-	 	taskName.equals("TrasitionTask")||taskName.equals("HandleTask")||
-	 	taskName.equals("BusinessTestTask")||
-	 	taskName.equals("DredgeAffirmTask")||
-	 	taskName.equals("HoldTask")
-	){ %> 
-	<table class="formTable">
-	<caption>城域网接入信息</caption> 
-	<tbody id='cityInfo' > 
-    <tr>
-    	<td class="label">城域网接入站点名称</td>
-     	<td class="content">
-		  	<html:errors property="siteNameZ"/>
-		  		<bean:write name="gprsspeciallineForm" property="siteNameZ" scope="request"/> 
-     	</td>
-         <td class="label">城域网接入设备名称</td>
-          <td class="content">
-          <html:errors property="portZBDeviceName"/>
-	       <bean:write name="gprsspeciallineForm" property="portZBDeviceName" scope="request"/> 
-         </td>
-    </tr>
-    <tr>
-         <td class="label">城域网接入设备端口</td>
-          <td colspan="3">
-          <html:errors property="portZBDevicePort"/>
-           <bean:write name="gprsspeciallineForm" property="portZBDevicePort" scope="request"/> 
-         </td>
-      </tr>
-    
-    </tbody>
-   <!-- @@@ -->
+
+
+    <%
+        if (taskName.equals("ImplementDealTask") || taskName.equals("ExplorateTask") || taskName.equals("CityTask") ||
+                taskName.equals("ProjectDealTask") || taskName.equals("MakeTask") || taskName.equals("") ||
+                taskName.equals("CityNetTask") || taskName.equals("AuditTask") ||
+                taskName.equals("TrasitionTask") || taskName.equals("HandleTask") ||
+                taskName.equals("BusinessTestTask") ||
+                taskName.equals("DredgeAffirmTask") ||
+                taskName.equals("HoldTask")
+        ) {
+    %>
+    <table class="formTable">
+        <caption>城域网接入信息</caption>
+        <tbody id='cityInfo'>
+        <tr>
+            <td class="label">城域网接入站点名称</td>
+            <td class="content">
+                <html:errors property="siteNameZ"/>
+                <bean:write name="gprsspeciallineForm" property="siteNameZ" scope="request"/>
+            </td>
+            <td class="label">城域网接入设备名称</td>
+            <td class="content">
+                <html:errors property="portZBDeviceName"/>
+                <bean:write name="gprsspeciallineForm" property="portZBDeviceName" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">城域网接入设备端口</td>
+            <td colspan="3">
+                <html:errors property="portZBDevicePort"/>
+                <bean:write name="gprsspeciallineForm" property="portZBDevicePort" scope="request"/>
+            </td>
+        </tr>
+
+        </tbody>
+        <!-- @@@ -->
     </table>
     <br>
-     <%} %>
-    
-    <%if(sheetType.equals("businessImplement")&&!taskName.equals("ImplementDealTask")){ %> 
-   
+    <%} %>
+
+    <%if (sheetType.equals("businessImplement") && !taskName.equals("ImplementDealTask")) { %>
+
     <table class="formTable">
-    <caption>最后一公里相关信息</caption> 	
-		<tr>
+        <caption>最后一公里相关信息</caption>
+        <tr>
             <td class="label">A是否熔接</td>
             <td class="content">
-	  	    <html:errors property="isGetInterfaceA"/>
-	  	          <eoms:id2nameDB id="${gprsspeciallineForm.isGetInterfaceA}" beanId="ItawSystemDictTypeDao"/>
-             </td>
+                <html:errors property="isGetInterfaceA"/>
+                <eoms:id2nameDB id="${gprsspeciallineForm.isGetInterfaceA}" beanId="ItawSystemDictTypeDao"/>
+            </td>
             <td class="label">A熔接序号</td>
             <td class="content">
-	  	     <html:errors property="getInterfaceNoA"/>
-             <bean:write name="gprsspeciallineForm" property="getInterfaceNoA" scope="request"/> 
+                <html:errors property="getInterfaceNoA"/>
+                <bean:write name="gprsspeciallineForm" property="getInterfaceNoA" scope="request"/>
             </td>
-		</tr>	   
+        </tr>
         <tr>
-      		<td class="label">A最后一公里处理意见</td>
-       		<td  class="content" colspan="3">
-	 		<bean:write name="gprsspeciallineForm" property="theLastOpinionA" scope="request"/> 
-			</td>
-		</tr> 
-	 </table>
-	  <br>
+            <td class="label">A最后一公里处理意见</td>
+            <td class="content" colspan="3">
+                <bean:write name="gprsspeciallineForm" property="theLastOpinionA" scope="request"/>
+            </td>
+        </tr>
+    </table>
     <br>
-     <%} %>
-  
-  <%if(sheetType.equals("businessImplement")&&(
-	 	taskName.equals("TrasitionTask")||taskName.equals("")||
-	 	taskName.equals("BusinessTestTask")||
-	 	taskName.equals("DredgeAffirmTask")||
-	 	taskName.equals("HandleTask")||
-	 	taskName.equals("HoldTask"))){ %>
-   
+    <br>
+    <%} %>
+
+    <%
+        if (sheetType.equals("businessImplement") && (
+                taskName.equals("TrasitionTask") || taskName.equals("") ||
+                        taskName.equals("BusinessTestTask") ||
+                        taskName.equals("DredgeAffirmTask") ||
+                        taskName.equals("HandleTask") ||
+                        taskName.equals("HoldTask"))) {
+    %>
+
     <table class="formTable">
-	<caption>电路信息</caption>    
-	<tr>
-	      <td class="label">电路名称</td>
-	     <td class="content">
-		  	<html:errors property="circuitName"/>
-	        <bean:write name="gprsspeciallineForm" property="circuitName" scope="request"/> 
-	     </td>
-	         <td class="label">电路编号</td>
-		     <td class="content">
-		        <bean:write name="gprsspeciallineForm" property="circuitSheetId" scope="request"/> 
-		     </td>
-     </tr>  
-   </tbody>
-   </table>
- <br>
-   <%} %>
-   
-    <%if(sheetType.equals("businessImplement")&&(
-	 	taskName.equals("GGSNTask")||taskName.equals("")||
-	 	taskName.equals("BusinessTestTask")||
-	 	taskName.equals("DredgeAffirmTask")||
-	 	taskName.equals("HandleTask")||
-	 	taskName.equals("HoldTask"))){ %>
-   
-    	<table class="formTable">   
-    	<caption>GGSN配置</caption> 
-	    <tr>
-		     <td class="label">第一个GGSN的地址池和掩码</td>
-		     <td class="content">
-			  	<html:errors property="firstApnAddAndNum"/>
-		        <bean:write name="gprsspeciallineForm" property="firstApnAddAndNum" scope="request"/></td>
-		      <td class="label">第二个GGSN的地址池和掩码</td>
-		     <td class="content">
-			  	<html:errors property="secondApnAddAndNum"/>
-		      <bean:write name="gprsspeciallineForm" property="secondApnAddAndNum" scope="request"/>
-		     </td>
-	   </tr>  
-	      <tr>
-         	<td class="label">APN路由方式</td>
-     		<td class="content">
-	  		<html:errors property="apnRootMethod"/>
-      		 <bean:write name="gprsspeciallineForm" property="apnRootMethod" scope="request"/>
-			</tr>
-	    </table>
-   <%} %>
-   
-   <%if(sheetType.equals("businessImplement")&&(
-	 	taskName.equals("TrasitionTask")||taskName.equals("")||
-	 	taskName.equals("BusinessTestTask")||
-	 	taskName.equals("DredgeAffirmTask")||
-	 	taskName.equals("HandleTask")||
-	 	taskName.equals("HoldTask"))){ %>
-  
-  <br>
+        <caption>电路信息</caption>
+        <tr>
+            <td class="label">电路名称</td>
+            <td class="content">
+                <html:errors property="circuitName"/>
+                <bean:write name="gprsspeciallineForm" property="circuitName" scope="request"/>
+            </td>
+            <td class="label">电路编号</td>
+            <td class="content">
+                <bean:write name="gprsspeciallineForm" property="circuitSheetId" scope="request"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <%} %>
+
+    <%
+        if (sheetType.equals("businessImplement") && (
+                taskName.equals("GGSNTask") || taskName.equals("") ||
+                        taskName.equals("BusinessTestTask") ||
+                        taskName.equals("DredgeAffirmTask") ||
+                        taskName.equals("HandleTask") ||
+                        taskName.equals("HoldTask"))) {
+    %>
+
     <table class="formTable">
-	<caption>APN配置</caption>  
-	<tbody id='circuitInfo' >   
-	 <tr>
-      <td class="label">APN配置</td>
-     <td colspan="3">
-     <bean:write name="gprsspeciallineForm" property="apnIndex" scope="request"/>
-     </td>
-   </tr> 
-   </tbody>
-   </table>
-      <%} %>
-     <br>
+        <caption>GGSN配置</caption>
+        <tr>
+            <td class="label">第一个GGSN的地址池和掩码</td>
+            <td class="content">
+                <html:errors property="firstApnAddAndNum"/>
+                <bean:write name="gprsspeciallineForm" property="firstApnAddAndNum" scope="request"/></td>
+            <td class="label">第二个GGSN的地址池和掩码</td>
+            <td class="content">
+                <html:errors property="secondApnAddAndNum"/>
+                <bean:write name="gprsspeciallineForm" property="secondApnAddAndNum" scope="request"/>
+            </td>
+        </tr>
+        <tr>
+            <td class="label">APN路由方式</td>
+            <td class="content">
+                    <html:errors property="apnRootMethod"/>
+                    <bean:write name="gprsspeciallineForm" property="apnRootMethod" scope="request"/>
+        </tr>
+    </table>
+    <%} %>
+
+    <%
+        if (sheetType.equals("businessImplement") && (
+                taskName.equals("TrasitionTask") || taskName.equals("") ||
+                        taskName.equals("BusinessTestTask") ||
+                        taskName.equals("DredgeAffirmTask") ||
+                        taskName.equals("HandleTask") ||
+                        taskName.equals("HoldTask"))) {
+    %>
+
+    <br>
     <table class="formTable">
-    <tr>
-      <td class="label">备注</td>
-        <td  colspan="3">
-        <html:errors property="remark"/>
-        <bean:write name="gprsspeciallineForm" property="remark" scope="request"/> 
-	  </td>
-   </tr>
-       	 
-<!-- 
+        <caption>APN配置</caption>
+        <tbody id='circuitInfo'>
+        <tr>
+            <td class="label">APN配置</td>
+            <td colspan="3">
+                <bean:write name="gprsspeciallineForm" property="apnIndex" scope="request"/>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <%} %>
+    <br>
+    <table class="formTable">
+        <tr>
+            <td class="label">备注</td>
+            <td colspan="3">
+                <html:errors property="remark"/>
+                <bean:write name="gprsspeciallineForm" property="remark" scope="request"/>
+            </td>
+        </tr>
+
+        <!--
      	       
 <tr>
       <td class="label">A站点设备编码</td>
@@ -541,8 +552,7 @@ function modify(){
      </td>  -->
 
 
-
-     <!-- 
+        <!--
      <tr>
      
      <td class="label">GPRS核心网联系人电话</td>
@@ -928,13 +938,13 @@ function modify(){
   
 -->
 
-</table>
-<table>
-<%if(!isView.equals("1")||taskName.equals("AcceptTask")||taskName.equals("ImplementDealTask")) {%>
-<input type="button"  value="修改" onclick="modify();"> 
-<%} %>
-<input type="button" style="margin-right: 5px" value="关闭" Onclick="window.close()">
-</table>
+    </table>
+    <table>
+        <%if (!isView.equals("1") || taskName.equals("AcceptTask") || taskName.equals("ImplementDealTask")) {%>
+        <input type="button" value="修改" onclick="modify();">
+        <%} %>
+        <input type="button" style="margin-right: 5px" value="关闭" Onclick="window.close()">
+    </table>
 </html:form>
 
 <!-- footer_eoms.jsp end-->

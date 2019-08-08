@@ -1,14 +1,14 @@
-<%@page import="com.boco.eoms.common.controller.*"%>
-<%@page import="com.boco.eoms.resmanage.operator.*"%>
-<%@page import="com.boco.eoms.common.util.*"%>
+<%@page import="com.boco.eoms.common.controller.*" %>
+<%@page import="com.boco.eoms.resmanage.operator.*" %>
+<%@page import="com.boco.eoms.common.util.*" %>
 <%
-	/*Vector entityPower = new Vector();
-	power epw = new power();
-	int RootPower = 0;
-	*/
-	/******for affiche******/
-	//boolean bflag = false;
-	/************/
+    /*Vector entityPower = new Vector();
+    power epw = new power();
+    int RootPower = 0;
+    */
+    /******for affiche******/
+    //boolean bflag = false;
+    /************/
 	/*operator opt = new operator();
 	userGroup ug = new userGroup();
 	if(session.getAttribute("UserInfo") != null)
@@ -19,27 +19,24 @@
 		/******for affiche*********/
 	/*bflag = true;
 	}*/
-	//========modify for eoms by wuzongxian 2003.10.25
-	userGroup ug = new userGroup();//temp need delte
-	String webapp = request.getContextPath();
-	String userId=null;
-	int deptId =0;
-	boolean bflag = false;
-	String realPath = null;
-	SaveSessionBeanForm saveSessionBeanForm=(SaveSessionBeanForm)request.getSession().getAttribute("SaveSessionBeanForm");
-	if (saveSessionBeanForm!=null)
-	{
-		userId = saveSessionBeanForm.getWrf_UserID();
-		deptId = saveSessionBeanForm.getWrf_DeptID();
-		realPath = saveSessionBeanForm.getRealPath();
-	}
-	else
-	{
-		out.println(StaticMethod.dbNull2String("ÄúµÄÕÊºÅÏÐÖÃ¹ý¾Ã£¬ÇëÖØÐÂµÇÂ¼£¡"));
-		return;
-	}
+    //========modify for eoms by wuzongxian 2003.10.25
+    userGroup ug = new userGroup();//temp need delte
+    String webapp = request.getContextPath();
+    String userId = null;
+    int deptId = 0;
+    boolean bflag = false;
+    String realPath = null;
+    SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().getAttribute("SaveSessionBeanForm");
+    if (saveSessionBeanForm != null) {
+        userId = saveSessionBeanForm.getWrf_UserID();
+        deptId = saveSessionBeanForm.getWrf_DeptID();
+        realPath = saveSessionBeanForm.getRealPath();
+    } else {
+        out.println(StaticMethod.dbNull2String("ï¿½ï¿½ï¿½ï¿½ï¿½Êºï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½"));
+        return;
+    }
 %>
-	<!-- <script language="javascript">
-          alert("ÄúµÄÕÊºÅÏÐÖÃ¹ý¾Ã£¬ÇëÖØÐÂµÇÂ¼£¡");
-          window.top.location.href = "<%=webapp%>/index.jsp";
-   </script> -->
+<!-- <script language="javascript">
+alert("ï¿½ï¿½ï¿½ï¿½ï¿½Êºï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Â¼ï¿½ï¿½");
+window.top.location.href = "<%=webapp%>/index.jsp";
+</script> -->

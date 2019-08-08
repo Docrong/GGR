@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.boco.eoms.base.service.impl.BaseManager;
@@ -17,6 +18,7 @@ public class TawRmLogUniteManagerImpl extends BaseManager implements ITawRmLogUn
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawRmLogUniteDao(ITawRmLogUniteDao dao) {
@@ -50,45 +52,49 @@ public class TawRmLogUniteManagerImpl extends BaseManager implements ITawRmLogUn
     public void removeTawRmLogUnite(final String id) {
         dao.removeTawRmLogUnite(new String(id));
     }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLogUniteManager#getTawRmLogUnites(final Integer curPage, final Integer pageSize)
      */
     public Map getTawRmLogUnites(final Integer curPage, final Integer pageSize) {
-        return dao.getTawRmLogUnites(curPage, pageSize,null);
+        return dao.getTawRmLogUnites(curPage, pageSize, null);
     }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLogUniteManager#getTawRmLogUnites(final Integer curPage, final Integer pageSize, final String whereStr)
-     */    
+     */
     public Map getTawRmLogUnites(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawRmLogUnites(curPage, pageSize, whereStr);
     }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLogUniteManager#getChildList(String parentId)
-     */     
-    public List getChildList(String parentId) {		
-		return dao.getChildList(parentId);
-	}
+     */
+    public List getChildList(String parentId) {
+        return dao.getChildList(parentId);
+    }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLogUniteManager#xGetChildNodes(String parentId)
-     */  	
-	public JSONArray xGetChildNodes(String parentId) {
-		JSONArray json = new JSONArray();
-		List list = new ArrayList();	
-		list = this.getChildList(parentId);
+     */
+    public JSONArray xGetChildNodes(String parentId) {
+        JSONArray json = new JSONArray();
+        List list = new ArrayList();
+        list = this.getChildList(parentId);
 
-		for (Iterator rowIt = list.iterator(); rowIt.hasNext();) {
-			TawRmLogUnite obj = (TawRmLogUnite) rowIt.next();
-			JSONObject jitem = new JSONObject();
-			jitem.put("id", obj.getId());
-			//jitem.put("text", obj.getName());
-			//jitem.put("name", obj.getName());
-			jitem.put("allowChild", true);
-			jitem.put("allowDelete", true);
-			//if(obj.getLeaf().equals("1")){
-			//	jitem.put("leaf", true);
-			//}
-			json.put(jitem);
-		}
-		return json;
-	}	
+        for (Iterator rowIt = list.iterator(); rowIt.hasNext(); ) {
+            TawRmLogUnite obj = (TawRmLogUnite) rowIt.next();
+            JSONObject jitem = new JSONObject();
+            jitem.put("id", obj.getId());
+            //jitem.put("text", obj.getName());
+            //jitem.put("name", obj.getName());
+            jitem.put("allowChild", true);
+            jitem.put("allowDelete", true);
+            //if(obj.getLeaf().equals("1")){
+            //	jitem.put("leaf", true);
+            //}
+            json.put(jitem);
+        }
+        return json;
+    }
 }

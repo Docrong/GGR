@@ -54,12 +54,12 @@ public class TawSystemDeptRefPostDaoHibernate extends BaseDaoHibernate implement
 
     /**
      * @see com.boco.eoms.commons.system.role.dao.TawSystemDeptRefPostDao#saveTawSystemDeptRefPost(TawSystemDeptRefPost tawSystemDeptRefPost)
-     */    
+     */
     public void saveTawSystemDeptRefPost(final TawSystemDeptRefPost tawSystemDeptRefPost) {
         if ((tawSystemDeptRefPost.getId() == null) || (tawSystemDeptRefPost.getId().equals("")))
-			getHibernateTemplate().save(tawSystemDeptRefPost);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSystemDeptRefPost);
+            getHibernateTemplate().save(tawSystemDeptRefPost);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSystemDeptRefPost);
     }
 
     /**
@@ -68,57 +68,59 @@ public class TawSystemDeptRefPostDaoHibernate extends BaseDaoHibernate implement
     public void removeTawSystemDeptRefPost(final Long id) {
         getHibernateTemplate().delete(getTawSystemDeptRefPost(id));
     }
-    public void removeDeptRefPostByPostId(Long postId){
-    	String hql = "from TawSystemDeptRefPost t where t.postId="+postId;
-    	List list = getHibernateTemplate().find(hql);
-    	for(int i=0;i<list.size();i++){
-    		TawSystemDeptRefPost t = (TawSystemDeptRefPost)list.get(i);
-    		getHibernateTemplate().delete(t);
-    	}
-    	getHibernateTemplate().flush();
+
+    public void removeDeptRefPostByPostId(Long postId) {
+        String hql = "from TawSystemDeptRefPost t where t.postId=" + postId;
+        List list = getHibernateTemplate().find(hql);
+        for (int i = 0; i < list.size(); i++) {
+            TawSystemDeptRefPost t = (TawSystemDeptRefPost) list.get(i);
+            getHibernateTemplate().delete(t);
+        }
+        getHibernateTemplate().flush();
     }
 
-    public Map getTawSystemDeptRefPosts(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSystemDeptRefPosts(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSystemDeptRefPost
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSystemDeptRefPost";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSystemDeptRefPost";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSystemDeptRefPosts(final Integer curPage, final Integer pageSize) {
-			return this.getTawSystemDeptRefPosts(curPage,pageSize,null);
-		}
-    
+        return this.getTawSystemDeptRefPosts(curPage, pageSize, null);
+    }
+
     /**
      * @param deptId
      * @return <TawSystemPost>
      */
-    public List getPostByDeptId(String deptId){
-    	List postList = new ArrayList();
-    	String hql = "from TawSystemPost post,TawSystemDeptRefPost ref where post.postId=ref.postId and ref.deptId='"+deptId+"'";
-    	List list = getHibernateTemplate().find(hql);
-    	for(int i=0;i<list.size();i++){
-    		postList.add(((Object[])list.get(i))[0]);
-    	}
-    	
-    	return postList;
+    public List getPostByDeptId(String deptId) {
+        List postList = new ArrayList();
+        String hql = "from TawSystemPost post,TawSystemDeptRefPost ref where post.postId=ref.postId and ref.deptId='" + deptId + "'";
+        List list = getHibernateTemplate().find(hql);
+        for (int i = 0; i < list.size(); i++) {
+            postList.add(((Object[]) list.get(i))[0]);
+        }
+
+        return postList;
     }
 
 }

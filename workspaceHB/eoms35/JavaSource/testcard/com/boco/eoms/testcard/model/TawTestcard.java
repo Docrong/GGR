@@ -5,488 +5,488 @@ import com.boco.eoms.commons.system.dict.service.ID2NameService;
 
 public class TawTestcard {
 
-	ID2NameService dictMgr = (ID2NameService) ApplicationContextHolder
-	.getInstance().getBean("id2nameService");
-	
-	private int id;
+    ID2NameService dictMgr = (ID2NameService) ApplicationContextHolder
+            .getInstance().getBean("id2nameService");
 
-	private String exes;// �������
+    private int id;
 
-	private String volumenum; // ���
+    private String exes;// �������
 
-	private String pagenum; // ҳ��
+    private String volumenum; // ���
 
-	private String leave;
-	
-	private String leavename;
+    private String pagenum; // ҳ��
 
-	// ---------------���Կ���ŵ�-------------------------
-	private String cardType;
+    private String leave;
 
-	// ---------------�����ͣ�0Ϊ��ʿ���1Ϊ���ڿ�----------------
-	private String fromCanton;
+    private String leavename;
 
-	// ---------------��ʿ�����أ������ݼ�id��----------------
-	private String fromCountry;
+    // ---------------���Կ���ŵ�-------------------------
+    private String cardType;
 
-	// ---------------��ʿ�����أ�������id��----------------
-	private String fromOpe;
+    // ---------------�����ͣ�0Ϊ��ʿ���1Ϊ���ڿ�----------------
+    private String fromCanton;
 
-	// ---------------��ʿ�����أ�������Ӫ��id��----------------
-	private String fromCrit;
+    // ---------------��ʿ�����أ������ݼ�id��----------------
+    private String fromCountry;
 
-	// ---------------���ڿ�����أ�����ʡid��----------------
-	private String fromCity;
+    // ---------------��ʿ�����أ�������id��----------------
+    private String fromOpe;
 
-	// ---------------���ڿ�����أ��������id��----------------
-	private String toCanton;
+    // ---------------��ʿ�����أ�������Ӫ��id��----------------
+    private String fromCrit;
 
-	// ---------------��ʿ��ݷõأ��ݷ��ݼ�id��----------------
-	private String toCountry;
+    // ---------------���ڿ�����أ�����ʡid��----------------
+    private String fromCity;
 
-	// ---------------��ʿ��ݷõأ��ݷù��id��----------------
-	private String toOpe;
+    // ---------------���ڿ�����أ��������id��----------------
+    private String toCanton;
 
-	// ---------------��ʿ��ݷõأ��ݷ���Ӫ��id��----------------
-	private String toCrit;
+    // ---------------��ʿ��ݷõأ��ݷ��ݼ�id��----------------
+    private String toCountry;
 
-	// ---------------���ڿ��ݷõأ��ݷ�ʡid��----------------
-	private String toCity;
+    // ---------------��ʿ��ݷõأ��ݷù��id��----------------
+    private String toOpe;
 
-	// ---------------���ڿ��ݷõأ��ݷõ���id��----------------
-	private String iccid;
+    // ---------------��ʿ��ݷõأ��ݷ���Ӫ��id��----------------
+    private String toCrit;
 
-	// ---------------���Կ����кţ�Ψһֵ��25λ----------------
-	private String msisdn;
+    // ---------------���ڿ��ݷõأ��ݷ�ʡid��----------------
+    private String toCity;
 
-	// ---------------���Կ����кţ�Ψһֵ��25λ----------------
-	private String msisdn1;
+    // ---------------���ڿ��ݷõأ��ݷõ���id��----------------
+    private String iccid;
 
-	// ---------------���Կ��绰���룬Ψһֵ��15λ----------------
-	private String imsi;
+    // ---------------���Կ����кţ�Ψһֵ��25λ----------------
+    private String msisdn;
 
-	// ---------------���Կ��绰���룬Ψһֵ��15λ----------------
-	private String imsi1;
+    // ---------------���Կ����кţ�Ψһֵ��25λ----------------
+    private String msisdn1;
 
-	// ---------------���Կ����ţ�Ψһֵ��20λ----------------
-	private String pin1;
+    // ---------------���Կ��绰���룬Ψһֵ��15λ----------------
+    private String imsi;
 
-	// ---------------���Կ�����ʶ����1��4λ----------------
-	private String pin2;
+    // ---------------���Կ��绰���룬Ψһֵ��15λ----------------
+    private String imsi1;
 
-	// ---------------���Կ�����ʶ����2��4λ----------------
-	private String puk1;
+    // ---------------���Կ����ţ�Ψһֵ��20λ----------------
+    private String pin1;
 
-	// ---------------���Կ�����ʶ���������1��8λ----------------
-	private String puk2;
+    // ---------------���Կ�����ʶ����1��4λ----------------
+    private String pin2;
 
-	// ---------------���Կ�����ʶ���������2��8λ----------------
-	private String password;
+    // ---------------���Կ�����ʶ����2��4λ----------------
+    private String puk1;
 
-	// ---------------�������룬6λ----------------
-	private String operation;
+    // ---------------���Կ�����ʶ���������1��8λ----------------
+    private String puk2;
 
-	// ---------------��ͨҵ��10λ----------------
-	private String begintime;
+    // ---------------���Կ�����ʶ���������2��8λ----------------
+    private String password;
 
-	// ---------------��ͨ���ڣ�19λ----------------
-	private String endtime;
+    // ---------------�������룬6λ----------------
+    private String operation;
 
-	// ---------------ע�����ڣ�19λ----------------
-	private String intime;
+    // ---------------��ͨҵ��10λ----------------
+    private String begintime;
 
-	// ---------------������ڣ����뱾ϵͳʱ�䣬19λ----------------
-	private String state;// 0:��;1:ͣ��;2:��ʧ;3:���;4:ʹ��;5:����
+    // ---------------��ͨ���ڣ�19λ----------------
+    private String endtime;
 
-	// ---------------��ǰ״̬��0��1ͣ��2��ʧ��3���----------------
-	private String oldNo;
+    // ---------------ע�����ڣ�19λ----------------
+    private String intime;
 
-	// ---------------��ϵͳ��ţ�������----------------
-	private String offer;
+    // ---------------������ڣ����뱾ϵͳʱ�䣬19λ----------------
+    private String state;// 0:��;1:ͣ��;2:��ʧ;3:���;4:ʹ��;5:����
 
-	// ---------------�޸�״̬----------------
-	private String editState;
+    // ---------------��ǰ״̬��0��1ͣ��2��ʧ��3���----------------
+    private String oldNo;
 
-	// -----------------�ṩ��--------------------
-	private String msgcenterno = "";
+    // ---------------��ϵͳ��ţ�������----------------
+    private String offer;
 
-	private String lasttesttime = "";
+    // ---------------�޸�״̬----------------
+    private String editState;
 
-	private String testresult = "";
+    // -----------------�ṩ��--------------------
+    private String msgcenterno = "";
 
-	private String dealresult = "";
+    private String lasttesttime = "";
 
-	private String adder = "";
+    private String testresult = "";
 
-	private String telnum = "";
+    private String dealresult = "";
 
-	private String position;
+    private String adder = "";
 
-	private String cardpackage;
+    private String telnum = "";
 
-	private String isAlive;
+    private String position;
 
-	private String phoneNumber;
+    private String cardpackage;
 
-	public String getIsAlive() {
-		return isAlive;
-	}
+    private String isAlive;
 
-	public void setIsAlive(String isAlive) {
-		this.isAlive = isAlive;
-	}
+    private String phoneNumber;
 
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
+    public String getIsAlive() {
+        return isAlive;
+    }
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+    public void setIsAlive(String isAlive) {
+        this.isAlive = isAlive;
+    }
 
-	public String getAdder() {
-		return adder;
-	}
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-	public void setAdder(String adder) {
-		this.adder = adder;
-	}
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-	public String getMsgcenterno() {
-		return msgcenterno;
-	}
+    public String getAdder() {
+        return adder;
+    }
 
-	public void setMsgcenterno(String msgcenterno) {
-		this.msgcenterno = msgcenterno;
-	}
+    public void setAdder(String adder) {
+        this.adder = adder;
+    }
 
-	public String getLasttesttime() {
-		return lasttesttime;
-	}
+    public String getMsgcenterno() {
+        return msgcenterno;
+    }
 
-	public void setLasttesttime(String lasttesttime) {
-		this.lasttesttime = lasttesttime;
-	}
+    public void setMsgcenterno(String msgcenterno) {
+        this.msgcenterno = msgcenterno;
+    }
 
-	public String getTestresult() {
-		return testresult;
-	}
+    public String getLasttesttime() {
+        return lasttesttime;
+    }
 
-	public void setTestresult(String testresult) {
-		this.testresult = testresult;
-	}
+    public void setLasttesttime(String lasttesttime) {
+        this.lasttesttime = lasttesttime;
+    }
 
-	public String getDealresult() {
-		return dealresult;
-	}
+    public String getTestresult() {
+        return testresult;
+    }
 
-	public void setDealresult(String dealresult) {
-		this.dealresult = dealresult;
-	}
+    public void setTestresult(String testresult) {
+        this.testresult = testresult;
+    }
 
-	public String getOffer() {
-		return offer;
-	}
+    public String getDealresult() {
+        return dealresult;
+    }
 
-	public void setOffer(String offer) {
-		this.offer = offer;
-	}
+    public void setDealresult(String dealresult) {
+        this.dealresult = dealresult;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public String getOffer() {
+        return offer;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setOffer(String offer) {
+        this.offer = offer;
+    }
 
-	public String getLeave() {
-		return leave;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setLeave(String leave) {
-		this.leave = leave;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getCardType() {
-		return cardType;
-	}
+    public String getLeave() {
+        return leave;
+    }
 
-	public void setCardType(String cardType) {
-		this.cardType = cardType;
-	}
+    public void setLeave(String leave) {
+        this.leave = leave;
+    }
 
-	public String getFromCanton() {
-		return fromCanton;
-	}
+    public String getCardType() {
+        return cardType;
+    }
 
-	public void setFromCanton(String fromCanton) {
-		this.fromCanton = fromCanton;
-	}
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
+    }
 
-	public String getFromCountry() {
-		return fromCountry;
-	}
+    public String getFromCanton() {
+        return fromCanton;
+    }
 
-	public void setFromCountry(String fromCountry) {
-		this.fromCountry = fromCountry;
-	}
+    public void setFromCanton(String fromCanton) {
+        this.fromCanton = fromCanton;
+    }
 
-	public String getFromOpe() {
-		return fromOpe;
-	}
+    public String getFromCountry() {
+        return fromCountry;
+    }
 
-	public void setFromOpe(String fromOpe) {
-		this.fromOpe = fromOpe;
-	}
+    public void setFromCountry(String fromCountry) {
+        this.fromCountry = fromCountry;
+    }
 
-	public String getFromCrit() {
-		return fromCrit;
-	}
+    public String getFromOpe() {
+        return fromOpe;
+    }
 
-	public void setFromCrit(String fromCrit) {
-		this.fromCrit = fromCrit;
-	}
+    public void setFromOpe(String fromOpe) {
+        this.fromOpe = fromOpe;
+    }
 
-	public String getFromCity() {
-		return fromCity;
-	}
+    public String getFromCrit() {
+        return fromCrit;
+    }
 
-	public void setFromCity(String fromCity) {
-		this.fromCity = fromCity;
-	}
+    public void setFromCrit(String fromCrit) {
+        this.fromCrit = fromCrit;
+    }
 
-	public String getToCanton() {
-		return toCanton;
-	}
+    public String getFromCity() {
+        return fromCity;
+    }
 
-	public void setToCanton(String toCanton) {
-		this.toCanton = toCanton;
-	}
+    public void setFromCity(String fromCity) {
+        this.fromCity = fromCity;
+    }
 
-	public String getToCountry() {
-		return toCountry;
-	}
+    public String getToCanton() {
+        return toCanton;
+    }
 
-	public void setToCountry(String toCountry) {
-		this.toCountry = toCountry;
-	}
+    public void setToCanton(String toCanton) {
+        this.toCanton = toCanton;
+    }
 
-	public String getToOpe() {
-		return toOpe;
-	}
+    public String getToCountry() {
+        return toCountry;
+    }
 
-	public void setToOpe(String toOpe) {
-		this.toOpe = toOpe;
-	}
+    public void setToCountry(String toCountry) {
+        this.toCountry = toCountry;
+    }
 
-	public String getToCrit() {
-		return toCrit;
-	}
+    public String getToOpe() {
+        return toOpe;
+    }
 
-	public void setToCrit(String toCrit) {
-		this.toCrit = toCrit;
-	}
+    public void setToOpe(String toOpe) {
+        this.toOpe = toOpe;
+    }
 
-	public String getToCity() {
-		return toCity;
-	}
+    public String getToCrit() {
+        return toCrit;
+    }
 
-	public void setToCity(String toCity) {
-		this.toCity = toCity;
-	}
+    public void setToCrit(String toCrit) {
+        this.toCrit = toCrit;
+    }
 
-	public String getIccid() {
-		return iccid;
-	}
+    public String getToCity() {
+        return toCity;
+    }
 
-	public void setIccid(String iccid) {
-		this.iccid = iccid;
-	}
+    public void setToCity(String toCity) {
+        this.toCity = toCity;
+    }
 
-	public String getMsisdn() {
-		return msisdn;
-	}
+    public String getIccid() {
+        return iccid;
+    }
 
-	public void setMsisdn(String msisdn) {
-		this.msisdn = msisdn;
-	}
+    public void setIccid(String iccid) {
+        this.iccid = iccid;
+    }
 
-	public String getImsi() {
-		return imsi;
-	}
+    public String getMsisdn() {
+        return msisdn;
+    }
 
-	public void setImsi(String imsi) {
-		this.imsi = imsi;
-	}
+    public void setMsisdn(String msisdn) {
+        this.msisdn = msisdn;
+    }
 
-	public String getPin1() {
-		return pin1;
-	}
+    public String getImsi() {
+        return imsi;
+    }
 
-	public void setPin1(String pin1) {
-		this.pin1 = pin1;
-	}
+    public void setImsi(String imsi) {
+        this.imsi = imsi;
+    }
 
-	public String getPuk2() {
-		return puk2;
-	}
+    public String getPin1() {
+        return pin1;
+    }
 
-	public void setPuk2(String puk2) {
-		this.puk2 = puk2;
-	}
+    public void setPin1(String pin1) {
+        this.pin1 = pin1;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPuk2() {
+        return puk2;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPuk2(String puk2) {
+        this.puk2 = puk2;
+    }
 
-	public String getOperation() {
-		return operation;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setOperation(String operation) {
-		this.operation = operation;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getBegintime() {
-		return begintime;
-	}
+    public String getOperation() {
+        return operation;
+    }
 
-	public void setBegintime(String begintime) {
-		this.begintime = begintime;
-	}
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
 
-	public String getEndtime() {
-		return endtime;
-	}
+    public String getBegintime() {
+        return begintime;
+    }
 
-	public void setEndtime(String endtime) {
-		this.endtime = endtime;
-	}
+    public void setBegintime(String begintime) {
+        this.begintime = begintime;
+    }
 
-	public String getIntime() {
-		return intime;
-	}
+    public String getEndtime() {
+        return endtime;
+    }
 
-	public void setIntime(String intime) {
-		this.intime = intime;
-	}
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public String getIntime() {
+        return intime;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public void setIntime(String intime) {
+        this.intime = intime;
+    }
 
-	public String getOldNo() {
-		return oldNo;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public void setOldNo(String oldNo) {
-		this.oldNo = oldNo;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-	public String getPin2() {
-		return pin2;
-	}
+    public String getOldNo() {
+        return oldNo;
+    }
 
-	public void setPin2(String pin2) {
-		this.pin2 = pin2;
-	}
+    public void setOldNo(String oldNo) {
+        this.oldNo = oldNo;
+    }
 
-	public String getPuk1() {
-		return puk1;
-	}
+    public String getPin2() {
+        return pin2;
+    }
 
-	public void setPuk1(String puk1) {
-		this.puk1 = puk1;
-	}
+    public void setPin2(String pin2) {
+        this.pin2 = pin2;
+    }
 
-	public String getPosition() {
-		return position;
-	}
+    public String getPuk1() {
+        return puk1;
+    }
 
-	public String getCardpackage() {
-		return cardpackage;
-	}
+    public void setPuk1(String puk1) {
+        this.puk1 = puk1;
+    }
 
-	public String getExes() {
-		return exes;
-	}
+    public String getPosition() {
+        return position;
+    }
 
-	public String getVolumenum() {
-		return volumenum;
-	}
+    public String getCardpackage() {
+        return cardpackage;
+    }
 
-	public String getPagenum() {
-		return pagenum;
-	}
+    public String getExes() {
+        return exes;
+    }
 
-	public String getTelnum() {
-		return telnum;
-	}
+    public String getVolumenum() {
+        return volumenum;
+    }
 
-	public void setPosition(String position) {
-		this.position = position;
-	}
+    public String getPagenum() {
+        return pagenum;
+    }
 
-	public void setCardpackage(String cardpackage) {
-		this.cardpackage = cardpackage;
-	}
+    public String getTelnum() {
+        return telnum;
+    }
 
-	public void setExes(String exes) {
-		this.exes = exes;
-	}
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
-	public void setVolumenum(String volumenum) {
-		this.volumenum = volumenum;
-	}
+    public void setCardpackage(String cardpackage) {
+        this.cardpackage = cardpackage;
+    }
 
-	public void setPagenum(String pagenum) {
-		this.pagenum = pagenum;
-	}
+    public void setExes(String exes) {
+        this.exes = exes;
+    }
 
-	public void setTelnum(String telnum) {
-		this.telnum = telnum;
-	}
+    public void setVolumenum(String volumenum) {
+        this.volumenum = volumenum;
+    }
 
-	public String getImsi1() {
-		return imsi1;
-	}
+    public void setPagenum(String pagenum) {
+        this.pagenum = pagenum;
+    }
 
-	public void setImsi1(String imsi1) {
-		this.imsi1 = imsi1;
-	}
+    public void setTelnum(String telnum) {
+        this.telnum = telnum;
+    }
 
-	public String getMsisdn1() {
-		return msisdn1;
-	}
+    public String getImsi1() {
+        return imsi1;
+    }
 
-	public void setMsisdn1(String msisdn1) {
-		this.msisdn1 = msisdn1;
-	}
+    public void setImsi1(String imsi1) {
+        this.imsi1 = imsi1;
+    }
 
-	public String getEditState() {
-		return editState;
-	}
+    public String getMsisdn1() {
+        return msisdn1;
+    }
 
-	public void setEditState(String editState) {
-		this.editState = editState;
-	}
+    public void setMsisdn1(String msisdn1) {
+        this.msisdn1 = msisdn1;
+    }
 
-	public String getLeavename() {
-		leavename = dictMgr.id2Name(leave,
-		"ItawSystemDictTypeDao");
-		return leavename;
-	}
+    public String getEditState() {
+        return editState;
+    }
 
-	public void setLeavename(String leavename) {
-		this.leavename = leavename;
-	}
+    public void setEditState(String editState) {
+        this.editState = editState;
+    }
+
+    public String getLeavename() {
+        leavename = dictMgr.id2Name(leave,
+                "ItawSystemDictTypeDao");
+        return leavename;
+    }
+
+    public void setLeavename(String leavename) {
+        this.leavename = leavename;
+    }
 }

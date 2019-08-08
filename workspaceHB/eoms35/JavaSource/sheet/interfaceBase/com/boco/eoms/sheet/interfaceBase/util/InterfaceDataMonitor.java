@@ -4,9 +4,9 @@ import java.util.Map;
 
 public class InterfaceDataMonitor {
 
-	public void saveMonitor(Map monitorMap, String result, String string, String string2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public void saveMonitor(Map monitorMap, String result, String string, String string2) {
+        // TODO Auto-generated method stub
+
+    }
 
 }

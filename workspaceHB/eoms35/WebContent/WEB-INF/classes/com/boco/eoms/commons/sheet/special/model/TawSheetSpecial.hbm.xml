@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,83 +13,83 @@
             table="taw_common_sheet_special"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="increment">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="increment">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="remark"
+                name="remark"
                 length="254"
         >
 
         </property>
 
         <property
-            name="leaf"
+                name="leaf"
                 length="2"
         >
 
         </property>
 
         <property
-            name="ordercode"
+                name="ordercode"
                 length="2"
         >
 
         </property>
 
         <property
-            name="parspeid"
+                name="parspeid"
                 length="254"
         >
 
         </property>
 
         <property
-            name="refuserid"
+                name="refuserid"
                 length="254"
         >
 
         </property>
 
         <property
-            name="specialname"
+                name="specialname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="specialtype"
+                name="specialtype"
                 length="254"
         >
 
         </property>
 
         <property
-            name="speid"
+                name="speid"
                 length="254"
         >
 
         </property>
 
         <property
-            name="style"
+                name="style"
                 length="254"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

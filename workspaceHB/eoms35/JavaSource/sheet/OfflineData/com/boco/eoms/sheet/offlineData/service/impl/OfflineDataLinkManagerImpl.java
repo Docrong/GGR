@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.offlineData.service.IOfflineDataLinkManager;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class OfflineDataLinkManagerImpl extends LinkServiceImpl implements IOfflineDataLinkManager {
- 
- }
+
+public class OfflineDataLinkManagerImpl extends LinkServiceImpl implements IOfflineDataLinkManager {
+
+}

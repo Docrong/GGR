@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.boco.eoms.base.service.impl.BaseManager;
@@ -18,6 +19,7 @@ public class TawRmArticleManagerImpl extends BaseManager implements ITawRmArticl
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawRmArticleDao(ITawRmArticleDao dao) {
@@ -51,49 +53,53 @@ public class TawRmArticleManagerImpl extends BaseManager implements ITawRmArticl
     public void removeTawRmArticle(final String id) {
         dao.removeTawRmArticle(new String(id));
     }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLoanRecordManager#getTawRmLoanRecords(final Integer curPage, final Integer pageSize)
      */
     public Map getTawRmArticles(final Integer curPage, final Integer pageSize) {
-        return dao.getTawRmArticles(curPage, pageSize,null);
+        return dao.getTawRmArticles(curPage, pageSize, null);
     }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLoanRecordManager#getTawRmLoanRecords(final Integer curPage, final Integer pageSize, final String whereStr)
-     */    
+     */
     public Map getTawRmArticles(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawRmArticles(curPage, pageSize, whereStr);
     }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLoanRecordManager#getChildList(String parentId)
-     */     
-    public List getChildList(String parentId) {		
-		return dao.getChildList(parentId);
-	}
+     */
+    public List getChildList(String parentId) {
+        return dao.getChildList(parentId);
+    }
+
     /**
      * @see com.boco.eoms.duty.service.ITawRmLoanRecordManager#xGetChildNodes(String parentId)
-     */  	
-	public JSONArray xGetChildNodes(String parentId) {
-		JSONArray json = new JSONArray();
-		List list = new ArrayList();	
-		list = this.getChildList(parentId);
+     */
+    public JSONArray xGetChildNodes(String parentId) {
+        JSONArray json = new JSONArray();
+        List list = new ArrayList();
+        list = this.getChildList(parentId);
 
-		for (Iterator rowIt = list.iterator(); rowIt.hasNext();) {
-			TawRmLoanRecord obj = (TawRmLoanRecord) rowIt.next();
-			JSONObject jitem = new JSONObject();
-			jitem.put("id", obj.getId());
-			//jitem.put("text", obj.getName());
-			//jitem.put("name", obj.getName());
-			jitem.put("allowChild", true);
-			jitem.put("allowDelete", true);
-			//if(obj.getLeaf().equals("1")){
-			//	jitem.put("leaf", true);
-			//}
-			json.put(jitem);
-		}
-		return json;
-	}
+        for (Iterator rowIt = list.iterator(); rowIt.hasNext(); ) {
+            TawRmLoanRecord obj = (TawRmLoanRecord) rowIt.next();
+            JSONObject jitem = new JSONObject();
+            jitem.put("id", obj.getId());
+            //jitem.put("text", obj.getName());
+            //jitem.put("name", obj.getName());
+            jitem.put("allowChild", true);
+            jitem.put("allowDelete", true);
+            //if(obj.getLeaf().equals("1")){
+            //	jitem.put("leaf", true);
+            //}
+            json.put(jitem);
+        }
+        return json;
+    }
 
-	public List getTawRmArticleByCondition(String condition) {
-		return dao.getTawRmArticleByCondition(condition);
-	}	
+    public List getTawRmArticleByCondition(String condition) {
+        return dao.getTawRmArticleByCondition(condition);
+    }
 }

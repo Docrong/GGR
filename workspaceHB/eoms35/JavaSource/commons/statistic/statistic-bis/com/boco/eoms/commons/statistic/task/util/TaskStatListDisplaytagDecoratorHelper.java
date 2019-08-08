@@ -17,7 +17,7 @@ import com.boco.eoms.commons.statistic.task.vo.StatDetailVOTask;
 
 /**
  * @author Administrator
- * 
+ * <p>
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
@@ -47,20 +47,20 @@ public class TaskStatListDisplaytagDecoratorHelper extends TableDecorator {
 		
 	}*/
 
-	public String getSenduser() {
-		StatDetailVOTask vo = (StatDetailVOTask) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenduserid(), "tawSystemUserDao");
-	}
+    public String getSenduser() {
+        StatDetailVOTask vo = (StatDetailVOTask) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenduserid(), "tawSystemUserDao");
+    }
 
-	public String getSenddept() {
-		StatDetailVOTask vo = (StatDetailVOTask) getCurrentRowObject();
-		return StatUtil.id2Name(vo.getSenddeptid(), "tawSystemDeptDao");
+    public String getSenddept() {
+        StatDetailVOTask vo = (StatDetailVOTask) getCurrentRowObject();
+        return StatUtil.id2Name(vo.getSenddeptid(), "tawSystemDeptDao");
 
-	}
+    }
 
-	public String getStatus() {
-		StatDetailVOTask vo = (StatDetailVOTask) getCurrentRowObject();
-		return StatUtil.getStatusName(vo.getStatus());
+    public String getStatus() {
+        StatDetailVOTask vo = (StatDetailVOTask) getCurrentRowObject();
+        return StatUtil.getStatusName(vo.getStatus());
 
-	}
+    }
 }

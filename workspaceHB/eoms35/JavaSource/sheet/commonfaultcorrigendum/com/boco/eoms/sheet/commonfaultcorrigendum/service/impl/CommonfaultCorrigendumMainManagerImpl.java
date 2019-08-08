@@ -16,20 +16,19 @@ import com.boco.eoms.sheet.commonfaultcorrigendum.service.ICommonfaultCorrigendu
  * <p>
  * Mon Sep 29 11:24:17 CST 2014
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CommonfaultCorrigendumMainManagerImpl extends MainService implements ICommonfaultCorrigendumMainManager {
-		public List getNetTeam(String netname) throws Exception {
-			ICommonfaultCorrigendumMainDAO dao = (ICommonfaultCorrigendumMainDAO)this.getMainDAO();
-			return dao.getNetTeam(netname);
-		}
-		
-		public void updateNetTeam(String mainnewTeamRoleId,String mainnewccObject,String mainCommonfaultNetName) throws Exception {
-			ICommonfaultCorrigendumMainDAO dao = (ICommonfaultCorrigendumMainDAO)this.getMainDAO();
-			dao.updateNetTeam(mainnewTeamRoleId,mainnewccObject,mainCommonfaultNetName);
-		}
- }
+
+public class CommonfaultCorrigendumMainManagerImpl extends MainService implements ICommonfaultCorrigendumMainManager {
+    public List getNetTeam(String netname) throws Exception {
+        ICommonfaultCorrigendumMainDAO dao = (ICommonfaultCorrigendumMainDAO) this.getMainDAO();
+        return dao.getNetTeam(netname);
+    }
+
+    public void updateNetTeam(String mainnewTeamRoleId, String mainnewccObject, String mainCommonfaultNetName) throws Exception {
+        ICommonfaultCorrigendumMainDAO dao = (ICommonfaultCorrigendumMainDAO) this.getMainDAO();
+        dao.updateNetTeam(mainnewTeamRoleId, mainnewccObject, mainCommonfaultNetName);
+    }
+}

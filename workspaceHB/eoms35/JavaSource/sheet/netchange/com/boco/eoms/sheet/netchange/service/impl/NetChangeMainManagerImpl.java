@@ -20,40 +20,43 @@ import com.boco.eoms.sheet.netchange.service.INetChangeMainManager;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class NetChangeMainManagerImpl extends MainService implements
         INetChangeMainManager {
 
-	public List showInvokeRelationShipList(String mainId) throws SheetException {
-		INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO)this.getMainDAO();
-		return iNetChangeMainDAO.showInvokeRelationShipList(mainId);
-	}
-	
-	public BaseLink getHasInvokeBaseLink(String mainId) throws SheetException {
-		INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO)this.getMainDAO();
-		return iNetChangeMainDAO.getHasInvokeBaseLink(mainId);
-	}
+    public List showInvokeRelationShipList(String mainId) throws SheetException {
+        INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO) this.getMainDAO();
+        return iNetChangeMainDAO.showInvokeRelationShipList(mainId);
+    }
 
-	public TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException {
-		INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO)this.getMainDAO();
-		return iNetChangeMainDAO.getTawSystemWorkflowByFlowTemplateName(flowTemplateName);
-	}
-	/**
-	 * 通过告警号获取工单
-	 * @param alarmId 告警号
-	 * @return
-	 * @throws HibernateException
-	 */
-	public BaseMain getMainByAlarmId(String alarmId){
-		INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO)this.getMainDAO();
-		return iNetChangeMainDAO.getMainByAlarmId(alarmId);
-	}
-	public BaseMain loadSinglePO(String id) {
-		INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO)this.getMainDAO();
-		return iNetChangeMainDAO.loadSinglePO(id, this.getMainObject());
+    public BaseLink getHasInvokeBaseLink(String mainId) throws SheetException {
+        INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO) this.getMainDAO();
+        return iNetChangeMainDAO.getHasInvokeBaseLink(mainId);
+    }
+
+    public TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException {
+        INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO) this.getMainDAO();
+        return iNetChangeMainDAO.getTawSystemWorkflowByFlowTemplateName(flowTemplateName);
+    }
+
+    /**
+     * 通过告警号获取工单
+     *
+     * @param alarmId 告警号
+     * @return
+     * @throws HibernateException
+     */
+    public BaseMain getMainByAlarmId(String alarmId) {
+        INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO) this.getMainDAO();
+        return iNetChangeMainDAO.getMainByAlarmId(alarmId);
+    }
+
+    public BaseMain loadSinglePO(String id) {
+        INetChangeMainDAO iNetChangeMainDAO = (INetChangeMainDAO) this.getMainDAO();
+        return iNetChangeMainDAO.loadSinglePO(id, this.getMainObject());
     }
 
 }

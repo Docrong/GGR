@@ -31,349 +31,307 @@ import com.boco.eoms.sheet.base.webapp.action.IBaseSheet;
 import com.boco.eoms.sheet.base.webapp.action.SheetAction;
 import com.boco.eoms.sheet.resourceconfirm.model.ResourceConfirmMain;
 import com.boco.eoms.sheet.resourceconfirm.service.IResourceConfirmMainManager;
+
 import java.io.PrintStream;
 import java.util.*;
 import javax.servlet.http.*;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.struts.action.*;
 
-public class ResourceConfirmAction extends SheetAction
-{
+public class ResourceConfirmAction extends SheetAction {
 
-	public ResourceConfirmAction()
-	{
-	}
+    public ResourceConfirmAction() {
+    }
 
-	public ActionForward showDrawing(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		return mapping.findForward("draw");
-	}
+    public ActionForward showDrawing(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("draw");
+    }
 
-	public ActionForward showPic(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		return mapping.findForward("pic");
-	}
+    public ActionForward showPic(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("pic");
+    }
 
-	public ActionForward showKPI(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		return mapping.findForward("kpi");
-	}
+    public ActionForward showKPI(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("kpi");
+    }
 
-	public ActionForward showInitializeTaskPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		ServicePrepareMgr servicePrepareMgr = (ServicePrepareMgr)ApplicationContextHolder.getInstance().getBean("IServicePrepareMgr");
-		String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
-		String taskName = StaticMethod.nullObject2String(request.getParameter("taskName"));
-		String serviceId = StaticMethod.nullObject2String(request.getParameter("serviceId"));
-		String specialtyId = StaticMethod.nullObject2String(request.getParameter("specialtyId"));
-		ProfessionalServiceDirectory professionalServiceDirectory = servicePrepareMgr.getProfessionalServiceDirectorySinglePO(specialtyId);
-		String serviceCnName = professionalServiceDirectory.getName();
-		String phaseId = StaticMethod.nullObject2String(request.getParameter("phaseId"));
-		String operateRoleId = StaticMethod.nullObject2String(request.getParameter("operateRoleId"));
-		String parentTaskId = StaticMethod.nullObject2String(request.getParameter("parentTaskId"));
-		String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"));
-		String supportId = StaticMethod.nullObject2String(request.getParameter("supportId"));
-		IBaseSheet baseSheet = (IBaseSheet)getBean(mapping.getAttribute());
-		BaseLink linkObject = (BaseLink)baseSheet.getLinkService().getLinkObject().getClass().newInstance();
-		TawSystemSessionForm sessionform = (TawSystemSessionForm)request.getSession().getAttribute("sessionform");
-		linkObject.setOperaterContact(sessionform.getContactMobile());
-		linkObject.setOperateUserId(sessionform.getUserid());
-		linkObject.setOperateDeptId(sessionform.getDeptid());
-		linkObject.setOperateRoleId(operateRoleId);
-		linkObject.setOperateTime(StaticMethod.getLocalTime());
-		request.setAttribute("sheetLink", linkObject);
-		BaseMain baseMain = baseSheet.getMainService().getSingleMainPO(sheetKey);
-		if (baseMain != null)
-			request.setAttribute("sheetMain", baseMain);
-		request.setAttribute("sheetKey", sheetKey);
-		request.setAttribute("taskName", taskName);
-		request.setAttribute("serviceId", serviceId);
-		request.setAttribute("serviceCnName", serviceCnName);
-		request.setAttribute("phaseId", phaseId);
-		request.setAttribute("parentTaskId", parentTaskId);
-		request.setAttribute("preLinkId", preLinkId);
-		request.setAttribute("supportId", supportId);
-		return mapping.findForward("InitializeTask");
-	}
+    public ActionForward showInitializeTaskPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        ServicePrepareMgr servicePrepareMgr = (ServicePrepareMgr) ApplicationContextHolder.getInstance().getBean("IServicePrepareMgr");
+        String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+        String taskName = StaticMethod.nullObject2String(request.getParameter("taskName"));
+        String serviceId = StaticMethod.nullObject2String(request.getParameter("serviceId"));
+        String specialtyId = StaticMethod.nullObject2String(request.getParameter("specialtyId"));
+        ProfessionalServiceDirectory professionalServiceDirectory = servicePrepareMgr.getProfessionalServiceDirectorySinglePO(specialtyId);
+        String serviceCnName = professionalServiceDirectory.getName();
+        String phaseId = StaticMethod.nullObject2String(request.getParameter("phaseId"));
+        String operateRoleId = StaticMethod.nullObject2String(request.getParameter("operateRoleId"));
+        String parentTaskId = StaticMethod.nullObject2String(request.getParameter("parentTaskId"));
+        String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"));
+        String supportId = StaticMethod.nullObject2String(request.getParameter("supportId"));
+        IBaseSheet baseSheet = (IBaseSheet) getBean(mapping.getAttribute());
+        BaseLink linkObject = (BaseLink) baseSheet.getLinkService().getLinkObject().getClass().newInstance();
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request.getSession().getAttribute("sessionform");
+        linkObject.setOperaterContact(sessionform.getContactMobile());
+        linkObject.setOperateUserId(sessionform.getUserid());
+        linkObject.setOperateDeptId(sessionform.getDeptid());
+        linkObject.setOperateRoleId(operateRoleId);
+        linkObject.setOperateTime(StaticMethod.getLocalTime());
+        request.setAttribute("sheetLink", linkObject);
+        BaseMain baseMain = baseSheet.getMainService().getSingleMainPO(sheetKey);
+        if (baseMain != null)
+            request.setAttribute("sheetMain", baseMain);
+        request.setAttribute("sheetKey", sheetKey);
+        request.setAttribute("taskName", taskName);
+        request.setAttribute("serviceId", serviceId);
+        request.setAttribute("serviceCnName", serviceCnName);
+        request.setAttribute("phaseId", phaseId);
+        request.setAttribute("parentTaskId", parentTaskId);
+        request.setAttribute("preLinkId", preLinkId);
+        request.setAttribute("supportId", supportId);
+        return mapping.findForward("InitializeTask");
+    }
 
-	public ActionForward newTaskPerformAdd(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		IBaseSheet baseSheet = (IBaseSheet)getBean(mapping.getAttribute());
-		HashMap columnMap = baseSheet.getInterfaceObjMap(mapping, form, request, response);
-		Map map = request.getParameterMap();
-		System.out.println("=====request Map parentPhaseName:" + StaticMethod.nullObject2String(request.getParameter("parentPhaseName"), ""));
-		Map serializableMap = SheetUtils.serializableParemeterMap(map);
-		Iterator it = serializableMap.keySet().iterator();
-		HashMap WpsMap = new HashMap();
-		HashMap tempWpsMap;
-		for (; it.hasNext(); WpsMap.putAll(tempWpsMap))
-		{
-			String mapKey = (String)it.next();
-			Map tempMap = (Map)serializableMap.get(mapKey);
-			HashMap tempColumnMap = (HashMap)columnMap.get(mapKey);
-			tempWpsMap = SheetUtils.actionMapToEngineMap(tempMap, tempColumnMap);
-		}
+    public ActionForward newTaskPerformAdd(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        IBaseSheet baseSheet = (IBaseSheet) getBean(mapping.getAttribute());
+        HashMap columnMap = baseSheet.getInterfaceObjMap(mapping, form, request, response);
+        Map map = request.getParameterMap();
+        System.out.println("=====request Map parentPhaseName:" + StaticMethod.nullObject2String(request.getParameter("parentPhaseName"), ""));
+        Map serializableMap = SheetUtils.serializableParemeterMap(map);
+        Iterator it = serializableMap.keySet().iterator();
+        HashMap WpsMap = new HashMap();
+        HashMap tempWpsMap;
+        for (; it.hasNext(); WpsMap.putAll(tempWpsMap)) {
+            String mapKey = (String) it.next();
+            Map tempMap = (Map) serializableMap.get(mapKey);
+            HashMap tempColumnMap = (HashMap) columnMap.get(mapKey);
+            tempWpsMap = SheetUtils.actionMapToEngineMap(tempMap, tempColumnMap);
+        }
 
-		String processTemplateName = StaticMethod.nullObject2String(request.getParameter("processTemplateName"));
-		String operateName = StaticMethod.nullObject2String(request.getParameter("operateName"));
-		String linkDevicePort = StaticMethod.nullObject2String(request.getParameter("linkDevicePort"));
-		String addr = "";
-		if (!linkDevicePort.equals(""))
-		{
-			TrancePointMgr businessupportMgr = (TrancePointMgr)ApplicationContextHolder.getInstance().getBean("businessupportMgr");
-			TrancePoint tp = businessupportMgr.getBusinessupport(linkDevicePort);
-			if (tp != null && tp.getPortDetailAdd() != null)
-				addr = tp.getPortDetailAdd();
-		}
-		baseSheet.setFlowEngineMap(WpsMap);
-		baseSheet.dealFlowEngineMap(mapping, form, request, response);
-		HashMap sessionMap = new HashMap();
-		TawSystemSessionForm sessionform = (TawSystemSessionForm)request.getSession().getAttribute("sessionform");
-		sessionMap.put("userId", sessionform.getUserid());
-		sessionMap.put("password", sessionform.getPassword());
-		baseSheet.getBusinessFlowService().initProcess(processTemplateName, operateName, baseSheet.getFlowEngineMap(), sessionMap);
-		String beanId = StaticMethod.null2String(request.getParameter("beanId"));
-		ServicePrepareMgr servicePrepareMgr = (ServicePrepareMgr)ApplicationContextHolder.getInstance().getBean("IServicePrepareMgr");
-		ITawSystemWorkflowManager tawSystemWorkflowManager = (ITawSystemWorkflowManager)ApplicationContextHolder.getInstance().getBean("ITawSystemWorkflowManager");
-		TawSystemWorkflow tawSystemWorkflow = tawSystemWorkflowManager.getTawSystemWorkflowByBeanId(beanId);
-		String flowId = tawSystemWorkflow.getFlowId();
-		HashMap sheetMap = baseSheet.getFlowEngineMap();
-		Map linkMap = (HashMap)sheetMap.get("link");
-		Map operateMap = (HashMap)sheetMap.get("operate");
-		String serviceId = StaticMethod.null2String(request.getParameter("serviceId"));
-		String serviceCnName = StaticMethod.null2String(request.getParameter("serviceCnName"));
-		String sheetKey = StaticMethod.null2String(request.getParameter("sheetKey"));
-		String parentTaskId = StaticMethod.null2String(request.getParameter("parentTaskId"));
-		ProcessTasks processTasks = new ProcessTasks();
-		processTasks.setSheetkey(sheetKey);
-		processTasks.setServicId(serviceId);
-		processTasks.setServiceCnName(serviceCnName);
-		processTasks.setParentTaskId(parentTaskId);
-		processTasks.setProcessTypeId(flowId);
-		processTasks.setStatus("2");
-		processTasks.setDeleted("0");
-		processTasks.setCreatetime((Date)linkMap.get("operateTime"));
-		processTasks.setDealRoleId(StaticMethod.nullObject2String(operateMap.get("dealPerformer")));
-		processTasks.setParentLinkId(StaticMethod.nullObject2String(linkMap.get("id")));
-		if (addr.length() > 0)
-			processTasks.setRemark(addr);
-		servicePrepareMgr.addObject(processTasks);
-		return mapping.findForward("taskSuccess");
-	}
+        String processTemplateName = StaticMethod.nullObject2String(request.getParameter("processTemplateName"));
+        String operateName = StaticMethod.nullObject2String(request.getParameter("operateName"));
+        String linkDevicePort = StaticMethod.nullObject2String(request.getParameter("linkDevicePort"));
+        String addr = "";
+        if (!linkDevicePort.equals("")) {
+            TrancePointMgr businessupportMgr = (TrancePointMgr) ApplicationContextHolder.getInstance().getBean("businessupportMgr");
+            TrancePoint tp = businessupportMgr.getBusinessupport(linkDevicePort);
+            if (tp != null && tp.getPortDetailAdd() != null)
+                addr = tp.getPortDetailAdd();
+        }
+        baseSheet.setFlowEngineMap(WpsMap);
+        baseSheet.dealFlowEngineMap(mapping, form, request, response);
+        HashMap sessionMap = new HashMap();
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request.getSession().getAttribute("sessionform");
+        sessionMap.put("userId", sessionform.getUserid());
+        sessionMap.put("password", sessionform.getPassword());
+        baseSheet.getBusinessFlowService().initProcess(processTemplateName, operateName, baseSheet.getFlowEngineMap(), sessionMap);
+        String beanId = StaticMethod.null2String(request.getParameter("beanId"));
+        ServicePrepareMgr servicePrepareMgr = (ServicePrepareMgr) ApplicationContextHolder.getInstance().getBean("IServicePrepareMgr");
+        ITawSystemWorkflowManager tawSystemWorkflowManager = (ITawSystemWorkflowManager) ApplicationContextHolder.getInstance().getBean("ITawSystemWorkflowManager");
+        TawSystemWorkflow tawSystemWorkflow = tawSystemWorkflowManager.getTawSystemWorkflowByBeanId(beanId);
+        String flowId = tawSystemWorkflow.getFlowId();
+        HashMap sheetMap = baseSheet.getFlowEngineMap();
+        Map linkMap = (HashMap) sheetMap.get("link");
+        Map operateMap = (HashMap) sheetMap.get("operate");
+        String serviceId = StaticMethod.null2String(request.getParameter("serviceId"));
+        String serviceCnName = StaticMethod.null2String(request.getParameter("serviceCnName"));
+        String sheetKey = StaticMethod.null2String(request.getParameter("sheetKey"));
+        String parentTaskId = StaticMethod.null2String(request.getParameter("parentTaskId"));
+        ProcessTasks processTasks = new ProcessTasks();
+        processTasks.setSheetkey(sheetKey);
+        processTasks.setServicId(serviceId);
+        processTasks.setServiceCnName(serviceCnName);
+        processTasks.setParentTaskId(parentTaskId);
+        processTasks.setProcessTypeId(flowId);
+        processTasks.setStatus("2");
+        processTasks.setDeleted("0");
+        processTasks.setCreatetime((Date) linkMap.get("operateTime"));
+        processTasks.setDealRoleId(StaticMethod.nullObject2String(operateMap.get("dealPerformer")));
+        processTasks.setParentLinkId(StaticMethod.nullObject2String(linkMap.get("id")));
+        if (addr.length() > 0)
+            processTasks.setRemark(addr);
+        servicePrepareMgr.addObject(processTasks);
+        return mapping.findForward("taskSuccess");
+    }
 
-	public void performPreJudge(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		JSONObject jsonRoot = new JSONObject();
-		JSONArray data = new JSONArray();
-		JSONObject o = new JSONObject();
-		String status = "";
-		StringBuffer sb = new StringBuffer();
-		StringBuffer sbFn = new StringBuffer();
-		String taskId = StaticMethod.null2String(request.getParameter("aiid"));
-		String taskName = StaticMethod.null2String(request.getParameter("taskName"));
-		String beanId = StaticMethod.null2String(request.getParameter("beanId"));
-		String linkDealType = StaticMethod.null2String(request.getParameter("linkDealType"));
-		if (!linkDealType.equals("101220402"))
-		{
-			ITawSystemWorkflowManager tawSystemWorkflowManager = (ITawSystemWorkflowManager)ApplicationContextHolder.getInstance().getBean("ITawSystemWorkflowManager");
-			TawSystemWorkflow tawSystemWorkflow = tawSystemWorkflowManager.getTawSystemWorkflowByBeanId(beanId);
-			String flowId = tawSystemWorkflow.getFlowId();
-			ServicePrepareMgr servicePrepareMgr = (ServicePrepareMgr)ApplicationContextHolder.getInstance().getBean("IServicePrepareMgr");
-			List processTasksList = servicePrepareMgr.getProcessTasksByParentTaskId(taskId);
-			List serviceConfigurationList = servicePrepareMgr.getAllListByCondition(flowId, taskName);
-			if (processTasksList == null || processTasksList.size() == 0)
-			{
-				if (sb.toString().equals("") || sb.toString() == "")
-				{
-					status = "0";
-				} else
-				{
-					status = "2";
-					sb.append("Äú²»ÄÜÌá½»£¡\n");
-				}
-			} else
-			{
-				for (int i = 0; i < processTasksList.size(); i++)
-				{
-					ProcessTasks processTasks = (ProcessTasks)processTasksList.get(i);
-					if (processTasks.getStatus().equals("2"))
-					{
-						Map userNameMap = SheetUtils.getUserNameForSubRole(processTasks.getDealRoleId());
-						sb.append("ÈÎÎñµ¥£º" + processTasks.getServiceCnName() + " »¹Î´´¦Àí£¬´¦ÀíÈËÎª£º" + userNameMap.get("subRoleName") + "\n");
-					}
-				}
+    public void performPreJudge(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        JSONObject jsonRoot = new JSONObject();
+        JSONArray data = new JSONArray();
+        JSONObject o = new JSONObject();
+        String status = "";
+        StringBuffer sb = new StringBuffer();
+        StringBuffer sbFn = new StringBuffer();
+        String taskId = StaticMethod.null2String(request.getParameter("aiid"));
+        String taskName = StaticMethod.null2String(request.getParameter("taskName"));
+        String beanId = StaticMethod.null2String(request.getParameter("beanId"));
+        String linkDealType = StaticMethod.null2String(request.getParameter("linkDealType"));
+        if (!linkDealType.equals("101220402")) {
+            ITawSystemWorkflowManager tawSystemWorkflowManager = (ITawSystemWorkflowManager) ApplicationContextHolder.getInstance().getBean("ITawSystemWorkflowManager");
+            TawSystemWorkflow tawSystemWorkflow = tawSystemWorkflowManager.getTawSystemWorkflowByBeanId(beanId);
+            String flowId = tawSystemWorkflow.getFlowId();
+            ServicePrepareMgr servicePrepareMgr = (ServicePrepareMgr) ApplicationContextHolder.getInstance().getBean("IServicePrepareMgr");
+            List processTasksList = servicePrepareMgr.getProcessTasksByParentTaskId(taskId);
+            List serviceConfigurationList = servicePrepareMgr.getAllListByCondition(flowId, taskName);
+            if (processTasksList == null || processTasksList.size() == 0) {
+                if (sb.toString().equals("") || sb.toString() == "") {
+                    status = "0";
+                } else {
+                    status = "2";
+                    sb.append("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½\n");
+                }
+            } else {
+                for (int i = 0; i < processTasksList.size(); i++) {
+                    ProcessTasks processTasks = (ProcessTasks) processTasksList.get(i);
+                    if (processTasks.getStatus().equals("2")) {
+                        Map userNameMap = SheetUtils.getUserNameForSubRole(processTasks.getDealRoleId());
+                        sb.append("ï¿½ï¿½ï¿½ñµ¥£ï¿½" + processTasks.getServiceCnName() + " ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½" + userNameMap.get("subRoleName") + "\n");
+                    }
+                }
 
-				if (sb.toString().equals("") || sb.toString() == "")
-				{
-					if (sb.toString().equals("") || sb.toString() == "")
-					{
-						status = "0";
-					} else
-					{
-						status = "2";
-						sb.append("Äú²»ÄÜÌá½»£¡\n");
-					}
-				} else
-				{
-					status = "2";
-					sb.append("Äú²»ÄÜÌá½»£¡\n");
-				}
-			}
-		} else
-		{
-			status = "0";
-		}
-		o.put("text", sb.toString());
-		o.put("fn", sbFn.toString());
-		data.put(o);
-		jsonRoot.put("data", data);
-		jsonRoot.put("status", String.valueOf(status));
-		JSONUtil.print(response, jsonRoot.toString());
-	}
+                if (sb.toString().equals("") || sb.toString() == "") {
+                    if (sb.toString().equals("") || sb.toString() == "") {
+                        status = "0";
+                    } else {
+                        status = "2";
+                        sb.append("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½\n");
+                    }
+                } else {
+                    status = "2";
+                    sb.append("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á½»ï¿½ï¿½\n");
+                }
+            }
+        } else {
+            status = "0";
+        }
+        o.put("text", sb.toString());
+        o.put("fn", sbFn.toString());
+        data.put(o);
+        jsonRoot.put("data", data);
+        jsonRoot.put("status", String.valueOf(status));
+        JSONUtil.print(response, jsonRoot.toString());
+    }
 
-	public void performPreValidateResource(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		JSONObject jsonRoot = new JSONObject();
-		JSONArray data = new JSONArray();
-		JSONObject o = new JSONObject();
-		String status = "";
-		StringBuffer sb = new StringBuffer();
-		StringBuffer sbFn = new StringBuffer();
-		try
-		{
-			String enableService = StaticMethod.nullObject2String(XmlManage.getFile("/com/boco/eoms/businessupport/config/resourceInterface_util.xml").getProperty("base.resourceConfirmEnable"));
-			if (enableService.equalsIgnoreCase("true"))
-			{
-				String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
-				IResourceConfirmMainManager mgr = (IResourceConfirmMainManager)ApplicationContextHolder.getInstance().getBean("iResourceConfirmMainManager");
-				ResourceConfirmMain main = (ResourceConfirmMain)mgr.getMainDAO().loadSinglePO(sheetKey, new ResourceConfirmMain());
-				String mainSpecifyType = main.getMainSpecifyType();
-				String orderSheetId = main.getOrderSheetId();
-				List list = OrderSheetMethod.getSpecialLineList(orderSheetId, mainSpecifyType);
-				Map orderMap = SheetBeanUtils.bean2Map(main);
-				String taskName = StaticMethod.null2String(request.getParameter("taskName"));
-				BocoLog.info(this, "taskName:" + taskName + mainSpecifyType);
-				orderMap.put("serviceType", taskName + mainSpecifyType);
-				for (int i = 0; i < list.size(); i++)
-				{
-					List tempList = new ArrayList();
-					tempList.add(list.get(i));
-					IrmsResourceBo.preOccupyResFinish(orderMap, tempList);
-				}
+    public void performPreValidateResource(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        JSONObject jsonRoot = new JSONObject();
+        JSONArray data = new JSONArray();
+        JSONObject o = new JSONObject();
+        String status = "";
+        StringBuffer sb = new StringBuffer();
+        StringBuffer sbFn = new StringBuffer();
+        try {
+            String enableService = StaticMethod.nullObject2String(XmlManage.getFile("/com/boco/eoms/businessupport/config/resourceInterface_util.xml").getProperty("base.resourceConfirmEnable"));
+            if (enableService.equalsIgnoreCase("true")) {
+                String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+                IResourceConfirmMainManager mgr = (IResourceConfirmMainManager) ApplicationContextHolder.getInstance().getBean("iResourceConfirmMainManager");
+                ResourceConfirmMain main = (ResourceConfirmMain) mgr.getMainDAO().loadSinglePO(sheetKey, new ResourceConfirmMain());
+                String mainSpecifyType = main.getMainSpecifyType();
+                String orderSheetId = main.getOrderSheetId();
+                List list = OrderSheetMethod.getSpecialLineList(orderSheetId, mainSpecifyType);
+                Map orderMap = SheetBeanUtils.bean2Map(main);
+                String taskName = StaticMethod.null2String(request.getParameter("taskName"));
+                BocoLog.info(this, "taskName:" + taskName + mainSpecifyType);
+                orderMap.put("serviceType", taskName + mainSpecifyType);
+                for (int i = 0; i < list.size(); i++) {
+                    List tempList = new ArrayList();
+                    tempList.add(list.get(i));
+                    IrmsResourceBo.preOccupyResFinish(orderMap, tempList);
+                }
 
-			} else
-			{
-				status = "0";
-			}
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			sb.append("×Ê¹ÜÏµÍ³Ð£ÑéÊý¾ÝÊ§°Ü,²»ÄÜÌá½»,Çë½«Êý¾ÝÌîÐ´ÍêÕû£º" + e.getMessage());
-			status = "2";
-		}
-		o.put("text", sb.toString());
-		o.put("fn", sbFn.toString());
-		data.put(o);
-		jsonRoot.put("data", data);
-		jsonRoot.put("status", String.valueOf(status));
-		JSONUtil.print(response, jsonRoot.toString());
-	}
+            } else {
+                status = "0";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            sb.append("ï¿½Ê¹ï¿½ÏµÍ³Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½á½»,ï¿½ë½«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + e.getMessage());
+            status = "2";
+        }
+        o.put("text", sb.toString());
+        o.put("fn", sbFn.toString());
+        data.put(o);
+        jsonRoot.put("data", data);
+        jsonRoot.put("status", String.valueOf(status));
+        JSONUtil.print(response, jsonRoot.toString());
+    }
 
-	public void validateData(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		JSONObject jsonRoot = new JSONObject();
-		JSONArray data = new JSONArray();
-		JSONObject o = new JSONObject();
-		String status = "0";
-		StringBuffer sb = new StringBuffer();
-		StringBuffer sbFn = new StringBuffer();
-		try
-		{
-			String taskName = StaticMethod.null2String(request.getParameter("taskName"));
-			String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
-			IResourceConfirmMainManager mgr = (IResourceConfirmMainManager)ApplicationContextHolder.getInstance().getBean("iResourceConfirmMainManager");
-			ResourceConfirmMain main = (ResourceConfirmMain)mgr.getSingleMainPO(sheetKey);
-			if (!main.getMainSpecifyType().equals(Constants._TRANSFER_LINE))
-			{
-				String orderSheetId = main.getOrderSheetId();
-				IOrderSheetManager iOrderSheetManager = (IOrderSheetManager)ApplicationContextHolder.getInstance().getBean("IOrderSheetManager");
-				boolean b = iOrderSheetManager.validateProductData(orderSheetId, taskName);
-				System.out.println("bababababababa:" + b);
-				if (!b)
-				{
-					sb.append("²»ÄÜÌá½»,Çë½«×¨ÏßÊý¾ÝÌîÐ´ÍêÕû£¡");
-					status = "2";
-				}
-			}
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-			sb.append("Êý¾ÝÐ£ÑéÊ§°Ü£º" + e.getMessage());
-			status = "2";
-		}
-		o.put("text", sb.toString());
-		o.put("fn", sbFn.toString());
-		data.put(o);
-		jsonRoot.put("data", data);
-		jsonRoot.put("status", String.valueOf(status));
-		JSONUtil.print(response, jsonRoot.toString());
-	}
+    public void validateData(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        JSONObject jsonRoot = new JSONObject();
+        JSONArray data = new JSONArray();
+        JSONObject o = new JSONObject();
+        String status = "0";
+        StringBuffer sb = new StringBuffer();
+        StringBuffer sbFn = new StringBuffer();
+        try {
+            String taskName = StaticMethod.null2String(request.getParameter("taskName"));
+            String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+            IResourceConfirmMainManager mgr = (IResourceConfirmMainManager) ApplicationContextHolder.getInstance().getBean("iResourceConfirmMainManager");
+            ResourceConfirmMain main = (ResourceConfirmMain) mgr.getSingleMainPO(sheetKey);
+            if (!main.getMainSpecifyType().equals(Constants._TRANSFER_LINE)) {
+                String orderSheetId = main.getOrderSheetId();
+                IOrderSheetManager iOrderSheetManager = (IOrderSheetManager) ApplicationContextHolder.getInstance().getBean("IOrderSheetManager");
+                boolean b = iOrderSheetManager.validateProductData(orderSheetId, taskName);
+                System.out.println("bababababababa:" + b);
+                if (!b) {
+                    sb.append("ï¿½ï¿½ï¿½ï¿½ï¿½á½»,ï¿½ë½«×¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                    status = "2";
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            sb.append("ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½Ê§ï¿½Ü£ï¿½" + e.getMessage());
+            status = "2";
+        }
+        o.put("text", sb.toString());
+        o.put("fn", sbFn.toString());
+        data.put(o);
+        jsonRoot.put("data", data);
+        jsonRoot.put("status", String.valueOf(status));
+        JSONUtil.print(response, jsonRoot.toString());
+    }
 
-	public ActionForward showHistoryPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		String sheetId = StaticMethod.nullObject2String(request.getParameter("sheetNo"), "");
-		String userid = StaticMethod.nullObject2String(request.getParameter("userName"), "");
-		String beanName = mapping.getAttribute();
-		IBaseSheet baseSheet = (IBaseSheet)getBean(beanName);
-		IResourceConfirmMainManager mgr = (IResourceConfirmMainManager)baseSheet.getMainService();
-		List list = mgr.getMainListByParentSheetId(sheetId);
-		if (list != null && list.size() > 0)
-		{
-			BaseMain main = (BaseMain)list.get(0);
-			String sheetKey = main.getId();
-			if (!sheetKey.equals(""))
-			{
-				if ("".equals(userid))
-					userid = "admin";
-				try
-				{
-					IWorkflowSecutiryService safeService = (IWorkflowSecutiryService)ApplicationContextHolder.getInstance().getBean("WorkflowSecutiryService");
-					javax.security.auth.Subject subject = safeService.logIn(userid, "");
-					request.getSession().setAttribute("wpsSubject", subject);
-				}
-				catch (Exception e)
-				{
-					BocoLog.error(this, "±£´æÁ÷³ÌµÇÂ½ÐÅÏ¢±¨´í£º" + e.getMessage());
-				}
-				ActionForward forward = mapping.findForward("showInterfaceDraftPage");
-				String path = forward.getPath() + "&sheetKey=" + sheetKey;
-				System.out.println("path=" + path);
-				return new ActionForward(path, false);
-			} else
-			{
-				throw new Exception("sheetNo²»ÄÜÎª¿Õ");
-			}
-		} else
-		{
-			throw new Exception("Ã»ÕÒµ½¶ÔÓ¦¹¤µ¥£¬ÇëÈ·ÈÏ±àºÅÕýÈ·");
-		}
-	}
+    public ActionForward showHistoryPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String sheetId = StaticMethod.nullObject2String(request.getParameter("sheetNo"), "");
+        String userid = StaticMethod.nullObject2String(request.getParameter("userName"), "");
+        String beanName = mapping.getAttribute();
+        IBaseSheet baseSheet = (IBaseSheet) getBean(beanName);
+        IResourceConfirmMainManager mgr = (IResourceConfirmMainManager) baseSheet.getMainService();
+        List list = mgr.getMainListByParentSheetId(sheetId);
+        if (list != null && list.size() > 0) {
+            BaseMain main = (BaseMain) list.get(0);
+            String sheetKey = main.getId();
+            if (!sheetKey.equals("")) {
+                if ("".equals(userid))
+                    userid = "admin";
+                try {
+                    IWorkflowSecutiryService safeService = (IWorkflowSecutiryService) ApplicationContextHolder.getInstance().getBean("WorkflowSecutiryService");
+                    javax.security.auth.Subject subject = safeService.logIn(userid, "");
+                    request.getSession().setAttribute("wpsSubject", subject);
+                } catch (Exception e) {
+                    BocoLog.error(this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½Â½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½" + e.getMessage());
+                }
+                ActionForward forward = mapping.findForward("showInterfaceDraftPage");
+                String path = forward.getPath() + "&sheetKey=" + sheetKey;
+                System.out.println("path=" + path);
+                return new ActionForward(path, false);
+            } else {
+                throw new Exception("sheetNoï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½");
+            }
+        } else {
+            throw new Exception("Ã»ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½Ï±ï¿½ï¿½ï¿½ï¿½È·");
+        }
+    }
 
-	public ActionForward showTnmsPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
-		throws Exception
-	{
-		return mapping.findForward("tnms");
-	}
+    public ActionForward showTnmsPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("tnms");
+    }
 }

@@ -16,17 +16,15 @@ package com.boco.eoms.sheet.base.service;
  * <p>
  * Date:2007-8-3 14:18:40
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public interface IHumanTaskService {
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public abstract String driveProcess() throws Exception;
+
+    /**
+     * @return
+     * @throws Exception
+     */
+    public abstract String driveProcess() throws Exception;
 }

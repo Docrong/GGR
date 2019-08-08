@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.securityobjattribute.qo.ISecurityObjAttributeQo;
  * <p>
  * Tue Apr 25 11:43:03 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAttributeQoImpl extends WorkSheetQOImpl implements ISecurityObjAttributeQo {
- 
- }
+
+public class SecurityObjAttributeQoImpl extends WorkSheetQOImpl implements ISecurityObjAttributeQo {
+
+}

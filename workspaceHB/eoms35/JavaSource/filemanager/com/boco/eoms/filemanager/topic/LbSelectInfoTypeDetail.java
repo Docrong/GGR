@@ -29,7 +29,7 @@ public class LbSelectInfoTypeDetail extends LBDbLogic {
     //设置返回HashMap的key植
     public void setReturnParam() {
         String[] strArray = {
-            "topic_id", "par_topic_id", "topic_name", "topic_path", "topic_memo", "topic_order", "class_id","topic_type","topic_type_name"
+                "topic_id", "par_topic_id", "topic_name", "topic_path", "topic_memo", "topic_order", "class_id", "topic_type", "topic_type_name"
         };
         m_strArrayReturn = strArray;
     }

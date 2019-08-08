@@ -17,17 +17,16 @@ import com.boco.eoms.sheet.base.dao.IMainDAO;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IPlannConfirmMainDAO extends IMainDAO  {
-	 public abstract List getNumber(final String sendTimeStartDate,final String sendTimeEndDate,final String queryType) throws HibernateException;
-	 
-	 public abstract Map getDetail(final Integer curPage, final Integer pageSize, final String sendTimeStartDate,final String sendTimeEndDate) throws HibernateException;
- }
+
+public interface IPlannConfirmMainDAO extends IMainDAO {
+    public abstract List getNumber(final String sendTimeStartDate, final String sendTimeEndDate, final String queryType) throws HibernateException;
+
+    public abstract Map getDetail(final Integer curPage, final Integer pageSize, final String sendTimeStartDate, final String sendTimeEndDate) throws HibernateException;
+}
  
 
 

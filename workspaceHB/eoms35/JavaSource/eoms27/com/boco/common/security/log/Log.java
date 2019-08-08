@@ -26,21 +26,22 @@ import org.jdom.input.SAXBuilder;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */
 
 public class Log {
-  private static Log log = null;
-  private static Connection con = null;
+    private static Log log = null;
+    private static Connection con = null;
 
-  private final String sql =
-    " INSERT INTO TAI_OLOGREC "+
-    " (OLOG_NUM,OLOG_TYPE,OLOG_CLASS,OLOG_ID,MACHINE_NAME,MACHINE_IP,APPLICATION_ID,USER_ID,REC_DTIME,MEMO)"+
-    " VALUES(informix.Q_TAI_OLOGREC.NEXTVAL,1,5,?,?,?,6100,?,SYSDATE,?)";
+    private final String sql =
+            " INSERT INTO TAI_OLOGREC " +
+                    " (OLOG_NUM,OLOG_TYPE,OLOG_CLASS,OLOG_ID,MACHINE_NAME,MACHINE_IP,APPLICATION_ID,USER_ID,REC_DTIME,MEMO)" +
+                    " VALUES(informix.Q_TAI_OLOGREC.NEXTVAL,1,5,?,?,?,6100,?,SYSDATE,?)";
 
 
-  private Log() {
+    private Log() {
     /*
     try {
       SAXBuilder sax = new SAXBuilder();
@@ -76,16 +77,16 @@ System.out.println("current drive<" +driver +">");
       System.out.println("Log Functionality Initialization Failed:"+ex.getMessage());
     }
 */
-  }
-
-  public synchronized static Log getInstance() {
-    if (log == null) {
-      log = new Log();
     }
-    return log;
-  }
 
-  public synchronized void writeLog(String ologID, HttpServletRequest req, String user, String memo) {
+    public synchronized static Log getInstance() {
+        if (log == null) {
+            log = new Log();
+        }
+        return log;
+    }
+
+    public synchronized void writeLog(String ologID, HttpServletRequest req, String user, String memo) {
     /*
     PreparedStatement st = null;
     try
@@ -104,9 +105,9 @@ System.out.println("current drive<" +driver +">");
       System.out.println("Log create failed......"+e.getMessage());
     }
         */
-  }
+    }
 
-  public static void main(String[] args) {
-    Log a = Log.getInstance();
-  }
+    public static void main(String[] args) {
+        Log a = Log.getInstance();
+    }
 }

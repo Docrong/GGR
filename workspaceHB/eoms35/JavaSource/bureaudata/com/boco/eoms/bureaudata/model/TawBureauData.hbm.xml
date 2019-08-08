@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,104 +13,104 @@
             table="taw_bureaudata"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="auditman"
+                name="auditman"
                 length="50"
         >
 
         </property>
 
         <property
-            name="bigNet"
+                name="bigNet"
                 length="50"
         >
 
         </property>
 
         <property
-            name="content"
+                name="content"
                 length="500"
         >
 
         </property>
 
         <property
-            name="crusdata"
+                name="crusdata"
                 length="50"
         >
 
         </property>
 
         <property
-            name="cruser"
+                name="cruser"
                 length="50"
         >
 
         </property>
 
         <property
-            name="data"
+                name="data"
                 length="50"
         >
 
         </property>
 
         <property
-            name="factory"
+                name="factory"
                 length="50"
         >
 
         </property>
 
         <property
-            name="net"
+                name="net"
                 length="50"
         >
 
         </property>
 
         <property
-            name="producer"
+                name="producer"
                 length="50"
         >
 
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 length="50"
         >
 
         </property>
 
         <property
-            name="title"
+                name="title"
                 length="50"
         >
 
         </property>
 
         <property
-            name="type"
+                name="type"
                 length="50"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

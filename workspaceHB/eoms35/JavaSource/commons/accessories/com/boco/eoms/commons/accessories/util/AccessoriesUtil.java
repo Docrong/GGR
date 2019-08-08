@@ -10,20 +10,20 @@ import java.io.File;
 
 /**
  * @author Administrator
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class AccessoriesUtil {
-  public static void createFile(String filePath,String filter) {
-  	String[] filePaths=filePath.split(filter);
-  	String path=filePaths[0];
-  	for(int i=1;i<filePaths.length;i++){
-  		 path=path+filter+filePaths[i];
-  		 File tempFile = new File(path);
-		if (!tempFile.exists()) {
-			tempFile.mkdir();
-		}
-  	} 
-  }
+    public static void createFile(String filePath, String filter) {
+        String[] filePaths = filePath.split(filter);
+        String path = filePaths[0];
+        for (int i = 1; i < filePaths.length; i++) {
+            path = path + filter + filePaths[i];
+            File tempFile = new File(path);
+            if (!tempFile.exists()) {
+                tempFile.mkdir();
+            }
+        }
+    }
 }

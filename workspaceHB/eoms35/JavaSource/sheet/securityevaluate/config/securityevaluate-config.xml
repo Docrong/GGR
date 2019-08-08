@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WorkFlowRule name="SecurityEvaluate" description="安全评估流程">
-   <flow-define id="SecurityEvaluateProcess" description="安全评估流程">
-     <phase-id id="receive" type="receive">
-       <to-phase-id id="EvaluateTask" role="dealPerformer@326" condition="${operateType}==0" name="新建派发"/>
-       <to-phase-id id="DraftTask" role="dealPerformer@324" condition="${operateType}==22" name="保存草稿"/>   
-     </phase-id>
-     <phase-id id="DraftTask" name="草稿" type="operate">       
-       <to-phase-id id="EvaluateTask" role="dealPerformer@326" condition="${operateType}==3" name="草稿派发"/>
-     </phase-id>
-     <phase-id id="RejectTask" name="被驳回" type="operate">       
-       <to-phase-id id="EvaluateTask" role="dealPerformer@326" condition="${operateType}==54" name="重新派发"/>
-     </phase-id> 
-     <phase-id id="EvaluateTask" name="安全影响评估" type="operate">       
-       <to-phase-id id="AuditTask" role="dealPerformer@325" condition="${operateType}==90" name="提交审核"/>
-       <to-phase-id id="RejectTask" role="" condition="${operateType}==89" name="驳回上一级"/>
-     </phase-id>     
-     <phase-id id="AuditTask" name="审批安全分析报告" type="operate">
-       <to-phase-id id="HoldTask" role="" condition="${operateType}==911" name="审核通过"/>
-       <to-phase-id id="EvaluateTask" role="" condition="${operateType}==912" name="审核不通过"/>
-     </phase-id>
-     <phase-id id="HoldTask" name="归档" type="operate">
-     </phase-id>
-  </flow-define>
+    <flow-define id="SecurityEvaluateProcess" description="安全评估流程">
+        <phase-id id="receive" type="receive">
+            <to-phase-id id="EvaluateTask" role="dealPerformer@326" condition="${operateType}==0" name="新建派发"/>
+            <to-phase-id id="DraftTask" role="dealPerformer@324" condition="${operateType}==22" name="保存草稿"/>
+        </phase-id>
+        <phase-id id="DraftTask" name="草稿" type="operate">
+            <to-phase-id id="EvaluateTask" role="dealPerformer@326" condition="${operateType}==3" name="草稿派发"/>
+        </phase-id>
+        <phase-id id="RejectTask" name="被驳回" type="operate">
+            <to-phase-id id="EvaluateTask" role="dealPerformer@326" condition="${operateType}==54" name="重新派发"/>
+        </phase-id>
+        <phase-id id="EvaluateTask" name="安全影响评估" type="operate">
+            <to-phase-id id="AuditTask" role="dealPerformer@325" condition="${operateType}==90" name="提交审核"/>
+            <to-phase-id id="RejectTask" role="" condition="${operateType}==89" name="驳回上一级"/>
+        </phase-id>
+        <phase-id id="AuditTask" name="审批安全分析报告" type="operate">
+            <to-phase-id id="HoldTask" role="" condition="${operateType}==911" name="审核通过"/>
+            <to-phase-id id="EvaluateTask" role="" condition="${operateType}==912" name="审核不通过"/>
+        </phase-id>
+        <phase-id id="HoldTask" name="归档" type="operate">
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>

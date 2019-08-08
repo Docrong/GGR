@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.branchindexreduction.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Fri Jul 28 15:47:20 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public interface IBranchIndexReductionQo extends IWorkSheetQO {
- 
- }
+
+public interface IBranchIndexReductionQo extends IWorkSheetQO {
+
+}

@@ -11,6 +11,6 @@ import com.boco.eoms.sheet.softwareLoad.dao.ISoftwareLoadTaskDAO;
 import com.boco.eoms.sheet.softwareLoad.service.ISoftwareLoadTaskManager;
 
 
-public class SoftwareLoadTaskManagerImpl extends TaskServiceImpl implements  ISoftwareLoadTaskManager{
-	
+public class SoftwareLoadTaskManagerImpl extends TaskServiceImpl implements ISoftwareLoadTaskManager {
+
 }

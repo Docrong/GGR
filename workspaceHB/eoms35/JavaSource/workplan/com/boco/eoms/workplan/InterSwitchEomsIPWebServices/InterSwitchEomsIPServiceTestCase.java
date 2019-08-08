@@ -1,6 +1,6 @@
 ﻿/**
  * InterSwitchEomsIPServiceTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -11,14 +11,14 @@ public class InterSwitchEomsIPServiceTestCase extends junit.framework.TestCase {
     public InterSwitchEomsIPServiceTestCase(java.lang.String name) {
         super(name);
     }
+
     public void test1InterSwitchEomsIPMain() throws Exception {
         com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub)
-                          new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -36,10 +36,9 @@ public class InterSwitchEomsIPServiceTestCase extends junit.framework.TestCase {
         com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub)
-                          new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -58,10 +57,9 @@ public class InterSwitchEomsIPServiceTestCase extends junit.framework.TestCase {
         com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub)
-                          new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -80,10 +78,9 @@ public class InterSwitchEomsIPServiceTestCase extends junit.framework.TestCase {
         com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPSoapBindingStub)
-                          new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.workplan.InterSwitchEomsIPWebServices.InterSwitchEomsIPServiceLocator().getInterSwitchEomsIP();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }

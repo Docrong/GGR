@@ -10,15 +10,14 @@ package com.boco.eoms.commons.system.dict.exceptions;
  * <p>
  * Date:2007-10-24 10:02:16
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictServiceException extends DictException {
 
     /**
-     *  
+     *
      */
     public DictServiceException() {
         super();

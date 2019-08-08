@@ -1,13 +1,13 @@
 /**
  * NeNumberType.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhhead.interfaces;
 
-public class NeNumberType  implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
+public class NeNumberType implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
     private java.lang.String value;
 
     public NeNumberType() {
@@ -32,6 +32,7 @@ public class NeNumberType  implements java.io.Serializable, org.apache.axis.enco
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof NeNumberType)) return false;
         NeNumberType other = (NeNumberType) obj;
@@ -42,15 +43,16 @@ public class NeNumberType  implements java.io.Serializable, org.apache.axis.enco
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.value==null && other.getValue()==null) || 
-             (this.value!=null &&
-              this.value.equals(other.getValue())));
+        _equals = true &&
+                ((this.value == null && other.getValue() == null) ||
+                        (this.value != null &&
+                                this.value.equals(other.getValue())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

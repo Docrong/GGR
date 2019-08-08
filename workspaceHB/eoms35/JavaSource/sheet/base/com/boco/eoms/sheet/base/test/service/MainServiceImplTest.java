@@ -18,10 +18,9 @@ import com.boco.eoms.base.test.console.ConsoleTestCase;
  * <p>
  * Date:2007-8-22 10:24:04
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class MainServiceImplTest extends ConsoleTestCase {
 

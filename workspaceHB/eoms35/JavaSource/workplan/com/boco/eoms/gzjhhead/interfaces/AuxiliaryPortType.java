@@ -1,6 +1,6 @@
 /**
  * AuxiliaryPortType.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */

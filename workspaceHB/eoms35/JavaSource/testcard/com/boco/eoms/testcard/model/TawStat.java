@@ -1,85 +1,86 @@
 package com.boco.eoms.testcard.model;
 
 public class TawStat {
-  private String storage;
-  private int naturalnum;
-  private int pausenum;
-  private int losenum;
-  private int loannum;
-  private int usenum;
-  private int summation;
-  private int leave;
-  private int scrapnum;
-  public int getNaturalnum() {
-    return naturalnum;
-  }
+    private String storage;
+    private int naturalnum;
+    private int pausenum;
+    private int losenum;
+    private int loannum;
+    private int usenum;
+    private int summation;
+    private int leave;
+    private int scrapnum;
 
-  public void setStorage(String storage) {
-    this.storage = storage;
-  }
+    public int getNaturalnum() {
+        return naturalnum;
+    }
 
-  public void setNaturalnum(int naturalnum) {
-    this.naturalnum = naturalnum;
-  }
+    public void setStorage(String storage) {
+        this.storage = storage;
+    }
 
-  public void setUsenum(int usenum) {
-    this.usenum = usenum;
-  }
+    public void setNaturalnum(int naturalnum) {
+        this.naturalnum = naturalnum;
+    }
 
-  public void setLoannum(int loannum) {
-    this.loannum = loannum;
-  }
+    public void setUsenum(int usenum) {
+        this.usenum = usenum;
+    }
 
-  public void setLosenum(int losenum) {
-    this.losenum = losenum;
-  }
+    public void setLoannum(int loannum) {
+        this.loannum = loannum;
+    }
 
-  public void setPausenum(int pausenum) {
-    this.pausenum = pausenum;
-  }
+    public void setLosenum(int losenum) {
+        this.losenum = losenum;
+    }
 
-  public void setSummation(int summation) {
-    this.summation = summation;
-  }
+    public void setPausenum(int pausenum) {
+        this.pausenum = pausenum;
+    }
 
-  public void setLeave(int leave) {
-    this.leave = leave;
-  }
+    public void setSummation(int summation) {
+        this.summation = summation;
+    }
 
-  public void setScrapnum(int scrapnum) {
-    this.scrapnum = scrapnum;
-  }
+    public void setLeave(int leave) {
+        this.leave = leave;
+    }
 
-  public String getStorage() {
-    return storage;
-  }
+    public void setScrapnum(int scrapnum) {
+        this.scrapnum = scrapnum;
+    }
 
-  public int getUsenum() {
-    return usenum;
-  }
+    public String getStorage() {
+        return storage;
+    }
 
-  public int getLoannum() {
-    return loannum;
-  }
+    public int getUsenum() {
+        return usenum;
+    }
 
-  public int getLosenum() {
-    return losenum;
-  }
+    public int getLoannum() {
+        return loannum;
+    }
 
-  public int getPausenum() {
-    return pausenum;
-  }
+    public int getLosenum() {
+        return losenum;
+    }
 
-  public int getSummation() {
-    return summation;
-  }
+    public int getPausenum() {
+        return pausenum;
+    }
 
-  public int getLeave() {
-    return leave;
-  }
+    public int getSummation() {
+        return summation;
+    }
 
-  public int getScrapnum() {
-    return scrapnum;
-  }
+    public int getLeave() {
+        return leave;
+    }
+
+    public int getScrapnum() {
+        return scrapnum;
+    }
 
 }

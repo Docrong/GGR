@@ -14,181 +14,180 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Wed Jul 01 15:34:49 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public class TrainRequireForm extends BaseForm implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 * 培训编号
-	 */
-	private String trainNo;
-	
-	/**
-	 * 联系电话
-	 */
-	private String trainTel;
-	
-	/**
-	 * 培训针对的问题
-	 */
-	private String trainQuestion;
-	
-	/**
-	 * 期望的培训内容
-	 */
-	private String trainContent;
-	
-	/**
-	 * 所属部门
-	 */
-	private String trainDept;
-	
-	/**
-	 * 涉及厂家
-	 */
-	private String trainVender;
-	
-	/**
-	 * 涉及专业
-	 */
-	private String trainSpeciality;
-	
-	/**
-	 * 涉及专业
-	 */
-	private String trainType;
-	
-	/**
-	 *培训提出人
-	 */
-	private String trainUser;
-	
-	/**
-	 * 期望培训时间
-	 */
-	private String trainDate;
-	
-	/**
-	 *附件名称
-	 */
-	private String trainFile;
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * 是否删除
-	 */
-	private String isDelete;
-	
-	public String getTrainNo() {
-		return trainNo;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setTrainNo(String trainNo) {
-		this.trainNo = trainNo;
-	}
+    /**
+     * 培训编号
+     */
+    private String trainNo;
 
-	public String getTrainTel() {
-		return trainTel;
-	}
+    /**
+     * 联系电话
+     */
+    private String trainTel;
 
-	public void setTrainTel(String trainTel) {
-		this.trainTel = trainTel;
-	}
+    /**
+     * 培训针对的问题
+     */
+    private String trainQuestion;
 
-	public String getTrainQuestion() {
-		return trainQuestion;
-	}
+    /**
+     * 期望的培训内容
+     */
+    private String trainContent;
 
-	public void setTrainQuestion(String trainQuestion) {
-		this.trainQuestion = trainQuestion;
-	}
+    /**
+     * 所属部门
+     */
+    private String trainDept;
 
-	public String getTrainContent() {
-		return trainContent;
-	}
+    /**
+     * 涉及厂家
+     */
+    private String trainVender;
 
-	public void setTrainContent(String trainContent) {
-		this.trainContent = trainContent;
-	}
+    /**
+     * 涉及专业
+     */
+    private String trainSpeciality;
 
-	public String getTrainDept() {
-		return trainDept;
-	}
+    /**
+     * 涉及专业
+     */
+    private String trainType;
 
-	public void setTrainDept(String trainDept) {
-		this.trainDept = trainDept;
-	}
+    /**
+     * 培训提出人
+     */
+    private String trainUser;
 
-	public String getTrainVender() {
-		return trainVender;
-	}
+    /**
+     * 期望培训时间
+     */
+    private String trainDate;
 
-	public void setTrainVender(String trainVender) {
-		this.trainVender = trainVender;
-	}
+    /**
+     * 附件名称
+     */
+    private String trainFile;
 
-	public String getTrainSpeciality() {
-		return trainSpeciality;
-	}
+    /**
+     * 是否删除
+     */
+    private String isDelete;
 
-	public void setTrainSpeciality(String trainSpeciality) {
-		this.trainSpeciality = trainSpeciality;
-	}
+    public String getTrainNo() {
+        return trainNo;
+    }
 
-	public String getTrainType() {
-		return trainType;
-	}
+    public void setTrainNo(String trainNo) {
+        this.trainNo = trainNo;
+    }
 
-	public void setTrainType(String trainType) {
-		this.trainType = trainType;
-	}
+    public String getTrainTel() {
+        return trainTel;
+    }
 
-	public String getTrainUser() {
-		return trainUser;
-	}
+    public void setTrainTel(String trainTel) {
+        this.trainTel = trainTel;
+    }
 
-	public void setTrainUser(String trainUser) {
-		this.trainUser = trainUser;
-	}
+    public String getTrainQuestion() {
+        return trainQuestion;
+    }
 
-	public String getTrainDate() {
-		return trainDate;
-	}
+    public void setTrainQuestion(String trainQuestion) {
+        this.trainQuestion = trainQuestion;
+    }
 
-	public void setTrainDate(String trainDate) {
-		this.trainDate = trainDate;
-	}
+    public String getTrainContent() {
+        return trainContent;
+    }
 
-	public String getTrainFile() {
-		return trainFile;
-	}
+    public void setTrainContent(String trainContent) {
+        this.trainContent = trainContent;
+    }
 
-	public void setTrainFile(String trainFile) {
-		this.trainFile = trainFile;
-	}
+    public String getTrainDept() {
+        return trainDept;
+    }
 
-	public String getIsDelete() {
-		return isDelete;
-	}
+    public void setTrainDept(String trainDept) {
+        this.trainDept = trainDept;
+    }
 
-	public void setIsDelete(String isDelete) {
-		this.isDelete = isDelete;
-	}	
+    public String getTrainVender() {
+        return trainVender;
+    }
+
+    public void setTrainVender(String trainVender) {
+        this.trainVender = trainVender;
+    }
+
+    public String getTrainSpeciality() {
+        return trainSpeciality;
+    }
+
+    public void setTrainSpeciality(String trainSpeciality) {
+        this.trainSpeciality = trainSpeciality;
+    }
+
+    public String getTrainType() {
+        return trainType;
+    }
+
+    public void setTrainType(String trainType) {
+        this.trainType = trainType;
+    }
+
+    public String getTrainUser() {
+        return trainUser;
+    }
+
+    public void setTrainUser(String trainUser) {
+        this.trainUser = trainUser;
+    }
+
+    public String getTrainDate() {
+        return trainDate;
+    }
+
+    public void setTrainDate(String trainDate) {
+        this.trainDate = trainDate;
+    }
+
+    public String getTrainFile() {
+        return trainFile;
+    }
+
+    public void setTrainFile(String trainFile) {
+        this.trainFile = trainFile;
+    }
+
+    public String getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(String isDelete) {
+        this.isDelete = isDelete;
+    }
 }

@@ -18,32 +18,34 @@ import com.boco.eoms.sheet.base.service.IMainService;
 
 /**
  * @author jialei
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface ICircuitDispatchMainManager extends IMainService {
 
-	/**
-	 * 取流程的名称
-	 * 
-	 * @return
-	 * @throws SheetException
-	 */
-	public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
+    /**
+     * 取流程的名称
+     *
+     * @return
+     * @throws SheetException
+     */
+    public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
 
-	public BaseMain loadSinglePO(String id);
-	
-	/**
-	 * 保存网元信息
-	 * @param sheetId
-	 * @param cellInfo
-	 */
+    public BaseMain loadSinglePO(String id);
+
+    /**
+     * 保存网元信息
+     * @param sheetId
+     * @param cellInfo
+     */
 //	public void saveCellInfo(String sheetId,String cellInfo) throws Exception;
-	/**
-	 * 保存方案号
-	 * @param sheetId
-	 * @param cellInfo
-	 */
-	public void saveDesignId(String sheetId,String designId) throws Exception;
+
+    /**
+     * 保存方案号
+     *
+     * @param sheetId
+     * @param cellInfo
+     */
+    public void saveDesignId(String sheetId, String designId) throws Exception;
 }

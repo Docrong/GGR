@@ -35,7 +35,7 @@ public class TawWorkbenchMemoSendLogManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchMemoSendLogDao.expects(once()).method("getTawWorkbenchMemoSendLogs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawWorkbenchMemoSendLogs = tawWorkbenchMemoSendLogManager.getTawWorkbenchMemoSendLogs(null);
         assertTrue(tawWorkbenchMemoSendLogs.size() == 1);
@@ -45,7 +45,7 @@ public class TawWorkbenchMemoSendLogManagerTest extends BaseManagerTestCase {
     public void testGetTawWorkbenchMemoSendLog() throws Exception {
         // set expected behavior on dao
         tawWorkbenchMemoSendLogDao.expects(once()).method("getTawWorkbenchMemoSendLog")
-            .will(returnValue(new TawWorkbenchMemoSendLog()));
+                .will(returnValue(new TawWorkbenchMemoSendLog()));
         TawWorkbenchMemoSendLog tawWorkbenchMemoSendLog = tawWorkbenchMemoSendLogManager.getTawWorkbenchMemoSendLog(tawWorkbenchMemoSendLogId);
         assertTrue(tawWorkbenchMemoSendLog != null);
         tawWorkbenchMemoSendLogDao.verify();
@@ -56,7 +56,7 @@ public class TawWorkbenchMemoSendLogManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchMemoSendLogDao.expects(once()).method("saveTawWorkbenchMemoSendLog")
-            .with(same(tawWorkbenchMemoSendLog)).isVoid();
+                .with(same(tawWorkbenchMemoSendLog)).isVoid();
 
         tawWorkbenchMemoSendLogManager.saveTawWorkbenchMemoSendLog(tawWorkbenchMemoSendLog);
         tawWorkbenchMemoSendLogDao.verify();
@@ -69,7 +69,7 @@ public class TawWorkbenchMemoSendLogManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchMemoSendLogDao.expects(once()).method("saveTawWorkbenchMemoSendLog")
-            .with(same(tawWorkbenchMemoSendLog)).isVoid();
+                .with(same(tawWorkbenchMemoSendLog)).isVoid();
         tawWorkbenchMemoSendLogManager.saveTawWorkbenchMemoSendLog(tawWorkbenchMemoSendLog);
         tawWorkbenchMemoSendLogDao.verify();
 

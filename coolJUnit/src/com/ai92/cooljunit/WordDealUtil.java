@@ -4,38 +4,37 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * ¶ÔÃû³Æ¡¢µØÖ·µÈ×Ö·û´®¸ñÊ½µÄÄÚÈÝ½øÐÐ¸ñÊ½¼ì²é
- * »òÕß¸ñÊ½»¯µÄ¹¤¾ßÀà
- * 
- * @author Ai92
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Æ¡ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½Ð¸ï¿½Ê½ï¿½ï¿½ï¿½
+ * ï¿½ï¿½ï¿½ß¸ï¿½Ê½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½
  *
+ * @author Ai92
  */
 public class WordDealUtil {
 
-	/**
-	 * ½«Java¶ÔÏóÃû³Æ£¨Ã¿¸öµ¥´ÊµÄÍ·×ÖÄ¸´óÐ´£©°´ÕÕ
-	 * Êý¾Ý¿âÃüÃûµÄÏ°¹ß½øÐÐ¸ñÊ½»¯
-	 * ¸ñÊ½»¯ºóµÄÊý¾ÝÎªÐ¡Ð´×ÖÄ¸£¬²¢ÇÒÊ¹ÓÃÏÂ»®Ïß·Ö¸îÃüÃûµ¥´Ê
-	 * Èç¹û²ÎÊýnameÎªnull£¬Ôò·µ»Ønull
-	 * 
-	 * ÀýÈç£ºemployeeInfo ¾­¹ý¸ñÊ½»¯Ö®ºó±äÎª employee_info
-	 * 
-	 * @param name Java¶ÔÏóÃû³Æ
-	 */
-	public static String wordFormat4DB(String name){
-		
-		if(name == null){
-			return null;
-		}
-		
-		Pattern p = Pattern.compile("[A-Z]");
-		Matcher m = p.matcher(name);
-		StringBuffer sb = new StringBuffer();
-		
-		while(m.find()){
-			if(m.start() != 0)
-				m.appendReplacement(sb, ("_"+m.group()).toLowerCase());
-		}
-		return m.appendTail(sb).toString().toLowerCase();
-	}
+    /**
+     * ï¿½ï¿½Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Í·ï¿½ï¿½Ä¸ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ß½ï¿½ï¿½Ð¸ï¿½Ê½ï¿½ï¿½
+     * ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÐ¡Ð´ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Â»ï¿½ï¿½ß·Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nameÎªnullï¿½ï¿½ï¿½ò·µ»ï¿½null
+     * <p>
+     * ï¿½ï¿½ï¿½ç£ºemployeeInfo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Îª employee_info
+     *
+     * @param name Javaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     */
+    public static String wordFormat4DB(String name) {
+
+        if (name == null) {
+            return null;
+        }
+
+        Pattern p = Pattern.compile("[A-Z]");
+        Matcher m = p.matcher(name);
+        StringBuffer sb = new StringBuffer();
+
+        while (m.find()) {
+            if (m.start() != 0)
+                m.appendReplacement(sb, ("_" + m.group()).toLowerCase());
+        }
+        return m.appendTail(sb).toString().toLowerCase();
+    }
 }

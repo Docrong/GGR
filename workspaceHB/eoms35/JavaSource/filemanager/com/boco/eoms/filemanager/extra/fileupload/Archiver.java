@@ -42,7 +42,7 @@ public class Archiver {
                         found = true;
                     zos.putNextEntry(ze);
                     byte buffer[] = new byte[1024];
-                    for (int bytesRead = 0; (bytesRead = in.read(buffer)) != -1;)
+                    for (int bytesRead = 0; (bytesRead = in.read(buffer)) != -1; )
                         zos.write(buffer, 0, bytesRead);
 
                     zos.closeEntry();

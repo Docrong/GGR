@@ -12,195 +12,184 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Date:May 21, 2008 4:11:46 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
 public class ThreadPermimissionOrg extends BaseObject {
 
-	/**
-	 * 主键
-	 */
-	private String id;
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 * 组织id
-	 */
-	private String orgId;
+    /**
+     * 组织id
+     */
+    private String orgId;
 
-	/**
-	 * 组织类型，如角色，部门，用户
-	 */
-	private String orgType;
+    /**
+     * 组织类型，如角色，部门，用户
+     */
+    private String orgType;
 
-	/**
-	 * 组织名称
-	 */
-	private String name;
+    /**
+     * 组织名称
+     */
+    private String name;
 
-	/**
-	 * 与信息关联的id
-	 */
+    /**
+     * 与信息关联的id
+     */
 
-	private String threadId;
+    private String threadId;
 
-	/**
-	 * 删除标记
-	 */
-	private String isDel;
-	
-	//2009-04-07 是否包括子部门  1包括，0或null不包括
-	private String isIncludeSubDept;
+    /**
+     * 删除标记
+     */
+    private String isDel;
 
-	public String getIsIncludeSubDept() {
-		return isIncludeSubDept;
-	}
+    //2009-04-07 是否包括子部门  1包括，0或null不包括
+    private String isIncludeSubDept;
 
-	public void setIsIncludeSubDept(String isIncludeSubDept) {
-		this.isIncludeSubDept = isIncludeSubDept;
-	}
+    public String getIsIncludeSubDept() {
+        return isIncludeSubDept;
+    }
 
-	/**
-	 * @return the id
-	 */
-	public String getId() {
-		return id;
-	}
+    public void setIsIncludeSubDept(String isIncludeSubDept) {
+        this.isIncludeSubDept = isIncludeSubDept;
+    }
 
-	/**
-	 * @param id
-	 *            the id to set
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * @return the id
+     */
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * @return the orgId *
-	 */
-	public String getOrgId() {
-		return orgId;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 * @param orgId
-	 *            the orgId to set
-	 */
-	public void setOrgId(String orgId) {
-		this.orgId = orgId;
-	}
+    /**
+     * @return the orgId *
+     */
+    public String getOrgId() {
+        return orgId;
+    }
 
-	/**
-	 * @return the orgType
-	 */
-	public String getOrgType() {
-		return orgType;
-	}
+    /**
+     * @param orgId the orgId to set
+     */
+    public void setOrgId(String orgId) {
+        this.orgId = orgId;
+    }
 
-	/**
-	 * @param orgType
-	 *            the orgType to set
-	 */
-	public void setOrgType(String orgType) {
-		this.orgType = orgType;
-	}
+    /**
+     * @return the orgType
+     */
+    public String getOrgType() {
+        return orgType;
+    }
 
-	/**
-	 * @return the threadId
-	 */
-	public String getThreadId() {
-		return threadId;
-	}
+    /**
+     * @param orgType the orgType to set
+     */
+    public void setOrgType(String orgType) {
+        this.orgType = orgType;
+    }
 
-	/**
-	 * @param threadId
-	 *            the threadId to set
-	 */
-	public void setThreadId(String threadId) {
-		this.threadId = threadId;
-	}
-	
-	
-	/**
-	 * 构造方法
-	 * 
-	 * @param orgId
-	 *            组织id,部门，用户，角色
-	 * @param orgType
-	 *            组类型 部门，用户，角色
-	 * @param name
-	 *            组织名称
-	 * 
-	 */
-	public ThreadPermimissionOrg(String orgId, String orgType, String name) {
-		super();
-		this.orgId = orgId;
-		this.orgType = orgType;
-		this.name = name;
-	}
+    /**
+     * @return the threadId
+     */
+    public String getThreadId() {
+        return threadId;
+    }
 
-	public ThreadPermimissionOrg() {
-		super();
-	}
+    /**
+     * @param threadId the threadId to set
+     */
+    public void setThreadId(String threadId) {
+        this.threadId = threadId;
+    }
 
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
 
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+    /**
+     * 构造方法
+     *
+     * @param orgId   组织id,部门，用户，角色
+     * @param orgType 组类型 部门，用户，角色
+     * @param name    组织名称
+     */
+    public ThreadPermimissionOrg(String orgId, String orgType, String name) {
+        super();
+        this.orgId = orgId;
+        this.orgType = orgType;
+        this.name = name;
+    }
 
-	/**
-	 * @return the isDel
-	 */
-	public String getIsDel() {
-		return isDel;
-	}
+    public ThreadPermimissionOrg() {
+        super();
+    }
 
-	/**
-	 * @param isDel
-	 *            the isDel to set
-	 */
-	public void setIsDel(String isDel) {
-		this.isDel = isDel;
-	}
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.boco.eoms.base.model.BaseObject#equals(java.lang.Object)
-	 */
-	public boolean equals(Object o) {
-		if (o instanceof ThreadPermimissionOrg) {
-			ThreadPermimissionOrg threadPermimissionOrg = (ThreadPermimissionOrg) o;
-			if (this.id != null
-					|| this.id.equals(threadPermimissionOrg.getId())) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * @return the isDel
+     */
+    public String getIsDel() {
+        return isDel;
+    }
 
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    /**
+     * @param isDel the isDel to set
+     */
+    public void setIsDel(String isDel) {
+        this.isDel = isDel;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.boco.eoms.base.model.BaseObject#equals(java.lang.Object)
+     */
+    public boolean equals(Object o) {
+        if (o instanceof ThreadPermimissionOrg) {
+            ThreadPermimissionOrg threadPermimissionOrg = (ThreadPermimissionOrg) o;
+            if (this.id != null
+                    || this.id.equals(threadPermimissionOrg.getId())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public String toString() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

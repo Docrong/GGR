@@ -24,12 +24,12 @@ import java.util.Properties;
  * To change this template use File | Settings | File Templates.
  */
 /*
-* Created by IntelliJ IDEA.
-* User: administrator
-* Date: Mar 26, 2002
-* Time: 1:24:56 PM
-* To change template for new class use
-* Code Style | Class Templates options (Tools | IDE Options).
+ * Created by IntelliJ IDEA.
+ * User: administrator
+ * Date: Mar 26, 2002
+ * Time: 1:24:56 PM
+ * To change template for new class use
+ * Code Style | Class Templates options (Tools | IDE Options).
  */
 
 import org.w3c.dom.*;
@@ -113,19 +113,19 @@ public class XmlUtil implements java.io.Serializable {
         try {
             File f = new File(path);
 //            PrintWriter out = new PrintWriter(new FileWriter(f));
-        java.io.FileOutputStream stream = null;
-        java.io.DataOutputStream output = null;
-        try {
-            stream = new java.io.FileOutputStream(f);
-            output = new java.io.DataOutputStream(stream);
-            output.writeBytes(new String(STRXML.getBytes("GB2312"), "ISO8859-1"));   //写文件
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();  //To change body of catch statement use Options | File Templates.
-        }
+            java.io.FileOutputStream stream = null;
+            java.io.DataOutputStream output = null;
+            try {
+                stream = new java.io.FileOutputStream(f);
+                output = new java.io.DataOutputStream(stream);
+                output.writeBytes(new String(STRXML.getBytes("GB2312"), "ISO8859-1"));   //写文件
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();  //To change body of catch statement use Options | File Templates.
+            }
 //            out.print(STRXML);
 //            out.close();
-        if(stream!=null)stream.close();
-        if(output!=null)output.close();
+            if (stream != null) stream.close();
+            if (output != null) output.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -133,7 +133,7 @@ public class XmlUtil implements java.io.Serializable {
 
     //format a document to string
 
-    public static String toString(Document document){
+    public static String toString(Document document) {
         // load the transformer
         StringWriter buffer = new StringWriter();
 
@@ -145,19 +145,19 @@ public class XmlUtil implements java.io.Serializable {
             // objects and do the transformation
             Source source = new DOMSource(document);
 
-            StreamResult result = new StreamResult( buffer );
-            Properties props= new Properties();
+            StreamResult result = new StreamResult(buffer);
+            Properties props = new Properties();
             props.setProperty("encoding", "GB2312");
             props.setProperty("method", "xml");
             props.setProperty("omit-xml-declaration", "no");
             transformer.setOutputProperties(props);
-            transformer.transform( source, result );
+            transformer.transform(source, result);
         } catch (TransformerFactoryConfigurationError transformerFactoryConfigurationError) {
             transformerFactoryConfigurationError.printStackTrace();  //To change body of catch statement use Options | File Templates.
         } catch (TransformerException e) {
             e.printStackTrace();  //To change body of catch statement use Options | File Templates.
         } finally {
-            return(buffer.toString());
+            return (buffer.toString());
         }
     }
 
@@ -173,15 +173,15 @@ public class XmlUtil implements java.io.Serializable {
             // objects and do the transformation
             Source source = new DOMSource(node);
 
-            StreamResult result = new StreamResult( buffer );
+            StreamResult result = new StreamResult(buffer);
 
-            Properties props= new Properties();
+            Properties props = new Properties();
             props.setProperty("encoding", "GB2312");
             props.setProperty("method", "xml");
             props.setProperty("omit-xml-declaration", "yes");
 
             transformer.setOutputProperties(props);
-            transformer.transform( source, result );
+            transformer.transform(source, result);
         } catch (TransformerFactoryConfigurationError transformerFactoryConfigurationError) {
             transformerFactoryConfigurationError.printStackTrace();  //To change body of catch statement use Options | File Templates.
         } catch (TransformerException e) {
@@ -192,11 +192,11 @@ public class XmlUtil implements java.io.Serializable {
                 int a = result.indexOf("?>") + 3;
                 result = result.substring(a);
             }*/
-            return(result);
+            return (result);
         }
     }
 
-    public static String toString(Node node,Document doc) {
+    public static String toString(Node node, Document doc) {
         StringWriter buffer = new StringWriter();
 
         try {
@@ -207,26 +207,26 @@ public class XmlUtil implements java.io.Serializable {
             // objects and do the transformation
             Source source = new DOMSource(node);
 
-            StreamResult result = new StreamResult( buffer );
+            StreamResult result = new StreamResult(buffer);
 
-            Properties props= new Properties();
+            Properties props = new Properties();
             props.setProperty("encoding", "GB2312");
             props.setProperty("method", "xml");
             props.setProperty("omit-xml-declaration", "yes");
 
             transformer.setOutputProperties(props);
-            transformer.transform( source, result );
+            transformer.transform(source, result);
         } catch (TransformerFactoryConfigurationError transformerFactoryConfigurationError) {
             transformerFactoryConfigurationError.printStackTrace();  //To change body of catch statement use Options | File Templates.
         } catch (TransformerException e) {
             e.printStackTrace();  //To change body of catch statement use Options | File Templates.
         } finally {
             String result = buffer.toString();
-            if(result.indexOf("?>")>0){
+            if (result.indexOf("?>") > 0) {
                 int a = result.indexOf("?>") + 3;
                 result = result.substring(a);
             }
-            return(result);
+            return (result);
         }
 
 //
@@ -249,8 +249,8 @@ public class XmlUtil implements java.io.Serializable {
 //            return STRXML;
 
 
-
     }
+
     private static Node getDOMResultNode(Document xmlDoc, Document xslDoc) throws TransformerException, TransformerConfigurationException,
             FileNotFoundException, IOException {
         Node temNode = null;
@@ -365,7 +365,7 @@ public class XmlUtil implements java.io.Serializable {
         String key = "javax.xml.transform.TransformerFactory";
         String value = Prefs.instance().getProperty(key);
         if (Util.isNull(value)) {
-               value = "org.apache.xalan.xsltc.trax.TransformerFactoryImpl";
+            value = "org.apache.xalan.xsltc.trax.TransformerFactoryImpl";
         }
 
         Properties props = System.getProperties();
@@ -422,12 +422,12 @@ public class XmlUtil implements java.io.Serializable {
 
     public static String XMLStr2XMLStr(String xmlin, Transformer translet) {
         String xmlstr = null;
-        if (xmlin != null && xmlin.length()>0) {
-             StringWriter stringOut = new StringWriter();
-             StringReader strginIn = new StringReader(xmlin);
-             try {
-                StreamSource xmlSrc=new StreamSource(strginIn);
-                StreamResult xmlOut= new StreamResult(stringOut);
+        if (xmlin != null && xmlin.length() > 0) {
+            StringWriter stringOut = new StringWriter();
+            StringReader strginIn = new StringReader(xmlin);
+            try {
+                StreamSource xmlSrc = new StreamSource(strginIn);
+                StreamResult xmlOut = new StreamResult(stringOut);
                 synchronized (translet) {
                     translet.transform(xmlSrc, xmlOut);
                 }
@@ -438,10 +438,10 @@ public class XmlUtil implements java.io.Serializable {
                     System.out.println(xmlin);
                 }
             } finally {
-                 return xmlstr;
-             }
+                return xmlstr;
+            }
         } else {
-             return xmlstr;
+            return xmlstr;
         }
     }
 
@@ -474,7 +474,8 @@ public class XmlUtil implements java.io.Serializable {
         }
 
     }
-     public static String GetNodeAttribute(String Attrname, String nodeSelect, Document selectDoc) {
+
+    public static String GetNodeAttribute(String Attrname, String nodeSelect, Document selectDoc) {
         try {
             NodeList list = XPathAPI.selectNodeList(selectDoc, nodeSelect);
             return ((Element) (list.item(0))).getAttribute(Attrname);
@@ -482,12 +483,13 @@ public class XmlUtil implements java.io.Serializable {
             return null;
         }
     }
-    public static void main(String args[]){
+
+    public static void main(String args[]) {
 
         try {
             Document doc = getDocument("d:/table.xml");
             System.out.println(toString(doc));
-            save(doc,"d:/table1.xml");
+            save(doc, "d:/table1.xml");
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use Options | File Templates.
         } finally {

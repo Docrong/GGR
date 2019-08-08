@@ -9,9 +9,8 @@ import com.boco.eoms.sheet.base.exception.SheetException;
 import com.boco.eoms.sheet.base.service.ITaskService;
 
 public interface ITechniqueSupportHbTaskManager
-	extends ITaskService
-{
+        extends ITaskService {
 
-	public abstract Integer getCountOfBrother(String s, String s1)
-		throws SheetException;
+    public abstract Integer getCountOfBrother(String s, String s1)
+            throws SheetException;
 }

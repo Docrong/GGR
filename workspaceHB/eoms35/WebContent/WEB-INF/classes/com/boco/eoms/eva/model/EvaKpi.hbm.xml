@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,42 +13,32 @@
             table="eva_kpi"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-		<property
-            name="kpiName"
-            	column="kpi_name"
+        <property
+                name="kpiName"
+                column="kpi_name"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-        <property
-            name="cycle"
-            	column="cycle"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
 
-        </property>
-        
         <property
-            name="threshold"
-            	column="threshold"
+                name="cycle"
+                column="cycle"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -57,66 +47,76 @@
         </property>
 
         <property
-            name="ruleGroupId"
-            	column="rule_group_id"
+                name="threshold"
+                column="threshold"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="creator"
-            	column="creator"
+                name="ruleGroupId"
+                column="rule_group_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="createTime"
-            	column="create_time"
+                name="creator"
+                column="creator"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="remark"
-            	column="remark"
+                name="createTime"
+                column="create_time"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="remark"
+                column="remark"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="deleted"
-            	column="deleted"
+                name="deleted"
+                column="deleted"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
-        </property> 
-        
+        </property>
+
         <property
-            name="algorithm"
-            	column="algorithm"
+                name="algorithm"
+                column="algorithm"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

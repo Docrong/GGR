@@ -11,10 +11,10 @@ import com.boco.eoms.sheet.netchange.service.INetChangeTaskManager;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class NetChangeTaskManagerImpl extends TaskServiceImpl implements INetChangeTaskManager{
+public class NetChangeTaskManagerImpl extends TaskServiceImpl implements INetChangeTaskManager {
 
 }

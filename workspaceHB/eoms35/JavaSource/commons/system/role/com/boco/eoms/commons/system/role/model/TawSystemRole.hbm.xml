@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,18 +13,18 @@
             table="taw_system_role"
     >
 
-    <id
-        name="roleId"
-            column="role_id"
-            unsaved-value="null"
-    >
-    <generator class="increment">
+        <id
+                name="roleId"
+                column="role_id"
+                unsaved-value="null"
+        >
+            <generator class="increment">
 
-    </generator>
-    </id>
+            </generator>
+        </id>
 
         <property
-            name="deleted"
+                name="deleted"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -33,8 +33,8 @@
         </property>
 
         <property
-        	column="dept_id"
-            name="deptId"
+                column="dept_id"
+                name="deptId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -43,8 +43,8 @@
         </property>
 
         <property
-        	column="level_id"
-            name="levelId"
+                column="level_id"
+                name="levelId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -53,8 +53,8 @@
         </property>
 
         <property
-        	column="limit_count"
-            name="limitCount"
+                column="limit_count"
+                name="limitCount"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="notes"
+                name="notes"
                 length="100"
                 not-null="false"
                 unique="true"
@@ -72,8 +72,8 @@
         </property>
 
         <property
-        	column="parent_id"
-            name="parentId"
+                column="parent_id"
+                name="parentId"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -82,8 +82,8 @@
         </property>
 
         <property
-        	column="role_name"
-            name="roleName"
+                column="role_name"
+                name="roleName"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -92,8 +92,8 @@
         </property>
 
         <property
-        	column="roletype_id"
-            name="roleTypeId"
+                column="roletype_id"
+                name="roleTypeId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -102,8 +102,8 @@
         </property>
 
         <property
-        	column="single_id"
-            name="singleId"
+                column="single_id"
+                name="singleId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -112,8 +112,8 @@
         </property>
 
         <property
-        	column="structure_Flag"
-            name="structureFlag"
+                column="structure_Flag"
+                name="structureFlag"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -122,8 +122,8 @@
         </property>
 
         <property
-        	column="title_id"
-            name="titleId"
+                column="title_id"
+                name="titleId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -132,28 +132,28 @@
         </property>
 
         <property
-        	column="workflow_Flag"
-            name="workflowFlag"
+                column="workflow_Flag"
+                name="workflowFlag"
                 length="10"
                 not-null="false"
                 unique="true"
         >
 
         </property>
-        
+
         <property
-        	column="leaf"
-            name="leaf"
+                column="leaf"
+                name="leaf"
                 length="10"
                 not-null="false"
                 unique="true"
         >
 
         </property>
-        
+
         <property
-        	column="postId"
-            name="postId"
+                column="postId"
+                name="postId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -161,7 +161,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

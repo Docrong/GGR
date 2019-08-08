@@ -14,6 +14,7 @@ public class TawWorkbenchMemoSendLogManagerImpl extends BaseManager implements I
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawWorkbenchMemoSendLogDao(TawWorkbenchMemoSendLogDao dao) {
@@ -47,12 +48,14 @@ public class TawWorkbenchMemoSendLogManagerImpl extends BaseManager implements I
     public void removeTawWorkbenchMemoSendLog(final String id) {
         dao.removeTawWorkbenchMemoSendLog(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawWorkbenchMemoSendLogs(final Integer curPage, final Integer pageSize) {
-        return dao.getTawWorkbenchMemoSendLogs(curPage, pageSize,null);
+        return dao.getTawWorkbenchMemoSendLogs(curPage, pageSize, null);
     }
+
     public Map getTawWorkbenchMemoSendLogs(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawWorkbenchMemoSendLogs(curPage, pageSize, whereStr);
     }

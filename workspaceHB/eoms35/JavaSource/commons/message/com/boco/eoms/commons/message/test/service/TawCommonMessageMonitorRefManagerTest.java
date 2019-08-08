@@ -35,7 +35,7 @@ public class TawCommonMessageMonitorRefManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageMonitorRefDao.expects(once()).method("getTawCommonMessageMonitorRefs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawCommonMessageMonitorRefs = tawCommonMessageMonitorRefManager.getTawCommonMessageMonitorRefs(null);
         assertTrue(tawCommonMessageMonitorRefs.size() == 1);
@@ -45,7 +45,7 @@ public class TawCommonMessageMonitorRefManagerTest extends BaseManagerTestCase {
     public void testGetTawCommonMessageMonitorRef() throws Exception {
         // set expected behavior on dao
         tawCommonMessageMonitorRefDao.expects(once()).method("getTawCommonMessageMonitorRef")
-            .will(returnValue(new TawCommonMessageMonitorRef()));
+                .will(returnValue(new TawCommonMessageMonitorRef()));
         TawCommonMessageMonitorRef tawCommonMessageMonitorRef = tawCommonMessageMonitorRefManager.getTawCommonMessageMonitorRef(tawCommonMessageMonitorRefId);
         assertTrue(tawCommonMessageMonitorRef != null);
         tawCommonMessageMonitorRefDao.verify();
@@ -56,7 +56,7 @@ public class TawCommonMessageMonitorRefManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageMonitorRefDao.expects(once()).method("saveTawCommonMessageMonitorRef")
-            .with(same(tawCommonMessageMonitorRef)).isVoid();
+                .with(same(tawCommonMessageMonitorRef)).isVoid();
 
         tawCommonMessageMonitorRefManager.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
         tawCommonMessageMonitorRefDao.verify();
@@ -69,7 +69,7 @@ public class TawCommonMessageMonitorRefManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageMonitorRefDao.expects(once()).method("saveTawCommonMessageMonitorRef")
-            .with(same(tawCommonMessageMonitorRef)).isVoid();
+                .with(same(tawCommonMessageMonitorRef)).isVoid();
         tawCommonMessageMonitorRefManager.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
         tawCommonMessageMonitorRefDao.verify();
 

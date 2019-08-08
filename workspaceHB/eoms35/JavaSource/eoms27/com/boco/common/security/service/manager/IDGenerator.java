@@ -13,6 +13,7 @@ package com.boco.common.security.service.manager;
  * <p>Description: Authentication and Authorization System via LDAP</p>
  * <p>Copyright: Copyright (c) 2003</p>
  * <p>Company: BOCO</p>
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */
@@ -26,118 +27,114 @@ import com.boco.common.security.service.dao.ldap.factory.LdapOperation;
 
 public class IDGenerator {
 
-  public static String ctxDN = "ou=IDCount,dc=boco,dc=com";
+    public static String ctxDN = "ou=IDCount,dc=boco,dc=com";
 
-  /**
-   *
-   * @return The next available role ID
-   */
-  public static String getRoleID() {
-    long id = 0L;
-    try {
-      id = 0;
+    /**
+     * @return The next available role ID
+     */
+    public static String getRoleID() {
+        long id = 0L;
+        try {
+            id = 0;
 
-      LdapOperation ldap = getLdap();
-      String[] attrs = {"eaIDCount"};
-      ldap.setReturningAttributes(attrs);
-      ldap.searchSubtree(ctxDN, "cn=eaRoleIDCount");
-      if (ldap.nextResult()) {
-        id = new Long(ldap.getResultAttribute("eaIDCount")).longValue();
-      }
+            LdapOperation ldap = getLdap();
+            String[] attrs = {"eaIDCount"};
+            ldap.setReturningAttributes(attrs);
+            ldap.searchSubtree(ctxDN, "cn=eaRoleIDCount");
+            if (ldap.nextResult()) {
+                id = new Long(ldap.getResultAttribute("eaIDCount")).longValue();
+            }
 
-      ModificationItem[] mods = new ModificationItem[1];
+            ModificationItem[] mods = new ModificationItem[1];
 
-      mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                     new BasicAttribute("eaIDCount", new Long(id + 1).toString()));
+            mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                    new BasicAttribute("eaIDCount", new Long(id + 1).toString()));
 
-      LdapOperation.modifyAttributes("cn=eaRoleIDCount," + ctxDN, mods);
-    }
-    catch (NamingException ex) {
-      ex.printStackTrace();
-      id = 0;
-    }
+            LdapOperation.modifyAttributes("cn=eaRoleIDCount," + ctxDN, mods);
+        } catch (NamingException ex) {
+            ex.printStackTrace();
+            id = 0;
+        }
 
-    return "Role_" + Long.toString(id);
-  }
-  /**
-   *
-   * @return The next available region ID
-   */
-  public static String getRegionID() {
-    long id = 0;
-
-    try {
-      id = 0;
-
-      LdapOperation ldap = getLdap();
-      String[] attrs = {"eaIDCount"};
-      ldap.setReturningAttributes(attrs);
-      ldap.searchSubtree(ctxDN, "cn=eaRegionIDCount");
-      if (ldap.nextResult()) {
-        id = new Long(ldap.getResultAttribute("eaIDCount")).longValue();
-      }
-
-      ModificationItem[] mods = new ModificationItem[1];
-
-      mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                     new BasicAttribute("eaIDCount", new Long(id + 1).toString()));
-
-      LdapOperation.modifyAttributes("cn=eaRegionIDCount," + ctxDN, mods);
-    }
-    catch (NamingException ex) {
-      id = 0;
+        return "Role_" + Long.toString(id);
     }
 
-    return "Region_" + Long.toString(id);
-  }
+    /**
+     * @return The next available region ID
+     */
+    public static String getRegionID() {
+        long id = 0;
 
-  /**
-   *
-   * @return The next available department ID
-   */
+        try {
+            id = 0;
 
-  public static String getDeptID() {
-    long id = 0;
+            LdapOperation ldap = getLdap();
+            String[] attrs = {"eaIDCount"};
+            ldap.setReturningAttributes(attrs);
+            ldap.searchSubtree(ctxDN, "cn=eaRegionIDCount");
+            if (ldap.nextResult()) {
+                id = new Long(ldap.getResultAttribute("eaIDCount")).longValue();
+            }
 
-    try {
-      id = 0;
+            ModificationItem[] mods = new ModificationItem[1];
 
-      LdapOperation ldap = getLdap();
-      String[] attrs = {"eaIDCount"};
-      ldap.setReturningAttributes(attrs);
-      ldap.searchSubtree(ctxDN, "cn=eaDeptIDCount");
-      if (ldap.nextResult()) {
-        id = new Long(ldap.getResultAttribute("eaIDCount")).longValue();
-      }
+            mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                    new BasicAttribute("eaIDCount", new Long(id + 1).toString()));
 
-      ModificationItem[] mods = new ModificationItem[1];
+            LdapOperation.modifyAttributes("cn=eaRegionIDCount," + ctxDN, mods);
+        } catch (NamingException ex) {
+            id = 0;
+        }
 
-      mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                     new BasicAttribute("eaIDCount", new Long(id + 1).toString()));
-
-      LdapOperation.modifyAttributes("cn=eaDeptIDCount," + ctxDN, mods);
-    }
-    catch (NamingException ex) {
-      id = 0;
+        return "Region_" + Long.toString(id);
     }
 
-    return "Department_" + Long.toString(id);
-  }
+    /**
+     * @return The next available department ID
+     */
 
-  /**
-   * Get the connection instance of LDAP
-   * @return LdapOperation
-   * @throws NamingException
-   */
-  public static LdapOperation getLdap()
-      throws NamingException {
-    LdapOperation ldap = new LdapOperation();
-    return ldap;
-  }
+    public static String getDeptID() {
+        long id = 0;
 
-  public static void main(String[] args){
-    System.out.println("Role ID:"+getRoleID());
-    System.out.println("Dept ID:"+getDeptID());
-    System.out.println("Region ID:"+getRegionID());
-  }
+        try {
+            id = 0;
+
+            LdapOperation ldap = getLdap();
+            String[] attrs = {"eaIDCount"};
+            ldap.setReturningAttributes(attrs);
+            ldap.searchSubtree(ctxDN, "cn=eaDeptIDCount");
+            if (ldap.nextResult()) {
+                id = new Long(ldap.getResultAttribute("eaIDCount")).longValue();
+            }
+
+            ModificationItem[] mods = new ModificationItem[1];
+
+            mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                    new BasicAttribute("eaIDCount", new Long(id + 1).toString()));
+
+            LdapOperation.modifyAttributes("cn=eaDeptIDCount," + ctxDN, mods);
+        } catch (NamingException ex) {
+            id = 0;
+        }
+
+        return "Department_" + Long.toString(id);
+    }
+
+    /**
+     * Get the connection instance of LDAP
+     *
+     * @return LdapOperation
+     * @throws NamingException
+     */
+    public static LdapOperation getLdap()
+            throws NamingException {
+        LdapOperation ldap = new LdapOperation();
+        return ldap;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Role ID:" + getRoleID());
+        System.out.println("Dept ID:" + getDeptID());
+        System.out.println("Region ID:" + getRegionID());
+    }
 }

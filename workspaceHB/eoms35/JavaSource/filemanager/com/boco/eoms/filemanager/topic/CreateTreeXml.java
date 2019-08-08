@@ -25,11 +25,12 @@ public class CreateTreeXml {
 
     private String m_strXml = "temp.xml";
     private String m_strXmlHtml = "";
-    public static final int TOPIC_TYPE_KPI_ID=1;
-    public static final String TOPIC_TYPE_KPI_NAME="数据上报";
+    public static final int TOPIC_TYPE_KPI_ID = 1;
+    public static final String TOPIC_TYPE_KPI_NAME = "数据上报";
     Connection m_con = ConnectionPool.getInstance().getConnection();
     XmlUtil xml;
     private Document docXml;
+
     /**
      * ���캯��
      *
@@ -46,8 +47,8 @@ public class CreateTreeXml {
      * ִ�г���
      *
      * @return int
-     *         0   ��ʾʧ��
-     *         1   ��ʾ�ɹ�
+     * 0   ��ʾʧ��
+     * 1   ��ʾ�ɹ�
      */
     public int executeProcess() throws Exception {
         int nReturn = 0;
@@ -66,11 +67,11 @@ public class CreateTreeXml {
             rootElement.setAttribute("allExp", "block");
             docXml.appendChild(rootElement);
             Element rowElement = docXml.createElement("node");
-            setAttr((Element) rowElement, "0", "-1", TOPIC_TYPE_KPI_NAME, TOPIC_TYPE_KPI_NAME, "1", "Topic", "-1", "Topic", "root", "0", "topic","-1000","");
+            setAttr((Element) rowElement, "0", "-1", TOPIC_TYPE_KPI_NAME, TOPIC_TYPE_KPI_NAME, "1", "Topic", "-1", "Topic", "root", "0", "topic", "-1000", "");
             LoadNodeChild(rowElement, docXml);
             rootElement.appendChild(rowElement);
-             m_strXmlHtml = XmlUtil.toString(docXml.getDocumentElement());
-            saveXML("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"+m_strXmlHtml,m_strXml);
+            m_strXmlHtml = XmlUtil.toString(docXml.getDocumentElement());
+            saveXML("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" + m_strXmlHtml, m_strXml);
             this.closeDbcon();
 
             nReturn = 1;
@@ -106,7 +107,7 @@ public class CreateTreeXml {
 //Add node to root element as child
                         parNode.appendChild(newNode);
 //Set properties of the new just created node
-                        setAttr((Element) newNode, RS.getString("topic_id"), ((Element) parNode).getAttribute("ID"), RS.getString("topic_name"), RS.getString("topic_memo"), RS.getString("topic_order"), RS.getString("topic_path"), RS.getString("class_id"), RS.getString("topic_path"), "", String.valueOf(Integer.parseInt(((Element) parNode).getAttribute("level")) + 1), "region",RS.getString("topic_type"), RS.getString("topic_type_name"));
+                        setAttr((Element) newNode, RS.getString("topic_id"), ((Element) parNode).getAttribute("ID"), RS.getString("topic_name"), RS.getString("topic_memo"), RS.getString("topic_order"), RS.getString("topic_path"), RS.getString("class_id"), RS.getString("topic_path"), "", String.valueOf(Integer.parseInt(((Element) parNode).getAttribute("level")) + 1), "region", RS.getString("topic_type"), RS.getString("topic_type_name"));
                         LoadNodeChild(newNode, objDom);
                     }
 
@@ -151,7 +152,7 @@ public class CreateTreeXml {
                         parNode.appendChild(newNode);
                         String strTopic_path = RS.getString("topic_path");
 
-                        setAttr((Element) newNode, RS.getString("topic_id"), ((Element) parNode).getAttribute("ID"), StaticMethod.dbNull2String(RS.getString("topic_name")), StaticMethod.dbNull2String(RS.getString("topic_memo")), RS.getString("topic_order"), strTopic_path, RS.getString("class_id"), strTopic_path, "", String.valueOf(Integer.parseInt(((Element) parNode).getAttribute("level")) + 1), "topic",RS.getString("topic_type"), StaticMethod.dbNull2String(RS.getString("topic_type_name")));
+                        setAttr((Element) newNode, RS.getString("topic_id"), ((Element) parNode).getAttribute("ID"), StaticMethod.dbNull2String(RS.getString("topic_name")), StaticMethod.dbNull2String(RS.getString("topic_memo")), RS.getString("topic_order"), strTopic_path, RS.getString("class_id"), strTopic_path, "", String.valueOf(Integer.parseInt(((Element) parNode).getAttribute("level")) + 1), "topic", RS.getString("topic_type"), StaticMethod.dbNull2String(RS.getString("topic_type_name")));
                         LoadNodeChildFile(newNode, objDom);
                     }
 
@@ -173,7 +174,7 @@ public class CreateTreeXml {
     }
 
     //��һ�����������
-    public void setAttr(Element node, String id, String parentId, String name, String memo, String order, String folder, String classId, String topicFolder, String nodeType, String level, String appType,String topicType,String topicTypeName) {
+    public void setAttr(Element node, String id, String parentId, String name, String memo, String order, String folder, String classId, String topicFolder, String nodeType, String level, String appType, String topicType, String topicTypeName) {
         node.setAttribute("ID", id);
         node.setAttribute("region_id", id);
         node.setAttribute("parentId", parentId);
@@ -232,7 +233,7 @@ if(nIndex>2)
     }
 
     //��Document ����ļ�
-    public void saveXML(String  domXml, String savePath) throws Exception {
+    public void saveXML(String domXml, String savePath) throws Exception {
         try {
             xml.writeXml(domXml, savePath);
         } catch (Exception e) {

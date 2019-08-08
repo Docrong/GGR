@@ -5,13 +5,13 @@ package com.boco.eoms.sparepart.model;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: </p>
+ *
  * @author not attributable
  * @version 1.0
  */
 
 
-public class TawSpDemo
-{
+public class TawSpDemo {
 
     private int id;
     private int parentId;
@@ -23,97 +23,78 @@ public class TawSpDemo
     private String note;
     private int deleted;
 
-    public TawSpDemo()
-    {
+    public TawSpDemo() {
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public int getParentId()
-    {
+    public int getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId)
-    {
+    public void setParentId(int parentId) {
         this.parentId = parentId;
     }
 
-    public String getLayer()
-    {
+    public String getLayer() {
         return layer;
     }
 
-    public void setLayer(String layer)
-    {
+    public void setLayer(String layer) {
         this.layer = layer;
     }
 
-    public int getRadix()
-    {
+    public int getRadix() {
         return radix;
     }
 
-    public void setRadix(int radix)
-    {
+    public void setRadix(int radix) {
         this.radix = radix;
     }
 
-    public String getCname()
-    {
+    public String getCname() {
         return cname;
     }
 
-    public void setCname(String cname)
-    {
+    public void setCname(String cname) {
         this.cname = cname;
     }
 
-    public String getEname()
-    {
+    public String getEname() {
         return ename;
     }
 
-    public void setEname(String ename)
-    {
+    public void setEname(String ename) {
         this.ename = ename;
     }
 
-    public String getCode()
-    {
+    public String getCode() {
         return code;
     }
 
-    public void setCode(String code)
-    {
+    public void setCode(String code) {
         this.code = code;
     }
 
-    public String getNote()
-    {
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note)
-    {
+    public void setNote(String note) {
         this.note = note;
     }
 
-    public int getDeleted()
-    {
+    public int getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(int deleted)
-    {
+    public void setDeleted(int deleted) {
         this.deleted = deleted;
     }
 }

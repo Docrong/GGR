@@ -25,144 +25,144 @@ import com.boco.eoms.workbench.commission.webapp.form.TawWorkbenchCommissionPres
 
 public class TawWorkbenchCommissionPresetAction extends BaseAction {
 
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return listAllPresets(mapping, form, request, response);
-	}
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return listAllPresets(mapping, form, request, response);
+    }
 
-	public ActionForward listAllPresets(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String moduleId = StaticMethod.null2String(request
-				.getParameter("moduleId"));
-		String trustorIds = "[]";
-		String trustorsStr = "";
-		if (moduleId == null || "".equals(moduleId)) {
-			moduleId = StaticMethod.nullObject2String(request
-					.getAttribute("moduleId"));
-		}
-		if (moduleId != null && !"".equals(moduleId)) {
-			TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-					.getSession().getAttribute("sessionform");
-			String userId = sessionform.getUserid();
-			trustorIds = findTrustorsJSON(userId, moduleId);
-			trustorsStr = findTrustorsString(userId, moduleId);
-		}
-		request.setAttribute("moduleId", moduleId);
-		request.setAttribute("trustorIds", trustorIds);
-		request.setAttribute("trustorsStr", trustorsStr);
-		return mapping.findForward("list");
-	}
+    public ActionForward listAllPresets(ActionMapping mapping, ActionForm form,
+                                        HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String moduleId = StaticMethod.null2String(request
+                .getParameter("moduleId"));
+        String trustorIds = "[]";
+        String trustorsStr = "";
+        if (moduleId == null || "".equals(moduleId)) {
+            moduleId = StaticMethod.nullObject2String(request
+                    .getAttribute("moduleId"));
+        }
+        if (moduleId != null && !"".equals(moduleId)) {
+            TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                    .getSession().getAttribute("sessionform");
+            String userId = sessionform.getUserid();
+            trustorIds = findTrustorsJSON(userId, moduleId);
+            trustorsStr = findTrustorsString(userId, moduleId);
+        }
+        request.setAttribute("moduleId", moduleId);
+        request.setAttribute("trustorIds", trustorIds);
+        request.setAttribute("trustorsStr", trustorsStr);
+        return mapping.findForward("list");
+    }
 
-	public ActionForward newPreset(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		return null;
-	}
+    public ActionForward newPreset(ActionMapping mapping, ActionForm form,
+                                   HttpServletRequest request, HttpServletResponse response) {
+        return null;
+    }
 
-	public ActionForward editPreset(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		return null;
-	}
+    public ActionForward editPreset(ActionMapping mapping, ActionForm form,
+                                    HttpServletRequest request, HttpServletResponse response) {
+        return null;
+    }
 
-	public ActionForward savePreset(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		ITawWorkbenchCommissionPresetMgr commissionPresetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String userId = sessionform.getUserid();
-		TawWorkbenchCommissionPresetForm commissionPresetForm = (TawWorkbenchCommissionPresetForm) form;
-		String idStr = commissionPresetForm.getTrustorId();
-		String[] trustorIds = idStr.split(",");
-		commissionPresetMgr.delCommissionPresets(userId, commissionPresetForm
-				.getModuleId());
-		if (trustorIds != null) {
-			for (int i = 0; i < trustorIds.length; i++) {
-				String trustorId = trustorIds[i];
-				if (trustorId != null && !"".equals(trustorId)
-						&& !"[]".equals(trustorId)) {
-					TawWorkbenchCommissionPreset commissionPreset = new TawWorkbenchCommissionPreset();
-					commissionPreset.setModuleId(commissionPresetForm
-							.getModuleId());
-					commissionPreset.setTrustorId(trustorId);
-					commissionPreset.setUserId(userId);
-					commissionPreset.setTrustorName(DictMgrLocator
-							.getId2NameService().id2Name(
-									commissionPreset.getTrustorId(),
-									"tawSystemUserDao"));
-					commissionPreset.setUserName(DictMgrLocator
-							.getId2NameService().id2Name(
-									commissionPreset.getUserId(),
-									"tawSystemUserDao"));
-					commissionPresetMgr.saveCommissionPrese(commissionPreset);
-				}
-			}
-		}
-		request.setAttribute("moduleId", commissionPresetForm.getModuleId());
-		return listAllPresets(mapping, form, request, response);
-	}
+    public ActionForward savePreset(ActionMapping mapping, ActionForm form,
+                                    HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        ITawWorkbenchCommissionPresetMgr commissionPresetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String userId = sessionform.getUserid();
+        TawWorkbenchCommissionPresetForm commissionPresetForm = (TawWorkbenchCommissionPresetForm) form;
+        String idStr = commissionPresetForm.getTrustorId();
+        String[] trustorIds = idStr.split(",");
+        commissionPresetMgr.delCommissionPresets(userId, commissionPresetForm
+                .getModuleId());
+        if (trustorIds != null) {
+            for (int i = 0; i < trustorIds.length; i++) {
+                String trustorId = trustorIds[i];
+                if (trustorId != null && !"".equals(trustorId)
+                        && !"[]".equals(trustorId)) {
+                    TawWorkbenchCommissionPreset commissionPreset = new TawWorkbenchCommissionPreset();
+                    commissionPreset.setModuleId(commissionPresetForm
+                            .getModuleId());
+                    commissionPreset.setTrustorId(trustorId);
+                    commissionPreset.setUserId(userId);
+                    commissionPreset.setTrustorName(DictMgrLocator
+                            .getId2NameService().id2Name(
+                                    commissionPreset.getTrustorId(),
+                                    "tawSystemUserDao"));
+                    commissionPreset.setUserName(DictMgrLocator
+                            .getId2NameService().id2Name(
+                                    commissionPreset.getUserId(),
+                                    "tawSystemUserDao"));
+                    commissionPresetMgr.saveCommissionPrese(commissionPreset);
+                }
+            }
+        }
+        request.setAttribute("moduleId", commissionPresetForm.getModuleId());
+        return listAllPresets(mapping, form, request, response);
+    }
 
-	public String findTrustorsJSON(String userId, String moduleId) throws Exception {
-		ITawWorkbenchCommissionPresetMgr commissionPresetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
+    public String findTrustorsJSON(String userId, String moduleId) throws Exception {
+        ITawWorkbenchCommissionPresetMgr commissionPresetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
 
-		List list = (ArrayList) commissionPresetMgr.listCommissionPresets(
-				userId, moduleId);
-		JSONArray jsonRoot = new JSONArray();
-		String jsonStr = "[]";
-		if (list.size() > 0) {
-			Iterator it = list.iterator();
-			while (it.hasNext()) {
-				TawWorkbenchCommissionPreset commissionPreset = (TawWorkbenchCommissionPreset) it
-						.next();
-				JSONObject jitem = new JSONObject();
-				jitem.put("id", commissionPreset.getTrustorId());
-				jitem.put("name", commissionPreset.getTrustorName());
-				jsonRoot.put(jitem);
-			}
-			jsonStr = jsonRoot.toString();
-		}
-		return jsonStr;
-	}
-	
-	public String findTrustorsString(String userId, String moduleId) throws Exception {
-		ITawWorkbenchCommissionPresetMgr commissionPresetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
+        List list = (ArrayList) commissionPresetMgr.listCommissionPresets(
+                userId, moduleId);
+        JSONArray jsonRoot = new JSONArray();
+        String jsonStr = "[]";
+        if (list.size() > 0) {
+            Iterator it = list.iterator();
+            while (it.hasNext()) {
+                TawWorkbenchCommissionPreset commissionPreset = (TawWorkbenchCommissionPreset) it
+                        .next();
+                JSONObject jitem = new JSONObject();
+                jitem.put("id", commissionPreset.getTrustorId());
+                jitem.put("name", commissionPreset.getTrustorName());
+                jsonRoot.put(jitem);
+            }
+            jsonStr = jsonRoot.toString();
+        }
+        return jsonStr;
+    }
 
-		List list = (ArrayList) commissionPresetMgr.listCommissionPresets(
-				userId, moduleId);
-		String trustorsStr = "";
-		if (list.size() > 0) {
-			Iterator it = list.iterator();
-			while (it.hasNext()) {
-				TawWorkbenchCommissionPreset commissionPreset = (TawWorkbenchCommissionPreset) it
-						.next();
-				trustorsStr = trustorsStr + commissionPreset.getTrustorId() + ",";
-			}
-			if (trustorsStr.endsWith(",")) {
-				trustorsStr = trustorsStr.substring(0, trustorsStr.length() - 1);
-			}
-		}
-		return trustorsStr;
-	}
+    public String findTrustorsString(String userId, String moduleId) throws Exception {
+        ITawWorkbenchCommissionPresetMgr commissionPresetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
 
-	public ActionForward delPreset(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		return null;
-	}
+        List list = (ArrayList) commissionPresetMgr.listCommissionPresets(
+                userId, moduleId);
+        String trustorsStr = "";
+        if (list.size() > 0) {
+            Iterator it = list.iterator();
+            while (it.hasNext()) {
+                TawWorkbenchCommissionPreset commissionPreset = (TawWorkbenchCommissionPreset) it
+                        .next();
+                trustorsStr = trustorsStr + commissionPreset.getTrustorId() + ",";
+            }
+            if (trustorsStr.endsWith(",")) {
+                trustorsStr = trustorsStr.substring(0, trustorsStr.length() - 1);
+            }
+        }
+        return trustorsStr;
+    }
 
-	public void userFromPreset(ActionMapping mapping, ActionForm actionForm,
-			HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-		ITawWorkbenchCommissionPresetMgr presetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
-		String moduleId = StaticMethod.null2String(request
-				.getParameter("moduleId"));
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String userId = sessionform.getUserid();
-		JSONArray jsonRoot = presetMgr.listCommissionPresetsJSON(userId,
-				moduleId);
+    public ActionForward delPreset(ActionMapping mapping, ActionForm form,
+                                   HttpServletRequest request, HttpServletResponse response) {
+        return null;
+    }
 
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-	}
+    public void userFromPreset(ActionMapping mapping, ActionForm actionForm,
+                               HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        ITawWorkbenchCommissionPresetMgr presetMgr = (ITawWorkbenchCommissionPresetMgr) getBean("ItawWorkbenchCommissionPresetMgr");
+        String moduleId = StaticMethod.null2String(request
+                .getParameter("moduleId"));
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String userId = sessionform.getUserid();
+        JSONArray jsonRoot = presetMgr.listCommissionPresetsJSON(userId,
+                moduleId);
+
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+    }
 }

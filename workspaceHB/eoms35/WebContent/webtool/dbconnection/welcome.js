@@ -7,28 +7,28 @@
  */
 
 // create the HelloWorld application (single instance)
-var HelloWorld = function(){
+var HelloWorld = function () {
     // everything in this space is private and only accessible in the HelloWorld block
-    
+
     // define some private variables
     var dialog, showBtn;
-    
+
     // return a public interface
     return {
-        init : function(){
+        init: function () {
         },
-       
-        showDialog : function(buttonid){
-        	showBtn = buttonid;
-            if(!dialog){ // lazy initialize the dialog and only create it once
-                dialog = new Ext.BasicDialog("hello-dlg", { 
-                        autoTabs:true,
-                        width:500,
-                        height:300,
-                        shadow:true,
-                        minWidth:300,
-                        minHeight:250,
-                        proxyDrag: true
+
+        showDialog: function (buttonid) {
+            showBtn = buttonid;
+            if (!dialog) { // lazy initialize the dialog and only create it once
+                dialog = new Ext.BasicDialog("hello-dlg", {
+                    autoTabs: true,
+                    width: 500,
+                    height: 300,
+                    shadow: true,
+                    minWidth: 300,
+                    minHeight: 250,
+                    proxyDrag: true
                 });
                 dialog.addKeyListener(27, dialog.hide, dialog);
                 dialog.addButton('Close', dialog.hide, dialog);

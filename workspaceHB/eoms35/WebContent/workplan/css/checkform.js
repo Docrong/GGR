@@ -1,201 +1,182 @@
-String.prototype.Trim = function(){	//È¥µôÊ×Î²µÄ¿Õ¸ñ
-	return this.replace(/(^\s*)|(\s*$)/g, "");
+String.prototype.Trim = function () {	//È¥ï¿½ï¿½ï¿½ï¿½Î²ï¿½Ä¿Õ¸ï¿½
+    return this.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-function initArray(){
-	this.length=initArray.arguments.length;
-	for(var i=0;i<this.length;i++)
-		this[i+1]=initArray.arguments[i] 
+function initArray() {
+    this.length = initArray.arguments.length;
+    for (var i = 0; i < this.length; i++)
+        this[i + 1] = initArray.arguments[i]
 }
 
 function checkLength(item, nMin, nMax)	// confirm not null
 {
-	var str = item.value.Trim();
-	if ( 0!=nMin && 0==str.length)
-	{
-		alert ("ÇëÊäÈëÄúµÄ [" + item.title + "] ");
-		item.focus();
-		return false;
-	}
-	else if (nMin>str.length || nMax<str.length)
-	{	
-		alert ("[" + item.title + "] µÄ³¤¶È±ØÐëÔÚ " + nMin + " ~ " + nMax + " Ö®¼ä£¡");
-		item.focus();
-		return false;
-	}
-	else
-		return true;
+    var str = item.value.Trim();
+    if (0 != nMin && 0 == str.length) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [" + item.title + "] ");
+        item.focus();
+        return false;
+    } else if (nMin > str.length || nMax < str.length) {
+        alert("[" + item.title + "] ï¿½Ä³ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ " + nMin + " ~ " + nMax + " Ö®ï¿½ä£¡");
+        item.focus();
+        return false;
+    } else
+        return true;
 }
 
-function checkPwd(item1, item2, nMin)
-{
-	var pwd1 = item1.value.Trim();
-	var pwd2 = item2.value.Trim();
-	if (pwd1=="")
-	{
-		alert ("ÇëÊäÈëÃÜÂë£¬ÖÁÉÙ" + nMin + "Î»");
-		item1.focus();
-		return false;
-	}
-	if ( -1!=pwd1.indexOf("'"))
-	{
-		alert ("ÃÜÂëÖÐ²»¿Éº¬ÓÐµ¥ÒýºÅ£¬ÇëÖØÐÂÊäÈë¿ÚÁî");
-		item1.value="";
-		item1.focus();
-		return false;
-	}
-	else if (nMin>pwd1.length)
-	{	
-		alert ("ÃÜÂë³¤¶ÈÌ«¶Ì£¬ÖÁÉÙ " + nMin + " Î»");
-		item1.value="";
-		item1.focus();
-		return false;
-	}
-	else if (pwd1!=pwd2)
-	{
-		alert("Á½´ÎÊäÈëµÄÃÜÂë²»·ûºÏ£¬ÇëÖØÐÂÈ·ÈÏÄúµÄÃÜÂë");
-		item2.value=""
-		item2.focus();
-		return false;
-	}
-	else
-		return true;
+function checkPwd(item1, item2, nMin) {
+    var pwd1 = item1.value.Trim();
+    var pwd2 = item2.value.Trim();
+    if (pwd1 == "") {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½" + nMin + "Î»");
+        item1.focus();
+        return false;
+    }
+    if (-1 != pwd1.indexOf("'")) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½Éºï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½Å£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        item1.value = "";
+        item1.focus();
+        return false;
+    } else if (nMin > pwd1.length) {
+        alert("ï¿½ï¿½ï¿½ë³¤ï¿½ï¿½Ì«ï¿½Ì£ï¿½ï¿½ï¿½ï¿½ï¿½ " + nMin + " Î»");
+        item1.value = "";
+        item1.focus();
+        return false;
+    } else if (pwd1 != pwd2) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        item2.value = ""
+        item2.focus();
+        return false;
+    } else
+        return true;
 }
 
-function checkEmail(item){
-	var email = item.value.Trim();
-	if (0==email.length)
-	{
-		alert ("ÇëÊäÈëÄúµÄ [ÓÊÏä] ");
-		item.focus();
-		return false;
-	}
-	re=/(\w+)@(\w+)\.(com|net|org|edu)\.*(\w*)/i;
-	re.exec(email);
-	if (RegExp.$4!="") strr=RegExp.$1+"@"+RegExp.$2+"."+RegExp.$3+"."+RegExp.$4
-	else  strr=RegExp.$1+"@"+RegExp.$2+"."+RegExp.$3
-	if (strr!=email) {
-		alert("µç×ÓÓÊ¼þµØÖ·¸ñÊ½²»¶Ô£¡");
-		item.focus();
-		return false;
-	}
-	return true;
- } 
-
-function checkSpecChar(item,specStr){
-	if(!checkLength(item)) return false;
-
-	var re;
-	var str = item.value.Trim();
-
-	if (specStr==null){//Èç¹ûspecStrÎªÈ±Ê¡,ÔòÖ»¼ì²é"ºÍ'
-		re = /[\"\']/;
-		if(str.search(re) != -1){
-			alert("Çë²»ÒªÊäÈëÌØÊâ×Ö·û\nÈçÓ¢ÎÄË«ÒýºÅ(\")ºÍÓ¢ÎÄµ¥ÒýºÅ(\')µÈ");
-			item.focus();
-			return false;
-		}
-	}
-	else{
-		for (j=0;j<specStr.length;j++) {
-			re = specStr.charAt(j);
-			if (str.search(re) != -1){
-				alert("Çë²»ÒªÊäÈë("+re+")×Ö·û,Ð»Ð»");
-				item.focus();
-				return false;	
-			}
-		}	
-	}
-	return true;	
+function checkEmail(item) {
+    var email = item.value.Trim();
+    if (0 == email.length) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [ï¿½ï¿½ï¿½ï¿½] ");
+        item.focus();
+        return false;
+    }
+    re = /(\w+)@(\w+)\.(com|net|org|edu)\.*(\w*)/i;
+    re.exec(email);
+    if (RegExp.$4 != "") strr = RegExp.$1 + "@" + RegExp.$2 + "." + RegExp.$3 + "." + RegExp.$4
+    else strr = RegExp.$1 + "@" + RegExp.$2 + "." + RegExp.$3
+    if (strr != email) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ô£ï¿½");
+        item.focus();
+        return false;
+    }
+    return true;
 }
 
-function checkSpecCharHas(item,specStr){
-	if(!checkLength(item)) return false;
+function checkSpecChar(item, specStr) {
+    if (!checkLength(item)) return false;
 
-	var re;
-	var str = item.value.Trim();
+    var re;
+    var str = item.value.Trim();
 
-	if (specStr==null){//Èç¹ûspecStrÎªÈ±Ê¡,ÔòÖ»¼ì²é"ºÍ'
-		re = /[\"\']/;
-		if(str.search(re) == -1){
-			alert("ÇëÊäÈë(\")ºÍ(\')µÈ×Ö·û");
-			item.focus();
-			return false;
-		}
-	}
-	else{
-		for (j=0;j<specStr.length;j++) {
-			re = specStr.charAt(j);
-			if (str.search(re) == -1){
-				alert("ÇëÊäÈë("+re+")×Ö·û,Ð»Ð»");
-				item.focus();
-				return false;	
-			}
-		}	
-	}
-	return true;	
+    if (specStr == null) {//ï¿½ï¿½ï¿½specStrÎªÈ±Ê¡,ï¿½ï¿½Ö»ï¿½ï¿½ï¿½"ï¿½ï¿½'
+        re = /[\"\']/;
+        if (str.search(re) != -1) {
+            alert("ï¿½ë²»Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½\nï¿½ï¿½Ó¢ï¿½ï¿½Ë«ï¿½ï¿½ï¿½ï¿½(\")ï¿½ï¿½Ó¢ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½(\')ï¿½ï¿½");
+            item.focus();
+            return false;
+        }
+    } else {
+        for (j = 0; j < specStr.length; j++) {
+            re = specStr.charAt(j);
+            if (str.search(re) != -1) {
+                alert("ï¿½ë²»Òªï¿½ï¿½ï¿½ï¿½(" + re + ")ï¿½Ö·ï¿½,Ð»Ð»");
+                item.focus();
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function checkSpecCharHas(item, specStr) {
+    if (!checkLength(item)) return false;
+
+    var re;
+    var str = item.value.Trim();
+
+    if (specStr == null) {//ï¿½ï¿½ï¿½specStrÎªÈ±Ê¡,ï¿½ï¿½Ö»ï¿½ï¿½ï¿½"ï¿½ï¿½'
+        re = /[\"\']/;
+        if (str.search(re) == -1) {
+            alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(\")ï¿½ï¿½(\')ï¿½ï¿½ï¿½Ö·ï¿½");
+            item.focus();
+            return false;
+        }
+    } else {
+        for (j = 0; j < specStr.length; j++) {
+            re = specStr.charAt(j);
+            if (str.search(re) == -1) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(" + re + ")ï¿½Ö·ï¿½,Ð»Ð»");
+                item.focus();
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 //**************************************
-//ÓÃÓÚ²éÑ¯¹¤µ¥µÄ¿ØÖÆÊäÈë
+//ï¿½ï¿½ï¿½Ú²ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //**************************************
-function checkboxSwitch_input(checkboxObj,inputObj,defaultInputText){
-	if (checkboxObj.checked){
-		inputObj.disabled = false;
-		inputObj.value = "";
-	}
-	else {
-		inputObj.disabled = true;
-		inputObj.value = defaultInputText;
-	}
+function checkboxSwitch_input(checkboxObj, inputObj, defaultInputText) {
+    if (checkboxObj.checked) {
+        inputObj.disabled = false;
+        inputObj.value = "";
+    } else {
+        inputObj.disabled = true;
+        inputObj.value = defaultInputText;
+    }
 }
-function checkboxSwitch_multi(checkboxObj,selectObj,inputObj,hiddenObj,defaultSelectText){
+
+function checkboxSwitch_multi(checkboxObj, selectObj, inputObj, hiddenObj, defaultSelectText) {
 //	alert(checkboxObj+","+selectObj+","+inputObj+","+hiddenObj);
-	if (checkboxObj.checked){
-		selectObj.disabled = false;
-		inputObj.disabled = false;
-		hiddenObj.disabled = false;
-	}
-	else {
-		selectObj.disabled = true;
-		selectObj.value = -1;
-		inputObj.disabled = true;
-		hiddenObj.disabled = true;
-	}
-	inputObj.value = defaultSelectText;
-	hiddenObj.value = "";
+    if (checkboxObj.checked) {
+        selectObj.disabled = false;
+        inputObj.disabled = false;
+        hiddenObj.disabled = false;
+    } else {
+        selectObj.disabled = true;
+        selectObj.value = -1;
+        inputObj.disabled = true;
+        hiddenObj.disabled = true;
+    }
+    inputObj.value = defaultSelectText;
+    hiddenObj.value = "";
 }
 
-function addOptionToInput(selectObj,inputObj,hiddenObj,defaultInputText){
-	var selectedOpt = selectObj.options[selectObj.selectedIndex];
+function addOptionToInput(selectObj, inputObj, hiddenObj, defaultInputText) {
+    var selectedOpt = selectObj.options[selectObj.selectedIndex];
 
-	if (selectedOpt.value != "-1")
-	{
-		if (inputObj.value.indexOf(selectedOpt.text) == -1)
-		{
-			if (inputObj.value == "" || inputObj.value == defaultInputText)
-			{
-				inputObj.value = selectedOpt.text
-				hiddenObj.value = selectObj.value;
-				 
-			}
-			else{
-				doadd(selectedOpt.text, inputObj);
-				doadd(selectObj.value, hiddenObj);
-			}
-		}
-	}
-	else{
-		inputObj.value = defaultInputText;
-		hiddenObj = "";
-	}
+    if (selectedOpt.value != "-1") {
+        if (inputObj.value.indexOf(selectedOpt.text) == -1) {
+            if (inputObj.value == "" || inputObj.value == defaultInputText) {
+                inputObj.value = selectedOpt.text
+                hiddenObj.value = selectObj.value;
+
+            } else {
+                doadd(selectedOpt.text, inputObj);
+                doadd(selectObj.value, hiddenObj);
+            }
+        }
+    } else {
+        inputObj.value = defaultInputText;
+        hiddenObj = "";
+    }
+
 //	alert(hiddenObj.value);
-	function doadd(obj, addtoObj){
-		var tempArray = addtoObj.value.split(",");
-		tempArray.push(obj);
-		addtoObj.value = tempArray.join(",");
-	}
+    function doadd(obj, addtoObj) {
+        var tempArray = addtoObj.value.split(",");
+        tempArray.push(obj);
+        addtoObj.value = tempArray.join(",");
+    }
 }
-function GoBack(){
-	window.history.back();
+
+function GoBack() {
+    window.history.back();
 }

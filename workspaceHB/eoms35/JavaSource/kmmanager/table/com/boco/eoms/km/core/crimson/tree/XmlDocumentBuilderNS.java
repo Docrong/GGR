@@ -1,10 +1,10 @@
-/* 
+/*
  * $Id: XmlDocumentBuilderNS.java,v 1.1 2001/03/16 19:17:01 edwingo Exp $
  *
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -71,71 +71,68 @@ import com.boco.eoms.km.core.crimson.parser.AttributesEx;
  * versions of the DOM Level 2 create methods and assumes disableNamespaces
  * is false, ie. JAXP namespaceAware is true.
  */
-public class XmlDocumentBuilderNS extends XmlDocumentBuilder
-{
+public class XmlDocumentBuilderNS extends XmlDocumentBuilder {
     /**
      * Receive notification of the beginning of an element.
      */
     public void startElement(String namespaceURI, String localName,
                              String qName, Attributes attributes)
-	throws SAXException
-    {
-	//
-	// Convert set of attributes to DOM representation.
-	//
+            throws SAXException {
+        //
+        // Convert set of attributes to DOM representation.
+        //
         AttributeSet attSet = null;
-	int length = attributes.getLength();
-	if (length != 0) {
-	    try {
+        int length = attributes.getLength();
+        if (length != 0) {
+            try {
                 attSet = AttributeSet.createAttributeSet2(attributes);
-	    } catch (DOMException ex) {
-		throw new SAXParseException(getMessage("XDB-002",
-                        new Object[] { ex.getMessage() }), locator, ex);
-	    }
-	}
+            } catch (DOMException ex) {
+                throw new SAXParseException(getMessage("XDB-002",
+                        new Object[]{ex.getMessage()}), locator, ex);
+            }
+        }
 
-	//
-	// Then create the element, associate its attributes, and
-	// stack it for later addition.
-	//
+        //
+        // Then create the element, associate its attributes, and
+        // stack it for later addition.
+        //
         ElementNode2 e = null;
-	try {
+        try {
             // Translate a SAX empty string to mean no namespaceURI
             if ("".equals(namespaceURI)) {
                 namespaceURI = null;
             }
-            e = (ElementNode2)document.createElementNS(namespaceURI, qName);
-	} catch (DOMException ex) {
-	    throw new SAXParseException(getMessage("XDB-004",
-                    new Object[] { ex.getMessage() }), locator, ex);
-	}
-	if (attributes instanceof AttributesEx) {
-	    e.setIdAttributeName(
-		((AttributesEx)attributes).getIdAttributeName());
+            e = (ElementNode2) document.createElementNS(namespaceURI, qName);
+        } catch (DOMException ex) {
+            throw new SAXParseException(getMessage("XDB-004",
+                    new Object[]{ex.getMessage()}), locator, ex);
         }
-	if (length != 0) {
-	    e.setAttributes(attSet);
+        if (attributes instanceof AttributesEx) {
+            e.setIdAttributeName(
+                    ((AttributesEx) attributes).getIdAttributeName());
+        }
+        if (length != 0) {
+            e.setAttributes(attSet);
         }
 
-	elementStack[topOfStack++].appendChild(e);
-	elementStack[topOfStack] = e;
+        elementStack[topOfStack++].appendChild(e);
+        elementStack[topOfStack] = e;
 
-	//
-	// Division of responsibility for namespace processing is (being
-	// revised so) that the DOM builder reports errors when namespace
-	// constraints are violated, and the parser is ignorant of them.
-	//
+        //
+        // Division of responsibility for namespace processing is (being
+        // revised so) that the DOM builder reports errors when namespace
+        // constraints are violated, and the parser is ignorant of them.
+        //
         // XXX check duplicate attributes here ???
     }
 
     /**
      * Receive notification of a processing instruction.
      */
-    public void processingInstruction(String name, String instruction) 
-        throws SAXException
-    {
-	if (name.indexOf (':') != -1) {
-	    throw new SAXParseException((getMessage ("XDB-010")), locator);
+    public void processingInstruction(String name, String instruction)
+            throws SAXException {
+        if (name.indexOf(':') != -1) {
+            throw new SAXParseException((getMessage("XDB-010")), locator);
         }
         super.processingInstruction(name, instruction);
     }
@@ -149,9 +146,8 @@ public class XmlDocumentBuilderNS extends XmlDocumentBuilder
      * Report an internal entity declaration.
      */
     public void internalEntityDecl(String name, String value)
-	throws SAXException
-    {
-        if (name.indexOf (':') != -1) {
+            throws SAXException {
+        if (name.indexOf(':') != -1) {
             throw new SAXParseException((getMessage("XDB-012")), locator);
         }
         super.internalEntityDecl(name, value);
@@ -162,9 +158,8 @@ public class XmlDocumentBuilderNS extends XmlDocumentBuilder
      */
     public void externalEntityDecl(String name, String publicId,
                                    String systemId)
-	throws SAXException
-    {
-        if (name.indexOf (':') != -1) {
+            throws SAXException {
+        if (name.indexOf(':') != -1) {
             throw new SAXParseException((getMessage("XDB-012")), locator);
         }
         super.externalEntityDecl(name, publicId, systemId);
@@ -179,8 +174,7 @@ public class XmlDocumentBuilderNS extends XmlDocumentBuilder
      * Receive notification of a notation declaration event.
      */
     public void notationDecl(String n, String p, String s)
-	throws SAXException
-    {
+            throws SAXException {
         if (n.indexOf(':') != -1) {
             throw new SAXParseException((getMessage("XDB-013")), locator);
         }
@@ -190,10 +184,9 @@ public class XmlDocumentBuilderNS extends XmlDocumentBuilder
     /**
      * Receive notification of an unparsed entity declaration event.
      */
-    public void unparsedEntityDecl(String name, String publicId, 
+    public void unparsedEntityDecl(String name, String publicId,
                                    String systemId, String notation)
-	throws SAXException
-    {
+            throws SAXException {
         if (name.indexOf(':') != -1) {
             throw new SAXParseException((getMessage("XDB-012")), locator);
         }

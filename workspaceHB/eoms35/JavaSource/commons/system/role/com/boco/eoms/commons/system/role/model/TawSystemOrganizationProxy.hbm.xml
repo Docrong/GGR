@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_system_organizationProxy"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="deleted"
+                name="deleted"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -36,8 +36,8 @@
         </property>
 
         <property
-            name="endTime"
-            column="end_time"
+                name="endTime"
+                column="end_time"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -46,8 +46,8 @@
         </property>
 
         <property
-            name="fromUserId"
-            column="from_user_id"
+                name="fromUserId"
+                column="from_user_id"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -56,8 +56,8 @@
         </property>
 
         <property
-            name="proxyRoleId"
-            column="proxy_role_id"
+                name="proxyRoleId"
+                column="proxy_role_id"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -66,8 +66,8 @@
         </property>
 
         <property
-            name="startTime"
-            column="start_time"
+                name="startTime"
+                column="start_time"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -76,8 +76,8 @@
         </property>
 
         <property
-            name="toUserId"
-            column="to_user_id"
+                name="toUserId"
+                column="to_user_id"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -85,7 +85,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

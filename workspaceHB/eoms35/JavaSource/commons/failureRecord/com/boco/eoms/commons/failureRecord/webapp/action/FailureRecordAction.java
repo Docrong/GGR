@@ -57,135 +57,135 @@ import com.boco.eoms.workbench.netdisk.webapp.util.FolderFilter;
 import com.boco.eoms.workbench.netdisk.webapp.util.NetDiskAttriubuteLocator;
 
 public final class FailureRecordAction extends BaseAction {
-	TawWorkbenchContactBO contactbo = TawWorkbenchContactBO.getInstance();
+    TawWorkbenchContactBO contactbo = TawWorkbenchContactBO.getInstance();
 
-	/**
-	 * 未指定方法
-	 */
-	// public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-	// HttpServletRequest request, HttpServletResponse response)
-	// throws Exception {
-	//		
-	// return newInterfaceMonitoring(mapping, form, request, response);
-	// }
-	/**
-	 * 
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward newFailureRecord(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String usereId = sessionform.getUsername();
-			String roomname=sessionform.getRoomname();
-		String workSerial=sessionform.getWorkSerial();
-		request.setAttribute("usereId", usereId);
-		request.setAttribute("roomname", roomname);
-		request.setAttribute("workSerial", workSerial);
-		return mapping.findForward("success");
-	}
+    /**
+     * 未指定方法
+     */
+    // public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+    // HttpServletRequest request, HttpServletResponse response)
+    // throws Exception {
+    //
+    // return newInterfaceMonitoring(mapping, form, request, response);
+    // }
 
-	public ActionForward failureRecordList(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				"failureRecordList")
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
-		FailureRecordForm failureRecordForm = (FailureRecordForm) form;
-		// interfaceMonitoringForm.setCallDirection("Longitudinal");
-		Map filureRecord = filureRecordMgr.getMonitoringLogFind(pageIndex,
-				pageSize, failureRecordForm);
-		List filureRecordList = (List) filureRecord.get("result");
-		request.setAttribute("FailureRecordList", filureRecordList);
-		return mapping.findForward("FailureRecordList");
-	}
+    /**
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward newFailureRecord(ActionMapping mapping,
+                                          ActionForm form, HttpServletRequest request,
+                                          HttpServletResponse response) throws Exception {
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String usereId = sessionform.getUsername();
+        String roomname = sessionform.getRoomname();
+        String workSerial = sessionform.getWorkSerial();
+        request.setAttribute("usereId", usereId);
+        request.setAttribute("roomname", roomname);
+        request.setAttribute("workSerial", workSerial);
+        return mapping.findForward("success");
+    }
 
-	public ActionForward saveFailureRecord(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
-		FailureRecordForm failureRecordForm = (FailureRecordForm) form;
-		FailureRecord failureRecord = new FailureRecord();
-		// failureRecord.setFailureAddress(failureRecordForm.getFailureAddress());
-		// failureRecord.setFailureDescription(failureRecordForm
-		// .getFailureDescription());
-		// failureRecord.setFailureFounder("admin");
-		// failureRecord.setFailureProfessional(failureRecordForm
-		// .getFailureProfessional());
-		// failureRecord.setFailureRecordTime("");
-		// failureRecord.setFailureResults("");
-		// failureRecord.setFailureTime(failureRecordForm.getFailureTime());
-		failureRecord = (FailureRecord) convert(failureRecordForm);
-		filureRecordMgr.save(failureRecord);
-		failureRecordForm.reset(mapping, request);
-		return mapping.findForward("failureRecordsuccess");
-	}
+    public ActionForward failureRecordList(ActionMapping mapping,
+                                           ActionForm form, HttpServletRequest request,
+                                           HttpServletResponse response) throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                "failureRecordList")
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
+        FailureRecordForm failureRecordForm = (FailureRecordForm) form;
+        // interfaceMonitoringForm.setCallDirection("Longitudinal");
+        Map filureRecord = filureRecordMgr.getMonitoringLogFind(pageIndex,
+                pageSize, failureRecordForm);
+        List filureRecordList = (List) filureRecord.get("result");
+        request.setAttribute("FailureRecordList", filureRecordList);
+        return mapping.findForward("FailureRecordList");
+    }
 
-	public ActionForward detail(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String id = request.getParameter("id");
-		if (!"".equals(id) && id != null) {
-			FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
-			FailureRecord failureRecord = new FailureRecord();
-			failureRecord = filureRecordMgr.getFailureRecord(id);
-			request.setAttribute("FailureRecord", failureRecord);
-		}
-		return mapping.findForward("detail");
-	}
-	
-	
-	public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String id = request.getParameter("id");
-		if (!"".equals(id) && id != null) {
-			FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
-			FailureRecord failureRecord = new FailureRecord();
-			failureRecord = filureRecordMgr.getFailureRecord(id);
-			request.setAttribute("failureRecordForm", failureRecord);
-		}
-		return mapping.findForward("edit");
-	}
+    public ActionForward saveFailureRecord(ActionMapping mapping,
+                                           ActionForm form, HttpServletRequest request,
+                                           HttpServletResponse response) throws Exception {
+        FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
+        FailureRecordForm failureRecordForm = (FailureRecordForm) form;
+        FailureRecord failureRecord = new FailureRecord();
+        // failureRecord.setFailureAddress(failureRecordForm.getFailureAddress());
+        // failureRecord.setFailureDescription(failureRecordForm
+        // .getFailureDescription());
+        // failureRecord.setFailureFounder("admin");
+        // failureRecord.setFailureProfessional(failureRecordForm
+        // .getFailureProfessional());
+        // failureRecord.setFailureRecordTime("");
+        // failureRecord.setFailureResults("");
+        // failureRecord.setFailureTime(failureRecordForm.getFailureTime());
+        failureRecord = (FailureRecord) convert(failureRecordForm);
+        filureRecordMgr.save(failureRecord);
+        failureRecordForm.reset(mapping, request);
+        return mapping.findForward("failureRecordsuccess");
+    }
 
-	public ActionForward xdelete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    public ActionForward detail(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String id = request.getParameter("id");
+        if (!"".equals(id) && id != null) {
+            FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
+            FailureRecord failureRecord = new FailureRecord();
+            failureRecord = filureRecordMgr.getFailureRecord(id);
+            request.setAttribute("FailureRecord", failureRecord);
+        }
+        return mapping.findForward("detail");
+    }
 
-		String id = request.getParameter("id");
-		if (!"".equals(id) && id != null) {
-			FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
-			FailureRecord failureRecord = new FailureRecord();
-			failureRecord = filureRecordMgr.getFailureRecord(id);
-			filureRecordMgr.removeFailureRecord(failureRecord);
-		}
-		// interfaceMonitoringMgr.
 
-		return mapping.findForward("List");
-	}
-	public ActionForward failureRecordInterface(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		String id = request.getParameter("id");
-		if (!"".equals(id) && id != null) {
-			FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
-			FailureRecord failureRecord = new FailureRecord();
-			failureRecord = filureRecordMgr.getFailureRecord(id);
-			request.setAttribute("FailureRecord", failureRecord);
-		}
-		return mapping.findForward("InterfaceSuccess");
-	}
+    public ActionForward edit(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String id = request.getParameter("id");
+        if (!"".equals(id) && id != null) {
+            FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
+            FailureRecord failureRecord = new FailureRecord();
+            failureRecord = filureRecordMgr.getFailureRecord(id);
+            request.setAttribute("failureRecordForm", failureRecord);
+        }
+        return mapping.findForward("edit");
+    }
+
+    public ActionForward xdelete(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        String id = request.getParameter("id");
+        if (!"".equals(id) && id != null) {
+            FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
+            FailureRecord failureRecord = new FailureRecord();
+            failureRecord = filureRecordMgr.getFailureRecord(id);
+            filureRecordMgr.removeFailureRecord(failureRecord);
+        }
+        // interfaceMonitoringMgr.
+
+        return mapping.findForward("List");
+    }
+
+    public ActionForward failureRecordInterface(ActionMapping mapping,
+                                                ActionForm form, HttpServletRequest request,
+                                                HttpServletResponse response) throws Exception {
+        String id = request.getParameter("id");
+        if (!"".equals(id) && id != null) {
+            FailureRecordMgr filureRecordMgr = (FailureRecordMgr) getBean("failureRecordMgr");
+            FailureRecord failureRecord = new FailureRecord();
+            failureRecord = filureRecordMgr.getFailureRecord(id);
+            request.setAttribute("FailureRecord", failureRecord);
+        }
+        return mapping.findForward("InterfaceSuccess");
+    }
 }

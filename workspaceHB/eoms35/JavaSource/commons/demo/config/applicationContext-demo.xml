@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
     <!-- Add new Managers here -->
-    
-  
-    
-    
-    
-    
-    
-    <!--TestTable-START-->    
+
+
+    <!--TestTable-START-->
     <bean id="testTableManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.commons.demo.service.impl.TestTableManagerImpl">
@@ -21,41 +16,9 @@
         </property>
     </bean>
     <!--TestTable-END-->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <!--TawDemoMytable-START-->    
+
+
+    <!--TawDemoMytable-START-->
     <bean id="tawDemoMytableManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.commons.demo.service.impl.TawDemoMytableManagerImpl">

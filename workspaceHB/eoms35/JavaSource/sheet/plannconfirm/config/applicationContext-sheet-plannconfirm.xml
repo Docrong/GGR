@@ -1,119 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
 
     <bean id="IPlannConfirmMainDAO"
-		class="com.boco.eoms.sheet.plannconfirm.dao.hibernate.PlannConfirmMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IPlannConfirmLinkDAO"
-		class="com.boco.eoms.sheet.plannconfirm.dao.hibernate.PlannConfirmLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IPlannConfirmTaskDAO"
-		class="com.boco.eoms.sheet.plannconfirm.dao.hibernate.PlannConfirmTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="PlannConfirmTask"
-		class="com.boco.eoms.sheet.plannconfirm.model.PlannConfirmTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.plannconfirm.dao.hibernate.PlannConfirmMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IPlannConfirmLinkDAO"
+          class="com.boco.eoms.sheet.plannconfirm.dao.hibernate.PlannConfirmLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IPlannConfirmTaskDAO"
+          class="com.boco.eoms.sheet.plannconfirm.dao.hibernate.PlannConfirmTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="PlannConfirmTask"
+          class="com.boco.eoms.sheet.plannconfirm.model.PlannConfirmTask" autowire="byName">
+    </bean>
     <bean id="PlannConfirmLink"
-		class="com.boco.eoms.sheet.plannconfirm.model.PlannConfirmLink"
-		autowire="byName" />
-	<bean id="PlannConfirmMain"
-		class="com.boco.eoms.sheet.plannconfirm.model.PlannConfirmMain"
-		autowire="byName" />
-	<bean id="iPlannConfirmTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmTaskManagerImpl">
-				<property name="taskModelObject" ref="PlannConfirmTask" />
-				<property name="taskDAO">
-					<ref bean="IPlannConfirmTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-			       <value>/config/plannconfirmTaskConfig.properties</value>
-		        </property>				
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iPlannConfirmFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iPlannConfirmLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmLinkManagerImpl">
-				<property name="linkObject" ref="PlannConfirmLink"/>
-				<property name="linkDAO">
-				  <ref bean="IPlannConfirmLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iPlannConfirmMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmMainManagerImpl">
-			    <property name="mainObject" ref="PlannConfirmMain" />
-				<property name="mainDAO">
-				 <ref bean="IPlannConfirmMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iPlannConfirmQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>PlannConfirm</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/plannconfirm-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.plannconfirm.model.PlannConfirmLink"
+          autowire="byName"/>
+    <bean id="PlannConfirmMain"
+          class="com.boco.eoms.sheet.plannconfirm.model.PlannConfirmMain"
+          autowire="byName"/>
+    <bean id="iPlannConfirmTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmTaskManagerImpl">
+                <property name="taskModelObject" ref="PlannConfirmTask"/>
+                <property name="taskDAO">
+                    <ref bean="IPlannConfirmTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/plannconfirmTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iPlannConfirmFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iPlannConfirmLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmLinkManagerImpl">
+                <property name="linkObject" ref="PlannConfirmLink"/>
+                <property name="linkDAO">
+                    <ref bean="IPlannConfirmLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iPlannConfirmMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.plannconfirm.service.impl.PlannConfirmMainManagerImpl">
+                <property name="mainObject" ref="PlannConfirmMain"/>
+                <property name="mainDAO">
+                    <ref bean="IPlannConfirmMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iPlannConfirmQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>PlannConfirm</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/plannconfirm-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iPlannConfirmQo"
-		class="com.boco.eoms.sheet.plannconfirm.qo.impl.PlannConfirmQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="PlannConfirmMain" />
-		<property name="poLink" value="PlannConfirmLink" />
-		<property name="poTask" value="PlannConfirmTask" />
-		<property name="aliasMain" value="plannconfirmMain" />
-		<property name="aliasLink" value="plannconfirmLink" />
-		<property name="aliasTask" value="plannconfirmTask" />
+    <bean id="iPlannConfirmQo"
+          class="com.boco.eoms.sheet.plannconfirm.qo.impl.PlannConfirmQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="PlannConfirmMain"/>
+        <property name="poLink" value="PlannConfirmLink"/>
+        <property name="poTask" value="PlannConfirmTask"/>
+        <property name="aliasMain" value="plannconfirmMain"/>
+        <property name="aliasLink" value="plannconfirmLink"/>
+        <property name="aliasTask" value="plannconfirmTask"/>
 
-	</bean>
+    </bean>
 
-	<bean id="PlannConfirm" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.plannconfirm.webapp.action.PlannConfirmMethod">
-				<property name="businessFlowService" >
-					<ref bean="iPlannConfirmFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iPlannConfirmLinkManager" />
-				<property name="mainService"
-					ref="iPlannConfirmMainManager" />
-				<property name="sheetTask"
-					ref="PlannConfirmTask" />
-				<property name="taskService"
-					ref="iPlannConfirmTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/plannconfirm-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
+    <bean id="PlannConfirm" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.plannconfirm.webapp.action.PlannConfirmMethod">
+                <property name="businessFlowService">
+                    <ref bean="iPlannConfirmFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iPlannConfirmLinkManager"/>
+                <property name="mainService"
+                          ref="iPlannConfirmMainManager"/>
+                <property name="sheetTask"
+                          ref="PlannConfirmTask"/>
+                <property name="taskService"
+                          ref="iPlannConfirmTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/plannconfirm-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
 </beans>

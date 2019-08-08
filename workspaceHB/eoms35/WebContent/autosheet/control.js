@@ -1,532 +1,511 @@
-
-/*È·ÈÏÉ¾³ý²Ù×÷**************************************************************************/
-function ConfirmDel(){
-           if(confirm("ÇëÈ·ÈÏÊÇ·ñÉ¾³ý,¸Ã²Ù×÷½«É¾³ý¶ÔÓ¦ÏîÏÂµÄËùÓÐÏà¹ØÊý¾Ý,Çë½÷É÷²Ù×÷!")){
-             return true;
-           }else{
-             return false;
-           }
-         }
-
-/*È·ÈÏÐÞ¸Ä²Ù×÷**************************************************************************/
-function ConfirmUpdate(){
-           if(confirm("ÇëÈ·ÈÏÊÇ·ñÐÞ¸Ä,¸Ã²Ù×÷½«Ê¹ÐÞ¸ÄÐÅÏ¢ÉúÐ§²¢ÓÐ¿ÉÄÜÓ°ÏìÏà¹Ø²Ù×÷,Çë½÷É÷²Ù×÷!")){
-             return true;
-           }else{
-             return false;
-           }
-         }
-
-/*È·ÈÏ²éÑ¯Ê±¼ä¸ñÊ½**********************************************************************/
-function isDate(Year1,Month1,Day1,Year2,Month2,Day2) {
-         var Year1,Year2,Month1,Month2,Day1,Day2;
-           Year1 =  parseFloat(Year1);
-           Year2 =  parseFloat(Year2);
-           Month1 = parseFloat(Month1);
-           Month2 = parseFloat(Month2);
-           Day1 =   parseFloat(Day1);
-           Day2 =   parseFloat(Day2);
-
-        switch(Month1) {
-                case 4: case 6: case 9: case 11:
-                        if ( Day1 > 30 ) {
-                                alert("ÆðÊ¼ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                return false;
-                                }
-                        else break;
-                case 2:
-                        if ( ( ( Year1 % 4 == 0 && Year1 % 100 != 0 ) || Year1 % 400 == 0 ) && Day1 > 29 )
-                         {
-                                alert("ÆðÊ¼ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        else if ( (Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28 )
-
-                         {
-                            alert("ÆðÊ¼ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        default:
-        }
-        switch(Month2) {
-                case 4: case 6: case 9: case 11:
-                        if ( Day2 > 30 ) {
-                                alert("½áÊøÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                return false;
-                                }
-                        else break;
-                case 2:
-                        if ( ( ( Year2 % 4 == 0 && Year2 % 100 != 0 ) || Year2 % 400 == 0 ) && Day2 > 29 )
-                         {
-                                 alert("½áÊøÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-
-                        else if ( (Year2 % 4 != 0 || (Year2 % 100 == 0 && Year2 % 400 != 0)) && Day2 > 28 )
-                         {
-                                 alert("½áÊøÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        else break;
-                        default:
-        }
-        if(Year1>Year2){
-          alert("²éÑ¯¿ªÊ¼Äê·Ý:"+Year1+"-"+Month1+"-"+Day1+"´óÓÚ½áÊøÄê·Ý:"+Year2+"-"+Month2+"-"+Day2);
-          return false;
-        }else if(Month1>Month2){
-          alert("²éÑ¯¿ªÊ¼ÔÂ·Ý:"+Year1+"-"+Month1+"-"+Day1+"´óÓÚ½áÊøÔÂ·Ý:"+Year2+"-"+Month2+"-"+Day2);
-          return false;
-        }else if(Day1>Day2){
-          alert("²éÑ¯¿ªÊ¼ÌìÊý:"+Year1+"-"+Month1+"-"+Day1+"´óÓÚ½áÊøÌìÊý:"+Year2+"-"+Month2+"-"+Day2);
-          return false;
-        }
+/*È·ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½**************************************************************************/
+function ConfirmDel() {
+    if (confirm("ï¿½ï¿½È·ï¿½ï¿½ï¿½Ç·ï¿½É¾ï¿½ï¿½,ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!")) {
         return true;
-  }
-
-/*È·ÈÏÏÂÀ²¿ðÂ¼ÈëÊ±¼ä¸ñÊ½**********************************************************************/
-function isDateInput(Year1,Month1,Day1) {
-        var Year1,Month1,Day1;
-           Year1 =  parseFloat(Year1);
-           Month1 = parseFloat(Month1);
-           Day1 =   parseFloat(Day1);
-
-        switch(Month1) {
-                case 4: case 6: case 9: case 11:
-                        if ( Day1 > 30 ) {
-                                alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                return false;
-
-                                }
-                        else break;
-                case 2:
-                        if ( ( ( Year1 % 4 == 0 && Year1 % 100 != 0 ) || Year1 % 400 == 0 ) && Day1 > 29 )
-                         {
-                                alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        else if ( (Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28 )
-
-                         {
-                            alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        default:
-        }
-        return true;
-  }
-
-  /*È·ÈÏÎÄ±¾¿ðÂ¼ÈëÊ±¼ä¸ñÊ½**********************************************************************/
-function textInputIsDate(datestr) {
-        var Year1,Month1,Day1;
-        //ÀûÓÃÕýÔò±í´ïÊ½ÑéÖ¤Ê±¼ä¸ñÊ½
-        re=/^\d{4}-{1}\d{2}-{1}\d{2}$/;
-	if (datestr.match(re)==null)
-	{
-	  alert("Ê±¼äÊäÈë¸ñÊ½²»¶Ô£¬ÕýÈ·¸ñÊ½Îª:YYYY-MM-DD");
-	  return false;
-	}
-	else{
-
-           Year1 =  parseFloat(datestr.substring(0,3));
-           Month1 = parseFloat(datestr.substring(5,6));
-           Day1 =   parseFloat(datestr.substring(8,9));
-
-           switch(Month1) {
-                case 4: case 6: case 9: case 11:
-                        if ( Day1 > 30 ) {
-                                alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                return false;
-
-                                }
-                        else break;
-                case 2:
-                        if ( ( ( Year1 % 4 == 0 && Year1 % 100 != 0 ) || Year1 % 400 == 0 ) && Day1 > 29 )
-                         {
-                                alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        else if ( (Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28 )
-
-                         {
-                            alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        default:
-        	}
-        }
-        return true;
-  }
-
-/*È·ÈÏÂ¼ÈëÊ±¼ä¸ñÊ½**********************************************************************/
-function isDateInput2(Year1,Month1,Day1) {
-        var Year1,Month1,Day1;
-           Year1 =  parseFloat(Year1.value);
-           Month1 = parseFloat(Month1.value);
-           Day1 =   parseFloat(Day1.value);
-
-        switch(Month1) {
-                case 4: case 6: case 9: case 11:
-                        if ( Day1 > 30 ) {
-                                alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                return false;
-
-                                }
-                        else break;
-                case 2:
-                        if ( ( ( Year1 % 4 == 0 && Year1 % 100 != 0 ) || Year1 % 400 == 0 ) && Day1 > 29 )
-                         {
-                                alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        else if ( (Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28 )
-
-                         {
-                            alert("ÄêÔÂÈÕ"+Year1+"-"+Month1+"-"+Day1+"ÓÐÎÊÌâ");
-                                 return false;
-                         }
-                        default:
-        }
-        return true;
-  }
-
-
-
-  /*ÅÐ¶ÏÊÇ·ñÎªÊýÖµÏî****************************************************************/
-  function trim(str){
-        if (str==null)
-        {
-                return "";
-        }
-        for (i=0;i<str.length;i++){
-                if (str.charAt(0) == ' ') {
-                        str = str.substr(1);
-                }
-                else {
-                        break;
-                }
-        }
-        return str;
-  }
-
-  /*Ìæ»»×Ö·û´®**********************************************************************/
-  function replacechar(str,searchchar,replacechar){
-        for (i=0;i<str.length;i++){
-                if (str.charAt(0) == ' ') {
-                        str = str.substr(1);
-                }
-                else {
-                        break;
-                }
-        }
-        while (str.length > 0){
-                if (str.charAt(str.length-1) == ' ') {
-                        str = str.substr(0,str.length-1);
-                } else {
-                        break;
-                }
-        }
-        return str;
-  }
-
-  /*ÅÐ¶ÏÊÇ·ñÎªÊýÖµÏî****************************************************************/
-  function isNumber(inputVal) {
-
-        inputStr=inputVal;
-        if(inputStr.length==1){
-          if((inputStr.charAt(0)<'0')||(inputStr.charAt(0)>'9')){
-                  alert("ÊäÈëÏî:"+inputStr+"±ØÐëÎªÊýÖµ¡£");
-                   return false;
-            }
-        }else if(inputStr.length>1){
-            if((inputStr.charAt(0)<'0')||(inputStr.charAt(0)>'9')){
-              alert("ÊäÈëÏî:"+inputStr+"±ØÐëÎªÊýÖµ¡£");
-                   return false;
-            }
-            for(n=1;n<inputStr.length;n++){
-              if((inputStr.charAt(n)!='.')){
-              if((inputStr.charAt(n)> '9')||(inputStr.charAt(n)< '0')){
-                   alert("ÊäÈëÏî:"+inputStr+"±ØÐëÎªÊýÖµ¡£");
-                   return false;
-                }
-              }
-            }
-
-        }
-        return true;
-  }
-
- /*ÅÐ¶ÏÊýÖµÏîÊÇ·ñ³¬³ö×î´óÏÞÖÆ*********************************************************/
-  function isOutRange(inputVal) {
-    var inputInt=parseInt(inputVal);
-
-    var index=document.addEForm.vStoreType.options[document.addEForm.vStoreType.selectedIndex].text;
-    if(index=="String"){
-      var inputInt1=parseInt("255");
-    }
-    else if (index=="LongString"){
-      var inputInt1=parseInt("4000");
-    }
-    if(inputInt>inputInt1){
-      alert("ÊäÈëÏî:"+inputVal+"³¬¹ý×î´óÖµ:"+inputInt1);
-      return false;
-    }
-    return true;
-  }
-
-  /*ÅÐ¶ÏÊÇ·ñÎªÊýÖµÏî****************************************************************/
-  function isNumber2(inputVal) {
-
-        inputStr=inputVal.value;
-        if(inputStr.length==1){
-          if((inputStr.charAt(0)<'0')||(inputStr.charAt(0)>'9')){
-                  alert("ÊäÈëÏî:"+inputVal.name+"µÄÖµ"+inputStr+"ÓÐÎÊÌâ.");
-                   return false;
-            }
-        }else if(inputStr.length>1){
-            if((inputStr.charAt(0)<'1')||(inputStr.charAt(0)>'9')){
-              alert("ÊäÈëÏî:"+inputVal.name+"µÄÖµ"+inputStr+"ÓÐÎÊÌâ.");
-                   return false;
-            }
-            for(n=1;n<inputStr.length;n++){
-              if((inputStr.charAt(n)> '9')||(inputStr.charAt(n)< '0')){
-                   alert("ÊäÈëÏî:"+inputVal.name+"µÄÖµ"+inputStr+"ÓÐÎÊÌâ.");
-                   return false;
-                }
-            }
-
-        }
-        return true;
-  }
-
-  /*ÅÐ¶ÏÑÕÉ«¸ñÊ½********************************************************************/
-  function isColor(varColor){
-          /*var varcolor=varColor;
-          if(varcolor!=""){
-            if(varcolor.length!=7){
-              alert("ÏÔÊ¾ÑÕÉ«¸ñÊ½´íÎó,ÕýÈ·¸ñÊ½´Ó:#000000µ½#FFFFFF.");
-              return false;
-            }else if(varcolor.length==7){
-              if(varcolor.charAt(0)!="#"){
-                alert("ÏÔÊ¾ÑÕÉ«¸ñÊ½´íÎó,ÕýÈ·¸ñÊ½´Ó:#000000µ½#FFFFFF.");
-                return false;
-              }else{
-                for(i=1;i<7;i++){
-                  if((varcolor.charAt(i)<="0"||varcolor.charAt(i)>="9")&&(varcolor.charAt(i)<="a"||varcolor.charAt(i)>="f")&&(varcolor.charAt(i)<="A"||varcolor.charAt(i)>="F")){
-                    alert("ÏÔÊ¾ÑÕÉ«¸ñÊ½´íÎó,ÕýÈ·¸ñÊ½´Ó:#000000µ½#FFFFFF.");
-                    return false;
-                  }
-                }
-              }
-            }
-          }*/
-          return true;
-  }
-
-  /***·µ»ØÁ½¸öÊý±È½Ï½á¹û,Èç¹û×ó±ßµÄÊý´óÓÚÓÒ±ßµÄÊý,·µ»Ø¼Ù,·´Ö®Ôò·´**********************/
-  function compareTwoNum(varValue1,varValue2){
-    var var1=parseFloat(varValue1);
-    var var2=parseFloat(varValue2);
-    if(var1>var2){
-      alert("×ó±ßµÄÊý²»ÄÜ´óÓÚÓÒ±ßµÄÊý");
-      return false;
-    }
-    else
-      return true;
-  }
-
-  /***È¨ÏÞ¸æ¾¯*********************************************************************/
-  function powerAlert(varValue){
-    var varvalue=parseFloat(varValue);
-    if(varvalue==1){
-      alert("¶Ô²»Æð,ÄãÃ»ÓÐÈ¨ÏÞ½øÐÐ´ËÏî²Ù×÷!");
-      return false;
-    }
-    else
-      return true;
-  }
-
-  /***ÅÐ¶ÏÊÇ·ñÎª¿Õ******************************************************************/
-  function isNull(varStr){
-    var varstr=varStr;
-    if(varstr==""||varstr==null){
-       alert("´øÐÇºÅµÄÏî"+varStr+"²»ÄÜÎª¿Õ.");
-       return false;
-    }
-    return true;
-  }
-
-  /***ÅÐ¶ÏÊÇ·ñÎª¿Õ******************************************************************/
-  function isNull2(varStr){
-    var varstr=varStr.value;
-    if(varstr==""||varstr==null){
-       alert("´øÐÇºÅµÄÏî"+varStr.name+"²»ÄÜÎª¿Õ.");
-       return false;
-    }
-    return true;
-  }
-
- /***ÅÐ¶ÏÑ¡Ôñ¿òÊÇ·ñÑ¡ÖÐ******************************************************************/
-  function isOption(selectAttr){
-    var j=0;
-      var SelectedIndex = selectAttr.options.selectedIndex;
-      if (SelectedIndex == -1) {
-        alert("ÇëÑ¡ÔñÒ»¸ö²¿ÃÅ");
+    } else {
         return false;
-      }else{
-          return true;
+    }
+}
+
+/*È·ï¿½ï¿½ï¿½Þ¸Ä²ï¿½ï¿½ï¿½**************************************************************************/
+function ConfirmUpdate() {
+    if (confirm("ï¿½ï¿½È·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Þ¸ï¿½,ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Þ¸ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!")) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/*È·ï¿½Ï²ï¿½Ñ¯Ê±ï¿½ï¿½ï¿½Ê½**********************************************************************/
+function isDate(Year1, Month1, Day1, Year2, Month2, Day2) {
+    var Year1, Year2, Month1, Month2, Day1, Day2;
+    Year1 = parseFloat(Year1);
+    Year2 = parseFloat(Year2);
+    Month1 = parseFloat(Month1);
+    Month2 = parseFloat(Month2);
+    Day1 = parseFloat(Day1);
+    Day2 = parseFloat(Day2);
+
+    switch (Month1) {
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (Day1 > 30) {
+                alert("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            } else break;
+        case 2:
+            if (((Year1 % 4 == 0 && Year1 % 100 != 0) || Year1 % 400 == 0) && Day1 > 29) {
+                alert("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            } else if ((Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28) {
+                alert("ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            }
+        default:
+    }
+    switch (Month2) {
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (Day2 > 30) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            } else break;
+        case 2:
+            if (((Year2 % 4 == 0 && Year2 % 100 != 0) || Year2 % 400 == 0) && Day2 > 29) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            } else if ((Year2 % 4 != 0 || (Year2 % 100 == 0 && Year2 % 400 != 0)) && Day2 > 28) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            } else break;
+        default:
+    }
+    if (Year1 > Year2) {
+        alert("ï¿½ï¿½Ñ¯ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½:" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + Year2 + "-" + Month2 + "-" + Day2);
+        return false;
+    } else if (Month1 > Month2) {
+        alert("ï¿½ï¿½Ñ¯ï¿½ï¿½Ê¼ï¿½Â·ï¿½:" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½Â·ï¿½:" + Year2 + "-" + Month2 + "-" + Day2);
+        return false;
+    } else if (Day1 > Day2) {
+        alert("ï¿½ï¿½Ñ¯ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½:" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + Year2 + "-" + Month2 + "-" + Day2);
+        return false;
+    }
+    return true;
+}
+
+/*È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ê½**********************************************************************/
+function isDateInput(Year1, Month1, Day1) {
+    var Year1, Month1, Day1;
+    Year1 = parseFloat(Year1);
+    Month1 = parseFloat(Month1);
+    Day1 = parseFloat(Day1);
+
+    switch (Month1) {
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (Day1 > 30) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+
+            } else break;
+        case 2:
+            if (((Year1 % 4 == 0 && Year1 % 100 != 0) || Year1 % 400 == 0) && Day1 > 29) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            } else if ((Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            }
+        default:
+    }
+    return true;
+}
+
+/*È·ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ê½**********************************************************************/
+function textInputIsDate(datestr) {
+    var Year1, Month1, Day1;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ö¤Ê±ï¿½ï¿½ï¿½Ê½
+    re = /^\d{4}-{1}\d{2}-{1}\d{2}$/;
+    if (datestr.match(re) == null) {
+        alert("Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½È·ï¿½ï¿½Ê½Îª:YYYY-MM-DD");
+        return false;
+    } else {
+
+        Year1 = parseFloat(datestr.substring(0, 3));
+        Month1 = parseFloat(datestr.substring(5, 6));
+        Day1 = parseFloat(datestr.substring(8, 9));
+
+        switch (Month1) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                if (Day1 > 30) {
+                    alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                    return false;
+
+                } else break;
+            case 2:
+                if (((Year1 % 4 == 0 && Year1 % 100 != 0) || Year1 % 400 == 0) && Day1 > 29) {
+                    alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                    return false;
+                } else if ((Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28) {
+                    alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                    return false;
+                }
+            default:
+        }
+    }
+    return true;
+}
+
+/*È·ï¿½ï¿½Â¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ê½**********************************************************************/
+function isDateInput2(Year1, Month1, Day1) {
+    var Year1, Month1, Day1;
+    Year1 = parseFloat(Year1.value);
+    Month1 = parseFloat(Month1.value);
+    Day1 = parseFloat(Day1.value);
+
+    switch (Month1) {
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            if (Day1 > 30) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+
+            } else break;
+        case 2:
+            if (((Year1 % 4 == 0 && Year1 % 100 != 0) || Year1 % 400 == 0) && Day1 > 29) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            } else if ((Year1 % 4 != 0 || (Year1 % 100 == 0 && Year1 % 400 != 0)) && Day1 > 28) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + Year1 + "-" + Month1 + "-" + Day1 + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+                return false;
+            }
+        default:
+    }
+    return true;
+}
+
+
+/*ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Öµï¿½ï¿½****************************************************************/
+function trim(str) {
+    if (str == null) {
+        return "";
+    }
+    for (i = 0; i < str.length; i++) {
+        if (str.charAt(0) == ' ') {
+            str = str.substr(1);
+        } else {
+            break;
+        }
+    }
+    return str;
+}
+
+/*ï¿½æ»»ï¿½Ö·ï¿½ï¿½ï¿½**********************************************************************/
+function replacechar(str, searchchar, replacechar) {
+    for (i = 0; i < str.length; i++) {
+        if (str.charAt(0) == ' ') {
+            str = str.substr(1);
+        } else {
+            break;
+        }
+    }
+    while (str.length > 0) {
+        if (str.charAt(str.length - 1) == ' ') {
+            str = str.substr(0, str.length - 1);
+        } else {
+            break;
+        }
+    }
+    return str;
+}
+
+/*ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Öµï¿½ï¿½****************************************************************/
+function isNumber(inputVal) {
+
+    inputStr = inputVal;
+    if (inputStr.length == 1) {
+        if ((inputStr.charAt(0) < '0') || (inputStr.charAt(0) > '9')) {
+            alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + inputStr + "ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Öµï¿½ï¿½");
+            return false;
+        }
+    } else if (inputStr.length > 1) {
+        if ((inputStr.charAt(0) < '0') || (inputStr.charAt(0) > '9')) {
+            alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + inputStr + "ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Öµï¿½ï¿½");
+            return false;
+        }
+        for (n = 1; n < inputStr.length; n++) {
+            if ((inputStr.charAt(n) != '.')) {
+                if ((inputStr.charAt(n) > '9') || (inputStr.charAt(n) < '0')) {
+                    alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + inputStr + "ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Öµï¿½ï¿½");
+                    return false;
+                }
+            }
+        }
+
+    }
+    return true;
+}
+
+/*ï¿½Ð¶ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ç·ñ³¬³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*********************************************************/
+function isOutRange(inputVal) {
+    var inputInt = parseInt(inputVal);
+
+    var index = document.addEForm.vStoreType.options[document.addEForm.vStoreType.selectedIndex].text;
+    if (index == "String") {
+        var inputInt1 = parseInt("255");
+    } else if (index == "LongString") {
+        var inputInt1 = parseInt("4000");
+    }
+    if (inputInt > inputInt1) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + inputVal + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ:" + inputInt1);
+        return false;
+    }
+    return true;
+}
+
+/*ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½Öµï¿½ï¿½****************************************************************/
+function isNumber2(inputVal) {
+
+    inputStr = inputVal.value;
+    if (inputStr.length == 1) {
+        if ((inputStr.charAt(0) < '0') || (inputStr.charAt(0) > '9')) {
+            alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + inputVal.name + "ï¿½ï¿½Öµ" + inputStr + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+            return false;
+        }
+    } else if (inputStr.length > 1) {
+        if ((inputStr.charAt(0) < '1') || (inputStr.charAt(0) > '9')) {
+            alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + inputVal.name + "ï¿½ï¿½Öµ" + inputStr + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+            return false;
+        }
+        for (n = 1; n < inputStr.length; n++) {
+            if ((inputStr.charAt(n) > '9') || (inputStr.charAt(n) < '0')) {
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:" + inputVal.name + "ï¿½ï¿½Öµ" + inputStr + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.");
+                return false;
+            }
+        }
+
+    }
+    return true;
+}
+
+/*ï¿½Ð¶ï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½********************************************************************/
+function isColor(varColor) {
+    /*var varcolor=varColor;
+    if(varcolor!=""){
+      if(varcolor.length!=7){
+        alert("ï¿½ï¿½Ê¾ï¿½ï¿½É«ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½È·ï¿½ï¿½Ê½ï¿½ï¿½:#000000ï¿½ï¿½#FFFFFF.");
+        return false;
+      }else if(varcolor.length==7){
+        if(varcolor.charAt(0)!="#"){
+          alert("ï¿½ï¿½Ê¾ï¿½ï¿½É«ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½È·ï¿½ï¿½Ê½ï¿½ï¿½:#000000ï¿½ï¿½#FFFFFF.");
+          return false;
+        }else{
+          for(i=1;i<7;i++){
+            if((varcolor.charAt(i)<="0"||varcolor.charAt(i)>="9")&&(varcolor.charAt(i)<="a"||varcolor.charAt(i)>="f")&&(varcolor.charAt(i)<="A"||varcolor.charAt(i)>="F")){
+              alert("ï¿½ï¿½Ê¾ï¿½ï¿½É«ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½È·ï¿½ï¿½Ê½ï¿½ï¿½:#000000ï¿½ï¿½#FFFFFF.");
+              return false;
+            }
+          }
+        }
       }
-  }
+    }*/
+    return true;
+}
 
-  /***ÅÐ¶Ï******************************************************************/
-   function isPowerUser(poweruser){
+/***ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È½Ï½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò±ßµï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ø¼ï¿½,ï¿½ï¿½Ö®ï¿½ï¿½**********************/
+function compareTwoNum(varValue1, varValue2) {
+    var var1 = parseFloat(varValue1);
+    var var2 = parseFloat(varValue2);
+    if (var1 > var2) {
+        alert("ï¿½ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½ï¿½Ò±ßµï¿½ï¿½ï¿½");
+        return false;
+    } else
+        return true;
+}
 
-       if (poweruser!="") {
-         alert("¾¯¸æ:"+poweruser);
-         return false;
-       }else{
-           return true;
-       }
+/***È¨ï¿½Þ¸æ¾¯*********************************************************************/
+function powerAlert(varValue) {
+    var varvalue = parseFloat(varValue);
+    if (varvalue == 1) {
+        alert("ï¿½Ô²ï¿½ï¿½ï¿½,ï¿½ï¿½Ã»ï¿½ï¿½È¨ï¿½Þ½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!");
+        return false;
+    } else
+        return true;
+}
+
+/***ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½******************************************************************/
+function isNull(varStr) {
+    var varstr = varStr;
+    if (varstr == "" || varstr == null) {
+        alert("ï¿½ï¿½ï¿½ÇºÅµï¿½ï¿½ï¿½" + varStr + "ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½.");
+        return false;
+    }
+    return true;
+}
+
+/***ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½******************************************************************/
+function isNull2(varStr) {
+    var varstr = varStr.value;
+    if (varstr == "" || varstr == null) {
+        alert("ï¿½ï¿½ï¿½ÇºÅµï¿½ï¿½ï¿½" + varStr.name + "ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½.");
+        return false;
+    }
+    return true;
+}
+
+/***ï¿½Ð¶ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ñ¡ï¿½ï¿½******************************************************************/
+function isOption(selectAttr) {
+    var j = 0;
+    var SelectedIndex = selectAttr.options.selectedIndex;
+    if (SelectedIndex == -1) {
+        alert("ï¿½ï¿½Ñ¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+/***ï¿½Ð¶ï¿½******************************************************************/
+function isPowerUser(poweruser) {
+
+    if (poweruser != "") {
+        alert("ï¿½ï¿½ï¿½ï¿½:" + poweruser);
+        return false;
+    } else {
+        return true;
+    }
 
 
-  }
+}
 
-  function vStoreTypeChange(){
+function vStoreTypeChange() {
 
- var index=document.addEForm.vStoreType.options[document.addEForm.vStoreType.selectedIndex].text;
- var index1=document.addEForm.showtype.options[document.addEForm.showtype.selectedIndex].value;
-     if(index=="Date" || index=="DateTime"){
-	  //document.addEForm.showtype.selectedIndex=3;
-      document.addEForm.showtype.disabled=true;
-      document.addEForm.formWidth.disabled=true;
-      document.addEForm.formHeight.disabled=true;
-      document.addEForm.typeID.disabled=true;
-     }else if(index=="Integer" || index=="Float"){
-        document.addEForm.showtype.selectedIndex=0;
-        document.addEForm.showtype.disabled=true;
-        document.addEForm.typeID.selectedIndex=0;
-        document.addEForm.typeID.disabled=true;
-        if(index1==0 || index1==5){
-          document.addEForm.formWidth.disabled=false;
-          document.addEForm.formHeight.disabled=false;
-          }
-        str.innerHTML="ÊäÈë´®×î´ó³¤";
-     }else if(index=="String" || index=="LongString"){
-        document.addEForm.showtype.disabled=false;
-        document.addEForm.typeID.selectedIndex=0;
-        document.addEForm.typeID.disabled=true;
-         if(index1==0 || index1==5){
-          document.addEForm.formWidth.disabled=false;
-          document.addEForm.formHeight.disabled=false;
-          }
-     }
-     else{
-	  //document.addEForm.showtype.selectedIndex=0;
-      document.addEForm.showtype.disabled=false;
-      document.addEForm.formWidth.disabled=false;
-      document.addEForm.formHeight.disabled=false;
-      document.addEForm.typeID.disabled=false;
+    var index = document.addEForm.vStoreType.options[document.addEForm.vStoreType.selectedIndex].text;
+    var index1 = document.addEForm.showtype.options[document.addEForm.showtype.selectedIndex].value;
+    if (index == "Date" || index == "DateTime") {
+        //document.addEForm.showtype.selectedIndex=3;
+        document.addEForm.showtype.disabled = true;
+        document.addEForm.formWidth.disabled = true;
+        document.addEForm.formHeight.disabled = true;
+        document.addEForm.typeID.disabled = true;
+    } else if (index == "Integer" || index == "Float") {
+        document.addEForm.showtype.selectedIndex = 0;
+        document.addEForm.showtype.disabled = true;
+        document.addEForm.typeID.selectedIndex = 0;
+        document.addEForm.typeID.disabled = true;
+        if (index1 == 0 || index1 == 5) {
+            document.addEForm.formWidth.disabled = false;
+            document.addEForm.formHeight.disabled = false;
+        }
+        str.innerHTML = "ï¿½ï¿½ï¿½ë´®ï¿½ï¿½ï¿½";
+    } else if (index == "String" || index == "LongString") {
+        document.addEForm.showtype.disabled = false;
+        document.addEForm.typeID.selectedIndex = 0;
+        document.addEForm.typeID.disabled = true;
+        if (index1 == 0 || index1 == 5) {
+            document.addEForm.formWidth.disabled = false;
+            document.addEForm.formHeight.disabled = false;
+        }
+    } else {
+        //document.addEForm.showtype.selectedIndex=0;
+        document.addEForm.showtype.disabled = false;
+        document.addEForm.formWidth.disabled = false;
+        document.addEForm.formHeight.disabled = false;
+        document.addEForm.typeID.disabled = false;
 
-	 }
-  }
-function showtypeChange(){
-  var index=document.addEForm.showtype.options[document.addEForm.showtype.selectedIndex].value;
-    if(index==0 || index==5){
-      document.addEForm.typeID.disabled=true;
-      document.addEForm.formWidth.disabled=false;
-      document.addEForm.formHeight.disabled=false;
-      document.addEForm.vStoreType.disabled=false;
-      if(index==5)
-        {str.innerHTML="ÎÄ±¾±à¼­¿ò¸ß<font color=\"red\">(*)</font>";
-         document.addEForm.height.disabled=true;
-         if(document.addEForm.isedit.value=="0")
-         document.addEForm.formHeight.value=3;}
-      else
-        {str.innerHTML="ÊäÈë´®×î´ó³¤<font color=\"red\">(*)</font>";
-         if(document.addEForm.isedit.value=="0")
-         document.addEForm.formHeight.value=20;}
-    }else{
-      document.addEForm.typeID.disabled=false;
-      document.addEForm.formWidth.disabled=true;
-      document.addEForm.formHeight.disabled=true;
-      document.addEForm.vStoreType.selectedIndex=0;
-      document.addEForm.vStoreType.disabled=true;
-      str.innerHTML="ÊäÈë´®×î´ó³¤<font color=\"red\">(*)</font>";
+    }
+}
 
-   }
-  }
-  function openColorWin(){
+function showtypeChange() {
+    var index = document.addEForm.showtype.options[document.addEForm.showtype.selectedIndex].value;
+    if (index == 0 || index == 5) {
+        document.addEForm.typeID.disabled = true;
+        document.addEForm.formWidth.disabled = false;
+        document.addEForm.formHeight.disabled = false;
+        document.addEForm.vStoreType.disabled = false;
+        if (index == 5) {
+            str.innerHTML = "ï¿½Ä±ï¿½ï¿½à¼­ï¿½ï¿½ï¿½<font color=\"red\">(*)</font>";
+            document.addEForm.height.disabled = true;
+            if (document.addEForm.isedit.value == "0")
+                document.addEForm.formHeight.value = 3;
+        } else {
+            str.innerHTML = "ï¿½ï¿½ï¿½ë´®ï¿½ï¿½ï¿½<font color=\"red\">(*)</font>";
+            if (document.addEForm.isedit.value == "0")
+                document.addEForm.formHeight.value = 20;
+        }
+    } else {
+        document.addEForm.typeID.disabled = false;
+        document.addEForm.formWidth.disabled = true;
+        document.addEForm.formHeight.disabled = true;
+        document.addEForm.vStoreType.selectedIndex = 0;
+        document.addEForm.vStoreType.disabled = true;
+        str.innerHTML = "ï¿½ï¿½ï¿½ë´®ï¿½ï¿½ï¿½<font color=\"red\">(*)</font>";
+
+    }
+}
+
+function openColorWin() {
 //	if (window.secondwindow&&window.secondwindow.closed==false){
 //		secondwindow.document.bgColor='red';secondwindow.focus();
 //	}else
-		secondwindow=window.showModalDialog("color.jsp",window,"dialogHeight:235px;dialogWidth:230px;center:YES;help:NO;resizable:NO;status:NO;");
-		//alert(secondwindow);
-		document.addEForm.color.value=secondwindow;
-		return true;
-	}
-
-
-
-	function checkValueInput(){
-     var vName=document.addEForm.vName.value;
-     var index=document.addEForm.index.value;
-     var color   =document.addEForm.color.value;
-     var colspan=document.addEForm.colspan.value;
-     var rowspan=document.addEForm.rowspan.value;
-     var width=document.addEForm.width.value;
-     var height=document.addEForm.height.value;
-     var formWidth=document.addEForm.formWidth.value;
-     var formHeight=document.addEForm.formHeight.value;
-     var formWidth2=document.addEForm.formWidth;
-
-    if(isOutRange(formHeight)&&isNull(vName)&&isNull(index)&&isNull(colspan)&&isNull(rowspan)&&
-		isNull(formWidth)&&isNull(formHeight)&&isNumber(colspan)&&isNumber(rowspan)&&
-		isNumber(width)&&isNumber(index)&&isNumber(height)&&isNumber(formWidth)&&isNumber(formHeight)&&isVariable(document.addEForm.vName)){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-function isVariable(variable){
-	var literal='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	var number='0123456789_';
-	if(variable.value==null)
-		alert('´ËÏî²»ÄÜÎª¿Õ');
-	var value=trim(variable.value);
-	for(i=0;i<value.length;i++){
-		if(i==0){
-			if(literal.indexOf(value.charAt(i))<0){
-				alert('Ê××ÖÄ¸±ØÐëÊÇÓ¢ÎÄ×ÖÄ¸');
-				return variable.focus();
-
-			}
-		}else{
-			if(literal.indexOf(value.charAt(i))<0&&number.indexOf(value.charAt(i))<0){
-				alert('ÇëÊäÈëÓ¢ÎÄ»òÊý×Ö»òÏÂ»®Ïß"_"×éºÏ');
-				return variable.focus();
-
-			}
-		}
-
-	}
-	return true;
+    secondwindow = window.showModalDialog("color.jsp", window, "dialogHeight:235px;dialogWidth:230px;center:YES;help:NO;resizable:NO;status:NO;");
+    //alert(secondwindow);
+    document.addEForm.color.value = secondwindow;
+    return true;
 }
 
-function initEditValue(){
- var index=document.addEForm.showtype.options[document.addEForm.showtype.selectedIndex].value;
- var index1=document.addEForm.vStoreType.options[document.addEForm.vStoreType.selectedIndex].text;
 
-      if(index==5)
-        {str.innerHTML="ÎÄ±¾±à¼­¿ò¸ß";
-         document.addEForm.height.disabled=true;
-         }
-      else
-        {str.innerHTML="ÊäÈë´®×î´ó³¤";
-         }
-      if(index==0||index==5)
-      document.addEForm.typeID.disabled=true;
+function checkValueInput() {
+    var vName = document.addEForm.vName.value;
+    var index = document.addEForm.index.value;
+    var color = document.addEForm.color.value;
+    var colspan = document.addEForm.colspan.value;
+    var rowspan = document.addEForm.rowspan.value;
+    var width = document.addEForm.width.value;
+    var height = document.addEForm.height.value;
+    var formWidth = document.addEForm.formWidth.value;
+    var formHeight = document.addEForm.formHeight.value;
+    var formWidth2 = document.addEForm.formWidth;
 
-      if(index=="Integer" || index=="Float"){
-        str.innerHTML="ÊäÈë´®×î´ó³¤";
-     }
+    if (isOutRange(formHeight) && isNull(vName) && isNull(index) && isNull(colspan) && isNull(rowspan) &&
+        isNull(formWidth) && isNull(formHeight) && isNumber(colspan) && isNumber(rowspan) &&
+        isNumber(width) && isNumber(index) && isNumber(height) && isNumber(formWidth) && isNumber(formHeight) && isVariable(document.addEForm.vName)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isVariable(variable) {
+    var literal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var number = '0123456789_';
+    if (variable.value == null)
+        alert('ï¿½ï¿½ï¿½î²»ï¿½ï¿½Îªï¿½ï¿½');
+    var value = trim(variable.value);
+    for (i = 0; i < value.length; i++) {
+        if (i == 0) {
+            if (literal.indexOf(value.charAt(i)) < 0) {
+                alert('ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½Ä¸');
+                return variable.focus();
+
+            }
+        } else {
+            if (literal.indexOf(value.charAt(i)) < 0 && number.indexOf(value.charAt(i)) < 0) {
+                alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½Ä»ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Â»ï¿½ï¿½ï¿½"_"ï¿½ï¿½ï¿½');
+                return variable.focus();
+
+            }
+        }
+
+    }
+    return true;
+}
+
+function initEditValue() {
+    var index = document.addEForm.showtype.options[document.addEForm.showtype.selectedIndex].value;
+    var index1 = document.addEForm.vStoreType.options[document.addEForm.vStoreType.selectedIndex].text;
+
+    if (index == 5) {
+        str.innerHTML = "ï¿½Ä±ï¿½ï¿½à¼­ï¿½ï¿½ï¿½";
+        document.addEForm.height.disabled = true;
+    } else {
+        str.innerHTML = "ï¿½ï¿½ï¿½ë´®ï¿½ï¿½ï¿½";
+    }
+    if (index == 0 || index == 5)
+        document.addEForm.typeID.disabled = true;
+
+    if (index == "Integer" || index == "Float") {
+        str.innerHTML = "ï¿½ï¿½ï¿½ë´®ï¿½ï¿½ï¿½";
+    }
 }

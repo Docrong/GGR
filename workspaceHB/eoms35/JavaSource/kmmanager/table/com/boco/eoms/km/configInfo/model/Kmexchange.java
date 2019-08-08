@@ -12,27 +12,31 @@
 package com.boco.eoms.km.configInfo.model;
 
 public class Kmexchange {
-  private String exchangetime;
-  private int roomId;
-  private short id;
+    private String exchangetime;
+    private int roomId;
+    private short id;
 
-  public String getExchangetime() {
-    return exchangetime;
-  }
-  public int getRoomId() {
-    return roomId;
-  }
-  public short getId() {
-    return id;
-  }
+    public String getExchangetime() {
+        return exchangetime;
+    }
 
-  public void setExchangetime(String exchangetime) {
-    this.exchangetime = exchangetime;
-  }
-  public void setRoomId(int roomId) {
-    this.roomId = roomId;
-  }
-  public void setId(short id) {
-    this.id = id;
-  }
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public short getId() {
+        return id;
+    }
+
+    public void setExchangetime(String exchangetime) {
+        this.exchangetime = exchangetime;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
+    public void setId(short id) {
+        this.id = id;
+    }
 }

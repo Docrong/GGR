@@ -7,21 +7,21 @@ import com.boco.eoms.commons.loging.BocoLog;
 
 /**
  * Hibernate implementation of LookupDao.
- * 
+ *
  * <p>
  * <a href="LookupDaoHibernate.java.html"><i>View Source</i></a>
  * </p>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 public class LookupDaoHibernate extends BaseDaoHibernate implements LookupDao {
 
-	/**
-	 * @see com.boco.eoms.base.dao.LookupDao#getRoles()
-	 */
-	public List getRoles() {
-		BocoLog.debug(this,"retrieving all role names...");
+    /**
+     * @see com.boco.eoms.base.dao.LookupDao#getRoles()
+     */
+    public List getRoles() {
+        BocoLog.debug(this, "retrieving all role names...");
 
-		return getHibernateTemplate().find("from Role order by name");
-	}
+        return getHibernateTemplate().find("from Role order by name");
+    }
 }

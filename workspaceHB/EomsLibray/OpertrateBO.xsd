@@ -1,95 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="http://EomsLibray">
-	<xsd:complexType name="OpertrateBO">
-		<xsd:annotation>
-      <xsd:documentation>该对象为用户页面操作时所输入的，没有必要保存到我们的main和link中。但是流程流转中确实需要的属性。&#13;
-包括但不限于：&#13;
-1.用户所选择的执行者对象。处理对象，抄送对象，审核对象。</xsd:documentation>
-    </xsd:annotation>
-		<xsd:sequence>
-			<xsd:element minOccurs="0" name="dealPerformer"
-				type="xsd:string"><xsd:annotation><xsd:documentation>处理人</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="dealPerformerLeader"
-				type="xsd:string">
-				<xsd:annotation><xsd:documentation>处理人组长</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="dealPerformerType"
-				type="xsd:string"><xsd:annotation><xsd:documentation>处理人类型：角色（subrole）、部门（dept）、人员（user）</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="copyPerformer"
-				type="xsd:string" />
-			<xsd:element minOccurs="0" name="copyPerformerLeader"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="copyPerformerType"
-				type="xsd:string">
-				<xsd:annotation><xsd:documentation>抄送者类型：角色（subrole）、部门（dept）、人员（user）</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="auditPerformer"
-				type="xsd:string" />
-			<xsd:element minOccurs="0" name="auditPerformerLeader"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="auditPerformerType"
-				type="xsd:string">
-				<xsd:annotation><xsd:documentation>审核者类型：角色（subrole）、部门（dept）、人员（user）</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="phaseId" type="xsd:string" />
-			<xsd:element minOccurs="0" name="beanId"
-				type="xsd:string">
-				<xsd:annotation>
-          <xsd:documentation>存在工单mainServiceBeanId</xsd:documentation>
+            targetNamespace="http://EomsLibray">
+    <xsd:complexType name="OpertrateBO">
+        <xsd:annotation>
+            <xsd:documentation>该对象为用户页面操作时所输入的，没有必要保存到我们的main和link中。但是流程流转中确实需要的属性。&#13;
+                包括但不限于：&#13;
+                1.用户所选择的执行者对象。处理对象，抄送对象，审核对象。
+            </xsd:documentation>
         </xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="mainClassName"
-				type="xsd:string" />
-			<xsd:element minOccurs="0" name="linkClassName"
-				type="xsd:string" />
-			<xsd:element minOccurs="0" name="hasNextTaskFlag"
-				type="xsd:string">
-				<xsd:annotation><xsd:documentation>此值是用于判断当前task完成后，是否还生成新的task。取值为：true或者false</xsd:documentation></xsd:annotation>
-			</xsd:element>
-			<xsd:element minOccurs="0" name="reInvokeCount"
-				type="xsd:int" maxOccurs="1">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="linkBeanId"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="interfaceType"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="methodType"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="sendType"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="subAuditPerformer"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="subAuditPerformerType"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="subAuditPerformerLeader"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="extendPerformer"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="extendPerformerLeader"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="extendPerformerType"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="extendKey1"
-				type="xsd:string">
-			</xsd:element>
-			<xsd:element minOccurs="0" name="extendKey2"
-				type="xsd:string">
-			</xsd:element>
-		</xsd:sequence>
-	</xsd:complexType>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="dealPerformer"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>处理人</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="dealPerformerLeader"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>处理人组长</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="dealPerformerType"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>处理人类型：角色（subrole）、部门（dept）、人员（user）</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="copyPerformer"
+                         type="xsd:string"/>
+            <xsd:element minOccurs="0" name="copyPerformerLeader"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="copyPerformerType"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>抄送者类型：角色（subrole）、部门（dept）、人员（user）</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="auditPerformer"
+                         type="xsd:string"/>
+            <xsd:element minOccurs="0" name="auditPerformerLeader"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="auditPerformerType"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>审核者类型：角色（subrole）、部门（dept）、人员（user）</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="phaseId" type="xsd:string"/>
+            <xsd:element minOccurs="0" name="beanId"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>存在工单mainServiceBeanId</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="mainClassName"
+                         type="xsd:string"/>
+            <xsd:element minOccurs="0" name="linkClassName"
+                         type="xsd:string"/>
+            <xsd:element minOccurs="0" name="hasNextTaskFlag"
+                         type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>此值是用于判断当前task完成后，是否还生成新的task。取值为：true或者false</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="reInvokeCount"
+                         type="xsd:int" maxOccurs="1">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="linkBeanId"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="interfaceType"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="methodType"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="sendType"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="subAuditPerformer"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="subAuditPerformerType"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="subAuditPerformerLeader"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="extendPerformer"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="extendPerformerLeader"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="extendPerformerType"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="extendKey1"
+                         type="xsd:string">
+            </xsd:element>
+            <xsd:element minOccurs="0" name="extendKey2"
+                         type="xsd:string">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
 </xsd:schema>

@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 <link rel="stylesheet" href="../css/table_style.css" type="text/css">
 
 <script type="text/javascript" src="../css/finallytree.js"></script>
@@ -12,7 +5,7 @@
 <script language="JavaScript" src="../dialog.js"></SCRIPT>
 
 <head>
-  <title>Ö´ÐÐ×÷Òµ¼Æ»®²éÑ¯</title>
+    <title>Ö´ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½ï¿½ï¿½Ñ¯</title>
 </head>
 
 
@@ -22,172 +15,175 @@
 <form name="tawgzplanform" method="post" action="../tawgzplan/save.do" onsubmit='return SubmitCheck()'>
 
 
-  <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
-    <tr>
-      <td width="700" align="center" valign="middle" class="table_title">
-        &nbsp;Ö´ÐÐ×÷Òµ¼Æ»®²éÑ¯
-      </td>
-    </tr>
-  </table>
+    <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
+        <tr>
+            <td width="700" align="center" valign="middle" class="table_title">
+                &nbsp;Ö´ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½ï¿½ï¿½Ñ¯
+            </td>
+        </tr>
+    </table>
 
-  <table border="0"  width="600" cellspacing="1" cellpadding="1" class="table_show" align=center>
-    <tr class="tr_show">
-      <td width="100" class="td_label">
-        ÍøÔªÀàÐÍ
-      </td>
-      <td width="500" colspan="5">
-	 <table width="100%"> 
-	   <tr class="tr_show">
-	     <td width="50%" align="center">
-	       ÏµÍ³ÀàÐÍ :
-	       <select size=1 name="netTreeIdSRC" style="width:100"> 
-	         <option value="-1" selected>Ñ¡ÔñÏµÍ³ÀàÐÍ </option> 
-	         <option value="406100">Êý¾ÝÖÐÐÄ </option> 
-	         <option value="406101">¼à¿ØÖÐÐÄ </option> 
-	         <option value="406102">Î¬»¤ÖÐÐÄ </option> 
-	         <option value="406103">ÐÅÏ¢ÖÐÐÄ </option> 
-	         <option value="406104">¼Æ·ÑÖÐÐÄ </option> 
-	         <option value="406105">Íø¹ÜÖÐÐÄ </option> 
-	         <option value="406106">´«ÊäÖÐÐÄ </option> 
-	         <option value="406107">ÍøÓÅÖÐÐÄ </option> 
-	         <option value="406108">¶¯Á¦ÖÐÐÄ </option> 
-	       </select> 
-             </td> 
-             <td width="50%" align="center"> 
-               ÍøÔªÀàÐÍ :
-               <select size=1 name="netTreeIdDES" style="width:100"> 
-                 <option value="-1" selected>Ñ¡ÔñÍøÔªÀàÐÍ </option> 
-	         <option value="406100">ÍøÔªÀàÐÍÒ» </option> 
-	         <option value="406101">ÍøÔªÀàÐÍ¶þ </option> 
-	         <option value="406102">ÍøÔªÀàÐÍÈý </option> 
-               </select>
-             </td>
-           </tr>
-         </table> 
-      </td>
-    </tr>
-    <tr class="tr_show">
-      <td width="100" class="td_label">
-        Ïà¹ØÍøÔª
-      </td>
-      <td width="500" colspan="5">
-        <input type="text" name="deptName" size="30" styleClass="clstext" readonly="true" value="ÍøÔª1">
-        <a href="">Ñ¡ÔñÍøÔª</a>
-        
-      </td>
-    </tr>
-    <tr class="tr_show">
-      <td width="100" class="td_label">
-        ¼Æ»®Ãû³Æ
-      </td>
-      <td width="500" colspan="5">
-      
-        <input type="text" name="planName" size="30" styleClass="clstext" readonly="true" >
-          <a href="javascript:onTitle();">×÷Òµ¼Æ»®Ä£°åÁÐ±í</a>
-      
-        <input type="hidden" name="titleId" size="30" styleClass="clstext" >
-      </td>
-    </tr>
-    <tr class="tr_show">
-      <td width="100" class="td_label">
-        Ö´ÐÐ²¿ÃÅ
-      </td>
-      <td width="500" colspan="5">
-        <input type="text" name="deptName" size="30" styleClass="clstext" readonly="true" value="Ê¡¹«Ë¾">
-        <a href="">Ñ¡Ôñ²¿ÃÅ</a>
-        
-      </td>
-    </tr>
-    
-    <tr class="tr_show">
-      <td width="100" class="td_label">
-        Äê·Ý</td>
-      <td width="100">
-        <select>
-          <option>-- ÇëÑ¡Ôñ --</option>
-          <option>2005</option>
-          <option>2006</option>
-        </select>
-      </td>
-    
-      <td width="100" class="td_label">
-        ÔÂ¶È</td>
-      <td width="100">
-        <select>
-          <option>-- ÇëÑ¡Ôñ --</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-          <option>6</option>
-          <option>7</option>
-          <option>8</option>
-          <option>9</option>
-          <option>10</option>
-          <option>11</option>
-          <option>12</option>
-        </select>
-      </td>
-    
-      <td width="100" class="td_label">
-        ÖÜÆÚ</td>
-      <td width="100">
-        <select>
-          <option>-- ÇëÑ¡Ôñ --</option>
-          <option>Ìì</option>
-          <option>ÖÜ</option>
-          <option>°ëÔÂ</option>
-          <option>ÔÂ</option>
-          <option>Á½ÔÂ</option>
-          <option>¼¾¶È</option>
-          <option>°ëÄê</option>
-          <option>Äê</option>
-          <option>ÆäËû</option>
-        </select>
-      </td>
-    </tr>
-    <tr class="tr_show">
-      <td align="middle" colspan="6">
-        
-        <input type="submit" value="²éÑ¯" name="B1" class="clsbtn2">
-        <input type="button" value="·µ»Ø" name="B2" Onclick="GoBack();" class="clsbtn2">
-      </td>
-    </tr>
-  </table>
-  <table border="0" width="600" cellspacing="1" cellpadding="1" class="table_show" align=center>
-           <tr class="td_label">
-             <td width="40%">¼Æ»®Ãû³Æ</td>
-             
-             <td width="40%">Ïà¹ØÍøÔª</td>
+    <table border="0" width="600" cellspacing="1" cellpadding="1" class="table_show" align=center>
+        <tr class="tr_show">
+            <td width="100" class="td_label">
+                ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½
+            </td>
+            <td width="500" colspan="5">
+                <table width="100%">
+                    <tr class="tr_show">
+                        <td width="50%" align="center">
+                            ÏµÍ³ï¿½ï¿½ï¿½ï¿½ :
+                            <select size=1 name="netTreeIdSRC" style="width:100">
+                                <option value="-1" selected>Ñ¡ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406100">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406101">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406102">Î¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406103">ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406104">ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406105">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406106">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406107">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406108">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                            </select>
+                        </td>
+                        <td width="50%" align="center">
+                            ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ :
+                            <select size=1 name="netTreeIdDES" style="width:100">
+                                <option value="-1" selected>Ñ¡ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½</option>
+                                <option value="406100">ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Ò»</option>
+                                <option value="406101">ï¿½ï¿½Ôªï¿½ï¿½ï¿½Í¶ï¿½</option>
+                                <option value="406102">ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr class="tr_show">
+            <td width="100" class="td_label">
+                ï¿½ï¿½ï¿½ï¿½ï¿½Ôª
+            </td>
+            <td width="500" colspan="5">
+                <input type="text" name="deptName" size="30" styleClass="clstext" readonly="true" value="ï¿½ï¿½Ôª1">
+                <a href="">Ñ¡ï¿½ï¿½ï¿½ï¿½Ôª</a>
 
-             <td width="20%">²é¿´</td>
-          </tr>
-          <tr class="tr_show">
+            </td>
+        </tr>
+        <tr class="tr_show">
+            <td width="100" class="td_label">
+                ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½
+            </td>
+            <td width="500" colspan="5">
+
+                <input type="text" name="planName" size="30" styleClass="clstext" readonly="true">
+                <a href="javascript:onTitle();">ï¿½ï¿½Òµï¿½Æ»ï¿½Ä£ï¿½ï¿½ï¿½Ð±ï¿½</a>
+
+                <input type="hidden" name="titleId" size="30" styleClass="clstext">
+            </td>
+        </tr>
+        <tr class="tr_show">
+            <td width="100" class="td_label">
+                Ö´ï¿½Ð²ï¿½ï¿½ï¿½
+            </td>
+            <td width="500" colspan="5">
+                <input type="text" name="deptName" size="30" styleClass="clstext" readonly="true" value="Ê¡ï¿½ï¿½Ë¾">
+                <a href="">Ñ¡ï¿½ï¿½ï¿½ï¿½</a>
+
+            </td>
+        </tr>
+
+        <tr class="tr_show">
+            <td width="100" class="td_label">
+                ï¿½ï¿½ï¿½
+            </td>
+            <td width="100">
+                <select>
+                    <option>-- ï¿½ï¿½Ñ¡ï¿½ï¿½ --</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                </select>
+            </td>
+
+            <td width="100" class="td_label">
+                ï¿½Â¶ï¿½
+            </td>
+            <td width="100">
+                <select>
+                    <option>-- ï¿½ï¿½Ñ¡ï¿½ï¿½ --</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+            </td>
+
+            <td width="100" class="td_label">
+                ï¿½ï¿½ï¿½ï¿½
+            </td>
+            <td width="100">
+                <select>
+                    <option>-- ï¿½ï¿½Ñ¡ï¿½ï¿½ --</option>
+                    <option>ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½</option>
+                    <option>ï¿½ï¿½ï¿½ï¿½</option>
+                </select>
+            </td>
+        </tr>
+        <tr class="tr_show">
+            <td align="middle" colspan="6">
+
+                <input type="submit" value="ï¿½ï¿½Ñ¯" name="B1" class="clsbtn2">
+                <input type="button" value="ï¿½ï¿½ï¿½ï¿½" name="B2" Onclick="GoBack();" class="clsbtn2">
+            </td>
+        </tr>
+    </table>
+    <table border="0" width="600" cellspacing="1" cellpadding="1" class="table_show" align=center>
+        <tr class="td_label">
+            <td width="40%">ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+
+            <td width="40%">ï¿½ï¿½ï¿½ï¿½ï¿½Ôª</td>
+
+            <td width="20%">ï¿½é¿´</td>
+        </tr>
+        <tr class="tr_show">
             <td width="40%">
-              Ö´ÐÐ×÷Òµ¼Æ»®Ò»
+                Ö´ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½Ò»
             </td>
             <td width="40%">
-              ÍøÔª1
+                ï¿½ï¿½Ôª1
             </td>
             <td width="20%">
-              <a href="">²é¿´</a>
+                <a href="">ï¿½é¿´</a>
             </td>
-            
-          </tr>
-          <tr class="tr_show">
+
+        </tr>
+        <tr class="tr_show">
             <td width="40%">
-              Ö´ÐÐ×÷Òµ¼Æ»®¶þ
+                Ö´ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½ï¿½ï¿½
             </td>
             <td width="40%">
-              ÍøÔª2
+                ï¿½ï¿½Ôª2
             </td>
             <td width="20%">
-              <a href="">²é¿´</a>
+                <a href="">ï¿½é¿´</a>
             </td>
-            
-          </tr>
-        </table>
+
+        </tr>
+    </table>
 </form>
 
 

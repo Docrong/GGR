@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_system_operuser"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="name"
-            	column="name"
+        <property
+                name="name"
+                column="name"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="deptid"
-            	column="deptid"
+        <property
+                name="deptid"
+                column="deptid"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="deptname"
-            	column="deptname"
+        <property
+                name="deptname"
+                column="deptname"
                 length="100"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="sex"
-            	column="sex"
+        <property
+                name="sex"
+                column="sex"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="subarea"
-            	column="subarea"
+        <property
+                name="subarea"
+                column="subarea"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="savetime"
-            	column="savetime"
+        <property
+                name="savetime"
+                column="savetime"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="majortype"
-            	column="majortype"
+        <property
+                name="majortype"
+                column="majortype"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="birthday"
-            	column="birthday"
+        <property
+                name="birthday"
+                column="birthday"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="jobtype"
-            	column="jobtype"
+        <property
+                name="jobtype"
+                column="jobtype"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -116,9 +116,9 @@
 
         </property>
 
-	<property
-            name="joblevele"
-            	column="joblevele"
+        <property
+                name="joblevele"
+                column="joblevele"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -126,9 +126,9 @@
 
         </property>
 
-	<property
-            name="schoollevel"
-            	column="schoollevel"
+        <property
+                name="schoollevel"
+                column="schoollevel"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -136,9 +136,9 @@
 
         </property>
 
-	<property
-            name="powerlevel"
-            	column="powerlevel"
+        <property
+                name="powerlevel"
+                column="powerlevel"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -146,9 +146,9 @@
 
         </property>
 
-	<property
-            name="prizelevel"
-            	column="prizelevel"
+        <property
+                name="prizelevel"
+                column="prizelevel"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -156,9 +156,9 @@
 
         </property>
 
-	<property
-            name="worklevel"
-            	column="worklevel"
+        <property
+                name="worklevel"
+                column="worklevel"
                 length="100"
                 not-null="true"
                 unique="false"
@@ -166,9 +166,9 @@
 
         </property>
 
-	<property
-            name="remark"
-            	column="remark"
+        <property
+                name="remark"
+                column="remark"
                 length="500"
                 not-null="false"
                 unique="false"
@@ -176,37 +176,37 @@
 
         </property>
 
-		<!-- <property
+        <!-- <property
             name="nodeId"
-            	column="node_id"
+                column="node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
             name="parentNodeId"
-            	column="parent_node_id"
+                column="parent_node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
             name="leaf"
-            	column="leaf"
+                column="leaf"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property> -->
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

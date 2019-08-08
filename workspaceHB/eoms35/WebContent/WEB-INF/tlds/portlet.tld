@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE taglib PUBLIC
-  "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
-  "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+        "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+        "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
 <!-- 
 /*
  * Copyright (c) 2006 Jianmin Liu.
@@ -23,7 +23,7 @@
     <tlibversion>1.0</tlibversion>
     <jspversion>1.1</jspversion>
     <shortname>portlet</shortname>
-    <uri>http://java.sun.com/portlet</uri>    
+    <uri>http://java.sun.com/portlet</uri>
     <tag>
         <name>actionURL</name>
         <tagclass>org.light.portal.tags.ActionURLTag</tagclass>
@@ -76,5 +76,5 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
-    
+
 </taglib>

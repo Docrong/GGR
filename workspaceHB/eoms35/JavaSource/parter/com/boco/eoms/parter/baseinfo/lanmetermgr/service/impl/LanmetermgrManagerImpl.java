@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
+
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import com.boco.eoms.base.service.impl.BaseManager;
@@ -17,6 +18,7 @@ public class LanmetermgrManagerImpl extends BaseManager implements ILanmetermgrM
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setLanmetermgrDao(ILanmetermgrDao dao) {
@@ -50,31 +52,35 @@ public class LanmetermgrManagerImpl extends BaseManager implements ILanmetermgrM
     public void removeLanmetermgr(final String id) {
         dao.removeLanmetermgr(new String(id));
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.lanmetermgr.service.ILanmetermgrManager#getLanmetermgrs(final Integer curPage, final Integer pageSize)
      */
     public Map getLanmetermgrs(final Integer curPage, final Integer pageSize) {
-        return dao.getLanmetermgrs(curPage, pageSize,null);
+        return dao.getLanmetermgrs(curPage, pageSize, null);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.lanmetermgr.service.ILanmetermgrManager#getLanmetermgrs(final Integer curPage, final Integer pageSize, final String whereStr)
-     */    
+     */
     public Map getLanmetermgrs(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getLanmetermgrs(curPage, pageSize, whereStr);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.lanmetermgr.service.ILanmetermgrManager#getChildList(String parentId)
-     */     
-    public List getChildList(String parentId) {		
-		return dao.getChildList(parentId);
-	}
+     */
+    public List getChildList(String parentId) {
+        return dao.getChildList(parentId);
+    }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.lanmetermgr.service.ILanmetermgrManager#xGetChildNodes(String parentId)
-     */  	
-	public JSONArray xGetChildNodes(String parentId) {
-		JSONArray json = new JSONArray();
-		List list = new ArrayList();	
-		list = this.getChildList(parentId);
+     */
+    public JSONArray xGetChildNodes(String parentId) {
+        JSONArray json = new JSONArray();
+        List list = new ArrayList();
+        list = this.getChildList(parentId);
 
 //		for (Iterator rowIt = list.iterator(); rowIt.hasNext();) {
 //			Lanmetermgr obj = (Lanmetermgr) rowIt.next();
@@ -89,14 +95,15 @@ public class LanmetermgrManagerImpl extends BaseManager implements ILanmetermgrM
 //			}
 //			json.put(jitem);
 //		}
-		return json;
-	}	
-	//删除多条记录
-	 public void removeLanmetermgr(final String[] ids) {
-		 if (null != ids) {
-				for (int i = 0; i < ids.length; i++) {
-					this.removeLanmetermgr(ids[i]);
-				}
-			}
-	    }
+        return json;
+    }
+
+    //删除多条记录
+    public void removeLanmetermgr(final String[] ids) {
+        if (null != ids) {
+            for (int i = 0; i < ids.length; i++) {
+                this.removeLanmetermgr(ids[i]);
+            }
+        }
+    }
 }

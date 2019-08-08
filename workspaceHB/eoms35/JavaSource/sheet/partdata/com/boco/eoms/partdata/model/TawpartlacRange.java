@@ -12,187 +12,166 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Mon Jul 12 09:21:06 CST 2010
  * </p>
- * 
+ *
  * @author fengshaohong
  * @version 3.6
- * 
  */
 public class TawpartlacRange extends BaseObject {
 
-	/**
-	 * 锟斤拷锟�
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    /**
+     * 锟斤拷锟�
+     */
+    private String id;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * 地市ID
-	 *
-	 */
-	private String areaId;
-   
-	public void setAreaId(String areaId){
-		this.areaId= areaId;       
-	}
-   
-	public String getAreaId(){
-		return this.areaId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * 地域名称
-	 *
-	 */
-	private String areaName;
-   
-	public void setAreaName(String areaName){
-		this.areaName= areaName;       
-	}
-   
-	public String getAreaName(){
-		return this.areaName;
-	}
+    /**
+     * 地市ID
+     */
+    private String areaId;
 
-	/**
-	 *
-	 * L1L2
-	 *
-	 */
-	private String loneLtwo;
-   
-	public void setLoneLtwo(String loneLtwo){
-		this.loneLtwo= loneLtwo;       
-	}
-   
-	public String getLoneLtwo(){
-		return this.loneLtwo;
-	}
+    public void setAreaId(String areaId) {
+        this.areaId = areaId;
+    }
 
-	/**
-	 *
-	 * 十进制开始
-	 *
-	 */
-	private String tenStart;
-   
-	public void setTenStart(String tenStart){
-		this.tenStart= tenStart;       
-	}
-   
-	public String getTenStart(){
-		return this.tenStart;
-	}
+    public String getAreaId() {
+        return this.areaId;
+    }
 
-	/**
-	 *
-	 * 十进制结束
-	 *
-	 */
-	private String tenEnd;
-   
-	public void setTenEnd(String tenEnd){
-		this.tenEnd= tenEnd;       
-	}
-   
-	public String getTenEnd(){
-		return this.tenEnd;
-	}
+    /**
+     * 地域名称
+     */
+    private String areaName;
 
-	/**
-	 *
-	 * 十六进制开始
-	 *
-	 */
-	private String sixtStart;
-   
-	public void setSixtStart(String sixtStart){
-		this.sixtStart= sixtStart;       
-	}
-   
-	public String getSixtStart(){
-		return this.sixtStart;
-	}
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
 
-	/**
-	 *
-	 * 十六进制结束
-	 *
-	 */
-	private String sixtEnd;
-   
-	public void setSixtEnd(String sixtEnd){
-		this.sixtEnd= sixtEnd;       
-	}
-   
-	public String getSixtEnd(){
-		return this.sixtEnd;
-	}
+    public String getAreaName() {
+        return this.areaName;
+    }
 
-	/**
-	 *
-	 * 区码
-	 *
-	 */
-	private String areaNumber;
-   
-	public void setAreaNumber(String areaNumber){
-		this.areaNumber= areaNumber;       
-	}
-   
-	public String getAreaNumber(){
-		return this.areaNumber;
-	}
+    /**
+     * L1L2
+     */
+    private String loneLtwo;
 
-	/**
-	 *
-	 * 创建人
-	 *
-	 */
-	private String creator;
-   
-	public void setCreator(String creator){
-		this.creator= creator;       
-	}
-   
-	public String getCreator(){
-		return this.creator;
-	}
+    public void setLoneLtwo(String loneLtwo) {
+        this.loneLtwo = loneLtwo;
+    }
 
-	/**
-	 *
-	 * 创建时间
-	 *
-	 */
-	private String createTime;
-   
-	public void setCreateTime(String createTime){
-		this.createTime= createTime;       
-	}
-   
-	public String getCreateTime(){
-		return this.createTime;
-	}
+    public String getLoneLtwo() {
+        return this.loneLtwo;
+    }
+
+    /**
+     * 十进制开始
+     */
+    private String tenStart;
+
+    public void setTenStart(String tenStart) {
+        this.tenStart = tenStart;
+    }
+
+    public String getTenStart() {
+        return this.tenStart;
+    }
+
+    /**
+     * 十进制结束
+     */
+    private String tenEnd;
+
+    public void setTenEnd(String tenEnd) {
+        this.tenEnd = tenEnd;
+    }
+
+    public String getTenEnd() {
+        return this.tenEnd;
+    }
+
+    /**
+     * 十六进制开始
+     */
+    private String sixtStart;
+
+    public void setSixtStart(String sixtStart) {
+        this.sixtStart = sixtStart;
+    }
+
+    public String getSixtStart() {
+        return this.sixtStart;
+    }
+
+    /**
+     * 十六进制结束
+     */
+    private String sixtEnd;
+
+    public void setSixtEnd(String sixtEnd) {
+        this.sixtEnd = sixtEnd;
+    }
+
+    public String getSixtEnd() {
+        return this.sixtEnd;
+    }
+
+    /**
+     * 区码
+     */
+    private String areaNumber;
+
+    public void setAreaNumber(String areaNumber) {
+        this.areaNumber = areaNumber;
+    }
+
+    public String getAreaNumber() {
+        return this.areaNumber;
+    }
+
+    /**
+     * 创建人
+     */
+    private String creator;
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
+    public String getCreator() {
+        return this.creator;
+    }
+
+    /**
+     * 创建时间
+     */
+    private String createTime;
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getCreateTime() {
+        return this.createTime;
+    }
 
 
-	public boolean equals(Object o) {
-		if( o instanceof TawpartlacRange ) {
-			TawpartlacRange tawpartlacRange=(TawpartlacRange)o;
-			if (this.id != null || this.id.equals(tawpartlacRange.getId())) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+    public boolean equals(Object o) {
+        if (o instanceof TawpartlacRange) {
+            TawpartlacRange tawpartlacRange = (TawpartlacRange) o;
+            if (this.id != null || this.id.equals(tawpartlacRange.getId())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }

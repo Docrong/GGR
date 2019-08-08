@@ -8,163 +8,155 @@ import com.boco.eoms.sheet.base.model.BaseSubMain;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="ITRequirementMain.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="ITRequirementmain"
  */
-public class ITRequirementMain extends BaseMain
-{
+public class ITRequirementMain extends BaseMain {
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainNetSystem;
+     * @dicttype
+     */
+    private java.lang.String mainNetSystem;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainSheetID;
+     * @texttype
+     */
+    private java.lang.String mainSheetID;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainUrgentDegree;
+     * @dicttype
+     */
+    private java.lang.String mainUrgentDegree;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainBusinessTarget;
+     * @texttype
+     */
+    private java.lang.String mainBusinessTarget;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainUser;
+     * @texttype
+     */
+    private java.lang.String mainUser;
 
     /**
-	 *
-	 */
-     private java.util.Date mainCompleteTime;
+     *
+     */
+    private java.util.Date mainCompleteTime;
 
     /**
-	 *
-	 * @textarea
-	 */
-     private java.lang.String mainRequirementDesc;
+     * @textarea
+     */
+    private java.lang.String mainRequirementDesc;
 
     /**
-	 *
-	 * @accesstype
-	 */
-     private java.lang.String mainRequirementDetail;
+     * @accesstype
+     */
+    private java.lang.String mainRequirementDetail;
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainNetSystem() {
-            return mainNetSystem;
-     }
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainNetSystem() {
+        return mainNetSystem;
+    }
 
-     public void setMainNetSystem(java.lang.String mainNetSystem) {
-           this.mainNetSystem = mainNetSystem;
-     }
+    public void setMainNetSystem(java.lang.String mainNetSystem) {
+        this.mainNetSystem = mainNetSystem;
+    }
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainSheetID() {
-            return mainSheetID;
-     }
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainSheetID() {
+        return mainSheetID;
+    }
 
-     public void setMainSheetID(java.lang.String mainSheetID) {
-           this.mainSheetID = mainSheetID;
-     }
+    public void setMainSheetID(java.lang.String mainSheetID) {
+        this.mainSheetID = mainSheetID;
+    }
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainUrgentDegree() {
-            return mainUrgentDegree;
-     }
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainUrgentDegree() {
+        return mainUrgentDegree;
+    }
 
-     public void setMainUrgentDegree(java.lang.String mainUrgentDegree) {
-           this.mainUrgentDegree = mainUrgentDegree;
-     }
+    public void setMainUrgentDegree(java.lang.String mainUrgentDegree) {
+        this.mainUrgentDegree = mainUrgentDegree;
+    }
 
-	/**
-	 * @hibernate.property value="300"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainBusinessTarget() {
-            return mainBusinessTarget;
-     }
+    /**
+     * @return
+     * @hibernate.property value="300"
+     * @eoms.show
+     */
+    public java.lang.String getMainBusinessTarget() {
+        return mainBusinessTarget;
+    }
 
-     public void setMainBusinessTarget(java.lang.String mainBusinessTarget) {
-           this.mainBusinessTarget = mainBusinessTarget;
-     }
+    public void setMainBusinessTarget(java.lang.String mainBusinessTarget) {
+        this.mainBusinessTarget = mainBusinessTarget;
+    }
 
-	/**
-	 * @hibernate.property value="300"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainUser() {
-            return mainUser;
-     }
+    /**
+     * @return
+     * @hibernate.property value="300"
+     * @eoms.show
+     */
+    public java.lang.String getMainUser() {
+        return mainUser;
+    }
 
-     public void setMainUser(java.lang.String mainUser) {
-           this.mainUser = mainUser;
-     }
-	public java.util.Date getMainCompleteTime() {
-		return mainCompleteTime;
-	}
+    public void setMainUser(java.lang.String mainUser) {
+        this.mainUser = mainUser;
+    }
 
-	public void setMainCompleteTime(java.util.Date mainCompleteTime) {
-		this.mainCompleteTime = mainCompleteTime;
-	}
+    public java.util.Date getMainCompleteTime() {
+        return mainCompleteTime;
+    }
 
-	/**
-	 * @hibernate.property value="2000"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainRequirementDesc() {
-            return mainRequirementDesc;
-     }
+    public void setMainCompleteTime(java.util.Date mainCompleteTime) {
+        this.mainCompleteTime = mainCompleteTime;
+    }
 
-     public void setMainRequirementDesc(java.lang.String mainRequirementDesc) {
-           this.mainRequirementDesc = mainRequirementDesc;
-     }
+    /**
+     * @return
+     * @hibernate.property value="2000"
+     * @eoms.show
+     */
+    public java.lang.String getMainRequirementDesc() {
+        return mainRequirementDesc;
+    }
 
-	/**
-	 * @hibernate.property value="300"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainRequirementDetail() {
-            return mainRequirementDetail;
-     }
+    public void setMainRequirementDesc(java.lang.String mainRequirementDesc) {
+        this.mainRequirementDesc = mainRequirementDesc;
+    }
 
-     public void setMainRequirementDetail(java.lang.String mainRequirementDetail) {
-           this.mainRequirementDetail = mainRequirementDetail;
-     }
+    /**
+     * @return
+     * @hibernate.property value="300"
+     * @eoms.show
+     */
+    public java.lang.String getMainRequirementDetail() {
+        return mainRequirementDetail;
+    }
+
+    public void setMainRequirementDetail(java.lang.String mainRequirementDetail) {
+        this.mainRequirementDetail = mainRequirementDetail;
+    }
 
 }

@@ -78,7 +78,7 @@ public class TawRmInoutRecordActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawRmInoutRecord.updated"});
+        verifyActionMessages(new String[]{"tawRmInoutRecord.updated"});
 
     }
 

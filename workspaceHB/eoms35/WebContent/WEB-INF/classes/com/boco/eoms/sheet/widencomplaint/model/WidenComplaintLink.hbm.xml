@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,202 +13,202 @@
             table="WidenComplaint_link"
     >
 
-    <id
-        name="id"
-            column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="mainId" />
-       	<property name="nodeAcceptLimit" />
-		<property name="nodeCompleteLimit" />
-		<property name="operateType" />
-		<property name="operateTime" />
-		<property name="operateOrgType" />
-		<property name="operateUserId" />
-		<property name="operateDeptId" />
-		<property name="operateRoleId" />
-		<property name="operaterContact" />
-		<property name="toOrgType" />
-		<property name="toOrgUserId" />
-		<property name="toOrgDeptId" />
-		<property name="toOrgRoleId" />
-		<property name="acceptFlag" />
-		<property name="acceptTime" />
-		<property name="completeFlag" />
-		<property name="completeTime" />
-		<property name="preLinkId" />
-		<property name="parentLinkId" />
-		<property name="firstLinkId" />
-		<property name="piid" />
-		<property name="aiid" />
-		<property name="activeTemplateId" />
-		<property name="nodeTemplateName" />
-		<property name="correlationKey" />
-		<property name="nodeAccessories" />
-		<property name="templateFlag" />
-		<property name="templateName" />
-		<property name="templateCreateUserId" />
-		<property name="transferReason" />
-		<property name="remark" />
-		<property name="operateYear" />
-		<property name="operateMonth" />
-		<property name="operateDay" />
-		<property name="linkSendObject" />
-	
-		<property  name="linkTransmitReason" />	
-	
-		<property  name="linkIfInvokeChange" />	
-	
-		<property  name="linkFaultStartTime" />	
-	
-		<property  name="linkFaultEndTime" />	
-	
-		<property  name="linkFaultGenerantPlace" />	
-	
-		<property  name="linkPlaceDesc" />	
-	
-		<property  name="ndeptContact" />	
-	
-		<property  name="ndeptContactPhone" />	
-	
-		<property  name="dealResult" />	
-	
-		<property  name="dealDesc" />	
-	
-		<property  name="issueEliminatTime" />	
-	
-		<property  name="issueEliminatReason" />	
-	
-		<property  name="linkCheckResult" />	
-	
-		<property  name="linkCheckIdea" />	
-	
-		<property  name="linkUntreadReason" />	
-	
-		<property  name="linkTransmitContent" />	
-	
-		<property  name="linkExamineContent" />	
-	
-		<property  name="linkIfDeferResolve" />	
-	
-		<property  name="linkIfInvokeCaseDatabase" />	
-	
-		<property  name="linkChangeSheetId" />	
-	
-		<property  name="isSubTransmit" />	
-	
-		<property  name="parLinkId" />	
-	
-		<property  name="isReplied" />	
-	
-		<property  name="compProp" />	
-	
-		<property  name="isDeferReploy" />	
-	
-		<property  name="issueReasonTypeOne" />	
-	
-		<property  name="issueReasonTypeTwo" />	
-	
-		<property  name="issueReasonTypeThree" />	
-	
-		<property  name="issueReasonTypeFour" />	
-	
-		<property  name="linkReplyPerson" />	
-	
-		<property  name="linkReplayPhone" />	
-	
-		<property  name="linkDealDesc" />	
-	
-		<property  name="linkBusinessType" />	
-	
-		<property  name="linkFaultType" />	
-	
-		<property  name="linkReasonType" />	
-	
-		<property  name="linkIsReciveFaultId" />	
-	
-		<property  name="linkReciveFaultId" />	
-	
-		<property  name="linkIsComplaintSolve" />	
-	
-		<property  name="linkComplaintSolveDate" />	
-	
-		<property  name="linkPlanSolveTypeparent" />	
-	
-		<property  name="linkPlanSolveType" />	
-	
-		<property  name="linkPlanSolveDate" />	
-	
-		<property  name="linkIsUserConfirm" />	
-	
-		<property  name="linkNoConfirmReason" />	
-	
-		<property  name="linkIsRepeatComplaint" />	
-	
-		<property  name="linkRepeatComplaintType" />	
-	
-		<property  name="linkIsUserStatisfied" />	
-	
-		<property  name="linkUserNoStatisfied" />	
-	
-		<property  name="linkIsContactUser" />	
-	
-		<property  name="linkContactDate" />	
-	
-		<property  name="linkContactship" />	
-	
-		<property  name="linkContactUser" />	
-	
-		<property  name="linkContactPhone" />	
-	
-		<property  name="linkNoContactReason" />	
-	
-		<property  name="linkAddressCI" />	
-	
-		<property  name="linkAddressName" />	
-	
-		<property  name="linkEquipmentType" />	
-	
-		<property  name="linkEquipmentFactory" />	
-	
-		<property  name="linkIsAlarm" />	
-	
-		<property  name="linkAlarmDetail" />	
-	
-		<property  name="linkCommonfaultNumber" />	
-	
-		<property  name="linkCoverDian" />	
-	
-		<property  name="linkCoverLian" />	
-	
-		<property  name="linkSpecialty" />	
-	
-		<property  name="linkQuality" />	
-	
-		<property  name="aiNetReasonDesc" />	
-	
-		<property  name="aiNetResult" />	
-	
-		<property  name="selectAiNetReason" />	
-	
-		<property  name="linkIfAiNet" />
-		
-		<property  name="linkFirstContactUesrTime" />
-		
-		<property  name="linkIfMobile" />	
-		
-	
-		<property  name="linkReservationTime" />	
-		<property  name="linkNetline" />	
-		<property  name="linkOptical" />	
-		<property  name="linkSpeed" />	
-		<property  name="linkReceipt" />
-		<property  name="linkTeleRecord" />
-</class>    
+        </id>
+        <property name="mainId"/>
+        <property name="nodeAcceptLimit"/>
+        <property name="nodeCompleteLimit"/>
+        <property name="operateType"/>
+        <property name="operateTime"/>
+        <property name="operateOrgType"/>
+        <property name="operateUserId"/>
+        <property name="operateDeptId"/>
+        <property name="operateRoleId"/>
+        <property name="operaterContact"/>
+        <property name="toOrgType"/>
+        <property name="toOrgUserId"/>
+        <property name="toOrgDeptId"/>
+        <property name="toOrgRoleId"/>
+        <property name="acceptFlag"/>
+        <property name="acceptTime"/>
+        <property name="completeFlag"/>
+        <property name="completeTime"/>
+        <property name="preLinkId"/>
+        <property name="parentLinkId"/>
+        <property name="firstLinkId"/>
+        <property name="piid"/>
+        <property name="aiid"/>
+        <property name="activeTemplateId"/>
+        <property name="nodeTemplateName"/>
+        <property name="correlationKey"/>
+        <property name="nodeAccessories"/>
+        <property name="templateFlag"/>
+        <property name="templateName"/>
+        <property name="templateCreateUserId"/>
+        <property name="transferReason"/>
+        <property name="remark"/>
+        <property name="operateYear"/>
+        <property name="operateMonth"/>
+        <property name="operateDay"/>
+        <property name="linkSendObject"/>
+
+        <property name="linkTransmitReason"/>
+
+        <property name="linkIfInvokeChange"/>
+
+        <property name="linkFaultStartTime"/>
+
+        <property name="linkFaultEndTime"/>
+
+        <property name="linkFaultGenerantPlace"/>
+
+        <property name="linkPlaceDesc"/>
+
+        <property name="ndeptContact"/>
+
+        <property name="ndeptContactPhone"/>
+
+        <property name="dealResult"/>
+
+        <property name="dealDesc"/>
+
+        <property name="issueEliminatTime"/>
+
+        <property name="issueEliminatReason"/>
+
+        <property name="linkCheckResult"/>
+
+        <property name="linkCheckIdea"/>
+
+        <property name="linkUntreadReason"/>
+
+        <property name="linkTransmitContent"/>
+
+        <property name="linkExamineContent"/>
+
+        <property name="linkIfDeferResolve"/>
+
+        <property name="linkIfInvokeCaseDatabase"/>
+
+        <property name="linkChangeSheetId"/>
+
+        <property name="isSubTransmit"/>
+
+        <property name="parLinkId"/>
+
+        <property name="isReplied"/>
+
+        <property name="compProp"/>
+
+        <property name="isDeferReploy"/>
+
+        <property name="issueReasonTypeOne"/>
+
+        <property name="issueReasonTypeTwo"/>
+
+        <property name="issueReasonTypeThree"/>
+
+        <property name="issueReasonTypeFour"/>
+
+        <property name="linkReplyPerson"/>
+
+        <property name="linkReplayPhone"/>
+
+        <property name="linkDealDesc"/>
+
+        <property name="linkBusinessType"/>
+
+        <property name="linkFaultType"/>
+
+        <property name="linkReasonType"/>
+
+        <property name="linkIsReciveFaultId"/>
+
+        <property name="linkReciveFaultId"/>
+
+        <property name="linkIsComplaintSolve"/>
+
+        <property name="linkComplaintSolveDate"/>
+
+        <property name="linkPlanSolveTypeparent"/>
+
+        <property name="linkPlanSolveType"/>
+
+        <property name="linkPlanSolveDate"/>
+
+        <property name="linkIsUserConfirm"/>
+
+        <property name="linkNoConfirmReason"/>
+
+        <property name="linkIsRepeatComplaint"/>
+
+        <property name="linkRepeatComplaintType"/>
+
+        <property name="linkIsUserStatisfied"/>
+
+        <property name="linkUserNoStatisfied"/>
+
+        <property name="linkIsContactUser"/>
+
+        <property name="linkContactDate"/>
+
+        <property name="linkContactship"/>
+
+        <property name="linkContactUser"/>
+
+        <property name="linkContactPhone"/>
+
+        <property name="linkNoContactReason"/>
+
+        <property name="linkAddressCI"/>
+
+        <property name="linkAddressName"/>
+
+        <property name="linkEquipmentType"/>
+
+        <property name="linkEquipmentFactory"/>
+
+        <property name="linkIsAlarm"/>
+
+        <property name="linkAlarmDetail"/>
+
+        <property name="linkCommonfaultNumber"/>
+
+        <property name="linkCoverDian"/>
+
+        <property name="linkCoverLian"/>
+
+        <property name="linkSpecialty"/>
+
+        <property name="linkQuality"/>
+
+        <property name="aiNetReasonDesc"/>
+
+        <property name="aiNetResult"/>
+
+        <property name="selectAiNetReason"/>
+
+        <property name="linkIfAiNet"/>
+
+        <property name="linkFirstContactUesrTime"/>
+
+        <property name="linkIfMobile"/>
+
+
+        <property name="linkReservationTime"/>
+        <property name="linkNetline"/>
+        <property name="linkOptical"/>
+        <property name="linkSpeed"/>
+        <property name="linkReceipt"/>
+        <property name="linkTeleRecord"/>
+    </class>
 </hibernate-mapping>

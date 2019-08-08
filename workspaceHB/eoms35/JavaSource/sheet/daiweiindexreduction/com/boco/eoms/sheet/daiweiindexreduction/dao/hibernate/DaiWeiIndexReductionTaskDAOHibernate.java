@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.daiweiindexreduction.dao.IDaiWeiIndexReductionTaskDAO
  * <p>
  * Tue Aug 01 17:34:54 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public class DaiWeiIndexReductionTaskDAOHibernate extends TaskDAOImpl implements  IDaiWeiIndexReductionTaskDAO {
- 
- }
+
+public class DaiWeiIndexReductionTaskDAOHibernate extends TaskDAOImpl implements IDaiWeiIndexReductionTaskDAO {
+
+}

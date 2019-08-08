@@ -9,9 +9,7 @@ package com.boco.eoms.sheet.complaint.dao;
 import com.boco.eoms.sheet.base.dao.ILinkDAO;
 
 /**
- * @author
- *
- * TODO To change the template for this generated type comment go to
+ * @author TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface IComplaintLinkDAO extends ILinkDAO {

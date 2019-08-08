@@ -1,94 +1,121 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-	<base>
-	    <IpAddress>10.25.119.42,10.25.2.75,127.0.0.1,10.221.18.76,10.221.127.38</IpAddress>
-	    <serCaller>emos</serCaller>
-	    <callerPwd>SHemos!23$</callerPwd>
-	</base>
-	<auditWorkSheetNew> <!-- 审核新增 -->
-		<content columnName="regional" interfaceEnName="Regional" interfaceCnName="ADC/MAS地域" defauleValue="" dictNodePath="regional"/>
-		<content columnName="ecsiType" interfaceEnName="EcsiType" interfaceCnName="EC/SI类型" defauleValue="" dictNodePath="ecsiType1"/>
-		<content columnName="abbreviation" interfaceEnName="Abbreviation" interfaceCnName="EC/SI简称" defauleValue="" />
-		<content columnName="enterpriseCode" interfaceEnName="EnterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
-		<content columnName="serviceCode" interfaceEnName="ServiceCode" interfaceCnName="EC/SI服务代码" defauleValue="" />
-		<content columnName="cilentServerIpAddr" interfaceEnName="CilentServerIpAddr" interfaceCnName="客户服务器IP" defauleValue=""/>
-		<content columnName="cilentServerIpAddrs" interfaceEnName="CilentServerIpAddrs" interfaceCnName="是否为多IP" defauleValue="" />
-		<content columnName="userValue" interfaceEnName="User" interfaceCnName="登录网关用户名" defauleValue="" />
-		<content columnName="passwordValue" interfaceEnName="Password" interfaceCnName="登录网关密码" defauleValue=""/>
-		<content columnName="maxConnections" interfaceEnName="MaxConnections" interfaceCnName="最大连接数" defauleValue="" />
-		<content columnName="maxInBytes" interfaceEnName="MaxInBytes" interfaceCnName="最大下发流量" defauleValue=""/>
-		<content columnName="maxOutBytes" interfaceEnName="MaxOutBytes" interfaceCnName="最大上行流量" defauleValue="" />
-		<content columnName="protocol" interfaceEnName="Protocol" interfaceCnName="EC/SI使用协议" defauleValue="" dictNodePath="protocol"/>
-		<content columnName="isAuthentication" interfaceEnName="IsAuthentication" interfaceCnName="是否M模块鉴权" defauleValue="" dictNodePath="isAuthentication" />
-		<content columnName="seviceContact" interfaceEnName="SeviceContact" interfaceCnName="业务联系人" defauleValue=""/>
-		<content columnName="sevicePhone" interfaceEnName="SevicePhone" interfaceCnName="业务联系电话" defauleValue="" />
-		<content columnName="customerContact" interfaceEnName="CustomerContact" interfaceCnName="客户联系人" defauleValue=""/>
-		<content columnName="customerPhone" interfaceEnName="CustomerPhone" interfaceCnName="客户联系电话" defauleValue="" />
-		<content columnName="unit" interfaceEnName="Unit" interfaceCnName="业务数据申请单位" defauleValue="" dictNodePath="unit"/>
-		<content columnName="applyDate" interfaceEnName="ApplyDate" interfaceCnName="业务数据据申请日期" defauleValue="" />
-		<content columnName="hardwareModel" interfaceEnName="HardwareModel" interfaceCnName="硬件型号" defauleValue=""/>
-		<content columnName="softVersion" interfaceEnName="SoftVersion" interfaceCnName="软件版本" defauleValue="" />
-		<content columnName="integrator" interfaceEnName="Integrator" interfaceCnName="集成商" defauleValue=""/>
-		<content columnName="isUrgent" interfaceEnName="IsUrgent" interfaceCnName="是否为加急流程" defauleValue="" dictNodePath="isUrgent"  />
-		<content columnName="groupNumber" interfaceEnName="GroupNumber" interfaceCnName="集团批复工单号" defauleValue=""/>
-		<content columnName="masId" interfaceEnName="MasId" interfaceCnName="MASID" defauleValue="" />
-		<content columnName="timeLimit" interfaceEnName="TimeLimit" interfaceCnName="工单回复时限" defauleValue=""/>
-	</auditWorkSheetNew>
-	
-	<auditWorkSheetEdit> <!-- 审核变更 -->
-		<content columnName="regional" interfaceEnName="Regional" interfaceCnName="ADC/MAS地域" defauleValue="" dictNodePath="regional" />
-		<content columnName="ecsiType" interfaceEnName="EcsiType" interfaceCnName="EC/SI类型" defauleValue="" dictNodePath="ecsiType1"/>
-		<content columnName="abbreviation" interfaceEnName="Abbreviation" interfaceCnName="EC/SI简称" defauleValue="" />
-		<content columnName="enterpriseCode" interfaceEnName="EnterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
-		<content columnName="serviceCode" interfaceEnName="ServiceCode" interfaceCnName="EC/SI服务代码" defauleValue="" />
-		<content columnName="cilentServerIpAddr" interfaceEnName="CilentServerIpAddr" interfaceCnName="客户服务器IP" defauleValue=""/>
-		<content columnName="cilentServerIpAddrs" interfaceEnName="CilentServerIpAddrs" interfaceCnName="是否为多IP" defauleValue="" />
-		<content columnName="userValue" interfaceEnName="User" interfaceCnName="登录网关用户名" defauleValue="" />
-		<!--<content columnName="maxConnections" interfaceEnName="MaxConnections" interfaceCnName="最大连接数" defauleValue="" />-->
-		<!--<content columnName="maxInBytes" interfaceEnName="MaxInBytes" interfaceCnName="最大下发流量" defauleValue=""/>-->
-		<!--<content columnName="maxOutBytes" interfaceEnName="MaxOutBytes" interfaceCnName="最大上行流量" defauleValue="" />-->
-		<content columnName="protocol" interfaceEnName="Protocol" interfaceCnName="EC/SI使用协议" defauleValue="" dictNodePath="protocol"/>
-		<content columnName="isAuthentication" interfaceEnName="IsAuthentication" interfaceCnName="是否M模块鉴权" defauleValue="" dictNodePath="isAuthentication" />
-		<content columnName="unit" interfaceEnName="Unit" interfaceCnName="业务数据申请单位" defauleValue="" dictNodePath="unit"/>
-		<content columnName="isUrgent" interfaceEnName="IsUrgent" interfaceCnName="是否为加急流程" defauleValue="" dictNodePath="isUrgent" />
-		<content columnName="groupNumber" interfaceEnName="GroupNumber" interfaceCnName="集团批复工单号" defauleValue=""/>
-		<content columnName="timeLimit" interfaceEnName="TimeLimit" interfaceCnName="工单回复时限" defauleValue=""/>
-		<!--<content columnName="abbreviationNew" interfaceEnName="AbbreviationNew" interfaceCnName="EC/SI简称(新)" defauleValue=""/>-->
-		<content columnName="protocolNew" interfaceEnName="ProtocolNew" interfaceCnName="EC/SI使用协议(新)" defauleValue="" dictNodePath="protocol" />
-		<!--<content columnName="cilentServerIpAddrNew" interfaceEnName="CilentServerIpAddrNew" interfaceCnName="客户服务器IP(新)" defauleValue=""/>-->
-		<!--<content columnName="cilentServerIpAddrsNew" interfaceEnName="CilentServerIpAddrsNew" interfaceCnName="是否为多IP(新)" defauleValue="" />-->
-		<!--<content columnName="passwordNew" interfaceEnName="PasswordNew" interfaceCnName="登录网关密码(新)" defauleValue=""/>-->
-		<!--<content columnName="maxConnectionsNew" interfaceEnName="MaxConnectionsNew" interfaceCnName="最大连接数(新)" defauleValue="" />-->
-		<!--<content columnName="maxInBytesNew" interfaceEnName="MaxInBytesNew" interfaceCnName="最大下发流量(新)" defauleValue=""/>-->
-		<!--<content columnName="maxOutBytesNew" interfaceEnName="MaxOutBytesNew" interfaceCnName="最大上行流量(新)" defauleValue="" />-->
-	</auditWorkSheetEdit>
-	
-	<auditWorkSheetDel> <!-- 审核删除 -->
-		<content columnName="regional" interfaceEnName="Regional" interfaceCnName="ADC/MAS地域" defauleValue="" dictNodePath="regional" />
-		<content columnName="ecsiType" interfaceEnName="EcsiType" interfaceCnName="EC/SI类型" defauleValue="" dictNodePath="ecsiType1"/>
-		<content columnName="abbreviation" interfaceEnName="Abbreviation" interfaceCnName="EC/SI简称" defauleValue="" />
-		<content columnName="enterpriseCode" interfaceEnName="EnterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
-		<content columnName="serviceCode" interfaceEnName="ServiceCode" interfaceCnName="EC/SI服务代码" defauleValue="" />
-		<content columnName="protocol" interfaceEnName="Protocol" interfaceCnName="EC/SI使用协议" defauleValue="" dictNodePath="protocol"/>
-		<content columnName="unit" interfaceEnName="Unit" interfaceCnName="业务数据申请单位" defauleValue="" dictNodePath="unit"/>
-		<content columnName="isUrgent" interfaceEnName="IsUrgent" interfaceCnName="是否为加急流程" defauleValue="" dictNodePath="isUrgent" />
-		<content columnName="groupNumber" interfaceEnName="GroupNumber" interfaceCnName="集团批复工单号" defauleValue=""/>
-		<content columnName="timeLimit" interfaceEnName="TimeLimit" interfaceCnName="工单回复时限" defauleValue=""/>
-		<content columnName="cilentServerIpAddr" interfaceEnName="CilentServerIpAddr" interfaceCnName="客户服务器IP" defauleValue=""/>
-		<content columnName="cilentServerIpAddrs" interfaceEnName="CilentServerIpAddrs" interfaceCnName="是否为多IP" defauleValue="" />
-	</auditWorkSheetDel>
-	
-	<replyWorkSheet> <!-- 回复工单 -->
-		<content columnName="operateTime" interfaceName="operateTime"  defauleValue="" />
-		<content columnName="operateUserId" interfaceName="operateUserId" defauleValue=""/>
-		<content columnName="sheetId" interfaceName="serialNo"  defauleValue="" />	
-		<content columnName="dataResult" interfaceName="DataResult"  defauleValue="" />
-		<content columnName="failureInfo" interfaceName="FailureInfo"  defauleValue="" />
-		<content columnName="operateType" interfaceName="operateType" defauleValue="103" />
-		<content columnName="phaseId" interfaceName="" defauleValue="HoldTask" />
-		<content columnName="beanId" interfaceName="" defauleValue="iIndustrySmsMainManager" />
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.industrysms.model.IndustrySmsMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.industrysms.model.IndustrySmsLink" />
-	</replyWorkSheet>
+    <base>
+        <IpAddress>10.25.119.42,10.25.2.75,127.0.0.1,10.221.18.76,10.221.127.38</IpAddress>
+        <serCaller>emos</serCaller>
+        <callerPwd>SHemos!23$</callerPwd>
+    </base>
+    <auditWorkSheetNew> <!-- 审核新增 -->
+        <content columnName="regional" interfaceEnName="Regional" interfaceCnName="ADC/MAS地域" defauleValue=""
+                 dictNodePath="regional"/>
+        <content columnName="ecsiType" interfaceEnName="EcsiType" interfaceCnName="EC/SI类型" defauleValue=""
+                 dictNodePath="ecsiType1"/>
+        <content columnName="abbreviation" interfaceEnName="Abbreviation" interfaceCnName="EC/SI简称" defauleValue=""/>
+        <content columnName="enterpriseCode" interfaceEnName="EnterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
+        <content columnName="serviceCode" interfaceEnName="ServiceCode" interfaceCnName="EC/SI服务代码" defauleValue=""/>
+        <content columnName="cilentServerIpAddr" interfaceEnName="CilentServerIpAddr" interfaceCnName="客户服务器IP"
+                 defauleValue=""/>
+        <content columnName="cilentServerIpAddrs" interfaceEnName="CilentServerIpAddrs" interfaceCnName="是否为多IP"
+                 defauleValue=""/>
+        <content columnName="userValue" interfaceEnName="User" interfaceCnName="登录网关用户名" defauleValue=""/>
+        <content columnName="passwordValue" interfaceEnName="Password" interfaceCnName="登录网关密码" defauleValue=""/>
+        <content columnName="maxConnections" interfaceEnName="MaxConnections" interfaceCnName="最大连接数" defauleValue=""/>
+        <content columnName="maxInBytes" interfaceEnName="MaxInBytes" interfaceCnName="最大下发流量" defauleValue=""/>
+        <content columnName="maxOutBytes" interfaceEnName="MaxOutBytes" interfaceCnName="最大上行流量" defauleValue=""/>
+        <content columnName="protocol" interfaceEnName="Protocol" interfaceCnName="EC/SI使用协议" defauleValue=""
+                 dictNodePath="protocol"/>
+        <content columnName="isAuthentication" interfaceEnName="IsAuthentication" interfaceCnName="是否M模块鉴权"
+                 defauleValue="" dictNodePath="isAuthentication"/>
+        <content columnName="seviceContact" interfaceEnName="SeviceContact" interfaceCnName="业务联系人" defauleValue=""/>
+        <content columnName="sevicePhone" interfaceEnName="SevicePhone" interfaceCnName="业务联系电话" defauleValue=""/>
+        <content columnName="customerContact" interfaceEnName="CustomerContact" interfaceCnName="客户联系人"
+                 defauleValue=""/>
+        <content columnName="customerPhone" interfaceEnName="CustomerPhone" interfaceCnName="客户联系电话" defauleValue=""/>
+        <content columnName="unit" interfaceEnName="Unit" interfaceCnName="业务数据申请单位" defauleValue=""
+                 dictNodePath="unit"/>
+        <content columnName="applyDate" interfaceEnName="ApplyDate" interfaceCnName="业务数据据申请日期" defauleValue=""/>
+        <content columnName="hardwareModel" interfaceEnName="HardwareModel" interfaceCnName="硬件型号" defauleValue=""/>
+        <content columnName="softVersion" interfaceEnName="SoftVersion" interfaceCnName="软件版本" defauleValue=""/>
+        <content columnName="integrator" interfaceEnName="Integrator" interfaceCnName="集成商" defauleValue=""/>
+        <content columnName="isUrgent" interfaceEnName="IsUrgent" interfaceCnName="是否为加急流程" defauleValue=""
+                 dictNodePath="isUrgent"/>
+        <content columnName="groupNumber" interfaceEnName="GroupNumber" interfaceCnName="集团批复工单号" defauleValue=""/>
+        <content columnName="masId" interfaceEnName="MasId" interfaceCnName="MASID" defauleValue=""/>
+        <content columnName="timeLimit" interfaceEnName="TimeLimit" interfaceCnName="工单回复时限" defauleValue=""/>
+    </auditWorkSheetNew>
+
+    <auditWorkSheetEdit> <!-- 审核变更 -->
+        <content columnName="regional" interfaceEnName="Regional" interfaceCnName="ADC/MAS地域" defauleValue=""
+                 dictNodePath="regional"/>
+        <content columnName="ecsiType" interfaceEnName="EcsiType" interfaceCnName="EC/SI类型" defauleValue=""
+                 dictNodePath="ecsiType1"/>
+        <content columnName="abbreviation" interfaceEnName="Abbreviation" interfaceCnName="EC/SI简称" defauleValue=""/>
+        <content columnName="enterpriseCode" interfaceEnName="EnterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
+        <content columnName="serviceCode" interfaceEnName="ServiceCode" interfaceCnName="EC/SI服务代码" defauleValue=""/>
+        <content columnName="cilentServerIpAddr" interfaceEnName="CilentServerIpAddr" interfaceCnName="客户服务器IP"
+                 defauleValue=""/>
+        <content columnName="cilentServerIpAddrs" interfaceEnName="CilentServerIpAddrs" interfaceCnName="是否为多IP"
+                 defauleValue=""/>
+        <content columnName="userValue" interfaceEnName="User" interfaceCnName="登录网关用户名" defauleValue=""/>
+        <!--<content columnName="maxConnections" interfaceEnName="MaxConnections" interfaceCnName="最大连接数" defauleValue="" />-->
+        <!--<content columnName="maxInBytes" interfaceEnName="MaxInBytes" interfaceCnName="最大下发流量" defauleValue=""/>-->
+        <!--<content columnName="maxOutBytes" interfaceEnName="MaxOutBytes" interfaceCnName="最大上行流量" defauleValue="" />-->
+        <content columnName="protocol" interfaceEnName="Protocol" interfaceCnName="EC/SI使用协议" defauleValue=""
+                 dictNodePath="protocol"/>
+        <content columnName="isAuthentication" interfaceEnName="IsAuthentication" interfaceCnName="是否M模块鉴权"
+                 defauleValue="" dictNodePath="isAuthentication"/>
+        <content columnName="unit" interfaceEnName="Unit" interfaceCnName="业务数据申请单位" defauleValue=""
+                 dictNodePath="unit"/>
+        <content columnName="isUrgent" interfaceEnName="IsUrgent" interfaceCnName="是否为加急流程" defauleValue=""
+                 dictNodePath="isUrgent"/>
+        <content columnName="groupNumber" interfaceEnName="GroupNumber" interfaceCnName="集团批复工单号" defauleValue=""/>
+        <content columnName="timeLimit" interfaceEnName="TimeLimit" interfaceCnName="工单回复时限" defauleValue=""/>
+        <!--<content columnName="abbreviationNew" interfaceEnName="AbbreviationNew" interfaceCnName="EC/SI简称(新)" defauleValue=""/>-->
+        <content columnName="protocolNew" interfaceEnName="ProtocolNew" interfaceCnName="EC/SI使用协议(新)" defauleValue=""
+                 dictNodePath="protocol"/>
+        <!--<content columnName="cilentServerIpAddrNew" interfaceEnName="CilentServerIpAddrNew" interfaceCnName="客户服务器IP(新)" defauleValue=""/>-->
+        <!--<content columnName="cilentServerIpAddrsNew" interfaceEnName="CilentServerIpAddrsNew" interfaceCnName="是否为多IP(新)" defauleValue="" />-->
+        <!--<content columnName="passwordNew" interfaceEnName="PasswordNew" interfaceCnName="登录网关密码(新)" defauleValue=""/>-->
+        <!--<content columnName="maxConnectionsNew" interfaceEnName="MaxConnectionsNew" interfaceCnName="最大连接数(新)" defauleValue="" />-->
+        <!--<content columnName="maxInBytesNew" interfaceEnName="MaxInBytesNew" interfaceCnName="最大下发流量(新)" defauleValue=""/>-->
+        <!--<content columnName="maxOutBytesNew" interfaceEnName="MaxOutBytesNew" interfaceCnName="最大上行流量(新)" defauleValue="" />-->
+    </auditWorkSheetEdit>
+
+    <auditWorkSheetDel> <!-- 审核删除 -->
+        <content columnName="regional" interfaceEnName="Regional" interfaceCnName="ADC/MAS地域" defauleValue=""
+                 dictNodePath="regional"/>
+        <content columnName="ecsiType" interfaceEnName="EcsiType" interfaceCnName="EC/SI类型" defauleValue=""
+                 dictNodePath="ecsiType1"/>
+        <content columnName="abbreviation" interfaceEnName="Abbreviation" interfaceCnName="EC/SI简称" defauleValue=""/>
+        <content columnName="enterpriseCode" interfaceEnName="EnterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
+        <content columnName="serviceCode" interfaceEnName="ServiceCode" interfaceCnName="EC/SI服务代码" defauleValue=""/>
+        <content columnName="protocol" interfaceEnName="Protocol" interfaceCnName="EC/SI使用协议" defauleValue=""
+                 dictNodePath="protocol"/>
+        <content columnName="unit" interfaceEnName="Unit" interfaceCnName="业务数据申请单位" defauleValue=""
+                 dictNodePath="unit"/>
+        <content columnName="isUrgent" interfaceEnName="IsUrgent" interfaceCnName="是否为加急流程" defauleValue=""
+                 dictNodePath="isUrgent"/>
+        <content columnName="groupNumber" interfaceEnName="GroupNumber" interfaceCnName="集团批复工单号" defauleValue=""/>
+        <content columnName="timeLimit" interfaceEnName="TimeLimit" interfaceCnName="工单回复时限" defauleValue=""/>
+        <content columnName="cilentServerIpAddr" interfaceEnName="CilentServerIpAddr" interfaceCnName="客户服务器IP"
+                 defauleValue=""/>
+        <content columnName="cilentServerIpAddrs" interfaceEnName="CilentServerIpAddrs" interfaceCnName="是否为多IP"
+                 defauleValue=""/>
+    </auditWorkSheetDel>
+
+    <replyWorkSheet> <!-- 回复工单 -->
+        <content columnName="operateTime" interfaceName="operateTime" defauleValue=""/>
+        <content columnName="operateUserId" interfaceName="operateUserId" defauleValue=""/>
+        <content columnName="sheetId" interfaceName="serialNo" defauleValue=""/>
+        <content columnName="dataResult" interfaceName="DataResult" defauleValue=""/>
+        <content columnName="failureInfo" interfaceName="FailureInfo" defauleValue=""/>
+        <content columnName="operateType" interfaceName="operateType" defauleValue="103"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="HoldTask"/>
+        <content columnName="beanId" interfaceName="" defauleValue="iIndustrySmsMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.industrysms.model.IndustrySmsMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.industrysms.model.IndustrySmsLink"/>
+    </replyWorkSheet>
 </boco>
 

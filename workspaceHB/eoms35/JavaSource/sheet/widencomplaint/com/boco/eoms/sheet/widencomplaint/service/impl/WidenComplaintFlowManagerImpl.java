@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.widencomplaint.service.IWidenComplaintFlowManager;
  * <p>
  * Mon Feb 01 17:09:53 CST 2016
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class WidenComplaintFlowManagerImpl extends BusinessFlowServiceImpl implements IWidenComplaintFlowManager {
- 
- }
+
+public class WidenComplaintFlowManagerImpl extends BusinessFlowServiceImpl implements IWidenComplaintFlowManager {
+
+}

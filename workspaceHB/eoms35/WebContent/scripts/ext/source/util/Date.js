@@ -15,46 +15,46 @@
  *
  * Following is the list of all currently supported formats:
  *<pre>
-Sample date:
-'Wed Jan 10 2007 15:05:01 GMT-0600 (Central Standard Time)'
+ Sample date:
+ 'Wed Jan 10 2007 15:05:01 GMT-0600 (Central Standard Time)'
 
-Format  Output      Description
-------  ----------  --------------------------------------------------------------
-  d      10         Day of the month, 2 digits with leading zeros
-  D      Wed        A textual representation of a day, three letters
-  j      10         Day of the month without leading zeros
-  l      Wednesday  A full textual representation of the day of the week
-  S      th         English ordinal day of month suffix, 2 chars (use with j)
-  w      3          Numeric representation of the day of the week
-  z      9          The julian date, or day of the year (0-365)
-  W      01         ISO-8601 2-digit week number of year, weeks starting on Monday (00-52)
-  F      January    A full textual representation of the month
-  m      01         Numeric representation of a month, with leading zeros
-  M      Jan        Month name abbreviation, three letters
-  n      1          Numeric representation of a month, without leading zeros
-  t      31         Number of days in the given month
-  L      0          Whether it's a leap year (1 if it is a leap year, else 0)
-  Y      2007       A full numeric representation of a year, 4 digits
-  y      07         A two digit representation of a year
-  a      pm         Lowercase Ante meridiem and Post meridiem
-  A      PM         Uppercase Ante meridiem and Post meridiem
-  g      3          12-hour format of an hour without leading zeros
-  G      15         24-hour format of an hour without leading zeros
-  h      03         12-hour format of an hour with leading zeros
-  H      15         24-hour format of an hour with leading zeros
-  i      05         Minutes with leading zeros
-  s      01         Seconds, with leading zeros
-  O      -0600      Difference to Greenwich time (GMT) in hours
-  T      CST        Timezone setting of the machine running the code
-  Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)
-</pre>
+ Format  Output      Description
+ ------  ----------  --------------------------------------------------------------
+ d      10         Day of the month, 2 digits with leading zeros
+ D      Wed        A textual representation of a day, three letters
+ j      10         Day of the month without leading zeros
+ l      Wednesday  A full textual representation of the day of the week
+ S      th         English ordinal day of month suffix, 2 chars (use with j)
+ w      3          Numeric representation of the day of the week
+ z      9          The julian date, or day of the year (0-365)
+ W      01         ISO-8601 2-digit week number of year, weeks starting on Monday (00-52)
+ F      January    A full textual representation of the month
+ m      01         Numeric representation of a month, with leading zeros
+ M      Jan        Month name abbreviation, three letters
+ n      1          Numeric representation of a month, without leading zeros
+ t      31         Number of days in the given month
+ L      0          Whether it's a leap year (1 if it is a leap year, else 0)
+ Y      2007       A full numeric representation of a year, 4 digits
+ y      07         A two digit representation of a year
+ a      pm         Lowercase Ante meridiem and Post meridiem
+ A      PM         Uppercase Ante meridiem and Post meridiem
+ g      3          12-hour format of an hour without leading zeros
+ G      15         24-hour format of an hour without leading zeros
+ h      03         12-hour format of an hour with leading zeros
+ H      15         24-hour format of an hour with leading zeros
+ i      05         Minutes with leading zeros
+ s      01         Seconds, with leading zeros
+ O      -0600      Difference to Greenwich time (GMT) in hours
+ T      CST        Timezone setting of the machine running the code
+ Z      -21600     Timezone offset in seconds (negative if west of UTC, positive if east)
+ </pre>
  *
  * Example usage (note that you must escape format specifiers with '\\' to render them as character literals):
  * <pre><code>
-var dt = new Date('1/10/2007 03:05:01 PM GMT-0600');
-document.write(dt.format('Y-m-d'));                         //2007-01-10
-document.write(dt.format('F j, Y, g:i a'));                 //January 10, 2007, 3:05 pm
-document.write(dt.format('l, \\t\\he dS of F Y h:i:s A'));  //Wednesday, the 10th of January 2007 03:05:01 PM
+ var dt = new Date('1/10/2007 03:05:01 PM GMT-0600');
+ document.write(dt.format('Y-m-d'));                         //2007-01-10
+ document.write(dt.format('F j, Y, g:i a'));                 //January 10, 2007, 3:05 pm
+ document.write(dt.format('l, \\t\\he dS of F Y h:i:s A'));  //Wednesday, the 10th of January 2007 03:05:01 PM
  </code></pre>
  *
  * Here are some standard date/time patterns that you might find helpful.  They
@@ -62,7 +62,7 @@ document.write(dt.format('l, \\t\\he dS of F Y h:i:s A'));  //Wednesday, the 10t
  * block of code into any script that is included after Date.js and they will also become
  * globally available on the Date object.  Feel free to add or remove patterns as needed in your code.
  * <pre><code>
-Date.patterns = {
+ Date.patterns = {
     ISO8601Long:"Y-m-d H:i:s",
     ISO8601Short:"Y-m-d",
     ShortDate: "n/j/Y",
@@ -75,12 +75,12 @@ Date.patterns = {
     UniversalSortableDateTime: "Y-m-d H:i:sO",
     YearMonth: "F, Y"
 };
-</code></pre>
+ </code></pre>
  *
  * Example usage:
  * <pre><code>
-var dt = new Date();
-document.write(dt.format(Date.patterns.ShortDate));
+ var dt = new Date();
+ document.write(dt.format(Date.patterns.ShortDate));
  </code></pre>
  */
 
@@ -96,14 +96,14 @@ document.write(dt.format(Date.patterns.ShortDate));
  */
 
 // private
-Date.parseFunctions = {count:0};
+Date.parseFunctions = {count: 0};
 // private
 Date.parseRegexes = [];
 // private
-Date.formatFunctions = {count:0};
+Date.formatFunctions = {count: 0};
 
 // private
-Date.prototype.dateFormat = function(format) {
+Date.prototype.dateFormat = function (format) {
     if (Date.formatFunctions[format] == null) {
         Date.createNewFormat(format);
     }
@@ -121,7 +121,7 @@ Date.prototype.dateFormat = function(format) {
 Date.prototype.format = Date.prototype.dateFormat;
 
 // private
-Date.createNewFormat = function(format) {
+Date.createNewFormat = function (format) {
     var funcName = "format" + Date.formatFunctions.count++;
     Date.formatFunctions[format] = funcName;
     var code = "Date.prototype." + funcName + " = function(){return ";
@@ -131,12 +131,10 @@ Date.createNewFormat = function(format) {
         ch = format.charAt(i);
         if (!special && ch == "\\") {
             special = true;
-        }
-        else if (special) {
+        } else if (special) {
             special = false;
             code += "'" + String.escape(ch) + "' + ";
-        }
-        else {
+        } else {
             code += Date.getFormatCode(ch);
         }
     }
@@ -144,64 +142,64 @@ Date.createNewFormat = function(format) {
 };
 
 // private
-Date.getFormatCode = function(character) {
+Date.getFormatCode = function (character) {
     switch (character) {
-    case "d":
-        return "String.leftPad(this.getDate(), 2, '0') + ";
-    case "D":
-        return "Date.dayNames[this.getDay()].substring(0, 3) + ";
-    case "j":
-        return "this.getDate() + ";
-    case "l":
-        return "Date.dayNames[this.getDay()] + ";
-    case "S":
-        return "this.getSuffix() + ";
-    case "w":
-        return "this.getDay() + ";
-    case "z":
-        return "this.getDayOfYear() + ";
-    case "W":
-        return "this.getWeekOfYear() + ";
-    case "F":
-        return "Date.monthNames[this.getMonth()] + ";
-    case "m":
-        return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
-    case "M":
-        return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
-    case "n":
-        return "(this.getMonth() + 1) + ";
-    case "t":
-        return "this.getDaysInMonth() + ";
-    case "L":
-        return "(this.isLeapYear() ? 1 : 0) + ";
-    case "Y":
-        return "this.getFullYear() + ";
-    case "y":
-        return "('' + this.getFullYear()).substring(2, 4) + ";
-    case "a":
-        return "(this.getHours() < 12 ? 'am' : 'pm') + ";
-    case "A":
-        return "(this.getHours() < 12 ? 'AM' : 'PM') + ";
-    case "g":
-        return "((this.getHours() % 12) ? this.getHours() % 12 : 12) + ";
-    case "G":
-        return "this.getHours() + ";
-    case "h":
-        return "String.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0') + ";
-    case "H":
-        return "String.leftPad(this.getHours(), 2, '0') + ";
-    case "i":
-        return "String.leftPad(this.getMinutes(), 2, '0') + ";
-    case "s":
-        return "String.leftPad(this.getSeconds(), 2, '0') + ";
-    case "O":
-        return "this.getGMTOffset() + ";
-    case "T":
-        return "this.getTimezone() + ";
-    case "Z":
-        return "(this.getTimezoneOffset() * -60) + ";
-    default:
-        return "'" + String.escape(character) + "' + ";
+        case "d":
+            return "String.leftPad(this.getDate(), 2, '0') + ";
+        case "D":
+            return "Date.dayNames[this.getDay()].substring(0, 3) + ";
+        case "j":
+            return "this.getDate() + ";
+        case "l":
+            return "Date.dayNames[this.getDay()] + ";
+        case "S":
+            return "this.getSuffix() + ";
+        case "w":
+            return "this.getDay() + ";
+        case "z":
+            return "this.getDayOfYear() + ";
+        case "W":
+            return "this.getWeekOfYear() + ";
+        case "F":
+            return "Date.monthNames[this.getMonth()] + ";
+        case "m":
+            return "String.leftPad(this.getMonth() + 1, 2, '0') + ";
+        case "M":
+            return "Date.monthNames[this.getMonth()].substring(0, 3) + ";
+        case "n":
+            return "(this.getMonth() + 1) + ";
+        case "t":
+            return "this.getDaysInMonth() + ";
+        case "L":
+            return "(this.isLeapYear() ? 1 : 0) + ";
+        case "Y":
+            return "this.getFullYear() + ";
+        case "y":
+            return "('' + this.getFullYear()).substring(2, 4) + ";
+        case "a":
+            return "(this.getHours() < 12 ? 'am' : 'pm') + ";
+        case "A":
+            return "(this.getHours() < 12 ? 'AM' : 'PM') + ";
+        case "g":
+            return "((this.getHours() % 12) ? this.getHours() % 12 : 12) + ";
+        case "G":
+            return "this.getHours() + ";
+        case "h":
+            return "String.leftPad((this.getHours() % 12) ? this.getHours() % 12 : 12, 2, '0') + ";
+        case "H":
+            return "String.leftPad(this.getHours(), 2, '0') + ";
+        case "i":
+            return "String.leftPad(this.getMinutes(), 2, '0') + ";
+        case "s":
+            return "String.leftPad(this.getSeconds(), 2, '0') + ";
+        case "O":
+            return "this.getGMTOffset() + ";
+        case "T":
+            return "this.getTimezone() + ";
+        case "Z":
+            return "(this.getTimezoneOffset() * -60) + ";
+        default:
+            return "'" + String.escape(character) + "' + ";
     }
 };
 
@@ -212,25 +210,25 @@ Date.getFormatCode = function(character) {
  * be specified, but default to 0.  Keep in mind that the input date string must precisely match the specified format
  * string or the parse operation will fail.
  * Example Usage:
-<pre><code>
-//dt = Fri May 25 2007 (current date)
-var dt = new Date();
+ <pre><code>
+ //dt = Fri May 25 2007 (current date)
+ var dt = new Date();
 
-//dt = Thu May 25 2006 (today's month/day in 2006)
-dt = Date.parseDate("2006", "Y");
+ //dt = Thu May 25 2006 (today's month/day in 2006)
+ dt = Date.parseDate("2006", "Y");
 
-//dt = Sun Jan 15 2006 (all date parts specified)
-dt = Date.parseDate("2006-1-15", "Y-m-d");
+ //dt = Sun Jan 15 2006 (all date parts specified)
+ dt = Date.parseDate("2006-1-15", "Y-m-d");
 
-//dt = Sun Jan 15 2006 15:20:01 GMT-0600 (CST)
-dt = Date.parseDate("2006-1-15 3:20:01 PM", "Y-m-d h:i:s A" );
-</code></pre>
+ //dt = Sun Jan 15 2006 15:20:01 GMT-0600 (CST)
+ dt = Date.parseDate("2006-1-15 3:20:01 PM", "Y-m-d h:i:s A" );
+ </code></pre>
  * @param {String} input The unparsed date as a string
  * @param {String} format The format the date is in
  * @return {Date} The parsed date
  * @static
  */
-Date.parseDate = function(input, format) {
+Date.parseDate = function (input, format) {
     if (Date.parseFunctions[format] == null) {
         Date.createParser(format);
     }
@@ -239,7 +237,7 @@ Date.parseDate = function(input, format) {
 };
 
 // private
-Date.createParser = function(format) {
+Date.createParser = function (format) {
     var funcName = "parse" + Date.parseFunctions.count++;
     var regexNum = Date.parseRegexes.length;
     var currentGroup = 1;
@@ -261,12 +259,10 @@ Date.createParser = function(format) {
         ch = format.charAt(i);
         if (!special && ch == "\\") {
             special = true;
-        }
-        else if (special) {
+        } else if (special) {
             special = false;
             regex += String.escape(ch);
-        }
-        else {
+        } else {
             var obj = Date.formatCodeToRegex(ch, currentGroup);
             currentGroup += obj.g;
             regex += obj.s;
@@ -298,127 +294,179 @@ Date.createParser = function(format) {
 };
 
 // private
-Date.formatCodeToRegex = function(character, currentGroup) {
+Date.formatCodeToRegex = function (character, currentGroup) {
     switch (character) {
-    case "D":
-        return {g:0,
-        c:null,
-        s:"(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"};
-    case "j":
-        return {g:1,
-            c:"d = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{1,2})"}; // day of month without leading zeroes
-    case "d":
-        return {g:1,
-            c:"d = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"}; // day of month with leading zeroes
-    case "l":
-        return {g:0,
-            c:null,
-            s:"(?:" + Date.dayNames.join("|") + ")"};
-    case "S":
-        return {g:0,
-            c:null,
-            s:"(?:st|nd|rd|th)"};
-    case "w":
-        return {g:0,
-            c:null,
-            s:"\\d"};
-    case "z":
-        return {g:0,
-            c:null,
-            s:"(?:\\d{1,3})"};
-    case "W":
-        return {g:0,
-            c:null,
-            s:"(?:\\d{2})"};
-    case "F":
-        return {g:1,
-            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10);\n",
-            s:"(" + Date.monthNames.join("|") + ")"};
-    case "M":
-        return {g:1,
-            c:"m = parseInt(Date.monthNumbers[results[" + currentGroup + "]], 10);\n",
-            s:"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"};
-    case "n":
-        return {g:1,
-            c:"m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
-            s:"(\\d{1,2})"}; // Numeric representation of a month, without leading zeros
-    case "m":
-        return {g:1,
-            c:"m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
-            s:"(\\d{2})"}; // Numeric representation of a month, with leading zeros
-    case "t":
-        return {g:0,
-            c:null,
-            s:"\\d{1,2}"};
-    case "L":
-        return {g:0,
-            c:null,
-            s:"(?:1|0)"};
-    case "Y":
-        return {g:1,
-            c:"y = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{4})"};
-    case "y":
-        return {g:1,
-            c:"var ty = parseInt(results[" + currentGroup + "], 10);\n"
-                + "y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n",
-            s:"(\\d{1,2})"};
-    case "a":
-        return {g:1,
-            c:"if (results[" + currentGroup + "] == 'am') {\n"
-                + "if (h == 12) { h = 0; }\n"
-                + "} else { if (h < 12) { h += 12; }}",
-            s:"(am|pm)"};
-    case "A":
-        return {g:1,
-            c:"if (results[" + currentGroup + "] == 'AM') {\n"
-                + "if (h == 12) { h = 0; }\n"
-                + "} else { if (h < 12) { h += 12; }}",
-            s:"(AM|PM)"};
-    case "g":
-    case "G":
-        return {g:1,
-            c:"h = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{1,2})"}; // 12/24-hr format  format of an hour without leading zeroes
-    case "h":
-    case "H":
-        return {g:1,
-            c:"h = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"}; //  12/24-hr format  format of an hour with leading zeroes
-    case "i":
-        return {g:1,
-            c:"i = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"};
-    case "s":
-        return {g:1,
-            c:"s = parseInt(results[" + currentGroup + "], 10);\n",
-            s:"(\\d{2})"};
-    case "O":
-        return {g:1,
-            c:[
-                "o = results[", currentGroup, "];\n",
-                "var sn = o.substring(0,1);\n", // get + / - sign
-                "var hr = o.substring(1,3)*1 + Math.floor(o.substring(3,5) / 60);\n", // get hours (performs minutes-to-hour conversion also)
-                "var mn = o.substring(3,5) % 60;\n", // get minutes
-                "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n", // -12hrs <= GMT offset <= 14hrs
-                "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
-            ].join(""),
-            s:"([+\-]\\d{4})"};
-    case "T":
-        return {g:0,
-            c:null,
-            s:"[A-Z]{1,4}"}; // timezone abbrev. may be between 1 - 4 chars
-    case "Z":
-        return {g:1,
-            c:"z = results[" + currentGroup + "];\n" // -43200 <= UTC offset <= 50400
-                  + "z = (-43200 <= z*1 && z*1 <= 50400)? z : null;\n",
-            s:"([+\-]?\\d{1,5})"}; // leading '+' sign is optional for UTC offset
-    default:
-        return {g:0,
-            c:null,
-            s:String.escape(character)};
+        case "D":
+            return {
+                g: 0,
+                c: null,
+                s: "(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"
+            };
+        case "j":
+            return {
+                g: 1,
+                c: "d = parseInt(results[" + currentGroup + "], 10);\n",
+                s: "(\\d{1,2})"
+            }; // day of month without leading zeroes
+        case "d":
+            return {
+                g: 1,
+                c: "d = parseInt(results[" + currentGroup + "], 10);\n",
+                s: "(\\d{2})"
+            }; // day of month with leading zeroes
+        case "l":
+            return {
+                g: 0,
+                c: null,
+                s: "(?:" + Date.dayNames.join("|") + ")"
+            };
+        case "S":
+            return {
+                g: 0,
+                c: null,
+                s: "(?:st|nd|rd|th)"
+            };
+        case "w":
+            return {
+                g: 0,
+                c: null,
+                s: "\\d"
+            };
+        case "z":
+            return {
+                g: 0,
+                c: null,
+                s: "(?:\\d{1,3})"
+            };
+        case "W":
+            return {
+                g: 0,
+                c: null,
+                s: "(?:\\d{2})"
+            };
+        case "F":
+            return {
+                g: 1,
+                c: "m = parseInt(Date.monthNumbers[results[" + currentGroup + "].substring(0, 3)], 10);\n",
+                s: "(" + Date.monthNames.join("|") + ")"
+            };
+        case "M":
+            return {
+                g: 1,
+                c: "m = parseInt(Date.monthNumbers[results[" + currentGroup + "]], 10);\n",
+                s: "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+            };
+        case "n":
+            return {
+                g: 1,
+                c: "m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
+                s: "(\\d{1,2})"
+            }; // Numeric representation of a month, without leading zeros
+        case "m":
+            return {
+                g: 1,
+                c: "m = parseInt(results[" + currentGroup + "], 10) - 1;\n",
+                s: "(\\d{2})"
+            }; // Numeric representation of a month, with leading zeros
+        case "t":
+            return {
+                g: 0,
+                c: null,
+                s: "\\d{1,2}"
+            };
+        case "L":
+            return {
+                g: 0,
+                c: null,
+                s: "(?:1|0)"
+            };
+        case "Y":
+            return {
+                g: 1,
+                c: "y = parseInt(results[" + currentGroup + "], 10);\n",
+                s: "(\\d{4})"
+            };
+        case "y":
+            return {
+                g: 1,
+                c: "var ty = parseInt(results[" + currentGroup + "], 10);\n"
+                    + "y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n",
+                s: "(\\d{1,2})"
+            };
+        case "a":
+            return {
+                g: 1,
+                c: "if (results[" + currentGroup + "] == 'am') {\n"
+                    + "if (h == 12) { h = 0; }\n"
+                    + "} else { if (h < 12) { h += 12; }}",
+                s: "(am|pm)"
+            };
+        case "A":
+            return {
+                g: 1,
+                c: "if (results[" + currentGroup + "] == 'AM') {\n"
+                    + "if (h == 12) { h = 0; }\n"
+                    + "} else { if (h < 12) { h += 12; }}",
+                s: "(AM|PM)"
+            };
+        case "g":
+        case "G":
+            return {
+                g: 1,
+                c: "h = parseInt(results[" + currentGroup + "], 10);\n",
+                s: "(\\d{1,2})"
+            }; // 12/24-hr format  format of an hour without leading zeroes
+        case "h":
+        case "H":
+            return {
+                g: 1,
+                c: "h = parseInt(results[" + currentGroup + "], 10);\n",
+                s: "(\\d{2})"
+            }; //  12/24-hr format  format of an hour with leading zeroes
+        case "i":
+            return {
+                g: 1,
+                c: "i = parseInt(results[" + currentGroup + "], 10);\n",
+                s: "(\\d{2})"
+            };
+        case "s":
+            return {
+                g: 1,
+                c: "s = parseInt(results[" + currentGroup + "], 10);\n",
+                s: "(\\d{2})"
+            };
+        case "O":
+            return {
+                g: 1,
+                c: [
+                    "o = results[", currentGroup, "];\n",
+                    "var sn = o.substring(0,1);\n", // get + / - sign
+                    "var hr = o.substring(1,3)*1 + Math.floor(o.substring(3,5) / 60);\n", // get hours (performs minutes-to-hour conversion also)
+                    "var mn = o.substring(3,5) % 60;\n", // get minutes
+                    "o = ((-12 <= (hr*60 + mn)/60) && ((hr*60 + mn)/60 <= 14))?\n", // -12hrs <= GMT offset <= 14hrs
+                    "    (sn + String.leftPad(hr, 2, 0) + String.leftPad(mn, 2, 0)) : null;\n"
+                ].join(""),
+                s: "([+\-]\\d{4})"
+            };
+        case "T":
+            return {
+                g: 0,
+                c: null,
+                s: "[A-Z]{1,4}"
+            }; // timezone abbrev. may be between 1 - 4 chars
+        case "Z":
+            return {
+                g: 1,
+                c: "z = results[" + currentGroup + "];\n" // -43200 <= UTC offset <= 50400
+                    + "z = (-43200 <= z*1 && z*1 <= 50400)? z : null;\n",
+                s: "([+\-]?\\d{1,5})"
+            }; // leading '+' sign is optional for UTC offset
+        default:
+            return {
+                g: 0,
+                c: null,
+                s: String.escape(character)
+            };
     }
 };
 
@@ -426,7 +474,7 @@ Date.formatCodeToRegex = function(character, currentGroup) {
  * Get the timezone abbreviation of the current date (equivalent to the format specifier 'T').
  * @return {String} The abbreviated timezone name (e.g. 'CST')
  */
-Date.prototype.getTimezone = function() {
+Date.prototype.getTimezone = function () {
     return this.toString().replace(/^.*? ([A-Z]{1,4})[\-+][0-9]{4} .*$/, "$1");
 };
 
@@ -434,7 +482,7 @@ Date.prototype.getTimezone = function() {
  * Get the offset from GMT of the current date (equivalent to the format specifier 'O').
  * @return {String} The 4-character offset string prefixed with + or - (e.g. '-0600')
  */
-Date.prototype.getGMTOffset = function() {
+Date.prototype.getGMTOffset = function () {
     return (this.getTimezoneOffset() > 0 ? "-" : "+")
         + String.leftPad(Math.abs(Math.floor(this.getTimezoneOffset() / 60)), 2, "0")
         + String.leftPad(this.getTimezoneOffset() % 60, 2, "0");
@@ -444,7 +492,7 @@ Date.prototype.getGMTOffset = function() {
  * Get the numeric day number of the year, adjusted for leap year.
  * @return {Number} 0 through 364 (365 in leap years)
  */
-Date.prototype.getDayOfYear = function() {
+Date.prototype.getDayOfYear = function () {
     var num = 0;
     Date.daysInMonth[1] = this.isLeapYear() ? 29 : 28;
     for (var i = 0; i < this.getMonth(); ++i) {
@@ -458,7 +506,7 @@ Date.prototype.getDayOfYear = function() {
  * (equivalent to the format specifier 'W').
  * @return {String} '00' through '52'
  */
-Date.prototype.getWeekOfYear = function() {
+Date.prototype.getWeekOfYear = function () {
     // Skip to Thursday of this week
     var now = this.getDayOfYear() + (4 - this.getDay());
     // Find the first Thursday of the year
@@ -471,7 +519,7 @@ Date.prototype.getWeekOfYear = function() {
  * Whether or not the current date is in a leap year.
  * @return {Boolean} True if the current date is in a leap year, else false
  */
-Date.prototype.isLeapYear = function() {
+Date.prototype.isLeapYear = function () {
     var year = this.getFullYear();
     return ((year & 3) == 0 && (year % 100 || (year % 400 == 0 && year)));
 };
@@ -482,12 +530,12 @@ Date.prototype.isLeapYear = function() {
  * the {@link #monthNames} array to retrieve the textual day name.
  * Example:
  *<pre><code>
-var dt = new Date('1/10/2007');
-document.write(Date.dayNames[dt.getFirstDayOfMonth()]); //output: 'Monday'
-</code></pre>
+ var dt = new Date('1/10/2007');
+ document.write(Date.dayNames[dt.getFirstDayOfMonth()]); //output: 'Monday'
+ </code></pre>
  * @return {Number} The day number (0-6)
  */
-Date.prototype.getFirstDayOfMonth = function() {
+Date.prototype.getFirstDayOfMonth = function () {
     var day = (this.getDay() - (this.getDate() - 1)) % 7;
     return (day < 0) ? (day + 7) : day;
 };
@@ -498,12 +546,12 @@ Date.prototype.getFirstDayOfMonth = function() {
  * the {@link #monthNames} array to retrieve the textual day name.
  * Example:
  *<pre><code>
-var dt = new Date('1/10/2007');
-document.write(Date.dayNames[dt.getLastDayOfMonth()]); //output: 'Wednesday'
-</code></pre>
+ var dt = new Date('1/10/2007');
+ document.write(Date.dayNames[dt.getLastDayOfMonth()]); //output: 'Wednesday'
+ </code></pre>
  * @return {Number} The day number (0-6)
  */
-Date.prototype.getLastDayOfMonth = function() {
+Date.prototype.getLastDayOfMonth = function () {
     var day = (this.getDay() + (Date.daysInMonth[this.getMonth()] - this.getDate())) % 7;
     return (day < 0) ? (day + 7) : day;
 };
@@ -513,7 +561,7 @@ Date.prototype.getLastDayOfMonth = function() {
  * Get the first date of this date's month
  * @return {Date}
  */
-Date.prototype.getFirstDateOfMonth = function() {
+Date.prototype.getFirstDateOfMonth = function () {
     return new Date(this.getFullYear(), this.getMonth(), 1);
 };
 
@@ -521,14 +569,14 @@ Date.prototype.getFirstDateOfMonth = function() {
  * Get the last date of this date's month
  * @return {Date}
  */
-Date.prototype.getLastDateOfMonth = function() {
+Date.prototype.getLastDateOfMonth = function () {
     return new Date(this.getFullYear(), this.getMonth(), this.getDaysInMonth());
 };
 /**
  * Get the number of days in the current month, adjusted for leap year.
  * @return {Number} The number of days in the month
  */
-Date.prototype.getDaysInMonth = function() {
+Date.prototype.getDaysInMonth = function () {
     Date.daysInMonth[1] = this.isLeapYear() ? 29 : 28;
     return Date.daysInMonth[this.getMonth()];
 };
@@ -537,7 +585,7 @@ Date.prototype.getDaysInMonth = function() {
  * Get the English ordinal suffix of the current day (equivalent to the format specifier 'S').
  * @return {String} 'st, 'nd', 'rd' or 'th'
  */
-Date.prototype.getSuffix = function() {
+Date.prototype.getSuffix = function () {
     switch (this.getDate()) {
         case 1:
         case 21:
@@ -555,7 +603,7 @@ Date.prototype.getSuffix = function() {
 };
 
 // private
-Date.daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
+Date.daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 /**
  * An array of textual month names.
@@ -565,18 +613,18 @@ Date.daysInMonth = [31,28,31,30,31,30,31,31,30,31,30,31];
  * @static
  */
 Date.monthNames =
-   ["January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"];
+    ["January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"];
 
 /**
  * An array of textual day names.
@@ -586,30 +634,31 @@ Date.monthNames =
  * @static
  */
 Date.dayNames =
-   ["Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"];
+    ["Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"];
 
 // private
 Date.y2kYear = 50;
 // private
 Date.monthNumbers = {
-    Jan:0,
-    Feb:1,
-    Mar:2,
-    Apr:3,
-    May:4,
-    Jun:5,
-    Jul:6,
-    Aug:7,
-    Sep:8,
-    Oct:9,
-    Nov:10,
-    Dec:11};
+    Jan: 0,
+    Feb: 1,
+    Mar: 2,
+    Apr: 3,
+    May: 4,
+    Jun: 5,
+    Jul: 6,
+    Aug: 7,
+    Sep: 8,
+    Oct: 9,
+    Nov: 10,
+    Dec: 11
+};
 
 /**
  * Creates and returns a new Date instance with the exact same date value as the called instance.
@@ -619,22 +668,22 @@ Date.monthNumbers = {
  *
  * Example of correctly cloning a date:
  * <pre><code>
-//wrong way:
-var orig = new Date('10/1/2006');
-var copy = orig;
-copy.setDate(5);
-document.write(orig);  //returns 'Thu Oct 05 2006'!
+ //wrong way:
+ var orig = new Date('10/1/2006');
+ var copy = orig;
+ copy.setDate(5);
+ document.write(orig);  //returns 'Thu Oct 05 2006'!
 
-//correct way:
-var orig = new Date('10/1/2006');
-var copy = orig.clone();
-copy.setDate(5);
-document.write(orig);  //returns 'Thu Oct 01 2006'
-</code></pre>
+ //correct way:
+ var orig = new Date('10/1/2006');
+ var copy = orig.clone();
+ copy.setDate(5);
+ document.write(orig);  //returns 'Thu Oct 01 2006'
+ </code></pre>
  * @return {Date} The new Date instance
  */
-Date.prototype.clone = function() {
-	return new Date(this.getTime());
+Date.prototype.clone = function () {
+    return new Date(this.getTime());
 };
 
 /**
@@ -642,8 +691,8 @@ Date.prototype.clone = function() {
  @param {Boolean} clone true to create a clone of this date, clear the time and return it
  @return {Date} this or the clone
  */
-Date.prototype.clearTime = function(clone){
-    if(clone){
+Date.prototype.clearTime = function (clone) {
+    if (clone) {
         return this.clone().clearTime();
     }
     this.setHours(0);
@@ -655,19 +704,19 @@ Date.prototype.clearTime = function(clone){
 
 // private
 // safari setMonth is broken
-if(Ext.isSafari){
+if (Ext.isSafari) {
     Date.brokenSetMonth = Date.prototype.setMonth;
-	Date.prototype.setMonth = function(num){
-		if(num <= -1){
-			var n = Math.ceil(-num);
-			var back_year = Math.ceil(n/12);
-			var month = (n % 12) ? 12 - n % 12 : 0 ;
-			this.setFullYear(this.getFullYear() - back_year);
-			return Date.brokenSetMonth.call(this, month);
-		} else {
-			return Date.brokenSetMonth.apply(this, arguments);
-		}
-	};
+    Date.prototype.setMonth = function (num) {
+        if (num <= -1) {
+            var n = Math.ceil(-num);
+            var back_year = Math.ceil(n / 12);
+            var month = (n % 12) ? 12 - n % 12 : 0;
+            this.setFullYear(this.getFullYear() - back_year);
+            return Date.brokenSetMonth.call(this, month);
+        } else {
+            return Date.brokenSetMonth.apply(this, arguments);
+        }
+    };
 }
 
 /** Date interval constant @static @type String */
@@ -692,53 +741,53 @@ Date.YEAR = "y";
  *
  * Examples:
  * <pre><code>
-//Basic usage:
-var dt = new Date('10/29/2006').add(Date.DAY, 5);
-document.write(dt); //returns 'Fri Oct 06 2006 00:00:00'
+ //Basic usage:
+ var dt = new Date('10/29/2006').add(Date.DAY, 5);
+ document.write(dt); //returns 'Fri Oct 06 2006 00:00:00'
 
-//Negative values will subtract correctly:
-var dt2 = new Date('10/1/2006').add(Date.DAY, -5);
-document.write(dt2); //returns 'Tue Sep 26 2006 00:00:00'
+ //Negative values will subtract correctly:
+ var dt2 = new Date('10/1/2006').add(Date.DAY, -5);
+ document.write(dt2); //returns 'Tue Sep 26 2006 00:00:00'
 
-//You can even chain several calls together in one line!
-var dt3 = new Date('10/1/2006').add(Date.DAY, 5).add(Date.HOUR, 8).add(Date.MINUTE, -30);
-document.write(dt3); //returns 'Fri Oct 06 2006 07:30:00'
+ //You can even chain several calls together in one line!
+ var dt3 = new Date('10/1/2006').add(Date.DAY, 5).add(Date.HOUR, 8).add(Date.MINUTE, -30);
+ document.write(dt3); //returns 'Fri Oct 06 2006 07:30:00'
  </code></pre>
  *
  * @param {String} interval   A valid date interval enum value
  * @param {Number} value      The amount to add to the current date
  * @return {Date} The new Date instance
  */
-Date.prototype.add = function(interval, value){
-  var d = this.clone();
-  if (!interval || value === 0) return d;
-  switch(interval.toLowerCase()){
-    case Date.MILLI:
-      d.setMilliseconds(this.getMilliseconds() + value);
-      break;
-    case Date.SECOND:
-      d.setSeconds(this.getSeconds() + value);
-      break;
-    case Date.MINUTE:
-      d.setMinutes(this.getMinutes() + value);
-      break;
-    case Date.HOUR:
-      d.setHours(this.getHours() + value);
-      break;
-    case Date.DAY:
-      d.setDate(this.getDate() + value);
-      break;
-    case Date.MONTH:
-      var day = this.getDate();
-      if(day > 28){
-          day = Math.min(day, this.getFirstDateOfMonth().add('mo', value).getLastDateOfMonth().getDate());
-      }
-      d.setDate(day);
-      d.setMonth(this.getMonth() + value);
-      break;
-    case Date.YEAR:
-      d.setFullYear(this.getFullYear() + value);
-      break;
-  }
-  return d;
+Date.prototype.add = function (interval, value) {
+    var d = this.clone();
+    if (!interval || value === 0) return d;
+    switch (interval.toLowerCase()) {
+        case Date.MILLI:
+            d.setMilliseconds(this.getMilliseconds() + value);
+            break;
+        case Date.SECOND:
+            d.setSeconds(this.getSeconds() + value);
+            break;
+        case Date.MINUTE:
+            d.setMinutes(this.getMinutes() + value);
+            break;
+        case Date.HOUR:
+            d.setHours(this.getHours() + value);
+            break;
+        case Date.DAY:
+            d.setDate(this.getDate() + value);
+            break;
+        case Date.MONTH:
+            var day = this.getDate();
+            if (day > 28) {
+                day = Math.min(day, this.getFirstDateOfMonth().add('mo', value).getLastDateOfMonth().getDate());
+            }
+            d.setDate(day);
+            d.setMonth(this.getMonth() + value);
+            break;
+        case Date.YEAR:
+            d.setFullYear(this.getFullYear() + value);
+            break;
+    }
+    return d;
 };

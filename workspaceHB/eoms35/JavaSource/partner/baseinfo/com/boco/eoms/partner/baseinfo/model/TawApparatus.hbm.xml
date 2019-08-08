@@ -1,86 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class name="com.boco.eoms.partner.baseinfo.model.TawApparatus"
-		table="pnr_partner_apparatus">
+    <class name="com.boco.eoms.partner.baseinfo.model.TawApparatus"
+           table="pnr_partner_apparatus">
 
-		<id name="id" column="id" unsaved-value="null">
+        <id name="id" column="id" unsaved-value="null">
 
-			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-			<generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-			</generator>
+            </generator>
 
-		</id>
+        </id>
 
-		<property name="apparatusName" column="apparatusName"
-			length="64" not-null="true" unique="false">
+        <property name="apparatusName" column="apparatusName"
+                  length="64" not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="factory" column="factory" length="64"
-			not-null="true" unique="false">
+        <property name="factory" column="factory" length="64"
+                  not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="dept_id" column="dept_id" length="64"
-			not-null="true" unique="false">
+        <property name="dept_id" column="dept_id" length="64"
+                  not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="area_id" column="area_id" length="64"
-			not-null="true" unique="false">
+        <property name="area_id" column="area_id" length="64"
+                  not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="type" column="type" length="16" not-null="true"
-			unique="false">
+        <property name="type" column="type" length="16" not-null="true"
+                  unique="false">
 
-		</property>
+        </property>
 
-		<property name="model" column="model" length="64"
-			not-null="true" unique="false">
+        <property name="model" column="model" length="64"
+                  not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="state" column="state" length="4" not-null="true"
-			unique="false">
+        <property name="state" column="state" length="4" not-null="true"
+                  unique="false">
 
-		</property>
+        </property>
 
-		<property name="storage" column="storage" length="128"
-			not-null="true" unique="false">
+        <property name="storage" column="storage" length="128"
+                  not-null="true" unique="false">
 
-		</property>
+        </property>
 
-		<property name="remark" column="remark" length="256"
-			not-null="false" unique="false">
+        <property name="remark" column="remark" length="256"
+                  not-null="false" unique="false">
 
-		</property>
-		<property name="addMan" column="addMan" length="32"
-			not-null="false" unique="false">
+        </property>
+        <property name="addMan" column="addMan" length="32"
+                  not-null="false" unique="false">
 
-		</property>
-		<property name="addTime" column="addTime" length="32"
-			not-null="false" unique="false">
+        </property>
+        <property name="addTime" column="addTime" length="32"
+                  not-null="false" unique="false">
 
-		</property>
-		<property name="connectType" column="connectType" length="64"
-			not-null="false" unique="false">
+        </property>
+        <property name="connectType" column="connectType" length="64"
+                  not-null="false" unique="false">
 
-		</property>
-		<property name="apparatusId" column="apparatusId" length="64"
-			not-null="false" unique="false">
+        </property>
+        <property name="apparatusId" column="apparatusId" length="64"
+                  not-null="false" unique="false">
 
-		</property>
+        </property>
 
 
-	</class>
+    </class>
 
 </hibernate-mapping>
 

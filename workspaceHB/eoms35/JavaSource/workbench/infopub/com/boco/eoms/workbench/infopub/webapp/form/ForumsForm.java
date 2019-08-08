@@ -7,7 +7,6 @@ import org.apache.struts.action.ActionMapping;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 /**
- * 
  * <p>
  * Title:信息发布版块信息form
  * </p>
@@ -17,179 +16,179 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Date:May 22, 2008 1:46:41 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
 public class ForumsForm extends BaseForm implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8350892380048821442L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8350892380048821442L;
 
-	protected String createrId;
-	
-	/**
-	 * 移动到主题
-	 */
-	protected String toForumsId;
+    protected String createrId;
 
-	protected String createTime;
+    /**
+     * 移动到主题
+     */
+    protected String toForumsId;
 
-	protected String description;
+    protected String createTime;
 
-	protected String id;
+    protected String description;
 
-	protected String title;
+    protected String id;
 
-	protected String parentId;
+    protected String title;
 
-	/**
-	 * 删除标记
-	 */
-	protected String isDel;
+    protected String parentId;
 
-	/**
-	 * 是否为叶子节点
-	 */
-	protected String isLeaf;
+    /**
+     * 删除标记
+     */
+    protected String isDel;
 
-	/** Default empty constructor. */
-	public ForumsForm() {
-	}
+    /**
+     * 是否为叶子节点
+     */
+    protected String isLeaf;
 
-	public String getCreaterId() {
-		return this.createrId;
-	}
+    /**
+     * Default empty constructor.
+     */
+    public ForumsForm() {
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    public String getCreaterId() {
+        return this.createrId;
+    }
 
-	public void setCreaterId(String createrId) {
-		this.createrId = createrId;
-	}
+    /**
+     * @struts.validator type="required"
+     */
 
-	public String getCreateTime() {
-		return this.createTime;
-	}
+    public void setCreaterId(String createrId) {
+        this.createrId = createrId;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    public String getCreateTime() {
+        return this.createTime;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    /**
+     * @struts.validator type="required"
+     */
 
-	public String getDescription() {
-		return this.description;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    public String getDescription() {
+        return this.description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    /**
+     * @struts.validator type="required"
+     */
 
-	public String getId() {
-		return this.id;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	/**
-	 */
+    public String getId() {
+        return this.id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     *
+     */
 
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 * @param title
-	 *            the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+        return title;
+    }
 
-	public String getParentId() {
-		return this.parentId;
-	}
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    public String getParentId() {
+        return this.parentId;
+    }
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
+    /**
+     * @struts.validator type="required"
+     */
 
-	/*
-	 * To add non XDoclet-generated methods, create a file named
-	 * xdoclet-ForumsForm.java containing the additional code and place it in
-	 * your metadata/web directory.
-	 */
-	/**
-	 * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
-	 *      javax.servlet.http.HttpServletRequest)
-	 */
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// reset any boolean data types to false
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
 
-	}
+    /*
+     * To add non XDoclet-generated methods, create a file named
+     * xdoclet-ForumsForm.java containing the additional code and place it in
+     * your metadata/web directory.
+     */
 
-	/**
-	 * @return the isLeaf
-	 */
-	public String getIsLeaf() {
-		return isLeaf;
-	}
+    /**
+     * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
+     * javax.servlet.http.HttpServletRequest)
+     */
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        // reset any boolean data types to false
 
-	/**
-	 * @param isLeaf
-	 *            the isLeaf to set
-	 */
-	public void setIsLeaf(String isLeaf) {
-		this.isLeaf = isLeaf;
-	}
+    }
 
-	/**
-	 * @return the isDel
-	 */
-	public String getIsDel() {
-		return isDel;
-	}
+    /**
+     * @return the isLeaf
+     */
+    public String getIsLeaf() {
+        return isLeaf;
+    }
 
-	/**
-	 * @param isDel
-	 *            the isDel to set
-	 */
-	public void setIsDel(String isDel) {
-		this.isDel = isDel;
-	}
+    /**
+     * @param isLeaf the isLeaf to set
+     */
+    public void setIsLeaf(String isLeaf) {
+        this.isLeaf = isLeaf;
+    }
 
-	/**
-	 * @return the toForumsId
-	 */
-	public String getToForumsId() {
-		return toForumsId;
-	}
+    /**
+     * @return the isDel
+     */
+    public String getIsDel() {
+        return isDel;
+    }
 
-	/**
-	 * @param toForumsId the toForumsId to set
-	 */
-	public void setToForumsId(String toForumsId) {
-		this.toForumsId = toForumsId;
-	}
+    /**
+     * @param isDel the isDel to set
+     */
+    public void setIsDel(String isDel) {
+        this.isDel = isDel;
+    }
+
+    /**
+     * @return the toForumsId
+     */
+    public String getToForumsId() {
+        return toForumsId;
+    }
+
+    /**
+     * @param toForumsId the toForumsId to set
+     */
+    public void setToForumsId(String toForumsId) {
+        this.toForumsId = toForumsId;
+    }
 
 }

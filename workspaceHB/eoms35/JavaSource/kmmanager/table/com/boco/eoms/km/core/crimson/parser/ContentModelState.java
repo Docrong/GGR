@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -67,72 +67,68 @@ package com.boco.eoms.km.core.crimson.parser;
  * states that are pending completion after the "current automaton"
  * completes its task.
  *
- * @see ContentModel
- * @see ValidatingParser
- *
  * @author David Brownell
  * @author Arthur van Hoff
- * @version 	$Revision: 1.1.1.1 $ 
+ * @version $Revision: 1.1.1.1 $
+ * @see ContentModel
+ * @see ValidatingParser
  */
-class ContentModelState
-{
-    private ContentModel	model;
-    private boolean		sawOne;
-    private ContentModelState	next;
+class ContentModelState {
+    private ContentModel model;
+    private boolean sawOne;
+    private ContentModelState next;
 
     /**
      * Create a content model state for a content model.  When
      * the state advances to null, this automaton has finished.
      */
-    ContentModelState (ContentModel model)
-    {
-	this (model, null);
+    ContentModelState(ContentModel model) {
+        this(model, null);
     }
 
     /**
      * Create a content model state for a content model, stacking
      * a state for subsequent processing.
      */
-    private ContentModelState (Object content, ContentModelState next)
-    {
-	this.model = (ContentModel)content;
-	this.next = next;
-	this.sawOne = false;
+    private ContentModelState(Object content, ContentModelState next) {
+        this.model = (ContentModel) content;
+        this.next = next;
+        this.sawOne = false;
     }
 
     /**
      * Check if the state can be terminated.  That is, there are no more
      * tokens required in the input stream.
+     *
      * @return true if the model can terminate without further input
      */
-    boolean terminate ()
-    {
-	switch (model.type) {
-	  case '+':
-	    if (!sawOne && !((ContentModel)model).empty ())
-		return false;
-	    // FALLTHROUGH
-	  case '*':
-	  case '?':
-	    return (next == null) || next.terminate ();
+    boolean terminate() {
+        switch (model.type) {
+            case '+':
+                if (!sawOne && !((ContentModel) model).empty())
+                    return false;
+                // FALLTHROUGH
+            case '*':
+            case '?':
+                return (next == null) || next.terminate();
 
-	  case '|':
-	    return model.empty () && (next == null || next.terminate ());
+            case '|':
+                return model.empty() && (next == null || next.terminate());
 
-	  case ',':
-	    ContentModel m;
-	    for (m = model; (m != null) && m.empty () ; m = m.next)
-		continue;
-	    if (m != null)
-		return false;
-	    return (next == null) || next.terminate ();
+            case ',':
+                ContentModel m;
+                for (m = model; (m != null) && m.empty(); m = m.next)
+                    continue;
+                if (m != null)
+                    return false;
+                return (next == null) || next.terminate();
 
-	  case 0:
-	    return false;
-	
-	  default:
-	    throw new InternalError ();
-	}
+            case 0:
+                return false;
+
+            default:
+                throw new InternalError();
+        }
     }
 
     /**
@@ -141,77 +137,77 @@ class ContentModelState
      * token is illegal at this point in the content model.
      * The current state is modified if possible, conserving
      * memory that's already been allocated.
+     *
      * @return next state after reducing a token
      */
-    ContentModelState advance (String token)
-    throws EndOfInputException
-    {
-	switch (model.type) {
-	  case '+':
-	  case '*':
-	    if (model.first (token)) {
-		sawOne = true;
-		if (model.content instanceof String)
-		    return this;
-		return new ContentModelState (model.content, this)
-			.advance (token);
-	    }
-	    if ((model.type == '*' || sawOne) && next != null)
-		return next.advance (token);
-	    break;
+    ContentModelState advance(String token)
+            throws EndOfInputException {
+        switch (model.type) {
+            case '+':
+            case '*':
+                if (model.first(token)) {
+                    sawOne = true;
+                    if (model.content instanceof String)
+                        return this;
+                    return new ContentModelState(model.content, this)
+                            .advance(token);
+                }
+                if ((model.type == '*' || sawOne) && next != null)
+                    return next.advance(token);
+                break;
 
-	  case '?':
-	    if (model.first (token)) {
-		if (model.content instanceof String)
-		    return next;
-		return new ContentModelState (model.content, next)
-			.advance (token);
-	    }
-	    if (next != null)
-		return next.advance (token);
-	    break;
+            case '?':
+                if (model.first(token)) {
+                    if (model.content instanceof String)
+                        return next;
+                    return new ContentModelState(model.content, next)
+                            .advance(token);
+                }
+                if (next != null)
+                    return next.advance(token);
+                break;
 
-	  case '|':
-	    for (ContentModel m = model; m != null; m = m.next) {
-		if (m.content instanceof String) {
-		    if (token == m.content)
-			return next;
-		    continue;
-		}
-		if (((ContentModel)m.content).first (token))
-		    return new ContentModelState (m.content, next)
-			.advance (token);
-	    }
-	    if (model.empty () && next != null)
-		return next.advance (token);
-	    break;
+            case '|':
+                for (ContentModel m = model; m != null; m = m.next) {
+                    if (m.content instanceof String) {
+                        if (token == m.content)
+                            return next;
+                        continue;
+                    }
+                    if (((ContentModel) m.content).first(token))
+                        return new ContentModelState(m.content, next)
+                                .advance(token);
+                }
+                if (model.empty() && next != null)
+                    return next.advance(token);
+                break;
 
-	  case ',':
-	    if (model.first (token)) {
-		ContentModelState	nextState;
+            case ',':
+                if (model.first(token)) {
+                    ContentModelState nextState;
 
-		if (model.type == 0)
-		    return next;
-		if (model.next == null)
-		    nextState = new ContentModelState (model.content, next);
-		else {
-		    nextState = new ContentModelState (model.content, this);
-		    model = model.next;
-		}
-		return nextState.advance (token);
-	    } else if (model.empty () && next != null) {
-		return next.advance (token);
-	    }
-	    break;
+                    if (model.type == 0)
+                        return next;
+                    if (model.next == null)
+                        nextState = new ContentModelState(model.content, next);
+                    else {
+                        nextState = new ContentModelState(model.content, this);
+                        model = model.next;
+                    }
+                    return nextState.advance(token);
+                } else if (model.empty() && next != null) {
+                    return next.advance(token);
+                }
+                break;
 
-	  case 0:
-	    if (model.content == token)
-		return next;
-	    // FALLTHROUGH
+            case 0:
+                if (model.content == token)
+                    return next;
+                // FALLTHROUGH
 
-	  default:
-	    // FALLTHROUGH
-	}
-	throw new EndOfInputException ();
+            default:
+                // FALLTHROUGH
+        }
+        throw new EndOfInputException();
     }
 }

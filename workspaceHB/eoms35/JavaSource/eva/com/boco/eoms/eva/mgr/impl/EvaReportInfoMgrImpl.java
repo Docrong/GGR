@@ -14,29 +14,29 @@ import com.boco.eoms.eva.model.EvaReportInfo;
 
 public class EvaReportInfoMgrImpl implements IEvaReportInfoMgr {
 
-	private IEvaReportInfoDao ReportInfoDao;
- 
-	public IEvaReportInfoDao getEvaReportInfoDao() {
-		return ReportInfoDao;
-	}
+    private IEvaReportInfoDao ReportInfoDao;
 
-	public void setEvaReportInfoDao(IEvaReportInfoDao ReportInfoDao) {
-		this.ReportInfoDao = ReportInfoDao;
-	}
+    public IEvaReportInfoDao getEvaReportInfoDao() {
+        return ReportInfoDao;
+    }
 
-	public void saveEvaReportInfo(EvaReportInfo evaReportInfo) {
-		ReportInfoDao.saveEvaReportInfo(evaReportInfo);
-	}
+    public void setEvaReportInfoDao(IEvaReportInfoDao ReportInfoDao) {
+        this.ReportInfoDao = ReportInfoDao;
+    }
 
-	public EvaReportInfo getEvaReportInfo(String id) {
-		return ReportInfoDao.getEvaReportInfo(id);
-	}
+    public void saveEvaReportInfo(EvaReportInfo evaReportInfo) {
+        ReportInfoDao.saveEvaReportInfo(evaReportInfo);
+    }
 
-	public void removeEvaReportInfo(EvaReportInfo evaReportInfo) {
-		ReportInfoDao.removeEvaReportInfo(evaReportInfo);
-	}
+    public EvaReportInfo getEvaReportInfo(String id) {
+        return ReportInfoDao.getEvaReportInfo(id);
+    }
 
-	public List getReportInfoByCondition(String conditions) {
-		return ReportInfoDao.getReportInfoByCondition(conditions);
-	}
+    public void removeEvaReportInfo(EvaReportInfo evaReportInfo) {
+        ReportInfoDao.removeEvaReportInfo(evaReportInfo);
+    }
+
+    public List getReportInfoByCondition(String conditions) {
+        return ReportInfoDao.getReportInfoByCondition(conditions);
+    }
 }

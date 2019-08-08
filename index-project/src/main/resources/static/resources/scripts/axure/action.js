@@ -1,4 +1,4 @@
-﻿$axure.internal(function($ax) {
+﻿$axure.internal(function ($ax) {
     var _actionHandlers = {};
     var _action = $ax.action = {};
 
@@ -17,7 +17,7 @@
     var nextAnimationId = 1;
     var animationsToCount = {};
     var actionToActionGroups = {};
-    var getAnimation = function(id, type) {
+    var getAnimation = function (id, type) {
         return animationQueue[id] && animationQueue[id][type] && animationQueue[id][type][0];
     };
 
@@ -26,25 +26,25 @@
         var wasEmpty = !getAnimation(id, type);
         // Add the func to the queue. Create the queue if necessary.
         var idQueue = animationQueue[id];
-        if(!idQueue) animationQueue[id] = idQueue = {};
+        if (!idQueue) animationQueue[id] = idQueue = {};
 
         var queue = idQueue[type];
-        if(!queue) idQueue[type] = queue = [];
+        if (!queue) idQueue[type] = queue = [];
 
         queue[queue.length] = func;
         // If it was empty, there isn't a callback waiting to be called on this. You have to fire it manually.
         // If this is waiting on something, suppress it, and it will fire when it's ready
-        if(wasEmpty && !suppressFire) func();
+        if (wasEmpty && !suppressFire) func();
     };
 
     var _addAnimations = function (animations) {
-        if(animations.length == 1) {
+        if (animations.length == 1) {
             _addAnimation(animations[0].id, animations[0].type, animations[0].func);
             return;
         }
         var allReady = true;
         var readyCount = 0;
-        for(var i = 0; i < animations.length; i++) {
+        for (var i = 0; i < animations.length; i++) {
             var animation = animations[i];
             var thisReady = !getAnimation(animation.id, animation.type);
             allReady = allReady && thisReady;
@@ -60,7 +60,7 @@
             }
         }
 
-        for(i = 0; i < animations.length; i++) {
+        for (i = 0; i < animations.length; i++) {
             animation = animations[i];
             _addAnimation(animation.id, animation.type, animation.func, true);
         }
@@ -79,10 +79,10 @@
 
         // Fire the next func if there is one
         var func = getAnimation(id, type);
-        if(func && !_checkFireActionGroup(id, type, func)) func();
+        if (func && !_checkFireActionGroup(id, type, func)) func();
     };
 
-    var _checkFireActionGroup = function(id, type, func) {
+    var _checkFireActionGroup = function (id, type, func) {
         var group = actionToActionGroups[id];
         group = group && group[type];
         if (!group || group.length == 0) return false;
@@ -98,10 +98,10 @@
         }
 
         // if found then update this action group, otherwise, keep waiting for right action to fire
-        if(!found) return false;
+        if (!found) return false;
         $ax.splice(group, 0, 1);
         var count = animationsToCount[animations.id] + 1;
-        if(count != animations.length) {
+        if (count != animations.length) {
             animationsToCount[animations.id] = count;
             return true;
         }
@@ -110,11 +110,11 @@
         // Funcs is needed because an earlier func can try to cascade right away (when no animation for example) and will kill this func and move on to the
         //  next one (which may not even exist). If we get all funcs before calling any, then we know they are all the func we want.
         var funcs = [];
-        for(i = 0; i < animations.length; i++) {
+        for (i = 0; i < animations.length; i++) {
             animation = animations[i];
             funcs.push(getAnimation(animation.id, animation.type));
         }
-        for(i = 0; i < funcs.length; i++) {
+        for (i = 0; i < funcs.length; i++) {
             funcs[i]();
         }
 
@@ -122,42 +122,46 @@
     }
 
     var _refreshing = [];
-    _action.refreshStart = function(repeaterId) { _refreshing.push(repeaterId); };
-    _action.refreshEnd = function() { _refreshing.pop(); };
+    _action.refreshStart = function (repeaterId) {
+        _refreshing.push(repeaterId);
+    };
+    _action.refreshEnd = function () {
+        _refreshing.pop();
+    };
 
     // TODO: [ben] Consider moving this to repeater.js
     var _repeatersToRefresh = _action.repeatersToRefresh = [];
-    var _ignoreAction = function(repeaterId) {
-        for(var i = 0; i < _refreshing.length; i++) if(_refreshing[i] == repeaterId) return true;
+    var _ignoreAction = function (repeaterId) {
+        for (var i = 0; i < _refreshing.length; i++) if (_refreshing[i] == repeaterId) return true;
         return false;
     };
 
-    var _addRefresh = function(repeaterId) {
-        if(_repeatersToRefresh.indexOf(repeaterId) == -1) _repeatersToRefresh.push(repeaterId);
+    var _addRefresh = function (repeaterId) {
+        if (_repeatersToRefresh.indexOf(repeaterId) == -1) _repeatersToRefresh.push(repeaterId);
     };
 
-    var _getIdToResizeMoveState = function(eventInfo) {
-        if(!eventInfo.idToResizeMoveState) eventInfo.idToResizeMoveState = {};
+    var _getIdToResizeMoveState = function (eventInfo) {
+        if (!eventInfo.idToResizeMoveState) eventInfo.idToResizeMoveState = {};
         return eventInfo.idToResizeMoveState;
     }
 
     var _queueResizeMove = function (id, type, eventInfo, actionInfo) {
         if (type == queueTypes.resize || type == queueTypes.rotate) $ax.public.fn.convertToSingleImage($jobj(id));
-        
+
         var idToResizeMoveState = _getIdToResizeMoveState(eventInfo);
-        if(!idToResizeMoveState[id]) {
+        if (!idToResizeMoveState[id]) {
             idToResizeMoveState[id] = {};
-            idToResizeMoveState[id][queueTypes.move] = { queue: [], used: 0 };
-            idToResizeMoveState[id][queueTypes.resize] = { queue: [], used: 0 };
-            idToResizeMoveState[id][queueTypes.rotate] = { queue: [], used: 0 };
+            idToResizeMoveState[id][queueTypes.move] = {queue: [], used: 0};
+            idToResizeMoveState[id][queueTypes.resize] = {queue: [], used: 0};
+            idToResizeMoveState[id][queueTypes.rotate] = {queue: [], used: 0};
         }
         var state = idToResizeMoveState[id];
 
         // If this is not a type being queued (no action of it's type waiting already) then if it is an instant, fire right away.
         var myOptions = type == queueTypes.resize ? actionInfo : actionInfo.options;
-        if(!state[type].queue.length && (!myOptions.easing || myOptions.easing == 'none' || !myOptions.duration)) {
+        if (!state[type].queue.length && (!myOptions.easing || myOptions.easing == 'none' || !myOptions.duration)) {
             var func = type == queueTypes.resize ? _addResize : type == queueTypes.rotate ? _addRotate : _addMove;
-            func(id, eventInfo, actionInfo, { easing: 'none', duration: 0, stop: { instant: true } });
+            func(id, eventInfo, actionInfo, {easing: 'none', duration: 0, stop: {instant: true}});
             return;
         }
 
@@ -165,27 +169,27 @@
         var otherType1 = type == queueTypes.move ? queueTypes.resize : queueTypes.move;
         var otherType2 = type == queueTypes.rotate ? queueTypes.resize : queueTypes.rotate;
         if (!state[otherType1].queue.length || !state[otherType2].queue.length) {
-            state[type].queue.push({ eventInfo: eventInfo, actionInfo: actionInfo });
+            state[type].queue.push({eventInfo: eventInfo, actionInfo: actionInfo});
         } else {
             var duration = myOptions.duration;
             var used1 = state[otherType1].used;
             var used2 = state[otherType2].used;
 
-            while(state[otherType1].queue.length && state[otherType2].queue.length && duration != 0) {
+            while (state[otherType1].queue.length && state[otherType2].queue.length && duration != 0) {
                 var other1 = state[otherType1].queue[0];
                 var otherOptions1 = otherType1 == queueTypes.resize ? other1.actionInfo : other1.actionInfo.options;
                 // If queue up action is a non animation, then don't combo it, just queue it and move on
-                if(!otherOptions1.easing || otherOptions1.easing == 'none' || !otherOptions1.duration) {
+                if (!otherOptions1.easing || otherOptions1.easing == 'none' || !otherOptions1.duration) {
                     func = otherType1 == queueTypes.resize ? _addResize : otherType1 == queueTypes.rotate ? _addRotate : _addMove;
-                    func(id, eventInfo, actionInfo, { easing: 'none', duration: 0, stop: { instant: true } });
+                    func(id, eventInfo, actionInfo, {easing: 'none', duration: 0, stop: {instant: true}});
                     continue;
                 }
                 var other2 = state[otherType2].queue[0];
                 var otherOptions2 = otherType2 == queueTypes.resize ? other2.actionInfo : other2.actionInfo.options;
                 // If queue up action is a non animation, then don't combo it, just queue it and move on
-                if(!otherOptions2.easing || otherOptions2.easing == 'none' || !otherOptions2.duration) {
+                if (!otherOptions2.easing || otherOptions2.easing == 'none' || !otherOptions2.duration) {
                     func = otherType2 == queueTypes.resize ? _addResize : otherType2 == queueTypes.rotate ? _addRotate : _addMove;
-                    func(id, eventInfo, actionInfo, { easing: 'none', duration: 0, stop: { instant: true } });
+                    func(id, eventInfo, actionInfo, {easing: 'none', duration: 0, stop: {instant: true}});
                     continue;
                 }
 
@@ -196,13 +200,16 @@
                 var resizeInfo = type == queueTypes.resize ? actionInfo : otherType1 == queueTypes.resize ? other1.actionInfo : other2.actionInfo;
                 var rotateInfo = type == queueTypes.rotate ? actionInfo : otherType1 == queueTypes.rotate ? other1.actionInfo : other2.actionInfo;
                 var moveInfo = type == queueTypes.move ? actionInfo : otherType1 == queueTypes.move ? other1.actionInfo : other2.actionInfo;
-                var options = { easing: moveInfo.options.easing, duration: Math.min(duration, otherDuration1, otherDuration2) };
+                var options = {
+                    easing: moveInfo.options.easing,
+                    duration: Math.min(duration, otherDuration1, otherDuration2)
+                };
                 // Start for self is whole duration - duration left, end is start plus duration of combo to be queued, length is duration
-                var stop = { start: myOptions.duration - duration, len: myOptions.duration };
+                var stop = {start: myOptions.duration - duration, len: myOptions.duration};
                 stop.end = stop.start + options.duration;
                 // Start for other is used (will be 0 after 1st round), end is start plus length is duration of combo to be queued, length is other duration
-                var otherStop1 = { start: used1, end: options.duration + used1, len: otherOptions1.duration };
-                var otherStop2 = { start: used2, end: options.duration + used2, len: otherOptions2.duration };
+                var otherStop1 = {start: used1, end: options.duration + used1, len: otherOptions1.duration};
+                var otherStop2 = {start: used2, end: options.duration + used2, len: otherOptions2.duration};
                 options.stop = type == queueTypes.resize ? stop : otherType1 == queueTypes.resize ? otherStop1 : otherStop2;
                 options.moveStop = type == queueTypes.move ? stop : otherType1 == queueTypes.move ? otherStop1 : otherStop2;
                 options.rotateStop = type == queueTypes.rotate ? stop : otherType1 == queueTypes.rotate ? otherStop1 : otherStop2;
@@ -212,20 +219,20 @@
                 // Update duration for this animation
                 duration -= options.duration;
                 // For others update used and remove from queue if necessary
-                if(otherDuration1 == options.duration) {
+                if (otherDuration1 == options.duration) {
                     $ax.splice(state[otherType1].queue, 0, 1);
                     used1 = 0;
                 } else used1 += options.duration;
 
-                if(otherDuration2 == options.duration) {
+                if (otherDuration2 == options.duration) {
                     $ax.splice(state[otherType2].queue, 0, 1);
                     used2 = 0;
                 } else used2 += options.duration;
             }
 
             // Start queue for new type if necessary
-            if(duration) {
-                state[type].queue.push({ eventInfo: eventInfo, actionInfo: actionInfo });
+            if (duration) {
+                state[type].queue.push({eventInfo: eventInfo, actionInfo: actionInfo});
                 state[type].used = myOptions.duration - duration;
             }
 
@@ -237,10 +244,10 @@
 
     _action.flushAllResizeMoveActions = function (eventInfo) {
         var idToResizeMoveState = _getIdToResizeMoveState(eventInfo);
-        for(var id in idToResizeMoveState) _flushResizeMoveActions(id, idToResizeMoveState);
+        for (var id in idToResizeMoveState) _flushResizeMoveActions(id, idToResizeMoveState);
     };
 
-    var _flushResizeMoveActions = function(id, idToResizeMoveState) {
+    var _flushResizeMoveActions = function (id, idToResizeMoveState) {
         var state = idToResizeMoveState[id];
         var move = state[queueTypes.move];
         var moveInfo = move.queue[0];
@@ -255,75 +262,95 @@
             rotateInfo = rotateInfo && rotateInfo.actionInfo;
 
             // Resize is used by default, then rotate
-            if(resizeInfo) {
+            if (resizeInfo) {
                 // Check for instant resize
-                if(!resizeInfo.duration || resizeInfo.easing == 'none') {
-                    _addResize(id, resize.queue[0].eventInfo, resizeInfo, { easing: 'none', duration: 0, stop: { instant: true } });
+                if (!resizeInfo.duration || resizeInfo.easing == 'none') {
+                    _addResize(id, resize.queue[0].eventInfo, resizeInfo, {
+                        easing: 'none',
+                        duration: 0,
+                        stop: {instant: true}
+                    });
                     _updateResizeMoveUsed(id, queueTypes.resize, 0, idToResizeMoveState);
                     resizeInfo = resize.queue[0];
                     continue;
                 }
 
                 var duration = resizeInfo.duration - resize.used;
-                if(moveInfo) duration = Math.min(duration, moveInfo.options.duration - move.used);
-                if(rotateInfo) duration = Math.min(duration, rotateInfo.options.duration - rotate.used);
+                if (moveInfo) duration = Math.min(duration, moveInfo.options.duration - move.used);
+                if (rotateInfo) duration = Math.min(duration, rotateInfo.options.duration - rotate.used);
 
                 var baseOptions = moveInfo ? moveInfo.options : resizeInfo;
-                var options = { easing: baseOptions.easing, duration: duration };
+                var options = {easing: baseOptions.easing, duration: duration};
 
-                options.stop = { start: resize.used, end: resize.used + duration, len: resizeInfo.duration };
-                if(moveInfo) options.moveStop = { start: move.used, end: move.used + duration, len: moveInfo.options.duration };
-                if(rotateInfo) options.rotateStop = { start: rotate.used, end: rotate.used + duration, len: rotateInfo.options.duration };
+                options.stop = {start: resize.used, end: resize.used + duration, len: resizeInfo.duration};
+                if (moveInfo) options.moveStop = {
+                    start: move.used,
+                    end: move.used + duration,
+                    len: moveInfo.options.duration
+                };
+                if (rotateInfo) options.rotateStop = {
+                    start: rotate.used,
+                    end: rotate.used + duration,
+                    len: rotateInfo.options.duration
+                };
 
                 _addResize(id, eventInfo, resizeInfo, options, moveInfo, rotateInfo);
 
                 _updateResizeMoveUsed(id, queueTypes.resize, duration, idToResizeMoveState);
                 resizeInfo = resize.queue[0];
-                if(rotateInfo) {
+                if (rotateInfo) {
                     _updateResizeMoveUsed(id, queueTypes.rotate, duration, idToResizeMoveState);
                     rotateInfo = rotate.queue[0];
                 }
-                if(moveInfo) {
+                if (moveInfo) {
                     _updateResizeMoveUsed(id, queueTypes.move, duration, idToResizeMoveState);
                     moveInfo = move.queue[0];
                 }
             } else if (rotateInfo) {
                 // Check for instant rotate
-                if(!rotateInfo.options.duration || rotateInfo.options.easing == 'none') {
-                    _addRotate(id, rotate.queue[0].eventInfo, rotateInfo, { easing: 'none', duration: 0, stop: { instant: true } });
+                if (!rotateInfo.options.duration || rotateInfo.options.easing == 'none') {
+                    _addRotate(id, rotate.queue[0].eventInfo, rotateInfo, {
+                        easing: 'none',
+                        duration: 0,
+                        stop: {instant: true}
+                    });
                     _updateResizeMoveUsed(id, queueTypes.rotate, 0, idToResizeMoveState);
                     rotateInfo = rotate.queue[0];
                     continue;
                 }
 
                 duration = rotateInfo.options.duration - rotate.used;
-                if(moveInfo) duration = Math.min(duration, moveInfo.options.duration - move.used);
+                if (moveInfo) duration = Math.min(duration, moveInfo.options.duration - move.used);
 
                 baseOptions = moveInfo ? moveInfo.options : rotateInfo.options;
-                options = { easing: baseOptions.easing, duration: duration };
+                options = {easing: baseOptions.easing, duration: duration};
 
-                options.stop = { start: rotate.used, end: rotate.used + duration, len: rotateInfo.options.duration };
-                if(moveInfo) options.moveStop = { start: move.used, end: move.used + duration, len: moveInfo.options.duration };
+                options.stop = {start: rotate.used, end: rotate.used + duration, len: rotateInfo.options.duration};
+                if (moveInfo) options.moveStop = {
+                    start: move.used,
+                    end: move.used + duration,
+                    len: moveInfo.options.duration
+                };
 
                 _addRotate(id, eventInfo, rotateInfo, options, moveInfo);
 
                 _updateResizeMoveUsed(id, queueTypes.rotate, duration, idToResizeMoveState);
                 rotateInfo = rotate.queue[0];
-                if(moveInfo) {
+                if (moveInfo) {
                     _updateResizeMoveUsed(id, queueTypes.move, duration, idToResizeMoveState);
                     moveInfo = move.queue[0];
                 }
             } else {
-                if(!moveInfo.options.duration || moveInfo.options.easing == 'none') {
-                    _addMove(id, eventInfo, moveInfo, { easing: 'none', duration: 0, stop: { instant: true } });
+                if (!moveInfo.options.duration || moveInfo.options.easing == 'none') {
+                    _addMove(id, eventInfo, moveInfo, {easing: 'none', duration: 0, stop: {instant: true}});
                     _updateResizeMoveUsed(id, queueTypes.move, 0, idToResizeMoveState);
                     moveInfo = move.queue[0];
                     continue;
                 }
 
                 duration = moveInfo.options.duration - move.used;
-                options = { easing: moveInfo.options.easing, duration: duration };
-                options.stop = { start: move.used, end: moveInfo.options.duration, len: moveInfo.options.duration };
+                options = {easing: moveInfo.options.easing, duration: duration};
+                options.stop = {start: move.used, end: moveInfo.options.duration, len: moveInfo.options.duration};
                 _addMove(id, eventInfo, moveInfo, options);
 
                 _updateResizeMoveUsed(id, queueTypes.move, duration, idToResizeMoveState);
@@ -332,30 +359,30 @@
         }
     };
 
-    var _updateResizeMoveUsed = function(id, type, duration, idToResizeMoveState) {
+    var _updateResizeMoveUsed = function (id, type, duration, idToResizeMoveState) {
         var state = idToResizeMoveState[id][type];
         state.used += duration;
         var options = state.queue[0].actionInfo;
-        if(options.options) options = options.options;
+        if (options.options) options = options.options;
         var optionDur = options.duration || 0;
-        if(optionDur <= state.used) {
+        if (optionDur <= state.used) {
             $ax.splice(state.queue, 0, 1);
             state.used = 0;
         }
     }
 
-    var _dispatchAction = $ax.action.dispatchAction = function(eventInfo, actions, currentIndex) {
+    var _dispatchAction = $ax.action.dispatchAction = function (eventInfo, actions, currentIndex) {
         currentIndex = currentIndex || 0;
         //If no actions, you can bubble
-        if(currentIndex >= actions.length) return;
+        if (currentIndex >= actions.length) return;
         //actions are responsible for doing their own dispatching
         _actionHandlers[actions[currentIndex].action](eventInfo, actions, currentIndex);
     };
 
-    _actionHandlers.wait = function(eventInfo, actions, index) {
+    _actionHandlers.wait = function (eventInfo, actions, index) {
         var action = actions[index];
         var infoCopy = $ax.eventCopy(eventInfo);
-        window.setTimeout(function() {
+        window.setTimeout(function () {
             infoCopy.now = new Date();
             infoCopy.idToResizeMoveState = undefined;
             _dispatchAction(infoCopy, actions, index + 1);
@@ -363,7 +390,7 @@
         }, action.waitTime);
     };
 
-    _actionHandlers.expr = function(eventInfo, actions, index) {
+    _actionHandlers.expr = function (eventInfo, actions, index) {
         var action = actions[index];
 
         $ax.expr.evaluateExpr(action.expr, eventInfo); //this should be a block
@@ -373,45 +400,45 @@
 
     _actionHandlers.setFunction = _actionHandlers.expr;
 
-    _actionHandlers.linkWindow = function(eventInfo, actions, index) {
+    _actionHandlers.linkWindow = function (eventInfo, actions, index) {
         linkActionHelper(eventInfo, actions, index);
     };
 
-    _actionHandlers.closeCurrent = function(eventInfo, actions, index) {
+    _actionHandlers.closeCurrent = function (eventInfo, actions, index) {
         $ax.closeWindow();
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.linkFrame = function(eventInfo, actions, index) {
+    _actionHandlers.linkFrame = function (eventInfo, actions, index) {
         linkActionHelper(eventInfo, actions, index);
     };
 
-    _actionHandlers.setAdaptiveView = function(eventInfo, actions, index) {
+    _actionHandlers.setAdaptiveView = function (eventInfo, actions, index) {
         var action = actions[index];
         var view = action.setAdaptiveViewTo;
 
-        if(view) $ax.adaptive.setAdaptiveView(view);
+        if (view) $ax.adaptive.setAdaptiveView(view);
     };
 
-    var linkActionHelper = function(eventInfo, actions, index) {
+    var linkActionHelper = function (eventInfo, actions, index) {
         var action = actions[index];
         eventInfo.link = true;
 
-        if(action.linkType != 'frame') {
+        if (action.linkType != 'frame') {
             var includeVars = _includeVars(action.target, eventInfo);
-            if(action.target.targetType == "reloadPage") {
+            if (action.target.targetType == "reloadPage") {
                 $ax.reload(action.target.includeVariables);
-            } else if(action.target.targetType == "backUrl") {
+            } else if (action.target.targetType == "backUrl") {
                 $ax.back();
             }
 
             var url = action.target.url;
-            if(!url && action.target.urlLiteral) {
+            if (!url && action.target.urlLiteral) {
                 url = $ax.expr.evaluateExpr(action.target.urlLiteral, eventInfo, true);
             }
 
-            if(url) {
-                if(action.linkType == "popup") {
+            if (url) {
+                if (action.linkType == "popup") {
                     $ax.navigate({
                         url: url,
                         target: action.linkType,
@@ -432,13 +459,13 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    var _includeVars = function(target, eventInfo) {
-        if(target.includeVariables) return true;
+    var _includeVars = function (target, eventInfo) {
+        if (target.includeVariables) return true;
         // If it is a url literal, that is a string literal, that has only 1 sto, that is an item that is a page, include vars.
-        if(target.urlLiteral) {
+        if (target.urlLiteral) {
             var literal = target.urlLiteral;
             var sto = literal.stos[0];
-            if(literal.exprType == 'stringLiteral' && literal.value.indexOf('[[') == 0 && literal.value.indexOf(']]' == literal.value.length - 2) && literal.stos.length == 1 && sto.sto == 'item' && eventInfo.item) {
+            if (literal.exprType == 'stringLiteral' && literal.value.indexOf('[[') == 0 && literal.value.indexOf(']]' == literal.value.length - 2) && literal.stos.length == 1 && sto.sto == 'item' && eventInfo.item) {
                 var data = $ax.repeater.getData(eventInfo, eventInfo.item.repeater.elementId, eventInfo.item.index, sto.name, 'data');
                 if (data && $ax.public.fn.IsPage(data.type)) return true;
             }
@@ -446,39 +473,39 @@
         return false;
     };
 
-    var linkFrame = function(eventInfo, action) {
-        for(var i = 0; i < action.framesToTargets.length; i++) {
+    var linkFrame = function (eventInfo, action) {
+        for (var i = 0; i < action.framesToTargets.length; i++) {
             var framePath = action.framesToTargets[i].framePath;
             var target = action.framesToTargets[i].target;
             var includeVars = _includeVars(target, eventInfo);
 
             var url = target.url;
-            if(!url && target.urlLiteral) {
+            if (!url && target.urlLiteral) {
                 url = $ax.expr.evaluateExpr(target.urlLiteral, eventInfo, true);
             }
 
             var id = $ax.getElementIdsFromPath(framePath, eventInfo)[0];
-            if(id) $ax('#' + $ax.INPUT(id)).openLink(url, includeVars);
+            if (id) $ax('#' + $ax.INPUT(id)).openLink(url, includeVars);
         }
     };
 
     var _repeatPanelMap = {};
 
-    _actionHandlers.setPanelState = function(eventInfo, actions, index) {
+    _actionHandlers.setPanelState = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.panelsToStates.length; i++) {
+        for (var i = 0; i < action.panelsToStates.length; i++) {
             var panelToState = action.panelsToStates[i];
             var stateInfo = panelToState.stateInfo;
             var elementIds = $ax.getElementIdsFromPath(panelToState.panelPath, eventInfo);
 
-            for(var j = 0; j < elementIds.length; j++) {
+            for (var j = 0; j < elementIds.length; j++) {
                 var elementId = elementIds[j];
                 // Need new scope for elementId and info
-                (function(elementId, stateInfo) {
-                    _addAnimation(elementId, queueTypes.setState, function() {
+                (function (elementId, stateInfo) {
+                    _addAnimation(elementId, queueTypes.setState, function () {
                         var stateNumber = stateInfo.stateNumber;
-                        if(stateInfo.setStateType == "value") {
+                        if (stateInfo.setStateType == "value") {
                             var oldTarget = eventInfo.targetElement;
                             eventInfo.targetElement = elementId;
                             var stateName = $ax.expr.evaluateExpr(stateInfo.stateValue, eventInfo);
@@ -487,34 +514,34 @@
                             // Try for state name first
                             var states = $ax.getObjectFromElementId(elementId).diagrams;
                             var stateNameFound = false;
-                            for(var k = 0; k < states.length; k++) {
-                                if(states[k].label == stateName) {
+                            for (var k = 0; k < states.length; k++) {
+                                if (states[k].label == stateName) {
                                     stateNumber = k + 1;
                                     stateNameFound = true;
                                 }
                             }
 
                             // Now check for index
-                            if(!stateNameFound) {
+                            if (!stateNameFound) {
                                 stateNumber = Number(stateName);
                                 var panelCount = $('#' + elementId).children().length;
 
                                 // Make sure number is not NaN, is in range, and is a whole number.
                                 // Wasn't a state name or number, so return
-                                if(isNaN(stateNumber) || stateNumber <= 0 || stateNumber > panelCount || Math.round(stateNumber) != stateNumber) return _fireAnimationFromQueue(elementId, queueTypes.setState);
+                                if (isNaN(stateNumber) || stateNumber <= 0 || stateNumber > panelCount || Math.round(stateNumber) != stateNumber) return _fireAnimationFromQueue(elementId, queueTypes.setState);
                             }
-                        } else if(stateInfo.setStateType == 'next' || stateInfo.setStateType == 'previous') {
+                        } else if (stateInfo.setStateType == 'next' || stateInfo.setStateType == 'previous') {
                             var info = $ax.deepCopy(stateInfo);
                             var repeat = info.repeat;
 
                             // Only map it, if repeat exists.
-                            if(typeof (repeat) == 'number') _repeatPanelMap[elementId] = info;
+                            if (typeof (repeat) == 'number') _repeatPanelMap[elementId] = info;
                             return _progessPanelState(elementId, info, info.repeatSkipFirst);
                         }
                         delete _repeatPanelMap[elementId];
 
                         // If setting to current (to stop repeat) break here
-                        if(stateInfo.setStateType == 'current') return _fireAnimationFromQueue(elementId, queueTypes.setState);
+                        if (stateInfo.setStateType == 'current') return _fireAnimationFromQueue(elementId, queueTypes.setState);
 
                         $ax('#' + elementId).SetPanelState(stateNumber, stateInfo.options, stateInfo.showWhenSet);
                     });
@@ -525,7 +552,7 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    var _progessPanelState = function(id, info, skipFirst) {
+    var _progessPanelState = function (id, info, skipFirst) {
         var direction = info.setStateType;
         var loop = info.loop;
         var repeat = info.repeat;
@@ -534,23 +561,23 @@
         var hasRepeat = typeof (repeat) == 'number';
         var currentStateId = $ax.visibility.GetPanelState(id);
         var stateNumber = '';
-        if(currentStateId != '') {
+        if (currentStateId != '') {
             currentStateId = $ax.repeater.getScriptIdFromElementId(currentStateId);
             var currentStateNumber = Number(currentStateId.substr(currentStateId.indexOf('state') + 5));
-            if(direction == "next") {
+            if (direction == "next") {
                 stateNumber = currentStateNumber + 2;
 
-                if(stateNumber > $ax.visibility.GetPanelStateCount(id)) {
-                    if(loop) stateNumber = 1;
+                if (stateNumber > $ax.visibility.GetPanelStateCount(id)) {
+                    if (loop) stateNumber = 1;
                     else {
                         delete _repeatPanelMap[id];
                         return _fireAnimationFromQueue(id, queueTypes.setState);
                     }
                 }
-            } else if(direction == "previous") {
+            } else if (direction == "previous") {
                 stateNumber = currentStateNumber;
-                if(stateNumber <= 0) {
-                    if(loop) stateNumber = $ax.visibility.GetPanelStateCount(id);
+                if (stateNumber <= 0) {
+                    if (loop) stateNumber = $ax.visibility.GetPanelStateCount(id);
                     else {
                         delete _repeatPanelMap[id];
                         return _fireAnimationFromQueue(id, queueTypes.setState);
@@ -558,21 +585,21 @@
                 }
             }
 
-            if(hasRepeat && _repeatPanelMap[id] != info) return _fireAnimationFromQueue(id, queueTypes.setState);
+            if (hasRepeat && _repeatPanelMap[id] != info) return _fireAnimationFromQueue(id, queueTypes.setState);
 
             if (!skipFirst) $ax('#' + id).SetPanelState(stateNumber, options, info.showWhenSet);
             else _fireAnimationFromQueue(id, queueTypes.setState);
 
-            if(hasRepeat) {
+            if (hasRepeat) {
                 var animate = options && options.animateIn;
-                if(animate && animate.easing && animate.easing != 'none' && animate.duration > repeat) repeat = animate.duration;
+                if (animate && animate.easing && animate.easing != 'none' && animate.duration > repeat) repeat = animate.duration;
                 animate = options && options.animateOut;
-                if(animate && animate.easing && animate.easing != 'none' && animate.duration > repeat) repeat = animate.duration;
+                if (animate && animate.easing && animate.easing != 'none' && animate.duration > repeat) repeat = animate.duration;
 
-                window.setTimeout(function() {
+                window.setTimeout(function () {
                     // Either new repeat, or no repeat anymore.
-                    if(_repeatPanelMap[id] != info) return;
-                    _addAnimation(id, queueTypes.setState, function() {
+                    if (_repeatPanelMap[id] != info) return;
+                    _addAnimation(id, queueTypes.setState, function () {
                         _progessPanelState(id, info, false);
                     });
                 }, repeat);
@@ -580,23 +607,23 @@
         }
     };
 
-    _actionHandlers.fadeWidget = function(eventInfo, actions, index) {
+    _actionHandlers.fadeWidget = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.objectsToFades.length; i++) {
+        for (var i = 0; i < action.objectsToFades.length; i++) {
             var fadeInfo = action.objectsToFades[i].fadeInfo;
             var elementIds = $ax.getElementIdsFromPath(action.objectsToFades[i].objectPath, eventInfo);
 
-            for(var j = 0; j < elementIds.length; j++) {
+            for (var j = 0; j < elementIds.length; j++) {
                 var elementId = elementIds[j];
                 // Need new scope for elementId and info
-                (function(elementId, fadeInfo) {
-                    _addAnimation(elementId, queueTypes.fade, function() {
-                        if(fadeInfo.fadeType == "hide") {
+                (function (elementId, fadeInfo) {
+                    _addAnimation(elementId, queueTypes.fade, function () {
+                        if (fadeInfo.fadeType == "hide") {
                             $ax('#' + elementId).hide(fadeInfo.options);
-                        } else if(fadeInfo.fadeType == "show") {
+                        } else if (fadeInfo.fadeType == "show") {
                             $ax('#' + elementId).show(fadeInfo.options, eventInfo);
-                        } else if(fadeInfo.fadeType == "toggle") {
+                        } else if (fadeInfo.fadeType == "toggle") {
                             $ax('#' + elementId).toggleVisibility(fadeInfo.options);
                         }
                     });
@@ -607,24 +634,24 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.setOpacity = function(eventInfo, actions, index) {
+    _actionHandlers.setOpacity = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.objectsToSetOpacity.length; i++) {
+        for (var i = 0; i < action.objectsToSetOpacity.length; i++) {
             var opacityInfo = action.objectsToSetOpacity[i].opacityInfo;
             var elementIds = $ax.getElementIdsFromPath(action.objectsToSetOpacity[i].objectPath, eventInfo);
 
-            for(var j = 0; j < elementIds.length; j++) {
+            for (var j = 0; j < elementIds.length; j++) {
                 var elementId = elementIds[j];
 
-                (function(elementId, opacityInfo) {
+                (function (elementId, opacityInfo) {
                     _addAnimation(elementId, queueTypes.fade, function () {
                         var oldTarget = eventInfo.targetElement;
                         eventInfo.targetElement = elementId;
                         var opacity = $ax.expr.evaluateExpr(opacityInfo.opacity, eventInfo);
                         eventInfo.targetElement = oldTarget;
                         opacity = Math.min(100, Math.max(0, opacity));
-                        $ax('#' + elementId).setOpacity(opacity/100, opacityInfo.easing, opacityInfo.duration);
+                        $ax('#' + elementId).setOpacity(opacity / 100, opacityInfo.easing, opacityInfo.duration);
                     })
                 })(elementId, opacityInfo);
             }
@@ -633,13 +660,13 @@
         _dispatchAction(eventInfo, actions, index + 1);
     }
 
-    _actionHandlers.moveWidget = function(eventInfo, actions, index) {
+    _actionHandlers.moveWidget = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.objectsToMoves.length; i++) {
+        for (var i = 0; i < action.objectsToMoves.length; i++) {
             var moveInfo = action.objectsToMoves[i].moveInfo;
             var elementIds = $ax.getElementIdsFromPath(action.objectsToMoves[i].objectPath, eventInfo);
 
-            for(var j = 0; j < elementIds.length; j++) {
+            for (var j = 0; j < elementIds.length; j++) {
                 var elementId = elementIds[j];
                 _queueResizeMove(elementId, queueTypes.move, eventInfo, moveInfo);
                 //_addMove(eventInfo, elementId, moveInfo, eventInfo.dragInfo);
@@ -654,7 +681,7 @@
         var piecePrefix = id + 'p';
 
         for (var i = 0; i < children.length; i++) {
-            if(children[i].substring(0, id.length + 1) == piecePrefix) {
+            if (children[i].substring(0, id.length + 1) == piecePrefix) {
                 deep.push(children[i]);
             }
         }
@@ -671,9 +698,9 @@
         options.duration = optionsOverride.duration;
         options.dragInfo = eventInfo.dragInfo;
 
-        if($ax.public.fn.IsLayer($obj(elementId).type)) {
+        if ($ax.public.fn.IsLayer($obj(elementId).type)) {
             var childrenIds = $ax.public.fn.getLayerChildrenDeep(elementId, true);
-            if(childrenIds.length == 0) return;
+            if (childrenIds.length == 0) return;
 
             var animations = [];
 
@@ -681,9 +708,9 @@
             animations.push({
                 id: elementId,
                 type: queueTypes.move,
-                func: function() {
+                func: function () {
                     var layerInfo = $ax.public.fn.getWidgetBoundingRect(elementId);
-                   var deltaLoc = _getMoveLoc(elementId, moveInfo, eventInfoCopy, optionsOverride.stop, idToResizeMoveState[elementId], options, layerInfo);
+                    var deltaLoc = _getMoveLoc(elementId, moveInfo, eventInfoCopy, optionsOverride.stop, idToResizeMoveState[elementId], options, layerInfo);
 //                    $ax.event.raiseSyntheticEvent(elementId, "onMove");
                     $ax.visibility.pushContainer(elementId, false);
 
@@ -712,11 +739,11 @@
             //}
             _addAnimations(animations);
         } else {
-            _addAnimation(elementId, queueTypes.move, function() {
+            _addAnimation(elementId, queueTypes.move, function () {
                 var loc = _getMoveLoc(elementId, moveInfo, eventInfoCopy, optionsOverride.stop, idToResizeMoveState[elementId], options);
 
 //                $ax.event.raiseSyntheticEvent(elementId, "onMove");
-                if(loc.moveTo) $ax('#' + elementId).moveTo(loc.x, loc.y, options);
+                if (loc.moveTo) $ax('#' + elementId).moveTo(loc.x, loc.y, options);
                 else $ax('#' + elementId).moveBy(loc.x, loc.y, options);
             });
         }
@@ -726,21 +753,21 @@
         var fixedInfo = $ax.dynamicPanelManager.getFixedInfo(elementId);
         var xProp = 'left';
         var xDiff = '+=';
-        if(fixedInfo) {
-            if(fixedInfo.horizontal == 'right') {
+        if (fixedInfo) {
+            if (fixedInfo.horizontal == 'right') {
                 xProp = 'right';
                 xDiff = '-=';
-            } else if(fixedInfo.horizontal == 'center') {
+            } else if (fixedInfo.horizontal == 'center') {
                 xProp = 'margin-left';
             }
         }
         var yProp = 'top';
         var yDiff = '+=';
-        if(fixedInfo) {
-            if(fixedInfo.vertical == 'bottom') {
+        if (fixedInfo) {
+            if (fixedInfo.vertical == 'bottom') {
                 yProp = 'bottom';
                 yDiff = '-=';
-            } else if(fixedInfo.vertical == 'middle') {
+            } else if (fixedInfo.vertical == 'middle') {
                 yProp = 'margin-top';
             }
         }
@@ -748,14 +775,14 @@
         var css = {};
         css[xProp] = xDiff + delta.x;
         css[yProp] = yDiff + delta.y;
-        var moveInfo = $ax.move.RegisterMoveInfo(elementId, delta.x, delta.y,false, options);
+        var moveInfo = $ax.move.RegisterMoveInfo(elementId, delta.x, delta.y, false, options);
         $jobj(elementId).animate(css, {
             duration: options.duration,
             easing: options.easing,
             queue: false,
             complete: function () {
-                if(onComplete) onComplete();
-                if(moveInfo.rootLayer) $ax.visibility.popContainer(moveInfo.rootLayer, false);
+                if (onComplete) onComplete();
+                if (moveInfo.rootLayer) $ax.visibility.popContainer(moveInfo.rootLayer, false);
                 $ax.action.fireAnimationFromQueue(elementId, $ax.action.queueTypes.move);
             }
         });
@@ -773,99 +800,105 @@
         var startX;
         var startY;
 
-        switch(moveInfo.moveType) {
-        case "location":
-            // toRatio is ignoring anything before start since that has already taken effect we just know whe have from start to len to finish
-            //  getting to the location we want to get to.
-            var toRatio = stopInfo.instant ? 1 : (stopInfo.end - stopInfo.start) / (stopInfo.len - stopInfo.start);
+        switch (moveInfo.moveType) {
+            case "location":
+                // toRatio is ignoring anything before start since that has already taken effect we just know whe have from start to len to finish
+                //  getting to the location we want to get to.
+                var toRatio = stopInfo.instant ? 1 : (stopInfo.end - stopInfo.start) / (stopInfo.len - stopInfo.start);
 
-            // If result already caluculated, don't recalculate again, other calculate and save
-            if (moveResult) {
-                xValue = moveResult.x;
-                yValue = moveResult.y;
-            } else {
-                comboState.moveResult = moveResult = { x: $ax.expr.evaluateExpr(moveInfo.xValue, eventInfoCopy), y: $ax.expr.evaluateExpr(moveInfo.yValue, eventInfoCopy) };
-                xValue = moveResult.x;
-                yValue = moveResult.y;
-            }
-            // If this is final stop for this move, then clear out the result so next move won't use it
-            if(stopInfo.instant || stopInfo.end == stopInfo.len) comboState.moveResult = undefined;
-
-            if (layerInfo) {
-                startX = layerInfo.left;
-                startY = layerInfo.top;
-            //} else if ($ax.public.fn.isCompoundVectorHtml(jobj[0])) {
-            //    var dimensions = $ax.public.fn.compoundWidgetDimensions(jobj);
-            //    startX = dimensions.left;
-            //    startY = dimensions.top;
-            } else {
-                startX = $ax('#' + elementId).locRelativeIgnoreLayer(false);
-                startY = $ax('#' + elementId).locRelativeIgnoreLayer(true);
-                if(jobj.css('position') == 'fixed') {
-                    startX -= $(window).scrollLeft();
-                    startY -= $(window).scrollTop();
+                // If result already caluculated, don't recalculate again, other calculate and save
+                if (moveResult) {
+                    xValue = moveResult.x;
+                    yValue = moveResult.y;
+                } else {
+                    comboState.moveResult = moveResult = {
+                        x: $ax.expr.evaluateExpr(moveInfo.xValue, eventInfoCopy),
+                        y: $ax.expr.evaluateExpr(moveInfo.yValue, eventInfoCopy)
+                    };
+                    xValue = moveResult.x;
+                    yValue = moveResult.y;
                 }
-            }
+                // If this is final stop for this move, then clear out the result so next move won't use it
+                if (stopInfo.instant || stopInfo.end == stopInfo.len) comboState.moveResult = undefined;
 
-            xValue = xValue == '' ? 0 : (xValue - startX) * toRatio;
-            yValue = yValue == '' ? 0 : (yValue - startY) * toRatio;
+                if (layerInfo) {
+                    startX = layerInfo.left;
+                    startY = layerInfo.top;
+                    //} else if ($ax.public.fn.isCompoundVectorHtml(jobj[0])) {
+                    //    var dimensions = $ax.public.fn.compoundWidgetDimensions(jobj);
+                    //    startX = dimensions.left;
+                    //    startY = dimensions.top;
+                } else {
+                    startX = $ax('#' + elementId).locRelativeIgnoreLayer(false);
+                    startY = $ax('#' + elementId).locRelativeIgnoreLayer(true);
+                    if (jobj.css('position') == 'fixed') {
+                        startX -= $(window).scrollLeft();
+                        startY -= $(window).scrollTop();
+                    }
+                }
 
-            break;
-        case "delta":
-            var ratio = stopInfo.instant ? 1 : (stopInfo.end - stopInfo.start) / stopInfo.len;
+                xValue = xValue == '' ? 0 : (xValue - startX) * toRatio;
+                yValue = yValue == '' ? 0 : (yValue - startY) * toRatio;
 
-            // See case location above
-            if(moveResult) {
-                xValue = moveResult.x * ratio;
-                yValue = moveResult.y * ratio;
-            } else {
-                comboState.moveResult = moveResult = { x: $ax.expr.evaluateExpr(moveInfo.xValue, eventInfoCopy), y: $ax.expr.evaluateExpr(moveInfo.yValue, eventInfoCopy) };
-                xValue = moveResult.x * ratio;
-                yValue = moveResult.y * ratio;
-            }
-            if (stopInfo.instant || stopInfo.end == stopInfo.len) comboState.moveResult = undefined;
+                break;
+            case "delta":
+                var ratio = stopInfo.instant ? 1 : (stopInfo.end - stopInfo.start) / stopInfo.len;
 
-            break;
-        case "drag":
-            xValue = widgetDragInfo.xDelta;
-            yValue = widgetDragInfo.yDelta;
-            break;
-        case "dragX":
-            xValue = widgetDragInfo.xDelta;
-            yValue = 0;
-            break;
-        case "dragY":
-            xValue = 0;
-            yValue = widgetDragInfo.yDelta;
-            break;
-        case "locationBeforeDrag":
-            var location = widgetDragInfo.movedWidgets[eventInfoCopy.targetElement];
-            if (location) {
-                var axObj = $ax('#' + eventInfoCopy.targetElement);
-                xValue = location.x - axObj.left();
-                yValue = location.y - axObj.top();
-            } else {
-                _fireAnimationFromQueue(eventInfoCopy.srcElement, queueTypes.move);
-                return { x: 0, y: 0 };
-            }
-            //moveTo = true;
-            break;
-        case "withThis":
-            moveWithThis = true;
-            var widgetMoveInfo = $ax.move.GetWidgetMoveInfo();
-            var srcElementId = $ax.getElementIdsFromEventAndScriptId(eventInfoCopy, eventInfoCopy.srcElement)[0];
-            var delta = widgetMoveInfo[srcElementId];
-            options.easing = delta.options.easing;
-            options.duration = delta.options.duration;
-            xValue = delta.x;
-            yValue = delta.y;
-            break;
+                // See case location above
+                if (moveResult) {
+                    xValue = moveResult.x * ratio;
+                    yValue = moveResult.y * ratio;
+                } else {
+                    comboState.moveResult = moveResult = {
+                        x: $ax.expr.evaluateExpr(moveInfo.xValue, eventInfoCopy),
+                        y: $ax.expr.evaluateExpr(moveInfo.yValue, eventInfoCopy)
+                    };
+                    xValue = moveResult.x * ratio;
+                    yValue = moveResult.y * ratio;
+                }
+                if (stopInfo.instant || stopInfo.end == stopInfo.len) comboState.moveResult = undefined;
+
+                break;
+            case "drag":
+                xValue = widgetDragInfo.xDelta;
+                yValue = widgetDragInfo.yDelta;
+                break;
+            case "dragX":
+                xValue = widgetDragInfo.xDelta;
+                yValue = 0;
+                break;
+            case "dragY":
+                xValue = 0;
+                yValue = widgetDragInfo.yDelta;
+                break;
+            case "locationBeforeDrag":
+                var location = widgetDragInfo.movedWidgets[eventInfoCopy.targetElement];
+                if (location) {
+                    var axObj = $ax('#' + eventInfoCopy.targetElement);
+                    xValue = location.x - axObj.left();
+                    yValue = location.y - axObj.top();
+                } else {
+                    _fireAnimationFromQueue(eventInfoCopy.srcElement, queueTypes.move);
+                    return {x: 0, y: 0};
+                }
+                //moveTo = true;
+                break;
+            case "withThis":
+                moveWithThis = true;
+                var widgetMoveInfo = $ax.move.GetWidgetMoveInfo();
+                var srcElementId = $ax.getElementIdsFromEventAndScriptId(eventInfoCopy, eventInfoCopy.srcElement)[0];
+                var delta = widgetMoveInfo[srcElementId];
+                options.easing = delta.options.easing;
+                options.duration = delta.options.duration;
+                xValue = delta.x;
+                yValue = delta.y;
+                break;
         }
 
         if (options && options.boundaryExpr) {
             //$ax.public.fn.removeCompound(jobj);
 
-            if(jobj.css('position') == 'fixed') {
+            if (jobj.css('position') == 'fixed') {
                 //swap page coordinates with fixed coordinates
                 options.boundaryExpr.leftExpr.value = options.boundaryExpr.leftExpr.value.replace('.top', '.topfixed').replace('.left', '.leftfixed').replace('.bottom', '.bottomfixed').replace('.right', '.rightfixed');
                 options.boundaryExpr.leftExpr.stos[0].leftSTO.prop = options.boundaryExpr.leftExpr.stos[0].leftSTO.prop + 'fixed';
@@ -873,49 +906,49 @@
                 options.boundaryStos.boundaryScope.direcval0.stos[0].leftSTO.prop = options.boundaryStos.boundaryScope.direcval0.stos[0].leftSTO.prop + 'fixed';
             }
 
-            if(moveWithThis && (xValue || yValue)) {
+            if (moveWithThis && (xValue || yValue)) {
                 _updateLeftExprVariable(options.boundaryExpr, xValue.toString(), yValue.toString());
             }
 
-            if(!$ax.expr.evaluateExpr(options.boundaryExpr, eventInfoCopy)) {
+            if (!$ax.expr.evaluateExpr(options.boundaryExpr, eventInfoCopy)) {
                 var boundaryStoInfo = options.boundaryStos;
-                if(boundaryStoInfo) {
-                    if(moveWithThis) {
+                if (boundaryStoInfo) {
+                    if (moveWithThis) {
                         var stoScopes = boundaryStoInfo.boundaryScope;
-                        if(stoScopes) {
-                            for(var s in stoScopes) {
+                        if (stoScopes) {
+                            for (var s in stoScopes) {
                                 var boundaryScope = stoScopes[s];
-                                if(!boundaryScope.localVariables) continue;
+                                if (!boundaryScope.localVariables) continue;
 
-                                if(boundaryScope.localVariables.withx) boundaryScope.localVariables.withx.value = xValue.toString();
-                                if(boundaryScope.localVariables.withy) boundaryScope.localVariables.withy.value = yValue.toString();
+                                if (boundaryScope.localVariables.withx) boundaryScope.localVariables.withx.value = xValue.toString();
+                                if (boundaryScope.localVariables.withy) boundaryScope.localVariables.withy.value = yValue.toString();
                             }
                         }
                     }
 
-                    if(layerInfo) {
+                    if (layerInfo) {
                         startX = layerInfo.left;
                         startY = layerInfo.top;
                     } else {
                         startX = $ax('#' + elementId).locRelativeIgnoreLayer(false);
                         startY = $ax('#' + elementId).locRelativeIgnoreLayer(true);
-                        if(jobj.css('position') == 'fixed') {
+                        if (jobj.css('position') == 'fixed') {
                             startX -= $(window).scrollLeft();
                             startY -= $(window).scrollTop();
                         }
                     }
 
-                    if(boundaryStoInfo.ySto) {
+                    if (boundaryStoInfo.ySto) {
                         var currentTop = layerInfo ? layerInfo.top : startY;
                         var newTop = $ax.evaluateSTO(boundaryStoInfo.ySto, boundaryStoInfo.boundaryScope, eventInfoCopy);
-                        if(moveTo) yValue = newTop;
+                        if (moveTo) yValue = newTop;
                         else yValue = newTop - currentTop;
                     }
 
-                    if(boundaryStoInfo.xSto) {
+                    if (boundaryStoInfo.xSto) {
                         var currentLeft = layerInfo ? layerInfo.left : startX;
                         var newLeft = $ax.evaluateSTO(boundaryStoInfo.xSto, boundaryStoInfo.boundaryScope, eventInfoCopy);
-                        if(moveTo) xValue = newLeft;
+                        if (moveTo) xValue = newLeft;
                         else xValue = newLeft - currentLeft;
                     }
                 }
@@ -924,38 +957,38 @@
             //$ax.public.fn.restoreCompound(jobj);
         }
 
-        return { x: Number(xValue), y: Number(yValue), moveTo: moveTo };
+        return {x: Number(xValue), y: Number(yValue), moveTo: moveTo};
     };
 
     //we will have something like [[Target.right + withX]] for leftExpr, and this function set the value of withX
     var _updateLeftExprVariable = function (exprTree, xValue, yValue) {
-        if(exprTree.leftExpr && !exprTree.leftExpr.op) {
+        if (exprTree.leftExpr && !exprTree.leftExpr.op) {
             var localVars = exprTree.leftExpr.localVariables;
-            if(localVars) {
-                if(localVars.withx) localVars.withx.value = xValue;
-                if(localVars.withy) localVars.withy.value = yValue;
+            if (localVars) {
+                if (localVars.withx) localVars.withx.value = xValue;
+                if (localVars.withy) localVars.withy.value = yValue;
             }
         }
 
         //traversal
-        if(exprTree.op) {
-            if(exprTree.leftExpr) _updateLeftExprVariable(exprTree.leftExpr, xValue, yValue);
-            if(exprTree.rightExpr) _updateLeftExprVariable(exprTree.rightExpr, xValue, yValue);
+        if (exprTree.op) {
+            if (exprTree.leftExpr) _updateLeftExprVariable(exprTree.leftExpr, xValue, yValue);
+            if (exprTree.rightExpr) _updateLeftExprVariable(exprTree.rightExpr, xValue, yValue);
         }
     }
-    
+
     var widgetRotationFilter = [
         $ax.constants.IMAGE_BOX_TYPE, $ax.constants.IMAGE_MAP_REGION_TYPE, $ax.constants.DYNAMIC_PANEL_TYPE,
         $ax.constants.VECTOR_SHAPE_TYPE, $ax.constants.VERTICAL_LINE_TYPE, $ax.constants.HORIZONTAL_LINE_TYPE
     ];
-    _actionHandlers.rotateWidget = function(eventInfo, actions, index) {
+    _actionHandlers.rotateWidget = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.objectsToRotate.length; i++) {
+        for (var i = 0; i < action.objectsToRotate.length; i++) {
             var rotateInfo = action.objectsToRotate[i].rotateInfo;
             var elementIds = $ax.getElementIdsFromPath(action.objectsToRotate[i].objectPath, eventInfo);
 
-            for(var j = 0; j < elementIds.length; j++) {
+            for (var j = 0; j < elementIds.length; j++) {
                 var elementId = elementIds[j];
                 _queueResizeMove(elementId, queueTypes.rotate, eventInfo, rotateInfo);
             }
@@ -976,24 +1009,30 @@
         //calculate degree value at start of animation
         var rotateDegree;
         var offset = {};
-        var eval = function(boundingRect) {
+        var eval = function (boundingRect) {
             rotateDegree = parseFloat($ax.expr.evaluateExpr(rotateInfo.degree, eventInfoCopy));
             offset.x = Number($ax.expr.evaluateExpr(rotateInfo.offsetX, eventInfoCopy));
             offset.y = Number($ax.expr.evaluateExpr(rotateInfo.offsetY, eventInfoCopy));
-            if(!rotateInfo.options.clockwise) rotateDegree = -rotateDegree;
+            if (!rotateInfo.options.clockwise) rotateDegree = -rotateDegree;
 
             _updateOffset(offset, rotateInfo.anchor, boundingRect);
         }
 
-        if(moveInfo) {
-            var moveOptions = { dragInfo: eventInfoCopy.dragInfo, duration: options.duration, easing: options.easing, boundaryExpr: moveInfo.options.boundaryExpr, boundaryStos: moveInfo.options.boundaryStos };
+        if (moveInfo) {
+            var moveOptions = {
+                dragInfo: eventInfoCopy.dragInfo,
+                duration: options.duration,
+                easing: options.easing,
+                boundaryExpr: moveInfo.options.boundaryExpr,
+                boundaryStos: moveInfo.options.boundaryStos
+            };
         }
 
         var obj = $obj(elementId);
 
-        if($ax.public.fn.IsLayer(obj.type)) {
+        if ($ax.public.fn.IsLayer(obj.type)) {
             var childrenIds = $ax.public.fn.getLayerChildrenDeep(elementId, true, true);
-            if(childrenIds.length == 0) return;
+            if (childrenIds.length == 0) return;
 
             var animations = [];
             //get center point of the group, and degree delta
@@ -1010,7 +1049,7 @@
                     degreeDelta = _initRotateLayer(elementId, rotateInfo, rotateDegree, options, options.stop);
                     _fireAnimationFromQueue(elementId, queueTypes.rotate);
 
-                    moveDelta = { x: 0, y: 0 };
+                    moveDelta = {x: 0, y: 0};
                     if (moveInfo) {
                         moveDelta = _getMoveLoc(elementId, moveInfo, eventInfoCopy, options.moveStop, idToResizeMoveState[elementId], moveOptions, boundingRect);
                         if (moveDelta.moveTo) {
@@ -1022,9 +1061,9 @@
                 }
             });
 
-            for(var idIndex = 0; idIndex < childrenIds.length; idIndex++) {
+            for (var idIndex = 0; idIndex < childrenIds.length; idIndex++) {
                 var childId = childrenIds[idIndex];
-                (function(id) {
+                (function (id) {
                     var childObj = $obj(id);
                     var rotate = $.inArray(childObj.type, widgetRotationFilter) != -1;
 
@@ -1032,13 +1071,16 @@
                     animations.push({
                         id: id,
                         type: queueTypes.rotate,
-                        func: function() {
+                        func: function () {
                             $ax.event.raiseSyntheticEvent(id, "onRotate");
-                            if(isLayer) _fireAnimationFromQueue(id, queueTypes.rotate);
+                            if (isLayer) _fireAnimationFromQueue(id, queueTypes.rotate);
                             else $ax('#' + id).circularMoveAndRotate(degreeDelta, options, centerPoint.x, centerPoint.y, rotate, moveDelta);
                         }
                     });
-                    if(!isLayer) animations.push({ id: id, type: queueTypes.move, func: function() {} });
+                    if (!isLayer) animations.push({
+                        id: id, type: queueTypes.move, func: function () {
+                        }
+                    });
                 })(childId);
             }
 
@@ -1050,45 +1092,54 @@
                 type: queueTypes.rotate,
                 func: function () {
                     var jobj = $jobj(elementId);
-                    var unrotatedDim = { width: $ax.getNumFromPx(jobj.css('width')), height: $ax.getNumFromPx(jobj.css('height')) };
+                    var unrotatedDim = {
+                        width: $ax.getNumFromPx(jobj.css('width')),
+                        height: $ax.getNumFromPx(jobj.css('height'))
+                    };
                     eval(unrotatedDim);
-                    var delta = { x: 0, y: 0 };
-                    if(moveInfo) {
+                    var delta = {x: 0, y: 0};
+                    if (moveInfo) {
                         delta = _getMoveLoc(elementId, moveInfo, eventInfoCopy, options.moveStop, idToResizeMoveState[elementId], moveOptions);
-                        if(delta.moveTo) {
+                        if (delta.moveTo) {
                             delta.x -= $ax.getNumFromPx($jobj(elementId).css('left'));
                             delta.y -= $ax.getNumFromPx($jobj(elementId).css('top'));
                         }
                     }
 
                     $ax.event.raiseSyntheticEvent(elementId, 'onRotate');
-                    if(offset.x == 0 && offset.y == 0) {
+                    if (offset.x == 0 && offset.y == 0) {
                         _rotateSingle(elementId, rotateDegree, rotateInfo.rotateType == 'location', delta, options, options.stop);
                         _fireAnimationFromQueue(elementId, queueTypes.move);
-                        if(moveInfo) $ax.event.raiseSyntheticEvent(elementId, 'onMove');
+                        if (moveInfo) $ax.event.raiseSyntheticEvent(elementId, 'onMove');
                         return;
                     }
-                    _rotateSingleOffset(elementId, rotateDegree, rotateInfo.rotateType == 'location', delta, { x: offset.x, y: offset.y }, options, options.stop);
-                    if(moveInfo) $ax.event.raiseSyntheticEvent(elementId, 'onMove');
+                    _rotateSingleOffset(elementId, rotateDegree, rotateInfo.rotateType == 'location', delta, {
+                        x: offset.x,
+                        y: offset.y
+                    }, options, options.stop);
+                    if (moveInfo) $ax.event.raiseSyntheticEvent(elementId, 'onMove');
                 }
             });
-            animations.push({ id: elementId, type: queueTypes.move, func: function () { } });
+            animations.push({
+                id: elementId, type: queueTypes.move, func: function () {
+                }
+            });
 
             _addAnimations(animations);
         }
     }
 
-    var _updateOffset = function(offset, anchor, boundingRect) {
+    var _updateOffset = function (offset, anchor, boundingRect) {
         if (anchor.indexOf('left') != -1) offset.x -= boundingRect.width / 2;
         if (anchor.indexOf('right') != -1) offset.x += boundingRect.width / 2;
         if (anchor.indexOf('top') != -1) offset.y -= boundingRect.height / 2;
         if (anchor.indexOf('bottom') != -1) offset.y += boundingRect.height / 2;
     }
 
-    var _rotateSingle = function(elementId, rotateDegree, rotateTo, delta, options, stop) {
+    var _rotateSingle = function (elementId, rotateDegree, rotateTo, delta, options, stop) {
         var degreeDelta = _applyRotateStop(rotateDegree, $ax.move.getRotationDegree(elementId), rotateTo, stop);
         $ax('#' + elementId).rotate(degreeDelta, options.easing, options.duration, false, true);
-        if(delta.x || delta.y) _moveSingleWidget(elementId, delta, options);
+        if (delta.x || delta.y) _moveSingleWidget(elementId, delta, options);
     };
 
     var _rotateSingleOffset = function (elementId, rotateDegree, rotateTo, delta, offset, options, stop, resizeOffset) {
@@ -1096,21 +1147,21 @@
         var currRotation = $ax.move.getRotationDegree(elementId);
 
         // Need to fix offset. Want to to stay same place on widget after rotation, so need to take the offset and rotate it to where it should be.
-        if(currRotation) {
-            offset = $axure.fn.getPointAfterRotate(currRotation, offset, { x: 0, y: 0 });
+        if (currRotation) {
+            offset = $axure.fn.getPointAfterRotate(currRotation, offset, {x: 0, y: 0});
         }
 
         var degreeDelta = _applyRotateStop(rotateDegree, currRotation, rotateTo, stop);
         var widgetCenter = $axure.fn.getWidgetBoundingRect(elementId).centerPoint;
-        
+
         var rotate = $.inArray(obj.type, widgetRotationFilter) != -1;
         $ax('#' + elementId).circularMoveAndRotate(degreeDelta, options, widgetCenter.x + offset.x, widgetCenter.y + offset.y, rotate, delta, resizeOffset);
     }
 
-    var _applyRotateStop = function(rotateDegree, currRotation, to, stop) {
+    var _applyRotateStop = function (rotateDegree, currRotation, to, stop) {
         var degreeDelta;
         var ratio;
-        if(to) {
+        if (to) {
             degreeDelta = rotateDegree - currRotation;
             ratio = stop.instant ? 1 : (stop.end - stop.start) / (stop.len - stop.start);
         } else {
@@ -1122,7 +1173,7 @@
     }
 
 
-    var _initRotateLayer = function(elementId, rotateInfo, rotateDegree, options, stop) {
+    var _initRotateLayer = function (elementId, rotateInfo, rotateDegree, options, stop) {
         var layerDegree = $jobj(elementId).data('layerDegree');
         if (layerDegree === undefined) layerDegree = 0;
         else layerDegree = parseFloat(layerDegree);
@@ -1140,12 +1191,12 @@
         return degreeDelta;
     }
 
-    _actionHandlers.setWidgetSize = function(eventInfo, actions, index) {
+    _actionHandlers.setWidgetSize = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.objectsToResize.length; i++) {
+        for (var i = 0; i < action.objectsToResize.length; i++) {
             var resizeInfo = action.objectsToResize[i].sizeInfo;
             var objPath = action.objectsToResize[i].objectPath;
-            if(objPath == 'thisItem') {
+            if (objPath == 'thisItem') {
                 var thisId = eventInfo.srcElement;
                 var repeaterId = $ax.getParentRepeaterFromElementId(thisId);
                 var itemId = $ax.repeater.getItemIdFromElementId(thisId);
@@ -1158,7 +1209,7 @@
 
             var elementIds = $ax.getElementIdsFromPath(objPath, eventInfo);
 
-            for(var j = 0; j < elementIds.length; j++) {
+            for (var j = 0; j < elementIds.length; j++) {
                 var elementId = elementIds[j];
                 _queueResizeMove(elementId, queueTypes.resize, eventInfo, resizeInfo);
                 //_addResize(elementId, resizeInfo);
@@ -1168,7 +1219,7 @@
     };
 
     // Move info undefined unless this move/resize actions are being merged
-    var _addResize = function(elementId, eventInfo, resizeInfo, options, moveInfo, rotateInfo) {
+    var _addResize = function (elementId, eventInfo, resizeInfo, options, moveInfo, rotateInfo) {
         var axObject = $obj(elementId);
         resizeInfo = $ax.deepCopy(resizeInfo);
         resizeInfo.easing = options.easing;
@@ -1178,20 +1229,26 @@
         eventInfoCopy.targetElement = elementId;
 
         var moves = moveInfo || resizeInfo.anchor != "top left" || ($ax.public.fn.IsDynamicPanel(axObject.type) &&
-        ((axObject.fixedHorizontal && axObject.fixedHorizontal == 'center') || (axObject.fixedVertical && axObject.fixedVertical == 'middle'))) ||
-        (rotateInfo && (rotateInfo.offsetX || rotateInfo.offsetY));
+            ((axObject.fixedHorizontal && axObject.fixedHorizontal == 'center') || (axObject.fixedVertical && axObject.fixedVertical == 'middle'))) ||
+            (rotateInfo && (rotateInfo.offsetX || rotateInfo.offsetY));
 
-        if(moveInfo) {
-            var moveOptions = { dragInfo: eventInfoCopy.dragInfo, duration: options.duration, easing: options.easing, boundaryExpr: moveInfo.options.boundaryExpr, boundaryStos: moveInfo.options.boundaryStos };
+        if (moveInfo) {
+            var moveOptions = {
+                dragInfo: eventInfoCopy.dragInfo,
+                duration: options.duration,
+                easing: options.easing,
+                boundaryExpr: moveInfo.options.boundaryExpr,
+                boundaryStos: moveInfo.options.boundaryStos
+            };
         }
 
         var idToResizeMoveState = _getIdToResizeMoveState(eventInfoCopy);
 
         var animations = [];
-        if($ax.public.fn.IsLayer(axObject.type)) {
+        if ($ax.public.fn.IsLayer(axObject.type)) {
             moves = true; // Assume widgets will move will layer, even though not all widgets may move
             var childrenIds = $ax.public.fn.getLayerChildrenDeep(elementId, true, true);
-            if(childrenIds.length === 0) return;
+            if (childrenIds.length === 0) return;
             // Need to wait to calculate new size, until time to animate, but animates are in separate queues
             //  best option seems to be to calculate in a "animate" for the layer itself and all children will use that.
             //  May just have to be redundant if this doesn't work well.
@@ -1204,14 +1261,14 @@
                     $ax.visibility.pushContainer(elementId, false);
                     boundingRect = $ax.public.fn.getWidgetBoundingRect(elementId);
                     var size = _getSizeFromInfo(resizeInfo, eventInfoCopy, boundingRect.width, boundingRect.height, elementId);
-                    deltaLoc = { x: 0, y: 0 };
+                    deltaLoc = {x: 0, y: 0};
 
                     var stop = options.stop;
                     var ratio = stop.instant ? 1 : (stop.end - stop.start) / (stop.len - stop.start);
                     widthChangedPercent = (size.width - boundingRect.width) / boundingRect.width * ratio;
                     heightChangedPercent = (size.height - boundingRect.height) / boundingRect.height * ratio;
                     resizeOffset = _applyAnchorToResizeOffset(widthChangedPercent * boundingRect.width, heightChangedPercent * boundingRect.height, resizeInfo.anchor);
-                    if(stop.instant || stop.end == stop.len) idToResizeMoveState[elementId].resizeResult = undefined;
+                    if (stop.instant || stop.end == stop.len) idToResizeMoveState[elementId].resizeResult = undefined;
 
                     unchanged = widthChangedPercent === 0 && heightChangedPercent === 0;
                     $ax.event.raiseSyntheticEvent(elementId, 'onResize');
@@ -1219,10 +1276,10 @@
                 }
             });
 
-            if(moveInfo) animations.push({
+            if (moveInfo) animations.push({
                 id: elementId,
                 type: queueTypes.move,
-                func: function() {
+                func: function () {
                     deltaLoc = _getMoveLoc(elementId, moveInfo, eventInfoCopy, options.moveStop, idToResizeMoveState[elementId], moveOptions, boundingRect);
                     $ax.visibility.pushContainer(elementId, false);
                     _fireAnimationFromQueue(elementId, queueTypes.move);
@@ -1241,34 +1298,40 @@
                 }
             });
 
-            var completeCount = childrenIds.length*2; // Because there is a resize and move complete, it needs to be doubled
-            for(var idIndex = 0; idIndex < childrenIds.length; idIndex++) {
+            var completeCount = childrenIds.length * 2; // Because there is a resize and move complete, it needs to be doubled
+            for (var idIndex = 0; idIndex < childrenIds.length; idIndex++) {
                 // Need to use scoping trick here to make sure childId doesn't change on next loop
-                (function(childId) {
+                (function (childId) {
                     //use ax obj to get width and height, jquery css give us the value without border
                     var isLayer = $ax.public.fn.IsLayer($obj(childId).type);
                     var rotate = $.inArray($obj(childId).type, widgetRotationFilter) != -1;
                     animations.push({
                         id: childId,
                         type: queueTypes.resize,
-                        func: function() {
+                        func: function () {
                             //$ax.event.raiseSyntheticEvent(childId, 'onResize');
-                            if(isLayer) {
+                            if (isLayer) {
                                 completeCount--;
                                 _fireAnimationFromQueue(childId, queueTypes.resize);
                                 $ax.event.raiseSyntheticEvent(childId, 'onResize');
                             } else {
-                                var currDeltaLoc = { x: deltaLoc.x, y: deltaLoc.y };
-                                var resizeDeltaMove = { x: 0, y: 0 };
+                                var currDeltaLoc = {x: deltaLoc.x, y: deltaLoc.y};
+                                var resizeDeltaMove = {x: 0, y: 0};
                                 var css = _getCssForResizingLayerChild(childId, resizeInfo.anchor, boundingRect, widthChangedPercent, heightChangedPercent, resizeDeltaMove);
-                                var onComplete = function() {
-                                    if(--completeCount == 0) $ax.visibility.popContainer(elementId, false);
+                                var onComplete = function () {
+                                    if (--completeCount == 0) $ax.visibility.popContainer(elementId, false);
                                 };
                                 $ax('#' + childId).resize(css, resizeInfo, true, moves, onComplete);
-                                if(rotateInfo) {
-                                    var offset = { x: Number($ax.expr.evaluateExpr(rotateInfo.offsetX, eventInfoCopy)), y: Number($ax.expr.evaluateExpr(rotateInfo.offsetY, eventInfo)) };
+                                if (rotateInfo) {
+                                    var offset = {
+                                        x: Number($ax.expr.evaluateExpr(rotateInfo.offsetX, eventInfoCopy)),
+                                        y: Number($ax.expr.evaluateExpr(rotateInfo.offsetY, eventInfo))
+                                    };
                                     _updateOffset(offset, resizeInfo.anchor, boundingRect);
-                                    var centerPoint = { x: boundingRect.centerPoint.x + offset.x, y: boundingRect.centerPoint.y + offset.y };
+                                    var centerPoint = {
+                                        x: boundingRect.centerPoint.x + offset.x,
+                                        y: boundingRect.centerPoint.y + offset.y
+                                    };
                                     $ax('#' + childId).circularMoveAndRotate(degreeDelta, options, centerPoint.x, centerPoint.y, rotate, currDeltaLoc, resizeOffset, resizeDeltaMove, onComplete);
                                 } else {
                                     currDeltaLoc.x += resizeDeltaMove.x;
@@ -1278,8 +1341,16 @@
                             }
                         }
                     });
-                    if(!isLayer && moves) animations.push({ id: childId, type: queueTypes.move, func: function () {} });
-                    if(!isLayer && rotateInfo) animations.push({ id: childId, type: queueTypes.rotate, func: function () {} });
+                    if (!isLayer && moves) animations.push({
+                        id: childId, type: queueTypes.move, func: function () {
+                        }
+                    });
+                    if (!isLayer && rotateInfo) animations.push({
+                        id: childId,
+                        type: queueTypes.rotate,
+                        func: function () {
+                        }
+                    });
                 })(childrenIds[idIndex]);
             }
         } else {
@@ -1287,7 +1358,7 @@
             animations.push({
                 id: elementId,
                 type: queueTypes.resize,
-                func: function() {
+                func: function () {
                     //textarea can be resized manully by the user, but doesn't update div size yet, so doing this for now.
                     //alternatively axquery get for size can account for this
 
@@ -1302,13 +1373,13 @@
                     var size = _getSizeFromInfo(resizeInfo, eventInfoCopy, oldWidth, oldHeight, elementId);
                     var newWidth = size.width;
                     var newHeight = size.height;
-                    var deltaWidth = (newWidth - oldWidth)*ratio;
-                    var deltaHeight = (newHeight - oldHeight)*ratio;
+                    var deltaWidth = (newWidth - oldWidth) * ratio;
+                    var deltaHeight = (newHeight - oldHeight) * ratio;
                     newWidth = oldWidth + deltaWidth;
                     newHeight = oldHeight + deltaHeight;
 
-                    var delta = { x: 0, y: 0 };
-                    if(moveInfo) {
+                    var delta = {x: 0, y: 0};
+                    if (moveInfo) {
                         delta = _getMoveLoc(elementId, moveInfo, eventInfoCopy, options.moveStop, idToResizeMoveState[elementId], moveOptions);
                         if (delta.moveTo) {
                             delta.x -= $ax.getNumFromPx($jobj(elementId).css('left'));
@@ -1317,8 +1388,8 @@
                     }
 
                     var rotateHandlesMove = false;
-                    var offset = { x: 0, y: 0 };
-                    if(rotateInfo) {
+                    var offset = {x: 0, y: 0};
+                    if (rotateInfo) {
                         offset.x = Number($ax.expr.evaluateExpr(rotateInfo.offsetX, eventInfoCopy));
                         offset.y = Number($ax.expr.evaluateExpr(rotateInfo.offsetY, eventInfoCopy));
                         _updateOffset(offset, rotateInfo.anchor, $axure.fn.getWidgetBoundingRect(elementId));
@@ -1328,44 +1399,53 @@
 
                     var css = null;
                     var rootLayer = null;
-                    if(deltaHeight != 0 || deltaWidth != 0) {
+                    if (deltaHeight != 0 || deltaWidth != 0) {
                         rootLayer = $ax.move.getRootLayer(elementId);
-                        if(rootLayer) $ax.visibility.pushContainer(rootLayer, false);
+                        if (rootLayer) $ax.visibility.pushContainer(rootLayer, false);
                         css = _getCssForResizingWidget(elementId, eventInfoCopy, resizeInfo.anchor, newWidth, newHeight, oldWidth, oldHeight, delta, options.stop, !rotateHandlesMove);
                         idToResizeMoveState[elementId].resizeResult = undefined;
                     }
 
-                    if(rotateInfo) {
+                    if (rotateInfo) {
                         var rotateDegree = parseFloat($ax.expr.evaluateExpr(rotateInfo.degree, eventInfoCopy));
 
-                        if(rotateHandlesMove) {
+                        if (rotateHandlesMove) {
                             var resizeOffset = _applyAnchorToResizeOffset(deltaWidth, deltaHeight, rotateInfo.anchor);
                             _rotateSingleOffset(elementId, rotateDegree, rotateInfo.rotateType == 'location', delta, offset, options, options.rotateStop, resizeOffset);
                         } else {
                             // Not handling move so pass in nop delta
-                            _rotateSingle(elementId, rotateDegree, rotateInfo.rotateType == 'location', { x: 0, y: 0 }, options, options.rotateStop);
+                            _rotateSingle(elementId, rotateDegree, rotateInfo.rotateType == 'location', {
+                                x: 0,
+                                y: 0
+                            }, options, options.rotateStop);
                         }
                     } else _moveSingleWidget(elementId, delta, options);
 
                     // Have to do it down here to make sure move info is registered
-                    if(moveInfo) $ax.event.raiseSyntheticEvent(elementId, 'onMove');
+                    if (moveInfo) $ax.event.raiseSyntheticEvent(elementId, 'onMove');
 
                     //$ax.event.raiseSyntheticEvent(elementId, 'onResize');
                     if (css) {
                         $ax('#' + elementId).resize(css, resizeInfo, true, moves, function () {
-                            if(rootLayer) $ax.visibility.popContainer(rootLayer, false);
+                            if (rootLayer) $ax.visibility.popContainer(rootLayer, false);
                         });
                     } else {
                         _fireAnimationFromQueue(elementId, queueTypes.resize);
-                        if(moves && !rotateHandlesMove) _fireAnimationFromQueue(elementId, queueTypes.move);
+                        if (moves && !rotateHandlesMove) _fireAnimationFromQueue(elementId, queueTypes.move);
 
                         $ax.event.raiseSyntheticEvent(elementId, 'onResize');
                     }
                 }
             });
             // Nop move (move handled by resize)
-            if(rotateInfo) animations.push({ id: elementId, type: queueTypes.rotate, func: function () { } });
-            if(moves) animations.push({ id: elementId, type: queueTypes.move, func: function () { } });
+            if (rotateInfo) animations.push({
+                id: elementId, type: queueTypes.rotate, func: function () {
+                }
+            });
+            if (moves) animations.push({
+                id: elementId, type: queueTypes.move, func: function () {
+                }
+            });
         }
 
         _addAnimations(animations);
@@ -1401,12 +1481,12 @@
     //    return { oldWidth: oldWidth, oldHeight: oldHeight, newWidth: size.width, newHeight: size.height, change: oldWidth != size.width || oldHeight != size.height };
     //}
 
-    var _getSizeFromInfo = function(resizeInfo, eventInfo, oldWidth, oldHeight, targetElement) {
+    var _getSizeFromInfo = function (resizeInfo, eventInfo, oldWidth, oldHeight, targetElement) {
         var oldTarget = eventInfo.targetElement;
         eventInfo.targetElement = targetElement;
 
         var state = _getIdToResizeMoveState(eventInfo)[targetElement];
-        if(state && state.resizeResult) return state.resizeResult;
+        if (state && state.resizeResult) return state.resizeResult;
 
         var width = $ax.expr.evaluateExpr(resizeInfo.width, eventInfo);
         var height = $ax.expr.evaluateExpr(resizeInfo.height, eventInfo);
@@ -1421,8 +1501,8 @@
         height = isNaN(height) ? oldHeight : height;
 
         // can't be negative
-        var result = { width: Math.max(width, 0), height: Math.max(height, 0) };
-        if(state) state.resizeResult = result;
+        var result = {width: Math.max(width, 0), height: Math.max(height, 0)};
+        if (state) state.resizeResult = result;
         return result;
     }
 
@@ -1448,9 +1528,9 @@
         var ratio = stop.instant ? 1 : (stop.end - stop.start) / (stop.len - stop.start);
         var deltaWidth = (newWidth - oldWidth) * ratio;
         var deltaHeight = (newHeight - oldHeight) * ratio;
-        if(stop.instant || stop.end == stop.len) {
+        if (stop.instant || stop.end == stop.len) {
             var idToResizeMoveState = _getIdToResizeMoveState(eventInfo);
-            if(idToResizeMoveState[elementId]) idToResizeMoveState[elementId].resizeResult = undefined;
+            if (idToResizeMoveState[elementId]) idToResizeMoveState[elementId].resizeResult = undefined;
         }
 
         var css = {};
@@ -1458,42 +1538,51 @@
 
         var obj = $obj(elementId);
         //if it's 100% width, don't change its width
-        if($ax.dynamicPanelManager.isPercentWidthPanel(obj)) var is100Dp = true;
+        if ($ax.dynamicPanelManager.isPercentWidthPanel(obj)) var is100Dp = true;
         else css.width = oldWidth + deltaWidth;
 
         var jobj = $jobj(elementId);
         //if this is pinned dp, we will mantain the pin, no matter how you resize it; so no need changes left or top
         //NOTE: currently only pinned DP has position == fixed
-        if(jobj.css('position') == 'fixed') return css;
+        if (jobj.css('position') == 'fixed') return css;
 
         //use position relative to parents
         //var position = obj.generateCompound ? $ax.public.fn.getWidgetBoundingRect(elementId) : $ax.public.fn.getPositionRelativeToParent(elementId);
 
 
         var locationShift;
-        switch(anchor) {
+        switch (anchor) {
             case "top left":
-                locationShift = { x: 0, y: 0 }; break;
+                locationShift = {x: 0, y: 0};
+                break;
             case "top":
-                locationShift = { x: -deltaWidth / 2.0, y: 0.0 }; break;
+                locationShift = {x: -deltaWidth / 2.0, y: 0.0};
+                break;
             case "top right":
-                locationShift = { x: -deltaWidth, y: 0.0 }; break;
+                locationShift = {x: -deltaWidth, y: 0.0};
+                break;
             case "left":
-                locationShift = { x: 0.0, y: -deltaHeight / 2.0 }; break;
+                locationShift = {x: 0.0, y: -deltaHeight / 2.0};
+                break;
             case "center":
-                locationShift = { x: -deltaWidth / 2.0, y: -deltaHeight / 2.0 }; break;
+                locationShift = {x: -deltaWidth / 2.0, y: -deltaHeight / 2.0};
+                break;
             case "right":
-                locationShift = { x: -deltaWidth, y: -deltaHeight / 2.0 }; break;
+                locationShift = {x: -deltaWidth, y: -deltaHeight / 2.0};
+                break;
             case "bottom left":
-                locationShift = { x: 0.0, y: -deltaHeight }; break;
+                locationShift = {x: 0.0, y: -deltaHeight};
+                break;
             case "bottom":
-                locationShift = { x: -deltaWidth/2.0, y: -deltaHeight }; break;
+                locationShift = {x: -deltaWidth / 2.0, y: -deltaHeight};
+                break;
             case "bottom right":
-                locationShift = { x: -deltaWidth, y: -deltaHeight }; break;
+                locationShift = {x: -deltaWidth, y: -deltaHeight};
+                break;
         }
 
-        if(handleMove) {
-            if(jobj.css('position') === 'absolute') {
+        if (handleMove) {
+            if (jobj.css('position') === 'absolute') {
                 css.left = $ax.getNumFromPx(jobj.css('left')) + locationShift.x + delta.x;
                 css.top = $ax.getNumFromPx(jobj.css('top')) + locationShift.y + delta.y;
             } else {
@@ -1524,36 +1613,36 @@
         var obj = $obj(elementId);
         //if it's 100% width, don't change its width and left
         var changeLeft = true;
-        if($ax.dynamicPanelManager.isPercentWidthPanel(obj)) changeLeft = false;
+        if ($ax.dynamicPanelManager.isPercentWidthPanel(obj)) changeLeft = false;
         else css.width = newWidth;
 
 
         var jobj = $jobj(elementId);
         //if this is pinned dp, we will mantain the pin, no matter how you resize it; so no need changes left or top
         //NOTE: currently only pinned DP has position == fixed
-        if(jobj.css('position') == 'fixed') return css;
+        if (jobj.css('position') == 'fixed') return css;
         //use bounding rect position relative to parents to calculate delta
         var axObj = $ax('#' + elementId);
         // This will be absolute world coordinates, but we want body coordinates.
         var currentLeft = axObj.locRelativeIgnoreLayer(false);
         var currentTop = axObj.locRelativeIgnoreLayer(true);
 
-        if(anchor.indexOf("center") > -1) {
+        if (anchor.indexOf("center") > -1) {
             var topDelta = (childCenterPoint.y - layerBoundingRect.centerPoint.y) * heightChangedPercent - currentSize.height * heightChangedPercent / 2;
-            if(changeLeft) var leftDelta = (childCenterPoint.x - layerBoundingRect.centerPoint.x) * widthChangedPercent - currentSize.width * widthChangedPercent / 2;
+            if (changeLeft) var leftDelta = (childCenterPoint.x - layerBoundingRect.centerPoint.x) * widthChangedPercent - currentSize.width * widthChangedPercent / 2;
         } else {
-            if(anchor.indexOf("top") > -1) {
+            if (anchor.indexOf("top") > -1) {
                 topDelta = (currentTop - layerBoundingRect.top) * heightChangedPercent;
-            } else if(anchor.indexOf("bottom") > -1) {
+            } else if (anchor.indexOf("bottom") > -1) {
                 topDelta = (currentTop - layerBoundingRect.bottom) * heightChangedPercent;
             } else {
                 topDelta = (childCenterPoint.y - layerBoundingRect.centerPoint.y) * heightChangedPercent - currentSize.height * heightChangedPercent / 2;
             }
 
-            if(changeLeft) {
-                if(anchor.indexOf("left") > -1) {
+            if (changeLeft) {
+                if (anchor.indexOf("left") > -1) {
                     leftDelta = (currentLeft - layerBoundingRect.left) * widthChangedPercent;
-                } else if(anchor.indexOf("right") > -1) {
+                } else if (anchor.indexOf("right") > -1) {
                     leftDelta = (currentLeft - layerBoundingRect.right) * widthChangedPercent;
                 } else {
                     leftDelta = (childCenterPoint.x - layerBoundingRect.centerPoint.x) * widthChangedPercent - currentSize.width * widthChangedPercent / 2;
@@ -1561,58 +1650,58 @@
             }
         }
 
-        if(topDelta) deltaLoc.y += topDelta;
-        if(leftDelta && changeLeft) deltaLoc.x += leftDelta;
+        if (topDelta) deltaLoc.y += topDelta;
+        if (leftDelta && changeLeft) deltaLoc.x += leftDelta;
 
         return css;
     };
 
-    _actionHandlers.setPanelOrder = function(eventInfo, actions, index) {
+    _actionHandlers.setPanelOrder = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.panelPaths.length; i++) {
+        for (var i = 0; i < action.panelPaths.length; i++) {
             var func = action.panelPaths[i].setOrderInfo.bringToFront ? 'bringToFront' : 'sendToBack';
             var elementIds = $ax.getElementIdsFromPath(action.panelPaths[i].panelPath, eventInfo);
-            for(var j = 0; j < elementIds.length; j++) $ax('#' + elementIds[j])[func]();
+            for (var j = 0; j < elementIds.length; j++) $ax('#' + elementIds[j])[func]();
         }
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.modifyDataSetEditItems = function(eventInfo, actions, index) {
+    _actionHandlers.modifyDataSetEditItems = function (eventInfo, actions, index) {
         var action = actions[index];
         var add = action.repeatersToAddTo;
         var repeaters = add || action.repeatersToRemoveFrom;
         var itemId;
-        for(var i = 0; i < repeaters.length; i++) {
+        for (var i = 0; i < repeaters.length; i++) {
             var data = repeaters[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(data.path, eventInfo)[0];
-            if(!id) continue;
+            if (!id) continue;
 
-            if(data.addType == 'this') {
+            if (data.addType == 'this') {
                 var scriptId = $ax.repeater.getScriptIdFromElementId(eventInfo.srcElement);
                 itemId = $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);
                 var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);
-                if(add) $ax.repeater.addEditItems(repeaterId, [itemId]);
+                if (add) $ax.repeater.addEditItems(repeaterId, [itemId]);
                 else $ax.repeater.removeEditItems(repeaterId, [itemId]);
-            } else if(data.addType == 'all') {
+            } else if (data.addType == 'all') {
                 var allItems = $ax.repeater.getAllItemIds(id);
-                if(add) $ax.repeater.addEditItems(id, allItems);
+                if (add) $ax.repeater.addEditItems(id, allItems);
                 else $ax.repeater.removeEditItems(id, allItems);
             } else {
                 var oldTarget = eventInfo.targetElement;
                 var itemIds = $ax.repeater.getAllItemIds(id);
                 var itemIdsToAdd = [];
-                for(var j = 0; j < itemIds.length; j++) {
+                for (var j = 0; j < itemIds.length; j++) {
                     itemId = itemIds[j];
                     eventInfo.targetElement = $ax.repeater.createElementId(id, itemId);
-                    if($ax.expr.evaluateExpr(data.query, eventInfo) == "true") {
+                    if ($ax.expr.evaluateExpr(data.query, eventInfo) == "true") {
                         itemIdsToAdd[itemIdsToAdd.length] = String(itemId);
                     }
                     eventInfo.targetElement = oldTarget;
                 }
-                if(add) $ax.repeater.addEditItems(id, itemIdsToAdd);
+                if (add) $ax.repeater.addEditItems(id, itemIdsToAdd);
                 else $ax.repeater.removeEditItems(id, itemIdsToAdd);
             }
         }
@@ -1620,37 +1709,43 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _action.repeaterInfoNames = { addItemsToDataSet: 'dataSetsToAddTo', deleteItemsFromDataSet: 'dataSetItemsToRemove', updateItemsInDataSet: 'dataSetsToUpdate',
-        addFilterToRepeater: 'repeatersToAddFilter', removeFilterFromRepeater: 'repeatersToRemoveFilter',
-        addSortToRepeater: 'repeaterToAddSort', removeSortFromRepeater: 'repeaterToRemoveSort',
-        setRepeaterToPage: 'repeatersToSetPage', setItemsPerRepeaterPage: 'repeatersToSetItemCount'
+    _action.repeaterInfoNames = {
+        addItemsToDataSet: 'dataSetsToAddTo',
+        deleteItemsFromDataSet: 'dataSetItemsToRemove',
+        updateItemsInDataSet: 'dataSetsToUpdate',
+        addFilterToRepeater: 'repeatersToAddFilter',
+        removeFilterFromRepeater: 'repeatersToRemoveFilter',
+        addSortToRepeater: 'repeaterToAddSort',
+        removeSortFromRepeater: 'repeaterToRemoveSort',
+        setRepeaterToPage: 'repeatersToSetPage',
+        setItemsPerRepeaterPage: 'repeatersToSetItemCount'
     };
 
-    _actionHandlers.addItemsToDataSet = function(eventInfo, actions, index) {
+    _actionHandlers.addItemsToDataSet = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.dataSetsToAddTo.length; i++) {
+        for (var i = 0; i < action.dataSetsToAddTo.length; i++) {
             var datasetInfo = action.dataSetsToAddTo[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(datasetInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
             var dataset = datasetInfo.data;
 
-            for(var j = 0; j < dataset.length; j++) $ax.repeater.addItem(id, $ax.deepCopy(dataset[j]), eventInfo);
-            if(dataset.length) _addRefresh(id);
+            for (var j = 0; j < dataset.length; j++) $ax.repeater.addItem(id, $ax.deepCopy(dataset[j]), eventInfo);
+            if (dataset.length) _addRefresh(id);
         }
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.deleteItemsFromDataSet = function(eventInfo, actions, index) {
+    _actionHandlers.deleteItemsFromDataSet = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.dataSetItemsToRemove.length; i++) {
+        for (var i = 0; i < action.dataSetItemsToRemove.length; i++) {
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var deleteInfo = action.dataSetItemsToRemove[i];
             var id = $ax.getElementIdsFromPath(deleteInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
             $ax.repeater.deleteItems(id, eventInfo, deleteInfo.type, deleteInfo.rule);
             _addRefresh(id);
         }
@@ -1658,14 +1753,14 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.updateItemsInDataSet = function(eventInfo, actions, index) {
+    _actionHandlers.updateItemsInDataSet = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.dataSetsToUpdate.length; i++) {
+        for (var i = 0; i < action.dataSetsToUpdate.length; i++) {
             var dataSet = action.dataSetsToUpdate[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(dataSet.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
 
             $ax.repeater.updateEditItems(id, dataSet.props, eventInfo, dataSet.type, dataSet.rule);
             _addRefresh(id);
@@ -1674,30 +1769,30 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.setRepeaterToDataSet = function(eventInfo, actions, index) {
+    _actionHandlers.setRepeaterToDataSet = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.repeatersToSet.length; i++) {
+        for (var i = 0; i < action.repeatersToSet.length; i++) {
             var setRepeaterInfo = action.repeatersToSet[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(setRepeaterInfo.path, eventInfo)[0];
-            if(!id) continue;
+            if (!id) continue;
             $ax.repeater.setDataSet(id, setRepeaterInfo.localDataSetId);
         }
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.addFilterToRepeater = function(eventInfo, actions, index) {
+    _actionHandlers.addFilterToRepeater = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.repeatersToAddFilter.length; i++) {
+        for (var i = 0; i < action.repeatersToAddFilter.length; i++) {
             var addFilterInfo = action.repeatersToAddFilter[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(addFilterInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
 
             $ax.repeater.addFilter(id, addFilterInfo.removeOtherFilters, addFilterInfo.label, addFilterInfo.filter, eventInfo.srcElement);
             _addRefresh(id);
@@ -1706,18 +1801,18 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.removeFilterFromRepeater = function(eventInfo, actions, index) {
+    _actionHandlers.removeFilterFromRepeater = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.repeatersToRemoveFilter.length; i++) {
+        for (var i = 0; i < action.repeatersToRemoveFilter.length; i++) {
             var removeFilterInfo = action.repeatersToRemoveFilter[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(removeFilterInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
 
-            if(removeFilterInfo.removeAll) $ax.repeater.removeFilter(id);
-            else if(removeFilterInfo.filterName != '') {
+            if (removeFilterInfo.removeAll) $ax.repeater.removeFilter(id);
+            else if (removeFilterInfo.filterName != '') {
                 $ax.repeater.removeFilter(id, removeFilterInfo.filterName);
             }
             _addRefresh(id);
@@ -1726,15 +1821,15 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.addSortToRepeater = function(eventInfo, actions, index) {
+    _actionHandlers.addSortToRepeater = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.repeatersToAddSort.length; i++) {
+        for (var i = 0; i < action.repeatersToAddSort.length; i++) {
             var addSortInfo = action.repeatersToAddSort[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(addSortInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
 
             $ax.repeater.addSort(id, addSortInfo.label, addSortInfo.columnName, addSortInfo.ascending, addSortInfo.toggle, addSortInfo.sortType);
             _addRefresh(id);
@@ -1743,33 +1838,33 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.removeSortFromRepeater = function(eventInfo, actions, index) {
+    _actionHandlers.removeSortFromRepeater = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.repeatersToRemoveSort.length; i++) {
+        for (var i = 0; i < action.repeatersToRemoveSort.length; i++) {
             var removeSortInfo = action.repeatersToRemoveSort[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(removeSortInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
 
-            if(removeSortInfo.removeAll) $ax.repeater.removeSort(id);
-            else if(removeSortInfo.sortName != '') $ax.repeater.removeSort(id, removeSortInfo.sortName);
+            if (removeSortInfo.removeAll) $ax.repeater.removeSort(id);
+            else if (removeSortInfo.sortName != '') $ax.repeater.removeSort(id, removeSortInfo.sortName);
             _addRefresh(id);
         }
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.setRepeaterToPage = function(eventInfo, actions, index) {
+    _actionHandlers.setRepeaterToPage = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.repeatersToSetPage.length; i++) {
+        for (var i = 0; i < action.repeatersToSetPage.length; i++) {
             var setPageInfo = action.repeatersToSetPage[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(setPageInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
 
             var oldTarget = eventInfo.targetElement;
             eventInfo.targetElement = id;
@@ -1781,17 +1876,17 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.setItemsPerRepeaterPage = function(eventInfo, actions, index) {
+    _actionHandlers.setItemsPerRepeaterPage = function (eventInfo, actions, index) {
         var action = actions[index];
 
-        for(var i = 0; i < action.repeatersToSetItemCount.length; i++) {
+        for (var i = 0; i < action.repeatersToSetItemCount.length; i++) {
             var setItemCountInfo = action.repeatersToSetItemCount[i];
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(setItemCountInfo.path, eventInfo)[0];
-            if(!id || _ignoreAction(id)) continue;
+            if (!id || _ignoreAction(id)) continue;
 
-            if(setItemCountInfo.noLimit) $ax.repeater.setNoItemLimit(id);
+            if (setItemCountInfo.noLimit) $ax.repeater.setNoItemLimit(id);
             else $ax.repeater.setItemLimit(id, setItemCountInfo.itemCountValue, eventInfo);
             _addRefresh(id);
         }
@@ -1799,80 +1894,80 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.refreshRepeater = function(eventInfo, actions, index) {
+    _actionHandlers.refreshRepeater = function (eventInfo, actions, index) {
         // We use this as a psudo action now.
         var action = actions[index];
         for (var i = 0; i < action.repeatersToRefresh.length; i++) {
             // Grab the first one because repeaters must have only element id, as they cannot be inside repeaters
             //  or none if unplaced
             var id = $ax.getElementIdsFromPath(action.repeatersToRefresh[i], eventInfo)[0];
-            if(id) _tryRefreshRepeater(id, eventInfo);
+            if (id) _tryRefreshRepeater(id, eventInfo);
         }
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    var _tryRefreshRepeater = function(id, eventInfo) {
+    var _tryRefreshRepeater = function (id, eventInfo) {
         var idIndex = _repeatersToRefresh.indexOf(id);
-        if(idIndex == -1) return;
+        if (idIndex == -1) return;
 
         $ax.splice(_repeatersToRefresh, idIndex, 1);
         $ax.repeater.refreshRepeater(id, eventInfo);
     };
 
-    _action.tryRefreshRepeaters = function(ids, eventInfo) {
-        for(var i = 0; i < ids.length; i++) _tryRefreshRepeater(ids[i], eventInfo);
+    _action.tryRefreshRepeaters = function (ids, eventInfo) {
+        for (var i = 0; i < ids.length; i++) _tryRefreshRepeater(ids[i], eventInfo);
     };
 
-    _actionHandlers.scrollToWidget = function(eventInfo, actions, index) {
+    _actionHandlers.scrollToWidget = function (eventInfo, actions, index) {
         var action = actions[index];
         var elementIds = $ax.getElementIdsFromPath(action.objectPath, eventInfo);
-        if(elementIds.length > 0) $ax('#' + elementIds[0]).scroll(action.options);
+        if (elementIds.length > 0) $ax('#' + elementIds[0]).scroll(action.options);
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
 
-    _actionHandlers.enableDisableWidgets = function(eventInfo, actions, index) {
+    _actionHandlers.enableDisableWidgets = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.pathToInfo.length; i++) {
+        for (var i = 0; i < action.pathToInfo.length; i++) {
             var elementIds = $ax.getElementIdsFromPath(action.pathToInfo[i].objectPath, eventInfo);
             var enable = action.pathToInfo[i].enableDisableInfo.enable;
-            for(var j = 0; j < elementIds.length; j++) $ax('#' + elementIds[j]).enabled(enable);
+            for (var j = 0; j < elementIds.length; j++) $ax('#' + elementIds[j]).enabled(enable);
         }
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.setImage = function(eventInfo, actions, index) {
+    _actionHandlers.setImage = function (eventInfo, actions, index) {
         var oldTarget = eventInfo.targetElement;
         var action = actions[index];
         var view = $ax.adaptive.currentViewId;
 
         eventInfo.image = true;
-        for(var i = 0; i < action.imagesToSet.length; i++) {
+        for (var i = 0; i < action.imagesToSet.length; i++) {
             var imgInfo = action.imagesToSet[i];
             imgInfo = view ? imgInfo.adaptive[view] : imgInfo.base;
             var elementIds = $ax.getElementIdsFromPath(action.imagesToSet[i].objectPath, eventInfo);
 
-            for(var j = 0; j < elementIds.length; j++) {
+            for (var j = 0; j < elementIds.length; j++) {
                 var elementId = elementIds[j];
 
                 eventInfo.targetElement = elementId;
                 var evaluatedImgs = _evaluateImages(imgInfo, eventInfo);
 
                 var img = evaluatedImgs.normal;
-                if($ax.style.IsWidgetDisabled(elementId)) {
-                    if(imgInfo.disabled) img = evaluatedImgs.disabled;
-                } else if($ax.style.IsWidgetSelected(elementId)) {
-                    if(imgInfo.selected) img = evaluatedImgs.selected;
-                } else if($ax.event.mouseDownObjectId == elementId && imgInfo.mouseDown) img = evaluatedImgs.mouseDown;
-                else if($ax.event.mouseOverIds.indexOf(elementId) != -1 && imgInfo.mouseOver) {
+                if ($ax.style.IsWidgetDisabled(elementId)) {
+                    if (imgInfo.disabled) img = evaluatedImgs.disabled;
+                } else if ($ax.style.IsWidgetSelected(elementId)) {
+                    if (imgInfo.selected) img = evaluatedImgs.selected;
+                } else if ($ax.event.mouseDownObjectId == elementId && imgInfo.mouseDown) img = evaluatedImgs.mouseDown;
+                else if ($ax.event.mouseOverIds.indexOf(elementId) != -1 && imgInfo.mouseOver) {
                     img = evaluatedImgs.mouseOver;
                     //Update mouseOverObjectId
                     var currIndex = $ax.event.mouseOverIds.indexOf($ax.event.mouseOverObjectId);
                     var imgIndex = $ax.event.mouseOverIds.indexOf(elementId);
-                    if(currIndex < imgIndex) $ax.event.mouseOverObjectId = elementId;
+                    if (currIndex < imgIndex) $ax.event.mouseOverObjectId = elementId;
                 }
 
                 //            $('#' + $ax.repeater.applySuffixToElementId(elementId, '_img')).attr('src', img);
@@ -1889,36 +1984,36 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    var _evaluateImages = function(imgInfo, eventInfo) {
+    var _evaluateImages = function (imgInfo, eventInfo) {
         var retVal = {};
-        for(var state in imgInfo) {
-            if(!imgInfo.hasOwnProperty(state)) continue;
+        for (var state in imgInfo) {
+            if (!imgInfo.hasOwnProperty(state)) continue;
             var img = imgInfo[state].path || $ax.expr.evaluateExpr(imgInfo[state].literal, eventInfo);
-            if(!img) img = $axure.utils.getTransparentGifPath();
+            if (!img) img = $axure.utils.getTransparentGifPath();
             retVal[state] = img;
         }
         return retVal;
     };
 
-    $ax.clearRepeaterImageOverrides = function(repeaterId) {
+    $ax.clearRepeaterImageOverrides = function (repeaterId) {
         var childIds = $ax.getChildElementIdsForRepeater(repeaterId);
-        for(var i = childIds; i < childIds.length; i++) $ax.style.deleteElementIdToImageOverride(childIds[i]);
+        for (var i = childIds; i < childIds.length; i++) $ax.style.deleteElementIdToImageOverride(childIds[i]);
     };
 
-    _actionHandlers.setFocusOnWidget = function(eventInfo, actions, index) {
+    _actionHandlers.setFocusOnWidget = function (eventInfo, actions, index) {
         var action = actions[index];
-        if(action.objectPaths.length > 0) {
+        if (action.objectPaths.length > 0) {
             var elementIds = $ax.getElementIdsFromPath(action.objectPaths[0], eventInfo);
-            if(elementIds.length > 0) {
+            if (elementIds.length > 0) {
                 $ax('#' + elementIds[0]).focus();
                 //if select text and not in placeholder mode, then select all text
-                if(action.selectText && !$ax.placeholderManager.isActive(elementIds[0])) {
+                if (action.selectText && !$ax.placeholderManager.isActive(elementIds[0])) {
                     var elementChildren = document.getElementById(elementIds[0]).children;
                     //find the input or textarea element
-                    for(var i = 0; i < elementChildren.length; i++) {
+                    for (var i = 0; i < elementChildren.length; i++) {
                         if (elementChildren[i].id.indexOf('_input') == -1) continue;
                         var elementTagName = elementChildren[i].tagName;
-                        if(elementTagName && (elementTagName.toLowerCase() == "input" || elementTagName.toLowerCase() == "textarea")) {
+                        if (elementTagName && (elementTagName.toLowerCase() == "input" || elementTagName.toLowerCase() == "textarea")) {
                             elementChildren[i].select();
                         }
                     }
@@ -1929,18 +2024,18 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.expandCollapseTree = function(eventInfo, actions, index) {
+    _actionHandlers.expandCollapseTree = function (eventInfo, actions, index) {
         var action = actions[index];
-        for(var i = 0; i < action.pathToInfo.length; i++) {
+        for (var i = 0; i < action.pathToInfo.length; i++) {
             var pair = action.pathToInfo[i];
             var elementIds = $ax.getElementIdsFromPath(pair.treeNodePath, eventInfo);
-            for(var j = 0; j < elementIds.length; j++) $ax('#' + elementIds[j]).expanded(pair.expandCollapseInfo.expand);
+            for (var j = 0; j < elementIds.length; j++) $ax('#' + elementIds[j]).expanded(pair.expandCollapseInfo.expand);
         }
 
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.other = function(eventInfo, actions, index) {
+    _actionHandlers.other = function (eventInfo, actions, index) {
         var action = actions[index];
         $ax.navigate({
             url: $axure.utils.getOtherPath() + "#other=" + encodeURI(action.otherDescription),
@@ -1952,7 +2047,7 @@
         _dispatchAction(eventInfo, actions, index + 1);
     };
 
-    _actionHandlers.fireEvents = function(eventInfo, actions, index) {
+    _actionHandlers.fireEvents = function (eventInfo, actions, index) {
         var action = actions[index];
         //look for the nearest element id
 
@@ -1970,7 +2065,7 @@
             page = $ax.pageData.masters[rdo.masterId];
         }
 
-        for(var i = 0; i < action.firedEvents.length; i++) {
+        for (var i = 0; i < action.firedEvents.length; i++) {
             var firedEvent = action.firedEvents[i];
             var isPage = firedEvent.objectPath.length == 0;
             var targetObjIds = isPage ? [rdoId] : $ax.getElementIdsFromPath(firedEvent.objectPath, eventInfo);
@@ -1982,14 +2077,14 @@
 
                 eventInfo.isMasterEvent = false;
                 var raisedEvents = firedEvent.raisedEventIds;
-                if(raisedEvents) {
-                    for(var k = 0; k < raisedEvents.length; k++) {
+                if (raisedEvents) {
+                    for (var k = 0; k < raisedEvents.length; k++) {
                         var event = targetObj.interactionMap && targetObj.interactionMap.raised && targetObj.interactionMap.raised[raisedEvents[k]];
-                        if(event) $ax.event.handleEvent(targetObjId, eventInfo, event, false, true);
+                        if (event) $ax.event.handleEvent(targetObjId, eventInfo, event, false, true);
                     }
                 }
 
-                if(isPage) {
+                if (isPage) {
                     eventInfo.isMasterEvent = true;
                     eventInfo.label = $ax.pageData.page.name;
                     eventInfo.friendlyType = 'Page';
@@ -1997,13 +2092,13 @@
 
                 var firedTarget = isPage ? page : targetObj;
                 var firedEventNames = firedEvent.firedEventNames;
-                if(firedEventNames) {
-                    for(k = 0; k < firedEventNames.length; k++) {
+                if (firedEventNames) {
+                    for (k = 0; k < firedEventNames.length; k++) {
                         event = firedTarget.interactionMap && firedTarget.interactionMap[firedEventNames[k]];
-                        if(event) $ax.event.handleEvent(isPage ? '' : targetObjId, eventInfo, event, false, true);
+                        if (event) $ax.event.handleEvent(isPage ? '' : targetObjId, eventInfo, event, false, true);
                     }
                 }
-                if(isPage) eventInfo.isMasterEvent = oldIsMasterEvent;
+                if (isPage) eventInfo.isMasterEvent = oldIsMasterEvent;
             }
             eventInfo.srcElement = objId;
 

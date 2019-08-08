@@ -4,185 +4,185 @@ import java.io.Serializable;
 
 import com.boco.eoms.base.webapp.form.BaseForm;
 
-public class TawRmDutyEventPubForm extends BaseForm implements Serializable{
+public class TawRmDutyEventPubForm extends BaseForm implements Serializable {
 
-	public String id;
+    public String id;
 
-	public String flag;
+    public String flag;
 
-	public String eventId;
-	
-	public String eventName;
+    public String eventId;
 
-	public String title;
+    public String eventName;
 
-	public String dataTime;
+    public String title;
 
-	public String startTime;
+    public String dataTime;
 
-	public String endTime;
+    public String startTime;
 
-	public int oid;
+    public String endTime;
 
-	public String man;
+    public int oid;
 
-	public String pubStatus;
-	
-	public String pubStatusName;
-	
-	public String alpublish;
-	
-	public String nopublish;
-	
-	public String cannotpublish;
-	
-	public String common;
-	
-	public String top;
-	
-	public String cycle;
+    public String man;
 
-	public String getDataTime() {
-		return dataTime;
-	}
+    public String pubStatus;
 
-	public void setDataTime(String dataTime) {
-		this.dataTime = dataTime;
-	}
+    public String pubStatusName;
 
-	public String getEndTime() {
-		return endTime;
-	}
+    public String alpublish;
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    public String nopublish;
 
-	public String getEventId() {
-		return eventId;
-	}
+    public String cannotpublish;
 
-	public void setEventId(String eventId) {
-		this.eventId = eventId;
-	}
+    public String common;
 
-	public String getEventName() {
-		return eventName;
-	}
+    public String top;
 
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
-	}
+    public String cycle;
 
-	public String getFlag() {
-		return flag;
-	}
+    public String getDataTime() {
+        return dataTime;
+    }
 
-	public void setFlag(String flag) {
-		this.flag = flag;
-	}
+    public void setDataTime(String dataTime) {
+        this.dataTime = dataTime;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getEndTime() {
+        return endTime;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-	public String getMan() {
-		return man;
-	}
+    public String getEventId() {
+        return eventId;
+    }
 
-	public void setMan(String man) {
-		this.man = man;
-	}
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
 
-	public int getOid() {
-		return oid;
-	}
+    public String getEventName() {
+        return eventName;
+    }
 
-	public void setOid(int oid) {
-		this.oid = oid;
-	}
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
 
-	public String getPubStatus() {
-		return pubStatus;
-	}
+    public String getFlag() {
+        return flag;
+    }
 
-	public void setPubStatus(String pubStatus) {
-		this.pubStatus = pubStatus;
-	}
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
-	public String getPubStatusName() {
-		return pubStatusName;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setPubStatusName(String pubStatusName) {
-		this.pubStatusName = pubStatusName;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getStartTime() {
-		return startTime;
-	}
+    public String getMan() {
+        return man;
+    }
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
+    public void setMan(String man) {
+        this.man = man;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public int getOid() {
+        return oid;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setOid(int oid) {
+        this.oid = oid;
+    }
 
-	public String getAlpublish() {
-		return alpublish;
-	}
+    public String getPubStatus() {
+        return pubStatus;
+    }
 
-	public void setAlpublish(String alpublish) {
-		this.alpublish = alpublish;
-	}
+    public void setPubStatus(String pubStatus) {
+        this.pubStatus = pubStatus;
+    }
 
-	public String getCommon() {
-		return common;
-	}
+    public String getPubStatusName() {
+        return pubStatusName;
+    }
 
-	public void setCommon(String common) {
-		this.common = common;
-	}
+    public void setPubStatusName(String pubStatusName) {
+        this.pubStatusName = pubStatusName;
+    }
 
-	public String getCycle() {
-		return cycle;
-	}
+    public String getStartTime() {
+        return startTime;
+    }
 
-	public void setCycle(String cycle) {
-		this.cycle = cycle;
-	}
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 
-	public String getNopublish() {
-		return nopublish;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setNopublish(String nopublish) {
-		this.nopublish = nopublish;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getTop() {
-		return top;
-	}
+    public String getAlpublish() {
+        return alpublish;
+    }
 
-	public void setTop(String top) {
-		this.top = top;
-	}
+    public void setAlpublish(String alpublish) {
+        this.alpublish = alpublish;
+    }
 
-	public String getCannotpublish() {
-		return cannotpublish;
-	}
+    public String getCommon() {
+        return common;
+    }
 
-	public void setCannotpublish(String cannotpublish) {
-		this.cannotpublish = cannotpublish;
-	}
+    public void setCommon(String common) {
+        this.common = common;
+    }
+
+    public String getCycle() {
+        return cycle;
+    }
+
+    public void setCycle(String cycle) {
+        this.cycle = cycle;
+    }
+
+    public String getNopublish() {
+        return nopublish;
+    }
+
+    public void setNopublish(String nopublish) {
+        this.nopublish = nopublish;
+    }
+
+    public String getTop() {
+        return top;
+    }
+
+    public void setTop(String top) {
+        this.top = top;
+    }
+
+    public String getCannotpublish() {
+        return cannotpublish;
+    }
+
+    public void setCannotpublish(String cannotpublish) {
+        this.cannotpublish = cannotpublish;
+    }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_netdisk_foldershare"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="deleted"
-            	column="deleted"
+                name="deleted"
+                column="deleted"
                 length="2"
                 not-null="false"
                 unique="false"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="fromUserId"
-            	column="from_user_id"
+                name="fromUserId"
+                column="from_user_id"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -47,38 +47,28 @@
         </property>
 
         <property
-            name="fromUserName"
-            	column="from_user_name"
+                name="fromUserName"
+                column="from_user_name"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="toUserId"
-            	column="to_user_id"
+                name="toUserId"
+                column="to_user_id"
                 length="500"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-        <property
-            name="shareFolderName"
-            	column="share_folder_name"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
 
-        </property>
-        
         <property
-            name="shareFolderPath"
-            	column="share_folder_path"
+                name="shareFolderName"
+                column="share_folder_name"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -86,7 +76,17 @@
 
         </property>
 
-    </class>    
+        <property
+                name="shareFolderPath"
+                column="share_folder_path"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

@@ -1,229 +1,255 @@
 <?xml version="1.0" encoding="GBK"?>
 <boco>
-	<!-- EOMS集客投诉工单与有线业务智慧装维支撑系统接口 -->
-	<interfaceType>
-		<sendSheet>sendSheet</sendSheet><!-- 1.1投诉派单接口（T1移交T2） -->
-		<acceptSheet>acceptSheet</acceptSheet><!-- 1.2接单接口（确认受理）接口(服务端) -->
-		<dealSheet>dealSheet</dealSheet><!-- 1.3回单接口(服务端) -->
-		<rejectSheet>rejectSheet</rejectSheet><!-- 1.4工单驳回接口(服务端) -->
-		<endSheet>endSheet</endSheet><!-- 1.5归档接口 -->
-		<inspectionSheet>inspectionSheet</inspectionSheet><!-- 1.6质检通过/不通过接口 -->
-		<informSheet>informSheet</informSheet><!-- 1.7催单接口（阶段通知） -->
-		<replySheet>replySheet</replySheet><!-- 1.8阶段回复接口(服务端) -->
-		<repeatSendSheet>repeatSendSheet</repeatSendSheet><!-- 1.9重派接口 -->
-		
-		<operateUserId>zhzw</operateUserId><!-- 用到的地方：acceptSheet接单接口,dealSheet回单接口,replySheet阶段回复接口，rejectSheet工单驳回接口 -->
-		<url>http://10.25.24.94:9999/IOM-CLOUD-INF-SERVICE/services/eoms2IomService</url><!-- 智慧装维的地址：测试服务器IP： 10.25.24.94:9999；生产服务器： 10.25.24.91~93 -->
-	</interfaceType>
-	
-	<subrole>
-		<zjsubroleid>8a9982f222885c36012298eefe7638f1</zjsubroleid><!-- 质检 -->
-		<t1subroleid>8a9982f222885c36012298ed35bf38de</t1subroleid><!-- T1 -->
-	</subrole>
-	
-	<!-- 1.4工单驳回接口(服务端) -->
-	<rejectSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
-		<content columnName=""  interfaceName="System_code"  defauleValue=""/><!-- 	请求来源	zhzw -->
-		<content columnName=""  interfaceName="Operate_task"  defauleValue=""/><!--操作类型	7驳回  -->
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号	当前处理人  -->
-		<content columnName="operateTime"  interfaceName="Reject_time"  defauleValue=""/><!--驳回时间	举例：2013-08-16 13:15:26  -->
-		<content columnName="remark"  interfaceName="Reject_desc"  defauleValue=""/><!--驳回原因  -->
+    <!-- EOMS集客投诉工单与有线业务智慧装维支撑系统接口 -->
+    <interfaceType>
+        <sendSheet>sendSheet</sendSheet><!-- 1.1投诉派单接口（T1移交T2） -->
+        <acceptSheet>acceptSheet</acceptSheet><!-- 1.2接单接口（确认受理）接口(服务端) -->
+        <dealSheet>dealSheet</dealSheet><!-- 1.3回单接口(服务端) -->
+        <rejectSheet>rejectSheet</rejectSheet><!-- 1.4工单驳回接口(服务端) -->
+        <endSheet>endSheet</endSheet><!-- 1.5归档接口 -->
+        <inspectionSheet>inspectionSheet</inspectionSheet><!-- 1.6质检通过/不通过接口 -->
+        <informSheet>informSheet</informSheet><!-- 1.7催单接口（阶段通知） -->
+        <replySheet>replySheet</replySheet><!-- 1.8阶段回复接口(服务端) -->
+        <repeatSendSheet>repeatSendSheet</repeatSendSheet><!-- 1.9重派接口 -->
 
-		<content columnName="beanId"  interfaceName=""  defauleValue="iGroupComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileReject" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink" />
-	</rejectSheet>
-	
-	<!-- 1.2接单接口（确认受理）接口(服务端) -->
-	<acceptSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
-		<content columnName=""  interfaceName="System_code"  defauleValue=""/><!-- 	请求来源	zhzw -->
-		<content columnName=""  interfaceName="Sheet_status"  defauleValue=""/><!-- 工单状态 -->
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号	当前处理人  -->
-		<content columnName=""  interfaceName="Accept_time"  defauleValue=""/><!-- 故障受理时间	当前操作时间 -->
-		
-		<content columnName="beanId"  interfaceName=""  defauleValue="iGroupComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink" />
-		<content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="61" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept" />
-		<content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0" />		<!-- 超时标记-->	
-	</acceptSheet>
-	
-	<!-- 1.3回单接口(服务端) -->
-	<dealSheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
-		<content columnName=""  interfaceName="System_code"  defauleValue=""/><!-- 	请求来源	zhzw -->
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号  -->
-		<content columnName="operateTime"  interfaceName="Operate_time"  defauleValue=""/><!--处理完成时间  -->
-		<content columnName="operaterContact" interfaceName="Operate_contact" defauleValue="" /> <!-- 操作人联系方式  --> 
-		<content columnName="ndeptContact" interfaceName="Linkman" defauleValue="" /><!-- 联系人  --> 
-		<content columnName="ndeptContactPhone" interfaceName="Linkman_phone" defauleValue="" /><!-- 联系人电话  --> 
-		<content columnName="compProp" interfaceName="Complaint_nature" defauleValue="" /><!-- 投诉性质  --> 
-		<content columnName="isReplied" interfaceName="Is_answered" defauleValue="" /><!-- 是否答复客户  --> 
-		<content columnName="isCorrect" interfaceName="Is_right" defauleValue="" /><!-- 工单派单是否准确  --> 
-		<content columnName="affectedAreas" interfaceName="Complaint_range" defauleValue="" /><!-- 故障处理范围  --> 
-		<content columnName="issueEliminatTime" interfaceName="Eliminate_time" defauleValue="" /><!-- 问题消除时间  --> 
-		<content columnName="dealResult" interfaceName="Dispose_result" defauleValue="" /><!-- 处理结果  --> 
-		<content columnName="issueEliminatReason" interfaceName="Reason_solution" defauleValue="" /><!-- 问题原因  --> 
-		<content columnName="faultClassification" interfaceName="Cause_classification" defauleValue="" /><!-- 故障分类  --> 
-		<content columnName="faultReason" interfaceName="Fault_text" defauleValue="" /><!-- 故障原因  --> 
-		<content columnName="gradeSLA" interfaceName="SLAcode" defauleValue="" /><!-- SLA保障等级  --> 
-		<content columnName="linkCity" interfaceName="City" defauleValue="" /><!-- 地市  --> 
-		<content columnName="linkArea" interfaceName="County" defauleValue="" /><!-- 区县  --> 
-		<content columnName="electricCode" interfaceName="Line_num" defauleValue="" /><!-- 产品实例标识  --> 
-		<content columnName="dealDesc" interfaceName="Solution" defauleValue="" /><!-- 解决措施  --> 
-		<content columnName="" interfaceName="Sign_information" defauleValue="" /><!-- 人员签到信息(人员位置的经度和纬度2个值)  --> <!-- 未完待续  --> 
-		
+        <operateUserId>zhzw
+        </operateUserId><!-- 用到的地方：acceptSheet接单接口,dealSheet回单接口,replySheet阶段回复接口，rejectSheet工单驳回接口 -->
+        <url>http://10.25.24.94:9999/IOM-CLOUD-INF-SERVICE/services/eoms2IomService
+        </url><!-- 智慧装维的地址：测试服务器IP： 10.25.24.94:9999；生产服务器： 10.25.24.91~93 -->
+    </interfaceType>
 
-		<content columnName="status"  interfaceName=""  defauleValue="0"/>
-		<content columnName="beanId"  interfaceName=""  defauleValue="iGroupComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink" />
-		<content columnName="phaseId" interfaceName="" defauleValue="CheckingHumTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="46" />
-	</dealSheet>
-	
-	<!-- 1.8阶段回复接口(服务端) -->
-	<replySheet>
-		<content columnName="sheetId"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
-		<content columnName=""  interfaceName="System_code"  defauleValue=""/><!-- 	请求来源	zhzw -->
-		<content columnName="remark"  interfaceName="remark"  defauleValue=""/><!--关联阶段回复描述	中文描述  -->
-		
-		<content columnName="beanId"  interfaceName=""  defauleValue="iGroupComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileReject" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink" />
-	</replySheet>
-	<!-- 分割线，上端为服务端，下端为  客户端 -->
-	
-	<!-- 1.1投诉派单接口（T1移交T2） -->
-	<sendSheet> 
-		<content columnName="title" interfaceEnName="title" interfaceCnName="主题" defauleValue="" />
-		<content columnName="urgentDegree" interfaceEnName="urgentDegree" interfaceCnName="紧急程度" defauleValue=""/>
-		<content columnName="sheetAcceptLimit" interfaceEnName="dealTime1" interfaceCnName="受理时限" defauleValue="" />
-		<content columnName="sheetCompleteLimit" interfaceEnName="dealTime2" interfaceCnName="处理时限" defauleValue=""/>
-		<content columnName="affectedAreas" interfaceEnName="affectedAreas" interfaceCnName="故障影响范围" defauleValue="" />
+    <subrole>
+        <zjsubroleid>8a9982f222885c36012298eefe7638f1</zjsubroleid><!-- 质检 -->
+        <t1subroleid>8a9982f222885c36012298ed35bf38de</t1subroleid><!-- T1 -->
+    </subrole>
 
-		<content columnName="customAttribution" interfaceEnName="customAttribution" interfaceCnName="用户归属地" defauleValue="" />
-		<content columnName="complaintTime" interfaceEnName="complaintTime" interfaceCnName="投诉时间" defauleValue=""/>
-		<content columnName="complaintNum" interfaceEnName="complaintNum" interfaceCnName="故障号码" defauleValue="" />
-		<content columnName="faultTime" interfaceEnName="faultTime" interfaceCnName="故障时间" defauleValue=""/>
-		<content columnName="complaintLoca" interfaceEnName="complaintLoca" interfaceCnName="故障地点" defauleValue="" />
-		
-		<content columnName="termType" interfaceEnName="TermType" interfaceCnName="终端描述" defauleValue="" />
-		<content columnName="complaintDesc" interfaceEnName="complaintDesc" interfaceCnName="投诉内容" defauleValue=""/>
-		<content columnName="preDealResult" interfaceEnName="preDealResult" interfaceCnName="预处理情况" defauleValue="" />
-		<content columnName="enterpriseCode" interfaceEnName="enterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
-		<content columnName="serverCode" interfaceEnName="serverCode" interfaceCnName="服务代码" defauleValue="" />
-		
-		<content columnName="apnName" interfaceEnName="APNName" interfaceCnName="APN名称" defauleValue="" />
-		<content columnName="circuitCode" interfaceEnName="circuitCode" interfaceCnName="传输专线电路代号" defauleValue=""/>
-		<content columnName="ecsiType" interfaceEnName="EcSiType" interfaceCnName="EC/SI类型" defauleValue="" />
-		<content columnName="connectType" interfaceEnName="connectType" interfaceCnName="接入类型" defauleValue=""/>
-		<content columnName="customNo" interfaceEnName="customNo" interfaceCnName="集团编号" defauleValue="" />
-		
-		<content columnName="customName" interfaceEnName="customName" interfaceCnName="集团名称" defauleValue="" />
-		<content columnName="provinceName" interfaceEnName="provinceName" interfaceCnName="所属省份" defauleValue="" />
-		<content columnName="cityName" interfaceEnName="cityName" interfaceCnName="所属地市" defauleValue=""/>
-		<content columnName="countyName" interfaceEnName="countyName" interfaceCnName="所属区县" defauleValue="" />
-		
-		<content columnName="bdeptContact" interfaceEnName="bdeptContact" interfaceCnName="集客部联系人" defauleValue="" />
-		<content columnName="bdeptContactPhone" interfaceEnName="bdeptContactPhone" interfaceCnName="集客部联系人联系电话" defauleValue=""/>
-		<content columnName="sheetId" interfaceEnName="sheetId" interfaceCnName="工单流水号" defauleValue="" />
-		<content columnName="mainCompleteLimitT1" interfaceEnName="T1 dealTime" interfaceCnName="T1处理时限" defauleValue=""/>
-		<content columnName="mainCompleteLimitT2" interfaceEnName="T2 dealTime" interfaceCnName="T2处理时限" defauleValue="" />
-		
-		<content columnName="mainIfMatch" interfaceEnName="ifContactAlarm" interfaceCnName="是否关联上告警" defauleValue="" />
-		<content columnName="mainCommSheetId" interfaceEnName="ifContactFault" interfaceCnName="关联故障工单号" defauleValue=""/>
-		<content columnName="customLevel" interfaceEnName="customLevel" interfaceCnName="集团级别" defauleValue=""/>
-		<content columnName="customLevel" interfaceEnName="businessLevel" interfaceCnName="业务保障级别" defauleValue="" />
-		<content columnName="customContact" interfaceEnName="groupContact" interfaceCnName="集团客户联系人电话" defauleValue=""/>
-		<content columnName="customContactPhone" interfaceEnName="groupContactPhone" interfaceCnName="集团客户联系人" defauleValue="" />
-		
-		<content columnName="cmanagerPhone" interfaceEnName="khContact" interfaceCnName="客户经理" defauleValue="" />
-		<content columnName="cmanagerContactPhone" interfaceEnName="khContactPhone" interfaceCnName="客户经理联系电话" defauleValue=""/>
-		<content columnName="affectedAreas" interfaceEnName="faultRange" interfaceCnName="故障处理范围" defauleValue="" />
-		<content columnName="productName" interfaceEnName="productName" interfaceCnName="产品名称" defauleValue=""/>
-		
-		<content columnName="operateUserId" interfaceEnName="dealWithName" interfaceCnName="一级处理人" defauleValue="" />
-		<content columnName="operateTime" interfaceEnName="dealWithTime" interfaceCnName="一级处理时间" defauleValue="" />
-		<content columnName="" interfaceEnName="dealWithOpinion" interfaceCnName="一级处理意见" defauleValue=""/>
-	</sendSheet>
-	
-	<!-- 1.5归档接口 
-	<endSheet> 
-		<content columnName="holdStatisfied" interfaceEnName="closeSatisfyDegree" interfaceCnName="归档满意度" defauleValue="" />
-		<content columnName="endResult" interfaceEnName="closeDesc" interfaceCnName="归档意见" defauleValue=""/>
-	</endSheet>
-	-->
-	
-	<!-- 1.6质检通过/不通过接口 -->
-	<inspectionSheet> 
-		<content columnName="linkCheckResult" interfaceEnName="checkResults" interfaceCnName="质检结果" defauleValue="" />
-		<content columnName="linkCheckIdea" interfaceEnName="closeOutline" interfaceCnName="质检概述" defauleValue=""/>
-	</inspectionSheet>
-	
-	<!-- 1.7催单接口（阶段通知） 
-	<inspectionSheet> 
-		<content columnName="remark" interfaceEnName="opDesc" interfaceCnName="操作说明" defauleValue="" />
-	</inspectionSheet>
-	-->
-	
-	<!-- 1.9重派接口 -->
-	<repeatSendSheet> 
-		<content columnName="title" interfaceEnName="title" interfaceCnName="主题" defauleValue="" />
-		<content columnName="urgentDegree" interfaceEnName="urgentDegree" interfaceCnName="紧急程度" defauleValue=""/>
-		<content columnName="sheetAcceptLimit" interfaceEnName="dealTime1" interfaceCnName="受理时限" defauleValue="" />
-		<content columnName="sheetCompleteLimit" interfaceEnName="dealTime2" interfaceCnName="处理时限" defauleValue=""/>
-		<content columnName="affectedAreas" interfaceEnName="affectedAreas" interfaceCnName="故障影响范围" defauleValue="" />
+    <!-- 1.4工单驳回接口(服务端) -->
+    <rejectSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
+        <content columnName="" interfaceName="System_code" defauleValue=""/><!-- 	请求来源	zhzw -->
+        <content columnName="" interfaceName="Operate_task" defauleValue=""/><!--操作类型	7驳回  -->
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号	当前处理人  -->
+        <content columnName="operateTime" interfaceName="Reject_time"
+                 defauleValue=""/><!--驳回时间	举例：2013-08-16 13:15:26  -->
+        <content columnName="remark" interfaceName="Reject_desc" defauleValue=""/><!--驳回原因  -->
 
-		<content columnName="customAttribution" interfaceEnName="customAttribution" interfaceCnName="用户归属地" defauleValue="" />
-		<content columnName="complaintTime" interfaceEnName="complaintTime" interfaceCnName="投诉时间" defauleValue=""/>
-		<content columnName="complaintNum" interfaceEnName="complaintNum" interfaceCnName="故障号码" defauleValue="" />
-		<content columnName="faultTime" interfaceEnName="faultTime" interfaceCnName="故障时间" defauleValue=""/>
-		<content columnName="complaintLoca" interfaceEnName="complaintLoca" interfaceCnName="故障地点" defauleValue="" />
-		
-		<content columnName="termType" interfaceEnName="TermType" interfaceCnName="终端描述" defauleValue="" />
-		<content columnName="complaintDesc" interfaceEnName="complaintDesc" interfaceCnName="投诉内容" defauleValue=""/>
-		<content columnName="preDealResult" interfaceEnName="preDealResult" interfaceCnName="预处理情况" defauleValue="" />
-		<content columnName="enterpriseCode" interfaceEnName="enterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
-		<content columnName="serverCode" interfaceEnName="serverCode" interfaceCnName="服务代码" defauleValue="" />
-		
-		<content columnName="apnName" interfaceEnName="APNName" interfaceCnName="APN名称" defauleValue="" />
-		<content columnName="circuitCode" interfaceEnName="circuitCode" interfaceCnName="传输专线电路代号" defauleValue=""/>
-		<content columnName="ecsiType" interfaceEnName="EcSiType" interfaceCnName="EC/SI类型" defauleValue="" />
-		<content columnName="connectType" interfaceEnName="connectType" interfaceCnName="接入类型" defauleValue=""/>
-		<content columnName="customNo" interfaceEnName="customNo" interfaceCnName="集团编号" defauleValue="" />
-		
-		<content columnName="customName" interfaceEnName="customName" interfaceCnName="集团名称" defauleValue="" />
-		<content columnName="provinceName" interfaceEnName="provinceName" interfaceCnName="所属省份" defauleValue="" />
-		<content columnName="cityName" interfaceEnName="cityName" interfaceCnName="所属地市" defauleValue=""/>
-		<content columnName="countyName" interfaceEnName="countyName" interfaceCnName="所属区县" defauleValue="" />
-		
-		<content columnName="bdeptContact" interfaceEnName="bdeptContact" interfaceCnName="集客部联系人" defauleValue="" />
-		<content columnName="bdeptContactPhone" interfaceEnName="bdeptContactPhone" interfaceCnName="集客部联系人联系电话" defauleValue=""/>
-		<content columnName="sheetId" interfaceEnName="sheetId" interfaceCnName="工单流水号" defauleValue="" />
-		<content columnName="mainCompleteLimitT1" interfaceEnName="T1 dealTime" interfaceCnName="T1处理时限" defauleValue=""/>
-		<content columnName="mainCompleteLimitT2" interfaceEnName="T2 dealTime" interfaceCnName="T2处理时限" defauleValue="" />
-		
-		<content columnName="mainIfMatch" interfaceEnName="ifContactAlarm" interfaceCnName="是否关联上告警" defauleValue="" />
-		<content columnName="mainCommSheetId" interfaceEnName="ifContactFault" interfaceCnName="关联故障工单号" defauleValue=""/>
-		<content columnName="customLevel" interfaceEnName="customLevel" interfaceCnName="集团级别" defauleValue=""/>
-		<content columnName="customLevel" interfaceEnName="businessLevel" interfaceCnName="业务保障级别" defauleValue="" />
-		<content columnName="customContact" interfaceEnName="groupContact" interfaceCnName="集团客户联系人电话" defauleValue=""/>
-		<content columnName="customContactPhone" interfaceEnName="groupContactPhone" interfaceCnName="集团客户联系人" defauleValue="" />
-		
-		<content columnName="cmanagerPhone" interfaceEnName="khContact" interfaceCnName="客户经理" defauleValue="" />
-		<content columnName="cmanagerContactPhone" interfaceEnName="khContactPhone" interfaceCnName="客户经理联系电话" defauleValue=""/>
-		<content columnName="affectedAreas" interfaceEnName="faultRange" interfaceCnName="故障处理范围" defauleValue="" />
-		<content columnName="productName" interfaceEnName="productName" interfaceCnName="产品名称" defauleValue=""/>
-		
-		<content columnName="operateUserId" interfaceEnName="dealWithName" interfaceCnName="一级处理人" defauleValue="" />
-		<content columnName="operateTime" interfaceEnName="dealWithTime" interfaceCnName="一级处理时间" defauleValue="" />
-		<content columnName="" interfaceEnName="dealWithOpinion" interfaceCnName="一级处理意见" defauleValue=""/>
-	</repeatSendSheet>
+        <content columnName="beanId" interfaceName="" defauleValue="iGroupComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileReject"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink"/>
+    </rejectSheet>
+
+    <!-- 1.2接单接口（确认受理）接口(服务端) -->
+    <acceptSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
+        <content columnName="" interfaceName="System_code" defauleValue=""/><!-- 	请求来源	zhzw -->
+        <content columnName="" interfaceName="Sheet_status" defauleValue=""/><!-- 工单状态 -->
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号	当前处理人  -->
+        <content columnName="" interfaceName="Accept_time" defauleValue=""/><!-- 故障受理时间	当前操作时间 -->
+
+        <content columnName="beanId" interfaceName="" defauleValue="iGroupComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink"/>
+        <content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="61"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept"/>
+        <content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0"/>        <!-- 超时标记-->
+    </acceptSheet>
+
+    <!-- 1.3回单接口(服务端) -->
+    <dealSheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
+        <content columnName="" interfaceName="System_code" defauleValue=""/><!-- 	请求来源	zhzw -->
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号  -->
+        <content columnName="operateTime" interfaceName="Operate_time" defauleValue=""/><!--处理完成时间  -->
+        <content columnName="operaterContact" interfaceName="Operate_contact" defauleValue=""/> <!-- 操作人联系方式  -->
+        <content columnName="ndeptContact" interfaceName="Linkman" defauleValue=""/><!-- 联系人  -->
+        <content columnName="ndeptContactPhone" interfaceName="Linkman_phone" defauleValue=""/><!-- 联系人电话  -->
+        <content columnName="compProp" interfaceName="Complaint_nature" defauleValue=""/><!-- 投诉性质  -->
+        <content columnName="isReplied" interfaceName="Is_answered" defauleValue=""/><!-- 是否答复客户  -->
+        <content columnName="isCorrect" interfaceName="Is_right" defauleValue=""/><!-- 工单派单是否准确  -->
+        <content columnName="affectedAreas" interfaceName="Complaint_range" defauleValue=""/><!-- 故障处理范围  -->
+        <content columnName="issueEliminatTime" interfaceName="Eliminate_time" defauleValue=""/><!-- 问题消除时间  -->
+        <content columnName="dealResult" interfaceName="Dispose_result" defauleValue=""/><!-- 处理结果  -->
+        <content columnName="issueEliminatReason" interfaceName="Reason_solution" defauleValue=""/><!-- 问题原因  -->
+        <content columnName="faultClassification" interfaceName="Cause_classification" defauleValue=""/><!-- 故障分类  -->
+        <content columnName="faultReason" interfaceName="Fault_text" defauleValue=""/><!-- 故障原因  -->
+        <content columnName="gradeSLA" interfaceName="SLAcode" defauleValue=""/><!-- SLA保障等级  -->
+        <content columnName="linkCity" interfaceName="City" defauleValue=""/><!-- 地市  -->
+        <content columnName="linkArea" interfaceName="County" defauleValue=""/><!-- 区县  -->
+        <content columnName="electricCode" interfaceName="Line_num" defauleValue=""/><!-- 产品实例标识  -->
+        <content columnName="dealDesc" interfaceName="Solution" defauleValue=""/><!-- 解决措施  -->
+        <content columnName="" interfaceName="Sign_information"
+                 defauleValue=""/><!-- 人员签到信息(人员位置的经度和纬度2个值)  --> <!-- 未完待续  -->
+
+
+        <content columnName="status" interfaceName="" defauleValue="0"/>
+        <content columnName="beanId" interfaceName="" defauleValue="iGroupComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="CheckingHumTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="46"/>
+    </dealSheet>
+
+    <!-- 1.8阶段回复接口(服务端) -->
+    <replySheet>
+        <content columnName="sheetId" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号	举例：HB-051-130816-1218 -->
+        <content columnName="" interfaceName="System_code" defauleValue=""/><!-- 	请求来源	zhzw -->
+        <content columnName="remark" interfaceName="remark" defauleValue=""/><!--关联阶段回复描述	中文描述  -->
+
+        <content columnName="beanId" interfaceName="" defauleValue="iGroupComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintMain"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileReject"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.groupcomplaint.model.GroupComplaintLink"/>
+    </replySheet>
+    <!-- 分割线，上端为服务端，下端为  客户端 -->
+
+    <!-- 1.1投诉派单接口（T1移交T2） -->
+    <sendSheet>
+        <content columnName="title" interfaceEnName="title" interfaceCnName="主题" defauleValue=""/>
+        <content columnName="urgentDegree" interfaceEnName="urgentDegree" interfaceCnName="紧急程度" defauleValue=""/>
+        <content columnName="sheetAcceptLimit" interfaceEnName="dealTime1" interfaceCnName="受理时限" defauleValue=""/>
+        <content columnName="sheetCompleteLimit" interfaceEnName="dealTime2" interfaceCnName="处理时限" defauleValue=""/>
+        <content columnName="affectedAreas" interfaceEnName="affectedAreas" interfaceCnName="故障影响范围" defauleValue=""/>
+
+        <content columnName="customAttribution" interfaceEnName="customAttribution" interfaceCnName="用户归属地"
+                 defauleValue=""/>
+        <content columnName="complaintTime" interfaceEnName="complaintTime" interfaceCnName="投诉时间" defauleValue=""/>
+        <content columnName="complaintNum" interfaceEnName="complaintNum" interfaceCnName="故障号码" defauleValue=""/>
+        <content columnName="faultTime" interfaceEnName="faultTime" interfaceCnName="故障时间" defauleValue=""/>
+        <content columnName="complaintLoca" interfaceEnName="complaintLoca" interfaceCnName="故障地点" defauleValue=""/>
+
+        <content columnName="termType" interfaceEnName="TermType" interfaceCnName="终端描述" defauleValue=""/>
+        <content columnName="complaintDesc" interfaceEnName="complaintDesc" interfaceCnName="投诉内容" defauleValue=""/>
+        <content columnName="preDealResult" interfaceEnName="preDealResult" interfaceCnName="预处理情况" defauleValue=""/>
+        <content columnName="enterpriseCode" interfaceEnName="enterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
+        <content columnName="serverCode" interfaceEnName="serverCode" interfaceCnName="服务代码" defauleValue=""/>
+
+        <content columnName="apnName" interfaceEnName="APNName" interfaceCnName="APN名称" defauleValue=""/>
+        <content columnName="circuitCode" interfaceEnName="circuitCode" interfaceCnName="传输专线电路代号" defauleValue=""/>
+        <content columnName="ecsiType" interfaceEnName="EcSiType" interfaceCnName="EC/SI类型" defauleValue=""/>
+        <content columnName="connectType" interfaceEnName="connectType" interfaceCnName="接入类型" defauleValue=""/>
+        <content columnName="customNo" interfaceEnName="customNo" interfaceCnName="集团编号" defauleValue=""/>
+
+        <content columnName="customName" interfaceEnName="customName" interfaceCnName="集团名称" defauleValue=""/>
+        <content columnName="provinceName" interfaceEnName="provinceName" interfaceCnName="所属省份" defauleValue=""/>
+        <content columnName="cityName" interfaceEnName="cityName" interfaceCnName="所属地市" defauleValue=""/>
+        <content columnName="countyName" interfaceEnName="countyName" interfaceCnName="所属区县" defauleValue=""/>
+
+        <content columnName="bdeptContact" interfaceEnName="bdeptContact" interfaceCnName="集客部联系人" defauleValue=""/>
+        <content columnName="bdeptContactPhone" interfaceEnName="bdeptContactPhone" interfaceCnName="集客部联系人联系电话"
+                 defauleValue=""/>
+        <content columnName="sheetId" interfaceEnName="sheetId" interfaceCnName="工单流水号" defauleValue=""/>
+        <content columnName="mainCompleteLimitT1" interfaceEnName="T1 dealTime" interfaceCnName="T1处理时限"
+                 defauleValue=""/>
+        <content columnName="mainCompleteLimitT2" interfaceEnName="T2 dealTime" interfaceCnName="T2处理时限"
+                 defauleValue=""/>
+
+        <content columnName="mainIfMatch" interfaceEnName="ifContactAlarm" interfaceCnName="是否关联上告警" defauleValue=""/>
+        <content columnName="mainCommSheetId" interfaceEnName="ifContactFault" interfaceCnName="关联故障工单号"
+                 defauleValue=""/>
+        <content columnName="customLevel" interfaceEnName="customLevel" interfaceCnName="集团级别" defauleValue=""/>
+        <content columnName="customLevel" interfaceEnName="businessLevel" interfaceCnName="业务保障级别" defauleValue=""/>
+        <content columnName="customContact" interfaceEnName="groupContact" interfaceCnName="集团客户联系人电话" defauleValue=""/>
+        <content columnName="customContactPhone" interfaceEnName="groupContactPhone" interfaceCnName="集团客户联系人"
+                 defauleValue=""/>
+
+        <content columnName="cmanagerPhone" interfaceEnName="khContact" interfaceCnName="客户经理" defauleValue=""/>
+        <content columnName="cmanagerContactPhone" interfaceEnName="khContactPhone" interfaceCnName="客户经理联系电话"
+                 defauleValue=""/>
+        <content columnName="affectedAreas" interfaceEnName="faultRange" interfaceCnName="故障处理范围" defauleValue=""/>
+        <content columnName="productName" interfaceEnName="productName" interfaceCnName="产品名称" defauleValue=""/>
+
+        <content columnName="operateUserId" interfaceEnName="dealWithName" interfaceCnName="一级处理人" defauleValue=""/>
+        <content columnName="operateTime" interfaceEnName="dealWithTime" interfaceCnName="一级处理时间" defauleValue=""/>
+        <content columnName="" interfaceEnName="dealWithOpinion" interfaceCnName="一级处理意见" defauleValue=""/>
+    </sendSheet>
+
+    <!-- 1.5归档接口
+    <endSheet>
+        <content columnName="holdStatisfied" interfaceEnName="closeSatisfyDegree" interfaceCnName="归档满意度" defauleValue="" />
+        <content columnName="endResult" interfaceEnName="closeDesc" interfaceCnName="归档意见" defauleValue=""/>
+    </endSheet>
+    -->
+
+    <!-- 1.6质检通过/不通过接口 -->
+    <inspectionSheet>
+        <content columnName="linkCheckResult" interfaceEnName="checkResults" interfaceCnName="质检结果" defauleValue=""/>
+        <content columnName="linkCheckIdea" interfaceEnName="closeOutline" interfaceCnName="质检概述" defauleValue=""/>
+    </inspectionSheet>
+
+    <!-- 1.7催单接口（阶段通知）
+    <inspectionSheet>
+        <content columnName="remark" interfaceEnName="opDesc" interfaceCnName="操作说明" defauleValue="" />
+    </inspectionSheet>
+    -->
+
+    <!-- 1.9重派接口 -->
+    <repeatSendSheet>
+        <content columnName="title" interfaceEnName="title" interfaceCnName="主题" defauleValue=""/>
+        <content columnName="urgentDegree" interfaceEnName="urgentDegree" interfaceCnName="紧急程度" defauleValue=""/>
+        <content columnName="sheetAcceptLimit" interfaceEnName="dealTime1" interfaceCnName="受理时限" defauleValue=""/>
+        <content columnName="sheetCompleteLimit" interfaceEnName="dealTime2" interfaceCnName="处理时限" defauleValue=""/>
+        <content columnName="affectedAreas" interfaceEnName="affectedAreas" interfaceCnName="故障影响范围" defauleValue=""/>
+
+        <content columnName="customAttribution" interfaceEnName="customAttribution" interfaceCnName="用户归属地"
+                 defauleValue=""/>
+        <content columnName="complaintTime" interfaceEnName="complaintTime" interfaceCnName="投诉时间" defauleValue=""/>
+        <content columnName="complaintNum" interfaceEnName="complaintNum" interfaceCnName="故障号码" defauleValue=""/>
+        <content columnName="faultTime" interfaceEnName="faultTime" interfaceCnName="故障时间" defauleValue=""/>
+        <content columnName="complaintLoca" interfaceEnName="complaintLoca" interfaceCnName="故障地点" defauleValue=""/>
+
+        <content columnName="termType" interfaceEnName="TermType" interfaceCnName="终端描述" defauleValue=""/>
+        <content columnName="complaintDesc" interfaceEnName="complaintDesc" interfaceCnName="投诉内容" defauleValue=""/>
+        <content columnName="preDealResult" interfaceEnName="preDealResult" interfaceCnName="预处理情况" defauleValue=""/>
+        <content columnName="enterpriseCode" interfaceEnName="enterpriseCode" interfaceCnName="企业代码" defauleValue=""/>
+        <content columnName="serverCode" interfaceEnName="serverCode" interfaceCnName="服务代码" defauleValue=""/>
+
+        <content columnName="apnName" interfaceEnName="APNName" interfaceCnName="APN名称" defauleValue=""/>
+        <content columnName="circuitCode" interfaceEnName="circuitCode" interfaceCnName="传输专线电路代号" defauleValue=""/>
+        <content columnName="ecsiType" interfaceEnName="EcSiType" interfaceCnName="EC/SI类型" defauleValue=""/>
+        <content columnName="connectType" interfaceEnName="connectType" interfaceCnName="接入类型" defauleValue=""/>
+        <content columnName="customNo" interfaceEnName="customNo" interfaceCnName="集团编号" defauleValue=""/>
+
+        <content columnName="customName" interfaceEnName="customName" interfaceCnName="集团名称" defauleValue=""/>
+        <content columnName="provinceName" interfaceEnName="provinceName" interfaceCnName="所属省份" defauleValue=""/>
+        <content columnName="cityName" interfaceEnName="cityName" interfaceCnName="所属地市" defauleValue=""/>
+        <content columnName="countyName" interfaceEnName="countyName" interfaceCnName="所属区县" defauleValue=""/>
+
+        <content columnName="bdeptContact" interfaceEnName="bdeptContact" interfaceCnName="集客部联系人" defauleValue=""/>
+        <content columnName="bdeptContactPhone" interfaceEnName="bdeptContactPhone" interfaceCnName="集客部联系人联系电话"
+                 defauleValue=""/>
+        <content columnName="sheetId" interfaceEnName="sheetId" interfaceCnName="工单流水号" defauleValue=""/>
+        <content columnName="mainCompleteLimitT1" interfaceEnName="T1 dealTime" interfaceCnName="T1处理时限"
+                 defauleValue=""/>
+        <content columnName="mainCompleteLimitT2" interfaceEnName="T2 dealTime" interfaceCnName="T2处理时限"
+                 defauleValue=""/>
+
+        <content columnName="mainIfMatch" interfaceEnName="ifContactAlarm" interfaceCnName="是否关联上告警" defauleValue=""/>
+        <content columnName="mainCommSheetId" interfaceEnName="ifContactFault" interfaceCnName="关联故障工单号"
+                 defauleValue=""/>
+        <content columnName="customLevel" interfaceEnName="customLevel" interfaceCnName="集团级别" defauleValue=""/>
+        <content columnName="customLevel" interfaceEnName="businessLevel" interfaceCnName="业务保障级别" defauleValue=""/>
+        <content columnName="customContact" interfaceEnName="groupContact" interfaceCnName="集团客户联系人电话" defauleValue=""/>
+        <content columnName="customContactPhone" interfaceEnName="groupContactPhone" interfaceCnName="集团客户联系人"
+                 defauleValue=""/>
+
+        <content columnName="cmanagerPhone" interfaceEnName="khContact" interfaceCnName="客户经理" defauleValue=""/>
+        <content columnName="cmanagerContactPhone" interfaceEnName="khContactPhone" interfaceCnName="客户经理联系电话"
+                 defauleValue=""/>
+        <content columnName="affectedAreas" interfaceEnName="faultRange" interfaceCnName="故障处理范围" defauleValue=""/>
+        <content columnName="productName" interfaceEnName="productName" interfaceCnName="产品名称" defauleValue=""/>
+
+        <content columnName="operateUserId" interfaceEnName="dealWithName" interfaceCnName="一级处理人" defauleValue=""/>
+        <content columnName="operateTime" interfaceEnName="dealWithTime" interfaceCnName="一级处理时间" defauleValue=""/>
+        <content columnName="" interfaceEnName="dealWithOpinion" interfaceCnName="一级处理意见" defauleValue=""/>
+    </repeatSendSheet>
 </boco>

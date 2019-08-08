@@ -2,12 +2,13 @@ package com.boco.eoms.commons.db.bocopool;
 
 /**
  * Title: Description: Copyright: Copyright (c) 2002 Company:
- * 
+ *
  * @author
  * @version 1.0
  */
 
 // eoms class
+
 import com.boco.eoms.commons.loging.BocoLog;
 
 public class ConnCheckerTimer extends Thread { // 定时检查器��ʱ�����
@@ -30,8 +31,7 @@ public class ConnCheckerTimer extends Thread { // 定时检查器��ʱ���
 
                 try {
                     sleep(m_timer);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     BocoLog.error(this, pool.getPoolName() + "定时器执行休眠出错: "
                             + e.getMessage());
                     ifExit = false;
@@ -40,8 +40,7 @@ public class ConnCheckerTimer extends Thread { // 定时检查器��ʱ���
                 BocoLog.debug(this, pool.getPoolName()
                         + "定时器调用连接池的checkDBPool()完成" + ifExit);
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             BocoLog.error(this, pool.getPoolName() + "定时器有误: " + ex.getMessage());
             ifExit = false;
         }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,64 +13,64 @@
             table="taw_common_messageopertype"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="modelid"
+                name="modelid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="modelname"
+                name="modelname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="operid"
+                name="operid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="opername"
+                name="opername"
                 length="100"
         >
 
         </property>
 
         <property
-            name="operremark"
-                length="100"
-        >
-        </property>
-<property
-            name="userid"
+                name="operremark"
                 length="100"
         >
         </property>
         <property
-            name="operrefmodelid"
+                name="userid"
+                length="100"
+        >
+        </property>
+        <property
+                name="operrefmodelid"
                 length="500"
         >
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

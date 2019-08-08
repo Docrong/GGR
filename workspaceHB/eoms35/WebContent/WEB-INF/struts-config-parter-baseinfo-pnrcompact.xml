@@ -1,168 +1,169 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-  <!-- ========== Data Sources Definitions =================================== -->
-  <!--
-    Define your Struts data sources in a file called struts-data-sources.xml and place
-    it in your merge directory.
-  -->
-
-  <!-- ========== Form Bean Definitions =================================== -->
-  <form-beans>
-
-    <form-bean
-      name="pnrcompactForm"
-      type="com.boco.eoms.parter.baseinfo.pnrcompact.webapp.form.PnrcompactForm"
-    />
-
+    <!-- ========== Data Sources Definitions =================================== -->
     <!--
-         If you have non XDoclet forms, define them in a file called struts-forms.xml and
-         place it in your merge directory.
+      Define your Struts data sources in a file called struts-data-sources.xml and place
+      it in your merge directory.
     -->
-  </form-beans>
 
-  <!-- ========== Global Exceptions Definitions =================================== -->
-      <global-exceptions>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+
+        <form-bean
+                name="pnrcompactForm"
+                type="com.boco.eoms.parter.baseinfo.pnrcompact.webapp.form.PnrcompactForm"
+        />
+
+        <!--
+             If you have non XDoclet forms, define them in a file called struts-forms.xml and
+             place it in your merge directory.
+        -->
+    </form-beans>
+
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
         <exception type="java.lang.Exception"
-            key="errors.general"
-            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+                   key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
     </global-exceptions>
 
-  <!-- ========== Global Forward Definitions =================================== -->
-      <global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
         <forward name="mainMenu" path="/mainMenu.html" redirect="true"/>
         <forward name="success" path="/common/success.jsp"
-			redirect="false" contextRelative="true" />
-		<forward name="fail" path="/common/failure.jsp" redirect="false"
-			contextRelative="true" />
+                 redirect="false" contextRelative="true"/>
+        <forward name="fail" path="/common/failure.jsp" redirect="false"
+                 contextRelative="true"/>
     </global-forwards>
 
-  <!-- ========== Action Mapping Definitions =================================== -->
+    <!-- ========== Action Mapping Definitions =================================== -->
     <action-mappings>
-    <action
-      path="/pnrcompacts"
-      type="com.boco.eoms.parter.baseinfo.pnrcompact.webapp.action.PnrcompactAction"
-      name="pnrcompactForm"
-      scope="request"
-      input="list"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        contextRelative="true"
-        name="main"
-        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactTree.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="edit"
-        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactForm.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="list"
-        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactList.jsp"
-        redirect="false"
-      />
-       <forward
-	        contextRelative="true"
-	        name="toDeleteList"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactDelList.jsp"
-	        redirect="false"
-	      />
-	 <forward	        
-	        name="xdelete"
-	        path="/pnrcompacts.do?method=list"
-	        redirect="true"
-	      />
-	  <forward	    
-	      	contextRelative="true"
-	        name="searchList"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactList.jsp"
-	        redirect="true"
-	 
-	      />
-	      <forward
-	        contextRelative="true"
-	        name="toUpdate"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactUpdateList.jsp"
-	        redirect="false"
-	      />
-	      <forward
-	        contextRelative="true"
-	        name="toSearch"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactSearch.jsp"
-	        redirect="false"
-	      />
-	       <forward
-	        contextRelative="true"
-	        name="toEdit"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactEdit.jsp"
-	        redirect="false"
-	      />      
-	       <forward
-	        contextRelative="true"
-	        name="toUpdateEdit"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactUpdateEdit.jsp"
-	        redirect="false"
-	      />  
-    </action>
-  <action
-      path="/savePnrcompact"
-      type="com.boco.eoms.parter.baseinfo.pnrcompact.webapp.action.PnrcompactAction"
-      name="pnrcompactForm"
-      scope="request"
-      input="list"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-		<forward	    
-	        name="list"
-	        path="/pnrcompacts.do?method=list"
-	        redirect="true"/>
-	    <forward	        
-	        name="toUpdate"
-	        path="/pnrcompacts.do?method=toUpdate"
-	        redirect="true"/>
-	    <forward	    
-	        contextRelative="true"
-	        name="searchList"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactList.jsp"/>
-        <forward
-	        contextRelative="true"
-	        name="edit"
-	        path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactForm.jsp"
-	        redirect="false"
-	      />
-     </action>
-       <!-- Forwards to the mainMenu tile definition -->
-    <action path="/mainMenu" type="org.apache.struts.actions.ForwardAction"
-        parameter="/WEB-INF/pages/mainMenu.jsp"/>
+        <action
+                path="/pnrcompacts"
+                type="com.boco.eoms.parter.baseinfo.pnrcompact.webapp.action.PnrcompactAction"
+                name="pnrcompactForm"
+                scope="request"
+                input="list"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    contextRelative="true"
+                    name="main"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactTree.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="edit"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactForm.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="list"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactList.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="toDeleteList"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactDelList.jsp"
+                    redirect="false"
+            />
+            <forward
+                    name="xdelete"
+                    path="/pnrcompacts.do?method=list"
+                    redirect="true"
+            />
+            <forward
+                    contextRelative="true"
+                    name="searchList"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactList.jsp"
+                    redirect="true"
 
-    <!-- Action to flush cache -->
-    <action path="/flush" type="org.apache.struts.actions.ForwardAction"
-        parameter="/WEB-INF/pages/flushCache.jsp" roles="admin"/>
+            />
+            <forward
+                    contextRelative="true"
+                    name="toUpdate"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactUpdateList.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="toSearch"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactSearch.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="toEdit"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactEdit.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="toUpdateEdit"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactUpdateEdit.jsp"
+                    redirect="false"
+            />
+        </action>
+        <action
+                path="/savePnrcompact"
+                type="com.boco.eoms.parter.baseinfo.pnrcompact.webapp.action.PnrcompactAction"
+                name="pnrcompactForm"
+                scope="request"
+                input="list"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <forward
+                    name="list"
+                    path="/pnrcompacts.do?method=list"
+                    redirect="true"/>
+            <forward
+                    name="toUpdate"
+                    path="/pnrcompacts.do?method=toUpdate"
+                    redirect="true"/>
+            <forward
+                    contextRelative="true"
+                    name="searchList"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactList.jsp"/>
+            <forward
+                    contextRelative="true"
+                    name="edit"
+                    path="/WEB-INF/pages/parter/baseinfo/pnrcompact/pnrcompactForm.jsp"
+                    redirect="false"
+            />
+        </action>
+        <!-- Forwards to the mainMenu tile definition -->
+        <action path="/mainMenu" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/mainMenu.jsp"/>
 
-  </action-mappings>
+        <!-- Action to flush cache -->
+        <action path="/flush" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/flushCache.jsp" roles="admin"/>
 
-  <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    </action-mappings>
 
-      <message-resources parameter="config/ApplicationResources-parter-baseinfo-pnrcompact"/>
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
 
-      <!-- ========== Validator plugin ===================  -->
+    <message-resources parameter="config/ApplicationResources-parter-baseinfo-pnrcompact"/>
+
+    <!-- ========== Validator plugin ===================  -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" 
+        <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
                              /WEB-INF/validation.xml"/>

@@ -12,10 +12,11 @@ import com.boco.eoms.commons.interfaceMonitoring.webapp.form.InterfaceMonitoring
 
 
 public interface InterfaceMonitoringDao {
-	public Map getMonitoringLog(final Integer curPage, final Integer pageSize,InterfaceMonitoringForm form);
-		
-	public InterfaceMonitoring getInterfaceMonitoring(final String id); 
-	public void save(InterfaceMonitoring interfaceMonitoring);
+    public Map getMonitoringLog(final Integer curPage, final Integer pageSize, InterfaceMonitoringForm form);
+
+    public InterfaceMonitoring getInterfaceMonitoring(final String id);
+
+    public void save(InterfaceMonitoring interfaceMonitoring);
 
 
 }

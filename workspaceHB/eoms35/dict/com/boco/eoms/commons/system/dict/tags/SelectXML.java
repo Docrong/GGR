@@ -32,17 +32,16 @@ import com.boco.eoms.commons.ui.util.JSONUtil;
  * <p>
  * Date:2007-10-25 14:45:09
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class SelectXML implements IDictTagStrategyHelper {
     private Logger logger = Logger.getLogger(SelectXML.class);
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.tags.IDictTagStrategyHelper#doEndTag(com.boco.eoms.commons.system.dict.model.DictTagHelper,
      *      javax.servlet.jsp.PageContext)
      */
@@ -94,16 +93,16 @@ public class SelectXML implements IDictTagStrategyHelper {
         }
         rootElement.setAttribute("name", dictTag.getSelectId());
         rootElement.setAttribute("id", dictTag.getSelectId());
-        if(dictTag.getAlt()!=null && !dictTag.getAlt().equals("")){
+        if (dictTag.getAlt() != null && !dictTag.getAlt().equals("")) {
             rootElement.setAttribute("alt", dictTag.getAlt());
         }
-        if(dictTag.getCls()!=null && !dictTag.getCls().equals("")){
+        if (dictTag.getCls() != null && !dictTag.getCls().equals("")) {
             rootElement.setAttribute("class", StaticMethod.null2String(dictTag
-                .getCls()));
+                    .getCls()));
         }
-        if(dictTag.getStyle()!=null && !dictTag.getStyle().equals("")){
+        if (dictTag.getStyle() != null && !dictTag.getStyle().equals("")) {
             rootElement.setAttribute("style", StaticMethod.null2String(dictTag
-                .getStyle()));
+                    .getStyle()));
         }
         //不需要联动
         //        StringBuffer str = new StringBuffer("<select name='"
@@ -136,7 +135,7 @@ public class SelectXML implements IDictTagStrategyHelper {
             //不需要定位在默认id
             if (dictTag.getDefaultId() == null
                     || "".equals(dictTag.getDefaultId())) {
-                for (Iterator it = list.iterator(); it.hasNext();) {
+                for (Iterator it = list.iterator(); it.hasNext(); ) {
                     IDictItem item = (IDictItem) it.next();
                     //列表中的option加入
                     Element option = new Element("option");
@@ -151,7 +150,7 @@ public class SelectXML implements IDictTagStrategyHelper {
             }
             //需要定位在默认id
             else {
-                for (Iterator it = list.iterator(); it.hasNext();) {
+                for (Iterator it = list.iterator(); it.hasNext(); ) {
                     IDictItem item = (IDictItem) it.next();
                     //若defaultId与itemId相同，则要selected
                     if (dictTag.getDefaultId().equals(item.getItemId())) {
@@ -195,7 +194,7 @@ public class SelectXML implements IDictTagStrategyHelper {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.tags.IDictTagStrategyHelper#doStartTag(com.boco.eoms.commons.system.dict.model.DictTagHelper,
      *      javax.servlet.jsp.PageContext)
      */

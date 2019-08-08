@@ -18,21 +18,22 @@ import com.boco.eoms.sheet.base.model.TawSystemWorkflow;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface ICircuitDispatchMainDAO extends IMainDAO {
-	
 
-	/**
-	 * 互调关系列表
-	 * 
-	 * @return
-	 * @throws SheetException
-	 */
-	public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
-	
-	public BaseMain loadSinglePO(String id, Object obj) throws HibernateException;
-	public void DeleteEarlyEmptyMain(Object mainObject);
+
+    /**
+     * 互调关系列表
+     *
+     * @return
+     * @throws SheetException
+     */
+    public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
+
+    public BaseMain loadSinglePO(String id, Object obj) throws HibernateException;
+
+    public void DeleteEarlyEmptyMain(Object mainObject);
 }

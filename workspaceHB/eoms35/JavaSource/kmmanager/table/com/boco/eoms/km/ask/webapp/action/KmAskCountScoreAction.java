@@ -37,148 +37,148 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Wed Aug 19 10:09:58 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmAskCountScoreAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增问答总积分
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增问答总积分
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改问答总积分
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改问答总积分
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		KmAskCountScore kmAskCountScore = kmAskCountScoreMgr.getKmAskCountScore(id);
-		KmAskCountScoreForm kmAskCountScoreForm = (KmAskCountScoreForm) convert(kmAskCountScore);
-		updateFormBean(mapping, request, kmAskCountScoreForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存问答总积分
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
-		KmAskCountScoreForm kmAskCountScoreForm = (KmAskCountScoreForm) form;
-		boolean isNew = (null == kmAskCountScoreForm.getId() || "".equals(kmAskCountScoreForm.getId()));
-		KmAskCountScore kmAskCountScore = (KmAskCountScore) convert(kmAskCountScoreForm);
-		if (isNew) {
-			kmAskCountScoreMgr.saveKmAskCountScore(kmAskCountScore);
-		} else {
-			kmAskCountScoreMgr.saveKmAskCountScore(kmAskCountScore);
-		}
-		return search(mapping, kmAskCountScoreForm, request, response);
-	}
-	
-	/**
-	 * 删除问答总积分
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		kmAskCountScoreMgr.removeKmAskCountScore(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示问答总积分列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmAskCountScoreConstants.KMASKCOUNTSCORE_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
-		List list = kmAskCountScoreMgr.getKmAskCountScores();
-		request.setAttribute(KmAskCountScoreConstants.KMASKCOUNTSCORE_LIST, list);
-		request.setAttribute("resultSize", new Integer(list.size()));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示问答总积分列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        KmAskCountScore kmAskCountScore = kmAskCountScoreMgr.getKmAskCountScore(id);
+        KmAskCountScoreForm kmAskCountScoreForm = (KmAskCountScoreForm) convert(kmAskCountScore);
+        updateFormBean(mapping, request, kmAskCountScoreForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存问答总积分
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
+        KmAskCountScoreForm kmAskCountScoreForm = (KmAskCountScoreForm) form;
+        boolean isNew = (null == kmAskCountScoreForm.getId() || "".equals(kmAskCountScoreForm.getId()));
+        KmAskCountScore kmAskCountScore = (KmAskCountScore) convert(kmAskCountScoreForm);
+        if (isNew) {
+            kmAskCountScoreMgr.saveKmAskCountScore(kmAskCountScore);
+        } else {
+            kmAskCountScoreMgr.saveKmAskCountScore(kmAskCountScore);
+        }
+        return search(mapping, kmAskCountScoreForm, request, response);
+    }
+
+    /**
+     * 删除问答总积分
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        kmAskCountScoreMgr.removeKmAskCountScore(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示问答总积分列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmAskCountScoreConstants.KMASKCOUNTSCORE_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
+        List list = kmAskCountScoreMgr.getKmAskCountScores();
+        request.setAttribute(KmAskCountScoreConstants.KMASKCOUNTSCORE_LIST, list);
+        request.setAttribute("resultSize", new Integer(list.size()));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示问答总积分列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

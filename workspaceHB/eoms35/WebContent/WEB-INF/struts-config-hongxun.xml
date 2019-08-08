@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
-	<form-beans>
-		<form-bean
-      name="tawCommonHongXunForm"
-      type="com.boco.eoms.commons.hongxun.webapp.form.TawCommonHongXunForm"
-    />
-	 <form-bean name="TawCommonHongXunForm" type="org.apache.struts.action.DynaActionForm" dynamic="true">
-    <form-property name="com_name" type="java.lang.String"/>
-    <form-property name="xiaozu_name" type="java.lang.String"/>
-    <form-property name="name" type="java.lang.String"/>
-    <form-property name="tel" type="java.lang.String"/>
-    <form-property name="zhize" type="java.lang.String"/>
-    <form-property name="remark" type="java.lang.String"/>
-    </form-bean>
-		
-	</form-beans>
+    <form-beans>
+        <form-bean
+                name="tawCommonHongXunForm"
+                type="com.boco.eoms.commons.hongxun.webapp.form.TawCommonHongXunForm"
+        />
+        <form-bean name="TawCommonHongXunForm" type="org.apache.struts.action.DynaActionForm" dynamic="true">
+            <form-property name="com_name" type="java.lang.String"/>
+            <form-property name="xiaozu_name" type="java.lang.String"/>
+            <form-property name="name" type="java.lang.String"/>
+            <form-property name="tel" type="java.lang.String"/>
+            <form-property name="zhize" type="java.lang.String"/>
+            <form-property name="remark" type="java.lang.String"/>
+        </form-bean>
 
-	 <!-- ========== Global Exceptions Definitions =================================== -->
-      <global-exceptions>
+    </form-beans>
+
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
         <exception type="java.lang.Exception"
-            key="errors.general"
-            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+                   key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
     </global-exceptions>
 
-  <!-- ========== Global Forward Definitions =================================== -->
-      <global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
         <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
-        <!-- Forwards specified in actions -->        
+        <!-- Forwards specified in actions -->
         <forward name="addUser" path="/editUser.do?method=Add&amp;amp;from=list" redirect="true"/>
         <forward name="cancelUser" path="/editUser.do?method=Cancel"/>
         <forward name="deleteUser" path="/editUser.do?method=Delete"/>
@@ -42,102 +43,161 @@
         <forward name="logout" path="/logout.jsp"/>
     </global-forwards>
 
-<action-mappings>
-	<!-- ========== Action Mapping Definitions =================================== -->
-<action name="TawCommonHongXunForm" parameter="REDADD" path="/TawCommonHongXunAction/redadd"  type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" 
-scope="request"  validate="true" >
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redadd.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action name="TawCommonHongXunForm" parameter="REDSAVE" path="/TawCommonHongXunAction/redsave"  type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" 
-scope="request"  validate="true">
-      <forward name="success" path="/TawCommonHongXunAction/redlist.do" />
-    </action>
+    <action-mappings>
+        <!-- ========== Action Mapping Definitions =================================== -->
+        <action name="TawCommonHongXunForm" parameter="REDADD" path="/TawCommonHongXunAction/redadd"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction"
+                scope="request" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redadd.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
 
-	<action path="/TawCommonHongXunAction/redlist" parameter="REDLIST" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redlist.jsp" redirect="false"  contextRelative="true"/>
-    </action>
- <action name="TawCommonHongXunForm" parameter="REDQUERY" path="/TawCommonHongXunAction/redquery"  type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" 
- scope="request"  validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redquery.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
- <action path="/TawCommonHongXunAction/redupdate" parameter="REDUPDATE" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redupdate.jsp" redirect="false"  contextRelative="true"/>
-    </action>
+        <action name="TawCommonHongXunForm" parameter="REDSAVE" path="/TawCommonHongXunAction/redsave"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction"
+                scope="request" validate="true">
+            <forward name="success" path="/TawCommonHongXunAction/redlist.do"/>
+        </action>
 
-    <action path="/TawCommonHongXunAction/redupdo" parameter="REDUPDO" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/TawCommonHongXunAction/redlist.do" />
-    </action>
-    
-    <action path="/TawCommonHongXunAction/redsend" parameter="REDSEND" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redsend.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    <action path="/TawCommonHongXunAction/red" parameter="RED" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/red.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    <action path="/TawCommonHongXunAction/redonegaojin" parameter="REDONEGAOJIN" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    <action path="/TawCommonHongXunAction/redgaojin" parameter="REDGAOJIN" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    <action path="/TawCommonHongXunAction/twogaojin" parameter="TWOGAOJIN" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/threegaojin" parameter="THREEGAOJIN" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/two" parameter="TWO" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/tworedsend.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/three" parameter="THREE" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/threeredsend.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/comadd" parameter="COMADD" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/comadd.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/xiaozudd" parameter="XIAOZUADD" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/xiaozuadd.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/comsave" parameter="COMSAVE" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/TawCommonHongXunAction/comlist.do"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/comlist" parameter="COMLIST" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/comlist.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/xiaozusave" parameter="XIAOZUSAVE" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/TawCommonHongXunAction/xiaozulist.do"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/xiaozulist" parameter="XIAOZULIST" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/xiaozulist.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    
-    <action path="/TawCommonHongXunAction/modelsend" parameter="MODELSEND" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/modelsend.jsp" redirect="false"  contextRelative="true"/>
-    </action>
-    <action path="/TawCommonHongXunAction/sendgaojin" parameter="SENDGAOJIN" type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request" name="TawCommonHongXunForm" validate="true">
-      <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"  contextRelative="true"/>
-    </action>
+        <action path="/TawCommonHongXunAction/redlist" parameter="REDLIST"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redlist.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+        <action name="TawCommonHongXunForm" parameter="REDQUERY" path="/TawCommonHongXunAction/redquery"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction"
+                scope="request" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redquery.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
 
-	</action-mappings>
-	
- <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+        <action path="/TawCommonHongXunAction/redupdate" parameter="REDUPDATE"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redupdate.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
 
-      <message-resources parameter="config/ApplicationResources"/>
+        <action path="/TawCommonHongXunAction/redupdo" parameter="REDUPDO"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/TawCommonHongXunAction/redlist.do"/>
+        </action>
 
-      <!-- ========== Validator plugin ===================  -->
+        <action path="/TawCommonHongXunAction/redsend" parameter="REDSEND"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redsend.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+        <action path="/TawCommonHongXunAction/red" parameter="RED"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/red.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+        <action path="/TawCommonHongXunAction/redonegaojin" parameter="REDONEGAOJIN"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+        <action path="/TawCommonHongXunAction/redgaojin" parameter="REDGAOJIN"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+        <action path="/TawCommonHongXunAction/twogaojin" parameter="TWOGAOJIN"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/threegaojin" parameter="THREEGAOJIN"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/two" parameter="TWO"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/tworedsend.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/three" parameter="THREE"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/threeredsend.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/comadd" parameter="COMADD"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/comadd.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/xiaozudd" parameter="XIAOZUADD"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/xiaozuadd.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/comsave" parameter="COMSAVE"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/TawCommonHongXunAction/comlist.do"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/comlist" parameter="COMLIST"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/comlist.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/xiaozusave" parameter="XIAOZUSAVE"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/TawCommonHongXunAction/xiaozulist.do"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/xiaozulist" parameter="XIAOZULIST"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/xiaozulist.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+        <action path="/TawCommonHongXunAction/modelsend" parameter="MODELSEND"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/modelsend.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+        <action path="/TawCommonHongXunAction/sendgaojin" parameter="SENDGAOJIN"
+                type="com.boco.eoms.commons.hongxun.webapp.action.TawCommonHongXunAction" scope="request"
+                name="TawCommonHongXunForm" validate="true">
+            <forward name="success" path="/WEB-INF/pages/tawCommonHongXun/redgaojin.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+    <message-resources parameter="config/ApplicationResources"/>
+
+    <!-- ========== Validator plugin ===================  -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" 
+        <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
                              /WEB-INF/validation.xml"/>

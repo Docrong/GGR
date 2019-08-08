@@ -11,10 +11,10 @@ import com.boco.eoms.sheet.base.kpi.util.CollectColumn;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public interface ICollectColumnQuery extends Dao{
-	public String getValue(CollectColumn column,String mainName,String linkName,String mainId);
+public interface ICollectColumnQuery extends Dao {
+    public String getValue(CollectColumn column, String mainName, String linkName, String mainId);
 }

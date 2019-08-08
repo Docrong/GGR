@@ -28,94 +28,94 @@ import com.boco.eoms.km.score.util.KmScoreConstants;
  * <p>
  * 2009-08-04
  * </p>
- * 
+ *
  * @moudle.getAuthor() daizhigang
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmInputScoreAction extends BaseAction {
 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
 
-	/**
-	 * 根据分类去查找该 分类下的所用的知识列表 分页显示知识管理列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String next = "list";
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmScoreConstants.KMINPUTSCORE_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+    /**
+     * 根据分类去查找该 分类下的所用的知识列表 分页显示知识管理列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String next = "list";
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmScoreConstants.KMINPUTSCORE_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
 
-		KmInputScoreMgr kmInputScoreMgr = (KmInputScoreMgr) getBean("kmInputScoreMgr");
-		List column = kmInputScoreMgr.getKmInputScoreColumns();
-		Map map = kmInputScoreMgr.getKmInputScores(pageIndex, pageSize, "", column);
-		request.setAttribute("column", column);
-		request.setAttribute(KmScoreConstants.KMINPUTSCORE_LIST, map.get("result"));
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		//导出excel
-		return mapping.findForward(next);
-	}
-	/**
-	 *导入积分的历史列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward inputScoreHistoryList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String next = "historyList";
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmScoreConstants.KMINPUTSCORE_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        KmInputScoreMgr kmInputScoreMgr = (KmInputScoreMgr) getBean("kmInputScoreMgr");
+        List column = kmInputScoreMgr.getKmInputScoreColumns();
+        Map map = kmInputScoreMgr.getKmInputScores(pageIndex, pageSize, "", column);
+        request.setAttribute("column", column);
+        request.setAttribute(KmScoreConstants.KMINPUTSCORE_LIST, map.get("result"));
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        //导出excel
+        return mapping.findForward(next);
+    }
 
-		KmInputScoreMgr kmInputScoreMgr = (KmInputScoreMgr) getBean("kmInputScoreMgr");
-		List column = kmInputScoreMgr.getKmInputScoreColumns();
-		Map map = kmInputScoreMgr.getKmInputScoresHistory(pageIndex, pageSize, "", column);
-		request.setAttribute("column", column);
-		request.setAttribute(KmScoreConstants.KMINPUTSCORE_LIST, map.get("result"));
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		//导出excel
-		return mapping.findForward(next);
-	}
+    /**
+     * 导入积分的历史列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward inputScoreHistoryList(ActionMapping mapping, ActionForm form,
+                                               HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String next = "historyList";
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmScoreConstants.KMINPUTSCORE_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+
+        KmInputScoreMgr kmInputScoreMgr = (KmInputScoreMgr) getBean("kmInputScoreMgr");
+        List column = kmInputScoreMgr.getKmInputScoreColumns();
+        Map map = kmInputScoreMgr.getKmInputScoresHistory(pageIndex, pageSize, "", column);
+        request.setAttribute("column", column);
+        request.setAttribute(KmScoreConstants.KMINPUTSCORE_LIST, map.get("result"));
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        //导出excel
+        return mapping.findForward(next);
+    }
 
 }

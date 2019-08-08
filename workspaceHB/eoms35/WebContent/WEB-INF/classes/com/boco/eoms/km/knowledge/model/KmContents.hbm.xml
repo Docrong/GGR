@@ -1,98 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class name="com.boco.eoms.km.knowledge.model.KmContents" table="KM_CONTENTS">
+    <class name="com.boco.eoms.km.knowledge.model.KmContents" table="KM_CONTENTS">
 
-		<id name="id" column="id" unsaved-value="null">
-			<!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-			<generator class="uuid.hex"></generator>
-		</id>
-		
-		<property name="contentId" column="CONTENT_ID" length="32" not-null="false" unique="false">
-		</property>
-		
-		<property name="tableId" column="TABLE_ID" length="32" not-null="false" unique="false">
-		</property>
-		
-		<property name="themeId" column="THEME_ID" length="32" not-null="false" unique="false">
-		</property>
+        <id name="id" column="id" unsaved-value="null">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex"></generator>
+        </id>
 
-		<property name="createUser" column="CREATE_USER" length="32" not-null="false" unique="false">
-		</property>
+        <property name="contentId" column="CONTENT_ID" length="32" not-null="false" unique="false">
+        </property>
 
-		<property name="createDept" column="CREATE_DEPT" length="32" not-null="false" unique="false">
-		</property>
+        <property name="tableId" column="TABLE_ID" length="32" not-null="false" unique="false">
+        </property>
 
-		<property name="createTime" column="CREATE_TIME" length="7" not-null="false" unique="false">
-		</property>
+        <property name="themeId" column="THEME_ID" length="32" not-null="false" unique="false">
+        </property>
 
-		<property name="modifyUser" column="MODIFY_USER" length="32" not-null="false" unique="false">
-		</property>
+        <property name="createUser" column="CREATE_USER" length="32" not-null="false" unique="false">
+        </property>
 
-		<property name="modifyDept" column="MODIFY_DEPT" length="32" not-null="false" unique="false">
-		</property>
+        <property name="createDept" column="CREATE_DEPT" length="32" not-null="false" unique="false">
+        </property>
 
-		<property name="modifyTime" column="MODIFY_TIME" length="7" not-null="false" unique="false">
-		</property>
+        <property name="createTime" column="CREATE_TIME" length="7" not-null="false" unique="false">
+        </property>
 
-		<property name="contentTitle" column="CONTENT_TITLE" length="500" not-null="false" unique="false">
-		</property>
+        <property name="modifyUser" column="MODIFY_USER" length="32" not-null="false" unique="false">
+        </property>
 
-		<property name="contentKeys" column="CONTENT_KEYS" length="500" not-null="false" unique="false">
-		</property>
+        <property name="modifyDept" column="MODIFY_DEPT" length="32" not-null="false" unique="false">
+        </property>
 
-		<property name="contentStatus" column="CONTENT_STATUS" length="100" not-null="false" unique="false">
-		</property>
+        <property name="modifyTime" column="MODIFY_TIME" length="7" not-null="false" unique="false">
+        </property>
 
-		<property name="auditFlag" column="AUDIT_FLAG" length="100" not-null="false" unique="false">
-		</property>
+        <property name="contentTitle" column="CONTENT_TITLE" length="500" not-null="false" unique="false">
+        </property>
 
-		<property name="rolestrFlag" column="ROLESTR_FLAG" length="100" not-null="false" unique="false">
-		</property>
+        <property name="contentKeys" column="CONTENT_KEYS" length="500" not-null="false" unique="false">
+        </property>
 
-		<property name="levelFlag" column="LEVEL_FLAG" length="100" not-null="false" unique="false">
-		</property>
+        <property name="contentStatus" column="CONTENT_STATUS" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="isBest" column="IS_BEST" length="100" not-null="false" unique="false">
-		</property>
+        <property name="auditFlag" column="AUDIT_FLAG" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="isPublic" column="IS_PUBLIC" length="100" not-null="false" unique="false">
-		</property>
+        <property name="rolestrFlag" column="ROLESTR_FLAG" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="gradeOne" column="GRADE_ONE" length="100" not-null="false" unique="false">
-		</property>
+        <property name="levelFlag" column="LEVEL_FLAG" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="gradeTwo" column="GRADE_TWO" length="100" not-null="false" unique="false">
-		</property>
+        <property name="isBest" column="IS_BEST" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="gradeThree" column="GRADE_THREE" length="1000" not-null="false" unique="false">
-		</property>
+        <property name="isPublic" column="IS_PUBLIC" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="gradeFour" column="GRADE_FOUR" length="1000" not-null="false" unique="false">
-		</property>
+        <property name="gradeOne" column="GRADE_ONE" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="gradeFive" column="GRADE_FIVE" length="1000" not-null="false" unique="false">
-		</property>
+        <property name="gradeTwo" column="GRADE_TWO" length="100" not-null="false" unique="false">
+        </property>
 
-		<property name="readCount" column="READ_COUNT" length="1000" not-null="false" unique="false">
-		</property>
+        <property name="gradeThree" column="GRADE_THREE" length="1000" not-null="false" unique="false">
+        </property>
 
-		<property name="useCount" column="USE_COUNT" length="1000" not-null="false" unique="false">
-		</property>
+        <property name="gradeFour" column="GRADE_FOUR" length="1000" not-null="false" unique="false">
+        </property>
 
-		<property name="contentXml" column="CONTENT_XML" length="1" not-null="false" unique="false">
-		</property>
+        <property name="gradeFive" column="GRADE_FIVE" length="1000" not-null="false" unique="false">
+        </property>
 
-		<property name="modifyCount" column="MODIFY_COUNT" length="1000" not-null="false" unique="false">
-		</property>
+        <property name="readCount" column="READ_COUNT" length="1000" not-null="false" unique="false">
+        </property>
 
-		
-	</class>
+        <property name="useCount" column="USE_COUNT" length="1000" not-null="false" unique="false">
+        </property>
+
+        <property name="contentXml" column="CONTENT_XML" length="1" not-null="false" unique="false">
+        </property>
+
+        <property name="modifyCount" column="MODIFY_COUNT" length="1000" not-null="false" unique="false">
+        </property>
+
+
+    </class>
 
 </hibernate-mapping>
 

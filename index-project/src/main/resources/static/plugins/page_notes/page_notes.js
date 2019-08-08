@@ -1,6 +1,8 @@
 ﻿// use this to isolate the scope
 (function () {
-    if(!$axure.document.configuration.showPageNotes && !$axure.document.configuration.showAnnotationsSidebar) { return; }
+    if (!$axure.document.configuration.showPageNotes && !$axure.document.configuration.showAnnotationsSidebar) {
+        return;
+    }
 
     $(window.document).ready(function () {
         $axure.player.createPluginHost({
@@ -27,15 +29,15 @@
 
             $('#pageNotesContent').html("");
 
-            if($axure.document.configuration.showPageNotes) {
+            if ($axure.document.configuration.showPageNotes) {
                 //populate the notes
                 var notes = $axure.page.notes;
-                if(notes) {
+                if (notes) {
                     var showNames = $axure.document.configuration.showPageNoteNames;
 
-                    for(var noteName in notes) {
+                    for (var noteName in notes) {
                         var pageNoteUi = "<div class='pageNoteContainer'>";
-                        if(showNames) {
+                        if (showNames) {
                             pageNoteUi += "<div class='pageNoteName'>" + noteName + "</div>";
                         }
                         pageNoteUi += "<div class='pageNote'>" + linkify(notes[noteName]) + "</div>";
@@ -48,17 +50,17 @@
                 }
             }
 
-            if($axure.document.configuration.showAnnotationsSidebar) {
+            if ($axure.document.configuration.showAnnotationsSidebar) {
                 var widgetNotes = $axure.page.widgetNotes;
-                if(widgetNotes) {
-                    for(var i = 0; i < widgetNotes.length; i++) {
+                if (widgetNotes) {
+                    for (var i = 0; i < widgetNotes.length; i++) {
                         var widgetNote = widgetNotes[i];
                         var widgetNoteUi = "<div class='widgetNoteContainer' data-id='" + widgetNote["id"] + "'>";
                         widgetNoteUi += "<div class='widgetNoteFootnote'></div>";
                         widgetNoteUi += "<div class='widgetNoteLabel'>" + widgetNote["label"] + "</div>";
 
-                        for(var widgetNoteName in widgetNote) {
-                            if(widgetNoteName != "label" && widgetNoteName != "id") {
+                        for (var widgetNoteName in widgetNote) {
+                            if (widgetNoteName != "label" && widgetNoteName != "id") {
                                 widgetNoteUi += "<div class='pageNoteName'>" + widgetNoteName + "</div>";
                                 widgetNoteUi += "<div class='pageNote'>" + linkify(widgetNote[widgetNoteName]) + "</div>";
                                 widgetNoteUi += "<div class='nondottedDivider'></div>";
@@ -74,36 +76,36 @@
                     $('.widgetNoteContainer').click(function () {
                         var wasSelected = $(this).hasClass('widgetNoteContainerSelected');
                         $('.widgetNoteContainerSelected').removeClass('widgetNoteContainerSelected');
-                        if(!wasSelected) $(this).addClass('widgetNoteContainerSelected');
+                        if (!wasSelected) $(this).addClass('widgetNoteContainerSelected');
                         $axure.messageCenter.postMessage('toggleSelectWidgetNote', this.getAttribute('data-id'));
                     });
                 }
             }
 
-            if(hasNotes) $('#pageNotesEmptyState').hide();
+            if (hasNotes) $('#pageNotesEmptyState').hide();
             else $('#pageNotesEmptyState').show();
 
             //If footnotes enabled for this prototype...
-            if($axure.document.configuration.showAnnotations == true) {
+            if ($axure.document.configuration.showAnnotations == true) {
                 //If the fn var is defined and set to 0, hide footnotes
                 //else if hide-footnotes button selected, hide them
                 var fnVal = getHashStringVar(FOOTNOTES_VAR_NAME);
-                if(fnVal.length > 0 && fnVal == 0) {
+                if (fnVal.length > 0 && fnVal == 0) {
                     $('#footnotesButton').removeClass('sitemapToolbarButtonSelected');
                     $axure.messageCenter.postMessage('annotationToggle', false);
-                } else if(!$('#footnotesButton').is('.sitemapToolbarButtonSelected')) {
+                } else if (!$('#footnotesButton').is('.sitemapToolbarButtonSelected')) {
                     //If the footnotes button isn't selected, hide them on this loaded page
                     $axure.messageCenter.postMessage('annotationToggle', false);
                 }
             }
 
-            
+
             return false;
         });
 
         function linkify(text) {
             var urlRegex = /(\b(((https?|ftp|file):\/\/)|(www\.))[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-            return text.replace(urlRegex, function(url, b, c) {
+            return text.replace(urlRegex, function (url, b, c) {
                 var url2 = (c == 'www.') ? 'http://' + url : url;
                 return '<a href="' + url2 + '" target="_blank" class="noteLink">' + url + '</a>';
             });
@@ -119,7 +121,7 @@
     });
 
     $(document).on('pluginShown', function (event, data) {
-        if(data != 2) {
+        if (data != 2) {
             clearSelection();
         }
     });
@@ -130,7 +132,7 @@
     }
 
     function footnotes_click(event) {
-        if($('#footnotesButton').is('.sitemapToolbarButtonSelected')) {
+        if ($('#footnotesButton').is('.sitemapToolbarButtonSelected')) {
             $('#footnotesButton').removeClass('sitemapToolbarButtonSelected');
             $axure.messageCenter.postMessage('annotationToggle', false);
             //Add 'fn' hash string var so that footnotes stay hidden across reloads
@@ -162,8 +164,8 @@
 
         pageNotesUi += "<a id='notesPreviousButton' title='Previous Page' class='sitemapToolbarButton prevPageButton'></a>";
         pageNotesUi += "<a id='notesNextButton' title='Next Page' class='sitemapToolbarButton nextPageButton'></a>";
-        
-        if($axure.document.configuration.showAnnotations == true) {
+
+        if ($axure.document.configuration.showAnnotations == true) {
             pageNotesUi += "<a id='footnotesButton' title='Toggle Footnotes' class='sitemapToolbarButton'></a>";
         }
 
@@ -181,7 +183,7 @@
         $('#pageNotesHost').html(pageNotesUi);
         updateContainerHeight();
 
-        if(!$axure.document.configuration.showAnnotations) {
+        if (!$axure.document.configuration.showAnnotations) {
             $('#pageNotesHost .pageNameHeader').css('padding-right', '55px');
         }
     }

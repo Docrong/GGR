@@ -10,14 +10,13 @@ import com.cmcc.mm7.vasp.message.MM7ReadReplyRes;
 import com.cmcc.mm7.vasp.message.MM7VASPRes;
 import com.cmcc.mm7.vasp.service.MM7ReceiveServlet;
 
-public class MyReceiveServlet extends MM7ReceiveServlet
-{
-  //处理到VASP的传送（deliver）多媒体消息
-  public MM7VASPRes doDeliver(MM7DeliverReq mm7DeliverReq) {
-    MM7DeliverRes res = new MM7DeliverRes();
-    int i = 0;
-    
-    System.out.println("transactionid=" + mm7DeliverReq.getTransactionID());
+public class MyReceiveServlet extends MM7ReceiveServlet {
+    //处理到VASP的传送（deliver）多媒体消息
+    public MM7VASPRes doDeliver(MM7DeliverReq mm7DeliverReq) {
+        MM7DeliverRes res = new MM7DeliverRes();
+        int i = 0;
+
+        System.out.println("transactionid=" + mm7DeliverReq.getTransactionID());
     
 /*    if(mm7DeliverReq.isToExist())
     {
@@ -161,34 +160,31 @@ public class MyReceiveServlet extends MM7ReceiveServlet
 		}
 	}
 	System.out.println("over");*/
-    res.setTransactionID(mm7DeliverReq.getTransactionID());
-    res.setStatusCode(1000);
-    return res;
-  }
+        res.setTransactionID(mm7DeliverReq.getTransactionID());
+        res.setStatusCode(1000);
+        return res;
+    }
 
-  //处理到VASP的发送报告
-  public MM7VASPRes doDeliveryReport(MM7DeliveryReportReq mm7DeliveryReportReq) 
-  {
-    System.out.println("transactionid="+mm7DeliveryReportReq.getTransactionID());
-    MM7DeliveryReportRes res = new MM7DeliveryReportRes();
-    res.setTransactionID(mm7DeliveryReportReq.getTransactionID());
-    res.setStatusCode(1000);
-    return res;
-  }
+    //处理到VASP的发送报告
+    public MM7VASPRes doDeliveryReport(MM7DeliveryReportReq mm7DeliveryReportReq) {
+        System.out.println("transactionid=" + mm7DeliveryReportReq.getTransactionID());
+        MM7DeliveryReportRes res = new MM7DeliveryReportRes();
+        res.setTransactionID(mm7DeliveryReportReq.getTransactionID());
+        res.setStatusCode(1000);
+        return res;
+    }
 
-  //处理到VASP的读后回复报告
-  public MM7VASPRes doReadReply(MM7ReadReplyReq mm7ReadReplyReq)
-  {
-    System.out.println("transactionid="+mm7ReadReplyReq.getTransactionID());
-    MM7ReadReplyRes res = new MM7ReadReplyRes();
-    res.setTransactionID(mm7ReadReplyReq.getTransactionID());
-    res.setStatusCode(1000);
-    return res;
-  }
+    //处理到VASP的读后回复报告
+    public MM7VASPRes doReadReply(MM7ReadReplyReq mm7ReadReplyReq) {
+        System.out.println("transactionid=" + mm7ReadReplyReq.getTransactionID());
+        MM7ReadReplyRes res = new MM7ReadReplyRes();
+        res.setTransactionID(mm7ReadReplyReq.getTransactionID());
+        res.setStatusCode(1000);
+        return res;
+    }
 
-  public MyReceiveServlet()
-  {
-	  Config = new MM7Config("E:\\kane\\jakarta-tomcat-5.0.19\\webapps\\servlets-examples\\config\\mm7Config.xml");
-  }
+    public MyReceiveServlet() {
+        Config = new MM7Config("E:\\kane\\jakarta-tomcat-5.0.19\\webapps\\servlets-examples\\config\\mm7Config.xml");
+    }
 
 }

@@ -6,19 +6,19 @@ import java.util.List;
 
 public class TawCommonLogFileInfoMapping implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	private List logfileinfo = new ArrayList();
+    private List logfileinfo = new ArrayList();
 
-	public List getLogfileinfo() {
-		return logfileinfo;
-	}
+    public List getLogfileinfo() {
+        return logfileinfo;
+    }
 
-	public void setLogfileinfo(List logfileinfo) {
-		this.logfileinfo = logfileinfo;
-	}
+    public void setLogfileinfo(List logfileinfo) {
+        this.logfileinfo = logfileinfo;
+    }
 
 }

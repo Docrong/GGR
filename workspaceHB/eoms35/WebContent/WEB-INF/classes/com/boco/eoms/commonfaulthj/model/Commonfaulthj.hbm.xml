@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="commonfault_hj"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="mainid"
-            	column="mainid"
+        <property
+                name="mainid"
+                column="mainid"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="sheetid"
-            	column="sheetid"
+        <property
+                name="sheetid"
+                column="sheetid"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="creater"
-            	column="creater"
+        <property
+                name="creater"
+                column="creater"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="savetime"
-            	column="savetime"
+        <property
+                name="savetime"
+                column="savetime"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="updatetime"
-            	column="updatetime"
+        <property
+                name="updatetime"
+                column="updatetime"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="sendyear"
-            	column="sendyear"
+        <property
+                name="sendyear"
+                column="sendyear"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="sendmonth"
-            	column="sendmonth"
+        <property
+                name="sendmonth"
+                column="sendmonth"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="sendday"
-            	column="sendday"
+        <property
+                name="sendday"
+                column="sendday"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -106,19 +106,9 @@
 
         </property>
 
-	<property
-            name="remark"
-            	column="remark"
-                length="2000"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
-     <property
-            name="subtractType"
-            	column="subtractType"
+        <property
+                name="remark"
+                column="remark"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -126,8 +116,18 @@
 
         </property>
 
+        <property
+                name="subtractType"
+                column="subtractType"
+                length="2000"
+                not-null="false"
+                unique="false"
+        >
 
-    </class>    
+        </property>
+
+
+    </class>
 
 </hibernate-mapping>
 

@@ -14,10 +14,10 @@
  * overriding {@link #onTriggerClick}. You can create a TriggerField directly, as it renders exactly like a combobox
  * for which you can provide a custom implementation.  For example:
  * <pre><code>
-var trigger = new Ext.form.TriggerField();
-trigger.onTriggerClick = myTriggerFn;
-trigger.applyTo('my-field');
-</code></pre>
+ var trigger = new Ext.form.TriggerField();
+ trigger.onTriggerClick = myTriggerFn;
+ trigger.applyTo('my-field');
+ </code></pre>
  *
  * However, in general you will most likely want to use TriggerField as the base class for a reusable component.
  * {@link Ext.form.DateField} and {@link Ext.form.ComboBox} are perfect examples of this.
@@ -28,12 +28,12 @@ trigger.applyTo('my-field');
  * @param {Object} config Configuration options (valid {@Ext.form.TextField} config options will also be applied
  * to the base TextField)
  */
-Ext.form.TriggerField = function(config){
+Ext.form.TriggerField = function (config) {
     this.mimicing = false;
     Ext.form.TriggerField.superclass.constructor.call(this, config);
 };
 
-Ext.extend(Ext.form.TriggerField, Ext.form.TextField,  {
+Ext.extend(Ext.form.TriggerField, Ext.form.TextField, {
     /**
      * @cfg {String} triggerClass A CSS class to apply to the trigger
      */
@@ -41,123 +41,123 @@ Ext.extend(Ext.form.TriggerField, Ext.form.TextField,  {
      * @cfg {String/Object} autoCreate A DomHelper element spec, or true for a default element spec (defaults to
      * {tag: "input", type: "text", size: "16", autocomplete: "off"})
      */
-    defaultAutoCreate : {tag: "input", type: "text", size: "16", autocomplete: "off"},
+    defaultAutoCreate: {tag: "input", type: "text", size: "16", autocomplete: "off"},
     /**
      * @cfg {Boolean} hideTrigger True to hide the trigger element and display only the base text field (defaults to false)
      */
-    hideTrigger:false,
+    hideTrigger: false,
 
     /** @cfg {Boolean} grow @hide */
     /** @cfg {Number} growMin @hide */
     /** @cfg {Number} growMax @hide */
 
     /**
-     * @hide 
+     * @hide
      * @method
      */
     autoSize: Ext.emptyFn,
     // private
-    monitorTab : true,
+    monitorTab: true,
     // private
-    deferHeight : true,
+    deferHeight: true,
 
     // private
-    onResize : function(w, h){
+    onResize: function (w, h) {
         Ext.form.TriggerField.superclass.onResize.apply(this, arguments);
-        if(typeof w == 'number'){
+        if (typeof w == 'number') {
             this.el.setWidth(this.adjustWidth('input', w - this.trigger.getWidth()));
         }
     },
 
     // private
-    adjustSize : Ext.BoxComponent.prototype.adjustSize,
+    adjustSize: Ext.BoxComponent.prototype.adjustSize,
 
     // private
-    getResizeEl : function(){
+    getResizeEl: function () {
         return this.wrap;
     },
 
     // private
-    getPositionEl : function(){
+    getPositionEl: function () {
         return this.wrap;
     },
 
     // private
-    alignErrorIcon : function(){
+    alignErrorIcon: function () {
         this.errorIcon.alignTo(this.wrap, 'tl-tr', [2, 0]);
     },
 
     // private
-    onRender : function(ct, position){
+    onRender: function (ct, position) {
         Ext.form.TriggerField.superclass.onRender.call(this, ct, position);
         this.wrap = this.el.wrap({cls: "x-form-field-wrap"});
         this.trigger = this.wrap.createChild(this.triggerConfig ||
-                {tag: "img", src: Ext.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.triggerClass});
-        if(this.hideTrigger){
+            {tag: "img", src: Ext.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.triggerClass});
+        if (this.hideTrigger) {
             this.trigger.setDisplayed(false);
         }
         this.initTrigger();
-        if(!this.width){
-            this.wrap.setWidth(this.el.getWidth()+this.trigger.getWidth());
+        if (!this.width) {
+            this.wrap.setWidth(this.el.getWidth() + this.trigger.getWidth());
         }
     },
 
     // private
-    initTrigger : function(){
-        this.trigger.on("click", this.onTriggerClick, this, {preventDefault:true});
+    initTrigger: function () {
+        this.trigger.on("click", this.onTriggerClick, this, {preventDefault: true});
         this.trigger.addClassOnOver('x-form-trigger-over');
         this.trigger.addClassOnClick('x-form-trigger-click');
     },
 
     // private
-    onDestroy : function(){
-        if(this.trigger){
+    onDestroy: function () {
+        if (this.trigger) {
             this.trigger.removeAllListeners();
             this.trigger.remove();
         }
-        if(this.wrap){
+        if (this.wrap) {
             this.wrap.remove();
         }
         Ext.form.TriggerField.superclass.onDestroy.call(this);
     },
 
     // private
-    onFocus : function(){
+    onFocus: function () {
         Ext.form.TriggerField.superclass.onFocus.call(this);
-        if(!this.mimicing){
+        if (!this.mimicing) {
             this.wrap.addClass('x-trigger-wrap-focus');
             this.mimicing = true;
             Ext.get(Ext.isIE ? document.body : document).on("mousedown", this.mimicBlur, this);
-            if(this.monitorTab){
+            if (this.monitorTab) {
                 this.el.on("keydown", this.checkTab, this);
             }
         }
     },
 
     // private
-    checkTab : function(e){
-        if(e.getKey() == e.TAB){
+    checkTab: function (e) {
+        if (e.getKey() == e.TAB) {
             this.triggerBlur();
         }
     },
 
     // private
-    onBlur : function(){
+    onBlur: function () {
         // do nothing
     },
 
     // private
-    mimicBlur : function(e, t){
-        if(!this.wrap.contains(t) && this.validateBlur()){
+    mimicBlur: function (e, t) {
+        if (!this.wrap.contains(t) && this.validateBlur()) {
             this.triggerBlur();
         }
     },
 
     // private
-    triggerBlur : function(){
+    triggerBlur: function () {
         this.mimicing = false;
         Ext.get(Ext.isIE ? document.body : document).un("mousedown", this.mimicBlur);
-        if(this.monitorTab){
+        if (this.monitorTab) {
             this.el.un("keydown", this.checkTab, this);
         }
         this.wrap.removeClass('x-trigger-wrap-focus');
@@ -166,36 +166,36 @@ Ext.extend(Ext.form.TriggerField, Ext.form.TextField,  {
 
     // private
     // This should be overriden by any subclass that needs to check whether or not the field can be blurred.
-    validateBlur : function(e, t){
+    validateBlur: function (e, t) {
         return true;
     },
 
     // private
-    onDisable : function(){
+    onDisable: function () {
         Ext.form.TriggerField.superclass.onDisable.call(this);
-        if(this.wrap){
+        if (this.wrap) {
             this.wrap.addClass('x-item-disabled');
         }
     },
 
     // private
-    onEnable : function(){
+    onEnable: function () {
         Ext.form.TriggerField.superclass.onEnable.call(this);
-        if(this.wrap){
+        if (this.wrap) {
             this.wrap.removeClass('x-item-disabled');
         }
     },
 
     // private
-    onShow : function(){
-        if(this.wrap){
+    onShow: function () {
+        if (this.wrap) {
             this.wrap.dom.style.display = '';
             this.wrap.dom.style.visibility = 'visible';
         }
     },
 
     // private
-    onHide : function(){
+    onHide: function () {
         this.wrap.dom.style.display = 'none';
     },
 
@@ -205,54 +205,55 @@ Ext.extend(Ext.form.TriggerField, Ext.form.TextField,  {
      * @method
      * @param {EventObject} e
      */
-    onTriggerClick : Ext.emptyFn
+    onTriggerClick: Ext.emptyFn
 });
 
 // TwinTriggerField is not a public class to be used directly.  It is meant as an abstract base class
 // to be extended by an implementing class.  For an example of implementing this class, see the custom
 // SearchField implementation here: http://extjs.com/deploy/ext/examples/form/custom.html
 Ext.form.TwinTriggerField = Ext.extend(Ext.form.TriggerField, {
-    initComponent : function(){
+    initComponent: function () {
         Ext.form.TwinTriggerField.superclass.initComponent.call(this);
 
         this.triggerConfig = {
-            tag:'span', cls:'x-form-twin-triggers', cn:[
-            {tag: "img", src: Ext.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.trigger1Class},
-            {tag: "img", src: Ext.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.trigger2Class}
-        ]};
+            tag: 'span', cls: 'x-form-twin-triggers', cn: [
+                {tag: "img", src: Ext.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.trigger1Class},
+                {tag: "img", src: Ext.BLANK_IMAGE_URL, cls: "x-form-trigger " + this.trigger2Class}
+            ]
+        };
     },
 
-    getTrigger : function(index){
+    getTrigger: function (index) {
         return this.triggers[index];
     },
 
-    initTrigger : function(){
+    initTrigger: function () {
         var ts = this.trigger.select('.x-form-trigger', true);
         this.wrap.setStyle('overflow', 'hidden');
         var triggerField = this;
-        ts.each(function(t, all, index){
-            t.hide = function(){
+        ts.each(function (t, all, index) {
+            t.hide = function () {
                 var w = triggerField.wrap.getWidth();
                 this.dom.style.display = 'none';
-                triggerField.el.setWidth(w-triggerField.trigger.getWidth());
+                triggerField.el.setWidth(w - triggerField.trigger.getWidth());
             };
-            t.show = function(){
+            t.show = function () {
                 var w = triggerField.wrap.getWidth();
                 this.dom.style.display = '';
-                triggerField.el.setWidth(w-triggerField.trigger.getWidth());
+                triggerField.el.setWidth(w - triggerField.trigger.getWidth());
             };
-            var triggerIndex = 'Trigger'+(index+1);
+            var triggerIndex = 'Trigger' + (index + 1);
 
-            if(this['hide'+triggerIndex]){
+            if (this['hide' + triggerIndex]) {
                 t.dom.style.display = 'none';
             }
-            t.on("click", this['on'+triggerIndex+'Click'], this, {preventDefault:true});
+            t.on("click", this['on' + triggerIndex + 'Click'], this, {preventDefault: true});
             t.addClassOnOver('x-form-trigger-over');
             t.addClassOnClick('x-form-trigger-click');
         }, this);
         this.triggers = ts.elements;
     },
 
-    onTrigger1Click : Ext.emptyFn,
-    onTrigger2Click : Ext.emptyFn
+    onTrigger1Click: Ext.emptyFn,
+    onTrigger2Click: Ext.emptyFn
 });

@@ -9,58 +9,49 @@ import com.boco.eoms.base.service.impl.BaseManager;
 import com.boco.eoms.roleWorkflow.dao.ITawSystemRoleWorkflowDAO;
 import com.boco.eoms.roleWorkflow.mgr.ITawSystemRoleWorkflowManager;
 import com.boco.eoms.roleWorkflow.model.TawSystemRoleWorkflow;
+
 import java.util.List;
 
 public class TawSystemRoleWorkflowManagerImpl extends BaseManager
-	implements ITawSystemRoleWorkflowManager
-{
+        implements ITawSystemRoleWorkflowManager {
 
-	private ITawSystemRoleWorkflowDAO dao;
+    private ITawSystemRoleWorkflowDAO dao;
 
-	public TawSystemRoleWorkflowManagerImpl()
-	{
-	}
+    public TawSystemRoleWorkflowManagerImpl() {
+    }
 
-	public ITawSystemRoleWorkflowDAO getITawSystemRoleWorkflowDAO()
-	{
-		return dao;
-	}
+    public ITawSystemRoleWorkflowDAO getITawSystemRoleWorkflowDAO() {
+        return dao;
+    }
 
-	public void setITawSystemRoleWorkflowDAO(ITawSystemRoleWorkflowDAO dao)
-	{
-		this.dao = dao;
-	}
+    public void setITawSystemRoleWorkflowDAO(ITawSystemRoleWorkflowDAO dao) {
+        this.dao = dao;
+    }
 
-	public List getTawSystemWorkflows()
-	{
-		return dao.getTawSystemWorkflows();
-	}
+    public List getTawSystemWorkflows() {
+        return dao.getTawSystemWorkflows();
+    }
 
-	public TawSystemRoleWorkflow getTawSystemWorkflow(long id)
-	{
-		return dao.getTawSystemWorkflow(id);
-	}
+    public TawSystemRoleWorkflow getTawSystemWorkflow(long id) {
+        return dao.getTawSystemWorkflow(id);
+    }
 
-	public void saveTawSystemWorkflow(TawSystemRoleWorkflow tawSystemWorkflow)
-	{
-		dao.saveTawSystemWorkflow(tawSystemWorkflow);
-	}
+    public void saveTawSystemWorkflow(TawSystemRoleWorkflow tawSystemWorkflow) {
+        dao.saveTawSystemWorkflow(tawSystemWorkflow);
+    }
 
-	public void removeTawSystemWorkflow(long id)
-		throws Exception
-	{
-		dao.removeTawSystemWorkflow(id);
-	}
+    public void removeTawSystemWorkflow(long id)
+            throws Exception {
+        dao.removeTawSystemWorkflow(id);
+    }
 
-	public TawSystemRoleWorkflow getTawSystemWorkflowByName(String name)
-		throws Exception
-	{
-		return dao.getTawSystemWorkflowByName(name);
-	}
+    public TawSystemRoleWorkflow getTawSystemWorkflowByName(String name)
+            throws Exception {
+        return dao.getTawSystemWorkflowByName(name);
+    }
 
-	public TawSystemRoleWorkflow getTawSystemWorkflowByBeanId(String mainBeanId)
-		throws Exception
-	{
-		return dao.getTawSystemWorkflowByBeanId(mainBeanId);
-	}
+    public TawSystemRoleWorkflow getTawSystemWorkflowByBeanId(String mainBeanId)
+            throws Exception {
+        return dao.getTawSystemWorkflowByBeanId(mainBeanId);
+    }
 }

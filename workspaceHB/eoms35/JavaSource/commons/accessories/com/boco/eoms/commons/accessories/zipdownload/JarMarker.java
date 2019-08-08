@@ -33,13 +33,16 @@ public final class JarMarker implements ZipExtraField {
     private static final byte[] NO_BYTES = new byte[0];
     private static final JarMarker DEFAULT = new JarMarker();
 
-    /** No-arg constructor */
+    /**
+     * No-arg constructor
+     */
     public JarMarker() {
         // empty
     }
 
     /**
      * Since JarMarker is stateless we can always use the same instance.
+     *
      * @return the DEFAULT jarmaker.
      */
     public static JarMarker getInstance() {
@@ -48,6 +51,7 @@ public final class JarMarker implements ZipExtraField {
 
     /**
      * The Header-ID.
+     *
      * @return the header id
      */
     public ZipShort getHeaderId() {
@@ -57,6 +61,7 @@ public final class JarMarker implements ZipExtraField {
     /**
      * Length of the extra field in the local file data - without
      * Header-ID or length specifier.
+     *
      * @return 0
      */
     public ZipShort getLocalFileDataLength() {
@@ -66,6 +71,7 @@ public final class JarMarker implements ZipExtraField {
     /**
      * Length of the extra field in the central directory - without
      * Header-ID or length specifier.
+     *
      * @return 0
      */
     public ZipShort getCentralDirectoryLength() {
@@ -75,6 +81,7 @@ public final class JarMarker implements ZipExtraField {
     /**
      * The actual data to put into local file data - without Header-ID
      * or length specifier.
+     *
      * @return the data
      * @since 1.1
      */
@@ -85,6 +92,7 @@ public final class JarMarker implements ZipExtraField {
     /**
      * The actual data to put central directory - without Header-ID or
      * length specifier.
+     *
      * @return the data
      */
     public byte[] getCentralDirectoryData() {
@@ -93,14 +101,14 @@ public final class JarMarker implements ZipExtraField {
 
     /**
      * Populate data from this array as if it was in local file data.
-     * @param data an array of bytes
+     *
+     * @param data   an array of bytes
      * @param offset the start offset
      * @param length the number of bytes in the array from offset
-     *
      * @throws ZipException on error
      */
     public void parseFromLocalFileData(byte[] data, int offset, int length)
-        throws ZipException {
+            throws ZipException {
         if (length != 0) {
             throw new ZipException("JarMarker doesn't expect any data");
         }

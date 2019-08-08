@@ -19,16 +19,15 @@ import java.util.List;
  * <p>
  * Date:2007-8-3 14:32:06
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class LinkServiceImpl extends LinkService {
-	
-	public List getLinksBycondition(String condition, String linkName) {
-		
-		return this.getLinkDAO().getLinksBycondition(condition, linkName);
-	}
+
+    public List getLinksBycondition(String condition, String linkName) {
+
+        return this.getLinkDAO().getLinksBycondition(condition, linkName);
+    }
 
 }

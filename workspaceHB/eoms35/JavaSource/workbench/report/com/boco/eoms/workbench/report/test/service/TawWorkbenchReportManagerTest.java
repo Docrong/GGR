@@ -35,7 +35,7 @@ public class TawWorkbenchReportManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchReportDao.expects(once()).method("getTawWorkbenchReports")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawWorkbenchReports = tawWorkbenchReportManager.getTawWorkbenchReports(null);
         assertTrue(tawWorkbenchReports.size() == 1);
@@ -45,7 +45,7 @@ public class TawWorkbenchReportManagerTest extends BaseManagerTestCase {
     public void testGetTawWorkbenchReport() throws Exception {
         // set expected behavior on dao
         tawWorkbenchReportDao.expects(once()).method("getTawWorkbenchReport")
-            .will(returnValue(new TawWorkbenchReport()));
+                .will(returnValue(new TawWorkbenchReport()));
         TawWorkbenchReport tawWorkbenchReport = tawWorkbenchReportManager.getTawWorkbenchReport(tawWorkbenchReportId);
         assertTrue(tawWorkbenchReport != null);
         tawWorkbenchReportDao.verify();
@@ -56,7 +56,7 @@ public class TawWorkbenchReportManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchReportDao.expects(once()).method("saveTawWorkbenchReport")
-            .with(same(tawWorkbenchReport)).isVoid();
+                .with(same(tawWorkbenchReport)).isVoid();
 
         tawWorkbenchReportManager.saveTawWorkbenchReport(tawWorkbenchReport);
         tawWorkbenchReportDao.verify();
@@ -69,7 +69,7 @@ public class TawWorkbenchReportManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchReportDao.expects(once()).method("saveTawWorkbenchReport")
-            .with(same(tawWorkbenchReport)).isVoid();
+                .with(same(tawWorkbenchReport)).isVoid();
         tawWorkbenchReportManager.saveTawWorkbenchReport(tawWorkbenchReport);
         tawWorkbenchReportDao.verify();
 

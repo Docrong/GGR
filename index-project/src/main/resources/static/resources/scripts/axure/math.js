@@ -1,25 +1,25 @@
-﻿$axure.internal(function($ax) {
-    $ax.public.fn.matrixMultiply = function(matrix, vector) {
-        if(!matrix.tx) matrix.tx = 0;
-        if(!matrix.ty) matrix.ty = 0;
+﻿$axure.internal(function ($ax) {
+    $ax.public.fn.matrixMultiply = function (matrix, vector) {
+        if (!matrix.tx) matrix.tx = 0;
+        if (!matrix.ty) matrix.ty = 0;
         var outX = matrix.m11 * vector.x + matrix.m12 * vector.y + matrix.tx;
         var outY = matrix.m21 * vector.x + matrix.m22 * vector.y + matrix.ty;
-        return { x: outX, y: outY };
+        return {x: outX, y: outY};
     }
 
-    $ax.public.fn.matrixInverse = function(matrix) {
-        if(!matrix.tx) matrix.tx = 0;
-        if(!matrix.ty) matrix.ty = 0;
+    $ax.public.fn.matrixInverse = function (matrix) {
+        if (!matrix.tx) matrix.tx = 0;
+        if (!matrix.ty) matrix.ty = 0;
 
-        var determinant = matrix.m11*matrix.m22 - matrix.m12*matrix.m21;
+        var determinant = matrix.m11 * matrix.m22 - matrix.m12 * matrix.m21;
         //var threshold = (M11 * M11 + M22 *M22 + M12 *M12+ M21 *M21) / 100000;
         //if(determinant.DeltaEquals(0, threshold) && determinant < 0.01) {
         //    return Invalid;
         //}
-        return  {
-            m11 : matrix.m22/determinant,
-            m12 : -matrix.m12/determinant,
-            tx : (matrix.ty*matrix.m12 - matrix.tx*matrix.m22)/determinant,
+        return {
+            m11: matrix.m22 / determinant,
+            m12: -matrix.m12 / determinant,
+            tx: (matrix.ty * matrix.m12 - matrix.tx * matrix.m22) / determinant,
             m21: -matrix.m21 / determinant,
             m22: matrix.m11 / determinant,
             ty: (matrix.tx * matrix.m21 - matrix.ty * matrix.m11) / determinant
@@ -34,8 +34,8 @@
         if (!matrix2.ty) matrix2.ty = 0;
 
         return {
-            m11: matrix1.m12*matrix2.m21 + matrix1.m11*matrix2.m11,
-            m12: matrix1.m12*matrix2.m22 + matrix1.m11*matrix2.m12,
+            m11: matrix1.m12 * matrix2.m21 + matrix1.m11 * matrix2.m11,
+            m12: matrix1.m12 * matrix2.m22 + matrix1.m11 * matrix2.m12,
             tx: matrix1.m12 * matrix2.ty + matrix1.m11 * matrix2.tx + matrix1.tx,
             m21: matrix1.m22 * matrix2.m21 + matrix1.m21 * matrix2.m11,
             m22: matrix1.m22 * matrix2.m22 + matrix1.m21 * matrix2.m12,
@@ -61,18 +61,26 @@
                 matrix[l] = Number(matrix[l]);
             }
 
-        } else { matrix = [1.0, 0.0, 0.0, 1.0, 0.0, 0.0]; }
+        } else {
+            matrix = [1.0, 0.0, 0.0, 1.0, 0.0, 0.0];
+        }
 
         return matrix;
         // matrix[0] = cosine, matrix[1] = sine. 
         // Assuming the element is still orthogonal.
     }
 
-    $ax.public.fn.vectorMinus = function(vector1, vector2) { return { x: vector1.x - vector2.x, y: vector1.y - vector2.y }; }
+    $ax.public.fn.vectorMinus = function (vector1, vector2) {
+        return {x: vector1.x - vector2.x, y: vector1.y - vector2.y};
+    }
 
-    $ax.public.fn.vectorPlus = function (vector1, vector2) { return { x: vector1.x + vector2.x, y: vector1.y + vector2.y }; }
+    $ax.public.fn.vectorPlus = function (vector1, vector2) {
+        return {x: vector1.x + vector2.x, y: vector1.y + vector2.y};
+    }
 
-    $ax.public.fn.vectorMidpoint = function (vector1, vector2) { return { x: (vector1.x + vector2.x) / 2.0, y: (vector1.y + vector2.y) / 2.0 }; }
+    $ax.public.fn.vectorMidpoint = function (vector1, vector2) {
+        return {x: (vector1.x + vector2.x) / 2.0, y: (vector1.y + vector2.y) / 2.0};
+    }
 
     $ax.public.fn.fourCornersToBasis = function (fourCorners) {
         return {
@@ -81,12 +89,12 @@
         };
     }
 
-    $ax.public.fn.matrixString = function(m11, m21, m12, m22, tx, ty) {
+    $ax.public.fn.matrixString = function (m11, m21, m12, m22, tx, ty) {
         return "Matrix(" + m11 + "," + m21 + "," + m12 + "," + m22 + ", " + tx + ", " + ty + ")";
     }
-    
+
     $ax.public.fn.getWidgetBoundingRect = function (widgetId) {
-        var emptyRect = { left: 0, top: 0, centerPoint: { x: 0, y: 0 }, width: 0, height: 0 };
+        var emptyRect = {left: 0, top: 0, centerPoint: {x: 0, y: 0}, width: 0, height: 0};
         var element = document.getElementById(widgetId);
         if (!element) return emptyRect;
 
@@ -104,7 +112,7 @@
         var children = $ax('#' + layerId).getChildren()[0].children;
         for (var index = 0; index < children.length; index++) {
             var childId = children[index];
-            if(!includeHidden && !$ax.visibility.IsIdVisible(childId)) continue;
+            if (!includeHidden && !$ax.visibility.IsIdVisible(childId)) continue;
             if ($ax.public.fn.IsLayer($obj(childId).type)) {
                 if (includeLayers) deep.push(childId);
                 var recursiveChildren = _getLayerChildrenDeep(childId, includeLayers, includeHidden);
@@ -116,9 +124,14 @@
 
     var _getBoundingRectForMultipleWidgets = function (widgetsIdArray, relativeToPage) {
         if (!widgetsIdArray || widgetsIdArray.constructor !== Array) return undefined;
-        if (widgetsIdArray.length == 0) return { left: 0, top: 0, centerPoint: { x: 0, y: 0 }, width: 0, height: 0 };
+        if (widgetsIdArray.length == 0) return {left: 0, top: 0, centerPoint: {x: 0, y: 0}, width: 0, height: 0};
         var widgetRect = _getBoundingRectForSingleWidget(widgetsIdArray[0], relativeToPage, true);
-        var boundingRect = { left: widgetRect.left, right: widgetRect.right, top: widgetRect.top, bottom: widgetRect.bottom };
+        var boundingRect = {
+            left: widgetRect.left,
+            right: widgetRect.right,
+            top: widgetRect.top,
+            bottom: widgetRect.bottom
+        };
 
         for (var index = 1; index < widgetsIdArray.length; index++) {
             widgetRect = _getBoundingRectForSingleWidget(widgetsIdArray[index], relativeToPage);
@@ -128,7 +141,10 @@
             boundingRect.bottom = Math.max(boundingRect.bottom, widgetRect.bottom);
         }
 
-        boundingRect.centerPoint = { x: (boundingRect.right + boundingRect.left) / 2.0, y: (boundingRect.bottom + boundingRect.top) / 2.0 };
+        boundingRect.centerPoint = {
+            x: (boundingRect.right + boundingRect.left) / 2.0,
+            y: (boundingRect.bottom + boundingRect.top) / 2.0
+        };
         boundingRect.width = boundingRect.right - boundingRect.left;
         boundingRect.height = boundingRect.bottom - boundingRect.top;
         return boundingRect;
@@ -152,7 +168,7 @@
             tempBoundingRect = element.getBoundingClientRect();
             var jElement = $(element);
             position = jElement.position();
-            if(jElement.css('position') == 'fixed') {
+            if (jElement.css('position') == 'fixed') {
                 position.left += Number(jElement.css('margin-left').replace("px", ""));
                 position.top += Number(jElement.css('margin-top').replace("px", ""));
             }
@@ -182,7 +198,7 @@
             if (inner.length && taggedFlip) {
                 //only account for flip if transform is applied
                 var matrix = taggedFlip && (inner.css("-webkit-transform") || inner.css("-moz-transform") ||
-                            inner.css("-ms-transform") || inner.css("-o-transform") || inner.css("transform"));
+                    inner.css("-ms-transform") || inner.css("-o-transform") || inner.css("transform"));
                 if (matrix !== 'none') {
                     flip = taggedFlip;
                     mirrorWidth = $ax.getNumFromPx(inner.css('width'));
@@ -190,7 +206,7 @@
                 }
             }
         }
-         //Now account for flip
+        //Now account for flip
         if (flip == 'x') position.top = mirrorHeight - position.top - element.getBoundingClientRect().height;
         else if (flip == 'y') position.left = mirrorWidth - position.left - element.getBoundingClientRect().width;
 
@@ -223,14 +239,14 @@
         return $ax.public.fn.matrixMultiply(rotationMatrix, displacement);
     };
 
-    $ax.public.fn.getBoundingSizeForRotate = function(width, height, rotation) {
+    $ax.public.fn.getBoundingSizeForRotate = function (width, height, rotation) {
         // point to rotate around doesn't matter since we just care about size, if location matter we need more args and location matters.
 
-        var origin = { x: 0, y: 0 };
+        var origin = {x: 0, y: 0};
 
-        var corner1 = { x: width, y: 0 };
-        var corner2 = { x: 0, y: height };
-        var corner3 = { x: width, y: height };
+        var corner1 = {x: width, y: 0};
+        var corner2 = {x: 0, y: height};
+        var corner3 = {x: width, y: height};
 
         corner1 = _getPointAfterRotate(rotation, corner1, origin);
         corner2 = _getPointAfterRotate(rotation, corner2, origin);
@@ -241,7 +257,7 @@
         var top = Math.min(0, corner1.y, corner2.y, corner3.y);
         var bottom = Math.max(0, corner1.y, corner2.y, corner3.y);
 
-        return { width: right - left, height: bottom - top };
+        return {width: right - left, height: bottom - top};
     }
 
     $ax.public.fn.getPositionRelativeToParent = function (elementId) {
@@ -274,14 +290,18 @@
     };
 
 
-    var _isCompoundVectorHtml = $ax.public.fn.isCompoundVectorHtml = function(hElement) {
+    var _isCompoundVectorHtml = $ax.public.fn.isCompoundVectorHtml = function (hElement) {
         return hElement.hasAttribute('compoundmode') && hElement.getAttribute('compoundmode') == "true";
     }
 
-    $ax.public.fn.removeCompound = function (jobj) { if(_isCompoundVectorHtml(jobj[0])) jobj.removeClass('compound'); }
-    $ax.public.fn.restoreCompound = function (jobj) { if (_isCompoundVectorHtml(jobj[0])) jobj.addClass('compound'); }
+    $ax.public.fn.removeCompound = function (jobj) {
+        if (_isCompoundVectorHtml(jobj[0])) jobj.removeClass('compound');
+    }
+    $ax.public.fn.restoreCompound = function (jobj) {
+        if (_isCompoundVectorHtml(jobj[0])) jobj.addClass('compound');
+    }
 
-    $ax.public.fn.compoundIdFromComponent = function(id) {
+    $ax.public.fn.compoundIdFromComponent = function (id) {
 
         var pPos = id.indexOf('p');
         var dashPos = id.indexOf('-');
@@ -290,10 +310,12 @@
         else return id.substring(0, pPos) + id.substring(dashPos);
     }
 
-    $ax.public.fn.l2 = function (x, y) { return Math.sqrt(x * x + y * y); }
+    $ax.public.fn.l2 = function (x, y) {
+        return Math.sqrt(x * x + y * y);
+    }
 
     $ax.public.fn.convertToSingleImage = function (jobj) {
-        if(!jobj[0]) return;
+        if (!jobj[0]) return;
 
         var widgetId = jobj[0].id;
         var object = $obj(widgetId);
@@ -307,13 +329,13 @@
 
         //var layer = 
 
-        if(!_isCompoundVectorHtml(jobj[0])) return;
+        if (!_isCompoundVectorHtml(jobj[0])) return;
 
 
         $('#' + widgetId).removeClass("compound");
         $('#' + widgetId + '_img').removeClass("singleImg");
         jobj[0].setAttribute('compoundmode', 'false');
-        
+
         var components = object.compoundChildren;
         delete object.generateCompound;
         for (var i = 0; i < components.length; i++) {
@@ -324,7 +346,7 @@
     }
 
 
-    $ax.public.fn.getContainerDimensions = function(query) {
+    $ax.public.fn.getContainerDimensions = function (query) {
         // returns undefined if no containers found.
         var containerDimensions;
         for (var i = 0; i < query[0].children.length; i++) {
@@ -342,14 +364,14 @@
         var cosTheta = Math.cos(angleInRadians);
         var sinTheta = Math.sin(angleInRadians);
 
-        return { m11: cosTheta, m12: -sinTheta, m21: sinTheta, m22: cosTheta, tx: 0.0, ty: 0.0 };
+        return {m11: cosTheta, m12: -sinTheta, m21: sinTheta, m22: cosTheta, tx: 0.0, ty: 0.0};
     }
 
     $ax.public.fn.GetFieldFromStyle = function (query, field) {
         var raw = query[0].style[field];
         if (!raw) raw = query.css(field);
         return Number(raw.replace('px', ''));
-        }
+    }
 
 
     $ax.public.fn.setTransformHowever = function (transformString) {

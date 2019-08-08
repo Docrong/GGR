@@ -1,7 +1,6 @@
 package com.boco.eoms.commons.system.role.service;
 
 
-
 /**
  * <p>
  * Title:批量导入
@@ -12,13 +11,11 @@ package com.boco.eoms.commons.system.role.service;
  * <p>
  * Date:May 20, 2008 5:29:57 PM
  * </p>
- * 
+ *
  * @author 龚玉峰，曲静波
  * @version 3.5.1
- * 
  */
 public interface ImportRoleManager {
-	
-	
+
 
 }

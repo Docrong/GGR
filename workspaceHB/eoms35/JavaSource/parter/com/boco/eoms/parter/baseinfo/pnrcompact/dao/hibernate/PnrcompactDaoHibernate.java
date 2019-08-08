@@ -54,12 +54,12 @@ public class PnrcompactDaoHibernate extends BaseDaoHibernate implements IPnrcomp
 
     /**
      * @see com.boco.eoms.parter.baseinfo.pnrcompact.dao.PnrcompactDao#savePnrcompact(Pnrcompact pnrcompact)
-     */    
+     */
     public void savePnrcompact(final Pnrcompact pnrcompact) {
         if ((pnrcompact.getId() == null) || (pnrcompact.getId().equals("")))
-			getHibernateTemplate().save(pnrcompact);
-		else
-			getHibernateTemplate().saveOrUpdate(pnrcompact);
+            getHibernateTemplate().save(pnrcompact);
+        else
+            getHibernateTemplate().saveOrUpdate(pnrcompact);
     }
 
     /**
@@ -68,45 +68,48 @@ public class PnrcompactDaoHibernate extends BaseDaoHibernate implements IPnrcomp
     public void removePnrcompact(final String id) {
         getHibernateTemplate().delete(getPnrcompact(id));
     }
+
     /**
-     * @see com.boco.eoms.parter.baseinfo.pnrcompact.dao.PnrcompactDao#getPnrcompacts(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.parter.baseinfo.pnrcompact.dao.PnrcompactDao#getPnrcompacts(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getPnrcompacts(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getPnrcompacts(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the pnrcompact
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from Pnrcompact";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from Pnrcompact";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.pnrcompact.dao.PnrcompactDao#getPnrcompacts(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getPnrcompacts(final Integer curPage, final Integer pageSize) {
-			return this.getPnrcompacts(curPage,pageSize,null);
-		}
+        return this.getPnrcompacts(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.pnrcompact.dao.PnrcompactDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from Pnrcompact obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from Pnrcompact obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

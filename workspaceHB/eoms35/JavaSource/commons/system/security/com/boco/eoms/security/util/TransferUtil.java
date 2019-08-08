@@ -20,7 +20,7 @@ package com.boco.eoms.security.util;
  * <p>
  * Company: BOCO
  * </p>
- * 
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */
@@ -48,126 +48,125 @@ import com.boco.eoms.commons.system.user.service.ITawSystemUserManager;
 
 public class TransferUtil extends com.boco.eoms.common.dao.DAO {
 
-	TawSystemDeptDao tawSystemDeptDao;
-	TawSystemUserDao tawSystemUserDao;
+    TawSystemDeptDao tawSystemDeptDao;
+    TawSystemUserDao tawSystemUserDao;
 
-	public TransferUtil() {
-	}
+    public TransferUtil() {
+    }
 
-	private void Transfer() {
-		// TawDeptDAO tawDeptDAO = new TawDeptDAO();
-		// TawRmUserDAO tawRmUserDAO = new TawRmUserDAO();
-		ArrayList list = null;
-		try {
-			list = (ArrayList) userList();
-			for (int i = 0; i < list.size(); i++) {
-				TawSystemUser tawRmUser = new TawSystemUser();
-				TawSystemUser tawRmUser1 = new TawSystemUser();
-				tawRmUser = (TawSystemUser) list.get(i);
-				tawRmUser1 = tawSystemUserDao.getUserByuserid(tawRmUser.getUserid());
-				if (tawRmUser1 == null)
-					tawSystemUserDao.saveTawSystemUser(tawRmUser);
-			}
-			System.out.println("��Ա��ݵ�����ɣ�");
-			list = (ArrayList) deptList();
-			for (int i = 0; i < list.size(); i++) {
-				TawSystemDept dept = new TawSystemDept();
-				TawSystemDept dept1 = new TawSystemDept();
-				dept = (TawSystemDept) list.get(i);
-				dept1 = tawSystemDeptDao.getDeptinfobydeptid(dept.getDeptId(),"0");
-				if (dept1 == null)
-					tawSystemDeptDao.saveTawSystemDept(dept);
-			}
+    private void Transfer() {
+        // TawDeptDAO tawDeptDAO = new TawDeptDAO();
+        // TawRmUserDAO tawRmUserDAO = new TawRmUserDAO();
+        ArrayList list = null;
+        try {
+            list = (ArrayList) userList();
+            for (int i = 0; i < list.size(); i++) {
+                TawSystemUser tawRmUser = new TawSystemUser();
+                TawSystemUser tawRmUser1 = new TawSystemUser();
+                tawRmUser = (TawSystemUser) list.get(i);
+                tawRmUser1 = tawSystemUserDao.getUserByuserid(tawRmUser.getUserid());
+                if (tawRmUser1 == null)
+                    tawSystemUserDao.saveTawSystemUser(tawRmUser);
+            }
+            System.out.println("��Ա��ݵ�����ɣ�");
+            list = (ArrayList) deptList();
+            for (int i = 0; i < list.size(); i++) {
+                TawSystemDept dept = new TawSystemDept();
+                TawSystemDept dept1 = new TawSystemDept();
+                dept = (TawSystemDept) list.get(i);
+                dept1 = tawSystemDeptDao.getDeptinfobydeptid(dept.getDeptId(), "0");
+                if (dept1 == null)
+                    tawSystemDeptDao.saveTawSystemDept(dept);
+            }
 
-			System.out.println("������ݵ�����ɣ�");
+            System.out.println("������ݵ�����ɣ�");
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-		}
-	}
+        }
+    }
 
-	public static void main(String[] args) {
-		TransferUtil util = new TransferUtil();
-		util.Transfer();
-	}
+    public static void main(String[] args) {
+        TransferUtil util = new TransferUtil();
+        util.Transfer();
+    }
 
-	public List userList() throws SQLException {
-		ArrayList list = new ArrayList();
-		com.boco.eoms.db.util.BocoConnection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		TawSystemUser tawRmUser = null;
-		try {
-			conn = ds.getConnection();
-			String sql = "SELECT *  FROM taw_system_user";
-			pstmt = conn.prepareStatement(sql);
+    public List userList() throws SQLException {
+        ArrayList list = new ArrayList();
+        com.boco.eoms.db.util.BocoConnection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        TawSystemUser tawRmUser = null;
+        try {
+            conn = ds.getConnection();
+            String sql = "SELECT *  FROM taw_system_user";
+            pstmt = conn.prepareStatement(sql);
 
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				tawRmUser = new TawSystemUser();
-				populate(tawRmUser, rs);
-				list.add(tawRmUser);
-				tawRmUser = null;
-			}
-			close(rs);
-			close(pstmt);
-		} catch (SQLException e) {
-			close(rs);
-			close(pstmt);
-			rollback(conn);
-			e.printStackTrace();
-		} finally {
-			close(conn);
-		}
-		return list;
-	}
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                tawRmUser = new TawSystemUser();
+                populate(tawRmUser, rs);
+                list.add(tawRmUser);
+                tawRmUser = null;
+            }
+            close(rs);
+            close(pstmt);
+        } catch (SQLException e) {
+            close(rs);
+            close(pstmt);
+            rollback(conn);
+            e.printStackTrace();
+        } finally {
+            close(conn);
+        }
+        return list;
+    }
 
-	public List deptList() throws SQLException {
-		ArrayList list = new ArrayList();
-		com.boco.eoms.db.util.BocoConnection conn = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		TawSystemDept dept = null;
-		try {
-			conn = ds.getConnection();
-			String sql = "SELECT *  FROM taw_system_dept";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				dept = new TawSystemDept();
-				populate(dept, rs);
-				list.add(dept);
-				dept = null;
-			}
-			close(rs);
-			close(pstmt);
-		} catch (SQLException e) {
-			close(rs);
-			close(pstmt);
-			rollback(conn);
-			e.printStackTrace();
-		} finally {
-			close(conn);
-		}
-		return list;
-	}
+    public List deptList() throws SQLException {
+        ArrayList list = new ArrayList();
+        com.boco.eoms.db.util.BocoConnection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        TawSystemDept dept = null;
+        try {
+            conn = ds.getConnection();
+            String sql = "SELECT *  FROM taw_system_dept";
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+            while (rs.next()) {
+                dept = new TawSystemDept();
+                populate(dept, rs);
+                list.add(dept);
+                dept = null;
+            }
+            close(rs);
+            close(pstmt);
+        } catch (SQLException e) {
+            close(rs);
+            close(pstmt);
+            rollback(conn);
+            e.printStackTrace();
+        } finally {
+            close(conn);
+        }
+        return list;
+    }
 
 
+    public TawSystemUserDao getTawSystemUserDao() {
+        return tawSystemUserDao;
+    }
 
-	public TawSystemUserDao getTawSystemUserDao() {
-		return tawSystemUserDao;
-	}
+    public void setTawSystemUserDao(TawSystemUserDao tawSystemUserDao) {
+        this.tawSystemUserDao = tawSystemUserDao;
+    }
 
-	public void setTawSystemUserDao(TawSystemUserDao tawSystemUserDao) {
-		this.tawSystemUserDao = tawSystemUserDao;
-	}
+    public TawSystemDeptDao getTawSystemDeptDao() {
+        return tawSystemDeptDao;
+    }
 
-	public TawSystemDeptDao getTawSystemDeptDao() {
-		return tawSystemDeptDao;
-	}
-
-	public void setTawSystemDeptDao(TawSystemDeptDao tawSystemDeptDao) {
-		this.tawSystemDeptDao = tawSystemDeptDao;
-	}
+    public void setTawSystemDeptDao(TawSystemDeptDao tawSystemDeptDao) {
+        this.tawSystemDeptDao = tawSystemDeptDao;
+    }
 
 }

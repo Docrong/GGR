@@ -26,10 +26,9 @@ import com.boco.eoms.sheet.base.service.ITemplateService;
  * <p>
  * Date:2007-8-3 15:04:15
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class TemplateAction extends BaseAction {
     private ITemplateService templateService;
@@ -42,8 +41,7 @@ public class TemplateAction extends BaseAction {
     }
 
     /**
-     * @param templateService
-     *            the templateService to set
+     * @param templateService the templateService to set
      */
     public void setTemplateService(ITemplateService templateService) {
         this.templateService = templateService;
@@ -51,7 +49,7 @@ public class TemplateAction extends BaseAction {
 
     /**
      * 模板选择
-     * 
+     *
      * @param mapping
      * @param form
      * @param request
@@ -60,7 +58,7 @@ public class TemplateAction extends BaseAction {
      * @throws Exception
      */
     public ActionForward select(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response)
+                                HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         // TODO Auto-generated method stub
         return super.execute(mapping, form, request, response);

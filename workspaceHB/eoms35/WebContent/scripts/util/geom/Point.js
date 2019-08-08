@@ -1,4 +1,3 @@
-
 /**
  * <p>Title:  </p>
  * <p>Description: </p>
@@ -9,6 +8,7 @@ function Point(x, y) {
     this.setX(x);
     this.setY(y);
 }
+
 Point.prototype.clone = function () {
     return new Point(this.x, this.y);
 };

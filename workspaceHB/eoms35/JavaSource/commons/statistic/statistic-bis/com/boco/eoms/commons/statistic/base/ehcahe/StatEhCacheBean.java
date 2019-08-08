@@ -8,97 +8,95 @@ import com.boco.eoms.commons.statistic.base.config.model.KpiDefine;
 
 /**
  * 缓存
- * 
- * @author lizhenyou
  *
+ * @author lizhenyou
  */
 public class StatEhCacheBean {
 
-	/**
-	 * 统计报表显示Detial的URL部分连接
-	 */
-	String dataUrl = "";
-	
-	/**
-	 * Excel配置文件的路径
-	 */
-	String excelConfigURL = "";
-	
-	/**
-	 * 数据结果集
-	 */
-	List listResult = null;
-	
-	/**
-	 * Excel配置文件
-	 */
-	Sheet sheet = null;
-	
-	/**
-	 * 页面输入条件
-	 */
-	Map conditionMap = null;
-	
-	/**
-	 * 算法配置
-	 */
-	KpiDefine kpiDefine = null;
-	
-	public void setAll(List listResult,Sheet sheet ,Map conditionMap,KpiDefine kpiDefine,String dataUrl,String excelConfigURL)
-	{
-		this.listResult = listResult;
-		this.sheet = sheet;
-		this.conditionMap = conditionMap;
-		this.kpiDefine = kpiDefine;
-		this.dataUrl = dataUrl;
-		this.excelConfigURL = excelConfigURL;
-	}
+    /**
+     * 统计报表显示Detial的URL部分连接
+     */
+    String dataUrl = "";
 
-	public String getDataUrl() {
-		return dataUrl;
-	}
+    /**
+     * Excel配置文件的路径
+     */
+    String excelConfigURL = "";
 
-	public void setDataUrl(String dataUrl) {
-		this.dataUrl = dataUrl;
-	}
+    /**
+     * 数据结果集
+     */
+    List listResult = null;
 
-	public List getListResult() {
-		return listResult;
-	}
+    /**
+     * Excel配置文件
+     */
+    Sheet sheet = null;
 
-	public void setListResult(List listResult) {
-		this.listResult = listResult;
-	}
+    /**
+     * 页面输入条件
+     */
+    Map conditionMap = null;
 
-	public Sheet getSheet() {
-		return sheet;
-	}
+    /**
+     * 算法配置
+     */
+    KpiDefine kpiDefine = null;
 
-	public void setSheet(Sheet sheet) {
-		this.sheet = sheet;
-	}
+    public void setAll(List listResult, Sheet sheet, Map conditionMap, KpiDefine kpiDefine, String dataUrl, String excelConfigURL) {
+        this.listResult = listResult;
+        this.sheet = sheet;
+        this.conditionMap = conditionMap;
+        this.kpiDefine = kpiDefine;
+        this.dataUrl = dataUrl;
+        this.excelConfigURL = excelConfigURL;
+    }
 
-	public Map getConditionMap() {
-		return conditionMap;
-	}
+    public String getDataUrl() {
+        return dataUrl;
+    }
 
-	public void setConditionMap(Map conditionMap) {
-		this.conditionMap = conditionMap;
-	}
+    public void setDataUrl(String dataUrl) {
+        this.dataUrl = dataUrl;
+    }
 
-	public KpiDefine getKpiDefine() {
-		return kpiDefine;
-	}
+    public List getListResult() {
+        return listResult;
+    }
 
-	public void setKpiDefine(KpiDefine kpiDefine) {
-		this.kpiDefine = kpiDefine;
-	}
+    public void setListResult(List listResult) {
+        this.listResult = listResult;
+    }
 
-	public String getExcelConfigURL() {
-		return excelConfigURL;
-	}
+    public Sheet getSheet() {
+        return sheet;
+    }
 
-	public void setExcelConfigURL(String excelConfigURL) {
-		this.excelConfigURL = excelConfigURL;
-	}
+    public void setSheet(Sheet sheet) {
+        this.sheet = sheet;
+    }
+
+    public Map getConditionMap() {
+        return conditionMap;
+    }
+
+    public void setConditionMap(Map conditionMap) {
+        this.conditionMap = conditionMap;
+    }
+
+    public KpiDefine getKpiDefine() {
+        return kpiDefine;
+    }
+
+    public void setKpiDefine(KpiDefine kpiDefine) {
+        this.kpiDefine = kpiDefine;
+    }
+
+    public String getExcelConfigURL() {
+        return excelConfigURL;
+    }
+
+    public void setExcelConfigURL(String excelConfigURL) {
+        this.excelConfigURL = excelConfigURL;
+    }
 }

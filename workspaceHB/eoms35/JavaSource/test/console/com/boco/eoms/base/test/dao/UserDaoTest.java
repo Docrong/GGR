@@ -12,11 +12,11 @@ import org.springframework.dao.DataIntegrityViolationException;
 public class UserDaoTest extends BaseDaoTestCase {
     private UserDao dao = null;
     private RoleDao rdao = null;
-    
+
     public void setUserDao(UserDao dao) {
         this.dao = dao;
     }
-    
+
     public void setRoleDao(RoleDao rdao) {
         this.rdao = rdao;
     }
@@ -48,7 +48,7 @@ public class UserDaoTest extends BaseDaoTestCase {
 
         assertEquals(user.getAddress(), address);
         assertEquals("new address", user.getAddress().getAddress());
-        
+
         // verify that violation occurs when adding new user with same username
         user.setId(null);
 
@@ -98,7 +98,7 @@ public class UserDaoTest extends BaseDaoTestCase {
         user.setAddress(address);
         user.setEmail("testuser@appfuse.org");
         user.setWebsite("http://raibledesigns.com");
-        
+
         Role role = rdao.getRoleByName(Constants.USER_ROLE);
         assertNotNull(role.getId());
         user.addRole(role);

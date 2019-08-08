@@ -1,69 +1,68 @@
 .topbar {
-			BACKGROUND: url(../images/topbar.gif) #ffeeee;
-			BACKGROUND-COLOR: #cccccc;
-			BORDER-BOTTOM: #cccccc;
-			BORDER-LEFT: #cccccc;
-			BORDER-TOP: #cccccc;
-			FONT-SIZE: 10pt;
-			BORDER-Bright: #cccccc;
-			height:0.7cm;
-    }
+    BACKGROUND: url(../images/topbar.gif) #ffeeee;
+    BACKGROUND-COLOR: #cccccc;
+    BORDER-BOTTOM: #cccccc;
+    BORDER-LEFT: #cccccc;
+    BORDER-TOP: #cccccc;
+    FONT-SIZE: 10pt;
+    BORDER-Bright: #cccccc;
+    height: 0.7cm;
+}
 
-A
-{
+A {
     COLOR: #003399;
     TEXT-DECORATION: none
 }
-A:visited
-{
+
+A:visited {
     COLOR: #6666cc
 }
-A:active
-{
+
+A:active {
     TEXT-DECORATION: underline
 }
-A:hover
-{
+
+A:hover {
     TEXT-DECORATION: underline
 }
-BODY
-{
+
+BODY {
     FONT-SIZE: 9pt;
     COLOR: black;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif;
     BORDER: 0px;
 }
-BUTTON
-{
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif;
+
+BUTTON {
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif;
     BACKGROUND-COLOR: cornflowerblue
 }
-DT
-{
+
+DT {
     FONT-WEIGHT: bold
 }
-FORM
-{
+
+FORM {
     MARGIN-BOTTOM: 0px
 }
-H1
-{
+
+H1 {
     MARGIN-TOP: 0px;
     PADDING-LEFT: 4px;
     FONT-WEIGHT: bolder;
     FONT-SIZE: x-large;
-    FILTER: progid:DXImageTransform.Microsoft.Shadow(color='gray', Direction=135, Strength=4);
+    FILTER: progid: DXImageTransform . Microsoft . Shadow(color = 'gray', Direction = 135, Strength = 4);
     MARGIN-BOTTOM: 0em;
     CLIP: rect(10px auto auto auto);
     COLOR: #4e4887;
     FONT-STYLE: italic;
-    FONT-FAMILY: arial, ËÎÌå, ¿¬Ìå_GB2312, verdana, helvetica, sans-serif;
+    FONT-FAMILY: arial, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, helvetica, sans-serif;
     LETTER-SPACING: 4px;
     TEXT-ALIGN: left;
     FONT-VARIANT: small-caps
 }
-H2
-{
+
+H2 {
     BORDER-TOP: #4e4887 1px solid;
     MARGIN-TOP: 1em;
     PADDING-LEFT: 4px;
@@ -72,8 +71,8 @@ H2
     BORDER-LEFT: #4e4887 8px solid;
     COLOR: #4e4887
 }
-H3
-{
+
+H3 {
     BORDER-TOP: #4e4887 1px;
     PADDING-LEFT: 4px;
     FONT-SIZE: x-small;
@@ -83,60 +82,60 @@ H3
     BORDER-BOTTOM: #4e4887 1px solid;
     LETTER-SPACING: 10px
 }
-H4
-{
+
+H4 {
     FONT-SIZE: x-small;
     MARGIN-BOTTOM: 0.5em;
     COLOR: #4e4887
 }
-H5
-{
+
+H5 {
     FONT-SIZE: xx-small;
     MARGIN-BOTTOM: 0.5em;
     COLOR: #4e4887
 }
-H6
-{
+
+H6 {
     FONT-SIZE: xx-small;
     MARGIN-BOTTOM: 0.5em;
     COLOR: #4e4887;
     FONT-STYLE: italic
 }
-INPUT
-{
+
+INPUT {
     FONT-SIZE: 90%;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif
 }
-OL
-{
+
+OL {
     MARGIN-TOP: 0.5em
 }
-P
-{
+
+P {
     MARGIN-TOP: 0.5em;
     MARGIN-BOTTOM: 0.5em
 }
-PRE
-{
+
+PRE {
     FONT-SIZE: 10pt;
     MARGIN: 1em;
 }
-SELECT
-{
+
+SELECT {
     FONT-SIZE: 9pt;
     COLOR: black;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif
 }
-TABLE
-{
+
+TABLE {
     FONT-SIZE: x-small
 }
-TD
-{
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif
+
+TD {
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif
 }
-TH
-{
+
+TH {
     PADDING-RIGHT: 0px;
     PADDING-LEFT: 0px;
     BACKGROUND-IMAGE: url(..\images\topbk.gif);
@@ -145,43 +144,43 @@ TH
     PADDING-TOP: 4px;
     BACKGROUND-COLOR: lightgrey
 }
-UL
-{
+
+UL {
     MARGIN-TOP: 0.5em
 }
-DIV.clsDocBody
-{
+
+DIV.clsDocBody {
     FONT-SIZE: 75%;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif
 }
-DIV.clsDocBody TD
-{
+
+DIV.clsDocBody TD {
     FONT-SIZE: 70%
 }
-DIV.clsDocBody TH
-{
+
+DIV.clsDocBody TH {
     FONT-SIZE: 70%
 }
-DIV.clsDocBody SELECT
-{
+
+DIV.clsDocBody SELECT {
     FONT-SIZE: 80%;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif
 }
-IMG.clsMoreImg
-{
+
+IMG.clsMoreImg {
     MARGIN-TOP: 5px
 }
-IMG.clsImgButton
-{
+
+IMG.clsImgButton {
     MARGIN-TOP: 2px;
     CURSOR: hand
 }
-INPUT.clsButton
-{
+
+INPUT.clsButton {
     FONT-WEIGHT: bold
 }
-.ie4footer
-{
+
+.ie4footer {
     FONT-WEIGHT: bold;
     LEFT: -160px;
     WIDTH: 130px;
@@ -189,8 +188,8 @@ INPUT.clsButton
     POSITION: absolute;
     TOP: 400px
 }
-.footer
-{
+
+.footer {
     FONT-WEIGHT: bold;
     LEFT: 18px;
     WIDTH: 130px;
@@ -198,40 +197,40 @@ INPUT.clsButton
     POSITION: absolute;
     TOP: 468px
 }
-.footer A:link
-{
+
+.footer A:link {
     COLOR: #ffaa57
 }
-.footer A:visited
-{
+
+.footer A:visited {
     COLOR: #ffaa57
 }
-.footer A:active
-{
+
+.footer A:active {
     COLOR: white
 }
-.footer A:hover
-{
+
+.footer A:hover {
     COLOR: white
 }
-.link-title
-{
+
+.link-title {
     MARGIN-TOP: 0.5em;
     FONT-WEIGHT: bold
 }
-.link-description
-{
+
+.link-description {
     FONT-SIZE: xx-small;
     MARGIN-LEFT: 2em
 }
-.main
-{
+
+.main {
     LEFT: 80px;
     POSITION: absolute;
     TOP: 80px
 }
-.clsTocHead
-{
+
+.clsTocHead {
     FONT-WEIGHT: bold;
     FONT-SIZE: 110%;
     COLOR: #003399;
@@ -239,13 +238,13 @@ INPUT.clsButton
     FONT-STYLE: normal;
     FONT-VARIANT: normal
 }
-DIV.clsTocHead
-{
+
+DIV.clsTocHead {
     MARGIN-TOP: 2px;
     CURSOR: hand
 }
-DIV.clsTocItem DIV
-{
+
+DIV.clsTocItem DIV {
     FONT-WEIGHT: normal;
     FONT-SIZE: 95%;
     PADDING-BOTTOM: 4px;
@@ -254,58 +253,58 @@ DIV.clsTocItem DIV
     FONT-STYLE: normal;
     FONT-VARIANT: normal
 }
-DIV.clsTocItem1
-{
+
+DIV.clsTocItem1 {
     MARGIN-TOP: 5px;
     PADDING-BOTTOM: 4px
 }
-TD.clsLNSubItems DIV
-{
+
+TD.clsLNSubItems DIV {
     FONT-WEIGHT: normal;
     FONT-SIZE: 95%;
     LINE-HEIGHT: 115%;
     FONT-STYLE: normal;
     FONT-VARIANT: normal
 }
-P.clsFeatureTabText
-{
+
+P.clsFeatureTabText {
     FONT-SIZE: 100%;
     LINE-HEIGHT: 170%
 }
-P.clsFeatureTabText SPAN
-{
+
+P.clsFeatureTabText SPAN {
     FONT-SIZE: 125%;
     LINE-HEIGHT: 130%
 }
-P.clsFeatureText
-{
+
+P.clsFeatureText {
     FONT-SIZE: 100%;
     LINE-HEIGHT: 140%
 }
-P.clsFeatureText SPAN
-{
+
+P.clsFeatureText SPAN {
     FONT-SIZE: 125%;
     LINE-HEIGHT: 130%
 }
-P.clsFeatureText SPAN.PD
-{
+
+P.clsFeatureText SPAN.PD {
     FONT-SIZE: 100%;
     LINE-HEIGHT: 130%
 }
-SPAN.clsLeftNavDot
-{
+
+SPAN.clsLeftNavDot {
     FONT-SIZE: 115%;
     COLOR: red;
     LINE-HEIGHT: 1.3
 }
-TD.clsLND
-{
+
+TD.clsLND {
     FONT-SIZE: 115%;
     COLOR: red;
     LINE-HEIGHT: 1.3
 }
-SPAN.clsCatHeader
-{
+
+SPAN.clsCatHeader {
     PADDING-RIGHT: 1px;
     PADDING-LEFT: 1px;
     PADDING-BOTTOM: 1px;
@@ -314,32 +313,32 @@ SPAN.clsCatHeader
     HEIGHT: 1em;
     BACKGROUND-COLOR: #cccccc
 }
-SPAN.clsBodyTxt
-{
+
+SPAN.clsBodyTxt {
     FONT-SIZE: 100%
 }
-FONT.clsSmallBodyTxt
-{
+
+FONT.clsSmallBodyTxt {
     FONT-SIZE: 100%
 }
-SPAN.story
-{
+
+SPAN.story {
     FONT-WEIGHT: normal;
     FONT-SIZE: 100%;
     LINE-HEIGHT: 140%;
     FONT-STYLE: normal;
     FONT-VARIANT: normal
 }
-SPAN.st
-{
+
+SPAN.st {
     FONT-WEIGHT: normal;
     FONT-SIZE: 100%;
     LINE-HEIGHT: 140%;
     FONT-STYLE: normal;
     FONT-VARIANT: normal
 }
-SPAN.category
-{
+
+SPAN.category {
     FONT-WEIGHT: bold;
     FONT-SIZE: 75%;
     COLOR: #ffffff;
@@ -347,20 +346,20 @@ SPAN.category
     FONT-STYLE: normal;
     FONT-VARIANT: normal
 }
-SPAN.pubdate
-{
+
+SPAN.pubdate {
     COLOR: #999999
 }
-SPAN.pd
-{
+
+SPAN.pd {
     COLOR: #999999
 }
-.userData
-{
+
+.userData {
     BEHAVIOR: url(#default#userdata)
 }
-.selected
-{
+
+.selected {
     BORDER-RIGHT: medium none;
     PADDING-RIGHT: 2px;
     BORDER-TOP: medium none;
@@ -373,8 +372,8 @@ SPAN.pd
     BACKGROUND-COLOR: #ffff00;
     TEXT-ALIGN: left
 }
-.seltd
-{
+
+.seltd {
     BORDER-RIGHT: medium none;
     PADDING-RIGHT: 2px;
     BORDER-TOP: medium none;
@@ -387,41 +386,41 @@ SPAN.pd
     BACKGROUND-COLOR: #c89632;
     TEXT-ALIGN: left
 }
-.explain
-{
+
+.explain {
     BORDER-RIGHT: 0px;
     FONT-SIZE: 9pt;
     BORDER-LEFT: 0px;
     BACKGROUND-COLOR: #f7f7ff
 }
-.ExplainTitleText
-{
-	FONT-WEIGHT: bold;
+
+.ExplainTitleText {
+    FONT-WEIGHT: bold;
     FONT-SIZE: 12pt;
     COLOR: darkblue;
-    FONT-FAMILY: Á¥Êé,TAHOMA,ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, TAHOMA, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif;
     BACKGROUND-IMAGE: url(../../images/topbk.gif);
     TEXT-ALIGN: center
 }
-.ExplainText
-{
-    HEIGHT:20px;
-    Padding:0px;
+
+.ExplainText {
+    HEIGHT: 20px;
+    Padding: 0px;
     COLOR: darkblue;
     FONT-STYLE: normal;
-    FONT-FAMILY: TAHOMA, ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif;
+    FONT-FAMILY: TAHOMA, ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif;
     BACKGROUND-IMAGE: url(../../images/topbk.gif);
     TEXT-ALIGN: center
 }
-.AlertText
-{
+
+.AlertText {
     FONT-SIZE: 12pt;
     COLOR: red;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif;
     TEXT-ALIGN: center
 }
-.imageTable
-{
+
+.imageTable {
     FONT-SIZE: 12pt;
     BACKGROUND-IMAGE: url(..\images\backgrounds\tableback.gif);
     COLOR: black;
@@ -429,23 +428,23 @@ SPAN.pd
     FONT-FAMILY: "Arial";
     BACKGROUND-COLOR: #fdfcfd
 }
-.purpleTdTable
-{
+
+.purpleTdTable {
     BORDER-RIGHT: #636bb5 1px;
     BORDER-TOP: #636bb5 1px;
     BORDER-LEFT: #636bb5 1px;
     BORDER-BOTTOM: #636bb5 1px
 }
-.purpleTd
-{
+
+.purpleTd {
     FONT-SIZE: 9pt;
     FONT-STYLE: normal;
     BACKGROUND-COLOR: #DDE1F0;
     TEXT-ALIGN: center;
-    width:100px
+    width: 100px
 }
-.bgColorTd
-{
+
+.bgColorTd {
     BORDER-RIGHT: medium none;
     PADDING-RIGHT: 2px;
     BORDER-TOP: medium none;
@@ -455,33 +454,33 @@ SPAN.pd
     BORDER-LEFT: medium none;
     PADDING-TOP: 2px;
     BORDER-BOTTOM: medium none;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif;
     BACKGROUND-COLOR: #e7f2ff;
     TEXT-ALIGN: left
 }
-.bigTd
-{
+
+.bigTd {
     FONT-SIZE: 12pt;
     COLOR: black;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif
 }
-.smallTd
-{
+
+.smallTd {
     FONT-SIZE: 9pt;
     COLOR: black
 }
-.dynamicTd
-{
+
+.dynamicTd {
     FONT-SIZE: 18pt;
     BACKGROUND-IMAGE: url(../../images/backgrounds/labelback.gif);
     VERTICAL-ALIGN: top;
     COLOR: black;
-    FONT-FAMILY: ËÎÌå, ¿¬Ìå_GB2312, verdana, arial, helvetica, sans-serif;
+    FONT-FAMILY: ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½_GB2312, verdana, arial, helvetica, sans-serif;
     HEIGHT: 1.1cm;
     TEXT-ALIGN: center
 }
-.grayTh
-{
+
+.grayTh {
     BORDER-RIGHT: #c0c0c0 1px;
     PADDING-RIGHT: 0px;
     BORDER-TOP: #c0c0c0 1px;
@@ -495,15 +494,15 @@ SPAN.pd
     BORDER-BOTTOM: #c0c0c0 1px;
     BACKGROUND-COLOR: silver
 }
-.simpleTh
-{
+
+.simpleTh {
     FONT-WEIGHT: bold;
     FONT-SIZE: 12pt;
     BACKGROUND-COLOR: #f7f7ff;
     TEXT-ALIGN: center
 }
-.tableTitle
-{
+
+.tableTitle {
     BORDER-RIGHT: black 1px outset;
     BORDER-TOP: white 1px outset;
     BACKGROUND-IMAGE: url(..\images\backgrounds\back7.gif);
@@ -514,8 +513,8 @@ SPAN.pd
     BORDER-BOTTOM: black 1px outset;
     TEXT-ALIGN: center
 }
-.infoId
-{
+
+.infoId {
     BORDER-RIGHT: black 1px outset;
     BORDER-TOP: white 1px outset;
     BACKGROUND-IMAGE: url(..\images\backgrounds\back7.gif);
@@ -525,8 +524,8 @@ SPAN.pd
     BORDER-BOTTOM: black 1px outset;
     TEXT-ALIGN: center
 }
-.clickTitle
-{
+
+.clickTitle {
     BORDER-RIGHT: white 1px inset;
     BORDER-TOP: black 1px inset;
     BACKGROUND-IMAGE: url(..\images\backgrounds\back7.gif);
@@ -536,8 +535,8 @@ SPAN.pd
     BORDER-BOTTOM: white 1px inset;
     TEXT-ALIGN: center
 }
-.HighLight
-{
+
+.HighLight {
     FONT-WEIGHT: normal;
     FONT-SIZE: 9pt;
     CURSOR: hand;
@@ -547,8 +546,8 @@ SPAN.pd
     BACKGROUND-COLOR: #000080;
     FONT-VARIANT: normal
 }
-.UnHighLight
-{
+
+.UnHighLight {
     FONT-WEIGHT: normal;
     FONT-SIZE: 9pt;
     CURSOR: hand;
@@ -558,13 +557,13 @@ SPAN.pd
     BACKGROUND-COLOR: #c0c0c0;
     FONT-VARIANT: normal
 }
-.ChristmasTree
-{
+
+.ChristmasTree {
     FONT-SIZE: 9pt;
     CURSOR: hand
 }
-.popMenu
-{
+
+.popMenu {
     BORDER-RIGHT: thin outset;
     PADDING-RIGHT: 1px;
     BORDER-TOP: thin outset;
@@ -577,86 +576,86 @@ SPAN.pd
     POSITION: absolute;
     BACKGROUND-COLOR: #f1f1f1
 }
-.MenuItem
-{
+
+.MenuItem {
     PADDING-RIGHT: 10px;
     PADDING-LEFT: 10px;
     COLOR: black;
     PADDING-TOP: 3px;
     HEIGHT: 14pt
 }
-#cpyrt A
-{
+
+#cpyrt A {
     COLOR: #000000
 }
-#cpyrt A:hover
-{
+
+#cpyrt A:hover {
     COLOR: #003399
 }
-#content
-{
+
+#content {
     FONT-SIZE: x-small;
     PADDING-BOTTOM: 2em
 }
-#custLink A:visited
-{
+
+#custLink A:visited {
     COLOR: #003399
 }
-#frmSearch A:visited
-{
+
+#frmSearch A:visited {
     COLOR: #003399
 }
-#frmViews A:visited
-{
+
+#frmViews A:visited {
     COLOR: #003399
 }
-#links
-{
+
+#links {
     LEFT: 45px;
     POSITION: absolute;
     TOP: 158px
 }
-#links A:link
-{
+
+#links A:link {
     COLOR: #4e4887;
     TEXT-DECORATION: none
 }
-#links A:visited
-{
+
+#links A:visited {
     COLOR: #4e4887;
     TEXT-DECORATION: none
 }
-#links A:active
-{
+
+#links A:active {
     COLOR: white
 }
-#links A:hover
-{
+
+#links A:hover {
     COLOR: white
 }
-#mSubscr A:visited
-{
+
+#mSubscr A:visited {
     COLOR: #003399
 }
-#mDevSupport A:visited
-{
+
+#mDevSupport A:visited {
     COLOR: #003399
 }
-UL
-{
+
+UL {
     MARGIN-TOP: 5px;
     MARGIN-LEFT: 15px;
     CURSOR: default;
     MARGIN-RIGHT: 15px
 }
-LI
-{
+
+LI {
     MARGIN-TOP: 0px;
     MARGIN-BOTTOM: 0px;
     VERTICAL-ALIGN: middle;
     LIST-STYLE-TYPE: none
 }
-OL
-{
+
+OL {
     MARGIN-TOP: 0.5em
 }

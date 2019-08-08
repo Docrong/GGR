@@ -1,6 +1,6 @@
 /**
  * IPreprocessResultReviewImplServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -40,11 +40,10 @@ public class IPreprocessResultReviewImplServiceLocator extends org.apache.axis.c
     }
 
     public com.boco.eoms.interfaces.EOMSPreService.IPreprocessResultReviewImplDelegate getIPreprocessResultReviewImplPort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(IPreprocessResultReviewImplPort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getIPreprocessResultReviewImplPort(endpoint);
@@ -55,8 +54,7 @@ public class IPreprocessResultReviewImplServiceLocator extends org.apache.axis.c
             com.boco.eoms.interfaces.EOMSPreService.IPreprocessResultReviewImplPortBindingStub _stub = new com.boco.eoms.interfaces.EOMSPreService.IPreprocessResultReviewImplPortBindingStub(portAddress, this);
             _stub.setPortName(getIPreprocessResultReviewImplPortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -77,8 +75,7 @@ public class IPreprocessResultReviewImplServiceLocator extends org.apache.axis.c
                 _stub.setPortName(getIPreprocessResultReviewImplPortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -96,8 +93,7 @@ public class IPreprocessResultReviewImplServiceLocator extends org.apache.axis.c
         java.lang.String inputPortName = portName.getLocalPart();
         if ("IPreprocessResultReviewImplPort".equals(inputPortName)) {
             return getIPreprocessResultReviewImplPort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -119,22 +115,20 @@ public class IPreprocessResultReviewImplServiceLocator extends org.apache.axis.c
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("IPreprocessResultReviewImplPort".equals(portName)) {
+
+        if ("IPreprocessResultReviewImplPort".equals(portName)) {
             setIPreprocessResultReviewImplPortEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

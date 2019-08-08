@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-	<bean id="RemindRegister"
-		class="com.boco.eoms.remind.RemindRegister">
-		<property name="register">
-			<list>
-				<!-- register for module 1 -->
-				<value>com.boco.eoms.remind.service.test.RemindServiceImplTest1</value>
-				<!-- register for module 2 -->
-				<value>com.boco.eoms.remind.service.test.RemindServiceImplTest2</value>
-			</list>
-		</property>
-	</bean>
+    <bean id="RemindRegister"
+          class="com.boco.eoms.remind.RemindRegister">
+        <property name="register">
+            <list>
+                <!-- register for module 1 -->
+                <value>com.boco.eoms.remind.service.test.RemindServiceImplTest1</value>
+                <!-- register for module 2 -->
+                <value>com.boco.eoms.remind.service.test.RemindServiceImplTest2</value>
+            </list>
+        </property>
+    </bean>
 </beans>

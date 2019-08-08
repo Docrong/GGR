@@ -1,7 +1,7 @@
 ﻿/**
-* Used in mcm project
-* 这是公共文件,多个模块均要使用,请勿在未通知其他人的情况下进行任何改动
-*/
+ * Used in mcm project
+ * 这是公共文件,多个模块均要使用,请勿在未通知其他人的情况下进行任何改动
+ */
 package mcs.common.db;
 
 
@@ -10,52 +10,42 @@ import java.sql.*;
 import com.boco.eoms.db.util.*;
 
 
-public class DBSQL extends java.lang.Object
-{
-    Connection connection ;
-    Statement statement=null ;
+public class DBSQL extends java.lang.Object {
+    Connection connection;
+    Statement statement = null;
     ConnectionPool jdbc;
     //DBCPoolMgr jdbc ;
-  //JdbcMgr    jdbc;
- //JdbcMgr2 jdbc;
-
+    //JdbcMgr    jdbc;
+    //JdbcMgr2 jdbc;
 
 
     public DBSQL()
-        throws Exception
-    {
+            throws Exception {
         //jdbc=new JdbcMgr();
-            jdbc= ConnectionPool.getInstance();
-            connection=jdbc.getConnection();
+        jdbc = ConnectionPool.getInstance();
+        connection = jdbc.getConnection();
     }
 
-        public DBSQL(Connection conn)
-            throws Exception
-        {
+    public DBSQL(Connection conn)
+            throws Exception {
         //jdbc=new JdbcMgr();
-                this.connection = conn;
+        this.connection = conn;
     }
 
-    public DBSQL(String alias) throws Exception
-    {
-        jdbc= ConnectionPool.getInstance();
-            connection=jdbc.getConnection(alias);
+    public DBSQL(String alias) throws Exception {
+        jdbc = ConnectionPool.getInstance();
+        connection = jdbc.getConnection(alias);
     }
 
 
-    public ResultSet executeSelect(String SelectSQL)
-    {
+    public ResultSet executeSelect(String SelectSQL) {
 
-                ResultSet resultset=null;
-        if((SelectSQL!=null)&&(!SelectSQL.equals("")))
-        {
-            try
-            {
+        ResultSet resultset = null;
+        if ((SelectSQL != null) && (!SelectSQL.equals(""))) {
+            try {
                 statement = connection.createStatement();
-                resultset=statement.executeQuery(SelectSQL);
-            }
-            catch(SQLException e)
-            {
+                resultset = statement.executeQuery(SelectSQL);
+            } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
 
@@ -64,161 +54,128 @@ public class DBSQL extends java.lang.Object
         return resultset;
     }
 
-    public int executeUpdate(String UpdateSQL)
-    {
-    String SQL = UpdateSQL;
-        Statement statement=null ;
-        int updateRows=-1;
-        try{
+    public int executeUpdate(String UpdateSQL) {
+        String SQL = UpdateSQL;
+        Statement statement = null;
+        int updateRows = -1;
+        try {
             statement = connection.createStatement();
-            updateRows=statement.executeUpdate(SQL);
-        }
-        catch(SQLException ex){
+            updateRows = statement.executeUpdate(SQL);
+        } catch (SQLException ex) {
             System.err.println(ex);
         }
-                        //释放内存
-                    finally {
-                    try {
+        //释放内存
+        finally {
+            try {
 
-                         if (statement != null) {
-                          statement.close();
-                          statement = null;
-                           }
-                       }
-                       catch (Exception e2) {
-                         }
-                     }
-    return updateRows;
+                if (statement != null) {
+                    statement.close();
+                    statement = null;
+                }
+            } catch (Exception e2) {
+            }
+        }
+        return updateRows;
     }
 
 
-    public int executeInsert(String InsertSQL)
-    {
+    public int executeInsert(String InsertSQL) {
         return executeUpdate(InsertSQL);
     }
 
-    public int executeDelete(String DeleteSQL)
-    {
+    public int executeDelete(String DeleteSQL) {
         return executeUpdate(DeleteSQL);
     }
 
-    public boolean executeNonQuery(String[] NonQuerySql)
-    {
-        Statement statement=null ;
-        boolean updateRows= false;
-        try
-        {
-			connection.setAutoCommit(false);
+    public boolean executeNonQuery(String[] NonQuerySql) {
+        Statement statement = null;
+        boolean updateRows = false;
+        try {
+            connection.setAutoCommit(false);
             statement = connection.createStatement();
-			for(int i = 0; i < NonQuerySql.length; i ++)
-				statement.executeUpdate(NonQuerySql[i]);
+            for (int i = 0; i < NonQuerySql.length; i++)
+                statement.executeUpdate(NonQuerySql[i]);
 
-			System.out.println("********************** begin commit *****************");
-			connection.commit();
-			updateRows = true;
-        }
-        catch(SQLException ex)
-        {
+            System.out.println("********************** begin commit *****************");
+            connection.commit();
+            updateRows = true;
+        } catch (SQLException ex) {
             System.err.println(ex);
-			try
-			{
-				System.out.println("****************** Begin RollBack ! ***************");
-				connection.rollback();
-			}
-			catch(SQLException ee)
-			{
-				System.out.println("SQLException :"+ee.getMessage());
-			}
+            try {
+                System.out.println("****************** Begin RollBack ! ***************");
+                connection.rollback();
+            } catch (SQLException ee) {
+                System.out.println("SQLException :" + ee.getMessage());
+            }
         }
         //释放内存
-        finally
-        {
-            try
-            {
-				if (statement != null)
-				{
-					statement.close();
-					statement = null;
-				}
-			}
-            catch (Exception e2)
-			{
+        finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                    statement = null;
+                }
+            } catch (Exception e2) {
             }
-		}
-		return updateRows;
+        }
+        return updateRows;
     }
 
-    public void setAutoCommit(boolean autocommit)
-    {
-        try
-        {
+    public void setAutoCommit(boolean autocommit) {
+        try {
             connection.setAutoCommit(autocommit);
-        }
-        catch(SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void commit()
-    {
-        try
-        {
+    public void commit() {
+        try {
             connection.commit();
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public void rollback()
-    {
-        try
-        {
+    public void rollback() {
+        try {
             connection.rollback();
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-  protected void finalize() throws Throwable {
-      closeConnection();
-  }
+    protected void finalize() throws Throwable {
+        closeConnection();
+    }
 
-  /*****************************************************************************
-  * Close the result set and release resources
-  */
-  public void closeConnection() {
+    /*****************************************************************************
+     * Close the result set and release resources
+     */
+    public void closeConnection() {
 
-                    try {
+        try {
 
-                         if (statement != null) {
-                          statement.close();
-                          statement = null;
-                           }
-         connection.close();
-         //jdbc.release(connection);
-      }
-      catch(SQLException e){
-          System.err.println("closeConnection is failure!"+e.getMessage());
-      }
-  }
-  public static void main(String args[])
-  {
-	  try
-	  {
-		  DBSQL db = new DBSQL();
-		  String[] Sql = {"Insert into temp_ly values(4,'aaadasf')","insert into temp_class(pi_id,cc_name) values(2,'fdsaf',fdas);"};
-		  db.executeNonQuery(Sql);
-	  }
-	  catch(Exception e)
-	  {
-		  System.out.println("Error !"+e.getMessage());
-	  }
-  }
+            if (statement != null) {
+                statement.close();
+                statement = null;
+            }
+            connection.close();
+            //jdbc.release(connection);
+        } catch (SQLException e) {
+            System.err.println("closeConnection is failure!" + e.getMessage());
+        }
+    }
+
+    public static void main(String args[]) {
+        try {
+            DBSQL db = new DBSQL();
+            String[] Sql = {"Insert into temp_ly values(4,'aaadasf')", "insert into temp_class(pi_id,cc_name) values(2,'fdsaf',fdas);"};
+            db.executeNonQuery(Sql);
+        } catch (Exception e) {
+            System.out.println("Error !" + e.getMessage());
+        }
+    }
 	  /*
     try{
     DBSQL db = new DBSQL();

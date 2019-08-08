@@ -9,19 +9,19 @@ import org.apache.struts.action.ActionMapping;
 
 import com.boco.eoms.sheet.interfaceBase.service.IAuthentication;
 
-public class IrmsAuthenticationImpl implements IAuthentication{
+public class IrmsAuthenticationImpl implements IAuthentication {
 
-	public String getAuthenticationResult(String userId, String password) {
+    public String getAuthenticationResult(String userId, String password) {
 
-		boolean result = false;
-		if(result)
-			return "irms";
-		return null;
-	}
+        boolean result = false;
+        if (result)
+            return "irms";
+        return null;
+    }
 
-	public ActionForward authenticationCommon(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-	throws Exception {
-		return null;
-	}
+    public ActionForward authenticationCommon(ActionMapping mapping, ActionForm form,
+                                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return null;
+    }
 }

@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.plannadjust.qo.IPlannAdjustQo;
  * <p>
  * Sat Jun 08 11:16:10 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannAdjustQoImpl extends WorkSheetQOImpl implements IPlannAdjustQo {
- 
- }
+
+public class PlannAdjustQoImpl extends WorkSheetQOImpl implements IPlannAdjustQo {
+
+}

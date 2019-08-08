@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
-	<class name="com.boco.eoms.commons.system.user.model.TawPartnersUser"
-		table="taw_Partners_User">
+    <class name="com.boco.eoms.commons.system.user.model.TawPartnersUser"
+           table="taw_Partners_User">
 
-		   <id column="id" name="id" type="string">
-                <generator class="uuid.hex"/>
-           </id>
+        <id column="id" name="id" type="string">
+            <generator class="uuid.hex"/>
+        </id>
 
-		<property name="inCompany" length="100">
+        <property name="inCompany" length="100">
 
-		</property>
+        </property>
 
-		<property name="inCity" length="100">
+        <property name="inCity" length="100">
 
-		</property>
+        </property>
 
-		<property name="inDistrict" length="100">
+        <property name="inDistrict" length="100">
 
-		</property>
+        </property>
 
-		<property name="education" length="1000">
+        <property name="education" length="1000">
 
-		</property>
+        </property>
 
-		<property name="birthday" length="100">
+        <property name="birthday" length="100">
 
-		</property>
+        </property>
 
-		<property name="techTitle" length="100">
+        <property name="techTitle" length="100">
 
-		</property>
+        </property>
 
-		<property name="IDNumber" length="100">
+        <property name="IDNumber" length="100">
 
-		</property>
+        </property>
 
-		<property name="postState" length="100">
+        <property name="postState" length="100">
 
-		</property>
+        </property>
 
-		<property name="photoInfo" length="100">
+        <property name="photoInfo" length="100">
 
-		</property>
+        </property>
 
-		<property name="staffLabel" length="100">
+        <property name="staffLabel" length="100">
 
-		</property>
+        </property>
 
-		<property name="isMarried" length="100">
+        <property name="isMarried" length="100">
 
-		</property>
+        </property>
 
-		<property name="jobType" length="100">
+        <property name="jobType" length="100">
 
-		</property>
+        </property>
 
-		<property name="post" length="100">
+        <property name="post" length="100">
 
-		</property>
+        </property>
 
-		<property name="graduateSchool" length="100">
+        <property name="graduateSchool" length="100">
 
-		</property>
+        </property>
 
-		<property name="specialties" length="100">
+        <property name="specialties" length="100">
 
-		</property>
+        </property>
 
-		<property name="politicalStatus" length="100">
+        <property name="politicalStatus" length="100">
 
-		</property>
+        </property>
 
-		<property name="workPeriod" length="100">
+        <property name="workPeriod" length="100">
 
-		</property>
+        </property>
 
-		<property name="personDiscription" length="100">
+        <property name="personDiscription" length="100">
 
-		</property>
+        </property>
 
-		<property name="startWorkTime" length="100">
+        <property name="startWorkTime" length="100">
 
-		</property>
+        </property>
 
-		<property name="toDeptTime" length="100"></property>
-		<property name="certificationInfo" length="100">
+        <property name="toDeptTime" length="100"></property>
+        <property name="certificationInfo" length="100">
 
-		</property>
-		<property name="userid" length="100">
+        </property>
+        <property name="userid" length="100">
 
-		</property>
+        </property>
 
-		
-	</class>
+
+    </class>
 
 </hibernate-mapping>
 

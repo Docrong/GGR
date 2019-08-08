@@ -2,75 +2,75 @@ package com.boco.eoms.commons.mms.base.config;
 
 public class Sheet {
 
-	private String id = null;
-	
-	private String index = null;
-	
-	private String name = null;
-	
-	private String type = "stat";
-	
-	private String excelPath = null;
-	
-	private String queryPath = null;
-	
-	private Foot foot = null;
+    private String id = null;
 
-	public Foot getFoot() {
-		return foot;
-	}
+    private String index = null;
 
-	public void setFoot(Foot foot) {
-		this.foot = foot;
-	}
+    private String name = null;
 
-	public String getExcelPath() {
-		return excelPath;
-	}
+    private String type = "stat";
 
-	public void setExcelPath(String excelPath) {
-		this.excelPath = excelPath;
-	}
+    private String excelPath = null;
 
-	public String getQueryPath() {
-		return queryPath;
-	}
+    private String queryPath = null;
 
-	public void setQueryPath(String queryPath) {
-		this.queryPath = queryPath;
-	}
+    private Foot foot = null;
 
-	public String getIndex() {
-		return index;
-	}
+    public Foot getFoot() {
+        return foot;
+    }
 
-	public void setIndex(String index) {
-		this.index = index;
-	}
+    public void setFoot(Foot foot) {
+        this.foot = foot;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getExcelPath() {
+        return excelPath;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setExcelPath(String excelPath) {
+        this.excelPath = excelPath;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getQueryPath() {
+        return queryPath;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setQueryPath(String queryPath) {
+        this.queryPath = queryPath;
+    }
 
-	public String getType() {
-		return type;
-	}
+    public String getIndex() {
+        return index;
+    }
 
-	public void setType(String type) {
-		this.type = type;
-	}
-	
-	
+    public void setIndex(String index) {
+        this.index = index;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
 }

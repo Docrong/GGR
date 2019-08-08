@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.equipmentsecurityresponse.dao.IEquipmentSecurityRespo
  * <p>
  * Tue Apr 25 11:45:21 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class EquipmentSecurityResponseTaskDAOHibernate extends TaskDAOImpl implements  IEquipmentSecurityResponseTaskDAO {
- 
- }
+
+public class EquipmentSecurityResponseTaskDAOHibernate extends TaskDAOImpl implements IEquipmentSecurityResponseTaskDAO {
+
+}

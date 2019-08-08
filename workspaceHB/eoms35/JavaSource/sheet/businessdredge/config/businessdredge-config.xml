@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WorkFlowRule name="BusinessDredge" description="业务开通工单">
-   <flow-define id="BusinessDredgeMainFlowProcess" description="业务开通工单">
-     <phase-id id="receive" type="receive">
-       <to-phase-id id="TaskCreateAuditHumTask" role="" condition="" name="派发"/>
-       <to-phase-id id="DraftHumTask" role="" condition="" name="保存草稿"/>   
-     </phase-id>
-     <phase-id id="DraftHumTask" name="草稿" type="operate">   
-        <to-phase-id id="TransmitMoreTask" role="" condition="" name="派发"/>
-        <to-phase-id id="TaskCreateAuditHumTask" role="" condition="" name="审核"/>
-     </phase-id> 
-     <phase-id id="TaskCreateAuditHumTask" name="新建审核" type="operate">  
-        <to-phase-id id="ExcuteHumTask" role="" condition="" name="审核通过派发"/>
-        <to-phase-id id="ByRejectHumTask" role="" condition="" name="审核不通过"/>
-     </phase-id>     
-     <phase-id id="ByRejectHumTask" name="驳回" type="operate">
-        <to-phase-id id="TaskCreateAuditHumTask" role="" condition="" name="派发"/>
-     </phase-id>
-     <phase-id id="ExcuteHumTask" name="执行/回复" type="operate">
-     	<to-phase-id id="TaskCompleteAuditHumTask" role="" condition="" name="回复送审"/>
-     	<to-phase-id id="receiveNet" role="" condition="" name="启动变更配置工单"/>
-     	<to-phase-id id="AffirmHumTask" role="" condition="" name="回复"/>
-     </phase-id>
-     <phase-id id="receiveNet" name="启动变更配置工单" type="operate">
-     </phase-id>
-     <phase-id id="AffirmHumTask" name="处理回复" type="operate">
-     	<to-phase-id id="ExcuteHumTask" role="" condition="" name="处理回复不通过"/>
-        <to-phase-id id="receive" role="" condition="" name="处理回复通过"/>
-     </phase-id>
-     <phase-id id="receive" name="回复" type="operate">
-     	<to-phase-id id="HoldHumTask" role="" condition="" name="归档"/>
-     </phase-id>
-     <phase-id id="HoldHumTask" name="归档" type="operate">
-     </phase-id>
-     
-  </flow-define>
+    <flow-define id="BusinessDredgeMainFlowProcess" description="业务开通工单">
+        <phase-id id="receive" type="receive">
+            <to-phase-id id="TaskCreateAuditHumTask" role="" condition="" name="派发"/>
+            <to-phase-id id="DraftHumTask" role="" condition="" name="保存草稿"/>
+        </phase-id>
+        <phase-id id="DraftHumTask" name="草稿" type="operate">
+            <to-phase-id id="TransmitMoreTask" role="" condition="" name="派发"/>
+            <to-phase-id id="TaskCreateAuditHumTask" role="" condition="" name="审核"/>
+        </phase-id>
+        <phase-id id="TaskCreateAuditHumTask" name="新建审核" type="operate">
+            <to-phase-id id="ExcuteHumTask" role="" condition="" name="审核通过派发"/>
+            <to-phase-id id="ByRejectHumTask" role="" condition="" name="审核不通过"/>
+        </phase-id>
+        <phase-id id="ByRejectHumTask" name="驳回" type="operate">
+            <to-phase-id id="TaskCreateAuditHumTask" role="" condition="" name="派发"/>
+        </phase-id>
+        <phase-id id="ExcuteHumTask" name="执行/回复" type="operate">
+            <to-phase-id id="TaskCompleteAuditHumTask" role="" condition="" name="回复送审"/>
+            <to-phase-id id="receiveNet" role="" condition="" name="启动变更配置工单"/>
+            <to-phase-id id="AffirmHumTask" role="" condition="" name="回复"/>
+        </phase-id>
+        <phase-id id="receiveNet" name="启动变更配置工单" type="operate">
+        </phase-id>
+        <phase-id id="AffirmHumTask" name="处理回复" type="operate">
+            <to-phase-id id="ExcuteHumTask" role="" condition="" name="处理回复不通过"/>
+            <to-phase-id id="receive" role="" condition="" name="处理回复通过"/>
+        </phase-id>
+        <phase-id id="receive" name="回复" type="operate">
+            <to-phase-id id="HoldHumTask" role="" condition="" name="归档"/>
+        </phase-id>
+        <phase-id id="HoldHumTask" name="归档" type="operate">
+        </phase-id>
+
+    </flow-define>
 </WorkFlowRule>

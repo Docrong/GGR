@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
 
-	<bean id="FMImportExcelFileManagerImpl"
-		class="com.boco.eoms.commons.file.service.impl.FMImportExcelFileManagerImpl">
-		<property name="fmParseXmlManager">
-			<ref bean="ParseXmlManagerImpl" />
-		</property>
-	</bean>
+    <bean id="FMImportExcelFileManagerImpl"
+          class="com.boco.eoms.commons.file.service.impl.FMImportExcelFileManagerImpl">
+        <property name="fmParseXmlManager">
+            <ref bean="ParseXmlManagerImpl"/>
+        </property>
+    </bean>
 
 
-	<bean id="FMExportExcelFileManagerImpl"
-		class="com.boco.eoms.commons.file.service.impl.FMExportExcelFileManagerImpl">
-		<property name="fmParseXmlManager">
-			<ref bean="ParseXmlManagerImpl" />
-		</property>
-	</bean>
+    <bean id="FMExportExcelFileManagerImpl"
+          class="com.boco.eoms.commons.file.service.impl.FMExportExcelFileManagerImpl">
+        <property name="fmParseXmlManager">
+            <ref bean="ParseXmlManagerImpl"/>
+        </property>
+    </bean>
 
 
-	<bean id="FMExportPdfFileManagerImpl"
-		class="com.boco.eoms.commons.file.service.impl.FMExportPdfFileManagerImpl">
-		<property name="fmParseXmlManager">
-			<ref bean="ParseXmlManagerImpl" />
-		</property>
-	</bean>
+    <bean id="FMExportPdfFileManagerImpl"
+          class="com.boco.eoms.commons.file.service.impl.FMExportPdfFileManagerImpl">
+        <property name="fmParseXmlManager">
+            <ref bean="ParseXmlManagerImpl"/>
+        </property>
+    </bean>
 
-	<bean id="FMExportCSVFileManagerImpl"
-		class="com.boco.eoms.commons.file.service.impl.FMExportCSVFileManagerImpl">
-		<property name="fmParseXmlManager">
-			<ref bean="ParseXmlManagerImpl" />
-		</property>
-	</bean>
+    <bean id="FMExportCSVFileManagerImpl"
+          class="com.boco.eoms.commons.file.service.impl.FMExportCSVFileManagerImpl">
+        <property name="fmParseXmlManager">
+            <ref bean="ParseXmlManagerImpl"/>
+        </property>
+    </bean>
 
 
 </beans>

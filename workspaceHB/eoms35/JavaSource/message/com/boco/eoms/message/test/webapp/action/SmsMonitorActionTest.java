@@ -82,7 +82,7 @@ public class SmsMonitorActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"smsMonitor.updated"});
+        verifyActionMessages(new String[]{"smsMonitor.updated"});
 
     }
 

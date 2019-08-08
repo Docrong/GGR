@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_ASK_COMMENT"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="commentUser"
-            	column="COMMENT_USER"
+        <property
+                name="commentUser"
+                column="COMMENT_USER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="commentDate"
-            	column="COMMENT_DATE"
+        <property
+                name="commentDate"
+                column="COMMENT_DATE"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="commentDept"
-            	column="COMMENT_DEPT"
+        <property
+                name="commentDept"
+                column="COMMENT_DEPT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="content"
-            	column="CONTENT"
+        <property
+                name="content"
+                column="CONTENT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="questionId"
-            	column="QUESTION_ID"
+        <property
+                name="questionId"
+                column="QUESTION_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -76,8 +76,8 @@
 
         </property>
 
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

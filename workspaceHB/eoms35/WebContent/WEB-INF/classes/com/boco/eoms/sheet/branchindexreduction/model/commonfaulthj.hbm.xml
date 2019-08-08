@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-<class name="com.boco.eoms.sheet.branchindexreduction.model.commonfaulthj" table="commonfault_hj">
-	            
+    <class name="com.boco.eoms.sheet.branchindexreduction.model.commonfaulthj" table="commonfault_hj">
 
- 	<id
-        name="id"
-            column="id"
-    >     
-      <generator class="uuid.hex">
-    </generator>
-    </id>
-    <property name="mainid"
-            column="mainid">
-    </property>
-    
-    <property name="sheetid"
-            column="sheetid">
-    </property>
-    
-    <property name="creater"
-            column="creater">
-    </property>
-    
-    <property name="savetime"
-            column="savetime">
-    </property>
-    
-    <property name="updatetime"
-            column="updatetime">
-    </property>
-   <property name="sendyear"
-            column="sendyear">
-    </property>
-       <property name="sendmonth"
-            column="sendmonth">
-    </property>
-    <property name="sendday"
-            column="sendday">
-    </property>
+
+        <id
+                name="id"
+                column="id"
+        >
+            <generator class="uuid.hex">
+            </generator>
+        </id>
+        <property name="mainid"
+                  column="mainid">
+        </property>
+
+        <property name="sheetid"
+                  column="sheetid">
+        </property>
+
+        <property name="creater"
+                  column="creater">
+        </property>
+
+        <property name="savetime"
+                  column="savetime">
+        </property>
+
+        <property name="updatetime"
+                  column="updatetime">
+        </property>
+        <property name="sendyear"
+                  column="sendyear">
+        </property>
+        <property name="sendmonth"
+                  column="sendmonth">
+        </property>
+        <property name="sendday"
+                  column="sendday">
+        </property>
         <property name="remark"
-            column="remark">
-    </property>
-            <property name="subtracttype"
-            column="subtracttype">
-    </property>
-</class>    
+                  column="remark">
+        </property>
+        <property name="subtracttype"
+                  column="subtracttype">
+        </property>
+    </class>
 </hibernate-mapping>
 

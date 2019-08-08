@@ -1,7 +1,6 @@
 package com.boco.eoms.sheet.commonfaultcorrigendum.dao;
 
 
-
 /**
  * <p>
  * Title:故障工单勘误流程
@@ -12,12 +11,11 @@ package com.boco.eoms.sheet.commonfaultcorrigendum.dao;
  * <p>
  * Mon Sep 29 11:24:17 CST 2014
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICommonfaultCorrigendumTaskDAO  {
- 
- }
+
+public interface ICommonfaultCorrigendumTaskDAO {
+
+}

@@ -2,8 +2,8 @@
  *
  * Ext.ux.form.LovCombo CSS File
  *
- * @author    Ing.Jozef Sak¨¢lo?
- * @copyright (c) 2008, by Ing. Jozef Sak¨¢lo?
+ * @author    Ing.Jozef Sakï¿½ï¿½lo?
+ * @copyright (c) 2008, by Ing. Jozef Sakï¿½ï¿½lo?
  * @date      5. April 2008
  * @version   $Id: LovCombo.css,v 1.1 2010/08/25 09:53:19 administrator Exp $
  *
@@ -15,22 +15,25 @@
  * License details: http://www.gnu.org/licenses/lgpl.html
  */
 
-.ux-combo-selectall{  
-    padding:3px;  
-}  
-.ux-combo-selectall-icon-checked{  
-    background: transparent url(checked.gif);  
-}  
-.ux-combo-selectall-icon-unchecked {    
-    background: transparent url(unchecked.gif);    
-}  
-.ux-combo-selectall-icon {  
-    text-indent:1.8em;  
-    background-position: 3px 2px ! important;    
-    background-repeat:no-repeat ! important;    
-    height:22px;  
-    line-height:20px;  
-    font-size:12px;  
-    font-weight:bold;  
-    -moz-user-select:none;  
+.ux-combo-selectall {
+    padding: 3px;
+}
+
+.ux-combo-selectall-icon-checked {
+    background: transparent url(checked.gif);
+}
+
+.ux-combo-selectall-icon-unchecked {
+    background: transparent url(unchecked.gif);
+}
+
+.ux-combo-selectall-icon {
+    text-indent: 1.8em;
+    background-position: 3px 2px ! important;
+    background-repeat: no-repeat ! important;
+    height: 22px;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    -moz-user-select: none;
 }   

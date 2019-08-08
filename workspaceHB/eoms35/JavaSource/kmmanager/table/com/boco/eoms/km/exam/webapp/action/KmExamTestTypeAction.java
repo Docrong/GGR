@@ -37,152 +37,152 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Fri May 08 16:40:12 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() hsl
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmExamTestTypeAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增题型信息表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增题型信息表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改题型信息表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改题型信息表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		KmExamTestType kmExamTestType = kmExamTestTypeMgr.getKmExamTestType(id);
-		KmExamTestTypeForm kmExamTestTypeForm = (KmExamTestTypeForm) convert(kmExamTestType);
-		updateFormBean(mapping, request, kmExamTestTypeForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存题型信息表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
-		KmExamTestTypeForm kmExamTestTypeForm = (KmExamTestTypeForm) form;
-		boolean isNew = (null == kmExamTestTypeForm.getTestTypeId() || "".equals(kmExamTestTypeForm.getTestTypeId()));
-		KmExamTestType kmExamTestType = (KmExamTestType) convert(kmExamTestTypeForm);
-		if (isNew) {
-			kmExamTestTypeMgr.saveKmExamTestType(kmExamTestType);
-		} else {
-			kmExamTestTypeMgr.saveKmExamTestType(kmExamTestType);
-		}
-		return search(mapping, kmExamTestTypeForm, request, response);
-	}
-	
-	/**
-	 * 删除题型信息表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		kmExamTestTypeMgr.removeKmExamTestType(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示题型信息表列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmExamTestTypeConstants.KMEXAMTESTTYPE_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
-		Map map = (Map) kmExamTestTypeMgr.getKmExamTestTypes(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(KmExamTestTypeConstants.KMEXAMTESTTYPE_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示题型信息表列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        KmExamTestType kmExamTestType = kmExamTestTypeMgr.getKmExamTestType(id);
+        KmExamTestTypeForm kmExamTestTypeForm = (KmExamTestTypeForm) convert(kmExamTestType);
+        updateFormBean(mapping, request, kmExamTestTypeForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存题型信息表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
+        KmExamTestTypeForm kmExamTestTypeForm = (KmExamTestTypeForm) form;
+        boolean isNew = (null == kmExamTestTypeForm.getTestTypeId() || "".equals(kmExamTestTypeForm.getTestTypeId()));
+        KmExamTestType kmExamTestType = (KmExamTestType) convert(kmExamTestTypeForm);
+        if (isNew) {
+            kmExamTestTypeMgr.saveKmExamTestType(kmExamTestType);
+        } else {
+            kmExamTestTypeMgr.saveKmExamTestType(kmExamTestType);
+        }
+        return search(mapping, kmExamTestTypeForm, request, response);
+    }
+
+    /**
+     * 删除题型信息表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        kmExamTestTypeMgr.removeKmExamTestType(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示题型信息表列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmExamTestTypeConstants.KMEXAMTESTTYPE_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        KmExamTestTypeMgr kmExamTestTypeMgr = (KmExamTestTypeMgr) getBean("kmExamTestTypeMgr");
+        Map map = (Map) kmExamTestTypeMgr.getKmExamTestTypes(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(KmExamTestTypeConstants.KMEXAMTESTTYPE_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示题型信息表列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 //		try {
 //			// --------------用于分页，得到当前页号-------------
 //			final Integer pageIndex = new Integer(request
@@ -235,6 +235,6 @@ public final class KmExamTestTypeAction extends BaseAction {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		return null;
-	}
+        return null;
+    }
 }

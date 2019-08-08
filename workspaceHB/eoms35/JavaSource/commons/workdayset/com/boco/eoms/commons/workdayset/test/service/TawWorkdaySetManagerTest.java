@@ -35,7 +35,7 @@ public class TawWorkdaySetManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkdaySetDao.expects(once()).method("getTawWorkdaySets")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawWorkdaySets = tawWorkdaySetManager.getTawWorkdaySets(null);
         assertTrue(tawWorkdaySets.size() == 1);
@@ -45,7 +45,7 @@ public class TawWorkdaySetManagerTest extends BaseManagerTestCase {
     public void testGetTawWorkdaySet() throws Exception {
         // set expected behavior on dao
         tawWorkdaySetDao.expects(once()).method("getTawWorkdaySet")
-            .will(returnValue(new TawWorkdaySet()));
+                .will(returnValue(new TawWorkdaySet()));
         TawWorkdaySet tawWorkdaySet = tawWorkdaySetManager.getTawWorkdaySet(tawWorkdaySetId);
         assertTrue(tawWorkdaySet != null);
         tawWorkdaySetDao.verify();
@@ -56,7 +56,7 @@ public class TawWorkdaySetManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkdaySetDao.expects(once()).method("saveTawWorkdaySet")
-            .with(same(tawWorkdaySet)).isVoid();
+                .with(same(tawWorkdaySet)).isVoid();
 
         tawWorkdaySetManager.saveTawWorkdaySet(tawWorkdaySet);
         tawWorkdaySetDao.verify();
@@ -71,7 +71,7 @@ public class TawWorkdaySetManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkdaySetDao.expects(once()).method("saveTawWorkdaySet")
-            .with(same(tawWorkdaySet)).isVoid();
+                .with(same(tawWorkdaySet)).isVoid();
         tawWorkdaySetManager.saveTawWorkdaySet(tawWorkdaySet);
         tawWorkdaySetDao.verify();
 

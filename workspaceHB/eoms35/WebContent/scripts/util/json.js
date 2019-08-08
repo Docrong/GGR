@@ -86,22 +86,22 @@ if (!Object.prototype.toJSONString) {
 // toJSONString method. Due to a specification error in ECMAScript,
 // typeof null is 'object', so watch out for that case.
 
-            case 'object':
-                if (v) {
-                    if (typeof v.toJSONString === 'function') {
-                        p(v.toJSONString());
+                case 'object':
+                    if (v) {
+                        if (typeof v.toJSONString === 'function') {
+                            p(v.toJSONString());
+                        }
+                    } else {
+                        p("null");
                     }
-                } else {
-                    p("null");
-                }
-                break;
+                    break;
 
 // Otherwise, serialize the value.
 
-            case 'string':
-            case 'number':
-            case 'boolean':
-                p(v.toJSONString());
+                case 'string':
+                case 'number':
+                case 'boolean':
+                    p(v.toJSONString());
 
 // Values without a JSON representation are ignored.
 
@@ -132,11 +132,11 @@ if (!Object.prototype.toJSONString) {
         }
 
         return '"' + this.getFullYear() + '-' +
-                f(this.getMonth() + 1) + '-' +
-                f(this.getDate()) + 'T' +
-                f(this.getHours()) + ':' +
-                f(this.getMinutes()) + ':' +
-                f(this.getSeconds()) + '"';
+            f(this.getMonth() + 1) + '-' +
+            f(this.getDate()) + 'T' +
+            f(this.getHours()) + ':' +
+            f(this.getMinutes()) + ':' +
+            f(this.getSeconds()) + '"';
     };
 
 
@@ -177,20 +177,20 @@ if (!Object.prototype.toJSONString) {
 // toJSONString method. Due to a specification error in ECMAScript,
 // typeof null is 'object', so watch out for that case.
 
-                case 'object':
-                    if (v) {
-                        if (typeof v.toJSONString === 'function') {
-                            p(v.toJSONString());
+                    case 'object':
+                        if (v) {
+                            if (typeof v.toJSONString === 'function') {
+                                p(v.toJSONString());
+                            }
+                        } else {
+                            p("null");
                         }
-                    } else {
-                        p("null");
-                    }
-                    break;
+                        break;
 
-                case 'string':
-                case 'number':
-                case 'boolean':
-                    p(v.toJSONString());
+                    case 'string':
+                    case 'number':
+                    case 'boolean':
+                        p(v.toJSONString());
 
 // Values without a JSON representation are ignored.
 
@@ -218,7 +218,7 @@ if (!Object.prototype.toJSONString) {
             '\n': '\\n',
             '\f': '\\f',
             '\r': '\\r',
-            '"' : '\\"',
+            '"': '\\"',
             '\\': '\\\\'
         };
 
@@ -246,8 +246,7 @@ if (!Object.prototype.toJSONString) {
             }
 
             try {
-                if (/^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/.
-                        test(this)) {
+                if (/^("(\\.|[^"\\\n\r])*?"|[,:{}\[\]0-9.\-+Eaeflnr-u \n\r\t])+?$/.test(this)) {
 
 // In the second stage we use the eval function to compile the text into a
 // JavaScript structure. The '{' operator is subject to a syntactic ambiguity

@@ -10,27 +10,25 @@ import com.ggr.dao.IUserDao;
 import com.ggr.model.User;
 
 
-
-
 @Service("userService")
 public class UserServiceImpl implements IUserService {
-	private IUserDao userDao;
-	
-	
-	public IUserDao getUserDao() {
-		return userDao;
-	}
+    private IUserDao userDao;
+
+
+    public IUserDao getUserDao() {
+        return userDao;
+    }
 
     @Resource
-	public void setUserDao(IUserDao userDao) {
-		this.userDao = userDao;
-	}
+    public void setUserDao(IUserDao userDao) {
+        this.userDao = userDao;
+    }
 
 
-	@Override
-	public List<User> selectAll() {
-		// TODO Auto-generated method stub
-		return userDao.selectAll();
-	}
+    @Override
+    public List<User> selectAll() {
+        // TODO Auto-generated method stub
+        return userDao.selectAll();
+    }
 
 }

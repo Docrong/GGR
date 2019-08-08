@@ -22,43 +22,42 @@ public class SmsApplyDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.Integer count = new Integer(1330338700);
-        smsApply.setCount(count);        
+        smsApply.setCount(count);
 
 
         java.util.Date endTime = new java.util.Date();
-        smsApply.setEndTime(endTime);        
+        smsApply.setEndTime(endTime);
 
         java.lang.String name = "AlLrHbOmTuTdVrTcGmGfWtGpQjJtTdNgLfDqSfFjJjMpYkMyTvUaQyFyEhWoPcTbHeEbKvIiPvUfMcIlJnBlLmLzSwJfZpDoStNy";
-        smsApply.setName(name);        
+        smsApply.setName(name);
 
         java.lang.String interval = "NxNkOuDuYl";
-        smsApply.setInterval(interval);        
+        smsApply.setInterval(interval);
 
         java.lang.String mobile = "QmCjDpGwZwCyGdQpFgCb";
-        smsApply.setMobile(mobile);        
+        smsApply.setMobile(mobile);
 
         java.lang.String receiverId = "YqOnZjUbBoXgEmFmHrSvNgKzPeGnEk";
-        smsApply.setReceiverId(receiverId);        
+        smsApply.setReceiverId(receiverId);
 
         java.lang.String receiverType = "W";
-        smsApply.setReceiverType(receiverType);        
+        smsApply.setReceiverType(receiverType);
 
         java.lang.String regetData = "V";
-        smsApply.setRegetData(regetData);        
+        smsApply.setRegetData(regetData);
 
         java.lang.String remark = "MhQfGlLmCmHcZcEcXkKyXcEeQjZrXzGpMnLvPbSlNdFxVyMxJcVlDoDtGyJiIkKbUpWdEwNyVzYxQxDmLrFcGcYnVmLnGyYrZlJgAzMlWiEyEgBbUeEpUyGrMiEsXeNmFnEwSrFxYeKvAmToTfUbFsDuDhVbJpQgZeIzWzOtJzTcAyNuIzYvUlNhKsDlUtWyLyEtFwNj";
-        smsApply.setRemark(remark);        
+        smsApply.setRemark(remark);
 
-               
 
         java.lang.String serviceId = "FnEnCkHePrXpPlDxCbSrNxTgYjQuEoRd";
-        smsApply.setServiceId(serviceId);        
+        smsApply.setServiceId(serviceId);
 
         java.util.Date startTime = new java.util.Date();
-        smsApply.setStartTime(startTime);        
+        smsApply.setStartTime(startTime);
 
         java.lang.String userId = "BqWaSyZfDbSuRnObRgTqBdYgIoYcIi";
-        smsApply.setUserId(userId);        
+        smsApply.setUserId(userId);
 
         dao.saveSmsApply(smsApply);
 
@@ -97,29 +96,29 @@ public class SmsApplyDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.Integer count = new Integer(1507503857);
-        smsApply.setCount(count);       
+        smsApply.setCount(count);
         java.util.Date endTime = new java.util.Date();
-        smsApply.setEndTime(endTime);        
+        smsApply.setEndTime(endTime);
         java.lang.String name = "GxMkXeBzIlQvLnTiWpClZpLsVgPbVkVlOvQqZiToAuIpDiAkQvQsIaAiGjPkWxBgZuFhBgUqGyLjOqYxEfRhYmNjLaPvQbExZoYw";
-        smsApply.setName(name);        
+        smsApply.setName(name);
         java.lang.String interval = "UvBnTbVfKp";
-        smsApply.setInterval(interval);        
+        smsApply.setInterval(interval);
         java.lang.String mobile = "RhSdFuQxQrHaGrTvXoQz";
-        smsApply.setMobile(mobile);        
+        smsApply.setMobile(mobile);
         java.lang.String receiverId = "UjOvOhYoLrZmMyKdTeGbVzPtHrGvNn";
-        smsApply.setReceiverId(receiverId);        
+        smsApply.setReceiverId(receiverId);
         java.lang.String receiverType = "M";
-        smsApply.setReceiverType(receiverType);        
+        smsApply.setReceiverType(receiverType);
         java.lang.String regetData = "Y";
-        smsApply.setRegetData(regetData);        
+        smsApply.setRegetData(regetData);
         java.lang.String remark = "ZhZvIxCyXsEuDtTsFvLpSjJkDaKmRxClBnGjDdRdEtRmFtUvIsClOyKiTmHmPiJfFrHnXhAbLdGqBxCiYwOfXwDqQfEkEaUiYvTqRfGgJvObJoKxWcXkVsLcCdLqVeAbXhJeTyMyIfEmXqIdXxFdZtEfWkMoCjUgZqPdAbCiHiPvHiFtWuOuFvNsWhGxUoYsRcPjUsQb";
-        smsApply.setRemark(remark);  
+        smsApply.setRemark(remark);
         java.lang.String serviceId = "HyQpLyXuScFkLpKbMmSzTkEmEjIuGrCt";
-        smsApply.setServiceId(serviceId);        
+        smsApply.setServiceId(serviceId);
         java.util.Date startTime = new java.util.Date();
-        smsApply.setStartTime(startTime);        
+        smsApply.setStartTime(startTime);
         java.lang.String userId = "TcJiRjZnYfLjTnXjRmQlCqGjSdQfWc";
-        smsApply.setUserId(userId);        
+        smsApply.setUserId(userId);
 
         dao.saveSmsApply(smsApply);
 

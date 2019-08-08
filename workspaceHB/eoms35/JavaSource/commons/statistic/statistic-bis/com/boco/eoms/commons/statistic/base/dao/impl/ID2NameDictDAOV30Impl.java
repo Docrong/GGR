@@ -3,16 +3,14 @@ package com.boco.eoms.commons.statistic.base.dao.impl;
 import com.boco.eoms.commons.statistic.base.exception.Id2NameDAOException;
 
 /**
- *
  * @author lizhenyou
- *
  */
 public class ID2NameDictDAOV30Impl extends Id2NameBaseV30Impl {
-  private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.
-       ConnectionPool.getInstance();
+    private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.
+            ConnectionPool.getInstance();
 
 
-        public String idType2Name(String id, String type) throws Id2NameDAOException {
+    public String idType2Name(String id, String type) throws Id2NameDAOException {
 //        com.boco.eoms.wsdict.dao.TawWsDictDAO tawWsDictDAO = new com.boco.eoms.wsdict.dao.TawWsDictDAO(ds);
 //        String dictname = null;
 //        try {
@@ -24,7 +22,7 @@ public class ID2NameDictDAOV30Impl extends Id2NameBaseV30Impl {
 //        catch (SQLException ex) {
 //        }
 //         return dictname;
-        	return "";
+        return "";
 
-        }
+    }
 }

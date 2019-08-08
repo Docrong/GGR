@@ -7,6 +7,7 @@
  * Time: 20:33:19
  * To change this template use File | Settings | File Templates.
  */
+
 import com.boco.eoms.db.util.ConnectionPool;
 
 import javax.servlet.http.HttpServletRequest;
@@ -149,7 +150,7 @@ public class PaginationBean {
                 System.out.println(Util.UNI2GBK(e.getMessage()));
             }
         }
-         //System.out.println("#####result"+result);
+        //System.out.println("#####result"+result);
         return result;
     }
 
@@ -168,15 +169,15 @@ public class PaginationBean {
     //Countsql:总记录的Query字符串。[形式为select count(*) from tablename]
     //Pagisql :要分页的Query字符串。[形式为select * from tablename where ...]
     //request :参数传递过程中的变量。[用来控制翻页时的pages变量]
-    private  StringBuffer getCountSQL(String sql){
+    private StringBuffer getCountSQL(String sql) {
         StringBuffer result = new StringBuffer();
         result.append("select count(*) ");
         int sub_begin = sql.indexOf("from");
 
-        if(sql.indexOf("order by")>0)
-            result.append(sql.substring(sub_begin,sql.indexOf("order by")));
+        if (sql.indexOf("order by") > 0)
+            result.append(sql.substring(sub_begin, sql.indexOf("order by")));
         else
-            result.append(sql.substring(sub_begin)) ;
+            result.append(sql.substring(sub_begin));
         return result;
     }
 
@@ -188,7 +189,7 @@ public class PaginationBean {
         try {
 
             Pagirs = con.createStatement().executeQuery(Util.getCountSQL(Pagisql).toString());
-            if(Pagirs.next()){
+            if (Pagirs.next()) {
                 intCountTopic = Pagirs.getInt(1);
             }
 
@@ -271,7 +272,7 @@ public class PaginationBean {
 
             }
             try {
-                if(con!=null)con.close();
+                if (con != null) con.close();
             } catch (SQLException e) {
                 e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             }
@@ -293,10 +294,10 @@ public class PaginationBean {
 
             } else {
 
-                String name = "",value = "";
-                Enumeration enum = request.getParameterNames();
+                String name = "", value = "";
+                Enumeration enum =request.getParameterNames();
 
-                while (enum.hasMoreElements()) {
+                while ( enum.hasMoreElements()){
 
                     name = (String) enum.nextElement();
                     value = request.getParameter(name);
@@ -330,7 +331,7 @@ public class PaginationBean {
     }
 
 
-//分页栏函数。
+    //分页栏函数。
     private StringBuffer PageFooter(HttpServletRequest request) {
 
         StringBuffer str = new StringBuffer();

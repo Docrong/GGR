@@ -20,10 +20,9 @@ import java.util.Date;
  * <p>
  * Date:2007-8-3 10:42:26
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class LinkQO {
 
@@ -98,7 +97,6 @@ public class LinkQO {
     private Integer toOrgRoleId;
 
     /**
-     * 
      * 接单类型,不超时,超时
      */
     private String acceptFlag;
@@ -161,8 +159,7 @@ public class LinkQO {
     }
 
     /**
-     * @param acceptLimit
-     *            the acceptLimit to set
+     * @param acceptLimit the acceptLimit to set
      */
     public void setAcceptLimit(Date acceptLimit) {
         this.acceptLimit = acceptLimit;
@@ -176,284 +173,328 @@ public class LinkQO {
     }
 
     /**
-     * @param acceptTime
-     *            the acceptTime to set
+     * @param acceptTime the acceptTime to set
      */
     public void setAcceptTime(Date acceptTime) {
         this.acceptTime = acceptTime;
     }
 
-   
+
     /**
      * @return the acceptFlag
      */
     public String getAcceptFlag() {
         return acceptFlag;
     }
+
     /**
      * @param acceptFlag the acceptFlag to set
      */
     public void setAcceptFlag(String acceptFlag) {
         this.acceptFlag = acceptFlag;
     }
+
     /**
      * @return the activeTemplateId
      */
     public String getActiveTemplateId() {
         return activeTemplateId;
     }
+
     /**
      * @param activeTemplateId the activeTemplateId to set
      */
     public void setActiveTemplateId(String activeTemplateId) {
         this.activeTemplateId = activeTemplateId;
     }
+
     /**
      * @return the aiid
      */
     public String getAiid() {
         return aiid;
     }
+
     /**
      * @param aiid the aiid to set
      */
     public void setAiid(String aiid) {
         this.aiid = aiid;
     }
+
     /**
      * @return the commpleteType
      */
     public String getCommpleteFlag() {
         return commpleteFlag;
     }
+
     /**
      * @param commpleteType the commpleteType to set
      */
     public void setCommpleteFlag(String commpleteFlag) {
         this.commpleteFlag = commpleteFlag;
     }
+
     /**
      * @return the completeLimit
      */
     public Date getCompleteLimit() {
         return CompleteLimit;
     }
+
     /**
      * @param completeLimit the completeLimit to set
      */
     public void setCompleteLimit(Date completeLimit) {
         CompleteLimit = completeLimit;
     }
+
     /**
      * @return the completeTime
      */
     public Date getCompleteTime() {
         return completeTime;
     }
+
     /**
      * @param completeTime the completeTime to set
      */
     public void setCompleteTime(Date completeTime) {
         this.completeTime = completeTime;
     }
+
     /**
      * @return the firstLinkId
      */
     public String getFirstLinkId() {
         return firstLinkId;
     }
+
     /**
      * @param firstLinkId the firstLinkId to set
      */
     public void setFirstLinkId(String firstLinkId) {
         this.firstLinkId = firstLinkId;
     }
+
     /**
      * @return the id
      */
     public String getId() {
         return id;
     }
+
     /**
      * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
     }
+
     /**
      * @return the mainId
      */
     public String getMainId() {
         return mainId;
     }
+
     /**
      * @param mainId the mainId to set
      */
     public void setMainId(String mainId) {
         this.mainId = mainId;
     }
+
     /**
      * @return the operateDeptId
      */
     public String getOperateDeptId() {
         return operateDeptId;
     }
+
     /**
      * @param operateDeptId the operateDeptId to set
      */
     public void setOperateDeptId(String operateDeptId) {
         this.operateDeptId = operateDeptId;
     }
+
     /**
      * @return the operateOrgType
      */
     public String getOperateOrgType() {
         return operateOrgType;
     }
+
     /**
      * @param operateOrgType the operateOrgType to set
      */
     public void setOperateOrgType(String operateOrgType) {
         this.operateOrgType = operateOrgType;
     }
+
     /**
      * @return the operateRoleId
      */
     public String getOperateRoleId() {
         return operateRoleId;
     }
+
     /**
      * @param operateRoleId the operateRoleId to set
      */
     public void setOperateRoleId(String operateRoleId) {
         this.operateRoleId = operateRoleId;
     }
+
     /**
      * @return the operateTime
      */
     public Date getOperateTime() {
         return operateTime;
     }
+
     /**
      * @param operateTime the operateTime to set
      */
     public void setOperateTime(Date operateTime) {
         this.operateTime = operateTime;
     }
+
     /**
      * @return the operateType
      */
     public String getOperateType() {
         return operateType;
     }
+
     /**
      * @param operateType the operateType to set
      */
     public void setOperateType(String operateType) {
         this.operateType = operateType;
     }
+
     /**
      * @return the operateUserId
      */
     public String getOperateUserId() {
         return operateUserId;
     }
+
     /**
      * @param operateUserId the operateUserId to set
      */
     public void setOperateUserId(String operateUserId) {
         this.operateUserId = operateUserId;
     }
+
     /**
      * @return the parentLinkId
      */
     public String getParentLinkId() {
         return parentLinkId;
     }
+
     /**
      * @param parentLinkId the parentLinkId to set
      */
     public void setParentLinkId(String parentLinkId) {
         this.parentLinkId = parentLinkId;
     }
+
     /**
      * @return the piid
      */
     public String getPiid() {
         return piid;
     }
+
     /**
      * @param piid the piid to set
      */
     public void setPiid(String piid) {
         this.piid = piid;
     }
+
     /**
      * @return the preLinkId
      */
     public String getPreLinkId() {
         return preLinkId;
     }
+
     /**
      * @param preLinkId the preLinkId to set
      */
     public void setPreLinkId(String preLinkId) {
         this.preLinkId = preLinkId;
     }
+
     /**
      * @return the templateName
      */
     public String getTemplateName() {
         return templateName;
     }
+
     /**
      * @param templateName the templateName to set
      */
     public void setTemplateName(String templateName) {
         this.templateName = templateName;
     }
+
     /**
      * @return the toOrgDeptId
      */
     public Integer getToOrgDeptId() {
         return toOrgDeptId;
     }
+
     /**
      * @param toOrgDeptId the toOrgDeptId to set
      */
     public void setToOrgDeptId(Integer toOrgDeptId) {
         this.toOrgDeptId = toOrgDeptId;
     }
+
     /**
      * @return the toOrgRoleId
      */
     public Integer getToOrgRoleId() {
         return toOrgRoleId;
     }
+
     /**
      * @param toOrgRoleId the toOrgRoleId to set
      */
     public void setToOrgRoleId(Integer toOrgRoleId) {
         this.toOrgRoleId = toOrgRoleId;
     }
+
     /**
      * @return the toOrgType
      */
     public String getToOrgType() {
         return toOrgType;
     }
+
     /**
      * @param toOrgType the toOrgType to set
      */
     public void setToOrgType(String toOrgType) {
         this.toOrgType = toOrgType;
     }
+
     /**
      * @return the toOrgUserId
      */
     public String getToOrgUserId() {
         return toOrgUserId;
     }
+
     /**
      * @param toOrgUserId the toOrgUserId to set
      */

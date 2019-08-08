@@ -22,10 +22,9 @@ import com.boco.eoms.commons.system.session.form.TawSystemSessionForm;
  * <p>
  * String:2007-8-3 10:24:03
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class MainForm extends BaseForm implements java.io.Serializable {
 
@@ -37,8 +36,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param ishold
-     *            the ishold to set
+     * @param ishold the ishold to set
      */
     public void setIshold(String ishold) {
         this.ishold = ishold;
@@ -52,8 +50,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param sendPostId
-     *            the sendPostId to set
+     * @param sendPostId the sendPostId to set
      */
     public void setSendPostId(String sendPostId) {
         this.sendPostId = sendPostId;
@@ -68,24 +65,26 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     private String result;
 
     private String holdStatisfied;
-    
-    private String toDeptId;
-    
-    private String cancelReason;
-    
 
-	/**
-	 * @return Returns the toDeptId.
-	 */
-	public String getToDeptId() {
-		return toDeptId;
-	}
-	/**
-	 * @param toDeptId The toDeptId to set.
-	 */
-	public void setToDeptId(String toDeptId) {
-		this.toDeptId = toDeptId;
-	}
+    private String toDeptId;
+
+    private String cancelReason;
+
+
+    /**
+     * @return Returns the toDeptId.
+     */
+    public String getToDeptId() {
+        return toDeptId;
+    }
+
+    /**
+     * @param toDeptId The toDeptId to set.
+     */
+    public void setToDeptId(String toDeptId) {
+        this.toDeptId = toDeptId;
+    }
+
     /**
      * @return the result
      */
@@ -94,8 +93,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param result
-     *            the result to set
+     * @param result the result to set
      */
     public void setResult(String result) {
         this.result = result;
@@ -111,8 +109,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -266,8 +263,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param phaseId
-     *            The phaseId to set.
+     * @param phaseId The phaseId to set.
      */
     public void setPhaseId(String phaseId) {
         this.phaseId = phaseId;
@@ -275,7 +271,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
 
     /**
      * 流程对应的aiid
-     * 
+     *
      * @return
      */
     private String aiid;
@@ -288,8 +284,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param aiid
-     *            The aiid to set.
+     * @param aiid The aiid to set.
      */
     public void setAiid(String aiid) {
         this.aiid = aiid;
@@ -303,8 +298,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param auditPerformer
-     *            The auditPerformer to set.
+     * @param auditPerformer The auditPerformer to set.
      */
     public void setAuditPerformer(String auditPerformer) {
         this.auditPerformer = auditPerformer;
@@ -318,8 +312,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param copyPerformer
-     *            The copyPerformer to set.
+     * @param copyPerformer The copyPerformer to set.
      */
     public void setCopyPerformer(String copyPerformer) {
         this.copyPerformer = copyPerformer;
@@ -333,8 +326,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param dealPerformer
-     *            The dealPerformer to set.
+     * @param dealPerformer The dealPerformer to set.
      */
     public void setDealPerformer(String dealPerformer) {
         this.dealPerformer = dealPerformer;
@@ -348,8 +340,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param operateName
-     *            The operateName to set.
+     * @param operateName The operateName to set.
      */
     public void setOperateName(String operateName) {
         this.operateName = operateName;
@@ -363,8 +354,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param processTemplateName
-     *            The processTemplateName to set.
+     * @param processTemplateName The processTemplateName to set.
      */
     public void setProcessTemplateName(String processTemplateName) {
         this.processTemplateName = processTemplateName;
@@ -383,8 +373,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param acceptLimit
-     *            the acceptLimit to set
+     * @param acceptLimit the acceptLimit to set
      */
     public void setTawSystemSessionForm(
             TawSystemSessionForm tawSystemSessionForm) {
@@ -399,8 +388,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param acceptLimit
-     *            the acceptLimit to set
+     * @param acceptLimit the acceptLimit to set
      */
     public void setAcceptLimit(String acceptLimit) {
         this.acceptLimit = acceptLimit;
@@ -414,8 +402,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param accessories
-     *            the accessories to set
+     * @param accessories the accessories to set
      */
     public void setAccessories(String accessories) {
         this.accessories = accessories;
@@ -429,8 +416,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param completeLimit
-     *            the completeLimit to set
+     * @param completeLimit the completeLimit to set
      */
     public void setCompleteLimit(String completeLimit) {
         this.completeLimit = completeLimit;
@@ -444,8 +430,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param endDeptId
-     *            the endDeptId to set
+     * @param endDeptId the endDeptId to set
      */
     public void setEndDeptId(String endDeptId) {
         this.endDeptId = endDeptId;
@@ -459,8 +444,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param endResult
-     *            the endResult to set
+     * @param endResult the endResult to set
      */
     public void setEndResult(String endResult) {
         this.endResult = endResult;
@@ -474,8 +458,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param endRoleId
-     *            the endRoleId to set
+     * @param endRoleId the endRoleId to set
      */
     public void setEndRoleId(String endRoleId) {
         this.endRoleId = endRoleId;
@@ -489,8 +472,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param endTime
-     *            the endTime to set
+     * @param endTime the endTime to set
      */
     public void setEndTime(String endTime) {
         this.endTime = endTime;
@@ -504,8 +486,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param endUserId
-     *            the endUserId to set
+     * @param endUserId the endUserId to set
      */
     public void setEndUserId(String endUserId) {
         this.endUserId = endUserId;
@@ -527,8 +508,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param parendSheetId
-     *            the parendSheetId to set
+     * @param parendSheetId the parendSheetId to set
      */
     public void setParentSheetId(String parentSheetId) {
         this.parentSheetId = parentSheetId;
@@ -542,8 +522,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param parentSheetName
-     *            the parentSheetName to set
+     * @param parentSheetName the parentSheetName to set
      */
     public void setParentSheetName(String parentSheetName) {
         this.parentSheetName = parentSheetName;
@@ -557,8 +536,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param piid
-     *            the piid to set
+     * @param piid the piid to set
      */
     public void setPiid(String piid) {
         this.piid = piid;
@@ -572,8 +550,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param sendContact
-     *            the sendContact to set
+     * @param sendContact the sendContact to set
      */
     public void setSendContact(String sendContact) {
         this.sendContact = sendContact;
@@ -587,8 +564,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param sendDeptId
-     *            the sendDeptId to set
+     * @param sendDeptId the sendDeptId to set
      */
     public void setSendDeptId(String sendDeptId) {
         this.sendDeptId = sendDeptId;
@@ -602,8 +578,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param sendRoleId
-     *            the sendRoleId to set
+     * @param sendRoleId the sendRoleId to set
      */
     public void setSendRoleId(String sendRoleId) {
         this.sendRoleId = sendRoleId;
@@ -617,8 +592,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param sendTime
-     *            the sendTime to set
+     * @param sendTime the sendTime to set
      */
     public void setSendTime(String sendTime) {
         this.sendTime = sendTime;
@@ -632,8 +606,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param sendUserId
-     *            the sendUserId to set
+     * @param sendUserId the sendUserId to set
      */
     public void setSendUserId(String sendUserId) {
         this.sendUserId = sendUserId;
@@ -654,8 +627,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param deleted
-     *            the deleted to set
+     * @param deleted the deleted to set
      */
     public void setDeleted(String deleted) {
         this.deleted = deleted;
@@ -669,8 +641,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param sendOrgType
-     *            the sendOrgType to set
+     * @param sendOrgType the sendOrgType to set
      */
     public void setSendOrgType(String sendOrgType) {
         this.sendOrgType = sendOrgType;
@@ -684,16 +655,14 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param status
-     *            the status to set
+     * @param status the status to set
      */
     public void setStatus(String status) {
         this.status = status;
     }
 
     /**
-     * @param sheetId
-     *            the sheetId to set
+     * @param sheetId the sheetId to set
      */
     public void setSheetId(String sheetId) {
         this.sheetId = sheetId;
@@ -707,8 +676,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param templateName
-     *            the templateName to set
+     * @param templateName the templateName to set
      */
     public void setTemplateName(String templateName) {
         this.templateName = templateName;
@@ -722,8 +690,7 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param title
-     *            the title to set
+     * @param title the title to set
      */
     public void setTitle(String title) {
         this.title = title;
@@ -737,18 +704,17 @@ public class MainForm extends BaseForm implements java.io.Serializable {
     }
 
     /**
-     * @param endPostId
-     *            the endPostId to set
+     * @param endPostId the endPostId to set
      */
     public void setEndPostId(String endPostId) {
         this.endPostId = endPostId;
     }
 
-	public String getCancelReason() {
-		return cancelReason;
-	}
+    public String getCancelReason() {
+        return cancelReason;
+    }
 
-	public void setCancelReason(String cancelReason) {
-		this.cancelReason = cancelReason;
-	}
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
+    }
 }

@@ -6,5 +6,5 @@ import com.ggr.model.User;
 
 
 public interface IUserDao {
-	public abstract List<User> selectAll();
+    public abstract List<User> selectAll();
 }

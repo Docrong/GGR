@@ -5,4 +5,4 @@
 <%@ taglib uri="/WEB-INF/jstl-core.tld" prefix="c" %>
 <%@ taglib uri="/WEB-INF/app.tld" prefix="eoms" %>
 
-<eoms:SelUser name="netTreeId"  formName="tawseluserfrom" value="1" />
+<eoms:SelUser name="netTreeId" formName="tawseluserfrom" value="1"/>

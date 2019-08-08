@@ -1,5 +1,5 @@
-<%@ include file="/common/taglibs.jsp"%>
-<%@ include file="/common/header_eoms_form.jsp"%>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="/common/header_eoms_form.jsp" %>
 <%@page import="com.boco.eoms.base.util.StaticMethod" %>
 <%@page import="com.boco.eoms.sheet.base.task.ITask" %>
 <%@page import="com.boco.eoms.sheet.base.model.BaseMain" %>
@@ -7,32 +7,32 @@
 <%@page import="com.boco.eoms.commons.system.session.form.TawSystemSessionForm" %>
 <%@page import="com.boco.eoms.sheet.base.util.Constants" %>
 <%
-TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-String taskStatus = StaticMethod.nullObject2String(request.getParameter("taskStatus"));
-String isAdmin = StaticMethod.nullObject2String(request.getParameter("isAdmin"));
-String userId = sessionform.getUserid();
-BusinessPlanTask task = new BusinessPlanTask();
-String operaterType = "";
-String ifsub = "";
-String ifwaitfor="";
-if(request.getAttribute("task")!=null){
- task = (BusinessPlanTask)request.getAttribute("task");
- taskStatus = task.getTaskStatus();
- operaterType = task.getOperateType();
-  ifsub = StaticMethod.nullObject2String(task.getSubTaskFlag());
- ifwaitfor = StaticMethod.nullObject2String(task.getIfWaitForSubTask());
-}
+    TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+            .getSession().getAttribute("sessionform");
+    String taskStatus = StaticMethod.nullObject2String(request.getParameter("taskStatus"));
+    String isAdmin = StaticMethod.nullObject2String(request.getParameter("isAdmin"));
+    String userId = sessionform.getUserid();
+    BusinessPlanTask task = new BusinessPlanTask();
+    String operaterType = "";
+    String ifsub = "";
+    String ifwaitfor = "";
+    if (request.getAttribute("task") != null) {
+        task = (BusinessPlanTask) request.getAttribute("task");
+        taskStatus = task.getTaskStatus();
+        operaterType = task.getOperateType();
+        ifsub = StaticMethod.nullObject2String(task.getSubTaskFlag());
+        ifwaitfor = StaticMethod.nullObject2String(task.getIfWaitForSubTask());
+    }
 
-request.setAttribute("operaterType",operaterType);
-BaseMain basemain = (BaseMain)request.getAttribute("sheetMain");
-String sendUserId = basemain.getSendUserId();
-System.out.println("sendUserId>>>>>>"+sendUserId);
+    request.setAttribute("operaterType", operaterType);
+    BaseMain basemain = (BaseMain) request.getAttribute("sheetMain");
+    String sendUserId = basemain.getSendUserId();
+    System.out.println("sendUserId>>>>>>" + sendUserId);
 
- request.setAttribute("taskStatus", taskStatus);
- System.out.println("taskStatus>>>>>>>>"+taskStatus);
- String taskName = com.boco.eoms.base.util.StaticMethod.nullObject2String(request.getAttribute("taskName"));
- System.out.println("taskName>>>>>>"+taskName);
+    request.setAttribute("taskStatus", taskStatus);
+    System.out.println("taskStatus>>>>>>>>" + taskStatus);
+    String taskName = com.boco.eoms.base.util.StaticMethod.nullObject2String(request.getAttribute("taskName"));
+    System.out.println("taskName>>>>>>" + taskName);
 
 %>
 
@@ -40,86 +40,90 @@ System.out.println("sendUserId>>>>>>"+sendUserId);
 <script type="text/javascript" src="${app}/scripts/Sheet.js"></script>
 <script type="text/javascript" src="${app}/scripts/widgets/TabPanel.js"></script>
 <script type="text/javascript">
-Ext.onReady(function() {
-	var tabConfig = {
-		items : [{
-			id : 'sheetinfo',
-			text : '<bean:message bundle="sheet" key="sheet.sheetInfo"/>'
-		}, {
-			text : '<bean:message bundle="sheet" key="sheet.historyView"/>',
-			url : 'businessplan.do?method=showSheetDealList&sheetKey=${sheetMain.id}&taskName=${taskName}&ifWaitForSubTask=${task.ifWaitForSubTask}'
-		}, {
-			text : '<bean:message bundle="sheet" key="sheet.flowchar"/>',
-			//url : '/ProcessMonitor/runtime/html/index.jsp?appName=businessplanProcessApp&templateName=businessplanMainFlowProcess&piid=${sheetMain.piid}&listType=myProcesses&curPage=0',
-			url : 'businessplan.do?method=showWorkFlow&linkServiceName=iBusinessPlanLinkManager&dictSheetName=dict-sheet-businessplan&description=mainOperateType&sheetKey=${sheetMain.id}',
-			
-			isIframe : true
-		},{
-			text : '<bean:message bundle="sheet" key="sheet.filesView"/>',
-			url : 'businessplan.do?method=showSheetAccessoriesList&id=${sheetMain.id}',
-			isIframe : true
-		}, {
-			text : '<bean:message bundle="sheet" key="sheet.allSheetsView"/>',
-	 		url  : '../sheetRelation/sheetRelation.do?method=showInvokeRelationShipList&sheetKey=${sheetMain.id}',
-			isIframe : true
-		}]
-	};
-	var tabs = new eoms.TabPanel('sheet-detail-page', tabConfig);
-    <%if(taskStatus.equals("2") || taskStatus.equals("3") || taskStatus.equals("8")){%>
-    	<%if(taskName.equals("cc")){ %>
-	var url2="businessplan.do?method=newShowCCPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=-10&taskStatus=${taskStatus}";
-	eoms.util.appendPage("sheet-deal-content",url2);	
-	<%}%>
-	<%if(taskName.equals("reply")){ %>
-	var url2="businessplan.do?method=showRemarkPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}";
-	eoms.util.appendPage("sheet-deal-content",url2);	
-	<%}%>
-	<%if(taskName.equals("advice")){ %>
-	var url2="businessplan.do?method=showRemarkPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}";
-	eoms.util.appendPage("sheet-deal-content",url2);	
-	<%}}%>
- 
-	
+    Ext.onReady(function () {
+        var tabConfig = {
+            items: [{
+                id: 'sheetinfo',
+                text: '<bean:message bundle="sheet" key="sheet.sheetInfo"/>'
+            }, {
+                text: '<bean:message bundle="sheet" key="sheet.historyView"/>',
+                url: 'businessplan.do?method=showSheetDealList&sheetKey=${sheetMain.id}&taskName=${taskName}&ifWaitForSubTask=${task.ifWaitForSubTask}'
+            }, {
+                text: '<bean:message bundle="sheet" key="sheet.flowchar"/>',
+                //url : '/ProcessMonitor/runtime/html/index.jsp?appName=businessplanProcessApp&templateName=businessplanMainFlowProcess&piid=${sheetMain.piid}&listType=myProcesses&curPage=0',
+                url: 'businessplan.do?method=showWorkFlow&linkServiceName=iBusinessPlanLinkManager&dictSheetName=dict-sheet-businessplan&description=mainOperateType&sheetKey=${sheetMain.id}',
 
-});
-function forceOperation(obj){
+                isIframe: true
+            }, {
+                text: '<bean:message bundle="sheet" key="sheet.filesView"/>',
+                url: 'businessplan.do?method=showSheetAccessoriesList&id=${sheetMain.id}',
+                isIframe: true
+            }, {
+                text: '<bean:message bundle="sheet" key="sheet.allSheetsView"/>',
+                url: '../sheetRelation/sheetRelation.do?method=showInvokeRelationShipList&sheetKey=${sheetMain.id}',
+                isIframe: true
+            }]
+        };
+        var tabs = new eoms.TabPanel('sheet-detail-page', tabConfig);
+        <%if(taskStatus.equals("2") || taskStatus.equals("3") || taskStatus.equals("8")){%>
+        <%if(taskName.equals("cc")){ %>
+        var url2 = "businessplan.do?method=newShowCCPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=-10&taskStatus=${taskStatus}";
+        eoms.util.appendPage("sheet-deal-content", url2);
+        <%}%>
+        <%if(taskName.equals("reply")){ %>
+        var url2 = "businessplan.do?method=showRemarkPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}";
+        eoms.util.appendPage("sheet-deal-content", url2);
+        <%}%>
+        <%if(taskName.equals("advice")){ %>
+        var url2 = "businessplan.do?method=showRemarkPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}";
+        eoms.util.appendPage("sheet-deal-content", url2);
+        <%}}%>
 
-	if(obj == 1){
-	   
-	     var url2="businessplan.do?method=showForceHoldPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=forceHold";
-	     eoms.util.appendPage("sheet-deal-content",url2);	
-	}else if(obj == 2){
-	     
-			var url2="businessplan.do?method=showForceHoldPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=nullity";
-			eoms.util.appendPage("sheet-deal-content",url2);	
-	}else{
-	    
-         var url2="businessplan.do?method=showForceHoldPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=forceNullity";
-	     eoms.util.appendPage("sheet-deal-content",url2);	
+
+    });
+
+    function forceOperation(obj) {
+
+        if (obj == 1) {
+
+            var url2 = "businessplan.do?method=showForceHoldPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=forceHold";
+            eoms.util.appendPage("sheet-deal-content", url2);
+        } else if (obj == 2) {
+
+            var url2 = "businessplan.do?method=showForceHoldPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=nullity";
+            eoms.util.appendPage("sheet-deal-content", url2);
+        } else {
+
+            var url2 = "businessplan.do?method=showForceHoldPage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&taskName=${taskName}&correlationKey=${sheetMain.correlationKey}&operateType=forceNullity";
+            eoms.util.appendPage("sheet-deal-content", url2);
+        }
     }
-   }
-    function eventOperation(obj){
-	if(obj == 1){
-	     var url2="businessplan.do?method=showPhaseAdvicePage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&taskName=advice&operateFlag=driveForward&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}";
-             eoms.util.appendPage("sheet-deal-content",url2,true);
-	}
-   }
-   function operateType(url){
-		var R = GetQueryString("operateType",url);
-		var operateTypeObj = document.getElementById("operateType");
-		operateTypeObj.value = opertateTypeValue;
-		var divObj = document.getElementById("templateButtonDiv");
-		if (opertateTypeValue == "") {
-			divObj.style.display = "none";
-		} else {
-			divObj.style.display = "";
-		}
-   }
-  function GetQueryString(name,url) {   
-      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");   
-      var r = url.substr(1).match(reg);   
-      if (r != null) return unescape(r[2]); return "";   
-  }  
+
+    function eventOperation(obj) {
+        if (obj == 1) {
+            var url2 = "businessplan.do?method=showPhaseAdvicePage&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&taskName=advice&operateFlag=driveForward&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}";
+            eoms.util.appendPage("sheet-deal-content", url2, true);
+        }
+    }
+
+    function operateType(url) {
+        var R = GetQueryString("operateType", url);
+        var operateTypeObj = document.getElementById("operateType");
+        operateTypeObj.value = opertateTypeValue;
+        var divObj = document.getElementById("templateButtonDiv");
+        if (opertateTypeValue == "") {
+            divObj.style.display = "none";
+        } else {
+            divObj.style.display = "";
+        }
+    }
+
+    function GetQueryString(name, url) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = url.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return "";
+    }
 </script>
 
 <h3 class="sheet-title">
@@ -128,491 +132,542 @@ function forceOperation(obj){
 
 <!-- Sheet Tabs Start -->
 <div id="sheet-detail-page">
-  <!-- Sheet Detail Tab Start -->
-  <div id="sheetinfo">
-  	<logic:present name="sheetMain" scope="request">
-	<%@ include file="/WEB-INF/pages/wfworksheet/businessplan/basedetailnew.jsp"%>
-	<br/>
-	
+    <!-- Sheet Detail Tab Start -->
+    <div id="sheetinfo">
+        <logic:present name="sheetMain" scope="request">
+            <%@ include file="/WEB-INF/pages/wfworksheet/businessplan/basedetailnew.jsp" %>
+            <br/>
 
-	<table class="formTable"> 
-  
-      <tr>
-        <td class="label">
-            <bean:message bundle="businessplan" key="businessplan.mainProductType"/>
-        </td>
-		<td class="content">
-		    <bean:write name="sheetMain" property="mainProductType" scope="request"/>
-		</td>
-		<td class="label">
-		    <bean:message bundle="businessplan" key="businessplan.mainProductName"/>
-		</td>
-		<td class="content">
-		    <bean:write name="sheetMain" property="mainProductName" scope="request"/>
-		</td>
-	  </tr>  	  
-	  
-      <tr>
-        <td class="label">
-            <bean:message bundle="businessplan" key="businessplan.mainProductCode"/>
-        </td>
-		<td>
-		    <bean:write name="sheetMain" property="mainProductCode" scope="request"/>
-		</td>
-		<td class="label">
-		    <bean:message bundle="businessplan" key="businessplan.mainReqType"/>
-		</td>
-		<td>
-		    <eoms:id2nameDB id="${sheetMain.mainReqType}" beanId="ItawSystemDictTypeDao"/>
-		</td>
-	  </tr>  
-	  
-        <tr>
-		 <td  class="label">
-		     <bean:message bundle="businessplan" key="businessplan.mainTecDesc"/>
-		 </td>
-		   <td colspan="3"> 	
- 			<bean:write name="sheetMain" property="mainTecDesc"  scope="request"/>
-           </td>
-        </tr>		  
-	  <tr>
-  		<td class="label">
-  		    <bean:message bundle="businessplan" key="businessplan.mainStandard"/>
-  		</td> 
-		 	<td  colspan='3'>
-		    <eoms:attachment name="sheetMain" property="mainStandard" 
-		            scope="request" idField="sheetAccessories" appCode="businessplan" 
-		             viewFlag="Y"/> 
-		    </td>
-	  </tr>
-	
-	</table>
-		
-	
-    </logic:present>
-  </div>
-  <!-- Sheet Detail Tab End -->
+
+            <table class="formTable">
+
+                <tr>
+                    <td class="label">
+                        <bean:message bundle="businessplan" key="businessplan.mainProductType"/>
+                    </td>
+                    <td class="content">
+                        <bean:write name="sheetMain" property="mainProductType" scope="request"/>
+                    </td>
+                    <td class="label">
+                        <bean:message bundle="businessplan" key="businessplan.mainProductName"/>
+                    </td>
+                    <td class="content">
+                        <bean:write name="sheetMain" property="mainProductName" scope="request"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">
+                        <bean:message bundle="businessplan" key="businessplan.mainProductCode"/>
+                    </td>
+                    <td>
+                        <bean:write name="sheetMain" property="mainProductCode" scope="request"/>
+                    </td>
+                    <td class="label">
+                        <bean:message bundle="businessplan" key="businessplan.mainReqType"/>
+                    </td>
+                    <td>
+                        <eoms:id2nameDB id="${sheetMain.mainReqType}" beanId="ItawSystemDictTypeDao"/>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="label">
+                        <bean:message bundle="businessplan" key="businessplan.mainTecDesc"/>
+                    </td>
+                    <td colspan="3">
+                        <bean:write name="sheetMain" property="mainTecDesc" scope="request"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <bean:message bundle="businessplan" key="businessplan.mainStandard"/>
+                    </td>
+                    <td colspan='3'>
+                        <eoms:attachment name="sheetMain" property="mainStandard"
+                                         scope="request" idField="sheetAccessories" appCode="businessplan"
+                                         viewFlag="Y"/>
+                    </td>
+                </tr>
+
+            </table>
+
+
+        </logic:present>
+    </div>
+    <!-- Sheet Detail Tab End -->
 </div>
 <!-- Sheet Tabs End -->
 
-<%if(taskStatus.equals("2") || taskStatus.equals("3") || taskStatus.equals("8")){%>
+<%if (taskStatus.equals("2") || taskStatus.equals("3") || taskStatus.equals("8")) {%>
 
 <!-- Sheet Deal Content Start -->
 <c:url var="urlShowAnalyseDealPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="91"/>  
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="91"/>
 </c:url>
 
 <c:url var="urlShowAuditDealPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="92"/>  
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="92"/>
 </c:url>
 
 <c:url var="urlShowAppraisalDealPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="93"/>
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="93"/>
 </c:url>
 <c:url var="urlShowStandardDealPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="94"/>
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="94"/>
 </c:url>
 
 <c:url var="urlShowDraftDeal" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="46"/>
-</c:url> 
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="46"/>
+</c:url>
 
 <c:url var="urlShowBackDeal" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="54"/>
-  <c:param name="backFlag" value="yes"/> 
-</c:url> 
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="54"/>
+    <c:param name="backFlag" value="yes"/>
+</c:url>
 
 <c:url var="urlShowHoldDealPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="18"/>
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="18"/>
 </c:url>
 
 <c:url var="urlShowRejectDealPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="7"/>
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="7"/>
 </c:url>
 
 
 <c:url var="urlShowTransferkPage" value="businessplan.do">
-  <c:param name="method" value="showTransferWorkItemPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="8"/>
+    <c:param name="method" value="showTransferWorkItemPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="8"/>
 </c:url>
 <!-- 转审 -->
 <c:url var="urlShowTransferAuditPage" value="businessplan.do">
-  <c:param name="method" value="showTransferWorkItemPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="88"/>
+    <c:param name="method" value="showTransferWorkItemPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="88"/>
 </c:url>
 
 <c:url var="urlShowPhaseReplyPage" value="businessplan.do">
-  <c:param name="method" value="showPhaseBackToUpPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="reply"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/> 
-  <c:param name="operaterType" value="${operaterType}"/> 
+    <c:param name="method" value="showPhaseBackToUpPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="reply"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operaterType" value="${operaterType}"/>
 </c:url>
 
 <c:url var="urlShowRejectBackPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="4"/>
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="4"/>
 </c:url>
 <c:url var="urlShowAcceptDealPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="61"/>  
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="61"/>
 </c:url>
 <c:url var="urlShowInputSplit" value="businessplan.do">
-  <c:param name="method" value="showInputSplit"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="subtaskName" value="subTask"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/> 
-  <c:param name="operateType" value="10"/>  
+    <c:param name="method" value="showInputSplit"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="subtaskName" value="subTask"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="10"/>
 </c:url>
 
 <!-- 会审 -->
 <c:url var="urlShowInputSplitAudit" value="businessplan.do">
-  <c:param name="method" value="showInputSplit"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="subtaskName" value="subTask"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/> 
-  <c:param name="operateType" value="30"/>  
+    <c:param name="method" value="showInputSplit"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="subtaskName" value="subTask"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="30"/>
 </c:url>
 
 <c:url var="urlShowDispatchPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="subtaskName" value="subTask"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="11"/>
-  <c:param name="dealTemplateId" value="${dealTemplateId}"/>  
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="subtaskName" value="subTask"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="11"/>
+    <c:param name="dealTemplateId" value="${dealTemplateId}"/>
 </c:url>
 
 <!-- 会审回复 -->
 <c:url var="urlShowDispatchAuditPage" value="businessplan.do">
-  <c:param name="method" value="showDealPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="subtaskName" value="subTask"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="55"/>
-  <c:param name="dealTemplateId" value="${dealTemplateId}"/>  
+    <c:param name="method" value="showDealPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="subtaskName" value="subTask"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="55"/>
+    <c:param name="dealTemplateId" value="${dealTemplateId}"/>
 </c:url>
 
 <c:url var="urlShowDealReplyAcceptPage" value="businessplan.do">
-  <c:param name="method" value="showDealReplyAcceptPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="subtaskName" value="subTask"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="6"/>
+    <c:param name="method" value="showDealReplyAcceptPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="subtaskName" value="subTask"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="6"/>
 </c:url>
 
 <c:url var="urlShowDealReplyRejectPage" value="businessplan.do">
-  <c:param name="method" value="showDealReplyRejectPage"/>
-  <c:param name="sheetKey" value="${sheetMain.id}"/>
-  <c:param name="piid" value="${sheetMain.piid}"/>
-  <c:param name="taskId" value="${taskId}"/>
-  <c:param name="taskName" value="${taskName}"/>
-  <c:param name="subtaskName" value="subTask"/>
-  <c:param name="operateRoleId" value="${operateRoleId}"/>
-  <c:param name="TKID" value="${TKID}"/>
-  <c:param name="taskStatus" value="${taskStatus}"/>
-  <c:param name="preLinkId" value="${preLinkId}"/>
-  <c:param name="operateType" value="7"/>
+    <c:param name="method" value="showDealReplyRejectPage"/>
+    <c:param name="sheetKey" value="${sheetMain.id}"/>
+    <c:param name="piid" value="${sheetMain.piid}"/>
+    <c:param name="taskId" value="${taskId}"/>
+    <c:param name="taskName" value="${taskName}"/>
+    <c:param name="subtaskName" value="subTask"/>
+    <c:param name="operateRoleId" value="${operateRoleId}"/>
+    <c:param name="TKID" value="${TKID}"/>
+    <c:param name="taskStatus" value="${taskStatus}"/>
+    <c:param name="preLinkId" value="${preLinkId}"/>
+    <c:param name="operateType" value="7"/>
 </c:url>
 <div class="sheet-deal">
-	<div class='sheet-deal-header'>
-	<table>
-	  <tr>
-	    <td width="50%">
-	    <%if(!taskName.equals("cc")) { 
-	    	if (!taskName.equals("reply")) { 
-	    		if (!taskName.equals("advice")) {%>
-	 <bean:message bundle="sheet" key="sheet.deal"/>:<%} } }%>
-	<%if(taskName.equals("analyse")){ %>
-		<select id="dealSelector">
-		 <%if(taskStatus.equals(Constants.TASK_STATUS_READY)){%>
-		  <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet" key="common.accept"/> </option>
-		  <option value="${urlShowRejectBackPage}"><bean:message bundle="sheet" key="common.rejectBack"/></option>
-		 <%}else if(taskStatus.equals(Constants.TASK_STATUS_CLAIMED)){ %>
-		 <%if(ifsub.equals("") || ifsub.equals("false")){%>
-		 <%if(ifwaitfor.equals("false")) {%>
-		  <option value="${urlShowAnalyseDealPage}"><bean:message bundle="businessplan" key="operateType.analyse"/> </option>
-		  <option value="${urlShowTransferkPage}"><bean:message bundle="sheet" key="common.transfer"/></option>
-		  <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet" key="event.reply"/></option>
-		 <%}%>
-		  <%}else{%> 
-		  <% if (ifwaitfor.equals("false")) {%> 
-		  <option value="${urlShowDispatchPage}"><bean:message bundle="sheet" key="common.splitReply"/></option>
-		  <%}%>
-		  <%}%>
-		  <option value="${urlShowInputSplit}"><bean:message bundle="sheet" key="common.split"/></option>
-		  <c:if test="${needDealReply == 'true'}">
-	      <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet" key="common.dealReplyAccept"/></option>
-		  <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet" key="common.dealReplyReject"/></option>  
-		  </c:if>
-		 <%} %>
-		</select>
-	<%}else if(taskName.equals("audit")){%>	
-		<select id="dealSelector">
-		  <%if(taskStatus.equals(Constants.TASK_STATUS_READY)){%>
-		   <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet" key="common.accept"/> </option>
-		<!--    <option value="${urlShowRejectBackPage}"><bean:message bundle="sheet" key="common.rejectBack"/></option>-->
-		 <%}else if(taskStatus.equals(Constants.TASK_STATUS_CLAIMED)){ %>
-		 <%if(ifsub.equals("") || ifsub.equals("false")){%>
-		 <%if(ifwaitfor.equals("false")) {%>
-		  <option value="${urlShowAuditDealPage}"><bean:message bundle="businessplan" key="operateType.audit"/></option>	  
-		  <option value="${urlShowTransferAuditPage}"><bean:message bundle="sheet" key="common.transferAudit"/></option>	
-		  <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet" key="event.reply"/></option>
-		  <%}%>
-		  <%}else{%> 
-		  <% if (ifwaitfor.equals("false")) {%> 
-		  <option value="${urlShowDispatchAuditPage}"><bean:message bundle="sheet" key="common.splitReplyAudit"/></option>
-		  <%}%>
-		  <%}%>
-		  <option value="${urlShowInputSplitAudit}"><bean:message bundle="sheet" key="common.splitAudit"/></option>
-		  <c:if test="${needDealReply == 'true'}">
-	      <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet" key="common.dealReplyAccept"/></option>
-		  <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet" key="common.dealReplyReject"/></option>  
-		  </c:if>
-  		  <%} %>
-		</select>
-	<%}else if(taskName.equals("appraisal")){%>	
-		<select id="dealSelector">
-		<%if(taskStatus.equals(Constants.TASK_STATUS_READY)){%>
-		   <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet" key="common.accept"/> </option>
-		<option value="${urlShowRejectBackPage}"><bean:message bundle="sheet" key="common.rejectBack"/></option>
-		 <%}else if(taskStatus.equals(Constants.TASK_STATUS_CLAIMED)){ %>
-		 <%if(ifsub.equals("") || ifsub.equals("false")){%>
-		 <%if(ifwaitfor.equals("false")) {%>
-		  <option value="${urlShowAppraisalDealPage}"><bean:message bundle="businessplan" key="operateType.appraisal"/></option>		  
-		  <option value="${urlShowTransferkPage}"><bean:message bundle="sheet" key="common.transfer"/></option>
-		  <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet" key="event.reply"/></option>
-		  <%}%>
-		  <%}else{%> 
-		  <% if (ifwaitfor.equals("false")) {%> 
-		  <option value="${urlShowDispatchPage}"><bean:message bundle="sheet" key="common.splitReply"/></option>
-		  <%}%>
-		  <%}%>
-		  <option value="${urlShowInputSplit}"><bean:message bundle="sheet" key="common.split"/></option>
-		  <c:if test="${needDealReply == 'true'}">
-	      <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet" key="common.dealReplyAccept"/></option>
-		  <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet" key="common.dealReplyReject"/></option>  
-		  </c:if>
-		 <%} %>
-		</select>
-		<%}else if(taskName.equals("standard")){%>	
-		<select id="dealSelector">
-		<%if(taskStatus.equals(Constants.TASK_STATUS_READY)){%>
-		   <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet" key="common.accept"/> </option>
-		 <!--    <option value="${urlShowRejectBackPage}"><bean:message bundle="sheet" key="common.rejectBack"/></option>-->
-		 <%}else if(taskStatus.equals(Constants.TASK_STATUS_CLAIMED)){ %>
-		 <%if(ifsub.equals("") || ifsub.equals("false")){%>
-		 <%if(ifwaitfor.equals("false")) {%>
-		  <option value="${urlShowStandardDealPage}"><bean:message bundle="businessplan" key="operateType.standard"/></option>		  
-		  <option value="${urlShowTransferAuditPage}"><bean:message bundle="sheet" key="common.transferAudit"/></option>
-		  <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet" key="event.reply"/></option>
-		  <%}%>
-		  <%}else{%> 
-		  <% if (ifwaitfor.equals("false")) {%> 
-		  <option value="${urlShowDispatchAuditPage}"><bean:message bundle="sheet" key="common.splitReplyAudit"/></option>
-		  <%}%>
-		  <%}%>
-		  <option value="${urlShowInputSplitAudit}"><bean:message bundle="sheet" key="common.splitAudit"/></option>
-		  <c:if test="${needDealReply == 'true'}">
-	      <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet" key="common.dealReplyAccept"/></option>
-		  <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet" key="common.dealReplyReject"/></option>  
-		  </c:if>
-		 <%} %>
-		</select>
-	<%}else if(taskName.equals("draft")){%>	
-		<select id="dealSelector">
-		  <option value="${urlShowDraftDeal}"><bean:message bundle="businessplan" key="operateType.draft"/></option>
-		</select>
-		
-	<%}else if(taskName.equals("reject")){%>	
-		<select id="dealSelector">
-		  <option value="${urlShowBackDeal}"><bean:message bundle="sheet" key="common.reSend"/></option>
-		</select>
-	<%}else if(taskName.equals("hold")){ %>
-		<select id="dealSelector">
-		  <option value="${urlShowHoldDealPage}"><bean:message bundle="businessplan" key="operateType.hold"/></option>
-		<%--  <option value="${urlShowRejectDealPage}"><bean:message bundle="businessplan" key="operateType.reject"/></option> --%>
-		</select>	
-	<%}%>
-	</td>
-	</tr></table>
-	</div>
+    <div class='sheet-deal-header'>
+        <table>
+            <tr>
+                <td width="50%">
+                    <%
+                        if (!taskName.equals("cc")) {
+                            if (!taskName.equals("reply")) {
+                                if (!taskName.equals("advice")) {
+                    %>
+                    <bean:message bundle="sheet" key="sheet.deal"/>:<%
+                            }
+                        }
+                    }
+                %>
+                    <%if (taskName.equals("analyse")) { %>
+                    <select id="dealSelector">
+                        <%if (taskStatus.equals(Constants.TASK_STATUS_READY)) {%>
+                        <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet"
+                                                                               key="common.accept"/></option>
+                        <option value="${urlShowRejectBackPage}"><bean:message bundle="sheet"
+                                                                               key="common.rejectBack"/></option>
+                        <%} else if (taskStatus.equals(Constants.TASK_STATUS_CLAIMED)) { %>
+                        <%if (ifsub.equals("") || ifsub.equals("false")) {%>
+                        <%if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowAnalyseDealPage}"><bean:message bundle="businessplan"
+                                                                                key="operateType.analyse"/></option>
+                        <option value="${urlShowTransferkPage}"><bean:message bundle="sheet"
+                                                                              key="common.transfer"/></option>
+                        <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet"
+                                                                               key="event.reply"/></option>
+                        <%}%>
+                        <%} else {%>
+                        <% if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowDispatchPage}"><bean:message bundle="sheet"
+                                                                             key="common.splitReply"/></option>
+                        <%}%>
+                        <%}%>
+                        <option value="${urlShowInputSplit}"><bean:message bundle="sheet" key="common.split"/></option>
+                        <c:if test="${needDealReply == 'true'}">
+                            <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyAccept"/></option>
+                            <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyReject"/></option>
+                        </c:if>
+                        <%} %>
+                    </select>
+                    <%} else if (taskName.equals("audit")) {%>
+                    <select id="dealSelector">
+                        <%if (taskStatus.equals(Constants.TASK_STATUS_READY)) {%>
+                        <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet"
+                                                                               key="common.accept"/></option>
+                        <!--    <option value="${urlShowRejectBackPage}"><bean:message bundle="sheet" key="common.rejectBack"/></option>-->
+                        <%} else if (taskStatus.equals(Constants.TASK_STATUS_CLAIMED)) { %>
+                        <%if (ifsub.equals("") || ifsub.equals("false")) {%>
+                        <%if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowAuditDealPage}"><bean:message bundle="businessplan"
+                                                                              key="operateType.audit"/></option>
+                        <option value="${urlShowTransferAuditPage}"><bean:message bundle="sheet"
+                                                                                  key="common.transferAudit"/></option>
+                        <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet"
+                                                                               key="event.reply"/></option>
+                        <%}%>
+                        <%} else {%>
+                        <% if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowDispatchAuditPage}"><bean:message bundle="sheet"
+                                                                                  key="common.splitReplyAudit"/></option>
+                        <%}%>
+                        <%}%>
+                        <option value="${urlShowInputSplitAudit}"><bean:message bundle="sheet"
+                                                                                key="common.splitAudit"/></option>
+                        <c:if test="${needDealReply == 'true'}">
+                            <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyAccept"/></option>
+                            <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyReject"/></option>
+                        </c:if>
+                        <%} %>
+                    </select>
+                    <%} else if (taskName.equals("appraisal")) {%>
+                    <select id="dealSelector">
+                        <%if (taskStatus.equals(Constants.TASK_STATUS_READY)) {%>
+                        <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet"
+                                                                               key="common.accept"/></option>
+                        <option value="${urlShowRejectBackPage}"><bean:message bundle="sheet"
+                                                                               key="common.rejectBack"/></option>
+                        <%} else if (taskStatus.equals(Constants.TASK_STATUS_CLAIMED)) { %>
+                        <%if (ifsub.equals("") || ifsub.equals("false")) {%>
+                        <%if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowAppraisalDealPage}"><bean:message bundle="businessplan"
+                                                                                  key="operateType.appraisal"/></option>
+                        <option value="${urlShowTransferkPage}"><bean:message bundle="sheet"
+                                                                              key="common.transfer"/></option>
+                        <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet"
+                                                                               key="event.reply"/></option>
+                        <%}%>
+                        <%} else {%>
+                        <% if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowDispatchPage}"><bean:message bundle="sheet"
+                                                                             key="common.splitReply"/></option>
+                        <%}%>
+                        <%}%>
+                        <option value="${urlShowInputSplit}"><bean:message bundle="sheet" key="common.split"/></option>
+                        <c:if test="${needDealReply == 'true'}">
+                            <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyAccept"/></option>
+                            <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyReject"/></option>
+                        </c:if>
+                        <%} %>
+                    </select>
+                    <%} else if (taskName.equals("standard")) {%>
+                    <select id="dealSelector">
+                        <%if (taskStatus.equals(Constants.TASK_STATUS_READY)) {%>
+                        <option value="${urlShowAcceptDealPage}"><bean:message bundle="sheet"
+                                                                               key="common.accept"/></option>
+                        <!--    <option value="${urlShowRejectBackPage}"><bean:message bundle="sheet" key="common.rejectBack"/></option>-->
+                        <%} else if (taskStatus.equals(Constants.TASK_STATUS_CLAIMED)) { %>
+                        <%if (ifsub.equals("") || ifsub.equals("false")) {%>
+                        <%if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowStandardDealPage}"><bean:message bundle="businessplan"
+                                                                                 key="operateType.standard"/></option>
+                        <option value="${urlShowTransferAuditPage}"><bean:message bundle="sheet"
+                                                                                  key="common.transferAudit"/></option>
+                        <option value="${urlShowPhaseReplyPage}"><bean:message bundle="sheet"
+                                                                               key="event.reply"/></option>
+                        <%}%>
+                        <%} else {%>
+                        <% if (ifwaitfor.equals("false")) {%>
+                        <option value="${urlShowDispatchAuditPage}"><bean:message bundle="sheet"
+                                                                                  key="common.splitReplyAudit"/></option>
+                        <%}%>
+                        <%}%>
+                        <option value="${urlShowInputSplitAudit}"><bean:message bundle="sheet"
+                                                                                key="common.splitAudit"/></option>
+                        <c:if test="${needDealReply == 'true'}">
+                            <option value="${urlShowDealReplyAcceptPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyAccept"/></option>
+                            <option value="${urlShowDealReplyRejectPage}"><bean:message bundle="sheet"
+                                                                                        key="common.dealReplyReject"/></option>
+                        </c:if>
+                        <%} %>
+                    </select>
+                    <%} else if (taskName.equals("draft")) {%>
+                    <select id="dealSelector">
+                        <option value="${urlShowDraftDeal}"><bean:message bundle="businessplan"
+                                                                          key="operateType.draft"/></option>
+                    </select>
+
+                    <%} else if (taskName.equals("reject")) {%>
+                    <select id="dealSelector">
+                        <option value="${urlShowBackDeal}"><bean:message bundle="sheet" key="common.reSend"/></option>
+                    </select>
+                    <%} else if (taskName.equals("hold")) { %>
+                    <select id="dealSelector">
+                        <option value="${urlShowHoldDealPage}"><bean:message bundle="businessplan"
+                                                                             key="operateType.hold"/></option>
+                        <%--  <option value="${urlShowRejectDealPage}"><bean:message bundle="businessplan" key="operateType.reject"/></option> --%>
+                    </select>
+                    <%}%>
+                </td>
+            </tr>
+        </table>
+    </div>
     <div class="sheet-deal-content" id="sheet-deal-content"></div>
 </div>
 
 <script type="text/javascript">
-	Ext.onReady(function(){
-		//${eoms:a2u('设置下拉框为ajax页面载入器')}
-		eoms.Sheet.setPageLoader("dealSelector","sheet-deal-content");
-		
-	var url = "";
-	try{
-		 url = $("dealSelector").value + "&taskStatus=${taskStatus}";
-		}catch(e){}
-		
-		var dealTemplateId = "${dealTemplateId}";
-        if (dealTemplateId != null && dealTemplateId != "") {
-   			url = "businessplan.do?method=referenceTemplate&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&taskName=${taskName}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&operateType=${operateType}&taskStatus=${taskStatus}&dealTemplateId="+dealTemplateId
+    Ext.onReady(function () {
+        //${eoms:a2u('设置下拉框为ajax页面载入器')}
+        eoms.Sheet.setPageLoader("dealSelector", "sheet-deal-content");
+
+        var url = "";
+        try {
+            url = $("dealSelector").value + "&taskStatus=${taskStatus}";
+        } catch (e) {
         }
-		eoms.util.appendPage("sheet-deal-content",url);		
-	});
+
+        var dealTemplateId = "${dealTemplateId}";
+        if (dealTemplateId != null && dealTemplateId != "") {
+            url = "businessplan.do?method=referenceTemplate&sheetKey=${sheetMain.id}&piid=${sheetMain.piid}&taskId=${taskId}&taskName=${taskName}&operateRoleId=${operateRoleId}&TKID=${TKID}&preLinkId=${preLinkId}&operateType=${operateType}&taskStatus=${taskStatus}&dealTemplateId=" + dealTemplateId
+        }
+        eoms.util.appendPage("sheet-deal-content", url);
+    });
 </script>
 <!-- Sheet Deal Content End -->
 <%}%>
 
-<c:if test="${sheetMain.status==0}"> 
+<c:if test="${sheetMain.status==0}">
     <div class="sheet-deal-content" id="sheet-deal-content"></div>
- <%if(isAdmin.equals("true")){%>
- 	<div id="buttonDisplay" style="display:block">
-    <input type="button" title="${eoms:a2u('执行该操作，工单将进入强制归档状态，其他人不能在处理工单')}" value="<bean:message bundle="sheet" key="button.forceHold"/>"  onclick="$('buttonDisplay').style.display='none';forceOperation(1);">
-    <input type="button" title="${eoms:a2u('执行该操作，工单将进入强制作废状态，其他人不能在处理工单')}" value="<bean:message bundle="sheet" key="button.forceNullity"/>" onclick="$('buttonDisplay').style.display='none';forceOperation(3);">
-    <input type="button" value="<bean:message bundle="sheet" key="event.advice"/>" onclick="$('buttonDisplay').style.display='none';eventOperation(1);">
+    <%if (isAdmin.equals("true")) {%>
+    <div id="buttonDisplay" style="display:block">
+        <input type="button" title="${eoms:a2u('执行该操作，工单将进入强制归档状态，其他人不能在处理工单')}"
+               value="<bean:message bundle="sheet" key="button.forceHold"/>"
+               onclick="$('buttonDisplay').style.display='none';forceOperation(1);">
+        <input type="button" title="${eoms:a2u('执行该操作，工单将进入强制作废状态，其他人不能在处理工单')}"
+               value="<bean:message bundle="sheet" key="button.forceNullity"/>"
+               onclick="$('buttonDisplay').style.display='none';forceOperation(3);">
+        <input type="button" value="<bean:message bundle="sheet" key="event.advice"/>"
+               onclick="$('buttonDisplay').style.display='none';eventOperation(1);">
     </div>
- <% }else if(taskStatus.equals("5")&& !taskName.equals("cc")&& !taskName.equals("reply")&& !taskName.equals("advice")){%>
-     <div id="buttonDisplay">
-     <input type="button" value="<bean:message bundle="sheet" key="event.advice"/>" onclick="$('buttonDisplay').style.display='none';eventOperation(1);">
-     </div>
- <% }else if((taskStatus == null || taskStatus.equals(""))&&(userId.equals(sendUserId))){%> 
- <div id="advice" style="display:block">
-     <input type="button" title="${eoms:a2u('执行该操作，工单将进入作废状态，其他人不能在处理工单')}" value="<bean:message bundle="sheet" key="button.nullity"/>" onclick="$('advice').style.display='none';forceOperation(2);">
-     <input type="button" value="<bean:message bundle="sheet" key="event.advice"/>" onclick="$('advice').style.display='none';eventOperation(1);">
-  </div>
- <% }%> 
+    <% } else if (taskStatus.equals("5") && !taskName.equals("cc") && !taskName.equals("reply") && !taskName.equals("advice")) {%>
+    <div id="buttonDisplay">
+        <input type="button" value="<bean:message bundle="sheet" key="event.advice"/>"
+               onclick="$('buttonDisplay').style.display='none';eventOperation(1);">
+    </div>
+    <% } else if ((taskStatus == null || taskStatus.equals("")) && (userId.equals(sendUserId))) {%>
+    <div id="advice" style="display:block">
+        <input type="button" title="${eoms:a2u('执行该操作，工单将进入作废状态，其他人不能在处理工单')}"
+               value="<bean:message bundle="sheet" key="button.nullity"/>"
+               onclick="$('advice').style.display='none';forceOperation(2);">
+        <input type="button" value="<bean:message bundle="sheet" key="event.advice"/>"
+               onclick="$('advice').style.display='none';eventOperation(1);">
+    </div>
+    <% }%>
 </c:if>
-<%@ include file="/common/footer_eoms.jsp"%>
+<%@ include file="/common/footer_eoms.jsp" %>

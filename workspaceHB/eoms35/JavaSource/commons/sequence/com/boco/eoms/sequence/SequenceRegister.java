@@ -12,39 +12,37 @@ import java.util.List;
  * <p>
  * Date:Apr 28, 2008 4:23:30 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
 public class SequenceRegister {
 
-	/**
-	 * sequence 注册列表
-	 */
-	private List register;
+    /**
+     * sequence 注册列表
+     */
+    private List register;
 
-	/**
-	 * @return the register
-	 */
-	public List getRegister() {
-		return register;
-	}
+    /**
+     * @return the register
+     */
+    public List getRegister() {
+        return register;
+    }
 
-	/**
-	 * @param register
-	 *            the register to set
-	 */
-	public void setRegister(List register) {
-		this.register = register;
-	}
+    /**
+     * @param register the register to set
+     */
+    public void setRegister(List register) {
+        this.register = register;
+    }
 
-	/**
-	 * 注册总数
-	 * 
-	 * @return 注册总数
-	 */
-	public int total() {
-		return this.register.size();
-	}
+    /**
+     * 注册总数
+     *
+     * @return 注册总数
+     */
+    public int total() {
+        return this.register.size();
+    }
 }

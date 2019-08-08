@@ -7,42 +7,48 @@
 <!--      from the same directory that the Axis engine runs         -->
 
 <deployment
-    xmlns="http://xml.apache.org/axis/wsdd/"
-    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+        xmlns="http://xml.apache.org/axis/wsdd/"
+        xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
 
-  <!-- Services from EomsReplyTicket WSDL service -->
+    <!-- Services from EomsReplyTicket WSDL service -->
 
-  <service name="EomsReplyTicketHttpPort" provider="java:RPC" style="wrapped" use="literal">
-      <parameter name="wsdlTargetNamespace" value="http://ws.jcss.hy.wri.com"/>
-      <parameter name="wsdlServiceElement" value="EomsReplyTicket"/>
-      <parameter name="schemaQualified" value="http://vo.jcss.hy.wri.com,http://ws.jcss.hy.wri.com"/>
-      <parameter name="wsdlServicePort" value="EomsReplyTicketHttpPort"/>
-      <parameter name="className" value="com.wri.hy.jcss.ws.EomsReplyTicketHttpBindingImpl"/>
-      <parameter name="wsdlPortType" value="EomsReplyTicketPortType"/>
-      <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="replyEomsTicket" qname="operNS:replyEomsTicket" xmlns:operNS="http://ws.jcss.hy.wri.com" returnQName="retNS:out" xmlns:retNS="http://ws.jcss.hy.wri.com" returnType="rtns:EomsReply" xmlns:rtns="http://vo.jcss.hy.wri.com" soapAction="" >
-        <parameter qname="pns:in0" xmlns:pns="http://ws.jcss.hy.wri.com" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
-      <operation name="receiveEomsTicket" qname="operNS:receiveEomsTicket" xmlns:operNS="http://ws.jcss.hy.wri.com" returnQName="retNS:out" xmlns:retNS="http://ws.jcss.hy.wri.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
-        <parameter qname="pns:in0" xmlns:pns="http://ws.jcss.hy.wri.com" type="tns:EomsTicket" xmlns:tns="http://vo.jcss.hy.wri.com"/>
-      </operation>
-      <parameter name="allowedMethods" value="receiveEomsTicket replyEomsTicket"/>
+    <service name="EomsReplyTicketHttpPort" provider="java:RPC" style="wrapped" use="literal">
+        <parameter name="wsdlTargetNamespace" value="http://ws.jcss.hy.wri.com"/>
+        <parameter name="wsdlServiceElement" value="EomsReplyTicket"/>
+        <parameter name="schemaQualified" value="http://vo.jcss.hy.wri.com,http://ws.jcss.hy.wri.com"/>
+        <parameter name="wsdlServicePort" value="EomsReplyTicketHttpPort"/>
+        <parameter name="className" value="com.wri.hy.jcss.ws.EomsReplyTicketHttpBindingImpl"/>
+        <parameter name="wsdlPortType" value="EomsReplyTicketPortType"/>
+        <parameter name="typeMappingVersion" value="1.2"/>
+        <operation name="replyEomsTicket" qname="operNS:replyEomsTicket" xmlns:operNS="http://ws.jcss.hy.wri.com"
+                   returnQName="retNS:out" xmlns:retNS="http://ws.jcss.hy.wri.com" returnType="rtns:EomsReply"
+                   xmlns:rtns="http://vo.jcss.hy.wri.com" soapAction="">
+            <parameter qname="pns:in0" xmlns:pns="http://ws.jcss.hy.wri.com" type="tns:string"
+                       xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        </operation>
+        <operation name="receiveEomsTicket" qname="operNS:receiveEomsTicket" xmlns:operNS="http://ws.jcss.hy.wri.com"
+                   returnQName="retNS:out" xmlns:retNS="http://ws.jcss.hy.wri.com" returnType="rtns:int"
+                   xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="">
+            <parameter qname="pns:in0" xmlns:pns="http://ws.jcss.hy.wri.com" type="tns:EomsTicket"
+                       xmlns:tns="http://vo.jcss.hy.wri.com"/>
+        </operation>
+        <parameter name="allowedMethods" value="receiveEomsTicket replyEomsTicket"/>
 
-      <typeMapping
-        xmlns:ns="http://vo.jcss.hy.wri.com"
-        qname="ns:EomsTicket"
-        type="java:com.wri.hy.jcss.vo.EomsTicket"
-        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
-        encodingStyle=""
-      />
-      <typeMapping
-        xmlns:ns="http://vo.jcss.hy.wri.com"
-        qname="ns:EomsReply"
-        type="java:com.wri.hy.jcss.vo.EomsReply"
-        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
-        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
-        encodingStyle=""
-      />
-  </service>
+        <typeMapping
+                xmlns:ns="http://vo.jcss.hy.wri.com"
+                qname="ns:EomsTicket"
+                type="java:com.wri.hy.jcss.vo.EomsTicket"
+                serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+                deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+                encodingStyle=""
+        />
+        <typeMapping
+                xmlns:ns="http://vo.jcss.hy.wri.com"
+                qname="ns:EomsReply"
+                type="java:com.wri.hy.jcss.vo.EomsReply"
+                serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+                deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+                encodingStyle=""
+        />
+    </service>
 </deployment>

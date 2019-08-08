@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.plannconfirm.dao.IPlannConfirmTaskDAO;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannConfirmTaskDAOHibernate extends TaskDAOImpl implements  IPlannConfirmTaskDAO {
- 
- }
+
+public class PlannConfirmTaskDAOHibernate extends TaskDAOImpl implements IPlannConfirmTaskDAO {
+
+}

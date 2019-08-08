@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.industrysms.qo.IIndustrySmsQo;
  * <p>
  * Mon Mar 04 17:27:01 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class IndustrySmsQoImpl extends WorkSheetQOImpl implements IIndustrySmsQo {
- 
- }
+
+public class IndustrySmsQoImpl extends WorkSheetQOImpl implements IIndustrySmsQo {
+
+}

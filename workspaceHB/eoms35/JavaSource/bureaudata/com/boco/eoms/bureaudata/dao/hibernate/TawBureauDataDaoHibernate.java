@@ -54,12 +54,12 @@ public class TawBureauDataDaoHibernate extends BaseDaoHibernate implements ITawB
 
     /**
      * @see com.boco.eoms.bureaudata.dao.TawBureauDataDao#saveTawBureauData(TawBureauData tawBureauData)
-     */    
+     */
     public void saveTawBureauData(final TawBureauData tawBureauData) {
         if ((tawBureauData.getId() == null) || (tawBureauData.getId().equals("")))
-			getHibernateTemplate().save(tawBureauData);
-		else
-			getHibernateTemplate().saveOrUpdate(tawBureauData);
+            getHibernateTemplate().save(tawBureauData);
+        else
+            getHibernateTemplate().saveOrUpdate(tawBureauData);
     }
 
     /**
@@ -68,45 +68,48 @@ public class TawBureauDataDaoHibernate extends BaseDaoHibernate implements ITawB
     public void removeTawBureauData(final String id) {
         getHibernateTemplate().delete(getTawBureauData(id));
     }
+
     /**
-     * @see com.boco.eoms.bureaudata.dao.TawBureauDataDao#getTawBureauDatas(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.bureaudata.dao.TawBureauDataDao#getTawBureauDatas(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawBureauDatas(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawBureauDatas(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawBureauData
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawBureauData";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawBureauData";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.bureaudata.dao.TawBureauDataDao#getTawBureauDatas(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawBureauDatas(final Integer curPage, final Integer pageSize) {
-			return this.getTawBureauDatas(curPage,pageSize,null);
-		}
+        return this.getTawBureauDatas(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.bureaudata.dao.TawBureauDataDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawBureauData obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawBureauData obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

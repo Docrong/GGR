@@ -1,201 +1,202 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
-		<!--bean for EsmProcess end-->
-	</form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
+        <!--bean for EsmProcess end-->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		<forward name="error"
-			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
-			contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+        <forward name="error"
+                 path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+                 contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
-		<action path="/circuitcontrol"
-			type="com.boco.eoms.sheet.circuitcontrol.webapp.action.CircuitControlAction"
-			name="multiPageForm" scope="request" input="error" parameter="method"
-			unknown="false" validate="false" attribute="CircuitControl">
-			<set-property property="cancellable" value="true" />
-			<forward name="new"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/main.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputNew"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="dealpage"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputDealpage"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputdealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="reject"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/reject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputReject"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputreject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="detail"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/detail.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draft"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="cancel"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="delete"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="hold"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/list.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="success"
-				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="successMessage"
-				path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="portal"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/portal.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="split"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/split.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="history"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/history.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draw"
-                path="/WEB-INF/pages/wfworksheet/circuitcontrol/draw.jsp"
-                redirect="false" contextRelative="true"/>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
+        <action path="/circuitcontrol"
+                type="com.boco.eoms.sheet.circuitcontrol.webapp.action.CircuitControlAction"
+                name="multiPageForm" scope="request" input="error" parameter="method"
+                unknown="false" validate="false" attribute="CircuitControl">
+            <set-property property="cancellable" value="true"/>
+            <forward name="new"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/main.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputNew"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealpage"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputDealpage"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputdealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="reject"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/reject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputReject"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputreject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="detail"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draft"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cancel"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="delete"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="hold"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/list.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="successMessage"
+                     path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="portal"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/portal.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="split"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/split.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="history"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/history.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draw"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/draw.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="pic"
-                path="/WEB-INF/pages/wfworksheet/circuitcontrol/pic.jsp"
-                redirect="false" contextRelative="true"/>
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/pic.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="holdlist"
-                path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp" 
-                redirect="false" contextRelative="true" />
-			<forward name="mainlist"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="startlist"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp"
-				redirect="false" contextRelative="true" />
-		    <forward name="maindetail"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/detail.jsp"
-				redirect="false" contextRelative="true" />
-           <forward name="query"
-                path="/WEB-INF/pages/wfworksheet/circuitcontrol/query.jsp"
-                redirect="false" contextRelative="true" />
-	        <forward name="queryInput"
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/queryinput.jsp"
-		        redirect="false" contextRelative="true" />		
-	        <forward name="querylist"
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/querylist.jsp"
-		        redirect="false" contextRelative="true" />
-		     <forward name="templates" 
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/templates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplates" 
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealTemplates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplateDetail" 
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealTemplateDetail.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="sheetAccessories" 
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/sheetAccessories.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="showInvokeRelationShipList" 
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/showInvokeRelationShipList.jsp"
-		        redirect="false" contextRelative="true"/>	   
-		   <forward name="batchDealPage" 
-		        path="/WEB-INF/pages/wfworksheet/circuitcontrol/batchDealPage.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="transfer"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/transfer.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="forceHold"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/forceHold.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="adminlist"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/adminlist.jsp" redirect="false"
-				contextRelative="true" />
-			<forward name="event"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/event.jsp" redirect="false"
-				contextRelative="true" />
-	        <forward name="inputEvent"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputevent.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="saveInfo" path="/circuitcontrol.do?method=showDetailPage"/>
-		    <forward name="saveInfoAndExit" path="/circuitcontrol.do?method=showListsendundo"/>   
-			<forward name="cancellist"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="remark"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/remark.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseBackToUp"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseAdvice"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="showDraftList" path="/circuitcontrol.do?method=showDraftList"/>	
-		    <forward name="draftList" path="/WEB-INF/pages/wfworksheet/circuitcontrol/draftList.jsp" redirect="false"
-				contextRelative="true"/> 		
-			<forward name="showWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="getLinkOperatePage"
-				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
-				redirect="false" contextRelative="true" />								
-			<forward name="cc"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/makeCopy.jsp"
-				redirect="false" contextRelative="true" />			
-			<forward name="shoWholeWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="showSetpInfoPage"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/showStepInfoPage.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="dealReplyAccept"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealReplyAccept.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="dealReplyReject"
-				path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealReplyReject.jsp" 
-				redirect="false" contextRelative="true" />					
-		      <forward name="showWorkFlowInstance"
-				path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
-				redirect="false" contextRelative="true" />						
-		 </action>
-	</action-mappings>
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="mainlist"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="startlist"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="maindetail"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="query"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/query.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="queryInput"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/queryinput.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="querylist"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/querylist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="templates"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/templates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplates"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealTemplates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplateDetail"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealTemplateDetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="sheetAccessories"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/sheetAccessories.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showInvokeRelationShipList"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/showInvokeRelationShipList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="batchDealPage"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/batchDealPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="transfer"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/transfer.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="forceHold"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/forceHold.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="adminlist"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/adminlist.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="event"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/event.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="inputEvent"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/inputevent.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="saveInfo" path="/circuitcontrol.do?method=showDetailPage"/>
+            <forward name="saveInfoAndExit" path="/circuitcontrol.do?method=showListsendundo"/>
+            <forward name="cancellist"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="remark"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/remark.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseBackToUp"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseAdvice"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showDraftList" path="/circuitcontrol.do?method=showDraftList"/>
+            <forward name="draftList" path="/WEB-INF/pages/wfworksheet/circuitcontrol/draftList.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="showWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="getLinkOperatePage"
+                     path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cc"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/makeCopy.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="shoWholeWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showSetpInfoPage"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/showStepInfoPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyAccept"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealReplyAccept.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyReject"
+                     path="/WEB-INF/pages/wfworksheet/circuitcontrol/dealReplyReject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showWorkFlowInstance"
+                     path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+    </action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources parameter="config/ApplicationResources-sheet" key="sheet" />
-	<message-resources
-		parameter="config/ApplicationResources-sheet-circuitcontrol" key="circuitcontrol" />
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources-sheet" key="sheet"/>
+    <message-resources
+            parameter="config/ApplicationResources-sheet-circuitcontrol" key="circuitcontrol"/>
 </struts-config>

@@ -15,103 +15,104 @@ import com.boco.eoms.sheet.interfaceBase.util.XmlUtil;
 import com.boco.eoms.sheet.sheetdelete.bo.WfSheetDeleteInfoBo;
 
 public class WfSheetDeleteInfo implements Serializable {
-	
-	private String id;
-	private String piid;
-	private String sheetKey;
-	private String userid;
-	private String depid;
-	private String sheetType;
-	private Date createTime;
-	private Date sendTime;
-	private String isSended;
-	private String remark;
-	private String ipaddress;
-	public String getPiid() {
-		return piid;
-	}
 
-	public void setPiid(String piid) {
-		this.piid = piid;
-	}
+    private String id;
+    private String piid;
+    private String sheetKey;
+    private String userid;
+    private String depid;
+    private String sheetType;
+    private Date createTime;
+    private Date sendTime;
+    private String isSended;
+    private String remark;
+    private String ipaddress;
 
-	public String getDepid() {
-		return depid;
-	}
+    public String getPiid() {
+        return piid;
+    }
 
-	public void setDepid(String depid) {
-		this.depid = depid;
-	}
+    public void setPiid(String piid) {
+        this.piid = piid;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getDepid() {
+        return depid;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setDepid(String depid) {
+        this.depid = depid;
+    }
 
-	public String getIsSended() {
-		return isSended;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setIsSended(String isSended) {
-		this.isSended = isSended;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public String getIsSended() {
+        return isSended;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public void setIsSended(String isSended) {
+        this.isSended = isSended;
+    }
 
-	public String getSheetKey() {
-		return sheetKey;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public void setSheetKey(String sheetKey) {
-		this.sheetKey = sheetKey;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public String getSheetType() {
-		return sheetType;
-	}
+    public String getSheetKey() {
+        return sheetKey;
+    }
 
-	public void setSheetType(String sheetType) {
-		this.sheetType = sheetType;
-	}
+    public void setSheetKey(String sheetKey) {
+        this.sheetKey = sheetKey;
+    }
 
-	public String getUserid() {
-		return userid;
-	}
+    public String getSheetType() {
+        return sheetType;
+    }
 
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
+    public void setSheetType(String sheetType) {
+        this.sheetType = sheetType;
+    }
 
-	public Date getCreateTime() {
-		return createTime;
-	}
+    public String getUserid() {
+        return userid;
+    }
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
 
-	public Date getSendTime() {
-		return sendTime;
-	}
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-	public void setSendTime(Date sendTime) {
-		this.sendTime = sendTime;
-	}
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-	public String getIpaddress() {
-		return ipaddress;
-	}
+    public Date getSendTime() {
+        return sendTime;
+    }
 
-	public void setIpaddress(String ipaddress) {
-		this.ipaddress = ipaddress;
-	}
+    public void setSendTime(Date sendTime) {
+        this.sendTime = sendTime;
+    }
+
+    public String getIpaddress() {
+        return ipaddress;
+    }
+
+    public void setIpaddress(String ipaddress) {
+        this.ipaddress = ipaddress;
+    }
 }

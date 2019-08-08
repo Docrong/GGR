@@ -1,41 +1,41 @@
-﻿$axure.internal(function($ax) {
+﻿$axure.internal(function ($ax) {
     var _pageData;
 
 
-    var _initializePageFragment = function(pageFragment, objIdToObject) {
-        var objectArrayHelper = function(objects, parent) {
-            for(var i = 0; i < objects.length; i++) {
+    var _initializePageFragment = function (pageFragment, objIdToObject) {
+        var objectArrayHelper = function (objects, parent) {
+            for (var i = 0; i < objects.length; i++) {
                 diagramObjectHelper(objects[i], parent);
             }
         };
 
-        var diagramObjectHelper = function(diagramObject, parent) {
+        var diagramObjectHelper = function (diagramObject, parent) {
             $ax.initializeObject('diagramObject', diagramObject);
             objIdToObject[pageFragment.packageId + '~' + diagramObject.id] = diagramObject;
             diagramObject.parent = parent;
             diagramObject.owner = pageFragment;
             diagramObject.scriptIds = [];
-            if(diagramObject.diagrams) { //dynamic panel
-                for(var i = 0; i < diagramObject.diagrams.length; i++) {
+            if (diagramObject.diagrams) { //dynamic panel
+                for (var i = 0; i < diagramObject.diagrams.length; i++) {
                     var diagram = diagramObject.diagrams[i];
                     objectArrayHelper(diagram.objects, diagram);
                 }
             }
-            if(diagramObject.objects) objectArrayHelper(diagramObject.objects, diagramObject);
+            if (diagramObject.objects) objectArrayHelper(diagramObject.objects, diagramObject);
         };
 
         objectArrayHelper(pageFragment.diagram.objects, pageFragment.diagram);
     };
 
-    var _initalizeStylesheet = function(stylesheet) {
+    var _initalizeStylesheet = function (stylesheet) {
         var stylesById = {};
         var customStyles = stylesheet.customStyles;
-        for(var key in customStyles) {
+        for (var key in customStyles) {
             var style = customStyles[key];
             stylesById[style.id] = style;
         }
         var duplicateStyles = stylesheet.duplicateStyles;
-        for(var duplicateKey in duplicateStyles) {
+        for (var duplicateKey in duplicateStyles) {
             stylesById[duplicateKey] = stylesById[duplicateStyles[duplicateKey]];
         }
 
@@ -43,7 +43,7 @@
     };
 
 
-    var _initializeDocumentData = function() {
+    var _initializeDocumentData = function () {
         _initalizeStylesheet($ax.document.stylesheet);
     };
 
@@ -61,12 +61,12 @@
         var _scriptIds = [];
         var elementIdToText = {};
         var radioGroupToSelectedElementId = {};
-        _initializePageData = function() {
-            if(!_pageData || !_pageData.page || !_pageData.page.diagram) return;
+        _initializePageData = function () {
+            if (!_pageData || !_pageData.page || !_pageData.page.diagram) return;
 
             var objIdToObject = {};
             _initializePageFragment(_pageData.page, objIdToObject);
-            for(var masterId in _pageData.masters) {
+            for (var masterId in _pageData.masters) {
                 var master = _pageData.masters[masterId];
                 _initializePageFragment(master, objIdToObject);
             }
@@ -74,13 +74,13 @@
             var _pathsToScriptIds = [];
             _pathToScriptIdHelper(_pageData.objectPaths, [], _pathsToScriptIds, scriptIdToPath);
 
-            for(var i = 0; i < _pathsToScriptIds.length; i++) {
+            for (var i = 0; i < _pathsToScriptIds.length; i++) {
                 var path = _pathsToScriptIds[i].idPath;
                 var scriptId = _pathsToScriptIds[i].scriptId;
 
                 var packageId = _pageData.page.packageId;
-                if(path.length > 1) {
-                    for(var j = 0; j < path.length - 1; j++) {
+                if (path.length > 1) {
+                    for (var j = 0; j < path.length - 1; j++) {
                         var rdoId = path[j];
                         var rdo = objIdToObject[packageId + '~' + rdoId];
                         packageId = rdo.masterId;
@@ -94,10 +94,10 @@
             }
 
             // Now map scriptIds to repeaters and layers
-            var mapScriptIdToRepeaterId = function(scriptId, repeaterId) {
+            var mapScriptIdToRepeaterId = function (scriptId, repeaterId) {
                 scriptIdToRepeaterId[scriptId] = repeaterId;
                 var scriptIds = repeaterIdToScriptIds[repeaterId];
-                if(scriptIds) scriptIds[scriptIds.length] = scriptId;
+                if (scriptIds) scriptIds[scriptIds.length] = scriptId;
                 else repeaterIdToScriptIds[repeaterId] = [scriptId];
             };
             var mapScriptIdToLayerId = function (obj, layerId, path) {
@@ -105,22 +105,22 @@
                 pathCopy[path.length] = obj.id;
                 var scriptId = $ax.getScriptIdFromPath(pathCopy);
                 if ($ax.public.fn.IsLayer(obj.type)) {
-                    for(var i = 0; i < obj.objs.length; i++) mapScriptIdToLayerId(obj.objs[i], scriptId, path);
+                    for (var i = 0; i < obj.objs.length; i++) mapScriptIdToLayerId(obj.objs[i], scriptId, path);
                 }
                 scriptIdToParentLayer[scriptId] = layerId;
             }
-            var mapIdsToRepeaterAndLayer = function(path, objs, repeaterId) {
+            var mapIdsToRepeaterAndLayer = function (path, objs, repeaterId) {
                 var pathCopy = $ax.deepCopy(path);
 
-                for(var i = 0; i < objs.length; i++) {
+                for (var i = 0; i < objs.length; i++) {
                     var obj = objs[i];
                     pathCopy[path.length] = obj.id;
                     var scriptId = $ax.getScriptIdFromPath(pathCopy);
                     // Rdo have no element on page and are not mapped to the repeater
-                    if(repeaterId) mapScriptIdToRepeaterId(scriptId, repeaterId);
+                    if (repeaterId) mapScriptIdToRepeaterId(scriptId, repeaterId);
 
                     if ($ax.public.fn.IsDynamicPanel(obj.type)) {
-                        for(var j = 0; j < obj.diagrams.length; j++) mapIdsToRepeaterAndLayer(path, obj.diagrams[j].objects, repeaterId);
+                        for (var j = 0; j < obj.diagrams.length; j++) mapIdsToRepeaterAndLayer(path, obj.diagrams[j].objects, repeaterId);
                     } else if ($ax.public.fn.IsReferenceDiagramObject(obj.type)) {
                         mapIdsToRepeaterAndLayer(pathCopy, $ax.pageData.masters[obj.masterId].diagram.objects, repeaterId);
                     } else if ($ax.public.fn.IsRepeater(obj.type)) {
@@ -128,12 +128,12 @@
                         mapIdsToRepeaterAndLayer(path, obj.objects, scriptId);
                     } else if ($ax.public.fn.IsLayer(obj.type)) {
                         var layerObjs = obj.objs;
-                        for(var j = 0; j < layerObjs.length; j++) {
+                        for (var j = 0; j < layerObjs.length; j++) {
                             mapScriptIdToLayerId(layerObjs[j], scriptId, path);
                         }
-                    } else if(obj.objects && obj.objects.length) {
-                        if(repeaterId) {
-                            for(var j = 0; j < obj.objects.length; j++) {
+                    } else if (obj.objects && obj.objects.length) {
+                        if (repeaterId) {
+                            for (var j = 0; j < obj.objects.length; j++) {
                                 mapIdsToRepeaterAndLayer(path, obj.objects, repeaterId);
                             }
                         }
@@ -144,43 +144,42 @@
         };
 
 
-
-        $ax.getPathFromScriptId = function(scriptId) {
+        $ax.getPathFromScriptId = function (scriptId) {
             var reversedPath = [];
             var path = scriptIdToPath[scriptId];
-            while(path && path.uniqueId) {
+            while (path && path.uniqueId) {
                 reversedPath[reversedPath.length] = path.uniqueId;
                 path = path.parent;
             }
             return reversedPath.reverse();
         };
 
-        var _getScriptIdFromFullPath = function(path) {
+        var _getScriptIdFromFullPath = function (path) {
             var current = $ax.pageData.objectPaths;
-            for(var i = 0; i < path.length; i++) {
+            for (var i = 0; i < path.length; i++) {
                 current = current[path[i]];
-                if(!current) return current;
+                if (!current) return current;
             }
             return current && current.scriptId;
         };
 
 
-        var _getScriptIdFromPath = function(path, relativeTo) {
+        var _getScriptIdFromPath = function (path, relativeTo) {
             var relativePath = [];
             var includeMasterInPath = false;
-            if(relativeTo) {
+            if (relativeTo) {
                 var relativeToScriptId;
-                if(relativeTo.srcElement) { //this is eventInfo
+                if (relativeTo.srcElement) { //this is eventInfo
                     relativeToScriptId = $ax.repeater.getScriptIdFromElementId(relativeTo.srcElement);
                     includeMasterInPath = relativeTo.isMasterEvent;
-                } else if(typeof relativeTo === 'string') { //this is an element id
+                } else if (typeof relativeTo === 'string') { //this is an element id
                     relativeToScriptId = relativeTo;
                 }
 
-                if(relativeToScriptId) {
+                if (relativeToScriptId) {
                     relativePath = $ax.getPathFromScriptId(relativeToScriptId);
-                    if(!includeMasterInPath) relativePath = relativePath.slice(0, relativePath.length - 1);
-                } else if(relativeTo instanceof Array) { //this is a path
+                    if (!includeMasterInPath) relativePath = relativePath.slice(0, relativePath.length - 1);
+                } else if (relativeTo instanceof Array) { //this is a path
                     relativePath = relativeTo;
                 }
             }
@@ -190,7 +189,7 @@
         };
         $ax.getScriptIdFromPath = _getScriptIdFromPath;
 
-        var _getElementIdsFromPath = function(path, eventInfo) {
+        var _getElementIdsFromPath = function (path, eventInfo) {
             var scriptId = _getScriptIdFromPath(path, eventInfo);
             if (!scriptId) return [];
             // Don't need placed check hear. If unplaced, scriptId will be undefined and exit out before here.
@@ -203,62 +202,63 @@
             if (!scriptId) return scriptId;
 
             var itemNum = params.itemNum;
-            if(params.relativeTo && typeof params.relativeTo === 'string') {
-                if($jobj(params.relativeTo)) itemNum = $ax.repeater.getItemIdFromElementId(params.relativeTo);
+            if (params.relativeTo && typeof params.relativeTo === 'string') {
+                if ($jobj(params.relativeTo)) itemNum = $ax.repeater.getItemIdFromElementId(params.relativeTo);
             }
             return $ax.repeater.createElementId(scriptId, itemNum);
         };
         $ax.getElementIdFromPath = _getElementIdFromPath;
 
-        var _getElementsIdFromEventAndScriptId = function(eventInfo, scriptId) {
+        var _getElementsIdFromEventAndScriptId = function (eventInfo, scriptId) {
             var itemId = eventInfo && $ax.repeater.getItemIdFromElementId(eventInfo.srcElement);
             var target = false;
             // Try to get itemId from target if you can't get it from source.
-            if(!itemId) {
+            if (!itemId) {
                 itemId = eventInfo && eventInfo.targetElement && $ax.repeater.getItemIdFromElementId(eventInfo.targetElement);
-                if(itemId) target = true;
+                if (itemId) target = true;
             }
 
             var parentRepeater = $ax.getParentRepeaterFromScriptId(scriptId);
-            if(parentRepeater && scriptId != parentRepeater) {
-                if(itemId && (!eventInfo || parentRepeater == $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(target ? eventInfo.targetElement : eventInfo.srcElement)))) {
+            if (parentRepeater && scriptId != parentRepeater) {
+                if (itemId && (!eventInfo || parentRepeater == $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(target ? eventInfo.targetElement : eventInfo.srcElement)))) {
                     return [$ax.repeater.createElementId(scriptId, itemId)];
                 }
                 var elementIds = [];
                 var itemIds = $ax.getItemIdsForRepeater(parentRepeater);
-                if(!itemIds) return [];
+                if (!itemIds) return [];
 
-                for(var i = 0; i < itemIds.length; i++) elementIds[i] = $ax.repeater.createElementId(scriptId, itemIds[i]);
+                for (var i = 0; i < itemIds.length; i++) elementIds[i] = $ax.repeater.createElementId(scriptId, itemIds[i]);
                 return elementIds;
             }
             return [scriptId];
         };
         $ax.getElementIdsFromEventAndScriptId = _getElementsIdFromEventAndScriptId;
 
-        var _getSrcElementIdFromEvent = function(event) {
+        var _getSrcElementIdFromEvent = function (event) {
             var currentQuery = $(event.srcElement || event.target);
-            while(currentQuery && currentQuery.length && (!$obj(currentQuery.attr('id')) || $jobj(currentQuery.attr('id')).hasClass('text'))) {
+            while (currentQuery && currentQuery.length && (!$obj(currentQuery.attr('id')) || $jobj(currentQuery.attr('id')).hasClass('text'))) {
                 currentQuery = currentQuery.parent();
-            };
+            }
+            ;
             return currentQuery.attr('id');
         };
         $ax.getSrcElementIdFromEvent = _getSrcElementIdFromEvent;
 
-        var _getEventInfoFromEvent = function(event, skipShowDescriptions, elementId) {
+        var _getEventInfoFromEvent = function (event, skipShowDescriptions, elementId) {
             var eventInfo = {};
             eventInfo.srcElement = elementId;
             eventInfo.now = new Date();
 
-            if(event != null) {
+            if (event != null) {
                 //elementId can be empty string, so can't simple use "or" assignment here.
                 eventInfo.srcElement = elementId || elementId == '' ? elementId : _getSrcElementIdFromEvent(event);
                 eventInfo.which = event.which;
 
                 // When getting locations in mobile, need to extract the touch object to get the mouse location attributes
                 var mouseEvent = (event.originalEvent && event.originalEvent.changedTouches && event.originalEvent.changedTouches[0]) || event.originalEvent;
-                if(mouseEvent && !mouseEvent.type) mouseEvent.type = event.type;
+                if (mouseEvent && !mouseEvent.type) mouseEvent.type = event.type;
 
-                if(skipShowDescriptions) eventInfo.skipShowDescriptions = true;
+                if (skipShowDescriptions) eventInfo.skipShowDescriptions = true;
 
                 // Always update mouse location if possible
                 $ax.event.updateMouseLocation(mouseEvent);
@@ -285,7 +285,7 @@
         };
         $ax.getEventInfoFromEvent = _getEventInfoFromEvent;
 
-        var _getWindowInfo = function() {
+        var _getWindowInfo = function () {
             var win = {};
             win.width = $(window).width();
             win.height = $(window).height();
@@ -295,15 +295,15 @@
         };
         $ax.getWindowInfo = _getWindowInfo;
 
-        var _getItemInfo = function(elementId) {
-            if(!elementId) return { valid: false };
+        var _getItemInfo = function (elementId) {
+            if (!elementId) return {valid: false};
 
             elementId = _getParentElement(elementId);
 
             var index = $ax.repeater.getItemIdFromElementId(elementId);
-            if(!index) return { valid: false };
+            if (!index) return {valid: false};
 
-            var item = { valid: true };
+            var item = {valid: true};
 
             var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);
             var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);
@@ -316,15 +316,15 @@
         };
         $ax.getItemInfo = _getItemInfo;
 
-        var _getWidgetInfo = function(elementId) {
-            if(!elementId) return { valid: false };
+        var _getWidgetInfo = function (elementId) {
+            if (!elementId) return {valid: false};
 
             elementId = _getParentElement(elementId);
 
             var elementAxQuery = $ax('#' + elementId);
             var elementQuery = $jobj(elementId);
             var obj = $obj(elementId);
-            var widget = { valid: true, isWidget: true };
+            var widget = {valid: true, isWidget: true};
             widget.elementId = elementId;
             widget.name = widget.label = (elementQuery.data('label') ? elementQuery.data('label') : '');
             widget.text = $ax('#' + elementId).text();
@@ -334,13 +334,13 @@
             var repeaterId = $ax.getParentRepeaterFromScriptId(scriptId);
             if (repeaterId) widget.repeater = $ax.public.fn.IsRepeater(obj.type) ? widget : _getWidgetInfo(repeaterId);
 
-            if($ax.public.fn.IsLayer(obj.type)) {
+            if ($ax.public.fn.IsLayer(obj.type)) {
                 var boundingRect = $ax.public.fn.getWidgetBoundingRect(elementId);
                 widget.x = boundingRect.left;
                 widget.y = boundingRect.top;
                 widget.width = boundingRect.width;
                 widget.height = boundingRect.height;
-                if(elementQuery.length != 0) {
+                if (elementQuery.length != 0) {
                     widget.pagex = elementAxQuery.left();
                     widget.pagey = elementAxQuery.top();
                 }
@@ -352,7 +352,7 @@
                 widget.x = x;
                 widget.y = y;
 
-                if(elementExists) {
+                if (elementExists) {
                     widget.pagex = elementAxQuery.left();
                     widget.pagey = elementAxQuery.top();
                     widget.width = elementAxQuery.width();
@@ -377,7 +377,7 @@
                 widget.scrollx = stateQuery.scrollLeft();
                 widget.scrolly = stateQuery.scrollTop();
 
-                if($ax.dynamicPanelManager.isIdFitToContent(elementId)) {
+                if ($ax.dynamicPanelManager.isIdFitToContent(elementId)) {
                     widget.width = stateQuery.width();
                     widget.height = stateQuery.height();
                 }
@@ -400,7 +400,7 @@
             widget.right = widget.rightfixed = widget.x + widget.width;
             widget.bottom = widget.bottomfixed = widget.y + widget.height;
 
-            if(elementQuery.css('position') == 'fixed') {
+            if (elementQuery.css('position') == 'fixed') {
                 var windowScrollLeft = $(window).scrollLeft();
                 var windowScrollTop = $(window).scrollTop();
                 widget.leftfixed = widget.left - windowScrollLeft;
@@ -412,94 +412,94 @@
         };
         $ax.getWidgetInfo = _getWidgetInfo;
 
-        var _getParentElement = $ax.getParentElement = function(elementId) {
+        var _getParentElement = $ax.getParentElement = function (elementId) {
             var obj = $obj(elementId);
-            while(obj.isContained) {
+            while (obj.isContained) {
                 var path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(elementId));
                 var itemId = $ax.repeater.getItemIdFromElementId(elementId);
                 path[path.length - 1] = obj.parent.id;
-                elementId = $ax.getElementIdFromPath(path, { itemNum: itemId });
+                elementId = $ax.getElementIdFromPath(path, {itemNum: itemId});
                 obj = $obj(elementId);
             }
 
             return elementId;
         };
 
-        $ax.addItemIdToRepeater = function(itemId, repeaterId) {
+        $ax.addItemIdToRepeater = function (itemId, repeaterId) {
             var itemIds = repeaterIdToItemIds[repeaterId];
-            if(itemIds) itemIds[itemIds.length] = itemId;
+            if (itemIds) itemIds[itemIds.length] = itemId;
             else repeaterIdToItemIds[repeaterId] = [itemId];
 
             var scriptIds = repeaterIdToScriptIds[repeaterId];
-            for(var i = 0; i < scriptIds.length; i++) elementIdToObject[$ax.repeater.createElementId(scriptIds[i], itemId)] = $ax.getObjectFromScriptId(scriptIds[i]);
+            for (var i = 0; i < scriptIds.length; i++) elementIdToObject[$ax.repeater.createElementId(scriptIds[i], itemId)] = $ax.getObjectFromScriptId(scriptIds[i]);
         };
 
-        $ax.getAllElementIds = function() {
+        $ax.getAllElementIds = function () {
             var elementIds = [];
-            for(var i = 0; i < _scriptIds.length; i++) {
+            for (var i = 0; i < _scriptIds.length; i++) {
                 var scriptId = _scriptIds[i];
                 var repeaterId = scriptIdToRepeaterId[scriptId];
-                if(repeaterId && repeaterId != scriptId) {
+                if (repeaterId && repeaterId != scriptId) {
                     var itemIds = repeaterIdToItemIds[repeaterId] || [];
-                    for(var j = 0; j < itemIds.length; j++) elementIds[elementIds.length] = $ax.repeater.createElementId(scriptId, itemIds[j]);
+                    for (var j = 0; j < itemIds.length; j++) elementIds[elementIds.length] = $ax.repeater.createElementId(scriptId, itemIds[j]);
                 } else elementIds[elementIds.length] = scriptId;
             }
             return elementIds;
         };
 
-        $ax.getAllScriptIds = function() {
+        $ax.getAllScriptIds = function () {
             return _scriptIds;
         };
 
-        $ax.getObjectFromElementId = function(elementId) {
+        $ax.getObjectFromElementId = function (elementId) {
             return $ax.getObjectFromScriptId($ax.repeater.getScriptIdFromElementId(elementId));
         };
 
-        $ax.getObjectFromScriptId = function(scriptId) {
+        $ax.getObjectFromScriptId = function (scriptId) {
             return scriptIdToObject[scriptId];
         };
 
-        $ax.getParentRepeaterFromElementId = function(elementId) {
+        $ax.getParentRepeaterFromElementId = function (elementId) {
             return $ax.getParentRepeaterFromScriptId($ax.repeater.getScriptIdFromElementId(elementId));
         };
 
-        $ax.getParentRepeaterFromScriptId = function(scriptId) {
+        $ax.getParentRepeaterFromScriptId = function (scriptId) {
             return scriptIdToRepeaterId[scriptId];
         };
 
-        var _getChildScriptIdsForRepeater = function(repeaterId) {
+        var _getChildScriptIdsForRepeater = function (repeaterId) {
             return repeaterIdToScriptIds[repeaterId];
         };
 
-        var _getItemIdsForRepeater = function(repeaterId) {
+        var _getItemIdsForRepeater = function (repeaterId) {
             return repeaterIdToItemIds[repeaterId] || [];
         };
         $ax.getItemIdsForRepeater = _getItemIdsForRepeater;
 
-        var _clearItemIdsForRepeater = function(repeaterId) {
+        var _clearItemIdsForRepeater = function (repeaterId) {
             repeaterIdToItemIds[repeaterId] = [];
         };
         $ax.clearItemsForRepeater = _clearItemIdsForRepeater;
 
-        $ax.getChildElementIdsForRepeater = function(repeaterId) {
+        $ax.getChildElementIdsForRepeater = function (repeaterId) {
             var scriptIds = _getChildScriptIdsForRepeater(repeaterId);
             var itemIds = _getItemIdsForRepeater(repeaterId);
 
             var retVal = [];
-            if(!itemIds || !scriptIds) return retVal;
+            if (!itemIds || !scriptIds) return retVal;
 
-            for(var i = 0; i < scriptIds.length; i++) {
-                for(var j = 0; j < itemIds.length; j++) {
+            for (var i = 0; i < scriptIds.length; i++) {
+                for (var j = 0; j < itemIds.length; j++) {
                     retVal[retVal.length] = $ax.repeater.createElementId(scriptIds[i], itemIds[j]);
                 }
             }
             return retVal;
         };
 
-        $ax.getRdoParentFromElementId = function(elementId) {
+        $ax.getRdoParentFromElementId = function (elementId) {
             var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);
             var rdoId = scriptIdToPath[scriptId].parent.scriptId;
-            if($ax.getParentRepeaterFromScriptId(rdoId)) rdoId = $ax.repeater.createElementId(rdoId, $ax.repeater.getItemIdFromElementId(elementId));
+            if ($ax.getParentRepeaterFromScriptId(rdoId)) rdoId = $ax.repeater.createElementId(rdoId, $ax.repeater.getItemIdFromElementId(elementId));
             return rdoId;
         };
 
@@ -509,21 +509,21 @@
             return $ax.getParentRepeaterFromElementId(scriptId) ? $ax.repeater.createElementId(scriptId, itemId) : scriptId;
         }
 
-        $ax.updateElementText = function(elementId, text) {
+        $ax.updateElementText = function (elementId, text) {
             elementIdToText[elementId] = text;
         };
 
-        $ax.hasElementTextChanged = function(elementId, text) {
+        $ax.hasElementTextChanged = function (elementId, text) {
             return elementIdToText[elementId] != text;
         };
 
-        $ax.updateRadioButtonSelected = function(group, elementId) {
+        $ax.updateRadioButtonSelected = function (group, elementId) {
             var old = radioGroupToSelectedElementId[group];
             radioGroupToSelectedElementId[group] = elementId;
             return old;
         };
 
-        $ax.hasRadioButtonSelectedChanged = function(group, elementId) {
+        $ax.hasRadioButtonSelectedChanged = function (group, elementId) {
             return radioGroupToSelectedElementId[group] != elementId;
         };
     })();
@@ -532,55 +532,55 @@
     // [ { idPath, scriptId }, ... ]
     //for every scriptId in the object
     //also populates an object of scriptId -> path
-    var _pathToScriptIdHelper = function(currentPath, currentChain, fullPathArray, scriptIdToPath) {
-        for(var key in currentPath) {
-            if(key != "scriptId") {
+    var _pathToScriptIdHelper = function (currentPath, currentChain, fullPathArray, scriptIdToPath) {
+        for (var key in currentPath) {
+            if (key != "scriptId") {
                 var nextPath = currentPath[key];
                 _pathToScriptIdHelper(nextPath, currentChain.concat(key), fullPathArray, scriptIdToPath);
                 nextPath.parent = currentPath;
                 nextPath.uniqueId = key;
             } else {
-                fullPathArray[fullPathArray.length] = { idPath: currentChain, scriptId: currentPath.scriptId };
+                fullPathArray[fullPathArray.length] = {idPath: currentChain, scriptId: currentPath.scriptId};
                 scriptIdToPath[currentPath.scriptId] = currentPath;
             }
         }
     };
 
-    $ax.public.loadCurrentPage = $ax.loadCurrentPage = function(pageData) {
+    $ax.public.loadCurrentPage = $ax.loadCurrentPage = function (pageData) {
         $ax.pageData = _pageData = pageData;
         _initializePageData();
     };
 
-    $ax.public.loadDocument = $ax.loadDocument = function(document) {
+    $ax.public.loadDocument = $ax.loadDocument = function (document) {
         $ax.document = document;
         _initializeDocumentData();
     };
 
 
     /**
-    Navigates to a page
+     Navigates to a page
 
 
-    */
-    $ax.public.navigate = $ax.navigate = function(to) { //url, includeVariables, type) {
+     */
+    $ax.public.navigate = $ax.navigate = function (to) { //url, includeVariables, type) {
         var targetUrl;
-        if(typeof (to) === 'object') {
+        if (typeof (to) === 'object') {
             includeVariables = to.includeVariables;
             targetUrl = !includeVariables ? to.url : $ax.globalVariableProvider.getLinkUrl(to.url);
 
-            if(to.target == "new") {
+            if (to.target == "new") {
                 window.open(targetUrl, to.name);
-            } else if(to.target == "popup") {
+            } else if (to.target == "popup") {
                 var features = _getPopupFeatures(to.popupOptions);
                 window.open(targetUrl, to.name, features);
             } else {
                 var targetLocation = window.location;
-                if(to.target == "current") {
-                } else if(to.target == "parent") {
+                if (to.target == "current") {
+                } else if (to.target == "parent") {
                     targetLocation = top.opener.window.location;
-                } else if(to.target == "parentFrame") {
+                } else if (to.target == "parentFrame") {
                     targetLocation = parent.location;
-                } else if(to.target == "frame") {
+                } else if (to.target == "frame") {
                     //                    targetLocation = to.frame.contentWindow.location;
                     $(to.frame).attr('src', targetUrl || 'about:blank');
                     return;
@@ -601,24 +601,24 @@
         }
     };
 
-    var _needsReload = function(oldLocation, newBaseUrl) {
+    var _needsReload = function (oldLocation, newBaseUrl) {
         var reload = false;
         try {
             var oldUrl = oldLocation.href;
             var oldBaseUrl = oldUrl.split("#")[0];
             var lastslash = oldBaseUrl.lastIndexOf("/");
-            if(lastslash > 0) {
+            if (lastslash > 0) {
                 oldBaseUrl = oldBaseUrl.substring(lastslash + 1, oldBaseUrl.length);
-                if(oldBaseUrl == encodeURI(newBaseUrl)) {
+                if (oldBaseUrl == encodeURI(newBaseUrl)) {
                     reload = true;
                 }
             }
-        } catch(e) {
+        } catch (e) {
         }
         return reload;
     };
 
-    var _getPopupFeatures = function(options) {
+    var _getPopupFeatures = function (options) {
         var defaultOptions = {
             toolbar: true,
             scrollbars: true,
@@ -645,30 +645,30 @@
         optionsList.push('directories=' + (selectedOptions.directories ? 'yes' : 'no'));
         optionsList.push('resizable=' + (selectedOptions.resizable ? 'yes' : 'no'));
 
-        if(selectedOptions.centerwindow == false) {
-            if(selectedOptions.left > -1) {
+        if (selectedOptions.centerwindow == false) {
+            if (selectedOptions.left > -1) {
                 optionsList.push('left=' + selectedOptions.left);
             }
 
-            if(selectedOptions.top > -1) {
+            if (selectedOptions.top > -1) {
                 optionsList.push('top=' + selectedOptions.top);
             }
         }
 
         var height = 0;
         var width = 0;
-        if(selectedOptions.height > 0) {
+        if (selectedOptions.height > 0) {
             optionsList.push('height=' + selectedOptions.height);
             height = selectedOptions.height;
         }
 
-        if(selectedOptions.width > 0) {
+        if (selectedOptions.width > 0) {
             optionsList.push('width=' + selectedOptions.width);
             width = selectedOptions.width;
         }
 
         var features = optionsList.join(',');
-        if(selectedOptions.centerwindow) {
+        if (selectedOptions.centerwindow) {
             var winl = (window.screen.width - width) / 2;
             var wint = (window.screen.height - height) / 2;
             features = features + ',left=' + winl + ',top=' + wint;
@@ -678,28 +678,28 @@
     };
 
     /**
-    Closes a window
+     Closes a window
 
 
-    */
-    $ax.public.closeWindow = $ax.closeWindow = function() {
+     */
+    $ax.public.closeWindow = $ax.closeWindow = function () {
         parent.window.close();
     };
 
     /**
-    Goes back
+     Goes back
 
 
-    */
-    $ax.public.back = $ax.back = function() {
+     */
+    $ax.public.back = $ax.back = function () {
         window.history.go(-1);
     };
 
     /**
-    Reloads the current page.
-    # includeVariables: true if it should re-include the variables when the page is reloaded
-    */
-    $ax.public.reload = $ax.reload = function(includeVariables) {
+     Reloads the current page.
+     # includeVariables: true if it should re-include the variables when the page is reloaded
+     */
+    $ax.public.reload = $ax.reload = function (includeVariables) {
         var targetUrl = (includeVariables === false)
             ? $axure.utils.getReloadPath() + "#" + encodeURI($ax.pageData.url)
             : $axure.utils.getReloadPath() + "#" + encodeURI($ax.globalVariableProvider.getLinkUrl($ax.pageData.url));
@@ -707,12 +707,12 @@
     };
 
     /**
-    Sets a variable.
-    # name: The name of the global variable to set
-    # value: The value that should be set
-    */
-    $ax.public.setGlobalVariable = $ax.setGlobalVariable = function(name, value) {
-        if(!name || !value) {
+     Sets a variable.
+     # name: The name of the global variable to set
+     # value: The value that should be set
+     */
+    $ax.public.setGlobalVariable = $ax.setGlobalVariable = function (name, value) {
+        if (!name || !value) {
             return;
         }
 
@@ -720,10 +720,10 @@
     };
 
     /**
-    Gets the value of a global variable
-    # name: The name of the global variable value to get
-    */
-    $ax.public.getGlobalVariable = $ax.getGlobalVariable = function(name) {
+     Gets the value of a global variable
+     # name: The name of the global variable value to get
+     */
+    $ax.public.getGlobalVariable = $ax.getGlobalVariable = function (name) {
         $ax.globalVariableProvider.getVariableValue(name);
     };
 
@@ -733,12 +733,12 @@
     }
 
 
-    $ax.getTypeFromElementId = function(elementId) {
+    $ax.getTypeFromElementId = function (elementId) {
         var obj = this.getObjectFromElementIdDisregardHex(elementId);
         return obj && obj.type;
     };
 
-    $ax.getNumFromPx = function(pxNum) {
+    $ax.getNumFromPx = function (pxNum) {
         return Number(pxNum.replace('px', ''));
     }
 

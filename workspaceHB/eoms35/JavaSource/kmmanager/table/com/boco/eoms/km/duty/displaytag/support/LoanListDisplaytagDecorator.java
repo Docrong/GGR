@@ -8,20 +8,20 @@ import com.boco.eoms.duty.model.TawRmLoanRecord;
 
 public class LoanListDisplaytagDecorator extends TableDecorator {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public String getUserId(){
-		ITawSystemUserManager userManager=(ITawSystemUserManager)ApplicationContextHolder.getInstance().getBean("itawSystemUserManager");
-		TawRmLoanRecord tawRmLoanRecord=(TawRmLoanRecord)getCurrentRowObject();
-		String userName="";
-		userName=userManager.getUserByuserid(tawRmLoanRecord.getUserId()).getUsername();
-		return userName;
-	}
+    public String getUserId() {
+        ITawSystemUserManager userManager = (ITawSystemUserManager) ApplicationContextHolder.getInstance().getBean("itawSystemUserManager");
+        TawRmLoanRecord tawRmLoanRecord = (TawRmLoanRecord) getCurrentRowObject();
+        String userName = "";
+        userName = userManager.getUserByuserid(tawRmLoanRecord.getUserId()).getUsername();
+        return userName;
+    }
 
 }

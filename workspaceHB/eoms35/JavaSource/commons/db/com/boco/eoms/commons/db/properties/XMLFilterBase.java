@@ -102,8 +102,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
  *
  * @see com.jivesoftware.sax.helpers.XMLFilterImpl
  */
-class XMLFilterBase extends XMLFilterImpl
-{
+class XMLFilterBase extends XMLFilterImpl {
 
     ////////////////////////////////////////////////////////////////////
     // Constructors.
@@ -119,8 +118,7 @@ class XMLFilterBase extends XMLFilterImpl
      * @see com.jivesoftware.sax.XMLReader#setFeature
      * @see com.jivesoftware.sax.XMLReader#setProperty
      */
-    public XMLFilterBase()
-    {
+    public XMLFilterBase() {
     }
 
     /**
@@ -130,8 +128,7 @@ class XMLFilterBase extends XMLFilterImpl
      *
      * @param xmlreader The parent in the filter chain.
      */
-    public XMLFilterBase(XMLReader parent)
-    {
+    public XMLFilterBase(XMLReader parent) {
         super(parent);
     }
 
@@ -148,14 +145,13 @@ class XMLFilterBase extends XMLFilterImpl
      * #startElement(String, String, String, Attributes)}
      * directly.</p>
      *
-     * @param uri The element's Namespace URI.
+     * @param uri       The element's Namespace URI.
      * @param localName The element's local name.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#startElement
      */
-    public void startElement (String uri, String localName) throws SAXException
-    {
+    public void startElement(String uri, String localName) throws SAXException {
         startElement(uri, localName, "", EMPTY_ATTS);
     }
 
@@ -169,12 +165,11 @@ class XMLFilterBase extends XMLFilterImpl
      * directly.</p>
      *
      * @param localName The element's local name.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#startElement
      */
-    public void startElement (String localName) throws SAXException
-    {
+    public void startElement(String localName) throws SAXException {
         startElement("", localName, "", EMPTY_ATTS);
     }
 
@@ -185,14 +180,13 @@ class XMLFilterBase extends XMLFilterImpl
      * It invokes {@link #endElement(String, String, String)}
      * directly.</p>
      *
-     * @param uri The element's Namespace URI.
+     * @param uri       The element's Namespace URI.
      * @param localName The element's local name.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#endElement
      */
-    public void endElement (String uri, String localName) throws SAXException
-    {
+    public void endElement(String uri, String localName) throws SAXException {
         endElement(uri, localName, "");
     }
 
@@ -205,60 +199,57 @@ class XMLFilterBase extends XMLFilterImpl
      * directly.</p>
      *
      * @param localName The element's local name.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#endElement
      */
-    public void endElement (String localName) throws SAXException
-    {
+    public void endElement(String localName) throws SAXException {
         endElement("", localName, "");
     }
 
     /**
      * Add an empty element.
-     *
+     * <p>
      * Both a {@link #startElement startElement} and an
      * {@link #endElement endElement} event will be passed on down
      * the filter chain.
      *
-     * @param uri The element's Namespace URI, or the empty string
-     *        if the element has no Namespace or if Namespace
-     *        processing is not being performed.
+     * @param uri       The element's Namespace URI, or the empty string
+     *                  if the element has no Namespace or if Namespace
+     *                  processing is not being performed.
      * @param localName The element's local name (without prefix).  This
-     *        parameter must be provided.
-     * @param qName The element's qualified name (with prefix), or
-     *        the empty string if none is available.  This parameter
-     *        is strictly advisory: the writer may or may not use
-     *        the prefix attached.
-     * @param atts The element's attribute list.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     *                  parameter must be provided.
+     * @param qName     The element's qualified name (with prefix), or
+     *                  the empty string if none is available.  This parameter
+     *                  is strictly advisory: the writer may or may not use
+     *                  the prefix attached.
+     * @param atts      The element's attribute list.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#startElement
      * @see com.jivesoftware.sax.ContentHandler#endElement
      */
-    public void emptyElement (String uri, String localName, String qName,
-            Attributes atts) throws SAXException
-    {
+    public void emptyElement(String uri, String localName, String qName,
+                             Attributes atts) throws SAXException {
         startElement(uri, localName, qName, atts);
         endElement(uri, localName, qName);
     }
 
-     /**
-      * Add an empty element without a qname or attributes.
-      *
-      * <p>This method will supply an empty string for the qname
-      * and an empty attribute list.  It invokes
-      * {@link #emptyElement(String, String, String, Attributes)}
-      * directly.</p>
-      *
-      * @param uri The element's Namespace URI.
-      * @param localName The element's local name.
-      * @exception com.jivesoftware.sax.SAXException If a filter
-      *            further down the chain raises an exception.
-      * @see #emptyElement(String, String, String, Attributes)
-      */
-    public void emptyElement (String uri, String localName) throws SAXException
-    {
+    /**
+     * Add an empty element without a qname or attributes.
+     *
+     * <p>This method will supply an empty string for the qname
+     * and an empty attribute list.  It invokes
+     * {@link #emptyElement(String, String, String, Attributes)}
+     * directly.</p>
+     *
+     * @param uri       The element's Namespace URI.
+     * @param localName The element's local name.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
+     * @see #emptyElement(String, String, String, Attributes)
+     */
+    public void emptyElement(String uri, String localName) throws SAXException {
         emptyElement(uri, localName, "", EMPTY_ATTS);
     }
 
@@ -272,12 +263,11 @@ class XMLFilterBase extends XMLFilterImpl
      * directly.</p>
      *
      * @param localName The element's local name.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
-      * @see #emptyElement(String, String, String, Attributes)
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
+     * @see #emptyElement(String, String, String, Attributes)
      */
-    public void emptyElement (String localName) throws SAXException
-    {
+    public void emptyElement(String localName) throws SAXException {
         emptyElement("", localName, "", EMPTY_ATTS);
     }
 
@@ -294,20 +284,19 @@ class XMLFilterBase extends XMLFilterImpl
      * {@link #characters(String)}, followed by
      * {@link @see com.jivesoftware.sax.ContentHandler#endElement}.</p>
      *
-     * @param uri The element's Namespace URI.
+     * @param uri       The element's Namespace URI.
      * @param localName The element's local name.
-     * @param qName The element's default qualified name.
-     * @param atts The element's attributes.
-     * @param content The character data content.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @param qName     The element's default qualified name.
+     * @param atts      The element's attributes.
+     * @param content   The character data content.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#startElement
      * @see #characters(String)
      * @see com.jivesoftware.sax.ContentHandler#endElement
      */
-    public void dataElement (String uri, String localName, String qName,
-            Attributes atts, String content) throws SAXException
-    {
+    public void dataElement(String uri, String localName, String qName,
+                            Attributes atts, String content) throws SAXException {
         startElement(uri, localName, qName, atts);
         characters(content);
         endElement(uri, localName, qName);
@@ -327,18 +316,17 @@ class XMLFilterBase extends XMLFilterImpl
      * {@link #characters(String)}, followed by
      * {@link @see com.jivesoftware.sax.ContentHandler#endElement}.</p>
      *
-     * @param uri The element's Namespace URI.
+     * @param uri       The element's Namespace URI.
      * @param localName The element's local name.
-     * @param content The character data content.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @param content   The character data content.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#startElement
      * @see #characters(String)
      * @see com.jivesoftware.sax.ContentHandler#endElement
      */
-    public void dataElement (String uri, String localName, String content)
-            throws SAXException
-    {
+    public void dataElement(String uri, String localName, String content)
+            throws SAXException {
         dataElement(uri, localName, "", EMPTY_ATTS, content);
     }
 
@@ -359,16 +347,15 @@ class XMLFilterBase extends XMLFilterImpl
      * {@link @see com.jivesoftware.sax.ContentHandler#endElement}.</p>
      *
      * @param localName The element's local name.
-     * @param content The character data content.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @param content   The character data content.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see com.jivesoftware.sax.ContentHandler#startElement
      * @see #characters(String)
      * @see com.jivesoftware.sax.ContentHandler#endElement
      */
-    public void dataElement (String localName, String content)
-            throws SAXException
-    {
+    public void dataElement(String localName, String content)
+            throws SAXException {
         dataElement("", localName, "", EMPTY_ATTS, content);
     }
 
@@ -380,12 +367,11 @@ class XMLFilterBase extends XMLFilterImpl
      * {@link @see com.jivesoftware.sax.ContentHandler#characters}.</p>
      *
      * @param data The character data.
-     * @exception com.jivesoftware.sax.SAXException If a filter
-     *            further down the chain raises an exception.
+     * @throws com.jivesoftware.sax.SAXException If a filter
+     *                                           further down the chain raises an exception.
      * @see @see com.jivesoftware.sax.ContentHandler#characters
      */
-    public void characters (String data) throws SAXException
-    {
+    public void characters(String data) throws SAXException {
         char ch[] = data.toCharArray();
         characters(ch, 0, ch.length);
     }

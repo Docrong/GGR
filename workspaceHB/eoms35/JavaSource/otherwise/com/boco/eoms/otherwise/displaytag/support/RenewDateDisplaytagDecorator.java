@@ -9,40 +9,42 @@ import com.boco.eoms.otherwise.model.TawRmTestcard;
 
 public class RenewDateDisplaytagDecorator extends TableDecorator {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
 
-	}
-	/**
-	 * id属性的radio
-	 * 
-	 * @return 一个带有radio的属性
-	 */
-	public String getId() {
-		TawRmTestcard tawRmTestcard=(TawRmTestcard)getCurrentRowObject();
-		return "<input type='radio' id='" + tawRmTestcard.getId()
-				+ "' name='id' value='" + tawRmTestcard.getId() + "'>";
-	}
-	
+    }
 
-	/**
-	 * 测试卡状态
-	 * @return
-	 */
-	public String getState(){
-		TawRmTestcard tawRmTestcard=(TawRmTestcard)getCurrentRowObject();
-		String state = "";
-		try {
-			state = (String) DictMgrLocator.getDictService()
-					.itemId2name(
-							Util.constituteDictId("dict-plancontent",
-									"useState"), tawRmTestcard.getState());
-		} catch (DictServiceException e) {
-			state = Util.idNoName();
-		}
-		return state;
-	}
+    /**
+     * id属性的radio
+     *
+     * @return 一个带有radio的属性
+     */
+    public String getId() {
+        TawRmTestcard tawRmTestcard = (TawRmTestcard) getCurrentRowObject();
+        return "<input type='radio' id='" + tawRmTestcard.getId()
+                + "' name='id' value='" + tawRmTestcard.getId() + "'>";
+    }
+
+
+    /**
+     * 测试卡状态
+     *
+     * @return
+     */
+    public String getState() {
+        TawRmTestcard tawRmTestcard = (TawRmTestcard) getCurrentRowObject();
+        String state = "";
+        try {
+            state = (String) DictMgrLocator.getDictService()
+                    .itemId2name(
+                            Util.constituteDictId("dict-plancontent",
+                                    "useState"), tawRmTestcard.getState());
+        } catch (DictServiceException e) {
+            state = Util.idNoName();
+        }
+        return state;
+    }
 }

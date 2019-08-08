@@ -1,12 +1,11 @@
 package com.boco.eoms.workbench.infopub.test.aop;
- 
+
 /**
  * @author liujinlong for test
- *
  */
-public class OnePerCustomerInterceptor   {
-   // private Set customers=new HashSet();
-    
+public class OnePerCustomerInterceptor {
+    // private Set customers=new HashSet();
+
     //public Object invoke(MethodInvocation invoke) throws Throwable {
         
    /*      Customer customer=(Customer)invoke.getArguments()[0];
@@ -21,5 +20,5 @@ public class OnePerCustomerInterceptor   {
  
          return squishee;
     }*/
- 
+
 }

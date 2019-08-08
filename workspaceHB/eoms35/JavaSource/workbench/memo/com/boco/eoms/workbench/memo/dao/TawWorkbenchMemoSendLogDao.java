@@ -16,9 +16,9 @@ public interface TawWorkbenchMemoSendLogDao extends Dao {
 
     /**
      * Gets tawWorkbenchMemoSendLog's information based on primary key. An
-     * ObjectRetrievalFailureException Runtime Exception is thrown if 
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
-     * 
+     *
      * @param id the tawWorkbenchMemoSendLog's id
      * @return tawWorkbenchMemoSendLog populated tawWorkbenchMemoSendLog object
      */
@@ -26,21 +26,25 @@ public interface TawWorkbenchMemoSendLogDao extends Dao {
 
     /**
      * Saves a tawWorkbenchMemoSendLog's information
+     *
      * @param tawWorkbenchMemoSendLog the object to be saved
-     */    
+     */
     public void saveTawWorkbenchMemoSendLog(TawWorkbenchMemoSendLog tawWorkbenchMemoSendLog);
 
     /**
      * Removes a tawWorkbenchMemoSendLog from the database by id
+     *
      * @param id the tawWorkbenchMemoSendLog's id
      */
     public void removeTawWorkbenchMemoSendLog(final String id);
+
     /**
      * ���ڷ�ҳ��ʾ
      * curPage ��ǰҳ��
      * pageSize ÿҳ��ʾ��
      */
     public Map getTawWorkbenchMemoSendLogs(final Integer curPage, final Integer pageSize);
+
     public Map getTawWorkbenchMemoSendLogs(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

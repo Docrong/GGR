@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SubRoleSchema>
-	<sub-role-mapping businessName="deptId">
+    <sub-role-mapping businessName="deptId">
         <column-name>deptId</column-name>
         <num>0</num>
         <pojo-name>TawSystemDept</pojo-name>

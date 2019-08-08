@@ -5,66 +5,68 @@ package com.boco.eoms.sparepart.model;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.0
  */
 
-public class TawClassMsg{
+public class TawClassMsg {
     private String note;
     private String cname;
     private int deleted;
     private int parentId;
     private int id;
     private String ename;
-    public TawClassMsg(){
+
+    public TawClassMsg() {
     }
 
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note){
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public String getCname(){
+    public String getCname() {
         return cname;
     }
 
-    public void setCname(String cname){
-        this.cname=cname;
+    public void setCname(String cname) {
+        this.cname = cname;
     }
 
-    public int getDeleted(){
+    public int getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(int deleted){
-        this.deleted=deleted;
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getEname(){
+    public String getEname() {
         return ename;
     }
 
-    public void setEname(String ename){
-        this.ename=ename;
+    public void setEname(String ename) {
+        this.ename = ename;
     }
 
-    public int getParentId(){
+    public int getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId){
-        this.parentId=parentId;
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
     }
 
 }

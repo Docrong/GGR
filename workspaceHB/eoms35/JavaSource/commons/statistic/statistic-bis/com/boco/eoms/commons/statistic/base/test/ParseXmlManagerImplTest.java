@@ -15,38 +15,36 @@ import com.boco.eoms.commons.statistic.base.reference.ParseXmlService;
  * <p>
  * Mar 27, 2007 5:23:50 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class ParseXmlManagerImplTest extends ConsoleTestCase {
-	KpiConfig KpiConfig = null;
+    KpiConfig KpiConfig = null;
 
-	protected void setUp() throws Exception {
-		super.setUp();
-	}
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
 
-	protected void tearDown() throws Exception {
-		super.tearDown();
-	}
+    protected void tearDown() throws Exception {
+        super.tearDown();
+    }
 
-	public static void main(String[] args) throws Exception
-	{
-		String path = "classpath:config/statistic/commonfault-config/oracle/statistic-config-query-commonfault_T_resolve_KPI4_oracle.xml";
-		Object obj = new ParseXmlManagerImpl().xml2object(KpiConfig.class, path);
-		System.out.print("obj :" + obj);
-	}
-	
-	public void testXml2objectWithImport() {
+    public static void main(String[] args) throws Exception {
+        String path = "classpath:config/statistic/commonfault-config/oracle/statistic-config-query-commonfault_T_resolve_KPI4_oracle.xml";
+        Object obj = new ParseXmlManagerImpl().xml2object(KpiConfig.class, path);
+        System.out.print("obj :" + obj);
+    }
 
-		try {
-			KpiConfig = (KpiConfig) ParseXmlService
-					.create().xml2object(KpiConfig.class, "classpath:config/statistic/commonfault-config/oracle/statistic-config-query-commonfault_T_resolve_KPI4_oracle.xml");
+    public void testXml2objectWithImport() {
+
+        try {
+            KpiConfig = (KpiConfig) ParseXmlService
+                    .create().xml2object(KpiConfig.class, "classpath:config/statistic/commonfault-config/oracle/statistic-config-query-commonfault_T_resolve_KPI4_oracle.xml");
 //					.xml2object(FMImportSheets.class, "FMImportMappingSample",
 //							"classpath:com/boco/eoms/commons/fileconfig/sample/FMImportSample.xml");
-			assertNotNull(KpiConfig);
-			System.out.println(KpiConfig+"8888888888888888888888");
+            assertNotNull(KpiConfig);
+            System.out.println(KpiConfig + "8888888888888888888888");
 //			for (Iterator it = KpiConfig.getSheet().iterator(); it.hasNext();) {
 //
 //				FMImportSheet sheet = (FMImportSheet) it.next();
@@ -57,15 +55,15 @@ public class ParseXmlManagerImplTest extends ConsoleTestCase {
 //
 //			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-			logger.error(e);
+        } catch (Exception e) {
+            e.printStackTrace();
+            logger.error(e);
 
-			fail("读取配置文件出错");
-		}
-	}
+            fail("读取配置文件出错");
+        }
+    }
 
-	public void testObject2xml() {
+    public void testObject2xml() {
 //		testXml2objectWithImport();
 //		KpiConfig sheet = (KpiConfig) sheets.getSheet().iterator()
 //				.next();
@@ -78,5 +76,5 @@ public class ParseXmlManagerImplTest extends ConsoleTestCase {
 //		} catch (ParseXMLException e) {
 //			fail();
 //		}
-	}
+    }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="sms_apply"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="count"
+                name="count"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="endTime"
+                name="endTime"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -46,7 +46,7 @@
         </property>
 
         <property
-            name="name"
+                name="name"
                 length="100"
                 not-null="false"
                 unique="true"
@@ -55,7 +55,7 @@
         </property>
 
         <property
-            name="interval"
+                name="interval"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -64,7 +64,7 @@
         </property>
 
         <property
-            name="mobile"
+                name="mobile"
                 length="20"
                 not-null="false"
                 unique="true"
@@ -73,7 +73,7 @@
         </property>
 
         <property
-            name="receiverId"
+                name="receiverId"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -83,7 +83,7 @@
         </property>
 
         <property
-            name="receiverType"
+                name="receiverType"
                 length="1"
                 not-null="false"
                 unique="true"
@@ -93,7 +93,7 @@
         </property>
 
         <property
-            name="regetData"
+                name="regetData"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -102,7 +102,7 @@
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 length="200"
                 not-null="false"
                 unique="true"
@@ -111,7 +111,7 @@
         </property>
 
         <property
-            name="serviceId"
+                name="serviceId"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -121,7 +121,7 @@
         </property>
 
         <property
-            name="startTime"
+                name="startTime"
                 length="20"
                 not-null="false"
                 unique="true"
@@ -131,7 +131,7 @@
         </property>
 
         <property
-            name="userId"
+                name="userId"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -141,7 +141,7 @@
         </property>
 
         <property
-            name="cycleHour"
+                name="cycleHour"
                 length="5"
                 not-null="false"
                 unique="true"
@@ -151,7 +151,7 @@
         </property>
 
         <property
-            name="cycleMonth"
+                name="cycleMonth"
                 length="5"
                 not-null="false"
                 unique="true"
@@ -161,7 +161,7 @@
         </property>
 
         <property
-            name="cycleStatus"
+                name="cycleStatus"
                 length="5"
                 not-null="false"
                 unique="true"
@@ -171,7 +171,7 @@
         </property>
 
         <property
-            name="cycleDay"
+                name="cycleDay"
                 length="5"
                 not-null="false"
                 unique="true"
@@ -181,7 +181,7 @@
         </property>
 
         <property
-            name="deleted"
+                name="deleted"
                 length="5"
                 not-null="false"
                 unique="true"
@@ -190,7 +190,7 @@
         </property>
 
         <property
-            name="isCycleSend"
+                name="isCycleSend"
                 length="5"
                 not-null="false"
                 unique="true"
@@ -200,7 +200,7 @@
         </property>
 
         <property
-            name="isSendImediat"
+                name="isSendImediat"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -210,7 +210,7 @@
         </property>
 
         <property
-            name="isSendNight"
+                name="isSendNight"
                 length="1"
                 not-null="false"
                 unique="true"
@@ -220,7 +220,7 @@
         </property>
 
         <property
-            name="msgType"
+                name="msgType"
                 length="1"
                 not-null="false"
                 unique="true"
@@ -230,7 +230,7 @@
         </property>
 
         <property
-            name="sendDay"
+                name="sendDay"
                 length="5"
                 column="send_day"
         >
@@ -238,15 +238,15 @@
         </property>
 
         <property
-            name="sendHour"
+                name="sendHour"
                 length="5"
-       	 column="send_hour"
+                column="send_hour"
         >
 
         </property>
 
         <property
-            name="sendMin"
+                name="sendMin"
                 length="5"
                 column="send_min"
         >
@@ -254,37 +254,37 @@
         </property>
 
         <property
-            name="sendStatus"
+                name="sendStatus"
                 length="1"
-            column="send_status"
+                column="send_status"
         >
 
         </property>
-        
+
         <property
-            name="regetAddr"
+                name="regetAddr"
                 length="150"
-            column="reget_addr"
+                column="reget_addr"
         >
 
         </property>
-        
-		<property
-            name="regetProtocol"
-                length="30"
-            column="reget_protocol"
-        >
 
-        </property>
-        
         <property
-            name="selStatus"
-                length="5"
-            column="sel_status"
+                name="regetProtocol"
+                length="30"
+                column="reget_protocol"
         >
 
         </property>
-    </class>    
+
+        <property
+                name="selStatus"
+                length="5"
+                column="sel_status"
+        >
+
+        </property>
+    </class>
 
 </hibernate-mapping>
 

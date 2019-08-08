@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_RULE"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="createUser"
-            	column="CREATE_USER"
+        <property
+                name="createUser"
+                column="CREATE_USER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="createDept"
-            	column="CREATE_DEPT"
+        <property
+                name="createDept"
+                column="CREATE_DEPT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="createTime"
-            	column="CREATE_TIME"
+        <property
+                name="createTime"
+                column="CREATE_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="ruleName"
-            	column="RULE_NAME"
+        <property
+                name="ruleName"
+                column="RULE_NAME"
                 length="50"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="ruleScript"
-            	column="RULE_SCRIPT"
+        <property
+                name="ruleScript"
+                column="RULE_SCRIPT"
                 length="2000"
                 not-null="true"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="ruleParameter"
-            	column="RULE_PARAMETER"
+        <property
+                name="ruleParameter"
+                column="RULE_PARAMETER"
                 length="2000"
                 not-null="true"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="isDeleted"
-            	column="IS_DELETED"
+        <property
+                name="isDeleted"
+                column="IS_DELETED"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -96,19 +96,19 @@
 
         </property>
 
-	<property
-            name="remark"
-            	column="REMARK"
+        <property
+                name="remark"
+                column="REMARK"
                 length="2000"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="contentId"
-            	column="CONTENT_ID"
+                name="contentId"
+                column="CONTENT_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -117,7 +117,7 @@
         </property>
 
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

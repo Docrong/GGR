@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -75,8 +75,7 @@ import org.w3c.dom.*;
  * @author David Brownell
  * @version $Revision: 1.2 $
  */
-public class TextNode extends DataNode implements Text
-{
+public class TextNode extends DataNode implements Text {
     //
     // XXX Really want a more flexible representation of text than
     // we have here ... it should be possible to take up only part
@@ -91,66 +90,66 @@ public class TextNode extends DataNode implements Text
      * Constructs a text object with no text and unattached
      * to any document.
      */
-    public TextNode () { }
+    public TextNode() {
+    }
 
-        
+
     /**
      * Constructs text object by copying text from the input buffer.
      */
-    public TextNode (char buf [], int offset, int len)
-    {
-	super (buf, offset, len);
+    public TextNode(char buf[], int offset, int len) {
+        super(buf, offset, len);
     }
 
     /**
      * Constructs a text object by copying text from the string.
      */
-    public TextNode (String s)
-    {
-	super (s);
+    public TextNode(String s) {
+        super(s);
     }
 
     /**
      * Writes the text, escaping XML metacharacters as needed
      * to let this text be parsed again without change.
      */
-    public void writeXml (XmlWriteContext context) throws IOException
-    {
-	Writer	out = context.getWriter ();
-	int	start = 0, last = 0;
+    public void writeXml(XmlWriteContext context) throws IOException {
+        Writer out = context.getWriter();
+        int start = 0, last = 0;
 
-	// XXX saw this once -- being paranoid
-	if (data == null)
-	    { System.err.println ("Null text data??"); return; }
+        // XXX saw this once -- being paranoid
+        if (data == null) {
+            System.err.println("Null text data??");
+            return;
+        }
 
-	while (last < data.length) {
-	    char c = data [last];
+        while (last < data.length) {
+            char c = data[last];
 
-	    //
-	    // escape markup delimiters only ... and do bulk
-	    // writes wherever possible, for best performance
-	    //
-	    // note that character data can't have the CDATA
-	    // termination "]]>"; escaping ">" suffices, and
-	    // doing it very generally helps simple parsers
-	    // that may not be quite correct.
-	    //
-	    if (c == '<') {			// not legal in char data
-		out.write (data, start, last - start);
-		start = last + 1;
-		out.write ("&lt;");
-	    } else if (c == '>') {		// see above
-		out.write (data, start, last - start);
-		start = last + 1;
-		out.write ("&gt;");
-	    } else if (c == '&') {		// not legal in char data
-		out.write (data, start, last - start);
-		start = last + 1;
-		out.write ("&amp;");
-	    }
-	    last++;
-	}
-	out.write (data, start, last - start);
+            //
+            // escape markup delimiters only ... and do bulk
+            // writes wherever possible, for best performance
+            //
+            // note that character data can't have the CDATA
+            // termination "]]>"; escaping ">" suffices, and
+            // doing it very generally helps simple parsers
+            // that may not be quite correct.
+            //
+            if (c == '<') {            // not legal in char data
+                out.write(data, start, last - start);
+                start = last + 1;
+                out.write("&lt;");
+            } else if (c == '>') {        // see above
+                out.write(data, start, last - start);
+                start = last + 1;
+                out.write("&gt;");
+            } else if (c == '&') {        // not legal in char data
+                out.write(data, start, last - start);
+                start = last + 1;
+                out.write("&amp;");
+            }
+            last++;
+        }
+        out.write(data, start, last - start);
     }
 
     /**
@@ -159,163 +158,164 @@ public class TextNode extends DataNode implements Text
      * done.  This should be used with care, since large spans of
      * text may not be efficient to represent.
      */
-    public void joinNextText ()
-    {
-	Node	next = getNextSibling ();
-	char	tmp [], nextText [];
+    public void joinNextText() {
+        Node next = getNextSibling();
+        char tmp[], nextText[];
 
-	if (next == null || next.getNodeType () != TEXT_NODE)
-	    return;
-	getParentNode ().removeChild (next);
+        if (next == null || next.getNodeType() != TEXT_NODE)
+            return;
+        getParentNode().removeChild(next);
 
-	nextText = ((TextNode)next).getText ();
-	tmp = new char [data.length + nextText.length];
-	System.arraycopy (data, 0, tmp, 0, data.length);
-	System.arraycopy (nextText, 0, tmp, data.length, nextText.length);
-	data = tmp;
+        nextText = ((TextNode) next).getText();
+        tmp = new char[data.length + nextText.length];
+        System.arraycopy(data, 0, tmp, 0, data.length);
+        System.arraycopy(nextText, 0, tmp, data.length, nextText.length);
+        data = tmp;
     }
 
 
     // DOM support
 
-    /** DOM: Returns the TEXT_NODE node type constant. */
-    public short getNodeType () { return TEXT_NODE; }
+    /**
+     * DOM: Returns the TEXT_NODE node type constant.
+     */
+    public short getNodeType() {
+        return TEXT_NODE;
+    }
 
 
     /**
      * DOM:  Splits this text node into two, returning the part
-     * beginning at <em>offset</em>.  The original node has that 
+     * beginning at <em>offset</em>.  The original node has that
      * text removed, and the two nodes are siblings in the natural
      * order.
      */
-    public Text splitText (int offset)
-    throws DOMException
-    {
-	TextNode	retval;
-	char		delta [];
+    public Text splitText(int offset)
+            throws DOMException {
+        TextNode retval;
+        char delta[];
 
-        if (isReadonly ())
-	    throw new DomEx (DomEx.NO_MODIFICATION_ALLOWED_ERR);
-	
-	try {
-		retval = new TextNode (data, offset, data.length - offset);
-	}
-	catch (ArrayIndexOutOfBoundsException ae) {
-		throw new DomEx (DOMException.INDEX_SIZE_ERR);
-	}
-	catch (NegativeArraySizeException nae) {
-		throw new DomEx (DOMException.INDEX_SIZE_ERR);
-	}
-	getParentNode().insertBefore (retval, getNextSibling ());
-	delta = new char [offset];
-	System.arraycopy (data, 0, delta, 0, offset);
-	data = delta;
-	return retval;
+        if (isReadonly())
+            throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
+
+        try {
+            retval = new TextNode(data, offset, data.length - offset);
+        } catch (ArrayIndexOutOfBoundsException ae) {
+            throw new DomEx(DOMException.INDEX_SIZE_ERR);
+        } catch (NegativeArraySizeException nae) {
+            throw new DomEx(DOMException.INDEX_SIZE_ERR);
+        }
+        getParentNode().insertBefore(retval, getNextSibling());
+        delta = new char[offset];
+        System.arraycopy(data, 0, delta, 0, offset);
+        data = delta;
+        return retval;
     }
 
 
     /**
      * DOM: returns a new text node with the same contents as this one.
      */
-    public Node cloneNode (boolean deep)
-    {
-    	TextNode retval = new TextNode (data, 0, data.length);
-	retval.setOwnerDocument ((XmlDocument) this.getOwnerDocument ());
-	return retval;
+    public Node cloneNode(boolean deep) {
+        TextNode retval = new TextNode(data, 0, data.length);
+        retval.setOwnerDocument((XmlDocument) this.getOwnerDocument());
+        return retval;
     }
 
     /**
      * DOM:  Returns the string "#text".
      */
-    public String getNodeName () { return "#text"; }
+    public String getNodeName() {
+        return "#text";
+    }
 
 
-	public String getWholeText() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getWholeText() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public boolean isElementContentWhitespace() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isElementContentWhitespace() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 
-	public Text replaceWholeText(String arg0) throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Text replaceWholeText(String arg0) throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public short compareDocumentPosition(Node other) throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public short compareDocumentPosition(Node other) throws DOMException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 
-	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getBaseURI() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public Object getFeature(String feature, String version) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getFeature(String feature, String version) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public String getTextContent() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getTextContent() throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public Object getUserData(String key) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getUserData(String key) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public boolean isDefaultNamespace(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isDefaultNamespace(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 
-	public boolean isEqualNode(Node arg) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isEqualNode(Node arg) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 
-	public boolean isSameNode(Node other) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isSameNode(Node other) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 
-	public String lookupNamespaceURI(String prefix) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupNamespaceURI(String prefix) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public String lookupPrefix(String namespaceURI) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupPrefix(String namespaceURI) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 
-	public void setTextContent(String textContent) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setTextContent(String textContent) throws DOMException {
+        // TODO Auto-generated method stub
+
+    }
 
 
-	public Object setUserData(String key, Object data, UserDataHandler handler) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

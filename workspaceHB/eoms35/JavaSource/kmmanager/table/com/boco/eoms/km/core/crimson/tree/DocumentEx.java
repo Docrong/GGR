@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -69,42 +69,40 @@ import org.w3c.dom.Node;
  * It supports:  <UL>
  *
  * <LI> Application-specialized element creation and document customization
- *	at parse time;
+ * at parse time;
  * <LI> Document printing;
  * <LI> The URI with which the document is associated;
  * <LI> Access to elements by their XML "ID" attributes (when the
- *	document was constructed with an appropriate XML parser);
+ * document was constructed with an appropriate XML parser);
  * <LI> Application-level control over the language in which
- *      diagnostics are provided (useful for multi-language applications
- *	such as servers);
+ * diagnostics are provided (useful for multi-language applications
+ * such as servers);
  * <LI> Moving nodes between DOM Documents.  (DOM Level 1 only talks
- *	about nodes that are coupled to a single DOM document.)
+ * about nodes that are coupled to a single DOM document.)
  *
  * </UL>
- *
  *
  * @author David Brownell
  * @version $Revision: 1.1.1.1 $
  */
-public interface DocumentEx extends Document, XmlWritable, ElementFactory
-{
+public interface DocumentEx extends Document, XmlWritable, ElementFactory {
     /**
      * Returns the system ID (a URI) associated with the document,
      * or null if this is unknown.
      */
-    public String getSystemId ();
+    public String getSystemId();
 
 
     /**
      * Assigns the element factory to be used by this document.
      */
-    public void setElementFactory (ElementFactory factory);
+    public void setElementFactory(ElementFactory factory);
 
 
     /**
      * Returns the element factory to be used by this document.
      */
-    public ElementFactory getElementFactory ();
+    public ElementFactory getElementFactory();
 
 
     /**
@@ -120,18 +118,18 @@ public interface DocumentEx extends Document, XmlWritable, ElementFactory
      * XML processors telling a DOM builder about those attributes.
      *
      * @param id The value of the ID attribute which will be matched
-     *	by any element which is returned. 
-     * @deprecated  As of DOM level 2, replaced by the method
-     *              Document.getElementById
+     *           by any element which is returned.
+     * @deprecated As of DOM level 2, replaced by the method
+     * Document.getElementById
      */
     // Note:  HTML DOM has getElementById() with "Element" return type
-    public ElementEx getElementExById (String id);
+    public ElementEx getElementExById(String id);
 
 
     /**
      * Returns the locale to be used for diagnostic messages.
      */
-    public Locale	getLocale ();
+    public Locale getLocale();
 
 
     /**
@@ -144,7 +142,7 @@ public interface DocumentEx extends Document, XmlWritable, ElementFactory
      *
      * @see #chooseLocale
      */
-    public void	setLocale (Locale locale);
+    public void setLocale(Locale locale);
 
 
     /**
@@ -155,27 +153,26 @@ public interface DocumentEx extends Document, XmlWritable, ElementFactory
      * could be provided by a variety of user preference mechanisms,
      * including the HTTP <em>Accept-Language</em> header field.
      *
-     * @see com.boco.eoms.km.core.crimson.util.MessageCatalog
-     *
      * @param languages Array of language specifiers, ordered with the most
-     *	preferable one at the front.  For example, "en-ca" then "fr-ca",
-     *  followed by "zh_CN".  Both RFC 1766 and Java styles are supported.
+     *                  preferable one at the front.  For example, "en-ca" then "fr-ca",
+     *                  followed by "zh_CN".  Both RFC 1766 and Java styles are supported.
      * @return The chosen locale, or null.
+     * @see com.boco.eoms.km.core.crimson.util.MessageCatalog
      */
-    public Locale chooseLocale (String languages []);
+    public Locale chooseLocale(String languages[]);
 
 
     /**
      * Changes the "owner document" of the given node, and all child
      * and associated attribute nodes, to be this document.  If the
      * node has a parent, it is first removed from that parent.
-     * 
+     *
      * @param node the node whose "owner" will be changed.
-     * @exception DOMException WRONG_DOCUMENT_ERROR when attempting
-     *	to change the owner for some other DOM implementation<P>
-     *	HIERARCHY_REQUEST_ERROR when the node is a document, document
-     *	type, entity, or notation; or when it is an attribute associated
-     *  with an element whose owner is not being (recursively) changed.
+     * @throws DOMException WRONG_DOCUMENT_ERROR when attempting
+     *                      to change the owner for some other DOM implementation<P>
+     *                      HIERARCHY_REQUEST_ERROR when the node is a document, document
+     *                      type, entity, or notation; or when it is an attribute associated
+     *                      with an element whose owner is not being (recursively) changed.
      */
-    public void changeNodeOwner (Node node);
+    public void changeNodeOwner(Node node);
 }

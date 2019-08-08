@@ -16,9 +16,9 @@ public interface TawDemoMytableDao extends Dao {
 
     /**
      * Gets tawDemoMytable's information based on primary key. An
-     * ObjectRetrievalFailureException Runtime Exception is thrown if 
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
-     * 
+     *
      * @param id the tawDemoMytable's id
      * @return tawDemoMytable populated tawDemoMytable object
      */
@@ -26,17 +26,20 @@ public interface TawDemoMytableDao extends Dao {
 
     /**
      * Saves a tawDemoMytable's information
+     *
      * @param tawDemoMytable the object to be saved
-     */    
+     */
     public void saveTawDemoMytable(TawDemoMytable tawDemoMytable);
 
     /**
      * Removes a tawDemoMytable from the database by id
+     *
      * @param id the tawDemoMytable's id
      */
     public void removeTawDemoMytable(final Integer id);
-    
+
     public Map getTawDemoMytables(final Integer curPage, final Integer pageSize, final String whereStr);
+
     public Map getTawDemoMytables(final Integer curPage, final Integer pageSize);
 }
 

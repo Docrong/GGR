@@ -1,44 +1,43 @@
 <?xml version="1.0" encoding="GBK"?>
 <dicts description="通用任务工单">
-	<dict id="mainOperateType" description="处理方法">	
-		<item id="0" name="新建派发" description="新建派发" />
-		<item id="22" name="草稿保存" description="草稿保存" />
-		<item id="3" name="草稿派发" description="草稿派发" />
-		<item id="46" name="处理完成无需审批" description="处理完成无需审批" />
-		<item id="6" name="处理回复通过" description="处理回复通过" />
-		<item id="7" name="不通过退回" description="不通过退回" />
-		<item id="18" name="归档" description="归档" />
-		<item id="4" name="驳回上一级" description="驳回上一级" />
-		<item id="8" name="移交" description="移交" />	
-		<item id="20" name="送任务创建审批" description="送任务创建审批" />	
-		<item id="21" name="送任务完成审批" description="送任务完成审批" />	
-		<item id="206" name="任务创建审批通过" description="任务创建审批通过" />
-		<item id="207" name="任务创建审批不通过" description="任务创建审批不通过" />
-		<item id="216" name="任务完成审批通过" description="任务完成审批通过" />
-		<item id="217" name="任务完成审批不通过" description="任务完成审批不通过" />		
-		<item id="-13" name="强制归档" description="强制归档" />	
-		<item id="-14" name="强制作废" description="强制作废" />
-		<item id="-12" name="作废" description="作废" />
-		<item id="-10" name="抄送" description="抄送" />	
-		<item id="-15" name="抄送确认" description="抄送确认" />
-		<item id="9" name="阶段回复" description="抄送" />	
-		<item id="-11" name="阶段通知" description="阶段通知" />
-		<item id="10" name="分派" description="分派" />
-		<item id="11" name="分派回复" description="分派回复" />	
-		<item id="61" name="确认受理" description="确认受理" />	
-	</dict>
-	
-	
+    <dict id="mainOperateType" description="处理方法">
+        <item id="0" name="新建派发" description="新建派发"/>
+        <item id="22" name="草稿保存" description="草稿保存"/>
+        <item id="3" name="草稿派发" description="草稿派发"/>
+        <item id="46" name="处理完成无需审批" description="处理完成无需审批"/>
+        <item id="6" name="处理回复通过" description="处理回复通过"/>
+        <item id="7" name="不通过退回" description="不通过退回"/>
+        <item id="18" name="归档" description="归档"/>
+        <item id="4" name="驳回上一级" description="驳回上一级"/>
+        <item id="8" name="移交" description="移交"/>
+        <item id="20" name="送任务创建审批" description="送任务创建审批"/>
+        <item id="21" name="送任务完成审批" description="送任务完成审批"/>
+        <item id="206" name="任务创建审批通过" description="任务创建审批通过"/>
+        <item id="207" name="任务创建审批不通过" description="任务创建审批不通过"/>
+        <item id="216" name="任务完成审批通过" description="任务完成审批通过"/>
+        <item id="217" name="任务完成审批不通过" description="任务完成审批不通过"/>
+        <item id="-13" name="强制归档" description="强制归档"/>
+        <item id="-14" name="强制作废" description="强制作废"/>
+        <item id="-12" name="作废" description="作废"/>
+        <item id="-10" name="抄送" description="抄送"/>
+        <item id="-15" name="抄送确认" description="抄送确认"/>
+        <item id="9" name="阶段回复" description="抄送"/>
+        <item id="-11" name="阶段通知" description="阶段通知"/>
+        <item id="10" name="分派" description="分派"/>
+        <item id="11" name="分派回复" description="分派回复"/>
+        <item id="61" name="确认受理" description="确认受理"/>
+    </dict>
 
-	<dict id="activeTemplateId" description="节点名称">	
-		<item id="DraftHumTask" name="草稿" description="草稿" />
-		<item id="ByRejectHumTask" name="被驳回" description="被驳回" />
-		<item id="TaskCreateAuditHumTask" name="任务创建审批" description="任务创建审批" />
-		<item id="ExcuteHumTask" name="任务执行" description="任务执行" />
-		<item id="TaskCompleteAuditHumTask" name="任务完成审批" description="任务完成审批" />
-		<item id="AffirmHumTask" name="处理回复" description="处理回复" />
-		<item id="HoldHumTask" name="待归档" description="待归档" />
-		<item id="" name="新增工单" description="新增工单" />
-	</dict>
+
+    <dict id="activeTemplateId" description="节点名称">
+        <item id="DraftHumTask" name="草稿" description="草稿"/>
+        <item id="ByRejectHumTask" name="被驳回" description="被驳回"/>
+        <item id="TaskCreateAuditHumTask" name="任务创建审批" description="任务创建审批"/>
+        <item id="ExcuteHumTask" name="任务执行" description="任务执行"/>
+        <item id="TaskCompleteAuditHumTask" name="任务完成审批" description="任务完成审批"/>
+        <item id="AffirmHumTask" name="处理回复" description="处理回复"/>
+        <item id="HoldHumTask" name="待归档" description="待归档"/>
+        <item id="" name="新增工单" description="新增工单"/>
+    </dict>
 </dicts>
 

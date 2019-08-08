@@ -1,308 +1,302 @@
 /********************************************************************************
- Copyright (c) 2002-2005,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+ Copyright (c) 2002-2005,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
  All rights reserved.
- Filename £ºcheckform.js
- Abstract £º³£ÓÃ±íµ¥¼ì²âº¯Êý¼¯
- Version¡¡£º2.0
- Author   £ºLiu Guoyuan
- Finished Date £º2002-09-20
- Last Modified £º2004-08-12
+ Filename ï¿½ï¿½checkform.js
+ Abstract ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½âº¯ï¿½ï¿½ï¿½ï¿½
+ Versionï¿½ï¿½ï¿½ï¿½2.0
+ Author   ï¿½ï¿½Liu Guoyuan
+ Finished Date ï¿½ï¿½2002-09-20
+ Last Modified ï¿½ï¿½2004-08-12
 
- Ä¿Ç°º¯ÊýÓÐ
- 
- CheckIsNull(objName[,text])   //ÅÐ¶ÏÎÄ±¾¿òÊÇ·ñÎª¿Õ,»òSELECT²Ëµ¥ÊÇ·ñÑ¡ÖÐ£¬²ÎÊý£º(¶ÔÏóÃû[£¬³ö´íÌáÊ¾])
+ Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+ CheckIsNull(objName[,text])   //ï¿½Ð¶ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½,ï¿½ï¿½SELECTï¿½Ëµï¿½ï¿½Ç·ï¿½Ñ¡ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾])
  CheckIsEmail(objName[,text])
  CheckIsString(objName,[objCnName])
  CheckIsIP(objName[,text])
- CheckIsNum(objName[,objCnName][,minNum,maxNum])  //ÊÇ·ñÊý×Ö£¬²ÎÊý£º±íµ¥ÔªËØÃû,[¶ÔÏóÖÐÎÄÃû],[×îÐ¡Öµ£¬×î´óÖµ]
- CheckIsErrLength(objName,maxLength[,objCnName])  //×Ö·û´®³¤¶ÈÊÇ·ñÕýÈ·(Çø·ÖÖÐÓ¢ÎÄ),²ÎÊý£º(¶ÔÏóÃû£¬×î´ó³¤¶È[£¬¶ÔÏóÖÐÎÄÃû])
+ CheckIsNum(objName[,objCnName][,minNum,maxNum])  //ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½,[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½],[ï¿½ï¿½Ð¡Öµï¿½ï¿½ï¿½ï¿½ï¿½Öµ]
+ CheckIsErrLength(objName,maxLength[,objCnName])  //ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½),ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó³¤¶ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½])
  CheckIsDateTime(objName[,objCnName])
- ×¢£ºÉÏÊöº¯ÊýÈç¹û²»ÊäÈë¿ÉÑ¡²ÎÊý£¬Ôò²»»áµ¯³ö³ö´íÌáÊ¾¡£
-********************************************************************************/
+ ×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò²»»áµ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
+ ********************************************************************************/
 
-//¶ÁÈ¡¹«¹²¿â
-function _loadJS(src){
-	var script=document.getElementsByTagName("SCRIPT");
-	for(var i=0;i<script.length;i++){
-		var s=script[i].src;
-		if(s.indexOf(src)>=0) return;
-		if(s.indexOf("/common/js/checkform.js")!=-1){jsPath=s.replace("checkform.js","")}
-	}
-	var oScript = document.createElement("<SCRIPT>");
-	oScript.src = jsPath+src;
-	script[0].insertAdjacentElement("afterEnd",oScript);
-}_loadJS("lib.js");
-
-function CheckIsNull(objName,text){
-/*ÅÐ¶ÏÎÄ±¾¿òÊÇ·ñÎª¿Õ,»òSELECT²Ëµ¥ÊÇ·ñÑ¡ÖÐ
- ²ÎÊý£º(¶ÔÏóÃû£¬³ö´íÌáÊ¾)
- ·µ»Ø: true ±íÊ¾ÓÐ´íÎó
-*/
-	var Object=getObject(objName);
-	var bError=false;
-	if (typeof(Object)=="object" && Object!=null){
-		switch (Object.tagName){
-			case "SELECT":   //Ñ¡Ôñ²Ëµ¥
-				if (Object.options[0].selected && (Object.options[0].value=="-1"||Object.options[0].value=="")) bError=true;
-				break;
-			case "INPUT":    //ÎÄ±¾¿ò
-				if (Object.value=="") bError=true;
-				break;
-			case "TEXTAREA":    //¶àÐÐÎÄ±¾¿ò
-				if (Object.value=="") bError=true;
-				break;
-			default :
-				alert ("¶ÔÏóÀàÐÍÓÐÎó£º£¨"+Object.tagName+"£©");
-				return true;
-		}
-		if (bError){
-			if (arguments.length>1) alert (text); //µ¯³ö´íÎóÌáÊ¾
-			Object.focus();
-			return bError;
-		}
-		return bError;
-	}
-	else{
-		alert ("CheckIsNull:²ÎÊý´íÎó£¨¶ÔÏó\""+objName+"\"²»´æÔÚ£©!")
-		return true;
-	}
+//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+function _loadJS(src) {
+    var script = document.getElementsByTagName("SCRIPT");
+    for (var i = 0; i < script.length; i++) {
+        var s = script[i].src;
+        if (s.indexOf(src) >= 0) return;
+        if (s.indexOf("/common/js/checkform.js") != -1) {
+            jsPath = s.replace("checkform.js", "")
+        }
+    }
+    var oScript = document.createElement("<SCRIPT>");
+    oScript.src = jsPath + src;
+    script[0].insertAdjacentElement("afterEnd", oScript);
 }
 
-function CheckIsErrLength(objName,maxLength,text){
-//ÅÐ¶Ï×Ö·û´®ÕæÊµ³¤¶È£¬ÖÐÎÄ³¤Îª2£¬Ó¢ÎÄ³¤1
-//²ÎÊý£º±íµ¥ÔªËØÃû,×î´ó³¤¶È,[±íµ¥ÖÐÎÄÃû]
-	var Object=getObject(objName);
-	valueLength = Object.value.realLength();
-	if (valueLength>maxLength){
-		if (arguments.length>2) alert (text+"³¤¶È±ØÐëÔÚ "+maxLength+" ÒÔÄÚ!\nµ±Ç°³¤¶ÈÎª£º"+valueLength+"\n(ÖÐÎÄ³¤¶ÈÎª£²£¬Ó¢ÎÄÎª£±)"); //µ¯³ö´íÎóÌáÊ¾
-		Object.focus();
-		return true;
-	}
-	return false;
+_loadJS("lib.js");
+
+function CheckIsNull(objName, text) {
+    /*ï¿½Ð¶ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½ï¿½,ï¿½ï¿½SELECTï¿½Ëµï¿½ï¿½Ç·ï¿½Ñ¡ï¿½ï¿½
+     ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾)
+     ï¿½ï¿½ï¿½ï¿½: true ï¿½ï¿½Ê¾ï¿½Ð´ï¿½ï¿½ï¿½
+    */
+    var Object = getObject(objName);
+    var bError = false;
+    if (typeof (Object) == "object" && Object != null) {
+        switch (Object.tagName) {
+            case "SELECT":   //Ñ¡ï¿½ï¿½Ëµï¿½
+                if (Object.options[0].selected && (Object.options[0].value == "-1" || Object.options[0].value == "")) bError = true;
+                break;
+            case "INPUT":    //ï¿½Ä±ï¿½ï¿½ï¿½
+                if (Object.value == "") bError = true;
+                break;
+            case "TEXTAREA":    //ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
+                if (Object.value == "") bError = true;
+                break;
+            default :
+                alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£º£ï¿½" + Object.tagName + "ï¿½ï¿½");
+                return true;
+        }
+        if (bError) {
+            if (arguments.length > 1) alert(text); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+            Object.focus();
+            return bError;
+        }
+        return bError;
+    } else {
+        alert("CheckIsNull:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¨¶ï¿½ï¿½ï¿½\"" + objName + "\"ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½!")
+        return true;
+    }
 }
 
-function CheckIsDateTime(objName,objCnName)
-{//ÈÕÆÚ¸ñÊ½ÊÇ·ñÕýÈ·£¬²ÎÊý£º±íµ¥ÔªËØÃû,[ÔªËØÖÐÎÄÃû]
-	var Object=getObject(objName);
-	if (Date_istrue(Object.value)){
-	  return true;
-	}
-	else{
-	  if (arguments.length>1){
-	    if (Object.value.indexOf(" ")>0)
-	      alert (objCnName+"¸ñÊ½²»ÕýÈ·.\nYYYY-MM-DD HH:MI:SS(Äê-ÔÂ-ÈÕ Ê±:·Ö:Ãë)"); //µ¯³ö´íÎóÌáÊ¾
-	    else
-	      alert (objCnName+"¸ñÊ½²»ÕýÈ·.\nYYYY-MM-DD(Äê-ÔÂ-ÈÕ)"); //µ¯³ö´íÎóÌáÊ¾
-	  }
-		Object.focus();
-		Object.select();
-		return false;
-	}
-}
-function CheckDateTime(asDate){return Date_istrue(asDate);}
-function Date_istrue(asDate){
-  return asDate.isDate();
+function CheckIsErrLength(objName, maxLength, text) {
+//ï¿½Ð¶ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½Ä³ï¿½Îª2ï¿½ï¿½Ó¢ï¿½Ä³ï¿½1
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ó³¤¶ï¿½,[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+    var Object = getObject(objName);
+    valueLength = Object.value.realLength();
+    if (valueLength > maxLength) {
+        if (arguments.length > 2) alert(text + "ï¿½ï¿½ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½ " + maxLength + " ï¿½ï¿½ï¿½ï¿½!\nï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½" + valueLength + "\n(ï¿½ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½Îªï¿½ï¿½)"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+        Object.focus();
+        return true;
+    }
+    return false;
 }
 
-function CheckIsString(objName,objCnName){
-//ÊÇ·ñÊý×Ö£«×ÖÄ¸£«
-//²ÎÊý£º±íµ¥ÔªËØÃû,[ÌáÊ¾ÐÅÏ¢]
-	var Object=getObject(objName);
-	if (CheckString(Object.value)){
-		return true;
-	}
-	else{
-		if (arguments.length>1) alert (objCnName+"¸ñÊ½´íÎó(±ØÐëÎª´óÐ¡Ð´×ÖÄ¸+Êý×Ö+ÏÂ»®Ïß)"); //µ¯³ö´íÎóÌáÊ¾
-		Object.focus();
-		return false;
-	}
-}
-function CheckString(str){
-//ÊÇ·ñÖ»°üº¬Êý×Ö£«×ÖÄ¸£«ÏÂ»®Ïß
-	var re=/[^A-Za-z0-9_]/;
-	if (str.search(re)==-1)	return true;
-	else return false;
+function CheckIsDateTime(objName, objCnName) {//ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½Ç·ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½,[Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]
+    var Object = getObject(objName);
+    if (Date_istrue(Object.value)) {
+        return true;
+    } else {
+        if (arguments.length > 1) {
+            if (Object.value.indexOf(" ") > 0)
+                alert(objCnName + "ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·.\nYYYY-MM-DD HH:MI:SS(ï¿½ï¿½-ï¿½ï¿½-ï¿½ï¿½ Ê±:ï¿½ï¿½:ï¿½ï¿½)"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+            else
+                alert(objCnName + "ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½È·.\nYYYY-MM-DD(ï¿½ï¿½-ï¿½ï¿½-ï¿½ï¿½)"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+        }
+        Object.focus();
+        Object.select();
+        return false;
+    }
 }
 
-function CheckIsNum(objName,objCnName,minNum,maxNum)
-{//ÊÇ·ñÊý×Ö£¬²ÎÊý£º±íµ¥ÔªËØÃû,[¶ÔÏóÖÐÎÄÃû],[×îÐ¡Öµ£¬×î´óÖµ]
-	var Object=getObject(objName);
-	if (arguments.length>3){ //ÓÐ×îÐ¡ÖµºÍ×î´óÖµ²ÎÊý
-		if (CheckNumber(Object.value,minNum,maxNum)) return true;
-	}else{
-		if (CheckNumber(Object.value)) return true;
-	}
-	if (objCnName!=""){
-		errMsg=objCnName+"ÊäÈëÓÐÎó.";
-		if 	(arguments.length>3) errMsg+="\n±ØÐëÔÚ("+minNum+"-"+maxNum+")Ö®¼ä!"
-		alert (errMsg);
-	}
-	Object.focus();
-	Object.select();
-	return false;
-}
-function CheckNumber(num,minNum,maxNum)
-{//ÊÇ·ñÕûÊý,²ÎÊý£º(Êý×Ö£¬[×îÐ¡Öµ£¬×î´óÖµ])
-	if (num=="") return false;
-	var strNum = num+"";
-	if (strNum.search(/\D/)>=0){
-		return false;
-	}
-	num=parseInt(num);
-	var minNum=parseInt(minNum);
-	var maxNum=parseInt(maxNum);
-	if (isNaN(num) || (num<minNum || num>maxNum))
-		return false;
-	else
-		return true;
-}
-function isNumeric(strNumber) { //Êý×Ö
-  if ((parseFloat(strNumber)+"").length == strNumber.length) return true;
-  return (strNumber.search(/^(-?\+)?\d+(\.\d+)?$/) != -1);
+function CheckDateTime(asDate) {
+    return Date_istrue(asDate);
 }
 
-function CheckIsIP(objName,text){
-//ÅÐ¶ÏIPµØÖ·ÊÇ·ñÕýÈ·
-//²ÎÊý£º±íµ¥ÔªËØÃû,[ÌáÊ¾ÐÅÏ¢]
-	var Object=getObject(objName);
-	if (CheckIPAddress(Object.value)){
-		return true;
-	}
-	else{
-		if (arguments.length>1) alert (text); //µ¯³ö´íÎóÌáÊ¾
-		Object.focus();
-		return false;
-	}
-}function CheckIPAddress (ipAddressString){
-  return ipAddressString.isIP();
+function Date_istrue(asDate) {
+    return asDate.isDate();
 }
 
-function CheckIsEmail(objName,text){
-//ÅÐ¶ÏEmailµØÖ·ÊÇ·ñÕýÈ·
-//²ÎÊý£º±íµ¥ÔªËØÃû,[ÌáÊ¾ÐÅÏ¢]
-	var Object=getObject(objName);
-	if (CheckEmail(Object.value)){
-		return true;
-	}
-	else{
-		if (arguments.length>1) alert (text); //µ¯³ö´íÎóÌáÊ¾
-		Object.focus();
-		return false;
-	}
-}function CheckEmail(emailStr){
-  return emailStr.isEmail();
+function CheckIsString(objName, objCnName) {
+//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½,[ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢]
+    var Object = getObject(objName);
+    if (CheckString(Object.value)) {
+        return true;
+    } else {
+        if (arguments.length > 1) alert(objCnName + "ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ð¡Ð´ï¿½ï¿½Ä¸+ï¿½ï¿½ï¿½ï¿½+ï¿½Â»ï¿½ï¿½ï¿½)"); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+        Object.focus();
+        return false;
+    }
 }
 
-function IsBeginEndIP(startIP,endIP)
-{
-	var		iTotalDots = 0;
-	var		iFlag = 0;
-	var		strMedia = '';
-	var		startIP1 = 0;
-	var 	startIP2 = 0;
-	var		startIP3 = 0;
-	var		startIP4 = 0;
-	var		endIP1 = 0;
-	var 	endIP2 = 0;
-	var		endIP3 = 0;
-	var 	endIP4 = 0;
-	for (var i = 0; i < startIP.length; i++)
-	{
-		var chMedia = startIP.substring(i, i + 1);
-		if (chMedia >= '0' && chMedia <= '9' )
-			strMedia = strMedia + chMedia;
-		if (chMedia < '0' || chMedia > '9' )
-		{
-			if( chMedia == '.' )
-			{
-				if( strMedia > 255 )
-					return	false;
-				if ( iTotalDots == 0 ) startIP1 = parseInt(strMedia);
-				else if (iTotalDots == 1 ) startIP2 = parseInt(strMedia);
-				else if (iTotalDots == 2 ) startIP3 = parseInt(strMedia);
-				strMedia = '';
-				if( iFlag == 1 )
-					return	false;
-				iTotalDots++;
-				iFlag = 1;
-				continue;
-			}
-			return false;
-		}
-		iFlag = 0;
-	}
-	if( strMedia > 255 )
-		return	false;
-	startIP4 = parseInt(strMedia);
-	if( iTotalDots != 3 )
-		return	false;
-	if( startIP.substring(startIP.length-1, startIP.length) == '.' )
-		return	false;
-		
-	strMedia = '';
-	iTotalDots = 0;
-	iFlag = 0 ;
-	for (var i = 0; i < endIP.length; i++)
-	{
-		var chMedia = endIP.substring(i, i + 1);
-		if (chMedia >= '0' && chMedia <= '9' )
-			strMedia = strMedia + chMedia;
-		if (chMedia < '0' || chMedia > '9' )
-		{
-			if( chMedia == '.' )
-			{
-				if( strMedia > 255 )
-					return	false;
-				if ( iTotalDots == 0 ) endIP1 = parseInt(strMedia);
-				else if (iTotalDots == 1 ) endIP2 = parseInt(strMedia);
-				else if (iTotalDots == 2 ) endIP3 = parseInt(strMedia);
-				strMedia = '';
-				if( iFlag == 1 )
-					return	false;
-				iTotalDots++;
-				iFlag = 1;
-				continue;
-			}
-			return false;
-		}
-		iFlag = 0;
-	}
-	if( strMedia > 255 )
-		return	false;
-	endIP4 = parseInt(strMedia);
-	if( iTotalDots != 3 )
-		return	false;
-	if( endIP.substring(endIP.length-1, endIP.length) == '.' )
-		return	false;
-	if ( parseInt(startIP1) > parseInt(endIP1) ){
-		return false;
-	}
-	else if (( parseInt(startIP1) == parseInt(endIP1) ) && (parseInt(startIP2) > parseInt(endIP2))){
-		return false;
-	} 
-	else if (( parseInt(startIP1) == parseInt(endIP1) ) && (parseInt(startIP2) == parseInt(endIP2)) && (parseInt(startIP3) > parseInt(endIP3))){
-		return false;
-	} 
-	else if (( parseInt(startIP1) == parseInt(endIP1) ) && (parseInt(startIP2) == parseInt(endIP2)) && (parseInt(startIP3) == parseInt(endIP3))&& (parseInt(startIP4) >= parseInt(endIP4))){	    
-		return false;
-	} 
-	return true;	
+function CheckString(str) {
+//ï¿½Ç·ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Â»ï¿½ï¿½ï¿½
+    var re = /[^A-Za-z0-9_]/;
+    if (str.search(re) == -1) return true;
+    else return false;
 }
 
-function IsValidMAC ( strMAC )
-{
-	if ( strMAC.length != 17 ) return false;
-	for ( var i = 0 ; i < strMAC.length ; i ++ ) {
-		var chTemp = strMAC.substring(i, i + 1);
-		if ( i == 2 || i == 5 || i == 8 || i == 11 || i == 14 ){
-			if ( chTemp != ':' ) return false;
-		}
-		else {
-			if ( !( (chTemp >= '0' && chTemp <= '9'  ) || (chTemp >= 'a'  && chTemp <= 'f' ) || ( chTemp >= 'A'  &&  chTemp <= 'F' )))			
-			{
-				return false;
-			}
-		}
-	}
-	return true;
+function CheckIsNum(objName, objCnName, minNum, maxNum) {//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½,[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½],[ï¿½ï¿½Ð¡Öµï¿½ï¿½ï¿½ï¿½ï¿½Öµ]
+    var Object = getObject(objName);
+    if (arguments.length > 3) { //ï¿½ï¿½ï¿½ï¿½Ð¡Öµï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½
+        if (CheckNumber(Object.value, minNum, maxNum)) return true;
+    } else {
+        if (CheckNumber(Object.value)) return true;
+    }
+    if (objCnName != "") {
+        errMsg = objCnName + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.";
+        if (arguments.length > 3) errMsg += "\nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(" + minNum + "-" + maxNum + ")Ö®ï¿½ï¿½!"
+        alert(errMsg);
+    }
+    Object.focus();
+    Object.select();
+    return false;
+}
+
+function CheckNumber(num, minNum, maxNum) {//ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ö£ï¿½[ï¿½ï¿½Ð¡Öµï¿½ï¿½ï¿½ï¿½ï¿½Öµ])
+    if (num == "") return false;
+    var strNum = num + "";
+    if (strNum.search(/\D/) >= 0) {
+        return false;
+    }
+    num = parseInt(num);
+    var minNum = parseInt(minNum);
+    var maxNum = parseInt(maxNum);
+    if (isNaN(num) || (num < minNum || num > maxNum))
+        return false;
+    else
+        return true;
+}
+
+function isNumeric(strNumber) { //ï¿½ï¿½ï¿½ï¿½
+    if ((parseFloat(strNumber) + "").length == strNumber.length) return true;
+    return (strNumber.search(/^(-?\+)?\d+(\.\d+)?$/) != -1);
+}
+
+function CheckIsIP(objName, text) {
+//ï¿½Ð¶ï¿½IPï¿½ï¿½Ö·ï¿½Ç·ï¿½ï¿½ï¿½È·
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½,[ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢]
+    var Object = getObject(objName);
+    if (CheckIPAddress(Object.value)) {
+        return true;
+    } else {
+        if (arguments.length > 1) alert(text); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+        Object.focus();
+        return false;
+    }
+}
+
+function CheckIPAddress(ipAddressString) {
+    return ipAddressString.isIP();
+}
+
+function CheckIsEmail(objName, text) {
+//ï¿½Ð¶ï¿½Emailï¿½ï¿½Ö·ï¿½Ç·ï¿½ï¿½ï¿½È·
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½,[ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢]
+    var Object = getObject(objName);
+    if (CheckEmail(Object.value)) {
+        return true;
+    } else {
+        if (arguments.length > 1) alert(text); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+        Object.focus();
+        return false;
+    }
+}
+
+function CheckEmail(emailStr) {
+    return emailStr.isEmail();
+}
+
+function IsBeginEndIP(startIP, endIP) {
+    var iTotalDots = 0;
+    var iFlag = 0;
+    var strMedia = '';
+    var startIP1 = 0;
+    var startIP2 = 0;
+    var startIP3 = 0;
+    var startIP4 = 0;
+    var endIP1 = 0;
+    var endIP2 = 0;
+    var endIP3 = 0;
+    var endIP4 = 0;
+    for (var i = 0; i < startIP.length; i++) {
+        var chMedia = startIP.substring(i, i + 1);
+        if (chMedia >= '0' && chMedia <= '9')
+            strMedia = strMedia + chMedia;
+        if (chMedia < '0' || chMedia > '9') {
+            if (chMedia == '.') {
+                if (strMedia > 255)
+                    return false;
+                if (iTotalDots == 0) startIP1 = parseInt(strMedia);
+                else if (iTotalDots == 1) startIP2 = parseInt(strMedia);
+                else if (iTotalDots == 2) startIP3 = parseInt(strMedia);
+                strMedia = '';
+                if (iFlag == 1)
+                    return false;
+                iTotalDots++;
+                iFlag = 1;
+                continue;
+            }
+            return false;
+        }
+        iFlag = 0;
+    }
+    if (strMedia > 255)
+        return false;
+    startIP4 = parseInt(strMedia);
+    if (iTotalDots != 3)
+        return false;
+    if (startIP.substring(startIP.length - 1, startIP.length) == '.')
+        return false;
+
+    strMedia = '';
+    iTotalDots = 0;
+    iFlag = 0;
+    for (var i = 0; i < endIP.length; i++) {
+        var chMedia = endIP.substring(i, i + 1);
+        if (chMedia >= '0' && chMedia <= '9')
+            strMedia = strMedia + chMedia;
+        if (chMedia < '0' || chMedia > '9') {
+            if (chMedia == '.') {
+                if (strMedia > 255)
+                    return false;
+                if (iTotalDots == 0) endIP1 = parseInt(strMedia);
+                else if (iTotalDots == 1) endIP2 = parseInt(strMedia);
+                else if (iTotalDots == 2) endIP3 = parseInt(strMedia);
+                strMedia = '';
+                if (iFlag == 1)
+                    return false;
+                iTotalDots++;
+                iFlag = 1;
+                continue;
+            }
+            return false;
+        }
+        iFlag = 0;
+    }
+    if (strMedia > 255)
+        return false;
+    endIP4 = parseInt(strMedia);
+    if (iTotalDots != 3)
+        return false;
+    if (endIP.substring(endIP.length - 1, endIP.length) == '.')
+        return false;
+    if (parseInt(startIP1) > parseInt(endIP1)) {
+        return false;
+    } else if ((parseInt(startIP1) == parseInt(endIP1)) && (parseInt(startIP2) > parseInt(endIP2))) {
+        return false;
+    } else if ((parseInt(startIP1) == parseInt(endIP1)) && (parseInt(startIP2) == parseInt(endIP2)) && (parseInt(startIP3) > parseInt(endIP3))) {
+        return false;
+    } else if ((parseInt(startIP1) == parseInt(endIP1)) && (parseInt(startIP2) == parseInt(endIP2)) && (parseInt(startIP3) == parseInt(endIP3)) && (parseInt(startIP4) >= parseInt(endIP4))) {
+        return false;
+    }
+    return true;
+}
+
+function IsValidMAC(strMAC) {
+    if (strMAC.length != 17) return false;
+    for (var i = 0; i < strMAC.length; i++) {
+        var chTemp = strMAC.substring(i, i + 1);
+        if (i == 2 || i == 5 || i == 8 || i == 11 || i == 14) {
+            if (chTemp != ':') return false;
+        } else {
+            if (!((chTemp >= '0' && chTemp <= '9') || (chTemp >= 'a' && chTemp <= 'f') || (chTemp >= 'A' && chTemp <= 'F'))) {
+                return false;
+            }
+        }
+    }
+    return true;
 }		

@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE hibernate-configuration
-    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-  <session-factory>
+    <session-factory>
 
-<property name="show_sql">false</property>
- 	<mapping resource="com/boco/eoms/sheet/commonfault/model/CommonFaultMain.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/commonfault/model/CommonFaultLink.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/commonfault/task/impl/CommonFaultTask.hbm.xml"/>
-	<mapping resource="com/boco/eoms/sheet/commonfault/model/CommonFaultAuto.hbm.xml"/>
-	<mapping resource="com/boco/eoms/sheet/commonfaultpack/model/CommonFaultPackMain.hbm.xml"/> 
-	
-  </session-factory>
+        <property name="show_sql">false</property>
+        <mapping resource="com/boco/eoms/sheet/commonfault/model/CommonFaultMain.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/commonfault/model/CommonFaultLink.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/commonfault/task/impl/CommonFaultTask.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/commonfault/model/CommonFaultAuto.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/commonfaultpack/model/CommonFaultPackMain.hbm.xml"/>
+
+    </session-factory>
 </hibernate-configuration>
 

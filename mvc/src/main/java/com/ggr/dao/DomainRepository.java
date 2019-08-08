@@ -3,7 +3,7 @@ package com.ggr.dao;
 import java.io.Serializable;
 import java.util.List;
 
-public interface DomainRepository<T,PK extends Serializable>{
+public interface DomainRepository<T, PK extends Serializable> {
     T load(PK id);
 
     T get(PK id);

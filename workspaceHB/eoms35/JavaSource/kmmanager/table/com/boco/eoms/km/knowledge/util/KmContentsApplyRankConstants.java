@@ -10,15 +10,14 @@ package com.boco.eoms.km.knowledge.util;
  * <p>
  * Wed Aug 19 15:53:50 CST 2009
  * </p>
- * 
+ *
  * @author wangzhiyong
  * @version 1.0
- * 
  */
 public class KmContentsApplyRankConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String KMCONTENTSAPPLYRANK_LIST = "kmContentsApplyRankList";
+
+    /**
+     * list key
+     */
+    public final static String KMCONTENTSAPPLYRANK_LIST = "kmContentsApplyRankList";
 }

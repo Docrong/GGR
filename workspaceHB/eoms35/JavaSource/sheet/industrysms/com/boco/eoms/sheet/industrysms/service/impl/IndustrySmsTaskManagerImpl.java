@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.industrysms.service.IIndustrySmsTaskManager;
  * <p>
  * Mon Mar 04 17:27:01 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class IndustrySmsTaskManagerImpl extends TaskServiceImpl implements  IIndustrySmsTaskManager {
- 
- }
+
+public class IndustrySmsTaskManagerImpl extends TaskServiceImpl implements IIndustrySmsTaskManager {
+
+}

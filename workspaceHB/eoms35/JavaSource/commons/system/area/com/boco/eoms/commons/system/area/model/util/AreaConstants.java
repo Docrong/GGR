@@ -10,46 +10,45 @@ package com.boco.eoms.commons.system.area.model.util;
  * <p>
  * Date:Nov 19, 2008 10:33:26 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 
 public class AreaConstants {
-	/**
-	 * 国家
-	 */
-	public static final String AREA_TYPE_COUNTRY = "1";
+    /**
+     * 国家
+     */
+    public static final String AREA_TYPE_COUNTRY = "1";
 
-	/**
-	 * 省份
-	 */
-	public static final String AREA_TYPE_PROVINCE = "2";
+    /**
+     * 省份
+     */
+    public static final String AREA_TYPE_PROVINCE = "2";
 
-	/**
-	 * 首都
-	 */
-	public static final String AREA_TYPE_CAPITAL = "3";
+    /**
+     * 首都
+     */
+    public static final String AREA_TYPE_CAPITAL = "3";
 
-	/**
-	 * 直辖市
-	 */
-	public static final String AREA_TYPE_DUCHY = "4";
+    /**
+     * 直辖市
+     */
+    public static final String AREA_TYPE_DUCHY = "4";
 
-	/**
-	 * 省会
-	 */
-	public static final String AREA_TYPE_CAPTIALOFPROVINCIAL = "5";
+    /**
+     * 省会
+     */
+    public static final String AREA_TYPE_CAPTIALOFPROVINCIAL = "5";
 
-	/**
-	 * 市
-	 */
-	public static final String AREA_TYPE_TOWN = "6";
+    /**
+     * 市
+     */
+    public static final String AREA_TYPE_TOWN = "6";
 
-	/**
-	 * 县
-	 */
-	public static final String AREA_TYPE_COUNTY = "7";
+    /**
+     * 县
+     */
+    public static final String AREA_TYPE_COUNTY = "7";
 
 }

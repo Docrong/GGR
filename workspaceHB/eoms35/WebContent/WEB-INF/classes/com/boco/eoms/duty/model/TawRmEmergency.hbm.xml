@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,28 +13,28 @@
             table="taw_rm_emergency"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="cruser"
+                name="cruser"
                 length="32"
                 not-null="true">
 
         </property>
 
         <property
-            name="crtime"
+                name="crtime"
                 length="20"
                 not-null="false"
         >
@@ -42,7 +42,7 @@
         </property>
 
         <property
-            name="deptid"
+                name="deptid"
                 length="32"
                 not-null="true"
         >
@@ -50,7 +50,7 @@
         </property>
 
         <property
-            name="specialty"
+                name="specialty"
                 length="128"
                 not-null="true"
         >
@@ -58,23 +58,22 @@
         </property>
 
         <property
-            name="immobility"
+                name="immobility"
                 length="128"
                 not-null="false"
         >
 
         </property>
         <property
-            name="other"
+                name="other"
                 length="128"
                 not-null="false"
         >
 
         </property>
-      
-        
 
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

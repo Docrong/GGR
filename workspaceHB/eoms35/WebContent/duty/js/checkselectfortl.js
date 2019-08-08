@@ -1,118 +1,138 @@
 /*
-"²ã´Î¹ØÏµ¹´Ñ¡"³ÌÐò´úÂë×÷Õß:µÔÖ¾ÈÙ,wenever@netease.com,2001-1-14
-ÒÔÏÂ´úÂë²»±£ÁôÈÎºÎÈ¨Àû,Ö§³Öjavascript´úÂë¹«¿ª¿ÉÖØÓÃ
+"ï¿½ï¿½Î¹ï¿½Ïµï¿½ï¿½Ñ¡"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½Ö¾ï¿½ï¿½,wenever@netease.com,2001-1-14
+ï¿½ï¿½ï¿½Â´ï¿½ï¿½ë²»ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½È¨ï¿½ï¿½,Ö§ï¿½ï¿½javascriptï¿½ï¿½ï¿½ë¹«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 
-var identifyletter="L";
-function getlevel(str1,str2)   //¸¨Öúº¯Êý£¬µÃµ½str2ÔÚstr1ÖÐ³öÏÖ´ÎÊý£¨µÃµ½²ã´ÎÊý£©
+var identifyletter = "L";
+
+function getlevel(str1, str2)   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½str2ï¿½ï¿½str1ï¿½Ð³ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
-var indexvalue=0;
-var s = str1.indexOf(str2);
-var len =str1.length;
-var count=0;
-while (indexvalue<=len)
-  {
-   checktemp=str1.indexOf(str2,indexvalue);
-   if (checktemp!=-1) {count++; indexvalue=checktemp+1}
-   else {return(count)}
-  }
+    var indexvalue = 0;
+    var s = str1.indexOf(str2);
+    var len = str1.length;
+    var count = 0;
+    while (indexvalue <= len) {
+        checktemp = str1.indexOf(str2, indexvalue);
+        if (checktemp != -1) {
+            count++;
+            indexvalue = checktemp + 1
+        } else {
+            return (count)
+        }
+    }
 }
 
-function downlevel_allselected(box)   //¸¨Öúº¯Êý£¬ÏÂ²ãÈ«Ñ¡flag·µ»Øtrue,·ñÔòfalse
+function downlevel_allselected(box)   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½È«Ñ¡flagï¿½ï¿½ï¿½ï¿½true,ï¿½ï¿½ï¿½ï¿½false
 {
-    var flag=true;	     //falgÎªtrueÊ±´ú±íËùÓÐÏÂ²ãÑ¡ÖÐ
-    for (var i=0;i<document.all.tags("INPUT").length;i++)  //ÅÐ¶ÏÏÂ²ãÊÇ·ñÈ«Ñ¡
-   {
-    var e = document.all.tags("INPUT")[i];
-    if ((e.name.indexOf(box) == 0 ) & (e.name!=box) & (!e.checked)) {flag=false;break;}  //ÏÂ²ã²»ÊÇÈ«Ñ¡,flag=fales
-   }
-   return(flag);
+    var flag = true;	     //falgÎªtrueÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½Ñ¡ï¿½ï¿½
+    for (var i = 0; i < document.all.tags("INPUT").length; i++)  //ï¿½Ð¶ï¿½ï¿½Â²ï¿½ï¿½Ç·ï¿½È«Ñ¡
+    {
+        var e = document.all.tags("INPUT")[i];
+        if ((e.name.indexOf(box) == 0) & (e.name != box) & (!e.checked)) {
+            flag = false;
+            break;
+        }  //ï¿½Â²ã²»ï¿½ï¿½È«Ñ¡,flag=fales
+    }
+    return (flag);
 }
-function downlevel_allunselected(box)   //¸¨Öúº¯Êý£¬ÏÂ²ãÈ«²»Ñ¡flag·µ»Øtrue,·ñÔòfalse
+
+function downlevel_allunselected(box)   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½È«ï¿½ï¿½Ñ¡flagï¿½ï¿½ï¿½ï¿½true,ï¿½ï¿½ï¿½ï¿½false
 {
-    var flag=true;	     //falgÎªtrueÊ±´ú±íËùÓÐÏÂ²ãÈ«²»Ñ¡ÖÐ
-    for (var i=0;i<document.all.tags("INPUT").length;i++)  //ÅÐ¶ÏÏÂ²ãÊÇ·ñÈ«Ñ¡
-   {
-    var e = document.all.tags("INPUT")[i];
-    if ((e.name.indexOf(box) == 0 ) & (e.name!=box) & (e.checked)) {flag=false;break;}  //ÏÂ²ãÆÚÖÐÒ»¸ö±»Ñ¡,flag=fales
-   }
-   return(flag);
+    var flag = true;	     //falgÎªtrueÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½È«ï¿½ï¿½Ñ¡ï¿½ï¿½
+    for (var i = 0; i < document.all.tags("INPUT").length; i++)  //ï¿½Ð¶ï¿½ï¿½Â²ï¿½ï¿½Ç·ï¿½È«Ñ¡
+    {
+        var e = document.all.tags("INPUT")[i];
+        if ((e.name.indexOf(box) == 0) & (e.name != box) & (e.checked)) {
+            flag = false;
+            break;
+        }  //ï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ñ¡,flag=fales
+    }
+    return (flag);
 }
-function checkclick(box){    //¹´Ñ¡Ê±£¬ÅÐ¶ÏÆäËü¿ÉÑ¡¿òÓëËùÑ¡µÄboxµÄ¹ØÏµ£¬²¢´òÉÏ¹´»òÈ¥³ý¹´
-  for (var i=0;i<document.all.tags("INPUT").length;i++)
-   {
-    var e = document.all.tags("INPUT")[i];
-    if ((e.name.indexOf(box) == 0) & (e.name.substring(box.length,box.length+1)==identifyletter)) {e.checked=true}  //ÏÂ²ã¹´Ñ¡
-   }
-   /*
-   checktemp=box;
-   var indexvalue=checktemp.length;
-   while (checktemp.length>1)
-     {
-     var indexvalue = checktemp.lastIndexOf(identifyletter);
-     checktemp=checktemp.substr(0,indexvalue);
-     if (checktemp!="")
-       {
-       //alert (checktemp);alert(checktemp.length);
-       e=eval("document.all."+checktemp); //eÊÇÉÏ²ã
-       if (downlevel_allselected(e.name))  //eµÄÏÂ²ãÈ«Ñ¡
-        {e.checked=true;e.indeterminate=false;}
-       else
-        {e.checked=false;e.indeterminate=true;}
-       }
-     }
-    */
-}
-function findfather(box){
-checktemp=box;
-var indexvalue=checktemp.length;
-while (checktemp.length>1)
-  {
-  var indexvalue = checktemp.lastIndexOf(identifyletter);
-  checktemp=checktemp.substr(0,indexvalue);
-  //if (checktemp!="") {alert (checktemp);}
-  }
-}
-function checkunclk(box){    //È¥³ý¹´Ñ¡Ê±£¬ÅÐ¶ÏÆäËü¿ÉÑ¡¿òÓëËùÑ¡µÄboxµÄ¹ØÏµ£¬²¢´òÉÏ¹´»òÈ¥³ý¹´
-/*
-    for (var i=document.all.tags("INPUT").length-1;i>=0;i--)   //ÉÏ²ãÈ¥³ý
-   {
-    var e = document.all.tags("INPUT")[i];
-    alert (e.name.lastIndexOf(identifyletter));
-    if ((box.indexOf(e.name) == 0) & (e.name!=box))    
-     {
-     if (downlevel_allunselected(e.name)) {e.indeterminate=false;e.checked=false} else {e.indeterminate=true;e.checked=false}
-     }
-   }
-*/
-//    if (downlevel_allselected(box))    //ÏÂ²ãÈ«Ñ¡Ê±£¬ÏÂ²ãÈ¥³ý¹´Ñ¡
-//    {
-    for (var i=0;i<document.all.tags("INPUT").length;i++)
+
+function checkclick(box) {    //ï¿½ï¿½Ñ¡Ê±ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½boxï¿½Ä¹ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½
+    for (var i = 0; i < document.all.tags("INPUT").length; i++) {
+        var e = document.all.tags("INPUT")[i];
+        if ((e.name.indexOf(box) == 0) & (e.name.substring(box.length, box.length + 1) == identifyletter)) {
+            e.checked = true
+        }  //ï¿½Â²ã¹´Ñ¡
+    }
+    /*
+    checktemp=box;
+    var indexvalue=checktemp.length;
+    while (checktemp.length>1)
       {
-	var e = document.all.tags("INPUT")[i];
-	if ((e.name.indexOf(box) == 0) & (e.name.substring(box.length,box.length+1)==identifyletter) ) {e.indeterminate=false;e.checked=false}
+      var indexvalue = checktemp.lastIndexOf(identifyletter);
+      checktemp=checktemp.substr(0,indexvalue);
+      if (checktemp!="")
+        {
+        //alert (checktemp);alert(checktemp.length);
+        e=eval("document.all."+checktemp); //eï¿½ï¿½ï¿½Ï²ï¿½
+        if (downlevel_allselected(e.name))  //eï¿½ï¿½ï¿½Â²ï¿½È«Ñ¡
+         {e.checked=true;e.indeterminate=false;}
+        else
+         {e.checked=false;e.indeterminate=true;}
+        }
       }
-//    }
-//ÉÏ²ãÈ¥³ý¹´Ñ¡»ò¹´Ñ¡Ä£ºýµÄÇé¿ö
-   checktemp=box;
-   var indexvalue=checktemp.length;
-   while (checktemp.length>1)
-     {
-     var indexvalue = checktemp.lastIndexOf(identifyletter);
-     checktemp=checktemp.substr(0,indexvalue);
-     if (checktemp!="")
-       {
-       e=eval("document.all."+checktemp); //eÊÇÉÏ²ã
-       if (downlevel_allunselected(e.name))
-        {e.checked=false;e.indeterminate=false;}
-       else
-        {e.checked=false;e.indeterminate=true;}
-       }
-     }
+     */
 }
 
-function show(chkbox)
-{
- if (chkbox.checked) {checkclick(chkbox.name)}   // ´ò¹´µÄÇé¿ö
-  else {checkunclk(chkbox.name)}  //È¥³ý¹´µÄÇé¿ö
+function findfather(box) {
+    checktemp = box;
+    var indexvalue = checktemp.length;
+    while (checktemp.length > 1) {
+        var indexvalue = checktemp.lastIndexOf(identifyletter);
+        checktemp = checktemp.substr(0, indexvalue);
+        //if (checktemp!="") {alert (checktemp);}
+    }
+}
+
+function checkunclk(box) {    //È¥ï¿½ï¿½ï¿½ï¿½Ñ¡Ê±ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½boxï¿½Ä¹ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¹ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½
+    /*
+        for (var i=document.all.tags("INPUT").length-1;i>=0;i--)   //ï¿½Ï²ï¿½È¥ï¿½ï¿½
+       {
+        var e = document.all.tags("INPUT")[i];
+        alert (e.name.lastIndexOf(identifyletter));
+        if ((box.indexOf(e.name) == 0) & (e.name!=box))    
+         {
+         if (downlevel_allunselected(e.name)) {e.indeterminate=false;e.checked=false} else {e.indeterminate=true;e.checked=false}
+         }
+       }
+    */
+//    if (downlevel_allselected(box))    //ï¿½Â²ï¿½È«Ñ¡Ê±ï¿½ï¿½ï¿½Â²ï¿½È¥ï¿½ï¿½ï¿½ï¿½Ñ¡
+//    {
+    for (var i = 0; i < document.all.tags("INPUT").length; i++) {
+        var e = document.all.tags("INPUT")[i];
+        if ((e.name.indexOf(box) == 0) & (e.name.substring(box.length, box.length + 1) == identifyletter)) {
+            e.indeterminate = false;
+            e.checked = false
+        }
+    }
+//    }
+//ï¿½Ï²ï¿½È¥ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ñ¡Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    checktemp = box;
+    var indexvalue = checktemp.length;
+    while (checktemp.length > 1) {
+        var indexvalue = checktemp.lastIndexOf(identifyletter);
+        checktemp = checktemp.substr(0, indexvalue);
+        if (checktemp != "") {
+            e = eval("document.all." + checktemp); //eï¿½ï¿½ï¿½Ï²ï¿½
+            if (downlevel_allunselected(e.name)) {
+                e.checked = false;
+                e.indeterminate = false;
+            } else {
+                e.checked = false;
+                e.indeterminate = true;
+            }
+        }
+    }
+}
+
+function show(chkbox) {
+    if (chkbox.checked) {
+        checkclick(chkbox.name)
+    }   // ï¿½ò¹´µï¿½ï¿½ï¿½ï¿½
+    else {
+        checkunclk(chkbox.name)
+    }  //È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 }

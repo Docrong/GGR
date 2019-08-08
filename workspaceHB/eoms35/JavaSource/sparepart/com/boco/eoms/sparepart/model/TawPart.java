@@ -10,11 +10,12 @@ import com.boco.eoms.sparepart.dao.TawPartDAO;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.0
  */
 
-public class TawPart{
+public class TawPart {
     private int id;
     private String objectname;
     private String operator;
@@ -43,628 +44,635 @@ public class TawPart{
     private String supplierid;
     private String hwversion;
     private String etime;
-  private String position;
-  private String proform;
-  private String updatetime;
-  private int loannum;
-  private int repairnum;
-  private String money;
-  private String sheetid;
-  private int proformFlag;
-  private int warrantyFlag;
-  private String warrantyName;
-  private int stopproductFlag;
-  private String stopproductName;
-  private int deptId;
-  private String deptName;
-  private int borrowState;
-  private String borrowStateName;
-  private int nettypeid;
-  private int subdeptid;
-  private int necodeid;
-  private int stateid;
-  private int storageid;
-  private long objecttypeid;
-  private String orgSerialNo;
-  private String outtime;
-  private String accessory;
-  private String thefile;
-  private String proposer;//入库申请人
-  private String company;//所属公司
-  private String companyid;//所属公司  id
-  private String objtype;//设备类型
-  private String repair_endtime;//保修到期时间
-  private String repairtime;//保修期
-  private String fixe;//设备厂商
-  private String fixeid;//设备厂商  id
-  private int checksum;
-  private int parttype;
-  private String partclass;
-  private String describe;//主要功能描述
-  private TawPartDAO dao=new TawPartDAO();
-  public String getCompanyid() {
-	return companyid;
-}
+    private String position;
+    private String proform;
+    private String updatetime;
+    private int loannum;
+    private int repairnum;
+    private String money;
+    private String sheetid;
+    private int proformFlag;
+    private int warrantyFlag;
+    private String warrantyName;
+    private int stopproductFlag;
+    private String stopproductName;
+    private int deptId;
+    private String deptName;
+    private int borrowState;
+    private String borrowStateName;
+    private int nettypeid;
+    private int subdeptid;
+    private int necodeid;
+    private int stateid;
+    private int storageid;
+    private long objecttypeid;
+    private String orgSerialNo;
+    private String outtime;
+    private String accessory;
+    private String thefile;
+    private String proposer;//入库申请人
+    private String company;//所属公司
+    private String companyid;//所属公司  id
+    private String objtype;//设备类型
+    private String repair_endtime;//保修到期时间
+    private String repairtime;//保修期
+    private String fixe;//设备厂商
+    private String fixeid;//设备厂商  id
+    private int checksum;
+    private int parttype;
+    private String partclass;
+    private String describe;//主要功能描述
+    private TawPartDAO dao = new TawPartDAO();
 
-public void setCompanyid(String companyid) {
+    public String getCompanyid() {
+        return companyid;
+    }
 
-	this.companyid = companyid;
-}
+    public void setCompanyid(String companyid) {
 
-public String getFixeid() {
-	return fixeid;
-}
+        this.companyid = companyid;
+    }
 
-public void setFixeid(String fixeid) {
-	this.fixeid = fixeid;
-}
+    public String getFixeid() {
+        return fixeid;
+    }
 
-public String getCompany() {
-	if(company==null || company.equals("")){
-		Map map=dao.getCname(450);
-		String value=(String) map.get(this.getCompanyid());
-		return value;
-	}else{
-	return company;
-	}
-}
+    public void setFixeid(String fixeid) {
+        this.fixeid = fixeid;
+    }
 
-public void setCompany(String company) {
-	this.company = company;
-}
+    public String getCompany() {
+        if (company == null || company.equals("")) {
+            Map map = dao.getCname(450);
+            String value = (String) map.get(this.getCompanyid());
+            return value;
+        } else {
+            return company;
+        }
+    }
 
-public String getFixe() {
-	if(fixe==null || company.equals("")){
-		Map map=dao.getCname(460);//设备厂商
-		String value=(String) map.get(this.getCompanyid());
-		return value;
-	}else{
-	return fixe;
-	}
-}
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
-public void setFixe(String fixe) {
-	this.fixe = fixe;
-}
+    public String getFixe() {
+        if (fixe == null || company.equals("")) {
+            Map map = dao.getCname(460);//设备厂商
+            String value = (String) map.get(this.getCompanyid());
+            return value;
+        } else {
+            return fixe;
+        }
+    }
 
-public String getObjtype() {
-	return objtype;
-}
+    public void setFixe(String fixe) {
+        this.fixe = fixe;
+    }
 
-public void setObjtype(String objtype) {
-	this.objtype = objtype;
-}
+    public String getObjtype() {
+        return objtype;
+    }
 
-public String getProposer() {
-	return proposer;
-}
+    public void setObjtype(String objtype) {
+        this.objtype = objtype;
+    }
 
-public void setProposer(String proposer) {
-	this.proposer = proposer;
-}
+    public String getProposer() {
+        return proposer;
+    }
 
-public String getRepair_endtime() {
-	return repair_endtime;
-}
+    public void setProposer(String proposer) {
+        this.proposer = proposer;
+    }
 
-public void setRepair_endtime(String repair_endtime) {
-	this.repair_endtime = repair_endtime;
-}
+    public String getRepair_endtime() {
+        return repair_endtime;
+    }
 
-public String getRepairtime() {
-	return repairtime;
-}
+    public void setRepair_endtime(String repair_endtime) {
+        this.repair_endtime = repair_endtime;
+    }
 
-public void setRepairtime(String repairtime) {
-	this.repairtime = repairtime;
-}
+    public String getRepairtime() {
+        return repairtime;
+    }
 
-public int getId(){
+    public void setRepairtime(String repairtime) {
+        this.repairtime = repairtime;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getObjecttype(){
+    public String getObjecttype() {
         return objecttype;
     }
 
-    public void setObjecttype(String objecttype){
-        this.objecttype=objecttype;
+    public void setObjecttype(String objecttype) {
+        this.objecttype = objecttype;
     }
 
-    public String getVersion(){
+    public String getVersion() {
         return version;
     }
 
-    public void setVersion(String version){
-        this.version=version;
+    public void setVersion(String version) {
+        this.version = version;
     }
 
-    public String getNettype(){
+    public String getNettype() {
         return nettype;
     }
 
-    public void setNettype(String nettype){
-        this.nettype=nettype;
+    public void setNettype(String nettype) {
+        this.nettype = nettype;
     }
 
-    public String getSupplier(){
-    	if(supplier==null || supplier.equals("")){
-    		Map map=dao.getCname(6);//设备厂商
-    		String value=(String) map.get(this.getCompanyid());
-    		return value;
-    	}else{
-    	return supplier;
-    	}
+    public String getSupplier() {
+        if (supplier == null || supplier.equals("")) {
+            Map map = dao.getCname(6);//设备厂商
+            String value = (String) map.get(this.getCompanyid());
+            return value;
+        } else {
+            return supplier;
+        }
     }
 
-    public void setSupplier(String supplier){
-        this.supplier=supplier;
+    public void setSupplier(String supplier) {
+        this.supplier = supplier;
     }
 
-    public String getState(){
+    public String getState() {
         return state;
     }
 
-    public void setState(String state){
-        this.state=state;
+    public void setState(String state) {
+        this.state = state;
     }
 
-    public String getStorage(){
+    public String getStorage() {
         return storage;
     }
 
-    public void setStorage(String storage){
-        this.storage=storage;
+    public void setStorage(String storage) {
+        this.storage = storage;
     }
 
-    public String getNecode(){
+    public String getNecode() {
         return necode;
     }
 
-    public void setNecode(String necode){
-        this.necode=necode;
+    public void setNecode(String necode) {
+        this.necode = necode;
     }
 
-    public String getObjectname(){
+    public String getObjectname() {
         return objectname;
     }
 
-    public void setObjectname(String objectname){
-        this.objectname=objectname;
+    public void setObjectname(String objectname) {
+        this.objectname = objectname;
     }
 
-    public String getOperator(){
+    public String getOperator() {
         return operator;
     }
 
-    public void setOperator(String operator){
-        this.operator=operator;
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
-    public String getIntime(){
+    public String getIntime() {
         return intime;
     }
 
-    public void setIntime(String intime){
-        this.intime=intime.substring(0,10);
+    public void setIntime(String intime) {
+        this.intime = intime.substring(0, 10);
     }
 
-    public String getNote(){
+    public String getNote() {
         return note;
     }
 
-    public void setNote(String note){
-        this.note=note;
+    public void setNote(String note) {
+        this.note = note;
     }
 
-    public String getUserId(){
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId){
+    public void setUserId(String userId) {
 
-        this.userId=userId;
+        this.userId = userId;
     }
 
-    public String getSerialno(){
+    public String getSerialno() {
         return serialno;
     }
 
-    public void setSerialno(String serialno){
-        this.serialno=serialno;
+    public void setSerialno(String serialno) {
+        this.serialno = serialno;
     }
 
-    public String getSum(){
+    public String getSum() {
         return sum;
     }
 
-    public void setSum(String sum){
-        this.sum=sum;
+    public void setSum(String sum) {
+        this.sum = sum;
     }
 
-    public String getManagecode(){
+    public String getManagecode() {
         return managecode;
     }
 
-    public void setManagecode(String managecode){
-        this.managecode=managecode;
+    public void setManagecode(String managecode) {
+        this.managecode = managecode;
     }
 
-    public String getProductcode(){
+    public String getProductcode() {
         return productcode;
     }
 
-    public void setProductcode(String productcode){
-        this.productcode=productcode;
+    public void setProductcode(String productcode) {
+        this.productcode = productcode;
     }
 
-    public String getUnits(){
+    public String getUnits() {
         return units;
     }
 
-    public void setUnits(String units){
-        this.units=units;
+    public void setUnits(String units) {
+        this.units = units;
     }
 
-    public String getContract(){
+    public String getContract() {
         return contract;
     }
 
-    public void setContract(String contract){
-        this.contract=contract;
+    public void setContract(String contract) {
+        this.contract = contract;
     }
 
-    public int getOutSum(){
+    public int getOutSum() {
         return outSum;
     }
 
-    public void setOutSum(int outSum){
-        this.outSum=outSum;
+    public void setOutSum(int outSum) {
+        this.outSum = outSum;
     }
 
-    public int getSerSum(){
+    public int getSerSum() {
         return serSum;
     }
 
-    public void setSerSum(int serSum){
-        this.serSum=serSum;
+    public void setSerSum(int serSum) {
+        this.serSum = serSum;
     }
 
-    public String getOutPercent(){
+    public String getOutPercent() {
 
-        if(getOutSum()>0){
-            String a=getSum();
-            String b=Integer.toString(getOutSum());
-            double aa=Double.parseDouble(b)/Double.parseDouble(a);
-            outPercent=Double.toString(aa*100.0);
-            if(outPercent.length()>5){
-                outPercent=outPercent.substring(0,5);
+        if (getOutSum() > 0) {
+            String a = getSum();
+            String b = Integer.toString(getOutSum());
+            double aa = Double.parseDouble(b) / Double.parseDouble(a);
+            outPercent = Double.toString(aa * 100.0);
+            if (outPercent.length() > 5) {
+                outPercent = outPercent.substring(0, 5);
             }
+        } else {
+            outPercent = "0";
         }
-        else{
-            outPercent="0";
-        }
-        return outPercent+"%";
+        return outPercent + "%";
     }
 
-    public void setOutPercent(String outPercent){
-        this.outPercent=outPercent;
+    public void setOutPercent(String outPercent) {
+        this.outPercent = outPercent;
     }
 
-    public String getServicePercent(){
-        if(getSerSum()>0){
-            String a=getSum();
-            String b=Integer.toString(getSerSum());
-            double aa=Double.parseDouble(b)/Double.parseDouble(a);
-            servicePercent=Double.toString(aa*100.0);
-            if(servicePercent.length()>5){
-                servicePercent=servicePercent.substring(0,5);
+    public String getServicePercent() {
+        if (getSerSum() > 0) {
+            String a = getSum();
+            String b = Integer.toString(getSerSum());
+            double aa = Double.parseDouble(b) / Double.parseDouble(a);
+            servicePercent = Double.toString(aa * 100.0);
+            if (servicePercent.length() > 5) {
+                servicePercent = servicePercent.substring(0, 5);
             }
+        } else {
+            servicePercent = "0";
         }
-        else{
-            servicePercent="0";
-        }
-        return servicePercent+"%";
+        return servicePercent + "%";
     }
 
-    public void setServicePercent(String servicePercent){
-        this.servicePercent=servicePercent;
+    public void setServicePercent(String servicePercent) {
+        this.servicePercent = servicePercent;
     }
 
-    public String getCharge(){
+    public String getCharge() {
         return charge;
     }
 
-    public void setCharge(String charge){
-        this.charge=charge;
+    public void setCharge(String charge) {
+        this.charge = charge;
     }
 
-    public String getSupplierid(){
+    public String getSupplierid() {
         return supplierid;
     }
 
-    public void setSupplierid(String supplierid){
-        this.supplierid=supplierid;
+    public void setSupplierid(String supplierid) {
+        this.supplierid = supplierid;
     }
 
-    public String getHwversion(){
+    public String getHwversion() {
         return hwversion;
     }
 
-    public void setHwversion(String hwversion){
-        this.hwversion=hwversion;
+    public void setHwversion(String hwversion) {
+        this.hwversion = hwversion;
     }
 
-    public String getEtime(){
+    public String getEtime() {
         return etime;
     }
 
-    public void setEtime(String etime){
-        this.etime=getStrTime(etime);
+    public void setEtime(String etime) {
+        this.etime = getStrTime(etime);
     }
 
-    public String getStrTime(String datetime){
-        String strTime="";
-        
-        if(datetime!=""){
-        	int n=datetime.indexOf("/");
-        	if(n>0){
-            String[] str=datetime.split("/");
-            //int s=datetime.indexOf("/");
-            //int e=datetime.lastIndexOf("/");
-            // String a=datetime.substring(e+1,e+5);
-            // String b=datetime.substring(s+1,s+3);
-            // String c=datetime.substring(0,s);
-            //System.out.println(a+"-"+b+"-"+c);
-            strTime="20"+str[2]+"-"+str[0]+"-"+str[1];
-        	}
+    public String getStrTime(String datetime) {
+        String strTime = "";
+
+        if (datetime != "") {
+            int n = datetime.indexOf("/");
+            if (n > 0) {
+                String[] str = datetime.split("/");
+                //int s=datetime.indexOf("/");
+                //int e=datetime.lastIndexOf("/");
+                // String a=datetime.substring(e+1,e+5);
+                // String b=datetime.substring(s+1,s+3);
+                // String c=datetime.substring(0,s);
+                //System.out.println(a+"-"+b+"-"+c);
+                strTime = "20" + str[2] + "-" + str[0] + "-" + str[1];
+            }
         }
         return strTime;
     }
-  public String getPosition() {
-    return position;
-  }
-  public void setPosition(String position) {
-    this.position = position;
-  }
-  public String getProform() {
-    return proform;
-  }
-  public void setProform(String proform) {
-    this.proform = proform;
-  }
-  public String getUpdatetime() {
-    return updatetime;
-  }
-  public void setUpdatetime(String updatetime) {
-    this.updatetime = updatetime;
-  }
-  public int getLoannum() {
-    return loannum;
-  }
-  public void setLoannum(int loannum) {
-    this.loannum = loannum;
-  }
-  public int getRepairnum() {
-    return repairnum;
-  }
 
-  public String getMoney() {
-    return money;
-  }
+    public String getPosition() {
+        return position;
+    }
 
-  public String getSheetid() {
-    return sheetid;
-  }
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
-  public int getProformFlag() {
-    return proformFlag;
-  }
+    public String getProform() {
+        return proform;
+    }
 
-  public void setRepairnum(int repairnum) {
-    this.repairnum = repairnum;
-  }
+    public void setProform(String proform) {
+        this.proform = proform;
+    }
 
-  public void setMoney(String money) {
-    this.money = money;
-  }
+    public String getUpdatetime() {
+        return updatetime;
+    }
 
-  public void setSheetid(String sheetid) {
-    this.sheetid = sheetid;
-  }
+    public void setUpdatetime(String updatetime) {
+        this.updatetime = updatetime;
+    }
 
-  public void setProformFlag(int proformFlag) {
-    this.proformFlag = proformFlag;
-  }
+    public int getLoannum() {
+        return loannum;
+    }
 
-  public int getWarrantyFlag() {
-    return warrantyFlag;
-  }
+    public void setLoannum(int loannum) {
+        this.loannum = loannum;
+    }
 
-  public void setWarrantyFlag(int warrantyFlag) {
-    this.warrantyFlag = warrantyFlag;
-  }
+    public int getRepairnum() {
+        return repairnum;
+    }
 
-  public String getWarrantyName() {
-    return warrantyName;
-  }
+    public String getMoney() {
+        return money;
+    }
 
-  public void setWarrantyName(String warrantyName) {
-    this.warrantyName = warrantyName;
-  }
+    public String getSheetid() {
+        return sheetid;
+    }
 
-  public int getStopproductFlag() {
-    return stopproductFlag;
-  }
+    public int getProformFlag() {
+        return proformFlag;
+    }
 
-  public void setStopproductFlag(int stopproductFlag) {
-    this.stopproductFlag = stopproductFlag;
-  }
+    public void setRepairnum(int repairnum) {
+        this.repairnum = repairnum;
+    }
 
-  public String getStopproductName() {
-    return stopproductName;
-  }
+    public void setMoney(String money) {
+        this.money = money;
+    }
 
-  public void setStopproductName(String stopproductName) {
-    this.stopproductName = stopproductName;
-  }
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
 
-  public int getDeptId() {
-    return deptId;
-  }
+    public void setProformFlag(int proformFlag) {
+        this.proformFlag = proformFlag;
+    }
 
-  public void setDeptId(int deptId) {
-    this.deptId = deptId;
-  }
+    public int getWarrantyFlag() {
+        return warrantyFlag;
+    }
 
-  public String getDeptName() {
-    return deptName;
-  }
+    public void setWarrantyFlag(int warrantyFlag) {
+        this.warrantyFlag = warrantyFlag;
+    }
 
-  public int getBorrowState() {
-    return borrowState;
-  }
+    public String getWarrantyName() {
+        return warrantyName;
+    }
 
-  public String getBorrowStateName() {
-    return borrowStateName;
-  }
+    public void setWarrantyName(String warrantyName) {
+        this.warrantyName = warrantyName;
+    }
 
-  public int getNecodeid() {
-    return necodeid;
-  }
+    public int getStopproductFlag() {
+        return stopproductFlag;
+    }
 
-  public int getNettypeid() {
-    return nettypeid;
-  }
+    public void setStopproductFlag(int stopproductFlag) {
+        this.stopproductFlag = stopproductFlag;
+    }
 
-  public int getStateid() {
-    return stateid;
-  }
+    public String getStopproductName() {
+        return stopproductName;
+    }
 
-  public long getObjecttypeid() {
-    return objecttypeid;
-  }
+    public void setStopproductName(String stopproductName) {
+        this.stopproductName = stopproductName;
+    }
 
-  public int getStorageid() {
-    return storageid;
-  }
+    public int getDeptId() {
+        return deptId;
+    }
 
-  public String getOrgSerialNo() {
-    return orgSerialNo;
-  }
+    public void setDeptId(int deptId) {
+        this.deptId = deptId;
+    }
 
-  public String getOuttime() {
-    return outtime;
-  }
+    public String getDeptName() {
+        return deptName;
+    }
 
-  public String getAccessory() {
-    return accessory;
-  }
+    public int getBorrowState() {
+        return borrowState;
+    }
 
-  public String getThefile() {
-    return thefile;
-  }
+    public String getBorrowStateName() {
+        return borrowStateName;
+    }
 
-  public void setDeptName(String deptName) {
-    this.deptName = deptName;
-  }
+    public int getNecodeid() {
+        return necodeid;
+    }
 
-  public void setBorrowState(int borrowState) {
-    this.borrowState = borrowState;
-  }
+    public int getNettypeid() {
+        return nettypeid;
+    }
 
-  public void setBorrowStateName(String borrowStateName) {
-    this.borrowStateName = borrowStateName;
-  }
+    public int getStateid() {
+        return stateid;
+    }
 
-  public void setNecodeid(int necodeid) {
-    this.necodeid = necodeid;
-  }
+    public long getObjecttypeid() {
+        return objecttypeid;
+    }
 
-  public void setNettypeid(int nettypeid) {
-    this.nettypeid = nettypeid;
-  }
+    public int getStorageid() {
+        return storageid;
+    }
 
-  public void setStateid(int stateid) {
-    this.stateid = stateid;
-  }
+    public String getOrgSerialNo() {
+        return orgSerialNo;
+    }
 
-  public void setObjecttypeid(long objecttypeid) {
-    this.objecttypeid = objecttypeid;
-  }
+    public String getOuttime() {
+        return outtime;
+    }
 
-  public void setStorageid(int storageid) {
-    this.storageid = storageid;
-  }
+    public String getAccessory() {
+        return accessory;
+    }
 
-  public void setOrgSerialNo(String orgSerialNo) {
-    this.orgSerialNo = orgSerialNo;
-  }
+    public String getThefile() {
+        return thefile;
+    }
 
-  public void setOuttime(String outtime) {
-    this.outtime = outtime;
-  }
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 
-  public void setAccessory(String accessory) {
-    this.accessory = accessory;
-  }
+    public void setBorrowState(int borrowState) {
+        this.borrowState = borrowState;
+    }
 
-  public void setThefile(String thefile) {
-    this.thefile = thefile;
-  }
+    public void setBorrowStateName(String borrowStateName) {
+        this.borrowStateName = borrowStateName;
+    }
 
-public String getSubdept() {
-	return subdept;
-}
+    public void setNecodeid(int necodeid) {
+        this.necodeid = necodeid;
+    }
 
-public void setSubdept(String subDept) {
-	this.subdept = subDept;
-}
+    public void setNettypeid(int nettypeid) {
+        this.nettypeid = nettypeid;
+    }
 
-public int getSubdeptid() {
-	return subdeptid;
-}
+    public void setStateid(int stateid) {
+        this.stateid = stateid;
+    }
 
-public void setSubdeptid(int subDeptid) {
-	this.subdeptid = subdeptid;
-}
+    public void setObjecttypeid(long objecttypeid) {
+        this.objecttypeid = objecttypeid;
+    }
 
-public int getChecksum() {
-	return checksum;
-}
+    public void setStorageid(int storageid) {
+        this.storageid = storageid;
+    }
 
-public void setChecksum(int checksum) {
-	this.checksum = checksum;
-}
+    public void setOrgSerialNo(String orgSerialNo) {
+        this.orgSerialNo = orgSerialNo;
+    }
 
-public int getParttype() {
-	return parttype;
-}
+    public void setOuttime(String outtime) {
+        this.outtime = outtime;
+    }
 
-public void setParttype(int parttype) {
-	this.parttype = parttype;
-}
+    public void setAccessory(String accessory) {
+        this.accessory = accessory;
+    }
 
-public String getPartclass() {
-	return partclass;
-}
+    public void setThefile(String thefile) {
+        this.thefile = thefile;
+    }
 
-public void setPartclass(String partclass) {
-	this.partclass = partclass;
-}
+    public String getSubdept() {
+        return subdept;
+    }
 
-public String getDescribe() {
-	return describe;
-}
+    public void setSubdept(String subDept) {
+        this.subdept = subDept;
+    }
 
-public void setDescribe(String describe) {
-	this.describe = describe;
-}
+    public int getSubdeptid() {
+        return subdeptid;
+    }
 
+    public void setSubdeptid(int subDeptid) {
+        this.subdeptid = subdeptid;
+    }
+
+    public int getChecksum() {
+        return checksum;
+    }
+
+    public void setChecksum(int checksum) {
+        this.checksum = checksum;
+    }
+
+    public int getParttype() {
+        return parttype;
+    }
+
+    public void setParttype(int parttype) {
+        this.parttype = parttype;
+    }
+
+    public String getPartclass() {
+        return partclass;
+    }
+
+    public void setPartclass(String partclass) {
+        this.partclass = partclass;
+    }
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
+    }
 
 
 }

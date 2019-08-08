@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,47 +13,47 @@
             table="Supervise_Task_Record"
     >
 
-    <id
-        name="id"
-            column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="deleted" />
-        <property name="sheetId" />
-        <property name="startTime" />
-        <property name="endTime" />
-        <property name="city" />
-        <property name="country" />
-        <property name="listedRegulationType" />
-        <property name="listedRegulationCycle" />
-        <property name="mainNetSortOne" />
-        <property name="mainNetSortTwo" />
-        <property name="mainNetSortThree" />
-        <property name="supervisetaskResult" />
-        <property name="supervisetaskRule" />
-        <property name="createTime" />
-        <property name="noticeUser1" />
-        <property name="noticeUser2" />
-        <property name="noticeUser3" />
-        <property name="noticeUser4" />
-        <property name="noticeUserphone1" />
-        <property name="noticeUserphone2" />
-        <property name="noticeUserphone3" />
-        <property name="noticeUserphone4" />
-   		<property name="noticeUsername1" />
-        <property name="noticeUsername2" />
-        <property name="noticeUsername3" />
-        <property name="noticeUsername4" />
-	<property name="content"/>
-		<property name="reason"/>	
-		<property name="superviseType"/> 
-			 				 	
- 
-</class>    
+        </id>
+        <property name="deleted"/>
+        <property name="sheetId"/>
+        <property name="startTime"/>
+        <property name="endTime"/>
+        <property name="city"/>
+        <property name="country"/>
+        <property name="listedRegulationType"/>
+        <property name="listedRegulationCycle"/>
+        <property name="mainNetSortOne"/>
+        <property name="mainNetSortTwo"/>
+        <property name="mainNetSortThree"/>
+        <property name="supervisetaskResult"/>
+        <property name="supervisetaskRule"/>
+        <property name="createTime"/>
+        <property name="noticeUser1"/>
+        <property name="noticeUser2"/>
+        <property name="noticeUser3"/>
+        <property name="noticeUser4"/>
+        <property name="noticeUserphone1"/>
+        <property name="noticeUserphone2"/>
+        <property name="noticeUserphone3"/>
+        <property name="noticeUserphone4"/>
+        <property name="noticeUsername1"/>
+        <property name="noticeUsername2"/>
+        <property name="noticeUsername3"/>
+        <property name="noticeUsername4"/>
+        <property name="content"/>
+        <property name="reason"/>
+        <property name="superviseType"/>
+
+
+    </class>
 </hibernate-mapping>

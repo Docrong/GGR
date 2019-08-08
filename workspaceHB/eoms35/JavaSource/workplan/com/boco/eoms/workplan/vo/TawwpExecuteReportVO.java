@@ -5,6 +5,7 @@
  * <p>Description: 提供页面的所需的数据封装</p>
  * <p>Copyright: Copyright (c) 2005</p>
  * <p>Company: boco</p>
+ *
  * @author eoms
  * @version 1.0
  */
@@ -13,245 +14,247 @@ import java.util.List;
 
 public class TawwpExecuteReportVO {
 
-  private String id; //标识
-  private String deptId; //部门编号
-  private String deptName; //部门名称
-  private String reportType; //汇报类型编号 0：周报 1：月报
-  private String reportTypeName; //汇报类型名称
-  private String startDate; //汇报的开始时间
-  private String endDate; //汇报的结束时间
-  private String content; //汇报信息
-  private String reportUser; //汇报人登录名
-  private String reportUserName; //汇报人姓名
-  private String crtime; //创建时间 （按创建时间排序）
-  private String reportFlag; //注意标志编号 0：正常 1：提醒
-  private String reportFlagName; //注意标志名称
-  private String remark; //备注
-  private String advice; //建议
+    private String id; //标识
+    private String deptId; //部门编号
+    private String deptName; //部门名称
+    private String reportType; //汇报类型编号 0：周报 1：月报
+    private String reportTypeName; //汇报类型名称
+    private String startDate; //汇报的开始时间
+    private String endDate; //汇报的结束时间
+    private String content; //汇报信息
+    private String reportUser; //汇报人登录名
+    private String reportUserName; //汇报人姓名
+    private String crtime; //创建时间 （按创建时间排序）
+    private String reportFlag; //注意标志编号 0：正常 1：提醒
+    private String reportFlagName; //注意标志名称
+    private String remark; //备注
+    private String advice; //建议
 
-  //汇报类型名称数组
-  static public String[] REPORTTYPE = {
-      "周报", "月报"};
+    //汇报类型名称数组
+    static public String[] REPORTTYPE = {
+            "周报", "月报"};
 
-  //注意标志名称数组
-  static public String[] REPORTFLAG = {
-      "正常", "非正常"};
+    //注意标志名称数组
+    static public String[] REPORTFLAG = {
+            "正常", "非正常"};
 
-  /**
-   * 获取汇报类型名称
-   * @param _reportType 汇报类型编号
-   * @return 汇报类型名称
-   */
-  public static String getReportTypeName(int _reportType) {
-    //初始化数据
-    String reportTypeName = "";
-    //如果汇报类型编号在汇报类型范围以内
-    if (_reportType < TawwpExecuteReportVO.REPORTTYPE.length &&
-        _reportType >= 0) {
-      //取出汇报类型显示名称
-      reportTypeName = TawwpExecuteReportVO.REPORTTYPE[_reportType];
-    }
-    //返回汇报类型名称
-    return reportTypeName;
-  }
-
-  /**
-   * 获取注意标志名称
-   * @param _reportFlag 注意标志编号
-   * @return 注意标志名称
-   */
-  public static String getReportFlagName(int _reportFlag) {
-    //初始化数据
-    String reportFlagName = "";
-    //如果注意标志编号在注意标志范围以内
-    if (_reportFlag < TawwpExecuteReportVO.REPORTFLAG.length &&
-        _reportFlag >= 0) {
-      //取出注意标志显示名称
-      reportFlagName = TawwpExecuteReportVO.REPORTFLAG[_reportFlag];
-    }
-    //返回注意标志名称
-    return reportFlagName;
-  }
-
-  //各属性对应的set、get方法
-  public String getAdvice() {
-    if (advice == null) {
-      advice = "";
+    /**
+     * 获取汇报类型名称
+     *
+     * @param _reportType 汇报类型编号
+     * @return 汇报类型名称
+     */
+    public static String getReportTypeName(int _reportType) {
+        //初始化数据
+        String reportTypeName = "";
+        //如果汇报类型编号在汇报类型范围以内
+        if (_reportType < TawwpExecuteReportVO.REPORTTYPE.length &&
+                _reportType >= 0) {
+            //取出汇报类型显示名称
+            reportTypeName = TawwpExecuteReportVO.REPORTTYPE[_reportType];
+        }
+        //返回汇报类型名称
+        return reportTypeName;
     }
 
-    return advice;
-  }
-
-  public String getContent() {
-    if (content == null) {
-      content = "";
+    /**
+     * 获取注意标志名称
+     *
+     * @param _reportFlag 注意标志编号
+     * @return 注意标志名称
+     */
+    public static String getReportFlagName(int _reportFlag) {
+        //初始化数据
+        String reportFlagName = "";
+        //如果注意标志编号在注意标志范围以内
+        if (_reportFlag < TawwpExecuteReportVO.REPORTFLAG.length &&
+                _reportFlag >= 0) {
+            //取出注意标志显示名称
+            reportFlagName = TawwpExecuteReportVO.REPORTFLAG[_reportFlag];
+        }
+        //返回注意标志名称
+        return reportFlagName;
     }
 
-    return content;
-  }
+    //各属性对应的set、get方法
+    public String getAdvice() {
+        if (advice == null) {
+            advice = "";
+        }
 
-  public String getCrtime() {
-    if (crtime == null) {
-      crtime = "";
+        return advice;
     }
 
-    return crtime;
-  }
+    public String getContent() {
+        if (content == null) {
+            content = "";
+        }
 
-  public String getDeptId() {
-    if (deptId == null) {
-      deptId = "";
+        return content;
     }
 
-    return deptId;
-  }
+    public String getCrtime() {
+        if (crtime == null) {
+            crtime = "";
+        }
 
-  public String getDeptName() {
-    if (deptName == null) {
-      deptName = "";
+        return crtime;
     }
 
-    return deptName;
-  }
+    public String getDeptId() {
+        if (deptId == null) {
+            deptId = "";
+        }
 
-  public String getEndDate() {
-    if (endDate == null) {
-      endDate = "";
+        return deptId;
     }
 
-    return endDate;
-  }
+    public String getDeptName() {
+        if (deptName == null) {
+            deptName = "";
+        }
 
-  public String getId() {
-    if (id == null) {
-      id = "";
+        return deptName;
     }
 
-    return id;
-  }
+    public String getEndDate() {
+        if (endDate == null) {
+            endDate = "";
+        }
 
-  public String getRemark() {
-    if (remark == null) {
-      remark = "";
+        return endDate;
     }
 
-    return remark;
-  }
+    public String getId() {
+        if (id == null) {
+            id = "";
+        }
 
-  public String getReportFlag() {
-    if (reportFlag == null) {
-      reportFlag = "";
+        return id;
     }
 
-    return reportFlag;
-  }
+    public String getRemark() {
+        if (remark == null) {
+            remark = "";
+        }
 
-  public String getReportFlagName() {
-    if (reportFlagName == null) {
-      reportFlagName = "";
+        return remark;
     }
 
-    return reportFlagName;
-  }
+    public String getReportFlag() {
+        if (reportFlag == null) {
+            reportFlag = "";
+        }
 
-  public String getReportType() {
-    if (reportType == null) {
-      reportType = "";
+        return reportFlag;
     }
 
-    return reportType;
-  }
+    public String getReportFlagName() {
+        if (reportFlagName == null) {
+            reportFlagName = "";
+        }
 
-  public String getReportTypeName() {
-    if (reportTypeName == null) {
-      reportTypeName = "";
+        return reportFlagName;
     }
 
-    return reportTypeName;
-  }
+    public String getReportType() {
+        if (reportType == null) {
+            reportType = "";
+        }
 
-  public String getReportUser() {
-    if (reportUser == null) {
-      reportUser = "";
+        return reportType;
     }
 
-    return reportUser;
-  }
+    public String getReportTypeName() {
+        if (reportTypeName == null) {
+            reportTypeName = "";
+        }
 
-  public String getReportUserName() {
-    if (reportUserName == null) {
-      reportUserName = "";
+        return reportTypeName;
     }
 
-    return reportUserName;
-  }
+    public String getReportUser() {
+        if (reportUser == null) {
+            reportUser = "";
+        }
 
-  public String getStartDate() {
-    if (startDate == null) {
-      startDate = "";
+        return reportUser;
     }
 
-    return startDate;
-  }
+    public String getReportUserName() {
+        if (reportUserName == null) {
+            reportUserName = "";
+        }
 
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
+        return reportUserName;
+    }
 
-  public void setReportUserName(String reportUserName) {
-    this.reportUserName = reportUserName;
-  }
+    public String getStartDate() {
+        if (startDate == null) {
+            startDate = "";
+        }
 
-  public void setReportUser(String reportUser) {
-    this.reportUser = reportUser;
-  }
+        return startDate;
+    }
 
-  public void setReportTypeName(String reportTypeName) {
-    this.reportTypeName = reportTypeName;
-  }
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
 
-  public void setReportFlagName(String reportFlagName) {
-    this.reportFlagName = reportFlagName;
-  }
+    public void setReportUserName(String reportUserName) {
+        this.reportUserName = reportUserName;
+    }
 
-  public void setReportFlag(String reportFlag) {
-    this.reportFlag = reportFlag;
-  }
+    public void setReportUser(String reportUser) {
+        this.reportUser = reportUser;
+    }
 
-  public void setRemark(String remark) {
-    this.remark = remark;
-  }
+    public void setReportTypeName(String reportTypeName) {
+        this.reportTypeName = reportTypeName;
+    }
 
-  public void setId(String id) {
-    this.id = id;
-  }
+    public void setReportFlagName(String reportFlagName) {
+        this.reportFlagName = reportFlagName;
+    }
 
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
-  }
+    public void setReportFlag(String reportFlag) {
+        this.reportFlag = reportFlag;
+    }
 
-  public void setDeptName(String deptName) {
-    this.deptName = deptName;
-  }
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-  public void setDeptId(String deptId) {
-    this.deptId = deptId;
-  }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-  public void setCrtime(String crtime) {
-    this.crtime = crtime;
-  }
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 
-  public void setAdvice(String advice) {
-    this.advice = advice;
-  }
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
 
-  public void setReportType(String reportType) {
-    this.reportType = reportType;
-  }
+    public void setCrtime(String crtime) {
+        this.crtime = crtime;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setAdvice(String advice) {
+        this.advice = advice;
+    }
+
+    public void setReportType(String reportType) {
+        this.reportType = reportType;
+    }
 
 }

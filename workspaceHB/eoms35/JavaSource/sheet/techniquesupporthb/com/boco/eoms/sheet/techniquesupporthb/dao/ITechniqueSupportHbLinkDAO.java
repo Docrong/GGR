@@ -8,6 +8,5 @@ package com.boco.eoms.sheet.techniquesupporthb.dao;
 import com.boco.eoms.sheet.base.dao.ILinkDAO;
 
 public interface ITechniqueSupportHbLinkDAO
-	extends ILinkDAO
-{
+        extends ILinkDAO {
 }

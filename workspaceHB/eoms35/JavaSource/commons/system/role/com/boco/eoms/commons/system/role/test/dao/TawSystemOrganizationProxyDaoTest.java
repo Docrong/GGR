@@ -32,7 +32,7 @@ public class TawSystemOrganizationProxyDaoTest extends BaseDaoTestCase {
     }
 
     public void testGetTawSystemOrganizationProxy() throws Exception {
-    	TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
+        TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
 
         // set required fields
         tawSystemOrganizationProxy.setProxyRoleId(10);
@@ -42,15 +42,14 @@ public class TawSystemOrganizationProxyDaoTest extends BaseDaoTestCase {
 
         // verify a primary key was assigned
         assertNotNull(tawSystemOrganizationProxy.getId());
-        
-        
-        
+
+
         tawSystemOrganizationProxy = dao.getTawSystemOrganizationProxy(tawSystemOrganizationProxy.getId());
         assertNotNull(tawSystemOrganizationProxy);
     }
 
     public void testGetTawSystemOrganizationProxys() throws Exception {
-    	TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
+        TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
 
         // set required fields
         tawSystemOrganizationProxy.setProxyRoleId(10);
@@ -60,8 +59,8 @@ public class TawSystemOrganizationProxyDaoTest extends BaseDaoTestCase {
 
         // verify a primary key was assigned
         assertNotNull(tawSystemOrganizationProxy.getId());
-        
-        
+
+
         tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
 
         List results = dao.getTawSystemOrganizationProxys(tawSystemOrganizationProxy);
@@ -69,7 +68,7 @@ public class TawSystemOrganizationProxyDaoTest extends BaseDaoTestCase {
     }
 
     public void testSaveTawSystemOrganizationProxy() throws Exception {
-    	TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
+        TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
 
         // set required fields
         tawSystemOrganizationProxy.setProxyRoleId(10);
@@ -79,21 +78,21 @@ public class TawSystemOrganizationProxyDaoTest extends BaseDaoTestCase {
 
         // verify a primary key was assigned
         assertNotNull(tawSystemOrganizationProxy.getId());
-        
-        
+
+
         tawSystemOrganizationProxy = dao.getTawSystemOrganizationProxy(tawSystemOrganizationProxy.getId());
 
         // update required fields
         tawSystemOrganizationProxy.setFromUserId("123");
         dao.saveTawSystemOrganizationProxy(tawSystemOrganizationProxy);
-        
+
         tawSystemOrganizationProxy = dao.getTawSystemOrganizationProxy(tawSystemOrganizationProxy.getId());
-        assertTrue(tawSystemOrganizationProxy.getFromUserId()=="123");
+        assertTrue(tawSystemOrganizationProxy.getFromUserId() == "123");
 
     }
 
     public void testRemoveTawSystemOrganizationProxy() throws Exception {
-    	TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
+        TawSystemOrganizationProxy tawSystemOrganizationProxy = new TawSystemOrganizationProxy();
 
         // set required fields
         tawSystemOrganizationProxy.setProxyRoleId(10);
@@ -103,8 +102,8 @@ public class TawSystemOrganizationProxyDaoTest extends BaseDaoTestCase {
 
         // verify a primary key was assigned
         assertNotNull(tawSystemOrganizationProxy.getId());
-        
-        
+
+
         dao.removeTawSystemOrganizationProxy(tawSystemOrganizationProxy.getId());
         try {
             dao.getTawSystemOrganizationProxy(tawSystemOrganizationProxy.getId());
@@ -113,9 +112,9 @@ public class TawSystemOrganizationProxyDaoTest extends BaseDaoTestCase {
             assertNotNull(e.getMessage());
         }
     }
-    
-    public void testGetMain(){
-    	List list = dao.getMain();
-    	assertNotNull(list);
+
+    public void testGetMain() {
+        List list = dao.getMain();
+        assertNotNull(list);
     }
 }

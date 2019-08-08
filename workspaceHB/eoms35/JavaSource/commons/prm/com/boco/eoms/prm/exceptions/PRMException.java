@@ -21,24 +21,23 @@ import com.boco.eoms.commons.exceptions.base.BusinessException;
  * <p>
  * Date:2007-8-6 17:43:02
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class PRMException extends BusinessException {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 7523092878775126817L;
+     *
+     */
+    private static final long serialVersionUID = 7523092878775126817L;
 
-	public PRMException(String msg) {
+    public PRMException(String msg) {
         super(msg);
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
@@ -48,7 +47,7 @@ public class PRMException extends BusinessException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace()
      */
     public void printStackTrace() {
@@ -58,7 +57,7 @@ public class PRMException extends BusinessException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace(java.io.PrintStream)
      */
     public void printStackTrace(PrintStream s) {
@@ -68,7 +67,7 @@ public class PRMException extends BusinessException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace(java.io.PrintWriter)
      */
     public void printStackTrace(PrintWriter w) {

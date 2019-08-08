@@ -1,4 +1,3 @@
-
 /**
  * <p>Title:  </p>
  * <p>Description: </p>
@@ -12,6 +11,7 @@ function LineView() {
     this.setLeft("0px");
     this.setTop("0px");
 }
+
 LineView.prototype = new Component();
 
 //

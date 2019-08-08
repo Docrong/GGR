@@ -2,6 +2,7 @@
 package com.boco.eoms.commons.db.containerpool;
 
 // java standard library
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,7 +16,7 @@ import com.boco.eoms.commons.loging.BocoLog;
 /**
  * Referenced classes of package com.boco.eoms.commons.db.containerpool:
  * BocoDataSource
- * 
+ *
  * @author Sandy.wei
  * @version 3.5
  */
@@ -36,19 +37,17 @@ public class JNDIDataSource extends BocoDataSource {
                 Context dsCtx = null;
                 if (params.size() > 0) {
                     dsCtx = new InitialContext(params);
-                }
-                else {
+                } else {
                     Context initCtx = new InitialContext();
                     dsCtx = (Context) initCtx.lookup("java:comp/env");
                 }
-                dataSource = (DataSource) dsCtx.lookup("jdbc/"+datasourceKey);
+                dataSource = (DataSource) dsCtx.lookup("jdbc/" + datasourceKey);
                 if (dataSource == null) {
                     BocoLog.error(this, "datasourceKey invalid, datasource name is: "
-                                    + datasourceKey);
+                            + datasourceKey);
                     throw new SQLException("Cannot get datasource from Tomcat!");
                 }
-            }
-            catch (NamingException e) {
+            } catch (NamingException e) {
                 BocoLog.error(this, e.getMessage());
                 throw new SQLException("Cannot get datasource from Tomcat!");
             }

@@ -53,12 +53,12 @@ public class TawSupplierkpiTemplateAssessDaoHibernate extends BaseDaoHibernate i
 
     /**
      * @see com.boco.eoms.commons.sample.dao.TawSupplierkpiTemplateAssessDao#saveTawSupplierkpiTemplateAssess(TawSupplierkpiTemplateAssess tawSupplierkpiTemplateAssess)
-     */    
+     */
     public void saveTawSupplierkpiTemplateAssess(final TawSupplierkpiTemplateAssess tawSupplierkpiTemplateAssess) {
         if ((tawSupplierkpiTemplateAssess.getId() == null) || (tawSupplierkpiTemplateAssess.getId().equals("")))
-			getHibernateTemplate().save(tawSupplierkpiTemplateAssess);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSupplierkpiTemplateAssess);
+            getHibernateTemplate().save(tawSupplierkpiTemplateAssess);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSupplierkpiTemplateAssess);
     }
 
     /**
@@ -67,59 +67,61 @@ public class TawSupplierkpiTemplateAssessDaoHibernate extends BaseDaoHibernate i
     public void removeTawSupplierkpiTemplateAssess(final String id) {
         getHibernateTemplate().delete(getTawSupplierkpiTemplateAssess(id));
     }
+
     /**
      * curPage
      * pageSize
      * whereStr   sql filter
      */
-    public Map getTawSupplierkpiTemplateAssesss(final int curPage, final int pageSize,final String whereStr) {
+    public Map getTawSupplierkpiTemplateAssesss(final int curPage, final int pageSize, final String whereStr) {
         // filter on properties set in the tawSupplierkpiTemplateAssess
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSupplierkpiTemplateAssess";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSupplierkpiTemplateAssess";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize
-									* curPage);
-							query.setMaxResults(pageSize);
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize
+                        * curPage);
+                query.setMaxResults(pageSize);
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSupplierkpiTemplateAssesss(final int curPage, final int pageSize) {
-			return this.getTawSupplierkpiTemplateAssesss(curPage,pageSize,null);
-		}
+        return this.getTawSupplierkpiTemplateAssesss(curPage, pageSize, null);
+    }
 
     public TawSupplierkpiTemplateAssess getTawSupplierkpiTemplateAssessByTemplateId(final String templateId) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSupplierkpiTemplateAssess where templateId='" + templateId + "'";
-				Query query = session.createQuery(queryStr);
-				query.setFirstResult(0);
+                String queryStr = "from TawSupplierkpiTemplateAssess where templateId='" + templateId + "'";
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(0);
                 query.setMaxResults(1);
-				List list = query.list();
-				TawSupplierkpiTemplateAssess tawSupplierkpiTemplateAssess = new TawSupplierkpiTemplateAssess();
+                List list = query.list();
+                TawSupplierkpiTemplateAssess tawSupplierkpiTemplateAssess = new TawSupplierkpiTemplateAssess();
 
                 if (list != null && !list.isEmpty()) {
-                	tawSupplierkpiTemplateAssess = (TawSupplierkpiTemplateAssess) list.iterator().next();
+                    tawSupplierkpiTemplateAssess = (TawSupplierkpiTemplateAssess) list.iterator().next();
                 }
                 return tawSupplierkpiTemplateAssess;
             }
         };
         return (TawSupplierkpiTemplateAssess) getHibernateTemplate().execute(callback);
     }
-    
+
     public List getNodesFromTemplateAssess(final String whereStr) {
-    	return getHibernateTemplate().find(whereStr);
+        return getHibernateTemplate().find(whereStr);
     }
 }

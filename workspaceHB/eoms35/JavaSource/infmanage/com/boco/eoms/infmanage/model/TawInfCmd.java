@@ -1,7 +1,6 @@
 package com.boco.eoms.infmanage.model;
 
-public class TawInfCmd
-{
+public class TawInfCmd {
     // 命令所属交换机
     private String cmdSwich;
 
@@ -26,85 +25,70 @@ public class TawInfCmd
     // 部门ID
     private int deptId;
 
-    public TawInfCmd()
-    {
+    public TawInfCmd() {
     }
 
-    public String getCmdSwich()
-    {
+    public String getCmdSwich() {
         return cmdSwich;
     }
 
-    public void setCmdSwich(String cmdSwich)
-    {
+    public void setCmdSwich(String cmdSwich) {
         this.cmdSwich = cmdSwich;
     }
 
-    public String getCmdId()
-    {
+    public String getCmdId() {
         return cmdId;
     }
 
-    public void setCmdId(String cmdId)
-    {
+    public void setCmdId(String cmdId) {
         this.cmdId = cmdId;
     }
 
-    public String getCmdName()
-    {
+    public String getCmdName() {
         return cmdName;
     }
 
-    public void setCmdName(String cmdName)
-    {
+    public void setCmdName(String cmdName) {
         this.cmdName = cmdName;
     }
 
-    public String getCmdParam()
-    {
+    public String getCmdParam() {
         return cmdParam;
     }
 
-    public void setCmdParam(String cmdParam)
-    {
+    public void setCmdParam(String cmdParam) {
         this.cmdParam = cmdParam;
     }
 
-    public String getParamScope()
-    {
+    public String getParamScope() {
         return paramScope;
     }
 
-    public void setParamScope(String paramScope)
-    {
+    public void setParamScope(String paramScope) {
         this.paramScope = paramScope;
     }
 
-    public String getCmdDes()
-    {
+    public String getCmdDes() {
         return cmdDes;
     }
 
-    public void setCmdDes(String cmdDes)
-    {
+    public void setCmdDes(String cmdDes) {
         this.cmdDes = cmdDes;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
-    public int getDeptId()
-    {
+
+    public int getDeptId() {
         return deptId;
     }
-    public void setDeptId(int deptId)
-    {
+
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
 

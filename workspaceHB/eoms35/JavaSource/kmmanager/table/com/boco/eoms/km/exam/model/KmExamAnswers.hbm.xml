@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_EXAM_ANSWERS"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="questionId"
-            	column="QUESTION_ID"
+        <property
+                name="questionId"
+                column="QUESTION_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="answer"
-            	column="ANSWER"
+        <property
+                name="answer"
+                column="ANSWER"
                 length="100"
                 not-null="false"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="isRight"
-            	column="IS_RIGHT"
+        <property
+                name="isRight"
+                column="IS_RIGHT"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -56,19 +56,19 @@
 
         </property>
 
-	<property
-            name="score"
-            	column="SCORE"
+        <property
+                name="score"
+                column="SCORE"
                 length="32"
                 unique="false"
         >
 
         </property>
-        
-        
-    <property
-            name="testID"
-            	column="TEST_ID"
+
+
+        <property
+                name="testID"
+                column="TEST_ID"
                 length="32"
                 not-null="true"
                 unique="true"
@@ -76,35 +76,35 @@
 
         </property>
 
-	<property
-            name="attendUser"
-            	column="ATTEND_USER"
+        <property
+                name="attendUser"
+                column="ATTEND_USER"
                 length="32"
                 unique="false"
         >
 
         </property>
 
-	<property
-            name="referenceAnswer"
-            	column="REFERENCE_ANSWER"
-                length="32"
-                unique="false"
-        >
-
-        </property>
-	
-
-	<property
-            name="referenceScore"
-            	column="REFERENCE_SCORE"
+        <property
+                name="referenceAnswer"
+                column="REFERENCE_ANSWER"
                 length="32"
                 unique="false"
         >
 
         </property>
 
-    </class>    
+
+        <property
+                name="referenceScore"
+                column="REFERENCE_SCORE"
+                length="32"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

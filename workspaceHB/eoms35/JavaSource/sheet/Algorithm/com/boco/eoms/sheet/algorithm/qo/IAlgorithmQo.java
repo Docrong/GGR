@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.algorithm.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public interface IAlgorithmQo extends IWorkSheetQO {
- 
- }
+
+public interface IAlgorithmQo extends IWorkSheetQO {
+
+}

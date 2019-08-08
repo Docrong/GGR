@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.ITaskService;
  * <p>
  * Sat Jun 08 11:16:09 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IPlannAdjustTaskManager extends ITaskService {
- 
- }
+
+public interface IPlannAdjustTaskManager extends ITaskService {
+
+}

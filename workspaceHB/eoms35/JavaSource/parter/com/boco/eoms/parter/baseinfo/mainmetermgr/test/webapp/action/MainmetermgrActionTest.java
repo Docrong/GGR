@@ -73,7 +73,7 @@ public class MainmetermgrActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"mainmetermgr.updated"});
+        verifyActionMessages(new String[]{"mainmetermgr.updated"});
 
     }
 

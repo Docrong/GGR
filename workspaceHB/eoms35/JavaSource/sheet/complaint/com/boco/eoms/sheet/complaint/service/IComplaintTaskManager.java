@@ -13,12 +13,12 @@ import com.boco.eoms.sheet.base.service.ITaskService;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public interface IComplaintTaskManager extends ITaskService{
+public interface IComplaintTaskManager extends ITaskService {
 
-	HashMap getUndoTaskByOverTimeAll(Map condition, String userId, String deptId, String flowName, Integer pageIndex, Integer pageSize);
+    HashMap getUndoTaskByOverTimeAll(Map condition, String userId, String deptId, String flowName, Integer pageIndex, Integer pageSize);
 
 }

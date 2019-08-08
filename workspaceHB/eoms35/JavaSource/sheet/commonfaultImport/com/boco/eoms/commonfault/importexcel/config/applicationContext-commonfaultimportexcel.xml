@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
-	<bean id="commonfaultImportExcelMgr" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commonfault.importexcel.mgr.impl.CommonfaultImportExcelMgrImpl">
-				<property name="commonfaultImportExcelDao" ref="commonfaultImportExcelDao" />
-				<property name="fmImportFileManager" ref="FMImportExcelFileManagerImpl" />
-			</bean>
-		</property>
-	</bean>
+    <bean id="commonfaultImportExcelMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commonfault.importexcel.mgr.impl.CommonfaultImportExcelMgrImpl">
+                <property name="commonfaultImportExcelDao" ref="commonfaultImportExcelDao"/>
+                <property name="fmImportFileManager" ref="FMImportExcelFileManagerImpl"/>
+            </bean>
+        </property>
+    </bean>
 
-	<bean id="commonfaultImportExcelDao"
-		class="com.boco.eoms.commonfault.importexcel.dao.hibernate.CommonfaultImportExcelDaoHibernate"
-		autowire="byName" />
+    <bean id="commonfaultImportExcelDao"
+          class="com.boco.eoms.commonfault.importexcel.dao.hibernate.CommonfaultImportExcelDaoHibernate"
+          autowire="byName"/>
 
 
 </beans>

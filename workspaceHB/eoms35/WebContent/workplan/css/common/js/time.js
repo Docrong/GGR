@@ -1,36 +1,43 @@
-var enabled = 0; today = new Date();
-var day; var date;
-if(today.getDay()==0) day = "ÐÇÆÚÈÕ"
-if(today.getDay()==1) day = "ÐÇÆÚÒ»"
-if(today.getDay()==2) day = "ÐÇÆÚ¶þ"
-if(today.getDay()==3) day = "ÐÇÆÚÈý"
-if(today.getDay()==4) day = "ÐÇÆÚËÄ"
-if(today.getDay()==5) day = "ÐÇÆÚÎå"
-if(today.getDay()==6) day = "ÐÇÆÚÁù"
+var enabled = 0;
+today = new Date();
+var day;
+var date;
+if (today.getDay() == 0) day = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+if (today.getDay() == 1) day = "ï¿½ï¿½ï¿½ï¿½Ò»"
+if (today.getDay() == 2) day = "ï¿½ï¿½ï¿½Ú¶ï¿½"
+if (today.getDay() == 3) day = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+if (today.getDay() == 4) day = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+if (today.getDay() == 5) day = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+if (today.getDay() == 6) day = "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
 document.fgColor = "000000";
-date = (today.getYear()) + "Äê" + (today.getMonth() + 1 ) + "ÔÂ" + today.getDate() + "ÈÕ&nbsp;&nbsp;<br> " + day +"";
+date = (today.getYear()) + "ï¿½ï¿½" + (today.getMonth() + 1) + "ï¿½ï¿½" + today.getDate() + "ï¿½ï¿½&nbsp;&nbsp;<br> " + day + "";
 
 var timerID = null;
 var timerRunning = false;
-function stopclock (){
-if(timerRunning)
-clearTimeout(timerID);
-timerRunning = false;}
-function startclock () {
-stopclock();
-showtime();}
-function showtime () {
-var now = new Date();
-var hours = now.getHours();
-var minutes = now.getMinutes();
-var seconds = now.getSeconds()
-var timeValue = "" +((hours >= 12) ? "ÏÂÎç " : "ÉÏÎç " )
-timeValue += ((hours >12) ? hours -12 :hours)
-timeValue += ((minutes < 10) ? ":0" : ":") + minutes
-timeValue += ((seconds < 10) ? ":0" : ":") + seconds
-document.all.clock.innerText = timeValue;
-timerID = setTimeout("showtime()",1000);
-timerRunning = true;
+
+function stopclock() {
+    if (timerRunning)
+        clearTimeout(timerID);
+    timerRunning = false;
+}
+
+function startclock() {
+    stopclock();
+    showtime();
+}
+
+function showtime() {
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds()
+    var timeValue = "" + ((hours >= 12) ? "ï¿½ï¿½ï¿½ï¿½ " : "ï¿½ï¿½ï¿½ï¿½ ")
+    timeValue += ((hours > 12) ? hours - 12 : hours)
+    timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+    timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+    document.all.clock.innerText = timeValue;
+    timerID = setTimeout("showtime()", 1000);
+    timerRunning = true;
 }
 
 document.write(date);

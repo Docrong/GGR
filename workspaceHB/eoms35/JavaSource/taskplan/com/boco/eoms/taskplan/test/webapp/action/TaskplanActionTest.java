@@ -18,7 +18,6 @@ public class TaskplanActionTest extends BaseStrutsTestCase {
         TaskplanForm taskplanForm = new TaskplanForm();
         // set required fields
 
-       
 
         actionPerform();
 
@@ -73,7 +72,7 @@ public class TaskplanActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"taskplan.updated"});
+        verifyActionMessages(new String[]{"taskplan.updated"});
 
     }
 

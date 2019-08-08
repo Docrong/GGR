@@ -18,31 +18,32 @@ import com.boco.gr.model.TawRiskDocument;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:applicationContext.xml")
 
-public class TestDemo extends AbstractJUnit4SpringContextTests{
+public class TestDemo extends AbstractJUnit4SpringContextTests {
 
-	@Test
-	public void test1(){
-		System.out.println("12313123");
-	}
-	
-	@Test
-	public void test2(){
-		ClassPathXmlApplicationContext resource  = new  ClassPathXmlApplicationContext("applicationContext-bean.xml");; 
-		RiskControlDao dao=(RiskControlDao) resource.getBean("riskControlDao");//»ñÈ¡bean		
-       
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
-        Date date=new Date();
-        System.out.println("Á¬½Ó²âÊÔ");
-        System.out.println("Â·¾¶"+resource);
-       TawRiskDocument t=new TawRiskDocument();
+    @Test
+    public void test1() {
+        System.out.println("12313123");
+    }
+
+    @Test
+    public void test2() {
+        ClassPathXmlApplicationContext resource = new ClassPathXmlApplicationContext("applicationContext-bean.xml");
+        ;
+        RiskControlDao dao = (RiskControlDao) resource.getBean("riskControlDao");//ï¿½ï¿½È¡bean
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss");
+        Date date = new Date();
+        System.out.println("ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½");
+        System.out.println("Â·ï¿½ï¿½" + resource);
+        TawRiskDocument t = new TawRiskDocument();
 //       t.setId("312222141412");
-      
-       t.setDeleted("0");
-       t.setDocDesc("²âÊÔÓÃÀý");
-//		dao.saveTawRiskDocument(t);
-       Map maptj=new HashMap();
-       dao.getTawRiskDocumentList(maptj);
-       
 
-	}
+        t.setDeleted("0");
+        t.setDocDesc("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+//		dao.saveTawRiskDocument(t);
+        Map maptj = new HashMap();
+        dao.getTawRiskDocumentList(maptj);
+
+
+    }
 }

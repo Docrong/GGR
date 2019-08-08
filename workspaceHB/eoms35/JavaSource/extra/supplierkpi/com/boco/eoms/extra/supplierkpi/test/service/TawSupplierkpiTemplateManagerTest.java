@@ -7,25 +7,25 @@ import com.boco.eoms.extra.supplierkpi.model.TawSupplierkpiTemplate;
 import com.boco.eoms.extra.supplierkpi.service.ITawSupplierkpiTemplateManager;
 
 public class TawSupplierkpiTemplateManagerTest extends ConsoleTestCase {
-	private ITawSupplierkpiTemplateManager manager;
+    private ITawSupplierkpiTemplateManager manager;
 
 
-	public void testSaveTawSystemDictTypeAndTemplate() {
-		TawSupplierkpiDict tawSupplierkpiDict = new TawSupplierkpiDict();
-		tawSupplierkpiDict.setDictId("123");
-		tawSupplierkpiDict.setDictName("123");
-		tawSupplierkpiDict.setLeaf("333");
-		tawSupplierkpiDict.setParentDictId("123");
-		TawSupplierkpiTemplate tawSupplierkpiTemplate = new TawSupplierkpiTemplate();
-		tawSupplierkpiTemplate.setSpecialType(tawSupplierkpiDict.getDictId());
+    public void testSaveTawSystemDictTypeAndTemplate() {
+        TawSupplierkpiDict tawSupplierkpiDict = new TawSupplierkpiDict();
+        tawSupplierkpiDict.setDictId("123");
+        tawSupplierkpiDict.setDictName("123");
+        tawSupplierkpiDict.setLeaf("333");
+        tawSupplierkpiDict.setParentDictId("123");
+        TawSupplierkpiTemplate tawSupplierkpiTemplate = new TawSupplierkpiTemplate();
+        tawSupplierkpiTemplate.setSpecialType(tawSupplierkpiDict.getDictId());
 
-		manager.saveDictAndTemplate(tawSupplierkpiDict,
-				tawSupplierkpiTemplate);
+        manager.saveDictAndTemplate(tawSupplierkpiDict,
+                tawSupplierkpiTemplate);
 
-		TawSupplierkpiTemplate template = manager
-				.getTawSupplierkpiTemplate(tawSupplierkpiTemplate.getId());
-		assertNotNull(template);
-		assertEquals(tawSupplierkpiDict.getDictId(),template.getSpecialType());
-		
-	} 
+        TawSupplierkpiTemplate template = manager
+                .getTawSupplierkpiTemplate(tawSupplierkpiTemplate.getId());
+        assertNotNull(template);
+        assertEquals(tawSupplierkpiDict.getDictId(), template.getSpecialType());
+
+    }
 }

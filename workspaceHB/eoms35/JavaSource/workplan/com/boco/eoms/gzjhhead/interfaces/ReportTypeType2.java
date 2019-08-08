@@ -1,13 +1,13 @@
 /**
  * ReportTypeType2.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhhead.interfaces;
 
-public class ReportTypeType2  implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
+public class ReportTypeType2 implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
     private int value;
 
     public ReportTypeType2() {
@@ -36,6 +36,7 @@ public class ReportTypeType2  implements java.io.Serializable, org.apache.axis.e
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof ReportTypeType2)) return false;
         ReportTypeType2 other = (ReportTypeType2) obj;
@@ -46,13 +47,14 @@ public class ReportTypeType2  implements java.io.Serializable, org.apache.axis.e
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            this.value == other.getValue();
+        _equals = true &&
+                this.value == other.getValue();
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

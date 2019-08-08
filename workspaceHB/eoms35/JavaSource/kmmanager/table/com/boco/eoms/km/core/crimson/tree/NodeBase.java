@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -79,51 +79,53 @@ import org.w3c.dom.*;
 // not public ... javadoc looks a bit odd (hidden base class)
 // but it's only subclassable within this package anyway
 abstract class NodeBase
-    implements Node, NodeEx, NodeList, XmlWritable
-{
-    private ParentNode	parent;
-    private int		parentIndex = -1;	// cache
+        implements Node, NodeEx, NodeList, XmlWritable {
+    private ParentNode parent;
+    private int parentIndex = -1;    // cache
 
     // package private for speed ...
-    XmlDocument		ownerDocument;
-    boolean		readonly;
-        
+    XmlDocument ownerDocument;
+    boolean readonly;
+
     /**
      * Constructs a node which will later have its parent set
      * by some other member of this package.
      */
     // package private 
-    NodeBase () { }
-        
+    NodeBase() {
+    }
+
     /* Returns the node's parent; typesafe convenience rtn. */
     // package private ... 
-    ParentNode getParentImpl () { return parent; }
-
-    /* not public yet ... */
-    // package private
-    public boolean isReadonly ()
-	{ return readonly; }
-
-    /* not public yet ... */
-    // package private
-    public void setReadonly (boolean deep)
-    {
-	readonly = true;
-	if (deep) {
-	    TreeWalker	walker = new TreeWalker (this);
-	    Node	next;
-	    while ((next = walker.getNext ()) != null)
-		((NodeBase)next).setReadonly (false);
-	}
+    ParentNode getParentImpl() {
+        return parent;
     }
-    
+
+    /* not public yet ... */
+    // package private
+    public boolean isReadonly() {
+        return readonly;
+    }
+
+    /* not public yet ... */
+    // package private
+    public void setReadonly(boolean deep) {
+        readonly = true;
+        if (deep) {
+            TreeWalker walker = new TreeWalker(this);
+            Node next;
+            while ((next = walker.getNext()) != null)
+                ((NodeBase) next).setReadonly(false);
+        }
+    }
+
     /**
      * Returns the language id (value of <code>xml:lang</code>
      * attribute) applicable to this node, if known.  Traces up
      * through ancestors as needed.
      */
-    public String getLanguage () {
-	return getInheritedAttribute ("xml:lang");
+    public String getLanguage() {
+        return getInheritedAttribute("xml:lang");
     }
 
     /**
@@ -134,34 +136,32 @@ abstract class NodeBase
      * The current version of XML Namespaces also uses inheritance.
      *
      * @param name identifies the attribute; colons may be included,
-     *	but namespace prefixes are not interpreted
+     *             but namespace prefixes are not interpreted
      * @return the value of the inherited attribute, or null if
-     *	no value was inherited.
+     * no value was inherited.
      */
-    public String getInheritedAttribute (String name)
-    {
-	NodeBase	current = this;
-	Attr		value = null;
+    public String getInheritedAttribute(String name) {
+        NodeBase current = this;
+        Attr value = null;
 
-	do {
-	    if (current instanceof ElementNode2) {
-		ElementNode2 e = (ElementNode2) current;
+        do {
+            if (current instanceof ElementNode2) {
+                ElementNode2 e = (ElementNode2) current;
 
-		if ((value = e.getAttributeNode (name)) != null)
-		    break;
-	    }
-	    current = current.getParentImpl ();
-	} while (current != null);
-	if (value != null)
-	    return value.getValue ();
-	return null;
+                if ((value = e.getAttributeNode(name)) != null)
+                    break;
+            }
+            current = current.getParentImpl();
+        } while (current != null);
+        if (value != null)
+            return value.getValue();
+        return null;
     }
 
     /**
      * Does nothing; this type of node has no children.
      */
-    public void writeChildrenXml (XmlWriteContext context) throws IOException
-    {
+    public void writeChildrenXml(XmlWriteContext context) throws IOException {
     }
 
     // DOM support from W3C recommendation
@@ -171,8 +171,8 @@ abstract class NodeBase
      * as newly created or removed nodes, and for attributes, fragments,
      * and documents.
      */
-    public Node getParentNode () {
-	return parent;
+    public Node getParentNode() {
+        return parent;
     }
 
 
@@ -188,27 +188,25 @@ abstract class NodeBase
      * knowing its true parent before the call.  That's why it's not a
      * public API, here or in DOM.
      */
-    void setParentNode (ParentNode arg, int index)
-    throws DOMException
-    {
-	if (parent != null && arg != null)
-	    parent.removeChild (this);
-	parent = arg;
-	parentIndex = index;
+    void setParentNode(ParentNode arg, int index)
+            throws DOMException {
+        if (parent != null && arg != null)
+            parent.removeChild(this);
+        parent = arg;
+        parentIndex = index;
     }
 
-        
+
     // assigns the owner of this document
     protected void setOwnerDocument(XmlDocument doc) {
-	ownerDocument = doc;
+        ownerDocument = doc;
     }
 
     /**
      * <b>DOM:</b> Returns the document to which this node belongs.
      */
-    public Document getOwnerDocument ()
-    {
-	return ownerDocument;
+    public Document getOwnerDocument() {
+        return ownerDocument;
     }
 
 
@@ -216,42 +214,50 @@ abstract class NodeBase
      * <b>DOM:</b>  Returns false.
      * Overridden by subclasses which support children.
      */
-    public boolean hasChildNodes() { return false; }
+    public boolean hasChildNodes() {
+        return false;
+    }
 
     /**
      * <b>DOM:</b>  does nothing; overridden by subclasses as needed.
      */
-    public void setNodeValue (String value)
-    {
-	if (readonly)
-	    throw new DomEx (DomEx.NO_MODIFICATION_ALLOWED_ERR);
+    public void setNodeValue(String value) {
+        if (readonly)
+            throw new DomEx(DomEx.NO_MODIFICATION_ALLOWED_ERR);
     }
-    
+
     /**
      * <b>DOM:</b>  Returns null; overridden by subclasses as needed.
      */
-    public String getNodeValue ()
-	{ return null; }
-	
+    public String getNodeValue() {
+        return null;
+    }
+
     /**
      * <b>DOM:</b>  Returns null.
      * Overridden by subclasses which support children.
      */
-    public Node getFirstChild () { return null; }
-    
-    
+    public Node getFirstChild() {
+        return null;
+    }
+
+
     /**
      * <b>DOM:</b>  Returns zero.
      * Overridden by subclasses which support children.
      */
-    public int getLength () { return 0; }
+    public int getLength() {
+        return 0;
+    }
 
 
     /**
      * <b>DOM:</b>  Returns null.
      * Overridden by subclasses which support children.
      */
-    public Node item (int i) { return null; }
+    public Node item(int i) {
+        return null;
+    }
 
 
     /**
@@ -261,66 +267,75 @@ abstract class NodeBase
      * <P> In this implementation, nodes provide such access without
      * needing another node as an intermediary; "this" is returned.
      */
-    public NodeList           getChildNodes ()
-	{ return this; }
+    public NodeList getChildNodes() {
+        return this;
+    }
 
     /**
      * <b>DOM:</b>  returns null.
      * Overridden by subclasses which support children.
      */
-    public Node               getLastChild ()
-	{ return null; }
+    public Node getLastChild() {
+        return null;
+    }
 
     /**
      * <b>DOM:</b>  Throws a HIERARCHY_REQUEST_ERR DOMException.
      * Overridden by subclasses which support children.
-     * @exception DOMException thrown always.
+     *
+     * @throws DOMException thrown always.
      */
-    public Node appendChild (Node newChild)
-    throws DOMException
-	{ throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR); }
+    public Node appendChild(Node newChild)
+            throws DOMException {
+        throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+    }
 
     /**
      * <b>DOM:</b>  Throws a HIERARCHY_REQUEST_ERR DOMException.
      * Overridden by subclasses which support children.
-     * @exception DOMException thrown always.
+     *
+     * @throws DOMException thrown always.
      */
-    public Node insertBefore (Node newChild, Node refChild)
-    throws DOMException
-	{ throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR); }
+    public Node insertBefore(Node newChild, Node refChild)
+            throws DOMException {
+        throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+    }
 
     /**
      * <b>DOM:</b>  Throws a HIERARCHY_REQUEST_ERR DOMException.
      * Overridden by subclasses which support children.
-     * @exception DOMException thrown always.
+     *
+     * @throws DOMException thrown always.
      */
-    public Node replaceChild (Node newChild, Node refChild)
-    throws DOMException
-	{ throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR); }
+    public Node replaceChild(Node newChild, Node refChild)
+            throws DOMException {
+        throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+    }
 
     /**
      * <b>DOM:</b>  Throws a HIERARCHY_REQUEST_ERR DOMException.
      * Overridden by subclasses which support children.
-     * @exception DOMException thrown always.
+     *
+     * @throws DOMException thrown always.
      */
-    public Node removeChild (Node oldChild)
-    throws DOMException
-	{ throw new DomEx (DomEx.HIERARCHY_REQUEST_ERR); }
+    public Node removeChild(Node oldChild)
+            throws DOMException {
+        throw new DomEx(DomEx.HIERARCHY_REQUEST_ERR);
+    }
 
-    
+
     /**
      * <b>DOM:</b>  Returns the node immediately following this node in a
      * breadth first traversal of the tree, or null if there is no
      * such sibling.  In this implementation, sibling access from a
      * node is slower than indexed access from its parent.
      */
-    public Node getNextSibling ()
-    {
-	if (parent == null)
-	    return null;
-	if (parentIndex < 0 || parent.item (parentIndex) != this)
-	    parentIndex = parent.getIndexOf (this);
-	return parent.item (parentIndex + 1);
+    public Node getNextSibling() {
+        if (parent == null)
+            return null;
+        if (parentIndex < 0 || parent.item(parentIndex) != this)
+            parentIndex = parent.getIndexOf(this);
+        return parent.item(parentIndex + 1);
     }
 
     /**
@@ -329,24 +344,25 @@ abstract class NodeBase
      * such sibling.  In this implementation, sibling access from a
      * node is slower than indexed access from its parent.
      */
-    public Node getPreviousSibling ()
-    {
-	if (parent == null)
-	    return null;
-	if (parentIndex < 0 || parent.item (parentIndex) != this)
-	    parentIndex = parent.getIndexOf (this);
-	return parent.item (parentIndex - 1);
+    public Node getPreviousSibling() {
+        if (parent == null)
+            return null;
+        if (parentIndex < 0 || parent.item(parentIndex) != this)
+            parentIndex = parent.getIndexOf(this);
+        return parent.item(parentIndex - 1);
     }
 
     /**
      * <b>DOM:</b> returns null.
      * Overridden by the ElementNode2 subclass.
      */
-    public NamedNodeMap       getAttributes ()
-	{ return null; }
+    public NamedNodeMap getAttributes() {
+        return null;
+    }
 
     /**
      * <b>DOM2:</b> noop.
+     *
      * @since DOM Level 2
      * Overridden by subclasses that need to support normalization.
      */
@@ -355,6 +371,7 @@ abstract class NodeBase
 
     /**
      * <b>DOM2:</b>
+     *
      * @since DOM Level 2
      */
     public boolean isSupported(String feature, String version) {
@@ -383,7 +400,7 @@ abstract class NodeBase
      * Overridden by subclasses that support namespaces.
      */
     public void setPrefix(String prefix) throws DOMException {
-	throw new DomEx(DomEx.NAMESPACE_ERR);
+        throw new DomEx(DomEx.NAMESPACE_ERR);
     }
 
     /**
@@ -397,35 +414,37 @@ abstract class NodeBase
     /**
      * Returns whether this node (if it is an element) has any attributes.
      * Overridden by Element implementations
+     *
      * @since DOM Level 2
      */
     public boolean hasAttributes() {
         return false;
     }
 
-    public int getIndexOf (Node maybeChild)
-	{ return -1; }
+    public int getIndexOf(Node maybeChild) {
+        return -1;
+    }
 
     /*
      * Gets the messages from the resource bundles for the given messageId.
      */
-    String getMessage (String messageId) {
-   	return getMessage (messageId, null);
+    String getMessage(String messageId) {
+        return getMessage(messageId, null);
     }
 
     /*
      * Gets the messages from the resource bundles for the given messageId
      * after formatting it with the parameters passed to it.
      */
-    String getMessage (String messageId, Object[] parameters) {
+    String getMessage(String messageId, Object[] parameters) {
         Locale locale;
 
-	if (this instanceof XmlDocument)
-	    locale = ((XmlDocument)this).getLocale ();
-	else if (ownerDocument == null)
-	    locale = Locale.getDefault ();	// sigh
-	else
-	    locale = ownerDocument.getLocale ();
-	return XmlDocument.catalog.getMessage (locale, messageId, parameters);
+        if (this instanceof XmlDocument)
+            locale = ((XmlDocument) this).getLocale();
+        else if (ownerDocument == null)
+            locale = Locale.getDefault();    // sigh
+        else
+            locale = ownerDocument.getLocale();
+        return XmlDocument.catalog.getMessage(locale, messageId, parameters);
     }
 }

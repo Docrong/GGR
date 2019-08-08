@@ -20,9 +20,9 @@ public class XMLProperties {
 
     /**
      * Creates a new XMLProperties object.
-     * 
+     *
      * @parm file the full path the file that properties should be read from and
-     *       written to.
+     * written to.
      */
     public XMLProperties(String file) {
         this.file = new File(file);
@@ -32,8 +32,7 @@ public class XMLProperties {
             DataUnformatFilter format = new DataUnformatFilter();
             builder.setXMLFilter(format);
             doc = builder.build(new File(file));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.err.println("Error creating XML parser in "
                     + "PropertyManager.java");
             e.printStackTrace();
@@ -42,9 +41,8 @@ public class XMLProperties {
 
     /**
      * Returns the value of the specified property.
-     * 
-     * @param name
-     *            the name of the property to get.
+     *
+     * @param name the name of the property to get.
      * @return the value of the specified property.
      */
     public String getProperty(String name) {
@@ -68,8 +66,7 @@ public class XMLProperties {
         String value = element.getText();
         if ("".equals(value)) {
             return null;
-        }
-        else {
+        } else {
             // Add to cache so that getting property next time is fast.
             value = value.trim();
             propertyCache.put(name, value);
@@ -98,13 +95,11 @@ public class XMLProperties {
             String value = element.getText();
             if ("".equals(value)) {
                 return null;
-            }
-            else {
+            } else {
                 value = value.trim();
                 return value;
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
     }
@@ -128,13 +123,11 @@ public class XMLProperties {
             String value = element.getAttribute(Attribute).getValue();
             if ("".equals(value)) {
                 return null;
-            }
-            else {
+            } else {
                 value = value.trim();
                 return value;
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return null;
         }
     }
@@ -145,9 +138,8 @@ public class XMLProperties {
      * given the properties <tt>X.Y.A</tt>, <tt>X.Y.B</tt>, and
      * <tt>X.Y.C</tt>, then the child properties of <tt>X.Y</tt> are
      * <tt>A</tt>, <tt>B</tt>, and <tt>C</tt>.
-     * 
-     * @param parent
-     *            the name of the parent property.
+     *
+     * @param parent the name of the parent property.
      * @return all child property values for the given parent.
      */
     public String[] getChildrenProperties(String parent) {
@@ -159,7 +151,7 @@ public class XMLProperties {
             if (element == null) {
                 // This node doesn't match this part of the property name which
                 // indicates this property doesn't exist so return empty array.
-                return new String[] {};
+                return new String[]{};
             }
         }
         // We found matching property, return names of children.
@@ -175,11 +167,9 @@ public class XMLProperties {
     /**
      * Sets the value of the specified property. If the property doesn't
      * currently exist, it will be automatically created.
-     * 
-     * @param name
-     *            the name of the property to set.
-     * @param value
-     *            the new value for the property.
+     *
+     * @param name  the name of the property to set.
+     * @param value the new value for the property.
      */
     public void setProperty(String name, String value) {
         // Set cache correctly with prop name and value.
@@ -204,9 +194,8 @@ public class XMLProperties {
 
     /**
      * Deletes the specified property.
-     * 
-     * @param name
-     *            the property to delete.
+     *
+     * @param name the property to delete.
      */
     public void deleteProperty(String name) {
         String[] propName = parsePropertyName(name);
@@ -244,17 +233,14 @@ public class XMLProperties {
             XMLOutputter outputter = new XMLOutputter();
             out = new BufferedOutputStream(new FileOutputStream(tempFile));
             outputter.output(doc, out);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             // There were errors so abort replacing the old property file.
             error = true;
-        }
-        finally {
+        } finally {
             try {
                 out.close();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 error = true;
             }
@@ -274,9 +260,8 @@ public class XMLProperties {
      * Returns an array representation of the given Jive property. Jive
      * properties are always in the format "prop.name.is.this" which would be
      * represented as an array of four Strings.
-     * 
-     * @param name
-     *            the name of the Jive property.
+     *
+     * @param name the name of the Jive property.
      * @return an array representation of the given Jive property.
      */
     private String[] parsePropertyName(String name) {
@@ -301,11 +286,9 @@ public class XMLProperties {
 
     /**
      * ��ȡĳ�����Ե������Ե�ֵ
-     * 
-     * @param parent
-     *            ������
-     * @param post
-     *            λ��
+     *
+     * @param parent ������
+     * @param post   λ��
      * @return ����Hashtable
      */
     public Hashtable getChildrenPropertiesValue(String parent, int post) {

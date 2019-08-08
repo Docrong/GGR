@@ -12,15 +12,14 @@ import com.boco.eoms.sheet.base.service.ITaskService;
  * <p>
  * Fri Jun 12 09:08:01 CST 2009
  * </p>
- * 
+ *
  * @author yangwei
  * @version 3.5
- * 
  */
- 
- public interface ICommonChangeDeployTaskManager extends ITaskService {
- 
- }
+
+public interface ICommonChangeDeployTaskManager extends ITaskService {
+
+}
  
 
 

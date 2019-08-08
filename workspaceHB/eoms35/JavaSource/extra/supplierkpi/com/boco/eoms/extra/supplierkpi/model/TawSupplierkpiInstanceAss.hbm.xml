@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="Taw_Supplierkpi_InstanceAss"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="assessAttitude"
+                name="assessAttitude"
                 length="256"
                 not-null="false"
                 unique="false"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="assessLevel"
+                name="assessLevel"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="subRole"
+                name="subRole"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -54,7 +54,7 @@
         </property>
 
         <property
-            name="assessStatus"
+                name="assessStatus"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="assessTime"
+                name="assessTime"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -72,7 +72,7 @@
         </property>
 
         <property
-            name="instanceId"
+                name="instanceId"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -81,7 +81,7 @@
         </property>
 
         <property
-            name="realAssessor"
+                name="realAssessor"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -90,7 +90,7 @@
         </property>
 
         <property
-            name="serviceType"
+                name="serviceType"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -99,7 +99,7 @@
         </property>
 
         <property
-            name="specialType"
+                name="specialType"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -108,7 +108,7 @@
         </property>
 
         <property
-            name="supplierId"
+                name="supplierId"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -117,25 +117,25 @@
         </property>
 
         <property
-            name="timeLatitude"
+                name="timeLatitude"
                 length="50"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="degree"
+                name="degree"
                 length="100"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="year"
+                name="year"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -143,7 +143,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

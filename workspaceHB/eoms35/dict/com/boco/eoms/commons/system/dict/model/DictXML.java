@@ -12,10 +12,9 @@ import java.util.List;
  * <p>
  * Date:2007-10-24 10:44:08
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictXML implements IDict {
 
@@ -39,8 +38,7 @@ public class DictXML implements IDict {
     }
 
     /**
-     * @param description
-     *            the description to set
+     * @param description the description to set
      */
     public void setDescription(String description) {
         this.description = description;
@@ -54,8 +52,7 @@ public class DictXML implements IDict {
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -63,7 +60,7 @@ public class DictXML implements IDict {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.model.IDict#getDictDescription()
      */
     public String getDictDescription() {
@@ -72,20 +69,21 @@ public class DictXML implements IDict {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.model.IDict#getDictId()
      */
     public String getDictId() {
         return this.id;
     }
 
- 
+
     /**
      * @return the dictItems
      */
     public List getDictItems() {
         return dictItems;
     }
+
     /**
      * @param dictItems the dictItems to set
      */

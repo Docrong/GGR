@@ -15,24 +15,34 @@ import com.boco.eoms.sheet.base.model.BaseMain;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public interface IBaseKPIDAO extends Dao{
-	public abstract void setLink(BaseLink linkName);
-	public abstract BaseLink getLink();
-	public abstract void setMain(BaseMain mainName);
-	public abstract BaseMain getMain();
-	public abstract void setCollectPojo(BaseCollect collectPojoName);
-	public abstract BaseCollect getCollectPojo();
-	
-	public abstract List getBaseData(String startDate);
-	public abstract List getCollects();
-	public void saveOrUpdateAll(List list);
-	public void deleteData(String startDate);
-	
-	public String getMainName();
-	public String getLinkName();
-	public String getCollectName();
+public interface IBaseKPIDAO extends Dao {
+    public abstract void setLink(BaseLink linkName);
+
+    public abstract BaseLink getLink();
+
+    public abstract void setMain(BaseMain mainName);
+
+    public abstract BaseMain getMain();
+
+    public abstract void setCollectPojo(BaseCollect collectPojoName);
+
+    public abstract BaseCollect getCollectPojo();
+
+    public abstract List getBaseData(String startDate);
+
+    public abstract List getCollects();
+
+    public void saveOrUpdateAll(List list);
+
+    public void deleteData(String startDate);
+
+    public String getMainName();
+
+    public String getLinkName();
+
+    public String getCollectName();
 }

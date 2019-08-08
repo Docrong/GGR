@@ -22,10 +22,10 @@ public class TawRmRenewalDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String testcardId = "RxHoLbKtEhCvEyAbOgYeEbAjDnIxWlGb";
-        tawRmRenewal.setTestcardId(testcardId);        
+        tawRmRenewal.setTestcardId(testcardId);
 
         java.lang.String borrowerId = "RuEbJhJrRpGzUdDjXwQmWbGfQvZrBl";
-        tawRmRenewal.setBorrowerId(borrowerId);        
+        tawRmRenewal.setBorrowerId(borrowerId);
 
         dao.saveTawRmRenewal(tawRmRenewal);
 
@@ -54,9 +54,9 @@ public class TawRmRenewalDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String testcardId = "WlEeHjJtOiGsRfHqCaAfBxNbYdLkMhWi";
-        tawRmRenewal.setTestcardId(testcardId);        
+        tawRmRenewal.setTestcardId(testcardId);
         java.lang.String borrowerId = "SwDpFeDaHgDqOaRuDlCwFePyRoEhBb";
-        tawRmRenewal.setBorrowerId(borrowerId);        
+        tawRmRenewal.setBorrowerId(borrowerId);
 
         dao.saveTawRmRenewal(tawRmRenewal);
 

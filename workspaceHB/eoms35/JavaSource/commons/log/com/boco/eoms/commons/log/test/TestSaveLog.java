@@ -12,15 +12,15 @@ import com.boco.eoms.commons.log.webapp.bo.impl.TawCommonLog;
 
 public class TestSaveLog extends TestCase {
 
-	public void testSaveLog() {
+    public void testSaveLog() {
 
-		SimpleDateFormat dateformat = new SimpleDateFormat();
-		String str = dateformat.format(new Date());
-		TawCommonLog.saveLog(this, str, "192.168.0.1", "1102", "测试");
-		TawCommonLogOperatorManager logopermanager=(TawCommonLogOperatorManager) ApplicationContextHolder
-		.getInstance().getBean("tawCommonLogOperatorManager");
-		List list = logopermanager.getAllByUserIDs(str, "sucess");
-		assertTrue(list.size()>0);
-	}
+        SimpleDateFormat dateformat = new SimpleDateFormat();
+        String str = dateformat.format(new Date());
+        TawCommonLog.saveLog(this, str, "192.168.0.1", "1102", "测试");
+        TawCommonLogOperatorManager logopermanager = (TawCommonLogOperatorManager) ApplicationContextHolder
+                .getInstance().getBean("tawCommonLogOperatorManager");
+        List list = logopermanager.getAllByUserIDs(str, "sucess");
+        assertTrue(list.size() > 0);
+    }
 
 }

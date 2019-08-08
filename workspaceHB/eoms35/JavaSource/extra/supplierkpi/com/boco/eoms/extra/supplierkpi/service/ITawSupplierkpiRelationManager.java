@@ -15,6 +15,7 @@ public interface ITawSupplierkpiRelationManager extends Manager {
 
     /**
      * Gets tawSupplierkpiRelation's information based on id.
+     *
      * @param id the tawSupplierkpiRelation's id
      * @return tawSupplierkpiRelation populated tawSupplierkpiRelation object
      */
@@ -22,17 +23,22 @@ public interface ITawSupplierkpiRelationManager extends Manager {
 
     /**
      * Saves a tawSupplierkpiRelation's information
+     *
      * @param tawSupplierkpiRelation the object to be saved
      */
     public void saveTawSupplierkpiRelation(TawSupplierkpiRelation tawSupplierkpiRelation);
 
     /**
      * Removes a tawSupplierkpiRelation from the database by id
+     *
      * @param id the tawSupplierkpiRelation's id
      */
     public void removeTawSupplierkpiRelation(final String id);
+
     public Map getTawSupplierkpiRelations(final int curPage, final int pageSize);
+
     public Map getTawSupplierkpiRelations(final int curPage, final int pageSize, final String whereStr);
+
     public List getTawSupplierkpiRelationsByAssessInstanceId(final String assessInstanceId);
 }
 

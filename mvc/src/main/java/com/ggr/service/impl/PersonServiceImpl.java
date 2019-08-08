@@ -10,7 +10,7 @@ import com.ggr.service.PersonService;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    @Autowired(required=true)
+    @Autowired(required = true)
     private PersonRepository personRepository;
 
     public Long savePerson() {

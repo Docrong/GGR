@@ -2,6 +2,7 @@
 package com.boco.eoms.commons.db.containerpool;
 
 // java standard library
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -12,7 +13,7 @@ import com.boco.eoms.commons.loging.BocoLog;
 /**
  * Referenced classes of package com.boco.eoms.commons.db.containerpool:
  * JNDIDataSource, BocoDataSource, WebLogicDataSource, WebsphereDataSource
- * 
+ *
  * @author Sandy.wei
  * @version 3.5
  */
@@ -31,8 +32,7 @@ public class DataSourceManager {
     private DataSourceManager() {
         try {
             initDataSource();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, e.getMessage());
         }
     }
@@ -45,11 +45,9 @@ public class DataSourceManager {
         String _strContainerType = _objProp.getProperty("ContainerType");
         if (_strContainerType.equalsIgnoreCase("Tomcat")) {
             initTomcatDataSource();
-        }
-        else if (_strContainerType.equalsIgnoreCase("WebLogic")) {
+        } else if (_strContainerType.equalsIgnoreCase("WebLogic")) {
             initWeblogicDataSource();
-        }
-        else if (_strContainerType.equalsIgnoreCase("Websphere")) {
+        } else if (_strContainerType.equalsIgnoreCase("Websphere")) {
             initWebsphereDataSource();
         }
     }
@@ -64,8 +62,7 @@ public class DataSourceManager {
 
         try {
             ((JNDIDataSource) dataSource).init();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             dataSource = null;
             BocoLog.error(DataSourceManager.class, e.getMessage());
             throw new Exception("Config Error in Tomcat!");
@@ -88,8 +85,7 @@ public class DataSourceManager {
 
         try {
             ((WebLogicDataSource) dataSource).init();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             dataSource = null;
             BocoLog.error(DataSourceManager.class, e.getMessage());
             throw new Exception("Config Error in Weblogic!");
@@ -112,8 +108,7 @@ public class DataSourceManager {
 
         try {
             ((WebsphereDataSource) dataSource).init();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             dataSource = null;
             BocoLog.error(DataSourceManager.class, e.getMessage());
             throw new Exception("Config Error in Weblogic!");
@@ -130,7 +125,7 @@ public class DataSourceManager {
         }
         return instance;
     }
-    
+
     /**
      * @see 获取数据库连接
      */
@@ -139,8 +134,7 @@ public class DataSourceManager {
 
         if (dataSource == null) {
             throw new Exception("Cannot initialize datasource!");
-        }
-        else {
+        } else {
             _objReturn = dataSource.getConnection();
         }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,90 +13,88 @@
             table="EquipmentInstallation_main"
     >
 
-    <id
-        name="id"
-            column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="sheetId" />
-		<property name="title" />
-		<property name="sheetAcceptLimit" />
-		<property name="sheetCompleteLimit" />
-		<property name="sendTime" />
-		<property name="sendOrgType" />
-		<property name="sendUserId" />
-		<property name="sendDeptId" />
-		<property name="sendRoleId" />
-		<property name="sendContact" />
-		<property name="endTime" />
-		<property name="endResult" />
-		<property name="status" />
-		<property name="holdStatisfied" />
-		<property name="endUserId" />
-		<property name="endDeptId" />
-		<property name="endRoleId" />
-		<property name="deleted" />
-		<property name="piid" />
-		<property name="parentSheetName" />
-		<property name="parentSheetId" />
-		<property name="sheetTemplateName" />
-		<property name="sheetAccessories" />
-		<property name="correlationKey" />
-		<property name="parentCorrelation" />
-		<property name="toDeptId" />
-		<property name="templateFlag" />
-		<property name="cancelReason" />
-		<property name="sendYear" />
-		<property name="sendMonth" />
-		<property name="sendDay" />
-		<property name="invokeMode" />
-		<property name="parentPhaseName" />
-		<property name="sendObject" />
-    
-   
-   
-	
-		<property  name="mainComplaintSheetId" />				 				 	
- 	
-		<property  name="mainComplainter" />				 				 	
- 	
-		<property  name="mainComplaintNum" />				 				 	
- 	
-		<property  name="mainUserStar" />				 				 	
- 	
-		<property  name="mainEquipmentType" />				 				 	
- 	
-		<property  name="mainCity" />				 				 	
- 	
-		<property  name="mainAddress" />				 				 	
- 	
-		<property  name="mainComplaintReasons" />				 				 	
- 	
-		<property  name="mainDescr" />				 				 	
- 	
-		<property  name="mainTypicalScenario" />				 				 	
- 	
-		<property  name="mainChildScenario" />				 				 	
- 	
-		<property  name="mainIsEquipmentFee" />				 				 	
- 	
-		<property  name="mainSignPhoto" />				 				 	
- 	
-		<property  name="mainReserved1" />				 				 	
- 	
-		<property  name="mainReserved2" />				 				 	
- 	
-		<property  name="mainReserved3" />				 				 	
- 	
-		<property  name="mainReserved4" />				 				 	
- 	
-		<property  name="mainReserved5" />				 				 	
- 
-</class>    
+        </id>
+        <property name="sheetId"/>
+        <property name="title"/>
+        <property name="sheetAcceptLimit"/>
+        <property name="sheetCompleteLimit"/>
+        <property name="sendTime"/>
+        <property name="sendOrgType"/>
+        <property name="sendUserId"/>
+        <property name="sendDeptId"/>
+        <property name="sendRoleId"/>
+        <property name="sendContact"/>
+        <property name="endTime"/>
+        <property name="endResult"/>
+        <property name="status"/>
+        <property name="holdStatisfied"/>
+        <property name="endUserId"/>
+        <property name="endDeptId"/>
+        <property name="endRoleId"/>
+        <property name="deleted"/>
+        <property name="piid"/>
+        <property name="parentSheetName"/>
+        <property name="parentSheetId"/>
+        <property name="sheetTemplateName"/>
+        <property name="sheetAccessories"/>
+        <property name="correlationKey"/>
+        <property name="parentCorrelation"/>
+        <property name="toDeptId"/>
+        <property name="templateFlag"/>
+        <property name="cancelReason"/>
+        <property name="sendYear"/>
+        <property name="sendMonth"/>
+        <property name="sendDay"/>
+        <property name="invokeMode"/>
+        <property name="parentPhaseName"/>
+        <property name="sendObject"/>
+
+
+        <property name="mainComplaintSheetId"/>
+
+        <property name="mainComplainter"/>
+
+        <property name="mainComplaintNum"/>
+
+        <property name="mainUserStar"/>
+
+        <property name="mainEquipmentType"/>
+
+        <property name="mainCity"/>
+
+        <property name="mainAddress"/>
+
+        <property name="mainComplaintReasons"/>
+
+        <property name="mainDescr"/>
+
+        <property name="mainTypicalScenario"/>
+
+        <property name="mainChildScenario"/>
+
+        <property name="mainIsEquipmentFee"/>
+
+        <property name="mainSignPhoto"/>
+
+        <property name="mainReserved1"/>
+
+        <property name="mainReserved2"/>
+
+        <property name="mainReserved3"/>
+
+        <property name="mainReserved4"/>
+
+        <property name="mainReserved5"/>
+
+    </class>
 </hibernate-mapping>

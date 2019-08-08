@@ -10,16 +10,20 @@ import com.boco.eoms.workbench.networkcalendar.model.Schedule;
 
 
 public interface NetworkcalendarDao {
-//	public Map getMonitoringLog(final Integer curPage, final Integer pageSize,InterfaceMonitoringForm form);
+    //	public Map getMonitoringLog(final Integer curPage, final Integer pageSize,InterfaceMonitoringForm form);
 //		
 //	public InterfaceMonitoring getInterfaceMonitoring(final String id); 
-	public String save(Schedule schedule);
-	public Map getNetworkcalendarList(final Integer curPage, final Integer pageSize,
-			String date,String userId); 
-	public void removeSchedule(Schedule schedule);
-	public Schedule getSchedule(String id);
-	public Map getNetworkcalendarHistoryList(final Integer curPage,
-			final Integer pageSize, String date,String userId);
+    public String save(Schedule schedule);
+
+    public Map getNetworkcalendarList(final Integer curPage, final Integer pageSize,
+                                      String date, String userId);
+
+    public void removeSchedule(Schedule schedule);
+
+    public Schedule getSchedule(String id);
+
+    public Map getNetworkcalendarHistoryList(final Integer curPage,
+                                             final Integer pageSize, String date, String userId);
 
 
 }

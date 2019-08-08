@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_rm_fault_common"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="sequenceNo"
-            	column="sequence_no"
+        <property
+                name="sequenceNo"
+                column="sequence_no"
                 length="50"
                 not-null="false"
                 unique="true"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="title"
-            	column="title"
+        <property
+                name="title"
+                column="title"
                 length="255"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="greffier"
-            	column="greffier"
+        <property
+                name="greffier"
+                column="greffier"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="declarer"
-            	column="declarer"
+        <property
+                name="declarer"
+                column="declarer"
                 length="200"
                 not-null="false"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="isAppEffect"
-            	column="is_app_effect"
+        <property
+                name="isAppEffect"
+                column="is_app_effect"
                 length="4"
                 not-null="false"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="isFirstFind"
-            	column="is_first_find"
+        <property
+                name="isFirstFind"
+                column="is_first_find"
                 length="3"
                 not-null="false"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="beginTime"
-            	column="begin_time"
+        <property
+                name="beginTime"
+                column="begin_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="endTime"
-            	column="end_time"
+        <property
+                name="endTime"
+                column="end_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="resumeTime"
-            	column="resume_time"
+        <property
+                name="resumeTime"
+                column="resume_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -116,9 +116,9 @@
 
         </property>
 
-	<property
-            name="reportTime"
-            	column="report_time"
+        <property
+                name="reportTime"
+                column="report_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -126,9 +126,9 @@
 
         </property>
 
-	<property
-            name="linkPhone"
-            	column="link_phone"
+        <property
+                name="linkPhone"
+                column="link_phone"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -136,19 +136,19 @@
 
         </property>
 
-	<property
-            name="faultAddress"
-            	column="fault_address"
+        <property
+                name="faultAddress"
+                column="fault_address"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    <property
-            name="faultAddressId"
-            	column="fault_address_id"
+
+        <property
+                name="faultAddressId"
+                column="fault_address_id"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -156,9 +156,9 @@
 
         </property>
 
-	<property
-            name="faultPhenomenon"
-            	column="fault_phenomenon"
+        <property
+                name="faultPhenomenon"
+                column="fault_phenomenon"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -166,9 +166,9 @@
 
         </property>
 
-	<property
-            name="appEffect"
-            	column="app_effect"
+        <property
+                name="appEffect"
+                column="app_effect"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -176,9 +176,9 @@
 
         </property>
 
-	<property
-            name="faultCause"
-            	column="fault_cause"
+        <property
+                name="faultCause"
+                column="fault_cause"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -186,9 +186,9 @@
 
         </property>
 
-	<property
-            name="faultComment"
-            	column="fault_comment"
+        <property
+                name="faultComment"
+                column="fault_comment"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -196,9 +196,9 @@
 
         </property>
 
-	<property
-            name="dealDetail"
-            	column="deal_detail"
+        <property
+                name="dealDetail"
+                column="deal_detail"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -206,9 +206,9 @@
 
         </property>
 
-	<property
-            name="typeId"
-            	column="type_id"
+        <property
+                name="typeId"
+                column="type_id"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -216,9 +216,9 @@
 
         </property>
 
-	<property
-            name="serialNos"
-            	column="serial_nos"
+        <property
+                name="serialNos"
+                column="serial_nos"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -226,9 +226,9 @@
 
         </property>
 
-	<property
-            name="upSerialNo"
-            	column="up_serial_no"
+        <property
+                name="upSerialNo"
+                column="up_serial_no"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -236,9 +236,9 @@
 
         </property>
 
-	<property
-            name="informOfficeTime"
-            	column="inform_office_time"
+        <property
+                name="informOfficeTime"
+                column="inform_office_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -246,9 +246,9 @@
 
         </property>
 
-	<property
-            name="issueUser"
-            	column="issue_user"
+        <property
+                name="issueUser"
+                column="issue_user"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -256,9 +256,9 @@
 
         </property>
 
-	<property
-            name="issueTime"
-            	column="issue_time"
+        <property
+                name="issueTime"
+                column="issue_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -266,9 +266,9 @@
 
         </property>
 
-	<property
-            name="inputTime"
-            	column="input_time"
+        <property
+                name="inputTime"
+                column="input_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -276,9 +276,9 @@
 
         </property>
 
-	<property
-            name="inputUser"
-            	column="input_user"
+        <property
+                name="inputUser"
+                column="input_user"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -286,9 +286,9 @@
 
         </property>
 
-	<property
-            name="estate"
-            	column="estate"
+        <property
+                name="estate"
+                column="estate"
                 length="2"
                 not-null="false"
                 unique="false"
@@ -296,9 +296,9 @@
 
         </property>
 
-	<property
-            name="recordPerId"
-            	column="record_per_id"
+        <property
+                name="recordPerId"
+                column="record_per_id"
                 length="2"
                 not-null="false"
                 unique="false"
@@ -306,9 +306,9 @@
 
         </property>
 
-	<property
-            name="roomId"
-            	column="room_id"
+        <property
+                name="roomId"
+                column="room_id"
                 length="2"
                 not-null="false"
                 unique="false"
@@ -316,9 +316,9 @@
 
         </property>
 
-	<property
-            name="serialno"
-            	column="serialno"
+        <property
+                name="serialno"
+                column="serialno"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -326,9 +326,9 @@
 
         </property>
 
-	<property
-            name="timeSlot"
-            	column="time_slot"
+        <property
+                name="timeSlot"
+                column="time_slot"
                 length="2"
                 not-null="false"
                 unique="false"
@@ -336,9 +336,9 @@
 
         </property>
 
-	<property
-            name="resumeTimeSlot"
-            	column="resume_time_slot"
+        <property
+                name="resumeTimeSlot"
+                column="resume_time_slot"
                 length="2"
                 not-null="false"
                 unique="false"
@@ -346,9 +346,9 @@
 
         </property>
 
-	<property
-            name="fromBeginTime"
-            	column="from_begin_time"
+        <property
+                name="fromBeginTime"
+                column="from_begin_time"
                 length="25"
                 not-null="false"
                 unique="true"
@@ -356,16 +356,16 @@
 
         </property>
 
-	<property
-            name="toBeginTime"
-            	column="to_begin_time"
+        <property
+                name="toBeginTime"
+                column="to_begin_time"
                 length="25"
                 not-null="false"
                 unique="true"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

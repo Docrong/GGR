@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_netdisk_foldermapping"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="folderName"
-            	column="folder_name"
+                name="folderName"
+                column="folder_name"
                 length="255"
                 not-null="false"
                 unique="false"
@@ -37,18 +37,18 @@
         </property>
 
         <property
-            name="userId"
-            	column="user_id"
+                name="userId"
+                column="user_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="parentId"
-            	column="parent_id"
+                name="parentId"
+                column="parent_id"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -56,7 +56,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

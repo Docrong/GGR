@@ -12,24 +12,25 @@ import com.boco.eoms.sheet.base.kpi.dao.ICollectColumnQuery;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class CollectColumnQuery extends BaseDaoHibernate{
-	private ICollectColumnQuery columnQuery = null;
-	private static CollectColumnQuery instance= null;
-	
-	public static CollectColumnQuery getInstance(){
-		if(instance==null)
-			instance = new CollectColumnQuery();
-		return instance;
-	}
-	private CollectColumnQuery(){
-		columnQuery = (ICollectColumnQuery) ApplicationContextHolder.getInstance().getBean("ICollectColumnQuery");
-	}
-	
-	public String getValue(CollectColumn column,String mainName,String linkName,String mainId){
-		return columnQuery.getValue(column,mainName,linkName,mainId);
-	}
+public class CollectColumnQuery extends BaseDaoHibernate {
+    private ICollectColumnQuery columnQuery = null;
+    private static CollectColumnQuery instance = null;
+
+    public static CollectColumnQuery getInstance() {
+        if (instance == null)
+            instance = new CollectColumnQuery();
+        return instance;
+    }
+
+    private CollectColumnQuery() {
+        columnQuery = (ICollectColumnQuery) ApplicationContextHolder.getInstance().getBean("ICollectColumnQuery");
+    }
+
+    public String getValue(CollectColumn column, String mainName, String linkName, String mainId) {
+        return columnQuery.getValue(column, mainName, linkName, mainId);
+    }
 }

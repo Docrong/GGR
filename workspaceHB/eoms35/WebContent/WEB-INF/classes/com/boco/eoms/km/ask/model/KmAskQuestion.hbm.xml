@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_ASK_QUESTION"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="name"
-            	column="NAME"
+        <property
+                name="name"
+                column="NAME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="question"
-            	column="QUESTION"
+        <property
+                name="question"
+                column="QUESTION"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="speciality"
-            	column="SPECIALITY"
+        <property
+                name="speciality"
+                column="SPECIALITY"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="answerCount"
-            	column="ANSWER_COUNT"
+        <property
+                name="answerCount"
+                column="ANSWER_COUNT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="questionStatus"
-            	column="QUESTION_STATUS"
+        <property
+                name="questionStatus"
+                column="QUESTION_STATUS"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="askUser"
-            	column="ASK_USER"
+        <property
+                name="askUser"
+                column="ASK_USER"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="askDept"
-            	column="ASK_DEPT"
+        <property
+                name="askDept"
+                column="ASK_DEPT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="askTime"
-            	column="ASK_TIME"
+        <property
+                name="askTime"
+                column="ASK_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="score"
-            	column="SCORE"
+        <property
+                name="score"
+                column="SCORE"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -116,9 +116,9 @@
 
         </property>
 
-	<property
-            name="questionSupply"
-            	column="QUESTION_SUPPLY"
+        <property
+                name="questionSupply"
+                column="QUESTION_SUPPLY"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -126,9 +126,9 @@
 
         </property>
 
-	<property
-            name="userfulTime"
-            	column="USERFUL_TIME"
+        <property
+                name="userfulTime"
+                column="USERFUL_TIME"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -136,9 +136,9 @@
 
         </property>
 
-	<property
-            name="isAddScore"
-            	column="IS_ADD_SCORE"
+        <property
+                name="isAddScore"
+                column="IS_ADD_SCORE"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -146,9 +146,9 @@
 
         </property>
 
-	<property
-            name="isClosed"
-            	column="IS_CLOSED"
+        <property
+                name="isClosed"
+                column="IS_CLOSED"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -156,9 +156,9 @@
 
         </property>
 
-	<property
-            name="isAnonymity"
-            	column="IS_ANONYMITY"
+        <property
+                name="isAnonymity"
+                column="IS_ANONYMITY"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -166,8 +166,8 @@
 
         </property>
 
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

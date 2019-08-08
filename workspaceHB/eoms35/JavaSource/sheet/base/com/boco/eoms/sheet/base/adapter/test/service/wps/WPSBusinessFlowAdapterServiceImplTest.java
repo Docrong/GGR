@@ -19,15 +19,13 @@ import com.boco.eoms.sheet.base.adapter.service.IBusinessFlowAdapterService;
  * <p>
  * Date:2007-8-24 16:20:09
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class WPSBusinessFlowAdapterServiceImplTest extends ConsoleTestCase {
 
     IBusinessFlowAdapterService service;
-
 
 
     public void testGetWorkflowManager() {
@@ -236,24 +234,22 @@ public class WPSBusinessFlowAdapterServiceImplTest extends ConsoleTestCase {
     public void testGetActivityInstanceId() {
     }
 
-    public void testTransferIdFormActionToDB(){
-      try{
-    	String tkid=service.transferIdFormActionToDB("_TKI:a01b0117.86fec5b1.f5fe573f.74e1054c");
-      }
-      catch (Exception e){
-      	
-      }
-    	
+    public void testTransferIdFormActionToDB() {
+        try {
+            String tkid = service.transferIdFormActionToDB("_TKI:a01b0117.86fec5b1.f5fe573f.74e1054c");
+        } catch (Exception e) {
+
+        }
+
     }
-	
-    public void testTransferIdFromDBToAction(){
-        try{
-      	String tkid=service.transferIdFromDBToAction("oBsBF4b+xbH1/lc/dOEFTA==");
+
+    public void testTransferIdFromDBToAction() {
+        try {
+            String tkid = service.transferIdFromDBToAction("oBsBF4b+xbH1/lc/dOEFTA==");
+        } catch (Exception e) {
+
         }
-        catch (Exception e){
-        	
-        }
-      	
-      }
-    
+
+    }
+
 }

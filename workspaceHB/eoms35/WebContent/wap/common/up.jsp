@@ -7,27 +7,27 @@
 <wml>
     <card>
         <p>
-<%
-    try {
-        String path = request.getSession().getServletContext().getRealPath("/");
-        out.println(path);
-    	out.println(request.getParameterMap());
-        fUpload.setSizeMax(1000000);
-        fUpload.setFileItemFactory(new org.apache.commons.fileupload.disk.DiskFileItemFactory());
-        java.util.List items = fUpload.parseRequest(new ServletRequestContext(request));
-        for(int i=1;i<items.size()-1;i++){
-       
-        FileItem fi = (FileItem) items.get(i);
-        File uploadFile = new File(path+"/"+fi.getName());
-        fi.write(uploadFile);
-        
-      }
-        out.println(request.getSession().getServletContext().getRealPath("/"));
-    } catch (Exception ex) {
-        ex.printStackTrace(System.out);
-        out.println("ERROR~!"+ex);
-    }
-%>
+            <%
+                try {
+                    String path = request.getSession().getServletContext().getRealPath("/");
+                    out.println(path);
+                    out.println(request.getParameterMap());
+                    fUpload.setSizeMax(1000000);
+                    fUpload.setFileItemFactory(new org.apache.commons.fileupload.disk.DiskFileItemFactory());
+                    java.util.List items = fUpload.parseRequest(new ServletRequestContext(request));
+                    for (int i = 1; i < items.size() - 1; i++) {
+
+                        FileItem fi = (FileItem) items.get(i);
+                        File uploadFile = new File(path + "/" + fi.getName());
+                        fi.write(uploadFile);
+
+                    }
+                    out.println(request.getSession().getServletContext().getRealPath("/"));
+                } catch (Exception ex) {
+                    ex.printStackTrace(System.out);
+                    out.println("ERROR~!" + ex);
+                }
+            %>
         </p>
-   </card>
-    </wml>
+    </card>
+</wml>

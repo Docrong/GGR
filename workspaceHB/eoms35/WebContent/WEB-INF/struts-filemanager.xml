@@ -1,68 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE struts-config PUBLIC
-          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
-          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+        "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
 <struts-config>
     <form-beans>
         <form-bean name="InfoTypeMenuForm" type="com.boco.eoms.filemanager.topic.form.InfoTypeMenuForm"/>
         <form-bean name="InfoTypeDetailForm" type="com.boco.eoms.filemanager.topic.form.InfoTypeDetailForm"/>
-         <form-bean name="SchemeMgrForm" type="com.boco.eoms.filemanager.form.SchemeMgrForm"/>
-         <form-bean name="ReportMgrForm" type="com.boco.eoms.filemanager.form.ReportMgrForm"/>
-         <form-bean name="StatForm" type="com.boco.eoms.filemanager.form.StatForm"/>
-         <form-bean name="SearchListForm" type="com.boco.eoms.filemanager.form.SearchListForm"/>
+        <form-bean name="SchemeMgrForm" type="com.boco.eoms.filemanager.form.SchemeMgrForm"/>
+        <form-bean name="ReportMgrForm" type="com.boco.eoms.filemanager.form.ReportMgrForm"/>
+        <form-bean name="StatForm" type="com.boco.eoms.filemanager.form.StatForm"/>
+        <form-bean name="SearchListForm" type="com.boco.eoms.filemanager.form.SearchListForm"/>
     </form-beans>
     <global-forwards>
         <forward name="InfoTypeMenuAction" path="/topic/InfoTypeMenuAction.do"/>
         <forward name="InfoTypeDetailAction" path="/topic/InfoTypeDetailAction.do"/>
-        <forward name="success" path="/common/success.jsp" redirect="false" contextRelative="true" />
-   		<forward name="fail" path="/common/fail.jsp" redirect="false" contextRelative="true" />
-   		<forward name="nopriv" path="/common/nopriv.jsp" redirect="false" contextRelative="true" />
+        <forward name="success" path="/common/success.jsp" redirect="false" contextRelative="true"/>
+        <forward name="fail" path="/common/fail.jsp" redirect="false" contextRelative="true"/>
+        <forward name="nopriv" path="/common/nopriv.jsp" redirect="false" contextRelative="true"/>
     </global-forwards>
     <action-mappings>
-        <action path="/topic/InfoTypeMenuAction" type="com.boco.eoms.filemanager.topic.action.InfoTypeMenuAction" name="InfoTypeMenuForm" scope="request" validate="true" input="index.jsp"/>
-        <action path="/topic/InfoTypeDetailAction" type="com.boco.eoms.filemanager.topic.action.InfoTypeDetailAction" name="InfoTypeDetailForm" scope="request" validate="true" input="index.jsp">
-          <forward name="detail" path="/topic/document.jsp"/>
-          <forward name="onlyTopic" path="/topic/document.jsp"/>
+        <action path="/topic/InfoTypeMenuAction" type="com.boco.eoms.filemanager.topic.action.InfoTypeMenuAction"
+                name="InfoTypeMenuForm" scope="request" validate="true" input="index.jsp"/>
+        <action path="/topic/InfoTypeDetailAction" type="com.boco.eoms.filemanager.topic.action.InfoTypeDetailAction"
+                name="InfoTypeDetailForm" scope="request" validate="true" input="index.jsp">
+            <forward name="detail" path="/topic/document.jsp"/>
+            <forward name="onlyTopic" path="/topic/document.jsp"/>
         </action>
-     <action path="/scheme/SchemeMgrAction" type="com.boco.eoms.filemanager.action.SchemeMgrAction" name="SchemeMgrForm" scope="request" input="schemeAdd.jsp" >
+        <action path="/scheme/SchemeMgrAction" type="com.boco.eoms.filemanager.action.SchemeMgrAction"
+                name="SchemeMgrForm" scope="request" input="schemeAdd.jsp">
             <forward name="add" path="/scheme/schemeAdd.jsp"/>
             <forward name="prepareAdd" path="/scheme/SchemeMgrAction.do?act=add"/>
             <forward name="edit" path="/scheme/schemeEdit.jsp"/>
-			<forward name="list" path="/scheme/schemeList.jsp" />
-			<forward name="prepareList" path="/scheme/SchemeMgrAction.do?act=list" />
+            <forward name="list" path="/scheme/schemeList.jsp"/>
+            <forward name="prepareList" path="/scheme/SchemeMgrAction.do?act=list"/>
             <forward name="failure" path="/scheme/blank.jsp"/>
-            <forward name="prepareView" path="/scheme/SchemeMgrAction.do?act=view" />
-			<forward name="view" path="/scheme/schemeView.jsp" />
-			<forward name="getNodeList" path=""></forward>
-     </action>
-     <action path="/StatReportMgrAction" type="com.boco.eoms.filemanager.action.StatReportMgrAction" name="StatForm" scope="request" >
+            <forward name="prepareView" path="/scheme/SchemeMgrAction.do?act=view"/>
+            <forward name="view" path="/scheme/schemeView.jsp"/>
+            <forward name="getNodeList" path=""></forward>
+        </action>
+        <action path="/StatReportMgrAction" type="com.boco.eoms.filemanager.action.StatReportMgrAction" name="StatForm"
+                scope="request">
             <forward name="input" path="/statInput.jsp"/>
             <forward name="result" path="/statResult.jsp"/>
-     </action>
-     <action path="/ReportMgrAction" type="com.boco.eoms.filemanager.action.ReportMgrAction" name="ReportMgrForm" parameter="method" scope="request" input="index.jsp">
-            <forward name="add" path="/fileMgrAdd.jsp"/> 
+        </action>
+        <action path="/ReportMgrAction" type="com.boco.eoms.filemanager.action.ReportMgrAction" name="ReportMgrForm"
+                parameter="method" scope="request" input="index.jsp">
+            <forward name="add" path="/fileMgrAdd.jsp"/>
             <forward name="edit" path="/scheme/schemeEdit.jsp"/>
-			<forward name="allFileView" path="/reportAllFileView.jsp" />
-			<forward name="auditFileView" path="/auditAllFileView.jsp" />
-			<forward name="prepareList" path="/ReportMgrAction.do?act=list" />
-			<forward name="prepareAdd" path="/ReportMgrAction.do?act=add" />
-			<forward name="CollectReportList" path="/collectReportList.jsp" />
-			<forward name="AuditReportList" path="/auditReportList.jsp" />
-			<forward name="SeparateReportList" path="/separateReportList.jsp" />
-			<forward name="NewReportList" path="/newReportList.jsp" />
+            <forward name="allFileView" path="/reportAllFileView.jsp"/>
+            <forward name="auditFileView" path="/auditAllFileView.jsp"/>
+            <forward name="prepareList" path="/ReportMgrAction.do?act=list"/>
+            <forward name="prepareAdd" path="/ReportMgrAction.do?act=add"/>
+            <forward name="CollectReportList" path="/collectReportList.jsp"/>
+            <forward name="AuditReportList" path="/auditReportList.jsp"/>
+            <forward name="SeparateReportList" path="/separateReportList.jsp"/>
+            <forward name="NewReportList" path="/newReportList.jsp"/>
             <forward name="failure" path="/scheme/blank.jsp"/>
-            <forward name="prepareView" path="/ReportMgrAction.do?act=allFileView" />
-            <forward name="prepareAuditView" path="/ReportMgrAction.do?act=auditFileView" />
-            <forward name="prepareSeparateList" path="/ReportMgrAction.do?act=SeparateReportList" />
-            <forward name="auditInfoList" path="/auditInfoList.jsp" />
-            <forward name="overtimeQuery" path="/search/overtimeQuery.jsp" />
-            <forward name="overtimeList" path="/search/overtimeList.jsp" />
-     </action>
-     <action path="/OvertimeAction" type="com.boco.eoms.filemanager.action.ReportMgrAction" name="SearchListForm" scope="request" >
-            <forward name="overtimeQuery" path="/search/overtimeQuery.jsp" />
-            <forward name="overtimeList" path="/search/overtimeList.jsp" />
-     </action>
+            <forward name="prepareView" path="/ReportMgrAction.do?act=allFileView"/>
+            <forward name="prepareAuditView" path="/ReportMgrAction.do?act=auditFileView"/>
+            <forward name="prepareSeparateList" path="/ReportMgrAction.do?act=SeparateReportList"/>
+            <forward name="auditInfoList" path="/auditInfoList.jsp"/>
+            <forward name="overtimeQuery" path="/search/overtimeQuery.jsp"/>
+            <forward name="overtimeList" path="/search/overtimeList.jsp"/>
+        </action>
+        <action path="/OvertimeAction" type="com.boco.eoms.filemanager.action.ReportMgrAction" name="SearchListForm"
+                scope="request">
+            <forward name="overtimeQuery" path="/search/overtimeQuery.jsp"/>
+            <forward name="overtimeList" path="/search/overtimeList.jsp"/>
+        </action>
     </action-mappings>
 </struts-config>
 

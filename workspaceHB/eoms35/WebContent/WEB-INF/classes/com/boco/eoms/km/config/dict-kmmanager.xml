@@ -1,161 +1,161 @@
 <?xml version="1.0" encoding="GBK"?>
 <dicts description="知识管理文件">
-	<dict id="fileGrade" description="文件等级">
-		<item id="1" name="一级" description="一级" />
-		<item id="2" name="二级" description="二级" />
-		<item id="3" name="三级" description="三级" />
-		<item id="4" name="四级" description="四级" />
-		<item id="5" name="五级" description="五级" />
-	</dict>
-	
-	<dict id="colType" description="字段类型">
-		<item id="1" name="普通文本" description="12" />
-		<item id="2" name="大文本域" description="12" />
-		<item id="3" name="数字类型" description="4" />
-		<item id="4" name="日期时间" description="91" />
-		<item id="5" name="单选字典" description="12" />
-<!--  	
-		<item id="6" name="多选字典" description="12" />
--->
-		<item id="7" name="附件上传" description="12" />
-	</dict>
-	
-	<dict id="colDictType" description="绑定类型">
-		<item id="0" name="不绑定" description="不绑定" />
-		<item id="1" name="普通字典" description="普通字典" />
-<!--		
-		<item id="2" name="知识字典" description="知识字典" />
-		<item id="3" name="文件字典" description="文件字典" />
-		<item id="4" name="树状字典" description="树状字典" />
--->
-	</dict>
-	
-	<dict id="isOrNot" description="是否">
-		<item id="0" name="否" description="否" />
-		<item id="1" name="是" description="是" />
-	</dict>
+    <dict id="fileGrade" description="文件等级">
+        <item id="1" name="一级" description="一级"/>
+        <item id="2" name="二级" description="二级"/>
+        <item id="3" name="三级" description="三级"/>
+        <item id="4" name="四级" description="四级"/>
+        <item id="5" name="五级" description="五级"/>
+    </dict>
 
-	<dict id="trainGrade" description="培训等级">
-		<item id="1" name="初级" description="初级" />
-		<item id="2" name="中级" description="中级" />
-		<item id="3" name="高级" description="高级" />
-	</dict>
+    <dict id="colType" description="字段类型">
+        <item id="1" name="普通文本" description="12"/>
+        <item id="2" name="大文本域" description="12"/>
+        <item id="3" name="数字类型" description="4"/>
+        <item id="4" name="日期时间" description="91"/>
+        <item id="5" name="单选字典" description="12"/>
+        <!--
+                <item id="6" name="多选字典" description="12" />
+        -->
+        <item id="7" name="附件上传" description="12"/>
+    </dict>
 
-	<dict id="contentStatus" description="知识状态（字典）">
-		<item id="1" name="草稿" description="草稿" />
-		<item id="2" name="有效" description="有效" />
-		<item id="3" name="失效" description="失效" />
-		<item id="4" name="删除" description="删除" />
-		<item id="5" name="主管审核" description="主管审核" />
-		<item id="6" name="审核角色审核" description="审核角色审核" />
-		<item id="7" name="返回主管审核" description="返回主管审核" />
-	</dict>
+    <dict id="colDictType" description="绑定类型">
+        <item id="0" name="不绑定" description="不绑定"/>
+        <item id="1" name="普通字典" description="普通字典"/>
+        <!--
+                <item id="2" name="知识字典" description="知识字典" />
+                <item id="3" name="文件字典" description="文件字典" />
+                <item id="4" name="树状字典" description="树状字典" />
+        -->
+    </dict>
 
-	<dict id="rolestrFlag" description="知识等级（字典）">
-		<item id="1" name="一级" description="一级" />
-		<item id="2" name="二级" description="二级" />
-		<item id="3" name="三级" description="三级" />
-		<item id="4" name="四级" description="四级" />
-		<item id="5" name="五级" description="五级" />
-	</dict>
-	
-	<dict id="opinionGrade" description="知识评星（字典）">
-		<item id="1" name="一星" description="一星" />
-		<item id="2" name="二星" description="二星" />
-		<item id="3" name="三星" description="三星" />
-		<item id="4" name="四星" description="四星" />
-		<item id="5" name="五星" description="五星" />
-	</dict>
+    <dict id="isOrNot" description="是否">
+        <item id="0" name="否" description="否"/>
+        <item id="1" name="是" description="是"/>
+    </dict>
 
-	<dict id="levelFlag" description="难易程度（字典）">
-		<item id="1" name="简单" description="简单" />
-		<item id="2" name="一般" description="一般" />
-		<item id="3" name="困难" description="困难" />
-	</dict>	
-	
-	<dict id="subscribe" description="订阅条件（字典）">
-		<item id="1" name="根据创建人" description="根据创建人" />
-		<item id="2" name="根据模型" description="根据模型" />
-	</dict>
-	
-	<dict id="specialty" description="专业类型">
-		<item id="1" name="交换" description="交换" />
-		<item id="2" name="传输" description="传输" />
-	</dict>
-	
-	<dict id="auditState" description="审核状态">
-		<item id="1" name="提交主管审核" description="提交主管审核" />
-		<item id="2" name="提交审核角色审核" description="提交审核角色审核" />
-		<item id="3" name="返回主管审核" description="返回主管审核" />
-		<item id="4" name="主管审核不通过" description="主管审核不通过" />
-		<item id="0" name="主管审核通过" description="主管审核通过" />
-	</dict>
-	
-	<dict id="auditResult" description="审核结果">
-		<item id="0" name="不通过" description="不通过" />
-		<item id="1" name="通过" description="通过" />
-	</dict>	
-	
-	<dict id="questionType" description="问题类型">
-		<item id="1" name="单选题" description="单选题" />
-		<item id="2" name="多选题" description="多选题" />
-		<item id="3" name="判断题" description="判断题" />
-		<item id="4" name="填空题" description="填空题" />
-		<item id="5" name="简答题" description="简答题" />
-	</dict>	
-	
-	<dict id="difficulty" description="难易程度（字典）">
-		<item id="1" name="简单" description="简单" />
-		<item id="2" name="一般" description="一般" />
-		<item id="3" name="难" description="难" />
-	</dict>	
-		
-	<dict id="operateType" description="权限标识">
-		<item id="R" name="读权限" description="读权限" />
-		<item id="RW" name="写权限" description="写权限" />
-		<item id="RWG" name="授予权限" description="授予权限" />
-		<item id="N" name="排除权限" description="排除权限" />
-	</dict>
-		
-	<dict id="questionState" description="问题状态">
-		<item id="0" name="未解答" description="未解答" />
-		<item id="1" name="已解答" description="已解答" />
-		<item id="2" name="已关闭" description="已关闭" />
-		<item id="3" name="已驳回" description="已驳回" />
-	</dict>
-	
-	<dict id="questionStatus" description="问题状态">
-		<item id="0" name="未解答" description="未解答" />
-		<item id="1" name="已解答" description="已解答" />
-		<item id="2" name="投票中" description="投票中" />
-		<item id="3" name="已关闭" description="已关闭" />
-	</dict>
-			
-	<dict id="answerScore" description="答复评价">
-		<item id="0" name="不满意" description="不满意" />
-		<item id="1" name="一般" description="一般" />
-		<item id="2" name="满意" description="满意" />
-		<item id="3" name="非常满意" description="非常满意" />
-	</dict>
-	
-	<dict id="isDeleted" description="是否删除">
-		<item id="0" name="否" description="否" />
-		<item id="1" name="是" description="是" />
-	</dict>
-	
-	<dict id="isCount" description="是否计入总分">
-		<item id="0" name="否" description="否" />
-		<item id="1" name="是" description="是" />
-	</dict>
-	
-	<dict id="userLevel" description="用户等级">
-		<item id="1" name="一级" description="一级" />
-		<item id="2" name="二级" description="二级" />
-		<item id="3" name="三级" description="三级" />
-		<item id="4" name="四级" description="四级" />
-		<item id="5" name="五级" description="五级" />
-	</dict>
-	
+    <dict id="trainGrade" description="培训等级">
+        <item id="1" name="初级" description="初级"/>
+        <item id="2" name="中级" description="中级"/>
+        <item id="3" name="高级" description="高级"/>
+    </dict>
+
+    <dict id="contentStatus" description="知识状态（字典）">
+        <item id="1" name="草稿" description="草稿"/>
+        <item id="2" name="有效" description="有效"/>
+        <item id="3" name="失效" description="失效"/>
+        <item id="4" name="删除" description="删除"/>
+        <item id="5" name="主管审核" description="主管审核"/>
+        <item id="6" name="审核角色审核" description="审核角色审核"/>
+        <item id="7" name="返回主管审核" description="返回主管审核"/>
+    </dict>
+
+    <dict id="rolestrFlag" description="知识等级（字典）">
+        <item id="1" name="一级" description="一级"/>
+        <item id="2" name="二级" description="二级"/>
+        <item id="3" name="三级" description="三级"/>
+        <item id="4" name="四级" description="四级"/>
+        <item id="5" name="五级" description="五级"/>
+    </dict>
+
+    <dict id="opinionGrade" description="知识评星（字典）">
+        <item id="1" name="一星" description="一星"/>
+        <item id="2" name="二星" description="二星"/>
+        <item id="3" name="三星" description="三星"/>
+        <item id="4" name="四星" description="四星"/>
+        <item id="5" name="五星" description="五星"/>
+    </dict>
+
+    <dict id="levelFlag" description="难易程度（字典）">
+        <item id="1" name="简单" description="简单"/>
+        <item id="2" name="一般" description="一般"/>
+        <item id="3" name="困难" description="困难"/>
+    </dict>
+
+    <dict id="subscribe" description="订阅条件（字典）">
+        <item id="1" name="根据创建人" description="根据创建人"/>
+        <item id="2" name="根据模型" description="根据模型"/>
+    </dict>
+
+    <dict id="specialty" description="专业类型">
+        <item id="1" name="交换" description="交换"/>
+        <item id="2" name="传输" description="传输"/>
+    </dict>
+
+    <dict id="auditState" description="审核状态">
+        <item id="1" name="提交主管审核" description="提交主管审核"/>
+        <item id="2" name="提交审核角色审核" description="提交审核角色审核"/>
+        <item id="3" name="返回主管审核" description="返回主管审核"/>
+        <item id="4" name="主管审核不通过" description="主管审核不通过"/>
+        <item id="0" name="主管审核通过" description="主管审核通过"/>
+    </dict>
+
+    <dict id="auditResult" description="审核结果">
+        <item id="0" name="不通过" description="不通过"/>
+        <item id="1" name="通过" description="通过"/>
+    </dict>
+
+    <dict id="questionType" description="问题类型">
+        <item id="1" name="单选题" description="单选题"/>
+        <item id="2" name="多选题" description="多选题"/>
+        <item id="3" name="判断题" description="判断题"/>
+        <item id="4" name="填空题" description="填空题"/>
+        <item id="5" name="简答题" description="简答题"/>
+    </dict>
+
+    <dict id="difficulty" description="难易程度（字典）">
+        <item id="1" name="简单" description="简单"/>
+        <item id="2" name="一般" description="一般"/>
+        <item id="3" name="难" description="难"/>
+    </dict>
+
+    <dict id="operateType" description="权限标识">
+        <item id="R" name="读权限" description="读权限"/>
+        <item id="RW" name="写权限" description="写权限"/>
+        <item id="RWG" name="授予权限" description="授予权限"/>
+        <item id="N" name="排除权限" description="排除权限"/>
+    </dict>
+
+    <dict id="questionState" description="问题状态">
+        <item id="0" name="未解答" description="未解答"/>
+        <item id="1" name="已解答" description="已解答"/>
+        <item id="2" name="已关闭" description="已关闭"/>
+        <item id="3" name="已驳回" description="已驳回"/>
+    </dict>
+
+    <dict id="questionStatus" description="问题状态">
+        <item id="0" name="未解答" description="未解答"/>
+        <item id="1" name="已解答" description="已解答"/>
+        <item id="2" name="投票中" description="投票中"/>
+        <item id="3" name="已关闭" description="已关闭"/>
+    </dict>
+
+    <dict id="answerScore" description="答复评价">
+        <item id="0" name="不满意" description="不满意"/>
+        <item id="1" name="一般" description="一般"/>
+        <item id="2" name="满意" description="满意"/>
+        <item id="3" name="非常满意" description="非常满意"/>
+    </dict>
+
+    <dict id="isDeleted" description="是否删除">
+        <item id="0" name="否" description="否"/>
+        <item id="1" name="是" description="是"/>
+    </dict>
+
+    <dict id="isCount" description="是否计入总分">
+        <item id="0" name="否" description="否"/>
+        <item id="1" name="是" description="是"/>
+    </dict>
+
+    <dict id="userLevel" description="用户等级">
+        <item id="1" name="一级" description="一级"/>
+        <item id="2" name="二级" description="二级"/>
+        <item id="3" name="三级" description="三级"/>
+        <item id="4" name="四级" description="四级"/>
+        <item id="5" name="五级" description="五级"/>
+    </dict>
+
 </dicts>
 
 

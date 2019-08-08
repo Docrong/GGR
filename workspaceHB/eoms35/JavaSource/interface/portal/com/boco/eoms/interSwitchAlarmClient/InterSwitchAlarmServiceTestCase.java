@@ -1,6 +1,6 @@
 /**
  * InterSwitchAlarmServiceTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,19 +13,17 @@ public class InterSwitchAlarmServiceTestCase extends junit.framework.TestCase {
     public InterSwitchAlarmServiceTestCase(java.lang.String name) {
         super(name);
     }
-	/**
-	 * 
-	 * 测试用例 test1InterSwitchAlarmIsAlive 测试 InterSwitchAlarm服务的newAlarm（）
-	 * 
-	 */
+
+    /**
+     * 测试用例 test1InterSwitchAlarmIsAlive 测试 InterSwitchAlarm服务的newAlarm（）
+     */
     public void test1InterSwitchAlarmIsAlive() throws Exception {
         InterSwitchAlarmSoapBindingStub binding;
         try {
             binding = (InterSwitchAlarmSoapBindingStub)
-                          new InterSwitchAlarmServiceLocator().getInterSwitchAlarm();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new InterSwitchAlarmServiceLocator().getInterSwitchAlarm();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -39,19 +37,19 @@ public class InterSwitchAlarmServiceTestCase extends junit.framework.TestCase {
         value = binding.isAlive();
         // TBD - validate results
     }
+
     /**
-	 * 
-	 *测试用例 test3InterSwitchAlarmIsAlive 测试 InterSwitchAlarm服务的newAlarm（）
-	 * @throws Exception
-	 */
+     * 测试用例 test3InterSwitchAlarmIsAlive 测试 InterSwitchAlarm服务的newAlarm（）
+     *
+     * @throws Exception
+     */
     public void test2InterSwitchAlarmNewAlarm() throws Exception {
         InterSwitchAlarmSoapBindingStub binding;
         try {
             binding = (InterSwitchAlarmSoapBindingStub)
-                          new InterSwitchAlarmServiceLocator().getInterSwitchAlarm();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new InterSwitchAlarmServiceLocator().getInterSwitchAlarm();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -65,19 +63,19 @@ public class InterSwitchAlarmServiceTestCase extends junit.framework.TestCase {
         value = binding.newAlarm(new java.lang.String(), new java.lang.String(), new java.lang.String(), new java.lang.String(), new java.lang.String());
         // TBD - validate results
     }
+
     /**
-	 * 
-	 * 测试用例 test3InterSwitchAlarmSyncAlarm
-	 * @throws Exception
-	 */
+     * 测试用例 test3InterSwitchAlarmSyncAlarm
+     *
+     * @throws Exception
+     */
     public void test3InterSwitchAlarmSyncAlarm() throws Exception {
         InterSwitchAlarmSoapBindingStub binding;
         try {
             binding = (InterSwitchAlarmSoapBindingStub)
-                          new InterSwitchAlarmServiceLocator().getInterSwitchAlarm();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new InterSwitchAlarmServiceLocator().getInterSwitchAlarm();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -88,7 +86,7 @@ public class InterSwitchAlarmServiceTestCase extends junit.framework.TestCase {
 
         // Test operation
         java.lang.String value = null;
-        value = binding.syncAlarm(new java.lang.String(), new java.lang.String(), new java.lang.String(), new java.lang.String(),new java.lang.String());
+        value = binding.syncAlarm(new java.lang.String(), new java.lang.String(), new java.lang.String(), new java.lang.String(), new java.lang.String());
         // TBD - validate results
     }
 

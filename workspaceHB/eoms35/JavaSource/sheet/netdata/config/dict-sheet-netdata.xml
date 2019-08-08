@@ -1,75 +1,75 @@
 <?xml version="1.0" encoding="GBK"?>
 <dicts description="网络数据管理工单">
-	<dict id="mainOperateType" description="处理方法">	
-		<item id="0" name="新建派发" description="新建派发" />
-		<item id="22" name="草稿保存" description="草稿保存" />
-		<item id="3" name="草稿派发" description="草稿派发" />
-		<item id="54" name="重新派发" description="重新派发" />
-		<item id="1" name="移交T2处理" description="移交T2处理" />
-		<item id="2" name="移交T3处理" description="移交T3处理" />
-		<item id="5" name="申请延期" description="申请延期" />
-		<item id="66" name="延期审批通过" description="延期审批通过" />
-		<item id="64" name="延期审批驳回" description="延期审批驳回" />
-		<item id="46" name="处理完成" description="处理完成" />
-		<item id="7" name="处理回复不通过" description="处理回复不通过" />
-		<item id="6" name="处理回复通过" description="处理回复通过" />
-		<item id="18" name="归档" description="归档" />
-		<item id="4" name="驳回上一级" description="驳回上一级" />
-		<item id="8" name="移交" description="移交" />	
-		<item id="-13" name="强制归档" description="强制归档" />	
-		<item id="-14" name="强制作废" description="强制作废" />
-		<item id="-12" name="作废" description="作废" />
-		<item id="-10" name="抄送" description="抄送" />	
-		<item id="-15" name="抄送确认" description="抄送确认" />
-		<item id="9" name="阶段回复" description="阶段回复" />	
-		<item id="-11" name="阶段通知" description="阶段通知" />
-		<item id="10" name="分派" description="分派" />
-		<item id="11" name="分派回复" description="分派回复" />	
-		<item id="19" name="启动紧急故障" description="启动紧急故障" />
-		<item id="61" name="确认受理" description="确认受理" />
-		<item id="110" name="制定方案，提交审核" description="制定方案，提交审核" />
-		<item id="124" name="驳回" description="驳回" />
-		<item id="111" name="审核方案/通过" description="审核方案/通过" />
-		<item id="123" name="审核方案/不通过" description="审核方案/不通过" />
-		<item id="112" name="审批方案/通过" description="审批方案/通过" />
-		<item id="121" name="审批方案/不通过，重做方案" description="审批方案/不通过，重做方案" />
-		<item id="122" name="审批方案/不通过，驳回申请" description="审批方案/不通过，驳回申请" />
-		<item id="113" name="排程，提交实施" description="排程，提交实施" />
-		<item id="114" name="数据制作，提交核查" description="数据制作，提交核查" />
-		<item id="115" name="验证变更，提交归档" description="验证变更，提交归档" />
-		<item id="116" name="归档" description="归档" />
-		<item id="55" name="会审回复" description="会审回复" />
-     	<item id="88" name="转审" description="转审" />
-   		<item id="30" name="会审" description="会审" /> 
-   		<item id="117" name="提交业务测试" description="提交业务测试" />
-   		<item id="118" name="提交验证" description="提交验证" />
-   		<item id="119" name="提交验证" description="提交验证" />
-	</dict>
-	<dict id="activeTemplateId" description="处理方法">	
-	    <item id="cc" name="抄送" description="抄送" />
-	    <item id="reply" name="阶段回复" description="阶段回复" />
-	    <item id="advice" name="阶段通知" description="阶段通知" />	
-		<item id="DraftTask" name="草稿" description="草稿" />
-		<item id="RejectTask" name="被驳回" description="被驳回" />
-		<item id="ProjectCreateTask" name="制定方案，提交审核" description="制定方案，提交审核" />
-		<item id="AuditTask" name="审核方案" description="审核方案" />
-		<item id="PermitTask" name="审批方案" description="审批方案" />
-		<item id="PlanTask" name="排程，提交实施" description="排程，提交实施" />
-		<item id="ExecuteTask" name="数据制作，提交核查" description="数据制作，提交核查" />
-		<item id="CheckDataTask" name="数据核查" description="数据核查" />
-		<item id="TestOperationTask" name="业务测试，提交验证" description="业务测试，提交验证" />
-		<item id="ValidateTask" name="验证变更，提交归档" description="验证变更，提交归档" />
-		<item id="HoldTask" name="归档" description="归档" />
-		<item id="" name="新建派发" description="新建派发" />
-	</dict>
-	<dict id="rejectType1" description="派发类型">
-		<item id="1" name="通过" description="通过" />
-		<item id="2" name="驳回申请" description="驳回申请" />
-	</dict>
-	<dict id="rejectType2" description="派发类型">
-		<item id="3" name="通过" description="通过" />
-		<item id="4" name="驳回申请" description="驳回申请" />
-		<item id="5" name="重新制定方案" description="重新制定方案" />
-	</dict>
+    <dict id="mainOperateType" description="处理方法">
+        <item id="0" name="新建派发" description="新建派发"/>
+        <item id="22" name="草稿保存" description="草稿保存"/>
+        <item id="3" name="草稿派发" description="草稿派发"/>
+        <item id="54" name="重新派发" description="重新派发"/>
+        <item id="1" name="移交T2处理" description="移交T2处理"/>
+        <item id="2" name="移交T3处理" description="移交T3处理"/>
+        <item id="5" name="申请延期" description="申请延期"/>
+        <item id="66" name="延期审批通过" description="延期审批通过"/>
+        <item id="64" name="延期审批驳回" description="延期审批驳回"/>
+        <item id="46" name="处理完成" description="处理完成"/>
+        <item id="7" name="处理回复不通过" description="处理回复不通过"/>
+        <item id="6" name="处理回复通过" description="处理回复通过"/>
+        <item id="18" name="归档" description="归档"/>
+        <item id="4" name="驳回上一级" description="驳回上一级"/>
+        <item id="8" name="移交" description="移交"/>
+        <item id="-13" name="强制归档" description="强制归档"/>
+        <item id="-14" name="强制作废" description="强制作废"/>
+        <item id="-12" name="作废" description="作废"/>
+        <item id="-10" name="抄送" description="抄送"/>
+        <item id="-15" name="抄送确认" description="抄送确认"/>
+        <item id="9" name="阶段回复" description="阶段回复"/>
+        <item id="-11" name="阶段通知" description="阶段通知"/>
+        <item id="10" name="分派" description="分派"/>
+        <item id="11" name="分派回复" description="分派回复"/>
+        <item id="19" name="启动紧急故障" description="启动紧急故障"/>
+        <item id="61" name="确认受理" description="确认受理"/>
+        <item id="110" name="制定方案，提交审核" description="制定方案，提交审核"/>
+        <item id="124" name="驳回" description="驳回"/>
+        <item id="111" name="审核方案/通过" description="审核方案/通过"/>
+        <item id="123" name="审核方案/不通过" description="审核方案/不通过"/>
+        <item id="112" name="审批方案/通过" description="审批方案/通过"/>
+        <item id="121" name="审批方案/不通过，重做方案" description="审批方案/不通过，重做方案"/>
+        <item id="122" name="审批方案/不通过，驳回申请" description="审批方案/不通过，驳回申请"/>
+        <item id="113" name="排程，提交实施" description="排程，提交实施"/>
+        <item id="114" name="数据制作，提交核查" description="数据制作，提交核查"/>
+        <item id="115" name="验证变更，提交归档" description="验证变更，提交归档"/>
+        <item id="116" name="归档" description="归档"/>
+        <item id="55" name="会审回复" description="会审回复"/>
+        <item id="88" name="转审" description="转审"/>
+        <item id="30" name="会审" description="会审"/>
+        <item id="117" name="提交业务测试" description="提交业务测试"/>
+        <item id="118" name="提交验证" description="提交验证"/>
+        <item id="119" name="提交验证" description="提交验证"/>
+    </dict>
+    <dict id="activeTemplateId" description="处理方法">
+        <item id="cc" name="抄送" description="抄送"/>
+        <item id="reply" name="阶段回复" description="阶段回复"/>
+        <item id="advice" name="阶段通知" description="阶段通知"/>
+        <item id="DraftTask" name="草稿" description="草稿"/>
+        <item id="RejectTask" name="被驳回" description="被驳回"/>
+        <item id="ProjectCreateTask" name="制定方案，提交审核" description="制定方案，提交审核"/>
+        <item id="AuditTask" name="审核方案" description="审核方案"/>
+        <item id="PermitTask" name="审批方案" description="审批方案"/>
+        <item id="PlanTask" name="排程，提交实施" description="排程，提交实施"/>
+        <item id="ExecuteTask" name="数据制作，提交核查" description="数据制作，提交核查"/>
+        <item id="CheckDataTask" name="数据核查" description="数据核查"/>
+        <item id="TestOperationTask" name="业务测试，提交验证" description="业务测试，提交验证"/>
+        <item id="ValidateTask" name="验证变更，提交归档" description="验证变更，提交归档"/>
+        <item id="HoldTask" name="归档" description="归档"/>
+        <item id="" name="新建派发" description="新建派发"/>
+    </dict>
+    <dict id="rejectType1" description="派发类型">
+        <item id="1" name="通过" description="通过"/>
+        <item id="2" name="驳回申请" description="驳回申请"/>
+    </dict>
+    <dict id="rejectType2" description="派发类型">
+        <item id="3" name="通过" description="通过"/>
+        <item id="4" name="驳回申请" description="驳回申请"/>
+        <item id="5" name="重新制定方案" description="重新制定方案"/>
+    </dict>
 </dicts>
 

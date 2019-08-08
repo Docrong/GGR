@@ -16,6 +16,7 @@ import com.boco.eoms.base.Constants;
 import com.boco.eoms.commons.system.role.model.TawSystemDeptRefPost;
 import com.boco.eoms.commons.system.role.service.ITawSystemDeptRefPostManager;
 import com.boco.eoms.commons.system.role.webapp.form.TawSystemDeptRefPostForm;
+
 import java.util.List;
 import java.util.Map;
 
@@ -23,11 +24,11 @@ import java.util.Map;
  * Action class to handle CRUD on a TawSystemDeptRefPost object
  *
  * @struts.action name="tawSystemDeptRefPostForm" path="/tawSystemDeptRefPosts" scope="request"
- *  validate="false" parameter="method" input="mainMenu"
+ * validate="false" parameter="method" input="mainMenu"
  * @struts.action name="tawSystemDeptRefPostForm" path="/editTawSystemDeptRefPost" scope="request"
- *  validate="false" parameter="method" input="list"
+ * validate="false" parameter="method" input="list"
  * @struts.action name="tawSystemDeptRefPostForm" path="/saveTawSystemDeptRefPost" scope="request"
- *  validate="true" parameter="method" input="edit"
+ * validate="true" parameter="method" input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit" path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostForm.jsp"
  * @struts.action-forward name="list" path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostList.jsp"
@@ -37,14 +38,14 @@ public final class TawSystemDeptRefPostAction extends BaseAction {
     public ActionForward cancel(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         return mapping.findForward("search");
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         ActionMessages messages = new ActionMessages();
         TawSystemDeptRefPostForm tawSystemDeptRefPostForm = (TawSystemDeptRefPostForm) form;
@@ -54,7 +55,7 @@ public final class TawSystemDeptRefPostAction extends BaseAction {
         mgr.removeTawSystemDeptRefPost(tawSystemDeptRefPostForm.getId());
 
         messages.add(ActionMessages.GLOBAL_MESSAGE,
-                     new ActionMessage("tawSystemDeptRefPost.deleted"));
+                new ActionMessage("tawSystemDeptRefPost.deleted"));
 
         // save messages in session, so they'll survive the redirect
         saveMessages(request.getSession(), messages);
@@ -65,7 +66,7 @@ public final class TawSystemDeptRefPostAction extends BaseAction {
     public ActionForward edit(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         TawSystemDeptRefPostForm tawSystemDeptRefPostForm = (TawSystemDeptRefPostForm) form;
 
         // if an id is passed in, look up the user - otherwise
@@ -83,7 +84,7 @@ public final class TawSystemDeptRefPostAction extends BaseAction {
     public ActionForward save(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request,
                               HttpServletResponse response)
-    throws Exception {
+            throws Exception {
 
         // Extract attributes and parameters we will need
         ActionMessages messages = new ActionMessages();
@@ -97,7 +98,7 @@ public final class TawSystemDeptRefPostAction extends BaseAction {
         // add success messages
         if (isNew) {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemDeptRefPost.added"));
+                    new ActionMessage("tawSystemDeptRefPost.added"));
 
             // save messages in session to survive a redirect
             saveMessages(request.getSession(), messages);
@@ -105,7 +106,7 @@ public final class TawSystemDeptRefPostAction extends BaseAction {
             return mapping.findForward("search");
         } else {
             messages.add(ActionMessages.GLOBAL_MESSAGE,
-                         new ActionMessage("tawSystemDeptRefPost.updated"));
+                    new ActionMessage("tawSystemDeptRefPost.updated"));
             saveMessages(request, messages);
 
             return mapping.findForward("search");
@@ -115,20 +116,21 @@ public final class TawSystemDeptRefPostAction extends BaseAction {
     public ActionForward search(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request,
                                 HttpServletResponse response)
-    throws Exception {
+            throws Exception {
         String pageIndexName = new org.displaytag.util.ParamEncoder("tawDemoMytableList").encodeParameterName(
-    			org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);  
-	    	final Integer pageSize = new Integer(25);   
-	    	final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName))?0:(Integer.parseInt(request.getParameter(pageIndexName)) - 1)); 
+                org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = new Integer(25);
+        final Integer pageIndex = new Integer(GenericValidator.isBlankOrNull(request.getParameter(pageIndexName)) ? 0 : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
 
         ITawSystemDeptRefPostManager mgr = (ITawSystemDeptRefPostManager) getBean("ItawSystemDeptRefPostManager");
-        Map map = (Map)mgr.getTawSystemDeptRefPosts(pageIndex,pageSize);
-        List list = (List)map.get("result");
+        Map map = (Map) mgr.getTawSystemDeptRefPosts(pageIndex, pageSize);
+        List list = (List) map.get("result");
         request.setAttribute(Constants.TAWSYSTEMDEPTREFPOST_LIST, list);
         request.setAttribute("resultSize", map.get("total"));
 
         return mapping.findForward("list");
     }
+
     public ActionForward unspecified(ActionMapping mapping, ActionForm form,
                                      HttpServletRequest request,
                                      HttpServletResponse response)

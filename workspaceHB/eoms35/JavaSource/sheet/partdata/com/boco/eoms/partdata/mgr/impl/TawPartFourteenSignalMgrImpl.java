@@ -17,49 +17,48 @@ import com.boco.eoms.partdata.dao.TawPartFourteenSignalDao;
  * <p>
  * Tue Jul 06 14:18:23 CST 2010
  * </p>
- * 
+ *
  * @author Josh
  * @version 3.5
- * 
  */
 public class TawPartFourteenSignalMgrImpl implements TawPartFourteenSignalMgr {
- 
-	private TawPartFourteenSignalDao  tawPartFourteenSignalDao;
- 	
-	public TawPartFourteenSignalDao getTawPartFourteenSignalDao() {
-		return this.tawPartFourteenSignalDao;
-	}
- 	
-	public void setTawPartFourteenSignalDao(TawPartFourteenSignalDao tawPartFourteenSignalDao) {
-		this.tawPartFourteenSignalDao = tawPartFourteenSignalDao;
-	}
- 	
+
+    private TawPartFourteenSignalDao tawPartFourteenSignalDao;
+
+    public TawPartFourteenSignalDao getTawPartFourteenSignalDao() {
+        return this.tawPartFourteenSignalDao;
+    }
+
+    public void setTawPartFourteenSignalDao(TawPartFourteenSignalDao tawPartFourteenSignalDao) {
+        this.tawPartFourteenSignalDao = tawPartFourteenSignalDao;
+    }
+
     public List getTawPartFourteenSignals() {
-    	return tawPartFourteenSignalDao.getTawPartFourteenSignals();
+        return tawPartFourteenSignalDao.getTawPartFourteenSignals();
     }
-    
+
     public TawPartFourteenSignal getTawPartFourteenSignal(final String id) {
-    	return tawPartFourteenSignalDao.getTawPartFourteenSignal(id);
+        return tawPartFourteenSignalDao.getTawPartFourteenSignal(id);
     }
-    
+
     public void saveTawPartFourteenSignal(TawPartFourteenSignal tawPartFourteenSignal) {
-    	tawPartFourteenSignalDao.saveTawPartFourteenSignal(tawPartFourteenSignal);
+        tawPartFourteenSignalDao.saveTawPartFourteenSignal(tawPartFourteenSignal);
     }
-    
+
     public void removeTawPartFourteenSignal(final String id) {
-    	tawPartFourteenSignalDao.removeTawPartFourteenSignal(id);
+        tawPartFourteenSignalDao.removeTawPartFourteenSignal(id);
     }
-    
+
     public Map getTawPartFourteenSignals(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return tawPartFourteenSignalDao.getTawPartFourteenSignals(curPage, pageSize, whereStr);
-	}
-    
-    public Map getExistTawPartFourteenSignals(final Integer startNum, final Integer endNum){
-    	return tawPartFourteenSignalDao.getExistTawPartFourteenSignals(startNum, endNum);
+                                         final String whereStr) {
+        return tawPartFourteenSignalDao.getTawPartFourteenSignals(curPage, pageSize, whereStr);
     }
- 
-    public Map getAllTawPartFourteenSignals(final String whereStr){
-    	return tawPartFourteenSignalDao.getAllTawPartFourteenSignals(whereStr);
+
+    public Map getExistTawPartFourteenSignals(final Integer startNum, final Integer endNum) {
+        return tawPartFourteenSignalDao.getExistTawPartFourteenSignals(startNum, endNum);
+    }
+
+    public Map getAllTawPartFourteenSignals(final String whereStr) {
+        return tawPartFourteenSignalDao.getAllTawPartFourteenSignals(whereStr);
     }
 }

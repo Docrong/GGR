@@ -9,66 +9,54 @@ import com.boco.eoms.sheet.base.task.ITask;
 import com.boco.eoms.sheet.base.task.impl.TaskImpl;
 
 public class TechniqueSupportHbTask extends TaskImpl
-	implements ITask
-{
+        implements ITask {
 
-	private String preDealDept;
-	private String preDealUserId;
-	private String correlationKey;
-	private String levelId;
-	private String parentLevelId;
+    private String preDealDept;
+    private String preDealUserId;
+    private String correlationKey;
+    private String levelId;
+    private String parentLevelId;
 
-	public TechniqueSupportHbTask()
-	{
-	}
+    public TechniqueSupportHbTask() {
+    }
 
-	public String getParentLevelId()
-	{
-		return parentLevelId;
-	}
+    public String getParentLevelId() {
+        return parentLevelId;
+    }
 
-	public void setParentLevelId(String parentLevelId)
-	{
-		this.parentLevelId = parentLevelId;
-	}
+    public void setParentLevelId(String parentLevelId) {
+        this.parentLevelId = parentLevelId;
+    }
 
-	public String getCorrelationKey()
-	{
-		return correlationKey;
-	}
+    public String getCorrelationKey() {
+        return correlationKey;
+    }
 
-	public void setCorrelationKey(String correlationKey)
-	{
-		this.correlationKey = correlationKey;
-	}
+    public void setCorrelationKey(String correlationKey) {
+        this.correlationKey = correlationKey;
+    }
 
-	public String getLevelId()
-	{
-		return levelId;
-	}
+    public String getLevelId() {
+        return levelId;
+    }
 
-	public void setLevelId(String levelId)
-	{
-		this.levelId = levelId;
-	}
+    public void setLevelId(String levelId) {
+        this.levelId = levelId;
+    }
 
-	public String getPreDealDept()
-	{
-		return preDealDept;
-	}
+    public String getPreDealDept() {
+        return preDealDept;
+    }
 
-	public void setPreDealDept(String preDealDept)
-	{
-		this.preDealDept = preDealDept;
-	}
+    public void setPreDealDept(String preDealDept) {
+        this.preDealDept = preDealDept;
+    }
 
-	public String getPreDealUserId()
-	{
-		return preDealUserId;
-	}
+    public String getPreDealUserId() {
+        return preDealUserId;
+    }
 
-	public void setPreDealUserId(String preDealUserId)
-	{
-		this.preDealUserId = preDealUserId;
-	}
+    public void setPreDealUserId(String preDealUserId) {
+        this.preDealUserId = preDealUserId;
+    }
 }

@@ -1,484 +1,578 @@
 /*
 
-ÔÚÊµ¼ÊÔËÓÃÖÐ¿ÉÄÜ»áÓöµ½ÆäËûºÜ¶àÖÖÇé¿ö£¬Ê¹ÓÃÕßÔÚÊ¹ÓÃµÄÊ±ºò£¬Èô·¢ÏÖÐèÒª²¹³ä£¬ÐÞ¸ÄµÄÇëÓëÎÒÁªÏµ£º
+ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ä£¬ï¿½Þ¸Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 
-µç»°£º82825659
+ï¿½ç»°ï¿½ï¿½82825659
 
 */
 
-body
-{
-	font-size:12px
-	font-color:#000000
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	background-color:#0070CA;
-	scrollbar-base-color: #426492;
-	scrollbar-arrow-color: #000000;
-	scrollbar-highlight-color: #ffffff;
-	scrollbar-darkshadow-color: #c3c3c3;
-	scrollbar-face-color: #f3ffff;
-	scrollbar-shadow-color: #426492;
-	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
-	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
+body {
+    font-size: 12px
+    font-color: #000000
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    background-color: #0070CA;
+    scrollbar-base-color: #426492;
+    scrollbar-arrow-color: #000000;
+    scrollbar-highlight-color: #ffffff;
+    scrollbar-darkshadow-color: #c3c3c3;
+    scrollbar-face-color: #f3ffff;
+    scrollbar-shadow-color: #426492;
+    SCROLLBAR-3DLIGHT-COLOR: #104cb9;
+    SCROLLBAR-TRACK-COLOR: #bdd1f4;
 }
 
-table	{ font-size: 12px;
-		margin-top: 0em;
-		margin-left: 0em;
-	}
+table {
+    font-size: 12px;
+    margin-top: 0em;
+    margin-left: 0em;
+}
 
-tr
-	{
-	 vertical-align: middle ;
-	}
+tr {
+    vertical-align: middle;
+}
 
-td
-{
-	font-size:12px;
-	font-color:#000000;
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+td {
+    font-size: 12px;
+    font-color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 }
 
 /*-----------------------------------------------------------------------*/
-.tr_show{
-	border-collapse:separate;
-	background-color:#E2F1FC;
+.tr_show {
+    border-collapse: separate;
+    background-color: #E2F1FC;
 }
 
-.table_show{
-			background:#719FD6;
+.table_show {
+    background: #719FD6;
 }
 
-.td_label{
-	background-color:#BEDEF8;
-	text-align:center;
-	color:#104CB9;
-	font-weight:bold;
-}
-.td_title{
-	background-color:#EEEDED;
-	color:#E27924;
-	text-align:center;
-	height:22;
-	padding:0,0,0,0;
-	font-weight:bold;
+.td_label {
+    background-color: #BEDEF8;
+    text-align: center;
+    color: #104CB9;
+    font-weight: bold;
 }
 
-.td_title_two{
-	background-color:#3C98E1;
-	color:#FFFFFF;
-	height:22;
-	padding:0,0,0,15;
+.td_title {
+    background-color: #EEEDED;
+    color: #E27924;
+    text-align: center;
+    height: 22;
+    padding: 0, 0, 0, 0;
+    font-weight: bold;
 }
-.td_none{
-	background-color:transparent;
-	padding:9,0,0,0;
-	height:20;
+
+.td_title_two {
+    background-color: #3C98E1;
+    color: #FFFFFF;
+    height: 22;
+    padding: 0, 0, 0, 15;
 }
-.td_button{
-	border-collapse:separate;
-	background-color:#E2F1FC;
-	padding:6pt 0pt 3pt 0pt;
-	text-align:center;
+
+.td_none {
+    background-color: transparent;
+    padding: 9, 0, 0, 0;
+    height: 20;
+}
+
+.td_button {
+    border-collapse: separate;
+    background-color: #E2F1FC;
+    padding: 6pt 0pt 3pt 0pt;
+    text-align: center;
 
 }
 
 textarea {
-		border:1px solid #48AFFE;
-		border-top:1px solid #88CBFE;
-		border-left:1px solid #88CBFE;
-		font:normal 12px ËÎÌå;
-	font-size:12px;
-	padding: 0px;
-	}
-
- select {
- 	background-color: #eeeeee;
-	font-size:12px;
-	font-color:#000000;
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	padding: 0px;
-	}
-
-
-p		{ margin-top: .6em; margin-bottom: .6em	}
-
-h1		{  font-weight: bold;
-		font-size: 55%;
-		margin-bottom: -2.2em; }
-
-h2		{  font-weight: bold;
-		font-size: 66%;
-		margin-top: 6pt;
-		margin-bottom: -2.2em; }
-
-h3		{  font-weight: bold;
-		font-size: 77%;
-		margin-top: 6pt;
-		margin-bottom: -3em;  }
-
-h4		{font-size: 105%;
-		margin-top: 1.2em;
-		margin-bottom: .5em  }
-
-h5		{font-size: 100%;
-		margin-top: 1.2em;
-		margin-bottom: .5em }
-
-h6		{font-size: 100%;
-		margin-top: 1.2em;
-		margin-bottom: .5em }
-
-code	{  font-family: Courier;
-		font-size: 100%;  }
-
-hr	{  color: black;
-		margin-bottom: 20pt; }
-/*...........................................µÇÂ½½çÃæÑùÊ½.............................................*/
-
-/*°ïÖúµÄÁ´½ÓÑùÊ½*/
-a.help:link {color: #FFff00; font_size: 12; TEXT-DECORATION: none}
-a.help:hover{color: #00ff00; font-size: 14; TEXT-DECORATION: none}
-a.help:active{color: #00ff00; font-size: 14; TEXT-DECORATION: none}
-a.help:visited{color: #ffff00; font-size: 12; TEXT-DECORATION: none}
-
-/*×ÖÌåÑùÊ½*/
-.idxfont1 {
-	  background-image: url(../images/public/logo6.jpg);
-	  font-size: 12px;
-	  font-weight: bold;
+    border: 1px solid #48AFFE;
+    border-top: 1px solid #88CBFE;
+    border-left: 1px solid #88CBFE;
+    font: normal 12px ï¿½ï¿½ï¿½ï¿½;
+    font-size: 12px;
+    padding: 0px;
 }
 
-/*°´Å¥ÑùÊ½*/
+select {
+    background-color: #eeeeee;
+    font-size: 12px;
+    font-color: #000000;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    padding: 0px;
+}
+
+
+p {
+    margin-top: .6em;
+    margin-bottom: .6em
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 55%;
+    margin-bottom: -2.2em;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 66%;
+    margin-top: 6pt;
+    margin-bottom: -2.2em;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 77%;
+    margin-top: 6pt;
+    margin-bottom: -3em;
+}
+
+h4 {
+    font-size: 105%;
+    margin-top: 1.2em;
+    margin-bottom: .5em
+}
+
+h5 {
+    font-size: 100%;
+    margin-top: 1.2em;
+    margin-bottom: .5em
+}
+
+h6 {
+    font-size: 100%;
+    margin-top: 1.2em;
+    margin-bottom: .5em
+}
+
+code {
+    font-family: Courier;
+    font-size: 100%;
+}
+
+hr {
+    color: black;
+    margin-bottom: 20pt;
+}
+
+/*...........................................ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½.............................................*/
+
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
+a.help:link {
+    color: #FFff00;
+    font_size: 12;
+    TEXT-DECORATION: none
+}
+
+a.help:hover {
+    color: #00ff00;
+    font-size: 14;
+    TEXT-DECORATION: none
+}
+
+a.help:active {
+    color: #00ff00;
+    font-size: 14;
+    TEXT-DECORATION: none
+}
+
+a.help:visited {
+    color: #ffff00;
+    font-size: 12;
+    TEXT-DECORATION: none
+}
+
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
+.idxfont1 {
+    background-image: url(../images/public/logo6.jpg);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/*ï¿½ï¿½Å¥ï¿½ï¿½Ê½*/
 .idxbtn1 {
-	background-color: #FBF6BC;
-	height: 20px;
-	width: 50px;
-	margin-top: 10px;
+    background-color: #FBF6BC;
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
 }
 
 .clsdlft {
-	font-size: 13px;
-	color: #000000;
-}
-.treetop1{
-        font_size: 12px;
+    font-size: 13px;
+    color: #000000;
 }
 
-/*.................................................Í·²¿ÑùÊ½..........................................*/
+.treetop1 {
+    font_size: 12px;
+}
+
+/*.................................................Í·ï¿½ï¿½ï¿½ï¿½Ê½..........................................*/
 
 .unnamed1 {
-	font-size: 12px;
-	color: #000000;
+    font-size: 12px;
+    color: #000000;
 }
+
 .unnamed2 {
-	font-size: 12px;
-	color: #FFFFFF;
+    font-size: 12px;
+    color: #FFFFFF;
 }
+
 .r-top {
-	font-size: 12px;
-	color: #0000CC;
+    font-size: 12px;
+    color: #0000CC;
 }
 
-/*header.jspµÄÁ´½ÓÑùÊ½*/
-td.head {font-size:12px;color:#ffffff;text-decoration:none};
-a.head {font-size:12px;color:#ffffff;text-decoration:none};
-A.head:link {COLOR: #ffffff;font-size: 12px; TEXT-DECORATION: none};
-A.head:hover {COLOR: #ffff00;font-size: 12px; TEXT-DECORATION: none};
-A.head:active {COLOR: #00ff00;font-size: 12px; TEXT-DECORATION: none};
-A.head:visited {COLOR: #ffffff;font-size: 12px; TEXT-DECORATION: none};
+/*header.jspï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
+td.head {
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: none
+}
 
-/*...........................................Ä¿Â¼Ê÷µÄÑùÊ½.............................................*/
-/*Ä¿Â¼Ê÷µÄÑùÊ½*/
+;
+a.head {
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: none
+}
+
+;
+A.head:link {
+    COLOR: #ffffff;
+    font-size: 12px;
+    TEXT-DECORATION: none
+}
+
+;
+A.head:hover {
+    COLOR: #ffff00;
+    font-size: 12px;
+    TEXT-DECORATION: none
+}
+
+;
+A.head:active {
+    COLOR: #00ff00;
+    font-size: 12px;
+    TEXT-DECORATION: none
+}
+
+;
+A.head:visited {
+    COLOR: #ffffff;
+    font-size: 12px;
+    TEXT-DECORATION: none
+}
+
+;
+
+/*...........................................Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½.............................................*/
+/*Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 #tree {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 11px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 11px;
 }
+
 #tree a {
-	mios:expression(this.onclick=changeLinkStyle);
-	color: #104CB9;
+    mios: expression(this.onclick=changeLinkStyle);
+    color: #104CB9;
 }
+
 #tree a.clicked {
-	color: darkblue; 
-	font-size: 12px; 
-	font-weight:bold;
-	TEXT-DECORATION: underline
+    color: darkblue;
+    font-size: 12px;
+    font-weight: bold;
+    TEXT-DECORATION: underline
 }
+
 #tree img {
-	border: 0px;
-	width: 18px;
-	height: 18px;
+    border: 0px;
+    width: 18px;
+    height: 18px;
 }
 
 #tree2 {
-	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-	font-size: 11px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 11px;
 }
+
 #tree2 a {
-	color: #104CB9;
-	text-decoration: none;
+    color: #104CB9;
+    text-decoration: none;
 }
+
 #tree2 img {
-	border: 0px;
-	width: 18px;
-	height: 18px;
+    border: 0px;
+    width: 18px;
+    height: 18px;
 }
 
 
-/*ÆÕÍ¨¹ö¶¯ÌõµÄÑùÊ½-->¶¨ÒåÔÚ<body class="clsscrollbar">*/
-.clsscrollbar
-{
-/*
-	scrollbar-base-color: #426492;
-	scrollbar-arrow-color: #000000;
-	scrollbar-highlight-color: #ffffff;
-	scrollbar-darkshadow-color: #c3c3c3;
-	scrollbar-face-color: #f3ffff;
-	scrollbar-shadow-color: #426492;
-	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
-	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
-*/
+/*ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½-->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<body class="clsscrollbar">*/
+.clsscrollbar {
+    /*
+        scrollbar-base-color: #426492;
+        scrollbar-arrow-color: #000000;
+        scrollbar-highlight-color: #ffffff;
+        scrollbar-darkshadow-color: #c3c3c3;
+        scrollbar-face-color: #f3ffff;
+        scrollbar-shadow-color: #426492;
+        SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
+        SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
+    */
 }
-/*±³¾°ÑùÊ½*/
+
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 .clsbkgrnd {
-	background-image: url(../images/bottom/ditu-1.gif);
+    background-image: url(../images/bottom/ditu-1.gif);
 }
+
 .clstopmenu {
-	background-color: #6B95E1;
+    background-color: #6B95E1;
 }
 
-.time {  font-size: 12px}
+.time {
+    font-size: 12px
+}
 
-/*...............................................»¶Ó­½çÃæÑùÊ½.................................................*/
+/*...............................................ï¿½ï¿½Ó­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½.................................................*/
 
 .unnamed3 {
-	font-size: 12px;
-	color: 0142A4;
- 	line-height: 120%;
+    font-size: 12px;
+    color: 0142 A4;
+    line-height: 120%;
 }
+
 .unnamed4 {
-	font-size: 13px;
- 	font-weight: 700;
+    font-size: 13px;
+    font-weight: 700;
 }
-/*.............................................¸öÄ£¿é»¶Ó­½çÃæÑùÊ½....................................................*/
+
+/*.............................................ï¿½ï¿½Ä£ï¿½é»¶Ó­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½....................................................*/
 
 .clsdocu {
-	font-size: 13px;
-	color: #0142A4;
-	text-decoration: none;
-	line-height: 28px;
+    font-size: 13px;
+    color: #0142A4;
+    text-decoration: none;
+    line-height: 28px;
 }
 
 .unnamed5 {
-	font-size: 14px;
-	color: #3366FF;
+    font-size: 14px;
+    color: #3366FF;
 }
 
 .idxfont2 {
-	font-family: "Arial", "Helvetica", "sans-serif";
-	font-size: 16px;
-	font-weight: bold;
-	padding-top: 10px;
-	color: #FFFFFF;
+    font-family: "Arial", "Helvetica", "sans-serif";
+    font-size: 16px;
+    font-weight: bold;
+    padding-top: 10px;
+    color: #FFFFFF;
 }
 
 
-/*...............................................ÄÚÈÝ²¿·Ö...............................................*/
+/*...............................................ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½...............................................*/
 
-/*summary.jspµÄ±³¾°ÑùÊ½--> Àý£º<table ... class="clsbkgd">*/
-.clsbkgd{
-	background-color:  #709fd5;
+/*summary.jspï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ê½--> ï¿½ï¿½ï¿½ï¿½<table ... class="clsbkgd">*/
+.clsbkgd {
+    background-color: #709fd5;
 }
 
-/*ËùÓÐÄÚÈÝ½çÃæµÄ±³¾°ÑùÊ½*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 
 .clsbdr {
-	background-image:  url(../images/bottom/bj_1_1.gif);
+    background-image: url(../images/bottom/bj_1_1.gif);
 }
 
-/*±êÌâÉÏÃæÒ»ÐÐµÄÑÕÉ«ÑùÊ½ -->ÓÃÓÚ±êÌâÉÏ·½ÓÐÑÕÉ«³ÄÍÐµÄµØ·½ Àý£º<table class="clsfst">*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ðµï¿½ï¿½ï¿½É«ï¿½ï¿½Ê½ -->ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ÐµÄµØ·ï¿½ ï¿½ï¿½ï¿½ï¿½<table class="clsfst">*/
 .clsfst {
-	background-color: #6085c9;
+    background-color: #6085c9;
 }
 
-/*Ö÷±êÌâÀ¸µÄÑùÊ½ -->ÓÃÓÚ°üº¬Ö÷±êÌâµÄ±í¸ñ»òµ¥Ôª¸ñ Àý£º<td class="clsscd">*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ -->ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½<td class="clsscd">*/
 .clsscd {
-	background-color: #eeeced;
-	font-size: 12px;
-	font-weight: bold;
-	color: #043AA6;
-	padding: 5px;
-	border-left-width:1;
-	border-left-style: solid;
-	border-left-color:#709fd5;
-	border-right-width:1;
-	border-right-style: solid;
-	border-right-color:#709fd5;
-	border-top-width:1;
-	border-top-style: solid;
-	border-top-color:#709fd5;
+    background-color: #eeeced;
+    font-size: 12px;
+    font-weight: bold;
+    color: #043AA6;
+    padding: 5px;
+    border-left-width: 1;
+    border-left-style: solid;
+    border-left-color: #709fd5;
+    border-right-width: 1;
+    border-right-style: solid;
+    border-right-color: #709fd5;
+    border-top-width: 1;
+    border-top-style: solid;
+    border-top-color: #709fd5;
 }
 
 .clsscd1 {
-	background-color: #6287CE;
-	font-size: 12px;
-	font-weight: bold;
-	color: #ffffff;
-	padding: 5px;
+    background-color: #6287CE;
+    font-size: 12px;
+    font-weight: bold;
+    color: #ffffff;
+    padding: 5px;
 }
 
-/*ÌØÊâµÄÄÚÈÝ±êÌâÑùÊ½ AddRecord.jsp*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ AddRecord.jsp*/
 .clsthd {
-	background-color: #d6dfef;
-	font-size: 12px;
-	color: #000000;
-	text-align: right;
-	padding: 5px;
+    background-color: #d6dfef;
+    font-size: 12px;
+    color: #000000;
+    text-align: right;
+    padding: 5px;
 }
 
-/*Ò»°ãµÄÄÚÈÝ±êÌâÑùÊ½ summary.jsp-->ÓÃÓÚ°üº¬ÄÚÈÝ±êÌâµÄ±í¸ñ»òµ¥Ôª¸ñ Àý£º<td class="clsthd1">*/
+/*Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ summary.jsp-->ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý±ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½<td class="clsthd1">*/
 .clsthd1 {
-	background-color: #d7dae1;
-	font-size: 12px;
-	color: #000000;
-	text-align: center;
-	border-left-width:1;
-	border-left-style: solid;
-	border-left-color:#709fd5;
-	border-right-width:1;
-	border-top-style: solid;
-	border-top-width: 1;
-	border-top-color:#709fd5;
-	padding-left: 6;
-	padding-right: 6;
-	padding-top: 3;
-	padding-bottom: 3;
-}
-.clsthd2 {
-	font-size: 12px;
-	color: #000000;
-	text-align: center;
-}
-.clsthd3 {
-	background-color: #d7dae1;
-	font-size: 12px;
-	color: #000000;
-	text-align: center;
-	border-left-width:1;
-	border-left-style: solid;
-	border-left-color:#709fd5;
-	border-right-width:1;
-	border-right-style: solid;
-	border-right-color:#709fd5;
-	border-top-style: solid;
-	border-top-width: 1;
-	border-top-color:#709fd5;
-	padding-left: 6;
-	padding-right: 6;
-	padding-top: 3;
-	padding-bottom: 3;
-}
-/*Ò»°ãµÄÄÚÈÝÑùÊ½ AddRecord.jsp -->ÓÃÓÚ°üº¬ÄÚÈÝµÄ±í¸ñ»òµ¥Ôª¸ñ Àý£º<td class="clsfth">*/
-.clsfth {
-	background-color: #e5edf8;
-	font-size: 12px;
-	color: #000000;
+    background-color: #d7dae1;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    border-left-width: 1;
+    border-left-style: solid;
+    border-left-color: #709fd5;
+    border-right-width: 1;
+    border-top-style: solid;
+    border-top-width: 1;
+    border-top-color: #709fd5;
+    padding-left: 6;
+    padding-right: 6;
+    padding-top: 3;
+    padding-bottom: 3;
 }
 
-/*ÌØÊâµÄÄÚÈÝÑùÊ½ summary.jsp*/
+.clsthd2 {
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+}
+
+.clsthd3 {
+    background-color: #d7dae1;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    border-left-width: 1;
+    border-left-style: solid;
+    border-left-color: #709fd5;
+    border-right-width: 1;
+    border-right-style: solid;
+    border-right-color: #709fd5;
+    border-top-style: solid;
+    border-top-width: 1;
+    border-top-color: #709fd5;
+    padding-left: 6;
+    padding-right: 6;
+    padding-top: 3;
+    padding-bottom: 3;
+}
+
+/*Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ AddRecord.jsp -->ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÝµÄ±ï¿½ï¿½ï¿½Ôªï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½<td class="clsfth">*/
+.clsfth {
+    background-color: #e5edf8;
+    font-size: 12px;
+    color: #000000;
+}
+
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ summary.jsp*/
 .clsfth1 {
-	background-color: #e5edf8;
-	font-size: 12px;
-	color: #000000;
-	border-top-width: 1;
-	border-left-width: 1;
-	border-left-style: solid;
-	border-left-color:#709fd5;
-	border-right-width: 1;
-	border-right-style: solid;
-	border-right-color:#709fd5;
-	border-top-style: solid;
-	border-top-width: 1;
-	border-top-color:#709fd5;
-	padding-left: 6;
-	padding-right: 6;
-	padding-top: 3;
-	padding-bottom: 3;
+    background-color: #e5edf8;
+    font-size: 12px;
+    color: #000000;
+    border-top-width: 1;
+    border-left-width: 1;
+    border-left-style: solid;
+    border-left-color: #709fd5;
+    border-right-width: 1;
+    border-right-style: solid;
+    border-right-color: #709fd5;
+    border-top-style: solid;
+    border-top-width: 1;
+    border-top-color: #709fd5;
+    padding-left: 6;
+    padding-right: 6;
+    padding-top: 3;
+    padding-bottom: 3;
 }
 
 .clsfth2 {
-	background-color: #e5edf8;
-	font-size: 12px;
-	color: #000000;
-	text-align: center;
-	border-left-width:1;
-	border-left-style: solid;
-	border-left-color:#709fd5;
-	border-right-width:1;
-	border-top-style: solid;
-	border-top-width: 1;
-	border-top-color:#709fd5;
-	padding-left: 6;
-	padding-right: 6;
-	padding-top: 3;
-	padding-bottom: 3;
-}
-.clsfth3 {
-	background-color: #e5edf8;
-	font-size: 12px;
-	color: #000000;
-	text-align: center;
-	border-left-width:1;
-	border-left-style: solid;
-	border-left-color:#709fd5;
-	border-right-width:1;
-	border-right-style: solid;
-	border-right-color:#709fd5;
-	border-top-style: solid;
-	border-top-width: 1;
-	border-top-color:#709fd5;
-	padding-left: 6;
-	padding-right: 6;
-	padding-top: 3;
-	padding-bottom: 3;
-}
-/*Í¨ÓÃ°´Å¥ÑùÊ½ --> Àý£º<input type="button" ... class=clsbtn>*/
-.clsbtn {
-	background-color: #FBF6BC;
-	height: 20px;
-	width: 50px;
-	margin-top: 10px;
+    background-color: #e5edf8;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    border-left-width: 1;
+    border-left-style: solid;
+    border-left-color: #709fd5;
+    border-right-width: 1;
+    border-top-style: solid;
+    border-top-width: 1;
+    border-top-color: #709fd5;
+    padding-left: 6;
+    padding-right: 6;
+    padding-top: 3;
+    padding-bottom: 3;
 }
 
-/*ÌØÊâ°´Å¥ÑùÊ½ */
+.clsfth3 {
+    background-color: #e5edf8;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+    border-left-width: 1;
+    border-left-style: solid;
+    border-left-color: #709fd5;
+    border-right-width: 1;
+    border-right-style: solid;
+    border-right-color: #709fd5;
+    border-top-style: solid;
+    border-top-width: 1;
+    border-top-color: #709fd5;
+    padding-left: 6;
+    padding-right: 6;
+    padding-top: 3;
+    padding-bottom: 3;
+}
+
+/*Í¨ï¿½Ã°ï¿½Å¥ï¿½ï¿½Ê½ --> ï¿½ï¿½ï¿½ï¿½<input type="button" ... class=clsbtn>*/
+.clsbtn {
+    background-color: #FBF6BC;
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
+}
+
+/*ï¿½ï¿½ï¿½â°´Å¥ï¿½ï¿½Ê½ */
 .clsbtn1 {
-	background-color: #FBF6BC;
-	height: 20px;
-	width: 50px;
-	margin-top: 10px;
+    background-color: #FBF6BC;
+    height: 20px;
+    width: 50px;
+    margin-top: 10px;
 }
 
 .clsbtn2 {
-	height: 20px;
-	width: 60px;
-	background-color: #8EC1F0;
-	border-top-style: solid;
-	border-top-width: 0;
-	border-top-color:#709fd5;
-	border-left-style: solid;
-	border-left-width: 0;
-	border-left-color:#709fd5;
-	border-right-style: solid;
-	border-right-width: 1;
-	border-right-color:#709fd5;
-	border-bottom-style: solid;
-	border-bottom-width: 1;
-	border-bottom-color:#709fd5;
-	font-size: 12px;
+    height: 20px;
+    width: 60px;
+    background-color: #8EC1F0;
+    border-top-style: solid;
+    border-top-width: 0;
+    border-top-color: #709fd5;
+    border-left-style: solid;
+    border-left-width: 0;
+    border-left-color: #709fd5;
+    border-right-style: solid;
+    border-right-width: 1;
+    border-right-color: #709fd5;
+    border-bottom-style: solid;
+    border-bottom-width: 1;
+    border-bottom-color: #709fd5;
+    font-size: 12px;
 }
 
-/*ÄÚÈÝ½çÃæÍ¨ÓÃ¹ö¶¯ÌõºÍ±³¾°ÑùÊ½-->¶¨ÒåÔÚ
-Àý£º	<html>
+/*ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½Í¨ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í±ï¿½ï¿½ï¿½ï¿½ï¿½Ê½-->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½	<html>
     	<head>
 	<title>table</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
@@ -489,56 +583,94 @@ A.head:visited {COLOR: #ffffff;font-size: 12px; TEXT-DECORATION: none};
 	<body bgcolor="#FFFFFF"  leftmargin="0" topmargin="0" class="clssclbar">
 	<table width="100%" height="100%">
   	<tr>
-    	<td  align="center" valign="top">ÖÐ
-    ËùÓÐÄÚÈÝ½çÃæ±ØÐëÊ¹ÓÃÕâ¸öÑùÊ½*/
+    	<td  align="center" valign="top">ï¿½ï¿½
+    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½*/
 
-.clssclbar{
-	scrollbar-base-color: #426492;
-	scrollbar-arrow-color: #000000;
-	scrollbar-highlight-color: #ffffff;
-	scrollbar-darkshadow-color: #c3c3c3;
-	scrollbar-face-color: #f3ffff;
-	scrollbar-shadow-color: #426492;
-	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
-	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
+.clssclbar {
+    scrollbar-base-color: #426492;
+    scrollbar-arrow-color: #000000;
+    scrollbar-highlight-color: #ffffff;
+    scrollbar-darkshadow-color: #c3c3c3;
+    scrollbar-face-color: #f3ffff;
+    scrollbar-shadow-color: #426492;
+    SCROLLBAR-3DLIGHT-COLOR: #104cb9;
+    SCROLLBAR-TRACK-COLOR: #bdd1f4;
 
-	background-image:  url(../images/bottom/bj_1_1.gif);
+    background-image: url(../images/bottom/bj_1_1.gif);
 }
 
-/*ÄÚÈÝ½çÃæÌØÊâ¹ö¶¯ÌõÑùÊ½ dutyfile.jsp*/
-.clssclbar1{
-	scrollbar-base-color: #426492;
-	scrollbar-arrow-color: #000000;
-	scrollbar-highlight-color: #ffffff;
-	scrollbar-darkshadow-color: #c3c3c3;
-	scrollbar-face-color: #f3ffff;
-	scrollbar-shadow-color: #426492;
-	SCROLLBAR-3DLIGHT-COLOR: #104cb9 ;
-	SCROLLBAR-TRACK-COLOR: #bdd1f4 ;
-	border: solid 0px #87CEEB;
-	background-color: #E6EEF9;
+/*ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ dutyfile.jsp*/
+.clssclbar1 {
+    scrollbar-base-color: #426492;
+    scrollbar-arrow-color: #000000;
+    scrollbar-highlight-color: #ffffff;
+    scrollbar-darkshadow-color: #c3c3c3;
+    scrollbar-face-color: #f3ffff;
+    scrollbar-shadow-color: #426492;
+    SCROLLBAR-3DLIGHT-COLOR: #104cb9;
+    SCROLLBAR-TRACK-COLOR: #bdd1f4;
+    border: solid 0px #87CEEB;
+    background-color: #E6EEF9;
 }
 
-/*Ö÷±í¸ñ±ß¿òÑùÊ½ Àý£º<table ... class="clstblc1">*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½Ê½ ï¿½ï¿½ï¿½ï¿½<table ... class="clstblc1">*/
 .clstblcl {
-	border: 2px solid #BCBABB;
+    border: 2px solid #BCBABB;
 }
 
-/*textarea±ß¿òÑùÊ½ Àý£º<input ... type="text" ... class="clstext">*/
+/*textareaï¿½ß¿ï¿½ï¿½ï¿½Ê½ ï¿½ï¿½ï¿½ï¿½<input ... type="text" ... class="clstext">*/
 .clstext {
-	border: 1px solid #174EA8;
+    border: 1px solid #174EA8;
 }
 
-/*Í¨ÓÃÁ¬½ÓÑùÊ½ --> Àý£º<...class="clslink">*/
-a.clslink:link {color: #ffffff; font_size: 12; TEXT-DECORATION: none}
-a.clslink:hover{color: #990033; font-size: 12; TEXT-DECORATION: none}
-a.clslink:active{color: #cc3300; font-size: 12; TEXT-DECORATION: none}
-a.clslink:visited{color: #ffffff; font-size: 12; TEXT-DECORATION: none}
+/*Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ --> ï¿½ï¿½ï¿½ï¿½<...class="clslink">*/
+a.clslink:link {
+    color: #ffffff;
+    font_size: 12;
+    TEXT-DECORATION: none
+}
 
-a {font-size:12px;color:#104CB9;text-decoration:none}
-A:link {COLOR: #104CB9;font-size: 12px; TEXT-DECORATION: none}
-A:hover {COLOR: #104CB9;font-size: 12px; TEXT-DECORATION: none}
-A:active {COLOR: #37C0FE;font-size: 12px; TEXT-DECORATION: none}
+a.clslink:hover {
+    color: #990033;
+    font-size: 12;
+    TEXT-DECORATION: none
+}
+
+a.clslink:active {
+    color: #cc3300;
+    font-size: 12;
+    TEXT-DECORATION: none
+}
+
+a.clslink:visited {
+    color: #ffffff;
+    font-size: 12;
+    TEXT-DECORATION: none
+}
+
+a {
+    font-size: 12px;
+    color: #104CB9;
+    text-decoration: none
+}
+
+A:link {
+    COLOR: #104CB9;
+    font-size: 12px;
+    TEXT-DECORATION: none
+}
+
+A:hover {
+    COLOR: #104CB9;
+    font-size: 12px;
+    TEXT-DECORATION: none
+}
+
+A:active {
+    COLOR: #37C0FE;
+    font-size: 12px;
+    TEXT-DECORATION: none
+}
 
 
-×¢£ºÈç°´Å¥£¬ÎÄ±¾¿òµÈÊ¹ÓÃ±êÇ© classÓÃstyleClassÌæ»».
+×¢ï¿½ï¿½ï¿½ç°´Å¥ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã±ï¿½Ç© classï¿½ï¿½styleClassï¿½æ»».

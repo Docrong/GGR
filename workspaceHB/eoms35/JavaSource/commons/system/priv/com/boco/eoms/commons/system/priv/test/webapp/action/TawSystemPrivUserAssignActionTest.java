@@ -6,90 +6,90 @@ import com.boco.eoms.commons.system.priv.webapp.form.TawSystemPrivUserAssignForm
 
 public class TawSystemPrivUserAssignActionTest extends BaseStrutsTestCase {
 
-	public TawSystemPrivUserAssignActionTest(String name) {
-		super(name);
-	}
+    public TawSystemPrivUserAssignActionTest(String name) {
+        super(name);
+    }
 
-	public void testAdd() throws Exception {
-		setRequestPathInfo("/saveTawSystemPrivUserAssign");
-		addRequestParameter("method", "Save");
+    public void testAdd() throws Exception {
+        setRequestPathInfo("/saveTawSystemPrivUserAssign");
+        addRequestParameter("method", "Save");
 
-		TawSystemPrivUserAssignForm tawSystemPrivUserAssignForm = new TawSystemPrivUserAssignForm();
-		// set required fields
+        TawSystemPrivUserAssignForm tawSystemPrivUserAssignForm = new TawSystemPrivUserAssignForm();
+        // set required fields
 
-		request.setAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY,
-				tawSystemPrivUserAssignForm);
+        request.setAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY,
+                tawSystemPrivUserAssignForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 
-	public void testSearch() {
-		setRequestPathInfo("/tawSystemPrivUserAssigns");
-		addRequestParameter("method", "Search");
+    public void testSearch() {
+        setRequestPathInfo("/tawSystemPrivUserAssigns");
+        addRequestParameter("method", "Search");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("list");
-		assertNotNull(request
-				.getAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_LIST));
-	}
+        verifyNoActionErrors();
+        verifyForward("list");
+        assertNotNull(request
+                .getAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_LIST));
+    }
 
-	public void testEdit() throws Exception {
-		setRequestPathInfo("/editTawSystemPrivUserAssign");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testEdit() throws Exception {
+        setRequestPathInfo("/editTawSystemPrivUserAssign");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
-		assertNotNull(request
-				.getAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY));
+        verifyNoActionErrors();
+        verifyForward("edit");
+        assertNotNull(request
+                .getAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY));
 
-	}
+    }
 
-	public void testSave() throws Exception {
-		setRequestPathInfo("/editTawSystemPrivUserAssign");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testSave() throws Exception {
+        setRequestPathInfo("/editTawSystemPrivUserAssign");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		TawSystemPrivUserAssignForm tawSystemPrivUserAssignForm = (TawSystemPrivUserAssignForm) request
-				.getAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY);
-		assertNotNull(tawSystemPrivUserAssignForm);
+        TawSystemPrivUserAssignForm tawSystemPrivUserAssignForm = (TawSystemPrivUserAssignForm) request
+                .getAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY);
+        assertNotNull(tawSystemPrivUserAssignForm);
 
-		setRequestPathInfo("/saveTawSystemPrivUserAssign");
-		addRequestParameter("method", "Save");
+        setRequestPathInfo("/saveTawSystemPrivUserAssign");
+        addRequestParameter("method", "Save");
 
-		// update the form's required string fields and add it back to the
-		// request
+        // update the form's required string fields and add it back to the
+        // request
 
-		request.setAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY,
-				tawSystemPrivUserAssignForm);
+        request.setAttribute(Constants.TAWSYSTEMPRIVUSERASSIGN_KEY,
+                tawSystemPrivUserAssignForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
+        verifyNoActionErrors();
+        verifyForward("edit");
 
-		// verify success messages
-		verifyActionMessages(new String[] { "tawSystemPrivUserAssign.updated" });
+        // verify success messages
+        verifyActionMessages(new String[]{"tawSystemPrivUserAssign.updated"});
 
-	}
+    }
 
-	public void testRemove() throws Exception {
-		setRequestPathInfo("/editTawSystemPrivUserAssign");
-		addRequestParameter("method", "Delete");
-		addRequestParameter("id", "2");
+    public void testRemove() throws Exception {
+        setRequestPathInfo("/editTawSystemPrivUserAssign");
+        addRequestParameter("method", "Delete");
+        addRequestParameter("id", "2");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 }

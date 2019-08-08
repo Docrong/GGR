@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.system.priv.model;
 
 // java standard library
+
 import java.io.Serializable;
 
 // eoms library
@@ -15,7 +16,7 @@ import com.boco.eoms.base.model.BaseObject;
  * mapping file.
  * <p>
  * <a href="TawSystemPrivMenu.java.html"><i>View Source</i></a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a> Updated by
  *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
  *         UserDetails interface by David Carter david@carter.net
@@ -24,114 +25,114 @@ import com.boco.eoms.base.model.BaseObject;
  */
 public class TawSystemPrivMenu extends BaseObject implements Serializable {
 
-	private String privid;
+    private String privid;
 
-	private String Name;
+    private String Name;
 
-	private String ownerId;
+    private String ownerId;
 
-	private String remark;
-	
-	private String nature; //平台性质 add by gongyufeng 新增wap和eoms对菜单的区别
+    private String remark;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.boco.eoms.base.model.BaseObject#equals(java.lang.Object)
-	 */
+    private String nature; //平台性质 add by gongyufeng 新增wap和eoms对菜单的区别
 
-	public boolean equals(Object o) {
-		return false;
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.boco.eoms.base.model.BaseObject#equals(java.lang.Object)
+     */
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.boco.eoms.base.model.BaseObject#hashCode()
-	 */
+    public boolean equals(Object o) {
+        return false;
+    }
 
-	public int hashCode() {
-		return 0;
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.boco.eoms.base.model.BaseObject#hashCode()
+     */
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.boco.eoms.base.model.BaseObject#toString()
-	 */
+    public int hashCode() {
+        return 0;
+    }
 
-	public String toString() {
-		return null;
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see com.boco.eoms.base.model.BaseObject#toString()
+     */
 
-	/**
-	 * @struts.validator type="required"
-	 * @hibernate.property length="100" not-null="true" unique="true"
-	 */
-	public String getName() {
-		return Name;
-	}
+    public String toString() {
+        return null;
+    }
 
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public void setName(String name) {
-		Name = name;
-	}
+    /**
+     * @struts.validator type="required"
+     * @hibernate.property length="100" not-null="true" unique="true"
+     */
+    public String getName() {
+        return Name;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 * @hibernate.property length="200" not-null="true" unique="false"
-	 */
-	public String getOwnerId() {
-		return ownerId;
-	}
+    /**
+     * @param name
+     *            the name to set
+     */
+    public void setName(String name) {
+        Name = name;
+    }
 
-	/**
-	 * @param ownerId
-	 *            the ownerId to set
-	 */
-	public void setOwnerId(String ownerId) {
-		this.ownerId = ownerId;
-	}
+    /**
+     * @struts.validator type="required"
+     * @hibernate.property length="200" not-null="true" unique="false"
+     */
+    public String getOwnerId() {
+        return ownerId;
+    }
 
-	/**
-	 * @hibernate.property length="200"
-	 */
-	public String getRemark() {
-		return remark;
-	}
+    /**
+     * @param ownerId
+     *            the ownerId to set
+     */
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
 
-	/**
-	 * @param remark
-	 *            the remark to set
-	 */
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    /**
+     * @hibernate.property length="200"
+     */
+    public String getRemark() {
+        return remark;
+    }
 
-	/**
-	 * @return the privid
-	 */
-	public String getPrivid() {
-		return privid;
-	}
+    /**
+     * @param remark
+     *            the remark to set
+     */
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	/**
-	 * @param privid
-	 *            the privid to set
-	 */
-	public void setPrivid(String privid) {
-		this.privid = privid;
-	}
+    /**
+     * @return the privid
+     */
+    public String getPrivid() {
+        return privid;
+    }
 
-	public String getNature() {
-		return nature;
-	}
+    /**
+     * @param privid
+     *            the privid to set
+     */
+    public void setPrivid(String privid) {
+        this.privid = privid;
+    }
 
-	public void setNature(String nature) {
-		this.nature = nature;
-	}
+    public String getNature() {
+        return nature;
+    }
+
+    public void setNature(String nature) {
+        this.nature = nature;
+    }
 
 }

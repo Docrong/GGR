@@ -35,7 +35,7 @@ public class EmailMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         emailMonitorDao.expects(once()).method("getEmailMonitors")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List emailMonitors = emailMonitorManager.getEmailMonitors(null);
         assertTrue(emailMonitors.size() == 1);
@@ -45,7 +45,7 @@ public class EmailMonitorManagerTest extends BaseManagerTestCase {
     public void testGetEmailMonitor() throws Exception {
         // set expected behavior on dao
         emailMonitorDao.expects(once()).method("getEmailMonitor")
-            .will(returnValue(new EmailMonitor()));
+                .will(returnValue(new EmailMonitor()));
         EmailMonitor emailMonitor = emailMonitorManager.getEmailMonitor(emailMonitorId);
         assertTrue(emailMonitor != null);
         emailMonitorDao.verify();
@@ -56,7 +56,7 @@ public class EmailMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         emailMonitorDao.expects(once()).method("saveEmailMonitor")
-            .with(same(emailMonitor)).isVoid();
+                .with(same(emailMonitor)).isVoid();
 
         emailMonitorManager.saveEmailMonitor(emailMonitor);
         emailMonitorDao.verify();
@@ -74,7 +74,7 @@ public class EmailMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         emailMonitorDao.expects(once()).method("saveEmailMonitor")
-            .with(same(emailMonitor)).isVoid();
+                .with(same(emailMonitor)).isVoid();
         emailMonitorManager.saveEmailMonitor(emailMonitor);
         emailMonitorDao.verify();
 

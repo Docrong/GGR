@@ -35,7 +35,7 @@ public class SmsApplyManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsApplyDao.expects(once()).method("getSmsApplys")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List smsApplys = smsApplyManager.getSmsApplys(null);
         assertTrue(smsApplys.size() == 1);
@@ -45,7 +45,7 @@ public class SmsApplyManagerTest extends BaseManagerTestCase {
     public void testGetSmsApply() throws Exception {
         // set expected behavior on dao
         smsApplyDao.expects(once()).method("getSmsApply")
-            .will(returnValue(new SmsApply()));
+                .will(returnValue(new SmsApply()));
         SmsApply smsApply = smsApplyManager.getSmsApply(smsApplyId);
         assertTrue(smsApply != null);
         smsApplyDao.verify();
@@ -56,7 +56,7 @@ public class SmsApplyManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsApplyDao.expects(once()).method("saveSmsApply")
-            .with(same(smsApply)).isVoid();
+                .with(same(smsApply)).isVoid();
 
         smsApplyManager.saveSmsApply(smsApply);
         smsApplyDao.verify();
@@ -75,14 +75,14 @@ public class SmsApplyManagerTest extends BaseManagerTestCase {
         smsApply.setReceiverType("X");
         smsApply.setRegetData("Q");
         smsApply.setRemark("LmCjKoDtHxCmQwVnSkPbAkSeWnSiFzHxYhHpElAzQxLtQbIsOsLmXkZhYgLqArUyDeRwBoNwKaIwBeSmAfVzZtTuBgCpZhPwYdAvFxFjUdAjJcMyJiNzAkEaRaBsRpCuZcWlMgCtSkFiLqHlZcKwWmFsPsJjRgBnFlTiXxEaTvBhMmUiFcYdCyTvJpTcUsVfNdYuEpNt");
-        
+
         smsApply.setServiceId("QoWgDkXkBsEnQpBgCgCtRkRbDuDjMgUv");
         smsApply.setStartTime(new java.util.Date());
         smsApply.setUserId("ZeUnTaUgLrSjEkEwBqXtLhMtPnEbPp");
 
         // set expected behavior on dao
         smsApplyDao.expects(once()).method("saveSmsApply")
-            .with(same(smsApply)).isVoid();
+                .with(same(smsApply)).isVoid();
         smsApplyManager.saveSmsApply(smsApply);
         smsApplyDao.verify();
 

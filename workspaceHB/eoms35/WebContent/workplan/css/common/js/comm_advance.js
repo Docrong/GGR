@@ -1,103 +1,93 @@
 /********************************************************************
-' Copyright (c) 2002,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
-' All rights reserved.
-' Filename £ºcomm_advance.js
-' Abstract £º³£ÓÃÄÚÈÝÏÔÊ¾Ò³ÌØÐ§²Ù×÷
-' Version  £º1.0
-' Author   £ºLiu Guoyuan
-' Finished Date £º2003-01-14
-' Last Modify £º2003-01-16
+ ' Copyright (c) 2002,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
+ ' All rights reserved.
+ ' Filename ï¿½ï¿½comm_advance.js
+ ' Abstract ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Ò³ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
+ ' Version  ï¿½ï¿½1.0
+ ' Author   ï¿½ï¿½Liu Guoyuan
+ ' Finished Date ï¿½ï¿½2003-01-14
+ ' Last Modify ï¿½ï¿½2003-01-16
 
-' Ò»°ãÓÃÓÚ¼ÇÂ¼³ÊÏÖÒ³Ãæ¡£
-' ¹¦ÄÜ£ºµ¥Ôª¸ñ±³¾°ÑÕÉ«½»»»£¬µã»÷µ¥Ôª¸ñÊ±Ñ¡ÖÐÏàÓ¦CheckBox°´Å¦£¬²¢¹Ì¶¨µ¥Ôª¸ñ±³¾°É«
-*********************************************************************/
+ ' Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æ¡£
+ ' ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Ôªï¿½ñ±³¾ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Ê±Ñ¡ï¿½ï¿½ï¿½ï¿½Ó¦CheckBoxï¿½ï¿½Å¦ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ï¿½Ôªï¿½ñ±³¾ï¿½É«
+ *********************************************************************/
 
-function TD_OnMouseOver_ChangeColor()
-{
-	var clickObject = event.srcElement;
-	var objTD = GetParent(clickObject,"TD")
-	var objTR = GetParent(clickObject,"TR");
-	var objTable = GetParent(clickObject,"TABLE");
-	var obj;
-	if (objTD != null && objTR.className=="TableBodyOut")
-	{
-		objTR.className ="TableBodyOver";
-	}
+function TD_OnMouseOver_ChangeColor() {
+    var clickObject = event.srcElement;
+    var objTD = GetParent(clickObject, "TD")
+    var objTR = GetParent(clickObject, "TR");
+    var objTable = GetParent(clickObject, "TABLE");
+    var obj;
+    if (objTD != null && objTR.className == "TableBodyOut") {
+        objTR.className = "TableBodyOver";
+    }
 }
-function TD_OnMouseOut_ChangeColor()
-{
-		var clickObject = event.srcElement;
-		var objTD = GetParent(clickObject,"TD")
-		var objTR = GetParent(clickObject,"TR")
-		var objTable = GetParent(clickObject,"TABLE")
-		var obj
-		if (objTD != null && objTR.className=="TableBodyOver")
-		{
-			intRowIndex=objTR.rowIndex;
-			if (typeof(document.del)!="undefined") //Èç¹û±íµ¥´æÔÚ£¬Ôò¸ù¾ÝËùÑ¡ÐÐÅÐ¶ÏÊÇ·ñ¹Ì¶¨µ¥Ôª¸ñÑÕÉ«
-				if (typeof(document.del.mid)!="undefined")
-					if (objTable.rows.length==2)
-					{	if (!document.del.mid.checked) objTR.className ="TableBodyOut";}
-					else
-					{	if (!document.del.mid[intRowIndex-1].checked) objTR.className ="TableBodyOut";}
-			else
-				{objTR.className ="TableBodyOut";}
-		}
+
+function TD_OnMouseOut_ChangeColor() {
+    var clickObject = event.srcElement;
+    var objTD = GetParent(clickObject, "TD")
+    var objTR = GetParent(clickObject, "TR")
+    var objTable = GetParent(clickObject, "TABLE")
+    var obj
+    if (objTD != null && objTR.className == "TableBodyOver") {
+        intRowIndex = objTR.rowIndex;
+        if (typeof (document.del) != "undefined") //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Ì¶ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½É«
+            if (typeof (document.del.mid) != "undefined")
+                if (objTable.rows.length == 2) {
+                    if (!document.del.mid.checked) objTR.className = "TableBodyOut";
+                } else {
+                    if (!document.del.mid[intRowIndex - 1].checked) objTR.className = "TableBodyOut";
+                }
+            else {
+                objTR.className = "TableBodyOut";
+            }
+    }
 }
-function TD_OnClick_SelectCheckbox()
-{//µã»÷µ¥Ôª¸ñÊ±Ñ¡ÖÐÏàÓ¦CheckBox
-	if (typeof(document.del)!="undefined")
-	{
-		var obj;
-		var clickObject = event.srcElement;
-		var objTD = GetParent(clickObject,"TD")
-		var objTR = GetParent(clickObject,"TR")
-		if (GetParent(clickObject,"TD") != null && objTR.className=="TableBodyOver")
-		{
-			objTable=GetParent(clickObject,"TABLE");
-			intRowIndex=objTR.rowIndex;
-			SelectCheckbox("document.del",intRowIndex-1);
-			//Obj.style.backgroundColor='#ABCBE2';
-		}
-	}
+
+function TD_OnClick_SelectCheckbox() {//ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Ê±Ñ¡ï¿½ï¿½ï¿½ï¿½Ó¦CheckBox
+    if (typeof (document.del) != "undefined") {
+        var obj;
+        var clickObject = event.srcElement;
+        var objTD = GetParent(clickObject, "TD")
+        var objTR = GetParent(clickObject, "TR")
+        if (GetParent(clickObject, "TD") != null && objTR.className == "TableBodyOver") {
+            objTable = GetParent(clickObject, "TABLE");
+            intRowIndex = objTR.rowIndex;
+            SelectCheckbox("document.del", intRowIndex - 1);
+            //Obj.style.backgroundColor='#ABCBE2';
+        }
+    }
 }
+
 document.onmouseover = TD_OnMouseOver_ChangeColor
 document.onmouseout = TD_OnMouseOut_ChangeColor
 document.onclick = TD_OnClick_SelectCheckbox
 
-function SelectCheckbox(form,i)
-{
-//µã»÷µ¥Ôª¸ñÊ±Ñ¡ÖÐÏàÓ¦µÄcheckbox
-//²ÎÊýÎª£º±íµ¥£¬Ë÷ÒýÖµ  
-	try
-	{                                                                
-		var clickObject = event.srcElement;
-		if (clickObject.type=="checkbox" || clickObject.tagName=="A")
-		{
-			return;
-		}
-		var form=eval(form);
-		count=parseInt(form.elements.length);
-		if (count==0) return;
-		if (count==1)
-		{
-			 form.mid.checked = !form.mid.checked;
-		}
-		else
-		{
-			form.mid[i].checked = !form.mid[i].checked;
-		}
-	}
-	catch(e)
-	{
-		return;
-	}
+function SelectCheckbox(form, i) {
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Ê±Ñ¡ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½checkbox
+//ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ  
+    try {
+        var clickObject = event.srcElement;
+        if (clickObject.type == "checkbox" || clickObject.tagName == "A") {
+            return;
+        }
+        var form = eval(form);
+        count = parseInt(form.elements.length);
+        if (count == 0) return;
+        if (count == 1) {
+            form.mid.checked = !form.mid.checked;
+        } else {
+            form.mid[i].checked = !form.mid[i].checked;
+        }
+    } catch (e) {
+        return;
+    }
 }
 
 function GetParent(el, pTagName) {
-	if (el == null) return null;
-	else if (el.nodeType == 1 && el.tagName.toLowerCase() == pTagName.toLowerCase())	// Gecko bug, supposed to be uppercase
-		return el;
-	else
-		return GetParent(el.parentNode, pTagName);
+    if (el == null) return null;
+    else if (el.nodeType == 1 && el.tagName.toLowerCase() == pTagName.toLowerCase())	// Gecko bug, supposed to be uppercase
+        return el;
+    else
+        return GetParent(el.parentNode, pTagName);
 }

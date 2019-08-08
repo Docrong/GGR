@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,73 +13,73 @@
             table="Transprovincial_link"
     >
 
-    <id
-        name="id"
-            column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="mainId" />
-       	<property name="nodeAcceptLimit" />
-		<property name="nodeCompleteLimit" />
-		<property name="operateType" />
-		<property name="operateTime" />
-		<property name="operateOrgType" />
-		<property name="operateUserId" />
-		<property name="operateDeptId" />
-		<property name="operateRoleId" />
-		<property name="operaterContact" />
-		<property name="toOrgType" />
-		<property name="toOrgUserId" />
-		<property name="toOrgDeptId" />
-		<property name="toOrgRoleId" />
-		<property name="acceptFlag" />
-		<property name="acceptTime" />
-		<property name="completeFlag" />
-		<property name="completeTime" />
-		<property name="preLinkId" />
-		<property name="parentLinkId" />
-		<property name="firstLinkId" />
-		<property name="piid" />
-		<property name="aiid" />
-		<property name="activeTemplateId" />
-		<property name="nodeTemplateName" />
-		<property name="correlationKey" />
-		<property name="nodeAccessories" />
-		<property name="templateFlag" />
-		<property name="templateName" />
-		<property name="templateCreateUserId" />
-		<property name="transferReason" />
-		<property name="remark" />
-		<property name="operateYear" />
-		<property name="operateMonth" />
-		<property name="operateDay" />
-		<property name="linkSendObject" />
-	
-		<property  name="assignmentResult" />	
-	
-		<property  name="desginResult" />	
-	
-		<property  name="examineResult" />	
-	
-		<property  name="constractCondition" />	
-	
-		<property  name="completeResult" />	
-	
-		<property  name="acceptanceCondition" />	
-	
-		<property  name="acceptanceResult" />	
-	
-		<property  name="completionResult" />	
-	
-		<property  name="replyResult" />	
-	
-		<property  name="linkGroupComplete" />	
+        </id>
+        <property name="mainId"/>
+        <property name="nodeAcceptLimit"/>
+        <property name="nodeCompleteLimit"/>
+        <property name="operateType"/>
+        <property name="operateTime"/>
+        <property name="operateOrgType"/>
+        <property name="operateUserId"/>
+        <property name="operateDeptId"/>
+        <property name="operateRoleId"/>
+        <property name="operaterContact"/>
+        <property name="toOrgType"/>
+        <property name="toOrgUserId"/>
+        <property name="toOrgDeptId"/>
+        <property name="toOrgRoleId"/>
+        <property name="acceptFlag"/>
+        <property name="acceptTime"/>
+        <property name="completeFlag"/>
+        <property name="completeTime"/>
+        <property name="preLinkId"/>
+        <property name="parentLinkId"/>
+        <property name="firstLinkId"/>
+        <property name="piid"/>
+        <property name="aiid"/>
+        <property name="activeTemplateId"/>
+        <property name="nodeTemplateName"/>
+        <property name="correlationKey"/>
+        <property name="nodeAccessories"/>
+        <property name="templateFlag"/>
+        <property name="templateName"/>
+        <property name="templateCreateUserId"/>
+        <property name="transferReason"/>
+        <property name="remark"/>
+        <property name="operateYear"/>
+        <property name="operateMonth"/>
+        <property name="operateDay"/>
+        <property name="linkSendObject"/>
 
-</class>    
+        <property name="assignmentResult"/>
+
+        <property name="desginResult"/>
+
+        <property name="examineResult"/>
+
+        <property name="constractCondition"/>
+
+        <property name="completeResult"/>
+
+        <property name="acceptanceCondition"/>
+
+        <property name="acceptanceResult"/>
+
+        <property name="completionResult"/>
+
+        <property name="replyResult"/>
+
+        <property name="linkGroupComplete"/>
+
+    </class>
 </hibernate-mapping>

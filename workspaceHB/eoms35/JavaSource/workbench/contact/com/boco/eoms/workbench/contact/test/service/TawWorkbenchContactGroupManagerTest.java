@@ -35,7 +35,7 @@ public class TawWorkbenchContactGroupManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchContactGroupDao.expects(once()).method("getTawWorkbenchContactGroups")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawWorkbenchContactGroups = tawWorkbenchContactGroupManager.getTawWorkbenchContactGroups(null);
         assertTrue(tawWorkbenchContactGroups.size() == 1);
@@ -45,7 +45,7 @@ public class TawWorkbenchContactGroupManagerTest extends BaseManagerTestCase {
     public void testGetTawWorkbenchContactGroup() throws Exception {
         // set expected behavior on dao
         tawWorkbenchContactGroupDao.expects(once()).method("getTawWorkbenchContactGroup")
-            .will(returnValue(new TawWorkbenchContactGroup()));
+                .will(returnValue(new TawWorkbenchContactGroup()));
         TawWorkbenchContactGroup tawWorkbenchContactGroup = tawWorkbenchContactGroupManager.getTawWorkbenchContactGroup(tawWorkbenchContactGroupId);
         assertTrue(tawWorkbenchContactGroup != null);
         tawWorkbenchContactGroupDao.verify();
@@ -56,7 +56,7 @@ public class TawWorkbenchContactGroupManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchContactGroupDao.expects(once()).method("saveTawWorkbenchContactGroup")
-            .with(same(tawWorkbenchContactGroup)).isVoid();
+                .with(same(tawWorkbenchContactGroup)).isVoid();
 
         tawWorkbenchContactGroupManager.saveTawWorkbenchContactGroup(tawWorkbenchContactGroup);
         tawWorkbenchContactGroupDao.verify();
@@ -69,7 +69,7 @@ public class TawWorkbenchContactGroupManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchContactGroupDao.expects(once()).method("saveTawWorkbenchContactGroup")
-            .with(same(tawWorkbenchContactGroup)).isVoid();
+                .with(same(tawWorkbenchContactGroup)).isVoid();
         tawWorkbenchContactGroupManager.saveTawWorkbenchContactGroup(tawWorkbenchContactGroup);
         tawWorkbenchContactGroupDao.verify();
 

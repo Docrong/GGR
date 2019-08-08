@@ -10,23 +10,24 @@ import java.util.List;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class RoleMappings {
-	List roleModel = null;
-	
-	/**
-	 * @return Returns the roleModel.
-	 */
-	public List getRoleModel() {
-		return roleModel;
-	}
-	/**
-	 * @param roleModel The roleModel to set.
-	 */
-	public void setRoleModel(List roleModel) {
-		this.roleModel = roleModel;
-	}
+    List roleModel = null;
+
+    /**
+     * @return Returns the roleModel.
+     */
+    public List getRoleModel() {
+        return roleModel;
+    }
+
+    /**
+     * @param roleModel The roleModel to set.
+     */
+    public void setRoleModel(List roleModel) {
+        this.roleModel = roleModel;
+    }
 }

@@ -7,31 +7,44 @@ import java.sql.Timestamp;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2006</p>
  * <p>Company: </p>
+ *
  * @author zhangxiaobo
  * @version 1.0
  */
 
-public class Faultrecord{
+public class Faultrecord {
 
     public Faultrecord() {
     }
-    
-    /** ������� */
+
+    /**
+     * �������
+     */
     private String id;
-    
-    /** ������ */
+
+    /**
+     * ������
+     */
     private String userId;
-    
-    /** �������� */
+
+    /**
+     * ��������
+     */
     private String deptId;
-    
-    /** ����ʱ�� */
+
+    /**
+     * ����ʱ��
+     */
     private Timestamp insertTime;
 
-    /** ɾ���� */
+    /**
+     * ɾ����
+     */
     private int delFlag;
 
-    /** ���� */
+    /**
+     * ����
+     */
     private String accessories;
 
     public String getId() {
@@ -83,14 +96,16 @@ public class Faultrecord{
     }
 
 
-  /*****************************************************************
-   * �����Ǹ��?���е�����
-   *****************************************************************/
+    /*****************************************************************
+     * �����Ǹ��?���е�����
+     *****************************************************************/
 
 
-    /** �澯ʱ�� */
+    /**
+     * �澯ʱ��
+     */
     private Timestamp startTime;
-    
+
     public Timestamp getStartTime() {
         return this.startTime;
     }
@@ -100,9 +115,11 @@ public class Faultrecord{
     }
 
 
-    /** ��Ԫ��� */
+    /**
+     * ��Ԫ���
+     */
     private String networkName;
-    
+
     public String getNetworkName() {
         return this.networkName;
     }
@@ -112,9 +129,11 @@ public class Faultrecord{
     }
 
 
-    /** �豸���� */
+    /**
+     * �豸����
+     */
     private int devVendor;
-    
+
     public int getDevVendor() {
         return this.devVendor;
     }
@@ -124,9 +143,11 @@ public class Faultrecord{
     }
 
 
-    /** �豸���� */
+    /**
+     * �豸����
+     */
     private int devicetype;
-    
+
     public int getDevicetype() {
         return this.devicetype;
     }
@@ -136,9 +157,11 @@ public class Faultrecord{
     }
 
 
-    /** ���ϵ�Ԫ���� */
+    /**
+     * ���ϵ�Ԫ����
+     */
     private int faultUnitLevel;
-    
+
     public int getFaultUnitLevel() {
         return this.faultUnitLevel;
     }
@@ -148,9 +171,11 @@ public class Faultrecord{
     }
 
 
-    /** ���ϼ��� */
+    /**
+     * ���ϼ���
+     */
     private int faultLevel;
-    
+
     public int getFaultLevel() {
         return this.faultLevel;
     }
@@ -160,9 +185,11 @@ public class Faultrecord{
     }
 
 
-    /** �������� */
+    /**
+     * ��������
+     */
     private String faultContent;
-    
+
     public String getFaultContent() {
         return this.faultContent;
     }
@@ -172,9 +199,11 @@ public class Faultrecord{
     }
 
 
-    /** ���ϴ������ */
+    /**
+     * ���ϴ������
+     */
     private String faultResult;
-    
+
     public String getFaultResult() {
         return this.faultResult;
     }
@@ -184,9 +213,11 @@ public class Faultrecord{
     }
 
 
-    /** �����걨�� */
+    /**
+     * �����걨��
+     */
     private String declareUser;
-    
+
     public String getDeclareUser() {
         return this.declareUser;
     }
@@ -196,9 +227,11 @@ public class Faultrecord{
     }
 
 
-    /** �걨ʱ�� */
+    /**
+     * �걨ʱ��
+     */
     private Timestamp declareTime;
-    
+
     public Timestamp getDeclareTime() {
         return this.declareTime;
     }
@@ -208,9 +241,11 @@ public class Faultrecord{
     }
 
 
-    /** ���ϴ����� */
+    /**
+     * ���ϴ�����
+     */
     private String dealUser;
-    
+
     public String getDealUser() {
         return this.dealUser;
     }
@@ -220,9 +255,11 @@ public class Faultrecord{
     }
 
 
-    /** ����ʱ�� */
+    /**
+     * ����ʱ��
+     */
     private Timestamp dealTime;
-    
+
     public Timestamp getDealTime() {
         return this.dealTime;
     }
@@ -232,9 +269,11 @@ public class Faultrecord{
     }
 
 
-    /** ���ϻָ� */
+    /**
+     * ���ϻָ�
+     */
     private Timestamp endTime;
-    
+
     public Timestamp getEndTime() {
         return this.endTime;
     }
@@ -244,9 +283,11 @@ public class Faultrecord{
     }
 
 
-    /** ������ */
+    /**
+     * ������
+     */
     private int problemSolveInfo;
-    
+
     public int getProblemSolveInfo() {
         return this.problemSolveInfo;
     }
@@ -256,9 +297,11 @@ public class Faultrecord{
     }
 
 
-    /** ������ʱ */
+    /**
+     * ������ʱ
+     */
     private String totalTime;
-    
+
     public String getTotalTime() {
         return this.totalTime;
     }
@@ -268,9 +311,11 @@ public class Faultrecord{
     }
 
 
-    /** ҵ���ж� */
+    /**
+     * ҵ���ж�
+     */
     private String operHaltTime;
-    
+
     public String getOperHaltTime() {
         return this.operHaltTime;
     }
@@ -280,9 +325,11 @@ public class Faultrecord{
     }
 
 
-    /** ��ע */
+    /**
+     * ��ע
+     */
     private String remark;
-    
+
     public String getRemark() {
         return this.remark;
     }
@@ -291,9 +338,11 @@ public class Faultrecord{
         this.remark = remark;
     }
 
-    /** ��ע */
+    /**
+     * ��ע
+     */
     private String insertTimeFrom;
-    
+
     public String getInsertTimeFrom() {
         return this.insertTimeFrom;
     }
@@ -302,9 +351,11 @@ public class Faultrecord{
         this.insertTimeFrom = insertTimeFrom;
     }
 
-    /** ��ע */
+    /**
+     * ��ע
+     */
     private String insertTimeTo;
-    
+
     public String getInsertTimeTo() {
         return this.insertTimeTo;
     }
@@ -312,5 +363,5 @@ public class Faultrecord{
     public void setInsertTimeTo(String insertTimeTo) {
         this.insertTimeTo = insertTimeTo;
     }
-    
+
 }

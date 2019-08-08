@@ -1,64 +1,64 @@
-<%@page contentType="text/html;charset=ISO8859_1"%>
-<%@page import="com.boco.eoms.resmanage.query.*"%>
-<%@page import="com.boco.eoms.resmanage.entity.*"%>
-<%@page import="mcs.common.db.*"%>
-<%@page import="java.util.*"%>
+<%@page contentType="text/html;charset=ISO8859_1" %>
+<%@page import="com.boco.eoms.resmanage.query.*" %>
+<%@page import="com.boco.eoms.resmanage.entity.*" %>
+<%@page import="mcs.common.db.*" %>
+<%@page import="java.util.*" %>
 <%
-/**
-*@ E-DIS (ËÄ´¨Ê¡)
-*@ Copyright : (c) 2003
-*@ Company : BOCO.
-*@ ×ÊÁÏ²éÑ¯Ä£¿é
-*@ author LiuYang
-*@ version 1.0
-*@ date    2003-05-09
-**/
+    /**
+     *@ E-DIS (ËÄ´¨Ê¡)
+     *@ Copyright : (c) 2003
+     *@ Company : BOCO.
+     *@ ×ÊÁÏ²éÑ¯Ä£¿é
+     *@ author LiuYang
+     *@ version 1.0
+     *@ date    2003-05-09
+     **/
 %>
 <html>
 <head>
-<title>Í³¼ÆÁÐ±í</title>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO8859_1">
-<link rel="stylesheet" href="../css/style.css" type="text/css">
-<script language=javascript>
-//<!--
-function exportToFile()
-{
-	excel.submit();
-}
-//-->
-</script>
+    <title>Í³¼ÆÁÐ±í</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO8859_1">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+    <script language=javascript>
+        //<!--
+        function exportToFile() {
+            excel.submit();
+        }
+
+        //-->
+    </script>
 </head>
 <script>
-function closeW()
-{
-	window.close();
-}
+    function closeW() {
+        window.close();
+    }
 </script>
 <body bgcolor="#eeeeee" text="#000000" class="listStyle">
 <%
-String title = "Í³¼Æ½á¹û";
-int flag = 0;
-if(request.getParameter("img") != null)
-	flag = 1;
-else
-	flag = 0;
+    String title = "Í³¼Æ½á¹û";
+    int flag = 0;
+    if (request.getParameter("img") != null)
+        flag = 1;
+    else
+        flag = 0;
 %>
 <%
-if(flag == 0)
-{
-	%>
-	<table bgcolor="#dddddd" width='100%'>
-	<tr><td align=center><font size=2><B>Í³¼ÆÁÐ±í</B></font></td>
-	</table>
-<%
-}
-if(flag == 1)
-	out.println("<table bgcolor=#dddddd width='100%' id=resultRs style='display:none'>");
-else
-	out.println("<table bgcolor=#dddddd width='100%' id=resultRs>");
+    if (flag == 0) {
 %>
-<tr bgcolor=#eeeeee><td></td>
+<table bgcolor="#dddddd" width='100%'>
+    <tr>
+        <td align=center><font size=2><B>Í³¼ÆÁÐ±í</B></font></td>
+</table>
 <%
+    }
+    if (flag == 1)
+        out.println("<table bgcolor=#dddddd width='100%' id=resultRs style='display:none'>");
+    else
+        out.println("<table bgcolor=#dddddd width='100%' id=resultRs>");
+%>
+<tr bgcolor=#eeeeee>
+    <td></td>
+        <%
 String typeid = request.getParameter("type");
 String stattype = request.getParameter("stattype");
 String [] city = request.getParameterValues("city");
@@ -114,7 +114,7 @@ Vector ty = new Vector();
 ty = sr.getTypeInfo(tab);
 int colSize = 0;
 %>
-<%
+        <%
 if(Integer.parseInt(tab) == 1)
 {
 	String sql = "";
@@ -234,42 +234,45 @@ else
 }
 dataString = sr.getAppletString(strV,tmpa.size(),colSize);
 %>
-</table>
-<br>
-<%
+    </table>
+    <br>
+        <%
 if(flag == 1)
 	out.println("<div align=center>");
 else
 	out.println("<div align=center style='display:none'>");
 %>
-<APPLET  CODE = "sichuancharttest.ChartApplet" CODEBASE = "." ARCHIVE = "chart.jar,chartedis.jar" WIDTH = "900" HEIGHT = "500" ALIGN = "baseline" ALT = "APPLET tag not recognized" alt="APPLET tag not recognized"></XMP>
-<PARAM NAME = CODE VALUE = "sichuancharttest.ChartApplet" >
-<PARAM NAME = CODEBASE VALUE = "." >
-<PARAM NAME = ARCHIVE VALUE = "chart.jar,chartedis.jar" >
-<PARAM NAME = "title" VALUE    = <%=title%>>
-<PARAM NAME = "dataString" VALUE    = <%=dataString%>>
-</APPLET>
-<p align=center>ËµÃ÷£º²é¿´±ý×´Í¼ÇëÔÚÖù×´Í¼ÉÏµ¥»÷Êó±êÓÒ¼ü(Êó±ê±ØÐëµãÔÚÊý¾ÝÖùÉÏ)</p>
-</div>
-<table>
-<tr><td align=center><a href="javascript:exportToFile()">µ¼³öExcel</a></td></tr>
-</table>
-<form name=excel method=post action='exportStat.jsp' style='display:none'>
-<input type=hidden name=type value='<%=typeid%>'>
-<input type=hidden name=stattype value='<%=stattype%>'>
-<select name=city multiple>
-<%
-for(int i = 0; i < city.length; i ++)
-	out.println("<option value='"+city[i]+"' selected></option>");
-%>
-</select>
-<select name=menu multiple>
-<%
-for(int i = 0; i < menu.length; i ++)
-	out.println("<option value='"+menu[i]+"' selected></option>");
-%>
-</select>
-</form>
-<p align=center><font size=2><a href="javascript:closeW()">¹Ø±Õ</a></font></p>
+    <APPLET CODE="sichuancharttest.ChartApplet" CODEBASE="." ARCHIVE="chart.jar,chartedis.jar" WIDTH="900" HEIGHT="500"
+            ALIGN="baseline" ALT="APPLET tag not recognized" alt="APPLET tag not recognized"></XMP>
+        <PARAM NAME=CODE VALUE="sichuancharttest.ChartApplet">
+        <PARAM NAME=CODEBASE VALUE=".">
+        <PARAM NAME=ARCHIVE VALUE="chart.jar,chartedis.jar">
+        <PARAM NAME="title" VALUE= <%=title%>>
+        <PARAM NAME="dataString" VALUE= <%=dataString%>>
+    </APPLET>
+    <p align=center>ËµÃ÷£º²é¿´±ý×´Í¼ÇëÔÚÖù×´Í¼ÉÏµ¥»÷Êó±êÓÒ¼ü(Êó±ê±ØÐëµãÔÚÊý¾ÝÖùÉÏ)</p>
+    </div>
+    <table>
+        <tr>
+            <td align=center><a href="javascript:exportToFile()">µ¼³öExcel</a></td>
+        </tr>
+    </table>
+    <form name=excel method=post action='exportStat.jsp' style='display:none'>
+        <input type=hidden name=type value='<%=typeid%>'>
+        <input type=hidden name=stattype value='<%=stattype%>'>
+        <select name=city multiple>
+            <%
+                for (int i = 0; i < city.length; i++)
+                    out.println("<option value='" + city[i] + "' selected></option>");
+            %>
+        </select>
+        <select name=menu multiple>
+            <%
+                for (int i = 0; i < menu.length; i++)
+                    out.println("<option value='" + menu[i] + "' selected></option>");
+            %>
+        </select>
+    </form>
+    <p align=center><font size=2><a href="javascript:closeW()">¹Ø±Õ</a></font></p>
 </body>
 </html>

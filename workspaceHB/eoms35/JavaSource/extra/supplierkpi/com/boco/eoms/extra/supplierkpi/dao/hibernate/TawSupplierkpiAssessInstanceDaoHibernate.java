@@ -53,12 +53,12 @@ public class TawSupplierkpiAssessInstanceDaoHibernate extends BaseDaoHibernate i
 
     /**
      * @see com.boco.eoms.commons.sample.dao.TawSupplierkpiAssessInstanceDao#saveTawSupplierkpiAssessInstance(TawSupplierkpiAssessInstance tawSupplierkpiAssessInstance)
-     */    
+     */
     public String saveTawSupplierkpiAssessInstance(final TawSupplierkpiAssessInstance tawSupplierkpiAssessInstance) {
         if ((tawSupplierkpiAssessInstance.getId() == null) || (tawSupplierkpiAssessInstance.getId().equals("")))
-			getHibernateTemplate().save(tawSupplierkpiAssessInstance);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSupplierkpiAssessInstance);
+            getHibernateTemplate().save(tawSupplierkpiAssessInstance);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSupplierkpiAssessInstance);
         return tawSupplierkpiAssessInstance.getId();
     }
 
@@ -68,91 +68,97 @@ public class TawSupplierkpiAssessInstanceDaoHibernate extends BaseDaoHibernate i
     public void removeTawSupplierkpiAssessInstance(final String id) {
         getHibernateTemplate().delete(getTawSupplierkpiAssessInstance(id));
     }
+
     /**
      * curPage
      * pageSize
      * whereStr   sql filter
      */
-    public Map getTawSupplierkpiAssessInstances(final int curPage, final int pageSize,final String whereStr) {
+    public Map getTawSupplierkpiAssessInstances(final int curPage, final int pageSize, final String whereStr) {
         // filter on properties set in the tawSupplierkpiAssessInstance
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSupplierkpiAssessInstance";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSupplierkpiAssessInstance";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize
-									* (curPage));
-							query.setMaxResults(pageSize);
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize
+                        * (curPage));
+                query.setMaxResults(pageSize);
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSupplierkpiAssessInstances(final int curPage, final int pageSize) {
-			return this.getTawSupplierkpiAssessInstances(curPage,pageSize,null);
-		}
+        return this.getTawSupplierkpiAssessInstances(curPage, pageSize, null);
+    }
+
     public List getSupplierkpi(final String supplierId) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-            	String queryStr = "from TawSupplierkpiItem" +
-            						" where id in " +
-            							" (select kpiItemId from TawSupplierkpiRelation " +
-            								" where assessInstanceId in" + 
-            									"(select id from TawSupplierkpiAssessInstance " +
-            										"where supplierId='" + supplierId +"'))";
-            	
-				Query query = session.createQuery(queryStr);
-				List result = query.list();
-				return result;
+                String queryStr = "from TawSupplierkpiItem" +
+                        " where id in " +
+                        " (select kpiItemId from TawSupplierkpiRelation " +
+                        " where assessInstanceId in" +
+                        "(select id from TawSupplierkpiAssessInstance " +
+                        "where supplierId='" + supplierId + "'))";
+
+                Query query = session.createQuery(queryStr);
+                List result = query.list();
+                return result;
             }
         };
         return (List) getHibernateTemplate().execute(callback);
     }
+
     public String getIdBySpecialAndSupplier(final String specialType, final String supplierId) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "select id from TawSupplierkpiAssessInstance where supplierid='" + supplierId + "'";
-              if ((specialType!=null) && (!"".equals(specialType))) {
-            	  queryStr += " and specialtype='" + specialType + "'";
-              }
-              Query query = session.createQuery(queryStr);
-			  List result = query.list();
-			  String assessInstanceId = "";
-              if(result.size() > 0) {
-            	  assessInstanceId = result.get(0).toString();
-              }
-              return assessInstanceId;
+                String queryStr = "select id from TawSupplierkpiAssessInstance where supplierid='" + supplierId + "'";
+                if ((specialType != null) && (!"".equals(specialType))) {
+                    queryStr += " and specialtype='" + specialType + "'";
+                }
+                Query query = session.createQuery(queryStr);
+                List result = query.list();
+                String assessInstanceId = "";
+                if (result.size() > 0) {
+                    assessInstanceId = result.get(0).toString();
+                }
+                return assessInstanceId;
             }
         };
         return getHibernateTemplate().execute(callback).toString();
     }
+
     public List getCustomSuppliers(final String specialType) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-            	String queryStr = "from TawSupplierkpiInfo where id in (select distinct(supplierId) from TawSupplierkpiAssessInstance where specialType='" + specialType + "')";
-            	Query query = session.createQuery(queryStr);
-				List result = query.list();
-				return result;
+                String queryStr = "from TawSupplierkpiInfo where id in (select distinct(supplierId) from TawSupplierkpiAssessInstance where specialType='" + specialType + "')";
+                Query query = session.createQuery(queryStr);
+                List result = query.list();
+                return result;
             }
         };
         return (List) getHibernateTemplate().execute(callback);
     }
+
     public List getSpecialsBySupplierId(final String supplierId) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-            	String queryStr = "select distinct(specialType) from TawSupplierkpiAssessInstance where supplierId='" + supplierId + "' and id in(select distinct(assessInstanceId) from TawSupplierkpiRelation)";
-            	Query query = session.createQuery(queryStr);
-				List result = query.list();
-				return result;
+                String queryStr = "select distinct(specialType) from TawSupplierkpiAssessInstance where supplierId='" + supplierId + "' and id in(select distinct(assessInstanceId) from TawSupplierkpiRelation)";
+                Query query = session.createQuery(queryStr);
+                List result = query.list();
+                return result;
             }
         };
         return (List) getHibernateTemplate().execute(callback);

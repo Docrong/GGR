@@ -19,165 +19,152 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 
 
-
 public class CommonFaultHBDaoHibernate extends BaseSheetDaoHibernate implements ICommonFaultHBDAO {
 
-	
 
-	public void updateObject(String[] sheetkeys) throws HibernateException {
-		// TODO Auto-generated method stub
-		String piids="";
-		String sheetids="";
+    public void updateObject(String[] sheetkeys) throws HibernateException {
+        // TODO Auto-generated method stub
+        String piids = "";
+        String sheetids = "";
 
-		Connection conn = null;
-		Statement stmt = null;
-		try {
-			conn = this.getSession().connection();
-			conn.setAutoCommit(false);
-			stmt = conn.createStatement();
-			for (int i = 0; i < sheetkeys.length; i++) {
-					String piid[] = sheetkeys[i].split("&");
-					if (i == sheetkeys.length - 1)
-					{
-						piids = piids + "'" + piid[0] + "'";
-						sheetids = sheetids + "'" + piid[1] + "'";
-					} else
-					{
-						piids = piids + "'" + piid[0] + "',";
-						sheetids = sheetids + "'" + piid[1] + "',";
-					}
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            conn = this.getSession().connection();
+            conn.setAutoCommit(false);
+            stmt = conn.createStatement();
+            for (int i = 0; i < sheetkeys.length; i++) {
+                String piid[] = sheetkeys[i].split("&");
+                if (i == sheetkeys.length - 1) {
+                    piids = piids + "'" + piid[0] + "'";
+                    sheetids = sheetids + "'" + piid[1] + "'";
+                } else {
+                    piids = piids + "'" + piid[0] + "',";
+                    sheetids = sheetids + "'" + piid[1] + "',";
+                }
 
-				
-				
+
 //				String sql = "update commonfault_main set status = '-14' where piid = '" + sheetkeys[i] + "'";
 //				stmt = conn.createStatement();
 //				stmt.executeUpdate(sql);
-			}
-				String sqlmain = "update commonfault_main set status = '-14' where sheetid in (" + sheetids + ")";
-				String sqltask = "update commonfault_task  set taskstatus = '5' where sheetid in (" + sheetids + ")";
-				
-				stmt.addBatch(sqlmain);
-				stmt.addBatch(sqltask);
-				stmt.executeBatch();
-				conn.commit();
-				System.out.println("------sqlmain---"+sqlmain);
-				conn.setAutoCommit(true);
+            }
+            String sqlmain = "update commonfault_main set status = '-14' where sheetid in (" + sheetids + ")";
+            String sqltask = "update commonfault_task  set taskstatus = '5' where sheetid in (" + sheetids + ")";
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
+            stmt.addBatch(sqlmain);
+            stmt.addBatch(sqltask);
+            stmt.executeBatch();
+            conn.commit();
+            System.out.println("------sqlmain---" + sqlmain);
+            conn.setAutoCommit(true);
 
-				if (conn != null) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	
-	}
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
 
-	public List selectObject(final String excelsql, final Integer curPage, final Integer pageSize) {
-		
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
 
-		HibernateCallback callback = new HibernateCallback() {
-			public Object doInHibernate(Session session)
-					throws HibernateException {
-				List resultList = new ArrayList();
-				try{
-	    	  Query query = session.createSQLQuery(excelsql).addEntity(CommonFaultMain.class);    	
-	    		// 分页查询条
-			 if(pageSize.intValue() != -1){
-	    	     query.setFirstResult(pageSize.intValue()
-						* (curPage.intValue()));
+    }
 
-				query.setMaxResults(pageSize.intValue());
-			 }
-			      resultList = query.list();
-			    }
-		        catch(Exception e){
-		        	System.out.println("------- list error!---------");
-		        	e.printStackTrace();
-		        	throw new HibernateException(" list error");
-		        }
-		        
-			
-				return resultList;
-	      }
-	    };
-	    return (List)getHibernateTemplate().execute(callback);
-		}
+    public List selectObject(final String excelsql, final Integer curPage, final Integer pageSize) {
 
-	
-	public int selectCount(String s) {
 
-	    Connection conn = null;
-	    Statement stmt = null;
-	    ResultSet rs = null;
-	    int count = 0;
-	    try {
-	      conn = getSession().connection();
-	      stmt = conn.createStatement();
-	      rs = stmt.executeQuery(s);
-	      while (rs.next())
-	        count = rs.getInt(1);
-	    }
-	    catch (SQLException e)
-	    {
-	      e.printStackTrace();
-	    } finally {
-	      try {
-	        if (stmt != null) {
-	          stmt.close();
-	        }
+        HibernateCallback callback = new HibernateCallback() {
+            public Object doInHibernate(Session session)
+                    throws HibernateException {
+                List resultList = new ArrayList();
+                try {
+                    Query query = session.createSQLQuery(excelsql).addEntity(CommonFaultMain.class);
+                    // 分页查询条
+                    if (pageSize.intValue() != -1) {
+                        query.setFirstResult(pageSize.intValue()
+                                * (curPage.intValue()));
 
-	        if (conn != null)
-	          conn.close();
-	      }
-	      catch (SQLException e)
-	      {
-	        e.printStackTrace();
-	      }
-	    }
-	    return count;
-	}
+                        query.setMaxResults(pageSize.intValue());
+                    }
+                    resultList = query.list();
+                } catch (Exception e) {
+                    System.out.println("------- list error!---------");
+                    e.printStackTrace();
+                    throw new HibernateException(" list error");
+                }
 
-	public void deleteFordel(String[] sheetkeys) {
-		Connection conn = null;
-	    Statement stmt = null;
-	    try {
-	      conn = getSession().connection();
-	      stmt = conn.createStatement();
-	      for (int i = 0; i < sheetkeys.length; i++) {
-	        String[] sheetkey = sheetkeys[i].split("&");
-	        String sql = "delete from commonfault_importfordel where sheetid = '" + sheetkey[1] + "'";
-	        stmt.addBatch(sql);
-	      }
-	      stmt.executeBatch();
-	    }
-	    catch (SQLException e) {
-	      e.printStackTrace();
-	    } finally {
-	      try {
-	        if (stmt != null) {
-	          stmt.close();
-	        }
 
-	        if (conn != null)
-	          conn.close();
-	      }
-	      catch (SQLException e)
-	      {
-	        e.printStackTrace();
-	      }
-	    }
-	  }
+                return resultList;
+            }
+        };
+        return (List) getHibernateTemplate().execute(callback);
+    }
+
+
+    public int selectCount(String s) {
+
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+        int count = 0;
+        try {
+            conn = getSession().connection();
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(s);
+            while (rs.next())
+                count = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return count;
+    }
+
+    public void deleteFordel(String[] sheetkeys) {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            conn = getSession().connection();
+            stmt = conn.createStatement();
+            for (int i = 0; i < sheetkeys.length; i++) {
+                String[] sheetkey = sheetkeys[i].split("&");
+                String sql = "delete from commonfault_importfordel where sheetid = '" + sheetkey[1] + "'";
+                stmt.addBatch(sql);
+            }
+            stmt.executeBatch();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 	
 
 	

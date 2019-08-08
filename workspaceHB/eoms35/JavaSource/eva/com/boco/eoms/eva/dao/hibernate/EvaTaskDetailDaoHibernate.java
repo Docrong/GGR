@@ -14,57 +14,57 @@ import com.boco.eoms.eva.model.EvaTask;
 import com.boco.eoms.eva.model.EvaTaskDetail;
 
 public class EvaTaskDetailDaoHibernate extends BaseDaoHibernate implements
-		IEvaTaskDetailDao {
+        IEvaTaskDetailDao {
 
-	public int getMaxListNoOfTask(final String taskId) {
-		HibernateCallback callback = new HibernateCallback() {
-			public Object doInHibernate(Session session)
-					throws HibernateException {
-				String hql = "select max(detail.listNo) from EvaTaskDetail detail where detail.taskId='"
-						+ taskId + "'";
-				Query query = session.createQuery(hql);
-				List result = query.list();
-				Integer maxListNo = new Integer(0);
-				if (result.iterator().hasNext()) {
-					maxListNo = StaticMethod.nullObject2Integer(result
-							.iterator().next());
-				}
-				return maxListNo;
-			}
-		};
-		return StaticMethod.nullObject2int(getHibernateTemplate().execute(
-				callback));
-	}
+    public int getMaxListNoOfTask(final String taskId) {
+        HibernateCallback callback = new HibernateCallback() {
+            public Object doInHibernate(Session session)
+                    throws HibernateException {
+                String hql = "select max(detail.listNo) from EvaTaskDetail detail where detail.taskId='"
+                        + taskId + "'";
+                Query query = session.createQuery(hql);
+                List result = query.list();
+                Integer maxListNo = new Integer(0);
+                if (result.iterator().hasNext()) {
+                    maxListNo = StaticMethod.nullObject2Integer(result
+                            .iterator().next());
+                }
+                return maxListNo;
+            }
+        };
+        return StaticMethod.nullObject2int(getHibernateTemplate().execute(
+                callback));
+    }
 
-	public List listDetailOfTaskByListNo(String taskId, String listNo) {
-		String sql = "from EvaTaskDetail detail where 1=1 ";
-		if(taskId!=null && !"".equals(taskId)){
-			sql += " and detail.taskId='" + taskId + "' ";
-		}
-		if(listNo!=null && !"".equals(listNo)){
-			sql += " and detail.listNo='" + listNo + "' ";
-		}
-		sql += " order by detail.taskId";
-		List list = getHibernateTemplate().find(sql);
-		return list;
-	}
-	
-	public EvaTaskDetail getTaskDetailById(String id) {	
-		EvaTaskDetail task = new EvaTaskDetail();		
-		List list = getHibernateTemplate().find(
-				"from EvaTaskDetail detail where detail.id='" + id + "'");
-		if(!list.isEmpty()){
-			task = (EvaTaskDetail)list.get(0);
-		}
-		return task;
-	}
+    public List listDetailOfTaskByListNo(String taskId, String listNo) {
+        String sql = "from EvaTaskDetail detail where 1=1 ";
+        if (taskId != null && !"".equals(taskId)) {
+            sql += " and detail.taskId='" + taskId + "' ";
+        }
+        if (listNo != null && !"".equals(listNo)) {
+            sql += " and detail.listNo='" + listNo + "' ";
+        }
+        sql += " order by detail.taskId";
+        List list = getHibernateTemplate().find(sql);
+        return list;
+    }
 
-	public void saveTask(EvaTaskDetail taskDetail) {
-		if (null == taskDetail.getId() || "".equals(taskDetail.getId())) {
-			getHibernateTemplate().save(taskDetail);
-		} else {
-			getHibernateTemplate().saveOrUpdate(taskDetail);
-		}
-	}
+    public EvaTaskDetail getTaskDetailById(String id) {
+        EvaTaskDetail task = new EvaTaskDetail();
+        List list = getHibernateTemplate().find(
+                "from EvaTaskDetail detail where detail.id='" + id + "'");
+        if (!list.isEmpty()) {
+            task = (EvaTaskDetail) list.get(0);
+        }
+        return task;
+    }
+
+    public void saveTask(EvaTaskDetail taskDetail) {
+        if (null == taskDetail.getId() || "".equals(taskDetail.getId())) {
+            getHibernateTemplate().save(taskDetail);
+        } else {
+            getHibernateTemplate().saveOrUpdate(taskDetail);
+        }
+    }
 
 }

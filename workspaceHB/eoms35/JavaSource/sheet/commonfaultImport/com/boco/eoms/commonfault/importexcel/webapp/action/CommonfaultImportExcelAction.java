@@ -48,199 +48,199 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Tue Oct 26 10:55:09 CST 2010
  * </p>
- * 
+ *
  * @moudle.getAuthor() liulei
  * @moudle.getVersion() 3.5
- * 
  */
 public final class CommonfaultImportExcelAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增使用表格导入撤销工单
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增使用表格导入撤销工单
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改使用表格导入撤销工单
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改使用表格导入撤销工单
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		CommonfaultImportExcel commonfaultImportExcel = commonfaultImportExcelMgr.getCommonfaultImportExcel(id);
-		CommonfaultImportExcelForm commonfaultImportExcelForm = (CommonfaultImportExcelForm) convert(commonfaultImportExcel);
-		updateFormBean(mapping, request, commonfaultImportExcelForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存使用表格导入撤销工单
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
-		CommonfaultImportExcelForm commonfaultImportExcelForm = (CommonfaultImportExcelForm) form;
-		boolean isNew = (null == commonfaultImportExcelForm.getId() || "".equals(commonfaultImportExcelForm.getId()));
-		CommonfaultImportExcel commonfaultImportExcel = (CommonfaultImportExcel) convert(commonfaultImportExcelForm);
-		Date date = new Date();
-		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		commonfaultImportExcel.setCreateTime(df.format(date));
-		String userid = ((TawSystemSessionForm)request.getSession().getAttribute("sessionform")).getUserid();
-		commonfaultImportExcel.setCreateUser(userid);
-		String deptid = ((TawSystemSessionForm)request.getSession().getAttribute("sessionform")).getDeptid();
-		commonfaultImportExcel.setCreateDept(deptid);
-		if (isNew) {
-			commonfaultImportExcelMgr.saveCommonfaultImportExcel(commonfaultImportExcel);
-		} else {
-			commonfaultImportExcelMgr.saveCommonfaultImportExcel(commonfaultImportExcel);
-		}
-		return search(mapping, commonfaultImportExcelForm, request, response);
-	}
-	
-	/**
-	 * 删除使用表格导入撤销工单
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		commonfaultImportExcelMgr.removeCommonfaultImportExcel(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示使用表格导入撤销工单列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				CommonfaultImportExcelConstants.COMMONFAULTIMPORTEXCEL_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
-		Map map = (Map) commonfaultImportExcelMgr.getCommonfaultImportExcels(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(CommonfaultImportExcelConstants.COMMONFAULTIMPORTEXCEL_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 导入版本
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward importCommonfault(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		Integer sheet = new Integer(0);
-		CommonfaultImportExcelMgr mgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
-		CommonfaultImportExcel commonfaultImportExcel = mgr.getCommonfaultImportExcel(request.getParameter("id"));
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        CommonfaultImportExcel commonfaultImportExcel = commonfaultImportExcelMgr.getCommonfaultImportExcel(id);
+        CommonfaultImportExcelForm commonfaultImportExcelForm = (CommonfaultImportExcelForm) convert(commonfaultImportExcel);
+        updateFormBean(mapping, request, commonfaultImportExcelForm);
+        return mapping.findForward("edit");
+    }
 
-		String filePath = AccessoriesMgrLocator
-				.getTawCommonsAccessoriesManagerCOS().getFilePath("commonfualtimport");
-		// 符件保存格式为'1234535.xls'，去掉单引号
-		String fileName = commonfaultImportExcel.getAccessoriesId().replace("'",
-				"");
-		Map map = mgr.mappingCommonfaultExcel(filePath + fileName);
-		List list=(List)map.get(sheet);
-		Iterator its = list.iterator();
-		while(its.hasNext()){
-			CommonfaultImportExcels commonfaultImportExcels = (CommonfaultImportExcels)its.next();
-			System.out.println(commonfaultImportExcels.getSheetId());
-			System.out.println(commonfaultImportExcels.getTitle());
-		}
-		if (map == null || !map.containsKey(sheet) || list==null || list.isEmpty()) {
-			// 导入失败
-			ActionMessages messages = new ActionMessages();
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"Commonfault.import.error"));
-			saveMessages(request, messages);
-			return mapping.findForward("fail");
-		}
-		
+    /**
+     * 保存使用表格导入撤销工单
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
+        CommonfaultImportExcelForm commonfaultImportExcelForm = (CommonfaultImportExcelForm) form;
+        boolean isNew = (null == commonfaultImportExcelForm.getId() || "".equals(commonfaultImportExcelForm.getId()));
+        CommonfaultImportExcel commonfaultImportExcel = (CommonfaultImportExcel) convert(commonfaultImportExcelForm);
+        Date date = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        commonfaultImportExcel.setCreateTime(df.format(date));
+        String userid = ((TawSystemSessionForm) request.getSession().getAttribute("sessionform")).getUserid();
+        commonfaultImportExcel.setCreateUser(userid);
+        String deptid = ((TawSystemSessionForm) request.getSession().getAttribute("sessionform")).getDeptid();
+        commonfaultImportExcel.setCreateDept(deptid);
+        if (isNew) {
+            commonfaultImportExcelMgr.saveCommonfaultImportExcel(commonfaultImportExcel);
+        } else {
+            commonfaultImportExcelMgr.saveCommonfaultImportExcel(commonfaultImportExcel);
+        }
+        return search(mapping, commonfaultImportExcelForm, request, response);
+    }
 
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 分页显示使用表格导入撤销工单列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+    /**
+     * 删除使用表格导入撤销工单
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        commonfaultImportExcelMgr.removeCommonfaultImportExcel(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示使用表格导入撤销工单列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                CommonfaultImportExcelConstants.COMMONFAULTIMPORTEXCEL_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        CommonfaultImportExcelMgr commonfaultImportExcelMgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
+        Map map = (Map) commonfaultImportExcelMgr.getCommonfaultImportExcels(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(CommonfaultImportExcelConstants.COMMONFAULTIMPORTEXCEL_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 导入版本
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward importCommonfault(ActionMapping mapping, ActionForm form,
+                                           HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        Integer sheet = new Integer(0);
+        CommonfaultImportExcelMgr mgr = (CommonfaultImportExcelMgr) getBean("commonfaultImportExcelMgr");
+        CommonfaultImportExcel commonfaultImportExcel = mgr.getCommonfaultImportExcel(request.getParameter("id"));
+
+        String filePath = AccessoriesMgrLocator
+                .getTawCommonsAccessoriesManagerCOS().getFilePath("commonfualtimport");
+        // 符件保存格式为'1234535.xls'，去掉单引号
+        String fileName = commonfaultImportExcel.getAccessoriesId().replace("'",
+                "");
+        Map map = mgr.mappingCommonfaultExcel(filePath + fileName);
+        List list = (List) map.get(sheet);
+        Iterator its = list.iterator();
+        while (its.hasNext()) {
+            CommonfaultImportExcels commonfaultImportExcels = (CommonfaultImportExcels) its.next();
+            System.out.println(commonfaultImportExcels.getSheetId());
+            System.out.println(commonfaultImportExcels.getTitle());
+        }
+        if (map == null || !map.containsKey(sheet) || list == null || list.isEmpty()) {
+            // 导入失败
+            ActionMessages messages = new ActionMessages();
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "Commonfault.import.error"));
+            saveMessages(request, messages);
+            return mapping.findForward("fail");
+        }
+
+
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 分页显示使用表格导入撤销工单列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

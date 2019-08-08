@@ -27,10 +27,9 @@ import com.boco.eoms.commons.system.dict.util.Util;
  * <p>
  * Date:2007-10-24 9:56:59
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictDaoXML implements IDictDao {
 
@@ -40,8 +39,7 @@ public class DictDaoXML implements IDictDao {
     private DictXMLDom4jDocumentFactory dictXMLDom4jDocumentFactory;
 
     /**
-     * @param dictXMLDom4jDocumentFactory
-     *            the dictXMLDom4jDocumentFactory to set
+     * @param dictXMLDom4jDocumentFactory the dictXMLDom4jDocumentFactory to set
      */
     public void setDictXMLDom4jDocumentFactory(
             DictXMLDom4jDocumentFactory dictXMLDom4jDocumentFactory) {
@@ -50,7 +48,7 @@ public class DictDaoXML implements IDictDao {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.dao.IDictDao#findDict(java.lang.Object,
      *      java.lang.Object)
      */
@@ -74,7 +72,7 @@ public class DictDaoXML implements IDictDao {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.dao.IDictDao#findList(java.lang.Object)
      */
     public List findItemList(Object dictId) throws DictDAOException {
@@ -89,7 +87,7 @@ public class DictDaoXML implements IDictDao {
         }
         //存放dictItem列表
         List result = new ArrayList();
-        for (Iterator it = list.iterator(); it.hasNext();) {
+        for (Iterator it = list.iterator(); it.hasNext(); ) {
             Element element = (Element) it.next();
             DictItemXML item = new DictItemXML();
             item.setDescription(element.attributeValue("description"));
@@ -102,7 +100,7 @@ public class DictDaoXML implements IDictDao {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.dao.IDictDao#findDict(java.lang.Object)
      */
     public IDict findDict(Object dictId) throws DictDAOException {
@@ -125,9 +123,8 @@ public class DictDaoXML implements IDictDao {
 
     /**
      * 通过factory获取document
-     * 
-     * @param dictId
-     *            key&id 格式
+     *
+     * @param dictId key&id 格式
      * @return
      * @throws DictDAOException
      */

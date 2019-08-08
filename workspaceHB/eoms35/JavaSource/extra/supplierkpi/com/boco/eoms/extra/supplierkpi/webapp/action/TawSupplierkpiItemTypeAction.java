@@ -15,87 +15,87 @@ import com.boco.eoms.extra.supplierkpi.util.TawSupplierkpiDictUtil;
 import com.boco.eoms.extra.supplierkpi.webapp.form.TawSupplierkpiItemTypeForm;
 
 public final class TawSupplierkpiItemTypeAction extends BaseAction {
-	public ActionForward cancel(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("search");
-	}
+    public ActionForward cancel(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("search");
+    }
 
-	public ActionForward delete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    public ActionForward delete(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-		return mapping.findForward("search");
-	}
+        return mapping.findForward("search");
+    }
 
-	public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TawSupplierkpiItemTypeForm tawSupplierkpiItemTypeForm = (TawSupplierkpiItemTypeForm) form;
-		String parentDictId = StaticMethod.null2String(request
-				.getParameter("parentDictId"));
+    public ActionForward edit(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TawSupplierkpiItemTypeForm tawSupplierkpiItemTypeForm = (TawSupplierkpiItemTypeForm) form;
+        String parentDictId = StaticMethod.null2String(request
+                .getParameter("parentDictId"));
 
-		ITawSupplierkpiDictManager dictMgr = (ITawSupplierkpiDictManager) getBean("ItawSupplierkpiDictManager");
-		TawSupplierkpiDict dict = new TawSupplierkpiDict();
-		dict = dictMgr.getDictByDictId(parentDictId);
-		String dictName = dict.getDictName();
-		String dictRemark = dict.getDictRemark();
+        ITawSupplierkpiDictManager dictMgr = (ITawSupplierkpiDictManager) getBean("ItawSupplierkpiDictManager");
+        TawSupplierkpiDict dict = new TawSupplierkpiDict();
+        dict = dictMgr.getDictByDictId(parentDictId);
+        String dictName = dict.getDictName();
+        String dictRemark = dict.getDictRemark();
 
-		tawSupplierkpiItemTypeForm.setDictName(dictName);
-		tawSupplierkpiItemTypeForm.setDictRemark(dictRemark);
-		updateFormBean(mapping, request, tawSupplierkpiItemTypeForm);
-		request.setAttribute("oper", "update");
-		request.setAttribute("parentDictId", parentDictId);
-		return mapping.findForward("edit");
-	}
+        tawSupplierkpiItemTypeForm.setDictName(dictName);
+        tawSupplierkpiItemTypeForm.setDictRemark(dictRemark);
+        updateFormBean(mapping, request, tawSupplierkpiItemTypeForm);
+        request.setAttribute("oper", "update");
+        request.setAttribute("parentDictId", parentDictId);
+        return mapping.findForward("edit");
+    }
 
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String parentDictId = request.getParameter("parentDictId");
-		String dictName = request.getParameter("dictName");
-		String dictRemark = request.getParameter("dictRemark");
-		String oper = request.getParameter("oper");
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String parentDictId = request.getParameter("parentDictId");
+        String dictName = request.getParameter("dictName");
+        String dictRemark = request.getParameter("dictRemark");
+        String oper = request.getParameter("oper");
 
-		TawSupplierkpiDict tawSupplierkpiDict = new TawSupplierkpiDict();
+        TawSupplierkpiDict tawSupplierkpiDict = new TawSupplierkpiDict();
 
-		ITawSupplierkpiDictManager dictMgr = (ITawSupplierkpiDictManager) getBean("ItawSupplierkpiDictManager");
-		if ("update".equals(oper)) {
-			tawSupplierkpiDict = dictMgr.getDictByDictId(parentDictId);
-			tawSupplierkpiDict.setDictName(dictName);
-			tawSupplierkpiDict.setDictRemark(dictRemark);
-			dictMgr.saveTawSupplierkpiDict(tawSupplierkpiDict);
-		} else {
-			tawSupplierkpiDict.setDictName(dictName);
-			tawSupplierkpiDict.setDictRemark(dictRemark);
-			tawSupplierkpiDict.setParentDictId(parentDictId);
-			tawSupplierkpiDict
-					.setNodeType(TawSupplierkpiDictUtil.NODETYPE_ITEMTYPE);
+        ITawSupplierkpiDictManager dictMgr = (ITawSupplierkpiDictManager) getBean("ItawSupplierkpiDictManager");
+        if ("update".equals(oper)) {
+            tawSupplierkpiDict = dictMgr.getDictByDictId(parentDictId);
+            tawSupplierkpiDict.setDictName(dictName);
+            tawSupplierkpiDict.setDictRemark(dictRemark);
+            dictMgr.saveTawSupplierkpiDict(tawSupplierkpiDict);
+        } else {
+            tawSupplierkpiDict.setDictName(dictName);
+            tawSupplierkpiDict.setDictRemark(dictRemark);
+            tawSupplierkpiDict.setParentDictId(parentDictId);
+            tawSupplierkpiDict
+                    .setNodeType(TawSupplierkpiDictUtil.NODETYPE_ITEMTYPE);
 
-			String newdictid = dictMgr.getMaxDictid(parentDictId);
-			TawSupplierkpiDict dict = new TawSupplierkpiDict();
-			dict = dictMgr.getDictByDictId(parentDictId);
-			if (tawSupplierkpiDict.getDictId() == null
-					|| tawSupplierkpiDict.getDictId().equals("")) {
-				tawSupplierkpiDict.setDictId(newdictid);
-			}
-			dict.setLeaf("0");
-			tawSupplierkpiDict.setLeaf("1");
-			dictMgr.saveTawSupplierkpiDict(dict);
-		}
-		dictMgr.saveTawSupplierkpiDict(tawSupplierkpiDict);
-		return mapping.findForward("success");
-	}
+            String newdictid = dictMgr.getMaxDictid(parentDictId);
+            TawSupplierkpiDict dict = new TawSupplierkpiDict();
+            dict = dictMgr.getDictByDictId(parentDictId);
+            if (tawSupplierkpiDict.getDictId() == null
+                    || tawSupplierkpiDict.getDictId().equals("")) {
+                tawSupplierkpiDict.setDictId(newdictid);
+            }
+            dict.setLeaf("0");
+            tawSupplierkpiDict.setLeaf("1");
+            dictMgr.saveTawSupplierkpiDict(dict);
+        }
+        dictMgr.saveTawSupplierkpiDict(tawSupplierkpiDict);
+        return mapping.findForward("success");
+    }
 
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("list");
-	}
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("list");
+    }
 
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
 }

@@ -1,327 +1,330 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
 
-		<form-bean name="userForm"
-			type="com.boco.eoms.base.webapp.form.UserForm" />
-		<form-bean name="addressForm"
-			type="com.boco.eoms.base.webapp.form.AddressForm" />
-		<form-bean name="roleForm"
-			type="com.boco.eoms.base.webapp.form.RoleForm" />
-		<form-bean name="uploadForm"
-			type="com.boco.eoms.base.webapp.form.UploadForm" />
-		<form-bean name="tawSystemSessionForm"
-			type="com.boco.eoms.commons.system.session.form.TawSystemSessionForm" />
-		<!--
-			If you have non XDoclet forms, define them in a file called struts-forms.xml and
-			place it in your merge directory.
-		-->
-	</form-beans>
+        <form-bean name="userForm"
+                   type="com.boco.eoms.base.webapp.form.UserForm"/>
+        <form-bean name="addressForm"
+                   type="com.boco.eoms.base.webapp.form.AddressForm"/>
+        <form-bean name="roleForm"
+                   type="com.boco.eoms.base.webapp.form.RoleForm"/>
+        <form-bean name="uploadForm"
+                   type="com.boco.eoms.base.webapp.form.UploadForm"/>
+        <form-bean name="tawSystemSessionForm"
+                   type="com.boco.eoms.commons.system.session.form.TawSystemSessionForm"/>
+        <!--
+            If you have non XDoclet forms, define them in a file called struts-forms.xml and
+            place it in your merge directory.
+        -->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="mainMenu" path="/error.jsp" redirect="true" />
-		<!-- Forwards specified in actions -->
-		<forward name="addUser"
-			path="/editUser.do?method=Add&amp;amp;from=list" redirect="true" />
-		<forward name="cancelUser" path="/editUser.do?method=Cancel" />
-		<forward name="deleteUser" path="/editUser.do?method=Delete" />
-		<forward name="updateUser" path="/userProfile.do" />
-		<!-- Forwards for links used in Menu -->
-		<forward name="editProfile" path="/editProfile.do" />
-		<forward name="editUser" path="/editUser.do" />
-		<forward name="viewUsers" path="/users.do" redirect="true" />
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="mainMenu" path="/error.jsp" redirect="true"/>
+        <!-- Forwards specified in actions -->
+        <forward name="addUser"
+                 path="/editUser.do?method=Add&amp;amp;from=list" redirect="true"/>
+        <forward name="cancelUser" path="/editUser.do?method=Cancel"/>
+        <forward name="deleteUser" path="/editUser.do?method=Delete"/>
+        <forward name="updateUser" path="/userProfile.do"/>
+        <!-- Forwards for links used in Menu -->
+        <forward name="editProfile" path="/editProfile.do"/>
+        <forward name="editUser" path="/editUser.do"/>
+        <forward name="viewUsers" path="/users.do" redirect="true"/>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+
         <!-- ajax template forwards -->
-        
+
         <!-- 导航树模板 -->
-		<forward name="tpl-priv-xtree" path="/templates/priv/tpl-priv-xtree.jsp" redirect="false"/>
-		
-        <!-- 部门树模板 -->   
-		<forward name="tpl-dept-xtree" path="/templates/dept/tpl-dept-xtree.jsp" redirect="false"/>
-		
-		<!-- 大角色树模板 -->
-		<forward name="tpl-role-xtree" path="/templates/role/tpl-role-xtree.jsp" redirect="false"/>
-		
-		<!-- 子角色树模板 -->
-		<forward name="tpl-subrole-xtree" path="/templates/subrole/tpl-subrole-xtree.jsp" redirect="false"/>
-		
-		<!-- 人员树模板 -->
-		<forward name="tpl-user-xtree" path="/templates/user/tpl-user-xtree.jsp" redirect="false"/>
-		
-		<!-- 部门人员树模板 -->
-		<forward name="tpl-user-xtree-fromdept" path="/templates/user/tpl-user-xtree-fromdept.jsp" redirect="false"/>
-		
-		<!-- 联系人树模板 -->
-		<forward name="tpl-contact-xtree" path="/templates/contact/tpl-contact-xtree.jsp" redirect="false"/>
-		
-		<!-- 字典树模板 -->
-		<forward name="tpl-dict-xtree" path="/templates/dict/tpl-dict-xtree.jsp" redirect="false" />
-		
-		<!-- 地域树模板 -->
-		<forward name="tpl-area-xtree" path="/templates/area/tpl-area-xtree.jsp" redirect="false" />
-		
-		<!-- 部门岗位树模板 -->
-		<forward name="tpl-post-xtree-fromdept" path="/templates/post/tpl-post-xtree-fromdept.jsp" redirect="false" />
-		
-		<!-- 部门子角色树模板 -->
-		<forward name="tpl-subrole-xtree-fromdept" path="/templates/subrole/tpl-subrole-xtree-fromdept.jsp" redirect="false" />
-		
-		<!-- 部门子角色和人员树模板 -->
-		<forward name="tpl-dept-xtree-subroleuser" path="/templates/dept/tpl-dept-xtree-subroleuser.jsp" redirect="false" />
-		
-		<!-- 部门子角色和人员树模板 -->
-		<forward name="tpl-cptroom-xtree" path="/templates/cptroom/tpl-cptroom-xtree.jsp" redirect="false" />
-		
-	</global-forwards>
+        <forward name="tpl-priv-xtree" path="/templates/priv/tpl-priv-xtree.jsp" redirect="false"/>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
+        <!-- 部门树模板 -->
+        <forward name="tpl-dept-xtree" path="/templates/dept/tpl-dept-xtree.jsp" redirect="false"/>
 
-		<action path="/users"
-			type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
-			scope="request" input="mainMenu" roles="admin" parameter="method"
-			unknown="false" validate="false">
-			<forward name="list" path="/WEB-INF/pages/userList.jsp"
-				redirect="false" />
-			<forward name="edit" path="/WEB-INF/pages/userForm.jsp"
-				redirect="false" />
-		</action>
-		<action path="/editUser"
-			type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
-			scope="request" input="list" roles="admin" parameter="method"
-			unknown="false" validate="false">
-			<forward name="list" path="/WEB-INF/pages/userList.jsp"
-				redirect="false" />
-			<forward name="edit" path="/WEB-INF/pages/userForm.jsp"
-				redirect="false" />
-		</action>
-		<action path="/editProfile"
-			type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
-			scope="request" input="mainMenu" parameter="method" unknown="false"
-			validate="false">
-			<forward name="list" path="/WEB-INF/pages/userList.jsp"
-				redirect="false" />
-			<forward name="edit" path="/WEB-INF/pages/userForm.jsp"
-				redirect="false" />
-		</action>
-		<action path="/saveUser"
-			type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
-			scope="request" input="edit" parameter="method" unknown="false"
-			validate="false">
-			<forward name="list" path="/WEB-INF/pages/userList.jsp"
-				redirect="false" />
-			<forward name="edit" path="/WEB-INF/pages/userForm.jsp"
-				redirect="false" />
-		</action>
+        <!-- 大角色树模板 -->
+        <forward name="tpl-role-xtree" path="/templates/role/tpl-role-xtree.jsp" redirect="false"/>
 
-		<action path="/signup"
-			type="com.boco.eoms.base.webapp.action.SignupAction" name="userForm"
-			scope="request" input="failure" unknown="false" validate="false">
-			<forward name="failure" path="/WEB-INF/pages/signup.jsp"
-				redirect="false" />
-			<forward name="success" path="/mainMenu.do" redirect="true" />
-		</action>
+        <!-- 子角色树模板 -->
+        <forward name="tpl-subrole-xtree" path="/templates/subrole/tpl-subrole-xtree.jsp" redirect="false"/>
 
-		<action path="/reload"
-			type="com.boco.eoms.base.webapp.action.ReloadAction" roles="admin"
-			unknown="false" validate="false">
-		</action>
-		<action path="/passwordHint"
-			type="com.boco.eoms.base.webapp.action.PasswordHintAction"
-			unknown="false" validate="false">
-			<forward name="previousPage" path="/" redirect="false" />
-		</action>
-		<action path="/uploadFile"
-			type="com.boco.eoms.base.webapp.action.UploadAction"
-			name="uploadForm" scope="request" input="failure" unknown="false"
-			validate="true">
-			<set-property property="cancellable" value="true" />
-			<forward name="failure" path="/WEB-INF/pages/uploadForm.jsp"
-				redirect="false" />
-			<forward name="success"
-				path="/WEB-INF/pages/uploadDisplay.jsp" redirect="false" />
-		</action>
+        <!-- 人员树模板 -->
+        <forward name="tpl-user-xtree" path="/templates/user/tpl-user-xtree.jsp" redirect="false"/>
 
-		<!-- ========== UI ========== -->
-		<action path="/xtree" parameter="method" input="navTreeTemplate"
-			type="com.boco.eoms.commons.ui.xtree.action.XtreeAction"
-			scope="request" validate="false">
-			<forward name="main"
-				path="/test/tree.jsp" redirect="false" />
-		</action>
+        <!-- 部门人员树模板 -->
+        <forward name="tpl-user-xtree-fromdept" path="/templates/user/tpl-user-xtree-fromdept.jsp" redirect="false"/>
 
-		<action path="/xtree.do?method=getAtomTreeLists" 
-			type="com.boco.eoms.commons.ui.xtree.action.XtreeAction"
-			scope="request" validate="false">
-		</action>
+        <!-- 联系人树模板 -->
+        <forward name="tpl-contact-xtree" path="/templates/contact/tpl-contact-xtree.jsp" redirect="false"/>
+
+        <!-- 字典树模板 -->
+        <forward name="tpl-dict-xtree" path="/templates/dict/tpl-dict-xtree.jsp" redirect="false"/>
+
+        <!-- 地域树模板 -->
+        <forward name="tpl-area-xtree" path="/templates/area/tpl-area-xtree.jsp" redirect="false"/>
+
+        <!-- 部门岗位树模板 -->
+        <forward name="tpl-post-xtree-fromdept" path="/templates/post/tpl-post-xtree-fromdept.jsp" redirect="false"/>
+
+        <!-- 部门子角色树模板 -->
+        <forward name="tpl-subrole-xtree-fromdept" path="/templates/subrole/tpl-subrole-xtree-fromdept.jsp"
+                 redirect="false"/>
+
+        <!-- 部门子角色和人员树模板 -->
+        <forward name="tpl-dept-xtree-subroleuser" path="/templates/dept/tpl-dept-xtree-subroleuser.jsp"
+                 redirect="false"/>
+
+        <!-- 部门子角色和人员树模板 -->
+        <forward name="tpl-cptroom-xtree" path="/templates/cptroom/tpl-cptroom-xtree.jsp" redirect="false"/>
+
+    </global-forwards>
+
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
+
+        <action path="/users"
+                type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
+                scope="request" input="mainMenu" roles="admin" parameter="method"
+                unknown="false" validate="false">
+            <forward name="list" path="/WEB-INF/pages/userList.jsp"
+                     redirect="false"/>
+            <forward name="edit" path="/WEB-INF/pages/userForm.jsp"
+                     redirect="false"/>
+        </action>
+        <action path="/editUser"
+                type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
+                scope="request" input="list" roles="admin" parameter="method"
+                unknown="false" validate="false">
+            <forward name="list" path="/WEB-INF/pages/userList.jsp"
+                     redirect="false"/>
+            <forward name="edit" path="/WEB-INF/pages/userForm.jsp"
+                     redirect="false"/>
+        </action>
+        <action path="/editProfile"
+                type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
+                scope="request" input="mainMenu" parameter="method" unknown="false"
+                validate="false">
+            <forward name="list" path="/WEB-INF/pages/userList.jsp"
+                     redirect="false"/>
+            <forward name="edit" path="/WEB-INF/pages/userForm.jsp"
+                     redirect="false"/>
+        </action>
+        <action path="/saveUser"
+                type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
+                scope="request" input="edit" parameter="method" unknown="false"
+                validate="false">
+            <forward name="list" path="/WEB-INF/pages/userList.jsp"
+                     redirect="false"/>
+            <forward name="edit" path="/WEB-INF/pages/userForm.jsp"
+                     redirect="false"/>
+        </action>
+
+        <action path="/signup"
+                type="com.boco.eoms.base.webapp.action.SignupAction" name="userForm"
+                scope="request" input="failure" unknown="false" validate="false">
+            <forward name="failure" path="/WEB-INF/pages/signup.jsp"
+                     redirect="false"/>
+            <forward name="success" path="/mainMenu.do" redirect="true"/>
+        </action>
+
+        <action path="/reload"
+                type="com.boco.eoms.base.webapp.action.ReloadAction" roles="admin"
+                unknown="false" validate="false">
+        </action>
+        <action path="/passwordHint"
+                type="com.boco.eoms.base.webapp.action.PasswordHintAction"
+                unknown="false" validate="false">
+            <forward name="previousPage" path="/" redirect="false"/>
+        </action>
+        <action path="/uploadFile"
+                type="com.boco.eoms.base.webapp.action.UploadAction"
+                name="uploadForm" scope="request" input="failure" unknown="false"
+                validate="true">
+            <set-property property="cancellable" value="true"/>
+            <forward name="failure" path="/WEB-INF/pages/uploadForm.jsp"
+                     redirect="false"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/uploadDisplay.jsp" redirect="false"/>
+        </action>
+
+        <!-- ========== UI ========== -->
+        <action path="/xtree" parameter="method" input="navTreeTemplate"
+                type="com.boco.eoms.commons.ui.xtree.action.XtreeAction"
+                scope="request" validate="false">
+            <forward name="main"
+                     path="/test/tree.jsp" redirect="false"/>
+        </action>
+
+        <action path="/xtree.do?method=getAtomTreeLists"
+                type="com.boco.eoms.commons.ui.xtree.action.XtreeAction"
+                scope="request" validate="false">
+        </action>
 
 
-		<action path="/index"
-			type="com.boco.eoms.base.webapp.action.UserAction" scope="request"
-			input="success" parameter="method" unknown="false"
-			validate="false">
-			<forward name="success" path="/index.jsp" redirect="false" />
-			<forward name="roomSelect"
-				path="/roomSelect.do?method=roomSelect" redirect="false" />
-			<forward name="workserialselect"
-				path="/workserialselect.do?method=workserialselect"
-				redirect="false" />
-			<forward name="wapIndex"
-				path="/WEB-INF/pages/wap/index.jsp"
-				redirect="false" />
-			<forward name="relogin" path="/login.jsp" redirect="false" />
-		</action>
-		
-		<action path="/wapLogin"
-			type="com.boco.eoms.base.webapp.action.UserAction" scope="request"
-			input="success" parameter="method" unknown="false"
-			validate="false">
-			<forward name="success" path="/WEB-INF/pages/wap/index.jsp" redirect="false" />
-			<forward name="wapIndex"
-				path="/WEB-INF/pages/wap/index.jsp"
-				redirect="false" />
-			<forward name="relogin" path="/wap/login.jsp" redirect="false" />
-		</action>
-		
-		<action path="/roomSelect"
-			type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
-			scope="request" input="success" parameter="method" unknown="false"
-			name="tawSystemSessionForm" validate="false">
-			<forward name="success" path="/roomselect.jsp"
-				redirect="false" />
-		</action>
+        <action path="/index"
+                type="com.boco.eoms.base.webapp.action.UserAction" scope="request"
+                input="success" parameter="method" unknown="false"
+                validate="false">
+            <forward name="success" path="/index.jsp" redirect="false"/>
+            <forward name="roomSelect"
+                     path="/roomSelect.do?method=roomSelect" redirect="false"/>
+            <forward name="workserialselect"
+                     path="/workserialselect.do?method=workserialselect"
+                     redirect="false"/>
+            <forward name="wapIndex"
+                     path="/WEB-INF/pages/wap/index.jsp"
+                     redirect="false"/>
+            <forward name="relogin" path="/login.jsp" redirect="false"/>
+        </action>
 
-		<action path="/roomSelectArea"
-			type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
-			scope="request" input="success" parameter="method" unknown="false"
-			name="tawSystemSessionForm" validate="false">
-			<forward name="success" path="/index.jsp" redirect="false" />
-			<forward name="roomSelect"
-				path="/roomSelect.do?method=roomSelect" redirect="false" />
-			<forward name="workserialselect"
-				path="/workserialselect.do?method=workserialselect"
-				redirect="false" />
-		</action>
+        <action path="/wapLogin"
+                type="com.boco.eoms.base.webapp.action.UserAction" scope="request"
+                input="success" parameter="method" unknown="false"
+                validate="false">
+            <forward name="success" path="/WEB-INF/pages/wap/index.jsp" redirect="false"/>
+            <forward name="wapIndex"
+                     path="/WEB-INF/pages/wap/index.jsp"
+                     redirect="false"/>
+            <forward name="relogin" path="/wap/login.jsp" redirect="false"/>
+        </action>
 
-		<action path="/workserialselect"
-			type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
-			scope="request" input="success" parameter="method" unknown="false"
-			name="tawSystemSessionForm" validate="false">
+        <action path="/roomSelect"
+                type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
+                scope="request" input="success" parameter="method" unknown="false"
+                name="tawSystemSessionForm" validate="false">
+            <forward name="success" path="/roomselect.jsp"
+                     redirect="false"/>
+        </action>
 
-			<forward name="success" path="/index.jsp" />
+        <action path="/roomSelectArea"
+                type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
+                scope="request" input="success" parameter="method" unknown="false"
+                name="tawSystemSessionForm" validate="false">
+            <forward name="success" path="/index.jsp" redirect="false"/>
+            <forward name="roomSelect"
+                     path="/roomSelect.do?method=roomSelect" redirect="false"/>
+            <forward name="workserialselect"
+                     path="/workserialselect.do?method=workserialselect"
+                     redirect="false"/>
+        </action>
 
-			<forward name="workserialselect"
-				path="/workserialselect.jsp" />
-			<forward name="failure" path="/failure.jsp" />
-			<forward name="saveworkserial"
-				path="/saveworkserial.do?method=saveWorkSerial" redirect="false" />
+        <action path="/workserialselect"
+                type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
+                scope="request" input="success" parameter="method" unknown="false"
+                name="tawSystemSessionForm" validate="false">
 
-		</action>
-		<action path="/saveworkserial"
-			type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
-			scope="request" input="success" parameter="method" unknown="false"
-			name="tawSystemSessionForm" validate="false">
+            <forward name="success" path="/index.jsp"/>
 
-			<forward name="success" path="/index.jsp" />
-			<forward name="failure" path="/failure.jsp" />
-		</action>
-		
-		<action path="/wapback"
-			type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
-			scope="request" input="success" parameter="method" unknown="false"
-			name="tawSystemSessionForm" validate="false" >
-			<forward name="wapIndex"
-				path="/WEB-INF/pages/wap/index.jsp"
-				redirect="false" />
-		</action>
-		
-		<action path="/checkUser"
-			type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
-			scope="request" input="success" parameter="method" unknown="false"
-			name="tawSystemSessionForm" validate="false">
+            <forward name="workserialselect"
+                     path="/workserialselect.jsp"/>
+            <forward name="failure" path="/failure.jsp"/>
+            <forward name="saveworkserial"
+                     path="/saveworkserial.do?method=saveWorkSerial" redirect="false"/>
 
-			<forward name="success" path="/loginUserid.jsp" />
-			<forward name="failure" path="/failure.jsp" />
-		</action>
-		
-		<action path="/info"
-			type="com.boco.eoms.base.webapp.action.InterfaceAction"
-			scope="request" input="success" parameter="method" unknown="false"
-			name="tawSystemSessionForm" validate="false"/>
-  
-		
-		<!-- Forwards to the mainMenu tile definition -->
-		<action path="/mainMenu"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/error.jsp" />
+        </action>
+        <action path="/saveworkserial"
+                type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
+                scope="request" input="success" parameter="method" unknown="false"
+                name="tawSystemSessionForm" validate="false">
 
-		<!-- Action to flush cache -->
-		<action path="/flush"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/WEB-INF/pages/flushCache.jsp" roles="admin" />
+            <forward name="success" path="/index.jsp"/>
+            <forward name="failure" path="/failure.jsp"/>
+        </action>
 
-		<!-- Forward to page to begin file upload -->
-		<action path="/selectFile"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/WEB-INF/pages/uploadForm.jsp" />
-		<!-- Forward to view Active Users -->
-		<action path="/activeUsers"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/WEB-INF/pages/activeUsers.jsp" roles="admin" />
+        <action path="/wapback"
+                type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
+                scope="request" input="success" parameter="method" unknown="false"
+                name="tawSystemSessionForm" validate="false">
+            <forward name="wapIndex"
+                     path="/WEB-INF/pages/wap/index.jsp"
+                     redirect="false"/>
+        </action>
 
-		<action path="/welcome"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/welcome.jsp" />
-      
+        <action path="/checkUser"
+                type="com.boco.eoms.commons.system.session.action.TawSystemSessionAction"
+                scope="request" input="success" parameter="method" unknown="false"
+                name="tawSystemSessionForm" validate="false">
 
-		<action path="/welcomePage"
-			type="com.boco.eoms.commons.ui.xtree.action.WelcomePageAction"
-			scope="request" input="mainMenu" parameter="method" unknown="false"
-			validate="false">
-			<forward name="success" path="/welcomePage.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		
-		<action path="/wap" parameter="forward"
-			type="com.boco.eoms.duty.controller.DispatchForward">
-			<forward name="forward" path="/WEB-INF/pages/wap/login.jsp" />
-		</action>
-		
-		<action path="/authentication"
-			type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
-			scope="request" input="list" roles="admin" parameter="method"
-			unknown="false" validate="false"/>
-	</action-mappings>
+            <forward name="success" path="/loginUserid.jsp"/>
+            <forward name="failure" path="/failure.jsp"/>
+        </action>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+        <action path="/info"
+                type="com.boco.eoms.base.webapp.action.InterfaceAction"
+                scope="request" input="success" parameter="method" unknown="false"
+                name="tawSystemSessionForm" validate="false"/>
 
-	<message-resources parameter="config/ApplicationResources" />
 
-	<!-- ========== Validator plugin ===================  -->
-	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-		<set-property property="pathnames"
-			value="/WEB-INF/validator-rules.xml,
+        <!-- Forwards to the mainMenu tile definition -->
+        <action path="/mainMenu"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/error.jsp"/>
+
+        <!-- Action to flush cache -->
+        <action path="/flush"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/flushCache.jsp" roles="admin"/>
+
+        <!-- Forward to page to begin file upload -->
+        <action path="/selectFile"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/uploadForm.jsp"/>
+        <!-- Forward to view Active Users -->
+        <action path="/activeUsers"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/activeUsers.jsp" roles="admin"/>
+
+        <action path="/welcome"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/welcome.jsp"/>
+
+
+        <action path="/welcomePage"
+                type="com.boco.eoms.commons.ui.xtree.action.WelcomePageAction"
+                scope="request" input="mainMenu" parameter="method" unknown="false"
+                validate="false">
+            <forward name="success" path="/welcomePage.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+
+        <action path="/wap" parameter="forward"
+                type="com.boco.eoms.duty.controller.DispatchForward">
+            <forward name="forward" path="/WEB-INF/pages/wap/login.jsp"/>
+        </action>
+
+        <action path="/authentication"
+                type="com.boco.eoms.base.webapp.action.UserAction" name="userForm"
+                scope="request" input="list" roles="admin" parameter="method"
+                unknown="false" validate="false"/>
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+    <message-resources parameter="config/ApplicationResources"/>
+
+    <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
-                             /WEB-INF/validation.xml" />
-	</plug-in>
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
 </struts-config>

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -22,7 +23,6 @@ import com.boco.eoms.base.util.StaticMethod;
 import com.boco.eoms.commons.loging.BocoLog;
 
 /**
- * 
  * <p>
  * Title:
  * </p>
@@ -32,10 +32,9 @@ import com.boco.eoms.commons.loging.BocoLog;
  * <p>
  * Apr 10, 2007 11:00:28 AM
  * </p>
- * 
+ *
  * @author 秦敏
  * @version 1.0
- *  
  */
 public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
     private String configFilePath;
@@ -60,10 +59,10 @@ public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
 
     /**
      * 获取配置信息
-     * 
-     * @author 秦敏
+     *
      * @return
      * @throws Exception
+     * @author 秦敏
      */
     public List readConfigInfo() throws AccessoriesConfigException {
         List configInfoList = new ArrayList();
@@ -97,10 +96,9 @@ public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
 
     /**
      * 保存配置信息（xml文件）
-     * 
+     *
+     * @param configObject 配置信息
      * @author 秦敏
-     * @param configObject
-     *            配置信息
      */
     public void saveinfoToxml(TawCommonsAccessoriesConfig config)
             throws AccessoriesConfigException {
@@ -184,11 +182,9 @@ public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
 
     /**
      * 查询配置信息
-     * 
+     *
+     * @param appCode 应用模板ID
      * @author
-     * @param appCode
-     *            应用模板ID
-     *  
      */
     public TawCommonsAccessoriesConfig getTawCommonsAccessoriesConfig(
             String appCode) throws AccessoriesConfigException {
@@ -230,11 +226,9 @@ public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
 
     /**
      * 删除配置信息
-     * 
+     *
+     * @param appCode 应用模板ID
      * @author 秦敏
-     * @param appCode
-     *            应用模板ID
-     *  
      */
     public void removeTawCommonsAccessoriesConfig(String appCode)
             throws AccessoriesConfigException {
@@ -290,7 +284,7 @@ public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
 
     /**
      * 根据应用模块ID号查询模块名称
-     * 
+     *
      * @param appCode
      * @return
      * @author 秦敏
@@ -303,7 +297,7 @@ public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
 
     /**
      * 获取应用模块信息
-     * 
+     *
      * @return
      * @author 秦敏
      */
@@ -315,7 +309,7 @@ public class TawCommonsAccessoriesConfigManagerByXMLImpl extends BaseManager {
                     .get(i);
             applicationTag.add(new org.apache.struts.util.LabelValueBean(
                     application.getAppName(), String.valueOf(application
-                            .getAppId())));
+                    .getAppId())));
         }
         return applicationTag;
     }

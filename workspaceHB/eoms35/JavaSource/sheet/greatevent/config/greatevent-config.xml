@@ -1,57 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WorkFlowRule name="GreatEvent" description="重大事件保障流程">
-<flow-define id="GreatEventProcess" description="重大事件保障流程">
-     <phase-id id="receive" type="receive">
-       <to-phase-id id="MakeTask" role="dealPerformer@344" condition="${operateType}==0" name="新建派发"/>
-       <to-phase-id id="DraftTask" role="" condition="${operateType}==22" name="保存草稿"/>   
-     </phase-id>
-     <phase-id id="DraftTask" name="草稿" type="operate">       
-       <to-phase-id id="MakeTask" role="dealPerformer@344" condition="${operateType}==3" name="草稿派发"/>
-     </phase-id>
-     <phase-id id="reject" name="被驳回" type="operate">       
-       <to-phase-id id="MakeTask" role="dealPerformer@344" condition="${operateType}==54" name="重新派发"/>
-     </phase-id> 
-     <phase-id id="MakeTask" name="方案制定中" type="operate">       
-       <to-phase-id id="AuditTask" role="dealPerformer@342" condition="${operateType}==90" name="完成方案，提交审核"/>
-       <to-phase-id id="reject"  role="" condition="${operateType}==4" name="驳回"/>     
-     </phase-id> 
-     <phase-id id="AuditTask" name="待审核" type="operate">     
-      <to-phase-id id="ApprovalTask"   role="dealPerformer@343" condition="${operateType}==911" name="审核通过"/>      
-       <to-phase-id id="MakeTask"  role="" condition="${operateType}==912" name="审核不通过/驳回"/> 
-     </phase-id>
-     
-     <phase-id id="ApprovalTask" name="待审批" type="operate">
-       <to-phase-id id="PerformTask"   role="dealPerformer@344" condition="${operateType}==921" name="审批通过"/>      
-       <to-phase-id id="MakeTask"  role="" condition="${operateType}==922" name="审批不通过"/>
-       <to-phase-id id="AuditTask"  role="" condition="${operateType}==4" name="驳回"/>    
-     </phase-id> 
-     <phase-id id="PerformTask" name="实施中" type="operate">  
-        <to-phase-id id="AuditEndTask"    role="dealPerformer@342" condition="${operateType}==93" name="完成实施，提交结束申请"/> 
-         <to-phase-id id="ApprovalTask"  role="" condition="${operateType}==4" name="驳回上一级"/>    
-     </phase-id>  
-     
-     <phase-id id="AuditEndTask" name="待审核" type="operate"> 
-        <to-phase-id id="AssessmentTask"   role="dealPerformer@344" condition="${operateType}==941" name="审核通过"/>      
-        <to-phase-id id="PerformTask"  role="" condition="${operateType}==942" name="审核不通过/驳回"/> 
-     </phase-id> 
-      
-     <phase-id id="AssessmentTask" name="评估中" type="operate">
-      <to-phase-id id="AuditReportTask"  role="dealPerformer@342" condition="${operateType}==95" name="完成保障报告，提交审核"/> 
-      <to-phase-id id="AuditEndTask"  role=""  condition="${operateType}==4" name="驳回上一级"/>  
-     </phase-id>
-     <phase-id id="AuditReportTask" name="待审核" type="operate">  
-        <to-phase-id id="HoldTask"   role="dealPerformer@342" condition="${operateType}==961" name="审核通过无需修订"/>      
-        <to-phase-id id="ModifyTask"  role="dealPerformer@344" condition="${operateType}==962" name="审核通过需修订"/>
-        <to-phase-id id="AssessmentTask"  role="" condition="${operateType}==963" name="审核不通过/驳回"/>
-     </phase-id>
-                      
-      <phase-id id="ModifyTask" name="预案修订中" type="operate">
-        <to-phase-id id="HoldTask"  role="dealPerformer@342" condition="${operateType}==97" name="完成预案修订，提交预案"/>
-        <to-phase-id id="AuditReportTask"  role="" condition="${operateType}==4" name="驳回"/>
-     </phase-id>              
-     <phase-id id="HoldTask" name="待归档" type="operate">
-     <to-phase-id id="ModifyTask"  role="" condition="${operateType}==102" name="退回"/>
-     <to-phase-id id="AuditReportTask"  role="" condition="${operateType}==102" name="退回"/>
-     </phase-id>     
-  </flow-define>
+    <flow-define id="GreatEventProcess" description="重大事件保障流程">
+        <phase-id id="receive" type="receive">
+            <to-phase-id id="MakeTask" role="dealPerformer@344" condition="${operateType}==0" name="新建派发"/>
+            <to-phase-id id="DraftTask" role="" condition="${operateType}==22" name="保存草稿"/>
+        </phase-id>
+        <phase-id id="DraftTask" name="草稿" type="operate">
+            <to-phase-id id="MakeTask" role="dealPerformer@344" condition="${operateType}==3" name="草稿派发"/>
+        </phase-id>
+        <phase-id id="reject" name="被驳回" type="operate">
+            <to-phase-id id="MakeTask" role="dealPerformer@344" condition="${operateType}==54" name="重新派发"/>
+        </phase-id>
+        <phase-id id="MakeTask" name="方案制定中" type="operate">
+            <to-phase-id id="AuditTask" role="dealPerformer@342" condition="${operateType}==90" name="完成方案，提交审核"/>
+            <to-phase-id id="reject" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="AuditTask" name="待审核" type="operate">
+            <to-phase-id id="ApprovalTask" role="dealPerformer@343" condition="${operateType}==911" name="审核通过"/>
+            <to-phase-id id="MakeTask" role="" condition="${operateType}==912" name="审核不通过/驳回"/>
+        </phase-id>
+
+        <phase-id id="ApprovalTask" name="待审批" type="operate">
+            <to-phase-id id="PerformTask" role="dealPerformer@344" condition="${operateType}==921" name="审批通过"/>
+            <to-phase-id id="MakeTask" role="" condition="${operateType}==922" name="审批不通过"/>
+            <to-phase-id id="AuditTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="PerformTask" name="实施中" type="operate">
+            <to-phase-id id="AuditEndTask" role="dealPerformer@342" condition="${operateType}==93" name="完成实施，提交结束申请"/>
+            <to-phase-id id="ApprovalTask" role="" condition="${operateType}==4" name="驳回上一级"/>
+        </phase-id>
+
+        <phase-id id="AuditEndTask" name="待审核" type="operate">
+            <to-phase-id id="AssessmentTask" role="dealPerformer@344" condition="${operateType}==941" name="审核通过"/>
+            <to-phase-id id="PerformTask" role="" condition="${operateType}==942" name="审核不通过/驳回"/>
+        </phase-id>
+
+        <phase-id id="AssessmentTask" name="评估中" type="operate">
+            <to-phase-id id="AuditReportTask" role="dealPerformer@342" condition="${operateType}==95"
+                         name="完成保障报告，提交审核"/>
+            <to-phase-id id="AuditEndTask" role="" condition="${operateType}==4" name="驳回上一级"/>
+        </phase-id>
+        <phase-id id="AuditReportTask" name="待审核" type="operate">
+            <to-phase-id id="HoldTask" role="dealPerformer@342" condition="${operateType}==961" name="审核通过无需修订"/>
+            <to-phase-id id="ModifyTask" role="dealPerformer@344" condition="${operateType}==962" name="审核通过需修订"/>
+            <to-phase-id id="AssessmentTask" role="" condition="${operateType}==963" name="审核不通过/驳回"/>
+        </phase-id>
+
+        <phase-id id="ModifyTask" name="预案修订中" type="operate">
+            <to-phase-id id="HoldTask" role="dealPerformer@342" condition="${operateType}==97" name="完成预案修订，提交预案"/>
+            <to-phase-id id="AuditReportTask" role="" condition="${operateType}==4" name="驳回"/>
+        </phase-id>
+        <phase-id id="HoldTask" name="待归档" type="operate">
+            <to-phase-id id="ModifyTask" role="" condition="${operateType}==102" name="退回"/>
+            <to-phase-id id="AuditReportTask" role="" condition="${operateType}==102" name="退回"/>
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>

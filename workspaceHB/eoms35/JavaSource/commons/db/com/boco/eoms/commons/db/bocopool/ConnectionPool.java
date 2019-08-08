@@ -7,6 +7,7 @@
 package com.boco.eoms.commons.db.bocopool;
 
 // standard library
+
 import java.sql.*;
 import java.util.*;
 
@@ -35,7 +36,7 @@ public class ConnectionPool {
 
     /**
      * 取得数据库连接池管理类的唯一实例
-     * 
+     *
      * @return ConnectionPool 特定数据库连接池
      */
     public static synchronized ConnectionPool getInstance() {
@@ -57,7 +58,7 @@ public class ConnectionPool {
     /**
      * Get one database connection pool from pools(connection Hashtable) using
      * defaultpoolname property, if not exist, return null;
-     * 
+     *
      * @return DBConnectionPool, one valid connection pool
      */
     public DBConnectionPool getPool() {
@@ -67,7 +68,7 @@ public class ConnectionPool {
     /**
      * Get one database connection pool from pools(connection Hashtable) using
      * input parameter(_strPoolName), if not exist, return null.
-     * 
+     *
      * @return DBConnectionPool, one valid connection pool
      */
     public DBConnectionPool getPool(String _strPoolName) {
@@ -84,7 +85,7 @@ public class ConnectionPool {
      * pool. if default pool not exist, return null, else can call public
      * interface from this connection pool return one BocoConnection type
      * object.
-     * 
+     *
      * @return BocoConnection, return a valid database connection or null
      */
     public BocoConnection getConnection() {
@@ -97,9 +98,8 @@ public class ConnectionPool {
      * interface from this connection pool return one BocoConnection object. if
      * _strPoolName pool not exist, return null, else can call public interface
      * from this connection pool return one BocoConnection type object.
-     * 
-     * @param _strPoolName,
-     *            identify one specific connection pool
+     *
+     * @param _strPoolName, identify one specific connection pool
      * @return BocoConnection, return a valid database connection or null
      */
     public BocoConnection getConnection(String _strPoolName) {
@@ -114,9 +114,8 @@ public class ConnectionPool {
     /**
      * This function is like to getConnection(String, int), only difference is
      * to get database connection from default connection pool.
-     * 
-     * @param int
-     *            time,
+     *
+     * @param int time,
      * @return BocoConnection,
      */
     public BocoConnection getConnection(int time) {
@@ -127,12 +126,11 @@ public class ConnectionPool {
      * Get one BocoConnection object from special connection pool, which name is
      * first input parameter, the second input parameter identity how long time
      * client will wait, if at that time dont has connection usable.
-     * 
-     * @param String
-     *            name, the name of database connection pool
-     * @prama int time, max wait time for one connection
+     *
+     * @param String name, the name of database connection pool
      * @return BocoConnection, return one database connection from pool, if dont
-     *         get one, then return null.
+     * get one, then return null.
+     * @prama int time, max wait time for one connection
      */
     public BocoConnection getConnection(String name, int time) {
         DBConnectionPool pool = (DBConnectionPool) pools.get(name);
@@ -148,9 +146,8 @@ public class ConnectionPool {
      * then other client can use this database connection from this default
      * database connection pool. In fact, set BocoConnection type object's
      * status not be using.
-     * 
-     * @param _objConn,
-     *            one BocoConnection object in default pool
+     *
+     * @param _objConn, one BocoConnection object in default pool
      */
     public void returnConnection(BocoConnection _objConn) {
         returnConnection(defaultpoolname, _objConn);
@@ -161,11 +158,9 @@ public class ConnectionPool {
      * pool, then other client can use this database connection from this
      * specific database connection pool. In fact, set BocoConnection type
      * object's status not be using.
-     * 
-     * @param _strPoolName,
-     *            one connection pool
-     * @param _objConn,
-     *            one BocoConnection object in _strPoolName connection pool
+     *
+     * @param _strPoolName, one connection pool
+     * @param _objConn,     one BocoConnection object in _strPoolName connection pool
      */
     public void returnConnection(String _strPoolName, BocoConnection _objConn) {
         DBConnectionPool pool = (DBConnectionPool) pools.get(_strPoolName);
@@ -222,8 +217,7 @@ public class ConnectionPool {
                 DriverManager.registerDriver(_objDriver);
                 drivers.addElement(_objDriver);
                 BocoLog.debug(this, "注册JDBC驱动：[" + driverClassName + "]--完成");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 BocoLog.error(this, "注册JDBC驱动：[" + driverClassName + "]--失败");
             }
         }
@@ -239,8 +233,7 @@ public class ConnectionPool {
             Driver driver = (Driver) _objDrivers.next();
             try {
                 DriverManager.deregisterDriver(driver);
-            }
-            catch (SQLException e) {
+            } catch (SQLException e) {
                 BocoLog.error(this, "无法注销下列已注册的JDBC驱动："
                         + driver.getClass().getName());
             }

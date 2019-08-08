@@ -1,2154 +1,2149 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-	<!-- open it when server is wps	-->
-	<!-- if your container start error ,please close ‘ContextLoaderListener�?-->
-	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextLoaderListener
-		</listener-class>
-	</listener>
-	<listener>
-		<listener-class>
-			com.boco.eoms.base.webapp.listener.UserCounterListener
-		</listener-class>
-	</listener>
+    <!-- open it when server is wps	-->
+    <!-- if your container start error ,please close ‘ContextLoaderListener�?-->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            com.boco.eoms.base.webapp.listener.UserCounterListener
+        </listener-class>
+    </listener>
 
-	<!-- fckeditor -START -->
-	<servlet>
-		<servlet-name>Connector</servlet-name>
-		<servlet-class>
-			net.fckeditor.connector.ConnectorServlet
-		</servlet-class>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
+    <!-- fckeditor -START -->
+    <servlet>
+        <servlet-name>Connector</servlet-name>
+        <servlet-class>
+            net.fckeditor.connector.ConnectorServlet
+        </servlet-class>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
 
-	<servlet-mapping>
-		<servlet-name>Connector</servlet-name>
-		<url-pattern>
-			/fckeditor/editor/filemanager/connectors/*
-		</url-pattern>
-	</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Connector</servlet-name>
+        <url-pattern>
+            /fckeditor/editor/filemanager/connectors/*
+        </url-pattern>
+    </servlet-mapping>
 
-	<!-- 门户及4a的链接filter配置
-		<filter>
-		<filter-name>AppFilter</filter-name>
-		<filter-class>
-		com.boco.sso.client.filter.AppFilter
-		</filter-class>
-		
-		<init-param>
-		<param-name>encoding</param-name>
-		<param-value>UTF-8</param-value>
-		</init-param>
-		</filter>
-		
-		<filter>
-		<filter-name>EOMS_Portal4AFilter</filter-name>
-		<filter-class>
-		com.boco.eoms.base.util.Portal4AFilter
-		</filter-class>
-		<init-param>
-		<param-name>ft_paramtype</param-name>
-		<param-value>filter_session</param-value>
-		</init-param>
-		<init-param>
-		<param-name>ft_paramname</param-name>
-		<param-value>sso_account</param-value>
-		</init-param>
-		</filter>
+    <!-- 门户及4a的链接filter配置
+        <filter>
+        <filter-name>AppFilter</filter-name>
+        <filter-class>
+        com.boco.sso.client.filter.AppFilter
+        </filter-class>
+
+        <init-param>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+        </init-param>
+        </filter>
+
+        <filter>
+        <filter-name>EOMS_Portal4AFilter</filter-name>
+        <filter-class>
+        com.boco.eoms.base.util.Portal4AFilter
+        </filter-class>
+        <init-param>
+        <param-name>ft_paramtype</param-name>
+        <param-value>filter_session</param-value>
+        </init-param>
+        <init-param>
+        <param-name>ft_paramname</param-name>
+        <param-value>sso_account</param-value>
+        </init-param>
+        </filter>
  -->
-	<filter>
-		<filter-name>Set Character Encoding</filter-name>
-		<filter-class>
-			com.boco.eoms.base.util.SetCharacterEncodingFilter
-		</filter-class>
-		<init-param>
-			<param-name>timeoutpage</param-name>
-			<param-value>timeout.jsp</param-value>
-		</init-param>
-		<init-param>
-			<param-name>ignore</param-name>
-			<param-value>true</param-value>
-		</init-param>
-		<init-param>
-			<param-name>encoding</param-name>
-			<!--<param-value>GB2312</param-value>-->
-			<param-value>utf-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>privpage</param-name>
-			<param-value>nopriv.jsp</param-value>
-		</init-param>
+    <filter>
+        <filter-name>Set Character Encoding</filter-name>
+        <filter-class>
+            com.boco.eoms.base.util.SetCharacterEncodingFilter
+        </filter-class>
+        <init-param>
+            <param-name>timeoutpage</param-name>
+            <param-value>timeout.jsp</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ignore</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <init-param>
+            <param-name>encoding</param-name>
+            <!--<param-value>GB2312</param-value>-->
+            <param-value>utf-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>privpage</param-name>
+            <param-value>nopriv.jsp</param-value>
+        </init-param>
 
-	</filter>
-<filter>
-		<description>eomsportal's client ssoFilter</description>
-		<display-name>ssoclientFilter</display-name>
-		<filter-name>SSOFilter</filter-name>
-		<filter-class>com.boco.eoms.portal.sso.client.SSOFilter</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-
-	
-	<!-- 门户及4a的链接filter配置
-		<filter-mapping>
-		<filter-name>AppFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		</filter-mapping>
-		
-		<filter-mapping>
-		<filter-name>EOMS_Portal4AFilter</filter-name>
-		<servlet-name>action</servlet-name>
-		</filter-mapping>
-		<filter-mapping>
-		<filter-name>EOMS_Portal4AFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		</filter-mapping>
-	 -->
-	<filter-mapping>
-		<filter-name>Set Character Encoding</filter-name>
-		<servlet-name>action</servlet-name>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>Set Character Encoding</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	
-	<filter-mapping>
-		<filter-name>SSOFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>SSOFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-	</filter-mapping>
-	
-	<!-- fckeditor -END -->
-
-	<!-- CAS -START -->
-	<!-- 
-		<filter>
-		<filter-name>CAS Single Sign Out Filter</filter-name>
-		<filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>
-		</filter>
-		
-		<filter-mapping>
-		<filter-name>CAS Single Sign Out Filter</filter-name>
-		<url-pattern>/*</url-pattern>
-		</filter-mapping>
-		
-		<listener>
-		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
-		</listener>
-		
-		<filter>
-		<filter-name>CASFilter</filter-name>
-		<filter-class>com.boco.eoms.base.util.SSOFilter</filter-class>
-		<init-param>
-		<param-name>edu.yale.its.tp.cas.client.filter.loginUrl</param-name>
-		<param-value>https://10.0.2.107:9443/cas/login</param-value>
-		</init-param>
-		
-		<init-param>
-		<param-name>edu.yale.its.tp.cas.client.filter.validateUrl</param-name>
-		<param-value>https://portal2:9443/cas/proxyValidate</param-value>
-		</init-param>
-		
-		<init-param>         
-		<param-name>edu.yale.its.tp.cas.client.filter.serverName</param-name>
-		<param-value>10.32.1.111:9080</param-value>
-		</init-param>
-		</filter>
-		
-		<filter-mapping>
-		<filter-name>CASFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		</filter-mapping>
-	-->
-	<!-- CAS -END -->
-	<!-- precompiled jsp mappings -->
-
-	<!-- Define the default CSS Theme -->
-	<context-param>
-		<param-name>theme</param-name>
-		<param-value>default</param-value>
-	</context-param>
-	<!-- Define the basename for a resource bundle for I18N -->
-	<context-param>
-		<param-name>
-			javax.servlet.jsp.jstl.fmt.localizationContext
-		</param-name>
-		<param-value>config/ApplicationResources</param-value>
-	</context-param>
-	<!-- Fallback locale if no bundles found for browser's preferred locale -->
-	<!-- Force a single locale using param-name 'javax.servlet.jsp.jstl.fmt.locale' -->
-	<context-param>
-		<param-name>
-			javax.servlet.jsp.jstl.fmt.fallbackLocale
-		</param-name>
-		<param-value>en</param-value>
-	</context-param>
+    </filter>
+    <filter>
+        <description>eomsportal's client ssoFilter</description>
+        <display-name>ssoclientFilter</display-name>
+        <filter-name>SSOFilter</filter-name>
+        <filter-class>com.boco.eoms.portal.sso.client.SSOFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
 
 
-	<!-- 070319 end zhoucz -->
+    <!-- 门户及4a的链接filter配置
+        <filter-mapping>
+        <filter-name>AppFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        </filter-mapping>
 
-	<!-- Context Configuration locations for Spring XML files -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:config/applicationContext-all.xml,/WEB-INF/security.xml
-		</param-value>
-	</context-param>
+        <filter-mapping>
+        <filter-name>EOMS_Portal4AFilter</filter-name>
+        <servlet-name>action</servlet-name>
+        </filter-mapping>
+        <filter-mapping>
+        <filter-name>EOMS_Portal4AFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        </filter-mapping>
+     -->
+    <filter-mapping>
+        <filter-name>Set Character Encoding</filter-name>
+        <servlet-name>action</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Set Character Encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
-	<context-param>
-		<param-name>log4jConfigLocation</param-name>
-		<param-value>
-			/WEB-INF/classes/config/log4j.properties
-		</param-value>
-	</context-param>
+    <filter-mapping>
+        <filter-name>SSOFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SSOFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
 
-	<listener>
-		<listener-class>
-			org.springframework.web.util.Log4jConfigListener
-		</listener-class>
-	</listener>
+    <!-- fckeditor -END -->
 
-	<!-- 不使用acegi的登陆方式（在applicationcontext-attributes.xml里配置），需要屏蔽该部分
-	<filter>
-		<filter-name>securityFilter</filter-name>
-		<filter-class>
-			org.acegisecurity.util.FilterToBeanProxy
-		</filter-class>
-		<init-param>
-			<param-name>targetClass</param-name>
-			<param-value>
-				org.acegisecurity.util.FilterChainProxy
-			</param-value>
-		</init-param>
-	</filter>
+    <!-- CAS -START -->
+    <!--
+        <filter>
+        <filter-name>CAS Single Sign Out Filter</filter-name>
+        <filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>
+        </filter>
+
+        <filter-mapping>
+        <filter-name>CAS Single Sign Out Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+        <listener>
+        <listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+        </listener>
+
+        <filter>
+        <filter-name>CASFilter</filter-name>
+        <filter-class>com.boco.eoms.base.util.SSOFilter</filter-class>
+        <init-param>
+        <param-name>edu.yale.its.tp.cas.client.filter.loginUrl</param-name>
+        <param-value>https://10.0.2.107:9443/cas/login</param-value>
+        </init-param>
+
+        <init-param>
+        <param-name>edu.yale.its.tp.cas.client.filter.validateUrl</param-name>
+        <param-value>https://portal2:9443/cas/proxyValidate</param-value>
+        </init-param>
+
+        <init-param>
+        <param-name>edu.yale.its.tp.cas.client.filter.serverName</param-name>
+        <param-value>10.32.1.111:9080</param-value>
+        </init-param>
+        </filter>
+
+        <filter-mapping>
+        <filter-name>CASFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        </filter-mapping>
+    -->
+    <!-- CAS -END -->
+    <!-- precompiled jsp mappings -->
+
+    <!-- Define the default CSS Theme -->
+    <context-param>
+        <param-name>theme</param-name>
+        <param-value>default</param-value>
+    </context-param>
+    <!-- Define the basename for a resource bundle for I18N -->
+    <context-param>
+        <param-name>
+            javax.servlet.jsp.jstl.fmt.localizationContext
+        </param-name>
+        <param-value>config/ApplicationResources</param-value>
+    </context-param>
+    <!-- Fallback locale if no bundles found for browser's preferred locale -->
+    <!-- Force a single locale using param-name 'javax.servlet.jsp.jstl.fmt.locale' -->
+    <context-param>
+        <param-name>
+            javax.servlet.jsp.jstl.fmt.fallbackLocale
+        </param-name>
+        <param-value>en</param-value>
+    </context-param>
+
+
+    <!-- 070319 end zhoucz -->
+
+    <!-- Context Configuration locations for Spring XML files -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:config/applicationContext-all.xml,/WEB-INF/security.xml
+        </param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/classes/config/log4j.properties
+        </param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.util.Log4jConfigListener
+        </listener-class>
+    </listener>
+
+    <!-- 不使用acegi的登陆方式（在applicationcontext-attributes.xml里配置），需要屏蔽该部分
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>
+            org.acegisecurity.util.FilterToBeanProxy
+        </filter-class>
+        <init-param>
+            <param-name>targetClass</param-name>
+            <param-value>
+                org.acegisecurity.util.FilterChainProxy
+            </param-value>
+        </init-param>
+    </filter>
  -->
-	<!--
-		<filter>
-		<filter-name>cacheFilter</filter-name>
-		<filter-class>
-		com.opensymphony.oscache.web.filter.CacheFilter
-		</filter-class>
-		<init-param>
-		<param-name>time</param-name>
-		<param-value>600</param-value>
-		</init-param>
-		<init-param>
-		<param-name>scope</param-name>
-		<param-value>session</param-value>
-		</init-param>
-		</filter>
-	-->
-	<filter>
-		<filter-name>clickstreamFilter</filter-name>
-		<filter-class>
-			com.opensymphony.clickstream.ClickstreamFilter
-		</filter-class>
-	</filter>
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>
-			org.springframework.web.filter.CharacterEncodingFilter
-		</filter-class>
-		<init-param>
-			<param-name>encoding</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-		<init-param>
-			<param-name>forceEncoding</param-name>
-			<param-value>true</param-value>
-		</init-param>
-	</filter>
-
-
-	<filter>
-		<filter-name>hibernateFilter</filter-name>
-		<filter-class>
-			org.springframework.orm.hibernate3.support.OpenSessionInViewFilter
-		</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>hibernateFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-
-
-	<filter>
-		<filter-name>rewriteFilter</filter-name>
-		<filter-class>
-			org.tuckey.web.filters.urlrewrite.UrlRewriteFilter
-		</filter-class>
-		<init-param>
-			<param-name>logLevel</param-name>
-			<param-value>commons</param-value>
-		</init-param>
-	</filter>
-	<!--
-		<filter>
-		<filter-name>sitemesh</filter-name>
-		<filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
-		</filter>
-	-->
-	<filter>
-		<filter-name>exportFilter</filter-name>
-		<filter-class>
-			org.displaytag.filter.ResponseOverrideFilter
-		</filter-class>
-	</filter>
-	<filter>
-		<filter-name>compressionFilter</filter-name>
-		<filter-class>
-			com.boco.eoms.base.webapp.filter.GZIPFilter
-		</filter-class>
-	</filter>
-	<filter>
-		<filter-name>localeFilter</filter-name>
-		<filter-class>
-			com.boco.eoms.base.webapp.filter.LocaleFilter
-		</filter-class>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>/j_security_check</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>*.html</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-	</filter-mapping>
-
-	<!-- 不使用acegi的登陆方式（在applicationcontext-attributes.xml里配置），需要屏蔽该部分
-	<filter-mapping>
-		<filter-name>securityFilter</filter-name>
-		<url-pattern>/j_security_check</url-pattern>
-	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>securityFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>securityFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-	</filter-mapping>
-	 -->
-
-	<!-- Commented out for 2 reasons: 1) it's a pain when developing JSPs, and
-		2) it causes the Signup webtest to fail -->
-
-	<!--
-		<filter-mapping>
-		<filter-name>cacheFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-		</filter-mapping>
-	-->
-	<!-- 
-		<filter-mapping>
-		<filter-name>hibernateFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-		</filter-mapping>
-	-->
-	<!--<filter-mapping>
-		<filter-name>clickstreamFilter</filter-name>
-		<url-pattern>*.html</url-pattern>
-		</filter-mapping>-->
-	<filter-mapping>
-		<filter-name>localeFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>localeFilter</filter-name>
-		<url-pattern>*.html</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>localeFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>exportFilter</filter-name>
-		<url-pattern>*.html</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>compressionFilter</filter-name>
-		<url-pattern>*.css</url-pattern>
-	</filter-mapping>
-	<!--2007-11-28 cause attachment is null锛宻o commet this area modify by qinmin begin
-		<filter-mapping>
-		<filter-name>compressionFilter</filter-name>
-		<url-pattern>*.jsp</url-pattern>
-		</filter-mapping>
-		2007-11-28 end
-	-->
-	<filter-mapping>
-		<filter-name>compressionFilter</filter-name>
-		<url-pattern>*.js</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>compressionFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-
-	<filter-mapping>
-		<filter-name>rewriteFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
-	</filter-mapping>
-	<!--
-		<filter-mapping>
-		<filter-name>sitemesh</filter-name>
-		<url-pattern>/*</url-pattern>
-		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>FORWARD</dispatcher>
-		</filter-mapping>
-	-->
-	<servlet>
-		<servlet-name>InitApplicationContextServlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.base.util.InitApplicationContextServlet
-		</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet>
-		<servlet-name>SheetKeyInit</servlet-name>
-		<servlet-class>
-			com.boco.eoms.sheet.base.util.SheetKeyInit
-		</servlet-class>
-		<load-on-startup>3</load-on-startup>
-	</servlet>
-
-	<servlet>
-		<servlet-name>action</servlet-name>
-		<servlet-class>
-			org.apache.struts.action.ActionServlet
-		</servlet-class>
-		<init-param>
-			<param-name>config</param-name>
-			<param-value>/WEB-INF/struts-config.xml</param-value>
-		</init-param>
-		<!-- 
-			<init-param>
-			<param-name>config/sheet/security</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-security.xml
-			</param-value>
-			</init-param>
-		-->
-		<init-param>
-			<param-name>config/cache</param-name>
-			<param-value>/WEB-INF/struts-config-cache.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/rule</param-name>
-			<param-value>/WEB-INF/struts-config-rule.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/log</param-name>
-			<param-value>/WEB-INF/struts-config-log.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/message</param-name>
-			<param-value>
-				/WEB-INF/struts-config-message.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sysuser</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sysuser.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/dept</param-name>
-			<param-value>/WEB-INF/struts-config-dept.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/special</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-special.xml
-			</param-value>
-		</init-param>
-		<!-- 业务开通 -->
-		<init-param>
-			<param-name>config/sheet/businessimplement</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-businessimplement.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/resourceconfirm</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-resourceconfirm.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/businessupport/order</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-ordersheet.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/businessupport/product</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-gprsspecialline.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>
-				config/businesssupport/serviceprepare
-			</param-name>
-			<param-value>
-				/WEB-INF/struts-config-businesssupport-serviceprepare.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/businessupport/trancepoint</param-name>
-			<param-value>
-				/WEB-INF/struts-config-businessupport-trancepoint.xml
-			</param-value>
-		</init-param>
-
-
-		<!-- end -->
-
-		<init-param>
-			<param-name>config/sheet/circuitoperation</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-circuitoperation.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/job</param-name>
-			<param-value>/WEB-INF/struts-config-job.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/accessories</param-name>
-			<param-value>
-				/WEB-INF/struts-config-accessories.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/dict</param-name>
-			<param-value>/WEB-INF/struts-config-dict.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/role</param-name>
-			<param-value>/WEB-INF/struts-config-role.xml</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/workbench/memo</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-memo.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/taskplan</param-name>
-			<param-value>
-				/WEB-INF/struts-config-taskplan.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/priv</param-name>
-			<param-value>/WEB-INF/struts-config-priv.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/area</param-name>
-			<param-value>/WEB-INF/struts-config-area.xml</param-value>
-		</init-param>
-		<!-- 测试卡 begin-->
-		<init-param>
-			<param-name>config/testcard</param-name>
-			<param-value>/WEB-INF/struts-eventmanager.xml</param-value>
-		</init-param>
-
-		<!-- 测试卡 end-->
-		<init-param>
-			<param-name>config/eva</param-name>
-			<param-value>/WEB-INF/struts-config-eva.xml</param-value>
-		</init-param>
-		<!-- 
-			<init-param>
-			<param-name>config/sheet/apply</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-apply.xml
-			</param-value>
-			</init-param>
-			
-			<init-param>
-			<param-name>config/sheet/Esm</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-esm.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/performance</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-performance.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/alarm</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-alarm.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/Nop</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-nop.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/WorkPlan</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-workplan.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/ts</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-ts.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/business</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-business.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/pvm</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-pvm.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/itrequire</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-itrequire.xml
-			</param-value>
-			</init-param>
-		-->
-		<init-param>
-			<param-name>config/supplierkpi</param-name>
-			<param-value>
-				/WEB-INF/struts-config-supplierkpi.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/cptroom</param-name>
-			<param-value>
-				/WEB-INF/struts-config-cptroom.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/workdayset</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workdayset.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/msg</param-name>
-			<param-value>/WEB-INF/struts-config-msg.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/duty</param-name>
-			<param-value>/WEB-INF/struts-duty.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/duty/papers</param-name>
-			<param-value>/WEB-INF/struts-config-papers.xml</param-value>
-		</init-param>
-		<!-- <init-param>
-			<param-name>config/workplan</param-name>
-			<param-value>/WEB-INF/struts-workplan.xml</param-value>
-			</init-param>-->
-
-		<init-param>
-			<param-name>config/statistic/flowcontrol</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-flowcontrol.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/infmanage</param-name>
-			<param-value>/WEB-INF/struts-infmanage.xml</param-value>
-		</init-param>
-		<!-- <init-param>
-			<param-name>config/workplan</param-name>
-			<param-value>/WEB-INF/struts-workplan.xml</param-value>
-			</init-param>-->
-		<init-param>
-			<param-name>config/workbench/netdisk</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-netdisk.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/workbench/onlineuser</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-onlineuser.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/workbench/infopub</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-infopub.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/workbench/contact</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-contact.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/workbench/commission</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-commission.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/interfaceMonitoring</param-name>
-			<param-value>
-				/WEB-INF/struts-config-commons-interfaceMonitoring.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/sheetLimit</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-limit.xml
-			</param-value>
-		</init-param>
-
-
-		<init-param>
-			<param-name>config/sheet/sheetLimit</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-limit.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/repository</param-name>
-			<param-value>
-				/WEB-INF/struts-config-tawlocalrepository.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/softwareApply</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-SoftwareApply.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/softwareLoad</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-SoftwareLoad.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/complaintDuban</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-ComplaintDuban.xml
-			</param-value>
-		</init-param>
-		<!-- 
-			<init-param>
-			<param-name>config/sheet/sheetLimit</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-limit.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/expert</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-expert.xml
-			</param-value>
-			</init-param>
-			
-			<init-param>
-			<param-name>config/sheet/complaint</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-complaint.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/complaintDuban</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-ComplaintDuban.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/netFault</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-NetFault.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/datum</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-datum.xml
-			</param-value>
-			</init-param>
-			
-			<init-param>
-			<param-name>config/sheet/complaintauto</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-complaint-autot2.xml
-			</param-value>
-			</init-param>	
-		-->
-
-		<init-param>
-			<param-name>config/sheet/localCommonTask</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-localCommonTask.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/offlineData</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-offlineData.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/algorithm</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-algorithm.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/sheet/numberapply</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-numberapply.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/complaint</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-complaint.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/kpi</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-kpi.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/datum</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-datum.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/autoCrm</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-autoCrm.xml
-			</param-value>
-		</init-param>
-
-		<!-- 
-			<init-param>
-			<param-name>config/sheet/business</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-businesspilot.xml
-			</param-value>
-			</init-param>    
-			
-			<init-param>
-			<param-name>config/sheet/businessoperation</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-businessoperation.xml
-			</param-value>
-			</init-param>		 
-			
-			<init-param>
-			<param-name>config/sheet/commonfault</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-commonfault.xml
-			</param-value>
-			</init-param>	   
-			
-			
-			
-			
-			<init-param>
-			<param-name>config/sheet/groupcomplaint</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-groupcomplaint.xml
-			</param-value>
-			</init-param>   
-			
-		-->
-		<init-param>
-			<param-name>config/sheet/groupcomplaint</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-groupcomplaint.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/commonfault</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-commonfault.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/sheet/urgentfault</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-urgentfault.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/newSheetLimit</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-sheetlimit.xml
-			</param-value>
-		</init-param>
-		<!-- 
-			<init-param>
-			<param-name>config/sheet/businessplan</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-businessplan.xml
-			</param-value>
-			</init-param>   
-			
-			<init-param>
-			<param-name>config/sheet/commontask</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-commontask.xml
-			</param-value>
-			</init-param>	    
-			
-			<init-param>
-			<param-name>config/sheet/businessdredge</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-businessdredge.xml
-			</param-value>
-			</init-param>		 
-			
-			
-			
-			<init-param>
-			<param-name>config/sheet/circuitdispatch</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-circuitdispatch.xml
-			</param-value>
-			</init-param>	 
-			
-			
-			<init-param>
-			<param-name>config/sheet/netchange</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-netchange.xml
-			</param-value>
-			</init-param>	 
-			
-			<init-param>
-			<param-name>config/sheet/netdata</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-netdata.xml
-			</param-value>
-			</init-param>   
-			
-			<init-param>
-			<param-name>config/sheet/businessbackout</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-businessbackout.xml</param-value>
-			</init-param>   
-			
-			<init-param>
-			<param-name>config/sheet/softchange</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-softchange.xml</param-value>
-			</init-param>    
-			
-			
-			<init-param>
-			<param-name>config/sheet/itrequirement</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-itrequirement.xml</param-value>
-			</init-param>    
-			<init-param>
-			<param-name>config/sheet/itsoftchange</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-itsoftchange.xml</param-value>
-			</init-param>				
-			
-			<init-param>
-			<param-name>config/sheet/securitydeal</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-securityDeal.xml</param-value>
-			</init-param>    
-			<init-param>
-			<param-name>config/sheet/safeaudit</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-safeaudit.xml</param-value>
-			</init-param>      
-			<init-param>
-			<param-name>config/sheet/securityevaluate</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-securityEvaluate.xml</param-value>
-			</init-param>      
-			<init-param>
-			<param-name>config/sheet/netOptimize</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-netOptimize.xml
-			</param-value>
-			</init-param>   
-			
-			<init-param>
-			<param-name>config/sheet/accountpopedomapply</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-accountpopedomapply.xml</param-value>
-			</init-param>	 
-			<init-param>
-			<param-name>config/sheet/greatevent</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-greatevent.xml</param-value>
-			</init-param>    
-			
-			<init-param>
-			<param-name>config/sheet/emergencydrill</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-emergencydrill.xml</param-value>
-			</init-param>    
-			<init-param>
-			<param-name>config/sheet/processchange</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-processchange.xml</param-value>
-			</init-param>   
-			
-			
-			<init-param>
-			<param-name>config/sheet/modifyTime</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-modifytime.xml
-			</param-value>
-			</init-param>  
-			
-			<init-param>
-			<param-name>config/sheet/workflow</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-workflow.xml</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/sheetRelation</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-relation.xml</param-value>
-			</init-param>			
-			
-			<init-param>
-			<param-name>config/sheet/nBProducts</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-nBProducts.xml</param-value>
-			</init-param>  
-			
-			<init-param>
-			<param-name>config/sheet/autodistribute</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-autodistribute.xml</param-value>
-			</init-param>   
-			<init-param>
-			<param-name>config/sheet/overtimetip</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-overtimetip.xml</param-value>
-			</init-param>	  
-			<init-param>
-			<param-name>config/sheet/newSheetLimit</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-sheetlimit.xml
-			</param-value>  
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/dealtypeconfig</param-name>
-			<param-value>
-			/WEB-INF/struts-config-sheet-dealtypeconfig.xml
-			</param-value>
-			</init-param>
-			<init-param>
-			<param-name>config/sheet/knowledge</param-name>
-			<param-value>/WEB-INF/struts-config-knowledge.xml
-			</param-value>  
-			</init-param>		
-		-->
-
-		<!-- <init-param>
-			<param-name>config/plancontent</param-name>
-			<param-value>
-			/WEB-INF/struts-config-plancontent.xml
-			</param-value>
-			</init-param>-->
-
-		<!-- <init-param>
-			<param-name>config/loanrecord</param-name>
-			<param-value>
-			/WEB-INF/struts-config-loanrecord.xml
-			</param-value>
-			</init-param>-->
-
-
-		<!-- <init-param>
-			<param-name>config/visitrecord</param-name>
-			<param-value>
-			/WEB-INF/struts-config-visitrecord.xml
-			</param-value>
-			</init-param>-->
-
-
-		<!-- <init-param>
-			<param-name>config/dispatchrecord</param-name>
-			<param-value>
-			/WEB-INF/struts-config-dispatchrecord.xml
-			</param-value>
-			</init-param>-->
-
-		<!-- <init-param>
-			<param-name>config/reliefrecord</param-name>
-			<param-value>
-			/WEB-INF/struts-config-reliefrecord.xml
-			</param-value>
-			</init-param>-->
-		<init-param>
-			<param-name>config/sheet/workflow</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-workflow.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/businessdredge</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-businessdredge.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/businessdredgebroad</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-businessdredgebroad.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/softchange</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-softchange.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/sample</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-sample.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/resourceaffirm</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-resourceaffirm.xml
-			</param-value>
-		</init-param>
-		<!-- 瀹搞儱宕熸禒璇插struts --><!-- lizhenyou -->
-		<init-param>
-			<param-name>config/statistic/task</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-task.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/commontask</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-commontask.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/complaint</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-complaint.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/circuitdispatch</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-circuitdispatch.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/netdata</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-netdata.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/greatevent</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-greatevent.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/urgentfault</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-urgentfault.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/netchange</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-netchange.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/businesspilot</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-businesspilot.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/commonfault</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-commonfault.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/businessoperation</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-businessoperation.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/softchange</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-softchange.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/businessplan</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-businessplan.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/businesschange</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-businesschange.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/businessbackout</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-businessbackout.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/customstat</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-customstat.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/emergencydrill</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-emergencydrill.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/processchange</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-processchange.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/itsoftchange</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-itsoftchange.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/netOptimize</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-netOptimize.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/itrequirement</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-itrequirement.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/securityevaluate</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-securityevaluate.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/statistic/operuser</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-operuser.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/statistic/logstat</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-logstat.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/bureaudata</param-name>
-			<param-value>
-				/WEB-INF/struts-config-bureaudata.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/bureaudataUpdate</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-bureaudataUpdate.xml
-			</param-value>
-		</init-param>
-		<!-- <init-param>
-			<param-name>config/logunite</param-name>
-			<param-value>
-			/WEB-INF/struts-config-logunite.xml
-			</param-value>
-			</init-param>-->
-		<init-param>
-			<param-name>config/failureRecord</param-name>
-			<param-value>
-				/WEB-INF/struts-config-commons-failureRecord.xml
-			</param-value>
-		</init-param>
-		<!-- <init-param>
-			<param-name>config/workorderrecord</param-name>
-			<param-value>
-			/WEB-INF/struts-config-workorderrecord.xml
-			</param-value>
-			</init-param>-->
-		<init-param>
-			<param-name>config/hongxun</param-name>
-			<param-value>
-				/WEB-INF/struts-config-hongxun.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/voiceMessage</param-name>
-			<param-value>/WEB-INF/struts-voiceMessage.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/telnetSocket</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-telnetSocket.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/networkcalendar</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-networkcalendar.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/filemanager</param-name>
-			<param-value>/WEB-INF/struts-filemanager.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/myinfo</param-name>
-			<param-value>/WEB-INF/struts-config-myinfo.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/proxy</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-proxy.xml
-			</param-value>
-		</init-param>
-
-
-		<init-param>
-			<param-name>config/access</param-name>
-			<param-value>/WEB-INF/struts-config-access.xml</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/tawSystemCode</param-name>
-			<param-value>/WEB-INF/struts-config-code.xml</param-value>
-		</init-param>
-		<init-param>
-
-			<param-name>config/reported</param-name>
-			<param-value>
-				/WEB-INF/struts-config-reported.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/workbench/report</param-name>
-			<param-value>
-				/WEB-INF/struts-config-workbench-report.xml
-			</param-value>
-		</init-param>
-
-		<!-- 合同管理 -->
-		<init-param>
-			<param-name>config/contract</param-name>
-			<param-value>
-				/WEB-INF/struts-config-tawcontract.xml
-			</param-value>
-		</init-param>
-		<!--   干线仪表配置    -->
-		<init-param>
-			<param-name>config/mainmetermgr</param-name>
-			<param-value>
-				/WEB-INF/struts-config-parter-baseinfo-mainmetermgr.xml
-			</param-value>
-		</init-param>
-		<!--   合同信息    -->
-		<init-param>
-			<param-name>config/pnrcompact</param-name>
-			<param-value>
-				/WEB-INF/struts-config-parter-baseinfo-pnrcompact.xml
-			</param-value>
-		</init-param>
-		<!--   代维仪表管理    -->
-		<init-param>
-			<param-name>config/basemetermgr</param-name>
-			<param-value>
-				/WEB-INF/struts-config-parter-baseinfo-basemetermgr.xml
-			</param-value>
-		</init-param>
-		<!--   代维仪表管理    -->
-		<init-param>
-			<param-name>config/metermgr</param-name>
-			<param-value>
-				/WEB-INF/struts-config-parter-baseinfo-metermgr.xml
-			</param-value>
-		</init-param>
-
-		<!-- 干线割接 -->
-		<init-param>
-			<param-name>config/cutapply</param-name>
-			<param-value>
-				/WEB-INF/struts-config-cutapply.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/operuser</param-name>
-			<param-value>
-				/WEB-INF/struts-config-operuser.xml
-			</param-value>
-		</init-param>
-
-		<!-- 提醒服务 -->
-		<!--<init-param>
-			<param-name>config/remind</param-name>
-			<param-value>/WEB-INF/struts-config-remind.xml</param-value>
-			</init-param>-->
-
-		<!-- 费用管理		-->
-		<!-- <init-param>
-			<param-name>config/fees</param-name>
-			<param-value>/WEB-INF/struts-fees.xml</param-value>
-			</init-param>-->
-			
-			<!-- 添加督办任务转发 -->
-		<init-param>
-   			<param-name>config/sheet/supervisetask</param-name>
-  			<param-value>/WEB-INF/struts-config-sheet-supervisetask.xml</param-value>
-  		</init-param>
-
-		<!-- add by lizhenyou MMS彩信报-->
-		<init-param>
-			<param-name>config/mms</param-name>
-			<param-value>/WEB-INF/struts-config-mms.xml</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/acceptsheetrule</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-acceptsheetrule.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/acceptsheetrule</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-autotransmitrule.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/commontask</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-commontask.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/bureaudataSave</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-bureaudataSave.xml
-			</param-value>
-		</init-param>
-
-
-		<init-param>
-			<param-name>config/sheet/alarmsolveDate</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-AlarmsolveDate.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/tdconsultation</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-tdconsultation.xml
-			</param-value>
-		</init-param>
-		<!-- begin by xugengxian_090218 for wap -->
-		<init-param>
-			<param-name>config/wap</param-name>
-			<param-value>/WEB-INF/struts-config-wap.xml</param-value>
-		</init-param>
-		<!-- end by xugengxian -->
-		<init-param>
-			<param-name>
-				config/statistic/notflow/partner/baseinfo
-			</param-name>
-			<param-value>
-				/WEB-INF/struts-config-statistic-notflow-partner-baseinfo.xml
-			</param-value>
-		</init-param>
-
-		<init-param>
-			<param-name>config/partner/baseinfo</param-name>
-			<param-value>
-				/WEB-INF/struts-config-partner-baseinfo.xml
-			</param-value>
-		</init-param>
-		<!-- 多选菜单 -->
-		<init-param>
-			<param-name>config/mappingstorage</param-name>
-			<param-value>
-				/WEB-INF/struts-config-mapping.xml
-			</param-value>
-		</init-param>
-		<!-- 知识管理 config/kmmanager/ -->
-		<init-param>
-			<param-name>config/kmmanager</param-name>
-			<param-value>
-				/WEB-INF/struts-config-kmmanager.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/agentmaintenance</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-agentmaintenance.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/arithmeticmodify</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-arithmeticmodify.xml
-			</param-value>
-		 </init-param>
-		<init-param>
-			<param-name>config/sheetflowline</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheetflowline.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/citycustom</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-citycustom.xml
-			</param-value>
-		 </init-param>
-		<init-param>
-			<param-name>config/sheet/transprovincial</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-transprovincial.xml
-			</param-value>
-		 </init-param>
-		<init-param>
-			<param-name>config/sheet/industrysms</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-industrysms.xml
-			</param-value>
-		 </init-param>
-		<init-param>
-			<param-name>config/sheet/commonfaultauto</param-name>
-			<param-value>/WEB-INF/struts-config-sheet-commonfault-auto.xml</param-value>
-      </init-param>
-		<init-param>
-			<param-name>config/sheet/plannconfirm</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-plannconfirm.xml
-			</param-value>
-		 </init-param>
-		<init-param>
-			<param-name>config/sheet/plannadjust</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-plannadjust.xml
-			</param-value>
-		 </init-param>
-		<init-param>
-			<param-name>config/sheet/netownership</param-name>
-			<param-value>
-				/WEB-INF/struts-config-netownership.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/circuitcontrol</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-circuitcontrol.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/equipmentsecurityresponse</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-equipmentsecurityresponse.xml
-			</param-value>
-		 </init-param>
-
-		 <init-param>
-			<param-name>config/sheet/securityobjattribute</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-securityobjattribute.xml
-			</param-value>
-		 </init-param>
-
-		 <init-param>
-			<param-name>config/sheet/securityobjaudit</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-securityobjaudit.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/commonfaultcorrigendum</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-commonfaultcorrigendum.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/groupcheck</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-groupcheck.xml
-			</param-value>
-		 </init-param>
-		 
-		 
-		 <init-param>
-			<param-name>config/commonfaulthj</param-name>
-			<param-value>
-  				/WEB-INF/struts-config-commonfaulthj.xml
-			</param-value>
- 		</init-param>
- 		
- 		<init-param>
-			<param-name>config/sheet/focusresourceerrata</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-focusresourceerrata.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/maintenanceservice</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-maintenanceservice.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/daiweiindexreduction</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-daiweiindexreduction.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/branchindexreduction</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-branchindexreduction.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/equipmentinstallation</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-equipmentinstallation.xml
-			</param-value>
-		 </init-param>
-
-
-		<init-param>
-			<param-name>config/sheet/equipmentunsubscribe</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-equipmentunsubscribe.xml
-			</param-value>
-		 </init-param>
-		 
-		 <init-param>
-			<param-name>config/sheet/mofficedata</param-name>
-			<param-value>
-			   /WEB-INF/struts-config-sheet-mofficedata.xml
-			</param-value>
-		 </init-param>
-		 
-		<load-on-startup>2</load-on-startup>
-	</servlet>
-
-
-	<!-- 如果不需要用轮训（系统自动启动），那么屏蔽掉改部�?-->
-	<!--
-		<servlet>
-		<servlet-name>JobInitServlet</servlet-name>
-		<servlet-class>
-		com.boco.eoms.commons.job.util.JobInitServlet
-		</servlet-class>
-		<load-on-startup>4</load-on-startup>
-		</servlet>
-	-->
-
-	<!--
-		<servlet>
-		<servlet-name>wapengine</servlet-name>
-		<servlet-class>
-		com.boco.eoms.mobilewap.wapengine.control.WapServlet
-		</servlet-class>
-		<load-on-startup>3</load-on-startup>
-		</servlet>
-		
-		<servlet-mapping>
-		<servlet-name>wapengine</servlet-name>
-		<url-pattern>/wap</url-pattern>
-		</servlet-mapping>
-		
-		<servlet>
-		<servlet-name>wapdbconnection</servlet-name>
-		<servlet-class>
-		com.boco.eoms.mobilewap.webtool.control.WapDBConnectionServlet
-		</servlet-class>
-		</servlet>
-		<servlet-mapping>
-		<servlet-name>wapdbconnection</servlet-name>
-		<url-pattern>/webtool/wapdbconnection</url-pattern>
-		</servlet-mapping>
-		
-		<servlet>
-		<servlet-name>nodelist</servlet-name>
-		<servlet-class>
-		com.boco.eoms.mobilewap.webtool.control.NodeListServlet
-		</servlet-class>
-		</servlet>
-		<servlet-mapping>
-		<servlet-name>nodelist</servlet-name>
-		<url-pattern>/webtool/nodelist</url-pattern>
-		</servlet-mapping>
-		
-		<servlet>
-		<servlet-name>wapnode</servlet-name>
-		<servlet-class>
-		com.boco.eoms.mobilewap.webtool.control.WapNodeServlet
-		</servlet-class>
-		</servlet>
-		<servlet-mapping>
-		<servlet-name>wapnode</servlet-name>
-		<url-pattern>/webtool/wapnode</url-pattern>
-		</servlet-mapping>
-		
-		
-		<servlet>
-		<servlet-name>card</servlet-name>
-		<servlet-class>
-		com.boco.eoms.mobilewap.webtool.control.CardServlet
-		</servlet-class>
-		</servlet>
-		<servlet-mapping>
-		<servlet-name>card</servlet-name>
-		<url-pattern>/webtool/card</url-pattern>
-		</servlet-mapping>
-		
-		
-		<servlet>
-		<servlet-name>tag</servlet-name>
-		<servlet-class>
-		com.boco.eoms.mobilewap.webtool.control.TagServlet
-		</servlet-class>
-		</servlet>
-		<servlet-mapping>
-		<servlet-name>tag</servlet-name>
-		<url-pattern>/webtool/tag</url-pattern>
-		</servlet-mapping>
-	-->
-	<servlet-mapping>
-		<servlet-name>action</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
-
-	<session-config>
-		<session-timeout>360</session-timeout>
-	</session-config>
-
-	<!-- MIME mapping -->
-	<mime-mapping>
-		<extension>doc</extension>
-		<mime-type>application/vnd.ms-word</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>gif</extension>
-		<mime-type>image/gif</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>htm</extension>
-		<mime-type>text/html</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>html</extension>
-		<mime-type>text/html</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>jnlp</extension>
-		<mime-type>application/x-java-jnlp-file</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>jpeg</extension>
-		<mime-type>image/jpeg</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>jpg</extension>
-		<mime-type>image/jpeg</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>js</extension>
-		<mime-type>application/x-javascript</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>pdf</extension>
-		<mime-type>application/pdf</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>png</extension>
-		<mime-type>image/png</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>txt</extension>
-		<mime-type>text/plain</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>xls</extension>
-		<mime-type>application/vnd.ms-excel</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>xml</extension>
-		<mime-type>text/xml</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>xul</extension>
-		<mime-type>application/vnd.mozilla.xul-xml</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>zhtml</extension>
-		<mime-type>text/html</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>zip</extension>
-		<mime-type>application/x-zip</mime-type>
-	</mime-mapping>
-	<mime-mapping>
-		<extension>zul</extension>
-		<mime-type>text/html</mime-type>
-	</mime-mapping>
-	<welcome-file-list>
-		<welcome-file>login.jsp</welcome-file>
-	</welcome-file-list>
-
-
-
-
-
-	<!-- add by weizhongsheng begin -->
-	<servlet>
-		<servlet-name>menutree</servlet-name>
-		<servlet-class>
-			com.boco.eoms.commons.ui.servlet.MenuTreeServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>menutree</servlet-name>
-		<url-pattern>/menutree</url-pattern>
-	</servlet-mapping>
-
-
-
-
-	<servlet>
-		<servlet-name>AdminServlet</servlet-name>
-
-		<servlet-class>
-			org.apache.axis.transport.http.AdminServlet
-		</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>AxisServlet</servlet-name>
-
-		<servlet-class>
-			org.apache.axis.transport.http.AxisServlet
-		</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>JCSAdminServlet</servlet-name>
-		<servlet-class>
-			org.apache.jcs.admin.servlet.BocoJCSAdminServlet
-		</servlet-class>
-		<init-param>
-			<param-name>properties</param-name>
-			<param-value>
-				WEB-INF/conf/JCSAdminServlet.velocity.properties
-			</param-value>
-		</init-param>
-	</servlet>
-	<servlet>
-		<servlet-name>SOAPMonitorService</servlet-name>
-
-		<servlet-class>
-			org.apache.axis.monitor.SOAPMonitorService
-		</servlet-class>
-		<init-param>
-			<param-name>SOAPMonitorPort</param-name>
-			<param-value>5001</param-value>
-		</init-param>
-	</servlet>
-	<!--  
-		<servlet>
-		<servlet-name>cacheinitservlet</servlet-name>
-		<servlet-class>
-		com.boco.eoms.cache.CacheInitServlet
-		</servlet-class>
-		<load-on-startup>2</load-on-startup>
-		</servlet>
-	-->
-	<servlet>
-		<servlet-name>dataservlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.nmmis.controller.DataServlet
-		</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>fileInit</servlet-name>
-		<servlet-class>
-			com.boco.eoms.common.util.FileInitServlet
-		</servlet-class>
-		<init-param>
-			<param-name>config</param-name>
-			<param-value>/WEB-INF/configfiles</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/failureRecord</param-name>
-			<param-value>
-				/WEB-INF/struts-config-commons-failureRecord.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>config/sheet/userdefinegroup</param-name>
-			<param-value>
-				/WEB-INF/struts-config-sheet-userdefineGroup.xml
-			</param-value>
-		</init-param>
-		<init-param>
-			<param-name>webinf</param-name>
-			<param-value>/WEB-INF</param-value>
-		</init-param>
-		<init-param>
-			<param-name>root</param-name>
-			<param-value>/</param-value>
-		</init-param>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
-	<servlet>
-		<servlet-name>laststepservlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.autosheet.servlet.LastStepServlet
-		</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>messagerouter</servlet-name>
-
-		<servlet-class>
-			org.apache.soap.server.http.MessageRouterServlet
-		</servlet-class>
-		<init-param>
-			<param-name>faultListener</param-name>
-			<param-value>
-				org.apache.soap.server.DOMFaultListener
-			</param-value>
-		</init-param>
-	</servlet>
-	<servlet>
-		<servlet-name>rpcrouter</servlet-name>
-		<servlet-class>
-			org.apache.soap.server.http.RPCRouterServlet
-		</servlet-class>
-		<init-param>
-			<param-name>faultListener</param-name>
-			<param-value>
-				org.apache.soap.server.DOMFaultListener
-			</param-value>
-		</init-param>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>AxisServlet</servlet-name>
-		<url-pattern>*.jws</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>JCSAdminServlet</servlet-name>
-		<url-pattern>/JCSAdminServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>SOAPMonitorService</servlet-name>
-		<url-pattern>/SOAPMonitor</url-pattern>
-	</servlet-mapping>
-	<!-- 
-		<servlet-mapping>
-		<servlet-name>cacheinitservlet</servlet-name>
-		<url-pattern>/cacheinitservlet</url-pattern>
-		</servlet-mapping>
-	-->
-	<servlet-mapping>
-		<servlet-name>laststepservlet</servlet-name>
-		<url-pattern>/laststepservlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AxisServlet</servlet-name>
-		<url-pattern>/services/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AdminServlet</servlet-name>
-		<url-pattern>/servlet/AdminServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AxisServlet</servlet-name>
-		<url-pattern>/servlet/AxisServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>AxisServlet</servlet-name>
-		<url-pattern>/servlet/AxisServlet/*</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>dataservlet</servlet-name>
-		<url-pattern>
-			/servlet/com.boco.eoms.nmmis.controller.DataServlet
-		</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>messagerouter</servlet-name>
-		<url-pattern>/servlet/messagerouter</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>rpcrouter</servlet-name>
-		<url-pattern>/servlet/rpcrouter</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>sheetattrservlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.autosheet.servlet.SheetAttrServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>sheetattrservlet</servlet-name>
-		<url-pattern>/sheetattrservlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>sheetform</servlet-name>
-		<servlet-class>
-			com.boco.eoms.autosheet.servlet.HtmlFormServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>sheetform</servlet-name>
-		<url-pattern>/htmlformservlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>sheetnameservlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.autosheet.servlet.SheetNameServlet
-		</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>sheetnameservlet</servlet-name>
-		<url-pattern>/sheetnameservlet</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>sheetvalueservlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.autosheet.servlet.SheetValueServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>sheetvalueservlet</servlet-name>
-		<url-pattern>/sheetvalueservlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>useractionservlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.autosheet.servlet.UserActionServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>useractionservlet</servlet-name>
-		<url-pattern>/useractionservlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>userhtmlservlet</servlet-name>
-		<servlet-class>
-			com.boco.eoms.autosheet.servlet.UserHtmlServlet
-		</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>userhtmlservlet</servlet-name>
-		<url-pattern>/htmlservlet</url-pattern>
-	</servlet-mapping>
-	<!-- add by weizhongsheng end -->
-	<!--
-		<taglib>
-		<taglib-uri>http://lightPortal.org/portal</taglib-uri>
-		<taglib-location>/WEB-INF/tlds/light.tld</taglib-location>
-		</taglib>
-		<taglib>
-		<taglib-uri>http://java.sun.com/portlet</taglib-uri>
-		<taglib-location>/WEB-INF/tlds/portlet.tld</taglib-location>
-		</taglib>
-		
-		<taglib>
-		<taglib-uri>/WEB-INF/tlds/oscache.tld</taglib-uri>
-		<taglib-location>/WEB-INF/tlds/oscache.tld</taglib-location>
-		</taglib>
-	-->
-	<!-- zhoucz end 070319 -->
-	<!--
-		<error-page>
-		<error-code>500</error-code>
-		<location>/error.jsp</location>
-		</error-page>
-		<error-page>
-		<error-code>400</error-code>
-		<location>/index.jsp</location>
-		</error-page>
-		<error-page>
-		<error-code>403</error-code>
-		<location>/403.jsp</location>
-		</error-page>
-		<error-page>
-		<error-code>404</error-code>
-		<location>/404.jsp</location>
-		</error-page>
-	-->
+    <!--
+        <filter>
+        <filter-name>cacheFilter</filter-name>
+        <filter-class>
+        com.opensymphony.oscache.web.filter.CacheFilter
+        </filter-class>
+        <init-param>
+        <param-name>time</param-name>
+        <param-value>600</param-value>
+        </init-param>
+        <init-param>
+        <param-name>scope</param-name>
+        <param-value>session</param-value>
+        </init-param>
+        </filter>
+    -->
+    <filter>
+        <filter-name>clickstreamFilter</filter-name>
+        <filter-class>
+            com.opensymphony.clickstream.ClickstreamFilter
+        </filter-class>
+    </filter>
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.CharacterEncodingFilter
+        </filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+
+    <filter>
+        <filter-name>hibernateFilter</filter-name>
+        <filter-class>
+            org.springframework.orm.hibernate3.support.OpenSessionInViewFilter
+        </filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+
+    <filter>
+        <filter-name>rewriteFilter</filter-name>
+        <filter-class>
+            org.tuckey.web.filters.urlrewrite.UrlRewriteFilter
+        </filter-class>
+        <init-param>
+            <param-name>logLevel</param-name>
+            <param-value>commons</param-value>
+        </init-param>
+    </filter>
+    <!--
+        <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+        </filter>
+    -->
+    <filter>
+        <filter-name>exportFilter</filter-name>
+        <filter-class>
+            org.displaytag.filter.ResponseOverrideFilter
+        </filter-class>
+    </filter>
+    <filter>
+        <filter-name>compressionFilter</filter-name>
+        <filter-class>
+            com.boco.eoms.base.webapp.filter.GZIPFilter
+        </filter-class>
+    </filter>
+    <filter>
+        <filter-name>localeFilter</filter-name>
+        <filter-class>
+            com.boco.eoms.base.webapp.filter.LocaleFilter
+        </filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/j_security_check</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+    <!-- 不使用acegi的登陆方式（在applicationcontext-attributes.xml里配置），需要屏蔽该部分
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/j_security_check</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+     -->
+
+    <!-- Commented out for 2 reasons: 1) it's a pain when developing JSPs, and
+        2) it causes the Signup webtest to fail -->
+
+    <!--
+        <filter-mapping>
+        <filter-name>cacheFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+        </filter-mapping>
+    -->
+    <!--
+        <filter-mapping>
+        <filter-name>hibernateFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+        </filter-mapping>
+    -->
+    <!--<filter-mapping>
+        <filter-name>clickstreamFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+        </filter-mapping>-->
+    <filter-mapping>
+        <filter-name>localeFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>localeFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>localeFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>exportFilter</filter-name>
+        <url-pattern>*.html</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>compressionFilter</filter-name>
+        <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+    <!--2007-11-28 cause attachment is null锛宻o commet this area modify by qinmin begin
+        <filter-mapping>
+        <filter-name>compressionFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+        </filter-mapping>
+        2007-11-28 end
+    -->
+    <filter-mapping>
+        <filter-name>compressionFilter</filter-name>
+        <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>compressionFilter</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>rewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <!--
+        <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        </filter-mapping>
+    -->
+    <servlet>
+        <servlet-name>InitApplicationContextServlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.base.util.InitApplicationContextServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>SheetKeyInit</servlet-name>
+        <servlet-class>
+            com.boco.eoms.sheet.base.util.SheetKeyInit
+        </servlet-class>
+        <load-on-startup>3</load-on-startup>
+    </servlet>
+
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>
+            org.apache.struts.action.ActionServlet
+        </servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+        <!--
+            <init-param>
+            <param-name>config/sheet/security</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-security.xml
+            </param-value>
+            </init-param>
+        -->
+        <init-param>
+            <param-name>config/cache</param-name>
+            <param-value>/WEB-INF/struts-config-cache.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/rule</param-name>
+            <param-value>/WEB-INF/struts-config-rule.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/log</param-name>
+            <param-value>/WEB-INF/struts-config-log.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/message</param-name>
+            <param-value>
+                /WEB-INF/struts-config-message.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sysuser</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sysuser.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/dept</param-name>
+            <param-value>/WEB-INF/struts-config-dept.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/special</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-special.xml
+            </param-value>
+        </init-param>
+        <!-- 业务开通 -->
+        <init-param>
+            <param-name>config/sheet/businessimplement</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-businessimplement.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/resourceconfirm</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-resourceconfirm.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/businessupport/order</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-ordersheet.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/businessupport/product</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-gprsspecialline.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>
+                config/businesssupport/serviceprepare
+            </param-name>
+            <param-value>
+                /WEB-INF/struts-config-businesssupport-serviceprepare.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/businessupport/trancepoint</param-name>
+            <param-value>
+                /WEB-INF/struts-config-businessupport-trancepoint.xml
+            </param-value>
+        </init-param>
+
+
+        <!-- end -->
+
+        <init-param>
+            <param-name>config/sheet/circuitoperation</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-circuitoperation.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/job</param-name>
+            <param-value>/WEB-INF/struts-config-job.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/accessories</param-name>
+            <param-value>
+                /WEB-INF/struts-config-accessories.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/dict</param-name>
+            <param-value>/WEB-INF/struts-config-dict.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/role</param-name>
+            <param-value>/WEB-INF/struts-config-role.xml</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/workbench/memo</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-memo.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/taskplan</param-name>
+            <param-value>
+                /WEB-INF/struts-config-taskplan.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/priv</param-name>
+            <param-value>/WEB-INF/struts-config-priv.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/area</param-name>
+            <param-value>/WEB-INF/struts-config-area.xml</param-value>
+        </init-param>
+        <!-- 测试卡 begin-->
+        <init-param>
+            <param-name>config/testcard</param-name>
+            <param-value>/WEB-INF/struts-eventmanager.xml</param-value>
+        </init-param>
+
+        <!-- 测试卡 end-->
+        <init-param>
+            <param-name>config/eva</param-name>
+            <param-value>/WEB-INF/struts-config-eva.xml</param-value>
+        </init-param>
+        <!--
+            <init-param>
+            <param-name>config/sheet/apply</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-apply.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/Esm</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-esm.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/performance</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-performance.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/alarm</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-alarm.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/Nop</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-nop.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/WorkPlan</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-workplan.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/ts</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-ts.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/business</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-business.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/pvm</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-pvm.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/itrequire</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-itrequire.xml
+            </param-value>
+            </init-param>
+        -->
+        <init-param>
+            <param-name>config/supplierkpi</param-name>
+            <param-value>
+                /WEB-INF/struts-config-supplierkpi.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/cptroom</param-name>
+            <param-value>
+                /WEB-INF/struts-config-cptroom.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/workdayset</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workdayset.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/msg</param-name>
+            <param-value>/WEB-INF/struts-config-msg.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/duty</param-name>
+            <param-value>/WEB-INF/struts-duty.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/duty/papers</param-name>
+            <param-value>/WEB-INF/struts-config-papers.xml</param-value>
+        </init-param>
+        <!-- <init-param>
+            <param-name>config/workplan</param-name>
+            <param-value>/WEB-INF/struts-workplan.xml</param-value>
+            </init-param>-->
+
+        <init-param>
+            <param-name>config/statistic/flowcontrol</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-flowcontrol.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/infmanage</param-name>
+            <param-value>/WEB-INF/struts-infmanage.xml</param-value>
+        </init-param>
+        <!-- <init-param>
+            <param-name>config/workplan</param-name>
+            <param-value>/WEB-INF/struts-workplan.xml</param-value>
+            </init-param>-->
+        <init-param>
+            <param-name>config/workbench/netdisk</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-netdisk.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/workbench/onlineuser</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-onlineuser.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/workbench/infopub</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-infopub.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/workbench/contact</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-contact.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/workbench/commission</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-commission.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/interfaceMonitoring</param-name>
+            <param-value>
+                /WEB-INF/struts-config-commons-interfaceMonitoring.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/sheetLimit</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-limit.xml
+            </param-value>
+        </init-param>
+
+
+        <init-param>
+            <param-name>config/sheet/sheetLimit</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-limit.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/repository</param-name>
+            <param-value>
+                /WEB-INF/struts-config-tawlocalrepository.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/softwareApply</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-SoftwareApply.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/softwareLoad</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-SoftwareLoad.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/complaintDuban</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-ComplaintDuban.xml
+            </param-value>
+        </init-param>
+        <!--
+            <init-param>
+            <param-name>config/sheet/sheetLimit</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-limit.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/expert</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-expert.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/complaint</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-complaint.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/complaintDuban</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-ComplaintDuban.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/netFault</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-NetFault.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/datum</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-datum.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/complaintauto</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-complaint-autot2.xml
+            </param-value>
+            </init-param>
+        -->
+
+        <init-param>
+            <param-name>config/sheet/localCommonTask</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-localCommonTask.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/offlineData</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-offlineData.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/algorithm</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-algorithm.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/numberapply</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-numberapply.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/complaint</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-complaint.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/kpi</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-kpi.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/datum</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-datum.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/autoCrm</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-autoCrm.xml
+            </param-value>
+        </init-param>
+
+        <!--
+            <init-param>
+            <param-name>config/sheet/business</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-businesspilot.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/businessoperation</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-businessoperation.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/commonfault</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-commonfault.xml
+            </param-value>
+            </init-param>
+
+
+
+
+            <init-param>
+            <param-name>config/sheet/groupcomplaint</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-groupcomplaint.xml
+            </param-value>
+            </init-param>
+
+        -->
+        <init-param>
+            <param-name>config/sheet/groupcomplaint</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-groupcomplaint.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/commonfault</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-commonfault.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/urgentfault</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-urgentfault.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/newSheetLimit</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-sheetlimit.xml
+            </param-value>
+        </init-param>
+        <!--
+            <init-param>
+            <param-name>config/sheet/businessplan</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-businessplan.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/commontask</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-commontask.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/businessdredge</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-businessdredge.xml
+            </param-value>
+            </init-param>
+
+
+
+            <init-param>
+            <param-name>config/sheet/circuitdispatch</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-circuitdispatch.xml
+            </param-value>
+            </init-param>
+
+
+            <init-param>
+            <param-name>config/sheet/netchange</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-netchange.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/netdata</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-netdata.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/businessbackout</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-businessbackout.xml</param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/softchange</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-softchange.xml</param-value>
+            </init-param>
+
+
+            <init-param>
+            <param-name>config/sheet/itrequirement</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-itrequirement.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/itsoftchange</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-itsoftchange.xml</param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/securitydeal</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-securityDeal.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/safeaudit</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-safeaudit.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/securityevaluate</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-securityEvaluate.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/netOptimize</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-netOptimize.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/accountpopedomapply</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-accountpopedomapply.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/greatevent</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-greatevent.xml</param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/emergencydrill</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-emergencydrill.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/processchange</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-processchange.xml</param-value>
+            </init-param>
+
+
+            <init-param>
+            <param-name>config/sheet/modifyTime</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-modifytime.xml
+            </param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/workflow</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-workflow.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/sheetRelation</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-relation.xml</param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/nBProducts</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-nBProducts.xml</param-value>
+            </init-param>
+
+            <init-param>
+            <param-name>config/sheet/autodistribute</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-autodistribute.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/overtimetip</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-overtimetip.xml</param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/newSheetLimit</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-sheetlimit.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/dealtypeconfig</param-name>
+            <param-value>
+            /WEB-INF/struts-config-sheet-dealtypeconfig.xml
+            </param-value>
+            </init-param>
+            <init-param>
+            <param-name>config/sheet/knowledge</param-name>
+            <param-value>/WEB-INF/struts-config-knowledge.xml
+            </param-value>
+            </init-param>
+        -->
+
+        <!-- <init-param>
+            <param-name>config/plancontent</param-name>
+            <param-value>
+            /WEB-INF/struts-config-plancontent.xml
+            </param-value>
+            </init-param>-->
+
+        <!-- <init-param>
+            <param-name>config/loanrecord</param-name>
+            <param-value>
+            /WEB-INF/struts-config-loanrecord.xml
+            </param-value>
+            </init-param>-->
+
+
+        <!-- <init-param>
+            <param-name>config/visitrecord</param-name>
+            <param-value>
+            /WEB-INF/struts-config-visitrecord.xml
+            </param-value>
+            </init-param>-->
+
+
+        <!-- <init-param>
+            <param-name>config/dispatchrecord</param-name>
+            <param-value>
+            /WEB-INF/struts-config-dispatchrecord.xml
+            </param-value>
+            </init-param>-->
+
+        <!-- <init-param>
+            <param-name>config/reliefrecord</param-name>
+            <param-value>
+            /WEB-INF/struts-config-reliefrecord.xml
+            </param-value>
+            </init-param>-->
+        <init-param>
+            <param-name>config/sheet/workflow</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-workflow.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/businessdredge</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-businessdredge.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/businessdredgebroad</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-businessdredgebroad.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/softchange</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-softchange.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/sample</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-sample.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/resourceaffirm</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-resourceaffirm.xml
+            </param-value>
+        </init-param>
+        <!-- 瀹搞儱宕熸禒璇插struts --><!-- lizhenyou -->
+        <init-param>
+            <param-name>config/statistic/task</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-task.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/commontask</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-commontask.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/complaint</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-complaint.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/circuitdispatch</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-circuitdispatch.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/netdata</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-netdata.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/greatevent</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-greatevent.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/urgentfault</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-urgentfault.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/netchange</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-netchange.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/businesspilot</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-businesspilot.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/commonfault</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-commonfault.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/businessoperation</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-businessoperation.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/softchange</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-softchange.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/businessplan</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-businessplan.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/businesschange</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-businesschange.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/businessbackout</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-businessbackout.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/customstat</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-customstat.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/emergencydrill</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-emergencydrill.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/processchange</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-processchange.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/itsoftchange</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-itsoftchange.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/netOptimize</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-netOptimize.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/itrequirement</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-itrequirement.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/securityevaluate</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-securityevaluate.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/statistic/operuser</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-operuser.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/statistic/logstat</param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-logstat.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/bureaudata</param-name>
+            <param-value>
+                /WEB-INF/struts-config-bureaudata.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/bureaudataUpdate</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-bureaudataUpdate.xml
+            </param-value>
+        </init-param>
+        <!-- <init-param>
+            <param-name>config/logunite</param-name>
+            <param-value>
+            /WEB-INF/struts-config-logunite.xml
+            </param-value>
+            </init-param>-->
+        <init-param>
+            <param-name>config/failureRecord</param-name>
+            <param-value>
+                /WEB-INF/struts-config-commons-failureRecord.xml
+            </param-value>
+        </init-param>
+        <!-- <init-param>
+            <param-name>config/workorderrecord</param-name>
+            <param-value>
+            /WEB-INF/struts-config-workorderrecord.xml
+            </param-value>
+            </init-param>-->
+        <init-param>
+            <param-name>config/hongxun</param-name>
+            <param-value>
+                /WEB-INF/struts-config-hongxun.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/voiceMessage</param-name>
+            <param-value>/WEB-INF/struts-voiceMessage.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/telnetSocket</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-telnetSocket.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/networkcalendar</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-networkcalendar.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/filemanager</param-name>
+            <param-value>/WEB-INF/struts-filemanager.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/myinfo</param-name>
+            <param-value>/WEB-INF/struts-config-myinfo.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/proxy</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-proxy.xml
+            </param-value>
+        </init-param>
+
+
+        <init-param>
+            <param-name>config/access</param-name>
+            <param-value>/WEB-INF/struts-config-access.xml</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/tawSystemCode</param-name>
+            <param-value>/WEB-INF/struts-config-code.xml</param-value>
+        </init-param>
+        <init-param>
+
+            <param-name>config/reported</param-name>
+            <param-value>
+                /WEB-INF/struts-config-reported.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/workbench/report</param-name>
+            <param-value>
+                /WEB-INF/struts-config-workbench-report.xml
+            </param-value>
+        </init-param>
+
+        <!-- 合同管理 -->
+        <init-param>
+            <param-name>config/contract</param-name>
+            <param-value>
+                /WEB-INF/struts-config-tawcontract.xml
+            </param-value>
+        </init-param>
+        <!--   干线仪表配置    -->
+        <init-param>
+            <param-name>config/mainmetermgr</param-name>
+            <param-value>
+                /WEB-INF/struts-config-parter-baseinfo-mainmetermgr.xml
+            </param-value>
+        </init-param>
+        <!--   合同信息    -->
+        <init-param>
+            <param-name>config/pnrcompact</param-name>
+            <param-value>
+                /WEB-INF/struts-config-parter-baseinfo-pnrcompact.xml
+            </param-value>
+        </init-param>
+        <!--   代维仪表管理    -->
+        <init-param>
+            <param-name>config/basemetermgr</param-name>
+            <param-value>
+                /WEB-INF/struts-config-parter-baseinfo-basemetermgr.xml
+            </param-value>
+        </init-param>
+        <!--   代维仪表管理    -->
+        <init-param>
+            <param-name>config/metermgr</param-name>
+            <param-value>
+                /WEB-INF/struts-config-parter-baseinfo-metermgr.xml
+            </param-value>
+        </init-param>
+
+        <!-- 干线割接 -->
+        <init-param>
+            <param-name>config/cutapply</param-name>
+            <param-value>
+                /WEB-INF/struts-config-cutapply.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/operuser</param-name>
+            <param-value>
+                /WEB-INF/struts-config-operuser.xml
+            </param-value>
+        </init-param>
+
+        <!-- 提醒服务 -->
+        <!--<init-param>
+            <param-name>config/remind</param-name>
+            <param-value>/WEB-INF/struts-config-remind.xml</param-value>
+            </init-param>-->
+
+        <!-- 费用管理		-->
+        <!-- <init-param>
+            <param-name>config/fees</param-name>
+            <param-value>/WEB-INF/struts-fees.xml</param-value>
+            </init-param>-->
+
+        <!-- 添加督办任务转发 -->
+        <init-param>
+            <param-name>config/sheet/supervisetask</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-supervisetask.xml</param-value>
+        </init-param>
+
+        <!-- add by lizhenyou MMS彩信报-->
+        <init-param>
+            <param-name>config/mms</param-name>
+            <param-value>/WEB-INF/struts-config-mms.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/acceptsheetrule</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-acceptsheetrule.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/acceptsheetrule</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-autotransmitrule.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/commontask</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-commontask.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/bureaudataSave</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-bureaudataSave.xml
+            </param-value>
+        </init-param>
+
+
+        <init-param>
+            <param-name>config/sheet/alarmsolveDate</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-AlarmsolveDate.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/tdconsultation</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-tdconsultation.xml
+            </param-value>
+        </init-param>
+        <!-- begin by xugengxian_090218 for wap -->
+        <init-param>
+            <param-name>config/wap</param-name>
+            <param-value>/WEB-INF/struts-config-wap.xml</param-value>
+        </init-param>
+        <!-- end by xugengxian -->
+        <init-param>
+            <param-name>
+                config/statistic/notflow/partner/baseinfo
+            </param-name>
+            <param-value>
+                /WEB-INF/struts-config-statistic-notflow-partner-baseinfo.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/partner/baseinfo</param-name>
+            <param-value>
+                /WEB-INF/struts-config-partner-baseinfo.xml
+            </param-value>
+        </init-param>
+        <!-- 多选菜单 -->
+        <init-param>
+            <param-name>config/mappingstorage</param-name>
+            <param-value>
+                /WEB-INF/struts-config-mapping.xml
+            </param-value>
+        </init-param>
+        <!-- 知识管理 config/kmmanager/ -->
+        <init-param>
+            <param-name>config/kmmanager</param-name>
+            <param-value>
+                /WEB-INF/struts-config-kmmanager.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/agentmaintenance</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-agentmaintenance.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/arithmeticmodify</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-arithmeticmodify.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheetflowline</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheetflowline.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/citycustom</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-citycustom.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/transprovincial</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-transprovincial.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/industrysms</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-industrysms.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/commonfaultauto</param-name>
+            <param-value>/WEB-INF/struts-config-sheet-commonfault-auto.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/plannconfirm</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-plannconfirm.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/plannadjust</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-plannadjust.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/netownership</param-name>
+            <param-value>
+                /WEB-INF/struts-config-netownership.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/circuitcontrol</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-circuitcontrol.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/equipmentsecurityresponse</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-equipmentsecurityresponse.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/securityobjattribute</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-securityobjattribute.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/securityobjaudit</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-securityobjaudit.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/commonfaultcorrigendum</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-commonfaultcorrigendum.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/groupcheck</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-groupcheck.xml
+            </param-value>
+        </init-param>
+
+
+        <init-param>
+            <param-name>config/commonfaulthj</param-name>
+            <param-value>
+                /WEB-INF/struts-config-commonfaulthj.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/focusresourceerrata</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-focusresourceerrata.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/maintenanceservice</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-maintenanceservice.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/daiweiindexreduction</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-daiweiindexreduction.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/branchindexreduction</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-branchindexreduction.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/equipmentinstallation</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-equipmentinstallation.xml
+            </param-value>
+        </init-param>
+
+
+        <init-param>
+            <param-name>config/sheet/equipmentunsubscribe</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-equipmentunsubscribe.xml
+            </param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>config/sheet/mofficedata</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-mofficedata.xml
+            </param-value>
+        </init-param>
+
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+
+    <!-- 如果不需要用轮训（系统自动启动），那么屏蔽掉改部�?-->
+    <!--
+        <servlet>
+        <servlet-name>JobInitServlet</servlet-name>
+        <servlet-class>
+        com.boco.eoms.commons.job.util.JobInitServlet
+        </servlet-class>
+        <load-on-startup>4</load-on-startup>
+        </servlet>
+    -->
+
+    <!--
+        <servlet>
+        <servlet-name>wapengine</servlet-name>
+        <servlet-class>
+        com.boco.eoms.mobilewap.wapengine.control.WapServlet
+        </servlet-class>
+        <load-on-startup>3</load-on-startup>
+        </servlet>
+
+        <servlet-mapping>
+        <servlet-name>wapengine</servlet-name>
+        <url-pattern>/wap</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+        <servlet-name>wapdbconnection</servlet-name>
+        <servlet-class>
+        com.boco.eoms.mobilewap.webtool.control.WapDBConnectionServlet
+        </servlet-class>
+        </servlet>
+        <servlet-mapping>
+        <servlet-name>wapdbconnection</servlet-name>
+        <url-pattern>/webtool/wapdbconnection</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+        <servlet-name>nodelist</servlet-name>
+        <servlet-class>
+        com.boco.eoms.mobilewap.webtool.control.NodeListServlet
+        </servlet-class>
+        </servlet>
+        <servlet-mapping>
+        <servlet-name>nodelist</servlet-name>
+        <url-pattern>/webtool/nodelist</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+        <servlet-name>wapnode</servlet-name>
+        <servlet-class>
+        com.boco.eoms.mobilewap.webtool.control.WapNodeServlet
+        </servlet-class>
+        </servlet>
+        <servlet-mapping>
+        <servlet-name>wapnode</servlet-name>
+        <url-pattern>/webtool/wapnode</url-pattern>
+        </servlet-mapping>
+
+
+        <servlet>
+        <servlet-name>card</servlet-name>
+        <servlet-class>
+        com.boco.eoms.mobilewap.webtool.control.CardServlet
+        </servlet-class>
+        </servlet>
+        <servlet-mapping>
+        <servlet-name>card</servlet-name>
+        <url-pattern>/webtool/card</url-pattern>
+        </servlet-mapping>
+
+
+        <servlet>
+        <servlet-name>tag</servlet-name>
+        <servlet-class>
+        com.boco.eoms.mobilewap.webtool.control.TagServlet
+        </servlet-class>
+        </servlet>
+        <servlet-mapping>
+        <servlet-name>tag</servlet-name>
+        <url-pattern>/webtool/tag</url-pattern>
+        </servlet-mapping>
+    -->
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>360</session-timeout>
+    </session-config>
+
+    <!-- MIME mapping -->
+    <mime-mapping>
+        <extension>doc</extension>
+        <mime-type>application/vnd.ms-word</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>gif</extension>
+        <mime-type>image/gif</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>htm</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>html</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jnlp</extension>
+        <mime-type>application/x-java-jnlp-file</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jpeg</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>jpg</extension>
+        <mime-type>image/jpeg</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>js</extension>
+        <mime-type>application/x-javascript</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>pdf</extension>
+        <mime-type>application/pdf</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>png</extension>
+        <mime-type>image/png</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>txt</extension>
+        <mime-type>text/plain</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xls</extension>
+        <mime-type>application/vnd.ms-excel</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xml</extension>
+        <mime-type>text/xml</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>xul</extension>
+        <mime-type>application/vnd.mozilla.xul-xml</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>zhtml</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>zip</extension>
+        <mime-type>application/x-zip</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+        <extension>zul</extension>
+        <mime-type>text/html</mime-type>
+    </mime-mapping>
+    <welcome-file-list>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+
+    <!-- add by weizhongsheng begin -->
+    <servlet>
+        <servlet-name>menutree</servlet-name>
+        <servlet-class>
+            com.boco.eoms.commons.ui.servlet.MenuTreeServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>menutree</servlet-name>
+        <url-pattern>/menutree</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>AdminServlet</servlet-name>
+
+        <servlet-class>
+            org.apache.axis.transport.http.AdminServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AxisServlet</servlet-name>
+
+        <servlet-class>
+            org.apache.axis.transport.http.AxisServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>JCSAdminServlet</servlet-name>
+        <servlet-class>
+            org.apache.jcs.admin.servlet.BocoJCSAdminServlet
+        </servlet-class>
+        <init-param>
+            <param-name>properties</param-name>
+            <param-value>
+                WEB-INF/conf/JCSAdminServlet.velocity.properties
+            </param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>SOAPMonitorService</servlet-name>
+
+        <servlet-class>
+            org.apache.axis.monitor.SOAPMonitorService
+        </servlet-class>
+        <init-param>
+            <param-name>SOAPMonitorPort</param-name>
+            <param-value>5001</param-value>
+        </init-param>
+    </servlet>
+    <!--
+        <servlet>
+        <servlet-name>cacheinitservlet</servlet-name>
+        <servlet-class>
+        com.boco.eoms.cache.CacheInitServlet
+        </servlet-class>
+        <load-on-startup>2</load-on-startup>
+        </servlet>
+    -->
+    <servlet>
+        <servlet-name>dataservlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.nmmis.controller.DataServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>fileInit</servlet-name>
+        <servlet-class>
+            com.boco.eoms.common.util.FileInitServlet
+        </servlet-class>
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/configfiles</param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/failureRecord</param-name>
+            <param-value>
+                /WEB-INF/struts-config-commons-failureRecord.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>config/sheet/userdefinegroup</param-name>
+            <param-value>
+                /WEB-INF/struts-config-sheet-userdefineGroup.xml
+            </param-value>
+        </init-param>
+        <init-param>
+            <param-name>webinf</param-name>
+            <param-value>/WEB-INF</param-value>
+        </init-param>
+        <init-param>
+            <param-name>root</param-name>
+            <param-value>/</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>laststepservlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.autosheet.servlet.LastStepServlet
+        </servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>messagerouter</servlet-name>
+
+        <servlet-class>
+            org.apache.soap.server.http.MessageRouterServlet
+        </servlet-class>
+        <init-param>
+            <param-name>faultListener</param-name>
+            <param-value>
+                org.apache.soap.server.DOMFaultListener
+            </param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>rpcrouter</servlet-name>
+        <servlet-class>
+            org.apache.soap.server.http.RPCRouterServlet
+        </servlet-class>
+        <init-param>
+            <param-name>faultListener</param-name>
+            <param-value>
+                org.apache.soap.server.DOMFaultListener
+            </param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AxisServlet</servlet-name>
+        <url-pattern>*.jws</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JCSAdminServlet</servlet-name>
+        <url-pattern>/JCSAdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SOAPMonitorService</servlet-name>
+        <url-pattern>/SOAPMonitor</url-pattern>
+    </servlet-mapping>
+    <!--
+        <servlet-mapping>
+        <servlet-name>cacheinitservlet</servlet-name>
+        <url-pattern>/cacheinitservlet</url-pattern>
+        </servlet-mapping>
+    -->
+    <servlet-mapping>
+        <servlet-name>laststepservlet</servlet-name>
+        <url-pattern>/laststepservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AxisServlet</servlet-name>
+        <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminServlet</servlet-name>
+        <url-pattern>/servlet/AdminServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AxisServlet</servlet-name>
+        <url-pattern>/servlet/AxisServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AxisServlet</servlet-name>
+        <url-pattern>/servlet/AxisServlet/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>dataservlet</servlet-name>
+        <url-pattern>
+            /servlet/com.boco.eoms.nmmis.controller.DataServlet
+        </url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>messagerouter</servlet-name>
+        <url-pattern>/servlet/messagerouter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>rpcrouter</servlet-name>
+        <url-pattern>/servlet/rpcrouter</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>sheetattrservlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.autosheet.servlet.SheetAttrServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sheetattrservlet</servlet-name>
+        <url-pattern>/sheetattrservlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>sheetform</servlet-name>
+        <servlet-class>
+            com.boco.eoms.autosheet.servlet.HtmlFormServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sheetform</servlet-name>
+        <url-pattern>/htmlformservlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>sheetnameservlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.autosheet.servlet.SheetNameServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>sheetnameservlet</servlet-name>
+        <url-pattern>/sheetnameservlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>sheetvalueservlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.autosheet.servlet.SheetValueServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sheetvalueservlet</servlet-name>
+        <url-pattern>/sheetvalueservlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>useractionservlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.autosheet.servlet.UserActionServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>useractionservlet</servlet-name>
+        <url-pattern>/useractionservlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>userhtmlservlet</servlet-name>
+        <servlet-class>
+            com.boco.eoms.autosheet.servlet.UserHtmlServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userhtmlservlet</servlet-name>
+        <url-pattern>/htmlservlet</url-pattern>
+    </servlet-mapping>
+    <!-- add by weizhongsheng end -->
+    <!--
+        <taglib>
+        <taglib-uri>http://lightPortal.org/portal</taglib-uri>
+        <taglib-location>/WEB-INF/tlds/light.tld</taglib-location>
+        </taglib>
+        <taglib>
+        <taglib-uri>http://java.sun.com/portlet</taglib-uri>
+        <taglib-location>/WEB-INF/tlds/portlet.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+        <taglib-uri>/WEB-INF/tlds/oscache.tld</taglib-uri>
+        <taglib-location>/WEB-INF/tlds/oscache.tld</taglib-location>
+        </taglib>
+    -->
+    <!-- zhoucz end 070319 -->
+    <!--
+        <error-page>
+        <error-code>500</error-code>
+        <location>/error.jsp</location>
+        </error-page>
+        <error-page>
+        <error-code>400</error-code>
+        <location>/index.jsp</location>
+        </error-page>
+        <error-page>
+        <error-code>403</error-code>
+        <location>/403.jsp</location>
+        </error-page>
+        <error-page>
+        <error-code>404</error-code>
+        <location>/404.jsp</location>
+        </error-page>
+    -->
 </web-app>
 
 

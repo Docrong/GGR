@@ -35,7 +35,7 @@ public class TawSupplierkpiInfoManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSupplierkpiInfoDao.expects(once()).method("getTawSupplierkpiInfos")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSupplierkpiInfos = tawSupplierkpiInfoManager.getTawSupplierkpiInfos(null);
         assertTrue(tawSupplierkpiInfos.size() == 1);
@@ -45,7 +45,7 @@ public class TawSupplierkpiInfoManagerTest extends BaseManagerTestCase {
     public void testGetTawSupplierkpiInfo() throws Exception {
         // set expected behavior on dao
         tawSupplierkpiInfoDao.expects(once()).method("getTawSupplierkpiInfo")
-            .will(returnValue(new TawSupplierkpiInfo()));
+                .will(returnValue(new TawSupplierkpiInfo()));
         TawSupplierkpiInfo tawSupplierkpiInfo = tawSupplierkpiInfoManager.getTawSupplierkpiInfo(tawSupplierkpiInfoId);
         assertTrue(tawSupplierkpiInfo != null);
         tawSupplierkpiInfoDao.verify();
@@ -56,7 +56,7 @@ public class TawSupplierkpiInfoManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSupplierkpiInfoDao.expects(once()).method("saveTawSupplierkpiInfo")
-            .with(same(tawSupplierkpiInfo)).isVoid();
+                .with(same(tawSupplierkpiInfo)).isVoid();
 
         tawSupplierkpiInfoManager.saveTawSupplierkpiInfo(tawSupplierkpiInfo);
         tawSupplierkpiInfoDao.verify();
@@ -69,7 +69,7 @@ public class TawSupplierkpiInfoManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSupplierkpiInfoDao.expects(once()).method("saveTawSupplierkpiInfo")
-            .with(same(tawSupplierkpiInfo)).isVoid();
+                .with(same(tawSupplierkpiInfo)).isVoid();
         tawSupplierkpiInfoManager.saveTawSupplierkpiInfo(tawSupplierkpiInfo);
         tawSupplierkpiInfoDao.verify();
 

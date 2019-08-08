@@ -10,15 +10,14 @@ package com.boco.eoms.duty.util;
  * <p>
  * Thu Apr 02 14:11:04 CST 2009
  * </p>
- * 
+ *
  * @author 李江红
  * @version 3.5
- * 
  */
 public class AttemperConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String ATTEMPER_LIST = "attemperList";
+
+    /**
+     * list key
+     */
+    public final static String ATTEMPER_LIST = "attemperList";
 }

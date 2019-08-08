@@ -5,12 +5,12 @@ import org.displaytag.decorator.TableDecorator;
 import com.boco.eoms.commons.statistic.base.model.CustomSatatisticInfo;
 
 public class BaseStatListDisplaytagDecoratorHelper extends TableDecorator {
-	
-	public String getReportType() {
-		CustomSatatisticInfo vo = (CustomSatatisticInfo) getCurrentRowObject();
-		return CustomStatUtil.typeToName(vo.getReportType());
-	}
-	
+
+    public String getReportType() {
+        CustomSatatisticInfo vo = (CustomSatatisticInfo) getCurrentRowObject();
+        return CustomStatUtil.typeToName(vo.getReportType());
+    }
+
 //	
 //	public String getCustomDescribe()
 //	{
@@ -23,5 +23,5 @@ public class BaseStatListDisplaytagDecoratorHelper extends TableDecorator {
 //		//conditionMap.get(key);
 //		return "";
 //	}
-	
+
 }

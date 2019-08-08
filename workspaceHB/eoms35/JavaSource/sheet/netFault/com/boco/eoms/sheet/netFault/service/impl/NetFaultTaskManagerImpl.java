@@ -11,6 +11,6 @@ import com.boco.eoms.sheet.netFault.dao.INetFaultTaskDAO;
 import com.boco.eoms.sheet.netFault.service.INetFaultTaskManager;
 
 
-public class NetFaultTaskManagerImpl extends TaskServiceImpl implements  INetFaultTaskManager{
-	
+public class NetFaultTaskManagerImpl extends TaskServiceImpl implements INetFaultTaskManager {
+
 }

@@ -37,105 +37,106 @@ import com.boco.eoms.commons.ui.bo.TawSystemTreeBo;
 
 /**
  * @author admin
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class TawSheetExpertAction extends BaseAction{
-	 public ActionForward xdelete(ActionMapping mapping, ActionForm form,HttpServletRequest request,HttpServletResponse response) throws Exception {
-	 	
-	 		ActionMessages messages = new ActionMessages();
-			TawSheetExpertForm expertForm = (TawSheetExpertForm) form;
+public class TawSheetExpertAction extends BaseAction {
+    public ActionForward xdelete(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-			// Exceptions are caught by ActionExceptionHandler
-			ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
-			mgr.removeTawSheetExpert(expertForm.getId());
+        ActionMessages messages = new ActionMessages();
+        TawSheetExpertForm expertForm = (TawSheetExpertForm) form;
 
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"awSheetExpertForm.deleted"));
+        // Exceptions are caught by ActionExceptionHandler
+        ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
+        mgr.removeTawSheetExpert(expertForm.getId());
 
-			// save messages in session, so they'll survive the redirect
-			saveMessages(request.getSession(), messages);
+        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                "awSheetExpertForm.deleted"));
 
-			return null;
-		}
-	 
-	 public ActionForward xedit(ActionMapping mapping, ActionForm form,HttpServletRequest request,HttpServletResponse response)throws Exception {
-      TawSheetExpertForm tawSheetExpertForm = (TawSheetExpertForm) form;
-		
-		// if an id is passed in, look up the user - otherwise
-		// don't do anything - user is doing an add
-		if (tawSheetExpertForm.getId() != null) {
-		ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
-		
-		TawSheetExpert tawSheetExpert = (TawSheetExpert) convert(tawSheetExpertForm);
-		mgr.saveTawSheetExpert(tawSheetExpert);
-		updateFormBean(mapping, request, tawSheetExpertForm);
-		}
+        // save messages in session, so they'll survive the redirect
+        saveMessages(request.getSession(), messages);
 
         return null;
-      }
-	 
-	 public ActionForward getNodes(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-
-		String nodeId = request.getParameter("node");
-		TawSystemTreeBo treebo = TawSystemTreeBo.getInstance();
-		//JSONArray jsonRoot = treebo.getExpertTree(nodeId, "");
-		JSONArray jsonRoot = StaticMethod.getExpertTree(nodeId, "");
-
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-		return null;
-	}
-	 public ActionForward xget(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		   String expertId = request.getParameter("id");
-		  
-		   ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
-		   TawSheetExpert expert = (TawSheetExpert)mgr.getTawSheetExpert(Integer.valueOf(expertId));
-		   String type = request.getParameter("nodeType");
-		   
-		   JSONObject jsonRoot = new JSONObject();
-		   jsonRoot = JSONObject.fromObject(expert);
-
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-		return null;
-	}
-	 
-	 public ActionForward xsave(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request,
-            HttpServletResponse response)throws Exception {
-
-		// Extract attributes and parameters we will need
-		ActionMessages messages = new ActionMessages();
-		TawSheetExpertForm expertFrom = (TawSheetExpertForm) form;
-		boolean isNew = ("".equals(expertFrom.getId()) || expertFrom.getId() == null);
-		
-		ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
-		TawSheetExpert expert = (TawSheetExpert) convert(expertFrom);
-		
-	
-		mgr.saveTawSheetExpert(expert);
-		
-		// add success messages
-		if (isNew) {
-		messages.add(ActionMessages.GLOBAL_MESSAGE,
-		       new ActionMessage("TawSheetExpert.added"));
-		
-		// save messages in session to survive a redirect
-		saveMessages(request.getSession(), messages);
-		
-		return mapping.findForward("null");
-		} else {
-		messages.add(ActionMessages.GLOBAL_MESSAGE,
-		       new ActionMessage("TawSheetExpert.updated"));
-		saveMessages(request, messages);
-		
-		return mapping.findForward("null");
-		}
-}
     }
+
+    public ActionForward xedit(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        TawSheetExpertForm tawSheetExpertForm = (TawSheetExpertForm) form;
+
+        // if an id is passed in, look up the user - otherwise
+        // don't do anything - user is doing an add
+        if (tawSheetExpertForm.getId() != null) {
+            ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
+
+            TawSheetExpert tawSheetExpert = (TawSheetExpert) convert(tawSheetExpertForm);
+            mgr.saveTawSheetExpert(tawSheetExpert);
+            updateFormBean(mapping, request, tawSheetExpertForm);
+        }
+
+        return null;
+    }
+
+    public ActionForward getNodes(ActionMapping mapping, ActionForm form,
+                                  HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        String nodeId = request.getParameter("node");
+        TawSystemTreeBo treebo = TawSystemTreeBo.getInstance();
+        //JSONArray jsonRoot = treebo.getExpertTree(nodeId, "");
+        JSONArray jsonRoot = StaticMethod.getExpertTree(nodeId, "");
+
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+        return null;
+    }
+
+    public ActionForward xget(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String expertId = request.getParameter("id");
+
+        ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
+        TawSheetExpert expert = (TawSheetExpert) mgr.getTawSheetExpert(Integer.valueOf(expertId));
+        String type = request.getParameter("nodeType");
+
+        JSONObject jsonRoot = new JSONObject();
+        jsonRoot = JSONObject.fromObject(expert);
+
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+        return null;
+    }
+
+    public ActionForward xsave(ActionMapping mapping, ActionForm form,
+                               HttpServletRequest request,
+                               HttpServletResponse response) throws Exception {
+
+        // Extract attributes and parameters we will need
+        ActionMessages messages = new ActionMessages();
+        TawSheetExpertForm expertFrom = (TawSheetExpertForm) form;
+        boolean isNew = ("".equals(expertFrom.getId()) || expertFrom.getId() == null);
+
+        ITawSheetExpertManager mgr = (ITawSheetExpertManager) getBean("ItawSheetExpertManager");
+        TawSheetExpert expert = (TawSheetExpert) convert(expertFrom);
+
+
+        mgr.saveTawSheetExpert(expert);
+
+        // add success messages
+        if (isNew) {
+            messages.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage("TawSheetExpert.added"));
+
+            // save messages in session to survive a redirect
+            saveMessages(request.getSession(), messages);
+
+            return mapping.findForward("null");
+        } else {
+            messages.add(ActionMessages.GLOBAL_MESSAGE,
+                    new ActionMessage("TawSheetExpert.updated"));
+            saveMessages(request, messages);
+
+            return mapping.findForward("null");
+        }
+    }
+}

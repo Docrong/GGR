@@ -11,26 +11,28 @@ import java.util.List;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class SubRoleSchema {
-	private List subRoleMapping = new ArrayList();
-	/**
-	 * @return Returns the subRoleMaping.
-	 */
-	public List getSubRoleMapping() {
-		return subRoleMapping;
-	}
-	/**
-	 * @param subRoleMaping The subRoleMaping to set.
-	 */
-	public void setSubRoleMapping(List subRoleMaping) {
-		this.subRoleMapping = subRoleMaping;
-	}
-	
-	public void addSubRoleMapping(SubRoleMapping rm){
-		this.subRoleMapping.add(rm);
-	}
+    private List subRoleMapping = new ArrayList();
+
+    /**
+     * @return Returns the subRoleMaping.
+     */
+    public List getSubRoleMapping() {
+        return subRoleMapping;
+    }
+
+    /**
+     * @param subRoleMaping The subRoleMaping to set.
+     */
+    public void setSubRoleMapping(List subRoleMaping) {
+        this.subRoleMapping = subRoleMaping;
+    }
+
+    public void addSubRoleMapping(SubRoleMapping rm) {
+        this.subRoleMapping.add(rm);
+    }
 }

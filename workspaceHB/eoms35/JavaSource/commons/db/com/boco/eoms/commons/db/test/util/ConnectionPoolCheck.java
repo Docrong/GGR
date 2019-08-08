@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.db.test.util;
 
@@ -7,6 +7,7 @@ package com.boco.eoms.commons.db.test.util;
  * @author Sandy.wei
  * @version 3.5
  */
+
 import java.util.Iterator;
 
 // eoms classes
@@ -31,13 +32,11 @@ public class ConnectionPoolCheck extends Thread {
             while (true) {
                 try {
                     sleep(m_timer);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                 }
                 displayAll();
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
         }
     }
 
@@ -50,8 +49,7 @@ public class ConnectionPoolCheck extends Thread {
 
             _objConn = ConnectionPool.getInstance().getPool()
                     .getConnectionIterator();
-        }
-        else {
+        } else {
             _objConn = pool.getConnectionIterator();
         }
 
@@ -61,8 +59,7 @@ public class ConnectionPoolCheck extends Thread {
             if (!_objBocoConn.isUse()) {
                 BocoLog.debug(this, "Index[" + iIndex + "]"
                         + _objBocoConn.toString() + " not be using!");
-            }
-            else {
+            } else {
                 BocoLog.debug(this, "Index[" + iIndex + "]"
                         + _objBocoConn.toString() + " be using!");
             }

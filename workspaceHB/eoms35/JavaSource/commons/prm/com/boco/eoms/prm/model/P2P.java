@@ -16,10 +16,9 @@ package com.boco.eoms.prm.model;
  * <p>
  * Date:2007-8-6 17:11:43
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class P2P {
 
@@ -46,8 +45,7 @@ public class P2P {
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
@@ -61,8 +59,7 @@ public class P2P {
     }
 
     /**
-     * @param toName
-     *            the toName to set
+     * @param toName the toName to set
      */
     public void setToName(String toName) {
         this.toName = toName;
@@ -74,6 +71,7 @@ public class P2P {
     public String getType() {
         return type;
     }
+
     /**
      * @param type the type to set
      */

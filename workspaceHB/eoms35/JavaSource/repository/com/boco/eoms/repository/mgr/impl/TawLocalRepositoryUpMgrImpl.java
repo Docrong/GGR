@@ -17,42 +17,41 @@ import com.boco.eoms.repository.model.TawLocalRepositoryUp;
  * <p>
  * Fri Oct 30 16:52:13 CST 2009
  * </p>
- * 
+ *
  * @author 李锋
  * @version 1.0
- * 
  */
 public class TawLocalRepositoryUpMgrImpl implements TawLocalRepositoryUpMgr {
- 
-	private TawLocalRepositoryUpDao  tawLocalRepositoryUpDao;
- 	
-	public TawLocalRepositoryUpDao getTawLocalRepositoryUpDao() {
-		return this.tawLocalRepositoryUpDao;
-	}
- 	
-	public void setTawLocalRepositoryUpDao(TawLocalRepositoryUpDao tawLocalRepositoryUpDao) {
-		this.tawLocalRepositoryUpDao = tawLocalRepositoryUpDao;
-	}
- 	
+
+    private TawLocalRepositoryUpDao tawLocalRepositoryUpDao;
+
+    public TawLocalRepositoryUpDao getTawLocalRepositoryUpDao() {
+        return this.tawLocalRepositoryUpDao;
+    }
+
+    public void setTawLocalRepositoryUpDao(TawLocalRepositoryUpDao tawLocalRepositoryUpDao) {
+        this.tawLocalRepositoryUpDao = tawLocalRepositoryUpDao;
+    }
+
     public List getTawLocalRepositoryUps() {
-    	return tawLocalRepositoryUpDao.getTawLocalRepositoryUps();
+        return tawLocalRepositoryUpDao.getTawLocalRepositoryUps();
     }
-    
+
     public TawLocalRepositoryUp getTawLocalRepositoryUp(final String id) {
-    	return tawLocalRepositoryUpDao.getTawLocalRepositoryUp(id);
+        return tawLocalRepositoryUpDao.getTawLocalRepositoryUp(id);
     }
-    
+
     public void saveTawLocalRepositoryUp(TawLocalRepositoryUp tawLocalRepositoryUp) {
-    	tawLocalRepositoryUpDao.saveTawLocalRepositoryUp(tawLocalRepositoryUp);
+        tawLocalRepositoryUpDao.saveTawLocalRepositoryUp(tawLocalRepositoryUp);
     }
-    
+
     public void removeTawLocalRepositoryUp(final String id) {
-    	tawLocalRepositoryUpDao.removeTawLocalRepositoryUp(id);
+        tawLocalRepositoryUpDao.removeTawLocalRepositoryUp(id);
     }
-    
+
     public Map getTawLocalRepositoryUps(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return tawLocalRepositoryUpDao.getTawLocalRepositoryUps(curPage, pageSize, whereStr);
-	}
-	
+                                        final String whereStr) {
+        return tawLocalRepositoryUpDao.getTawLocalRepositoryUps(curPage, pageSize, whereStr);
+    }
+
 }

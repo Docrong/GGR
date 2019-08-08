@@ -19,139 +19,139 @@ import com.boco.eoms.commons.message.webapp.form.TawCommonMessageOpertypeForm;
 
 /**
  * Action class to handle CRUD on a TawCommonMessageOpertype object
- * 
+ *
  * @struts.action name="tawCommonMessageOpertypeForm"
- *                path="/tawCommonMessageOpertypes" scope="request"
- *                validate="false" parameter="method" input="mainMenu"
+ * path="/tawCommonMessageOpertypes" scope="request"
+ * validate="false" parameter="method" input="mainMenu"
  * @struts.action name="tawCommonMessageOpertypeForm"
- *                path="/editTawCommonMessageOpertype" scope="request"
- *                validate="false" parameter="method" input="list"
+ * path="/editTawCommonMessageOpertype" scope="request"
+ * validate="false" parameter="method" input="list"
  * @struts.action name="tawCommonMessageOpertypeForm"
- *                path="/saveTawCommonMessageOpertype" scope="request"
- *                validate="true" parameter="method" input="edit"
+ * path="/saveTawCommonMessageOpertype" scope="request"
+ * validate="true" parameter="method" input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit"
- *                        path="/WEB-INF/pages/tawCommonMessageOpertype/tawCommonMessageOpertypeForm.jsp"
+ * path="/WEB-INF/pages/tawCommonMessageOpertype/tawCommonMessageOpertypeForm.jsp"
  * @struts.action-forward name="list"
- *                        path="/WEB-INF/pages/tawCommonMessageOpertype/tawCommonMessageOpertypeList.jsp"
+ * path="/WEB-INF/pages/tawCommonMessageOpertype/tawCommonMessageOpertypeList.jsp"
  * @struts.action-forward name="search" path="/tawCommonMessageOpertypes.html"
- *                        redirect="true"
+ * redirect="true"
  */
 public final class TawCommonMessageOpertypeAction extends BaseAction {
-	public ActionForward cancel(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("search");
-	}
+    public ActionForward cancel(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("search");
+    }
 
-	public ActionForward delete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'delete' method");
-		}
+    public ActionForward delete(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'delete' method");
+        }
 
-		ActionMessages messages = new ActionMessages();
-		TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
+        ActionMessages messages = new ActionMessages();
+        TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
 
-		// Exceptions are caught by ActionExceptionHandler
-		TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
-		mgr
-				.removeTawCommonMessageOpertype(tawCommonMessageOpertypeForm
-						.getId());
+        // Exceptions are caught by ActionExceptionHandler
+        TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
+        mgr
+                .removeTawCommonMessageOpertype(tawCommonMessageOpertypeForm
+                        .getId());
 
-		messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-				"tawCommonMessageOpertype.deleted"));
+        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                "tawCommonMessageOpertype.deleted"));
 
-		// save messages in session, so they'll survive the redirect
-		saveMessages(request.getSession(), messages);
+        // save messages in session, so they'll survive the redirect
+        saveMessages(request.getSession(), messages);
 
-		return mapping.findForward("search");
-	}
+        return mapping.findForward("search");
+    }
 
-	public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'edit' method");
-		}
+    public ActionForward edit(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'edit' method");
+        }
 
-		TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
+        TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
 
-		// if an id is passed in, look up the user - otherwise
-		// don't do anything - user is doing an add
-		if (tawCommonMessageOpertypeForm.getId() != null) {
-			TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
-			TawCommonMessageOpertype tawCommonMessageOpertype = mgr
-					.getTawCommonMessageOpertype(tawCommonMessageOpertypeForm
-							.getId());
-			tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) convert(tawCommonMessageOpertype);
-			updateFormBean(mapping, request, tawCommonMessageOpertypeForm);
-		}
-		TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
-		TawCommonMessageModelTypeManager mgr = (TawCommonMessageModelTypeManager) getBean("tawCommonMessageModelTypeManager");
-		request.setAttribute("modellist", mgr
-				.getTawCommonMessageModelTypes(tawCommonMessageModelType));
-		return mapping.findForward("edit");
-	}
+        // if an id is passed in, look up the user - otherwise
+        // don't do anything - user is doing an add
+        if (tawCommonMessageOpertypeForm.getId() != null) {
+            TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
+            TawCommonMessageOpertype tawCommonMessageOpertype = mgr
+                    .getTawCommonMessageOpertype(tawCommonMessageOpertypeForm
+                            .getId());
+            tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) convert(tawCommonMessageOpertype);
+            updateFormBean(mapping, request, tawCommonMessageOpertypeForm);
+        }
+        TawCommonMessageModelType tawCommonMessageModelType = new TawCommonMessageModelType();
+        TawCommonMessageModelTypeManager mgr = (TawCommonMessageModelTypeManager) getBean("tawCommonMessageModelTypeManager");
+        request.setAttribute("modellist", mgr
+                .getTawCommonMessageModelTypes(tawCommonMessageModelType));
+        return mapping.findForward("edit");
+    }
 
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'save' method");
-		}
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'save' method");
+        }
 
-		// Extract attributes and parameters we will need
-		ActionMessages messages = new ActionMessages();
-		TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
-		boolean isNew = ("".equals(tawCommonMessageOpertypeForm.getId()) || tawCommonMessageOpertypeForm
-				.getId() == null);
+        // Extract attributes and parameters we will need
+        ActionMessages messages = new ActionMessages();
+        TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
+        boolean isNew = ("".equals(tawCommonMessageOpertypeForm.getId()) || tawCommonMessageOpertypeForm
+                .getId() == null);
 
-		TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
-		TawCommonMessageOpertype tawCommonMessageOpertype = (TawCommonMessageOpertype) convert(tawCommonMessageOpertypeForm);
-		TawCommonMessageModelTypeManager modelmgr = (TawCommonMessageModelTypeManager) getBean("tawCommonMessageModelTypeManager");
-		tawCommonMessageOpertype.setModelname(modelmgr.getModeltype(tawCommonMessageOpertype.getModelid()).getModelname());
-		mgr.saveTawCommonMessageOpertype(tawCommonMessageOpertype);
+        TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
+        TawCommonMessageOpertype tawCommonMessageOpertype = (TawCommonMessageOpertype) convert(tawCommonMessageOpertypeForm);
+        TawCommonMessageModelTypeManager modelmgr = (TawCommonMessageModelTypeManager) getBean("tawCommonMessageModelTypeManager");
+        tawCommonMessageOpertype.setModelname(modelmgr.getModeltype(tawCommonMessageOpertype.getModelid()).getModelname());
+        mgr.saveTawCommonMessageOpertype(tawCommonMessageOpertype);
 
-		// add success messages
-		if (isNew) {
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"tawCommonMessageOpertype.added"));
+        // add success messages
+        if (isNew) {
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "tawCommonMessageOpertype.added"));
 
-			// save messages in session to survive a redirect
-			saveMessages(request.getSession(), messages);
+            // save messages in session to survive a redirect
+            saveMessages(request.getSession(), messages);
 
-			return mapping.findForward("search");
-		} else {
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"tawCommonMessageOpertype.updated"));
-			saveMessages(request, messages);
+            return mapping.findForward("search");
+        } else {
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "tawCommonMessageOpertype.updated"));
+            saveMessages(request, messages);
 
-			return mapping.findForward("search");
-		}
-	}
+            return mapping.findForward("search");
+        }
+    }
 
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		if (log.isDebugEnabled()) {
-			log.debug("Entering 'search' method");
-		}
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        if (log.isDebugEnabled()) {
+            log.debug("Entering 'search' method");
+        }
 
-		TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
-		TawCommonMessageOpertype tawCommonMessageOpertype = (TawCommonMessageOpertype) convert(tawCommonMessageOpertypeForm);
+        TawCommonMessageOpertypeForm tawCommonMessageOpertypeForm = (TawCommonMessageOpertypeForm) form;
+        TawCommonMessageOpertype tawCommonMessageOpertype = (TawCommonMessageOpertype) convert(tawCommonMessageOpertypeForm);
 
-		TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
-		request.setAttribute(Constants.TAWCOMMONMESSAGEOPERTYPE_LIST, mgr
-				.getTawCommonMessageOpertypes(tawCommonMessageOpertype));
+        TawCommonMessageOpertypeManager mgr = (TawCommonMessageOpertypeManager) getBean("tawCommonMessageOpertypeManager");
+        request.setAttribute(Constants.TAWCOMMONMESSAGEOPERTYPE_LIST, mgr
+                .getTawCommonMessageOpertypes(tawCommonMessageOpertype));
 
-		return mapping.findForward("list");
-	}
+        return mapping.findForward("list");
+    }
 
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
 }

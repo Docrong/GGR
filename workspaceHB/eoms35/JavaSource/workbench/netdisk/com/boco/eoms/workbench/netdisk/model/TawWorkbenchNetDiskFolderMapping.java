@@ -4,68 +4,68 @@ import com.boco.eoms.base.model.BaseObject;
 
 public class TawWorkbenchNetDiskFolderMapping extends BaseObject {
 
-	/**
-	 * 主键,也是在服务器上实际创建的文件夹名
-	 */
-	private String id;
+    /**
+     * 主键,也是在服务器上实际创建的文件夹名
+     */
+    private String id;
 
-	/**
-	 * 文件夹名称
-	 */
-	private String folderName;
+    /**
+     * 文件夹名称
+     */
+    private String folderName;
 
-	/**
-	 * 所属用户Id
-	 */
-	private String userId;
-	
-	/**
-	 * 父文件夹ID
-	 */
-	private String parentId;
+    /**
+     * 所属用户Id
+     */
+    private String userId;
 
-	public String getFolderName() {
-		return folderName;
-	}
+    /**
+     * 父文件夹ID
+     */
+    private String parentId;
 
-	public void setFolderName(String folderName) {
-		this.folderName = folderName;
-	}
+    public String getFolderName() {
+        return folderName;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setFolderName(String folderName) {
+        this.folderName = folderName;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}	
+    public String getUserId() {
+        return userId;
+    }
 
-	public String getParentId() {
-		return parentId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setParentId(String parentId) {
-		this.parentId = parentId;
-	}
+    public String getParentId() {
+        return parentId;
+    }
 
-	public boolean equals(Object o) {
-		return false;
-	}
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
+    }
 
-	public int hashCode() {
-		return 0;
-	}
+    public boolean equals(Object o) {
+        return false;
+    }
 
-	public String toString() {
-		return null;
-	}
+    public int hashCode() {
+        return 0;
+    }
+
+    public String toString() {
+        return null;
+    }
 
 }

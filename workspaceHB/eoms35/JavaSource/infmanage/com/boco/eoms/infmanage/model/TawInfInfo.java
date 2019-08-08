@@ -1,7 +1,6 @@
 package com.boco.eoms.infmanage.model;
 
-public class TawInfInfo
-{
+public class TawInfInfo {
     // 资料名称
     private String infInfoName;
 
@@ -36,118 +35,96 @@ public class TawInfInfo
     private String infUpfileName;
 
 
-
     // 上传文件名
 
-    public TawInfInfo()
-    {
+    public TawInfInfo() {
     }
 
-    public String getInfInfoId()
-    {
+    public String getInfInfoId() {
         return infInfoId;
     }
 
-    public void setInfInfoId(String infInfoId)
-    {
+    public void setInfInfoId(String infInfoId) {
         this.infInfoId = infInfoId;
     }
 
-    public String getInfInfoName()
-    {
+    public String getInfInfoName() {
         return infInfoName;
     }
 
-    public void setInfInfoName(String infInfoName)
-    {
+    public void setInfInfoName(String infInfoName) {
         this.infInfoName = infInfoName;
     }
 
-    public int getInfSortId()
-    {
+    public int getInfSortId() {
         return infSortId;
     }
 
-    public void setInfSortId(int infSortId)
-    {
+    public void setInfSortId(int infSortId) {
         this.infSortId = infSortId;
     }
 
-    public int getDeptId()
-    {
+    public int getDeptId() {
         return deptId;
     }
 
-    public void setDeptId(int deptId)
-    {
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
 
-    public String getInfUpId()
-    {
+    public String getInfUpId() {
         return infUpId;
     }
 
-    public void setInfUpId(String infUpId)
-    {
+    public void setInfUpId(String infUpId) {
         this.infUpId = infUpId;
     }
 
-    public String getInfUpTime()
-    {
+    public String getInfUpTime() {
         return infUpTime;
     }
 
-    public void setInfUpTime(String infUpTime)
-    {
+    public void setInfUpTime(String infUpTime) {
         this.infUpTime = infUpTime;
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getDeptName()
-    {
+    public String getDeptName() {
         return deptName;
     }
 
-    public void setDeptName(String deptName)
-    {
+    public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
 
-    public String getInfSortName()
-    {
+    public String getInfSortName() {
         return infSortName;
     }
 
-    public void setInfSortName(String infSortName)
-    {
+    public void setInfSortName(String infSortName) {
         this.infSortName = infSortName;
     }
 
-    public String getInfUpName()
-    {
+    public String getInfUpName() {
         return infUpName;
     }
 
-    public void setInfUpName(String infUpName)
-    {
+    public void setInfUpName(String infUpName) {
         this.infUpName = infUpName;
     }
-    public String getInfUpfileName()
-    {
+
+    public String getInfUpfileName() {
         return infUpfileName;
     }
-    public void setInfUpfileName(String infUpfileName)
-    {
+
+    public void setInfUpfileName(String infUpfileName) {
         this.infUpfileName = infUpfileName;
     }
 }

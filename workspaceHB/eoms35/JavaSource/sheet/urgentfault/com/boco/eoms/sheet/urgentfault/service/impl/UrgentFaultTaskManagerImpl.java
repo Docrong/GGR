@@ -14,11 +14,11 @@ import com.boco.eoms.sheet.urgentfault.service.IUrgentFaultTaskManager;
 
 /**
  * @author IBM_USER
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class UrgentFaultTaskManagerImpl extends TaskServiceImpl implements IUrgentFaultTaskManager{
+public class UrgentFaultTaskManagerImpl extends TaskServiceImpl implements IUrgentFaultTaskManager {
 
-	
+
 }

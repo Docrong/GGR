@@ -9,29 +9,28 @@ import com.boco.eoms.sheet.complaintDuban.dao.IComplaintDubanTaskDAO;
 import com.boco.eoms.sheet.complaintDuban.service.IComplaintDubanTaskManager;
 
 
-public class ComplaintDubanTaskManagerImpl extends TaskServiceImpl implements  IComplaintDubanTaskManager{
-	public HashMap getUndoTaskByOverTime(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length)
-	throws Exception
-		{
-			HashMap taskMap = new HashMap();
-			String sql = "";
-			String countsql = "";
-				sql = "select distinct task.id,task.TASKNAME,task.correlationKey,task.levelId,task.parentLevelId,task.TASKDISPLAYNAME,NULL CREATETIME,task.TASKSTATUS," +
-						" '' PROCESSID,task.SHEETKEY,task.SHEETID,task.ACCEPTTIMELIMIT,task.COMPLETETIMELIMIT,task.OPERATEROLEID,task.TASKOWNER,'' PRELINKID,'' FLOWNAME," +
-						" '' CURRENTLINKID,'' OPERATETYPE,'' PARENTTASKID,'' SUBTASKDEALFALG,task.IFWAITFORSUBTASK,'' SUBTASKFLAG,0 CREATEYEAR,0 CREATEMONTH,0 CREATEDAY," +
-						" task.SENDTIME,'' PREDEALDEPT,'' PREDEALUSERID,'' PARENTPROCESSNAME,'' preDealRoleId,'' replaceWaitForSubTask,main.title" + 
-				" from complaintduban_main main,complaintduban_task task where main.deleted =0 and main.id = task.sheetkey and " +
-				"task.taskowner in ('" + userId + "', '" + deptId + "') and task.taskstatus in ('2','8') " +
-						"and task.taskDisplayName <> '草稿' and task.taskDisplayName <> '阶段回复' and task.ifwaitforsubtask = 'false'";
-				countsql = " select count(*) from (" + sql +")";
-				StringBuffer hql = new StringBuffer(sql);
-				StringBuffer counthql = new StringBuffer(countsql);
-				hql.append(" order by task.sendtime desc");
-				Integer total = ((IComplaintDubanTaskDAO)getTaskDAO()).getCountTaskBySQL(counthql.toString());
-				taskMap = ((IComplaintDubanTaskDAO)getTaskDAO()).getTaskListBySQL(hql.toString(), startIndex, length);
-				taskMap.put("taskTotal", total);
-			return taskMap;
-			
+public class ComplaintDubanTaskManagerImpl extends TaskServiceImpl implements IComplaintDubanTaskManager {
+    public HashMap getUndoTaskByOverTime(Map condition, String userId, String deptId, String flowName, Integer startIndex, Integer length)
+            throws Exception {
+        HashMap taskMap = new HashMap();
+        String sql = "";
+        String countsql = "";
+        sql = "select distinct task.id,task.TASKNAME,task.correlationKey,task.levelId,task.parentLevelId,task.TASKDISPLAYNAME,NULL CREATETIME,task.TASKSTATUS," +
+                " '' PROCESSID,task.SHEETKEY,task.SHEETID,task.ACCEPTTIMELIMIT,task.COMPLETETIMELIMIT,task.OPERATEROLEID,task.TASKOWNER,'' PRELINKID,'' FLOWNAME," +
+                " '' CURRENTLINKID,'' OPERATETYPE,'' PARENTTASKID,'' SUBTASKDEALFALG,task.IFWAITFORSUBTASK,'' SUBTASKFLAG,0 CREATEYEAR,0 CREATEMONTH,0 CREATEDAY," +
+                " task.SENDTIME,'' PREDEALDEPT,'' PREDEALUSERID,'' PARENTPROCESSNAME,'' preDealRoleId,'' replaceWaitForSubTask,main.title" +
+                " from complaintduban_main main,complaintduban_task task where main.deleted =0 and main.id = task.sheetkey and " +
+                "task.taskowner in ('" + userId + "', '" + deptId + "') and task.taskstatus in ('2','8') " +
+                "and task.taskDisplayName <> '草稿' and task.taskDisplayName <> '阶段回复' and task.ifwaitforsubtask = 'false'";
+        countsql = " select count(*) from (" + sql + ")";
+        StringBuffer hql = new StringBuffer(sql);
+        StringBuffer counthql = new StringBuffer(countsql);
+        hql.append(" order by task.sendtime desc");
+        Integer total = ((IComplaintDubanTaskDAO) getTaskDAO()).getCountTaskBySQL(counthql.toString());
+        taskMap = ((IComplaintDubanTaskDAO) getTaskDAO()).getTaskListBySQL(hql.toString(), startIndex, length);
+        taskMap.put("taskTotal", total);
+        return taskMap;
+
 //			HashMap taskMap = new HashMap();
 //			String orderCondition = (String)condition.get("orderCondition");
 //			BaseMain mainObject = (BaseMain)condition.get("mainObject");
@@ -60,6 +59,6 @@ public class ComplaintDubanTaskManagerImpl extends TaskServiceImpl implements  I
 //					hql.append("order by task.createTime desc");
 //			taskMap = getTaskDAO().getTaskListByCondition(hql.toString(), startIndex, length);
 //			return taskMap;
-			
-		}
-  }
+
+    }
+}

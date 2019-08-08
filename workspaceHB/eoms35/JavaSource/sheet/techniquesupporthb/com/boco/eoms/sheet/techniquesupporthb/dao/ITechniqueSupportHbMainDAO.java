@@ -8,6 +8,5 @@ package com.boco.eoms.sheet.techniquesupporthb.dao;
 import com.boco.eoms.sheet.base.dao.IMainDAO;
 
 public interface ITechniqueSupportHbMainDAO
-	extends IMainDAO
-{
+        extends IMainDAO {
 }

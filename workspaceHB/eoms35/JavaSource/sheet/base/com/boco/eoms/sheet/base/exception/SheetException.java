@@ -21,10 +21,9 @@ import com.boco.eoms.commons.exceptions.base.BusinessException;
  * <p>
  * Date:2007-8-3 16:25:18
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class SheetException extends BusinessException {
     public SheetException(Throwable cause) {
@@ -37,7 +36,7 @@ public class SheetException extends BusinessException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#getMessage()
      */
     public String getMessage() {
@@ -47,7 +46,7 @@ public class SheetException extends BusinessException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace()
      */
     public void printStackTrace() {
@@ -57,7 +56,7 @@ public class SheetException extends BusinessException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace(java.io.PrintStream)
      */
     public void printStackTrace(PrintStream s) {
@@ -67,7 +66,7 @@ public class SheetException extends BusinessException {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Throwable#printStackTrace(java.io.PrintWriter)
      */
     public void printStackTrace(PrintWriter w) {

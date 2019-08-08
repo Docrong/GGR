@@ -22,10 +22,10 @@ public class TawRmInoutRecordDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String testcardId = "ThJdSoBsOvYoEaRbUtGoSxPhEnOiAoMo";
-        tawRmInoutRecord.setTestcardId(testcardId);        
+        tawRmInoutRecord.setTestcardId(testcardId);
 
         java.lang.String borrowerId = "JdKcMtIrNtTwZgUcQfAxRrOyTfIcRv";
-        tawRmInoutRecord.setBorrowerId(borrowerId);        
+        tawRmInoutRecord.setBorrowerId(borrowerId);
 
         dao.saveTawRmInoutRecord(tawRmInoutRecord);
 
@@ -54,9 +54,9 @@ public class TawRmInoutRecordDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String testcardId = "VyDoSoPkPvExKkRzKiFcSqWwYxPjFnXt";
-        tawRmInoutRecord.setTestcardId(testcardId);        
+        tawRmInoutRecord.setTestcardId(testcardId);
         java.lang.String borrowerId = "JnOyZrObJpBdMyPsHlExCcAfZpJjHb";
-        tawRmInoutRecord.setBorrowerId(borrowerId);        
+        tawRmInoutRecord.setBorrowerId(borrowerId);
 
         dao.saveTawRmInoutRecord(tawRmInoutRecord);
 

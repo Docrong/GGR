@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
 
+    <!--TawSystemArea-DAO START-->
+    <bean id="tawSystemAreaDao"
+          class="com.boco.eoms.commons.system.area.dao.hibernate.TawSystemAreaDaoHibernate"
+          autowire="byName"/>
+    <!--TawSystemArea-DAO END-->
+    <!--TawSystemArea-START-->
+    <bean id="ItawSystemAreaManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.area.service.impl.TawSystemAreaManagerImpl">
+                <property name="tawSystemAreaDao"
+                          ref="tawSystemAreaDao"/>
+                <property name="daojdbc" ref="TawSystemAreaDaoJdbc"/>
+            </bean>
+        </property>
+    </bean>
+    <bean id="TawSystemAreaDaoJdbc"
+          class="com.boco.eoms.commons.system.area.dao.hibernate.TawSystemAreaDaoJdbcImpl"
+          autowire="byName"/>
+    <!--TawSystemArea-END-->
 
-	<!--TawSystemArea-DAO START-->
-	<bean id="tawSystemAreaDao"
-		class="com.boco.eoms.commons.system.area.dao.hibernate.TawSystemAreaDaoHibernate"
-		autowire="byName" />
-	<!--TawSystemArea-DAO END-->
-	<!--TawSystemArea-START-->
-	<bean id="ItawSystemAreaManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.area.service.impl.TawSystemAreaManagerImpl">
-				<property name="tawSystemAreaDao"
-					ref="tawSystemAreaDao" />
-				<property name="daojdbc" ref="TawSystemAreaDaoJdbc" />
-			</bean>
-		</property>
-	</bean>
-	<bean id="TawSystemAreaDaoJdbc"
-		class="com.boco.eoms.commons.system.area.dao.hibernate.TawSystemAreaDaoJdbcImpl"
-		autowire="byName" />
-	<!--TawSystemArea-END-->
-
-	<bean id="AreaMgrImpl"
-		class="com.boco.eoms.commons.system.area.service.impl.AreaMgrImpl">
-		<property name="tawSystemAreaDao" ref="tawSystemAreaDao"/>
-	</bean>
+    <bean id="AreaMgrImpl"
+          class="com.boco.eoms.commons.system.area.service.impl.AreaMgrImpl">
+        <property name="tawSystemAreaDao" ref="tawSystemAreaDao"/>
+    </bean>
 </beans>
 
 

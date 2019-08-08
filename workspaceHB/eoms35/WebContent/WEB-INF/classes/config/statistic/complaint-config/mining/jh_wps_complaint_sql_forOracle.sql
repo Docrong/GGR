@@ -1,222 +1,328 @@
 ---采集视图
 create or replace view v_complaint as
-(
+    (
 --已处理
-select ----est_stat---
-2 est_data_status,
-srole.roleid send_bigrole_id,
-case when task.operatetype='subrole' then orole.roleid else to_number(null) end operate_bigrole_id,
-sd.linkid send_dept_level,
-od.linkid operate_dept_level,
+        select ----est_stat---
+               2                                                                                 est_data_status,
+               srole.roleid                                                                      send_bigrole_id,
+               case when task.operatetype = 'subrole' then orole.roleid else to_number(null) end operate_bigrole_id,
+               sd.linkid                                                                         send_dept_level,
+               od.linkid                                                                         operate_dept_level,
 --common main
-main.id MAINID,main.SHEETID,main.TITLE,main.SHEETACCEPTLIMIT,main.SHEETCOMPLETELIMIT,main.SENDTIME,main.SENDUSERID,main.SENDDEPTID,
-main.SENDROLEID,main.SENDCONTACT,main.STATUS,main.HOLDSTATISFIED,main.ENDTIME,main.ENDUSERID,main.ENDDEPTID,main.ENDROLEID,
-main.DELETED,main.PIID,main.PARENTSHEETNAME,main.PARENTSHEETID,main.SHEETTEMPLATENAME,main.SHEETACCESSORIES,
-main.TODEPTID,main.CANCELREASON,
+               main.id                                                                           MAINID,
+               main.SHEETID,
+               main.TITLE,
+               main.SHEETACCEPTLIMIT,
+               main.SHEETCOMPLETELIMIT,
+               main.SENDTIME,
+               main.SENDUSERID,
+               main.SENDDEPTID,
+               main.SENDROLEID,
+               main.SENDCONTACT,
+               main.STATUS,
+               main.HOLDSTATISFIED,
+               main.ENDTIME,
+               main.ENDUSERID,
+               main.ENDDEPTID,
+               main.ENDROLEID,
+               main.DELETED,
+               main.PIID,
+               main.PARENTSHEETNAME,
+               main.PARENTSHEETID,
+               main.SHEETTEMPLATENAME,
+               main.SHEETACCESSORIES,
+               main.TODEPTID,
+               main.CANCELREASON,
 --common link
-link.ID linkid,
-task.ACCEPTTIMELIMIT NODEACCEPTLIMIT,
-task.COMPLETETIMELIMIT NODECOMPLETELIMIT,
-link.OPERATETYPE,link.OPERATETIME,link.OPERATEUSERID,link.OPERATEDEPTID,link.OPERATEROLEID,link.TOORGTYPE,link.TOORGUSERID,
-link.TOORGDEPTID,link.TOORGROLEID,link.ACCEPTFLAG,link.COMPLETEFLAG,link.PRELINKID,link.PARENTLINKID,link.FIRSTLINKID,
-link.AIID,link.ACTIVETEMPLATEID,link.NODETEMPLATENAME,link.NODEACCESSORIES,link.OPERATEORGTYPE,
+               link.ID                                                                           linkid,
+               task.ACCEPTTIMELIMIT                                                              NODEACCEPTLIMIT,
+               task.COMPLETETIMELIMIT                                                            NODECOMPLETELIMIT,
+               link.OPERATETYPE,
+               link.OPERATETIME,
+               link.OPERATEUSERID,
+               link.OPERATEDEPTID,
+               link.OPERATEROLEID,
+               link.TOORGTYPE,
+               link.TOORGUSERID,
+               link.TOORGDEPTID,
+               link.TOORGROLEID,
+               link.ACCEPTFLAG,
+               link.COMPLETEFLAG,
+               link.PRELINKID,
+               link.PARENTLINKID,
+               link.FIRSTLINKID,
+               link.AIID,
+               link.ACTIVETEMPLATEID,
+               link.NODETEMPLATENAME,
+               link.NODEACCESSORIES,
+               link.OPERATEORGTYPE,
 
 --common task
-task.SUBTASKFLAG,task.PARENTTASKID,task.taskstatus,task.operatetype taskoperatetype,
+               task.SUBTASKFLAG,
+               task.PARENTTASKID,
+               task.taskstatus,
+               task.operatetype                                                                  taskoperatetype,
 --bussines main
-main.DEALTIME1,	
-main.DEALTIME2,	
-main.URGENTDEGREE,	
-main.BTYPE1,	
-main.BDEPTCONTACT,	
-main.CUSTOMERNAME,	
-main.CUSTOMPHONE,	
-main.COMPLAINTTIME,	
-main.FAULTTIME,	
-main.COMPLAINTADD,	
-main.COMPLAINTDESC,	
-main.BDEPTCONTACTPHONE,	
-main.REPEATCOMPLAINTTIMES,	
-main.COMPLAINTTYPE1,	
-main.COMPLAINTTYPE2,	
-main.COMPLAINTTYPE,
-main.COMPLAINTTYPE4,	
-main.COMPLAINTTYPE5,	
-main.COMPLAINTTYPE6,	
-main.COMPLAINTTYPE7,		
-main.COMPLAINTREASON1,	
-main.COMPLAINTREASON2,	
-main.COMPLAINTREASON,	
-main.CUSTOMTYPE,	
-main.CUSTOMBRAND,	
-main.CUSTOMLEVEL,	
-main.CUSTOMATTRIBUTION,	
-main.STARTDEALCITY,	
-main.CALLERNO,	
-main.CALLERREGISTVLR,	
-main.CALLERDIALUPTYPE,	
-main.CALLERISINTELLIGENTUSER,	
-main.CALLEDPARTYNO,	
-main.CALLEDPARTYREGISTVLR,	
-main.CALLEDPARTYCALLC,
-main.MAINCOMPLETELIMITT1,                        
-main.MAINCOMPLETELIMITT2 ,                     
-main.MAINIFDEFERRESOLVE ,          
-main.MAINIFRECORD                            
-,main.MAINQCREJECTTIMES                      
-,main.SENDYEAR                              
-,main.SENDMONTH                            
-,main.SENDDAY                         
+               main.DEALTIME1,
+               main.DEALTIME2,
+               main.URGENTDEGREE,
+               main.BTYPE1,
+               main.BDEPTCONTACT,
+               main.CUSTOMERNAME,
+               main.CUSTOMPHONE,
+               main.COMPLAINTTIME,
+               main.FAULTTIME,
+               main.COMPLAINTADD,
+               main.COMPLAINTDESC,
+               main.BDEPTCONTACTPHONE,
+               main.REPEATCOMPLAINTTIMES,
+               main.COMPLAINTTYPE1,
+               main.COMPLAINTTYPE2,
+               main.COMPLAINTTYPE,
+               main.COMPLAINTTYPE4,
+               main.COMPLAINTTYPE5,
+               main.COMPLAINTTYPE6,
+               main.COMPLAINTTYPE7,
+               main.COMPLAINTREASON1,
+               main.COMPLAINTREASON2,
+               main.COMPLAINTREASON,
+               main.CUSTOMTYPE,
+               main.CUSTOMBRAND,
+               main.CUSTOMLEVEL,
+               main.CUSTOMATTRIBUTION,
+               main.STARTDEALCITY,
+               main.CALLERNO,
+               main.CALLERREGISTVLR,
+               main.CALLERDIALUPTYPE,
+               main.CALLERISINTELLIGENTUSER,
+               main.CALLEDPARTYNO,
+               main.CALLEDPARTYREGISTVLR,
+               main.CALLEDPARTYCALLC,
+               main.MAINCOMPLETELIMITT1,
+               main.MAINCOMPLETELIMITT2,
+               main.MAINIFDEFERRESOLVE,
+               main.MAINIFRECORD
+                ,
+               main.MAINQCREJECTTIMES
+                ,
+               main.SENDYEAR
+                ,
+               main.SENDMONTH
+                ,
+               main.SENDDAY
 --bussines link              
-,link.LINKIFINVOKECHANGE                    
-,link.LINKFAULTSTARTTIME                    
-,link.LINKFAULTENDTIME                      
-,link.LINKFAULTGENERANTPLACE               
-,link.NDEPTCONTACT                          
-,link.NDEPTCONTACTPHONE                     
-,link.DEALRESULT                           
-,link.ISSUEELIMINATTIME                     
-,link.LINKCHECKRESULT                       
-,link.LINKIFDEFERRESOLVE                    
-,link.LINKIFINVOKECASEDATABASE              
-,link.LINKCHANGESHEETID
-,link.OPERATEYEAR                             
-,link.OPERATEMONTH                           
-,link.OPERATEDAY                 
-,main.maindelayflag
-,main.mainlastrepeattime 
-from complaint_main main
+                ,
+               link.LINKIFINVOKECHANGE
+                ,
+               link.LINKFAULTSTARTTIME
+                ,
+               link.LINKFAULTENDTIME
+                ,
+               link.LINKFAULTGENERANTPLACE
+                ,
+               link.NDEPTCONTACT
+                ,
+               link.NDEPTCONTACTPHONE
+                ,
+               link.DEALRESULT
+                ,
+               link.ISSUEELIMINATTIME
+                ,
+               link.LINKCHECKRESULT
+                ,
+               link.LINKIFDEFERRESOLVE
+                ,
+               link.LINKIFINVOKECASEDATABASE
+                ,
+               link.LINKCHANGESHEETID
+                ,
+               link.OPERATEYEAR
+                ,
+               link.OPERATEMONTH
+                ,
+               link.OPERATEDAY
+                ,
+               main.maindelayflag
+                ,
+               main.mainlastrepeattime
+        from complaint_main main
 
-join complaint_link link on main.id=link.mainid and main.templateflag=0 and link.TEMPLATEFLAG=0
-left join complaint_task task on link.aiid=task.id
-left join taw_system_sub_role orole on link.operateroleid=orole.id
-left join taw_system_sub_role srole on main.sendroleid=srole.id
-join taw_system_dept sd on main.senddeptid=sd.deptid
-join taw_system_dept od on link.operatedeptid=od.deptid
-)
-union all
-(
+                 join complaint_link link on main.id = link.mainid and main.templateflag = 0 and link.TEMPLATEFLAG = 0
+                 left join complaint_task task on link.aiid = task.id
+                 left join taw_system_sub_role orole on link.operateroleid = orole.id
+                 left join taw_system_sub_role srole on main.sendroleid = srole.id
+                 join taw_system_dept sd on main.senddeptid = sd.deptid
+                 join taw_system_dept od on link.operatedeptid = od.deptid
+    )
+    union all
+    (
 --未处理
-select 
+        select
 ----est_stat---
-case when task.taskstatus=2 then 0 when task.taskstatus=8 then 1 end est_data_status,
-srole.roleid send_bigrole_id,
-case when task.operatetype='subrole' then orole.roleid else to_number(null) end operate_bigrole_id,
-sd.linkid send_dept_level,
-od.linkid operate_dept_level,
+case when task.taskstatus = 2 then 0 when task.taskstatus = 8 then 1 end                  est_data_status,
+srole.roleid                                                                              send_bigrole_id,
+case when task.operatetype = 'subrole' then orole.roleid else to_number(null) end         operate_bigrole_id,
+sd.linkid                                                                                 send_dept_level,
+od.linkid                                                                                 operate_dept_level,
 --common main
-main.id MAINID,main.SHEETID,main.TITLE,main.SHEETACCEPTLIMIT,main.SHEETCOMPLETELIMIT,main.SENDTIME,main.SENDUSERID,main.SENDDEPTID,
-main.SENDROLEID,main.SENDCONTACT,main.STATUS,main.HOLDSTATISFIED,main.ENDTIME,main.ENDUSERID,main.ENDDEPTID,main.ENDROLEID,
-main.DELETED,main.PIID,main.PARENTSHEETNAME,main.PARENTSHEETID,main.SHEETTEMPLATENAME,main.SHEETACCESSORIES,
-main.TODEPTID,main.CANCELREASON,
+main.id                                                                                   MAINID,
+main.SHEETID,
+main.TITLE,
+main.SHEETACCEPTLIMIT,
+main.SHEETCOMPLETELIMIT,
+main.SENDTIME,
+main.SENDUSERID,
+main.SENDDEPTID,
+main.SENDROLEID,
+main.SENDCONTACT,
+main.STATUS,
+main.HOLDSTATISFIED,
+main.ENDTIME,
+main.ENDUSERID,
+main.ENDDEPTID,
+main.ENDROLEID,
+main.DELETED,
+main.PIID,
+main.PARENTSHEETNAME,
+main.PARENTSHEETID,
+main.SHEETTEMPLATENAME,
+main.SHEETACCESSORIES,
+main.TODEPTID,
+main.CANCELREASON,
 --common link
-to_char(null) linkid,
-task.ACCEPTTIMELIMIT NODEACCEPTLIMIT,
-task.COMPLETETIMELIMIT NODECOMPLETELIMIT,
-to_number(null) OPERATETYPE,
-to_date(null) OPERATETIME,
-case when task.taskowner!=task.operateroleid then task.taskowner else to_char(null) end OPERATEUSERID,
-case when task.taskowner!=task.operateroleid then ud.deptid else u.deptid end OPERATEDEPTID,
-task.operateroleid OPERATEROLEID,
-to_number(null) TOORGTYPE,
-to_char(null) TOORGUSERID,
-to_char(null)  TOORGDEPTID,
-to_char(null) TOORGROLEID,
-case when to_date(to_char(task.ACCEPTTIMELIMIT,'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS')>sysdate then 1 else 2 end ACCEPTFLAG,
-case when to_date(to_char(task.COMPLETETIMELIMIT,'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS')>sysdate then 1 else 2 end COMPLETEFLAG,
+to_char(null)                                                                             linkid,
+task.ACCEPTTIMELIMIT                                                                      NODEACCEPTLIMIT,
+task.COMPLETETIMELIMIT                                                                    NODECOMPLETELIMIT,
+to_number(null)                                                                           OPERATETYPE,
+to_date(null)                                                                             OPERATETIME,
+case when task.taskowner != task.operateroleid then task.taskowner else to_char(null) end OPERATEUSERID,
+case when task.taskowner != task.operateroleid then ud.deptid else u.deptid end           OPERATEDEPTID,
+task.operateroleid                                                                        OPERATEROLEID,
+to_number(null)                                                                           TOORGTYPE,
+to_char(null)                                                                             TOORGUSERID,
+to_char(null)                                                                             TOORGDEPTID,
+to_char(null)                                                                             TOORGROLEID,
+case
+    when to_date(to_char(task.ACCEPTTIMELIMIT, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') > sysdate then 1
+    else 2 end                                                                            ACCEPTFLAG,
+case
+    when to_date(to_char(task.COMPLETETIMELIMIT, 'YYYY-MM-DD HH24:MI:SS'), 'YYYY-MM-DD HH24:MI:SS') > sysdate then 1
+    else 2 end                                                                            COMPLETEFLAG,
 task.PRELINKID,
-to_char(null) PARENTLINKID,
-to_char(null) FIRSTLINKID,
-task.id AIID,
-task.taskname ACTIVETEMPLATEID,
-to_char(null) NODETEMPLATENAME,
-to_char(null) NODEACCESSORIES,
-to_char(null) OPERATEORGTYPE,
+to_char(null)                                                                             PARENTLINKID,
+to_char(null)                                                                             FIRSTLINKID,
+task.id                                                                                   AIID,
+task.taskname                                                                             ACTIVETEMPLATEID,
+to_char(null)                                                                             NODETEMPLATENAME,
+to_char(null)                                                                             NODEACCESSORIES,
+to_char(null)                                                                             OPERATEORGTYPE,
 --common task
 task.SUBTASKFLAG,
 task.PARENTTASKID,
 task.taskstatus,
-task.operatetype taskoperatetype,
+task.operatetype                                                                          taskoperatetype,
 
 --bussines main
-main.DEALTIME1,	
-main.DEALTIME2,	
-main.URGENTDEGREE,	
-main.BTYPE1,	
-main.BDEPTCONTACT,	
-main.CUSTOMERNAME,	
-main.CUSTOMPHONE,	
-main.COMPLAINTTIME,	
-main.FAULTTIME,	
-main.COMPLAINTADD,	
-main.COMPLAINTDESC,	
-main.BDEPTCONTACTPHONE,	
-main.REPEATCOMPLAINTTIMES,	
-main.COMPLAINTTYPE1,	
-main.COMPLAINTTYPE2,	
-main.COMPLAINTTYPE,	
-main.COMPLAINTTYPE4,	
-main.COMPLAINTTYPE5,	
-main.COMPLAINTTYPE6,	
-main.COMPLAINTTYPE7,	
-main.COMPLAINTREASON1,	
-main.COMPLAINTREASON2,	
-main.COMPLAINTREASON,	
-main.CUSTOMTYPE,	
-main.CUSTOMBRAND,	
-main.CUSTOMLEVEL,	
-main.CUSTOMATTRIBUTION,	
-main.STARTDEALCITY,	
-main.CALLERNO,	
-main.CALLERREGISTVLR,	
-main.CALLERDIALUPTYPE,	
-main.CALLERISINTELLIGENTUSER,	
-main.CALLEDPARTYNO,	
-main.CALLEDPARTYREGISTVLR,	
+main.DEALTIME1,
+main.DEALTIME2,
+main.URGENTDEGREE,
+main.BTYPE1,
+main.BDEPTCONTACT,
+main.CUSTOMERNAME,
+main.CUSTOMPHONE,
+main.COMPLAINTTIME,
+main.FAULTTIME,
+main.COMPLAINTADD,
+main.COMPLAINTDESC,
+main.BDEPTCONTACTPHONE,
+main.REPEATCOMPLAINTTIMES,
+main.COMPLAINTTYPE1,
+main.COMPLAINTTYPE2,
+main.COMPLAINTTYPE,
+main.COMPLAINTTYPE4,
+main.COMPLAINTTYPE5,
+main.COMPLAINTTYPE6,
+main.COMPLAINTTYPE7,
+main.COMPLAINTREASON1,
+main.COMPLAINTREASON2,
+main.COMPLAINTREASON,
+main.CUSTOMTYPE,
+main.CUSTOMBRAND,
+main.CUSTOMLEVEL,
+main.CUSTOMATTRIBUTION,
+main.STARTDEALCITY,
+main.CALLERNO,
+main.CALLERREGISTVLR,
+main.CALLERDIALUPTYPE,
+main.CALLERISINTELLIGENTUSER,
+main.CALLEDPARTYNO,
+main.CALLEDPARTYREGISTVLR,
 main.CALLEDPARTYCALLC,
-main.MAINCOMPLETELIMITT1,                        
-main.MAINCOMPLETELIMITT2 ,                     
-main.MAINIFDEFERRESOLVE , 
-main.MAINIFRECORD                            
-,main.MAINQCREJECTTIMES                      
-,main.SENDYEAR                              
-,main.SENDMONTH                            
-,main.SENDDAY         
+main.MAINCOMPLETELIMITT1,
+main.MAINCOMPLETELIMITT2,
+main.MAINIFDEFERRESOLVE,
+main.MAINIFRECORD
+                ,
+main.MAINQCREJECTTIMES
+                ,
+main.SENDYEAR
+                ,
+main.SENDMONTH
+                ,
+main.SENDDAY
 --bussines link   
-,to_char(null) LINKIFINVOKECHANGE                    
-,to_date(null) LINKFAULTSTARTTIME                    
-,to_date(null) LINKFAULTENDTIME                      
-,to_char(null) LINKFAULTGENERANTPLACE               
-,to_char(null) NDEPTCONTACT                          
-,to_char(null) NDEPTCONTACTPHONE                     
-,to_char(null) DEALRESULT                            
-,to_date(null) ISSUEELIMINATTIME                     
-,to_char(null) LINKCHECKRESULT                       
-,to_char(null) LINKIFDEFERRESOLVE                    
-,to_char(null) LINKIFINVOKECASEDATABASE            
-,to_char(null) LINKCHANGESHEETID 
-,to_number(null) OPERATEYEAR                             
-,to_number(null) OPERATEMONTH                           
-,to_number(null) OPERATEDAY   
-,main.maindelayflag 
-,main.mainlastrepeattime     
-from complaint_main main
+                ,
+to_char(null)                                                                             LINKIFINVOKECHANGE
+                ,
+to_date(null)                                                                             LINKFAULTSTARTTIME
+                ,
+to_date(null)                                                                             LINKFAULTENDTIME
+                ,
+to_char(null)                                                                             LINKFAULTGENERANTPLACE
+                ,
+to_char(null)                                                                             NDEPTCONTACT
+                ,
+to_char(null)                                                                             NDEPTCONTACTPHONE
+                ,
+to_char(null)                                                                             DEALRESULT
+                ,
+to_date(null)                                                                             ISSUEELIMINATTIME
+                ,
+to_char(null)                                                                             LINKCHECKRESULT
+                ,
+to_char(null)                                                                             LINKIFDEFERRESOLVE
+                ,
+to_char(null)                                                                             LINKIFINVOKECASEDATABASE
+                ,
+to_char(null)                                                                             LINKCHANGESHEETID
+                ,
+to_number(null)                                                                           OPERATEYEAR
+                ,
+to_number(null)                                                                           OPERATEMONTH
+                ,
+to_number(null)                                                                           OPERATEDAY
+                ,
+main.maindelayflag
+                ,
+main.mainlastrepeattime
+        from complaint_main main
 
-join complaint_task task on main.templateflag=0 and main.id=task.sheetkey and task.taskstatus!=5 and main.templateflag=0
-left join taw_system_user ud on task.taskowner!=task.operateroleid and task.taskowner=ud.userid
-left join taw_system_sub_role orole on orole.id=task.operateroleid
-left join taw_system_sub_role srole on srole.id=main.sendroleid
-left join taw_system_userrefrole refr on refr.subroleid = task.operateroleid
-left join taw_system_user u on u.userid = refr.userid
-join taw_system_dept sd on main.senddeptid=sd.deptid
-join taw_system_dept od on u.deptid=od.deptid   
-)
-
+                 join complaint_task task
+                      on main.templateflag = 0 and main.id = task.sheetkey and task.taskstatus != 5 and
+                         main.templateflag = 0
+                 left join taw_system_user ud on task.taskowner != task.operateroleid and task.taskowner = ud.userid
+                 left join taw_system_sub_role orole on orole.id = task.operateroleid
+                 left join taw_system_sub_role srole on srole.id = main.sendroleid
+                 left join taw_system_userrefrole refr on refr.subroleid = task.operateroleid
+                 left join taw_system_user u on u.userid = refr.userid
+                 join taw_system_dept sd on main.senddeptid = sd.deptid
+                 join taw_system_dept od on u.deptid = od.deptid
+    )
 
 
 
 insert into est_last_oper
-values (52,to_date('2007-11-11 11:11:11','yyyy-mm-dd hh24:mi:ss'),投诉处理流程流基础表采集的上一次操作的时间')
+values (52, to_date('2007-11-11 11:11:11', 'yyyy-mm-dd hh24:mi:ss'), 投诉处理流程流基础表采集的上一次操作的时间 ')
 
 
 

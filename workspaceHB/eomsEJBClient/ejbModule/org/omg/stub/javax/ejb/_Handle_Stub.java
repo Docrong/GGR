@@ -12,6 +12,7 @@ import javax.ejb.EJBObject;
 import javax.ejb.Handle;
 import javax.rmi.CORBA.Stub;
 import javax.rmi.CORBA.Util;
+
 import org.omg.CORBA.SystemException;
 import org.omg.CORBA.portable.ApplicationException;
 import org.omg.CORBA.portable.InputStream;
@@ -20,18 +21,18 @@ import org.omg.CORBA.portable.RemarshalException;
 import org.omg.CORBA.portable.ServantObject;
 
 public class _Handle_Stub extends Stub implements Handle,
-Remote {
-    
+        Remote {
+
     private static final String[] _type_ids = {
-        "RMI:javax.ejb.Handle:0000000000000000"
+            "RMI:javax.ejb.Handle:0000000000000000"
     };
-    
-    public String[] _ids() { 
+
+    public String[] _ids() {
         return _type_ids;
     }
-    
+
     public EJBObject getEJBObject() throws RemoteException {
-        while(true) {
+        while (true) {
             if (!Util.isLocal(this)) {
                 InputStream in = null;
                 try {
@@ -52,15 +53,15 @@ Remote {
                     _releaseReply(in);
                 }
             } else {
-                ServantObject so = _servant_preinvoke("_get_EJBObject",javax.ejb.Handle.class);
+                ServantObject so = _servant_preinvoke("_get_EJBObject", javax.ejb.Handle.class);
                 if (so == null) {
                     continue;
                 }
                 try {
-                    EJBObject result = ((javax.ejb.Handle)so.servant).getEJBObject();
-                    return (EJBObject)Util.copyObject(result,_orb());
+                    EJBObject result = ((javax.ejb.Handle) so.servant).getEJBObject();
+                    return (EJBObject) Util.copyObject(result, _orb());
                 } catch (Throwable ex) {
-                    Throwable exCopy = (Throwable)Util.copyObject(ex,_orb());
+                    Throwable exCopy = (Throwable) Util.copyObject(ex, _orb());
                     throw Util.wrapException(exCopy);
                 } finally {
                     _servant_postinvoke(so);

@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -69,27 +69,24 @@ import org.xml.sax.helpers.AttributesImpl;
  * defaulting.  Derived from old AttributeListImpl.java code.
  */
 final
-class AttributesExImpl extends AttributesImpl implements AttributesEx
-{
+class AttributesExImpl extends AttributesImpl implements AttributesEx {
     // Boolean.TRUE indicates value was specified
-    private Vector      specified = new Vector ();
+    private Vector specified = new Vector();
 
     // non-null value defines default
-    private Vector      defaults = new Vector ();
+    private Vector defaults = new Vector();
 
     // ID attribute name, as declared
-    private String      idAttributeName;
+    private String idAttributeName;
 
-    AttributesExImpl()
-    {
+    AttributesExImpl() {
         super();
     }
 
     /**
      * Clears the attribute list so it has no members
      */
-    public void clear()
-    {
+    public void clear() {
         super.clear();
         specified.removeAllElements();
         defaults.removeAllElements();
@@ -101,8 +98,7 @@ class AttributesExImpl extends AttributesImpl implements AttributesEx
      */
     public void addAttribute(String uri, String localName, String qName,
                              String type, String value, String defaultValue,
-                             boolean isSpecified)
-    {
+                             boolean isSpecified) {
         super.addAttribute(uri, localName, qName, type, value);
         defaults.addElement(defaultValue);
         specified.addElement(isSpecified ? Boolean.TRUE : null);

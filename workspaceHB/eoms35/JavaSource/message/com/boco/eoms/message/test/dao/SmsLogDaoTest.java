@@ -22,20 +22,20 @@ public class SmsLogDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String content = "XeDjUlCvCsXtXxPiRvVtAkWxCuQsJnWoGlEjHpTvOgNvEqEyTrNhHfAsJjWqBrGqHmXkTeOqEyQmNmXxWnDkNoVrOhTmTqNzSjTjBzZgBkUvBeDyScHiKqYlRpCbCyXfEtLtHeFbQiBpOyVcXaTbFxHeHmBeZxOqTwQnIiAfZuJwQnApDiPwEpQlUvZxTsBgEiNwSoEhUfDqSxEqXwVtUnKpSdWwPiBsYpEpYwQeJgHcWyJnJkXkVdYdLxWcCyEtWhUlVzOeZpIoCjUiKtVdHvRkHxVrAoDpWbFaCdDjMuQjTyQlFyHkRlWvNyRdMzJzYrVlJeZeYvHjIbBjRcDhLcNyWuKqHoKwJaPyGgJkXqWgJkQfKfBiAfHaGmPwQaBgIzMyXfGdRwOkUySwTjQrRuAqSnMrRrPdPxYcMoBiVzQwEeKuKyJjRbKxOyOmYnXyMrSbFwBiYrDuSoLzSlKzFcPqUzFkMgLzFcDtNvUqYgNvAiSbVjZk";
-        smsLog.setContent(content);        
+        smsLog.setContent(content);
 
         java.util.Date dispatchTime = new java.util.Date();
-        smsLog.setDispatchTime(dispatchTime);        
+        smsLog.setDispatchTime(dispatchTime);
 
         java.util.Date insertTime = new java.util.Date();
 //        smsLog.setInsertTime(insertTime);        
 
         java.lang.String mobile = "VzQsXgZhNpAiJiEvHgShDrFuKkOuSeMbNeNyTmNdIzDwQqFmVsJyYlNbJrUsNwTaGuDdSyNtIjCnUiUfNzNtPdTkIlPdGoIwDrTf";
-        smsLog.setMobile(mobile);        
+        smsLog.setMobile(mobile);
 
         java.lang.String buizId = "GmXsKhAyAgVfBfSaIsUwNeXgQiLhOiLr";
 //        smsLog.setBuizId(buizId);        
-   
+
 
         java.lang.String monitorId = "AsWdRyUiKyEtNiIgWdZxQgYeHlYhAxVr";
 //        smsLog.setMonitorId(monitorId);        
@@ -44,15 +44,15 @@ public class SmsLogDaoTest extends BaseDaoTestCase {
 //        smsLog.setReason(reason);        
 
         java.lang.String receiverId = "SuRpMzOeCyGrInNtPtFwHgPpFfYjUa";
-        smsLog.setReceiverId(receiverId);        
+        smsLog.setReceiverId(receiverId);
 
         java.lang.String serviceId = "GlEyYvChHkWrUqScKrYzGbMtJtSfJkKg";
-        smsLog.setServiceId(serviceId);        
+        smsLog.setServiceId(serviceId);
 
         java.lang.String serviceName = "QpXkWjUiJrGsUhJjExLhHxZpMrYcOcIdNyAcHzPwGvNzCiGaGaRrPsNjThAfHeVjYbMfNuQmYjGdWcSkUlJjZyNpDaYyPcNhOgHl";
 //        smsLog.setServiceName(serviceName);        
 
-        java.lang.String success = "I";  
+        java.lang.String success = "I";
 
         dao.saveSmsLog(smsLog);
 
@@ -88,23 +88,23 @@ public class SmsLogDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String content = "KzQdChQkVkZcPuOnEpDwWfYhWdEiIrFfGcKaEyXdHjFuDdKfWpZmEnMlJySoNzMuGeFcIkXvYkRsPnJgTrZpKzXlXvTgPhOnMeWdJkPfTpKsEoPdDrGkJfNaCpFtKsEtKpVtWgEsVhPwRgUnRzGtNgRvSiJgJuZuEaWwIyYlZbGzBtFtKeYmPzBtBgJeTyEkFlStEsEmPcOdTuXgXjCqMmJeMmXhLnHqCdEyPoJkYxZpPdFqSnDpKgZwDmFhRyJpPsJqWhPdJaBgWiOhEfWsDuEnAkHrRyMtAkLmTtJtCeDqQuMkGkUsViIhIxKrMgFkVnDfMeJzCoOaFvUwVtNfTaOvVzUpDpOkLhZyHzWpEoAbDmGrExHkKfOhThTnHpDbLaNkJoBgNoCzZyFmRfBzYzTtWqQvTjOhScWqOpSmFyFfYwRlSqQnVaIzNrPnJbAhGvNwVoHxEoOvGiMiAxYwQqEdNvEiJsFaUzLnQeAvIhTrWpZvYyZx";
-        smsLog.setContent(content);        
+        smsLog.setContent(content);
         java.util.Date dispatchTime = new java.util.Date();
-        smsLog.setDispatchTime(dispatchTime);        
+        smsLog.setDispatchTime(dispatchTime);
         java.util.Date insertTime = new java.util.Date();
 //        smsLog.setInsertTime(insertTime);        
         java.lang.String mobile = "DcMcPpGkRkLhDzGqTpHzBvCiVtQdLlLoVdWtNaKyQrEwFdVpFnNpSyTsIpDvTzBaLySrPgInYcJbYeDuPnZoSoOtJfNuVwAfTbUa";
-        smsLog.setMobile(mobile);        
+        smsLog.setMobile(mobile);
         java.lang.String buizId = "VvLbWdPjXbFwOxCcNsReOcYvRyOpWtYq";
 //        smsLog.setBuizId(buizId);       
         java.lang.String monitorId = "IzUwZaMyXdXjBmUlPaYsZmQkIzKwIwTt";
 //        smsLog.setMonitorId(monitorId);        
         java.lang.String reason = "ZtZdFbShCaQlLoFhKoVyTtXwHwLzIeCtVpNhUnWxKfYuBzOyHcQoCwYkZnAlQbRxZgSzSwVdPcNwMwDgSlQxWjGsReJgLtAdPjMqQzZoLdPoRaIlEcAtQhXsUlHhVrLwJtOkOjLdJaTvHvZcIzVvNbEwJpOtSwZuApXqLiPaRuHyKgPtIkBtEgAgRrBsHxGzJiFaRlXhNdHqLjFpFfSbZuFaAkMeLqVbOhYlZpZfSkXnFtVeZoKnMiFgYoAyOrNyHzJyMsUjDfSdKmAuIjEtDaYuQmMiOpIlTiAyYgImBwJqFdRwIpKaHgCrKaSpDuFkJoFpOqIfErTiIhIpPhFjKxLnRkByKpNdCsDrQdHhDrXcWxJvMeTwKwPeAsFnOdHqTdUgTuUuIrRdBhPjVkFjOlUxRlJcVfEuWpMhAtCwXfKzRhGiLqTdIoElAgLkBsDdKbKrWxWpYiUvBkYuQcPaRqEqMaRdWtDgEnQiPlFyByBbErEsXiUv";
-        
+
         java.lang.String receiverId = "KfHcSfNhSwZiAcCvTcDiZxQxDgSeEr";
-        smsLog.setReceiverId(receiverId);        
+        smsLog.setReceiverId(receiverId);
         java.lang.String serviceId = "XwBoSeXmQeTkUzSoCwHjUeTjNpTrSwCn";
-        smsLog.setServiceId(serviceId);        
+        smsLog.setServiceId(serviceId);
         java.lang.String serviceName = "VsRoWgJlGmFmGgUsWnEbMrVwOpOdSnKnKkDtNeQqUtXoLyUnPcJyScPkLbTeXdYxQuQbQcFcPzWcXdPaJaRbKxGbDqWkVxQlOxHc";
 //        smsLog.setServiceName(serviceName);  
         dao.saveSmsLog(smsLog);

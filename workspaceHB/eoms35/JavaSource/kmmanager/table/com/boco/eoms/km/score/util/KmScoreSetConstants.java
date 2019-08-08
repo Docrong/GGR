@@ -10,15 +10,14 @@ package com.boco.eoms.km.score.util;
  * <p>
  * Fri Aug 07 14:32:13 CST 2009
  * </p>
- * 
+ *
  * @author me
  * @version 1.0
- * 
  */
 public class KmScoreSetConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String KMSCORESET_LIST = "kmScoreSetList";
+
+    /**
+     * list key
+     */
+    public final static String KMSCORESET_LIST = "kmScoreSetList";
 }

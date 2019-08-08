@@ -10,15 +10,14 @@ package com.boco.eoms.commons.mms.mmsreport.util;
  * <p>
  * Wed Feb 18 18:16:20 CST 2009
  * </p>
- * 
+ *
  * @author 李振友
  * @version 3.5
- * 
  */
 public class MmsreportConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String MMSREPORT_LIST = "mmsreportList";
+
+    /**
+     * list key
+     */
+    public final static String MMSREPORT_LIST = "mmsreportList";
 }

@@ -1,6 +1,6 @@
 /**
  * EomsAuthenticationServiceTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -11,19 +11,17 @@ public class EomsAuthenticationServiceTestCase extends junit.framework.TestCase 
     public EomsAuthenticationServiceTestCase(java.lang.String name) {
         super(name);
     }
+
     /**
-	 * 
-	 * 测试用例 test1EomsAuthenticationIsAlive 测试 EomsAuthentication服务的isAlive（）
-	 * 
-	 */
+     * 测试用例 test1EomsAuthenticationIsAlive 测试 EomsAuthentication服务的isAlive（）
+     */
     public void test1EomsAuthenticationIsAlive() throws Exception {
-       EomsAuthenticationSoapBindingStub binding;
+        EomsAuthenticationSoapBindingStub binding;
         try {
             binding = (EomsAuthenticationSoapBindingStub)
-                          new EomsAuthenticationServiceLocator().getEomsAuthentication();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new EomsAuthenticationServiceLocator().getEomsAuthentication();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -37,19 +35,17 @@ public class EomsAuthenticationServiceTestCase extends junit.framework.TestCase 
         value = binding.isAlive();
         // TBD - validate results
     }
+
     /**
-	 * 
-	 * 测试用例 test2EomsAuthenticationEomsAuthentication 测试 EomsAuthentication服务的eomsAuthentication（）
-	 * 
-	 */
+     * 测试用例 test2EomsAuthenticationEomsAuthentication 测试 EomsAuthentication服务的eomsAuthentication（）
+     */
     public void test2EomsAuthenticationEomsAuthentication() throws Exception {
-       EomsAuthenticationSoapBindingStub binding;
+        EomsAuthenticationSoapBindingStub binding;
         try {
             binding = (EomsAuthenticationSoapBindingStub)
-                          new EomsAuthenticationServiceLocator().getEomsAuthentication();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new EomsAuthenticationServiceLocator().getEomsAuthentication();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }

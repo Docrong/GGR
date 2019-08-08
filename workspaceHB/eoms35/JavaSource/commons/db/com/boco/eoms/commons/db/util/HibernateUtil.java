@@ -1,6 +1,7 @@
 package com.boco.eoms.commons.db.util;
 
 // java standard library
+
 import java.sql.Connection;
 
 // hibernate library
@@ -33,15 +34,13 @@ public class HibernateUtil {
         try {
             Configuration config = new Configuration().configure();
             sf = config.buildSessionFactory();
-        }
-        catch (HibernateException e) {
+        } catch (HibernateException e) {
             try {
                 String _strCfgFile = "com/boco/eoms/commons/db/config/hibernate.cfg.xml";
                 Configuration config = new Configuration()
                         .configure(_strCfgFile);
                 sf = config.buildSessionFactory();
-            }
-            catch (HibernateException ex) {
+            } catch (HibernateException ex) {
                 throw new RuntimeException(
                         "Exception building SessionFactory: " + ex.getMessage(),
                         ex);
@@ -51,8 +50,8 @@ public class HibernateUtil {
     }
 
     /**
-     * @see 非等待方式获取默认连接池中的数据库连接
      * @return BocoConnection, 可用数据库连接对象或null
+     * @see 非等待方式获取默认连接池中的数据库连接
      */
     public static BocoConnection getConnection() {
         BocoConnection conn = ds.getConnection();
@@ -63,10 +62,9 @@ public class HibernateUtil {
     }
 
     /**
-     * @see 固定等待时间方式获取默认数据库连接池中的数据库连接
-     * @param int,
-     *            等待时间，以分钟计数
+     * @param int, 等待时间，以分钟计数
      * @return BocoConnection, 可用数据库连接对象或null
+     * @see 固定等待时间方式获取默认数据库连接池中的数据库连接
      */
     public static BocoConnection getConnection(int time) {
         BocoConnection conn = ds.getConnection(time);
@@ -74,10 +72,9 @@ public class HibernateUtil {
     }
 
     /**
-     * @see 非等待方式获取指定连接池中的数据库连接
-     * @param String,
-     *            指定的数据库连接池
+     * @param String, 指定的数据库连接池
      * @return BocoConnection, 可用数据库连接对象或null
+     * @see 非等待方式获取指定连接池中的数据库连接
      */
     public static BocoConnection getConnection(String _strPoolName) {
         BocoConnection conn = ds.getConnection(_strPoolName);
@@ -85,12 +82,10 @@ public class HibernateUtil {
     }
 
     /**
-     * @see 固定等待时间方式获取指定连接池中数据库连接
-     * @param String,
-     *            指定连接池名称
-     * @param int,
-     *            等待时间，以分钟计数
+     * @param String, 指定连接池名称
+     * @param int,    等待时间，以分钟计数
      * @return BocoConnection, 可用数据库连接或null
+     * @see 固定等待时间方式获取指定连接池中数据库连接
      */
     public static BocoConnection getConnection(String _strPoolName, int time) {
         BocoConnection conn = ds.getConnection(_strPoolName, time);
@@ -98,10 +93,9 @@ public class HibernateUtil {
     }
 
     /**
-     * @see 根据指定的数据库连接，获取Hibernate的Session对象
-     * @param Connection,
-     *            数据库连接对象
+     * @param Connection, 数据库连接对象
      * @return Session,
+     * @see 根据指定的数据库连接，获取Hibernate的Session对象
      */
     public static Session currentSession(Connection _objConn)
             throws HibernateException {
@@ -109,15 +103,13 @@ public class HibernateUtil {
     }
 
     /**
-     * @see 根据指定的数据库连接及是否支持长时间使用特性，获取Hibernate的Session对象
-     * @param Connection,
-     *            数据库连接对象
-     * @param boolean,
-     *            是否支持长时间占用
+     * @param Connection, 数据库连接对象
+     * @param boolean,    是否支持长时间占用
      * @return Session,
+     * @see 根据指定的数据库连接及是否支持长时间使用特性，获取Hibernate的Session对象
      */
     public static Session currentSession(Connection _objConn,
-            boolean flagUseLongActive) throws HibernateException {
+                                         boolean flagUseLongActive) throws HibernateException {
         Session s = (Session) sessionThread.get();
 
         if (s == null) {
@@ -132,7 +124,7 @@ public class HibernateUtil {
 
     /**
      * 获取当前线程使用的Session， 如果有则返回，无则返回null
-     * 
+     *
      * @return Session
      * @throws HibernateException
      */
@@ -142,7 +134,7 @@ public class HibernateUtil {
 
     /**
      * 启动或者加入当前Session的事务
-     * 
+     *
      * @return Transaction
      * @throws HibernateException
      */
@@ -158,7 +150,7 @@ public class HibernateUtil {
 
     /**
      * 提交当前Session的事务
-     * 
+     *
      * @throws HibernateException
      */
     public static void commitTransaction() throws HibernateException {
@@ -169,7 +161,7 @@ public class HibernateUtil {
 
     /**
      * 回滚当前Session的事务
-     * 
+     *
      * @throws HibernateException
      */
     public static void rollbackTransaction() throws HibernateException {
@@ -180,7 +172,7 @@ public class HibernateUtil {
 
     /**
      * 关闭当前线程使用的Session
-     * 
+     *
      * @throws HibernateException
      */
     public static void closeSession() throws HibernateException {
@@ -204,8 +196,7 @@ public class HibernateUtil {
     }
 
     /**
-     * @param ds
-     *            the ds to set
+     * @param ds the ds to set
      */
     public static void setDs(ConnectionPool ds) {
         HibernateUtil.ds = ds;

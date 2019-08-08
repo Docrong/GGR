@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WorkFlowRule name="WidenComplaint" description="加宽投诉处理工单">
-  <flow-define id="WidenComplaint" description="加宽投诉处理工单" tasknamespace="http://WidenComplaint" linkservicename="" dictfilename="dict-sheet-widencomplaint" name="WidenComplaint">
-    <phase-id id="receive" name="新建工单" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="DraftTask" role="" condition="${operateType}==22" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="保存草稿" />
-      <to-phase-id id="FirstExcuteHumTask" role="" condition="${operateType}==0" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发" />
-      <to-phase-id id="ExcuteHumTask" role="" condition="${operateType}==0" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发" />
-    </phase-id>
-    <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
-    <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false" />
-    <phase-id id="FirstExcuteHumTask" name="投诉一级处理" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="HoldTask" role="" condition="${operateType}==102" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="处理完成" />
-      <to-phase-id id="ExcuteHumTask" role="" condition="${operateType}==105" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="移交投诉二级处理" />
-    </phase-id>
-    <phase-id id="ExcuteHumTask" name="投诉二级处理" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="CheckingHumTask" role="" condition="${operateType}==102" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="处理完成" />
-    </phase-id>
-    <phase-id id="CheckingHumTask" name="质检" type="operate" displaytransferaudit="false" displayconfirm="false" displayreject="false" displaycommonoperate="false">
-      <to-phase-id id="ExcuteHumTask" role="" condition="${operateType}==104" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="质检不合格" />
-      <to-phase-id id="FirstExcuteHumTask" role="" condition="${operateType}==104" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="质检不合格" />
-      <to-phase-id id="HoldTask" role="" condition="${operateType}==103" operatetype="" stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="质检合格" />
-    </phase-id>
-  </flow-define>
+    <flow-define id="WidenComplaint" description="加宽投诉处理工单" tasknamespace="http://WidenComplaint" linkservicename=""
+                 dictfilename="dict-sheet-widencomplaint" name="WidenComplaint">
+        <phase-id id="receive" name="新建工单" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="DraftTask" role="" condition="${operateType}==22" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="保存草稿"/>
+            <to-phase-id id="FirstExcuteHumTask" role="" condition="${operateType}==0" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发"/>
+            <to-phase-id id="ExcuteHumTask" role="" condition="${operateType}==0" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="新建派发"/>
+        </phase-id>
+        <phase-id id="DraftTask" name="草稿" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false"/>
+        <phase-id id="HoldTask" name="归档" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false"/>
+        <phase-id id="FirstExcuteHumTask" name="投诉一级处理" type="operate" displaytransferaudit="false"
+                  displayconfirm="false" displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="HoldTask" role="" condition="${operateType}==102" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="处理完成"/>
+            <to-phase-id id="ExcuteHumTask" role="" condition="${operateType}==105" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="移交投诉二级处理"/>
+        </phase-id>
+        <phase-id id="ExcuteHumTask" name="投诉二级处理" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="CheckingHumTask" role="" condition="${operateType}==102" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="处理完成"/>
+        </phase-id>
+        <phase-id id="CheckingHumTask" name="质检" type="operate" displaytransferaudit="false" displayconfirm="false"
+                  displayreject="false" displaycommonoperate="false">
+            <to-phase-id id="ExcuteHumTask" role="" condition="${operateType}==104" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="质检不合格"/>
+            <to-phase-id id="FirstExcuteHumTask" role="" condition="${operateType}==104" operatetype=""
+                         stepdisplay="true" workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype=""
+                         name="质检不合格"/>
+            <to-phase-id id="HoldTask" role="" condition="${operateType}==103" operatetype="" stepdisplay="true"
+                         workflowdisplay="true" isrejecttask="false" roleid="" commonoperatetype="" name="质检合格"/>
+        </phase-id>
+    </flow-define>
 </WorkFlowRule>
 

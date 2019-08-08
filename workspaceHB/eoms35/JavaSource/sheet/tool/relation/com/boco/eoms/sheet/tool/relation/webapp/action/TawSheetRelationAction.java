@@ -24,70 +24,70 @@ import com.boco.eoms.sheet.base.util.flowdefine.xml.FlowDefineExplain;
 import com.boco.eoms.sheet.base.util.flowdefine.xml.PhaseId;
 
 public class TawSheetRelationAction extends BaseAction {
-	
-	public ActionForward showInvokeRelationShipList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		List fromRelationList=new ArrayList();
-		List toRelationList=new ArrayList();
-		String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"), "");	
-		ITawSheetRelationManager mgr = (ITawSheetRelationManager) getBean("ITawSheetRelationManager");	
-		ITawSystemWorkflowManager fmgr=(ITawSystemWorkflowManager)getBean("ITawSystemWorkflowManager");	
-	    //查询我调用的工单
-	    List fromList = mgr.getRelationSheetByParentId(sheetKey);	
-	    for(int i=0;i<fromList.size();i++){
-			   TawSheetRelationForm relationForm=new TawSheetRelationForm();
-			   TawSheetRelation relation=(TawSheetRelation)fromList.get(i);
-			   SheetBeanUtils.copyProperties(relationForm, relation);
-			       
-			   String currentProcessName=relation.getCurrentFlowName();
-			   String parentProcessName=relation.getParentFlowName(); 
-			   String taskName=relation.getTaskName();
-			   TawSystemWorkflow currentWorkflow=fmgr.getTawSystemWorkflowByName(currentProcessName);
-			   TawSystemWorkflow parentWorkflow=fmgr.getTawSystemWorkflowByName(parentProcessName);
-			   String pfBeanId=parentWorkflow.getMainServiceBeanId();
-			   IMainService pfMainSerivce=(IMainService)getBean(pfBeanId);   
-			       		       
-			   FlowDefineExplain flowDefineExplain = new FlowDefineExplain(pfMainSerivce.getFlowTemplateName(),
-					   pfMainSerivce.getRoleConfigPath());
-			   FlowDefine flowDefine = flowDefineExplain.getFlowDefine();
-			   System.out.println("flowDefine is ======"+flowDefine.getId());
-			   PhaseId phaseId=flowDefine.getPhasesByPhaseId(taskName);
-			       	       
-			   relationForm.setCurrentFlowCnName(currentWorkflow.getRemark());
-			   relationForm.setParentFlowCnName(parentWorkflow.getRemark());
-			   relationForm.setTaskCnName(phaseId.getName());
-			   
-			   fromRelationList.add(relationForm);
-		  }
-	    
+
+    public ActionForward showInvokeRelationShipList(ActionMapping mapping, ActionForm form,
+                                                    HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        List fromRelationList = new ArrayList();
+        List toRelationList = new ArrayList();
+        String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"), "");
+        ITawSheetRelationManager mgr = (ITawSheetRelationManager) getBean("ITawSheetRelationManager");
+        ITawSystemWorkflowManager fmgr = (ITawSystemWorkflowManager) getBean("ITawSystemWorkflowManager");
+        //查询我调用的工单
+        List fromList = mgr.getRelationSheetByParentId(sheetKey);
+        for (int i = 0; i < fromList.size(); i++) {
+            TawSheetRelationForm relationForm = new TawSheetRelationForm();
+            TawSheetRelation relation = (TawSheetRelation) fromList.get(i);
+            SheetBeanUtils.copyProperties(relationForm, relation);
+
+            String currentProcessName = relation.getCurrentFlowName();
+            String parentProcessName = relation.getParentFlowName();
+            String taskName = relation.getTaskName();
+            TawSystemWorkflow currentWorkflow = fmgr.getTawSystemWorkflowByName(currentProcessName);
+            TawSystemWorkflow parentWorkflow = fmgr.getTawSystemWorkflowByName(parentProcessName);
+            String pfBeanId = parentWorkflow.getMainServiceBeanId();
+            IMainService pfMainSerivce = (IMainService) getBean(pfBeanId);
+
+            FlowDefineExplain flowDefineExplain = new FlowDefineExplain(pfMainSerivce.getFlowTemplateName(),
+                    pfMainSerivce.getRoleConfigPath());
+            FlowDefine flowDefine = flowDefineExplain.getFlowDefine();
+            System.out.println("flowDefine is ======" + flowDefine.getId());
+            PhaseId phaseId = flowDefine.getPhasesByPhaseId(taskName);
+
+            relationForm.setCurrentFlowCnName(currentWorkflow.getRemark());
+            relationForm.setParentFlowCnName(parentWorkflow.getRemark());
+            relationForm.setTaskCnName(phaseId.getName());
+
+            fromRelationList.add(relationForm);
+        }
+
         //查询调用我的工单
-		TawSheetRelation sheetRelation = mgr.getRelationSheetByCurrentId(sheetKey);			
-		if(sheetRelation!=null){
-			TawSheetRelationForm relationForm=new TawSheetRelationForm();
-			   
-			   SheetBeanUtils.copyProperties(relationForm, sheetRelation);			       
-			   String currentProcessName=sheetRelation.getCurrentFlowName();
-			   String parentProcessName=sheetRelation.getParentFlowName(); 
-			   String taskName=sheetRelation.getTaskName();
-			   TawSystemWorkflow currentWorkflow=fmgr.getTawSystemWorkflowByName(currentProcessName);
-			   TawSystemWorkflow parentWorkflow=fmgr.getTawSystemWorkflowByName(parentProcessName);
-			   String pfBeanId=parentWorkflow.getMainServiceBeanId();
-			   IMainService pfMainSerivce=(IMainService)getBean(pfBeanId);   
-			       		       
-			   FlowDefineExplain flowDefineExplain = new FlowDefineExplain(pfMainSerivce.getFlowTemplateName(),
-					   pfMainSerivce.getRoleConfigPath());
-			   FlowDefine flowDefine = flowDefineExplain.getFlowDefine();
-			   PhaseId phaseId=flowDefine.getPhasesByPhaseId(taskName);
-			       	       
-			   relationForm.setCurrentFlowCnName(currentWorkflow.getRemark());
-			   relationForm.setParentFlowCnName(parentWorkflow.getRemark());
-			   relationForm.setTaskCnName(phaseId.getName());
-			   
-			   toRelationList.add(relationForm);	
-		}		
-		request.setAttribute("FROMRELATIONLIST", fromRelationList);	
-		request.setAttribute("TORELATIONLIST", toRelationList);	
-		return mapping.findForward("showInvokeRelationShipList");
-	}	
+        TawSheetRelation sheetRelation = mgr.getRelationSheetByCurrentId(sheetKey);
+        if (sheetRelation != null) {
+            TawSheetRelationForm relationForm = new TawSheetRelationForm();
+
+            SheetBeanUtils.copyProperties(relationForm, sheetRelation);
+            String currentProcessName = sheetRelation.getCurrentFlowName();
+            String parentProcessName = sheetRelation.getParentFlowName();
+            String taskName = sheetRelation.getTaskName();
+            TawSystemWorkflow currentWorkflow = fmgr.getTawSystemWorkflowByName(currentProcessName);
+            TawSystemWorkflow parentWorkflow = fmgr.getTawSystemWorkflowByName(parentProcessName);
+            String pfBeanId = parentWorkflow.getMainServiceBeanId();
+            IMainService pfMainSerivce = (IMainService) getBean(pfBeanId);
+
+            FlowDefineExplain flowDefineExplain = new FlowDefineExplain(pfMainSerivce.getFlowTemplateName(),
+                    pfMainSerivce.getRoleConfigPath());
+            FlowDefine flowDefine = flowDefineExplain.getFlowDefine();
+            PhaseId phaseId = flowDefine.getPhasesByPhaseId(taskName);
+
+            relationForm.setCurrentFlowCnName(currentWorkflow.getRemark());
+            relationForm.setParentFlowCnName(parentWorkflow.getRemark());
+            relationForm.setTaskCnName(phaseId.getName());
+
+            toRelationList.add(relationForm);
+        }
+        request.setAttribute("FROMRELATIONLIST", fromRelationList);
+        request.setAttribute("TORELATIONLIST", toRelationList);
+        return mapping.findForward("showInvokeRelationShipList");
+    }
 }

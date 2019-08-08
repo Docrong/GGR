@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.equipmentunsubscribe.service.IEquipmentUnsubscribeMai
  * <p>
  * Tue Oct 09 14:24:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class EquipmentUnsubscribeMainManagerImpl extends MainService implements IEquipmentUnsubscribeMainManager {
- 
- }
+
+public class EquipmentUnsubscribeMainManagerImpl extends MainService implements IEquipmentUnsubscribeMainManager {
+
+}

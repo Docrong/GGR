@@ -11,6 +11,6 @@ import com.boco.eoms.sheet.circuitoperation.dao.ICircuitOperationTaskDAO;
 import com.boco.eoms.sheet.circuitoperation.service.ICircuitOperationTaskManager;
 
 
-public class CircuitOperationTaskManagerImpl extends TaskServiceImpl implements  ICircuitOperationTaskManager{
-	
+public class CircuitOperationTaskManagerImpl extends TaskServiceImpl implements ICircuitOperationTaskManager {
+
 }

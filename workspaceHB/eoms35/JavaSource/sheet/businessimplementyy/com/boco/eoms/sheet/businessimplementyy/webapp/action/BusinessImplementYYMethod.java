@@ -47,76 +47,75 @@ import com.boco.eoms.sheet.tool.relation.model.TawSheetRelation;
 import com.boco.eoms.sheet.tool.relation.service.ITawSheetRelationManager;
 import com.boco.eoms.util.XmlDom4j;
 
-public  class BusinessImplementYYMethod extends BaseSheet {
-	public String getPageColumnName() {
-		
-		return super.getPageColumnName()+"gatherPerformer@java.lang.String,gatherPerformerLeader@java.lang.String,"
-		+ "gatherPerformerType@java.lang.String,gatherPhaseId@java.lang.String,";
-		
-	}
-   /* (non-Javadoc)
+public class BusinessImplementYYMethod extends BaseSheet {
+    public String getPageColumnName() {
+
+        return super.getPageColumnName() + "gatherPerformer@java.lang.String,gatherPerformerLeader@java.lang.String,"
+                + "gatherPerformerType@java.lang.String,gatherPhaseId@java.lang.String,";
+
+    }
+
+    /* (non-Javadoc)
      * @see com.boco.eoms.sheet.base.webapp.action.IBaseSheet#getInterfaceObjMap(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
      */
     public HashMap getInterfaceObjMap(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response) throws Exception {
+                                      HttpServletRequest request, HttpServletResponse response) throws Exception {
         // TODO Auto-generated method stub
         HashMap hashMap = new HashMap();
-    	String taskName = StaticMethod.nullObject2String(request
-    			.getParameter("activeTemplateId"));
-    	String operatName = StaticMethod.nullObject2String(request.getParameter("operateName"));
-    	
-    	
-    	HashMap sheetMap = new HashMap();
-		String sheetKey = StaticMethod.nullObject2String(request
-				.getParameter("mainId"));
-		BaseMain main = (BaseMain) this.getMainService().getMainObject().getClass().newInstance();
-		if(!sheetKey.equals("")){
-			sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
-			
-		} 
-		if(!sheetKey.equals("")){
-			main = this.getMainService().getSingleMainPO(sheetKey);
-		} 
-		sheetMap.put("main", main);	
-		sheetMap.put("link", getLinkService().getLinkObject().getClass().newInstance());
-		sheetMap.put("operate", getPageColumnName());
-		hashMap.put("selfSheet",sheetMap);
-    	
-    	return hashMap;
+        String taskName = StaticMethod.nullObject2String(request
+                .getParameter("activeTemplateId"));
+        String operatName = StaticMethod.nullObject2String(request.getParameter("operateName"));
+
+
+        HashMap sheetMap = new HashMap();
+        String sheetKey = StaticMethod.nullObject2String(request
+                .getParameter("mainId"));
+        BaseMain main = (BaseMain) this.getMainService().getMainObject().getClass().newInstance();
+        if (!sheetKey.equals("")) {
+            sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+
+        }
+        if (!sheetKey.equals("")) {
+            main = this.getMainService().getSingleMainPO(sheetKey);
+        }
+        sheetMap.put("main", main);
+        sheetMap.put("link", getLinkService().getLinkObject().getClass().newInstance());
+        sheetMap.put("operate", getPageColumnName());
+        hashMap.put("selfSheet", sheetMap);
+
+        return hashMap;
     }
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.sheet.base.webapp.action.IBaseSheet#dealFlowEngineMap(org.apache.struts.action.ActionMapping,
      *      org.apache.struts.action.ActionForm,
      *      javax.servlet.http.HttpServletRequest,
      *      javax.servlet.http.HttpServletResponse)
      */
     public void dealFlowEngineMap(ActionMapping mapping, ActionForm form,
-    		HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	super.dealFlowEngineMap(mapping, form, request, response);
-		String taskName = StaticMethod.nullObject2String(request
-				.getParameter("activeTemplateId"));
-		String operateType = StaticMethod.nullObject2String(request
-				.getParameter("operateType"));
-		String phaseId = StaticMethod.nullObject2String(request
-				.getParameter("phaseId"));
-		String gatherPhaseId = StaticMethod.nullObject2String(request
-				.getParameter("gatherPhaseId"));
-		HashMap sheetMap = this.getFlowEngineMap();
-		
-		
-		
-		Map operate = (HashMap)sheetMap.get("operate");
- 		HashMap sessionMap = new HashMap();
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-		.getSession().getAttribute("sessionform");
-		sessionMap.put("userId", sessionform.getUserid());
-		sessionMap.put("password", sessionform.getPassword()); 
+                                  HttpServletRequest request, HttpServletResponse response) throws Exception {
+        super.dealFlowEngineMap(mapping, form, request, response);
+        String taskName = StaticMethod.nullObject2String(request
+                .getParameter("activeTemplateId"));
+        String operateType = StaticMethod.nullObject2String(request
+                .getParameter("operateType"));
+        String phaseId = StaticMethod.nullObject2String(request
+                .getParameter("phaseId"));
+        String gatherPhaseId = StaticMethod.nullObject2String(request
+                .getParameter("gatherPhaseId"));
+        HashMap sheetMap = this.getFlowEngineMap();
 
- 		
-		
+
+        Map operate = (HashMap) sheetMap.get("operate");
+        HashMap sessionMap = new HashMap();
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        sessionMap.put("userId", sessionform.getUserid());
+        sessionMap.put("password", sessionform.getPassword());
+
+
 //		boolean ifexit = false;
 //		String[] tempAllPhaseIds = {"DraftTask","RejectTask","AcceptTask","ExecuteTask","AcceptReply", "HoldTask","OverTask"};
 //		for(int i=0;i<tempAllPhaseIds.length;i++){
@@ -129,189 +128,188 @@ public  class BusinessImplementYYMethod extends BaseSheet {
 //		if(ifexit == false){
 //			throw new Exception("工单即将流转的步骤不存在，步骤Id为："+phaseId+"请联系管理员!");
 //		}
-		
-		String[] dealperformers = (StaticMethod.nullObject2String(operate.get("dealPerformer"))).split(",");
 
-		
-		if(taskName.equals("reply") || taskName.equals("advice"))
-		{   
-			Map link = (HashMap) sheetMap.get("link");
-			link.put("id", "");
-			sheetMap.put("link", link);
-		}
-		
-		
-		
-		if(dealperformers.length>1){
-			
-			String corrKey = "";
-			String tmp = "";
-			for(int i=0;i<dealperformers.length;i++){
-				tmp =  UUIDHexGenerator.getInstance().getID();
-				if(dealperformers.length == 1){
-					corrKey = tmp;
-				}else{
-					if(corrKey.equals("")){
-						corrKey = tmp;
-					}else{
-						corrKey = corrKey + "," + tmp;	
-					}
-					
-				}
-			}
-			System.out.println("corrKey"+corrKey);
-			System.out.println("gatherPhaseId -== gatherPhaseIdmethod" + gatherPhaseId);
-			//extendKey2 此为流程中的聚合点 值
-			operate.put("extendKey2",gatherPhaseId);
-			operate.put("extendKey1", corrKey);
-			sheetMap.put("operate", operate);
+        String[] dealperformers = (StaticMethod.nullObject2String(operate.get("dealPerformer"))).split(",");
 
-		}
-		//added by liufuyuan
-		Map mainMap = (HashMap) sheetMap.get("main");
-		if (operateType.equals("0")) {
-			String orderId = StaticMethod.nullObject2String(request
-					.getParameter("orderId"));
-			if (orderId.length() > 0) {
 
-				OrderSheet order = new OrderSheet();
-				SheetBeanUtils.populateMap2Bean(order, request
-						.getParameterMap());
-				order.setId(orderId);
-				order.setOrderBuisnessType(StaticMethod
-						.nullObject2String(mainMap.get("mainSpecifyType")));
-				order.setUrgentDegree(StaticMethod.nullObject2String(mainMap
-						.get("mainArgument")));
-				order.setCreatTime(new Date());
-				order.setOrderType("yuyin");
+        if (taskName.equals("reply") || taskName.equals("advice")) {
+            Map link = (HashMap) sheetMap.get("link");
+            link.put("id", "");
+            sheetMap.put("link", link);
+        }
 
-				IOrderSheetManager mgr = (IOrderSheetManager) ApplicationContextHolder
-						.getInstance().getBean("IOrderSheetManager");
-				mgr.saveOrUpdate(order);
 
-				mainMap.put("orderSheetId", orderId);
-			}
-		}
-		
-		System.out.println("main="+mainMap);
-		if(mainMap!=null && StaticMethod.nullObject2String(mainMap.get("mainSendSheetModule")).equalsIgnoreCase("1")){
-			String sendImmediately = StaticMethod.nullObject2String(XmlManage.getFile("/config/businessimplementyy-crm.xml").getProperty("base.SendImmediately"));
-			if(!sendImmediately.equalsIgnoreCase("true")){
-				if (taskName.equals("AuditTask") && operateType.equals("4")) {//驳回
-					operate.put("interfaceType", "withdrawWorkSheet");
-					operate.put("methodType", "withdrawWorkSheet");
-				} else if (operateType.equals("9")) {//阶段回复
-					operate.put("interfaceType", "notifyWorkSheet");
-					operate.put("methodType", "notifyWorkSheet");
-				} else if (taskName.equals("AuditTask") && operateType.equals("61")) {// 受理
-					operate.put("interfaceType", "confirmWorkSheet");
-					operate.put("methodType", "confirmWorkSheet");
-				} else if (operateType.equals("77")) {// 回复
-					operate.put("interfaceType", "replyWorkSheet");
-					operate.put("methodType", "replyWorkSheet");
-				}
-			}
-		}
-		
-		if(taskName.equals("HoldTask")&&operateType.equals("18")){
-	    	   
-	           String orderSheetId = StaticMethod.nullObject2String(mainMap.get("orderSheetId"));	   
-	           List list = OrderSheetMethod.getSpecialLineList(orderSheetId, com.boco.eoms.businessupport.util.Constants._LANGUAGE_LINE);
-			   IrmsResourceBo.occupyServiceRes(mainMap, list);	//èµæºå®å 	
+        if (dealperformers.length > 1) {
 
-			   String enable = XmlManage.getFile("/com/boco/eoms/businessupport/interfaces/Irms/config/irmsres-config.xml").getProperty("enable");
-				if(enable.equalsIgnoreCase("true")){
-					IOrderSheetManager mgr = (IOrderSheetManager) ApplicationContextHolder.getInstance().getBean("IOrderSheetManager");
-					OrderSheet ordersheet = (OrderSheet) mgr.getOrderSheet(orderSheetId);
-		   		   //å°çµè·¯åç§°ä¼ ç»IRMS
-					Map map = SheetBeanUtils.bean2Map(ordersheet);
-					map.putAll(mainMap);
-		   		   IrmsResLoader.addEomsResByProdTypeBO(map,list);
-				}
-	       }       
+            String corrKey = "";
+            String tmp = "";
+            for (int i = 0; i < dealperformers.length; i++) {
+                tmp = UUIDHexGenerator.getInstance().getID();
+                if (dealperformers.length == 1) {
+                    corrKey = tmp;
+                } else {
+                    if (corrKey.equals("")) {
+                        corrKey = tmp;
+                    } else {
+                        corrKey = corrKey + "," + tmp;
+                    }
 
-		
-		sheetMap.put("main", mainMap);
-		this.setFlowEngineMap(sheetMap);
-    
+                }
+            }
+            System.out.println("corrKey" + corrKey);
+            System.out.println("gatherPhaseId -== gatherPhaseIdmethod" + gatherPhaseId);
+            //extendKey2 此为流程中的聚合点 值
+            operate.put("extendKey2", gatherPhaseId);
+            operate.put("extendKey1", corrKey);
+            sheetMap.put("operate", operate);
+
+        }
+        //added by liufuyuan
+        Map mainMap = (HashMap) sheetMap.get("main");
+        if (operateType.equals("0")) {
+            String orderId = StaticMethod.nullObject2String(request
+                    .getParameter("orderId"));
+            if (orderId.length() > 0) {
+
+                OrderSheet order = new OrderSheet();
+                SheetBeanUtils.populateMap2Bean(order, request
+                        .getParameterMap());
+                order.setId(orderId);
+                order.setOrderBuisnessType(StaticMethod
+                        .nullObject2String(mainMap.get("mainSpecifyType")));
+                order.setUrgentDegree(StaticMethod.nullObject2String(mainMap
+                        .get("mainArgument")));
+                order.setCreatTime(new Date());
+                order.setOrderType("yuyin");
+
+                IOrderSheetManager mgr = (IOrderSheetManager) ApplicationContextHolder
+                        .getInstance().getBean("IOrderSheetManager");
+                mgr.saveOrUpdate(order);
+
+                mainMap.put("orderSheetId", orderId);
+            }
+        }
+
+        System.out.println("main=" + mainMap);
+        if (mainMap != null && StaticMethod.nullObject2String(mainMap.get("mainSendSheetModule")).equalsIgnoreCase("1")) {
+            String sendImmediately = StaticMethod.nullObject2String(XmlManage.getFile("/config/businessimplementyy-crm.xml").getProperty("base.SendImmediately"));
+            if (!sendImmediately.equalsIgnoreCase("true")) {
+                if (taskName.equals("AuditTask") && operateType.equals("4")) {//驳回
+                    operate.put("interfaceType", "withdrawWorkSheet");
+                    operate.put("methodType", "withdrawWorkSheet");
+                } else if (operateType.equals("9")) {//阶段回复
+                    operate.put("interfaceType", "notifyWorkSheet");
+                    operate.put("methodType", "notifyWorkSheet");
+                } else if (taskName.equals("AuditTask") && operateType.equals("61")) {// 受理
+                    operate.put("interfaceType", "confirmWorkSheet");
+                    operate.put("methodType", "confirmWorkSheet");
+                } else if (operateType.equals("77")) {// 回复
+                    operate.put("interfaceType", "replyWorkSheet");
+                    operate.put("methodType", "replyWorkSheet");
+                }
+            }
+        }
+
+        if (taskName.equals("HoldTask") && operateType.equals("18")) {
+
+            String orderSheetId = StaticMethod.nullObject2String(mainMap.get("orderSheetId"));
+            List list = OrderSheetMethod.getSpecialLineList(orderSheetId, com.boco.eoms.businessupport.util.Constants._LANGUAGE_LINE);
+            IrmsResourceBo.occupyServiceRes(mainMap, list);    //èµæºå®å 
+
+            String enable = XmlManage.getFile("/com/boco/eoms/businessupport/interfaces/Irms/config/irmsres-config.xml").getProperty("enable");
+            if (enable.equalsIgnoreCase("true")) {
+                IOrderSheetManager mgr = (IOrderSheetManager) ApplicationContextHolder.getInstance().getBean("IOrderSheetManager");
+                OrderSheet ordersheet = (OrderSheet) mgr.getOrderSheet(orderSheetId);
+                //å°çµè·¯åç§°ä¼ ç»IRMS
+                Map map = SheetBeanUtils.bean2Map(ordersheet);
+                map.putAll(mainMap);
+                IrmsResLoader.addEomsResByProdTypeBO(map, list);
+            }
+        }
+
+
+        sheetMap.put("main", mainMap);
+        this.setFlowEngineMap(sheetMap);
+
     }
-    public Map getProcessOjbectAttribute() {
-     	Map  attributeMap = new HashMap();
-     	attributeMap.put("dealPerformer","dealPerformer");
-        attributeMap.put("copyPerformer","copyPerformer");
-     	attributeMap.put("auditPerformer","auditPerformer");
-     	attributeMap.put("subAuditPerformer","subAuditPerformer");
-     	attributeMap.put("objectName", "operate");
-  		return attributeMap;	
- 	}
-    
-    public Map getParameterMap() {
-		// TODO Auto-generated method stub
-		return this.getParameterMap();
-	}    
-    
-    public Map getAttachmentAttributeOfOjbect() {
-		Map objectMap = new HashMap();
-		
-		List mainAttachmentAttributes = new ArrayList();
-		mainAttachmentAttributes.add("sheetAccessories");
 
-		List linkAttachmentAttributes = new ArrayList();
-		linkAttachmentAttributes.add("nodeAccessories");
-			
-		objectMap.put("mainObject", mainAttachmentAttributes);
-		objectMap.put("linkObject", linkAttachmentAttributes);
-		return objectMap;
-	}
+    public Map getProcessOjbectAttribute() {
+        Map attributeMap = new HashMap();
+        attributeMap.put("dealPerformer", "dealPerformer");
+        attributeMap.put("copyPerformer", "copyPerformer");
+        attributeMap.put("auditPerformer", "auditPerformer");
+        attributeMap.put("subAuditPerformer", "subAuditPerformer");
+        attributeMap.put("objectName", "operate");
+        return attributeMap;
+    }
+
+    public Map getParameterMap() {
+        // TODO Auto-generated method stub
+        return this.getParameterMap();
+    }
+
+    public Map getAttachmentAttributeOfOjbect() {
+        Map objectMap = new HashMap();
+
+        List mainAttachmentAttributes = new ArrayList();
+        mainAttachmentAttributes.add("sheetAccessories");
+
+        List linkAttachmentAttributes = new ArrayList();
+        linkAttachmentAttributes.add("nodeAccessories");
+
+        objectMap.put("mainObject", mainAttachmentAttributes);
+        objectMap.put("linkObject", linkAttachmentAttributes);
+        return objectMap;
+    }
 
     public void showInputDealPage(ActionMapping mapping, ActionForm form,
- 			HttpServletRequest request, HttpServletResponse response)
- 			throws Exception {
- 		super.showInputDealPage(mapping, form, request, response);
- 		
-		String sheetKey = StaticMethod.nullObject2String(request
-				.getParameter("sheetKey"), ""); 		
- 		Object obj = request.getAttribute("task");
- 		
- 		if(obj != null){
- 			ITask taskModel = (ITask)obj;
- 			Map objectMap = new HashMap();
- 			objectMap = SheetBeanUtils.bean2Map(taskModel);
- 			IBusinessImplementYYTaskManager ibusinessimplementyyTaskManager = (IBusinessImplementYYTaskManager) this.getTaskService();
- 	 		Integer tempCount = ibusinessimplementyyTaskManager.getCountOfBrother(sheetKey,StaticMethod.nullObject2String(objectMap.get("parentLevelId")));
- 	 		if(tempCount.intValue()>1){
- 	 			request.setAttribute("hasbrother", "hasbrother");
- 	 			System.out.println("=========hasbrother========");
- 	 		}
- 		}
-		
- 		//工单互调接口 added by liufuyuan
- 		String taskName = StaticMethod.nullObject2String(request.getParameter("taskName"));
- 		if(taskName.equals("OpenTask")){
- 			String taskKey = StaticMethod.nullObject2String(request.getParameter("taskKey"));
- 			  sheetKey  =  StaticMethod.nullObject2String(request.getParameter("sheetKey"));
-	 		ITawSheetRelationManager  rmgr  = 
-	 		(ITawSheetRelationManager)  ApplicationContextHolder.getInstance().getBean("ITawSheetRelationManager");
-	
-	 		List relationAllList=rmgr.getAllSheetByParentIdAndPhaseId(sheetKey, taskName);
-	    	if(relationAllList != null){
-				for(int i=0;i<relationAllList.size();i++){
-					TawSheetRelation relation=(TawSheetRelation)relationAllList.get(i);
-					int state=relation.getInvokeState();
-					if(state==Constants.INVOKE_STATE_RUNNING){
-						request.setAttribute("ifInvoke", "no");
-						System.out.println("@@ifInvoke=no==1=");
-						break;
-					}
-					request.setAttribute("ifInvoke", "yes");  
-					System.out.println("@@ifInvoke===yes===");
-				}
-	    	}else{
-				request.setAttribute("ifInvoke", "no");
-				System.out.println("@@ifInvoke==out=no===");
-			}
- 		}
- 		
+                                  HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        super.showInputDealPage(mapping, form, request, response);
+
+        String sheetKey = StaticMethod.nullObject2String(request
+                .getParameter("sheetKey"), "");
+        Object obj = request.getAttribute("task");
+
+        if (obj != null) {
+            ITask taskModel = (ITask) obj;
+            Map objectMap = new HashMap();
+            objectMap = SheetBeanUtils.bean2Map(taskModel);
+            IBusinessImplementYYTaskManager ibusinessimplementyyTaskManager = (IBusinessImplementYYTaskManager) this.getTaskService();
+            Integer tempCount = ibusinessimplementyyTaskManager.getCountOfBrother(sheetKey, StaticMethod.nullObject2String(objectMap.get("parentLevelId")));
+            if (tempCount.intValue() > 1) {
+                request.setAttribute("hasbrother", "hasbrother");
+                System.out.println("=========hasbrother========");
+            }
+        }
+
+        //工单互调接口 added by liufuyuan
+        String taskName = StaticMethod.nullObject2String(request.getParameter("taskName"));
+        if (taskName.equals("OpenTask")) {
+            String taskKey = StaticMethod.nullObject2String(request.getParameter("taskKey"));
+            sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+            ITawSheetRelationManager rmgr =
+                    (ITawSheetRelationManager) ApplicationContextHolder.getInstance().getBean("ITawSheetRelationManager");
+
+            List relationAllList = rmgr.getAllSheetByParentIdAndPhaseId(sheetKey, taskName);
+            if (relationAllList != null) {
+                for (int i = 0; i < relationAllList.size(); i++) {
+                    TawSheetRelation relation = (TawSheetRelation) relationAllList.get(i);
+                    int state = relation.getInvokeState();
+                    if (state == Constants.INVOKE_STATE_RUNNING) {
+                        request.setAttribute("ifInvoke", "no");
+                        System.out.println("@@ifInvoke=no==1=");
+                        break;
+                    }
+                    request.setAttribute("ifInvoke", "yes");
+                    System.out.println("@@ifInvoke===yes===");
+                }
+            } else {
+                request.setAttribute("ifInvoke", "no");
+                System.out.println("@@ifInvoke==out=no===");
+            }
+        }
+
 
     }
 
@@ -320,109 +318,110 @@ public  class BusinessImplementYYMethod extends BaseSheet {
      * (non-Javadoc)
      * @see com.boco.eoms.sheet.base.webapp.action.BaseSheet#performPreCommit(org.apache.struts.action.ActionMapping, org.apache.struts.action.ActionForm, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
      */
- 
-	public void performPreCommit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String taskName = StaticMethod.nullObject2String(request
-				.getParameter("activeTemplateId"));//activeTemplate == taskname
-		if(taskName.equals("")){
-			taskName = StaticMethod.nullObject2String(request
-					.getParameter("taskName"));
-		}
-		
-		String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
-		String operateType = StaticMethod.nullObject2String(request.getParameter("operateType"));
-		if(taskName.equals("OpenTask")&&operateType.equals("111")){
-			//查询工单互调表
-		    	ITawSheetRelationManager rmgr = (ITawSheetRelationManager) ApplicationContextHolder
-					.getInstance().getBean("ITawSheetRelationManager");
-		    	List relationAllList=rmgr.getRunningSheetByParentIdAndPhaseId(sheetKey, taskName);
-		    	//如果已经调用了其他工单则继续执行父类的performPreCommit方法,否则返回status为-1
-		    	if(relationAllList != null&&relationAllList.size()>0){
-		    		super.performPreCommit(mapping, form, request, response);
-		    	}else{
-		    		JSONArray data = new JSONArray();
-		    		JSONObject o = new JSONObject();
-		    		o.put("text", "请调用其他流程！");
-		    		data.put(o);
-		    		JSONObject jsonRoot = new JSONObject();
-		    		jsonRoot.put("data",data);
-		    		jsonRoot.put("status", "2");
-					JSONUtil.print(response, jsonRoot.toString());
-		    	}
-		}else{
-			super.performPreCommit(mapping, form, request, response);
-		}
-		
-	}
- 
+
+    public void performPreCommit(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String taskName = StaticMethod.nullObject2String(request
+                .getParameter("activeTemplateId"));//activeTemplate == taskname
+        if (taskName.equals("")) {
+            taskName = StaticMethod.nullObject2String(request
+                    .getParameter("taskName"));
+        }
+
+        String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"));
+        String operateType = StaticMethod.nullObject2String(request.getParameter("operateType"));
+        if (taskName.equals("OpenTask") && operateType.equals("111")) {
+            //查询工单互调表
+            ITawSheetRelationManager rmgr = (ITawSheetRelationManager) ApplicationContextHolder
+                    .getInstance().getBean("ITawSheetRelationManager");
+            List relationAllList = rmgr.getRunningSheetByParentIdAndPhaseId(sheetKey, taskName);
+            //如果已经调用了其他工单则继续执行父类的performPreCommit方法,否则返回status为-1
+            if (relationAllList != null && relationAllList.size() > 0) {
+                super.performPreCommit(mapping, form, request, response);
+            } else {
+                JSONArray data = new JSONArray();
+                JSONObject o = new JSONObject();
+                o.put("text", "请调用其他流程！");
+                data.put(o);
+                JSONObject jsonRoot = new JSONObject();
+                jsonRoot.put("data", data);
+                jsonRoot.put("status", "2");
+                JSONUtil.print(response, jsonRoot.toString());
+            }
+        } else {
+            super.performPreCommit(mapping, form, request, response);
+        }
+
+    }
+
 //	
-	/**
-	 * 申明一个任务
-	 */
-	public void performClaim(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		super.performClaim(mapping, form, request, response);
-		String activeTemplateId = StaticMethod.nullObject2String(request.getParameter("activeTemplateId"));
-		if(activeTemplateId.equals("ExcuteHumTask")){
-			System.out.println("确认受理");
-			HashMap sessionMap = new HashMap();
-			
-			TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-			.getSession().getAttribute("sessionform");
-			sessionMap.put("userId", sessionform.getUserid());
-			sessionMap.put("password", sessionform.getPassword());
-			
-			String taskId = StaticMethod.nullObject2String(request.getParameter("TKID"));
-			ITask task = this.getTaskService().getSinglePO(taskId);
-			IBusinessImplementYYFlowManager service = (IBusinessImplementYYFlowManager)this.getBusinessFlowService();
-			service.setProcessInstanceCustomProperty(task.getProcessId(), "ifAccepted", "true", sessionMap);
-		}
-	}
-	
-	
-    
-	/**
-	 * 显示工单详细页面(Atom系统)
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public void showAtomDetailPage(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+
+    /**
+     * 申明一个任务
+     */
+    public void performClaim(ActionMapping mapping, ActionForm form,
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        super.performClaim(mapping, form, request, response);
+        String activeTemplateId = StaticMethod.nullObject2String(request.getParameter("activeTemplateId"));
+        if (activeTemplateId.equals("ExcuteHumTask")) {
+            System.out.println("确认受理");
+            HashMap sessionMap = new HashMap();
+
+            TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                    .getSession().getAttribute("sessionform");
+            sessionMap.put("userId", sessionform.getUserid());
+            sessionMap.put("password", sessionform.getPassword());
+
+            String taskId = StaticMethod.nullObject2String(request.getParameter("TKID"));
+            ITask task = this.getTaskService().getSinglePO(taskId);
+            IBusinessImplementYYFlowManager service = (IBusinessImplementYYFlowManager) this.getBusinessFlowService();
+            service.setProcessInstanceCustomProperty(task.getProcessId(), "ifAccepted", "true", sessionMap);
+        }
+    }
+
+
+    /**
+     * 显示工单详细页面(Atom系统)
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public void showAtomDetailPage(ActionMapping mapping, ActionForm form,
+                                   HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
         this.showDetailPageAtom(mapping, form, request, response);
-        BusinessImplementYYMain mainObject = (BusinessImplementYYMain)request.getAttribute("sheetMain");
-        BusinessImplementYYTask  task = (BusinessImplementYYTask)request.getAttribute("task");
-		String isAccept = null;
-		if(task.getTaskStatus().equals(Constants.TASK_STATUS_READY)){
-			isAccept = "0" ;
-		}
-		if(task.getTaskStatus().equals(Constants.TASK_STATUS_CLAIMED)){
-			isAccept = "1" ;	
-		}
-		String  asXML = BusinessImplementYYMethod.showAtomDetail(mainObject, task, isAccept, request);
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(asXML);
-	
-	}	
-	
-	/**
-	 * 将detail所需的信息以及我们处理所需参数写入XML
-	 * @param mainObject
-	 * @param task
-	 * @param isAccept
-	 * @param request
-	 * @return
-	 * @throws DictServiceException
-	 */
-	public static String showAtomDetail(BusinessImplementYYMain mainObject,ITask task,String isAccept,HttpServletRequest request) throws DictServiceException{
+        BusinessImplementYYMain mainObject = (BusinessImplementYYMain) request.getAttribute("sheetMain");
+        BusinessImplementYYTask task = (BusinessImplementYYTask) request.getAttribute("task");
+        String isAccept = null;
+        if (task.getTaskStatus().equals(Constants.TASK_STATUS_READY)) {
+            isAccept = "0";
+        }
+        if (task.getTaskStatus().equals(Constants.TASK_STATUS_CLAIMED)) {
+            isAccept = "1";
+        }
+        String asXML = BusinessImplementYYMethod.showAtomDetail(mainObject, task, isAccept, request);
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(asXML);
+
+    }
+
+    /**
+     * 将detail所需的信息以及我们处理所需参数写入XML
+     *
+     * @param mainObject
+     * @param task
+     * @param isAccept
+     * @param request
+     * @return
+     * @throws DictServiceException
+     */
+    public static String showAtomDetail(BusinessImplementYYMain mainObject, ITask task, String isAccept, HttpServletRequest request) throws DictServiceException {
 
 //		Document document = DocumentFactory.getInstance().createDocument();
 //
@@ -668,86 +667,86 @@ public  class BusinessImplementYYMethod extends BaseSheet {
 //		
 //		System.out.println("------------------------------------"+document.asXML());
 //	   return document.asXML();	
-		return null;	
-			
-		}
+        return null;
 
-	public String getProcessTemplateName() {
-		// TODO Auto-generated method stub
-		return "businessimplementyyMainFlowProcess";
-	}
+    }
 
-	public String getSheetAttachCode() {
-		// TODO Auto-generated method stub
-		return "businessimplementyy";
-	}
+    public String getProcessTemplateName() {
+        // TODO Auto-generated method stub
+        return "businessimplementyyMainFlowProcess";
+    }
 
-	public Map initMap(Map map, List attach, String type) throws Exception {
-		try{
-			String configPath = "config/businessimplementyy-interface-config.xml";
-			map = this.loadDefaultMap(map, configPath, type);
-			if(type.equals(InterfaceConstants.WORKSHEET_NEW)){
-				
+    public String getSheetAttachCode() {
+        // TODO Auto-generated method stub
+        return "businessimplementyy";
+    }
+
+    public Map initMap(Map map, List attach, String type) throws Exception {
+        try {
+            String configPath = "config/businessimplementyy-interface-config.xml";
+            map = this.loadDefaultMap(map, configPath, type);
+            if (type.equals(InterfaceConstants.WORKSHEET_NEW)) {
+
 //				网络分类
-				String NeTypeCode = StaticMethod.nullObject2String(map.get("netType"));
-				String mainNetSortThree = "";
-				if(NeTypeCode.length()>0){		
-					String rootId = XmlManage.getFile("/config/businessimplementyy-interface-config.xml").getProperty("base.rootNeTypeId");
-					ITawSystemDictTypeManager dictMgr=
-						 (ITawSystemDictTypeManager)ApplicationContextHolder.getInstance().getBean("ItawSystemDictTypeManager");
-					mainNetSortThree = dictMgr.getDictIdByDictCode(rootId,NeTypeCode);
-					if(mainNetSortThree==null||mainNetSortThree.length()==0)
-						System.out.println("没有找到映射的网络分类");
-					else{		
-						try{
-							System.out.println("mainNetSortThree="+mainNetSortThree);
-							TawSystemDictType dict3 = dictMgr.getDictByDictId(mainNetSortThree);
-							if(dict3!=null){
-								//mainNetSortThree = dict3.getDictId();
-								map.put("mainNetSort3", mainNetSortThree);
-							
-								String pId = dict3.getParentDictId();
-								
-									TawSystemDictType dict2 = dictMgr.getDictByDictId(pId);
-									if(dict2!=null){
-										map.put("mainNetSort2", dict2.getDictId());
-									
-										pId = dict2.getParentDictId();
-										if(!pId.equals("-1")){
-											TawSystemDictType dict1 = dictMgr.getDictByDictId(pId);
-											if(dict1!=null)
-												map.put("mainNetSort1", dict1.getDictCode());
-										}
-									}
-							}else{
-								System.out.println("dict3 is null");
-							}
-						}catch(Exception err){
-							System.out.println("没有找到映射的网络分类");
-						}		
-						
-					}
-				}
-			}
-			return map;
-		}catch(Exception err){
-			err.printStackTrace();
-			throw err;
-		}
-	}
-	
-	/**
-	 * 同组模式待处理列表（本角色已接单未处理工单)
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @throws Exception
-	 * @author wangjianhua
-	 * @date 2009-08-24
-	 * @province 甘肃
-	 * 
-	 */
+                String NeTypeCode = StaticMethod.nullObject2String(map.get("netType"));
+                String mainNetSortThree = "";
+                if (NeTypeCode.length() > 0) {
+                    String rootId = XmlManage.getFile("/config/businessimplementyy-interface-config.xml").getProperty("base.rootNeTypeId");
+                    ITawSystemDictTypeManager dictMgr =
+                            (ITawSystemDictTypeManager) ApplicationContextHolder.getInstance().getBean("ItawSystemDictTypeManager");
+                    mainNetSortThree = dictMgr.getDictIdByDictCode(rootId, NeTypeCode);
+                    if (mainNetSortThree == null || mainNetSortThree.length() == 0)
+                        System.out.println("没有找到映射的网络分类");
+                    else {
+                        try {
+                            System.out.println("mainNetSortThree=" + mainNetSortThree);
+                            TawSystemDictType dict3 = dictMgr.getDictByDictId(mainNetSortThree);
+                            if (dict3 != null) {
+                                //mainNetSortThree = dict3.getDictId();
+                                map.put("mainNetSort3", mainNetSortThree);
+
+                                String pId = dict3.getParentDictId();
+
+                                TawSystemDictType dict2 = dictMgr.getDictByDictId(pId);
+                                if (dict2 != null) {
+                                    map.put("mainNetSort2", dict2.getDictId());
+
+                                    pId = dict2.getParentDictId();
+                                    if (!pId.equals("-1")) {
+                                        TawSystemDictType dict1 = dictMgr.getDictByDictId(pId);
+                                        if (dict1 != null)
+                                            map.put("mainNetSort1", dict1.getDictCode());
+                                    }
+                                }
+                            } else {
+                                System.out.println("dict3 is null");
+                            }
+                        } catch (Exception err) {
+                            System.out.println("没有找到映射的网络分类");
+                        }
+
+                    }
+                }
+            }
+            return map;
+        } catch (Exception err) {
+            err.printStackTrace();
+            throw err;
+        }
+    }
+
+    /**
+     * 同组模式待处理列表（本角色已接单未处理工单)
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @throws Exception
+     * @author wangjianhua
+     * @date 2009-08-24
+     * @province 甘肃
+     */
 //	public void showUndoListForSameTeam(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {
@@ -934,54 +933,53 @@ public  class BusinessImplementYYMethod extends BaseSheet {
 //			request.setAttribute("batchTaskMap", batchTaskMap);
 //		}
 //	}
+    public void showDetailPage(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+                               HttpServletResponse response) throws Exception {
+        // TODO Auto-generated method stub
+        super.showDetailPage(mapping, form, request, response);
+        String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"), "");
+        if (!preLinkId.equals("")) {
+            request.setAttribute("preLink", this.getLinkService().getSingleLinkPO(preLinkId));
+        }
+        String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"), "");
+        if (!sheetKey.equals("")) {
+            //根据sheetKey得到工单main对象，取出ordersheetid，查找定单信息
+            BusinessImplementYYMain businessimplementMain = (BusinessImplementYYMain) this.getMainService().getSingleMainPO(sheetKey);
+            String orderSheetId = businessimplementMain.getOrderSheetId();
+            if (orderSheetId != null && !orderSheetId.equals("")) {
+                IOrderSheetManager iOrderSheetManager = (IOrderSheetManager) ApplicationContextHolder
+                        .getInstance().getBean("IOrderSheetManager");
+                OrderSheet orderSheet = iOrderSheetManager.getOrderSheet(orderSheetId);
+                System.out.println("@@@@orderSheetId" + orderSheetId);
+                request.setAttribute("orderSheet", orderSheet);
+                request.setAttribute("orderSheetId", orderSheetId);
+            }
+        }
+    }
 
-	public void showDetailPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, 
-		       HttpServletResponse response) throws Exception {
-	// TODO Auto-generated method stub
-	super.showDetailPage(mapping, form, request, response);
-	String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"), "");
-	if(!preLinkId.equals("")){
-		request.setAttribute("preLink", this.getLinkService().getSingleLinkPO(preLinkId));
-	}
-	String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"), "");
-	if (!sheetKey.equals("")) {
-		//根据sheetKey得到工单main对象，取出ordersheetid，查找定单信息
-	    BusinessImplementYYMain businessimplementMain = (BusinessImplementYYMain)this.getMainService().getSingleMainPO(sheetKey);
-	    String orderSheetId =  businessimplementMain.getOrderSheetId();
-		if(orderSheetId != null && !orderSheetId.equals("")){
-     IOrderSheetManager iOrderSheetManager = (IOrderSheetManager)ApplicationContextHolder
-           .getInstance().getBean("IOrderSheetManager");
-     OrderSheet orderSheet = iOrderSheetManager.getOrderSheet(orderSheetId);
-     System.out.println("@@@@orderSheetId"+orderSheetId);
-     request.setAttribute("orderSheet", orderSheet);
-     request.setAttribute("orderSheetId", orderSheetId);
-		}
-	}			
-}
+    //获取与工单相关的定单信息，呈现在工单的detail页面上 modify by shichuangke
+    public void showMainDetailPage(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+                                   HttpServletResponse response) throws Exception {
+        // TODO Auto-generated method stub
+        super.showMainDetailPage(mapping, form, request, response);
+        String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"), "");
+        if (!preLinkId.equals("")) {
+            request.setAttribute("preLink", this.getLinkService().getSingleLinkPO(preLinkId));
+        }
+        String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"), "");
+        if (!sheetKey.equals("")) {
+            //根据sheetKey得到工单main对象，取出ordersheetid，查找定单信息
+            BusinessImplementYYMain businessimplementMain = (BusinessImplementYYMain) this.getMainService().getSingleMainPO(sheetKey);
+            String orderSheetId = businessimplementMain.getOrderSheetId();
+            if (orderSheetId != null && !orderSheetId.equals("")) {
+                IOrderSheetManager iOrderSheetManager = (IOrderSheetManager) ApplicationContextHolder
+                        .getInstance().getBean("IOrderSheetManager");
+                OrderSheet orderSheet = iOrderSheetManager.getOrderSheet(orderSheetId);
+                request.setAttribute("orderSheet", orderSheet);
+                request.setAttribute("orderSheetId", orderSheetId);
+            }
+        }
+    }
 
-	//获取与工单相关的定单信息，呈现在工单的detail页面上 modify by shichuangke
-	public void showMainDetailPage(ActionMapping mapping, ActionForm form, HttpServletRequest request, 
-		       HttpServletResponse response) throws Exception {
-	// TODO Auto-generated method stub
-	super.showMainDetailPage(mapping, form, request, response);
-	String preLinkId = StaticMethod.nullObject2String(request.getParameter("preLinkId"), "");
-	if(!preLinkId.equals("")){
-		request.setAttribute("preLink", this.getLinkService().getSingleLinkPO(preLinkId));
-	}
-	String sheetKey = StaticMethod.nullObject2String(request.getParameter("sheetKey"), "");
-	if (!sheetKey.equals("")) {
-		//根据sheetKey得到工单main对象，取出ordersheetid，查找定单信息
-	 BusinessImplementYYMain businessimplementMain = (BusinessImplementYYMain)this.getMainService().getSingleMainPO(sheetKey);
-	 String orderSheetId =  businessimplementMain.getOrderSheetId();
-		if(orderSheetId != null && !orderSheetId.equals("")){
-	IOrderSheetManager iOrderSheetManager = (IOrderSheetManager)ApplicationContextHolder
-	    .getInstance().getBean("IOrderSheetManager");
-	OrderSheet orderSheet = iOrderSheetManager.getOrderSheet(orderSheetId);
-	request.setAttribute("orderSheet", orderSheet);
-	request.setAttribute("orderSheetId", orderSheetId);
-		}
-	}			
-}
-	
-	
+
 }

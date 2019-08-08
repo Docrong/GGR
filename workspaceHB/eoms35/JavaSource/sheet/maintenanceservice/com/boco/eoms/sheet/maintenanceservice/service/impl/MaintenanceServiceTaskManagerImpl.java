@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.maintenanceservice.service.IMaintenanceServiceTaskMan
  * <p>
  * Thu Mar 16 15:48:02 CST 2017
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class MaintenanceServiceTaskManagerImpl extends TaskServiceImpl implements  IMaintenanceServiceTaskManager {
- 
- }
+
+public class MaintenanceServiceTaskManagerImpl extends TaskServiceImpl implements IMaintenanceServiceTaskManager {
+
+}

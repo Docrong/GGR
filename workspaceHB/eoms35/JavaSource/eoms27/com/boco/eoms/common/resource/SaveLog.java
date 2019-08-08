@@ -20,6 +20,7 @@ public class SaveLog {
     public SaveLog() {
 
     }
+
     protected Category cat = Category.getInstance(this.getClass());
 
     public void LogSave(String optr_id, String optr_name, String comp_name, String comp_ip, String logModule, String logAction, String logSql, int watch, String memo) {

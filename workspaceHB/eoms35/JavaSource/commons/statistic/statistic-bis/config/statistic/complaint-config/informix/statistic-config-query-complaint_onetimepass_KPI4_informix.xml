@@ -1,293 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id>51</est-module-id> 
+    <title>kpi统计</title>
+    <est-module-id>51</est-module-id>
 
-	<!-- ********按人员 ********************* -->
-	<kpi-define>
-		<name>complaint_onetimepas_byuser</name>
-		<kpi-caption></kpi-caption>
-		<!-- dbtype={String,int,datetime} -->
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param  page-name="areaid" markflg="true"/>
-		<condition-param  page-name="complainttype1" markflg="true"/>
-		<condition-param  page-name="complainttype2" markflg="true"/>
-		<condition-param  page-name="complainttype" markflg="true"/>
-		<condition-param  page-name="complainttype4" markflg="true"/>
-		<condition-param  page-name="complainttype5" markflg="true"/>
-		<condition-param  page-name="complainttype6" markflg="true"/>
-		<condition-param  page-name="complainttype7" markflg="true"/>
-		<condition-param  page-name="userByDeptid" markflg="true"/>
-		<summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.OPERATEUSERID</column>
-			<id2name-service>statBaseUserId2name_v35</id2name-service>
-		</summary-define>
-		
-		<summary-define>
-			<id>s2</id>
-			<sequence></sequence>
-			<column>est.complainttype1</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s3</id>
-			<sequence></sequence>
-			<column>est.complainttype2</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s4</id>
-			<sequence></sequence>
-			<column>est.complainttype</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s5</id>
-			<sequence></sequence>
-			<column>est.complainttype4</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s6</id>
-			<sequence></sequence>
-			<column>est.complainttype5</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s7</id>
-			<sequence></sequence>
-			<column>est.complainttype6</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s8</id>
-			<sequence></sequence>
-			<column>est.complainttype7</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s9</id>
-			<sequence></sequence>
-			<column>est.TODEPTID</column>
-			<id2name-service>statAreaId2name_v35</id2name-service>
-		</summary-define>
+    <!-- ********按人员 ********************* -->
+    <kpi-define>
+        <name>complaint_onetimepas_byuser</name>
+        <kpi-caption></kpi-caption>
+        <!-- dbtype={String,int,datetime} -->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="areaid" markflg="true"/>
+        <condition-param page-name="complainttype1" markflg="true"/>
+        <condition-param page-name="complainttype2" markflg="true"/>
+        <condition-param page-name="complainttype" markflg="true"/>
+        <condition-param page-name="complainttype4" markflg="true"/>
+        <condition-param page-name="complainttype5" markflg="true"/>
+        <condition-param page-name="complainttype6" markflg="true"/>
+        <condition-param page-name="complainttype7" markflg="true"/>
+        <condition-param page-name="userByDeptid" markflg="true"/>
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.OPERATEUSERID</column>
+            <id2name-service>statBaseUserId2name_v35</id2name-service>
+        </summary-define>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo>
-						
-		<query-define>
-			<name>query1</name>
-			
-			<from>est_complaint est ,est_complaint estp</from>
-			<where>est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@' 
-			and   est.status=1 and estp.prelinkid=est.linkid  and est.operatetype=46
-			and est.OPERATEUSERID in (@userByDeptid@) and est.OPERATEUSERID is not null and est.complainttype1 in (@complainttype1@)
-			and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID in (@areaid@)  and est.complainttype4 in (@complainttype4@)
-			  and est.complainttype5 in (@complainttype5@)  and est.complainttype6 in (@complainttype6@)  and est.complainttype7 in (@complainttype7@)
-			</where><!-- 锟斤拷锟芥��光� -->
-			<order-by></order-by>
+        <summary-define>
+            <id>s2</id>
+            <sequence></sequence>
+            <column>est.complainttype1</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s3</id>
+            <sequence></sequence>
+            <column>est.complainttype2</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s4</id>
+            <sequence></sequence>
+            <column>est.complainttype</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s5</id>
+            <sequence></sequence>
+            <column>est.complainttype4</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s6</id>
+            <sequence></sequence>
+            <column>est.complainttype5</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s7</id>
+            <sequence></sequence>
+            <column>est.complainttype6</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s8</id>
+            <sequence></sequence>
+            <column>est.complainttype7</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s9</id>
+            <sequence></sequence>
+            <column>est.TODEPTID</column>
+            <id2name-service>statAreaId2name_v35</id2name-service>
+        </summary-define>
 
-			<field-define>
-				<id>f1</id>
-				<sequence>1</sequence>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql>
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.senduserid,est.todeptid,est.complainttype1,est.sendtime  from est_complaint est ,est_complaint estp where 
- 					est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
- 					and   est.status=1 and estp.prelinkid=est.linkid and est.operatetype=46
- 					and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@' and est.complainttype2='@s3@' and est.complainttype='@s4@'
- 					and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@'
-				</list-hsql>
-				
-			</field-define>
-			
-		</query-define>
-		
-		<query-define>
-			<name>query2</name>
-			
-			<from>est_complaint est ,est_complaint estp</from>
-			<where>
-			est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@' 
-			and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and est.operatetype=46 and estp.prelinkid=est.linkid 
-			and est.OPERATEUSERID in (@userByDeptid@) and est.complainttype1 in (@complainttype1@) 
-				and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID in (@areaid@)  and est.complainttype4 in (@complainttype4@)
-			  and est.complainttype5 in (@complainttype5@)  and est.complainttype6 in (@complainttype6@)  and est.complainttype7 in (@complainttype7@)
-			</where>
-			<order-by></order-by>
+        <query-define>
+            <name>query1</name>
 
-			<field-define>
-				<id>f2</id>
-				<sequence>1</sequence>
+            <from>est_complaint est ,est_complaint estp</from>
+            <where>est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                and est.status=1 and estp.prelinkid=est.linkid and est.operatetype=46
+                and est.OPERATEUSERID in (@userByDeptid@) and est.OPERATEUSERID is not null and est.complainttype1 in
+                (@complainttype1@)
+                and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID
+                in (@areaid@) and est.complainttype4 in (@complainttype4@)
+                and est.complainttype5 in (@complainttype5@) and est.complainttype6 in (@complainttype6@) and
+                est.complainttype7 in (@complainttype7@)
+            </where><!-- 锟斤拷锟芥��光� -->
+            <order-by></order-by>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql>
-				
-				<list-hsql>                                                               
-					select distinct est.mainid ,est.sheetid,est.title, est.senduserid,est.todeptid,est.complainttype1,est.sendtime from est_complaint est ,est_complaint estp where 
-					est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
-					and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and est.operatetype=46 and estp.prelinkid=est.linkid 
-					and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@'  and est.complainttype2='@s3@' and est.complainttype='@s4@'
-					and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@'
-				</list-hsql>
-				
-			</field-define>
+            <field-define>
+                <id>f1</id>
+                <sequence>1</sequence>
 
-		</query-define>
-		
-	</kpi-define>
-	
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql>
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title,
+                    est.senduserid,est.todeptid,est.complainttype1,est.sendtime from est_complaint est ,est_complaint
+                    estp where
+                    est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                    and est.status=1 and estp.prelinkid=est.linkid and est.operatetype=46
+                    and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@' and
+                    est.complainttype2='@s3@' and est.complainttype='@s4@'
+                    and est.complainttype4='@s5@' and est.complainttype5='@s6@' and est.complainttype6='@s7@' and
+                    est.complainttype7='@s8@'
+                </list-hsql>
 
-	
-	<!-- ********按角色 ********************* -->
-	<kpi-define>
-		<name>complaint_onetimepas_byrole</name>
-		<kpi-caption></kpi-caption>
-		
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param  page-name="areaid" markflg="true"/>
-		<condition-param  page-name="complainttype1" markflg="true"/>
-		<condition-param  page-name="complainttype2" markflg="true"/>
-		<condition-param  page-name="complainttype" markflg="true"/>
-		<condition-param  page-name="complainttype4" markflg="true"/>
-		<condition-param  page-name="complainttype5" markflg="true"/>
-		<condition-param  page-name="complainttype6" markflg="true"/>
-		<condition-param  page-name="complainttype7" markflg="true"/>
-		<condition-param  page-name="subroleFromDeptid" markflg="true"/>
-		
-		<summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.OPERATEROLEID</column>
-			<id2name-service>statSubRoleId2name_v35</id2name-service>
-		</summary-define>
-		
-		<summary-define>
-			<id>s2</id>
-			<sequence></sequence>
-			<column>est.complainttype1</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s3</id>
-			<sequence></sequence>
-			<column>est.complainttype2</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s4</id>
-			<sequence></sequence>
-			<column>est.complainttype</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s5</id>
-			<sequence></sequence>
-			<column>est.complainttype4</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s6</id>
-			<sequence></sequence>
-			<column>est.complainttype5</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s7</id>
-			<sequence></sequence>
-			<column>est.complainttype6</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-			<summary-define>
-			<id>s8</id>
-			<sequence></sequence>
-			<column>est.complainttype7</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s9</id>
-			<sequence></sequence>
-			<column>est.TODEPTID</column>
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statAreaId2name_v35</id2name-service>
-		</summary-define>
+            </field-define>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo>
+        </query-define>
 
-		<query-define>
-			<name>query1</name>
-		 	<from>est_complaint est,est_complaint estp</from>
-			<where>
-			est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@' 
-			and   est.status=1 and estp.prelinkid=est.linkid  and est.operatetype=46
-			and est.OPERATEROLEID in (@subroleFromDeptid@) and est.OPERATEROLEID is not null and est.complainttype1 in (@complainttype1@) 
-			and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID in (@areaid@) and LENGTH(est.operateroleid)=32
-			 and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@)  and est.complainttype6 in (@complainttype6@)  and est.complainttype7 in (@complainttype7@)
-			</where>
-			<order-by></order-by>
+        <query-define>
+            <name>query2</name>
 
-			<field-define>
-				<id>f1</id>
-				<sequence>1</sequence>
+            <from>est_complaint est ,est_complaint estp</from>
+            <where>
+                est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and est.operatetype=46
+                and estp.prelinkid=est.linkid
+                and est.OPERATEUSERID in (@userByDeptid@) and est.complainttype1 in (@complainttype1@)
+                and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID
+                in (@areaid@) and est.complainttype4 in (@complainttype4@)
+                and est.complainttype5 in (@complainttype5@) and est.complainttype6 in (@complainttype6@) and
+                est.complainttype7 in (@complainttype7@)
+            </where>
+            <order-by></order-by>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql>
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.senduserid,est.todeptid,est.complainttype1,est.sendtime  from est_complaint est ,est_complaint estp where 
- 					est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
- 					and   est.status=1 and estp.prelinkid=est.linkid  and est.operatetype=46
- 					and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@'  and est.complainttype2='@s3@' and est.complainttype='@s4@'
- 					and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@'
-				     and LENGTH(est.operateroleid)=32  
-				</list-hsql>
-				
-			</field-define>
-			
-		</query-define>
-	
-		
-		<query-define>
-			<name>query2</name>
-			
-			<from>est_complaint est ,est_complaint estp</from>
-			<where> 
-				est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@' 
-			and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and est.operatetype=46 and estp.prelinkid=est.linkid 
-			and est.OPERATEROLEID in (@subroleFromDeptid@) and est.OPERATEROLEID is not null and est.complainttype1 in (@complainttype1@) 
-			and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID in (@areaid@) and LENGTH(est.operateroleid)=32
-			 and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@)  and est.complainttype6 in (@complainttype6@)  and est.complainttype7 in (@complainttype7@)
-			</where>
-			<order-by></order-by>
+            <field-define>
+                <id>f2</id>
+                <sequence>1</sequence>
 
-			<field-define>
-				<id>f2</id>
-				<sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql>
-				
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.senduserid,est.todeptid,est.complainttype1,est.sendtime from est_complaint est ,est_complaint estp where 
-					est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
-					and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and est.operatetype=46 and estp.prelinkid=est.linkid 
-					and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@'  and est.complainttype2='@s3@' and est.complainttype='@s4@'
-				    and LENGTH(est.operateroleid)=32  and est.complainttype4='@s5@'  and est.complainttype5='@s6@'  and est.complainttype6='@s7@'  and est.complainttype7='@s8@'
-				</list-hsql>
-				
-			</field-define>
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title,
+                    est.senduserid,est.todeptid,est.complainttype1,est.sendtime from est_complaint est ,est_complaint
+                    estp where
+                    est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                    and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and
+                    est.operatetype=46 and estp.prelinkid=est.linkid
+                    and est.OPERATEUSERID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@' and
+                    est.complainttype2='@s3@' and est.complainttype='@s4@'
+                    and est.complainttype4='@s5@' and est.complainttype5='@s6@' and est.complainttype6='@s7@' and
+                    est.complainttype7='@s8@'
+                </list-hsql>
 
-		</query-define>
-		
-	</kpi-define>
-	
+            </field-define>
+
+        </query-define>
+
+    </kpi-define>
+
+
+    <!-- ********按角色 ********************* -->
+    <kpi-define>
+        <name>complaint_onetimepas_byrole</name>
+        <kpi-caption></kpi-caption>
+
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="areaid" markflg="true"/>
+        <condition-param page-name="complainttype1" markflg="true"/>
+        <condition-param page-name="complainttype2" markflg="true"/>
+        <condition-param page-name="complainttype" markflg="true"/>
+        <condition-param page-name="complainttype4" markflg="true"/>
+        <condition-param page-name="complainttype5" markflg="true"/>
+        <condition-param page-name="complainttype6" markflg="true"/>
+        <condition-param page-name="complainttype7" markflg="true"/>
+        <condition-param page-name="subroleFromDeptid" markflg="true"/>
+
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.OPERATEROLEID</column>
+            <id2name-service>statSubRoleId2name_v35</id2name-service>
+        </summary-define>
+
+        <summary-define>
+            <id>s2</id>
+            <sequence></sequence>
+            <column>est.complainttype1</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s3</id>
+            <sequence></sequence>
+            <column>est.complainttype2</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s4</id>
+            <sequence></sequence>
+            <column>est.complainttype</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s5</id>
+            <sequence></sequence>
+            <column>est.complainttype4</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s6</id>
+            <sequence></sequence>
+            <column>est.complainttype5</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s7</id>
+            <sequence></sequence>
+            <column>est.complainttype6</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s8</id>
+            <sequence></sequence>
+            <column>est.complainttype7</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s9</id>
+            <sequence></sequence>
+            <column>est.TODEPTID</column>
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statAreaId2name_v35</id2name-service>
+        </summary-define>
+
+        <stat-detail-vo>com.boco.eoms.commons.statistic.complaint.vo.ComplaintResolveKpi3DetailVO</stat-detail-vo>
+
+        <query-define>
+            <name>query1</name>
+            <from>est_complaint est,est_complaint estp</from>
+            <where>
+                est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                and est.status=1 and estp.prelinkid=est.linkid and est.operatetype=46
+                and est.OPERATEROLEID in (@subroleFromDeptid@) and est.OPERATEROLEID is not null and est.complainttype1
+                in (@complainttype1@)
+                and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID
+                in (@areaid@) and LENGTH(est.operateroleid)=32
+                and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@) and
+                est.complainttype6 in (@complainttype6@) and est.complainttype7 in (@complainttype7@)
+            </where>
+            <order-by></order-by>
+
+            <field-define>
+                <id>f1</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql>
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title,
+                    est.senduserid,est.todeptid,est.complainttype1,est.sendtime from est_complaint est ,est_complaint
+                    estp where
+                    est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                    and est.status=1 and estp.prelinkid=est.linkid and est.operatetype=46
+                    and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@' and
+                    est.complainttype2='@s3@' and est.complainttype='@s4@'
+                    and est.complainttype4='@s5@' and est.complainttype5='@s6@' and est.complainttype6='@s7@' and
+                    est.complainttype7='@s8@'
+                    and LENGTH(est.operateroleid)=32
+                </list-hsql>
+
+            </field-define>
+
+        </query-define>
+
+
+        <query-define>
+            <name>query2</name>
+
+            <from>est_complaint est ,est_complaint estp</from>
+            <where>
+                est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and est.operatetype=46
+                and estp.prelinkid=est.linkid
+                and est.OPERATEROLEID in (@subroleFromDeptid@) and est.OPERATEROLEID is not null and est.complainttype1
+                in (@complainttype1@)
+                and est.complainttype2 in (@complainttype2@) and est.complainttype in (@complainttype@) and est.TODEPTID
+                in (@areaid@) and LENGTH(est.operateroleid)=32
+                and est.complainttype4 in (@complainttype4@) and est.complainttype5 in (@complainttype5@) and
+                est.complainttype6 in (@complainttype6@) and est.complainttype7 in (@complainttype7@)
+            </where>
+            <order-by></order-by>
+
+            <field-define>
+                <id>f2</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql>
+
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title,
+                    est.senduserid,est.todeptid,est.complainttype1,est.sendtime from est_complaint est ,est_complaint
+                    estp where
+                    est.ENDTIME&gt;'@beginTime@' and est.ENDTIME&lt;'@endTime@'
+                    and est.status=1 and (est.mainqcrejecttimes is null or est.mainqcrejecttimes=0) and
+                    est.operatetype=46 and estp.prelinkid=est.linkid
+                    and est.OPERATEROLEID='@s1@' and est.complainttype1='@s2@' and est.TODEPTID='@s9@' and
+                    est.complainttype2='@s3@' and est.complainttype='@s4@'
+                    and LENGTH(est.operateroleid)=32 and est.complainttype4='@s5@' and est.complainttype5='@s6@' and
+                    est.complainttype6='@s7@' and est.complainttype7='@s8@'
+                </list-hsql>
+
+            </field-define>
+
+        </query-define>
+
+    </kpi-define>
+
 </KpiConfig>

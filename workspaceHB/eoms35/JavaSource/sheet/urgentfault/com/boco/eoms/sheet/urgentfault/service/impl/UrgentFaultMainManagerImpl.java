@@ -17,29 +17,28 @@ import com.boco.eoms.sheet.urgentfault.service.IUrgentFaultMainManager;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class UrgentFaultMainManagerImpl extends MainService implements
         IUrgentFaultMainManager {
 
-	public TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException {
-		IUrgentFaultMainDAO iUrgentFaultMainDAO = (IUrgentFaultMainDAO)this.getMainDAO();
-		return iUrgentFaultMainDAO.getTawSystemWorkflowByFlowTemplateName(flowTemplateName);
-	}
+    public TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException {
+        IUrgentFaultMainDAO iUrgentFaultMainDAO = (IUrgentFaultMainDAO) this.getMainDAO();
+        return iUrgentFaultMainDAO.getTawSystemWorkflowByFlowTemplateName(flowTemplateName);
+    }
 
-	public List showInvokeRelationShipList(String mainId) throws SheetException {
-		
-		IUrgentFaultMainDAO iUrgentFaultMainDAO = (IUrgentFaultMainDAO)this.getMainDAO();
-		return iUrgentFaultMainDAO.showInvokeRelationShipList(mainId);
-	}
-	
-	public BaseLink getHasInvokeBaseLink(String mainId) throws SheetException {
-		IUrgentFaultMainDAO iUrgentFaultMainDAO = (IUrgentFaultMainDAO)this.getMainDAO();
-		return iUrgentFaultMainDAO.getHasInvokeBaseLink(mainId);
-	}
-	
+    public List showInvokeRelationShipList(String mainId) throws SheetException {
+
+        IUrgentFaultMainDAO iUrgentFaultMainDAO = (IUrgentFaultMainDAO) this.getMainDAO();
+        return iUrgentFaultMainDAO.showInvokeRelationShipList(mainId);
+    }
+
+    public BaseLink getHasInvokeBaseLink(String mainId) throws SheetException {
+        IUrgentFaultMainDAO iUrgentFaultMainDAO = (IUrgentFaultMainDAO) this.getMainDAO();
+        return iUrgentFaultMainDAO.getHasInvokeBaseLink(mainId);
+    }
 
 
 }

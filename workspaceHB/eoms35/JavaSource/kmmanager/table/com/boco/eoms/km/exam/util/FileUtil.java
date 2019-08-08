@@ -14,214 +14,187 @@ import java.util.Random;
 import org.apache.struts.upload.FormFile;
 
 public class FileUtil {
-	
-	private static Random random = new Random();
-	/**
-	 * * 创建空白文件
-	 * 
-	 * @param fileName
-	 *            文件名
-	 * 
-	 * @param dir
-	 *            保存文件的目录
-	 * 
-	 * @return
-	 * 
-	 */
 
-	private static File createNewFile(String fileName, String dir)
+    private static Random random = new Random();
 
-	{
+    /**
+     * * 创建空白文件
+     *
+     * @param fileName 文件名
+     * @param dir      保存文件的目录
+     * @return
+     */
 
-		File dirs = new File(dir);
+    private static File createNewFile(String fileName, String dir) {
 
-		// 看文件夹是否存在，如果不存在新建目录
+        File dirs = new File(dir);
 
-		if (!dirs.exists())
+        // 看文件夹是否存在，如果不存在新建目录
 
-			dirs.mkdirs();
+        if (!dirs.exists())
 
-		// 拼凑文件完成路径
+            dirs.mkdirs();
 
-		File file = new File(dir + File.separator + fileName);
+        // 拼凑文件完成路径
 
-		try {
+        File file = new File(dir + File.separator + fileName);
 
-			// 判断是否有同名名字，如果有同名文件加随机数改变文件名
+        try {
 
-			while (file.exists()) {
+            // 判断是否有同名名字，如果有同名文件加随机数改变文件名
 
-				int ran = getRandomNumber();
+            while (file.exists()) {
 
-				String prefix = getFileNamePrefix(fileName);
+                int ran = getRandomNumber();
 
-				String suffix = getFileNameSuffix(fileName);
+                String prefix = getFileNamePrefix(fileName);
 
-				String name = prefix + ran + "." + suffix;
+                String suffix = getFileNameSuffix(fileName);
 
-				file = new File(dir + File.separator + name);
+                String name = prefix + ran + "." + suffix;
 
-			}
+                file = new File(dir + File.separator + name);
 
-			file.createNewFile();
+            }
 
-		} catch (IOException e) {
+            file.createNewFile();
 
-			// TODO Auto-generated catch block
+        } catch (IOException e) {
 
-			e.printStackTrace();
+            // TODO Auto-generated catch block
 
-		}
+            e.printStackTrace();
 
-		return file;
+        }
 
-	}
+        return file;
 
-	/**
-	 * 
-	 * 获得随机数
-	 * 
-	 * @return
-	 * 
-	 */
+    }
 
-	public static int getRandomNumber() {
+    /**
+     * 获得随机数
+     *
+     * @return
+     */
 
-		return Math.abs(random.nextInt());
+    public static int getRandomNumber() {
 
-	}
+        return Math.abs(random.nextInt());
 
-	/**
-	 * 
-	 * 分割文件名 如a.txt 返回 a
-	 * 
-	 * @param fileName
-	 * 
-	 * @return
-	 * 
-	 */
+    }
 
-	private static String getFileNamePrefix(String fileName) {
+    /**
+     * 分割文件名 如a.txt 返回 a
+     *
+     * @param fileName
+     * @return
+     */
 
-		int dot = fileName.lastIndexOf(".");
+    private static String getFileNamePrefix(String fileName) {
 
-		return fileName.substring(0, dot);
+        int dot = fileName.lastIndexOf(".");
 
-	}
+        return fileName.substring(0, dot);
 
-	/**
-	 * 
-	 * 获得文件后缀
-	 * 
-	 * @param fileName
-	 * 
-	 * @return
-	 * 
-	 */
+    }
 
-	private static String getFileNameSuffix(String fileName) {
+    /**
+     * 获得文件后缀
+     *
+     * @param fileName
+     * @return
+     */
 
-		int dot = fileName.lastIndexOf(".");
+    private static String getFileNameSuffix(String fileName) {
 
-		return fileName.substring(dot + 1);
+        int dot = fileName.lastIndexOf(".");
 
-	}
+        return fileName.substring(dot + 1);
 
-	/**
-	 * 
-	 * 上传文件
-	 * 
-	 * @param file
-	 * 
-	 * @param dir
-	 * 
-	 * @return
-	 * 
-	 */
+    }
 
-	public static String uploadFile(FormFile file, String dir)
+    /**
+     * 上传文件
+     *
+     * @param file
+     * @param dir
+     * @return
+     */
 
-	{
+    public static String uploadFile(FormFile file, String dir) {
 
-		// 获得文件名
+        // 获得文件名
 
-		String fileName = file.getFileName();
-		fileName = new Date().getTime() + getRandomNumber()
-				+ fileName.substring(fileName.lastIndexOf("."));
+        String fileName = file.getFileName();
+        fileName = new Date().getTime() + getRandomNumber()
+                + fileName.substring(fileName.lastIndexOf("."));
 
-		InputStream in = null;
+        InputStream in = null;
 
-		OutputStream out = null;
+        OutputStream out = null;
 
-		try
+        try {
 
-		{
+            in = new BufferedInputStream(file.getInputStream());// 构造输入流
 
-			in = new BufferedInputStream(file.getInputStream());// 构造输入流
+            File f = createNewFile(fileName, dir);
 
-			File f = createNewFile(fileName, dir);
+            out = new BufferedOutputStream(new FileOutputStream(f));// 构造文件输出流
 
-			out = new BufferedOutputStream(new FileOutputStream(f));// 构造文件输出流
+            byte[] buffered = new byte[8192];// 读入缓存
 
-			byte[] buffered = new byte[8192];// 读入缓存
+            int size = 0;// 一次读到的真实大小
 
-			int size = 0;// 一次读到的真实大小
+            while ((size = in.read(buffered, 0, 8192)) != -1) {
 
-			while ((size = in.read(buffered, 0, 8192)) != -1)
+                out.write(buffered, 0, size);
 
-			{
+            }
 
-				out.write(buffered, 0, size);
+            out.flush();
 
-			}
+        } catch (FileNotFoundException e) {
 
-			out.flush();
+            e.printStackTrace();
 
-		} catch (FileNotFoundException e) {
+        } catch (IOException e) {
 
-			e.printStackTrace();
+            e.printStackTrace();
 
-		} catch (IOException e) {
+        } finally {
 
-			e.printStackTrace();
+            try {
 
-		}
+                if (in != null)
+                    in.close();
 
-		finally
+            } catch (IOException e) {
 
-		{
+                e.printStackTrace();
 
-			try {
+            }
 
-				if (in != null)
-					in.close();
+            try {
 
-			} catch (IOException e) {
+                if (out != null)
+                    out.close();
 
-				e.printStackTrace();
+            } catch (IOException e) {
 
-			}
+                // TODO Auto-generated catch block
 
-			try {
+                e.printStackTrace();
 
-				if (out != null)
-					out.close();
+            }
 
-			} catch (IOException e) {
+        }
 
-				// TODO Auto-generated catch block
+        return fileName;
 
-				e.printStackTrace();
+    }
 
-			}
-
-		}
-
-		return fileName;
-
-	}
-	public static void main(String[] args){
-		for(int i=0;i<10;i++)
-		System.out.println(getRandomNumber());
-	}
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++)
+            System.out.println(getRandomNumber());
+    }
 }

@@ -1,103 +1,104 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
-	<form-beans>
-		<form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
-		<!--bean for EsmProcess end-->
-	</form-beans>
-	 <!-- ========== Global Exceptions Definitions =================================== -->
-      <global-exceptions>
+    <form-beans>
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
+        <!--bean for EsmProcess end-->
+    </form-beans>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
         <exception type="java.lang.Exception"
-            key="errors.general"
-            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
-     </global-exceptions>
-	<global-forwards>
-		<forward name="error"
-			path="/WEB-INF/pages/sheetLimit/failure.jsp"
-			contextRelative="true" />
-	</global-forwards>
- 	<!-- ========== Action Mapping Definitions =================================== -->
-   <action-mappings>
-   
-   <action
-      path="/sheetLimit"
-      type="com.boco.eoms.sheet.limit.webapp.action.SheetLimitAction"
-      name="multiPageForm"
-      scope="request"
-      input="error"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-    
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="search"
-        path="/sheetLimit.do?method=getLevelLimitList"
-        redirect="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/sheetLimit/levelLimitForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/sheetLimit/levelLimitList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-       <forward
-        name="saveFailure"
-        path="/WEB-INF/pages/sheetLimit/failure.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="searchStep"
-        path="/sheetLimit.do?method=search"
-        redirect="true"
-      />
-       <forward
-        name="listStep"
-        path="/WEB-INF/pages/sheetLimit/stepLimitList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="editStep"
-        path="/WEB-INF/pages/sheetLimit/stepLimitForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-       <forward
-        name="saveFailure"
-        path="/WEB-INF/pages/sheetLimit/failure.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-	</action>
+                   key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
+    <global-forwards>
+        <forward name="error"
+                 path="/WEB-INF/pages/sheetLimit/failure.jsp"
+                 contextRelative="true"/>
+    </global-forwards>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
 
-	</action-mappings>
-	
- <controller nocache="true" inputForward="true" maxFileSize="2M"/>
-    	<message-resources parameter="config/ApplicationResources-sheet"
-		key="sheet" />
-      <message-resources parameter="config/ApplicationResources-sheet-sheetLimit" key="sheetLimit"/>
-	  <!-- ========== Validator plugin ===================  -->
+        <action
+                path="/sheetLimit"
+                type="com.boco.eoms.sheet.limit.webapp.action.SheetLimitAction"
+                name="multiPageForm"
+                scope="request"
+                input="error"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="search"
+                    path="/sheetLimit.do?method=getLevelLimitList"
+                    redirect="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/sheetLimit/levelLimitForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/sheetLimit/levelLimitList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="saveFailure"
+                    path="/WEB-INF/pages/sheetLimit/failure.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="searchStep"
+                    path="/sheetLimit.do?method=search"
+                    redirect="true"
+            />
+            <forward
+                    name="listStep"
+                    path="/WEB-INF/pages/sheetLimit/stepLimitList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="editStep"
+                    path="/WEB-INF/pages/sheetLimit/stepLimitForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="saveFailure"
+                    path="/WEB-INF/pages/sheetLimit/failure.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+        </action>
+
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources-sheet"
+                       key="sheet"/>
+    <message-resources parameter="config/ApplicationResources-sheet-sheetLimit" key="sheetLimit"/>
+    <!-- ========== Validator plugin ===================  -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" 
+        <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
                              /WEB-INF/validation.xml"/>

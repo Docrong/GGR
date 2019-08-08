@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-	<!--SmsService-DAO START-->
+    <!--SmsService-DAO START-->
     <bean id="ISchedulerDao" class="com.boco.eoms.message.dao.hibernate.SchedulerDaoHibernate_GanSu" autowire="byName"/>
     <!--SmsService-DAO END-->
-    <!--SmsService-START-->    
+    <!--SmsService-START-->
     <bean id="IschedulerManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SchedulerManagerImpl">

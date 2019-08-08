@@ -11,5 +11,5 @@ import com.boco.eoms.sheet.base.util.Constants;
 import com.boco.eoms.sheet.businessimplementsms.dao.IBusinessImplementSmsTaskDAO;
 
 public class BusinessImplementSmsTaskDAOHibernate extends TaskDAOImpl implements IBusinessImplementSmsTaskDAO {
-	
+
 }

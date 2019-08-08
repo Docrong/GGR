@@ -25,102 +25,102 @@ import com.boco.eoms.base.util.StaticMethod;
 import com.boco.eoms.commons.util.xml.XMLProperties;
 
 
-public class UndoTaskAdviceSchedule implements Job{
-	
-	public UndoTaskAdviceSchedule(){
-		
-	}
-	
-	public void execute(JobExecutionContext context)
-			throws JobExecutionException {
-		
-		boolean ifDayJob=InterfaceJobStatic.isIfExecuteJob();
-		if (!ifDayJob) { 
-			BocoLog.info(UndoTaskAdviceSchedule.class, "SafetyProblem UndoTaskAdviceSchedule is running wait for next Schedule");
-		} else {
-		   InterfaceJobStatic.setIfExecuteJob(false);
-		   try{
-			   ISafetyProblemTaskManager safetyproblemMgr = (ISafetyProblemTaskManager) ApplicationContextHolder
-				   .getInstance().getBean("isafetyproblemTaskManager");	
-			   ISafetyProblemMainManager commonmainMgr = (ISafetyProblemMainManager) ApplicationContextHolder
-			        .getInstance().getBean("iSafetyProblemMainManager");
-			   BaseMain mainObject = (BaseMain) commonmainMgr.getMainObject()
-				      .getClass().newInstance();
-			   
-			   //获取网络三级分类过滤条件
-			   XMLProperties file=XmlManage.getFile("/config/safetyproblem-util.xml");
-			   String mainNetSort1=StaticMethod.nullObject2String(file.getProperty("mainNetSort1"));
-			   String mainNetSort2=StaticMethod.nullObject2String(file.getProperty("mainNetSort2"));
-			   String mainNetSort3=StaticMethod.nullObject2String(file.getProperty("mainNetSort3"));
-			   
-		       Map condition = new HashMap();
-		       condition.put("mainObject", mainObject);
-		       condition.put("mainNetSort1", mainNetSort1);
-		       condition.put("mainNetSort2", mainNetSort2);
-		       condition.put("mainNetSort3", mainNetSort3);
-			   List undoTaskList=safetyproblemMgr.getAllUndoTaskList(condition); //根据网络三级分类，查询满足条件的未处理的工单
-			   //获取当前系统时间
-			   java.util.TimeZone.setDefault(java.util.TimeZone.getTimeZone("GMT+08:00"));
-			   Calendar c=Calendar.getInstance(java.util.TimeZone.getDefault());
-			   Date localTime=c.getTime();
-			   SimpleDateFormat formatter = new SimpleDateFormat(
-	    	     "yyyy-MM-dd HH:mm:ss");
-	    	   String messageSendTime = formatter.format(localTime);
-	    	   
-			   MsgServiceImpl   msgService = new MsgServiceImpl();
-			   String messageServiceId=StaticMethod.nullObject2String(file.getProperty("messageServiceId"));
-			   
-			   for (int i=0;undoTaskList!=null&&i<undoTaskList.size();i++){
-				   Object[] tmpObjArr=(Object[])undoTaskList.get(i);
-				   ITask tmptask = (ITask) tmpObjArr[0];
-				   int mainAdviceNum=StaticMethod.nullObject2int(tmpObjArr[1],0);
-				   Date sendTime=tmptask.getSendTime();
-				   if (!(null == sendTime || sendTime.equals(""))) {
-					   int diffDate=StaticMethod.diffDate(localTime, sendTime);
-					   if((diffDate>=((mainAdviceNum+1)*3)-1)&&(diffDate<=((mainAdviceNum+1)*3))){
-						   //短信督办
-						   String sheetKey=StaticMethod.nullObject2String(tmptask.getSheetKey());
-						   String sheetId=StaticMethod.nullObject2String(tmptask.getSheetId());
-						   String title=StaticMethod.nullObject2String(tmptask.getTitle());
-						   String taskId=StaticMethod.nullObject2String(tmptask.getId());
-						   String taskOwner=StaticMethod.nullObject2String(tmptask.getTaskOwner());
-						   String taskStatus=StaticMethod.nullObject2String(tmptask.getTaskStatus());
-						   String operateType=StaticMethod.nullObject2String(tmptask.getOperateType());
-						   String receivers="";
-						   //拼写短信接受者
-						   if(Constants.TASK_STATUS_CLAIMED.equals(taskStatus)){ 
-							   //工单已接单，催办接单人员
-							   receivers=Constants.SMS_RECEIVE_TYPE_USER+","+taskOwner+"#";						   
-						   }else {
-							   //工单未接单，按照派往对象类型来催办
-							   if("user".equals(operateType)){
-								   receivers=Constants.SMS_RECEIVE_TYPE_USER+","+taskOwner+"#";	  
-							   }else if("dept".equals(operateType)){
-								   receivers=Constants.SMS_RECEIVE_TYPE_DEPT+","+taskOwner+"#";	
-							   }else if("subrole".equals(operateType)){
-								   receivers=Constants.SMS_RECEIVE_TYPE_ROLE+","+taskOwner+"#";	
-							   }
-						   }
-						   //拼写发送信息
-						   String sendContent= "当前有安全问题工单" + sheetId +"，主题为"+ title + ",已经" +diffDate+"天未处理，请处理回复";
-						   msgService.sendMsg(messageServiceId, sendContent,taskId, receivers,messageSendTime);
-						   BocoLog.info(UndoTaskAdviceSchedule.class, "任务工单短信督办，sendContent="+sendContent);
-						   
-						   //修改main表中工单催办次数
-						   SafetyProblemMain main=(SafetyProblemMain)commonmainMgr.getSingleMainPO(sheetKey);
-						   main.setMainAdviceNum(mainAdviceNum+1);
-						   main.setMainAdviceContent("当前工单已经催办"+main.getMainAdviceNum()+"次");
-						   commonmainMgr.saveOrUpdateMain(main);
-					   }
-				   }
-			   }	   
-		   
-			 } catch(Exception e){
-				
-			}
-			BocoLog.info(UndoTaskAdviceSchedule.class, "SafetyProblem UndoTaskAdviceSchedule is running over");
-			InterfaceJobStatic.setIfExecuteJob(true);
-		}
-  }
+public class UndoTaskAdviceSchedule implements Job {
+
+    public UndoTaskAdviceSchedule() {
+
+    }
+
+    public void execute(JobExecutionContext context)
+            throws JobExecutionException {
+
+        boolean ifDayJob = InterfaceJobStatic.isIfExecuteJob();
+        if (!ifDayJob) {
+            BocoLog.info(UndoTaskAdviceSchedule.class, "SafetyProblem UndoTaskAdviceSchedule is running wait for next Schedule");
+        } else {
+            InterfaceJobStatic.setIfExecuteJob(false);
+            try {
+                ISafetyProblemTaskManager safetyproblemMgr = (ISafetyProblemTaskManager) ApplicationContextHolder
+                        .getInstance().getBean("isafetyproblemTaskManager");
+                ISafetyProblemMainManager commonmainMgr = (ISafetyProblemMainManager) ApplicationContextHolder
+                        .getInstance().getBean("iSafetyProblemMainManager");
+                BaseMain mainObject = (BaseMain) commonmainMgr.getMainObject()
+                        .getClass().newInstance();
+
+                //获取网络三级分类过滤条件
+                XMLProperties file = XmlManage.getFile("/config/safetyproblem-util.xml");
+                String mainNetSort1 = StaticMethod.nullObject2String(file.getProperty("mainNetSort1"));
+                String mainNetSort2 = StaticMethod.nullObject2String(file.getProperty("mainNetSort2"));
+                String mainNetSort3 = StaticMethod.nullObject2String(file.getProperty("mainNetSort3"));
+
+                Map condition = new HashMap();
+                condition.put("mainObject", mainObject);
+                condition.put("mainNetSort1", mainNetSort1);
+                condition.put("mainNetSort2", mainNetSort2);
+                condition.put("mainNetSort3", mainNetSort3);
+                List undoTaskList = safetyproblemMgr.getAllUndoTaskList(condition); //根据网络三级分类，查询满足条件的未处理的工单
+                //获取当前系统时间
+                java.util.TimeZone.setDefault(java.util.TimeZone.getTimeZone("GMT+08:00"));
+                Calendar c = Calendar.getInstance(java.util.TimeZone.getDefault());
+                Date localTime = c.getTime();
+                SimpleDateFormat formatter = new SimpleDateFormat(
+                        "yyyy-MM-dd HH:mm:ss");
+                String messageSendTime = formatter.format(localTime);
+
+                MsgServiceImpl msgService = new MsgServiceImpl();
+                String messageServiceId = StaticMethod.nullObject2String(file.getProperty("messageServiceId"));
+
+                for (int i = 0; undoTaskList != null && i < undoTaskList.size(); i++) {
+                    Object[] tmpObjArr = (Object[]) undoTaskList.get(i);
+                    ITask tmptask = (ITask) tmpObjArr[0];
+                    int mainAdviceNum = StaticMethod.nullObject2int(tmpObjArr[1], 0);
+                    Date sendTime = tmptask.getSendTime();
+                    if (!(null == sendTime || sendTime.equals(""))) {
+                        int diffDate = StaticMethod.diffDate(localTime, sendTime);
+                        if ((diffDate >= ((mainAdviceNum + 1) * 3) - 1) && (diffDate <= ((mainAdviceNum + 1) * 3))) {
+                            //短信督办
+                            String sheetKey = StaticMethod.nullObject2String(tmptask.getSheetKey());
+                            String sheetId = StaticMethod.nullObject2String(tmptask.getSheetId());
+                            String title = StaticMethod.nullObject2String(tmptask.getTitle());
+                            String taskId = StaticMethod.nullObject2String(tmptask.getId());
+                            String taskOwner = StaticMethod.nullObject2String(tmptask.getTaskOwner());
+                            String taskStatus = StaticMethod.nullObject2String(tmptask.getTaskStatus());
+                            String operateType = StaticMethod.nullObject2String(tmptask.getOperateType());
+                            String receivers = "";
+                            //拼写短信接受者
+                            if (Constants.TASK_STATUS_CLAIMED.equals(taskStatus)) {
+                                //工单已接单，催办接单人员
+                                receivers = Constants.SMS_RECEIVE_TYPE_USER + "," + taskOwner + "#";
+                            } else {
+                                //工单未接单，按照派往对象类型来催办
+                                if ("user".equals(operateType)) {
+                                    receivers = Constants.SMS_RECEIVE_TYPE_USER + "," + taskOwner + "#";
+                                } else if ("dept".equals(operateType)) {
+                                    receivers = Constants.SMS_RECEIVE_TYPE_DEPT + "," + taskOwner + "#";
+                                } else if ("subrole".equals(operateType)) {
+                                    receivers = Constants.SMS_RECEIVE_TYPE_ROLE + "," + taskOwner + "#";
+                                }
+                            }
+                            //拼写发送信息
+                            String sendContent = "当前有安全问题工单" + sheetId + "，主题为" + title + ",已经" + diffDate + "天未处理，请处理回复";
+                            msgService.sendMsg(messageServiceId, sendContent, taskId, receivers, messageSendTime);
+                            BocoLog.info(UndoTaskAdviceSchedule.class, "任务工单短信督办，sendContent=" + sendContent);
+
+                            //修改main表中工单催办次数
+                            SafetyProblemMain main = (SafetyProblemMain) commonmainMgr.getSingleMainPO(sheetKey);
+                            main.setMainAdviceNum(mainAdviceNum + 1);
+                            main.setMainAdviceContent("当前工单已经催办" + main.getMainAdviceNum() + "次");
+                            commonmainMgr.saveOrUpdateMain(main);
+                        }
+                    }
+                }
+
+            } catch (Exception e) {
+
+            }
+            BocoLog.info(UndoTaskAdviceSchedule.class, "SafetyProblem UndoTaskAdviceSchedule is running over");
+            InterfaceJobStatic.setIfExecuteJob(true);
+        }
+    }
 
 }

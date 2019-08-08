@@ -13,24 +13,23 @@ import java.util.List;
  * <p>
  * Apr 19, 2007 3:28:10 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Rules {
 
-	/**
-	 * 规则列表
-	 */
-	private List rule = new ArrayList();
+    /**
+     * 规则列表
+     */
+    private List rule = new ArrayList();
 
-	public List getRule() {
-		return rule;
-	}
+    public List getRule() {
+        return rule;
+    }
 
-	public void setRule(List rule) {
-		this.rule = rule;
-	}
+    public void setRule(List rule) {
+        this.rule = rule;
+    }
 
 }

@@ -10,15 +10,14 @@ package com.boco.eoms.km.train.util;
  * <p>
  * Wed Jul 01 15:34:49 CST 2009
  * </p>
- * 
+ *
  * @author lvweihua
  * @version 1.0
- * 
  */
 public class TrainRequireConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String TRAINREQUIRE_LIST = "trainRequireList";
+
+    /**
+     * list key
+     */
+    public final static String TRAINREQUIRE_LIST = "trainRequireList";
 }

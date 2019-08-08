@@ -1,717 +1,725 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-  <centralCommonfaultSheetUrl>http://10.234.16.198:8080/eoms35/sheet/centralcommonfault/centralcommonfault.do?method=showMainDetailPage</centralCommonfaultSheetUrl> <!-- 故障工单详情查看url -->
-  <commonTaskSheetUrl>http://10.234.16.197:8080/eoms35/sheet/commontask/commontask.do?method=showMainDetailPage</commonTaskSheetUrl> <!-- 通用任务工单详情查看url -->
-  <netTypeDictSql>select dictid as dictId,dictcode as dictCode,parentdictid as parentDictId from taw_system_dicttype where dictid like '1010104%' and  length(dictid)>7</netTypeDictSql><!-- 网络三级分类字典查询sql --> 
-  <interfaceInfoCheck><!-- 新增接口字段长度、是否为空、超长字段处理方式（cut-截取&ignore-忽略）设置 -->
-     <content interfaceName="title" ifAllowNull="false" interfaceLength="400" operateType="cut"/>
-     <content interfaceName="dealTimeLimit" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="netType" ifAllowNull="false" interfaceLength="255" operateType="ignore"/>
-     <content interfaceName="taskType" ifAllowNull="false" interfaceLength="255" operateType="ignore"/>
-     <content interfaceName="taskDesc" ifAllowNull="false" interfaceLength="3000" operateType="cut"/>
-     <content interfaceName="acceptTimeLimit" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="dealTimeLimit" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="transferTimeLimit" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="oriAlarmId" ifAllowNull="true" interfaceLength="40" operateType="ignore"/>
-     <content interfaceName="alarmType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="alarmSource" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="alarmLevel" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="alarm_LogicType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="alarm_LogicSubType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="incidentDesc" ifAllowNull="true" interfaceLength="3000" operateType="cut"/>
-     <content interfaceName="isSupervisorSheet" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
-     <content interfaceName="incidentHappenType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="alarmHandleLevel" ifAllowNull="true" interfaceLength="64" operateType="ignore"/>
-     <content interfaceName="netType" ifAllowNull="false" interfaceLength="254" operateType="ignore"/>
-     <content interfaceName="sentSheetType" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="alarmVendor" ifAllowNull="false" interfaceLength="128" operateType="ignore"/>
-     <content interfaceName="neName" ifAllowNull="true" interfaceLength="128" operateType="ignore"/>
-     <content interfaceName="equipType" ifAllowNull="true" interfaceLength="40" operateType="ignore"/>
-     <content interfaceName="incidentHappenTime" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
-     <content interfaceName="alarmProvince" ifAllowNull="false" interfaceLength="8" operateType="ignore"/>
-     <content interfaceName="alarmRegion" ifAllowNull="false" interfaceLength="64" operateType="ignore"/>
-     <content interfaceName="isImpactBusiness" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
-     <content interfaceName="alarmServEffect" ifAllowNull="true" interfaceLength="1024" operateType="cut"/>
-     <content interfaceName="isMajorFault" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
-     <content interfaceName="isPretreatment" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
-     <content interfaceName="alarmAutoHandle" ifAllowNull="true" interfaceLength="3000" operateType="cut"/>
-  </interfaceInfoCheck>
-  <userInfo> <!-- 集团用户和省用户之间的映射关系 -->
-     <content groupUser="nm_lili" provinceUser="shangwentao" />
-  </userInfo>
-  <newCommonTaskSheet>
-     <content columnName="title" interfaceName="title" defauleValue="" />
-     <content columnName="sheetCompleteLimit" interfaceName="dealTimeLimit" defauleValue="" />
-     <content columnName="sheetAcceptLimit" interfaceName="dealTimeLimit" defauleValue="" />
-     <!-- <content columnName="mainTaskType" interfaceName="taskType" defauleValue="" /> -->
-     <content columnName="mainTaskType" interfaceName="basePriority" defauleValue=""  dictNodePath="jtserviceTaskType"/> 
-     <content columnName="mainTaskDescription" interfaceName="taskDesc" defauleValue="" />
-     <content columnName="beanId" interfaceName="" defauleValue="iCommonTaskMainManager" />
-     <content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commontask.model.CommonTaskMain" />
-     <content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commontask.model.CommonTaskLink" />
-     <content columnName="phaseId" interfaceName="" defauleValue="DraftHumTask" />   
-  </newCommonTaskSheet>
-  <netTypeInfo>
-	<content provinceDictCode="032601" groupDictName="数据网.集中性能监控.集中性能监控"/>
-	<content provinceDictCode="080204" groupDictName="网管.省网管系统.业务监测"/>
-	<content provinceDictCode="080205" groupDictName="网管.省网管系统.性能监控"/>
-	<content provinceDictCode="050403" groupDictName="传输网.一干传输线路.架空"/>
-	<content provinceDictCode="050503" groupDictName="传输网.二干传输线路.架空"/>
-	<content provinceDictCode="010401" groupDictName="无线.卫星通信车.卫星通信车"/>
-	<content provinceDictCode="020701" groupDictName="交换网.智能网.SCP"/>
-	<content provinceDictCode="020702" groupDictName="交换网.智能网.SMP"/>
-	<content provinceDictCode="020704" groupDictName="交换网.智能网.独立SSP"/>
-	<content provinceDictCode="020703" groupDictName="交换网.智能网.VC"/>
-	<content provinceDictCode="020705" groupDictName="交换网.智能网.IP"/>
-	<content provinceDictCode="030601" groupDictName="数据网.IP承载网CE.业务类CE"/>
-	<content provinceDictCode="030603" groupDictName="数据网.IP承载网CE.其他"/>
-	<content provinceDictCode="030602" groupDictName="数据网.IP承载网CE.网管支撑类CE"/>
-	<content provinceDictCode="050201" groupDictName="传输网.二干传输设备.WDM"/>
-	<content provinceDictCode="050910" groupDictName="传输网.本地汇聚层传输设备.DDF"/>
-	<content provinceDictCode="080401" groupDictName="网管.安全监控.网管支撑"/>
-	<content provinceDictCode="080402" groupDictName="网管.安全监控.数据"/>
-	<content provinceDictCode="031101" groupDictName="数据网.智能网.SCP"/>
-	<content provinceDictCode="031102" groupDictName="数据网.智能网.SMP"/>
-	<content provinceDictCode="031103" groupDictName="数据网.智能网.VC"/>
-	<content provinceDictCode="031104" groupDictName="数据网.智能网.独立SSP"/>
-	<content provinceDictCode="031105" groupDictName="数据网.智能网.IP"/>
-	<content provinceDictCode="080205" groupDictName="网管.省网管系统.OMC"/>
-	<content provinceDictCode="010209" groupDictName="无线.TD无线网.TDOMC"/>
-	<content provinceDictCode="050903" groupDictName="传输网.本地汇聚层传输设备.ASON"/>
-	<content provinceDictCode="050901" groupDictName="传输网.本地汇聚层传输设备.WDM"/>
-	<content provinceDictCode="050902" groupDictName="传输网.本地汇聚层传输设备.SDH"/>
-	<content provinceDictCode="050904" groupDictName="传输网.本地汇聚层传输设备.MSTP"/>
-	<content provinceDictCode="050905" groupDictName="传输网.本地汇聚层传输设备.PDH"/>
-	<content provinceDictCode="050906" groupDictName="传输网.本地汇聚层传输设备.卫星"/>
-	<content provinceDictCode="050907" groupDictName="传输网.本地汇聚层传输设备.微波"/>
-	<content provinceDictCode="050908" groupDictName="传输网.本地汇聚层传输设备.DXC"/>
-	<content provinceDictCode="050909" groupDictName="传输网.本地汇聚层传输设备.ODF"/>
-	<content provinceDictCode="051007" groupDictName="传输网.本地接入层传输设备.微波"/>
-	<content provinceDictCode="051009" groupDictName="传输网.本地接入层传输设备.ODF"/>
-	<content provinceDictCode="051001" groupDictName="传输网.本地接入层传输设备.WDM"/>
-	<content provinceDictCode="051002" groupDictName="传输网.本地接入层传输设备.SDH"/>
-	<content provinceDictCode="051004" groupDictName="传输网.本地接入层传输设备.MSTP"/>
-	<content provinceDictCode="051005" groupDictName="传输网.本地接入层传输设备.PDH"/>
-	<content provinceDictCode="051006" groupDictName="传输网.本地接入层传输设备.卫星"/>
-	<content provinceDictCode="051008" groupDictName="传输网.本地接入层传输设备.DXC"/>
-	<content provinceDictCode="051010" groupDictName="传输网.本地接入层传输设备.DDF"/>
-	<content provinceDictCode="051003" groupDictName="传输网.本地接入层传输设备.ASON"/>
-	<content provinceDictCode="051101" groupDictName="传输网.本地汇聚层传输线路.管道"/>
-	<content provinceDictCode="051102" groupDictName="传输网.本地汇聚层传输线路.光缆"/>
-	<content provinceDictCode="051202" groupDictName="传输网.本地接入层传输线路.光缆"/>
-	<content provinceDictCode="051201" groupDictName="传输网.本地接入层传输线路.管道"/>
-	<content provinceDictCode="051301" groupDictName="传输网.一干传输电路.一干传输电路"/>
-	<content provinceDictCode="051401" groupDictName="传输网.二干传输电路.二干传输电路"/>
-	<content provinceDictCode="051501" groupDictName="传输网.本地传输电路.本地传输电路"/>
-	<content provinceDictCode="060101" groupDictName="动力设备.干线枢纽动力设备.高低压变配电"/>
-	<content provinceDictCode="060102" groupDictName="动力设备.干线枢纽动力设备.UPS"/>
-	<content provinceDictCode="060103" groupDictName="动力设备.干线枢纽动力设备.蓄电池"/>
-	<content provinceDictCode="060104" groupDictName="动力设备.干线枢纽动力设备.油机发电机"/>
-	<content provinceDictCode="060201" groupDictName="动力设备.基站动力设备.开关电源"/>
-	<content provinceDictCode="069999" groupDictName="动力设备.其他.其他"/>
-	<content provinceDictCode="060105" groupDictName="动力设备.干线枢纽动力设备.开关电源"/>
-	<content provinceDictCode="060106" groupDictName="动力设备.干线枢纽动力设备.空调"/>
-	<content provinceDictCode="060202" groupDictName="动力设备.基站动力设备.UPS"/>
-	<content provinceDictCode="060203" groupDictName="动力设备.基站动力设备.蓄电池"/>
-	<content provinceDictCode="060204" groupDictName="动力设备.基站动力设备.油机发电机"/>
-	<content provinceDictCode="060205" groupDictName="动力设备.基站动力设备.空调"/>
-	<content provinceDictCode="080101" groupDictName="网管.总部网管系统.网管网"/>
-	<content provinceDictCode="080102" groupDictName="网管.总部网管系统.网管应用系统"/>
-	<content provinceDictCode="080103" groupDictName="网管.总部网管系统.网管安全设备"/>
-	<content provinceDictCode="080202" groupDictName="网管.省网管系统.网管应用系统"/>
-	<content provinceDictCode="080201" groupDictName="网管.省网管系统.网管网"/>
-	<content provinceDictCode="080203" groupDictName="网管.省网管系统.网管安全设备"/>
-	<content provinceDictCode="021101" groupDictName="交换网.智能巡检系统.智能维护"/>
-	<content provinceDictCode="030203" groupDictName="数据网.CMNET骨干网.端口"/>
-	<content provinceDictCode="030404" groupDictName="数据网.CMNET城域网.端口"/>
-	<content provinceDictCode="031301" groupDictName="数据网.彩铃.彩铃"/>
-	<content provinceDictCode="031401" groupDictName="数据网.短信中心.SMC"/>
-	<content provinceDictCode="060601" groupDictName="无线.主动性能监控.主动性能监控"/>
-	<content provinceDictCode="021201" groupDictName="交换网.主动性能监控.主动性能监控"/>
-	<content provinceDictCode="031501" groupDictName="数据网.主动性能监控.主动性能监控"/>
-	<content provinceDictCode="060701" groupDictName="无线.业务拨测.业务拨测"/>
-	<content provinceDictCode="010814" groupDictName="无线.业务监测.业务监测"/>
-	<content provinceDictCode="021301" groupDictName="交换网.业务监测.业务监测"/>
-	<content provinceDictCode="021401" groupDictName="交换网.业务拨测.业务拨测"/>
-	<content provinceDictCode="031601" groupDictName="数据网.业务拨测.业务拨测"/>
-	<content provinceDictCode="031701" groupDictName="数据网.业务监测.业务监测"/>
-	<content provinceDictCode="031106" groupDictName="数据网.智能网.路由器"/>
-	<content provinceDictCode="010101" groupDictName="无线.GSM无线网.BSC/PCU"/>
-	<content provinceDictCode="010102" groupDictName="无线.GSM无线网.BTS"/>
-	<content provinceDictCode="010201" groupDictName="无线.TD无线网.NodeB"/>
-	<content provinceDictCode="010202" groupDictName="无线.TD无线网.RNC"/>
-	<content provinceDictCode="019999" groupDictName="无线.其他.其他"/>
-	<content provinceDictCode="020101" groupDictName="交换网.国际交换网.ISC"/>
-	<content provinceDictCode="020201" groupDictName="交换网.国际信令网.ISTP"/>
-	<content provinceDictCode="020301" groupDictName="交换网.TDM省际汇接网.TMSC1"/>
-	<content provinceDictCode="020401" groupDictName="交换网.TDM省内汇接网.TMSC2"/>
-	<content provinceDictCode="020501" groupDictName="交换网.软交换汇接网.TMSC Server"/>
-	<content provinceDictCode="020601" groupDictName="交换网.本地网.MSC"/>
-	<content provinceDictCode="020602" groupDictName="交换网.本地网.GMSC"/>
-	<content provinceDictCode="020603" groupDictName="交换网.本地网.MSC Server"/>
-	<content provinceDictCode="020604" groupDictName="交换网.本地网.MGW"/>
-	<content provinceDictCode="020605" groupDictName="交换网.本地网.GMSC Server"/>
-	<content provinceDictCode="020606" groupDictName="交换网.本地网.GMGW"/>
-	<content provinceDictCode="020607" groupDictName="交换网.本地网.HLR"/>
-	<content provinceDictCode="020801" groupDictName="交换网.省际信令网.HSTP"/>
-	<content provinceDictCode="020901" groupDictName="交换网.省内信令网.LSTP"/>
-	<content provinceDictCode="029999" groupDictName="交换网.其他.其他"/>
-	<content provinceDictCode="010941" groupDictName="无线.智能巡检系统.智能维护"/>
-	<content provinceDictCode="031801" groupDictName="数据网.智能巡检系统.智能维护"/>
-	<content provinceDictCode="012001" groupDictName="无线.无线网.OMC"/>
-	<content provinceDictCode="050311" groupDictName="传输网.本地传输设备.PTN"/>
-	<content provinceDictCode="050312" groupDictName="传输网.本地传输设备.PON"/>
-	<content provinceDictCode="050313" groupDictName="传输网.本地传输设备.OTN"/>
-	<content provinceDictCode="050207" groupDictName="传输网.二干传输设备.PTN"/>
-	<content provinceDictCode="050208" groupDictName="传输网.二干传输设备.OTN"/>
-	<content provinceDictCode="050209" groupDictName="传输网.二干传输设备.PON"/>
-	<content provinceDictCode="040101" groupDictName="业务平台.彩铃平台.彩铃平台"/>
-	<content provinceDictCode="040201" groupDictName="业务平台.语音信箱系统.语音信箱系统"/>
-	<content provinceDictCode="040301" groupDictName="业务平台.来电提醒平台.来电提醒平台"/>
-	<content provinceDictCode="040401" groupDictName="业务平台.语音短信平台.语音短信平台"/>
-	<content provinceDictCode="040501" groupDictName="业务平台.12533会议电话系统.12533会议电话系统"/>
-	<content provinceDictCode="040601" groupDictName="业务平台.WAP系统.区域WAP"/>
-	<content provinceDictCode="040602" groupDictName="业务平台.WAP系统.省WAP"/>
-	<content provinceDictCode="040603" groupDictName="业务平台.WAP系统.安全设备"/>
-	<content provinceDictCode="040701" groupDictName="业务平台.短信中心.短信中心"/>
-	<content provinceDictCode="040801" groupDictName="业务平台.短信网关.国际网关"/>
-	<content provinceDictCode="040802" groupDictName="业务平台.短信网关.互联网关"/>
-	<content provinceDictCode="040803" groupDictName="业务平台.短信网关.行业网关"/>
-	<content provinceDictCode="040804" groupDictName="业务平台.短信网关.安全设备"/>
-	<content provinceDictCode="040901" groupDictName="业务平台.彩信中心.区域彩信中心"/>
-	<content provinceDictCode="040902" groupDictName="业务平台.彩信中心.省彩信中心"/>
-	<content provinceDictCode="040903" groupDictName="业务平台.彩信中心.安全设备"/>
-	<content provinceDictCode="041001" groupDictName="业务平台.彩信网关.国际网关"/>
-	<content provinceDictCode="041002" groupDictName="业务平台.彩信网关.互联网关"/>
-	<content provinceDictCode="041003" groupDictName="业务平台.彩信网关.行业网关"/>
-	<content provinceDictCode="041004" groupDictName="业务平台.彩信网关.安全设备"/>
-	<content provinceDictCode="041101" groupDictName="业务平台.根DNS.根DNS"/>
-	<content provinceDictCode="041102" groupDictName="业务平台.根DNS.安全设备"/>
-	<content provinceDictCode="041201" groupDictName="业务平台.Radius.Radius"/>
-	<content provinceDictCode="041202" groupDictName="业务平台.Radius.安全设备"/>
-	<content provinceDictCode="041301" groupDictName="业务平台.WLAN认证平台.Portral"/>
-	<content provinceDictCode="041302" groupDictName="业务平台.WLAN认证平台.Radius"/>
-	<content provinceDictCode="041303" groupDictName="业务平台.WLAN认证平台.安全设备"/>
-	<content provinceDictCode="041401" groupDictName="业务平台.DSMP系统.DSMP系统"/>
-	<content provinceDictCode="041402" groupDictName="业务平台.DSMP系统.安全设备"/>
-	<content provinceDictCode="041501" groupDictName="业务平台.MDC.MDC"/>
-	<content provinceDictCode="041502" groupDictName="业务平台.MDC.安全设备"/>
-	<content provinceDictCode="041601" groupDictName="业务平台.EMAIL系统.EMAIL系统"/>
-	<content provinceDictCode="041602" groupDictName="业务平台.EMAIL系统.安全设备"/>
-	<content provinceDictCode="041701" groupDictName="业务平台.通用下载平台.KJAVA"/>
-	<content provinceDictCode="041702" groupDictName="业务平台.通用下载平台.通用下载平台"/>
-	<content provinceDictCode="041703" groupDictName="业务平台.通用下载平台.安全设备"/>
-	<content provinceDictCode="041801" groupDictName="业务平台.流媒体.流媒体"/>
-	<content provinceDictCode="041802" groupDictName="业务平台.流媒体.安全设备"/>
-	<content provinceDictCode="041901" groupDictName="业务平台.USSD系统.USSD系统"/>
-	<content provinceDictCode="041902" groupDictName="业务平台.USSD系统.安全设备"/>
-	<content provinceDictCode="042001" groupDictName="业务平台.PIM.PIM"/>
-	<content provinceDictCode="042002" groupDictName="业务平台.PIM.安全设备"/>
-	<content provinceDictCode="042101" groupDictName="业务平台.LBS系统.AGPS"/>
-	<content provinceDictCode="042102" groupDictName="业务平台.LBS系统.CELLID"/>
-	<content provinceDictCode="042103" groupDictName="业务平台.LBS系统.安全设备"/>
-	<content provinceDictCode="042201" groupDictName="业务平台.飞信.飞信"/>
-	<content provinceDictCode="042202" groupDictName="业务平台.飞信.安全设备"/>
-	<content provinceDictCode="042301" groupDictName="业务平台.PUSHMAIL.PUSHMAIL"/>
-	<content provinceDictCode="042202" groupDictName="业务平台.PUSHMAIL.安全设备"/>
-	<content provinceDictCode="042401" groupDictName="业务平台.视频会议.视频会议"/>
-	<content provinceDictCode="042402" groupDictName="业务平台.视频会议.安全设备"/>
-	<content provinceDictCode="042501" groupDictName="业务平台.视频留言.视频留言"/>
-	<content provinceDictCode="042502" groupDictName="业务平台.视频留言.安全设备"/>
-	<content provinceDictCode="042601" groupDictName="业务平台.视频共享.视频共享"/>
-	<content provinceDictCode="042602" groupDictName="业务平台.视频共享.安全设备"/>
-	<content provinceDictCode="042701" groupDictName="业务平台.SharingX.SharingX"/>
-	<content provinceDictCode="042702" groupDictName="业务平台.SharingX.安全设备"/>
-	<content provinceDictCode="042801" groupDictName="业务平台.多媒体彩铃.多媒体彩铃"/>
-	<content provinceDictCode="042802" groupDictName="业务平台.多媒体彩铃.安全设备"/>
-	<content provinceDictCode="042901" groupDictName="业务平台.POC.POC"/>
-	<content provinceDictCode="042902" groupDictName="业务平台.POC.安全设备"/>
-	<content provinceDictCode="043001" groupDictName="业务平台.DCD快讯.DCD快讯"/>
-	<content provinceDictCode="043002" groupDictName="业务平台.DCD快讯.安全设备"/>
-	<content provinceDictCode="043101" groupDictName="业务平台.DM.DM"/>
-	<content provinceDictCode="043102" groupDictName="业务平台.DM.安全设备"/>
-	<content provinceDictCode="043201" groupDictName="业务平台.小区短信.小区短信"/>
-	<content provinceDictCode="043202" groupDictName="业务平台.小区短信.安全设备"/>
-	<content provinceDictCode="049999" groupDictName="业务平台.其他.其他"/>
-	<content provinceDictCode="050101" groupDictName="传输网.一干传输设备.WDM"/>
-	<content provinceDictCode="050102" groupDictName="传输网.一干传输设备.SDH"/>
-	<content provinceDictCode="050103" groupDictName="传输网.一干传输设备.卫星"/>
-	<content provinceDictCode="050104" groupDictName="传输网.一干传输设备.ODF"/>
-	<content provinceDictCode="050105" groupDictName="传输网.一干传输设备.DDF"/>
-	<content provinceDictCode="050202" groupDictName="传输网.二干传输设备.SDH"/>
-	<content provinceDictCode="050203" groupDictName="传输网.二干传输设备.ASON"/>
-	<content provinceDictCode="050204" groupDictName="传输网.二干传输设备.卫星"/>
-	<content provinceDictCode="050205" groupDictName="传输网.二干传输设备.ODF"/>
-	<content provinceDictCode="050206" groupDictName="传输网.二干传输设备.DDF"/>
-	<content provinceDictCode="050301" groupDictName="传输网.本地传输设备.WDM"/>
-	<content provinceDictCode="050302" groupDictName="传输网.本地传输设备.SDH"/>
-	<content provinceDictCode="050303" groupDictName="传输网.本地传输设备.ASON"/>
-	<content provinceDictCode="050304" groupDictName="传输网.本地传输设备.MSTP"/>
-	<content provinceDictCode="050305" groupDictName="传输网.本地传输设备.PDH"/>
-	<content provinceDictCode="050306" groupDictName="传输网.本地传输设备.卫星"/>
-	<content provinceDictCode="050307" groupDictName="传输网.本地传输设备.微波"/>
-	<content provinceDictCode="050308" groupDictName="传输网.本地传输设备.DXC"/>
-	<content provinceDictCode="050310" groupDictName="传输网.本地传输设备.DDF"/>
-	<content provinceDictCode="050309" groupDictName="传输网.本地传输设备.ODF"/>
-	<content provinceDictCode="050401" groupDictName="传输网.一干传输线路.管道"/>
-	<content provinceDictCode="050402" groupDictName="传输网.一干传输线路.光缆"/>
-	<content provinceDictCode="050501" groupDictName="传输网.二干传输线路.管道"/>
-	<content provinceDictCode="050502" groupDictName="传输网.二干传输线路.光缆"/>
-	<content provinceDictCode="050601" groupDictName="传输网.本地骨干层传输线路.管道"/>
-	<content provinceDictCode="050602" groupDictName="传输网.本地骨干层传输线路.光缆"/>
-	<content provinceDictCode="050701" groupDictName="传输网.时钟同步网.PRC"/>
-	<content provinceDictCode="050702" groupDictName="传输网.时钟同步网.LPR"/>
-	<content provinceDictCode="050703" groupDictName="传输网.时钟同步网.BITS"/>
-	<content provinceDictCode="059999" groupDictName="传输网.其他.其他"/>
-	<content provinceDictCode="070101" groupDictName="应急设备.应急电源.应急油机车"/>
-	<content provinceDictCode="070102" groupDictName="应急设备.应急电源.便携油机"/>
-	<content provinceDictCode="070201" groupDictName="应急设备.应急通信车.具有BTS功能"/>
-	<content provinceDictCode="070202" groupDictName="应急设备.应急通信车.具有BSC功能"/>
-	<content provinceDictCode="070203" groupDictName="应急设备.应急通信车.具有MSC功能"/>
-	<content provinceDictCode="070299" groupDictName="应急设备.应急通信车.其他"/>
-	<content provinceDictCode="070301" groupDictName="应急设备.应急传输设备.应急卫星传输"/>
-	<content provinceDictCode="070302" groupDictName="应急设备.应急传输设备.应急微波传输"/>
-	<content provinceDictCode="079999" groupDictName="应急设备.其他.其他"/>
-	<content provinceDictCode="089999" groupDictName="网管.其他.其他"/>
-	<content provinceDictCode="989898" groupDictName="综合.综合.综合"/>
-	<content provinceDictCode="999999" groupDictName="其他.其他.其他"/>
-	<content provinceDictCode="080206" groupDictName="网管.省网管系统.TDOMC"/>
-	<content provinceDictCode="080207" groupDictName="网管.省网管系统.LTOMC"/>
-	<content provinceDictCode="010509" groupDictName="无线.直放站及覆盖延伸系统.直放站"/>
-	<content provinceDictCode="011401" groupDictName="无线.集中性能监控.集中性能监控"/>
-	<content provinceDictCode="021801" groupDictName="交换网.集中性能监控.集中性能监控"/>
-	<content provinceDictCode="050210" groupDictName="传输网.二干传输设备.网管"/>
-	<content provinceDictCode="050314" groupDictName="传输网.本地传输设备.网管"/>
-	<content provinceDictCode="031107" groupDictName="数据网.智能网.SAU"/>
-	<content provinceDictCode="060401" groupDictName="动力设备.动力.UPS电池"/>
-	<content provinceDictCode="060402" groupDictName="动力设备.动力.UPS配电屏"/>
-	<content provinceDictCode="060403" groupDictName="动力设备.动力.UPS设备"/>
-	<content provinceDictCode="060404" groupDictName="动力设备.动力.低压配电"/>
-	<content provinceDictCode="060405" groupDictName="动力设备.动力.发电机组"/>
-	<content provinceDictCode="060406" groupDictName="动力设备.动力.高压配电"/>
-	<content provinceDictCode="060407" groupDictName="动力设备.动力.基础电池"/>
-	<content provinceDictCode="060408" groupDictName="动力设备.动力.基站UPS"/>
-	<content provinceDictCode="060409" groupDictName="动力设备.动力.基站固定油机"/>
-	<content provinceDictCode="060410" groupDictName="动力设备.动力.基站开关电源"/>
-	<content provinceDictCode="060411" groupDictName="动力设备.动力.专用空调(风冷)"/>
-	<content provinceDictCode="060412" groupDictName="动力设备.动力.专用空调(通冷冻水型)"/>
-	<content provinceDictCode="060413" groupDictName="动力设备.动力.普通空调"/>
-	<content provinceDictCode="060414" groupDictName="动力设备.动力.智能通风/换热系统"/>
-	<content provinceDictCode="060415" groupDictName="动力设备.动力.太阳能/风能设备"/>
-	<content provinceDictCode="060416" groupDictName="动力设备.动力.开关电源"/>
-	<content provinceDictCode="060417" groupDictName="动力设备.动力.基站智能门禁"/>
-	<content provinceDictCode="060418" groupDictName="动力设备.动力.基站智能电表"/>
-	<content provinceDictCode="060419" groupDictName="动力设备.动力.中央空调(水冷)"/>
-	<content provinceDictCode="060505" groupDictName="动力设备.监控设备.机房智能门禁"/>
-	<content provinceDictCode="060420" groupDictName="动力设备.动力.直流配电屏"/>
-	<content provinceDictCode="060421" groupDictName="动力设备.动力.交流配电屏"/>
-	<content provinceDictCode="060501" groupDictName="动力设备.监控设备.机房环境"/>
-	<content provinceDictCode="060502" groupDictName="动力设备.监控设备.基站环境"/>
-	<content provinceDictCode="060503" groupDictName="动力设备.监控设备.极早期烟感设备"/>
-	<content provinceDictCode="060504" groupDictName="动力设备.监控设备.监控设备"/>
-	<content provinceDictCode="060506" groupDictName="动力设备.监控设备.节点环境"/>
-	<content provinceDictCode="060507" groupDictName="动力设备.监控设备.节点智能门禁"/>
-	<content provinceDictCode="060422" groupDictName="动力设备.动力.高压直流"/>
-	<content provinceDictCode="060423" groupDictName="动力设备.动力.机房智能电表"/>
-	<content provinceDictCode="060424" groupDictName="动力设备.动力.基站基础电池"/>
-	<content provinceDictCode="060425" groupDictName="动力设备.动力.节点UPS设备"/>
-	<content provinceDictCode="060426" groupDictName="动力设备.动力.节点固定油机"/>
-	<content provinceDictCode="060427" groupDictName="动力设备.动力.节点基础电池"/>
-	<content provinceDictCode="060428" groupDictName="动力设备.动力.节点开关电源"/>
-	<content provinceDictCode="060429" groupDictName="动力设备.动力.节点智能电表"/>
-	<content provinceDictCode="010204" groupDictName="无线.TD无线网.TD-OMC"/>
-	<content provinceDictCode="060430" groupDictName="动力设备.动力.磷酸铁锂蓄电池"/>
-	<content provinceDictCode="021601" groupDictName="交换网.场景性能监控.日常管理场景"/>
-	<content provinceDictCode="021602" groupDictName="交换网.场景性能监控.节假日场景"/>
-	<content provinceDictCode="021603" groupDictName="交换网.场景性能监控.汛情"/>
-	<content provinceDictCode="021604" groupDictName="交换网.场景性能监控.突发事件场景"/>
-	<content provinceDictCode="021605" groupDictName="交换网.场景性能监控.重大活动场景"/>
-	<content provinceDictCode="021606" groupDictName="交换网.场景性能监控.重点区域场景"/>
-	<content provinceDictCode="021607" groupDictName="交换网.场景性能监控.新技术新业务场景监控"/>
-	<content provinceDictCode="021608" groupDictName="交换网.场景性能监控.高校场景监控"/>
-	<content provinceDictCode="021609" groupDictName="交换网.场景性能监控.高铁场景监控"/>
-	<content provinceDictCode="021610" groupDictName="交换网.场景性能监控.城市道路场景监控"/>
-	<content provinceDictCode="011201" groupDictName="无线.场景性能监控.日常管理场景"/>
-	<content provinceDictCode="011202" groupDictName="无线.场景性能监控.节假日场景"/>
-	<content provinceDictCode="011203" groupDictName="无线.场景性能监控.汛情"/>
-	<content provinceDictCode="011204" groupDictName="无线.场景性能监控.突发事件场景"/>
-	<content provinceDictCode="011205" groupDictName="无线.场景性能监控.重大活动场景"/>
-	<content provinceDictCode="011206" groupDictName="无线.场景性能监控.重点区域场景"/>
-	<content provinceDictCode="011207" groupDictName="无线.场景性能监控.新技术新业务场景监控"/>
-	<content provinceDictCode="011208" groupDictName="无线.场景性能监控.高校场景监控"/>
-	<content provinceDictCode="011209" groupDictName="无线.场景性能监控.高铁场景监控"/>
-	<content provinceDictCode="011210" groupDictName="无线.场景性能监控.城市道路场景监控"/>
-	<content provinceDictCode="032001" groupDictName="数据网.场景性能监控.日常管理场景"/>
-	<content provinceDictCode="032002" groupDictName="数据网.场景性能监控.节假日场景"/>
-	<content provinceDictCode="032003" groupDictName="数据网.场景性能监控.汛情"/>
-	<content provinceDictCode="032004" groupDictName="数据网.场景性能监控.突发事件场景"/>
-	<content provinceDictCode="032005" groupDictName="数据网.场景性能监控.重大活动场景"/>
-	<content provinceDictCode="032006" groupDictName="数据网.场景性能监控.重点区域场景"/>
-	<content provinceDictCode="032007" groupDictName="数据网.场景性能监控.新技术新业务场景监控"/>
-	<content provinceDictCode="032008" groupDictName="数据网.场景性能监控.高校场景监控"/>
-	<content provinceDictCode="032009" groupDictName="数据网.场景性能监控.高铁场景监控"/>
-	<content provinceDictCode="032010" groupDictName="数据网.场景性能监控.城市道路场景监控"/>
-	<content provinceDictCode="043901" groupDictName="业务平台.场景性能监控.日常管理场景"/>
-	<content provinceDictCode="043902" groupDictName="业务平台.场景性能监控.节假日场景"/>
-	<content provinceDictCode="043903" groupDictName="业务平台.场景性能监控.汛情"/>
-	<content provinceDictCode="043904" groupDictName="业务平台.场景性能监控.突发事件场景"/>
-	<content provinceDictCode="043905" groupDictName="业务平台.场景性能监控.重大活动场景"/>
-	<content provinceDictCode="043906" groupDictName="业务平台.场景性能监控.重点区域场景"/>
-	<content provinceDictCode="043907" groupDictName="业务平台.场景性能监控.新技术新业务场景监控"/>
-	<content provinceDictCode="043908" groupDictName="业务平台.场景性能监控.高校场景监控"/>
-	<content provinceDictCode="043909" groupDictName="业务平台.场景性能监控.高铁场景监控"/>
-	<content provinceDictCode="043910" groupDictName="业务平台.场景性能监控.城市道路场景监控"/>
-	<content provinceDictCode="051601" groupDictName="传输网.场景性能监控.日常管理场景"/>
-	<content provinceDictCode="051602" groupDictName="传输网.场景性能监控.节假日场景"/>
-	<content provinceDictCode="051603" groupDictName="传输网.场景性能监控.汛情"/>
-	<content provinceDictCode="051604" groupDictName="传输网.场景性能监控.突发事件场景"/>
-	<content provinceDictCode="051605" groupDictName="传输网.场景性能监控.重大活动场景"/>
-	<content provinceDictCode="051606" groupDictName="传输网.场景性能监控.重点区域场景"/>
-	<content provinceDictCode="051607" groupDictName="传输网.场景性能监控.新技术新业务场景监控"/>
-	<content provinceDictCode="051608" groupDictName="传输网.场景性能监控.高校场景监控"/>
-	<content provinceDictCode="051609" groupDictName="传输网.场景性能监控.高铁场景监控"/>
-	<content provinceDictCode="051610" groupDictName="传输网.场景性能监控.城市道路场景监控"/>
-	<content provinceDictCode="080501" groupDictName="网管.场景性能监控.日常管理场景"/>
-	<content provinceDictCode="080502" groupDictName="网管.场景性能监控.节假日场景"/>
-	<content provinceDictCode="080503" groupDictName="网管.场景性能监控.汛情"/>
-	<content provinceDictCode="080504" groupDictName="网管.场景性能监控.突发事件场景"/>
-	<content provinceDictCode="080505" groupDictName="网管.场景性能监控.重大活动场景"/>
-	<content provinceDictCode="080506" groupDictName="网管.场景性能监控.重点区域场景"/>
-	<content provinceDictCode="080507" groupDictName="网管.场景性能监控.新技术新业务场景监控"/>
-	<content provinceDictCode="080508" groupDictName="网管.场景性能监控.高校场景监控"/>
-	<content provinceDictCode="080509" groupDictName="网管.场景性能监控.高铁场景监控"/>
-	<content provinceDictCode="080510" groupDictName="网管.场景性能监控.城市道路场景监控"/>
-	<content provinceDictCode="070501" groupDictName="应急设备.场景性能监控.日常管理场景"/>
-	<content provinceDictCode="070502" groupDictName="应急设备.场景性能监控.节假日场景"/>
-	<content provinceDictCode="070503" groupDictName="应急设备.场景性能监控.汛情"/>
-	<content provinceDictCode="070504" groupDictName="应急设备.场景性能监控.突发事件场景"/>
-	<content provinceDictCode="070505" groupDictName="应急设备.场景性能监控.重大活动场景"/>
-	<content provinceDictCode="070506" groupDictName="应急设备.场景性能监控.重点区域场景"/>
-	<content provinceDictCode="070507" groupDictName="应急设备.场景性能监控.新技术新业务场景监控"/>
-	<content provinceDictCode="070508" groupDictName="应急设备.场景性能监控.高校场景监控"/>
-	<content provinceDictCode="070509" groupDictName="应急设备.场景性能监控.高铁场景监控"/>
-	<content provinceDictCode="070510" groupDictName="应急设备.场景性能监控.城市道路场景监控"/>
-	<content provinceDictCode="030110" groupDictName="数据网.GPRS.PCC"/>
-	<content provinceDictCode="120101" groupDictName="全业务接入.家庭宽带.ONU"/>
-	<content provinceDictCode="110101" groupDictName="集团客户业务.集客专线.集客专线"/>
-	<content provinceDictCode="110201" groupDictName="集团客户业务.语音专线.语音专线"/>
-	<content provinceDictCode="110301" groupDictName="集团客户业务.互联网专线.互联网专线"/>
-	<content provinceDictCode="110401" groupDictName="集团客户业务.数据专线.数据专线"/>
-	<content provinceDictCode="110501" groupDictName="集团客户业务.APN业务.APN业务"/>
-	<content provinceDictCode="110601" groupDictName="集团客户业务.集团短、彩信业务.集团短、彩信业务"/>
-	<content provinceDictCode="110701" groupDictName="集团客户业务.其它.其他"/>
-	<content provinceDictCode="020902" groupDictName="交换网.省内信令网.LDRA"/>
-	<content provinceDictCode="050106" groupDictName="传输网.一干传输设备.OTN"/>
-	<content provinceDictCode="050107" groupDictName="传输网.一干传输设备.PTN"/>
-	<content provinceDictCode="032401" groupDictName="数据网.IP承载网CE.软交换类CE"/>
-	<content provinceDictCode="032402" groupDictName="数据网.IP承载网CE.新业务类CE"/>
-	<content provinceDictCode="010103" groupDictName="无线.GSM无线网.BSC/RNC"/>
-	<content provinceDictCode="021701" groupDictName="交换网.性能场景监控.节假日场景"/>
-	<content provinceDictCode="021702" groupDictName="交换网.性能场景监控.重大活动场景"/>
-	<content provinceDictCode="051701" groupDictName="传输网.传输本地网.SDH"/>
-	<content provinceDictCode="051702" groupDictName="传输网.传输本地网.PTN"/>
-	<content provinceDictCode="051703" groupDictName="传输网.传输本地网.OTN"/>
-	<content provinceDictCode="051704" groupDictName="传输网.传输本地网.PON"/>
-	<content provinceDictCode="051705" groupDictName="传输网.传输本地网.WDM"/>
-	<content provinceDictCode="051402" groupDictName="传输网.二干传输电路.SDH"/>
-	<content provinceDictCode="051403" groupDictName="传输网.二干传输电路.WDM"/>
-	<content provinceDictCode="051404" groupDictName="传输网.二干传输电路.OTN"/>
-	<content provinceDictCode="051405" groupDictName="传输网.二干传输电路.PTN"/>
-	<content provinceDictCode="051801" groupDictName="传输网.二干传输网.SDH"/>
-	<content provinceDictCode="051802" groupDictName="传输网.二干传输网.WDM"/>
-	<content provinceDictCode="051803" groupDictName="传输网.二干传输网.OTN"/>
-	<content provinceDictCode="050504" groupDictName="传输网.二干传输线路.SDH"/>
-	<content provinceDictCode="050505" groupDictName="传输网.二干传输线路.WDM"/>
-	<content provinceDictCode="050506" groupDictName="传输网.二干传输线路.OTN"/>
-	<content provinceDictCode="050507" groupDictName="传输网.二干传输线路.PTN"/>
-	<content provinceDictCode="051302" groupDictName="传输网.一干传输电路.SDH"/>
-	<content provinceDictCode="051303" groupDictName="传输网.一干传输电路.WDM"/>
-	<content provinceDictCode="051304" groupDictName="传输网.一干传输电路.OTN"/>
-	<content provinceDictCode="051305" groupDictName="传输网.一干传输电路.PTN"/>
-	<content provinceDictCode="050404" groupDictName="传输网.一干传输线路.SDH"/>
-	<content provinceDictCode="050405" groupDictName="传输网.一干传输线路.WDM"/>
-	<content provinceDictCode="050406" groupDictName="传输网.一干传输线路.OTN"/>
-	<content provinceDictCode="050407" groupDictName="传输网.一干传输线路.PTN"/>
-	<content provinceDictCode="030604" groupDictName="数据网.IP承载网CE.软交换类CE"/>
-	<content provinceDictCode="030605" groupDictName="数据网.IP承载网CE.新业务类CE"/>
-	<content provinceDictCode="030101" groupDictName="数据网.GPRS.GGSN"/>
-	<content provinceDictCode="030102" groupDictName="数据网.GPRS.SGSN"/>
-	<content provinceDictCode="030103" groupDictName="数据网.GPRS.BG"/>
-	<content provinceDictCode="030104" groupDictName="数据网.GPRS.CG"/>
-	<content provinceDictCode="030105" groupDictName="数据网.GPRS.DNS"/>
-	<content provinceDictCode="030106" groupDictName="数据网.GPRS.安全设备"/>
-	<content provinceDictCode="030201" groupDictName="数据网.CMNET骨干网.路由器"/>
-	<content provinceDictCode="030202" groupDictName="数据网.CMNET骨干网.交换机"/>
-	<content provinceDictCode="030301" groupDictName="数据网.CMNET省网.路由器"/>
-	<content provinceDictCode="030302" groupDictName="数据网.CMNET省网.交换机"/>
-	<content provinceDictCode="030303" groupDictName="数据网.CMNET省网.安全设备"/>
-	<content provinceDictCode="030401" groupDictName="数据网.CMNET城域网.路由器"/>
-	<content provinceDictCode="030402" groupDictName="数据网.CMNET城域网.交换机"/>
-	<content provinceDictCode="030403" groupDictName="数据网.CMNET城域网.安全设备"/>
-	<content provinceDictCode="030501" groupDictName="数据网.IP承载网.路由器"/>
-	<content provinceDictCode="030502" groupDictName="数据网.IP承载网.交换机"/>
-	<content provinceDictCode="030503" groupDictName="数据网.IP承载网.安全设备"/>
-	<content provinceDictCode="030701" groupDictName="数据网.WLAN网络.AP"/>
-	<content provinceDictCode="030702" groupDictName="数据网.WLAN网络.AC"/>
-	<content provinceDictCode="030703" groupDictName="数据网.WLAN网络.路由器"/>
-	<content provinceDictCode="030704" groupDictName="数据网.WLAN网络.交换机"/>
-	<content provinceDictCode="030705" groupDictName="数据网.WLAN网络.安全设备"/>
-	<content provinceDictCode="030801" groupDictName="数据网.MDCN.路由器"/>
-	<content provinceDictCode="030802" groupDictName="数据网.MDCN.交换机"/>
-	<content provinceDictCode="030803" groupDictName="数据网.MDCN.安全设备"/>
-	<content provinceDictCode="030901" groupDictName="数据网.时间同步网.NTP Server"/>
-	<content provinceDictCode="039999" groupDictName="数据网.其他.其他"/>
-	<content provinceDictCode="030107" groupDictName="数据网.GPRS.主机"/>
-	<content provinceDictCode="030108" groupDictName="数据网.GPRS.交换机"/>
-	<content provinceDictCode="030109" groupDictName="数据网.GPRS.防火墙"/>
-	<content provinceDictCode="011101" groupDictName="无线.CM-IMS.SBC"/>
-	<content provinceDictCode="021501" groupDictName="交换网.CM-IMS.MRFC"/>
-	<content provinceDictCode="021502" groupDictName="交换网.CM-IMS.MRFP"/>
-	<content provinceDictCode="021503" groupDictName="交换网.CM-IMS.MGCF"/>
-	<content provinceDictCode="021504" groupDictName="交换网.CM-IMS.HSS/SLF"/>
-	<content provinceDictCode="021505" groupDictName="交换网.CM-IMS.P-CSCF"/>
-	<content provinceDictCode="021506" groupDictName="交换网.CM-IMS.S-CSCF"/>
-	<content provinceDictCode="021507" groupDictName="交换网.CM-IMS.I-CSCF"/>
-	<content provinceDictCode="021508" groupDictName="交换网.CM-IMS.IM-MGW"/>
-	<content provinceDictCode="021509" groupDictName="交换网.CM-IMS.CG"/>
-	<content provinceDictCode="043701" groupDictName="业务平台.CM-IMS（AS）.多媒体电话业务（MMTel）"/>
-	<content provinceDictCode="043702" groupDictName="业务平台.CM-IMS（AS）.统一Centrex业务"/>
-	<content provinceDictCode="043701" groupDictName="业务平台.信令监测.工单鉴权"/>
-	<content provinceDictCode="130101" groupDictName="资源类系统.综合资源管理系统.其他"/>
-	<content provinceDictCode="011404" groupDictName="无线.集中性能监控.互联网端到端性能监控"/>
-	<content provinceDictCode="140101" groupDictName="互联网.集中性能监控.互联网端到端性能监控"/>
-	<content provinceDictCode="032602" groupDictName="数据网.集中性能监控.互联网端到端性能监控"/>
-	<content provinceDictCode="011501" groupDictName="无线.集中性能管理.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="011502" groupDictName="无线.集中性能管理.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="011503" groupDictName="无线.集中性能管理.实时业务质量监控保障"/>
-	<content provinceDictCode="011504" groupDictName="无线.集中性能管理.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="011505" groupDictName="无线.集中性能管理.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="021901" groupDictName="交换网.集中性能管理.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="021902" groupDictName="交换网.集中性能管理.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="021903" groupDictName="交换网.集中性能管理.实时业务质量监控保障"/>
-	<content provinceDictCode="021904" groupDictName="交换网.集中性能管理.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="021905" groupDictName="交换网.集中性能管理.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="140202" groupDictName="互联网.集中性能管理.实时业务质量监控保障"/>
-	<content provinceDictCode="140201" groupDictName="互联网.集中性能管理.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="140203" groupDictName="互联网.集中性能管理.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="140204" groupDictName="互联网.集中性能管理.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="061101" groupDictName="动力设备.通信机楼.高压配电"/>
-	<content provinceDictCode="061104" groupDictName="动力设备.通信机楼.低压直流配电"/>
-	<content provinceDictCode="061105" groupDictName="动力设备.通信机楼.发电机组"/>
-	<content provinceDictCode="061106" groupDictName="动力设备.通信机楼.开关电源"/>
-	<content provinceDictCode="021510" groupDictName="交换网.CM-IMS.PSBC"/>
-	<content provinceDictCode="011402" groupDictName="无线.集中性能监控.CSFB性能监控"/>
-	<content provinceDictCode="011403" groupDictName="无线.集中性能监控.2G性能监控"/>
-	<content provinceDictCode="061103" groupDictName="动力设备.通信机楼.变压器"/>
-	<content provinceDictCode="061107" groupDictName="动力设备.通信机楼.铅酸电池"/>
-	<content provinceDictCode="061108" groupDictName="动力设备.通信机楼.UPS设备"/>
-	<content provinceDictCode="061109" groupDictName="动力设备.通信机楼.UPS配电"/>
-	<content provinceDictCode="061110" groupDictName="动力设备.通信机楼.机房专用空调"/>
-	<content provinceDictCode="061112" groupDictName="动力设备.通信机楼.中央空调主机"/>
-	<content provinceDictCode="061113" groupDictName="动力设备.通信机楼.变换设备"/>
-	<content provinceDictCode="061114" groupDictName="动力设备.通信机楼.普通空调"/>
-	<content provinceDictCode="061115" groupDictName="动力设备.通信机楼.极早期烟感"/>
-	<content provinceDictCode="061116" groupDictName="动力设备.通信机楼.机房环境"/>
-	<content provinceDictCode="061118" groupDictName="动力设备.通信机楼.锂电池"/>
-	<content provinceDictCode="061119" groupDictName="动力设备.通信机楼.动环监控"/>
-	<content provinceDictCode="061120" groupDictName="动力设备.通信机楼.智能通风换热"/>
-	<content provinceDictCode="061121" groupDictName="动力设备.通信机楼.风光设备"/>
-	<content provinceDictCode="061122" groupDictName="动力设备.通信机楼.高压直流电源"/>
-	<content provinceDictCode="061125" groupDictName="动力设备.通信机楼.智能门禁"/>
-	<content provinceDictCode="061201" groupDictName="动力设备.传输节点.高压配电"/>
-	<content provinceDictCode="061202" groupDictName="动力设备.传输节点.低压交流配电"/>
-	<content provinceDictCode="061203" groupDictName="动力设备.传输节点.变压器"/>
-	<content provinceDictCode="061205" groupDictName="动力设备.传输节点.发电机组"/>
-	<content provinceDictCode="061206" groupDictName="动力设备.传输节点.开关电源"/>
-	<content provinceDictCode="061207" groupDictName="动力设备.传输节点.铅酸电池"/>
-	<content provinceDictCode="061208" groupDictName="动力设备.传输节点.UPS设备"/>
-	<content provinceDictCode="061209" groupDictName="动力设备.传输节点.UPS配电"/>
-	<content provinceDictCode="061210" groupDictName="动力设备.传输节点.机房专用空调"/>
-	<content provinceDictCode="061211" groupDictName="动力设备.传输节点.中央空调末端"/>
-	<content provinceDictCode="061212" groupDictName="动力设备.传输节点.中央空调主机"/>
-	<content provinceDictCode="061213" groupDictName="动力设备.传输节点.变换设备"/>
-	<content provinceDictCode="061214" groupDictName="动力设备.传输节点.普通空调"/>
-	<content provinceDictCode="061215" groupDictName="动力设备.传输节点.极早期烟感"/>
-	<content provinceDictCode="061216" groupDictName="动力设备.传输节点.机房环境"/>
-	<content provinceDictCode="061217" groupDictName="动力设备.传输节点.电池恒温箱"/>
-	<content provinceDictCode="061219" groupDictName="动力设备.传输节点.动环监控"/>
-	<content provinceDictCode="061220" groupDictName="动力设备.传输节点.智能通风换热"/>
-	<content provinceDictCode="061222" groupDictName="动力设备.传输节点.高压直流电源"/>
-	<content provinceDictCode="061223" groupDictName="动力设备.传输节点.高压直流电源配电"/>
-	<content provinceDictCode="061224" groupDictName="动力设备.传输节点.智能电表"/>
-	<content provinceDictCode="061302" groupDictName="动力设备.通信基站.低压交流配电"/>
-	<content provinceDictCode="061303" groupDictName="动力设备.通信基站.变压器"/>
-	<content provinceDictCode="061304" groupDictName="动力设备.通信基站.低压直流配电"/>
-	<content provinceDictCode="061305" groupDictName="动力设备.通信基站.发电机组"/>
-	<content provinceDictCode="061306" groupDictName="动力设备.通信基站.开关电源"/>
-	<content provinceDictCode="061307" groupDictName="动力设备.通信基站.铅酸电池"/>
-	<content provinceDictCode="061309" groupDictName="动力设备.通信基站.UPS配电"/>
-	<content provinceDictCode="061310" groupDictName="动力设备.通信基站.机房专用空调"/>
-	<content provinceDictCode="061311" groupDictName="动力设备.通信基站.中央空调末端"/>
-	<content provinceDictCode="061312" groupDictName="动力设备.通信基站.中央空调主机"/>
-	<content provinceDictCode="061314" groupDictName="动力设备.通信基站.普通空调"/>
-	<content provinceDictCode="061315" groupDictName="动力设备.通信基站.极早期烟感"/>
-	<content provinceDictCode="061316" groupDictName="动力设备.通信基站.机房环境"/>
-	<content provinceDictCode="061317" groupDictName="动力设备.通信基站.电池恒温箱"/>
-	<content provinceDictCode="051706" groupDictName="传输网.传输本地网.PORT"/>
-	<content provinceDictCode="061102" groupDictName="动力设备.通信机楼.低压交流配电"/>
-	<content provinceDictCode="061111" groupDictName="动力设备.通信机楼.中央空调末端"/>
-	<content provinceDictCode="061124" groupDictName="动力设备.通信机楼.智能电表"/>
-	<content provinceDictCode="061225" groupDictName="动力设备.传输节点.智能门禁"/>
-	<content provinceDictCode="061301" groupDictName="动力设备.通信基站.高压配电"/>
-	<content provinceDictCode="061318" groupDictName="动力设备.通信基站.锂电池"/>
-	<content provinceDictCode="061321" groupDictName="动力设备.通信基站.风光设备"/>
-	<content provinceDictCode="061322" groupDictName="动力设备.通信基站.高压直流电源"/>
-	<content provinceDictCode="061323" groupDictName="动力设备.通信基站.高压直流电源配电"/>
-	<content provinceDictCode="061324" groupDictName="动力设备.通信基站.智能电表"/>
-	<content provinceDictCode="061325" groupDictName="动力设备.通信基站.智能门禁"/>
-	<content provinceDictCode="120102" groupDictName="全业务接入.家庭宽带.OLT"/>
-	<content provinceDictCode="120103" groupDictName="全业务接入.家庭宽带.BRAS"/>
-	<content provinceDictCode="130201" groupDictName="资源类系统.传输管线资源管理系统.其他"/>
-	<content provinceDictCode="061204" groupDictName="动力设备.传输节点.低压直流配电"/>
-	<content provinceDictCode="061117" groupDictName="动力设备.通信机楼.电池恒温箱"/>
-	<content provinceDictCode="061123" groupDictName="动力设备.通信机楼.高压直流电源配电"/>
-	<content provinceDictCode="061218" groupDictName="动力设备.传输节点.锂电池"/>
-	<content provinceDictCode="061221" groupDictName="动力设备.传输节点.风光设备"/>
-	<content provinceDictCode="061308" groupDictName="动力设备.通信基站.UPS设备"/>
-	<content provinceDictCode="061313" groupDictName="动力设备.通信基站.变换设备"/>
-	<content provinceDictCode="061319" groupDictName="动力设备.通信基站.动环监控"/>
-	<content provinceDictCode="061320" groupDictName="动力设备.通信基站.智能通风换热"/>
-	<content provinceDictCode="150101" groupDictName="集中性能端到端分析.核心网.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="150102" groupDictName="集中性能端到端分析.核心网.客户感知溯源分析"/>
-	<content provinceDictCode="150103" groupDictName="集中性能端到端分析.核心网.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="150104" groupDictName="集中性能端到端分析.核心网.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="150105" groupDictName="集中性能端到端分析.核心网.实时业务质量"/>
-	<content provinceDictCode="150106" groupDictName="集中性能端到端分析.核心网.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="150201" groupDictName="集中性能端到端分析.无线.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="150202" groupDictName="集中性能端到端分析.无线.客户感知溯源分析"/>
-	<content provinceDictCode="150203" groupDictName="集中性能端到端分析.无线.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="150204" groupDictName="集中性能端到端分析.无线.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="150205" groupDictName="集中性能端到端分析.无线.实时业务质量"/>
-	<content provinceDictCode="150206" groupDictName="集中性能端到端分析.无线.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="150301" groupDictName="集中性能端到端分析.互联网.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="150302" groupDictName="集中性能端到端分析.互联网.客户感知溯源分析"/>
-	<content provinceDictCode="150303" groupDictName="集中性能端到端分析.互联网.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="150304" groupDictName="集中性能端到端分析.互联网.实时业务质量"/>
-	<content provinceDictCode="150305" groupDictName="集中性能端到端分析.互联网.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="150401" groupDictName="集中性能端到端分析.用户.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="150402" groupDictName="集中性能端到端分析.用户.客户感知溯源分析"/>
-	<content provinceDictCode="150403" groupDictName="集中性能端到端分析.用户.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="150404" groupDictName="集中性能端到端分析.用户.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="011302" groupDictName="无线.LTE无线.PCRF"/>
-	<content provinceDictCode="011301" groupDictName="无线.LTE无线.ENODEB"/>
-	<content provinceDictCode="032501" groupDictName="数据网.LTE.MME"/>
-	<content provinceDictCode="032502" groupDictName="数据网.LTE.SGW"/>
-	<content provinceDictCode="032503" groupDictName="数据网.LTE.CG"/>
-	<content provinceDictCode="010205" groupDictName="无线.TD无线网.ENODEB"/>
-	<content provinceDictCode="020608" groupDictName="交换网.本地网.HSS"/>
-	<content provinceDictCode="080209" groupDictName="网管.省网管系统.安全管控平台"/>
-	<content provinceDictCode="150501" groupDictName="集中性能端到端分析.终端.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="150602" groupDictName="集中性能端到端分析.传输.客户感知溯源分析"/>
-	<content provinceDictCode="150603" groupDictName="集中性能端到端分析.传输.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="170202" groupDictName="铁塔动环.电力监控.蓄电池组"/>
-	<content provinceDictCode="150606" groupDictName="集中性能端到端分析.传输.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="032701" groupDictName="数据网.局数据管理系统.智能维护"/>
-	<content provinceDictCode="150807" groupDictName="集中性能端到端分析.有线宽带.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="170203" groupDictName="铁塔动环.电力监控.智能电表（交流）"/>
-	<content provinceDictCode="180207" groupDictName="IT网.云平台.VMWARE数据中心"/>
-	<content provinceDictCode="150503" groupDictName="集中性能端到端分析.终端.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="160103" groupDictName="内容网络.CDN.SNS"/>
-	<content provinceDictCode="160106" groupDictName="内容网络.CDN.Report"/>
-	<content provinceDictCode="150607" groupDictName="集中性能端到端分析.传输.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="150505" groupDictName="集中性能端到端分析.终端.实时业务质量"/>
-	<content provinceDictCode="021512" groupDictName="交换网.CM-IMS.ISBG"/>
-	<content provinceDictCode="180201" groupDictName="IT网.云平台.交换机"/>
-	<content provinceDictCode="150703" groupDictName="集中性能端到端分析.数通.VoLTE端到端业务质量分析"/>
-	<content provinceDictCode="150307" groupDictName="集中性能端到端分析.互联网.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="031201" groupDictName="数据网.安全.主机"/>
-	<content provinceDictCode="160210" groupDictName="内容网络.拨测.网管"/>
-	<content provinceDictCode="180102" groupDictName="IT网.IDC.路由器"/>
-	<content provinceDictCode="180208" groupDictName="IT网.云平台.虚拟化"/>
-	<content provinceDictCode="021511" groupDictName="交换网.CM-IMS.TAS"/>
-	<content provinceDictCode="180206" groupDictName="IT网.云平台.主机"/>
-	<content provinceDictCode="150406" groupDictName="集中性能端到端分析.用户.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="150704" groupDictName="集中性能端到端分析.数通.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="011405" groupDictName="无线.集中性能监控.4G基站网优性能派单"/>
-	<content provinceDictCode="180105" groupDictName="IT网.IDC.防火墙"/>
-	<content provinceDictCode="011406" groupDictName="无线.集中性能监控.4G小区网优性能派单"/>
-	<content provinceDictCode="150207" groupDictName="集中性能端到端分析.无线.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="150705" groupDictName="集中性能端到端分析.数通.实时业务质量"/>
-	<content provinceDictCode="032504" groupDictName="数据网.LTE.PCRF"/>
-	<content provinceDictCode="030304" groupDictName="数据网.CMNET省网.防火墙"/>
-	<content provinceDictCode="170201" groupDictName="铁塔动环.电力监控.开关电源"/>
-	<content provinceDictCode="022001" groupDictName="交换网.局数据管理系统.智能维护"/>
-	<content provinceDictCode="150903" groupDictName="集中性能端到端分析.自有业务质量检测及竞对分析.互联网"/>
-	<content provinceDictCode="151001" groupDictName="集中性能端到端分析.物联网端到端质量分析.用户"/>
-	<content provinceDictCode="180103" groupDictName="IT网.IDC.服务器"/>
-	<content provinceDictCode="150706" groupDictName="集中性能端到端分析.数通.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="151004" groupDictName="集中性能端到端分析.物联网端到端质量分析.无线"/>
-	<content provinceDictCode="180202" groupDictName="IT网.云平台.路由器"/>
-	<content provinceDictCode="180203" groupDictName="IT网.云平台.防火墙"/>
-	<content provinceDictCode="033001" groupDictName="数据网.互联互通.业务拨测"/>
-	<content provinceDictCode="150604" groupDictName="集中性能端到端分析.传输.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="150601" groupDictName="集中性能端到端分析.传输.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="150702" groupDictName="集中性能端到端分析.数通.客户感知溯源分析"/>
-	<content provinceDictCode="120104" groupDictName="全业务接入.家庭宽带.网管"/>
-	<content provinceDictCode="160107" groupDictName="内容网络.CDN.BMS"/>
-	<content provinceDictCode="170101" groupDictName="铁塔动环.机房监控.机房环境"/>
-	<content provinceDictCode="180204" groupDictName="IT网.云平台.分布式文件系统存储"/>
-	<content provinceDictCode="150507" groupDictName="集中性能端到端分析.终端.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="180104" groupDictName="IT网.IDC.动环"/>
-	<content provinceDictCode="150405" groupDictName="集中性能端到端分析.用户.实时业务质量"/>
-	<content provinceDictCode="160202" groupDictName="内容网络.拨测.服务器"/>
-	<content provinceDictCode="150901" groupDictName="集中性能端到端分析.自有业务质量检测及竞对分析.核心网"/>
-	<content provinceDictCode="150902" groupDictName="集中性能端到端分析.自有业务质量检测及竞对分析.无线"/>
-	<content provinceDictCode="160108" groupDictName="内容网络.CDN.TIS"/>
-	<content provinceDictCode="160204" groupDictName="内容网络.拨测.CDNC"/>
-	<content provinceDictCode="160209" groupDictName="内容网络.拨测.SLB"/>
-	<content provinceDictCode="160101" groupDictName="内容网络.CDN.交换机"/>
-	<content provinceDictCode="160201" groupDictName="内容网络.拨测.交换机"/>
-	<content provinceDictCode="160203" groupDictName="内容网络.拨测.SNS"/>
-	<content provinceDictCode="160212" groupDictName="内容网络.拨测.HOST"/>
-	<content provinceDictCode="180101" groupDictName="IT网.IDC.交换机"/>
-	<content provinceDictCode="180205" groupDictName="IT网.云平台.负载均衡器"/>
-	<content provinceDictCode="160211" groupDictName="内容网络.拨测.I2000"/>
-	<content provinceDictCode="160112" groupDictName="内容网络.CDN.HOST"/>
-	<content provinceDictCode="160207" groupDictName="内容网络.拨测.BMS"/>
-	<content provinceDictCode="150107" groupDictName="集中性能端到端分析.核心网.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="020502" groupDictName="交换网.软交换汇接网.TMSC MGW"/>
-	<content provinceDictCode="160111" groupDictName="内容网络.CDN.I2000"/>
-	<content provinceDictCode="150506" groupDictName="集中性能端到端分析.终端.视频业务端到端业务质量分析"/>
-	<content provinceDictCode="032901" groupDictName="数据网.DPI.DPI"/>
-	<content provinceDictCode="150407" groupDictName="集中性能端到端分析.用户.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="150707" groupDictName="集中性能端到端分析.数通.自有业务质量检测及竞对分析"/>
-	<content provinceDictCode="180301" groupDictName="IT网.网管网.DPI"/>
-	<content provinceDictCode="160109" groupDictName="内容网络.CDN.SLB"/>
-	<content provinceDictCode="160104" groupDictName="内容网络.CDN.CDNC"/>
-	<content provinceDictCode="160205" groupDictName="内容网络.拨测.LogServer"/>
-	<content provinceDictCode="150605" groupDictName="集中性能端到端分析.传输.实时业务质量"/>
-	<content provinceDictCode="032801" groupDictName="数据网.IP计费认证.RADIUS"/>
-	<content provinceDictCode="160208" groupDictName="内容网络.拨测.TIS"/>
-	<content provinceDictCode="151002" groupDictName="集中性能端到端分析.物联网端到端质量分析.核心网"/>
-	<content provinceDictCode="160110" groupDictName="内容网络.CDN.网管"/>
-	<content provinceDictCode="160105" groupDictName="内容网络.CDN.LogServer"/>
-	<content provinceDictCode="151003" groupDictName="集中性能端到端分析.物联网端到端质量分析.互联网"/>
-	<content provinceDictCode="150502" groupDictName="集中性能端到端分析.终端.客户感知溯源分析"/>
-	<content provinceDictCode="160206" groupDictName="内容网络.拨测.Report"/>
-	<content provinceDictCode="150608" groupDictName="集中性能端到端分析.传输. PTN性能挂摘牌"/>
-	<content provinceDictCode="170102" groupDictName="铁塔动环.机房监控.监控设备"/>
-	<content provinceDictCode="150801" groupDictName="集中性能端到端分析.有线宽带.有线宽带端到端业务质量分析"/>
-	<content provinceDictCode="150504" groupDictName="集中性能端到端分析.终端.客户投诉溯源及主动预警"/>
-	<content provinceDictCode="150701" groupDictName="集中性能端到端分析.数通.移动互联网业务端到端质量分析"/>
-	<content provinceDictCode="160102" groupDictName="内容网络.CDN.服务器"/>
-  </netTypeInfo>
-  <webServicesParam><!-- 调用部省服务接口配置信息 -->
-		<!--若是对端是.net系统，此值为对端系统的命名空间(由对端提供)；若是对端是java系统，此值为读取此文件方法的逆序包名 -->
-		<NameSP>JTSheetServicecom.province.interfaces.eoms.boco.com</NameSP>
-		<!--若是对端是.net系统，此值为"对端系统的命名空间/接口方法名称";若对端是java系统，此值不填-->
-		<SOAPAction></SOAPAction>
-		<!--接口调用超时时间，粒度为毫秒 默认是2分钟-->
-		<timeOut>10000</timeOut>
-		<!--对端ip地址-->
-		<serviceUrl>
-		 <commontask>http://localhost:9080/eoms35/services/JTSheetService</commontask> <!-- 通用任务工单部省接口地址 -->
-		 <commonfault>http://localhost:9080/eoms35/services/JTSheetService</commonfault> <!-- 故障工单部省接口地址 -->
-		</serviceUrl> 
-  </webServicesParam>
+    <centralCommonfaultSheetUrl>
+        http://10.234.16.198:8080/eoms35/sheet/centralcommonfault/centralcommonfault.do?method=showMainDetailPage
+    </centralCommonfaultSheetUrl> <!-- 故障工单详情查看url -->
+    <commonTaskSheetUrl>http://10.234.16.197:8080/eoms35/sheet/commontask/commontask.do?method=showMainDetailPage
+    </commonTaskSheetUrl> <!-- 通用任务工单详情查看url -->
+    <netTypeDictSql>select dictid as dictId,dictcode as dictCode,parentdictid as parentDictId from taw_system_dicttype
+        where dictid like '1010104%' and length(dictid)>7
+    </netTypeDictSql><!-- 网络三级分类字典查询sql -->
+    <interfaceInfoCheck><!-- 新增接口字段长度、是否为空、超长字段处理方式（cut-截取&ignore-忽略）设置 -->
+        <content interfaceName="title" ifAllowNull="false" interfaceLength="400" operateType="cut"/>
+        <content interfaceName="dealTimeLimit" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="netType" ifAllowNull="false" interfaceLength="255" operateType="ignore"/>
+        <content interfaceName="taskType" ifAllowNull="false" interfaceLength="255" operateType="ignore"/>
+        <content interfaceName="taskDesc" ifAllowNull="false" interfaceLength="3000" operateType="cut"/>
+        <content interfaceName="acceptTimeLimit" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="dealTimeLimit" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="transferTimeLimit" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="oriAlarmId" ifAllowNull="true" interfaceLength="40" operateType="ignore"/>
+        <content interfaceName="alarmType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="alarmSource" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="alarmLevel" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="alarm_LogicType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="alarm_LogicSubType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="incidentDesc" ifAllowNull="true" interfaceLength="3000" operateType="cut"/>
+        <content interfaceName="isSupervisorSheet" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
+        <content interfaceName="incidentHappenType" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="alarmHandleLevel" ifAllowNull="true" interfaceLength="64" operateType="ignore"/>
+        <content interfaceName="netType" ifAllowNull="false" interfaceLength="254" operateType="ignore"/>
+        <content interfaceName="sentSheetType" ifAllowNull="false" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="alarmVendor" ifAllowNull="false" interfaceLength="128" operateType="ignore"/>
+        <content interfaceName="neName" ifAllowNull="true" interfaceLength="128" operateType="ignore"/>
+        <content interfaceName="equipType" ifAllowNull="true" interfaceLength="40" operateType="ignore"/>
+        <content interfaceName="incidentHappenTime" ifAllowNull="true" interfaceLength="20" operateType="ignore"/>
+        <content interfaceName="alarmProvince" ifAllowNull="false" interfaceLength="8" operateType="ignore"/>
+        <content interfaceName="alarmRegion" ifAllowNull="false" interfaceLength="64" operateType="ignore"/>
+        <content interfaceName="isImpactBusiness" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
+        <content interfaceName="alarmServEffect" ifAllowNull="true" interfaceLength="1024" operateType="cut"/>
+        <content interfaceName="isMajorFault" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
+        <content interfaceName="isPretreatment" ifAllowNull="true" interfaceLength="10" operateType="ignore"/>
+        <content interfaceName="alarmAutoHandle" ifAllowNull="true" interfaceLength="3000" operateType="cut"/>
+    </interfaceInfoCheck>
+    <userInfo> <!-- 集团用户和省用户之间的映射关系 -->
+        <content groupUser="nm_lili" provinceUser="shangwentao"/>
+    </userInfo>
+    <newCommonTaskSheet>
+        <content columnName="title" interfaceName="title" defauleValue=""/>
+        <content columnName="sheetCompleteLimit" interfaceName="dealTimeLimit" defauleValue=""/>
+        <content columnName="sheetAcceptLimit" interfaceName="dealTimeLimit" defauleValue=""/>
+        <!-- <content columnName="mainTaskType" interfaceName="taskType" defauleValue="" /> -->
+        <content columnName="mainTaskType" interfaceName="basePriority" defauleValue=""
+                 dictNodePath="jtserviceTaskType"/>
+        <content columnName="mainTaskDescription" interfaceName="taskDesc" defauleValue=""/>
+        <content columnName="beanId" interfaceName="" defauleValue="iCommonTaskMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commontask.model.CommonTaskMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commontask.model.CommonTaskLink"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="DraftHumTask"/>
+    </newCommonTaskSheet>
+    <netTypeInfo>
+        <content provinceDictCode="032601" groupDictName="数据网.集中性能监控.集中性能监控"/>
+        <content provinceDictCode="080204" groupDictName="网管.省网管系统.业务监测"/>
+        <content provinceDictCode="080205" groupDictName="网管.省网管系统.性能监控"/>
+        <content provinceDictCode="050403" groupDictName="传输网.一干传输线路.架空"/>
+        <content provinceDictCode="050503" groupDictName="传输网.二干传输线路.架空"/>
+        <content provinceDictCode="010401" groupDictName="无线.卫星通信车.卫星通信车"/>
+        <content provinceDictCode="020701" groupDictName="交换网.智能网.SCP"/>
+        <content provinceDictCode="020702" groupDictName="交换网.智能网.SMP"/>
+        <content provinceDictCode="020704" groupDictName="交换网.智能网.独立SSP"/>
+        <content provinceDictCode="020703" groupDictName="交换网.智能网.VC"/>
+        <content provinceDictCode="020705" groupDictName="交换网.智能网.IP"/>
+        <content provinceDictCode="030601" groupDictName="数据网.IP承载网CE.业务类CE"/>
+        <content provinceDictCode="030603" groupDictName="数据网.IP承载网CE.其他"/>
+        <content provinceDictCode="030602" groupDictName="数据网.IP承载网CE.网管支撑类CE"/>
+        <content provinceDictCode="050201" groupDictName="传输网.二干传输设备.WDM"/>
+        <content provinceDictCode="050910" groupDictName="传输网.本地汇聚层传输设备.DDF"/>
+        <content provinceDictCode="080401" groupDictName="网管.安全监控.网管支撑"/>
+        <content provinceDictCode="080402" groupDictName="网管.安全监控.数据"/>
+        <content provinceDictCode="031101" groupDictName="数据网.智能网.SCP"/>
+        <content provinceDictCode="031102" groupDictName="数据网.智能网.SMP"/>
+        <content provinceDictCode="031103" groupDictName="数据网.智能网.VC"/>
+        <content provinceDictCode="031104" groupDictName="数据网.智能网.独立SSP"/>
+        <content provinceDictCode="031105" groupDictName="数据网.智能网.IP"/>
+        <content provinceDictCode="080205" groupDictName="网管.省网管系统.OMC"/>
+        <content provinceDictCode="010209" groupDictName="无线.TD无线网.TDOMC"/>
+        <content provinceDictCode="050903" groupDictName="传输网.本地汇聚层传输设备.ASON"/>
+        <content provinceDictCode="050901" groupDictName="传输网.本地汇聚层传输设备.WDM"/>
+        <content provinceDictCode="050902" groupDictName="传输网.本地汇聚层传输设备.SDH"/>
+        <content provinceDictCode="050904" groupDictName="传输网.本地汇聚层传输设备.MSTP"/>
+        <content provinceDictCode="050905" groupDictName="传输网.本地汇聚层传输设备.PDH"/>
+        <content provinceDictCode="050906" groupDictName="传输网.本地汇聚层传输设备.卫星"/>
+        <content provinceDictCode="050907" groupDictName="传输网.本地汇聚层传输设备.微波"/>
+        <content provinceDictCode="050908" groupDictName="传输网.本地汇聚层传输设备.DXC"/>
+        <content provinceDictCode="050909" groupDictName="传输网.本地汇聚层传输设备.ODF"/>
+        <content provinceDictCode="051007" groupDictName="传输网.本地接入层传输设备.微波"/>
+        <content provinceDictCode="051009" groupDictName="传输网.本地接入层传输设备.ODF"/>
+        <content provinceDictCode="051001" groupDictName="传输网.本地接入层传输设备.WDM"/>
+        <content provinceDictCode="051002" groupDictName="传输网.本地接入层传输设备.SDH"/>
+        <content provinceDictCode="051004" groupDictName="传输网.本地接入层传输设备.MSTP"/>
+        <content provinceDictCode="051005" groupDictName="传输网.本地接入层传输设备.PDH"/>
+        <content provinceDictCode="051006" groupDictName="传输网.本地接入层传输设备.卫星"/>
+        <content provinceDictCode="051008" groupDictName="传输网.本地接入层传输设备.DXC"/>
+        <content provinceDictCode="051010" groupDictName="传输网.本地接入层传输设备.DDF"/>
+        <content provinceDictCode="051003" groupDictName="传输网.本地接入层传输设备.ASON"/>
+        <content provinceDictCode="051101" groupDictName="传输网.本地汇聚层传输线路.管道"/>
+        <content provinceDictCode="051102" groupDictName="传输网.本地汇聚层传输线路.光缆"/>
+        <content provinceDictCode="051202" groupDictName="传输网.本地接入层传输线路.光缆"/>
+        <content provinceDictCode="051201" groupDictName="传输网.本地接入层传输线路.管道"/>
+        <content provinceDictCode="051301" groupDictName="传输网.一干传输电路.一干传输电路"/>
+        <content provinceDictCode="051401" groupDictName="传输网.二干传输电路.二干传输电路"/>
+        <content provinceDictCode="051501" groupDictName="传输网.本地传输电路.本地传输电路"/>
+        <content provinceDictCode="060101" groupDictName="动力设备.干线枢纽动力设备.高低压变配电"/>
+        <content provinceDictCode="060102" groupDictName="动力设备.干线枢纽动力设备.UPS"/>
+        <content provinceDictCode="060103" groupDictName="动力设备.干线枢纽动力设备.蓄电池"/>
+        <content provinceDictCode="060104" groupDictName="动力设备.干线枢纽动力设备.油机发电机"/>
+        <content provinceDictCode="060201" groupDictName="动力设备.基站动力设备.开关电源"/>
+        <content provinceDictCode="069999" groupDictName="动力设备.其他.其他"/>
+        <content provinceDictCode="060105" groupDictName="动力设备.干线枢纽动力设备.开关电源"/>
+        <content provinceDictCode="060106" groupDictName="动力设备.干线枢纽动力设备.空调"/>
+        <content provinceDictCode="060202" groupDictName="动力设备.基站动力设备.UPS"/>
+        <content provinceDictCode="060203" groupDictName="动力设备.基站动力设备.蓄电池"/>
+        <content provinceDictCode="060204" groupDictName="动力设备.基站动力设备.油机发电机"/>
+        <content provinceDictCode="060205" groupDictName="动力设备.基站动力设备.空调"/>
+        <content provinceDictCode="080101" groupDictName="网管.总部网管系统.网管网"/>
+        <content provinceDictCode="080102" groupDictName="网管.总部网管系统.网管应用系统"/>
+        <content provinceDictCode="080103" groupDictName="网管.总部网管系统.网管安全设备"/>
+        <content provinceDictCode="080202" groupDictName="网管.省网管系统.网管应用系统"/>
+        <content provinceDictCode="080201" groupDictName="网管.省网管系统.网管网"/>
+        <content provinceDictCode="080203" groupDictName="网管.省网管系统.网管安全设备"/>
+        <content provinceDictCode="021101" groupDictName="交换网.智能巡检系统.智能维护"/>
+        <content provinceDictCode="030203" groupDictName="数据网.CMNET骨干网.端口"/>
+        <content provinceDictCode="030404" groupDictName="数据网.CMNET城域网.端口"/>
+        <content provinceDictCode="031301" groupDictName="数据网.彩铃.彩铃"/>
+        <content provinceDictCode="031401" groupDictName="数据网.短信中心.SMC"/>
+        <content provinceDictCode="060601" groupDictName="无线.主动性能监控.主动性能监控"/>
+        <content provinceDictCode="021201" groupDictName="交换网.主动性能监控.主动性能监控"/>
+        <content provinceDictCode="031501" groupDictName="数据网.主动性能监控.主动性能监控"/>
+        <content provinceDictCode="060701" groupDictName="无线.业务拨测.业务拨测"/>
+        <content provinceDictCode="010814" groupDictName="无线.业务监测.业务监测"/>
+        <content provinceDictCode="021301" groupDictName="交换网.业务监测.业务监测"/>
+        <content provinceDictCode="021401" groupDictName="交换网.业务拨测.业务拨测"/>
+        <content provinceDictCode="031601" groupDictName="数据网.业务拨测.业务拨测"/>
+        <content provinceDictCode="031701" groupDictName="数据网.业务监测.业务监测"/>
+        <content provinceDictCode="031106" groupDictName="数据网.智能网.路由器"/>
+        <content provinceDictCode="010101" groupDictName="无线.GSM无线网.BSC/PCU"/>
+        <content provinceDictCode="010102" groupDictName="无线.GSM无线网.BTS"/>
+        <content provinceDictCode="010201" groupDictName="无线.TD无线网.NodeB"/>
+        <content provinceDictCode="010202" groupDictName="无线.TD无线网.RNC"/>
+        <content provinceDictCode="019999" groupDictName="无线.其他.其他"/>
+        <content provinceDictCode="020101" groupDictName="交换网.国际交换网.ISC"/>
+        <content provinceDictCode="020201" groupDictName="交换网.国际信令网.ISTP"/>
+        <content provinceDictCode="020301" groupDictName="交换网.TDM省际汇接网.TMSC1"/>
+        <content provinceDictCode="020401" groupDictName="交换网.TDM省内汇接网.TMSC2"/>
+        <content provinceDictCode="020501" groupDictName="交换网.软交换汇接网.TMSC Server"/>
+        <content provinceDictCode="020601" groupDictName="交换网.本地网.MSC"/>
+        <content provinceDictCode="020602" groupDictName="交换网.本地网.GMSC"/>
+        <content provinceDictCode="020603" groupDictName="交换网.本地网.MSC Server"/>
+        <content provinceDictCode="020604" groupDictName="交换网.本地网.MGW"/>
+        <content provinceDictCode="020605" groupDictName="交换网.本地网.GMSC Server"/>
+        <content provinceDictCode="020606" groupDictName="交换网.本地网.GMGW"/>
+        <content provinceDictCode="020607" groupDictName="交换网.本地网.HLR"/>
+        <content provinceDictCode="020801" groupDictName="交换网.省际信令网.HSTP"/>
+        <content provinceDictCode="020901" groupDictName="交换网.省内信令网.LSTP"/>
+        <content provinceDictCode="029999" groupDictName="交换网.其他.其他"/>
+        <content provinceDictCode="010941" groupDictName="无线.智能巡检系统.智能维护"/>
+        <content provinceDictCode="031801" groupDictName="数据网.智能巡检系统.智能维护"/>
+        <content provinceDictCode="012001" groupDictName="无线.无线网.OMC"/>
+        <content provinceDictCode="050311" groupDictName="传输网.本地传输设备.PTN"/>
+        <content provinceDictCode="050312" groupDictName="传输网.本地传输设备.PON"/>
+        <content provinceDictCode="050313" groupDictName="传输网.本地传输设备.OTN"/>
+        <content provinceDictCode="050207" groupDictName="传输网.二干传输设备.PTN"/>
+        <content provinceDictCode="050208" groupDictName="传输网.二干传输设备.OTN"/>
+        <content provinceDictCode="050209" groupDictName="传输网.二干传输设备.PON"/>
+        <content provinceDictCode="040101" groupDictName="业务平台.彩铃平台.彩铃平台"/>
+        <content provinceDictCode="040201" groupDictName="业务平台.语音信箱系统.语音信箱系统"/>
+        <content provinceDictCode="040301" groupDictName="业务平台.来电提醒平台.来电提醒平台"/>
+        <content provinceDictCode="040401" groupDictName="业务平台.语音短信平台.语音短信平台"/>
+        <content provinceDictCode="040501" groupDictName="业务平台.12533会议电话系统.12533会议电话系统"/>
+        <content provinceDictCode="040601" groupDictName="业务平台.WAP系统.区域WAP"/>
+        <content provinceDictCode="040602" groupDictName="业务平台.WAP系统.省WAP"/>
+        <content provinceDictCode="040603" groupDictName="业务平台.WAP系统.安全设备"/>
+        <content provinceDictCode="040701" groupDictName="业务平台.短信中心.短信中心"/>
+        <content provinceDictCode="040801" groupDictName="业务平台.短信网关.国际网关"/>
+        <content provinceDictCode="040802" groupDictName="业务平台.短信网关.互联网关"/>
+        <content provinceDictCode="040803" groupDictName="业务平台.短信网关.行业网关"/>
+        <content provinceDictCode="040804" groupDictName="业务平台.短信网关.安全设备"/>
+        <content provinceDictCode="040901" groupDictName="业务平台.彩信中心.区域彩信中心"/>
+        <content provinceDictCode="040902" groupDictName="业务平台.彩信中心.省彩信中心"/>
+        <content provinceDictCode="040903" groupDictName="业务平台.彩信中心.安全设备"/>
+        <content provinceDictCode="041001" groupDictName="业务平台.彩信网关.国际网关"/>
+        <content provinceDictCode="041002" groupDictName="业务平台.彩信网关.互联网关"/>
+        <content provinceDictCode="041003" groupDictName="业务平台.彩信网关.行业网关"/>
+        <content provinceDictCode="041004" groupDictName="业务平台.彩信网关.安全设备"/>
+        <content provinceDictCode="041101" groupDictName="业务平台.根DNS.根DNS"/>
+        <content provinceDictCode="041102" groupDictName="业务平台.根DNS.安全设备"/>
+        <content provinceDictCode="041201" groupDictName="业务平台.Radius.Radius"/>
+        <content provinceDictCode="041202" groupDictName="业务平台.Radius.安全设备"/>
+        <content provinceDictCode="041301" groupDictName="业务平台.WLAN认证平台.Portral"/>
+        <content provinceDictCode="041302" groupDictName="业务平台.WLAN认证平台.Radius"/>
+        <content provinceDictCode="041303" groupDictName="业务平台.WLAN认证平台.安全设备"/>
+        <content provinceDictCode="041401" groupDictName="业务平台.DSMP系统.DSMP系统"/>
+        <content provinceDictCode="041402" groupDictName="业务平台.DSMP系统.安全设备"/>
+        <content provinceDictCode="041501" groupDictName="业务平台.MDC.MDC"/>
+        <content provinceDictCode="041502" groupDictName="业务平台.MDC.安全设备"/>
+        <content provinceDictCode="041601" groupDictName="业务平台.EMAIL系统.EMAIL系统"/>
+        <content provinceDictCode="041602" groupDictName="业务平台.EMAIL系统.安全设备"/>
+        <content provinceDictCode="041701" groupDictName="业务平台.通用下载平台.KJAVA"/>
+        <content provinceDictCode="041702" groupDictName="业务平台.通用下载平台.通用下载平台"/>
+        <content provinceDictCode="041703" groupDictName="业务平台.通用下载平台.安全设备"/>
+        <content provinceDictCode="041801" groupDictName="业务平台.流媒体.流媒体"/>
+        <content provinceDictCode="041802" groupDictName="业务平台.流媒体.安全设备"/>
+        <content provinceDictCode="041901" groupDictName="业务平台.USSD系统.USSD系统"/>
+        <content provinceDictCode="041902" groupDictName="业务平台.USSD系统.安全设备"/>
+        <content provinceDictCode="042001" groupDictName="业务平台.PIM.PIM"/>
+        <content provinceDictCode="042002" groupDictName="业务平台.PIM.安全设备"/>
+        <content provinceDictCode="042101" groupDictName="业务平台.LBS系统.AGPS"/>
+        <content provinceDictCode="042102" groupDictName="业务平台.LBS系统.CELLID"/>
+        <content provinceDictCode="042103" groupDictName="业务平台.LBS系统.安全设备"/>
+        <content provinceDictCode="042201" groupDictName="业务平台.飞信.飞信"/>
+        <content provinceDictCode="042202" groupDictName="业务平台.飞信.安全设备"/>
+        <content provinceDictCode="042301" groupDictName="业务平台.PUSHMAIL.PUSHMAIL"/>
+        <content provinceDictCode="042202" groupDictName="业务平台.PUSHMAIL.安全设备"/>
+        <content provinceDictCode="042401" groupDictName="业务平台.视频会议.视频会议"/>
+        <content provinceDictCode="042402" groupDictName="业务平台.视频会议.安全设备"/>
+        <content provinceDictCode="042501" groupDictName="业务平台.视频留言.视频留言"/>
+        <content provinceDictCode="042502" groupDictName="业务平台.视频留言.安全设备"/>
+        <content provinceDictCode="042601" groupDictName="业务平台.视频共享.视频共享"/>
+        <content provinceDictCode="042602" groupDictName="业务平台.视频共享.安全设备"/>
+        <content provinceDictCode="042701" groupDictName="业务平台.SharingX.SharingX"/>
+        <content provinceDictCode="042702" groupDictName="业务平台.SharingX.安全设备"/>
+        <content provinceDictCode="042801" groupDictName="业务平台.多媒体彩铃.多媒体彩铃"/>
+        <content provinceDictCode="042802" groupDictName="业务平台.多媒体彩铃.安全设备"/>
+        <content provinceDictCode="042901" groupDictName="业务平台.POC.POC"/>
+        <content provinceDictCode="042902" groupDictName="业务平台.POC.安全设备"/>
+        <content provinceDictCode="043001" groupDictName="业务平台.DCD快讯.DCD快讯"/>
+        <content provinceDictCode="043002" groupDictName="业务平台.DCD快讯.安全设备"/>
+        <content provinceDictCode="043101" groupDictName="业务平台.DM.DM"/>
+        <content provinceDictCode="043102" groupDictName="业务平台.DM.安全设备"/>
+        <content provinceDictCode="043201" groupDictName="业务平台.小区短信.小区短信"/>
+        <content provinceDictCode="043202" groupDictName="业务平台.小区短信.安全设备"/>
+        <content provinceDictCode="049999" groupDictName="业务平台.其他.其他"/>
+        <content provinceDictCode="050101" groupDictName="传输网.一干传输设备.WDM"/>
+        <content provinceDictCode="050102" groupDictName="传输网.一干传输设备.SDH"/>
+        <content provinceDictCode="050103" groupDictName="传输网.一干传输设备.卫星"/>
+        <content provinceDictCode="050104" groupDictName="传输网.一干传输设备.ODF"/>
+        <content provinceDictCode="050105" groupDictName="传输网.一干传输设备.DDF"/>
+        <content provinceDictCode="050202" groupDictName="传输网.二干传输设备.SDH"/>
+        <content provinceDictCode="050203" groupDictName="传输网.二干传输设备.ASON"/>
+        <content provinceDictCode="050204" groupDictName="传输网.二干传输设备.卫星"/>
+        <content provinceDictCode="050205" groupDictName="传输网.二干传输设备.ODF"/>
+        <content provinceDictCode="050206" groupDictName="传输网.二干传输设备.DDF"/>
+        <content provinceDictCode="050301" groupDictName="传输网.本地传输设备.WDM"/>
+        <content provinceDictCode="050302" groupDictName="传输网.本地传输设备.SDH"/>
+        <content provinceDictCode="050303" groupDictName="传输网.本地传输设备.ASON"/>
+        <content provinceDictCode="050304" groupDictName="传输网.本地传输设备.MSTP"/>
+        <content provinceDictCode="050305" groupDictName="传输网.本地传输设备.PDH"/>
+        <content provinceDictCode="050306" groupDictName="传输网.本地传输设备.卫星"/>
+        <content provinceDictCode="050307" groupDictName="传输网.本地传输设备.微波"/>
+        <content provinceDictCode="050308" groupDictName="传输网.本地传输设备.DXC"/>
+        <content provinceDictCode="050310" groupDictName="传输网.本地传输设备.DDF"/>
+        <content provinceDictCode="050309" groupDictName="传输网.本地传输设备.ODF"/>
+        <content provinceDictCode="050401" groupDictName="传输网.一干传输线路.管道"/>
+        <content provinceDictCode="050402" groupDictName="传输网.一干传输线路.光缆"/>
+        <content provinceDictCode="050501" groupDictName="传输网.二干传输线路.管道"/>
+        <content provinceDictCode="050502" groupDictName="传输网.二干传输线路.光缆"/>
+        <content provinceDictCode="050601" groupDictName="传输网.本地骨干层传输线路.管道"/>
+        <content provinceDictCode="050602" groupDictName="传输网.本地骨干层传输线路.光缆"/>
+        <content provinceDictCode="050701" groupDictName="传输网.时钟同步网.PRC"/>
+        <content provinceDictCode="050702" groupDictName="传输网.时钟同步网.LPR"/>
+        <content provinceDictCode="050703" groupDictName="传输网.时钟同步网.BITS"/>
+        <content provinceDictCode="059999" groupDictName="传输网.其他.其他"/>
+        <content provinceDictCode="070101" groupDictName="应急设备.应急电源.应急油机车"/>
+        <content provinceDictCode="070102" groupDictName="应急设备.应急电源.便携油机"/>
+        <content provinceDictCode="070201" groupDictName="应急设备.应急通信车.具有BTS功能"/>
+        <content provinceDictCode="070202" groupDictName="应急设备.应急通信车.具有BSC功能"/>
+        <content provinceDictCode="070203" groupDictName="应急设备.应急通信车.具有MSC功能"/>
+        <content provinceDictCode="070299" groupDictName="应急设备.应急通信车.其他"/>
+        <content provinceDictCode="070301" groupDictName="应急设备.应急传输设备.应急卫星传输"/>
+        <content provinceDictCode="070302" groupDictName="应急设备.应急传输设备.应急微波传输"/>
+        <content provinceDictCode="079999" groupDictName="应急设备.其他.其他"/>
+        <content provinceDictCode="089999" groupDictName="网管.其他.其他"/>
+        <content provinceDictCode="989898" groupDictName="综合.综合.综合"/>
+        <content provinceDictCode="999999" groupDictName="其他.其他.其他"/>
+        <content provinceDictCode="080206" groupDictName="网管.省网管系统.TDOMC"/>
+        <content provinceDictCode="080207" groupDictName="网管.省网管系统.LTOMC"/>
+        <content provinceDictCode="010509" groupDictName="无线.直放站及覆盖延伸系统.直放站"/>
+        <content provinceDictCode="011401" groupDictName="无线.集中性能监控.集中性能监控"/>
+        <content provinceDictCode="021801" groupDictName="交换网.集中性能监控.集中性能监控"/>
+        <content provinceDictCode="050210" groupDictName="传输网.二干传输设备.网管"/>
+        <content provinceDictCode="050314" groupDictName="传输网.本地传输设备.网管"/>
+        <content provinceDictCode="031107" groupDictName="数据网.智能网.SAU"/>
+        <content provinceDictCode="060401" groupDictName="动力设备.动力.UPS电池"/>
+        <content provinceDictCode="060402" groupDictName="动力设备.动力.UPS配电屏"/>
+        <content provinceDictCode="060403" groupDictName="动力设备.动力.UPS设备"/>
+        <content provinceDictCode="060404" groupDictName="动力设备.动力.低压配电"/>
+        <content provinceDictCode="060405" groupDictName="动力设备.动力.发电机组"/>
+        <content provinceDictCode="060406" groupDictName="动力设备.动力.高压配电"/>
+        <content provinceDictCode="060407" groupDictName="动力设备.动力.基础电池"/>
+        <content provinceDictCode="060408" groupDictName="动力设备.动力.基站UPS"/>
+        <content provinceDictCode="060409" groupDictName="动力设备.动力.基站固定油机"/>
+        <content provinceDictCode="060410" groupDictName="动力设备.动力.基站开关电源"/>
+        <content provinceDictCode="060411" groupDictName="动力设备.动力.专用空调(风冷)"/>
+        <content provinceDictCode="060412" groupDictName="动力设备.动力.专用空调(通冷冻水型)"/>
+        <content provinceDictCode="060413" groupDictName="动力设备.动力.普通空调"/>
+        <content provinceDictCode="060414" groupDictName="动力设备.动力.智能通风/换热系统"/>
+        <content provinceDictCode="060415" groupDictName="动力设备.动力.太阳能/风能设备"/>
+        <content provinceDictCode="060416" groupDictName="动力设备.动力.开关电源"/>
+        <content provinceDictCode="060417" groupDictName="动力设备.动力.基站智能门禁"/>
+        <content provinceDictCode="060418" groupDictName="动力设备.动力.基站智能电表"/>
+        <content provinceDictCode="060419" groupDictName="动力设备.动力.中央空调(水冷)"/>
+        <content provinceDictCode="060505" groupDictName="动力设备.监控设备.机房智能门禁"/>
+        <content provinceDictCode="060420" groupDictName="动力设备.动力.直流配电屏"/>
+        <content provinceDictCode="060421" groupDictName="动力设备.动力.交流配电屏"/>
+        <content provinceDictCode="060501" groupDictName="动力设备.监控设备.机房环境"/>
+        <content provinceDictCode="060502" groupDictName="动力设备.监控设备.基站环境"/>
+        <content provinceDictCode="060503" groupDictName="动力设备.监控设备.极早期烟感设备"/>
+        <content provinceDictCode="060504" groupDictName="动力设备.监控设备.监控设备"/>
+        <content provinceDictCode="060506" groupDictName="动力设备.监控设备.节点环境"/>
+        <content provinceDictCode="060507" groupDictName="动力设备.监控设备.节点智能门禁"/>
+        <content provinceDictCode="060422" groupDictName="动力设备.动力.高压直流"/>
+        <content provinceDictCode="060423" groupDictName="动力设备.动力.机房智能电表"/>
+        <content provinceDictCode="060424" groupDictName="动力设备.动力.基站基础电池"/>
+        <content provinceDictCode="060425" groupDictName="动力设备.动力.节点UPS设备"/>
+        <content provinceDictCode="060426" groupDictName="动力设备.动力.节点固定油机"/>
+        <content provinceDictCode="060427" groupDictName="动力设备.动力.节点基础电池"/>
+        <content provinceDictCode="060428" groupDictName="动力设备.动力.节点开关电源"/>
+        <content provinceDictCode="060429" groupDictName="动力设备.动力.节点智能电表"/>
+        <content provinceDictCode="010204" groupDictName="无线.TD无线网.TD-OMC"/>
+        <content provinceDictCode="060430" groupDictName="动力设备.动力.磷酸铁锂蓄电池"/>
+        <content provinceDictCode="021601" groupDictName="交换网.场景性能监控.日常管理场景"/>
+        <content provinceDictCode="021602" groupDictName="交换网.场景性能监控.节假日场景"/>
+        <content provinceDictCode="021603" groupDictName="交换网.场景性能监控.汛情"/>
+        <content provinceDictCode="021604" groupDictName="交换网.场景性能监控.突发事件场景"/>
+        <content provinceDictCode="021605" groupDictName="交换网.场景性能监控.重大活动场景"/>
+        <content provinceDictCode="021606" groupDictName="交换网.场景性能监控.重点区域场景"/>
+        <content provinceDictCode="021607" groupDictName="交换网.场景性能监控.新技术新业务场景监控"/>
+        <content provinceDictCode="021608" groupDictName="交换网.场景性能监控.高校场景监控"/>
+        <content provinceDictCode="021609" groupDictName="交换网.场景性能监控.高铁场景监控"/>
+        <content provinceDictCode="021610" groupDictName="交换网.场景性能监控.城市道路场景监控"/>
+        <content provinceDictCode="011201" groupDictName="无线.场景性能监控.日常管理场景"/>
+        <content provinceDictCode="011202" groupDictName="无线.场景性能监控.节假日场景"/>
+        <content provinceDictCode="011203" groupDictName="无线.场景性能监控.汛情"/>
+        <content provinceDictCode="011204" groupDictName="无线.场景性能监控.突发事件场景"/>
+        <content provinceDictCode="011205" groupDictName="无线.场景性能监控.重大活动场景"/>
+        <content provinceDictCode="011206" groupDictName="无线.场景性能监控.重点区域场景"/>
+        <content provinceDictCode="011207" groupDictName="无线.场景性能监控.新技术新业务场景监控"/>
+        <content provinceDictCode="011208" groupDictName="无线.场景性能监控.高校场景监控"/>
+        <content provinceDictCode="011209" groupDictName="无线.场景性能监控.高铁场景监控"/>
+        <content provinceDictCode="011210" groupDictName="无线.场景性能监控.城市道路场景监控"/>
+        <content provinceDictCode="032001" groupDictName="数据网.场景性能监控.日常管理场景"/>
+        <content provinceDictCode="032002" groupDictName="数据网.场景性能监控.节假日场景"/>
+        <content provinceDictCode="032003" groupDictName="数据网.场景性能监控.汛情"/>
+        <content provinceDictCode="032004" groupDictName="数据网.场景性能监控.突发事件场景"/>
+        <content provinceDictCode="032005" groupDictName="数据网.场景性能监控.重大活动场景"/>
+        <content provinceDictCode="032006" groupDictName="数据网.场景性能监控.重点区域场景"/>
+        <content provinceDictCode="032007" groupDictName="数据网.场景性能监控.新技术新业务场景监控"/>
+        <content provinceDictCode="032008" groupDictName="数据网.场景性能监控.高校场景监控"/>
+        <content provinceDictCode="032009" groupDictName="数据网.场景性能监控.高铁场景监控"/>
+        <content provinceDictCode="032010" groupDictName="数据网.场景性能监控.城市道路场景监控"/>
+        <content provinceDictCode="043901" groupDictName="业务平台.场景性能监控.日常管理场景"/>
+        <content provinceDictCode="043902" groupDictName="业务平台.场景性能监控.节假日场景"/>
+        <content provinceDictCode="043903" groupDictName="业务平台.场景性能监控.汛情"/>
+        <content provinceDictCode="043904" groupDictName="业务平台.场景性能监控.突发事件场景"/>
+        <content provinceDictCode="043905" groupDictName="业务平台.场景性能监控.重大活动场景"/>
+        <content provinceDictCode="043906" groupDictName="业务平台.场景性能监控.重点区域场景"/>
+        <content provinceDictCode="043907" groupDictName="业务平台.场景性能监控.新技术新业务场景监控"/>
+        <content provinceDictCode="043908" groupDictName="业务平台.场景性能监控.高校场景监控"/>
+        <content provinceDictCode="043909" groupDictName="业务平台.场景性能监控.高铁场景监控"/>
+        <content provinceDictCode="043910" groupDictName="业务平台.场景性能监控.城市道路场景监控"/>
+        <content provinceDictCode="051601" groupDictName="传输网.场景性能监控.日常管理场景"/>
+        <content provinceDictCode="051602" groupDictName="传输网.场景性能监控.节假日场景"/>
+        <content provinceDictCode="051603" groupDictName="传输网.场景性能监控.汛情"/>
+        <content provinceDictCode="051604" groupDictName="传输网.场景性能监控.突发事件场景"/>
+        <content provinceDictCode="051605" groupDictName="传输网.场景性能监控.重大活动场景"/>
+        <content provinceDictCode="051606" groupDictName="传输网.场景性能监控.重点区域场景"/>
+        <content provinceDictCode="051607" groupDictName="传输网.场景性能监控.新技术新业务场景监控"/>
+        <content provinceDictCode="051608" groupDictName="传输网.场景性能监控.高校场景监控"/>
+        <content provinceDictCode="051609" groupDictName="传输网.场景性能监控.高铁场景监控"/>
+        <content provinceDictCode="051610" groupDictName="传输网.场景性能监控.城市道路场景监控"/>
+        <content provinceDictCode="080501" groupDictName="网管.场景性能监控.日常管理场景"/>
+        <content provinceDictCode="080502" groupDictName="网管.场景性能监控.节假日场景"/>
+        <content provinceDictCode="080503" groupDictName="网管.场景性能监控.汛情"/>
+        <content provinceDictCode="080504" groupDictName="网管.场景性能监控.突发事件场景"/>
+        <content provinceDictCode="080505" groupDictName="网管.场景性能监控.重大活动场景"/>
+        <content provinceDictCode="080506" groupDictName="网管.场景性能监控.重点区域场景"/>
+        <content provinceDictCode="080507" groupDictName="网管.场景性能监控.新技术新业务场景监控"/>
+        <content provinceDictCode="080508" groupDictName="网管.场景性能监控.高校场景监控"/>
+        <content provinceDictCode="080509" groupDictName="网管.场景性能监控.高铁场景监控"/>
+        <content provinceDictCode="080510" groupDictName="网管.场景性能监控.城市道路场景监控"/>
+        <content provinceDictCode="070501" groupDictName="应急设备.场景性能监控.日常管理场景"/>
+        <content provinceDictCode="070502" groupDictName="应急设备.场景性能监控.节假日场景"/>
+        <content provinceDictCode="070503" groupDictName="应急设备.场景性能监控.汛情"/>
+        <content provinceDictCode="070504" groupDictName="应急设备.场景性能监控.突发事件场景"/>
+        <content provinceDictCode="070505" groupDictName="应急设备.场景性能监控.重大活动场景"/>
+        <content provinceDictCode="070506" groupDictName="应急设备.场景性能监控.重点区域场景"/>
+        <content provinceDictCode="070507" groupDictName="应急设备.场景性能监控.新技术新业务场景监控"/>
+        <content provinceDictCode="070508" groupDictName="应急设备.场景性能监控.高校场景监控"/>
+        <content provinceDictCode="070509" groupDictName="应急设备.场景性能监控.高铁场景监控"/>
+        <content provinceDictCode="070510" groupDictName="应急设备.场景性能监控.城市道路场景监控"/>
+        <content provinceDictCode="030110" groupDictName="数据网.GPRS.PCC"/>
+        <content provinceDictCode="120101" groupDictName="全业务接入.家庭宽带.ONU"/>
+        <content provinceDictCode="110101" groupDictName="集团客户业务.集客专线.集客专线"/>
+        <content provinceDictCode="110201" groupDictName="集团客户业务.语音专线.语音专线"/>
+        <content provinceDictCode="110301" groupDictName="集团客户业务.互联网专线.互联网专线"/>
+        <content provinceDictCode="110401" groupDictName="集团客户业务.数据专线.数据专线"/>
+        <content provinceDictCode="110501" groupDictName="集团客户业务.APN业务.APN业务"/>
+        <content provinceDictCode="110601" groupDictName="集团客户业务.集团短、彩信业务.集团短、彩信业务"/>
+        <content provinceDictCode="110701" groupDictName="集团客户业务.其它.其他"/>
+        <content provinceDictCode="020902" groupDictName="交换网.省内信令网.LDRA"/>
+        <content provinceDictCode="050106" groupDictName="传输网.一干传输设备.OTN"/>
+        <content provinceDictCode="050107" groupDictName="传输网.一干传输设备.PTN"/>
+        <content provinceDictCode="032401" groupDictName="数据网.IP承载网CE.软交换类CE"/>
+        <content provinceDictCode="032402" groupDictName="数据网.IP承载网CE.新业务类CE"/>
+        <content provinceDictCode="010103" groupDictName="无线.GSM无线网.BSC/RNC"/>
+        <content provinceDictCode="021701" groupDictName="交换网.性能场景监控.节假日场景"/>
+        <content provinceDictCode="021702" groupDictName="交换网.性能场景监控.重大活动场景"/>
+        <content provinceDictCode="051701" groupDictName="传输网.传输本地网.SDH"/>
+        <content provinceDictCode="051702" groupDictName="传输网.传输本地网.PTN"/>
+        <content provinceDictCode="051703" groupDictName="传输网.传输本地网.OTN"/>
+        <content provinceDictCode="051704" groupDictName="传输网.传输本地网.PON"/>
+        <content provinceDictCode="051705" groupDictName="传输网.传输本地网.WDM"/>
+        <content provinceDictCode="051402" groupDictName="传输网.二干传输电路.SDH"/>
+        <content provinceDictCode="051403" groupDictName="传输网.二干传输电路.WDM"/>
+        <content provinceDictCode="051404" groupDictName="传输网.二干传输电路.OTN"/>
+        <content provinceDictCode="051405" groupDictName="传输网.二干传输电路.PTN"/>
+        <content provinceDictCode="051801" groupDictName="传输网.二干传输网.SDH"/>
+        <content provinceDictCode="051802" groupDictName="传输网.二干传输网.WDM"/>
+        <content provinceDictCode="051803" groupDictName="传输网.二干传输网.OTN"/>
+        <content provinceDictCode="050504" groupDictName="传输网.二干传输线路.SDH"/>
+        <content provinceDictCode="050505" groupDictName="传输网.二干传输线路.WDM"/>
+        <content provinceDictCode="050506" groupDictName="传输网.二干传输线路.OTN"/>
+        <content provinceDictCode="050507" groupDictName="传输网.二干传输线路.PTN"/>
+        <content provinceDictCode="051302" groupDictName="传输网.一干传输电路.SDH"/>
+        <content provinceDictCode="051303" groupDictName="传输网.一干传输电路.WDM"/>
+        <content provinceDictCode="051304" groupDictName="传输网.一干传输电路.OTN"/>
+        <content provinceDictCode="051305" groupDictName="传输网.一干传输电路.PTN"/>
+        <content provinceDictCode="050404" groupDictName="传输网.一干传输线路.SDH"/>
+        <content provinceDictCode="050405" groupDictName="传输网.一干传输线路.WDM"/>
+        <content provinceDictCode="050406" groupDictName="传输网.一干传输线路.OTN"/>
+        <content provinceDictCode="050407" groupDictName="传输网.一干传输线路.PTN"/>
+        <content provinceDictCode="030604" groupDictName="数据网.IP承载网CE.软交换类CE"/>
+        <content provinceDictCode="030605" groupDictName="数据网.IP承载网CE.新业务类CE"/>
+        <content provinceDictCode="030101" groupDictName="数据网.GPRS.GGSN"/>
+        <content provinceDictCode="030102" groupDictName="数据网.GPRS.SGSN"/>
+        <content provinceDictCode="030103" groupDictName="数据网.GPRS.BG"/>
+        <content provinceDictCode="030104" groupDictName="数据网.GPRS.CG"/>
+        <content provinceDictCode="030105" groupDictName="数据网.GPRS.DNS"/>
+        <content provinceDictCode="030106" groupDictName="数据网.GPRS.安全设备"/>
+        <content provinceDictCode="030201" groupDictName="数据网.CMNET骨干网.路由器"/>
+        <content provinceDictCode="030202" groupDictName="数据网.CMNET骨干网.交换机"/>
+        <content provinceDictCode="030301" groupDictName="数据网.CMNET省网.路由器"/>
+        <content provinceDictCode="030302" groupDictName="数据网.CMNET省网.交换机"/>
+        <content provinceDictCode="030303" groupDictName="数据网.CMNET省网.安全设备"/>
+        <content provinceDictCode="030401" groupDictName="数据网.CMNET城域网.路由器"/>
+        <content provinceDictCode="030402" groupDictName="数据网.CMNET城域网.交换机"/>
+        <content provinceDictCode="030403" groupDictName="数据网.CMNET城域网.安全设备"/>
+        <content provinceDictCode="030501" groupDictName="数据网.IP承载网.路由器"/>
+        <content provinceDictCode="030502" groupDictName="数据网.IP承载网.交换机"/>
+        <content provinceDictCode="030503" groupDictName="数据网.IP承载网.安全设备"/>
+        <content provinceDictCode="030701" groupDictName="数据网.WLAN网络.AP"/>
+        <content provinceDictCode="030702" groupDictName="数据网.WLAN网络.AC"/>
+        <content provinceDictCode="030703" groupDictName="数据网.WLAN网络.路由器"/>
+        <content provinceDictCode="030704" groupDictName="数据网.WLAN网络.交换机"/>
+        <content provinceDictCode="030705" groupDictName="数据网.WLAN网络.安全设备"/>
+        <content provinceDictCode="030801" groupDictName="数据网.MDCN.路由器"/>
+        <content provinceDictCode="030802" groupDictName="数据网.MDCN.交换机"/>
+        <content provinceDictCode="030803" groupDictName="数据网.MDCN.安全设备"/>
+        <content provinceDictCode="030901" groupDictName="数据网.时间同步网.NTP Server"/>
+        <content provinceDictCode="039999" groupDictName="数据网.其他.其他"/>
+        <content provinceDictCode="030107" groupDictName="数据网.GPRS.主机"/>
+        <content provinceDictCode="030108" groupDictName="数据网.GPRS.交换机"/>
+        <content provinceDictCode="030109" groupDictName="数据网.GPRS.防火墙"/>
+        <content provinceDictCode="011101" groupDictName="无线.CM-IMS.SBC"/>
+        <content provinceDictCode="021501" groupDictName="交换网.CM-IMS.MRFC"/>
+        <content provinceDictCode="021502" groupDictName="交换网.CM-IMS.MRFP"/>
+        <content provinceDictCode="021503" groupDictName="交换网.CM-IMS.MGCF"/>
+        <content provinceDictCode="021504" groupDictName="交换网.CM-IMS.HSS/SLF"/>
+        <content provinceDictCode="021505" groupDictName="交换网.CM-IMS.P-CSCF"/>
+        <content provinceDictCode="021506" groupDictName="交换网.CM-IMS.S-CSCF"/>
+        <content provinceDictCode="021507" groupDictName="交换网.CM-IMS.I-CSCF"/>
+        <content provinceDictCode="021508" groupDictName="交换网.CM-IMS.IM-MGW"/>
+        <content provinceDictCode="021509" groupDictName="交换网.CM-IMS.CG"/>
+        <content provinceDictCode="043701" groupDictName="业务平台.CM-IMS（AS）.多媒体电话业务（MMTel）"/>
+        <content provinceDictCode="043702" groupDictName="业务平台.CM-IMS（AS）.统一Centrex业务"/>
+        <content provinceDictCode="043701" groupDictName="业务平台.信令监测.工单鉴权"/>
+        <content provinceDictCode="130101" groupDictName="资源类系统.综合资源管理系统.其他"/>
+        <content provinceDictCode="011404" groupDictName="无线.集中性能监控.互联网端到端性能监控"/>
+        <content provinceDictCode="140101" groupDictName="互联网.集中性能监控.互联网端到端性能监控"/>
+        <content provinceDictCode="032602" groupDictName="数据网.集中性能监控.互联网端到端性能监控"/>
+        <content provinceDictCode="011501" groupDictName="无线.集中性能管理.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="011502" groupDictName="无线.集中性能管理.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="011503" groupDictName="无线.集中性能管理.实时业务质量监控保障"/>
+        <content provinceDictCode="011504" groupDictName="无线.集中性能管理.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="011505" groupDictName="无线.集中性能管理.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="021901" groupDictName="交换网.集中性能管理.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="021902" groupDictName="交换网.集中性能管理.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="021903" groupDictName="交换网.集中性能管理.实时业务质量监控保障"/>
+        <content provinceDictCode="021904" groupDictName="交换网.集中性能管理.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="021905" groupDictName="交换网.集中性能管理.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="140202" groupDictName="互联网.集中性能管理.实时业务质量监控保障"/>
+        <content provinceDictCode="140201" groupDictName="互联网.集中性能管理.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="140203" groupDictName="互联网.集中性能管理.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="140204" groupDictName="互联网.集中性能管理.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="061101" groupDictName="动力设备.通信机楼.高压配电"/>
+        <content provinceDictCode="061104" groupDictName="动力设备.通信机楼.低压直流配电"/>
+        <content provinceDictCode="061105" groupDictName="动力设备.通信机楼.发电机组"/>
+        <content provinceDictCode="061106" groupDictName="动力设备.通信机楼.开关电源"/>
+        <content provinceDictCode="021510" groupDictName="交换网.CM-IMS.PSBC"/>
+        <content provinceDictCode="011402" groupDictName="无线.集中性能监控.CSFB性能监控"/>
+        <content provinceDictCode="011403" groupDictName="无线.集中性能监控.2G性能监控"/>
+        <content provinceDictCode="061103" groupDictName="动力设备.通信机楼.变压器"/>
+        <content provinceDictCode="061107" groupDictName="动力设备.通信机楼.铅酸电池"/>
+        <content provinceDictCode="061108" groupDictName="动力设备.通信机楼.UPS设备"/>
+        <content provinceDictCode="061109" groupDictName="动力设备.通信机楼.UPS配电"/>
+        <content provinceDictCode="061110" groupDictName="动力设备.通信机楼.机房专用空调"/>
+        <content provinceDictCode="061112" groupDictName="动力设备.通信机楼.中央空调主机"/>
+        <content provinceDictCode="061113" groupDictName="动力设备.通信机楼.变换设备"/>
+        <content provinceDictCode="061114" groupDictName="动力设备.通信机楼.普通空调"/>
+        <content provinceDictCode="061115" groupDictName="动力设备.通信机楼.极早期烟感"/>
+        <content provinceDictCode="061116" groupDictName="动力设备.通信机楼.机房环境"/>
+        <content provinceDictCode="061118" groupDictName="动力设备.通信机楼.锂电池"/>
+        <content provinceDictCode="061119" groupDictName="动力设备.通信机楼.动环监控"/>
+        <content provinceDictCode="061120" groupDictName="动力设备.通信机楼.智能通风换热"/>
+        <content provinceDictCode="061121" groupDictName="动力设备.通信机楼.风光设备"/>
+        <content provinceDictCode="061122" groupDictName="动力设备.通信机楼.高压直流电源"/>
+        <content provinceDictCode="061125" groupDictName="动力设备.通信机楼.智能门禁"/>
+        <content provinceDictCode="061201" groupDictName="动力设备.传输节点.高压配电"/>
+        <content provinceDictCode="061202" groupDictName="动力设备.传输节点.低压交流配电"/>
+        <content provinceDictCode="061203" groupDictName="动力设备.传输节点.变压器"/>
+        <content provinceDictCode="061205" groupDictName="动力设备.传输节点.发电机组"/>
+        <content provinceDictCode="061206" groupDictName="动力设备.传输节点.开关电源"/>
+        <content provinceDictCode="061207" groupDictName="动力设备.传输节点.铅酸电池"/>
+        <content provinceDictCode="061208" groupDictName="动力设备.传输节点.UPS设备"/>
+        <content provinceDictCode="061209" groupDictName="动力设备.传输节点.UPS配电"/>
+        <content provinceDictCode="061210" groupDictName="动力设备.传输节点.机房专用空调"/>
+        <content provinceDictCode="061211" groupDictName="动力设备.传输节点.中央空调末端"/>
+        <content provinceDictCode="061212" groupDictName="动力设备.传输节点.中央空调主机"/>
+        <content provinceDictCode="061213" groupDictName="动力设备.传输节点.变换设备"/>
+        <content provinceDictCode="061214" groupDictName="动力设备.传输节点.普通空调"/>
+        <content provinceDictCode="061215" groupDictName="动力设备.传输节点.极早期烟感"/>
+        <content provinceDictCode="061216" groupDictName="动力设备.传输节点.机房环境"/>
+        <content provinceDictCode="061217" groupDictName="动力设备.传输节点.电池恒温箱"/>
+        <content provinceDictCode="061219" groupDictName="动力设备.传输节点.动环监控"/>
+        <content provinceDictCode="061220" groupDictName="动力设备.传输节点.智能通风换热"/>
+        <content provinceDictCode="061222" groupDictName="动力设备.传输节点.高压直流电源"/>
+        <content provinceDictCode="061223" groupDictName="动力设备.传输节点.高压直流电源配电"/>
+        <content provinceDictCode="061224" groupDictName="动力设备.传输节点.智能电表"/>
+        <content provinceDictCode="061302" groupDictName="动力设备.通信基站.低压交流配电"/>
+        <content provinceDictCode="061303" groupDictName="动力设备.通信基站.变压器"/>
+        <content provinceDictCode="061304" groupDictName="动力设备.通信基站.低压直流配电"/>
+        <content provinceDictCode="061305" groupDictName="动力设备.通信基站.发电机组"/>
+        <content provinceDictCode="061306" groupDictName="动力设备.通信基站.开关电源"/>
+        <content provinceDictCode="061307" groupDictName="动力设备.通信基站.铅酸电池"/>
+        <content provinceDictCode="061309" groupDictName="动力设备.通信基站.UPS配电"/>
+        <content provinceDictCode="061310" groupDictName="动力设备.通信基站.机房专用空调"/>
+        <content provinceDictCode="061311" groupDictName="动力设备.通信基站.中央空调末端"/>
+        <content provinceDictCode="061312" groupDictName="动力设备.通信基站.中央空调主机"/>
+        <content provinceDictCode="061314" groupDictName="动力设备.通信基站.普通空调"/>
+        <content provinceDictCode="061315" groupDictName="动力设备.通信基站.极早期烟感"/>
+        <content provinceDictCode="061316" groupDictName="动力设备.通信基站.机房环境"/>
+        <content provinceDictCode="061317" groupDictName="动力设备.通信基站.电池恒温箱"/>
+        <content provinceDictCode="051706" groupDictName="传输网.传输本地网.PORT"/>
+        <content provinceDictCode="061102" groupDictName="动力设备.通信机楼.低压交流配电"/>
+        <content provinceDictCode="061111" groupDictName="动力设备.通信机楼.中央空调末端"/>
+        <content provinceDictCode="061124" groupDictName="动力设备.通信机楼.智能电表"/>
+        <content provinceDictCode="061225" groupDictName="动力设备.传输节点.智能门禁"/>
+        <content provinceDictCode="061301" groupDictName="动力设备.通信基站.高压配电"/>
+        <content provinceDictCode="061318" groupDictName="动力设备.通信基站.锂电池"/>
+        <content provinceDictCode="061321" groupDictName="动力设备.通信基站.风光设备"/>
+        <content provinceDictCode="061322" groupDictName="动力设备.通信基站.高压直流电源"/>
+        <content provinceDictCode="061323" groupDictName="动力设备.通信基站.高压直流电源配电"/>
+        <content provinceDictCode="061324" groupDictName="动力设备.通信基站.智能电表"/>
+        <content provinceDictCode="061325" groupDictName="动力设备.通信基站.智能门禁"/>
+        <content provinceDictCode="120102" groupDictName="全业务接入.家庭宽带.OLT"/>
+        <content provinceDictCode="120103" groupDictName="全业务接入.家庭宽带.BRAS"/>
+        <content provinceDictCode="130201" groupDictName="资源类系统.传输管线资源管理系统.其他"/>
+        <content provinceDictCode="061204" groupDictName="动力设备.传输节点.低压直流配电"/>
+        <content provinceDictCode="061117" groupDictName="动力设备.通信机楼.电池恒温箱"/>
+        <content provinceDictCode="061123" groupDictName="动力设备.通信机楼.高压直流电源配电"/>
+        <content provinceDictCode="061218" groupDictName="动力设备.传输节点.锂电池"/>
+        <content provinceDictCode="061221" groupDictName="动力设备.传输节点.风光设备"/>
+        <content provinceDictCode="061308" groupDictName="动力设备.通信基站.UPS设备"/>
+        <content provinceDictCode="061313" groupDictName="动力设备.通信基站.变换设备"/>
+        <content provinceDictCode="061319" groupDictName="动力设备.通信基站.动环监控"/>
+        <content provinceDictCode="061320" groupDictName="动力设备.通信基站.智能通风换热"/>
+        <content provinceDictCode="150101" groupDictName="集中性能端到端分析.核心网.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="150102" groupDictName="集中性能端到端分析.核心网.客户感知溯源分析"/>
+        <content provinceDictCode="150103" groupDictName="集中性能端到端分析.核心网.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="150104" groupDictName="集中性能端到端分析.核心网.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="150105" groupDictName="集中性能端到端分析.核心网.实时业务质量"/>
+        <content provinceDictCode="150106" groupDictName="集中性能端到端分析.核心网.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="150201" groupDictName="集中性能端到端分析.无线.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="150202" groupDictName="集中性能端到端分析.无线.客户感知溯源分析"/>
+        <content provinceDictCode="150203" groupDictName="集中性能端到端分析.无线.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="150204" groupDictName="集中性能端到端分析.无线.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="150205" groupDictName="集中性能端到端分析.无线.实时业务质量"/>
+        <content provinceDictCode="150206" groupDictName="集中性能端到端分析.无线.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="150301" groupDictName="集中性能端到端分析.互联网.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="150302" groupDictName="集中性能端到端分析.互联网.客户感知溯源分析"/>
+        <content provinceDictCode="150303" groupDictName="集中性能端到端分析.互联网.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="150304" groupDictName="集中性能端到端分析.互联网.实时业务质量"/>
+        <content provinceDictCode="150305" groupDictName="集中性能端到端分析.互联网.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="150401" groupDictName="集中性能端到端分析.用户.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="150402" groupDictName="集中性能端到端分析.用户.客户感知溯源分析"/>
+        <content provinceDictCode="150403" groupDictName="集中性能端到端分析.用户.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="150404" groupDictName="集中性能端到端分析.用户.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="011302" groupDictName="无线.LTE无线.PCRF"/>
+        <content provinceDictCode="011301" groupDictName="无线.LTE无线.ENODEB"/>
+        <content provinceDictCode="032501" groupDictName="数据网.LTE.MME"/>
+        <content provinceDictCode="032502" groupDictName="数据网.LTE.SGW"/>
+        <content provinceDictCode="032503" groupDictName="数据网.LTE.CG"/>
+        <content provinceDictCode="010205" groupDictName="无线.TD无线网.ENODEB"/>
+        <content provinceDictCode="020608" groupDictName="交换网.本地网.HSS"/>
+        <content provinceDictCode="080209" groupDictName="网管.省网管系统.安全管控平台"/>
+        <content provinceDictCode="150501" groupDictName="集中性能端到端分析.终端.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="150602" groupDictName="集中性能端到端分析.传输.客户感知溯源分析"/>
+        <content provinceDictCode="150603" groupDictName="集中性能端到端分析.传输.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="170202" groupDictName="铁塔动环.电力监控.蓄电池组"/>
+        <content provinceDictCode="150606" groupDictName="集中性能端到端分析.传输.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="032701" groupDictName="数据网.局数据管理系统.智能维护"/>
+        <content provinceDictCode="150807" groupDictName="集中性能端到端分析.有线宽带.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="170203" groupDictName="铁塔动环.电力监控.智能电表（交流）"/>
+        <content provinceDictCode="180207" groupDictName="IT网.云平台.VMWARE数据中心"/>
+        <content provinceDictCode="150503" groupDictName="集中性能端到端分析.终端.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="160103" groupDictName="内容网络.CDN.SNS"/>
+        <content provinceDictCode="160106" groupDictName="内容网络.CDN.Report"/>
+        <content provinceDictCode="150607" groupDictName="集中性能端到端分析.传输.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="150505" groupDictName="集中性能端到端分析.终端.实时业务质量"/>
+        <content provinceDictCode="021512" groupDictName="交换网.CM-IMS.ISBG"/>
+        <content provinceDictCode="180201" groupDictName="IT网.云平台.交换机"/>
+        <content provinceDictCode="150703" groupDictName="集中性能端到端分析.数通.VoLTE端到端业务质量分析"/>
+        <content provinceDictCode="150307" groupDictName="集中性能端到端分析.互联网.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="031201" groupDictName="数据网.安全.主机"/>
+        <content provinceDictCode="160210" groupDictName="内容网络.拨测.网管"/>
+        <content provinceDictCode="180102" groupDictName="IT网.IDC.路由器"/>
+        <content provinceDictCode="180208" groupDictName="IT网.云平台.虚拟化"/>
+        <content provinceDictCode="021511" groupDictName="交换网.CM-IMS.TAS"/>
+        <content provinceDictCode="180206" groupDictName="IT网.云平台.主机"/>
+        <content provinceDictCode="150406" groupDictName="集中性能端到端分析.用户.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="150704" groupDictName="集中性能端到端分析.数通.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="011405" groupDictName="无线.集中性能监控.4G基站网优性能派单"/>
+        <content provinceDictCode="180105" groupDictName="IT网.IDC.防火墙"/>
+        <content provinceDictCode="011406" groupDictName="无线.集中性能监控.4G小区网优性能派单"/>
+        <content provinceDictCode="150207" groupDictName="集中性能端到端分析.无线.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="150705" groupDictName="集中性能端到端分析.数通.实时业务质量"/>
+        <content provinceDictCode="032504" groupDictName="数据网.LTE.PCRF"/>
+        <content provinceDictCode="030304" groupDictName="数据网.CMNET省网.防火墙"/>
+        <content provinceDictCode="170201" groupDictName="铁塔动环.电力监控.开关电源"/>
+        <content provinceDictCode="022001" groupDictName="交换网.局数据管理系统.智能维护"/>
+        <content provinceDictCode="150903" groupDictName="集中性能端到端分析.自有业务质量检测及竞对分析.互联网"/>
+        <content provinceDictCode="151001" groupDictName="集中性能端到端分析.物联网端到端质量分析.用户"/>
+        <content provinceDictCode="180103" groupDictName="IT网.IDC.服务器"/>
+        <content provinceDictCode="150706" groupDictName="集中性能端到端分析.数通.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="151004" groupDictName="集中性能端到端分析.物联网端到端质量分析.无线"/>
+        <content provinceDictCode="180202" groupDictName="IT网.云平台.路由器"/>
+        <content provinceDictCode="180203" groupDictName="IT网.云平台.防火墙"/>
+        <content provinceDictCode="033001" groupDictName="数据网.互联互通.业务拨测"/>
+        <content provinceDictCode="150604" groupDictName="集中性能端到端分析.传输.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="150601" groupDictName="集中性能端到端分析.传输.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="150702" groupDictName="集中性能端到端分析.数通.客户感知溯源分析"/>
+        <content provinceDictCode="120104" groupDictName="全业务接入.家庭宽带.网管"/>
+        <content provinceDictCode="160107" groupDictName="内容网络.CDN.BMS"/>
+        <content provinceDictCode="170101" groupDictName="铁塔动环.机房监控.机房环境"/>
+        <content provinceDictCode="180204" groupDictName="IT网.云平台.分布式文件系统存储"/>
+        <content provinceDictCode="150507" groupDictName="集中性能端到端分析.终端.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="180104" groupDictName="IT网.IDC.动环"/>
+        <content provinceDictCode="150405" groupDictName="集中性能端到端分析.用户.实时业务质量"/>
+        <content provinceDictCode="160202" groupDictName="内容网络.拨测.服务器"/>
+        <content provinceDictCode="150901" groupDictName="集中性能端到端分析.自有业务质量检测及竞对分析.核心网"/>
+        <content provinceDictCode="150902" groupDictName="集中性能端到端分析.自有业务质量检测及竞对分析.无线"/>
+        <content provinceDictCode="160108" groupDictName="内容网络.CDN.TIS"/>
+        <content provinceDictCode="160204" groupDictName="内容网络.拨测.CDNC"/>
+        <content provinceDictCode="160209" groupDictName="内容网络.拨测.SLB"/>
+        <content provinceDictCode="160101" groupDictName="内容网络.CDN.交换机"/>
+        <content provinceDictCode="160201" groupDictName="内容网络.拨测.交换机"/>
+        <content provinceDictCode="160203" groupDictName="内容网络.拨测.SNS"/>
+        <content provinceDictCode="160212" groupDictName="内容网络.拨测.HOST"/>
+        <content provinceDictCode="180101" groupDictName="IT网.IDC.交换机"/>
+        <content provinceDictCode="180205" groupDictName="IT网.云平台.负载均衡器"/>
+        <content provinceDictCode="160211" groupDictName="内容网络.拨测.I2000"/>
+        <content provinceDictCode="160112" groupDictName="内容网络.CDN.HOST"/>
+        <content provinceDictCode="160207" groupDictName="内容网络.拨测.BMS"/>
+        <content provinceDictCode="150107" groupDictName="集中性能端到端分析.核心网.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="020502" groupDictName="交换网.软交换汇接网.TMSC MGW"/>
+        <content provinceDictCode="160111" groupDictName="内容网络.CDN.I2000"/>
+        <content provinceDictCode="150506" groupDictName="集中性能端到端分析.终端.视频业务端到端业务质量分析"/>
+        <content provinceDictCode="032901" groupDictName="数据网.DPI.DPI"/>
+        <content provinceDictCode="150407" groupDictName="集中性能端到端分析.用户.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="150707" groupDictName="集中性能端到端分析.数通.自有业务质量检测及竞对分析"/>
+        <content provinceDictCode="180301" groupDictName="IT网.网管网.DPI"/>
+        <content provinceDictCode="160109" groupDictName="内容网络.CDN.SLB"/>
+        <content provinceDictCode="160104" groupDictName="内容网络.CDN.CDNC"/>
+        <content provinceDictCode="160205" groupDictName="内容网络.拨测.LogServer"/>
+        <content provinceDictCode="150605" groupDictName="集中性能端到端分析.传输.实时业务质量"/>
+        <content provinceDictCode="032801" groupDictName="数据网.IP计费认证.RADIUS"/>
+        <content provinceDictCode="160208" groupDictName="内容网络.拨测.TIS"/>
+        <content provinceDictCode="151002" groupDictName="集中性能端到端分析.物联网端到端质量分析.核心网"/>
+        <content provinceDictCode="160110" groupDictName="内容网络.CDN.网管"/>
+        <content provinceDictCode="160105" groupDictName="内容网络.CDN.LogServer"/>
+        <content provinceDictCode="151003" groupDictName="集中性能端到端分析.物联网端到端质量分析.互联网"/>
+        <content provinceDictCode="150502" groupDictName="集中性能端到端分析.终端.客户感知溯源分析"/>
+        <content provinceDictCode="160206" groupDictName="内容网络.拨测.Report"/>
+        <content provinceDictCode="150608" groupDictName="集中性能端到端分析.传输. PTN性能挂摘牌"/>
+        <content provinceDictCode="170102" groupDictName="铁塔动环.机房监控.监控设备"/>
+        <content provinceDictCode="150801" groupDictName="集中性能端到端分析.有线宽带.有线宽带端到端业务质量分析"/>
+        <content provinceDictCode="150504" groupDictName="集中性能端到端分析.终端.客户投诉溯源及主动预警"/>
+        <content provinceDictCode="150701" groupDictName="集中性能端到端分析.数通.移动互联网业务端到端质量分析"/>
+        <content provinceDictCode="160102" groupDictName="内容网络.CDN.服务器"/>
+    </netTypeInfo>
+    <webServicesParam><!-- 调用部省服务接口配置信息 -->
+        <!--若是对端是.net系统，此值为对端系统的命名空间(由对端提供)；若是对端是java系统，此值为读取此文件方法的逆序包名 -->
+        <NameSP>JTSheetServicecom.province.interfaces.eoms.boco.com</NameSP>
+        <!--若是对端是.net系统，此值为"对端系统的命名空间/接口方法名称";若对端是java系统，此值不填-->
+        <SOAPAction></SOAPAction>
+        <!--接口调用超时时间，粒度为毫秒 默认是2分钟-->
+        <timeOut>10000</timeOut>
+        <!--对端ip地址-->
+        <serviceUrl>
+            <commontask>http://localhost:9080/eoms35/services/JTSheetService</commontask> <!-- 通用任务工单部省接口地址 -->
+            <commonfault>http://localhost:9080/eoms35/services/JTSheetService</commonfault> <!-- 故障工单部省接口地址 -->
+        </serviceUrl>
+    </webServicesParam>
 </boco>

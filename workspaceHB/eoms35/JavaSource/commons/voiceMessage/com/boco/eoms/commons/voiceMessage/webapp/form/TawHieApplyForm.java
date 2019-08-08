@@ -5,371 +5,371 @@ import com.boco.eoms.commons.voiceMessage.util.MesStaticVariable;
 
 
 public class TawHieApplyForm extends BaseForm implements
-java.io.Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	public final static int ADD = 1;
+        java.io.Serializable {
 
-	public final static int EDIT = 2;
+    private static final long serialVersionUID = 1L;
 
-	private int strutsAction;
+    public final static int ADD = 1;
 
-	private String strutsButton = "";
+    public final static int EDIT = 2;
 
-	private int applyId = MesStaticVariable.defnull;
+    private int strutsAction;
 
-	private int hieId = MesStaticVariable.defnull;
+    private String strutsButton = "";
 
-	private String applyer = "";
+    private int applyId = MesStaticVariable.defnull;
 
-	private int receiverType = MesStaticVariable.defnull;
+    private int hieId = MesStaticVariable.defnull;
 
-	private int hieWay = MesStaticVariable.defnull;
+    private String applyer = "";
 
-	private int hieInterval = 0;
+    private int receiverType = MesStaticVariable.defnull;
 
-	private int hieAmount = 0;
+    private int hieWay = MesStaticVariable.defnull;
 
-	private String startTime = "";
+    private int hieInterval = 0;
 
-	private String endTime = "";
+    private int hieAmount = 0;
 
-	private int hieNightAllow = 0;
+    private String startTime = "";
 
-	private String notes = "";
+    private String endTime = "";
 
-	private int deleted = 0;
+    private int hieNightAllow = 0;
 
-	private int always = 0;
+    private String notes = "";
 
-	private int minute;
+    private int deleted = 0;
 
-	private int timeHour;
+    private int always = 0;
 
-	private int timeDay;
+    private int minute;
 
-	private int priv = 0;
+    private int timeHour;
 
-	private String alwaysName = MesStaticVariable.defaultnull;
+    private int timeDay;
 
-	private String applyerName = MesStaticVariable.defaultnull;
+    private int priv = 0;
 
-	private String hieName = MesStaticVariable.defaultnull;
+    private String alwaysName = MesStaticVariable.defaultnull;
 
-	private String hieWayName = MesStaticVariable.defaultnull;
+    private String applyerName = MesStaticVariable.defaultnull;
 
-	private String hieNightName = MesStaticVariable.defaultnull;
+    private String hieName = MesStaticVariable.defaultnull;
 
-	private String recName = "";
+    private String hieWayName = MesStaticVariable.defaultnull;
 
-	private String recTypeName = MesStaticVariable.defaultnull;
+    private String hieNightName = MesStaticVariable.defaultnull;
 
-	private String hieTimeLimitName = "";
+    private String recName = "";
 
-	private int hieType = 1;
+    private String recTypeName = MesStaticVariable.defaultnull;
 
-	private String serviceType = "";
+    private String hieTimeLimitName = "";
 
-	private int hieIdArray[] = new int[0];
+    private int hieType = 1;
 
-	private int cycle;
+    private String serviceType = "";
 
-	private String cycleName;
+    private int hieIdArray[] = new int[0];
 
-	private String hieIntervalFormat;
+    private int cycle;
 
-	private String receiver;
+    private String cycleName;
 
-	public int getAlways() {
-		return always;
-	}
+    private String hieIntervalFormat;
 
-	public void setAlways(int always) {
-		this.always = always;
-	}
+    private String receiver;
 
-	public String getAlwaysName() {
-		return alwaysName;
-	}
+    public int getAlways() {
+        return always;
+    }
 
-	public void setAlwaysName(String alwaysName) {
-		this.alwaysName = alwaysName;
-	}
+    public void setAlways(int always) {
+        this.always = always;
+    }
 
-	public String getApplyer() {
-		return applyer;
-	}
+    public String getAlwaysName() {
+        return alwaysName;
+    }
 
-	public void setApplyer(String applyer) {
-		this.applyer = applyer;
-	}
+    public void setAlwaysName(String alwaysName) {
+        this.alwaysName = alwaysName;
+    }
 
-	public int getApplyId() {
-		return applyId;
-	}
-
-	public void setApplyId(int applyId) {
-		this.applyId = applyId;
-	}
-
-	public String getApplyerName() {
-		return applyerName;
-	}
-
-	public void setApplyerName(String applyerName) {
-		this.applyerName = applyerName;
-	}
-
-	public int getDeleted() {
-		return deleted;
-	}
-
-	public void setDeleted(int deleted) {
-		this.deleted = deleted;
-	}
-
-	public String getEndTime() {
-		return endTime;
-	}
-
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
-
-	public int getHieAmount() {
-		return hieAmount;
-	}
-
-	public void setHieAmount(int hieAmount) {
-		this.hieAmount = hieAmount;
-	}
-
-	public int getHieId() {
-		return hieId;
-	}
-
-	public void setHieId(int hieId) {
-		this.hieId = hieId;
-	}
-
-	public int[] getHieIdArray() {
-		return hieIdArray;
-	}
-
-	public void setHieIdArray(int[] hieIdArray) {
-		this.hieIdArray = hieIdArray;
-	}
-
-	public int getHieInterval() {
-		return hieInterval;
-	}
-
-	public void setHieInterval(int hieInterval) {
-		this.hieInterval = hieInterval;
-	}
-
-	public String getHieName() {
-		return hieName;
-	}
-
-	public void setHieName(String hieName) {
-		this.hieName = hieName;
-	}
-
-	public int getHieNightAllow() {
-		return hieNightAllow;
-	}
-
-	public void setHieNightAllow(int hieNightAllow) {
-		this.hieNightAllow = hieNightAllow;
-	}
-
-	public String getHieNightName() {
-		return hieNightName;
-	}
-
-	public void setHieNightName(String hieNightName) {
-		this.hieNightName = hieNightName;
-	}
-
-	public String getHieTimeLimitName() {
-		return hieTimeLimitName;
-	}
-
-	public int getHieType() {
-		return hieType;
-	}
-
-	public void setHieType(int hieType) {
-		this.hieType = hieType;
-	}
-
-	public int getHieWay() {
-		return hieWay;
-	}
-
-	public void setHieWay(int hieWay) {
-		this.hieWay = hieWay;
-	}
-
-	public String getHieWayName() {
-		return hieWayName;
-	}
-
-	public void setHieWayName(String hieWayName) {
-		this.hieWayName = hieWayName;
-	}
-
-	public String getNotes() {
-		return notes;
-	}
-
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
-
-	public int getPriv() {
-		return priv;
-	}
-
-	public String getReceiver() {
-		return receiver;
-	}
-
-	public void setReceiver(String receiver) {
-		this.receiver = receiver;
-	}
-
-	public int getReceiverType() {
-		return receiverType;
-	}
-
-	public void setReceiverType(int receiverType) {
-		this.receiverType = receiverType;
-	}
-
-	public String getRecName() {
-		return recName;
-	}
-
-	public void setRecName(String recName) {
-		this.recName = recName;
-	}
-
-	public String getRecTypeName() {
-		return recTypeName;
-	}
-
-	public void setRecTypeName(String recTypeName) {
-		this.recTypeName = recTypeName;
-	}
-
-	public String getServiceType() {
-		return serviceType;
-	}
-
-	public void setServiceType(String serviceType) {
-		this.serviceType = serviceType;
-	}
-
-	public String getStartTime() {
-		return startTime;
-	}
-
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-
-	public int getStrutsAction() {
-		return strutsAction;
-	}
-
-	public void setStrutsAction(int strutsAction) {
-		this.strutsAction = strutsAction;
-	}
-
-	public String getStrutsButton() {
-		return strutsButton;
-	}
-
-	public void setStrutsButton(String strutsButton) {
-		this.strutsButton = strutsButton;
-	}
-
-	public void setPriv(int priv) {
-		this.priv = priv;
-	}
-
-	public void setHieTimeLimitName(String hieTimeLimitName) {
-		this.hieTimeLimitName = hieTimeLimitName;
-	}
-
-	public int getCycle() {
-		return cycle;
-	}
-
-	public void setCycle(int cycle) {
-		this.cycle = cycle;
-	}
-
-	public String getCycleName() {
-		return cycleName;
-	}
-
-	public void setCycleName(String cycleName) {
-		this.cycleName = cycleName;
-	}
-
-	public String getHieIntervalFormat() {
-		return hieIntervalFormat;
-	}
-
-	public void setHieIntervalFormat(String hieIntervalFormat) {
-		this.hieIntervalFormat = hieIntervalFormat;
-	}
-
-	public int getMinute() {
-		return minute;
-	}
-
-	public void setMinute(int minute) {
-		this.minute = minute;
-	}
-
-	public int getTimeDay() {
-		return timeDay;
-	}
-
-	public void setTimeDay(int timeDay) {
-		this.timeDay = timeDay;
-	}
-
-	public int getTimeHour() {
-		return timeHour;
-	}
-
-	public void setTimeHour(int timeHour) {
-		this.timeHour = timeHour;
-	}
-	
-	
-	//add for vip
-	private int vipId;
-	
-	private String vipTime;
-	
-	//private String vipTime;
-	
-	private int vipResult;
-
-	public int getVipId() {
-		return vipId;
-	}
-
-	public void setVipId(int vipId) {
-		this.vipId = vipId;
-	}
+    public String getApplyer() {
+        return applyer;
+    }
+
+    public void setApplyer(String applyer) {
+        this.applyer = applyer;
+    }
+
+    public int getApplyId() {
+        return applyId;
+    }
+
+    public void setApplyId(int applyId) {
+        this.applyId = applyId;
+    }
+
+    public String getApplyerName() {
+        return applyerName;
+    }
+
+    public void setApplyerName(String applyerName) {
+        this.applyerName = applyerName;
+    }
+
+    public int getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(int deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public int getHieAmount() {
+        return hieAmount;
+    }
+
+    public void setHieAmount(int hieAmount) {
+        this.hieAmount = hieAmount;
+    }
+
+    public int getHieId() {
+        return hieId;
+    }
+
+    public void setHieId(int hieId) {
+        this.hieId = hieId;
+    }
+
+    public int[] getHieIdArray() {
+        return hieIdArray;
+    }
+
+    public void setHieIdArray(int[] hieIdArray) {
+        this.hieIdArray = hieIdArray;
+    }
+
+    public int getHieInterval() {
+        return hieInterval;
+    }
+
+    public void setHieInterval(int hieInterval) {
+        this.hieInterval = hieInterval;
+    }
+
+    public String getHieName() {
+        return hieName;
+    }
+
+    public void setHieName(String hieName) {
+        this.hieName = hieName;
+    }
+
+    public int getHieNightAllow() {
+        return hieNightAllow;
+    }
+
+    public void setHieNightAllow(int hieNightAllow) {
+        this.hieNightAllow = hieNightAllow;
+    }
+
+    public String getHieNightName() {
+        return hieNightName;
+    }
+
+    public void setHieNightName(String hieNightName) {
+        this.hieNightName = hieNightName;
+    }
+
+    public String getHieTimeLimitName() {
+        return hieTimeLimitName;
+    }
+
+    public int getHieType() {
+        return hieType;
+    }
+
+    public void setHieType(int hieType) {
+        this.hieType = hieType;
+    }
+
+    public int getHieWay() {
+        return hieWay;
+    }
+
+    public void setHieWay(int hieWay) {
+        this.hieWay = hieWay;
+    }
+
+    public String getHieWayName() {
+        return hieWayName;
+    }
+
+    public void setHieWayName(String hieWayName) {
+        this.hieWayName = hieWayName;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public int getPriv() {
+        return priv;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public int getReceiverType() {
+        return receiverType;
+    }
+
+    public void setReceiverType(int receiverType) {
+        this.receiverType = receiverType;
+    }
+
+    public String getRecName() {
+        return recName;
+    }
+
+    public void setRecName(String recName) {
+        this.recName = recName;
+    }
+
+    public String getRecTypeName() {
+        return recTypeName;
+    }
+
+    public void setRecTypeName(String recTypeName) {
+        this.recTypeName = recTypeName;
+    }
+
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public int getStrutsAction() {
+        return strutsAction;
+    }
+
+    public void setStrutsAction(int strutsAction) {
+        this.strutsAction = strutsAction;
+    }
+
+    public String getStrutsButton() {
+        return strutsButton;
+    }
+
+    public void setStrutsButton(String strutsButton) {
+        this.strutsButton = strutsButton;
+    }
+
+    public void setPriv(int priv) {
+        this.priv = priv;
+    }
+
+    public void setHieTimeLimitName(String hieTimeLimitName) {
+        this.hieTimeLimitName = hieTimeLimitName;
+    }
+
+    public int getCycle() {
+        return cycle;
+    }
+
+    public void setCycle(int cycle) {
+        this.cycle = cycle;
+    }
+
+    public String getCycleName() {
+        return cycleName;
+    }
+
+    public void setCycleName(String cycleName) {
+        this.cycleName = cycleName;
+    }
+
+    public String getHieIntervalFormat() {
+        return hieIntervalFormat;
+    }
+
+    public void setHieIntervalFormat(String hieIntervalFormat) {
+        this.hieIntervalFormat = hieIntervalFormat;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public int getTimeDay() {
+        return timeDay;
+    }
+
+    public void setTimeDay(int timeDay) {
+        this.timeDay = timeDay;
+    }
+
+    public int getTimeHour() {
+        return timeHour;
+    }
+
+    public void setTimeHour(int timeHour) {
+        this.timeHour = timeHour;
+    }
+
+
+    //add for vip
+    private int vipId;
+
+    private String vipTime;
+
+    //private String vipTime;
+
+    private int vipResult;
+
+    public int getVipId() {
+        return vipId;
+    }
+
+    public void setVipId(int vipId) {
+        this.vipId = vipId;
+    }
 
 /*	public String getVipTime() {
 		return vipTime;
@@ -379,251 +379,251 @@ java.io.Serializable {
 		this.vipTime = vipTime;
 	}*/
 
-	public int getVipResult() {
-		return vipResult;
-	}
+    public int getVipResult() {
+        return vipResult;
+    }
 
-	public void setVipResult(int vipResult) {
-		this.vipResult = vipResult;
-	}
-	
-	private int astId;
-	
-	private int astResult;
-	
-	private String astTime;
+    public void setVipResult(int vipResult) {
+        this.vipResult = vipResult;
+    }
 
-	public int getAstId() {
-		return astId;
-	}
+    private int astId;
 
-	public void setAstId(int astId) {
-		this.astId = astId;
-	}
+    private int astResult;
 
-	public int getAstResult() {
-		return astResult;
-	}
+    private String astTime;
 
-	public void setAstResult(int astResult) {
-		this.astResult = astResult;
-	}
-	
-	private String confName;
-	
-	private int confTrunkNo;
-	
-	private String confOrganizer;
-	
-	private String confBeginTime;
-	
-	private String confEndTime;
-	
-	private int confState;
-	
-	private int confRecord;
-	
-	private int isCallout;
+    public int getAstId() {
+        return astId;
+    }
 
-	public String getConfName() {
-		return confName;
-	}
+    public void setAstId(int astId) {
+        this.astId = astId;
+    }
 
-	public void setConfName(String confName) {
-		this.confName = confName;
-	}
+    public int getAstResult() {
+        return astResult;
+    }
 
-	public int getConfTrunkNo() {
-		return confTrunkNo;
-	}
+    public void setAstResult(int astResult) {
+        this.astResult = astResult;
+    }
 
-	public void setConfTrunkNo(int confTrunkNo) {
-		this.confTrunkNo = confTrunkNo;
-	}
+    private String confName;
 
-	public String getConfOrganizer() {
-		return confOrganizer;
-	}
+    private int confTrunkNo;
 
-	public void setConfOrganizer(String confOrganizer) {
-		this.confOrganizer = confOrganizer;
-	}
+    private String confOrganizer;
 
-	public String getConfBeginTime() {
-		return confBeginTime;
-	}
+    private String confBeginTime;
 
-	public void setConfBeginTime(String confBeginTime) {
-		this.confBeginTime = confBeginTime;
-	}
+    private String confEndTime;
 
-	public String getConfEndTime() {
-		return confEndTime;
-	}
+    private int confState;
 
-	public void setConfEndTime(String confEndTime) {
-		this.confEndTime = confEndTime;
-	}
+    private int confRecord;
 
-	public int getConfState() {
-		return confState;
-	}
+    private int isCallout;
 
-	public void setConfState(int confState) {
-		this.confState = confState;
-	}
+    public String getConfName() {
+        return confName;
+    }
 
-	public int getConfRecord() {
-		return confRecord;
-	}
+    public void setConfName(String confName) {
+        this.confName = confName;
+    }
 
-	public void setConfRecord(int confRecord) {
-		this.confRecord = confRecord;
-	}
+    public int getConfTrunkNo() {
+        return confTrunkNo;
+    }
 
-	public int getIsCallout() {
-		return isCallout;
-	}
+    public void setConfTrunkNo(int confTrunkNo) {
+        this.confTrunkNo = confTrunkNo;
+    }
 
-	public void setIsCallout(int isCallout) {
-		this.isCallout = isCallout;
-	}
-	
-	private int confNo;
+    public String getConfOrganizer() {
+        return confOrganizer;
+    }
 
-	public int getConfNo() {
-		return confNo;
-	}
+    public void setConfOrganizer(String confOrganizer) {
+        this.confOrganizer = confOrganizer;
+    }
 
-	public void setConfNo(int confNo) {
-		this.confNo = confNo;
-	}
-	
-	private String calleePhone;
-	
-	private String assistPhone;
-	
-	private String userCode;
-	
-	private String unit;
+    public String getConfBeginTime() {
+        return confBeginTime;
+    }
 
-	public String getCalleePhone() {
-		return calleePhone;
-	}
+    public void setConfBeginTime(String confBeginTime) {
+        this.confBeginTime = confBeginTime;
+    }
 
-	public void setCalleePhone(String calleePhone) {
-		this.calleePhone = calleePhone;
-	}
+    public String getConfEndTime() {
+        return confEndTime;
+    }
 
-	public String getAssistPhone() {
-		return assistPhone;
-	}
+    public void setConfEndTime(String confEndTime) {
+        this.confEndTime = confEndTime;
+    }
 
-	public void setAssistPhone(String assistPhone) {
-		this.assistPhone = assistPhone;
-	}
+    public int getConfState() {
+        return confState;
+    }
 
-	public String getUserCode() {
-		return userCode;
-	}
+    public void setConfState(int confState) {
+        this.confState = confState;
+    }
 
-	public void setUserCode(String userCode) {
-		this.userCode = userCode;
-	}
+    public int getConfRecord() {
+        return confRecord;
+    }
 
-	public String getUnit() {
-		return unit;
-	}
+    public void setConfRecord(int confRecord) {
+        this.confRecord = confRecord;
+    }
 
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-	
-	private String vipName;
-	
-	private String vipTel;
-	
-	private String vipCode;
+    public int getIsCallout() {
+        return isCallout;
+    }
 
-	public String getVipName() {
-		return vipName;
-	}
+    public void setIsCallout(int isCallout) {
+        this.isCallout = isCallout;
+    }
 
-	public void setVipName(String vipName) {
-		this.vipName = vipName;
-	}
+    private int confNo;
 
-	public String getVipTel() {
-		return vipTel;
-	}
+    public int getConfNo() {
+        return confNo;
+    }
 
-	public void setVipTel(String vipTel) {
-		this.vipTel = vipTel;
-	}
+    public void setConfNo(int confNo) {
+        this.confNo = confNo;
+    }
 
-	public String getVipCode() {
-		return vipCode;
-	}
+    private String calleePhone;
 
-	public void setVipCode(String vipCode) {
-		this.vipCode = vipCode;
-	}
+    private String assistPhone;
 
-	public String getVipTime() {
-		return vipTime;
-	}
+    private String userCode;
 
-	public void setVipTime(String vipTime) {
-		this.vipTime = vipTime;
-	}
+    private String unit;
 
-	public String getAstTime() {
-		return astTime;
-	}
+    public String getCalleePhone() {
+        return calleePhone;
+    }
 
-	public void setAstTime(String astTime) {
-		this.astTime = astTime;
-	}
-	
-	private String userId;
-	
-	private String userName;
-	
-	private String userTel;
-	
-	private String userType;
+    public void setCalleePhone(String calleePhone) {
+        this.calleePhone = calleePhone;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getAssistPhone() {
+        return assistPhone;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setAssistPhone(String assistPhone) {
+        this.assistPhone = assistPhone;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getUserCode() {
+        return userCode;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
 
-	public String getUserTel() {
-		return userTel;
-	}
+    public String getUnit() {
+        return unit;
+    }
 
-	public void setUserTel(String userTel) {
-		this.userTel = userTel;
-	}
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
 
-	public String getUserType() {
-		return userType;
-	}
+    private String vipName;
 
-	public void setUserType(String userType) {
-		this.userType = userType;
-	}
+    private String vipTel;
+
+    private String vipCode;
+
+    public String getVipName() {
+        return vipName;
+    }
+
+    public void setVipName(String vipName) {
+        this.vipName = vipName;
+    }
+
+    public String getVipTel() {
+        return vipTel;
+    }
+
+    public void setVipTel(String vipTel) {
+        this.vipTel = vipTel;
+    }
+
+    public String getVipCode() {
+        return vipCode;
+    }
+
+    public void setVipCode(String vipCode) {
+        this.vipCode = vipCode;
+    }
+
+    public String getVipTime() {
+        return vipTime;
+    }
+
+    public void setVipTime(String vipTime) {
+        this.vipTime = vipTime;
+    }
+
+    public String getAstTime() {
+        return astTime;
+    }
+
+    public void setAstTime(String astTime) {
+        this.astTime = astTime;
+    }
+
+    private String userId;
+
+    private String userName;
+
+    private String userTel;
+
+    private String userType;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserTel() {
+        return userTel;
+    }
+
+    public void setUserTel(String userTel) {
+        this.userTel = userTel;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
 	
 	
 
@@ -677,8 +677,6 @@ java.io.Serializable {
 	public void setJoinMode(int[] joinMode) {
 		this.joinMode = joinMode;
 	}*/
-	
-	
 
 
 }

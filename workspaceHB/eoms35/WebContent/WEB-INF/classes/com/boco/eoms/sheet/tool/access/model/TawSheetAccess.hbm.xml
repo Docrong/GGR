@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,75 +13,75 @@
             table="sheet_tool_access"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="increment">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="increment">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="accesss"
+                name="accesss"
                 length="254"
         >
 
         </property>
 
         <property
-            name="processname"
+                name="processname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="taskname"
+                name="taskname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="accessid"
+                name="accessid"
                 length="254"
         >
 
         </property>
 
         <property
-            name="leaf"
+                name="leaf"
                 length="5"
         >
 
         </property>
 
         <property
-            name="ordercode"
+                name="ordercode"
         >
 
         </property>
 
         <property
-            name="parAccessid"
+                name="parAccessid"
                 length="254"
         >
 
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 length="254"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

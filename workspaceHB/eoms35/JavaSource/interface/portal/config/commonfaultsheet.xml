@@ -1,52 +1,56 @@
 <?xml version="1.0" encoding="GBK"?>
 <boco>
-	<!-- 集中故障接口类型配置 -->
-	<interfaceType>
-		<dealSheet>dealSheet</dealSheet><!-- 工单处理完成提交请求接口 -->
-		<acceptSheet>acceptSheet</acceptSheet><!-- 工单受理状态更新请求接口 -->
-	</interfaceType>
-	
-	<operate>
-		<operateUserId>pengguangjun</operateUserId>
-		<operateDeptId>12301</operateDeptId><!-- 网管中心核心网部 -->
-		<operateRoleId>8a998abc94qd117817a0551508032</operateRoleId><!-- 核心网部GPRS数通维护班组 -->
-		<operaterContact>13886159548</operaterContact>
-		
-		<ipPort>http://10.30.172.40:58999/CentralizedFaultHandlingService?wsdl</ipPort>
-	</operate>
-	
-	<acceptSheet>
-		<content columnName="beanId"  interfaceName=""  defauleValue="iCommonFaultMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink" />
-		<content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="61" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept" />
-		<content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0" />		<!-- 超时标记-->	
-	</acceptSheet>
-	
-	<dealSheet>
-		<content columnName=""  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号  -->
-		
-		<content columnName="status"  interfaceName=""  defauleValue="0"/>
-		<content columnName="beanId"  interfaceName=""  defauleValue="iCommonFaultMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink" />
-		<content columnName="phaseId" interfaceName="" defauleValue="HoldTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="46" />
-		
-		<content columnName="linkFaultDealResult" interfaceName="" defauleValue="101030601" /><!-- 故障处理结果 -->
-		<content columnName="linkIfGreatFault" interfaceName="" defauleValue="1030102" /><!-- 是否重大故障 -->
-		<content columnName="linkFaultReasonSort" interfaceName="" defauleValue="101030315" /><!-- 归因一级 -->
-		<content columnName="linkFaultReasonSubsection" interfaceName="" defauleValue="101030315" /><!-- 归因二级 -->
-		<content columnName="linkFaultReasonSubsectionTwo" interfaceName="" defauleValue="101030315" /><!-- 归因三级 -->
-		<content columnName="linkDealStep" interfaceName="remark1" defauleValue="" /><!-- 处理措施 -->
-		<content columnName="linkIfConfirmPreSolve"  interfaceName=""  defauleValue="1030101"/><!--预处理是否准确  -->
-		<content columnName="linkIfExcuteNetChange" interfaceName="" defauleValue="1030102" /><!--是否实时网络变更  -->
-		<content columnName="linkIfFinallySolveProject" interfaceName="" defauleValue="1030101" /><!--是否为最终解决方案  -->
-		<content columnName="linkIfAddCaseDataBase" interfaceName="" defauleValue="1030102" /><!--是否申请入案例  -->
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="" /><!-- 是否手机操作 -->
-		
-	</dealSheet>
-		
+    <!-- 集中故障接口类型配置 -->
+    <interfaceType>
+        <dealSheet>dealSheet</dealSheet><!-- 工单处理完成提交请求接口 -->
+        <acceptSheet>acceptSheet</acceptSheet><!-- 工单受理状态更新请求接口 -->
+    </interfaceType>
+
+    <operate>
+        <operateUserId>pengguangjun</operateUserId>
+        <operateDeptId>12301</operateDeptId><!-- 网管中心核心网部 -->
+        <operateRoleId>8a998abc94qd117817a0551508032</operateRoleId><!-- 核心网部GPRS数通维护班组 -->
+        <operaterContact>13886159548</operaterContact>
+
+        <ipPort>http://10.30.172.40:58999/CentralizedFaultHandlingService?wsdl</ipPort>
+    </operate>
+
+    <acceptSheet>
+        <content columnName="beanId" interfaceName="" defauleValue="iCommonFaultMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink"/>
+        <content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="61"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept"/>
+        <content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0"/>        <!-- 超时标记-->
+    </acceptSheet>
+
+    <dealSheet>
+        <content columnName="" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号  -->
+
+        <content columnName="status" interfaceName="" defauleValue="0"/>
+        <content columnName="beanId" interfaceName="" defauleValue="iCommonFaultMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.commonfault.model.CommonFaultLink"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="HoldTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="46"/>
+
+        <content columnName="linkFaultDealResult" interfaceName="" defauleValue="101030601"/><!-- 故障处理结果 -->
+        <content columnName="linkIfGreatFault" interfaceName="" defauleValue="1030102"/><!-- 是否重大故障 -->
+        <content columnName="linkFaultReasonSort" interfaceName="" defauleValue="101030315"/><!-- 归因一级 -->
+        <content columnName="linkFaultReasonSubsection" interfaceName="" defauleValue="101030315"/><!-- 归因二级 -->
+        <content columnName="linkFaultReasonSubsectionTwo" interfaceName="" defauleValue="101030315"/><!-- 归因三级 -->
+        <content columnName="linkDealStep" interfaceName="remark1" defauleValue=""/><!-- 处理措施 -->
+        <content columnName="linkIfConfirmPreSolve" interfaceName="" defauleValue="1030101"/><!--预处理是否准确  -->
+        <content columnName="linkIfExcuteNetChange" interfaceName="" defauleValue="1030102"/><!--是否实时网络变更  -->
+        <content columnName="linkIfFinallySolveProject" interfaceName="" defauleValue="1030101"/><!--是否为最终解决方案  -->
+        <content columnName="linkIfAddCaseDataBase" interfaceName="" defauleValue="1030102"/><!--是否申请入案例  -->
+        <content columnName="linkIfMobile" interfaceName="" defauleValue=""/><!-- 是否手机操作 -->
+
+    </dealSheet>
+
 </boco>

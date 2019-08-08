@@ -14,6 +14,7 @@ public class TawSystemOrganizationProxyManagerImpl extends BaseManager implement
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSystemOrganizationProxyDao(TawSystemOrganizationProxyDao dao) {
@@ -47,12 +48,14 @@ public class TawSystemOrganizationProxyManagerImpl extends BaseManager implement
     public void removeTawSystemOrganizationProxy(final String id) {
         dao.removeTawSystemOrganizationProxy(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSystemOrganizationProxys(final Integer curPage, final Integer pageSize) {
-        return dao.getTawSystemOrganizationProxys(curPage, pageSize,null);
+        return dao.getTawSystemOrganizationProxys(curPage, pageSize, null);
     }
+
     public Map getTawSystemOrganizationProxys(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawSystemOrganizationProxys(curPage, pageSize, whereStr);
     }

@@ -21,19 +21,19 @@ import com.boco.eoms.sheet.nbproducts.model.NBProducts;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public interface IComplaintReturnHouseManager  {
+public interface IComplaintReturnHouseManager {
 
-	public Map getReturnHouse(String userid,final String queryStr, 
-	          final Integer curPage,final Integer pageSize);
-	
-	public void saveReturnHouse(ComplaintReturnHouse complaintreturnhouse);
-	
-	public ComplaintReturnHouse getReturnHouseByid(String id);
-	
+    public Map getReturnHouse(String userid, final String queryStr,
+                              final Integer curPage, final Integer pageSize);
+
+    public void saveReturnHouse(ComplaintReturnHouse complaintreturnhouse);
+
+    public ComplaintReturnHouse getReturnHouseByid(String id);
+
 //	/**
 //	 * 通过告警号获取工单
 //	 * @param alarmId 告警号

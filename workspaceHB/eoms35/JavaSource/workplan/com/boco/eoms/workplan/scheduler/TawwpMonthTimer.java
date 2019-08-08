@@ -14,26 +14,25 @@ import com.boco.eoms.workplan.model.TawwpMonthPlan;
 import com.boco.eoms.workplan.vo.TawwpMonthPlanVO;
 
 
-
 public class TawwpMonthTimer implements Job {
 
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		List list = null;
-		String userId="";
-		Calendar c =  Calendar.getInstance() ; 
-		 String year  =  ""+(c.get(Calendar.YEAR));
-		 String month =  ""+(c.get(Calendar.MONTH)+1);
-		// VO对象
-		 //TawwpMonthPlan tawwpMonthPlan = null;
-		ITawwpMonthMgr tawwpMonthMgr = (ITawwpMonthMgr) ApplicationContextHolder
-		.getInstance().getBean("tawwpMonthMgr");
-		// 日志
-		ITawwpLogMgr tawwpLogMgr = (ITawwpLogMgr) ApplicationContextHolder
-		.getInstance().getBean("tawwpLogMgr");
+    public void execute(JobExecutionContext arg0) throws JobExecutionException {
+        List list = null;
+        String userId = "";
+        Calendar c = Calendar.getInstance();
+        String year = "" + (c.get(Calendar.YEAR));
+        String month = "" + (c.get(Calendar.MONTH) + 1);
+        // VO对象
+        //TawwpMonthPlan tawwpMonthPlan = null;
+        ITawwpMonthMgr tawwpMonthMgr = (ITawwpMonthMgr) ApplicationContextHolder
+                .getInstance().getBean("tawwpMonthMgr");
+        // 日志
+        ITawwpLogMgr tawwpLogMgr = (ITawwpLogMgr) ApplicationContextHolder
+                .getInstance().getBean("tawwpLogMgr");
 
-		try {
-			tawwpMonthMgr.passMonthCheckTime(month, year);			
-			tawwpMonthMgr.passMonthCheckTime();
+        try {
+            tawwpMonthMgr.passMonthCheckTime(month, year);
+            tawwpMonthMgr.passMonthCheckTime();
 			/*// 获取月度作业计划集合
 			list = tawwpMonthMgr.listMonthPlan(year, month);			
 			list=tawwpMonthMgr.listMonthCheck();
@@ -45,13 +44,13 @@ public class TawwpMonthTimer implements Job {
 				monthCheckIdStr=tawwpMonthPlanVO.getMonthCheckId();
 				// 通过月度作业计划审批
 				tawwpMonthMgr.passMonthCheck(monthCheckIdStr, "", userId);*/
-				/*tawwpMonthMgr.editMonthPlanSave(tawwpMonthPlan.getId(), tawwpMonthPlan.getExecuteType(),tawwpMonthPlan.getPrincipal());
-				*/
-				tawwpLogMgr.addLog(userId, "passMonthCheck", "");
-				
-			
-		} catch (Exception e) {
-		}
-	}
+            /*tawwpMonthMgr.editMonthPlanSave(tawwpMonthPlan.getId(), tawwpMonthPlan.getExecuteType(),tawwpMonthPlan.getPrincipal());
+             */
+            tawwpLogMgr.addLog(userId, "passMonthCheck", "");
+
+
+        } catch (Exception e) {
+        }
+    }
 
 }

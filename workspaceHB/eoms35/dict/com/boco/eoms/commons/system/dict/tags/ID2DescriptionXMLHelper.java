@@ -23,16 +23,15 @@ import com.boco.eoms.commons.system.dict.util.Util;
  * <p>
  * Date:2007-10-24 19:19:23
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class ID2DescriptionXMLHelper implements IDictTagStrategyHelper {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.tags.IDictTagHelper#doEndTag(com.boco.eoms.commons.system.dict.model.DictTag,
      *      javax.servlet.jsp.PageContext)
      */
@@ -58,7 +57,7 @@ public class ID2DescriptionXMLHelper implements IDictTagStrategyHelper {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.tags.IDictTagHelper#doStartTag(com.boco.eoms.commons.system.dict.model.DictTag,
      *      javax.servlet.jsp.PageContext)
      */

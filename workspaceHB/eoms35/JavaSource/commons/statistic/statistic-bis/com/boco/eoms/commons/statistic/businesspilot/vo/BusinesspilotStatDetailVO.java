@@ -3,34 +3,35 @@ package com.boco.eoms.commons.statistic.businesspilot.vo;
 import java.util.Date;
 
 import com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO;
+
 public class BusinesspilotStatDetailVO extends StatDetailVO {
-	private String mainProductCode;
-	
-	private Date mainEndTime;
-	
-	private Date endTime;
+    private String mainProductCode;
 
-	public String getMainProductCode() {
-		return mainProductCode;
-	}
+    private Date mainEndTime;
 
-	public void setMainProductCode(String mainProductCode) {
-		this.mainProductCode = mainProductCode;
-	}
+    private Date endTime;
 
-	public Date getMainEndTime() {
-		return mainEndTime;
-	}
+    public String getMainProductCode() {
+        return mainProductCode;
+    }
 
-	public void setMainEndTime(Date mainEndTime) {
-		this.mainEndTime = mainEndTime;
-	}
+    public void setMainProductCode(String mainProductCode) {
+        this.mainProductCode = mainProductCode;
+    }
 
-	public Date getEndTime() {
-		return endTime;
-	}
+    public Date getMainEndTime() {
+        return mainEndTime;
+    }
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
+    public void setMainEndTime(Date mainEndTime) {
+        this.mainEndTime = mainEndTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 }

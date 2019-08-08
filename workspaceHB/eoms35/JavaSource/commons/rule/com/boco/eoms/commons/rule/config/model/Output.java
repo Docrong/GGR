@@ -13,32 +13,31 @@ import java.util.List;
  * <p>
  * Apr 11, 2007 2:54:36 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Output {
-	/**
-	 * 输出参数列表
-	 */
-	private List parameters = new ArrayList();
+    /**
+     * 输出参数列表
+     */
+    private List parameters = new ArrayList();
 
-	public Output() {
-		super();
-	}
+    public Output() {
+        super();
+    }
 
-	public List getParameters() {
-		return parameters;
-	}
+    public List getParameters() {
+        return parameters;
+    }
 
-	public void setParameters(List parameters) {
-		this.parameters = parameters;
-	}
+    public void setParameters(List parameters) {
+        this.parameters = parameters;
+    }
 
-	public Output(List parameters) {
-		super();
-		this.parameters = parameters;
-	}
+    public Output(List parameters) {
+        super();
+        this.parameters = parameters;
+    }
 
 }

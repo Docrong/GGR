@@ -26,20 +26,20 @@ window["undefined"] = window["undefined"];
  * @return {Object} returns obj
  * @member Ext apply
  */
-Ext.apply = function(o, c, defaults){
-    if(defaults){
+Ext.apply = function (o, c, defaults) {
+    if (defaults) {
         // no "this" reference for friendly out of scope calls
         Ext.apply(o, defaults);
     }
-    if(o && c && typeof c == 'object'){
-        for(var p in c){
+    if (o && c && typeof c == 'object') {
+        for (var p in c) {
             o[p] = c[p];
         }
     }
     return o;
 };
 
-(function(){
+(function () {
     var idSeed = 0;
     var ua = navigator.userAgent.toLowerCase();
 
@@ -56,10 +56,11 @@ Ext.apply = function(o, c, defaults){
         isSecure = window.location.href.toLowerCase().indexOf("https") === 0;
 
     // remove css image flicker
-	if(isIE && !isIE7){
-        try{
+    if (isIE && !isIE7) {
+        try {
             document.execCommand("BackgroundImageCache", false, true);
-        }catch(e){}
+        } catch (e) {
+        }
     }
 
     Ext.apply(Ext, {
@@ -67,46 +68,47 @@ Ext.apply = function(o, c, defaults){
          * True if the browser is in strict mode
          * @type Boolean
          */
-        isStrict : isStrict,
+        isStrict: isStrict,
         /**
          * True if the page is running over SSL
          * @type Boolean
          */
-        isSecure : isSecure,
+        isSecure: isSecure,
         /**
          * True when the document is fully initialized and ready for action
          * @type Boolean
          */
-        isReady : false,
+        isReady: false,
 
         /**
          * True to automatically uncache orphaned Ext.Elements periodically (defaults to true)
          * @type Boolean
          */
-        enableGarbageCollector : true,
+        enableGarbageCollector: true,
 
         /**
          * True to automatically purge event listeners after uncaching an element (defaults to false).
          * Note: this only happens if enableGarbageCollector is true.
          * @type Boolean
          */
-        enableListenerCollection:false,
+        enableListenerCollection: false,
 
         /**
          * URL to a blank file used by Ext when in secure mode for iframe src and onReady src to prevent
          * the IE insecure content warning (defaults to javascript:false).
          * @type String
          */
-        SSL_SECURE_URL : "javascript:false",
+        SSL_SECURE_URL: "javascript:false",
 
         /**
          * URL to a 1x1 transparent gif image used by Ext to create inline icons with CSS background images. (Defaults to
          * "http://extjs.com/s.gif" and you should change this to a URL on your server).
          * @type String
          */
-        BLANK_IMAGE_URL : "http:/"+"/extjs.com/s.gif",
+        BLANK_IMAGE_URL: "http:/" + "/extjs.com/s.gif",
 
-        emptyFn : function(){},
+        emptyFn: function () {
+        },
 
         /**
          * Copies all the properties of config to obj if they don't already exist.
@@ -114,10 +116,12 @@ Ext.apply = function(o, c, defaults){
          * @param {Object} config The source of the properties
          * @return {Object} returns obj
          */
-        applyIf : function(o, c){
-            if(o && c){
-                for(var p in c){
-                    if(typeof o[p] == "undefined"){ o[p] = c[p]; }
+        applyIf: function (o, c) {
+            if (o && c) {
+                for (var p in c) {
+                    if (typeof o[p] == "undefined") {
+                        o[p] = c[p];
+                    }
                 }
             }
             return o;
@@ -126,8 +130,8 @@ Ext.apply = function(o, c, defaults){
         /**
          * Applies event listeners to elements by selectors when the document is ready.
          * The event name is specified with an @ suffix.
-<pre><code>
-Ext.addBehaviors({
+         <pre><code>
+         Ext.addBehaviors({
    // add a listener for click on all anchors in element with id foo
    '#foo a@click' : function(e, t){
        // do something
@@ -138,22 +142,22 @@ Ext.addBehaviors({
        // do something
    }
 });
-</code></pre>
+         </code></pre>
          * @param {Object} obj The list of behaviors to apply
          */
-        addBehaviors : function(o){
-            if(!Ext.isReady){
-                Ext.onReady(function(){
+        addBehaviors: function (o) {
+            if (!Ext.isReady) {
+                Ext.onReady(function () {
                     Ext.addBehaviors(o);
                 });
                 return;
             }
             var cache = {}; // simple cache for applying multiple behaviors to same selector does query multiple times
-            for(var b in o){
+            for (var b in o) {
                 var parts = b.split('@');
-                if(parts[1]){ // for Object prototype breakers
+                if (parts[1]) { // for Object prototype breakers
                     var s = parts[0];
-                    if(!cache[s]){
+                    if (!cache[s]) {
                         cache[s] = Ext.select(s);
                     }
                     cache[s].on(parts[1], o[b]);
@@ -168,7 +172,7 @@ Ext.addBehaviors({
          * @param {String} prefix (optional) Id prefix (defaults "ext-gen")
          * @return {String} The generated Id.
          */
-        id : function(el, prefix){
+        id: function (el, prefix) {
             prefix = prefix || "ext-gen";
             el = Ext.getDom(el);
             var id = prefix + (++idSeed);
@@ -184,28 +188,31 @@ Ext.addBehaviors({
          * @param {Object} overrides (optional) A literal with members
          * @method extend
          */
-        extend : function(){
+        extend: function () {
             // inline overrides
-            var io = function(o){
-                for(var m in o){
+            var io = function (o) {
+                for (var m in o) {
                     this[m] = o[m];
                 }
             };
-            return function(sb, sp, overrides){
-                if(typeof sp == 'object'){
+            return function (sb, sp, overrides) {
+                if (typeof sp == 'object') {
                     overrides = sp;
                     sp = sb;
-                    sb = function(){sp.apply(this, arguments);};
+                    sb = function () {
+                        sp.apply(this, arguments);
+                    };
                 }
-                var F = function(){}, sbp, spp = sp.prototype;
+                var F = function () {
+                }, sbp, spp = sp.prototype;
                 F.prototype = spp;
                 sbp = sb.prototype = new F();
-                sbp.constructor=sb;
-                sb.superclass=spp;
-                if(spp.constructor == Object.prototype.constructor){
-                    spp.constructor=sp;
+                sbp.constructor = sb;
+                sb.superclass = spp;
+                if (spp.constructor == Object.prototype.constructor) {
+                    spp.constructor = sp;
                 }
-                sb.override = function(o){
+                sb.override = function (o) {
                     Ext.override(sb, o);
                 };
                 sbp.override = io;
@@ -217,7 +224,7 @@ Ext.addBehaviors({
         /**
          * Adds a list of functions to the prototype of an existing class, overwriting any existing methods with the same name.
          * Usage:<pre><code>
-Ext.override(MyClass, {
+         Ext.override(MyClass, {
     newMethod1: function(){
         // etc.
     },
@@ -225,16 +232,16 @@ Ext.override(MyClass, {
         // etc.
     }
 });
- </code></pre>
+         </code></pre>
          * @param {Object} origclass The class to override
          * @param {Object} overrides The list of functions to add to origClass.  This should be specified as an object literal
          * containing one or more methods.
          * @method override
          */
-        override : function(origclass, overrides){
-            if(overrides){
+        override: function (origclass, overrides) {
+            if (overrides) {
                 var p = origclass.prototype;
-                for(var method in overrides){
+                for (var method in overrides) {
                     p[method] = overrides[method];
                 }
             }
@@ -242,24 +249,24 @@ Ext.override(MyClass, {
         /**
          * Creates namespaces to be used for scoping variables and classes so that they are not global.  Usage:
          * <pre><code>
-Ext.namespace('Company', 'Company.data');
-Company.Widget = function() { ... }
-Company.data.CustomStore = function(config) { ... }
-</code></pre>
+         Ext.namespace('Company', 'Company.data');
+         Company.Widget = function() { ... }
+         Company.data.CustomStore = function(config) { ... }
+         </code></pre>
          * @param {String} namespace1
          * @param {String} namespace2
          * @param {String} etc
          * @method namespace
          */
-        namespace : function(){
-            var a=arguments, o=null, i, j, d, rt;
-            for (i=0; i<a.length; ++i) {
-                d=a[i].split(".");
+        namespace: function () {
+            var a = arguments, o = null, i, j, d, rt;
+            for (i = 0; i < a.length; ++i) {
+                d = a[i].split(".");
                 rt = d[0];
                 eval('if (typeof ' + rt + ' == "undefined"){' + rt + ' = {};} o = ' + rt + ';');
-                for (j=1; j<d.length; ++j) {
-                    o[d[j]]=o[d[j]] || {};
-                    o=o[d[j]];
+                for (j = 1; j < d.length; ++j) {
+                    o[d[j]] = o[d[j]] || {};
+                    o = o[d[j]];
                 }
             }
         },
@@ -269,26 +276,26 @@ Company.data.CustomStore = function(config) { ... }
          * @param {Object} o
          * @return {String}
          */
-        urlEncode : function(o){
-            if(!o){
+        urlEncode: function (o) {
+            if (!o) {
                 return "";
             }
             var buf = [];
-            for(var key in o){
+            for (var key in o) {
                 var ov = o[key], k = encodeURIComponent(key);
                 var type = typeof ov;
-                if(type == 'undefined'){
+                if (type == 'undefined') {
                     buf.push(k, "=&");
-                }else if(type != "function" && type != "object"){
+                } else if (type != "function" && type != "object") {
                     buf.push(k, "=", encodeURIComponent(ov), "&");
-                }else if(ov instanceof Array){
+                } else if (ov instanceof Array) {
                     if (ov.length) {
-	                    for(var i = 0, len = ov.length; i < len; i++) {
-	                        buf.push(k, "=", encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
-	                    }
-	                } else {
-	                    buf.push(k, "=&");
-	                }
+                        for (var i = 0, len = ov.length; i < len; i++) {
+                            buf.push(k, "=", encodeURIComponent(ov[i] === undefined ? '' : ov[i]), "&");
+                        }
+                    } else {
+                        buf.push(k, "=&");
+                    }
                 }
             }
             buf.pop();
@@ -301,27 +308,27 @@ Company.data.CustomStore = function(config) { ... }
          * @param {Boolean} overwrite (optional) Items of the same name will overwrite previous values instead of creating an an array (Defaults to false).
          * @return {Object} A literal with members
          */
-        urlDecode : function(string, overwrite){
-            if(!string || !string.length){
+        urlDecode: function (string, overwrite) {
+            if (!string || !string.length) {
                 return {};
             }
             var obj = {};
             var pairs = string.split('&');
             var pair, name, value;
-            for(var i = 0, len = pairs.length; i < len; i++){
+            for (var i = 0, len = pairs.length; i < len; i++) {
                 pair = pairs[i].split('=');
                 name = decodeURIComponent(pair[0]);
                 value = decodeURIComponent(pair[1]);
-                if(overwrite !== true){
-                    if(typeof obj[name] == "undefined"){
+                if (overwrite !== true) {
+                    if (typeof obj[name] == "undefined") {
                         obj[name] = value;
-                    }else if(typeof obj[name] == "string"){
+                    } else if (typeof obj[name] == "string") {
                         obj[name] = [obj[name]];
                         obj[name].push(value);
-                    }else{
+                    } else {
                         obj[name].push(value);
                     }
-                }else{
+                } else {
                     obj[name] = value;
                 }
             }
@@ -336,25 +343,28 @@ Company.data.CustomStore = function(config) { ... }
          * @param {Function} fn
          * @param {Object} scope
          */
-        each : function(array, fn, scope){
-            if(typeof array.length == "undefined" || typeof array == "string"){
+        each: function (array, fn, scope) {
+            if (typeof array.length == "undefined" || typeof array == "string") {
                 array = [array];
             }
-            for(var i = 0, len = array.length; i < len; i++){
-                if(fn.call(scope || array[i], array[i], i, array) === false){ return i; };
+            for (var i = 0, len = array.length; i < len; i++) {
+                if (fn.call(scope || array[i], array[i], i, array) === false) {
+                    return i;
+                }
+                ;
             }
         },
 
         // deprecated
-        combine : function(){
+        combine: function () {
             var as = arguments, l = as.length, r = [];
-            for(var i = 0; i < l; i++){
+            for (var i = 0; i < l; i++) {
                 var a = as[i];
-                if(a instanceof Array){
+                if (a instanceof Array) {
                     r = r.concat(a);
-                }else if(a.length !== undefined && !a.substr){
+                } else if (a.length !== undefined && !a.substr) {
                     r = r.concat(Array.prototype.slice.call(a, 0));
-                }else{
+                } else {
                     r.push(a);
                 }
             }
@@ -366,16 +376,16 @@ Company.data.CustomStore = function(config) { ... }
          * @param {String} str
          * @return {String}
          */
-        escapeRe : function(s) {
+        escapeRe: function (s) {
             return s.replace(/([.*+?^${}()|[\]\/\\])/g, "\\$1");
         },
 
         // internal
-        callback : function(cb, scope, args, delay){
-            if(typeof cb == "function"){
-                if(delay){
+        callback: function (cb, scope, args, delay) {
+            if (typeof cb == "function") {
+                if (delay) {
                     cb.defer(delay, scope, args || []);
-                }else{
+                } else {
                     cb.apply(scope, args || []);
                 }
             }
@@ -386,42 +396,42 @@ Company.data.CustomStore = function(config) { ... }
          * @param {String/HTMLElement/Ext.Element} el
          * @return HTMLElement
          */
-        getDom : function(el){
-            if(!el){
+        getDom: function (el) {
+            if (!el) {
                 return null;
             }
             return el.dom ? el.dom : (typeof el == 'string' ? document.getElementById(el) : el);
         },
 
         /**
-        * Shorthand for {@link Ext.ComponentMgr#get}
-        * @param {String} id
-        * @return Ext.Component
-        */
-        getCmp : function(id){
+         * Shorthand for {@link Ext.ComponentMgr#get}
+         * @param {String} id
+         * @return Ext.Component
+         */
+        getCmp: function (id) {
             return Ext.ComponentMgr.get(id);
         },
 
-        num : function(v, defaultValue){
-            if(typeof v != 'number'){
+        num: function (v, defaultValue) {
+            if (typeof v != 'number') {
                 return defaultValue;
             }
             return v;
         },
 
-        destroy : function(){
-            for(var i = 0, a = arguments, len = a.length; i < len; i++) {
+        destroy: function () {
+            for (var i = 0, a = arguments, len = a.length; i < len; i++) {
                 var as = a[i];
-                if(as){
-                    if(as.dom){
+                if (as) {
+                    if (as.dom) {
                         as.removeAllListeners();
                         as.remove();
                         continue;
                     }
-                    if(typeof as.purgeListeners == 'function'){
+                    if (typeof as.purgeListeners == 'function') {
                         as.purgeListeners();
                     }
-                    if(typeof as.destroy == 'function'){
+                    if (typeof as.destroy == 'function') {
                         as.destroy();
                     }
                 }
@@ -446,26 +456,30 @@ Company.data.CustomStore = function(config) { ... }
          * @param {Mixed} object
          * @return {String}
          */
-        type : function(o){
-            if(o === undefined || o === null){
+        type: function (o) {
+            if (o === undefined || o === null) {
                 return false;
             }
-            if(o.htmlElement){
+            if (o.htmlElement) {
                 return 'element';
             }
             var t = typeof o;
-            if(t == 'object' && o.nodeName) {
-                switch(o.nodeType) {
-                    case 1: return 'element';
-                    case 3: return (/\S/).test(o.nodeValue) ? 'textnode' : 'whitespace';
+            if (t == 'object' && o.nodeName) {
+                switch (o.nodeType) {
+                    case 1:
+                        return 'element';
+                    case 3:
+                        return (/\S/).test(o.nodeValue) ? 'textnode' : 'whitespace';
                 }
             }
-            if(t == 'object' || t == 'function') {
-                switch(o.constructor) {
-                    case Array: return 'array';
-                    case RegExp: return 'regexp';
+            if (t == 'object' || t == 'function') {
+                switch (o.constructor) {
+                    case Array:
+                        return 'array';
+                    case RegExp:
+                        return 'regexp';
                 }
-                if(typeof o.length == 'number' && typeof o.item == 'function') {
+                if (typeof o.length == 'number' && typeof o.item == 'function') {
                     return 'nodelist';
                 }
             }
@@ -478,42 +492,42 @@ Company.data.CustomStore = function(config) { ... }
          * @param {Boolean} allowBlank (optional) Pass true if an empty string is not considered empty
          * @return {Boolean}
          */
-        isEmpty : function(v, allowBlank){
+        isEmpty: function (v, allowBlank) {
             return v === null || v === undefined || (!allowBlank ? v === '' : false);
         },
-        
-        /** @type Boolean */
-        isOpera : isOpera,
-        /** @type Boolean */
-        isSafari : isSafari,
-        /** @type Boolean */
-        isIE : isIE,
-        /** @type Boolean */
-        isIE7 : isIE7,
-        /** @type Boolean */
-        isGecko : isGecko,
-        /** @type Boolean */
-        isBorderBox : isBorderBox,
-        /** @type Boolean */
-        isWindows : isWindows,
-        /** @type Boolean */
-        isLinux : isLinux,
-        /** @type Boolean */
-        isMac : isMac,
 
-    /**
-     By default, Ext intelligently decides whether floating elements should be shimmed. If you are using flash,
-     you may want to set this to true.
-     @type Boolean
-     */
-        useShims : ((isIE && !isIE7) || (isGecko && isMac))
+        /** @type Boolean */
+        isOpera: isOpera,
+        /** @type Boolean */
+        isSafari: isSafari,
+        /** @type Boolean */
+        isIE: isIE,
+        /** @type Boolean */
+        isIE7: isIE7,
+        /** @type Boolean */
+        isGecko: isGecko,
+        /** @type Boolean */
+        isBorderBox: isBorderBox,
+        /** @type Boolean */
+        isWindows: isWindows,
+        /** @type Boolean */
+        isLinux: isLinux,
+        /** @type Boolean */
+        isMac: isMac,
+
+        /**
+         By default, Ext intelligently decides whether floating elements should be shimmed. If you are using flash,
+         you may want to set this to true.
+         @type Boolean
+         */
+        useShims: ((isIE && !isIE7) || (isGecko && isMac))
     });
 
 
 })();
 
 Ext.namespace("Ext", "Ext.util", "Ext.grid", "Ext.dd", "Ext.tree", "Ext.data",
-                "Ext.form", "Ext.menu", "Ext.state", "Ext.lib", "Ext.layout", "Ext.app", "Ext.ux");
+    "Ext.form", "Ext.menu", "Ext.state", "Ext.lib", "Ext.layout", "Ext.app", "Ext.ux");
 
 
 /**
@@ -521,17 +535,17 @@ Ext.namespace("Ext", "Ext.util", "Ext.grid", "Ext.dd", "Ext.tree", "Ext.data",
  * These functions are available on every Function object (any JavaScript function).
  */
 Ext.apply(Function.prototype, {
-     /**
+    /**
      * Creates a callback that passes arguments[0], arguments[1], arguments[2], ...
      * Call directly on any function. Example: <code>myFunction.createCallback(myarg, myarg2)</code>
      * Will create a function that is bound to those 2 args.
      * @return {Function} The new function
-    */
-    createCallback : function(/*args...*/){
+     */
+    createCallback: function (/*args...*/) {
         // make args available, in function below
         var args = arguments;
         var method = this;
-        return function() {
+        return function () {
             return method.apply(window, args);
         };
     },
@@ -546,14 +560,14 @@ Ext.apply(Function.prototype, {
      *                                             if a number the args are inserted at the specified position
      * @return {Function} The new function
      */
-    createDelegate : function(obj, args, appendArgs){
+    createDelegate: function (obj, args, appendArgs) {
         var method = this;
-        return function() {
+        return function () {
             var callArgs = args || arguments;
-            if(appendArgs === true){
+            if (appendArgs === true) {
                 callArgs = Array.prototype.slice.call(arguments, 0);
                 callArgs = callArgs.concat(args);
-            }else if(typeof appendArgs == "number"){
+            } else if (typeof appendArgs == "number") {
                 callArgs = Array.prototype.slice.call(arguments, 0); // copy arguments first
                 var applyArgs = [appendArgs, 0].concat(args); // create method call params
                 Array.prototype.splice.apply(callArgs, applyArgs); // splice them in
@@ -571,9 +585,9 @@ Ext.apply(Function.prototype, {
      *                                             if a number the args are inserted at the specified position
      * @return {Number} The timeout id that can be used with clearTimeout
      */
-    defer : function(millis, obj, args, appendArgs){
+    defer: function (millis, obj, args, appendArgs) {
         var fn = this.createDelegate(obj, args, appendArgs);
-        if(millis){
+        if (millis) {
             return setTimeout(fn, millis);
         }
         fn();
@@ -587,12 +601,12 @@ Ext.apply(Function.prototype, {
      * @param {Object} scope (optional) The scope of the passed fcn (Defaults to scope of original function or window)
      * @return {Function} The new function
      */
-    createSequence : function(fcn, scope){
-        if(typeof fcn != "function"){
+    createSequence: function (fcn, scope) {
+        if (typeof fcn != "function") {
             return this;
         }
         var method = this;
-        return function() {
+        return function () {
             var retval = method.apply(this || window, arguments);
             fcn.apply(scope || this || window, arguments);
             return retval;
@@ -608,15 +622,15 @@ Ext.apply(Function.prototype, {
      * @param {Object} scope (optional) The scope of the passed fcn (Defaults to scope of original function or window)
      * @return {Function} The new function
      */
-    createInterceptor : function(fcn, scope){
-        if(typeof fcn != "function"){
+    createInterceptor: function (fcn, scope) {
+        if (typeof fcn != "function") {
             return this;
         }
         var method = this;
-        return function() {
+        return function () {
             fcn.target = this;
             fcn.method = method;
-            if(fcn.apply(scope || this || window, arguments) === false){
+            if (fcn.apply(scope || this || window, arguments) === false) {
                 return;
             }
             return method.apply(this || window, arguments);
@@ -636,7 +650,7 @@ Ext.applyIf(String, {
      * @return {String} The escaped string
      * @static
      */
-    escape : function(string) {
+    escape: function (string) {
         return string.replace(/('|\\)/g, "\\$1");
     },
 
@@ -644,18 +658,18 @@ Ext.applyIf(String, {
      * Pads the left side of a string with a specified character.  This is especially useful
      * for normalizing number and date strings.  Example usage:
      * <pre><code>
-var s = String.leftPad('123', 5, '0');
-// s now contains the string: '00123'
-</code></pre>
+     var s = String.leftPad('123', 5, '0');
+     // s now contains the string: '00123'
+     </code></pre>
      * @param {String} string The original string
      * @param {Number} size The total length of the output string
      * @param {String} char (optional) The character with which to pad the original string (defaults to empty string " ")
      * @return {String} The padded string
      * @static
      */
-    leftPad : function (val, size, ch) {
+    leftPad: function (val, size, ch) {
         var result = new String(val);
-        if(ch === null || ch === undefined || ch === '') {
+        if (ch === null || ch === undefined || ch === '') {
             ch = " ";
         }
         while (result.length < size) {
@@ -668,19 +682,19 @@ var s = String.leftPad('123', 5, '0');
      * Allows you to define a tokenized string and pass an arbitrary number of arguments to replace the tokens.  Each
      * token must be unique, and must increment in the format {0}, {1}, etc.  Example usage:
      * <pre><code>
-var cls = 'my-class', text = 'Some text';
-var s = String.format('<div class="{0}">{1}</div>', cls, text);
-// s now contains the string: '<div class="my-class">Some text</div>'
-</code></pre>
+     var cls = 'my-class', text = 'Some text';
+     var s = String.format('<div class="{0}">{1}</div>', cls, text);
+     // s now contains the string: '<div class="my-class">Some text</div>'
+     </code></pre>
      * @param {String} string The tokenized string to be formatted
      * @param {String} value1 The value to replace token {0}
      * @param {String} value2 Etc...
      * @return {String} The formatted string
      * @static
      */
-    format : function(format){
+    format: function (format) {
         var args = Array.prototype.slice.call(arguments, 1);
-        return format.replace(/\{(\d+)\}/g, function(m, i){
+        return format.replace(/\{(\d+)\}/g, function (m, i) {
             return args[i];
         });
     }
@@ -692,17 +706,17 @@ var s = String.format('<div class="{0}">{1}</div>', cls, text);
  * they are already different, the first value passed in is returned.  Note that this method returns the new value
  * but does not change the current string.
  * <pre><code>
-// alternate sort directions
-sort = sort.toggle('ASC', 'DESC');
+ // alternate sort directions
+ sort = sort.toggle('ASC', 'DESC');
 
-// instead of conditional logic:
-sort = (sort == 'ASC' ? 'DESC' : 'ASC');
-</code></pre>
+ // instead of conditional logic:
+ sort = (sort == 'ASC' ? 'DESC' : 'ASC');
+ </code></pre>
  * @param {String} value The value to compare to the current string
  * @param {String} other The new value to use if the string already equals the first value passed in
  * @return {String} The new value
  */
-String.prototype.toggle = function(value, other){
+String.prototype.toggle = function (value, other) {
     return this == value ? other : value;
 };
 /**
@@ -717,7 +731,7 @@ Ext.applyIf(Number.prototype, {
      * @param {Number} max The maximum number in the range
      * @return {Number} The constrained value if outside the range, otherwise the current value
      */
-    constrain : function(min, max){
+    constrain: function (min, max) {
         return Math.min(Math.max(this, min), max);
     }
 });
@@ -730,22 +744,22 @@ Ext.applyIf(Array.prototype, {
      * @param {Object} o The object to check for
      * @return {Number} The index of o in the array (or -1 if it is not found)
      */
-    indexOf : function(o){
-       for (var i = 0, len = this.length; i < len; i++){
- 	      if(this[i] == o) return i;
-       }
- 	   return -1;
+    indexOf: function (o) {
+        for (var i = 0, len = this.length; i < len; i++) {
+            if (this[i] == o) return i;
+        }
+        return -1;
     },
 
     /**
      * Removes the specified object from the array.  If the object is not found nothing happens.
      * @param {Object} o The object to remove
      */
-    remove : function(o){
-       var index = this.indexOf(o);
-       if(index != -1){
-           this.splice(index, 1);
-       }
+    remove: function (o) {
+        var index = this.indexOf(o);
+        if (index != -1) {
+            this.splice(index, 1);
+        }
     }
 });
 
@@ -755,6 +769,6 @@ Ext.applyIf(Array.prototype, {
  @return {Number} The diff in milliseconds
  @member Date getElapsed
  */
-Date.prototype.getElapsed = function(date) {
-	return Math.abs((date || new Date()).getTime()-this.getTime());
+Date.prototype.getElapsed = function (date) {
+    return Math.abs((date || new Date()).getTime() - this.getTime());
 };

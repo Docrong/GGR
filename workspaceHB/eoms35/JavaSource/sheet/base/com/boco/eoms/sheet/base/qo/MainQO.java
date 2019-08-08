@@ -21,10 +21,9 @@ import java.util.Date;
  * <p>
  * Date:2007-8-3 10:24:03
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class MainQO {
 
@@ -156,8 +155,7 @@ public class MainQO {
     }
 
     /**
-     * @param acceptLimit
-     *            the acceptLimit to set
+     * @param acceptLimit the acceptLimit to set
      */
     public void setAcceptLimit(Date acceptLimit) {
         this.acceptLimit = acceptLimit;
@@ -171,8 +169,7 @@ public class MainQO {
     }
 
     /**
-     * @param accessories
-     *            the accessories to set
+     * @param accessories the accessories to set
      */
     public void setAccessories(String accessories) {
         this.accessories = accessories;
@@ -186,8 +183,7 @@ public class MainQO {
     }
 
     /**
-     * @param completeLimit
-     *            the completeLimit to set
+     * @param completeLimit the completeLimit to set
      */
     public void setCompleteLimit(Date completeLimit) {
         this.completeLimit = completeLimit;
@@ -201,8 +197,7 @@ public class MainQO {
     }
 
     /**
-     * @param endDeptId
-     *            the endDeptId to set
+     * @param endDeptId the endDeptId to set
      */
     public void setEndDeptId(Integer endDeptId) {
         this.endDeptId = endDeptId;
@@ -216,8 +211,7 @@ public class MainQO {
     }
 
     /**
-     * @param endResult
-     *            the endResult to set
+     * @param endResult the endResult to set
      */
     public void setEndResult(String endResult) {
         this.endResult = endResult;
@@ -231,8 +225,7 @@ public class MainQO {
     }
 
     /**
-     * @param endRoleId
-     *            the endRoleId to set
+     * @param endRoleId the endRoleId to set
      */
     public void setEndRoleId(Integer endRoleId) {
         this.endRoleId = endRoleId;
@@ -246,8 +239,7 @@ public class MainQO {
     }
 
     /**
-     * @param endTime
-     *            the endTime to set
+     * @param endTime the endTime to set
      */
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
@@ -261,8 +253,7 @@ public class MainQO {
     }
 
     /**
-     * @param endUserId
-     *            the endUserId to set
+     * @param endUserId the endUserId to set
      */
     public void setEndUserId(String endUserId) {
         this.endUserId = endUserId;
@@ -276,8 +267,7 @@ public class MainQO {
     }
 
     /**
-     * @param holdStatisfied
-     *            the holdStatisfied to set
+     * @param holdStatisfied the holdStatisfied to set
      */
     public void setHoldStatisfied(Integer holdStatisfied) {
         this.holdStatisfied = holdStatisfied;
@@ -291,8 +281,7 @@ public class MainQO {
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -306,8 +295,7 @@ public class MainQO {
     }
 
     /**
-     * @param parendSheetId
-     *            the parendSheetId to set
+     * @param parendSheetId the parendSheetId to set
      */
     public void setParendSheetId(String parendSheetId) {
         this.parendSheetId = parendSheetId;
@@ -321,8 +309,7 @@ public class MainQO {
     }
 
     /**
-     * @param parentSheetName
-     *            the parentSheetName to set
+     * @param parentSheetName the parentSheetName to set
      */
     public void setParentSheetName(String parentSheetName) {
         this.parentSheetName = parentSheetName;
@@ -336,8 +323,7 @@ public class MainQO {
     }
 
     /**
-     * @param piid
-     *            the piid to set
+     * @param piid the piid to set
      */
     public void setPiid(String piid) {
         this.piid = piid;
@@ -351,8 +337,7 @@ public class MainQO {
     }
 
     /**
-     * @param sendContact
-     *            the sendContact to set
+     * @param sendContact the sendContact to set
      */
     public void setSendContact(String sendContact) {
         this.sendContact = sendContact;
@@ -366,14 +351,12 @@ public class MainQO {
     }
 
     /**
-     * @param sendDeptId
-     *            the sendDeptId to set
+     * @param sendDeptId the sendDeptId to set
      */
     public void setSendDeptId(Integer sendDeptId) {
         this.sendDeptId = sendDeptId;
     }
 
- 
 
     /**
      * @return the sendRoleId
@@ -383,8 +366,7 @@ public class MainQO {
     }
 
     /**
-     * @param sendRoleId
-     *            the sendRoleId to set
+     * @param sendRoleId the sendRoleId to set
      */
     public void setSendRoleId(Integer sendRoleId) {
         this.sendRoleId = sendRoleId;
@@ -398,8 +380,7 @@ public class MainQO {
     }
 
     /**
-     * @param sendTime
-     *            the sendTime to set
+     * @param sendTime the sendTime to set
      */
     public void setSendTime(Date sendTime) {
         this.sendTime = sendTime;
@@ -413,8 +394,7 @@ public class MainQO {
     }
 
     /**
-     * @param sendUserId
-     *            the sendUserId to set
+     * @param sendUserId the sendUserId to set
      */
     public void setSendUserId(String sendUserId) {
         this.sendUserId = sendUserId;
@@ -433,39 +413,44 @@ public class MainQO {
     public String getDeleted() {
         return deleted;
     }
+
     /**
      * @param deleted the deleted to set
      */
     public void setDeleted(String deleted) {
         this.deleted = deleted;
     }
+
     /**
      * @return the sendOrgType
      */
     public String getSendOrgType() {
         return sendOrgType;
     }
+
     /**
      * @param sendOrgType the sendOrgType to set
      */
     public void setSendOrgType(String sendOrgType) {
         this.sendOrgType = sendOrgType;
     }
+
     /**
      * @return the status
      */
     public String getStatus() {
         return status;
     }
+
     /**
      * @param status the status to set
      */
     public void setStatus(String status) {
         this.status = status;
     }
+
     /**
-     * @param sheetId
-     *            the sheetId to set
+     * @param sheetId the sheetId to set
      */
     public void setSheetId(String sheetId) {
         this.sheetId = sheetId;
@@ -480,8 +465,7 @@ public class MainQO {
     }
 
     /**
-     * @param templateName
-     *            the templateName to set
+     * @param templateName the templateName to set
      */
     public void setTemplateName(String templateName) {
         this.templateName = templateName;
@@ -495,8 +479,7 @@ public class MainQO {
     }
 
     /**
-     * @param title
-     *            the title to set
+     * @param title the title to set
      */
     public void setTitle(String title) {
         this.title = title;

@@ -52,7 +52,7 @@ public class SmsContentTemplateActionTest extends BaseStrutsTestCase {
     }
 
     public void testSave() throws Exception {
-    	SmsContentTemplateForm smsContentTemplateForm = new SmsContentTemplateForm();
+        SmsContentTemplateForm smsContentTemplateForm = new SmsContentTemplateForm();
         setRequestPathInfo("/editSmsContentTemplate");
         addRequestParameter("method", "Edit");
         addRequestParameter("id", "1");
@@ -76,7 +76,7 @@ public class SmsContentTemplateActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"smsContentTemplate.updated"});
+        verifyActionMessages(new String[]{"smsContentTemplate.updated"});
 
     }
 

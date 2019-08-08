@@ -1,6 +1,6 @@
 /**
  * CRMProcessSheetServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the IBM Web services WSDL2Java emitter.
  * cf170819.19 v52708210711
@@ -12,8 +12,8 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
 
     public CRMProcessSheetServiceLocator() {
         super(com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-           "http://client.crm.eoms.boco.com/services/CRMProcessSheet",
-           "CRMProcessSheetService"));
+                "http://client.crm.eoms.boco.com/services/CRMProcessSheet",
+                "CRMProcessSheetService"));
 
         context.setLocatorName("com.boco.eoms.crm.client.CRMProcessSheetServiceLocator");
     }
@@ -23,7 +23,7 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
         context.setLocatorName("com.boco.eoms.crm.client.CRMProcessSheetServiceLocator");
     }
 
-    // ÓÃÓÚ»ñÈ¡ CRMProcessSheet µÄ´úÀíÀà
+    // ï¿½ï¿½ï¿½Ú»ï¿½È¡ CRMProcessSheet ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½
     private final java.lang.String CRMProcessSheet_address = "http://client.crm.eoms.boco.com/services/CRMProcessSheet";
 
     public java.lang.String getCRMProcessSheetAddress() {
@@ -33,8 +33,7 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
         String overriddingEndpoint = (String) context.getOverriddingEndpointURIs().get("CRMProcessSheet");
         if (overriddingEndpoint != null) {
             return overriddingEndpoint;
-        }
-        else {
+        } else {
             return CRMProcessSheet_address;
         }
     }
@@ -53,24 +52,23 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
     }
 
     public com.boco.eoms.crm.client.CRMProcessSheet getCRMProcessSheet() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(getCRMProcessSheetAddress());
-        }
-        catch (java.net.MalformedURLException e) {
-            return null; // ²»Ì«¿ÉÄÜ£¬ÒòÎª URL ÒÑÔÚ WSDL2Java ÖÐµÃµ½ÑéÖ¤
+        } catch (java.net.MalformedURLException e) {
+            return null; // ï¿½ï¿½Ì«ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Îª URL ï¿½ï¿½ï¿½ï¿½ WSDL2Java ï¿½ÐµÃµï¿½ï¿½ï¿½Ö¤
         }
         return getCRMProcessSheet(endpoint);
     }
 
     public com.boco.eoms.crm.client.CRMProcessSheet getCRMProcessSheet(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         com.boco.eoms.crm.client.CRMProcessSheet _stub =
-            (com.boco.eoms.crm.client.CRMProcessSheet) getStub(
-                CRMProcessSheetPortName,
-                (String) getPort2NamespaceMap().get(CRMProcessSheetPortName),
-                com.boco.eoms.crm.client.CRMProcessSheet.class,
-                "com.boco.eoms.crm.client.CRMProcessSheetSoapBindingStub",
-                portAddress.toString());
+                (com.boco.eoms.crm.client.CRMProcessSheet) getStub(
+                        CRMProcessSheetPortName,
+                        (String) getPort2NamespaceMap().get(CRMProcessSheetPortName),
+                        com.boco.eoms.crm.client.CRMProcessSheet.class,
+                        "com.boco.eoms.crm.client.CRMProcessSheetSoapBindingStub",
+                        portAddress.toString());
         if (_stub instanceof com.ibm.ws.webservices.engine.client.Stub) {
             ((com.ibm.ws.webservices.engine.client.Stub) _stub).setPortName(CRMProcessSheetWSDDPortName);
         }
@@ -87,11 +85,10 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
             if (com.boco.eoms.crm.client.CRMProcessSheet.class.isAssignableFrom(serviceEndpointInterface)) {
                 return getCRMProcessSheet();
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
-        throw new javax.xml.rpc.ServiceException("WSWS3273E: ´íÎó£º½Ó¿ÚÃ»ÓÐ´æ¸ùÊµÏÖ£º  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+        throw new javax.xml.rpc.ServiceException("WSWS3273E: ï¿½ï¿½ï¿½ó£º½Ó¿ï¿½Ã»ï¿½Ð´ï¿½ï¿½Êµï¿½Ö£ï¿½  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
     }
 
     /**
@@ -103,8 +100,7 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
         String inputPortName = portName.getLocalPart();
         if ("CRMProcessSheet".equals(inputPortName)) {
             return getCRMProcessSheet();
-        }
-        else  {
+        } else {
             throw new javax.xml.rpc.ServiceException();
         }
     }
@@ -123,8 +119,8 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
         if (port2NamespaceMap == null) {
             port2NamespaceMap = new java.util.HashMap();
             port2NamespaceMap.put(
-               "CRMProcessSheet",
-               "http://schemas.xmlsoap.org/wsdl/soap/");
+                    "CRMProcessSheet",
+                    "http://schemas.xmlsoap.org/wsdl/soap/");
         }
         return port2NamespaceMap;
     }
@@ -137,9 +133,9 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
             String serviceNamespace = getServiceName().getNamespaceURI();
             for (java.util.Iterator i = getPort2NamespaceMap().keySet().iterator(); i.hasNext(); ) {
                 ports.add(
-                    com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-                        serviceNamespace,
-                        (String) i.next()));
+                        com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
+                                serviceNamespace,
+                                (String) i.next()));
             }
         }
         return ports.iterator();
@@ -147,19 +143,18 @@ public class CRMProcessSheetServiceLocator extends com.ibm.ws.webservices.multip
 
     public javax.xml.rpc.Call[] getCalls(javax.xml.namespace.QName portName) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
-        if  (portName.getLocalPart().equals("CRMProcessSheet")) {
-            return new javax.xml.rpc.Call[] {
-                createCall(portName, "isAlive", "isAliveRequest"),
-                createCall(portName, "confirmWorkSheet", "confirmWorkSheetRequest"),
-                createCall(portName, "notifyWorkSheet", "notifyWorkSheetRequest"),
-                createCall(portName, "replyWorkSheet", "replyWorkSheetRequest"),
-                createCall(portName, "withdrawWorkSheet", "withdrawWorkSheetRequest"),
+        if (portName.getLocalPart().equals("CRMProcessSheet")) {
+            return new javax.xml.rpc.Call[]{
+                    createCall(portName, "isAlive", "isAliveRequest"),
+                    createCall(portName, "confirmWorkSheet", "confirmWorkSheetRequest"),
+                    createCall(portName, "notifyWorkSheet", "notifyWorkSheetRequest"),
+                    createCall(portName, "replyWorkSheet", "replyWorkSheetRequest"),
+                    createCall(portName, "withdrawWorkSheet", "withdrawWorkSheetRequest"),
             };
-        }
-        else {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+        } else {
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
     }
 }

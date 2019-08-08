@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.transaction.test.dao;
 
@@ -25,7 +25,7 @@ public class TstHibernateDAO extends HibernateDAO {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.transaction.dao.HibernateDAO#delete(java.lang.Object)
      */
     public void delete(Object object) throws HibernateException {
@@ -34,7 +34,7 @@ public class TstHibernateDAO extends HibernateDAO {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.transaction.dao.HibernateDAO#saveOrUpdate(java.lang.Object)
      */
     public void saveOrUpdate(Object object) throws HibernateException {

@@ -102,7 +102,7 @@ public class TawRmTestcardActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawRmTestcard.updated"});
+        verifyActionMessages(new String[]{"tawRmTestcard.updated"});
 
     }
 

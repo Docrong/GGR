@@ -16,9 +16,9 @@ public interface TawSupplierkpiAssessInstanceDao extends Dao {
 
     /**
      * Gets tawSupplierkpiAssessInstance's information based on primary key. An
-     * ObjectRetrievalFailureException Runtime Exception is thrown if 
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
-     * 
+     *
      * @param id the tawSupplierkpiAssessInstance's id
      * @return tawSupplierkpiAssessInstance populated tawSupplierkpiAssessInstance object
      */
@@ -26,33 +26,41 @@ public interface TawSupplierkpiAssessInstanceDao extends Dao {
 
     /**
      * Saves a tawSupplierkpiAssessInstance's information
+     *
      * @param tawSupplierkpiAssessInstance the object to be saved
-     */    
+     */
     public String saveTawSupplierkpiAssessInstance(TawSupplierkpiAssessInstance tawSupplierkpiAssessInstance);
 
     /**
      * Removes a tawSupplierkpiAssessInstance from the database by id
+     *
      * @param id the tawSupplierkpiAssessInstance's id
      */
     public void removeTawSupplierkpiAssessInstance(final String id);
+
     /**
      * curPage
      * pageSize
      */
     public Map getTawSupplierkpiAssessInstances(final int curPage, final int pageSize);
+
     public Map getTawSupplierkpiAssessInstances(final int curPage, final int pageSize, final String whereStr);
+
     public List getSupplierkpi(final String supplierId);
+
     public String getIdBySpecialAndSupplier(final String specialType, final String supplierId);
-    
+
     /**
      * 查询定制某一专业KPI的所有供应商
+     *
      * @param specialType
      * @return
      */
     public List getCustomSuppliers(final String specialType);
-    
+
     /**
      * 查询某一供应商定制指标对应的所有专业
+     *
      * @param supplierId
      * @return
      */

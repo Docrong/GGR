@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_SCORE_WEIGHT"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="powerName"
-            	column="POWER_NAME"
+        <property
+                name="powerName"
+                column="POWER_NAME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="actionName"
-            	column="ACTION_NAME"
+        <property
+                name="actionName"
+                column="ACTION_NAME"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="actionWeight"
-            	column="ACTION_WEIGHT"
+        <property
+                name="actionWeight"
+                column="ACTION_WEIGHT"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="powerWeight"
-            	column="POWER_WEIGHT"
+        <property
+                name="powerWeight"
+                column="POWER_WEIGHT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="isDeleted"
-            	column="IS_DELETED"
+        <property
+                name="isDeleted"
+                column="IS_DELETED"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="area"
-            	column="AREA"
+        <property
+                name="area"
+                column="AREA"
                 length="100"
                 not-null="false"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="remark"
-            	column="REMARK"
+        <property
+                name="remark"
+                column="REMARK"
                 length="2000"
                 not-null="false"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="nodeId"
-            	column="NODEID"
+        <property
+                name="nodeId"
+                column="NODEID"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -107,7 +107,7 @@
         </property>
 
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

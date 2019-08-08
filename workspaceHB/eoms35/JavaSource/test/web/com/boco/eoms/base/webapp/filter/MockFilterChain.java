@@ -19,9 +19,9 @@ import org.apache.commons.logging.LogFactory;
  */
 public class MockFilterChain implements FilterChain {
     private final Log log = LogFactory.getLog(MockFilterChain.class);
-    
+
     public void doFilter(ServletRequest request, ServletResponse response)
-    throws IOException, ServletException {
+            throws IOException, ServletException {
         String uri = ((HttpServletRequest) request).getRequestURI();
         String requestContext = ((HttpServletRequest) request).getContextPath();
 

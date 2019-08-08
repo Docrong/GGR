@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_commons_jobsort"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="native">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="native">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="deleted"
+                name="deleted"
                 length="5"
                 not-null="true"
         >
@@ -35,7 +35,7 @@
         </property>
 
         <property
-            name="jobClassName"
+                name="jobClassName"
                 length="2000"
                 not-null="true"
         >
@@ -43,7 +43,7 @@
         </property>
 
         <property
-            name="jobSortName"
+                name="jobSortName"
                 length="200"
                 not-null="true"
         >
@@ -51,7 +51,7 @@
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 length="500"
                 not-null="false"
         >
@@ -59,14 +59,14 @@
         </property>
 
         <property
-            name="maxExecuteTime"
+                name="maxExecuteTime"
                 length="50"
                 not-null="false"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

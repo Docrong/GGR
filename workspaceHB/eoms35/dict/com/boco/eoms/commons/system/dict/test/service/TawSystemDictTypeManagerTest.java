@@ -36,7 +36,7 @@ public class TawSystemDictTypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemDictTypeDao.expects(once()).method("getTawSystemDictTypes")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSystemDictTypes = tawSystemDictTypeManager.getTawSystemDictTypes(null);
         assertTrue(tawSystemDictTypes.size() == 1);
@@ -46,7 +46,7 @@ public class TawSystemDictTypeManagerTest extends BaseManagerTestCase {
     public void testGetTawSystemDictType() throws Exception {
         // set expected behavior on dao
         tawSystemDictTypeDao.expects(once()).method("getTawSystemDictType")
-            .will(returnValue(new TawSystemDictType()));
+                .will(returnValue(new TawSystemDictType()));
         TawSystemDictType tawSystemDictType = tawSystemDictTypeManager.getTawSystemDictType(tawSystemDictTypeId);
         assertTrue(tawSystemDictType != null);
         tawSystemDictTypeDao.verify();
@@ -57,7 +57,7 @@ public class TawSystemDictTypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemDictTypeDao.expects(once()).method("saveTawSystemDictType")
-            .with(same(tawSystemDictType)).isVoid();
+                .with(same(tawSystemDictType)).isVoid();
 
         tawSystemDictTypeManager.saveTawSystemDictType(tawSystemDictType);
         tawSystemDictTypeDao.verify();
@@ -73,7 +73,7 @@ public class TawSystemDictTypeManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemDictTypeDao.expects(once()).method("saveTawSystemDictType")
-            .with(same(tawSystemDictType)).isVoid();
+                .with(same(tawSystemDictType)).isVoid();
         tawSystemDictTypeManager.saveTawSystemDictType(tawSystemDictType);
         tawSystemDictTypeDao.verify();
 
@@ -103,10 +103,10 @@ public class TawSystemDictTypeManagerTest extends BaseManagerTestCase {
     public void testGetDictNameByDictId() throws Exception {
         // set expected behavior on dao
         tawSystemDictTypeDao.expects(once()).method("getDictNameByDictId")
-            .will(returnValue(new TawSystemDictType()));
+                .will(returnValue(new TawSystemDictType()));
 
         // 输入参数为节点编号,测试需要根据实际调整
-    	String _strDictId = "9922";
+        String _strDictId = "9922";
         TawSystemDictType tawSystemDictType = tawSystemDictTypeManager.getDictByDictId(_strDictId);
         assertTrue(tawSystemDictType != null);
         tawSystemDictTypeDao.verify();
@@ -115,14 +115,13 @@ public class TawSystemDictTypeManagerTest extends BaseManagerTestCase {
     public void testGetParentTypeName() throws Exception {
         // set expected behavior on dao
         tawSystemDictTypeDao.expects(once()).method("getParentTypeName")
-            .will(returnValue(new String()));
+                .will(returnValue(new String()));
 
         String _strCurCode = "99";
         String _strResult = tawSystemDictTypeManager.getParentTypeName(_strCurCode);
         assertTrue(_strResult != null);
         tawSystemDictTypeDao.verify();
     }
-    
-    
+
 
 }

@@ -22,72 +22,71 @@ import com.boco.eoms.workbench.contact.service.ITawWorkbenchContactManager;
 
 /**
  * wap中的通迅录action
- * 
+ *
  * @author leo
- * 
  */
 public class ContactAction extends BaseAction {
 
-	/**
-	 * 首页面
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward index(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("index");
-	}
+    /**
+     * 首页面
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward index(ActionMapping mapping, ActionForm form,
+                               HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("index");
+    }
 
-	/**
-	 * 查询通迅录信息,包括个人通迅录及部门通迅录
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward query(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		ContactForm contactForm = (ContactForm) form;
-		ITawWorkbenchContactManager mgr = (ITawWorkbenchContactManager) getBean("ItawWorkbenchContactManager");
-		TawSystemSessionForm user = getUser(request);
-		// 查询部门通迅录(仅限于当前用户所在部门下的通迅录),个人通迅录
-		List contants = mgr.getContacts(contactForm.getName(),
-				user.getUserid(), user.getDeptid());
-		request.setAttribute("contants", contants);
-		return mapping.findForward("index");
-	}
+    /**
+     * 查询通迅录信息,包括个人通迅录及部门通迅录
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward query(ActionMapping mapping, ActionForm form,
+                               HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        ContactForm contactForm = (ContactForm) form;
+        ITawWorkbenchContactManager mgr = (ITawWorkbenchContactManager) getBean("ItawWorkbenchContactManager");
+        TawSystemSessionForm user = getUser(request);
+        // 查询部门通迅录(仅限于当前用户所在部门下的通迅录),个人通迅录
+        List contants = mgr.getContacts(contactForm.getName(),
+                user.getUserid(), user.getDeptid());
+        request.setAttribute("contants", contants);
+        return mapping.findForward("index");
+    }
 
-	/**
-	 * 通迅录wap菜单
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @throws Exception
-	 */
-	public void menu(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		Factory factory = Abdera.getNewFactory();
-		Feed feed = factory.newFeed();
-		Entry entry = feed.insertEntry();
-		entry.setTitle("address book");
-		String url = request.getContextPath() + "/wap/contactAction.do?method=index";
-		entry.setLanguage("contact");
-		entry.setContent(url);
-		OutputStream os = response.getOutputStream();
-		PrintStream ps = new PrintStream(os);
-		feed.getDocument().writeTo(ps);
-	}
+    /**
+     * 通迅录wap菜单
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @throws Exception
+     */
+    public void menu(ActionMapping mapping, ActionForm form,
+                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        Factory factory = Abdera.getNewFactory();
+        Feed feed = factory.newFeed();
+        Entry entry = feed.insertEntry();
+        entry.setTitle("address book");
+        String url = request.getContextPath() + "/wap/contactAction.do?method=index";
+        entry.setLanguage("contact");
+        entry.setContent(url);
+        OutputStream os = response.getOutputStream();
+        PrintStream ps = new PrintStream(os);
+        feed.getDocument().writeTo(ps);
+    }
 }

@@ -10,15 +10,14 @@ package com.boco.eoms.commonfault.importexcel.util;
  * <p>
  * Tue Oct 26 10:55:09 CST 2010
  * </p>
- * 
+ *
  * @author liulei
  * @version 3.5
- * 
  */
 public class CommonfaultImportExcelConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String COMMONFAULTIMPORTEXCEL_LIST = "commonfaultImportExcelList";
+
+    /**
+     * list key
+     */
+    public final static String COMMONFAULTIMPORTEXCEL_LIST = "commonfaultImportExcelList";
 }

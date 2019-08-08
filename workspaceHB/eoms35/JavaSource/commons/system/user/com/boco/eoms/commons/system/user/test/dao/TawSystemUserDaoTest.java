@@ -10,93 +10,93 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 
 public class TawSystemUserDaoTest extends BaseDaoTestCase {
 
-	private TawSystemUserDao dao = null;
+    private TawSystemUserDao dao = null;
 
-	public void setTawSystemUserDao(TawSystemUserDao dao) {
-		this.dao = dao;
-	}
+    public void setTawSystemUserDao(TawSystemUserDao dao) {
+        this.dao = dao;
+    }
 
-	public void testAddTawSystemUser() throws Exception {
-		TawSystemUser tawSystemUser = new TawSystemUser();
+    public void testAddTawSystemUser() throws Exception {
+        TawSystemUser tawSystemUser = new TawSystemUser();
 
-		tawSystemUser.setDeptid("111");
-		tawSystemUser.setDeptname("ceshi");
-		// set required fields
+        tawSystemUser.setDeptid("111");
+        tawSystemUser.setDeptname("ceshi");
+        // set required fields
 
-		dao.saveTawSystemUser(tawSystemUser);
+        dao.saveTawSystemUser(tawSystemUser);
 
-		// verify a primary key was assigned
-		assertNotNull(tawSystemUser.getId());
+        // verify a primary key was assigned
+        assertNotNull(tawSystemUser.getId());
 
-		// verify set fields are same after save
-	}
+        // verify set fields are same after save
+    }
 
-	public void testGetTawSystemUser() throws Exception {
-		TawSystemUser tawSystemUser = new TawSystemUser();
+    public void testGetTawSystemUser() throws Exception {
+        TawSystemUser tawSystemUser = new TawSystemUser();
 
-		tawSystemUser.setDeptid("111");
-		tawSystemUser.setDeptname("ceshi");
-		dao.saveTawSystemUser(tawSystemUser);
-		TawSystemUser tawSystemUsers = dao.getTawSystemUser(tawSystemUser
-				.getId());
-		assertNotNull(tawSystemUsers);
-	}
+        tawSystemUser.setDeptid("111");
+        tawSystemUser.setDeptname("ceshi");
+        dao.saveTawSystemUser(tawSystemUser);
+        TawSystemUser tawSystemUsers = dao.getTawSystemUser(tawSystemUser
+                .getId());
+        assertNotNull(tawSystemUsers);
+    }
 
-	public void testGetTawSystemUsers() throws Exception {
+    public void testGetTawSystemUsers() throws Exception {
 
-		TawSystemUser tawSystemUser = new TawSystemUser();
+        TawSystemUser tawSystemUser = new TawSystemUser();
 
-		tawSystemUser.setDeptid("111");
-		tawSystemUser.setDeptname("ceshi");
-		dao.saveTawSystemUser(tawSystemUser);
+        tawSystemUser.setDeptid("111");
+        tawSystemUser.setDeptname("ceshi");
+        dao.saveTawSystemUser(tawSystemUser);
 
-		List results = dao.getTawSystemUsers(tawSystemUser);
-		assertTrue(results.size() > 0);
-	}
+        List results = dao.getTawSystemUsers(tawSystemUser);
+        assertTrue(results.size() > 0);
+    }
 
-	public void testSaveTawSystemUser() throws Exception {
-		TawSystemUser tawSystemUser = new TawSystemUser();
+    public void testSaveTawSystemUser() throws Exception {
+        TawSystemUser tawSystemUser = new TawSystemUser();
 
-		tawSystemUser.setDeptid("111");
-		tawSystemUser.setDeptname("ceshi");
-		dao.saveTawSystemUser(tawSystemUser);
-		TawSystemUser tawSystemUsers = dao.getTawSystemUser(tawSystemUser
-				.getId());
+        tawSystemUser.setDeptid("111");
+        tawSystemUser.setDeptname("ceshi");
+        dao.saveTawSystemUser(tawSystemUser);
+        TawSystemUser tawSystemUsers = dao.getTawSystemUser(tawSystemUser
+                .getId());
 
-		// update required fields
+        // update required fields
 
-		dao.saveTawSystemUser(tawSystemUsers);
-		TawSystemUser tawSystemUserss = dao.getTawSystemUser(tawSystemUsers
-				.getId());
-		assertSame(tawSystemUserss.getDeptid(), tawSystemUser.getDeptid());
-	}
+        dao.saveTawSystemUser(tawSystemUsers);
+        TawSystemUser tawSystemUserss = dao.getTawSystemUser(tawSystemUsers
+                .getId());
+        assertSame(tawSystemUserss.getDeptid(), tawSystemUser.getDeptid());
+    }
 
-	public void testRemoveTawSystemUser() throws Exception {
-		TawSystemUser tawSystemUser = new TawSystemUser();
+    public void testRemoveTawSystemUser() throws Exception {
+        TawSystemUser tawSystemUser = new TawSystemUser();
 
-		tawSystemUser.setDeptid("111");
-		tawSystemUser.setDeptname("ceshi");
-		dao.saveTawSystemUser(tawSystemUser);
-		dao.removeTawSystemUser(tawSystemUser.getId());
-		try {
-			dao.getTawSystemUser(tawSystemUser.getId());
-			fail("tawSystemUser found in database");
-		} catch (ObjectRetrievalFailureException e) {
-			assertNotNull(e.getMessage());
-		}
-	}
+        tawSystemUser.setDeptid("111");
+        tawSystemUser.setDeptname("ceshi");
+        dao.saveTawSystemUser(tawSystemUser);
+        dao.removeTawSystemUser(tawSystemUser.getId());
+        try {
+            dao.getTawSystemUser(tawSystemUser.getId());
+            fail("tawSystemUser found in database");
+        } catch (ObjectRetrievalFailureException e) {
+            assertNotNull(e.getMessage());
+        }
+    }
 
-	public void testIn() {
+    public void testIn() {
 
-		TawSystemUser tawSystemUser = new TawSystemUser();
+        TawSystemUser tawSystemUser = new TawSystemUser();
 
-		tawSystemUser.setDeptid("1122");
+        tawSystemUser.setDeptid("1122");
 
-		dao.saveTawSystemUser(tawSystemUser);
+        dao.saveTawSystemUser(tawSystemUser);
 
-		TawSystemUser tawSystemUsers = new TawSystemUser();
+        TawSystemUser tawSystemUsers = new TawSystemUser();
 
-		tawSystemUsers = dao.getTawSystemUser(tawSystemUser.getId());
-		assertSame(tawSystemUser.getDeptid(), tawSystemUsers.getDeptid());
-	}
+        tawSystemUsers = dao.getTawSystemUser(tawSystemUser.getId());
+        assertSame(tawSystemUser.getDeptid(), tawSystemUsers.getDeptid());
+    }
 }

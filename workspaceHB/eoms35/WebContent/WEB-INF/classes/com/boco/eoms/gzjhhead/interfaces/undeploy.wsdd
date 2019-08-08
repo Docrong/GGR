@@ -7,11 +7,11 @@
 <!--      from the same directory that the Axis engine runs         -->
 
 <undeployment
-    xmlns="http://xml.apache.org/axis/wsdd/">
+        xmlns="http://xml.apache.org/axis/wsdd/">
 
-  <!-- Services from ReportExecuteService WSDL service -->
+    <!-- Services from ReportExecuteService WSDL service -->
 
-  <service name="ReportInventoryPort"/>
-  <service name="ReportExecutePort"/>
-  <service name="AuxiliaryPort"/>
+    <service name="ReportInventoryPort"/>
+    <service name="ReportExecutePort"/>
+    <service name="AuxiliaryPort"/>
 </undeployment>

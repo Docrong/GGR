@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -12,105 +12,104 @@
             table="BusinessImplementSms_link"
     >
 
-    <id
-        name="id"
-        column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-       <property name="mainId" />
-       	<property name="nodeAcceptLimit" />
-		<property name="nodeCompleteLimit" />
+        </id>
+        <property name="mainId"/>
+        <property name="nodeAcceptLimit"/>
+        <property name="nodeCompleteLimit"/>
 
-		<property name="operateType" />
-		<property name="operateTime" />
-		<property name="operaterContact" />     		
-		<property name="operateOrgType" />
-		<property name="operateUserId" />
-		<property name="operateDeptId" />
-		<property name="operateRoleId" />
-		<property name="toOrgType" />
-		<property name="toOrgUserId" />
-		<property name="toOrgDeptId" />
-		<property name="toOrgRoleId" />
-		<property name="acceptFlag" />
-		<property name="acceptTime" />
-		<property name="completeFlag" />
-		<property name="completeTime" />
-		<property name="preLinkId" />
-		<property name="parentLinkId" />
-		<property name="firstLinkId" />
-		<property name="piid" />
-		<property name="aiid" />
-		<property name="activeTemplateId" />
-		<property name="nodeTemplateName" />
-		<property name="correlationKey" />
-		<property name="nodeAccessories" />
-		<property name="templateFlag" />
-		<property name="templateName" />
-		<property name="templateCreateUserId" />
-		<property name="transferReason" />
-		<property name="remark" />
-		<property name="operateYear" />
-		<property name="operateMonth" />
-		<property name="operateDay" />	
-		
-		<property name="linkGatewayPassWord" />	
-		<property name="linkMasPassWord" />		
-		<property name="linkDealResult" />	
-		<property name="linkDealSuggestion" />	
-		<property name="linkArgument" />	
-		<property name="linkCompleteLimitTime" />	
-		<property name="linkDealDept" />	
-		<property name="linkConfigureInformation" />
-		<property name="linkStartSheetDesc" />
-		<property name="linkCircuitResult" />
-		<property name="linkUnsuccessDesc" />
-		<property name="linkCircuitNum" />
-		<property name="linkEnterpriseNum" />
-		<property name="linkServiceNum" />
-		<property name="linkPointNum" />
-		<property name="linkBlackName" />
-		<property name="linkWhiteName" />
-		<property name="linkDataIfOver" />
-		<property name="linkGatewayAddress" />
-		<property name="linkSmsGatewayAddress" />
-		<property name="linkLoginName" />
-		<property name="linkLoginPassword" />
-		<property name="linkCompanyBusy" />
-		<property name="linkCompanyFree" />
-		
-		<property name="linkSmsUrl" />
-		<property name="linkProvisionURL" />
-		<property name="linkBusinessLimit" />
-		<property name="linkDataResult" />
-		<property name="linkMasServerNum" />
-		<property name="linkTestResult" />
-		<property name="linkSatisfied" />
-		<property name="linkIfSatisfied" />
-		<property name="linkUnSatisfiedReason" />
-		<property name="linkIfProvidedNeeds" />
-			<property name="linknetWayIpAdd" />
+        <property name="operateType"/>
+        <property name="operateTime"/>
+        <property name="operaterContact"/>
+        <property name="operateOrgType"/>
+        <property name="operateUserId"/>
+        <property name="operateDeptId"/>
+        <property name="operateRoleId"/>
+        <property name="toOrgType"/>
+        <property name="toOrgUserId"/>
+        <property name="toOrgDeptId"/>
+        <property name="toOrgRoleId"/>
+        <property name="acceptFlag"/>
+        <property name="acceptTime"/>
+        <property name="completeFlag"/>
+        <property name="completeTime"/>
+        <property name="preLinkId"/>
+        <property name="parentLinkId"/>
+        <property name="firstLinkId"/>
+        <property name="piid"/>
+        <property name="aiid"/>
+        <property name="activeTemplateId"/>
+        <property name="nodeTemplateName"/>
+        <property name="correlationKey"/>
+        <property name="nodeAccessories"/>
+        <property name="templateFlag"/>
+        <property name="templateName"/>
+        <property name="templateCreateUserId"/>
+        <property name="transferReason"/>
+        <property name="remark"/>
+        <property name="operateYear"/>
+        <property name="operateMonth"/>
+        <property name="operateDay"/>
 
+        <property name="linkGatewayPassWord"/>
+        <property name="linkMasPassWord"/>
+        <property name="linkDealResult"/>
+        <property name="linkDealSuggestion"/>
+        <property name="linkArgument"/>
+        <property name="linkCompleteLimitTime"/>
+        <property name="linkDealDept"/>
+        <property name="linkConfigureInformation"/>
+        <property name="linkStartSheetDesc"/>
+        <property name="linkCircuitResult"/>
+        <property name="linkUnsuccessDesc"/>
+        <property name="linkCircuitNum"/>
+        <property name="linkEnterpriseNum"/>
+        <property name="linkServiceNum"/>
+        <property name="linkPointNum"/>
+        <property name="linkBlackName"/>
+        <property name="linkWhiteName"/>
+        <property name="linkDataIfOver"/>
+        <property name="linkGatewayAddress"/>
+        <property name="linkSmsGatewayAddress"/>
+        <property name="linkLoginName"/>
+        <property name="linkLoginPassword"/>
+        <property name="linkCompanyBusy"/>
+        <property name="linkCompanyFree"/>
 
-	<property name="linknetWayName" />
-
-	<property name="linkinputGetUserDate" />
+        <property name="linkSmsUrl"/>
+        <property name="linkProvisionURL"/>
+        <property name="linkBusinessLimit"/>
+        <property name="linkDataResult"/>
+        <property name="linkMasServerNum"/>
+        <property name="linkTestResult"/>
+        <property name="linkSatisfied"/>
+        <property name="linkIfSatisfied"/>
+        <property name="linkUnSatisfiedReason"/>
+        <property name="linkIfProvidedNeeds"/>
+        <property name="linknetWayIpAdd"/>
 
 
+        <property name="linknetWayName"/>
 
-	<property name="linksupportServicePortNumber" />
+        <property name="linkinputGetUserDate"/>
 
-	<property name="linkOne" />
-	<property name="linkTwo" />
-	<property name="linkThree" />
 
-</class>    
+        <property name="linksupportServicePortNumber"/>
+
+        <property name="linkOne"/>
+        <property name="linkTwo"/>
+        <property name="linkThree"/>
+
+    </class>
 
 </hibernate-mapping>
 

@@ -13,20 +13,19 @@ import java.util.List;
  * <p>
  * Apr 19, 2007 2:57:17 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class ExpStyles {
-	List expStyles = new ArrayList();
+    List expStyles = new ArrayList();
 
-	public List getExpStyles() {
-		return expStyles;
-	}
+    public List getExpStyles() {
+        return expStyles;
+    }
 
-	public void setExpStyles(List expStyles) {
-		this.expStyles = expStyles;
-	}
+    public void setExpStyles(List expStyles) {
+        this.expStyles = expStyles;
+    }
 
 }

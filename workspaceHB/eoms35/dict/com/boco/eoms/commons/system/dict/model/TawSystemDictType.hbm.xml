@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="Taw_System_DictType"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="native">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="native">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="dictId"
+                name="dictId"
                 length="100"
                 not-null="true"
                 unique="true"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="dictCode"
+                name="dictCode"
                 length="100"
                 not-null="true"
         >
@@ -44,7 +44,7 @@
         </property>
 
         <property
-            name="dictName"
+                name="dictName"
                 length="100"
                 not-null="true"
                 unique="true"
@@ -53,32 +53,32 @@
         </property>
 
         <property
-            name="dictRemark"
+                name="dictRemark"
                 length="256"
         >
 
         </property>
-         
+
         <property
-            name="parentDictId"
+                name="parentDictId"
                 length="100"
         >
 
         </property>
 
         <property
-            name="sysType"
+                name="sysType"
                 length="50"
         >
 
         </property>
         <property
-            name="leaf"
+                name="leaf"
                 length="2"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

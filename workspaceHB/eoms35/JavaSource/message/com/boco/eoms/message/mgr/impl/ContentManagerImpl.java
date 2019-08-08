@@ -7,7 +7,6 @@ import com.boco.eoms.message.dao.IContentDao;
 import com.boco.eoms.message.mgr.IContentManager;
 
 /**
- * 
  * <p>
  * Title:
  * </p>
@@ -17,28 +16,25 @@ import com.boco.eoms.message.mgr.IContentManager;
  * <p>
  * Date:2009-3-11 下午02:55:02
  * </p>
- * 
+ *
  * @author 孙圣泰
  * @version 3.5.1
- * 
  */
 public class ContentManagerImpl extends BaseManager implements
-		IContentManager {
-	private IContentDao dao;
+        IContentManager {
+    private IContentDao dao;
 
-	public IContentDao getSendContentDao() {
-		return dao;
-	}
+    public IContentDao getSendContentDao() {
+        return dao;
+    }
 
-	public void setSendContentDao(IContentDao dao) {
-		this.dao = dao;
-	}
+    public void setSendContentDao(IContentDao dao) {
+        this.dao = dao;
+    }
 
-	public String getSendContent(Map infoMap) {
-		return dao.getSendContent(infoMap);
-	}
+    public String getSendContent(Map infoMap) {
+        return dao.getSendContent(infoMap);
+    }
 
-	
 
-	
 }

@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
-  <cell id="1" type="InitialActionCell" height="30" width="100" x="210" y="42" />
-  <cell id="2" type="StepCell" height="30" width="100" x="413" y="48" />
-  <cell id="3" type="StepCell" height="30" width="100" x="670" y="43" />
-  <cell id="4" type="StepCell" height="30" width="100" x="266" y="139" />
-  <cell id="5" type="StepCell" height="30" width="100" x="596" y="236" />
-  <connector id="90" linewidth="1.0" color="-16777216" labelx="268" labely="661" from="0" to="0" start="210,42" end="266,139">
-    <routing id="90" x="227" y="151" />
-  </connector>
-  <connector id="91" linewidth="1.0" color="-16777216" labelx="734" labely="1118" from="0" to="0" start="210,42" end="413,48">
-    <routing id="91" x="361" y="59" />
-  </connector>
-  <connector id="92" linewidth="1.0" color="-16777216" labelx="-6" labely="757" from="0" to="0" start="413,48" end="266,139">
-    <routing id="92" x="442" y="155" />
-  </connector>
-  <connector id="93" linewidth="1.0" color="-16777216" labelx="912" labely="389" from="0" to="0" start="670,43" end="596,236">
-    <routing id="93" x="613" y="61" />
-  </connector>
-  <connector id="94" linewidth="1.0" color="-16777216" labelx="14" labely="716" from="0" to="0" start="266,139" end="596,236">
-    <routing id="94" x="302" y="250" />
-  </connector>
-  <connector id="95" linewidth="1.0" color="-16777216" labelx="0" labely="330" from="0" to="0" start="266,139" end="210,42">
-    <routing id="95" x="302" y="111" />
-  </connector>
-  <connector id="96" linewidth="1.0" color="-16777216" labelx="1047" labely="399" from="0" to="0" start="596,236" end="670,43">
-    <routing id="96" x="682" y="160" />
-  </connector>
-  <channel id="chl-1" y1="0" y2="100" text="分公司投诉管理员" />
-  <channel id="chl-2" y1="100" y2="200" text="分公司网优中心主任" />
-  <channel id="chl-3" y1="200" y2="300" text="分公司代维人员" />
+    <cell id="1" type="InitialActionCell" height="30" width="100" x="210" y="42"/>
+    <cell id="2" type="StepCell" height="30" width="100" x="413" y="48"/>
+    <cell id="3" type="StepCell" height="30" width="100" x="670" y="43"/>
+    <cell id="4" type="StepCell" height="30" width="100" x="266" y="139"/>
+    <cell id="5" type="StepCell" height="30" width="100" x="596" y="236"/>
+    <connector id="90" linewidth="1.0" color="-16777216" labelx="268" labely="661" from="0" to="0" start="210,42"
+               end="266,139">
+        <routing id="90" x="227" y="151"/>
+    </connector>
+    <connector id="91" linewidth="1.0" color="-16777216" labelx="734" labely="1118" from="0" to="0" start="210,42"
+               end="413,48">
+        <routing id="91" x="361" y="59"/>
+    </connector>
+    <connector id="92" linewidth="1.0" color="-16777216" labelx="-6" labely="757" from="0" to="0" start="413,48"
+               end="266,139">
+        <routing id="92" x="442" y="155"/>
+    </connector>
+    <connector id="93" linewidth="1.0" color="-16777216" labelx="912" labely="389" from="0" to="0" start="670,43"
+               end="596,236">
+        <routing id="93" x="613" y="61"/>
+    </connector>
+    <connector id="94" linewidth="1.0" color="-16777216" labelx="14" labely="716" from="0" to="0" start="266,139"
+               end="596,236">
+        <routing id="94" x="302" y="250"/>
+    </connector>
+    <connector id="95" linewidth="1.0" color="-16777216" labelx="0" labely="330" from="0" to="0" start="266,139"
+               end="210,42">
+        <routing id="95" x="302" y="111"/>
+    </connector>
+    <connector id="96" linewidth="1.0" color="-16777216" labelx="1047" labely="399" from="0" to="0" start="596,236"
+               end="670,43">
+        <routing id="96" x="682" y="160"/>
+    </connector>
+    <channel id="chl-1" y1="0" y2="100" text="分公司投诉管理员"/>
+    <channel id="chl-2" y1="100" y2="200" text="分公司网优中心主任"/>
+    <channel id="chl-3" y1="200" y2="300" text="分公司代维人员"/>
 </layout>
 

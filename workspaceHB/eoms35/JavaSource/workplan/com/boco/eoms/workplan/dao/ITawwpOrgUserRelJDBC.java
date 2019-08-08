@@ -4,7 +4,7 @@ import java.util.Map;
 
 public interface ITawwpOrgUserRelJDBC {
 
-	public Map getRoomUserRel();
-	
-	public Map getDeptUserRel();
+    public Map getRoomUserRel();
+
+    public Map getDeptUserRel();
 }

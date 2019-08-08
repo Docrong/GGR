@@ -1,63 +1,63 @@
-<%@page contentType="text/html;charset=gb2312"%>
-<%@page import="com.boco.eoms.resmanage.query.*"%>
-<%@page import="java.util.*"%>
-<%@page import="com.boco.eoms.resmanage.entity.*"%>
-<%@page import ="com.boco.eoms.jbzl.bo.*"%>
-<%@include file="../power.jsp"%>
+<%@page contentType="text/html;charset=gb2312" %>
+<%@page import="com.boco.eoms.resmanage.query.*" %>
+<%@page import="java.util.*" %>
+<%@page import="com.boco.eoms.resmanage.entity.*" %>
+<%@page import="com.boco.eoms.jbzl.bo.*" %>
+<%@include file="../power.jsp" %>
 <%
-/**
-*@ E-DIS (四川省)
-*@ Copyright : (c) 2003
-*@ Company : BOCO.
-*@ 资料查询模块
-*@ author LiuYang
-*@ version 1.0
-*@ date    2003-05-09
-**/
+    /**
+     *@ E-DIS (四川省)
+     *@ Copyright : (c) 2003
+     *@ Company : BOCO.
+     *@ 资料查询模块
+     *@ author LiuYang
+     *@ version 1.0
+     *@ date    2003-05-09
+     **/
 %>
 <html>
 <head>
-<title>条件选择</title>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<link rel="stylesheet" href="../css/style.css" type="text/css">
+    <title>条件选择</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
 </head>
 <script language=javascript>
-function goSearch()
-{
-	condition.target = '_blank';
-	condition.action = "queryResult.jsp";
-}
-function gofilter()
-{
-	condition.action = "conditionSelect.jsp";
-	condition.submit();
-}
+    function goSearch() {
+        condition.target = '_blank';
+        condition.action = "queryResult.jsp";
+    }
+
+    function gofilter() {
+        condition.action = "conditionSelect.jsp";
+        condition.submit();
+    }
 </script>
 <%
-String typeid = request.getParameter("typeid");
-int  oper_id=0;
-entityoperate Entity = new entityoperate();
-String stroppId = Entity.getoperatorId(Integer.parseInt(typeid));
-List oppId = new ArrayList();
-if (stroppId!=null)
-	oppId = Entity.spitStr(stroppId,",");
-oper_id = Integer.parseInt(oppId.get(0).toString());
-Vector cityVec = new Vector();
-TawValidatePrivBO ValidatePrivBO = new TawValidatePrivBO();
-cityVec = ValidatePrivBO.validatePriv(userId,oper_id,1);
+    String typeid = request.getParameter("typeid");
+    int oper_id = 0;
+    entityoperate Entity = new entityoperate();
+    String stroppId = Entity.getoperatorId(Integer.parseInt(typeid));
+    List oppId = new ArrayList();
+    if (stroppId != null)
+        oppId = Entity.spitStr(stroppId, ",");
+    oper_id = Integer.parseInt(oppId.get(0).toString());
+    Vector cityVec = new Vector();
+    TawValidatePrivBO ValidatePrivBO = new TawValidatePrivBO();
+    cityVec = ValidatePrivBO.validatePriv(userId, oper_id, 1);
 //out.println("domain vec size is:::"+cityVec.size());
-if (cityVec.size()==0)
-{
-	out.println("<script>alert('没有权限,请与系统管理员联系！"+"');</script>");
-	return;
-}
+    if (cityVec.size() == 0) {
+        out.println("<script>alert('没有权限,请与系统管理员联系！" + "');</script>");
+        return;
+    }
 %>
 <body bgcolor="#eeeeee" text="#000000" class="content14">
 <table bgcolor="#dddddd" width='100%'>
-<tr><td align=center width='100%' colspan=2><font size=2><B>查询条件选择</B></font></td></tr>
-<form name=condition method=post>
-<tr bgcolor=#eeeeee>
-<%
+    <tr>
+        <td align=center width='100%' colspan=2><font size=2><B>查询条件选择</B></font></td>
+    </tr>
+    <form name=condition method=post>
+        <tr bgcolor=#eeeeee>
+                <%
 
 String classid = request.getParameter("classtype");
 int manufid = 0;
@@ -178,12 +178,13 @@ for(int i = 0; i < otV.size(); i ++)
 	}
 }
 %>
-<tr bgcolor=#eeeeee>
-<input type=hidden name=classtype value=<%=classid%>>
-<input type=hidden name=typeid value=<%=typeid%>>
-<td width='100%' align=center colspan=2><input type=submit name=go value='查询' onclick='javascript:goSearch()'></td>
-</tr>
-</form>
+        <tr bgcolor=#eeeeee>
+            <input type=hidden name=classtype value=<%=classid%>>
+            <input type=hidden name=typeid value=<%=typeid%>>
+            <td width='100%' align=center colspan=2><input type=submit name=go value='查询'
+                                                           onclick='javascript:goSearch()'></td>
+        </tr>
+    </form>
 </table>
 </body>
 </html>

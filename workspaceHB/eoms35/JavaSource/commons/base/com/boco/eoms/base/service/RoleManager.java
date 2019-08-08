@@ -15,13 +15,13 @@ import com.boco.eoms.base.model.Role;
 
 public interface RoleManager {
 
-	public void setRoleDao(RoleDao dao);
+    public void setRoleDao(RoleDao dao);
 
-	public List getRoles(Role role);
+    public List getRoles(Role role);
 
-	public Role getRole(String rolename);
+    public Role getRole(String rolename);
 
-	public void saveRole(Role role);
+    public void saveRole(Role role);
 
-	public void removeRole(String rolename);
+    public void removeRole(String rolename);
 }

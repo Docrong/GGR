@@ -1,11 +1,11 @@
 package com.boco.eoms.infmanage.controller;
 
 import org.apache.struts.action.ActionForm;
+
 import java.util.Collection;
 
 public class TawInfIpForm
-    extends ActionForm
-{
+        extends ActionForm {
     // 记录ID
     private int id;
 
@@ -45,137 +45,110 @@ public class TawInfIpForm
     // 部门名称
     private String deptName;
 
-    public TawInfIpForm()
-    {
+    public TawInfIpForm() {
     }
 
-    public int getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(int id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getUserId()
-    {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId)
-    {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public String getUserName()
-    {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUserName(String userName)
-    {
+    public void setUserName(String userName) {
         this.userName = userName;
     }
 
-    public int getDeptId()
-    {
+    public int getDeptId() {
         return deptId;
     }
 
-    public void setDeptId(int deptId)
-    {
+    public void setDeptId(int deptId) {
         this.deptId = deptId;
     }
 
-    public String getUserAddress()
-    {
+    public String getUserAddress() {
         return userAddress;
     }
 
-    public void setUserAddress(String userAddress)
-    {
+    public void setUserAddress(String userAddress) {
         this.userAddress = userAddress;
     }
 
-    public String getUserTel()
-    {
+    public String getUserTel() {
         return userTel;
     }
 
-    public void setUserTel(String userTel)
-    {
+    public void setUserTel(String userTel) {
         this.userTel = userTel;
     }
 
-    public String getUserType()
-    {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType)
-    {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 
-    public String getDevPort()
-    {
+    public String getDevPort() {
         return devPort;
     }
 
-    public void setDevPort(String devPort)
-    {
+    public void setDevPort(String devPort) {
         this.devPort = devPort;
     }
 
-    public String getDevId()
-    {
+    public String getDevId() {
         return devId;
     }
 
-    public void setDevId(String devId)
-    {
+    public void setDevId(String devId) {
         this.devId = devId;
     }
 
-    public String getUserLogic()
-    {
+    public String getUserLogic() {
         return userLogic;
     }
 
-    public void setUserLogic(String userLogic)
-    {
+    public void setUserLogic(String userLogic) {
         this.userLogic = userLogic;
     }
 
-    public String getLogicPort()
-    {
+    public String getLogicPort() {
         return logicPort;
     }
 
-    public void setLogicPort(String logicPort)
-    {
+    public void setLogicPort(String logicPort) {
         this.logicPort = logicPort;
     }
 
-    public String getRemark()
-    {
+    public String getRemark() {
         return remark;
     }
 
-    public void setRemark(String remark)
-    {
+    public void setRemark(String remark) {
         this.remark = remark;
     }
 
-    public String getDeptName()
-    {
+    public String getDeptName() {
         return deptName;
     }
 
-    public void setDeptName(String deptName)
-    {
+    public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
 }

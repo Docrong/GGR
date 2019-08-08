@@ -35,7 +35,7 @@ public class MetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         metermgrDao.expects(once()).method("getMetermgrs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List metermgrs = metermgrManager.getMetermgrs(null);
         assertTrue(metermgrs.size() == 1);
@@ -45,7 +45,7 @@ public class MetermgrManagerTest extends BaseManagerTestCase {
     public void testGetMetermgr() throws Exception {
         // set expected behavior on dao
         metermgrDao.expects(once()).method("getMetermgr")
-            .will(returnValue(new Metermgr()));
+                .will(returnValue(new Metermgr()));
         Metermgr metermgr = metermgrManager.getMetermgr(metermgrId);
         assertTrue(metermgr != null);
         metermgrDao.verify();
@@ -56,7 +56,7 @@ public class MetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         metermgrDao.expects(once()).method("saveMetermgr")
-            .with(same(metermgr)).isVoid();
+                .with(same(metermgr)).isVoid();
 
         metermgrManager.saveMetermgr(metermgr);
         metermgrDao.verify();
@@ -69,7 +69,7 @@ public class MetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         metermgrDao.expects(once()).method("saveMetermgr")
-            .with(same(metermgr)).isVoid();
+                .with(same(metermgr)).isVoid();
         metermgrManager.saveMetermgr(metermgr);
         metermgrDao.verify();
 

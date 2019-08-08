@@ -20,43 +20,42 @@ import com.boco.eoms.message.mgr.impl.SmsMonitorManagerImpl;
 //            MsgHelp
 
 public class SmsOuterConfigImpl
-    implements ISmsOuterConfig
-{
+        implements ISmsOuterConfig {
 
-	public boolean sendSms(String mobiles, String content) {
-		DataSource db = (DataSource)ApplicationContextHolder.getInstance().getBean("msgdatasource");
-		boolean returnStr = true;
-		Statement stmt = null;
-		Connection conn = null;
-		try {			
-			conn = db.getConnection();
-			stmt = conn.createStatement();
+    public boolean sendSms(String mobiles, String content) {
+        DataSource db = (DataSource) ApplicationContextHolder.getInstance().getBean("msgdatasource");
+        boolean returnStr = true;
+        Statement stmt = null;
+        Connection conn = null;
+        try {
+            conn = db.getConnection();
+            stmt = conn.createStatement();
 //			content = new String(content.getBytes("GB2312"),"ISO-8859-1");
-			String sql = "insert into sp_submit (desttermid,msgcontent) values ('"+ mobiles + "','" + content + "')";
-			
-			stmt.execute(sql);
-			
-		} catch (Exception e) {
-			returnStr = false;
-			e.printStackTrace();
-		} finally {
-			try {
-				if (stmt != null) {
-					stmt.close();
-				}
-				if (conn != null && !conn.isClosed()) {
-					conn.close();
-				}
-			} catch (SQLException e) {
-				BocoLog.error(SmsMonitorManagerImpl.class, e.getMessage());
-			}
-		}
-		return returnStr;
-	}
+            String sql = "insert into sp_submit (desttermid,msgcontent) values ('" + mobiles + "','" + content + "')";
 
-	public boolean sendVoice(String t_no, String t_alloc_time, String t_finish_time, String t_content, String t_tel_num, String t_tel_num2, String dispatch_tel) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+            stmt.execute(sql);
+
+        } catch (Exception e) {
+            returnStr = false;
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null && !conn.isClosed()) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                BocoLog.error(SmsMonitorManagerImpl.class, e.getMessage());
+            }
+        }
+        return returnStr;
+    }
+
+    public boolean sendVoice(String t_no, String t_alloc_time, String t_finish_time, String t_content, String t_tel_num, String t_tel_num2, String dispatch_tel) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }

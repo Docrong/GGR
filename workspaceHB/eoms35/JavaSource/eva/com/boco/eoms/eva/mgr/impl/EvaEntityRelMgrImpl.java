@@ -5,25 +5,25 @@ import com.boco.eoms.eva.model.EvaEntityRel;
 
 public class EvaEntityRelMgrImpl {
 
-	private IEvaEntityRelDao entityRelDao;
+    private IEvaEntityRelDao entityRelDao;
 
-	public IEvaEntityRelDao getEvaEntityRelDao() {
-		return entityRelDao;
-	}
+    public IEvaEntityRelDao getEvaEntityRelDao() {
+        return entityRelDao;
+    }
 
-	public void setEvaEntityRelDao(IEvaEntityRelDao entityRelDao) {
-		this.entityRelDao = entityRelDao;
-	}
+    public void setEvaEntityRelDao(IEvaEntityRelDao entityRelDao) {
+        this.entityRelDao = entityRelDao;
+    }
 
-	public EvaEntityRel getEvaEntityRel(String id){
-		return entityRelDao.getEvaEntityRel(id);
-	}
-	
-	public void saveEvaEntityRel(EvaEntityRel evaEntityRel){
-		entityRelDao.saveEvaEntityRel(evaEntityRel);
-	}
+    public EvaEntityRel getEvaEntityRel(String id) {
+        return entityRelDao.getEvaEntityRel(id);
+    }
 
-	public EvaEntityRel getEvaEntityRelByTemplateId(String templateId){
-		return entityRelDao.getEvaEntityRelByTemplateId(templateId);
-	}
+    public void saveEvaEntityRel(EvaEntityRel evaEntityRel) {
+        entityRelDao.saveEvaEntityRel(evaEntityRel);
+    }
+
+    public EvaEntityRel getEvaEntityRelByTemplateId(String templateId) {
+        return entityRelDao.getEvaEntityRelByTemplateId(templateId);
+    }
 }

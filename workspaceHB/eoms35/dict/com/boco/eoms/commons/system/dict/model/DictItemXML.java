@@ -10,10 +10,9 @@ package com.boco.eoms.commons.system.dict.model;
  * <p>
  * Date:2007-10-23 19:16:04
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictItemXML implements IDictItem {
     /**
@@ -39,8 +38,7 @@ public class DictItemXML implements IDictItem {
     }
 
     /**
-     * @param description
-     *            the description to set
+     * @param description the description to set
      */
     public void setDescription(String description) {
         this.description = description;
@@ -54,8 +52,7 @@ public class DictItemXML implements IDictItem {
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -69,8 +66,7 @@ public class DictItemXML implements IDictItem {
     }
 
     /**
-     * @param name
-     *            the name to set
+     * @param name the name to set
      */
     public void setName(String name) {
         this.name = name;
@@ -78,7 +74,7 @@ public class DictItemXML implements IDictItem {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.model.IDict#getDictDescription()
      */
     public Object getItemDescription() {
@@ -87,7 +83,7 @@ public class DictItemXML implements IDictItem {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.model.IDict#getDictId()
      */
     public Object getItemId() {
@@ -96,7 +92,7 @@ public class DictItemXML implements IDictItem {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.model.IDict#getDictName()
      */
     public Object getItemName() {

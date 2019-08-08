@@ -15,64 +15,64 @@ import com.boco.eoms.sheet.interfaceBase.service.IInterfaceServiceManage;
 import com.boco.eoms.sheet.interfaceBase.service.impl.InterfaceServiceManageAbstract;
 import com.boco.eoms.sheet.interfaceBase.util.InterfaceConstants;
 
-public class SafetyProblemCrmServiceManageImpl extends InterfaceServiceManageAbstract implements IInterfaceServiceManage{
+public class SafetyProblemCrmServiceManageImpl extends InterfaceServiceManageAbstract implements IInterfaceServiceManage {
 
-	public String getLinkBeanId() {
-		// TODO Auto-generated method stub
-		return "iSafetyProblemLinkManager";
-	}
+    public String getLinkBeanId() {
+        // TODO Auto-generated method stub
+        return "iSafetyProblemLinkManager";
+    }
 
-	public String getMainBeanId() {
-		// TODO Auto-generated method stub
-		return "iSafetyProblemMainManager";
-	}
+    public String getMainBeanId() {
+        // TODO Auto-generated method stub
+        return "iSafetyProblemMainManager";
+    }
 
-	public String getOperateName() {
-		// TODO Auto-generated method stub
-		return "newWorksheet";
-	}
+    public String getOperateName() {
+        // TODO Auto-generated method stub
+        return "newWorksheet";
+    }
 
-	public String getProcessTemplateName() {
-		// TODO Auto-generated method stub
-		return "SafetyProblemMainFlowProcess";
-	}
+    public String getProcessTemplateName() {
+        // TODO Auto-generated method stub
+        return "SafetyProblemMainFlowProcess";
+    }
 
-	public String getSheetAttachCode() {
-		// TODO Auto-generated method stub
-		return "safetyproblem";
-	}
+    public String getSheetAttachCode() {
+        // TODO Auto-generated method stub
+        return "safetyproblem";
+    }
 
-	public String getTaskBeanId() {
-		// TODO Auto-generated method stub
-		return "isafetyproblemTaskManager";
-	}
-    
-	public String getSendUser(Map map) {
-		String userId = StaticMethod.nullObject2String(XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.InterfaceUser"));
-		return userId;
-	}
-	
-	public Map initMap(Map map, List attach, String type) throws Exception {
-		try{
-			map = this.loadDefaultMap(map, "config/SafetyProblem-crm.xml", type);
-			if(type.equals(InterfaceConstants.WORKSHEET_NEW)){
-				String sendRoleId = StaticMethod.nullObject2String(XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.SendRoleId"));
-				map.put("sendRoleId", sendRoleId);
-				
-				String bigRole = StaticMethod.nullObject2String(XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.AcceptGroupId"));
-				String toDeptId = StaticMethod.nullObject2String(map.get("toDeptId"));
-				
-				WPSEngineServiceMethod sm = new WPSEngineServiceMethod();
-				String subRoleId = "";
-				TawSystemSubRole subRole = sm.getMatchRoles("safetyproblem", toDeptId, bigRole, map);
-				if(subRole==null||subRole.getId()==null||subRole.getId().length()==0){
-					System.out.println("未找到匹配角色，使用默认角色");
-					subRoleId = XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.AcceptRoleId");
-				}else{
-					subRoleId = subRole.getId();
-				}
-				map = sm.setAcceptRole(subRoleId, map);
-			}
+    public String getTaskBeanId() {
+        // TODO Auto-generated method stub
+        return "isafetyproblemTaskManager";
+    }
+
+    public String getSendUser(Map map) {
+        String userId = StaticMethod.nullObject2String(XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.InterfaceUser"));
+        return userId;
+    }
+
+    public Map initMap(Map map, List attach, String type) throws Exception {
+        try {
+            map = this.loadDefaultMap(map, "config/SafetyProblem-crm.xml", type);
+            if (type.equals(InterfaceConstants.WORKSHEET_NEW)) {
+                String sendRoleId = StaticMethod.nullObject2String(XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.SendRoleId"));
+                map.put("sendRoleId", sendRoleId);
+
+                String bigRole = StaticMethod.nullObject2String(XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.AcceptGroupId"));
+                String toDeptId = StaticMethod.nullObject2String(map.get("toDeptId"));
+
+                WPSEngineServiceMethod sm = new WPSEngineServiceMethod();
+                String subRoleId = "";
+                TawSystemSubRole subRole = sm.getMatchRoles("safetyproblem", toDeptId, bigRole, map);
+                if (subRole == null || subRole.getId() == null || subRole.getId().length() == 0) {
+                    System.out.println("未找到匹配角色，使用默认角色");
+                    subRoleId = XmlManage.getFile("/config/SafetyProblem-crm.xml").getProperty("base.AcceptRoleId");
+                } else {
+                    subRoleId = subRole.getId();
+                }
+                map = sm.setAcceptRole(subRoleId, map);
+            }
 			/*if(type.equals(EOMSSafetyProblemLoader.WORKSHEET_REPLY)){
 				String sheetId = StaticMethod.nullObject2String(map.get("sheetId"));
 				if(sheetId==null || sheetId.equals(""))
@@ -101,20 +101,21 @@ public class SafetyProblemCrmServiceManageImpl extends InterfaceServiceManageAbs
 				}else
 					throw new Exception("没找到sheetNo＝"+sheetId+"对应的工单");
 			}*/
-			return map;
-		}catch(Exception err){
-			//err.printStackTrace();
-			throw err;
-		}
-	}
-	public HashMap addPara(HashMap hashMap){
-		try{
-			System.out.println("star corrKey...");
-			hashMap.put("corrKey",UUIDHexGenerator.getInstance().getID());
-			System.out.println("corrKey="+hashMap.get("corrKey").toString());
-		}catch(Exception err){
-			err.printStackTrace();
-		}
-		return hashMap;
-	}
+            return map;
+        } catch (Exception err) {
+            //err.printStackTrace();
+            throw err;
+        }
+    }
+
+    public HashMap addPara(HashMap hashMap) {
+        try {
+            System.out.println("star corrKey...");
+            hashMap.put("corrKey", UUIDHexGenerator.getInstance().getID());
+            System.out.println("corrKey=" + hashMap.get("corrKey").toString());
+        } catch (Exception err) {
+            err.printStackTrace();
+        }
+        return hashMap;
+    }
 }

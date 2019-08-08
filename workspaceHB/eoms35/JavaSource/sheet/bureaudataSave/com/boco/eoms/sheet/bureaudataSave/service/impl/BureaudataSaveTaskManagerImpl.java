@@ -11,6 +11,6 @@ import com.boco.eoms.sheet.bureaudataSave.dao.IBureaudataSaveTaskDAO;
 import com.boco.eoms.sheet.bureaudataSave.service.IBureaudataSaveTaskManager;
 
 
-public class BureaudataSaveTaskManagerImpl extends TaskServiceImpl implements  IBureaudataSaveTaskManager{
-	
+public class BureaudataSaveTaskManagerImpl extends TaskServiceImpl implements IBureaudataSaveTaskManager {
+
 }

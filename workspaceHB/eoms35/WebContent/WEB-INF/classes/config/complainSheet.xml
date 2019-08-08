@@ -1,210 +1,228 @@
 <?xml version="1.0" encoding="GBK"?>
 <boco>
-	<!-- 掌上运维接口类型配置 -->
-	<interfaceType>
-	<todoList>todoList</todoList><!-- 待办工单列表查询接口 -->
-	<finishList>finishList</finishList><!-- 已办工单列表查询接口 -->
-	<dataService>dataService</dataService><!-- 工单数据服务接口 -->
-	<acceptService>acceptService</acceptService><!-- 工单受理状态更新请求接口 -->
-	<historyList>historyList</historyList><!-- 工单流转环节服务接口 -->
-    <dealSheet>dealSheet</dealSheet><!-- 工单处理完成提交请求接口 -->
-    <inquirySheet>inquirySheet</inquirySheet><!-- 工单综合查询接口 -->	
-	</interfaceType>
-	
-		
-	<todoList>
-		<content columnName="sheetKey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue="" />
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue="" />
-		<content columnName="sheetCompleteLimit" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue="" />
-		<content columnName="status" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue="" />
-		<content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue="" />
-	</todoList>
-
-	<finishList>
-		<content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
-		<content columnName="sheetKey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
-		<content columnName="sheetCompleteLimit" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
-		<content columnName="status" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue=""/>
-	</finishList>
-
-	<dataService>
-		<content columnName="sheetkey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue="" />
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单主题" defauleValue="" analysis="no"/>		
-		<content columnName="operateUser" interfaceEnName="Operate_user" interfaceCnName="操作人姓名" defauleValue="" type="user"/>		
-		<content columnName="sendTime" interfaceEnName="Operate_time" interfaceCnName="发起时间" defauleValue="" />
-		<content columnName="bdeptContact" interfaceEnName="Call_phone" interfaceCnName="联系电话" defauleValue="" />		
-		<content columnName="taskStatus" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue="" />		
-		<content columnName="dealTime" interfaceEnName="DEAL_TIME" interfaceCnName="工单处理时限" defauleValue="" />		
-		<content columnName="sheetCompleteLimit" interfaceEnName="T2_DEALTIME_LMT" interfaceCnName="T2阶段处理时限" defauleValue="" />				
-		<content columnName="complaintType1" interfaceEnName="Complaint_classify_1" interfaceCnName="投诉分类一级" defauleValue="" />
-		<content columnName="complaintType2" interfaceEnName="Complaint_classify_2" interfaceCnName="投诉分类二级" defauleValue="" />
-		<content columnName="complaintType3" interfaceEnName="Complaint_classify_3" interfaceCnName="投诉分类三级" defauleValue="" />
-		<content columnName="complaintType4" interfaceEnName="Complaint_classify_4" interfaceCnName="投诉分类四级" defauleValue="" />
-		<content columnName="complaintType5" interfaceEnName="Complaint_classify_5" interfaceCnName="投诉分类五级" defauleValue="" />
-		<content columnName="complaintType6" interfaceEnName="Complaint_classify_6" interfaceCnName="投诉分类六级" defauleValue="" />
-		<content columnName="complaintType7" interfaceEnName="Complaint_classify_7" interfaceCnName="投诉分类七级" defauleValue="" />				
-		<content columnName="bdeptContactPhone" interfaceEnName="Is_large_complaint" interfaceCnName="是否大面积投诉" defauleValue="" />				
-		<content columnName="repeatComplaintTimes" interfaceEnName="Repeat_complaint_sum" interfaceCnName="重复投诉量" defauleValue="" />		
-		<content columnName="customerName" interfaceEnName="Client_name" interfaceCnName="客户姓名" defauleValue="" />		
-		<content columnName="customPhone" interfaceEnName="Client_phone" interfaceCnName="客户电话" defauleValue="" />
-		<content columnName="customAttribution" interfaceEnName="User_address" interfaceCnName="用户归属地" defauleValue="" />
-		<content columnName="complaintTime" interfaceEnName="Complaint_time" interfaceCnName="投诉时间" defauleValue="" />
-		<content columnName="parentcorrelation" interfaceEnName="Service_num" interfaceCnName="客服流水号" defauleValue="" />
-		<content columnName="complaintNum" interfaceEnName="Trouble_num" interfaceCnName="故障号码" defauleValue="" />
-		<content columnName="complaintDesc" interfaceEnName="Complaint_content" interfaceCnName="投诉内容" defauleValue="" />
-		<content columnName="preDealResult" interfaceEnName="Pretreatment_case" interfaceCnName="预处理情况" defauleValue="" />		
-	</dataService>
-		
-	<acceptService>
-		<content columnName="sheetkey"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号 -->
-		<content columnName="status"  interfaceName="Sheet_status"  defauleValue=""/><!-- 工单状态 -->
-		<content columnName="operateUserId"  interfaceName="Operate_userid"  defauleValue=""/><!-- 处理人账号-->
-		<content columnName="acceptTime"  interfaceName="Accept_time"  defauleValue=""/><!-- 故障受理时间 -->
-		<content columnName="beanId"  interfaceName=""  defauleValue="iComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintLink" />
-		<content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="61" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept" />
-		<content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0" />		<!-- 超时标记-->	
-	</acceptService>
-	
-	<historyList>
-		<content columnName="operateuserid" interfaceEnName="Operate_id" interfaceCnName="处理人姓名" defauleValue="" type="user"/>
-		<content columnName="operatercontact" interfaceEnName="User_phone" interfaceCnName="联系电话" defauleValue="" />
-		<content columnName="nodeacceptlimit" interfaceEnName="Appect_time" interfaceCnName="受理时间" defauleValue=""/>
-		<content columnName="nodecompletelimit" interfaceEnName="Replay_time" interfaceCnName="回复时间" defauleValue=""/>
-		<content columnName="activetemplateid" interfaceEnName="Task_name" interfaceCnName="环节名" defauleValue=""/>
-		<content columnName="activetemplateid" interfaceEnName="Task_desc" interfaceCnName="环节描述" defauleValue="" dictPath="dict-sheet-commonfault.xml"/>
-		<content columnName="limitFlag" interfaceEnName="Limit_flag" interfaceCnName="处理超时标识" defauleValue=""/>
-		<content columnName="operatetype" interfaceEnName="Operate_result" interfaceCnName="故障处理结果" defauleValue="" dictPath="dict-sheet-commonfault.xml"/>
-	</historyList>
-	
-	<inquirySheet>
-		<content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
-		<content columnName="sheetkey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
-		<content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
-		<content columnName="sheetCompleteLimit" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
-	</inquirySheet>
-
-	<dealSheet>
-		<content columnName="sheetkey"  interfaceName="Sheet_id"  defauleValue=""/><!-- 工单编号 -->
-		<content columnName="operateUserId"  interfaceName="Operate_userid"  defauleValue=""/><!--处理人账号  -->
-		<content columnName="operateTime"  interfaceName="Operate_time"  defauleValue=""/><!--处理完成时间  -->
-		<content columnName="operaterContact"  interfaceName="Operate_contact"  defauleValue=""/><!--操作人联系方式  -->	
-		<content columnName="ndeptContact" interfaceName="Linkman" defauleValue="" />
-		<content columnName="ndeptContactPhone" interfaceName="Linkman_phone" defauleValue="" />
-		<content columnName="isReplied" interfaceName="Is_ answered" defauleValue="" />			
-		<content columnName="issueeliminattime" interfaceName="Eliminate_time" defauleValue="" />
-		<content columnName="dealResult" interfaceName="Dispose_result" defauleValue="" />
-		<content columnName="issueeliminatreason" interfaceName="Cause_classification" defauleValue="" />
-		<content columnName="linkdealdesc" interfaceName="solution" defauleValue="" />
-		<content columnName="linkiscomplaintsolve" interfaceName="Is_complaint_solve" defauleValue="" />
-		<content columnName="linkIsUserConfirm" interfaceName="Is_affirm" defauleValue="" />		
-        <content columnName="linkIsContactUser" interfaceName="Is_contact_client" defauleValue="" />
-        <content columnName="linkIsUserStatisfied" interfaceName="satisfaction" defauleValue="" />
-        <content columnName="linkSpecialty" interfaceName="Involve_major" defauleValue="" />       
-        <content columnName="" interfaceName="Involve_major_wide" defauleValue="" />
-        <content columnName="linkCoverDian" interfaceName="Cover_test_case_dx" defauleValue="" />
-        <content columnName="linkCoverLian" interfaceName="Cover_test_case_lt" defauleValue="" />       
-		<content columnName="beanId"  interfaceName=""  defauleValue="iComplaintMainManager"/>
-		<content columnName="mainClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintMain" />
-		<content columnName="linkClassName" interfaceName="" defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintLink" />
-		<content columnName="phaseId" interfaceName="" defauleValue="HoldTask" />
-		<content columnName="operateType" interfaceName="" defauleValue="46" />
-		<content columnName="linkIfMobile" interfaceName="" defauleValue="mobileDeal" />
-	</dealSheet>
+    <!-- 掌上运维接口类型配置 -->
+    <interfaceType>
+        <todoList>todoList</todoList><!-- 待办工单列表查询接口 -->
+        <finishList>finishList</finishList><!-- 已办工单列表查询接口 -->
+        <dataService>dataService</dataService><!-- 工单数据服务接口 -->
+        <acceptService>acceptService</acceptService><!-- 工单受理状态更新请求接口 -->
+        <historyList>historyList</historyList><!-- 工单流转环节服务接口 -->
+        <dealSheet>dealSheet</dealSheet><!-- 工单处理完成提交请求接口 -->
+        <inquirySheet>inquirySheet</inquirySheet><!-- 工单综合查询接口 -->
+    </interfaceType>
 
 
+    <todoList>
+        <content columnName="sheetKey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
+        <content columnName="sheetCompleteLimit" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
+        <content columnName="status" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue=""/>
+        <content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
+    </todoList>
 
-	<sql>
-		<!--待办工单列表查询接口sql-->
-		<todoListSql>
-		select distinct task.*,
-                main.complaintTime,
-                main.complaintType2,
-                main.complaintType,
-                main.revert,
-                main.customPhone,
-                main.title,
-                main.sheetKey,
-                main.sheetCompleteLimit,
-                main.status
-  from Complaint_Task task,
-       Complaint_Main  main
- where ((task.taskOwner = '@userId@') or
-       task.taskOwner in (select user.subRoleid
-           from taw_system_userrefrole user
-          where user.userid = '@userId@'))
-   and (task.taskStatus = 2 or task.taskStatus = 8 or task.taskStatus = 1)
-   and task.taskDisplayName &lt;&gt; '草稿'
-   and main.id = task.sheetKey
-   and main.complaintType1 =  '@orderType@'
-   and main.deleted &lt;&gt; '1'
-   and (task.ifWaitForSubTask = 'false' or
-       (task.ifWaitForSubTask = 'true' and
-       task.id in (select task1.parentTaskId
-                       from Complaint_Task task1
-                      where task1.subTaskFlag = 'true'
-                        and (task1.subTaskDealFalg = 'false' or
-                            task1.subTaskDealFalg is null)
-                        and task1.taskStatus = '5')))
+    <finishList>
+        <content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
+        <content columnName="sheetKey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
+        <content columnName="sheetCompleteLimit" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
+        <content columnName="status" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue=""/>
+    </finishList>
 
-		</todoListSql>
-		<!--已办工单列表查询接口sql-->
-		<finishtodoList>
-		select main.*
-  from complaint_main main, complaint_task task
- where task.sheetKey = main.id
-   and (task.taskOwner = '@userId@' or
-       task.taskOwner in
-       (select user.subRoleid
-           from taw_system_userrefrole user
-          where user.userid = '@userId@'))
-   and main.complaintType1 = '@orderType@'
-   and (task.taskStatus = '5' or task.ifWaitForSubTask = 'true')
-   and main.deleted &lt;&gt; '1'
-   @startSime@
-   @endSime@
-   and main.status = 0
-		</finishtodoList>
-		<!--工单流转环节服务接口sql-->
-		<historySql>
-		select operateuserid,
-       operatercontact,
-       nodeacceptlimit,
-       nodecompletelimit,
-       taskname,
-       taskdisplayname,
-       remark,
-       case
-         when (case
-                when operatetype = 61 then
-                 acceptflag
-                else
-                 completeflag
-              end) = 2 then
-          'Y'
-         else
-          'N'
-       end as limitFlag
-  from complaint_link
- where mainid = '@mainid@'
-		</historySql>
-		<!-- 工单综合查询接口sql -->
-		<inquirySheetSql>
-select distinct main.*
- 	from complaint_main main
- 	where main.templateFlag &lt;&gt;1 
- 	and(main.title is not null) 
- 	and main.deleted &lt;&gt;'1' 
- 	@timeStart@ 
- 	@timeEnd@ 
- 	@orderId@ 
- 	@orderTitle@ 
- 	@ordertype@ 
- 	order by main.sendTime desc
-		</inquirySheetSql>	
-	</sql>
+    <dataService>
+        <content columnName="sheetkey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单主题" defauleValue="" analysis="no"/>
+        <content columnName="operateUser" interfaceEnName="Operate_user" interfaceCnName="操作人姓名" defauleValue=""
+                 type="user"/>
+        <content columnName="sendTime" interfaceEnName="Operate_time" interfaceCnName="发起时间" defauleValue=""/>
+        <content columnName="bdeptContact" interfaceEnName="Call_phone" interfaceCnName="联系电话" defauleValue=""/>
+        <content columnName="taskStatus" interfaceEnName="Sheet_status" interfaceCnName="工单状态" defauleValue=""/>
+        <content columnName="dealTime" interfaceEnName="DEAL_TIME" interfaceCnName="工单处理时限" defauleValue=""/>
+        <content columnName="sheetCompleteLimit" interfaceEnName="T2_DEALTIME_LMT" interfaceCnName="T2阶段处理时限"
+                 defauleValue=""/>
+        <content columnName="complaintType1" interfaceEnName="Complaint_classify_1" interfaceCnName="投诉分类一级"
+                 defauleValue=""/>
+        <content columnName="complaintType2" interfaceEnName="Complaint_classify_2" interfaceCnName="投诉分类二级"
+                 defauleValue=""/>
+        <content columnName="complaintType3" interfaceEnName="Complaint_classify_3" interfaceCnName="投诉分类三级"
+                 defauleValue=""/>
+        <content columnName="complaintType4" interfaceEnName="Complaint_classify_4" interfaceCnName="投诉分类四级"
+                 defauleValue=""/>
+        <content columnName="complaintType5" interfaceEnName="Complaint_classify_5" interfaceCnName="投诉分类五级"
+                 defauleValue=""/>
+        <content columnName="complaintType6" interfaceEnName="Complaint_classify_6" interfaceCnName="投诉分类六级"
+                 defauleValue=""/>
+        <content columnName="complaintType7" interfaceEnName="Complaint_classify_7" interfaceCnName="投诉分类七级"
+                 defauleValue=""/>
+        <content columnName="bdeptContactPhone" interfaceEnName="Is_large_complaint" interfaceCnName="是否大面积投诉"
+                 defauleValue=""/>
+        <content columnName="repeatComplaintTimes" interfaceEnName="Repeat_complaint_sum" interfaceCnName="重复投诉量"
+                 defauleValue=""/>
+        <content columnName="customerName" interfaceEnName="Client_name" interfaceCnName="客户姓名" defauleValue=""/>
+        <content columnName="customPhone" interfaceEnName="Client_phone" interfaceCnName="客户电话" defauleValue=""/>
+        <content columnName="customAttribution" interfaceEnName="User_address" interfaceCnName="用户归属地" defauleValue=""/>
+        <content columnName="complaintTime" interfaceEnName="Complaint_time" interfaceCnName="投诉时间" defauleValue=""/>
+        <content columnName="parentcorrelation" interfaceEnName="Service_num" interfaceCnName="客服流水号" defauleValue=""/>
+        <content columnName="complaintNum" interfaceEnName="Trouble_num" interfaceCnName="故障号码" defauleValue=""/>
+        <content columnName="complaintDesc" interfaceEnName="Complaint_content" interfaceCnName="投诉内容" defauleValue=""/>
+        <content columnName="preDealResult" interfaceEnName="Pretreatment_case" interfaceCnName="预处理情况"
+                 defauleValue=""/>
+    </dataService>
+
+    <acceptService>
+        <content columnName="sheetkey" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号 -->
+        <content columnName="status" interfaceName="Sheet_status" defauleValue=""/><!-- 工单状态 -->
+        <content columnName="operateUserId" interfaceName="Operate_userid" defauleValue=""/><!-- 处理人账号-->
+        <content columnName="acceptTime" interfaceName="Accept_time" defauleValue=""/><!-- 故障受理时间 -->
+        <content columnName="beanId" interfaceName="" defauleValue="iComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintLink"/>
+        <content columnName="activeTemplateId" interfaceName="" defauleValue="SecondExcuteHumTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="61"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileAccept"/>
+        <content columnName="completeFlag" interfaceName="Complete_flag" defauleValue="0"/>        <!-- 超时标记-->
+    </acceptService>
+
+    <historyList>
+        <content columnName="operateuserid" interfaceEnName="Operate_id" interfaceCnName="处理人姓名" defauleValue=""
+                 type="user"/>
+        <content columnName="operatercontact" interfaceEnName="User_phone" interfaceCnName="联系电话" defauleValue=""/>
+        <content columnName="nodeacceptlimit" interfaceEnName="Appect_time" interfaceCnName="受理时间" defauleValue=""/>
+        <content columnName="nodecompletelimit" interfaceEnName="Replay_time" interfaceCnName="回复时间" defauleValue=""/>
+        <content columnName="activetemplateid" interfaceEnName="Task_name" interfaceCnName="环节名" defauleValue=""/>
+        <content columnName="activetemplateid" interfaceEnName="Task_desc" interfaceCnName="环节描述" defauleValue=""
+                 dictPath="dict-sheet-commonfault.xml"/>
+        <content columnName="limitFlag" interfaceEnName="Limit_flag" interfaceCnName="处理超时标识" defauleValue=""/>
+        <content columnName="operatetype" interfaceEnName="Operate_result" interfaceCnName="故障处理结果" defauleValue=""
+                 dictPath="dict-sheet-commonfault.xml"/>
+    </historyList>
+
+    <inquirySheet>
+        <content columnName="sheet_totals" interfaceEnName="Sheet_totals" interfaceCnName="总条数" defauleValue=""/>
+        <content columnName="sheetkey" interfaceEnName="Sheet_id" interfaceCnName="工单编号" defauleValue=""/>
+        <content columnName="title" interfaceEnName="Sheet_title" interfaceCnName="工单标题" defauleValue=""/>
+        <content columnName="sheetCompleteLimit" interfaceEnName="Deal_time" interfaceCnName="工单处理时限" defauleValue=""/>
+    </inquirySheet>
+
+    <dealSheet>
+        <content columnName="sheetkey" interfaceName="Sheet_id" defauleValue=""/><!-- 工单编号 -->
+        <content columnName="operateUserId" interfaceName="Operate_userid" defauleValue=""/><!--处理人账号  -->
+        <content columnName="operateTime" interfaceName="Operate_time" defauleValue=""/><!--处理完成时间  -->
+        <content columnName="operaterContact" interfaceName="Operate_contact" defauleValue=""/><!--操作人联系方式  -->
+        <content columnName="ndeptContact" interfaceName="Linkman" defauleValue=""/>
+        <content columnName="ndeptContactPhone" interfaceName="Linkman_phone" defauleValue=""/>
+        <content columnName="isReplied" interfaceName="Is_ answered" defauleValue=""/>
+        <content columnName="issueeliminattime" interfaceName="Eliminate_time" defauleValue=""/>
+        <content columnName="dealResult" interfaceName="Dispose_result" defauleValue=""/>
+        <content columnName="issueeliminatreason" interfaceName="Cause_classification" defauleValue=""/>
+        <content columnName="linkdealdesc" interfaceName="solution" defauleValue=""/>
+        <content columnName="linkiscomplaintsolve" interfaceName="Is_complaint_solve" defauleValue=""/>
+        <content columnName="linkIsUserConfirm" interfaceName="Is_affirm" defauleValue=""/>
+        <content columnName="linkIsContactUser" interfaceName="Is_contact_client" defauleValue=""/>
+        <content columnName="linkIsUserStatisfied" interfaceName="satisfaction" defauleValue=""/>
+        <content columnName="linkSpecialty" interfaceName="Involve_major" defauleValue=""/>
+        <content columnName="" interfaceName="Involve_major_wide" defauleValue=""/>
+        <content columnName="linkCoverDian" interfaceName="Cover_test_case_dx" defauleValue=""/>
+        <content columnName="linkCoverLian" interfaceName="Cover_test_case_lt" defauleValue=""/>
+        <content columnName="beanId" interfaceName="" defauleValue="iComplaintMainManager"/>
+        <content columnName="mainClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintMain"/>
+        <content columnName="linkClassName" interfaceName=""
+                 defauleValue="com.boco.eoms.sheet.complaint.model.ComplaintLink"/>
+        <content columnName="phaseId" interfaceName="" defauleValue="HoldTask"/>
+        <content columnName="operateType" interfaceName="" defauleValue="46"/>
+        <content columnName="linkIfMobile" interfaceName="" defauleValue="mobileDeal"/>
+    </dealSheet>
+
+
+    <sql>
+        <!--待办工单列表查询接口sql-->
+        <todoListSql>
+            select distinct task.*,
+            main.complaintTime,
+            main.complaintType2,
+            main.complaintType,
+            main.revert,
+            main.customPhone,
+            main.title,
+            main.sheetKey,
+            main.sheetCompleteLimit,
+            main.status
+            from Complaint_Task task,
+            Complaint_Main main
+            where ((task.taskOwner = '@userId@') or
+            task.taskOwner in (select user.subRoleid
+            from taw_system_userrefrole user
+            where user.userid = '@userId@'))
+            and (task.taskStatus = 2 or task.taskStatus = 8 or task.taskStatus = 1)
+            and task.taskDisplayName &lt;&gt; '草稿'
+            and main.id = task.sheetKey
+            and main.complaintType1 = '@orderType@'
+            and main.deleted &lt;&gt; '1'
+            and (task.ifWaitForSubTask = 'false' or
+            (task.ifWaitForSubTask = 'true' and
+            task.id in (select task1.parentTaskId
+            from Complaint_Task task1
+            where task1.subTaskFlag = 'true'
+            and (task1.subTaskDealFalg = 'false' or
+            task1.subTaskDealFalg is null)
+            and task1.taskStatus = '5')))
+
+        </todoListSql>
+        <!--已办工单列表查询接口sql-->
+        <finishtodoList>
+            select main.*
+            from complaint_main main, complaint_task task
+            where task.sheetKey = main.id
+            and (task.taskOwner = '@userId@' or
+            task.taskOwner in
+            (select user.subRoleid
+            from taw_system_userrefrole user
+            where user.userid = '@userId@'))
+            and main.complaintType1 = '@orderType@'
+            and (task.taskStatus = '5' or task.ifWaitForSubTask = 'true')
+            and main.deleted &lt;&gt; '1'
+            @startSime@
+            @endSime@
+            and main.status = 0
+        </finishtodoList>
+        <!--工单流转环节服务接口sql-->
+        <historySql>
+            select operateuserid,
+            operatercontact,
+            nodeacceptlimit,
+            nodecompletelimit,
+            taskname,
+            taskdisplayname,
+            remark,
+            case
+            when (case
+            when operatetype = 61 then
+            acceptflag
+            else
+            completeflag
+            end) = 2 then
+            'Y'
+            else
+            'N'
+            end as limitFlag
+            from complaint_link
+            where mainid = '@mainid@'
+        </historySql>
+        <!-- 工单综合查询接口sql -->
+        <inquirySheetSql>
+            select distinct main.*
+            from complaint_main main
+            where main.templateFlag &lt;&gt;1
+            and(main.title is not null)
+            and main.deleted &lt;&gt;'1'
+            @timeStart@
+            @timeEnd@
+            @orderId@
+            @orderTitle@
+            @ordertype@
+            order by main.sendTime desc
+        </inquirySheetSql>
+    </sql>
 </boco>

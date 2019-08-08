@@ -1,13 +1,15 @@
 package com.boco.eoms.gzjhhead.bo;
 
 /**
- * <p>Title: ½Ó¿ÚÒµÎñÀà</p>
- * <p>Description:ÓÃÓÚ×÷Òµ¼Æ»®Ä£¿éwebservice½Ó¿ÚÒµÎñ </p>
+ * <p>Title: ï¿½Ó¿ï¿½Òµï¿½ï¿½ï¿½ï¿½</p>
+ * <p>Description:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½Ä£ï¿½ï¿½webserviceï¿½Ó¿ï¿½Òµï¿½ï¿½ </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: </p>
+ *
  * @author not attributable
  * @version 1.0
  */
+
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -20,194 +22,188 @@ import java.net.URLConnection;
 import java.net.MalformedURLException;
 
 import java.io.*;
+
 import com.boco.eoms.gzjhhead.util.*;
 
 public class GzWebServiceBO {
 
-  private URL url = null;
-  private String newFileName = "";
-  private String newAddr = "";
-  private static boolean flag = true;
+    private URL url = null;
+    private String newFileName = "";
+    private String newAddr = "";
+    private static boolean flag = true;
 
 
-  /**
-   * ¸Ã²Ù×÷ÓÃÓÚAÏµÍ³ÏòBÏµÍ³ÉÏ±¨ÔÂ/Äê×÷Òµ¼Æ»®ÒÔ¼°²»Í¬ÖÜÆÚµÄ×÷Òµ¼Æ»®Ö´ÐÐÇé¿ö(reportType=0)¡£<br>
-   * ÆäÖÐ£¬¸½¼þÐÅÏ¢·ÅÖÃÔÚSOAPÏûÏ¢ÌåÖÐ´«Êä£¬¸½¼þÓÉBÏµÍ³°´¸½¼þÐÅÏ¢ÖÐµÄÏà¹ØÃèÊö×ÔÐÐ»ñÈ¡¡£<br>
-   * Í¨¹ýÎÄ¼þÃûÇø·Ö¼Æ»®/Ö´ÐÐ£¬ÒÔ¼°²»Í¬Á£¶ÈµÄÖ´ÐÐÇé¿ö¡£¸Ã²Ù×÷Í¬Ê±ÓÃÓÚAÏµÍ³ÊÕµ½BÏµÍ³µÄ²¹±¨ÒªÇóºó£¬<br>
-   * ÏòBÏµÍ³²¹±¨ËùÐèÏÞÖÆÌõ¼þÄÚµÄ×÷Òµ¼Æ»®/Ö´ÐÐÇé¿ö(reportType=1)¡£AÏµÍ³Ò²¿É×ÔÐÐ´¥·¢±¾²Ù×÷£¬<br>
-   * Ö÷¶¯ÏòBÏµÍ³½øÐÐ²¹±¨¡£±¾ÓÃÀýÖÐ£¬AÏµÍ³Ö»ÄÜÎªÊ¡¼¶ÏµÍ³£¬BÏµÍ³Ö»ÄÜÎª×Ü²¿ÏµÍ³
-   * @param _codeA String ·þÎñµ÷ÓÃ·½(Ê¡·Ý)´úÂë
-   * @param _codeB String ·þÎñÌá¹©·½(Ê¡·Ý)´úÂë
-   * @param _attNum int Ëù°üº¬µÄ¸½¼þ¸öÊý¡£
-   * @param _attachInfoListType AttachInfoListType ¸½¼þÊý×é
-   * @param _reportFlag int ÉÏ´«±êÖ¾
-   * @param _noteReportForm String ÉÏ±¨/²¹±¨Ê±¸½´øËµÃ÷
-   * @return String Îª¿Õ(Nil)±íÊ¾µ÷ÓÃ³É¹¦£»·Ç¿Õ±íÊ¾µ÷ÓÃÊ§°Ü£¬´¥·¢SOAP FaultÔªËØ£¬²¢·µ»ØÒÔÏàÓ¦´íÎó´úÂë¡£
-   */
-  public String reportForm(String _codeA, String _codeB, int _attNum,
-                           AttachInfoListType _attachInfoListType,int _reportFlag,
-                           String _noteReportForm) {
-    String resultIsAlive = null; //¶¨Òå·µ»Ø½á¹û
-    Hashtable fileHash = null;
+    /**
+     * ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AÏµÍ³ï¿½ï¿½BÏµÍ³ï¿½Ï±ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½(reportType=0)ï¿½ï¿½<br>
+     * ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SOAPï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½<br>
+     * Í¨ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼Æ»ï¿½/Ö´ï¿½Ð£ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Èµï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½AÏµÍ³ï¿½Õµï¿½BÏµÍ³ï¿½Ä²ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½<br>
+     * ï¿½ï¿½BÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½/Ö´ï¿½ï¿½ï¿½ï¿½ï¿½(reportType=1)ï¿½ï¿½AÏµÍ³Ò²ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<br>
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BÏµÍ³ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½AÏµÍ³Ö»ï¿½ï¿½ÎªÊ¡ï¿½ï¿½ÏµÍ³ï¿½ï¿½BÏµÍ³Ö»ï¿½ï¿½Îªï¿½Ü²ï¿½ÏµÍ³
+     *
+     * @param _codeA              String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½(Ê¡ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½
+     * @param _codeB              String ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½(Ê¡ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½
+     * @param _attNum             int ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * @param _attachInfoListType AttachInfoListType ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+     * @param _reportFlag         int ï¿½Ï´ï¿½ï¿½ï¿½Ö¾
+     * @param _noteReportForm     String ï¿½Ï±ï¿½/ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½
+     * @return String Îªï¿½ï¿½(Nil)ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ã³É¹ï¿½ï¿½ï¿½ï¿½Ç¿Õ±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½SOAP FaultÔªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡£
+     */
+    public String reportForm(String _codeA, String _codeB, int _attNum,
+                             AttachInfoListType _attachInfoListType, int _reportFlag,
+                             String _noteReportForm) {
+        String resultIsAlive = null; //ï¿½ï¿½ï¿½å·µï¿½Ø½ï¿½ï¿½
+        Hashtable fileHash = null;
 
 //    GzPlanYearBO gzPlanYearBO = new GzPlanYearBO();
 //    GzPlanMonthBO gzPlanMonthBO = new GzPlanMonthBO();
 //    GzPlanExecuteBO gzPlanExecuteBO = new GzPlanExecuteBO();
-    if(flag){
+        if (flag) {
 
-      AttachInfoType[] attachInfoType = _attachInfoListType.getAttachInfo(); //»ñÈ¡¸½¼þÊý×éÐÅÏ¢
+            AttachInfoType[] attachInfoType = _attachInfoListType.getAttachInfo(); //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 
 
-      //ÅÐ¶ÏÊÇ·ñÓÐ¸½¼þ
-      if (attachInfoType.length == 0) {
-        resultIsAlive = "002";
+            //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½
+            if (attachInfoType.length == 0) {
+                resultIsAlive = "002";
+                return resultIsAlive;
+            }
+
+            //ï¿½Ð¶Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤Öªï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Í¬
+            if (attachInfoType.length != _attNum) {
+                resultIsAlive = "003";
+                return resultIsAlive;
+            }
+
+            String localFilePath = null; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½ï¿½Â·ï¿½ï¿½
+            String attachURL = null; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+
+            String itemid = null;
+
+            for (int i = 0; i < attachInfoType.length; i++) {
+
+                fileHash = GzBaseInfo.analyseFileName(attachInfoType[i].getAttachName()); //ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+
+                if (fileHash == null) {
+                    resultIsAlive = "004";
+                } else {
+                    //ï¿½ï¿½Ö¯ï¿½Ü²ï¿½ÏµÍ³Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½Ê¡ï¿½Ýºï¿½ï¿½ï¿½ï¿½Ú²ï¿½Í¬ï¿½ï¿½ï¿½Ö±ð´´½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+                    localFilePath = ".." + File.separator + "EOMS_J2EE" + File.separator + "gzjhreport" + File.separator + fileHash.get(GzBaseInfo.FILE_PROVINCE) +
+                            File.separator + fileHash.get(GzBaseInfo.FILE_YEAR) +
+                            fileHash.get(GzBaseInfo.FILE_MONTH) +
+                            fileHash.get(GzBaseInfo.FILE_DAY);
+
+                    //ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    attachURL = this.fileDownload(attachInfoType[i].getAttachURL(),
+                            localFilePath);
+
+                    if (attachURL == null) {
+                        resultIsAlive = "004";
+                    } else {
+                        //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Í¬ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ß¼ï¿½ï¿½ï¿½
+                        itemid = (String) fileHash.get(GzBaseInfo.FILE_ITEMID);
+
+                        if (itemid.equals("001")) {
+//              gzPlanYearBO.reportPlanYear(attachURL,attachInfoType[i].getAttachName()); //ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½ï¿½Ï±ï¿½
+                        } else if (itemid.equals("002")) {
+//              gzPlanMonthBO.reportPlanMonth(attachURL,attachInfoType[i].getAttachName()); //ï¿½Â¶ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½ï¿½Ï±ï¿½
+                        } else {
+//              gzPlanExecuteBO.reportPlanExecute(attachURL,attachInfoType[i].getAttachName()); //Ö´ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½ï¿½Ï±ï¿½
+                        }
+                    }
+                }
+            }
+        } else {
+            resultIsAlive = "002";
+        }
+
         return resultIsAlive;
-      }
+    }
 
-      //ÅÐ¶Ï¸½¼þ´«µÝµÄÊýÁ¿ÓëÔ¤ÖªÊýÁ¿ÊÇ·ñÏàÍ¬
-      if (attachInfoType.length != _attNum) {
-        resultIsAlive = "003";
+    public String fileDownload(String strRemoteAddr, String strLocalAddr) {
+        String filePath = null;
+        try {
+
+            //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+            url = new URL(strRemoteAddr);
+            newFileName = (new File(url.getFile())).getName();
+            newAddr = strLocalAddr;
+
+            URLConnection urlconnection = url.openConnection();
+            urlconnection.setUseCaches(false);
+            InputStream is = urlconnection.getInputStream();
+            long filelength = urlconnection.getContentLength(); //ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½Ð¡
+            int ratio = 0;
+
+            //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½
+            if (is != null) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                byte[] buffers = new byte[4096];
+                int len = 0;
+                long received = 0;
+                boolean isContinue = true;
+                while (isContinue) {
+                    len = is.read(buffers, 0, 4096);
+                    if (len > 0) {
+                        baos.write(buffers, 0, len);
+                        received += len;
+                        if (ratio != (int) (received * 100 / filelength)) {
+                            ratio = (int) (received * 100 / filelength);
+                            System.out.print(ratio + "%");
+                        }
+                    } else {
+                        break;
+                    }
+                } //if
+
+
+                //ï¿½ï¿½ï¿½æ¸½ï¿½ï¿½
+                File newFile = new File(newAddr);
+                if (!newFile.exists()) {
+                    newFile.mkdirs();
+                }
+
+                if (received != 0 && received == filelength) {
+
+                    FileOutputStream fos = new FileOutputStream(newFile + File.separator +
+                            newFileName);
+                    baos.writeTo(fos);
+                    fos.close();
+
+                    System.out.println("file tranfering finished!! and be saved in " +
+                            newAddr +
+                            File.separator + newFileName);
+                }
+                filePath = newAddr + File.separator + newFileName;
+            } else {
+                filePath = null;
+            }
+        } catch (MalformedURLException expt) {
+            expt.printStackTrace();
+            filePath = null;
+        } catch (IOException eio) {
+            eio.printStackTrace();
+            filePath = null;
+        }
+
+        return filePath;
+    }
+
+    /**
+     * ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AÏµÍ³ï¿½Úµï¿½ï¿½ï¿½BÏµÍ³ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½<br>
+     * ï¿½Ð¶ï¿½BÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½<br>
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½AÏµÍ³Ö»ï¿½ï¿½ÎªÊ¡ï¿½ï¿½ÏµÍ³ï¿½ï¿½BÏµÍ³Ö»ï¿½ï¿½Îªï¿½Ü²ï¿½ÏµÍ³ï¿½ï¿½
+     *
+     * @param _codeA String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½(Ê¡ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½
+     * @param _codeB String ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½(Ê¡ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½
+     * @return String Îªï¿½ï¿½(Nil)ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ã³É¹ï¿½ï¿½ï¿½ï¿½Ç¿Õ±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½SOAP FaultÔªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë¡£
+     */
+    public String isAlive(String _codeA, String _codeB) {
+        String resultIsAlive = null;
+
+        System.out.println("Ê¡ï¿½Ý£ï¿½" + _codeA + "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+
         return resultIsAlive;
-      }
-
-      String localFilePath = null; //¸½¼þ±¾µØ´æ·ÅÂ·¾¶
-      String attachURL = null; //¸½¼þ´æ·ÅÂ·¾¶,°üÀ¨ÎÄ¼þÃû³Æ
-
-      String itemid = null;
-
-      for (int i = 0; i < attachInfoType.length; i++) {
-
-        fileHash = GzBaseInfo.analyseFileName(attachInfoType[i].getAttachName()); //»ñÈ¡Ò»¸ö¸½¼þÐÅÏ¢¶ÔÏó
-
-        if (fileHash == null) {
-          resultIsAlive = "004";
-        }
-        else {
-          //×éÖ¯×Ü²¿ÏµÍ³Ä¿Â¼£¬¸ù¾ÝÉÏ´«µÄÊ¡·ÝºÍÈÕÆÚ²»Í¬£¬·Ö±ð´´½¨²»Í¬µÄÎÄ¼þ¼Ð
-          localFilePath = ".." + File.separator + "EOMS_J2EE" + File.separator +  "gzjhreport" + File.separator + fileHash.get(GzBaseInfo.FILE_PROVINCE) +
-              File.separator + fileHash.get(GzBaseInfo.FILE_YEAR) +
-              fileHash.get(GzBaseInfo.FILE_MONTH) +
-              fileHash.get(GzBaseInfo.FILE_DAY);
-
-          //ÏÂÔØ¸½¼þµ½×Ü²¿·þÎñÆ÷ÖÐ
-          attachURL = this.fileDownload(attachInfoType[i].getAttachURL(),
-                                        localFilePath);
-
-          if (attachURL == null) {
-            resultIsAlive = "004";
-          }
-          else {
-            //·ÖÎöÎÄ¼þÀàÐÍ£¬·Ö×ªµ½²»Í¬µÄ´¦ÀíÂß¼­ÖÐ
-            itemid = (String) fileHash.get(GzBaseInfo.FILE_ITEMID);
-
-            if (itemid.equals("001")) {
-//              gzPlanYearBO.reportPlanYear(attachURL,attachInfoType[i].getAttachName()); //Äê¶È×÷Òµ¼Æ»®ÉÏ±¨
-            }
-            else if (itemid.equals("002")) {
-//              gzPlanMonthBO.reportPlanMonth(attachURL,attachInfoType[i].getAttachName()); //ÔÂ¶È×÷Òµ¼Æ»®ÉÏ±¨
-            }
-            else {
-//              gzPlanExecuteBO.reportPlanExecute(attachURL,attachInfoType[i].getAttachName()); //Ö´ÐÐ×÷Òµ¼Æ»®ÉÏ±¨
-            }
-          }
-        }
-      }
     }
-    else{
-      resultIsAlive = "002";
-    }
-
-    return resultIsAlive;
-  }
-
-  public String fileDownload(String strRemoteAddr, String strLocalAddr) {
-    String filePath = null;
-    try {
-
-      //³õÊ¼»¯¸½¼þÐÅÏ¢
-      url = new URL(strRemoteAddr);
-      newFileName = (new File(url.getFile())).getName();
-      newAddr = strLocalAddr;
-
-      URLConnection urlconnection = url.openConnection();
-      urlconnection.setUseCaches(false);
-      InputStream is = urlconnection.getInputStream();
-      long filelength = urlconnection.getContentLength(); //¸½¼þµÄ´óÐ¡
-      int ratio = 0;
-
-      //¿ªÊ¼ÏÂÔØ¸½¼þ
-      if (is != null) {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[] buffers = new byte[4096];
-        int len = 0;
-        long received = 0;
-        boolean isContinue = true;
-        while (isContinue) {
-          len = is.read(buffers, 0, 4096);
-          if (len > 0) {
-            baos.write(buffers, 0, len);
-            received += len;
-            if (ratio != (int) (received * 100 / filelength)) {
-              ratio = (int) (received * 100 / filelength);
-              System.out.print(ratio + "%");
-            }
-          }
-          else {
-            break;
-          }
-        } //if
-
-
-        //±£´æ¸½¼þ
-        File newFile = new File(newAddr);
-        if(!newFile.exists()){
-          newFile.mkdirs();
-        }
-
-        if (received != 0 && received == filelength) {
-
-          FileOutputStream fos = new FileOutputStream(newFile + File.separator +
-              newFileName);
-          baos.writeTo(fos);
-          fos.close();
-
-          System.out.println("file tranfering finished!! and be saved in " +
-                             newAddr +
-                             File.separator + newFileName);
-        }
-        filePath = newAddr + File.separator + newFileName;
-      }
-      else {
-        filePath = null;
-      }
-    }
-    catch (MalformedURLException expt) {
-      expt.printStackTrace();
-      filePath = null;
-    }
-    catch (IOException eio) {
-      eio.printStackTrace();
-      filePath = null;
-    }
-
-    return filePath;
-  }
-
-  /**
-   * ¸Ã²Ù×÷ÓÃÓÚAÏµÍ³ÔÚµ÷ÓÃBÏµÍ³ÏàÓ¦·þÎñÄ£¿éÖÐÆäËû·½·¨Ö®Ç°£¬<br>
-   * ÅÐ¶ÏBÏµÍ³·þÎñÊÇ·ñÒÑ¾­²¿ÊðÍê±Ï£¬ÒÔÈ·¶¨Ëùµ÷ÓÃµÄ·½·¨µ±Ç°ÊÇ<br>
-   * ·ñ¿ÉÒÔÕý³£¹¤×÷¡£±¾ÓÃÀýÖÐ£¬AÏµÍ³Ö»ÄÜÎªÊ¡¼¶ÏµÍ³£¬BÏµÍ³Ö»ÄÜÎª×Ü²¿ÏµÍ³¡£
-   * @param _codeA String ·þÎñµ÷ÓÃ·½(Ê¡·Ý)´úÂë
-   * @param _codeB String ·þÎñÌá¹©·½(Ê¡·Ý)´úÂë
-   * @return String Îª¿Õ(Nil)±íÊ¾µ÷ÓÃ³É¹¦£»·Ç¿Õ±íÊ¾µ÷ÓÃÊ§°Ü£¬´¥·¢SOAP FaultÔªËØ£¬²¢·µ»ØÒÔÏàÓ¦´íÎó´úÂë¡£
-   */
-  public String isAlive(String _codeA, String _codeB) {
-    String resultIsAlive = null;
-
-    System.out.println("Ê¡·Ý£º" + _codeA + "·¢³öÎÕÊÖÇëÇó");
-
-    return resultIsAlive;
-  }
 
 //  public void run() {
 //    this.reportForm(this.codeA, this.codeB, this.attNum, this.attchInfoList,

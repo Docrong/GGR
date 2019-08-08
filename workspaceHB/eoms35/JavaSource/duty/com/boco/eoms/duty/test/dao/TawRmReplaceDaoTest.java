@@ -22,31 +22,31 @@ public class TawRmReplaceDaoTest extends BaseDaoTestCase {
         // set required fields
 
         java.lang.String dutydate = "XyBuRjQtArNuTrXjOgMcCiRvVvCqCq";
-        tawRmReplace.setDutydate(dutydate);        
+        tawRmReplace.setDutydate(dutydate);
 
         java.lang.String flag = "BmTtGdMaHjEkGpJpYaDkPbDoMjXcYk";
-        tawRmReplace.setFlag(flag);        
+        tawRmReplace.setFlag(flag);
 
         java.lang.String hander = "ZfCgBvGrLwUsRmFaHeBpShLjDxYwAq";
-        tawRmReplace.setHander(hander);        
+        tawRmReplace.setHander(hander);
 
         java.lang.String inputdate = "EwNwYoRpDnJrZuGtOgYnHlWwSmCcRb";
-        tawRmReplace.setInputdate(inputdate);        
+        tawRmReplace.setInputdate(inputdate);
 
         java.lang.String reason = "DmToSjEeKrTkFyJjGzKgRaGgHrKfJjOtAbNlUuHgJcNoHsMwRiIyAmQpXtAdUvJjTiIiEzWfKkJpJnZpLuGnOiYeNgLeHyYrRvIvTqYbPoZuQoVfXfJzThNrNxSqMmIzPmYuNiKkKkLrBeNeOiRaZxSsFhZfNoPiYzOnExCkQxUrZpAzZgIyAuIcQpHjOzEbNcWnFhTlCkFgWvJaEwQfStKhQnSbCwJoItGnGeMdBgDcPaCeYzYyUoDbEkRpNkFjTnKpNjFzHnWqMsNnSgDoCjFqXuVtIzLnTnMtObPrGbHw";
-        tawRmReplace.setReason(reason);        
+        tawRmReplace.setReason(reason);
 
         java.lang.String receiver = "EuKcNpCdZaCtYaMdFrWxRfBjHoEfMy";
-        tawRmReplace.setReceiver(receiver);        
+        tawRmReplace.setReceiver(receiver);
 
         java.lang.String remark = "UfGgVeFxNoUhYgXgFxNoSgAtTmJeSsGwRyLpMrXtAdYgLuFlXqXtQbOnUqOgQbOcNsYcAuWsMkChCwScPiKmQaRvZrOvDiGiCcXsPyIoNiIxSwJpDaPjKiAvAeCcBtLhEvKwZyVaJkZdBtKlQeAaTtKyTnChJrHaXyKvOlQmYlMbYtPiLuYxNkVfZcHyRdUwIlEcVnRhFgMnHgSlFlGnOjYdJrWhEfZlCuUcBrDcQtIfTcMjGqSnZwOnRfQvQdNyLeCgExFiAjOyIaNxJnLmShPzCsEgVdCuNrRzVhCgSpXe";
-        tawRmReplace.setRemark(remark);        
+        tawRmReplace.setRemark(remark);
 
         java.lang.String roomId = "MnSgKrOsLhDfDnLsDcQiVsEmCnCzUr";
-        tawRmReplace.setRoomId(roomId);        
+        tawRmReplace.setRoomId(roomId);
 
         java.lang.String workserial = "MsFpSlRjFiJwWuJrMaHvGzAyYdTvKu";
-        tawRmReplace.setWorkserial(workserial);        
+        tawRmReplace.setWorkserial(workserial);
 
         dao.saveTawRmReplace(tawRmReplace);
 
@@ -82,23 +82,23 @@ public class TawRmReplaceDaoTest extends BaseDaoTestCase {
 
         // update required fields
         java.lang.String dutydate = "QuBxOgTbFwRoSzQfQpMnPgUnWeXqMg";
-        tawRmReplace.setDutydate(dutydate);        
+        tawRmReplace.setDutydate(dutydate);
         java.lang.String flag = "MaTnUtJtSeJcZkCnHeSfAvFfNoNrNg";
-        tawRmReplace.setFlag(flag);        
+        tawRmReplace.setFlag(flag);
         java.lang.String hander = "XwJnYbCnGkLnTnJlMdVySyQaUcZnCp";
-        tawRmReplace.setHander(hander);        
+        tawRmReplace.setHander(hander);
         java.lang.String inputdate = "FdBrPfMlTnXtGxIgPwEpVgFhNeGfEo";
-        tawRmReplace.setInputdate(inputdate);        
+        tawRmReplace.setInputdate(inputdate);
         java.lang.String reason = "IzYeZlEcTiKcHlSwWpVyXiXdJmPtAvBwPjAvQuQdClCySaVrLjFmShTjLkUtFeFiEnDoFrSyUfFqQmEoKePuKxBuIwMtHtQhVnVaGbBaLkQjUjPaPfPsUkDdRzJjAcDqKwYzPwEdMkDaWxWnLwNxZlHzAyLtLnPyZfMfFcQuClYjCmVoYgCnSrSdDwHuEhQjCvVsEfQiEdVtGnTtHeCaKcVxWdMxGwRcEbUeKxTwSkAsYgTfBdFhAaIcAtOtRrBpHbOsZxWsHmTbZdQkRxIvJzAsLyXsStIzJsDtJiJcAgXf";
-        tawRmReplace.setReason(reason);        
+        tawRmReplace.setReason(reason);
         java.lang.String receiver = "DgZvZzCqSePoSkAuEcFlEeVkHvTvNv";
-        tawRmReplace.setReceiver(receiver);        
+        tawRmReplace.setReceiver(receiver);
         java.lang.String remark = "TrDzNoCqJuMsVkNeDwBuFaXcEtLoJrEkIuYcLhOwKoKwUyYiWbJvAwAnYtWuGnWhRuCyMiSaZzQqPsImHjDuWiFwNzAiOcQgNcNwUhJfWcMmFjZyHmWbEsPfLbXxVvXbDxMcGnRiNdBjPdQtXfEbLxIuIyOpAyQlQuVoEiCdZjIeBpReFmNbQpGtTwMcEwYxCwLeWtDrGnMdVsAlKjKvImYfZaVqYwAjObZkXnOyPkIoZyUrYvOwOvYlYzJnWwClNoUvHePqIsFdNyXbCuVrThKlTbBtGoSoMuGiCqWlRdCy";
-        tawRmReplace.setRemark(remark);        
+        tawRmReplace.setRemark(remark);
         java.lang.String roomId = "TdZkUsSkTcPsFeOxAwMsBcCcEqXlDr";
-        tawRmReplace.setRoomId(roomId);        
+        tawRmReplace.setRoomId(roomId);
         java.lang.String workserial = "OeWuSqMdQvMeCeOpDkDnQbSkHiHwRn";
-        tawRmReplace.setWorkserial(workserial);        
+        tawRmReplace.setWorkserial(workserial);
 
         dao.saveTawRmReplace(tawRmReplace);
 

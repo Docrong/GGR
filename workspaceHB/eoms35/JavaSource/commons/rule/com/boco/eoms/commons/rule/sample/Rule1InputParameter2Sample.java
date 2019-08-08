@@ -11,24 +11,23 @@ package com.boco.eoms.commons.rule.sample;
  * <p>
  * Apr 11, 2007 9:26:39 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Rule1InputParameter2Sample {
-	/**
-	 * 性别
-	 */
-	private String sex;
+    /**
+     * 性别
+     */
+    private String sex;
 
-	//	@RuleAnnotation(description = "获取性别")
-	public String getSex() {
-		return sex;
-	}
+    //	@RuleAnnotation(description = "获取性别")
+    public String getSex() {
+        return sex;
+    }
 
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
 }

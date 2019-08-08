@@ -16,33 +16,33 @@
  * @constructor
  * @param {Ext.Element/String/Object} config The configuration options.
  */
-Ext.BoxComponent = function(config){
+Ext.BoxComponent = function (config) {
     Ext.BoxComponent.superclass.constructor.call(this, config);
     this.addEvents({
         /**
          * @event resize
          * Fires after the component is resized.
-	     * @param {Ext.Component} this
-	     * @param {Number} adjWidth The box-adjusted width that was set
-	     * @param {Number} adjHeight The box-adjusted height that was set
-	     * @param {Number} rawWidth The width that was originally specified
-	     * @param {Number} rawHeight The height that was originally specified
-	     */
-        resize : true,
+         * @param {Ext.Component} this
+         * @param {Number} adjWidth The box-adjusted width that was set
+         * @param {Number} adjHeight The box-adjusted height that was set
+         * @param {Number} rawWidth The width that was originally specified
+         * @param {Number} rawHeight The height that was originally specified
+         */
+        resize: true,
         /**
          * @event move
          * Fires after the component is moved.
-	     * @param {Ext.Component} this
-	     * @param {Number} x The new x position
-	     * @param {Number} y The new y position
-	     */
-        move : true
+         * @param {Ext.Component} this
+         * @param {Number} x The new x position
+         * @param {Number} y The new y position
+         */
+        move: true
     });
 };
 
 Ext.extend(Ext.BoxComponent, Ext.Component, {
     // private, set in afterRender to signify that the component has been rendered
-    boxReady : false,
+    boxReady: false,
     // private, used to defer height settings to subclasses
     deferHeight: false,
 
@@ -53,34 +53,34 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Number} height The new height to set (not required if a size object is passed as the first arg)
      * @return {Ext.BoxComponent} this
      */
-    setSize : function(w, h){
+    setSize: function (w, h) {
         // support for standard size objects
-        if(typeof w == 'object'){
+        if (typeof w == 'object') {
             h = w.height;
             w = w.width;
         }
         // not rendered
-        if(!this.boxReady){
+        if (!this.boxReady) {
             this.width = w;
             this.height = h;
             return this;
         }
 
         // prevent recalcs when not needed
-        if(this.lastSize && this.lastSize.width == w && this.lastSize.height == h){
+        if (this.lastSize && this.lastSize.width == w && this.lastSize.height == h) {
             return this;
         }
         this.lastSize = {width: w, height: h};
 
         var adj = this.adjustSize(w, h);
         var aw = adj.width, ah = adj.height;
-        if(aw !== undefined || ah !== undefined){ // this code is nasty but performs better with floaters
+        if (aw !== undefined || ah !== undefined) { // this code is nasty but performs better with floaters
             var rz = this.getResizeEl();
-            if(!this.deferHeight && aw !== undefined && ah !== undefined){
+            if (!this.deferHeight && aw !== undefined && ah !== undefined) {
                 rz.setSize(aw, ah);
-            }else if(!this.deferHeight && ah !== undefined){
+            } else if (!this.deferHeight && ah !== undefined) {
                 rz.setHeight(ah);
-            }else if(aw !== undefined){
+            } else if (aw !== undefined) {
                 rz.setWidth(aw);
             }
             this.onResize(aw, ah, w, h);
@@ -93,7 +93,7 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * Gets the current size of the component's underlying element.
      * @return {Object} An object containing the element's size {width: (element width), height: (element height)}
      */
-    getSize : function(){
+    getSize: function () {
         return this.el.getSize();
     },
 
@@ -102,8 +102,8 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
      * @return {Array} The XY position of the element (e.g., [100, 200])
      */
-    getPosition : function(local){
-        if(local === true){
+    getPosition: function (local) {
+        if (local === true) {
             return [this.el.getLeft(true), this.el.getTop(true)];
         }
         return this.xy || this.el.getXY();
@@ -114,12 +114,12 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Boolean} local (optional) If true the element's left and top are returned instead of page XY (defaults to false)
      * @returns {Object} box An object in the format {x, y, width, height}
      */
-    getBox : function(local){
+    getBox: function (local) {
         var s = this.el.getSize();
-        if(local){
+        if (local) {
             s.x = this.el.getLeft(true);
             s.y = this.el.getTop(true);
-        }else{
+        } else {
             var xy = this.xy || this.el.getXY();
             s.x = xy[0];
             s.y = xy[1];
@@ -132,19 +132,19 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Object} box An object in the format {x, y, width, height}
      * @returns {Ext.BoxComponent} this
      */
-    updateBox : function(box){
+    updateBox: function (box) {
         this.setSize(box.width, box.height);
         this.setPagePosition(box.x, box.y);
         return this;
     },
 
     // protected
-    getResizeEl : function(){
+    getResizeEl: function () {
         return this.resizeEl || this.el;
     },
 
     // protected
-    getPositionEl : function(){
+    getPositionEl: function () {
         return this.positionEl || this.el;
     },
 
@@ -155,22 +155,22 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Number} top The new top
      * @returns {Ext.BoxComponent} this
      */
-    setPosition : function(x, y){
+    setPosition: function (x, y) {
         this.x = x;
         this.y = y;
-        if(!this.boxReady){
+        if (!this.boxReady) {
             return this;
         }
         var adj = this.adjustPosition(x, y);
         var ax = adj.x, ay = adj.y;
 
         var el = this.getPositionEl();
-        if(ax !== undefined || ay !== undefined){
-            if(ax !== undefined && ay !== undefined){
+        if (ax !== undefined || ay !== undefined) {
+            if (ax !== undefined && ay !== undefined) {
                 el.setLeftTop(ax, ay);
-            }else if(ax !== undefined){
+            } else if (ax !== undefined) {
                 el.setLeft(ax);
-            }else if(ay !== undefined){
+            } else if (ay !== undefined) {
                 el.setTop(ay);
             }
             this.onPosition(ax, ay);
@@ -186,13 +186,13 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Number} y The new y position
      * @returns {Ext.BoxComponent} this
      */
-    setPagePosition : function(x, y){
+    setPagePosition: function (x, y) {
         this.pageX = x;
         this.pageY = y;
-        if(!this.boxReady){
+        if (!this.boxReady) {
             return;
         }
-        if(x === undefined || y === undefined){ // cannot translate undefined points
+        if (x === undefined || y === undefined) { // cannot translate undefined points
             return;
         }
         var p = this.el.translatePoints(x, y);
@@ -201,25 +201,25 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
     },
 
     // private
-    onRender : function(ct, position){
+    onRender: function (ct, position) {
         Ext.BoxComponent.superclass.onRender.call(this, ct, position);
-        if(this.resizeEl){
+        if (this.resizeEl) {
             this.resizeEl = Ext.get(this.resizeEl);
         }
-        if(this.positionEl){
+        if (this.positionEl) {
             this.positionEl = Ext.get(this.positionEl);
         }
     },
 
     // private
-    afterRender : function(){
+    afterRender: function () {
         Ext.BoxComponent.superclass.afterRender.call(this);
         this.boxReady = true;
         this.setSize(this.width, this.height);
-        if(this.x || this.y){
+        if (this.x || this.y) {
             this.setPosition(this.x, this.y);
         }
-        if(this.pageX || this.pageY){
+        if (this.pageX || this.pageY) {
             this.setPagePosition(this.pageX, this.pageY);
         }
     },
@@ -228,7 +228,7 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * Force the component's size to recalculate based on the underlying element's current height and width.
      * @returns {Ext.BoxComponent} this
      */
-    syncSize : function(){
+    syncSize: function () {
         delete this.lastSize;
         this.setSize(this.el.getWidth(), this.el.getHeight());
         return this;
@@ -242,7 +242,7 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Number} rawWidth The width that was originally specified
      * @param {Number} rawHeight The height that was originally specified
      */
-    onResize : function(adjWidth, adjHeight, rawWidth, rawHeight){
+    onResize: function (adjWidth, adjHeight, rawWidth, rawHeight) {
 
     },
 
@@ -252,23 +252,23 @@ Ext.extend(Ext.BoxComponent, Ext.Component, {
      * @param {Number} x The new x position
      * @param {Number} y The new y position
      */
-    onPosition : function(x, y){
+    onPosition: function (x, y) {
 
     },
 
     // private
-    adjustSize : function(w, h){
-        if(this.autoWidth){
+    adjustSize: function (w, h) {
+        if (this.autoWidth) {
             w = 'auto';
         }
-        if(this.autoHeight){
+        if (this.autoHeight) {
             h = 'auto';
         }
-        return {width : w, height: h};
+        return {width: w, height: h};
     },
 
     // private
-    adjustPosition : function(x, y){
-        return {x : x, y: y};
+    adjustPosition: function (x, y) {
+        return {x: x, y: y};
     }
 });

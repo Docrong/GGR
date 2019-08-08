@@ -14,6 +14,7 @@ public class SampleTableManagerImpl extends BaseManager implements ISampleTableM
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setSampleTableDao(SampleTableDao dao) {
@@ -47,12 +48,14 @@ public class SampleTableManagerImpl extends BaseManager implements ISampleTableM
     public void removeSampleTable(final String id) {
         dao.removeSampleTable(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getSampleTables(final Integer curPage, final Integer pageSize) {
-        return dao.getSampleTables(curPage, pageSize,null);
+        return dao.getSampleTables(curPage, pageSize, null);
     }
+
     public Map getSampleTables(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getSampleTables(curPage, pageSize, whereStr);
     }

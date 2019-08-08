@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_rm_workorderrecord"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="workOrderId"
-            	column="work_order_id"
+                name="workOrderId"
+                column="work_order_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="title"
-            	column="title"
+                name="title"
+                column="title"
                 length="50"
                 not-null="true"
                 unique="true"
@@ -47,8 +47,8 @@
         </property>
 
         <property
-            name="receiver"
-            	column="receiver"
+                name="receiver"
+                column="receiver"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -57,8 +57,8 @@
         </property>
 
         <property
-            name="sender"
-            	column="sender"
+                name="sender"
+                column="sender"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -67,8 +67,8 @@
         </property>
 
         <property
-            name="replyTime"
-            	column="reply_time"
+                name="replyTime"
+                column="reply_time"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -77,8 +77,8 @@
         </property>
 
         <property
-            name="receiveTime"
-            	column="receive_time"
+                name="receiveTime"
+                column="receive_time"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -87,8 +87,8 @@
         </property>
 
         <property
-            name="orderType"
-            	column="order_type"
+                name="orderType"
+                column="order_type"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -97,8 +97,8 @@
         </property>
 
         <property
-            name="orderState"
-            	column="order_state"
+                name="orderState"
+                column="order_state"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -107,8 +107,8 @@
         </property>
 
         <property
-            name="subProcessInstId"
-            	column="subProcessInst_id"
+                name="subProcessInstId"
+                column="subProcessInst_id"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -117,8 +117,8 @@
         </property>
 
         <property
-            name="processInstId"
-            	column="processInst_id"
+                name="processInstId"
+                column="processInst_id"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -127,8 +127,8 @@
         </property>
 
         <property
-            name="activityInstId"
-            	column="activityInst_id"
+                name="activityInstId"
+                column="activityInst_id"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -137,8 +137,8 @@
         </property>
 
         <property
-            name="workItemId"
-            	column="workItem_id"
+                name="workItemId"
+                column="workItem_id"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -147,8 +147,8 @@
         </property>
 
         <property
-            name="activityDefId"
-            	column="activityDef_id"
+                name="activityDefId"
+                column="activityDef_id"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -157,8 +157,8 @@
         </property>
 
         <property
-            name="activityInstName"
-            	column="activityInst_name"
+                name="activityInstName"
+                column="activityInst_name"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -167,8 +167,8 @@
         </property>
 
         <property
-            name="sheetType"
-            	column="sheet_type"
+                name="sheetType"
+                column="sheet_type"
                 length="30"
                 not-null="false"
                 unique="true"
@@ -177,8 +177,8 @@
         </property>
 
         <property
-            name="roomId"
-            	column="room_id"
+                name="roomId"
+                column="room_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -187,8 +187,8 @@
         </property>
 
         <property
-            name="userId"
-            	column="user_id"
+                name="userId"
+                column="user_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -197,8 +197,8 @@
         </property>
 
         <property
-            name="workSerial"
-            	column="work_serial"
+                name="workSerial"
+                column="work_serial"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -207,15 +207,15 @@
         </property>
 
         <property
-            name="createTime"
-            	column="create_time"
+                name="createTime"
+                column="create_time"
                 length="30"
                 not-null="true"
                 unique="true"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

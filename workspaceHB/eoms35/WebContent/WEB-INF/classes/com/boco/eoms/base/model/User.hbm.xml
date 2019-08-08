@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,27 +13,27 @@
             table="app_user"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="native">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="native">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <version
-            name="version"
-            column="version"
-            type="java.lang.Integer"
+                name="version"
+                column="version"
+                type="java.lang.Integer"
         />
 
         <property
-            name="username"
+                name="username"
                 length="50"
                 not-null="true"
                 unique="true"
@@ -42,24 +42,24 @@
         </property>
 
         <property
-            name="password"
-                    column="password"
+                name="password"
+                column="password"
                 not-null="true"
         >
 
         </property>
 
         <property
-            name="passwordHint"
-                    column="password_hint"
+                name="passwordHint"
+                column="password_hint"
                 not-null="false"
         >
 
         </property>
 
         <property
-            name="firstName"
-                    column="first_name"
+                name="firstName"
+                column="first_name"
                 length="50"
                 not-null="true"
         >
@@ -67,8 +67,8 @@
         </property>
 
         <property
-            name="lastName"
-                    column="last_name"
+                name="lastName"
+                column="last_name"
                 length="50"
                 not-null="true"
         >
@@ -76,7 +76,7 @@
         </property>
 
         <property
-            name="email"
+                name="email"
                 not-null="true"
                 unique="true"
         >
@@ -84,129 +84,129 @@
         </property>
 
         <property
-            name="phoneNumber"
-                    column="phone_number"
+                name="phoneNumber"
+                column="phone_number"
                 not-null="false"
         >
 
         </property>
 
         <property
-            name="website"
-                    column="website"
+                name="website"
+                column="website"
                 not-null="false"
         >
 
         </property>
 
         <component
-            name="address"
+                name="address"
         >
 
-        <property
-            name="address"
+            <property
+                    name="address"
                     column="address"
-                length="150"
-                not-null="false"
-        >
+                    length="150"
+                    not-null="false"
+            >
 
-        </property>
+            </property>
 
-        <property
-            name="city"
+            <property
+                    name="city"
                     column="city"
-                length="50"
-                not-null="true"
-        >
+                    length="50"
+                    not-null="true"
+            >
 
-        </property>
+            </property>
 
-        <property
-            name="province"
+            <property
+                    name="province"
                     column="province"
-                length="100"
-        >
+                    length="100"
+            >
 
-        </property>
+            </property>
 
-        <property
-            name="country"
+            <property
+                    name="country"
                     column="country"
-                length="100"
-        >
+                    length="100"
+            >
 
-        </property>
+            </property>
 
-        <property
-            name="postalCode"
+            <property
+                    name="postalCode"
                     column="postal_code"
-                length="15"
-                not-null="true"
-        >
+                    length="15"
+                    not-null="true"
+            >
 
-        </property>
+            </property>
 
         </component>
 
         <set
-            name="roles"
-            table="user_role"
-            lazy="false"
-            cascade="save-update"
+                name="roles"
+                table="user_role"
+                lazy="false"
+                cascade="save-update"
         >
 
             <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
             <key
-                column="user_id"
+                    column="user_id"
             >
 
             </key>
 
             <!-- @hibernate.collection-many-to-many tag is deprecated, use @hibernate.many-to-many instead -->
             <many-to-many
-                class="com.boco.eoms.base.model.Role"
-                column="role_id"
-                outer-join="auto"
-             />
+                    class="com.boco.eoms.base.model.Role"
+                    column="role_id"
+                    outer-join="auto"
+            />
 
         </set>
 
         <property
-            name="enabled"
-                    type="yes_no"
-                    column="account_enabled"
+                name="enabled"
+                type="yes_no"
+                column="account_enabled"
         >
 
         </property>
 
         <property
-            name="accountExpired"
-                    type="yes_no"
-                    column="account_expired"
+                name="accountExpired"
+                type="yes_no"
+                column="account_expired"
                 not-null="true"
         >
 
         </property>
 
         <property
-            name="accountLocked"
-                    type="yes_no"
-                    column="account_locked"
+                name="accountLocked"
+                type="yes_no"
+                column="account_locked"
                 not-null="true"
         >
 
         </property>
 
         <property
-            name="credentialsExpired"
-                    type="yes_no"
-                    column="credentials_expired"
+                name="credentialsExpired"
+                type="yes_no"
+                column="credentials_expired"
                 not-null="true"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

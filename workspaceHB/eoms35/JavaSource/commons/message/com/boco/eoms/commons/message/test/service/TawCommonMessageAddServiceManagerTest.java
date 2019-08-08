@@ -35,7 +35,7 @@ public class TawCommonMessageAddServiceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageAddServiceDao.expects(once()).method("getTawCommonMessageAddServices")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawCommonMessageAddServices = tawCommonMessageAddServiceManager.getTawCommonMessageAddServices(null);
         assertTrue(tawCommonMessageAddServices.size() == 1);
@@ -45,7 +45,7 @@ public class TawCommonMessageAddServiceManagerTest extends BaseManagerTestCase {
     public void testGetTawCommonMessageAddService() throws Exception {
         // set expected behavior on dao
         tawCommonMessageAddServiceDao.expects(once()).method("getTawCommonMessageAddService")
-            .will(returnValue(new TawCommonMessageAddService()));
+                .will(returnValue(new TawCommonMessageAddService()));
         TawCommonMessageAddService tawCommonMessageAddService = tawCommonMessageAddServiceManager.getTawCommonMessageAddService(tawCommonMessageAddServiceId);
         assertTrue(tawCommonMessageAddService != null);
         tawCommonMessageAddServiceDao.verify();
@@ -56,7 +56,7 @@ public class TawCommonMessageAddServiceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageAddServiceDao.expects(once()).method("saveTawCommonMessageAddService")
-            .with(same(tawCommonMessageAddService)).isVoid();
+                .with(same(tawCommonMessageAddService)).isVoid();
 
         tawCommonMessageAddServiceManager.saveTawCommonMessageAddService(tawCommonMessageAddService);
         tawCommonMessageAddServiceDao.verify();
@@ -69,7 +69,7 @@ public class TawCommonMessageAddServiceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageAddServiceDao.expects(once()).method("saveTawCommonMessageAddService")
-            .with(same(tawCommonMessageAddService)).isVoid();
+                .with(same(tawCommonMessageAddService)).isVoid();
         tawCommonMessageAddServiceManager.saveTawCommonMessageAddService(tawCommonMessageAddService);
         tawCommonMessageAddServiceDao.verify();
 

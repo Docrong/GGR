@@ -2,7 +2,7 @@
 <boco>
     <addKnowledgeService>http://10.32.2.112:9080/eoms35/services/KnowledgeSendService</addKnowledgeService>
     <synUserService>http://10.21.1.155:8999/krms/services/synUserService?wsdl</synUserService>
-    <uploadFileService>http://10.21.1.155:8999/krms/services/uploadFileService?wsdl</uploadFileService>    
+    <uploadFileService>http://10.21.1.155:8999/krms/services/uploadFileService?wsdl</uploadFileService>
     <searchKnowledgeUrl>http://10.21.1.155:8999/krms/interface/queryKnowledge.action</searchKnowledgeUrl>
     <knowledgeIndexPageUrl>http://10.21.1.155:8999/krms/knowledge/index.action?pageType=manage</knowledgeIndexPageUrl>
 </boco>

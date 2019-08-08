@@ -39,163 +39,163 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Fri Aug 14 15:49:40 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmAskCommentAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增问答评论
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增问答评论
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改问答评论
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改问答评论
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		KmAskComment kmAskComment = kmAskCommentMgr.getKmAskComment(id);
-		KmAskCommentForm kmAskCommentForm = (KmAskCommentForm) convert(kmAskComment);
-		updateFormBean(mapping, request, kmAskCommentForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存问答评论
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
-		KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
-		KmAskCommentForm kmAskCommentForm = (KmAskCommentForm) form;
-		boolean isNew = (null == kmAskCommentForm.getId() || "".equals(kmAskCommentForm.getId()));
-		String questionId = StaticMethod.null2String(request.getParameter("questionId"));
-		KmAskComment kmAskComment = (KmAskComment) convert(kmAskCommentForm);
-		String userId = this.getUser(request).getUserid();
-		String deptId= this.getUser(request).getDeptid();
-		kmAskComment.setCommentDate(StaticMethod.getLocalTime());
-		kmAskComment.setCommentUser(userId);
-		kmAskComment.setCommentDept(deptId);
-		kmAskComment.setQuestionId(questionId);
-		if (isNew) {
-			
-			//操作用户总积分
-			Integer opereteId = KmAskOperate.KM_OPERATE_NAME_ASK_COMMENT;
-			kmAskCountScoreMgr.saveKmAskCountScore(userId, deptId, opereteId);
-			
-			kmAskCommentMgr.saveKmAskComment(kmAskComment);
-		} else {
-			kmAskCommentMgr.saveKmAskComment(kmAskComment);
-		}
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 删除问答评论
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		kmAskCommentMgr.removeKmAskComment(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示问答评论列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmAskCommentConstants.KMASKCOMMENT_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
-		String questionId = StaticMethod.null2String(request.getParameter("questionId"));
-		request.setAttribute("questionId", questionId);
-		List list = kmAskCommentMgr.getKmAskComments(questionId);
-		request.setAttribute(KmAskCommentConstants.KMASKCOMMENT_LIST, list);
-		request.setAttribute("resultSize",new Integer(list.size()));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示问答评论列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        KmAskComment kmAskComment = kmAskCommentMgr.getKmAskComment(id);
+        KmAskCommentForm kmAskCommentForm = (KmAskCommentForm) convert(kmAskComment);
+        updateFormBean(mapping, request, kmAskCommentForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存问答评论
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
+        KmAskCountScoreMgr kmAskCountScoreMgr = (KmAskCountScoreMgr) getBean("kmAskCountScoreMgr");
+        KmAskCommentForm kmAskCommentForm = (KmAskCommentForm) form;
+        boolean isNew = (null == kmAskCommentForm.getId() || "".equals(kmAskCommentForm.getId()));
+        String questionId = StaticMethod.null2String(request.getParameter("questionId"));
+        KmAskComment kmAskComment = (KmAskComment) convert(kmAskCommentForm);
+        String userId = this.getUser(request).getUserid();
+        String deptId = this.getUser(request).getDeptid();
+        kmAskComment.setCommentDate(StaticMethod.getLocalTime());
+        kmAskComment.setCommentUser(userId);
+        kmAskComment.setCommentDept(deptId);
+        kmAskComment.setQuestionId(questionId);
+        if (isNew) {
+
+            //操作用户总积分
+            Integer opereteId = KmAskOperate.KM_OPERATE_NAME_ASK_COMMENT;
+            kmAskCountScoreMgr.saveKmAskCountScore(userId, deptId, opereteId);
+
+            kmAskCommentMgr.saveKmAskComment(kmAskComment);
+        } else {
+            kmAskCommentMgr.saveKmAskComment(kmAskComment);
+        }
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 删除问答评论
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        kmAskCommentMgr.removeKmAskComment(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示问答评论列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmAskCommentConstants.KMASKCOMMENT_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        KmAskCommentMgr kmAskCommentMgr = (KmAskCommentMgr) getBean("kmAskCommentMgr");
+        String questionId = StaticMethod.null2String(request.getParameter("questionId"));
+        request.setAttribute("questionId", questionId);
+        List list = kmAskCommentMgr.getKmAskComments(questionId);
+        request.setAttribute(KmAskCommentConstants.KMASKCOMMENT_LIST, list);
+        request.setAttribute("resultSize", new Integer(list.size()));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示问答评论列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

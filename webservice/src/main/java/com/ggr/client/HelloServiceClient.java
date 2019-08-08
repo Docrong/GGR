@@ -10,29 +10,29 @@ import org.apache.axis.client.Service;
 
 public class HelloServiceClient {
 
-	public static void main(String[] args) {
-			// TODO Auto-generated method stub
-			Service service = new Service();
-			try {
-				Call call = (Call)service.createCall();
-				//ÉèÖÃµØÖ·
-				call.setTargetEndpointAddress("http://localhost:8080/webservice/services/HelloServiceImpl?wsdl");
-				//ÉèÖÃÒªÖ´ÐÐµÄ·½·¨(ÒÔÏÂÁ½ÖÖ·½Ê½¶¼¿ÉÒÔ)
-				call.setOperationName("sayHello");
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Service service = new Service();
+        try {
+            Call call = (Call) service.createCall();
+            //ï¿½ï¿½ï¿½Ãµï¿½Ö·
+            call.setTargetEndpointAddress("http://localhost:8080/webservice/services/HelloServiceImpl?wsdl");
+            //ï¿½ï¿½ï¿½ï¿½ÒªÖ´ï¿½ÐµÄ·ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+            call.setOperationName("sayHello");
 //				call.setOperationName(new QName("http://impl.service.ggr.com","sayHello"));
-				//ÉèÖÃÒª´«Èë²ÎÊý,Èç¹ûÃ»ÓÐÒª´«ÈëµÄ²ÎÊý£¬Ôò²»ÒªÐ´Õâ¸ö£¨²ÎÊýÃû¡¢²ÎÊýÀàÐÍ¡¢ParameterMode£©,µÚÒ»¸ö²ÎÊý°¡Ã»ÓÐ¾ßÌåÒªÇó
-				call.addParameter("param1", org.apache.axis.Constants.XSD_STRING,javax.xml.rpc.ParameterMode.IN);
-				//ÉèÖÃ·µ»ØµÄÀàÐÍ
-				call.setReturnType(org.apache.axis.Constants.XSD_STRING);
-				//µ÷ÓÃWebService·þÎñ
-				String info = "Ð¡Óã¶ù£¬ÄãºÃ£¡";
-				String result = (String) call.invoke(new Object[]{info});
-				System.out.println(result);
-			} catch (ServiceException e) {
-				e.printStackTrace();
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			}
+            //ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¡ï¿½ParameterModeï¿½ï¿½,ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¾ï¿½ï¿½ï¿½Òªï¿½ï¿½
+            call.addParameter("param1", org.apache.axis.Constants.XSD_STRING, javax.xml.rpc.ParameterMode.IN);
+            //ï¿½ï¿½ï¿½Ã·ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+            call.setReturnType(org.apache.axis.Constants.XSD_STRING);
+            //ï¿½ï¿½ï¿½ï¿½WebServiceï¿½ï¿½ï¿½ï¿½
+            String info = "Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½";
+            String result = (String) call.invoke(new Object[]{info});
+            System.out.println(result);
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
-	}
+    }
 }

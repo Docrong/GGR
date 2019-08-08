@@ -1,6 +1,6 @@
 ﻿/**
  * TaskSheetServiceTestCase.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -11,14 +11,14 @@ public class TaskSheetServiceTestCase extends junit.framework.TestCase {
     public TaskSheetServiceTestCase(java.lang.String name) {
         super(name);
     }
+
     public void test1TaskSheetIsAlive() throws Exception {
         com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub)
-                          new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -36,10 +36,9 @@ public class TaskSheetServiceTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub)
-                          new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -58,10 +57,9 @@ public class TaskSheetServiceTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub)
-                          new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -80,10 +78,9 @@ public class TaskSheetServiceTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub)
-                          new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }
@@ -102,10 +99,9 @@ public class TaskSheetServiceTestCase extends junit.framework.TestCase {
         com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub binding;
         try {
             binding = (com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetSoapBindingStub)
-                          new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
-        }
-        catch (javax.xml.rpc.ServiceException jre) {
-            if(jre.getLinkedCause()!=null)
+                    new com.boco.eoms.interfaces.group.client.TaskSheet.TaskSheetServiceLocator().getTaskSheet();
+        } catch (javax.xml.rpc.ServiceException jre) {
+            if (jre.getLinkedCause() != null)
                 jre.getLinkedCause().printStackTrace();
             throw new junit.framework.AssertionFailedError("JAX-RPC ServiceException caught: " + jre);
         }

@@ -1,99 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dicts description="局数据工单流程">
-	<dict id="mainOperateType" description="处理方法">
-		<item id="0" name="提交申请" description="提交申请" />
-		<item id="22" name="草稿保存" description="DraftTask" />
-		<item id="3" name="草稿派发" description="草稿派发" />
-		<item id="6" name="处理回复通过" description="处理回复通过" />
-		<item id="7" name="处理回复不通过" description="处理回复不通过" />
-		<item id="4" name="驳回上一级" description="驳回上一级" />
-		<item id="54" name="重新派发" description="重新派发" />
-		<item id="18" name="归档" description="归档" />
-		<item id="8" name="移交" description="移交" />
-		<item id="88" name="转审" description="转审" />
-		<item id="30" name="会审" description="会审" />	
-		<item id="-13" name="强制归档" description="强制归档" />	
-		<item id="-14" name="强制作废" description="强制作废" />
-		<item id="-12" name="作废" description="作废" />
-		<item id="-10" name="抄送" description="抄送" />	
-		<item id="-15" name="抄送确认" description="抄送确认" />
-		<item id="9" name="阶段回复" description="阶段回复" />	
-		<item id="-11" name="阶段通知" description="阶段通知" />
-		<item id="10" name="分派" description="分派" />	
-		<item id="61" name="确认受理" description="确认受理" />
-		<item id="11" name="分派回复" description="分派回复" />
-	  
-
-		<item id="101" name="审批通过" description="审批通过" />		
-		<item id="120" name="审批通过" description="审批通过" />	
-		
-		<item id="102" name="审批不通过" description="审批不通过" />		
-		
-		
-		<item id="103" name="制作完成" description="制作完成" />		
-		
-		
-		<item id="104" name="通过" description="通过" /><!-- alter by weichao 20170329 -->	
-
-		
-		
-		<item id="105" name="质检不通过" description="质检不通过" />		
-		
-		
-		<item id="106" name="验证通过" description="验证通过" />		
-		
-		
-		<item id="107" name="验证不通过" description="验证不通过" />		
-		
-		
-		
-		<item id="108" name="不通过" description="不通过" />		
-		
-		<!-- add by weichao 20160616 -->
-		<item id="109" name="通过" description="通过" />	<!-- 从审批到自动质检1 -->
-		<item id="110" name="校验失败" description="校验失败" />	<!-- 从自动质检1到驳回 -->
-		<item id="111" name="质检不通过" description="质检不通过" />	<!-- 从质检到自动质检2 -->
-		<item id="112" name="校验失败" description="校验失败" />	<!-- 从自动质检2到质检 -->	
-		<item id="113" name="校验通过" description="校验通过" />	<!-- 从自动质检2到局数据制作 -->	
-		<item id="114" name="校验通过" description="校验通过" />	<!-- 从自动质检1到局数据制作 -->	
-		<!-- add by weichao 20160616 -->
-		<!-- add by weichao 20170329 -->
-		<item id="115" name="提交核查" description="提交核查" />	
-		<item id="116" name="核查完成" description="核查完成" />	
-		<item id="117" name="不通过" description="不通过" />	
-		<item id="118" name="不通过" description="不通过" />	
-		<item id="119" name="接口失败,驳回" description="接口失败,驳回" />	
-		<!-- add by weichao 20170329 -->
-	</dict>
-	
-	<dict id="activeTemplateId" description="处理方法">
-	  
-
-		<item id="AuditDataTask" name="局数据工单审批" description="局数据工单审批" />
-
-		<item id="OfficeMadeTask" name="局数据制作" description="局数据制作" />
-
-		<item id="DataCheckTask" name="测试" description="测试" /><!-- alter by weichao 20170329 -->
-		
-		<!-- add by weichao 20160616 begin-->
-		<item id="AutoACheckTask" name="自动质检" description="自动质检" />
-		<item id="AutoCheckTask" name="自动质检" description="自动质检" />
-		<!-- add by weichao 20160616 end-->
-		
-		<!-- add by weichao 20161101 begin -->
-		<item id="DataInsTask" name="数据核查" description="数据核查" />
-		<!-- add by weichao 20161101 end  -->
-		<item id="ConfirmDataTask" name="地市拨测费用验证确认" description="地市拨测费用验证确认" />
+    <dict id="mainOperateType" description="处理方法">
+        <item id="0" name="提交申请" description="提交申请"/>
+        <item id="22" name="草稿保存" description="DraftTask"/>
+        <item id="3" name="草稿派发" description="草稿派发"/>
+        <item id="6" name="处理回复通过" description="处理回复通过"/>
+        <item id="7" name="处理回复不通过" description="处理回复不通过"/>
+        <item id="4" name="驳回上一级" description="驳回上一级"/>
+        <item id="54" name="重新派发" description="重新派发"/>
+        <item id="18" name="归档" description="归档"/>
+        <item id="8" name="移交" description="移交"/>
+        <item id="88" name="转审" description="转审"/>
+        <item id="30" name="会审" description="会审"/>
+        <item id="-13" name="强制归档" description="强制归档"/>
+        <item id="-14" name="强制作废" description="强制作废"/>
+        <item id="-12" name="作废" description="作废"/>
+        <item id="-10" name="抄送" description="抄送"/>
+        <item id="-15" name="抄送确认" description="抄送确认"/>
+        <item id="9" name="阶段回复" description="阶段回复"/>
+        <item id="-11" name="阶段通知" description="阶段通知"/>
+        <item id="10" name="分派" description="分派"/>
+        <item id="61" name="确认受理" description="确认受理"/>
+        <item id="11" name="分派回复" description="分派回复"/>
 
 
-		<item id="HoldTask" name="工单归档" description="工单归档" />
+        <item id="101" name="审批通过" description="审批通过"/>
+        <item id="120" name="审批通过" description="审批通过"/>
 
-		
-		<item id="" name="新增工单" description="新增工单" />
-		<item id="cc" name="抄送" description="抄送" />
-		<item id="reply" name="阶段回复" description="阶段回复" />
-		<item id="advice" name="阶段通知" description="阶段通知" />	
-		<item id="DraftTask" name="草稿" description="草稿" />
-		<item id="RejectTask" name="被驳回" description="被驳回" />
-	</dict>
+        <item id="102" name="审批不通过" description="审批不通过"/>
+
+
+        <item id="103" name="制作完成" description="制作完成"/>
+
+
+        <item id="104" name="通过" description="通过"/><!-- alter by weichao 20170329 -->
+
+
+        <item id="105" name="质检不通过" description="质检不通过"/>
+
+
+        <item id="106" name="验证通过" description="验证通过"/>
+
+
+        <item id="107" name="验证不通过" description="验证不通过"/>
+
+
+        <item id="108" name="不通过" description="不通过"/>
+
+        <!-- add by weichao 20160616 -->
+        <item id="109" name="通过" description="通过"/>    <!-- 从审批到自动质检1 -->
+        <item id="110" name="校验失败" description="校验失败"/>    <!-- 从自动质检1到驳回 -->
+        <item id="111" name="质检不通过" description="质检不通过"/>    <!-- 从质检到自动质检2 -->
+        <item id="112" name="校验失败" description="校验失败"/>    <!-- 从自动质检2到质检 -->
+        <item id="113" name="校验通过" description="校验通过"/>    <!-- 从自动质检2到局数据制作 -->
+        <item id="114" name="校验通过" description="校验通过"/>    <!-- 从自动质检1到局数据制作 -->
+        <!-- add by weichao 20160616 -->
+        <!-- add by weichao 20170329 -->
+        <item id="115" name="提交核查" description="提交核查"/>
+        <item id="116" name="核查完成" description="核查完成"/>
+        <item id="117" name="不通过" description="不通过"/>
+        <item id="118" name="不通过" description="不通过"/>
+        <item id="119" name="接口失败,驳回" description="接口失败,驳回"/>
+        <!-- add by weichao 20170329 -->
+    </dict>
+
+    <dict id="activeTemplateId" description="处理方法">
+
+
+        <item id="AuditDataTask" name="局数据工单审批" description="局数据工单审批"/>
+
+        <item id="OfficeMadeTask" name="局数据制作" description="局数据制作"/>
+
+        <item id="DataCheckTask" name="测试" description="测试"/><!-- alter by weichao 20170329 -->
+
+        <!-- add by weichao 20160616 begin-->
+        <item id="AutoACheckTask" name="自动质检" description="自动质检"/>
+        <item id="AutoCheckTask" name="自动质检" description="自动质检"/>
+        <!-- add by weichao 20160616 end-->
+
+        <!-- add by weichao 20161101 begin -->
+        <item id="DataInsTask" name="数据核查" description="数据核查"/>
+        <!-- add by weichao 20161101 end  -->
+        <item id="ConfirmDataTask" name="地市拨测费用验证确认" description="地市拨测费用验证确认"/>
+
+
+        <item id="HoldTask" name="工单归档" description="工单归档"/>
+
+
+        <item id="" name="新增工单" description="新增工单"/>
+        <item id="cc" name="抄送" description="抄送"/>
+        <item id="reply" name="阶段回复" description="阶段回复"/>
+        <item id="advice" name="阶段通知" description="阶段通知"/>
+        <item id="DraftTask" name="草稿" description="草稿"/>
+        <item id="RejectTask" name="被驳回" description="被驳回"/>
+    </dict>
 </dicts>

@@ -4,7 +4,6 @@ import com.boco.eoms.base.webapp.form.BaseForm;
 
 
 /**
- * 
  * <p>
  * Title:
  * </p>
@@ -14,234 +13,233 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Apr 27, 2009
  * </p>
- * 
+ *
  * @Author panyunfu
  * @Version 3.5
- *
  */
-public class TawRmGuestFormForm extends BaseForm implements java.io.Serializable{
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
-	public final static int ADD = 1;
-	public final static int EDIT = 2;
-	private int strutsAction;
-	private String strutsButton = "";
-	private int roomId = 0;
-	private String inputdate = "";
-	private String guestname = "";
-	private String company = "";
-	private String sender = "";
-	private String department = "";
-	private String dutyman = "";
-	private String starttime = "";
-	private String endtime = "";
-	private String purpose = "";
-	private String concerned = "";
-	private String affection = "";
-	private int flag = 0;
-	private String notes = "";
-	private int id ;
-	
-	private String fromStarttime = "";
-	private String toStarttime = "";
-	private String fromEndtime = "";
-	private String toEndtime = "";
-	
-	private String cruser;
-	private String deptId;
-	private String deptName;
+public class TawRmGuestFormForm extends BaseForm implements java.io.Serializable {
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 1L;
+    public final static int ADD = 1;
+    public final static int EDIT = 2;
+    private int strutsAction;
+    private String strutsButton = "";
+    private int roomId = 0;
+    private String inputdate = "";
+    private String guestname = "";
+    private String company = "";
+    private String sender = "";
+    private String department = "";
+    private String dutyman = "";
+    private String starttime = "";
+    private String endtime = "";
+    private String purpose = "";
+    private String concerned = "";
+    private String affection = "";
+    private int flag = 0;
+    private String notes = "";
+    private int id;
 
-	public int getStrutsAction() {
-		return strutsAction;
-	}
+    private String fromStarttime = "";
+    private String toStarttime = "";
+    private String fromEndtime = "";
+    private String toEndtime = "";
 
-	public String getStrutsButton() {
-		return strutsButton;
-	}
+    private String cruser;
+    private String deptId;
+    private String deptName;
 
-	public int getRoomId() {
-		return roomId;
-	}
+    public int getStrutsAction() {
+        return strutsAction;
+    }
 
-	public String getInputdate() {
-		return inputdate;
-	}
+    public String getStrutsButton() {
+        return strutsButton;
+    }
 
-	public String getGuestname() {
-		return guestname;
-	}
+    public int getRoomId() {
+        return roomId;
+    }
 
-	public String getCompany() {
-		return company;
-	}
+    public String getInputdate() {
+        return inputdate;
+    }
 
-	public String getSender() {
-		return sender;
-	}
+    public String getGuestname() {
+        return guestname;
+    }
 
-	public String getDepartment() {
-		return department;
-	}
+    public String getCompany() {
+        return company;
+    }
 
-	public String getDutyman() {
-		return dutyman;
-	}
+    public String getSender() {
+        return sender;
+    }
 
-	public String getStarttime() {
-		return starttime;
-	}
+    public String getDepartment() {
+        return department;
+    }
 
-	public String getEndtime() {
-		return endtime;
-	}
+    public String getDutyman() {
+        return dutyman;
+    }
 
-	public String getPurpose() {
-		return purpose;
-	}
+    public String getStarttime() {
+        return starttime;
+    }
 
-	public String getConcerned() {
-		return concerned;
-	}
+    public String getEndtime() {
+        return endtime;
+    }
 
-	public String getAffection() {
-		return affection;
-	}
+    public String getPurpose() {
+        return purpose;
+    }
 
-	public int getFlag() {
-		return flag;
-	}
+    public String getConcerned() {
+        return concerned;
+    }
 
-	public String getNotes() {
-		return notes;
-	}
+    public String getAffection() {
+        return affection;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getFlag() {
+        return flag;
+    }
 
-	public void setStrutsAction(int strutsAction) {
-		this.strutsAction = strutsAction;
-	}
+    public String getNotes() {
+        return notes;
+    }
 
-	public void setStrutsButton(String strutsButton) {
-		this.strutsButton = strutsButton;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
-	}
+    public void setStrutsAction(int strutsAction) {
+        this.strutsAction = strutsAction;
+    }
 
-	public void setInputdate(String inputdate) {
-		this.inputdate = inputdate;
-	}
+    public void setStrutsButton(String strutsButton) {
+        this.strutsButton = strutsButton;
+    }
 
-	public void setGuestname(String guestname) {
-		this.guestname = guestname;
-	}
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
 
-	public void setCompany(String company) {
-		this.company = company;
-	}
+    public void setInputdate(String inputdate) {
+        this.inputdate = inputdate;
+    }
 
-	public void setSender(String sender) {
-		this.sender = sender;
-	}
+    public void setGuestname(String guestname) {
+        this.guestname = guestname;
+    }
 
-	public void setDepartment(String department) {
-		this.department = department;
-	}
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
-	public void setDutyman(String dutyman) {
-		this.dutyman = dutyman;
-	}
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
 
-	public void setStarttime(String starttime) {
-		this.starttime = starttime;
-	}
+    public void setDepartment(String department) {
+        this.department = department;
+    }
 
-	public void setEndtime(String endtime) {
-		this.endtime = endtime;
-	}
+    public void setDutyman(String dutyman) {
+        this.dutyman = dutyman;
+    }
 
-	public void setPurpose(String purpose) {
-		this.purpose = purpose;
-	}
+    public void setStarttime(String starttime) {
+        this.starttime = starttime;
+    }
 
-	public void setConcerned(String concerned) {
-		this.concerned = concerned;
-	}
+    public void setEndtime(String endtime) {
+        this.endtime = endtime;
+    }
 
-	public void setAffection(String affection) {
-		this.affection = affection;
-	}
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
 
-	public void setFlag(int flag) {
-		this.flag = flag;
-	}
+    public void setConcerned(String concerned) {
+        this.concerned = concerned;
+    }
 
-	public void setNotes(String notes) {
-		this.notes = notes;
-	}
+    public void setAffection(String affection) {
+        this.affection = affection;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
 
-	public String getFromStarttime() {
-		return fromStarttime;
-	}
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 
-	public void setFromStarttime(String fromStarttime) {
-		this.fromStarttime = fromStarttime;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getToStarttime() {
-		return toStarttime;
-	}
+    public String getFromStarttime() {
+        return fromStarttime;
+    }
 
-	public void setToStarttime(String toStarttime) {
-		this.toStarttime = toStarttime;
-	}
+    public void setFromStarttime(String fromStarttime) {
+        this.fromStarttime = fromStarttime;
+    }
 
-	public String getFromEndtime() {
-		return fromEndtime;
-	}
+    public String getToStarttime() {
+        return toStarttime;
+    }
 
-	public void setFromEndtime(String fromEndtime) {
-		this.fromEndtime = fromEndtime;
-	}
+    public void setToStarttime(String toStarttime) {
+        this.toStarttime = toStarttime;
+    }
 
-	public String getToEndtime() {
-		return toEndtime;
-	}
+    public String getFromEndtime() {
+        return fromEndtime;
+    }
 
-	public void setToEndtime(String toEndtime) {
-		this.toEndtime = toEndtime;
-	}
+    public void setFromEndtime(String fromEndtime) {
+        this.fromEndtime = fromEndtime;
+    }
 
-	public String getCruser() {
-		return cruser;
-	}
+    public String getToEndtime() {
+        return toEndtime;
+    }
 
-	public void setCruser(String cruser) {
-		this.cruser = cruser;
-	}
+    public void setToEndtime(String toEndtime) {
+        this.toEndtime = toEndtime;
+    }
 
-	public String getDeptId() {
-		return deptId;
-	}
+    public String getCruser() {
+        return cruser;
+    }
 
-	public void setDeptId(String deptId) {
-		this.deptId = deptId;
-	}
+    public void setCruser(String cruser) {
+        this.cruser = cruser;
+    }
 
-	public String getDeptName() {
-		return deptName;
-	}
+    public String getDeptId() {
+        return deptId;
+    }
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
+    public void setDeptId(String deptId) {
+        this.deptId = deptId;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 }

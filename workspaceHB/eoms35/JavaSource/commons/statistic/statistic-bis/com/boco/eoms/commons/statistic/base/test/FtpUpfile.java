@@ -10,28 +10,29 @@ import sun.net.TelnetOutputStream;
 import sun.net.ftp.FtpClient;
 
 /**
-    FTP远程命令列表<br>
-USER    PORT    RETR    ALLO    DELE    SITE    XMKD    CDUP    FEAT<br>
-PASS    PASV    STOR    REST    CWD     STAT    RMD     XCUP    OPTS<br>
-ACCT    TYPE    APPE    RNFR    XCWD    HELP    XRMD    STOU    AUTH<br>
-REIN    STRU    SMNT    RNTO    LIST    NOOP    PWD     SIZE    PBSZ<br>
-QUIT    MODE    SYST    ABOR    NLST    MKD     XPWD    MDTM    PROT<br>
-     在服务器上执行命令,如果用sendServer来执行远程命令(不能执行本地FTP命令)的话，所有FTP命令都要加上\r\n<br>
-          ftpclient.sendServer("XMKD /test/bb\r\n"); //执行服务器上的FTP命令<br>
-          ftpclient.readServerResponse一定要在sendServer后调用<br>
-          nameList("/test")获取指目录下的文件列表<br>
-          XMKD建立目录，当目录存在的情况下再次创建目录时报错<br>
-          XRMD删除目录<br>
-          DELE删除文件<br>
-* <p>Title: 使用JAVA操作FTP服务器(FTP客户端)</p>
-* <p>Description: 上传文件的类型及文件大小都放到调用此类的方法中去检测，比如放到前台JAVASCRIPT中去检测等
-* 针对FTP中的所有调用使用到文件名的地方请使用完整的路径名（绝对路径开始）。
-* </p>
-* <p>Copyright: Copyright (c) 2005</p>
-* <p>Company: 静靖工作室</p>
-* @author 欧朝敬  13873195792
-* @version 1.0
-*/
+ * FTP远程命令列表<br>
+ * USER    PORT    RETR    ALLO    DELE    SITE    XMKD    CDUP    FEAT<br>
+ * PASS    PASV    STOR    REST    CWD     STAT    RMD     XCUP    OPTS<br>
+ * ACCT    TYPE    APPE    RNFR    XCWD    HELP    XRMD    STOU    AUTH<br>
+ * REIN    STRU    SMNT    RNTO    LIST    NOOP    PWD     SIZE    PBSZ<br>
+ * QUIT    MODE    SYST    ABOR    NLST    MKD     XPWD    MDTM    PROT<br>
+ * 在服务器上执行命令,如果用sendServer来执行远程命令(不能执行本地FTP命令)的话，所有FTP命令都要加上\r\n<br>
+ * ftpclient.sendServer("XMKD /test/bb\r\n"); //执行服务器上的FTP命令<br>
+ * ftpclient.readServerResponse一定要在sendServer后调用<br>
+ * nameList("/test")获取指目录下的文件列表<br>
+ * XMKD建立目录，当目录存在的情况下再次创建目录时报错<br>
+ * XRMD删除目录<br>
+ * DELE删除文件<br>
+ * <p>Title: 使用JAVA操作FTP服务器(FTP客户端)</p>
+ * <p>Description: 上传文件的类型及文件大小都放到调用此类的方法中去检测，比如放到前台JAVASCRIPT中去检测等
+ * 针对FTP中的所有调用使用到文件名的地方请使用完整的路径名（绝对路径开始）。
+ * </p>
+ * <p>Copyright: Copyright (c) 2005</p>
+ * <p>Company: 静靖工作室</p>
+ *
+ * @author 欧朝敬  13873195792
+ * @version 1.0
+ */
 
 public class FtpUpfile {
     private FtpClient ftpclient;
@@ -39,10 +40,12 @@ public class FtpUpfile {
     private int ipPort;
     private String userName;
     private String PassWord;
+
     /**
      * 构造函数
-     * @param ip String 机器IP
-     * @param port String 机器FTP端口号
+     *
+     * @param ip       String 机器IP
+     * @param port     String 机器FTP端口号
      * @param username String FTP用户名
      * @param password String FTP密码
      * @throws Exception
@@ -59,7 +62,8 @@ public class FtpUpfile {
 
     /**
      * 构造函数
-     * @param ip String 机器IP，默认端口为21
+     *
+     * @param ip       String 机器IP，默认端口为21
      * @param username String FTP用户名
      * @param password String FTP密码
      * @throws Exception
@@ -77,6 +81,7 @@ public class FtpUpfile {
 
     /**
      * 登录FTP服务器
+     *
      * @throws Exception
      */
     public void login() throws Exception {
@@ -85,6 +90,7 @@ public class FtpUpfile {
 
     /**
      * 退出FTP服务器
+     *
      * @throws Exception
      */
     public void logout() throws Exception {
@@ -96,6 +102,7 @@ public class FtpUpfile {
     /**
      * 在FTP服务器上建立指定的目录,当目录已经存在的情下不会影响目录下的文件,这样用以判断FTP
      * 上传文件时保证目录的存在目录格式必须以"/"根目录开头
+     *
      * @param pathList String
      * @throws Exception
      */
@@ -156,7 +163,8 @@ public class FtpUpfile {
     /**
      * 上传文件到FTP服务器,destination路径以FTP服务器的"/"开始，带文件名、
      * 上传文件只能使用二进制模式，当文件存在时再次上传则会覆盖
-     * @param source String
+     *
+     * @param source      String
      * @param destination String
      * @throws Exception
      */
@@ -183,7 +191,8 @@ public class FtpUpfile {
      * 字节数组做为文件的输入流,此方法适用于JSP中通过
      * request输入流来直接上传文件在RequestUpload类中调用了此方法，
      * destination路径以FTP服务器的"/"开始，带文件名
-     * @param sourceData byte[]
+     *
+     * @param sourceData  byte[]
      * @param destination String
      * @throws Exception
      */
@@ -199,7 +208,8 @@ public class FtpUpfile {
     /**
      * 从FTP文件服务器上下载文件SourceFileName，到本地destinationFileName
      * 所有的文件名中都要求包括完整的路径名在内
-     * @param SourceFileName String
+     *
+     * @param SourceFileName      String
      * @param destinationFileName String
      * @throws Exception
      */
@@ -218,7 +228,8 @@ public class FtpUpfile {
     }
 
     /**
-     *从FTP文件服务器上下载文件，输出到字节数组中
+     * 从FTP文件服务器上下载文件，输出到字节数组中
+     *
      * @param SourceFileName String
      * @return byte[]
      * @throws Exception
@@ -240,7 +251,8 @@ public class FtpUpfile {
         return return_arraybyte;
     }
 
-    /**调用示例
+    /**
+     * 调用示例
      * FtpUpfile fUp = new FtpUpfile("192.168.0.1", 21, "admin", "admin");
      * fUp.login();
      * fUp.buildList("/adfadsg/sfsdfd/cc");
@@ -248,9 +260,10 @@ public class FtpUpfile {
      * fUp.upFile("C:\\Documents and Settings\\Administrator\\My Documents\\sample.zip",destination);
      * ArrayList filename = fUp.fileNames("/");
      * for (int i = 0; i < filename.size(); i++) {
-     *     System.out.println(filename.get(i).toString());
+     * System.out.println(filename.get(i).toString());
      * }
      * fUp.logout();
+     *
      * @param args String[]
      * @throws Exception
      */

@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--ITSoftChange-START-->    
+    <!--ITSoftChange-START-->
 
     <bean id="IITSoftChangeMainDAO"
-		class="com.boco.eoms.sheet.itsoftchange.dao.hibernate.ITSoftChangeMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IITSoftChangeLinkDAO"
-		class="com.boco.eoms.sheet.itsoftchange.dao.hibernate.ITSoftChangeLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IITSoftChangeTaskDAO"
-		class="com.boco.eoms.sheet.itsoftchange.dao.hibernate.ITSoftChangeTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="ITSoftChangeTask"
-		class="com.boco.eoms.sheet.itsoftchange.model.ITSoftChangeTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.itsoftchange.dao.hibernate.ITSoftChangeMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IITSoftChangeLinkDAO"
+          class="com.boco.eoms.sheet.itsoftchange.dao.hibernate.ITSoftChangeLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IITSoftChangeTaskDAO"
+          class="com.boco.eoms.sheet.itsoftchange.dao.hibernate.ITSoftChangeTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="ITSoftChangeTask"
+          class="com.boco.eoms.sheet.itsoftchange.model.ITSoftChangeTask" autowire="byName">
+    </bean>
     <bean id="ITSoftChangeLink"
-		class="com.boco.eoms.sheet.itsoftchange.model.ITSoftChangeLink"
-		autowire="byName" />
-	<bean id="ITSoftChangeMain"
-		class="com.boco.eoms.sheet.itsoftchange.model.ITSoftChangeMain"
-		autowire="byName" />
-	<bean id="iitsoftchangeTask"
-		class="com.boco.eoms.sheet.itsoftchange.task.impl.ITSoftChangeTaskImpl"
-		autowire="byName" />
-	<bean id="iitsoftchangeTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeTaskManagerImpl">
-				<property name="taskModelObject" ref="ITSoftChangeTask" />
-				<property name="taskDAO">
-					<ref bean="IITSoftChangeTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-					<value>/config/itsoftchangeTaskConfig.properties</value>
-				</property>				
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iITSoftChangeFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iITSoftChangeLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeLinkManagerImpl">
-				<property name="linkObject" ref="ITSoftChangeLink"/>
-				<property name="linkDAO">
-				  <ref bean="IITSoftChangeLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iITSoftChangeMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeMainManagerImpl">
-			    <property name="mainObject" ref="ITSoftChangeMain" />
-				<property name="mainDAO">
-				 <ref bean="IITSoftChangeMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iITSoftChangeQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>ITSoftChangeProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/itsoftchange-config.xml</value>
-				</property>					
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.itsoftchange.model.ITSoftChangeLink"
+          autowire="byName"/>
+    <bean id="ITSoftChangeMain"
+          class="com.boco.eoms.sheet.itsoftchange.model.ITSoftChangeMain"
+          autowire="byName"/>
+    <bean id="iitsoftchangeTask"
+          class="com.boco.eoms.sheet.itsoftchange.task.impl.ITSoftChangeTaskImpl"
+          autowire="byName"/>
+    <bean id="iitsoftchangeTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeTaskManagerImpl">
+                <property name="taskModelObject" ref="ITSoftChangeTask"/>
+                <property name="taskDAO">
+                    <ref bean="IITSoftChangeTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/itsoftchangeTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iITSoftChangeFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iITSoftChangeLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeLinkManagerImpl">
+                <property name="linkObject" ref="ITSoftChangeLink"/>
+                <property name="linkDAO">
+                    <ref bean="IITSoftChangeLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iITSoftChangeMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.itsoftchange.service.impl.ITSoftChangeMainManagerImpl">
+                <property name="mainObject" ref="ITSoftChangeMain"/>
+                <property name="mainDAO">
+                    <ref bean="IITSoftChangeMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iITSoftChangeQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>ITSoftChangeProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/itsoftchange-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iITSoftChangeQo"
-		class="com.boco.eoms.sheet.itsoftchange.qo.impl.ITSoftChangeQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="ITSoftChangeMain" />
-		<property name="poLink" value="ITSoftChangeLink" />
-		<property name="aliasMain" value="iTSoftChangeMain" />
-		<property name="aliasLink" value="iTSoftChangeLink" />	
-	    <property name="poTask" value="ITSoftChangeTask" />
-	    <property name="aliasTask" value="iTSoftChangeTask" />
-   </bean>
+    <bean id="iITSoftChangeQo"
+          class="com.boco.eoms.sheet.itsoftchange.qo.impl.ITSoftChangeQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="ITSoftChangeMain"/>
+        <property name="poLink" value="ITSoftChangeLink"/>
+        <property name="aliasMain" value="iTSoftChangeMain"/>
+        <property name="aliasLink" value="iTSoftChangeLink"/>
+        <property name="poTask" value="ITSoftChangeTask"/>
+        <property name="aliasTask" value="iTSoftChangeTask"/>
+    </bean>
 
-	<bean id="ITSoftChange" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.itsoftchange.webapp.action.ITSoftChangeMethod">
-				<property name="businessFlowService" >
-					<ref bean="iITSoftChangeFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iITSoftChangeLinkManager" />
-				<property name="mainService"
-					ref="iITSoftChangeMainManager" />
-				<property name="sheetTask"
-					ref="ITSoftChangeTask" />
-				<property name="taskService"
-					ref="iitsoftchangeTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/itsoftchange-config.xml</value>
-				</property>					
-			</bean>
-		</property>
-	</bean>        
-     <!--ITSoftChange-END-->  
+    <bean id="ITSoftChange" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.itsoftchange.webapp.action.ITSoftChangeMethod">
+                <property name="businessFlowService">
+                    <ref bean="iITSoftChangeFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iITSoftChangeLinkManager"/>
+                <property name="mainService"
+                          ref="iITSoftChangeMainManager"/>
+                <property name="sheetTask"
+                          ref="ITSoftChangeTask"/>
+                <property name="taskService"
+                          ref="iitsoftchangeTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/itsoftchange-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--ITSoftChange-END-->
 </beans>

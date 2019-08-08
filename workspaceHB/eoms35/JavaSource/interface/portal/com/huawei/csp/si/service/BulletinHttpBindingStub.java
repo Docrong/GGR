@@ -1,6 +1,6 @@
 /**
  * BulletinHttpBindingStub.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,7 +13,7 @@ public class BulletinHttpBindingStub extends org.apache.axis.client.Stub impleme
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[2];
@@ -37,8 +37,8 @@ public class BulletinHttpBindingStub extends org.apache.axis.client.Stub impleme
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://service.si.csp.huawei.com", "out"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[0] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -60,19 +60,19 @@ public class BulletinHttpBindingStub extends org.apache.axis.client.Stub impleme
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("http://service.si.csp.huawei.com", "out"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[1] = oper;
 
     }
 
     public BulletinHttpBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public BulletinHttpBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public BulletinHttpBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -111,8 +111,7 @@ public class BulletinHttpBindingStub extends org.apache.axis.client.Stub impleme
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
             return _call;
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", t);
         }
     }
@@ -133,12 +132,11 @@ public class BulletinHttpBindingStub extends org.apache.axis.client.Stub impleme
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -164,12 +162,11 @@ public class BulletinHttpBindingStub extends org.apache.axis.client.Stub impleme
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{in0, in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, in11, in12, in13});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;

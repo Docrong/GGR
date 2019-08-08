@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.transaction.test.bo;
 
 // java standard library
+
 import java.sql.Connection;
 
 // hibernate library
@@ -74,8 +75,7 @@ public class TstTransBO extends AbsCommonBO {
                 .getM_objSession());
         try {
             _objHibernateDAO.save(_obj1);
-        }
-        catch (HibernateException e) {
+        } catch (HibernateException e) {
             if (log.isErrorEnabled()) {
                 log
                         .error("Fail to execute _objHibernateDAO.save(_obj1), error message is: ["
@@ -87,8 +87,7 @@ public class TstTransBO extends AbsCommonBO {
         try {
             _objHibernateDAO.save(_obj2);
             _iReturn = 10001;
-        }
-        catch (HibernateException e) {
+        } catch (HibernateException e) {
             if (log.isErrorEnabled()) {
                 log
                         .error("Fail to execute _objHibernateDAO.save(_obj2), error message is: ["
@@ -113,8 +112,7 @@ public class TstTransBO extends AbsCommonBO {
                 .getM_objSession());
         try {
             _objHibernateDAO.save(_obj1);
-        }
-        catch (HibernateException e) {
+        } catch (HibernateException e) {
             if (log.isErrorEnabled()) {
                 log
                         .error("Fail to execute _objHibernateDAO.save(_obj1), error message is: ["
@@ -156,8 +154,7 @@ public class TstTransBO extends AbsCommonBO {
             try {
                 _objHibernateDAO.save(_obj2);
                 _iReturn = 10001;
-            }
-            catch (HibernateException e) {
+            } catch (HibernateException e) {
                 if (log.isErrorEnabled()) {
                     log
                             .error("Fail to execute _objHibernateDAO.save(_obj2), error message is: ["
@@ -182,8 +179,7 @@ public class TstTransBO extends AbsCommonBO {
                 .getM_objSession());
         try {
             _objHibernateDAO.save(_obj1);
-        }
-        catch (HibernateException e) {
+        } catch (HibernateException e) {
             if (log.isErrorEnabled()) {
                 log
                         .error("Fail to execute _objHibernateDAO.save(_obj1), error message is: ["
@@ -198,8 +194,7 @@ public class TstTransBO extends AbsCommonBO {
         ApplyDetail _obj1_1 = null;
         try {
             _obj1_1 = (ApplyDetail) _objHibernateDAO.query(_strQuery).get(0);
-        }
-        catch (HibernateException e) {
+        } catch (HibernateException e) {
             log.error("Query operation: [" + e.getMessage() + "]");
             return _iReturn;
         }
@@ -208,8 +203,7 @@ public class TstTransBO extends AbsCommonBO {
         try {
             _objHibernateDAO.saveOrUpdate(_obj1_1);
             _iReturn = 10001;
-        }
-        catch (HibernateException e) {
+        } catch (HibernateException e) {
             log.error("saveOrUpdate operation: [" + e.getMessage() + "]");
         }
 

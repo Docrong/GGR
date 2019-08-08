@@ -1,6 +1,6 @@
-﻿$axure.internal(function($ax) {
+﻿$axure.internal(function ($ax) {
 
-    $(window.document).ready(function() {
+    $(window.document).ready(function () {
         var readyStart = (new Date()).getTime();
 
         //this is because the page id is not formatted as a guid
@@ -20,15 +20,15 @@
 
         function pushAnnotation(dObj, elementId) {
             var ann = dObj.annotation;
-            if(ann) {
+            if (ann) {
                 ann["id"] = elementId;
                 ann["label"] = dObj.label + " (" + dObj.friendlyType + ")";
                 anns.push(ann);
             }
 
-            if(dObj.type == 'repeater') {
-                if(dObj.objects) {
-                    for(var i = 0, len = dObj.objects.length; i < len; i++) {
+            if (dObj.type == 'repeater') {
+                if (dObj.objects) {
+                    for (var i = 0, len = dObj.objects.length; i < len; i++) {
                         pushAnnotation(dObj.objects[i]);
                     }
                 }
@@ -40,12 +40,12 @@
         //only trigger the page.data setting if the window is on the mainframe
         var isMainFrame = false;
         try {
-            if(window.name == 'mainFrame' ||
-            (!CHROME_5_LOCAL && window.parent.$ && window.parent.$('#mainFrame').length > 0)) {
+            if (window.name == 'mainFrame' ||
+                (!CHROME_5_LOCAL && window.parent.$ && window.parent.$('#mainFrame').length > 0)) {
                 isMainFrame = true;
 
-                $ax.messageCenter.addMessageListener(function(message, data) {
-                    if(message == 'finishInit') {
+                $ax.messageCenter.addMessageListener(function (message, data) {
+                    if (message == 'finishInit') {
                         _processTempInit();
                     }
                 });
@@ -53,38 +53,39 @@
                 $axure.messageCenter.setState('page.data', pageData);
                 window.focus();
             }
-        } catch(e) { }
+        } catch (e) {
+        }
 
         //attach here for chrome local
-        $(window).load(function() {
+        $(window).load(function () {
             $ax.style.initializeObjectTextAlignment($ax('*'));
         });
 
-        if(!isMainFrame) _processTempInit();
+        if (!isMainFrame) _processTempInit();
     });
 
 
-    var _processTempInit = function() {
+    var _processTempInit = function () {
         //var start = (new Date()).getTime();
         //var end = (new Date()).getTime();
         //window.alert('elapsed ' + (end - start));
 
-        $('iframe').each(function() {
+        $('iframe').each(function () {
             var origSrc = $(this).attr('basesrc');
 
             var $this = $(this);
-            if(origSrc) {
+            if (origSrc) {
                 var newSrcUrl = origSrc.toLowerCase().indexOf('http://') == -1 ? $ax.globalVariableProvider.getLinkUrl(origSrc) : origSrc;
                 $this.attr('src', newSrcUrl);
             }
 
-            if(IOS) {
+            if (IOS) {
                 $this.parent().css('overflow', 'auto').css('-webkit-overflow-scrolling', 'touch').css('-ms-overflow-x', 'hidden').css('overflow-x', 'hidden');
             }
         });
 
-        $axure.messageCenter.addMessageListener(function(message, data) {
-            if(message == 'setGlobalVar') {
+        $axure.messageCenter.addMessageListener(function (message, data) {
+            if (message == 'setGlobalVar') {
                 $ax.globalVariableProvider.setVariableValue(data.globalVarName, data.globalVarValue, true);
             }
         });
@@ -93,22 +94,24 @@
         var _lastFocusedClickableSelector = 'div[tabIndex=0], img[tabIndex=0], input, a';
         var shouldOutline = true;
 
-        $ax(function (dObj) { return dObj.tabbable; }).each(function (dObj, elementId) {
+        $ax(function (dObj) {
+            return dObj.tabbable;
+        }).each(function (dObj, elementId) {
             if ($ax.public.fn.IsLayer(dObj.type)) $ax.event.layerMapFocus(dObj, elementId);
             var focusableId = $ax.event.getFocusableWidgetOrChildId(elementId);
             $('#' + focusableId).attr("tabIndex", 0);
         });
 
-        $('div[tabIndex=0], img[tabIndex=0]').bind($ax.features.eventNames.mouseDownName, function() {
+        $('div[tabIndex=0], img[tabIndex=0]').bind($ax.features.eventNames.mouseDownName, function () {
             shouldOutline = false;
         });
 
-        $(window.document).bind($ax.features.eventNames.mouseUpName, function() {
+        $(window.document).bind($ax.features.eventNames.mouseUpName, function () {
             shouldOutline = true;
         });
 
         $(_lastFocusedClickableSelector).focus(function () {
-            if(shouldOutline) {
+            if (shouldOutline) {
                 $(this).css('outline', '');
             } else {
                 $(this).css('outline', 'none');
@@ -118,45 +121,45 @@
         });
 
         $(_lastFocusedClickableSelector).blur(function () {
-            if(window.lastFocusedClickable == this) window.lastFocusedClickable = null;
+            if (window.lastFocusedClickable == this) window.lastFocusedClickable = null;
         });
 
-        $(window.document).bind('keyup', function(e) {
-            if(e.keyCode == '13' || e.keyCode == '32') {
-                if(window.lastFocusedClickable) $(window.lastFocusedClickable).click();
+        $(window.document).bind('keyup', function (e) {
+            if (e.keyCode == '13' || e.keyCode == '32') {
+                if (window.lastFocusedClickable) $(window.lastFocusedClickable).click();
             }
         });
 
-        if($ax.document.configuration.hideAddress) {
-            $(window).load(function() {
-                window.setTimeout(function() {
+        if ($ax.document.configuration.hideAddress) {
+            $(window).load(function () {
+                window.setTimeout(function () {
                     window.scrollTo(0, 0.9);
                 }, 0);
             });
         }
 
-        if($ax.document.configuration.preventScroll) {
-            $(window.document).bind('touchmove', function(e) {
+        if ($ax.document.configuration.preventScroll) {
+            $(window.document).bind('touchmove', function (e) {
                 var inScrollable = $ax.legacy.GetScrollable(e.target) != window.document.body;
-                if(!inScrollable) {
+                if (!inScrollable) {
                     e.preventDefault();
                 }
             });
 
-            $ax(function(diagramObject) {
+            $ax(function (diagramObject) {
                 return $ax.public.fn.IsDynamicPanel(diagramObject.type) && diagramObject.scrollbars != 'none';
-            }).$().children().bind('touchstart', function() {
+            }).$().children().bind('touchstart', function () {
                 var target = this;
                 var top = target.scrollTop;
-                if(top <= 0) target.scrollTop = 1;
-                if(top + target.offsetHeight >= target.scrollHeight) target.scrollTop = target.scrollHeight - target.offsetHeight - 1;
+                if (top <= 0) target.scrollTop = 1;
+                if (top + target.offsetHeight >= target.scrollHeight) target.scrollTop = target.scrollHeight - target.offsetHeight - 1;
             });
         }
 
-        if(OS_MAC && WEBKIT) {
-            $ax(function(diagramObject) {
+        if (OS_MAC && WEBKIT) {
+            $ax(function (diagramObject) {
                 return $ax.public.fn.IsComboBox(diagramObject.type);
-            }).each(function(obj, id) {
+            }).each(function (obj, id) {
                 $jobj($ax.INPUT(id)).css('-webkit-appearance', 'menulist-button').css('border-color', '#999999');
             });
         }
@@ -185,16 +188,16 @@
 
 /* extend canvas */
 var gv_hasCanvas = false;
-(function() {
+(function () {
     var _canvas = document.createElement('canvas'), proto, abbrev;
-    if(gv_hasCanvas = !!(_canvas.getContext && _canvas.getContext('2d')) && typeof (CanvasGradient) !== 'undefined') {
+    if (gv_hasCanvas = !!(_canvas.getContext && _canvas.getContext('2d')) && typeof (CanvasGradient) !== 'undefined') {
         function chain(func) {
-            return function() {
+            return function () {
                 return func.apply(this, arguments) || this;
             };
         }
 
-        with(proto = CanvasRenderingContext2D.prototype) for(var func in abbrev = {
+        with (proto = CanvasRenderingContext2D.prototype) for (var func in abbrev = {
             a: arc,
             b: beginPath,
             n: clearRect,
@@ -203,9 +206,13 @@ var gv_hasCanvas = false;
             g: createLinearGradient,
             f: fill,
             j: fillRect,
-            z: function(s) { this.fillStyle = s; },
+            z: function (s) {
+                this.fillStyle = s;
+            },
             l: lineTo,
-            w: function(w) { this.lineWidth = w; },
+            w: function (w) {
+                this.lineWidth = w;
+            },
             m: moveTo,
             q: quadraticCurveTo,
             h: rect,
@@ -213,7 +220,9 @@ var gv_hasCanvas = false;
             o: rotate,
             s: save,
             x: scale,
-            y: function(s) { this.strokeStyle = s; },
+            y: function (s) {
+                this.strokeStyle = s;
+            },
             u: setTransform,
             k: stroke,
             i: strokeRect,

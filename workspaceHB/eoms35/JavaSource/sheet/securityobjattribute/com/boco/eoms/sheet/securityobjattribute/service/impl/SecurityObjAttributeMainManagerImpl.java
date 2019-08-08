@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.securityobjattribute.service.ISecurityObjAttributeMai
  * <p>
  * Tue Apr 25 11:43:03 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAttributeMainManagerImpl extends MainService implements ISecurityObjAttributeMainManager {
- 
- }
+
+public class SecurityObjAttributeMainManagerImpl extends MainService implements ISecurityObjAttributeMainManager {
+
+}

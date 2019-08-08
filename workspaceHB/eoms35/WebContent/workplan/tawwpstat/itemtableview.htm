@@ -1,1514 +1,1502 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <link rel="stylesheet" href="../css/table_style.css" type="text/css">
 
 
-
 <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
-  <tr>
-    <td width="700" align="center" class="table_title">
-      Ö´ÐÐ×÷Òµ¼Æ»®Ö´ÐÐÄÚÈÝ
-    </td>
-  </tr>
+    <tr>
+        <td width="700" align="center" class="table_title">
+            Ö´ï¿½ï¿½ï¿½ï¿½Òµï¿½Æ»ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+    </tr>
 </table>
 
 <form name='executelist' action="../tawgzcheck/executelist.do">
-<table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
-  <tr>
-    <td width="700" align="center"  class="table_title">
-      ¿ªÊ¼Ê±¼ä£º
-      
-      <INPUT type="textoggleDatePickert" size="10" name="startDate" readonly value="2005-08-01">
-      <IMG onmouseup="toggleDatePicker('SDateSelect','executelist.startDate','selectDate',false)" id=daysOfMonthPos height=19 alt="µã»÷ÉèÖÃÈÕÆÚ" style="cursor:hand;" src="../images/calendaricon.gif" width=19 align=absMiddle border=0 name=SDateSelectPos>
-      <DIV id=SDateSelect style="POSITION: absolute;">
-      </DIV>&nbsp;&nbsp;
-      ½áÊøÊ±¼ä£º
-      <INPUT type="textoggleDatePickert" size="10" name="endDate" readonly value="2005-08-31">
-      <IMG onmouseup="toggleDatePicker('EDateSelect','executelist.endDate','selectDate',false)" id=daysOfMonthPos height=19 alt="µã»÷ÉèÖÃÈÕÆÚ" style="cursor:hand;" src="../images/calendaricon.gif" width=19 align=absMiddle border=0 name=EDateSelectPos>
-      <DIV id=EDateSelect style="POSITION: absolute;">
-      </DIV>&nbsp;&nbsp;
-      <input type="submit" value="²éÑ¯" class="clsbtn2">
-      <input type='hidden' name='planid' value='4'>
-    </td>
-  </tr>
-</table>
+    <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
+        <tr>
+            <td width="700" align="center" class="table_title">
+                ï¿½ï¿½Ê¼Ê±ï¿½ä£º
+
+                <INPUT type="textoggleDatePickert" size="10" name="startDate" readonly value="2005-08-01">
+                <IMG onmouseup="toggleDatePicker('SDateSelect','executelist.startDate','selectDate',false)"
+                     id=daysOfMonthPos height=19 alt="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" style="cursor:hand;" src="../images/calendaricon.gif"
+                     width=19 align=absMiddle border=0 name=SDateSelectPos>
+                <DIV id=SDateSelect style="POSITION: absolute;">
+                </DIV>&nbsp;&nbsp;
+                ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä£º
+                <INPUT type="textoggleDatePickert" size="10" name="endDate" readonly value="2005-08-31">
+                <IMG onmouseup="toggleDatePicker('EDateSelect','executelist.endDate','selectDate',false)"
+                     id=daysOfMonthPos height=19 alt="ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" style="cursor:hand;" src="../images/calendaricon.gif"
+                     width=19 align=absMiddle border=0 name=EDateSelectPos>
+                <DIV id=EDateSelect style="POSITION: absolute;">
+                </DIV>&nbsp;&nbsp;
+                <input type="submit" value="ï¿½ï¿½Ñ¯" class="clsbtn2">
+                <input type='hidden' name='planid' value='4'>
+            </td>
+        </tr>
+    </table>
 </form>
 
-<table border="0"  width="760" cellspacing="1" cellpadding="1" class="table_show" align=center>
-  <tr class="td_label">
+<table border="0" width="760" cellspacing="1" cellpadding="1" class="table_show" align=center>
+    <tr class="td_label">
 
-    <td width="150">
-      Ö´ÐÐÄÚÈÝ
-    </td>
-    <td width="50">
-      ÖÜÆÚ
-    </td>
-    <td width="100">
-      ¼Æ»®Ê±¼ä
-    </td>
-    <td width="100">
-      Íê³ÉÊ±¼ä
-    </td>
-    <td width="100">
-      ¼ÇÂ¼ÈË
-    </td>
-    <td width="250">
-      ¼ÇÂ¼ÄÚÈÝ
-    </td>
-    <td width="160">
-      ¸½¼þ
-    </td>
-    
-    <td width="160">
-      Ö´ÐÐ±íµ¥
-    </td>
-    
-  </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-01
-    </td>
-  </tr>
+        <td width="150">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="50">
+            ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="100">
+            ï¿½Æ»ï¿½Ê±ï¿½ï¿½
+        </td>
+        <td width="100">
+            ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+        </td>
+        <td width="100">
+            ï¿½ï¿½Â¼ï¿½ï¿½
+        </td>
+        <td width="250">
+            ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="160">
+            ï¿½ï¿½ï¿½ï¿½
+        </td>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-01
-    </td>
+        <td width="160">
+            Ö´ï¿½Ð±ï¿½
+        </td>
 
-    
-      <td width="100">
-
-      </td>
-      <td width="100">
-          
-            admin
-          
-      </td>
-      <td width="250">
-
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-02
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-02
-    </td>
-
-    
-      <td width="100">
-
-      </td>
-      <td width="100">
-          
-            admin
-          
-      </td>
-      <td width="250">
-
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-01
+        </td>
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-03
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-03
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-01
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-04
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-04
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-02
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-02
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-05
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÈý
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-05
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-03
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-03
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-05
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-04
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-04
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝ¶þ
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-05
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-05
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-05
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-06
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-06
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-05
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-07
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-07
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-05
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-08
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-08
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-06
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-06
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-09
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-09
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-07
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-07
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-10
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-10
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-08
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-08
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-11
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-11
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-09
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-09
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-12
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÈý
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-12
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-10
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-10
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-12
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-11
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-11
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝ¶þ
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-12
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-12
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-12
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-13
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-13
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-12
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-14
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-14
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-12
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-15
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-15
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-13
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-13
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-16
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-16
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-14
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-14
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-17
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-17
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-15
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-15
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-18
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-18
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-16
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-16
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-19
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝ¶þ
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-19
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-17
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-17
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-19
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-18
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-18
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÈý
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-19
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-19
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-19
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-20
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-20
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-19
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-21
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-21
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-19
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-22
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-22
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-20
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-20
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-23
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-23
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-21
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-21
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-24
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-24
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-22
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-22
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-25
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-25
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-23
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-23
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-26
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝ¶þ
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-26
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-24
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-24
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÈý
-    </td>
-    <td width="50" rowspan="1">
-      ÖÜ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-26
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-25
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-25
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-26
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-26
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-26
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-27
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-27
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-26
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-28
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-28
-    </td>
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-26
+        </td>
 
-    
-      <td width="100">
 
-      </td>
-      <td width="100">
-          
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-29
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-29
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-27
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-27
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-30
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-30
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-28
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-28
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" colspan="8">
-      2005-08-31
-    </td>
-  </tr>
 
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝÒ»
-    </td>
-    <td width="50" rowspan="1">
-      Ìì
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-31
-    </td>
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-29
+        </td>
+    </tr>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-29
+        </td>
 
-      </td>
-      <td width="100">
-          
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr class="tr_show">
-    <td width="150" rowspan="1">
-      Ö´ÐÐÄÚÈÝËÄ
-    </td>
-    <td width="50" rowspan="1">
-      ÔÂ
-    </td>
-    <td width="100"rowspan="1">
-      2005-08-31
-    </td>
 
-    
-      <td width="100">
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-30
+        </td>
+    </tr>
 
-      </td>
-      <td width="100">
-          
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-30
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
             admin
-          
-      </td>
-      <td width="250">
 
-      </td>
-      <td width="160">
-      </td>
-    
-    <td width="160">
-    </td>
-    
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
     </tr>
-  
-  <tr  align="center">
-    <td width="700" bgcolor="#e5edf8" class="clsthd2" colspan="8">
-      <INPUT type=button value=·µ»Ø  name=button Onclick="GoBack();"  Class="clsbtn2">
-    </td>
-  </tr>
+
+    <tr class="tr_show">
+        <td width="150" colspan="8">
+            2005-08-31
+        </td>
+    </tr>
+
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-31
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
+            admin
+
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
+    </tr>
+
+    <tr class="tr_show">
+        <td width="150" rowspan="1">
+            Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        </td>
+        <td width="50" rowspan="1">
+            ï¿½ï¿½
+        </td>
+        <td width="100" rowspan="1">
+            2005-08-31
+        </td>
+
+
+        <td width="100">
+
+        </td>
+        <td width="100">
+
+            admin
+
+        </td>
+        <td width="250">
+
+        </td>
+        <td width="160">
+        </td>
+
+        <td width="160">
+        </td>
+
+    </tr>
+
+    <tr align="center">
+        <td width="700" bgcolor="#e5edf8" class="clsthd2" colspan="8">
+            <INPUT type=button value=ï¿½ï¿½ï¿½ï¿½ name=button Onclick="GoBack();" Class="clsbtn2">
+        </td>
+    </tr>
 </table>
 
 

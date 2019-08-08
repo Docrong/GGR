@@ -7,6 +7,7 @@
 package com.boco.eoms.commons.db.containerpool;
 
 // java standard library
+
 import java.util.Properties;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -97,13 +98,11 @@ public class BocoDataSource implements DataSource {
     public void setAParam(boolean bCover, String strKey, String strValue) {
         if (!params.containsKey(strKey)) { // dont contain strKey
             params.put(strKey, strValue);
-        }
-        else {                             // contain strKey
+        } else {                             // contain strKey
             if (bCover) {   // override
                 params.remove(strKey);
                 params.put(strKey, strValue);
-            }
-            else {          // not override
+            } else {          // not override
                 // do nothing
             }
         }

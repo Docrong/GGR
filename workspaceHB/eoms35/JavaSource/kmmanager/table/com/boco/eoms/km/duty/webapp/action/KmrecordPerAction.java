@@ -49,303 +49,304 @@ import com.boco.eoms.km.duty.bo.KmassignworkBO;
 //import com.boco.eoms.jbzl.bo.TawValidatePrivBO;
 
 public class KmrecordPerAction extends Action {
-	private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.ConnectionPool
-			.getInstance();
+    private com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.ConnectionPool
+            .getInstance();
 
-	private static int PAGE_LENGTH = 20;
-	// 整合调整关于国际化
-	static {
-		ResourceBundle prop = ResourceBundle
-				.getBundle("resources.application_zh_CN");
-		try {
-			PAGE_LENGTH = Integer.parseInt(prop.getString("list.page.length"));
-		} catch (Exception e) {
-		}
-	}
+    private static int PAGE_LENGTH = 20;
 
-	/*
-	 * static { ResourceBundle prop =
-	 * ResourceBundle.getBundle("resources.application"); try { PAGE_LENGTH =
-	 * Integer.parseInt(prop.getString("list.page.length")); } catch (Exception
-	 * e) { } }
-	 */
-	public ActionForward execute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		ActionForward myforward = null;
-		String myaction = mapping.getParameter();
+    // 整合调整关于国际化
+    static {
+        ResourceBundle prop = ResourceBundle
+                .getBundle("resources.application_zh_CN");
+        try {
+            PAGE_LENGTH = Integer.parseInt(prop.getString("list.page.length"));
+        } catch (Exception e) {
+        }
+    }
 
-		if (isCancelled(request)) {
-			return mapping.findForward("cancel");
-		}
-		if ("".equalsIgnoreCase(myaction)) {
-			myforward = mapping.findForward("failure");
-		} else if ("SHOWCONFIG".equalsIgnoreCase(myaction)) {
-			myforward = performShowConfig(mapping, form, request, response);
-		} else if ("SHOWRESULT".equalsIgnoreCase(myaction)) {
-			myforward = performShowResult(mapping, form, request, response);
-		} else if ("SELECTROOM".equalsIgnoreCase(myaction)) {
-			myforward = performSelectRoom(mapping, form, request, response);
-		} else if ("SELECTDATE".equalsIgnoreCase(myaction)) {
-			myforward = performSelectDate(mapping, form, request, response);
-		}
-		 else if ("GETROOM".equalsIgnoreCase(myaction)) {
-				myforward = performGetRoom(mapping, form, request, response);
-			} else {
-			myforward = mapping.findForward("failure");
-		}
-		return myforward;
-	}
-	
-	/**
-	 * @see 值班统计条件
-	 * @param mapping
-	 * @param actionForm
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	private ActionForward performShowConfig(ActionMapping mapping,
-			ActionForm actionForm, HttpServletRequest request,
-			HttpServletResponse response) {
-		// edit by wangheqi 2.7 to 3.5
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		/*
-		 * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
-		 * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
-		 */
-		TawRmRecordPerDAO tawRmRecordPerDAO = null;
-		TawUserRoomDAO tawUserRoomDAO = null;
-		TawRmAssignworkDAO tawRmAssignworkDAO = null;
-		String starttime = "";
-		String endtime = "";
-		Vector vectorRoomUser = null;
-		Vector vectorWorkseiral = null;
-		// saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
-		// getAttribute("SaveSessionBeanForm");
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
-		try {
-			int roomId = Integer.parseInt(request.getParameter("roomId"));
-			tawUserRoomDAO = new TawUserRoomDAO(ds);
-			vectorRoomUser = tawUserRoomDAO.getRoomUser(roomId, 0); // 得到该机房下用户的id
-																	// 和name
-			request.setAttribute("RoomUser", vectorRoomUser);
+    /*
+     * static { ResourceBundle prop =
+     * ResourceBundle.getBundle("resources.application"); try { PAGE_LENGTH =
+     * Integer.parseInt(prop.getString("list.page.length")); } catch (Exception
+     * e) { } }
+     */
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response) {
+        ActionForward myforward = null;
+        String myaction = mapping.getParameter();
 
-			starttime = request.getParameter("starttime");
-			endtime = request.getParameter("endtime");
-			request.setAttribute("roomId", String.valueOf(roomId));
-			request.setAttribute("starttime", starttime);
-			request.setAttribute("endtime", endtime);
+        if (isCancelled(request)) {
+            return mapping.findForward("cancel");
+        }
+        if ("".equalsIgnoreCase(myaction)) {
+            myforward = mapping.findForward("failure");
+        } else if ("SHOWCONFIG".equalsIgnoreCase(myaction)) {
+            myforward = performShowConfig(mapping, form, request, response);
+        } else if ("SHOWRESULT".equalsIgnoreCase(myaction)) {
+            myforward = performShowResult(mapping, form, request, response);
+        } else if ("SELECTROOM".equalsIgnoreCase(myaction)) {
+            myforward = performSelectRoom(mapping, form, request, response);
+        } else if ("SELECTDATE".equalsIgnoreCase(myaction)) {
+            myforward = performSelectDate(mapping, form, request, response);
+        } else if ("GETROOM".equalsIgnoreCase(myaction)) {
+            myforward = performGetRoom(mapping, form, request, response);
+        } else {
+            myforward = mapping.findForward("failure");
+        }
+        return myforward;
+    }
 
-			// 得到班次
-			if (starttime.equals(endtime)) // 只有选择某一天时,才可以选择查询的班次
-			{
-				tawRmAssignworkDAO = new TawRmAssignworkDAO(ds);
-				vectorWorkseiral = tawRmAssignworkDAO.getWorkSerialofDay(
-						starttime, roomId);
-				request.setAttribute("vectorWorkseiral", vectorWorkseiral);
-			}
+    /**
+     * @param mapping
+     * @param actionForm
+     * @param request
+     * @param response
+     * @return
+     * @see 值班统计条件
+     */
+    private ActionForward performShowConfig(ActionMapping mapping,
+                                            ActionForm actionForm, HttpServletRequest request,
+                                            HttpServletResponse response) {
+        // edit by wangheqi 2.7 to 3.5
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        /*
+         * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
+         * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
+         */
+        TawRmRecordPerDAO tawRmRecordPerDAO = null;
+        TawUserRoomDAO tawUserRoomDAO = null;
+        TawRmAssignworkDAO tawRmAssignworkDAO = null;
+        String starttime = "";
+        String endtime = "";
+        Vector vectorRoomUser = null;
+        Vector vectorWorkseiral = null;
+        // saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
+        // getAttribute("SaveSessionBeanForm");
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+        try {
+            int roomId = Integer.parseInt(request.getParameter("roomId"));
+            tawUserRoomDAO = new TawUserRoomDAO(ds);
+            vectorRoomUser = tawUserRoomDAO.getRoomUser(roomId, 0); // 得到该机房下用户的id
+            // 和name
+            request.setAttribute("RoomUser", vectorRoomUser);
 
-		} catch (Exception e) {
-			generalError(request, e);
-			return mapping.findForward("failure");
-		} finally {
-			saveSessionBeanForm = null;
-		}
-		return mapping.findForward("success");
-	}
+            starttime = request.getParameter("starttime");
+            endtime = request.getParameter("endtime");
+            request.setAttribute("roomId", String.valueOf(roomId));
+            request.setAttribute("starttime", starttime);
+            request.setAttribute("endtime", endtime);
 
-	/**
-	 * @see 值班统计结果
-	 * @param mapping
-	 * @param actionForm
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	private ActionForward performShowResult(ActionMapping mapping,
-			ActionForm actionForm, HttpServletRequest request,
-			HttpServletResponse response) {
+            // 得到班次
+            if (starttime.equals(endtime)) // 只有选择某一天时,才可以选择查询的班次
+            {
+                tawRmAssignworkDAO = new TawRmAssignworkDAO(ds);
+                vectorWorkseiral = tawRmAssignworkDAO.getWorkSerialofDay(
+                        starttime, roomId);
+                request.setAttribute("vectorWorkseiral", vectorWorkseiral);
+            }
 
-		// edit by wangheqi 2.7 to 3.5
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		/*
-		 * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
-		 * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
-		 */
-		String starttime = null;
-		String endtime = null;
-		TawRmRecordPerDAO tawRmRecordPerDAO = null;
-		Vector vecPerRecords = null;
+        } catch (Exception e) {
+            generalError(request, e);
+            return mapping.findForward("failure");
+        } finally {
+            saveSessionBeanForm = null;
+        }
+        return mapping.findForward("success");
+    }
 
-		// saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
-		// getAttribute("SaveSessionBeanForm");
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
+    /**
+     * @param mapping
+     * @param actionForm
+     * @param request
+     * @param response
+     * @return
+     * @see 值班统计结果
+     */
+    private ActionForward performShowResult(ActionMapping mapping,
+                                            ActionForm actionForm, HttpServletRequest request,
+                                            HttpServletResponse response) {
 
-		try {
-			starttime = request.getParameter("starttime");
-			endtime = request.getParameter("endtime");
-			starttime = starttime + " 00:00:00";
-			endtime = endtime + " 23:59:59";
-			int roomId = Integer.parseInt(request.getParameter("roomId"));
-			String typename = ("".equals(request.getParameter("typename")) ? ""
-					: " and  typename='" + request.getParameter("typename")
-							+ "'");
-			String flag = "".equals(request.getParameter("flag")) ? ""
-					: " and  complete_flag=" + request.getParameter("flag");
-			String userId = "".equals(request.getParameter("userId")) ? ""
-					: " and dutyman='" + request.getParameter("userId") + "'";
-			String Workseiral = request.getParameter("Workseiral") != null
-					&& !"".equals(request.getParameter("Workseiral")) ? " and workserial="
-					+ request.getParameter("Workseiral")
-					: "";
-			String where = "recordtime>='" + starttime + "' and recordtime<='"
-					+ endtime + "'" + typename + flag + userId + Workseiral;
-			tawRmRecordPerDAO = new TawRmRecordPerDAO(ds);
-			vecPerRecords = tawRmRecordPerDAO.getSearchResult(where);
-			request.setAttribute("vecPerRecords", vecPerRecords);
-		} catch (Exception e) {
-			generalError(request, e);
-			return mapping.findForward("failure");
-		} finally {
-			saveSessionBeanForm = null;
-			starttime = null;
-			endtime = null;
-			vecPerRecords = null;
-		}
+        // edit by wangheqi 2.7 to 3.5
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        /*
+         * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
+         * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
+         */
+        String starttime = null;
+        String endtime = null;
+        TawRmRecordPerDAO tawRmRecordPerDAO = null;
+        Vector vecPerRecords = null;
 
-		return mapping.findForward("success");
+        // saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
+        // getAttribute("SaveSessionBeanForm");
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
 
-	}
+        try {
+            starttime = request.getParameter("starttime");
+            endtime = request.getParameter("endtime");
+            starttime = starttime + " 00:00:00";
+            endtime = endtime + " 23:59:59";
+            int roomId = Integer.parseInt(request.getParameter("roomId"));
+            String typename = ("".equals(request.getParameter("typename")) ? ""
+                    : " and  typename='" + request.getParameter("typename")
+                    + "'");
+            String flag = "".equals(request.getParameter("flag")) ? ""
+                    : " and  complete_flag=" + request.getParameter("flag");
+            String userId = "".equals(request.getParameter("userId")) ? ""
+                    : " and dutyman='" + request.getParameter("userId") + "'";
+            String Workseiral = request.getParameter("Workseiral") != null
+                    && !"".equals(request.getParameter("Workseiral")) ? " and workserial="
+                    + request.getParameter("Workseiral")
+                    : "";
+            String where = "recordtime>='" + starttime + "' and recordtime<='"
+                    + endtime + "'" + typename + flag + userId + Workseiral;
+            tawRmRecordPerDAO = new TawRmRecordPerDAO(ds);
+            vecPerRecords = tawRmRecordPerDAO.getSearchResult(where);
+            request.setAttribute("vecPerRecords", vecPerRecords);
+        } catch (Exception e) {
+            generalError(request, e);
+            return mapping.findForward("failure");
+        } finally {
+            saveSessionBeanForm = null;
+            starttime = null;
+            endtime = null;
+            vecPerRecords = null;
+        }
 
-	/**
-	 * @see 值班统计条件
-	 * @param mapping
-	 * @param actionForm
-	 * @param request
-	 * @param response
-	 * @return
-	 */
-	private ActionForward performSelectRoom(ActionMapping mapping,
-			ActionForm actionForm, HttpServletRequest request,
-			HttpServletResponse response) {
-		// edit by wangheqi 2.7 to 3.5
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		/*
-		 * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
-		 * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
-		 */
-		 
-		// saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
-		// getAttribute("SaveSessionBeanForm");
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
+        return mapping.findForward("success");
 
-		try {
-			// 权限验证
-			 
-		} catch (Exception e) {
-			generalError(request, e);
-			return mapping.findForward("failure");
-		} finally {
-			 
-		}
-		return mapping.findForward("success");
-	}
-	
-	//选择日期
-	private ActionForward performSelectDate(ActionMapping mapping,
-			ActionForm actionForm, HttpServletRequest request,
-			HttpServletResponse response) {
-		// edit by wangheqi 2.7 to 3.5
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		/*
-		 * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
-		 * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
-		 */
-		 
-		// saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
-		// getAttribute("SaveSessionBeanForm");
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
+    }
 
-		try {
-			String roomId = request.getParameter("typeId");
-			request.setAttribute("typeId", roomId);
-			 
-		} catch (Exception e) {
-			generalError(request, e);
-			return mapping.findForward("failure");
-		} finally {
-			 
-		}
-		return mapping.findForward("success");
-	}
-	private ActionForward performGetRoom(ActionMapping mapping,
-			ActionForm actionForm, HttpServletRequest request,
-			HttpServletResponse response) {
-		TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		Vector SelectRoom = null;
-		Vector SelectRoomId = null;
-		Vector SelectRoomName = null;
-		KmassignworkBO tawRmAssignworkBO = null;
-		TawSystemPrivRegion tawSystemPrivRegion = null;
-		TawSystemAssignBo privBO = TawSystemAssignBo.getInstance();
-		KmsystemCptroomBo cptroomBO = KmsystemCptroomBo.getInstance();
-		KmsystemCptroom tawApparatusroom = null;
-		JSONArray json = new JSONArray();
-		String strSelectRoomName = null;
-		if (saveSessionBeanForm == null) {
-			return mapping.findForward("timeout");
-		}
-		try {
-			SelectRoom = new Vector();
-			SelectRoomName = new Vector();
-			SelectRoomId = new Vector();
-			
-		//	if (saveSessionBeanForm.getUserid().equals(StaticVariable.ADMIN)) {
-				tawRmAssignworkBO = new KmassignworkBO(ds);
-				SelectRoom = tawRmAssignworkBO.getRoomSelect();
-				tawApparatusroom = null;
-				strSelectRoomName = "";
-				Vector removeEle = new Vector();
-				if (SelectRoom.size() > 0) {
-					for (int i = 0; i < SelectRoom.size(); i++) {
-						JSONObject jitem = new JSONObject();
-						tawApparatusroom = cptroomBO.getKmsystemCptroomById(
-								new Integer((String) SelectRoom.elementAt(i)),
-								0);
-						if (tawApparatusroom != null) {
-							strSelectRoomName = StaticMethod
-									.null2String(tawApparatusroom.getRoomname());
-							SelectRoomName.add(strSelectRoomName);
-							SelectRoomId.add((String) SelectRoom.elementAt(i));
-							jitem.put("id", (String) SelectRoom.elementAt(i));
-							jitem.put("text", strSelectRoomName);
-							jitem.put(UIConstants.JSON_NODETYPE, "cptroom");
-							jitem.put("allowChild", true); 
-							jitem.put("allowDelete", true);
-							jitem.put("allowList", true);
-							jitem.put("leaf", tawApparatusroom.getLeaf());
-							json.put(jitem);
-						} else {
-							removeEle.add(SelectRoom.elementAt(i));
-						}
-					}
-					SelectRoom.removeAll(removeEle);
-				} else {
-					return mapping.findForward("nopriv");
-				}
+    /**
+     * @param mapping
+     * @param actionForm
+     * @param request
+     * @param response
+     * @return
+     * @see 值班统计条件
+     */
+    private ActionForward performSelectRoom(ActionMapping mapping,
+                                            ActionForm actionForm, HttpServletRequest request,
+                                            HttpServletResponse response) {
+        // edit by wangheqi 2.7 to 3.5
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        /*
+         * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
+         * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
+         */
+
+        // saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
+        // getAttribute("SaveSessionBeanForm");
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+
+        try {
+            // 权限验证
+
+        } catch (Exception e) {
+            generalError(request, e);
+            return mapping.findForward("failure");
+        } finally {
+
+        }
+        return mapping.findForward("success");
+    }
+
+    //选择日期
+    private ActionForward performSelectDate(ActionMapping mapping,
+                                            ActionForm actionForm, HttpServletRequest request,
+                                            HttpServletResponse response) {
+        // edit by wangheqi 2.7 to 3.5
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        /*
+         * SaveSessionBeanForm saveSessionBeanForm = (SaveSessionBeanForm)
+         * httpServletRequest.getSession().getAttribute("SaveSessionBeanForm");
+         */
+
+        // saveSessionBeanForm = (SaveSessionBeanForm) request.getSession().
+        // getAttribute("SaveSessionBeanForm");
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+
+        try {
+            String roomId = request.getParameter("typeId");
+            request.setAttribute("typeId", roomId);
+
+        } catch (Exception e) {
+            generalError(request, e);
+            return mapping.findForward("failure");
+        } finally {
+
+        }
+        return mapping.findForward("success");
+    }
+
+    private ActionForward performGetRoom(ActionMapping mapping,
+                                         ActionForm actionForm, HttpServletRequest request,
+                                         HttpServletResponse response) {
+        TawSystemSessionForm saveSessionBeanForm = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        Vector SelectRoom = null;
+        Vector SelectRoomId = null;
+        Vector SelectRoomName = null;
+        KmassignworkBO tawRmAssignworkBO = null;
+        TawSystemPrivRegion tawSystemPrivRegion = null;
+        TawSystemAssignBo privBO = TawSystemAssignBo.getInstance();
+        KmsystemCptroomBo cptroomBO = KmsystemCptroomBo.getInstance();
+        KmsystemCptroom tawApparatusroom = null;
+        JSONArray json = new JSONArray();
+        String strSelectRoomName = null;
+        if (saveSessionBeanForm == null) {
+            return mapping.findForward("timeout");
+        }
+        try {
+            SelectRoom = new Vector();
+            SelectRoomName = new Vector();
+            SelectRoomId = new Vector();
+
+            //	if (saveSessionBeanForm.getUserid().equals(StaticVariable.ADMIN)) {
+            tawRmAssignworkBO = new KmassignworkBO(ds);
+            SelectRoom = tawRmAssignworkBO.getRoomSelect();
+            tawApparatusroom = null;
+            strSelectRoomName = "";
+            Vector removeEle = new Vector();
+            if (SelectRoom.size() > 0) {
+                for (int i = 0; i < SelectRoom.size(); i++) {
+                    JSONObject jitem = new JSONObject();
+                    tawApparatusroom = cptroomBO.getKmsystemCptroomById(
+                            new Integer((String) SelectRoom.elementAt(i)),
+                            0);
+                    if (tawApparatusroom != null) {
+                        strSelectRoomName = StaticMethod
+                                .null2String(tawApparatusroom.getRoomname());
+                        SelectRoomName.add(strSelectRoomName);
+                        SelectRoomId.add((String) SelectRoom.elementAt(i));
+                        jitem.put("id", (String) SelectRoom.elementAt(i));
+                        jitem.put("text", strSelectRoomName);
+                        jitem.put(UIConstants.JSON_NODETYPE, "cptroom");
+                        jitem.put("allowChild", true);
+                        jitem.put("allowDelete", true);
+                        jitem.put("allowList", true);
+                        jitem.put("leaf", tawApparatusroom.getLeaf());
+                        json.put(jitem);
+                    } else {
+                        removeEle.add(SelectRoom.elementAt(i));
+                    }
+                }
+                SelectRoom.removeAll(removeEle);
+            } else {
+                return mapping.findForward("nopriv");
+            }
 			/*} else {
 				SelectRoom = StaticMethod
 						.list2vector(privBO
@@ -387,39 +388,40 @@ public class KmrecordPerAction extends Action {
 					return mapping.findForward("nopriv");
 				}
 			}*/
-			response.setContentType("text/xml;charset=UTF-8");
-			response.getWriter().print(json.toString());
-			request.setAttribute("SelectRoom", SelectRoomId);
-			request.setAttribute("SelectRoomName", SelectRoomName);
-		} catch (Exception e) {
-			generalError(request, e);
-			return mapping.findForward("failure");
-		} finally {
-			saveSessionBeanForm = null;
-			SelectRoom = null;
-			SelectRoomName = null;
-			tawRmAssignworkBO = null;
-			privBO = null;
-			// tawValidatePrivBO = null;
-			cptroomBO = null;
-			// tawApparatusroomDAO = null;
-			tawApparatusroom = null;
-			strSelectRoomName = null;
-		}
-		return null;
-	}
-	private void sqlDuplicateError(HttpServletRequest request, String objName) {
-		ActionErrors aes = new ActionErrors();
-		aes.add(aes.GLOBAL_ERROR, new ActionError("errors.database.duplicate",
-				objName));
-		saveErrors(request, aes);
-	}
+            response.setContentType("text/xml;charset=UTF-8");
+            response.getWriter().print(json.toString());
+            request.setAttribute("SelectRoom", SelectRoomId);
+            request.setAttribute("SelectRoomName", SelectRoomName);
+        } catch (Exception e) {
+            generalError(request, e);
+            return mapping.findForward("failure");
+        } finally {
+            saveSessionBeanForm = null;
+            SelectRoom = null;
+            SelectRoomName = null;
+            tawRmAssignworkBO = null;
+            privBO = null;
+            // tawValidatePrivBO = null;
+            cptroomBO = null;
+            // tawApparatusroomDAO = null;
+            tawApparatusroom = null;
+            strSelectRoomName = null;
+        }
+        return null;
+    }
 
-	private void generalError(HttpServletRequest request, Exception e) {
-		ActionErrors aes = new ActionErrors();
-		aes.add(aes.GLOBAL_ERROR, new ActionError("error.general", e
-				.getMessage()));
-		saveErrors(request, aes);
-		e.printStackTrace();
-	}
+    private void sqlDuplicateError(HttpServletRequest request, String objName) {
+        ActionErrors aes = new ActionErrors();
+        aes.add(aes.GLOBAL_ERROR, new ActionError("errors.database.duplicate",
+                objName));
+        saveErrors(request, aes);
+    }
+
+    private void generalError(HttpServletRequest request, Exception e) {
+        ActionErrors aes = new ActionErrors();
+        aes.add(aes.GLOBAL_ERROR, new ActionError("error.general", e
+                .getMessage()));
+        saveErrors(request, aes);
+        e.printStackTrace();
+    }
 }

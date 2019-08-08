@@ -18,30 +18,28 @@ import org.apache.log4j.Logger;
  *
  * @author ��
  * @version 1.0
- *
  */
 public class ConsoleTestCase extends TestCase {
 
-        protected Logger logger = Logger.getLogger(this.getClass());
+    protected Logger logger = Logger.getLogger(this.getClass());
 
-        protected void setUp() throws Exception {
-                super.setUp();
-        }
+    protected void setUp() throws Exception {
+        super.setUp();
+    }
 
-        protected void tearDown() throws Exception {
-                super.tearDown();
-        }
+    protected void tearDown() throws Exception {
+        super.tearDown();
+    }
 
-        protected Object getBean(String beanId) {
-                return ApplicationContextHolder.getInstance().getBean(beanId);
-        }
+    protected Object getBean(String beanId) {
+        return ApplicationContextHolder.getInstance().getBean(beanId);
+    }
 
-        /**
-         * Ŀ����Ϊ�������Զ�����ʱ������ConsoleTestCase no test method
-         *
-         */
-        public void testTrue() {
-                Assert.assertEquals(true, true);
-        }
+    /**
+     * Ŀ����Ϊ�������Զ�����ʱ������ConsoleTestCase no test method
+     */
+    public void testTrue() {
+        Assert.assertEquals(true, true);
+    }
 
 }

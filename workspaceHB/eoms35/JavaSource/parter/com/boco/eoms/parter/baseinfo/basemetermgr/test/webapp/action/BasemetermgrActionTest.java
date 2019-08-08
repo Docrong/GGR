@@ -73,7 +73,7 @@ public class BasemetermgrActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"basemetermgr.updated"});
+        verifyActionMessages(new String[]{"basemetermgr.updated"});
 
     }
 

@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE hibernate-configuration
-    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-  <session-factory>
+    <session-factory>
 
 
-<property name="show_sql">false</property>
- 	<mapping resource="com/boco/eoms/sheet/industrysms/model/IndustrySmsMain.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/industrysms/model/IndustrySmsLink.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/industrysms/model/IndustrySmsTask.hbm.xml"/>
- 	<mapping resource="com/boco/eoms/sheet/industrysms/model/AutomaticSwitch.hbm.xml"/>
-  </session-factory>
+        <property name="show_sql">false</property>
+        <mapping resource="com/boco/eoms/sheet/industrysms/model/IndustrySmsMain.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/industrysms/model/IndustrySmsLink.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/industrysms/model/IndustrySmsTask.hbm.xml"/>
+        <mapping resource="com/boco/eoms/sheet/industrysms/model/AutomaticSwitch.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>
 

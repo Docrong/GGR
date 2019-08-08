@@ -3,88 +3,87 @@ package com.boco.eoms.commons.voiceMessage.model;
 import com.boco.eoms.base.model.BaseObject;
 
 public class TawConMem {
-	
-	
-		
-		private int userId;
-		
-		private String userName;
-		
-		private String userTel;
-		
-		private String userType;
-		
-		private int joinMode;
-		
-		private String joinTime;
-		
-		private String exitTime;
-		
-		private String strJoinMode;
 
-		public int getUserId() {
-			return userId;
-		}
 
-		public void setUserId(int userId) {
-			this.userId = userId;
-		}
+    private int userId;
 
-		public String getUserName() {
-			return userName;
-		}
+    private String userName;
 
-		public void setUserName(String userName) {
-			this.userName = userName;
-		}
+    private String userTel;
 
-		public String getUserTel() {
-			return userTel;
-		}
+    private String userType;
 
-		public void setUserTel(String userTel) {
-			this.userTel = userTel;
-		}
+    private int joinMode;
 
-		public String getUserType() {
-			return userType;
-		}
+    private String joinTime;
 
-		public void setUserType(String userType) {
-			this.userType = userType;
-		}
+    private String exitTime;
 
-		public int getJoinMode() {
-			return joinMode;
-		}
+    private String strJoinMode;
 
-		public void setJoinMode(int joinMode) {
-			this.joinMode = joinMode;
-		}
+    public int getUserId() {
+        return userId;
+    }
 
-		public String getJoinTime() {
-			return joinTime;
-		}
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
-		public void setJoinTime(String joinTime) {
-			this.joinTime = joinTime;
-		}
+    public String getUserName() {
+        return userName;
+    }
 
-		public String getExitTime() {
-			return exitTime;
-		}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-		public void setExitTime(String exitTime) {
-			this.exitTime = exitTime;
-		}
+    public String getUserTel() {
+        return userTel;
+    }
 
-		public String getStrJoinMode() {
-			return strJoinMode;
-		}
+    public void setUserTel(String userTel) {
+        this.userTel = userTel;
+    }
 
-		public void setStrJoinMode(String strJoinMode) {
-			this.strJoinMode = strJoinMode;
-		}
+    public String getUserType() {
+        return userType;
+    }
 
-	}
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    public int getJoinMode() {
+        return joinMode;
+    }
+
+    public void setJoinMode(int joinMode) {
+        this.joinMode = joinMode;
+    }
+
+    public String getJoinTime() {
+        return joinTime;
+    }
+
+    public void setJoinTime(String joinTime) {
+        this.joinTime = joinTime;
+    }
+
+    public String getExitTime() {
+        return exitTime;
+    }
+
+    public void setExitTime(String exitTime) {
+        this.exitTime = exitTime;
+    }
+
+    public String getStrJoinMode() {
+        return strJoinMode;
+    }
+
+    public void setStrJoinMode(String strJoinMode) {
+        this.strJoinMode = strJoinMode;
+    }
+
+}
 

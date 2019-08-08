@@ -17,17 +17,15 @@ import com.boco.eoms.commons.system.dict.model.IDictRelationItem;
  * <p>
  * Date:2007-10-25 16:29:10
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public interface IDictRelationDao {
     /**
      * 通过关联id获取关联关系
-     * 
-     * @param relationId
-     *            关联id
+     *
+     * @param relationId 关联id
      * @return 返回关联关系
      * @throws DictDAOException
      */
@@ -36,18 +34,18 @@ public interface IDictRelationDao {
 
     /**
      * 通过关联关系id+源字典项id获取关联关系
-     * 
+     *
      * @param relationId
      * @param sourceItemId
      * @return
      * @throws DictServiceException
      */
     public IDictRelationItem findRelationItem(Object relationId,
-            Object sourceItemId) throws DictDAOException;
+                                              Object sourceItemId) throws DictDAOException;
 
     /**
      * 通过关联关系id+取所有关联子项
-     * 
+     *
      * @param relationId
      * @param sourceItemId
      * @return
@@ -57,7 +55,7 @@ public interface IDictRelationDao {
 
     /**
      * 通过relationId取关联关系，关系中不包括关联项内容
-     * 
+     *
      * @param relationId
      * @return
      * @throws DictDAOException

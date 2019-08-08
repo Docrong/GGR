@@ -68,23 +68,20 @@ public class ConnStatement {
             if (connectionType == 1) {
                 Class.forName(jdbcDriverName);
                 conn = DriverManager.getConnection(this.jdbcUrl);
-            }
-            else if (connectionType == 2) {
+            } else if (connectionType == 2) {
                 Context env = (Context) new InitialContext()
                         .lookup("java:comp/env");
                 DataSource pool = (DataSource) env.lookup("jdbc/boco");
                 conn = pool.getConnection();
-            }
-            else {
+            } else {
                 pool = ConnectionPool.getInstance();
                 conn = pool.getConnection();
             }
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
 
-            return conn;
+        return conn;
 
 
     }
@@ -251,8 +248,7 @@ public class ConnStatement {
 
                 conn.close();
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
         }
     }
 }

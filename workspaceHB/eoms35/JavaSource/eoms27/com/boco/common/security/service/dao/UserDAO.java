@@ -20,16 +20,17 @@ import com.boco.common.security.service.model.UserDO;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author weis
  * @version 1.0
  */
 
 public interface UserDAO extends BaseDAO {
-     /**
+    /**
      * This is the method that creates a new user in the system, with all the
      * specified attributes.
      *
-     * @param  usr  user to persist
+     * @param usr user to persist
      * @throws ObjectAlreadyExistException , SecurityManagerDaoException
      */
     public UserDO createUser(UserDO usr) throws ObjectAlreadyExistException, SecurityManagerDaoException;
@@ -40,7 +41,7 @@ public interface UserDAO extends BaseDAO {
      * true is returned and the user parameter is not longer valid. Return false
      * on any failure.
      *
-     * @param  user  reference on the user to be deleted.
+     * @param user reference on the user to be deleted.
      * @throws ObjectNotExistException , SecurityManagerDaoException
      */
     public void deleteUser(UserDO user) throws ObjectNotExistException, SecurityManagerDaoException;
@@ -68,7 +69,7 @@ public interface UserDAO extends BaseDAO {
      * Load all the user data and attributes. On success a reference on the user
      * is returned, otherwise NULL is returned.
      *
-     * @param  name  User's identification name.
+     * @param name User's identification name.
      * @return Return a reference on a new created User object.
      * @throws ObjectNotExistException ,SecurityManagerDaoException
      */
@@ -80,16 +81,17 @@ public interface UserDAO extends BaseDAO {
      * Load all the user data and attributes. On success a reference on the user
      * is returned, otherwise NULL is returned.
      *
-     * @param  name  User's full name.
+     * @param name User's full name.
      * @return Return a vector of all reference on a new created User object.
      * @throws ObjectNotExistException ,SecurityManagerDaoException
      */
     public Vector lookupUserWithUserName(String name)
-	throws ObjectNotExistException, SecurityManagerDaoException;
-    
+            throws ObjectNotExistException, SecurityManagerDaoException;
+
     /**
      * Load all the user's data and attributes. On success a reference on the user
      * is returned. otherwise NULL is returned
+     *
      * @param user - User Data Object.
      * @return Return a reference on a new created User Object.
      * @throws ObjectNotExistException
@@ -99,8 +101,6 @@ public interface UserDAO extends BaseDAO {
             throws ObjectNotExistException, SecurityManagerDaoException;
 
 
-    
-    
     /**
      * This method return all users' keys in the system.
      *
@@ -114,7 +114,6 @@ public interface UserDAO extends BaseDAO {
      *
      * @param index start index
      * @param count count
-     *
      * @return Return a vector of strings holding the user identification key .
      * @throws SecurityManagerDaoException
      */
@@ -123,8 +122,7 @@ public interface UserDAO extends BaseDAO {
     /**
      * Return the number of user in the system.
      *
-     * @return
-     *      Return the number of users in the system.
+     * @return Return the number of users in the system.
      * @throws SecurityManagerDaoException
      */
     public int getUsersCount() throws SecurityManagerDaoException;
@@ -138,7 +136,8 @@ public interface UserDAO extends BaseDAO {
 
     /**
      * set role to user
-     * @param usr user object
+     *
+     * @param usr  user object
      * @param role role to add
      * @throws ObjectAlreadyExistException , SecurityManagerDaoException
      */
@@ -148,7 +147,8 @@ public interface UserDAO extends BaseDAO {
 
     /**
      * remove role from user
-     * @param usr user object
+     *
+     * @param usr  user object
      * @param role role to remove
      * @throws ObjectNotExistException , SecurityManagerDaoException
      */
@@ -157,6 +157,7 @@ public interface UserDAO extends BaseDAO {
 
     /**
      * get roles belong to the user
+     *
      * @param usr user object
      * @return vector containg roles assigned to the user
      * @throws SecurityManagerDaoException
@@ -165,6 +166,7 @@ public interface UserDAO extends BaseDAO {
 
     /**
      * clear all roles
+     *
      * @param usr user to clear roles
      * @throws SecurityManagerDaoException
      */
@@ -176,9 +178,10 @@ public interface UserDAO extends BaseDAO {
 
     /**
      * get department the user belonged to
+     *
      * @param usr user to retrieve
      */
-   public Vector getDepartmentList(Object usr) throws SecurityManagerDaoException;
+    public Vector getDepartmentList(Object usr) throws SecurityManagerDaoException;
 
     // ------------------------------------------------
     //  dataRange management
@@ -186,42 +189,45 @@ public interface UserDAO extends BaseDAO {
 
     /**
      * Set Data Range to user
-     * @param usr User Object
+     *
+     * @param usr   User Object
      * @param range DataRange Object
      * @throws ObjectNotExistException
      * @throws ObjectAlreadyExistException
      * @throws SecurityManagerDaoException
      */
 
-    public void setRange(Object usr,Object range)
-        throws ObjectNotExistException, ObjectAlreadyExistException, SecurityManagerDaoException;
+    public void setRange(Object usr, Object range)
+            throws ObjectNotExistException, ObjectAlreadyExistException, SecurityManagerDaoException;
 
     /**
      * Remove Data Range from user
-     * @param usr User Object
+     *
+     * @param usr   User Object
      * @param range DataRange Object
      * @throws ObjectNotExistException
      * @throws SecurityManagerDaoException
      */
-    public void removeRange(Object usr,Object range) throws ObjectNotExistException, SecurityManagerDaoException;
+    public void removeRange(Object usr, Object range) throws ObjectNotExistException, SecurityManagerDaoException;
 
     /**
      * Get Data Range belongs to user
+     *
      * @param usr User Object
-     * @return  RangeList Data Range List belongs to user
+     * @return RangeList Data Range List belongs to user
      * @throws SecurityManagerDaoException
      */
     public Vector getRangeList(Object usr) throws SecurityManagerDaoException;
 
     /**
-     *Clear Data Range belongs to user
+     * Clear Data Range belongs to user
+     *
      * @param usr User Object
      * @throws SecurityManagerDaoException
      */
 //    public void clearRange(Object usr) throws SecurityManagerDaoException;
-
     public Vector searchUsers(Map filter)
-        throws SecurityManagerDaoException;
+            throws SecurityManagerDaoException;
 
     public void lockUser(UserDO user)
             throws ObjectNotExistException, SecurityManagerDaoException;
@@ -229,21 +235,21 @@ public interface UserDAO extends BaseDAO {
     //--------------------------------------------------
     // Relationship management
     //--------------------------------------------------
-    public void setRelationship(UserDO user,String relationship)
-            throws ObjectNotExistException, ObjectAlreadyExistException,SecurityManagerDaoException;
+    public void setRelationship(UserDO user, String relationship)
+            throws ObjectNotExistException, ObjectAlreadyExistException, SecurityManagerDaoException;
 
     public void removeRelationship(Object usr, String relationship)
-                throws ObjectNotExistException, SecurityManagerDaoException;
+            throws ObjectNotExistException, SecurityManagerDaoException;
 
     public Vector getPermissionList(UserDO user)
-            throws SecurityManagerDaoException,ObjectNotExistException;
+            throws SecurityManagerDaoException, ObjectNotExistException;
 
     public Vector getRangeList(UserDO user)
-            throws SecurityManagerDaoException,ObjectNotExistException;
+            throws SecurityManagerDaoException, ObjectNotExistException;
 
-    public String getUserRelationship(UserDO user,String permissionID);
+    public String getUserRelationship(UserDO user, String permissionID);
 
-    public Vector getRangeByPermissionID(UserDO user,String permissionID)
-        throws SecurityManagerDaoException,ObjectNotExistException;
+    public Vector getRangeByPermissionID(UserDO user, String permissionID)
+            throws SecurityManagerDaoException, ObjectNotExistException;
 
 }

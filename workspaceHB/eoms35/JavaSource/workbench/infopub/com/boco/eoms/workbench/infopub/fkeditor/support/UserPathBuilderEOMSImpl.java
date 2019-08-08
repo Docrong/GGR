@@ -16,22 +16,21 @@ import net.fckeditor.requestcycle.UserPathBuilder;
  * <p>
  * Date:Jul 22, 2008 2:52:16 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
 public class UserPathBuilderEOMSImpl implements UserPathBuilder {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see net.fckeditor.requestcycle.UserPathBuilder#getUserFilesPath(javax.servlet.http.HttpServletRequest)
-	 */
-	public String getUserFilesPath(HttpServletRequest request) {
-		TawSystemSessionForm form = (TawSystemSessionForm) request.getSession()
-				.getAttribute("sessionform");
-		return "/userfiles/" + form.getUserid();
-	}
+    /*
+     * (non-Javadoc)
+     *
+     * @see net.fckeditor.requestcycle.UserPathBuilder#getUserFilesPath(javax.servlet.http.HttpServletRequest)
+     */
+    public String getUserFilesPath(HttpServletRequest request) {
+        TawSystemSessionForm form = (TawSystemSessionForm) request.getSession()
+                .getAttribute("sessionform");
+        return "/userfiles/" + form.getUserid();
+    }
 
 }

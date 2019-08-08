@@ -113,7 +113,7 @@ public class SAXReaderTest {
                         && network6.equals("") && network7.equals("")) {
                     defaultallowtime = String.valueOf(map.get("allowtime"));
                 } else {
-                    if (( network1.equals(mainNetWork1)) &&
+                    if ((network1.equals(mainNetWork1)) &&
                             (network2.equals("") || network2.equals(mainNetWork2)) &&
                             (network3.equals("") || network3.equals(mainNetWork3)) &&
                             (network4.equals("") || network4.equals(mainNetWork4)) &&

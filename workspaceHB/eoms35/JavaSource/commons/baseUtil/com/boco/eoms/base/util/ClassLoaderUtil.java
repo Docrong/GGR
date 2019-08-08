@@ -1,4 +1,5 @@
 package com.boco.eoms.base.util;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -17,10 +18,9 @@ import org.apache.log4j.Logger;
  * <p>
  * Date:2007-11-19 11:07:44
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class ClassLoaderUtil {
     private static Logger log = Logger.getLogger(ClassLoaderUtil.class);
@@ -31,9 +31,9 @@ public class ClassLoaderUtil {
 
     /**
      * 加载Java类。 使用全限定类名
-     * 
-     * @paramclassName
+     *
      * @return
+     * @paramclassName
      */
     public static Class loadClass(String className) {
         try {
@@ -45,7 +45,7 @@ public class ClassLoaderUtil {
 
     /**
      * 得到类加载器
-     * 
+     *
      * @return
      */
     public static ClassLoader getClassLoader() {
@@ -55,9 +55,8 @@ public class ClassLoaderUtil {
 
     /**
      * 提供相对于classpath的资源路径，返回文件的输入流
-     * 
-     * @param
-     * relativePath必须传递资源的相对路径。是相对于classpath的路径。如果需要查找classpath外部的资源，需要使用../来查找
+     *
+     * @param relativePath必须传递资源的相对路径。是相对于classpath的路径。如果需要查找classpath外部的资源，需要使用../来查找
      * @return 文件输入流
      * @throws IOException
      * @throws MalformedURLException
@@ -74,7 +73,6 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * 
      * @param url
      * @return
      * @throws IOException
@@ -90,11 +88,10 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * 
-     * @paramr elativePath必须传递资源的相对路径。是相对于classpath的路径。如果需要查找classpath外部的资源，需要使用../来查找
      * @return
      * @throws MalformedURLException
      * @throws IOException
+     * @paramr elativePath必须传递资源的相对路径。是相对于classpath的路径。如果需要查找classpath外部的资源，需要使用../来查找
      */
     public static InputStream getStreamByExtendResource(String relativePath)
             throws MalformedURLException, IOException {
@@ -104,7 +101,7 @@ public class ClassLoaderUtil {
 
     /**
      * 提供相对于classpath的资源路径，返回属性对象，它是一个散列表
-     * 
+     *
      * @param resource
      * @return
      */
@@ -121,7 +118,7 @@ public class ClassLoaderUtil {
 
     /**
      * 得到本Class所在的ClassLoader的Classpat的绝对路径。 URL形式的
-     * 
+     *
      * @return
      */
     public static String getAbsolutePathOfClassLoaderClassPath() {
@@ -133,9 +130,7 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * 
-     * @param relativePath
-     *            必须传递资源的相对路径。是相对于classpath的路径。如果需要查找classpath外部的资源，需要使用../来查找
+     * @param relativePath 必须传递资源的相对路径。是相对于classpath的路径。如果需要查找classpath外部的资源，需要使用../来查找
      * @return 资源的绝对URL
      * @throws MalformedURLException
      */
@@ -144,7 +139,7 @@ public class ClassLoaderUtil {
 
         //ClassLoaderUtil.log.info(Integer.valueOf(relativePath.indexOf("../")))
         // ;
-        if (!(relativePath.indexOf("../")>-1)) {
+        if (!(relativePath.indexOf("../") > -1)) {
             return ClassLoaderUtil.getResource(relativePath);
 
         }
@@ -169,7 +164,6 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * 
      * @param source
      * @param dest
      * @return
@@ -186,7 +180,6 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * 
      * @param source
      * @param dest
      * @param num
@@ -203,7 +196,6 @@ public class ClassLoaderUtil {
     }
 
     /**
-     * 
      * @param resource
      * @return
      */
@@ -220,15 +212,14 @@ public class ClassLoaderUtil {
 
         //ClassLoaderUtil.getExtendResource("../spring/dao.xml");
         //ClassLoaderUtil.getExtendResource("../../../src/log4j.properties");
-        
-        
+
 
         //        ClassLoaderUtil.getExtendResource("log4j.properties");
         //
         //        System.out.println(ClassLoaderUtil.getClassLoader().getResource(
         //                "log4j.properties").toString());
 
-        System.out.println("classpath:"+getExtendResource("config/applicationContext-all.xml"));
+        System.out.println("classpath:" + getExtendResource("config/applicationContext-all.xml"));
 
     }
 

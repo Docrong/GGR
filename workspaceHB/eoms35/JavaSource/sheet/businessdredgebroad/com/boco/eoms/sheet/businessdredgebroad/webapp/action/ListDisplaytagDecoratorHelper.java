@@ -7,22 +7,22 @@ import com.boco.eoms.sheet.businessdredgebroad.task.IBusinessDredgebroadTask;
 import com.boco.eoms.sheet.base.webapp.action.ProcessListDisplaytagDecoratorHelper;
 
 public class ListDisplaytagDecoratorHelper extends
-		ProcessListDisplaytagDecoratorHelper {
-	public String getUrgentDegree() {
-		IBusinessDredgebroadTask task = (IBusinessDredgebroadTask) getCurrentRowObject();
+        ProcessListDisplaytagDecoratorHelper {
+    public String getUrgentDegree() {
+        IBusinessDredgebroadTask task = (IBusinessDredgebroadTask) getCurrentRowObject();
         ID2NameService service = (ID2NameService) ApplicationContextHolder
-        .getInstance().getBean("ID2NameGetServiceCatch");
+                .getInstance().getBean("ID2NameGetServiceCatch");
         String name = service.id2Name(task.getUrgentDegree(), "ItawSystemDictTypeDao");
-        
+
         return name;
     }
-	
-	public String getBusinessType() {
-		IBusinessDredgebroadTask task = (IBusinessDredgebroadTask) getCurrentRowObject();
+
+    public String getBusinessType() {
+        IBusinessDredgebroadTask task = (IBusinessDredgebroadTask) getCurrentRowObject();
         ID2NameService service = (ID2NameService) ApplicationContextHolder
-        .getInstance().getBean("ID2NameGetServiceCatch");
+                .getInstance().getBean("ID2NameGetServiceCatch");
         String name = service.id2Name(task.getBusinessType(), "ItawSystemDictTypeDao");
-        
+
         return name;
     }
 }

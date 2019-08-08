@@ -73,7 +73,7 @@ public class PnrcompactActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"pnrcompact.updated"});
+        verifyActionMessages(new String[]{"pnrcompact.updated"});
 
     }
 

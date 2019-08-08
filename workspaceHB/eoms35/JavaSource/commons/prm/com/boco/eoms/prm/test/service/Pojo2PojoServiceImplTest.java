@@ -22,10 +22,9 @@ import com.boco.eoms.prm.service.IPojo2PojoService;
  * <p>
  * Date:2007-8-7 14:36:10
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Pojo2PojoServiceImplTest extends ConsoleTestCase {
 

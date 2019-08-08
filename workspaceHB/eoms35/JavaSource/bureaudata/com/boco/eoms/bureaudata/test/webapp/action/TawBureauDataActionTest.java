@@ -73,7 +73,7 @@ public class TawBureauDataActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawBureauData.updated"});
+        verifyActionMessages(new String[]{"tawBureauData.updated"});
 
     }
 

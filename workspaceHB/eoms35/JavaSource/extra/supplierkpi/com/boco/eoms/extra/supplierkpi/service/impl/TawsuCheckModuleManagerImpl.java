@@ -14,6 +14,7 @@ public class TawsuCheckModuleManagerImpl extends BaseManager implements ITawsuCh
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawsuCheckModuleDao(TawsuCheckModuleDao dao) {
@@ -47,12 +48,14 @@ public class TawsuCheckModuleManagerImpl extends BaseManager implements ITawsuCh
     public void removeTawsuCheckModule(final String id) {
         dao.removeTawsuCheckModule(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawsuCheckModules(final int curPage, final int pageSize) {
-        return dao.getTawsuCheckModules(curPage, pageSize,null);
+        return dao.getTawsuCheckModules(curPage, pageSize, null);
     }
+
     public Map getTawsuCheckModules(final int curPage, final int pageSize, final String whereStr) {
         return dao.getTawsuCheckModules(curPage, pageSize, whereStr);
     }

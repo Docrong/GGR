@@ -1,6 +1,6 @@
 /**
  * C_eomsProcessHandleWebServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.3 Oct 05, 2005 (05:23:37 EDT) WSDL2Java emitter.
  */
@@ -26,7 +26,7 @@ public class C_eomsProcessHandleWebServiceLocator extends org.apache.axis.client
 
     // Use to get a proxy class for c_eomsProcessHandleWebServiceHttpPort
     private java.lang.String c_eomsProcessHandleWebServiceHttpPort_address = StaticMethod.nullObject2String
-    					(XmlManage.getFile("/config/complaint-util.xml").getProperty("wsdlurl"));
+            (XmlManage.getFile("/config/complaint-util.xml").getProperty("wsdlurl"));
 
     public java.lang.String getc_eomsProcessHandleWebServiceHttpPortAddress() {
         return c_eomsProcessHandleWebServiceHttpPort_address;
@@ -44,11 +44,10 @@ public class C_eomsProcessHandleWebServiceLocator extends org.apache.axis.client
     }
 
     public C_eomsProcessHandleWebServicePortType getc_eomsProcessHandleWebServiceHttpPort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(c_eomsProcessHandleWebServiceHttpPort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getc_eomsProcessHandleWebServiceHttpPort(endpoint);
@@ -59,8 +58,7 @@ public class C_eomsProcessHandleWebServiceLocator extends org.apache.axis.client
             C_eomsProcessHandleWebServiceHttpBindingStub _stub = new C_eomsProcessHandleWebServiceHttpBindingStub(portAddress, this);
             _stub.setPortName(getc_eomsProcessHandleWebServiceHttpPortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -81,8 +79,7 @@ public class C_eomsProcessHandleWebServiceLocator extends org.apache.axis.client
                 _stub.setPortName(getc_eomsProcessHandleWebServiceHttpPortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -100,8 +97,7 @@ public class C_eomsProcessHandleWebServiceLocator extends org.apache.axis.client
         java.lang.String inputPortName = portName.getLocalPart();
         if ("c_eomsProcessHandleWebServiceHttpPort".equals(inputPortName)) {
             return getc_eomsProcessHandleWebServiceHttpPort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -123,22 +119,20 @@ public class C_eomsProcessHandleWebServiceLocator extends org.apache.axis.client
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("c_eomsProcessHandleWebServiceHttpPort".equals(portName)) {
+
+        if ("c_eomsProcessHandleWebServiceHttpPort".equals(portName)) {
             setc_eomsProcessHandleWebServiceHttpPortEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

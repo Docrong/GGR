@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IBusinessFlowService;
  * <p>
  * Tue Apr 25 11:43:03 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public interface ISecurityObjAttributeFlowManager extends IBusinessFlowService {
- 
- }
+
+public interface ISecurityObjAttributeFlowManager extends IBusinessFlowService {
+
+}

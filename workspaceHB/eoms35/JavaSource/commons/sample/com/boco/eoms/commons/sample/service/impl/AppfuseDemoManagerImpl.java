@@ -14,6 +14,7 @@ public class AppfuseDemoManagerImpl extends BaseManager implements IAppfuseDemoM
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setAppfuseDemoDao(AppfuseDemoDao dao) {
@@ -47,12 +48,14 @@ public class AppfuseDemoManagerImpl extends BaseManager implements IAppfuseDemoM
     public void removeAppfuseDemo(final String id) {
         dao.removeAppfuseDemo(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getAppfuseDemos(final Integer curPage, final Integer pageSize) {
-        return dao.getAppfuseDemos(curPage, pageSize,null);
+        return dao.getAppfuseDemos(curPage, pageSize, null);
     }
+
     public Map getAppfuseDemos(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getAppfuseDemos(curPage, pageSize, whereStr);
     }

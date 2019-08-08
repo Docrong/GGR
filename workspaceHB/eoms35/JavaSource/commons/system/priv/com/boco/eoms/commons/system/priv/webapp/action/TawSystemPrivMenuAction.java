@@ -24,162 +24,162 @@ import java.util.Map;
 
 /**
  * Action class to handle CRUD on a TawSystemPrivMenu object
- * 
+ *
  * @struts.action name="tawSystemPrivMenuForm" path="/tawSystemPrivMenus"
- *                scope="request" validate="false" parameter="method"
- *                input="mainMenu"
+ * scope="request" validate="false" parameter="method"
+ * input="mainMenu"
  * @struts.action name="tawSystemPrivMenuForm" path="/editTawSystemPrivMenu"
- *                scope="request" validate="false" parameter="method"
- *                input="list"
+ * scope="request" validate="false" parameter="method"
+ * input="list"
  * @struts.action name="tawSystemPrivMenuForm" path="/saveTawSystemPrivMenu"
- *                scope="request" validate="true" parameter="method"
- *                input="edit"
+ * scope="request" validate="true" parameter="method"
+ * input="edit"
  * @struts.action-set-property property="cancellable" value="true"
  * @struts.action-forward name="edit"
- *                        path="/WEB-INF/pages/tawSystemPrivMenu/tawSystemPrivMenuForm.jsp"
+ * path="/WEB-INF/pages/tawSystemPrivMenu/tawSystemPrivMenuForm.jsp"
  * @struts.action-forward name="list"
- *                        path="/WEB-INF/pages/tawSystemPrivMenu/tawSystemPrivMenuList.jsp"
+ * path="/WEB-INF/pages/tawSystemPrivMenu/tawSystemPrivMenuList.jsp"
  * @struts.action-forward name="search" path="/tawSystemPrivMenus.html"
- *                        redirect="true"
+ * redirect="true"
  */
 public final class TawSystemPrivMenuAction extends BaseAction {
-	public ActionForward cancel(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("search");
-	}
+    public ActionForward cancel(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("search");
+    }
 
-	public void xdelete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
-		mgr.removeTawSystemPrivMenu(id);
-	}
+    public void xdelete(ActionMapping mapping, ActionForm form,
+                        HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
+        mgr.removeTawSystemPrivMenu(id);
+    }
 
-	public void xedit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TawSystemPrivMenuForm tawSystemPrivMenuForm = (TawSystemPrivMenuForm) form;
+    public void xedit(ActionMapping mapping, ActionForm form,
+                      HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TawSystemPrivMenuForm tawSystemPrivMenuForm = (TawSystemPrivMenuForm) form;
 
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String _strCurUserId = sessionform.getUserid();
-		tawSystemPrivMenuForm.setOwnerId(_strCurUserId);
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String _strCurUserId = sessionform.getUserid();
+        tawSystemPrivMenuForm.setOwnerId(_strCurUserId);
 
-		if (tawSystemPrivMenuForm.getPrivid() != null) {
-			ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
-			TawSystemPrivMenu tawSystemPrivMenu = mgr
-					.getTawSystemPrivMenu(String.valueOf(tawSystemPrivMenuForm
-							.getPrivid()));
-			tawSystemPrivMenuForm = (TawSystemPrivMenuForm) convert(tawSystemPrivMenu);
-			updateFormBean(mapping, request, tawSystemPrivMenuForm);
-		}
-	}
+        if (tawSystemPrivMenuForm.getPrivid() != null) {
+            ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
+            TawSystemPrivMenu tawSystemPrivMenu = mgr
+                    .getTawSystemPrivMenu(String.valueOf(tawSystemPrivMenuForm
+                            .getPrivid()));
+            tawSystemPrivMenuForm = (TawSystemPrivMenuForm) convert(tawSystemPrivMenu);
+            updateFormBean(mapping, request, tawSystemPrivMenuForm);
+        }
+    }
 
-	// AJAX 保存菜单方案
-	public void xsave(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    // AJAX 保存菜单方案
+    public void xsave(ActionMapping mapping, ActionForm form,
+                      HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-		TawSystemPrivMenuForm tawSystemPrivMenuForm = (TawSystemPrivMenuForm) form;
-		boolean isNew = ("".equals(tawSystemPrivMenuForm.getPrivid()) || tawSystemPrivMenuForm
-				.getPrivid() == null);
+        TawSystemPrivMenuForm tawSystemPrivMenuForm = (TawSystemPrivMenuForm) form;
+        boolean isNew = ("".equals(tawSystemPrivMenuForm.getPrivid()) || tawSystemPrivMenuForm
+                .getPrivid() == null);
 
-		ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
-		TawSystemPrivMenu tawSystemPrivMenu = (TawSystemPrivMenu) convert(tawSystemPrivMenuForm);
-		mgr.saveTawSystemPrivMenu(tawSystemPrivMenu);
-	}
- 
-	public void xget(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String _strId = request.getParameter("id");
-		ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
-		TawSystemPrivMenu priv = (TawSystemPrivMenu) mgr
-				.getTawSystemPrivMenu(_strId);
+        ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
+        TawSystemPrivMenu tawSystemPrivMenu = (TawSystemPrivMenu) convert(tawSystemPrivMenuForm);
+        mgr.saveTawSystemPrivMenu(tawSystemPrivMenu);
+    }
 
-		JSONObject jsonRoot = new JSONObject();
-		jsonRoot = JSONObject.fromObject(priv);
+    public void xget(ActionMapping mapping, ActionForm form,
+                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String _strId = request.getParameter("id");
+        ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
+        TawSystemPrivMenu priv = (TawSystemPrivMenu) mgr
+                .getTawSystemPrivMenu(_strId);
 
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-	}
+        JSONObject jsonRoot = new JSONObject();
+        jsonRoot = JSONObject.fromObject(priv);
 
-	// 获取菜单方案的JSON数据列表
-	public void xGetJSONList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+    }
 
-		int pageIndex = StaticMethod.nullObject2int(request
-				.getParameter("pageIndex"));
-		// The first pageIndex of Ext grid is 1 but here we need 0
-		pageIndex = pageIndex > 0 ? pageIndex - 1 : 0;
-		Integer pageSize = new Integer(StaticMethod.nullObject2int(request
-				.getParameter("pageSize")));
+    // 获取菜单方案的JSON数据列表
+    public void xGetJSONList(ActionMapping mapping, ActionForm form,
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-		ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		Map map = (Map) mgr.getTawSystemPrivMenus(new Integer(pageIndex),
-				pageSize); // 
-		List list;
-		if (sessionform.isAdmin()) {
-			list = (List) map.get("result");
-		} else {
-			list = mgr.getPrivMenubyUserid(sessionform.getUserid());
-		}
-		JSONArray jsonList = new JSONArray();
+        int pageIndex = StaticMethod.nullObject2int(request
+                .getParameter("pageIndex"));
+        // The first pageIndex of Ext grid is 1 but here we need 0
+        pageIndex = pageIndex > 0 ? pageIndex - 1 : 0;
+        Integer pageSize = new Integer(StaticMethod.nullObject2int(request
+                .getParameter("pageSize")));
 
-		for (int i = 0; i < list.size(); i++) {
-			TawSystemPrivMenu priv = (TawSystemPrivMenu) list.get(i);
-			JSONObject jitem = new JSONObject();
-			jitem.put("id", priv.getPrivid());
-			jitem.put("name", priv.getName());
-			jitem.put("ownerId", priv.getOwnerId());
-			jitem.put("remark", priv.getRemark());
-			jsonList.put(jitem);
-		}
+        ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        Map map = (Map) mgr.getTawSystemPrivMenus(new Integer(pageIndex),
+                pageSize); //
+        List list;
+        if (sessionform.isAdmin()) {
+            list = (List) map.get("result");
+        } else {
+            list = mgr.getPrivMenubyUserid(sessionform.getUserid());
+        }
+        JSONArray jsonList = new JSONArray();
 
-		JSONObject jsonRoot = new JSONObject();
-		jsonRoot.put("total", (Integer)map.get("total"));
-		jsonRoot.put("rows", jsonList);
+        for (int i = 0; i < list.size(); i++) {
+            TawSystemPrivMenu priv = (TawSystemPrivMenu) list.get(i);
+            JSONObject jitem = new JSONObject();
+            jitem.put("id", priv.getPrivid());
+            jitem.put("name", priv.getName());
+            jitem.put("ownerId", priv.getOwnerId());
+            jitem.put("remark", priv.getRemark());
+            jsonList.put(jitem);
+        }
 
-		response.setContentType("text/xml;charset=UTF-8");
-		response.getWriter().print(jsonRoot.toString());
-	}
+        JSONObject jsonRoot = new JSONObject();
+        jsonRoot.put("total", (Integer) map.get("total"));
+        jsonRoot.put("rows", jsonList);
 
-	/**
-	 * 
-	 */
-	public ActionForward next(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// Extract attributes and parameters we will need
-		ActionMessages messages = new ActionMessages();
-		TawSystemPrivMenuForm tawSystemPrivMenuForm = (TawSystemPrivMenuForm) form;
+        response.setContentType("text/xml;charset=UTF-8");
+        response.getWriter().print(jsonRoot.toString());
+    }
 
-		boolean isNew = ("".equals(tawSystemPrivMenuForm.getPrivid()) || tawSystemPrivMenuForm
-				.getPrivid() == null);
+    /**
+     *
+     */
+    public ActionForward next(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // Extract attributes and parameters we will need
+        ActionMessages messages = new ActionMessages();
+        TawSystemPrivMenuForm tawSystemPrivMenuForm = (TawSystemPrivMenuForm) form;
 
-		ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
-		TawSystemPrivMenu tawSystemPrivMenu = (TawSystemPrivMenu) convert(tawSystemPrivMenuForm);
-		mgr.saveTawSystemPrivMenu(tawSystemPrivMenu);
+        boolean isNew = ("".equals(tawSystemPrivMenuForm.getPrivid()) || tawSystemPrivMenuForm
+                .getPrivid() == null);
 
-		// add success messages
-		if (isNew) {
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"tawSystemPrivMenu.added"));
-			saveMessages(request.getSession(), messages);
-		} else {
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"tawSystemPrivMenu.updated"));
-			saveMessages(request, messages);
-		}
+        ITawSystemPrivMenuManager mgr = (ITawSystemPrivMenuManager) getBean("ItawSystemPrivMenuManager");
+        TawSystemPrivMenu tawSystemPrivMenu = (TawSystemPrivMenu) convert(tawSystemPrivMenuForm);
+        mgr.saveTawSystemPrivMenu(tawSystemPrivMenu);
 
-		request.setAttribute("name", tawSystemPrivMenu.getName());
-		request.setAttribute("privid", tawSystemPrivMenu.getPrivid());
-		return mapping.findForward("next");
-	}
+        // add success messages
+        if (isNew) {
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "tawSystemPrivMenu.added"));
+            saveMessages(request.getSession(), messages);
+        } else {
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "tawSystemPrivMenu.updated"));
+            saveMessages(request, messages);
+        }
+
+        request.setAttribute("name", tawSystemPrivMenu.getName());
+        request.setAttribute("privid", tawSystemPrivMenu.getPrivid());
+        return mapping.findForward("next");
+    }
 
 }

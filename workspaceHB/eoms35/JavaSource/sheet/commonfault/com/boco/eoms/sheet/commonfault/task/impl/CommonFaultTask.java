@@ -9,46 +9,38 @@ import com.boco.eoms.sheet.base.task.ITask;
 import com.boco.eoms.sheet.base.task.impl.TaskImpl;
 
 public class CommonFaultTask extends TaskImpl
-	implements ITask
-{
+        implements ITask {
 
-	private String preDealDept;
-	private String preDealUserId;
-	private String sendRejectFlag;
+    private String preDealDept;
+    private String preDealUserId;
+    private String sendRejectFlag;
 
-	public CommonFaultTask()
-	{
-	}
+    public CommonFaultTask() {
+    }
 
-	public String getPreDealDept()
-	{
-		return preDealDept;
-	}
+    public String getPreDealDept() {
+        return preDealDept;
+    }
 
-	public void setPreDealDept(String preDealDept)
-	{
-		this.preDealDept = preDealDept;
-	}
+    public void setPreDealDept(String preDealDept) {
+        this.preDealDept = preDealDept;
+    }
 
-	public String getPreDealUserId()
-	{
-		return preDealUserId;
-	}
+    public String getPreDealUserId() {
+        return preDealUserId;
+    }
 
-	public void setPreDealUserId(String preDealUserId)
-	{
-		this.preDealUserId = preDealUserId;
-	}
+    public void setPreDealUserId(String preDealUserId) {
+        this.preDealUserId = preDealUserId;
+    }
 
-	public String getSendRejectFlag()
-	{
-		return sendRejectFlag;
-	}
+    public String getSendRejectFlag() {
+        return sendRejectFlag;
+    }
 
-	public void setSendRejectFlag(String sendRejectFlag)
-	{
-		this.sendRejectFlag = sendRejectFlag;
-	}
+    public void setSendRejectFlag(String sendRejectFlag) {
+        this.sendRejectFlag = sendRejectFlag;
+    }
 }
 
 	

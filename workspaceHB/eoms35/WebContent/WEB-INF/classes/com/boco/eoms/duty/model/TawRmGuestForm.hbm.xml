@@ -1,77 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
     <class name="com.boco.eoms.duty.model.TawRmGuestform"
-            table="taw_rm_guestform"
+           table="taw_rm_guestform"
     >
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="native" />
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="native"/>
 
-    </id>
+        </id>
 
-	<property
-            name="guestname"
-            	column="guestname"
+        <property
+                name="guestname"
+                column="guestname"
                 length="50"
                 not-null="false"
                 unique="false"
         >
 
-    </property>
-	<property
-            name="company"
-            	column="company"
+        </property>
+        <property
+                name="company"
+                column="company"
                 length="50"
                 not-null="false"
                 unique="false"
         >
 
-    </property>
-	<property
-            name="sender"
-            	column="sender"
-                length="50"
-                not-null="false"
-                unique="false"
-        >
-    </property>
-    <property
-            name="department"
-            	column="department"
+        </property>
+        <property
+                name="sender"
+                column="sender"
                 length="50"
                 not-null="false"
                 unique="false"
         >
         </property>
         <property
-            name="dutyman"
-            	column="dutyman"
+                name="department"
+                column="department"
                 length="50"
                 not-null="false"
                 unique="false"
         >
         </property>
-	<property
-            name="inputdate"
-            	column="inputdate"
+        <property
+                name="dutyman"
+                column="dutyman"
+                length="50"
+                not-null="false"
+                unique="false"
+        >
+        </property>
+        <property
+                name="inputdate"
+                column="inputdate"
                 length="25"
                 not-null="false"
                 unique="false"
         >
-     </property>
-	<property
-            name="starttime"
-            	column="starttime"
+        </property>
+        <property
+                name="starttime"
+                column="starttime"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -79,94 +79,94 @@
 
         </property>
 
-	<property
-            name="endtime"
-            	column="endtime"
+        <property
+                name="endtime"
+                column="endtime"
                 length="25"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-	<property
-            name="purpose"
-            	column="purpose"
+        <property
+                name="purpose"
+                column="purpose"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-	<property
-            name="concerned"
-            	column="concerned"
+        <property
+                name="concerned"
+                column="concerned"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-    <property
-            name="affection"
-            	column="affection"
+        <property
+                name="affection"
+                column="affection"
                 length="255"
                 not-null="false"
                 unique="false"
         >
-    </property>
-    <property
-            name="flag"
-            	column="flag"
+        </property>
+        <property
+                name="flag"
+                column="flag"
                 length="20"
                 not-null="false"
                 unique="false"
         >
         </property>
-	<property
-            name="roomId"
-            	column="room_id"
+        <property
+                name="roomId"
+                column="room_id"
                 length="20"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-     <property
-            name="notes"
-            	column="notes"
+        <property
+                name="notes"
+                column="notes"
                 length="255"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-    <property
-            name="cruser"
-            	column="cruser"
+        <property
+                name="cruser"
+                column="cruser"
                 length="50"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-     <property
-            name="deptId"
-            	column="dept_id"
+        <property
+                name="deptId"
+                column="dept_id"
                 length="50"
                 not-null="false"
                 unique="false"
         >
         </property>
-     <property
-            name="deptName"
-            	column="dept_name"
+        <property
+                name="deptName"
+                column="dept_name"
                 length="50"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

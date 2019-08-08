@@ -16,8 +16,7 @@ import javax.servlet.ServletException;
 // Referenced classes of package com.jspsmart.upload:
 //            SmartUploadException, SmartUpload
 
-public class File
-{
+public class File {
 
     private SmartUpload m_parent;
     private int m_startData;
@@ -37,8 +36,7 @@ public class File
     public static final int SAVEAS_VIRTUAL = 1;
     public static final int SAVEAS_PHYSICAL = 2;
 
-    File()
-    {
+    File() {
         m_startData = 0;
         m_endData = 0;
         m_size = 0;
@@ -55,207 +53,169 @@ public class File
     }
 
     public void saveAs(String destFilePathName)
-        throws SmartUploadException, IOException
-    {
+            throws SmartUploadException, IOException {
         saveAs(destFilePathName, 0);
     }
-//抛出异常-----------------------------???????????????????????????????????
+
+    //抛出异常-----------------------------???????????????????????????????????
     public void saveAs(String destFilePathName, int optionSaveAs)
-        throws SmartUploadException, IOException
-    {
+            throws SmartUploadException, IOException {
         String path = new String();
         path = m_parent.getPhysicalPath(destFilePathName, optionSaveAs);
-        if(path == null)
+        if (path == null)
             throw new IllegalArgumentException("There is no specified destination file (1140).");
-        try
-        {
+        try {
             java.io.File file = new java.io.File(path);
             FileOutputStream fileOut = new FileOutputStream(file);
             fileOut.write(m_parent.m_binArray, m_startData, m_size);
             fileOut.close();
-        }
-        catch(IOException e)
-        {
+        } catch (IOException e) {
             throw new SmartUploadException("File can't be saved (1120).");
         }
     }
 
     public void fileToField(ResultSet rs, String columnName)
-        throws SQLException, SmartUploadException, IOException, ServletException
-    {
+            throws SQLException, SmartUploadException, IOException, ServletException {
         long numBlocks = 0L;
         int blockSize = 0x10000;
         int leftOver = 0;
         int pos = 0;
-        if(rs == null)
+        if (rs == null)
             throw new IllegalArgumentException("The RecordSet cannot be null (1145).");
-        if(columnName == null)
+        if (columnName == null)
             throw new IllegalArgumentException("The columnName cannot be null (1150).");
-        if(columnName.length() == 0)
+        if (columnName.length() == 0)
             throw new IllegalArgumentException("The columnName cannot be empty (1155).");
         numBlocks = BigInteger.valueOf(m_size).divide(BigInteger.valueOf(blockSize)).longValue();
         leftOver = BigInteger.valueOf(m_size).mod(BigInteger.valueOf(blockSize)).intValue();
-        try
-        {
-            for(int i = 1; (long)i < numBlocks; i++)
-            {
+        try {
+            for (int i = 1; (long) i < numBlocks; i++) {
                 rs.updateBinaryStream(columnName, new ByteArrayInputStream(m_parent.m_binArray, pos, blockSize), blockSize);
                 pos = pos != 0 ? pos : 1;
                 pos = i * blockSize;
             }
 
-            if(leftOver > 0)
+            if (leftOver > 0)
                 rs.updateBinaryStream(columnName, new ByteArrayInputStream(m_parent.m_binArray, pos, leftOver), leftOver);
-        }
-        catch(SQLException e)
-        {
+        } catch (SQLException e) {
             byte binByte2[] = new byte[m_size];
             System.arraycopy(m_parent.m_binArray, m_startData, binByte2, 0, m_size);
             rs.updateBytes(columnName, binByte2);
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             throw new SmartUploadException("Unable to save file in the DataBase (1130).");
         }
     }
 
-    public boolean isMissing()
-    {
+    public boolean isMissing() {
         return m_isMissing;
     }
 
-    public String getFieldName()
-    {
+    public String getFieldName() {
         return m_fieldname;
     }
 
-    public String getFileName()
-    {
+    public String getFileName() {
         return m_filename;
     }
 
-    public String getFilePathName()
-    {
+    public String getFilePathName() {
         return m_filePathName;
     }
 
-    public String getFileExt()
-    {
+    public String getFileExt() {
         return m_fileExt;
     }
 
-    public String getContentType()
-    {
+    public String getContentType() {
         return m_contentType;
     }
 
-    public String getContentDisp()
-    {
+    public String getContentDisp() {
         return m_contentDisp;
     }
 
-    public String getContentString()
-    {
+    public String getContentString() {
         String strTMP = new String(m_parent.m_binArray, m_startData, m_size);
         return strTMP;
     }
 
     public String getTypeMIME()
-        throws IOException
-    {
+            throws IOException {
         return m_typeMime;
     }
 
-    public String getSubTypeMIME()
-    {
+    public String getSubTypeMIME() {
         return m_subTypeMime;
     }
 
-    public int getSize()
-    {
+    public int getSize() {
         return m_size;
     }
 
-    protected int getStartData()
-    {
+    protected int getStartData() {
         return m_startData;
     }
 
-    protected int getEndData()
-    {
+    protected int getEndData() {
         return m_endData;
     }
 
-    protected void setParent(SmartUpload parent)
-    {
+    protected void setParent(SmartUpload parent) {
         m_parent = parent;
     }
 
-    protected void setStartData(int startData)
-    {
+    protected void setStartData(int startData) {
         m_startData = startData;
     }
 
-    protected void setEndData(int endData)
-    {
+    protected void setEndData(int endData) {
         m_endData = endData;
     }
 
-    protected void setSize(int size)
-    {
+    protected void setSize(int size) {
         m_size = size;
     }
 
-    protected void setIsMissing(boolean isMissing)
-    {
+    protected void setIsMissing(boolean isMissing) {
         m_isMissing = isMissing;
     }
 
-    protected void setFieldName(String fieldName)
-    {
+    protected void setFieldName(String fieldName) {
         m_fieldname = fieldName;
     }
 
-    protected void setFileName(String fileName)
-    {
+    protected void setFileName(String fileName) {
         m_filename = fileName;
     }
 
-    protected void setFilePathName(String filePathName)
-    {
+    protected void setFilePathName(String filePathName) {
         m_filePathName = filePathName;
     }
 
-    protected void setFileExt(String fileExt)
-    {
+    protected void setFileExt(String fileExt) {
         m_fileExt = fileExt;
     }
 
-    protected void setContentType(String contentType)
-    {
+    protected void setContentType(String contentType) {
         m_contentType = contentType;
     }
 
-    protected void setContentDisp(String contentDisp)
-    {
+    protected void setContentDisp(String contentDisp) {
         m_contentDisp = contentDisp;
     }
 
-    protected void setTypeMIME(String TypeMime)
-    {
+    protected void setTypeMIME(String TypeMime) {
         m_typeMime = TypeMime;
     }
 
-    protected void setSubTypeMIME(String subTypeMime)
-    {
+    protected void setSubTypeMIME(String subTypeMime) {
         m_subTypeMime = subTypeMime;
     }
 
-    public byte getBinaryData(int index)
-    {
-        if(m_startData + index > m_endData)
+    public byte getBinaryData(int index) {
+        if (m_startData + index > m_endData)
             throw new ArrayIndexOutOfBoundsException("Index Out of range (1115).");
-        if(m_startData + index <= m_endData)
+        if (m_startData + index <= m_endData)
             return m_parent.m_binArray[m_startData + index];
         else
             return 0;

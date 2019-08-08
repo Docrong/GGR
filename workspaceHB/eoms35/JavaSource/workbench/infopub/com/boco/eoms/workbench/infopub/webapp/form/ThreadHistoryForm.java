@@ -6,7 +6,6 @@ import org.apache.struts.action.ActionMapping;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 /**
- * 
  * <p>
  * Title:信息查阅历史记录form
  * </p>
@@ -16,131 +15,134 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Date:May 24, 2008 6:28:04 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 3.5.1
- * 
  */
 public class ThreadHistoryForm extends BaseForm implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8942520311568350764L;
+    /**
+     *
+     */
+    private static final long serialVersionUID = 8942520311568350764L;
 
-	protected String id;
+    protected String id;
 
-	protected String ip;
+    protected String ip;
 
-	protected String readTime;
+    protected String readTime;
 
-	protected String threadId;
+    protected String threadId;
 
-	protected String userId;
+    protected String userId;
 
-	protected String historyType;
+    protected String historyType;
 
-	protected String comments;
+    protected String comments;
 
-	/** Default empty constructor. */
-	public ThreadHistoryForm() {
-	}
+    /**
+     * Default empty constructor.
+     */
+    public ThreadHistoryForm() {
+    }
 
-	public String getId() {
-		return this.id;
-	}
+    public String getId() {
+        return this.id;
+    }
 
-	/**
-	 */
+    /**
+     *
+     */
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getIp() {
-		return this.ip;
-	}
+    public String getIp() {
+        return this.ip;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    /**
+     * @struts.validator type="required"
+     */
 
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
 
-	public String getReadTime() {
-		return this.readTime;
-	}
+    public String getReadTime() {
+        return this.readTime;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    /**
+     * @struts.validator type="required"
+     */
 
-	public void setReadTime(String readTime) {
-		this.readTime = readTime;
-	}
+    public void setReadTime(String readTime) {
+        this.readTime = readTime;
+    }
 
-	public String getThreadId() {
-		return this.threadId;
-	}
+    public String getThreadId() {
+        return this.threadId;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    /**
+     * @struts.validator type="required"
+     */
 
-	public void setThreadId(String threadId) {
-		this.threadId = threadId;
-	}
+    public void setThreadId(String threadId) {
+        this.threadId = threadId;
+    }
 
-	public String getUserId() {
-		return this.userId;
-	}
+    public String getUserId() {
+        return this.userId;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    /**
+     * @struts.validator type="required"
+     */
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public String getHistoryType() {
-		return this.historyType;
-	}
+    public String getHistoryType() {
+        return this.historyType;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    /**
+     * @struts.validator type="required"
+     */
 
-	public void setHistoryType(String historyType) {
-		this.historyType = historyType;
-	}
+    public void setHistoryType(String historyType) {
+        this.historyType = historyType;
+    }
 
-	public String getComments() {
-		return this.comments;
-	}
+    public String getComments() {
+        return this.comments;
+    }
 
-	/**
-	 * @struts.validator type="required"
-	 */
+    /**
+     * @struts.validator type="required"
+     */
 
-	public void setComments(String comments) {
-		this.comments = comments;
-	}
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
 
-	/*
-	 * To add non XDoclet-generated methods, create a file named
-	 * xdoclet-ThreadHistoryForm.java containing the additional code and place
-	 * it in your metadata/web directory.
-	 */
-	/**
-	 * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
-	 *      javax.servlet.http.HttpServletRequest)
-	 */
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		// reset any boolean data types to false
+    /*
+     * To add non XDoclet-generated methods, create a file named
+     * xdoclet-ThreadHistoryForm.java containing the additional code and place
+     * it in your metadata/web directory.
+     */
 
-	}
+    /**
+     * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
+     * javax.servlet.http.HttpServletRequest)
+     */
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        // reset any boolean data types to false
+
+    }
 
 }

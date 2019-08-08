@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,31 +13,31 @@
             table="sms_content_template"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="name"
+                name="name"
                 length="100"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-        
+
+
         <property
-            name="content"
+                name="content"
                 length="3000"
                 not-null="false"
                 unique="false"
@@ -46,7 +46,7 @@
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 length="3000"
                 not-null="false"
                 unique="false"
@@ -55,9 +55,9 @@
 
         </property>
 
-                
+
         <property
-            name="deleted"
+                name="deleted"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -66,7 +66,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

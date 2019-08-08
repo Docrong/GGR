@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.branchindexreduction.service.IBranchIndexReductionFlo
  * <p>
  * Fri Jul 28 15:47:20 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public class BranchIndexReductionFlowManagerImpl extends BusinessFlowServiceImpl implements IBranchIndexReductionFlowManager {
- 
- }
+
+public class BranchIndexReductionFlowManagerImpl extends BusinessFlowServiceImpl implements IBranchIndexReductionFlowManager {
+
+}

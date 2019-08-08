@@ -8,17 +8,17 @@ import com.boco.eoms.common.log.BocoLog;
 import com.boco.eoms.workplan.mgr.ITawwpTaskManageInterfaceMgr;
 
 public class TawwpSMSScheduler implements Job {
-	public TawwpSMSScheduler() {
-	}
+    public TawwpSMSScheduler() {
+    }
 
-	public void execute(JobExecutionContext context)
-			throws org.quartz.JobExecutionException {
-		BocoLog.info(this, 0, "作业计划获取网元信息");
-		// TawwpTaskManageInterfaceExtendBO tawwpTaskManageInterfaceExtendBO =
-		// new TawwpTaskManageInterfaceExtendBO();
-		ITawwpTaskManageInterfaceMgr mgr = (ITawwpTaskManageInterfaceMgr) ApplicationContextHolder
-				.getInstance().getBean("tawwpTaskManageInterfaceMgr");
-		mgr.saveNetInfor();
-	}
+    public void execute(JobExecutionContext context)
+            throws org.quartz.JobExecutionException {
+        BocoLog.info(this, 0, "作业计划获取网元信息");
+        // TawwpTaskManageInterfaceExtendBO tawwpTaskManageInterfaceExtendBO =
+        // new TawwpTaskManageInterfaceExtendBO();
+        ITawwpTaskManageInterfaceMgr mgr = (ITawwpTaskManageInterfaceMgr) ApplicationContextHolder
+                .getInstance().getBean("tawwpTaskManageInterfaceMgr");
+        mgr.saveNetInfor();
+    }
 
 }

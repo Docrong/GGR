@@ -1,166 +1,166 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
-	<!--TawSystemPrivMenu-DAO START-->
-	<bean id="tawSystemPrivMenuCommonDao"
-		class="com.boco.eoms.commons.system.priv.dao.jdbc.TawSystemPrivMenuCommonDaoJdbc"
-		autowire="byName" />
-	<bean id="tawSystemPrivMenuDao"
-		class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivMenuDaoHibernate"
-		autowire="byName">
-		<property name="tawSystemDeptManager"
-			ref="ItawSystemDeptManager" />
-	</bean>
-	<bean id="tawSystemPrivRegionDao"
-		class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivRegionDaoHibernate"
-		autowire="byName" />
-	<!--TawSystemPrivMenu-DAO END-->
-	<!--TawSystemPrivMenu-START-->
-	<bean id="ItawSystemPrivMenuManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivMenuManagerImpl">
-				<property name="tawSystemPrivMenuDao"
-					ref="tawSystemPrivMenuDao" />
-				<property name="tawSystemPrivMenuCommonDao"
-					ref="tawSystemPrivMenuCommonDao" />
-			</bean>
-		</property>
-	</bean>
-	<!--TawSystemPrivMenu-END-->
+    <!--TawSystemPrivMenu-DAO START-->
+    <bean id="tawSystemPrivMenuCommonDao"
+          class="com.boco.eoms.commons.system.priv.dao.jdbc.TawSystemPrivMenuCommonDaoJdbc"
+          autowire="byName"/>
+    <bean id="tawSystemPrivMenuDao"
+          class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivMenuDaoHibernate"
+          autowire="byName">
+        <property name="tawSystemDeptManager"
+                  ref="ItawSystemDeptManager"/>
+    </bean>
+    <bean id="tawSystemPrivRegionDao"
+          class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivRegionDaoHibernate"
+          autowire="byName"/>
+    <!--TawSystemPrivMenu-DAO END-->
+    <!--TawSystemPrivMenu-START-->
+    <bean id="ItawSystemPrivMenuManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivMenuManagerImpl">
+                <property name="tawSystemPrivMenuDao"
+                          ref="tawSystemPrivMenuDao"/>
+                <property name="tawSystemPrivMenuCommonDao"
+                          ref="tawSystemPrivMenuCommonDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawSystemPrivMenu-END-->
 
-	<!--TawSystemPrivMenuItem-DAO START-->
-	<bean id="tawSystemPrivMenuItemDao"
-		class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivMenuItemDaoHibernate"
-		autowire="byName" />
-	<!--TawSystemPrivMenuItem-DAO END-->
-	<!--TawSystemPrivMenuItem-START-->
-	<bean id="ItawSystemPrivMenuItemManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivMenuItemManagerImpl">
-				<property name="tawSystemPrivMenuItemDao"
-					ref="tawSystemPrivMenuItemDao" />
-				<property name="tawSystemPrivMenuCommonDao"
-					ref="tawSystemPrivMenuCommonDao" />
-				<property name="userassigndao"
-					ref="tawSystemPrivUserAssignDao" />
-				<property name="assigndao" ref="tawSystemPrivAssignDao" />
-				<property name="operationdao"
-					ref="tawSystemPrivOperationDao" />
-			</bean>
-		</property>
-	</bean>
-	<!--TawSystemPrivMenuItem-END-->
+    <!--TawSystemPrivMenuItem-DAO START-->
+    <bean id="tawSystemPrivMenuItemDao"
+          class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivMenuItemDaoHibernate"
+          autowire="byName"/>
+    <!--TawSystemPrivMenuItem-DAO END-->
+    <!--TawSystemPrivMenuItem-START-->
+    <bean id="ItawSystemPrivMenuItemManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivMenuItemManagerImpl">
+                <property name="tawSystemPrivMenuItemDao"
+                          ref="tawSystemPrivMenuItemDao"/>
+                <property name="tawSystemPrivMenuCommonDao"
+                          ref="tawSystemPrivMenuCommonDao"/>
+                <property name="userassigndao"
+                          ref="tawSystemPrivUserAssignDao"/>
+                <property name="assigndao" ref="tawSystemPrivAssignDao"/>
+                <property name="operationdao"
+                          ref="tawSystemPrivOperationDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawSystemPrivMenuItem-END-->
 
-	<!--TawSystemPrivAssign-DAO START-->
-	<bean id="tawSystemPrivAssignDao"
-		class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivAssignDaoHibernate"
-		autowire="byName" />
-	<!--TawSystemPrivAssign-DAO END-->
-	<!--TawSystemPrivAssign-START-->
-	<bean id="ItawSystemPrivAssignManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivAssignManagerImpl">
-				<property name="tawSystemPrivAssignDao"
-					ref="tawSystemPrivAssignDao" />
-			</bean>
-		</property>
-	</bean>
-	<!--TawSystemPrivAssign-END-->
+    <!--TawSystemPrivAssign-DAO START-->
+    <bean id="tawSystemPrivAssignDao"
+          class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivAssignDaoHibernate"
+          autowire="byName"/>
+    <!--TawSystemPrivAssign-DAO END-->
+    <!--TawSystemPrivAssign-START-->
+    <bean id="ItawSystemPrivAssignManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivAssignManagerImpl">
+                <property name="tawSystemPrivAssignDao"
+                          ref="tawSystemPrivAssignDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawSystemPrivAssign-END-->
 
-	<!--TawSystemPrivUserAssign-DAO START-->
-	<bean id="tawSystemPrivUserAssignDao"
-		class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivUserAssignDaoHibernate"
-		autowire="byName" />
-	<!--TawSystemPrivUserAssign-DAO END-->
-	<!--TawSystemPrivUserAssign-START-->
-	<bean id="ItawSystemPrivUserAssignManager"
-		parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivUserAssignManagerImpl">
-				<property name="tawSystemPrivUserAssignDao"
-					ref="tawSystemPrivUserAssignDao" />
-				<property name="tawSystemPrivAssignManager"
-					ref="ItawSystemPrivAssignManager" />
-				<property name="tawSystemPrivMenuItemManager"
-					ref="ItawSystemPrivMenuItemManager" />
-				<property name="tawSystemUserManager"
-					ref="itawSystemUserManager" />
-				<property name="tawSystemPrivUserAssignJdbc"
-					ref="tawSystemPrivMenuCommonDao" />
-				<property name="tawSystemUserRefRoleManager"
-					ref="itawSystemUserRefRoleManager" />
+    <!--TawSystemPrivUserAssign-DAO START-->
+    <bean id="tawSystemPrivUserAssignDao"
+          class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivUserAssignDaoHibernate"
+          autowire="byName"/>
+    <!--TawSystemPrivUserAssign-DAO END-->
+    <!--TawSystemPrivUserAssign-START-->
+    <bean id="ItawSystemPrivUserAssignManager"
+          parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivUserAssignManagerImpl">
+                <property name="tawSystemPrivUserAssignDao"
+                          ref="tawSystemPrivUserAssignDao"/>
+                <property name="tawSystemPrivAssignManager"
+                          ref="ItawSystemPrivAssignManager"/>
+                <property name="tawSystemPrivMenuItemManager"
+                          ref="ItawSystemPrivMenuItemManager"/>
+                <property name="tawSystemUserManager"
+                          ref="itawSystemUserManager"/>
+                <property name="tawSystemPrivUserAssignJdbc"
+                          ref="tawSystemPrivMenuCommonDao"/>
+                <property name="tawSystemUserRefRoleManager"
+                          ref="itawSystemUserRefRoleManager"/>
 
-			</bean>
-		</property>
-	</bean>
-	<!--TawSystemPrivUserAssign-END-->
-
-
-	<!--TawSystemPrivOperation-DAO START-->
-	<bean id="tawSystemPrivOperationDao"
-		class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivOperationDaoHibernate"
-		autowire="byName">
-		<property name="tawSystemDeptManager"
-			ref="ItawSystemDeptManager" />
-	</bean>
-
-	<!--TawSystemPrivOperation-DAO END-->
-	<!--TawSystemPrivOperation-START-->
-	<bean id="ItawSystemPrivOperationManager"
-		parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivOperationManagerImpl">
-				<property name="tawSystemPrivOperationDao"
-					ref="tawSystemPrivOperationDao" />
-			</bean>
-		</property>
-	</bean>
-	<!--TawSystemPrivOperation-END-->
-
-	<bean id="ItawSystemPrivRegionManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivRegionImpl">
-				<property name="tawSystemPrivRegionDao"
-					ref="tawSystemPrivRegionDao" />
-				<property name="tawSystemPrivRegionJdbc"
-					ref="tawSystemPrivMenuCommonDao" />
-			</bean>
-		</property>
-	</bean>
-
-	<bean id="PrivMgrImpl" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.system.priv.service.impl.PrivMgrImpl">
-				<property name="tawSystemUserManager">
-					<ref bean="itawSystemUserManager" />
-				</property>
-				<property name="tawSystemUserRefRoleDao">
-					<ref bean="tawSystemUserRefRoleDao" />
-				</property>
-				<property name="tawSystemPrivAssignManager">
-					<ref bean="ItawSystemPrivAssignManager" />
-				</property>
+            </bean>
+        </property>
+    </bean>
+    <!--TawSystemPrivUserAssign-END-->
 
 
-				<property name="tawSystemPrivMenuManager">
-					<ref bean="ItawSystemPrivMenuManager" />
-				</property>
-				<property name="tawSystemPrivOperationDao">
-					<ref bean="tawSystemPrivOperationDao" />
-				</property>
-			</bean>
-		</property>
-	</bean>
+    <!--TawSystemPrivOperation-DAO START-->
+    <bean id="tawSystemPrivOperationDao"
+          class="com.boco.eoms.commons.system.priv.dao.hibernate.TawSystemPrivOperationDaoHibernate"
+          autowire="byName">
+        <property name="tawSystemDeptManager"
+                  ref="ItawSystemDeptManager"/>
+    </bean>
+
+    <!--TawSystemPrivOperation-DAO END-->
+    <!--TawSystemPrivOperation-START-->
+    <bean id="ItawSystemPrivOperationManager"
+          parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivOperationManagerImpl">
+                <property name="tawSystemPrivOperationDao"
+                          ref="tawSystemPrivOperationDao"/>
+            </bean>
+        </property>
+    </bean>
+    <!--TawSystemPrivOperation-END-->
+
+    <bean id="ItawSystemPrivRegionManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.priv.service.impl.TawSystemPrivRegionImpl">
+                <property name="tawSystemPrivRegionDao"
+                          ref="tawSystemPrivRegionDao"/>
+                <property name="tawSystemPrivRegionJdbc"
+                          ref="tawSystemPrivMenuCommonDao"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="PrivMgrImpl" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.system.priv.service.impl.PrivMgrImpl">
+                <property name="tawSystemUserManager">
+                    <ref bean="itawSystemUserManager"/>
+                </property>
+                <property name="tawSystemUserRefRoleDao">
+                    <ref bean="tawSystemUserRefRoleDao"/>
+                </property>
+                <property name="tawSystemPrivAssignManager">
+                    <ref bean="ItawSystemPrivAssignManager"/>
+                </property>
+
+
+                <property name="tawSystemPrivMenuManager">
+                    <ref bean="ItawSystemPrivMenuManager"/>
+                </property>
+                <property name="tawSystemPrivOperationDao">
+                    <ref bean="tawSystemPrivOperationDao"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
 </beans>
 

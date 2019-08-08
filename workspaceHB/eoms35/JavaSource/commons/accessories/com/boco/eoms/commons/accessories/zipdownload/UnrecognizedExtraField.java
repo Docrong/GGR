@@ -24,7 +24,6 @@ package com.boco.eoms.commons.accessories.zipdownload;
  *
  * <p>Assumes local file data and central directory entries are
  * identical - unless told the opposite.</p>
- *
  */
 public class UnrecognizedExtraField implements ZipExtraField {
 
@@ -37,6 +36,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
 
     /**
      * Set the header id.
+     *
      * @param headerId the header id to use
      */
     public void setHeaderId(ZipShort headerId) {
@@ -45,6 +45,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
 
     /**
      * Get the header id.
+     *
      * @return the header id
      */
     public ZipShort getHeaderId() {
@@ -62,6 +63,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
     /**
      * Set the extra field data in the local file data -
      * without Header-ID or length specifier.
+     *
      * @param data the field data to use
      */
     public void setLocalFileDataData(byte[] data) {
@@ -70,6 +72,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
 
     /**
      * Get the length of the local data.
+     *
      * @return the length of the local data
      */
     public ZipShort getLocalFileDataLength() {
@@ -78,6 +81,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
 
     /**
      * Get the local data.
+     *
      * @return the local data
      */
     public byte[] getLocalFileDataData() {
@@ -94,6 +98,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
 
     /**
      * Set the extra field data in central directory.
+     *
      * @param data the data to use
      */
     public void setCentralDirectoryData(byte[] data) {
@@ -103,6 +108,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
     /**
      * Get the central data length.
      * If there is no central data, get the local file data length.
+     *
      * @return the central data length
      */
     public ZipShort getCentralDirectoryLength() {
@@ -114,6 +120,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
 
     /**
      * Get the central data.
+     *
      * @return the central data if present, else return the local file data
      */
     public byte[] getCentralDirectoryData() {
@@ -124,7 +131,7 @@ public class UnrecognizedExtraField implements ZipExtraField {
     }
 
     /**
-     * @param data the array of bytes.
+     * @param data   the array of bytes.
      * @param offset the source location in the data array.
      * @param length the number of bytes to use in the data array.
      * @see ZipExtraField#parseFromLocalFileData(byte[], int, int)

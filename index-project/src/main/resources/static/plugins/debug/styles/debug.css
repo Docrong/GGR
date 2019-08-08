@@ -1,22 +1,22 @@
 ﻿#debugHost {
     font-size: 12px;
-    color:#4a4a4a;
+    color: #4a4a4a;
     height: 100%;
 }
 
 #debugHostBtn a {
     background: url('images/variables_on.png');
-    background: url('images/variables_on.svg'),linear-gradient(transparent, transparent);
+    background: url('images/variables_on.svg'), linear-gradient(transparent, transparent);
 }
 
 .hashover #debugHostBtn a:hover {
     background: url('images/variables_hover.png');
-    background: url('images/variables_hover.svg'),linear-gradient(transparent, transparent);
+    background: url('images/variables_hover.svg'), linear-gradient(transparent, transparent);
 }
 
 #debugHostBtn a.selected, #debugHostBtn a.selected:hover {
     background: url('images/variables_off.png');
-    background: url('images/variables_off.svg'),linear-gradient(transparent, transparent);
+    background: url('images/variables_off.svg'), linear-gradient(transparent, transparent);
 }
 
 #debugHeader .pageNameHeader {
@@ -41,8 +41,7 @@
     color: #0a6cd6;
 }
 
-#debugScrollContainer 
-{
+#debugScrollContainer {
     overflow: auto;
     width: 100%;
     height: 100%;
@@ -50,16 +49,14 @@
 }
 
 #debugContainer {
-        padding: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 }
 
-.variableName
-{
-	font-weight: bold;
+.variableName {
+    font-weight: bold;
 }
 
-.variableDiv
-{
+.variableDiv {
     margin-bottom: 20px;
     line-height: 16px;
 
@@ -75,10 +72,9 @@
     /*padding: 0px 10px 10px 10px;*/
 }
 
-.debugToolbarButton 
-{
-	font-size: 1em;
-	color: #069;
+.debugToolbarButton {
+    font-size: 1em;
+    color: #069;
 }
 
 .axEventBlock {

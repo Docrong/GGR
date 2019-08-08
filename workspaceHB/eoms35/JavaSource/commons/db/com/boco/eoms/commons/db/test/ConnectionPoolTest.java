@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.db.test;
 
@@ -30,7 +30,7 @@ public class ConnectionPoolTest extends ConsoleTestCase {
         int _iTotalCounts = _objConnPool.getPool().getConnectionSize();
         int _iUsableCounts = _objConnPool.getPool().getUsableConnSize();
         assertNotNull(_objConn);
-        assertEquals(_iTotalCounts, _iUsableCounts+1);
+        assertEquals(_iTotalCounts, _iUsableCounts + 1);
 
         _objConn.close();
     }
@@ -44,7 +44,7 @@ public class ConnectionPoolTest extends ConsoleTestCase {
         int _iTotalCounts = _objConnPool.getPool().getConnectionSize();
         int _iUsableCounts = _objConnPool.getPool().getUsableConnSize();
         assertNotNull(_objConn);
-        assertEquals(_iTotalCounts, _iUsableCounts+1);
+        assertEquals(_iTotalCounts, _iUsableCounts + 1);
 
         _objConn.close();
     }
@@ -56,7 +56,7 @@ public class ConnectionPoolTest extends ConsoleTestCase {
         BocoConnection _objConn = _objConnPool.getConnection();
         int _iTotalCounts = _objConnPool.getPool().getConnectionSize();
         int _iUsableCounts1 = _objConnPool.getPool().getUsableConnSize();
-        assertEquals(_iTotalCounts, _iUsableCounts1+1);
+        assertEquals(_iTotalCounts, _iUsableCounts1 + 1);
 
         _objConn.close();
         int _iUsableCounts2 = _objConnPool.getPool().getUsableConnSize();
@@ -71,7 +71,7 @@ public class ConnectionPoolTest extends ConsoleTestCase {
         BocoConnection _objConn = _objConnPool.getConnection(_iWaitTime);
         int _iTotalCounts = _objConnPool.getPool().getConnectionSize();
         int _iUsableCounts1 = _objConnPool.getPool().getUsableConnSize();
-        assertEquals(_iTotalCounts, _iUsableCounts1+1);
+        assertEquals(_iTotalCounts, _iUsableCounts1 + 1);
 
         _objConn.close();
         int _iUsableCounts2 = _objConnPool.getPool().getUsableConnSize();

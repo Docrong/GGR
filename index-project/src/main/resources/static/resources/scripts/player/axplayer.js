@@ -1,10 +1,12 @@
-﻿if (!window.$axure) window.$axure = function () { };
-if (typeof console == 'undefined') console = {
-    log: function () { }
+﻿if (!window.$axure) window.$axure = function () {
 };
-if(window._axUtils) $axure.utils = _axUtils;
+if (typeof console == 'undefined') console = {
+    log: function () {
+    }
+};
+if (window._axUtils) $axure.utils = _axUtils;
 
-$axure.loadDocument = function(document) {
+$axure.loadDocument = function (document) {
     $axure.document = document;
 };
 
@@ -17,7 +19,7 @@ function setUpController() {
 
     $axure.utils.makeBindable(_page, ['load']);
 
-    var _player = function() {
+    var _player = function () {
     };
     $axure.player = _player;
 
@@ -46,10 +48,10 @@ function setUpController() {
 
     var _getLinkUrl = function (baseUrl) {
         var toAdd = '';
-        for(var globalVarName in _globalVars) {
+        for (var globalVarName in _globalVars) {
             var val = _globalVars[globalVarName];
-            if(val != null) {
-                if(toAdd.length > 0) toAdd += '&';
+            if (val != null) {
+                if (toAdd.length > 0) toAdd += '&';
                 toAdd += globalVarName + '=' + encodeURIComponent(val);
             }
         }
@@ -57,8 +59,8 @@ function setUpController() {
     };
     $axure.getLinkUrlWithVars = _getLinkUrl;
 
-    $axure.messageCenter.addMessageListener(function(message, data) {
-        if (message == 'setGlobalVar'){
+    $axure.messageCenter.addMessageListener(function (message, data) {
+        if (message == 'setGlobalVar') {
             _globalVars[data.globalVarName] = data.globalVarValue;
         }
     });
@@ -94,7 +96,7 @@ function setUpController() {
         var urlWithVars = $axure.getLinkUrlWithVars(urlToLoad);
         var currentData = $axure.messageCenter.getState('page.data');
         var currentUrl = currentData && currentData.location;
-        if(currentUrl && currentUrl.indexOf('#') != -1) currentUrl = currentUrl.substring(0, currentUrl.indexOf('#'))
+        if (currentUrl && currentUrl.indexOf('#') != -1) currentUrl = currentUrl.substring(0, currentUrl.indexOf('#'))
 
         // this is so we can make sure the current frame reloads if the variables have changed
         // by default, if the location is the same but the hash code is different, the browser will not
@@ -133,9 +135,9 @@ function setUpController() {
         headerLink
             .click($axure.utils.curry(interfaceControlHeaderButton_click, settings.id)).wrap('<li id="' + settings.id + 'Btn">');
 
-        if((settings.id == 'feedbackHost' || settings.id == 'feedbackContainer') && pluginIds[pluginIds.length - 1] == 'debugHost') headerLink.parent().insertBefore('#debugHostBtn');
+        if ((settings.id == 'feedbackHost' || settings.id == 'feedbackContainer') && pluginIds[pluginIds.length - 1] == 'debugHost') headerLink.parent().insertBefore('#debugHostBtn');
         else headerLink.parent().appendTo('#interfaceControlFrameHeader');
-        
+
         pluginIds[pluginIds.length] = settings.id;
         plugins[settings.id] = settings;
 
@@ -145,12 +147,12 @@ function setUpController() {
     // private methods
     var interfaceControlHeaderButton_click = function (id) {
         var clickedPlugin = $('#interfaceControlFrameHeader a[pluginId=' + id + ']');
-        if(clickedPlugin.hasClass('selected')) {
+        if (clickedPlugin.hasClass('selected')) {
             clickedPlugin.removeClass('selected');
             $('#' + id).hide();
             _player.collapseToBar();
 
-            $(document).trigger('pluginShown',['']);
+            $(document).trigger('pluginShown', ['']);
         } else {
             $('#interfaceControlFrameHeader a').removeClass('selected');
             clickedPlugin.addClass('selected');
@@ -166,9 +168,9 @@ function setUpController() {
         $(document).trigger('ContainerHeightChange');
     };
 
-    $axure.player.showPlugin = function(gid) {
-        for(var id in plugins) {
-            if(plugins[id].gid == gid) {
+    $axure.player.showPlugin = function (gid) {
+        for (var id in plugins) {
+            if (plugins[id].gid == gid) {
                 $('a[pluginId="' + id + '"]').click();
                 break;
             }
@@ -182,7 +184,7 @@ function setUpDocumentStateManager() {
 
     mgr.globalVariableValues = {};
 
-    mgr.setGlobalVariable = function(varname, value, source) {
+    mgr.setGlobalVariable = function (varname, value, source) {
         var arg = {};
         arg.variableName = varname;
         arg.newValue = value;
@@ -193,7 +195,7 @@ function setUpDocumentStateManager() {
         this.triggerEvent('globalVariableChanged', arg);
     };
 
-    mgr.getGlobalVariable = function(varname) {
+    mgr.getGlobalVariable = function (varname) {
         return mgr.globalVariableValues[varname];
     };
 }

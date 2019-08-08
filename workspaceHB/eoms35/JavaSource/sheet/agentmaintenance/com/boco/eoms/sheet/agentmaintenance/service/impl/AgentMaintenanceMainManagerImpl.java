@@ -12,27 +12,22 @@ import com.boco.eoms.sheet.base.model.BaseMain;
 import com.boco.eoms.sheet.base.service.impl.MainService;
 
 public class AgentMaintenanceMainManagerImpl extends MainService
-	implements IAgentMaintenanceMainManager
-{
+        implements IAgentMaintenanceMainManager {
 
-	private IAgentMaintenanceMainDAO agentMaintenanceMainDAO;
+    private IAgentMaintenanceMainDAO agentMaintenanceMainDAO;
 
-	public AgentMaintenanceMainManagerImpl()
-	{
-	}
+    public AgentMaintenanceMainManagerImpl() {
+    }
 
-	public BaseMain getMainBySourceId(String sourceId, String operatedeptid)
-	{
-		return (AgentMaintenanceMain)agentMaintenanceMainDAO.getMainBySourceId(sourceId, operatedeptid);
-	}
+    public BaseMain getMainBySourceId(String sourceId, String operatedeptid) {
+        return (AgentMaintenanceMain) agentMaintenanceMainDAO.getMainBySourceId(sourceId, operatedeptid);
+    }
 
-	public IAgentMaintenanceMainDAO getAgentMaintenanceMainDAO()
-	{
-		return agentMaintenanceMainDAO;
-	}
+    public IAgentMaintenanceMainDAO getAgentMaintenanceMainDAO() {
+        return agentMaintenanceMainDAO;
+    }
 
-	public void setAgentMaintenanceMainDAO(IAgentMaintenanceMainDAO agentMaintenanceMainDAO)
-	{
-		this.agentMaintenanceMainDAO = agentMaintenanceMainDAO;
-	}
+    public void setAgentMaintenanceMainDAO(IAgentMaintenanceMainDAO agentMaintenanceMainDAO) {
+        this.agentMaintenanceMainDAO = agentMaintenanceMainDAO;
+    }
 }

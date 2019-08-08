@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--SoftwareApply-START-->    
+    <!--SoftwareApply-START-->
 
     <bean id="ISoftwareApplyMainDAO"
-		class="com.boco.eoms.sheet.softwareApply.dao.hibernate.SoftwareApplyMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="ISoftwareApplyLinkDAO"
-		class="com.boco.eoms.sheet.softwareApply.dao.hibernate.SoftwareApplyLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="ISoftwareApplyTaskDAO"
-		class="com.boco.eoms.sheet.softwareApply.dao.hibernate.SoftwareApplyTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="SoftwareApplyTask"
-		class="com.boco.eoms.sheet.softwareApply.model.SoftwareApplyTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.softwareApply.dao.hibernate.SoftwareApplyMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="ISoftwareApplyLinkDAO"
+          class="com.boco.eoms.sheet.softwareApply.dao.hibernate.SoftwareApplyLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="ISoftwareApplyTaskDAO"
+          class="com.boco.eoms.sheet.softwareApply.dao.hibernate.SoftwareApplyTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="SoftwareApplyTask"
+          class="com.boco.eoms.sheet.softwareApply.model.SoftwareApplyTask" autowire="byName">
+    </bean>
     <bean id="SoftwareApplyLink"
-		class="com.boco.eoms.sheet.softwareApply.model.SoftwareApplyLink"
-		autowire="byName" />
-	<bean id="SoftwareApplyMain"
-		class="com.boco.eoms.sheet.softwareApply.model.SoftwareApplyMain"
-		autowire="byName" />
-	<bean id="iSoftwareApplyTask"
-		class="com.boco.eoms.sheet.softwareApply.task.impl.SoftwareApplyTaskImpl"
-		autowire="byName" />
-	<bean id="iSoftwareApplyTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyTaskManagerImpl">
-				<property name="taskModelObject" ref="SoftwareApplyTask" />
-				<property name="taskDAO">
-					<ref bean="ISoftwareApplyTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-					<value>/config/softwareApplyConfig.properties</value>
-				</property>
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iSoftwareApplyFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iSoftwareApplyLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyLinkManagerImpl">
-				<property name="linkObject" ref="SoftwareApplyLink"/>
-				<property name="linkDAO">
-				  <ref bean="ISoftwareApplyLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iSoftwareApplyMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyMainManagerImpl">
-			    <property name="mainObject" ref="SoftwareApplyMain" />
-				<property name="mainDAO">
-				 <ref bean="ISoftwareApplyMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iSoftwareApplyQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>SoftwareApplyProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/softwareapplyprocess-config.xml</value>
-				</property>				
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.softwareApply.model.SoftwareApplyLink"
+          autowire="byName"/>
+    <bean id="SoftwareApplyMain"
+          class="com.boco.eoms.sheet.softwareApply.model.SoftwareApplyMain"
+          autowire="byName"/>
+    <bean id="iSoftwareApplyTask"
+          class="com.boco.eoms.sheet.softwareApply.task.impl.SoftwareApplyTaskImpl"
+          autowire="byName"/>
+    <bean id="iSoftwareApplyTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyTaskManagerImpl">
+                <property name="taskModelObject" ref="SoftwareApplyTask"/>
+                <property name="taskDAO">
+                    <ref bean="ISoftwareApplyTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/softwareApplyConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSoftwareApplyFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSoftwareApplyLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyLinkManagerImpl">
+                <property name="linkObject" ref="SoftwareApplyLink"/>
+                <property name="linkDAO">
+                    <ref bean="ISoftwareApplyLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSoftwareApplyMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareApply.service.impl.SoftwareApplyMainManagerImpl">
+                <property name="mainObject" ref="SoftwareApplyMain"/>
+                <property name="mainDAO">
+                    <ref bean="ISoftwareApplyMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iSoftwareApplyQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>SoftwareApplyProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/softwareapplyprocess-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iSoftwareApplyQo"
-		class="com.boco.eoms.sheet.softwareApply.qo.impl.SoftwareApplyQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="SoftwareApplyMain" />
-		<property name="poLink" value="SoftwareApplyLink" />
-		<property name="aliasMain" value="SoftwareApplyMain" />
-		<property name="aliasLink" value="SoftwareApplyLink" />
-		<property name="poTask" value="SoftwareApplyTask" />
-	    <property name="aliasTask" value="SoftwareApplyTask" />			
-	</bean>
+    <bean id="iSoftwareApplyQo"
+          class="com.boco.eoms.sheet.softwareApply.qo.impl.SoftwareApplyQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="SoftwareApplyMain"/>
+        <property name="poLink" value="SoftwareApplyLink"/>
+        <property name="aliasMain" value="SoftwareApplyMain"/>
+        <property name="aliasLink" value="SoftwareApplyLink"/>
+        <property name="poTask" value="SoftwareApplyTask"/>
+        <property name="aliasTask" value="SoftwareApplyTask"/>
+    </bean>
 
-	<bean id="SoftwareApply" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareApply.webapp.action.SoftwareApplyMethod">
-				<property name="businessFlowService" >
-					<ref bean="iSoftwareApplyFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iSoftwareApplyLinkManager" />
-				<property name="mainService"
-					ref="iSoftwareApplyMainManager" />
-				<property name="sheetTask"
-					ref="SoftwareApplyTask" />
-				<property name="taskService"
-					ref="iSoftwareApplyTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/softwareapplyprocess-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
-     <!--SoftwareApply-END-->  
+    <bean id="SoftwareApply" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareApply.webapp.action.SoftwareApplyMethod">
+                <property name="businessFlowService">
+                    <ref bean="iSoftwareApplyFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iSoftwareApplyLinkManager"/>
+                <property name="mainService"
+                          ref="iSoftwareApplyMainManager"/>
+                <property name="sheetTask"
+                          ref="SoftwareApplyTask"/>
+                <property name="taskService"
+                          ref="iSoftwareApplyTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/softwareapplyprocess-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--SoftwareApply-END-->
 </beans>

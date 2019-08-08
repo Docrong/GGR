@@ -8,239 +8,227 @@ import com.boco.eoms.sheet.base.model.BaseSubMain;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="BusinessOperationMain.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="BusinessOperationmain"
  */
-public class BusinessOperationMain extends BaseMain
-{
+public class BusinessOperationMain extends BaseMain {
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainProductType;
+     * @texttype
+     */
+    private java.lang.String mainProductType;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainProductName;
+     * @dicttype
+     */
+    private java.lang.String mainProductName;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainProductCode;
+     * @texttype
+     */
+    private java.lang.String mainProductCode;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainIsGF;
+     * @dicttype
+     */
+    private java.lang.String mainIsGF;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainDesignSheetId;
+     * @texttype
+     */
+    private java.lang.String mainDesignSheetId;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainSheetId;
+     * @texttype
+     */
+    private java.lang.String mainSheetId;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainTask;
+     * @dicttype
+     */
+    private java.lang.String mainTask;
 
     /**
-	 *
-	 * @dicttype
-	 */
-     private java.lang.String mainIsGC;
+     * @dicttype
+     */
+    private java.lang.String mainIsGC;
 
     /**
-	 *
-	 * @textarea
-	 */
-     private java.lang.String mainSummarize;
+     * @textarea
+     */
+    private java.lang.String mainSummarize;
 
     /**
-	 *
-	 * @accesstype
-	 */
-     private java.lang.String mainExtendAcc;
+     * @accesstype
+     */
+    private java.lang.String mainExtendAcc;
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-     
-     private java.lang.String mainIsSuccess;
-     
-     private String mainProductTypeTwo;
-     
-     private Integer mainifrecord; 
-     
- 	public Integer getMainifrecord() {
- 		return mainifrecord;
- 	}
+    /**
+     * @hibernate.property value=""
+     * @eoms.show
+     * @return
+     */
 
- 	public void setMainifrecord(Integer mainifrecord) {
- 		this.mainifrecord = mainifrecord;
- 	}
-     
-   	 public java.lang.String getMainIsSuccess() {
-		return mainIsSuccess;
-	}
+    private java.lang.String mainIsSuccess;
 
-	public void setMainIsSuccess(java.lang.String mainIsSuccess) {
-		this.mainIsSuccess = mainIsSuccess;
-	}
+    private String mainProductTypeTwo;
 
-	public java.lang.String getMainProductType() {
-            return mainProductType;
-     }
+    private Integer mainifrecord;
 
-     public void setMainProductType(java.lang.String mainProductType) {
-           this.mainProductType = mainProductType;
-     }
+    public Integer getMainifrecord() {
+        return mainifrecord;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainProductName() {
-            return mainProductName;
-     }
+    public void setMainifrecord(Integer mainifrecord) {
+        this.mainifrecord = mainifrecord;
+    }
 
-     public void setMainProductName(java.lang.String mainProductName) {
-           this.mainProductName = mainProductName;
-     }
+    public java.lang.String getMainIsSuccess() {
+        return mainIsSuccess;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainProductCode() {
-            return mainProductCode;
-     }
+    public void setMainIsSuccess(java.lang.String mainIsSuccess) {
+        this.mainIsSuccess = mainIsSuccess;
+    }
 
-     public void setMainProductCode(java.lang.String mainProductCode) {
-           this.mainProductCode = mainProductCode;
-     }
+    public java.lang.String getMainProductType() {
+        return mainProductType;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainIsGF() {
-            return mainIsGF;
-     }
+    public void setMainProductType(java.lang.String mainProductType) {
+        this.mainProductType = mainProductType;
+    }
 
-     public void setMainIsGF(java.lang.String mainIsGF) {
-           this.mainIsGF = mainIsGF;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainProductName() {
+        return mainProductName;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainDesignSheetId() {
-            return mainDesignSheetId;
-     }
+    public void setMainProductName(java.lang.String mainProductName) {
+        this.mainProductName = mainProductName;
+    }
 
-     public void setMainDesignSheetId(java.lang.String mainDesignSheetId) {
-           this.mainDesignSheetId = mainDesignSheetId;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainProductCode() {
+        return mainProductCode;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainSheetId() {
-            return mainSheetId;
-     }
+    public void setMainProductCode(java.lang.String mainProductCode) {
+        this.mainProductCode = mainProductCode;
+    }
 
-     public void setMainSheetId(java.lang.String mainSheetId) {
-           this.mainSheetId = mainSheetId;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainIsGF() {
+        return mainIsGF;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainTask() {
-            return mainTask;
-     }
+    public void setMainIsGF(java.lang.String mainIsGF) {
+        this.mainIsGF = mainIsGF;
+    }
 
-     public void setMainTask(java.lang.String mainTask) {
-           this.mainTask = mainTask;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainDesignSheetId() {
+        return mainDesignSheetId;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainIsGC() {
-            return mainIsGC;
-     }
+    public void setMainDesignSheetId(java.lang.String mainDesignSheetId) {
+        this.mainDesignSheetId = mainDesignSheetId;
+    }
 
-     public void setMainIsGC(java.lang.String mainIsGC) {
-           this.mainIsGC = mainIsGC;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainSheetId() {
+        return mainSheetId;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainSummarize() {
-            return mainSummarize;
-     }
+    public void setMainSheetId(java.lang.String mainSheetId) {
+        this.mainSheetId = mainSheetId;
+    }
 
-     public void setMainSummarize(java.lang.String mainSummarize) {
-           this.mainSummarize = mainSummarize;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainTask() {
+        return mainTask;
+    }
 
-	/**
-	 * @hibernate.property value=""
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainExtendAcc() {
-            return mainExtendAcc;
-     }
+    public void setMainTask(java.lang.String mainTask) {
+        this.mainTask = mainTask;
+    }
 
-     public void setMainExtendAcc(java.lang.String mainExtendAcc) {
-           this.mainExtendAcc = mainExtendAcc;
-     }
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainIsGC() {
+        return mainIsGC;
+    }
 
-	public String getMainProductTypeTwo() {
-		return mainProductTypeTwo;
-	}
+    public void setMainIsGC(java.lang.String mainIsGC) {
+        this.mainIsGC = mainIsGC;
+    }
 
-	public void setMainProductTypeTwo(String mainProductTypeTwo) {
-		this.mainProductTypeTwo = mainProductTypeTwo;
-	}
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainSummarize() {
+        return mainSummarize;
+    }
+
+    public void setMainSummarize(java.lang.String mainSummarize) {
+        this.mainSummarize = mainSummarize;
+    }
+
+    /**
+     * @return
+     * @hibernate.property value=""
+     * @eoms.show
+     */
+    public java.lang.String getMainExtendAcc() {
+        return mainExtendAcc;
+    }
+
+    public void setMainExtendAcc(java.lang.String mainExtendAcc) {
+        this.mainExtendAcc = mainExtendAcc;
+    }
+
+    public String getMainProductTypeTwo() {
+        return mainProductTypeTwo;
+    }
+
+    public void setMainProductTypeTwo(String mainProductTypeTwo) {
+        this.mainProductTypeTwo = mainProductTypeTwo;
+    }
 
 }

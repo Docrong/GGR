@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
     <!-- Add new Managers here -->
-    
+
     <!--TawSupplierkpiInfo-DAO START-->
-    <bean id="tawSupplierkpiInfoDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiInfoDaoHibernate" autowire="byName"/>
+    <bean id="tawSupplierkpiInfoDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiInfoDaoHibernate" autowire="byName"/>
     <!--TawSupplierkpiInfo-DAO END-->
-    <!--TawSupplierkpiInfo-START-->    
+    <!--TawSupplierkpiInfo-START-->
     <bean id="ItawSupplierkpiInfoManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiInfoManagerImpl">
@@ -16,13 +17,14 @@
         </property>
     </bean>
     <!--TawSupplierkpiInfo-END-->
-    
+
     <!--TawSupplierkpiTemplate-DAO START-->
-    <bean id="tawSupplierkpiTemplateDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiTemplateDaoHibernate" autowire="byName"/>
+    <bean id="tawSupplierkpiTemplateDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiTemplateDaoHibernate" autowire="byName"/>
     <!--TawSupplierkpiTemplate-DAO END-->
-    <!--TawSupplierkpiTemplate-START-->    
-    
-    
+    <!--TawSupplierkpiTemplate-START-->
+
+
     <bean id="ItawSupplierkpiTemplateManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiTemplateManagerImpl">
@@ -33,27 +35,29 @@
         </property>
     </bean>
     <!--TawSupplierkpiTemplate-END-->
-    
+
     <!--TawSupplierkpiItem-DAO START-->
-    <bean id="tawSupplierkpiItemDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiItemDaoHibernate" autowire="byName"/>
+    <bean id="tawSupplierkpiItemDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiItemDaoHibernate" autowire="byName"/>
     <!--TawSupplierkpiItem-DAO END-->
-    <!--TawSupplierkpiItem-START-->    
+    <!--TawSupplierkpiItem-START-->
     <bean id="ItawSupplierkpiItemManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiItemManagerImpl">
                 <property name="tawSupplierkpiItemDao" ref="tawSupplierkpiItemDao"/>
                 <property name="tawSupplierkpiDictDao" ref="tawSupplierkpiDictDao"/>
-                <property name="tawSupplierkpiTemplateDao" ref="tawSupplierkpiTemplateDao" />
-                <property name="tawSupplierkpiTemplateAssessDao" ref="tawSupplierkpiTemplateAssessDao" />
+                <property name="tawSupplierkpiTemplateDao" ref="tawSupplierkpiTemplateDao"/>
+                <property name="tawSupplierkpiTemplateAssessDao" ref="tawSupplierkpiTemplateAssessDao"/>
             </bean>
         </property>
     </bean>
     <!--TawSupplierkpiItem-END-->
-    
+
     <!--TawsuCheckModule-DAO START-->
-    <bean id="tawsuCheckModuleDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawsuCheckModuleDaoHibernate" autowire="byName"/>
+    <bean id="tawsuCheckModuleDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawsuCheckModuleDaoHibernate"
+          autowire="byName"/>
     <!--TawsuCheckModule-DAO END-->
-    <!--TawsuCheckModule-START-->    
+    <!--TawsuCheckModule-START-->
     <bean id="ItawsuCheckModuleManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawsuCheckModuleManagerImpl">
@@ -62,11 +66,12 @@
         </property>
     </bean>
     <!--TawsuCheckModule-END-->
-    
-<!--TawSupplierkpiInstance-DAO START-->
-    <bean id="tawSupplierkpiInstanceDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiInstanceDaoHibernate" autowire="byName"/>
+
+    <!--TawSupplierkpiInstance-DAO START-->
+    <bean id="tawSupplierkpiInstanceDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiInstanceDaoHibernate" autowire="byName"/>
     <!--TawSupplierkpiInstance-DAO END-->
-    <!--TawSupplierkpiInstance-START-->    
+    <!--TawSupplierkpiInstance-START-->
     <bean id="ItawSupplierkpiInstanceManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiInstanceManagerImpl">
@@ -75,11 +80,13 @@
         </property>
     </bean>
     <!--TawSupplierkpiInstance-END-->
-    
-<!--TawSuppKpiInstReportOrder-DAO START-->
-    <bean id="tawSuppKpiInstReportOrderDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSuppKpiInstReportOrderDaoHibernate" autowire="byName"/>
+
+    <!--TawSuppKpiInstReportOrder-DAO START-->
+    <bean id="tawSuppKpiInstReportOrderDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSuppKpiInstReportOrderDaoHibernate"
+          autowire="byName"/>
     <!--TawSuppKpiInstReportOrder-DAO END-->
-    <!--TawSuppKpiInstReportOrder-START-->    
+    <!--TawSuppKpiInstReportOrder-START-->
     <bean id="ItawSuppKpiInstReportOrderManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSuppKpiInstReportOrderManagerImpl">
@@ -87,12 +94,14 @@
             </bean>
         </property>
     </bean>
-    <!--TawSuppKpiInstReportOrder-END-->    
-    
+    <!--TawSuppKpiInstReportOrder-END-->
+
     <!--TawSupplierkpiAssessInstance-DAO START-->
-    <bean id="tawSupplierkpiAssessInstanceDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiAssessInstanceDaoHibernate" autowire="byName"/>
+    <bean id="tawSupplierkpiAssessInstanceDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiAssessInstanceDaoHibernate"
+          autowire="byName"/>
     <!--TawSupplierkpiAssessInstance-DAO END-->
-    <!--TawSupplierkpiAssessInstance-START-->    
+    <!--TawSupplierkpiAssessInstance-START-->
     <bean id="ItawSupplierkpiAssessInstanceManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiAssessInstanceManagerImpl">
@@ -105,11 +114,12 @@
         </property>
     </bean>
     <!--TawSupplierkpiAssessInstance-END-->
-    
-	<!--TawSupplierkpiRelation-DAO START-->
-    <bean id="tawSupplierkpiRelationDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiRelationDaoHibernate" autowire="byName"/>
+
+    <!--TawSupplierkpiRelation-DAO START-->
+    <bean id="tawSupplierkpiRelationDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiRelationDaoHibernate" autowire="byName"/>
     <!--TawSupplierkpiRelation-DAO END-->
-    <!--TawSupplierkpiRelation-START-->    
+    <!--TawSupplierkpiRelation-START-->
     <bean id="ItawSupplierkpiRelationManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiRelationManagerImpl">
@@ -119,21 +129,23 @@
     </bean>
     <!--TawSupplierkpiRelation-END-->
 
-	<!--TawSystemDictType-DAO START-->
-	<bean id="tawSystemDictTypeDao"
-		class="com.boco.eoms.commons.system.dict.dao.hibernate.TawSystemDictTypeDaoHibernate"
-		autowire="byName" />
+    <!--TawSystemDictType-DAO START-->
+    <bean id="tawSystemDictTypeDao"
+          class="com.boco.eoms.commons.system.dict.dao.hibernate.TawSystemDictTypeDaoHibernate"
+          autowire="byName"/>
 
-	<!--TawSystemDictType-DAO END-->
-	
-	<bean id="tawSystemDictJDBC"
-		class="com.boco.eoms.commons.system.dict.dao.hibernate.TawSystemDictJDBCImpl"
-		autowire="byName" />
-		
-	<!--TawSupplierkpiTemplateAssess-DAO START-->
-    <bean id="tawSupplierkpiTemplateAssessDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiTemplateAssessDaoHibernate" autowire="byName"/>
+    <!--TawSystemDictType-DAO END-->
+
+    <bean id="tawSystemDictJDBC"
+          class="com.boco.eoms.commons.system.dict.dao.hibernate.TawSystemDictJDBCImpl"
+          autowire="byName"/>
+
+    <!--TawSupplierkpiTemplateAssess-DAO START-->
+    <bean id="tawSupplierkpiTemplateAssessDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiTemplateAssessDaoHibernate"
+          autowire="byName"/>
     <!--TawSupplierkpiTemplateAssess-DAO END-->
-    <!--TawSupplierkpiTemplateAssess-START-->    
+    <!--TawSupplierkpiTemplateAssess-START-->
     <bean id="ItawSupplierkpiTemplateAssessManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiTemplateAssessManagerImpl">
@@ -146,11 +158,13 @@
         </property>
     </bean>
     <!--TawSupplierkpiTemplateAssess-END-->
-    
+
     <!--TawSupplierkpiInstanceAss-DAO START-->
-    <bean id="tawSupplierkpiInstanceAssDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiInstanceAssDaoHibernate" autowire="byName"/>
+    <bean id="tawSupplierkpiInstanceAssDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiInstanceAssDaoHibernate"
+          autowire="byName"/>
     <!--TawSupplierkpiInstanceAss-DAO END-->
-    <!--TawSupplierkpiInstanceAss-START-->    
+    <!--TawSupplierkpiInstanceAss-START-->
     <bean id="ItawSupplierkpiInstanceAssManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiInstanceAssManagerImpl">
@@ -159,11 +173,12 @@
         </property>
     </bean>
     <!--TawSupplierkpiInstanceAss-END-->
-    
+
     <!--TawSupplierkpiLog-DAO START-->
-    <bean id="tawSupplierkpiLogDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiLogDaoHibernate" autowire="byName"/>
+    <bean id="tawSupplierkpiLogDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiLogDaoHibernate"
+          autowire="byName"/>
     <!--TawSupplierkpiLog-DAO END-->
-    <!--TawSupplierkpiLog-START-->    
+    <!--TawSupplierkpiLog-START-->
     <bean id="ItawSupplierkpiLogManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiLogManagerImpl">
@@ -172,11 +187,12 @@
         </property>
     </bean>
     <!--TawSupplierkpiLog-END-->
-    
+
     <!--TawSupplierkpiDict-DAO START-->
-    <bean id="tawSupplierkpiDictDao" class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiDictDaoHibernate" autowire="byName"/>
+    <bean id="tawSupplierkpiDictDao"
+          class="com.boco.eoms.extra.supplierkpi.dao.hibernate.TawSupplierkpiDictDaoHibernate" autowire="byName"/>
     <!--TawSupplierkpiDict-DAO END-->
-    <!--TawSupplierkpiDict-START-->    
+    <!--TawSupplierkpiDict-START-->
     <bean id="ItawSupplierkpiDictManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.extra.supplierkpi.service.impl.TawSupplierkpiDictManagerImpl">
@@ -185,7 +201,7 @@
         </property>
     </bean>
     <!--TawSupplierkpiDict-END-->
-    
+
 </beans>
 
 

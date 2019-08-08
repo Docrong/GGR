@@ -12,6 +12,7 @@ package com.boco.eoms.security.util;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author weis
  * @version 1.0
  */
@@ -66,7 +67,7 @@ public class CaseInsensitiveString implements Comparable {
      * @param object Object to be compared
      * @return A case insensitive comparison
      * @throws ClassCastException if the argument is not a
-     * <code>CaseInsensitiveString</code> or <code>String</code>
+     *                            <code>CaseInsensitiveString</code> or <code>String</code>
      */
     public int compareTo(Object object)
             throws ClassCastException {
@@ -164,6 +165,8 @@ public class CaseInsensitiveString implements Comparable {
         return mString.toUpperCase().toLowerCase().hashCode();
     }
 
-    /** The original string. */
+    /**
+     * The original string.
+     */
     private String mString;
 }

@@ -14,25 +14,26 @@ import com.boco.eoms.sheet.mofficedata.model.MofficeDataSubLink;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
 
 public interface IMofficeDataSubLinkManager {
-	public void saveOrUpdate(MofficeDataSubLink obj) throws Exception;
+    public void saveOrUpdate(MofficeDataSubLink obj) throws Exception;
 
-	public MofficeDataSubLink getSubLinkObject()throws Exception;
+    public MofficeDataSubLink getSubLinkObject() throws Exception;
 
-	public void updateOthers(String liId, String preLinkId)throws Exception;
-	/**
-	 * 根据linkId获取同步的局数据的处理信息
-	 * @param parentLinkId
-	 * @return
-	 * @throws Exception
-	 * @date 2016-4-5下午02:03:57
-	 * @author weichao
-	 */
-	public List getSubLinks(String parentLinkId)throws Exception;
+    public void updateOthers(String liId, String preLinkId) throws Exception;
+
+    /**
+     * 根据linkId获取同步的局数据的处理信息
+     *
+     * @param parentLinkId
+     * @return
+     * @throws Exception
+     * @date 2016-4-5下午02:03:57
+     * @author weichao
+     */
+    public List getSubLinks(String parentLinkId) throws Exception;
 }

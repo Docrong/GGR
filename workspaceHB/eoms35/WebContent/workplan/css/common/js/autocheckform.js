@@ -1,60 +1,58 @@
 /********************************************************************************
- Copyright (c) 2002,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+ Copyright (c) 2002,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
  All rights reserved.
- Filename £ºcheckform.js
- Abstract £º×Ô¶¯±íµ¥¼ì²âÄ£¿é
- Version¡¡£º1.0
- Author   £ºLiu Guoyuan
- Finished Date £º2003-02-25
- Last Modified £º2003-02-25
- 
- ¹¦ÄÜ£º
- ¸ù¾ÝÌõ¼þ£¬×Ô¶¯¼ì²â±íµ¥
- <form onSubmit="AutoCheckForm(this)">
-********************************************************************************/
+ Filename ï¿½ï¿½checkform.js
+ Abstract ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+ Versionï¿½ï¿½ï¿½ï¿½1.0
+ Author   ï¿½ï¿½Liu Guoyuan
+ Finished Date ï¿½ï¿½2003-02-25
+ Last Modified ï¿½ï¿½2003-02-25
 
-function AutoCheckForm(formObject)
-{//×Ô¶¯¼ì²â±íµ¥
-	var formObjectCount=formObject.length; //±íµ¥ÔªËØÊýÁ¿
-	var str="";
-	var conditionStr;   //±íµ¥ÑéÖ¤Ìõ¼þ
-	var conditionItem,conditionValue;
-	for (i=0;i<formObjectCount;i++) 
-	{
-		with (formObject[i])
-		{
-			conditionStr=getAttribute("condition")
-			objCnName=getAttribute("cnname")
-			if (conditionStr!=null)
-			{
-				conditionStr=conditionStr.split(";")
-				if (conditionStr.length>1) //Êý×é
-				{
-				
-				}
-				else
-				{
-					conditionItem=conditionStr[0].split("=")[0];
-					conditionValue=conditionStr[0].split("=")[1];
-					//if (conditionStr.length<=1) {return 2;}//²ÎÊý´íÎó
-					if (!CheckFormItem(formObject[i].name,objCnName,conditionItem,conditionValue)){return false};
-				}
-			}
-		}
-	}
-	return true;
+ ï¿½ï¿½ï¿½Ü£ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
+ <form onSubmit="AutoCheckForm(this)">
+ ********************************************************************************/
+
+function AutoCheckForm(formObject) {//ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
+    var formObjectCount = formObject.length; //ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    var str = "";
+    var conditionStr;   //ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½
+    var conditionItem, conditionValue;
+    for (i = 0; i < formObjectCount; i++) {
+        with (formObject[i]) {
+            conditionStr = getAttribute("condition")
+            objCnName = getAttribute("cnname")
+            if (conditionStr != null) {
+                conditionStr = conditionStr.split(";")
+                if (conditionStr.length > 1) //ï¿½ï¿½ï¿½ï¿½
+                {
+
+                } else {
+                    conditionItem = conditionStr[0].split("=")[0];
+                    conditionValue = conditionStr[0].split("=")[1];
+                    //if (conditionStr.length<=1) {return 2;}//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    if (!CheckFormItem(formObject[i].name, objCnName, conditionItem, conditionValue)) {
+                        return false
+                    }
+                    ;
+                }
+            }
+        }
+    }
+    return true;
 }
-function CheckFormItem(objName,objCnName,conditionItem,conditionValue)
-{
-	switch (conditionItem)
-	{
-		case "null":
-			if (conditionValue=="false")
-				return (CheckIsNull(objName);
-			else return true;
-			break;
-		case "email":
-			return CheckIsEmail(objName,conditionValue);
-			break;
-	}
+
+function CheckFormItem(objName, objCnName, conditionItem, conditionValue) {
+    switch (conditionItem) {
+        case "null":
+            if (conditionValue == "false")
+                return (CheckIsNull
+            (objName);
+        else
+            return true;
+            break;
+        case "email":
+            return CheckIsEmail(objName, conditionValue);
+            break;
+    }
 }

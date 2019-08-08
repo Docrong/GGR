@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,17 +13,17 @@
             table="taw_system_subrolerefpost"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
-    <generator class="uuid.hex"/>
-    </id>
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
+            <generator class="uuid.hex"/>
+        </id>
 
         <property
-        	column="postId"
-            name="postId"
+                column="postId"
+                name="postId"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -32,8 +32,8 @@
         </property>
 
         <property
-        	column="subRoleId"
-            name="subRoleId"
+                column="subRoleId"
+                name="subRoleId"
                 length="32"
                 not-null="false"
                 unique="true"
@@ -42,7 +42,7 @@
         </property>
 
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

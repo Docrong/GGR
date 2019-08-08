@@ -9,12 +9,12 @@ package com.boco.eoms.commons.system.priv.exception;
  */
 public class MenuBaseException extends PrivBaseException {
 
-	public MenuBaseException() {
-		this("Base Exception for Menu Management.");
-	}
+    public MenuBaseException() {
+        this("Base Exception for Menu Management.");
+    }
 
-	public MenuBaseException(String errorMessage) {
-		super(errorMessage);
-	}
+    public MenuBaseException(String errorMessage) {
+        super(errorMessage);
+    }
 
 }

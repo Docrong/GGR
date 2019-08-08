@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -63,20 +63,20 @@ package com.boco.eoms.km.core.crimson.util;
  * may appear in certain roles in XML documents.  Such methods are used
  * both to parse and to create such documents.
  *
- * @version 1.4
  * @author David Brownell
+ * @version 1.4
  */
-public class XmlNames 
-{
+public class XmlNames {
     /**
      * Useful strings from the DOM Level 2 Spec
      */
     public static final String
-        SPEC_XML_URI = "http://www.w3.org/XML/1998/namespace";
+            SPEC_XML_URI = "http://www.w3.org/XML/1998/namespace";
     public static final String
-        SPEC_XMLNS_URI = "http://www.w3.org/2000/xmlns/";
+            SPEC_XMLNS_URI = "http://www.w3.org/2000/xmlns/";
 
-    private XmlNames () { }
+    private XmlNames() {
+    }
 
 
     /**
@@ -84,18 +84,17 @@ public class XmlNames
      *
      * @param value the string being tested
      */
-    public static boolean isName (String value)
-    {
-	if (value == null || "".equals(value))
-	    return false;
+    public static boolean isName(String value) {
+        if (value == null || "".equals(value))
+            return false;
 
-	char c = value.charAt (0);
-	if (!XmlChars.isLetter (c) && c != '_' && c != ':')
-	    return false;
-	for (int i = 1; i < value.length (); i++)
-	    if (!XmlChars.isNameChar (value.charAt (i)))
-		return false;
-	return true;
+        char c = value.charAt(0);
+        if (!XmlChars.isLetter(c) && c != '_' && c != ':')
+            return false;
+        for (int i = 1; i < value.length(); i++)
+            if (!XmlChars.isNameChar(value.charAt(i)))
+                return false;
+        return true;
     }
 
     /**
@@ -106,18 +105,17 @@ public class XmlNames
      *
      * @param value the string being tested
      */
-    public static boolean isUnqualifiedName (String value)
-    {
-	if (value == null || value.length() == 0)
-	    return false;
+    public static boolean isUnqualifiedName(String value) {
+        if (value == null || value.length() == 0)
+            return false;
 
-	char c = value.charAt (0);
-	if (!XmlChars.isLetter (c) && c != '_')
-	    return false;
-	for (int i = 1; i < value.length (); i++)
-	    if (!XmlChars.isNCNameChar (value.charAt (i)))
-		return false;
-	return true;
+        char c = value.charAt(0);
+        if (!XmlChars.isLetter(c) && c != '_')
+            return false;
+        for (int i = 1; i < value.length(); i++)
+            if (!XmlChars.isNCNameChar(value.charAt(i)))
+                return false;
+        return true;
     }
 
     /**
@@ -131,29 +129,28 @@ public class XmlNames
      *
      * @param value the string being tested
      */
-    public static boolean isQualifiedName (String value)
-    {
-	if (value == null)
-	    return false;
+    public static boolean isQualifiedName(String value) {
+        if (value == null)
+            return false;
 
         // [6] QName ::= (Prefix ':')? LocalPart
         // [7] Prefix ::= NCName
         // [8] LocalPart ::= NCName
 
-	int	first = value.indexOf (':');
+        int first = value.indexOf(':');
 
         // no Prefix, only check LocalPart
         if (first <= 0)
-            return isUnqualifiedName (value);
+            return isUnqualifiedName(value);
 
         // Prefix exists, check everything
 
-	int	last = value.lastIndexOf (':');
-	if (last != first)
-	    return false;
-	
-	return isUnqualifiedName (value.substring (0, first))
-		&& isUnqualifiedName (value.substring (first + 1));
+        int last = value.lastIndexOf(':');
+        if (last != first)
+            return false;
+
+        return isUnqualifiedName(value.substring(0, first))
+                && isUnqualifiedName(value.substring(first + 1));
     }
 
     /**
@@ -165,14 +162,13 @@ public class XmlNames
      *
      * @param token the string being tested
      */
-    public static boolean isNmtoken (String token)
-    {
-	int	length = token.length ();
+    public static boolean isNmtoken(String token) {
+        int length = token.length();
 
-	for (int i = 0; i < length; i++)
-	    if (!XmlChars.isNameChar (token.charAt (i)))
-		return false;
-	return true;
+        for (int i = 0; i < length; i++)
+            if (!XmlChars.isNameChar(token.charAt(i)))
+                return false;
+        return true;
     }
 
 
@@ -182,13 +178,11 @@ public class XmlNames
      * These are like XML "name tokens" but they may not contain the
      * "colon" character.
      *
-     * @see #isNmtoken
-     *
      * @param token the string being tested
+     * @see #isNmtoken
      */
-    public static boolean isNCNmtoken (String token)
-    {
-	return isNmtoken (token) && token.indexOf (':') < 0;
+    public static boolean isNCNmtoken(String token) {
+        return isNmtoken(token) && token.indexOf(':') < 0;
     }
 
     /**
@@ -215,9 +209,9 @@ public class XmlNames
     public static String getLocalPart(String qualifiedName) {
         // [6] QName ::= (Prefix ':')? LocalPart
         // [8] LocalPart ::= NCName
-	int index = qualifiedName.indexOf(':');
-	if (index < 0) {
-	    return qualifiedName;
+        int index = qualifiedName.indexOf(':');
+        if (index < 0) {
+            return qualifiedName;
         }
 
         // ':' at end of qualifiedName
@@ -225,6 +219,6 @@ public class XmlNames
             return null;
         }
 
-	return qualifiedName.substring(index + 1);
+        return qualifiedName.substring(index + 1);
     }
 }

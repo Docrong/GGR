@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -68,8 +68,7 @@ import org.w3c.dom.Node;
  * @author David Brownell
  * @version $Revision: 1.1.1.1 $
  */
-public interface NodeEx extends Node, XmlWritable
-{
+public interface NodeEx extends Node, XmlWritable {
     /**
      * Returns the value of a given attribute, tracing up through
      * ancestors if needed.  In the XML standard, two attributes are
@@ -79,20 +78,21 @@ public interface NodeEx extends Node, XmlWritable
      * names like <em>xmlns:foo</em> to declare namespace prefixes.
      *
      * @param name The name of the attribute to be found.  Colons in
-     *	this are ignored.
+     *             this are ignored.
      * @return the value of the identified attribute, or null if no
-     *	such attribute is found.
+     * such attribute is found.
      */
-    public String getInheritedAttribute (String name);
+    public String getInheritedAttribute(String name);
 
     /**
      * Returns the language id (value of <code>xml:lang</code>
      * attribute) applicable to this node, if known.  Traces up
      * through ancestors as needed.
+     *
      * @return the value of the <em>xml:lang</em> attribute, or
-     *  null if no such attribute is found.
+     * null if no such attribute is found.
      */
-    public String getLanguage ();
+    public String getLanguage();
 
     /**
      * Returns the index of the node in the list of children, such
@@ -100,25 +100,25 @@ public interface NodeEx extends Node, XmlWritable
      *
      * @param maybeChild the node which may be a child of this one
      * @return the index of the node in the set of children, or
-     *	else -1 if that node is not a child of this node.
+     * else -1 if that node is not a child of this node.
      */
-    public int getIndexOf (Node maybeChild);
+    public int getIndexOf(Node maybeChild);
 
     /**
      * Sets the node to be readonly; applies recursively to the children
      * of this node if the parameter is true.
      *
      * @param deep If <code> true </code> recursively set the nodes in the
-     * subtree under the current node to be read only.
-     * If <code> false </code> then set only the current node to be
-     * readonly
+     *             subtree under the current node to be read only.
+     *             If <code> false </code> then set only the current node to be
+     *             readonly
      */
-    public void setReadonly (boolean deep);
+    public void setReadonly(boolean deep);
 
     /**
      * Method to allow easy determination of whether a node is read only.
      *
      * @return <code> true </code> if the node is read only
      */
-    public boolean isReadonly ();
+    public boolean isReadonly();
 }

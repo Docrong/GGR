@@ -4,6 +4,7 @@
 package com.boco.eoms.commons.db.test;
 
 // java standard library
+
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.Connection;
@@ -41,8 +42,7 @@ public class ContainerPoolTest {
 
         try {
             m_objWDS.init();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             BocoLog.error(this, "Fail to execute m_objWDS.init(), error message is: ["
                     + e.getMessage() + "]");
         }
@@ -54,8 +54,7 @@ public class ContainerPoolTest {
 
         try {
             _objStmt = _Conn.createStatement();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             BocoLog.error(this, "Fail to execute _Conn.createStatement(), error message is: ["
                     + e.getMessage() + "]");
         }
@@ -63,30 +62,26 @@ public class ContainerPoolTest {
         String _strSQL = "select * from boco_trans_1";
         try {
             _objRest = _objStmt.executeQuery(_strSQL);
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             BocoLog.error(this, "Fail to execute _objStmt.executeQuery(_strSQL), error message is: ["
                     + e.getMessage() + "]");
         }
 
         try {
             while (_objRest.next()) {
-                BocoLog.info(this, "au_id: [" +_objRest.getString("au_id")+ "]");
-                BocoLog.info(this, "au_lname: [" +_objRest.getString("au_lname")+ "]");
-                BocoLog.info(this, "au_fname: [" +_objRest.getString("au_fname")+ "]");
+                BocoLog.info(this, "au_id: [" + _objRest.getString("au_id") + "]");
+                BocoLog.info(this, "au_lname: [" + _objRest.getString("au_lname") + "]");
+                BocoLog.info(this, "au_fname: [" + _objRest.getString("au_fname") + "]");
                 BocoLog.info(this, "------------");
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             BocoLog.error(this, "Fail to get result of quering, error message is: ["
                     + e.getMessage() + "]");
-        }
-        finally {
+        } finally {
             if (_objRest != null) {
                 try {
                     _objRest.close();
-                }
-                catch (SQLException e) {
+                } catch (SQLException e) {
                     BocoLog.error(this, "Fail to execute _objRest.close(), error message is: ["
                             + e.getMessage() + "]");
                 }
@@ -95,8 +90,7 @@ public class ContainerPoolTest {
             if (_objStmt != null) {
                 try {
                     _objStmt.close();
-                }
-                catch (SQLException e) {
+                } catch (SQLException e) {
                     BocoLog.error(this, "Fail to execute _objStmt.close(), error message is: ["
                             + e.getMessage() + "]");
                 }
@@ -106,7 +100,6 @@ public class ContainerPoolTest {
     }
 
     /**
-     *  
      * @param args
      */
     public static void main(String[] args) {
@@ -116,21 +109,18 @@ public class ContainerPoolTest {
 
         try {
             _objConn = _objTest.m_objWDS.getConnection();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             BocoLog
                     .error(null, "Fail to execute _ojbTest.m_objWDS.getConnection(), error message is: ["
                             + e.getMessage() + "]");
-        }
-        finally {
+        } finally {
             if (_objConn != null) {
                 try {
                     _objConn.close();
-                }
-                catch (SQLException e) {
+                } catch (SQLException e) {
                     BocoLog
-                    .error(null, "Fail to execute _objConn.close(), error message is: ["
-                            + e.getMessage() + "]");
+                            .error(null, "Fail to execute _objConn.close(), error message is: ["
+                                    + e.getMessage() + "]");
                 }
             }
         }

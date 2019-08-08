@@ -1,6 +1,7 @@
 ﻿package com.boco.eoms.sheet.mofficedata.dao;
 
 import java.util.List;
+
 import org.hibernate.HibernateException;
 import com.boco.eoms.sheet.base.dao.ILinkDAO;
 
@@ -14,13 +15,12 @@ import com.boco.eoms.sheet.base.dao.ILinkDAO;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
- 
- public interface IMofficeDataLinkDAO extends ILinkDAO {
- 		public List getLinksBySql(final String queryCountStr)
-			throws HibernateException;
- }
+
+public interface IMofficeDataLinkDAO extends ILinkDAO {
+    public List getLinksBySql(final String queryCountStr)
+            throws HibernateException;
+}

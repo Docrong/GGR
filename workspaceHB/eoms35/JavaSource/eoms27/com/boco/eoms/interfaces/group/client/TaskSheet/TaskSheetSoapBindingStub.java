@@ -1,6 +1,6 @@
 ﻿/**
  * TaskSheetSoapBindingStub.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,7 +13,7 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[8];
@@ -22,8 +22,8 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setName("isAlive");
         oper.addParameter(new javax.xml.namespace.QName("", "serSupplier"), new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), java.lang.String.class, org.apache.axis.description.ParameterDesc.IN, false, false);
         oper.setReturnType(org.apache.axis.encoding.XMLType.AXIS_VOID);
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[0] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -44,8 +44,8 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "cancelWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[1] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -67,8 +67,8 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "checkinWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -90,8 +90,8 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "confirmWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[3] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -118,8 +118,8 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "newWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[4] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -147,8 +147,8 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "renewWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[5] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -169,8 +169,8 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "replyWorkSheetReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[6] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -195,19 +195,19 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
         oper.setReturnType(new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"));
         oper.setReturnClass(java.lang.String.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "newWorkSheetEDISReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.WRAPPED);
-        oper.setUse(org.apache.axis.enum.Use.LITERAL);
+        oper.setStyle(org.apache.axis. enum.Style.WRAPPED);
+        oper.setUse(org.apache.axis. enum.Use.LITERAL);
         _operations[7] = oper;
 
     }
 
     public TaskSheetSoapBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public TaskSheetSoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public TaskSheetSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -246,8 +246,7 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
                 _call.setProperty(key, super.cachedProperties.get(key));
             }
             return _call;
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", t);
         }
     }
@@ -268,10 +267,10 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {serSupplier});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{serSupplier});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
+            throw (java.rmi.RemoteException) _resp;
         }
         extractAttachments(_call);
     }
@@ -292,12 +291,11 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, cancelAdvice});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, cancelAdvice});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -323,12 +321,11 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, closeCorp, closePerson, closeDepart, closeContact, closeTime, new java.lang.Integer(satisfaction), closeAdvice});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, closeCorp, closePerson, closeDepart, closeContact, closeTime, new java.lang.Integer(satisfaction), closeAdvice});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -354,12 +351,11 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, new java.lang.Integer(urgent), deadline});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, new java.lang.Integer(urgent), deadline});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -385,12 +381,11 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, new java.lang.Integer(urgent), deadline, new java.lang.Integer(assigType), assigTitle, assigContent});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, new java.lang.Integer(urgent), deadline, new java.lang.Integer(assigType), assigTitle, assigContent});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -416,12 +411,11 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, resendReason, new java.lang.Integer(urgent), deadline, new java.lang.Integer(assigType), assigTitle, assigContent});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendDepart, sendContact, sendTime, acceptCorp, coordCorp, resendReason, new java.lang.Integer(urgent), deadline, new java.lang.Integer(assigType), assigTitle, assigContent});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -447,12 +441,11 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, endResult});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, replyCorp, replyPerson, replyDepart, replyContact, replyTime, endResult});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;
@@ -478,12 +471,11 @@ public class TaskSheetSoapBindingStub extends org.apache.axis.client.Stub implem
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendContact, sendTime, acceptCorp, new java.lang.Integer(urgent), deadline, new java.lang.Integer(assigType), assigTitle, assigContent});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{new java.lang.Integer(sheetType), serialNo, serSupplier, serCaller, callTime, callerPwd, attachRef, sendCorp, sendPerson, sendContact, sendTime, acceptCorp, new java.lang.Integer(urgent), deadline, new java.lang.Integer(assigType), assigTitle, assigContent});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (java.lang.String) _resp;

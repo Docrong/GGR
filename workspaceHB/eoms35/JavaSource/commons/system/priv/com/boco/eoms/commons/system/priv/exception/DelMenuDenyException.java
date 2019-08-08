@@ -9,12 +9,12 @@ package com.boco.eoms.commons.system.priv.exception;
  */
 public class DelMenuDenyException extends MenuBaseException {
 
-	public DelMenuDenyException() {
-		this("Fail to execute delete menu operation.");
-	}
+    public DelMenuDenyException() {
+        this("Fail to execute delete menu operation.");
+    }
 
-	public DelMenuDenyException(String errorMessage) {
-		super(errorMessage);
-	}
+    public DelMenuDenyException(String errorMessage) {
+        super(errorMessage);
+    }
 
 }

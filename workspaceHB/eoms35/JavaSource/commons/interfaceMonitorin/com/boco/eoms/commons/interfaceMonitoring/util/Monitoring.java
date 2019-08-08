@@ -22,39 +22,39 @@ import org.apache.axis.utils.Messages;
 
 public class Monitoring extends BasicHandler {
 
-	public void invoke(MessageContext msgContext) throws AxisFault {
-		// TODO Auto-generated method stub
-		try {
-			
-	
-			Handler serviceHandler = msgContext.getService();
-			
-			 System.out.println("msgContext.getTransportName():"+msgContext.getTransportName());
-			Message message = msgContext.getRequestMessage();
-			String soap;
-			System.out.println("messageContext.getPastPivot():"+msgContext.getPastPivot());
-			if(msgContext.getPastPivot()){
-				message = msgContext.getRequestMessage();
-				 soap =((SOAPPart)message.getSOAPPart()).getAsString();
-				 System.out.println("soap:"+soap);
-				message = msgContext.getResponseMessage();
-				 soap =message.getSOAPPartAsString();
-				 System.out.println("Requestsoap:"+soap); 
-				 
-			}
-		
-			InterfaceMonitoring interfaceMonitoring =new InterfaceMonitoring();
-			
-			interfaceMonitoring.setInterFaceType(msgContext.getTransportName());
-			interfaceMonitoring.setInterFaceMethod(msgContext.getTransportName());
+    public void invoke(MessageContext msgContext) throws AxisFault {
+        // TODO Auto-generated method stub
+        try {
+
+
+            Handler serviceHandler = msgContext.getService();
+
+            System.out.println("msgContext.getTransportName():" + msgContext.getTransportName());
+            Message message = msgContext.getRequestMessage();
+            String soap;
+            System.out.println("messageContext.getPastPivot():" + msgContext.getPastPivot());
+            if (msgContext.getPastPivot()) {
+                message = msgContext.getRequestMessage();
+                soap = ((SOAPPart) message.getSOAPPart()).getAsString();
+                System.out.println("soap:" + soap);
+                message = msgContext.getResponseMessage();
+                soap = message.getSOAPPartAsString();
+                System.out.println("Requestsoap:" + soap);
+
+            }
+
+            InterfaceMonitoring interfaceMonitoring = new InterfaceMonitoring();
+
+            interfaceMonitoring.setInterFaceType(msgContext.getTransportName());
+            interfaceMonitoring.setInterFaceMethod(msgContext.getTransportName());
 //			interfaceMonitoring.setText(soap);
-			interfaceMonitoring.setSuccess("ok");
-			//InterfaceMonitoringDaoHibernate interfaceMonitoringDaoHibernate=new InterfaceMonitoringDaoHibernate();
-			
+            interfaceMonitoring.setSuccess("ok");
+            //InterfaceMonitoringDaoHibernate interfaceMonitoringDaoHibernate=new InterfaceMonitoringDaoHibernate();
+
 //			System.out.println(result);
-		} catch (Exception e) {
-		e.printStackTrace();
-		}
-	}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

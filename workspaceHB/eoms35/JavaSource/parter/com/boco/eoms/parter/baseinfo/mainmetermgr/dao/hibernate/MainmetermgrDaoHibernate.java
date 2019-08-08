@@ -54,12 +54,12 @@ public class MainmetermgrDaoHibernate extends BaseDaoHibernate implements IMainm
 
     /**
      * @see com.boco.eoms.parter.baseinfo.mainmetermgr.dao.MainmetermgrDao#saveMainmetermgr(Mainmetermgr mainmetermgr)
-     */    
+     */
     public void saveMainmetermgr(final Mainmetermgr mainmetermgr) {
         if ((mainmetermgr.getId() == null) || (mainmetermgr.getId().equals("")))
-			getHibernateTemplate().save(mainmetermgr);
-		else
-			getHibernateTemplate().saveOrUpdate(mainmetermgr);
+            getHibernateTemplate().save(mainmetermgr);
+        else
+            getHibernateTemplate().saveOrUpdate(mainmetermgr);
     }
 
     /**
@@ -68,45 +68,48 @@ public class MainmetermgrDaoHibernate extends BaseDaoHibernate implements IMainm
     public void removeMainmetermgr(final String id) {
         getHibernateTemplate().delete(getMainmetermgr(id));
     }
+
     /**
-     * @see com.boco.eoms.parter.baseinfo.mainmetermgr.dao.MainmetermgrDao#getMainmetermgrs(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.parter.baseinfo.mainmetermgr.dao.MainmetermgrDao#getMainmetermgrs(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getMainmetermgrs(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getMainmetermgrs(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the mainmetermgr
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from Mainmetermgr";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from Mainmetermgr";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.mainmetermgr.dao.MainmetermgrDao#getMainmetermgrs(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getMainmetermgrs(final Integer curPage, final Integer pageSize) {
-			return this.getMainmetermgrs(curPage,pageSize,null);
-		}
+        return this.getMainmetermgrs(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.parter.baseinfo.mainmetermgr.dao.MainmetermgrDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from Mainmetermgr obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from Mainmetermgr obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

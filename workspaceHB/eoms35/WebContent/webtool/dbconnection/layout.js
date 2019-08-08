@@ -8,47 +8,47 @@
 
 
 // create the LayoutExample application (single instance)
-var LayoutExample = function(){
+var LayoutExample = function () {
     // everything in this space is private and only accessible in the HelloWorld block
-    
+
     // define some private variables
     var dialog, showBtn;
-    
-    var toggleTheme = function(){
+
+    var toggleTheme = function () {
         Ext.get(document.body, true).toggleClass('ytheme-gray');
     };
-    
+
     // return a public interface
     return {
-        init : function(){
+        init: function () {
         },
-        
-        showDialog : function(buttonid){
-       		showBtn = buttonid;
-            if(!dialog){ // lazy initialize the dialog and only create it once
-                dialog = new Ext.LayoutDialog("hello-dlg", { 
-                        modal:true,
-                        width:600,
-                        height:400,
-                        shadow:true,
-                        minWidth:300,
-                        minHeight:300,
-                        proxyDrag: true,
-	                    center: {
-	                        autoScroll:true,
-	                        tabPosition: 'top',
-	                        closeOnTab: true,
-	                        alwaysShowTabs: true
-	                    }
+
+        showDialog: function (buttonid) {
+            showBtn = buttonid;
+            if (!dialog) { // lazy initialize the dialog and only create it once
+                dialog = new Ext.LayoutDialog("hello-dlg", {
+                    modal: true,
+                    width: 600,
+                    height: 400,
+                    shadow: true,
+                    minWidth: 300,
+                    minHeight: 300,
+                    proxyDrag: true,
+                    center: {
+                        autoScroll: true,
+                        tabPosition: 'top',
+                        closeOnTab: true,
+                        alwaysShowTabs: true
+                    }
                 });
                 dialog.addKeyListener(27, dialog.hide, dialog);
                 dialog.addButton('Submit', dialog.hide, dialog);
                 dialog.addButton('Close', dialog.hide, dialog);
-                
+
                 var layout = dialog.getLayout();
                 layout.beginUpdate();
-	            layout.add('center', new Ext.ContentPanel('center', {title: 'The First Tab'}));
-	            layout.endUpdate();
+                layout.add('center', new Ext.ContentPanel('center', {title: 'The First Tab'}));
+                layout.endUpdate();
             }
             dialog.show(showBtn.dom);
         }

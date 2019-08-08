@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
@@ -11,23 +11,23 @@
             table="KM_EXAM_QUESTIONS"
     >
 
-    <id
-        name="questionID"
-            column="QUESTION_ID"
-            unsaved-value="null"
-    >
+        <id
+                name="questionID"
+                column="QUESTION_ID"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	
-	<property
-            name="createUser"
-            	column="CREATE_USER"
+
+        <property
+                name="createUser"
+                column="CREATE_USER"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -35,9 +35,9 @@
 
         </property>
 
-	<property
-            name="createTime"
-            	column="CREATE_TIME"
+        <property
+                name="createTime"
+                column="CREATE_TIME"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -45,9 +45,9 @@
 
         </property>
 
-	<property
-            name="createDept"
-            	column="CREATE_DEPT"
+        <property
+                name="createDept"
+                column="CREATE_DEPT"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -55,9 +55,9 @@
 
         </property>
 
-	<property
-            name="specialtyID"
-            	column="SPECIALTY_ID"
+        <property
+                name="specialtyID"
+                column="SPECIALTY_ID"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -65,9 +65,9 @@
 
         </property>
 
-	<property
-            name="questionName"
-            	column="QUESTION_NAME"
+        <property
+                name="questionName"
+                column="QUESTION_NAME"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -75,9 +75,9 @@
 
         </property>
 
-	<property
-            name="question"
-            	column="QUESTION"
+        <property
+                name="question"
+                column="QUESTION"
                 length="500"
                 not-null="false"
                 unique="false"
@@ -85,9 +85,9 @@
 
         </property>
 
-	<property
-            name="answer"
-            	column="ANSWER"
+        <property
+                name="answer"
+                column="ANSWER"
                 length="500"
                 not-null="false"
                 unique="false"
@@ -95,9 +95,9 @@
 
         </property>
 
-	<property
-            name="questionType"
-            	column="QUESTION_TYPE"
+        <property
+                name="questionType"
+                column="QUESTION_TYPE"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -105,9 +105,9 @@
 
         </property>
 
-	<property
-            name="difficulty"
-            	column="DIFFICULTY"
+        <property
+                name="difficulty"
+                column="DIFFICULTY"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -115,9 +115,9 @@
 
         </property>
 
-	<property
-            name="isDeleted"
-            	column="IS_DELETED"
+        <property
+                name="isDeleted"
+                column="IS_DELETED"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -125,9 +125,9 @@
 
         </property>
 
-	<property
-            name="deptId"
-            	column="DEPT_ID"
+        <property
+                name="deptId"
+                column="DEPT_ID"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -135,17 +135,17 @@
 
         </property>
 
-	<property
-            name="accessory"
-            	column="ACCESSORY"
+        <property
+                name="accessory"
+                column="ACCESSORY"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-	
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

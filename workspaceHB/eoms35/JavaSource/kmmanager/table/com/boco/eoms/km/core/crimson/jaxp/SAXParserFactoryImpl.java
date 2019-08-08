@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -62,6 +62,7 @@ package com.boco.eoms.km.core.crimson.jaxp;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.ParserConfigurationException;
+
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
@@ -86,11 +87,11 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
     /**
      * Creates a new instance of <code>SAXParser</code> using the currently
      * configured factory parameters.
+     *
      * @return javax.xml.parsers.SAXParser
      */
     public SAXParser newSAXParser()
-        throws ParserConfigurationException
-    {
+            throws ParserConfigurationException {
         SAXParser saxParserImpl;
         try {
             saxParserImpl = new SAXParserImpl(this, features);
@@ -98,16 +99,15 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
             // Translate to ParserConfigurationException
             throw new ParserConfigurationException(se.getMessage());
         }
-	return saxParserImpl;
+        return saxParserImpl;
     }
 
     /**
      * Common code for translating exceptions
      */
     private SAXParserImpl newSAXParserImpl()
-        throws ParserConfigurationException, SAXNotRecognizedException, 
-        SAXNotSupportedException
-    {
+            throws ParserConfigurationException, SAXNotRecognizedException,
+            SAXNotSupportedException {
         SAXParserImpl saxParserImpl;
         try {
             saxParserImpl = new SAXParserImpl(this, features);
@@ -122,13 +122,12 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
     }
 
     /**
-     * Sets the particular feature in the underlying implementation of 
+     * Sets the particular feature in the underlying implementation of
      * org.xml.sax.XMLReader.
      */
     public void setFeature(String name, boolean value)
-        throws ParserConfigurationException, SAXNotRecognizedException, 
-            SAXNotSupportedException
-    {
+            throws ParserConfigurationException, SAXNotRecognizedException,
+            SAXNotSupportedException {
         // XXX This is ugly.  We have to collect the features and then
         // later create an XMLReader to verify the features.
         if (features == null) {
@@ -149,13 +148,12 @@ public class SAXParserFactoryImpl extends SAXParserFactory {
     }
 
     /**
-     * returns the particular property requested for in the underlying 
+     * returns the particular property requested for in the underlying
      * implementation of org.xml.sax.XMLReader.
      */
     public boolean getFeature(String name)
-        throws ParserConfigurationException, SAXNotRecognizedException,
-		SAXNotSupportedException
-    {
+            throws ParserConfigurationException, SAXNotRecognizedException,
+            SAXNotSupportedException {
         // Check for valid name by creating a dummy XMLReader to get
         // feature value
         return newSAXParserImpl().getXMLReader().getFeature(name);

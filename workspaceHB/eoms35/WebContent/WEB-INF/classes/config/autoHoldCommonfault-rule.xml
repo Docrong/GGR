@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleEngine>
-	<groups>
-		<group id="group1" description="规则路由1">
-			<groupRef ruleId="Rule2Sample" pri="2" />
-			<groupRef ruleId="Rule1Sample" pri="1" />
-		</group>
-	</groups>
-	<expStyles>
-		<expStyle id="rule1Express"
-			style=" ( $parameter != $l{springbean.getNames} || false ) &amp;&amp; $text ? $r{springbean.getName} : 3 " />
-	</expStyles>
-	
-	<dict dictSql="select t.itemname as name ,t.itemid as id from taw_system_dictitem t where t.dictid=" dictTypeSql="select t.dictid as id,t.dictname as name from taw_system_dicttype t"/>
-	<rules>
-<rule className="com.boco.eoms.commons.rule.service.ExpressionRuleService" id="faultAutoHoldRule" description="test"> 
-      <input>
-        <parameter name="params" type="java.util.HashMap" description="test"/> 
-      </input>
-      <output>
-        <parameter expression=" #params.mainFaultResponseLevel=='101030402'&amp;&amp;#params.mainSendMode=='101030503'&amp;&amp;#params.mainIfAffectOperation=='1030102'&amp;&amp;#params.mainFaultDiscoverableMode=='101030101'&amp;&amp;#params.linkFaultDealResult=='101030601'? #@java.util.HashMap@{'autoHoldFlag':'true','holdStatisfied':'1030301','endResult':'非常满意'} : #@java.util.HashMap@{'autoHoldFlag':'false'}" name="returnMap" type="java.util.HashMap" drl="" expStyleId="" description="test"/> 
-      </output>  
-      <listeners> 
-        <listener name="com.boco.eoms.commons.rule.sample.Rule1ListenerSample" description="test1"/>  
-        <listener name="com.boco.eoms.commons.rule.listener.RuleCheckListener" description="test"/> 
-      </listeners> 
-    </rule>
-		</rules>
+    <groups>
+        <group id="group1" description="规则路由1">
+            <groupRef ruleId="Rule2Sample" pri="2"/>
+            <groupRef ruleId="Rule1Sample" pri="1"/>
+        </group>
+    </groups>
+    <expStyles>
+        <expStyle id="rule1Express"
+                  style=" ( $parameter != $l{springbean.getNames} || false ) &amp;&amp; $text ? $r{springbean.getName} : 3 "/>
+    </expStyles>
+
+    <dict dictSql="select t.itemname as name ,t.itemid as id from taw_system_dictitem t where t.dictid="
+          dictTypeSql="select t.dictid as id,t.dictname as name from taw_system_dicttype t"/>
+    <rules>
+        <rule className="com.boco.eoms.commons.rule.service.ExpressionRuleService" id="faultAutoHoldRule"
+              description="test">
+            <input>
+                <parameter name="params" type="java.util.HashMap" description="test"/>
+            </input>
+            <output>
+                <parameter
+                        expression=" #params.mainFaultResponseLevel=='101030402'&amp;&amp;#params.mainSendMode=='101030503'&amp;&amp;#params.mainIfAffectOperation=='1030102'&amp;&amp;#params.mainFaultDiscoverableMode=='101030101'&amp;&amp;#params.linkFaultDealResult=='101030601'? #@java.util.HashMap@{'autoHoldFlag':'true','holdStatisfied':'1030301','endResult':'非常满意'} : #@java.util.HashMap@{'autoHoldFlag':'false'}"
+                        name="returnMap" type="java.util.HashMap" drl="" expStyleId="" description="test"/>
+            </output>
+            <listeners>
+                <listener name="com.boco.eoms.commons.rule.sample.Rule1ListenerSample" description="test1"/>
+                <listener name="com.boco.eoms.commons.rule.listener.RuleCheckListener" description="test"/>
+            </listeners>
+        </rule>
+    </rules>
 </ruleEngine>
 

@@ -1,92 +1,85 @@
-<%@page contentType="text/html;charset=gb2312"%>
+<%@page contentType="text/html;charset=gb2312" %>
 
-<%@page import="java.util.*,java.io.File"%>
+<%@page import="java.util.*,java.io.File" %>
 
-<%@page import="com.boco.eoms.resmanage.jspsmart.upload.*"%>
+<%@page import="com.boco.eoms.resmanage.jspsmart.upload.*" %>
 
-<%@page import="com.boco.eoms.resmanage.entity.*"%>
+<%@page import="com.boco.eoms.resmanage.entity.*" %>
 
-<%@page import="mcs.common.db.*"%>
+<%@page import="mcs.common.db.*" %>
 
-<%@page  import="com.boco.eoms.common.util.*"%>
+<%@page import="com.boco.eoms.common.util.*" %>
 
-<%@include file="../power.jsp"%>
+<%@include file="../power.jsp" %>
 
-<jsp:useBean id="myUpload" scope="page" class="com.boco.eoms.resmanage.jspsmart.upload.SmartUpload" />
+<jsp:useBean id="myUpload" scope="page" class="com.boco.eoms.resmanage.jspsmart.upload.SmartUpload"/>
 
 <%
 
-request.setCharacterEncoding("GBK");
+    request.setCharacterEncoding("GBK");
 
-RoomOpt roomopt = new RoomOpt();
+    RoomOpt roomopt = new RoomOpt();
 
-Vector roomImgVec = new Vector();
+    Vector roomImgVec = new Vector();
 
-myUpload.initialize(pageContext);
+    myUpload.initialize(pageContext);
 
-myUpload.upload();
-
-
-
-String sId = null;
-
-if(request.getParameter("id") != null)
-
-	sId = request.getParameter("id");
-
-else
-
-	sId = "2";
-
-String pi_id = myUpload.getRequest().getParameter("pi_id");
-
-String tabid = myUpload.getRequest().getParameter("tabid");
-
-String fi_deviceclass = myUpload.getRequest().getParameter("id");
+    myUpload.upload();
 
 
+    String sId = null;
 
-String cityId = null;
+    if (request.getParameter("id") != null)
 
-cityId = roomopt.getCityById(fi_deviceclass,pi_id);
+        sId = request.getParameter("id");
+
+    else
+
+        sId = "2";
+
+    String pi_id = myUpload.getRequest().getParameter("pi_id");
+
+    String tabid = myUpload.getRequest().getParameter("tabid");
+
+    String fi_deviceclass = myUpload.getRequest().getParameter("id");
 
 
+    String cityId = null;
 
-String cc_memo = StaticMethod.dbNull2String(myUpload.getRequest().getParameter("cc_memo"));
+    cityId = roomopt.getCityById(fi_deviceclass, pi_id);
 
-int count=0;
 
-String separator=File.separator;
+    String cc_memo = StaticMethod.dbNull2String(myUpload.getRequest().getParameter("cc_memo"));
+
+    int count = 0;
+
+    String separator = File.separator;
 
 //String uploaddir=realPath + "resmanage" + separator + "upload" + separator;
 
-String uploaddir="resmanage" + separator + "upload" + separator;
+    String uploaddir = "resmanage" + separator + "upload" + separator;
 //out.println("uploaddir is:::"+uploaddir);
 
 
-try{
+    try {
 
 //上载文件
 
-  for (int i=0;i<myUpload.getFiles().getCount();i++) 
+        for (int i = 0; i < myUpload.getFiles().getCount(); i++) {
 
-	  {
+            com.boco.eoms.resmanage.jspsmart.upload.File file = myUpload.getFiles().getFile(i);
 
-		com.boco.eoms.resmanage.jspsmart.upload.File file = myUpload.getFiles().getFile(i);
+            //String fileName2 = StaticMethod.dbNull2String(file.getFileName());
 
-		//String fileName2 = StaticMethod.dbNull2String(file.getFileName());
+            String fileName2 = file.getFileName();
 
-		String fileName2 = file.getFileName();
+            if (!file.isMissing()) {
 
-		if (!file.isMissing())
+                file.saveAs(uploaddir + fileName2);
 
-			{
+                //String cc_pic = uploaddir + file.getFileName();fileName2
 
-				file.saveAs(uploaddir + fileName2);
-
-				//String cc_pic = uploaddir + file.getFileName();fileName2
-
-				String cc_pic = uploaddir + fileName2;
+                String cc_pic = uploaddir + fileName2;
 
 				/*out.println("FieldName = " + file.getFieldName() + "<BR>");
 
@@ -108,92 +101,87 @@ try{
 
 				*/
 
-				count++;
+                count++;
 
-				roomImg roomimg = new roomImg();
+                roomImg roomimg = new roomImg();
 
-				roomimg.setFi_device(Integer.parseInt(pi_id));
+                roomimg.setFi_device(Integer.parseInt(pi_id));
 
-				roomimg.setFi_city(cityId);
+                roomimg.setFi_city(cityId);
 
-				roomimg.setFi_deviceclass(Integer.parseInt(fi_deviceclass));
+                roomimg.setFi_deviceclass(Integer.parseInt(fi_deviceclass));
 
-				roomimg.setCc_pic(cc_pic);
+                roomimg.setCc_pic(cc_pic);
 
-				roomimg.setCc_memo(cc_memo);
+                roomimg.setCc_memo(cc_memo);
 
-				roomImgVec.addElement(roomimg);
+                roomImgVec.addElement(roomimg);
 
-				int row = roomopt.roomImgOpt(roomImgVec);
+                int row = roomopt.roomImgOpt(roomImgVec);
 
-				//out.println("row is: "+row);
+                //out.println("row is: "+row);
 
-			}
+            }
 
-		
 
-	 }
+        }
 
-} catch (Exception e) 
-
-	{
+    } catch (Exception e) {
 
         out.println(e.toString());
 
     }
 
-	//out.println(count + " file(s) uploaded.");
+    //out.println(count + " file(s) uploaded.");
 
 %>
 
 <%
 
-//out.println("count is:"+count);
+    //out.println("count is:"+count);
 
-String retpage = null;
+    String retpage = null;
 
-if(count >0)
+    if (count > 0)
 
-	retpage = "typeSelect.jsp";
+        retpage = "typeSelect.jsp";
 
-else
+    else
 
-	retpage = "editImgInsert.jsp";
+        retpage = "editImgInsert.jsp";
 
 %>
 
- <body onload="returnInput()">
+<body onload="returnInput()">
 
-   <form action="<%=retpage%>" method=POST name=editSaveForm>
+<form action="<%=retpage%>" method=POST name=editSaveForm>
 
-	<input type="hidden" name="pi_id" value=<%=pi_id%>></input>
+    <input type="hidden" name="pi_id" value=<%=pi_id%>></input>
 
-	<input type="hidden" name="id" value=<%=sId%>></input>
+    <input type="hidden" name="id" value=<%=sId%>></input>
 
-	<input type="hidden" name="tabid" value=<%=tabid%>></input>
+    <input type="hidden" name="tabid" value=<%=tabid%>></input>
 
-	</form>
+</form>
 
-	</body>
+</body>
 
- <script>
+<script>
 
-function returnInput()
+    function returnInput() {
 
-{
+        var count =<%=count%>;
 
-	var count=<%=count%>;
+        if (count > 0)
 
-	if (count>0)
+            alert("图片上传成功！");
 
-		alert("图片上传成功！");
+        else
 
-	else
+            alert("图片上传失败！");
 
-		alert("图片上传失败！");
+        editSaveForm.submit();
 
-	editSaveForm.submit();
-
-}
+    }
 
 </script>

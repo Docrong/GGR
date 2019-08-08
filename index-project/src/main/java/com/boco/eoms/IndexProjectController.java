@@ -9,18 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexProjectController {
 
-	
-	@RequestMapping("/index")
-	public String index(HttpServletRequest request,HttpServletResponse response) {
-		return "首页";
-	}
-	
-	@RequestMapping("/index2")
-	public String index2(HttpServletRequest request,HttpServletResponse response) {
-		return "首页2";
-	}
-	@RequestMapping("/index3")
-	public String index3(HttpServletRequest request,HttpServletResponse response) {
-		return "mindmanager";
-	}
+
+    @RequestMapping("/index")
+    public String index(HttpServletRequest request, HttpServletResponse response) {
+        return "首页";
+    }
+
+    @RequestMapping("/index2")
+    public String index2(HttpServletRequest request, HttpServletResponse response) {
+        return "首页2";
+    }
+
+    @RequestMapping("/index3")
+    public String index3(HttpServletRequest request, HttpServletResponse response) {
+        return "mindmanager";
+    }
 }

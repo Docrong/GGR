@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Sun Sep 29 16:51:14 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICircuitControlMainManager extends IMainService {
- 
- }
+
+public interface ICircuitControlMainManager extends IMainService {
+
+}

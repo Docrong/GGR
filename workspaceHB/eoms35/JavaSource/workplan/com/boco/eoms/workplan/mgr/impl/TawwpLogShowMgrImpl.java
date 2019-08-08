@@ -7,32 +7,33 @@ import com.boco.eoms.workplan.dao.ITawwpLogShowDao;
 import com.boco.eoms.workplan.mgr.ITawwpLogShowMgr;
 import com.boco.eoms.workplan.model.TawwpNewLog;
 
-public class TawwpLogShowMgrImpl implements ITawwpLogShowMgr{
-	private ITawwpLogShowDao tawwpLogShowDao;
-	public ITawwpLogShowDao getTawwpLogShowDao() {
-		return tawwpLogShowDao;
-	}
+public class TawwpLogShowMgrImpl implements ITawwpLogShowMgr {
+    private ITawwpLogShowDao tawwpLogShowDao;
 
-	public void setTawwpLogShowDao(ITawwpLogShowDao tawwpLogShowDao) {
-		this.tawwpLogShowDao = tawwpLogShowDao;
-	}
+    public ITawwpLogShowDao getTawwpLogShowDao() {
+        return tawwpLogShowDao;
+    }
 
-	public TawwpNewLog getOne(String id) {
-		TawwpNewLog tawwpNewLog = new TawwpNewLog();
-		tawwpNewLog = tawwpLogShowDao.getOne(id);
-		return tawwpNewLog;
-	}
+    public void setTawwpLogShowDao(ITawwpLogShowDao tawwpLogShowDao) {
+        this.tawwpLogShowDao = tawwpLogShowDao;
+    }
 
-	public List listTable() {
-		List list = null;
-		list = tawwpLogShowDao.listTable();
-		return list;
-	}
+    public TawwpNewLog getOne(String id) {
+        TawwpNewLog tawwpNewLog = new TawwpNewLog();
+        tawwpNewLog = tawwpLogShowDao.getOne(id);
+        return tawwpNewLog;
+    }
 
-	public List listTableSearch(String sheetId, String timeStart, String timeEnd) {
-		List list = null;
-		list = tawwpLogShowDao.listTable(sheetId, timeStart, timeEnd);
-		return list;
-	}
+    public List listTable() {
+        List list = null;
+        list = tawwpLogShowDao.listTable();
+        return list;
+    }
+
+    public List listTableSearch(String sheetId, String timeStart, String timeEnd) {
+        List list = null;
+        list = tawwpLogShowDao.listTable(sheetId, timeStart, timeEnd);
+        return list;
+    }
 
 }

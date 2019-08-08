@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionForm;
  * ��ַ�������к������|׵�130��������� 12��3��
  * To change this template use File | Settings | File Templates.
  */
-public class ReportMgrForm  extends ActionForm {
+public class ReportMgrForm extends ActionForm {
     private String act;
     private String flowId;
     private String reportId;
@@ -31,39 +31,39 @@ public class ReportMgrForm  extends ActionForm {
     private String dealUserName;
     private String replyInfo;
     private String acceptContact;
-    private String[] fileUrl=null;
+    private String[] fileUrl = null;
     private String combinType;
-    
-//  add: wangsixuan
+
+    //  add: wangsixuan
     private String isAudit;
     private String auditUserId;
     private String auditUserName;
-    
+
     public String getAuditUserId() {
-		return auditUserId;
-	}
+        return auditUserId;
+    }
 
-	public void setAuditUserId(String auditUserId) {
-		this.auditUserId = auditUserId;
-	}
+    public void setAuditUserId(String auditUserId) {
+        this.auditUserId = auditUserId;
+    }
 
-	public String getAuditUserName() {
-		return auditUserName;
-	}
+    public String getAuditUserName() {
+        return auditUserName;
+    }
 
-	public void setAuditUserName(String auditUserName) {
-		this.auditUserName = auditUserName;
-	}
+    public void setAuditUserName(String auditUserName) {
+        this.auditUserName = auditUserName;
+    }
 
-	public String getIsAudit() {
-		return isAudit;
-	}
+    public String getIsAudit() {
+        return isAudit;
+    }
 
-	public void setIsAudit(String isAudit) {
-		this.isAudit = isAudit;
-	}
+    public void setIsAudit(String isAudit) {
+        this.isAudit = isAudit;
+    }
 
-	public String getAct() {
+    public String getAct() {
         return act;
     }
 
@@ -206,36 +206,42 @@ public class ReportMgrForm  extends ActionForm {
     public void setFileUrl(String[] fileUrl) {
         this.fileUrl = fileUrl;
     }
-//ZF add:
+
+    //ZF add:
     private String[] fileList = null;
+
     public String[] getFileList() {
         return fileList;
     }
+
     public void setFileList(String[] fileList) {
         this.fileList = fileList;
     }
+
     private String templatFile = null;
+
     public String getTemplatFile() {
         return templatFile;
     }
+
     public void setTemplatFile(String templatFile) {
         this.templatFile = templatFile;
     }
 
-	public String getCombinType() {
-		return combinType;
-	}
+    public String getCombinType() {
+        return combinType;
+    }
 
-	public void setCombinType(String combinType) {
-		this.combinType = combinType;
-	}
+    public void setCombinType(String combinType) {
+        this.combinType = combinType;
+    }
 
-	public int getReject() {
-		return reject;
-	}
+    public int getReject() {
+        return reject;
+    }
 
-	public void setReject(int reject) {
-		this.reject = reject;
-	}
+    public void setReject(int reject) {
+        this.reject = reject;
+    }
 
 }

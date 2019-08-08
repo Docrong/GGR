@@ -16,56 +16,55 @@ import com.boco.eoms.sheet.mofficedata.service.IMofficeDataSubLinkManager;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
 
 public class MofficeDataSubLinkManagerImpl implements IMofficeDataSubLinkManager {
 
-	private IMofficeDataSubLinkDAO subLinkDao;
-	private MofficeDataSubLink subLinkObject;
-	
-	public MofficeDataSubLink getSubLinkObject() {
-		return subLinkObject;
-	}
+    private IMofficeDataSubLinkDAO subLinkDao;
+    private MofficeDataSubLink subLinkObject;
 
-	public void setSubLinkObject(MofficeDataSubLink subLinkObject) {
-		this.subLinkObject = subLinkObject;
-	}
+    public MofficeDataSubLink getSubLinkObject() {
+        return subLinkObject;
+    }
 
-	public IMofficeDataSubLinkDAO getSubLinkDao() {
-		return subLinkDao;
-	}
+    public void setSubLinkObject(MofficeDataSubLink subLinkObject) {
+        this.subLinkObject = subLinkObject;
+    }
 
-	public void setSubLinkDao(IMofficeDataSubLinkDAO subLinkDao) {
-		this.subLinkDao = subLinkDao;
-	}
+    public IMofficeDataSubLinkDAO getSubLinkDao() {
+        return subLinkDao;
+    }
 
-	public void saveOrUpdate(MofficeDataSubLink obj) throws Exception {
-		subLinkDao.saveOrUpdate(obj);
+    public void setSubLinkDao(IMofficeDataSubLinkDAO subLinkDao) {
+        this.subLinkDao = subLinkDao;
+    }
 
-	}
+    public void saveOrUpdate(MofficeDataSubLink obj) throws Exception {
+        subLinkDao.saveOrUpdate(obj);
 
-	/**
-	 * 更新其他subLink，使之与link表的记录关联起来
-	 */
-	public void updateOthers(String liId, String preLinkId) {
-		String hql = "from MofficeDataSubLink where preLinkId='"+preLinkId+"'";
-		List list = subLinkDao.getSubLinksByHql(hql);
-		if(null!=list){
-			for(int i=0;i<list.size();i++){
-				MofficeDataSubLink sublink = (MofficeDataSubLink)list.get(i);
-				sublink.setParentLinkId(liId);
-				subLinkDao.saveOrUpdate(sublink);
-			}
-		}
-	}
+    }
 
-	public List getSubLinks(String parentLinkId) throws Exception {
-		String hql = "from MofficeDataSubLink where parentLinkId='"+parentLinkId+"' order by operateTime asc";
-		return subLinkDao.getSubLinksByHql(hql);
-	}
+    /**
+     * 更新其他subLink，使之与link表的记录关联起来
+     */
+    public void updateOthers(String liId, String preLinkId) {
+        String hql = "from MofficeDataSubLink where preLinkId='" + preLinkId + "'";
+        List list = subLinkDao.getSubLinksByHql(hql);
+        if (null != list) {
+            for (int i = 0; i < list.size(); i++) {
+                MofficeDataSubLink sublink = (MofficeDataSubLink) list.get(i);
+                sublink.setParentLinkId(liId);
+                subLinkDao.saveOrUpdate(sublink);
+            }
+        }
+    }
+
+    public List getSubLinks(String parentLinkId) throws Exception {
+        String hql = "from MofficeDataSubLink where parentLinkId='" + parentLinkId + "' order by operateTime asc";
+        return subLinkDao.getSubLinksByHql(hql);
+    }
 
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_rm_reliefrecord"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="handoverId"
-            	column="handover_id"
+                name="handoverId"
+                column="handover_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="successorId"
-            	column="successor_id"
+                name="successorId"
+                column="successor_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -47,8 +47,8 @@
         </property>
 
         <property
-            name="roomId"
-            	column="room_id"
+                name="roomId"
+                column="room_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -57,8 +57,8 @@
         </property>
 
         <property
-            name="time"
-            	column="time"
+                name="time"
+                column="time"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -67,8 +67,8 @@
         </property>
 
         <property
-            name="lbProblem"
-            	column="lb_problem"
+                name="lbProblem"
+                column="lb_problem"
                 length="100"
                 not-null="false"
                 unique="true"
@@ -77,8 +77,8 @@
         </property>
 
         <property
-            name="nuiteFlag"
-            	column="nuite_flag"
+                name="nuiteFlag"
+                column="nuite_flag"
                 length="10"
                 not-null="true"
                 unique="true"
@@ -87,8 +87,8 @@
         </property>
 
         <property
-            name="userId"
-            	column="user_id"
+                name="userId"
+                column="user_id"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -97,8 +97,8 @@
         </property>
 
         <property
-            name="workSerial"
-            	column="work_serial"
+                name="workSerial"
+                column="work_serial"
                 length="30"
                 not-null="true"
                 unique="true"
@@ -107,16 +107,16 @@
         </property>
 
         <property
-            name="createTime"
-            	column="create_time"
+                name="createTime"
+                column="create_time"
                 length="30"
                 not-null="true"
                 unique="true"
         >
 
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

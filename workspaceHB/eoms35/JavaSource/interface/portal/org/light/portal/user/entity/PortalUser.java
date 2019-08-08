@@ -1,13 +1,13 @@
 /**
  * PortalUser.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
 package org.light.portal.user.entity;
 
-public class PortalUser  implements java.io.Serializable {
+public class PortalUser implements java.io.Serializable {
     private java.lang.String deptid;
 
     private java.lang.String deptname;
@@ -34,34 +34,34 @@ public class PortalUser  implements java.io.Serializable {
     }
 
     public PortalUser(
-           java.lang.String deptid,
-           java.lang.String deptname,
-           java.lang.String email,
-           java.lang.String id,
-           java.lang.String password,
-           java.lang.String postid,
-           java.lang.String postname,
-           java.lang.String role,
-           java.lang.String userId,
-           java.lang.String username,
-           java.lang.Integer version) {
-           this.deptid = deptid;
-           this.deptname = deptname;
-           this.email = email;
-           this.id = id;
-           this.password = password;
-           this.postid = postid;
-           this.postname = postname;
-           this.role = role;
-           this.userId = userId;
-           this.username = username;
-           this.version = version;
+            java.lang.String deptid,
+            java.lang.String deptname,
+            java.lang.String email,
+            java.lang.String id,
+            java.lang.String password,
+            java.lang.String postid,
+            java.lang.String postname,
+            java.lang.String role,
+            java.lang.String userId,
+            java.lang.String username,
+            java.lang.Integer version) {
+        this.deptid = deptid;
+        this.deptname = deptname;
+        this.email = email;
+        this.id = id;
+        this.password = password;
+        this.postid = postid;
+        this.postname = postname;
+        this.role = role;
+        this.userId = userId;
+        this.username = username;
+        this.version = version;
     }
 
 
     /**
      * Gets the deptid value for this PortalUser.
-     * 
+     *
      * @return deptid
      */
     public java.lang.String getDeptid() {
@@ -71,7 +71,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the deptid value for this PortalUser.
-     * 
+     *
      * @param deptid
      */
     public void setDeptid(java.lang.String deptid) {
@@ -81,7 +81,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the deptname value for this PortalUser.
-     * 
+     *
      * @return deptname
      */
     public java.lang.String getDeptname() {
@@ -91,7 +91,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the deptname value for this PortalUser.
-     * 
+     *
      * @param deptname
      */
     public void setDeptname(java.lang.String deptname) {
@@ -101,7 +101,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the email value for this PortalUser.
-     * 
+     *
      * @return email
      */
     public java.lang.String getEmail() {
@@ -111,7 +111,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the email value for this PortalUser.
-     * 
+     *
      * @param email
      */
     public void setEmail(java.lang.String email) {
@@ -121,7 +121,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the id value for this PortalUser.
-     * 
+     *
      * @return id
      */
     public java.lang.String getId() {
@@ -131,7 +131,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the id value for this PortalUser.
-     * 
+     *
      * @param id
      */
     public void setId(java.lang.String id) {
@@ -141,7 +141,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the password value for this PortalUser.
-     * 
+     *
      * @return password
      */
     public java.lang.String getPassword() {
@@ -151,7 +151,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the password value for this PortalUser.
-     * 
+     *
      * @param password
      */
     public void setPassword(java.lang.String password) {
@@ -161,7 +161,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the postid value for this PortalUser.
-     * 
+     *
      * @return postid
      */
     public java.lang.String getPostid() {
@@ -171,7 +171,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the postid value for this PortalUser.
-     * 
+     *
      * @param postid
      */
     public void setPostid(java.lang.String postid) {
@@ -181,7 +181,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the postname value for this PortalUser.
-     * 
+     *
      * @return postname
      */
     public java.lang.String getPostname() {
@@ -191,7 +191,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the postname value for this PortalUser.
-     * 
+     *
      * @param postname
      */
     public void setPostname(java.lang.String postname) {
@@ -201,7 +201,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the role value for this PortalUser.
-     * 
+     *
      * @return role
      */
     public java.lang.String getRole() {
@@ -211,7 +211,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the role value for this PortalUser.
-     * 
+     *
      * @param role
      */
     public void setRole(java.lang.String role) {
@@ -221,7 +221,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the userId value for this PortalUser.
-     * 
+     *
      * @return userId
      */
     public java.lang.String getUserId() {
@@ -231,7 +231,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the userId value for this PortalUser.
-     * 
+     *
      * @param userId
      */
     public void setUserId(java.lang.String userId) {
@@ -241,7 +241,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the username value for this PortalUser.
-     * 
+     *
      * @return username
      */
     public java.lang.String getUsername() {
@@ -251,7 +251,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the username value for this PortalUser.
-     * 
+     *
      * @param username
      */
     public void setUsername(java.lang.String username) {
@@ -261,7 +261,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Gets the version value for this PortalUser.
-     * 
+     *
      * @return version
      */
     public java.lang.Integer getVersion() {
@@ -271,7 +271,7 @@ public class PortalUser  implements java.io.Serializable {
 
     /**
      * Sets the version value for this PortalUser.
-     * 
+     *
      * @param version
      */
     public void setVersion(java.lang.Integer version) {
@@ -279,6 +279,7 @@ public class PortalUser  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof PortalUser)) return false;
         PortalUser other = (PortalUser) obj;
@@ -289,45 +290,46 @@ public class PortalUser  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.deptid==null && other.getDeptid()==null) || 
-             (this.deptid!=null &&
-              this.deptid.equals(other.getDeptid()))) &&
-            ((this.deptname==null && other.getDeptname()==null) || 
-             (this.deptname!=null &&
-              this.deptname.equals(other.getDeptname()))) &&
-            ((this.email==null && other.getEmail()==null) || 
-             (this.email!=null &&
-              this.email.equals(other.getEmail()))) &&
-            ((this.id==null && other.getId()==null) || 
-             (this.id!=null &&
-              this.id.equals(other.getId()))) &&
-            ((this.password==null && other.getPassword()==null) || 
-             (this.password!=null &&
-              this.password.equals(other.getPassword()))) &&
-            ((this.postid==null && other.getPostid()==null) || 
-             (this.postid!=null &&
-              this.postid.equals(other.getPostid()))) &&
-            ((this.postname==null && other.getPostname()==null) || 
-             (this.postname!=null &&
-              this.postname.equals(other.getPostname()))) &&
-            ((this.role==null && other.getRole()==null) || 
-             (this.role!=null &&
-              this.role.equals(other.getRole()))) &&
-            ((this.userId==null && other.getUserId()==null) || 
-             (this.userId!=null &&
-              this.userId.equals(other.getUserId()))) &&
-            ((this.username==null && other.getUsername()==null) || 
-             (this.username!=null &&
-              this.username.equals(other.getUsername()))) &&
-            ((this.version==null && other.getVersion()==null) || 
-             (this.version!=null &&
-              this.version.equals(other.getVersion())));
+        _equals = true &&
+                ((this.deptid == null && other.getDeptid() == null) ||
+                        (this.deptid != null &&
+                                this.deptid.equals(other.getDeptid()))) &&
+                ((this.deptname == null && other.getDeptname() == null) ||
+                        (this.deptname != null &&
+                                this.deptname.equals(other.getDeptname()))) &&
+                ((this.email == null && other.getEmail() == null) ||
+                        (this.email != null &&
+                                this.email.equals(other.getEmail()))) &&
+                ((this.id == null && other.getId() == null) ||
+                        (this.id != null &&
+                                this.id.equals(other.getId()))) &&
+                ((this.password == null && other.getPassword() == null) ||
+                        (this.password != null &&
+                                this.password.equals(other.getPassword()))) &&
+                ((this.postid == null && other.getPostid() == null) ||
+                        (this.postid != null &&
+                                this.postid.equals(other.getPostid()))) &&
+                ((this.postname == null && other.getPostname() == null) ||
+                        (this.postname != null &&
+                                this.postname.equals(other.getPostname()))) &&
+                ((this.role == null && other.getRole() == null) ||
+                        (this.role != null &&
+                                this.role.equals(other.getRole()))) &&
+                ((this.userId == null && other.getUserId() == null) ||
+                        (this.userId != null &&
+                                this.userId.equals(other.getUserId()))) &&
+                ((this.username == null && other.getUsername() == null) ||
+                        (this.username != null &&
+                                this.username.equals(other.getUsername()))) &&
+                ((this.version == null && other.getVersion() == null) ||
+                        (this.version != null &&
+                                this.version.equals(other.getVersion())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -373,7 +375,7 @@ public class PortalUser  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(PortalUser.class, true);
+            new org.apache.axis.description.TypeDesc(PortalUser.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://entity.user.portal.light.org", "PortalUser"));
@@ -467,24 +469,24 @@ public class PortalUser  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

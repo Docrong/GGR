@@ -13,28 +13,31 @@ import com.boco.eoms.commons.system.role.model.TawSystemSubRoleRefPost;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public interface ITawSystemSubRoleRefPostManager extends Manager{
-	/**
+public interface ITawSystemSubRoleRefPostManager extends Manager {
+    /**
      * Saves a tawSystemDeptRefPost's information
+     *
      * @param tawSystemDeptRefPost the object to be saved
-     */    
+     */
     public void saveTawSystemSubRoleRefPost(TawSystemSubRoleRefPost tawSystemSubRoleRefPost);
-    
+
     /**
      * @param subRoleid
      * @return <TawSystemPost>
      */
     public List getPostBySubRoleId(String subRoleid);
+
     /**
-     * 
      * @param postId
      * @return <TawSystemSubRole>
      */
     public List getSubRoleByPostId(long postId);
+
     public void removeSubRoleRefPostByPostId(long postId);
+
     public void removeSubSoleRefPostBySubRoleId(String subRoleId);
 }

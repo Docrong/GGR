@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.transaction.test.model;
 
@@ -25,7 +25,7 @@ public class ApplyMain {
 
     /**
      * Constructor of instances given a simple primary key
-     * 
+     *
      * @param id
      */
     public ApplyMain(int id) {

@@ -14,9 +14,9 @@
 
 <%@ taglib uri="/WEB-INF/app.tld" prefix="eoms" %>
 
-<%@ page import ="java.util.List"%>
+<%@ page import="java.util.List" %>
 
-<%@ page import ="java.util.ArrayList""text/css">
+<%@ page import="java.util.ArrayList""text/css">
 
 <body topmargin=0 marginheight=0 leftmargin=0 marginwidth=0 >
 
@@ -32,116 +32,109 @@
 
   <table width="700" align=center style="margin:0pt 0pt 2pt 0pt">
 
-    <tr>
+        <tr>
 
-      <td width="700" align="center" valign="middle" class="table_title">
+        <td width="700" align="center" valign="middle" class="table_title">
 
-       作业计划内容查询结果
+        作业计划内容查询结果
 
-      </td>
+        </td>
 
-    </tr>
+        </tr>
 
-  </table>
+        </table>
 
 
+        <table width="700" border="0" align="center" cellpadding="1"  cellspacing="1" class="table_show">
 
-  <table width="700" border="0" align="center" cellpadding="1"  cellspacing="1" class="table_show">
+        <tr class="td_label">
 
-    <tr class="td_label">
-
-      <td width="300">
+        <td width="300">
 
         执行内容名称
 
-      </td>
+        </td>
 
-      <td width="100">
+        <td width="100">
 
         执行内容
 
-      </td>
+        </td>
 
-      <td width="100">
+        <td width="100">
 
         开始时间
 
-      </td>
+        </td>
 
-      <td width="150">
+        <td width="150">
 
         结束时间
 
-      </td>
+        </td>
 
-      
 
-    </tr>
+        </tr>
 
-<%	ArrayList list=(ArrayList)request.getAttribute("list");
+<% ArrayList list = (ArrayList) request.getAttribute("list");
 
-	if(list!=null){
+    if (list != null) {
 
-		for(int i=0;i<list.size();i++){
+        for (int i = 0; i < list.size(); i++) {
 
-		 TawwpExecuteContent content=(TawwpExecuteContent)list.get(i);
+            TawwpExecuteContent content = (TawwpExecuteContent) list.get(i);
 
- %>
+%>
 
-    <tr class="tr_show">
+<tr class="tr_show">
 
-      <td width="300" class="clsthd2">
+    <td width="300" class="clsthd2">
 
-					<a
+        <a
 
-						href="../tawwpaddons/addonsread.do?action=edit&window=new&myid=<%=content.getFormDataId()%>&model=50&addonsid=<%=content.getId()%>&reaction=/tawwpexecute/redirection.jsp"
+                href="../tawwpaddons/addonsread.do?action=edit&window=new&myid=<%=content.getFormDataId()%>&model=50&addonsid=<%=content.getId()%>&reaction=/tawwpexecute/redirection.jsp"
 
-						target="blank"> <%=content.getName()%>
+                target="blank"><%=content.getName()%>
 
-					</a>
+        </a>
 
-				</td>
+    </td>
 
-      <td width="100" class="clsthd2"align="middle">
+    <td width="100" class="clsthd2" align="middle">
 
-     	<%=StaticMethod.null2String(content.getContent())%>
+        <%=StaticMethod.null2String(content.getContent())%>
 
-      </td>
+    </td>
 
-      <td width="100" class="clsthd2" align="middle">
+    <td width="100" class="clsthd2" align="middle">
 
-      <%=content.getStartDate()%>
+        <%=content.getStartDate()%>
 
-       </td>
+    </td>
 
-      <td width="150" class="clsthd2" align="middle">
+    <td width="150" class="clsthd2" align="middle">
 
         <%=content.getEndDate()%>
 
-      </td>
+    </td>
 
-       
 
-    </tr>
+</tr>
 
- <%	}
+<% }
 
-   }
+}
 
-   
 
-  %>  
+%>
 
-  </table>
-
+</table>
 
 
 </form>
 
 
-
-<!--  正文结束  -->
-
+<!-- 正文结束 -->
 
 
 </body>

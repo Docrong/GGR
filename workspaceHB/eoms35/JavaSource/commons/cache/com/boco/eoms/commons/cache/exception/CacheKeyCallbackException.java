@@ -10,31 +10,30 @@ package com.boco.eoms.commons.cache.exception;
  * <p>
  * Apr 2, 2007 8:59:50 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class CacheKeyCallbackException extends CacheException {
 
-	/**
-	 *  
-	 */
-	public CacheKeyCallbackException() {
-		super();
-	}
+    /**
+     *
+     */
+    public CacheKeyCallbackException() {
+        super();
+    }
 
-	/**
-	 * @param errorMessage
-	 */
-	public CacheKeyCallbackException(String errorMessage) {
-		super(errorMessage);
-	}
+    /**
+     * @param errorMessage
+     */
+    public CacheKeyCallbackException(String errorMessage) {
+        super(errorMessage);
+    }
 
-	/**
-	 * @param cause
-	 */
-	public CacheKeyCallbackException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * @param cause
+     */
+    public CacheKeyCallbackException(Throwable cause) {
+        super(cause);
+    }
 }

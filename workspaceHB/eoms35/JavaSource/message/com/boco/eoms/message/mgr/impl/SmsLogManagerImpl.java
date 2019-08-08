@@ -8,8 +8,8 @@ import com.boco.eoms.base.service.impl.BaseManager;
 import com.boco.eoms.message.mgr.ISmsLogManager;
 import com.boco.eoms.message.model.SmsLog;
 import com.boco.eoms.message.dao.SmsLogDao;
+
 /**
- * 
  * <p>
  * Title:
  * </p>
@@ -19,16 +19,16 @@ import com.boco.eoms.message.dao.SmsLogDao;
  * <p>
  * Date:2008-5-5 下午03:39:42
  * </p>
- * 
+ *
  * @author 孙圣泰
  * @version 3.5.1
- *
  */
 public class SmsLogManagerImpl extends BaseManager implements ISmsLogManager {
     private SmsLogDao dao;
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setSmsLogDao(SmsLogDao dao) {
@@ -62,12 +62,14 @@ public class SmsLogManagerImpl extends BaseManager implements ISmsLogManager {
     public void removeSmsLog(final String id) {
         dao.removeSmsLog(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getSmsLogs(final Integer curPage, final Integer pageSize) {
-        return dao.getSmsLogs(curPage, pageSize,null);
+        return dao.getSmsLogs(curPage, pageSize, null);
     }
+
     public Map getSmsLogs(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getSmsLogs(curPage, pageSize, whereStr);
     }

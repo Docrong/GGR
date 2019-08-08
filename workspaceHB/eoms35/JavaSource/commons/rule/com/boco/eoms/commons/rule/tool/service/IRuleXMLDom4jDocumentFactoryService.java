@@ -14,13 +14,12 @@ import com.boco.eoms.commons.rule.tool.exception.RuleToolDom4jXMLException;
  * <p>
  * Date:May 23, 2007 5:19:58 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public interface IRuleXMLDom4jDocumentFactoryService {
-	public Document getDocument(String xmlPath)
-			throws RuleToolDom4jXMLException;
+    public Document getDocument(String xmlPath)
+            throws RuleToolDom4jXMLException;
 
 }

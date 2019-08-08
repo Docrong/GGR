@@ -11,53 +11,44 @@ import com.boco.eoms.sheet.commonfault.service.ICommonFaultHBManager;
 
 import java.sql.SQLException;
 import java.util.List;
+
 import org.hibernate.HibernateException;
 
 public class CommonFaultHBManagerImpl
-	implements ICommonFaultHBManager
-{
+        implements ICommonFaultHBManager {
 
-	private ICommonFaultHBDAO commonFaultHBDaO;
-	
+    private ICommonFaultHBDAO commonFaultHBDaO;
 
 
-	public CommonFaultHBManagerImpl()
-	{
-	}
+    public CommonFaultHBManagerImpl() {
+    }
 
-	public ICommonFaultHBDAO getCommonFaultHBDaO()
-	{
-		return commonFaultHBDaO;
-	}
+    public ICommonFaultHBDAO getCommonFaultHBDaO() {
+        return commonFaultHBDaO;
+    }
 
-	public void setCommonFaultHBDaO(ICommonFaultHBDAO commonFaultHBDaO)
-	{
-		this.commonFaultHBDaO = commonFaultHBDaO;
-	}
+    public void setCommonFaultHBDaO(ICommonFaultHBDAO commonFaultHBDaO) {
+        this.commonFaultHBDaO = commonFaultHBDaO;
+    }
 
-	public void updateObject(String sheetkeys[])
-		throws HibernateException
-	{
-		commonFaultHBDaO.updateObject(sheetkeys);
-	}
+    public void updateObject(String sheetkeys[])
+            throws HibernateException {
+        commonFaultHBDaO.updateObject(sheetkeys);
+    }
 
 
-	
-	public List selectObject(String excelsql, Integer curPage, Integer pageSize)
-		throws HibernateException
-	{
-		return commonFaultHBDaO.selectObject(excelsql, curPage, pageSize);
-	}
+    public List selectObject(String excelsql, Integer curPage, Integer pageSize)
+            throws HibernateException {
+        return commonFaultHBDaO.selectObject(excelsql, curPage, pageSize);
+    }
 
-	public int selectCount(String countexcelsql)
-	{
-		return commonFaultHBDaO.selectCount(countexcelsql);
-	}
+    public int selectCount(String countexcelsql) {
+        return commonFaultHBDaO.selectCount(countexcelsql);
+    }
 
-	public void deleteFordel(String sheetkeys[])
-	{
-		commonFaultHBDaO.deleteFordel(sheetkeys);
-	}
+    public void deleteFordel(String sheetkeys[]) {
+        commonFaultHBDaO.deleteFordel(sheetkeys);
+    }
 	
 /*	public boolean ifAuto(String mainnetsorttwo, String mainnetsortthree, String mainfaultresponselevel, String todeptid)
 	{
@@ -67,11 +58,10 @@ public class CommonFaultHBManagerImpl
 	public  String getSubRoleId(String mainnetsorttwo, String mainnetsortthree, String todeptid) {
 		return commonFaultHBDaO.getSubRoleId(mainnetsorttwo, mainnetsortthree, todeptid);
 	}*/
-	
-	public void  inserNetOpt(String sheetkey)
-	throws HibernateException
-{
+
+    public void inserNetOpt(String sheetkey)
+            throws HibernateException {
 //	commonFaultHBDaO.inserNetOpt(sheetkey);
-}
+    }
 
 }

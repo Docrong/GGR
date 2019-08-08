@@ -22,28 +22,27 @@ import com.boco.eoms.commons.rule.tool.model.LabelBean;
  * <p>
  * May 10, 2007 11:02:56 AM
  * </p>
- * 
+ *
  * @author ��
  * @version 1.0
- *  
  */
 public class BusinessDictJdbcDaoImpl extends JdbcDaoSupport implements
-		IBusinessDictJdbcDao {
+        IBusinessDictJdbcDao {
 
-	public List findBusinessDict(String sql) throws RuleToolJdbcException {
+    public List findBusinessDict(String sql) throws RuleToolJdbcException {
 
-		List list = getJdbcTemplate().query(sql,
-				new RowMapperResultReader(new RowMapper() {
-					public Object mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						LabelBean labelBean = new LabelBean();
-						labelBean.setName(rs.getString("name"));
-						labelBean.setValue(rs.getObject("id"));
-						return labelBean;
-					}
-				}));
+        List list = getJdbcTemplate().query(sql,
+                new RowMapperResultReader(new RowMapper() {
+                    public Object mapRow(ResultSet rs, int rowNum)
+                            throws SQLException {
+                        LabelBean labelBean = new LabelBean();
+                        labelBean.setName(rs.getString("name"));
+                        labelBean.setValue(rs.getObject("id"));
+                        return labelBean;
+                    }
+                }));
 
-		return list;
-	}
+        return list;
+    }
 
 }

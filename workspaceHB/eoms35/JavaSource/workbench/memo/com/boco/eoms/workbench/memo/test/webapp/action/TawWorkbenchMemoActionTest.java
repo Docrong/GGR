@@ -6,88 +6,88 @@ import com.boco.eoms.workbench.memo.webapp.form.TawWorkbenchMemoForm;
 
 public class TawWorkbenchMemoActionTest extends BaseStrutsTestCase {
 
-	public TawWorkbenchMemoActionTest(String name) {
-		super(name);
-	}
+    public TawWorkbenchMemoActionTest(String name) {
+        super(name);
+    }
 
-	public void testAdd() throws Exception {
-		setRequestPathInfo("/saveTawWorkbenchMemo");
-		addRequestParameter("method", "Save");
+    public void testAdd() throws Exception {
+        setRequestPathInfo("/saveTawWorkbenchMemo");
+        addRequestParameter("method", "Save");
 
-		TawWorkbenchMemoForm tawWorkbenchMemoForm = new TawWorkbenchMemoForm();
-		// set required fields
+        TawWorkbenchMemoForm tawWorkbenchMemoForm = new TawWorkbenchMemoForm();
+        // set required fields
 
-		request.setAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY,
-				tawWorkbenchMemoForm);
+        request.setAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY,
+                tawWorkbenchMemoForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 
-	public void testSearch() {
-		setRequestPathInfo("/tawWorkbenchMemos");
-		addRequestParameter("method", "Search");
+    public void testSearch() {
+        setRequestPathInfo("/tawWorkbenchMemos");
+        addRequestParameter("method", "Search");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("list");
-		assertNotNull(request.getAttribute(MemoConstants.TAWWORKBENCHMEMO_LIST));
-	}
+        verifyNoActionErrors();
+        verifyForward("list");
+        assertNotNull(request.getAttribute(MemoConstants.TAWWORKBENCHMEMO_LIST));
+    }
 
-	public void testEdit() throws Exception {
-		setRequestPathInfo("/editTawWorkbenchMemo");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testEdit() throws Exception {
+        setRequestPathInfo("/editTawWorkbenchMemo");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
-		assertNotNull(request.getAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY));
+        verifyNoActionErrors();
+        verifyForward("edit");
+        assertNotNull(request.getAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY));
 
-	}
+    }
 
-	public void testSave() throws Exception {
-		setRequestPathInfo("/editTawWorkbenchMemo");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testSave() throws Exception {
+        setRequestPathInfo("/editTawWorkbenchMemo");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		TawWorkbenchMemoForm tawWorkbenchMemoForm = (TawWorkbenchMemoForm) request
-				.getAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY);
-		assertNotNull(tawWorkbenchMemoForm);
+        TawWorkbenchMemoForm tawWorkbenchMemoForm = (TawWorkbenchMemoForm) request
+                .getAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY);
+        assertNotNull(tawWorkbenchMemoForm);
 
-		setRequestPathInfo("/saveTawWorkbenchMemo");
-		addRequestParameter("method", "Save");
+        setRequestPathInfo("/saveTawWorkbenchMemo");
+        addRequestParameter("method", "Save");
 
-		// update the form's required string fields and add it back to the
-		// request
+        // update the form's required string fields and add it back to the
+        // request
 
-		request.setAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY,
-				tawWorkbenchMemoForm);
+        request.setAttribute(MemoConstants.TAWWORKBENCHMEMO_KEY,
+                tawWorkbenchMemoForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
+        verifyNoActionErrors();
+        verifyForward("edit");
 
-		// verify success messages
-		verifyActionMessages(new String[] { "tawWorkbenchMemo.updated" });
+        // verify success messages
+        verifyActionMessages(new String[]{"tawWorkbenchMemo.updated"});
 
-	}
+    }
 
-	public void testRemove() throws Exception {
-		setRequestPathInfo("/editTawWorkbenchMemo");
-		addRequestParameter("method", "Delete");
-		addRequestParameter("id", "2");
+    public void testRemove() throws Exception {
+        setRequestPathInfo("/editTawWorkbenchMemo");
+        addRequestParameter("method", "Delete");
+        addRequestParameter("id", "2");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 }

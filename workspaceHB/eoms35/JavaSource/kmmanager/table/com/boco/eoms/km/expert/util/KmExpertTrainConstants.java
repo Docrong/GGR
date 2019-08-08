@@ -10,15 +10,14 @@ package com.boco.eoms.km.expert.util;
  * <p>
  * Mon Jun 15 18:07:23 CST 2009
  * </p>
- * 
+ *
  * @author zhangxb
  * @version 1.0
- * 
  */
 public class KmExpertTrainConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String KMEXPERTTRAIN_LIST = "kmExpertTrainList";
+
+    /**
+     * list key
+     */
+    public final static String KMEXPERTTRAIN_LIST = "kmExpertTrainList";
 }

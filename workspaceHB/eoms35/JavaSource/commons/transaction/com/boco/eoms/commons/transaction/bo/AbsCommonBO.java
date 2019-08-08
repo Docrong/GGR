@@ -4,6 +4,7 @@
 package com.boco.eoms.commons.transaction.bo;
 
 // java standard library
+
 import java.sql.Connection;
 
 // hibernate library
@@ -66,5 +67,5 @@ public class AbsCommonBO {
     public void setM_objSession(Session session) {
         m_objSession = session;
     }
-    
+
 }

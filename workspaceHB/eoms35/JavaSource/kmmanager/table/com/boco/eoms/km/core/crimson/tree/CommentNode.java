@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -71,22 +71,30 @@ import org.w3c.dom.*;
  * @author David Brownell
  * @version $Revision: 1.2 $
  */
-public class CommentNode extends DataNode implements Comment
-{
-    /** Constructs a comment node. */
-    public CommentNode () { }
-
-    /** Constructs a comment node. */
-    public CommentNode (String data)
-    {
-        super (data);
+public class CommentNode extends DataNode implements Comment {
+    /**
+     * Constructs a comment node.
+     */
+    public CommentNode() {
     }
 
-    CommentNode (char buf [], int offset, int len)
-	{ super (buf, offset, len); }
-    
-    /** DOM:  Returns the COMMENT_NODE node type. */
-    public short getNodeType () { return COMMENT_NODE; }
+    /**
+     * Constructs a comment node.
+     */
+    public CommentNode(String data) {
+        super(data);
+    }
+
+    CommentNode(char buf[], int offset, int len) {
+        super(buf, offset, len);
+    }
+
+    /**
+     * DOM:  Returns the COMMENT_NODE node type.
+     */
+    public short getNodeType() {
+        return COMMENT_NODE;
+    }
 
 
     /**
@@ -94,101 +102,106 @@ public class CommentNode extends DataNode implements Comment
      * prevent illegal comments:  between consecutive dashes ("--")
      * or if the last character of the comment is a dash.
      */
-    public void writeXml (XmlWriteContext context) throws IOException
-    {
-	Writer	out = context.getWriter ();
-        out.write ("<!--");
+    public void writeXml(XmlWriteContext context) throws IOException {
+        Writer out = context.getWriter();
+        out.write("<!--");
         if (data != null) {
-	    boolean	sawDash = false;
-	    int		length = data.length;
+            boolean sawDash = false;
+            int length = data.length;
 
-	    // "--" illegal in comments, expand it
-	    for (int i = 0; i < length; i++) {
-		if (data [i] == '-') {
-		    if (sawDash)
-			out.write (' ');
-		    else {
-			sawDash = true;
-			out.write ('-');
-			continue;
-		    }
-		}
-		sawDash = false;
-		out.write (data [i]);
-	    }
-	    if (data [data.length - 1] == '-')
-		out.write (' ');
-	}
-        out.write ("-->");
+            // "--" illegal in comments, expand it
+            for (int i = 0; i < length; i++) {
+                if (data[i] == '-') {
+                    if (sawDash)
+                        out.write(' ');
+                    else {
+                        sawDash = true;
+                        out.write('-');
+                        continue;
+                    }
+                }
+                sawDash = false;
+                out.write(data[i]);
+            }
+            if (data[data.length - 1] == '-')
+                out.write(' ');
+        }
+        out.write("-->");
     }
 
-    /** Returns a new comment with the same content as this. */
-    public Node cloneNode (boolean deep) { 
-    	CommentNode retval = new CommentNode (data, 0, data.length); 
-	retval.setOwnerDocument ((XmlDocument) this.getOwnerDocument ());
-    	return retval;
+    /**
+     * Returns a new comment with the same content as this.
+     */
+    public Node cloneNode(boolean deep) {
+        CommentNode retval = new CommentNode(data, 0, data.length);
+        retval.setOwnerDocument((XmlDocument) this.getOwnerDocument());
+        return retval;
     }
 
-    /** Returns the string "#comment". */
-    public String getNodeName () { return "#comment"; }
+    /**
+     * Returns the string "#comment".
+     */
+    public String getNodeName() {
+        return "#comment";
+    }
 
-	public short compareDocumentPosition(Node arg0) throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public short compareDocumentPosition(Node arg0) throws DOMException {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	public String getBaseURI() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getBaseURI() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Object getFeature(String arg0, String arg1) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getFeature(String arg0, String arg1) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String getTextContent() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String getTextContent() throws DOMException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public Object getUserData(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public Object getUserData(String arg0) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public boolean isDefaultNamespace(String arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isDefaultNamespace(String arg0) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean isEqualNode(Node arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isEqualNode(Node arg0) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public boolean isSameNode(Node arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    public boolean isSameNode(Node arg0) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	public String lookupNamespaceURI(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupNamespaceURI(String arg0) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public String lookupPrefix(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String lookupPrefix(String arg0) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void setTextContent(String arg0) throws DOMException {
-		// TODO Auto-generated method stub
-		
-	}
+    public void setTextContent(String arg0) throws DOMException {
+        // TODO Auto-generated method stub
 
-	public Object setUserData(String arg0, Object arg1, UserDataHandler arg2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
+
+    public Object setUserData(String arg0, Object arg1, UserDataHandler arg2) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

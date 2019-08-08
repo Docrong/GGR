@@ -7,8 +7,8 @@ import com.boco.eoms.base.service.impl.BaseManager;
 import com.boco.eoms.message.dao.SmsSpSubmitDao;
 import com.boco.eoms.message.mgr.ISmsSpSubmitManager;
 import com.boco.eoms.message.model.SmsSpSubmit;
+
 /**
- * 
  * <p>
  * Title:
  * </p>
@@ -18,44 +18,42 @@ import com.boco.eoms.message.model.SmsSpSubmit;
  * <p>
  * Date:2008-5-5 下午03:40:02
  * </p>
- * 
+ *
  * @author 孙圣泰
  * @version 3.5.1
- *
  */
 public class SmsSpSubmitManagerImpl extends BaseManager implements ISmsSpSubmitManager {
-	
+
     private SmsSpSubmitDao dao;
-    
 
-	public SmsSpSubmitDao getSmsSpSubmitDao() {
-		return dao;
-	}
 
-	public void setSmsSpSubmitDao(SmsSpSubmitDao dao) {
-		this.dao = dao;
-	}
+    public SmsSpSubmitDao getSmsSpSubmitDao() {
+        return dao;
+    }
 
-	public SmsSpSubmit getSmsSpSubmit(String id) {
-		// TODO Auto-generated method stub
-		return dao.getSmsSpSubmit(id);
-	}
+    public void setSmsSpSubmitDao(SmsSpSubmitDao dao) {
+        this.dao = dao;
+    }
 
-	public List getSmsSpSubmits(SmsSpSubmit smsSpSubmit) {
-		// TODO Auto-generated method stub
-		return dao.getSmsSpSubmits(smsSpSubmit);
-	}
+    public SmsSpSubmit getSmsSpSubmit(String id) {
+        // TODO Auto-generated method stub
+        return dao.getSmsSpSubmit(id);
+    }
 
-	public void removeSmsSpSubmit(String id) {
-		dao.removeSmsSpSubmit(id);
-		
-	}
+    public List getSmsSpSubmits(SmsSpSubmit smsSpSubmit) {
+        // TODO Auto-generated method stub
+        return dao.getSmsSpSubmits(smsSpSubmit);
+    }
 
-	public void saveSmsSpSubmit(SmsSpSubmit smsSpSubmit) {
-		dao.saveSmsSpSubmit(smsSpSubmit);
-		
-	}
+    public void removeSmsSpSubmit(String id) {
+        dao.removeSmsSpSubmit(id);
 
-    
-	
+    }
+
+    public void saveSmsSpSubmit(SmsSpSubmit smsSpSubmit) {
+        dao.saveSmsSpSubmit(smsSpSubmit);
+
+    }
+
+
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_TRAIN_ENTER"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="enterName"
-            	column="ENTER_NAME"
+        <property
+                name="enterName"
+                column="ENTER_NAME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="trainEnterDept"
-            	column="TRAIN_ENTER_DEPT"
+        <property
+                name="trainEnterDept"
+                column="TRAIN_ENTER_DEPT"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="trainEnterTel"
-            	column="TRAIN_ENTER_TEL"
+        <property
+                name="trainEnterTel"
+                column="TRAIN_ENTER_TEL"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="trainEnterTime"
-            	column="TRAIN_ENTER_TIME"
+        <property
+                name="trainEnterTime"
+                column="TRAIN_ENTER_TIME"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="trainEnterRemark"
-            	column="TRAIN_ENTER_REMARK"
+        <property
+                name="trainEnterRemark"
+                column="TRAIN_ENTER_REMARK"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="trainPlanId"
-            	column="TRAIN_PLAN_ID"
+        <property
+                name="trainPlanId"
+                column="TRAIN_PLAN_ID"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -86,8 +86,8 @@
 
         </property>
 
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

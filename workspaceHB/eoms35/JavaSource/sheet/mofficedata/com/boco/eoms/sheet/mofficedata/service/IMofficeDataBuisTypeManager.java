@@ -14,19 +14,18 @@ import com.boco.eoms.sheet.mofficedata.model.MofficeDataBuisType;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
 
 public interface IMofficeDataBuisTypeManager {
-	public void saveOrUpdate(MofficeDataBuisType obj) throws Exception;
+    public void saveOrUpdate(MofficeDataBuisType obj) throws Exception;
 
-	public List getBuisTypeObjects()throws Exception;
-	
-	public List getBuisTypeObjectsByHql(String hql)throws Exception;
+    public List getBuisTypeObjects() throws Exception;
 
-	public void clearData()throws Exception;
+    public List getBuisTypeObjectsByHql(String hql) throws Exception;
+
+    public void clearData() throws Exception;
 
 }

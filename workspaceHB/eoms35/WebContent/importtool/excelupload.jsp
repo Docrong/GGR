@@ -1,75 +1,69 @@
-<%@ page import="java.io.*"%>
-<%@ page import="java.util.*"%>
-<%@page import="java.text.*,java.util.Date"%>
-<%@ page import="java.sql.*"%>
-<%@ page import="java.lang.*"%>
-<%@page import="com.boco.eoms.common.util.*"%>
-<%@ page import="com.pud.study.file.*"%>
-<jsp:useBean id="myUpload" scope="page" class="com.pud.study.file.SmartUpload" />
+<%@ page import="java.io.*" %>
+<%@ page import="java.util.*" %>
+<%@page import="java.text.*,java.util.Date" %>
+<%@ page import="java.sql.*" %>
+<%@ page import="java.lang.*" %>
+<%@page import="com.boco.eoms.common.util.*" %>
+<%@ page import="com.pud.study.file.*" %>
+<jsp:useBean id="myUpload" scope="page" class="com.pud.study.file.SmartUpload"/>
 <%
- try{
+    try {
 
 
-        String[] filename=new String[4];
-        int[] filesize=new int[4];
-        int filecount=0;
-  	myUpload.initialize(pageContext);
-  	myUpload.upload();
+        String[] filename = new String[4];
+        int[] filesize = new int[4];
+        int filecount = 0;
+        myUpload.initialize(pageContext);
+        myUpload.upload();
         String year1 = myUpload.getRequest().getParameter("s_year");
-        String month1  = myUpload.getRequest().getParameter("s_month");
+        String month1 = myUpload.getRequest().getParameter("s_month");
         String date1 = myUpload.getRequest().getParameter("s_date");
-        String my_date = year1+"-"+month1+"-"+date1;
-        String excelname = myUpload.getRequest().getParameter("excelname")+".xls";
+        String my_date = year1 + "-" + month1 + "-" + date1;
+        String excelname = myUpload.getRequest().getParameter("excelname") + ".xls";
 
-      	java.io.File ff=new java.io.File("");
-	String savepath = ff.getAbsolutePath()+ ff.separator + "xls" + ff.separator;
+        java.io.File ff = new java.io.File("");
+        String savepath = ff.getAbsolutePath() + ff.separator + "xls" + ff.separator;
 
 
         out.println(savepath);
 
         com.pud.study.file.File myfile;
-	 for (int i=0;i<myUpload.getFiles().getCount();i++)
-	 {
+        for (int i = 0; i < myUpload.getFiles().getCount(); i++) {
 
-		if (!myUpload.getFiles().getFile(i).isMissing())
-		{
-		       filename[filecount]=myUpload.getFiles().getFile(i).getFileName();
-		       filesize[filecount]=myUpload.getFiles().getFile(i).getSize();
-		       myfile=myUpload.getFiles().getFile(i);
-		         String fileext_1 = myfile.getFileExt();
-		         if(fileext_1.equals("xls"))
-		         {
+            if (!myUpload.getFiles().getFile(i).isMissing()) {
+                filename[filecount] = myUpload.getFiles().getFile(i).getFileName();
+                filesize[filecount] = myUpload.getFiles().getFile(i).getSize();
+                myfile = myUpload.getFiles().getFile(i);
+                String fileext_1 = myfile.getFileExt();
+                if (fileext_1.equals("xls")) {
 
-		         	myfile.saveAs(savepath + ff.separator + excelname);
+                    myfile.saveAs(savepath + ff.separator + excelname);
 
-		        	filecount++;
-                        out.println("ÕýÔÚµ¼Èë,ÇëµÈ´ý...");
+                    filecount++;
+                    out.println("ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½,ï¿½ï¿½È´ï¿½...");
 
-		        out.println("<meta http-equiv='Refresh' content='0;url=exceldb.jsp?my_date="+my_date+"&excelname="+excelname+"'>");
+                    out.println("<meta http-equiv='Refresh' content='0;url=exceldb.jsp?my_date=" + my_date + "&excelname=" + excelname + "'>");
 
-			}
-		        else
-		        {
+                } else {
 
-	%>
+%>
 <SCRIPT>
-     alert('ÄãÌá½»µÄ²»ÊÇEXCEL ÎÄµµ£¬ÏµÍ³²»ÓèÈÏ¿É£¡£¡')
-   </script>
-   <script>
+    alert('ï¿½ï¿½ï¿½á½»ï¿½Ä²ï¿½ï¿½ï¿½EXCEL ï¿½Äµï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿É£ï¿½ï¿½ï¿½')
+</script>
+<script>
     window.location.replace("index.jsp");
-   </SCRIPT>
-	<%
-		        }
-		}
+</SCRIPT>
+<%
+            }
+        }
 
-	 }
+    }
 %>
 <%
-}
-//Èç¹û¼ÓÔØÊ±³ö´í£¬¸ø³öÏàÓ¦µÄ´íÎóÐÅÏ¢
-catch (Exception e)
-	{
-e.printStackTrace();
-		out.print("ÉÏ´«ÎÄ¼þ³öÏÖ´íÎó£¡ÇëÉÔºóÔÚÊÔÒ»ÊÔ");
-	}
+    }
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+    catch (Exception e) {
+        e.printStackTrace();
+        out.print("ï¿½Ï´ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½");
+    }
 %>

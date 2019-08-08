@@ -1,97 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
     <class name="com.boco.eoms.duty.model.TawRmThingNote"
-            table="taw_rm_thing_note"
+           table="taw_rm_thing_note"
     >
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
-    </generator>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="thingId"
-            	column="THINGID"
+        <property
+                name="thingId"
+                column="THINGID"
                 length="50"
                 not-null="false"
                 unique="false"
         >
 
-    </property>
-    <property name="beginTime"
-    		column="begintime"
-    		length="50"
-            not-null="false"
-            unique="false"
-    >
-    </property>
-    
+        </property>
+        <property name="beginTime"
+                  column="begintime"
+                  length="50"
+                  not-null="false"
+                  unique="false"
+        >
+        </property>
+
         <property name="endTime"
-    		column="endTime"
-    		length="50"
-            not-null="false"
-            unique="false"
-    >
-    </property>
-   <property name="toUser"
-    		column="touser"
-    		length="50"
-            not-null="false"
-            unique="false"
-    >
-    </property>
-	<property
-            name="inputUserId"
-            	column="inputuserid"
+                  column="endTime"
+                  length="50"
+                  not-null="false"
+                  unique="false"
+        >
+        </property>
+        <property name="toUser"
+                  column="touser"
+                  length="50"
+                  not-null="false"
+                  unique="false"
+        >
+        </property>
+        <property
+                name="inputUserId"
+                column="inputuserid"
                 length="50"
                 not-null="false"
                 unique="false"
-    >
-    </property>
-	<property
-            name="estate"
-            	column="ESTATE"
+        >
+        </property>
+        <property
+                name="estate"
+                column="ESTATE"
                 length="20"
                 not-null="false"
                 unique="false"
         >
-    </property>
-	<property
-            name="inputUserName"
-            	column="inputusername"
+        </property>
+        <property
+                name="inputUserName"
+                column="inputusername"
                 length="50"
                 not-null="false"
                 unique="false"
         >
         </property>
-        	<property
-            name="inputTime"
-            	column="inputtime"
+        <property
+                name="inputTime"
+                column="inputtime"
                 length="50"
                 not-null="false"
                 unique="false"
         >
         </property>
-     	<property
-            name="noteComment"
-            	column="notecomment"
+        <property
+                name="noteComment"
+                column="notecomment"
                 length="400"
                 not-null="false"
                 unique="false"
         >
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

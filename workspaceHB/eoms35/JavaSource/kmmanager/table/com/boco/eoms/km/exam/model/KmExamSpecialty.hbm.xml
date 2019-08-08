@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="KM_EXAM_SPECIALTY"
     >
 
-    <id
-        name="specialtyID"
-            column="SPECIALTY_ID"
-            unsaved-value="null"
-    >
+        <id
+                name="specialtyID"
+                column="SPECIALTY_ID"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="specialtyName"
-            	column="SPECIALTY_NAME"
+        <property
+                name="specialtyName"
+                column="SPECIALTY_NAME"
                 length="30"
                 not-null="true"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="isDeleted"
-            	column="IS_DELETED"
+        <property
+                name="isDeleted"
+                column="IS_DELETED"
                 length="32"
                 not-null="true"
                 unique="false"
@@ -46,37 +46,37 @@
 
         </property>
 
-		<property
-            name="nodeId"
-            	column="node_id"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
         <property
-            name="parentNodeId"
-            	column="parent_node_id"
+                name="nodeId"
+                column="node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="leaf"
-            	column="leaf"
+                name="parentNodeId"
+                column="parent_node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+        <property
+                name="leaf"
+                column="leaf"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

@@ -6,11 +6,9 @@
 package com.jspsmart.upload;
 
 
-public class SmartUploadException extends Exception
-{
+public class SmartUploadException extends Exception {
 
-    SmartUploadException(String desc)
-    {
+    SmartUploadException(String desc) {
         super(desc);
     }
 }

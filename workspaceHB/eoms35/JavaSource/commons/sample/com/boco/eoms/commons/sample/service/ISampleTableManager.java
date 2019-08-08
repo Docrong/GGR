@@ -16,6 +16,7 @@ public interface ISampleTableManager extends Manager {
 
     /**
      * Gets sampleTable's information based on id.
+     *
      * @param id the sampleTable's id
      * @return sampleTable populated sampleTable object
      */
@@ -23,16 +24,20 @@ public interface ISampleTableManager extends Manager {
 
     /**
      * Saves a sampleTable's information
+     *
      * @param sampleTable the object to be saved
      */
     public void saveSampleTable(SampleTable sampleTable);
 
     /**
      * Removes a sampleTable from the database by id
+     *
      * @param id the sampleTable's id
      */
     public void removeSampleTable(final String id);
+
     public Map getSampleTables(final Integer curPage, final Integer pageSize);
+
     public Map getSampleTables(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

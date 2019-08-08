@@ -5,7 +5,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 
 /**
- * 
  * <p>
  * Title:单例，获取spring bean console统一入口
  * </p>
@@ -15,10 +14,9 @@ import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
  * <p>
  * Apr 11, 2007 3:44:17 PM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class ApplicationContextHolder {
     /**
@@ -30,7 +28,7 @@ public class ApplicationContextHolder {
 
     /**
      * 单例,通过该方法获取实例
-     * 
+     *
      * @return
      */
     public static ApplicationContextHolder getInstance() {
@@ -42,25 +40,23 @@ public class ApplicationContextHolder {
     }
 
     /**
-     * @param ctx
-     *            the ctx to set
+     * @param ctx the ctx to set
      */
     public void setCtx(ApplicationContext ctx) {
         this.ctx = ctx;
     }
-    
+
     /**
-     *            the ctx to get
+     * the ctx to get
      */
     public ApplicationContext getCtx() {
-    	return this.ctx;
+        return this.ctx;
     }
 
     /**
      * 获取bean
-     * 
-     * @param beanId
-     *            beanId
+     *
+     * @param beanId beanId
      * @return 返回spring配置的对象
      */
     public Object getBean(String beanId) {
@@ -68,15 +64,15 @@ public class ApplicationContextHolder {
     }
 
     private ApplicationContextHolder() {
-        String[] fn = new String[] { "config/applicationContext-all.xml" };
+        String[] fn = new String[]{"config/applicationContext-all.xml"};
         ctx = new ClassPathXmlApplicationContext(fn);
     }
-    
+
     public String getHQLDialect() {
-    	
-    	LocalSessionFactoryBean dialect = (LocalSessionFactoryBean)ctx.getBean("&sessionFactory");
-    	return dialect.getHibernateProperties().getProperty("hibernate.dialect");
-    	
+
+        LocalSessionFactoryBean dialect = (LocalSessionFactoryBean) ctx.getBean("&sessionFactory");
+        return dialect.getHibernateProperties().getProperty("hibernate.dialect");
+
     }
 
 }

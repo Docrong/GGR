@@ -16,10 +16,9 @@ package com.boco.eoms.sheet.base.service;
  * <p>
  * Date:2007-8-3 14:31:39
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public interface ITemplateService {
 

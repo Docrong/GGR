@@ -5,108 +5,107 @@ import java.util.Date;
 
 import com.boco.eoms.sheet.base.model.BaseLink;
 
-public class ComplaintDubanLink extends BaseLink
-{
-  
-  private String linkOperationDesc;
-  
-	private String delayCase;
-	private Date delayTime;
-	private Date applyTime;
-	private Date approveTime;
-	private String solveCond;
-	private String solveTool;
-	private String projectName;
-	private String approveResult;
-	private String approveOpinion;
-	private String linkTdComplaint;
+public class ComplaintDubanLink extends BaseLink {
 
-public String getLinkOperationDesc() {
-	return linkOperationDesc;
-}
+    private String linkOperationDesc;
 
-public void setLinkOperationDesc(String linkOperationDesc) {
-	this.linkOperationDesc = linkOperationDesc;
-}
+    private String delayCase;
+    private Date delayTime;
+    private Date applyTime;
+    private Date approveTime;
+    private String solveCond;
+    private String solveTool;
+    private String projectName;
+    private String approveResult;
+    private String approveOpinion;
+    private String linkTdComplaint;
 
-public Date getApplyTime() {
-	return applyTime;
-}
+    public String getLinkOperationDesc() {
+        return linkOperationDesc;
+    }
 
-public void setApplyTime(Date applyTime) {
-	this.applyTime = applyTime;
-}
+    public void setLinkOperationDesc(String linkOperationDesc) {
+        this.linkOperationDesc = linkOperationDesc;
+    }
 
-public String getApproveOpinion() {
-	return approveOpinion;
-}
+    public Date getApplyTime() {
+        return applyTime;
+    }
 
-public void setApproveOpinion(String approveOpinion) {
-	this.approveOpinion = approveOpinion;
-}
+    public void setApplyTime(Date applyTime) {
+        this.applyTime = applyTime;
+    }
 
-public String getApproveResult() {
-	return approveResult;
-}
+    public String getApproveOpinion() {
+        return approveOpinion;
+    }
 
-public void setApproveResult(String approveResult) {
-	this.approveResult = approveResult;
-}
+    public void setApproveOpinion(String approveOpinion) {
+        this.approveOpinion = approveOpinion;
+    }
 
-public Date getApproveTime() {
-	return approveTime;
-}
+    public String getApproveResult() {
+        return approveResult;
+    }
 
-public void setApproveTime(Date approveTime) {
-	this.approveTime = approveTime;
-}
+    public void setApproveResult(String approveResult) {
+        this.approveResult = approveResult;
+    }
 
-public String getDelayCase() {
-	return delayCase;
-}
+    public Date getApproveTime() {
+        return approveTime;
+    }
 
-public void setDelayCase(String delayCase) {
-	this.delayCase = delayCase;
-}
+    public void setApproveTime(Date approveTime) {
+        this.approveTime = approveTime;
+    }
 
-public Date getDelayTime() {
-	return delayTime;
-}
+    public String getDelayCase() {
+        return delayCase;
+    }
 
-public void setDelayTime(Date delayTime) {
-	this.delayTime = delayTime;
-}
+    public void setDelayCase(String delayCase) {
+        this.delayCase = delayCase;
+    }
 
-public String getProjectName() {
-	return projectName;
-}
+    public Date getDelayTime() {
+        return delayTime;
+    }
 
-public void setProjectName(String projectName) {
-	this.projectName = projectName;
-}
+    public void setDelayTime(Date delayTime) {
+        this.delayTime = delayTime;
+    }
 
-public String getSolveCond() {
-	return solveCond;
-}
+    public String getProjectName() {
+        return projectName;
+    }
 
-public void setSolveCond(String solveCond) {
-	this.solveCond = solveCond;
-}
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
 
-public String getSolveTool() {
-	return solveTool;
-}
+    public String getSolveCond() {
+        return solveCond;
+    }
 
-public void setSolveTool(String solveTool) {
-	this.solveTool = solveTool;
-}
+    public void setSolveCond(String solveCond) {
+        this.solveCond = solveCond;
+    }
 
-public String getLinkTdComplaint() {
-	return linkTdComplaint;
-}
+    public String getSolveTool() {
+        return solveTool;
+    }
 
-public void setLinkTdComplaint(String linkTdComplaint) {
-	this.linkTdComplaint = linkTdComplaint;
-}
+    public void setSolveTool(String solveTool) {
+        this.solveTool = solveTool;
+    }
+
+    public String getLinkTdComplaint() {
+        return linkTdComplaint;
+    }
+
+    public void setLinkTdComplaint(String linkTdComplaint) {
+        this.linkTdComplaint = linkTdComplaint;
+    }
 
 }

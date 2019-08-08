@@ -73,7 +73,7 @@ public class LanmetermgrActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"lanmetermgr.updated"});
+        verifyActionMessages(new String[]{"lanmetermgr.updated"});
 
     }
 

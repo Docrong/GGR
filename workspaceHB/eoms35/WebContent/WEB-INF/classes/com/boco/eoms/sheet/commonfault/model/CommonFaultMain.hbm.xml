@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,179 +13,179 @@
             table="commonfault_main"
     >
 
-    <id
-        name="id"
-            column="id"
-        
-    >
+        <id
+                name="id"
+                column="id"
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+        >
 
-    </generator>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </id>
-        <property name="sheetId" />
-		<property name="title" />
-		<property name="sheetAcceptLimit" />
-		<property name="sheetCompleteLimit" />
-		<property name="sendTime" />
-		<property name="sendOrgType" />
-		<property name="sendUserId" />
-		<property name="sendDeptId" />
-		<property name="sendRoleId" />
-		<property name="sendContact" />
-		<property name="endTime" />
-		<property name="endResult" />
-		<property name="status" />
-		<property name="holdStatisfied" />
-		<property name="endUserId" />
-		<property name="endDeptId" />
-		<property name="endRoleId" />
-		<property name="deleted" />
-		<property name="piid" />
-		<property name="parentSheetName" />
-		<property name="parentSheetId" />
-		<property name="sheetTemplateName" />
-		<property name="sheetAccessories" />
-		<property name="correlationKey" />
-		<property name="parentCorrelation" />
-		<property name="toDeptId" />
-		<property name="mainIsPack" />
-		<property name="ifAgent" />
-		
-		<property name="templateFlag" />
-		<property name="cancelReason" />		
-		<property name="invokeMode" />
-		
-		<property name="mainApplySheetId" />	
-		<property name="mainIfUrgentFault" />	
-		<property name="mainUrgentFaultLog" />	
-		<property name="mainIfSafe" />
-		<property name="mainIfMutualCommunication" />
-		<property name="mainFaultResponseLevel" />
-		<property name="mainAlarmNum" />
-		<property name="mainAlarmState" />
-		<property name="mainAlarmDesc" />
-		<property name="mainAlarmSolveDate" />
-		<property name="mainNetSortOne" />
-		<property name="mainNetSortTwo" />
-		<property name="mainNetSortThree" />
-		<property name="mainEquipmentFactory" />
-		<property name="mainEquipmentName" />
-		<property name="mainEquipmentModel" />
-		<property name="mainFaultGenerantTime" />
-		<property name="mainFaultGenerantPriv" />
-		<property name="mainFaultGenerantCity" />
-		<property name="mainIfAffectOperation" />
-		<property name="mainAffectArea" />
-		<property name="mainAffectStartTime" />
-		<property name="mainFaultDiscoverableMode" />
-		<property name="mainFaultFirstDealDesc" />
-		<property name="mainFaultDesc" />			
-		<property name="mainSendMode" />
-		
-		
-		<property name="mainAlarmId" />
-		<property name="mainAlarmSource" />
-		<property name="mainAlarmLogicSort" />
-		<property name="mainAlarmLogicSortSub" />
-		<property name="mainFaultSpecialty" />
-		<property name="mainEquipmentType" />
-		<property name="mainNetName" />
-		<property name="mainCompleteLimitT1" />
-		<property name="mainCompleteLimitT2" />
-		<property name="mainCompleteLimitT3" />
-		
-		<property name="mainRejectCount" />
-		<property name="mainDelayFlag" />
-		<property name="mainIfRecord" />
-		
-		<property name="sendYear" />
-		<property name="sendMonth" />
-        <property name="sendDay" />
-        
-        <property name="parentPhaseName" />
-        
-		<property name="mainIfCheck" />
-		<property name="mainCheckResult" />
-		<property name="mainCheckIdea" />
+            </generator>
 
-		<property name="mainIfAlarmSend" />		        
-		<property name="mainPretreatment" />
-		<property name="mainAlarmLevel" />
-		
-		<property name="linkIfMutualCommunication" />
-		<property name="linkIfSafe" />
-		<property name="linkIfGreatFault" />
-		<property name="linkFaultFirstDealDesc" />
-		<property name="linkFaultDesc" />
-		<property name="firstNodeAccessories" />
-		<property name="reportFlag" />
-		<property name="revert" />
-		<property name="mainDetectFaultTime" />
-		<property name="perAllocatedUser" />
-		<property name="mainNeId" />
-		<property name="mainIfCenterMonitor" />
-		<property name="mainSendSystem" />
-		<property name="mainCheckStatus" />
-		<property name="mainCheckTime" />
-		<property name="mainCheckRejected" />
-		<property name="checkCount" />
-		<property name="mainApplyCheckTime" />
- 		<property name="mainT2ApplyCheckTime" />		
-		<property name="mainCheckDealer"/>
-		<property name="mainT2Applicant" />
-		<property name="mainT1ReplyTime"/>
-		<property name="mainApplyReason"/>
-		<property name="qcRemark" />
-		<property name="qcMark" />
-		<property name="netOptimization" />
-		<property name="mainIfReply" />
-		<property name="mainIfCombine" />
-		
-		<property name="mainPretResult" />
-		<property name="mainPretResultOne" />
-		<property name="mainPretResultTwo" />
-		<property name="mainPretResultThree" />
-		<property name="mainPretResultFour" />
-		<property name="intelligentPreSolve" />
-		<property name="mainManualPreSolve" />
-		<property name="rejectAccessories" />
-		<property name="applyAccessories" />
-		<property name="mainInterfaceCaller" />
-		<property name="mainInterfaceCallerGZ" />
-		
-		
-		<property name="equipmentName" />
-		
-		<property name="mainT2RejectionNum" />
-		<property name="mainTowerId" />
-		
-		<!-- add by chenzhinian 2017-11-04 begin -->
-		<property name="mainPretResultId" /><!-- 预处理字典值 -->
-		<!-- add by chenzhinian 2017-11-04 end -->
-		
-	    <property name="mainTownerName" />
-		<property name="mainTownerDeviceId" />
-		<property name="mainTownerRoomId" />
-		<property name="mainTownerFlag" />
-		<property name="mainIFTowner" />
-		
-		<property name="mainLocatinf" />
-		
-		<property name="mainCitySubrole" />
-		<property name="mainReserved1" />
-		<property name="mainReserved2" />
-		<property name="mainReserved3" />
-		<property name="mainReserved4" />
-		<property name="mainReserved5" />
-		
-		<property name="mainOtherSubrole" />
-		<property name="mainThisSubrole" />
-		<property name="mainIsOther" />
-		
-    </class>    
+        </id>
+        <property name="sheetId"/>
+        <property name="title"/>
+        <property name="sheetAcceptLimit"/>
+        <property name="sheetCompleteLimit"/>
+        <property name="sendTime"/>
+        <property name="sendOrgType"/>
+        <property name="sendUserId"/>
+        <property name="sendDeptId"/>
+        <property name="sendRoleId"/>
+        <property name="sendContact"/>
+        <property name="endTime"/>
+        <property name="endResult"/>
+        <property name="status"/>
+        <property name="holdStatisfied"/>
+        <property name="endUserId"/>
+        <property name="endDeptId"/>
+        <property name="endRoleId"/>
+        <property name="deleted"/>
+        <property name="piid"/>
+        <property name="parentSheetName"/>
+        <property name="parentSheetId"/>
+        <property name="sheetTemplateName"/>
+        <property name="sheetAccessories"/>
+        <property name="correlationKey"/>
+        <property name="parentCorrelation"/>
+        <property name="toDeptId"/>
+        <property name="mainIsPack"/>
+        <property name="ifAgent"/>
+
+        <property name="templateFlag"/>
+        <property name="cancelReason"/>
+        <property name="invokeMode"/>
+
+        <property name="mainApplySheetId"/>
+        <property name="mainIfUrgentFault"/>
+        <property name="mainUrgentFaultLog"/>
+        <property name="mainIfSafe"/>
+        <property name="mainIfMutualCommunication"/>
+        <property name="mainFaultResponseLevel"/>
+        <property name="mainAlarmNum"/>
+        <property name="mainAlarmState"/>
+        <property name="mainAlarmDesc"/>
+        <property name="mainAlarmSolveDate"/>
+        <property name="mainNetSortOne"/>
+        <property name="mainNetSortTwo"/>
+        <property name="mainNetSortThree"/>
+        <property name="mainEquipmentFactory"/>
+        <property name="mainEquipmentName"/>
+        <property name="mainEquipmentModel"/>
+        <property name="mainFaultGenerantTime"/>
+        <property name="mainFaultGenerantPriv"/>
+        <property name="mainFaultGenerantCity"/>
+        <property name="mainIfAffectOperation"/>
+        <property name="mainAffectArea"/>
+        <property name="mainAffectStartTime"/>
+        <property name="mainFaultDiscoverableMode"/>
+        <property name="mainFaultFirstDealDesc"/>
+        <property name="mainFaultDesc"/>
+        <property name="mainSendMode"/>
+
+
+        <property name="mainAlarmId"/>
+        <property name="mainAlarmSource"/>
+        <property name="mainAlarmLogicSort"/>
+        <property name="mainAlarmLogicSortSub"/>
+        <property name="mainFaultSpecialty"/>
+        <property name="mainEquipmentType"/>
+        <property name="mainNetName"/>
+        <property name="mainCompleteLimitT1"/>
+        <property name="mainCompleteLimitT2"/>
+        <property name="mainCompleteLimitT3"/>
+
+        <property name="mainRejectCount"/>
+        <property name="mainDelayFlag"/>
+        <property name="mainIfRecord"/>
+
+        <property name="sendYear"/>
+        <property name="sendMonth"/>
+        <property name="sendDay"/>
+
+        <property name="parentPhaseName"/>
+
+        <property name="mainIfCheck"/>
+        <property name="mainCheckResult"/>
+        <property name="mainCheckIdea"/>
+
+        <property name="mainIfAlarmSend"/>
+        <property name="mainPretreatment"/>
+        <property name="mainAlarmLevel"/>
+
+        <property name="linkIfMutualCommunication"/>
+        <property name="linkIfSafe"/>
+        <property name="linkIfGreatFault"/>
+        <property name="linkFaultFirstDealDesc"/>
+        <property name="linkFaultDesc"/>
+        <property name="firstNodeAccessories"/>
+        <property name="reportFlag"/>
+        <property name="revert"/>
+        <property name="mainDetectFaultTime"/>
+        <property name="perAllocatedUser"/>
+        <property name="mainNeId"/>
+        <property name="mainIfCenterMonitor"/>
+        <property name="mainSendSystem"/>
+        <property name="mainCheckStatus"/>
+        <property name="mainCheckTime"/>
+        <property name="mainCheckRejected"/>
+        <property name="checkCount"/>
+        <property name="mainApplyCheckTime"/>
+        <property name="mainT2ApplyCheckTime"/>
+        <property name="mainCheckDealer"/>
+        <property name="mainT2Applicant"/>
+        <property name="mainT1ReplyTime"/>
+        <property name="mainApplyReason"/>
+        <property name="qcRemark"/>
+        <property name="qcMark"/>
+        <property name="netOptimization"/>
+        <property name="mainIfReply"/>
+        <property name="mainIfCombine"/>
+
+        <property name="mainPretResult"/>
+        <property name="mainPretResultOne"/>
+        <property name="mainPretResultTwo"/>
+        <property name="mainPretResultThree"/>
+        <property name="mainPretResultFour"/>
+        <property name="intelligentPreSolve"/>
+        <property name="mainManualPreSolve"/>
+        <property name="rejectAccessories"/>
+        <property name="applyAccessories"/>
+        <property name="mainInterfaceCaller"/>
+        <property name="mainInterfaceCallerGZ"/>
+
+
+        <property name="equipmentName"/>
+
+        <property name="mainT2RejectionNum"/>
+        <property name="mainTowerId"/>
+
+        <!-- add by chenzhinian 2017-11-04 begin -->
+        <property name="mainPretResultId"/><!-- 预处理字典值 -->
+        <!-- add by chenzhinian 2017-11-04 end -->
+
+        <property name="mainTownerName"/>
+        <property name="mainTownerDeviceId"/>
+        <property name="mainTownerRoomId"/>
+        <property name="mainTownerFlag"/>
+        <property name="mainIFTowner"/>
+
+        <property name="mainLocatinf"/>
+
+        <property name="mainCitySubrole"/>
+        <property name="mainReserved1"/>
+        <property name="mainReserved2"/>
+        <property name="mainReserved3"/>
+        <property name="mainReserved4"/>
+        <property name="mainReserved5"/>
+
+        <property name="mainOtherSubrole"/>
+        <property name="mainThisSubrole"/>
+        <property name="mainIsOther"/>
+
+    </class>
 
 </hibernate-mapping>
 

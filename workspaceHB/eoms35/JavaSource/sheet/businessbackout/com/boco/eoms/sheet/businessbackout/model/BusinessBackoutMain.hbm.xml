@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -12,106 +12,106 @@
             table="BusinessBackout_main"
     >
 
-    <id
-        name="id"
-        column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-        <property name="sheetId" />
-		<property name="title" />
-		<property name="sheetAcceptLimit" />
-		<property name="sheetCompleteLimit" />
-		<property name="sendTime" />
-		<property name="sendOrgType" />
-		<property name="sendUserId" />
-		<property name="sendDeptId" />
-		<property name="sendRoleId" />
-		<property name="sendContact" />
-		<property name="endTime" />
-		<property name="endResult" />
-		<property name="status" />
-		<property name="holdStatisfied" />
-		<property name="endUserId" />
-		<property name="endDeptId" />
-		<property name="endRoleId" />
-		<property name="deleted" />
-		<property name="piid" />
-		<property name="parentSheetName" />
-		<property name="parentSheetId" />
-		<property name="sheetTemplateName" />
-		<property name="sheetAccessories" />
-		<property name="correlationKey" />
-		<property name="parentCorrelation" />
-		<property name="toDeptId" />
-		<property name="templateFlag" />
-		<property name="cancelReason" />
-	    <property name="sendYear" />
-		<property name="sendMonth" />
-		<property name="sendDay" />
-		<property name="parentPhaseName" />
-		<property name="invokeMode" />
-		
-		<property name="urgentDegree" />
+        </id>
+        <property name="sheetId"/>
+        <property name="title"/>
+        <property name="sheetAcceptLimit"/>
+        <property name="sheetCompleteLimit"/>
+        <property name="sendTime"/>
+        <property name="sendOrgType"/>
+        <property name="sendUserId"/>
+        <property name="sendDeptId"/>
+        <property name="sendRoleId"/>
+        <property name="sendContact"/>
+        <property name="endTime"/>
+        <property name="endResult"/>
+        <property name="status"/>
+        <property name="holdStatisfied"/>
+        <property name="endUserId"/>
+        <property name="endDeptId"/>
+        <property name="endRoleId"/>
+        <property name="deleted"/>
+        <property name="piid"/>
+        <property name="parentSheetName"/>
+        <property name="parentSheetId"/>
+        <property name="sheetTemplateName"/>
+        <property name="sheetAccessories"/>
+        <property name="correlationKey"/>
+        <property name="parentCorrelation"/>
+        <property name="toDeptId"/>
+        <property name="templateFlag"/>
+        <property name="cancelReason"/>
+        <property name="sendYear"/>
+        <property name="sendMonth"/>
+        <property name="sendDay"/>
+        <property name="parentPhaseName"/>
+        <property name="invokeMode"/>
 
-		<property name="btype1" />
+        <property name="urgentDegree"/>
 
-		<property name="bdeptContact" />
+        <property name="btype1"/>
 
-		<property name="bdeptContactPhone" />
+        <property name="bdeptContact"/>
 
-		<property name="customNo" />
+        <property name="bdeptContactPhone"/>
 
-		<property name="customName" />
+        <property name="customNo"/>
 
-		<property name="customContact" />
+        <property name="customName"/>
 
-		<property name="customContactPhone" />
+        <property name="customContact"/>
 
-		<property name="customContactAdd" />
+        <property name="customContactPhone"/>
 
-		<property name="customContactPost" />
+        <property name="customContactAdd"/>
 
-		<property name="customTrade" />
+        <property name="customContactPost"/>
 
-		<property name="customContactEmail" />
+        <property name="customTrade"/>
 
-		<property name="customLevel" />
+        <property name="customContactEmail"/>
 
-		<property name="apnName" />
+        <property name="customLevel"/>
 
-		<property name="backoutCause" />
+        <property name="apnName"/>
 
-		<property name="bcode" />
+        <property name="backoutCause"/>
 
-		<property name="enterpriseCode" />
+        <property name="bcode"/>
 
-		<property name="siName" />
+        <property name="enterpriseCode"/>
 
-		<property name="siEnterpriseCode" />
+        <property name="siName"/>
 
-		<property name="siServerCode" />
+        <property name="siEnterpriseCode"/>
 
-		<property name="serverCode" />
+        <property name="siServerCode"/>
 
-		<property name="circuitCode" />
-		<!-- 是否是客服派单 -->
-		<property name="isCustomerFlag" />
-		
-		 <!--集团新规范-->
-		 <property name="provinceName" />
-		 <property name="cityName" />
-		 <property name="countyName" />
-		 <property name="cmanagerPhone" />
-		 <property name="cmanagerContactPhone" />
-		 <property name="productName" />
-		 
-    </class>    
+        <property name="serverCode"/>
+
+        <property name="circuitCode"/>
+        <!-- 是否是客服派单 -->
+        <property name="isCustomerFlag"/>
+
+        <!--集团新规范-->
+        <property name="provinceName"/>
+        <property name="cityName"/>
+        <property name="countyName"/>
+        <property name="cmanagerPhone"/>
+        <property name="cmanagerContactPhone"/>
+        <property name="productName"/>
+
+    </class>
 
 </hibernate-mapping>
 

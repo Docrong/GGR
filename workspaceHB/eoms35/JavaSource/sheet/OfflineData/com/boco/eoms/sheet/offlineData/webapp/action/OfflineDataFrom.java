@@ -14,33 +14,30 @@ import com.boco.eoms.sheet.base.webapp.form.MultiPageForm;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class OfflineDataFrom extends MultiPageForm  {
-	 
-	 /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	public FormFile theFile;
 
-	public FormFile getTheFile() {
-		return theFile;
-	}
+public class OfflineDataFrom extends MultiPageForm {
 
-	public void setTheFile(FormFile theFile) {
-		this.theFile = theFile;
-	}
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
-	
- 	
- 	
- }
+    public FormFile theFile;
+
+    public FormFile getTheFile() {
+        return theFile;
+    }
+
+    public void setTheFile(FormFile theFile) {
+        this.theFile = theFile;
+    }
+
+
+}
  
 
 

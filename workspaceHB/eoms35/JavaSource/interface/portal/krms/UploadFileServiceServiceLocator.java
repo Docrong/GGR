@@ -1,6 +1,6 @@
 /**
  * UploadFileServiceServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the IBM Web services WSDL2Java emitter.
  * cf130745.06 v111407041203
@@ -12,8 +12,8 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
 
     public UploadFileServiceServiceLocator() {
         super(com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-           "http://krms/services/uploadFileService",
-           "UploadFileServiceService"));
+                "http://krms/services/uploadFileService",
+                "UploadFileServiceService"));
 
         context.setLocatorName("krms.UploadFileServiceServiceLocator");
     }
@@ -33,8 +33,7 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
         String overriddingEndpoint = (String) context.getOverriddingEndpointURIs().get("uploadFileService");
         if (overriddingEndpoint != null) {
             return overriddingEndpoint;
-        }
-        else {
+        } else {
             return uploadFileService_address;
         }
     }
@@ -53,11 +52,10 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
     }
 
     public krms.UploadFileService getUploadFileService() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(getUploadFileServiceAddress());
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             return null; // 不太可能，因为 URL 已在 WSDL2Java 中得到验证
         }
         return getUploadFileService(endpoint);
@@ -65,12 +63,12 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
 
     public krms.UploadFileService getUploadFileService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         krms.UploadFileService _stub =
-            (krms.UploadFileService) getStub(
-                uploadFileServicePortName,
-                (String) getPort2NamespaceMap().get(uploadFileServicePortName),
-                krms.UploadFileService.class,
-                "krms.UploadFileServiceSoapBindingStub",
-                portAddress.toString());
+                (krms.UploadFileService) getStub(
+                        uploadFileServicePortName,
+                        (String) getPort2NamespaceMap().get(uploadFileServicePortName),
+                        krms.UploadFileService.class,
+                        "krms.UploadFileServiceSoapBindingStub",
+                        portAddress.toString());
         if (_stub instanceof com.ibm.ws.webservices.engine.client.Stub) {
             ((com.ibm.ws.webservices.engine.client.Stub) _stub).setPortName(uploadFileServiceWSDDPortName);
         }
@@ -87,8 +85,7 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
             if (krms.UploadFileService.class.isAssignableFrom(serviceEndpointInterface)) {
                 return getUploadFileService();
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("WSWS3273E: 错误：接口没有存根实现：  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -103,8 +100,7 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
         String inputPortName = portName.getLocalPart();
         if ("uploadFileService".equals(inputPortName)) {
             return getUploadFileService();
-        }
-        else  {
+        } else {
             throw new javax.xml.rpc.ServiceException();
         }
     }
@@ -123,8 +119,8 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
         if (port2NamespaceMap == null) {
             port2NamespaceMap = new java.util.HashMap();
             port2NamespaceMap.put(
-               "uploadFileService",
-               "http://schemas.xmlsoap.org/wsdl/soap/");
+                    "uploadFileService",
+                    "http://schemas.xmlsoap.org/wsdl/soap/");
         }
         return port2NamespaceMap;
     }
@@ -137,9 +133,9 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
             String serviceNamespace = getServiceName().getNamespaceURI();
             for (java.util.Iterator i = getPort2NamespaceMap().keySet().iterator(); i.hasNext(); ) {
                 ports.add(
-                    com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-                        serviceNamespace,
-                        (String) i.next()));
+                        com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
+                                serviceNamespace,
+                                (String) i.next()));
             }
         }
         return ports.iterator();
@@ -149,12 +145,11 @@ public class UploadFileServiceServiceLocator extends com.ibm.ws.webservices.mult
         if (portName == null) {
             throw new javax.xml.rpc.ServiceException("WSWS3062E: 错误：portName 不应为 null。");
         }
-        if  (portName.getLocalPart().equals("uploadFileService")) {
-            return new javax.xml.rpc.Call[] {
-                createCall(portName, "uploadByWebservice", "uploadByWebserviceRequest"),
+        if (portName.getLocalPart().equals("uploadFileService")) {
+            return new javax.xml.rpc.Call[]{
+                    createCall(portName, "uploadByWebservice", "uploadByWebserviceRequest"),
             };
-        }
-        else {
+        } else {
             throw new javax.xml.rpc.ServiceException("WSWS3062E: 错误：portName 不应为 null。");
         }
     }

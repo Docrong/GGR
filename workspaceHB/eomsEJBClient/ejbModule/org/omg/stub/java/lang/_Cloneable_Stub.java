@@ -9,13 +9,13 @@ import java.rmi.Remote;
 import javax.rmi.CORBA.Stub;
 
 public class _Cloneable_Stub extends Stub implements Cloneable,
-Remote {
-    
+        Remote {
+
     private static final String[] _type_ids = {
-        "RMI:java.lang.Cloneable:0000000000000000"
+            "RMI:java.lang.Cloneable:0000000000000000"
     };
-    
-    public String[] _ids() { 
+
+    public String[] _ids() {
         return _type_ids;
     }
 }

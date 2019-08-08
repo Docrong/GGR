@@ -1,153 +1,150 @@
 /********************************************************************************
- Copyright (c) 2004-2006,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+ Copyright (c) 2004-2006,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
  All rights reserved.
- Filename £ºdate.js
- Abstract £ºÈÕÆÚÏà¹Øº¯Êý¼¯
- Version¡¡£º1.0
- Author   £ºLiu Guoyuan
- Finished Date £º2004-04-17
- Last Modified £º2004-08-12
+ Filename ï¿½ï¿½date.js
+ Abstract ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½
+ Versionï¿½ï¿½ï¿½ï¿½1.0
+ Author   ï¿½ï¿½Liu Guoyuan
+ Finished Date ï¿½ï¿½2004-04-17
+ Last Modified ï¿½ï¿½2004-08-12
  ********************************************************************************/
 
-//¶ÁÈ¡¹«¹²¿â
-if (typeof(loadJS)=="function") {
-  _loadJS("lib.js");
-  _loadJS("checkform.js");
-}
-else {
-  alert ("date.js: Çëµ÷ÓÃcomm.js!");
-}
-
-/*********************************
- ´ÓÊ±¼ä¿Ø¼þÖÐ»ñÈ¡ÍêÕûÊ±¼ä
-  ¿Ø¼þÃüÃû¹æÔò£º
-    ¿ªÊ¼ÄêÔÂÈÕ¿Ø¼þÃû£ºstart_time
-    ½áÊøÄêÔÂÈÕ¿Ø¼þÃû£ºend_time
-    ¿ªÊ¼Ð¡Ê±¿Ø¼þÃû£º  bHour
-    ½áÊøÐ¡Ê±¿Ø¼þÃû£º  eHour
-    ¿ªÊ¼·ÖÖÓ¿Ø¼þÃû£º  bMin
-    ½áÊø·ÖÖÓ¿Ø¼þÃû£º  eMin
- ²ÎÊý£º
-  timeType:
-    "start" ·µ»Ø¿ªÊ¼Ê±¼ä,ÓÐ´íÎóÊ±·µ»Øfalse
-    "end" ·µ»Ø½áÊøÊ±¼ä,ÓÐ´íÎóÊ±·µ»Øfalse
-    ÎÞ²ÎÊýÊ±£¬·µ»Øtrue|false£¬¼´½ö×ö¸ñÊ½ÑéÖ¤
-  objIndex:
-    ÈÕÆÚÊäÈë¶ÔÏóË÷Òý£¬µ±Ò³Ãæ´æÔÚ¶à¸öÈÕÆÚÑ¡Ôñ¿òÊ±£¬ÐèÒª´Ë²ÎÊý¡£Öµ´Ó0¿ªÊ¼
-*********************************/
-function getDateStrFromObj(timeType,objIndex){ 
-  if (objIndex == null) objIndex = 0;
-	if (!CheckIsDateTime(document.getElementsByName("start_time")[objIndex],"¿ªÊ¼ÈÕÆÚ")) return false;
-	//Ã»ÓÐ½áÊøÊ±¼ä,·µ»Ø¿ªÊ¼Ê±¼ä
-  if (typeof(document.getElementsByName("end_time")[objIndex])!="object"){
-	  return document.getElementsByName("start_time")[objIndex].value+" "+
-	         document.getElementsByName("bHour")[objIndex].value+":"+
-	         document.getElementsByName("bMin")[objIndex].value+":00"; 
-  }
-  
-  //ÓÐ½áÊøÊ±¼ä£¬ÅÐ¶Ï½áÊøÊ±¼äÊÇ·ñ´óÓÚ¿ªÊ¼Ê±¼ä
-	if (!CheckIsDateTime(document.getElementsByName("end_time")[objIndex],"½áÊøÈÕÆÚ")) return false;
-
-  var start_time = document.getElementsByName("start_time")[objIndex].value;
-  var end_time = document.getElementsByName("end_time")[objIndex].value  
-	var bHour=parseInt(document.getElementsByName("bHour")[objIndex].value);
-	var eHour=parseInt(document.getElementsByName("eHour")[objIndex].value);
-	var bMin=parseInt(document.getElementsByName("bMin")[objIndex].value);
-	var eMin=parseInt(document.getElementsByName("eMin")[objIndex].value);
-	
-	var dateOffsetValue = end_time.toDate().diff(start_time.toDate(),"d"); //Ê±¼ä²îÖµ
-	if (dateOffsetValue<0){
-		alert ("½áÊøÈÕÆÚ±ØÐë´óÓÚ¿ªÊ¼ÈÕÆÚ£¡");
-		document.getElementsByName("end_time")[objIndex].focus();
-		return false;
-	}
-	else if (dateOffsetValue==0){
-		if (bHour>eHour){
-		  alert ("½áÊøÊ±¼ä±ØÐë´óÓÚ¿ªÊ¼Ê±¼ä£¡");
-			document.getElementsByName("eHour")[objIndex].focus();
-			return false;
-		}
-		else {
-			if (bHour==eHour&&bMin>=eMin){
-			 	alert ("½áÊøÊ±¼ä±ØÐë´óÓÚ¿ªÊ¼Ê±¼ä£¡");
-				document.getElementsByName("eMin")[objIndex].focus();
-				return false;
-			}
-		}
-	}
-	if (timeType == "start"){ //·µ»Ø¿ªÊ¼Ê±¼ä
-	  return document.getElementsByName("start_time")[objIndex].value+" "+bHour+":"+bMin+":00"; 
-	}else if (timeType == "end"){//·µ»Ø½áÊøÊ±¼ä
-	  return document.getElementsByName("end_time")[objIndex].value+" "+eHour+":"+eMin+":00"; 
-  }else{
-    return true;
-  }
+//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+if (typeof (loadJS) == "function") {
+    _loadJS("lib.js");
+    _loadJS("checkform.js");
+} else {
+    alert("date.js: ï¿½ï¿½ï¿½ï¿½ï¿½comm.js!");
 }
 
 /*********************************
- µÃµ½Ê±¼äÊäÈë¿Ø¼þ´®
-  ¿Ø¼þÃüÃû£º
-    ¿ªÊ¼ÄêÔÂÈÕ¿Ø¼þÃû£ºstart_time
-    ½áÊøÄêÔÂÈÕ¿Ø¼þÃû£ºend_time
-    ¿ªÊ¼Ð¡Ê±¿Ø¼þÃû£º  bHour
-    ½áÊøÐ¡Ê±¿Ø¼þÃû£º  eHour
-    ¿ªÊ¼·ÖÖÓ¿Ø¼þÃû£º  bMin
-    ½áÊø·ÖÖÓ¿Ø¼þÃû£º  eMin
- ²ÎÊý£º
-   timeType: Ê±¼äÀàÐÍ
-      Ä¬ÈÏ£¬"start" ·µ»Ø¿ªÊ¼Ê±¼äÊäÈë¿Ø¼þ´®
-      "end" ·µ»Ø½áÊøÊ±¼äÊäÈë¿Ø¼þ´®,ÓÐ´íÎóÊ±·µ»Øfalse
-   defaultDate: Ä¬ÈÏÊ±¼ä£¬Îª¿ÕÊ±Ê±¼äÎªµ±Ìì
-   minStep: ·ÖÖÓ²½³¤£¬Ä¬ÈÏÎª1
-   
- ×¢£º´Ë·½·¨Ó¦ÓëgetDateStrFromObj()·½·¨ÅäºÏÊ¹ÓÃ£¬ÒÔ»ñÈ¡Ê±¼ä¡£
-*********************************/
-function getDateInputObj(timeType,defaultDate,minStep){
-  var asTimeObjName;
-  if (timeType!=null && timeType.toLowerCase() == "end"){
-    asTimeObjName = new Array ("end_time","eHour","eMin");  //¿Ø¼þÃû
-  }else{
-    asTimeObjName = new Array ("start_time","bHour","bMin");  //¿Ø¼þÃû
-  }
-  
-  var defDate,defHour,defMin; //Ä¬ÈÏÊ±¼ä
-  if (defaultDate == null || defaultDate == ""){//Ã»ÓÐÄ¬ÈÏÊ±¼ä£¬¿ªÊ¼Ê±¼äÎªµ±Ìì
-    defDate = new Date().toDateString();
-    defHour = 0;
-    defMin = 0;
-  }else{
-    defDate = defaultDate.split(" ")[0];
-    defHour = defaultDate.split(" ")[1].split(":")[0];
-    defMin = defaultDate.split(" ")[1].split(":")[1];
-  }
-  if (minStep == null || minStep == ""){ //·ÖÖÓ²½³¤
-    minStep = 1;
-  }
-    
-  //Ð¡Ê±ÁÐ±í
-  var strHourMenu = "";
-  for (var i=0;i<24;i++){
-    strHourMenu += "<option value='"+i+"'";
-    if (i==defHour) strHourMenu += " selected";
-    strHourMenu += ">";
-    if (i<10) strHourMenu += "&nbsp;";
-    strHourMenu += i+"Ê±</option>";
-  }
-  //·ÖÖÓÁÐ±í
-  var strMinMenu = ""
-  for (var i=0;i<60;i+=minStep){
-    strMinMenu += "<option value='"+i+"'";
-    if (i==defMin) strMinMenu += " selected";
-    strMinMenu += ">";
-    if (i<10) strMinMenu += "&nbsp;";
-    strMinMenu += +i+"·Ö</option>";
-  }
-  var strResult = "<INPUT style='width:66;font-size:12px' type='text' name='"+asTimeObjName[0]+"' value='"+defDate+"' size='10' maxlength='10'";
-  if (typeof(calendar)=="function"){//ÔØÈëÁËÈÕÀú¿Ø¼þ
-      strResult+= " onfocus='calendar()'";
-  }
-      strResult+= ">"+
-                  "<SELECT style='width:47;font-size:12px' name='"+asTimeObjName[1]+"'>"+strHourMenu+"</SELECT>"+
-                  "<SELECT style='width:47;font-size:12px' name='"+asTimeObjName[2]+"'>"+strMinMenu+"</SELECT>";
-  return strResult;
+ ï¿½ï¿½Ê±ï¿½ï¿½Ø¼ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+ ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Õ¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½start_time
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½end_time
+ ï¿½ï¿½Ê¼Ð¡Ê±ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  bHour
+ ï¿½ï¿½ï¿½ï¿½Ð¡Ê±ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  eHour
+ ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ó¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  bMin
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  eMin
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ timeType:
+ "start" ï¿½ï¿½ï¿½Ø¿ï¿½Ê¼Ê±ï¿½ï¿½,ï¿½Ð´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½false
+ "end" ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½,ï¿½Ð´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½false
+ ï¿½Þ²ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½true|falseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ö¤
+ objIndex:
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½Ë²ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½0ï¿½ï¿½Ê¼
+ *********************************/
+function getDateStrFromObj(timeType, objIndex) {
+    if (objIndex == null) objIndex = 0;
+    if (!CheckIsDateTime(document.getElementsByName("start_time")[objIndex], "ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½")) return false;
+    //Ã»ï¿½Ð½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½,ï¿½ï¿½ï¿½Ø¿ï¿½Ê¼Ê±ï¿½ï¿½
+    if (typeof (document.getElementsByName("end_time")[objIndex]) != "object") {
+        return document.getElementsByName("start_time")[objIndex].value + " " +
+            document.getElementsByName("bHour")[objIndex].value + ":" +
+            document.getElementsByName("bMin")[objIndex].value + ":00";
+    }
+
+    //ï¿½Ð½ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ï¿½Ð¶Ï½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Ú¿ï¿½Ê¼Ê±ï¿½ï¿½
+    if (!CheckIsDateTime(document.getElementsByName("end_time")[objIndex], "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")) return false;
+
+    var start_time = document.getElementsByName("start_time")[objIndex].value;
+    var end_time = document.getElementsByName("end_time")[objIndex].value
+    var bHour = parseInt(document.getElementsByName("bHour")[objIndex].value);
+    var eHour = parseInt(document.getElementsByName("eHour")[objIndex].value);
+    var bMin = parseInt(document.getElementsByName("bMin")[objIndex].value);
+    var eMin = parseInt(document.getElementsByName("eMin")[objIndex].value);
+
+    var dateOffsetValue = end_time.toDate().diff(start_time.toDate(), "d"); //Ê±ï¿½ï¿½ï¿½Öµ
+    if (dateOffsetValue < 0) {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½Ê¼ï¿½ï¿½ï¿½Ú£ï¿½");
+        document.getElementsByName("end_time")[objIndex].focus();
+        return false;
+    } else if (dateOffsetValue == 0) {
+        if (bHour > eHour) {
+            alert("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½Ê¼Ê±ï¿½ä£¡");
+            document.getElementsByName("eHour")[objIndex].focus();
+            return false;
+        } else {
+            if (bHour == eHour && bMin >= eMin) {
+                alert("ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¿ï¿½Ê¼Ê±ï¿½ä£¡");
+                document.getElementsByName("eMin")[objIndex].focus();
+                return false;
+            }
+        }
+    }
+    if (timeType == "start") { //ï¿½ï¿½ï¿½Ø¿ï¿½Ê¼Ê±ï¿½ï¿½
+        return document.getElementsByName("start_time")[objIndex].value + " " + bHour + ":" + bMin + ":00";
+    } else if (timeType == "end") {//ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+        return document.getElementsByName("end_time")[objIndex].value + " " + eHour + ":" + eMin + ":00";
+    } else {
+        return true;
+    }
+}
+
+/*********************************
+ ï¿½Ãµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
+ ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½Õ¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½start_time
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½end_time
+ ï¿½ï¿½Ê¼Ð¡Ê±ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  bHour
+ ï¿½ï¿½ï¿½ï¿½Ð¡Ê±ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  eHour
+ ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ó¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  bMin
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½  eMin
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ timeType: Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ Ä¬ï¿½Ï£ï¿½"start" ï¿½ï¿½ï¿½Ø¿ï¿½Ê¼Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½
+ "end" ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½,ï¿½Ð´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½false
+ defaultDate: Ä¬ï¿½ï¿½Ê±ï¿½ä£¬Îªï¿½ï¿½Ê±Ê±ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+ minStep: ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îª1
+
+ ×¢ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½getDateStrFromObj()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½ï¿½Ô»ï¿½È¡Ê±ï¿½ä¡£
+ *********************************/
+function getDateInputObj(timeType, defaultDate, minStep) {
+    var asTimeObjName;
+    if (timeType != null && timeType.toLowerCase() == "end") {
+        asTimeObjName = new Array("end_time", "eHour", "eMin");  //ï¿½Ø¼ï¿½ï¿½ï¿½
+    } else {
+        asTimeObjName = new Array("start_time", "bHour", "bMin");  //ï¿½Ø¼ï¿½ï¿½ï¿½
+    }
+
+    var defDate, defHour, defMin; //Ä¬ï¿½ï¿½Ê±ï¿½ï¿½
+    if (defaultDate == null || defaultDate == "") {//Ã»ï¿½ï¿½Ä¬ï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½Ê¼Ê±ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½
+        defDate = new Date().toDateString();
+        defHour = 0;
+        defMin = 0;
+    } else {
+        defDate = defaultDate.split(" ")[0];
+        defHour = defaultDate.split(" ")[1].split(":")[0];
+        defMin = defaultDate.split(" ")[1].split(":")[1];
+    }
+    if (minStep == null || minStep == "") { //ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½
+        minStep = 1;
+    }
+
+    //Ð¡Ê±ï¿½Ð±ï¿½
+    var strHourMenu = "";
+    for (var i = 0; i < 24; i++) {
+        strHourMenu += "<option value='" + i + "'";
+        if (i == defHour) strHourMenu += " selected";
+        strHourMenu += ">";
+        if (i < 10) strHourMenu += "&nbsp;";
+        strHourMenu += i + "Ê±</option>";
+    }
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
+    var strMinMenu = ""
+    for (var i = 0; i < 60; i += minStep) {
+        strMinMenu += "<option value='" + i + "'";
+        if (i == defMin) strMinMenu += " selected";
+        strMinMenu += ">";
+        if (i < 10) strMinMenu += "&nbsp;";
+        strMinMenu += +i + "ï¿½ï¿½</option>";
+    }
+    var strResult = "<INPUT style='width:66;font-size:12px' type='text' name='" + asTimeObjName[0] + "' value='" + defDate + "' size='10' maxlength='10'";
+    if (typeof (calendar) == "function") {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½
+        strResult += " onfocus='calendar()'";
+    }
+    strResult += ">" +
+        "<SELECT style='width:47;font-size:12px' name='" + asTimeObjName[1] + "'>" + strHourMenu + "</SELECT>" +
+        "<SELECT style='width:47;font-size:12px' name='" + asTimeObjName[2] + "'>" + strMinMenu + "</SELECT>";
+    return strResult;
 }

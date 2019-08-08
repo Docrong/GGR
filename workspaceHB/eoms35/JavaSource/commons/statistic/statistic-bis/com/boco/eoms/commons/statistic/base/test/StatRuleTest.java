@@ -2,17 +2,17 @@ package com.boco.eoms.commons.statistic.base.test;
 
 public class StatRuleTest {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		double x = 15.0/0;
-		
-		long a = Math.round(x);
-		System.out.println(x);
-		System.out.println(a);
-	}
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        double x = 15.0 / 0;
+
+        long a = Math.round(x);
+        System.out.println(x);
+        System.out.println(a);
+    }
 
 //	<reports>
 //	<report>

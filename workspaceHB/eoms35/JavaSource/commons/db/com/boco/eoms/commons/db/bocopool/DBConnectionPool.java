@@ -2,12 +2,13 @@ package com.boco.eoms.commons.db.bocopool;
 
 /**
  * Title: Description: Copyright: Copyright (c) 2002 Company:
- * 
+ *
  * @author
  * @version 1.0
  */
 
 // java standard library
+
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
@@ -51,31 +52,21 @@ public class DBConnectionPool {
 
     /**
      * 构造函数
-     * 
-     * @param poolname,
-     *            连接池名称
-     * @param URL,
-     *            数据库的JDBC URL
-     * @param user,
-     *            数据库帐户
-     * @param password,
-     *            数据库帐户密码
-     * @param charset,
-     *            连接的字符集
-     * @param maxconn,
-     *            此连接池允许建立的最大连接数
-     * @param minconn,
-     *            次连接池允许建立的最小连接数
-     * @param maxusecount,
-     *            数据库连接允许使用的最大次数
-     * @param maxidletime,
-     *            连接池允许的最大空闲时间（分钟）
-     * @param maxalivetime,
-     *            连接在一个请求中允许的最大持续时间
+     *
+     * @param poolname,     连接池名称
+     * @param URL,          数据库的JDBC URL
+     * @param user,         数据库帐户
+     * @param password,     数据库帐户密码
+     * @param charset,      连接的字符集
+     * @param maxconn,      此连接池允许建立的最大连接数
+     * @param minconn,      次连接池允许建立的最小连接数
+     * @param maxusecount,  数据库连接允许使用的最大次数
+     * @param maxidletime,  连接池允许的最大空闲时间（分钟）
+     * @param maxalivetime, 连接在一个请求中允许的最大持续时间
      */
     public DBConnectionPool(String poolname, String URL, String user,
-            String password, String charset, int maxconn, int minconn,
-            int maxusecount, int maxidletime, int maxalivetime) {
+                            String password, String charset, int maxconn, int minconn,
+                            int maxusecount, int maxidletime, int maxalivetime) {
         this.poolname = poolname;
         this.URL = URL;
         this.user = user;
@@ -108,9 +99,9 @@ public class DBConnectionPool {
      * @param charset
      */
     public DBConnectionPool(boolean defaultAutoCommit, int maxconn,
-            int minconn, int maxusecount, int maxidletime, int maxalivetime,
-            String poolname, String password, String url, String user,
-            String charset) {
+                            int minconn, int maxusecount, int maxidletime, int maxalivetime,
+                            String poolname, String password, String url, String user,
+                            String charset) {
         super();
         this.defaultAutoCommit = defaultAutoCommit;
         this.maxconn = maxconn;
@@ -127,9 +118,8 @@ public class DBConnectionPool {
 
     /**
      * 将不再使用的连接返还给当前连接池
-     * 
-     * @param BocoConnectio,
-     *            客户端释放的数据库连接
+     *
+     * @param BocoConnectio, 客户端释放的数据库连接
      */
     public synchronized void freeConnection(BocoConnection conn) {
         if (conn == null) return;
@@ -164,9 +154,8 @@ public class DBConnectionPool {
 
     /**
      * 从连接池中获取可用连接，可以指定客户程序能够等待的最长时间，参见前方法。
-     * 
-     * @param int
-     *            timeout, 以分钟计算等待时间
+     *
+     * @param int timeout, 以分钟计算等待时间
      * @return BocoConnection
      */
     public synchronized BocoConnection getConnection(int timeout) {
@@ -175,8 +164,7 @@ public class DBConnectionPool {
         while ((conn = getConnection()) == null) {
             try {
                 wait(500);
-            }
-            catch (InterruptedException e) {
+            } catch (InterruptedException e) {
             }
             if ((new Date().getTime() - startTime) >= timeout * 60 * 1000)
                 return null;
@@ -203,8 +191,7 @@ public class DBConnectionPool {
                 closeConnection(conn);
                 // 如果有省市出现连接池的性能问题，就将注释去掉，进行分析
                 // BocoLog.debug(this, "正在关闭连接。。。"+conn.getTimeStamp());
-            }
-            else if ((idletime > conn.getTimeStamp() || !conn.isValidate())
+            } else if ((idletime > conn.getTimeStamp() || !conn.isValidate())
                     && conn.isRelease())
                 closeConnection(conn);
             else if (conn.useCount() > maxusecount && conn.isRelease())
@@ -294,8 +281,7 @@ public class DBConnectionPool {
 
             connChk = new ConnCheckerTimer(this, mtime);
             connChk.start();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, "重新启动连接池失败: " + e.getMessage());
             return false;
         }
@@ -311,8 +297,7 @@ public class DBConnectionPool {
             connChk = null;
             connChk = new ConnCheckerTimer(this, mtime);
             connChk.start();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, "重置检查器失败: " + checkdbable);
             return false;
         }
@@ -347,8 +332,7 @@ public class DBConnectionPool {
             if (URL.indexOf("informix") > 0) {
                 conn.setTransactionIsolation(1);
             }
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             BocoLog.error(this, "无法创建下列URL的连接：" + URL);
             return null;
         }
@@ -382,8 +366,7 @@ public class DBConnectionPool {
             // 如果有省市出现连接池的性能问题，就将注释去掉，进行分析
             // BocoLog.trace(this,275,"conn"+conn.getTimeStamp()+"从池中去掉");
             conn = null;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             BocoLog.error(this, "关闭连接失败！");
         }
     }
@@ -411,8 +394,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param charset
-     *            the charset to set
+     * @param charset the charset to set
      */
     public void setCharset(String charset) {
         this.charset = charset;
@@ -426,8 +408,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param maxalivetime
-     *            the maxalivetime to set
+     * @param maxalivetime the maxalivetime to set
      */
     public void setMaxalivetime(int maxalivetime) {
         this.maxalivetime = maxalivetime;
@@ -441,8 +422,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param maxconn
-     *            the maxconn to set
+     * @param maxconn the maxconn to set
      */
     public void setMaxconn(int maxconn) {
         this.maxconn = maxconn;
@@ -456,8 +436,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param maxidletime
-     *            the maxidletime to set
+     * @param maxidletime the maxidletime to set
      */
     public void setMaxidletime(int maxidletime) {
         this.maxidletime = maxidletime;
@@ -471,8 +450,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param maxusecount
-     *            the maxusecount to set
+     * @param maxusecount the maxusecount to set
      */
     public void setMaxusecount(int maxusecount) {
         this.maxusecount = maxusecount;
@@ -486,8 +464,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param minconn
-     *            the minconn to set
+     * @param minconn the minconn to set
      */
     public void setMinconn(int minconn) {
         this.minconn = minconn;
@@ -501,8 +478,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param password
-     *            the password to set
+     * @param password the password to set
      */
     public void setPassword(String password) {
         this.password = password;
@@ -516,8 +492,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param poolname
-     *            the poolname to set
+     * @param poolname the poolname to set
      */
     public void setPoolname(String poolname) {
         this.poolname = poolname;
@@ -531,8 +506,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param url
-     *            the uRL to set
+     * @param url the uRL to set
      */
     public void setURL(String url) {
         URL = url;
@@ -546,8 +520,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param user
-     *            the user to set
+     * @param user the user to set
      */
     public void setUser(String user) {
         this.user = user;
@@ -561,8 +534,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param checkdbable
-     *            the checkdbable to set
+     * @param checkdbable the checkdbable to set
      */
     public void setCheckdbable(boolean checkdbable) {
         this.checkdbable = checkdbable;
@@ -576,8 +548,7 @@ public class DBConnectionPool {
     }
 
     /**
-     * @param defaultAutoCommit
-     *            the defaultAutoCommit to set
+     * @param defaultAutoCommit the defaultAutoCommit to set
      */
     public void setDefaultAutoCommit(boolean defaultAutoCommit) {
         this.defaultAutoCommit = defaultAutoCommit;

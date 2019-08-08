@@ -1,4 +1,4 @@
-﻿package com.boco.eoms.sheet.mofficedata.dao.hibernate;
+package com.boco.eoms.sheet.mofficedata.dao.hibernate;
 import com.boco.eoms.sheet.base.dao.hibernate.LinkDAO;
 import com.boco.eoms.sheet.mofficedata.dao.IMofficeDataLinkDAO;
 /**

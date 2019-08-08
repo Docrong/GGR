@@ -14,22 +14,24 @@ import com.boco.eoms.base.webapp.action.BaseAction;
  * @date 2009-02-19 09:16
  * @see wap的基础action 用户动作的跳转
  */
-public class WapBaseAction extends BaseAction{
-	
-	/**页面跳转
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward detail(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
-		    return null;
-		
-	}
+public class WapBaseAction extends BaseAction {
+
+    /**
+     * 页面跳转
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward detail(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        return null;
+
+    }
 
 }

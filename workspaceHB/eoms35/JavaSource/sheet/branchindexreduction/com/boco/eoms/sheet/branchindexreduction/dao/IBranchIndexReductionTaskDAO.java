@@ -1,7 +1,6 @@
 package com.boco.eoms.sheet.branchindexreduction.dao;
 
 
-
 /**
  * <p>
  * Title:分公司指标核减流程
@@ -12,12 +11,11 @@ package com.boco.eoms.sheet.branchindexreduction.dao;
  * <p>
  * Fri Jul 28 15:47:20 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public interface IBranchIndexReductionTaskDAO  {
- 
- }
+
+public interface IBranchIndexReductionTaskDAO {
+
+}

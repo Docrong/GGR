@@ -12,42 +12,37 @@ import com.boco.eoms.sheet.base.model.BaseLink;
  * <p>
  * Fri Sep 28 14:06:48 CST 2012
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CityCustomLink extends BaseLink {
-	
-	/**
-	*
-	* 完成情况
-	*
-	*/     
-	private java.lang.String linkGroupComplete;									
 
-	/**
- 	*
- 	* 保存派发对象
-	*
-	*/  
-	private java.lang.String linkSendObject;
-		
-	public void setLinkGroupComplete(java.lang.String linkGroupComplete) {
-		this.linkGroupComplete= linkGroupComplete; 
-	}
- 	
-	public java.lang.String getLinkGroupComplete() {
-		return this.linkGroupComplete;
- 	}	 	
+public class CityCustomLink extends BaseLink {
 
-	
-	public java.lang.String getLinkSendObject() {
-		return linkSendObject;
-	}
+    /**
+     * 完成情况
+     */
+    private java.lang.String linkGroupComplete;
 
-	public void setLinkSendObject(java.lang.String linkSendObject) {
-		this.linkSendObject = linkSendObject;
-	}	 
+    /**
+     * 保存派发对象
+     */
+    private java.lang.String linkSendObject;
+
+    public void setLinkGroupComplete(java.lang.String linkGroupComplete) {
+        this.linkGroupComplete = linkGroupComplete;
+    }
+
+    public java.lang.String getLinkGroupComplete() {
+        return this.linkGroupComplete;
+    }
+
+
+    public java.lang.String getLinkSendObject() {
+        return linkSendObject;
+    }
+
+    public void setLinkSendObject(java.lang.String linkSendObject) {
+        this.linkSendObject = linkSendObject;
+    }
 }

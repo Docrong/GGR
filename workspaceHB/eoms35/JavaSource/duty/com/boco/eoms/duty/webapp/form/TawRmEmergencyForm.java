@@ -6,84 +6,84 @@ import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawRmEmergencyForm extends BaseForm implements Serializable {
 
-	private String id ;
-	
-	private String deptid;
-	
-	private String cruser;
-	
-	private String crtime;
-	
-	private String specialty;// 专业电话
-	
-	private String immobility; // 固定电话
-	
-	private String other; // 其他电话
-	
-	private String deptName;
+    private String id;
 
-	public String getDeptName() {
-		return deptName;
-	}
+    private String deptid;
 
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
+    private String cruser;
 
-	public String getCrtime() {
-		return crtime;
-	}
+    private String crtime;
 
-	public void setCrtime(String crtime) {
-		this.crtime = crtime;
-	}
+    private String specialty;// 专业电话
 
-	public String getCruser() {
-		return cruser;
-	}
+    private String immobility; // 固定电话
 
-	public void setCruser(String cruser) {
-		this.cruser = cruser;
-	}
+    private String other; // 其他电话
 
-	public String getDeptid() {
-		return deptid;
-	}
+    private String deptName;
 
-	public void setDeptid(String deptid) {
-		this.deptid = deptid;
-	}
+    public String getDeptName() {
+        return deptName;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getCrtime() {
+        return crtime;
+    }
 
-	public String getImmobility() {
-		return immobility;
-	}
+    public void setCrtime(String crtime) {
+        this.crtime = crtime;
+    }
 
-	public void setImmobility(String immobility) {
-		this.immobility = immobility;
-	}
+    public String getCruser() {
+        return cruser;
+    }
 
-	public String getOther() {
-		return other;
-	}
+    public void setCruser(String cruser) {
+        this.cruser = cruser;
+    }
 
-	public void setOther(String other) {
-		this.other = other;
-	}
+    public String getDeptid() {
+        return deptid;
+    }
 
-	public String getSpecialty() {
-		return specialty;
-	}
+    public void setDeptid(String deptid) {
+        this.deptid = deptid;
+    }
 
-	public void setSpecialty(String specialty) {
-		this.specialty = specialty;
-	}
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImmobility() {
+        return immobility;
+    }
+
+    public void setImmobility(String immobility) {
+        this.immobility = immobility;
+    }
+
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
 
 }

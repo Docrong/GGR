@@ -32,23 +32,25 @@ define('echarts/chart/bar', [
                 barBorderColor: '#fff',
                 barBorderRadius: 0,
                 barBorderWidth: 0,
-                label: { show: false }
+                label: {show: false}
             },
             emphasis: {
                 barBorderColor: '#fff',
                 barBorderRadius: 0,
                 barBorderWidth: 0,
-                label: { show: false }
+                label: {show: false}
             }
         }
     };
     var ecData = require('../util/ecData');
     var zrUtil = require('zrender/tool/util');
     var zrColor = require('zrender/tool/color');
+
     function Bar(ecTheme, messageCenter, zr, option, myChart) {
         ChartBase.call(this, ecTheme, messageCenter, zr, option, myChart);
         this.refresh(option);
     }
+
     Bar.prototype = {
         type: ecConfig.CHART_TYPE_BAR,
         _buildShape: function () {
@@ -184,10 +186,10 @@ define('echarts/chart/bar', [
                             continue;
                         }
                         if (this.deepQuery([
-                                data,
-                                serie,
-                                this.option
-                            ], 'calculable')) {
+                            data,
+                            serie,
+                            this.option
+                        ], 'calculable')) {
                             if (isHorizontal) {
                                 lastP -= islandR;
                                 y = lastP;
@@ -499,40 +501,40 @@ define('echarts/chart/bar', [
                 if (textPosition === 'insideLeft' || textPosition === 'insideRight' || textPosition === 'insideTop' || textPosition === 'insideBottom') {
                     var gap = 5;
                     switch (textPosition) {
-                    case 'insideLeft':
-                        barShapeStyleList[i].textX = barShapeStyle.x + gap;
-                        barShapeStyleList[i].textY = barShapeStyle.y + barShapeStyle.height / 2;
-                        barShapeStyleList[i].textAlign = 'left';
-                        barShapeStyleList[i].textBaseline = 'middle';
-                        break;
-                    case 'insideRight':
-                        barShapeStyleList[i].textX = barShapeStyle.x + barShapeStyle.width - gap;
-                        barShapeStyleList[i].textY = barShapeStyle.y + barShapeStyle.height / 2;
-                        barShapeStyleList[i].textAlign = 'right';
-                        barShapeStyleList[i].textBaseline = 'middle';
-                        break;
-                    case 'insideTop':
-                        barShapeStyleList[i].textX = barShapeStyle.x + barShapeStyle.width / 2;
-                        barShapeStyleList[i].textY = barShapeStyle.y + gap / 2;
-                        barShapeStyleList[i].textAlign = 'center';
-                        barShapeStyleList[i].textBaseline = 'top';
-                        break;
-                    case 'insideBottom':
-                        barShapeStyleList[i].textX = barShapeStyle.x + barShapeStyle.width / 2;
-                        barShapeStyleList[i].textY = barShapeStyle.y + barShapeStyle.height - gap / 2;
-                        barShapeStyleList[i].textAlign = 'center';
-                        barShapeStyleList[i].textBaseline = 'bottom';
-                        break;
+                        case 'insideLeft':
+                            barShapeStyleList[i].textX = barShapeStyle.x + gap;
+                            barShapeStyleList[i].textY = barShapeStyle.y + barShapeStyle.height / 2;
+                            barShapeStyleList[i].textAlign = 'left';
+                            barShapeStyleList[i].textBaseline = 'middle';
+                            break;
+                        case 'insideRight':
+                            barShapeStyleList[i].textX = barShapeStyle.x + barShapeStyle.width - gap;
+                            barShapeStyleList[i].textY = barShapeStyle.y + barShapeStyle.height / 2;
+                            barShapeStyleList[i].textAlign = 'right';
+                            barShapeStyleList[i].textBaseline = 'middle';
+                            break;
+                        case 'insideTop':
+                            barShapeStyleList[i].textX = barShapeStyle.x + barShapeStyle.width / 2;
+                            barShapeStyleList[i].textY = barShapeStyle.y + gap / 2;
+                            barShapeStyleList[i].textAlign = 'center';
+                            barShapeStyleList[i].textBaseline = 'top';
+                            break;
+                        case 'insideBottom':
+                            barShapeStyleList[i].textX = barShapeStyle.x + barShapeStyle.width / 2;
+                            barShapeStyleList[i].textY = barShapeStyle.y + barShapeStyle.height - gap / 2;
+                            barShapeStyleList[i].textAlign = 'center';
+                            barShapeStyleList[i].textBaseline = 'bottom';
+                            break;
                     }
                     barShapeStyleList[i].textPosition = 'specific';
                     barShapeStyleList[i].textColor = barShapeStyleList[i].textColor || '#fff';
                 }
             }
             if (this.deepQuery([
-                    data,
-                    serie,
-                    this.option
-                ], 'calculable')) {
+                data,
+                serie,
+                this.option
+            ], 'calculable')) {
                 this.setCalculable(barShape);
                 barShape.draggable = true;
             }
@@ -595,12 +597,14 @@ define('echarts/chart/bar', [
             var seriesIndex;
             var dataIndex;
             var aniCount = 0;
+
             function animationDone() {
                 aniCount--;
                 if (aniCount === 0) {
                     done && done();
                 }
             }
+
             for (var i = this.shapeList.length - 1; i >= 0; i--) {
                 seriesIndex = ecData.get(this.shapeList[i], 'seriesIndex');
                 if (aniMap[seriesIndex] && !aniMap[seriesIndex][3]) {

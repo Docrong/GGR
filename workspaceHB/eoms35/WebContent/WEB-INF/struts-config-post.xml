@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-  <!-- ========== Data Sources Definitions =================================== -->
-  <!--
-    Define your Struts data sources in a file called struts-data-sources.xml and place
-    it in your merge directory.
-  -->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+      Define your Struts data sources in a file called struts-data-sources.xml and place
+      it in your merge directory.
+    -->
 
-  <!-- ========== Form Bean Definitions =================================== -->
-   <form-beans>
-    <form-bean
-      name="tawSystemPostForm"
-      type="com.boco.eoms.commons.system.role.webapp.form.TawSystemPostForm"
-    />
-   </form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean
+                name="tawSystemPostForm"
+                type="com.boco.eoms.commons.system.role.webapp.form.TawSystemPostForm"
+        />
+    </form-beans>
 
-  <!-- ========== Global Exceptions Definitions =================================== -->
-      <global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
         <exception type="java.lang.Exception"
-            key="errors.general"
-            handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+                   key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
     </global-exceptions>
 
-  <!-- ========== Global Forward Definitions =================================== -->
-      <global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
         <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
-        <!-- Forwards specified in actions -->        
+        <!-- Forwards specified in actions -->
         <forward name="addUser" path="/editUser.do?method=Add&amp;amp;from=list" redirect="true"/>
         <forward name="cancelUser" path="/editUser.do?method=Cancel"/>
         <forward name="deleteUser" path="/editUser.do?method=Delete"/>
@@ -41,236 +42,237 @@
         <forward name="logout" path="/logout.jsp"/>
     </global-forwards>
 
-  <!-- ========== Action Mapping Definitions =================================== -->
-   <action-mappings>
-	
-	<!-- Main Post Manage Page -->
-	<action path="/post" type="org.apache.struts.actions.ForwardAction" parameter="/WEB-INF/pages/tawSystemPost/postTree.jsp"/>
-    
-    <action path="/tawSystemPostIndex" type="org.apache.struts.actions.ForwardAction"
-	        parameter="/WEB-INF/pages/tawSystemPost/tawSystemPostIndex.jsp"/>
-    <action
-      path="/tawSystemPosts"
-      type="com.boco.eoms.commons.system.role.webapp.action.TawSystemPostAction"
-      name="tawSystemPostForm"
-      scope="request"
-      input="mainMenu"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSystemPost/tawSystemPostForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSystemPost/tawSystemPostTree.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSystemPosts.do"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-    <action
-      path="/editTawSystemPost"
-      type="com.boco.eoms.commons.system.role.webapp.action.TawSystemPostAction"
-      name="tawSystemPostForm"
-      scope="request"
-      input="list"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSystemPost/tawSystemPostForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSystemPost/tawSystemPostList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSystemPosts.do"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-    <action
-      path="/saveTawSystemPost"
-      type="com.boco.eoms.commons.system.role.webapp.action.TawSystemPostAction"
-      name="tawSystemPostForm"
-      scope="request"
-      input="edit"
-      parameter="method"
-      unknown="false"
-      validate="true"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSystemPost/tawSystemPostForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSystemPost/tawSystemPostList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSystemPosts.do"
-        redirect="true"
-        contextRelative="true"
-      />
-      <forward
-        name="addRole"
-        path="/saveTawSystemRole.do"
-        redirect="true"
-        contextRelative="true"
-      />
-      <forward
-	        name="add"
-	        path="/WEB-INF/pages/tawSystemPost/treeEntry.jsp"
-	        redirect="false"
-	        contextRelative="true"
-	      />
-    </action>
-	    <action
-      path="/tawSystemDeptRefPosts"
-      type="com.boco.eoms.commons.system.role.webapp.action.TawSystemDeptRefPostAction"
-      name="tawSystemDeptRefPostForm"
-      scope="request"
-      input="mainMenu"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSystemDeptRefPosts.do"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-    <action
-      path="/editTawSystemDeptRefPost"
-      type="com.boco.eoms.commons.system.role.webapp.action.TawSystemDeptRefPostAction"
-      name="tawSystemDeptRefPostForm"
-      scope="request"
-      input="list"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSystemDeptRefPosts.do"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-    <action
-      path="/saveTawSystemDeptRefPost"
-      type="com.boco.eoms.commons.system.role.webapp.action.TawSystemDeptRefPostAction"
-      name="tawSystemDeptRefPostForm"
-      scope="request"
-      input="edit"
-      parameter="method"
-      unknown="false"
-      validate="true"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-      <forward
-        name="edit"
-        path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostForm.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="list"
-        path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostList.jsp"
-        redirect="false"
-        contextRelative="true"
-      />
-      <forward
-        name="search"
-        path="/tawSystemDeptRefPosts.do"
-        redirect="true"
-        contextRelative="true"
-      />
-    </action>
-    <action path="/mainMenu" type="org.apache.struts.actions.ForwardAction"
-        parameter="/error.jsp"/>
-  </action-mappings>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
 
-  <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+        <!-- Main Post Manage Page -->
+        <action path="/post" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/tawSystemPost/postTree.jsp"/>
 
-      <message-resources parameter="config/ApplicationResources-post"/>
-      <message-resources parameter="config/ApplicationResources"/>
+        <action path="/tawSystemPostIndex" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/tawSystemPost/tawSystemPostIndex.jsp"/>
+        <action
+                path="/tawSystemPosts"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemPostAction"
+                name="tawSystemPostForm"
+                scope="request"
+                input="mainMenu"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSystemPost/tawSystemPostForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSystemPost/tawSystemPostTree.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSystemPosts.do"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+        <action
+                path="/editTawSystemPost"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemPostAction"
+                name="tawSystemPostForm"
+                scope="request"
+                input="list"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSystemPost/tawSystemPostForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSystemPost/tawSystemPostList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSystemPosts.do"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+        <action
+                path="/saveTawSystemPost"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemPostAction"
+                name="tawSystemPostForm"
+                scope="request"
+                input="edit"
+                parameter="method"
+                unknown="false"
+                validate="true"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSystemPost/tawSystemPostForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSystemPost/tawSystemPostList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSystemPosts.do"
+                    redirect="true"
+                    contextRelative="true"
+            />
+            <forward
+                    name="addRole"
+                    path="/saveTawSystemRole.do"
+                    redirect="true"
+                    contextRelative="true"
+            />
+            <forward
+                    name="add"
+                    path="/WEB-INF/pages/tawSystemPost/treeEntry.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+        </action>
+        <action
+                path="/tawSystemDeptRefPosts"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemDeptRefPostAction"
+                name="tawSystemDeptRefPostForm"
+                scope="request"
+                input="mainMenu"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSystemDeptRefPosts.do"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+        <action
+                path="/editTawSystemDeptRefPost"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemDeptRefPostAction"
+                name="tawSystemDeptRefPostForm"
+                scope="request"
+                input="list"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSystemDeptRefPosts.do"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+        <action
+                path="/saveTawSystemDeptRefPost"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemDeptRefPostAction"
+                name="tawSystemDeptRefPostForm"
+                scope="request"
+                input="edit"
+                parameter="method"
+                unknown="false"
+                validate="true"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
+            <forward
+                    name="edit"
+                    path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostForm.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="list"
+                    path="/WEB-INF/pages/tawSystemDeptRefPost/tawSystemDeptRefPostList.jsp"
+                    redirect="false"
+                    contextRelative="true"
+            />
+            <forward
+                    name="search"
+                    path="/tawSystemDeptRefPosts.do"
+                    redirect="true"
+                    contextRelative="true"
+            />
+        </action>
+        <action path="/mainMenu" type="org.apache.struts.actions.ForwardAction"
+                parameter="/error.jsp"/>
+    </action-mappings>
 
-      <!-- ========== Validator plugin ===================  -->
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+    <message-resources parameter="config/ApplicationResources-post"/>
+    <message-resources parameter="config/ApplicationResources"/>
+
+    <!-- ========== Validator plugin ===================  -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" 
+        <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
                              /WEB-INF/validation.xml"/>

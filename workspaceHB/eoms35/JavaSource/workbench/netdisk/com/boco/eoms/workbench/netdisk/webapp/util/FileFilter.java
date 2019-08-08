@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 
 /**
- * 
  * <p>
  * Title:文件过滤器
  * </p>
@@ -15,15 +14,14 @@ import java.io.FilenameFilter;
  * <p>
  * Date:2008-5-8 9:05:27
  * </p>
- * 
+ *
  * @author 李秋野
  * @version 3.5.1
- * 
  */
 public class FileFilter implements FilenameFilter {
 
-	public boolean accept(File dir, String name) {
-		return new File(dir + File.separator + name).isFile();
-	}
+    public boolean accept(File dir, String name) {
+        return new File(dir + File.separator + name).isFile();
+    }
 
 }

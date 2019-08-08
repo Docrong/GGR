@@ -17,52 +17,51 @@ import com.boco.eoms.partner.baseinfo.dao.TawPartnerOilDao;
  * <p>
  * Thu Feb 05 13:56:15 CST 2009
  * </p>
- * 
+ *
  * @author fengshaohong
  * @version 3.5
- * 
  */
 public class TawPartnerOilMgrImpl implements TawPartnerOilMgr {
- 
-	private TawPartnerOilDao  tawPartnerOilDao;
- 	
-	public TawPartnerOilDao getTawPartnerOilDao() {
-		return this.tawPartnerOilDao;
-	}
- 	
-	public void setTawPartnerOilDao(TawPartnerOilDao tawPartnerOilDao) {
-		this.tawPartnerOilDao = tawPartnerOilDao;
-	}
- 	
+
+    private TawPartnerOilDao tawPartnerOilDao;
+
+    public TawPartnerOilDao getTawPartnerOilDao() {
+        return this.tawPartnerOilDao;
+    }
+
+    public void setTawPartnerOilDao(TawPartnerOilDao tawPartnerOilDao) {
+        this.tawPartnerOilDao = tawPartnerOilDao;
+    }
+
     public List getTawPartnerOils() {
-    	return tawPartnerOilDao.getTawPartnerOils();
+        return tawPartnerOilDao.getTawPartnerOils();
     }
-    
+
     public TawPartnerOil getTawPartnerOil(final String id) {
-    	return tawPartnerOilDao.getTawPartnerOil(id);
+        return tawPartnerOilDao.getTawPartnerOil(id);
     }
-    
+
     public void saveTawPartnerOil(TawPartnerOil tawPartnerOil) {
-    	tawPartnerOilDao.saveTawPartnerOil(tawPartnerOil);
+        tawPartnerOilDao.saveTawPartnerOil(tawPartnerOil);
     }
-    
+
     public void removeTawPartnerOil(final String id) {
-    	tawPartnerOilDao.removeTawPartnerOil(id);
+        tawPartnerOilDao.removeTawPartnerOil(id);
     }
-    
+
     public Map getTawPartnerOils(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return tawPartnerOilDao.getTawPartnerOils(curPage, pageSize, whereStr);
-	}
+                                 final String whereStr) {
+        return tawPartnerOilDao.getTawPartnerOils(curPage, pageSize, whereStr);
+    }
 
-	public Boolean isunique(final String oil_number) {
-		// TODO 自动生成方法存根
-		return tawPartnerOilDao.isunique(oil_number);
-	}
+    public Boolean isunique(final String oil_number) {
+        // TODO 自动生成方法存根
+        return tawPartnerOilDao.isunique(oil_number);
+    }
 
-	public String name2Id(final String dictName,final String parentDictId) {
-		// TODO 自动生成方法存根
-		return tawPartnerOilDao.name2Id(dictName, parentDictId);
-	}
-	
+    public String name2Id(final String dictName, final String parentDictId) {
+        // TODO 自动生成方法存根
+        return tawPartnerOilDao.name2Id(dictName, parentDictId);
+    }
+
 }

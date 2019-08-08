@@ -13,13 +13,13 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 public class GenericManagerTest extends BaseManagerTestCase {
     protected Manager manager = new BaseManager();
     protected Mock dao;
-    
+
     protected void setUp() throws Exception {
         super.setUp();
         dao = new Mock(Dao.class);
         manager.setDao((Dao) dao.proxy());
     }
-    
+
     protected void tearDown() throws Exception {
         manager = null;
         dao = null;
@@ -36,30 +36,30 @@ public class GenericManagerTest extends BaseManagerTestCase {
         // create
         // set expectations
         dao.expects(once()).method("saveObject").isVoid();
-        
+
         manager.saveObject(user);
         dao.verify();
-        
+
         // retrieve
         dao.reset();
         // expectations
         dao.expects(once()).method("getObject").will(returnValue(user));
-        
+
         user = (User) manager.getObject(User.class, user.getUsername());
         dao.verify();
-        
+
         // update
         dao.reset();
         dao.expects(once()).method("saveObject").isVoid();
         user.getAddress().setCountry("USA");
         manager.saveObject(user);
         dao.verify();
-        
+
         // delete
         dao.reset();
         // expectations
         Exception ex = new ObjectRetrievalFailureException(User.class, "foo");
-        dao.expects(once()).method("removeObject").isVoid();            
+        dao.expects(once()).method("removeObject").isVoid();
         dao.expects(once()).method("getObject").will(throwException(ex));
         manager.removeObject(User.class, "foo");
         try {

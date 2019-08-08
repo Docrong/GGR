@@ -3,14 +3,17 @@
 
 <beans>
 
-	<bean id="INetChangeMainDao" class="com.boco.eoms.sheet.netchange.dao.hibernate.NetChangeMainDaoHibernate" autowire="byName">
-	
-      </bean>
-	<bean id="INetChangeLinkDao" class="com.boco.eoms.sheet.netchange.dao.hibernate.NetChangeLinkDaoHibernate" autowire="byName">
-	  
-      </bean>
+    <bean id="INetChangeMainDao" class="com.boco.eoms.sheet.netchange.dao.hibernate.NetChangeMainDaoHibernate"
+          autowire="byName">
 
-	<bean id="iNetChangeTaskDAO" class="com.boco.eoms.sheet.netchange.dao.hibernate.NetChangeTaskDAOHibernate" autowire="byName">
-      
-      </bean>
+    </bean>
+    <bean id="INetChangeLinkDao" class="com.boco.eoms.sheet.netchange.dao.hibernate.NetChangeLinkDaoHibernate"
+          autowire="byName">
+
+    </bean>
+
+    <bean id="iNetChangeTaskDAO" class="com.boco.eoms.sheet.netchange.dao.hibernate.NetChangeTaskDAOHibernate"
+          autowire="byName">
+
+    </bean>
 </beans>

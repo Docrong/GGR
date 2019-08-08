@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.securityobjaudit.service.ISecurityObjAuditFlowManager
  * <p>
  * Tue Apr 25 11:41:14 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class SecurityObjAuditFlowManagerImpl extends BusinessFlowServiceImpl implements ISecurityObjAuditFlowManager {
- 
- }
+
+public class SecurityObjAuditFlowManagerImpl extends BusinessFlowServiceImpl implements ISecurityObjAuditFlowManager {
+
+}

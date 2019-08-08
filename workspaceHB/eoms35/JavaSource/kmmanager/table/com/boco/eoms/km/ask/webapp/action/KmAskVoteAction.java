@@ -37,149 +37,149 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Fri Aug 14 15:39:20 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmAskVoteAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增投票
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增投票
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改投票
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改投票
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		KmAskVote kmAskVote = kmAskVoteMgr.getKmAskVote(id);
-		KmAskVoteForm kmAskVoteForm = (KmAskVoteForm) convert(kmAskVote);
-		updateFormBean(mapping, request, kmAskVoteForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存投票
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
-		KmAskVoteForm kmAskVoteForm = (KmAskVoteForm) form;
-		boolean isNew = (null == kmAskVoteForm.getId() || "".equals(kmAskVoteForm.getId()));
-		KmAskVote kmAskVote = (KmAskVote) convert(kmAskVoteForm);
-		if (isNew) {
-			kmAskVoteMgr.saveKmAskVote(kmAskVote);
-		} else {
-			kmAskVoteMgr.saveKmAskVote(kmAskVote);
-		}
-		return search(mapping, kmAskVoteForm, request, response);
-	}
-	
-	/**
-	 * 删除投票
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		kmAskVoteMgr.removeKmAskVote(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示投票列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmAskVoteConstants.KMASKVOTE_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
-		Map map = (Map) kmAskVoteMgr.getKmAskVotes(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(KmAskVoteConstants.KMASKVOTE_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示投票列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        KmAskVote kmAskVote = kmAskVoteMgr.getKmAskVote(id);
+        KmAskVoteForm kmAskVoteForm = (KmAskVoteForm) convert(kmAskVote);
+        updateFormBean(mapping, request, kmAskVoteForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存投票
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
+        KmAskVoteForm kmAskVoteForm = (KmAskVoteForm) form;
+        boolean isNew = (null == kmAskVoteForm.getId() || "".equals(kmAskVoteForm.getId()));
+        KmAskVote kmAskVote = (KmAskVote) convert(kmAskVoteForm);
+        if (isNew) {
+            kmAskVoteMgr.saveKmAskVote(kmAskVote);
+        } else {
+            kmAskVoteMgr.saveKmAskVote(kmAskVote);
+        }
+        return search(mapping, kmAskVoteForm, request, response);
+    }
+
+    /**
+     * 删除投票
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        kmAskVoteMgr.removeKmAskVote(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示投票列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmAskVoteConstants.KMASKVOTE_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        KmAskVoteMgr kmAskVoteMgr = (KmAskVoteMgr) getBean("kmAskVoteMgr");
+        Map map = (Map) kmAskVoteMgr.getKmAskVotes(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(KmAskVoteConstants.KMASKVOTE_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示投票列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

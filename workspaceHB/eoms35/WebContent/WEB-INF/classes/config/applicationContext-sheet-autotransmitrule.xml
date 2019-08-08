@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-   <bean id="autoTransmitRuleDao" class="com.boco.eoms.sheet.autotransmitrule.dao.hibernate.AutoTransmitRuleDAOImpl" autowire="byName"/>
+    <bean id="autoTransmitRuleDao" class="com.boco.eoms.sheet.autotransmitrule.dao.hibernate.AutoTransmitRuleDAOImpl"
+          autowire="byName"/>
     <bean id="iAutoTransmitRuleManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.sheet.autotransmitrule.service.impl.AutoTransmitRuleManagerImpl">
                 <property name="dao" ref="autoTransmitRuleDao"/>
-	        </bean>
+            </bean>
         </property>
     </bean>
 </beans>

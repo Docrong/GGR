@@ -1,7 +1,6 @@
 package com.boco.eoms.infmanage.model;
 
-public class TawInfUpfile
-{
+public class TawInfUpfile {
     // 上传文件编号
     private int id;
 
@@ -12,39 +11,38 @@ public class TawInfUpfile
     private String infUpfileName;
     private String encodename;
 
-    public TawInfUpfile()
-    {
+    public TawInfUpfile() {
     }
-    public int getInfoId()
-    {
+
+    public int getInfoId() {
         return infoId;
     }
-    public void setInfoId(int infoId)
-    {
+
+    public void setInfoId(int infoId) {
         this.infoId = infoId;
     }
-    public String getInfUpfileName()
-    {
+
+    public String getInfUpfileName() {
         return infUpfileName;
     }
-    public void setInfUpfileName(String infUpfileName)
-    {
+
+    public void setInfUpfileName(String infUpfileName) {
         this.infUpfileName = infUpfileName;
     }
-    public int getId()
-    {
+
+    public int getId() {
         return id;
     }
-    public void setId(int id)
-    {
+
+    public void setId(int id) {
         this.id = id;
     }
-    public String getEncodename()
-    {
+
+    public String getEncodename() {
         return encodename;
     }
-    public void setEncodename(String encodename)
-    {
+
+    public void setEncodename(String encodename) {
         this.encodename = encodename;
     }
 

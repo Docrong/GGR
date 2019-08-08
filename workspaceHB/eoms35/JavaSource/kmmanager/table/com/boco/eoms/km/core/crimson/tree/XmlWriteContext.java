@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -69,44 +69,39 @@ import java.io.Writer;
  * XML documents that need to be read or edited by people (rather
  * than only by machines).
  *
- * @see XmlWritable
- * @see XmlDocument#createWriteContext
- *
  * @author David Brownell
  * @version $Revision: 1.1.1.1 $
+ * @see XmlWritable
+ * @see XmlDocument#createWriteContext
  */
-public class XmlWriteContext
-{
-    private Writer	writer;
-    private int		indentLevel;
-    private boolean	prettyOutput;
+public class XmlWriteContext {
+    private Writer writer;
+    private int indentLevel;
+    private boolean prettyOutput;
 
 
     /**
      * Constructs a write context that doesn't pretty-print output.
      */
-    public XmlWriteContext (Writer out)
-    {
-	writer = out;
+    public XmlWriteContext(Writer out) {
+        writer = out;
     }
 
     /**
      * Constructs a write context that supports pretty-printing
      * output starting at the specified number of spaces.
      */
-    public XmlWriteContext (Writer out, int level)
-    {
-	writer = out;
-	prettyOutput = true;
-	indentLevel = level;
+    public XmlWriteContext(Writer out, int level) {
+        writer = out;
+        prettyOutput = true;
+        indentLevel = level;
     }
 
     /**
      * Returns the writer to which output should be written.
      */
-    public Writer getWriter ()
-    {
-	return writer;
+    public Writer getWriter() {
+        return writer;
     }
 
     /**
@@ -115,32 +110,29 @@ public class XmlWriteContext
      * written rather than their expanded values.  The predefined
      * XML entities are always declared.
      */
-    public boolean isEntityDeclared (String name)
-    {
-	// for contexts tied to documents with DTDs, 
-	// ask that DTD if it knows that entity...
+    public boolean isEntityDeclared(String name) {
+        // for contexts tied to documents with DTDs,
+        // ask that DTD if it knows that entity...
 
-	return ("amp".equals (name)
-		|| "lt".equals (name) || "gt".equals (name)
-		|| "quot".equals (name) || "apos".equals (name));
+        return ("amp".equals(name)
+                || "lt".equals(name) || "gt".equals(name)
+                || "quot".equals(name) || "apos".equals(name));
     }
 
     /**
      * Returns the current indent level, in terms of spaces, for
      * use in pretty printing XML text.
      */
-    public int getIndentLevel ()
-    {
-	return indentLevel;
+    public int getIndentLevel() {
+        return indentLevel;
     }
 
     /**
      * Assigns the current indent level, in terms of spaces, for
      * use in pretty printing XML text.
      */
-    public void setIndentLevel (int level)
-    {
-	indentLevel = level;
+    public void setIndentLevel(int level) {
+        indentLevel = level;
     }
 
     /**
@@ -157,16 +149,15 @@ public class XmlWriteContext
      * not be used.  Otherwise, text normalization is expected to remove
      * excess whitespace such as that added by this call.
      */
-    public void printIndent () throws IOException
-    {
-	int	temp = indentLevel;
+    public void printIndent() throws IOException {
+        int temp = indentLevel;
 
-	if (!prettyOutput)
-	    return;
+        if (!prettyOutput)
+            return;
 
-	writer.write(XmlDocument.eol);
-	while (temp-- > 0) {
-	    writer.write (' ');
+        writer.write(XmlDocument.eol);
+        while (temp-- > 0) {
+            writer.write(' ');
         }
     }
 
@@ -174,8 +165,7 @@ public class XmlWriteContext
      * Returns true if writes using the context should "pretty print",
      * displaying structure through indentation as appropriate.
      */
-    public boolean isPrettyOutput ()
-    {
-	return prettyOutput;
+    public boolean isPrettyOutput() {
+        return prettyOutput;
     }
 }

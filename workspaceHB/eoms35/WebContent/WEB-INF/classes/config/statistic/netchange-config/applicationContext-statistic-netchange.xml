@@ -4,112 +4,191 @@
 <!-- sample config file  , 
 			create new config file in your module -->
 <beans>
-	<!-- 配置信息类 -->
-	<bean id="statNetchangeConfigManager"
-		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
-		autowire="byName">
-		<!-- 统计算法配置文件路径 在子模块中新建配置文件 
-		<property name="configFilePath">
-			<value>classpath:config/statistic-config-query-task.xml</value>
-		</property>-->
-		
-		<!-- Excel配置文件路径 在子模块中新建配置文件
-		<property name="excelConfigFilePath">
-			<value>classpath:config/statistic-config-excel-task.xls</value>
-		</property>-->
-		
-		<!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
-		<property name="reloadConfig">
-			<value>false</value>
-		</property>
-		
-		<!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
-		<property name="excelConfigMap">
-           <map>
-            <!-- 李智添加变更管理-网络综合调整kpi1-oracle -->
-              <entry key="netchange-std_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-std_oracle.xls</value></entry>
-              <entry key="netchange-onetimepass_kpi1_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-onetimepass_kpi1_oracle.xls</value></entry>
-              <entry key="netchange-efficiency_kpi3_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-efficiency_kpi3_oracle.xls</value></entry>
-              <entry key="netchange-succeed_kpi4_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-succeed_kpi4_oracle.xls</value></entry>
-              <entry key="netchange-intime_kpi5_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-intime_kpi5_oracle.xls</value></entry>
-              
-              <!-- 李智添加变更管理-网络综合调整kpi1-informix -->
-              <entry key="netchange-std_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-std_informix.xls</value></entry>
-              <entry key="netchange-onetimepass_kpi1_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-onetimepass_kpi1_informix.xls</value></entry>
-              <entry key="netchange-efficiency_kpi3_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-efficiency_kpi3_informix.xls</value></entry>
-              <entry key="netchange-succeed_kpi4_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-succeed_kpi4_informix.xls</value></entry>
-              <entry key="netchange-intime_kpi5_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-intime_kpi5_informix.xls</value></entry>
-           </map>
+    <!-- 配置信息类 -->
+    <bean id="statNetchangeConfigManager"
+          class="com.boco.eoms.commons.statistic.base.mgr.impl.StatConfigManagerImpl"
+          autowire="byName">
+        <!-- 统计算法配置文件路径 在子模块中新建配置文件
+        <property name="configFilePath">
+            <value>classpath:config/statistic-config-query-task.xml</value>
+        </property>-->
+
+        <!-- Excel配置文件路径 在子模块中新建配置文件
+        <property name="excelConfigFilePath">
+            <value>classpath:config/statistic-config-excel-task.xls</value>
+        </property>-->
+
+        <!-- 是否每次都从新获取配置文件 true:时时都读取 false：相反-->
+        <property name="reloadConfig">
+            <value>false</value>
         </property>
-        
+
+        <!-- 配置Excel文件路径 key为url传入的参数，value对应文件名称  -->
+        <property name="excelConfigMap">
+            <map>
+                <!-- 李智添加变更管理-网络综合调整kpi1-oracle -->
+                <entry key="netchange-std_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-std_oracle.xls
+                    </value>
+                </entry>
+                <entry key="netchange-onetimepass_kpi1_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-onetimepass_kpi1_oracle.xls
+                    </value>
+                </entry>
+                <entry key="netchange-efficiency_kpi3_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-efficiency_kpi3_oracle.xls
+                    </value>
+                </entry>
+                <entry key="netchange-succeed_kpi4_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-succeed_kpi4_oracle.xls
+                    </value>
+                </entry>
+                <entry key="netchange-intime_kpi5_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-excel-netchange-intime_kpi5_oracle.xls
+                    </value>
+                </entry>
+
+                <!-- 李智添加变更管理-网络综合调整kpi1-informix -->
+                <entry key="netchange-std_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-std_informix.xls
+                    </value>
+                </entry>
+                <entry key="netchange-onetimepass_kpi1_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-onetimepass_kpi1_informix.xls
+                    </value>
+                </entry>
+                <entry key="netchange-efficiency_kpi3_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-efficiency_kpi3_informix.xls
+                    </value>
+                </entry>
+                <entry key="netchange-succeed_kpi4_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-succeed_kpi4_informix.xls
+                    </value>
+                </entry>
+                <entry key="netchange-intime_kpi5_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-excel-netchange-intime_kpi5_informix.xls
+                    </value>
+                </entry>
+            </map>
+        </property>
+
         <!-- 配置quary算法文件路径 key为excel中配置的参数，value对应文件名称  -->
         <property name="queryCongigMap">
-           <map>
-           <!-- 李智添加变更管理-网络综合调整kpi1 oracle-->
-              <entry key="netchange-std_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-std_oracle.xml</value></entry>
-              <entry key="netchange-onetimepass_kpi1_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-onetimepass_kpi1_oracle.xml</value></entry>
-              <entry key="netchange-efficiency_kpi3_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-efficiency_kpi3_oracle.xml</value></entry>
-              <entry key="netchange-succeed_kpi4_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-succeed_kpi4_oracle.xml</value></entry>
-              <entry key="netchange-intime_kpi5_oracle"><value>classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-intime_kpi5_oracle.xml</value></entry>
-              <!-- 李智添加变更管理-网络综合调整kpi1 informix-->
-              <entry key="netchange-std_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-std_informix.xml</value></entry>
-              <entry key="netchange-onetimepass_kpi1_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-onetimepass_kpi1_informix.xml</value></entry>
-              <entry key="netchange-efficiency_kpi3_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-efficiency_kpi3_informix.xml</value></entry>
-              <entry key="netchange-succeed_kpi4_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-succeed_kpi4_informix.xml</value></entry>
-              <entry key="netchange-intime_kpi5_informix"><value>classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-intime_kpi5_informix.xml</value></entry>
-           </map>
+            <map>
+                <!-- 李智添加变更管理-网络综合调整kpi1 oracle-->
+                <entry key="netchange-std_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-std_oracle.xml
+                    </value>
+                </entry>
+                <entry key="netchange-onetimepass_kpi1_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-onetimepass_kpi1_oracle.xml
+                    </value>
+                </entry>
+                <entry key="netchange-efficiency_kpi3_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-efficiency_kpi3_oracle.xml
+                    </value>
+                </entry>
+                <entry key="netchange-succeed_kpi4_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-succeed_kpi4_oracle.xml
+                    </value>
+                </entry>
+                <entry key="netchange-intime_kpi5_oracle">
+                    <value>
+                        classpath:config/statistic/netchange-config/oracle/statistic-config-query-netchange-intime_kpi5_oracle.xml
+                    </value>
+                </entry>
+                <!-- 李智添加变更管理-网络综合调整kpi1 informix-->
+                <entry key="netchange-std_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-std_informix.xml
+                    </value>
+                </entry>
+                <entry key="netchange-onetimepass_kpi1_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-onetimepass_kpi1_informix.xml
+                    </value>
+                </entry>
+                <entry key="netchange-efficiency_kpi3_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-efficiency_kpi3_informix.xml
+                    </value>
+                </entry>
+                <entry key="netchange-succeed_kpi4_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-succeed_kpi4_informix.xml
+                    </value>
+                </entry>
+                <entry key="netchange-intime_kpi5_informix">
+                    <value>
+                        classpath:config/statistic/netchange-config/informix/statistic-config-query-netchange-intime_kpi5_informix.xml
+                    </value>
+                </entry>
+            </map>
         </property>
-		
-		<!-- Excel解析类 		 
-			目前使用applicationContext-statistic-base.xml中的配置 
-			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
-		<property name="excelConverter" ref="statBaseExcelConverter"/>
-	</bean>
-	
-	<!-- 统计工具需要实现的类
-	<bean id= "istatisticTool"
-		class="com.boco.eoms.commons.statistic.task.config.ist.StatisticToolTask">
-	</bean>-->
-	
-	<!-- 总体管理类 -->
-	<bean id="statNetchangeManager" 
-		class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
-		<property name="statConfigManager" ref="statNetchangeConfigManager" />
 
-		<!-- 详细列表的VO类  -->
-		<property name="statDetailVOName">
-			<value>com.boco.eoms.commons.statistic.base.vo.StatDetailVO</value>
-		</property>
-		
-		<!--<property name="statisticTool" ref="istatisticTool"></property>
-		
-		--><!-- 
+        <!-- Excel解析类
+            目前使用applicationContext-statistic-base.xml中的配置
+            如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.-->
+        <property name="excelConverter" ref="statBaseExcelConverter"/>
+    </bean>
+
+    <!-- 统计工具需要实现的类
+    <bean id= "istatisticTool"
+        class="com.boco.eoms.commons.statistic.task.config.ist.StatisticToolTask">
+    </bean>-->
+
+    <!-- 总体管理类 -->
+    <bean id="statNetchangeManager"
+          class="com.boco.eoms.commons.statistic.base.mgr.impl.StatManagerImpl">
+        <property name="statConfigManager" ref="statNetchangeConfigManager"/>
+
+        <!-- 详细列表的VO类  -->
+        <property name="statDetailVOName">
+            <value>com.boco.eoms.commons.statistic.base.vo.StatDetailVO</value>
+        </property>
+
+        <!--<property name="statisticTool" ref="istatisticTool"></property>
+
+        --><!--
 			以下3个对象目前使用applicationContext-statistic-base.xml中的配置 
 			如需要扩展在子模块内新增子类,扩展基类模块,并注入相应子类,不要修改基类.
 		-->
-		<property name="statJdbcDAO" ref="statBaseJdbcDAO" />
-		<property name="statExcelConverter" ref="statBaseExcelConverter" />
-		
+        <property name="statJdbcDAO" ref="statBaseJdbcDAO"/>
+        <property name="statExcelConverter" ref="statBaseExcelConverter"/>
 
-		<property name="statExportExcel" ref="statBaseExportExcel"></property>
-		
-		
-		
-	</bean>
 
-	<!-- 统计工具任务工单实现类 -->
-	<bean id="netchangeStatMethod"
-		class="com.boco.eoms.commons.statistic.netchange.webapp.action.NetchangeStatMethodImpl">
-		<property name="statManager" ref="statNetchangeManager" />
-	</bean>
-	
-	<!--
-	<bean id="statAttributeUrl" class="com.boco.eoms.commons.statistic.task.util.TaskStatAttributeUrl" >
-		<property name="attributeUrl">
-			<props>
-				<prop key="tasksheet"><![CDATA[/tasksheet.pr.prShowQueryInfo.do?detail/isDetail=1]]></prop>
-				<prop key="2"><![CDATA[222]]></prop>
-			</props>
-		</property>
-	</bean>-->
+        <property name="statExportExcel" ref="statBaseExportExcel"></property>
+
+
+    </bean>
+
+    <!-- 统计工具任务工单实现类 -->
+    <bean id="netchangeStatMethod"
+          class="com.boco.eoms.commons.statistic.netchange.webapp.action.NetchangeStatMethodImpl">
+        <property name="statManager" ref="statNetchangeManager"/>
+    </bean>
+
+    <!--
+    <bean id="statAttributeUrl" class="com.boco.eoms.commons.statistic.task.util.TaskStatAttributeUrl" >
+        <property name="attributeUrl">
+            <props>
+                <prop key="tasksheet"><![CDATA[/tasksheet.pr.prShowQueryInfo.do?detail/isDetail=1]]></prop>
+                <prop key="2"><![CDATA[222]]></prop>
+            </props>
+        </property>
+    </bean>-->
 </beans>

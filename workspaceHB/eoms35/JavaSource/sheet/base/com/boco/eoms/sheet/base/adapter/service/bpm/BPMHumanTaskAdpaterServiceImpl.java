@@ -18,11 +18,10 @@ import com.boco.eoms.sheet.base.adapter.service.IHumanTaskAdapterService;
  * <p>
  * Date:2007-8-3 14:20:00
  * </p>
- * 
- * @see IHumanTaskAdapterService
+ *
  * @author 曲静波
  * @version 1.0
- *  
+ * @see IHumanTaskAdapterService
  */
 public class BPMHumanTaskAdpaterServiceImpl implements IHumanTaskAdapterService {
 

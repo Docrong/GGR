@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.mofficedata.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
- 
- public interface IMofficeDataQo extends IWorkSheetQO {
- 
- }
+
+public interface IMofficeDataQo extends IWorkSheetQO {
+
+}

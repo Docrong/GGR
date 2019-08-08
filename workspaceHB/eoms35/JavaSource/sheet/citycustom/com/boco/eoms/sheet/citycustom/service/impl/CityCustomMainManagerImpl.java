@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.citycustom.service.ICityCustomMainManager;
  * <p>
  * Fri Sep 28 14:06:48 CST 2012
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CityCustomMainManagerImpl extends MainService implements ICityCustomMainManager {
- 
- }
+
+public class CityCustomMainManagerImpl extends MainService implements ICityCustomMainManager {
+
+}

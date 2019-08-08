@@ -14,6 +14,7 @@ public class TawSystemDeptRefPostManagerImpl extends BaseManager implements ITaw
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSystemDeptRefPostDao(TawSystemDeptRefPostDao dao) {
@@ -47,16 +48,19 @@ public class TawSystemDeptRefPostManagerImpl extends BaseManager implements ITaw
     public void removeTawSystemDeptRefPost(final String id) {
         dao.removeTawSystemDeptRefPost(new Long(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSystemDeptRefPosts(final Integer curPage, final Integer pageSize) {
-        return dao.getTawSystemDeptRefPosts(curPage, pageSize,null);
+        return dao.getTawSystemDeptRefPosts(curPage, pageSize, null);
     }
+
     public Map getTawSystemDeptRefPosts(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawSystemDeptRefPosts(curPage, pageSize, whereStr);
     }
-    public List getPostByDeptId(String deptId){
-    	return dao.getPostByDeptId(deptId);
+
+    public List getPostByDeptId(String deptId) {
+        return dao.getPostByDeptId(deptId);
     }
 }

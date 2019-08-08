@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
     <!-- Add new Managers here -->
-    
+
     <!--AppfuseDemo-DAO START-->
-    <bean id="appfuseDemoDao" class="com.boco.eoms.commons.sample.dao.hibernate.AppfuseDemoDaoHibernate" autowire="byName"/>
+    <bean id="appfuseDemoDao" class="com.boco.eoms.commons.sample.dao.hibernate.AppfuseDemoDaoHibernate"
+          autowire="byName"/>
     <!--AppfuseDemo-DAO END-->
-    <!--AppfuseDemo-START-->    
+    <!--AppfuseDemo-START-->
     <bean id="IappfuseDemoManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.commons.sample.service.impl.AppfuseDemoManagerImpl">
@@ -16,11 +17,12 @@
         </property>
     </bean>
     <!--AppfuseDemo-END-->
-    
+
     <!--SampleTable-DAO START-->
-    <bean id="sampleTableDao" class="com.boco.eoms.commons.sample.dao.hibernate.SampleTableDaoHibernate" autowire="byName"/>
+    <bean id="sampleTableDao" class="com.boco.eoms.commons.sample.dao.hibernate.SampleTableDaoHibernate"
+          autowire="byName"/>
     <!--SampleTable-DAO END-->
-    <!--SampleTable-START-->    
+    <!--SampleTable-START-->
     <bean id="IsampleTableManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.commons.sample.service.impl.SampleTableManagerImpl">

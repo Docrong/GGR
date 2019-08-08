@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -10,140 +10,140 @@
 
     <class name="com.boco.eoms.sheet.agentmaintenance.model.AgentMaintenanceLink" table="agentmaintenance_link">
 
-    <id name="id" column="id">
-	    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-	    <generator class="assigned">
-	    </generator>
-    </id>
-       <property name="mainId" />
-       	<property name="nodeAcceptLimit" />
-		<property name="nodeCompleteLimit" />
+        <id name="id" column="id">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
+            </generator>
+        </id>
+        <property name="mainId"/>
+        <property name="nodeAcceptLimit"/>
+        <property name="nodeCompleteLimit"/>
 
-		<property name="operateType" />
-		<property name="operateTime" />
-		<property name="operaterContact" />     		
-		<property name="operateOrgType" />
-		<property name="operateUserId" />
-		<property name="operateDeptId" />
-		<property name="operateRoleId" />
-		<property name="toOrgType" />
-		<property name="toOrgUserId" />
-		<property name="toOrgDeptId" />
-		<property name="toOrgRoleId" />
-		<property name="acceptFlag" />
-		<property name="acceptTime" />
-		<property name="completeFlag" />
-		<property name="completeTime" />
-		<property name="preLinkId" />
-		<property name="parentLinkId" />
-		<property name="firstLinkId" />
-		<property name="piid" />
-		<property name="aiid" />
-		<property name="activeTemplateId" />
-		<property name="nodeTemplateName" />
-		<property name="correlationKey" />
-		<property name="nodeAccessories" />
-		<property name="templateFlag" />
-		<property name="templateName" />
-		<property name="templateCreateUserId" />
-		<property name="transferReason" />
-		<property name="remark" />
-		<property name="operateYear" />
-		<property name="operateMonth" />
-		<property name="operateDay" />
-	
-		<!-- commonfault -->
-		<property name="linkFaultResponseLevel" />	
-		<property name="linkFaultUrgentLog" />	
-		<property name="linkFaultIfMutualCommunication" />	
-		<property name="linkFaultIfSafe" />	
-		<property name="linkFaultIfExcuteNetChange" />	
-		<property name="linkFaultDealResult" />	
-		<property name="linkFaultAvoidTime" />	
-		<property name="linkFaultOperRenewTime" />	
-		<property name="linkFaultAffectTimeLength" />	
-		<property name="linkFaultReason" />	
-		<property name="linkFaultDealStep" />	
-		<property name="linkFaultUntreadReason" />
-		<property name="linkFaultIfUrgentFault" />
-		<property name="linkFaultTransmitReason" />
-		<property name="linkFaultFirstDealDesc" />
-		<property name="linkFaultDesc" />
-		<property name="linkFaultReasonSort" />
-		<property name="linkFaultReasonSubsection" />
-		<property name="linkFaultIfFinallySolveProject" />
-		<property name="linkFaultIfAddCaseDataBase" />
-		<property name="linkFaultTransmitContent" />	
-		<property name="linkFaultExamineContent" />	
-		<property name="linkFaultIfDeferResolve" />
-		<property name="linkFaultDealInfo" />
-		<property name="linkFaultUntreadIdea" />
-		<property name="linkFaultIfGreatFault" />
-		<property name="commonFaultdealTime" />
-		<property name="commonFaultTreatment" />
-		<property name="commonFaultdealdesc" />
-		<property name="commonLinkDealdesc" />
-		<property name="selectStep" />
-		
-		<!-- commontask -->
-		<property name="linkTaskAuditResult" />
-		<property name="linkTaskAuditIdea" />
-		<property name="linkTaskComplete" />
-		
-		<!-- Complaint -->
-		<property name="linkComTransmitReason" />
-		<property name="linkComIfInvokeChange" />
-		<property name="linkComFaultStartTime" />
-		<property name="linkComFaultEndTime" />
-		<property name="linkComFaultGenerantPlace" />
-		<property name="linkComPlaceDesc" />
-		<property name="linkComndeptContact" />
-		<property name="linkComndeptContactPhone" />
-		<property name="linkComdealResult" />
-		<property name="linkComdealDesc" />
-		<property name="linkComissueEliminatTime" />
-		<property name="linkComissueEliminatReason" />
-		<property name="linkComCheckResult" />
-		<property name="linkComCheckIdea" />
-		<property name="linkComUntreadReason" />
-		<property name="linkComTransmitContent" />
-		<property name="linkComExamineContent" />
-		<property name="linkComIfDeferResolve" />
-		<property name="linkComIfInvokeCaseDatabase" />
-		<property name="linkComChangeSheetId" />
-		<property name="linkComisSubTransmit" />
-		<property name="linkComparLinkId" />
-		<property name="linkComisReplied" />
-		<property name="linkComcompProp" />
-		<property name="linkComisDeferReploy" />
-		<property name="linkComReplyPerson" />
-		<property name="linkComReplayPhone" />
-		<property name="linkComLocalDealDesc" />
-		<property name="linkComBusinessType" />
-		<property name="linkComFaultType" />
-		<property name="linkComReasonType" />
-		<property name="linkComIsReciveFaultId" />
-		<property name="linkComReciveFaultId" />
-		<property name="linkComIsSolve" />
-		<property name="linkComSolveDate" />
-		<property name="linkComPlanSolveType" />
-		<property name="linkComPlanSolveDate" />
-		<property name="linkComIsUserConfirm" />
-		<property name="linkComNoConfirmReason" />
-		<property name="linkComIsRepeatCom" />
-		<property name="linkComRepeatType" />
-		<property name="linkComIsUserStatisfied" />
-		<property name="linkComUserNoStatisfied" />
-		<property name="linkComIsContactUser" />
-		<property name="linkComContactDate" />
-		<property name="linkComContactship" />
-		<property name="linkComContactUser" />
-		<property name="linkComContactPhone" />
-		<property name="linkComNoContactReason" />
-		<property name="linkNoAuditReason" />
-		<property name="linkRevertReason" />
-		
-    </class>    
+        <property name="operateType"/>
+        <property name="operateTime"/>
+        <property name="operaterContact"/>
+        <property name="operateOrgType"/>
+        <property name="operateUserId"/>
+        <property name="operateDeptId"/>
+        <property name="operateRoleId"/>
+        <property name="toOrgType"/>
+        <property name="toOrgUserId"/>
+        <property name="toOrgDeptId"/>
+        <property name="toOrgRoleId"/>
+        <property name="acceptFlag"/>
+        <property name="acceptTime"/>
+        <property name="completeFlag"/>
+        <property name="completeTime"/>
+        <property name="preLinkId"/>
+        <property name="parentLinkId"/>
+        <property name="firstLinkId"/>
+        <property name="piid"/>
+        <property name="aiid"/>
+        <property name="activeTemplateId"/>
+        <property name="nodeTemplateName"/>
+        <property name="correlationKey"/>
+        <property name="nodeAccessories"/>
+        <property name="templateFlag"/>
+        <property name="templateName"/>
+        <property name="templateCreateUserId"/>
+        <property name="transferReason"/>
+        <property name="remark"/>
+        <property name="operateYear"/>
+        <property name="operateMonth"/>
+        <property name="operateDay"/>
+
+        <!-- commonfault -->
+        <property name="linkFaultResponseLevel"/>
+        <property name="linkFaultUrgentLog"/>
+        <property name="linkFaultIfMutualCommunication"/>
+        <property name="linkFaultIfSafe"/>
+        <property name="linkFaultIfExcuteNetChange"/>
+        <property name="linkFaultDealResult"/>
+        <property name="linkFaultAvoidTime"/>
+        <property name="linkFaultOperRenewTime"/>
+        <property name="linkFaultAffectTimeLength"/>
+        <property name="linkFaultReason"/>
+        <property name="linkFaultDealStep"/>
+        <property name="linkFaultUntreadReason"/>
+        <property name="linkFaultIfUrgentFault"/>
+        <property name="linkFaultTransmitReason"/>
+        <property name="linkFaultFirstDealDesc"/>
+        <property name="linkFaultDesc"/>
+        <property name="linkFaultReasonSort"/>
+        <property name="linkFaultReasonSubsection"/>
+        <property name="linkFaultIfFinallySolveProject"/>
+        <property name="linkFaultIfAddCaseDataBase"/>
+        <property name="linkFaultTransmitContent"/>
+        <property name="linkFaultExamineContent"/>
+        <property name="linkFaultIfDeferResolve"/>
+        <property name="linkFaultDealInfo"/>
+        <property name="linkFaultUntreadIdea"/>
+        <property name="linkFaultIfGreatFault"/>
+        <property name="commonFaultdealTime"/>
+        <property name="commonFaultTreatment"/>
+        <property name="commonFaultdealdesc"/>
+        <property name="commonLinkDealdesc"/>
+        <property name="selectStep"/>
+
+        <!-- commontask -->
+        <property name="linkTaskAuditResult"/>
+        <property name="linkTaskAuditIdea"/>
+        <property name="linkTaskComplete"/>
+
+        <!-- Complaint -->
+        <property name="linkComTransmitReason"/>
+        <property name="linkComIfInvokeChange"/>
+        <property name="linkComFaultStartTime"/>
+        <property name="linkComFaultEndTime"/>
+        <property name="linkComFaultGenerantPlace"/>
+        <property name="linkComPlaceDesc"/>
+        <property name="linkComndeptContact"/>
+        <property name="linkComndeptContactPhone"/>
+        <property name="linkComdealResult"/>
+        <property name="linkComdealDesc"/>
+        <property name="linkComissueEliminatTime"/>
+        <property name="linkComissueEliminatReason"/>
+        <property name="linkComCheckResult"/>
+        <property name="linkComCheckIdea"/>
+        <property name="linkComUntreadReason"/>
+        <property name="linkComTransmitContent"/>
+        <property name="linkComExamineContent"/>
+        <property name="linkComIfDeferResolve"/>
+        <property name="linkComIfInvokeCaseDatabase"/>
+        <property name="linkComChangeSheetId"/>
+        <property name="linkComisSubTransmit"/>
+        <property name="linkComparLinkId"/>
+        <property name="linkComisReplied"/>
+        <property name="linkComcompProp"/>
+        <property name="linkComisDeferReploy"/>
+        <property name="linkComReplyPerson"/>
+        <property name="linkComReplayPhone"/>
+        <property name="linkComLocalDealDesc"/>
+        <property name="linkComBusinessType"/>
+        <property name="linkComFaultType"/>
+        <property name="linkComReasonType"/>
+        <property name="linkComIsReciveFaultId"/>
+        <property name="linkComReciveFaultId"/>
+        <property name="linkComIsSolve"/>
+        <property name="linkComSolveDate"/>
+        <property name="linkComPlanSolveType"/>
+        <property name="linkComPlanSolveDate"/>
+        <property name="linkComIsUserConfirm"/>
+        <property name="linkComNoConfirmReason"/>
+        <property name="linkComIsRepeatCom"/>
+        <property name="linkComRepeatType"/>
+        <property name="linkComIsUserStatisfied"/>
+        <property name="linkComUserNoStatisfied"/>
+        <property name="linkComIsContactUser"/>
+        <property name="linkComContactDate"/>
+        <property name="linkComContactship"/>
+        <property name="linkComContactUser"/>
+        <property name="linkComContactPhone"/>
+        <property name="linkComNoContactReason"/>
+        <property name="linkNoAuditReason"/>
+        <property name="linkRevertReason"/>
+
+    </class>
 
 </hibernate-mapping>
 

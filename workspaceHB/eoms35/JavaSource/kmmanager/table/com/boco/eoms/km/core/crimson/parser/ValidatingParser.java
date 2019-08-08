@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -89,14 +89,14 @@ import com.boco.eoms.km.core.crimson.util.XmlNames;
  * @author David Brownell
  * @version $Revision: 1.1.1.1 $
  */
-public class ValidatingParser extends Parser2
-{
-    private SimpleHashtable	ids = new SimpleHashtable ();
+public class ValidatingParser extends Parser2 {
+    private SimpleHashtable ids = new SimpleHashtable();
 
-    /** Constructs a SAX parser object. */
-    public ValidatingParser ()
-    {
-	setIsValidating (true);
+    /**
+     * Constructs a SAX parser object.
+     */
+    public ValidatingParser() {
+        setIsValidating(true);
     }
 
     /**
@@ -105,19 +105,19 @@ public class ValidatingParser extends Parser2
      * all validity errors) as well as fatal errors.
      *
      * @param rejectValidityErrors When true, the parser will use an
-     *	error handler which throws exceptions on recoverable errors.
-     *	Otherwise it uses the default SAX error handler, which ignores
-     *	such errors.
+     *                             error handler which throws exceptions on recoverable errors.
+     *                             Otherwise it uses the default SAX error handler, which ignores
+     *                             such errors.
      */
-    public ValidatingParser (boolean rejectValidityErrors)
-    {
-	this ();
-	if (rejectValidityErrors)
-	    setErrorHandler (new HandlerBase () {
-		public void error (SAXParseException x)
-		    throws SAXException
-		    { throw x; }
-		});
+    public ValidatingParser(boolean rejectValidityErrors) {
+        this();
+        if (rejectValidityErrors)
+            setErrorHandler(new HandlerBase() {
+                public void error(SAXParseException x)
+                        throws SAXException {
+                    throw x;
+                }
+            });
     }
 
     // REMINDER:  validation errors are not fatal, so code flow
@@ -125,248 +125,236 @@ public class ValidatingParser extends Parser2
 
 
     // package private ... overrides base class method
-    void afterRoot () throws SAXException
-    {
-	// Make sure all IDREFs match declared ID attributes.  We scan
-	// after the document element is parsed, since XML allows forward
-	// references, and only now can we know if they're all resolved.
+    void afterRoot() throws SAXException {
+        // Make sure all IDREFs match declared ID attributes.  We scan
+        // after the document element is parsed, since XML allows forward
+        // references, and only now can we know if they're all resolved.
 
-	for (Enumeration e = ids.keys ();
-		e.hasMoreElements ();
-		) {
-	    String id = (String) e.nextElement ();
-	    Boolean value = (Boolean) ids.get (id);
-	    if (Boolean.FALSE == value)
-		error ("V-024", new Object [] { id });
-	}
+        for (Enumeration e = ids.keys();
+             e.hasMoreElements();
+        ) {
+            String id = (String) e.nextElement();
+            Boolean value = (Boolean) ids.get(id);
+            if (Boolean.FALSE == value)
+                error("V-024", new Object[]{id});
+        }
     }
 
     // package private ... overrides base class method
-    void afterDocument ()
-    {
-	ids.clear ();
+    void afterDocument() {
+        ids.clear();
     }
 
     // package private ... overrides base class method
-    void validateAttributeSyntax (AttributeDecl attr, String value)
-    throws SAXException
-    {
-	// ID, IDREF(S) ... values are Names
-	if (AttributeDecl.ID == attr.type) {
-	    if (!XmlNames.isName (value))
-		error ("V-025", new Object [] { value });
+    void validateAttributeSyntax(AttributeDecl attr, String value)
+            throws SAXException {
+        // ID, IDREF(S) ... values are Names
+        if (AttributeDecl.ID == attr.type) {
+            if (!XmlNames.isName(value))
+                error("V-025", new Object[]{value});
 
-	    Boolean		b = (Boolean) ids.getNonInterned (value);
-	    if (b == null || b.equals (Boolean.FALSE))
-		ids.put (value.intern (), Boolean.TRUE);
-	    else
-		error ("V-026", new Object [] { value });
+            Boolean b = (Boolean) ids.getNonInterned(value);
+            if (b == null || b.equals(Boolean.FALSE))
+                ids.put(value.intern(), Boolean.TRUE);
+            else
+                error("V-026", new Object[]{value});
 
-	} else if (AttributeDecl.IDREF == attr.type) {
-	    if (!XmlNames.isName (value))
-		error ("V-027", new Object [] { value });
+        } else if (AttributeDecl.IDREF == attr.type) {
+            if (!XmlNames.isName(value))
+                error("V-027", new Object[]{value});
 
-	    Boolean		b = (Boolean) ids.getNonInterned (value);
-	    if (b == null)
-		ids.put (value.intern (), Boolean.FALSE);
+            Boolean b = (Boolean) ids.getNonInterned(value);
+            if (b == null)
+                ids.put(value.intern(), Boolean.FALSE);
 
-	} else if (AttributeDecl.IDREFS == attr.type) {
-	    StringTokenizer	tokenizer = new StringTokenizer (value);
-	    Boolean		b;
-	    boolean		sawValue = false;
+        } else if (AttributeDecl.IDREFS == attr.type) {
+            StringTokenizer tokenizer = new StringTokenizer(value);
+            Boolean b;
+            boolean sawValue = false;
 
-	    while (tokenizer.hasMoreTokens ()) {
-		value = tokenizer.nextToken ();
-		if (!XmlNames.isName (value))
-		    error ("V-027", new Object [] { value });
-		b = (Boolean) ids.getNonInterned (value);
-		if (b == null)
-		    ids.put (value.intern (), Boolean.FALSE);
-		sawValue = true;
-	    }
-	    if (!sawValue)
-		error ("V-039", null);
+            while (tokenizer.hasMoreTokens()) {
+                value = tokenizer.nextToken();
+                if (!XmlNames.isName(value))
+                    error("V-027", new Object[]{value});
+                b = (Boolean) ids.getNonInterned(value);
+                if (b == null)
+                    ids.put(value.intern(), Boolean.FALSE);
+                sawValue = true;
+            }
+            if (!sawValue)
+                error("V-039", null);
 
 
-	// NMTOKEN(S) ... values are Nmtoken(s)
-	} else if (AttributeDecl.NMTOKEN == attr.type) {
-	    if (!XmlNames.isNmtoken (value))
-		error ("V-028", new Object [] { value });
+            // NMTOKEN(S) ... values are Nmtoken(s)
+        } else if (AttributeDecl.NMTOKEN == attr.type) {
+            if (!XmlNames.isNmtoken(value))
+                error("V-028", new Object[]{value});
 
-	} else if (AttributeDecl.NMTOKENS == attr.type) {
-	    StringTokenizer	tokenizer = new StringTokenizer (value);
-	    boolean		sawValue = false;
+        } else if (AttributeDecl.NMTOKENS == attr.type) {
+            StringTokenizer tokenizer = new StringTokenizer(value);
+            boolean sawValue = false;
 
-	    while (tokenizer.hasMoreTokens ()) {
-		value = tokenizer.nextToken ();
-		if (!XmlNames.isNmtoken (value))
-		    error ("V-028", new Object [] { value });
-		sawValue = true;
-	    }
-	    if (!sawValue)
-		error ("V-032", null);
+            while (tokenizer.hasMoreTokens()) {
+                value = tokenizer.nextToken();
+                if (!XmlNames.isNmtoken(value))
+                    error("V-028", new Object[]{value});
+                sawValue = true;
+            }
+            if (!sawValue)
+                error("V-032", null);
 
-	// ENUMERATION ... values match one of the tokens
-	} else if (AttributeDecl.ENUMERATION == attr.type) {
-	    for (int i = 0; i < attr.values.length; i++)
-		if (value.equals (attr.values [i]))
-		    return;
-	    error ("V-029", new Object [] { value });
+            // ENUMERATION ... values match one of the tokens
+        } else if (AttributeDecl.ENUMERATION == attr.type) {
+            for (int i = 0; i < attr.values.length; i++)
+                if (value.equals(attr.values[i]))
+                    return;
+            error("V-029", new Object[]{value});
 
-	// NOTATION values match a notation name
-	} else if (AttributeDecl.NOTATION == attr.type) {
-	    //
-	    // XXX XML 1.0 spec should probably list references to
-	    // externally defined notations in standalone docs as
-	    // validity errors.  Ditto externally defined unparsed
-	    // entities; neither should show up in attributes, else
-	    // one needs to read the external declarations in order
-	    // to make sense of the document (exactly what tagging
-	    // a doc as "standalone" intends you won't need to do).
-	    //
-	    for (int i = 0; i < attr.values.length; i++)
-		if (value.equals (attr.values [i]))
-		    return;
-	    error ("V-030", new Object [] { value });
+            // NOTATION values match a notation name
+        } else if (AttributeDecl.NOTATION == attr.type) {
+            //
+            // XXX XML 1.0 spec should probably list references to
+            // externally defined notations in standalone docs as
+            // validity errors.  Ditto externally defined unparsed
+            // entities; neither should show up in attributes, else
+            // one needs to read the external declarations in order
+            // to make sense of the document (exactly what tagging
+            // a doc as "standalone" intends you won't need to do).
+            //
+            for (int i = 0; i < attr.values.length; i++)
+                if (value.equals(attr.values[i]))
+                    return;
+            error("V-030", new Object[]{value});
 
-	// ENTITY(IES) values match an unparsed entity(ies)
-	} else if (AttributeDecl.ENTITY == attr.type) {
-	    // see note above re standalone 
-	    if (!isUnparsedEntity (value))
-		error ("V-031", new Object [] { value });
+            // ENTITY(IES) values match an unparsed entity(ies)
+        } else if (AttributeDecl.ENTITY == attr.type) {
+            // see note above re standalone
+            if (!isUnparsedEntity(value))
+                error("V-031", new Object[]{value});
 
-	} else if (AttributeDecl.ENTITIES == attr.type) {
-	    StringTokenizer	tokenizer = new StringTokenizer (value);
-	    boolean		sawValue = false;
+        } else if (AttributeDecl.ENTITIES == attr.type) {
+            StringTokenizer tokenizer = new StringTokenizer(value);
+            boolean sawValue = false;
 
-	    while (tokenizer.hasMoreTokens ()) {
-		value = tokenizer.nextToken ();
-		// see note above re standalone 
-		if (!isUnparsedEntity (value))
-		    error ("V-031", new Object [] { value });
-		sawValue = true;
-	    }
-	    if (!sawValue)
-		error ("V-040", null);
+            while (tokenizer.hasMoreTokens()) {
+                value = tokenizer.nextToken();
+                // see note above re standalone
+                if (!isUnparsedEntity(value))
+                    error("V-031", new Object[]{value});
+                sawValue = true;
+            }
+            if (!sawValue)
+                error("V-040", null);
 
-	} else if (AttributeDecl.CDATA != attr.type)
-	    throw new InternalError (attr.type);
+        } else if (AttributeDecl.CDATA != attr.type)
+            throw new InternalError(attr.type);
     }
 
 
     // package private ... overrides base class method
-    ContentModel newContentModel (String tag)
-    {
-	return new ContentModel (tag);
+    ContentModel newContentModel(String tag) {
+        return new ContentModel(tag);
     }
 
     // package private ... overrides base class method
-    ContentModel newContentModel (char type, ContentModel next)
-    {
-	return new ContentModel (type, next);
+    ContentModel newContentModel(char type, ContentModel next) {
+        return new ContentModel(type, next);
     }
 
     // package private ... overrides base class method
-    ElementValidator newValidator (ElementDecl element)
-    {
-	if (element.validator != null)
-	    return element.validator;
-	if (element.model != null)
-	    return new ChildrenValidator (element);
+    ElementValidator newValidator(ElementDecl element) {
+        if (element.validator != null)
+            return element.validator;
+        if (element.model != null)
+            return new ChildrenValidator(element);
 
-	//
-	// most types of content model have very simple validation
-	// algorithms; only "children" needs mutable state.
-	//
-	if (element.contentType == null || strANY == element.contentType)
-	    element.validator = ElementValidator.ANY;
-	else if (strEMPTY == element.contentType)
-	    element.validator = EMPTY;
-	else // (element.contentType.charAt (1) == '#')
-	    element.validator = new MixedValidator (element);
-	return element.validator;
+        //
+        // most types of content model have very simple validation
+        // algorithms; only "children" needs mutable state.
+        //
+        if (element.contentType == null || strANY == element.contentType)
+            element.validator = ElementValidator.ANY;
+        else if (strEMPTY == element.contentType)
+            element.validator = EMPTY;
+        else // (element.contentType.charAt (1) == '#')
+            element.validator = new MixedValidator(element);
+        return element.validator;
     }
 
-    private final EmptyValidator EMPTY = new EmptyValidator ();
+    private final EmptyValidator EMPTY = new EmptyValidator();
 
     // "EMPTY" model allows nothing
-    class EmptyValidator extends ElementValidator
-    {
-	public void consume (String token) throws SAXException
-	    { error ("V-033", null); }
+    class EmptyValidator extends ElementValidator {
+        public void consume(String token) throws SAXException {
+            error("V-033", null);
+        }
 
-	public void text () throws SAXException
-	    { error ("V-033", null); }
+        public void text() throws SAXException {
+            error("V-033", null);
+        }
     }
 
     // Mixed content models allow text with selected elements
-    class MixedValidator extends ElementValidator
-    {
-	private ElementDecl		element;
+    class MixedValidator extends ElementValidator {
+        private ElementDecl element;
 
-	MixedValidator (ElementDecl element)
-	    { this.element = element; }
+        MixedValidator(ElementDecl element) {
+            this.element = element;
+        }
 
-	public void consume (String type) throws SAXException
-	{
-	    String model = element.contentType;
+        public void consume(String type) throws SAXException {
+            String model = element.contentType;
 
-	    for (int index = 8; 		// skip "(#PCDATA|"
-		    (index = model.indexOf (type, index + 1)) >= 9;
-		    ) {
-		char	c;
+            for (int index = 8;        // skip "(#PCDATA|"
+                 (index = model.indexOf(type, index + 1)) >= 9;
+            ) {
+                char c;
 
-		// allow this type name to suffix -- "|xxTYPE"
-		if (model.charAt (index -1) != '|')
-		    continue;
-		c = model.charAt (index + type.length ());
-		if (c == '|' || c == ')')
-		    return;
-		// allow this type name to prefix -- "|TYPExx"
-	    }
-	    error ("V-034", new Object [] { element.name, type, model });
-	}
+                // allow this type name to suffix -- "|xxTYPE"
+                if (model.charAt(index - 1) != '|')
+                    continue;
+                c = model.charAt(index + type.length());
+                if (c == '|' || c == ')')
+                    return;
+                // allow this type name to prefix -- "|TYPExx"
+            }
+            error("V-034", new Object[]{element.name, type, model});
+        }
     }
 
-    class ChildrenValidator extends ElementValidator
-    {
-	private ContentModelState	state;
-	private String			name;
+    class ChildrenValidator extends ElementValidator {
+        private ContentModelState state;
+        private String name;
 
-	ChildrenValidator (ElementDecl element)
-	{
-	    state = new ContentModelState (element.model);
-	    name = element.name;
-	}
+        ChildrenValidator(ElementDecl element) {
+            state = new ContentModelState(element.model);
+            name = element.name;
+        }
 
-	public void consume (String token) throws SAXException
-	{
-	    if (state == null)
-		error ("V-035", new Object [] { name, token });
-	    else try {
-		state = state.advance (token);
-	    } catch (EndOfInputException e) {
-		error ("V-036", new Object [] { name, token });
-	    }
-	}
+        public void consume(String token) throws SAXException {
+            if (state == null)
+                error("V-035", new Object[]{name, token});
+            else try {
+                state = state.advance(token);
+            } catch (EndOfInputException e) {
+                error("V-036", new Object[]{name, token});
+            }
+        }
 
-	public void text () throws SAXException
-	{
-	    error ("V-037", new Object [] { name });
-	}
+        public void text() throws SAXException {
+            error("V-037", new Object[]{name});
+        }
 
-	public void done () throws SAXException
-	{
-	    if (state != null && !state.terminate ())
-		error ("V-038", new Object [] { name });
-	}
+        public void done() throws SAXException {
+            if (state != null && !state.terminate())
+                error("V-038", new Object[]{name});
+        }
     }
 
-    private boolean isUnparsedEntity (String name)
-    {
-	Object e = entities.getNonInterned (name);
-	if (e == null || !(e instanceof ExternalEntity))
-	    return false;
-	return ((ExternalEntity)e).notation != null;
+    private boolean isUnparsedEntity(String name) {
+        Object e = entities.getNonInterned(name);
+        if (e == null || !(e instanceof ExternalEntity))
+            return false;
+        return ((ExternalEntity) e).notation != null;
     }
 }

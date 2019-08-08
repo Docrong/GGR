@@ -18,19 +18,20 @@ public class TestController {
     private PersonService personService;
 
     @RequestMapping(value = "/mybatis")
-    public @ResponseBody String mybatis(){
+    public @ResponseBody
+    String mybatis() {
         Person person = new Person();
         person.setUsername("test2");
         person.setAddress("123");
-        List list=personService.findAll();
-        try{
+        List list = personService.findAll();
+        try {
 //        	personService.insert(person);//利用注解直接添加
 //        	personService.insertAnother(person);//利用.xml文件进行映射
-        }catch(Exception e){
-        	e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        	
-        System.out.println("list-->"+list);
+
+        System.out.println("list-->" + list);
         System.out.println("mybatis添加数据到数据库中");
         return "success";
     }

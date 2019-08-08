@@ -1,27 +1,28 @@
-
-<%@ include file="/common/taglibs.jsp"%>
-<%@ include file="/common/header_eoms_form.jsp"%>
+<%@ include file="/common/taglibs.jsp" %>
+<%@ include file="/common/header_eoms_form.jsp" %>
 <html>
 <head>
-<title>
-ÅúÁ¿µ¼Èë
-</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
+    <title>
+        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    </title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
 </head>
 <body>
-<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0" background="<%=request.getContextPath()%>/template/img/bg001.gif">
-   <tr>
-      <td width="100%" height="100%" align="center"><table width="743" height="440" background="<%=request.getContextPath()%>/images/bg001.jpg">
-        <tr>
-           <td align="center">
-              <font style="font-size:14px;color:#CC0000;"><strong>Êý¾ÝÈë¿âÊ§°Ü£¡</strong></font>
-	   </td>
-	</tr>
-      </td>
-   </tr>
-</table>
+<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0"
+       background="<%=request.getContextPath()%>/template/img/bg001.gif">
+    <tr>
+        <td width="100%" height="100%" align="center">
+            <table width="743" height="440" background="<%=request.getContextPath()%>/images/bg001.jpg">
+                <tr>
+                    <td align="center">
+                        <font style="font-size:14px;color:#CC0000;"><strong>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½</strong></font>
+                    </td>
+                </tr>
+                </td>
+                </tr>
+            </table>
 </table>
 </body>
-<%@ include file="/common/footer_eoms.jsp"%>
+<%@ include file="/common/footer_eoms.jsp" %>
 
 </html>

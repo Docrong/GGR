@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -85,26 +85,26 @@ import org.xml.sax.*;
  *
  * <LI> Character encodings for XML documents are correctly supported: <UL>
  *
- *	<LI> The encodings defined in the RFCs for MIME content types
- *	(2046 for general MIME, and 2376 for XML in particular), are
- *	supported, handling <em>charset=...</em> attributes and accepting
- *	content types which are known to be safe for use with XML;
+ * <LI> The encodings defined in the RFCs for MIME content types
+ * (2046 for general MIME, and 2376 for XML in particular), are
+ * supported, handling <em>charset=...</em> attributes and accepting
+ * content types which are known to be safe for use with XML;
  *
- *	<LI> The character encoding autodetection algorithm identified
- *	in the XML specification is used, and leverages all of
- *	the JDK 1.1 (and later) character encoding support.
+ * <LI> The character encoding autodetection algorithm identified
+ * in the XML specification is used, and leverages all of
+ * the JDK 1.1 (and later) character encoding support.
  *
- *	<LI> The use of MIME typing may optionally be disabled, forcing the
- *	use of autodetection, to support web servers which don't correctly
- *	report MIME types for XML.  For example, they may report text that
- *	is encoded in EUC-JP as being US-ASCII text, leading to fatal
- *	errors during parsing.
+ * <LI> The use of MIME typing may optionally be disabled, forcing the
+ * use of autodetection, to support web servers which don't correctly
+ * report MIME types for XML.  For example, they may report text that
+ * is encoded in EUC-JP as being US-ASCII text, leading to fatal
+ * errors during parsing.
  *
- *	<LI> The InputSource objects returned by this class always
- *	have a <code>java.io.Reader</code> available as the "character
- *	stream" property.
+ * <LI> The InputSource objects returned by this class always
+ * have a <code>java.io.Reader</code> available as the "character
+ * stream" property.
  *
- *	</UL>
+ * </UL>
  *
  * <LI> Catalog entries can map public identifiers to Java resources or
  * to local URLs.  These are used to reduce network dependencies and loads,
@@ -128,16 +128,15 @@ import org.xml.sax.*;
  * @author Rajiv Mordani
  * @version $Revision: 1.1.1.1 $
  */
-public class Resolver implements EntityResolver
-{
-    private boolean		ignoringMIME;
+public class Resolver implements EntityResolver {
+    private boolean ignoringMIME;
 
     // table mapping public IDs to (local) URIs
-    private Hashtable		id2uri;
+    private Hashtable id2uri;
 
     // tables mapping public IDs to resources and classloaders
-    private Hashtable		id2resource;
-    private Hashtable		id2loader;
+    private Hashtable id2resource;
+    private Hashtable id2loader;
 
     //
     // table of MIME content types (less attributes!) known
@@ -146,18 +145,21 @@ public class Resolver implements EntityResolver
     // not the subtle stuff ("text/html") that might actually
     // be (or become) safe.
     //
-    private static final String types [] = {
-	"application/xml",
-	"text/xml",
-	"text/plain",
-	"text/html",			// commonly mis-inferred
-	"application/x-netcdf",		// this is often illegal XML
-	"content/unknown"
+    private static final String types[] = {
+            "application/xml",
+            "text/xml",
+            "text/plain",
+            "text/html",            // commonly mis-inferred
+            "application/x-netcdf",        // this is often illegal XML
+            "content/unknown"
     };
 
-    /** Constructs a resolver. */
-    public			Resolver () { }
-    
+    /**
+     * Constructs a resolver.
+     */
+    public Resolver() {
+    }
+
     /**
      * Returns an input source, using the MIME type information and URL
      * scheme to statically determine the correct character encoding if
@@ -181,129 +183,126 @@ public class Resolver implements EntityResolver
      * relative URLs would refer to other documents in that bundle.
      *
      * @param contentType The MIME content type for the source for which
-     *	an InputSource is desired, such as <em>text/xml;charset=utf-8</em>.
-     * @param stream The input byte stream for the input source.
-     * @param checkType If true, this verifies that the content type is known
-     *	to support XML documents, such as <em>application/xml</em>.
-     * @param scheme Unless this is "file", unspecified MIME types
-     *	default to US-ASCII.  Files are always autodetected since most
-     *	file systems discard character encoding information.
+     *                    an InputSource is desired, such as <em>text/xml;charset=utf-8</em>.
+     * @param stream      The input byte stream for the input source.
+     * @param checkType   If true, this verifies that the content type is known
+     *                    to support XML documents, such as <em>application/xml</em>.
+     * @param scheme      Unless this is "file", unspecified MIME types
+     *                    default to US-ASCII.  Files are always autodetected since most
+     *                    file systems discard character encoding information.
      */
-    public static InputSource createInputSource (
-	String		contentType,
-	InputStream	stream,
-	boolean		checkType,
-	String		scheme
-    ) throws IOException
-    {
-        InputSource     retval;
-	String		charset = null;
-	    
-	if (contentType != null) {
-	    int		index;
+    public static InputSource createInputSource(
+            String contentType,
+            InputStream stream,
+            boolean checkType,
+            String scheme
+    ) throws IOException {
+        InputSource retval;
+        String charset = null;
 
-	    contentType = contentType.toLowerCase ();
-	    index = contentType.indexOf (';');
-	    if (index != -1) {
-		String	attributes;
+        if (contentType != null) {
+            int index;
 
-		attributes = contentType.substring (index + 1);
-		contentType = contentType.substring (0, index);
+            contentType = contentType.toLowerCase();
+            index = contentType.indexOf(';');
+            if (index != -1) {
+                String attributes;
 
-		// use "charset=..." if it's available
-		index = attributes.indexOf ("charset");
-		if (index != -1) {
-		    attributes = attributes.substring (index + 7);
-		    // strip out subsequent attributes
-		    if ((index = attributes.indexOf (';')) != -1)
-			attributes = attributes.substring (0, index);
-		    // find start of value
-		    if ((index = attributes.indexOf ('=')) != -1) {
-			attributes = attributes.substring (index + 1);
-			// strip out rfc822 comments
-			if ((index = attributes.indexOf ('(')) != -1)
-			    attributes = attributes.substring (0, index);
-			// double quotes are optional
-			if ((index = attributes.indexOf ('"')) != -1) {
-			    attributes = attributes.substring (index + 1);
-			    attributes = attributes.substring (0,
-				    attributes.indexOf ('"'));
-			}
-			charset = attributes.trim ();
-			// XXX "\;", "\)" etc were mishandled above
-		    }
-		}
-	    }
+                attributes = contentType.substring(index + 1);
+                contentType = contentType.substring(0, index);
 
-	    //
-	    // Check MIME type.
-	    //
-	    if (checkType) {
-		boolean isOK = false;
-		for (int i = 0; i < types.length; i++)
-		    if (types [i].equals (contentType)) {
-			isOK = true;
-			break;
-		    }
-		if (!isOK)
-		    throw new IOException ("Not XML: " + contentType);
-	    }
+                // use "charset=..." if it's available
+                index = attributes.indexOf("charset");
+                if (index != -1) {
+                    attributes = attributes.substring(index + 7);
+                    // strip out subsequent attributes
+                    if ((index = attributes.indexOf(';')) != -1)
+                        attributes = attributes.substring(0, index);
+                    // find start of value
+                    if ((index = attributes.indexOf('=')) != -1) {
+                        attributes = attributes.substring(index + 1);
+                        // strip out rfc822 comments
+                        if ((index = attributes.indexOf('(')) != -1)
+                            attributes = attributes.substring(0, index);
+                        // double quotes are optional
+                        if ((index = attributes.indexOf('"')) != -1) {
+                            attributes = attributes.substring(index + 1);
+                            attributes = attributes.substring(0,
+                                    attributes.indexOf('"'));
+                        }
+                        charset = attributes.trim();
+                        // XXX "\;", "\)" etc were mishandled above
+                    }
+                }
+            }
 
-	    //
-	    // "text/*" MIME types have hard-wired character set
-	    // defaults, as specified in the RFCs.  For XML, we
-	    // ignore the system "file.encoding" property since
-	    // autodetection is more correct.
-	    //
-	    if (charset == null) {
-		contentType = contentType.trim ();
-		if (contentType.startsWith ("text/")) {
-		    if (!"file".equalsIgnoreCase (scheme))
-			charset = "US-ASCII";
-		}
-		// "application/*" has no default
-	    }
-	}
+            //
+            // Check MIME type.
+            //
+            if (checkType) {
+                boolean isOK = false;
+                for (int i = 0; i < types.length; i++)
+                    if (types[i].equals(contentType)) {
+                        isOK = true;
+                        break;
+                    }
+                if (!isOK)
+                    throw new IOException("Not XML: " + contentType);
+            }
 
-	retval = new InputSource (XmlReader.createReader (stream, charset));
-	retval.setByteStream (stream);
-	retval.setEncoding (charset);
-	return retval;
+            //
+            // "text/*" MIME types have hard-wired character set
+            // defaults, as specified in the RFCs.  For XML, we
+            // ignore the system "file.encoding" property since
+            // autodetection is more correct.
+            //
+            if (charset == null) {
+                contentType = contentType.trim();
+                if (contentType.startsWith("text/")) {
+                    if (!"file".equalsIgnoreCase(scheme))
+                        charset = "US-ASCII";
+                }
+                // "application/*" has no default
+            }
+        }
+
+        retval = new InputSource(XmlReader.createReader(stream, charset));
+        retval.setByteStream(stream);
+        retval.setEncoding(charset);
+        return retval;
     }
 
 
     /**
      * Creates an input source from a given URI.
      *
-     * @param uri the URI (system ID) for the entity
+     * @param uri       the URI (system ID) for the entity
      * @param checkType if true, the MIME content type for the entity
-     *	is checked for document type and character set encoding.
+     *                  is checked for document type and character set encoding.
      */
-    static public InputSource createInputSource (URL uri, boolean checkType)
-    throws IOException
-    {
-	URLConnection	conn = uri.openConnection ();
-	if (conn instanceof HttpURLConnection) {
-	    int status = ((HttpURLConnection)conn).getResponseCode ();
-	    if ((status >= 400 && status <= 417) ||
-		(status >=500 && status <=505))
-	    {
-	   	throw new IOException ("Error in opening uri " + uri + 
-					"status code=" + status); 
-	    }
-	}
-	InputSource	retval;
-	
-	if (checkType) {
-	    String	contentType = conn.getContentType ();
-	    retval = createInputSource (contentType, conn.getInputStream (),
-		    false, uri.getProtocol ());
-	} else {
-	    retval = new InputSource (
-		    XmlReader.createReader (conn.getInputStream ()));
-	}
-	retval.setSystemId (conn.getURL ().toString ());
-	return retval;
+    static public InputSource createInputSource(URL uri, boolean checkType)
+            throws IOException {
+        URLConnection conn = uri.openConnection();
+        if (conn instanceof HttpURLConnection) {
+            int status = ((HttpURLConnection) conn).getResponseCode();
+            if ((status >= 400 && status <= 417) ||
+                    (status >= 500 && status <= 505)) {
+                throw new IOException("Error in opening uri " + uri +
+                        "status code=" + status);
+            }
+        }
+        InputSource retval;
+
+        if (checkType) {
+            String contentType = conn.getContentType();
+            retval = createInputSource(contentType, conn.getInputStream(),
+                    false, uri.getProtocol());
+        } else {
+            retval = new InputSource(
+                    XmlReader.createReader(conn.getInputStream()));
+        }
+        retval.setSystemId(conn.getURL().toString());
+        return retval;
     }
 
 
@@ -313,27 +312,26 @@ public class Resolver implements EntityResolver
      *
      * @param uri the URI (system ID) for the entity
      */
-    static public InputSource createInputSource (File file)
-    throws IOException
-    {
-	InputSource	retval;
-	String		path;
-	
-	retval = new InputSource (
-		    XmlReader.createReader (new FileInputStream (file)));
+    static public InputSource createInputSource(File file)
+            throws IOException {
+        InputSource retval;
+        String path;
 
-	// On JDK 1.2 and later, simplify this:
-	//	"path = file.toURL ().toString ()".
-	path = file.getAbsolutePath ();
-	if (File.separatorChar != '/')
-	    path = path.replace (File.separatorChar, '/');
-	if (!path.startsWith ("/"))
-	    path = "/" + path;
-	if (!path.endsWith ("/") && file.isDirectory ())
-	    path = path + "/";
+        retval = new InputSource(
+                XmlReader.createReader(new FileInputStream(file)));
 
-	retval.setSystemId ("file:" + path);
-	return retval;
+        // On JDK 1.2 and later, simplify this:
+        //	"path = file.toURL ().toString ()".
+        path = file.getAbsolutePath();
+        if (File.separatorChar != '/')
+            path = path.replace(File.separatorChar, '/');
+        if (!path.startsWith("/"))
+            path = "/" + path;
+        if (!path.endsWith("/") && file.isDirectory())
+            path = path + "/";
+
+        retval.setSystemId("file:" + path);
+        return retval;
     }
 
 
@@ -351,49 +349,48 @@ public class Resolver implements EntityResolver
      * encoding used by this entity.  No MIME type checking is done.
      *
      * @param name Used to find alternate copies of the entity, when
-     *	this value is non-null; this is the XML "public ID".
-     * @param uri Used when no alternate copy of the entity is found;
-     *	this is the XML "system ID", normally a URI.
+     *             this value is non-null; this is the XML "public ID".
+     * @param uri  Used when no alternate copy of the entity is found;
+     *             this is the XML "system ID", normally a URI.
      */
-    public InputSource 	resolveEntity (String name, String uri)
-    throws IOException, SAXException
-    {    	    
-	InputSource     retval;        
-	String		mappedURI = name2uri (name);
-	InputStream	stream;
+    public InputSource resolveEntity(String name, String uri)
+            throws IOException, SAXException {
+        InputSource retval;
+        String mappedURI = name2uri(name);
+        InputStream stream;
 
-	// prefer explicit URI mappings, then bundled resources...
-	if (mappedURI == null && (stream = mapResource (name)) != null) {
-	    uri = "java:resource:" + (String) id2resource.get (name);
-	    retval = new InputSource (XmlReader.createReader (stream));
+        // prefer explicit URI mappings, then bundled resources...
+        if (mappedURI == null && (stream = mapResource(name)) != null) {
+            uri = "java:resource:" + (String) id2resource.get(name);
+            retval = new InputSource(XmlReader.createReader(stream));
 
-	// ...and treat all URIs the same (as URLs for now). 
-	} else {
-	    URL			url;
-	    URLConnection	conn;
-	    
-	    if (mappedURI != null)
-		uri = mappedURI;
-	    else if (uri == null)
-		return null;
+            // ...and treat all URIs the same (as URLs for now).
+        } else {
+            URL url;
+            URLConnection conn;
 
-	    url = new URL (uri);
-	    conn = url.openConnection ();
-	    uri = conn.getURL ().toString ();
-	    // System.out.println ("++ URI: " + url);
-	    if (ignoringMIME)
-		retval = new InputSource (
-			XmlReader.createReader (conn.getInputStream ()));
-	    else {
-		String		contentType = conn.getContentType ();
-		retval = createInputSource (contentType,
-			conn.getInputStream (),
-			false, url.getProtocol ());
-	    }
-	}
-	retval.setSystemId (uri);
-	retval.setPublicId (name);
-	return retval;
+            if (mappedURI != null)
+                uri = mappedURI;
+            else if (uri == null)
+                return null;
+
+            url = new URL(uri);
+            conn = url.openConnection();
+            uri = conn.getURL().toString();
+            // System.out.println ("++ URI: " + url);
+            if (ignoringMIME)
+                retval = new InputSource(
+                        XmlReader.createReader(conn.getInputStream()));
+            else {
+                String contentType = conn.getContentType();
+                retval = createInputSource(contentType,
+                        conn.getInputStream(),
+                        false, url.getProtocol());
+            }
+        }
+        retval.setSystemId(uri);
+        retval.setPublicId(name);
+        return retval;
     }
 
 
@@ -402,8 +399,9 @@ public class Resolver implements EntityResolver
      * it returns, to work around bugs in how servers have reported the
      * documents' MIME types.
      */
-    public boolean isIgnoringMIME ()
-	{ return ignoringMIME; }
+    public boolean isIgnoringMIME() {
+        return ignoringMIME;
+    }
 
     /**
      * Tells the resolver whether to ignore MIME types in the documents it
@@ -415,60 +413,58 @@ public class Resolver implements EntityResolver
      * include text encoding declarations (as most should do), these server
      * bugs can be worked around by ignoring the MIME type entirely.
      */
-    public void setIgnoringMIME (boolean value)
-	{ ignoringMIME = value; }
+    public void setIgnoringMIME(boolean value) {
+        ignoringMIME = value;
+    }
 
 
     // maps the public ID to an alternate URI, if one is registered
-    private String name2uri (String publicId)
-    {
-	if (publicId == null || id2uri == null)
-	    return null;
-	return (String) id2uri.get (publicId);
+    private String name2uri(String publicId) {
+        if (publicId == null || id2uri == null)
+            return null;
+        return (String) id2uri.get(publicId);
     }
 
 
     /**
-     * Registers the given public ID as corresponding to a particular 
+     * Registers the given public ID as corresponding to a particular
      * URI, typically a local copy.  This URI will be used in preference
      * to ones provided as system IDs in XML entity declarations.  This
      * mechanism would most typically be used for Document Type Definitions
      * (DTDs), where the public IDs are formally managed and versioned.
      *
      * @param publicId The managed public ID being mapped
-     * @param uri The URI of the preferred copy of that entity
+     * @param uri      The URI of the preferred copy of that entity
      */
-    public void registerCatalogEntry (
-	String		publicId,
-	String		uri
-    )
-    {
-	if (id2uri == null)
-	    id2uri = new Hashtable (17);
-	id2uri.put (publicId, uri);
+    public void registerCatalogEntry(
+            String publicId,
+            String uri
+    ) {
+        if (id2uri == null)
+            id2uri = new Hashtable(17);
+        id2uri.put(publicId, uri);
     }
 
 
     // return the resource as a stream
-    private InputStream mapResource (String publicId)
-    {
-	// System.out.println ("++ PUBLIC: " + publicId);
-	if (publicId == null || id2resource == null)
-	    return null;
+    private InputStream mapResource(String publicId) {
+        // System.out.println ("++ PUBLIC: " + publicId);
+        if (publicId == null || id2resource == null)
+            return null;
 
-	String		resourceName = (String) id2resource.get (publicId);
-	ClassLoader	loader = null;
+        String resourceName = (String) id2resource.get(publicId);
+        ClassLoader loader = null;
 
-	if (resourceName == null)
-	    return null;
-	// System.out.println ("++ Resource: " + resourceName);
-	
-	if (id2loader != null)
-	    loader = (ClassLoader) id2loader.get (publicId);
-	// System.out.println ("++ Loader: " + loader);
-	if (loader == null)
-	    return ClassLoader.getSystemResourceAsStream (resourceName);
-	return loader.getResourceAsStream (resourceName);
+        if (resourceName == null)
+            return null;
+        // System.out.println ("++ Resource: " + resourceName);
+
+        if (id2loader != null)
+            loader = (ClassLoader) id2loader.get(publicId);
+        // System.out.println ("++ Loader: " + loader);
+        if (loader == null)
+            return ClassLoader.getSystemResourceAsStream(resourceName);
+        return loader.getResourceAsStream(resourceName);
     }
 
     /**
@@ -482,25 +478,24 @@ public class Resolver implements EntityResolver
      * <P> If a mapping to a URI has been provided, that mapping takes
      * precedence over this one.
      *
-     * @param publicId The managed public ID being mapped
+     * @param publicId     The managed public ID being mapped
      * @param resourceName The name of the Java resource
-     * @param loader The class loader holding the resource, or null if
-     *	it is a system resource.
+     * @param loader       The class loader holding the resource, or null if
+     *                     it is a system resource.
      */
-    public void registerCatalogEntry (
-	String		publicId,
-	String		resourceName,
-	ClassLoader	loader
-    )
-    {
-	if (id2resource == null)
-	    id2resource = new Hashtable (17);
-	id2resource.put (publicId, resourceName);
+    public void registerCatalogEntry(
+            String publicId,
+            String resourceName,
+            ClassLoader loader
+    ) {
+        if (id2resource == null)
+            id2resource = new Hashtable(17);
+        id2resource.put(publicId, resourceName);
 
-	if (loader != null) {
-	    if (id2loader == null)
-		id2loader = new Hashtable (17);
-	    id2loader.put (publicId, loader);
-	}
+        if (loader != null) {
+            if (id2loader == null)
+                id2loader = new Hashtable(17);
+            id2loader.put(publicId, loader);
+        }
     }
 }

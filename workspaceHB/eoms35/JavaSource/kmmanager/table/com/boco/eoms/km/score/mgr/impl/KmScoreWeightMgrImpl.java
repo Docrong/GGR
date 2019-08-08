@@ -17,54 +17,54 @@ import com.boco.eoms.km.score.dao.KmScoreWeightDao;
  * <p>
  * Fri Aug 21 09:06:28 CST 2009
  * </p>
- * 
+ *
  * @author me
  * @version 1.0
- * 
  */
 public class KmScoreWeightMgrImpl implements KmScoreWeightMgr {
- 
-	private KmScoreWeightDao  kmScoreWeightDao;
- 	
-	public KmScoreWeightDao getKmScoreWeightDao() {
-		return this.kmScoreWeightDao;
-	}
- 	
-	public void setKmScoreWeightDao(KmScoreWeightDao kmScoreWeightDao) {
-		this.kmScoreWeightDao = kmScoreWeightDao;
-	}
- 	
+
+    private KmScoreWeightDao kmScoreWeightDao;
+
+    public KmScoreWeightDao getKmScoreWeightDao() {
+        return this.kmScoreWeightDao;
+    }
+
+    public void setKmScoreWeightDao(KmScoreWeightDao kmScoreWeightDao) {
+        this.kmScoreWeightDao = kmScoreWeightDao;
+    }
+
     public List getKmScoreWeights() {
-    	return kmScoreWeightDao.getKmScoreWeights();
+        return kmScoreWeightDao.getKmScoreWeights();
     }
-    
+
     public KmScoreWeight getKmScoreWeight(final String id) {
-    	return kmScoreWeightDao.getKmScoreWeight(id);
+        return kmScoreWeightDao.getKmScoreWeight(id);
     }
-    
+
     public void saveKmScoreWeight(KmScoreWeight kmScoreWeight) {
-    	kmScoreWeightDao.saveKmScoreWeight(kmScoreWeight);
+        kmScoreWeightDao.saveKmScoreWeight(kmScoreWeight);
     }
-    
+
     public void removeKmScoreWeight(final String id) {
-    	kmScoreWeightDao.removeKmScoreWeight(id);
+        kmScoreWeightDao.removeKmScoreWeight(id);
     }
-    
+
     public Map getKmScoreWeights(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmScoreWeightDao.getKmScoreWeights(curPage, pageSize, whereStr);
-	}
-    public List getNextLevelKmScoreWeights(final String nodeId,final Integer nodeIdLength) {
-    	return kmScoreWeightDao.getNextLevelKmScoreWeights(nodeId, nodeIdLength);
+                                 final String whereStr) {
+        return kmScoreWeightDao.getKmScoreWeights(curPage, pageSize, whereStr);
     }
 
-	public KmScoreWeight getKmScoreWeightByNodeId(String nodeId) {
-		// TODO Auto-generated method stub
-		return kmScoreWeightDao.getKmScoreWeightByNodeId(nodeId);
-	}
+    public List getNextLevelKmScoreWeights(final String nodeId, final Integer nodeIdLength) {
+        return kmScoreWeightDao.getNextLevelKmScoreWeights(nodeId, nodeIdLength);
+    }
 
-	public void removeKmScoreWeightByNodeId(String nodeId) {
-		kmScoreWeightDao.removeKmScoreWeightByNodeId(nodeId);
-	}
+    public KmScoreWeight getKmScoreWeightByNodeId(String nodeId) {
+        // TODO Auto-generated method stub
+        return kmScoreWeightDao.getKmScoreWeightByNodeId(nodeId);
+    }
+
+    public void removeKmScoreWeightByNodeId(String nodeId) {
+        kmScoreWeightDao.removeKmScoreWeightByNodeId(nodeId);
+    }
 
 }

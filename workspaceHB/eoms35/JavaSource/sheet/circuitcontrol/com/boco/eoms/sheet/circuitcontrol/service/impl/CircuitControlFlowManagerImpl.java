@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.circuitcontrol.service.ICircuitControlFlowManager;
  * <p>
  * Sun Sep 29 16:51:15 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CircuitControlFlowManagerImpl extends BusinessFlowServiceImpl implements ICircuitControlFlowManager {
- 
- }
+
+public class CircuitControlFlowManagerImpl extends BusinessFlowServiceImpl implements ICircuitControlFlowManager {
+
+}

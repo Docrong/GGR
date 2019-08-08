@@ -26,7 +26,7 @@ import java.sql.Statement;
  * To change this template use File | Settings | File Templates.
  */
 public class ReportTree {
-    public static final String ALL_TEMPLET_ID="-1000";
+    public static final String ALL_TEMPLET_ID = "-1000";
     private Document templetDoc = null;
     private Connection conn = ConnectionPool.getInstance().getConnection();
 
@@ -38,24 +38,24 @@ public class ReportTree {
         }
     }
 
-    public String getSchemeTreeXml(String states,String allExp) {
+    public String getSchemeTreeXml(String states, String allExp) {
 //       Node rootNode=templetDoc.getFirstChild();  //root
-        String xpath=".";
-        xpath= "//node";
+        String xpath = ".";
+        xpath = "//node";
         NodeList allLeafNode = null;
         try {
-            allLeafNode = XPathAPI.selectNodeList(templetDoc,xpath);
+            allLeafNode = XPathAPI.selectNodeList(templetDoc, xpath);
         } catch (TransformerException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         appendScheme(allLeafNode);
-        Element root=(Element)templetDoc.getFirstChild();
-        root.setAttribute("states",states);
-        root.setAttribute("allExp",allExp);
+        Element root = (Element) templetDoc.getFirstChild();
+        root.setAttribute("states", states);
+        root.setAttribute("allExp", allExp);
         return XmlUtil.toString(templetDoc.getFirstChild());
     }
 
-    public String getReportTopicXml(String states,String allExp) {
+    public String getReportTopicXml(String states, String allExp) {
 //       Node rootNode=templetDoc.getFirstChild();  //root
 //        String xpath=".";
 //        xpath= "//node";
@@ -65,29 +65,31 @@ public class ReportTree {
 //        } catch (TransformerException e) {
 //            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
 //        }
-        Element root=(Element)templetDoc.getFirstChild();
-        root.setAttribute("states",states);
-        root.setAttribute("allExp",allExp);
-        root.setAttribute("treeImageBase","../images");
+        Element root = (Element) templetDoc.getFirstChild();
+        root.setAttribute("states", states);
+        root.setAttribute("allExp", allExp);
+        root.setAttribute("treeImageBase", "../images");
         return XmlUtil.toString(templetDoc.getFirstChild());
     }
-        public String getReportcXml(String states,String allExp) {
-       Node rootNode=templetDoc.getFirstChild();  //root
-        String xpath=".";
-        xpath= "//node";
+
+    public String getReportcXml(String states, String allExp) {
+        Node rootNode = templetDoc.getFirstChild();  //root
+        String xpath = ".";
+        xpath = "//node";
         NodeList allLeafNode = null;
         try {
-            allLeafNode = XPathAPI.selectNodeList(templetDoc,xpath);
+            allLeafNode = XPathAPI.selectNodeList(templetDoc, xpath);
         } catch (TransformerException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         appendReport(allLeafNode);
-        Element root=(Element)templetDoc.getFirstChild();
-        root.setAttribute("states",states);
-        root.setAttribute("allExp",allExp);
-        root.setAttribute("treeImageBase","../images");
+        Element root = (Element) templetDoc.getFirstChild();
+        root.setAttribute("states", states);
+        root.setAttribute("allExp", allExp);
+        root.setAttribute("treeImageBase", "../images");
         return XmlUtil.toString(templetDoc.getFirstChild());
     }
+
     void appendScheme(NodeList allLeafNode) {
         if (allLeafNode == null || allLeafNode.getLength() <= 0) return;
         String sql = "select topic_id, file_mgr_scheme_id ,title from taw_file_mgr_scheme order by topic_id";
@@ -157,13 +159,13 @@ public class ReportTree {
                 }
                 if (leafNode != null) {
                     Element ele = templetDoc.createElement("node");
-                    ele.setAttribute("appType","dept");
+                    ele.setAttribute("appType", "dept");
                     ele.setAttribute("dept_id", rs.getString("report_id"));
-                    ele.setAttribute("ID", "report"+rs.getString("report_id"));
+                    ele.setAttribute("ID", "report" + rs.getString("report_id"));
                     ele.setAttribute("order", order + "");
                     ele.setAttribute("nodeType", "leaf");
                     ele.setAttribute("valueType", "report");
-                    ele.setAttribute("name", rs.getString("report_name")==null?"":rs.getString("report_name").trim());
+                    ele.setAttribute("name", rs.getString("report_name") == null ? "" : rs.getString("report_name").trim());
                     leafNode.appendChild(ele);
                     ((Element) leafNode).setAttribute("nodeType", "node");
                 }

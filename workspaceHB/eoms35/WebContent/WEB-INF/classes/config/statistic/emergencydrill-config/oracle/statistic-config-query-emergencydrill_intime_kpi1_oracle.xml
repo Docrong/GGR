@@ -1,411 +1,414 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id></est-module-id>
+    <title>kpi统计</title>
+    <est-module-id></est-module-id>
 
-	
-	<!--******************************************************************
+
+    <!--******************************************************************
 ********    按(部门)统计 (受理部门)  ***************************************************
 ******************************************************************* -->
-	<kpi-define><!-- 可重复 -->
-		<name>intimeByRevDept</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>intimeByRevDept</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param page-name="revDeptId" markflg="true"/>
-		
-		<summary-define>
-			<id>s1</id><!--受理部门-->
-			<sequence>1</sequence>
-			<column>link.operatedeptid</column><!-- 汇总字段 -->
-			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-		</summary-define>
-		
-		<stat-detail-vo>com.boco.eoms.commons.statistic.emergencydrill.vo.EmergencydrillDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="revDeptId" markflg="true"/>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from><!-- 不可为空 -->
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93 
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operatedeptid in (@revDeptId@) 
-				and link.operatedeptid is not null
-		    </where><!-- 可为空 -->
+        <summary-define>
+            <id>s1</id><!--受理部门-->
+            <sequence>1</sequence>
+            <column>link.operatedeptid</column><!-- 汇总字段 -->
+            <id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+        </summary-define>
 
-			<field-define>
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.emergencydrill.vo.EmergencydrillDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-				<list-hsql>
-				    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime 
-					from emergencydrill_main main,emergencydrill_link link 
-					where main.id=link.mainid 
-					and main.status=1 
-					and link.operatetype=93 
-				    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				    and link.operatedeptid='@s1@'   order by main.sendtime desc
-				</list-hsql>
-				
-				<list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
-			</field-define>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from><!-- 不可为空 -->
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operatedeptid in (@revDeptId@)
+                and link.operatedeptid is not null
+            </where><!-- 可为空 -->
 
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from>
-			
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93 
-			    and link.operatetime&gt;main.maincompletetime
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operatedeptid in (@revDeptId@) 
-				and link.operatedeptid is not null
-			</where><!-- 可为空 -->
-			
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 超时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 				    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime 
- 				    from emergencydrill_main main,emergencydrill_link link 
-					where main.id=link.mainid 
-					and main.status=1 
-					and link.operatetype=93 
-					and link.operatetime&gt;main.maincompletetime
-					and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				    and link.operatedeptid='@s1@'    order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query3</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from>
-			
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93 
-			    and link.operatetime&lt;main.maincompletetime
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operatedeptid in (@revDeptId@) 
-				and link.operatedeptid is not null
-			</where><!-- 可为空 -->
-			
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 及时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 				    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime 
- 				    from emergencydrill_main main,emergencydrill_link link 
-					where main.id=link.mainid 
-					and main.status=1 
-					and link.operatetype=93 
-					and link.operatetime&lt;main.maincompletetime
-					and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				    and link.operatedeptid='@s1@'    order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-</kpi-define>
-	
-	<!--******************************************************************
+            <field-define>
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operatedeptid='@s1@' order by main.sendtime desc
+                </list-hsql>
+
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operatedeptid in (@revDeptId@)
+                and link.operatedeptid is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 超时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operatedeptid='@s1@' order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query3</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and link.operatetime&lt;main.maincompletetime
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operatedeptid in (@revDeptId@)
+                and link.operatedeptid is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 及时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operatedeptid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and link.operatetime&lt;main.maincompletetime
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operatedeptid='@s1@' order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+    </kpi-define>
+
+    <!--******************************************************************
 ********    按(人员)统计  ***************************************************
 ******************************************************************* -->
-	<kpi-define><!-- 可重复 -->
-		<name>intimeByRevUser</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>intimeByRevUser</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param page-name="revUserid" markflg="true"/>
-		
-		<summary-define>
-			<id>s1</id><!--受理人-->
-			<sequence>1</sequence>
-			<column>link.operateuserid</column><!-- 汇总字段 -->
-			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-		</summary-define>
-		
-		<stat-detail-vo>com.boco.eoms.commons.statistic.emergencydrill.vo.EmergencydrillDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="revUserid" markflg="true"/>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from><!-- 不可为空 -->
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operateuserid in (@revUserid@) 
-				and link.operateuserid is not null  
-			</where><!-- 可为空 -->
+        <summary-define>
+            <id>s1</id><!--受理人-->
+            <sequence>1</sequence>
+            <column>link.operateuserid</column><!-- 汇总字段 -->
+            <id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+        </summary-define>
 
-			<field-define>
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.emergencydrill.vo.EmergencydrillDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-				<list-hsql>
-				    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime 
-					from emergencydrill_main main,emergencydrill_link link 
-					where main.id=link.mainid 
-					and main.status=1 
-					and link.operatetype=93 
-				    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and link.operateuserid='@s1@'  order by main.sendtime desc
-				</list-hsql>
-				
-				<list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
-			</field-define>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from><!-- 不可为空 -->
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operateuserid in (@revUserid@)
+                and link.operateuserid is not null
+            </where><!-- 可为空 -->
 
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from>
-			
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93 
-			    and link.operatetime&gt;main.maincompletetime
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operateuserid in (@revUserid@) 
-				and link.operateuserid is not null
-			</where><!-- 可为空 -->
+            <field-define>
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
 
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 超时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 			        select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime 
- 			        from emergencydrill_main main,emergencydrill_link link  
-					where main.id=link.mainid 
-			    	and main.status=1 
-			    	and link.operatetype=93 
-			    	and link.operatetime&gt;main.maincompletetime
-					and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-					and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-					and link.operateuserid='@s1@'
-					and link.operateuserid is not null   order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query3</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from>
-			
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93 
-			    and link.operatetime&lt;main.maincompletetime
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operateuserid in (@revUserid@) 
-				and link.operateuserid is not null
-			</where><!-- 可为空 -->
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 及时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 			        select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime 
- 			        from emergencydrill_main main,emergencydrill_link link  
-					where main.id=link.mainid 
-			    	and main.status=1 
-			    	and link.operatetype=93 
-			    	and link.operatetime&lt;main.maincompletetime
-					and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-					and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-					and link.operateuserid='@s1@' 
-					and link.operateuserid is not null   order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operateuserid='@s1@' order by main.sendtime desc
+                </list-hsql>
 
-	</kpi-define>
-	
-		<!--******************************************************************
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operateuserid in (@revUserid@)
+                and link.operateuserid is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 超时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operateuserid='@s1@'
+                    and link.operateuserid is not null order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query3</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and link.operatetime&lt;main.maincompletetime
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operateuserid in (@revUserid@)
+                and link.operateuserid is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 及时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateuserid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and link.operatetime&lt;main.maincompletetime
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operateuserid='@s1@'
+                    and link.operateuserid is not null order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+
+    </kpi-define>
+
+    <!--******************************************************************
 ********    按(角色)统计  ***************************************************
 ******************************************************************* -->
-	<kpi-define><!-- 可重复 -->
-		<name>intimeByRevRole</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>intimeByRevRole</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param page-name="revRoleid" markflg="true"/>
-		
-		<summary-define>
-			<id>s1</id>
-			<sequence>1</sequence>
-			<column>link.operateroleid</column><!-- 汇总字段 -->
-			<id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-		</summary-define>
-		
-		<stat-detail-vo>com.boco.eoms.commons.statistic.emergencydrill.vo.EmergencydrillDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="revRoleid" markflg="true"/>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from><!-- 不可为空 -->
-			<where>
-		        main.id=link.mainid and main.status=1 and link.operatetype=93
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operateroleid in (@revRoleid@) 
-				and link.operateroleid is not null  
-			</where><!-- 可为空 -->
+        <summary-define>
+            <id>s1</id>
+            <sequence>1</sequence>
+            <column>link.operateroleid</column><!-- 汇总字段 -->
+            <id2name-service>statSubRoleId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
+        </summary-define>
 
-			<field-define>
-				<id>f1</id><!--完成工单数-->
-				<sequence>1</sequence>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.emergencydrill.vo.EmergencydrillDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-				<list-hsql>
-				    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime 
-					from emergencydrill_main main,emergencydrill_link link 
-					where main.id=link.mainid 
-					and main.status=1 
-					and link.operatetype=93 
-				    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and link.operateroleid='@s1@'  order by main.sendtime desc
-				</list-hsql>
-				
-				<list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
-			</field-define>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from><!-- 不可为空 -->
+            <where>
+                main.id=link.mainid and main.status=1 and link.operatetype=93
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operateroleid in (@revRoleid@)
+                and link.operateroleid is not null
+            </where><!-- 可为空 -->
 
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from>
-			
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93 
-			    and link.operatetime&gt;main.maincompletetime
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operateroleid in (@revRoleid@) 
-				and link.operateroleid is not null
-			</where><!-- 可为空 -->
+            <field-define>
+                <id>f1</id><!--完成工单数-->
+                <sequence>1</sequence>
 
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 超时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 			        select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime 
- 			        from emergencydrill_main main,emergencydrill_link link  
-					where main.id=link.mainid 
-					and  main.status=1 
-					and link.operatetype=93 
-					and link.operatetime&gt;main.maincompletetime
-					and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				    and link.operateroleid='@s1@'   order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query3</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>emergencydrill_main main,emergencydrill_link link</from>
-			
-			<where>
-			    main.id=link.mainid 
-			    and main.status=1 
-			    and link.operatetype=93 
-			    and link.operatetime&lt;main.maincompletetime
-				and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				and link.operateroleid in (@revRoleid@) 
-				and link.operateroleid is not null
-			</where><!-- 可为空 -->
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 及时工单数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct link.mainid)</stat-sql>
-				<list-hsql>
- 			        select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime 
- 			        from emergencydrill_main main,emergencydrill_link link  
-					where main.id=link.mainid 
-					and  main.status=1 
-					and link.operatetype=93 
-					and link.operatetime&lt;main.maincompletetime
-					and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') 
-				    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				    and link.operateroleid='@s1@'   order by main.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(distinct link.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operateroleid='@s1@' order by main.sendtime desc
+                </list-hsql>
 
-	</kpi-define>
-	
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and link.operatetime&gt;main.maincompletetime
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operateroleid in (@revRoleid@)
+                and link.operateroleid is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 超时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and link.operatetime&gt;main.maincompletetime
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operateroleid='@s1@' order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query3</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>emergencydrill_main main,emergencydrill_link link</from>
+
+            <where>
+                main.id=link.mainid
+                and main.status=1
+                and link.operatetype=93
+                and link.operatetime&lt;main.maincompletetime
+                and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                and link.operateroleid in (@revRoleid@)
+                and link.operateroleid is not null
+            </where><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 及时工单数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct link.mainid)</stat-sql>
+                <list-hsql>
+                    select distinct link.mainid,main.sheetid,main.title,main.senddeptid,link.operateroleid,main.sendtime
+                    from emergencydrill_main main,emergencydrill_link link
+                    where main.id=link.mainid
+                    and main.status=1
+                    and link.operatetype=93
+                    and link.operatetime&lt;main.maincompletetime
+                    and main.sendtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and main.sendtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    and link.operateroleid='@s1@' order by main.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct link.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+
+    </kpi-define>
+
 </KpiConfig>	

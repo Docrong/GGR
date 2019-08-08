@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -10,30 +10,30 @@
 
     <class
             name="com.boco.eoms.workbench.memo.model.TawWorkbenchMemoSendLog"
-            table="taw_workbench_memo_sendlog" 
+            table="taw_workbench_memo_sendlog"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
-		<property
-            name="memoId"
+        </id>
+        <property
+                name="memoId"
                 length="25"
                 not-null="false"
                 unique="true"
         >
         </property>
         <property
-            name="reciever"
+                name="reciever"
                 length="255"
                 not-null="false"
                 unique="true"
@@ -42,24 +42,24 @@
         </property>
 
         <property
-            name="sendmanner"
+                name="sendmanner"
                 length="255"
-                  not-null="false"
+                not-null="false"
                 unique="true"
         >
 
         </property>
 
         <property
-            name="sendtime"
+                name="sendtime"
                 length="255"
-                  not-null="false"
+                not-null="false"
                 unique="true"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

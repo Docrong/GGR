@@ -16,14 +16,13 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IPlannConfirmMainManager extends IMainService {
-	 public abstract List getNumber(String sendTimeStartDate,String sendTimeEndDate,String queryType) throws SheetException;
-	 
-	 public abstract Map getDetail(Integer curPage,Integer pageSize,String sendTimeStartDate,String sendTimeEndDate) throws SheetException;
- }
+
+public interface IPlannConfirmMainManager extends IMainService {
+    public abstract List getNumber(String sendTimeStartDate, String sendTimeEndDate, String queryType) throws SheetException;
+
+    public abstract Map getDetail(Integer curPage, Integer pageSize, String sendTimeStartDate, String sendTimeEndDate) throws SheetException;
+}

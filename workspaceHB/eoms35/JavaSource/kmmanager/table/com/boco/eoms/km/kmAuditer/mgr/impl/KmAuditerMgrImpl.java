@@ -26,56 +26,55 @@ import com.boco.eoms.km.servlet.context.RequestContext;
  * <p>
  * Wed Apr 29 15:46:36 CST 2009
  * </p>
- * 
+ *
  * @author 戴志刚
  * @version 1.0
- * 
  */
 public class KmAuditerMgrImpl implements KmAuditerMgr {
- 
-	private KmAuditerDao  kmAuditerDao;
- 	
-	public KmAuditerDao getKmAuditerDao() {
-		return this.kmAuditerDao;
-	}
- 	
-	public void setKmAuditerDao(KmAuditerDao kmAuditerDao) {
-		this.kmAuditerDao = kmAuditerDao;
-	}
- 	
+
+    private KmAuditerDao kmAuditerDao;
+
+    public KmAuditerDao getKmAuditerDao() {
+        return this.kmAuditerDao;
+    }
+
+    public void setKmAuditerDao(KmAuditerDao kmAuditerDao) {
+        this.kmAuditerDao = kmAuditerDao;
+    }
+
     public List getKmAuditers() {
-    	return kmAuditerDao.getKmAuditers();
+        return kmAuditerDao.getKmAuditers();
     }
-    
+
     public KmAuditer getKmAuditer(final String id) {
-    	return kmAuditerDao.getKmAuditer(id);
+        return kmAuditerDao.getKmAuditer(id);
     }
-    
+
     public void saveKmAuditer(KmAuditer kmAuditer) {
-    	kmAuditerDao.saveKmAuditer(kmAuditer);
+        kmAuditerDao.saveKmAuditer(kmAuditer);
     }
-    
+
     public void removeKmAuditer(final String id) {
-    	kmAuditerDao.removeKmAuditer(id);
+        kmAuditerDao.removeKmAuditer(id);
     }
-    
+
     public Map getKmAuditers(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmAuditerDao.getKmAuditers(curPage, pageSize, whereStr);
-	}
+                             final String whereStr) {
+        return kmAuditerDao.getKmAuditers(curPage, pageSize, whereStr);
+    }
 
-	/**
-	 * 根据知识条目的 THEME_ID 查询知识条目
-	 * 
-	 * @param THEME_ID 知识模型所属分类ID
-	 */
-	public KmAuditer getKmAuditerByTheme(String themeId) {
-	
-		return kmAuditerDao.getKmAuditerByTheme(themeId);
+    /**
+     * 根据知识条目的 THEME_ID 查询知识条目
+     *
+     * @param THEME_ID 知识模型所属分类ID
+     */
+    public KmAuditer getKmAuditerByTheme(String themeId) {
 
-	}
-    
+        return kmAuditerDao.getKmAuditerByTheme(themeId);
+
+    }
+
     public KmAuditer getKmAuditerByNodeid(final String nodeId) {
-    	return kmAuditerDao.getKmAuditerByNodeid(nodeId);
+        return kmAuditerDao.getKmAuditerByNodeid(nodeId);
     }
 }

@@ -54,12 +54,12 @@ public class TawRmPlanContentDaoHibernate extends BaseDaoHibernate implements IT
 
     /**
      * @see com.boco.eoms.duty.dao.TawRmPlanContentDao#saveTawRmPlanContent(TawRmPlanContent tawRmPlanContent)
-     */    
+     */
     public void saveTawRmPlanContent(final TawRmPlanContent tawRmPlanContent) {
         if ((tawRmPlanContent.getId() == null) || (tawRmPlanContent.getId().equals("")))
-			getHibernateTemplate().save(tawRmPlanContent);
-		else
-			getHibernateTemplate().saveOrUpdate(tawRmPlanContent);
+            getHibernateTemplate().save(tawRmPlanContent);
+        else
+            getHibernateTemplate().saveOrUpdate(tawRmPlanContent);
     }
 
     /**
@@ -68,46 +68,49 @@ public class TawRmPlanContentDaoHibernate extends BaseDaoHibernate implements IT
     public void removeTawRmPlanContent(final String id) {
         getHibernateTemplate().delete(getTawRmPlanContent(id));
     }
+
     /**
-     * @see com.boco.eoms.duty.dao.TawRmPlanContentDao#getTawRmPlanContents(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.duty.dao.TawRmPlanContentDao#getTawRmPlanContents(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawRmPlanContents(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawRmPlanContents(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawRmPlanContent
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawRmPlanContent";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawRmPlanContent";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							System.out.println("queryStr=============="+queryStr);
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                System.out.println("queryStr==============" + queryStr);
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmPlanContentDao#getTawRmPlanContents(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawRmPlanContents(final Integer curPage, final Integer pageSize) {
-			return this.getTawRmPlanContents(curPage,pageSize,null);
-		}
+        return this.getTawRmPlanContents(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.duty.dao.TawRmPlanContentDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawRmPlanContent obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawRmPlanContent obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

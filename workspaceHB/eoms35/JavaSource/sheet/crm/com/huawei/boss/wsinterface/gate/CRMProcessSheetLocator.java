@@ -1,6 +1,6 @@
 /**
  * CRMProcessSheetLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -28,11 +28,10 @@ public class CRMProcessSheetLocator extends org.apache.axis.client.Service imple
     }
 
     public com.huawei.boss.wsinterface.gate.CRMProcessSheetPortType getCRMProcessSheetHttpSoap12Endpoint() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(CRMProcessSheetHttpSoap12Endpoint_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getCRMProcessSheetHttpSoap12Endpoint(endpoint);
@@ -43,8 +42,7 @@ public class CRMProcessSheetLocator extends org.apache.axis.client.Service imple
             com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub _stub = new com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap12BindingStub(portAddress, this);
             _stub.setPortName(getCRMProcessSheetHttpSoap12EndpointWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -69,11 +67,10 @@ public class CRMProcessSheetLocator extends org.apache.axis.client.Service imple
     }
 
     public com.huawei.boss.wsinterface.gate.CRMProcessSheetPortType getCRMProcessSheetHttpSoap11Endpoint() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(CRMProcessSheetHttpSoap11Endpoint_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getCRMProcessSheetHttpSoap11Endpoint(endpoint);
@@ -84,8 +81,7 @@ public class CRMProcessSheetLocator extends org.apache.axis.client.Service imple
             com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub _stub = new com.huawei.boss.wsinterface.gate.CRMProcessSheetSoap11BindingStub(portAddress, this);
             _stub.setPortName(getCRMProcessSheetHttpSoap11EndpointWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -109,8 +105,7 @@ public class CRMProcessSheetLocator extends org.apache.axis.client.Service imple
                 _stub.setPortName(getCRMProcessSheetHttpSoap11EndpointWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -128,11 +123,9 @@ public class CRMProcessSheetLocator extends org.apache.axis.client.Service imple
         String inputPortName = portName.getLocalPart();
         if ("CRMProcessSheetHttpSoap12Endpoint".equals(inputPortName)) {
             return getCRMProcessSheetHttpSoap12Endpoint();
-        }
-        else if ("CRMProcessSheetHttpSoap11Endpoint".equals(inputPortName)) {
+        } else if ("CRMProcessSheetHttpSoap11Endpoint".equals(inputPortName)) {
             return getCRMProcessSheetHttpSoap11Endpoint();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;

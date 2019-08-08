@@ -13,75 +13,74 @@ import java.util.List;
  * <p>
  * Mar 27, 2007 11:15:27 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class FMExportHeaders {
 
-	// /**
-	// * 开始列
-	// */
-	// private Integer startCol;
-	//
-	// /**
-	// * 结束列
-	// */
-	// private Integer endCol;
+    // /**
+    // * 开始列
+    // */
+    // private Integer startCol;
+    //
+    // /**
+    // * 结束列
+    // */
+    // private Integer endCol;
 
-	/**
-	 * 开始行
-	 */
-	private Integer startRow;
+    /**
+     * 开始行
+     */
+    private Integer startRow;
 
-	/**
-	 * 结束行
-	 */
-	private Integer endRow;
+    /**
+     * 结束行
+     */
+    private Integer endRow;
 
-	/**
-	 * header列表
-	 */
-	private List header = new ArrayList();
+    /**
+     * header列表
+     */
+    private List header = new ArrayList();
 
-	// public Integer getEndCol() {
-	// return endCol;
-	// }
-	//
-	// public void setEndCol(Integer endCol) {
-	// this.endCol = endCol;
-	// }
-	// public Integer getStartCol() {
-	// return startCol;
-	// }
-	//
-	// public void setStartCol(Integer startCol) {
-	// this.startCol = startCol;
-	// }
+    // public Integer getEndCol() {
+    // return endCol;
+    // }
+    //
+    // public void setEndCol(Integer endCol) {
+    // this.endCol = endCol;
+    // }
+    // public Integer getStartCol() {
+    // return startCol;
+    // }
+    //
+    // public void setStartCol(Integer startCol) {
+    // this.startCol = startCol;
+    // }
 
-	public Integer getEndRow() {
-		return endRow;
-	}
+    public Integer getEndRow() {
+        return endRow;
+    }
 
-	public void setEndRow(Integer endRow) {
-		this.endRow = endRow;
-	}
+    public void setEndRow(Integer endRow) {
+        this.endRow = endRow;
+    }
 
-	public List getHeader() {
-		return header;
-	}
+    public List getHeader() {
+        return header;
+    }
 
-	public void setHeader(List header) {
-		this.header = header;
-	}
+    public void setHeader(List header) {
+        this.header = header;
+    }
 
-	public Integer getStartRow() {
-		return startRow;
-	}
+    public Integer getStartRow() {
+        return startRow;
+    }
 
-	public void setStartRow(Integer startRow) {
-		this.startRow = startRow;
-	}
+    public void setStartRow(Integer startRow) {
+        this.startRow = startRow;
+    }
 
 }

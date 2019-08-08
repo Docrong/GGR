@@ -52,12 +52,12 @@ public class TawSystemRoleTypeDaoHibernate extends BaseDaoHibernate implements T
 
     /**
      * @see com.boco.eoms.commons.system.role.dao.TawSystemRoleTypeDao#saveTawSystemRoleType(TawSystemRoleType tawSystemRoleType)
-     */    
+     */
     public void saveTawSystemRoleType(final TawSystemRoleType tawSystemRoleType) {
-        if (tawSystemRoleType.getRoletype_id()== new Long(0))
-			getHibernateTemplate().save(tawSystemRoleType);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSystemRoleType);
+        if (tawSystemRoleType.getRoletype_id() == new Long(0))
+            getHibernateTemplate().save(tawSystemRoleType);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSystemRoleType);
     }
 
     /**
@@ -67,32 +67,33 @@ public class TawSystemRoleTypeDaoHibernate extends BaseDaoHibernate implements T
         getHibernateTemplate().delete(getTawSystemRoleType(roletype_id));
     }
 
-    public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSystemRoleType
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSystemRoleType";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSystemRoleType";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSystemRoleTypes(final Integer curPage, final Integer pageSize) {
-			return this.getTawSystemRoleTypes(curPage,pageSize,null);
-		}
+        return this.getTawSystemRoleTypes(curPage, pageSize, null);
+    }
 
 }

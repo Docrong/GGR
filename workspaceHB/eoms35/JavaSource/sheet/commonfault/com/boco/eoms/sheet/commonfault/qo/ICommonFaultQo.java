@@ -12,11 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface ICommonFaultQo extends IWorkSheetQO {
-	  public abstract String getClauseSql(Map map);
+    public abstract String getClauseSql(Map map);
 
 }

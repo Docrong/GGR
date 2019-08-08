@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.equipmentsecurityresponse.service.IEquipmentSecurityR
  * <p>
  * Tue Apr 25 11:45:21 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class EquipmentSecurityResponseTaskManagerImpl extends TaskServiceImpl implements  IEquipmentSecurityResponseTaskManager {
- 
- }
+
+public class EquipmentSecurityResponseTaskManagerImpl extends TaskServiceImpl implements IEquipmentSecurityResponseTaskManager {
+
+}

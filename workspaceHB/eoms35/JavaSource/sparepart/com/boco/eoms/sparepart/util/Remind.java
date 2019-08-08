@@ -8,21 +8,22 @@ import com.boco.eoms.db.util.ConnectionPool;
  * <p>Description: </p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: BOCO</p>
+ *
  * @author HAO
  * @version 2.0
  */
 
 public class Remind
-      extends TawRemindBO{
+        extends TawRemindBO {
 
-    public Remind(){
+    public Remind() {
     }
 
-    public Remind(ConnectionPool ds){
+    public Remind(ConnectionPool ds) {
         super(ds);
     }
 
-    public Remind(ConnectionPool ds,String str){
-        super(ds,str);
+    public Remind(ConnectionPool ds, String str) {
+        super(ds, str);
     }
 }

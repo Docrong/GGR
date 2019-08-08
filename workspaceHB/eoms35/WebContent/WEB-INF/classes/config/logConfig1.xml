@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <log-configs modelId="aa1" modelName="AA1">
-	<log-config operId="1" operName="aa" operDesc="aa-desc发送到">
-        	<log-config operId="2" operName="bb" operDesc="bb-desc" />
-	        <log-config operId="3" operName="cc" operDesc="cc-desc" />
-	</log-config>
+    <log-config operId="1" operName="aa" operDesc="aa-desc发送到">
+        <log-config operId="2" operName="bb" operDesc="bb-desc"/>
+        <log-config operId="3" operName="cc" operDesc="cc-desc"/>
+    </log-config>
 </log-configs>

@@ -19,31 +19,31 @@ import com.boco.eoms.extra.supplierkpi.service.ITawSupplierkpiDictManager;
 
 public final class TawSupplierkpiDictAction extends BaseAction {
 
-	// AJAX方式进行搜索请求时的数据处理
-	public ActionForward xsearch(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    // AJAX方式进行搜索请求时的数据处理
+    public ActionForward xsearch(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-		String dictid = request.getParameter("dictId");
+        String dictid = request.getParameter("dictId");
 
-		ITawSupplierkpiDictManager mgr = (ITawSupplierkpiDictManager) getBean("ItawSupplierkpiDictManager");
-		List _objDictTypeList = new ArrayList();
-		_objDictTypeList = mgr.getDictSonsByDictId(dictid);
-		List itemList = new ArrayList();
+        ITawSupplierkpiDictManager mgr = (ITawSupplierkpiDictManager) getBean("ItawSupplierkpiDictManager");
+        List _objDictTypeList = new ArrayList();
+        _objDictTypeList = mgr.getDictSonsByDictId(dictid);
+        List itemList = new ArrayList();
 
-		for (Iterator rowIt = _objDictTypeList.iterator(); rowIt.hasNext();) {
-			TawSupplierkpiDict dictType = (TawSupplierkpiDict) rowIt.next();
-			TawCommonsUIListItem uiitem = new TawCommonsUIListItem();
-			uiitem.setItemId(String.valueOf(dictType.getId()));
-			uiitem.setText(dictType.getDictName());
-			uiitem.setValue(dictType.getDictId());
-			itemList.add(uiitem);
-		}
+        for (Iterator rowIt = _objDictTypeList.iterator(); rowIt.hasNext(); ) {
+            TawSupplierkpiDict dictType = (TawSupplierkpiDict) rowIt.next();
+            TawCommonsUIListItem uiitem = new TawCommonsUIListItem();
+            uiitem.setItemId(String.valueOf(dictType.getId()));
+            uiitem.setText(dictType.getDictName());
+            uiitem.setValue(dictType.getDictId());
+            itemList.add(uiitem);
+        }
 
-		response.setContentType("text/xml;charset=UTF-8");
+        response.setContentType("text/xml;charset=UTF-8");
 
-		// 返回JSON对象
-		response.getWriter().print(JSONUtil.list2JSON(itemList));
-		return null;
-	}
+        // 返回JSON对象
+        response.getWriter().print(JSONUtil.list2JSON(itemList));
+        return null;
+    }
 }

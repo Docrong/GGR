@@ -1,116 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
     <class name="com.boco.eoms.sheet.nbproducts.model.NBProducts"
-            table="NBProducts">
+           table="NBProducts">
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
-      <property
-            name="nbPName"
+        </id>
+        <property
+                name="nbPName"
         >
 
         </property>
 
         <property
-            name="businessDept"
+                name="businessDept"
         >
 
         </property>
 
         <property
-            name="businessSort"
+                name="businessSort"
         >
 
         </property>
 
         <property
-            name="recorder"
+                name="recorder"
         >
 
         </property>
 
         <property
-            name="recordTime"
+                name="recordTime"
         >
 
         </property>
 
         <property
-            name="recorderDept"
+                name="recorderDept"
         >
 
         </property>
 
         <property
-            name="recorderContact"
+                name="recorderContact"
         >
 
         </property>
 
         <property
-            name="keyword"
+                name="keyword"
         >
 
         </property>
 
         <property
-            name="nbPdescription"
+                name="nbPdescription"
         >
 
         </property>
 
         <property
-            name="remarks"
+                name="remarks"
         >
 
         </property>
 
         <property
-            name="node"
+                name="node"
         >
 
         </property>
 
         <property
-            name="deleted"
+                name="deleted"
         >
 
         </property>
-         <property
-            name="procode"
-        >
-        </property>
-         <property
-            name="code"
+        <property
+                name="procode"
         >
         </property>
         <property
-            name="sheetName"
+                name="code"
         >
         </property>
-        
-          <property
-            name="businessSortTwo"
+        <property
+                name="sheetName"
+        >
+        </property>
+
+        <property
+                name="businessSortTwo"
         >
 
         </property>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

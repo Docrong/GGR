@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="sms_log"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="applyId"
+                name="applyId"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -35,9 +35,9 @@
         >
 
         </property>
-        
+
         <property
-            name="buizid"
+                name="buizid"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -47,7 +47,7 @@
         </property>
 
         <property
-            name="content"
+                name="content"
                 length="500"
                 not-null="false"
                 unique="false"
@@ -56,7 +56,7 @@
         </property>
 
         <property
-            name="dispatchTime"
+                name="dispatchTime"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -66,7 +66,7 @@
         </property>
 
         <property
-            name="mobile"
+                name="mobile"
                 length="100"
                 not-null="false"
                 unique="false"
@@ -75,7 +75,7 @@
         </property>
 
         <property
-            name="receiverId"
+                name="receiverId"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -83,9 +83,9 @@
         >
 
         </property>
-        
+
         <property
-            name="isSendImediat"
+                name="isSendImediat"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -93,9 +93,9 @@
         >
 
         </property>
-        
+
         <property
-            name="serviceId"
+                name="serviceId"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -103,32 +103,32 @@
         >
 
         </property>
-        
+
         <property
-            name="regetData"
+                name="regetData"
                 length="10"
         >
 
         </property>
-        
+
         <property
-            name="msgType"
+                name="msgType"
                 length="5"
                 column="msg_type"
         >
 
         </property>
-        
-        
+
+
         <property
-            name="email"
+                name="email"
                 length="255"
         >
 
         </property>
-        
+
         <property
-            name="deleted"
+                name="deleted"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -136,9 +136,9 @@
         >
 
         </property>
-        
+
         <property
-            name="status"
+                name="status"
                 length="2"
                 not-null="false"
                 unique="false"
@@ -146,7 +146,7 @@
 
         </property>
         <property
-            name="reason"
+                name="reason"
                 length="500"
                 not-null="false"
                 unique="false"
@@ -154,7 +154,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

@@ -1,6 +1,6 @@
 /**
  * SheetStateSync3Locator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the IBM Web services WSDL2Java emitter.
  * cf130745.06 v111407041203
@@ -12,8 +12,8 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
 
     public SheetStateSync3Locator() {
         super(com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-           "http://service.eoms.chinamobile.com/SheetStateSync",
-           "SheetStateSync3"));
+                "http://service.eoms.chinamobile.com/SheetStateSync",
+                "SheetStateSync3"));
 
         context.setLocatorName("com.chinamobile.eoms.service.SheetStateSync3Locator");
     }
@@ -23,7 +23,7 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
         context.setLocatorName("com.chinamobile.eoms.service.SheetStateSync3Locator");
     }
 
-    // ÓÃÓÚ»ñÈ¡ sheetStateSync3Soap µÄ´úÀíÀà
+    // ï¿½ï¿½ï¿½Ú»ï¿½È¡ sheetStateSync3Soap ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½
     private final java.lang.String sheetStateSync3Soap_address = "http://localhost/SheetStateSync/SheetStateSync3.asmx";
 
     public java.lang.String getSheetStateSync3SoapAddress() {
@@ -33,8 +33,7 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
         String overriddingEndpoint = (String) context.getOverriddingEndpointURIs().get("SheetStateSync3Soap");
         if (overriddingEndpoint != null) {
             return overriddingEndpoint;
-        }
-        else {
+        } else {
             return sheetStateSync3Soap_address;
         }
     }
@@ -53,24 +52,23 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
     }
 
     public com.chinamobile.eoms.service.SheetStateSync3Soap getSheetStateSync3Soap() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(getSheetStateSync3SoapAddress());
-        }
-        catch (java.net.MalformedURLException e) {
-            return null; // ²»Ì«¿ÉÄÜ£¬ÒòÎª URL ÒÑÔÚ WSDL2Java ÖÐµÃµ½ÑéÖ¤
+        } catch (java.net.MalformedURLException e) {
+            return null; // ï¿½ï¿½Ì«ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Îª URL ï¿½ï¿½ï¿½ï¿½ WSDL2Java ï¿½ÐµÃµï¿½ï¿½ï¿½Ö¤
         }
         return getSheetStateSync3Soap(endpoint);
     }
 
     public com.chinamobile.eoms.service.SheetStateSync3Soap getSheetStateSync3Soap(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         com.chinamobile.eoms.service.SheetStateSync3Soap _stub =
-            (com.chinamobile.eoms.service.SheetStateSync3Soap) getStub(
-                sheetStateSync3SoapPortName,
-                (String) getPort2NamespaceMap().get(sheetStateSync3SoapPortName),
-                com.chinamobile.eoms.service.SheetStateSync3Soap.class,
-                "com.chinamobile.eoms.service.SheetStateSync3SoapStub",
-                portAddress.toString());
+                (com.chinamobile.eoms.service.SheetStateSync3Soap) getStub(
+                        sheetStateSync3SoapPortName,
+                        (String) getPort2NamespaceMap().get(sheetStateSync3SoapPortName),
+                        com.chinamobile.eoms.service.SheetStateSync3Soap.class,
+                        "com.chinamobile.eoms.service.SheetStateSync3SoapStub",
+                        portAddress.toString());
         if (_stub instanceof com.ibm.ws.webservices.engine.client.Stub) {
             ((com.ibm.ws.webservices.engine.client.Stub) _stub).setPortName(sheetStateSync3SoapWSDDPortName);
         }
@@ -87,11 +85,10 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
             if (com.chinamobile.eoms.service.SheetStateSync3Soap.class.isAssignableFrom(serviceEndpointInterface)) {
                 return getSheetStateSync3Soap();
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
-        throw new javax.xml.rpc.ServiceException("WSWS3273E: ´íÎó£º½Ó¿ÚÃ»ÓÐ´æ¸ùÊµÏÖ£º  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+        throw new javax.xml.rpc.ServiceException("WSWS3273E: ï¿½ï¿½ï¿½ó£º½Ó¿ï¿½Ã»ï¿½Ð´ï¿½ï¿½Êµï¿½Ö£ï¿½  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
     }
 
     /**
@@ -103,8 +100,7 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
         String inputPortName = portName.getLocalPart();
         if ("SheetStateSync3Soap".equals(inputPortName)) {
             return getSheetStateSync3Soap();
-        }
-        else  {
+        } else {
             throw new javax.xml.rpc.ServiceException();
         }
     }
@@ -123,8 +119,8 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
         if (port2NamespaceMap == null) {
             port2NamespaceMap = new java.util.HashMap();
             port2NamespaceMap.put(
-               "SheetStateSync3Soap",
-               "http://schemas.xmlsoap.org/wsdl/soap/");
+                    "SheetStateSync3Soap",
+                    "http://schemas.xmlsoap.org/wsdl/soap/");
         }
         return port2NamespaceMap;
     }
@@ -137,9 +133,9 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
             String serviceNamespace = getServiceName().getNamespaceURI();
             for (java.util.Iterator i = getPort2NamespaceMap().keySet().iterator(); i.hasNext(); ) {
                 ports.add(
-                    com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-                        serviceNamespace,
-                        (String) i.next()));
+                        com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
+                                serviceNamespace,
+                                (String) i.next()));
             }
         }
         return ports.iterator();
@@ -147,16 +143,15 @@ public class SheetStateSync3Locator extends com.ibm.ws.webservices.multiprotocol
 
     public javax.xml.rpc.Call[] getCalls(javax.xml.namespace.QName portName) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
-        if  (portName.getLocalPart().equals("SheetStateSync3Soap")) {
-            return new javax.xml.rpc.Call[] {
-                createCall(portName, "isAlive", "null"),
-                createCall(portName, "syncSheetState", "null"),
+        if (portName.getLocalPart().equals("SheetStateSync3Soap")) {
+            return new javax.xml.rpc.Call[]{
+                    createCall(portName, "isAlive", "null"),
+                    createCall(portName, "syncSheetState", "null"),
             };
-        }
-        else {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+        } else {
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
     }
 }

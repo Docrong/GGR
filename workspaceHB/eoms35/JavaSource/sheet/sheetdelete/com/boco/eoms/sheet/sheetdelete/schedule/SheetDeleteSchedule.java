@@ -9,8 +9,9 @@ import com.boco.eoms.sheet.interfaceBase.util.InterfaceJobStatic;
 import com.boco.eoms.sheet.sheetdelete.bo.WfSheetDeleteInfoBo;
 
 public class SheetDeleteSchedule implements Job {
-	private WfSheetDeleteInfoBo wfinfo = WfSheetDeleteInfoBo.getInstance();
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
+    private WfSheetDeleteInfoBo wfinfo = WfSheetDeleteInfoBo.getInstance();
+
+    public void execute(JobExecutionContext arg0) throws JobExecutionException {
 //屏蔽  by lyg
 //		boolean ifExceuteJob=InterfaceJobStatic.isIfExcuteJob();
 //		if (!ifExceuteJob) {
@@ -25,8 +26,8 @@ public class SheetDeleteSchedule implements Job {
 //			BocoLog.info(SheetDeleteSchedule.class, "Job is running over");
 //			InterfaceJobStatic.setIfExcuteJob(true);
 //		}
-	
 
-	}
+
+    }
 
 }

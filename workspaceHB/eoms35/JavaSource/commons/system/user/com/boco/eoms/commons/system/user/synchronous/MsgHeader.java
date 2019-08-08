@@ -1,13 +1,13 @@
 /**
  * MsgHeader.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
 package com.boco.eoms.commons.system.user.synchronous;
 
-public class MsgHeader  implements java.io.Serializable {
+public class MsgHeader implements java.io.Serializable {
     private java.lang.String SOURCE_SYSTEM_ID;
 
     private java.lang.String SOURCE_SYSTEM_NAME;
@@ -32,32 +32,32 @@ public class MsgHeader  implements java.io.Serializable {
     }
 
     public MsgHeader(
-           java.lang.String SOURCE_SYSTEM_ID,
-           java.lang.String SOURCE_SYSTEM_NAME,
-           java.lang.String TARGET_SYSTEM_ID,
-           java.lang.String TARGET_SYSTEM_NAME,
-           java.lang.String USER_ID,
-           java.lang.String USER_NAME,
-           java.util.Calendar SUBMIT_DATE,
-           java.math.BigDecimal PAGE_SIZE,
-           java.math.BigDecimal CURRENT_PAGE,
-           java.math.BigDecimal TOTAL_RECORD) {
-           this.SOURCE_SYSTEM_ID = SOURCE_SYSTEM_ID;
-           this.SOURCE_SYSTEM_NAME = SOURCE_SYSTEM_NAME;
-           this.TARGET_SYSTEM_ID = TARGET_SYSTEM_ID;
-           this.TARGET_SYSTEM_NAME = TARGET_SYSTEM_NAME;
-           this.USER_ID = USER_ID;
-           this.USER_NAME = USER_NAME;
-           this.SUBMIT_DATE = SUBMIT_DATE;
-           this.PAGE_SIZE = PAGE_SIZE;
-           this.CURRENT_PAGE = CURRENT_PAGE;
-           this.TOTAL_RECORD = TOTAL_RECORD;
+            java.lang.String SOURCE_SYSTEM_ID,
+            java.lang.String SOURCE_SYSTEM_NAME,
+            java.lang.String TARGET_SYSTEM_ID,
+            java.lang.String TARGET_SYSTEM_NAME,
+            java.lang.String USER_ID,
+            java.lang.String USER_NAME,
+            java.util.Calendar SUBMIT_DATE,
+            java.math.BigDecimal PAGE_SIZE,
+            java.math.BigDecimal CURRENT_PAGE,
+            java.math.BigDecimal TOTAL_RECORD) {
+        this.SOURCE_SYSTEM_ID = SOURCE_SYSTEM_ID;
+        this.SOURCE_SYSTEM_NAME = SOURCE_SYSTEM_NAME;
+        this.TARGET_SYSTEM_ID = TARGET_SYSTEM_ID;
+        this.TARGET_SYSTEM_NAME = TARGET_SYSTEM_NAME;
+        this.USER_ID = USER_ID;
+        this.USER_NAME = USER_NAME;
+        this.SUBMIT_DATE = SUBMIT_DATE;
+        this.PAGE_SIZE = PAGE_SIZE;
+        this.CURRENT_PAGE = CURRENT_PAGE;
+        this.TOTAL_RECORD = TOTAL_RECORD;
     }
 
 
     /**
      * Gets the SOURCE_SYSTEM_ID value for this MsgHeader.
-     * 
+     *
      * @return SOURCE_SYSTEM_ID
      */
     public java.lang.String getSOURCE_SYSTEM_ID() {
@@ -67,7 +67,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the SOURCE_SYSTEM_ID value for this MsgHeader.
-     * 
+     *
      * @param SOURCE_SYSTEM_ID
      */
     public void setSOURCE_SYSTEM_ID(java.lang.String SOURCE_SYSTEM_ID) {
@@ -77,7 +77,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the SOURCE_SYSTEM_NAME value for this MsgHeader.
-     * 
+     *
      * @return SOURCE_SYSTEM_NAME
      */
     public java.lang.String getSOURCE_SYSTEM_NAME() {
@@ -87,7 +87,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the SOURCE_SYSTEM_NAME value for this MsgHeader.
-     * 
+     *
      * @param SOURCE_SYSTEM_NAME
      */
     public void setSOURCE_SYSTEM_NAME(java.lang.String SOURCE_SYSTEM_NAME) {
@@ -97,7 +97,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the TARGET_SYSTEM_ID value for this MsgHeader.
-     * 
+     *
      * @return TARGET_SYSTEM_ID
      */
     public java.lang.String getTARGET_SYSTEM_ID() {
@@ -107,7 +107,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the TARGET_SYSTEM_ID value for this MsgHeader.
-     * 
+     *
      * @param TARGET_SYSTEM_ID
      */
     public void setTARGET_SYSTEM_ID(java.lang.String TARGET_SYSTEM_ID) {
@@ -117,7 +117,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the TARGET_SYSTEM_NAME value for this MsgHeader.
-     * 
+     *
      * @return TARGET_SYSTEM_NAME
      */
     public java.lang.String getTARGET_SYSTEM_NAME() {
@@ -127,7 +127,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the TARGET_SYSTEM_NAME value for this MsgHeader.
-     * 
+     *
      * @param TARGET_SYSTEM_NAME
      */
     public void setTARGET_SYSTEM_NAME(java.lang.String TARGET_SYSTEM_NAME) {
@@ -137,7 +137,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the USER_ID value for this MsgHeader.
-     * 
+     *
      * @return USER_ID
      */
     public java.lang.String getUSER_ID() {
@@ -147,7 +147,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the USER_ID value for this MsgHeader.
-     * 
+     *
      * @param USER_ID
      */
     public void setUSER_ID(java.lang.String USER_ID) {
@@ -157,7 +157,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the USER_NAME value for this MsgHeader.
-     * 
+     *
      * @return USER_NAME
      */
     public java.lang.String getUSER_NAME() {
@@ -167,7 +167,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the USER_NAME value for this MsgHeader.
-     * 
+     *
      * @param USER_NAME
      */
     public void setUSER_NAME(java.lang.String USER_NAME) {
@@ -177,7 +177,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the SUBMIT_DATE value for this MsgHeader.
-     * 
+     *
      * @return SUBMIT_DATE
      */
     public java.util.Calendar getSUBMIT_DATE() {
@@ -187,7 +187,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the SUBMIT_DATE value for this MsgHeader.
-     * 
+     *
      * @param SUBMIT_DATE
      */
     public void setSUBMIT_DATE(java.util.Calendar SUBMIT_DATE) {
@@ -197,7 +197,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the PAGE_SIZE value for this MsgHeader.
-     * 
+     *
      * @return PAGE_SIZE
      */
     public java.math.BigDecimal getPAGE_SIZE() {
@@ -207,7 +207,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the PAGE_SIZE value for this MsgHeader.
-     * 
+     *
      * @param PAGE_SIZE
      */
     public void setPAGE_SIZE(java.math.BigDecimal PAGE_SIZE) {
@@ -217,7 +217,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the CURRENT_PAGE value for this MsgHeader.
-     * 
+     *
      * @return CURRENT_PAGE
      */
     public java.math.BigDecimal getCURRENT_PAGE() {
@@ -227,7 +227,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the CURRENT_PAGE value for this MsgHeader.
-     * 
+     *
      * @param CURRENT_PAGE
      */
     public void setCURRENT_PAGE(java.math.BigDecimal CURRENT_PAGE) {
@@ -237,7 +237,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Gets the TOTAL_RECORD value for this MsgHeader.
-     * 
+     *
      * @return TOTAL_RECORD
      */
     public java.math.BigDecimal getTOTAL_RECORD() {
@@ -247,7 +247,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     /**
      * Sets the TOTAL_RECORD value for this MsgHeader.
-     * 
+     *
      * @param TOTAL_RECORD
      */
     public void setTOTAL_RECORD(java.math.BigDecimal TOTAL_RECORD) {
@@ -255,6 +255,7 @@ public class MsgHeader  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof MsgHeader)) return false;
         MsgHeader other = (MsgHeader) obj;
@@ -265,42 +266,43 @@ public class MsgHeader  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.SOURCE_SYSTEM_ID==null && other.getSOURCE_SYSTEM_ID()==null) || 
-             (this.SOURCE_SYSTEM_ID!=null &&
-              this.SOURCE_SYSTEM_ID.equals(other.getSOURCE_SYSTEM_ID()))) &&
-            ((this.SOURCE_SYSTEM_NAME==null && other.getSOURCE_SYSTEM_NAME()==null) || 
-             (this.SOURCE_SYSTEM_NAME!=null &&
-              this.SOURCE_SYSTEM_NAME.equals(other.getSOURCE_SYSTEM_NAME()))) &&
-            ((this.TARGET_SYSTEM_ID==null && other.getTARGET_SYSTEM_ID()==null) || 
-             (this.TARGET_SYSTEM_ID!=null &&
-              this.TARGET_SYSTEM_ID.equals(other.getTARGET_SYSTEM_ID()))) &&
-            ((this.TARGET_SYSTEM_NAME==null && other.getTARGET_SYSTEM_NAME()==null) || 
-             (this.TARGET_SYSTEM_NAME!=null &&
-              this.TARGET_SYSTEM_NAME.equals(other.getTARGET_SYSTEM_NAME()))) &&
-            ((this.USER_ID==null && other.getUSER_ID()==null) || 
-             (this.USER_ID!=null &&
-              this.USER_ID.equals(other.getUSER_ID()))) &&
-            ((this.USER_NAME==null && other.getUSER_NAME()==null) || 
-             (this.USER_NAME!=null &&
-              this.USER_NAME.equals(other.getUSER_NAME()))) &&
-            ((this.SUBMIT_DATE==null && other.getSUBMIT_DATE()==null) || 
-             (this.SUBMIT_DATE!=null &&
-              this.SUBMIT_DATE.equals(other.getSUBMIT_DATE()))) &&
-            ((this.PAGE_SIZE==null && other.getPAGE_SIZE()==null) || 
-             (this.PAGE_SIZE!=null &&
-              this.PAGE_SIZE.equals(other.getPAGE_SIZE()))) &&
-            ((this.CURRENT_PAGE==null && other.getCURRENT_PAGE()==null) || 
-             (this.CURRENT_PAGE!=null &&
-              this.CURRENT_PAGE.equals(other.getCURRENT_PAGE()))) &&
-            ((this.TOTAL_RECORD==null && other.getTOTAL_RECORD()==null) || 
-             (this.TOTAL_RECORD!=null &&
-              this.TOTAL_RECORD.equals(other.getTOTAL_RECORD())));
+        _equals = true &&
+                ((this.SOURCE_SYSTEM_ID == null && other.getSOURCE_SYSTEM_ID() == null) ||
+                        (this.SOURCE_SYSTEM_ID != null &&
+                                this.SOURCE_SYSTEM_ID.equals(other.getSOURCE_SYSTEM_ID()))) &&
+                ((this.SOURCE_SYSTEM_NAME == null && other.getSOURCE_SYSTEM_NAME() == null) ||
+                        (this.SOURCE_SYSTEM_NAME != null &&
+                                this.SOURCE_SYSTEM_NAME.equals(other.getSOURCE_SYSTEM_NAME()))) &&
+                ((this.TARGET_SYSTEM_ID == null && other.getTARGET_SYSTEM_ID() == null) ||
+                        (this.TARGET_SYSTEM_ID != null &&
+                                this.TARGET_SYSTEM_ID.equals(other.getTARGET_SYSTEM_ID()))) &&
+                ((this.TARGET_SYSTEM_NAME == null && other.getTARGET_SYSTEM_NAME() == null) ||
+                        (this.TARGET_SYSTEM_NAME != null &&
+                                this.TARGET_SYSTEM_NAME.equals(other.getTARGET_SYSTEM_NAME()))) &&
+                ((this.USER_ID == null && other.getUSER_ID() == null) ||
+                        (this.USER_ID != null &&
+                                this.USER_ID.equals(other.getUSER_ID()))) &&
+                ((this.USER_NAME == null && other.getUSER_NAME() == null) ||
+                        (this.USER_NAME != null &&
+                                this.USER_NAME.equals(other.getUSER_NAME()))) &&
+                ((this.SUBMIT_DATE == null && other.getSUBMIT_DATE() == null) ||
+                        (this.SUBMIT_DATE != null &&
+                                this.SUBMIT_DATE.equals(other.getSUBMIT_DATE()))) &&
+                ((this.PAGE_SIZE == null && other.getPAGE_SIZE() == null) ||
+                        (this.PAGE_SIZE != null &&
+                                this.PAGE_SIZE.equals(other.getPAGE_SIZE()))) &&
+                ((this.CURRENT_PAGE == null && other.getCURRENT_PAGE() == null) ||
+                        (this.CURRENT_PAGE != null &&
+                                this.CURRENT_PAGE.equals(other.getCURRENT_PAGE()))) &&
+                ((this.TOTAL_RECORD == null && other.getTOTAL_RECORD() == null) ||
+                        (this.TOTAL_RECORD != null &&
+                                this.TOTAL_RECORD.equals(other.getTOTAL_RECORD())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;
@@ -343,7 +345,7 @@ public class MsgHeader  implements java.io.Serializable {
 
     // Type metadata
     private static org.apache.axis.description.TypeDesc typeDesc =
-        new org.apache.axis.description.TypeDesc(MsgHeader.class, true);
+            new org.apache.axis.description.TypeDesc(MsgHeader.class, true);
 
     static {
         typeDesc.setXmlType(new javax.xml.namespace.QName("http://ws.vispractice.com/MsgHeader", "MsgHeader"));
@@ -420,24 +422,24 @@ public class MsgHeader  implements java.io.Serializable {
      * Get Custom Serializer
      */
     public static org.apache.axis.encoding.Serializer getSerializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanSerializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
     /**
      * Get Custom Deserializer
      */
     public static org.apache.axis.encoding.Deserializer getDeserializer(
-           java.lang.String mechType, 
-           java.lang.Class _javaType,  
-           javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+            java.lang.String mechType,
+            java.lang.Class _javaType,
+            javax.xml.namespace.QName _xmlType) {
+        return
+                new org.apache.axis.encoding.ser.BeanDeserializer(
+                        _javaType, _xmlType, typeDesc);
     }
 
 }

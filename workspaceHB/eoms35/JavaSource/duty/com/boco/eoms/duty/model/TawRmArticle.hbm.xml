@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="taw_rm_article"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="articleName"
+                name="articleName"
                 length="128"
                 not-null="true"
         >
@@ -35,7 +35,7 @@
         </property>
 
         <property
-            name="onlineNum"
+                name="onlineNum"
                 length="32"
                 not-null="true"
         >
@@ -43,7 +43,7 @@
         </property>
 
         <property
-            name="loanNum"
+                name="loanNum"
                 length="32"
                 not-null="true"
         >
@@ -51,7 +51,7 @@
         </property>
 
         <property
-            name="articleType"
+                name="articleType"
                 length="128"
                 not-null="true"
         >
@@ -59,21 +59,21 @@
         </property>
 
         <property
-            name="describe"
+                name="describe"
                 length="512"
                 not-null="false"
         >
 
         </property>
         <property
-            name="allNum"
+                name="allNum"
                 length="32"
                 not-null="true"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

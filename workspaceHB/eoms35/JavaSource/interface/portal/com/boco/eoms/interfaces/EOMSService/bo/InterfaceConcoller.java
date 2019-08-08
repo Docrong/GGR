@@ -10,18 +10,19 @@ import com.boco.eoms.sheet.base.webapp.action.NewIBaseSheet;
 
 public class InterfaceConcoller {
 
-	public NewIBaseSheet getService(String sheetType) throws Exception{
-		String beanId = SheetMapingSchema.getInstance().getBeanId(sheetType, "");
+    public NewIBaseSheet getService(String sheetType) throws Exception {
+        String beanId = SheetMapingSchema.getInstance().getBeanId(sheetType, "");
 //		beanId = "BusinessDredge";
-		NewIBaseSheet mgr = (NewIBaseSheet)ApplicationContextHolder.getInstance().getBean(beanId);
-		return mgr;
-	}
-	public void createNewSheetInstance(HashMap map,List attach) throws Exception{
-		String sheetType = StaticMethod.nullObject2String(map.get("sheetType"));
+        NewIBaseSheet mgr = (NewIBaseSheet) ApplicationContextHolder.getInstance().getBean(beanId);
+        return mgr;
+    }
 
-		NewIBaseSheet mgr = this.getService(sheetType);
-		if(mgr==null)
-			throw new Exception("未找到相应工单");
-		mgr.createNewSheetInstance(map, attach);
-	}
+    public void createNewSheetInstance(HashMap map, List attach) throws Exception {
+        String sheetType = StaticMethod.nullObject2String(map.get("sheetType"));
+
+        NewIBaseSheet mgr = this.getService(sheetType);
+        if (mgr == null)
+            throw new Exception("未找到相应工单");
+        mgr.createNewSheetInstance(map, attach);
+    }
 }

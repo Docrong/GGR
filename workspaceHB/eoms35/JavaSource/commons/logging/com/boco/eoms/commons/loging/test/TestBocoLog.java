@@ -13,14 +13,14 @@ import com.boco.eoms.commons.loging.BocoLog;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class TestBocoLog extends TestCase {
 
-    public void testLog(){
-        BocoLog log= BocoLog.getInstance();
-        log.info(this,"sdfsdf");
-    } 
+    public void testLog() {
+        BocoLog log = BocoLog.getInstance();
+        log.info(this, "sdfsdf");
+    }
 }

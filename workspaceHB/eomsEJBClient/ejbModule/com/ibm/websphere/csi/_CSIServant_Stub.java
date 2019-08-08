@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.rmi.UnexpectedException;
 import javax.rmi.CORBA.Stub;
 import javax.rmi.CORBA.Util;
+
 import org.omg.CORBA.SystemException;
 import org.omg.CORBA.portable.ApplicationException;
 import org.omg.CORBA.portable.InputStream;
@@ -17,17 +18,17 @@ import org.omg.CORBA.portable.RemarshalException;
 import org.omg.CORBA.portable.ServantObject;
 
 public class _CSIServant_Stub extends Stub implements CSIServant {
-    
+
     private static final String[] _type_ids = {
-        "RMI:com.ibm.websphere.csi.CSIServant:0000000000000000"
+            "RMI:com.ibm.websphere.csi.CSIServant:0000000000000000"
     };
-    
-    public String[] _ids() { 
+
+    public String[] _ids() {
         return _type_ids;
     }
-    
+
     public boolean wlmable() throws RemoteException {
-        while(true) {
+        while (true) {
             if (!Util.isLocal(this)) {
                 InputStream in = null;
                 try {
@@ -48,14 +49,14 @@ public class _CSIServant_Stub extends Stub implements CSIServant {
                     _releaseReply(in);
                 }
             } else {
-                ServantObject so = _servant_preinvoke("wlmable",com.ibm.websphere.csi.CSIServant.class);
+                ServantObject so = _servant_preinvoke("wlmable", com.ibm.websphere.csi.CSIServant.class);
                 if (so == null) {
                     continue;
                 }
                 try {
-                    return ((com.ibm.websphere.csi.CSIServant)so.servant).wlmable();
+                    return ((com.ibm.websphere.csi.CSIServant) so.servant).wlmable();
                 } catch (Throwable ex) {
-                    Throwable exCopy = (Throwable)Util.copyObject(ex,_orb());
+                    Throwable exCopy = (Throwable) Util.copyObject(ex, _orb());
                     throw Util.wrapException(exCopy);
                 } finally {
                     _servant_postinvoke(so);

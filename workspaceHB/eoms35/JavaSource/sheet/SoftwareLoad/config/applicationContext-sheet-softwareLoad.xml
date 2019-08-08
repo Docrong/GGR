@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--SoftwareLoad-START-->    
+    <!--SoftwareLoad-START-->
 
     <bean id="ISoftwareLoadMainDAO"
-		class="com.boco.eoms.sheet.softwareLoad.dao.hibernate.SoftwareLoadMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="ISoftwareLoadLinkDAO"
-		class="com.boco.eoms.sheet.softwareLoad.dao.hibernate.SoftwareLoadLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="ISoftwareLoadTaskDAO"
-		class="com.boco.eoms.sheet.softwareLoad.dao.hibernate.SoftwareLoadTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="SoftwareLoadTask"
-		class="com.boco.eoms.sheet.softwareLoad.model.SoftwareLoadTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.softwareLoad.dao.hibernate.SoftwareLoadMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="ISoftwareLoadLinkDAO"
+          class="com.boco.eoms.sheet.softwareLoad.dao.hibernate.SoftwareLoadLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="ISoftwareLoadTaskDAO"
+          class="com.boco.eoms.sheet.softwareLoad.dao.hibernate.SoftwareLoadTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="SoftwareLoadTask"
+          class="com.boco.eoms.sheet.softwareLoad.model.SoftwareLoadTask" autowire="byName">
+    </bean>
     <bean id="SoftwareLoadLink"
-		class="com.boco.eoms.sheet.softwareLoad.model.SoftwareLoadLink"
-		autowire="byName" />
-	<bean id="SoftwareLoadMain"
-		class="com.boco.eoms.sheet.softwareLoad.model.SoftwareLoadMain"
-		autowire="byName" />
-	<bean id="iSoftwareLoadTask"
-		class="com.boco.eoms.sheet.softwareLoad.task.impl.SoftwareLoadTaskImpl"
-		autowire="byName" />
-	<bean id="iSoftwareLoadTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadTaskManagerImpl">
-				<property name="taskModelObject" ref="SoftwareLoadTask" />
-				<property name="taskDAO">
-					<ref bean="ISoftwareLoadTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-					<value>/config/softwareLoadConfig.properties</value>
-				</property>
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iSoftwareLoadFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iSoftwareLoadLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadLinkManagerImpl">
-				<property name="linkObject" ref="SoftwareLoadLink"/>
-				<property name="linkDAO">
-				  <ref bean="ISoftwareLoadLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iSoftwareLoadMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadMainManagerImpl">
-			    <property name="mainObject" ref="SoftwareLoadMain" />
-				<property name="mainDAO">
-				 <ref bean="ISoftwareLoadMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iSoftwareLoadQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>SoftwareLoadProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/softwareLoadprocesses-config.xml</value>
-				</property>				
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.softwareLoad.model.SoftwareLoadLink"
+          autowire="byName"/>
+    <bean id="SoftwareLoadMain"
+          class="com.boco.eoms.sheet.softwareLoad.model.SoftwareLoadMain"
+          autowire="byName"/>
+    <bean id="iSoftwareLoadTask"
+          class="com.boco.eoms.sheet.softwareLoad.task.impl.SoftwareLoadTaskImpl"
+          autowire="byName"/>
+    <bean id="iSoftwareLoadTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadTaskManagerImpl">
+                <property name="taskModelObject" ref="SoftwareLoadTask"/>
+                <property name="taskDAO">
+                    <ref bean="ISoftwareLoadTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/softwareLoadConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSoftwareLoadFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSoftwareLoadLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadLinkManagerImpl">
+                <property name="linkObject" ref="SoftwareLoadLink"/>
+                <property name="linkDAO">
+                    <ref bean="ISoftwareLoadLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iSoftwareLoadMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareLoad.service.impl.SoftwareLoadMainManagerImpl">
+                <property name="mainObject" ref="SoftwareLoadMain"/>
+                <property name="mainDAO">
+                    <ref bean="ISoftwareLoadMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iSoftwareLoadQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>SoftwareLoadProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/softwareLoadprocesses-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iSoftwareLoadQo"
-		class="com.boco.eoms.sheet.softwareLoad.qo.impl.SoftwareLoadQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="SoftwareLoadMain" />
-		<property name="poLink" value="SoftwareLoadLink" />
-		<property name="aliasMain" value="SoftwareLoadMain" />
-		<property name="aliasLink" value="SoftwareLoadLink" />
-		<property name="poTask" value="SoftwareLoadTask" />
-	    <property name="aliasTask" value="SoftwareLoadTask" />			
-	</bean>
+    <bean id="iSoftwareLoadQo"
+          class="com.boco.eoms.sheet.softwareLoad.qo.impl.SoftwareLoadQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="SoftwareLoadMain"/>
+        <property name="poLink" value="SoftwareLoadLink"/>
+        <property name="aliasMain" value="SoftwareLoadMain"/>
+        <property name="aliasLink" value="SoftwareLoadLink"/>
+        <property name="poTask" value="SoftwareLoadTask"/>
+        <property name="aliasTask" value="SoftwareLoadTask"/>
+    </bean>
 
-	<bean id="SoftwareLoad" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.softwareLoad.webapp.action.SoftwareLoadMethod">
-				<property name="businessFlowService" >
-					<ref bean="iSoftwareLoadFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iSoftwareLoadLinkManager" />
-				<property name="mainService"
-					ref="iSoftwareLoadMainManager" />
-				<property name="sheetTask"
-					ref="SoftwareLoadTask" />
-				<property name="taskService"
-					ref="iSoftwareLoadTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/softwareLoadprocesses-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
-     <!--SoftwareLoad-END-->  
+    <bean id="SoftwareLoad" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.softwareLoad.webapp.action.SoftwareLoadMethod">
+                <property name="businessFlowService">
+                    <ref bean="iSoftwareLoadFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iSoftwareLoadLinkManager"/>
+                <property name="mainService"
+                          ref="iSoftwareLoadMainManager"/>
+                <property name="sheetTask"
+                          ref="SoftwareLoadTask"/>
+                <property name="taskService"
+                          ref="iSoftwareLoadTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/softwareLoadprocesses-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--SoftwareLoad-END-->
 </beans>

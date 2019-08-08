@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.widencomplaint.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Mon Feb 01 17:09:53 CST 2016
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IWidenComplaintQo extends IWorkSheetQO {
- 
- }
+
+public interface IWidenComplaintQo extends IWorkSheetQO {
+
+}

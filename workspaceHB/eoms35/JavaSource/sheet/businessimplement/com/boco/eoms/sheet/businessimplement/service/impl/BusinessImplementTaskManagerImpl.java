@@ -15,30 +15,30 @@ import com.boco.eoms.sheet.businessimplement.service.IBusinessImplementTaskManag
 import com.boco.eoms.sheet.commonfault.dao.ICommonFaultMainDAO;
 import com.boco.eoms.sheet.overtimetip.util.OvertimeTipUtil;
 
-public class BusinessImplementTaskManagerImpl extends TaskServiceImpl implements  IBusinessImplementTaskManager{
+public class BusinessImplementTaskManagerImpl extends TaskServiceImpl implements IBusinessImplementTaskManager {
 
-	public Integer getCountOfBrother(String sheetKey, String parentLevelId) throws SheetException {
-		IBusinessImplementTaskDAO ibusinessimplementTaskDAO = (IBusinessImplementTaskDAO)this.getTaskDAO();	
-		
-		Integer count = new Integer(0);
-		try {
-			count = ibusinessimplementTaskDAO.getCountOfBrother(this.getTaskModelObject(), sheetKey, parentLevelId);
-		} catch (Exception e) {
-			throw new SheetException(e);
-		}
-		return count;
-		}
-	
-	/**
-	 * 获取当前角色未挂起待处理工单,带超时提醒
-	 * @param userId 用户ID
-	 * @param deptId 部门ID 
-	 * @param flowName 流程ID
-	 * @param startIndex 
-	 * @param length
-	 * @return
-	 * @throws Exception
-	 */
+    public Integer getCountOfBrother(String sheetKey, String parentLevelId) throws SheetException {
+        IBusinessImplementTaskDAO ibusinessimplementTaskDAO = (IBusinessImplementTaskDAO) this.getTaskDAO();
+
+        Integer count = new Integer(0);
+        try {
+            count = ibusinessimplementTaskDAO.getCountOfBrother(this.getTaskModelObject(), sheetKey, parentLevelId);
+        } catch (Exception e) {
+            throw new SheetException(e);
+        }
+        return count;
+    }
+
+    /**
+     * 获取当前角色未挂起待处理工单,带超时提醒
+     * @param userId 用户ID
+     * @param deptId 部门ID
+     * @param flowName 流程ID
+     * @param startIndex
+     * @param length
+     * @return
+     * @throws Exception
+     */
 //	public  HashMap getUndoTaskByOverTime(Map condition,String userId,String deptId,String flowName,Integer startIndex,Integer length) throws Exception{
 //		HashMap taskMap=new HashMap();
 //		HashMap cloumnMap = OvertimeTipUtil.getMainColumnByMapping(flowName);

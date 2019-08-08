@@ -4,122 +4,122 @@ import java.util.Date;
 
 public class StatDetailVOSoftchange {
 
-	private String sheetid;
-	private String title;
-	private String senduserid;
-	private String senddeptid;
-	private String status;
-	private Date sendtime;
-	
-	private String overtimeDept="及时";
-	private String deptlevel;
-	
-	private String completeflag;
-	
-	private String mainid;
-	
+    private String sheetid;
+    private String title;
+    private String senduserid;
+    private String senddeptid;
+    private String status;
+    private Date sendtime;
 
-	/**
-	 * @return the mainid
-	 */
-	public String getMainid() {
-		return mainid;
-	}
+    private String overtimeDept = "及时";
+    private String deptlevel;
 
-	/**
-	 * @param mainid the mainid to set
-	 */
-	public void setMainid(String mainid) {
-		this.mainid = mainid;
-	}
+    private String completeflag;
 
-	/**
-	 * @return the deptlevel
-	 */
-	public String getDeptlevel() {
-		return deptlevel;
-	}
+    private String mainid;
 
-	/**
-	 * @param deptlevel the deptlevel to set
-	 */
-	public void setDeptlevel(String deptlevel) {
-		this.deptlevel = deptlevel;
-	}
 
-	/**
-	 * @return the overtimeDept
-	 */
-	public String getOvertimeDept() {
-		return overtimeDept;
-	}
+    /**
+     * @return the mainid
+     */
+    public String getMainid() {
+        return mainid;
+    }
 
-	/**
-	 * @param overtimeDept the overtimeDept to set
-	 */
-	public void setOvertimeDept(String overtimeDept) {
-		this.overtimeDept = overtimeDept;
-	}
+    /**
+     * @param mainid the mainid to set
+     */
+    public void setMainid(String mainid) {
+        this.mainid = mainid;
+    }
 
-	public String getSheetid() {
-		return sheetid;
-	}
+    /**
+     * @return the deptlevel
+     */
+    public String getDeptlevel() {
+        return deptlevel;
+    }
 
-	public void setSheetid(String sheetid) {
-		this.sheetid = sheetid;
-	}
+    /**
+     * @param deptlevel the deptlevel to set
+     */
+    public void setDeptlevel(String deptlevel) {
+        this.deptlevel = deptlevel;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    /**
+     * @return the overtimeDept
+     */
+    public String getOvertimeDept() {
+        return overtimeDept;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    /**
+     * @param overtimeDept the overtimeDept to set
+     */
+    public void setOvertimeDept(String overtimeDept) {
+        this.overtimeDept = overtimeDept;
+    }
 
-	public String getSenduserid() {
-		return senduserid;
-	}
+    public String getSheetid() {
+        return sheetid;
+    }
 
-	public void setSenduserid(String senduserid) {
-		this.senduserid = senduserid;
-	}
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
 
-	public String getSenddeptid() {
-		return senddeptid;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setSenddeptid(String senddeptid) {
-		this.senddeptid = senddeptid;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public String getSenduserid() {
+        return senduserid;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public void setSenduserid(String senduserid) {
+        this.senduserid = senduserid;
+    }
 
-	public Date getSendtime() {
-		return sendtime;
-	}
+    public String getSenddeptid() {
+        return senddeptid;
+    }
 
-	public void setSendtime(Date sendtime) {
-		this.sendtime = sendtime;
-	}
+    public void setSenddeptid(String senddeptid) {
+        this.senddeptid = senddeptid;
+    }
 
-	/**
-	 * @return the completeflag
-	 */
-	public String getCompleteflag() {
-		return completeflag;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	/**
-	 * @param completeflag the completeflag to set
-	 */
-	public void setCompleteflag(String completeflag) {
-		this.completeflag = completeflag;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getSendtime() {
+        return sendtime;
+    }
+
+    public void setSendtime(Date sendtime) {
+        this.sendtime = sendtime;
+    }
+
+    /**
+     * @return the completeflag
+     */
+    public String getCompleteflag() {
+        return completeflag;
+    }
+
+    /**
+     * @param completeflag the completeflag to set
+     */
+    public void setCompleteflag(String completeflag) {
+        this.completeflag = completeflag;
+    }
 }

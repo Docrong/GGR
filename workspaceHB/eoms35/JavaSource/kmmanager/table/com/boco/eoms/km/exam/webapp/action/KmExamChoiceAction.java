@@ -37,152 +37,152 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Fri May 08 16:40:12 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() hsl
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmExamChoiceAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增选项表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增选项表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改选项表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改选项表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		KmExamChoice kmExamChoice = kmExamChoiceMgr.getKmExamChoice(id);
-		KmExamChoiceForm kmExamChoiceForm = (KmExamChoiceForm) convert(kmExamChoice);
-		updateFormBean(mapping, request, kmExamChoiceForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存选项表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
-		KmExamChoiceForm kmExamChoiceForm = (KmExamChoiceForm) form;
-		boolean isNew = (null == kmExamChoiceForm.getId() || "".equals(kmExamChoiceForm.getId()));
-		KmExamChoice kmExamChoice = (KmExamChoice) convert(kmExamChoiceForm);
-		if (isNew) {
-			kmExamChoiceMgr.saveKmExamChoice(kmExamChoice);
-		} else {
-			kmExamChoiceMgr.saveKmExamChoice(kmExamChoice);
-		}
-		return search(mapping, kmExamChoiceForm, request, response);
-	}
-	
-	/**
-	 * 删除选项表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		kmExamChoiceMgr.removeKmExamChoice(id);
-		return null;
-	}
-	
-	/**
-	 * 分页显示选项表列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmExamChoiceConstants.KMEXAMCHOICE_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
-		Map map = (Map) kmExamChoiceMgr.getKmExamChoices(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(KmExamChoiceConstants.KMEXAMCHOICE_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 分页显示选项表列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        KmExamChoice kmExamChoice = kmExamChoiceMgr.getKmExamChoice(id);
+        KmExamChoiceForm kmExamChoiceForm = (KmExamChoiceForm) convert(kmExamChoice);
+        updateFormBean(mapping, request, kmExamChoiceForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存选项表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
+        KmExamChoiceForm kmExamChoiceForm = (KmExamChoiceForm) form;
+        boolean isNew = (null == kmExamChoiceForm.getId() || "".equals(kmExamChoiceForm.getId()));
+        KmExamChoice kmExamChoice = (KmExamChoice) convert(kmExamChoiceForm);
+        if (isNew) {
+            kmExamChoiceMgr.saveKmExamChoice(kmExamChoice);
+        } else {
+            kmExamChoiceMgr.saveKmExamChoice(kmExamChoice);
+        }
+        return search(mapping, kmExamChoiceForm, request, response);
+    }
+
+    /**
+     * 删除选项表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        kmExamChoiceMgr.removeKmExamChoice(id);
+        return null;
+    }
+
+    /**
+     * 分页显示选项表列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmExamChoiceConstants.KMEXAMCHOICE_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        KmExamChoiceMgr kmExamChoiceMgr = (KmExamChoiceMgr) getBean("kmExamChoiceMgr");
+        Map map = (Map) kmExamChoiceMgr.getKmExamChoices(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(KmExamChoiceConstants.KMEXAMCHOICE_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 分页显示选项表列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 //		try {
 //			// --------------用于分页，得到当前页号-------------
 //			final Integer pageIndex = new Integer(request
@@ -235,6 +235,6 @@ public final class KmExamChoiceAction extends BaseAction {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		return null;
-	}
+        return null;
+    }
 }

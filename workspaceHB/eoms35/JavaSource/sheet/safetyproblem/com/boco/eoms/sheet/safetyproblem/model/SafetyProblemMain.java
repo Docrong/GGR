@@ -7,119 +7,99 @@ package com.boco.eoms.sheet.safetyproblem.model;
 
 import com.boco.eoms.sheet.base.model.BaseMain;
 
-public class SafetyProblemMain extends BaseMain
-{
+public class SafetyProblemMain extends BaseMain {
 
-	private String mainNetSort1;
-	private String mainNetSort2;
-	private String mainNetSort3;
-	private String mainTaskType;
-	private String mainTaskDescription;
-	private String mainRemark;
-	private String ifAgent;
-	private int mainAdviceNum;
-	private String mainAdviceContent;
-	private String revert;
+    private String mainNetSort1;
+    private String mainNetSort2;
+    private String mainNetSort3;
+    private String mainTaskType;
+    private String mainTaskDescription;
+    private String mainRemark;
+    private String ifAgent;
+    private int mainAdviceNum;
+    private String mainAdviceContent;
+    private String revert;
 
-	public SafetyProblemMain()
-	{
-	}
+    public SafetyProblemMain() {
+    }
 
-	public String getIfAgent()
-	{
-		return ifAgent;
-	}
+    public String getIfAgent() {
+        return ifAgent;
+    }
 
-	public void setIfAgent(String ifAgent)
-	{
-		this.ifAgent = ifAgent;
-	}
+    public void setIfAgent(String ifAgent) {
+        this.ifAgent = ifAgent;
+    }
 
-	public String getMainNetSort1()
-	{
-		return mainNetSort1;
-	}
+    public String getMainNetSort1() {
+        return mainNetSort1;
+    }
 
-	public void setMainNetSort1(String mainNetSort1)
-	{
-		this.mainNetSort1 = mainNetSort1;
-	}
+    public void setMainNetSort1(String mainNetSort1) {
+        this.mainNetSort1 = mainNetSort1;
+    }
 
-	public String getMainNetSort2()
-	{
-		return mainNetSort2;
-	}
+    public String getMainNetSort2() {
+        return mainNetSort2;
+    }
 
-	public void setMainNetSort2(String mainNetSort2)
-	{
-		this.mainNetSort2 = mainNetSort2;
-	}
+    public void setMainNetSort2(String mainNetSort2) {
+        this.mainNetSort2 = mainNetSort2;
+    }
 
-	public String getMainNetSort3()
-	{
-		return mainNetSort3;
-	}
+    public String getMainNetSort3() {
+        return mainNetSort3;
+    }
 
-	public void setMainNetSort3(String mainNetSort3)
-	{
-		this.mainNetSort3 = mainNetSort3;
-	}
+    public void setMainNetSort3(String mainNetSort3) {
+        this.mainNetSort3 = mainNetSort3;
+    }
 
-	public String getMainTaskType()
-	{
-		return mainTaskType;
-	}
+    public String getMainTaskType() {
+        return mainTaskType;
+    }
 
-	public void setMainTaskType(String mainTaskType)
-	{
-		this.mainTaskType = mainTaskType;
-	}
+    public void setMainTaskType(String mainTaskType) {
+        this.mainTaskType = mainTaskType;
+    }
 
-	public String getMainTaskDescription()
-	{
-		return mainTaskDescription;
-	}
+    public String getMainTaskDescription() {
+        return mainTaskDescription;
+    }
 
-	public void setMainTaskDescription(String mainTaskDescription)
-	{
-		this.mainTaskDescription = mainTaskDescription;
-	}
+    public void setMainTaskDescription(String mainTaskDescription) {
+        this.mainTaskDescription = mainTaskDescription;
+    }
 
-	public String getMainRemark()
-	{
-		return mainRemark;
-	}
+    public String getMainRemark() {
+        return mainRemark;
+    }
 
-	public void setMainRemark(String mainRemark)
-	{
-		this.mainRemark = mainRemark;
-	}
+    public void setMainRemark(String mainRemark) {
+        this.mainRemark = mainRemark;
+    }
 
-	public int getMainAdviceNum()
-	{
-		return mainAdviceNum;
-	}
+    public int getMainAdviceNum() {
+        return mainAdviceNum;
+    }
 
-	public void setMainAdviceNum(int mainAdviceNum)
-	{
-		this.mainAdviceNum = mainAdviceNum;
-	}
+    public void setMainAdviceNum(int mainAdviceNum) {
+        this.mainAdviceNum = mainAdviceNum;
+    }
 
-	public String getMainAdviceContent()
-	{
-		return mainAdviceContent;
-	}
+    public String getMainAdviceContent() {
+        return mainAdviceContent;
+    }
 
-	public void setMainAdviceContent(String mainAdviceContent)
-	{
-		this.mainAdviceContent = mainAdviceContent;
-	}
+    public void setMainAdviceContent(String mainAdviceContent) {
+        this.mainAdviceContent = mainAdviceContent;
+    }
 
-	public String getRevert() {
-		return revert;
-	}
+    public String getRevert() {
+        return revert;
+    }
 
-	public void setRevert(String revert) {
-		this.revert = revert;
-	}
+    public void setRevert(String revert) {
+        this.revert = revert;
+    }
 }

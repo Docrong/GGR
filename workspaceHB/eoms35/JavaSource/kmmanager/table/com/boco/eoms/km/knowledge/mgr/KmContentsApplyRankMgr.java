@@ -11,13 +11,12 @@ package com.boco.eoms.km.knowledge.mgr;
  * <p>
  * Wed Aug 19 15:53:50 CST 2009
  * </p>
- * 
+ *
  * @author wangzhiyong
  * @version 1.0
- * 
  */
- public interface KmContentsApplyRankMgr {
- 
-	
-	public String getKmContentsApplyRankDetail(final String id, final String startDate, final String endDate);
+public interface KmContentsApplyRankMgr {
+
+
+    public String getKmContentsApplyRankDetail(final String id, final String startDate, final String endDate);
 }

@@ -72,7 +72,7 @@ public class TawSystemAreaActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawSystemArea.updated"});
+        verifyActionMessages(new String[]{"tawSystemArea.updated"});
 
     }
 

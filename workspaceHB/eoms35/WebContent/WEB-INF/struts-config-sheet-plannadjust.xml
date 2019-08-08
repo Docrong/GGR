@@ -1,213 +1,214 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="multiPageForm"
-			type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm" />
-		<!--bean for EsmProcess end-->
-	</form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="multiPageForm"
+                   type="com.boco.eoms.sheet.base.webapp.form.MultiPageForm"/>
+        <!--bean for EsmProcess end-->
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		<forward name="error"
-			path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
-			contextRelative="true" />
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+        <forward name="error"
+                 path="/WEB-INF/pages/wfworksheet/common/sheet_fail.jsp"
+                 contextRelative="true"/>
+    </global-forwards>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
-		<action path="/plannadjust"
-			type="com.boco.eoms.sheet.plannadjust.webapp.action.PlannAdjustAction"
-			name="multiPageForm" scope="request" input="error" parameter="method"
-			unknown="false" validate="false" attribute="PlannAdjust">
-			<set-property property="cancellable" value="true" />
-			<forward name="new"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/main.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputNew"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="dealpage"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/dealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputDealpage"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputdealpage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="reject"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/reject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="inputReject"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputreject.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="detail"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/detail.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draft"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="cancel"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="delete"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="hold"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/list.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="success"
-				path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="successMessage"
-				path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="portal"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/portal.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="split"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/split.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="history"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/history.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="draw"
-                path="/WEB-INF/pages/wfworksheet/plannadjust/draw.jsp"
-                redirect="false" contextRelative="true"/>
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
+        <action path="/plannadjust"
+                type="com.boco.eoms.sheet.plannadjust.webapp.action.PlannAdjustAction"
+                name="multiPageForm" scope="request" input="error" parameter="method"
+                unknown="false" validate="false" attribute="PlannAdjust">
+            <set-property property="cancellable" value="true"/>
+            <forward name="new"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/main.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputNew"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealpage"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/dealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputDealpage"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputdealpage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="reject"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/reject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="inputReject"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputreject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="detail"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draft"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cancel"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="delete"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="hold"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputmain.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/list.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="success"
+                     path="/WEB-INF/pages/wfworksheet/common/sheet_success.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="successMessage"
+                     path="/WEB-INF/pages/wfworksheet/common/successMessage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="portal"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/portal.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="split"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/split.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="history"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/history.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="draw"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/draw.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="pic"
-                path="/WEB-INF/pages/wfworksheet/plannadjust/pic.jsp"
-                redirect="false" contextRelative="true"/>
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/pic.jsp"
+                     redirect="false" contextRelative="true"/>
             <forward name="holdlist"
-                path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp" 
-                redirect="false" contextRelative="true" />
-			<forward name="mainlist"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="startlist"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp"
-				redirect="false" contextRelative="true" />
-		    <forward name="maindetail"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/detail.jsp"
-				redirect="false" contextRelative="true" />
-           <forward name="query"
-                path="/WEB-INF/pages/wfworksheet/plannadjust/query.jsp"
-                redirect="false" contextRelative="true" />
-	        <forward name="queryInput"
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/queryinput.jsp"
-		        redirect="false" contextRelative="true" />		
-	        <forward name="querylist"
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/querylist.jsp"
-		        redirect="false" contextRelative="true" />
-		     <forward name="templates" 
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/templates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplates" 
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/dealTemplates.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="dealTemplateDetail" 
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/dealTemplateDetail.jsp"
-		        redirect="false" contextRelative="true"/>
-		    <forward name="sheetAccessories" 
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/sheetAccessories.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="showInvokeRelationShipList" 
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/showInvokeRelationShipList.jsp"
-		        redirect="false" contextRelative="true"/>	   
-		   <forward name="batchDealPage" 
-		        path="/WEB-INF/pages/wfworksheet/plannadjust/batchDealPage.jsp"
-		        redirect="false" contextRelative="true"/>
-		   <forward name="transfer"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/transfer.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="forceHold"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/forceHold.jsp"	
-				redirect="false" contextRelative="true" />
-			<forward name="adminlist"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/adminlist.jsp" redirect="false"
-				contextRelative="true" />
-			<forward name="event"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/event.jsp" redirect="false"
-				contextRelative="true" />
-	        <forward name="inputEvent"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/inputevent.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="saveInfo" path="/plannadjust.do?method=showDetailPage"/>
-		    <forward name="saveInfoAndExit" path="/plannadjust.do?method=showListsendundo"/>   
-			<forward name="cancellist"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="remark"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/remark.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseBackToUp"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="phaseAdvice"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/phaseBackToUp.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="showDraftList" path="/plannadjust.do?method=showDraftList"/>	
-		    <forward name="draftList" path="/WEB-INF/pages/wfworksheet/plannadjust/draftList.jsp" redirect="false"
-				contextRelative="true"/> 		
-			<forward name="showWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="getLinkOperatePage"
-				path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp" 
-				redirect="false" contextRelative="true" />								
-			<forward name="cc"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/makeCopy.jsp"
-				redirect="false" contextRelative="true" />			
-			<forward name="shoWholeWorkFlow"
-				path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="showSetpInfoPage"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/showStepInfoPage.jsp"
-				redirect="false" contextRelative="true" />				
-			<forward name="dealReplyAccept"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/dealReplyAccept.jsp" 
-				redirect="false" contextRelative="true" />
-			<forward name="dealReplyReject"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/dealReplyReject.jsp" 
-				redirect="false" contextRelative="true" />					
-		      <forward name="showWorkFlowInstance"
-				path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
-				redirect="false" contextRelative="true" />
-			  <forward name="shownumber"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/shownumber.jsp"
-				redirect="false" contextRelative="true" />
-		      <forward name="showdetail"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/showdetail.jsp"
-				redirect="false" contextRelative="true" />
-			  <forward name="searchnumber"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/searchnumber.jsp"
-				redirect="false" contextRelative="true" />
-		      <forward name="searchdetail"
-				path="/WEB-INF/pages/wfworksheet/plannadjust/searchdetail.jsp"
-				redirect="false" contextRelative="true" />						
-		 </action>
-	</action-mappings>
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="mainlist"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="startlist"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="maindetail"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/detail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="query"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/query.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="queryInput"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/queryinput.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="querylist"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/querylist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="templates"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/templates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplates"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/dealTemplates.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealTemplateDetail"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/dealTemplateDetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="sheetAccessories"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/sheetAccessories.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showInvokeRelationShipList"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/showInvokeRelationShipList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="batchDealPage"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/batchDealPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="transfer"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/transfer.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="forceHold"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/forceHold.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="adminlist"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/adminlist.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="event"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/event.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="inputEvent"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/inputevent.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="saveInfo" path="/plannadjust.do?method=showDetailPage"/>
+            <forward name="saveInfoAndExit" path="/plannadjust.do?method=showListsendundo"/>
+            <forward name="cancellist"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/mainlist.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="remark"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/remark.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseBackToUp"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="phaseAdvice"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/phaseBackToUp.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showDraftList" path="/plannadjust.do?method=showDraftList"/>
+            <forward name="draftList" path="/WEB-INF/pages/wfworksheet/plannadjust/draftList.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="showWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/workflowview.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="getLinkOperatePage"
+                     path="/WEB-INF/pages/wfworksheet/common/linkOperatePage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="cc"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/makeCopy.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="shoWholeWorkFlow"
+                     path="/WEB-INF/pages/wfworksheet/common/shoWholeWorkFlow.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showSetpInfoPage"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/showStepInfoPage.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyAccept"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/dealReplyAccept.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="dealReplyReject"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/dealReplyReject.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showWorkFlowInstance"
+                     path="/WEB-INF/pages/wfworksheet/common/workFlowInstance.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="shownumber"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/shownumber.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="showdetail"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/showdetail.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="searchnumber"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/searchnumber.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="searchdetail"
+                     path="/WEB-INF/pages/wfworksheet/plannadjust/searchdetail.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+    </action-mappings>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
-	<message-resources parameter="config/ApplicationResources-sheet" key="sheet" />
-	<message-resources
-		parameter="config/ApplicationResources-sheet-plannadjust" key="plannadjust" />
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources-sheet" key="sheet"/>
+    <message-resources
+            parameter="config/ApplicationResources-sheet-plannadjust" key="plannadjust"/>
 </struts-config>

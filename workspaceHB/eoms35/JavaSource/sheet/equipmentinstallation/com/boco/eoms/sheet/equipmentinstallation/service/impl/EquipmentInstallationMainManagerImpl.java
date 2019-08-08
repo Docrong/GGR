@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.equipmentinstallation.service.IEquipmentInstallationM
  * <p>
  * Tue Oct 09 14:09:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class EquipmentInstallationMainManagerImpl extends MainService implements IEquipmentInstallationMainManager {
- 
- }
+
+public class EquipmentInstallationMainManagerImpl extends MainService implements IEquipmentInstallationMainManager {
+
+}

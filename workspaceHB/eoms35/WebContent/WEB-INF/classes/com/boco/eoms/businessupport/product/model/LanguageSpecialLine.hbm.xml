@@ -1,215 +1,215 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
 
     <class name="com.boco.eoms.businessupport.product.model.LanguageSpecialLine"
-            table="b_languageSpecialLine">
+           table="b_languageSpecialLine">
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
-    </id>
+            </generator>
+        </id>
         <property name="orderSheet_Id"/>
-	     	<property name="inputNumber"/>
-  <property name="bitLength"/>
-  <property name="businessType"/>
-	<property name="callUserOpenBrand"/>
+        <property name="inputNumber"/>
+        <property name="bitLength"/>
+        <property name="businessType"/>
+        <property name="callUserOpenBrand"/>
 
-	<property name="callUserLocalZone"/>
-   
-	<property name="businessOpenZone"/>
-    
-	<property name="callNumberType"/>
+        <property name="callUserLocalZone"/>
 
-	<property name="isOpenPronicePhone"/>
+        <property name="businessOpenZone"/>
 
-	<property name="isOpenProniceBeteen"/>
+        <property name="callNumberType"/>
 
-	<property name="isOpenContryPhone"/>
-   
-	<property name="userCallNumber"/>
+        <property name="isOpenPronicePhone"/>
 
-	<property name="userCallIsTouChuan"/>
+        <property name="isOpenProniceBeteen"/>
 
-	<property name="userCallModifyType"/>
-      
-	<property name="userCallScope"/>
-   
-	<property name="userCallType"/>
-      
-	<property name="infoType"/>
-  
-	<property name="infoPointCode"/>
-      
-	<property name="infoProtocal"/>
-        
-	<property name="infoBetweenNumber"/>
-     
-	<property name="feeDesc"/>
-   
-	<property name="userComputerHoseAdd"/>
- 
-	<property name="userPointDevBrand"/>
-           
-	<property name="userComputerType"/>
-             
-	<property name="userComputerRight"/>
+        <property name="isOpenContryPhone"/>
 
-	<property name="isNumberTrasiNet"/>
-        
-	<property name="yuyinRemark"/>
-  
-	<property name="applyProductName"/>
-   
-	<property name="userNeedDesc"/>
-    
-	<property name="planOenDate"/>
-       
-	<property name="productCode"/>
-        
-	<property name="appliedPerson"/>
-      
-	<property name="connectPhone"/>
-     
-	<property name="appliedDept"/>
-   
-	<property name="appliedDate"/>
-     
-	<property name="isApplied"/>
-         
-	<property name="isNotAppledOpinition"/>
+        <property name="userCallNumber"/>
 
-        
-	<property name="dealPersonCircuit"/>
-        
-	<property name="dealDeptCircuit"/>
-       
-	<property name="dealConPhoneCirsuit"/>
-       
-	<property name="dealDateCircuit"/>
-  
-	<property name="dealResultCircuit"/>
-   
-	<property name="dealNoSuccessReason"/>
-     
-	<property name="dealCircuitCode"/>
-      
-	<property name="dealBackOpinition"/>
+        <property name="userCallIsTouChuan"/>
 
-	<property name="cityA"/>
+        <property name="userCallModifyType"/>
 
-	<property name="cityZ"/>
+        <property name="userCallScope"/>
 
-	<property name="siteNameA"/>
+        <property name="userCallType"/>
 
-	<property name="siteNameZ"/>
+        <property name="infoType"/>
 
-	<property name="portA"/>
+        <property name="infoPointCode"/>
 
-	<property name="portZ"/>
+        <property name="infoProtocal"/>
 
-	<property name="portAInterfaceType"/>
+        <property name="infoBetweenNumber"/>
 
-	<property name="portZInterfaceType"/>
+        <property name="feeDesc"/>
 
-	<property name="portADetailAdd"/>
+        <property name="userComputerHoseAdd"/>
 
-	<property name="portZDetailAdd"/>
+        <property name="userPointDevBrand"/>
 
-	<property name="portABDeviceName"/>
+        <property name="userComputerType"/>
 
-	<property name="portZBDeviceName"/>
+        <property name="userComputerRight"/>
 
-	<property name="portABDevicePort"/>
+        <property name="isNumberTrasiNet"/>
 
-	<property name="portZBDevicePort"/>
+        <property name="yuyinRemark"/>
 
-	<property name="apointLocalPerson"/>
+        <property name="applyProductName"/>
 
-	<property name="zpointLocalPerson"/>
+        <property name="userNeedDesc"/>
 
-	<property name="portAContactPhone"/>
+        <property name="planOenDate"/>
 
-	<property name="portZContactPhone"/>
+        <property name="productCode"/>
 
-	<property name="bandwidth"/>
+        <property name="appliedPerson"/>
 
-	<property name="circuitRate"/>
+        <property name="connectPhone"/>
 
-	
-	<property name="userIsUserNet"/>
-	
-	<property name="userSpecifyDevNeed"/>
+        <property name="appliedDept"/>
 
-	  <property name="oneDate"/>
-	  <property name="apointComputHouseName"/>
+        <property name="appliedDate"/>
 
-	  <property name="interfacePointAddA"/>
-		   
+        <property name="isApplied"/>
 
-	  <property name="interfaceSiteNameA"/>
-
-	  <property name="interfaceEquipCodeA"/>
-
-	  <property name="fiberEquipNameA"/>
-
-	  <property name="fiberEquipCodeA"/>
-
-	  <property name="fiberAcount"/>
-
-	  <property name="fiberAroute"/>
-	   
-	  <property name="interfacePointTypeA"/>
-      <property name="planImplStringDate"/>	 
-      
-	  <property name="portABDeviceType"/>
-
-	  <property name="fiberLengthA"/>
-
-	  <property name="fiberOwnerA"/>
-
-	  <property name="buildTypeA"/>
-
-	  <property name="isOkBetweenUserA"/>
-
-	  <property name="noInputResonA"/>
+        <property name="isNotAppledOpinition"/>
 
 
-	  <property name="isDeviceAllowOpenA"/>
+        <property name="dealPersonCircuit"/>
 
-	  <property name="isNeedAddCardA"/>
+        <property name="dealDeptCircuit"/>
 
-	  <property name="cardTypeA"/>
+        <property name="dealConPhoneCirsuit"/>
 
-	  <property name="cardNumA"/> 
-	  
-	  <property name="isGetInterfaceA"/>
+        <property name="dealDateCircuit"/>
 
-	  <property name="getInterfaceNoA"/>
+        <property name="dealResultCircuit"/>
 
-	  <property name="theLastOpinionA"/>
+        <property name="dealNoSuccessReason"/>
 
-		<property name="circuitSheetId"/>	
-		
-	<property name="circuitName"/>
-	
-	<property name="deleted"/>		
-	
-	<property name="tradeId"/>		
+        <property name="dealCircuitCode"/>
 
-	
-    </class>    
+        <property name="dealBackOpinition"/>
+
+        <property name="cityA"/>
+
+        <property name="cityZ"/>
+
+        <property name="siteNameA"/>
+
+        <property name="siteNameZ"/>
+
+        <property name="portA"/>
+
+        <property name="portZ"/>
+
+        <property name="portAInterfaceType"/>
+
+        <property name="portZInterfaceType"/>
+
+        <property name="portADetailAdd"/>
+
+        <property name="portZDetailAdd"/>
+
+        <property name="portABDeviceName"/>
+
+        <property name="portZBDeviceName"/>
+
+        <property name="portABDevicePort"/>
+
+        <property name="portZBDevicePort"/>
+
+        <property name="apointLocalPerson"/>
+
+        <property name="zpointLocalPerson"/>
+
+        <property name="portAContactPhone"/>
+
+        <property name="portZContactPhone"/>
+
+        <property name="bandwidth"/>
+
+        <property name="circuitRate"/>
+
+
+        <property name="userIsUserNet"/>
+
+        <property name="userSpecifyDevNeed"/>
+
+        <property name="oneDate"/>
+        <property name="apointComputHouseName"/>
+
+        <property name="interfacePointAddA"/>
+
+
+        <property name="interfaceSiteNameA"/>
+
+        <property name="interfaceEquipCodeA"/>
+
+        <property name="fiberEquipNameA"/>
+
+        <property name="fiberEquipCodeA"/>
+
+        <property name="fiberAcount"/>
+
+        <property name="fiberAroute"/>
+
+        <property name="interfacePointTypeA"/>
+        <property name="planImplStringDate"/>
+
+        <property name="portABDeviceType"/>
+
+        <property name="fiberLengthA"/>
+
+        <property name="fiberOwnerA"/>
+
+        <property name="buildTypeA"/>
+
+        <property name="isOkBetweenUserA"/>
+
+        <property name="noInputResonA"/>
+
+
+        <property name="isDeviceAllowOpenA"/>
+
+        <property name="isNeedAddCardA"/>
+
+        <property name="cardTypeA"/>
+
+        <property name="cardNumA"/>
+
+        <property name="isGetInterfaceA"/>
+
+        <property name="getInterfaceNoA"/>
+
+        <property name="theLastOpinionA"/>
+
+        <property name="circuitSheetId"/>
+
+        <property name="circuitName"/>
+
+        <property name="deleted"/>
+
+        <property name="tradeId"/>
+
+
+    </class>
 
 </hibernate-mapping>
 

@@ -17,32 +17,31 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Date:May 24, 2007 10:21:02 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class RuleWebToolForm extends BaseForm implements java.io.Serializable {
 
-	/**
-	 * 路由分组id
-	 */
-	private String groupId;
+    /**
+     * 路由分组id
+     */
+    private String groupId;
 
-	/**
-	 * 路由分组描述
-	 */
-	private String groupDescription;
+    /**
+     * 路由分组描述
+     */
+    private String groupDescription;
 
-	/**
-	 * 路由分组中的规则id
-	 */
-	private Map groupRuleId = new HashMap();
+    /**
+     * 路由分组中的规则id
+     */
+    private Map groupRuleId = new HashMap();
 
-	/**
-	 * 路由分组中的规则优先级
-	 */
-	private Map groupRulePri = new HashMap();
+    /**
+     * 路由分组中的规则优先级
+     */
+    private Map groupRulePri = new HashMap();
 
 	
 	/*

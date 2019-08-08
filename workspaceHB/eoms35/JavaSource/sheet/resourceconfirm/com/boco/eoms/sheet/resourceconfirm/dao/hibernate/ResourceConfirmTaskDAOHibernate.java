@@ -11,5 +11,5 @@ import com.boco.eoms.sheet.base.util.Constants;
 import com.boco.eoms.sheet.resourceconfirm.dao.IResourceConfirmTaskDAO;
 
 public class ResourceConfirmTaskDAOHibernate extends TaskDAOImpl implements IResourceConfirmTaskDAO {
-	
+
 }

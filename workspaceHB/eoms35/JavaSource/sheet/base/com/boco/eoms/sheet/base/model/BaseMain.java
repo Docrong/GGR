@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Created on 2007-8-5
  *
  * TODO To change the template for this generated file go to
@@ -12,16 +12,16 @@ import java.util.Date;
 
 /**
  * @author Administrator
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class BaseMain implements Serializable{
-	 /**
+public class BaseMain implements Serializable {
+    /**
      * 主键
      */
     private String id;
- 
+
     /**
      * 工单id
      */
@@ -55,7 +55,7 @@ public class BaseMain implements Serializable{
     /**
      * 发送组织类型，用户，部门，角色
      */
-    private String  sendOrgType;
+    private String sendOrgType;
 
     /**
      * 发送人id
@@ -71,7 +71,7 @@ public class BaseMain implements Serializable{
      * 发送角色ID,注：由于role的主键为int故这里使用Integer类型，建议以后改为统一string
      */
     private String sendRoleId;
-    
+
     /**
      * 发送人联系方式
      */
@@ -111,7 +111,7 @@ public class BaseMain implements Serializable{
      * 结束工单用户角色
      */
     private String endRoleId;
-    
+
     /**
      * 工单派往部门
      */
@@ -145,17 +145,17 @@ public class BaseMain implements Serializable{
      * 模板名称（预留）
      */
     private String sheetTemplateName;
-    
+
     /**
      * 流程关联Key
      */
     private String correlationKey;
-    
+
     /**
      * 父流程关联Key
      */
     private String parentCorrelation;
-    
+
     /**
      * 撤销原因
      */
@@ -163,99 +163,106 @@ public class BaseMain implements Serializable{
     /**
      * 是否是模板
      * 0或者null表示不是，1:表示是模板
+     *
      * @author wangjianhua
      * @date 2008-7-22
      */
     private int templateFlag;
     /**
      * 派单时间中的年份
+     *
      * @author qinmin
      * @date 2008-10-07
      */
     private int sendYear;
     /**
      * 派单时间中的月份
+     *
      * @author qinmin
      * @date 2008-10-07
      */
     private int sendMonth;
     /**
      * 派单时间中的天
+     *
      * @author qinmin
      * @date 2008-10-07
      */
     private int sendDay;
-    
+
     /**
-     * @see 调用类型。
-     * @see 异步调用:asynchronism,同步:synchronization
      * @author yyk
      * @date 2008-11-26
+     * @see 调用类型。
+     * @see 异步调用:asynchronism,同步:synchronization
      */
     private String invokeMode;
     /**
      * 派往对象
+     *
      * @author wangjianhua
      * @date 2009-2-12
-     * 
      */
     private String sendObject;
-    
+
     public String getSendObject() {
-		return sendObject;
-	}
+        return sendObject;
+    }
 
-	public void setSendObject(String sendObject) {
-		this.sendObject = sendObject;
-	}
+    public void setSendObject(String sendObject) {
+        this.sendObject = sendObject;
+    }
 
-	public String getInvokeMode() {
-		return invokeMode;
-	}
+    public String getInvokeMode() {
+        return invokeMode;
+    }
 
-	public void setInvokeMode(String invokeMode) {
-		this.invokeMode = invokeMode;
-	}
+    public void setInvokeMode(String invokeMode) {
+        this.invokeMode = invokeMode;
+    }
 
-	/**
-     * 
+    /**
      * @return template
      */
-	public int getTemplateFlag() {
-		return templateFlag;
-	}
+    public int getTemplateFlag() {
+        return templateFlag;
+    }
 
-	/**
-	 * 
-	 * @param template
-	 */
-	public void setTemplateFlag(int templateFlag) {
-		this.templateFlag = templateFlag;
-	}
-	/**
-	 * @return Returns the correlationKey.
-	 */
-	public String getCorrelationKey() {
-		return correlationKey;
-	}
-	/**
-	 * @param correlationKey The correlationKey to set.
-	 */
-	public void setCorrelationKey(String correlationKey) {
-		this.correlationKey = correlationKey;
-	}
-	/**
-	 * @return Returns the parentCorrelation.
-	 */
-	public String getParentCorrelation() {
-		return parentCorrelation;
-	}
-	/**
-	 * @param parentCorrelation The parentCorrelation to set.
-	 */
-	public void setParentCorrelation(String parentCorrelation) {
-		this.parentCorrelation = parentCorrelation;
-	}
+    /**
+     * @param template
+     */
+    public void setTemplateFlag(int templateFlag) {
+        this.templateFlag = templateFlag;
+    }
+
+    /**
+     * @return Returns the correlationKey.
+     */
+    public String getCorrelationKey() {
+        return correlationKey;
+    }
+
+    /**
+     * @param correlationKey The correlationKey to set.
+     */
+    public void setCorrelationKey(String correlationKey) {
+        this.correlationKey = correlationKey;
+    }
+
+    /**
+     * @return Returns the parentCorrelation.
+     */
+    public String getParentCorrelation() {
+        return parentCorrelation;
+    }
+
+    /**
+     * @param parentCorrelation The parentCorrelation to set.
+     */
+    public void setParentCorrelation(String parentCorrelation) {
+        this.parentCorrelation = parentCorrelation;
+    }
+
     /**
      * @return the acceptLimit
      */
@@ -264,8 +271,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param acceptLimit
-     *            the acceptLimit to set
+     * @param acceptLimit the acceptLimit to set
      */
     public void setSheetAcceptLimit(Date acceptLimit) {
         this.sheetAcceptLimit = acceptLimit;
@@ -279,8 +285,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param accessories
-     *            the accessories to set
+     * @param accessories the accessories to set
      */
     public void setSheetAccessories(String accessories) {
         this.sheetAccessories = accessories;
@@ -294,8 +299,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param completeLimit
-     *            the completeLimit to set
+     * @param completeLimit the completeLimit to set
      */
     public void setSheetCompleteLimit(Date completeLimit) {
         this.sheetCompleteLimit = completeLimit;
@@ -309,8 +313,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param endDeptId
-     *            the endDeptId to set
+     * @param endDeptId the endDeptId to set
      */
     public void setEndDeptId(String endDeptId) {
         this.endDeptId = endDeptId;
@@ -324,8 +327,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param endResult
-     *            the endResult to set
+     * @param endResult the endResult to set
      */
     public void setEndResult(String endResult) {
         this.endResult = endResult;
@@ -339,8 +341,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param endRoleId
-     *            the endRoleId to set
+     * @param endRoleId the endRoleId to set
      */
     public void setEndRoleId(String endRoleId) {
         this.endRoleId = endRoleId;
@@ -354,8 +355,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param endTime
-     *            the endTime to set
+     * @param endTime the endTime to set
      */
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
@@ -369,8 +369,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param endUserId
-     *            the endUserId to set
+     * @param endUserId the endUserId to set
      */
     public void setEndUserId(String endUserId) {
         this.endUserId = endUserId;
@@ -384,8 +383,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param holdStatisfied
-     *            the holdStatisfied to set
+     * @param holdStatisfied the holdStatisfied to set
      */
     public void setHoldStatisfied(Integer holdStatisfied) {
         this.holdStatisfied = holdStatisfied;
@@ -399,8 +397,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -414,8 +411,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param parendSheetId
-     *            the parentSheetId to set
+     * @param parendSheetId the parentSheetId to set
      */
     public void setParentSheetId(String parendSheetId) {
         this.parentSheetId = parendSheetId;
@@ -429,8 +425,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param parentSheetName
-     *            the parentSheetName to set
+     * @param parentSheetName the parentSheetName to set
      */
     public void setParentSheetName(String parentSheetName) {
         this.parentSheetName = parentSheetName;
@@ -444,8 +439,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param piid
-     *            the piid to set
+     * @param piid the piid to set
      */
     public void setPiid(String piid) {
         this.piid = piid;
@@ -459,8 +453,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param sendContact
-     *            the sendContact to set
+     * @param sendContact the sendContact to set
      */
     public void setSendContact(String sendContact) {
         this.sendContact = sendContact;
@@ -474,14 +467,12 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param sendDeptId
-     *            the sendDeptId to set
+     * @param sendDeptId the sendDeptId to set
      */
     public void setSendDeptId(String sendDeptId) {
         this.sendDeptId = sendDeptId;
     }
 
- 
 
     /**
      * @return the sendRoleId
@@ -491,8 +482,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param sendRoleId
-     *            the sendRoleId to set
+     * @param sendRoleId the sendRoleId to set
      */
     public void setSendRoleId(String sendRoleId) {
         this.sendRoleId = sendRoleId;
@@ -506,8 +496,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param sendTime
-     *            the sendTime to set
+     * @param sendTime the sendTime to set
      */
     public void setSendTime(Date sendTime) {
         this.sendTime = sendTime;
@@ -521,8 +510,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param sendUserId
-     *            the sendUserId to set
+     * @param sendUserId the sendUserId to set
      */
     public void setSendUserId(String sendUserId) {
         this.sendUserId = sendUserId;
@@ -541,39 +529,44 @@ public class BaseMain implements Serializable{
     public Integer getDeleted() {
         return deleted;
     }
+
     /**
      * @param deleted the deleted to set
      */
     public void setDeleted(Integer deleted) {
         this.deleted = deleted;
     }
+
     /**
      * @return the sendOrgType
      */
     public String getSendOrgType() {
         return sendOrgType;
     }
+
     /**
      * @param sendOrgType the sendOrgType to set
      */
     public void setSendOrgType(String sendOrgType) {
         this.sendOrgType = sendOrgType;
     }
+
     /**
      * @return the status
      */
     public Integer getStatus() {
         return status;
     }
+
     /**
      * @param status the status to set
      */
     public void setStatus(Integer status) {
         this.status = status;
     }
+
     /**
-     * @param sheetId
-     *            the sheetId to set
+     * @param sheetId the sheetId to set
      */
     public void setSheetId(String sheetId) {
         this.sheetId = sheetId;
@@ -588,8 +581,7 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param templateName
-     *            the templateName to set
+     * @param templateName the templateName to set
      */
     public void setSheetTemplateName(String templateName) {
         this.sheetTemplateName = templateName;
@@ -603,64 +595,65 @@ public class BaseMain implements Serializable{
     }
 
     /**
-     * @param title
-     *            the title to set
+     * @param title the title to set
      */
     public void setTitle(String title) {
         this.title = title;
     }
-	/**
-	 * @return Returns the toDeptId.
-	 */
-	public String getToDeptId() {
-		return toDeptId;
-	}
-	/**
-	 * @param toDeptId The toDeptId to set.
-	 */
-	public void setToDeptId(String toDeptId) {
-		this.toDeptId = toDeptId;
-	}
 
-	public String getCancelReason() {
-		return cancelReason;
-	}
+    /**
+     * @return Returns the toDeptId.
+     */
+    public String getToDeptId() {
+        return toDeptId;
+    }
 
-	public void setCancelReason(String cancelReason) {
-		this.cancelReason = cancelReason;
-	}
+    /**
+     * @param toDeptId The toDeptId to set.
+     */
+    public void setToDeptId(String toDeptId) {
+        this.toDeptId = toDeptId;
+    }
 
-	public int getSendDay() {
-		return sendDay;
-	}
+    public String getCancelReason() {
+        return cancelReason;
+    }
 
-	public void setSendDay(int sendDay) {
-		this.sendDay = sendDay;
-	}
+    public void setCancelReason(String cancelReason) {
+        this.cancelReason = cancelReason;
+    }
 
-	public int getSendMonth() {
-		return sendMonth;
-	}
+    public int getSendDay() {
+        return sendDay;
+    }
 
-	public void setSendMonth(int sendMonth) {
-		this.sendMonth = sendMonth;
-	}
+    public void setSendDay(int sendDay) {
+        this.sendDay = sendDay;
+    }
 
-	public int getSendYear() {
-		return sendYear;
-	}
+    public int getSendMonth() {
+        return sendMonth;
+    }
 
-	public void setSendYear(int sendYear) {
-		this.sendYear = sendYear;
-	}
+    public void setSendMonth(int sendMonth) {
+        this.sendMonth = sendMonth;
+    }
 
-	public String getParentPhaseName() {
-		return parentPhaseName;
-	}
+    public int getSendYear() {
+        return sendYear;
+    }
 
-	public void setParentPhaseName(String parentPhaseName) {
-		this.parentPhaseName = parentPhaseName;
-	}
-	
-	
+    public void setSendYear(int sendYear) {
+        this.sendYear = sendYear;
+    }
+
+    public String getParentPhaseName() {
+        return parentPhaseName;
+    }
+
+    public void setParentPhaseName(String parentPhaseName) {
+        this.parentPhaseName = parentPhaseName;
+    }
+
+
 }

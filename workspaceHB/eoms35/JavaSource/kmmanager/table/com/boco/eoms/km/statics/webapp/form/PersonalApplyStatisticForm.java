@@ -12,73 +12,65 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Mon Mar 30 14:39:15 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() ljt
  * @moudle.getVersion() 0.1
- * 
  */
 public class PersonalApplyStatisticForm extends BaseForm implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 *
-	 * 用户姓名
-	 *
-	 */
-	private java.lang.String userName;
-   
-	public void setUserName(java.lang.String userName){
-		this.userName= userName;       
-	}
-   
-	public java.lang.String getUserName(){
-		return this.userName;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * 用户部门
-	 *
-	 */
-	private java.lang.String userDept;
-   
-	public void setUserDept(java.lang.String userDept){
-		this.userDept= userDept;       
-	}
-   
-	public java.lang.String getUserDept(){
-		return this.userDept;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * 申请知识数
-	 *
-	 */
-	private java.lang.Long applyCount;
+    /**
+     * 用户姓名
+     */
+    private java.lang.String userName;
 
-	public java.lang.Long getApplyCount() {
-		return applyCount;
-	}
+    public void setUserName(java.lang.String userName) {
+        this.userName = userName;
+    }
 
-	public void setApplyCount(java.lang.Long applyCount) {
-		this.applyCount = applyCount;
-	}
-   
-	
-	
+    public java.lang.String getUserName() {
+        return this.userName;
+    }
+
+    /**
+     * 用户部门
+     */
+    private java.lang.String userDept;
+
+    public void setUserDept(java.lang.String userDept) {
+        this.userDept = userDept;
+    }
+
+    public java.lang.String getUserDept() {
+        return this.userDept;
+    }
+
+    /**
+     * 申请知识数
+     */
+    private java.lang.Long applyCount;
+
+    public java.lang.Long getApplyCount() {
+        return applyCount;
+    }
+
+    public void setApplyCount(java.lang.Long applyCount) {
+        this.applyCount = applyCount;
+    }
+
+
 }

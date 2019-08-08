@@ -51,37 +51,37 @@ var SITENAME = "10.30.227.11";
  * If 'servers_allowed' contains one single element no option is
  * presented to user.
  */
-var BACKENDS = 
-[
-		{
-			name:"Native Binding",
-			description:"Ejabberd's native HTTP Binding backend",
-			httpbase:"/http-bind/",
-			type:"binding",
-			servers_allowed:[SITENAME]
-		},
-		{
-			name:"Native Polling",
-			description:"Ejabberd's native HTTP Polling backend",
-			httpbase:"/http-poll/",
-			type:"polling",
-			servers_allowed:[SITENAME]
-		},
-		{
-			name:"Open Relay",
-			description:"HTTP Binding backend that allows connecting to any jabber server",
-			httpbase:"/JHB/",
-			type:"binding",
-			default_server: SITENAME
-		},
-		{
-			name:"Restricted Relay",
-			description:"This one let's you choose from a limited list of allowed servers",
-			httpbase:"/JHB/",
-			type:"binding",
-			servers_allowed:[SITENAME,'jabber.org','jwchat.org']
-		}
-];
+var BACKENDS =
+    [
+        {
+            name: "Native Binding",
+            description: "Ejabberd's native HTTP Binding backend",
+            httpbase: "/http-bind/",
+            type: "binding",
+            servers_allowed: [SITENAME]
+        },
+        {
+            name: "Native Polling",
+            description: "Ejabberd's native HTTP Polling backend",
+            httpbase: "/http-poll/",
+            type: "polling",
+            servers_allowed: [SITENAME]
+        },
+        {
+            name: "Open Relay",
+            description: "HTTP Binding backend that allows connecting to any jabber server",
+            httpbase: "/JHB/",
+            type: "binding",
+            default_server: SITENAME
+        },
+        {
+            name: "Restricted Relay",
+            description: "This one let's you choose from a limited list of allowed servers",
+            httpbase: "/JHB/",
+            type: "binding",
+            servers_allowed: [SITENAME, 'jabber.org', 'jwchat.org']
+        }
+    ];
 
 var DEFAULTRESOURCE = "jwchat";
 var DEFAULTPRIORITY = "10";
@@ -90,14 +90,14 @@ var DEFAULTPRIORITY = "10";
  * default values for joingroupchat form
  */
 var DEFAULTCONFERENCEROOM = "talks";
-var DEFAULTCONFERENCESERVER = "conference."+SITENAME;
+var DEFAULTCONFERENCESERVER = "conference." + SITENAME;
 
 /* debugging options */
 var DEBUG = false; // turn debugging on
 var DEBUG_LVL = 2; // debug-level 0..4 (4 = very noisy)
 
 var USE_DEBUGJID = false; // if true only DEBUGJID gets the debugger
-var DEBUGJID = "admin@"+SITENAME; // which user get's debug messages
+var DEBUGJID = "admin@" + SITENAME; // which user get's debug messages
 
 
 // most probably you don't want to change anything below

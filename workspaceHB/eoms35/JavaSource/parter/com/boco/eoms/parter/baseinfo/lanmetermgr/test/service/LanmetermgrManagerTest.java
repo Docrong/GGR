@@ -35,7 +35,7 @@ public class LanmetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         lanmetermgrDao.expects(once()).method("getLanmetermgrs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List lanmetermgrs = lanmetermgrManager.getLanmetermgrs(null);
         assertTrue(lanmetermgrs.size() == 1);
@@ -45,7 +45,7 @@ public class LanmetermgrManagerTest extends BaseManagerTestCase {
     public void testGetLanmetermgr() throws Exception {
         // set expected behavior on dao
         lanmetermgrDao.expects(once()).method("getLanmetermgr")
-            .will(returnValue(new Lanmetermgr()));
+                .will(returnValue(new Lanmetermgr()));
         Lanmetermgr lanmetermgr = lanmetermgrManager.getLanmetermgr(lanmetermgrId);
         assertTrue(lanmetermgr != null);
         lanmetermgrDao.verify();
@@ -56,7 +56,7 @@ public class LanmetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         lanmetermgrDao.expects(once()).method("saveLanmetermgr")
-            .with(same(lanmetermgr)).isVoid();
+                .with(same(lanmetermgr)).isVoid();
 
         lanmetermgrManager.saveLanmetermgr(lanmetermgr);
         lanmetermgrDao.verify();
@@ -69,7 +69,7 @@ public class LanmetermgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         lanmetermgrDao.expects(once()).method("saveLanmetermgr")
-            .with(same(lanmetermgr)).isVoid();
+                .with(same(lanmetermgr)).isVoid();
         lanmetermgrManager.saveLanmetermgr(lanmetermgr);
         lanmetermgrDao.verify();
 

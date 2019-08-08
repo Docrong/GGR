@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-	
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
 <hibernate-mapping
 >
     <class
             name="com.boco.eoms.message.model.SmsUserLog"
             table="sms_user_log"
     >
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
         <property
-            name="userName"
+                name="userName"
                 length="32"
                 not-null="false"
                 unique="false"
@@ -31,7 +31,7 @@
         >
         </property>
         <property
-            name="mobile"
+                name="mobile"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -39,7 +39,7 @@
         >
         </property>
         <property
-            name="dateTime"
+                name="dateTime"
                 length="200"
                 not-null="false"
                 unique="false"
@@ -48,7 +48,7 @@
 
         </property>
         <property
-            name="team"
+                name="team"
                 length="30"
                 not-null="true"
                 unique="false"
@@ -56,7 +56,7 @@
         >
         </property>
         <property
-            name="status"
+                name="status"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -64,17 +64,17 @@
         >
         </property>
         <property
-            name="dept"
+                name="dept"
                 length="10"
                 not-null="false"
                 unique="false"
                 column="dept"
         >
         </property>
-        
-        
+
+
         <property
-            name="content"
+                name="content"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -82,7 +82,7 @@
         >
         </property>
         <property
-            name="timeRemark"
+                name="timeRemark"
                 length="100"
                 not-null="false"
                 unique="false"
@@ -90,16 +90,16 @@
         >
         </property>
         <property
-            name="teamName"
+                name="teamName"
                 length="100"
                 not-null="false"
                 unique="false"
                 column="teamName"
         >
         </property>
-        
 
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

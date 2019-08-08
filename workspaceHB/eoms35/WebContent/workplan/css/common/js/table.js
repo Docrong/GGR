@@ -1,319 +1,356 @@
 /********************************************************************************
- Copyright (c) 2004-2006, ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+ Copyright (c) 2004-2006, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
  All rights reserved.
- Filename £ºtable.js
- Abstract £º±í¸ñÏà¹Ø¿ØÖÆ·½·¨
- Version¡¡£º2.0
- Author   £ºLiu Guoyuan
- Finished Date £º2004-03-30
- Last Modified £º2004-08-12
+ Filename ï¿½ï¿½table.js
+ Abstract ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
+ Versionï¿½ï¿½ï¿½ï¿½2.0
+ Author   ï¿½ï¿½Liu Guoyuan
+ Finished Date ï¿½ï¿½2004-03-30
+ Last Modified ï¿½ï¿½2004-08-12
 
  2.1
-   2004-08-12 ÐÞ¸Ä_loadJS£¬½â¾öÄ¿Â¼ÖÐÓÐ´óÐ´Ê±ÕÒ²»µ½Â·¾¶µÄÎÊÌâ(ÃçÅô)
-			  ½«×°ÔØpingying.js,bihua.jsµÄº¯Êý¸ÄÎª_loadJS
+ 2004-08-12 ï¿½Þ¸ï¿½_loadJSï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½Ð´ï¿½Ð´Ê±ï¿½Ò²ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
+ ï¿½ï¿½×°ï¿½ï¿½pingying.js,bihua.jsï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½Îª_loadJS
 
  2.0
-   2004-05-19 ÐÞ¸Ä sortTable() ·½·¨£¬ÔöÇ¿ÈÝ´íÄÜÁ¦
-   2004-04-28 Ìí¼Ó sortTable(tbl,colIndex,dataType,By) ±í¸ñÅÅÐò·½·¨
+ 2004-05-19 ï¿½Þ¸ï¿½ sortTable() ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½
+ 2004-04-28 ï¿½ï¿½ï¿½ sortTable(tbl,colIndex,dataType,By) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò·½·ï¿½
 
  1.11
-   2004-04-28 Ìí¼Ó fixTableWidth(srcTable,fixTable) ½«Á½¸ö±í¸ñ¿í¶ÈÉèÎªÏàµÈ¡£
-   2004-04-17 Ìí¼Ó switchRow2Col(objTable) ±í¸ñÐÐÁÐ½»»»
+ 2004-04-28 ï¿½ï¿½ï¿½ fixTableWidth(srcTable,fixTable) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½È¡ï¿½
+ 2004-04-17 ï¿½ï¿½ï¿½ switchRow2Col(objTable) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½
 
  1.1
-  ÐÞ¸Ä getFilterSelect() Âß¼­£¬1.0ÎªÒ³ÃæÔØÈëÍê³ÉºóÒ»´Î¶ÁÈ¡È«²¿µÄÁÐÊý¾Ý£¬µ±ÁÐÊý¾Ý½Ï¶àÊ±»áÓ°ÏìÒ³ÃæÔØÈëËÙ¶È£¬
-  ¸ÄÎªµã»÷SELECTÁÐ±íÊ±¶ÁÈ¡ÁÐÊý¾Ý£¬Ôö¼ÓloadFilterListOnDemand·½·¨£¨¶ÁÈëÖ¸¶¨ÁÐÊý¾Ý£©
+ ï¿½Þ¸ï¿½ getFilterSelect() ï¿½ß¼ï¿½ï¿½ï¿½1.0ÎªÒ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½Ò»ï¿½Î¶ï¿½È¡È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý½Ï¶ï¿½Ê±ï¿½ï¿½Ó°ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È£ï¿½
+ ï¿½ï¿½Îªï¿½ï¿½ï¿½SELECTï¿½Ð±ï¿½Ê±ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½loadFilterListOnDemandï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½
 
  1.0
-  getFilterSelect(tableName,colIndex)  ´Ó±í¸ñÖ¸¶¨ÁÐÖÐµÃµ½¹ýÂËÁÐ±í£¨Select£©
-  filterTable(table,colIndex,value)  ¹ýÂË±í¸ñÏÔÊ¾ÄÚÈÝ   ²ÎÊý£º±í¸ñÃû£¬ÁÐË÷Òý£¬±£ÁôÏÔÊ¾µÄÄÚÈÝ
-********************************************************************************/
+ getFilterSelect(tableName,colIndex)  ï¿½Ó±ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Selectï¿½ï¿½
+ filterTable(table,colIndex,value)  ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ ********************************************************************************/
 
-//¶ÁÈ¡¹«¹²¿â
-function _loadJS(src){
-	var script=document.getElementsByTagName("SCRIPT");
-	for(var i=0;i<script.length;i++){
-		var s=script[i].src;
-		if(s.indexOf(src)>=0) return;
-		if(s.indexOf("/common/js/table.js")!=-1){jsPath=s.replace("table.js","")}
-	}
-	var oScript = document.createElement("<SCRIPT>");
-	oScript.src = jsPath+src;
-	script[0].insertAdjacentElement("afterEnd",oScript);
+//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+function _loadJS(src) {
+    var script = document.getElementsByTagName("SCRIPT");
+    for (var i = 0; i < script.length; i++) {
+        var s = script[i].src;
+        if (s.indexOf(src) >= 0) return;
+        if (s.indexOf("/common/js/table.js") != -1) {
+            jsPath = s.replace("table.js", "")
+        }
+    }
+    var oScript = document.createElement("<SCRIPT>");
+    oScript.src = jsPath + src;
+    script[0].insertAdjacentElement("afterEnd", oScript);
 }
+
 _loadJS("lib.js");
 
 /*********************************************
- ´Ó±í¸ñÖ¸¶¨ÁÐÖÐµÃµ½¹ýÂËÁÐ±í£¨Select£©
- ²ÎÊý£º±í¸ñÃû£¬ÁÐË÷Òý
-*********************************************/
-function getFilterSelect(tableName,colIndex){
-  var table = getObject(tableName);
-  if (!checkTable(tableName,colIndex)) return "";
-  try{
-    var colWidth = table.rows[0].cells[colIndex].offsetWidth;
-  }
-  catch (E){
-    return "";
-  }
-  returnStr = "<select style=\"width:"+ colWidth +"\" isload=\"false\" "+
-              " onclick=\"loadFilterListOnDemand('"+ tableName +"'," + colIndex + ");\""+
-              ">";
-  returnStr+= "<option value=\"\">È«²¿</option>";
-  returnStr+= "</select>";
-  return returnStr;
+ ï¿½Ó±ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÃµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½Selectï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *********************************************/
+function getFilterSelect(tableName, colIndex) {
+    var table = getObject(tableName);
+    if (!checkTable(tableName, colIndex)) return "";
+    try {
+        var colWidth = table.rows[0].cells[colIndex].offsetWidth;
+    } catch (E) {
+        return "";
+    }
+    returnStr = "<select style=\"width:" + colWidth + "\" isload=\"false\" " +
+        " onclick=\"loadFilterListOnDemand('" + tableName + "'," + colIndex + ");\"" +
+        ">";
+    returnStr += "<option value=\"\">È«ï¿½ï¿½</option>";
+    returnStr += "</select>";
+    return returnStr;
 }
 
 /******************************************
- ¶ÁÈ¡Ö¸¶¨ÁÐÊý¾ÝÖÁSelectÁÐ±í
-******************************************/
-function loadFilterListOnDemand(tableName,colIndex){
-  var oSelect = event.srcElement;
-  if (oSelect.isload == true){ //Êý¾ÝÒÑ¶ÁÈë
-    return;
-  }else{
-    oSelect.isload = true;
-  }
-  var table = eval(tableName);
-  var tr = table.rows;
-  var td;
-  var trCount = tr.length;
-  var aryAllData = new Array(trCount);
-  var arySize = 0;  //Êý×éÊµ¼Ê´óÐ¡
-  for (var i=0;i<trCount;i++){
-    if (tr[i].parentElement.tagName=="THEAD" || tr[i].className.toLowerCase().indexOf("tabletitle")>=0) continue;
-    td = tr[i].cells[colIndex];
-    if (td!=null) { //µ¥Ôª¸ñÕý³£
-      if (td.innerText!=""){
-        aryAllData[arySize] = td.innerText;
-        arySize ++;
-      }
-    };
-  }
-  if (arySize<trCount) aryAllData = aryAllData.left(arySize);
-  aryAllData = aryAllData.distinct();
-
-  for (var i=0;i<aryAllData.length;i++){
-    oSelect.add(new Option(aryAllData[i],aryAllData[i]));
-  }
-  oSelect.onchange = function(){
-    /*** ½«ÆäËü¹ýÂËÁÐ±íÉèÎªÑ¡ÖÐÈ«²¿ ***/
-    var oAllFilterSelect = document.getElementsByTagName("SELECT");
-    for (var i=0;i<oAllFilterSelect.length;i++){
-      if (oAllFilterSelect[i].isload && oAllFilterSelect[i].sourceIndex!=oSelect.sourceIndex){
-        oAllFilterSelect[i].options[0].selected = true;
-      }
+ ï¿½ï¿½È¡Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Selectï¿½Ð±ï¿½
+ ******************************************/
+function loadFilterListOnDemand(tableName, colIndex) {
+    var oSelect = event.srcElement;
+    if (oSelect.isload == true) { //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½
+        return;
+    } else {
+        oSelect.isload = true;
     }
-    /*** ¹ýÂËÖ¸¶¨ÁÐ ***/
-    filterTable(tableName,colIndex,this.value);
-  }
+    var table = eval(tableName);
+    var tr = table.rows;
+    var td;
+    var trCount = tr.length;
+    var aryAllData = new Array(trCount);
+    var arySize = 0;  //ï¿½ï¿½ï¿½ï¿½Êµï¿½Ê´ï¿½Ð¡
+    for (var i = 0; i < trCount; i++) {
+        if (tr[i].parentElement.tagName == "THEAD" || tr[i].className.toLowerCase().indexOf("tabletitle") >= 0) continue;
+        td = tr[i].cells[colIndex];
+        if (td != null) { //ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            if (td.innerText != "") {
+                aryAllData[arySize] = td.innerText;
+                arySize++;
+            }
+        }
+        ;
+    }
+    if (arySize < trCount) aryAllData = aryAllData.left(arySize);
+    aryAllData = aryAllData.distinct();
+
+    for (var i = 0; i < aryAllData.length; i++) {
+        oSelect.add(new Option(aryAllData[i], aryAllData[i]));
+    }
+    oSelect.onchange = function () {
+        /*** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ÎªÑ¡ï¿½ï¿½È«ï¿½ï¿½ ***/
+        var oAllFilterSelect = document.getElementsByTagName("SELECT");
+        for (var i = 0; i < oAllFilterSelect.length; i++) {
+            if (oAllFilterSelect[i].isload && oAllFilterSelect[i].sourceIndex != oSelect.sourceIndex) {
+                oAllFilterSelect[i].options[0].selected = true;
+            }
+        }
+        /*** ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ ***/
+        filterTable(tableName, colIndex, this.value);
+    }
 }
 
 
 /*********************************************
- ¹ýÂË±í¸ñÏÔÊ¾ÄÚÈÝ
- ²ÎÊý£º±í¸ñ¶ÔÏó£¬ÁÐË÷Òý£¬±£ÁôÏÔÊ¾µÄÄÚÈÝ
-*********************************************/
-function filterTable(tableName,colIndex,showValue){
-  var table = getObject(tableName);
-  if (!checkTable(tableName,colIndex)) return;
-  var tr = table.rows;
-  var trCount = tr.length;
-  var td;
-  var showFlag;
-  for (var i=0;i<trCount;i++){
-    if (tr[i].parentElement.tagName=="THEAD" || tr[i].className.toLowerCase().indexOf("tabletitle")>=0) continue;
-    td = tr[i].cells[colIndex];
-    if (td==null){ //µ¥Ôª¸ñÓÐÎó
-      showFlag = false;
-    }else{
-      showFlag = (showValue == "" || showValue == "nothing" || td.innerText==showValue);
+ ï¿½ï¿½ï¿½Ë±ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *********************************************/
+function filterTable(tableName, colIndex, showValue) {
+    var table = getObject(tableName);
+    if (!checkTable(tableName, colIndex)) return;
+    var tr = table.rows;
+    var trCount = tr.length;
+    var td;
+    var showFlag;
+    for (var i = 0; i < trCount; i++) {
+        if (tr[i].parentElement.tagName == "THEAD" || tr[i].className.toLowerCase().indexOf("tabletitle") >= 0) continue;
+        td = tr[i].cells[colIndex];
+        if (td == null) { //ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            showFlag = false;
+        } else {
+            showFlag = (showValue == "" || showValue == "nothing" || td.innerText == showValue);
+        }
+        if (showFlag) {//ï¿½ï¿½Ê¾
+            tr[i].style.display = "block";
+        } else {
+            tr[i].style.display = "none";
+        }
     }
-    if (showFlag){//ÏÔÊ¾
-      tr[i].style.display = "block";
-    }else{
-      tr[i].style.display = "none";
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¹ï¿½page.jsï¿½Ðµï¿½setTableStyleï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëºï¿½ï¿½Ê¹ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Âµï¿½ï¿½Ã¸Ã·ï¿½ï¿½ï¿½
+    if (table.isSetStyle) {
+        setTableStyle(table, table.needMouseStyle);
     }
-  }
-  //´¦ÀíÑùÊ½£¬µ±±í¸ñÊ¹ÓÃ¹ýpage.jsÖÐµÄsetTableStyle·½·¨£¬¹ýÂËºó»áÊ¹µ¥Ôª¸ñÑÕÉ«»ìÂÒ£¬ÐèÒªÖØÐÂµ÷ÓÃ¸Ã·½·¨
-  if (table.isSetStyle) {setTableStyle(table,table.needMouseStyle);}
 }
 
 /*********************************************
- ±í¸ñÐÐÁÐ½»»»
- ²ÎÊý£º±í¸ñ¶ÔÏó
-*********************************************/
-function switchRow2Col(objTab){
-  var tabArray = new Array();
-  for(var i = 0;i<objTab.rows[0].cells.length;i++){
-    var tmpArray = new Array()
-    for(var j = 0; j<objTab.rows.length;j++){
-      tmpArray[tmpArray.length] = objTab.rows[j].cells[i].outerHTML
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *********************************************/
+function switchRow2Col(objTab) {
+    var tabArray = new Array();
+    for (var i = 0; i < objTab.rows[0].cells.length; i++) {
+        var tmpArray = new Array()
+        for (var j = 0; j < objTab.rows.length; j++) {
+            tmpArray[tmpArray.length] = objTab.rows[j].cells[i].outerHTML
+        }
+        tabArray[tabArray.length] = tmpArray;
     }
-    tabArray[tabArray.length] = tmpArray;
-  }
-  var str = "";
-  for(var i =0;i<tabArray.length;i++){
-    str += "<tr>" + tabArray[i].join("") + "</tr>"
-  }
-  str = "<table width=\"" + objTab.width +
-          "\" cellPadding=\""+ objTab.cellPadding +
-          "\" cellSpacing=\""+ objTab.cellSpacing +
-          "\" id=\"" + objTab.id +
+    var str = "";
+    for (var i = 0; i < tabArray.length; i++) {
+        str += "<tr>" + tabArray[i].join("") + "</tr>"
+    }
+    str = "<table width=\"" + objTab.width +
+        "\" cellPadding=\"" + objTab.cellPadding +
+        "\" cellSpacing=\"" + objTab.cellSpacing +
+        "\" id=\"" + objTab.id +
         "\">" + str + "</table>";
-  objTab.outerHTML = str
+    objTab.outerHTML = str
 }
 
 /*********************************************
- ½«Á½¸ö±í¸ñ¿í¶ÈÉèÎªÏàµÈ¡£
- ²ÎÊý£ºÔ´±í¸ñ¶ÔÏó£¬ÐèÒªÐÞ¸Ä¿í¶ÈµÄ±í¸ñ¶ÔÏó
-*********************************************/
-function fixTableWidth(srcTable,fixTable){
-  var srcCellCount = srcTable.rows[0].cells.length;
-  if (srcCellCount != fixTable.rows[0].cells.length) return;
-  for(var i = 0;i<srcCellCount;i++){
-    var srcWidth = srcTable.rows[0].cells[i].offsetWidth;
-    var fixTD = fixTable.rows[0].cells[i];
-    if (fixTD.firstChild.tagName=="SELECT"){
-      fixTD.firstChild.style.width = srcWidth;
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½È¡ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Þ¸Ä¿ï¿½ÈµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½
+ *********************************************/
+function fixTableWidth(srcTable, fixTable) {
+    var srcCellCount = srcTable.rows[0].cells.length;
+    if (srcCellCount != fixTable.rows[0].cells.length) return;
+    for (var i = 0; i < srcCellCount; i++) {
+        var srcWidth = srcTable.rows[0].cells[i].offsetWidth;
+        var fixTD = fixTable.rows[0].cells[i];
+        if (fixTD.firstChild.tagName == "SELECT") {
+            fixTD.firstChild.style.width = srcWidth;
+        }
+        fixTD.style.width = srcWidth;
     }
-    fixTD.style.width = srcWidth;
-  }
 }
 
 /*********************************************
-  ÅÅÐò±í¸ñ
-  ²ÎÊý£º
-   tbl       - TABLE, TBODY, THEAD or TFOOT ÔªËØ
-   colIndex  - ÁÐË÷Òý,¿ÕÎªµã»÷µÄÁÐË÷Òý
-   dataType  - Êý¾ÝÀàÐÍ: ¿Õ£º×Ô¶¯ÅÐ¶Ï£¬¡¡CHAR(×Ö·û),NUM(Êý×Ö),DATE(ÈÕÆÚ),CNPY(ÖÐÎÄÆ´Òô),CNBH(ÖÐÎÄ±Ê»®) ,
-   By        - Ä¬ÈÏÅÅÐò·½Ïò£¬¿Õ£ºASC:reverse£¬ DESC:descending
-*********************************************/
-function sortTable(tbl,colIndex,dataType,By){
-  if (!checkTable(tbl,colIndex)) return;
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ tbl       - TABLE, TBODY, THEAD or TFOOT Ôªï¿½ï¿½
+ colIndex  - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ dataType  - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ï¿½Õ£ï¿½ï¿½Ô¶ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½CHAR(ï¿½Ö·ï¿½),NUM(ï¿½ï¿½ï¿½ï¿½),DATE(ï¿½ï¿½ï¿½ï¿½),CNPY(ï¿½ï¿½ï¿½ï¿½Æ´ï¿½ï¿½),CNBH(ï¿½ï¿½ï¿½Ä±Ê»ï¿½) ,
+ By        - Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò£¬¿Õ£ï¿½ASC:reverseï¿½ï¿½ DESC:descending
+ *********************************************/
+function sortTable(tbl, colIndex, dataType, By) {
+    if (!checkTable(tbl, colIndex)) return;
 
-  //´¦Àí±í¸ñ¶ÔÏó£¬ÉèÖÃ±í¸ñÅÅÐò¶ÔÏóÎªÆätbody
-  if (tbl.tagName=="TABLE"){
-    tbl = tbl.tBodies[0];
-  }
-  table = tbl.parentNode; //±í¸ñ¶ÔÏó
-  
-  var obj = event.srcElement;    //µã»÷µÄ¶ÔÏó£¬ÓÃÓÚ±£´æÅÅÐò·½Ïò
-  var objTD;                     //ÅÅÐòÁÐµÄµÚÒ»ÐÐ,ÓÃÓÚÉèÖÃÅÅÐò¼ýÍ·
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½tbody
+    if (tbl.tagName == "TABLE") {
+        tbl = tbl.tBodies[0];
+    }
+    table = tbl.parentNode; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-  //´¦ÀíÁÐË÷Òý
-  if (colIndex == null){//Ã»ÓÐÖ¸¶¨ÁÐË÷Òý£¬Îªµ±Ç°µã»÷µÄÁÐË÷Òý
-    if (obj.tagName!="TD") obj=objTD.parentNode;
-    if (obj.tagName == "TD"){
-      colIndex = obj.cellIndex;
-      objTD = obj;
-    }else{
-      return;
-    }
-  }else if (colIndex>=0){//Ö¸¶¨ÁËÁÐË÷Òý
-    var objTD = table.rows[0].cells[colIndex];
-  }
-  else{
-    alert ("ÇëÉèÖÃÒªÅÅÐòµÄÁÐ£¡");
-    return;
-  }
+    var obj = event.srcElement;    //ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    var objTD;                     //ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄµï¿½Ò»ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·
 
-  //´¦ÀíÅÅÐò·½Ïò£¨ÀûÓÃµã»÷µÄ¶ÔÏó±£´æµ±Ç°ÁÐÅÅÐò·½Ïò£©
-  if (obj.sortTableBy == null){//Ã»ÓÐÅÅÐò£¬±£´æÖ¸¶¨ÅÅÐò·½Ïò
-    obj.sortTableBy = By == null ? "ASC" : By;
-  }else{
-    obj.sortTableBy = obj.sortTableBy == "ASC" ? "DESC" : "ASC";
-  }
-  By = obj.sortTableBy;
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (colIndex == null) {//Ã»ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (obj.tagName != "TD") obj = objTD.parentNode;
+        if (obj.tagName == "TD") {
+            colIndex = obj.cellIndex;
+            objTD = obj;
+        } else {
+            return;
+        }
+    } else if (colIndex >= 0) {//Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        var objTD = table.rows[0].cells[colIndex];
+    } else {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½");
+        return;
+    }
 
-  //´¦ÀíÅÅÐò¼ýÍ·
-  if (objTD.tagName == "TD" && objTD.parentNode.parentNode.tagName == "THEAD"){ //µã»÷µÄ¶ÔÏóÎªµ¥Ôª¸ñÒÔ¼°Îª±í¸ñ±êÌâ
-    for (var i=0;i<objTD.parentNode.cells.length;i++){
-      objTD.parentNode.cells[i].innerHTML = objTD.parentNode.cells[i].innerHTML.replace(/¡ü|¡ý/,"");
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ó±£´æµ±Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (obj.sortTableBy == null) {//Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ò£¬±ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        obj.sortTableBy = By == null ? "ASC" : By;
+    } else {
+        obj.sortTableBy = obj.sortTableBy == "ASC" ? "DESC" : "ASC";
     }
-    objTD.innerHTML += obj.sortTableBy == "DESC" ? "¡ý" : "¡ü";
-  }
+    By = obj.sortTableBy;
 
-  if (!checkTable(tbl,colIndex)) return;
-  //×Ô¶¯ÅÐ¶ÏÊý¾ÝÀàÐÍ
-  if (dataType==null){
-    checkText = tbl.rows[0].cells[colIndex].innerText;
-    if (checkText == "" || checkText == null){
-      dataType = "CHAR";
-    }else if (checkText.isDate()){
-      dataType = "DATE";
-    }else if (checkText.isChinese()){
-      dataType = "CNPY";
-    }else if (checkText.isNumeric()){
-      dataType = "NUM";
-    }else{
-      dataType = "CHAR";
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·
+    if (objTD.tagName == "TD" && objTD.parentNode.parentNode.tagName == "THEAD") { //ï¿½ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½Îªï¿½ï¿½Ôªï¿½ï¿½ï¿½Ô¼ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        for (var i = 0; i < objTD.parentNode.cells.length; i++) {
+            objTD.parentNode.cells[i].innerHTML = objTD.parentNode.cells[i].innerHTML.replace(/ï¿½ï¿½|ï¿½ï¿½/, "");
+        }
+        objTD.innerHTML += obj.sortTableBy == "DESC" ? "ï¿½ï¿½" : "ï¿½ï¿½";
     }
-  }
-  if(dataType.toUpperCase()=="CNPY")
-	_loadJS("pingying.js");
-  else if(dataType.toUpperCase()=="CNBH") 
-	_loadJS("bihua.js");
-  //´Ë´¦¿ÉÐÂÔöÌØÊâ¸ñÊ½´¦Àí
-  var extConvert=function(Data,Type){
-    switch(Type.toLowerCase()){
-      case "NUM2":  //×Ô¶¨ÒåÀàÐÍÃû
-        return parseFloat(Data.replace(/,/g,""));
-        break;
-      default:
-        return Data
+
+    if (!checkTable(tbl, colIndex)) return;
+    //ï¿½Ô¶ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    if (dataType == null) {
+        checkText = tbl.rows[0].cells[colIndex].innerText;
+        if (checkText == "" || checkText == null) {
+            dataType = "CHAR";
+        } else if (checkText.isDate()) {
+            dataType = "DATE";
+        } else if (checkText.isChinese()) {
+            dataType = "CNPY";
+        } else if (checkText.isNumeric()) {
+            dataType = "NUM";
+        } else {
+            dataType = "CHAR";
+        }
     }
-  }
-  var convert=function(Data,Type){
-    var Rst=Data;
-    var cn_code=function(idx){
-      if  (idx<100){return String.fromCharCode(0,idx);}
-      else{var s=idx.toString();return String.fromCharCode(parseInt(s.substring(0,s.length-2)),idx%100);}
+    if (dataType.toUpperCase() == "CNPY")
+        _loadJS("pingying.js");
+    else if (dataType.toUpperCase() == "CNBH")
+        _loadJS("bihua.js");
+    //ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+    var extConvert = function (Data, Type) {
+        switch (Type.toLowerCase()) {
+            case "NUM2":  //ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                return parseFloat(Data.replace(/,/g, ""));
+                break;
+            default:
+                return Data
+        }
     }
-    switch(Type.toUpperCase()){
-      case "CHAR":  Rst=Data;break;
-      case "NUM":  Rst=parseFloat(Data.replace(/,/g,""));if(isNaN(Rst))Rst=Data;break;
-      case "DATE":  Rst=Date.parse(Data.replace(/\-/g, '/'));if(isNaN(Rst))Rst=Data;break;
-      case "CNPY":
-        if(typeof(strChinesePingYing)=="undefined"){return Data;}
-        Rst="";
-        for(var i=0;i<Data.length;i++){var idx=strChinesePingYing.indexOf(Data.charAt(i));Rst+=idx!=-1?cn_code(idx):Data.charAt(i);}
-        break;
-      case "CNBH":
-        if(typeof(strChineseBiHua)=="undefined"){return Data;}
-        Rst="";
-        for(var i=0;i<Data.length;i++){var idx=strChineseBiHua.indexOf(Data.charAt(i));Rst+=idx!=-1?cn_code(idx):Data.charAt(i);}
-        break;
-      default : Rst=extConvert(Data,Type);if(Rst==null){Rst=Data};
+    var convert = function (Data, Type) {
+        var Rst = Data;
+        var cn_code = function (idx) {
+            if (idx < 100) {
+                return String.fromCharCode(0, idx);
+            } else {
+                var s = idx.toString();
+                return String.fromCharCode(parseInt(s.substring(0, s.length - 2)), idx % 100);
+            }
+        }
+        switch (Type.toUpperCase()) {
+            case "CHAR":
+                Rst = Data;
+                break;
+            case "NUM":
+                Rst = parseFloat(Data.replace(/,/g, ""));
+                if (isNaN(Rst)) Rst = Data;
+                break;
+            case "DATE":
+                Rst = Date.parse(Data.replace(/\-/g, '/'));
+                if (isNaN(Rst)) Rst = Data;
+                break;
+            case "CNPY":
+                if (typeof (strChinesePingYing) == "undefined") {
+                    return Data;
+                }
+                Rst = "";
+                for (var i = 0; i < Data.length; i++) {
+                    var idx = strChinesePingYing.indexOf(Data.charAt(i));
+                    Rst += idx != -1 ? cn_code(idx) : Data.charAt(i);
+                }
+                break;
+            case "CNBH":
+                if (typeof (strChineseBiHua) == "undefined") {
+                    return Data;
+                }
+                Rst = "";
+                for (var i = 0; i < Data.length; i++) {
+                    var idx = strChineseBiHua.indexOf(Data.charAt(i));
+                    Rst += idx != -1 ? cn_code(idx) : Data.charAt(i);
+                }
+                break;
+            default :
+                Rst = extConvert(Data, Type);
+                if (Rst == null) {
+                    Rst = Data
+                }
+                ;
+        }
+        return Rst;
     }
-    return Rst;
-  }
-  var ByAsc=(By=="ASC");
-  var arySort=[];
-  for(var i=0;i<tbl.rows.length;i++){
-    var Data=(tbl.rows[i].cells[colIndex])?(tbl.rows[i].cells[colIndex].innerText.toLowerCase()):null;
-    Data=convert(Data,dataType);
-    arySort[i]=new Array(Data,tbl.rows[i]);
-  }
-  arySort.sort(function(){var a=arguments;return ByAsc?(a[0][0]>a[1][0]?1:(a[0][0]<a[1][0]?-1:0)):(a[0][0]<a[1][0]?1:(a[0][0]>a[1][0]?-1:0));})
-  for(i=0;i<arySort.length;i++){tbl.appendChild(arySort[i][1]);}
-  //´¦ÀíÑùÊ½£¬µ±±í¸ñÊ¹ÓÃ¹ýpage.jsÖÐµÄsetTableStyle·½·¨£¬ÅÅÐòºó»áÊ¹µ¥Ôª¸ñÑÕÉ«»ìÂÒ£¬ÐèÒªÖØÐÂµ÷ÓÃ¸Ã·½·¨
-  if (table.isSetStyle) {setTableStyle(table,table.needMouseStyle);}
+    var ByAsc = (By == "ASC");
+    var arySort = [];
+    for (var i = 0; i < tbl.rows.length; i++) {
+        var Data = (tbl.rows[i].cells[colIndex]) ? (tbl.rows[i].cells[colIndex].innerText.toLowerCase()) : null;
+        Data = convert(Data, dataType);
+        arySort[i] = new Array(Data, tbl.rows[i]);
+    }
+    arySort.sort(function () {
+        var a = arguments;
+        return ByAsc ? (a[0][0] > a[1][0] ? 1 : (a[0][0] < a[1][0] ? -1 : 0)) : (a[0][0] < a[1][0] ? 1 : (a[0][0] > a[1][0] ? -1 : 0));
+    })
+    for (i = 0; i < arySort.length; i++) {
+        tbl.appendChild(arySort[i][1]);
+    }
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã¹ï¿½page.jsï¿½Ðµï¿½setTableStyleï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Âµï¿½ï¿½Ã¸Ã·ï¿½ï¿½ï¿½
+    if (table.isSetStyle) {
+        setTableStyle(table, table.needMouseStyle);
+    }
 }
 
 /*********************************************
- ÑéÖ¤±í¸ñ¼°ÁÐË÷Òý²ÎÊýÊÇ·ñÕýÈ·
- ²ÎÊý£º±í¸ñ¶ÔÏó£¬ÁÐË÷Òý
-*********************************************/
-function checkTable(table,colIndex){
-  var table = getObject(table);
-  if (table == null) return false;
-  var tr = table.rows;
-  if (tr.length<1 || tr[0].cells == null){
-    return false;
-  }
-  else if (isNull(colIndex)){
-    if (tr[0].cells.length<colIndex) return false;
-  }
-  return true;
+ ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½È·
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ *********************************************/
+function checkTable(table, colIndex) {
+    var table = getObject(table);
+    if (table == null) return false;
+    var tr = table.rows;
+    if (tr.length < 1 || tr[0].cells == null) {
+        return false;
+    } else if (isNull(colIndex)) {
+        if (tr[0].cells.length < colIndex) return false;
+    }
+    return true;
 }

@@ -11,5 +11,5 @@ import com.boco.eoms.sheet.base.util.Constants;
 import com.boco.eoms.sheet.circuitoperation.dao.ICircuitOperationTaskDAO;
 
 public class CircuitOperationTaskDAOHibernate extends TaskDAOImpl implements ICircuitOperationTaskDAO {
-	
+
 }

@@ -16,20 +16,19 @@ import com.boco.eoms.sheet.widencomplaint.service.IWidenComplaintLinkManager;
  * <p>
  * Mon Feb 01 17:09:53 CST 2016
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class WidenComplaintLinkManagerImpl extends LinkServiceImpl implements IWidenComplaintLinkManager {
-  		/**
-	     * 根据条件查出所有的link对象
-	     */
-	    public List getLinksBycondition(String condition) throws Exception {    	
-	    	IWidenComplaintLinkDAO dao = (IWidenComplaintLinkDAO)this.getLinkDAO();
-	        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
-	        return list;
-	    }
- 
- }
+
+public class WidenComplaintLinkManagerImpl extends LinkServiceImpl implements IWidenComplaintLinkManager {
+    /**
+     * 根据条件查出所有的link对象
+     */
+    public List getLinksBycondition(String condition) throws Exception {
+        IWidenComplaintLinkDAO dao = (IWidenComplaintLinkDAO) this.getLinkDAO();
+        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
+        return list;
+    }
+
+}

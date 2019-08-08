@@ -17,42 +17,41 @@ import com.boco.eoms.km.knowledge.dao.KmContentsDictDao;
  * <p>
  * Tue Mar 24 10:33:19 CST 2009
  * </p>
- * 
+ *
  * @author eoms
  * @version 1.0
- * 
  */
 public class KmContentsDictMgrImpl implements KmContentsDictMgr {
- 
-	private KmContentsDictDao  kmContentsDictDao;
- 	
-	public KmContentsDictDao getKmContentsDictDao() {
-		return this.kmContentsDictDao;
-	}
- 	
-	public void setKmContentsDictDao(KmContentsDictDao kmContentsDictDao) {
-		this.kmContentsDictDao = kmContentsDictDao;
-	}
- 	
+
+    private KmContentsDictDao kmContentsDictDao;
+
+    public KmContentsDictDao getKmContentsDictDao() {
+        return this.kmContentsDictDao;
+    }
+
+    public void setKmContentsDictDao(KmContentsDictDao kmContentsDictDao) {
+        this.kmContentsDictDao = kmContentsDictDao;
+    }
+
     public List getKmContentsDicts() {
-    	return kmContentsDictDao.getKmContentsDicts();
+        return kmContentsDictDao.getKmContentsDicts();
     }
-    
+
     public KmContentsDict getKmContentsDict(final String id) {
-    	return kmContentsDictDao.getKmContentsDict(id);
+        return kmContentsDictDao.getKmContentsDict(id);
     }
-    
+
     public void saveKmContentsDict(KmContentsDict kmContentsDict) {
-    	kmContentsDictDao.saveKmContentsDict(kmContentsDict);
+        kmContentsDictDao.saveKmContentsDict(kmContentsDict);
     }
-    
+
     public void removeKmContentsDict(final String id) {
-    	kmContentsDictDao.removeKmContentsDict(id);
+        kmContentsDictDao.removeKmContentsDict(id);
     }
-    
+
     public Map getKmContentsDicts(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmContentsDictDao.getKmContentsDicts(curPage, pageSize, whereStr);
-	}
-	
+                                  final String whereStr) {
+        return kmContentsDictDao.getKmContentsDicts(curPage, pageSize, whereStr);
+    }
+
 }

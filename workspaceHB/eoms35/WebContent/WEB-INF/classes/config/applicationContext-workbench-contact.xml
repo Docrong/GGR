@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-    
-    
+
+
     <!--TawWorkbenchContactGroup-DAO START-->
-    <bean id="tawWorkbenchContactGroupDao" class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchContactGroupDaoHibernate" autowire="byName"/>
+    <bean id="tawWorkbenchContactGroupDao"
+          class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchContactGroupDaoHibernate" autowire="byName"/>
     <!--TawWorkbenchContactGroup-DAO END-->
-    <!--TawWorkbenchContactGroup-START-->    
+    <!--TawWorkbenchContactGroup-START-->
     <bean id="ItawWorkbenchContactGroupManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.contact.service.impl.TawWorkbenchContactGroupManagerImpl">
@@ -18,28 +19,28 @@
     </bean>
     <!--TawWorkbenchContactGroup-END-->
     <!--TawWorkbenchContact-DAO START-->
-    <bean id="tawWorkbenchContactDao" class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchContactDaoHibernate" autowire="byName"/>
+    <bean id="tawWorkbenchContactDao"
+          class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchContactDaoHibernate" autowire="byName"/>
     <!--TawWorkbenchContact-DAO END-->
-    <!--TawWorkbenchContact-START-->    
+    <!--TawWorkbenchContact-START-->
     <bean id="ItawWorkbenchContactManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.contact.service.impl.TawWorkbenchContactManagerImpl">
                 <property name="tawWorkbenchContactDao" ref="tawWorkbenchContactDao"/>
                 <property name="tawWorkbenchDeptContactDao" ref="tawWorkbenchDeptContactDao"/>
-                
+
             </bean>
         </property>
     </bean>
-    <!--TawWorkbenchContact-END-->  
-	
-	
-	
-	
-	
-	<!--TawWorkbenchDeptContactGroup-DAO START-->
-    <bean id="tawWorkbenchDeptContactGroupDao" class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchDeptContactGroupDaoHibernate" autowire="byName"/>
+    <!--TawWorkbenchContact-END-->
+
+
+    <!--TawWorkbenchDeptContactGroup-DAO START-->
+    <bean id="tawWorkbenchDeptContactGroupDao"
+          class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchDeptContactGroupDaoHibernate"
+          autowire="byName"/>
     <!--TawWorkbenchDeptContactGroup-DAO END-->
-    <!--TawWorkbenchDeptContactGroup-START-->    
+    <!--TawWorkbenchDeptContactGroup-START-->
     <bean id="ItawWorkbenchDeptContactGroupManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.contact.service.impl.TawWorkbenchDeptContactGroupManagerImpl">
@@ -49,9 +50,10 @@
     </bean>
     <!--TawWorkbenchDeptContactGroup-END-->
     <!--TawWorkbenchDeptContact-DAO START-->
-    <bean id="tawWorkbenchDeptContactDao" class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchDeptContactDaoHibernate" autowire="byName"/>
+    <bean id="tawWorkbenchDeptContactDao"
+          class="com.boco.eoms.workbench.contact.dao.hibernate.TawWorkbenchDeptContactDaoHibernate" autowire="byName"/>
     <!--TawWorkbenchDeptContact-DAO END-->
-    <!--TawWorkbenchDeptContact-START-->    
+    <!--TawWorkbenchDeptContact-START-->
     <bean id="ItawWorkbenchDeptContactManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.workbench.contact.service.impl.TawWorkbenchDeptContactManagerImpl">
@@ -60,15 +62,15 @@
         </property>
     </bean>
     <!--TawWorkbenchDeptContact-END-->
-    
+
     <bean id="contactAttributes"
-		class="com.boco.eoms.workbench.contact.util.ContactAttributes">
-	 
-		<property name="contactRootPath">
-			<value>/duty/model/new</value>
-		</property>
-		 
-	</bean>
+          class="com.boco.eoms.workbench.contact.util.ContactAttributes">
+
+        <property name="contactRootPath">
+            <value>/duty/model/new</value>
+        </property>
+
+    </bean>
 </beans>
 
 

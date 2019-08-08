@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
     <!--SmsService-DAO START-->
     <bean id="smsServiceDao" class="com.boco.eoms.message.dao.hibernate.SmsServiceDaoHibernate" autowire="byName"/>
     <!--SmsService-DAO END-->
-    <!--SmsService-START-->    
+    <!--SmsService-START-->
     <bean id="IsmsServiceManager" parent="txProxyTemplate">
-        <property name="target"> 
+        <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SmsServiceManagerImpl">
                 <property name="smsServiceDao" ref="smsServiceDao"/>
             </bean>
@@ -19,80 +19,80 @@
     <bean id="smsApplyDao" class="com.boco.eoms.message.dao.hibernate.SmsApplyDaoHibernate" autowire="byName"/>
     <bean id="smsMonitorManager" class="com.boco.eoms.message.mgr.impl.SmsMonitorManagerImpl" autowire="byName"/>
     <!--SmsApply-DAO END-->
-    <!--SmsApply-START-->    
+    <!--SmsApply-START-->
     <bean id="IsmsApplyManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SmsApplyManagerImpl">
                 <property name="smsApplyDao" ref="smsApplyDao"/>
                 <property name="smsMonitorManager" ref="IsmsMonitorManager"/>
                 <property name="tawSystemUserManager" ref="itawSystemUserManager"/>
-                
+
             </bean>
         </property>
     </bean>
-    
+
     <!--gong  -->
- 
-    
+
+
     <!--SmsApply-END-->
     <!--SmsMonitor-DAO START-->
     <bean id="smsMonitorDao" class="com.boco.eoms.message.dao.hibernate.SmsMonitorDaoHibernate" autowire="byName"/>
     <!--SmsMonitor-DAO END-->
-    <!--SmsMonitor-START-->    
+    <!--SmsMonitor-START-->
     <bean id="IsmsMonitorManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SmsMonitorManagerImpl">
                 <property name="smsMonitorDao" ref="smsMonitorDao"/>
             </bean>
         </property>
-    </bean> 
+    </bean>
     <!--SmsMonitor-END-->
-    
+
     <!--VoiceMonitor-DAO START-->
     <bean id="IVoiceMonitorDao" class="com.boco.eoms.message.dao.hibernate.VoiceMonitorDaoHibernate" autowire="byName"/>
     <!--VoiceMonitor-DAO END-->
-    <!--VoiceMonitor-START-->    
+    <!--VoiceMonitor-START-->
     <bean id="IvoiceMonitorManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.VoiceMonitorManagerImpl">
                 <property name="IVoiceMonitorDao" ref="IVoiceMonitorDao"/>
             </bean>
         </property>
-    </bean> 
+    </bean>
     <!--VoiceMonitor-END-->
-    
+
     <!--MmsMonitor-DAO START-->
     <bean id="mmsMonitorDao" class="com.boco.eoms.message.dao.hibernate.MmsMonitorDaoHibernate" autowire="byName"/>
     <!--MmsMonitor-DAO END-->
-    <!--MmsMonitor-START-->    
+    <!--MmsMonitor-START-->
     <bean id="ImmsMonitorManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.MmsMonitorManagerImpl">
                 <property name="mmsMonitorDao" ref="mmsMonitorDao"/>
             </bean>
         </property>
-    </bean> 
+    </bean>
     <!--MmsMonitor-END-->
-    
+
     <!--MmsContent-DAO START-->
     <bean id="mmsContentDao" class="com.boco.eoms.message.dao.hibernate.MmsContentDaoHibernate" autowire="byName"/>
     <!--MmsContent-DAO END-->
-    <!--MmsContent-START-->    
+    <!--MmsContent-START-->
     <bean id="ImmsContentManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.MmsContentManagerImpl">
                 <property name="mmsContentDao" ref="mmsContentDao"/>
             </bean>
         </property>
-    </bean> 
+    </bean>
     <!--MmsContent-END-->
-    
-    
-     <!--SmsSpSubmit-DAO START-->
+
+
+    <!--SmsSpSubmit-DAO START-->
     <bean id="smsSpSubmitDao" class="com.boco.eoms.message.dao.hibernate.SmsSpSubmitDaoHibernate" autowire="byName"/>
-    	
+
     <!--SmsSpSubmit-DAO END-->
-    <!--SmsSpSubmit-START-->    
+    <!--SmsSpSubmit-START-->
     <bean id="IsmsSpSubmitManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SmsSpSubmitManagerImpl">
@@ -101,12 +101,12 @@
         </property>
     </bean>
     <!--SmsSpSubmit-END-->
-    
-    
+
+
     <!--SmsLog-DAO START-->
     <bean id="smsLogDao" class="com.boco.eoms.message.dao.hibernate.SmsLogDaoHibernate" autowire="byName"/>
     <!--SmsLog-DAO END-->
-    <!--SmsLog-START-->    
+    <!--SmsLog-START-->
     <bean id="IsmsLogManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SmsLogManagerImpl">
@@ -115,11 +115,11 @@
         </property>
     </bean>
     <!--SmsLog-END-->
-    
+
     <!--sendContent-DAO START-->
     <bean id="sendContentDao" class="com.boco.eoms.message.dao.hibernate.ContentDaoHibernate" autowire="byName"/>
     <!--sendContent-DAO END-->
-    <!--sendContent-START-->    
+    <!--sendContent-START-->
     <bean id="IContentManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.ContentManagerImpl">
@@ -128,12 +128,12 @@
         </property>
     </bean>
     <!--sendContent-END-->
-    
+
     <!--EmailMonitor-DAO START-->
     <bean id="emailMonitorDao" class="com.boco.eoms.message.dao.hibernate.EmailMonitorDaoHibernate" autowire="byName"/>
     <!--EmailMonitor-DAO END-->
- 
-    <!--EmailMonitor-START-->    
+
+    <!--EmailMonitor-START-->
     <bean id="IemailMonitorManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.EmailMonitorManagerImpl">
@@ -142,12 +142,13 @@
         </property>
     </bean>
     <!--EmailMonitor-END-->
-     
+
     <!--EmailMonitor-END-->
     <!--SmsContentTemplate-DAO START-->
-    <bean id="smsContentTemplateDao" class="com.boco.eoms.message.dao.hibernate.SmsContentTemplateDaoHibernate" autowire="byName"/>
+    <bean id="smsContentTemplateDao" class="com.boco.eoms.message.dao.hibernate.SmsContentTemplateDaoHibernate"
+          autowire="byName"/>
     <!--SmsContentTemplate-DAO END-->
-    <!--SmsContentTemplate-START-->    
+    <!--SmsContentTemplate-START-->
     <bean id="IsmsContentTemplateManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SmsContentTemplateManagerImpl">
@@ -156,11 +157,12 @@
         </property>
     </bean>
     <!--SmsContentTemplate-END-->
-    
+
     <!--SmsMobilesTemplate-DAO START-->
-    <bean id="smsMobilesTemplateDao" class="com.boco.eoms.message.dao.hibernate.SmsMobilesTemplateDaoHibernate" autowire="byName"/>
+    <bean id="smsMobilesTemplateDao" class="com.boco.eoms.message.dao.hibernate.SmsMobilesTemplateDaoHibernate"
+          autowire="byName"/>
     <!--SmsMobilesTemplate-DAO END-->
-    <!--SmsMobilesTemplate-START-->    
+    <!--SmsMobilesTemplate-START-->
     <bean id="IsmsMobilesTemplateManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.mgr.impl.SmsMobilesTemplateManagerImpl">
@@ -181,7 +183,7 @@
             </bean>
         </property>
     </bean>-->
-    
+
     <!-- bean id="MsgAxisManagerImpl" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.message.service.impl.MsgAxisManagerImpl">
@@ -211,226 +213,453 @@
             </bean>
         </property>
     </bean-->
-    
-    
-    
+
+
     <bean id="Service2Apply"
-		class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
-		<property name="values">
-			<list>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>id</value></property>
-					<property name="toName"><value>serviceId</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>name</value></property>
-					<property name="toName"><value>name</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>startTime</value></property>
-					<property name="toName"><value>startTime</value></property>
-					<property name="type"><value>java.util.Date</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>endTime</value></property>
-					<property name="toName"><value>endTime</value></property>
-					<property name="type"><value>java.util.Date</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>msgType</value></property>
-					<property name="toName"><value>msgType</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>isSendImediat</value></property>
-					<property name="toName"><value>isSendImediat</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>isSendNight</value></property>
-					<property name="toName"><value>isSendNight</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>sendDay</value></property>
-					<property name="toName"><value>sendDay</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>sendHour</value></property>
-					<property name="toName"><value>sendHour</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>sendMin</value></property>
-					<property name="toName"><value>sendMin</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>sendStatus</value></property>
-					<property name="toName"><value>sendStatus</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>isCycleSend</value></property>
-					<property name="toName"><value>isCycleSend</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>cycleStatus</value></property>
-					<property name="toName"><value>cycleStatus</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>cycleDay</value></property>
-					<property name="toName"><value>cycleDay</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>cycleMonth</value></property>
-					<property name="toName"><value>cycleMonth</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>cycleHour</value></property>
-					<property name="toName"><value>cycleHour</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>regetData</value></property>
-					<property name="toName"><value>regetData</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>count</value></property>
-					<property name="toName"><value>count</value></property>
-					<property name="type"><value>java.lang.Integer</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>interval</value></property>
-					<property name="toName"><value>interval</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>regetAddr</value></property>
-					<property name="toName"><value>regetAddr</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>regetProtocol</value></property>
-					<property name="toName"><value>regetProtocol</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>remark</value></property>
-					<property name="toName"><value>remark</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>selStatus</value></property>
-					<property name="toName"><value>selStatus</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-			</list>
-		</property>
-		
-		
-		</bean>
-		<bean id="Mms2Mms"
-		class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
-		<property name="values">
-			<list>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>content</value></property>
-					<property name="toName"><value>content</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>contentType</value></property>
-					<property name="toName"><value>contentType</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>position</value></property>
-					<property name="toName"><value>position</value></property>
-					<property name="type"><value>java.lang.String</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>deleted</value></property>
-					<property name="toName"><value>deleted</value></property>
-					<property name="type"><value>java.lang.String</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>contentId</value></property>
-					<property name="toName"><value>contentId</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	
-	<bean id="Monitor2Log"
-		class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
-		<property name="values">
-			<list>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>id</value></property>
-					<property name="toName"><value>id</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>applyId</value></property>
-					<property name="toName"><value>applyId</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>buizid</value></property>
-					<property name="toName"><value>buizid</value></property>
-					<property name="type"><value>java.lang.String</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>dispatchTime</value></property>
-					<property name="toName"><value>dispatchTime</value></property>
-					<property name="type"><value>java.util.Date</value></property>					
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>serviceId</value></property>
-					<property name="toName"><value>serviceId</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>receiverId</value></property>
-					<property name="toName"><value>receiverId</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>isSendImediat</value></property>
-					<property name="toName"><value>isSendImediat</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>regetData</value></property>
-					<property name="toName"><value>regetData</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>content</value></property>
-					<property name="toName"><value>content</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-				<bean class="com.boco.eoms.prm.model.P2P">
-					<property name="name"><value>deleted</value></property>
-					<property name="toName"><value>deleted</value></property>
-					<property name="type"><value>java.lang.String</value></property>
-				</bean>
-			</list>
-		</property>
-	</bean>
-	<import
-		resource="classpath:config/applicationContext-scheduler.xml" />
+          class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
+        <property name="values">
+            <list>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>id</value>
+                    </property>
+                    <property name="toName">
+                        <value>serviceId</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>name</value>
+                    </property>
+                    <property name="toName">
+                        <value>name</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>startTime</value>
+                    </property>
+                    <property name="toName">
+                        <value>startTime</value>
+                    </property>
+                    <property name="type">
+                        <value>java.util.Date</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>endTime</value>
+                    </property>
+                    <property name="toName">
+                        <value>endTime</value>
+                    </property>
+                    <property name="type">
+                        <value>java.util.Date</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>msgType</value>
+                    </property>
+                    <property name="toName">
+                        <value>msgType</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>isSendImediat</value>
+                    </property>
+                    <property name="toName">
+                        <value>isSendImediat</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>isSendNight</value>
+                    </property>
+                    <property name="toName">
+                        <value>isSendNight</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>sendDay</value>
+                    </property>
+                    <property name="toName">
+                        <value>sendDay</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>sendHour</value>
+                    </property>
+                    <property name="toName">
+                        <value>sendHour</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>sendMin</value>
+                    </property>
+                    <property name="toName">
+                        <value>sendMin</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>sendStatus</value>
+                    </property>
+                    <property name="toName">
+                        <value>sendStatus</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>isCycleSend</value>
+                    </property>
+                    <property name="toName">
+                        <value>isCycleSend</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>cycleStatus</value>
+                    </property>
+                    <property name="toName">
+                        <value>cycleStatus</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>cycleDay</value>
+                    </property>
+                    <property name="toName">
+                        <value>cycleDay</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>cycleMonth</value>
+                    </property>
+                    <property name="toName">
+                        <value>cycleMonth</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>cycleHour</value>
+                    </property>
+                    <property name="toName">
+                        <value>cycleHour</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>regetData</value>
+                    </property>
+                    <property name="toName">
+                        <value>regetData</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>count</value>
+                    </property>
+                    <property name="toName">
+                        <value>count</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.Integer</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>interval</value>
+                    </property>
+                    <property name="toName">
+                        <value>interval</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>regetAddr</value>
+                    </property>
+                    <property name="toName">
+                        <value>regetAddr</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>regetProtocol</value>
+                    </property>
+                    <property name="toName">
+                        <value>regetProtocol</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>remark</value>
+                    </property>
+                    <property name="toName">
+                        <value>remark</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>selStatus</value>
+                    </property>
+                    <property name="toName">
+                        <value>selStatus</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+            </list>
+        </property>
+
+
+    </bean>
+    <bean id="Mms2Mms"
+          class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
+        <property name="values">
+            <list>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>content</value>
+                    </property>
+                    <property name="toName">
+                        <value>content</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>contentType</value>
+                    </property>
+                    <property name="toName">
+                        <value>contentType</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>position</value>
+                    </property>
+                    <property name="toName">
+                        <value>position</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>deleted</value>
+                    </property>
+                    <property name="toName">
+                        <value>deleted</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>contentId</value>
+                    </property>
+                    <property name="toName">
+                        <value>contentId</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="Monitor2Log"
+          class="com.boco.eoms.prm.service.impl.Pojo2PojoServiceImpl">
+        <property name="values">
+            <list>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>id</value>
+                    </property>
+                    <property name="toName">
+                        <value>id</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>applyId</value>
+                    </property>
+                    <property name="toName">
+                        <value>applyId</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>buizid</value>
+                    </property>
+                    <property name="toName">
+                        <value>buizid</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>dispatchTime</value>
+                    </property>
+                    <property name="toName">
+                        <value>dispatchTime</value>
+                    </property>
+                    <property name="type">
+                        <value>java.util.Date</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>serviceId</value>
+                    </property>
+                    <property name="toName">
+                        <value>serviceId</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>receiverId</value>
+                    </property>
+                    <property name="toName">
+                        <value>receiverId</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>isSendImediat</value>
+                    </property>
+                    <property name="toName">
+                        <value>isSendImediat</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>regetData</value>
+                    </property>
+                    <property name="toName">
+                        <value>regetData</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>content</value>
+                    </property>
+                    <property name="toName">
+                        <value>content</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+                <bean class="com.boco.eoms.prm.model.P2P">
+                    <property name="name">
+                        <value>deleted</value>
+                    </property>
+                    <property name="toName">
+                        <value>deleted</value>
+                    </property>
+                    <property name="type">
+                        <value>java.lang.String</value>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <import
+            resource="classpath:config/applicationContext-scheduler.xml"/>
 </beans>
 
 

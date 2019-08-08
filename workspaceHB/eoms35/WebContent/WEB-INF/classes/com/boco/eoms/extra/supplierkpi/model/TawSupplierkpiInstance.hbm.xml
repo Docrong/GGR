@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="Taw_Supplierkpi_Instance"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="appendMan"
+                name="appendMan"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="appendManArea"
+                name="appendManArea"
                 length="200"
                 not-null="false"
                 unique="false"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="appendTime"
+                name="appendTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -54,7 +54,7 @@
         </property>
 
         <property
-            name="assessContent"
+                name="assessContent"
                 length="1000"
                 not-null="false"
                 unique="false"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="assessId"
+                name="assessId"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -72,7 +72,7 @@
         </property>
 
         <property
-            name="assessNote"
+                name="assessNote"
                 length="1000"
                 not-null="false"
                 unique="false"
@@ -81,7 +81,7 @@
         </property>
 
         <property
-            name="assessRole"
+                name="assessRole"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -90,7 +90,7 @@
         </property>
 
         <property
-            name="checkContent"
+                name="checkContent"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -99,7 +99,7 @@
         </property>
 
         <property
-            name="checkTime"
+                name="checkTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -108,7 +108,7 @@
         </property>
 
         <property
-            name="checkUser"
+                name="checkUser"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -117,7 +117,7 @@
         </property>
 
         <property
-            name="unit"
+                name="unit"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -126,7 +126,7 @@
         </property>
 
         <property
-            name="dataSource"
+                name="dataSource"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -135,7 +135,7 @@
         </property>
 
         <property
-            name="dataType"
+                name="dataType"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -144,7 +144,7 @@
         </property>
 
         <property
-            name="examineContent"
+                name="examineContent"
                 length="1000"
                 not-null="false"
                 unique="false"
@@ -153,7 +153,7 @@
         </property>
 
         <property
-            name="fillEndTime"
+                name="fillEndTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -162,7 +162,7 @@
         </property>
 
         <property
-            name="fillStratTime"
+                name="fillStratTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -171,7 +171,7 @@
         </property>
 
         <property
-            name="infoState"
+                name="infoState"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -180,7 +180,7 @@
         </property>
 
         <property
-            name="isImpersonality"
+                name="isImpersonality"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -189,16 +189,7 @@
         </property>
 
         <property
-            name="assessMoment"
-                length="30"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>        
-
-        <property
-            name="isPass"
+                name="assessMoment"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -207,7 +198,7 @@
         </property>
 
         <property
-            name="itemType"
+                name="isPass"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -216,7 +207,7 @@
         </property>
 
         <property
-            name="manufacturerId"
+                name="itemType"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -225,113 +216,122 @@
         </property>
 
         <property
-            name="memo"
+                name="manufacturerId"
+                length="30"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="memo"
                 length="1000"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="kpiItemId"
+                name="kpiItemId"
                 length="50"
                 not-null="false"
                 unique="false"
         >
-        
+
         </property>
-                
+
         <property
-            name="firstFillTime"
+                name="firstFillTime"
                 length="20"
                 not-null="false"
                 unique="false"
-        > 
-        
-        </property> 
-        
+        >
+
+        </property>
+
         <property
-            name="statictsCycle"
+                name="statictsCycle"
                 length="10"
                 not-null="false"
                 unique="false"
-        > 
-        
+        >
+
         </property>
-        
+
         <property
-            name="fillRole"
+                name="fillRole"
                 length="20"
                 not-null="false"
                 unique="false"
-        > 
-        
-        </property> 
-        
+        >
+
+        </property>
+
         <property
-            name="timeLatitude"
+                name="timeLatitude"
                 length="20"
                 not-null="false"
                 unique="false"
-        >                             
+        >
 
-        </property> 
+        </property>
 
         <property
-            name="manufacturerName"
+                name="manufacturerName"
                 length="50"
                 not-null="false"
                 unique="false"
-        >                             
+        >
 
-        </property> 
-        
+        </property>
+
         <property
-            name="serviceType"
+                name="serviceType"
                 length="20"
                 not-null="false"
                 unique="false"
-        >                             
+        >
 
-        </property> 
-        
+        </property>
+
         <property
-            name="specialType"
+                name="specialType"
                 length="20"
                 not-null="false"
                 unique="false"
-        >                             
+        >
 
-        </property> 
-        
+        </property>
+
         <property
-            name="kpiName"
+                name="kpiName"
                 length="20"
                 not-null="false"
                 unique="false"
-        >                             
+        >
 
-        </property>    
-        
+        </property>
+
         <property
-            name="fillFlag"
+                name="fillFlag"
                 length="5"
                 not-null="false"
                 unique="false"
-        >                             
+        >
 
-        </property> 
+        </property>
         <property
-            name="year"
+                name="year"
                 length="20"
                 not-null="false"
                 unique="false"
-        >                             
+        >
 
-        </property>                                                 
+        </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

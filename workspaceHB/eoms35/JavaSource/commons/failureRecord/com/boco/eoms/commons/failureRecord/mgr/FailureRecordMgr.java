@@ -6,10 +6,13 @@ import java.util.Map;
 
 import com.boco.eoms.commons.failureRecord.model.FailureRecord;
 import com.boco.eoms.commons.failureRecord.webapp.form.FailureRecordForm;
+
 public interface FailureRecordMgr {
-	public Map getMonitoringLogFind(final Integer curPage, final Integer pageSize,FailureRecordForm failureRecordForm);
-	public FailureRecord getFailureRecord(String id);
-//	public Map getConfigurationList(final Integer curPage, final Integer pageSize,String direction);	
+    public Map getMonitoringLogFind(final Integer curPage, final Integer pageSize, FailureRecordForm failureRecordForm);
+
+    public FailureRecord getFailureRecord(String id);
+
+    //	public Map getConfigurationList(final Integer curPage, final Integer pageSize,String direction);
 //	
 //	public void saveInterfaceConfiguration(InterfaceConfiguration interfaceConfiguration);
 //	public InterfaceMonitoring getInterfaceMonitoring(final String id); 
@@ -24,7 +27,9 @@ public interface FailureRecordMgr {
 //			InterfaceConfiguration interfaceConfiguration);
 //	public InterfaceConfiguration getinterfaceConfiguration(String id);
 //	public  List getInterfaceConfigurationModuleTree(String nodid);
-	public void save(FailureRecord failureRecord);
-	public void removeFailureRecord(FailureRecord failureRecord); 
-	public FailureRecord findFailureRecord(String id);
+    public void save(FailureRecord failureRecord);
+
+    public void removeFailureRecord(FailureRecord failureRecord);
+
+    public FailureRecord findFailureRecord(String id);
 }

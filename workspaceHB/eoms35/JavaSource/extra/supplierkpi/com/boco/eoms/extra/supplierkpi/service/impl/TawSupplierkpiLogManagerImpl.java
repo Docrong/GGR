@@ -14,6 +14,7 @@ public class TawSupplierkpiLogManagerImpl extends BaseManager implements ITawSup
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSupplierkpiLogDao(TawSupplierkpiLogDao dao) {
@@ -47,24 +48,27 @@ public class TawSupplierkpiLogManagerImpl extends BaseManager implements ITawSup
     public void removeTawSupplierkpiLog(final String id) {
         dao.removeTawSupplierkpiLog(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSupplierkpiLogs(final Integer curPage, final Integer pageSize) {
-        return dao.getTawSupplierkpiLogs(curPage, pageSize,null);
+        return dao.getTawSupplierkpiLogs(curPage, pageSize, null);
     }
+
     public Map getTawSupplierkpiLogs(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawSupplierkpiLogs(curPage, pageSize, whereStr);
     }
-    
+
     public List getTawSupplierkpiLogs(final String whereStr) {
-    	return dao.getTawSupplierkpiLogs(whereStr);
+        return dao.getTawSupplierkpiLogs(whereStr);
     }
-    
+
     public List getTawSupplierkpiLogs(final int startPage, final int row, final String whereStr) {
-    	return dao.getTawSupplierkpiLogs(startPage, row, whereStr);
+        return dao.getTawSupplierkpiLogs(startPage, row, whereStr);
     }
+
     public int getLogsCount(final String whereStr) {
-    	return dao.getLogsCount(whereStr);
+        return dao.getLogsCount(whereStr);
     }
 }

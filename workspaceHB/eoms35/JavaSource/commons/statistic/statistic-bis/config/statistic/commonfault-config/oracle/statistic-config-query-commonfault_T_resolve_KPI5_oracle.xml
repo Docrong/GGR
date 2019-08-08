@@ -1,257 +1,289 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id>51</est-module-id> <!--最后采集的时间表id-->
+    <title>kpi统计</title>
+    <est-module-id>51</est-module-id> <!--最后采集的时间表id-->
 
-	<!-- ********按(人员)统计故障一级解决率 ********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>commonfault_T_resolve_byuser</name>
-		<kpi-caption></kpi-caption>
-		<!-- dbtype={String,int,datetime} -->
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param  page-name="areaid" markflg="true"/>
-		<condition-param  page-name="mainNetSortOne" markflg="true"/>
-			<condition-param  page-name="mainNetSortTwo" markflg="true"/>
-		<condition-param  page-name="mainNetSortThree" markflg="true"/>
-		<condition-param  page-name="userByDeptid" markflg="true"/>
-		
-		<!--人员-->
-		<summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.OPERATEUSERID</column>
-			<!-- 注册 部门id转name接口 "statBaseDeptId2name_v35"-->
-			<!-- 注册 人员id转name接口 "statBaseUserId2name_v35"-->
-			<!-- 注册 字典id转name接口 "statDictId2name_v35"-->
-			<!-- 注册 大角色id转name接口 "statRoleId2name_v35"-->
-			<!-- 注册 小角色id转name接口 "statSubRoleId2name_v35"-->
-			<id2name-service>statBaseUserId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name-->
-		</summary-define>
-		
-		<!--网络类型-->
-		<summary-define>
-			<id>s2</id>
-			<sequence></sequence>
-			<column>est.mainNetSortOne</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s3</id>
-			<sequence></sequence>
-			<column>est.mainNetSortTwo</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s4</id>
-			<sequence></sequence>
-			<column>est.mainNetSortThree</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<!--地域-->
-		<summary-define>
-			<id>s5</id>
-			<sequence></sequence>
-			<column>est.TODEPTID</column>
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statAreaId2name_v35</id2name-service>
-		</summary-define>
+    <!-- ********按(人员)统计故障一级解决率 ********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>commonfault_T_resolve_byuser</name>
+        <kpi-caption></kpi-caption>
+        <!-- dbtype={String,int,datetime} -->
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="areaid" markflg="true"/>
+        <condition-param page-name="mainNetSortOne" markflg="true"/>
+        <condition-param page-name="mainNetSortTwo" markflg="true"/>
+        <condition-param page-name="mainNetSortThree" markflg="true"/>
+        <condition-param page-name="userByDeptid" markflg="true"/>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.commonfault.vo.CommonfaultDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <!--人员-->
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.OPERATEUSERID</column>
+            <!-- 注册 部门id转name接口 "statBaseDeptId2name_v35"-->
+            <!-- 注册 人员id转name接口 "statBaseUserId2name_v35"-->
+            <!-- 注册 字典id转name接口 "statDictId2name_v35"-->
+            <!-- 注册 大角色id转name接口 "statRoleId2name_v35"-->
+            <!-- 注册 小角色id转name接口 "statSubRoleId2name_v35"-->
+            <id2name-service>statBaseUserId2name_v35
+            </id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name-->
+        </summary-define>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>EST_COMMONFAULT est</from><!-- 不可为空 -->
-			<where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) 
-			and (est.maindelayflag is null or est.maindelayflag=0)  and est.operatetype in(46,61) 
-			and est.OPERATEUSERID is not null  and est.mainNetSortTwo in (@mainNetSortTwo@) and est.mainNetSortThree in (@mainNetSortThree@)
-			and est.OPERATEUSERID in (@userByDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+        <!--网络类型-->
+        <summary-define>
+            <id>s2</id>
+            <sequence></sequence>
+            <column>est.mainNetSortOne</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s3</id>
+            <sequence></sequence>
+            <column>est.mainNetSortTwo</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s4</id>
+            <sequence></sequence>
+            <column>est.mainNetSortThree</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <!--地域-->
+        <summary-define>
+            <id>s5</id>
+            <sequence></sequence>
+            <column>est.TODEPTID</column>
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statAreaId2name_v35</id2name-service>
+        </summary-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f1</id>
-				<sequence>1</sequence>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.commonfault.vo.CommonfaultDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid ,est.sendtime from EST_COMMONFAULT est where  
- 					est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS')
- 					and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) 
-					and (est.maindelayflag is null or est.maindelayflag=0)  and est.operatetype in(46,61) 
- 					and est.OPERATEUSERID is not null  and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
- 					and est.OPERATEUSERID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
-				</list-hsql>
-				
-			</field-define>
-			
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>EST_COMMONFAULT est</from><!-- 不可为空 -->
-			<where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS')
-					and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)  
-					and (est.maindelayflag is null or est.maindelayflag=0)
-					and est.operate_bigRole_id=192 and est.OPERATETYPE=46 
-					and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
-					and est.OPERATEUSERID is not null  and est.mainNetSortTwo in (@mainNetSortTwo@) and est.mainNetSortThree in (@mainNetSortThree@)
-					and est.OPERATEUSERID in (@userByDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-			<field-define><!-- 可重复 -->
-				<id>f2</id>
-				<sequence>1</sequence>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>EST_COMMONFAULT est</from><!-- 不可为空 -->
+            <where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                and (est.maindelayflag is null or est.maindelayflag=0) and est.operatetype in(46,61)
+                and est.OPERATEUSERID is not null and est.mainNetSortTwo in (@mainNetSortTwo@) and est.mainNetSortThree
+                in (@mainNetSortThree@)
+                and est.OPERATEUSERID in (@userByDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and est.TODEPTID
+                in (@areaid@)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid ,est.sendtime from EST_COMMONFAULT est where  
-					est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS')
-					and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)  
-					and (est.maindelayflag is null or est.maindelayflag=0)
-					and est.operate_bigRole_id=192 and est.OPERATETYPE=46 
-					and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
-					and est.OPERATEUSERID is not null  and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
-					and est.OPERATEUSERID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
-				</list-hsql>
-				
-			</field-define>
+            <field-define><!-- 可重复 -->
+                <id>f1</id>
+                <sequence>1</sequence>
 
-		</query-define>
-		
-	</kpi-define>
-	
-	
-	<!-- ********按(角色)故障一级解决率 ********************** -->
-	<kpi-define><!-- 可重复 -->
-		<name>commonfault_T_resolve_byrole</name>
-		<kpi-caption></kpi-caption>
-		
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param  page-name="areaid" markflg="true"/>
-		<condition-param  page-name="mainNetSortOne" markflg="true"/>
-			<condition-param  page-name="mainNetSortTwo" markflg="true"/>
-		<condition-param  page-name="mainNetSortThree" markflg="true"/>
-		<condition-param  page-name="subroleFromDeptid" markflg="true"/>
-		
-		<!--角色-->
-		<summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.OPERATE_BIGROLE_ID</column>
-			<id2name-service>statRoleId2name_v35</id2name-service><!--statSubRoleId2name_v35 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name_v35 -->
-		</summary-define>
-		
-		<!--网络类型-->
-		<summary-define>
-			<id>s2</id>
-			<sequence></sequence>
-			<column>est.mainNetSortOne</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s3</id>
-			<sequence></sequence>
-			<column>est.mainNetSortTwo</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<summary-define>
-			<id>s4</id>
-			<sequence></sequence>
-			<column>est.mainNetSortThree</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		<!--地域-->
-		<summary-define>
-			<id>s5</id>
-			<sequence></sequence>
-			<column>est.TODEPTID</column>
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statAreaId2name_v35</id2name-service>
-		</summary-define>
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid
+                    ,est.sendtime from EST_COMMONFAULT est where
+                    est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                    and (est.maindelayflag is null or est.maindelayflag=0) and est.operatetype in(46,61)
+                    and est.OPERATEUSERID is not null and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
+                    and est.OPERATEUSERID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
+                </list-hsql>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.commonfault.vo.CommonfaultDetailVO</stat-detail-vo><!--显示DetailVO-->
+            </field-define>
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>EST_COMMONFAULT est</from><!-- 不可为空 -->
-			<where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) 
-			and (est.maindelayflag is null or est.maindelayflag=0) and est.operatetype in(46,61) 
-			and est.OPERATE_BIGROLE_ID is not null and est.mainNetSortTwo in (@mainNetSortTwo@) and est.mainNetSortThree in (@mainNetSortThree@)
-			and est.OPERATE_BIGROLE_ID in (@subroleFromDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+        </query-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f1</id>
-				<sequence>1</sequence>
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid ,est.sendtime from EST_COMMONFAULT est where  
- 					est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS')
- 					and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0) 
-					and (est.maindelayflag is null or est.maindelayflag=0) and est.operatetype in(46,61) 
- 					and est.OPERATE_BIGROLE_ID is not null   and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
- 					and est.OPERATE_BIGROLE_ID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
-				</list-hsql>
-				
-			</field-define>
-			
-		</query-define>
-		
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>EST_COMMONFAULT est</from><!-- 不可为空 -->
-			<where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS')
-					and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)  
-					and (est.maindelayflag is null or est.maindelayflag=0)
-					and est.operate_bigRole_id=192 and est.OPERATETYPE=46  
-					and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
-					and est.OPERATE_BIGROLE_ID is not null and est.mainNetSortTwo in (@mainNetSortTwo@) and est.mainNetSortThree in (@mainNetSortThree@)
-					and est.OPERATE_BIGROLE_ID in (@subroleFromDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and est.TODEPTID in (@areaid@)</where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>EST_COMMONFAULT est</from><!-- 不可为空 -->
+            <where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                and (est.maindelayflag is null or est.maindelayflag=0)
+                and est.operate_bigRole_id=192 and est.OPERATETYPE=46
+                and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and
+                (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
+                and est.OPERATEUSERID is not null and est.mainNetSortTwo in (@mainNetSortTwo@) and est.mainNetSortThree
+                in (@mainNetSortThree@)
+                and est.OPERATEUSERID in (@userByDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and est.TODEPTID
+                in (@areaid@)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
 
-			<field-define><!-- 可重复 -->
-				<id>f2</id>
-				<sequence>1</sequence>
+            <field-define><!-- 可重复 -->
+                <id>f2</id>
+                <sequence>1</sequence>
 
-				<stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-				
-				<list-hsql>
-					select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid ,est.sendtime from EST_COMMONFAULT est where  
-					est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD HH24:MI:SS')
-					and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)  
-					and (est.maindelayflag is null or est.maindelayflag=0)
-					and est.operate_bigRole_id=192 and est.OPERATETYPE=46 
-					and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
-					and est.OPERATE_BIGROLE_ID is not null  and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
-					and est.OPERATE_BIGROLE_ID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
-				</list-hsql>
-				
-			</field-define>
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
 
-		</query-define>
-		
-	</kpi-define>
-	
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid
+                    ,est.sendtime from EST_COMMONFAULT est where
+                    est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                    and (est.maindelayflag is null or est.maindelayflag=0)
+                    and est.operate_bigRole_id=192 and est.OPERATETYPE=46
+                    and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and
+                    (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
+                    and est.OPERATEUSERID is not null and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
+                    and est.OPERATEUSERID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
+                </list-hsql>
+
+            </field-define>
+
+        </query-define>
+
+    </kpi-define>
+
+
+    <!-- ********按(角色)故障一级解决率 ********************** -->
+    <kpi-define><!-- 可重复 -->
+        <name>commonfault_T_resolve_byrole</name>
+        <kpi-caption></kpi-caption>
+
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="areaid" markflg="true"/>
+        <condition-param page-name="mainNetSortOne" markflg="true"/>
+        <condition-param page-name="mainNetSortTwo" markflg="true"/>
+        <condition-param page-name="mainNetSortThree" markflg="true"/>
+        <condition-param page-name="subroleFromDeptid" markflg="true"/>
+
+        <!--角色-->
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.OPERATE_BIGROLE_ID</column>
+            <id2name-service>statRoleId2name_v35
+            </id2name-service><!--statSubRoleId2name_v35 汇总字段 id2name的beanid 这是部门ID转中文名 --><!-- statBaseUserId2name_v35,statBaseDeptId2name_v35 -->
+        </summary-define>
+
+        <!--网络类型-->
+        <summary-define>
+            <id>s2</id>
+            <sequence></sequence>
+            <column>est.mainNetSortOne</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s3</id>
+            <sequence></sequence>
+            <column>est.mainNetSortTwo</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <summary-define>
+            <id>s4</id>
+            <sequence></sequence>
+            <column>est.mainNetSortThree</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+        <!--地域-->
+        <summary-define>
+            <id>s5</id>
+            <sequence></sequence>
+            <column>est.TODEPTID</column>
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statAreaId2name_v35</id2name-service>
+        </summary-define>
+
+        <stat-detail-vo>com.boco.eoms.commons.statistic.commonfault.vo.CommonfaultDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
+
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>EST_COMMONFAULT est</from><!-- 不可为空 -->
+            <where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                and (est.maindelayflag is null or est.maindelayflag=0) and est.operatetype in(46,61)
+                and est.OPERATE_BIGROLE_ID is not null and est.mainNetSortTwo in (@mainNetSortTwo@) and
+                est.mainNetSortThree in (@mainNetSortThree@)
+                and est.OPERATE_BIGROLE_ID in (@subroleFromDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and
+                est.TODEPTID in (@areaid@)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f1</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid
+                    ,est.sendtime from EST_COMMONFAULT est where
+                    est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                    and (est.maindelayflag is null or est.maindelayflag=0) and est.operatetype in(46,61)
+                    and est.OPERATE_BIGROLE_ID is not null and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
+                    and est.OPERATE_BIGROLE_ID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
+                </list-hsql>
+
+            </field-define>
+
+        </query-define>
+
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
+
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>EST_COMMONFAULT est</from><!-- 不可为空 -->
+            <where>est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+                and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                and (est.maindelayflag is null or est.maindelayflag=0)
+                and est.operate_bigRole_id=192 and est.OPERATETYPE=46
+                and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and
+                (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
+                and est.OPERATE_BIGROLE_ID is not null and est.mainNetSortTwo in (@mainNetSortTwo@) and
+                est.mainNetSortThree in (@mainNetSortThree@)
+                and est.OPERATE_BIGROLE_ID in (@subroleFromDeptid@) and est.mainNetSortOne in (@mainNetSortOne@) and
+                est.TODEPTID in (@areaid@)
+            </where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f2</id>
+                <sequence>1</sequence>
+
+                <stat-type>field_sql</stat-type><!--"field_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+
+                <list-hsql>
+                    select distinct est.mainid ,est.sheetid,est.title, est.mainNetSortOne , est.todeptid ,est.senduserid
+                    ,est.sendtime from EST_COMMONFAULT est where
+                    est.ENDTIME&gt;to_timestamp('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.ENDTIME&lt;to_timestamp('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    and est.status=1 and (est.mainifrecord is null or est.mainifrecord=0)
+                    and (est.maindelayflag is null or est.maindelayflag=0)
+                    and est.operate_bigRole_id=192 and est.OPERATETYPE=46
+                    and est.mainid not in (select estp.mainid from EST_COMMONFAULT estp where estp.mainid=est.mainid and
+                    (estp.operate_bigRole_id=193 and estp.OPERATETYPE=46) )
+                    and est.OPERATE_BIGROLE_ID is not null and est.mainNetSortTwo='@s3@' and est.mainNetSortThree='@s4@'
+                    and est.OPERATE_BIGROLE_ID='@s1@' and est.mainNetSortOne='@s2@' and est.TODEPTID='@s5@'
+                </list-hsql>
+
+            </field-define>
+
+        </query-define>
+
+    </kpi-define>
+
 </KpiConfig>

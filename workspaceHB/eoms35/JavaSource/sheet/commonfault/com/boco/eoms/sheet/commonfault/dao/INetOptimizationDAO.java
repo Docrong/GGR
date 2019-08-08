@@ -6,5 +6,5 @@ import com.boco.eoms.base.dao.Dao;
 
 public interface INetOptimizationDAO {
 
-	public void inserNetOpt(String sheetkey)throws SQLException;
+    public void inserNetOpt(String sheetkey) throws SQLException;
 }

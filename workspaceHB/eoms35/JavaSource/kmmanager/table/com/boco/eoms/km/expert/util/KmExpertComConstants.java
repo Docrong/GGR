@@ -10,15 +10,14 @@ package com.boco.eoms.km.expert.util;
  * <p>
  * Mon Jun 15 18:07:24 CST 2009
  * </p>
- * 
+ *
  * @author zhangxb
  * @version 1.0
- * 
  */
 public class KmExpertComConstants {
-	
-	/**
-	 * list key
-	 */
-	public final static String KMEXPERTCOM_LIST = "kmExpertComList";
+
+    /**
+     * list key
+     */
+    public final static String KMEXPERTCOM_LIST = "kmExpertComList";
 }

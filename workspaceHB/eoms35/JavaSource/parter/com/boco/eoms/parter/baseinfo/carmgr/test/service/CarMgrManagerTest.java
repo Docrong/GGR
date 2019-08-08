@@ -35,7 +35,7 @@ public class CarMgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         carMgrDao.expects(once()).method("getCarMgrs")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List carMgrs = carMgrManager.getCarMgrs(null);
         assertTrue(carMgrs.size() == 1);
@@ -45,7 +45,7 @@ public class CarMgrManagerTest extends BaseManagerTestCase {
     public void testGetCarMgr() throws Exception {
         // set expected behavior on dao
         carMgrDao.expects(once()).method("getCarMgr")
-            .will(returnValue(new CarMgr()));
+                .will(returnValue(new CarMgr()));
         CarMgr carMgr = carMgrManager.getCarMgr(carMgrId);
         assertTrue(carMgr != null);
         carMgrDao.verify();
@@ -56,7 +56,7 @@ public class CarMgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         carMgrDao.expects(once()).method("saveCarMgr")
-            .with(same(carMgr)).isVoid();
+                .with(same(carMgr)).isVoid();
 
         carMgrManager.saveCarMgr(carMgr);
         carMgrDao.verify();
@@ -69,7 +69,7 @@ public class CarMgrManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         carMgrDao.expects(once()).method("saveCarMgr")
-            .with(same(carMgr)).isVoid();
+                .with(same(carMgr)).isVoid();
         carMgrManager.saveCarMgr(carMgr);
         carMgrDao.verify();
 

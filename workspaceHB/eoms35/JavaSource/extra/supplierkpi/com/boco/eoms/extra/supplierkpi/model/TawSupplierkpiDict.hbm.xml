@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_supplierkpi_dict"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="dictId"
-            	column="dict_id"
+                name="dictId"
+                column="dict_id"
                 length="100"
                 not-null="true"
                 unique="true"
@@ -37,8 +37,8 @@
         </property>
 
         <property
-            name="dictName"
-            	column="dict_name"
+                name="dictName"
+                column="dict_name"
                 length="50"
                 not-null="true"
                 unique="false"
@@ -47,8 +47,8 @@
         </property>
 
         <property
-            name="dictRemark"
-            	column="dict_remark"
+                name="dictRemark"
+                column="dict_remark"
                 length="240"
                 not-null="false"
                 unique="false"
@@ -56,37 +56,37 @@
 
         </property>
 
-		<property
-            name="parentDictId"
-            	column="parent_dict_id"
+        <property
+                name="parentDictId"
+                column="parent_dict_id"
                 length="100"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="leaf"
-            	column="leaf"
+                name="leaf"
+                column="leaf"
                 length="2"
                 not-null="true"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="nodeType"
-            	column="node_type"
+                name="nodeType"
+                column="node_type"
                 length="100"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

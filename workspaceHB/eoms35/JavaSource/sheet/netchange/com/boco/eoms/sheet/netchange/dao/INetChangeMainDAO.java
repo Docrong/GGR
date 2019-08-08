@@ -18,41 +18,44 @@ import com.boco.eoms.sheet.base.model.TawSystemWorkflow;
 
 /**
  * @author panlong
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public interface INetChangeMainDAO extends IMainDAO {
-	
-	/**
-	 * 互调关系列表
-	 * 
-	 * @return
-	 * @throws SheetException
-	 */
-	public abstract List showInvokeRelationShipList(String mainId) throws SheetException;
-	/**
-	 * 找到有互调环节的处理工单
-	 * 
-	 * @return
-	 * @throws SheetException
-	 */
-	public BaseLink getHasInvokeBaseLink(String mainId) throws SheetException;
-	
-	/**
-	 * 互调关系列表
-	 * 
-	 * @return
-	 * @throws SheetException
-	 */
-	public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
-	
-	/**
-	 * 通过告警号获取工单
-	 * @param alarmId 告警号
-	 * @return
-	 * @throws HibernateException
-	 */
-	public BaseMain getMainByAlarmId(String alarmId);
-	public BaseMain loadSinglePO(String id, Object obj) throws HibernateException;
+
+    /**
+     * 互调关系列表
+     *
+     * @return
+     * @throws SheetException
+     */
+    public abstract List showInvokeRelationShipList(String mainId) throws SheetException;
+
+    /**
+     * 找到有互调环节的处理工单
+     *
+     * @return
+     * @throws SheetException
+     */
+    public BaseLink getHasInvokeBaseLink(String mainId) throws SheetException;
+
+    /**
+     * 互调关系列表
+     *
+     * @return
+     * @throws SheetException
+     */
+    public abstract TawSystemWorkflow getTawSystemWorkflowByFlowTemplateName(String flowTemplateName) throws SheetException;
+
+    /**
+     * 通过告警号获取工单
+     *
+     * @param alarmId 告警号
+     * @return
+     * @throws HibernateException
+     */
+    public BaseMain getMainByAlarmId(String alarmId);
+
+    public BaseMain loadSinglePO(String id, Object obj) throws HibernateException;
 }

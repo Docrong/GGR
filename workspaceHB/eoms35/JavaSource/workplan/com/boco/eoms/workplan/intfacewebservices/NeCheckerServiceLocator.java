@@ -1,6 +1,6 @@
 /**
  * NeCheckerServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -24,7 +24,7 @@ public class NeCheckerServiceLocator extends org.apache.axis.client.Service impl
     }
 
     // Use to get a proxy class for NeCheckerServiceHttpPort
-    private java.lang.String NeCheckerServiceHttpPort_address =WorkplanMgrLocator.getAttributes().getIntfaceUrl();
+    private java.lang.String NeCheckerServiceHttpPort_address = WorkplanMgrLocator.getAttributes().getIntfaceUrl();
 
     public java.lang.String getNeCheckerServiceHttpPortAddress() {
         return NeCheckerServiceHttpPort_address;
@@ -42,11 +42,10 @@ public class NeCheckerServiceLocator extends org.apache.axis.client.Service impl
     }
 
     public NeCheckerServicePortType getNeCheckerServiceHttpPort() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(NeCheckerServiceHttpPort_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getNeCheckerServiceHttpPort(endpoint);
@@ -57,8 +56,7 @@ public class NeCheckerServiceLocator extends org.apache.axis.client.Service impl
             NeCheckerServiceHttpBindingStub _stub = new NeCheckerServiceHttpBindingStub(portAddress, this);
             _stub.setPortName(getNeCheckerServiceHttpPortWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -79,8 +77,7 @@ public class NeCheckerServiceLocator extends org.apache.axis.client.Service impl
                 _stub.setPortName(getNeCheckerServiceHttpPortWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -98,8 +95,7 @@ public class NeCheckerServiceLocator extends org.apache.axis.client.Service impl
         java.lang.String inputPortName = portName.getLocalPart();
         if ("NeCheckerServiceHttpPort".equals(inputPortName)) {
             return getNeCheckerServiceHttpPort();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -121,22 +117,20 @@ public class NeCheckerServiceLocator extends org.apache.axis.client.Service impl
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("NeCheckerServiceHttpPort".equals(portName)) {
+
+        if ("NeCheckerServiceHttpPort".equals(portName)) {
             setNeCheckerServiceHttpPortEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

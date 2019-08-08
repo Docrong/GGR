@@ -7,24 +7,24 @@ package com.boco.eoms.roleWorkflow.dao;
 
 import com.boco.eoms.base.dao.Dao;
 import com.boco.eoms.roleWorkflow.model.TawSystemRoleWorkflow;
+
 import java.util.List;
 
 public interface ITawSystemRoleWorkflowDAO
-	extends Dao
-{
+        extends Dao {
 
-	public abstract List getTawSystemWorkflows();
+    public abstract List getTawSystemWorkflows();
 
-	public abstract TawSystemRoleWorkflow getTawSystemWorkflow(long l);
+    public abstract TawSystemRoleWorkflow getTawSystemWorkflow(long l);
 
-	public abstract void saveTawSystemWorkflow(TawSystemRoleWorkflow tawsystemroleworkflow);
+    public abstract void saveTawSystemWorkflow(TawSystemRoleWorkflow tawsystemroleworkflow);
 
-	public abstract void removeTawSystemWorkflow(long l)
-		throws Exception;
+    public abstract void removeTawSystemWorkflow(long l)
+            throws Exception;
 
-	public abstract TawSystemRoleWorkflow getTawSystemWorkflowByName(String s)
-		throws Exception;
+    public abstract TawSystemRoleWorkflow getTawSystemWorkflowByName(String s)
+            throws Exception;
 
-	public abstract TawSystemRoleWorkflow getTawSystemWorkflowByBeanId(String s)
-		throws Exception;
+    public abstract TawSystemRoleWorkflow getTawSystemWorkflowByBeanId(String s)
+            throws Exception;
 }

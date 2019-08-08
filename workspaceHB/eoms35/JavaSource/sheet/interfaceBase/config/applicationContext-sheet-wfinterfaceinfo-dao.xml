@@ -3,7 +3,8 @@
 
 <beans>
 
-	<bean id="IWfInterfaceInfoDAO" class="com.boco.eoms.sheet.interfaceBase.dao.hibernate.WfInterfaceInfoDAOHibernate" autowire="byName">
-	
-      </bean>
+    <bean id="IWfInterfaceInfoDAO" class="com.boco.eoms.sheet.interfaceBase.dao.hibernate.WfInterfaceInfoDAOHibernate"
+          autowire="byName">
+
+    </bean>
 </beans>

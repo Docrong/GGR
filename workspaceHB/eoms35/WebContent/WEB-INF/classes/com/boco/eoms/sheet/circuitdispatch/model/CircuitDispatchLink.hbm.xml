@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,92 +13,92 @@
             table="circuitdispatch_link"
     >
 
-    <id
-        name="id"
-            column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-         <property name="mainId" />
-       	<property name="nodeAcceptLimit" />
-		<property name="nodeCompleteLimit" />
-		<property name="operateType" />
-		<property name="operateTime" />
-		<property name="operateOrgType" />
-		<property name="operateUserId" />
-		<property name="operateDeptId" />
-		<property name="operateRoleId" />
-		<property name="operaterContact" />
-		<property name="toOrgType" />
-		<property name="toOrgUserId" />
-		<property name="toOrgDeptId" />
-		<property name="toOrgRoleId" />
-		<property name="acceptFlag" />
-		<property name="acceptTime" />
-		<property name="completeFlag" />
-		<property name="completeTime" />
-		<property name="preLinkId" />
-		<property name="parentLinkId" />
-		<property name="firstLinkId" />
-		<property name="piid" />
-		<property name="aiid" />
-		<property name="activeTemplateId" />
-		<property name="nodeTemplateName" />
-		<property name="correlationKey" />
-		<property name="nodeAccessories" />		
-		
-		<property name="templateFlag" />
-		<property name="templateName" />
-		<property name="templateCreateUserId" />
-		<property name="transferReason" />
-		<property name="remark" />
-		<property name="operateYear" />
-		<property name="operateMonth" />
-		<property name="operateDay" />
-	<property name="linkExecuteEndDate" />
-	<property name="linkProgrammeExplain" />
-	<property name="linkProgrammeKey" />
-	<property name="linkRiskEvaluate" />
-	<property name="linkOperationConstrue" />
-	<property name="linkProgrammeNo" />
-	<property name="linkPermitResult" />
-	<property name="linkPermitIdea" />
-	<property name="linkExcutePrincipal" />
-	<property name="linkContact" />
-	<property name="linkPlanStartDate" />
-	<property name="linkPlanEndDate" />
-	<property name="linkNetAffectArea" />
-	<property name="linkIfAffectOperation" />
-	<property name="linkAffectSituation" />
-	<property name="linkAffectNetManage" />
-	<property name="linkReferOperateDept" />
-	<property name="linkIfNotify" />
-	<property name="linkExcuteResult" />
-	<property name="linkIsAccordanceProgramme" />
-	<property name="linkExcuteExplain" />
-	<property name="linkAffectOperationExplain" />
-	<property name="linkTestResult" />
-	<property name="linkAlarmRecord" />
-	<property name="linkReportAbnormityExplain" />
-	<property name="linkExcuteConstrue" />
-	<property name="linkIfUpdatePlan" />
-	<property name="linkPlanUpdateIdea" />
-	<property name="linkCircuitUpdate" />
-	<property name="linkWorkPlan" />
-	<property name="linkIsToMaintenance" />
-	<property name="linkMaintenanceDes" />
-	<property name="linkFailedReason" />
-	<property name="linkInvolvedProvince" />
-	<property name="linkInvolvedCity" />
-	<property name="linkRejectReason" />	
-	<property name="linkCopyPerformer" />
+        </id>
+        <property name="mainId"/>
+        <property name="nodeAcceptLimit"/>
+        <property name="nodeCompleteLimit"/>
+        <property name="operateType"/>
+        <property name="operateTime"/>
+        <property name="operateOrgType"/>
+        <property name="operateUserId"/>
+        <property name="operateDeptId"/>
+        <property name="operateRoleId"/>
+        <property name="operaterContact"/>
+        <property name="toOrgType"/>
+        <property name="toOrgUserId"/>
+        <property name="toOrgDeptId"/>
+        <property name="toOrgRoleId"/>
+        <property name="acceptFlag"/>
+        <property name="acceptTime"/>
+        <property name="completeFlag"/>
+        <property name="completeTime"/>
+        <property name="preLinkId"/>
+        <property name="parentLinkId"/>
+        <property name="firstLinkId"/>
+        <property name="piid"/>
+        <property name="aiid"/>
+        <property name="activeTemplateId"/>
+        <property name="nodeTemplateName"/>
+        <property name="correlationKey"/>
+        <property name="nodeAccessories"/>
 
-    </class>    
+        <property name="templateFlag"/>
+        <property name="templateName"/>
+        <property name="templateCreateUserId"/>
+        <property name="transferReason"/>
+        <property name="remark"/>
+        <property name="operateYear"/>
+        <property name="operateMonth"/>
+        <property name="operateDay"/>
+        <property name="linkExecuteEndDate"/>
+        <property name="linkProgrammeExplain"/>
+        <property name="linkProgrammeKey"/>
+        <property name="linkRiskEvaluate"/>
+        <property name="linkOperationConstrue"/>
+        <property name="linkProgrammeNo"/>
+        <property name="linkPermitResult"/>
+        <property name="linkPermitIdea"/>
+        <property name="linkExcutePrincipal"/>
+        <property name="linkContact"/>
+        <property name="linkPlanStartDate"/>
+        <property name="linkPlanEndDate"/>
+        <property name="linkNetAffectArea"/>
+        <property name="linkIfAffectOperation"/>
+        <property name="linkAffectSituation"/>
+        <property name="linkAffectNetManage"/>
+        <property name="linkReferOperateDept"/>
+        <property name="linkIfNotify"/>
+        <property name="linkExcuteResult"/>
+        <property name="linkIsAccordanceProgramme"/>
+        <property name="linkExcuteExplain"/>
+        <property name="linkAffectOperationExplain"/>
+        <property name="linkTestResult"/>
+        <property name="linkAlarmRecord"/>
+        <property name="linkReportAbnormityExplain"/>
+        <property name="linkExcuteConstrue"/>
+        <property name="linkIfUpdatePlan"/>
+        <property name="linkPlanUpdateIdea"/>
+        <property name="linkCircuitUpdate"/>
+        <property name="linkWorkPlan"/>
+        <property name="linkIsToMaintenance"/>
+        <property name="linkMaintenanceDes"/>
+        <property name="linkFailedReason"/>
+        <property name="linkInvolvedProvince"/>
+        <property name="linkInvolvedCity"/>
+        <property name="linkRejectReason"/>
+        <property name="linkCopyPerformer"/>
+
+    </class>
 
 </hibernate-mapping>
 

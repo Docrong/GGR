@@ -17,46 +17,45 @@ import com.boco.eoms.commonfaulthj.dao.CommonfaulthjDao;
  * <p>
  * Thu Dec 18 15:28:05 CST 2014
  * </p>
- * 
+ *
  * @author zhoupan
  * @version 3.5
- * 
  */
 public class CommonfaulthjMgrImpl implements CommonfaulthjMgr {
- 
-	private CommonfaulthjDao  commonfaulthjDao;
- 	
-	public CommonfaulthjDao getCommonfaulthjDao() {
-		return this.commonfaulthjDao;
-	}
- 	
-	public void setCommonfaulthjDao(CommonfaulthjDao commonfaulthjDao) {
-		this.commonfaulthjDao = commonfaulthjDao;
-	}
- 	
+
+    private CommonfaulthjDao commonfaulthjDao;
+
+    public CommonfaulthjDao getCommonfaulthjDao() {
+        return this.commonfaulthjDao;
+    }
+
+    public void setCommonfaulthjDao(CommonfaulthjDao commonfaulthjDao) {
+        this.commonfaulthjDao = commonfaulthjDao;
+    }
+
     public List getCommonfaulthjs() {
-    	return commonfaulthjDao.getCommonfaulthjs();
+        return commonfaulthjDao.getCommonfaulthjs();
     }
-    
+
     public Commonfaulthj getCommonfaulthj(final String id) {
-    	return commonfaulthjDao.getCommonfaulthj(id);
+        return commonfaulthjDao.getCommonfaulthj(id);
     }
-    
+
     public void saveCommonfaulthj(Commonfaulthj commonfaulthj) {
-    	commonfaulthjDao.saveCommonfaulthj(commonfaulthj);
+        commonfaulthjDao.saveCommonfaulthj(commonfaulthj);
     }
-    
+
     public void removeCommonfaulthj(final String id) {
-    	commonfaulthjDao.removeCommonfaulthj(id);
+        commonfaulthjDao.removeCommonfaulthj(id);
     }
-    
+
     public Map getCommonfaulthjs(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return commonfaulthjDao.getCommonfaulthjs(curPage, pageSize, whereStr);
-	}
-    
+                                 final String whereStr) {
+        return commonfaulthjDao.getCommonfaulthjs(curPage, pageSize, whereStr);
+    }
+
     public Map getMapList(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return commonfaulthjDao.getMapList(curPage, pageSize, whereStr);
-	}
+                          final String whereStr) {
+        return commonfaulthjDao.getMapList(curPage, pageSize, whereStr);
+    }
 }

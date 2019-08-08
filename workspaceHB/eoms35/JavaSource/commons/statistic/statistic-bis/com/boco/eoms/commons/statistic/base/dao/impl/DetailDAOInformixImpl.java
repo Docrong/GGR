@@ -12,66 +12,66 @@ import org.springframework.jdbc.support.JdbcUtils;
 import com.boco.eoms.commons.statistic.base.dao.IStatDetailDAO;
 
 public class DetailDAOInformixImpl extends DetailDAOBaseImpl implements
-		IStatDetailDAO {
-	public List getListDetail(String sql, String className, int pageIndex,
-			int pageSize) {
-		
-		Connection conn = getConnection();
-		PreparedStatement ps = null;
-		try {
-			sql=sql.trim();
-			StringBuffer str = new StringBuffer(sql)
-									.insert(6, " first "+(pageIndex+1)*pageSize+" " );
-			sql=str.toString();
+        IStatDetailDAO {
+    public List getListDetail(String sql, String className, int pageIndex,
+                              int pageSize) {
+
+        Connection conn = getConnection();
+        PreparedStatement ps = null;
+        try {
+            sql = sql.trim();
+            StringBuffer str = new StringBuffer(sql)
+                    .insert(6, " first " + (pageIndex + 1) * pageSize + " ");
+            sql = str.toString();
 //			System.out.println("detail sql2 :"+sql);
-			logger.info("\n分页detail sql :" + sql);						
-			
-			ps = conn.prepareStatement(sql);
+            logger.info("\n分页detail sql :" + sql);
 
-			ResultSet rs = ps.executeQuery();
-			return getListByRs(rs, className, pageIndex, pageSize);
+            ps = conn.prepareStatement(sql);
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JdbcUtils.closeStatement(ps);
-			releaseConnection(conn);
-		}
+            ResultSet rs = ps.executeQuery();
+            return getListByRs(rs, className, pageIndex, pageSize);
 
-		return null;
-	}
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            JdbcUtils.closeStatement(ps);
+            releaseConnection(conn);
+        }
 
-	//私有方法 informix 数据分页用
-	private List getListByRs(ResultSet rs, String className, int pageIndex,
-			int pageSize) throws SQLException {
-		int beginRow = pageIndex * pageSize;
-		List result = new ArrayList();
-		for (int i = 0; i < beginRow; i++)
-			rs.next();
+        return null;
+    }
 
-		for (int iRow = 0; iRow < pageSize; iRow++) {
-			if (rs.next()) {
+    //私有方法 informix 数据分页用
+    private List getListByRs(ResultSet rs, String className, int pageIndex,
+                             int pageSize) throws SQLException {
+        int beginRow = pageIndex * pageSize;
+        List result = new ArrayList();
+        for (int i = 0; i < beginRow; i++)
+            rs.next();
 
-				try {
-					Object vo = Class.forName(className).newInstance();
-					populate(vo, rs);
-					result.add(vo);
-				} catch (InstantiationException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+        for (int iRow = 0; iRow < pageSize; iRow++) {
+            if (rs.next()) {
 
-			}
-		}
+                try {
+                    Object vo = Class.forName(className).newInstance();
+                    populate(vo, rs);
+                    result.add(vo);
+                } catch (InstantiationException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
 
-		return result;
-	}
+            }
+        }
+
+        return result;
+    }
 
 }

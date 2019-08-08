@@ -23,43 +23,44 @@ public class TawSupplierkpiAssessInstanceManagerImpl extends BaseManager impleme
     private TawSupplierkpiItemDao tawSupplierkpiItemDao;
     private TawSupplierkpiTemplateDao tawSupplierkpiTemplateDao;
     private TawSupplierkpiInfoDao tawSupplierkpiInfoDao;
-    
-	public TawSupplierkpiInfoDao getTawSupplierkpiInfoDao() {
-		return tawSupplierkpiInfoDao;
-	}
 
-	public void setTawSupplierkpiInfoDao(TawSupplierkpiInfoDao tawSupplierkpiInfoDao) {
-		this.tawSupplierkpiInfoDao = tawSupplierkpiInfoDao;
-	}
+    public TawSupplierkpiInfoDao getTawSupplierkpiInfoDao() {
+        return tawSupplierkpiInfoDao;
+    }
 
-	public TawSupplierkpiItemDao getTawSupplierkpiItemDao() {
-		return tawSupplierkpiItemDao;
-	}
+    public void setTawSupplierkpiInfoDao(TawSupplierkpiInfoDao tawSupplierkpiInfoDao) {
+        this.tawSupplierkpiInfoDao = tawSupplierkpiInfoDao;
+    }
 
-	public void setTawSupplierkpiItemDao(TawSupplierkpiItemDao tawSupplierkpiItemDao) {
-		this.tawSupplierkpiItemDao = tawSupplierkpiItemDao;
-	}
+    public TawSupplierkpiItemDao getTawSupplierkpiItemDao() {
+        return tawSupplierkpiItemDao;
+    }
 
-	public TawSupplierkpiTemplateDao getTawSupplierkpiTemplateDao() {
-		return tawSupplierkpiTemplateDao;
-	}
+    public void setTawSupplierkpiItemDao(TawSupplierkpiItemDao tawSupplierkpiItemDao) {
+        this.tawSupplierkpiItemDao = tawSupplierkpiItemDao;
+    }
 
-	public void setTawSupplierkpiTemplateDao(
-			TawSupplierkpiTemplateDao tawSupplierkpiTemplateDao) {
-		this.tawSupplierkpiTemplateDao = tawSupplierkpiTemplateDao;
-	}
+    public TawSupplierkpiTemplateDao getTawSupplierkpiTemplateDao() {
+        return tawSupplierkpiTemplateDao;
+    }
 
-	public TawSupplierkpiRelationDao getTawSupplierkpiRelationDao() {
-		return tawSupplierkpiRelationDao;
-	}
+    public void setTawSupplierkpiTemplateDao(
+            TawSupplierkpiTemplateDao tawSupplierkpiTemplateDao) {
+        this.tawSupplierkpiTemplateDao = tawSupplierkpiTemplateDao;
+    }
 
-	public void setTawSupplierkpiRelationDao(
-			TawSupplierkpiRelationDao tawSupplierkpiRelationDao) {
-		this.tawSupplierkpiRelationDao = tawSupplierkpiRelationDao;
-	}
+    public TawSupplierkpiRelationDao getTawSupplierkpiRelationDao() {
+        return tawSupplierkpiRelationDao;
+    }
 
-	/**
+    public void setTawSupplierkpiRelationDao(
+            TawSupplierkpiRelationDao tawSupplierkpiRelationDao) {
+        this.tawSupplierkpiRelationDao = tawSupplierkpiRelationDao;
+    }
+
+    /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSupplierkpiAssessInstanceDao(TawSupplierkpiAssessInstanceDao dao) {
@@ -93,67 +94,73 @@ public class TawSupplierkpiAssessInstanceManagerImpl extends BaseManager impleme
     public void removeTawSupplierkpiAssessInstance(final String id) {
         dao.removeTawSupplierkpiAssessInstance(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSupplierkpiAssessInstances(final int curPage, final int pageSize) {
-        return dao.getTawSupplierkpiAssessInstances(curPage, pageSize,null);
+        return dao.getTawSupplierkpiAssessInstances(curPage, pageSize, null);
     }
+
     public Map getTawSupplierkpiAssessInstances(final int curPage, final int pageSize, final String whereStr) {
         return dao.getTawSupplierkpiAssessInstances(curPage, pageSize, whereStr);
     }
+
     public List getSupplierkpi(final String supplierId) {
-    	return dao.getSupplierkpi(supplierId);
-    }
-    public String getIdBySpecialAndSupplier(final String specialType, final String supplierId) {
-    	return dao.getIdBySpecialAndSupplier(specialType, supplierId);
-    }
-    public void saveTawSupplierkpiAssessInstanceAndRelations(TawSupplierkpiAssessInstance tawSupplierkpiAssessInstance, String[] kpiIds, int size) {
-    	//根据专业和供应商获取考核实例id,若id不空，则先删除考核实例和关系表中对应项
-    	String id = dao.getIdBySpecialAndSupplier(tawSupplierkpiAssessInstance.getSpecialType(), tawSupplierkpiAssessInstance.getSupplierId());
-    	if ((id != null) && (!"".equals(id))) {
-    		dao.removeTawSupplierkpiAssessInstance(id);
-        	List relationList = tawSupplierkpiRelationDao.getTawSupplierkpiRelationsByAssessInstanceId(id);
-        	for (int i = 0; i < relationList.size(); i++) {
-        		TawSupplierkpiRelation relation = (TawSupplierkpiRelation)relationList.get(i);
-        		tawSupplierkpiRelationDao.removeTawSupplierkpiRelation(relation.getId());
-        	}
-    	}
-    	//保存考核实例,并返回id --2007.12.4修改,加入判断,如果没有选择任何KPI,则考核实例表也不保存任何信息,相当于删除以前的信息.
-    	String assessInstanceId = "";
-    	if (size > 0) {
-    		assessInstanceId = dao.saveTawSupplierkpiAssessInstance(tawSupplierkpiAssessInstance);
-    	}
-    	//若考核实例表保存成功,则根据选择的KPI数量保存关系表
-        if ((assessInstanceId != null) && (!"".equals(assessInstanceId))) {
-        	for (int i = 0; i < size; i++) {
-        		String kpiId = kpiIds[i];
-            	TawSupplierkpiRelation tawSupplierkpiRelation = new TawSupplierkpiRelation();
-            	tawSupplierkpiRelation.setAssessInstanceId(assessInstanceId);
-            	tawSupplierkpiRelation.setKpiItemId(kpiId);
-            	tawSupplierkpiRelationDao.saveTawSupplierkpiRelation(tawSupplierkpiRelation);
-        	}
-        }
-    }
-    public void removeRelationBySupplierIdAndKpiIds(final String supplierId, final String[] kpiIds, final int size) {
-    	for (int i = 0; i < size; i++) {
-			String kpiId = kpiIds[i];
-			TawSupplierkpiItem item = tawSupplierkpiItemDao.getTawSupplierkpiItem(kpiId, SupplierkpiConstants.UNDELETED);
-			TawSupplierkpiTemplate template = tawSupplierkpiTemplateDao.getTawSupplierkpiTemplate(item.getTemplateId());
-			String specialType = template.getSpecialType();
-			String assessInstanceId = dao.getIdBySpecialAndSupplier(specialType, supplierId);
-			String relationId = tawSupplierkpiRelationDao.getIdByAssessInstanceIdAndKpiId(assessInstanceId, kpiId);
-    		tawSupplierkpiRelationDao.removeTawSupplierkpiRelation(relationId);
-    	}
+        return dao.getSupplierkpi(supplierId);
     }
 
-    public List getCustomSuppliers(final String specialType){
-    	List list = dao.getCustomSuppliers(specialType);
-    	return list;
+    public String getIdBySpecialAndSupplier(final String specialType, final String supplierId) {
+        return dao.getIdBySpecialAndSupplier(specialType, supplierId);
     }
-    
+
+    public void saveTawSupplierkpiAssessInstanceAndRelations(TawSupplierkpiAssessInstance tawSupplierkpiAssessInstance, String[] kpiIds, int size) {
+        //根据专业和供应商获取考核实例id,若id不空，则先删除考核实例和关系表中对应项
+        String id = dao.getIdBySpecialAndSupplier(tawSupplierkpiAssessInstance.getSpecialType(), tawSupplierkpiAssessInstance.getSupplierId());
+        if ((id != null) && (!"".equals(id))) {
+            dao.removeTawSupplierkpiAssessInstance(id);
+            List relationList = tawSupplierkpiRelationDao.getTawSupplierkpiRelationsByAssessInstanceId(id);
+            for (int i = 0; i < relationList.size(); i++) {
+                TawSupplierkpiRelation relation = (TawSupplierkpiRelation) relationList.get(i);
+                tawSupplierkpiRelationDao.removeTawSupplierkpiRelation(relation.getId());
+            }
+        }
+        //保存考核实例,并返回id --2007.12.4修改,加入判断,如果没有选择任何KPI,则考核实例表也不保存任何信息,相当于删除以前的信息.
+        String assessInstanceId = "";
+        if (size > 0) {
+            assessInstanceId = dao.saveTawSupplierkpiAssessInstance(tawSupplierkpiAssessInstance);
+        }
+        //若考核实例表保存成功,则根据选择的KPI数量保存关系表
+        if ((assessInstanceId != null) && (!"".equals(assessInstanceId))) {
+            for (int i = 0; i < size; i++) {
+                String kpiId = kpiIds[i];
+                TawSupplierkpiRelation tawSupplierkpiRelation = new TawSupplierkpiRelation();
+                tawSupplierkpiRelation.setAssessInstanceId(assessInstanceId);
+                tawSupplierkpiRelation.setKpiItemId(kpiId);
+                tawSupplierkpiRelationDao.saveTawSupplierkpiRelation(tawSupplierkpiRelation);
+            }
+        }
+    }
+
+    public void removeRelationBySupplierIdAndKpiIds(final String supplierId, final String[] kpiIds, final int size) {
+        for (int i = 0; i < size; i++) {
+            String kpiId = kpiIds[i];
+            TawSupplierkpiItem item = tawSupplierkpiItemDao.getTawSupplierkpiItem(kpiId, SupplierkpiConstants.UNDELETED);
+            TawSupplierkpiTemplate template = tawSupplierkpiTemplateDao.getTawSupplierkpiTemplate(item.getTemplateId());
+            String specialType = template.getSpecialType();
+            String assessInstanceId = dao.getIdBySpecialAndSupplier(specialType, supplierId);
+            String relationId = tawSupplierkpiRelationDao.getIdByAssessInstanceIdAndKpiId(assessInstanceId, kpiId);
+            tawSupplierkpiRelationDao.removeTawSupplierkpiRelation(relationId);
+        }
+    }
+
+    public List getCustomSuppliers(final String specialType) {
+        List list = dao.getCustomSuppliers(specialType);
+        return list;
+    }
+
     public List getSpecialsBySupplierId(final String supplierId) {
-    	List list = dao.getSpecialsBySupplierId(supplierId);
-    	return list;
+        List list = dao.getSpecialsBySupplierId(supplierId);
+        return list;
     }
 }

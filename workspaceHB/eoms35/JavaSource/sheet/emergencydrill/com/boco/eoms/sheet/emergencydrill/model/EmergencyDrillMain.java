@@ -10,167 +10,159 @@ import com.boco.eoms.sheet.base.model.BaseSubMain;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="EmergencyDrillMain.java.html"> <i>View Source </i> </a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible </a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="EmergencyDrillmain"
  */
-public class EmergencyDrillMain extends BaseMain
-{
+public class EmergencyDrillMain extends BaseMain {
 
     /**
-	 *
-	 */
-     private java.lang.String mainEmergencySortOne;
+     *
+     */
+    private java.lang.String mainEmergencySortOne;
 
     /**
-	 *
-	 */
-     private java.lang.String mainEmergencySortTwo;
+     *
+     */
+    private java.lang.String mainEmergencySortTwo;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private Date mainCompleteTime;
+     * @texttype
+     */
+    private Date mainCompleteTime;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainRemarks;
+     * @texttype
+     */
+    private java.lang.String mainRemarks;
 
     /**
-	 *
-	 * @accesstype
-	 */
-     private java.lang.String mainEmergencyPlan;
-
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainNetSortOne;
+     * @accesstype
+     */
+    private java.lang.String mainEmergencyPlan;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainNetSortTwo;
+     * @hibernate.property value="50"
+     * @eoms.show
+     * @return
+     */
+    /**
+     * @texttype
+     */
+    private java.lang.String mainNetSortOne;
 
     /**
-	 *
-	 * @texttype
-	 */
-     private java.lang.String mainNetSortThree;
-     
-     /**
-      * KPI增加字段
-      */
-     private Integer mainRejectTimes;
- 
+     * @texttype
+     */
+    private java.lang.String mainNetSortTwo;
 
-	public Integer getMainRejectTimes() {
-		return mainRejectTimes;
-	}
+    /**
+     * @texttype
+     */
+    private java.lang.String mainNetSortThree;
 
-	public void setMainRejectTimes(Integer mainRejectTimes) {
-		this.mainRejectTimes = mainRejectTimes;
-	}
+    /**
+     * KPI增加字段
+     */
+    private Integer mainRejectTimes;
 
-	public java.lang.String getMainNetSortOne() {
-		return mainNetSortOne;
-	}
 
-	public void setMainNetSortOne(java.lang.String mainNetSortOne) {
-		this.mainNetSortOne = mainNetSortOne;
-	}
+    public Integer getMainRejectTimes() {
+        return mainRejectTimes;
+    }
 
-	public java.lang.String getMainNetSortThree() {
-		return mainNetSortThree;
-	}
+    public void setMainRejectTimes(Integer mainRejectTimes) {
+        this.mainRejectTimes = mainRejectTimes;
+    }
 
-	public void setMainNetSortThree(java.lang.String mainNetSortThree) {
-		this.mainNetSortThree = mainNetSortThree;
-	}
+    public java.lang.String getMainNetSortOne() {
+        return mainNetSortOne;
+    }
 
-	public java.lang.String getMainNetSortTwo() {
-		return mainNetSortTwo;
-	}
+    public void setMainNetSortOne(java.lang.String mainNetSortOne) {
+        this.mainNetSortOne = mainNetSortOne;
+    }
 
-	public void setMainNetSortTwo(java.lang.String mainNetSortTwo) {
-		this.mainNetSortTwo = mainNetSortTwo;
-	}
+    public java.lang.String getMainNetSortThree() {
+        return mainNetSortThree;
+    }
 
-	public java.lang.String getMainEmergencySortOne() {
-            return mainEmergencySortOne;
-     }
+    public void setMainNetSortThree(java.lang.String mainNetSortThree) {
+        this.mainNetSortThree = mainNetSortThree;
+    }
 
-     public void setMainEmergencySortOne(java.lang.String mainEmergencySortOne) {
-           this.mainEmergencySortOne = mainEmergencySortOne;
-     }
+    public java.lang.String getMainNetSortTwo() {
+        return mainNetSortTwo;
+    }
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainEmergencySortTwo() {
-            return mainEmergencySortTwo;
-     }
+    public void setMainNetSortTwo(java.lang.String mainNetSortTwo) {
+        this.mainNetSortTwo = mainNetSortTwo;
+    }
 
-     public void setMainEmergencySortTwo(java.lang.String mainEmergencySortTwo) {
-           this.mainEmergencySortTwo = mainEmergencySortTwo;
-     }
+    public java.lang.String getMainEmergencySortOne() {
+        return mainEmergencySortOne;
+    }
 
-	/**
-	 * @hibernate.property value="35"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public Date getMainCompleteTime() {
-            return mainCompleteTime;
-     }
+    public void setMainEmergencySortOne(java.lang.String mainEmergencySortOne) {
+        this.mainEmergencySortOne = mainEmergencySortOne;
+    }
 
-     public void setMainCompleteTime(Date mainCompleteTime) {
-           this.mainCompleteTime = mainCompleteTime;
-     }
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainEmergencySortTwo() {
+        return mainEmergencySortTwo;
+    }
 
-	/**
-	 * @hibernate.property value="500"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainRemarks() {
-            return mainRemarks;
-     }
+    public void setMainEmergencySortTwo(java.lang.String mainEmergencySortTwo) {
+        this.mainEmergencySortTwo = mainEmergencySortTwo;
+    }
 
-     public void setMainRemarks(java.lang.String mainRemarks) {
-           this.mainRemarks = mainRemarks;
-     }
+    /**
+     * @return
+     * @hibernate.property value="35"
+     * @eoms.show
+     */
+    public Date getMainCompleteTime() {
+        return mainCompleteTime;
+    }
 
-	/**
-	 * @hibernate.property value="50"
-	 * @eoms.show
-	 * @return
-	 */
-   	 public java.lang.String getMainEmergencyPlan() {
-            return mainEmergencyPlan;
-     }
+    public void setMainCompleteTime(Date mainCompleteTime) {
+        this.mainCompleteTime = mainCompleteTime;
+    }
 
-     public void setMainEmergencyPlan(java.lang.String mainEmergencyPlan) {
-           this.mainEmergencyPlan = mainEmergencyPlan;
-     }
+    /**
+     * @return
+     * @hibernate.property value="500"
+     * @eoms.show
+     */
+    public java.lang.String getMainRemarks() {
+        return mainRemarks;
+    }
+
+    public void setMainRemarks(java.lang.String mainRemarks) {
+        this.mainRemarks = mainRemarks;
+    }
+
+    /**
+     * @return
+     * @hibernate.property value="50"
+     * @eoms.show
+     */
+    public java.lang.String getMainEmergencyPlan() {
+        return mainEmergencyPlan;
+    }
+
+    public void setMainEmergencyPlan(java.lang.String mainEmergencyPlan) {
+        this.mainEmergencyPlan = mainEmergencyPlan;
+    }
 
 }

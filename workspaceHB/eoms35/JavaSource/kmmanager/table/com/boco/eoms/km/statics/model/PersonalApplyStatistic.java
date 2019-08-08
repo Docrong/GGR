@@ -12,82 +12,75 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Mon Mar 30 14:39:15 CST 2009
  * </p>
- * 
+ *
  * @author ljt
  * @version 0.1
- * 
  */
 public class PersonalApplyStatistic extends BaseObject {
 
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    /**
+     * 主键
+     */
+    private String id;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 *
-	 * 用户姓名
-	 *
-	 */
-	private java.lang.String userName;
-   
-	public void setUserName(java.lang.String userName){
-		this.userName= userName;       
-	}
-   
-	public java.lang.String getUserName(){
-		return this.userName;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * 用户部门
-	 *
-	 */
-	private java.lang.String userDept;
-   
-	public void setUserDept(java.lang.String userDept){
-		this.userDept= userDept;       
-	}
-   
-	public java.lang.String getUserDept(){
-		return this.userDept;
-	}
+    /**
+     * 用户姓名
+     */
+    private java.lang.String userName;
 
-	/**
-	 *
-	 * 申请知识数
-	 *
-	 */
-	private java.lang.Integer applyCount;
-   
-	public java.lang.Integer getApplyCount() {
-		return applyCount;
-	}
+    public void setUserName(java.lang.String userName) {
+        this.userName = userName;
+    }
 
-	public void setApplyCount(java.lang.Integer applyCount) {
-		this.applyCount = applyCount;
-	}
+    public java.lang.String getUserName() {
+        return this.userName;
+    }
 
-	public boolean equals(Object o) {
-		if( o instanceof PersonalApplyStatistic ) {
-			PersonalApplyStatistic personalUseStatistic=(PersonalApplyStatistic)o;
-			if (this.id != null || this.id.equals(personalUseStatistic.getId())) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+    /**
+     * 用户部门
+     */
+    private java.lang.String userDept;
+
+    public void setUserDept(java.lang.String userDept) {
+        this.userDept = userDept;
+    }
+
+    public java.lang.String getUserDept() {
+        return this.userDept;
+    }
+
+    /**
+     * 申请知识数
+     */
+    private java.lang.Integer applyCount;
+
+    public java.lang.Integer getApplyCount() {
+        return applyCount;
+    }
+
+    public void setApplyCount(java.lang.Integer applyCount) {
+        this.applyCount = applyCount;
+    }
+
+    public boolean equals(Object o) {
+        if (o instanceof PersonalApplyStatistic) {
+            PersonalApplyStatistic personalUseStatistic = (PersonalApplyStatistic) o;
+            if (this.id != null || this.id.equals(personalUseStatistic.getId())) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 
 }

@@ -21,10 +21,9 @@ import com.boco.eoms.commons.system.dict.util.Constants;
  * <p>
  * Date:2007-10-24 15:15:15
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictServiceImplTest extends ConsoleTestCase {
     private IDictService service;
@@ -55,10 +54,10 @@ public class DictServiceImplTest extends ConsoleTestCase {
         try {
             List list = service.getDictItems("sample"
                     + Constants.DICT_ID_SPLIT_CHAR + "major");
-            
+
             assertNotNull(list);
             assertFalse(list.isEmpty());
-            for (Iterator it = list.iterator(); it.hasNext();) {
+            for (Iterator it = list.iterator(); it.hasNext(); ) {
                 IDictItem item = (IDictItem) it.next();
                 //若为1则断方开发工程师
                 if ("1".equals(item.getItemId())) {

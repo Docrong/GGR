@@ -21,11 +21,11 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     public Person load(Long id) {
-        return (Person)getCurrentSession().load(Person.class,id);
+        return (Person) getCurrentSession().load(Person.class, id);
     }
 
     public Person get(Long id) {
-        return (Person)getCurrentSession().get(Person.class,id);
+        return (Person) getCurrentSession().get(Person.class, id);
     }
 
     public List<Person> findAll() {
@@ -37,7 +37,7 @@ public class PersonRepositoryImpl implements PersonRepository {
     }
 
     public Long save(Person entity) {
-        return (Long)getCurrentSession().save(entity);
+        return (Long) getCurrentSession().save(entity);
     }
 
     public void saveOrUpdate(Person entity) {

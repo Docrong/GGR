@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-	<!-- Add new Managers here -->
+    <!-- Add new Managers here -->
 
-	<!--TawWorkbenchNetDisk-DAO START-->
-	<bean id="interfaceMonitoringDao"
-		class="com.boco.eoms.commons.interfaceMonitoring.dao.hibernate.InterfaceMonitoringDaoHibernate"
-		autowire="byName" />
-	<bean id="interfaceConfigurationDao"
-		class="com.boco.eoms.commons.interfaceMonitoring.dao.hibernate.InterfaceConfigurationDaoHibernate"
-		autowire="byName" />
-	<bean id="interfaceConfigurationGroupDao"
-		class="com.boco.eoms.commons.interfaceMonitoring.dao.hibernate.InterfaceConfigurationGroupDaoHibernate"
-		autowire="byName" />
-	<!--TawWorkbenchNetDisk-DAO END-->
-	<!--TawWorkbenchNetDisk-START-->
-	<bean id="InterfaceMonitoringMgr" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.commons.interfaceMonitoring.mgr.impl.InterfaceMonitoringMgrImpl">
-				<property name="interfaceMonitoringDao"
-					ref="interfaceMonitoringDao" />
-				<property name="interfaceConfigurationDao"
-					ref="interfaceConfigurationDao" />
-				<property name="interfaceConfigurationGroupDao"
-					ref="interfaceConfigurationGroupDao" />
-			</bean>
-		</property>
-	</bean>
+    <!--TawWorkbenchNetDisk-DAO START-->
+    <bean id="interfaceMonitoringDao"
+          class="com.boco.eoms.commons.interfaceMonitoring.dao.hibernate.InterfaceMonitoringDaoHibernate"
+          autowire="byName"/>
+    <bean id="interfaceConfigurationDao"
+          class="com.boco.eoms.commons.interfaceMonitoring.dao.hibernate.InterfaceConfigurationDaoHibernate"
+          autowire="byName"/>
+    <bean id="interfaceConfigurationGroupDao"
+          class="com.boco.eoms.commons.interfaceMonitoring.dao.hibernate.InterfaceConfigurationGroupDaoHibernate"
+          autowire="byName"/>
+    <!--TawWorkbenchNetDisk-DAO END-->
+    <!--TawWorkbenchNetDisk-START-->
+    <bean id="InterfaceMonitoringMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.commons.interfaceMonitoring.mgr.impl.InterfaceMonitoringMgrImpl">
+                <property name="interfaceMonitoringDao"
+                          ref="interfaceMonitoringDao"/>
+                <property name="interfaceConfigurationDao"
+                          ref="interfaceConfigurationDao"/>
+                <property name="interfaceConfigurationGroupDao"
+                          ref="interfaceConfigurationGroupDao"/>
+            </bean>
+        </property>
+    </bean>
 
 
 </beans>

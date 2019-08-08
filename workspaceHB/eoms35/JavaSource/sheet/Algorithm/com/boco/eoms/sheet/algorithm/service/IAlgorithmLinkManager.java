@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.ILinkService;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public interface IAlgorithmLinkManager extends ILinkService {
- 
- }
+
+public interface IAlgorithmLinkManager extends ILinkService {
+
+}

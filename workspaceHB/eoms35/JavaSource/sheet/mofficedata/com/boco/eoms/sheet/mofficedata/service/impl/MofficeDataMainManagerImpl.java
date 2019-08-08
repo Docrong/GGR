@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.mofficedata.service.IMofficeDataMainManager;
  * <p>
  * Tue Mar 22 09:31:29 CST 2016
  * </p>
- * 
+ *
  * @author weichao
  * @version 3.5
- * 
  */
- 
- public class MofficeDataMainManagerImpl extends MainService implements IMofficeDataMainManager {
- 
- }
+
+public class MofficeDataMainManagerImpl extends MainService implements IMofficeDataMainManager {
+
+}

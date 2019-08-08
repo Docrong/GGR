@@ -16,15 +16,14 @@ package com.boco.eoms.remind.util;
  * <p>
  * Date:2008-10-7 上午08:57:04
  * </p>
- * 
+ *
  * @author 李秋野
  * @version 3.5.1
- * 
  */
 public class RemindConstants {
 
-	/**
-	 * 获得提醒列表方法名
-	 */
-	public static final String GETREMINDLIST_METHODNAME = "getRemindInfoList";
+    /**
+     * 获得提醒列表方法名
+     */
+    public static final String GETREMINDLIST_METHODNAME = "getRemindInfoList";
 }

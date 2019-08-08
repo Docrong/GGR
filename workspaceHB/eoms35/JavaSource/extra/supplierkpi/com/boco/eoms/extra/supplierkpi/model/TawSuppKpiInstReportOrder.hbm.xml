@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,21 +13,21 @@
             table="Taw_SuppKpiInst_ReportOrder"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="createMan"
+                name="createMan"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -36,7 +36,7 @@
         </property>
 
         <property
-            name="reportName"
+                name="reportName"
                 length="200"
                 not-null="false"
                 unique="false"
@@ -45,7 +45,7 @@
         </property>
 
         <property
-            name="serviceType"
+                name="serviceType"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -54,7 +54,7 @@
         </property>
 
         <property
-            name="specialType"
+                name="specialType"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -63,7 +63,7 @@
         </property>
 
         <property
-            name="kpiItemName"
+                name="kpiItemName"
                 length="500"
                 not-null="false"
                 unique="false"
@@ -72,7 +72,7 @@
         </property>
 
         <property
-            name="latitude"
+                name="latitude"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -81,7 +81,7 @@
         </property>
 
         <property
-            name="reportStartTime"
+                name="reportStartTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -90,7 +90,7 @@
         </property>
 
         <property
-            name="reportEndTime"
+                name="reportEndTime"
                 length="30"
                 not-null="false"
                 unique="false"
@@ -99,66 +99,66 @@
         </property>
 
         <property
-            name="reportType"
+                name="reportType"
                 length="10"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-                        
-        <property
-            name="deleteTime"
-                length="20"
-                not-null="false"
-                unique="false"
-        > 
-        
-        </property> 
 
         <property
-            name="createTime"
+                name="deleteTime"
                 length="20"
                 not-null="false"
                 unique="false"
-        > 
-        
-        </property>        
-        
+        >
+
+        </property>
+
         <property
-            name="state"
+                name="createTime"
+                length="20"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="state"
                 length="10"
                 not-null="false"
                 unique="false"
-        > 
-        
+        >
+
         </property>
-        
+
         <property
-            name="historyModelId"
+                name="historyModelId"
                 length="50"
                 not-null="false"
                 unique="false"
-        > 
-        
+        >
+
         </property>
         <property
-            name="kpiItemId"
+                name="kpiItemId"
                 length="1000"
                 not-null="false"
                 unique="false"
-        > 
-        
+        >
+
         </property>
         <property
-            name="appendState"
+                name="appendState"
                 length="10"
                 not-null="false"
                 unique="false"
-        >         
-        </property>                        
-        
-    </class>    
+        >
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

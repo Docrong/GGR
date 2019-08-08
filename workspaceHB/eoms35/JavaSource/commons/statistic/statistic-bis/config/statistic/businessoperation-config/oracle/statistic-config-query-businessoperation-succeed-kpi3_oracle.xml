@@ -1,124 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id>23</est-module-id>
+    <title>kpi统计</title>
+    <est-module-id>23</est-module-id>
 
-	
-	<!--******************************************************************
+
+    <!--******************************************************************
 ********    按(部门)统计 (受理部门)  ***************************************************
 ******************************************************************* -->
-	<kpi-define><!-- 可重复 -->
-		<name>succeedKpi3Stat</name>
-		<kpi-caption></kpi-caption>
+    <kpi-define><!-- 可重复 -->
+        <name>succeedKpi3Stat</name>
+        <kpi-caption></kpi-caption>
 
-		<condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
 
-		<summary-define>
-			<id>s1</id><!--受理部门-->
-			<sequence></sequence>
-			<column>1</column><!-- 汇总字段 -->
-			<!--id2name-service>tawSystemDeptDao</id2name-service-->
-			<id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
-			
-		</summary-define>
+        <summary-define>
+            <id>s1</id><!--受理部门-->
+            <sequence></sequence>
+            <column>1</column><!-- 汇总字段 -->
+            <!--id2name-service>tawSystemDeptDao</id2name-service-->
+            <id2name-service>statBaseDeptId2name_v35</id2name-service><!-- 汇总字段 id2name的beanid 这是部门ID转中文名-->
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.businessoperation.vo.BusinessoperationStatDetailVO</stat-detail-vo><!--显示DetailVO-->
-		
-		<!-- 工单数 -->
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>est_businessoperation est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
-			<where>(est.mainifrecord is null or est.mainifrecord=0) and est.mainIsSuccess='101051301' and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') </where><!-- 可为空 -->
+        </summary-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f1</id><!--总工单数-->
-				<sequence>1</sequence>
+        <stat-detail-vo>com.boco.eoms.commons.statistic.businessoperation.vo.BusinessoperationStatDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
+        <!-- 工单数 -->
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
 
-				<list-hsql>
-					select distinct est.mainid,est.sheetid,est.title,est.mainProductCode,est.endtime from est_businessoperation est where (est.mainifrecord is null or est.mainifrecord=0) and   est.mainIsSuccess='101051301' and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-				order by est.endtime desc </list-hsql>
-				
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>est_businessoperation est</from><!-- 不可为空 --><!--不包括草稿工单 status=3-->
+            <where>(est.mainifrecord is null or est.mainifrecord=0) and est.mainIsSuccess='101051301' and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD
+                HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+            </where><!-- 可为空 -->
 
-		</query-define>
-		
-		<!-- 3阶段都成功数 -->
-		<query-define><!-- 可重复 -->
-			<name>query2</name>
-			
-			<!-- sql片段,用于jdbc统计(分子) -->
-			<from>est_businessoperation est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
-			<where>(est.mainifrecord is null or est.mainifrecord=0) and  
-			est.mainIsSuccess='101051301' 
-   and est.mainproductcode in (
-    select est_plan.mainproductcode from est_businessplan est_plan ) 
-    and est.mainproductcode in (
-    select est_pilot.mainproductcode from est_businesspilot est_pilot 
-   ) and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-			</where><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--总工单数-->
+                <sequence>1</sequence>
 
-			<field-define><!-- 可重复 -->
-				<id>f2</id><!-- 撤销数 -->
-				<sequence>1</sequence>
-				<stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>count(distinct est.mainid)</stat-sql>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
 
-				<list-hsql>
-				select distinct est.mainid,est.sheetid,est.title,est.mainProductCode,est.endtime from est_businessoperation est 
-				where (est.mainifrecord is null or est.mainifrecord=0) and  
-			est.mainIsSuccess='101051301' 
-   and est.mainproductcode in (
-    select est_plan.mainproductcode from est_businessplan est_plan ) 
-    and est.mainproductcode in (
-    select est_pilot.mainproductcode from est_businesspilot est_pilot 
-   ) and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS') 
-				order by est.endtime desc </list-hsql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
+                <list-hsql>
+                    select distinct est.mainid,est.sheetid,est.title,est.mainProductCode,est.endtime from
+                    est_businessoperation est where (est.mainifrecord is null or est.mainifrecord=0) and
+                    est.mainIsSuccess='101051301' and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and
+                    est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    order by est.endtime desc
+                </list-hsql>
 
-		</query-define>
-		
-		<!-- 推广失败数 -->
-		<query-define><!-- 可重复 -->
-			<name>query3</name>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
 
-			<from>est_businessoperation est</from><!-- 不可为空 -->
-			<where></where><!-- 可为空 -->
-			<order-by></order-by><!-- 可为空 -->
+        </query-define>
 
-			<field-define><!-- 可重复 -->
-				<id>f3</id><!-- 接单 总数 -->
-				<sequence>1</sequence>
+        <!-- 3阶段都成功数 -->
+        <query-define><!-- 可重复 -->
+            <name>query2</name>
 
-				<stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
-				<stat-sql>new Integer(f1)-new Integer(f2)</stat-sql>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>est_businessoperation est</from><!-- 不可为空 --><!--已撤销工单status=-1-->
+            <where>(est.mainifrecord is null or est.mainifrecord=0) and
+                est.mainIsSuccess='101051301'
+                and est.mainproductcode in (
+                select est_plan.mainproductcode from est_businessplan est_plan )
+                and est.mainproductcode in (
+                select est_pilot.mainproductcode from est_businesspilot est_pilot
+                ) and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD
+                HH24:MI:SS')
+            </where><!-- 可为空 -->
 
-				<list-hsql>
-					select distinct est.mainid,est.sheetid,est.title,est.mainProductCode,est.endtime from est_businessoperation est 
-					where est.mainid not in (select distinct est.mainid from est_businessoperation est where (est.mainifrecord is null or est.mainifrecord=0) and   
-					est.mainIsSuccess='101051301' 
-   and est.mainproductcode in (
-    select est_plan.mainproductcode from est_businessplan est_plan ) and est.mainproductcode in (
-    select est_pilot.mainproductcode from est_businesspilot est_pilot 
-   ) 
-					)
-					and  est.mainIsSuccess='101051301' and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
-				order by est.endtime desc </list-hsql>
-				<list-count-select-sql>select count(distinct est.mainid) </list-count-select-sql><!--列表总数-->
-			</field-define>
-		</query-define>
-		
-		<!-- 推广成功率 -->
-	<!-- excel　中实现 -->
-		
-	</kpi-define>	
-		
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!-- 撤销数 -->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>count(distinct est.mainid)</stat-sql>
+
+                <list-hsql>
+                    select distinct est.mainid,est.sheetid,est.title,est.mainProductCode,est.endtime from
+                    est_businessoperation est
+                    where (est.mainifrecord is null or est.mainifrecord=0) and
+                    est.mainIsSuccess='101051301'
+                    and est.mainproductcode in (
+                    select est_plan.mainproductcode from est_businessplan est_plan )
+                    and est.mainproductcode in (
+                    select est_pilot.mainproductcode from est_businesspilot est_pilot
+                    ) and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS') and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD
+                    HH24:MI:SS')
+                    order by est.endtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+
+        </query-define>
+
+        <!-- 推广失败数 -->
+        <query-define><!-- 可重复 -->
+            <name>query3</name>
+
+            <from>est_businessoperation est</from><!-- 不可为空 -->
+            <where></where><!-- 可为空 -->
+            <order-by></order-by><!-- 可为空 -->
+
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!-- 接单 总数 -->
+                <sequence>1</sequence>
+
+                <stat-type>expression</stat-type><!--"field_sql,single_sql,expression"  -->
+                <stat-sql>new Integer(f1)-new Integer(f2)</stat-sql>
+
+                <list-hsql>
+                    select distinct est.mainid,est.sheetid,est.title,est.mainProductCode,est.endtime from
+                    est_businessoperation est
+                    where est.mainid not in (select distinct est.mainid from est_businessoperation est where
+                    (est.mainifrecord is null or est.mainifrecord=0) and
+                    est.mainIsSuccess='101051301'
+                    and est.mainproductcode in (
+                    select est_plan.mainproductcode from est_businessplan est_plan ) and est.mainproductcode in (
+                    select est_pilot.mainproductcode from est_businesspilot est_pilot
+                    )
+                    )
+                    and est.mainIsSuccess='101051301' and est.endtime&gt;=to_date('@beginTime@','YYYY-MM-DD HH24:MI:SS')
+                    and est.endtime&lt;to_date('@endTime@','YYYY-MM-DD HH24:MI:SS')
+                    order by est.endtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(distinct est.mainid)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+        <!-- 推广成功率 -->
+        <!-- excel　中实现 -->
+
+    </kpi-define>
+
 </KpiConfig>

@@ -4,7 +4,7 @@ import com.boco.eoms.commons.statistic.commonstat.util.CommonStatListDisplayHelp
 
 
 public class SecurityevaluateStatListDisplayHelper extends
-		CommonStatListDisplayHelper {
+        CommonStatListDisplayHelper {
 //	private String senddept;
 
 }

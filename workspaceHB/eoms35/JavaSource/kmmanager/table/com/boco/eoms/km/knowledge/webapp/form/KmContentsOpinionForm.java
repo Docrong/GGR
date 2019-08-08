@@ -12,189 +12,168 @@ import com.boco.eoms.base.webapp.form.BaseForm;
  * <p>
  * Tue Mar 24 11:36:49 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() eoms
  * @moudle.getVersion() 1.0
- * 
  */
 public class KmContentsOpinionForm extends BaseForm implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * 主键
-	 */
-	private String id;
-	
-	public String getId() {
-		return id;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    /**
+     * 主键
+     */
+    private String id;
 
-	/**
-	 * 模型定义(外键)
-	 */
-	private String tableId;
-	
-	public String getTableId() {
-		return tableId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setTableId(String tableId) {
-		this.tableId = tableId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	/**
-	 *
-	 * 知识分类表(外键)
-	 *
-	 */
-	private java.lang.String themeId;
-   
-	public void setThemeId(java.lang.String themeId){
-		this.themeId= themeId;       
-	}
-   
-	public java.lang.String getThemeId(){
-		return this.themeId;
-	}
+    /**
+     * 模型定义(外键)
+     */
+    private String tableId;
 
-	/**
-	 *
-	 * 评价的知识ID
-	 *
-	 */
-	private java.lang.String contentId;
-   
-	public void setContentId(java.lang.String contentId){
-		this.contentId= contentId;       
-	}
-   
-	public java.lang.String getContentId(){
-		return this.contentId;
-	}
+    public String getTableId() {
+        return tableId;
+    }
 
-	/**
-	 *
-	 * 评价人
-	 *
-	 */
-	private java.lang.String createUser;
-   
-	public void setCreateUser(java.lang.String createUser){
-		this.createUser= createUser;       
-	}
-   
-	public java.lang.String getCreateUser(){
-		return this.createUser;
-	}
+    public void setTableId(String tableId) {
+        this.tableId = tableId;
+    }
 
-	/**
-	 *
-	 * 评价人部门
-	 *
-	 */
-	private java.lang.String createDept;
-   
-	public void setCreateDept(java.lang.String createDept){
-		this.createDept= createDept;       
-	}
-   
-	public java.lang.String getCreateDept(){
-		return this.createDept;
-	}
+    /**
+     * 知识分类表(外键)
+     */
+    private java.lang.String themeId;
 
-	/**
-	 *
-	 * 评价时间
-	 *
-	 */
-	private java.util.Date createTime;
-   
-	public void setCreateTime(java.util.Date createTime){
-		this.createTime= createTime;       
-	}
-   
-	public java.util.Date getCreateTime(){
-		return this.createTime;
-	}
+    public void setThemeId(java.lang.String themeId) {
+        this.themeId = themeId;
+    }
 
-	/**
-	 *
-	 * 评价内容
-	 *
-	 */
-	private java.lang.String opinionContent;
-   
-	public void setOpinionContent(java.lang.String opinionContent){
-		this.opinionContent= opinionContent;       
-	}
-   
-	public java.lang.String getOpinionContent(){
-		return this.opinionContent;
-	}
+    public java.lang.String getThemeId() {
+        return this.themeId;
+    }
 
-	/**
-	 *
-	 * 评分
-	 *
-	 */
-	private java.lang.Long opinionGrade;
-   
-	public void setOpinionGrade(java.lang.Long opinionGrade){
-		this.opinionGrade= opinionGrade;       
-	}
-   
-	public java.lang.Long getOpinionGrade(){
-		return this.opinionGrade;
-	}
+    /**
+     * 评价的知识ID
+     */
+    private java.lang.String contentId;
 
-	/**
-	 *
-	 * 是否提出修改
-	 *
-	 */
-	private java.lang.String isEdit;
-   
-	public void setIsEdit(java.lang.String isEdit){
-		this.isEdit= isEdit;       
-	}
-   
-	public java.lang.String getIsEdit(){
-		return this.isEdit;
-	}
+    public void setContentId(java.lang.String contentId) {
+        this.contentId = contentId;
+    }
 
-	/**
-	 *
-	 * 修改是否被采纳
-	 *
-	 */
-	private java.lang.String isRefedit;
-   
-	public void setIsRefedit(java.lang.String isRefedit){
-		this.isRefedit= isRefedit;       
-	}
-   
-	public java.lang.String getIsRefedit(){
-		return this.isRefedit;
-	}
+    public java.lang.String getContentId() {
+        return this.contentId;
+    }
 
-	/**
-	 *
-	 * 是否删除
-	 *
-	 */
-	private java.lang.String isDeleted;
-   
-	public void setIsDeleted(java.lang.String isDeleted){
-		this.isDeleted= isDeleted;       
-	}
-   
-	public java.lang.String getIsDeleted(){
-		return this.isDeleted;
-	}
+    /**
+     * 评价人
+     */
+    private java.lang.String createUser;
+
+    public void setCreateUser(java.lang.String createUser) {
+        this.createUser = createUser;
+    }
+
+    public java.lang.String getCreateUser() {
+        return this.createUser;
+    }
+
+    /**
+     * 评价人部门
+     */
+    private java.lang.String createDept;
+
+    public void setCreateDept(java.lang.String createDept) {
+        this.createDept = createDept;
+    }
+
+    public java.lang.String getCreateDept() {
+        return this.createDept;
+    }
+
+    /**
+     * 评价时间
+     */
+    private java.util.Date createTime;
+
+    public void setCreateTime(java.util.Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public java.util.Date getCreateTime() {
+        return this.createTime;
+    }
+
+    /**
+     * 评价内容
+     */
+    private java.lang.String opinionContent;
+
+    public void setOpinionContent(java.lang.String opinionContent) {
+        this.opinionContent = opinionContent;
+    }
+
+    public java.lang.String getOpinionContent() {
+        return this.opinionContent;
+    }
+
+    /**
+     * 评分
+     */
+    private java.lang.Long opinionGrade;
+
+    public void setOpinionGrade(java.lang.Long opinionGrade) {
+        this.opinionGrade = opinionGrade;
+    }
+
+    public java.lang.Long getOpinionGrade() {
+        return this.opinionGrade;
+    }
+
+    /**
+     * 是否提出修改
+     */
+    private java.lang.String isEdit;
+
+    public void setIsEdit(java.lang.String isEdit) {
+        this.isEdit = isEdit;
+    }
+
+    public java.lang.String getIsEdit() {
+        return this.isEdit;
+    }
+
+    /**
+     * 修改是否被采纳
+     */
+    private java.lang.String isRefedit;
+
+    public void setIsRefedit(java.lang.String isRefedit) {
+        this.isRefedit = isRefedit;
+    }
+
+    public java.lang.String getIsRefedit() {
+        return this.isRefedit;
+    }
+
+    /**
+     * 是否删除
+     */
+    private java.lang.String isDeleted;
+
+    public void setIsDeleted(java.lang.String isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public java.lang.String getIsDeleted() {
+        return this.isDeleted;
+    }
 
 }

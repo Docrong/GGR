@@ -53,12 +53,12 @@ public class TawSupplierkpiLogDaoHibernate extends BaseDaoHibernate implements T
 
     /**
      * @see com.boco.eoms.commons.sample.dao.TawSupplierkpiLogDao#saveTawSupplierkpiLog(TawSupplierkpiLog tawSupplierkpiLog)
-     */    
+     */
     public void saveTawSupplierkpiLog(final TawSupplierkpiLog tawSupplierkpiLog) {
         if ((tawSupplierkpiLog.getId() == null) || (tawSupplierkpiLog.getId().equals("")))
-			getHibernateTemplate().save(tawSupplierkpiLog);
-		else
-			getHibernateTemplate().saveOrUpdate(tawSupplierkpiLog);
+            getHibernateTemplate().save(tawSupplierkpiLog);
+        else
+            getHibernateTemplate().saveOrUpdate(tawSupplierkpiLog);
     }
 
     /**
@@ -67,59 +67,61 @@ public class TawSupplierkpiLogDaoHibernate extends BaseDaoHibernate implements T
     public void removeTawSupplierkpiLog(final String id) {
         getHibernateTemplate().delete(getTawSupplierkpiLog(id));
     }
+
     /**
      * curPage
      * pageSize
      * whereStr   sql filter
      */
-    public Map getTawSupplierkpiLogs(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawSupplierkpiLogs(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawSupplierkpiLog
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawSupplierkpiLog";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawSupplierkpiLog";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getTawSupplierkpiLogs(final Integer curPage, final Integer pageSize) {
-			return this.getTawSupplierkpiLogs(curPage,pageSize,null);
-		}
+        return this.getTawSupplierkpiLogs(curPage, pageSize, null);
+    }
 
     public List getTawSupplierkpiLogs(final String whereStr) {
-    	return getHibernateTemplate().find(whereStr);
+        return getHibernateTemplate().find(whereStr);
     }
-    
+
     public List getTawSupplierkpiLogs(final int startPage, final int row, final String whereStr) {
-    	HibernateCallback callback = new HibernateCallback() {
+        HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-            	Query query = session.createQuery(whereStr);
-            	query.setFirstResult(startPage);
-            	query.setMaxResults(row);
-            	List list = query.list();
-            	return list;
+                Query query = session.createQuery(whereStr);
+                query.setFirstResult(startPage);
+                query.setMaxResults(row);
+                List list = query.list();
+                return list;
             }
         };
         return (List) getHibernateTemplate().execute(callback);
     }
-    
+
     public int getLogsCount(final String whereStr) {
-    	String queryCountStr = "select count(*) " + whereStr;
-    	List list = this.getHibernateTemplate().find(queryCountStr);
+        String queryCountStr = "select count(*) " + whereStr;
+        List list = this.getHibernateTemplate().find(queryCountStr);
         return Integer.parseInt(list.get(0).toString());
     }
 }

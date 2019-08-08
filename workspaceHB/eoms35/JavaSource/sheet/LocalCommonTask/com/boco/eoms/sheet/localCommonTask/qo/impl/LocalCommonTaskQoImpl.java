@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.localCommonTask.qo.ILocalCommonTaskQo;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class LocalCommonTaskQoImpl extends WorkSheetQOImpl implements ILocalCommonTaskQo {
- 
- }
+
+public class LocalCommonTaskQoImpl extends WorkSheetQOImpl implements ILocalCommonTaskQo {
+
+}

@@ -16,20 +16,19 @@ import com.boco.eoms.sheet.transprovincial.service.ITransprovincialLinkManager;
  * <p>
  * Thu Sep 27 14:32:21 CST 2012
  * </p>
- * 
+ *
  * @author ph
  * @version 3.5
- * 
  */
- 
- public class TransprovincialLinkManagerImpl extends LinkServiceImpl implements ITransprovincialLinkManager {
-  		/**
-	     * 根据条件查出所有的link对象
-	     */
-	    public List getLinksBycondition(String condition) throws Exception {    	
-	    	ITransprovincialLinkDAO dao = (ITransprovincialLinkDAO)this.getLinkDAO();
-	        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
-	        return list;
-	    }
- 
- }
+
+public class TransprovincialLinkManagerImpl extends LinkServiceImpl implements ITransprovincialLinkManager {
+    /**
+     * 根据条件查出所有的link对象
+     */
+    public List getLinksBycondition(String condition) throws Exception {
+        ITransprovincialLinkDAO dao = (ITransprovincialLinkDAO) this.getLinkDAO();
+        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
+        return list;
+    }
+
+}

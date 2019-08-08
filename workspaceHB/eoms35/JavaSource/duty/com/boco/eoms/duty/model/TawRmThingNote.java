@@ -4,110 +4,111 @@ import java.io.Serializable;
 
 public class TawRmThingNote implements Serializable {
 
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 1L;
 
-	private String id;
-	
-	private String thingId;
-	
-	private String beginTime;
-	
-	private String endTime;
-	
-	private String toUser;
-	
-	private String inputUserId;
-	
-	private String noteComment;
-	
-	private int estate;
-	
-	private String inputUserName;
-	
-	private String inputTime;
+    private String id;
 
-	public TawRmThingNote(){}
-	
-	public String getId() {
-		return id;
-	}
+    private String thingId;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    private String beginTime;
 
-	public String getThingId() {
-		return thingId;
-	}
+    private String endTime;
 
-	public void setThingId(String thingId) {
-		this.thingId = thingId;
-	}
+    private String toUser;
 
-	public String getBeginTime() {
-		return beginTime;
-	}
+    private String inputUserId;
 
-	public void setBeginTime(String beginTime) {
-		this.beginTime = beginTime;
-	}
+    private String noteComment;
 
-	public String getEndTime() {
-		return endTime;
-	}
+    private int estate;
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    private String inputUserName;
 
-	public String getToUser() {
-		return toUser;
-	}
+    private String inputTime;
 
-	public void setToUser(String toUser) {
-		this.toUser = toUser;
-	}
+    public TawRmThingNote() {
+    }
 
-	public String getInputUserId() {
-		return inputUserId;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setInputUserId(String inputUserId) {
-		this.inputUserId = inputUserId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getNoteComment() {
-		return noteComment;
-	}
+    public String getThingId() {
+        return thingId;
+    }
 
-	public void setNoteComment(String noteComment) {
-		this.noteComment = noteComment;
-	}
+    public void setThingId(String thingId) {
+        this.thingId = thingId;
+    }
 
-	public int getEstate() {
-		return estate;
-	}
+    public String getBeginTime() {
+        return beginTime;
+    }
 
-	public void setEstate(int estate) {
-		this.estate = estate;
-	}
+    public void setBeginTime(String beginTime) {
+        this.beginTime = beginTime;
+    }
 
-	public String getInputUserName() {
-		return inputUserName;
-	}
+    public String getEndTime() {
+        return endTime;
+    }
 
-	public void setInputUserName(String inputUserName) {
-		this.inputUserName = inputUserName;
-	}
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-	public String getInputTime() {
-		return inputTime;
-	}
+    public String getToUser() {
+        return toUser;
+    }
 
-	public void setInputTime(String inputTime) {
-		this.inputTime = inputTime;
-	}
+    public void setToUser(String toUser) {
+        this.toUser = toUser;
+    }
+
+    public String getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(String inputUserId) {
+        this.inputUserId = inputUserId;
+    }
+
+    public String getNoteComment() {
+        return noteComment;
+    }
+
+    public void setNoteComment(String noteComment) {
+        this.noteComment = noteComment;
+    }
+
+    public int getEstate() {
+        return estate;
+    }
+
+    public void setEstate(int estate) {
+        this.estate = estate;
+    }
+
+    public String getInputUserName() {
+        return inputUserName;
+    }
+
+    public void setInputUserName(String inputUserName) {
+        this.inputUserName = inputUserName;
+    }
+
+    public String getInputTime() {
+        return inputTime;
+    }
+
+    public void setInputTime(String inputTime) {
+        this.inputTime = inputTime;
+    }
 }

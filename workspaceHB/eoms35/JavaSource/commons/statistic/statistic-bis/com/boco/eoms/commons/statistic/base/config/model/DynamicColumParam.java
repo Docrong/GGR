@@ -2,25 +2,25 @@ package com.boco.eoms.commons.statistic.base.config.model;
 
 import java.io.Serializable;
 
-public class DynamicColumParam implements Serializable{
+public class DynamicColumParam implements Serializable {
 
-	private String  pageName;
-	
-	private String cls; 
+    private String pageName;
 
-	public String getCls() {
-		return cls;
-	}
+    private String cls;
 
-	public void setCls(String cls) {
-		this.cls = cls;
-	}
+    public String getCls() {
+        return cls;
+    }
 
-	public String getPageName() {
-		return pageName;
-	}
+    public void setCls(String cls) {
+        this.cls = cls;
+    }
 
-	public void setPageName(String pageName) {
-		this.pageName = pageName;
-	}
+    public String getPageName() {
+        return pageName;
+    }
+
+    public void setPageName(String pageName) {
+        this.pageName = pageName;
+    }
 }

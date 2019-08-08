@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,32 +13,32 @@
             table="sms_sheet_content"
     >
 
-    <id
-        name="id"
-            column="id"
-        
-    >
+        <id
+                name="id"
+                column="id"
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+        >
 
-    </generator>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </id>
+            </generator>
 
-		<property name="flowId" />	
-		<property name="processCnName" />	
-		<property name="workFlowName" />
-		<property name="smsServiceId" />
-		<property name="owner" />
-		<property name="receiver" />
-		<property name="content" />
-		<property name="type" />
-		<property name="send_day" />
-		<property name="send_hour" />
-		<property name="send_min" />
-		<property name="name" />
-    </class>    
+        </id>
+
+        <property name="flowId"/>
+        <property name="processCnName"/>
+        <property name="workFlowName"/>
+        <property name="smsServiceId"/>
+        <property name="owner"/>
+        <property name="receiver"/>
+        <property name="content"/>
+        <property name="type"/>
+        <property name="send_day"/>
+        <property name="send_hour"/>
+        <property name="send_min"/>
+        <property name="name"/>
+    </class>
 
 </hibernate-mapping>
 

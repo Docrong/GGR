@@ -1,155 +1,156 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-  <!-- ========== Data Sources Definitions =================================== -->
-  <!--
-    Define your Struts data sources in a file called struts-data-sources.xml and place
-    it in your merge directory.
-  -->
-
-  <!-- ========== Form Bean Definitions =================================== -->
-  <form-beans>
-
-    <form-bean
-      name="userForm"
-      type="com.boco.eoms.base.webapp.form.UserForm"
-    />
-    <form-bean
-      name="addressForm"
-      type="com.boco.eoms.base.webapp.form.AddressForm"
-    />
-    <form-bean
-      name="roleForm"
-      type="com.boco.eoms.base.webapp.form.RoleForm"
-    />
-    <form-bean
-      name="uploadForm"
-      type="com.boco.eoms.base.webapp.form.UploadForm"
-    />
-    <form-bean
-      name="ipspeciallineForm"
-      type="com.boco.eoms.businessupport.product.webapp.form.IPSpecialLineForm"
-    />
- 
+    <!-- ========== Data Sources Definitions =================================== -->
     <!--
-         If you have non XDoclet forms, define them in a file called struts-forms.xml and
-         place it in your merge directory.
+      Define your Struts data sources in a file called struts-data-sources.xml and place
+      it in your merge directory.
     -->
-  </form-beans>
-   <action-mappings>  
-    <action
-      path="/ipspeciallines"
-      type="com.boco.eoms.businessupport.product.webapp.action.IPSpecialLineAction"
-      name="ipspeciallineForm"
-      scope="request"
-      input="listjsp"
-      parameter="method"
-      unknown="false"
-      validate="false"
-    >
-      <set-property
-        property="cancellable"
-        value="true"
-      />
-    
-      <forward
-        contextRelative="true"
-        name="formjsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/ipspeciallineForm.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="listjsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/ipspeciallineList.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="querypage"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/orderquerypage.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="querylist"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/querylist.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="sheetList"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/sheetlist.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="detail"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/detail.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="deleteddetailjsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/deleteddetail.jsp"
-        redirect="false"
-      />
-     <forward
-        contextRelative="true"
-        name="deletedlistjsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/deletedList.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="deletefailurejsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/delete_fail.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="deletesuccessjsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/delete_success.jsp"
-        redirect="false"
-      />
-     <forward
-        contextRelative="true"
-        name="savefailurejsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/sheet_fail.jsp"
-        redirect="false"
-      />
-      <forward
-        contextRelative="true"
-        name="savesuccessjsp"
-        path="/WEB-INF/pages/wfworksheet/ipspecialline/sheet_success.jsp"
-        redirect="false"
-      />
-    </action>
-    
-    <!-- Action to flush cache -->
-    <action path="/flush" type="org.apache.struts.actions.ForwardAction"
-        parameter="/WEB-INF/pages/backup/flushCache.jsp" roles="admin"/>
 
-    <!-- Forward to page to begin file upload -->
-    <action path="/selectFile" type="org.apache.struts.actions.ForwardAction"
-        parameter="/WEB-INF/pages/backup/uploadForm.jsp"/>
-    <!-- Forward to view Active Users -->
-    <action path="/activeUsers" type="org.apache.struts.actions.ForwardAction"
-        parameter="/WEB-INF/pages/backup/activeUsers.jsp" roles="admin"/>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
 
-  </action-mappings>
+        <form-bean
+                name="userForm"
+                type="com.boco.eoms.base.webapp.form.UserForm"
+        />
+        <form-bean
+                name="addressForm"
+                type="com.boco.eoms.base.webapp.form.AddressForm"
+        />
+        <form-bean
+                name="roleForm"
+                type="com.boco.eoms.base.webapp.form.RoleForm"
+        />
+        <form-bean
+                name="uploadForm"
+                type="com.boco.eoms.base.webapp.form.UploadForm"
+        />
+        <form-bean
+                name="ipspeciallineForm"
+                type="com.boco.eoms.businessupport.product.webapp.form.IPSpecialLineForm"
+        />
 
-  <controller nocache="true" inputForward="true" maxFileSize="2M"/>
-      <message-resources parameter="config/ApplicationResources" key="common"/>
-      <message-resources parameter="config/ApplicationResources-businessupport-ipspecialline" key="sheet"/>
-      <message-resources parameter="config/ApplicationResources-businessupport-ipspecialline" key="ipspecialline"/>
+        <!--
+             If you have non XDoclet forms, define them in a file called struts-forms.xml and
+             place it in your merge directory.
+        -->
+    </form-beans>
+    <action-mappings>
+        <action
+                path="/ipspeciallines"
+                type="com.boco.eoms.businessupport.product.webapp.action.IPSpecialLineAction"
+                name="ipspeciallineForm"
+                scope="request"
+                input="listjsp"
+                parameter="method"
+                unknown="false"
+                validate="false"
+        >
+            <set-property
+                    property="cancellable"
+                    value="true"
+            />
 
-      <!-- ========== Validator plugin ===================  -->
+            <forward
+                    contextRelative="true"
+                    name="formjsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/ipspeciallineForm.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="listjsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/ipspeciallineList.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="querypage"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/orderquerypage.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="querylist"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/querylist.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="sheetList"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/sheetlist.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="detail"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/detail.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="deleteddetailjsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/deleteddetail.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="deletedlistjsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/deletedList.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="deletefailurejsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/delete_fail.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="deletesuccessjsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/delete_success.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="savefailurejsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/sheet_fail.jsp"
+                    redirect="false"
+            />
+            <forward
+                    contextRelative="true"
+                    name="savesuccessjsp"
+                    path="/WEB-INF/pages/wfworksheet/ipspecialline/sheet_success.jsp"
+                    redirect="false"
+            />
+        </action>
+
+        <!-- Action to flush cache -->
+        <action path="/flush" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/backup/flushCache.jsp" roles="admin"/>
+
+        <!-- Forward to page to begin file upload -->
+        <action path="/selectFile" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/backup/uploadForm.jsp"/>
+        <!-- Forward to view Active Users -->
+        <action path="/activeUsers" type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/backup/activeUsers.jsp" roles="admin"/>
+
+    </action-mappings>
+
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+    <message-resources parameter="config/ApplicationResources" key="common"/>
+    <message-resources parameter="config/ApplicationResources-businessupport-ipspecialline" key="sheet"/>
+    <message-resources parameter="config/ApplicationResources-businessupport-ipspecialline" key="ipspecialline"/>
+
+    <!-- ========== Validator plugin ===================  -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames" 
+        <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
                              /WEB-INF/validation.xml"/>

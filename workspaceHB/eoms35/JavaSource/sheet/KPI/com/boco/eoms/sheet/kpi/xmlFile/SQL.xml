@@ -1,79 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kpi>
-	<maxLength>7000</maxLength>
-	<cnname>工单流水号,工单主题,工单运行状态,派单时间,故障分类,故障地市,故障历时,故障发生时间,告警平台清除时间
-,故障级别,告警逻辑分类,告警逻辑子类,网管告警ID,告警描述,处理措施,工单时限,T1处理部门,T1处理人员,T1操作时间,T1是否及时
-,T2处理部门,T2处理人员,T2操作时间,T2是否及时,延期申请,任务所有环节,任务所有者</cnname>
-	<enname>sheetid,title,status,sendtime,getcomplainttype,getareaname,round,mainfaultgeneranttime,mainalarmsolvedate,GETTYPENAME,mainalarmlogicsort,mainalarmlogicsortsub,mainalarmid,
-substr,linkdealstep,sheetcompletelimit,getdeptname,getusername,T1operatetime,T1completeflag,
-operatedeptid,operateuserid,T2operatetime,T2completeflag,maindelayflag,taskdisplayname,taskowner</enname>
-	<a>url,</a>
-	<sql>select mm.id sheetkey,mm.sheetid sheetid,
-       mm.title title,
-       decode(mm.status, '0', '运行中', '1', '归档', '-14', '撤销', '未知') status,
-       mm.sendtime sendtime,
-       getcomplainttype(mainnetsortone, mainnetsorttwo, mainnetsortthree) getcomplainttype,
-       getareaname(mm.todeptid) getareaname,
-       round((mm.mainalarmsolvedate - mm.mainfaultgeneranttime) * 24 * 60,
-             2) round,
-       mm.mainfaultgeneranttime mainfaultgeneranttime,
-       mm.mainalarmsolvedate mainalarmsolvedate,
-       GETTYPENAME(mm.mainfaultresponselevel) GETTYPENAME,
-       mm.mainalarmlogicsort mainalarmlogicsort,
-       mm.mainalarmlogicsortsub mainalarmlogicsortsub,
-       mm.mainalarmid mainalarmid,
-       substr(mm.mainalarmdesc, 0, 50) substr,
-       decode(l1.linkdealstep, '', l2.linkdealstep, l1.linkdealstep) linkdealstep,
-       mm.sheetcompletelimit sheetcompletelimit,
-       getdeptname(l1.operatedeptid) getdeptname,
-       getusername(l1.operateuserid) getusername,
-       l1.operatetime - 0 T1operatetime,
-       decode(l1.completeflag, 2, '超时', '1', '及时') T1completeflag,
-       getdeptname(l2.operatedeptid) operatedeptid,
-       getusername(l2.operateuserid) operateuserid,
-       l2.operatetime - 0 T2operatetime,
-       decode(l2.completeflag, 2, '超时', '1', '及时') T2completeflag,
-       decode(mm.maindelayflag, '1', '延期', '') maindelayflag,
-       task.taskdisplayname taskdisplayname,
-       decode(getsubrolename(task.taskowner),
-              '',
-              getusername(task.taskowner),
-              getsubrolename(task.taskowner)) taskowner
-  from commonfault_main mm,
-       (select max(operatetime) T1time, m.id T1id
-          from commonfault_link l, commonfault_main m
-         where l.operatetype in ('1', '46')
-           and m.id = l.mainid
-           and m.status = 1
-           and m.sendtime between
-               to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
-               to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
-           and activetemplateid = 'FirstExcuteHumTask'
-         group by m.id) t1,
-       (select min(operatetime) T2time, m.id T2id
-          from commonfault_link l, commonfault_main m
-         where l.operatetype in ('11', '46')
-           and m.id = l.mainid
-           and m.status = 1
-           and m.sendtime between
-               to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
-               to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
-           and activetemplateid = 'SecondExcuteHumTask'
-         group by m.id) t2,
-       commonfault_link l1,
-       commonfault_link l2,
-       (select distinct taskdisplayname, taskowner, sheetkey
-          from commonfault_task
-         where taskstatus &lt;&gt; 5) task
- where mm.sendtime between to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
-       to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
-   and mm.deleted = 0
-   and mm.id = t1.T1id(+)
-   and mm.id = t2.T2id(+)
-   and t1.T1id = l1.mainid(+)
-   and t1.T1time = l1.operatetime(+)
-   and t2.T2id = l2.mainid(+)
-   and t2.T2time = l2.operatetime(+)
-   and mm.id = task.sheetkey(+)
-	</sql>
+    <maxLength>7000</maxLength>
+    <cnname>工单流水号,工单主题,工单运行状态,派单时间,故障分类,故障地市,故障历时,故障发生时间,告警平台清除时间
+        ,故障级别,告警逻辑分类,告警逻辑子类,网管告警ID,告警描述,处理措施,工单时限,T1处理部门,T1处理人员,T1操作时间,T1是否及时
+        ,T2处理部门,T2处理人员,T2操作时间,T2是否及时,延期申请,任务所有环节,任务所有者
+    </cnname>
+    <enname>
+        sheetid,title,status,sendtime,getcomplainttype,getareaname,round,mainfaultgeneranttime,mainalarmsolvedate,GETTYPENAME,mainalarmlogicsort,mainalarmlogicsortsub,mainalarmid,
+        substr,linkdealstep,sheetcompletelimit,getdeptname,getusername,T1operatetime,T1completeflag,
+        operatedeptid,operateuserid,T2operatetime,T2completeflag,maindelayflag,taskdisplayname,taskowner
+    </enname>
+    <a>url,</a>
+    <sql>select mm.id sheetkey,mm.sheetid sheetid,
+        mm.title title,
+        decode(mm.status, '0', '运行中', '1', '归档', '-14', '撤销', '未知') status,
+        mm.sendtime sendtime,
+        getcomplainttype(mainnetsortone, mainnetsorttwo, mainnetsortthree) getcomplainttype,
+        getareaname(mm.todeptid) getareaname,
+        round((mm.mainalarmsolvedate - mm.mainfaultgeneranttime) * 24 * 60,
+        2) round,
+        mm.mainfaultgeneranttime mainfaultgeneranttime,
+        mm.mainalarmsolvedate mainalarmsolvedate,
+        GETTYPENAME(mm.mainfaultresponselevel) GETTYPENAME,
+        mm.mainalarmlogicsort mainalarmlogicsort,
+        mm.mainalarmlogicsortsub mainalarmlogicsortsub,
+        mm.mainalarmid mainalarmid,
+        substr(mm.mainalarmdesc, 0, 50) substr,
+        decode(l1.linkdealstep, '', l2.linkdealstep, l1.linkdealstep) linkdealstep,
+        mm.sheetcompletelimit sheetcompletelimit,
+        getdeptname(l1.operatedeptid) getdeptname,
+        getusername(l1.operateuserid) getusername,
+        l1.operatetime - 0 T1operatetime,
+        decode(l1.completeflag, 2, '超时', '1', '及时') T1completeflag,
+        getdeptname(l2.operatedeptid) operatedeptid,
+        getusername(l2.operateuserid) operateuserid,
+        l2.operatetime - 0 T2operatetime,
+        decode(l2.completeflag, 2, '超时', '1', '及时') T2completeflag,
+        decode(mm.maindelayflag, '1', '延期', '') maindelayflag,
+        task.taskdisplayname taskdisplayname,
+        decode(getsubrolename(task.taskowner),
+        '',
+        getusername(task.taskowner),
+        getsubrolename(task.taskowner)) taskowner
+        from commonfault_main mm,
+        (select max(operatetime) T1time, m.id T1id
+        from commonfault_link l, commonfault_main m
+        where l.operatetype in ('1', '46')
+        and m.id = l.mainid
+        and m.status = 1
+        and m.sendtime between
+        to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
+        to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
+        and activetemplateid = 'FirstExcuteHumTask'
+        group by m.id) t1,
+        (select min(operatetime) T2time, m.id T2id
+        from commonfault_link l, commonfault_main m
+        where l.operatetype in ('11', '46')
+        and m.id = l.mainid
+        and m.status = 1
+        and m.sendtime between
+        to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
+        to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
+        and activetemplateid = 'SecondExcuteHumTask'
+        group by m.id) t2,
+        commonfault_link l1,
+        commonfault_link l2,
+        (select distinct taskdisplayname, taskowner, sheetkey
+        from commonfault_task
+        where taskstatus &lt;&gt; 5) task
+        where mm.sendtime between to_date('{0}', 'YYYY-MM-DD HH24:MI:SS') and
+        to_date('{1}', 'YYYY-MM-DD HH24:MI:SS')
+        and mm.deleted = 0
+        and mm.id = t1.T1id(+)
+        and mm.id = t2.T2id(+)
+        and t1.T1id = l1.mainid(+)
+        and t1.T1time = l1.operatetime(+)
+        and t2.T2id = l2.mainid(+)
+        and t2.T2time = l2.operatetime(+)
+        and mm.id = task.sheetkey(+)
+    </sql>
 </kpi>

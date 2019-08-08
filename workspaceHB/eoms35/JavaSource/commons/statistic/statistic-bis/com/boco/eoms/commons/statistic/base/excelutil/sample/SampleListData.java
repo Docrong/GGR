@@ -9,24 +9,24 @@ import com.boco.eoms.commons.statistic.base.excelutil.mgr.IListData;
 
 public class SampleListData implements IListData {
 
-	public String getExcelPath() {
-		return "D:/poi/statistic-config-excel-commonfault_T_resolve_KPI4_oracle.xls";
-	}
+    public String getExcelPath() {
+        return "D:/poi/statistic-config-excel-commonfault_T_resolve_KPI4_oracle.xls";
+    }
 
-	public Map getInfoMap() {
-		Map map = new HashMap();
-		map.put("lasttime", "2009-8-9 22:50:00");
-		map.put("begintime", "2001-8-6 22:10:00");
-		map.put("endtime", "2005-5-3 22:00:00");
-		return map;
-	}
+    public Map getInfoMap() {
+        Map map = new HashMap();
+        map.put("lasttime", "2009-8-9 22:50:00");
+        map.put("begintime", "2001-8-6 22:10:00");
+        map.put("endtime", "2005-5-3 22:00:00");
+        return map;
+    }
 
-	public String getSheetName() {
-		return "故障解决-按处理人查询";
-	}
-	
-	public List getData() {
-		Map d1 = new HashMap();
+    public String getSheetName() {
+        return "故障解决-按处理人查询";
+    }
+
+    public List getData() {
+        Map d1 = new HashMap();
         d1.put("s1", "处理人一");
         d1.put("s2", "无线");
         d1.put("s3", "天津");
@@ -86,7 +86,7 @@ public class SampleListData implements IListData {
         d6.put("f4", "30");
         d6.put("f5", "18");
         d6.put("f6", "29");
-        
+
         Map d7 = new HashMap();
         d7.put("s1", "处理人二");
         d7.put("s2", "无线");
@@ -97,7 +97,7 @@ public class SampleListData implements IListData {
         d7.put("f4", "30");
         d7.put("f5", "18");
         d7.put("f6", "29");
-        
+
         Map d8 = new HashMap();
         d8.put("s1", "处理人三");
         d8.put("s2", "无线");
@@ -108,7 +108,7 @@ public class SampleListData implements IListData {
         d8.put("f4", "30");
         d8.put("f5", "18");
         d8.put("f6", "29");
-        
+
         Map d9 = new HashMap();
         d9.put("s1", "处理人三");
         d9.put("s2", "无线");
@@ -119,7 +119,7 @@ public class SampleListData implements IListData {
         d9.put("f4", "30");
         d9.put("f5", "18");
         d9.put("f6", "29");
-        
+
         List listResult = new ArrayList();
         listResult.add(d1);
         listResult.add(d2);
@@ -130,7 +130,7 @@ public class SampleListData implements IListData {
         listResult.add(d7);
         listResult.add(d8);
         listResult.add(d9);
-        
+
         return listResult;
-	}
+    }
 }

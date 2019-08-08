@@ -19,7 +19,7 @@ public class CarMgrActionTest extends BaseStrutsTestCase {
         CarMgrForm carMgrForm = new CarMgrForm();
         // set required fields
 
-    //    request.setAttribute(Constants.CARMGR_KEY, carMgrForm);
+        //    request.setAttribute(Constants.CARMGR_KEY, carMgrForm);
 
         actionPerform();
 
@@ -74,7 +74,7 @@ public class CarMgrActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"carMgr.updated"});
+        verifyActionMessages(new String[]{"carMgr.updated"});
 
     }
 

@@ -35,7 +35,7 @@ public class TawWorkbenchContactManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchContactDao.expects(once()).method("getTawWorkbenchContacts")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawWorkbenchContacts = tawWorkbenchContactManager.getTawWorkbenchContacts(null);
         assertTrue(tawWorkbenchContacts.size() == 1);
@@ -45,7 +45,7 @@ public class TawWorkbenchContactManagerTest extends BaseManagerTestCase {
     public void testGetTawWorkbenchContact() throws Exception {
         // set expected behavior on dao
         tawWorkbenchContactDao.expects(once()).method("getTawWorkbenchContact")
-            .will(returnValue(new TawWorkbenchContact()));
+                .will(returnValue(new TawWorkbenchContact()));
         TawWorkbenchContact tawWorkbenchContact = tawWorkbenchContactManager.getTawWorkbenchContact(tawWorkbenchContactId);
         assertTrue(tawWorkbenchContact != null);
         tawWorkbenchContactDao.verify();
@@ -56,7 +56,7 @@ public class TawWorkbenchContactManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchContactDao.expects(once()).method("saveTawWorkbenchContact")
-            .with(same(tawWorkbenchContact)).isVoid();
+                .with(same(tawWorkbenchContact)).isVoid();
 
         tawWorkbenchContactManager.saveTawWorkbenchContact(tawWorkbenchContact);
         tawWorkbenchContactDao.verify();
@@ -69,7 +69,7 @@ public class TawWorkbenchContactManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawWorkbenchContactDao.expects(once()).method("saveTawWorkbenchContact")
-            .with(same(tawWorkbenchContact)).isVoid();
+                .with(same(tawWorkbenchContact)).isVoid();
         tawWorkbenchContactManager.saveTawWorkbenchContact(tawWorkbenchContact);
         tawWorkbenchContactDao.verify();
 

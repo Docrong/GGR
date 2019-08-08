@@ -10,85 +10,85 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 
 public class TawCommonMessageMonitorRefDaoTest extends BaseDaoTestCase {
 
-	private TawCommonMessageMonitorRefDao dao = null;
+    private TawCommonMessageMonitorRefDao dao = null;
 
-	public void setTawCommonMessageMonitorRefDao(
-			TawCommonMessageMonitorRefDao dao) {
-		this.dao = dao;
-	}
+    public void setTawCommonMessageMonitorRefDao(
+            TawCommonMessageMonitorRefDao dao) {
+        this.dao = dao;
+    }
 
-	public void testAddTawCommonMessageMonitorRef() throws Exception {
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
-		tawCommonMessageMonitorRef.setMonitorid("1");
-		tawCommonMessageMonitorRef.setTeloremail("13699142338");
+    public void testAddTawCommonMessageMonitorRef() throws Exception {
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
+        tawCommonMessageMonitorRef.setMonitorid("1");
+        tawCommonMessageMonitorRef.setTeloremail("13699142338");
 
-		dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
+        dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
 
-		// verify a primary key was assigned
-		assertNotNull(tawCommonMessageMonitorRef.getId());
+        // verify a primary key was assigned
+        assertNotNull(tawCommonMessageMonitorRef.getId());
 
-		// verify set fields are same after save
-	}
+        // verify set fields are same after save
+    }
 
-	public void testGetTawCommonMessageMonitorRef() throws Exception {
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
-		tawCommonMessageMonitorRef.setMonitorid("1");
-		tawCommonMessageMonitorRef.setTeloremail("13699142338");
+    public void testGetTawCommonMessageMonitorRef() throws Exception {
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
+        tawCommonMessageMonitorRef.setMonitorid("1");
+        tawCommonMessageMonitorRef.setTeloremail("13699142338");
 
-		dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRefs = dao
-				.getTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
-						.getId());
-		assertSame(tawCommonMessageMonitorRefs.getId(),
-				tawCommonMessageMonitorRef.getId());
-	}
+        dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRefs = dao
+                .getTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
+                        .getId());
+        assertSame(tawCommonMessageMonitorRefs.getId(),
+                tawCommonMessageMonitorRef.getId());
+    }
 
-	public void testGetTawCommonMessageMonitorRefs() throws Exception {
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
-		tawCommonMessageMonitorRef.setMonitorid("1");
-		tawCommonMessageMonitorRef.setTeloremail("13699142338");
+    public void testGetTawCommonMessageMonitorRefs() throws Exception {
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
+        tawCommonMessageMonitorRef.setMonitorid("1");
+        tawCommonMessageMonitorRef.setTeloremail("13699142338");
 
-		dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRefs = new TawCommonMessageMonitorRef();
+        dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRefs = new TawCommonMessageMonitorRef();
 
-		List results = dao
-				.getTawCommonMessageMonitorRefs(tawCommonMessageMonitorRefs);
-		assertTrue(results.size() > 0);
-	}
+        List results = dao
+                .getTawCommonMessageMonitorRefs(tawCommonMessageMonitorRefs);
+        assertTrue(results.size() > 0);
+    }
 
-	public void testSaveTawCommonMessageMonitorRef() throws Exception {
+    public void testSaveTawCommonMessageMonitorRef() throws Exception {
 
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
-		tawCommonMessageMonitorRef.setMonitorid("1");
-		tawCommonMessageMonitorRef.setTeloremail("13699142338");
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
+        tawCommonMessageMonitorRef.setMonitorid("1");
+        tawCommonMessageMonitorRef.setTeloremail("13699142338");
 
-		dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRefs = dao
-				.getTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
-						.getId());
+        dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRefs = dao
+                .getTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
+                        .getId());
 
-		dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRefs);
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRefss = new TawCommonMessageMonitorRef();
-		List list = dao
-				.getTawCommonMessageMonitorRefs(tawCommonMessageMonitorRefss);
-		assertTrue(list.size() > 0);
-	}
+        dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRefs);
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRefss = new TawCommonMessageMonitorRef();
+        List list = dao
+                .getTawCommonMessageMonitorRefs(tawCommonMessageMonitorRefss);
+        assertTrue(list.size() > 0);
+    }
 
-	public void testRemoveTawCommonMessageMonitorRef() throws Exception {
-		TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
-		tawCommonMessageMonitorRef.setMonitorid("1");
-		tawCommonMessageMonitorRef.setTeloremail("13699142338");
+    public void testRemoveTawCommonMessageMonitorRef() throws Exception {
+        TawCommonMessageMonitorRef tawCommonMessageMonitorRef = new TawCommonMessageMonitorRef();
+        tawCommonMessageMonitorRef.setMonitorid("1");
+        tawCommonMessageMonitorRef.setTeloremail("13699142338");
 
-		dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
-		dao
-				.removeTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
-						.getId());
-		try {
-			dao.getTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
-					.getId());
-			fail("tawCommonMessageMonitorRef found in database");
-		} catch (ObjectRetrievalFailureException e) {
-			assertNotNull(e.getMessage());
-		}
-	}
+        dao.saveTawCommonMessageMonitorRef(tawCommonMessageMonitorRef);
+        dao
+                .removeTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
+                        .getId());
+        try {
+            dao.getTawCommonMessageMonitorRef(tawCommonMessageMonitorRef
+                    .getId());
+            fail("tawCommonMessageMonitorRef found in database");
+        } catch (ObjectRetrievalFailureException e) {
+            assertNotNull(e.getMessage());
+        }
+    }
 }

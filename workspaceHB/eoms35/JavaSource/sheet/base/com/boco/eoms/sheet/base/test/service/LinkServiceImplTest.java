@@ -20,10 +20,9 @@ import com.boco.eoms.sheet.base.service.ILinkService;
  * <p>
  * Date:2007-8-22 10:24:42
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class LinkServiceImplTest extends ConsoleTestCase {
     ILinkService service;

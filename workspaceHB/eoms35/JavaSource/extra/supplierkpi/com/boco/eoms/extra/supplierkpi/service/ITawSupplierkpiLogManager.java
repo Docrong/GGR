@@ -15,6 +15,7 @@ public interface ITawSupplierkpiLogManager extends Manager {
 
     /**
      * Gets tawSupplierkpiLog's information based on id.
+     *
      * @param id the tawSupplierkpiLog's id
      * @return tawSupplierkpiLog populated tawSupplierkpiLog object
      */
@@ -22,34 +23,40 @@ public interface ITawSupplierkpiLogManager extends Manager {
 
     /**
      * Saves a tawSupplierkpiLog's information
+     *
      * @param tawSupplierkpiLog the object to be saved
      */
     public void saveTawSupplierkpiLog(TawSupplierkpiLog tawSupplierkpiLog);
 
     /**
      * Removes a tawSupplierkpiLog from the database by id
+     *
      * @param id the tawSupplierkpiLog's id
      */
     public void removeTawSupplierkpiLog(final String id);
+
     public Map getTawSupplierkpiLogs(final Integer curPage, final Integer pageSize);
+
     public Map getTawSupplierkpiLogs(final Integer curPage, final Integer pageSize, final String whereStr);
-    
+
     /**
      * 根据条件查询log
      */
     public List getTawSupplierkpiLogs(final String whereStr);
-    
+
     /**
      * 分页查询
+     *
      * @param startPage
      * @param row
      * @param whereStr
      * @return
      */
     public List getTawSupplierkpiLogs(final int startPage, final int row, final String whereStr);
-    
+
     /**
      * 查询总数
+     *
      * @param whereStr
      * @return
      */

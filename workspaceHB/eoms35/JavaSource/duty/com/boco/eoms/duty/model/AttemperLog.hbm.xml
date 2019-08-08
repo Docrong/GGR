@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_rm_attemper_log"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
-	<property
-            name="operTime"
-            	column="oper_time"
+        <property
+                name="operTime"
+                column="oper_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -36,9 +36,9 @@
 
         </property>
 
-	<property
-            name="userId"
-            	column="user_id"
+        <property
+                name="userId"
+                column="user_id"
                 length="29"
                 not-null="false"
                 unique="false"
@@ -46,9 +46,9 @@
 
         </property>
 
-	<property
-            name="userName"
-            	column="user_name"
+        <property
+                name="userName"
+                column="user_name"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -56,9 +56,9 @@
 
         </property>
 
-	<property
-            name="deptId"
-            	column="dept_id"
+        <property
+                name="deptId"
+                column="dept_id"
                 length="10"
                 not-null="false"
                 unique="false"
@@ -66,9 +66,9 @@
 
         </property>
 
-	<property
-            name="deptName"
-            	column="dept_name"
+        <property
+                name="deptName"
+                column="dept_name"
                 length="20"
                 not-null="false"
                 unique="false"
@@ -76,9 +76,9 @@
 
         </property>
 
-	<property
-            name="type"
-            	column="type"
+        <property
+                name="type"
+                column="type"
                 length="5"
                 not-null="false"
                 unique="false"
@@ -86,9 +86,9 @@
 
         </property>
 
-	<property
-            name="operName"
-            	column="oper_name"
+        <property
+                name="operName"
+                column="oper_name"
                 length="40"
                 not-null="false"
                 unique="false"
@@ -96,9 +96,9 @@
 
         </property>
 
-	<property
-            name="attemperId"
-            	column="attemper_id"
+        <property
+                name="attemperId"
+                column="attemper_id"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -106,9 +106,9 @@
 
         </property>
 
-	<property
-            name="subAttemperId"
-            	column="sub_attemper_id"
+        <property
+                name="subAttemperId"
+                column="sub_attemper_id"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -116,9 +116,9 @@
 
         </property>
 
-	<property
-            name="title"
-            	column="title"
+        <property
+                name="title"
+                column="title"
                 length="50"
                 not-null="false"
                 unique="false"
@@ -126,9 +126,9 @@
 
         </property>
 
-	<property
-            name="intendBeginTime"
-            	column="intend_begin_time"
+        <property
+                name="intendBeginTime"
+                column="intend_begin_time"
                 length="25"
                 not-null="false"
                 unique="false"
@@ -137,7 +137,7 @@
         </property>
 
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

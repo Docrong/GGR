@@ -14,6 +14,6 @@ else if (parent.opener.parent.stylesheet)
   style = parent.opener.parent.stylesheet;
 else if (parent.opener.opener.parent.stylesheet)
 	style = parent.opener.opener.parent.stylesheet;*/
-	
 
-document.write('<link rel="styleSheet" type="text/css" href="'+style+'">');
+
+document.write('<link rel="styleSheet" type="text/css" href="' + style + '">');

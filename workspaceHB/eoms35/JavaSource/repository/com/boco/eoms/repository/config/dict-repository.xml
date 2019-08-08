@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="GBK"?>
 <dicts description="公用">
-	<dict id="city" description="地市">
-		<item id="WH" name="武汉" description="武汉分公司" />
-		<item id="EZ" name="鄂州" description="鄂州分公司" />
-		<item id="ES" name="恩施" description="恩施分公司" />
-		<item id="HG" name="黄冈" description="黄冈分公司" />
-		<item id="HS" name="黄石" description="黄石分公司" />
-		<item id="JH" name="江汉" description="江汉分公司" />
-		<item id="JM" name="荆门" description="荆门分公司" />
-		<item id="JZ" name="荆州" description="荆州分公司" />
-		<item id="SY" name="十堰" description="十堰分公司" />
-		<item id="SZ" name="随州" description="随州分公司" />
-		<item id="XN" name="咸宁" description="咸宁分公司" />
-		<item id="XF" name="襄樊" description="襄樊分公司" />
-		<item id="XG" name="孝感" description="孝感分公司" />
-		<item id="YC" name="宜昌" description="宜昌分公司" />
-		<item id="LQ" name="神农架" description="神农架分公司" />
-	</dict>
-	<dict id="state" description="使用状态">
-		<item id="1" name="在用" description="在用" />
-		<item id="2" name="停用" description="停用" />
-	</dict>
+    <dict id="city" description="地市">
+        <item id="WH" name="武汉" description="武汉分公司"/>
+        <item id="EZ" name="鄂州" description="鄂州分公司"/>
+        <item id="ES" name="恩施" description="恩施分公司"/>
+        <item id="HG" name="黄冈" description="黄冈分公司"/>
+        <item id="HS" name="黄石" description="黄石分公司"/>
+        <item id="JH" name="江汉" description="江汉分公司"/>
+        <item id="JM" name="荆门" description="荆门分公司"/>
+        <item id="JZ" name="荆州" description="荆州分公司"/>
+        <item id="SY" name="十堰" description="十堰分公司"/>
+        <item id="SZ" name="随州" description="随州分公司"/>
+        <item id="XN" name="咸宁" description="咸宁分公司"/>
+        <item id="XF" name="襄樊" description="襄樊分公司"/>
+        <item id="XG" name="孝感" description="孝感分公司"/>
+        <item id="YC" name="宜昌" description="宜昌分公司"/>
+        <item id="LQ" name="神农架" description="神农架分公司"/>
+    </dict>
+    <dict id="state" description="使用状态">
+        <item id="1" name="在用" description="在用"/>
+        <item id="2" name="停用" description="停用"/>
+    </dict>
 </dicts>

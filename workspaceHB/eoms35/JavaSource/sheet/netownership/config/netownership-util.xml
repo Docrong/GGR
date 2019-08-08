@@ -6,20 +6,21 @@
     <maxNetNum>999</maxNetNum><!--批量导入最大行数-->
     <maxWrongNum>10</maxWrongNum><!--批量导入时容许的最大错误行-->
     <rootPath>e:/eoms/upload/</rootPath><!--附件上传的相对路径-->
-    
+
     <netSync><!-- 网元同步数据库信息 -->
-		<url>jdbc:oracle:thin:@10.30.172.172:1521:hbam2</url><!-- 数据库连接url -->
-		<type>oracle</type><!-- 数据库类型oracle or informix -->
-		<user>nmosdb</user><!-- 数据库用户名 -->
-		<password>Nmosoptr123</password><!-- 数据库密码 -->
-		<sql>select int_id,userlabel,object_name,region_name,region_id,city_name,city_id,zz_nename from thb_eoms_res</sql>
-		<netId>int_id</netId>
-		<netName>userlabel</netName>
-		<netType>object_name</netType>
-		<city>region_name</city>
-		<cityId>region_id</cityId>
-		<county>city_name</county>
-		<countyId>city_id</countyId>
-		<netNameByEdis>zz_nename</netNameByEdis>	<!-- 综资网元名称 -->	
-	</netSync>
+        <url>jdbc:oracle:thin:@10.30.172.172:1521:hbam2</url><!-- 数据库连接url -->
+        <type>oracle</type><!-- 数据库类型oracle or informix -->
+        <user>nmosdb</user><!-- 数据库用户名 -->
+        <password>Nmosoptr123</password><!-- 数据库密码 -->
+        <sql>select int_id,userlabel,object_name,region_name,region_id,city_name,city_id,zz_nename from thb_eoms_res
+        </sql>
+        <netId>int_id</netId>
+        <netName>userlabel</netName>
+        <netType>object_name</netType>
+        <city>region_name</city>
+        <cityId>region_id</cityId>
+        <county>city_name</county>
+        <countyId>city_id</countyId>
+        <netNameByEdis>zz_nename</netNameByEdis>    <!-- 综资网元名称 -->
+    </netSync>
 </boco>

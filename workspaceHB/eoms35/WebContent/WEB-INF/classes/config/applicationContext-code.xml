@@ -3,9 +3,10 @@
 <beans>
 
     <!--TawWorkbenchMemo-DAO START-->
-    <bean id="ITawSystemCodeDao" class="com.boco.eoms.commons.system.code.dao.hibernate.TawSystemCodeDaoHibernate" autowire="byName"/>
+    <bean id="ITawSystemCodeDao" class="com.boco.eoms.commons.system.code.dao.hibernate.TawSystemCodeDaoHibernate"
+          autowire="byName"/>
     <!--TawWorkbenchMemo-DAO END-->
-    <!--TawWorkbenchMemo-START-->    
+    <!--TawWorkbenchMemo-START-->
     <bean id="ItawSystemCodeManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.commons.system.code.service.impl.TawSystemCodeManagerImpl">
@@ -14,7 +15,6 @@
         </property>
     </bean>
     <!--TawWorkbenchMemo-END-->
-    
 
- 
+
 </beans>

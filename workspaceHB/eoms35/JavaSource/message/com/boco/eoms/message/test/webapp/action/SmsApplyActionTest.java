@@ -96,7 +96,7 @@ public class SmsApplyActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"smsApply.updated"});
+        verifyActionMessages(new String[]{"smsApply.updated"});
 
     }
 

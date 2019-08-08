@@ -19,6 +19,7 @@ import com.boco.common.security.service.model.PermissionDO;
  * <p>Description: The object of Department Data Object</p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author weis
  * @version 1.0
  */
@@ -26,9 +27,9 @@ public interface PermissionDAO {
     /**
      * create permission object
      *
-     * @param id permission id , should take the format of [category].[name]
+     * @param id   permission id , should take the format of [category].[name]
      * @param name permission name
-     * @param cat permission category
+     * @param cat  permission category
      * @param desc permission description
      */
     public PermissionDO createPermission(String id, String name, String cat, String desc)
@@ -36,13 +37,15 @@ public interface PermissionDAO {
 
     /**
      * create the permission with a permission object
-     * @param permission    permission object
+     *
+     * @param permission permission object
      * @return
      * @throws ObjectAlreadyExistException
      * @throws SecurityManagerDaoException
      */
     public PermissionDO createPermission(PermissionDO permission)
             throws ObjectAlreadyExistException, SecurityManagerDaoException;
+
     /**
      * create permission category
      *
@@ -95,7 +98,7 @@ public interface PermissionDAO {
     /**
      * remove permission assigned to role object
      */
-   public void removeRolePermission(String perm, Vector roles)
+    public void removeRolePermission(String perm, Vector roles)
             throws ObjectNotExistException, SecurityManagerDaoException;
 
     /**
@@ -109,14 +112,15 @@ public interface PermissionDAO {
 
     /**
      * get permissions assigned to a role object
+     *
      * @param role role to retrieve
      */
     public Vector getRolePermissions(String role)
             throws ObjectNotExistException, SecurityManagerDaoException;
 
     public Vector getRangeByCategory(Object category)
-             throws ObjectNotExistException, SecurityManagerDaoException;
+            throws ObjectNotExistException, SecurityManagerDaoException;
 
     public Vector getAllCategory()
-             throws ObjectNotExistException, SecurityManagerDaoException;
+            throws ObjectNotExistException, SecurityManagerDaoException;
 }

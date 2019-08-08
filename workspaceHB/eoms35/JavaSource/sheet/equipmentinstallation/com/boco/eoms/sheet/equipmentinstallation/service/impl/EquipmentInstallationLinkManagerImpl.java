@@ -16,20 +16,19 @@ import com.boco.eoms.sheet.equipmentinstallation.service.IEquipmentInstallationL
  * <p>
  * Tue Oct 09 14:09:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class EquipmentInstallationLinkManagerImpl extends LinkServiceImpl implements IEquipmentInstallationLinkManager {
-  		/**
-	     * 根据条件查出所有的link对象
-	     */
-	    public List getLinksBycondition(String condition) throws Exception {    	
-	    	IEquipmentInstallationLinkDAO dao = (IEquipmentInstallationLinkDAO)this.getLinkDAO();
-	        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
-	        return list;
-	    }
- 
- }
+
+public class EquipmentInstallationLinkManagerImpl extends LinkServiceImpl implements IEquipmentInstallationLinkManager {
+    /**
+     * 根据条件查出所有的link对象
+     */
+    public List getLinksBycondition(String condition) throws Exception {
+        IEquipmentInstallationLinkDAO dao = (IEquipmentInstallationLinkDAO) this.getLinkDAO();
+        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
+        return list;
+    }
+
+}

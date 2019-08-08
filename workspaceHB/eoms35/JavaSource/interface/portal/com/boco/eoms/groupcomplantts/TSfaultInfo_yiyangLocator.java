@@ -1,6 +1,6 @@
 /**
  * TSfaultInfo_yiyangLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
@@ -25,7 +25,7 @@ public class TSfaultInfo_yiyangLocator extends org.apache.axis.client.Service im
 
     // Use to get a proxy class for TSfaultInfo_yiyangSoap
     private java.lang.String TSfaultInfo_yiyangSoap_address = XmlManage.getFile("/config/groupComplaint-crm.xml").getProperty("base.url");
-    
+
 
     public java.lang.String getTSfaultInfo_yiyangSoapAddress() {
         return TSfaultInfo_yiyangSoap_address;
@@ -43,11 +43,10 @@ public class TSfaultInfo_yiyangLocator extends org.apache.axis.client.Service im
     }
 
     public com.boco.eoms.groupcomplantts.TSfaultInfo_yiyangSoap_PortType getTSfaultInfo_yiyangSoap() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(TSfaultInfo_yiyangSoap_address);
-        }
-        catch (java.net.MalformedURLException e) {
+        } catch (java.net.MalformedURLException e) {
             throw new javax.xml.rpc.ServiceException(e);
         }
         return getTSfaultInfo_yiyangSoap(endpoint);
@@ -58,8 +57,7 @@ public class TSfaultInfo_yiyangLocator extends org.apache.axis.client.Service im
             com.boco.eoms.groupcomplantts.TSfaultInfo_yiyangSoap_BindingStub _stub = new com.boco.eoms.groupcomplantts.TSfaultInfo_yiyangSoap_BindingStub(portAddress, this);
             _stub.setPortName(getTSfaultInfo_yiyangSoapWSDDServiceName());
             return _stub;
-        }
-        catch (org.apache.axis.AxisFault e) {
+        } catch (org.apache.axis.AxisFault e) {
             return null;
         }
     }
@@ -80,8 +78,7 @@ public class TSfaultInfo_yiyangLocator extends org.apache.axis.client.Service im
                 _stub.setPortName(getTSfaultInfo_yiyangSoapWSDDServiceName());
                 return _stub;
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
         throw new javax.xml.rpc.ServiceException("There is no stub implementation for the interface:  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
@@ -99,8 +96,7 @@ public class TSfaultInfo_yiyangLocator extends org.apache.axis.client.Service im
         java.lang.String inputPortName = portName.getLocalPart();
         if ("TSfaultInfo_yiyangSoap".equals(inputPortName)) {
             return getTSfaultInfo_yiyangSoap();
-        }
-        else  {
+        } else {
             java.rmi.Remote _stub = getPort(serviceEndpointInterface);
             ((org.apache.axis.client.Stub) _stub).setPortName(portName);
             return _stub;
@@ -122,22 +118,20 @@ public class TSfaultInfo_yiyangLocator extends org.apache.axis.client.Service im
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(java.lang.String portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
-        
-if ("TSfaultInfo_yiyangSoap".equals(portName)) {
+
+        if ("TSfaultInfo_yiyangSoap".equals(portName)) {
             setTSfaultInfo_yiyangSoapEndpointAddress(address);
-        }
-        else 
-{ // Unknown Port Name
+        } else { // Unknown Port Name
             throw new javax.xml.rpc.ServiceException(" Cannot set Endpoint Address for Unknown Port" + portName);
         }
     }
 
     /**
-    * Set the endpoint address for the specified port name.
-    */
+     * Set the endpoint address for the specified port name.
+     */
     public void setEndpointAddress(javax.xml.namespace.QName portName, java.lang.String address) throws javax.xml.rpc.ServiceException {
         setEndpointAddress(portName.getLocalPart(), address);
     }

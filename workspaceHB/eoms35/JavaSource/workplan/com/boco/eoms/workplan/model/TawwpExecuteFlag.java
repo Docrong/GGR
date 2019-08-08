@@ -6,96 +6,95 @@ import com.boco.eoms.common.oo.DataObject;
 
 public class TawwpExecuteFlag implements Serializable, DataObject {
 
-	private String id; // 标识
+    private String id; // 标识
 
-	private String yearPlanId;
+    private String yearPlanId;
 
-	private String monthPlanId;
+    private String monthPlanId;
 
-	private String monthFlag;
+    private String monthFlag;
 
-	private String executedate;
+    private String executedate;
 
-	private String executer;
+    private String executer;
 
-	private String state;
+    private String state;
 
-	private String remark;
-	
-	private String executeType; 
+    private String remark;
 
-	public String getExecuteType() {
-		return executeType;
-	}
+    private String executeType;
 
-	public void setExecuteType(String executeType) {
-		this.executeType = executeType;
-	}
+    public String getExecuteType() {
+        return executeType;
+    }
 
-	public String getExecutedate() {
-		return executedate;
-	}
+    public void setExecuteType(String executeType) {
+        this.executeType = executeType;
+    }
 
-	public void setExecutedate(String executedate) {
-		this.executedate = executedate;
-	}
+    public String getExecutedate() {
+        return executedate;
+    }
 
-	public String getExecuter() {
-		return executer;
-	}
+    public void setExecutedate(String executedate) {
+        this.executedate = executedate;
+    }
 
-	public void setExecuter(String executer) {
-		this.executer = executer;
-	}
+    public String getExecuter() {
+        return executer;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setExecuter(String executer) {
+        this.executer = executer;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	 
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getMonthFlag() {
-		return monthFlag;
-	}
 
-	public void setMonthFlag(String monthFlag) {
-		this.monthFlag = monthFlag;
-	}
+    public String getMonthFlag() {
+        return monthFlag;
+    }
 
-	public String getMonthPlanId() {
-		return monthPlanId;
-	}
+    public void setMonthFlag(String monthFlag) {
+        this.monthFlag = monthFlag;
+    }
 
-	public void setMonthPlanId(String monthPlanId) {
-		this.monthPlanId = monthPlanId;
-	}
+    public String getMonthPlanId() {
+        return monthPlanId;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setMonthPlanId(String monthPlanId) {
+        this.monthPlanId = monthPlanId;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public String getYearPlanId() {
-		return yearPlanId;
-	}
+    public void setState(String state) {
+        this.state = state;
+    }
 
-	public void setYearPlanId(String yearPlanId) {
-		this.yearPlanId = yearPlanId;
-	}
+    public String getYearPlanId() {
+        return yearPlanId;
+    }
+
+    public void setYearPlanId(String yearPlanId) {
+        this.yearPlanId = yearPlanId;
+    }
 
 }

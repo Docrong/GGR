@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Tue Apr 25 11:41:14 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public interface ISecurityObjAuditMainManager extends IMainService {
- 
- }
+
+public interface ISecurityObjAuditMainManager extends IMainService {
+
+}

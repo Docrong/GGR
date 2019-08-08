@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.citycustom.dao.ICityCustomTaskDAO;
  * <p>
  * Fri Sep 28 14:06:48 CST 2012
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class CityCustomTaskDAOHibernate extends TaskDAOImpl implements  ICityCustomTaskDAO {
- 
- }
+
+public class CityCustomTaskDAOHibernate extends TaskDAOImpl implements ICityCustomTaskDAO {
+
+}

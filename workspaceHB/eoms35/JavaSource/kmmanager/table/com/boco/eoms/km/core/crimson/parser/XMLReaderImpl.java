@@ -4,7 +4,7 @@
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -69,6 +69,7 @@ import org.xml.sax.ext.*;
 
 /**
  * This implements the SAX2 XMLReader.
+ *
  * @author Rajiv Mordani
  * @author Edwin Goei
  * @version $Revision: 1.3 $
@@ -124,7 +125,7 @@ public class XMLReaderImpl implements XMLReader {
     // Constructors.
     ////////////////////////////////////////////////////////////////////
 
-   /**
+    /**
      * Default constructor is explicitly declared here
      */
     public XMLReaderImpl() {
@@ -141,15 +142,14 @@ public class XMLReaderImpl implements XMLReader {
      *
      * @param name The feature name, as a complete URI.
      * @return The current feature state.
-     * @exception org.xml.sax.SAXNotRecognizedException If the feature
-     *            name is not known.
-     * @exception org.xml.sax.SAXNotSupportedException If querying the
-     *            feature state is not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException If the feature
+     *                                               name is not known.
+     * @throws org.xml.sax.SAXNotSupportedException  If querying the
+     *                                               feature state is not supported.
      * @see org.xml.sax.XMLReader#setFeature
      */
     public boolean getFeature(String name)
-        throws SAXNotRecognizedException, SAXNotSupportedException
-    {
+            throws SAXNotRecognizedException, SAXNotSupportedException {
         if (name.equals(NAMESPACES)) {
             return namespaces;
         } else if (name.equals(NAMESPACE_PREFIXES)) {
@@ -157,8 +157,8 @@ public class XMLReaderImpl implements XMLReader {
         } else if (name.equals(VALIDATION)) {
             return validation;
         } else if (name.equals(STRING_INTERNING) ||
-                   name.equals(EXTERNAL_GENERAL) ||
-                   name.equals(EXTERNAL_PARAMETER)) {
+                name.equals(EXTERNAL_GENERAL) ||
+                name.equals(EXTERNAL_PARAMETER)) {
             return true;
         } else if (name.equals(LEXICAL_PARAMETER_ENTITIES)) {
             return false;
@@ -170,17 +170,16 @@ public class XMLReaderImpl implements XMLReader {
     /**
      * Set a feature for the parser.
      *
-     * @param name The feature name, as a complete URI.
+     * @param name  The feature name, as a complete URI.
      * @param state The requested feature state.
-     * @exception org.xml.sax.SAXNotRecognizedException If the feature
-     *            name is not known.
-     * @exception org.xml.sax.SAXNotSupportedException If the feature
-     *            state is not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException If the feature
+     *                                               name is not known.
+     * @throws org.xml.sax.SAXNotSupportedException  If the feature
+     *                                               state is not supported.
      * @see org.xml.sax.XMLReader#getFeature
      */
     public void setFeature(String name, boolean state)
-        throws SAXNotRecognizedException, SAXNotSupportedException
-    {
+            throws SAXNotRecognizedException, SAXNotSupportedException {
         if (name.equals(NAMESPACES)) {
             checkNotParsing("feature", name);
             namespaces = state;
@@ -202,12 +201,12 @@ public class XMLReaderImpl implements XMLReader {
         } else if (name.equals(STRING_INTERNING)) {
             if (state == false) {
                 throw new SAXNotSupportedException("Feature: " + name
-                                                   + " State: false");
+                        + " State: false");
             }
             // else true is OK
         } else if (name.equals(EXTERNAL_GENERAL) ||
-                   name.equals(EXTERNAL_PARAMETER) ||
-                   name.equals(LEXICAL_PARAMETER_ENTITIES)) {
+                name.equals(EXTERNAL_PARAMETER) ||
+                name.equals(LEXICAL_PARAMETER_ENTITIES)) {
             throw new SAXNotSupportedException("Feature: " + name);
         } else {
             throw new SAXNotRecognizedException("Feature: " + name);
@@ -219,15 +218,14 @@ public class XMLReaderImpl implements XMLReader {
      *
      * @param name The property name.
      * @return The property value.
-     * @exception org.xml.sax.SAXNotRecognizedException If the feature
-     *            name is not known.
-     * @exception org.xml.sax.SAXNotSupportedException If the feature
-     *            state is not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException If the feature
+     *                                               name is not known.
+     * @throws org.xml.sax.SAXNotSupportedException  If the feature
+     *                                               state is not supported.
      * @see org.xml.sax.XMLReader#getProperty
      */
     public Object getProperty(String name)
-        throws SAXNotRecognizedException, SAXNotSupportedException
-    {
+            throws SAXNotRecognizedException, SAXNotSupportedException {
         if (name.equals(LEXICAL_HANDLER)) {
             return lexicalHandler;
         } else if (name.equals(DECLARATION_HANDLER)) {
@@ -240,28 +238,27 @@ public class XMLReaderImpl implements XMLReader {
     /**
      * Set a parser property.
      *
-     * @param name The property name.
+     * @param name  The property name.
      * @param value The property value.
-     * @exception org.xml.sax.SAXNotRecognizedException If the feature
-     *            name is not known.
-     * @exception org.xml.sax.SAXNotSupportedException If the feature
-     *            state is not supported.
+     * @throws org.xml.sax.SAXNotRecognizedException If the feature
+     *                                               name is not known.
+     * @throws org.xml.sax.SAXNotSupportedException  If the feature
+     *                                               state is not supported.
      * @see org.xml.sax.XMLReader#getProperty
      */
     public void setProperty(String name, Object value)
-        throws SAXNotRecognizedException, SAXNotSupportedException
-    {
+            throws SAXNotRecognizedException, SAXNotSupportedException {
         String detail = "Property: " + name;
         if (name.equals(LEXICAL_HANDLER)) {
             if (!(value instanceof LexicalHandler)) {
                 throw new SAXNotSupportedException(detail);
             }
-            lexicalHandler = (LexicalHandler)value;
+            lexicalHandler = (LexicalHandler) value;
         } else if (name.equals(DECLARATION_HANDLER)) {
             if (!(value instanceof DeclHandler)) {
                 throw new SAXNotSupportedException(detail);
             }
-            declHandler = (DeclHandler)value;
+            declHandler = (DeclHandler) value;
         } else {
             throw new SAXNotRecognizedException("Property: " + name);
         }
@@ -271,8 +268,8 @@ public class XMLReaderImpl implements XMLReader {
      * Set the entity resolver.
      *
      * @param resolver The new entity resolver.
-     * @exception java.lang.NullPointerException If the entity resolver
-     *            parameter is null.
+     * @throws java.lang.NullPointerException If the entity resolver
+     *                                        parameter is null.
      * @see org.xml.sax.XMLReader#setEntityResolver
      */
     public void setEntityResolver(EntityResolver resolver) {
@@ -281,7 +278,7 @@ public class XMLReaderImpl implements XMLReader {
         }
         entityResolver = resolver;
         if (parser != null) {
-            parser.setEntityResolver(resolver); 
+            parser.setEntityResolver(resolver);
         }
     }
 
@@ -299,8 +296,8 @@ public class XMLReaderImpl implements XMLReader {
      * Set the DTD handler.
      *
      * @param resolver The new DTD handler.
-     * @exception java.lang.NullPointerException If the DTD handler
-     *            parameter is null.
+     * @throws java.lang.NullPointerException If the DTD handler
+     *                                        parameter is null.
      * @see org.xml.sax.XMLReader#setEntityResolver
      */
     public void setDTDHandler(DTDHandler handler) {
@@ -327,8 +324,8 @@ public class XMLReaderImpl implements XMLReader {
      * Set the content handler.
      *
      * @param resolver The new content handler.
-     * @exception java.lang.NullPointerException If the content handler
-     *            parameter is null.
+     * @throws java.lang.NullPointerException If the content handler
+     *                                        parameter is null.
      * @see org.xml.sax.XMLReader#setEntityResolver
      */
     public void setContentHandler(ContentHandler handler) {
@@ -355,8 +352,8 @@ public class XMLReaderImpl implements XMLReader {
      * Set the error handler.
      *
      * @param resolver The new error handler.
-     * @exception java.lang.NullPointerException If the error handler
-     *            parameter is null.
+     * @throws java.lang.NullPointerException If the error handler
+     *                                        parameter is null.
      * @see org.xml.sax.XMLReader#setEntityResolver
      */
     public void setErrorHandler(ErrorHandler handler) {
@@ -383,16 +380,15 @@ public class XMLReaderImpl implements XMLReader {
      * Parse an XML document.
      *
      * @param systemId The absolute URL of the document.
-     * @exception java.io.IOException If there is a problem reading
-     *            the raw content of the document.
-     * @exception org.xml.sax.SAXException If there is a problem
-     *            processing the document.
+     * @throws java.io.IOException      If there is a problem reading
+     *                                  the raw content of the document.
+     * @throws org.xml.sax.SAXException If there is a problem
+     *                                  processing the document.
      * @see #parse(org.xml.sax.InputSource)
      * @see org.xml.sax.Parser#parse(java.lang.String)
      */
     public void parse(String systemId)
-        throws IOException, SAXException
-    {
+            throws IOException, SAXException {
         parse(new InputSource(systemId));
     }
 
@@ -400,16 +396,15 @@ public class XMLReaderImpl implements XMLReader {
      * Parse an XML document.
      *
      * @param input An input source for the document.
-     * @exception java.io.IOException If there is a problem reading
-     *            the raw content of the document.
-     * @exception org.xml.sax.SAXException If there is a problem
-     *            processing the document.
+     * @throws java.io.IOException      If there is a problem reading
+     *                                  the raw content of the document.
+     * @throws org.xml.sax.SAXException If there is a problem
+     *                                  processing the document.
      * @see #parse(java.lang.String)
      * @see org.xml.sax.Parser#parse(org.xml.sax.InputSource)
      */
     public void parse(InputSource input)
-        throws IOException, SAXException
-    {
+            throws IOException, SAXException {
         if (parsing) {
             throw new SAXException("Parser is already in use");
         }
@@ -458,17 +453,16 @@ public class XMLReaderImpl implements XMLReader {
      *
      * @param type The type of thing (feature or property).
      * @param name The feature or property name.
-     * @exception org.xml.sax.SAXNotSupportedException If a
-     *            document is currently being parsed.
+     * @throws org.xml.sax.SAXNotSupportedException If a
+     *                                              document is currently being parsed.
      */
     private void checkNotParsing(String type, String name)
-        throws SAXNotSupportedException
-    {
+            throws SAXNotSupportedException {
         if (parsing) {
             throw new SAXNotSupportedException("Cannot change " +
-                                               type + ' ' +
-                                               name + " while parsing");
-                                               
+                    type + ' ' +
+                    name + " while parsing");
+
         }
     }
 }

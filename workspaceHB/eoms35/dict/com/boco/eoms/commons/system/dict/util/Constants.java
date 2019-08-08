@@ -10,10 +10,9 @@ package com.boco.eoms.commons.system.dict.util;
  * <p>
  * Date:2007-10-24 11:38:32
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class Constants {
     /**

@@ -16,20 +16,19 @@ import com.boco.eoms.sheet.plannadjust.service.IPlannAdjustLinkManager;
  * <p>
  * Sat Jun 08 11:16:09 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannAdjustLinkManagerImpl extends LinkServiceImpl implements IPlannAdjustLinkManager {
-  		/**
-	     * 根据条件查出所有的link对象
-	     */
-	    public List getLinksBycondition(String condition) throws Exception {    	
-	    	IPlannAdjustLinkDAO dao = (IPlannAdjustLinkDAO)this.getLinkDAO();
-	        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
-	        return list;
-	    }
- 
- }
+
+public class PlannAdjustLinkManagerImpl extends LinkServiceImpl implements IPlannAdjustLinkManager {
+    /**
+     * 根据条件查出所有的link对象
+     */
+    public List getLinksBycondition(String condition) throws Exception {
+        IPlannAdjustLinkDAO dao = (IPlannAdjustLinkDAO) this.getLinkDAO();
+        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
+        return list;
+    }
+
+}

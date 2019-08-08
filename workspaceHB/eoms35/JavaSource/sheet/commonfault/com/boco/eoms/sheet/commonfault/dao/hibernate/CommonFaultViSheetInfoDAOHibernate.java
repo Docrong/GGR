@@ -17,63 +17,62 @@ import com.boco.eoms.sheet.commonfault.model.CommonFaultViSheetInfo;
 
 /**
  * @author IBM_USER
- * 
+ * <p>
  * TODO To change the template for this generated type comment go to Window -
  * Preferences - Java - Code Style - Code Templates
  */
 public class CommonFaultViSheetInfoDAOHibernate extends BaseSheetDaoHibernate implements ICommonFaultViSheetInfoDAO {
 
-	public CommonFaultViSheetInfo getCommonFaultViSheetInfoBymainId(String id) throws HibernateException {
-		String hql = "from CommonFaultViSheetInfo where deleted=0 and mainId='"+id+"'";
-		List list = this.getHibernateTemplate().find(hql);
-		if(null!=list&&list.size()>0){
-			return (CommonFaultViSheetInfo)list.get(0);
-		}
-		return null;
-	}
-
-	public void saveOrUpdate(CommonFaultViSheetInfo main) throws HibernateException {
-		CommonFaultViSheetInfo baseMain=(CommonFaultViSheetInfo)main;
-		if (baseMain.getId()==null){
-        		getHibernateTemplate().save(baseMain);
-        		getHibernateTemplate().flush();
-            	getHibernateTemplate().clear();
+    public CommonFaultViSheetInfo getCommonFaultViSheetInfoBymainId(String id) throws HibernateException {
+        String hql = "from CommonFaultViSheetInfo where deleted=0 and mainId='" + id + "'";
+        List list = this.getHibernateTemplate().find(hql);
+        if (null != list && list.size() > 0) {
+            return (CommonFaultViSheetInfo) list.get(0);
         }
-		else{
-			getHibernateTemplate().flush();
-        	getHibernateTemplate().clear();
-			getHibernateTemplate().saveOrUpdate(baseMain);
-		}
-		
-	}
+        return null;
+    }
 
-	public Object getObject(Class clazz, Serializable id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void saveOrUpdate(CommonFaultViSheetInfo main) throws HibernateException {
+        CommonFaultViSheetInfo baseMain = (CommonFaultViSheetInfo) main;
+        if (baseMain.getId() == null) {
+            getHibernateTemplate().save(baseMain);
+            getHibernateTemplate().flush();
+            getHibernateTemplate().clear();
+        } else {
+            getHibernateTemplate().flush();
+            getHibernateTemplate().clear();
+            getHibernateTemplate().saveOrUpdate(baseMain);
+        }
 
-	public List getObjects(Class clazz) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	public void removeObject(Class clazz, Serializable id) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Object getObject(Class clazz, Serializable id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public void saveObject(Object o) {
-		// TODO Auto-generated method stub
-		
-	}
+    public List getObjects(Class clazz) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public CommonFaultViSheetInfo getCommonFaultViSheetInfoByVisId(String mid, String vid) throws HibernateException {
-		String hql = "from CommonFaultViSheetInfo where deleted=0 and mainId='"+mid+"' and visId='"+vid+"'";
-		List list = this.getHibernateTemplate().find(hql);
-		if(null!=list&&list.size()>0){
-			return (CommonFaultViSheetInfo)list.get(0);
-		}
-		return null;
-	}
-	
+    public void removeObject(Class clazz, Serializable id) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void saveObject(Object o) {
+        // TODO Auto-generated method stub
+
+    }
+
+    public CommonFaultViSheetInfo getCommonFaultViSheetInfoByVisId(String mid, String vid) throws HibernateException {
+        String hql = "from CommonFaultViSheetInfo where deleted=0 and mainId='" + mid + "' and visId='" + vid + "'";
+        List list = this.getHibernateTemplate().find(hql);
+        if (null != list && list.size() > 0) {
+            return (CommonFaultViSheetInfo) list.get(0);
+        }
+        return null;
+    }
+
 }

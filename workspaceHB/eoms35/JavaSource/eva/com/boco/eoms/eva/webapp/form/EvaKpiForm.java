@@ -8,179 +8,179 @@ import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class EvaKpiForm extends BaseForm implements java.io.Serializable {
 
-	/**
-	 * 主键
-	 */
-	protected String id;
+    /**
+     * 主键
+     */
+    protected String id;
 
-	/**
-	 * 指标名称
-	 */
-	protected String kpiName;
+    /**
+     * 指标名称
+     */
+    protected String kpiName;
 
-	/**
-	 * 指标对应节点ID
-	 */
-	protected String nodeId;
+    /**
+     * 指标对应节点ID
+     */
+    protected String nodeId;
 
-	/**
-	 * 周期
-	 */
-	protected String cycle;
+    /**
+     * 周期
+     */
+    protected String cycle;
 
-	/**
-	 * 阀值
-	 */
-	protected Float threshold;
+    /**
+     * 阀值
+     */
+    protected Float threshold;
 
-	/**
-	 * 规则组ID
-	 */
-	protected String ruleGroupId;
+    /**
+     * 规则组ID
+     */
+    protected String ruleGroupId;
 
-	/**
-	 * 创建人
-	 */
-	protected String creator;
+    /**
+     * 创建人
+     */
+    protected String creator;
 
-	/**
-	 * 创建时间
-	 */
-	protected String createTime;
+    /**
+     * 创建时间
+     */
+    protected String createTime;
 
-	/**
-	 * 备注
-	 */
-	protected String remark;
+    /**
+     * 备注
+     */
+    protected String remark;
 
-	/**
-	 * 删除标志
-	 */
-	protected String deleted;
-	
-	/**
-	 * 考核算法
-	 */
-	protected String algorithm;
+    /**
+     * 删除标志
+     */
+    protected String deleted;
 
-	/**
-	 * 指标的权重，为了页面显示用，数据库中并不存在此字段
-	 */
-	protected Float weight;
+    /**
+     * 考核算法
+     */
+    protected String algorithm;
 
-	public Float getWeight() {
-		return weight;
-	}
+    /**
+     * 指标的权重，为了页面显示用，数据库中并不存在此字段
+     */
+    protected Float weight;
 
-	public void setWeight(Float weight) {
-		this.weight = weight;
-	}
+    public Float getWeight() {
+        return weight;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	} 
+    public void setWeight(Float weight) {
+        this.weight = weight;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	public String getCreator() {
-		return creator;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setCreator(String creator) {
-		this.creator = creator;
-	}
+    public String getCreator() {
+        return creator;
+    }
 
-	public String getCycle() {
-		return cycle;
-	}
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
 
-	public void setCycle(String cycle) {
-		this.cycle = cycle;
-	}
+    public String getCycle() {
+        return cycle;
+    }
 
-	public String getDeleted() {
-		return deleted;
-	}
+    public void setCycle(String cycle) {
+        this.cycle = cycle;
+    }
 
-	public void setDeleted(String deleted) {
-		this.deleted = deleted;
-	}
+    public String getDeleted() {
+        return deleted;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getKpiName() {
-		return kpiName;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setKpiName(String kpiName) {
-		this.kpiName = kpiName;
-	}
+    public String getKpiName() {
+        return kpiName;
+    }
 
-	public String getNodeId() {
-		return nodeId;
-	}
+    public void setKpiName(String kpiName) {
+        this.kpiName = kpiName;
+    }
 
-	public void setNodeId(String nodeId) {
-		this.nodeId = nodeId;
-	}
+    public String getNodeId() {
+        return nodeId;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public void setNodeId(String nodeId) {
+        this.nodeId = nodeId;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public String getRuleGroupId() {
-		return ruleGroupId;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	public void setRuleGroupId(String ruleGroupId) {
-		this.ruleGroupId = ruleGroupId;
-	}
+    public String getRuleGroupId() {
+        return ruleGroupId;
+    }
 
-	public Float getThreshold() {
-		return threshold;
-	}
+    public void setRuleGroupId(String ruleGroupId) {
+        this.ruleGroupId = ruleGroupId;
+    }
 
-	public void setThreshold(Float threshold) {
-		this.threshold = threshold;
-	}
+    public Float getThreshold() {
+        return threshold;
+    }
 
-	/**
-	 * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
-	 *      javax.servlet.http.HttpServletRequest)
-	 */
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-		id = "";
-		kpiName = "";
-		nodeId = "";
-		cycle = "";
-		threshold = null;
-		ruleGroupId = "";
-		creator = "";
-		createTime = "";
-		remark = "";
-		deleted = "";
-		weight = null;
-		algorithm = "";
-	}
+    public void setThreshold(Float threshold) {
+        this.threshold = threshold;
+    }
 
-	public String getAlgorithm() {
-		return algorithm;
-	}
+    /**
+     * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
+     * javax.servlet.http.HttpServletRequest)
+     */
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        id = "";
+        kpiName = "";
+        nodeId = "";
+        cycle = "";
+        threshold = null;
+        ruleGroupId = "";
+        creator = "";
+        createTime = "";
+        remark = "";
+        deleted = "";
+        weight = null;
+        algorithm = "";
+    }
 
-	public void setAlgorithm(String algorithm) {
-		this.algorithm = algorithm;
-	}
+    public String getAlgorithm() {
+        return algorithm;
+    }
+
+    public void setAlgorithm(String algorithm) {
+        this.algorithm = algorithm;
+    }
 
 }

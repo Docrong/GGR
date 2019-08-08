@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.daiweiindexreduction.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Tue Aug 01 17:34:54 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public interface IDaiWeiIndexReductionQo extends IWorkSheetQO {
- 
- }
+
+public interface IDaiWeiIndexReductionQo extends IWorkSheetQO {
+
+}

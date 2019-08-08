@@ -6,13 +6,12 @@ package com.boco.eoms.commons.accessories.zip;
  * SUN PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 
- 
 
 /**
  * This class provides support for general purpose decompression using the
  * popular ZLIB compression library. The ZLIB compression library was
  * initially developed as part of the PNG graphics standard and is not
- * protected by patents. It is fully described in the specifications at 
+ * protected by patents. It is fully described in the specifications at
  * the <a href="package-summary.html#package_description">java.util.zip
  * package description</a>.
  *
@@ -43,10 +42,9 @@ package com.boco.eoms.commons.accessories.zip;
  * String outputString = new String(result, 0, resultLength, "UTF-8");
  * </pre></blockquote>
  *
- * @see		Deflater
- * @version 	1.44, 11/11/05
- * @author 	David Connelly
- *
+ * @author David Connelly
+ * @version 1.44, 11/11/05
+ * @see Deflater
  */
 public
 class Inflater {
@@ -57,8 +55,8 @@ class Inflater {
     private boolean needDict;
 
     static {
-	/* Zip library is loaded from System.initializeSystemClass */
-	initIDs();
+        /* Zip library is loaded from System.initializeSystemClass */
+        initIDs();
     }
 
     /**
@@ -73,46 +71,48 @@ class Inflater {
      * @param nowrap if true then support GZIP compatible compression
      */
     public Inflater(boolean nowrap) {
-	strm = init(nowrap);
+        strm = init(nowrap);
     }
 
     /**
      * Creates a new decompressor.
      */
     public Inflater() {
-	this(false);
+        this(false);
     }
 
     /**
      * Sets input data for decompression. Should be called whenever
      * needsInput() returns true indicating that more input data is
      * required.
-     * @param b the input data bytes
+     *
+     * @param b   the input data bytes
      * @param off the start offset of the input data
      * @param len the length of the input data
      * @see Inflater#needsInput
      */
     public synchronized void setInput(byte[] b, int off, int len) {
-	if (b == null) {
-	    throw new NullPointerException();
-	}
-	if (off < 0 || len < 0 || off > b.length - len) {
-	    throw new ArrayIndexOutOfBoundsException();
-	}
-	this.buf = b;
-	this.off = off;
-	this.len = len;
+        if (b == null) {
+            throw new NullPointerException();
+        }
+        if (off < 0 || len < 0 || off > b.length - len) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        this.buf = b;
+        this.off = off;
+        this.len = len;
     }
 
     /**
      * Sets input data for decompression. Should be called whenever
      * needsInput() returns true indicating that more input data is
      * required.
+     *
      * @param b the input data bytes
      * @see Inflater#needsInput
      */
     public void setInput(byte[] b) {
-	setInput(b, 0, b.length);
+        setInput(b, 0, b.length);
     }
 
     /**
@@ -120,21 +120,22 @@ class Inflater {
      * called when inflate() returns 0 and needsDictionary() returns true
      * indicating that a preset dictionary is required. The method getAdler()
      * can be used to get the Adler-32 value of the dictionary needed.
-     * @param b the dictionary data bytes
+     *
+     * @param b   the dictionary data bytes
      * @param off the start offset of the data
      * @param len the length of the data
      * @see Inflater#needsDictionary
      * @see Inflater#getAdler
      */
     public synchronized void setDictionary(byte[] b, int off, int len) {
-	if (strm == 0 || b == null) {
-	    throw new NullPointerException();
-	}
-	if (off < 0 || len < 0 || off > b.length - len) {
-	    throw new ArrayIndexOutOfBoundsException();
-	}
-	setDictionary(strm, b, off, len);
-	needDict = false;
+        if (strm == 0 || b == null) {
+            throw new NullPointerException();
+        }
+        if (off < 0 || len < 0 || off > b.length - len) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        setDictionary(strm, b, off, len);
+        needDict = false;
     }
 
     /**
@@ -142,51 +143,56 @@ class Inflater {
      * called when inflate() returns 0 and needsDictionary() returns true
      * indicating that a preset dictionary is required. The method getAdler()
      * can be used to get the Adler-32 value of the dictionary needed.
+     *
      * @param b the dictionary data bytes
      * @see Inflater#needsDictionary
      * @see Inflater#getAdler
      */
     public void setDictionary(byte[] b) {
-	setDictionary(b, 0, b.length);
+        setDictionary(b, 0, b.length);
     }
 
     /**
      * Returns the total number of bytes remaining in the input buffer.
      * This can be used to find out what bytes still remain in the input
      * buffer after decompression has finished.
+     *
      * @return the total number of bytes remaining in the input buffer
      */
     public synchronized int getRemaining() {
-	return len;
+        return len;
     }
 
     /**
      * Returns true if no data remains in the input buffer. This can
      * be used to determine if #setInput should be called in order
      * to provide more input.
+     *
      * @return true if no data remains in the input buffer
      */
     public synchronized boolean needsInput() {
-	return len <= 0;
+        return len <= 0;
     }
 
     /**
      * Returns true if a preset dictionary is needed for decompression.
+     *
      * @return true if a preset dictionary is needed for decompression
      * @see Inflater#setDictionary
      */
     public synchronized boolean needsDictionary() {
-	return needDict;
+        return needDict;
     }
 
     /**
      * Returns true if the end of the compressed data stream has been
      * reached.
+     *
      * @return true if the end of the compressed data stream has been
      * reached
      */
     public synchronized boolean finished() {
-	return finished;
+        return finished;
     }
 
     /**
@@ -196,24 +202,24 @@ class Inflater {
      * determine if more input data or a preset dictionary is required.
      * In the later case, getAdler() can be used to get the Adler-32
      * value of the dictionary required.
-     * @param b the buffer for the uncompressed data
+     *
+     * @param b   the buffer for the uncompressed data
      * @param off the start offset of the data
      * @param len the maximum number of uncompressed bytes
      * @return the actual number of uncompressed bytes
-     * @exception DataFormatException if the compressed data format is invalid
+     * @throws DataFormatException if the compressed data format is invalid
      * @see Inflater#needsInput
      * @see Inflater#needsDictionary
      */
     public synchronized int inflate(byte[] b, int off, int len)
-	throws  Exception
-    {
-	if (b == null) {
-	    throw new NullPointerException();
-	}
-	if (off < 0 || len < 0 || off > b.length - len) {
-	    throw new ArrayIndexOutOfBoundsException();
-	}
-	return inflateBytes(b, off, len);
+            throws Exception {
+        if (b == null) {
+            throw new NullPointerException();
+        }
+        if (off < 0 || len < 0 || off > b.length - len) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return inflateBytes(b, off, len);
     }
 
     /**
@@ -223,23 +229,25 @@ class Inflater {
      * determine if more input data or a preset dictionary is required.
      * In the later case, getAdler() can be used to get the Adler-32
      * value of the dictionary required.
+     *
      * @param b the buffer for the uncompressed data
      * @return the actual number of uncompressed bytes
-     * @exception DataFormatException if the compressed data format is invalid
+     * @throws DataFormatException if the compressed data format is invalid
      * @see Inflater#needsInput
      * @see Inflater#needsDictionary
      */
-    public int inflate(byte[] b) throws  Exception {
-	return inflate(b, 0, b.length);
+    public int inflate(byte[] b) throws Exception {
+        return inflate(b, 0, b.length);
     }
 
     /**
      * Returns the ADLER-32 value of the uncompressed data.
+     *
      * @return the ADLER-32 value of the uncompressed data
      */
     public synchronized int getAdler() {
-	ensureOpen();
-	return getAdler(strm);
+        ensureOpen();
+        return getAdler(strm);
     }
 
     /**
@@ -252,7 +260,7 @@ class Inflater {
      * @return the total number of compressed bytes input so far
      */
     public int getTotalIn() {
-	return (int) getBytesRead();
+        return (int) getBytesRead();
     }
 
     /**
@@ -261,8 +269,8 @@ class Inflater {
      * @return the total (non-negative) number of compressed bytes input so far
      */
     public synchronized long getBytesRead() {
-	ensureOpen();
-	return getBytesRead(strm);
+        ensureOpen();
+        return getBytesRead(strm);
     }
 
     /**
@@ -275,7 +283,7 @@ class Inflater {
      * @return the total number of uncompressed bytes output so far
      */
     public int getTotalOut() {
-	return (int) getBytesWritten();
+        return (int) getBytesWritten();
     }
 
     /**
@@ -284,19 +292,19 @@ class Inflater {
      * @return the total (non-negative) number of uncompressed bytes output so far
      */
     public synchronized long getBytesWritten() {
-	ensureOpen();
-	return getBytesWritten(strm);
+        ensureOpen();
+        return getBytesWritten(strm);
     }
 
     /**
      * Resets inflater so that a new set of input data can be processed.
      */
     public synchronized void reset() {
-	ensureOpen();
-	reset(strm);
-	finished = false;
-	needDict = false;
-	off = len = 0;
+        ensureOpen();
+        reset(strm);
+        finished = false;
+        needDict = false;
+        off = len = 0;
     }
 
     /**
@@ -307,34 +315,42 @@ class Inflater {
      * object is undefined.
      */
     public synchronized void end() {
-	if (strm != 0) {
-	    end(strm);
-	    strm = 0;
-	    buf = null;
-	}
+        if (strm != 0) {
+            end(strm);
+            strm = 0;
+            buf = null;
+        }
     }
 
     /**
      * Closes the decompressor when garbage is collected.
      */
     protected void finalize() {
-	end();
+        end();
     }
 
-    private void ensureOpen () {
-	if (strm == 0)
-	    throw new NullPointerException();
+    private void ensureOpen() {
+        if (strm == 0)
+            throw new NullPointerException();
     }
 
     private native static void initIDs();
+
     private native static long init(boolean nowrap);
+
     private native static void setDictionary(long strm, byte[] b, int off,
-					     int len);
+                                             int len);
+
     private native int inflateBytes(byte[] b, int off, int len)
-	    throws  Exception;
+            throws Exception;
+
     private native static int getAdler(long strm);
+
     private native static long getBytesRead(long strm);
+
     private native static long getBytesWritten(long strm);
+
     private native static void reset(long strm);
+
     private native static void end(long strm);
 }

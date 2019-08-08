@@ -18,15 +18,14 @@ import java.util.Map;
  * <p>
  * Date:2007-8-3 11:47:48
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictServiceImpl implements IDictService {
     /**
      * 通过value值取描述
-     * 
+     *
      * @param value
      * @param map
      * @return
@@ -41,7 +40,7 @@ public class DictServiceImpl implements IDictService {
 
     /**
      * 通过value取名称
-     * 
+     *
      * @param value
      * @param map
      * @return
@@ -58,13 +57,14 @@ public class DictServiceImpl implements IDictService {
      */
     private Map operateMap;
 
-    
+
     /**
      * @return the operateMap
      */
     public Map getOperateMap() {
         return operateMap;
     }
+
     /**
      * @param operateMap the operateMap to set
      */

@@ -16,210 +16,203 @@ import com.boco.eoms.km.core.hibernate.dialect.Dialect;
 import com.boco.eoms.km.core.hibernate.engine.RowSelection;
 
 public class AbstractQueryImpl implements Query {
-	
-	private static final Log log = LogFactory.getLog( AbstractQueryImpl.class );
 
-	private final String queryString;
-	private RowSelection selection;
-	final Connection conn = null;
-	
-	private List values = new ArrayList(4);
-	private List types = new ArrayList(4);
+    private static final Log log = LogFactory.getLog(AbstractQueryImpl.class);
 
-	public AbstractQueryImpl(String queryString) {
-		this.queryString = queryString;
-		this.selection = new RowSelection();
-	}
+    private final String queryString;
+    private RowSelection selection;
+    final Connection conn = null;
 
-	public Query setFirstResult(int firstResult) {
-		selection.setFirstRow( new Integer(firstResult) );
-		return this;
-	}
+    private List values = new ArrayList(4);
+    private List types = new ArrayList(4);
 
-	public Query setMaxResults(int maxResults) {
-		selection.setMaxRows( new Integer(maxResults) );
-		return this;
-	}
+    public AbstractQueryImpl(String queryString) {
+        this.queryString = queryString;
+        this.selection = new RowSelection();
+    }
 
-	public Query setParameterList(List values, List types) {
-		this.values = values;
-		this.types = types;
-		return this;
-	}
+    public Query setFirstResult(int firstResult) {
+        selection.setFirstRow(new Integer(firstResult));
+        return this;
+    }
 
-	public List list() throws SQLException {
-		final int maxRows = hasMaxRows( selection ) ? selection.getMaxRows().intValue() : Integer.MAX_VALUE;
-		final PreparedStatement st = this.prepareQueryStatement();
-		final ResultSet rs = getResultSet(st);
-		final List results = new ArrayList();
+    public Query setMaxResults(int maxResults) {
+        selection.setMaxRows(new Integer(maxResults));
+        return this;
+    }
 
-		try {
-			if ( log.isTraceEnabled() ) log.trace( "processing result set" );
-			int count;
+    public Query setParameterList(List values, List types) {
+        this.values = values;
+        this.types = types;
+        return this;
+    }
 
-			for ( count = 0; count < maxRows && rs.next(); count++ ) {
-				if ( log.isTraceEnabled() ) log.debug("result set row: " + count);
-				Object result = null;
-				results.add( result );				
-			}
+    public List list() throws SQLException {
+        final int maxRows = hasMaxRows(selection) ? selection.getMaxRows().intValue() : Integer.MAX_VALUE;
+        final PreparedStatement st = this.prepareQueryStatement();
+        final ResultSet rs = getResultSet(st);
+        final List results = new ArrayList();
 
-			if ( log.isTraceEnabled() ) {
-				log.trace( "done processing result set (" + count + " rows)" );
-			}
-		}
-		finally {
-			System.out.println("list()");
-		}
+        try {
+            if (log.isTraceEnabled()) log.trace("processing result set");
+            int count;
 
-		return results;
-	}
+            for (count = 0; count < maxRows && rs.next(); count++) {
+                if (log.isTraceEnabled()) log.debug("result set row: " + count);
+                Object result = null;
+                results.add(result);
+            }
 
-	private static boolean hasMaxRows(RowSelection selection) {
-		return selection != null && selection.getMaxRows() != null;
-	}
+            if (log.isTraceEnabled()) {
+                log.trace("done processing result set (" + count + " rows)");
+            }
+        } finally {
+            System.out.println("list()");
+        }
 
-	/**
-	 * Obtain a <tt>PreparedStatement</tt> with all parameters pre-bound.
-	 * Bind JDBC-style <tt>?</tt> parameters, named parameters, and
-	 * limit parameters.
-	 */
-	protected final PreparedStatement prepareQueryStatement() throws SQLException {
-		String sql = null;
-		final Dialect dialect = Dialect.getDialect();
-		boolean useLimit = useLimit( selection, dialect );
-		boolean hasFirstRow = getFirstRow( selection ) > 0;
-		boolean useOffset = hasFirstRow && useLimit && dialect.supportsLimitOffset();
-		ScrollMode scrollMode = ScrollMode.SCROLL_INSENSITIVE;
-		boolean scroll = true;
+        return results;
+    }
 
-		if ( useLimit ) {
-			sql = dialect.getLimitString( 
-					sql.trim(),
-					useOffset ? getFirstRow(selection) : 0, 
-					getMaxOrLimit(selection, dialect) 
-				);
-		}
+    private static boolean hasMaxRows(RowSelection selection) {
+        return selection != null && selection.getMaxRows() != null;
+    }
 
-		PreparedStatement st = prepareQueryStatement( sql, scroll, scrollMode );
+    /**
+     * Obtain a <tt>PreparedStatement</tt> with all parameters pre-bound.
+     * Bind JDBC-style <tt>?</tt> parameters, named parameters, and
+     * limit parameters.
+     */
+    protected final PreparedStatement prepareQueryStatement() throws SQLException {
+        String sql = null;
+        final Dialect dialect = Dialect.getDialect();
+        boolean useLimit = useLimit(selection, dialect);
+        boolean hasFirstRow = getFirstRow(selection) > 0;
+        boolean useOffset = hasFirstRow && useLimit && dialect.supportsLimitOffset();
+        ScrollMode scrollMode = ScrollMode.SCROLL_INSENSITIVE;
+        boolean scroll = true;
 
-		try {
-			if ( !useLimit ) setMaxRows( st, selection );
+        if (useLimit) {
+            sql = dialect.getLimitString(
+                    sql.trim(),
+                    useOffset ? getFirstRow(selection) : 0,
+                    getMaxOrLimit(selection, dialect)
+            );
+        }
 
-			if ( selection != null ) {
-				if ( selection.getTimeout() != null ) {
-					// 将驱动程序等待 Statement 对象执行的秒数设置为给定秒数。
-					st.setQueryTimeout( selection.getTimeout().intValue() );
-				}
-				if ( selection.getFetchSize() != null ) {
-					// 为 JDBC 驱动程序提供关于需要更多行时应该从数据库获取的行数的提示。
-					st.setFetchSize( selection.getFetchSize().intValue() );
-				}
-			}
-		}
-		catch ( SQLException sqle ) {
-			throw sqle;
-		}
+        PreparedStatement st = prepareQueryStatement(sql, scroll, scrollMode);
 
-		return st;
-	}
+        try {
+            if (!useLimit) setMaxRows(st, selection);
 
-	/**
-	 * Should we pre-process the SQL string, adding a dialect-specific
-	 * LIMIT clause.
-	 */
-	private static boolean useLimit(final RowSelection selection, final Dialect dialect) {
-		return dialect.supportsLimit() && hasMaxRows( selection );
-	}
+            if (selection != null) {
+                if (selection.getTimeout() != null) {
+                    // 将驱动程序等待 Statement 对象执行的秒数设置为给定秒数。
+                    st.setQueryTimeout(selection.getTimeout().intValue());
+                }
+                if (selection.getFetchSize() != null) {
+                    // 为 JDBC 驱动程序提供关于需要更多行时应该从数据库获取的行数的提示。
+                    st.setFetchSize(selection.getFetchSize().intValue());
+                }
+            }
+        } catch (SQLException sqle) {
+            throw sqle;
+        }
 
-	private static int getFirstRow(RowSelection selection) {
-		if ( selection == null || selection.getFirstRow() == null ) {
-			return 0;
-		}
-		else {
-			return selection.getFirstRow().intValue();
-		}
-	}
+        return st;
+    }
 
-	/**
-	 * Some dialect-specific LIMIT clauses require the maximium last row number,
-	 * others require the maximum returned row count.
-	 */
-	private static int getMaxOrLimit(final RowSelection selection, final Dialect dialect) {
-		final int firstRow = getFirstRow( selection );
-		final int lastRow = selection.getMaxRows().intValue();
-		if ( dialect.useMaxForLimit() ) {
-			return lastRow + firstRow;
-		}
-		else {
-			return lastRow;
-		}
-	}
+    /**
+     * Should we pre-process the SQL string, adding a dialect-specific
+     * LIMIT clause.
+     */
+    private static boolean useLimit(final RowSelection selection, final Dialect dialect) {
+        return dialect.supportsLimit() && hasMaxRows(selection);
+    }
 
-	public PreparedStatement prepareQueryStatement(String sql, boolean scrollable, ScrollMode scrollMode) throws SQLException{
-		PreparedStatement ps = getPreparedStatement(this.conn, sql, scrollable, scrollMode );
-		return ps;
-	}
+    private static int getFirstRow(RowSelection selection) {
+        if (selection == null || selection.getFirstRow() == null) {
+            return 0;
+        } else {
+            return selection.getFirstRow().intValue();
+        }
+    }
 
-	private PreparedStatement getPreparedStatement(final Connection conn, final String sql, final boolean scrollable, final ScrollMode scrollMode) throws SQLException {
-		log.trace("preparing statement");
+    /**
+     * Some dialect-specific LIMIT clauses require the maximium last row number,
+     * others require the maximum returned row count.
+     */
+    private static int getMaxOrLimit(final RowSelection selection, final Dialect dialect) {
+        final int firstRow = getFirstRow(selection);
+        final int lastRow = selection.getMaxRows().intValue();
+        if (dialect.useMaxForLimit()) {
+            return lastRow + firstRow;
+        } else {
+            return lastRow;
+        }
+    }
 
-		PreparedStatement result;
-		if (scrollable) {
-			result = conn.prepareStatement( sql, scrollMode.toResultSetType(), ResultSet.CONCUR_READ_ONLY );
-		}
-		else {
-			result = conn.prepareStatement(sql);
-		}
+    public PreparedStatement prepareQueryStatement(String sql, boolean scrollable, ScrollMode scrollMode) throws SQLException {
+        PreparedStatement ps = getPreparedStatement(this.conn, sql, scrollable, scrollMode);
+        return ps;
+    }
 
-		return result;
-	}
+    private PreparedStatement getPreparedStatement(final Connection conn, final String sql, final boolean scrollable, final ScrollMode scrollMode) throws SQLException {
+        log.trace("preparing statement");
 
-	/**
-	 * Use JDBC API to limit the number of rows returned by the SQL query if necessary
-	 * 将任何 ResultSet 对象都可以包含的最大行数限制设置为给定数。如果超过了该限制，则安静地撤消多出的行。
-	 */
-	private void setMaxRows(final PreparedStatement st, final RowSelection selection) throws SQLException {
-		if ( hasMaxRows( selection ) ) {
-			st.setMaxRows( selection.getMaxRows().intValue() + getFirstRow( selection ) );
-		}
-	}
+        PreparedStatement result;
+        if (scrollable) {
+            result = conn.prepareStatement(sql, scrollMode.toResultSetType(), ResultSet.CONCUR_READ_ONLY);
+        } else {
+            result = conn.prepareStatement(sql);
+        }
+
+        return result;
+    }
+
+    /**
+     * Use JDBC API to limit the number of rows returned by the SQL query if necessary
+     * 将任何 ResultSet 对象都可以包含的最大行数限制设置为给定数。如果超过了该限制，则安静地撤消多出的行。
+     */
+    private void setMaxRows(final PreparedStatement st, final RowSelection selection) throws SQLException {
+        if (hasMaxRows(selection)) {
+            st.setMaxRows(selection.getMaxRows().intValue() + getFirstRow(selection));
+        }
+    }
 
 
-	/**
-	 * Fetch a <tt>PreparedStatement</tt>, call <tt>setMaxRows</tt> and then execute it,
-	 * advance to the first result and return an SQL <tt>ResultSet</tt>
-	 */
-	protected final ResultSet getResultSet(final PreparedStatement st) throws SQLException {	
-		ResultSet rs = null;
-		try {
-			final Dialect dialect = Dialect.getDialect();
+    /**
+     * Fetch a <tt>PreparedStatement</tt>, call <tt>setMaxRows</tt> and then execute it,
+     * advance to the first result and return an SQL <tt>ResultSet</tt>
+     */
+    protected final ResultSet getResultSet(final PreparedStatement st) throws SQLException {
+        ResultSet rs = null;
+        try {
+            final Dialect dialect = Dialect.getDialect();
 
-			if ( !dialect.supportsLimitOffset() || !useLimit( selection, dialect ) ) {
-				advance( rs, selection );
-			}
+            if (!dialect.supportsLimitOffset() || !useLimit(selection, dialect)) {
+                advance(rs, selection);
+            }
 
-			return rs;
-		}
-		catch ( SQLException sqle ) {
-			throw sqle;
-		}
-	}
+            return rs;
+        } catch (SQLException sqle) {
+            throw sqle;
+        }
+    }
 
-	/**
-	 * Advance the cursor to the first required row of the <tt>ResultSet</tt>
-	 */
-	private void advance(final ResultSet rs, final RowSelection selection) throws SQLException {
-		final int firstRow = getFirstRow( selection );
-		if ( firstRow != 0 ) {
-			final Dialect dialect = Dialect.getDialect();
-			if ( dialect.isScrollableResultSetsEnabled() ) {
-				// we can go straight to the first required row
-				rs.absolute( firstRow );
-			}
-			else {
-				// we need to step through the rows one row at a time (slow)
-				for ( int m = 0; m < firstRow; m++ ) rs.next();
-			}
-		}
-	}
+    /**
+     * Advance the cursor to the first required row of the <tt>ResultSet</tt>
+     */
+    private void advance(final ResultSet rs, final RowSelection selection) throws SQLException {
+        final int firstRow = getFirstRow(selection);
+        if (firstRow != 0) {
+            final Dialect dialect = Dialect.getDialect();
+            if (dialect.isScrollableResultSetsEnabled()) {
+                // we can go straight to the first required row
+                rs.absolute(firstRow);
+            } else {
+                // we need to step through the rows one row at a time (slow)
+                for (int m = 0; m < firstRow; m++) rs.next();
+            }
+        }
+    }
 }

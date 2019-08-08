@@ -23,15 +23,17 @@ public class TawSystemPostManagerImpl extends BaseManager implements ITawSystemP
     private TawSystemUserRefPostDao userPostDao;
     private TawSystemDeptRefPostDao deptPostDao;
     private TawSystemSubRoleRefPostDao subRolePostDao;
-	/**
-	 * @param dao The dao to set.
-	 */
-	public void setTawSystemSubRoleRefPostDao(TawSystemSubRoleRefPostDao dao) {
-		this.subRolePostDao = dao;
-	}
+
+    /**
+     * @param dao The dao to set.
+     */
+    public void setTawSystemSubRoleRefPostDao(TawSystemSubRoleRefPostDao dao) {
+        this.subRolePostDao = dao;
+    }
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSystemDeptRefPostDao(TawSystemDeptRefPostDao dao) {
@@ -40,12 +42,13 @@ public class TawSystemPostManagerImpl extends BaseManager implements ITawSystemP
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSystemPostDao(TawSystemPostDao dao) {
         this.dao = dao;
     }
-    
+
     public void setTawSystemUserRefPostDao(TawSystemUserRefPostDao dao) {
         this.userPostDao = dao;
     }
@@ -67,26 +70,25 @@ public class TawSystemPostManagerImpl extends BaseManager implements ITawSystemP
     /**
      * @see com.boco.eoms.commons.system.role.service.ITawSystemPostManager#saveTawSystemPost(TawSystemPost tawSystemPost)
      */
-    public void saveTawSystemPost(TawSystemPost tawSystemPost,String[] subRoleIds) {
+    public void saveTawSystemPost(TawSystemPost tawSystemPost, String[] subRoleIds) {
 
-    	if (tawSystemPost.getPostId()>0){
-    		deptPostDao.removeDeptRefPostByPostId(new Long(tawSystemPost.getPostId()));
-    		subRolePostDao.removeSubRoleRefPostByPostId(tawSystemPost.getPostId());
-    	}
-    	else
-    		tawSystemPost.setSingleId(StaticMethod.getCurrentDateTime());
+        if (tawSystemPost.getPostId() > 0) {
+            deptPostDao.removeDeptRefPostByPostId(new Long(tawSystemPost.getPostId()));
+            subRolePostDao.removeSubRoleRefPostByPostId(tawSystemPost.getPostId());
+        } else
+            tawSystemPost.setSingleId(StaticMethod.getCurrentDateTime());
         dao.saveTawSystemPost(tawSystemPost);
-        
+
         TawSystemDeptRefPost tawSystemDeptRefPost = new TawSystemDeptRefPost();
-		tawSystemDeptRefPost.setDeptId(tawSystemPost.getDeptId());
-		tawSystemDeptRefPost.setPostId(tawSystemPost.getPostId());
+        tawSystemDeptRefPost.setDeptId(tawSystemPost.getDeptId());
+        tawSystemDeptRefPost.setPostId(tawSystemPost.getPostId());
         deptPostDao.saveTawSystemDeptRefPost(tawSystemDeptRefPost);
-        
-        for(int i=0;i<subRoleIds.length;i++){
-        	TawSystemSubRoleRefPost rp = new TawSystemSubRoleRefPost();
-			rp.setPostId(tawSystemPost.getPostId());
-			rp.setSubRoleId(subRoleIds[i]);
-			subRolePostDao.saveTawSystemSubRoleRefPost(rp);
+
+        for (int i = 0; i < subRoleIds.length; i++) {
+            TawSystemSubRoleRefPost rp = new TawSystemSubRoleRefPost();
+            rp.setPostId(tawSystemPost.getPostId());
+            rp.setSubRoleId(subRoleIds[i]);
+            subRolePostDao.saveTawSystemSubRoleRefPost(rp);
         }
 
     }
@@ -94,46 +96,53 @@ public class TawSystemPostManagerImpl extends BaseManager implements ITawSystemP
     /**
      * @see com.boco.eoms.commons.system.role.service.ITawSystemPostManager#removeTawSystemPost(String postId)
      */
-    public void removeTawSystemPost(final long postId) throws TawSystemUserException{
+    public void removeTawSystemPost(final long postId) throws TawSystemUserException {
         dao.removeTawSystemPost(postId);
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSystemPosts(final Integer curPage, final Integer pageSize) {
-        return dao.getTawSystemPosts(curPage, pageSize,null);
+        return dao.getTawSystemPosts(curPage, pageSize, null);
     }
+
     public Map getTawSystemPosts(final Integer curPage, final Integer pageSize, final String whereStr) {
         return dao.getTawSystemPosts(curPage, pageSize, whereStr);
     }
 
-	public TawSystemPost getTawSystemPost(long postId, int deleted) {
-		return dao.getTawSystemPost(postId,deleted);
-	}
+    public TawSystemPost getTawSystemPost(long postId, int deleted) {
+        return dao.getTawSystemPost(postId, deleted);
+    }
 
-	public List getPostsByStructureFlag(long postId) {
-		TawSystemPost post = dao.getTawSystemPost(postId);
-		List list = dao.getPostsByStructureFlag(post.getStructureFlag(), StaticVariable.UNDELETED);
-		return list;
-	}
-	public List getChildrenByPostId(long postId) {
-		// TODO Auto-generated method stub
-		List list = dao.getChildPostByPostId(postId);
-		return list;
-	}
-	public String getPostNameById(final long postId){
-		return dao.getPostNameById(postId);
-	}
-	public void setLeaf(final long postId,final Integer leaf){
-		dao.setLeaf(postId, leaf);
-	}
-	public String getNewStructureFlag(long parentPostId) throws Exception{
-		return dao.getNewStructureFlag(parentPostId);
-	}
-	public List getPostsByDeptId(String deptId){ 
-		return dao.getPostsByDeptId(deptId);
-	}
-	
+    public List getPostsByStructureFlag(long postId) {
+        TawSystemPost post = dao.getTawSystemPost(postId);
+        List list = dao.getPostsByStructureFlag(post.getStructureFlag(), StaticVariable.UNDELETED);
+        return list;
+    }
+
+    public List getChildrenByPostId(long postId) {
+        // TODO Auto-generated method stub
+        List list = dao.getChildPostByPostId(postId);
+        return list;
+    }
+
+    public String getPostNameById(final long postId) {
+        return dao.getPostNameById(postId);
+    }
+
+    public void setLeaf(final long postId, final Integer leaf) {
+        dao.setLeaf(postId, leaf);
+    }
+
+    public String getNewStructureFlag(long parentPostId) throws Exception {
+        return dao.getNewStructureFlag(parentPostId);
+    }
+
+    public List getPostsByDeptId(String deptId) {
+        return dao.getPostsByDeptId(deptId);
+    }
+
 //	public void savePost(TawSystemPost tawSystemPost,String userIds) {
 //        dao.saveTawSystemPost(tawSystemPost);
 //        long postId = tawSystemPost.getPostId();
@@ -170,21 +179,20 @@ public class TawSystemPostManagerImpl extends BaseManager implements ITawSystemP
 ////        }
 //    }
 
-	public List getUserByPostId(long postId){
-		return dao.getUserByPostId(postId);
-	}
-	
-	/**
-     * 
+    public List getUserByPostId(long postId) {
+        return dao.getUserByPostId(postId);
+    }
+
+    /**
      * @param deptIds
      * @return <postViewVO>
      */
-    public List getPostView(String[] deptIds) throws Exception{
-    	List list = new ArrayList();
-    	for(int i=0;i<deptIds.length;i++){
-    		list.addAll(dao.getPostView(deptIds[i]));
-    	}
-    	return list;
+    public List getPostView(String[] deptIds) throws Exception {
+        List list = new ArrayList();
+        for (int i = 0; i < deptIds.length; i++) {
+            list.addAll(dao.getPostView(deptIds[i]));
+        }
+        return list;
     }
 
 }

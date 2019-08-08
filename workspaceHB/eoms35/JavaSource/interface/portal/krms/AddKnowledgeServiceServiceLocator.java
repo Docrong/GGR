@@ -1,6 +1,6 @@
 /**
  * AddKnowledgeServiceServiceLocator.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the IBM Web services WSDL2Java emitter.
  * cf170819.19 v52708210711
@@ -12,8 +12,8 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
 
     public AddKnowledgeServiceServiceLocator() {
         super(com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-           "http://krms/services/knowledgeService",
-           "AddKnowledgeServiceService"));
+                "http://krms/services/knowledgeService",
+                "AddKnowledgeServiceService"));
 
         context.setLocatorName("krms.AddKnowledgeServiceServiceLocator");
     }
@@ -23,7 +23,7 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
         context.setLocatorName("krms.AddKnowledgeServiceServiceLocator");
     }
 
-    // ÓÃÓÚ»ñÈ¡ knowledgeService µÄ´úÀíÀà
+    // ï¿½ï¿½ï¿½Ú»ï¿½È¡ knowledgeService ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½
     private final java.lang.String knowledgeService_address = "http://krms/services/knowledgeService";
 
     public java.lang.String getKnowledgeServiceAddress() {
@@ -33,8 +33,7 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
         String overriddingEndpoint = (String) context.getOverriddingEndpointURIs().get("knowledgeService");
         if (overriddingEndpoint != null) {
             return overriddingEndpoint;
-        }
-        else {
+        } else {
             return knowledgeService_address;
         }
     }
@@ -53,24 +52,23 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
     }
 
     public krms.AddKnowledgeService getKnowledgeService() throws javax.xml.rpc.ServiceException {
-       java.net.URL endpoint;
+        java.net.URL endpoint;
         try {
             endpoint = new java.net.URL(getKnowledgeServiceAddress());
-        }
-        catch (java.net.MalformedURLException e) {
-            return null; // ²»Ì«¿ÉÄÜ£¬ÒòÎª URL ÒÑÔÚ WSDL2Java ÖÐµÃµ½ÑéÖ¤
+        } catch (java.net.MalformedURLException e) {
+            return null; // ï¿½ï¿½Ì«ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½Îª URL ï¿½ï¿½ï¿½ï¿½ WSDL2Java ï¿½ÐµÃµï¿½ï¿½ï¿½Ö¤
         }
         return getKnowledgeService(endpoint);
     }
 
     public krms.AddKnowledgeService getKnowledgeService(java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
         krms.AddKnowledgeService _stub =
-            (krms.AddKnowledgeService) getStub(
-                knowledgeServicePortName,
-                (String) getPort2NamespaceMap().get(knowledgeServicePortName),
-                krms.AddKnowledgeService.class,
-                "krms.KnowledgeServiceSoapBindingStub",
-                portAddress.toString());
+                (krms.AddKnowledgeService) getStub(
+                        knowledgeServicePortName,
+                        (String) getPort2NamespaceMap().get(knowledgeServicePortName),
+                        krms.AddKnowledgeService.class,
+                        "krms.KnowledgeServiceSoapBindingStub",
+                        portAddress.toString());
         if (_stub instanceof com.ibm.ws.webservices.engine.client.Stub) {
             ((com.ibm.ws.webservices.engine.client.Stub) _stub).setPortName(knowledgeServiceWSDDPortName);
         }
@@ -87,11 +85,10 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
             if (krms.AddKnowledgeService.class.isAssignableFrom(serviceEndpointInterface)) {
                 return getKnowledgeService();
             }
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new javax.xml.rpc.ServiceException(t);
         }
-        throw new javax.xml.rpc.ServiceException("WSWS3273E: ´íÎó£º½Ó¿ÚÃ»ÓÐ´æ¸ùÊµÏÖ£º  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
+        throw new javax.xml.rpc.ServiceException("WSWS3273E: ï¿½ï¿½ï¿½ó£º½Ó¿ï¿½Ã»ï¿½Ð´ï¿½ï¿½Êµï¿½Ö£ï¿½  " + (serviceEndpointInterface == null ? "null" : serviceEndpointInterface.getName()));
     }
 
     /**
@@ -103,8 +100,7 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
         String inputPortName = portName.getLocalPart();
         if ("knowledgeService".equals(inputPortName)) {
             return getKnowledgeService();
-        }
-        else  {
+        } else {
             throw new javax.xml.rpc.ServiceException();
         }
     }
@@ -123,8 +119,8 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
         if (port2NamespaceMap == null) {
             port2NamespaceMap = new java.util.HashMap();
             port2NamespaceMap.put(
-               "knowledgeService",
-               "http://schemas.xmlsoap.org/wsdl/soap/");
+                    "knowledgeService",
+                    "http://schemas.xmlsoap.org/wsdl/soap/");
         }
         return port2NamespaceMap;
     }
@@ -137,9 +133,9 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
             String serviceNamespace = getServiceName().getNamespaceURI();
             for (java.util.Iterator i = getPort2NamespaceMap().keySet().iterator(); i.hasNext(); ) {
                 ports.add(
-                    com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
-                        serviceNamespace,
-                        (String) i.next()));
+                        com.ibm.ws.webservices.engine.utils.QNameTable.createQName(
+                                serviceNamespace,
+                                (String) i.next()));
             }
         }
         return ports.iterator();
@@ -147,16 +143,15 @@ public class AddKnowledgeServiceServiceLocator extends com.ibm.ws.webservices.mu
 
     public javax.xml.rpc.Call[] getCalls(javax.xml.namespace.QName portName) throws javax.xml.rpc.ServiceException {
         if (portName == null) {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
-        if  (portName.getLocalPart().equals("knowledgeService")) {
-            return new javax.xml.rpc.Call[] {
-                createCall(portName, "getKnowledgeBySheetIds", "getKnowledgeBySheetIdsRequest"),
-                createCall(portName, "saveXmlValue", "saveXmlValueRequest"),
+        if (portName.getLocalPart().equals("knowledgeService")) {
+            return new javax.xml.rpc.Call[]{
+                    createCall(portName, "getKnowledgeBySheetIds", "getKnowledgeBySheetIdsRequest"),
+                    createCall(portName, "saveXmlValue", "saveXmlValueRequest"),
             };
-        }
-        else {
-            throw new javax.xml.rpc.ServiceException("WSWS3062E: ´íÎó£ºportName ²»Ó¦Îª null¡£");
+        } else {
+            throw new javax.xml.rpc.ServiceException("WSWS3062E: ï¿½ï¿½ï¿½ï¿½portName ï¿½ï¿½Ó¦Îª nullï¿½ï¿½");
         }
     }
 }

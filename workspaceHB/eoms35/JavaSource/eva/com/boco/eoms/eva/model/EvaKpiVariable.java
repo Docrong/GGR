@@ -12,27 +12,26 @@ import com.boco.eoms.base.model.BaseObject;
  * <p>
  * Date:2008-11-26 下午09:48:58
  * </p>
- * 
+ *
  * @author 李秋野
  * @version 3.5.1
- *
  */
 
 public class EvaKpiVariable extends BaseObject {
 
-	public boolean equals(Object o) {
-		// TODO 自动生成方法存根
-		return false;
-	}
+    public boolean equals(Object o) {
+        // TODO 自动生成方法存根
+        return false;
+    }
 
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public String toString() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
 }

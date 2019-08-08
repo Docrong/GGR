@@ -35,7 +35,7 @@ public class TawSystemAreaManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemAreaDao.expects(once()).method("getTawSystemAreas")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSystemAreas = tawSystemAreaManager.getTawSystemAreas(null);
         assertTrue(tawSystemAreas.size() == 1);
@@ -45,7 +45,7 @@ public class TawSystemAreaManagerTest extends BaseManagerTestCase {
     public void testGetTawSystemArea() throws Exception {
         // set expected behavior on dao
         tawSystemAreaDao.expects(once()).method("getTawSystemArea")
-            .will(returnValue(new TawSystemArea()));
+                .will(returnValue(new TawSystemArea()));
         TawSystemArea tawSystemArea = tawSystemAreaManager.getTawSystemArea(tawSystemAreaId);
         assertTrue(tawSystemArea != null);
         tawSystemAreaDao.verify();
@@ -56,7 +56,7 @@ public class TawSystemAreaManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemAreaDao.expects(once()).method("saveTawSystemArea")
-            .with(same(tawSystemArea)).isVoid();
+                .with(same(tawSystemArea)).isVoid();
 
         tawSystemAreaManager.saveTawSystemArea(tawSystemArea);
         tawSystemAreaDao.verify();
@@ -69,7 +69,7 @@ public class TawSystemAreaManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemAreaDao.expects(once()).method("saveTawSystemArea")
-            .with(same(tawSystemArea)).isVoid();
+                .with(same(tawSystemArea)).isVoid();
         tawSystemAreaManager.saveTawSystemArea(tawSystemArea);
         tawSystemAreaDao.verify();
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,79 +13,79 @@
             table="taw_system_area"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="increment">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="increment">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="areaid"
+                name="areaid"
                 length="254"
         >
 
         </property>
 
         <property
-            name="areaname"
+                name="areaname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="leaf"
+                name="leaf"
                 length="2"
         >
 
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 length="254"
         >
 
         </property>
-            <property
-            name="parentAreaid"
+        <property
+                name="parentAreaid"
                 length="254"
         >
 
         </property>
 
-            <property
-            name="ordercode"
+        <property
+                name="ordercode"
                 length="30"
         >
 
         </property>
         <property
-            name="areacode"
+                name="areacode"
                 length="32"
         >
 
         </property>
         <property
-            name="capital"
+                name="capital"
                 length="32"
         >
 
         </property>
         <property
-            name="zonenum"
+                name="zonenum"
                 length="5"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

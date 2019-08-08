@@ -31,17 +31,16 @@ import com.boco.eoms.commons.ui.util.JSONUtil;
  * <p>
  * Date:2007-10-26 10:25:58
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class SelectRelationXML implements IDictTagStrategyHelper {
     private Logger logger = Logger.getLogger(SelectXML.class);
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.tags.IDictTagStrategyHelper#doEndTag(com.boco.eoms.commons.system.dict.model.DictTagHelper,
      *      javax.servlet.jsp.PageContext)
      */
@@ -89,7 +88,7 @@ public class SelectRelationXML implements IDictTagStrategyHelper {
                 //不需要定位在默认id
                 if (dictTag.getDefaultId() == null
                         || "".equals(dictTag.getDefaultId())) {
-                    for (Iterator it = list.iterator(); it.hasNext();) {
+                    for (Iterator it = list.iterator(); it.hasNext(); ) {
                         IDictItem item = (IDictItem) it.next();
                         //列表中的option加入
                         Element option = new Element("option");
@@ -103,7 +102,7 @@ public class SelectRelationXML implements IDictTagStrategyHelper {
                 }
                 //需要定位在默认id
                 else {
-                    for (Iterator it = list.iterator(); it.hasNext();) {
+                    for (Iterator it = list.iterator(); it.hasNext(); ) {
                         IDictItem item = (IDictItem) it.next();
                         //若defaultId与itemId相同，则要selected
                         if (dictTag.getDefaultId().equals(item.getItemId())) {
@@ -144,7 +143,7 @@ public class SelectRelationXML implements IDictTagStrategyHelper {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see com.boco.eoms.commons.system.dict.tags.IDictTagStrategyHelper#doStartTag(com.boco.eoms.commons.system.dict.model.DictTagHelper,
      *      javax.servlet.jsp.PageContext)
      */

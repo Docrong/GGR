@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.daiweiindexreduction.service.IDaiWeiIndexReductionMai
  * <p>
  * Tue Aug 01 17:34:54 CST 2017
  * </p>
- * 
+ *
  * @author wangmingming
  * @version 1.0
- * 
  */
- 
- public class DaiWeiIndexReductionMainManagerImpl extends MainService implements IDaiWeiIndexReductionMainManager {
- 
- }
+
+public class DaiWeiIndexReductionMainManagerImpl extends MainService implements IDaiWeiIndexReductionMainManager {
+
+}

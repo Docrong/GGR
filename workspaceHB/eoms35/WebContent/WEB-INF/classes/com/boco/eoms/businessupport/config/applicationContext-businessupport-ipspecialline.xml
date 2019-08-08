@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
 
     <!--IPSpecialLine-DAO START-->
-    <bean id="ipspeciallineDao" class="com.boco.eoms.businessupport.product.dao.hibernate.IPSpecialLineDaoHibernate" autowire="byName"/>
-    <bean id="IIPSpecialLineJdbc" class="com.boco.eoms.businessupport.product.dao.hibernate.IPSpecialLineJdbcImpl" autowire="byName"/>
+    <bean id="ipspeciallineDao" class="com.boco.eoms.businessupport.product.dao.hibernate.IPSpecialLineDaoHibernate"
+          autowire="byName"/>
+    <bean id="IIPSpecialLineJdbc" class="com.boco.eoms.businessupport.product.dao.hibernate.IPSpecialLineJdbcImpl"
+          autowire="byName"/>
     <!--IPSpecialLine-DAO END-->
-    <!--IPSpecialLine-START-->    
+    <!--IPSpecialLine-START-->
     <bean id="IIPSpecialLineManager" parent="txProxyTemplate">
         <property name="target">
             <bean class="com.boco.eoms.businessupport.product.service.impl.IPSpecialLineManagerImpl">

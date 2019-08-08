@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.plannadjust.service.IPlannAdjustTaskManager;
  * <p>
  * Sat Jun 08 11:16:09 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannAdjustTaskManagerImpl extends TaskServiceImpl implements  IPlannAdjustTaskManager {
- 
- }
+
+public class PlannAdjustTaskManagerImpl extends TaskServiceImpl implements IPlannAdjustTaskManager {
+
+}

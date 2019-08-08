@@ -12,59 +12,58 @@ import com.boco.eoms.sheet.base.model.BaseLink;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class LocalCommonTaskLink extends BaseLink {
-	 /**
-		 * @textarea
-		 */
-	     private java.lang.String linkAuditResult;
 
-	    /**
-		 * @textarea
-		 */
-	     private java.lang.String linkAuditIdea;
+public class LocalCommonTaskLink extends BaseLink {
+    /**
+     * @textarea
+     */
+    private java.lang.String linkAuditResult;
 
-	    /**
-		 * @textarea
-		 */
-	     private java.lang.String linkTaskComplete;
-	     
-	     private java.lang.String linkTransmitContent;
+    /**
+     * @textarea
+     */
+    private java.lang.String linkAuditIdea;
 
-		public java.lang.String getLinkAuditIdea() {
-			return linkAuditIdea;
-		}
+    /**
+     * @textarea
+     */
+    private java.lang.String linkTaskComplete;
 
-		public void setLinkAuditIdea(java.lang.String linkAuditIdea) {
-			this.linkAuditIdea = linkAuditIdea;
-		}
+    private java.lang.String linkTransmitContent;
 
-		public java.lang.String getLinkAuditResult() {
-			return linkAuditResult;
-		}
+    public java.lang.String getLinkAuditIdea() {
+        return linkAuditIdea;
+    }
 
-		public void setLinkAuditResult(java.lang.String linkAuditResult) {
-			this.linkAuditResult = linkAuditResult;
-		}
+    public void setLinkAuditIdea(java.lang.String linkAuditIdea) {
+        this.linkAuditIdea = linkAuditIdea;
+    }
 
-		public java.lang.String getLinkTaskComplete() {
-			return linkTaskComplete;
-		}
+    public java.lang.String getLinkAuditResult() {
+        return linkAuditResult;
+    }
 
-		public void setLinkTaskComplete(java.lang.String linkTaskComplete) {
-			this.linkTaskComplete = linkTaskComplete;
-		}
+    public void setLinkAuditResult(java.lang.String linkAuditResult) {
+        this.linkAuditResult = linkAuditResult;
+    }
 
-		public java.lang.String getLinkTransmitContent() {
-			return linkTransmitContent;
-		}
+    public java.lang.String getLinkTaskComplete() {
+        return linkTaskComplete;
+    }
 
-		public void setLinkTransmitContent(java.lang.String linkTransmitContent) {
-			this.linkTransmitContent = linkTransmitContent;
-		}
- }
+    public void setLinkTaskComplete(java.lang.String linkTaskComplete) {
+        this.linkTaskComplete = linkTaskComplete;
+    }
+
+    public java.lang.String getLinkTransmitContent() {
+        return linkTransmitContent;
+    }
+
+    public void setLinkTransmitContent(java.lang.String linkTransmitContent) {
+        this.linkTransmitContent = linkTransmitContent;
+    }
+}

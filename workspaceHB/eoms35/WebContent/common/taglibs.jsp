@@ -14,13 +14,13 @@
 <%@ taglib uri="http://www.opensymphony.com/oscache" prefix="cache" %>
 <%@ taglib uri="/WEB-INF/eoms.tld" prefix="eoms" %>
 <%@ taglib uri="/WEB-INF/tlds/priv.tld" prefix="priv" %>
-<c:set var="app" scope="page" value="${pageContext.request.contextPath}" />
+<c:set var="app" scope="page" value="${pageContext.request.contextPath}"/>
 <c:set var="scheme" scope="page" value="${pageContext.request.scheme}"/>
 <c:set var="serverName" scope="page" value="${pageContext.request.serverName}"/>
 <c:set var="serverPort" scope="page" value="${pageContext.request.serverPort}"/>
 <c:set var="theme" scope="session" value="red-sf"/>
 <c:if test="${!empty param.theme}">
-  <c:set var="theme" scope="session" value="${param.theme}"/>
+    <c:set var="theme" scope="session" value="${param.theme}"/>
 </c:if>
 <%-- Set all pages that include this page to use XHTML --%>
-<html:xhtml />
+<html:xhtml/>

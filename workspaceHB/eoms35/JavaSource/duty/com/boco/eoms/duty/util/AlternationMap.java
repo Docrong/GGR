@@ -2,16 +2,16 @@ package com.boco.eoms.duty.util;
 
 import java.util.HashMap;
 
-public class  AlternationMap {
-	
-	private static HashMap alternateMap = new HashMap();
+public class AlternationMap {
 
-	public static HashMap getAlternateMap() {
-		return alternateMap;
-	}
+    private static HashMap alternateMap = new HashMap();
 
-	public static void setAlternateMap(HashMap alternateMap) {
-		AlternationMap.alternateMap = alternateMap;
-	}
+    public static HashMap getAlternateMap() {
+        return alternateMap;
+    }
+
+    public static void setAlternateMap(HashMap alternateMap) {
+        AlternationMap.alternateMap = alternateMap;
+    }
 
 }

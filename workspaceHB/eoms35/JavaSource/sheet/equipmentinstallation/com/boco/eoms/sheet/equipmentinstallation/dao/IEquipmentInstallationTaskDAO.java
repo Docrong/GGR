@@ -1,7 +1,6 @@
 package com.boco.eoms.sheet.equipmentinstallation.dao;
 
 
-
 /**
  * <p>
  * Title:设备安装流程
@@ -12,12 +11,11 @@ package com.boco.eoms.sheet.equipmentinstallation.dao;
  * <p>
  * Tue Oct 09 14:09:25 GMT+08:00 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public interface IEquipmentInstallationTaskDAO  {
- 
- }
+
+public interface IEquipmentInstallationTaskDAO {
+
+}

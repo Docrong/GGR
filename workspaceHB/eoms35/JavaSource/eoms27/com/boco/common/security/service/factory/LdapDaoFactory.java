@@ -20,134 +20,136 @@ import com.boco.common.security.service.dao.UserDAO;
  * <p>Description: create the DAO instance of LDAP </p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */
 
 public class LdapDaoFactory
-    implements AbstractAccountManagerDaoFactory {
+        implements AbstractAccountManagerDaoFactory {
 
-  public static SystemConfig sc = SystemConfig.getInstance();
-  private static LdapDaoFactory instance = null;
+    public static SystemConfig sc = SystemConfig.getInstance();
+    private static LdapDaoFactory instance = null;
 
-  public synchronized static LdapDaoFactory getInstance() {
-    if (instance == null) {
-      try {
-        instance = (LdapDaoFactory) Class.forName(sc.daoFactory).newInstance();
-        return instance;
-      }
-      catch (Exception ex) {
-        ex.printStackTrace();
-        return null;
-      }
+    public synchronized static LdapDaoFactory getInstance() {
+        if (instance == null) {
+            try {
+                instance = (LdapDaoFactory) Class.forName(sc.daoFactory).newInstance();
+                return instance;
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                return null;
+            }
+        } else {
+            return instance;
+        }
     }
-    else {
-      return instance;
+
+    public String getUserDAOClass() {
+        return sc.userDAOClass;
     }
-  }
 
-  public String getUserDAOClass() {
-    return sc.userDAOClass;
-  }
-
-  public String getDepartmentDAOClass() {
-    return sc.departmentDAOClass;
-  }
-
-  public String getRoleDAOClass() {
-    return sc.roleDAOClass;
-  }
-
-  public String getPermissionDAOClass() {
-    return sc.permissionDAOClass;
-  }
-
-  public String getRegionDAOClass() {
-    return sc.regionDAOClass;
-  }
-
-  public String getRangeDAOClass() {
-    return sc.rangeDAOClass;
-  }
-
-  // create the user data access object
-  public UserDAO createUserDao() {
-    UserDAO dao = null;
-    try {
-      dao = (UserDAO) Class.forName(getUserDAOClass()).newInstance();
+    public String getDepartmentDAOClass() {
+        return sc.departmentDAOClass;
     }
-    catch (Exception e) {
-      dao = null;
-    }
-    return dao;
-  }
 
-  // create the group data access object
-  public RangeDAO createRangeDao() {
-    RangeDAO dao = null;
-    try {
-      dao = (RangeDAO) Class.forName(getRangeDAOClass()).newInstance();
+    public String getRoleDAOClass() {
+        return sc.roleDAOClass;
     }
-    catch (Exception e) {
-      dao = null;
-    }
-    return dao;
-  }
 
-  // create the region data access object
-  public RegionDAO createRegionDao() {
-    RegionDAO dao = null;
-    try {
-      dao = (RegionDAO) Class.forName(getRegionDAOClass()).newInstance();
+    public String getPermissionDAOClass() {
+        return sc.permissionDAOClass;
     }
-    catch (Exception e) {
-      dao = null;
-    }
-    return dao;
-  }
 
-  // create the department data access object
-  public DepartmentDAO createDepartmentDao() {
-    DepartmentDAO dao = null;
-    try {
-      dao = (DepartmentDAO) Class.forName(getDepartmentDAOClass()).newInstance();
+    public String getRegionDAOClass() {
+        return sc.regionDAOClass;
     }
-    catch (Exception e) {
-      dao = null;
-    }
-    return dao;
-  }
 
-  // create the roles data access object
-  public RoleDAO createRolesDao() {
-    RoleDAO dao = null;
-    try {
-      dao = (RoleDAO) Class.forName(getRoleDAOClass()).newInstance();
+    public String getRangeDAOClass() {
+        return sc.rangeDAOClass;
     }
-    catch (Exception e) {
-      dao = null;
+
+    // create the user data access object
+    public UserDAO createUserDao() {
+        UserDAO dao = null;
+        try {
+            dao = (UserDAO) Class.forName(getUserDAOClass()).newInstance();
+        } catch (Exception e) {
+            dao = null;
+        }
+        return dao;
     }
-    return dao;
-  }
 
-  // create the roles data access object
-  public PermissionDAO createPermissionDao() {
-    PermissionDAO dao = null;
-    try {
-      dao = (PermissionDAO) Class.forName(getPermissionDAOClass()).newInstance();
+    // create the group data access object
+    public RangeDAO createRangeDao() {
+        RangeDAO dao = null;
+        try {
+            dao = (RangeDAO) Class.forName(getRangeDAOClass()).newInstance();
+        } catch (Exception e) {
+            dao = null;
+        }
+        return dao;
     }
-    catch (Exception e) {
-      dao = null;
+
+    // create the region data access object
+    public RegionDAO createRegionDao() {
+        RegionDAO dao = null;
+        try {
+            dao = (RegionDAO) Class.forName(getRegionDAOClass()).newInstance();
+        } catch (Exception e) {
+            dao = null;
+        }
+        return dao;
     }
-    return dao;
-  }
 
-  /** transaction support */
-  public void begin() {}
+    // create the department data access object
+    public DepartmentDAO createDepartmentDao() {
+        DepartmentDAO dao = null;
+        try {
+            dao = (DepartmentDAO) Class.forName(getDepartmentDAOClass()).newInstance();
+        } catch (Exception e) {
+            dao = null;
+        }
+        return dao;
+    }
 
-  /** commit change */
-  public void commit() {}
+    // create the roles data access object
+    public RoleDAO createRolesDao() {
+        RoleDAO dao = null;
+        try {
+            dao = (RoleDAO) Class.forName(getRoleDAOClass()).newInstance();
+        } catch (Exception e) {
+            dao = null;
+        }
+        return dao;
+    }
 
-  /** abort change */
-  public void abort() {}
+    // create the roles data access object
+    public PermissionDAO createPermissionDao() {
+        PermissionDAO dao = null;
+        try {
+            dao = (PermissionDAO) Class.forName(getPermissionDAOClass()).newInstance();
+        } catch (Exception e) {
+            dao = null;
+        }
+        return dao;
+    }
+
+    /**
+     * transaction support
+     */
+    public void begin() {
+    }
+
+    /**
+     * commit change
+     */
+    public void commit() {
+    }
+
+    /**
+     * abort change
+     */
+    public void abort() {
+    }
 }

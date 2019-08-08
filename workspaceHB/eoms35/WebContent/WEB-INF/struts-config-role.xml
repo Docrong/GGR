@@ -1,320 +1,328 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
 
 <struts-config>
 
-	<!-- ========== Data Sources Definitions =================================== -->
-	<!--
-		Define your Struts data sources in a file called struts-data-sources.xml and place
-		it in your merge directory.
-	-->
+    <!-- ========== Data Sources Definitions =================================== -->
+    <!--
+        Define your Struts data sources in a file called struts-data-sources.xml and place
+        it in your merge directory.
+    -->
 
-	<!-- ========== Form Bean Definitions =================================== -->
-	<form-beans>
-		<form-bean name="tawSystemSubRoleForm"
-			type="com.boco.eoms.commons.system.role.webapp.form.TawSystemSubRoleForm" />
-		<form-bean name="tawSystemOrganizationProxyForm"
-			type="com.boco.eoms.commons.system.role.webapp.form.TawSystemOrganizationProxyForm" />
-		<form-bean name="tawSystemRoleForm"
-			type="com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleForm" />
-		<form-bean name="tawSystemRoleTypeForm"
-			type="com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleTypeForm" />
-		<form-bean name="tawSystemRoleImportForm"
-			type="com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleImportForm" />
-	</form-beans>
+    <!-- ========== Form Bean Definitions =================================== -->
+    <form-beans>
+        <form-bean name="tawSystemSubRoleForm"
+                   type="com.boco.eoms.commons.system.role.webapp.form.TawSystemSubRoleForm"/>
+        <form-bean name="tawSystemOrganizationProxyForm"
+                   type="com.boco.eoms.commons.system.role.webapp.form.TawSystemOrganizationProxyForm"/>
+        <form-bean name="tawSystemRoleForm"
+                   type="com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleForm"/>
+        <form-bean name="tawSystemRoleTypeForm"
+                   type="com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleTypeForm"/>
+        <form-bean name="tawSystemRoleImportForm"
+                   type="com.boco.eoms.commons.system.role.webapp.form.TawSystemRoleImportForm"/>
+    </form-beans>
 
-	<!-- ========== Global Exceptions Definitions =================================== -->
-	<global-exceptions>
-		<exception type="java.lang.Exception" key="errors.general"
-			handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler" />
-	</global-exceptions>
+    <!-- ========== Global Exceptions Definitions =================================== -->
+    <global-exceptions>
+        <exception type="java.lang.Exception" key="errors.general"
+                   handler="com.boco.eoms.base.webapp.action.ActionExceptionHandler"/>
+    </global-exceptions>
 
-	<!-- ========== Global Forward Definitions =================================== -->
-	<global-forwards>
-		<forward name="mainMenu" path="/mainMenu.do" redirect="true" />
-		<!-- Forwards specified in actions -->
-		<forward name="addUser"
-			path="/editUser.do?method=Add&amp;amp;from=list" redirect="true" />
-		<forward name="cancelUser" path="/editUser.do?method=Cancel" />
-		<forward name="deleteUser" path="/editUser.do?method=Delete" />
-		<forward name="updateUser" path="/userProfile.do" />
-		<!-- Forwards for links used in Menu -->
-		<forward name="editProfile" path="/editProfile.do" />
-		<forward name="editUser" path="/editUser.do" />
-		<forward name="viewUsers" path="/users.do" redirect="true" />
-		<forward name="selectFile" path="/selectFile.do" />
-		<forward name="logout" path="/logout.jsp" />
-		<forward name="success" path="/common/success.jsp"
-			redirect="false" contextRelative="true" />
-		<forward name="fail" path="/common/failure.jsp" redirect="false"
-			contextRelative="true" />
-			
-		<!-- ajax template forwards -->
-			
-		<!-- 地域树模板 -->
-		<forward name="tpl-area-xtree" path="/templates/area/tpl-area-xtree.jsp" redirect="false" contextRelative="true"/>
-		<!-- 地域树模板 -->
-		<forward name="tpl-county-xtree" path="/templates/area/tpl-county-xtree.jsp" redirect="false" contextRelative="true"/>
-		<!-- 角色树模板 -->
-		<forward name="tpl-role-xtree" path="/templates/role/tpl-role-xtree.jsp" redirect="false" contextRelative="true"/>
-		<!-- 子角色树模板 -->
-		<forward name="tpl-subrole-xtree" path="/templates/subrole/tpl-subrole-xtree.jsp" redirect="false" contextRelative="true"/>
-		<!-- 人员树模板 -->
-		<forward name="tpl-user-xtree" path="/templates/user/tpl-user-xtree.jsp" redirect="false" contextRelative="true"/>
-		<!-- 字典树模板 -->
-		<forward name="tpl-dict-xtree" path="/templates/dict/tpl-dict-xtree.jsp" redirect="false" contextRelative="true"/>
-		<!-- 字典树模板 包含子角色 -->
-		<forward name="tpl-dict-xtree-subrole" path="/templates/dict/tpl-dict-xtree-subrole.jsp" redirect="false" contextRelative="true"/>
-		
-	</global-forwards>
+    <!-- ========== Global Forward Definitions =================================== -->
+    <global-forwards>
+        <forward name="mainMenu" path="/mainMenu.do" redirect="true"/>
+        <!-- Forwards specified in actions -->
+        <forward name="addUser"
+                 path="/editUser.do?method=Add&amp;amp;from=list" redirect="true"/>
+        <forward name="cancelUser" path="/editUser.do?method=Cancel"/>
+        <forward name="deleteUser" path="/editUser.do?method=Delete"/>
+        <forward name="updateUser" path="/userProfile.do"/>
+        <!-- Forwards for links used in Menu -->
+        <forward name="editProfile" path="/editProfile.do"/>
+        <forward name="editUser" path="/editUser.do"/>
+        <forward name="viewUsers" path="/users.do" redirect="true"/>
+        <forward name="selectFile" path="/selectFile.do"/>
+        <forward name="logout" path="/logout.jsp"/>
+        <forward name="success" path="/common/success.jsp"
+                 redirect="false" contextRelative="true"/>
+        <forward name="fail" path="/common/failure.jsp" redirect="false"
+                 contextRelative="true"/>
 
-	<!-- ========== Action Mapping Definitions =================================== -->
-	<action-mappings>
+        <!-- ajax template forwards -->
 
-		<!-- Main Role Manage Page -->
-		<action path="/role"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/WEB-INF/pages/tawSystemRole/role.jsp" />
+        <!-- 地域树模板 -->
+        <forward name="tpl-area-xtree" path="/templates/area/tpl-area-xtree.jsp" redirect="false"
+                 contextRelative="true"/>
+        <!-- 地域树模板 -->
+        <forward name="tpl-county-xtree" path="/templates/area/tpl-county-xtree.jsp" redirect="false"
+                 contextRelative="true"/>
+        <!-- 角色树模板 -->
+        <forward name="tpl-role-xtree" path="/templates/role/tpl-role-xtree.jsp" redirect="false"
+                 contextRelative="true"/>
+        <!-- 子角色树模板 -->
+        <forward name="tpl-subrole-xtree" path="/templates/subrole/tpl-subrole-xtree.jsp" redirect="false"
+                 contextRelative="true"/>
+        <!-- 人员树模板 -->
+        <forward name="tpl-user-xtree" path="/templates/user/tpl-user-xtree.jsp" redirect="false"
+                 contextRelative="true"/>
+        <!-- 字典树模板 -->
+        <forward name="tpl-dict-xtree" path="/templates/dict/tpl-dict-xtree.jsp" redirect="false"
+                 contextRelative="true"/>
+        <!-- 字典树模板 包含子角色 -->
+        <forward name="tpl-dict-xtree-subrole" path="/templates/dict/tpl-dict-xtree-subrole.jsp" redirect="false"
+                 contextRelative="true"/>
 
-		<action path="/tawSystemSubRoles"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemSubRoleAction"
-			name="tawSystemSubRoleForm" scope="request" input="mainMenu"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemSubRoles.do"
-				redirect="true" contextRelative="true" />
-			<forward name="roleFilter"
-				path="/WEB-INF/pages/tawSystemRole/role_filter.jsp" redirect="false"
-				contextRelative="true" />
-		</action>
-		<action path="/editTawSystemSubRole"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemSubRoleAction"
-			name="tawSystemSubRoleForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemSubRoles.do"
-				redirect="true" contextRelative="true" />
-			<forward name="create"
-				path="/WEB-INF/pages/tawSystemSubRole/createSubRoles.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		<action path="/saveTawSystemSubRole"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemSubRoleAction"
-			name="tawSystemSubRoleForm" scope="request" input="edit"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemSubRoles.do"
-				redirect="true" contextRelative="true" />
-		</action>
-		<action path="/tawSystemRoleTypes"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleTypeAction"
-			name="tawSystemRoleTypeForm" scope="request" input="mainMenu"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemRoleTypes.do"
-				redirect="true" contextRelative="true" />
-		</action>
-		<action path="/editTawSystemRoleType"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleTypeAction"
-			name="tawSystemRoleTypeForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemRoleTypes.do"
-				redirect="true" contextRelative="true" />
-		</action>
-		<action path="/saveTawSystemRoleType"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleTypeAction"
-			name="tawSystemRoleTypeForm" scope="request" input="edit"
-			parameter="method" unknown="false" validate="true">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemRoleTypes.do"
-				redirect="true" contextRelative="true" />
-		</action>
-		<action path="/tawSystemOrganizationProxys"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemOrganizationProxyAction"
-			name="tawSystemOrganizationProxyForm" scope="request"
-			input="mainMenu" parameter="method" unknown="false"
-			validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search"
-				path="/tawSystemOrganizationProxys.do" redirect="true"
-				contextRelative="true" />
-		</action>
-		<action path="/editTawSystemOrganizationProxy"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemOrganizationProxyAction"
-			name="tawSystemOrganizationProxyForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search"
-				path="/tawSystemOrganizationProxys.do" redirect="true"
-				contextRelative="true" />
-		</action>
-		<action path="/saveTawSystemOrganizationProxy"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemOrganizationProxyAction"
-			name="tawSystemOrganizationProxyForm" scope="request" input="edit"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search"
-				path="/tawSystemOrganizationProxys.do" redirect="true"
-				contextRelative="true" />
-		</action>
-		<action path="/tawSystemRoleIndex"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/WEB-INF/pages/tawSystemRole/tawSystemRoleIndex.jsp" />
-		<action path="/tawSystemRoles"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
-			name="tawSystemRoleForm" scope="request" input="mainMenu"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemRole/tawSystemRoleForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemRole/tawSystemRoleList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemRoles.do"
-				redirect="true" contextRelative="true" />
-		</action>
-		<action path="/editTawSystemRole"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
-			name="tawSystemRoleForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemRole/tawSystemRoleForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemRole/tawSystemRoleList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemRoles.do"
-				redirect="true" contextRelative="true" />
-		</action>
-		<action path="/saveTawSystemRole"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
-			name="tawSystemRoleForm" scope="request" input="edit"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemRole/tawSystemRoleForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemRole/tawSystemRoleList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="search" path="/tawSystemRoles.do"
-				redirect="true" contextRelative="true" />
-			<forward name="add"
-				path="/WEB-INF/pages/tawSystemRole/treeEntry.jsp" redirect="false"
-				contextRelative="true" />
-			<forward name="addSubRole"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="subRolelist"
-				path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
+    </global-forwards>
+
+    <!-- ========== Action Mapping Definitions =================================== -->
+    <action-mappings>
+
+        <!-- Main Role Manage Page -->
+        <action path="/role"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/tawSystemRole/role.jsp"/>
+
+        <action path="/tawSystemSubRoles"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemSubRoleAction"
+                name="tawSystemSubRoleForm" scope="request" input="mainMenu"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemSubRoles.do"
+                     redirect="true" contextRelative="true"/>
+            <forward name="roleFilter"
+                     path="/WEB-INF/pages/tawSystemRole/role_filter.jsp" redirect="false"
+                     contextRelative="true"/>
+        </action>
+        <action path="/editTawSystemSubRole"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemSubRoleAction"
+                name="tawSystemSubRoleForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemSubRoles.do"
+                     redirect="true" contextRelative="true"/>
+            <forward name="create"
+                     path="/WEB-INF/pages/tawSystemSubRole/createSubRoles.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
+        <action path="/saveTawSystemSubRole"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemSubRoleAction"
+                name="tawSystemSubRoleForm" scope="request" input="edit"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemSubRoles.do"
+                     redirect="true" contextRelative="true"/>
+        </action>
+        <action path="/tawSystemRoleTypes"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleTypeAction"
+                name="tawSystemRoleTypeForm" scope="request" input="mainMenu"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemRoleTypes.do"
+                     redirect="true" contextRelative="true"/>
+        </action>
+        <action path="/editTawSystemRoleType"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleTypeAction"
+                name="tawSystemRoleTypeForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemRoleTypes.do"
+                     redirect="true" contextRelative="true"/>
+        </action>
+        <action path="/saveTawSystemRoleType"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleTypeAction"
+                name="tawSystemRoleTypeForm" scope="request" input="edit"
+                parameter="method" unknown="false" validate="true">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemRoleType/tawSystemRoleTypeList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemRoleTypes.do"
+                     redirect="true" contextRelative="true"/>
+        </action>
+        <action path="/tawSystemOrganizationProxys"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemOrganizationProxyAction"
+                name="tawSystemOrganizationProxyForm" scope="request"
+                input="mainMenu" parameter="method" unknown="false"
+                validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search"
+                     path="/tawSystemOrganizationProxys.do" redirect="true"
+                     contextRelative="true"/>
+        </action>
+        <action path="/editTawSystemOrganizationProxy"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemOrganizationProxyAction"
+                name="tawSystemOrganizationProxyForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search"
+                     path="/tawSystemOrganizationProxys.do" redirect="true"
+                     contextRelative="true"/>
+        </action>
+        <action path="/saveTawSystemOrganizationProxy"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemOrganizationProxyAction"
+                name="tawSystemOrganizationProxyForm" scope="request" input="edit"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemOrganizationProxy/tawSystemOrganizationProxyList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search"
+                     path="/tawSystemOrganizationProxys.do" redirect="true"
+                     contextRelative="true"/>
+        </action>
+        <action path="/tawSystemRoleIndex"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/tawSystemRole/tawSystemRoleIndex.jsp"/>
+        <action path="/tawSystemRoles"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
+                name="tawSystemRoleForm" scope="request" input="mainMenu"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemRole/tawSystemRoleForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemRole/tawSystemRoleList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemRoles.do"
+                     redirect="true" contextRelative="true"/>
+        </action>
+        <action path="/editTawSystemRole"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
+                name="tawSystemRoleForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemRole/tawSystemRoleForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemRole/tawSystemRoleList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemRoles.do"
+                     redirect="true" contextRelative="true"/>
+        </action>
+        <action path="/saveTawSystemRole"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
+                name="tawSystemRoleForm" scope="request" input="edit"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemRole/tawSystemRoleForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemRole/tawSystemRoleList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="search" path="/tawSystemRoles.do"
+                     redirect="true" contextRelative="true"/>
+            <forward name="add"
+                     path="/WEB-INF/pages/tawSystemRole/treeEntry.jsp" redirect="false"
+                     contextRelative="true"/>
+            <forward name="addSubRole"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="subRolelist"
+                     path="/WEB-INF/pages/tawSystemSubRole/tawSystemSubRoleList.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
 
 
-		<action path="/systemRoleImport"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleImportAction"
-			name="tawSystemRoleImportForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="edit"
-				path="/WEB-INF/pages/tawSystemRoleImport/tawSystemRoleImportForm.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="list"
-				path="/WEB-INF/pages/tawSystemRoleImport/tawSystemRoleImportList.jsp"
-				redirect="false" contextRelative="true" />
-			<forward name="forwardlist" path="/systemRoleImport.do?method=list"
-				redirect="true" />
-			<forward name="failAsExist"
-				path="/WEB-INF/pages/tawSystemRoleImport/failure.jsp"
-				redirect="false" contextRelative="true" />
-				
-		</action>
+        <action path="/systemRoleImport"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleImportAction"
+                name="tawSystemRoleImportForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="edit"
+                     path="/WEB-INF/pages/tawSystemRoleImport/tawSystemRoleImportForm.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="list"
+                     path="/WEB-INF/pages/tawSystemRoleImport/tawSystemRoleImportList.jsp"
+                     redirect="false" contextRelative="true"/>
+            <forward name="forwardlist" path="/systemRoleImport.do?method=list"
+                     redirect="true"/>
+            <forward name="failAsExist"
+                     path="/WEB-INF/pages/tawSystemRoleImport/failure.jsp"
+                     redirect="false" contextRelative="true"/>
 
-		<!--role.jsp 页面上流程节点展开用  -->
-		<action path="/getAllWorkflow"
-			type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
-			name="tawSystemRoleForm" scope="request" input="list"
-			parameter="method" unknown="false" validate="false">
-			<set-property property="cancellable" value="true" />
-			<forward name="role"
-				path="/WEB-INF/pages/role.jsp"
-				redirect="false" contextRelative="true" />
-		</action>
-		
-		<action path="/mainMenu"
-			type="org.apache.struts.actions.ForwardAction"
-			parameter="/WEB-INF/pages/mainMenu.jsp" />
-	</action-mappings>
+        </action>
 
-	<controller nocache="true" inputForward="true" maxFileSize="2M" />
+        <!--role.jsp 页面上流程节点展开用  -->
+        <action path="/getAllWorkflow"
+                type="com.boco.eoms.commons.system.role.webapp.action.TawSystemRoleAction"
+                name="tawSystemRoleForm" scope="request" input="list"
+                parameter="method" unknown="false" validate="false">
+            <set-property property="cancellable" value="true"/>
+            <forward name="role"
+                     path="/WEB-INF/pages/role.jsp"
+                     redirect="false" contextRelative="true"/>
+        </action>
 
-	<message-resources parameter="com/boco/eoms/commons/system/role/config/ApplicationResources-role" />
-	<message-resources parameter="config/ApplicationResources" />
+        <action path="/mainMenu"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/WEB-INF/pages/mainMenu.jsp"/>
+    </action-mappings>
 
-	<!-- ========== Validator plugin ===================  -->
-	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-		<set-property property="pathnames"
-			value="/WEB-INF/validator-rules.xml,
+    <controller nocache="true" inputForward="true" maxFileSize="2M"/>
+
+    <message-resources parameter="com/boco/eoms/commons/system/role/config/ApplicationResources-role"/>
+    <message-resources parameter="config/ApplicationResources"/>
+
+    <!-- ========== Validator plugin ===================  -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/WEB-INF/validator-rules.xml,
                              /WEB-INF/validator-rules-custom.xml,
-                             /WEB-INF/validation.xml" />
-	</plug-in>
+                             /WEB-INF/validation.xml"/>
+    </plug-in>
 
 </struts-config>

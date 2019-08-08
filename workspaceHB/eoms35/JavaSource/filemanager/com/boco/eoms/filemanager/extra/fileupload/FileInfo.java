@@ -8,42 +8,50 @@ package com.boco.eoms.filemanager.extra.fileupload;
  * To change this template use Options | File Templates.
  */
 public class FileInfo {
-    private int fileId=0;
-    private String fileName="";
-    private String fileExt="";
-    private String fileRealName="";
-    private String filePath="";
+    private int fileId = 0;
+    private String fileName = "";
+    private String fileExt = "";
+    private String fileRealName = "";
+    private String filePath = "";
 
-    public int getFileId(){
-            return fileId;
-        }
+    public int getFileId() {
+        return fileId;
+    }
 
-    public String getFileName(){
+    public String getFileName() {
         return fileName;
     }
-    public String getFileExt(){
+
+    public String getFileExt() {
         return fileExt;
     }
-    public String getFilePath(){
+
+    public String getFilePath() {
         return filePath;
     }
-    public String getFileRealName(){
+
+    public String getFileRealName() {
         return fileRealName;
     }
-    public void setFileId(int fileId){
-           this.fileId=fileId;
-       }
-    public void setFileName(String fileName){
-        this.fileName=fileName;
+
+    public void setFileId(int fileId) {
+        this.fileId = fileId;
     }
-    public void setFileExt(String fileExt){
-        this.fileExt=fileExt;
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
-    public void setFileRealName(String fileRealName){
-        this.fileRealName=fileRealName;
+
+    public void setFileExt(String fileExt) {
+        this.fileExt = fileExt;
     }
-    public void setFilePath(String filePath){
-        this.filePath=filePath;
+
+    public void setFileRealName(String fileRealName) {
+        this.fileRealName = fileRealName;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
 

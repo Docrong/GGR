@@ -16,20 +16,19 @@ import com.boco.eoms.sheet.plannconfirm.service.IPlannConfirmLinkManager;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannConfirmLinkManagerImpl extends LinkServiceImpl implements IPlannConfirmLinkManager {
-  		/**
-	     * 根据条件查出所有的link对象
-	     */
-	    public List getLinksBycondition(String condition) throws Exception {    	
-	    	IPlannConfirmLinkDAO dao = (IPlannConfirmLinkDAO)this.getLinkDAO();
-	        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
-	        return list;
-	    }
- 
- }
+
+public class PlannConfirmLinkManagerImpl extends LinkServiceImpl implements IPlannConfirmLinkManager {
+    /**
+     * 根据条件查出所有的link对象
+     */
+    public List getLinksBycondition(String condition) throws Exception {
+        IPlannConfirmLinkDAO dao = (IPlannConfirmLinkDAO) this.getLinkDAO();
+        List list = dao.getLinksBycondition(condition, this.getLinkObject().getClass().getName());
+        return list;
+    }
+
+}

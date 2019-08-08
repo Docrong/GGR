@@ -1,51 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dicts description="分公司指标核减流程">
-	<dict id="mainOperateType" description="处理方法">
-		<item id="0" name="提交申请" description="提交申请" />
-		<item id="22" name="草稿保存" description="草稿保存" />
-		<item id="3" name="草稿派发" description="草稿派发" />
-		<item id="6" name="处理回复通过" description="处理回复通过" />
-		<item id="7" name="处理回复不通过" description="处理回复不通过" />
-		<item id="4" name="驳回上一级" description="驳回上一级" />
-		<item id="54" name="重新派发" description="重新派发" />
-		<item id="18" name="归档" description="归档" />
-		<item id="8" name="移交" description="移交" />
-		<item id="88" name="转审" description="转审" />
-		<item id="30" name="会审" description="会审" />	
-		<item id="-13" name="强制归档" description="强制归档" />	
-		<item id="-14" name="强制作废" description="强制作废" />
-		<item id="-12" name="作废" description="作废" />
-		<item id="-10" name="抄送" description="抄送" />	
-		<item id="-15" name="抄送确认" description="抄送确认" />
-		<item id="9" name="阶段回复" description="阶段回复" />	
-		<item id="-11" name="阶段通知" description="阶段通知" />
-		<item id="10" name="分派" description="分派" />	
-		<item id="61" name="确认受理" description="确认受理" />
-		<item id="11" name="分派回复" description="分派回复" />
-	  
-
-		<item id="101" name="初审" description="初审" />		
-		
-		
-		<item id="102" name="初审不通过" description="初审不通过" />		
-		
-		
-				
-	</dict>
-	
-	<dict id="activeTemplateId" description="处理方法">
-	  
-
-		<item id="TrialTask" name="初审" description="初审" />
-
-		<item id="HoldTask" name="待归档" description="待归档" />
+    <dict id="mainOperateType" description="处理方法">
+        <item id="0" name="提交申请" description="提交申请"/>
+        <item id="22" name="草稿保存" description="草稿保存"/>
+        <item id="3" name="草稿派发" description="草稿派发"/>
+        <item id="6" name="处理回复通过" description="处理回复通过"/>
+        <item id="7" name="处理回复不通过" description="处理回复不通过"/>
+        <item id="4" name="驳回上一级" description="驳回上一级"/>
+        <item id="54" name="重新派发" description="重新派发"/>
+        <item id="18" name="归档" description="归档"/>
+        <item id="8" name="移交" description="移交"/>
+        <item id="88" name="转审" description="转审"/>
+        <item id="30" name="会审" description="会审"/>
+        <item id="-13" name="强制归档" description="强制归档"/>
+        <item id="-14" name="强制作废" description="强制作废"/>
+        <item id="-12" name="作废" description="作废"/>
+        <item id="-10" name="抄送" description="抄送"/>
+        <item id="-15" name="抄送确认" description="抄送确认"/>
+        <item id="9" name="阶段回复" description="阶段回复"/>
+        <item id="-11" name="阶段通知" description="阶段通知"/>
+        <item id="10" name="分派" description="分派"/>
+        <item id="61" name="确认受理" description="确认受理"/>
+        <item id="11" name="分派回复" description="分派回复"/>
 
 
-		<item id="" name="新增工单" description="新增工单" />
-		<item id="cc" name="抄送" description="抄送" />
-		<item id="reply" name="阶段回复" description="阶段回复" />
-		<item id="advice" name="阶段通知" description="阶段通知" />	
-		<item id="DraftTask" name="草稿" description="草稿" />
-		<item id="RejectTask" name="被驳回" description="被驳回" />
-	</dict>
+        <item id="101" name="初审" description="初审"/>
+
+
+        <item id="102" name="初审不通过" description="初审不通过"/>
+
+
+    </dict>
+
+    <dict id="activeTemplateId" description="处理方法">
+
+
+        <item id="TrialTask" name="初审" description="初审"/>
+
+        <item id="HoldTask" name="待归档" description="待归档"/>
+
+
+        <item id="" name="新增工单" description="新增工单"/>
+        <item id="cc" name="抄送" description="抄送"/>
+        <item id="reply" name="阶段回复" description="阶段回复"/>
+        <item id="advice" name="阶段通知" description="阶段通知"/>
+        <item id="DraftTask" name="草稿" description="草稿"/>
+        <item id="RejectTask" name="被驳回" description="被驳回"/>
+    </dict>
 </dicts>

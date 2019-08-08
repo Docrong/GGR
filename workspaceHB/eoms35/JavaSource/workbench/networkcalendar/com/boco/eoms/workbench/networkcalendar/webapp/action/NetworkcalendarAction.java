@@ -66,205 +66,204 @@ import com.boco.eoms.workbench.networkcalendar.webapp.util.networkcalendarMgrLoc
 import com.boco.eoms.workplan.util.WorkplanMgrLocator;
 
 public final class NetworkcalendarAction extends BaseAction {
-	TawWorkbenchContactBO contactbo = TawWorkbenchContactBO.getInstance();
+    TawWorkbenchContactBO contactbo = TawWorkbenchContactBO.getInstance();
 
-	/**
-	 * 未指定方法
-	 */
-	// public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-	// HttpServletRequest request, HttpServletResponse response)
-	// throws Exception {
-	//		
-	// return newInterfaceMonitoring(mapping, form, request, response);
-	// }
-	/**
-	 * 
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward newNetworkcalendar(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		String date = getLocalString();
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				"networkcalendarList")
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String nodeId = request.getParameter("node");
-		String usereId = sessionform.getUserid();
-		Map filureRecord = networkcalendarMgr.getNetworkcalendarList(pageIndex,
-				pageSize, date, usereId);
-		List networkcalendarList = (List) filureRecord.get("result");
-		request.setAttribute("networkcalendarList", networkcalendarList);
-		request.setAttribute("date", date);
-		return mapping.findForward("success");
-	}
+    /**
+     * 未指定方法
+     */
+    // public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+    // HttpServletRequest request, HttpServletResponse response)
+    // throws Exception {
+    //
+    // return newInterfaceMonitoring(mapping, form, request, response);
+    // }
 
-	public ActionForward networkcalendarList(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				"networkcalendarList")
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		String date = request.getParameter("date");
-		if ("".equals(date) || date == null) {
-			HttpSession session = request.getSession();
-			date = (String) session.getAttribute("tasKtime");
+    /**
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward newNetworkcalendar(ActionMapping mapping,
+                                            ActionForm form, HttpServletRequest request,
+                                            HttpServletResponse response) throws Exception {
+        String date = getLocalString();
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                "networkcalendarList")
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String nodeId = request.getParameter("node");
+        String usereId = sessionform.getUserid();
+        Map filureRecord = networkcalendarMgr.getNetworkcalendarList(pageIndex,
+                pageSize, date, usereId);
+        List networkcalendarList = (List) filureRecord.get("result");
+        request.setAttribute("networkcalendarList", networkcalendarList);
+        request.setAttribute("date", date);
+        return mapping.findForward("success");
+    }
 
-		}
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
-		// FailureRecordForm networkcalendarMgr = (FailureRecordForm) form;
-		// interfaceMonitoringForm.setCallDirection("Longitudinal");
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String nodeId = request.getParameter("node");
-		String usereId = sessionform.getUserid();
-		Map filureRecord = networkcalendarMgr.getNetworkcalendarList(pageIndex,
-				pageSize, date, usereId);
-		List networkcalendarList = (List) filureRecord.get("result");
+    public ActionForward networkcalendarList(ActionMapping mapping,
+                                             ActionForm form, HttpServletRequest request,
+                                             HttpServletResponse response) throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                "networkcalendarList")
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        String date = request.getParameter("date");
+        if ("".equals(date) || date == null) {
+            HttpSession session = request.getSession();
+            date = (String) session.getAttribute("tasKtime");
 
-		Map map = networkcalendarMgr.getNetworkcalendarHistoryList(pageIndex,
-				pageSize, date, usereId);
-		List historyList = (List) map.get("result");
-		if (historyList.size() > 0) {
-			for (int i = 0; i < historyList.size(); i++) {
-				networkcalendarList.add(historyList.get(i));
-			}
-		}
-		request.setAttribute("date", date);
-		request.setAttribute("networkcalendarList", networkcalendarList);
-		return mapping.findForward("networkcalendarList");
-	}
+        }
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
+        // FailureRecordForm networkcalendarMgr = (FailureRecordForm) form;
+        // interfaceMonitoringForm.setCallDirection("Longitudinal");
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String nodeId = request.getParameter("node");
+        String usereId = sessionform.getUserid();
+        Map filureRecord = networkcalendarMgr.getNetworkcalendarList(pageIndex,
+                pageSize, date, usereId);
+        List networkcalendarList = (List) filureRecord.get("result");
 
-	public ActionForward saveNetworkcalendar(ActionMapping mapping,
-			ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
-		NetworkcalendarForm networkcalendarForm = (NetworkcalendarForm) form;
-		String taskhours = networkcalendarForm.getTaskhours();
-		String taskremarks = networkcalendarForm.getTaskminutes();
-		String tasKtime = networkcalendarForm.getTasktime();
+        Map map = networkcalendarMgr.getNetworkcalendarHistoryList(pageIndex,
+                pageSize, date, usereId);
+        List historyList = (List) map.get("result");
+        if (historyList.size() > 0) {
+            for (int i = 0; i < historyList.size(); i++) {
+                networkcalendarList.add(historyList.get(i));
+            }
+        }
+        request.setAttribute("date", date);
+        request.setAttribute("networkcalendarList", networkcalendarList);
+        return mapping.findForward("networkcalendarList");
+    }
 
-		Schedule schedule = new Schedule();
-		schedule.setTaskname(networkcalendarForm.getTaskname());
-		schedule.setTaskremarks(networkcalendarForm.getTaskremarks());
-		schedule.setId(networkcalendarForm.getId());
-		String time = tasKtime + " " + taskhours + ":" + taskremarks;
+    public ActionForward saveNetworkcalendar(ActionMapping mapping,
+                                             ActionForm form, HttpServletRequest request,
+                                             HttpServletResponse response) throws Exception {
+        NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
+        NetworkcalendarForm networkcalendarForm = (NetworkcalendarForm) form;
+        String taskhours = networkcalendarForm.getTaskhours();
+        String taskremarks = networkcalendarForm.getTaskminutes();
+        String tasKtime = networkcalendarForm.getTasktime();
 
-		schedule.setTasktime(time);
-		schedule.setTaskday(networkcalendarForm.getTasktime());
-		TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-				.getSession().getAttribute("sessionform");
-		String nodeId = request.getParameter("node");
-		String usereId = sessionform.getUserid();
-		HttpSession session = request.getSession();
-		session.removeAttribute("tasKtime");
-		session.setAttribute("tasKtime", tasKtime);
-		schedule.setUserId(usereId);
-		try {
-			String id = networkcalendarMgr.save(schedule);
-			String msg = "您在" + time + "有个名称为"
-					+ networkcalendarForm.getTaskname() + "预约。请准时参加";
-			MsgServiceImpl msgService = new MsgServiceImpl();
-			time = tasKtime + " " + transformationTime(taskhours) + ":"
-					+ taskremarks;
-			String serverid = networkcalendarMgrLocator.getAttributes()
-					.getServerId();
-			msgService.sendMsg(serverid, msg, id, "1," + usereId, time);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-		return mapping.findForward("networkcalendarsuccess");
-	}
+        Schedule schedule = new Schedule();
+        schedule.setTaskname(networkcalendarForm.getTaskname());
+        schedule.setTaskremarks(networkcalendarForm.getTaskremarks());
+        schedule.setId(networkcalendarForm.getId());
+        String time = tasKtime + " " + taskhours + ":" + taskremarks;
 
-	public ActionForward detail(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		HttpSession session = request.getSession();
-		String id = request.getParameter("id");
-		String date = (String) session.getAttribute("tasKtime");
-		if (!"".equals(id) && id != null) {
-			NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
-			Schedule schedule = new Schedule();
-			schedule = networkcalendarMgr.getSchedule(id);
-			String time = schedule.getTasktime();
-			if (date == null) {
-				date = schedule.getTaskday();
-			}
-			String minutes = "00";
-			String hours = "00";
-			if (!"".equals(time) || time != null) {
-				time = time.substring(11, time.length());
-				
-				if (time.indexOf(":") > 0) {
-					String[] str = time.split(":");
-					hours = str[0];
-					minutes = str[1];
-				}
-			}
+        schedule.setTasktime(time);
+        schedule.setTaskday(networkcalendarForm.getTasktime());
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        String nodeId = request.getParameter("node");
+        String usereId = sessionform.getUserid();
+        HttpSession session = request.getSession();
+        session.removeAttribute("tasKtime");
+        session.setAttribute("tasKtime", tasKtime);
+        schedule.setUserId(usereId);
+        try {
+            String id = networkcalendarMgr.save(schedule);
+            String msg = "您在" + time + "有个名称为"
+                    + networkcalendarForm.getTaskname() + "预约。请准时参加";
+            MsgServiceImpl msgService = new MsgServiceImpl();
+            time = tasKtime + " " + transformationTime(taskhours) + ":"
+                    + taskremarks;
+            String serverid = networkcalendarMgrLocator.getAttributes()
+                    .getServerId();
+            msgService.sendMsg(serverid, msg, id, "1," + usereId, time);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return mapping.findForward("networkcalendarsuccess");
+    }
 
-			request.setAttribute("minutes", minutes);
-			request.setAttribute("hours", hours);
-			request.setAttribute("date", date);
-			request.setAttribute("networkcalendarForm", schedule);
-		}
-		return mapping.findForward("detail");
-	}
+    public ActionForward detail(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        HttpSession session = request.getSession();
+        String id = request.getParameter("id");
+        String date = (String) session.getAttribute("tasKtime");
+        if (!"".equals(id) && id != null) {
+            NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
+            Schedule schedule = new Schedule();
+            schedule = networkcalendarMgr.getSchedule(id);
+            String time = schedule.getTasktime();
+            if (date == null) {
+                date = schedule.getTaskday();
+            }
+            String minutes = "00";
+            String hours = "00";
+            if (!"".equals(time) || time != null) {
+                time = time.substring(11, time.length());
 
-	public ActionForward xdelete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+                if (time.indexOf(":") > 0) {
+                    String[] str = time.split(":");
+                    hours = str[0];
+                    minutes = str[1];
+                }
+            }
 
-		String id = (String) request.getParameter("id");
-		NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
-		networkcalendarMgr.removeSchedule(id);
-		return mapping.findForward("xdelete");
-	}
+            request.setAttribute("minutes", minutes);
+            request.setAttribute("hours", hours);
+            request.setAttribute("date", date);
+            request.setAttribute("networkcalendarForm", schedule);
+        }
+        return mapping.findForward("detail");
+    }
 
-	public static String getLocalString() {
-		java.util.Date currentDate = new java.util.Date();
-		java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat(
-				"yyyy-MM-dd");
-		String date = dateFormat.format(currentDate);
+    public ActionForward xdelete(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-		return date;
-	}
+        String id = (String) request.getParameter("id");
+        NetworkcalendarMgr networkcalendarMgr = (NetworkcalendarMgr) getBean("NetworkcalendarMgr");
+        networkcalendarMgr.removeSchedule(id);
+        return mapping.findForward("xdelete");
+    }
 
-	public static String transformationTime(String transformationTime) {
-		String date = "";
-		if (transformationTime.equals("00")) {
-			date = String.valueOf(24 - 2);
+    public static String getLocalString() {
+        java.util.Date currentDate = new java.util.Date();
+        java.text.SimpleDateFormat dateFormat = new java.text.SimpleDateFormat(
+                "yyyy-MM-dd");
+        String date = dateFormat.format(currentDate);
 
-		} else {
-			int time = java.lang.Integer.parseInt(transformationTime);
-			date = String.valueOf(time - 2);
-		}
+        return date;
+    }
 
-		return date;
-	}
-	
-	public ActionForward showCalendar(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
- 
-		return mapping.findForward("showCalendar");
-	}
+    public static String transformationTime(String transformationTime) {
+        String date = "";
+        if (transformationTime.equals("00")) {
+            date = String.valueOf(24 - 2);
+
+        } else {
+            int time = java.lang.Integer.parseInt(transformationTime);
+            date = String.valueOf(time - 2);
+        }
+
+        return date;
+    }
+
+    public ActionForward showCalendar(ActionMapping mapping, ActionForm form,
+                                      HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+
+        return mapping.findForward("showCalendar");
+    }
 
 }

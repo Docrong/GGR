@@ -13,12 +13,11 @@ import com.boco.eoms.sheet.equipmentsecurityresponse.qo.IEquipmentSecurityRespon
  * <p>
  * Tue Apr 25 11:45:21 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public class EquipmentSecurityResponseQoImpl extends WorkSheetQOImpl implements IEquipmentSecurityResponseQo {
- 
- }
+
+public class EquipmentSecurityResponseQoImpl extends WorkSheetQOImpl implements IEquipmentSecurityResponseQo {
+
+}

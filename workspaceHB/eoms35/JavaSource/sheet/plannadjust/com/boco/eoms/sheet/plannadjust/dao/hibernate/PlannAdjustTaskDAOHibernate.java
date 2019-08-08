@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.plannadjust.dao.IPlannAdjustTaskDAO;
  * <p>
  * Sat Jun 08 11:16:09 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public class PlannAdjustTaskDAOHibernate extends TaskDAOImpl implements  IPlannAdjustTaskDAO {
- 
- }
+
+public class PlannAdjustTaskDAOHibernate extends TaskDAOImpl implements IPlannAdjustTaskDAO {
+
+}

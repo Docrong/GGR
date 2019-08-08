@@ -13,23 +13,22 @@ import java.util.List;
  * <p>
  * Mar 26, 2007 11:52:56 AM
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- * 
  */
 public class FMImportSheets {
-	/**
-	 * sheet列表
-	 */
-	private List sheet = new ArrayList();
+    /**
+     * sheet列表
+     */
+    private List sheet = new ArrayList();
 
-	public List getSheet() {
-		return sheet;
-	}
+    public List getSheet() {
+        return sheet;
+    }
 
-	public void setSheet(List sheet) {
-		this.sheet = sheet;
-	}
+    public void setSheet(List sheet) {
+        this.sheet = sheet;
+    }
 
 }

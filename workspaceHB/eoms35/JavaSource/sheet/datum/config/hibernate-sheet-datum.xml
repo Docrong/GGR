@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE hibernate-configuration
-    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-	<session-factory>
+    <session-factory>
 
-		<property name="show_sql">true</property>
-		<mapping resource="com/boco/eoms/datum/model/TawBureaudataHlr.hbm.xml" />
-		<mapping resource="com/boco/eoms/datum/model/TawBureaudataBasic.hbm.xml" />
-		<mapping resource="com/boco/eoms/datum/model/TawBureaudatasheetDetail.hbm.xml" />
-		<mapping resource="com/boco/eoms/datum/model/TawBureaudataNobelonghlr.hbm.xml" />
-		<mapping resource="com/boco/eoms/datum/model/TawBureaudataCityzone.hbm.xml" />
-		 	<mapping resource="com/boco/eoms/datum/model/TawBureaudataApply.hbm.xml" />
-	</session-factory>
+        <property name="show_sql">true</property>
+        <mapping resource="com/boco/eoms/datum/model/TawBureaudataHlr.hbm.xml"/>
+        <mapping resource="com/boco/eoms/datum/model/TawBureaudataBasic.hbm.xml"/>
+        <mapping resource="com/boco/eoms/datum/model/TawBureaudatasheetDetail.hbm.xml"/>
+        <mapping resource="com/boco/eoms/datum/model/TawBureaudataNobelonghlr.hbm.xml"/>
+        <mapping resource="com/boco/eoms/datum/model/TawBureaudataCityzone.hbm.xml"/>
+        <mapping resource="com/boco/eoms/datum/model/TawBureaudataApply.hbm.xml"/>
+    </session-factory>
 </hibernate-configuration>

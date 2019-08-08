@@ -15,51 +15,53 @@ import com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class TawSystemSubRoleRefPostManagerImpl extends BaseManager implements ITawSystemSubRoleRefPostManager{
-	private TawSystemSubRoleRefPostDao dao;
-	/**
-	 * @param dao The dao to set.
-	 */
-	public void setTawSystemSubRoleRefPostDao(TawSystemSubRoleRefPostDao dao) {
-		this.dao = dao;
-	}
-	/* (non-Javadoc)
-	 * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#saveTawSystemSubRoleRefPost(com.boco.eoms.commons.system.role.model.TawSystemSubRoleRefPost)
-	 */
-	public void saveTawSystemSubRoleRefPost(TawSystemSubRoleRefPost tawSystemSubRoleRefPost) {
-		dao.saveTawSystemSubRoleRefPost(tawSystemSubRoleRefPost);
-	}
+public class TawSystemSubRoleRefPostManagerImpl extends BaseManager implements ITawSystemSubRoleRefPostManager {
+    private TawSystemSubRoleRefPostDao dao;
 
-	/* (non-Javadoc)
-	 * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#getPostBySubRoleId(java.lang.String)
-	 */
-	public List getPostBySubRoleId(String subRoleid) {
-		return dao.getPostBySubRoleId(subRoleid);
-	}
+    /**
+     * @param dao The dao to set.
+     */
+    public void setTawSystemSubRoleRefPostDao(TawSystemSubRoleRefPostDao dao) {
+        this.dao = dao;
+    }
 
-	/* (non-Javadoc)
-	 * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#getSubRoleByPostId(long)
-	 */
-	public List getSubRoleByPostId(long postId) {
-		return dao.getSubRoleByPostId(postId);
-	}
+    /* (non-Javadoc)
+     * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#saveTawSystemSubRoleRefPost(com.boco.eoms.commons.system.role.model.TawSystemSubRoleRefPost)
+     */
+    public void saveTawSystemSubRoleRefPost(TawSystemSubRoleRefPost tawSystemSubRoleRefPost) {
+        dao.saveTawSystemSubRoleRefPost(tawSystemSubRoleRefPost);
+    }
 
-	/* (non-Javadoc)
-	 * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#removeSubRoleRefPostByPostId(long)
-	 */
-	public void removeSubRoleRefPostByPostId(long postId) {
-		dao.removeSubRoleRefPostByPostId(postId);		
-	}
+    /* (non-Javadoc)
+     * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#getPostBySubRoleId(java.lang.String)
+     */
+    public List getPostBySubRoleId(String subRoleid) {
+        return dao.getPostBySubRoleId(subRoleid);
+    }
 
-	/* (non-Javadoc)
-	 * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#removeSubSoleRefPostBySubRoleId(java.lang.String)
-	 */
-	public void removeSubSoleRefPostBySubRoleId(String subRoleId) {
-		dao.removeSubSoleRefPostBySubRoleId(subRoleId);
-	}
+    /* (non-Javadoc)
+     * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#getSubRoleByPostId(long)
+     */
+    public List getSubRoleByPostId(long postId) {
+        return dao.getSubRoleByPostId(postId);
+    }
+
+    /* (non-Javadoc)
+     * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#removeSubRoleRefPostByPostId(long)
+     */
+    public void removeSubRoleRefPostByPostId(long postId) {
+        dao.removeSubRoleRefPostByPostId(postId);
+    }
+
+    /* (non-Javadoc)
+     * @see com.boco.eoms.commons.system.role.service.ITawSystemSubRoleRefPostManager#removeSubSoleRefPostBySubRoleId(java.lang.String)
+     */
+    public void removeSubSoleRefPostBySubRoleId(String subRoleId) {
+        dao.removeSubSoleRefPostBySubRoleId(subRoleId);
+    }
 
 }

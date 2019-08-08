@@ -53,73 +53,74 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Wed Jul 01 16:11:13 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() lvweihua
  * @moudle.getVersion() 1.0
- * 
  */
 public final class TrainRecordAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增培训记录
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增培训记录
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-    	String userId = this.getUser(request).getUserid();
-    	String dept = this.getUser(request).getDeptid();
-    	TrainRecordForm trainRecordForm = (TrainRecordForm)form;
-    	trainRecordForm.setTrainUser(userId);
-    	trainRecordForm.setTrainDept(dept);
-    	updateFormBean(mapping, request, trainRecordForm);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改培训记录
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String userId = this.getUser(request).getUserid();
+        String dept = this.getUser(request).getDeptid();
+        TrainRecordForm trainRecordForm = (TrainRecordForm) form;
+        trainRecordForm.setTrainUser(userId);
+        trainRecordForm.setTrainDept(dept);
+        updateFormBean(mapping, request, trainRecordForm);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改培训记录
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-    	TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		TrainRecord trainRecord = trainRecordMgr.getTrainRecord(id);
-		TrainRecordForm trainRecordForm = (TrainRecordForm) convert(trainRecord);
-		updateFormBean(mapping, request, trainRecordForm);
-		return mapping.findForward("edit");
-	}
-	
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        TrainRecord trainRecord = trainRecordMgr.getTrainRecord(id);
+        TrainRecordForm trainRecordForm = (TrainRecordForm) convert(trainRecord);
+        updateFormBean(mapping, request, trainRecordForm);
+        return mapping.findForward("edit");
+    }
+
     /**
      * 查看培训记录详情
+     *
      * @param mapping
      * @param form
      * @param request
@@ -128,125 +129,126 @@ public final class TrainRecordAction extends BaseAction {
      * @throws Exception
      */
     public ActionForward detail(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		TrainRecord trainRecord = trainRecordMgr.getTrainRecord(id);
-		TrainRecordForm trainRecordForm = (TrainRecordForm) convert(trainRecord);
-		updateFormBean(mapping, request, trainRecordForm);
-		return mapping.findForward("detail");
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        TrainRecord trainRecord = trainRecordMgr.getTrainRecord(id);
+        TrainRecordForm trainRecordForm = (TrainRecordForm) convert(trainRecord);
+        updateFormBean(mapping, request, trainRecordForm);
+        return mapping.findForward("detail");
     }
-    
-	/**
-	 * 保存培训记录
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		
-		TrainRecordForm trainRecordForm = (TrainRecordForm) form; 
-		TrainRecord trainRecord = (TrainRecord) convert(trainRecordForm);
-		trainRecord.setTrainUser(this.getUserId(request));
-		
-		boolean isNew = (null == trainRecordForm.getId() || "".equals(trainRecordForm.getId()));
-		if (isNew) {
-			trainRecordMgr.saveTrainRecord(trainRecord);
-		} else {
-			trainRecordMgr.saveTrainRecord(trainRecord);
-		}
-		return mapping.findForward("success");
-	}
-	
-	/**
-	 * 删除培训记录
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		trainRecordMgr.removeTrainRecord(id);
-		return mapping.findForward("success");
-	}
 
-	/**
-	 * 分页显示培训记录列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainRecordConstants.TRAINRECORD_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		Map map = (Map) trainRecordMgr.getTrainRecords(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 根据培训的培训时间段 ，名字和培训人查询培训记录 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward searchX(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainRecordConstants.TRAINRECORD_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		TrainRecordForm trainRecordForm = (TrainRecordForm)form;
-		String test = StaticMethod.null2String(request.getParameter("trainUserName"));
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String trainBeginTime = StaticMethod.null2String(request.getParameter("trainBeginTime"));
-		request.setAttribute("trainBeginTime", trainBeginTime);
-		Date beginTime = (Date)sdf.parse(trainBeginTime);
-		System.out.print(beginTime);
-		String trianEndTime = StaticMethod.null2String(request.getParameter("trianEndTime"));
-		request.setAttribute("trianEndTime", trianEndTime);
-		Date endTime = (Date)sdf.parse(trianEndTime);
-		System.out.print(test);
+    /**
+     * 保存培训记录
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+
+        TrainRecordForm trainRecordForm = (TrainRecordForm) form;
+        TrainRecord trainRecord = (TrainRecord) convert(trainRecordForm);
+        trainRecord.setTrainUser(this.getUserId(request));
+
+        boolean isNew = (null == trainRecordForm.getId() || "".equals(trainRecordForm.getId()));
+        if (isNew) {
+            trainRecordMgr.saveTrainRecord(trainRecord);
+        } else {
+            trainRecordMgr.saveTrainRecord(trainRecord);
+        }
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 删除培训记录
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        trainRecordMgr.removeTrainRecord(id);
+        return mapping.findForward("success");
+    }
+
+    /**
+     * 分页显示培训记录列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainRecordConstants.TRAINRECORD_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        Map map = (Map) trainRecordMgr.getTrainRecords(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    /**
+     * 根据培训的培训时间段 ，名字和培训人查询培训记录
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward searchX(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainRecordConstants.TRAINRECORD_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        TrainRecordForm trainRecordForm = (TrainRecordForm) form;
+        String test = StaticMethod.null2String(request.getParameter("trainUserName"));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String trainBeginTime = StaticMethod.null2String(request.getParameter("trainBeginTime"));
+        request.setAttribute("trainBeginTime", trainBeginTime);
+        Date beginTime = (Date) sdf.parse(trainBeginTime);
+        System.out.print(beginTime);
+        String trianEndTime = StaticMethod.null2String(request.getParameter("trianEndTime"));
+        request.setAttribute("trianEndTime", trianEndTime);
+        Date endTime = (Date) sdf.parse(trianEndTime);
+        System.out.print(test);
 //		List list = trainRecordMgr.getTrainRecords();
 //		List listRecord = new ArrayList();
 //		for(int i=0;i<list.size();i++){
@@ -258,111 +260,112 @@ public final class TrainRecordAction extends BaseAction {
 //			list.clear();
 //			list = listRecord;
 //		}
-		List list = trainRecordMgr.getTrainRecords(beginTime,endTime);
-		System.out.println("--------------action中----------------------"+list.size()+"--------------------------------------");
-		String trainUser = trainRecordForm.getTrainUser();
-		String trainName = trainRecordForm.getTrainName();
-		List listUser = new ArrayList();
-		List listName = new ArrayList();
-		try{
-			if(trainUser!=null&&!trainUser.trim().equals("")){
-				for(int i=0;i<list.size();i++){
-					TrainRecord trianRecord = (TrainRecord)list.get(i);
-					if(trainUser.equals(trianRecord.getTrainUser())){
-						listUser.add(trianRecord);
-					}
-				}
-				list.clear();
-				list=listUser;
-			}
-			if(trainName!=null&&!trainName.trim().equals("")){
-				for(int i=0;i<list.size();i++){
-					TrainRecord trianRecord = (TrainRecord)list.get(i);
-					if(trianRecord.getTrainName().indexOf(trainName)>-1){
-						listName.add(trianRecord);
-					}
-				}
-				list.clear();
-				list=listName;
-			}		 		  
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		System.out.println("--------------action中----------------------"+list.size()+"--------------------------------------");
-		request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
-		request.setAttribute("resultSize",new Integer(list.size()));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-	/**
-	 * 个人培训记录统计
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward searchPersonal(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainRecordConstants.TRAINRECORD_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		String startDate = StaticMethod.null2String(request.getParameter("startDate"));
-		String endDate = StaticMethod.null2String(request.getParameter("endDate"));
-		
-		//默认统计最近一周的记录
-		if("".equals(endDate)){
-			Date endDateTime = new Date(System.currentTimeMillis());			
-			java.util.Date startDateTime = StatisticMethod.countDate(endDateTime, -6);
+        List list = trainRecordMgr.getTrainRecords(beginTime, endTime);
+        System.out.println("--------------action中----------------------" + list.size() + "--------------------------------------");
+        String trainUser = trainRecordForm.getTrainUser();
+        String trainName = trainRecordForm.getTrainName();
+        List listUser = new ArrayList();
+        List listName = new ArrayList();
+        try {
+            if (trainUser != null && !trainUser.trim().equals("")) {
+                for (int i = 0; i < list.size(); i++) {
+                    TrainRecord trianRecord = (TrainRecord) list.get(i);
+                    if (trainUser.equals(trianRecord.getTrainUser())) {
+                        listUser.add(trianRecord);
+                    }
+                }
+                list.clear();
+                list = listUser;
+            }
+            if (trainName != null && !trainName.trim().equals("")) {
+                for (int i = 0; i < list.size(); i++) {
+                    TrainRecord trianRecord = (TrainRecord) list.get(i);
+                    if (trianRecord.getTrainName().indexOf(trainName) > -1) {
+                        listName.add(trianRecord);
+                    }
+                }
+                list.clear();
+                list = listName;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("--------------action中----------------------" + list.size() + "--------------------------------------");
+        request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
+        request.setAttribute("resultSize", new Integer(list.size()));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
 
-			endDate = StatisticMethod.dateToString(endDateTime, "yyyy-MM-dd");
-			startDate = StatisticMethod.dateToString(startDateTime, "yyyy-MM-dd");
-		}
-		
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		Map map = (Map) trainRecordMgr.getPersonalStatistics(pageIndex, pageSize, startDate, endDate);
-		List list = (List) map.get("result");
-		List listUser = new ArrayList();
-		//是否根据姓名查询统计
-		String trainUser = StaticMethod.null2String(request.getParameter("trainUser"));
-		if(!"".equals(trainUser)){
-			for(int i=0;i<list.size();i++){
-				TrainPersonalStatistic trainPersonalStatistic = (TrainPersonalStatistic)list.get(i);
-				if(trainUser.equals(trainPersonalStatistic.getTrainUser())){
-					listUser.add(trainPersonalStatistic);
-				}
-				list.clear();
-				list = listUser;
-			}
-		}
-		request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
-		
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
+    /**
+     * 个人培训记录统计
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward searchPersonal(ActionMapping mapping, ActionForm form,
+                                        HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainRecordConstants.TRAINRECORD_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        String startDate = StaticMethod.null2String(request.getParameter("startDate"));
+        String endDate = StaticMethod.null2String(request.getParameter("endDate"));
 
-		request.setAttribute("startDate", startDate);
-		request.setAttribute("endDate", endDate);
-		request.setAttribute("trainUser", trainUser);
-		return mapping.findForward("listPersonal");
-	}
-	
-	/**
-	 * 培训名称记录统计
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+        //默认统计最近一周的记录
+        if ("".equals(endDate)) {
+            Date endDateTime = new Date(System.currentTimeMillis());
+            java.util.Date startDateTime = StatisticMethod.countDate(endDateTime, -6);
+
+            endDate = StatisticMethod.dateToString(endDateTime, "yyyy-MM-dd");
+            startDate = StatisticMethod.dateToString(startDateTime, "yyyy-MM-dd");
+        }
+
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        Map map = (Map) trainRecordMgr.getPersonalStatistics(pageIndex, pageSize, startDate, endDate);
+        List list = (List) map.get("result");
+        List listUser = new ArrayList();
+        //是否根据姓名查询统计
+        String trainUser = StaticMethod.null2String(request.getParameter("trainUser"));
+        if (!"".equals(trainUser)) {
+            for (int i = 0; i < list.size(); i++) {
+                TrainPersonalStatistic trainPersonalStatistic = (TrainPersonalStatistic) list.get(i);
+                if (trainUser.equals(trainPersonalStatistic.getTrainUser())) {
+                    listUser.add(trainPersonalStatistic);
+                }
+                list.clear();
+                list = listUser;
+            }
+        }
+        request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
+
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+
+        request.setAttribute("startDate", startDate);
+        request.setAttribute("endDate", endDate);
+        request.setAttribute("trainUser", trainUser);
+        return mapping.findForward("listPersonal");
+    }
+
+    /**
+     * 培训名称记录统计
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward searchAll(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {
@@ -399,135 +402,138 @@ public final class TrainRecordAction extends BaseAction {
 //		return mapping.findForward("listAll");
 //	}
 //	
-	/**
-	 * 专业培训记录统计
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward searchSpecialty(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainRecordConstants.TRAINRECORD_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		String startDate = StaticMethod.null2String(request.getParameter("startDate"));
-		String endDate = StaticMethod.null2String(request.getParameter("endDate"));		
-		
-		//默认统计最近一周的记录
-		if("".equals(endDate)){
-			Date endDateTime = new Date(System.currentTimeMillis());			
-			java.util.Date startDateTime = StatisticMethod.countDate(endDateTime, -6);
 
-			endDate = StatisticMethod.dateToString(endDateTime, "yyyy-MM-dd");
-			startDate = StatisticMethod.dateToString(startDateTime, "yyyy-MM-dd");
-		}
-		
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		Map map = (Map) trainRecordMgr.getSpecialitylStatistics(pageIndex, pageSize, startDate, endDate);
-		List list = (List) map.get("result");
-		List listSpeciallity = new ArrayList();
-		//是否根据专业查询统计
-		String trainSpeciality = StaticMethod.null2String(request.getParameter("trainSpeciality"));
-		if(!"".equals(trainSpeciality)){
-			for(int i=0;i<list.size();i++){
-				TrainSpecialtyStatistic trainSpecialtyStatistic = (TrainSpecialtyStatistic)list.get(i);
-				if(trainSpeciality.equals(trainSpecialtyStatistic.getTrainSpeciality())){
-					listSpeciallity.add(trainSpecialtyStatistic);
-				}
-				list.clear();
-				list = listSpeciallity;
-			}
-		}
-		request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
+    /**
+     * 专业培训记录统计
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward searchSpecialty(ActionMapping mapping, ActionForm form,
+                                         HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainRecordConstants.TRAINRECORD_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        String startDate = StaticMethod.null2String(request.getParameter("startDate"));
+        String endDate = StaticMethod.null2String(request.getParameter("endDate"));
 
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
+        //默认统计最近一周的记录
+        if ("".equals(endDate)) {
+            Date endDateTime = new Date(System.currentTimeMillis());
+            java.util.Date startDateTime = StatisticMethod.countDate(endDateTime, -6);
 
-		request.setAttribute("startDate", startDate);
-		request.setAttribute("endDate", endDate);
-		request.setAttribute("trainSpeciality", trainSpeciality);
-		return mapping.findForward("listSpecialty");
-	}
-	
-	/**
-	 * 部门培训记录统计
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward searchDept(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				TrainRecordConstants.TRAINRECORD_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		String startDate = StaticMethod.null2String(request.getParameter("startDate"));
-		String endDate = StaticMethod.null2String(request.getParameter("endDate"));		
-		
-		//默认统计最近一周的记录
-		if("".equals(endDate)){
-			Date endDateTime = new Date(System.currentTimeMillis());			
-			java.util.Date startDateTime = StatisticMethod.countDate(endDateTime, -6);
+            endDate = StatisticMethod.dateToString(endDateTime, "yyyy-MM-dd");
+            startDate = StatisticMethod.dateToString(startDateTime, "yyyy-MM-dd");
+        }
 
-			endDate = StatisticMethod.dateToString(endDateTime, "yyyy-MM-dd");
-			startDate = StatisticMethod.dateToString(startDateTime, "yyyy-MM-dd");
-		}
-		
-		TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
-		Map map = (Map) trainRecordMgr.getDeptStatistics(pageIndex, pageSize, startDate, endDate);
-		List list = (List) map.get("result");
-		List listDept = new ArrayList();
-		//是否根据姓名查询统计
-		String trainDept = StaticMethod.null2String(request.getParameter("trainDept"));
-		if(!"".equals(trainDept)){
-			for(int i=0;i<list.size();i++){
-				TrainDeptStatistic trainDeptStatistic = (TrainDeptStatistic)list.get(i);
-				if(trainDept.equals(trainDeptStatistic.getTrainDept())){
-					listDept.add(trainDeptStatistic);
-				}
-				list.clear();
-				list = listDept;
-			}
-		}
-		request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        Map map = (Map) trainRecordMgr.getSpecialitylStatistics(pageIndex, pageSize, startDate, endDate);
+        List list = (List) map.get("result");
+        List listSpeciallity = new ArrayList();
+        //是否根据专业查询统计
+        String trainSpeciality = StaticMethod.null2String(request.getParameter("trainSpeciality"));
+        if (!"".equals(trainSpeciality)) {
+            for (int i = 0; i < list.size(); i++) {
+                TrainSpecialtyStatistic trainSpecialtyStatistic = (TrainSpecialtyStatistic) list.get(i);
+                if (trainSpeciality.equals(trainSpecialtyStatistic.getTrainSpeciality())) {
+                    listSpeciallity.add(trainSpecialtyStatistic);
+                }
+                list.clear();
+                list = listSpeciallity;
+            }
+        }
+        request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
 
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
 
-		request.setAttribute("startDate", startDate);
-		request.setAttribute("endDate", endDate);
-		request.setAttribute("trainDept", trainDept);
-		
-		return mapping.findForward("listDept");
-	}
-	
-	/**
-	 * 分页显示培训记录列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+        request.setAttribute("startDate", startDate);
+        request.setAttribute("endDate", endDate);
+        request.setAttribute("trainSpeciality", trainSpeciality);
+        return mapping.findForward("listSpecialty");
+    }
+
+    /**
+     * 部门培训记录统计
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward searchDept(ActionMapping mapping, ActionForm form,
+                                    HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                TrainRecordConstants.TRAINRECORD_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        String startDate = StaticMethod.null2String(request.getParameter("startDate"));
+        String endDate = StaticMethod.null2String(request.getParameter("endDate"));
+
+        //默认统计最近一周的记录
+        if ("".equals(endDate)) {
+            Date endDateTime = new Date(System.currentTimeMillis());
+            java.util.Date startDateTime = StatisticMethod.countDate(endDateTime, -6);
+
+            endDate = StatisticMethod.dateToString(endDateTime, "yyyy-MM-dd");
+            startDate = StatisticMethod.dateToString(startDateTime, "yyyy-MM-dd");
+        }
+
+        TrainRecordMgr trainRecordMgr = (TrainRecordMgr) getBean("trainRecordMgr");
+        Map map = (Map) trainRecordMgr.getDeptStatistics(pageIndex, pageSize, startDate, endDate);
+        List list = (List) map.get("result");
+        List listDept = new ArrayList();
+        //是否根据姓名查询统计
+        String trainDept = StaticMethod.null2String(request.getParameter("trainDept"));
+        if (!"".equals(trainDept)) {
+            for (int i = 0; i < list.size(); i++) {
+                TrainDeptStatistic trainDeptStatistic = (TrainDeptStatistic) list.get(i);
+                if (trainDept.equals(trainDeptStatistic.getTrainDept())) {
+                    listDept.add(trainDeptStatistic);
+                }
+                list.clear();
+                list = listDept;
+            }
+        }
+        request.setAttribute(TrainRecordConstants.TRAINRECORD_LIST, list);
+
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+
+        request.setAttribute("startDate", startDate);
+        request.setAttribute("endDate", endDate);
+        request.setAttribute("trainDept", trainDept);
+
+        return mapping.findForward("listDept");
+    }
+
+    /**
+     * 分页显示培训记录列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

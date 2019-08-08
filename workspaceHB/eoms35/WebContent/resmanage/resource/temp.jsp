@@ -1,11 +1,11 @@
-<%@page import="com.boco.eoms.resmanage.query.*"%>
-<%@page import="com.boco.eoms.resmanage.entity.*"%>
-<%@page import="mcs.common.db.*"%>
-<%@page import="java.util.*"%>
+<%@page import="com.boco.eoms.resmanage.query.*" %>
+<%@page import="com.boco.eoms.resmanage.entity.*" %>
+<%@page import="mcs.common.db.*" %>
+<%@page import="java.util.*" %>
 <%
-String a = "select * from edfdasfew fi_city=aferem and fdsalfejw fi_cityid = ";
+    String a = "select * from edfdasfew fi_city=aferem and fdsalfejw fi_cityid = ";
 
-int al = a.indexOf("fi_subjection");
+    int al = a.indexOf("fi_subjection");
 //out.println("SS"+al);
 /*
 int b = a.indexOf("fi_city")+"fi_city".length();
@@ -23,7 +23,7 @@ for(int i = 1; i < 22; i ++)
 %>
 <html>
 <head>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/table_style.css" type="text/css">
 </head>
 <body>
 </body>

@@ -1,13 +1,13 @@
 /**
  * _ReportInventoryRequest.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhhead.interfaces;
 
-public class _ReportInventoryRequest  implements java.io.Serializable {
+public class _ReportInventoryRequest implements java.io.Serializable {
     private java.lang.String codeA;
     private java.lang.String codeB;
     private int attNum;
@@ -58,6 +58,7 @@ public class _ReportInventoryRequest  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof _ReportInventoryRequest)) return false;
         _ReportInventoryRequest other = (_ReportInventoryRequest) obj;
@@ -68,25 +69,26 @@ public class _ReportInventoryRequest  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.codeA==null && other.getCodeA()==null) || 
-             (this.codeA!=null &&
-              this.codeA.equals(other.getCodeA()))) &&
-            ((this.codeB==null && other.getCodeB()==null) || 
-             (this.codeB!=null &&
-              this.codeB.equals(other.getCodeB()))) &&
-            this.attNum == other.getAttNum() &&
-            ((this.attachInfoList==null && other.getAttachInfoList()==null) || 
-             (this.attachInfoList!=null &&
-              this.attachInfoList.equals(other.getAttachInfoList()))) &&
-            ((this.noteReportInventory==null && other.getNoteReportInventory()==null) || 
-             (this.noteReportInventory!=null &&
-              this.noteReportInventory.equals(other.getNoteReportInventory())));
+        _equals = true &&
+                ((this.codeA == null && other.getCodeA() == null) ||
+                        (this.codeA != null &&
+                                this.codeA.equals(other.getCodeA()))) &&
+                ((this.codeB == null && other.getCodeB() == null) ||
+                        (this.codeB != null &&
+                                this.codeB.equals(other.getCodeB()))) &&
+                this.attNum == other.getAttNum() &&
+                ((this.attachInfoList == null && other.getAttachInfoList() == null) ||
+                        (this.attachInfoList != null &&
+                                this.attachInfoList.equals(other.getAttachInfoList()))) &&
+                ((this.noteReportInventory == null && other.getNoteReportInventory() == null) ||
+                        (this.noteReportInventory != null &&
+                                this.noteReportInventory.equals(other.getNoteReportInventory())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

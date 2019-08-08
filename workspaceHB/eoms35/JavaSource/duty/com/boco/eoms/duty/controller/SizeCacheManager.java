@@ -1,4 +1,4 @@
-﻿//---------------------------------------------------------
+//---------------------------------------------------------
 // Application: Application Name
 // Author     : Author
 // File       : SizeCacheManager.java
@@ -14,13 +14,13 @@ package com.boco.eoms.duty.controller;
 import com.boco.eoms.common.util.CacheManager;
 
 public class SizeCacheManager {
-  private static CacheManager cacheManager = new CacheManager(CacheManager.LRU);
+    private static CacheManager cacheManager = new CacheManager(CacheManager.LRU);
 
-  public static Object getCache(String identifier) {
-    return cacheManager.getCache(identifier);
-  }
+    public static Object getCache(String identifier) {
+        return cacheManager.getCache(identifier);
+    }
 
-  public static void putCache(Object object, String id, int minutesToLive) {
-    cacheManager.putCache(object, id, minutesToLive);
-  }
+    public static void putCache(Object object, String id, int minutesToLive) {
+        cacheManager.putCache(object, id, minutesToLive);
+    }
 }

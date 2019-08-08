@@ -1,9 +1,10 @@
 /**
- * 
+ *
  */
 package com.boco.eoms.commons.transaction.test;
 
 // apache library
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
@@ -30,8 +31,7 @@ public class TstTransMain extends Thread {
 
         try {
             _objTstTransAction.execute(null, _objForm, null, null);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             if (log.isErrorEnabled()) {
                 log
                         .error("Fail to execute _objTstTransAction.execute(...), error message is: ["
@@ -45,7 +45,7 @@ public class TstTransMain extends Thread {
                 .getLog(com.boco.eoms.commons.transaction.test.TstTransMain.class);
     }
 
- 
+
     /**
      * @return the m_objForm
      */

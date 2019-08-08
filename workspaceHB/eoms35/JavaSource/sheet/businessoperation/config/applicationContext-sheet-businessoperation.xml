@@ -1,121 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--BusinessOperation-START-->    
+    <!--BusinessOperation-START-->
 
     <bean id="IBusinessOperationMainDAO"
-		class="com.boco.eoms.sheet.businessoperation.dao.hibernate.BusinessOperationMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IBusinessOperationLinkDAO"
-		class="com.boco.eoms.sheet.businessoperation.dao.hibernate.BusinessOperationLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IBusinessOperationTaskDAO"
-		class="com.boco.eoms.sheet.businessoperation.dao.hibernate.BusinessOperationTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="BusinessOperationTask"
-		class="com.boco.eoms.sheet.businessoperation.model.BusinessOperationTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.businessoperation.dao.hibernate.BusinessOperationMainDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="IBusinessOperationLinkDAO"
+          class="com.boco.eoms.sheet.businessoperation.dao.hibernate.BusinessOperationLinkDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="IBusinessOperationTaskDAO"
+          class="com.boco.eoms.sheet.businessoperation.dao.hibernate.BusinessOperationTaskDAOHibernate"
+          autowire="byName">
+    </bean>
+    <bean id="BusinessOperationTask"
+          class="com.boco.eoms.sheet.businessoperation.model.BusinessOperationTask" autowire="byName">
+    </bean>
     <bean id="BusinessOperationLink"
-		class="com.boco.eoms.sheet.businessoperation.model.BusinessOperationLink"
-		autowire="byName" />
-	<bean id="BusinessOperationMain"
-		class="com.boco.eoms.sheet.businessoperation.model.BusinessOperationMain"
-		autowire="byName" />
-	<bean id="ibusinessoperationTask"
-		class="com.boco.eoms.sheet.businessoperation.task.impl.BusinessOperationTaskImpl"
-		autowire="byName" />
-	<bean id="ibusinessoperationTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationTaskManagerImpl">
-				<property name="taskModelObject" ref="BusinessOperationTask" />
-				<property name="taskDAO">
-					<ref bean="IBusinessOperationTaskDAO" />
-				</property>
-			 <property name="taskConfigPath">
-			       <value>/config/businessoperationTaskConfig.properties</value>
-		        </property>	
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iBusinessOperationFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iBusinessOperationLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationLinkManagerImpl">
-				<property name="linkObject" ref="BusinessOperationLink"/>
-				<property name="linkDAO">
-				  <ref bean="IBusinessOperationLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iBusinessOperationMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationMainManagerImpl">
-			    <property name="mainObject" ref="BusinessOperationMain" />
-				<property name="mainDAO">
-				 <ref bean="IBusinessOperationMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iBusinessOperationQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>BusinessOperationProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/businessoperation-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.businessoperation.model.BusinessOperationLink"
+          autowire="byName"/>
+    <bean id="BusinessOperationMain"
+          class="com.boco.eoms.sheet.businessoperation.model.BusinessOperationMain"
+          autowire="byName"/>
+    <bean id="ibusinessoperationTask"
+          class="com.boco.eoms.sheet.businessoperation.task.impl.BusinessOperationTaskImpl"
+          autowire="byName"/>
+    <bean id="ibusinessoperationTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationTaskManagerImpl">
+                <property name="taskModelObject" ref="BusinessOperationTask"/>
+                <property name="taskDAO">
+                    <ref bean="IBusinessOperationTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/businessoperationTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBusinessOperationFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBusinessOperationLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationLinkManagerImpl">
+                <property name="linkObject" ref="BusinessOperationLink"/>
+                <property name="linkDAO">
+                    <ref bean="IBusinessOperationLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iBusinessOperationMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.businessoperation.service.impl.BusinessOperationMainManagerImpl">
+                <property name="mainObject" ref="BusinessOperationMain"/>
+                <property name="mainDAO">
+                    <ref bean="IBusinessOperationMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iBusinessOperationQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>BusinessOperationProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/businessoperation-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iBusinessOperationQo"
-		class="com.boco.eoms.sheet.businessoperation.qo.impl.BusinessOperationQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="BusinessOperationMain" />
-		<property name="poLink" value="BusinessOperationLink" />
-		<property name="aliasMain" value="businessOperationMain" />
-		<property name="aliasLink" value="businessOperationLink" />
-		<property name="poTask" value="BusinessOperationTask" />
-	    <property name="aliasTask" value="businessOperationTask" />				
-	</bean>
+    <bean id="iBusinessOperationQo"
+          class="com.boco.eoms.sheet.businessoperation.qo.impl.BusinessOperationQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="BusinessOperationMain"/>
+        <property name="poLink" value="BusinessOperationLink"/>
+        <property name="aliasMain" value="businessOperationMain"/>
+        <property name="aliasLink" value="businessOperationLink"/>
+        <property name="poTask" value="BusinessOperationTask"/>
+        <property name="aliasTask" value="businessOperationTask"/>
+    </bean>
 
-	<bean id="BusinessOperation" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.businessoperation.webapp.action.BusinessOperationMethod">
-				<property name="businessFlowService" >
-					<ref bean="iBusinessOperationFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iBusinessOperationLinkManager" />
-				<property name="mainService"
-					ref="iBusinessOperationMainManager" />
-				<property name="sheetTask"
-					ref="BusinessOperationTask" />
-				<property name="taskService"
-					ref="ibusinessoperationTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/businessoperation-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
-     <!--BusinessOperation-END-->  
+    <bean id="BusinessOperation" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.businessoperation.webapp.action.BusinessOperationMethod">
+                <property name="businessFlowService">
+                    <ref bean="iBusinessOperationFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iBusinessOperationLinkManager"/>
+                <property name="mainService"
+                          ref="iBusinessOperationMainManager"/>
+                <property name="sheetTask"
+                          ref="BusinessOperationTask"/>
+                <property name="taskService"
+                          ref="ibusinessoperationTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/businessoperation-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--BusinessOperation-END-->
 </beans>

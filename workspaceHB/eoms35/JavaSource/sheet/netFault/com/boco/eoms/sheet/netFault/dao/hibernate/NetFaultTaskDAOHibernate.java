@@ -11,5 +11,5 @@ import com.boco.eoms.sheet.base.util.Constants;
 import com.boco.eoms.sheet.netFault.dao.INetFaultTaskDAO;
 
 public class NetFaultTaskDAOHibernate extends TaskDAOImpl implements INetFaultTaskDAO {
-	
+
 }

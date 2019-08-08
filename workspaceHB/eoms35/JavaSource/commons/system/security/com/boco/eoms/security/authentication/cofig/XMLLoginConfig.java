@@ -13,6 +13,7 @@ package com.boco.eoms.security.authentication.cofig;
  * <p>Description: Parser the login configuration file </p>
  * <p>Copyright: Copyright (c) 2003 boco Co.,Ltd</p>
  * <p>Company: BOCO</p>
+ *
  * @author Wang Zhuo Wei
  * @version 1.0
  */

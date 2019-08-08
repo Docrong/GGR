@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,20 +13,20 @@
             table="taw_system_deptrefpost"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-	<generator class="increment">
+            <generator class="increment">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="deptId"
+                name="deptId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -35,7 +35,7 @@
         </property>
 
         <property
-            name="postId"
+                name="postId"
                 length="10"
                 not-null="false"
                 unique="true"
@@ -43,7 +43,7 @@
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

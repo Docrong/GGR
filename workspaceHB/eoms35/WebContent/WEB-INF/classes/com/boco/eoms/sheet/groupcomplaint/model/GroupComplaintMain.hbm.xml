@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,106 +13,106 @@
             table="groupcomplaint_main"
     >
 
-    <id
-        name="id"
-            column="id"
-        
-    >
+        <id
+                name="id"
+                column="id"
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+        >
 
-    </generator>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </id>
-        <property name="sheetId" />
-		<property name="title" />
-		<property name="sheetAcceptLimit" />
-		<property name="sheetCompleteLimit" />
-		<property name="sendTime" />
-		<property name="sendOrgType" />
-		<property name="sendUserId" />
-		<property name="sendDeptId" />
-		<property name="sendRoleId" />
-		<property name="sendContact" />
-		<property name="endTime" />
-		<property name="endResult" />
-		<property name="status" />
-		<property name="holdStatisfied" />
-		<property name="endUserId" />
-		<property name="endDeptId" />
-		<property name="endRoleId" />
-		<property name="deleted" />
-		<property name="piid" />
-		<property name="parentSheetName" />
-		<property name="parentSheetId" />
-		<property name="sheetTemplateName" />
-		<property name="sheetAccessories" />
-		<property name="correlationKey" />
-		<property name="parentCorrelation" />
-		<property name="toDeptId" />		
-		<property name="templateFlag" />
-		<property name="cancelReason" />		
-		<property name="invokeMode" />
-		
-		<property name="dealTime1" />
-		<property name="dealTime2" />		
-		<property name="customNo" />
-		<property name="customName" />
-		<property name="customLevel" />
-		<property name="provinceName" />
-		<property name="cityName" />
-		<property name="countyName" />
-		<property name="bdeptContact" />
-		<property name="bdeptContactPhone" />		
-		<property name="cmanagerPhone" />
-		<property name="cmanagerContactPhone" />
-		<property name="customContact" />
-		<property name="customContactPhone" />
-		<property name="productName" />
-		<property name="urgentDegree" />
+            </generator>
+
+        </id>
+        <property name="sheetId"/>
+        <property name="title"/>
+        <property name="sheetAcceptLimit"/>
+        <property name="sheetCompleteLimit"/>
+        <property name="sendTime"/>
+        <property name="sendOrgType"/>
+        <property name="sendUserId"/>
+        <property name="sendDeptId"/>
+        <property name="sendRoleId"/>
+        <property name="sendContact"/>
+        <property name="endTime"/>
+        <property name="endResult"/>
+        <property name="status"/>
+        <property name="holdStatisfied"/>
+        <property name="endUserId"/>
+        <property name="endDeptId"/>
+        <property name="endRoleId"/>
+        <property name="deleted"/>
+        <property name="piid"/>
+        <property name="parentSheetName"/>
+        <property name="parentSheetId"/>
+        <property name="sheetTemplateName"/>
+        <property name="sheetAccessories"/>
+        <property name="correlationKey"/>
+        <property name="parentCorrelation"/>
+        <property name="toDeptId"/>
+        <property name="templateFlag"/>
+        <property name="cancelReason"/>
+        <property name="invokeMode"/>
+
+        <property name="dealTime1"/>
+        <property name="dealTime2"/>
+        <property name="customNo"/>
+        <property name="customName"/>
+        <property name="customLevel"/>
+        <property name="provinceName"/>
+        <property name="cityName"/>
+        <property name="countyName"/>
+        <property name="bdeptContact"/>
+        <property name="bdeptContactPhone"/>
+        <property name="cmanagerPhone"/>
+        <property name="cmanagerContactPhone"/>
+        <property name="customContact"/>
+        <property name="customContactPhone"/>
+        <property name="productName"/>
+        <property name="urgentDegree"/>
         <!-- 预留字段 -->
-		<property name="bservType" />		
-		
-		<property name="affectedAreas" />
-		<property name="customAttribution" />
-		<property name="complaintTime" />
-		<property name="complaintNum" />	
-		<property name="faultTime" />
-		<property name="complaintLoca" />		
-		<property name="termType" />
-		<property name="complaintDesc" />
-		<property name="preDealResult" />		
-		<property name="enterpriseCode" />
-		<property name="serverCode" />				
-		<property name="apnName" />							
-		<property name="circuitCode" />
-		<property name="ecsiType" />		
-		<property name="connectType" />		
+        <property name="bservType"/>
 
-		<property name="mainInterfaceSheetType" />
-		<property name="mainIfDeferResolve" />
-		<property name="mainCompleteLimitT1" />
-		<property name="mainCompleteLimitT2" />
-		<property name="mainQcRejectTimes" />
-		<property name="mainIfRecord" />
-		<property name="mainDelayFlag" />
-		<property name="mainLastRepeatTime" />
-		<property name="mainCheckResult" />
-		<property name="mainCheckIdea" />
-		<property name="mainIfCheck" />
-		
-	 	<property name="sendYear" />
-		<property name="sendMonth" />
-        <property name="sendDay" />
-  		<property name="parentPhaseName" />
-  		
-  		<property name="mainIfSelf" />
-        <property name="mainIfMatch" />
-  		<property name="mainCommSheetId" />
- 		
-  		  		
-    </class>    
+        <property name="affectedAreas"/>
+        <property name="customAttribution"/>
+        <property name="complaintTime"/>
+        <property name="complaintNum"/>
+        <property name="faultTime"/>
+        <property name="complaintLoca"/>
+        <property name="termType"/>
+        <property name="complaintDesc"/>
+        <property name="preDealResult"/>
+        <property name="enterpriseCode"/>
+        <property name="serverCode"/>
+        <property name="apnName"/>
+        <property name="circuitCode"/>
+        <property name="ecsiType"/>
+        <property name="connectType"/>
+
+        <property name="mainInterfaceSheetType"/>
+        <property name="mainIfDeferResolve"/>
+        <property name="mainCompleteLimitT1"/>
+        <property name="mainCompleteLimitT2"/>
+        <property name="mainQcRejectTimes"/>
+        <property name="mainIfRecord"/>
+        <property name="mainDelayFlag"/>
+        <property name="mainLastRepeatTime"/>
+        <property name="mainCheckResult"/>
+        <property name="mainCheckIdea"/>
+        <property name="mainIfCheck"/>
+
+        <property name="sendYear"/>
+        <property name="sendMonth"/>
+        <property name="sendDay"/>
+        <property name="parentPhaseName"/>
+
+        <property name="mainIfSelf"/>
+        <property name="mainIfMatch"/>
+        <property name="mainCommSheetId"/>
+
+
+    </class>
 
 </hibernate-mapping>
 

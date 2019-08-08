@@ -1,13 +1,13 @@
 /**
  * _IsAliveResponse.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhhead.interfaces;
 
-public class _IsAliveResponse  implements java.io.Serializable {
+public class _IsAliveResponse implements java.io.Serializable {
     private java.lang.String resultIsAlive;
 
     public _IsAliveResponse() {
@@ -22,6 +22,7 @@ public class _IsAliveResponse  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof _IsAliveResponse)) return false;
         _IsAliveResponse other = (_IsAliveResponse) obj;
@@ -32,15 +33,16 @@ public class _IsAliveResponse  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.resultIsAlive==null && other.getResultIsAlive()==null) || 
-             (this.resultIsAlive!=null &&
-              this.resultIsAlive.equals(other.getResultIsAlive())));
+        _equals = true &&
+                ((this.resultIsAlive == null && other.getResultIsAlive() == null) ||
+                        (this.resultIsAlive != null &&
+                                this.resultIsAlive.equals(other.getResultIsAlive())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

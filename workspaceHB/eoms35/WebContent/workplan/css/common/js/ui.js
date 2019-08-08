@@ -1,452 +1,476 @@
 /********************************************************************************
- Copyright (c) 2004-2005,ÒÚÑôÐÅÍ¨ÍøÂçÊÂÒµ²¿IPÍø¹Ü
+ Copyright (c) 2004-2005,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½
  All rights reserved.
- Filename £ºui.js
- Abstract £ºWEB½çÃæÏà¹Ø²Ù×÷·½·¨¼¯
- Version¡¡£º1.1
- Author   £ºLiu Guoyuan
- Finished Date £º2004-04-08
- Last Modified £º2004-08-12
- 
- ¸üÐÂ¼ÇÂ¼£º
- 2004-04-22 v1.1
-   setLabelAction() ÐÞ¸Ä£¬ÉèÖÃ±êÇ©(LABEL)Ä¬ÈÏ¶¯×÷£º½«±êÇ©Óë¸Ã±êÇ©µÚÒ»¸ö×Ó¶ÔÏó°ó¶¨£¬Ê¹¸Ã·½·¨ÍêÃÀ¡£
-   ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ ¡¡¡¡¡¡´Ë·½·¨±ØÐëÔÚbody.onloadÊÂ¼þÖÐ×îÏÈÖ´ÐÐ£¬·ñÔòÔÚÍâ²¿Ö¸¶¨µÄLABELÖÐµÚÒ»¸ö×Ó¶ÔÏóµÄÊÂ¼þ½«Ê§Ð§
-   Ìí¼Ó getItemText() ·½·¨,  »ñÈ¡Ö¸¶¨ÔªËØÎÄ±¾
-   
- 2004-04-20 v1.1
-   ÐÞ¸Ä getItemValue() ·½·¨Ìí¼ÓisChar(ÊÇ·ñ×Ö·û)²ÎÊý£¬ÎªtrueÔÚvalueÇ°ºó¼ÓÉÏ'value'
- 
- 2004-04-17 v1.1
-   Ìí¼Ó getParent() ·½·¨
- 
- 2004-04-16 v1.1
-   Ìí¼Ó setSelectItem() ·½·¨,  ÉèÖÃ¶ÔÏó(²Ëµ¥¡¢¸´Ñ¡¿ò¡¢µ¥Ñ¡¿ò)µÄÄ¬ÈÏÑ¡ÖÐ×´Ì¬¡£
-   Ìí¼Ó getItemValue() ·½·¨,   »ñÈ¡Ö¸¶¨¶ÔÏó(²Ëµ¥¡¢¸´Ñ¡¿ò¡¢µ¥Ñ¡¿ò)Öµ
-   Ìí¼Ó setComboBox() ·½·¨,    ½«ÎÄ±¾ÊäÈë¿òºÍÑ¡Ôñ²Ëµ¥°ó¶¨ÎªComboBox²Ëµ¥£¨¿É±à¼­²Ëµ¥£©
-   
- 2004-04-08 v1.0 ´´½¨
-   addItem()
-   removeItem()
-   addAllItem()
-   removeAllItem()
-   selectAllItem()
-   selectAllCheckBox(() ÉèÖÃcheckboxÑ¡ÖÐ×´Ì¬
-   setCheckAllAction()  °ó¶¨È«Ñ¡¿ò¼°ÐèÒª¼à¿ØµÄ¸´Ñ¡¿ò(²Ëµ¥)
-   setLabelAction()     ÉèÖÃ±êÇ©(LABEL)Ä¬ÈÏ¶¯×÷£ºµã»÷±êÇ©Ê±µ÷ÓÃ¸Ã±êÇ©µÚÒ»¸ö×Ó¶ÔÏóµÄclickÊÂ¼þ
-   
-********************************************************************************/
+ Filename ï¿½ï¿½ui.js
+ Abstract ï¿½ï¿½WEBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ Versionï¿½ï¿½ï¿½ï¿½1.1
+ Author   ï¿½ï¿½Liu Guoyuan
+ Finished Date ï¿½ï¿½2004-04-08
+ Last Modified ï¿½ï¿½2004-08-12
 
-//¶ÁÈ¡¹«¹²¿â
-function _loadJS(src){
-	var script=document.getElementsByTagName("SCRIPT");
-	for(var i=0;i<script.length;i++){
-		var s=script[i].src;
-		if(s.indexOf(src)>=0) return;
-		if(s.indexOf("/common/js/ui.js")!=-1){jsPath=s.replace("ui.js","")}
-	}
-	var oScript = document.createElement("<SCRIPT>");
-	oScript.src = jsPath+src;
-	script[0].insertAdjacentElement("afterEnd",oScript);
+ ï¿½ï¿½ï¿½Â¼ï¿½Â¼ï¿½ï¿½
+ 2004-04-22 v1.1
+ setLabelAction() ï¿½Þ¸Ä£ï¿½ï¿½ï¿½ï¿½Ã±ï¿½Ç©(LABEL)Ä¬ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½Ã±ï¿½Ç©ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ó¶¨£ï¿½Ê¹ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½body.onloadï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿Ö¸ï¿½ï¿½ï¿½ï¿½LABELï¿½Ðµï¿½Ò»ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ê§Ð§
+ ï¿½ï¿½ï¿½ getItemText() ï¿½ï¿½ï¿½ï¿½,  ï¿½ï¿½È¡Ö¸ï¿½ï¿½Ôªï¿½ï¿½ï¿½Ä±ï¿½
+
+ 2004-04-20 v1.1
+ ï¿½Þ¸ï¿½ getItemValue() ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½isChar(ï¿½Ç·ï¿½ï¿½Ö·ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªtrueï¿½ï¿½valueÇ°ï¿½ï¿½ï¿½ï¿½ï¿½'value'
+
+ 2004-04-17 v1.1
+ ï¿½ï¿½ï¿½ getParent() ï¿½ï¿½ï¿½ï¿½
+
+ 2004-04-16 v1.1
+ ï¿½ï¿½ï¿½ setSelectItem() ï¿½ï¿½ï¿½ï¿½,  ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½(ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ò¡¢µï¿½Ñ¡ï¿½ï¿½)ï¿½ï¿½Ä¬ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬ï¿½ï¿½
+ ï¿½ï¿½ï¿½ getItemValue() ï¿½ï¿½ï¿½ï¿½,   ï¿½ï¿½È¡Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ò¡¢µï¿½Ñ¡ï¿½ï¿½)Öµ
+ ï¿½ï¿½ï¿½ setComboBox() ï¿½ï¿½ï¿½ï¿½,    ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ëµï¿½ï¿½ï¿½ÎªComboBoxï¿½Ëµï¿½ï¿½ï¿½ï¿½É±à¼­ï¿½Ëµï¿½ï¿½ï¿½
+
+ 2004-04-08 v1.0 ï¿½ï¿½ï¿½ï¿½
+ addItem()
+ removeItem()
+ addAllItem()
+ removeAllItem()
+ selectAllItem()
+ selectAllCheckBox(() ï¿½ï¿½ï¿½ï¿½checkboxÑ¡ï¿½ï¿½×´Ì¬
+ setCheckAllAction()  ï¿½ï¿½È«Ñ¡ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ØµÄ¸ï¿½Ñ¡ï¿½ï¿½(ï¿½Ëµï¿½)
+ setLabelAction()     ï¿½ï¿½ï¿½Ã±ï¿½Ç©(LABEL)Ä¬ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©Ê±ï¿½ï¿½ï¿½Ã¸Ã±ï¿½Ç©ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½clickï¿½Â¼ï¿½
+
+ ********************************************************************************/
+
+//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+function _loadJS(src) {
+    var script = document.getElementsByTagName("SCRIPT");
+    for (var i = 0; i < script.length; i++) {
+        var s = script[i].src;
+        if (s.indexOf(src) >= 0) return;
+        if (s.indexOf("/common/js/ui.js") != -1) {
+            jsPath = s.replace("ui.js", "")
+        }
+    }
+    var oScript = document.createElement("<SCRIPT>");
+    oScript.src = jsPath + src;
+    script[0].insertAdjacentElement("afterEnd", oScript);
 }
+
 _loadJS("lib.js");
 
 /*****************************
-  Ôö¼Ó²Ëµ¥Ïî£¬²ÎÊý(Ô´selectÃû³Æ£¬Ä¿±êselectÃû³Æ)
-******************************/
-function addItem(source,dest){
-  source = getObject(source);
-  dest = getObject(dest);
-  var i=0;
-  var soulen=source.options.length-1;
-  var j=0;
-  var deslen=dest.options.length-1;
+ ï¿½ï¿½ï¿½Ó²Ëµï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½(Ô´selectï¿½ï¿½ï¿½Æ£ï¿½Ä¿ï¿½ï¿½selectï¿½ï¿½ï¿½ï¿½)
+ ******************************/
+function addItem(source, dest) {
+    source = getObject(source);
+    dest = getObject(dest);
+    var i = 0;
+    var soulen = source.options.length - 1;
+    var j = 0;
+    var deslen = dest.options.length - 1;
 
-  if(deslen==0){
-    if(dest.options[0].value=="nothing"){
-      dest.options[0]=null;
-      deslen-=1;
+    if (deslen == 0) {
+        if (dest.options[0].value == "nothing") {
+            dest.options[0] = null;
+            deslen -= 1;
+        }
     }
-  }
-  while(i<=soulen) {
-    bflag=true;
-    addvalue=source.options[i].value;
-    if(source.options[i].selected&&addvalue!="") {
-     for (j=0; j<=deslen; j++){
-      if (dest.options[j].value==addvalue){
-        bflag=false;
-        break;
-      }
-     }
-     if (bflag) {
-       var sText = source.options[i].text+"";
-       sText = sText.replace(" ©¸","");
-       var test1=new Option(sText,addvalue);
-       dest.options[++deslen]=test1;
-     }
+    while (i <= soulen) {
+        bflag = true;
+        addvalue = source.options[i].value;
+        if (source.options[i].selected && addvalue != "") {
+            for (j = 0; j <= deslen; j++) {
+                if (dest.options[j].value == addvalue) {
+                    bflag = false;
+                    break;
+                }
+            }
+            if (bflag) {
+                var sText = source.options[i].text + "";
+                sText = sText.replace(" ï¿½ï¿½", "");
+                var test1 = new Option(sText, addvalue);
+                dest.options[++deslen] = test1;
+            }
+        }
+        i++;
     }
-    i++;
-  }
 }
 
-//É¾³ýÖ¸¶¨Ñ¡Ôñ²Ëµ¥µÄÒÑÑ¡ÖÐÑ¡Ïî
-function removeItem(dest){
- dest = getObject(dest);
- var j=0;
- var deslen=dest.options.length-1;
- while(j<=deslen) {
-    if(dest.options[j].selected) {
-     dest.options[j]=null;
-     j--;
-     deslen--;
-   }
-   j++;
-  }
-}
-//Ìí¼ÓÖ¸¶¨Ñ¡Ôñ²Ëµ¥µÄÈ«²¿Ñ¡Ïîµ½Ä¿±ê²Ëµ¥
-function addAllItem(source,dest){
-  source = getObject(source);
-  dest = getObject(dest);
-  var i=0;
-  var soulen=source.options.length-1;
-  var j=0;
-  var deslen=dest.options.length-1;
-  if(deslen==0){
-    if(dest.options[0].value=="nothing") {
-      dest.options[0]=null;
-      deslen-=1;
+//É¾ï¿½ï¿½Ö¸ï¿½ï¿½Ñ¡ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ñ¡ï¿½ï¿½
+function removeItem(dest) {
+    dest = getObject(dest);
+    var j = 0;
+    var deslen = dest.options.length - 1;
+    while (j <= deslen) {
+        if (dest.options[j].selected) {
+            dest.options[j] = null;
+            j--;
+            deslen--;
+        }
+        j++;
     }
-  }
-  for (var i=0;i<=soulen;i++) {
-    bflag=true;
-    addvalue=source.options[i].value;
-    if (addvalue=="-1"||addvalue==""){
-      continue;
-    }
-
-    for (var j=0; j<=deslen; j++){
-      if (dest.options[j].value==addvalue){
-        bflag=false;
-        break;
-      }
-    }
-
-    if (bflag) {
-      var sText = source.options[i].text+"";
-      sText = sText.replace(" ©¸","");
-      var test1=new Option(sText,addvalue);
-      dest.options[++deslen]=test1;
-    }
-  }
 }
 
-//É¾³ýÑ¡Ôñ²Ëµ¥ÖÐµÄÈ«²¿Ñ¡Ïî
-function removeAllItem(dest){
-  delAllItem(dest);
-  }function delAllItem(dest){
-   dest = getObject(dest);
-   while(dest.options.length>0) dest.options[0]=null;
+//ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ñ¡ï¿½ï¿½Ëµï¿½ï¿½ï¿½È«ï¿½ï¿½Ñ¡ï¿½îµ½Ä¿ï¿½ï¿½Ëµï¿½
+function addAllItem(source, dest) {
+    source = getObject(source);
+    dest = getObject(dest);
+    var i = 0;
+    var soulen = source.options.length - 1;
+    var j = 0;
+    var deslen = dest.options.length - 1;
+    if (deslen == 0) {
+        if (dest.options[0].value == "nothing") {
+            dest.options[0] = null;
+            deslen -= 1;
+        }
+    }
+    for (var i = 0; i <= soulen; i++) {
+        bflag = true;
+        addvalue = source.options[i].value;
+        if (addvalue == "-1" || addvalue == "") {
+            continue;
+        }
+
+        for (var j = 0; j <= deslen; j++) {
+            if (dest.options[j].value == addvalue) {
+                bflag = false;
+                break;
+            }
+        }
+
+        if (bflag) {
+            var sText = source.options[i].text + "";
+            sText = sText.replace(" ï¿½ï¿½", "");
+            var test1 = new Option(sText, addvalue);
+            dest.options[++deslen] = test1;
+        }
+    }
 }
 
-//ÉèÖÃ²Ëµ¥ÏîÄ¿µÄÑ¡ÖÐ×´Ì¬
-function selectAllItem(objName,flag){
-  var obj = getObject(objName);
-  count=obj.options.length
-  if (count==0) return;
-  if (!obj.multiple){//µ¥Ñ¡
-    obj.options[0].selected = flag;
-    return;
-  }
-  for (i=0;i<count;i++){
-    obj.options[i].selected = flag;
-  }
+//É¾ï¿½ï¿½Ñ¡ï¿½ï¿½Ëµï¿½ï¿½Ðµï¿½È«ï¿½ï¿½Ñ¡ï¿½ï¿½
+function removeAllItem(dest) {
+    delAllItem(dest);
+}
+
+function delAllItem(dest) {
+    dest = getObject(dest);
+    while (dest.options.length > 0) dest.options[0] = null;
+}
+
+//ï¿½ï¿½ï¿½Ã²Ëµï¿½ï¿½ï¿½Ä¿ï¿½ï¿½Ñ¡ï¿½ï¿½×´Ì¬
+function selectAllItem(objName, flag) {
+    var obj = getObject(objName);
+    count = obj.options.length
+    if (count == 0) return;
+    if (!obj.multiple) {//ï¿½ï¿½Ñ¡
+        obj.options[0].selected = flag;
+        return;
+    }
+    for (i = 0; i < count; i++) {
+        obj.options[i].selected = flag;
+    }
 }
 
 /**********************************************
-º¯Êý¹¦ÄÜ£ºÑ¡ÖÐ²Ëµ¥(¸´Ñ¡¿ò¡¢µ¥Ñ¡¿ò)¼ÇÂ¼
-  ²ÎÊýËµÃ÷£º
-  objName:
-     ²Ëµ¥Ãû³Æ,¿ÉÓÃÈ«Ãû,Èç£º"document.form1.selMenu",Ò²¿ÉÓÃËõÐ´£¬Èç"selMenu"
-  strValue:¡¡Êý×Ö»ò×Ö·û
-     Öµ£¬ÓÃÓÚÓë²Ëµ¥ÖµÆ¥Åä£¬¸ÃÄÚÈÝÒ»°ãÀ´×ÔÊý¾Ý¿âÖÐ£¬Èç¹û²Ëµ¥Îª¶àÑ¡£¬ÔòÊýÖµÖ®¼äÓÃ¡°,¡±(¶ººÅ)·Ö¸ô£¬Èç"24,33,25,23"
-**********************************************/
-function setSelectItem(objName,strValue){
-  var numargs = arguments.length; //·µ»ØµÄ²ÎÊýÊýÁ¿
-  var sourceObject;               //½øÐÐÆ¥ÅäµÄ²Ëµ¥¶ÔÏó
-  var isFinded = false;           //ÊÇ·ñÕÒµ½Æ¥ÅäÄÚÈÝ
-  strValue = "" + strValue + "";
-  sourceObject = getObject(objName);
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½Ñ¡ï¿½Ð²Ëµï¿½(ï¿½ï¿½Ñ¡ï¿½ò¡¢µï¿½Ñ¡ï¿½ï¿½)ï¿½ï¿½Â¼
+ ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½
+ objName:
+ ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½,ï¿½ç£º"document.form1.selMenu",Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½"selMenu"
+ strValue:ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ö·ï¿½
+ Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ÖµÆ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½Îªï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖµÖ®ï¿½ï¿½ï¿½Ã¡ï¿½,ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½"24,33,25,23"
+ **********************************************/
+function setSelectItem(objName, strValue) {
+    var numargs = arguments.length; //ï¿½ï¿½ï¿½ØµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    var sourceObject;               //ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Ä²Ëµï¿½ï¿½ï¿½ï¿½ï¿½
+    var isFinded = false;           //ï¿½Ç·ï¿½ï¿½Òµï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    strValue = "" + strValue + "";
+    sourceObject = getObject(objName);
 
-  //µ¥Ñ¡¿ò
-  if (sourceObject.type=="radio"){
-    var aoRadio = document.getElementsByName(objName);
-    for (var i=0;i<aoRadio.length;i++){
-      if (aoRadio[i].value == strValue){
-        aoRadio[i].checked = true;
-        break;
-      }
+    //ï¿½ï¿½Ñ¡ï¿½ï¿½
+    if (sourceObject.type == "radio") {
+        var aoRadio = document.getElementsByName(objName);
+        for (var i = 0; i < aoRadio.length; i++) {
+            if (aoRadio[i].value == strValue) {
+                aoRadio[i].checked = true;
+                break;
+            }
+        }
     }
-  }
-  //¸´Ñ¡¿ò
-  else if (sourceObject.type=="checkbox"){
+    //ï¿½ï¿½Ñ¡ï¿½ï¿½
+    else if (sourceObject.type == "checkbox") {
+        var aoCheckBox = document.getElementsByName(objName);
+        var asValue = strValue.split(",");
+        for (var i = 0; i < aoCheckBox.length; i++) {
+            for (var j = 0; j < asValue.length; j++) {
+                if (aoCheckBox[i].value == asValue[j]) {
+                    aoCheckBox[i].checked = true;
+                    break;
+                }
+            }
+        }
+    }
+    //ï¿½Ëµï¿½
+    else {
+        if ((strValue) == "") {
+            sourceObject.options[0].selected = true;
+            return;
+        }
+        for (i = 0; i < sourceObject.options.length; i++) {
+            sourceObject.options[i].selected = false;  //ï¿½ï¿½ï¿½Ô­ï¿½ï¿½Ñ¡ï¿½ï¿½
+        }
+        var aryID = strValue.split(",");
+        if (aryID.length == 0) return;
+        for (var j = 0; j < aryID.length; j++) {
+            for (var i = 0; i < sourceObject.options.length; i++) {
+                if (sourceObject.options[i].value == aryID[j]) {
+                    sourceObject.options[i].selected = true;
+                    isFinded = true;
+                    break;
+                }
+            }
+        }
+        if (!isFinded) sourceObject.options[0].selected = true;
+        ;
+    }
+}
+
+/*****************************
+ ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡Öµ
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½objName: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Îªï¿½ï¿½Ñ¡ï¿½ò¡¢µï¿½Ñ¡ï¿½ï¿½Í²Ëµï¿½
+ isChar:  ï¿½Ç·ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Îªtrueï¿½ï¿½valueÇ°ï¿½ï¿½ï¿½ï¿½ï¿½''ï¿½ï¿½
+ ï¿½ï¿½ï¿½Ø£ï¿½
+ Ñ¡ï¿½ï¿½Öµï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½11,24,12,56 ï¿½ï¿½ '11','24','12','56'
+ *****************************/
+function getItemValue(objName, isChar) {
+    var sValue = "";
+    var pos = "";
+    if (isChar != null && isChar == true) {
+        pos = "'";
+    }
+    var aObj = document.getElementsByName(objName);
+    //ï¿½ï¿½Ñ¡ï¿½ï¿½
+    if (aObj[0].type == "radio") {
+        for (var i = 0; i < aObj.length; i++) {
+            if (aObj[i].checked) {
+                sValue += pos + aObj[i].value + pos + ",";
+            }
+        }
+    }
+    //ï¿½ï¿½Ñ¡ï¿½ï¿½
+    else if (aObj[0].type == "checkbox") {
+        for (var i = 0; i < aObj.length; i++) {
+            if (aObj[i].checked) {
+                sValue += pos + aObj[i].value + pos + ",";
+            }
+        }
+    }
+    //ï¿½Ëµï¿½
+    else {
+        var count = aObj[0].options.length;
+        for (var i = 0; i < count; i++) {
+            if (aObj[0].options[i].value != "nothing" && aObj[0].options[i].value != "") {
+                sValue += pos + aObj[0].options[i].value.replace("\\", "\\\\") + pos + ",";
+            }
+        }
+    }
+    if (sValue != "") sValue = sValue.substring(0, sValue.length - 1); //È¥ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½","
+    return sValue;
+}
+
+/*****************************
+ ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡ï¿½Ä±ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½objName: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Îªï¿½ï¿½Ñ¡ï¿½ò¡¢µï¿½Ñ¡ï¿½ï¿½Í²Ëµï¿½
+ ï¿½ï¿½ï¿½Ø£ï¿½
+ Ñ¡ï¿½ï¿½ï¿½Ä±ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½,ï¿½Ïºï¿½,ï¿½ï¿½ï¿½
+ *****************************/
+function getItemText(objName) {
+    var sValue = "";
+    var aObj = document.getElementsByName(objName);
+    //ï¿½ï¿½Ñ¡ï¿½ï¿½
+    if (aObj[0].type == "radio") {
+        for (var i = 0; i < aObj.length; i++) {
+            if (aObj[i].checked) {
+                sValue += aObj[i].parentNode.innerText + ",";
+            }
+        }
+    }
+    //ï¿½ï¿½Ñ¡ï¿½ï¿½
+    else if (aObj[0].type == "checkbox") {
+        for (var i = 0; i < aObj.length; i++) {
+            if (aObj[i].checked) {
+                sValue += aObj[i].parentNode.innerText + ",";
+            }
+        }
+    }
+    //ï¿½Ëµï¿½
+    else {
+        var count = aObj[0].options.length;
+        for (var i = 0; i < count; i++) {
+            if (aObj[0].options[i].value != "nothing" && aObj[0].options[i].value != "") {
+                sValue += aObj[0].options[i].text.replace(" ï¿½ï¿½", "") + ",";
+            }
+        }
+    }
+    if (sValue != "") sValue = sValue.substring(0, sValue.length - 1); //È¥ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½","
+    return sValue;
+}
+
+/*****************************
+ ï¿½ï¿½ï¿½Ã¸ï¿½Ñ¡ï¿½ï¿½×´Ì¬
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ objName: ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ flag: ï¿½ï¿½ï¿½ï¿½×´Ì¬ true|false
+ *****************************/
+function selectAllCheckBox(objName, flag) {
     var aoCheckBox = document.getElementsByName(objName);
-    var asValue = strValue.split(",");
-    for (var i=0;i<aoCheckBox.length;i++){
-      for (var j=0;j<asValue.length;j++){
-        if (aoCheckBox[i].value == asValue[j]){
-          aoCheckBox[i].checked = true;
-          break;
-        }
-      }
+    for (var i = 0; i < aoCheckBox.length; i++) {
+        aoCheckBox[i].checked = flag;
     }
-  }
-  //²Ëµ¥
-  else{
-    if ((strValue)==""){
-      sourceObject.options[0].selected=true;
-      return;
-    }
-    for (i=0;i<sourceObject.options.length;i++){
-      sourceObject.options[i].selected=false;  //Çå³ýÔ­ÓÐÑ¡Ôñ
-    }
-    var aryID=strValue.split(",");
-    if (aryID.length==0) return;
-    for (var j=0;j<aryID.length;j++){
-      for (var i=0;i<sourceObject.options.length;i++){
-        if (sourceObject.options[i].value==aryID[j]){
-          sourceObject.options[i].selected = true;
-          isFinded = true;
-          break;
-        }
-      }
-    }
-    if (!isFinded) sourceObject.options[0].selected=true;;
-  }
-}
-
-/*****************************
- ´ÓÖ¸¶¨¶ÔÏóÖÐ»ñÈ¡Öµ
- ²ÎÊý£º
- ¡¡objName: ¶ÔÏóÃû£¬Ò»°ãÎª¸´Ñ¡¿ò¡¢µ¥Ñ¡¿òºÍ²Ëµ¥
-   isChar:  ÊÇ·ñ×Ö·û£¬ÎªtrueÔÚvalueÇ°ºó¼ÓÉÏ''£¬
- ·µ»Ø£º
-   Ñ¡ÖÐÖµÁÐ±í£¬Àý£º¡¡11,24,12,56 »ò '11','24','12','56'
-*****************************/
-function getItemValue(objName,isChar){
-  var sValue = "";
-  var pos = "";
-  if (isChar !=null && isChar == true){
-    pos = "'";
-  }
-  var aObj = document.getElementsByName(objName);
-  //µ¥Ñ¡¿ò
-  if (aObj[0].type=="radio"){
-    for (var i=0;i<aObj.length;i++){
-      if (aObj[i].checked){ sValue += pos + aObj[i].value + pos + ",";}
-    }
-  }
-  //¸´Ñ¡¿ò
-  else if (aObj[0].type=="checkbox"){ 
-    for (var i=0;i<aObj.length;i++){
-      if (aObj[i].checked){ sValue += pos + aObj[i].value + pos + ",";}
-    }
-  }
-  //²Ëµ¥
-  else{
-    var count = aObj[0].options.length;
-    for(var i=0;i<count;i++){
-      if(aObj[0].options[i].value!="nothing" && aObj[0].options[i].value!=""){
-        sValue += pos + aObj[0].options[i].value.replace("\\","\\\\") + pos + ",";
-      }
-    }
-  }
-  if (sValue!="") sValue = sValue.substring(0,sValue.length-1); //È¥³ý×îºóÒ»¸ö","
-  return sValue;
-}
-
-/*****************************
- ´ÓÖ¸¶¨¶ÔÏóÖÐ»ñÈ¡ÎÄ±¾
- ²ÎÊý£º
- ¡¡objName: ¶ÔÏóÃû£¬Ò»°ãÎª¸´Ñ¡¿ò¡¢µ¥Ñ¡¿òºÍ²Ëµ¥
- ·µ»Ø£º
-   Ñ¡ÖÐÎÄ±¾ÁÐ±í£¬Àý£º  ±±¾©,ÉÏº£,Ìì½ò
-*****************************/
-function getItemText(objName){
-  var sValue = "";
-  var aObj = document.getElementsByName(objName);
-  //µ¥Ñ¡¿ò
-  if (aObj[0].type=="radio"){
-    for (var i=0;i<aObj.length;i++){
-      if (aObj[i].checked){ sValue += aObj[i].parentNode.innerText + ",";}
-    }
-  }
-  //¸´Ñ¡¿ò
-  else if (aObj[0].type=="checkbox"){ 
-    for (var i=0;i<aObj.length;i++){
-      if (aObj[i].checked){ sValue += aObj[i].parentNode.innerText + ",";}
-    }
-  }
-  //²Ëµ¥
-  else{
-    var count = aObj[0].options.length;
-    for(var i=0;i<count;i++){
-      if(aObj[0].options[i].value!="nothing" && aObj[0].options[i].value!=""){
-        sValue += aObj[0].options[i].text.replace(" ©¸","") + ",";
-      }
-    }
-  }
-  if (sValue!="") sValue = sValue.substring(0,sValue.length-1); //È¥³ý×îºóÒ»¸ö","
-  return sValue;
-}
-
-/*****************************
- ÉèÖÃ¸´Ñ¡¿ò×´Ì¬
- ²ÎÊý£º
-   objName: ¸´Ñ¡¿òÃû³Æ
-   flag: ÉèÖÃ×´Ì¬ true|false
-*****************************/
-function selectAllCheckBox(objName,flag){
-  var aoCheckBox = document.getElementsByName(objName);
-  for (var i=0;i<aoCheckBox.length;i++){
-    aoCheckBox[i].checked = flag;
-  }
 }
 
 /******************************
-  °ó¶¨È«Ñ¡¿ò¼°ÐèÒª¼à¿ØµÄ¸´Ñ¡¿ò(²Ëµ¥)
-  ¹¦ÄÜ£º
-  ¡¡µ±È«Ñ¡¿òÑ¡ÖÐÊ±£¬½«¼à¿ØµÄ¸´Ñ¡¿ò£¨²Ëµ¥Ñ¡Ïî£©È«²¿Ñ¡ÖÐ£¬·ñÔòÉèÎªÎ´Ñ¡ÖÐ×´Ì¬¡£
-  ¡¡·´Ö®ÒàÈ»¡£
-  ²ÎÊý£º
-   chkAllObj: ÓÃÓÚÈ«Ñ¡µÄ¸´Ñ¡¿òÃû³Æ
-   chkOtherObj: ¼à¿ØµÄ¸´Ñ¡¿ò(²Ëµ¥)Ãû³Æ
-******************************/
-function setCheckAllAction(chkAllObjName,chkOtherObjName){
-  var aoCheckBox = document.getElementsByName(chkOtherObjName);
-  for (var i=0;i<aoCheckBox.length;i++){
-    /*** ¼à¿ØÀàÐÍÊÇ¸´Ñ¡¿ò ***/
-    if (aoCheckBox[i].type=="checkbox"){
-      if (i==0){//È«Ñ¡¿òÊÂ¼þ´¦Àí
-        document.all[chkAllObjName].onclick = function(){selectAllCheckBox(chkOtherObjName,this.checked);}
-      }
-      //¼à¿ØµÄ¸´Ñ¡¿òÊôÐÔ¸Ä±äÊÂ¼þ
-      aoCheckBox[i].onpropertychange = function(){
-          if (!this.checked){
-            document.all[chkAllObjName].checked = false;
-          }
-          else{
-            //²éÕÒ¼à¿ØµÄ¸´Ñ¡¿òÊÇ·ñÈ«²¿Ñ¡ÖÐ£¬½«È«Ñ¡¿ò×´Ì¬ÉèÖÃÏàÓ¦×´Ì¬
-            var aoCheckBox = document.getElementsByName(chkOtherObjName);
-            var bAllChk = true;
-            for (var i=0;i<aoCheckBox.length;i++){
-              if (!aoCheckBox[i].checked){bAllChk = false;break;}
+ ï¿½ï¿½È«Ñ¡ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ØµÄ¸ï¿½Ñ¡ï¿½ï¿½(ï¿½Ëµï¿½)
+ ï¿½ï¿½ï¿½Ü£ï¿½
+ ï¿½ï¿½ï¿½ï¿½È«Ñ¡ï¿½ï¿½Ñ¡ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ØµÄ¸ï¿½Ñ¡ï¿½ò£¨²Ëµï¿½Ñ¡ï¿½î£©È«ï¿½ï¿½Ñ¡ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÎ´Ñ¡ï¿½ï¿½×´Ì¬ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½È»ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ chkAllObj: ï¿½ï¿½ï¿½ï¿½È«Ñ¡ï¿½Ä¸ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ chkOtherObj: ï¿½ï¿½ØµÄ¸ï¿½Ñ¡ï¿½ï¿½(ï¿½Ëµï¿½)ï¿½ï¿½ï¿½ï¿½
+ ******************************/
+function setCheckAllAction(chkAllObjName, chkOtherObjName) {
+    var aoCheckBox = document.getElementsByName(chkOtherObjName);
+    for (var i = 0; i < aoCheckBox.length; i++) {
+        /*** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½Ñ¡ï¿½ï¿½ ***/
+        if (aoCheckBox[i].type == "checkbox") {
+            if (i == 0) {//È«Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+                document.all[chkAllObjName].onclick = function () {
+                    selectAllCheckBox(chkOtherObjName, this.checked);
+                }
             }
-            document.all[chkAllObjName].checked = bAllChk;
-          }
-        }
-    }// if checkbox
-    /*** ¼à¿ØÀàÐÍÊÇÑ¡Ôñ²Ëµ¥ ***/
-    else{
-      if (i==0){//È«Ñ¡¿òÊÂ¼þ´¦Àí
-        document.all[chkAllObjName].onclick = function(){selectAllItem(chkOtherObjName,this.checked);}
-      }
-      //¼à¿ØµÄÑ¡Ôñ²Ëµ¥ÊÂ¼þ´¦Àí
-      document.all[chkOtherObjName].onchange = function(){
-            if (this.multiple){//ÔÊÐí¶àÑ¡£¬µ±ÏîÄ¿È«²¿Ñ¡ÖÐÊ±½«È«Ñ¡¿òÉèÎªÑ¡ÖÐ×´Ì¬
-              var count = this.options.length;
-              var selCount = 0;
-              for (var i=0;i<count;i++){
-                if (this.options[i].selected) selCount++;
-              }
-              document.all[chkAllObjName].checked = selCount == count;
-            }else{
-              document.all[chkAllObjName].checked = this.value == "" || this.value == "nothing";
+            //ï¿½ï¿½ØµÄ¸ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸Ä±ï¿½ï¿½Â¼ï¿½
+            aoCheckBox[i].onpropertychange = function () {
+                if (!this.checked) {
+                    document.all[chkAllObjName].checked = false;
+                } else {
+                    //ï¿½ï¿½ï¿½Ò¼ï¿½ØµÄ¸ï¿½Ñ¡ï¿½ï¿½ï¿½Ç·ï¿½È«ï¿½ï¿½Ñ¡ï¿½Ð£ï¿½ï¿½ï¿½È«Ñ¡ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦×´Ì¬
+                    var aoCheckBox = document.getElementsByName(chkOtherObjName);
+                    var bAllChk = true;
+                    for (var i = 0; i < aoCheckBox.length; i++) {
+                        if (!aoCheckBox[i].checked) {
+                            bAllChk = false;
+                            break;
+                        }
+                    }
+                    document.all[chkAllObjName].checked = bAllChk;
+                }
+            }
+        }// if checkbox
+        /*** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ëµï¿½ ***/
+        else {
+            if (i == 0) {//È«Ñ¡ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+                document.all[chkAllObjName].onclick = function () {
+                    selectAllItem(chkOtherObjName, this.checked);
+                }
+            }
+            //ï¿½ï¿½Øµï¿½Ñ¡ï¿½ï¿½Ëµï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
+            document.all[chkOtherObjName].onchange = function () {
+                if (this.multiple) {//ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿È«ï¿½ï¿½Ñ¡ï¿½ï¿½Ê±ï¿½ï¿½È«Ñ¡ï¿½ï¿½ï¿½ï¿½ÎªÑ¡ï¿½ï¿½×´Ì¬
+                    var count = this.options.length;
+                    var selCount = 0;
+                    for (var i = 0; i < count; i++) {
+                        if (this.options[i].selected) selCount++;
+                    }
+                    document.all[chkAllObjName].checked = selCount == count;
+                } else {
+                    document.all[chkAllObjName].checked = this.value == "" || this.value == "nothing";
+                }
             }
         }
     }
-  }
 }
 
 /******************************
-  ÉèÖÃ±êÇ©(LABEL)Ä¬ÈÏ¶¯×÷£º½«±êÇ©Óë¸Ã±êÇ©µÚÒ»¸ö×Ó¶ÔÏó°ó¶¨
-¡¡´Ë·½·¨±ØÐëÔÚbody.onloadÊÂ¼þÖÐ×îÏÈÖ´ÐÐ£¬·ñÔòÔÚÍâ²¿Ö¸¶¨µÄLABELÖÐµÚÒ»¸ö×Ó¶ÔÏóµÄÊÂ¼þ½«Ê§Ð§
-******************************/
-function setLabelAction(){
-  try{
-    var aoLabel = document.getElementsByTagName("LABEL");
-    var tmpStr;
-    var objID;
-    for (var i=0;i<aoLabel.length;i++){
-      if (!aoLabel[i].htmlFor){//Ã»ÓÐ°ó¶¨ÔªËØ
-        if (aoLabel[i].children[0].id){//µÚÒ»¸ö×ÓÔªËØÓÐID£¬ÉèÖÃfor
-          aoLabel[i].htmlFor = aoLabel[i].children[0].id;
-        }else{//µÚÒ»¸ö×ÓÔªËØÃ»ÓÐID£¬Ìí¼ÓID
-          objID = aoLabel[i].children[0].name + i;
-          tmpStr = aoLabel[i].children[0].outerHTML;
-          tmpStr = tmpStr.substring(0,tmpStr.length-1);
-          tmpStr = tmpStr + " id=\"" + objID + "\">";
-          aoLabel[i].children[0].outerHTML = tmpStr;
-          aoLabel[i].htmlFor = objID;
+ ï¿½ï¿½ï¿½Ã±ï¿½Ç©(LABEL)Ä¬ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç©ï¿½ï¿½Ã±ï¿½Ç©ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½
+ ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½body.onloadï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â²¿Ö¸ï¿½ï¿½ï¿½ï¿½LABELï¿½Ðµï¿½Ò»ï¿½ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ê§Ð§
+ ******************************/
+function setLabelAction() {
+    try {
+        var aoLabel = document.getElementsByTagName("LABEL");
+        var tmpStr;
+        var objID;
+        for (var i = 0; i < aoLabel.length; i++) {
+            if (!aoLabel[i].htmlFor) {//Ã»ï¿½Ð°ï¿½Ôªï¿½ï¿½
+                if (aoLabel[i].children[0].id) {//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½for
+                    aoLabel[i].htmlFor = aoLabel[i].children[0].id;
+                } else {//ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ôªï¿½ï¿½Ã»ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ï¿½ID
+                    objID = aoLabel[i].children[0].name + i;
+                    tmpStr = aoLabel[i].children[0].outerHTML;
+                    tmpStr = tmpStr.substring(0, tmpStr.length - 1);
+                    tmpStr = tmpStr + " id=\"" + objID + "\">";
+                    aoLabel[i].children[0].outerHTML = tmpStr;
+                    aoLabel[i].htmlFor = objID;
+                }
+            }
+            if (!aoLabel[i].title) { //Ã»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
+                aoLabel[i].title = aoLabel[i].innerText;
+            }
         }
-      }
-      if (!aoLabel[i].title){ //Ã»ÓÐÌáÊ¾ÎÄ×Ö
-        aoLabel[i].title = aoLabel[i].innerText;
-      }
+    } catch (e) {
     }
-  }catch (e){}
 }
 
 /***************************
- ½«ÎÄ±¾ÊäÈë¿òºÍÑ¡Ôñ²Ëµ¥°ó¶¨ÎªComboBox²Ëµ¥£¨¿É±à¼­²Ëµ¥£©
- ²ÎÊý£ºtxtObj£ºÎÄ±¾ÊäÈë¿òÃû³Æ£¬selectObj£ºÑ¡Ôñ²Ëµ¥Ãû³Æ
-***************************/
-function setComboBox(txtObj,selectObj){
-  txtObj = getObject(txtObj);
-  selectObj = getObject(selectObj);
-    
-  var downList = document.createElement("SPAN")
-  with (downList){
-    innerHTML = "<font face=webdings>6</font>";
-    style.cursor = "hand";
-    style.textAlign = "center";
-    style.color = "#4D6185";
-    style.backgroundColor = "#D5E0F6";
-    style.lineHeight = "14px";
-    style.width = "16px";
-    style.border = "1px solid #7BAAD6";
-    onclick = function() {
-        txtObj.style.display='none';
-        style.display="none";
-        selectObj.style.display='';
-        selectObj.focus();
-      }
-  }
-  txtObj.insertAdjacentElement("afterEnd",downList);
-  txtObj.onkeydown = function () {
-      if (event.keyCode==40||event.keyCode==38){
-        downList.click();return false;
-      }
+ ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½Ëµï¿½ï¿½ï¿½ÎªComboBoxï¿½Ëµï¿½ï¿½ï¿½ï¿½É±à¼­ï¿½Ëµï¿½ï¿½ï¿½
+ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½txtObjï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½selectObjï¿½ï¿½Ñ¡ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½
+ ***************************/
+function setComboBox(txtObj, selectObj) {
+    txtObj = getObject(txtObj);
+    selectObj = getObject(selectObj);
+
+    var downList = document.createElement("SPAN")
+    with (downList) {
+        innerHTML = "<font face=webdings>6</font>";
+        style.cursor = "hand";
+        style.textAlign = "center";
+        style.color = "#4D6185";
+        style.backgroundColor = "#D5E0F6";
+        style.lineHeight = "14px";
+        style.width = "16px";
+        style.border = "1px solid #7BAAD6";
+        onclick = function () {
+            txtObj.style.display = 'none';
+            style.display = "none";
+            selectObj.style.display = '';
+            selectObj.focus();
+        }
     }
-  selectObj.style.display = "none";
-  if (selectObj.clientWidth<(txtObj.offsetWidth+16)){
-    selectObj.style.width = txtObj.offsetWidth+16;
-  }
-  selectObj.onclick = function () {
-        txtObj.value=selectObj.value;
-      }
-  selectObj.onblur = function () {
-      txtObj.style.display="";
-      txtObj.focus();
-      downList.style.display=""; 
-      selectObj.style.display="none";
+    txtObj.insertAdjacentElement("afterEnd", downList);
+    txtObj.onkeydown = function () {
+        if (event.keyCode == 40 || event.keyCode == 38) {
+            downList.click();
+            return false;
+        }
     }
-  selectObj.onkeydown = function () {
-      if (event.keyCode==27){
-        selectObj.blur();
-        return false;
-      }else if(event.keyCode==13){
-        txtObj.value=selectObj.value;
-        selectObj.blur();return false;
-      }
+    selectObj.style.display = "none";
+    if (selectObj.clientWidth < (txtObj.offsetWidth + 16)) {
+        selectObj.style.width = txtObj.offsetWidth + 16;
+    }
+    selectObj.onclick = function () {
+        txtObj.value = selectObj.value;
+    }
+    selectObj.onblur = function () {
+        txtObj.style.display = "";
+        txtObj.focus();
+        downList.style.display = "";
+        selectObj.style.display = "none";
+    }
+    selectObj.onkeydown = function () {
+        if (event.keyCode == 27) {
+            selectObj.blur();
+            return false;
+        } else if (event.keyCode == 13) {
+            txtObj.value = selectObj.value;
+            selectObj.blur();
+            return false;
+        }
     }
 }

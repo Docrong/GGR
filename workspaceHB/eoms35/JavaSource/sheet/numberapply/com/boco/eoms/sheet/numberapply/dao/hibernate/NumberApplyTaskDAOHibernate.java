@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.numberapply.dao.INumberApplyTaskDAO;
  * <p>
  * Mon Sep 27 18:07:01 CST 2010
  * </p>
- * 
+ *
  * @author liuyang
  * @version 3.5
- * 
  */
- 
- public class NumberApplyTaskDAOHibernate extends TaskDAOImpl implements  INumberApplyTaskDAO {
- 
- }
+
+public class NumberApplyTaskDAOHibernate extends TaskDAOImpl implements INumberApplyTaskDAO {
+
+}

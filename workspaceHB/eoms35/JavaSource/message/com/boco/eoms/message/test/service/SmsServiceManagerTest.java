@@ -35,7 +35,7 @@ public class SmsServiceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsServiceDao.expects(once()).method("getSmsServices")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List smsServices = smsServiceManager.getSmsServices(null);
         assertTrue(smsServices.size() == 1);
@@ -45,18 +45,18 @@ public class SmsServiceManagerTest extends BaseManagerTestCase {
     public void testGetSmsService() throws Exception {
         // set expected behavior on dao
         smsServiceDao.expects(once()).method("getSmsService")
-            .will(returnValue(new SmsService()));
+                .will(returnValue(new SmsService()));
         SmsService smsService = smsServiceManager.getSmsService(smsServiceId);
         assertTrue(smsService != null);
         smsServiceDao.verify();
     }
-    
+
     public void testSaveSmsService() throws Exception {
         SmsService smsService = new SmsService();
 
         // set expected behavior on dao
         smsServiceDao.expects(once()).method("saveSmsService")
-            .with(same(smsService)).isVoid();
+                .with(same(smsService)).isVoid();
 
         smsServiceManager.saveSmsService(smsService);
         smsServiceDao.verify();
@@ -75,7 +75,7 @@ public class SmsServiceManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         smsServiceDao.expects(once()).method("saveSmsService")
-            .with(same(smsService)).isVoid();
+                .with(same(smsService)).isVoid();
         smsServiceManager.saveSmsService(smsService);
         smsServiceDao.verify();
 

@@ -17,19 +17,15 @@ import com.cmcc.mm7.vasp.service.MM7Sender;
 // Referenced classes of package com.cmcc.mm7.vasp.conf:
 //            MM7Config
 
-public class VaspSendTest
-{
+public class VaspSendTest {
 
-    public VaspSendTest()
-    {
+    public VaspSendTest() {
     }
 
-    public static void main(String args[])
-    {
+    public static void main(String args[]) {
         MM7Config mm7Config = new MM7Config("./config/mm7Config.xml");
         mm7Config.setConnConfigName("./config/ConnConfig.xml");
-        try
-        {
+        try {
             Random rand = new Random(1000L);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
             MM7SubmitReq submit = new MM7SubmitReq();
@@ -55,23 +51,18 @@ public class VaspSendTest
             MM7Sender mm7Sender = new MM7Sender(mm7Config);
             System.out.println("发送前！");
             int i = 0;
-            do
-            {
+            do {
                 MM7RSRes res = mm7Sender.send(submit);
-                if(res instanceof MM7SubmitRes)
-                {
+                if (res instanceof MM7SubmitRes) {
                     System.out.println("res.statuscode=" + res.getStatusCode() + ";res.statusText=" + res.getStatusText());
-                    MM7SubmitRes subRes = (MM7SubmitRes)res;
+                    MM7SubmitRes subRes = (MM7SubmitRes) res;
                     System.out.println("messageid=" + subRes.getMessageID());
-                } else
-                {
+                } else {
                     System.out.println("失败消息");
                 }
                 i++;
-            } while(true);
-        }
-        catch(Exception ee)
-        {
+            } while (true);
+        } catch (Exception ee) {
             System.out.println(ee);
         }
     }

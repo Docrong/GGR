@@ -1,121 +1,116 @@
-
-
-  function go(wgid)
-{ 
+function go(wgid) {
 
     var xmlDoc;
-    var vhref = gethref()+"sop/soprule.xml";
+    var vhref = gethref() + "sop/soprule.xml";
     alert(vhref);
-    if(window.ActiveXObject)
-    {
-    	var flag=-1;
-    	var ft ;
-        xmlDoc    = new ActiveXObject('Microsoft.XMLDOM');
-        xmlDoc.async    = false;
+    if (window.ActiveXObject) {
+        var flag = -1;
+        var ft;
+        xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
+        xmlDoc.async = false;
         xmlDoc.load(vhref);
         alert(xmlDoc);
-        var  wgids = xmlDoc.getElementsByTagName("sopwgids");
+        var wgids = xmlDoc.getElementsByTagName("sopwgids");
         alert(wgids.length);
-        var  sopft = xmlDoc.getElementsByTagName("sopft");
+        var sopft = xmlDoc.getElementsByTagName("sopft");
 
-        for (i=0;i<wgids.length;i++){
-        	if (wgids[i].childNodes[0].nodeValue.indexOf(wgid)!=-1){
-        	flag = i;
-        	break;
-        	}
-        	
+        for (i = 0; i < wgids.length; i++) {
+            if (wgids[i].childNodes[0].nodeValue.indexOf(wgid) != -1) {
+                flag = i;
+                break;
+            }
+
         }
         alert(flag);
-if (flag==-1) {
-alert("ÔÝÎÞSOP°ïÖú");
-return;
-}
- switch (flag){
- case 0:
- ft = "er";break;
-  case 1:
- ft = "huawei";break;
-   case 2:
- ft = "nokia";break;
- }
+        if (flag == -1) {
+            alert("ï¿½ï¿½ï¿½ï¿½SOPï¿½ï¿½ï¿½ï¿½");
+            return;
+        }
+        switch (flag) {
+            case 0:
+                ft = "er";
+                break;
+            case 1:
+                ft = "huawei";
+                break;
+            case 2:
+                ft = "nokia";
+                break;
+        }
 
 
         var sopwgid = sopft[flag].getElementsByTagName("sopwgid");
         var sopadress = sopft[flag].getElementsByTagName("sopadress");
-         for (i=0;i<sopwgid.length;i++){
-          
-        	if (sopwgid[i].childNodes[0].nodeValue.indexOf(wgid)!=-1){
-        	flag = i;
-        	break;
-        	}
-   
+        for (i = 0; i < sopwgid.length; i++) {
+
+            if (sopwgid[i].childNodes[0].nodeValue.indexOf(wgid) != -1) {
+                flag = i;
+                break;
+            }
+
         }
         var href = sopadress[flag].childNodes[0].nodeValue;
-        
-        href = gethref()+"sop/"+ft+"/jiaohuan/"+href;
+
+        href = gethref() + "sop/" + ft + "/jiaohuan/" + href;
         alert(href);
-        window.showModalDialog(href,window,"dialogHeight:500px;dialogWidth:1020px;center:YES;help:NO;resizable:NO;status:YES;");
+        window.showModalDialog(href, window, "dialogHeight:500px;dialogWidth:1020px;center:YES;help:NO;resizable:NO;status:YES;");
+    } else {
+        alert("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½Ö§ï¿½Ö£ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½IE5ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
     }
-    else
-    {
-        alert ("ÄúµÄä¯ÀÀÆ÷ÔÝ²»Ö§³Ö£¬ÇëÊ¹ÓÃIE5ÒÔÉÏä¯ÀÀÆ÷");
-    }
-  }  
-  
-  
-  function win_load(wgid)
-  { 
-	  
-var href = gethref()+"sop/soprule.xml";
-alert(href);
-if (wgid.length!=17){
-	btn.style.visibility="hidden";
 }
-      var xmlDoc;
 
-      if(window.ActiveXObject)
-      {
-      	var flag=-1;
-      	var ft ;
-          xmlDoc    = new ActiveXObject('Microsoft.XMLDOM');
-          xmlDoc.async    = false;
-          xmlDoc.load(href);
-          alert(window.location.href);
-          var  wgids = xmlDoc.getElementsByTagName("sopwgids");
-          var  sopft = xmlDoc.getElementsByTagName("sopft");              
 
-          for (i=0;i<wgids.length;i++){
-          	if (wgids[i].childNodes[0].nodeValue.indexOf(wgid)!=-1){         
-          	flag = i;
-          	break;
-          	}
-          	
-          }
-         
-  if (flag==-1) {
-	  btn.style.visibility="hidden";
-  }
-  
-  }
-    } 
-  
-  function  gethref(){
-	  var scripts = document.getElementsByTagName("script");  
-	  var result = "";
-      var  reg = /soprule([.-]\d)*\.js(\W|$)/i  
+function win_load(wgid) {
 
-      for(var i = 0 , n = scripts.length ; i <n ; i++){  
+    var href = gethref() + "sop/soprule.xml";
+    alert(href);
+    if (wgid.length != 17) {
+        btn.style.visibility = "hidden";
+    }
+    var xmlDoc;
 
-          var src = !!document.querySelector ? scripts[i].src   
+    if (window.ActiveXObject) {
+        var flag = -1;
+        var ft;
+        xmlDoc = new ActiveXObject('Microsoft.XMLDOM');
+        xmlDoc.async = false;
+        xmlDoc.load(href);
+        alert(window.location.href);
+        var wgids = xmlDoc.getElementsByTagName("sopwgids");
+        var sopft = xmlDoc.getElementsByTagName("sopft");
 
-                        :scripts[i].getAttribute("src",4);  
+        for (i = 0; i < wgids.length; i++) {
+            if (wgids[i].childNodes[0].nodeValue.indexOf(wgid) != -1) {
+                flag = i;
+                break;
+            }
 
-          if(src && reg.test(src)){  
+        }
 
-              result = src  
-              break;  
+        if (flag == -1) {
+            btn.style.visibility = "hidden";
+        }
 
-          }  
-      }
-	  return result.substr( 0, result.lastIndexOf('/') + 1 );
-  }
+    }
+}
+
+function gethref() {
+    var scripts = document.getElementsByTagName("script");
+    var result = "";
+    var reg = /soprule([.-]\d)*\.js(\W|$)/i
+
+    for (var i = 0, n = scripts.length; i < n; i++) {
+
+        var src = !!document.querySelector ? scripts[i].src
+
+            : scripts[i].getAttribute("src", 4);
+
+        if (src && reg.test(src)) {
+
+            result = src
+            break;
+
+        }
+    }
+    return result.substr(0, result.lastIndexOf('/') + 1);
+}

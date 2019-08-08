@@ -72,7 +72,7 @@ public class TawSupplierkpiTemplateActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawSupplierkpiTemplate.updated"});
+        verifyActionMessages(new String[]{"tawSupplierkpiTemplate.updated"});
 
     }
 

@@ -1,13 +1,13 @@
 /**
  * NoteType.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhead.interfaces;
 
-public class NoteType  implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
+public class NoteType implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
     private java.lang.String value;
 
     public NoteType() {
@@ -32,6 +32,7 @@ public class NoteType  implements java.io.Serializable, org.apache.axis.encoding
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof NoteType)) return false;
         NoteType other = (NoteType) obj;
@@ -42,15 +43,16 @@ public class NoteType  implements java.io.Serializable, org.apache.axis.encoding
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.value==null && other.getValue()==null) || 
-             (this.value!=null &&
-              this.value.equals(other.getValue())));
+        _equals = true &&
+                ((this.value == null && other.getValue() == null) ||
+                        (this.value != null &&
+                                this.value.equals(other.getValue())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

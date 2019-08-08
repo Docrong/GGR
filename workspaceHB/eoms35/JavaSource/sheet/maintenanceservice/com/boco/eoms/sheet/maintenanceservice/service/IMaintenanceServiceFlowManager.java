@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.IBusinessFlowService;
  * <p>
  * Thu Mar 16 15:48:02 CST 2017
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IMaintenanceServiceFlowManager extends IBusinessFlowService {
- 
- }
+
+public interface IMaintenanceServiceFlowManager extends IBusinessFlowService {
+
+}

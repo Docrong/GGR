@@ -36,7 +36,7 @@ public class TawDemoMytableManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawDemoMytableDao.expects(once()).method("getTawDemoMytables")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawDemoMytables = tawDemoMytableManager.getTawDemoMytables(null);
         assertTrue(tawDemoMytables.size() == 1);
@@ -46,7 +46,7 @@ public class TawDemoMytableManagerTest extends BaseManagerTestCase {
     public void testGetTawDemoMytable() throws Exception {
         // set expected behavior on dao
         tawDemoMytableDao.expects(once()).method("getTawDemoMytable")
-            .will(returnValue(new TawDemoMytable()));
+                .will(returnValue(new TawDemoMytable()));
         TawDemoMytable tawDemoMytable = tawDemoMytableManager.getTawDemoMytable(tawDemoMytableId);
         assertTrue(tawDemoMytable != null);
         tawDemoMytableDao.verify();
@@ -57,7 +57,7 @@ public class TawDemoMytableManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawDemoMytableDao.expects(once()).method("saveTawDemoMytable")
-            .with(same(tawDemoMytable)).isVoid();
+                .with(same(tawDemoMytable)).isVoid();
 
         tawDemoMytableManager.saveTawDemoMytable(tawDemoMytable);
         tawDemoMytableDao.verify();
@@ -72,7 +72,7 @@ public class TawDemoMytableManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawDemoMytableDao.expects(once()).method("saveTawDemoMytable")
-            .with(same(tawDemoMytable)).isVoid();
+                .with(same(tawDemoMytable)).isVoid();
         tawDemoMytableManager.saveTawDemoMytable(tawDemoMytable);
         tawDemoMytableDao.verify();
 

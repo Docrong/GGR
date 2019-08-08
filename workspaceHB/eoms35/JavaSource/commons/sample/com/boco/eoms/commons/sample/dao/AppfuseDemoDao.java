@@ -16,9 +16,9 @@ public interface AppfuseDemoDao extends Dao {
 
     /**
      * Gets appfuseDemo's information based on primary key. An
-     * ObjectRetrievalFailureException Runtime Exception is thrown if 
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
-     * 
+     *
      * @param id the appfuseDemo's id
      * @return appfuseDemo populated appfuseDemo object
      */
@@ -26,17 +26,20 @@ public interface AppfuseDemoDao extends Dao {
 
     /**
      * Saves a appfuseDemo's information
+     *
      * @param appfuseDemo the object to be saved
-     */    
+     */
     public void saveAppfuseDemo(AppfuseDemo appfuseDemo);
 
     /**
      * Removes a appfuseDemo from the database by id
+     *
      * @param id the appfuseDemo's id
      */
     public void removeAppfuseDemo(final String id);
-  
+
     public Map getAppfuseDemos(final Integer curPage, final Integer pageSize);
+
     public Map getAppfuseDemos(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

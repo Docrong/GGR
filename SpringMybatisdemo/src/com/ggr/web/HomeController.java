@@ -13,28 +13,26 @@ import com.ggr.model.User;
 import com.ggr.service.IUserService;
 
 
-
-
 @Controller
 public class HomeController {
-	private IUserService userService;
-	
-	
-	public IUserService getUserService() {
-		return userService;
-	}
+    private IUserService userService;
+
+
+    public IUserService getUserService() {
+        return userService;
+    }
 
     @Resource
-	public void setUserService(IUserService userService) {
-		this.userService = userService;
-	}
+    public void setUserService(IUserService userService) {
+        this.userService = userService;
+    }
 
 
-	@RequestMapping(value="/",method=RequestMethod.GET)
-	public String home(Model model){
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String home(Model model) {
 //		List<User> users = userService.selectAll();
 //		model.addAttribute("users", users);
-		return "home";
-	}
+        return "home";
+    }
 
 }

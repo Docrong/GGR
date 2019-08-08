@@ -1,150 +1,170 @@
 v\: * {
-	behavior: url(#default#vml)
-}
-BODY{
-  MARGIN:3;
-  background: #f6fcfd;
-  overflow: hidden;
+    behavior: url(#default#vml)
 }
 
-a,a:link
- a:active {
-	color: #000;
-	text-decoration: none;
+BODY {
+    MARGIN: 3;
+    background: #f6fcfd;
+    overflow: hidden;
 }
+
+a, a:link
+a:active {
+    color: #000;
+    text-decoration: none;
+}
+
 a:hover {
-	text-decoration: none;
-}
-DIV, TD{
-  font-size:12px;
+    text-decoration: none;
 }
 
-#head{
-  width:100%;
-  top:5px;
-  left:5px;
-  position : absolute;
-  height:22px;
-  color:black;
-  margin:5px;
-  z-index: 20; 
-}
-#head #title{
-  display:inline;
-  width:50%;
-  float:left;
-  font-size:15px;
-}
-#head #note{
-  text-align:right;
-  display:inline;
-  width:300px;
-  float:right;
-  margin-right:50px;
-}
-#foot{
-  width:100%;
-  bottom:0;
-  position : absolute;
-  height:22px;
-  color:#333;
-  padding:5px;
-  background-color: #FFFFF5;
+DIV, TD {
+    font-size: 12px;
 }
 
-#canvas{
-  position:absolute;
-  z-index:140;
+#head {
+    width: 100%;
+    top: 5px;
+    left: 5px;
+    position: absolute;
+    height: 22px;
+    color: black;
+    margin: 5px;
+    z-index: 20;
 }
-#workflowCanvas{
-  top:30px;
-  width:99%;
-  height:100%;
-  height:expression(document.body.offsetHeight -45);
-  z-index: 10;
-  position:absolute;
-  background-color: #fff;
-  overflow: auto;
-  margin:5px;
-  border:1px solid #92d7f9;
+
+#head #title {
+    display: inline;
+    width: 50%;
+    float: left;
+    font-size: 15px;
+}
+
+#head #note {
+    text-align: right;
+    display: inline;
+    width: 300px;
+    float: right;
+    margin-right: 50px;
+}
+
+#foot {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    height: 22px;
+    color: #333;
+    padding: 5px;
+    background-color: #FFFFF5;
+}
+
+#canvas {
+    position: absolute;
+    z-index: 140;
+}
+
+#workflowCanvas {
+    top: 30px;
+    width: 99%;
+    height: 100%;
+    height: expression(document.body.offsetHeight -45);
+    z-index: 10;
+    position: absolute;
+    background-color: #fff;
+    overflow: auto;
+    margin: 5px;
+    border: 1px solid #92d7f9;
 }
 
 
 .flowview_node, .history_node, .curstep_node, .curstep_node_note, .history_node_note {
-  position: absolute;
-  z-index:100;
-  border: 1px solid buttonhighlight;
-}
-.flowview_node{
-  background: #efefde;
-}
-.history_node, .history_node_note{
-  background: #9cd5b0;
-}
-.curstep_node, .curstep_node_note{
-  background: #ffd06d;
-}
-.history_node_note, .curstep_node_note{
-  width:12px;
-  height:12px;
-}
-.flowview_node .IMG{
-  text-align:center;
-  vertical-align:middle;
-  width:20px;
-  display:inline;
-}
-.TXT{
-  z-index:150;
-  color:#333;
-  text-align:left;
-  vertical-align:middle;
-  font-size:12px;
-  display:inline;
+    position: absolute;
+    z-index: 100;
+    border: 1px solid buttonhighlight;
 }
 
-.fv-lineLabel{
-	position:absolute;
-	z-index:140;	
+.flowview_node {
+    background: #efefde;
 }
-.fv-lineLabel span{
-  position:relative;
-  z-index:150;
-  color:#6F6F6F;
-  left:-50%;
-  top:-50%;
-  background:#F5FAFA;
-  word-wrap : normal;
-  word-break:keep-all;
+
+.history_node, .history_node_note {
+    background: #9cd5b0;
 }
-.fv-line{
-	z-index:90;	
+
+.curstep_node, .curstep_node_note {
+    background: #ffd06d;
 }
-.fv-chl{
-	position:absolute;
-	z-index:50;
-	/*border-bottom:2px dashed #ccc;*/
+
+.history_node_note, .curstep_node_note {
+    width: 12px;
+    height: 12px;
 }
+
+.flowview_node .IMG {
+    text-align: center;
+    vertical-align: middle;
+    width: 20px;
+    display: inline;
+}
+
+.TXT {
+    z-index: 150;
+    color: #333;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 12px;
+    display: inline;
+}
+
+.fv-lineLabel {
+    position: absolute;
+    z-index: 140;
+}
+
+.fv-lineLabel span {
+    position: relative;
+    z-index: 150;
+    color: #6F6F6F;
+    left: -50%;
+    top: -50%;
+    background: #F5FAFA;
+    word-wrap: normal;
+    word-break: keep-all;
+}
+
+.fv-line {
+    z-index: 90;
+}
+
+.fv-chl {
+    position: absolute;
+    z-index: 50;
+    /*border-bottom:2px dashed #ccc;*/
+}
+
 .fv-chl-txt {
-	z-index:50;
-	position:relative;
-	top:10px;left:10px;
-	width:100px;
+    z-index: 50;
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 100px;
 }
+
 .fv-chl-even {
-	background-color:#e5f5f9;
+    background-color: #e5f5f9;
 }
-.fv-tips{
-  width:230px;
-  color:#007236;
-  background: E2FEDE;
-  border: #00a651 1px solid;
-  position: absolute;
-  z-index: 200;
-  margin: 5px;
-  padding: 5px;
-  Filter: Alpha(Opacity=90);
-  word-wrap : normal;
-  word-break:keep-all;
+
+.fv-tips {
+    width: 230px;
+    color: #007236;
+    background: E2FEDE;
+    border: #00a651 1px solid;
+    position: absolute;
+    z-index: 200;
+    margin: 5px;
+    padding: 5px;
+    Filter: Alpha(Opacity=90);
+    word-wrap: normal;
+    word-break: keep-all;
 }
 

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Created on 2007-8-5
  *
  * TODO To change the template for this generated file go to
@@ -12,12 +12,12 @@ import java.util.Date;
 
 /**
  * @author Administrator
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
-public class BaseLink implements Serializable{
-	 /**
+public class BaseLink implements Serializable {
+    /**
      * 主键
      */
     private String id;
@@ -50,7 +50,7 @@ public class BaseLink implements Serializable{
     /**
      * 操作组织类型,用户、角色、部门
      */
-    private String  operateOrgType;
+    private String operateOrgType;
 
     /**
      * 操作者用户ID
@@ -88,7 +88,6 @@ public class BaseLink implements Serializable{
     private String toOrgRoleId;
 
     /**
-     * 
      * 接单类型,不超时,超时
      */
     private Integer acceptFlag;
@@ -142,146 +141,154 @@ public class BaseLink implements Serializable{
      * 模板名称 为将来可能出现的模板方式预留，在卓越流程中暂时还没有发现有用到
      */
     private String nodeTemplateName;
-    
+
     /**
      * 附件
      */
     private String nodeAccessories;
-    
+
     /**
      * 流程关联Key
      */
     private String correlationKey;
-    
+
     /**
      * 操作所对应的taskid
      */
     private String tkid;
-   
+
     /**
      * 移交说明
      * add by zhangying
      */
 
     private String transferReason;
-    
+
     private int templateFlag;
     /**
      * 操作者联系方式
      */
     private String operaterContact;
-  
+
     /**
      * 模板名称
+     *
      * @author wangjianhua
      * @date 2008-7-22
      */
     private String templateName;
-    
+
     /**
      * 创建模板的用户
+     *
      * @author wangjianhua
-     * @date 2008-7-22 
+     * @date 2008-7-22
      */
     private String templateCreateUserId;
-    
+
     /**
      * 备注
+     *
      * @author yangliangliang
-     * @date 2008-8-6 
+     * @date 2008-8-6
      */
     private String remark;
-    
+
     /**
      * 操作时间中的年份
+     *
      * @author qinmin
      * @date 2008-10-07
      */
     private int operateYear;
     /**
      * 操作时间中的月份
+     *
      * @author qinmin
      * @date 2008-10-07
      */
     private int operateMonth;
     /**
      * 操作时间中的天
+     *
      * @author qinmin
      * @date 2008-10-07
      */
     private int operateDay;
     /**
      * 派往对象
+     *
      * @author wangjianhua
      * @date 2009-2-12
-     * 
      */
     private String sendObject;
-    
+
     public String getSendObject() {
-		return sendObject;
-	}
+        return sendObject;
+    }
 
-	public void setSendObject(String sendObject) {
-		this.sendObject = sendObject;
-	}
+    public void setSendObject(String sendObject) {
+        this.sendObject = sendObject;
+    }
 
-	public String getRemark() {
-		return remark;
-	}
+    public String getRemark() {
+        return remark;
+    }
 
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
 
-	/**
+    /**
      * @return templateName
      */
     public String getTemplateName() {
-		return templateName;
-	}
-    
-	public void setTemplateName(String templateName) {
-		this.templateName = templateName;
-	}
-	
+        return templateName;
+    }
+
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName;
+    }
+
     /**
      * @return userId
      */
-	public String getTemplateCreateUserId() {
-		return templateCreateUserId;
-	}
-	
-	public void setTemplateCreateUserId(String templateCreateUserId) {
-		this.templateCreateUserId = templateCreateUserId;
-	}
+    public String getTemplateCreateUserId() {
+        return templateCreateUserId;
+    }
 
-	/**
-     * 
+    public void setTemplateCreateUserId(String templateCreateUserId) {
+        this.templateCreateUserId = templateCreateUserId;
+    }
+
+    /**
      * @return template
      */
-	public int getTemplateFlag() {
-		return templateFlag;
-	}
-	/**
-	 * 
-	 * @param template
-	 */
-	public void setTemplateFlag(int templateFlag) {
-		this.templateFlag = templateFlag;
-	}
-	/**
-	 * @return Returns the accessories.
-	 */
-	public String getNodeAccessories() {
-		return nodeAccessories;
-	}
-	/**
-	 * @param accessories The accessories to set.
-	 */
-	public void setNodeAccessories(String accessories) {
-		this.nodeAccessories = accessories;
-	}
+    public int getTemplateFlag() {
+        return templateFlag;
+    }
+
+    /**
+     * @param template
+     */
+    public void setTemplateFlag(int templateFlag) {
+        this.templateFlag = templateFlag;
+    }
+
+    /**
+     * @return Returns the accessories.
+     */
+    public String getNodeAccessories() {
+        return nodeAccessories;
+    }
+
+    /**
+     * @param accessories The accessories to set.
+     */
+    public void setNodeAccessories(String accessories) {
+        this.nodeAccessories = accessories;
+    }
+
     /**
      * @return the acceptLimit
      */
@@ -290,8 +297,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param acceptLimit
-     *            the acceptLimit to set
+     * @param acceptLimit the acceptLimit to set
      */
     public void setNodeAcceptLimit(Date acceptLimit) {
         this.nodeAcceptLimit = acceptLimit;
@@ -305,8 +311,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param acceptTime
-     *            the acceptTime to set
+     * @param acceptTime the acceptTime to set
      */
     public void setAcceptTime(Date acceptTime) {
         this.acceptTime = acceptTime;
@@ -320,8 +325,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param acceptType
-     *            the acceptType to set
+     * @param acceptType the acceptType to set
      */
     public void setAcceptFlag(Integer acceptFlag) {
         this.acceptFlag = acceptFlag;
@@ -335,8 +339,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param activeTemplateId
-     *            the activeTemplateId to set
+     * @param activeTemplateId the activeTemplateId to set
      */
     public void setActiveTemplateId(String activeTemplateId) {
         this.activeTemplateId = activeTemplateId;
@@ -350,8 +353,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param aiid
-     *            the aiid to set
+     * @param aiid the aiid to set
      */
     public void setAiid(String aiid) {
         this.aiid = aiid;
@@ -365,8 +367,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param commpleteFlag
-     *            the commpleteFlag to set
+     * @param commpleteFlag the commpleteFlag to set
      */
     public void setCompleteFlag(Integer completeFlag) {
         this.completeFlag = completeFlag;
@@ -380,8 +381,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param completeLimit
-     *            the completeLimit to set
+     * @param completeLimit the completeLimit to set
      */
     public void setNodeCompleteLimit(Date completeLimit) {
         this.nodeCompleteLimit = completeLimit;
@@ -395,8 +395,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param completeTime
-     *            the completeTime to set
+     * @param completeTime the completeTime to set
      */
     public void setCompleteTime(Date completeTime) {
         this.completeTime = completeTime;
@@ -410,8 +409,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param firstLinkId
-     *            the firstLinkId to set
+     * @param firstLinkId the firstLinkId to set
      */
     public void setFirstLinkId(String firstLinkId) {
         this.firstLinkId = firstLinkId;
@@ -425,8 +423,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -440,8 +437,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param mainId
-     *            the mainId to set
+     * @param mainId the mainId to set
      */
     public void setMainId(String mainId) {
         this.mainId = mainId;
@@ -455,8 +451,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param operateDeptId
-     *            the operateDeptId to set
+     * @param operateDeptId the operateDeptId to set
      */
     public void setOperateDeptId(String operateDeptId) {
         this.operateDeptId = operateDeptId;
@@ -470,8 +465,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param operateOrgType
-     *            the operateOrgType to set
+     * @param operateOrgType the operateOrgType to set
      */
     public void setOperateOrgType(String operateOrgType) {
         this.operateOrgType = operateOrgType;
@@ -485,8 +479,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param operateRoleId
-     *            the operateRoleId to set
+     * @param operateRoleId the operateRoleId to set
      */
     public void setOperateRoleId(String operateRoleId) {
         this.operateRoleId = operateRoleId;
@@ -500,8 +493,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param operateTime
-     *            the operateTime to set
+     * @param operateTime the operateTime to set
      */
     public void setOperateTime(Date operateTime) {
         this.operateTime = operateTime;
@@ -515,8 +507,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param operateType
-     *            the operateType to set
+     * @param operateType the operateType to set
      */
     public void setOperateType(Integer operateType) {
         this.operateType = operateType;
@@ -530,8 +521,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param operateUserId
-     *            the operateUserId to set
+     * @param operateUserId the operateUserId to set
      */
     public void setOperateUserId(String operateUserId) {
         this.operateUserId = operateUserId;
@@ -545,8 +535,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param parentLinkId
-     *            the parentLinkId to set
+     * @param parentLinkId the parentLinkId to set
      */
     public void setParentLinkId(String parentLinkId) {
         this.parentLinkId = parentLinkId;
@@ -560,8 +549,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param piid
-     *            the piid to set
+     * @param piid the piid to set
      */
     public void setPiid(String piid) {
         this.piid = piid;
@@ -575,8 +563,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param preLinkId
-     *            the preLinkId to set
+     * @param preLinkId the preLinkId to set
      */
     public void setPreLinkId(String preLinkId) {
         this.preLinkId = preLinkId;
@@ -590,8 +577,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param templateName
-     *            the templateName to set
+     * @param templateName the templateName to set
      */
     public void setNodeTemplateName(String templateName) {
         this.nodeTemplateName = templateName;
@@ -605,8 +591,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param toOrgDeptId
-     *            the toOrgDeptId to set
+     * @param toOrgDeptId the toOrgDeptId to set
      */
     public void setToOrgDeptId(String toOrgDeptId) {
         this.toOrgDeptId = toOrgDeptId;
@@ -620,8 +605,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param toOrgRoleId
-     *            the toOrgRoleId to set
+     * @param toOrgRoleId the toOrgRoleId to set
      */
     public void setToOrgRoleId(String toOrgRoleId) {
         this.toOrgRoleId = toOrgRoleId;
@@ -635,8 +619,7 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param toOrgType
-     *            the toOrgType to set
+     * @param toOrgType the toOrgType to set
      */
     public void setToOrgType(Integer toOrgType) {
         this.toOrgType = toOrgType;
@@ -650,77 +633,80 @@ public class BaseLink implements Serializable{
     }
 
     /**
-     * @param toOrgUserId
-     *            the toOrgUserId to set
+     * @param toOrgUserId the toOrgUserId to set
      */
     public void setToOrgUserId(String toOrgUserId) {
         this.toOrgUserId = toOrgUserId;
     }
-	/**
-	 * @return Returns the correlationKey.
-	 */
-	public String getCorrelationKey() {
-		return correlationKey;
-	}
-	/**
-	 * @param correlationKey The correlationKey to set.
-	 */
-	public void setCorrelationKey(String correlationKey) {
-		this.correlationKey = correlationKey;
-	}
-	
-	
-	/**
-	 * @return Returns the tkid.
-	 */
-	public String getTkid() {
-		return tkid;
-	}
-	/**
-	 * @param tkid The tkid to set.
-	 */
-	public void setTkid(String tkid) {
-		this.tkid = tkid;
-	}
-	
-	public String getTransferReason() {
-		return transferReason;
-	}
-	public void setTransferReason(String transferReason) {
-		this.transferReason = transferReason;
-	}
 
-	public String getOperaterContact() {
-		return operaterContact;
-	}
+    /**
+     * @return Returns the correlationKey.
+     */
+    public String getCorrelationKey() {
+        return correlationKey;
+    }
 
-	public void setOperaterContact(String operaterContact) {
-		this.operaterContact = operaterContact;
-	}
+    /**
+     * @param correlationKey The correlationKey to set.
+     */
+    public void setCorrelationKey(String correlationKey) {
+        this.correlationKey = correlationKey;
+    }
 
-	public int getOperateDay() {
-		return operateDay;
-	}
 
-	public void setOperateDay(int operateDay) {
-		this.operateDay = operateDay;
-	}
+    /**
+     * @return Returns the tkid.
+     */
+    public String getTkid() {
+        return tkid;
+    }
 
-	public int getOperateMonth() {
-		return operateMonth;
-	}
+    /**
+     * @param tkid The tkid to set.
+     */
+    public void setTkid(String tkid) {
+        this.tkid = tkid;
+    }
 
-	public void setOperateMonth(int operateMonth) {
-		this.operateMonth = operateMonth;
-	}
+    public String getTransferReason() {
+        return transferReason;
+    }
 
-	public int getOperateYear() {
-		return operateYear;
-	}
+    public void setTransferReason(String transferReason) {
+        this.transferReason = transferReason;
+    }
 
-	public void setOperateYear(int operateYear) {
-		this.operateYear = operateYear;
-	}
-	
-	
+    public String getOperaterContact() {
+        return operaterContact;
+    }
+
+    public void setOperaterContact(String operaterContact) {
+        this.operaterContact = operaterContact;
+    }
+
+    public int getOperateDay() {
+        return operateDay;
+    }
+
+    public void setOperateDay(int operateDay) {
+        this.operateDay = operateDay;
+    }
+
+    public int getOperateMonth() {
+        return operateMonth;
+    }
+
+    public void setOperateMonth(int operateMonth) {
+        this.operateMonth = operateMonth;
+    }
+
+    public int getOperateYear() {
+        return operateYear;
+    }
+
+    public void setOperateYear(int operateYear) {
+        this.operateYear = operateYear;
+    }
+
+
 }

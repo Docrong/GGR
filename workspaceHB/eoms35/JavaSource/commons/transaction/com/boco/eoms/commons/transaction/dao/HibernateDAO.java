@@ -4,6 +4,7 @@
 package com.boco.eoms.commons.transaction.dao;
 
 // java standard library
+
 import java.util.List;
 
 // hibernate library
@@ -21,7 +22,7 @@ public class HibernateDAO implements IHibernateDAO {
 
     /**
      * minimal constructor
-     * 
+     *
      * @param session
      */
     public HibernateDAO(Session session) {

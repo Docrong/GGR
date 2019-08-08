@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,13 +13,13 @@
             table="taw_system_priv_menu"
     >
 
-	<id name="privid" column="privid" unsaved-value="null">
-			<generator class="uuid.hex">
-			</generator>
-	</id>
+        <id name="privid" column="privid" unsaved-value="null">
+            <generator class="uuid.hex">
+            </generator>
+        </id>
 
         <property
-            name="name"
+                name="name"
                 length="100"
                 not-null="true"
                 unique="true"
@@ -28,7 +28,7 @@
         </property>
 
         <property
-            name="ownerId"
+                name="ownerId"
                 length="200"
                 not-null="true"
                 unique="false"
@@ -37,19 +37,19 @@
         </property>
 
         <property
-            name="remark"
+                name="remark"
                 length="200"
         >
 
         </property>
- 	 	<property
-            name="nature"
+        <property
+                name="nature"
                 length="5"
         >
 
         </property>
-      
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

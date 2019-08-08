@@ -4,91 +4,92 @@ import java.io.Serializable;
 
 public class TawRmThing implements Serializable {
 
-	
-	/**
-	 * serialVersionUID
-	 */
-	private static final long serialVersionUID = 1L;
 
-	public TawRmThing(){}
-	
-	private String id;
-	
-	private String roomId;
-	
-	private String thingName;
-	
-	private int isForUse;
-	
-	private int estate;
-	
-	private String inputUserId;
-	
-	private String inputTime;
-	
-	private String thingComment;
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 1L;
 
-	public String getId() {
-		return id;
-	}
+    public TawRmThing() {
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    private String id;
 
-	public String getRoomId() {
-		return roomId;
-	}
+    private String roomId;
 
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
-	}
+    private String thingName;
 
-	public String getThingName() {
-		return thingName;
-	}
+    private int isForUse;
 
-	public void setThingName(String thingName) {
-		this.thingName = thingName;
-	}
+    private int estate;
 
-	public int getIsForUse() {
-		return isForUse;
-	}
+    private String inputUserId;
 
-	public void setIsForUse(int isForUse) {
-		this.isForUse = isForUse;
-	}
+    private String inputTime;
 
-	public int getEstate() {
-		return estate;
-	}
+    private String thingComment;
 
-	public void setEstate(int estate) {
-		this.estate = estate;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public String getInputUserId() {
-		return inputUserId;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setInputUserId(String inputUserId) {
-		this.inputUserId = inputUserId;
-	}
+    public String getRoomId() {
+        return roomId;
+    }
 
-	public String getInputTime() {
-		return inputTime;
-	}
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
 
-	public void setInputTime(String inputTime) {
-		this.inputTime = inputTime;
-	}
+    public String getThingName() {
+        return thingName;
+    }
 
-	public String getThingComment() {
-		return thingComment;
-	}
+    public void setThingName(String thingName) {
+        this.thingName = thingName;
+    }
 
-	public void setThingComment(String thingComment) {
-		this.thingComment = thingComment;
-	}
+    public int getIsForUse() {
+        return isForUse;
+    }
+
+    public void setIsForUse(int isForUse) {
+        this.isForUse = isForUse;
+    }
+
+    public int getEstate() {
+        return estate;
+    }
+
+    public void setEstate(int estate) {
+        this.estate = estate;
+    }
+
+    public String getInputUserId() {
+        return inputUserId;
+    }
+
+    public void setInputUserId(String inputUserId) {
+        this.inputUserId = inputUserId;
+    }
+
+    public String getInputTime() {
+        return inputTime;
+    }
+
+    public void setInputTime(String inputTime) {
+        this.inputTime = inputTime;
+    }
+
+    public String getThingComment() {
+        return thingComment;
+    }
+
+    public void setThingComment(String thingComment) {
+        this.thingComment = thingComment;
+    }
 }

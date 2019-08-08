@@ -1,6 +1,6 @@
 package com.boco.eoms.sheet.plannconfirm.qo;
 
-import com.boco.eoms.sheet.base.qo.IWorkSheetQO; 
+import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
 
 /**
  * <p>
@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.qo.IWorkSheetQO;
  * <p>
  * Thu Jun 06 17:13:18 CST 2013
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IPlannConfirmQo extends IWorkSheetQO {
- 
- }
+
+public interface IPlannConfirmQo extends IWorkSheetQO {
+
+}

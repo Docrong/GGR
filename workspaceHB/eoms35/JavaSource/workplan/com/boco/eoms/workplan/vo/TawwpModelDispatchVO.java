@@ -5,143 +5,144 @@
  * <p>Description: 提供页面的所需的数据封装</p>
  * <p>Copyright: Copyright (c) 2005</p>
  * <p>Company: boco</p>
+ *
  * @author eoms
  * @version 1.0
  */
 
 public class TawwpModelDispatchVO {
-  private String id; //标识
-  private String sendDeptId; //派发部门
-  private String sendCrtime; //派发时间
-  private String sendUser; //派发人
-  private String inceptDeptId; //接收部门
-  private String inceptCrtime; //接收时间
-  private String inceptUser; //接收人
-  private String state; //派发状态 0：待接收 1：接收
-  private String content; //派发信息
-  private String yearFlag; //年度标识
+    private String id; //标识
+    private String sendDeptId; //派发部门
+    private String sendCrtime; //派发时间
+    private String sendUser; //派发人
+    private String inceptDeptId; //接收部门
+    private String inceptCrtime; //接收时间
+    private String inceptUser; //接收人
+    private String state; //派发状态 0：待接收 1：接收
+    private String content; //派发信息
+    private String yearFlag; //年度标识
 
-  public TawwpModelDispatchVO() {
-  }
-
-  public String getId() {
-    if (id == null) {
-      id = "";
+    public TawwpModelDispatchVO() {
     }
 
-    return id;
-  }
+    public String getId() {
+        if (id == null) {
+            id = "";
+        }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  public String getContent() {
-    if (content == null) {
-      content = "";
+        return id;
     }
 
-    return content;
-  }
-
-  public void setContent(String content) {
-    this.content = content;
-  }
-
-  public String getInceptCrtime() {
-    if (inceptCrtime == null) {
-      inceptCrtime = "";
+    public void setId(String id) {
+        this.id = id;
     }
 
-    return inceptCrtime;
-  }
+    public String getContent() {
+        if (content == null) {
+            content = "";
+        }
 
-  public void setInceptCrtime(String inceptCrtime) {
-    this.inceptCrtime = inceptCrtime;
-  }
-
-  public String getInceptDeptId() {
-    if (inceptDeptId == null) {
-      inceptDeptId = "";
+        return content;
     }
 
-    return inceptDeptId;
-  }
-
-  public void setInceptDeptId(String inceptDeptId) {
-    this.inceptDeptId = inceptDeptId;
-  }
-
-  public String getInceptUser() {
-    if (inceptUser == null) {
-      inceptUser = "";
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    return inceptUser;
-  }
+    public String getInceptCrtime() {
+        if (inceptCrtime == null) {
+            inceptCrtime = "";
+        }
 
-  public void setInceptUser(String inceptUser) {
-    this.inceptUser = inceptUser;
-  }
-
-  public String getSendCrtime() {
-    if (sendCrtime == null) {
-      sendCrtime = "";
+        return inceptCrtime;
     }
 
-    return sendCrtime;
-  }
-
-  public void setSendCrtime(String sendCrtime) {
-    this.sendCrtime = sendCrtime;
-  }
-
-  public String getSendDeptId() {
-    if (sendDeptId == null) {
-      sendDeptId = "";
+    public void setInceptCrtime(String inceptCrtime) {
+        this.inceptCrtime = inceptCrtime;
     }
 
-    return sendDeptId;
-  }
+    public String getInceptDeptId() {
+        if (inceptDeptId == null) {
+            inceptDeptId = "";
+        }
 
-  public void setSendDeptId(String sendDeptId) {
-    this.sendDeptId = sendDeptId;
-  }
-
-  public String getSendUser() {
-    if (sendUser == null) {
-      sendUser = "";
+        return inceptDeptId;
     }
 
-    return sendUser;
-  }
-
-  public void setSendUser(String sendUser) {
-    this.sendUser = sendUser;
-  }
-
-  public String getState() {
-    if (state == null) {
-      state = "";
+    public void setInceptDeptId(String inceptDeptId) {
+        this.inceptDeptId = inceptDeptId;
     }
 
-    return state;
-  }
+    public String getInceptUser() {
+        if (inceptUser == null) {
+            inceptUser = "";
+        }
 
-  public void setState(String state) {
-    this.state = state;
-  }
-
-  public String getYearFlag() {
-    if (yearFlag == null) {
-      yearFlag = "";
+        return inceptUser;
     }
 
-    return yearFlag;
-  }
+    public void setInceptUser(String inceptUser) {
+        this.inceptUser = inceptUser;
+    }
 
-  public void setYearFlag(String yearFlag) {
-    this.yearFlag = yearFlag;
-  }
+    public String getSendCrtime() {
+        if (sendCrtime == null) {
+            sendCrtime = "";
+        }
+
+        return sendCrtime;
+    }
+
+    public void setSendCrtime(String sendCrtime) {
+        this.sendCrtime = sendCrtime;
+    }
+
+    public String getSendDeptId() {
+        if (sendDeptId == null) {
+            sendDeptId = "";
+        }
+
+        return sendDeptId;
+    }
+
+    public void setSendDeptId(String sendDeptId) {
+        this.sendDeptId = sendDeptId;
+    }
+
+    public String getSendUser() {
+        if (sendUser == null) {
+            sendUser = "";
+        }
+
+        return sendUser;
+    }
+
+    public void setSendUser(String sendUser) {
+        this.sendUser = sendUser;
+    }
+
+    public String getState() {
+        if (state == null) {
+            state = "";
+        }
+
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getYearFlag() {
+        if (yearFlag == null) {
+            yearFlag = "";
+        }
+
+        return yearFlag;
+    }
+
+    public void setYearFlag(String yearFlag) {
+        this.yearFlag = yearFlag;
+    }
 
 }

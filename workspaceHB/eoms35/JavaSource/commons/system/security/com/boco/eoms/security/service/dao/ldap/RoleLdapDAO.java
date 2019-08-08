@@ -35,369 +35,354 @@ import com.boco.eoms.security.service.model.RoleDO;
  * @author <a href="sangwei@boco.com.cn">weis</a>
  */
 public class RoleLdapDAO
-    extends BaseLdapDAO
-    implements RoleDAO {
+        extends BaseLdapDAO
+        implements RoleDAO {
 
-  protected static String ROLE_OBJECT_CLASS = "organizationalRole";
+    protected static String ROLE_OBJECT_CLASS = "organizationalRole";
 
-  private static SystemConfig sc = SystemConfig.getInstance();
+    private static SystemConfig sc = SystemConfig.getInstance();
 
 
-  public RoleLdapDAO() {}
-
-  /**
-   * role class directory context
-   * @return
-   */
-  public static String getRoleClassDirectoryContext() {
-    return sc.rolesCtxDN;
-  }
-
-  /**
-   * get role object class
-   */
-  protected String getRoleObjectClass() {
-    return ROLE_OBJECT_CLASS;
-  }
-
-  /**
-   * create a role with given name
-   * @param role name of the role
-   */
-  public RoleDO createRole(RoleDO role)
-      throws ObjectAlreadyExistException, SecurityManagerDaoException {
-
-    LdapOperation ldap = null;
-
-    try {
-      ldap = getLdap();
-
-      // check if the role has already exist
-      String roleCtxDN = getRoleClassDirectoryContext();
-      ldap.searchSubtree(roleCtxDN, "cn=" + role.getRoleID());
-
-      if (ldap.nextResult()) {
-        throw new ObjectAlreadyExistException("The role " + role + "has already exist.");
-      }
-
-      // Create the domain
-      Attributes attributes = new BasicAttributes(true);
-
-      Attribute attr = new BasicAttribute("objectClass");
-      attr.add("top");
-      attr.add(ROLE_OBJECT_CLASS);
-
-      attributes.put(attr);
-      attributes.put("cn", role.getRoleID());
-      attributes.put("ou", role.getName());
-      attributes.put("description", role.getComment().trim());
-
-      String roleDN = "cn="+role.getRoleID()+","+getRoleClassDirectoryContext();
-      LdapOperation.addElement(roleDN, attributes);
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Count not create role : " + role, e);
-    }
-    finally {
-      closeLdap(ldap);
+    public RoleLdapDAO() {
     }
 
-    return role;
-  }
-
-  /**
-   * delete the role with the name
-   * @param role name of the role
-   */
-  public void deleteRole(RoleDO role)
-      throws ObjectNotExistException, SecurityManagerDaoException {
-
-    LdapOperation ldap = null;
-    String roleDN = "cn="+role.getRoleID()+","+getRoleClassDirectoryContext();
-
-    try {
-      ldap = getLdap();
-      LdapOperation.deleteElement(roleDN);
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Can not delete role : " + roleDN, e);
-    }
-    finally {
-      closeLdap(ldap);
-    }
-  }
-
-  /**
-   * update the role
-   * @param role role to update
-   */
-  public void updateRole(RoleDO role)
-      throws ObjectNotExistException, SecurityManagerDaoException {
-
-    LdapOperation ldap = null;
-
-    try {
-      ldap = getLdap();
-
-      String roleDN = "cn="+role.getRoleID()+","+getRoleClassDirectoryContext();
-      ModificationItem[] mods = new ModificationItem[2];
-
-      mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                   new BasicAttribute("description", role.getComment()));
-
-      mods[1] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
-                                   new BasicAttribute("ou", role.getName()));
-
-      LdapOperation.modifyAttributes(roleDN, mods);
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Can not update role : " + role, e);
-    }
-    finally {
-      closeLdap(ldap);
-    }
-  }
-
-  /**
-   * retrieve the role with the given name
-   */
-  public RoleDO lookupRole(String name)
-      throws ObjectNotExistException, SecurityManagerDaoException {
-
-    LdapOperation ldap = null;
-    RoleDO role = null;
-
-    try {
-      ldap = getLdap();
-
-      String[] attrs = {"cn", "description", "ou"};
-      ldap.setReturningAttributes(attrs);
-      String roleCtxDN = getRoleClassDirectoryContext();
-      ldap.searchSubtree(roleCtxDN, "cn=" + name);
-
-      if (ldap.nextResult()) {
-        role = createRoleFromLdapResult(ldap);
-      }
-      else{
-        throw new ObjectNotExistException("Can't find the specified ROLE.");
-      }
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Can not find role : " + name, e);
-    }
-    finally {
-      closeLdap(ldap);
+    /**
+     * role class directory context
+     *
+     * @return
+     */
+    public static String getRoleClassDirectoryContext() {
+        return sc.rolesCtxDN;
     }
 
-    return role;
-  }
-
-  public static RoleDO createRoleFromLdapResult(LdapOperation ldap) {
-    RoleDO role = null;
-
-    try {
-      String roleId = ldap.getResultAttribute("cn");
-      String roleName = ldap.getResultAttribute("ou");
-      if (roleName == null) {
-        roleName = roleId;
-      }
-      String roleDesc = ldap.getResultAttribute("description");
-
-      role = new RoleDO(roleId, roleName, roleDesc);
-    }
-    catch (NamingException e) {
-
-      role = null;
+    /**
+     * get role object class
+     */
+    protected String getRoleObjectClass() {
+        return ROLE_OBJECT_CLASS;
     }
 
-    return role;
-  }
+    /**
+     * create a role with given name
+     *
+     * @param role name of the role
+     */
+    public RoleDO createRole(RoleDO role)
+            throws ObjectAlreadyExistException, SecurityManagerDaoException {
 
-  public static RoleDO createRoleFromAttributes(Attributes attrs) {
-    RoleDO role = null;
+        LdapOperation ldap = null;
 
-    try {
-      String id = (String) attrs.get("cn").get();
+        try {
+            ldap = getLdap();
 
-      String name = null;
-      if (attrs.get("ou") != null) {
-        name = (String) attrs.get("ou").get();
-      }
-      else {
-        name = id;
+            // check if the role has already exist
+            String roleCtxDN = getRoleClassDirectoryContext();
+            ldap.searchSubtree(roleCtxDN, "cn=" + role.getRoleID());
 
-      }
-      String desc = null;
-      if (attrs.get("description") != null) {
-        desc = (String) attrs.get("description").get();
+            if (ldap.nextResult()) {
+                throw new ObjectAlreadyExistException("The role " + role + "has already exist.");
+            }
 
-      }
-      role = new RoleDO(id, name, desc);
+            // Create the domain
+            Attributes attributes = new BasicAttributes(true);
 
-    }
-    catch (NamingException e) {
+            Attribute attr = new BasicAttribute("objectClass");
+            attr.add("top");
+            attr.add(ROLE_OBJECT_CLASS);
 
-      role = null;
-    }
+            attributes.put(attr);
+            attributes.put("cn", role.getRoleID());
+            attributes.put("ou", role.getName());
+            attributes.put("description", role.getComment().trim());
 
-    return role;
-  }
-
-  /**
-   * @return total number of roles
-   */
-  public int getCount()
-      throws SecurityManagerDaoException {
-
-    LdapOperation ldap = null;
-    int nCount = 0;
-
-    try {
-      ldap = getLdap();
-
-      String roleCtxDN = getRoleClassDirectoryContext();
-
-      String[] attrs = {"cn"};
-      ldap.setReturningAttributes(attrs);
-
-      ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
-
-      while (ldap.nextResult()) {
-        nCount++;
-      }
-
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Failed to count roles", e);
-    }
-    finally {
-      closeLdap(ldap);
-    }
-
-    return nCount;
-  }
-
-  /**
-   * @return all the role names
-   */
-  public Vector getRoleNames()
-      throws SecurityManagerDaoException {
-    LdapOperation ldap = null;
-    Vector vec = new Vector();
-
-    try {
-      ldap = getLdap();
-
-      String roleCtxDN = getRoleClassDirectoryContext();
-
-      String[] attrs = {"cn","ou","description"};
-      ldap.setReturningAttributes(attrs);
-
-      ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
-
-      while (ldap.nextResult()) {
-        RoleDO retRole = createRoleFromLdapResult(ldap);
-        vec.add(retRole);
-      }
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Failed to count roles", e);
-    }
-    finally {
-      closeLdap(ldap);
-    }
-
-    return vec;
-  }
-
-  /**
-   * @param index start index
-   * @param nCount count of names
-   * @return a range of role names
-   */
-  public Vector getRoleNames(int index, int nCount)
-      throws SecurityManagerDaoException {
-
-    LdapOperation ldap = null;
-    Vector vec = new Vector();
-
-    int start = 0;
-    int nCnt = 0;
-
-    try {
-      ldap = getLdap();
-
-      String roleCtxDN = getRoleClassDirectoryContext();
-
-      // limit search attributes
-      String[] attrs = {"cn"};
-      ldap.setReturningAttributes(attrs);
-
-      ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
-
-      // loop
-      while (ldap.nextResult()) {
-        start++;
-
-        if (start >= index) {
-          vec.add(ldap.getResultAttribute("cn"));
-          nCnt++;
-
-          // check if count limit is reached
-          if (nCnt == nCount) {
-            break;
-          }
+            String roleDN = "cn=" + role.getRoleID() + "," + getRoleClassDirectoryContext();
+            LdapOperation.addElement(roleDN, attributes);
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Count not create role : " + role, e);
+        } finally {
+            closeLdap(ldap);
         }
-      }
 
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Failed to get roles", e);
-    }
-    finally {
-      closeLdap(ldap);
+        return role;
     }
 
-    return vec;
-  }
+    /**
+     * delete the role with the name
+     *
+     * @param role name of the role
+     */
+    public void deleteRole(RoleDO role)
+            throws ObjectNotExistException, SecurityManagerDaoException {
 
-  /**
-   * return all the roles
-   */
-  public Vector getRoles()
-      throws SecurityManagerDaoException {
+        LdapOperation ldap = null;
+        String roleDN = "cn=" + role.getRoleID() + "," + getRoleClassDirectoryContext();
 
-    LdapOperation ldap = null;
-    Vector vec = new Vector();
-
-    try {
-      ldap = getLdap();
-
-      String roleCtxDN = getRoleClassDirectoryContext();
-
-      String[] attrs = {"cn", "description", "ou"};
-      ldap.setReturningAttributes(attrs);
-
-      ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
-
-      while (ldap.nextResult()) {
-        RoleDO role = createRoleFromLdapResult(ldap);
-
-        if (role != null) {
-          vec.add(role);
+        try {
+            ldap = getLdap();
+            LdapOperation.deleteElement(roleDN);
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Can not delete role : " + roleDN, e);
+        } finally {
+            closeLdap(ldap);
         }
-      }
-
-    }
-    catch (NamingException e) {
-      throw new SecurityManagerDaoException("Failed to get roles", e);
-    }
-    finally {
-      closeLdap(ldap);
     }
 
-    return vec;
-  }
+    /**
+     * update the role
+     *
+     * @param role role to update
+     */
+    public void updateRole(RoleDO role)
+            throws ObjectNotExistException, SecurityManagerDaoException {
+
+        LdapOperation ldap = null;
+
+        try {
+            ldap = getLdap();
+
+            String roleDN = "cn=" + role.getRoleID() + "," + getRoleClassDirectoryContext();
+            ModificationItem[] mods = new ModificationItem[2];
+
+            mods[0] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                    new BasicAttribute("description", role.getComment()));
+
+            mods[1] = new ModificationItem(DirContext.REPLACE_ATTRIBUTE,
+                    new BasicAttribute("ou", role.getName()));
+
+            LdapOperation.modifyAttributes(roleDN, mods);
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Can not update role : " + role, e);
+        } finally {
+            closeLdap(ldap);
+        }
+    }
+
+    /**
+     * retrieve the role with the given name
+     */
+    public RoleDO lookupRole(String name)
+            throws ObjectNotExistException, SecurityManagerDaoException {
+
+        LdapOperation ldap = null;
+        RoleDO role = null;
+
+        try {
+            ldap = getLdap();
+
+            String[] attrs = {"cn", "description", "ou"};
+            ldap.setReturningAttributes(attrs);
+            String roleCtxDN = getRoleClassDirectoryContext();
+            ldap.searchSubtree(roleCtxDN, "cn=" + name);
+
+            if (ldap.nextResult()) {
+                role = createRoleFromLdapResult(ldap);
+            } else {
+                throw new ObjectNotExistException("Can't find the specified ROLE.");
+            }
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Can not find role : " + name, e);
+        } finally {
+            closeLdap(ldap);
+        }
+
+        return role;
+    }
+
+    public static RoleDO createRoleFromLdapResult(LdapOperation ldap) {
+        RoleDO role = null;
+
+        try {
+            String roleId = ldap.getResultAttribute("cn");
+            String roleName = ldap.getResultAttribute("ou");
+            if (roleName == null) {
+                roleName = roleId;
+            }
+            String roleDesc = ldap.getResultAttribute("description");
+
+            role = new RoleDO(roleId, roleName, roleDesc);
+        } catch (NamingException e) {
+
+            role = null;
+        }
+
+        return role;
+    }
+
+    public static RoleDO createRoleFromAttributes(Attributes attrs) {
+        RoleDO role = null;
+
+        try {
+            String id = (String) attrs.get("cn").get();
+
+            String name = null;
+            if (attrs.get("ou") != null) {
+                name = (String) attrs.get("ou").get();
+            } else {
+                name = id;
+
+            }
+            String desc = null;
+            if (attrs.get("description") != null) {
+                desc = (String) attrs.get("description").get();
+
+            }
+            role = new RoleDO(id, name, desc);
+
+        } catch (NamingException e) {
+
+            role = null;
+        }
+
+        return role;
+    }
+
+    /**
+     * @return total number of roles
+     */
+    public int getCount()
+            throws SecurityManagerDaoException {
+
+        LdapOperation ldap = null;
+        int nCount = 0;
+
+        try {
+            ldap = getLdap();
+
+            String roleCtxDN = getRoleClassDirectoryContext();
+
+            String[] attrs = {"cn"};
+            ldap.setReturningAttributes(attrs);
+
+            ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
+
+            while (ldap.nextResult()) {
+                nCount++;
+            }
+
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Failed to count roles", e);
+        } finally {
+            closeLdap(ldap);
+        }
+
+        return nCount;
+    }
+
+    /**
+     * @return all the role names
+     */
+    public Vector getRoleNames()
+            throws SecurityManagerDaoException {
+        LdapOperation ldap = null;
+        Vector vec = new Vector();
+
+        try {
+            ldap = getLdap();
+
+            String roleCtxDN = getRoleClassDirectoryContext();
+
+            String[] attrs = {"cn", "ou", "description"};
+            ldap.setReturningAttributes(attrs);
+
+            ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
+
+            while (ldap.nextResult()) {
+                RoleDO retRole = createRoleFromLdapResult(ldap);
+                vec.add(retRole);
+            }
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Failed to count roles", e);
+        } finally {
+            closeLdap(ldap);
+        }
+
+        return vec;
+    }
+
+    /**
+     * @param index  start index
+     * @param nCount count of names
+     * @return a range of role names
+     */
+    public Vector getRoleNames(int index, int nCount)
+            throws SecurityManagerDaoException {
+
+        LdapOperation ldap = null;
+        Vector vec = new Vector();
+
+        int start = 0;
+        int nCnt = 0;
+
+        try {
+            ldap = getLdap();
+
+            String roleCtxDN = getRoleClassDirectoryContext();
+
+            // limit search attributes
+            String[] attrs = {"cn"};
+            ldap.setReturningAttributes(attrs);
+
+            ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
+
+            // loop
+            while (ldap.nextResult()) {
+                start++;
+
+                if (start >= index) {
+                    vec.add(ldap.getResultAttribute("cn"));
+                    nCnt++;
+
+                    // check if count limit is reached
+                    if (nCnt == nCount) {
+                        break;
+                    }
+                }
+            }
+
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Failed to get roles", e);
+        } finally {
+            closeLdap(ldap);
+        }
+
+        return vec;
+    }
+
+    /**
+     * return all the roles
+     */
+    public Vector getRoles()
+            throws SecurityManagerDaoException {
+
+        LdapOperation ldap = null;
+        Vector vec = new Vector();
+
+        try {
+            ldap = getLdap();
+
+            String roleCtxDN = getRoleClassDirectoryContext();
+
+            String[] attrs = {"cn", "description", "ou"};
+            ldap.setReturningAttributes(attrs);
+
+            ldap.searchSubtree(roleCtxDN, "objectClass=" + getRoleObjectClass());
+
+            while (ldap.nextResult()) {
+                RoleDO role = createRoleFromLdapResult(ldap);
+
+                if (role != null) {
+                    vec.add(role);
+                }
+            }
+
+        } catch (NamingException e) {
+            throw new SecurityManagerDaoException("Failed to get roles", e);
+        } finally {
+            closeLdap(ldap);
+        }
+
+        return vec;
+    }
 
     /**
      * lookup role dn , this method will seach the sub tree and find the result.

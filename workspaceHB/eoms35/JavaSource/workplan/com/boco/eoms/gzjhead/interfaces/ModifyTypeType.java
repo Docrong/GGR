@@ -1,13 +1,13 @@
 /**
  * ModifyTypeType.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhead.interfaces;
 
-public class ModifyTypeType  implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
+public class ModifyTypeType implements java.io.Serializable, org.apache.axis.encoding.SimpleType {
     private int value;
 
     public ModifyTypeType() {
@@ -36,6 +36,7 @@ public class ModifyTypeType  implements java.io.Serializable, org.apache.axis.en
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof ModifyTypeType)) return false;
         ModifyTypeType other = (ModifyTypeType) obj;
@@ -46,13 +47,14 @@ public class ModifyTypeType  implements java.io.Serializable, org.apache.axis.en
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            this.value == other.getValue();
+        _equals = true &&
+                this.value == other.getValue();
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

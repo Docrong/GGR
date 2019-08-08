@@ -67,315 +67,314 @@ import com.boco.eoms.workplan.util.TawwpUtil;
  * Implementation of <strong>Action</strong> that interacts with the {@link
  * UserForm} and retrieves values. It interacts with the {@link UserManager} to
  * retrieve/persist values to the database.
- * 
+ *
  * <p>
  * <a href="UserAction.java.html"><i>View Source</i></a>
  * </p>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a> Modified by
- *         <a href="mailto:dan@getrolling.com">Dan Kibler</a>
- * 
+ * <a href="mailto:dan@getrolling.com">Dan Kibler</a>
  */
 public final class UserAction extends BaseAction {
 
-	public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// if (log.isDebugEnabled()) {
-		BocoLog.debug(this, "Entering 'add' method");
-		// }
+    public ActionForward add(ActionMapping mapping, ActionForm form,
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // if (log.isDebugEnabled()) {
+        BocoLog.debug(this, "Entering 'add' method");
+        // }
 
-		User user = new User();
-		user.addRole(new Role(Constants.USER_ROLE));
-		UserForm userForm = (UserForm) convert(user);
-		updateFormBean(mapping, request, userForm);
+        User user = new User();
+        user.addRole(new Role(Constants.USER_ROLE));
+        UserForm userForm = (UserForm) convert(user);
+        updateFormBean(mapping, request, userForm);
 
-		checkForRememberMeLogin(request);
+        checkForRememberMeLogin(request);
 
-		return mapping.findForward("edit");
-	}
+        return mapping.findForward("edit");
+    }
 
-	public ActionForward cancel(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// if (log.isDebugEnabled()) {
-		BocoLog.debug(this, "Entering 'cancel' method");
-		// }
+    public ActionForward cancel(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // if (log.isDebugEnabled()) {
+        BocoLog.debug(this, "Entering 'cancel' method");
+        // }
 
-		if (!StringUtils.equals(request.getParameter("from"), "list")) {
-			return mapping.findForward("mainMenu");
-		} else {
-			return mapping.findForward("viewUsers");
-		}
-	}
+        if (!StringUtils.equals(request.getParameter("from"), "list")) {
+            return mapping.findForward("mainMenu");
+        } else {
+            return mapping.findForward("viewUsers");
+        }
+    }
 
-	public ActionForward delete(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// if (log.isDebugEnabled()) {
-		BocoLog.debug(this, "Entering 'delete' method");
-		// }
+    public ActionForward delete(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // if (log.isDebugEnabled()) {
+        BocoLog.debug(this, "Entering 'delete' method");
+        // }
 
-		// Extract attributes and parameters we will need
-		ActionMessages messages = new ActionMessages();
-		UserForm userForm = (UserForm) form;
+        // Extract attributes and parameters we will need
+        ActionMessages messages = new ActionMessages();
+        UserForm userForm = (UserForm) form;
 
-		// Exceptions are caught by ActionExceptionHandler
-		UserManager mgr = (UserManager) getBean("userManager");
-		mgr.removeUser(userForm.getId());
+        // Exceptions are caught by ActionExceptionHandler
+        UserManager mgr = (UserManager) getBean("userManager");
+        mgr.removeUser(userForm.getId());
 
-		messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-				"user.deleted", userForm.getFirstName() + ' '
-						+ userForm.getLastName()));
+        messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                "user.deleted", userForm.getFirstName() + ' '
+                + userForm.getLastName()));
 
-		saveMessages(request.getSession(), messages);
+        saveMessages(request.getSession(), messages);
 
-		// return a forward to searching users
-		return mapping.findForward("viewUsers");
-	}
+        // return a forward to searching users
+        return mapping.findForward("viewUsers");
+    }
 
-	public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// if (log.isDebugEnabled()) {
-		BocoLog.debug(this, "Entering 'edit' method");
-		// }
+    public ActionForward edit(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // if (log.isDebugEnabled()) {
+        BocoLog.debug(this, "Entering 'edit' method");
+        // }
 
-		UserForm userForm = (UserForm) form;
+        UserForm userForm = (UserForm) form;
 
-		// if URL is "editProfile" - make sure it's the current user
-		if (request.getRequestURI().indexOf("editProfile") > -1) {
-			// reject if username passed in or "list" parameter passed in
-			// someone that is trying this probably knows the AppFuse code
-			// but it's a legitimate bug, so I'll fix it. ;-)
-			if ((request.getParameter("username") != null)
-					|| (request.getParameter("from") != null)) {
-				response.sendError(HttpServletResponse.SC_FORBIDDEN);
-				BocoLog.warn(this, "User '" + request.getRemoteUser()
-						+ "' is trying to edit user '"
-						+ request.getParameter("username") + "'");
+        // if URL is "editProfile" - make sure it's the current user
+        if (request.getRequestURI().indexOf("editProfile") > -1) {
+            // reject if username passed in or "list" parameter passed in
+            // someone that is trying this probably knows the AppFuse code
+            // but it's a legitimate bug, so I'll fix it. ;-)
+            if ((request.getParameter("username") != null)
+                    || (request.getParameter("from") != null)) {
+                response.sendError(HttpServletResponse.SC_FORBIDDEN);
+                BocoLog.warn(this, "User '" + request.getRemoteUser()
+                        + "' is trying to edit user '"
+                        + request.getParameter("username") + "'");
 
-				return null;
-			}
-		}
+                return null;
+            }
+        }
 
-		// Exceptions are caught by ActionExceptionHandler
-		UserManager mgr = (UserManager) getBean("userManager");
-		User user = null;
+        // Exceptions are caught by ActionExceptionHandler
+        UserManager mgr = (UserManager) getBean("userManager");
+        User user = null;
 
-		// if a user's username is passed in
-		if (request.getParameter("username") != null) {
-			// lookup the user using that id
-			user = mgr.getUserByUsername(userForm.getUsername());
-		} else {
-			// look it up based on the current user's id
-			user = mgr.getUserByUsername(request.getRemoteUser());
-		}
+        // if a user's username is passed in
+        if (request.getParameter("username") != null) {
+            // lookup the user using that id
+            user = mgr.getUserByUsername(userForm.getUsername());
+        } else {
+            // look it up based on the current user's id
+            user = mgr.getUserByUsername(request.getRemoteUser());
+        }
 
-		BeanUtils.copyProperties(userForm, convert(user));
-		userForm.setConfirmPassword(userForm.getPassword());
-		updateFormBean(mapping, request, userForm);
+        BeanUtils.copyProperties(userForm, convert(user));
+        userForm.setConfirmPassword(userForm.getPassword());
+        updateFormBean(mapping, request, userForm);
 
-		checkForRememberMeLogin(request);
+        checkForRememberMeLogin(request);
 
-		// return a forward to edit forward
-		return mapping.findForward("edit");
-	}
+        // return a forward to edit forward
+        return mapping.findForward("edit");
+    }
 
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// if (log.isDebugEnabled()) {
-		BocoLog.debug(this, "Entering 'save' method");
-		// }
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // if (log.isDebugEnabled()) {
+        BocoLog.debug(this, "Entering 'save' method");
+        // }
 
-		// run validation rules on this form
-		// See https://appfuse.dev.java.net/issues/show_bug.cgi?id=128
-		ActionMessages errors = form.validate(mapping, request);
+        // run validation rules on this form
+        // See https://appfuse.dev.java.net/issues/show_bug.cgi?id=128
+        ActionMessages errors = form.validate(mapping, request);
 
-		if (!errors.isEmpty()) {
-			// saveErrors(request, errors);
-			BocoLog.error(this, errors.toString());
-			return mapping.findForward("edit");
-		}
+        if (!errors.isEmpty()) {
+            // saveErrors(request, errors);
+            BocoLog.error(this, errors.toString());
+            return mapping.findForward("edit");
+        }
 
-		// Extract attributes and parameters we will need
-		ActionMessages messages = new ActionMessages();
-		UserForm userForm = (UserForm) form;
-		User user = new User();
+        // Extract attributes and parameters we will need
+        ActionMessages messages = new ActionMessages();
+        UserForm userForm = (UserForm) form;
+        User user = new User();
 
-		// Exceptions are caught by ActionExceptionHandler
-		// all we need to persist is the parent object
-		BeanUtils.copyProperties(user, userForm);
+        // Exceptions are caught by ActionExceptionHandler
+        // all we need to persist is the parent object
+        BeanUtils.copyProperties(user, userForm);
 
-		Boolean encrypt = (Boolean) getConfiguration().get(
-				Constants.ENCRYPT_PASSWORD);
+        Boolean encrypt = (Boolean) getConfiguration().get(
+                Constants.ENCRYPT_PASSWORD);
 
-		if (StringUtils.equals(request.getParameter("encryptPass"), "true")
-				&& (encrypt != null && encrypt.booleanValue())) {
-			String algorithm = (String) getConfiguration().get(
-					Constants.ENC_ALGORITHM);
+        if (StringUtils.equals(request.getParameter("encryptPass"), "true")
+                && (encrypt != null && encrypt.booleanValue())) {
+            String algorithm = (String) getConfiguration().get(
+                    Constants.ENC_ALGORITHM);
 
-			if (algorithm == null) { // should only happen for test case
-				BocoLog.debug(this,
-						"assuming testcase, setting algorithm to 'SHA'");
-				algorithm = "SHA";
-			}
+            if (algorithm == null) { // should only happen for test case
+                BocoLog.debug(this,
+                        "assuming testcase, setting algorithm to 'SHA'");
+                algorithm = "SHA";
+            }
 
-			user.setPassword(StringUtil.encodePassword(user.getPassword(),
-					algorithm));
-		}
+            user.setPassword(StringUtil.encodePassword(user.getPassword(),
+                    algorithm));
+        }
 
-		UserManager mgr = (UserManager) getBean("userManager");
-		RoleManager roleMgr = (RoleManager) getBean("roleManager");
-		String[] userRoles = request.getParameterValues("userRoles");
+        UserManager mgr = (UserManager) getBean("userManager");
+        RoleManager roleMgr = (RoleManager) getBean("roleManager");
+        String[] userRoles = request.getParameterValues("userRoles");
 
-		for (int i = 0; userRoles != null && i < userRoles.length; i++) {
-			String roleName = userRoles[i];
-			user.addRole(roleMgr.getRole(roleName));
-		}
+        for (int i = 0; userRoles != null && i < userRoles.length; i++) {
+            String roleName = userRoles[i];
+            user.addRole(roleMgr.getRole(roleName));
+        }
 
-		try {
-			mgr.saveUser(user);
-		} catch (UserExistsException e) {
-			// errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-			// "errors.existing.user", userForm.getUsername(), userForm
-			// .getEmail()));
-			// saveErrors(request, errors);
-			BocoLog.error(this, "errors.existing.user "
-					+ userForm.getUsername());
+        try {
+            mgr.saveUser(user);
+        } catch (UserExistsException e) {
+            // errors.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+            // "errors.existing.user", userForm.getUsername(), userForm
+            // .getEmail()));
+            // saveErrors(request, errors);
+            BocoLog.error(this, "errors.existing.user "
+                    + userForm.getUsername());
 
-			BeanUtils.copyProperties(userForm, convert(user));
-			userForm.setConfirmPassword(userForm.getPassword());
-			// reset the version # to what was passed in
-			userForm.setVersion(request.getParameter("version"));
-			updateFormBean(mapping, request, userForm);
+            BeanUtils.copyProperties(userForm, convert(user));
+            userForm.setConfirmPassword(userForm.getPassword());
+            // reset the version # to what was passed in
+            userForm.setVersion(request.getParameter("version"));
+            updateFormBean(mapping, request, userForm);
 
-			return mapping.findForward("edit");
-		}
+            return mapping.findForward("edit");
+        }
 
-		BeanUtils.copyProperties(userForm, convert(user));
-		userForm.setConfirmPassword(userForm.getPassword());
-		updateFormBean(mapping, request, userForm);
+        BeanUtils.copyProperties(userForm, convert(user));
+        userForm.setConfirmPassword(userForm.getPassword());
+        updateFormBean(mapping, request, userForm);
 
-		if (!StringUtils.equals(request.getParameter("from"), "list")) {
-			// add success messages
-			messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-					"user.saved"));
-			saveMessages(request.getSession(), messages);
+        if (!StringUtils.equals(request.getParameter("from"), "list")) {
+            // add success messages
+            messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                    "user.saved"));
+            saveMessages(request.getSession(), messages);
 
-			// return a forward to main Menu
-			return mapping.findForward("mainMenu");
-		} else {
-			// add success messages
-			if ("".equals(request.getParameter("version"))) {
-				messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-						"user.added", user.getFullName()));
-				saveMessages(request.getSession(), messages);
-				sendNewUserEmail(request, userForm);
+            // return a forward to main Menu
+            return mapping.findForward("mainMenu");
+        } else {
+            // add success messages
+            if ("".equals(request.getParameter("version"))) {
+                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                        "user.added", user.getFullName()));
+                saveMessages(request.getSession(), messages);
+                sendNewUserEmail(request, userForm);
 
-				return mapping.findForward("addUser");
-			} else {
-				messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-						"user.updated.byAdmin", user.getFullName()));
-				saveMessages(request, messages);
+                return mapping.findForward("addUser");
+            } else {
+                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                        "user.updated.byAdmin", user.getFullName()));
+                saveMessages(request, messages);
 
-				return mapping.findForward("edit");
-			}
-		}
-	}
+                return mapping.findForward("edit");
+            }
+        }
+    }
 
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		// if (log.isDebugEnabled()) {
-		BocoLog.debug(this, "Entering 'search' method");
-		// }
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        // if (log.isDebugEnabled()) {
+        BocoLog.debug(this, "Entering 'search' method");
+        // }
 
-		UserForm userForm = (UserForm) form;
+        UserForm userForm = (UserForm) form;
 
-		// Exceptions are caught by ActionExceptionHandler
-		UserManager mgr = (UserManager) getBean("userManager");
-		User user = (User) convert(userForm);
-		List users = mgr.getUsers(user);
-		request.setAttribute(Constants.USER_LIST, users);
+        // Exceptions are caught by ActionExceptionHandler
+        UserManager mgr = (UserManager) getBean("userManager");
+        User user = (User) convert(userForm);
+        List users = mgr.getUsers(user);
+        request.setAttribute(Constants.USER_LIST, users);
 
-		// return a forward to the user list definition
-		return mapping.findForward("list");
-	}
+        // return a forward to the user list definition
+        return mapping.findForward("list");
+    }
 
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
 
-		return search(mapping, form, request, response);
-	}
+        return search(mapping, form, request, response);
+    }
 
-	private void sendNewUserEmail(HttpServletRequest request, UserForm userForm)
-			throws Exception {
-		MessageResources resources = getResources(request);
+    private void sendNewUserEmail(HttpServletRequest request, UserForm userForm)
+            throws Exception {
+        MessageResources resources = getResources(request);
 
-		// Send user an e-mail
-		// if (log.isDebugEnabled()) {
-		BocoLog.debug(this, "Sending user '" + userForm.getUsername()
-				+ "' an account information e-mail");
-		// }
+        // Send user an e-mail
+        // if (log.isDebugEnabled()) {
+        BocoLog.debug(this, "Sending user '" + userForm.getUsername()
+                + "' an account information e-mail");
+        // }
 
-		SimpleMailMessage message = (SimpleMailMessage) getBean("mailMessage");
-		message.setTo(userForm.getFullName() + "<" + userForm.getEmail() + ">");
+        SimpleMailMessage message = (SimpleMailMessage) getBean("mailMessage");
+        message.setTo(userForm.getFullName() + "<" + userForm.getEmail() + ">");
 
-		StringBuffer msg = new StringBuffer();
-		msg.append(resources.getMessage("newuser.email.message", userForm
-				.getFullName()));
-		msg.append("\n\n" + resources.getMessage("userForm.username"));
-		msg.append(": " + userForm.getUsername() + "\n");
-		msg.append(resources.getMessage("userForm.password") + ": ");
-		msg.append(userForm.getPassword());
-		msg.append("\n\nLogin at: " + RequestUtil.getAppURL(request));
-		message.setText(msg.toString());
+        StringBuffer msg = new StringBuffer();
+        msg.append(resources.getMessage("newuser.email.message", userForm
+                .getFullName()));
+        msg.append("\n\n" + resources.getMessage("userForm.username"));
+        msg.append(": " + userForm.getUsername() + "\n");
+        msg.append(resources.getMessage("userForm.password") + ": ");
+        msg.append(userForm.getPassword());
+        msg.append("\n\nLogin at: " + RequestUtil.getAppURL(request));
+        message.setText(msg.toString());
 
-		message.setSubject(resources.getMessage("signup.email.subject"));
+        message.setSubject(resources.getMessage("signup.email.subject"));
 
-		MailEngine engine = (MailEngine) getBean("mailEngine");
-		engine.send(message);
-	}
+        MailEngine engine = (MailEngine) getBean("mailEngine");
+        engine.send(message);
+    }
 
-	private void checkForRememberMeLogin(HttpServletRequest request) {
-		// if user logged in with remember me, display a warning that they can't
-		// change passwords
-		BocoLog.debug(this, "checking for remember me login...");
+    private void checkForRememberMeLogin(HttpServletRequest request) {
+        // if user logged in with remember me, display a warning that they can't
+        // change passwords
+        BocoLog.debug(this, "checking for remember me login...");
 
-		AuthenticationTrustResolver resolver = new AuthenticationTrustResolverImpl();
-		SecurityContext ctx = SecurityContextHolder.getContext();
+        AuthenticationTrustResolver resolver = new AuthenticationTrustResolverImpl();
+        SecurityContext ctx = SecurityContextHolder.getContext();
 
-		if (ctx != null) {
-			Authentication auth = ctx.getAuthentication();
+        if (ctx != null) {
+            Authentication auth = ctx.getAuthentication();
 
-			if (resolver.isRememberMe(auth)) {
-				request.getSession().setAttribute("cookieLogin", "true");
+            if (resolver.isRememberMe(auth)) {
+                request.getSession().setAttribute("cookieLogin", "true");
 
-				// add warning message
-				ActionMessages messages = new ActionMessages();
-				messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
-						"userProfile.cookieLogin"));
-				saveMessages(request, messages);
-			}
-		}
-	}
+                // add warning message
+                ActionMessages messages = new ActionMessages();
+                messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage(
+                        "userProfile.cookieLogin"));
+                saveMessages(request, messages);
+            }
+        }
+    }
 
-	public ActionForward saveSession(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("liu====");
-		//String originPassword = null;
-		String userId = null;
-		ActionForward forword = null;
-		ITawSystemUserManager userManager = (ITawSystemUserManager) getBean("ItawSystemUserSaveManagerFlush");
-		TawSystemSessionForm users = (TawSystemSessionForm) request.getSession(
-				true).getAttribute("sessionform");
-		String token = (String) request.getSession().getAttribute(
-				SSOConstants.SSO_TOKEN);
-		String onLineUser = (String) request.getSession().getAttribute(
-				SSOConstants.SSO_ACCOUNT);
+    public ActionForward saveSession(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("liu====");
+        //String originPassword = null;
+        String userId = null;
+        ActionForward forword = null;
+        ITawSystemUserManager userManager = (ITawSystemUserManager) getBean("ItawSystemUserSaveManagerFlush");
+        TawSystemSessionForm users = (TawSystemSessionForm) request.getSession(
+                true).getAttribute("sessionform");
+        String token = (String) request.getSession().getAttribute(
+                SSOConstants.SSO_TOKEN);
+        String onLineUser = (String) request.getSession().getAttribute(
+                SSOConstants.SSO_ACCOUNT);
 //		if (users != null && onLineUser != null && token != null) {
 //			userId = onLineUser;
 //
@@ -429,9 +428,9 @@ public final class UserAction extends BaseAction {
 //			else if (Constants.LOGIN_EOMS.equals(UtilMgrLocator
 //					.getEOMSAttributes().getLoginType())) {
 //		//         userId = request.getParameter("j_username");
-				userId = request.getParameter(StringEscapeUtils.escapeSql("j_username"));
-			//	System.out.println("--20150608---eoms-------j_username--------------" + userId);
-				String userPWD = request.getParameter("j_password");
+        userId = request.getParameter(StringEscapeUtils.escapeSql("j_username"));
+        //	System.out.println("--20150608---eoms-------j_username--------------" + userId);
+        String userPWD = request.getParameter("j_password");
 //		/*		if(userId!=null&&!userId.equals("")){
 //					 userId=new String(decode(userId));
 //					 userPWD=new String(decode(userPWD));
@@ -528,8 +527,8 @@ public final class UserAction extends BaseAction {
 //			}
 //		}
 
-		TawSystemSessionForm sessionform = new TawSystemSessionForm();
-		sessionform.setUserid(userId);
+        TawSystemSessionForm sessionform = new TawSystemSessionForm();
+        sessionform.setUserid(userId);
 	/*	TawSystemUser tsu = userManager.getTawSystemUserByuserid(userId) ;
 		//2015/04/20 add by lijin
 		sessionform.setAttribute1(StaticMethod.nullObject2String(tsu.getAttribute1()));
@@ -537,12 +536,12 @@ public final class UserAction extends BaseAction {
 		System.out.println("attribute1    =======>>>"+StaticMethod.nullObject2String(tsu.getAttribute1()));
 		System.out.println("originPassword    =======>>>"+originPassword);
 		sessionform.setOriginPassword(originPassword);*/
-		TawSystemSessionAction sessionaction = new TawSystemSessionAction();
-		ITawwpStubUserMgr tawwpStubUserMgr = (ITawwpStubUserMgr) getBean("tawwpStubUserMgr");
-		request.setAttribute("tawwpStubUserMgr", tawwpStubUserMgr);
-		forword = sessionaction.performInit(mapping, sessionform, request,
-				response);
- //2014/9/26 begin:add by dengpengfei
+        TawSystemSessionAction sessionaction = new TawSystemSessionAction();
+        ITawwpStubUserMgr tawwpStubUserMgr = (ITawwpStubUserMgr) getBean("tawwpStubUserMgr");
+        request.setAttribute("tawwpStubUserMgr", tawwpStubUserMgr);
+        forword = sessionaction.performInit(mapping, sessionform, request,
+                response);
+        //2014/9/26 begin:add by dengpengfei
 			
 	/*	
 		request.getSession().setAttribute("showornot", "yes");
@@ -614,118 +613,118 @@ public final class UserAction extends BaseAction {
 		}
         //2014/9/26 end:add by dengpengfei
 */
-		return forword;
-	}
+        return forword;
+    }
 
-	/**
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return 分离wap登陆方式
-	 */
-	public ActionForward wapSaveSession(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
+    /**
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return 分离wap登陆方式
+     */
+    public ActionForward wapSaveSession(ActionMapping mapping, ActionForm form,
+                                        HttpServletRequest request, HttpServletResponse response) {
 
-		String userId = null;
-		ActionForward forword = null;
-		ITawSystemUserManager userManager = (ITawSystemUserManager) getBean("ItawSystemUserSaveManagerFlush");
+        String userId = null;
+        ActionForward forword = null;
+        ITawSystemUserManager userManager = (ITawSystemUserManager) getBean("ItawSystemUserSaveManagerFlush");
 
-		// wap登陆方式
-		if (request.getParameter("wapLogin") != null) {
-			String j_username = request.getParameter(StringEscapeUtils.escapeSql("j_username"));
-			String j_password = request.getParameter("j_password");
-			// cookie中保存用户名
-			WapUtil.saveValue4Cookie(WAPConstants.WAP_COOKIE_LOGIN_NAME,
-					j_username, response);
-			// 用户名/手机号 校验
-			String returnValue = "";
-			if (j_username != null) {
+        // wap登陆方式
+        if (request.getParameter("wapLogin") != null) {
+            String j_username = request.getParameter(StringEscapeUtils.escapeSql("j_username"));
+            String j_password = request.getParameter("j_password");
+            // cookie中保存用户名
+            WapUtil.saveValue4Cookie(WAPConstants.WAP_COOKIE_LOGIN_NAME,
+                    j_username, response);
+            // 用户名/手机号 校验
+            String returnValue = "";
+            if (j_username != null) {
 
-				returnValue = userManager.getUserByUserIdOrMobile(j_username,
-						j_password);
-				if ("".equalsIgnoreCase(returnValue)) {
-					return new ActionForward("/wap/login.jsp?error=error");
+                returnValue = userManager.getUserByUserIdOrMobile(j_username,
+                        j_password);
+                if ("".equalsIgnoreCase(returnValue)) {
+                    return new ActionForward("/wap/login.jsp?error=error");
 
-				}
-			}
-			userId = returnValue;
+                }
+            }
+            userId = returnValue;
 
-			TawSystemUser user = null;
+            TawSystemUser user = null;
 
-			// SOX，连续登陆n（6）次将锁定用户不得登陆
-			try {
-				// 验证用户
-				user = (TawSystemUser) userManager.getUserByuserid(userId);
+            // SOX，连续登陆n（6）次将锁定用户不得登陆
+            try {
+                // 验证用户
+                user = (TawSystemUser) userManager.getUserByuserid(userId);
 
-				if (user == null)// 用户不存在，抛异常
-					throw new BadCredentialsException(messages.getMessage(
-							"UserAction.badCredentials", "Bad credentials"));
-				// TODO ldap中验证通过后,不再验证EOMS系统
-				// else if (!user.getPassword().equals(// 密码错误，抛异常
-				// new Md5PasswordEncoder().encodePassword(userPWD,
-				// new String()))) {
-				// throw new BadCredentialsException(messages.getMessage(
-				// "UserAction.badCredentials", "Bad credentials"));
-				// }
-				else if (user.isAccountLocked()) {// 用户被锁定
-					loginErrorReturn(request, response, "LockedException");
-					return mapping.findForward("relogin");
-				} else if (!user.isEnabled()) {// 用户不可用
-					loginErrorReturn(request, response, "DisabledException");
-					return mapping.findForward("relogin");
-				}
-			} catch (Exception e) {
-				// 若登陆失败，则将失败次数累加，到达一定次数则锁住用户
-				user.setFailCount(user.getFailCount() != null ? new Integer(
-						user.getFailCount().intValue() + 1) : new Integer(0));
-				if (user.getFailCount().intValue() >= UserMgrLocator
-						.getUserAttributes().getPasswdRepeatNum().intValue()) {
-					// 锁定用户
-					user.setAccountLocked(true);
-					userManager.saveTawSystemUser(user);
-					loginErrorReturn(request, response, "LockedException");
-					return mapping.findForward("relogin");
-				}
-				userManager.saveTawSystemUser(user);
-				loginErrorReturn(request, response, "BadCredentialsException");
-				return mapping.findForward("relogin");
-			}
+                if (user == null)// 用户不存在，抛异常
+                    throw new BadCredentialsException(messages.getMessage(
+                            "UserAction.badCredentials", "Bad credentials"));
+                    // TODO ldap中验证通过后,不再验证EOMS系统
+                    // else if (!user.getPassword().equals(// 密码错误，抛异常
+                    // new Md5PasswordEncoder().encodePassword(userPWD,
+                    // new String()))) {
+                    // throw new BadCredentialsException(messages.getMessage(
+                    // "UserAction.badCredentials", "Bad credentials"));
+                    // }
+                else if (user.isAccountLocked()) {// 用户被锁定
+                    loginErrorReturn(request, response, "LockedException");
+                    return mapping.findForward("relogin");
+                } else if (!user.isEnabled()) {// 用户不可用
+                    loginErrorReturn(request, response, "DisabledException");
+                    return mapping.findForward("relogin");
+                }
+            } catch (Exception e) {
+                // 若登陆失败，则将失败次数累加，到达一定次数则锁住用户
+                user.setFailCount(user.getFailCount() != null ? new Integer(
+                        user.getFailCount().intValue() + 1) : new Integer(0));
+                if (user.getFailCount().intValue() >= UserMgrLocator
+                        .getUserAttributes().getPasswdRepeatNum().intValue()) {
+                    // 锁定用户
+                    user.setAccountLocked(true);
+                    userManager.saveTawSystemUser(user);
+                    loginErrorReturn(request, response, "LockedException");
+                    return mapping.findForward("relogin");
+                }
+                userManager.saveTawSystemUser(user);
+                loginErrorReturn(request, response, "BadCredentialsException");
+                return mapping.findForward("relogin");
+            }
 
-			// SOX，判断用户有效期为n(90)天
-			if (new Date().compareTo(DateUtil.addDate(user.getSavetime(),
-					UserMgrLocator.getUserAttributes().getPasswdAvailableDay()
-							.intValue())) > 0) {
-				// 设置user用户不可用
-				user.setEnabled(false);
-				userManager.saveTawSystemUser(user);
-				loginErrorReturn(request, response, "DisabledException");
-				return mapping.findForward("relogin");
-			}
+            // SOX，判断用户有效期为n(90)天
+            if (new Date().compareTo(DateUtil.addDate(user.getSavetime(),
+                    UserMgrLocator.getUserAttributes().getPasswdAvailableDay()
+                            .intValue())) > 0) {
+                // 设置user用户不可用
+                user.setEnabled(false);
+                userManager.saveTawSystemUser(user);
+                loginErrorReturn(request, response, "DisabledException");
+                return mapping.findForward("relogin");
+            }
 
-			// 登陆成功则置零
-			user.setFailCount(new Integer(0));
-			userManager.saveTawSystemUser(user);
+            // 登陆成功则置零
+            user.setFailCount(new Integer(0));
+            userManager.saveTawSystemUser(user);
 
-		}
+        }
 
-		TawSystemSessionForm sessionform = new TawSystemSessionForm();
-		sessionform.setUserid(userId);
+        TawSystemSessionForm sessionform = new TawSystemSessionForm();
+        sessionform.setUserid(userId);
 
-		TawSystemSessionAction sessionaction = new TawSystemSessionAction();
-		ITawwpStubUserMgr tawwpStubUserMgr = (ITawwpStubUserMgr) getBean("tawwpStubUserMgr");
-		request.setAttribute("tawwpStubUserMgr", tawwpStubUserMgr);
-		request.setAttribute("wapLogin", "wap");
-		forword = sessionaction.performLogin(mapping, sessionform, request,
-				response);
+        TawSystemSessionAction sessionaction = new TawSystemSessionAction();
+        ITawwpStubUserMgr tawwpStubUserMgr = (ITawwpStubUserMgr) getBean("tawwpStubUserMgr");
+        request.setAttribute("tawwpStubUserMgr", tawwpStubUserMgr);
+        request.setAttribute("wapLogin", "wap");
+        forword = sessionaction.performLogin(mapping, sessionform, request,
+                response);
 
-		return forword;
-	}
+        return forword;
+    }
 
-	private void loginErrorReturn(HttpServletRequest request,
-			HttpServletResponse response, String strError) {
-		request.setAttribute(Constants.EOMS_SECURITY_EXCEPTION_KEY, strError);
-	}
+    private void loginErrorReturn(HttpServletRequest request,
+                                  HttpServletResponse response, String strError) {
+        request.setAttribute(Constants.EOMS_SECURITY_EXCEPTION_KEY, strError);
+    }
 	
 /*	public ActionForward performIndex(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response)
 	throws Exception
@@ -734,9 +733,9 @@ public final class UserAction extends BaseAction {
 }
 
 	 *//**
-	  *跟新user表的attribute字段 
-	  *add by lijin 2015-04-20
-	  *//* 
+     *跟新user表的attribute字段
+     *add by lijin 2015-04-20
+     *//*
 	 
 	 public ActionForward updateSequenceOfBlock(ActionMapping mapping, ActionForm form, 
 	    		HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -757,9 +756,9 @@ public final class UserAction extends BaseAction {
 	 }
 	 
 	 *//**
-	  *跟新user表的attribute字段 
-	  *add by lijin 2015-04-20
-	  *//* 
+     *跟新user表的attribute字段
+     *add by lijin 2015-04-20
+     *//*
 public ActionForward updateSequenceOfEditBlock(ActionMapping mapping, ActionForm form, 
 	    		HttpServletRequest request, HttpServletResponse response) throws Exception{
 		 
@@ -778,10 +777,10 @@ public ActionForward updateSequenceOfEditBlock(ActionMapping mapping, ActionForm
 
 
 *//**
-* 解密
-* @param str
-* @return
-*//*
+     * 解密
+     * @param str
+     * @return
+     *//*
 public static byte[] decode(String str) {
         byte[] data = str.getBytes();
         int len = data.length;

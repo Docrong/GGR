@@ -29,171 +29,171 @@ import com.boco.eoms.base.util.StaticMethod;
  * <p>
  * Mon Jun 15 18:07:24 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() zhangxb
  * @moudle.getVersion() 1.0
- * 
  */
 public final class KmExpertComAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增技术交流竞赛表彰
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增技术交流竞赛表彰
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改技术交流竞赛表彰
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改技术交流竞赛表彰
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		if(!id.equals("")){
-			KmExpertCom kmExpertCom = kmExpertComMgr.getKmExpertCom(id);
-			KmExpertComForm kmExpertComForm = (KmExpertComForm) convert(kmExpertCom);
-			updateFormBean(mapping, request, kmExpertComForm);
-		}
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存技术交流竞赛表彰
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
-		KmExpertComForm kmExpertComForm = (KmExpertComForm) form;
-		boolean isNew = (null == kmExpertComForm.getId() || "".equals(kmExpertComForm.getId()));
-		KmExpertCom kmExpertCom = (KmExpertCom) convert(kmExpertComForm);
-		if (isNew) {
-			kmExpertComMgr.saveKmExpertCom(kmExpertCom);
-		} else {
-			kmExpertComMgr.saveKmExpertCom(kmExpertCom);
-		}
-		
-		request.setAttribute("operType", "save");
-		
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 删除技术交流竞赛表彰
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
-		String[] ids = request.getParameterValues("ids");
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        if (!id.equals("")) {
+            KmExpertCom kmExpertCom = kmExpertComMgr.getKmExpertCom(id);
+            KmExpertComForm kmExpertComForm = (KmExpertComForm) convert(kmExpertCom);
+            updateFormBean(mapping, request, kmExpertComForm);
+        }
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存技术交流竞赛表彰
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
+        KmExpertComForm kmExpertComForm = (KmExpertComForm) form;
+        boolean isNew = (null == kmExpertComForm.getId() || "".equals(kmExpertComForm.getId()));
+        KmExpertCom kmExpertCom = (KmExpertCom) convert(kmExpertComForm);
+        if (isNew) {
+            kmExpertComMgr.saveKmExpertCom(kmExpertCom);
+        } else {
+            kmExpertComMgr.saveKmExpertCom(kmExpertCom);
+        }
+
+        request.setAttribute("operType", "save");
+
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 删除技术交流竞赛表彰
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
+        String[] ids = request.getParameterValues("ids");
 //		for(int i =0;i<ids.length;i++){
 //			kmExpertComMgr.removeKmExpertCom(ids[i]);
 //		}
-		kmExpertComMgr.removeKmExpertComs(ids);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示技术交流竞赛表彰列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String userId = StaticMethod.null2String(request.getParameter("userId"));
-		
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				KmExpertComConstants.KMEXPERTCOM_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		
-		KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
-		Map map = (Map) kmExpertComMgr.getKmExpertComsByUserId(pageIndex, pageSize, userId);
-		List list = (List) map.get("result");
+        kmExpertComMgr.removeKmExpertComs(ids);
+        return search(mapping, form, request, response);
+    }
 
-		request.setAttribute(KmExpertComConstants.KMEXPERTCOM_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		
-		request.setAttribute("userId", userId);
-		
-		return mapping.findForward("list");
-	}
+    /**
+     * 分页显示技术交流竞赛表彰列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String userId = StaticMethod.null2String(request.getParameter("userId"));
 
-	public ActionForward listDetail(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		search(mapping, form, request, response);
-		return mapping.findForward("listDetail");
-	}
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                KmExpertComConstants.KMEXPERTCOM_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
 
-	/**
-	 * 分页显示技术交流竞赛表彰列表，支持Atom方式接入Portal
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+        KmExpertComMgr kmExpertComMgr = (KmExpertComMgr) getBean("kmExpertComMgr");
+        Map map = (Map) kmExpertComMgr.getKmExpertComsByUserId(pageIndex, pageSize, userId);
+        List list = (List) map.get("result");
+
+        request.setAttribute(KmExpertComConstants.KMEXPERTCOM_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+
+        request.setAttribute("userId", userId);
+
+        return mapping.findForward("list");
+    }
+
+    public ActionForward listDetail(ActionMapping mapping, ActionForm form,
+                                    HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        search(mapping, form, request, response);
+        return mapping.findForward("listDetail");
+    }
+
+    /**
+     * 分页显示技术交流竞赛表彰列表，支持Atom方式接入Portal
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
 //	public ActionForward search4Atom(ActionMapping mapping, ActionForm form,
 //			HttpServletRequest request, HttpServletResponse response)
 //			throws Exception {

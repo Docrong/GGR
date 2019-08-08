@@ -31,12 +31,12 @@ import org.apache.struts.upload.FormFile;
  * To change this template use File | Settings | File Templates.
  */
 public class SchemeMgrDAO {
-    public static final String _APP_ID="25";
-   //����Ȩ��id����
-    public static final int OPERATOR_TOPIC_MGR_ID=2501;//ר��ģ�����
-    public static final int OPERATOR_SCHEME_MGR_ID=2502;//�����ɷ�����
-    public static final int OPERATOR_REPORT_COLLECT_ID=2503;//�������
-    public static final int OPERATOR_REPORT_STAT_ID=2504;//����ͳ��
+    public static final String _APP_ID = "25";
+    //����Ȩ��id����
+    public static final int OPERATOR_TOPIC_MGR_ID = 2501;//ר��ģ�����
+    public static final int OPERATOR_SCHEME_MGR_ID = 2502;//�����ɷ�����
+    public static final int OPERATOR_REPORT_COLLECT_ID = 2503;//�������
+    public static final int OPERATOR_REPORT_STAT_ID = 2504;//����ͳ��
 
     public static final int SCHEME_CYCLE_TYPE_TEMP = 1;     //��ʱ
     public static final int SCHEME_CYCLE_TYPE_WEEK = 2;    //��
@@ -50,8 +50,8 @@ public class SchemeMgrDAO {
     public static final int FRI = 5;
     public static final int SAT = 6;
     public static final int SUN = 7;
-    public static final String SCHEDULER_CLASS_NAME="com.boco.eoms.filemanager.FileMgrScheme";
-    public static final String SCHEME_FIRE_TIME="0 0 0";    //"0 0 0"
+    public static final String SCHEDULER_CLASS_NAME = "com.boco.eoms.filemanager.FileMgrScheme";
+    public static final String SCHEME_FIRE_TIME = "0 0 0";    //"0 0 0"
     Connection conn = null;
     Statement stat = null;
 //    TawWsDictBO tawWsDictBO = new TawWsDictBO();
@@ -165,16 +165,16 @@ public class SchemeMgrDAO {
         boolean isAuto = conn.getAutoCommit();
         String schemeId = "-1";
         conn.setAutoCommit(false);
-        String cycle= getScheduleCycle(form);
+        String cycle = getScheduleCycle(form);
         String insertSql = "insert into taw_file_mgr_scheme(topic_id,title,report_description," +
                 "fault_class,send_dept_id,send_contact,send_dept_name,create_user_id,accept_dept_id," +
                 "accept_dept_name,scheme_cycle_type,scheme_cycle,scheme_description," +
                 "scheme_ahead,scheme_time,file_mgr_scheme_id,combintype,audit_user_id,audit_user_name,report_user_id,report_user_name,is_audit) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
-             ResultSet rs = conn.createStatement().executeQuery("select max(file_mgr_scheme_id)+1 from taw_file_mgr_scheme");
+            ResultSet rs = conn.createStatement().executeQuery("select max(file_mgr_scheme_id)+1 from taw_file_mgr_scheme");
             if (rs.next()) {
-                if( rs.getString(1)==null)
-                    schemeId="1";
+                if (rs.getString(1) == null)
+                    schemeId = "1";
                 else
                     schemeId = rs.getString(1);
             } else {
@@ -202,28 +202,25 @@ public class SchemeMgrDAO {
             pmts.setString(15, form.getSchemeTime());
             pmts.setString(16, schemeId);
             pmts.setString(17, form.getCombinType());
-            if(form.getIsAudit()==null||"".equals(form.getIsAudit()))
-            {
-            	pmts.setString(22, "0");
-            }else{
-            	pmts.setString(22, "1");
+            if (form.getIsAudit() == null || "".equals(form.getIsAudit())) {
+                pmts.setString(22, "0");
+            } else {
+                pmts.setString(22, "1");
             }
-            if(form.getAuditUserId()==null||"".equals(form.getAuditUserId()))
-            {
-            	pmts.setString(18, "");
-            	pmts.setString(19, "");
-            }else{
-            	pmts.setString(18, ","+form.getAuditUserId()+",");
-            	pmts.setString(19, form.getAuditUserName());
+            if (form.getAuditUserId() == null || "".equals(form.getAuditUserId())) {
+                pmts.setString(18, "");
+                pmts.setString(19, "");
+            } else {
+                pmts.setString(18, "," + form.getAuditUserId() + ",");
+                pmts.setString(19, form.getAuditUserName());
             }
-            
-            if(form.getReportUserId()==null||"".equals(form.getReportUserId()))
-            {
-            	pmts.setString(20, "");
-            	pmts.setString(21, "");
-            }else{
-            	pmts.setString(20, ","+form.getReportUserId()+",");
-            	pmts.setString(21, form.getReportUserName());
+
+            if (form.getReportUserId() == null || "".equals(form.getReportUserId())) {
+                pmts.setString(20, "");
+                pmts.setString(21, "");
+            } else {
+                pmts.setString(20, "," + form.getReportUserId() + ",");
+                pmts.setString(21, form.getReportUserName());
             }
             pmts.executeUpdate();
 
@@ -273,26 +270,26 @@ public class SchemeMgrDAO {
                     "  values(?,?,?,?,?,?,?)";
             if (pmts != null) pmts.close();
 //            java.sql.Date curr = new java.sql.Date(date.getTime());
-            Timestamp stamp=new Timestamp(date.getTime());
+            Timestamp stamp = new Timestamp(date.getTime());
             pmts = conn.prepareStatement(insertSql);
             for (int i = 0; i < files.size(); i++) {
                 FileInfo fileInfo = (FileInfo) files.elementAt(i);
                 pmts.setString(1, "1");
                 pmts.setTimestamp(2, stamp);
-                pmts.setString(3,fileInfo.getFileName());
+                pmts.setString(3, fileInfo.getFileName());
                 pmts.setString(4, fileInfo.getFileRealName());
                 pmts.setString(5, fileInfo.getFilePath());
                 pmts.setString(6, schemeId);
-                pmts.setString(7, Util.getSequenceId(conn,"taw_file_mgr_files","file_id"));
+                pmts.setString(7, Util.getSequenceId(conn, "taw_file_mgr_files", "file_id"));
                 pmts.executeUpdate();
             }
             if (pmts != null) pmts.close();
             //д���ı� schedule
             String taskId = UUIDHexGenerator.getInstance().getID();
-            String subId=getSubId(ITEM);
+            String subId = getSubId(ITEM);
             pmts = conn.prepareStatement(insertSubscription);
             pmts.setString(1, taskId);
-            pmts.setString(2,subId);
+            pmts.setString(2, subId);
             pmts.setString(3, cycle);
             pmts.setString(4, "cron");
             pmts.setString(5, SCHEDULER_CLASS_NAME);
@@ -302,7 +299,7 @@ public class SchemeMgrDAO {
             pmts.setString(9, ITEM_NAME);
             pmts.executeUpdate();
             SchedulerManager sm = SchedulerManager.getInstance();
-            sm.add(subId,"group2",SCHEDULER_CLASS_NAME,"cron",cycle);//group2��װ����ϵͳ���й����ʵʱ��ӵĶ�����Ϣ
+            sm.add(subId, "group2", SCHEDULER_CLASS_NAME, "cron", cycle);//group2��װ����ϵͳ���й����ʵʱ��ӵĶ�����Ϣ
             conn.commit();
         } catch (Exception e) {
             conn.rollback();
@@ -343,25 +340,25 @@ public class SchemeMgrDAO {
                 switch (weekDay) {
                     //�ܱ���ʱ�䰲�����賿0��
                     case MON:
-                        cycle = SCHEME_FIRE_TIME+" ? * MON";
+                        cycle = SCHEME_FIRE_TIME + " ? * MON";
                         break;
                     case TUE:
-                        cycle = SCHEME_FIRE_TIME+" ? * TUE";
+                        cycle = SCHEME_FIRE_TIME + " ? * TUE";
                         break;
                     case WED:
-                        cycle = SCHEME_FIRE_TIME+" ? * WED";
+                        cycle = SCHEME_FIRE_TIME + " ? * WED";
                         break;
                     case THU:
-                        cycle = SCHEME_FIRE_TIME+" ? * THU";
+                        cycle = SCHEME_FIRE_TIME + " ? * THU";
                         break;
                     case FRI:
-                        cycle = SCHEME_FIRE_TIME+" ? * FRI";
+                        cycle = SCHEME_FIRE_TIME + " ? * FRI";
                         break;
                     case SAT:
-                        cycle = SCHEME_FIRE_TIME+" ? * SAT";
+                        cycle = SCHEME_FIRE_TIME + " ? * SAT";
                         break;
                     case SUN:
-                        cycle = SCHEME_FIRE_TIME+" ? * SUN";
+                        cycle = SCHEME_FIRE_TIME + " ? * SUN";
                         break;
                     default:
                         cycle = "";
@@ -369,10 +366,10 @@ public class SchemeMgrDAO {
                 cycle += " " + "*";        //������
                 break;
             case SCHEME_CYCLE_TYPE_MONTH:
-                cycle = SCHEME_FIRE_TIME+" " + time + " * ? *";
+                cycle = SCHEME_FIRE_TIME + " " + time + " * ? *";
                 break;
             case SCHEME_CYCLE_TYPE_QUARTER:
-                cycle = SCHEME_FIRE_TIME+" " + time + " 1,4,7,10 ? *";
+                cycle = SCHEME_FIRE_TIME + " " + time + " 1,4,7,10 ? *";
                 break;
             case SCHEME_CYCLE_TYPE_PROFESSIONAL:
                 cycle = time;
@@ -380,7 +377,7 @@ public class SchemeMgrDAO {
         }
         return cycle;
     }
-    
+
     //为了解决临时的问题。。
 //    public String getScheduleCycleForSave(SchemeMgrForm form) {
 //        String cycle = "";
@@ -466,13 +463,13 @@ public class SchemeMgrDAO {
     public int getXYZ(String preSubId) {
         String subId = preSubId + "%";
         int count = 0;
-        ResultSet rs=null;
+        ResultSet rs = null;
         try {
-             rs = stat.executeQuery("select count(*) from st_subscription where sub_id like '" + subId + "'");
+            rs = stat.executeQuery("select count(*) from st_subscription where sub_id like '" + subId + "'");
             if (rs.next()) count = rs.getInt(1);
             if (rs != null) rs.close();
         } catch (SQLException e) {
-        	
+
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         return count;
@@ -507,26 +504,24 @@ public class SchemeMgrDAO {
             pmts.setInt(12, form.getSchemeAhead());
             pmts.setString(13, form.getSchemeTime());
             pmts.setString(14, form.getCombinType());
-               
-            if(form.getIsAudit()==null||"".equals(form.getIsAudit())||"0".trim().equals(form.getIsAudit()))
-            {
-            	pmts.setString(15, "");
-            	pmts.setString(16, "");
-            	pmts.setString(19, "0");
-            }else{
-            	pmts.setString(15, ","+form.getAuditUserId()+",");
-            	pmts.setString(16, form.getAuditUserName());
-            	pmts.setString(19, "1");
+
+            if (form.getIsAudit() == null || "".equals(form.getIsAudit()) || "0".trim().equals(form.getIsAudit())) {
+                pmts.setString(15, "");
+                pmts.setString(16, "");
+                pmts.setString(19, "0");
+            } else {
+                pmts.setString(15, "," + form.getAuditUserId() + ",");
+                pmts.setString(16, form.getAuditUserName());
+                pmts.setString(19, "1");
             }
-            if(form.getReportUserId()==null||"".equals(form.getReportUserId()))
-            {
-            	pmts.setString(17, "");
-            	pmts.setString(18, "");
-            }else{
-            	pmts.setString(17, ","+form.getReportUserId()+",");
-            	pmts.setString(18, form.getReportUserName());
+            if (form.getReportUserId() == null || "".equals(form.getReportUserId())) {
+                pmts.setString(17, "");
+                pmts.setString(18, "");
+            } else {
+                pmts.setString(17, "," + form.getReportUserId() + ",");
+                pmts.setString(18, form.getReportUserName());
             }
-            
+
             pmts.setString(20, form.getSchemeId());
 
             pmts.executeUpdate();
@@ -575,7 +570,7 @@ public class SchemeMgrDAO {
 
             if (pmts != null) pmts.close();
 //            java.sql.Date curr = new java.sql.Date(date.getTime());
-            Timestamp stamp=new Timestamp(date.getTime());
+            Timestamp stamp = new Timestamp(date.getTime());
             pmts = conn.prepareStatement(insertSql);
             for (int i = 0; i < files.size(); i++) {
                 FileInfo fileInfo = (FileInfo) files.elementAt(i);
@@ -585,7 +580,7 @@ public class SchemeMgrDAO {
                 pmts.setString(4, fileInfo.getFileRealName());
                 pmts.setString(5, fileInfo.getFilePath());
                 pmts.setString(6, schemeId);
-                pmts.setString(7, Util.getSequenceId(conn,"taw_file_mgr_files","file_id"));
+                pmts.setString(7, Util.getSequenceId(conn, "taw_file_mgr_files", "file_id"));
                 pmts.executeUpdate();
             }
             if (pmts != null) pmts.close();
@@ -600,7 +595,7 @@ public class SchemeMgrDAO {
             //conn.commit();
             conn.commit();
             SchedulerManager sm = SchedulerManager.getInstance();
-            sm.modify(getSchemeBean(schemeId).getSubId(),"group2",SCHEDULER_CLASS_NAME,"cron",getScheduleCycle(form));//group2��װ����ϵͳ���й����ʵʱ��ӵĶ�����Ϣ
+            sm.modify(getSchemeBean(schemeId).getSubId(), "group2", SCHEDULER_CLASS_NAME, "cron", getScheduleCycle(form));//group2��װ����ϵͳ���й����ʵʱ��ӵĶ�����Ϣ
             conn.commit();
         } catch (Exception e) {
             conn.rollback();
@@ -667,6 +662,7 @@ public class SchemeMgrDAO {
         }
         return "";
     }
+
     private String getCombinTypeName(String id) {
         List CombinType = getCombinTypeList();
         for (int i = 0; i < CombinType.size(); i++) {
@@ -722,7 +718,7 @@ public class SchemeMgrDAO {
                     info.setSendDeptId(rs.getString("send_dept_id"));
                     info.setSendDeptName(rs.getString("send_dept_name"));
                     //info.setSpecialtyId(rs.getString("specialty_id"));
-                   //info.setSpecialtyName(getSpacialtyName(rs.getString("specialty_id"), specialtyList));
+                    //info.setSpecialtyName(getSpacialtyName(rs.getString("specialty_id"), specialtyList));
                     if (rs.getString("accept_dept_id") != null)
                         info.setAcceptDeptId(rs.getString("accept_dept_id").trim());
                     if (rs.getString("accept_dept_name") != null)
@@ -738,19 +734,19 @@ public class SchemeMgrDAO {
                     info.setCombinType(rs.getString("combinType"));
                     info.setCombinTypeName(getCombinTypeName(rs.getString("combinType")));
                     info.setIsAudit(rs.getString("is_audit"));
-                    if(rs.getString("is_audit").equals("0")){
-                    	info.setAuditUserName("[不需要审核]");
-                    }else{
-                    	info.setAuditUserName("[需要审核]");
+                    if (rs.getString("is_audit").equals("0")) {
+                        info.setAuditUserName("[不需要审核]");
+                    } else {
+                        info.setAuditUserName("[需要审核]");
                     }
-                    if (rs.getString("audit_user_id")!= null&&!"".equals(rs.getString("audit_user_id").trim())){
-                        info.setAuditUserId(rs.getString("audit_user_id").trim().substring(1, rs.getString("audit_user_id").trim().length()-1));                      
+                    if (rs.getString("audit_user_id") != null && !"".equals(rs.getString("audit_user_id").trim())) {
+                        info.setAuditUserId(rs.getString("audit_user_id").trim().substring(1, rs.getString("audit_user_id").trim().length() - 1));
                     }
-                    if (rs.getString("audit_user_name") != null&&!"".equals(rs.getString("audit_user_name").trim()))
-                        info.setAuditUserName(rs.getString("audit_user_name").trim());                 	
-                    if (rs.getString("report_user_id") != null&&!"".equals(rs.getString("report_user_id").trim()))
-                        info.setReportUserId(rs.getString("report_user_id").trim().substring(1, rs.getString("report_user_id").trim().length()-1));
-                    if (rs.getString("report_user_name") != null&&!"".equals(rs.getString("report_user_name").trim()))
+                    if (rs.getString("audit_user_name") != null && !"".equals(rs.getString("audit_user_name").trim()))
+                        info.setAuditUserName(rs.getString("audit_user_name").trim());
+                    if (rs.getString("report_user_id") != null && !"".equals(rs.getString("report_user_id").trim()))
+                        info.setReportUserId(rs.getString("report_user_id").trim().substring(1, rs.getString("report_user_id").trim().length() - 1));
+                    if (rs.getString("report_user_name") != null && !"".equals(rs.getString("report_user_name").trim()))
                         info.setReportUserName(rs.getString("report_user_name").trim());
                 }
             }
@@ -776,35 +772,37 @@ public class SchemeMgrDAO {
     String selectFilesSql = "select *  from taw_file_mgr_files  where file_type='1'and  owner_id=?";
     String deleteFilesSql = "delete from taw_file_mgr_files  where file_type='1'and  owner_id=?";
     String deleteSchemeSql = "delete from taw_file_mgr_scheme  where file_mgr_scheme_id=?";
-    String deleteSubscriptionSql = "delete from st_subscription  where remark=? and item='"+ITEM+"'";
-    public static String selectSubId="select sub_id,cycle,remark,item,item_name from st_subscription  where remark=? and item='"+ITEM+"'";
-    public static SchemeBean getSchemeBean(String schemeId){
-        SchemeBean bean=new SchemeBean();
-        Connection connection=ConnectionPool.getInstance().getConnection();
+    String deleteSubscriptionSql = "delete from st_subscription  where remark=? and item='" + ITEM + "'";
+    public static String selectSubId = "select sub_id,cycle,remark,item,item_name from st_subscription  where remark=? and item='" + ITEM + "'";
+
+    public static SchemeBean getSchemeBean(String schemeId) {
+        SchemeBean bean = new SchemeBean();
+        Connection connection = ConnectionPool.getInstance().getConnection();
         PreparedStatement pmts = null;
         try {
-            pmts=connection.prepareStatement(selectSubId);
-            pmts.setString(1,schemeId);
-            ResultSet resultSet=pmts.executeQuery();
-            if(resultSet.next()){
-               bean.setSubId(resultSet.getString("sub_id"));
-               bean.setCycle(resultSet.getString("cycle"));
-               bean.setRemark(resultSet.getString("remark"));
-               bean.setItem(resultSet.getString("item"));
-               bean.setItemName(resultSet.getString("item_name"));
+            pmts = connection.prepareStatement(selectSubId);
+            pmts.setString(1, schemeId);
+            ResultSet resultSet = pmts.executeQuery();
+            if (resultSet.next()) {
+                bean.setSubId(resultSet.getString("sub_id"));
+                bean.setCycle(resultSet.getString("cycle"));
+                bean.setRemark(resultSet.getString("remark"));
+                bean.setItem(resultSet.getString("item"));
+                bean.setItemName(resultSet.getString("item_name"));
             }
-            if(resultSet!=null)resultSet.close();
+            if (resultSet != null) resultSet.close();
         } catch (SQLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         try {
-            if(pmts!=null)pmts.close();
-            if(connection!=null)connection.close();
+            if (pmts != null) pmts.close();
+            if (connection != null) connection.close();
         } catch (SQLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
         return bean;
     }
+
     public boolean delete(String contextRealPath, SchemeMgrForm form) {
         String schemeId = form.getSchemeId();
 
@@ -861,7 +859,7 @@ public class SchemeMgrDAO {
         String sql = "delete from taw_file_mgr_files where file_id=" + fileId;
         PreparedStatement pst = null;
         ResultSet rs = null;
-        try { 
+        try {
             conn.setAutoCommit(false);            //record upload file information
             pst = conn.prepareStatement(fileSql);
             rs = pst.executeQuery();
@@ -965,6 +963,7 @@ public class SchemeMgrDAO {
         list.add(new LabelValueBean("次要", "1"));
         return list;
     }
+
     public List getCombinTypeList() {
         ArrayList list = new ArrayList();
         StringBuffer strSQL = new StringBuffer();
@@ -984,67 +983,68 @@ public class SchemeMgrDAO {
 //                e.printStackTrace();
 //            }
 //        }
-        
+
 //      wangsixuan add:
         list.add(new LabelValueBean("不合并", "0"));
-        
+
         list.add(new LabelValueBean("叠加", "2"));
-        list.add(new LabelValueBean("追加","1"));
+        list.add(new LabelValueBean("追加", "1"));
 
         return list;
     }
-  public String getAcceptDeptName(SchemeMgrForm schemeForm){
-	  String AcceptDeptName="";
-	  String deptName=schemeForm.getAcceptDeptName();
-	  String deptId=schemeForm.getAcceptDeptId();
-	  String name[]=deptName.split(",");
-	  String id[]=deptId.split(",");
-	  for(int i=0;i<name.length;i++){
-		  AcceptDeptName=AcceptDeptName+",{\"nodeType\":\"dept\",\"name\":\""+name[i]+"\",\"id\":\""+id[i]+"\"}";
-	  }
-	  AcceptDeptName=AcceptDeptName.substring(1, AcceptDeptName.length());
-	  AcceptDeptName="["+AcceptDeptName+"]";
-	  return AcceptDeptName;
-	  
-  }
-  //返回审核人
-  public String getAuditUserName(SchemeMgrForm schemeForm){
-	  String AuditUserName="";
-	  String deptName=schemeForm.getAuditUserName();
-	  String deptId=schemeForm.getAuditUserId();
-	  if(deptId!=null&&!"".equals(deptId))
-	  {
-	  String name[]=deptName.split(",");
-	  String id[]=deptId.split(",");
-	  for(int i=0;i<name.length;i++){
-		  AuditUserName=AuditUserName+",{\"nodeType\":\"user\",\"name\":\""+name[i]+"\",\"id\":\""+id[i]+"\"}";
-	  }
-	  AuditUserName=AuditUserName.substring(1, AuditUserName.length());
-	  AuditUserName="["+AuditUserName+"]";
-	  return AuditUserName;
-	  }else{
-		  return "[]";
-	  }
-	  
-  }
-//返回接收人
-  public String getReportUserName(SchemeMgrForm schemeForm){
-	  String ReportUserName="";
-	  String deptName=schemeForm.getReportUserName();
-	  String deptId=schemeForm.getReportUserId();
-	  if(deptId!=null&&!"".equals(deptId))
-	  {
-	  String name[]=deptName.split(",");
-	  String id[]=deptId.split(",");
-	  for(int i=0;i<name.length;i++){
-		  ReportUserName=ReportUserName+",{\"nodeType\":\"user\",\"name\":\""+name[i]+"\",\"id\":\""+id[i]+"\"}";
-	  }
-	  ReportUserName=ReportUserName.substring(1, ReportUserName.length());
-	  ReportUserName="["+ReportUserName+"]";
-	  return ReportUserName;
-	  }else{
-		  return "[]";
-	  }
-  }
-  
+
+    public String getAcceptDeptName(SchemeMgrForm schemeForm) {
+        String AcceptDeptName = "";
+        String deptName = schemeForm.getAcceptDeptName();
+        String deptId = schemeForm.getAcceptDeptId();
+        String name[] = deptName.split(",");
+        String id[] = deptId.split(",");
+        for (int i = 0; i < name.length; i++) {
+            AcceptDeptName = AcceptDeptName + ",{\"nodeType\":\"dept\",\"name\":\"" + name[i] + "\",\"id\":\"" + id[i] + "\"}";
+        }
+        AcceptDeptName = AcceptDeptName.substring(1, AcceptDeptName.length());
+        AcceptDeptName = "[" + AcceptDeptName + "]";
+        return AcceptDeptName;
+
+    }
+
+    //返回审核人
+    public String getAuditUserName(SchemeMgrForm schemeForm) {
+        String AuditUserName = "";
+        String deptName = schemeForm.getAuditUserName();
+        String deptId = schemeForm.getAuditUserId();
+        if (deptId != null && !"".equals(deptId)) {
+            String name[] = deptName.split(",");
+            String id[] = deptId.split(",");
+            for (int i = 0; i < name.length; i++) {
+                AuditUserName = AuditUserName + ",{\"nodeType\":\"user\",\"name\":\"" + name[i] + "\",\"id\":\"" + id[i] + "\"}";
+            }
+            AuditUserName = AuditUserName.substring(1, AuditUserName.length());
+            AuditUserName = "[" + AuditUserName + "]";
+            return AuditUserName;
+        } else {
+            return "[]";
+        }
+
+    }
+
+    //返回接收人
+    public String getReportUserName(SchemeMgrForm schemeForm) {
+        String ReportUserName = "";
+        String deptName = schemeForm.getReportUserName();
+        String deptId = schemeForm.getReportUserId();
+        if (deptId != null && !"".equals(deptId)) {
+            String name[] = deptName.split(",");
+            String id[] = deptId.split(",");
+            for (int i = 0; i < name.length; i++) {
+                ReportUserName = ReportUserName + ",{\"nodeType\":\"user\",\"name\":\"" + name[i] + "\",\"id\":\"" + id[i] + "\"}";
+            }
+            ReportUserName = ReportUserName.substring(1, ReportUserName.length());
+            ReportUserName = "[" + ReportUserName + "]";
+            return ReportUserName;
+        } else {
+            return "[]";
+        }
+    }
+
 }

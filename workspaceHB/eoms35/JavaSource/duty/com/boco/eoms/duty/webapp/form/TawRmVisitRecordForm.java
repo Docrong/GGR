@@ -9,179 +9,180 @@ import org.apache.struts.action.ActionMapping;
 import com.boco.eoms.base.webapp.form.BaseForm;
 
 public class TawRmVisitRecordForm extends BaseForm implements Serializable {
-	private String id;
-	private String visitorName;
-	private String company;
-	private String visitTime;
-	private String leftTime;
-	private String reason;
-	private String receiver;
-	private String userId;
-	private String roomId;
-	private String workSerial;
-	private String createTime;
-	private String startTime;
-	private String endTime;
-	private String tmpVisitorName;
-	private String tmpCompany;
-	private String tmpVisitTime;
-	private String tmpLeftTime;
-	private String tmpReceiver;
+    private String id;
+    private String visitorName;
+    private String company;
+    private String visitTime;
+    private String leftTime;
+    private String reason;
+    private String receiver;
+    private String userId;
+    private String roomId;
+    private String workSerial;
+    private String createTime;
+    private String startTime;
+    private String endTime;
+    private String tmpVisitorName;
+    private String tmpCompany;
+    private String tmpVisitTime;
+    private String tmpLeftTime;
+    private String tmpReceiver;
 
-	public String getId() {
-		return id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getVisitorName() {
-		return visitorName;
-	}
+    public String getVisitorName() {
+        return visitorName;
+    }
 
-	public void setVisitorName(String visitorName) {
-		this.visitorName = visitorName;
-	}
+    public void setVisitorName(String visitorName) {
+        this.visitorName = visitorName;
+    }
 
-	public String getCompany() {
-		return company;
-	}
+    public String getCompany() {
+        return company;
+    }
 
-	public void setCompany(String company) {
-		this.company = company;
-	}
+    public void setCompany(String company) {
+        this.company = company;
+    }
 
-	public String getVisitTime() {
-		return visitTime;
-	}
+    public String getVisitTime() {
+        return visitTime;
+    }
 
-	public void setVisitTime(String visitTime) {
-		this.visitTime = visitTime;
-	}
+    public void setVisitTime(String visitTime) {
+        this.visitTime = visitTime;
+    }
 
-	public String getLeftTime() {
-		return leftTime;
-	}
+    public String getLeftTime() {
+        return leftTime;
+    }
 
-	public void setLeftTime(String leftTime) {
-		this.leftTime = leftTime;
-	}
+    public void setLeftTime(String leftTime) {
+        this.leftTime = leftTime;
+    }
 
-	public String getReason() {
-		return reason;
-	}
+    public String getReason() {
+        return reason;
+    }
 
-	public void setReason(String reason) {
-		this.reason = reason;
-	}
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
-	public String getReceiver() {
-		return receiver;
-	}
+    public String getReceiver() {
+        return receiver;
+    }
 
-	public void setReceiver(String receiver) {
-		this.receiver = receiver;
-	}
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
-	public String getRoomId() {
-		return roomId;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public void setRoomId(String roomId) {
-		this.roomId = roomId;
-	}
+    public String getRoomId() {
+        return roomId;
+    }
 
-	public String getWorkSerial() {
-		return workSerial;
-	}
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
 
-	public void setWorkSerial(String workSerial) {
-		this.workSerial = workSerial;
-	}
-	
-	public String getCreateTime() {
-		return createTime;
-	}
+    public String getWorkSerial() {
+        return workSerial;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
-	
-	public String getStartTime() {
-		return startTime;
-	}
+    public void setWorkSerial(String workSerial) {
+        this.workSerial = workSerial;
+    }
 
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-	
-	public String getEndTime() {
-		return endTime;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public String getTmpVisitorName() {
-		return tmpVisitorName;
-	}
+    public String getStartTime() {
+        return startTime;
+    }
 
-	public void setTmpVisitorName(String tmpVisitorName) {
-		this.tmpVisitorName = tmpVisitorName;
-	}
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
 
-	public String getTmpCompany() {
-		return tmpCompany;
-	}
+    public String getEndTime() {
+        return endTime;
+    }
 
-	public void setTmpCompany(String tmpCompany) {
-		this.tmpCompany = tmpCompany;
-	}
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
 
-	public String getTmpVisitTime() {
-		return tmpVisitTime;
-	}
+    public String getTmpVisitorName() {
+        return tmpVisitorName;
+    }
 
-	public void setTmpVisitTime(String tmpVisitTime) {
-		this.tmpVisitTime = tmpVisitTime;
-	}
+    public void setTmpVisitorName(String tmpVisitorName) {
+        this.tmpVisitorName = tmpVisitorName;
+    }
 
-	public String getTmpLeftTime() {
-		return tmpLeftTime;
-	}
+    public String getTmpCompany() {
+        return tmpCompany;
+    }
 
-	public void setTmpLeftTime(String tmpLeftTime) {
-		this.tmpLeftTime = tmpLeftTime;
-	}
+    public void setTmpCompany(String tmpCompany) {
+        this.tmpCompany = tmpCompany;
+    }
 
-	public String getTmpReceiver() {
-		return tmpReceiver;
-	}
+    public String getTmpVisitTime() {
+        return tmpVisitTime;
+    }
 
-	public void setTmpReceiver(String tmpReceiver) {
-		this.tmpReceiver = tmpReceiver;
-	}
+    public void setTmpVisitTime(String tmpVisitTime) {
+        this.tmpVisitTime = tmpVisitTime;
+    }
+
+    public String getTmpLeftTime() {
+        return tmpLeftTime;
+    }
+
+    public void setTmpLeftTime(String tmpLeftTime) {
+        this.tmpLeftTime = tmpLeftTime;
+    }
+
+    public String getTmpReceiver() {
+        return tmpReceiver;
+    }
+
+    public void setTmpReceiver(String tmpReceiver) {
+        this.tmpReceiver = tmpReceiver;
+    }
 	
 	/* To add non XDoclet-generated methods, create a file named
 	    xdoclet-TawWorkbenchMemoForm.java 
 	    containing the additional code and place it in your metadata/web directory.
 	 */
-	/**
-	* @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
-	*                                                javax.servlet.http.HttpServletRequest)
-	*/
-	public void reset(ActionMapping mapping, HttpServletRequest request) {
-	 // reset any boolean data types to false
-	
-	}
+
+    /**
+     * @see org.apache.struts.action.ActionForm#reset(org.apache.struts.action.ActionMapping,
+     * javax.servlet.http.HttpServletRequest)
+     */
+    public void reset(ActionMapping mapping, HttpServletRequest request) {
+        // reset any boolean data types to false
+
+    }
 }

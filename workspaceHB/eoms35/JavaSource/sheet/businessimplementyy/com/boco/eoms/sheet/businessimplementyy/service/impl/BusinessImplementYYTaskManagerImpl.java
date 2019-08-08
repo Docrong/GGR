@@ -11,19 +11,19 @@ import com.boco.eoms.sheet.businessimplementyy.dao.IBusinessImplementYYTaskDAO;
 import com.boco.eoms.sheet.businessimplementyy.service.IBusinessImplementYYTaskManager;
 import com.boco.eoms.sheet.commonfault.dao.ICommonFaultMainDAO;
 
-public class BusinessImplementYYTaskManagerImpl extends TaskServiceImpl implements  IBusinessImplementYYTaskManager{
-	/**
-	 * 获取本角色的已被组内其他人员抢单但未处理的工单
-	 * 
-	 * @param userId  用户ID
-	 * @param startIndex
-	 * @param length
-	 * @author wangjianhua
-	 * @date 2009-08-24
-	 * @province 甘肃
-	 * @return
-	 * @throws Exception
-	 */
+public class BusinessImplementYYTaskManagerImpl extends TaskServiceImpl implements IBusinessImplementYYTaskManager {
+    /**
+     * 获取本角色的已被组内其他人员抢单但未处理的工单
+     *
+     * @param userId     用户ID
+     * @param startIndex
+     * @param length
+     * @return
+     * @throws Exception
+     * @author wangjianhua
+     * @date 2009-08-24
+     * @province 甘肃
+     */
 //	public HashMap getAcceptTaskByRole(Map condition, String userId, Integer startIndex, Integer length) throws Exception{
 //		HashMap taskMap=new HashMap();
 //		String orderCondition = (String)condition.get("orderCondition");	
@@ -40,17 +40,16 @@ public class BusinessImplementYYTaskManagerImpl extends TaskServiceImpl implemen
 //		taskMap=this.getTaskDAO().getTaskListByCondition(hql.toString(),startIndex,length);
 //		return taskMap;
 //	}
+    public Integer getCountOfBrother(String sheetKey, String parentLevelId) throws SheetException {
+        IBusinessImplementYYTaskDAO ibusinessimplementyyTaskDAO = (IBusinessImplementYYTaskDAO) this.getTaskDAO();
 
-	public Integer getCountOfBrother(String sheetKey, String parentLevelId) throws SheetException {
-		IBusinessImplementYYTaskDAO ibusinessimplementyyTaskDAO = (IBusinessImplementYYTaskDAO)this.getTaskDAO();	
-		
-		Integer count = new Integer(0);
-		try {
-			count = ibusinessimplementyyTaskDAO.getCountOfBrother(this.getTaskModelObject(), sheetKey, parentLevelId);
-		} catch (Exception e) {
-			throw new SheetException(e);
-		}
-		return count;
-		}
-	
+        Integer count = new Integer(0);
+        try {
+            count = ibusinessimplementyyTaskDAO.getCountOfBrother(this.getTaskModelObject(), sheetKey, parentLevelId);
+        } catch (Exception e) {
+            throw new SheetException(e);
+        }
+        return count;
+    }
+
 }

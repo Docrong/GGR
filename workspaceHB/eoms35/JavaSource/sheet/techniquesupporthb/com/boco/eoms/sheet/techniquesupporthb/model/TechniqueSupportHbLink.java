@@ -7,32 +7,28 @@ package com.boco.eoms.sheet.techniquesupporthb.model;
 
 import com.boco.eoms.sheet.base.model.BaseLink;
 
-public class TechniqueSupportHbLink extends BaseLink
-{
+public class TechniqueSupportHbLink extends BaseLink {
 
-	private String linkDealOpinion;
+    private String linkDealOpinion;
 
-	public TechniqueSupportHbLink()
-	{
-	}
+    public TechniqueSupportHbLink() {
+    }
 
-	public String getLinkDealOpinion()
-	{
-		return linkDealOpinion;
-	}
+    public String getLinkDealOpinion() {
+        return linkDealOpinion;
+    }
 
-	public void setLinkDealOpinion(String linkDealOpinion)
-	{
-		this.linkDealOpinion = linkDealOpinion;
-	}
-	
-	private String workTime;
+    public void setLinkDealOpinion(String linkDealOpinion) {
+        this.linkDealOpinion = linkDealOpinion;
+    }
 
-	public String getWorkTime() {
-		return workTime;
-	}
+    private String workTime;
 
-	public void setWorkTime(String workTime) {
-		this.workTime = workTime;
-	}
+    public String getWorkTime() {
+        return workTime;
+    }
+
+    public void setWorkTime(String workTime) {
+        this.workTime = workTime;
+    }
 }

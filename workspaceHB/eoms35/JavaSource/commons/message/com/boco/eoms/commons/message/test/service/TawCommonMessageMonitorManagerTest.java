@@ -35,7 +35,7 @@ public class TawCommonMessageMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageMonitorDao.expects(once()).method("getTawCommonMessageMonitors")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawCommonMessageMonitors = tawCommonMessageMonitorManager.getTawCommonMessageMonitors(null);
         assertTrue(tawCommonMessageMonitors.size() == 1);
@@ -45,7 +45,7 @@ public class TawCommonMessageMonitorManagerTest extends BaseManagerTestCase {
     public void testGetTawCommonMessageMonitor() throws Exception {
         // set expected behavior on dao
         tawCommonMessageMonitorDao.expects(once()).method("getTawCommonMessageMonitor")
-            .will(returnValue(new TawCommonMessageMonitor()));
+                .will(returnValue(new TawCommonMessageMonitor()));
         TawCommonMessageMonitor tawCommonMessageMonitor = tawCommonMessageMonitorManager.getTawCommonMessageMonitor(tawCommonMessageMonitorId);
         assertTrue(tawCommonMessageMonitor != null);
         tawCommonMessageMonitorDao.verify();
@@ -56,7 +56,7 @@ public class TawCommonMessageMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageMonitorDao.expects(once()).method("saveTawCommonMessageMonitor")
-            .with(same(tawCommonMessageMonitor)).isVoid();
+                .with(same(tawCommonMessageMonitor)).isVoid();
 
         tawCommonMessageMonitorManager.saveTawCommonMessageMonitor(tawCommonMessageMonitor);
         tawCommonMessageMonitorDao.verify();
@@ -69,7 +69,7 @@ public class TawCommonMessageMonitorManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawCommonMessageMonitorDao.expects(once()).method("saveTawCommonMessageMonitor")
-            .with(same(tawCommonMessageMonitor)).isVoid();
+                .with(same(tawCommonMessageMonitor)).isVoid();
         tawCommonMessageMonitorManager.saveTawCommonMessageMonitor(tawCommonMessageMonitor);
         tawCommonMessageMonitorDao.verify();
 

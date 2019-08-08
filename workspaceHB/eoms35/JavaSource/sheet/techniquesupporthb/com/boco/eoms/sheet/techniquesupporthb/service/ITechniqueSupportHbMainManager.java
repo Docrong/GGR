@@ -8,6 +8,5 @@ package com.boco.eoms.sheet.techniquesupporthb.service;
 import com.boco.eoms.sheet.base.service.IMainService;
 
 public interface ITechniqueSupportHbMainManager
-	extends IMainService
-{
+        extends IMainService {
 }

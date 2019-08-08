@@ -15,15 +15,15 @@ import com.boco.eoms.commons.loging.BocoLog;
 import com.boco.eoms.commons.system.session.form.TawSystemSessionForm;
 
 public class IrmsAction {
-	public void showUrlPage(ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		 
-		String orderId = StaticMethod.nullObject2String(request.getParameter("orderId"));
-		
-		List list = new ArrayList();
-		String opdetail = "";
-		//String result = IrmsResourceBo.createProService(opdetail);
-		response.setContentType("text/xml; charset=UTF-8");
-       // response.getWriter().print(result);
-	}
+    public void showUrlPage(ActionMapping mapping, ActionForm form, HttpServletRequest request,
+                            HttpServletResponse response) throws Exception {
+
+        String orderId = StaticMethod.nullObject2String(request.getParameter("orderId"));
+
+        List list = new ArrayList();
+        String opdetail = "";
+        //String result = IrmsResourceBo.createProService(opdetail);
+        response.setContentType("text/xml; charset=UTF-8");
+        // response.getWriter().print(result);
+    }
 }

@@ -2,100 +2,100 @@ package com.boco.eoms.workbench.netdisk.model;
 
 public class TawWorkbenchNetDiskFile {
 
-	private String id;
+    private String id;
 
-	private String fileName;
+    private String fileName;
 
-	private String mappingName;
+    private String mappingName;
 
-	private String userId;
+    private String userId;
 
-	private String folderMappingId;
+    private String folderMappingId;
 
-	private String expand;
+    private String expand;
 
-	private String uploadTime;
+    private String uploadTime;
 
-	private String fileSize;
-	
-	private Integer scanTimes = new Integer(0);
-	
-	/**
-	 * @return the scanTimes
-	 */
-	public Integer getScanTimes() {
-		return scanTimes;
-	}
+    private String fileSize;
 
-	/**
-	 * @param scanTimes the scanTimes to set
-	 */
-	public void setScanTimes(Integer scanTimes) {
-		this.scanTimes = scanTimes;
-	}
+    private Integer scanTimes = new Integer(0);
 
-	public String getExpand() {
-		return expand;
-	}
+    /**
+     * @return the scanTimes
+     */
+    public Integer getScanTimes() {
+        return scanTimes;
+    }
 
-	public void setExpand(String expand) {
-		this.expand = expand;
-	}
+    /**
+     * @param scanTimes the scanTimes to set
+     */
+    public void setScanTimes(Integer scanTimes) {
+        this.scanTimes = scanTimes;
+    }
 
-	public String getFileName() {
-		return fileName;
-	}
+    public String getExpand() {
+        return expand;
+    }
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+    public void setExpand(String expand) {
+        this.expand = expand;
+    }
 
-	public String getFileSize() {
-		return fileSize;
-	}
+    public String getFileName() {
+        return fileName;
+    }
 
-	public void setFileSize(String fileSize) {
-		this.fileSize = fileSize;
-	}
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
 
-	public String getUploadTime() {
-		return uploadTime;
-	}
+    public String getFileSize() {
+        return fileSize;
+    }
 
-	public void setUploadTime(String uploadTime) {
-		this.uploadTime = uploadTime;
-	}
+    public void setFileSize(String fileSize) {
+        this.fileSize = fileSize;
+    }
 
-	public String getFolderMappingId() {
-		return folderMappingId;
-	}
+    public String getUploadTime() {
+        return uploadTime;
+    }
 
-	public void setFolderMappingId(String folderMappingId) {
-		this.folderMappingId = folderMappingId;
-	}
+    public void setUploadTime(String uploadTime) {
+        this.uploadTime = uploadTime;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public String getFolderMappingId() {
+        return folderMappingId;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setFolderMappingId(String folderMappingId) {
+        this.folderMappingId = folderMappingId;
+    }
 
-	public String getMappingName() {
-		return mappingName;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setMappingName(String mappingName) {
-		this.mappingName = mappingName;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getMappingName() {
+        return mappingName;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setMappingName(String mappingName) {
+        this.mappingName = mappingName;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
 }

@@ -16,6 +16,7 @@ public interface IAppfuseDemoManager extends Manager {
 
     /**
      * Gets appfuseDemo's information based on id.
+     *
      * @param id the appfuseDemo's id
      * @return appfuseDemo populated appfuseDemo object
      */
@@ -23,16 +24,20 @@ public interface IAppfuseDemoManager extends Manager {
 
     /**
      * Saves a appfuseDemo's information
+     *
      * @param appfuseDemo the object to be saved
      */
     public void saveAppfuseDemo(AppfuseDemo appfuseDemo);
 
     /**
      * Removes a appfuseDemo from the database by id
+     *
      * @param id the appfuseDemo's id
      */
     public void removeAppfuseDemo(final String id);
+
     public Map getAppfuseDemos(final Integer curPage, final Integer pageSize);
+
     public Map getAppfuseDemos(final Integer curPage, final Integer pageSize, final String whereStr);
 }
 

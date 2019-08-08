@@ -8,260 +8,259 @@ import com.boco.eoms.base.model.BaseObject;
  * This class is used to generate the Struts Validator Form as well as the This
  * class is used to generate Spring Validation rules as well as the Hibernate
  * mapping file.
- * 
+ *
  * <p>
  * <a href="TawCommonLogDeploy.java.html"><i>View Source</i></a>
- * 
+ *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a> Updated by
- *         Dan Kibler (dan@getrolling.com) Extended to implement Acegi
- *         UserDetails interface by David Carter david@carter.net
- * 
+ * Dan Kibler (dan@getrolling.com) Extended to implement Acegi
+ * UserDetails interface by David Carter david@carter.net
  * @struts.form include-all="true" extends="BaseForm"
  * @hibernate.class table="taw_common_logdeploy"
  */
 public class TawCommonLogDeploy extends BaseObject implements Serializable {
 
-	
-	private static final long serialVersionUID = 1L;
 
-	 
-	public boolean equals(Object o) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    private static final long serialVersionUID = 1L;
 
-	 
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
-	 
-	public String toString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public boolean equals(Object o) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	private String id;
 
-	private String userid;
+    public int hashCode() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	private String operid;
 
-	private String opername;
+    public String toString() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	private String modelid;
+    private String id;
 
-	private String modelname;
+    private String userid;
 
-	private String operdesc;
+    private String operid;
 
-	private String isdebug;
+    private String opername;
 
-	private String loglevel;
+    private String modelid;
 
-	private String filesavepath;
+    private String modelname;
 
-	private Integer filecutsize;
+    private String operdesc;
 
-	private String noteremark;
+    private String isdebug;
 
-	private String beginnotetime;
+    private String loglevel;
 
-	private String savetype;
+    private String filesavepath;
 
-	/**
-	 * @hibernate.property length="10"
-	 * @eoms.show
-	 * @eoms.cn name="记录的定制时间"
-	 * @return
-	 */
-	public String getBeginnotetime() {
-		return beginnotetime;
-	}
+    private Integer filecutsize;
 
-	public void setBeginnotetime(String beginnotetime) {
-		this.beginnotetime = beginnotetime;
-	}
+    private String noteremark;
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="文件的保存路径"
-	 * @return
-	 */
-	public String getFilesavepath() {
-		return filesavepath;
-	}
+    private String beginnotetime;
 
-	public void setFilesavepath(String filesavepath) {
-		this.filesavepath = filesavepath;
-	}
+    private String savetype;
 
-	/**
-	 * @hibernate.id column="id" generator-class="uuid.hex" unsaved-value="null"
-	 */
-	public String getId() {
-		return id;
-	}
+    /**
+     * @return
+     * @hibernate.property length="10"
+     * @eoms.show
+     * @eoms.cn name="记录的定制时间"
+     */
+    public String getBeginnotetime() {
+        return beginnotetime;
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public void setBeginnotetime(String beginnotetime) {
+        this.beginnotetime = beginnotetime;
+    }
 
-	/**
-	 * @hibernate.property length="2"
-	 * @eoms.show
-	 * @eoms.cn name="是否记录DEBUG"
-	 * @return
-	 */
-	public String getIsdebug() {
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="文件的保存路径"
+     */
+    public String getFilesavepath() {
+        return filesavepath;
+    }
 
-		return isdebug;
-	}
+    public void setFilesavepath(String filesavepath) {
+        this.filesavepath = filesavepath;
+    }
 
-	public void setIsdebug(String isdebug) {
-		this.isdebug = isdebug;
-	}
+    /**
+     * @hibernate.id column="id" generator-class="uuid.hex" unsaved-value="null"
+     */
+    public String getId() {
+        return id;
+    }
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="日志级别"
-	 * @return
-	 */
-	public String getLoglevel() {
-		return loglevel;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setLoglevel(String loglevel) {
-		this.loglevel = loglevel;
-	}
+    /**
+     * @return
+     * @hibernate.property length="2"
+     * @eoms.show
+     * @eoms.cn name="是否记录DEBUG"
+     */
+    public String getIsdebug() {
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="模块ID"
-	 * @return
-	 */
-	public String getModelid() {
-		return modelid;
-	}
+        return isdebug;
+    }
 
-	public void setModelid(String modelid) {
-		this.modelid = modelid;
-	}
+    public void setIsdebug(String isdebug) {
+        this.isdebug = isdebug;
+    }
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="模块NAME"
-	 * @return
-	 */
-	public String getModelname() {
-		return modelname;
-	}
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="日志级别"
+     */
+    public String getLoglevel() {
+        return loglevel;
+    }
 
-	public void setModelname(String modelname) {
-		this.modelname = modelname;
-	}
+    public void setLoglevel(String loglevel) {
+        this.loglevel = loglevel;
+    }
 
-	/**
-	 * @hibernate.property length="50"
-	 * @eoms.show
-	 * @eoms.cn name="记录备注"
-	 * @return
-	 */
-	public String getNoteremark() {
-		return noteremark;
-	}
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="模块ID"
+     */
+    public String getModelid() {
+        return modelid;
+    }
 
-	public void setNoteremark(String noteremark) {
-		this.noteremark = noteremark;
-	}
+    public void setModelid(String modelid) {
+        this.modelid = modelid;
+    }
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="某个操作的业务描述"
-	 * @return
-	 */
-	public String getOperdesc() {
-		return operdesc;
-	}
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="模块NAME"
+     */
+    public String getModelname() {
+        return modelname;
+    }
 
-	public void setOperdesc(String operdesc) {
-		this.operdesc = operdesc;
-	}
+    public void setModelname(String modelname) {
+        this.modelname = modelname;
+    }
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="没个操作的ID"
-	 * @return
-	 */
-	public String getOperid() {
-		return operid;
-	}
+    /**
+     * @return
+     * @hibernate.property length="50"
+     * @eoms.show
+     * @eoms.cn name="记录备注"
+     */
+    public String getNoteremark() {
+        return noteremark;
+    }
 
-	public void setOperid(String operid) {
-		this.operid = operid;
-	}
+    public void setNoteremark(String noteremark) {
+        this.noteremark = noteremark;
+    }
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="ACTIONNAME"
-	 * @return
-	 */
-	public String getOpername() {
-		return opername;
-	}
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="某个操作的业务描述"
+     */
+    public String getOperdesc() {
+        return operdesc;
+    }
 
-	public void setOpername(String opername) {
-		this.opername = opername;
-	}
+    public void setOperdesc(String operdesc) {
+        this.operdesc = operdesc;
+    }
 
-	/**
-	 * @hibernate.property length="100"
-	 * @eoms.show
-	 * @eoms.cn name="所执行操作的USERID"
-	 * @return
-	 */
-	public String getUserid() {
-		return userid;
-	}
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="没个操作的ID"
+     */
+    public String getOperid() {
+        return operid;
+    }
 
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
+    public void setOperid(String operid) {
+        this.operid = operid;
+    }
 
-	/**
-	 * @hibernate.property length="10"
-	 * @eoms.show
-	 * @eoms.cn name="保存类型"
-	 * @return
-	 */
-	public String getSavetype() {
-		return savetype;
-	}
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="ACTIONNAME"
+     */
+    public String getOpername() {
+        return opername;
+    }
 
-	public void setSavetype(String savetype) {
-		this.savetype = savetype;
-	}
+    public void setOpername(String opername) {
+        this.opername = opername;
+    }
 
-	/**
-	 * @hibernate.property length="200"
-	 * @eoms.show
-	 * @eoms.cn name="文件的保存路径"
-	 * @return
-	 */
-	public Integer getFilecutsize() {
-		return filecutsize;
-	}
+    /**
+     * @return
+     * @hibernate.property length="100"
+     * @eoms.show
+     * @eoms.cn name="所执行操作的USERID"
+     */
+    public String getUserid() {
+        return userid;
+    }
 
-	public void setFilecutsize(Integer filecutsize) {
-		this.filecutsize = filecutsize;
-	}
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    /**
+     * @return
+     * @hibernate.property length="10"
+     * @eoms.show
+     * @eoms.cn name="保存类型"
+     */
+    public String getSavetype() {
+        return savetype;
+    }
+
+    public void setSavetype(String savetype) {
+        this.savetype = savetype;
+    }
+
+    /**
+     * @return
+     * @hibernate.property length="200"
+     * @eoms.show
+     * @eoms.cn name="文件的保存路径"
+     */
+    public Integer getFilecutsize() {
+        return filecutsize;
+    }
+
+    public void setFilecutsize(Integer filecutsize) {
+        this.filecutsize = filecutsize;
+    }
 
 }

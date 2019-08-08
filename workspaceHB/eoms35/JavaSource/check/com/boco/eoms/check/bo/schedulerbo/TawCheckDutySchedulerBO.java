@@ -1,4 +1,5 @@
 package com.boco.eoms.check.bo.schedulerbo;
+
 import java.util.*;
 
 import com.boco.eoms.check.dao.*;
@@ -7,8 +8,8 @@ import com.boco.eoms.check.qo.TawCheckTargerQO;
 import com.boco.eoms.check.util.TawCheckSCOREMethod;
 import com.boco.eoms.duty.model.*;
 import com.boco.eoms.duty.dao.*;
-public class TawCheckDutySchedulerBO
-{
+
+public class TawCheckDutySchedulerBO {
 //	public void checkDutyInterfaces(String nowTime)
 //	{
 //		try
@@ -20,7 +21,7 @@ public class TawCheckDutySchedulerBO
 //		{e.printStackTrace();}
 //	}
 /**
- * 
+ *
  * @param nowTime
  */
 //	public void insertRate(String nowTime)
@@ -55,10 +56,10 @@ public class TawCheckDutySchedulerBO
 //	 }catch(Exception e)
 //        {e.printStackTrace();}
 //	}
-/**
- * 
- * @param nowTime
- */
+
+    /**
+     * @param nowTime
+     */
 //	public void insertFinish(String nowTime)
 //	{
 //		 try
@@ -91,25 +92,22 @@ public class TawCheckDutySchedulerBO
 //		 }catch(Exception e)
 //	        {e.printStackTrace();}		
 //	}
-	public TawCheckTarger getTarger(String type)
-	{
-		TawCheckTarger tawCheckTarger=new TawCheckTarger();
-		TawCheckTargerDAO tawCheckTargerDAO=new TawCheckTargerDAO();
-		TawCheckTargerQO tawCheckTargerQO=new TawCheckTargerQO();
-		tawCheckTargerQO.setType(type);
-		String hsql=tawCheckTargerQO.getHsql();
-		try{
-			ArrayList list =(ArrayList)tawCheckTargerDAO.getTargerList(hsql);
-			if(list.size()>0)
-			{
-				tawCheckTarger=(TawCheckTarger)list.get(0);
-			}
-			else if(list.size()<=0)
-			{
-				tawCheckTarger=null;
-			}
-	        }catch(Exception e)
-		{e.printStackTrace();}
-		return tawCheckTarger;
-	}
+    public TawCheckTarger getTarger(String type) {
+        TawCheckTarger tawCheckTarger = new TawCheckTarger();
+        TawCheckTargerDAO tawCheckTargerDAO = new TawCheckTargerDAO();
+        TawCheckTargerQO tawCheckTargerQO = new TawCheckTargerQO();
+        tawCheckTargerQO.setType(type);
+        String hsql = tawCheckTargerQO.getHsql();
+        try {
+            ArrayList list = (ArrayList) tawCheckTargerDAO.getTargerList(hsql);
+            if (list.size() > 0) {
+                tawCheckTarger = (TawCheckTarger) list.get(0);
+            } else if (list.size() <= 0) {
+                tawCheckTarger = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tawCheckTarger;
+    }
 }

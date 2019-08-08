@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
 
-	<bean id="cutApplyMgr" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.cutapply.mgr.impl.CutApplyMgrImpl">
-				<property name="cutApplyDao" ref="cutApplyDao" />
-			</bean>
-		</property>
-	</bean>
+    <bean id="cutApplyMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.cutapply.mgr.impl.CutApplyMgrImpl">
+                <property name="cutApplyDao" ref="cutApplyDao"/>
+            </bean>
+        </property>
+    </bean>
 
-	<bean id="cutApplyDao"
-		class="com.boco.eoms.cutapply.dao.hibernate.CutApplyDaoHibernate"
-		autowire="byName" />
-		
-	<bean id="cutApplyAdminMgr" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.cutapply.mgr.impl.CutApplyMgrAdminImpl">
-				<property name="cutApplyAdminDao" ref="cutApplyAdminDao" />
-			</bean>
-		</property>
-	</bean>
+    <bean id="cutApplyDao"
+          class="com.boco.eoms.cutapply.dao.hibernate.CutApplyDaoHibernate"
+          autowire="byName"/>
 
-	<bean id="cutApplyAdminDao"
-		class="com.boco.eoms.cutapply.dao.hibernate.CutApplyAdminDaoHibernate"
-		autowire="byName" />
+    <bean id="cutApplyAdminMgr" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.cutapply.mgr.impl.CutApplyMgrAdminImpl">
+                <property name="cutApplyAdminDao" ref="cutApplyAdminDao"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="cutApplyAdminDao"
+          class="com.boco.eoms.cutapply.dao.hibernate.CutApplyAdminDaoHibernate"
+          autowire="byName"/>
 
 
 </beans>

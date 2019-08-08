@@ -9,9 +9,9 @@ import com.boco.eoms.message.mgr.IIMMonitorManager;
 
 public class IMMonitorScheduler implements Job {
 
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-	
-		IIMMonitorManager immgr=(IIMMonitorManager)ApplicationContextHolder.getInstance().getBean("IimMonitorManager");
-		immgr.sendScheduler();
-	}
+    public void execute(JobExecutionContext arg0) throws JobExecutionException {
+
+        IIMMonitorManager immgr = (IIMMonitorManager) ApplicationContextHolder.getInstance().getBean("IimMonitorManager");
+        immgr.sendScheduler();
+    }
 }

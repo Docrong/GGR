@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,29 +13,29 @@
             table="taw_net_transfer"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="originateDept"
+                name="originateDept"
                 length="128"
                 not-null="true"
-        column="ORIGINATE_DEPT">
+                column="ORIGINATE_DEPT">
 
         </property>
 
         <property
-            name="originater"
+                name="originater"
                 length="64"
                 not-null="true"
         >
@@ -43,7 +43,7 @@
         </property>
 
         <property
-            name="date"
+                name="date"
                 length="32"
                 not-null="true"
                 column="DATE_TIME"
@@ -52,7 +52,7 @@
         </property>
 
         <property
-            name="dispatchNum"
+                name="dispatchNum"
                 length="128"
                 not-null="true"
         >
@@ -60,7 +60,7 @@
         </property>
 
         <property
-            name="dutyMan"
+                name="dutyMan"
                 length="64"
                 not-null="false"
                 column="DUTY_MAN"
@@ -68,35 +68,35 @@
 
         </property>
         <property
-            name="state"
+                name="state"
                 length="32"
                 not-null="true"
         >
 
         </property>
         <property
-            name="contact"
+                name="contact"
                 length="64"
                 not-null="true"
         >
 
         </property>
         <property
-            name="speciality"
+                name="speciality"
                 length="64"
                 not-null="true"
         >
 
         </property>
-         <property
-            name="equipmentDept"
+        <property
+                name="equipmentDept"
                 length="64"
                 not-null="true"
-        column="EQUIPMENT_DEPT">
+                column="EQUIPMENT_DEPT">
 
         </property>
         <property
-            name="referNet"
+                name="referNet"
                 length="128"
                 not-null="true"
                 column="REFER_NET"
@@ -104,42 +104,42 @@
 
         </property>
         <property
-            name="title"
+                name="title"
                 length="128"
                 not-null="true"
         >
 
         </property>
-         <property
-            name="content"
+        <property
+                name="content"
                 length="512"
                 not-null="true"
         >
 
         </property>
-         <property
-            name="remark"
+        <property
+                name="remark"
                 length="512"
                 not-null="false"
         >
 
         </property>
-         <property
-            name="accessory"
+        <property
+                name="accessory"
                 length="128"
                 not-null="false"
         >
 
         </property>
-         <property
-            name="hasub"
+        <property
+                name="hasub"
                 length="8"
                 not-null="false"
         >
 
         </property>
 
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

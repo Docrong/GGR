@@ -14,13 +14,13 @@ import com.boco.eoms.sheet.base.service.IMainService;
  * <p>
  * Mon Sep 29 11:24:17 CST 2014
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface ICommonfaultCorrigendumMainManager extends IMainService {
-     public abstract List getNetTeam(String netname) throws Exception;
-     public abstract void updateNetTeam(String mainnewTeamRoleId,String mainnewccObject,String mainCommonfaultNetName) throws Exception;
- }
+
+public interface ICommonfaultCorrigendumMainManager extends IMainService {
+    public abstract List getNetTeam(String netname) throws Exception;
+
+    public abstract void updateNetTeam(String mainnewTeamRoleId, String mainnewccObject, String mainCommonfaultNetName) throws Exception;
+}

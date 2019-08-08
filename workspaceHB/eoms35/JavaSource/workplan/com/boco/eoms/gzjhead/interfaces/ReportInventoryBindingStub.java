@@ -1,6 +1,6 @@
 /**
  * ReportInventoryBindingStub.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,7 +13,7 @@ public class ReportInventoryBindingStub extends org.apache.axis.client.Stub impl
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[1];
@@ -27,22 +27,22 @@ public class ReportInventoryBindingStub extends org.apache.axis.client.Stub impl
         oper.setStyle(org.apache.axis.constants.Style.DOCUMENT);
         oper.setUse(org.apache.axis.constants.Use.LITERAL);
         oper.addFault(new org.apache.axis.description.FaultDesc(
-                      new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "FaultDetails"),
-                      "cn.com.chinaunicom.eoms.worktaskschedule.ReportExecuteService.FaultDetails",
-                      new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"), 
-                      false
-                     ));
+                new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "FaultDetails"),
+                "cn.com.chinaunicom.eoms.worktaskschedule.ReportExecuteService.FaultDetails",
+                new javax.xml.namespace.QName("http://www.w3.org/2001/XMLSchema", "string"),
+                false
+        ));
         _operations[0] = oper;
 
     }
 
     public ReportInventoryBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public ReportInventoryBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public ReportInventoryBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -51,50 +51,50 @@ public class ReportInventoryBindingStub extends org.apache.axis.client.Stub impl
         } else {
             super.service = service;
         }
-            java.lang.Class cls;
-            javax.xml.namespace.QName qName;
-            java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-            java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", ">ReportInventoryRequest");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.gzjhead.interfaces._ReportInventoryRequest.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        java.lang.Class cls;
+        javax.xml.namespace.QName qName;
+        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
+        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
+        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+        qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", ">ReportInventoryRequest");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.gzjhead.interfaces._ReportInventoryRequest.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "attachInfoListType");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.gzjhead.interfaces.AttachInfoListType.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "attachInfoListType");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.gzjhead.interfaces.AttachInfoListType.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "attachInfoType");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.gzjhead.interfaces.AttachInfoType.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "attachInfoType");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.gzjhead.interfaces.AttachInfoType.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
-            qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "noteType");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.gzjhead.interfaces.NoteType.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(simplesf);
-            cachedDeserFactories.add(simpledf);
+        qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", "noteType");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.gzjhead.interfaces.NoteType.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(simplesf);
+        cachedDeserFactories.add(simpledf);
 
-            qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", ">ReportInventoryResponse");
-            cachedSerQNames.add(qName);
-            cls = com.boco.eoms.gzjhead.interfaces._ReportInventoryResponse.class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(beansf);
-            cachedDeserFactories.add(beandf);
+        qName = new javax.xml.namespace.QName("http://eoms.chinaunicom.com.cn/worktaskschedule/ReportExecuteService", ">ReportInventoryResponse");
+        cachedSerQNames.add(qName);
+        cls = com.boco.eoms.gzjhead.interfaces._ReportInventoryResponse.class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(beansf);
+        cachedDeserFactories.add(beandf);
 
     }
 
@@ -139,16 +139,15 @@ public class ReportInventoryBindingStub extends org.apache.axis.client.Stub impl
                         javax.xml.namespace.QName qName =
                                 (javax.xml.namespace.QName) cachedSerQNames.get(i);
                         java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                cachedSerFactories.get(i);
                         java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                cachedDeserFactories.get(i);
                         _call.registerTypeMapping(cls, qName, sf, df, false);
                     }
                 }
             }
             return _call;
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", t);
         }
     }
@@ -170,13 +169,12 @@ public class ReportInventoryBindingStub extends org.apache.axis.client.Stub impl
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {parameters});
+
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{parameters});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (com.boco.eoms.gzjhead.interfaces._ReportInventoryResponse) _resp;

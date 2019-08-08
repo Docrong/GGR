@@ -20,82 +20,82 @@ import com.boco.eoms.km.ask.dao.KmAskScoreDao;
  * <p>
  * Wed Aug 19 10:09:58 CST 2009
  * </p>
- * 
+ *
  * @author lvweihua
  * @version 1.0
- * 
  */
 public class KmAskCountScoreMgrImpl implements KmAskCountScoreMgr {
- 
-	private KmAskCountScoreDao  kmAskCountScoreDao;
- 	
-	private KmAskScoreDao kmAskScoreDao;
-	
-	public KmAskCountScoreDao getKmAskCountScoreDao() {
-		return this.kmAskCountScoreDao;
-	}
- 	
-	public void setKmAskCountScoreDao(KmAskCountScoreDao kmAskCountScoreDao) {
-		this.kmAskCountScoreDao = kmAskCountScoreDao;
-	}
- 	
+
+    private KmAskCountScoreDao kmAskCountScoreDao;
+
+    private KmAskScoreDao kmAskScoreDao;
+
+    public KmAskCountScoreDao getKmAskCountScoreDao() {
+        return this.kmAskCountScoreDao;
+    }
+
+    public void setKmAskCountScoreDao(KmAskCountScoreDao kmAskCountScoreDao) {
+        this.kmAskCountScoreDao = kmAskCountScoreDao;
+    }
+
     public List getKmAskCountScores() {
-    	return kmAskCountScoreDao.getKmAskCountScores();
+        return kmAskCountScoreDao.getKmAskCountScores();
     }
-    
+
     /**
-	 * 查询某人的积分情况
-	 * @param id
-	 * @return
-	 */
-	public KmAskCountScore getKmAskCountScoreByUser(final String userName){
-		return kmAskCountScoreDao.getKmAskCountScoreByUser(userName);
-	}
-    
+     * 查询某人的积分情况
+     *
+     * @param id
+     * @return
+     */
+    public KmAskCountScore getKmAskCountScoreByUser(final String userName) {
+        return kmAskCountScoreDao.getKmAskCountScoreByUser(userName);
+    }
+
     public KmAskCountScore getKmAskCountScore(final String id) {
-    	return kmAskCountScoreDao.getKmAskCountScore(id);
+        return kmAskCountScoreDao.getKmAskCountScore(id);
     }
-    
+
     public void saveKmAskCountScore(KmAskCountScore kmAskCountScore) {
-    	kmAskCountScoreDao.saveKmAskCountScore(kmAskCountScore);
+        kmAskCountScoreDao.saveKmAskCountScore(kmAskCountScore);
     }
-    
-    
-    public void saveKmAskCountScore(final String user,final String userDept,final Integer operateId){
-    	KmAskScore kmAskScore = kmAskScoreDao.getKmAskScoreByOperateId(operateId);
-    	Integer countScore = kmAskScore.getScore();
-    	if(countScore ==null){
-    		countScore = new Integer(0);
-    	}
-    	KmAskCountScore kmAskCountScore = kmAskCountScoreDao.getKmAskCountScoreByUser(user);
-    	if ((kmAskCountScore.getId() == null) || (kmAskCountScore.getId().equals(""))){
-    		kmAskCountScore.setCountScore(countScore);
-    		kmAskCountScore.setUserDept(userDept);
-    		kmAskCountScore.setUserName(user);
-    	}else{
-    		int score = kmAskCountScore.getCountScore().intValue();
-    		score+=countScore.intValue();
-    		kmAskCountScore.setCountScore(new Integer(score));
-    	}
-    	kmAskCountScoreDao.saveKmAskCountScore(kmAskCountScore);
-	}
-    
+
+
+    public void saveKmAskCountScore(final String user, final String userDept, final Integer operateId) {
+        KmAskScore kmAskScore = kmAskScoreDao.getKmAskScoreByOperateId(operateId);
+        Integer countScore = kmAskScore.getScore();
+        if (countScore == null) {
+            countScore = new Integer(0);
+        }
+        KmAskCountScore kmAskCountScore = kmAskCountScoreDao.getKmAskCountScoreByUser(user);
+        if ((kmAskCountScore.getId() == null) || (kmAskCountScore.getId().equals(""))) {
+            kmAskCountScore.setCountScore(countScore);
+            kmAskCountScore.setUserDept(userDept);
+            kmAskCountScore.setUserName(user);
+        } else {
+            int score = kmAskCountScore.getCountScore().intValue();
+            score += countScore.intValue();
+            kmAskCountScore.setCountScore(new Integer(score));
+        }
+        kmAskCountScoreDao.saveKmAskCountScore(kmAskCountScore);
+    }
+
     public void removeKmAskCountScore(final String id) {
-    	kmAskCountScoreDao.removeKmAskCountScore(id);
+        kmAskCountScoreDao.removeKmAskCountScore(id);
     }
-    
+
     public Map getKmAskCountScores(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return kmAskCountScoreDao.getKmAskCountScores(curPage, pageSize, whereStr);
-	}
+                                   final String whereStr) {
+        return kmAskCountScoreDao.getKmAskCountScores(curPage, pageSize, whereStr);
+    }
 
-	public KmAskScoreDao getKmAskScoreDao() {
-		return kmAskScoreDao;
-	}
+    public KmAskScoreDao getKmAskScoreDao() {
+        return kmAskScoreDao;
+    }
 
-	public void setKmAskScoreDao(KmAskScoreDao kmAskScoreDao) {
-		this.kmAskScoreDao = kmAskScoreDao;
-	}
+    public void setKmAskScoreDao(KmAskScoreDao kmAskScoreDao) {
+        this.kmAskScoreDao = kmAskScoreDao;
+    }
 
-	
+
 }

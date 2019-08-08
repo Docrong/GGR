@@ -6,107 +6,107 @@ import com.boco.eoms.commons.system.priv.webapp.form.TawSystemPrivMenuItemForm;
 
 public class TawSystemPrivMenuItemActionTest extends BaseStrutsTestCase {
 
-	public TawSystemPrivMenuItemActionTest(String name) {
-		super(name);
-	}
+    public TawSystemPrivMenuItemActionTest(String name) {
+        super(name);
+    }
 
-	public void testAdd() throws Exception {
-		setRequestPathInfo("/saveTawSystemPrivMenuItem");
-		addRequestParameter("method", "Save");
+    public void testAdd() throws Exception {
+        setRequestPathInfo("/saveTawSystemPrivMenuItem");
+        addRequestParameter("method", "Save");
 
-		TawSystemPrivMenuItemForm tawSystemPrivMenuItemForm = new TawSystemPrivMenuItemForm();
-		// set required fields
-		tawSystemPrivMenuItemForm
-				.setMenuid("DzHrIpOzJcUdTjMuQqDjPzYyTjVmHhUcReQkFuQzJbYjTaKqPiJlYsAdEzShTwPkOiOnRcHmIzTrSsHmOzJyQhFjFpMvPhJwFdPo");
-		tawSystemPrivMenuItemForm
-				.setCode("GmKuWqJtYuLxDjCaWyNjRwHbOmIoYbZsDjZrLrWyNlSiUkHrFwBbWrPfPpTtQaOeJiVxHiWoMrWuRpSiTaZhUsApCjGrEwBeMrMe");
-		tawSystemPrivMenuItemForm
-				.setParentcode("TzHdQsZvCvNxXtSwNiIqWjLuVjSvApTeTiJjFjNtCsUaEgFsUvKdVtDxCqTvYgZaSoDoWeJcLpNkKmSqFtYwJfHvLhRsJnAzNyTk");
-		tawSystemPrivMenuItemForm.setIsApp("IbBfKkTsAh");
-		tawSystemPrivMenuItemForm.setIsLeaf("QsBnYkSdSg");
-		tawSystemPrivMenuItemForm.setIsHide("ZmIySgDeWo");
+        TawSystemPrivMenuItemForm tawSystemPrivMenuItemForm = new TawSystemPrivMenuItemForm();
+        // set required fields
+        tawSystemPrivMenuItemForm
+                .setMenuid("DzHrIpOzJcUdTjMuQqDjPzYyTjVmHhUcReQkFuQzJbYjTaKqPiJlYsAdEzShTwPkOiOnRcHmIzTrSsHmOzJyQhFjFpMvPhJwFdPo");
+        tawSystemPrivMenuItemForm
+                .setCode("GmKuWqJtYuLxDjCaWyNjRwHbOmIoYbZsDjZrLrWyNlSiUkHrFwBbWrPfPpTtQaOeJiVxHiWoMrWuRpSiTaZhUsApCjGrEwBeMrMe");
+        tawSystemPrivMenuItemForm
+                .setParentcode("TzHdQsZvCvNxXtSwNiIqWjLuVjSvApTeTiJjFjNtCsUaEgFsUvKdVtDxCqTvYgZaSoDoWeJcLpNkKmSqFtYwJfHvLhRsJnAzNyTk");
+        tawSystemPrivMenuItemForm.setIsApp("IbBfKkTsAh");
+        tawSystemPrivMenuItemForm.setIsLeaf("QsBnYkSdSg");
+        tawSystemPrivMenuItemForm.setIsHide("ZmIySgDeWo");
 
-		request.setAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY,
-				tawSystemPrivMenuItemForm);
+        request.setAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY,
+                tawSystemPrivMenuItemForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 
-	public void testSearch() {
-		setRequestPathInfo("/tawSystemPrivMenuItems");
-		addRequestParameter("method", "Search");
+    public void testSearch() {
+        setRequestPathInfo("/tawSystemPrivMenuItems");
+        addRequestParameter("method", "Search");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("list");
-		assertNotNull(request
-				.getAttribute(Constants.TAWSYSTEMPRIVMENUITEM_LIST));
-	}
+        verifyNoActionErrors();
+        verifyForward("list");
+        assertNotNull(request
+                .getAttribute(Constants.TAWSYSTEMPRIVMENUITEM_LIST));
+    }
 
-	public void testEdit() throws Exception {
-		setRequestPathInfo("/editTawSystemPrivMenuItem");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testEdit() throws Exception {
+        setRequestPathInfo("/editTawSystemPrivMenuItem");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
-		assertNotNull(request.getAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY));
+        verifyNoActionErrors();
+        verifyForward("edit");
+        assertNotNull(request.getAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY));
 
-	}
+    }
 
-	public void testSave() throws Exception {
-		setRequestPathInfo("/editTawSystemPrivMenuItem");
-		addRequestParameter("method", "Edit");
-		addRequestParameter("id", "1");
+    public void testSave() throws Exception {
+        setRequestPathInfo("/editTawSystemPrivMenuItem");
+        addRequestParameter("method", "Edit");
+        addRequestParameter("id", "1");
 
-		actionPerform();
+        actionPerform();
 
-		TawSystemPrivMenuItemForm tawSystemPrivMenuItemForm = (TawSystemPrivMenuItemForm) request
-				.getAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY);
-		assertNotNull(tawSystemPrivMenuItemForm);
+        TawSystemPrivMenuItemForm tawSystemPrivMenuItemForm = (TawSystemPrivMenuItemForm) request
+                .getAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY);
+        assertNotNull(tawSystemPrivMenuItemForm);
 
-		setRequestPathInfo("/saveTawSystemPrivMenuItem");
-		addRequestParameter("method", "Save");
+        setRequestPathInfo("/saveTawSystemPrivMenuItem");
+        addRequestParameter("method", "Save");
 
-		// update the form's required string fields and add it back to the
-		// request
-		tawSystemPrivMenuItemForm
-				.setMenuid("PtOzLhQiTlYtRqAkSzTbPsJmMyUxJvUjByZfRpFyYgDvJuRpCaUjPyEhNjMgAoJnZaGkZuAsOiAhNuLtYlAcCoGuOwLeNgZsGnVj");
-		tawSystemPrivMenuItemForm
-				.setCode("KtHfUdQrIiXkPpRhNrOrOuBgHoKcOkHqZlRiGlQsJzZcBjBiEdAgXkUyFjLjNeMxZeBeOpRcErVlCgDoDuZrDdRmAcUxWhFtTyGk");
-		tawSystemPrivMenuItemForm
-				.setParentcode("EuCeRePkRbDjPcMoZgCuGdZgEwAvBhFwPbVbJsTfPpPiFtAnNrUxZbQdNmKeWcImSaLdFaIzNxLlVdSeUdBfMnEgRoTpZvDeJiRp");
-		tawSystemPrivMenuItemForm.setIsApp("FtUaCiRdOg");
-		tawSystemPrivMenuItemForm.setIsLeaf("IlLlLjLqNp");
-		tawSystemPrivMenuItemForm.setIsHide("InMsHzAkHx");
+        // update the form's required string fields and add it back to the
+        // request
+        tawSystemPrivMenuItemForm
+                .setMenuid("PtOzLhQiTlYtRqAkSzTbPsJmMyUxJvUjByZfRpFyYgDvJuRpCaUjPyEhNjMgAoJnZaGkZuAsOiAhNuLtYlAcCoGuOwLeNgZsGnVj");
+        tawSystemPrivMenuItemForm
+                .setCode("KtHfUdQrIiXkPpRhNrOrOuBgHoKcOkHqZlRiGlQsJzZcBjBiEdAgXkUyFjLjNeMxZeBeOpRcErVlCgDoDuZrDdRmAcUxWhFtTyGk");
+        tawSystemPrivMenuItemForm
+                .setParentcode("EuCeRePkRbDjPcMoZgCuGdZgEwAvBhFwPbVbJsTfPpPiFtAnNrUxZbQdNmKeWcImSaLdFaIzNxLlVdSeUdBfMnEgRoTpZvDeJiRp");
+        tawSystemPrivMenuItemForm.setIsApp("FtUaCiRdOg");
+        tawSystemPrivMenuItemForm.setIsLeaf("IlLlLjLqNp");
+        tawSystemPrivMenuItemForm.setIsHide("InMsHzAkHx");
 
-		request.setAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY,
-				tawSystemPrivMenuItemForm);
+        request.setAttribute(Constants.TAWSYSTEMPRIVMENUITEM_KEY,
+                tawSystemPrivMenuItemForm);
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("edit");
+        verifyNoActionErrors();
+        verifyForward("edit");
 
-		// verify success messages
-		verifyActionMessages(new String[] { "tawSystemPrivMenuItem.updated" });
+        // verify success messages
+        verifyActionMessages(new String[]{"tawSystemPrivMenuItem.updated"});
 
-	}
+    }
 
-	public void testRemove() throws Exception {
-		setRequestPathInfo("/editTawSystemPrivMenuItem");
-		addRequestParameter("method", "Delete");
-		addRequestParameter("id", "2");
+    public void testRemove() throws Exception {
+        setRequestPathInfo("/editTawSystemPrivMenuItem");
+        addRequestParameter("method", "Delete");
+        addRequestParameter("id", "2");
 
-		actionPerform();
+        actionPerform();
 
-		verifyNoActionErrors();
-		verifyForward("search");
-	}
+        verifyNoActionErrors();
+        verifyForward("search");
+    }
 }

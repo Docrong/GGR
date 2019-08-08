@@ -25,24 +25,23 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 /**
  * <p>StartupListener class used to initialize and database settings
  * and populate any application-wide drop-downs.
- * 
+ *
  * <p>Keep in mind that this listener is executed outside of OpenSessionInViewFilter,
- * so if you're using Hibernate you'll have to explicitly initialize all loaded data at the 
+ * so if you're using Hibernate you'll have to explicitly initialize all loaded data at the
  * Dao or service level to avoid LazyInitializationException. Hibernate.initialize() works
  * well for doing this.
  *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
- *
  * @web.listener
  */
 public class StartupListener extends ContextLoaderListener
-    implements ServletContextListener {
-    
+        implements ServletContextListener {
+
 //    private static final Log log = LogFactory.getLog(StartupListener.class);
 
     public void contextInitialized(ServletContextEvent event) {
 //        if (log.isDebugEnabled()) {
-    	BocoLog.debug(this,"initializing context...");
+        BocoLog.debug(this, "initializing context...");
 //        }
 
         // call Spring's context ContextLoaderListener to initialize
@@ -58,18 +57,18 @@ public class StartupListener extends ContextLoaderListener
         if (config == null) {
             config = new HashMap();
         }
-        
+
         if (context.getInitParameter("theme") != null) {
             config.put("theme", context.getInitParameter("theme"));
         }
 
         ApplicationContext ctx =
-            WebApplicationContextUtils.getRequiredWebApplicationContext(context);
+                WebApplicationContextUtils.getRequiredWebApplicationContext(context);
 
         boolean encryptPassword = false;
         try {
             ProviderManager provider = (ProviderManager) ctx.getBean("authenticationManager");
-            for (Iterator it = provider.getProviders().iterator(); it.hasNext();) {
+            for (Iterator it = provider.getProviders().iterator(); it.hasNext(); ) {
                 AuthenticationProvider p = (AuthenticationProvider) it.next();
                 if (p instanceof RememberMeAuthenticationProvider) {
                     config.put("rememberMeEnabled", Boolean.TRUE);
@@ -93,20 +92,20 @@ public class StartupListener extends ContextLoaderListener
 
         // output the retrieved values for the Init and Context Parameters
 //        if (log.isDebugEnabled()) {
-        BocoLog.debug(this,"Remember Me Enabled? " + config.get("rememberMeEnabled"));
-        BocoLog.debug(this,"Encrypt Passwords? " + encryptPassword);
-            if (encryptPassword) {
-            	BocoLog.debug(this,"Encryption Algorithm: " + config.get(Constants.ENC_ALGORITHM));
-            }
-            BocoLog.debug(this,"Populating drop-downs...");
+        BocoLog.debug(this, "Remember Me Enabled? " + config.get("rememberMeEnabled"));
+        BocoLog.debug(this, "Encrypt Passwords? " + encryptPassword);
+        if (encryptPassword) {
+            BocoLog.debug(this, "Encryption Algorithm: " + config.get(Constants.ENC_ALGORITHM));
+        }
+        BocoLog.debug(this, "Populating drop-downs...");
 //        }
 
         setupContext(context);
     }
 
     public static void setupContext(ServletContext context) {
-        ApplicationContext ctx = 
-            WebApplicationContextUtils.getRequiredWebApplicationContext(context);
+        ApplicationContext ctx =
+                WebApplicationContextUtils.getRequiredWebApplicationContext(context);
 
         LookupManager mgr = (LookupManager) ctx.getBean("lookupManager");
 
@@ -114,7 +113,7 @@ public class StartupListener extends ContextLoaderListener
         context.setAttribute(Constants.AVAILABLE_ROLES, mgr.getAllRoles());
 
 //        if (log.isDebugEnabled()) {
-        BocoLog.debug(StartupListener.class,"Drop-down initialization complete [OK]");
+        BocoLog.debug(StartupListener.class, "Drop-down initialization complete [OK]");
 //        }
     }
 }

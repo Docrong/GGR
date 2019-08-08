@@ -1,133 +1,133 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
-	<!-- For mail settings and future properties files -->
-	<bean id="propertyConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>classpath:config/mail.properties</value>
-				<!-- 
-					<value>classpath:config/adapter-jndi.properties</value>
-				-->
-			</list>
-		</property>
-	</bean>
+    <!-- For mail settings and future properties files -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:config/mail.properties</value>
+                <!--
+                    <value>classpath:config/adapter-jndi.properties</value>
+                -->
+            </list>
+        </property>
+    </bean>
 
-	<!-- JNDI DataSource for J2EE environments
-		<bean id="dataSource"
-		class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName">
-		<value>java:comp/env/jdbc/EPMSDB</value>
-		</property>
-		<property name="jndiEnvironment">
-		<props>
-		<prop key="java.naming.provider.url">iiop://localhost:2809/</prop>
-		<prop key="java.naming.factory.initial">com.ibm.websphere.naming.WsnInitialContextFactory</prop>
-		</props>
-		</property>
-		</bean>
-	-->
-	<!-- 
-		<bean id="dataSource"
-		class="com.boco.eoms.commons.db.bocopool.EomsDataSource"
-		destroy-method="close">
-		<property name="user" value="informix" />
-		<property name="password" value="informix" />
-		<property name="url"
-		value="jdbc:informix-sqli://10.0.2.113:8004/eoms35qg:INFORMIXSERVER=eomsserverpro;NEWCODESET=gbk,8859-1,819" />
-		<property name="driverClassName"
-		value="com.informix.jdbc.IfxDriver" />
-		<property name="maxConn" value="10" />
-		<property name="minConn" value="5" />
-		<property name="maxAliveTime" value="3" />
-		<property name="maxIdleTime" value="30" />
-		<property name="maxWaitTime" value="-1" />
-		<property name="maxUseCounts" value="20" />
-		<property name="charset" value="IS0-8859-1" />
-		<property name="defaultAutoCommit" value="true" />
-		</bean>
-	-->
-	<!-- 
-	<bean id="dataSource"
-		class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close">
-		<property name="driverClass">
-			<value>oracle.jdbc.driver.OracleDriver</value>
-		</property>  
-		<property name="jdbcUrl">
-			<value>jdbc:oracle:thin:@10.0.2.108:1521:eoms</value>
-		</property>  
- 
-		<property name="user">
-			<value>eoms35yanshi</value>
-		</property>
-		<property name="password">
-			<value>eoms35yanshi</value>
-		</property>
-	 
-		<property name="initialPoolSize">
-			<value>2</value>
-		</property>
-		<property name="minPoolSize">
-			<value>2</value>
-		</property>
-		<property name="maxPoolSize">
-			<value>30</value>
-		</property>
-		<property name="acquireIncrement">
-			<value>5</value>
-		</property>
-		<property name="maxIdleTime">
-			<value>10</value>
-		</property>
-		<property name="maxStatements">
-			<value>0</value>
-		</property>
-		
-		<property name="idleConnectionTestPeriod">
-			<value>300</value>
-		</property>
-	</bean> -->
-	<bean id="dataSource"
-		class="org.logicalcobwebs.proxool.ProxoolDataSource"
-		destroy-method="close">
-		<property name="driver">
-			<value>oracle.jdbc.driver.OracleDriver</value>
-		</property>
-		<property name="driverUrl">
-			<value>jdbc:oracle:thin:@10.0.2.108:1521:eoms</value>
-		</property>
-		<property name="user">
-			<value>eomsqg</value>
-		</property>
-		<property name="password">
-			<value>eomsqg</value>
-		</property>
-		<property name="alias">
-			<value>platformpool</value>
-		</property>
-		<property name="prototypeCount">
-			<value>5</value>
-		</property>
-		<property name="maximumConnectionCount">
-			<value>10</value>
-		</property>
-		<property name="minimumConnectionCount">
-			<value>10</value>
-		</property>
-		<property name="trace">
-			<value>true</value>
-		</property>
-		<property name="verbose">
-			<value>true</value>
-		</property>
-		<property name="statistics">
-			<value>1d</value>
-		</property>
-	</bean>
+    <!-- JNDI DataSource for J2EE environments
+        <bean id="dataSource"
+        class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName">
+        <value>java:comp/env/jdbc/EPMSDB</value>
+        </property>
+        <property name="jndiEnvironment">
+        <props>
+        <prop key="java.naming.provider.url">iiop://localhost:2809/</prop>
+        <prop key="java.naming.factory.initial">com.ibm.websphere.naming.WsnInitialContextFactory</prop>
+        </props>
+        </property>
+        </bean>
+    -->
+    <!--
+        <bean id="dataSource"
+        class="com.boco.eoms.commons.db.bocopool.EomsDataSource"
+        destroy-method="close">
+        <property name="user" value="informix" />
+        <property name="password" value="informix" />
+        <property name="url"
+        value="jdbc:informix-sqli://10.0.2.113:8004/eoms35qg:INFORMIXSERVER=eomsserverpro;NEWCODESET=gbk,8859-1,819" />
+        <property name="driverClassName"
+        value="com.informix.jdbc.IfxDriver" />
+        <property name="maxConn" value="10" />
+        <property name="minConn" value="5" />
+        <property name="maxAliveTime" value="3" />
+        <property name="maxIdleTime" value="30" />
+        <property name="maxWaitTime" value="-1" />
+        <property name="maxUseCounts" value="20" />
+        <property name="charset" value="IS0-8859-1" />
+        <property name="defaultAutoCommit" value="true" />
+        </bean>
+    -->
+    <!--
+    <bean id="dataSource"
+        class="com.mchange.v2.c3p0.ComboPooledDataSource"
+        destroy-method="close">
+        <property name="driverClass">
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+        <property name="jdbcUrl">
+            <value>jdbc:oracle:thin:@10.0.2.108:1521:eoms</value>
+        </property>
+
+        <property name="user">
+            <value>eoms35yanshi</value>
+        </property>
+        <property name="password">
+            <value>eoms35yanshi</value>
+        </property>
+
+        <property name="initialPoolSize">
+            <value>2</value>
+        </property>
+        <property name="minPoolSize">
+            <value>2</value>
+        </property>
+        <property name="maxPoolSize">
+            <value>30</value>
+        </property>
+        <property name="acquireIncrement">
+            <value>5</value>
+        </property>
+        <property name="maxIdleTime">
+            <value>10</value>
+        </property>
+        <property name="maxStatements">
+            <value>0</value>
+        </property>
+
+        <property name="idleConnectionTestPeriod">
+            <value>300</value>
+        </property>
+    </bean> -->
+    <bean id="dataSource"
+          class="org.logicalcobwebs.proxool.ProxoolDataSource"
+          destroy-method="close">
+        <property name="driver">
+            <value>oracle.jdbc.driver.OracleDriver</value>
+        </property>
+        <property name="driverUrl">
+            <value>jdbc:oracle:thin:@10.0.2.108:1521:eoms</value>
+        </property>
+        <property name="user">
+            <value>eomsqg</value>
+        </property>
+        <property name="password">
+            <value>eomsqg</value>
+        </property>
+        <property name="alias">
+            <value>platformpool</value>
+        </property>
+        <property name="prototypeCount">
+            <value>5</value>
+        </property>
+        <property name="maximumConnectionCount">
+            <value>10</value>
+        </property>
+        <property name="minimumConnectionCount">
+            <value>10</value>
+        </property>
+        <property name="trace">
+            <value>true</value>
+        </property>
+        <property name="verbose">
+            <value>true</value>
+        </property>
+        <property name="statistics">
+            <value>1d</value>
+        </property>
+    </bean>
 
 
 </beans>

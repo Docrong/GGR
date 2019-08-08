@@ -5,7 +5,7 @@
  * Time: 3:39:33 PM
  *
  * $Id
-*/
+ */
 // Source File Name:   UploadBean.java
 
 package com.boco.eoms.filemanager.extra.fileupload;
@@ -199,7 +199,7 @@ public class UploadBean {
 
     public String store(MultipartFormDataRequest mrequest, String field)
             throws IOException, UploadException {
-        String returnStr = "" ;
+        String returnStr = "";
         String fileindex = mrequest.getParameter("req_docu");
         if (_$15600 == 1 && _$15642 != null) {
             Hashtable files = mrequest.getFiles();
@@ -222,15 +222,15 @@ public class UploadBean {
                     if (!found)
                         fos = new FileOutputStream(String.valueOf(String.valueOf((new StringBuffer(String.valueOf(String.valueOf(getFolderstore())))).append(SEPARATOR).append(file.getFileName()))));
                     else {
-                        String file_name = file.getFileName() ;
-                        String result = "" ;
-                        returnStr = "_"+String.valueOf(System.currentTimeMillis()) ;
+                        String file_name = file.getFileName();
+                        String result = "";
+                        returnStr = "_" + String.valueOf(System.currentTimeMillis());
 //                        int dot_idx = file_name.indexOf(".");
                         int dot_idx = file_name.lastIndexOf(".");
-                        if(dot_idx>0) {
-                            String file_src= file_name.substring(0,dot_idx);
-                            String file_ext= file_name.substring(dot_idx);
-                            result = file_src+returnStr+file_ext;
+                        if (dot_idx > 0) {
+                            String file_src = file_name.substring(0, dot_idx);
+                            String file_ext = file_name.substring(dot_idx);
+                            result = file_src + returnStr + file_ext;
                         }
                         fos = new FileOutputStream(String.valueOf(String.valueOf((new StringBuffer(String.valueOf(String.valueOf(getFolderstore())))).append(SEPARATOR).append(result))));
 //                        .append(".").append(System.currentTimeMillis())
@@ -312,17 +312,17 @@ public class UploadBean {
                 _$16164(up);
             }
         }
-        return returnStr ;
+        return returnStr;
     }
 
     public String store(MultipartFormDataRequest mrequest)
             throws IOException, UploadException {
-        String returnStr = "" ;
+        String returnStr = "";
         Hashtable files = mrequest.getFiles();
         String field;
         for (Enumeration e = files.keys(); e.hasMoreElements(); returnStr = store(mrequest, field))
             field = (String) e.nextElement();
-        return returnStr ;
+        return returnStr;
     }
 
     public Vector getHistory() {

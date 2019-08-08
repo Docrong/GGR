@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,100 +13,100 @@
             table="KM_ASK_SPECILITY"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
-
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
-
-    </generator>
-
-    </id>
-
-	<property
-            name="name"
-            	column="NAME"
-                length="32"
-                not-null="true"
-                unique="false"
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
         >
 
-        </property>
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-	<property
-            name="isDelete"
-            	column="IS_DELETE"
-                length="32"
-                not-null="true"
-                unique="false"
-        >
+            </generator>
 
-        </property>
+        </id>
 
-	<property
-            name="createUser"
-            	column="CREATE_USER"
-                length="32"
-                not-null="true"
-                unique="false"
-        >
-
-        </property>
-
-	<property
-            name="createDept"
-            	column="CREATE_DEPT"
-                length="32"
-                not-null="true"
-                unique="false"
-        >
-
-        </property>
-
-	<property
-            name="createTime"
-            	column="CREATE_TIME"
-                length="32"
-                not-null="true"
-                unique="false"
-        >
-
-        </property>
-
-		<property
-            name="nodeId"
-            	column="node_id"
-                length="32"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
         <property
-            name="parentNodeId"
-            	column="parent_node_id"
+                name="name"
+                column="NAME"
                 length="32"
-                not-null="false"
+                not-null="true"
                 unique="false"
         >
 
         </property>
-        
+
         <property
-            name="leaf"
-            	column="leaf"
+                name="isDelete"
+                column="IS_DELETE"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="createUser"
+                column="CREATE_USER"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="createDept"
+                column="CREATE_DEPT"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="createTime"
+                column="CREATE_TIME"
+                length="32"
+                not-null="true"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="nodeId"
+                column="node_id"
                 length="32"
                 not-null="false"
                 unique="false"
         >
 
         </property>
-        
-    </class>    
+
+        <property
+                name="parentNodeId"
+                column="parent_node_id"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="leaf"
+                column="leaf"
+                length="32"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+    </class>
 
 </hibernate-mapping>
 

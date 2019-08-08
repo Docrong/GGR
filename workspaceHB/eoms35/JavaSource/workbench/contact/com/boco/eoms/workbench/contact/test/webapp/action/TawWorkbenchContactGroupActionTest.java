@@ -5,6 +5,7 @@ import com.boco.eoms.base.webapp.action.BaseStrutsTestCase;
 import com.boco.eoms.base.Constants;
 import com.boco.eoms.workbench.contact.webapp.form.TawWorkbenchContactGroupForm;
 import com.boco.eoms.workbench.contact.util.ContactConstants;
+
 public class TawWorkbenchContactGroupActionTest extends BaseStrutsTestCase {
 
     public TawWorkbenchContactGroupActionTest(String name) {
@@ -73,7 +74,7 @@ public class TawWorkbenchContactGroupActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawWorkbenchContactGroup.updated"});
+        verifyActionMessages(new String[]{"tawWorkbenchContactGroup.updated"});
 
     }
 

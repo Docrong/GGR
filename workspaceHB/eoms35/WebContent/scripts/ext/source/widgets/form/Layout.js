@@ -13,7 +13,7 @@
  * @constructor
  * @param {Object} config Configuration options
  */
-Ext.form.Layout = function(config){
+Ext.form.Layout = function (config) {
     Ext.form.Layout.superclass.constructor.call(this, config);
     this.stack = [];
 };
@@ -40,89 +40,89 @@ Ext.extend(Ext.form.Layout, Ext.Component, {
      * @cfg {Boolean} clear
      * True to add a clearing element at the end of this layout, equivalent to CSS clear: both (defaults to true)
      */
-    clear : true,
+    clear: true,
     /**
      * @cfg {String} labelSeparator
      * The separator to use after field labels (defaults to ':')
      */
-    labelSeparator : ':',
+    labelSeparator: ':',
     /**
      * @cfg {Boolean} hideLabels
      * True to suppress the display of field labels in this layout (defaults to false)
      */
-    hideLabels : false,
+    hideLabels: false,
 
     // private
-    defaultAutoCreate : {tag: 'div', cls: 'x-form-ct'},
+    defaultAutoCreate: {tag: 'div', cls: 'x-form-ct'},
 
     // private
-    onRender : function(ct, position){
-        if(this.el){ // from markup
+    onRender: function (ct, position) {
+        if (this.el) { // from markup
             this.el = Ext.get(this.el);
-        }else {  // generate
+        } else {  // generate
             var cfg = this.getAutoCreate();
             this.el = ct.createChild(cfg, position);
         }
-        if(this.style){
+        if (this.style) {
             this.el.applyStyles(this.style);
         }
-        if(this.labelAlign){
-            this.el.addClass('x-form-label-'+this.labelAlign);
+        if (this.labelAlign) {
+            this.el.addClass('x-form-label-' + this.labelAlign);
         }
-        if(this.hideLabels){
+        if (this.hideLabels) {
             this.labelStyle = "display:none";
             this.elementStyle = "padding-left:0;";
-        }else{
-            if(typeof this.labelWidth == 'number'){
-                this.labelStyle = "width:"+this.labelWidth+"px;";
-                this.elementStyle = "padding-left:"+((this.labelWidth+(typeof this.labelPad == 'number' ? this.labelPad : 5))+'px')+";";
+        } else {
+            if (typeof this.labelWidth == 'number') {
+                this.labelStyle = "width:" + this.labelWidth + "px;";
+                this.elementStyle = "padding-left:" + ((this.labelWidth + (typeof this.labelPad == 'number' ? this.labelPad : 5)) + 'px') + ";";
             }
-            if(this.labelAlign == 'top'){
+            if (this.labelAlign == 'top') {
                 this.labelStyle = "width:auto;";
                 this.elementStyle = "padding-left:0;";
             }
         }
         var stack = this.stack;
         var slen = stack.length;
-        if(slen > 0){
-            if(!this.fieldTpl){
+        if (slen > 0) {
+            if (!this.fieldTpl) {
                 var t = new Ext.Template(
                     '<div class="x-form-item {5}">',
-                        '<label for="{0}" style="{2}">{1}{4}</label>',
-                        '<div class="x-form-element" id="x-form-el-{0}" style="{3}">',
-                        '</div>',
+                    '<label for="{0}" style="{2}">{1}{4}</label>',
+                    '<div class="x-form-element" id="x-form-el-{0}" style="{3}">',
+                    '</div>',
                     '</div><div class="x-form-clear-left"></div>'
                 );
                 t.disableFormats = true;
                 t.compile();
                 Ext.form.Layout.prototype.fieldTpl = t;
             }
-            for(var i = 0; i < slen; i++) {
-                if(stack[i].isFormField){
+            for (var i = 0; i < slen; i++) {
+                if (stack[i].isFormField) {
                     this.renderField(stack[i]);
-                }else{
+                } else {
                     this.renderComponent(stack[i]);
                 }
             }
         }
-        if(this.clear){
-            this.el.createChild({cls:'x-form-clear'});
+        if (this.clear) {
+            this.el.createChild({cls: 'x-form-clear'});
         }
     },
 
     // private
-    renderField : function(f){
-       this.fieldTpl.append(this.el, [
-               f.id, f.fieldLabel,
-               f.labelStyle||this.labelStyle||'',
-               this.elementStyle||'',
-               typeof f.labelSeparator == 'undefined' ? this.labelSeparator : f.labelSeparator,
-               f.itemCls||this.itemCls||''
-       ]);
+    renderField: function (f) {
+        this.fieldTpl.append(this.el, [
+            f.id, f.fieldLabel,
+            f.labelStyle || this.labelStyle || '',
+            this.elementStyle || '',
+            typeof f.labelSeparator == 'undefined' ? this.labelSeparator : f.labelSeparator,
+            f.itemCls || this.itemCls || ''
+        ]);
     },
 
     // private
-    renderComponent : function(c){
+    renderComponent: function (c) {
         c.render(this.el);
     }
 });
@@ -134,7 +134,7 @@ Ext.extend(Ext.form.Layout, Ext.Component, {
  * @constructor
  * @param {Object} config Configuration options
  */
-Ext.form.Column = function(config){
+Ext.form.Column = function (config) {
     Ext.form.Column.superclass.constructor.call(this, config);
 };
 
@@ -149,12 +149,12 @@ Ext.extend(Ext.form.Column, Ext.form.Layout, {
      */
 
     // private
-    defaultAutoCreate : {tag: 'div', cls: 'x-form-ct x-form-column'},
+    defaultAutoCreate: {tag: 'div', cls: 'x-form-ct x-form-column'},
 
     // private
-    onRender : function(ct, position){
+    onRender: function (ct, position) {
         Ext.form.Column.superclass.onRender.call(this, ct, position);
-        if(this.width){
+        if (this.width) {
             this.el.setWidth(this.width);
         }
     }
@@ -167,7 +167,7 @@ Ext.extend(Ext.form.Column, Ext.form.Layout, {
  * @constructor
  * @param {Object} config Configuration options
  */
-Ext.form.FieldSet = function(config){
+Ext.form.FieldSet = function (config) {
     Ext.form.FieldSet.superclass.constructor.call(this, config);
 };
 
@@ -182,19 +182,19 @@ Ext.extend(Ext.form.FieldSet, Ext.form.Layout, {
      */
 
     // private
-    defaultAutoCreate : {tag: 'fieldset', cn: {tag:'legend'}},
+    defaultAutoCreate: {tag: 'fieldset', cn: {tag: 'legend'}},
 
     // private
-    onRender : function(ct, position){
+    onRender: function (ct, position) {
         Ext.form.FieldSet.superclass.onRender.call(this, ct, position);
-        if(this.legend){
+        if (this.legend) {
             this.setLegend(this.legend);
         }
     },
 
     // private
-    setLegend : function(text){
-        if(this.rendered){
+    setLegend: function (text) {
+        if (this.rendered) {
             this.el.child('legend').update(text);
         }
     }

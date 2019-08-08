@@ -1,4 +1,4 @@
-﻿$axure.internal(function($ax) {
+﻿$axure.internal(function ($ax) {
     var _style = {};
     $ax.style = _style;
 
@@ -13,94 +13,94 @@
     // just a listing of shape ids
     var _adaptiveStyledWidgets = {};
 
-    var _setLinkStyle = function(id, styleName) {
+    var _setLinkStyle = function (id, styleName) {
         var textId = $ax.style.GetTextIdFromLink(id);
         var style = _computeAllOverrides(id, textId, styleName, $ax.adaptive.currentViewId);
-        if(!_originalTextCache[textId]) {
+        if (!_originalTextCache[textId]) {
             $ax.style.CacheOriginalText(textId);
         }
-        if($.isEmptyObject(style)) return;
+        if ($.isEmptyObject(style)) return;
 
         var parentObjectCache = _originalTextCache[textId].styleCache;
 
-        _transformTextWithVerticalAlignment(textId, function() {
+        _transformTextWithVerticalAlignment(textId, function () {
             var cssProps = _getCssStyleProperties(style);
-            $('#' + id).find('*').andSelf().each(function(index, element) {
+            $('#' + id).find('*').andSelf().each(function (index, element) {
                 element.setAttribute('style', parentObjectCache[element.id]);
                 _applyCssProps(element, cssProps);
             });
         });
     };
 
-    var _resetLinkStyle = function(id) {
+    var _resetLinkStyle = function (id) {
         var textId = $ax.style.GetTextIdFromLink(id);
         var parentObjectCache = _originalTextCache[textId].styleCache;
 
-        _transformTextWithVerticalAlignment(textId, function() {
-            $('#' + id).find('*').andSelf().each(function(index, element) {
+        _transformTextWithVerticalAlignment(textId, function () {
+            $('#' + id).find('*').andSelf().each(function (index, element) {
                 element.style.cssText = parentObjectCache[element.id];
             });
         });
-        if($ax.event.mouseDownObjectId) {
+        if ($ax.event.mouseDownObjectId) {
             $ax.style.SetWidgetMouseDown($ax.event.mouseDownObjectId, true);
-        } else if($ax.event.mouseOverObjectId) {
+        } else if ($ax.event.mouseOverObjectId) {
             $ax.style.SetWidgetHover($ax.event.mouseOverObjectId, true);
         }
     };
 
-    $ax.style.SetLinkHover = function(id) {
+    $ax.style.SetLinkHover = function (id) {
         _setLinkStyle(id, MOUSE_OVER);
     };
 
-    $ax.style.SetLinkNotHover = function(id) {
+    $ax.style.SetLinkNotHover = function (id) {
         _resetLinkStyle(id);
     };
 
-    $ax.style.SetLinkMouseDown = function(id) {
+    $ax.style.SetLinkMouseDown = function (id) {
         _setLinkStyle(id, MOUSE_DOWN);
     };
 
-    $ax.style.SetLinkNotMouseDown = function(id) {
+    $ax.style.SetLinkNotMouseDown = function (id) {
         _resetLinkStyle(id);
         var style = _computeAllOverrides(id, $ax.event.mouseOverObjectId, MOUSE_OVER, $ax.adaptive.currentViewId);
 
-        if(!$.isEmptyObject(style)) $ax.style.SetLinkHover(id);
+        if (!$.isEmptyObject(style)) $ax.style.SetLinkHover(id);
         //we dont do anything here because the widget not mouse down has taken over here
     };
 
-    var _widgetHasState = function(id, state) {
-        if($ax.style.getElementImageOverride(id, state)) return true;
+    var _widgetHasState = function (id, state) {
+        if ($ax.style.getElementImageOverride(id, state)) return true;
         var diagramObject = $ax.getObjectFromElementId(id);
 
         var adaptiveIdChain = $ax.adaptive.getAdaptiveIdChain($ax.adaptive.currentViewId);
 
-        for(var i = 0; i < adaptiveIdChain.length; i++) {
+        for (var i = 0; i < adaptiveIdChain.length; i++) {
             var viewId = adaptiveIdChain[i];
             var adaptiveStyle = diagramObject.adaptiveStyles[viewId];
-            if(adaptiveStyle && adaptiveStyle.stateStyles && adaptiveStyle.stateStyles[state]) return true;
+            if (adaptiveStyle && adaptiveStyle.stateStyles && adaptiveStyle.stateStyles[state]) return true;
         }
 
-        if(diagramObject.style.stateStyles) return diagramObject.style.stateStyles[state];
+        if (diagramObject.style.stateStyles) return diagramObject.style.stateStyles[state];
 
         return false;
     };
 
     // Returns what overrides the hover, or false if nothing.
-    var _hoverOverride = function(id) {
-        if($ax.style.IsWidgetDisabled(id)) return DISABLED;
-        if($ax.style.IsWidgetSelected(id)) return SELECTED;
+    var _hoverOverride = function (id) {
+        if ($ax.style.IsWidgetDisabled(id)) return DISABLED;
+        if ($ax.style.IsWidgetSelected(id)) return SELECTED;
         var obj = $ax.getObjectFromElementId(id);
-        if(!obj.isContained) return false;
+        if (!obj.isContained) return false;
         var path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));
         path[path.length - 1] = obj.parent.id;
         var itemId = $ax.repeater.getItemIdFromElementId(id);
-        return _hoverOverride($ax.getElementIdFromPath(path, { itemNum: itemId }));
+        return _hoverOverride($ax.getElementIdFromPath(path, {itemNum: itemId}));
     };
 
-    $ax.style.SetWidgetHover = function(id, value) {
+    $ax.style.SetWidgetHover = function (id, value) {
         var override = _hoverOverride(id);
-        if(override == DISABLED) return;
-        if(!_widgetHasState(id, MOUSE_OVER)) return;
+        if (override == DISABLED) return;
+        if (!_widgetHasState(id, MOUSE_OVER)) return;
 
         var valToSet = value || _isRolloverOverride(id);
         var state = _generateMouseState(id, valToSet ? MOUSE_OVER : NORMAL, override == SELECTED);
@@ -109,21 +109,21 @@
     };
 
     var _rolloverOverrides = [];
-    var _isRolloverOverride = function(id) {
+    var _isRolloverOverride = function (id) {
         return _rolloverOverrides.indexOf(id) != -1;
     };
 
-    $ax.style.AddRolloverOverride = function(id) {
-        if(_isRolloverOverride(id)) return;
+    $ax.style.AddRolloverOverride = function (id) {
+        if (_isRolloverOverride(id)) return;
         _rolloverOverrides[_rolloverOverrides.length] = id;
-        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, true);
+        if ($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, true);
     };
 
-    $ax.style.RemoveRolloverOverride = function(id) {
+    $ax.style.RemoveRolloverOverride = function (id) {
         var index = _rolloverOverrides.indexOf(id);
-        if(index == -1) return;
+        if (index == -1) return;
         $ax.splice(_rolloverOverrides, index, 1);
-        if($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, false);
+        if ($ax.event.mouseOverIds.indexOf(id) == -1) $ax.style.SetWidgetHover(id, false);
     };
 
     //    function GetWidgetCurrentState(id) {
@@ -135,21 +135,21 @@
     //        return "normal";
     //    }
 
-    $ax.style.ObjHasMouseDown = function(id) {
+    $ax.style.ObjHasMouseDown = function (id) {
         var obj = $obj(id);
-        if($ax.style.getElementImageOverride(id, 'mouseDown') || obj.style && obj.style.stateStyles && obj.style.stateStyles.mouseDown) return true;
+        if ($ax.style.getElementImageOverride(id, 'mouseDown') || obj.style && obj.style.stateStyles && obj.style.stateStyles.mouseDown) return true;
 
         var chain = $ax.adaptive.getAdaptiveIdChain($ax.adaptive.currentViewId);
-        for(var i = 0; i < chain.length; i++) {
+        for (var i = 0; i < chain.length; i++) {
             var style = obj.adaptiveStyles[chain[i]];
-            if(style && style.stateStyles && style.stateStyles.mouseDown) return true;
+            if (style && style.stateStyles && style.stateStyles.mouseDown) return true;
         }
         return false;
     };
 
-    $ax.style.SetWidgetMouseDown = function(id, value) {
-        if($ax.style.IsWidgetDisabled(id)) return;
-        if(!_widgetHasState(id, MOUSE_DOWN)) return;
+    $ax.style.SetWidgetMouseDown = function (id, value) {
+        if ($ax.style.IsWidgetDisabled(id)) return;
+        if (!_widgetHasState(id, MOUSE_DOWN)) return;
 
         //    ApplyImageAndTextJson(id, value ? 'mouseDown' : !$.isEmptyObject(GetStyleForState(id, null, 'mouseOver')) ? 'mouseOver' : 'normal');
         var state = _generateMouseState(id, value ? MOUSE_DOWN : MOUSE_OVER, $ax.style.IsWidgetSelected(id));
@@ -157,45 +157,45 @@
         _updateElementIdImageStyle(id, state);
     };
 
-    var _generateMouseState = function(id, mouseState, selected) {
+    var _generateMouseState = function (id, mouseState, selected) {
         if (selected) {
             if (_style.getElementImageOverride(id, SELECTED)) return SELECTED;
 
             var viewChain = $ax.adaptive.getAdaptiveIdChain($ax.adaptive.currentViewId);
             viewChain[viewChain.length] = '';
             var obj = $obj(id);
-            if(obj.type == "dynamicPanel") return SELECTED;
+            if (obj.type == "dynamicPanel") return SELECTED;
 
-            var any = function(dict) {
-                for(var key in dict) return true;
+            var any = function (dict) {
+                for (var key in dict) return true;
                 return false;
             };
 
-            for(var i = 0; i < viewChain.length; i++) {
+            for (var i = 0; i < viewChain.length; i++) {
                 var viewId = viewChain[i];
                 // Need to check seperately for images.
-                if(obj.adaptiveStyles && obj.adaptiveStyles[viewId] && any(obj.adaptiveStyles[viewId])
-                 || obj.images && obj.images['selected~' + viewId]) return SELECTED;
+                if (obj.adaptiveStyles && obj.adaptiveStyles[viewId] && any(obj.adaptiveStyles[viewId])
+                    || obj.images && obj.images['selected~' + viewId]) return SELECTED;
             }
             var selectedStyle = obj.style && obj.style.stateStyles && obj.style.stateStyles.selected;
-            if(selectedStyle && any(selectedStyle)) return SELECTED;
+            if (selectedStyle && any(selectedStyle)) return SELECTED;
         }
 
         // Not using selected
         return mouseState;
     };
 
-    $ax.style.SetWidgetSelected = function(id, value, alwaysApply) {
-        if(_isWidgetDisabled(id)) return;
+    $ax.style.SetWidgetSelected = function (id, value, alwaysApply) {
+        if (_isWidgetDisabled(id)) return;
         //NOTE: not firing select events if state didn't change
         var raiseSelectedEvents = $ax.style.IsWidgetSelected(id) != value;
 
-        if(value) {
+        if (value) {
             var group = $('#' + id).attr('selectiongroup');
-            if(group) {
-                $("[selectiongroup='" + group + "']").each(function() {
+            if (group) {
+                $("[selectiongroup='" + group + "']").each(function () {
                     var otherId = this.id;
-                    if(otherId == id) return;
+                    if (otherId == id) return;
                     if ($ax.visibility.isScriptIdLimbo($ax.repeater.getScriptIdFromElementId(otherId))) return;
 
                     $ax.style.SetWidgetSelected(otherId, false);
@@ -203,68 +203,68 @@
             }
         }
         var obj = $obj(id);
-        if(obj) {
+        if (obj) {
             var actionId = id;
             if ($ax.public.fn.IsDynamicPanel(obj.type) || $ax.public.fn.IsLayer(obj.type)) {
                 var children = $axure('#' + id).getChildren()[0].children;
-                for(var i = 0; i < children.length; i++) {
+                for (var i = 0; i < children.length; i++) {
                     var childId = children[i];
                     // Special case for trees
                     var childObj = $jobj(childId);
-                    if(childObj.hasClass('treeroot')) {
+                    if (childObj.hasClass('treeroot')) {
                         var treenodes = childObj.find('.treenode');
-                        for(var j = 0; j < treenodes.length; j++) {
+                        for (var j = 0; j < treenodes.length; j++) {
                             $axure('#' + treenodes[j].id).selected(value);
                         }
                     } else $axure('#' + childId).selected(value);
                 }
             } else {
                 var widgetHasSelectedState = _widgetHasState(id, SELECTED);
-                while(obj.isContained && !widgetHasSelectedState) obj = obj.parent;
+                while (obj.isContained && !widgetHasSelectedState) obj = obj.parent;
                 var itemId = $ax.repeater.getItemIdFromElementId(id);
                 var path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));
                 path[path.length - 1] = obj.id;
-                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });
-                if(alwaysApply || widgetHasSelectedState) {
+                actionId = $ax.getElementIdFromPath(path, {itemNum: itemId});
+                if (alwaysApply || widgetHasSelectedState) {
                     var state = _generateSelectedState(actionId, value);
                     _applyImageAndTextJson(actionId, state);
                     _updateElementIdImageStyle(actionId, state);
                 }
                 //added actionId and this hacky logic because we set style state on child, but interaction on parent
                 //then the id saved in _selectedWidgets would be depended on widgetHasSelectedState... more see case 1818143
-                while(obj.isContained && !$ax.getObjectFromElementId(id).interactionMap) obj = obj.parent;
+                while (obj.isContained && !$ax.getObjectFromElementId(id).interactionMap) obj = obj.parent;
                 path = $ax.getPathFromScriptId($ax.repeater.getScriptIdFromElementId(id));
                 path[path.length - 1] = obj.id;
-                actionId = $ax.getElementIdFromPath(path, { itemNum: itemId });
+                actionId = $ax.getElementIdFromPath(path, {itemNum: itemId});
             }
         }
 
         //    ApplyImageAndTextJson(id, value ? 'selected' : 'normal');
         _selectedWidgets[id] = value;
-        if(raiseSelectedEvents) $ax.event.raiseSelectedEvents(actionId, value);
+        if (raiseSelectedEvents) $ax.event.raiseSelectedEvents(actionId, value);
     };
 
-    var _generateSelectedState = function(id, selected) {
+    var _generateSelectedState = function (id, selected) {
         var mouseState = $ax.event.mouseDownObjectId == id ? MOUSE_DOWN : $ax.event.mouseOverIds.indexOf(id) != -1 ? MOUSE_OVER : NORMAL;
         return _generateMouseState(id, mouseState, selected);
     };
 
-    $ax.style.IsWidgetSelected = function(id) {
-        return Boolean(_selectedWidgets[id]) || $('#'+id).hasClass('selected');
+    $ax.style.IsWidgetSelected = function (id) {
+        return Boolean(_selectedWidgets[id]) || $('#' + id).hasClass('selected');
     };
 
-    $ax.style.SetWidgetEnabled = function(id, value) {
+    $ax.style.SetWidgetEnabled = function (id, value) {
         _disabledWidgets[id] = !value;
         $('#' + id).find('a').css('cursor', value ? 'pointer' : 'default');
 
-        if(!_widgetHasState(id, DISABLED)) return;
-        if(!value) {
+        if (!_widgetHasState(id, DISABLED)) return;
+        if (!value) {
             _applyImageAndTextJson(id, DISABLED);
             _updateElementIdImageStyle(id, DISABLED);
         } else $ax.style.SetWidgetSelected(id, $ax.style.IsWidgetSelected(id), true);
     };
 
-    $ax.style.SetWidgetPlaceholder = function(id, value, text, password) {
+    $ax.style.SetWidgetPlaceholder = function (id, value, text, password) {
         var inputId = $ax.repeater.applySuffixToElementId(id, '_input');
 
         // Right now this is the only style on the widget. If other styles (ex. Rollover), are allowed
@@ -279,33 +279,35 @@
         if (height) obj.css('height', height);
         if (width) obj.css('width', width);
 
-        if(!value) {
+        if (!value) {
             try { //ie8 and below error
-                if(password) document.getElementById(inputId).type = 'password';
-            } catch(e) { } 
+                if (password) document.getElementById(inputId).type = 'password';
+            } catch (e) {
+            }
         } else {
             var element = $('#' + inputId)[0];
             var style = _computeAllOverrides(id, undefined, HINT, $ax.adaptive.currentViewId);
             var styleProperties = _getCssStyleProperties(style);
 
             //moved this out of GetCssStyleProperties for now because it was breaking un/rollovers with gradient fills
-            if(style.fill) styleProperties.allProps.backgroundColor = _getColorFromFill(style.fill);
+            if (style.fill) styleProperties.allProps.backgroundColor = _getColorFromFill(style.fill);
 
             _applyCssProps(element, styleProperties, true);
             try { //ie8 and below error
-                if(password) document.getElementById(inputId).type = 'text';
-            } catch(e) { }
+                if (password) document.getElementById(inputId).type = 'text';
+            } catch (e) {
+            }
         }
         obj.val(text);
     };
 
-    var _isWidgetDisabled = $ax.style.IsWidgetDisabled = function(id) {
+    var _isWidgetDisabled = $ax.style.IsWidgetDisabled = function (id) {
         return Boolean(_disabledWidgets[id]);
     };
 
     var _elementIdsToImageOverrides = {};
     $ax.style.mapElementIdToImageOverrides = function (elementId, override) {
-        for(var key in override) _addImageOverride(elementId, key, override[key]);
+        for (var key in override) _addImageOverride(elementId, key, override[key]);
     };
 
     var _addImageOverride = function (elementId, state, val) {
@@ -313,16 +315,16 @@
         _elementIdsToImageOverrides[elementId][state] = val;
     }
 
-    $ax.style.deleteElementIdToImageOverride = function(elementId) {
+    $ax.style.deleteElementIdToImageOverride = function (elementId) {
         delete _elementIdsToImageOverrides[elementId];
     };
 
-    $ax.style.getElementImageOverride = function(elementId, state) {
+    $ax.style.getElementImageOverride = function (elementId, state) {
         var url = _elementIdsToImageOverrides[elementId] && _elementIdsToImageOverrides[elementId][state];
         return url;
     };
 
-    $ax.style.elementHasAnyImageOverride = function(elementId) {
+    $ax.style.elementHasAnyImageOverride = function (elementId) {
         return Boolean(_elementIdsToImageOverrides[elementId]);
     };
 
@@ -333,27 +335,27 @@
     var DISABLED = 'disabled';
     var HINT = 'hint';
 
-    var _generateState = _style.generateState = function(id) {
+    var _generateState = _style.generateState = function (id) {
         return $ax.placeholderManager.isActive(id) ? HINT : _style.IsWidgetDisabled(id) ? DISABLED : _generateSelectedState(id, _style.IsWidgetSelected(id));
     };
 
-    var _progressState = _style.progessState = function(state) {
-        if(state == NORMAL) return false;
-        if(state == MOUSE_DOWN) return MOUSE_OVER;
+    var _progressState = _style.progessState = function (state) {
+        if (state == NORMAL) return false;
+        if (state == MOUSE_DOWN) return MOUSE_OVER;
         return NORMAL;
     };
 
-    var _unprogressState = function(state, goal) {
+    var _unprogressState = function (state, goal) {
         state = state || NORMAL;
-        if(state == goal) return undefined;
-        if(state == NORMAL && goal == MOUSE_DOWN) return MOUSE_OVER;
+        if (state == goal) return undefined;
+        if (state == NORMAL && goal == MOUSE_DOWN) return MOUSE_OVER;
         return goal;
     };
 
-    var _updateElementIdImageStyle = _style.updateElementIdImageStyle = function(elementId, state) {
-        if(!_style.elementHasAnyImageOverride(elementId)) return;
+    var _updateElementIdImageStyle = _style.updateElementIdImageStyle = function (elementId, state) {
+        if (!_style.elementHasAnyImageOverride(elementId)) return;
 
-        if(!state) state = _generateState(elementId);
+        if (!state) state = _generateState(elementId);
 
         var style = _computeFullStyle(elementId, state, $ax.adaptive.currentViewId);
 
@@ -362,7 +364,7 @@
         style.size.height = query.height();
         var borderId = $ax.repeater.applySuffixToElementId(elementId, '_border');
         var borderQuery = $jobj(borderId);
-        if(!borderQuery.length) {
+        if (!borderQuery.length) {
             borderQuery = $('<div></div>');
             borderQuery.attr('id', borderId);
             query.after(borderQuery);
@@ -374,7 +376,7 @@
 
         var borderWidth = Number(style.borderWidth);
         var hasBorderWidth = borderWidth > 0;
-        if(hasBorderWidth) {
+        if (hasBorderWidth) {
             borderQuery.css('border-style', 'solid');
             borderQuery.css('border-width', borderWidth + 'px');
             borderQuery.css('width', style.size.width - borderWidth * 2);
@@ -382,10 +384,10 @@
         }
 
         var linePattern = style.linePattern;
-        if(hasBorderWidth && linePattern) borderQuery.css('border-style', linePattern);
+        if (hasBorderWidth && linePattern) borderQuery.css('border-style', linePattern);
 
         var borderFill = style.borderFill;
-        if(hasBorderWidth && borderFill) {
+        if (hasBorderWidth && borderFill) {
             var color = borderFill.fillType == 'solid' ? borderFill.color :
                 borderFill.fillType == 'linearGradient' ? borderFill.colors[0].color : 0;
 
@@ -402,13 +404,13 @@
         }
 
         var cornerRadiusTopLeft = style.cornerRadius;
-        if(cornerRadiusTopLeft) {
+        if (cornerRadiusTopLeft) {
             query.css('border-radius', cornerRadiusTopLeft + 'px');
             borderQuery.css('border-radius', cornerRadiusTopLeft + 'px');
         }
 
         var outerShadow = style.outerShadow;
-        if(outerShadow && outerShadow.on) {
+        if (outerShadow && outerShadow.on) {
             var arg = '';
             arg += outerShadow.offsetX + 'px' + ' ' + outerShadow.offsetY + 'px' + ' ';
             var rgba = outerShadow.color;
@@ -420,10 +422,10 @@
             query.css('top', '0px');
         }
 
-        query.css({ width: style.size.width, height: style.size.height });
+        query.css({width: style.size.width, height: style.size.height});
     };
 
-    var _rgbaToFunc = function(red, green, blue, alpha) {
+    var _rgbaToFunc = function (red, green, blue, alpha) {
         return 'rgba(' + red + ',' + green + ',' + blue + ',' + alpha + ')';
     };
 
@@ -433,46 +435,46 @@
     //        function (item) { return item.indexOf(id) < 0; })[0]; // that are not similar to the parent
     //}
 
-    var _getButtonShapeId = function(id) {
+    var _getButtonShapeId = function (id) {
         var obj = $obj(id);
-        return $ax.public.fn.IsTreeNodeObject(obj.type) ? $ax.getElementIdFromPath([obj.buttonShapeId], { relativeTo: id }) : id;
+        return $ax.public.fn.IsTreeNodeObject(obj.type) ? $ax.getElementIdFromPath([obj.buttonShapeId], {relativeTo: id}) : id;
     };
 
-    var _getButtonShape = function(id) {
+    var _getButtonShape = function (id) {
         var obj = $obj(id);
 
         // some treeNodeObjects don't have button shapes
-        return $jobj($ax.public.fn.IsTreeNodeObject(obj.type) && obj.buttonShapeId ? $ax.getElementIdFromPath([obj.buttonShapeId], { relativeTo: id }) : id);
+        return $jobj($ax.public.fn.IsTreeNodeObject(obj.type) && obj.buttonShapeId ? $ax.getElementIdFromPath([obj.buttonShapeId], {relativeTo: id}) : id);
     };
 
-    var _getTextIdFromShape = $ax.style.GetTextIdFromShape = function(id) {
+    var _getTextIdFromShape = $ax.style.GetTextIdFromShape = function (id) {
         return _getButtonShape(id).find('.text').attr('id');
     };
 
-    $ax.style.GetTextIdFromLink = function(id) {
+    $ax.style.GetTextIdFromLink = function (id) {
         return $jobj(id).parentsUntil('.text').parent().attr('id');
     };
 
-    var _getShapeIdFromText = $ax.style.GetShapeIdFromText = function(id) {
-        if(!id) return undefined; // this is to prevent an infinite loop.
+    var _getShapeIdFromText = $ax.style.GetShapeIdFromText = function (id) {
+        if (!id) return undefined; // this is to prevent an infinite loop.
         //return $jobj(id).parent().attr('id');
         var current = $jobj(id).parent();
-        while(!current.is("body")) {
+        while (!current.is("body")) {
             var currentId = current.attr('id');
-            if(currentId && currentId != 'base') return $ax.visibility.getWidgetFromContainer(currentId);
+            if (currentId && currentId != 'base') return $ax.visibility.getWidgetFromContainer(currentId);
             current = current.parent();
         }
 
         return undefined;
     };
 
-    $ax.style.GetImageIdFromShape = function(id) {
+    $ax.style.GetImageIdFromShape = function (id) {
         var image = _getButtonShape(id).find('img[id$=img]');
-        if(!image.length) image = $jobj(id).find('img[id$=image_sketch]');
+        if (!image.length) image = $jobj(id).find('img[id$=image_sketch]');
         return image.attr('id');
     };
 
-    var _applyImageAndTextJson = function(id, event) {
+    var _applyImageAndTextJson = function (id, event) {
         var textId = $ax.style.GetTextIdFromShape(id);
         _resetTextJson(id, textId);
 
@@ -480,13 +482,13 @@
         //if(event != '') {
         var imgQuery = $jobj($ax.style.GetImageIdFromShape(id));
         var e = imgQuery.data('events');
-        if(e && e[event]) imgQuery.trigger(event);
+        if (e && e[event]) imgQuery.trigger(event);
 
         var imageUrl = $ax.adaptive.getImageForStateAndView(id, event);
-        if(imageUrl) _applyImage(id, imageUrl, event);
+        if (imageUrl) _applyImage(id, imageUrl, event);
 
         var style = _computeAllOverrides(id, undefined, event, $ax.adaptive.currentViewId);
-        if(!$.isEmptyObject(style)) {
+        if (!$.isEmptyObject(style)) {
             _applyTextStyle(textId, style);
         }
 
@@ -494,7 +496,7 @@
         _updateStateClasses($ax.repeater.applySuffixToElementId(id, '_div'), event);
     };
 
-    var _updateStateClasses = function(id, event) {
+    var _updateStateClasses = function (id, event) {
         var jobj = $jobj(id);
 
         //if(jobj[0] && jobj[0].hasAttribute('widgetwidth')) {
@@ -505,9 +507,9 @@
         //        _updateStateClasses(childId, event) ;
         //    }
         //} else {
-            for (var i = 0; i < ALL_STATES.length; i++) jobj.removeClass(ALL_STATES[i]);
-            if (event == 'mouseDown') jobj.addClass('mouseOver');
-            jobj.addClass(event);
+        for (var i = 0; i < ALL_STATES.length; i++) jobj.removeClass(ALL_STATES[i]);
+        if (event == 'mouseDown') jobj.addClass('mouseOver');
+        jobj.addClass(event);
         //}
     }
 
@@ -548,26 +550,26 @@
         'horizontalAlignment': true
     };
 
-    var _computeAllOverrides = $ax.style.computeAllOverrides = function(id, parentId, state, currentViewId) {
+    var _computeAllOverrides = $ax.style.computeAllOverrides = function (id, parentId, state, currentViewId) {
         var computedStyle = {};
-        if(parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);
+        if (parentId) computedStyle = _computeAllOverrides(parentId, null, state, currentViewId);
 
         var diagramObject = $ax.getObjectFromElementId(id);
         var viewIdChain = $ax.adaptive.getAdaptiveIdChain(currentViewId);
 
         var excludeFont = _shapesWithSetRichText[id];
-        for(var i = 0; i < viewIdChain.length; i++) {
+        for (var i = 0; i < viewIdChain.length; i++) {
             var viewId = viewIdChain[i];
             var style = diagramObject.adaptiveStyles[viewId];
-            if(style) {
+            if (style) {
                 // we want to exclude the normal font style for shapes where the rich text has been set with an interaction
                 // so we copy the style so we don't modify the original, then delete all the font props.
-                if(excludeFont) {
+                if (excludeFont) {
                     style = $ax.deepCopy(style);
-                    for(var prop in FONT_PROPS) delete style[prop];
+                    for (var prop in FONT_PROPS) delete style[prop];
                 }
 
-                if(style) {
+                if (style) {
                     var customStyle = style.baseStyle && $ax.document.stylesheet.stylesById[style.baseStyle];
                     //make sure not to extend the customStyle this can mutate it for future use
                     $.extend(computedStyle, customStyle);
@@ -577,7 +579,7 @@
         }
 
         var currState = NORMAL;
-        while(currState) {
+        while (currState) {
             $.extend(computedStyle, _computeStateStyleForViewChain(diagramObject, currState, viewIdChain, true));
             currState = _unprogressState(currState, state);
         }
@@ -585,17 +587,17 @@
         return _removeUnsupportedProperties(computedStyle, diagramObject.type);
     };
 
-    var _computeStateStyleForViewChain = function(diagramObject, state, viewIdChain, excludeNormal) {
+    var _computeStateStyleForViewChain = function (diagramObject, state, viewIdChain, excludeNormal) {
         var styleObject = diagramObject;
-        while(styleObject.isContained) styleObject = styleObject.parent;
+        while (styleObject.isContained) styleObject = styleObject.parent;
 
         var adaptiveStyles = styleObject.adaptiveStyles;
 
-        for(var i = viewIdChain.length - 1; i >= 0; i--) {
+        for (var i = viewIdChain.length - 1; i >= 0; i--) {
             var viewId = viewIdChain[i];
             var viewStyle = adaptiveStyles[viewId];
             var stateStyle = viewStyle && _getFullStateStyle(viewStyle, state, excludeNormal);
-            if(stateStyle) return $.extend({}, stateStyle);
+            if (stateStyle) return $.extend({}, stateStyle);
         }
 
         // we dont want to actually include the object style because those are not overrides, hence the true for "excludeNormal" and not passing the val through
@@ -604,7 +606,7 @@
     };
 
     // returns the full effective style for an object in a state state and view
-    var _computeFullStyle = function(id, state, currentViewId) {
+    var _computeFullStyle = function (id, state, currentViewId) {
         var obj = $obj(id);
         var overrides = _computeAllOverrides(id, undefined, state, currentViewId);
         // todo: account for image box
@@ -614,7 +616,7 @@
         return _removeUnsupportedProperties(returnVal, obj.type);
     };
 
-    var _removeUnsupportedProperties = function(style, objectType) {
+    var _removeUnsupportedProperties = function (style, objectType) {
         // for now all we need to do is remove padding from checkboxes and radio buttons
         if ($ax.public.fn.IsRadioButton(objectType) || $ax.public.fn.IsCheckBox(objectType)) {
             style.paddingTop = 0;
@@ -625,10 +627,10 @@
         return style;
     };
 
-    var _getFullStateStyle = function(style, state, excludeNormal) {
+    var _getFullStateStyle = function (style, state, excludeNormal) {
         //'normal' is needed because now DiagramObjects get their image from the Style and unapplying a rollover needs the image
         var stateStyle = state == 'normal' && !excludeNormal ? style : style && style.stateStyles && style.stateStyles[state];
-        if(stateStyle) {
+        if (stateStyle) {
             var customStyle = stateStyle.baseStyle && $ax.document.stylesheet.stylesById[stateStyle.baseStyle];
             //make sure not to extend the customStyle this can mutate it for future use
             return $.extend({}, customStyle, stateStyle);
@@ -637,37 +639,37 @@
     };
 
     // commented this out for now... we actually will probably need it for ie
-    var _applyOpacityFromStyle = $ax.style.applyOpacityFromStyle = function(id, style) {
+    var _applyOpacityFromStyle = $ax.style.applyOpacityFromStyle = function (id, style) {
         return;
         var opacity = style.opacity || '';
         $jobj(id).children().css('opacity', opacity);
     };
 
-    var _initialize = function() {
+    var _initialize = function () {
         //being handled at on window.load
         //$ax.style.initializeObjectTextAlignment($ax('*'));
     };
     $ax.style.initialize = _initialize;
 
-    var _initTextAlignment = function(elementId) {
+    var _initTextAlignment = function (elementId) {
         var textId = _getTextIdFromShape(elementId);
         _storeIdToAlignProps(textId);
         // now handle vertical alignment
-        if(_getObjVisible(textId)) {
+        if (_getObjVisible(textId)) {
             _setTextAlignment(textId, _idToAlignProps[textId], false);
         }
     };
 
-    $ax.style.initializeObjectTextAlignment = function(query) {
-        query.filter(function(diagramObject) {
+    $ax.style.initializeObjectTextAlignment = function (query) {
+        query.filter(function (diagramObject) {
             return $ax.public.fn.IsVector(diagramObject.type) || $ax.public.fn.IsImageBox(diagramObject.type);
-        }).each(function(diagramObject, elementId) {
-            if($jobj(elementId).length == 0) return;
+        }).each(function (diagramObject, elementId) {
+            if ($jobj(elementId).length == 0) return;
             _initTextAlignment(elementId);
         });
     };
 
-    var _storeIdToAlignProps = function(textId) {
+    var _storeIdToAlignProps = function (textId) {
         var shapeId = _getShapeIdFromText(textId);
         var shapeObj = $obj(shapeId);
         var state = _generateState(shapeId);
@@ -679,44 +681,50 @@
         var paddingTop = style.paddingTop || 0;
         var paddingRight = style.paddingRight || 0;
         var paddingBottom = style.paddingBottom || 0;
-        _idToAlignProps[textId] = { vAlign: vAlign, paddingLeft: paddingLeft, paddingTop: paddingTop, paddingRight: paddingRight, paddingBottom: paddingBottom };
+        _idToAlignProps[textId] = {
+            vAlign: vAlign,
+            paddingLeft: paddingLeft,
+            paddingTop: paddingTop,
+            paddingRight: paddingRight,
+            paddingBottom: paddingBottom
+        };
     };
 
     var ALL_STATES = ['mouseOver', 'mouseDown', 'selected', 'disabled'];
     var _applyImage = $ax.style.applyImage = function (id, imgUrl, state) {
-            var object = $obj(id);
-            if (object.generateCompound) {
-                for (var i = 0; i < object.compoundChildren.length; i++) {
-                    var componentId = object.compoundChildren[i];
-                    var childId = $ax.public.fn.getComponentId(id, componentId);
-                    var childImgQuery = $jobj(childId + '_img');
-                    var childQuery = $jobj(childId);
-                    childImgQuery.attr('src', imgUrl[componentId]);
-                    for (var j = 0; j < ALL_STATES.length; j++) {
-                        childImgQuery.removeClass(ALL_STATES[j]);
-                        childQuery.removeClass(ALL_STATES[j]);
-                    }
-                    if (state != 'normal') {
-                        childImgQuery.addClass(state);
-                        childQuery.addClass(state);
-                    }
-                }
-            } else {
-                var imgQuery = $jobj($ax.style.GetImageIdFromShape(id));
-                var idQuery = $jobj(id);
-                //it is hard to tell if setting the image or the class first causing less flashing when adding shadows.
-                imgQuery.attr('src', imgUrl);
-                for (var i = 0; i < ALL_STATES.length; i++) {
-                    idQuery.removeClass(ALL_STATES[i]);
-                    imgQuery.removeClass(ALL_STATES[i]);
+        var object = $obj(id);
+        if (object.generateCompound) {
+            for (var i = 0; i < object.compoundChildren.length; i++) {
+                var componentId = object.compoundChildren[i];
+                var childId = $ax.public.fn.getComponentId(id, componentId);
+                var childImgQuery = $jobj(childId + '_img');
+                var childQuery = $jobj(childId);
+                childImgQuery.attr('src', imgUrl[componentId]);
+                for (var j = 0; j < ALL_STATES.length; j++) {
+                    childImgQuery.removeClass(ALL_STATES[j]);
+                    childQuery.removeClass(ALL_STATES[j]);
                 }
                 if (state != 'normal') {
-                    idQuery.addClass(state);
-                    imgQuery.addClass(state);
+                    childImgQuery.addClass(state);
+                    childQuery.addClass(state);
                 }
-                if (imgQuery.parents('a.basiclink').length > 0) imgQuery.css('border', 'none');
-                if (imgUrl.indexOf(".png") > -1) $ax.utils.fixPng(imgQuery[0]);
             }
+        } else {
+            var imgQuery = $jobj($ax.style.GetImageIdFromShape(id));
+            var idQuery = $jobj(id);
+            //it is hard to tell if setting the image or the class first causing less flashing when adding shadows.
+            imgQuery.attr('src', imgUrl);
+            for (var i = 0; i < ALL_STATES.length; i++) {
+                idQuery.removeClass(ALL_STATES[i]);
+                imgQuery.removeClass(ALL_STATES[i]);
+            }
+            if (state != 'normal') {
+                idQuery.addClass(state);
+                imgQuery.addClass(state);
+            }
+            if (imgQuery.parents('a.basiclink').length > 0) imgQuery.css('border', 'none');
+            if (imgUrl.indexOf(".png") > -1) $ax.utils.fixPng(imgQuery[0]);
+        }
 
     };
 
@@ -726,16 +734,16 @@
         return idParts.join('-');
     }
 
-    var _resetTextJson = function(id, textid) {
+    var _resetTextJson = function (id, textid) {
         // reset the opacity
         $jobj(id).children().css('opacity', '');
 
         var cacheObject = _originalTextCache[textid];
-        if(cacheObject) {
-            _transformTextWithVerticalAlignment(textid, function() {
+        if (cacheObject) {
+            _transformTextWithVerticalAlignment(textid, function () {
                 var styleCache = cacheObject.styleCache;
                 var textQuery = $('#' + textid);
-                textQuery.find('*').each(function(index, element) {
+                textQuery.find('*').each(function (index, element) {
                     element.style.cssText = styleCache[element.id];
                 });
             });
@@ -744,33 +752,33 @@
 
     // Preserves the alingment for the element textid after executing transformFn
 
-    var _getRtfElementHeight = function(rtfElement) {
-        if(rtfElement.innerHTML == '') rtfElement.innerHTML = '&nbsp;';
+    var _getRtfElementHeight = function (rtfElement) {
+        if (rtfElement.innerHTML == '') rtfElement.innerHTML = '&nbsp;';
 
         // To handle render text as image
         var images = $(rtfElement).children('img');
-        if(images.length) return images.height();
+        if (images.length) return images.height();
         return rtfElement.offsetHeight;
     };
 
     // why microsoft decided to default to round to even is beyond me...
-    var _roundToEven = function(number) {
+    var _roundToEven = function (number) {
         var numString = number.toString();
         var parts = numString.split('.');
-        if(parts.length == 1) return number;
-        if(parts[1].length == 1 && parts[1] == '5') {
+        if (parts.length == 1) return number;
+        if (parts[1].length == 1 && parts[1] == '5') {
             var wholePart = Number(parts[0]);
             return wholePart % 2 == 0 ? wholePart : wholePart + 1;
         } else return Math.round(number);
     };
 
-    var _transformTextWithVerticalAlignment = $ax.style.transformTextWithVerticalAlignment = function(textId, transformFn) {
-        if(!_originalTextCache[textId]) {
+    var _transformTextWithVerticalAlignment = $ax.style.transformTextWithVerticalAlignment = function (textId, transformFn) {
+        if (!_originalTextCache[textId]) {
             $ax.style.CacheOriginalText(textId);
         }
 
         var rtfElement = window.document.getElementById(textId);
-        if(!rtfElement) return;
+        if (!rtfElement) return;
 
         transformFn();
 
@@ -801,21 +809,21 @@
         }
 
         var alignProps = _idToAlignProps[textId];
-        if(!alignProps || !_getObjVisible(textId)) return;
+        if (!alignProps || !_getObjVisible(textId)) return;
 
         _setTextAlignment(textId, alignProps);
     };
 
-    var _getObjVisible = _style.getObjVisible = function(id) {
+    var _getObjVisible = _style.getObjVisible = function (id) {
         var element = document.getElementById(id);
         return element && (element.offsetWidth || element.offsetHeight);
     };
 
     var _setTextAlignment = function (textId, alignProps, updateProps) {
-        if(updateProps) {
+        if (updateProps) {
             _storeIdToAlignProps(textId);
         }
-        if(!alignProps) return;
+        if (!alignProps) return;
 
         var vAlign = alignProps.vAlign;
         var paddingTop = Number(alignProps.paddingTop);
@@ -833,7 +841,7 @@
         var textObjParent = textObj.offsetParent();
         var parentId = textObjParent.attr('id');
         var isConnector = false;
-        if(parentId) {
+        if (parentId) {
             parentId = $ax.visibility.getWidgetFromContainer(textObjParent.attr('id'));
             textObjParent = $jobj(parentId);
             var parentObj = $obj(parentId);
@@ -887,13 +895,13 @@
         if ((vertChange || horizChange)) _updateTransformOrigin(textId);
     };
 
-    var _updateTransformOrigin = function(textId) {
+    var _updateTransformOrigin = function (textId) {
         var textObj = $jobj(textId);
         var transformOrigin = textObj.css('-webkit-transform-origin') ||
-                textObj.css('-moz-transform-origin') ||
-                    textObj.css('-ms-transform-origin') ||
-                        textObj.css('transform-origin');
-        if(transformOrigin) {
+            textObj.css('-moz-transform-origin') ||
+            textObj.css('-ms-transform-origin') ||
+            textObj.css('transform-origin');
+        if (transformOrigin) {
             var textObjParent = $ax('#' + textObj.parent().attr('id'));
             var newX = (textObjParent.width() / 2 - textObj.css('left').replace('px', ''));
             var newY = (textObjParent.height() / 2 - textObj.css('top').replace('px', ''));
@@ -905,16 +913,16 @@
         }
     };
 
-    $ax.style.reselectElements = function() {
-        for(var id in _selectedWidgets) {
+    $ax.style.reselectElements = function () {
+        for (var id in _selectedWidgets) {
             // Only looking for the selected widgets that don't have their class set
-            if(!_selectedWidgets[id] || $jobj(id).hasClass('selected')) continue;
+            if (!_selectedWidgets[id] || $jobj(id).hasClass('selected')) continue;
 
             $jobj(id).addClass('selected');
             _applyImageAndTextJson(id, $ax.style.generateState(id));
         }
 
-        for(id in _disabledWidgets) {
+        for (id in _disabledWidgets) {
             // Only looking for the disabled widgets that don't have their class yet
             if (!_disabledWidgets[id] || $jobj(id).hasClass('disabled')) continue;
 
@@ -923,18 +931,18 @@
         }
     }
 
-    $ax.style.clearAdaptiveStyles = function() {
-        for(var shapeId in _adaptiveStyledWidgets) {
+    $ax.style.clearAdaptiveStyles = function () {
+        for (var shapeId in _adaptiveStyledWidgets) {
             var elementIds = [shapeId];
             var repeaterId = $ax.getParentRepeaterFromScriptId(shapeId);
-            if(repeaterId) {
+            if (repeaterId) {
                 var itemIds = $ax.getItemIdsForRepeater(repeaterId);
                 elementIds = [];
-                for(var i = 0; i < itemIds; i++) elementIds.push($ax.repeater.createElementId(shapeId, itemIds[i]));
+                for (var i = 0; i < itemIds; i++) elementIds.push($ax.repeater.createElementId(shapeId, itemIds[i]));
             }
-            for(var index = 0; index < elementIds.length; index++) {
+            for (var index = 0; index < elementIds.length; index++) {
                 var elementId = _getButtonShapeId(elementIds[index]);
-                if(elementId) {
+                if (elementId) {
                     var textId = $ax.style.GetTextIdFromShape(elementId);
                     _resetTextJson(elementId, textId);
                     _applyImageAndTextJson(elementId, $ax.style.generateState(elementId));
@@ -945,11 +953,11 @@
         _adaptiveStyledWidgets = {};
     };
 
-    $ax.style.setAdaptiveStyle = function(shapeId, style) {
+    $ax.style.setAdaptiveStyle = function (shapeId, style) {
         _adaptiveStyledWidgets[$ax.repeater.getScriptIdFromElementId(shapeId)] = style;
 
         var textId = $ax.style.GetTextIdFromShape(shapeId);
-        if(textId) _applyTextStyle(textId, style);
+        if (textId) _applyTextStyle(textId, style);
 
         $ax.placeholderManager.refreshPlaceholder(shapeId);
 
@@ -969,60 +977,60 @@
     //                         { 'fontWeight' : 'bold',
     //                           'fontStyle' : 'italic' }
     //-------------------------------------------------------------------------
-    var _applyTextStyle = function(id, style) {
-        _transformTextWithVerticalAlignment(id, function() {
+    var _applyTextStyle = function (id, style) {
+        _transformTextWithVerticalAlignment(id, function () {
             var styleProperties = _getCssStyleProperties(style);
-            $('#' + id).find('*').each(function(index, element) {
+            $('#' + id).find('*').each(function (index, element) {
                 _applyCssProps(element, styleProperties);
             });
         });
     };
 
-    var _applyCssProps = function(element, styleProperties, applyAllStyle) {
-        if(applyAllStyle) {
+    var _applyCssProps = function (element, styleProperties, applyAllStyle) {
+        if (applyAllStyle) {
             var allProps = styleProperties.allProps;
-            for(var prop in allProps) element.style[prop] = allProps[prop];
+            for (var prop in allProps) element.style[prop] = allProps[prop];
         } else {
             var nodeName = element.nodeName.toLowerCase();
-            if(nodeName == 'p') {
+            if (nodeName == 'p') {
                 var parProps = styleProperties.parProps;
-                for(prop in parProps) element.style[prop] = parProps[prop];
-            } else if(nodeName != 'a') {
+                for (prop in parProps) element.style[prop] = parProps[prop];
+            } else if (nodeName != 'a') {
                 var runProps = styleProperties.runProps;
-                for(prop in runProps) element.style[prop] = runProps[prop];
+                for (prop in runProps) element.style[prop] = runProps[prop];
             }
         }
     };
 
-    var _getCssShadow = function(shadow) {
+    var _getCssShadow = function (shadow) {
         return !shadow.on ? "none"
             : shadow.offsetX + "px " + shadow.offsetY + "px " + shadow.blurRadius + "px " + _getCssColor(shadow.color);
     };
 
-    var _getCssStyleProperties = function(style) {
+    var _getCssStyleProperties = function (style) {
         var toApply = {};
         toApply.runProps = {};
         toApply.parProps = {};
         toApply.allProps = {};
 
-        if(style.fontName) toApply.allProps.fontFamily = toApply.runProps.fontFamily = style.fontName;
+        if (style.fontName) toApply.allProps.fontFamily = toApply.runProps.fontFamily = style.fontName;
         // we need to set font size on both runs and pars because otherwise it well mess up the measure and thereby vertical alignment
-        if(style.fontSize) toApply.allProps.fontSize = toApply.runProps.fontSize = toApply.parProps.fontSize = style.fontSize;
-        if(style.fontWeight !== undefined) toApply.allProps.fontWeight = toApply.runProps.fontWeight = style.fontWeight;
-        if(style.fontStyle !== undefined) toApply.allProps.fontStyle = toApply.runProps.fontStyle = style.fontStyle;
-        if(style.underline !== undefined) toApply.allProps.textDecoration = toApply.runProps.textDecoration = style.underline ? 'underline' : 'none';
-        if(style.foreGroundFill) {
+        if (style.fontSize) toApply.allProps.fontSize = toApply.runProps.fontSize = toApply.parProps.fontSize = style.fontSize;
+        if (style.fontWeight !== undefined) toApply.allProps.fontWeight = toApply.runProps.fontWeight = style.fontWeight;
+        if (style.fontStyle !== undefined) toApply.allProps.fontStyle = toApply.runProps.fontStyle = style.fontStyle;
+        if (style.underline !== undefined) toApply.allProps.textDecoration = toApply.runProps.textDecoration = style.underline ? 'underline' : 'none';
+        if (style.foreGroundFill) {
             toApply.allProps.color = toApply.runProps.color = _getColorFromFill(style.foreGroundFill);
             //if(style.foreGroundFill.opacity) toApply.allProps.opacity = toApply.runProps.opacity = style.foreGroundFill.opacity;
         }
-        if(style.horizontalAlignment) toApply.allProps.textAlign = toApply.parProps.textAlign = toApply.runProps.textAlign = style.horizontalAlignment;
-        if(style.lineSpacing) toApply.allProps.lineHeight = toApply.parProps.lineHeight = style.lineSpacing;
-        if(style.textShadow) toApply.allProps.textShadow = toApply.parProps.textShadow = _getCssShadow(style.textShadow);
+        if (style.horizontalAlignment) toApply.allProps.textAlign = toApply.parProps.textAlign = toApply.runProps.textAlign = style.horizontalAlignment;
+        if (style.lineSpacing) toApply.allProps.lineHeight = toApply.parProps.lineHeight = style.lineSpacing;
+        if (style.textShadow) toApply.allProps.textShadow = toApply.parProps.textShadow = _getCssShadow(style.textShadow);
 
         return toApply;
     };
 
-    var _getColorFromFill = function(fill) {
+    var _getColorFromFill = function (fill) {
         //var fillString = '00000' + fill.color.toString(16);
         //return '#' + fillString.substring(fillString.length - 6);
         var val = fill.color;
@@ -1036,7 +1044,7 @@
         return _getCssColor(color);
     };
 
-    var _getCssColor = function(rgbaObj) {
+    var _getCssColor = function (rgbaObj) {
         return "rgba(" + rgbaObj.r + ", " + rgbaObj.g + ", " + rgbaObj.b + ", " + rgbaObj.a + ")";
     };
 
@@ -1098,47 +1106,46 @@
     //---------------------------------------------------------------------------
     var CACHE_COUNTER = 0;
 
-    $ax.style.CacheOriginalText = function(textId, hasRichTextBeenSet) {
+    $ax.style.CacheOriginalText = function (textId, hasRichTextBeenSet) {
         var rtfQuery = $('#' + textId);
-        if(rtfQuery.length > 0) {
+        if (rtfQuery.length > 0) {
 
             var styleCache = {};
-            rtfQuery.find('*').each(function(index, element) {
+            rtfQuery.find('*').each(function (index, element) {
                 var elementId = element.id;
-                if(!elementId) element.id = elementId = 'cache' + CACHE_COUNTER++;
+                if (!elementId) element.id = elementId = 'cache' + CACHE_COUNTER++;
                 styleCache[elementId] = element.style.cssText;
             });
 
             _originalTextCache[textId] = {
                 styleCache: styleCache
             };
-            if(hasRichTextBeenSet) {
+            if (hasRichTextBeenSet) {
                 var shapeId = _getShapeIdFromText(textId);
                 _shapesWithSetRichText[shapeId] = true;
             }
         }
     };
 
-    $ax.style.ClearCacheForRepeater = function(repeaterId) {
-        for(var elementId in _originalTextCache) {
+    $ax.style.ClearCacheForRepeater = function (repeaterId) {
+        for (var elementId in _originalTextCache) {
             var scriptId = $ax.repeater.getScriptIdFromElementId(elementId);
-            if($ax.getParentRepeaterFromScriptId(scriptId) == repeaterId) delete _originalTextCache[elementId];
+            if ($ax.getParentRepeaterFromScriptId(scriptId) == repeaterId) delete _originalTextCache[elementId];
         }
     };
 
 
-
-    $ax.style.prefetch = function() {
+    $ax.style.prefetch = function () {
         var scriptIds = $ax.getAllScriptIds();
         var image = new Image();
-        for(var i = 0; i < scriptIds.length; i++) {
+        for (var i = 0; i < scriptIds.length; i++) {
             var obj = $obj(scriptIds[i]);
             if (!$ax.public.fn.IsImageBox(obj.type)) continue;
             var images = obj.images;
             for (var key in images) image.src = images[key];
 
             var imageOverrides = obj.imageOverrides;
-            for(var elementId in imageOverrides) {
+            for (var elementId in imageOverrides) {
                 var override = imageOverrides[elementId];
                 for (var state in override) {
                     _addImageOverride(elementId, state, override[state]);

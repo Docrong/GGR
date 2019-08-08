@@ -1,1207 +1,1208 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 
-<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
 <taglib>
 
-	<tlib-version>1.0</tlib-version>
-	<jsp-version>1.2</jsp-version>
-	<short-name>eoms</short-name>
-
-	<description>
-		<![CDATA[Custom tag library for this application]]>
-	</description>
-
-	<listener>
-		<listener-class>
-			com.boco.eoms.base.webapp.listener.StartupListener
-		</listener-class>
-	</listener>
-	<listener>
-		<listener-class>
-			com.boco.eoms.base.webapp.listener.UserCounterListener
-		</listener-class>
-	</listener>
-
-	<tag>
-
-		<name>constants</name>
-		<tag-class>
-			com.boco.eoms.base.webapp.taglib.ConstantsTag
-		</tag-class>
-		<tei-class>
-			com.boco.eoms.base.webapp.taglib.ConstantsTei
-		</tei-class>
-
-		<attribute>
-			<name>className</name>
-
-		</attribute>
-		<attribute>
-			<name>scope</name>
-
-		</attribute>
-		<attribute>
-			<name>var</name>
-
-		</attribute>
-
-	</tag>
-	<tag>
-
-		<name>label</name>
-		<tag-class>com.boco.eoms.base.webapp.taglib.LabelTag</tag-class>
-
-		<attribute>
-			<name>key</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>bundle</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>colon</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-
-		</attribute>
-		<attribute>
-			<name>styleClass</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-
-		</attribute>
-		<attribute>
-			<name>errorClass</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-
-		</attribute>
-
-	</tag>
-	<tag>
-
-		<name>country</name>
-		<tag-class>
-			com.boco.eoms.base.webapp.taglib.CountryTag
-		</tag-class>
-
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-
-		</attribute>
-		<attribute>
-			<name>prompt</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-
-		</attribute>
-		<attribute>
-			<name>default</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-
-		</attribute>
-		<attribute>
-			<name>toScope</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-
-		</attribute>
-
-	</tag>
-
-	<tag>
-		<name>datePicker</name>
-		<tag-class>
-			com.boco.eoms.commons.ui.taglib.datePickerTag
-		</tag-class>
-
-		<attribute>
-			<name>bindingto</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>format</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>showtime</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-
-	<tag>
-		<name>attachment</name>
-		<tag-class>
-			com.boco.eoms.base.webapp.taglib.AttachmentTag
-		</tag-class>
-
-		<attribute>
-			<name>appCode</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>viewFlag</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>idField</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>idList</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>property</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>scope</name>
-			<required>false</required>
-		</attribute>
-		
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>startsWith</name>
-			<required>false</required>
-		</attribute>
-	</tag>
-	
-	<!-- 自定义上传解析并展现数据  by mwd 20170508 begin -->
-	<tag>
-		<name>attachmentSef</name>
-		<tag-class>
-		  com.boco.eoms.sheet.secvulmanagement.util.AttachmentSefTag
-		</tag-class>
-
-		<attribute>
-			<name>appCode</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>viewFlag</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>idField</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>idList</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>property</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>scope</name>
-			<required>false</required>
-		</attribute>
-		
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>startsWith</name>
-			<required>false</required>
-		</attribute>
-	</tag>
-		
-	<!-- 分公司核减 自定义上传解析并展现数据  by wmm 20180201 begin -->
-	<tag>
-		<name>attachmentWw</name>
-		<tag-class>
-		  com.boco.eoms.sheet.branchindexreduction.util.AttachmentWwTag
-		</tag-class>
-
-		<attribute>
-			<name>appCode</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>viewFlag</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>idField</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>idList</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>property</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>scope</name>
-			<required>false</required>
-		</attribute>
-		
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>startsWith</name>
-			<required>false</required>
-		</attribute>
-		<attribute>
-			<name>sheetFlag</name>
-			<required>false</required>
-		</attribute>
-	</tag>
-	<!-- 自定义上传解析并展现数据  by mwd 20170508 end -->
-	
-	
-	<tag>
-		<name>download</name>
-		<tag-class>
-			com.boco.eoms.commons.accessories.tags.DownloadTag
-		</tag-class>
-
-		<attribute>
-			<name>ids</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-	</tag>
-
-	<tag>
-		<name>comboBox</name>
-		<tag-class>
-			com.boco.eoms.commons.ui.taglib.ComboBoxTag
-		</tag-class>
-
-		<attribute>
-			<name>id</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>sub</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>initDicId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>ds</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>styleClass</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>defaultValue</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>form</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>multiple</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>size</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<attribute>
-			<name>onchange</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<attribute>
-			<name>attributes</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-
-	<tag>
-		<name>id2nameDB</name>
-		<tag-class>
-			com.boco.eoms.commons.system.dict.tags.ID2NameForDBTag
-		</tag-class>
-		<bodycontent>empty</bodycontent>
-		<attribute>
-			<name>id</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>beanId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-
-	<tag>
-		<name>id2nameXML</name>
-		<tag-class>
-			com.boco.eoms.commons.system.dict.tags.ID2NameForXMLTag
-		</tag-class>
-		<bodycontent>empty</bodycontent>
-		<attribute>
-			<name>key</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>dictId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>itemId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-
-
-	<tag>
-		<name>roleComboBox</name>
-		<tag-class>
-			com.boco.eoms.commons.ui.taglib.RoleComboBox
-		</tag-class>
-
-		<attribute>
-			<name>userId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>roleId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>id</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>defaultValue</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>form</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>styleClass</name>
-			<required>false</required>
-		</attribute>
-
-	</tag>
-
-	<tag>
-		<name>SelectTime</name>
-		<tagclass>com.boco.eoms.commons.ui.taglib.SelectTime</tagclass>
-		<info>test</info>
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>timelevel</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>value</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>formName</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>day</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>hour</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>min</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-
-	<tag>
-		<name>TextDate</name>
-		<tagclass>com.boco.eoms.commons.ui.taglib.TextDate</tagclass>
-		<info>test</info>
-		<attribute>
-			<name>day</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>value</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-	<tag>
-		<name>SelectDate</name>
-		<tagclass>com.boco.eoms.commons.ui.taglib.SelectDate</tagclass>
-		<info>test</info>
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>day</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>value</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>formName</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		<attribute>
-			<name>flag</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-
-
-	<tag>
-		<name>dict</name>
-		<tag-class>
-			com.boco.eoms.commons.system.dict.tags.DictTag
-		</tag-class>
-
-		<attribute>
-			<name>key</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>dictId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>itemId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>relationId</name>
-			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>selectId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>isQuery</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>defaultId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>beanId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>subid</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>onchange</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>attributes</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-	</tag>
-	
-	<!-- 新增字典反显标签  add by 史闯科 2009-04-14 -->
-	<tag>
-		<name>invert</name>
-		<tag-class>
-			com.boco.eoms.commons.system.dict.tags.DictInvertTag
-		</tag-class>
-
-		<attribute>
-			<name>attributes</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>appCode</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>sheetKey</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>property</name>
-			<required>false</required>
-			<rtexprvalue>false</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>scope</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>dictId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>itemId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>relationId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>beanId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>		
-	</tag>
-	
-	<tag>
-		<name>chooser</name>
-		<tag-class>
-			com.boco.eoms.commons.ui.taglib.ChooserTag
-		</tag-class>
-
-		<attribute>
-			<name>id</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>type</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>roleId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>flowId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	
-		<attribute>
-			<name>category</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<attribute>
-			<name>config</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 已选数据 -->
-		<attribute>
-			<name>data</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<!-- 待选面板 -->
-		<attribute>
-			<name>panels</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>		
-
-		<attribute>
-			<name>ifSpecial</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>		
-	</tag>
-		
-	<tag>
-		<name>xbox</name>
-		<tag-class>
-			com.boco.eoms.commons.ui.taglib.XboxTag
-		</tag-class>
-
-		<attribute>
-			<name>id</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>handler</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>dataUrl</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>rootId</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	
-		<attribute>
-			<name>rootText</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<attribute>
-			<name>single</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 已选数据 -->
-		<attribute>
-			<name>data</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 可选择的树图类型 -->
-		<attribute>
-			<name>checktype</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 保存选择节点名称的输入框id -->
-		<attribute>
-			<name>textField</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 保存选择节点id的输入框id -->
-		<attribute>
-			<name>valueField</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 是否使用viewer控件 -->
-		<attribute>
-			<name>viewer</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 窗口标题 -->
-		<attribute>
-			<name>dlgTitle</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 是否使用JSON格式返回数据 -->
-		<attribute>
-			<name>returnJSON</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<!-- 模式 -->
-		<attribute>
-			<name>mode</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<!-- 待选面板 -->
-		<attribute>
-			<name>panels</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>	
-		
-	</tag>
-	
-	<tag>
-		<name>specialBox</name>
-		<tag-class>
-			com.boco.eoms.commons.ui.taglib.SpecialTag
-		</tag-class>
-
-		<attribute>
-			<name>id</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>sub</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>initDicId</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>ds</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>styleClass</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>defaultValue</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>form</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>multiple</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>size</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<attribute>
-			<name>onchange</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-		
-		<attribute>
-			<name>attributes</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-	</tag>
-	<!-- 分公司核减 自定义上传解析并展现数据  by wmm 20170802 begin -->
-	<tag>
-		<name>attachmentWlf</name>
-		<tag-class>
-		  com.boco.eoms.sheet.branchindexreduction.util.AttachmentWlfTag
-		</tag-class>
-
-		<attribute>
-			<name>appCode</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>viewFlag</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>idField</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>idList</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>property</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>scope</name>
-			<required>false</required>
-		</attribute>
-		
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>startsWith</name>
-			<required>false</required>
-		</attribute>
-		<attribute>
-			<name>sheetFlag</name>
-			<required>false</required>
-		</attribute>
-	</tag>
-	
-	<!-- 自定义上传解析并展现数据  by wmm 20170803 end -->
-	
-	<!-- 代维公司核减 自定义上传解析并展现数据  by wmm 20170815 begin -->
-	<tag>
-		<name>attachmentDw</name>
-		<tag-class>
-		  com.boco.eoms.sheet.daiweiindexreduction.util.AttachmentDwTag
-		</tag-class>
-
-		<attribute>
-			<name>appCode</name>
-			<required>true</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>viewFlag</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>idField</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>idList</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>name</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>property</name>
-			<required>false</required>
-			<rtexprvalue>true</rtexprvalue>
-		</attribute>
-
-		<attribute>
-			<name>scope</name>
-			<required>false</required>
-		</attribute>
-		
-		<attribute>
-			<name>alt</name>
-			<required>false</required>
-		</attribute>
-
-		<attribute>
-			<name>startsWith</name>
-			<required>false</required>
-		</attribute>
-		<attribute>
-			<name>sheetFlag</name>
-			<required>false</required>
-		</attribute>
-	</tag>
-	
-	<!-- 代维公司核减 自定义上传解析并展现数据  by wmm 20170815 end -->
-	<function>
-		<description>Convert ISO8859-1 Charset to UTF-8.</description>
-		<name>a2u</name>
-		<function-class>
-			com.boco.eoms.commons.ui.taglib.Converter
-		</function-class>
-		<function-signature>
-			java.lang.String Ascii2utf(java.lang.String)
-		</function-signature>
-	</function>
-	<function>
-		<description>Convert Date to format String</description>
-		<name>date2String</name>
-		<function-class>
-			com.boco.eoms.base.util.StaticMethod
-		</function-class>
-		<function-signature>
-			java.lang.String date2String(java.util.Date)
-		</function-signature>
-	</function>
-
-	<function>
-		<description>Convert UserId to UserName</description>
-		<name>userId2Name</name>
-		<function-class>
-			com.boco.eoms.commons.system.user.service.bo.impl.TawSystemUserRoleBo
-		</function-class>
-		<function-signature>
-			String getUsernameByUserid(java.lang.String)
-		</function-signature>
-	</function>
-
-	<function>
-		<description>Convert DeptId to DeptName</description>
-		<name>deptId2Name</name>
-		<function-class>
-			com.boco.eoms.commons.system.dept.webapp.action.bo.TawSystemDeptBo
-		</function-class>
-		<function-signature>
-			java.lang.String getDeptnameBydeptid(java.lang.Integer)
-		</function-signature>
-	</function>
-
-	<function>
-		<description>Convert SubRoleId to SubRoleName</description>
-		<name>roleId2Name</name>
-		<function-class>
-			com.boco.eoms.commons.system.role.webapp.action.bo.TawSystemSubRoleBO
-		</function-class>
-		<function-signature>
-			java.lang.String getSubRoleNameById(java.lang.String)
-		</function-signature>
-	</function>
-
-	<function>
-		<description>Convert dictId to dictName</description>
-		<name>dictId2DictName</name>
-		<function-class>
-			com.boco.eoms.commons.system.dict.service.bo.TawSystemDictBo
-		</function-class>
-		<function-signature>
-			java.lang.String getDictNameByDictid(java.lang.String)
-		</function-signature>
-	</function>
-	
-	<function>
-		<description>将指定dictId的字典项的下级字典项输出为Javascript Array形式的字符串.</description>
-		<name>subDict2Array</name>
-		<function-class>
-			com.boco.eoms.commons.system.dict.tags.DictFunctions
-		</function-class>
-		<function-signature>
-			java.lang.String subDict2Array(java.lang.String)
-		</function-signature>
-	</function>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>eoms</short-name>
+
+    <description>
+        <![CDATA[Custom tag library for this application]]>
+    </description>
+
+    <listener>
+        <listener-class>
+            com.boco.eoms.base.webapp.listener.StartupListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            com.boco.eoms.base.webapp.listener.UserCounterListener
+        </listener-class>
+    </listener>
+
+    <tag>
+
+        <name>constants</name>
+        <tag-class>
+            com.boco.eoms.base.webapp.taglib.ConstantsTag
+        </tag-class>
+        <tei-class>
+            com.boco.eoms.base.webapp.taglib.ConstantsTei
+        </tei-class>
+
+        <attribute>
+            <name>className</name>
+
+        </attribute>
+        <attribute>
+            <name>scope</name>
+
+        </attribute>
+        <attribute>
+            <name>var</name>
+
+        </attribute>
+
+    </tag>
+    <tag>
+
+        <name>label</name>
+        <tag-class>com.boco.eoms.base.webapp.taglib.LabelTag</tag-class>
+
+        <attribute>
+            <name>key</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>bundle</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>colon</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+
+        </attribute>
+        <attribute>
+            <name>errorClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+
+        </attribute>
+
+    </tag>
+    <tag>
+
+        <name>country</name>
+        <tag-class>
+            com.boco.eoms.base.webapp.taglib.CountryTag
+        </tag-class>
+
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+
+        </attribute>
+        <attribute>
+            <name>prompt</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+
+        </attribute>
+        <attribute>
+            <name>default</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+
+        </attribute>
+        <attribute>
+            <name>toScope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+
+        </attribute>
+
+    </tag>
+
+    <tag>
+        <name>datePicker</name>
+        <tag-class>
+            com.boco.eoms.commons.ui.taglib.datePickerTag
+        </tag-class>
+
+        <attribute>
+            <name>bindingto</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>format</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>showtime</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>attachment</name>
+        <tag-class>
+            com.boco.eoms.base.webapp.taglib.AttachmentTag
+        </tag-class>
+
+        <attribute>
+            <name>appCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>viewFlag</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>idField</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>idList</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>property</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>startsWith</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+
+    <!-- 自定义上传解析并展现数据  by mwd 20170508 begin -->
+    <tag>
+        <name>attachmentSef</name>
+        <tag-class>
+            com.boco.eoms.sheet.secvulmanagement.util.AttachmentSefTag
+        </tag-class>
+
+        <attribute>
+            <name>appCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>viewFlag</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>idField</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>idList</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>property</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>startsWith</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+
+    <!-- 分公司核减 自定义上传解析并展现数据  by wmm 20180201 begin -->
+    <tag>
+        <name>attachmentWw</name>
+        <tag-class>
+            com.boco.eoms.sheet.branchindexreduction.util.AttachmentWwTag
+        </tag-class>
+
+        <attribute>
+            <name>appCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>viewFlag</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>idField</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>idList</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>property</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>startsWith</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sheetFlag</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+    <!-- 自定义上传解析并展现数据  by mwd 20170508 end -->
+
+
+    <tag>
+        <name>download</name>
+        <tag-class>
+            com.boco.eoms.commons.accessories.tags.DownloadTag
+        </tag-class>
+
+        <attribute>
+            <name>ids</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+    </tag>
+
+    <tag>
+        <name>comboBox</name>
+        <tag-class>
+            com.boco.eoms.commons.ui.taglib.ComboBoxTag
+        </tag-class>
+
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>sub</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>initDicId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>ds</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>defaultValue</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>form</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>multiple</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>size</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>onchange</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>attributes</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>id2nameDB</name>
+        <tag-class>
+            com.boco.eoms.commons.system.dict.tags.ID2NameForDBTag
+        </tag-class>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>beanId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>id2nameXML</name>
+        <tag-class>
+            com.boco.eoms.commons.system.dict.tags.ID2NameForXMLTag
+        </tag-class>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>key</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>dictId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>itemId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+
+    <tag>
+        <name>roleComboBox</name>
+        <tag-class>
+            com.boco.eoms.commons.ui.taglib.RoleComboBox
+        </tag-class>
+
+        <attribute>
+            <name>userId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>roleId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>id</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>defaultValue</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>form</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+        </attribute>
+
+    </tag>
+
+    <tag>
+        <name>SelectTime</name>
+        <tagclass>com.boco.eoms.commons.ui.taglib.SelectTime</tagclass>
+        <info>test</info>
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>timelevel</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>formName</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>day</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>hour</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>min</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>TextDate</name>
+        <tagclass>com.boco.eoms.commons.ui.taglib.TextDate</tagclass>
+        <info>test</info>
+        <attribute>
+            <name>day</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <name>SelectDate</name>
+        <tagclass>com.boco.eoms.commons.ui.taglib.SelectDate</tagclass>
+        <info>test</info>
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>day</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>formName</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>flag</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+
+    <tag>
+        <name>dict</name>
+        <tag-class>
+            com.boco.eoms.commons.system.dict.tags.DictTag
+        </tag-class>
+
+        <attribute>
+            <name>key</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>dictId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>itemId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>relationId</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>selectId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>isQuery</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>defaultId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>beanId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>subid</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>onchange</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>attributes</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+    </tag>
+
+    <!-- 新增字典反显标签  add by 史闯科 2009-04-14 -->
+    <tag>
+        <name>invert</name>
+        <tag-class>
+            com.boco.eoms.commons.system.dict.tags.DictInvertTag
+        </tag-class>
+
+        <attribute>
+            <name>attributes</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>appCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>sheetKey</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>property</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>dictId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>itemId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>relationId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>beanId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>chooser</name>
+        <tag-class>
+            com.boco.eoms.commons.ui.taglib.ChooserTag
+        </tag-class>
+
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>type</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>roleId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>flowId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>category</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>config</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 已选数据 -->
+        <attribute>
+            <name>data</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 待选面板 -->
+        <attribute>
+            <name>panels</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>ifSpecial</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>xbox</name>
+        <tag-class>
+            com.boco.eoms.commons.ui.taglib.XboxTag
+        </tag-class>
+
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>handler</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>dataUrl</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>rootId</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>rootText</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>single</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 已选数据 -->
+        <attribute>
+            <name>data</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 可选择的树图类型 -->
+        <attribute>
+            <name>checktype</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 保存选择节点名称的输入框id -->
+        <attribute>
+            <name>textField</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 保存选择节点id的输入框id -->
+        <attribute>
+            <name>valueField</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 是否使用viewer控件 -->
+        <attribute>
+            <name>viewer</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 窗口标题 -->
+        <attribute>
+            <name>dlgTitle</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 是否使用JSON格式返回数据 -->
+        <attribute>
+            <name>returnJSON</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 模式 -->
+        <attribute>
+            <name>mode</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <!-- 待选面板 -->
+        <attribute>
+            <name>panels</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+    </tag>
+
+    <tag>
+        <name>specialBox</name>
+        <tag-class>
+            com.boco.eoms.commons.ui.taglib.SpecialTag
+        </tag-class>
+
+        <attribute>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>sub</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>initDicId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>ds</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>defaultValue</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>form</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>multiple</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>size</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>onchange</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>attributes</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <!-- 分公司核减 自定义上传解析并展现数据  by wmm 20170802 begin -->
+    <tag>
+        <name>attachmentWlf</name>
+        <tag-class>
+            com.boco.eoms.sheet.branchindexreduction.util.AttachmentWlfTag
+        </tag-class>
+
+        <attribute>
+            <name>appCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>viewFlag</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>idField</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>idList</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>property</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>startsWith</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sheetFlag</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+
+    <!-- 自定义上传解析并展现数据  by wmm 20170803 end -->
+
+    <!-- 代维公司核减 自定义上传解析并展现数据  by wmm 20170815 begin -->
+    <tag>
+        <name>attachmentDw</name>
+        <tag-class>
+            com.boco.eoms.sheet.daiweiindexreduction.util.AttachmentDwTag
+        </tag-class>
+
+        <attribute>
+            <name>appCode</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>viewFlag</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>idField</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>idList</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>property</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>alt</name>
+            <required>false</required>
+        </attribute>
+
+        <attribute>
+            <name>startsWith</name>
+            <required>false</required>
+        </attribute>
+        <attribute>
+            <name>sheetFlag</name>
+            <required>false</required>
+        </attribute>
+    </tag>
+
+    <!-- 代维公司核减 自定义上传解析并展现数据  by wmm 20170815 end -->
+    <function>
+        <description>Convert ISO8859-1 Charset to UTF-8.</description>
+        <name>a2u</name>
+        <function-class>
+            com.boco.eoms.commons.ui.taglib.Converter
+        </function-class>
+        <function-signature>
+            java.lang.String Ascii2utf(java.lang.String)
+        </function-signature>
+    </function>
+    <function>
+        <description>Convert Date to format String</description>
+        <name>date2String</name>
+        <function-class>
+            com.boco.eoms.base.util.StaticMethod
+        </function-class>
+        <function-signature>
+            java.lang.String date2String(java.util.Date)
+        </function-signature>
+    </function>
+
+    <function>
+        <description>Convert UserId to UserName</description>
+        <name>userId2Name</name>
+        <function-class>
+            com.boco.eoms.commons.system.user.service.bo.impl.TawSystemUserRoleBo
+        </function-class>
+        <function-signature>
+            String getUsernameByUserid(java.lang.String)
+        </function-signature>
+    </function>
+
+    <function>
+        <description>Convert DeptId to DeptName</description>
+        <name>deptId2Name</name>
+        <function-class>
+            com.boco.eoms.commons.system.dept.webapp.action.bo.TawSystemDeptBo
+        </function-class>
+        <function-signature>
+            java.lang.String getDeptnameBydeptid(java.lang.Integer)
+        </function-signature>
+    </function>
+
+    <function>
+        <description>Convert SubRoleId to SubRoleName</description>
+        <name>roleId2Name</name>
+        <function-class>
+            com.boco.eoms.commons.system.role.webapp.action.bo.TawSystemSubRoleBO
+        </function-class>
+        <function-signature>
+            java.lang.String getSubRoleNameById(java.lang.String)
+        </function-signature>
+    </function>
+
+    <function>
+        <description>Convert dictId to dictName</description>
+        <name>dictId2DictName</name>
+        <function-class>
+            com.boco.eoms.commons.system.dict.service.bo.TawSystemDictBo
+        </function-class>
+        <function-signature>
+            java.lang.String getDictNameByDictid(java.lang.String)
+        </function-signature>
+    </function>
+
+    <function>
+        <description>将指定dictId的字典项的下级字典项输出为Javascript Array形式的字符串.</description>
+        <name>subDict2Array</name>
+        <function-class>
+            com.boco.eoms.commons.system.dict.tags.DictFunctions
+        </function-class>
+        <function-signature>
+            java.lang.String subDict2Array(java.lang.String)
+        </function-signature>
+    </function>
 
 </taglib>

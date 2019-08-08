@@ -27,9 +27,11 @@ span.pdf {
 span.xml {
     background-image: url(../../images/ico_file_xml.png);
 }
+
 span.rtf {
     background-image: url(../../images/ico_file_rtf.png);
 }
+
 span.export {
     cursor: pointer;
     display: inline;

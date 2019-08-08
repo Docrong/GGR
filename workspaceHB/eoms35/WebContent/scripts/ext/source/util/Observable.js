@@ -20,10 +20,10 @@
     });
  }
  Ext.extend(Employee, Ext.util.Observable);
-</code></pre>
+ </code></pre>
  */
-Ext.util.Observable = function(){
-    if(this.listeners){
+Ext.util.Observable = function () {
+    if (this.listeners) {
         this.on(this.listeners);
         delete this.listeners;
     }
@@ -35,17 +35,17 @@ Ext.util.Observable.prototype = {
      * @param {Object...} args Variable number of parameters are passed to handlers
      * @return {Boolean} returns false if any of the handlers return false otherwise it returns true
      */
-    fireEvent : function(){
+    fireEvent: function () {
         var ce = this.events[arguments[0].toLowerCase()];
-        if(typeof ce == "object"){
+        if (typeof ce == "object") {
             return ce.fire.apply(ce, Array.prototype.slice.call(arguments, 1));
-        }else{
+        } else {
             return true;
         }
     },
 
     // private
-    filterOptRe : /^(?:scope|delay|buffer|single)$/,
+    filterOptRe: /^(?:scope|delay|buffer|single)$/,
 
     /**
      * Appends an event handler to this component
@@ -67,19 +67,19 @@ Ext.util.Observable.prototype = {
      * Using the options argument, it is possible to combine different types of listeners:<br>
      * <br>
      * A normalized, delayed, one-time listener that auto stops the event and passes a custom argument (forumId)
-		<pre><code>
-		el.on('click', this.onClick, this, {
+     <pre><code>
+     el.on('click', this.onClick, this, {
  			single: true,
     		delay: 100,
     		forumId: 4
 		});
-		</code></pre>
+     </code></pre>
      * <p>
      * <b>Attaching multiple handlers in 1 call</b><br>
      * The method also allows for a single argument to be passed which is a config object containing properties
      * which specify multiple handlers.
      * <pre><code>
-		el.on({
+     el.on({
 			'click': {
         		fn: this.onClick,
         		scope: this,
@@ -94,29 +94,29 @@ Ext.util.Observable.prototype = {
         		scope: this
     		}
 		});
-		</code></pre>
+     </code></pre>
      * <p>
      * Or a shorthand syntax which passes the same scope object to all handlers:
-     	<pre><code>
-		el.on({
+     <pre><code>
+     el.on({
 			'click': this.onClick,
     		'mouseover': this.onMouseOver,
     		'mouseout': this.onMouseOut,
     		scope: this
 		});
-		</code></pre>
+     </code></pre>
      */
-    addListener : function(eventName, fn, scope, o){
-        if(typeof eventName == "object"){
+    addListener: function (eventName, fn, scope, o) {
+        if (typeof eventName == "object") {
             o = eventName;
-            for(var e in o){
-                if(this.filterOptRe.test(e)){
+            for (var e in o) {
+                if (this.filterOptRe.test(e)) {
                     continue;
                 }
-                if(typeof o[e] == "function"){
+                if (typeof o[e] == "function") {
                     // shared options
-                    this.addListener(e, o[e], o.scope,  o);
-                }else{
+                    this.addListener(e, o[e], o.scope, o);
+                } else {
                     // individual options
                     this.addListener(e, o[e].fn, o[e].scope, o[e]);
                 }
@@ -126,7 +126,7 @@ Ext.util.Observable.prototype = {
         o = (!o || typeof o == "boolean") ? {} : o;
         eventName = eventName.toLowerCase();
         var ce = this.events[eventName] || true;
-        if(typeof ce == "boolean"){
+        if (typeof ce == "boolean") {
             ce = new Ext.util.Event(this, eventName);
             this.events[eventName] = ce;
         }
@@ -139,9 +139,9 @@ Ext.util.Observable.prototype = {
      * @param {Function} handler        The handler to remove
      * @param {Object}   scope  (optional) The scope (this object) for the handler
      */
-    removeListener : function(eventName, fn, scope){
+    removeListener: function (eventName, fn, scope) {
         var ce = this.events[eventName.toLowerCase()];
-        if(typeof ce == "object"){
+        if (typeof ce == "object") {
             ce.removeListener(fn, scope);
         }
     },
@@ -149,23 +149,26 @@ Ext.util.Observable.prototype = {
     /**
      * Removes all listeners for this object
      */
-    purgeListeners : function(){
-        for(var evt in this.events){
-            if(typeof this.events[evt] == "object"){
-                 this.events[evt].clearListeners();
+    purgeListeners: function () {
+        for (var evt in this.events) {
+            if (typeof this.events[evt] == "object") {
+                this.events[evt].clearListeners();
             }
         }
     },
 
-    relayEvents : function(o, events){
-        var createHandler = function(ename){
-            return function(){
+    relayEvents: function (o, events) {
+        var createHandler = function (ename) {
+            return function () {
                 return this.fireEvent.apply(this, Ext.combine(ename, Array.prototype.slice.call(arguments, 0)));
             };
         };
-        for(var i = 0, len = events.length; i < len; i++){
+        for (var i = 0, len = events.length; i < len; i++) {
             var ename = events[i];
-            if(!this.events[ename]){ this.events[ename] = true; };
+            if (!this.events[ename]) {
+                this.events[ename] = true;
+            }
+            ;
             o.on(ename, createHandler(ename), this);
         }
     },
@@ -174,8 +177,8 @@ Ext.util.Observable.prototype = {
      * Used to define events on this Observable
      * @param {Object} object The object with the events defined
      */
-    addEvents : function(o){
-        if(!this.events){
+    addEvents: function (o) {
+        if (!this.events) {
             this.events = {};
         }
         Ext.applyIf(this.events, o);
@@ -186,7 +189,7 @@ Ext.util.Observable.prototype = {
      * @param {String} eventName The name of the event to check for
      * @return {Boolean} True if the event is being listened for, else false
      */
-    hasListener : function(eventName){
+    hasListener: function (eventName) {
         var e = this.events[eventName];
         return typeof e == "object" && e.listeners.length > 0;
     }
@@ -220,7 +223,7 @@ Ext.util.Observable.prototype.un = Ext.util.Observable.prototype.removeListener;
  * @param {Object} scope (optional) The scope (this object) for the fn
  * @static
  */
-Ext.util.Observable.capture = function(o, fn, scope){
+Ext.util.Observable.capture = function (o, fn, scope) {
     o.fireEvent = o.fireEvent.createInterceptor(fn, scope);
 };
 
@@ -229,89 +232,89 @@ Ext.util.Observable.capture = function(o, fn, scope){
  * @param {Observable} o The Observable to release
  * @static
  */
-Ext.util.Observable.releaseCapture = function(o){
+Ext.util.Observable.releaseCapture = function (o) {
     o.fireEvent = Ext.util.Observable.prototype.fireEvent;
 };
 
-(function(){
+(function () {
 
-    var createBuffered = function(h, o, scope){
+    var createBuffered = function (h, o, scope) {
         var task = new Ext.util.DelayedTask();
-        return function(){
+        return function () {
             task.delay(o.buffer, h, scope, Array.prototype.slice.call(arguments, 0));
         };
     };
 
-    var createSingle = function(h, e, fn, scope){
-        return function(){
+    var createSingle = function (h, e, fn, scope) {
+        return function () {
             e.removeListener(fn, scope);
             return h.apply(scope, arguments);
         };
     };
 
-    var createDelayed = function(h, o, scope){
-        return function(){
+    var createDelayed = function (h, o, scope) {
+        return function () {
             var args = Array.prototype.slice.call(arguments, 0);
-            setTimeout(function(){
+            setTimeout(function () {
                 h.apply(scope, args);
             }, o.delay || 10);
         };
     };
 
-    Ext.util.Event = function(obj, name){
+    Ext.util.Event = function (obj, name) {
         this.name = name;
         this.obj = obj;
         this.listeners = [];
     };
 
     Ext.util.Event.prototype = {
-        addListener : function(fn, scope, options){
+        addListener: function (fn, scope, options) {
             var o = options || {};
             scope = scope || this.obj;
-            if(!this.isListening(fn, scope)){
+            if (!this.isListening(fn, scope)) {
                 var l = {fn: fn, scope: scope, options: o};
                 var h = fn;
-                if(o.delay){
+                if (o.delay) {
                     h = createDelayed(h, o, scope);
                 }
-                if(o.single){
+                if (o.single) {
                     h = createSingle(h, this, fn, scope);
                 }
-                if(o.buffer){
+                if (o.buffer) {
                     h = createBuffered(h, o, scope);
                 }
                 l.fireFn = h;
-                if(!this.firing){ // if we are currently firing this event, don't disturb the listener loop
+                if (!this.firing) { // if we are currently firing this event, don't disturb the listener loop
                     this.listeners.push(l);
-                }else{
+                } else {
                     this.listeners = this.listeners.slice(0);
                     this.listeners.push(l);
                 }
             }
         },
 
-        findListener : function(fn, scope){
+        findListener: function (fn, scope) {
             scope = scope || this.obj;
             var ls = this.listeners;
-            for(var i = 0, len = ls.length; i < len; i++){
+            for (var i = 0, len = ls.length; i < len; i++) {
                 var l = ls[i];
-                if(l.fn == fn && l.scope == scope){
+                if (l.fn == fn && l.scope == scope) {
                     return i;
                 }
             }
             return -1;
         },
 
-        isListening : function(fn, scope){
+        isListening: function (fn, scope) {
             return this.findListener(fn, scope) != -1;
         },
 
-        removeListener : function(fn, scope){
+        removeListener: function (fn, scope) {
             var index;
-            if((index = this.findListener(fn, scope)) != -1){
-                if(!this.firing){
+            if ((index = this.findListener(fn, scope)) != -1) {
+                if (!this.firing) {
                     this.listeners.splice(index, 1);
-                }else{
+                } else {
                     this.listeners = this.listeners.slice(0);
                     this.listeners.splice(index, 1);
                 }
@@ -320,18 +323,18 @@ Ext.util.Observable.releaseCapture = function(o){
             return false;
         },
 
-        clearListeners : function(){
+        clearListeners: function () {
             this.listeners = [];
         },
 
-        fire : function(){
+        fire: function () {
             var ls = this.listeners, scope, len = ls.length;
-            if(len > 0){
+            if (len > 0) {
                 this.firing = true;
                 var args = Array.prototype.slice.call(arguments, 0);
-                for(var i = 0; i < len; i++){
+                for (var i = 0; i < len; i++) {
                     var l = ls[i];
-                    if(l.fireFn.apply(l.scope||this.obj||window, arguments) === false){
+                    if (l.fireFn.apply(l.scope || this.obj || window, arguments) === false) {
                         this.firing = false;
                         return false;
                     }

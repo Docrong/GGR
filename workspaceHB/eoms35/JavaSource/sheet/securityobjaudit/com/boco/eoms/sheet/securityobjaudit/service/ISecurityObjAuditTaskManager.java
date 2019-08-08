@@ -12,12 +12,11 @@ import com.boco.eoms.sheet.base.service.ITaskService;
  * <p>
  * Tue Apr 25 11:41:14 CST 2017
  * </p>
- * 
+ *
  * @author liuyonggnag
  * @version 3.6
- * 
  */
- 
- public interface ISecurityObjAuditTaskManager extends ITaskService {
- 
- }
+
+public interface ISecurityObjAuditTaskManager extends ITaskService {
+
+}

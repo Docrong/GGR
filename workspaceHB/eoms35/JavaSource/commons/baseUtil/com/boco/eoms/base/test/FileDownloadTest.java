@@ -17,20 +17,18 @@ public class FileDownloadTest extends TestCase {
     protected void tearDown() throws Exception {
         super.tearDown();
     }
-    
-    public void testFileDownLoad() {
-    	try {
-    	      String url = "http://www.abada.cn/html/2008-04/5805.htm";
-    	      Thread downThread = new Thread(new FileDownLoad(url, "d:\\download"), "nThread");
-    	      downThread.start();
-    	      System.out.println("thread have gone,we will go on");
-    	    }
-    	    catch (Exception e) {
-    	      e.printStackTrace();
-    	    }
-    	    finally {
 
-    	    }
+    public void testFileDownLoad() {
+        try {
+            String url = "http://www.abada.cn/html/2008-04/5805.htm";
+            Thread downThread = new Thread(new FileDownLoad(url, "d:\\download"), "nThread");
+            downThread.start();
+            System.out.println("thread have gone,we will go on");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+        }
     }
 
     public static void main(String[] args) {

@@ -14,6 +14,7 @@ public class TawSupplierkpiInfoManagerImpl extends BaseManager implements ITawSu
 
     /**
      * Set the Dao for communication with the data layer.
+     *
      * @param dao
      */
     public void setTawSupplierkpiInfoDao(TawSupplierkpiInfoDao dao) {
@@ -47,12 +48,14 @@ public class TawSupplierkpiInfoManagerImpl extends BaseManager implements ITawSu
     public void removeTawSupplierkpiInfo(final String id) {
         dao.removeTawSupplierkpiInfo(new String(id));
     }
+
     /**
-     * 
+     *
      */
     public Map getTawSupplierkpiInfos(final int curPage, final int pageSize) {
-        return dao.getTawSupplierkpiInfos(curPage, pageSize,null);
+        return dao.getTawSupplierkpiInfos(curPage, pageSize, null);
     }
+
     public Map getTawSupplierkpiInfos(final int curPage, final int pageSize, final String whereStr) {
         return dao.getTawSupplierkpiInfos(curPage, pageSize, whereStr);
     }

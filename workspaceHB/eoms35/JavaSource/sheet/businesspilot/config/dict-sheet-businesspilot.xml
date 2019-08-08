@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="GBK"?>
 <dicts description="新业务试点工单">
-	<dict id="mainOperateType" description="处理方法">	
-		<item id="0" name="新建派发" description="新建派发" />
-		<item id="22" name="保存草稿" description="保存草稿" />
-		<item id="3" name="草稿派发" description="草稿派发" />
-		<item id="8" name="移交" description="移交" />	
-		<item id="-13" name="强制归档" description="强制归档" />	
-		<item id="-14" name="强制作废" description="强制作废" />
-		<item id="-12" name="作废" description="作废" />
-		<item id="-10" name="抄送" description="抄送" />	
-		<item id="-15" name="抄送确认" description="抄送确认" />
-		<item id="9" name="阶段回复" description="阶段回复" />	
-		<item id="-11" name="阶段通知" description="阶段通知" />
-		<item id="10" name="分派" description="分派" />
-		<item id="11" name="分派回复" description="分派回复" />	
-		<item id="4" name="驳回上一级" description="驳回上一级" />
-		<item id="7" name="处理回复不通过" description="处理回复不通过" />
-		<item id="6" name="处理回复通过" description="处理回复通过" />
-		<item id="1" name="测试通过" description="测试通过" />
-		<item id="2" name="测试不通过需改技术规范，归档" description="测试不通过需改技术规范，归档" />
-		<item id="5" name="维护规程制定，提交规程" description="维护规程制定，提交规程" />
-		<item id="66" name="完成试点准备，交维" description="完成试点准备，交维" />
-		<item id="64" name="反馈技术规范检查结果" description="反馈技术规范检查结果" />
-		<item id="46" name="试点维护反馈" description="试点维护反馈" />
-		<item id="62" name="提交试运行报告" description="提交试运行报告" />
-		<item id="18" name="归档" description="归档" />
-		<item id="80" name="试运行延期" description="试运行延期" />
-		<item id="56" name="归档/商用拆除" description="归档/商用拆除" />
-		<item id="61" name="工单受理" description="工单受理" />
-		<item id="111" name="现网变更实施(等待被调工单完成)" description="现网变更实施(等待被调工单完成)" />	
-	</dict>
-	<dict id="activeTemplateId" description="处理方法">	
-	    <item id="cc" name="抄送" description="抄送" />
-	    <item id="reply" name="阶段回复" description="阶段回复" />
-	    <item id="advice" name="阶段通知" description="阶段通知" />	
-		<item id="draft" name="草稿" description="草稿" />
-		<item id="pilot" name="现网变更实施中" description="现网变更实施中" />
-		<item id="strategy" name="制定维护策略中" description="制定维护策略中" />
-		<item id="prepare" name="交维准备中" description="交维准备中" />
-		<item id="run" name="试运行中" description="试运行中" />
-		<item id="check" name="技术规范检查中" description="技术规范检查中" />
-		<item id="report" name="试点总结编写中" description="试点总结编写中" />
-		<item id="note" name="等待通知" description="等待通知" />
-		<item id="hold" name="待归档" description="待归档" />
-		<item id="" name="新增工单" description="新增工单" />
-	</dict>
+    <dict id="mainOperateType" description="处理方法">
+        <item id="0" name="新建派发" description="新建派发"/>
+        <item id="22" name="保存草稿" description="保存草稿"/>
+        <item id="3" name="草稿派发" description="草稿派发"/>
+        <item id="8" name="移交" description="移交"/>
+        <item id="-13" name="强制归档" description="强制归档"/>
+        <item id="-14" name="强制作废" description="强制作废"/>
+        <item id="-12" name="作废" description="作废"/>
+        <item id="-10" name="抄送" description="抄送"/>
+        <item id="-15" name="抄送确认" description="抄送确认"/>
+        <item id="9" name="阶段回复" description="阶段回复"/>
+        <item id="-11" name="阶段通知" description="阶段通知"/>
+        <item id="10" name="分派" description="分派"/>
+        <item id="11" name="分派回复" description="分派回复"/>
+        <item id="4" name="驳回上一级" description="驳回上一级"/>
+        <item id="7" name="处理回复不通过" description="处理回复不通过"/>
+        <item id="6" name="处理回复通过" description="处理回复通过"/>
+        <item id="1" name="测试通过" description="测试通过"/>
+        <item id="2" name="测试不通过需改技术规范，归档" description="测试不通过需改技术规范，归档"/>
+        <item id="5" name="维护规程制定，提交规程" description="维护规程制定，提交规程"/>
+        <item id="66" name="完成试点准备，交维" description="完成试点准备，交维"/>
+        <item id="64" name="反馈技术规范检查结果" description="反馈技术规范检查结果"/>
+        <item id="46" name="试点维护反馈" description="试点维护反馈"/>
+        <item id="62" name="提交试运行报告" description="提交试运行报告"/>
+        <item id="18" name="归档" description="归档"/>
+        <item id="80" name="试运行延期" description="试运行延期"/>
+        <item id="56" name="归档/商用拆除" description="归档/商用拆除"/>
+        <item id="61" name="工单受理" description="工单受理"/>
+        <item id="111" name="现网变更实施(等待被调工单完成)" description="现网变更实施(等待被调工单完成)"/>
+    </dict>
+    <dict id="activeTemplateId" description="处理方法">
+        <item id="cc" name="抄送" description="抄送"/>
+        <item id="reply" name="阶段回复" description="阶段回复"/>
+        <item id="advice" name="阶段通知" description="阶段通知"/>
+        <item id="draft" name="草稿" description="草稿"/>
+        <item id="pilot" name="现网变更实施中" description="现网变更实施中"/>
+        <item id="strategy" name="制定维护策略中" description="制定维护策略中"/>
+        <item id="prepare" name="交维准备中" description="交维准备中"/>
+        <item id="run" name="试运行中" description="试运行中"/>
+        <item id="check" name="技术规范检查中" description="技术规范检查中"/>
+        <item id="report" name="试点总结编写中" description="试点总结编写中"/>
+        <item id="note" name="等待通知" description="等待通知"/>
+        <item id="hold" name="待归档" description="待归档"/>
+        <item id="" name="新增工单" description="新增工单"/>
+    </dict>
 </dicts>
 

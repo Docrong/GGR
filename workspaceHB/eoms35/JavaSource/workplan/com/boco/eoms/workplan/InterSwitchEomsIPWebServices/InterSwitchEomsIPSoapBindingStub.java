@@ -1,6 +1,6 @@
 ﻿/**
  * InterSwitchEomsIPSoapBindingStub.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
@@ -13,7 +13,7 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
     private java.util.Vector cachedSerFactories = new java.util.Vector();
     private java.util.Vector cachedDeserFactories = new java.util.Vector();
 
-    static org.apache.axis.description.OperationDesc [] _operations;
+    static org.apache.axis.description.OperationDesc[] _operations;
 
     static {
         _operations = new org.apache.axis.description.OperationDesc[4];
@@ -22,8 +22,8 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
         oper.setName("main");
         oper.addParameter(new javax.xml.namespace.QName("", "argv"), new javax.xml.namespace.QName("http://211.137.82.175:8080/eoms/services/InterSwitchEomsIP", "ArrayOf_xsd_string"), java.lang.String[].class, org.apache.axis.description.ParameterDesc.IN, false, false);
         oper.setReturnType(org.apache.axis.encoding.XMLType.AXIS_VOID);
-        oper.setStyle(org.apache.axis.enum.Style.RPC);
-        oper.setUse(org.apache.axis.enum.Use.ENCODED);
+        oper.setStyle(org.apache.axis. enum.Style.RPC);
+        oper.setUse(org.apache.axis. enum.Use.ENCODED);
         _operations[0] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -32,8 +32,8 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://xml.apache.org/xml-soap", "Document"));
         oper.setReturnClass(org.w3c.dom.Document.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "taskInfoReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.RPC);
-        oper.setUse(org.apache.axis.enum.Use.ENCODED);
+        oper.setStyle(org.apache.axis. enum.Style.RPC);
+        oper.setUse(org.apache.axis. enum.Use.ENCODED);
         _operations[1] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -41,8 +41,8 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://xml.apache.org/xml-soap", "Document"));
         oper.setReturnClass(org.w3c.dom.Document.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "netInfoReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.RPC);
-        oper.setUse(org.apache.axis.enum.Use.ENCODED);
+        oper.setStyle(org.apache.axis. enum.Style.RPC);
+        oper.setUse(org.apache.axis. enum.Use.ENCODED);
         _operations[2] = oper;
 
         oper = new org.apache.axis.description.OperationDesc();
@@ -53,19 +53,19 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
         oper.setReturnType(new javax.xml.namespace.QName("http://xml.apache.org/xml-soap", "Document"));
         oper.setReturnClass(org.w3c.dom.Document.class);
         oper.setReturnQName(new javax.xml.namespace.QName("", "performResultInfoReturn"));
-        oper.setStyle(org.apache.axis.enum.Style.RPC);
-        oper.setUse(org.apache.axis.enum.Use.ENCODED);
+        oper.setStyle(org.apache.axis. enum.Style.RPC);
+        oper.setUse(org.apache.axis. enum.Use.ENCODED);
         _operations[3] = oper;
 
     }
 
     public InterSwitchEomsIPSoapBindingStub() throws org.apache.axis.AxisFault {
-         this(null);
+        this(null);
     }
 
     public InterSwitchEomsIPSoapBindingStub(java.net.URL endpointURL, javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
-         this(service);
-         super.cachedEndpoint = endpointURL;
+        this(service);
+        super.cachedEndpoint = endpointURL;
     }
 
     public InterSwitchEomsIPSoapBindingStub(javax.xml.rpc.Service service) throws org.apache.axis.AxisFault {
@@ -74,22 +74,22 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
         } else {
             super.service = service;
         }
-            java.lang.Class cls;
-            javax.xml.namespace.QName qName;
-            java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
-            java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
-            java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
-            java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
-            java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
-            java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
-            java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
-            java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
-            qName = new javax.xml.namespace.QName("http://211.137.82.175:8080/eoms/services/InterSwitchEomsIP", "ArrayOf_xsd_string");
-            cachedSerQNames.add(qName);
-            cls = java.lang.String[].class;
-            cachedSerClasses.add(cls);
-            cachedSerFactories.add(arraysf);
-            cachedDeserFactories.add(arraydf);
+        java.lang.Class cls;
+        javax.xml.namespace.QName qName;
+        java.lang.Class beansf = org.apache.axis.encoding.ser.BeanSerializerFactory.class;
+        java.lang.Class beandf = org.apache.axis.encoding.ser.BeanDeserializerFactory.class;
+        java.lang.Class enumsf = org.apache.axis.encoding.ser.EnumSerializerFactory.class;
+        java.lang.Class enumdf = org.apache.axis.encoding.ser.EnumDeserializerFactory.class;
+        java.lang.Class arraysf = org.apache.axis.encoding.ser.ArraySerializerFactory.class;
+        java.lang.Class arraydf = org.apache.axis.encoding.ser.ArrayDeserializerFactory.class;
+        java.lang.Class simplesf = org.apache.axis.encoding.ser.SimpleSerializerFactory.class;
+        java.lang.Class simpledf = org.apache.axis.encoding.ser.SimpleDeserializerFactory.class;
+        qName = new javax.xml.namespace.QName("http://211.137.82.175:8080/eoms/services/InterSwitchEomsIP", "ArrayOf_xsd_string");
+        cachedSerQNames.add(qName);
+        cls = java.lang.String[].class;
+        cachedSerClasses.add(cls);
+        cachedSerFactories.add(arraysf);
+        cachedDeserFactories.add(arraydf);
 
     }
 
@@ -135,16 +135,15 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
                         javax.xml.namespace.QName qName =
                                 (javax.xml.namespace.QName) cachedSerQNames.get(i);
                         java.lang.Class sf = (java.lang.Class)
-                                 cachedSerFactories.get(i);
+                                cachedSerFactories.get(i);
                         java.lang.Class df = (java.lang.Class)
-                                 cachedDeserFactories.get(i);
+                                cachedDeserFactories.get(i);
                         _call.registerTypeMapping(cls, qName, sf, df, false);
                     }
                 }
             }
             return _call;
-        }
-        catch (java.lang.Throwable t) {
+        } catch (java.lang.Throwable t) {
             throw new org.apache.axis.AxisFault("Failure trying to get the Call object", t);
         }
     }
@@ -162,10 +161,10 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {argv});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{argv});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
+            throw (java.rmi.RemoteException) _resp;
         }
         extractAttachments(_call);
     }
@@ -183,12 +182,11 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {netID});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{netID});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (org.w3c.dom.Document) _resp;
@@ -211,12 +209,11 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (org.w3c.dom.Document) _resp;
@@ -239,12 +236,11 @@ public class InterSwitchEomsIPSoapBindingStub extends org.apache.axis.client.Stu
 
         setRequestHeaders(_call);
         setAttachments(_call);
-        java.lang.Object _resp = _call.invoke(new java.lang.Object[] {taskID, netID, performTime});
+        java.lang.Object _resp = _call.invoke(new java.lang.Object[]{taskID, netID, performTime});
 
         if (_resp instanceof java.rmi.RemoteException) {
-            throw (java.rmi.RemoteException)_resp;
-        }
-        else {
+            throw (java.rmi.RemoteException) _resp;
+        } else {
             extractAttachments(_call);
             try {
                 return (org.w3c.dom.Document) _resp;

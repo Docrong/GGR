@@ -7,13 +7,14 @@ import com.boco.eoms.sheet.base.model.BaseMain;
 import com.boco.eoms.sheet.base.service.IMainService;
 
 public interface IBusinessImplementMainManager extends IMainService {
-	
-	/**
-	 * 通过定单号获取工单
-	 * @param orderSheetId 定单号
-	 * @return
-	 * @throws HibernateException
-	 */
-	public BaseMain getMainByOrderSheetId(String orderSheetId);
+
+    /**
+     * 通过定单号获取工单
+     *
+     * @param orderSheetId 定单号
+     * @return
+     * @throws HibernateException
+     */
+    public BaseMain getMainByOrderSheetId(String orderSheetId);
 }
 

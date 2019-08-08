@@ -1,10 +1,10 @@
-/* 
+/*
  * $Id: XmlDocumentBuilder.java,v 1.6 2001/09/14 00:50:25 edwingo Exp $
  *
  * The Apache Software License, Version 1.1
  *
  *
- * Copyright (c) 2000 The Apache Software Foundation.  All rights 
+ * Copyright (c) 2000 The Apache Software Foundation.  All rights
  * reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * are met:
  *
  * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer. 
+ *    notice, this list of conditions and the following disclaimer.
  *
  * 2. Redistributions in binary form must reproduce the above copyright
  *    notice, this list of conditions and the following disclaimer in
@@ -20,7 +20,7 @@
  *    distribution.
  *
  * 3. The end-user documentation included with the redistribution,
- *    if any, must include the following acknowledgment:  
+ *    if any, must include the following acknowledgment:
  *       "This product includes software developed by the
  *        Apache Software Foundation (http://www.apache.org/)."
  *    Alternately, this acknowledgment may appear in the software itself,
@@ -28,7 +28,7 @@
  *
  * 4. The names "Crimson" and "Apache Software Foundation" must
  *    not be used to endorse or promote products derived from this
- *    software without prior written permission. For written 
+ *    software without prior written permission. For written
  *    permission, please contact apache@apache.org.
  *
  * 5. Products derived from this software may not be called "Apache",
@@ -51,8 +51,8 @@
  *
  * This software consists of voluntary contributions made by many
  * individuals on behalf of the Apache Software Foundation and was
- * originally based on software copyright (c) 1999, Sun Microsystems, Inc., 
- * http://www.sun.com.  For more information on the Apache Software 
+ * originally based on software copyright (c) 1999, Sun Microsystems, Inc.,
+ * http://www.sun.com.  For more information on the Apache Software
  * Foundation, please see <http://www.apache.org/>.
  */
 
@@ -98,7 +98,7 @@ import com.boco.eoms.km.core.crimson.parser.AttributesEx;
  *
  * <P> This builder optionally does XML namespace processing, reporting
  * conformance problems as recoverable errors using the parser's error
- * handler.  
+ * handler.
  *
  * <P> Note: element factories are deprecated because they are non-standard
  * and are provided here only for backwards compatibility.  To customize
@@ -130,36 +130,35 @@ import com.boco.eoms.km.core.crimson.parser.AttributesEx;
  * @version $Revision: 1.6 $
  */
 public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
-    DeclHandler, DTDHandler
-{
+        DeclHandler, DTDHandler {
     // used during parsing
-    protected XmlDocument		document;
-    protected Locator		locator;
-    private Locale		locale = Locale.getDefault ();
+    protected XmlDocument document;
+    protected Locator locator;
+    private Locale locale = Locale.getDefault();
 
-    private ElementFactory	factory;
-    private Vector		attrTmp = new Vector ();
-    
-    protected ParentNode        elementStack[];
-    protected int         	topOfStack;
-    private boolean		inDTD;
-    private boolean		inCDataSection;
+    private ElementFactory factory;
+    private Vector attrTmp = new Vector();
 
-    private Doctype		doctype;
+    protected ParentNode elementStack[];
+    protected int topOfStack;
+    private boolean inDTD;
+    private boolean inCDataSection;
+
+    private Doctype doctype;
 
     // parser modes
-    private boolean		disableNamespaces = true; /* Keep this for
+    private boolean disableNamespaces = true; /* Keep this for
                                                              backward API
                                                              compatibility,
                                                              but it does
                                                              not change any
                                                              behavior. */
-    private boolean             ignoreWhitespace = false;
-    private boolean             expandEntityRefs = true;
-    private boolean             ignoreComments = false;
-    private boolean             putCDATAIntoText = false;
+    private boolean ignoreWhitespace = false;
+    private boolean expandEntityRefs = true;
+    private boolean ignoreComments = false;
+    private boolean putCDATAIntoText = false;
 
-    
+
     /**
      * Default constructor is for use in conjunction with a SAX2 parser.
      */
@@ -167,15 +166,15 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
         // No-op
     }
 
-    
+
     /**
      * Returns true if certain lexical information is automatically
      * discarded when a DOM tree is built, producing smaller parse trees
      * that are easier to use.
      * <b>Obsolete:</b> for backwards compatibility
      */
-    public boolean isIgnoringLexicalInfo () {
-	return ignoreWhitespace && expandEntityRefs
+    public boolean isIgnoringLexicalInfo() {
+        return ignoreWhitespace && expandEntityRefs
                 && ignoreComments && putCDATAIntoText;
     }
 
@@ -202,10 +201,10 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * consecutive internal whitespace to a single space) is allowed.
      *
      * @param value true indicates that such lexical information should
-     *	be discarded during parsing.
-     * <b>Obsolete:</b> for backwards compatibility
+     *              be discarded during parsing.
+     *              <b>Obsolete:</b> for backwards compatibility
      */
-    public void setIgnoringLexicalInfo (boolean value) {
+    public void setIgnoringLexicalInfo(boolean value) {
         ignoreWhitespace = value;
         expandEntityRefs = value;
         ignoreComments = value;
@@ -253,8 +252,8 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * Returns true if namespace conformance is not checked as the
      * DOM tree is built.
      */
-    public boolean getDisableNamespaces () {
-	return disableNamespaces;
+    public boolean getDisableNamespaces() {
+        return disableNamespaces;
     }
 
     /**
@@ -265,8 +264,8 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * (However, at this time it can't enforce the requirement that
      * parameter entity names not contain colons.)
      */
-    public void setDisableNamespaces (boolean value) {
-	disableNamespaces = value;
+    public void setDisableNamespaces(boolean value) {
+        disableNamespaces = value;
     }
 
     /**
@@ -276,7 +275,7 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
     public XmlDocument getDocument() {
         return document;
     }
-    
+
 
     /**
      * Returns the locale to be used for diagnostic messages by
@@ -286,7 +285,7 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
     public Locale getLocale() {
         return locale;
     }
-    
+
     /**
      * Assigns the locale to be used for diagnostic messages.
      * Multi-language applications, such as web servers dealing with
@@ -299,13 +298,12 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      *
      * @see #chooseLocale
      */
-    public void	setLocale(Locale locale)
-        throws SAXException
-    {
-	if (locale == null) {
-	    locale = Locale.getDefault();
+    public void setLocale(Locale locale)
+            throws SAXException {
+        if (locale == null) {
+            locale = Locale.getDefault();
         }
-	this.locale = locale;
+        this.locale = locale;
     }
 
     /**
@@ -316,42 +314,40 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * could be provided by a variety of user preference mechanisms,
      * including the HTTP <em>Accept-Language</em> header field.
      *
-     * @see com.boco.eoms.km.core.crimson.util.MessageCatalog
-     *
      * @param languages Array of language specifiers, ordered with the most
-     *	preferable one at the front.  For example, "en-ca" then "fr-ca",
-     *  followed by "zh_CN".  Both RFC 1766 and Java styles are supported.
+     *                  preferable one at the front.  For example, "en-ca" then "fr-ca",
+     *                  followed by "zh_CN".  Both RFC 1766 and Java styles are supported.
      * @return The chosen locale, or null.
+     * @see com.boco.eoms.km.core.crimson.util.MessageCatalog
      */
-    public Locale chooseLocale (String languages [])
-    throws SAXException
-    {
-	Locale	l = XmlDocument.catalog.chooseLocale (languages);
+    public Locale chooseLocale(String languages[])
+            throws SAXException {
+        Locale l = XmlDocument.catalog.chooseLocale(languages);
 
-	if (l != null)
-	    setLocale (l);
-	return l;
+        if (l != null)
+            setLocale(l);
+        return l;
     }
 
     /*
      * Gets the messages from the resource bundles for the given messageId.
      */
-    String getMessage (String messageId) {
-   	return getMessage (messageId, null);
+    String getMessage(String messageId) {
+        return getMessage(messageId, null);
     }
 
     /*
      * Gets the messages from the resource bundles for the given messageId
      * after formatting it with the parameters passed to it.
      */
-    String getMessage (String messageId, Object[] parameters) {
-   	if (locale == null) {
-		getLocale ();
-	}
-	return XmlDocument.catalog.getMessage (locale, messageId, parameters);
+    String getMessage(String messageId, Object[] parameters) {
+        if (locale == null) {
+            getLocale();
+        }
+        return XmlDocument.catalog.getMessage(locale, messageId, parameters);
     }
 
-    
+
     //////////////////////////////////////////////////////////////////////
     // ContentHandler callbacks
     //////////////////////////////////////////////////////////////////////
@@ -360,7 +356,7 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * Receive an object for locating the origin of SAX document events.
      */
     public void setDocumentLocator(Locator locator) {
-	this.locator = locator;
+        this.locator = locator;
     }
 
     /**
@@ -371,23 +367,23 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * that support the HTML DOM methods, if they have the right
      * name and are in the right namespace).
      */
-    public XmlDocument createDocument ()
-    {
-	XmlDocument retval = new XmlDocument ();
+    public XmlDocument createDocument() {
+        XmlDocument retval = new XmlDocument();
 
-	if (factory != null) {
+        if (factory != null) {
             retval.setElementFactory(factory);
         }
-	return retval;
+        return retval;
     }
 
 
     /**
      * Assigns the factory to be associated with documents produced
      * by this builder.
+     *
      * @deprecated
      */
-    final public void setElementFactory(ElementFactory factory)	{
+    final public void setElementFactory(ElementFactory factory) {
         this.factory = factory;
     }
 
@@ -395,6 +391,7 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
     /**
      * Returns the factory to be associated with documents produced
      * by this builder.
+     *
      * @deprecated
      */
     final public ElementFactory getElementFactory() {
@@ -405,49 +402,46 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
     /**
      * Receive notification of the beginning of a document.
      */
-    public void startDocument () throws SAXException
-    {
-	document = createDocument ();
+    public void startDocument() throws SAXException {
+        document = createDocument();
 
-	if (locator != null)
-	    document.setSystemId (locator.getSystemId ());
+        if (locator != null)
+            document.setSystemId(locator.getSystemId());
 
-	//
+        //
         // XXX don't want fixed size limits!  Fix someday.  For
-	// now, wide trees predominate, not deep ones.  This is
-	// allowing a _very_ deep tree ... we typically observe
-	// depths on the order of a dozen.
-	//
-        elementStack = new ParentNode [200];
+        // now, wide trees predominate, not deep ones.  This is
+        // allowing a _very_ deep tree ... we typically observe
+        // depths on the order of a dozen.
+        //
+        elementStack = new ParentNode[200];
         topOfStack = 0;
-        elementStack [topOfStack] = document;
+        elementStack[topOfStack] = document;
 
-	inDTD = false;
+        inDTD = false;
     }
 
     /**
      * Receive notification of the end of a document.
      */
-    public void endDocument () throws SAXException
-    {
+    public void endDocument() throws SAXException {
         if (topOfStack != 0)
-            throw new IllegalStateException (getMessage ("XDB-000"));
-	document.trimToSize ();
+            throw new IllegalStateException(getMessage("XDB-000"));
+        document.trimToSize();
     }
-    
+
     /**
      * Begin the scope of a prefix-URI Namespace mapping.
      */
     public void startPrefixMapping(String prefix, String uri)
-	throws SAXException
-    {
+            throws SAXException {
         // No-op
     }
 
     /**
      * End the scope of a prefix-URI mapping.
      */
-    public void endPrefixMapping(String prefix)	throws SAXException {
+    public void endPrefixMapping(String prefix) throws SAXException {
         // No-op
     }
 
@@ -456,43 +450,42 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      */
     public void startElement(String namespaceURI, String localName,
                              String qName, Attributes attributes)
-	throws SAXException
-    {
-	//
-	// Convert set of attributes to DOM representation.
-	//
+            throws SAXException {
+        //
+        // Convert set of attributes to DOM representation.
+        //
         AttributeSet attSet = null;
-	int length = attributes.getLength();
-	if (length != 0) {
-	    try {
+        int length = attributes.getLength();
+        if (length != 0) {
+            try {
                 attSet = AttributeSet.createAttributeSet1(attributes);
-	    } catch (DOMException ex) {
-		throw new SAXParseException(getMessage("XDB-002",
-                        new Object[] { ex.getMessage() }), locator, ex);
-	    }
-	}
+            } catch (DOMException ex) {
+                throw new SAXParseException(getMessage("XDB-002",
+                        new Object[]{ex.getMessage()}), locator, ex);
+            }
+        }
 
-	//
-	// Then create the element, associate its attributes, and
-	// stack it for later addition.
-	//
+        //
+        // Then create the element, associate its attributes, and
+        // stack it for later addition.
+        //
         ElementNode e = null;
-	try {
+        try {
             e = (ElementNode) document.createElementEx(qName);
-	} catch (DOMException ex) {
-	    throw new SAXParseException(getMessage("XDB-004",
-                    new Object[] { ex.getMessage() }), locator, ex);
-	}
-	if (attributes instanceof AttributesEx) {
-	    e.setIdAttributeName(
-		((AttributesEx)attributes).getIdAttributeName());
+        } catch (DOMException ex) {
+            throw new SAXParseException(getMessage("XDB-004",
+                    new Object[]{ex.getMessage()}), locator, ex);
         }
-	if (length != 0) {
-	    e.setAttributes(attSet);
+        if (attributes instanceof AttributesEx) {
+            e.setIdAttributeName(
+                    ((AttributesEx) attributes).getIdAttributeName());
+        }
+        if (length != 0) {
+            e.setAttributes(attSet);
         }
 
-	elementStack[topOfStack++].appendChild(e);
-	elementStack[topOfStack] = e;
+        elementStack[topOfStack++].appendChild(e);
+        elementStack[topOfStack] = e;
     }
 
     /**
@@ -500,97 +493,93 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      */
     public void endElement(String namespaceURI, String localName,
                            String qName)
-	throws SAXException
-    {
+            throws SAXException {
         ParentNode e = (ParentNode) elementStack[topOfStack];
 
         elementStack[topOfStack--] = null;
 
-	// Trusting that the SAX parser is correct, and hasn't
-	// mismatched start/end element callbacks.
+        // Trusting that the SAX parser is correct, and hasn't
+        // mismatched start/end element callbacks.
         // if (!tag.equals (e.getTagName ()))
         //     throw new SAXParseException ((getMessage ("XDB-009", new
-	//         Object[] { tag, e.getTagName ()  })), locator);
+        //         Object[] { tag, e.getTagName ()  })), locator);
 
-        e.reduceWaste();	// use less space
+        e.reduceWaste();    // use less space
     }
 
     /**
      * Receive notification of character data.
      */
-    public void characters(char buf [], int offset, int len)
-        throws SAXException
-    {
-        ParentNode	top = elementStack [topOfStack];
+    public void characters(char buf[], int offset, int len)
+            throws SAXException {
+        ParentNode top = elementStack[topOfStack];
 
-	if (inCDataSection) {
-	    String		temp = new String (buf, offset, len);
-	    CDATASection	section;
+        if (inCDataSection) {
+            String temp = new String(buf, offset, len);
+            CDATASection section;
 
-	    section = (CDATASection) top.getLastChild ();
-	    section.appendData (temp);
-	    return;
-	}
+            section = (CDATASection) top.getLastChild();
+            section.appendData(temp);
+            return;
+        }
 
-        
-	try {
-	    NodeBase lastChild = (NodeBase) top.getLastChild ();
-	    if (lastChild != null && lastChild.getClass() == TextNode.class) {
+
+        try {
+            NodeBase lastChild = (NodeBase) top.getLastChild();
+            if (lastChild != null && lastChild.getClass() == TextNode.class) {
                 // Merge only TextNode data and not CDataNode data
-		String tmp  = new String (buf, offset, len);
-	   	((TextNode)lastChild).appendData (tmp);
-	    } else {
-        	TextNode text = document.newText (buf, offset, len);
-	        top.appendChild (text);
-	    }
-	} catch (DOMException ex) {
-	    throw new SAXParseException(getMessage("XDB-004",
-                    new Object[] { ex.getMessage() }), locator, ex);
-	}
+                String tmp = new String(buf, offset, len);
+                ((TextNode) lastChild).appendData(tmp);
+            } else {
+                TextNode text = document.newText(buf, offset, len);
+                top.appendChild(text);
+            }
+        } catch (DOMException ex) {
+            throw new SAXParseException(getMessage("XDB-004",
+                    new Object[]{ex.getMessage()}), locator, ex);
+        }
     }
-    
+
     /**
      * Receive notification of ignorable whitespace in element content.
-     *
+     * <p>
      * Reports ignorable whitespace; if lexical information is not ignored
      * the whitespace reported here is recorded in a DOM text (or CDATA, as
      * appropriate) node.
      *
-     * @param buf holds text characters
+     * @param buf    holds text characters
      * @param offset initial index of characters in <em>buf</em>
-     * @param len how many characters are being passed
-     * @exception SAXException as appropriate
+     * @param len    how many characters are being passed
+     * @throws SAXException as appropriate
      */
-    public void ignorableWhitespace(char buf [], int offset, int len)
-        throws SAXException
-    {
-	if (ignoreWhitespace)
-	    return;
+    public void ignorableWhitespace(char buf[], int offset, int len)
+            throws SAXException {
+        if (ignoreWhitespace)
+            return;
 
         characters(buf, offset, len);
     }
-    
+
     /**
      * Receive notification of a processing instruction.
      */
-    public void processingInstruction(String name, String instruction) 
-        throws SAXException
-    {
-	// Ignore PIs in DTD for DOM support
-	if (inDTD)
-	    return;
+    public void processingInstruction(String name, String instruction)
+            throws SAXException {
+        // Ignore PIs in DTD for DOM support
+        if (inDTD)
+            return;
 
-        ParentNode	top = elementStack [topOfStack];
-        PINode		pi;
-	
-	try {
-	    pi = (PINode) document.createProcessingInstruction (name,
-		    instruction);
-	    top.appendChild (pi);
-	} catch (DOMException ex) {
-	    throw new SAXParseException(getMessage("XDB-004",
-                    new Object[] { ex.getMessage() }), locator, ex);
-	}
+        ParentNode top = elementStack[topOfStack];
+        PINode pi;
+
+        try {
+            pi = (PINode) document.createProcessingInstruction(name,
+                    instruction);
+            top.appendChild(pi);
+        } catch (DOMException ex) {
+            throw new SAXParseException(getMessage("XDB-004",
+                    new Object[]{ex.getMessage()}), locator, ex);
+        }
     }
 
     /**
@@ -609,10 +598,9 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * Report the start of DTD declarations, if any.
      */
     public void startDTD(String name, String publicId, String systemId)
-	throws SAXException
-    {
+            throws SAXException {
         DOMImplementation impl = document.getImplementation();
-        doctype = (Doctype)impl.createDocumentType(name, publicId, systemId);
+        doctype = (Doctype) impl.createDocumentType(name, publicId, systemId);
 
         // Set the owner since DOM2 specifies this to be null
         doctype.setOwnerDocument(document);
@@ -632,17 +620,17 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * Report the beginning of an entity in content.
      */
     public void startEntity(String name) throws SAXException {
-    	// Our parser doesn't report Paramater entities. Need to make
-	// changes for that.
+        // Our parser doesn't report Paramater entities. Need to make
+        // changes for that.
 
         // Ignore entity refs while parsing DTD
-	if (expandEntityRefs || inDTD) {
-	    return;
+        if (expandEntityRefs || inDTD) {
+            return;
         }
 
-        EntityReference	e = document.createEntityReference(name);
-	elementStack[topOfStack++].appendChild(e);
-	elementStack[topOfStack] = (ParentNode)e;
+        EntityReference e = document.createEntityReference(name);
+        elementStack[topOfStack++].appendChild(e);
+        elementStack[topOfStack] = (ParentNode) e;
     }
 
     /**
@@ -650,21 +638,21 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      */
     public void endEntity(String name) throws SAXException {
         // Ignore entity refs while parsing DTD
-	if (inDTD) {
+        if (inDTD) {
             return;
         }
 
         ParentNode entity = elementStack[topOfStack];
 
-	if (!(entity instanceof EntityReference))
-	    return;
+        if (!(entity instanceof EntityReference))
+            return;
 
-	entity.setReadonly(true);
+        entity.setReadonly(true);
         elementStack[topOfStack--] = null;
         if (!name.equals(entity.getNodeName())) {
             throw new SAXParseException(getMessage("XDB-011",
-                    new Object[] { name, entity.getNodeName() }), locator);
-	}
+                    new Object[]{name, entity.getNodeName()}), locator);
+        }
     }
 
     /**
@@ -676,49 +664,49 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * <em>endCDATA</em> method is called.
      */
     public void startCDATA() throws SAXException {
-	if (putCDATAIntoText) {
-	    return;
+        if (putCDATAIntoText) {
+            return;
         }
 
         CDATASection text = document.createCDATASection("");
         ParentNode top = elementStack[topOfStack];
-        
-	try {
-	    inCDataSection = true;
-	    top.appendChild(text);
-	} catch (DOMException ex) {
-	    throw new SAXParseException(getMessage("XDB-004",
-                    new Object[] { ex.getMessage() }), locator, ex);
-	}
+
+        try {
+            inCDataSection = true;
+            top.appendChild(text);
+        } catch (DOMException ex) {
+            throw new SAXParseException(getMessage("XDB-004",
+                    new Object[]{ex.getMessage()}), locator, ex);
+        }
     }
-    
+
     /**
      * Report the end of a CDATA section.
      */
     public void endCDATA() throws SAXException {
         inCDataSection = false;
     }
-    
+
     /**
      * Report an XML comment anywhere in the document.
      */
     public void comment(char[] ch, int start, int length) throws SAXException {
-	// Ignore comments if lexical info is to be ignored,
-	// or if parsing the DTD
-	if (ignoreComments || inDTD) {
-	    return;
+        // Ignore comments if lexical info is to be ignored,
+        // or if parsing the DTD
+        if (ignoreComments || inDTD) {
+            return;
         }
 
         String text = new String(ch, start, length);
         Comment comment = document.createComment(text);
         ParentNode top = elementStack[topOfStack];
-        
-	try {
-	    top.appendChild(comment);
-	} catch (DOMException ex) {
-	    throw new SAXParseException(getMessage("XDB-004",
-                    new Object[] { ex.getMessage() }), locator, ex);
-	}
+
+        try {
+            top.appendChild(comment);
+        } catch (DOMException ex) {
+            throw new SAXParseException(getMessage("XDB-004",
+                    new Object[]{ex.getMessage()}), locator, ex);
+        }
     }
 
 
@@ -738,8 +726,7 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      */
     public void attributeDecl(String eName, String aName, String type,
                               String valueDefault, String value)
-	throws SAXException
-    {
+            throws SAXException {
         // ignored
     }
 
@@ -747,8 +734,7 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * Report an internal entity declaration.
      */
     public void internalEntityDecl(String name, String value)
-	throws SAXException
-    {
+            throws SAXException {
         // SAX2 reports PEDecls which we ignore for DOM2.  SAX2 also reports
         // only the first defined GEDecl which matches with DOM2.
         if (!name.startsWith("%")) {
@@ -761,8 +747,7 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      */
     public void externalEntityDecl(String name, String publicId,
                                    String systemId)
-	throws SAXException
-    {
+            throws SAXException {
         // SAX2 reports PEDecls which we ignore for DOM2.  SAX2 also reports
         // only the first defined GEDecl which matches with DOM2.
         if (!name.startsWith("%")) {
@@ -779,18 +764,16 @@ public class XmlDocumentBuilder implements ContentHandler, LexicalHandler,
      * Receive notification of a notation declaration event.
      */
     public void notationDecl(String n, String p, String s)
-	throws SAXException
-    {
+            throws SAXException {
         doctype.addNotation(n, p, s);
     }
 
     /**
      * Receive notification of an unparsed entity declaration event.
      */
-    public void unparsedEntityDecl(String name, String publicId, 
+    public void unparsedEntityDecl(String name, String publicId,
                                    String systemId, String notation)
-	throws SAXException
-    {
+            throws SAXException {
         doctype.addEntityNode(name, publicId, systemId, notation);
     }
 }

@@ -4,107 +4,107 @@ import java.util.Date;
 
 import com.boco.eoms.commons.statistic.commonstat.vo.StatDetailVO;
 
-public class StatDetailVOBusinessOperation extends StatDetailVO{
+public class StatDetailVOBusinessOperation extends StatDetailVO {
 
-	private String sheetid;
-	private String title;
-	private String senduserid;
-	private String senddeptid;
-	private String status;
-	private Date sendtime;
-	
-	private String overtimeDept="及时";
-	private String deptlevel;
-	
-	private String completeflag;
-	
-	/**
-	 * @return the deptlevel
-	 */
-	public String getDeptlevel() {
-		return deptlevel;
-	}
+    private String sheetid;
+    private String title;
+    private String senduserid;
+    private String senddeptid;
+    private String status;
+    private Date sendtime;
 
-	/**
-	 * @param deptlevel the deptlevel to set
-	 */
-	public void setDeptlevel(String deptlevel) {
-		this.deptlevel = deptlevel;
-	}
+    private String overtimeDept = "及时";
+    private String deptlevel;
 
-	/**
-	 * @return the overtimeDept
-	 */
-	public String getOvertimeDept() {
-		return overtimeDept;
-	}
+    private String completeflag;
 
-	/**
-	 * @param overtimeDept the overtimeDept to set
-	 */
-	public void setOvertimeDept(String overtimeDept) {
-		this.overtimeDept = overtimeDept;
-	}
+    /**
+     * @return the deptlevel
+     */
+    public String getDeptlevel() {
+        return deptlevel;
+    }
 
-	public String getSheetid() {
-		return sheetid;
-	}
+    /**
+     * @param deptlevel the deptlevel to set
+     */
+    public void setDeptlevel(String deptlevel) {
+        this.deptlevel = deptlevel;
+    }
 
-	public void setSheetid(String sheetid) {
-		this.sheetid = sheetid;
-	}
+    /**
+     * @return the overtimeDept
+     */
+    public String getOvertimeDept() {
+        return overtimeDept;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    /**
+     * @param overtimeDept the overtimeDept to set
+     */
+    public void setOvertimeDept(String overtimeDept) {
+        this.overtimeDept = overtimeDept;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getSheetid() {
+        return sheetid;
+    }
 
-	public String getSenduserid() {
-		return senduserid;
-	}
+    public void setSheetid(String sheetid) {
+        this.sheetid = sheetid;
+    }
 
-	public void setSenduserid(String senduserid) {
-		this.senduserid = senduserid;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getSenddeptid() {
-		return senddeptid;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setSenddeptid(String senddeptid) {
-		this.senddeptid = senddeptid;
-	}
+    public String getSenduserid() {
+        return senduserid;
+    }
 
-	public String getStatus() {
-		return status;
-	}
+    public void setSenduserid(String senduserid) {
+        this.senduserid = senduserid;
+    }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    public String getSenddeptid() {
+        return senddeptid;
+    }
 
-	public Date getSendtime() {
-		return sendtime;
-	}
+    public void setSenddeptid(String senddeptid) {
+        this.senddeptid = senddeptid;
+    }
 
-	public void setSendtime(Date sendtime) {
-		this.sendtime = sendtime;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	/**
-	 * @return the completeflag
-	 */
-	public String getCompleteflag() {
-		return completeflag;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	/**
-	 * @param completeflag the completeflag to set
-	 */
-	public void setCompleteflag(String completeflag) {
-		this.completeflag = completeflag;
-	}
+    public Date getSendtime() {
+        return sendtime;
+    }
+
+    public void setSendtime(Date sendtime) {
+        this.sendtime = sendtime;
+    }
+
+    /**
+     * @return the completeflag
+     */
+    public String getCompleteflag() {
+        return completeflag;
+    }
+
+    /**
+     * @param completeflag the completeflag to set
+     */
+    public void setCompleteflag(String completeflag) {
+        this.completeflag = completeflag;
+    }
 }

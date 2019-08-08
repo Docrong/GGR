@@ -14,12 +14,11 @@ import com.boco.eoms.sheet.focusresourceerrata.dao.IFocusResourceErrataTaskDAO;
  * <p>
  * Thu May 10 09:23:09 CST 2018
  * </p>
- * 
+ *
  * @author lyg
  * @version 3.6
- * 
  */
- 
- public class FocusResourceErrataTaskDAOHibernate extends TaskDAOImpl implements  IFocusResourceErrataTaskDAO {
- 
- }
+
+public class FocusResourceErrataTaskDAOHibernate extends TaskDAOImpl implements IFocusResourceErrataTaskDAO {
+
+}

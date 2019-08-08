@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans><!--
 
@@ -31,18 +31,18 @@
 	
 
 -->
- <bean id="ISuperviseTaskDAO"
-		class="com.boco.eoms.sheet.supervisetask.dao.hibernate.SuperviseTaskDaoHibernate" autowire="byName">
-      </bean>
-	<bean id="iSuperviseTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.supervisetask.service.impl.SuperviseTaskManagerImpl">
-				<property name="ISuperviseTaskDAO">
-					<ref bean="ISuperviseTaskDAO" />
-				</property>
-			</bean>
-		</property>
-	</bean>	
-	
+    <bean id="ISuperviseTaskDAO"
+          class="com.boco.eoms.sheet.supervisetask.dao.hibernate.SuperviseTaskDaoHibernate" autowire="byName">
+    </bean>
+    <bean id="iSuperviseTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.supervisetask.service.impl.SuperviseTaskManagerImpl">
+                <property name="ISuperviseTaskDAO">
+                    <ref bean="ISuperviseTaskDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
 </beans>

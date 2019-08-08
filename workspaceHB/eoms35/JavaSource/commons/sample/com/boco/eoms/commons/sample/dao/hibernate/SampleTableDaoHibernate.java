@@ -53,12 +53,12 @@ public class SampleTableDaoHibernate extends BaseDaoHibernate implements SampleT
 
     /**
      * @see com.boco.eoms.commons.sample.dao.SampleTableDao#saveSampleTable(SampleTable sampleTable)
-     */    
+     */
     public void saveSampleTable(final SampleTable sampleTable) {
         if ((sampleTable.getId() == null) || (sampleTable.getId().equals("")))
-			getHibernateTemplate().save(sampleTable);
-		else
-			getHibernateTemplate().saveOrUpdate(sampleTable);
+            getHibernateTemplate().save(sampleTable);
+        else
+            getHibernateTemplate().saveOrUpdate(sampleTable);
     }
 
     /**
@@ -68,33 +68,34 @@ public class SampleTableDaoHibernate extends BaseDaoHibernate implements SampleT
         getHibernateTemplate().delete(getSampleTable(id));
     }
 
-    public Map getSampleTables(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getSampleTables(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the sampleTable
         HibernateCallback callback = new HibernateCallback() {
-        	
-            public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from SampleTable";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
 
-							int total = ((Integer) session.createQuery(queryCountStr).iterate()
-									.next()).intValue();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", new Integer(total));
-							map.put("result", result);
-							return map;
+            public Object doInHibernate(Session session) throws HibernateException {
+                String queryStr = "from SampleTable";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
+
+                int total = ((Integer) session.createQuery(queryCountStr).iterate()
+                        .next()).intValue();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", new Integer(total));
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     public Map getSampleTables(final Integer curPage, final Integer pageSize) {
-			return this.getSampleTables(curPage,pageSize,null);
-		}
+        return this.getSampleTables(curPage, pageSize, null);
+    }
 
 }

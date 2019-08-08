@@ -1,610 +1,683 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--所有标签名称都为固定值,不能修改,否则无法解析. -->
 <KpiConfig>
-	<title>kpi统计</title>
-	<est-module-id></est-module-id>
+    <title>kpi统计</title>
+    <est-module-id></est-module-id>
 
-	<!-- 第一层统计 -->
-  <kpi-define><!-- 可重复 -->
-		<name>first</name>
-		<kpi-caption></kpi-caption>
-     <condition-param page-name="beginTime"/>
-		 <condition-param page-name="endTime"/>
-     <summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>'a'</column>
-			<id2name-service></id2name-service>
-			</summary-define>
-		  <auto-append-groupby>fasle</auto-append-groupby>
+    <!-- 第一层统计 -->
+    <kpi-define><!-- 可重复 -->
+        <name>first</name>
+        <kpi-caption></kpi-caption>
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>'a'</column>
+            <id2name-service></id2name-service>
+        </summary-define>
+        <auto-append-groupby>fasle</auto-append-groupby>
 
-		<stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO</stat-detail-vo><!--显示DetailVO-->
+        <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
 
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-		<!-- sql片段,用于jdbc统计(分子) -->
-      <from>v_flowcontrol est</from><!-- 不可为空 -->
-		  <where>
-		     est.sendtime&gt;=extend(today-30,year to second)
-		  </where><!-- 可为空 -->
-      <field-define><!-- 可重复 -->
-				<id>f1</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>nvl(sum(case when est.taskstatus='2' then 1 else 0 end),0)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-       <field-define><!-- 可重复 -->
-				<id>f2</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>nvl(sum(case when est.taskstatus='8' then 1 else 0 end),0)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f3</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>nvl(sum(case when est.taskname='HoldHumTask' then 1 else 0 end),0)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskname='HoldHumTask'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f4</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>nvl(sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end),0)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and 
-				est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour 
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f5</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>nvl(sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end),0)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and 
-				est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f6</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>nvl(sum(case when  est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute then 1 else 0 end),0)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and 
-				est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f7</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>nvl(sum(case when current&gt;est.completetimelimit then 1 else 0 end),0)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		</query-define>
-		
-	</kpi-define>	
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>v_flowcontrol est</from><!-- 不可为空 -->
+            <where>
+                est.sendtime&gt;=extend(today-30,year to second)
+            </where><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>nvl(sum(case when est.taskstatus='2' then 1 else 0 end),0)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>nvl(sum(case when est.taskstatus='8' then 1 else 0 end),0)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>nvl(sum(case when est.taskname='HoldHumTask' then 1 else 0 end),0)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.taskname='HoldHumTask'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f4</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>nvl(sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and
+                    est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end),0)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2)
+                    hour to hour
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f5</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>nvl(sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and
+                    est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end),0)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1)
+                    hour to hour
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f6</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>nvl(sum(case when est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30)
+                    minute to minute then 1 else 0 end),0)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to
+                    minute
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f7</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>nvl(sum(case when current&gt;est.completetimelimit then 1 else 0 end),0)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
 
-
-
-
- <!-- 第二层工单 -->
-  <kpi-define><!-- 可重复 -->
-		<name>second_sheet</name>
-		<kpi-caption></kpi-caption>
-    
-   <condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-     <summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.sheettype</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		 
-    <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO</stat-detail-vo><!--显示DetailVO-->
-
-	<query-define><!-- 可重复 -->
-			<name>query1</name>
-		<!-- sql片段,用于jdbc统计(分子) -->
-      <from>v_flowcontrol est</from><!-- 不可为空 -->
-		  <where>
-		     est.sendtime&gt;=extend(today-30,year to second)
-		  </where><!-- 可为空 -->
-      <field-define><!-- 可重复 -->
-				<id>f1</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2' and est.sheettype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-       <field-define><!-- 可重复 -->
-				<id>f2</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8' and est.sheettype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f3</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskname='HoldHumTask' and est.sheettype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f4</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.sheettype='@s1@' and  
-				est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f5</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.sheettype='@s1@' and 
-				est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f6</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when  est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.sheettype='@s1@' and 
-				est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f7</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit and est.sheettype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		</query-define>
-		
-	</kpi-define>	
-
-<!-- 第三层工单 -->
- <kpi-define><!-- 可重复 -->
-		<name>third_sheet</name>
-		<kpi-caption></kpi-caption>
-    
-    <condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		<condition-param  page-name="dydept"/>
-    
-     <summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.sheettype</column>
-			<id2name-service>statDictId2name_v35</id2name-service>
-		</summary-define>
-		 
-    <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO</stat-detail-vo><!--显示DetailVO-->
-
-	<query-define><!-- 可重复 -->
-			<name>query1</name>
-		<!-- sql片段,用于jdbc统计(分子) -->
-      <from>v_flowcontrol est</from><!-- 不可为空 -->
-		  <where>
-		     est.sendtime&gt;=extend(today-30,year to second) and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-		  </where><!-- 可为空 -->
-      <field-define><!-- 可重复 -->
-				<id>f1</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2' and est.sheettype='@s1@'
-				and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-       <field-define><!-- 可重复 -->
-				<id>f2</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8' and est.sheettype='@s1@'
-				and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f3</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.taskname='HoldHumTask' and est.sheettype='@s1@'
-				and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f4</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.sheettype='@s1@' and 
-				est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour
-				and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f5</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.sheettype='@s1@' and 
-				est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour 
-				and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f6</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when  est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.sheettype='@s1@' and 
-				est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute
-				and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f7</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where  est.sendtime&gt;=extend(today-30,year to second) and est.sheettype='@s1@' and current&gt;est.completetimelimit
-				and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		</query-define>
-		
-	</kpi-define>	
-
-	<!-- 第二层部门 -->
-	<kpi-define><!-- 可重复 -->
-		<name>second_dept</name>
-		<kpi-caption></kpi-caption>
-    <condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		
-	  <summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>city.depttype</column>
-		  <id2name-service>statBaseDeptId2name_v35</id2name-service>
-		</summary-define>
-		
-		
-    <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO</stat-detail-vo><!--显示DetailVO-->
-        
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-		<!-- sql片段,用于jdbc统计(分子) -->
-      <from>v_flowcontrol est,est_dept_city city</from><!-- 不可为空 -->
-		  <where>
-		    est.operatedeptid=city.deptid  and  est.sendtime&gt;=extend(today-30,year to second)
-		  </where><!-- 可为空 -->
-      <field-define><!-- 可重复 -->
-				<id>f1</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid  
-				and est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2' and city.depttype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-       <field-define><!-- 可重复 -->
-				<id>f2</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid   
-				and est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8' and city.depttype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f3</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid  
-				and est.sendtime&gt;=extend(today-30,year to second) and est.taskname='HoldHumTask' and city.depttype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f4</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid   
-				and est.sendtime&gt;=extend(today-30,year to second) and city.depttype='@s1@'  and 
-				est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f5</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid  
-				and est.sendtime&gt;=extend(today-30,year to second) and city.depttype='@s1@' and 
-				est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f6</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when  est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid  
-				and est.sendtime&gt;=extend(today-30,year to second) and city.depttype='@s1@' and 
-				est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f7</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid  
-				and est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit and city.depttype='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		</query-define>
-	</kpi-define>
-	
-	
-  <!-- 第三层部门 -->
-	<kpi-define><!-- 可重复 -->
-		<name>third_dept</name>
-		<kpi-caption></kpi-caption>
-    <condition-param page-name="beginTime"/>
-		<condition-param page-name="endTime"/>
-		
-		<condition-param  page-name="dydept"/>
-		
-	  <summary-define>
-			<id>s1</id>
-			<sequence></sequence>
-			<column>est.operatedeptid</column>
-		  <id2name-service>statBaseDeptId2name_v35</id2name-service>
-		</summary-define>
-		
-		
-		
-    <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO</stat-detail-vo><!--显示DetailVO-->
-        
-		<query-define><!-- 可重复 -->
-			<name>query1</name>
-		<!-- sql片段,用于jdbc统计(分子) -->
-      <from>v_flowcontrol est</from><!-- 不可为空 -->
-		  <where>
-		    est.sendtime&gt;=extend(today-30,year to second)
-		    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
-		    
-		  </where><!-- 可为空 -->
-      <field-define><!-- 可重复 -->
-				<id>f1</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2'  and est.operatedeptid='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-       <field-define><!-- 可重复 -->
-				<id>f2</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8' and est.operatedeptid='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f3</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskname='HoldHumTask' and est.operatedeptid='@s1@'
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f4</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.operatedeptid='@s1@' and 
-				est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2) hour to hour 
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f5</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.operatedeptid='@s1@' and  
-				est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1) hour to hour 
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f6</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when  est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-			  from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.operatedeptid='@s1@' and 
-				est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to minute
-				order by est.sendtime desc
-				</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		   <field-define><!-- 可重复 -->
-				<id>f7</id><!--总工单数-->
-				<sequence>1</sequence>
-        <stat-type>field_sql</stat-type>
-				<stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
-        <list-hsql>
-				select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
-				from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit and est.operatedeptid='@s1@'
-				order by est.sendtime desc
-					</list-hsql>
-				<list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
-		  </field-define>
-		</query-define>
-	</kpi-define>
-	
+    </kpi-define>
 
 
+    <!-- 第二层工单 -->
+    <kpi-define><!-- 可重复 -->
+        <name>second_sheet</name>
+        <kpi-caption></kpi-caption>
+
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.sheettype</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+
+        <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
+
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>v_flowcontrol est</from><!-- 不可为空 -->
+            <where>
+                est.sendtime&gt;=extend(today-30,year to second)
+            </where><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2'
+                    and est.sheettype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8'
+                    and est.sheettype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.taskname='HoldHumTask' and est.sheettype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f4</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and
+                    est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.sheettype='@s1@' and
+                    est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2)
+                    hour to hour then 1 else 0 end)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f5</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and
+                    est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.sheettype='@s1@' and
+                    est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1)
+                    hour to hour then 1 else 0 end)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f6</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30)
+                    minute to minute then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.sheettype='@s1@' and
+                    est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to
+                    minute
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f7</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit
+                    and est.sheettype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+    </kpi-define>
+
+    <!-- 第三层工单 -->
+    <kpi-define><!-- 可重复 -->
+        <name>third_sheet</name>
+        <kpi-caption></kpi-caption>
+
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+        <condition-param page-name="dydept"/>
+
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.sheettype</column>
+            <id2name-service>statDictId2name_v35</id2name-service>
+        </summary-define>
+
+        <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
+
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>v_flowcontrol est</from><!-- 不可为空 -->
+            <where>
+                est.sendtime&gt;=extend(today-30,year to second) and est.operatedeptid in (select deptid from
+                taw_system_dept start with deptid='@dydept@' connect by prior deptid=parentdeptid)
+            </where><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2'
+                    and est.sheettype='@s1@'
+                    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                    prior deptid=parentdeptid)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8'
+                    and est.sheettype='@s1@'
+                    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                    prior deptid=parentdeptid)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.taskname='HoldHumTask' and est.sheettype='@s1@'
+                    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                    prior deptid=parentdeptid)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f4</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and
+                    est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.sheettype='@s1@' and
+                    est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2)
+                    hour to hour
+                    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                    prior deptid=parentdeptid)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f5</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and
+                    est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.sheettype='@s1@' and
+                    est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1)
+                    hour to hour
+                    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                    prior deptid=parentdeptid)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f6</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30)
+                    minute to minute then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.sheettype='@s1@' and
+                    est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to
+                    minute
+                    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                    prior deptid=parentdeptid)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f7</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.sheettype='@s1@' and current&gt;est.completetimelimit
+                    and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                    prior deptid=parentdeptid)
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+
+    </kpi-define>
+
+    <!-- 第二层部门 -->
+    <kpi-define><!-- 可重复 -->
+        <name>second_dept</name>
+        <kpi-caption></kpi-caption>
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
+
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>city.depttype</column>
+            <id2name-service>statBaseDeptId2name_v35</id2name-service>
+        </summary-define>
 
 
+        <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
+
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>v_flowcontrol est,est_dept_city city</from><!-- 不可为空 -->
+            <where>
+                est.operatedeptid=city.deptid and est.sendtime&gt;=extend(today-30,year to second)
+            </where><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid
+                    and est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2' and city.depttype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid
+                    and est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8' and city.depttype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid
+                    and est.sendtime&gt;=extend(today-30,year to second) and est.taskname='HoldHumTask' and
+                    city.depttype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f4</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and
+                    est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid
+                    and est.sendtime&gt;=extend(today-30,year to second) and city.depttype='@s1@' and
+                    est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2)
+                    hour to hour
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f5</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and
+                    est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid
+                    and est.sendtime&gt;=extend(today-30,year to second) and city.depttype='@s1@' and
+                    est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1)
+                    hour to hour
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f6</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30)
+                    minute to minute then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid
+                    and est.sendtime&gt;=extend(today-30,year to second) and city.depttype='@s1@' and
+                    est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to
+                    minute
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f7</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est,est_dept_city city where est.operatedeptid=city.deptid
+                    and est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit and
+                    city.depttype='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+    </kpi-define>
 
 
+    <!-- 第三层部门 -->
+    <kpi-define><!-- 可重复 -->
+        <name>third_dept</name>
+        <kpi-caption></kpi-caption>
+        <condition-param page-name="beginTime"/>
+        <condition-param page-name="endTime"/>
 
-	
+        <condition-param page-name="dydept"/>
+
+        <summary-define>
+            <id>s1</id>
+            <sequence></sequence>
+            <column>est.operatedeptid</column>
+            <id2name-service>statBaseDeptId2name_v35</id2name-service>
+        </summary-define>
+
+
+        <stat-detail-vo>com.boco.eoms.commons.statistic.flowcontrol.vo.FlowcontrolDetailVO
+        </stat-detail-vo><!--显示DetailVO-->
+
+        <query-define><!-- 可重复 -->
+            <name>query1</name>
+            <!-- sql片段,用于jdbc统计(分子) -->
+            <from>v_flowcontrol est</from><!-- 不可为空 -->
+            <where>
+                est.sendtime&gt;=extend(today-30,year to second)
+                and est.operatedeptid in (select deptid from taw_system_dept start with deptid='@dydept@' connect by
+                prior deptid=parentdeptid)
+
+            </where><!-- 可为空 -->
+            <field-define><!-- 可重复 -->
+                <id>f1</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='2' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='2'
+                    and est.operatedeptid='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f2</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskstatus='8' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and est.taskstatus='8'
+                    and est.operatedeptid='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f3</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.taskname='HoldHumTask' then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.taskname='HoldHumTask' and est.operatedeptid='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f4</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(1) hour to hour and
+                    est.completetimelimit-current&lt;=interval(2) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.operatedeptid='@s1@' and
+                    est.completetimelimit-current&gt;=interval(1) hour to hour and est.completetimelimit-current&lt;=interval(2)
+                    hour to hour
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f5</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit-current&gt;=interval(30) minute to minute and
+                    est.completetimelimit-current&lt;=interval(1) hour to hour then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.operatedeptid='@s1@' and
+                    est.completetimelimit-current&gt;=interval(30) minute to minute and est.completetimelimit-current&lt;=interval(1)
+                    hour to hour
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f6</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30)
+                    minute to minute then 1 else 0 end)
+                </stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and
+                    est.operatedeptid='@s1@' and
+                    est.completetimelimit&gt;=current and est.completetimelimit-current&lt;=interval(30) minute to
+                    minute
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+            <field-define><!-- 可重复 -->
+                <id>f7</id><!--总工单数-->
+                <sequence>1</sequence>
+                <stat-type>field_sql</stat-type>
+                <stat-sql>sum(case when current&gt;est.completetimelimit then 1 else 0 end)</stat-sql>
+                <list-hsql>
+                    select est.id as mainid,est.sheetid,est.sendtime,est.title,est.sheettype,est.completetimelimit
+                    from v_flowcontrol est where est.sendtime&gt;=extend(today-30,year to second) and current&gt;est.completetimelimit
+                    and est.operatedeptid='@s1@'
+                    order by est.sendtime desc
+                </list-hsql>
+                <list-count-select-sql>select count(est.id)</list-count-select-sql><!--列表总数-->
+            </field-define>
+        </query-define>
+    </kpi-define>
+
+
 </KpiConfig>

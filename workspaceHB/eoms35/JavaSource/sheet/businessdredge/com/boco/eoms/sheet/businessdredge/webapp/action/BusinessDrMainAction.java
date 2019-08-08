@@ -11,21 +11,22 @@ import com.boco.eoms.sheet.base.webapp.action.IBaseSheet;
 import com.boco.eoms.sheet.base.webapp.action.SheetAction;
 
 public class BusinessDrMainAction extends SheetAction {
-	
-	public ActionForward init(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response){
-		return mapping.findForward("newmain");
-	}
-	public ActionForward getMainInfo(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response){
-		String beanName = mapping.getAttribute();
-		IBaseSheet baseSheet = (IBaseSheet) getBean(beanName);
-		try {
-			baseSheet.getInterfaceObjMap(mapping, form, request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return mapping.findForward("new");
-	} 
+
+    public ActionForward init(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response) {
+        return mapping.findForward("newmain");
+    }
+
+    public ActionForward getMainInfo(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response) {
+        String beanName = mapping.getAttribute();
+        IBaseSheet baseSheet = (IBaseSheet) getBean(beanName);
+        try {
+            baseSheet.getInterfaceObjMap(mapping, form, request, response);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return mapping.findForward("new");
+    }
 }

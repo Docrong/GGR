@@ -72,7 +72,7 @@ public class TawSystemSubPostActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawSystemSubPost.updated"});
+        verifyActionMessages(new String[]{"tawSystemSubPost.updated"});
 
     }
 

@@ -19,12 +19,12 @@ public class PersonServiceImpl implements PersonService {
     public int insert(Person person) {
         return personMapper.insert(person);
     }
-    
-    public List findAll(){
-    	return personMapper.findAll();
+
+    public List findAll() {
+        return personMapper.findAll();
     }
-    
-    public void insertAnother(Person person){
-    	 personMapper.insertAnother(person);
+
+    public void insertAnother(Person person) {
+        personMapper.insertAnother(person);
     }
 }

@@ -4,9 +4,9 @@ import com.boco.eoms.base.util.ApplicationContextHolder;
 
 public class KmFilesAttriubuteLocator {
 
-	public static KmFilesAttributes getKmFilesAttributes() {
-		KmFilesAttributes attributes = (KmFilesAttributes) ApplicationContextHolder
-				.getInstance().getBean("kmFilesAttributes");
-		return attributes;
-	}
+    public static KmFilesAttributes getKmFilesAttributes() {
+        KmFilesAttributes attributes = (KmFilesAttributes) ApplicationContextHolder
+                .getInstance().getBean("kmFilesAttributes");
+        return attributes;
+    }
 }

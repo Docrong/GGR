@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServlet;
 import java.util.Properties;
 
 /**
- *  Properties init servlet.
+ * Properties init servlet.
+ * <p>
+ * Define the following servlet in the web.xml file for your web-application.
  *
- *  Define the following servlet in the web.xml file for your web-application.
- *
- *  <pre><code>
+ * <pre><code>
  *  <servlet>
  *    <servlet-name>log4j-init</servlet-name>
  *    <servlet-class>com.nms.resources.PropertiesInit</servlet-class>
@@ -24,12 +24,12 @@ import java.util.Properties;
  *    <load-on-startup>1</load-on-startup>
  *  </servlet>
  *  </code></pre>
+ * <p>
+ * <p>
+ * CVS info:
+ * $Id: PropertiesInit.java,v 1.2 2002/04/04 11:58:24 fxt Exp $
  *
- *
- *  CVS info:
- *  $Id: PropertiesInit.java,v 1.2 2002/04/04 11:58:24 fxt Exp $
- *
- * @author     Fossato
+ * @author Fossato
  */
 public class PropertiesInit extends HttpServlet {
     private static Category cat = Category.getInstance(PropertiesInit.class.getName());
@@ -37,9 +37,9 @@ public class PropertiesInit extends HttpServlet {
 
 
     /**
-     *  Sets the properties attribute of the PropertiesInit object
+     * Sets the properties attribute of the PropertiesInit object
      *
-     * @  properties  The new properties value
+     * @ properties  The new properties value
      */
     public static void setProperties(Properties newProperties) {
         properties = newProperties;
@@ -47,9 +47,9 @@ public class PropertiesInit extends HttpServlet {
 
 
     /**
-     *  Gets the properties attribute of the PropertiesInit object
+     * Gets the properties attribute of the PropertiesInit object
      *
-     * @return    The properties value
+     * @return The properties value
      */
     public static Properties getProperties() {
         return properties;
@@ -57,9 +57,9 @@ public class PropertiesInit extends HttpServlet {
 
 
     /**
-     *  Initialize this servlet.
+     * Initialize this servlet.
      *
-     * @exception  ServletException if any error occurs
+     * @throws ServletException if any error occurs
      */
     public void init() throws ServletException {
         String prefix = getServletContext().getRealPath("/");

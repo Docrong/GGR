@@ -35,7 +35,7 @@ public class TawRmInoutRecordManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmInoutRecordDao.expects(once()).method("getTawRmInoutRecords")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawRmInoutRecords = tawRmInoutRecordManager.getTawRmInoutRecords(null);
         assertTrue(tawRmInoutRecords.size() == 1);
@@ -45,7 +45,7 @@ public class TawRmInoutRecordManagerTest extends BaseManagerTestCase {
     public void testGetTawRmInoutRecord() throws Exception {
         // set expected behavior on dao
         tawRmInoutRecordDao.expects(once()).method("getTawRmInoutRecord")
-            .will(returnValue(new TawRmInoutRecord()));
+                .will(returnValue(new TawRmInoutRecord()));
         TawRmInoutRecord tawRmInoutRecord = tawRmInoutRecordManager.getTawRmInoutRecord(tawRmInoutRecordId);
         assertTrue(tawRmInoutRecord != null);
         tawRmInoutRecordDao.verify();
@@ -56,7 +56,7 @@ public class TawRmInoutRecordManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmInoutRecordDao.expects(once()).method("saveTawRmInoutRecord")
-            .with(same(tawRmInoutRecord)).isVoid();
+                .with(same(tawRmInoutRecord)).isVoid();
 
         tawRmInoutRecordManager.saveTawRmInoutRecord(tawRmInoutRecord);
         tawRmInoutRecordDao.verify();
@@ -71,7 +71,7 @@ public class TawRmInoutRecordManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawRmInoutRecordDao.expects(once()).method("saveTawRmInoutRecord")
-            .with(same(tawRmInoutRecord)).isVoid();
+                .with(same(tawRmInoutRecord)).isVoid();
         tawRmInoutRecordManager.saveTawRmInoutRecord(tawRmInoutRecord);
         tawRmInoutRecordDao.verify();
 

@@ -1,7 +1,6 @@
 package com.boco.eoms.sheet.maintenanceservice.dao;
 
 
-
 /**
  * <p>
  * Title:维保服务审批
@@ -12,12 +11,11 @@ package com.boco.eoms.sheet.maintenanceservice.dao;
  * <p>
  * Thu Mar 16 15:48:02 CST 2017
  * </p>
- * 
+ *
  * @author lizhi
  * @version 3.5
- * 
  */
- 
- public interface IMaintenanceServiceTaskDAO  {
- 
- }
+
+public interface IMaintenanceServiceTaskDAO {
+
+}

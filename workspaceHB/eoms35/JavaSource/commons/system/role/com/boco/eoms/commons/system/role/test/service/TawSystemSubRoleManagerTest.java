@@ -37,7 +37,7 @@ public class TawSystemSubRoleManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemSubRoleDao.expects(once()).method("getTawSystemSubRoles")
-            .will(returnValue(results));
+                .will(returnValue(results));
 
         List tawSystemSubRoles = tawSystemSubRoleManager.getTawSystemSubRoles(1);
         assertTrue(tawSystemSubRoles.size() == 1);
@@ -47,7 +47,7 @@ public class TawSystemSubRoleManagerTest extends BaseManagerTestCase {
     public void testGetTawSystemSubRole() throws Exception {
         // set expected behavior on dao
         tawSystemSubRoleDao.expects(once()).method("getTawSystemSubRole")
-            .will(returnValue(new TawSystemSubRole()));
+                .will(returnValue(new TawSystemSubRole()));
         TawSystemSubRole tawSystemSubRole = tawSystemSubRoleManager.getTawSystemSubRole(tawSystemSubRoleId);
         assertTrue(tawSystemSubRole != null);
         tawSystemSubRoleDao.verify();
@@ -58,12 +58,12 @@ public class TawSystemSubRoleManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemSubRoleDao.expects(once()).method("saveTawSystemSubRole")
-            .with(same(tawSystemSubRole)).isVoid();
+                .with(same(tawSystemSubRole)).isVoid();
         Map userMap = new HashMap();
-        userMap.put("user1",RoleConstants.ROLETYPE_SUBROLE);
-        userMap.put("user2",RoleConstants.ROLETYPE_SUBROLE);
+        userMap.put("user1", RoleConstants.ROLETYPE_SUBROLE);
+        userMap.put("user2", RoleConstants.ROLETYPE_SUBROLE);
 
-        tawSystemSubRoleManager.saveTawSystemSubRole(tawSystemSubRole,userMap);
+        tawSystemSubRoleManager.saveTawSystemSubRole(tawSystemSubRole, userMap);
         tawSystemSubRoleDao.verify();
     }
 
@@ -74,12 +74,12 @@ public class TawSystemSubRoleManagerTest extends BaseManagerTestCase {
 
         // set expected behavior on dao
         tawSystemSubRoleDao.expects(once()).method("saveTawSystemSubRole")
-            .with(same(tawSystemSubRole)).isVoid();
-        
+                .with(same(tawSystemSubRole)).isVoid();
+
         Map userMap = new HashMap();
-        userMap.put("user1",RoleConstants.ROLETYPE_SUBROLE);
-        userMap.put("user2",RoleConstants.ROLETYPE_SUBROLE);
-        tawSystemSubRoleManager.saveTawSystemSubRole(tawSystemSubRole,userMap);
+        userMap.put("user1", RoleConstants.ROLETYPE_SUBROLE);
+        userMap.put("user2", RoleConstants.ROLETYPE_SUBROLE);
+        tawSystemSubRoleManager.saveTawSystemSubRole(tawSystemSubRole, userMap);
         tawSystemSubRoleDao.verify();
 
         // reset expectations
@@ -104,62 +104,63 @@ public class TawSystemSubRoleManagerTest extends BaseManagerTestCase {
         }
         tawSystemSubRoleDao.verify();
     }
-    
+
     /**
      * 测试批量保存子角色
+     *
      * @throws Exception
      */
-    public void testSaveTawSystemSubRoles() throws Exception{
-    	List subRoleList = new ArrayList();
-    	TawSystemSubRole tawSystemSubRole1 = new TawSystemSubRole();
-    	tawSystemSubRole1.setSubRoleName("testLogo");
-    	tawSystemSubRole1.setRoleId(1999);
-    	tawSystemSubRole1.setDeptId("111");
-    	tawSystemSubRole1.setType1("type1");
-    	tawSystemSubRole1.setType2("type2");
-    	tawSystemSubRole1.setType3("type3");
-    	tawSystemSubRole1.setType4("type4");
-    	subRoleList.add(tawSystemSubRole1);
-    	
-    	TawSystemSubRole tawSystemSubRole2 = new TawSystemSubRole();
-    	tawSystemSubRole2.setSubRoleName("testLogo");
-    	tawSystemSubRole2.setRoleId(1999);
-    	tawSystemSubRole2.setDeptId("112");
-    	tawSystemSubRole2.setType1("type1");
-    	tawSystemSubRole2.setType2("type2");
-    	tawSystemSubRole2.setType3("type3");
-    	tawSystemSubRole2.setType4("type4");
-    	subRoleList.add(tawSystemSubRole2);
-    	
-    	TawSystemSubRole tawSystemSubRole3 = tawSystemSubRole1;
-    	subRoleList.add(tawSystemSubRole3);
-    	
-    	
-    	
-    	for(int i=0;i<subRoleList.size();i++){
-    		TawSystemSubRole role = (TawSystemSubRole)subRoleList.get(i);
-    		tawSystemSubRoleDao.expects(once()).method("saveTawSystemSubRole")
-	        .with(same(role)).isVoid();
-    		tawSystemSubRoleManager.saveTawSystemSubRole(role,null);
-    		tawSystemSubRoleDao.reset();
-    	}
-	    tawSystemSubRoleDao.verify();
-	    tawSystemSubRoleDao.reset();
-	    
+    public void testSaveTawSystemSubRoles() throws Exception {
+        List subRoleList = new ArrayList();
+        TawSystemSubRole tawSystemSubRole1 = new TawSystemSubRole();
+        tawSystemSubRole1.setSubRoleName("testLogo");
+        tawSystemSubRole1.setRoleId(1999);
+        tawSystemSubRole1.setDeptId("111");
+        tawSystemSubRole1.setType1("type1");
+        tawSystemSubRole1.setType2("type2");
+        tawSystemSubRole1.setType3("type3");
+        tawSystemSubRole1.setType4("type4");
+        subRoleList.add(tawSystemSubRole1);
+
+        TawSystemSubRole tawSystemSubRole2 = new TawSystemSubRole();
+        tawSystemSubRole2.setSubRoleName("testLogo");
+        tawSystemSubRole2.setRoleId(1999);
+        tawSystemSubRole2.setDeptId("112");
+        tawSystemSubRole2.setType1("type1");
+        tawSystemSubRole2.setType2("type2");
+        tawSystemSubRole2.setType3("type3");
+        tawSystemSubRole2.setType4("type4");
+        subRoleList.add(tawSystemSubRole2);
+
+        TawSystemSubRole tawSystemSubRole3 = tawSystemSubRole1;
+        subRoleList.add(tawSystemSubRole3);
+
+
+        for (int i = 0; i < subRoleList.size(); i++) {
+            TawSystemSubRole role = (TawSystemSubRole) subRoleList.get(i);
+            tawSystemSubRoleDao.expects(once()).method("saveTawSystemSubRole")
+                    .with(same(role)).isVoid();
+            tawSystemSubRoleManager.saveTawSystemSubRole(role, null);
+            tawSystemSubRoleDao.reset();
+        }
+        tawSystemSubRoleDao.verify();
+        tawSystemSubRoleDao.reset();
+
 //	    List roleList = new ArrayList();
 //	    tawSystemSubRoleDao.expects(once()).method("getTawSystemSubRoles").will(returnValue(roleList));
 //	    tawSystemSubRoleManager.getTawSystemSubRoles(1999);
 //    	assertTrue(roleList.size()==2);
     }
-    public void testRemove(){
-    	tawSystemSubRoleManager.deleteSubRoles("22,23");
-    	try {
-    		tawSystemSubRoleManager.getTawSystemSubRole("22");
-    		tawSystemSubRoleManager.getTawSystemSubRole("23");
+
+    public void testRemove() {
+        tawSystemSubRoleManager.deleteSubRoles("22,23");
+        try {
+            tawSystemSubRoleManager.getTawSystemSubRole("22");
+            tawSystemSubRoleManager.getTawSystemSubRole("23");
             fail("tawSystemSubRole found in database");
         } catch (Exception e) {
             assertNotNull(e.getMessage());
         }
     }
-    
+
 }

@@ -12,21 +12,19 @@ import com.boco.eoms.commons.system.dict.exceptions.DictDAOException;
  * <p>
  * Date:2007-10-19 9:47:17
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public interface ID2NameDAO {
     /**
      * id转name
-     * 
-     * @param id
-     *            一般为表中的主键
+     *
+     * @param id 一般为表中的主键
      * @return 返回主键对应的name(自定义)
      * @throws DictDAOException
      */
     public String id2Name(String id) throws DictDAOException;
 
-   
+
 }

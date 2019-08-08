@@ -1,7 +1,7 @@
 package com.boco.eoms.commons.accessories.model;
 
 public class TawCommonsApplication {
-	 // properties
+    // properties
     private String appName;
 
     private String notes;
@@ -14,7 +14,7 @@ public class TawCommonsApplication {
      * default constructor
      */
     public TawCommonsApplication() {
-   
+
     }
 
     // Getter and Setter functions for each properties

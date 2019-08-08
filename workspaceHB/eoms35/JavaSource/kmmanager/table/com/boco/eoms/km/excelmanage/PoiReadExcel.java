@@ -5,6 +5,7 @@ package com.boco.eoms.km.excelmanage;
  * <p>Description: wϰ</p>
  * <p>Copyright: Copyright (c) 2004</p>
  * <p>Company: </p>
+ *
  * @author not attributable
  * @version 1.0
  */
@@ -24,129 +25,125 @@ import java.util.Iterator;
 
 public class PoiReadExcel {
 
-  public void ReadExcel() {
+    public void ReadExcel() {
 
-    POIFSFileSystem fs = null;
-    HSSFWorkbook wb = null;
-    HSSFSheet sheet = null;
-    HSSFHeader header = null;
-    HSSFFooter footer = null;
-    HSSFRow row = null;
-    HSSFCell cell = null;
+        POIFSFileSystem fs = null;
+        HSSFWorkbook wb = null;
+        HSSFSheet sheet = null;
+        HSSFHeader header = null;
+        HSSFFooter footer = null;
+        HSSFRow row = null;
+        HSSFCell cell = null;
 
-    Region region = null;
+        Region region = null;
 
-    Iterator iteratorRow = null;
-    Iterator iteratorCell = null;
-    int cellLastInt = 0;
-    int regionInt = 0;
+        Iterator iteratorRow = null;
+        Iterator iteratorCell = null;
+        int cellLastInt = 0;
+        int regionInt = 0;
 
-    try {
-      fs = new POIFSFileSystem(new FileInputStream("D:\\test.xls"));
-      wb = new HSSFWorkbook(fs);
-    }
-    catch (java.io.FileNotFoundException e) {
-      System.out.println("�ļ�û���ҵ�");
-      System.exit(0);
-    }
-    catch (java.io.IOException e) {
-      System.out.println("��ȡ�ļ�����");
-      System.exit(0);
-    }
+        try {
+            fs = new POIFSFileSystem(new FileInputStream("D:\\test.xls"));
+            wb = new HSSFWorkbook(fs);
+        } catch (java.io.FileNotFoundException e) {
+            System.out.println("�ļ�û���ҵ�");
+            System.exit(0);
+        } catch (java.io.IOException e) {
+            System.out.println("��ȡ�ļ�����");
+            System.exit(0);
+        }
 
-    int sheetCount = wb.getNumberOfSheets(); //sheet����
+        int sheetCount = wb.getNumberOfSheets(); //sheet����
 
-    for (int i = 0; i < sheetCount; i++) {
-      sheet = wb.getSheetAt(i);
+        for (int i = 0; i < sheetCount; i++) {
+            sheet = wb.getSheetAt(i);
 
-      iteratorRow = sheet.rowIterator();
+            iteratorRow = sheet.rowIterator();
 
-      while (iteratorRow.hasNext()) {
-        row = (HSSFRow) iteratorRow.next();
-        pl("�кţ�" + row.getRowNum());
+            while (iteratorRow.hasNext()) {
+                row = (HSSFRow) iteratorRow.next();
+                pl("�кţ�" + row.getRowNum());
 
-        cellLastInt = row.getLastCellNum();
+                cellLastInt = row.getLastCellNum();
 
-        for (int j = 0; j < cellLastInt; j++) {
+                for (int j = 0; j < cellLastInt; j++) {
 
-          cell = row.getCell( (short) j);
+                    cell = row.getCell((short) j);
 
-          if (cell != null) {
-            p("�кţ�" + cell.getCellNum());
-            switch (cell.getCellType()) {
-              case HSSFCell.CELL_TYPE_STRING:
-                pl(cell.getStringCellValue());
-                break;
-              case HSSFCell.CELL_TYPE_NUMERIC:
-                pl(cell.getNumericCellValue());
-                break;
-              case HSSFCell.CELL_TYPE_BLANK:
-                pl("��");
-                break;
+                    if (cell != null) {
+                        p("�кţ�" + cell.getCellNum());
+                        switch (cell.getCellType()) {
+                            case HSSFCell.CELL_TYPE_STRING:
+                                pl(cell.getStringCellValue());
+                                break;
+                            case HSSFCell.CELL_TYPE_NUMERIC:
+                                pl(cell.getNumericCellValue());
+                                break;
+                            case HSSFCell.CELL_TYPE_BLANK:
+                                pl("��");
+                                break;
+                        }
+                    }
+                }
             }
-          }
+
+            regionInt = sheet.getNumMergedRegions();
+            System.out.println("regionInt = " + regionInt);
+            for (int k = 0; k < regionInt; k++) {
+                region = sheet.getMergedRegionAt(k);
+
+                pl("��ʽ" + k + "(" + region.getRowFrom() + "," + region.getRowTo() +
+                        "," +
+                        region.getColumnFrom() + "," + region.getColumnTo() + ")");
+
+                if (region.getRowFrom() != region.getRowTo() || region.getColumnFrom() != region.getColumnTo()) {
+
+
+                }
+            }
+
         }
-      }
 
-      regionInt = sheet.getNumMergedRegions();
-System.out.println("regionInt = " + regionInt);
-      for(int k = 0; k < regionInt; k++){
-        region = sheet.getMergedRegionAt(k);
-
-        pl("��ʽ" + k + "(" + region.getRowFrom() + "," + region.getRowTo() +
-           "," +
-           region.getColumnFrom() + "," + region.getColumnTo() + ")");
-
-        if(region.getRowFrom() !=  region.getRowTo() || region.getColumnFrom() !=  region.getColumnTo()){
-
-
+        try {
+            FileOutputStream fileOut = new FileOutputStream("D:\\test.xls");
+            wb.write(fileOut);
+            fileOut.close();
+        } catch (java.io.FileNotFoundException e) {
+            System.out.println("�ļ�û���ҵ�");
+            System.exit(0);
+        } catch (java.io.IOException e) {
+            System.out.println("�����ļ�����");
+            System.exit(0);
         }
-      }
-
     }
 
-    try {
-      FileOutputStream fileOut = new FileOutputStream("D:\\test.xls");
-      wb.write(fileOut);
-      fileOut.close();
+    public void pl(String _info) {
+        System.out.println(_info);
     }
-    catch (java.io.FileNotFoundException e) {
-      System.out.println("�ļ�û���ҵ�");
-      System.exit(0);
+
+    public void pl(int _info) {
+        System.out.println(_info);
     }
-    catch (java.io.IOException e) {
-      System.out.println("�����ļ�����");
-      System.exit(0);
+
+    public void pl(double _info) {
+        System.out.println(_info);
     }
-  }
 
-  public void pl(String _info) {
-    System.out.println(_info);
-  }
+    public void p(String _info) {
+        System.out.print(_info);
+    }
 
-  public void pl(int _info) {
-    System.out.println(_info);
-  }
+    public void p(int _info) {
+        System.out.print(_info);
+    }
 
-  public void pl(double _info) {
-    System.out.println(_info);
-  }
-
-  public void p(String _info) {
-    System.out.print(_info);
-  }
-
-  public void p(int _info) {
-    System.out.print(_info);
-  }
-
-  public void p(double _info) {
-    System.out.print(_info);
-  }
+    public void p(double _info) {
+        System.out.print(_info);
+    }
 
 
-  public static void main(String[] args) {
-    PoiReadExcel poiReadExcel = new PoiReadExcel();
-    poiReadExcel.ReadExcel();
-  }
+    public static void main(String[] args) {
+        PoiReadExcel poiReadExcel = new PoiReadExcel();
+        poiReadExcel.ReadExcel();
+    }
 }

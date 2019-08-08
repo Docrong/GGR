@@ -10,26 +10,28 @@ package com.boco.eoms.commons.system.dict.model;
  * <p>
  * Date:2007-10-24 19:38:16
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictTagHelper implements IDictTagHelper {
-	
-	private String alt;
-	/**
-	 * @return Returns the alt.
-	 */
-	public String getAlt() {
-		return alt;
-	}
-	/**
-	 * @param alt The alt to set.
-	 */
-	public void setAlt(String alt) {
-		this.alt = alt;
-	}
+
+    private String alt;
+
+    /**
+     * @return Returns the alt.
+     */
+    public String getAlt() {
+        return alt;
+    }
+
+    /**
+     * @param alt The alt to set.
+     */
+    public void setAlt(String alt) {
+        this.alt = alt;
+    }
+
     /**
      * html的onchange
      */
@@ -43,8 +45,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param attributes
-     *            the attributes to set
+     * @param attributes the attributes to set
      */
     public void setAttributes(String attributes) {
         this.attributes = attributes;
@@ -58,8 +59,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param onchange
-     *            the onchange to set
+     * @param onchange the onchange to set
      */
     public void setOnchange(String onchange) {
         this.onchange = onchange;
@@ -106,7 +106,7 @@ public class DictTagHelper implements IDictTagHelper {
     private String defaultId;
 
     private String beanId;
-  
+
 
     /**
      * @return the beanId
@@ -116,8 +116,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param beanId
-     *            the beanId to set
+     * @param beanId the beanId to set
      */
     public void setBeanId(String beanId) {
         this.beanId = beanId;
@@ -131,8 +130,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param defaultId
-     *            the defaultId to set
+     * @param defaultId the defaultId to set
      */
     public void setDefaultId(String defaultId) {
         this.defaultId = defaultId;
@@ -146,8 +144,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param dictId
-     *            the dictId to set
+     * @param dictId the dictId to set
      */
     public void setDictId(String dictId) {
         this.dictId = dictId;
@@ -161,8 +158,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param isQuery
-     *            the isQuery to set
+     * @param isQuery the isQuery to set
      */
     public void setIsQuery(String isQuery) {
         this.isQuery = isQuery;
@@ -176,8 +172,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param itemId
-     *            the itemId to set
+     * @param itemId the itemId to set
      */
     public void setItemId(String itemId) {
         this.itemId = itemId;
@@ -191,8 +186,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param key
-     *            the key to set
+     * @param key the key to set
      */
     public void setKey(String key) {
         this.key = key;
@@ -206,8 +200,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param selectId
-     *            the selectId to set
+     * @param selectId the selectId to set
      */
     public void setSelectId(String selectId) {
         this.selectId = selectId;
@@ -221,8 +214,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param relationId
-     *            the relationId to set
+     * @param relationId the relationId to set
      */
     public void setRelationId(String relationId) {
         this.relationId = relationId;
@@ -251,8 +243,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param cls
-     *            the cls to set
+     * @param cls the cls to set
      */
     public void setCls(String cls) {
         this.cls = cls;
@@ -266,8 +257,7 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param style
-     *            the style to set
+     * @param style the style to set
      */
     public void setStyle(String style) {
         this.style = style;
@@ -281,11 +271,10 @@ public class DictTagHelper implements IDictTagHelper {
     }
 
     /**
-     * @param subid
-     *            the subid to set
+     * @param subid the subid to set
      */
     public void setSubid(String subid) {
         this.subid = subid;
     }
-	
+
 }

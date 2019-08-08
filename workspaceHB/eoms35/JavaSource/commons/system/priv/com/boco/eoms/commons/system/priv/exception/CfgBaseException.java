@@ -9,12 +9,12 @@ package com.boco.eoms.commons.system.priv.exception;
  */
 public class CfgBaseException extends PrivBaseException {
 
-	public CfgBaseException() {
-		this("Base Exception for Basic Information.");
-	}
+    public CfgBaseException() {
+        this("Base Exception for Basic Information.");
+    }
 
-	public CfgBaseException(String errorMessage) {
-		super(errorMessage);
-	}
+    public CfgBaseException(String errorMessage) {
+        super(errorMessage);
+    }
 
 }

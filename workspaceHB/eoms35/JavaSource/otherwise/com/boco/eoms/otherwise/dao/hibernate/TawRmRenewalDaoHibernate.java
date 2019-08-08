@@ -54,12 +54,12 @@ public class TawRmRenewalDaoHibernate extends BaseDaoHibernate implements ITawRm
 
     /**
      * @see com.boco.eoms.otherwise.dao.TawRmRenewalDao#saveTawRmRenewal(TawRmRenewal tawRmRenewal)
-     */    
+     */
     public void saveTawRmRenewal(final TawRmRenewal tawRmRenewal) {
         if ((tawRmRenewal.getId() == null) || (tawRmRenewal.getId().equals("")))
-			getHibernateTemplate().save(tawRmRenewal);
-		else
-			getHibernateTemplate().saveOrUpdate(tawRmRenewal);
+            getHibernateTemplate().save(tawRmRenewal);
+        else
+            getHibernateTemplate().saveOrUpdate(tawRmRenewal);
     }
 
     /**
@@ -68,45 +68,48 @@ public class TawRmRenewalDaoHibernate extends BaseDaoHibernate implements ITawRm
     public void removeTawRmRenewal(final String id) {
         getHibernateTemplate().delete(getTawRmRenewal(id));
     }
+
     /**
-     * @see com.boco.eoms.otherwise.dao.TawRmRenewalDao#getTawRmRenewals(final Integer curPage, final Integer pageSize,final String whereStr)
+     * @see com.boco.eoms.otherwise.dao.TawRmRenewalDao#getTawRmRenewals(final Integer curPage, final Integer pageSize, final String whereStr)
      */
-    public Map getTawRmRenewals(final Integer curPage, final Integer pageSize,final String whereStr) {
+    public Map getTawRmRenewals(final Integer curPage, final Integer pageSize, final String whereStr) {
         // filter on properties set in the tawRmRenewal
         HibernateCallback callback = new HibernateCallback() {
             public Object doInHibernate(Session session) throws HibernateException {
-              String queryStr = "from TawRmRenewal";
-              if(whereStr!=null && whereStr.length()>0)
-            		queryStr += whereStr;
-            	String queryCountStr = "select count(*) " + queryStr;
+                String queryStr = "from TawRmRenewal";
+                if (whereStr != null && whereStr.length() > 0)
+                    queryStr += whereStr;
+                String queryCountStr = "select count(*) " + queryStr;
 
-							Integer total = (Integer) session.createQuery(queryCountStr).iterate()
-									.next();
-							Query query = session.createQuery(queryStr);
-							query.setFirstResult(pageSize.intValue()
-									* (curPage.intValue()));
-							query.setMaxResults(pageSize.intValue());
-							List result = query.list();
-							HashMap map = new HashMap();
-							map.put("total", total);
-							map.put("result", result);
-							return map;
+                Integer total = (Integer) session.createQuery(queryCountStr).iterate()
+                        .next();
+                Query query = session.createQuery(queryStr);
+                query.setFirstResult(pageSize.intValue()
+                        * (curPage.intValue()));
+                query.setMaxResults(pageSize.intValue());
+                List result = query.list();
+                HashMap map = new HashMap();
+                map.put("total", total);
+                map.put("result", result);
+                return map;
             }
         };
         return (Map) getHibernateTemplate().execute(callback);
     }
+
     /**
      * @see com.boco.eoms.otherwise.dao.TawRmRenewalDao#getTawRmRenewals(final Integer curPage, final Integer pageSize)
-     */    
+     */
     public Map getTawRmRenewals(final Integer curPage, final Integer pageSize) {
-			return this.getTawRmRenewals(curPage,pageSize,null);
-		}
+        return this.getTawRmRenewals(curPage, pageSize, null);
+    }
+
     /**
      * @see com.boco.eoms.otherwise.dao.TawRmRenewalDao#getChildList(String parentId)
-     */  
-	public ArrayList getChildList(String parentId){	
-		String hql = " from TawRmRenewal obj where obj.parentId='"
-			+ parentId + "' order by obj.name";
-		return (ArrayList) getHibernateTemplate().find(hql);
-	}
+     */
+    public ArrayList getChildList(String parentId) {
+        String hql = " from TawRmRenewal obj where obj.parentId='"
+                + parentId + "' order by obj.name";
+        return (ArrayList) getHibernateTemplate().find(hql);
+    }
 }

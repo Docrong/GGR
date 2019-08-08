@@ -12,25 +12,27 @@ import com.boco.eoms.base.util.ApplicationContextHolder;
 
 /**
  * @author IBM
- *
+ * <p>
  * TODO To change the template for this generated type comment go to
  * Window - Preferences - Java - Code Style - Code Templates
  */
 public class TawSystemSubRoleBO {
-	public TawSystemSubRoleBO(){
-		
-	}
-	/**
-	 * 通过id获取子角色名称
-	 * @param subRoleId
-	 * @return
-	 */
-	public String getSubRoleNameById(String subRoleId){
-		ITawSystemSubRoleManager mgr = (ITawSystemSubRoleManager)ApplicationContextHolder.getInstance().getBean("ItawSystemSubRoleManager");
-		TawSystemSubRole role = mgr.getTawSystemSubRole(subRoleId);
-		if(role!=null)
-			return role.getSubRoleName();
-		else
-			return null;
-	}
+    public TawSystemSubRoleBO() {
+
+    }
+
+    /**
+     * 通过id获取子角色名称
+     *
+     * @param subRoleId
+     * @return
+     */
+    public String getSubRoleNameById(String subRoleId) {
+        ITawSystemSubRoleManager mgr = (ITawSystemSubRoleManager) ApplicationContextHolder.getInstance().getBean("ItawSystemSubRoleManager");
+        TawSystemSubRole role = mgr.getTawSystemSubRole(subRoleId);
+        if (role != null)
+            return role.getSubRoleName();
+        else
+            return null;
+    }
 }

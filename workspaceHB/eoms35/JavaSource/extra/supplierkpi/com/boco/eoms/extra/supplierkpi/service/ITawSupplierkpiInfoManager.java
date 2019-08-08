@@ -15,6 +15,7 @@ public interface ITawSupplierkpiInfoManager extends Manager {
 
     /**
      * Gets tawSupplierkpiInfo's information based on id.
+     *
      * @param id the tawSupplierkpiInfo's id
      * @return tawSupplierkpiInfo populated tawSupplierkpiInfo object
      */
@@ -22,16 +23,20 @@ public interface ITawSupplierkpiInfoManager extends Manager {
 
     /**
      * Saves a tawSupplierkpiInfo's information
+     *
      * @param tawSupplierkpiInfo the object to be saved
      */
     public void saveTawSupplierkpiInfo(TawSupplierkpiInfo tawSupplierkpiInfo);
 
     /**
      * Removes a tawSupplierkpiInfo from the database by id
+     *
      * @param id the tawSupplierkpiInfo's id
      */
     public void removeTawSupplierkpiInfo(final String id);
+
     public Map getTawSupplierkpiInfos(final int curPage, final int pageSize);
+
     public Map getTawSupplierkpiInfos(final int curPage, final int pageSize, final String whereStr);
 }
 

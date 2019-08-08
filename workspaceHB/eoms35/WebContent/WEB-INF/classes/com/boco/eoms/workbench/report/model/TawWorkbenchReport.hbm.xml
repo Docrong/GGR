@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,22 +13,22 @@
             table="taw_workbench_report"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="reportPerson"
-               	column="reportPerson"
+                name="reportPerson"
+                column="reportPerson"
                 length="100"
                 not-null="false"
                 unique="false"
@@ -36,8 +36,8 @@
 
         </property>
         <property
-            name="reportPersonName"
-               	column="reportPersonName"
+                name="reportPersonName"
+                column="reportPersonName"
                 length="100"
                 not-null="false"
                 unique="false"
@@ -46,7 +46,7 @@
         </property>
 
         <property
-            name="reportTime"
+                name="reportTime"
                 column="reportTime"
                 length="100"
                 not-null="false"
@@ -56,18 +56,8 @@
         </property>
 
         <property
-            name="deleted"
-               	column="deleted"
-                length="8"
-                not-null="false"
-                unique="false"
-        >
-
-        </property>
-        
-        <property
-            name="auditStatus"
-               	column="auditStatus"
+                name="deleted"
+                column="deleted"
                 length="8"
                 not-null="false"
                 unique="false"
@@ -76,7 +66,17 @@
         </property>
 
         <property
-            name="tomorrowTarget"
+                name="auditStatus"
+                column="auditStatus"
+                length="8"
+                not-null="false"
+                unique="false"
+        >
+
+        </property>
+
+        <property
+                name="tomorrowTarget"
                 column="tomorrowTarget"
                 length="100"
                 not-null="false"
@@ -86,7 +86,7 @@
         </property>
 
         <property
-            name="auditer"
+                name="auditer"
                 column="auditer"
                 length="100"
                 not-null="false"
@@ -94,9 +94,9 @@
         >
 
         </property>
-        
+
         <property
-            name="auditName"
+                name="auditName"
                 column="auditName"
                 length="100"
                 not-null="false"
@@ -106,37 +106,37 @@
         </property>
 
         <property
-            name="reportType"
-                 column="reportType"
+                name="reportType"
+                column="reportType"
                 length="100"
                 not-null="false"
                 unique="false"
         >
 
-        </property> 
-           
+        </property>
+
         <property
-            name="auditTime"
-                 column="auditTime"
+                name="auditTime"
+                column="auditTime"
                 length="100"
                 not-null="false"
                 unique="false"
         >
 
-        </property>   
-        
+        </property>
+
         <property
-            name="summary"
-                 column="summary"
+                name="summary"
+                column="summary"
                 length="500"
                 not-null="false"
                 unique="false"
         >
 
-        </property>     
-    
+        </property>
 
-    </class>    
+
+    </class>
 
 </hibernate-mapping>
 

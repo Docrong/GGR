@@ -71,7 +71,7 @@ public class TawRmReplaceActionTest extends BaseStrutsTestCase {
 
         setRequestPathInfo("/saveTawRmReplace");
         addRequestParameter("method", "Save");
-  
+
         // update the form's required string fields and add it back to the request
        /* tawRmReplaceForm.setDutydate("ZjEeStSiIiXoXzDpMdDqHeInCgQrUp");
         tawRmReplaceForm.setFlag("DmDeSsDwQjGdVeOoTeFgIxEyCsWrVn");
@@ -91,7 +91,7 @@ public class TawRmReplaceActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawRmReplace.updated"});
+        verifyActionMessages(new String[]{"tawRmReplace.updated"});
 
     }
 

@@ -12,10 +12,9 @@ import java.util.List;
  * <p>
  * Date:2007-10-25 18:10:08
  * </p>
- * 
+ *
  * @author 曲静波
  * @version 1.0
- *  
  */
 public class DictRelationXML implements IDictRelation {
     /**
@@ -46,8 +45,7 @@ public class DictRelationXML implements IDictRelation {
     }
 
     /**
-     * @param dictRelationItems
-     *            the dictRelationItems to set
+     * @param dictRelationItems the dictRelationItems to set
      */
     public void setDictRelationItems(List dictRelationItems) {
         this.dictRelationItems = dictRelationItems;
@@ -61,8 +59,7 @@ public class DictRelationXML implements IDictRelation {
     }
 
     /**
-     * @param id
-     *            the id to set
+     * @param id the id to set
      */
     public void setId(String id) {
         this.id = id;
@@ -76,8 +73,7 @@ public class DictRelationXML implements IDictRelation {
     }
 
     /**
-     * @param sourceDictId
-     *            the sourceDictId to set
+     * @param sourceDictId the sourceDictId to set
      */
     public void setSourceDictId(String sourceDictId) {
         this.sourceDictId = sourceDictId;
@@ -91,8 +87,7 @@ public class DictRelationXML implements IDictRelation {
     }
 
     /**
-     * @param sourceDictKey
-     *            the sourceDictKey to set
+     * @param sourceDictKey the sourceDictKey to set
      */
     public void setSourceDictKey(String sourceDictKey) {
         this.sourceDictKey = sourceDictKey;

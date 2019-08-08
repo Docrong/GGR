@@ -1,7 +1,9 @@
 ﻿// use this to isolate the scope
 (function () {
 
-    if(!$axure.document.configuration.showConsole) { return; }
+    if (!$axure.document.configuration.showConsole) {
+        return;
+    }
 
     $(document).ready(function () {
         $axure.player.createPluginHost({
@@ -31,28 +33,29 @@
         //    $('#traceContainer').hide();
         //});
 
-        var currentStack= [];
+        var currentStack = [];
         var finishedStack = [];
 
         $axure.messageCenter.addMessageListener(function (message, data) {
-            if(message == 'globalVariableValues') {
+            if (message == 'globalVariableValues') {
                 //If variables container isn't visible, then ignore
                 //if(!$('#variablesContainer').is(":visible")) {
                 //    return;
                 //}
 
                 $('#variablesDiv').empty();
-                for(var key in data) {
+                for (var key in data) {
                     var value = data[key] == '' ? '(blank)' : data[key];
                     $('#variablesDiv').append('<div class="variableDiv"><span class="variableName">' + key + '</span><br/>' + value + '</div>');
                 }
-            } if(message == 'setGlobalVar') {
+            }
+            if (message == 'setGlobalVar') {
                 //$('#variablesContainer').html("");
                 //for (var variable in $axure.globalVariableProvider.getDefinedVariables) {
                 //    $('#variablesContainer').append("<div class='varName'>" + variable + "</div>");
                 //    $('#variablesContainer').append("<div class='varVal'>" + $axure.globalVariableProvider.getVariableValue(variable) + "</div>");
                 //}
-            } else if(message == 'axEvent') {
+            } else if (message == 'axEvent') {
                 var addToStack = "<div class='axEventBlock'>";
                 addToStack += "<div class='axTime'>" + new Date().toLocaleTimeString() + "</div>";
                 addToStack += "<div class='axLabel'>" + data.label + " (" + data.type + ")</div>";
@@ -61,15 +64,15 @@
             } else if (message == 'axEventComplete') {
                 currentStack[currentStack.length - 1] += "</div>";
                 finishedStack.push(currentStack.pop());
-                if(currentStack.length == 0) {
+                if (currentStack.length == 0) {
                     $('#traceClearLinkContainer').show();
                     $('#traceEmptyState').hide();
 
                     $('.lastAxEvent').removeClass('lastAxEvent');
-                    for(var i = finishedStack.length - 1; i >= 0; i--) {
-                        if($('#traceDiv').children().length > 99) $('#traceDiv').children().last().remove();
+                    for (var i = finishedStack.length - 1; i >= 0; i--) {
+                        if ($('#traceDiv').children().length > 99) $('#traceDiv').children().last().remove();
                         $('#traceDiv').prepend(finishedStack[i]);
-                        if(i == finishedStack.length - 1) $('#traceDiv').children().first().addClass('lastAxEvent');
+                        if (i == finishedStack.length - 1) $('#traceDiv').children().first().addClass('lastAxEvent');
                     }
                     finishedStack = [];
                 }

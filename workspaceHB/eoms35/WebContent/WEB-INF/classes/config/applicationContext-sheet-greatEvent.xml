@@ -1,121 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
 <beans>
- <!--GreatEvent-START-->    
+    <!--GreatEvent-START-->
 
     <bean id="IGreatEventMainDAO"
-		class="com.boco.eoms.sheet.greatevent.dao.hibernate.GreatEventMainDAOHibernate" autowire="byName">
-      </bean>
-	<bean id="IGreatEventLinkDAO"
-		class="com.boco.eoms.sheet.greatevent.dao.hibernate.GreatEventLinkDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="IGreatEventTaskDAO"
-		class="com.boco.eoms.sheet.greatevent.dao.hibernate.GreatEventTaskDAOHibernate" autowire="byName">
-     </bean>
-     <bean id="GreatEventTask"
-		class="com.boco.eoms.sheet.greatevent.model.GreatEventTask" autowire="byName">
-     </bean>
+          class="com.boco.eoms.sheet.greatevent.dao.hibernate.GreatEventMainDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IGreatEventLinkDAO"
+          class="com.boco.eoms.sheet.greatevent.dao.hibernate.GreatEventLinkDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="IGreatEventTaskDAO"
+          class="com.boco.eoms.sheet.greatevent.dao.hibernate.GreatEventTaskDAOHibernate" autowire="byName">
+    </bean>
+    <bean id="GreatEventTask"
+          class="com.boco.eoms.sheet.greatevent.model.GreatEventTask" autowire="byName">
+    </bean>
     <bean id="GreatEventLink"
-		class="com.boco.eoms.sheet.greatevent.model.GreatEventLink"
-		autowire="byName" />
-	<bean id="GreatEventMain"
-		class="com.boco.eoms.sheet.greatevent.model.GreatEventMain"
-		autowire="byName" />
-	<bean id="igreateventTask"
-		class="com.boco.eoms.sheet.greatevent.task.impl.GreatEventTaskImpl"
-		autowire="byName" />
-	<bean id="igreateventTaskManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventTaskManagerImpl">
-				<property name="taskModelObject" ref="GreatEventTask" />
-				<property name="taskDAO">
-					<ref bean="IGreatEventTaskDAO" />
-				</property>
-				<property name="taskConfigPath">
-					<value>/config/greateventTaskConfig.properties</value>
-				</property>	
-			</bean>
-		</property>
-	</bean>	
-	<bean id="iGreatEventFlowManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventFlowManagerImpl">
-				<property name="businessFlowAdapterService">
-					<ref bean="BusinessFlowAdapterService" />
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iGreatEventLinkManager" parent="txProxyTemplate">
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventLinkManagerImpl">
-				<property name="linkObject" ref="GreatEventLink"/>
-				<property name="linkDAO">
-				  <ref bean="IGreatEventLinkDAO"/>
-				</property>
-			</bean>
-		</property>
-	</bean>
-	<bean id="iGreatEventMainManager" parent="txProxyTemplate">
-	<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventMainManagerImpl">
-			    <property name="mainObject" ref="GreatEventMain" />
-				<property name="mainDAO">
-				 <ref bean="IGreatEventMainDAO" />
-				 </property>
-				 <property name="workSheetQO">
-					<ref bean="iGreatEventQo" />
-				</property>
-				 <property name="flowTemplateName">
-					<value>GreatEventProcess</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/greatevent-config.xml</value>
-				</property>	
-			</bean>
-		</property>
-	</bean> 
+          class="com.boco.eoms.sheet.greatevent.model.GreatEventLink"
+          autowire="byName"/>
+    <bean id="GreatEventMain"
+          class="com.boco.eoms.sheet.greatevent.model.GreatEventMain"
+          autowire="byName"/>
+    <bean id="igreateventTask"
+          class="com.boco.eoms.sheet.greatevent.task.impl.GreatEventTaskImpl"
+          autowire="byName"/>
+    <bean id="igreateventTaskManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventTaskManagerImpl">
+                <property name="taskModelObject" ref="GreatEventTask"/>
+                <property name="taskDAO">
+                    <ref bean="IGreatEventTaskDAO"/>
+                </property>
+                <property name="taskConfigPath">
+                    <value>/config/greateventTaskConfig.properties</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iGreatEventFlowManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventFlowManagerImpl">
+                <property name="businessFlowAdapterService">
+                    <ref bean="BusinessFlowAdapterService"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iGreatEventLinkManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventLinkManagerImpl">
+                <property name="linkObject" ref="GreatEventLink"/>
+                <property name="linkDAO">
+                    <ref bean="IGreatEventLinkDAO"/>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <bean id="iGreatEventMainManager" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.greatevent.service.impl.GreatEventMainManagerImpl">
+                <property name="mainObject" ref="GreatEventMain"/>
+                <property name="mainDAO">
+                    <ref bean="IGreatEventMainDAO"/>
+                </property>
+                <property name="workSheetQO">
+                    <ref bean="iGreatEventQo"/>
+                </property>
+                <property name="flowTemplateName">
+                    <value>GreatEventProcess</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/greatevent-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
 
-   <bean id="iGreatEventQo"
-		class="com.boco.eoms.sheet.greatevent.qo.impl.GreatEventQoImpl"
-		autowire="byName" singleton="false" >
-		<property name="poMain" value="GreatEventMain" />
-		<property name="poLink" value="GreatEventLink" />
-		<property name="poTask" value="GreatEventTask" />
-		<property name="aliasMain" value="greatEventMain" />
-		<property name="aliasLink" value="greatEventLink" />
-	    <property name="aliasTask" value="GreatEventTask" />
-	</bean>
+    <bean id="iGreatEventQo"
+          class="com.boco.eoms.sheet.greatevent.qo.impl.GreatEventQoImpl"
+          autowire="byName" singleton="false">
+        <property name="poMain" value="GreatEventMain"/>
+        <property name="poLink" value="GreatEventLink"/>
+        <property name="poTask" value="GreatEventTask"/>
+        <property name="aliasMain" value="greatEventMain"/>
+        <property name="aliasLink" value="greatEventLink"/>
+        <property name="aliasTask" value="GreatEventTask"/>
+    </bean>
 
-	<bean id="GreatEvent" parent="txProxyTemplate"> 
-		<property name="target">
-			<bean
-				class="com.boco.eoms.sheet.greatevent.webapp.action.GreatEventMethod">
-				<property name="businessFlowService" >
-					<ref bean="iGreatEventFlowManager" />
-			   </property>
-				<property name="linkService" 
-					ref="iGreatEventLinkManager" />
-				<property name="mainService"
-					ref="iGreatEventMainManager" />
-				<property name="sheetTask"
-					ref="GreatEventTask" />
-				<property name="taskService"
-					ref="igreateventTaskManager" />	
-				<property name="pageLength">
-					<value>15</value>
-				</property>
-				<property name="roleConfigPath">
-					<value>classpath:config/greatevent-config.xml</value>
-				</property>
-			</bean>
-		</property>
-	</bean>        
-     <!--GreatEvent-END-->  
+    <bean id="GreatEvent" parent="txProxyTemplate">
+        <property name="target">
+            <bean
+                    class="com.boco.eoms.sheet.greatevent.webapp.action.GreatEventMethod">
+                <property name="businessFlowService">
+                    <ref bean="iGreatEventFlowManager"/>
+                </property>
+                <property name="linkService"
+                          ref="iGreatEventLinkManager"/>
+                <property name="mainService"
+                          ref="iGreatEventMainManager"/>
+                <property name="sheetTask"
+                          ref="GreatEventTask"/>
+                <property name="taskService"
+                          ref="igreateventTaskManager"/>
+                <property name="pageLength">
+                    <value>15</value>
+                </property>
+                <property name="roleConfigPath">
+                    <value>classpath:config/greatevent-config.xml</value>
+                </property>
+            </bean>
+        </property>
+    </bean>
+    <!--GreatEvent-END-->
 </beans>

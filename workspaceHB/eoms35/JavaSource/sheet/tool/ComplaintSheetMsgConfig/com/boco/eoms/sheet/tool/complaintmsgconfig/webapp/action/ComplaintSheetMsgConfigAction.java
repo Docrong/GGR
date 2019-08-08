@@ -49,121 +49,121 @@ import com.boco.eoms.commons.ui.util.JSONUtil;
  * <p>
  * Mon Sep 14 10:06:54 CST 2009
  * </p>
- * 
+ *
  * @moudle.getAuthor() qinmin
  * @moudle.getVersion() 1.0
- * 
  */
 public final class ComplaintSheetMsgConfigAction extends BaseAction {
- 
-	/**
-	 * 未指定方法时默认调用的方法
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward unspecified(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		return search(mapping, form, request, response);
-	}
- 	
- 	/**
-	 * 新增投诉工单短信配置类
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+
+    /**
+     * 未指定方法时默认调用的方法
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward unspecified(ActionMapping mapping, ActionForm form,
+                                     HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 新增投诉工单短信配置类
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward add(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-    	TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-		   .getSession().getAttribute("sessionform");
-    	request.setAttribute("userId", sessionform.getUserid());
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 修改投诉工单短信配置类
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
+                             HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        request.setAttribute("userId", sessionform.getUserid());
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 修改投诉工单短信配置类
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
     public ActionForward edit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-    	TawSystemSessionForm sessionform = (TawSystemSessionForm) request
-		   .getSession().getAttribute("sessionform");
- 	    request.setAttribute("userId", sessionform.getUserid());
-		IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		ComplaintSheetMsgConfig complaintSheetMsgConfig = complaintSheetMsgConfigMgr.getComplaintSheetMsgConfig(id);
-		ComplaintSheetMsgConfigForm complaintSheetMsgConfigForm = (ComplaintSheetMsgConfigForm) convert(complaintSheetMsgConfig);
-		updateFormBean(mapping, request, complaintSheetMsgConfigForm);
-		//构建地域JSON对象
-		String areaId=StaticMethod.nullObject2String(complaintSheetMsgConfig.getAreaId());
-		JSONArray area = new JSONArray();
-		JSONArray user = new JSONArray();
-		if(!areaId.equals("")){	
-			ITawSystemAreaManager mgr =
-				(ITawSystemAreaManager) getBean("ItawSystemAreaManager");
-			TawSystemArea tawSystemArea=mgr.getAreaByAreaId(areaId);
-			JSONObject data = new JSONObject();	
-			data.put("id", areaId);
-			data.put("name", tawSystemArea.getAreaname());
-			data.put("nodeType", "dept");
-			area.put(data.toString());
-		}
-		//构建人员JSON对象
-		String userId=StaticMethod.nullObject2String(complaintSheetMsgConfig.getNotifyUserIds());
-		if(!userId.equals("")){	
-		  ITawSystemUserManager mgr =
-				(ITawSystemUserManager) getBean("itawSystemUserManager");
-		  String[] userIds=userId.split(",");
-		  for(int i=0;i<userIds.length;i++){
-			  String tempUserId=userIds[i];
-			  String tempUserName=mgr.id2Name(tempUserId);
-			  JSONObject data = new JSONObject(); 
-			  data.put("id", tempUserId);
-			  data.put("name", tempUserName);
-			  data.put("nodeType", "user");
-			  user.put(data.toString());
-		  }
-			
-		}
-		request.setAttribute("area", area);
-		request.setAttribute("user", user);
-		return mapping.findForward("edit");
-	}
-	
-	/**
-	 * 保存投诉工单短信配置类
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward save(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
-		ComplaintSheetMsgConfigForm complaintSheetMsgConfigForm = (ComplaintSheetMsgConfigForm) form;
-		boolean isNew = (null == complaintSheetMsgConfigForm.getId() || "".equals(complaintSheetMsgConfigForm.getId()));
-		ComplaintSheetMsgConfig complaintSheetMsgConfig = (ComplaintSheetMsgConfig) convert(complaintSheetMsgConfigForm);
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        TawSystemSessionForm sessionform = (TawSystemSessionForm) request
+                .getSession().getAttribute("sessionform");
+        request.setAttribute("userId", sessionform.getUserid());
+        IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        ComplaintSheetMsgConfig complaintSheetMsgConfig = complaintSheetMsgConfigMgr.getComplaintSheetMsgConfig(id);
+        ComplaintSheetMsgConfigForm complaintSheetMsgConfigForm = (ComplaintSheetMsgConfigForm) convert(complaintSheetMsgConfig);
+        updateFormBean(mapping, request, complaintSheetMsgConfigForm);
+        //构建地域JSON对象
+        String areaId = StaticMethod.nullObject2String(complaintSheetMsgConfig.getAreaId());
+        JSONArray area = new JSONArray();
+        JSONArray user = new JSONArray();
+        if (!areaId.equals("")) {
+            ITawSystemAreaManager mgr =
+                    (ITawSystemAreaManager) getBean("ItawSystemAreaManager");
+            TawSystemArea tawSystemArea = mgr.getAreaByAreaId(areaId);
+            JSONObject data = new JSONObject();
+            data.put("id", areaId);
+            data.put("name", tawSystemArea.getAreaname());
+            data.put("nodeType", "dept");
+            area.put(data.toString());
+        }
+        //构建人员JSON对象
+        String userId = StaticMethod.nullObject2String(complaintSheetMsgConfig.getNotifyUserIds());
+        if (!userId.equals("")) {
+            ITawSystemUserManager mgr =
+                    (ITawSystemUserManager) getBean("itawSystemUserManager");
+            String[] userIds = userId.split(",");
+            for (int i = 0; i < userIds.length; i++) {
+                String tempUserId = userIds[i];
+                String tempUserName = mgr.id2Name(tempUserId);
+                JSONObject data = new JSONObject();
+                data.put("id", tempUserId);
+                data.put("name", tempUserName);
+                data.put("nodeType", "user");
+                user.put(data.toString());
+            }
+
+        }
+        request.setAttribute("area", area);
+        request.setAttribute("user", user);
+        return mapping.findForward("edit");
+    }
+
+    /**
+     * 保存投诉工单短信配置类
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward save(ActionMapping mapping, ActionForm form,
+                              HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
+        ComplaintSheetMsgConfigForm complaintSheetMsgConfigForm = (ComplaintSheetMsgConfigForm) form;
+        boolean isNew = (null == complaintSheetMsgConfigForm.getId() || "".equals(complaintSheetMsgConfigForm.getId()));
+        ComplaintSheetMsgConfig complaintSheetMsgConfig = (ComplaintSheetMsgConfig) convert(complaintSheetMsgConfigForm);
 //		Object obj=	complaintSheetMsgConfigMgr.getComplaintSheetMsgConfig(complaintSheetMsgConfig.getAreaId(),
 //				complaintSheetMsgConfig.getComplaintType());		
 //		if (isNew) {
@@ -183,84 +183,84 @@ public final class ComplaintSheetMsgConfigAction extends BaseAction {
 //				complaintSheetMsgConfigMgr.saveComplaintSheetMsgConfig(complaintSheetMsgConfig);
 //			}
 //		}
-		if (isNew) {
-			complaintSheetMsgConfigMgr.saveComplaintSheetMsgConfig(complaintSheetMsgConfig);
-		} else {
-			complaintSheetMsgConfigMgr.saveComplaintSheetMsgConfig(complaintSheetMsgConfig);
-		}
-		return search(mapping, complaintSheetMsgConfigForm, request, response);
-	}
-	
-	/**
-	 * 删除投诉工单短信配置类
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward remove(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
-		String id = StaticMethod.null2String(request.getParameter("id"));
-		complaintSheetMsgConfigMgr.removeComplaintSheetMsgConfig(id);
-		return search(mapping, form, request, response);
-	}
-	
-	/**
-	 * 分页显示投诉工单短信配置类列表
-	 * 
-	 * @param mapping
-	 * @param form
-	 * @param request
-	 * @param response
-	 * @return
-	 * @throws Exception
-	 */
-	public ActionForward search(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		String pageIndexName = new org.displaytag.util.ParamEncoder(
-				ComplaintSheetMsgConfigConstants.COMPLAINTSHEETMSGCONFIG_LIST)
-				.encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
-		final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
-				.getPageSize();
-		final Integer pageIndex = new Integer(GenericValidator
-				.isBlankOrNull(request.getParameter(pageIndexName)) ? 0
-				: (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
-		IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
-		Map map = (Map) complaintSheetMsgConfigMgr.getComplaintSheetMsgConfigs(pageIndex, pageSize, "");
-		List list = (List) map.get("result");
-		request.setAttribute(ComplaintSheetMsgConfigConstants.COMPLAINTSHEETMSGCONFIG_LIST, list);
-		request.setAttribute("resultSize", map.get("total"));
-		request.setAttribute("pageSize", pageSize);
-		return mapping.findForward("list");
-	}
-	
-   public void performPreCommit(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) throws Exception  {
+        if (isNew) {
+            complaintSheetMsgConfigMgr.saveComplaintSheetMsgConfig(complaintSheetMsgConfig);
+        } else {
+            complaintSheetMsgConfigMgr.saveComplaintSheetMsgConfig(complaintSheetMsgConfig);
+        }
+        return search(mapping, complaintSheetMsgConfigForm, request, response);
+    }
 
-	   IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
-	   ComplaintSheetMsgConfigForm complaintSheetMsgConfigForm = (ComplaintSheetMsgConfigForm) form;
-	   ComplaintSheetMsgConfig complaintSheetMsgConfig = (ComplaintSheetMsgConfig) convert(complaintSheetMsgConfigForm);
-	   Object obj=	complaintSheetMsgConfigMgr.getComplaintSheetMsgConfig(complaintSheetMsgConfig.getAreaId(),
-				complaintSheetMsgConfig.getComplaintType());
-	      
-	    JSONArray data = new JSONArray();
-		JSONObject o = new JSONObject();
-		o.put("text", "所选择的故障地域、投诉类型跟已有内容相冲突，请重新选择！");
-		data.put(o);
-		JSONObject jsonRoot = new JSONObject();
-		jsonRoot.put("data", data);
-		if (obj != null) {
-			jsonRoot.put("status", "2");
-		} else {
-			jsonRoot.put("status", "0");
-		}
-		JSONUtil.print(response, jsonRoot.toString());
-	      
-   }
+    /**
+     * 删除投诉工单短信配置类
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward remove(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
+        String id = StaticMethod.null2String(request.getParameter("id"));
+        complaintSheetMsgConfigMgr.removeComplaintSheetMsgConfig(id);
+        return search(mapping, form, request, response);
+    }
+
+    /**
+     * 分页显示投诉工单短信配置类列表
+     *
+     * @param mapping
+     * @param form
+     * @param request
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    public ActionForward search(ActionMapping mapping, ActionForm form,
+                                HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        String pageIndexName = new org.displaytag.util.ParamEncoder(
+                ComplaintSheetMsgConfigConstants.COMPLAINTSHEETMSGCONFIG_LIST)
+                .encodeParameterName(org.displaytag.tags.TableTagParameters.PARAMETER_PAGE);
+        final Integer pageSize = UtilMgrLocator.getEOMSAttributes()
+                .getPageSize();
+        final Integer pageIndex = new Integer(GenericValidator
+                .isBlankOrNull(request.getParameter(pageIndexName)) ? 0
+                : (Integer.parseInt(request.getParameter(pageIndexName)) - 1));
+        IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
+        Map map = (Map) complaintSheetMsgConfigMgr.getComplaintSheetMsgConfigs(pageIndex, pageSize, "");
+        List list = (List) map.get("result");
+        request.setAttribute(ComplaintSheetMsgConfigConstants.COMPLAINTSHEETMSGCONFIG_LIST, list);
+        request.setAttribute("resultSize", map.get("total"));
+        request.setAttribute("pageSize", pageSize);
+        return mapping.findForward("list");
+    }
+
+    public void performPreCommit(ActionMapping mapping, ActionForm form,
+                                 HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        IComplaintSheetMsgConfigMgr complaintSheetMsgConfigMgr = (IComplaintSheetMsgConfigMgr) getBean("complaintSheetMsgConfigMgr");
+        ComplaintSheetMsgConfigForm complaintSheetMsgConfigForm = (ComplaintSheetMsgConfigForm) form;
+        ComplaintSheetMsgConfig complaintSheetMsgConfig = (ComplaintSheetMsgConfig) convert(complaintSheetMsgConfigForm);
+        Object obj = complaintSheetMsgConfigMgr.getComplaintSheetMsgConfig(complaintSheetMsgConfig.getAreaId(),
+                complaintSheetMsgConfig.getComplaintType());
+
+        JSONArray data = new JSONArray();
+        JSONObject o = new JSONObject();
+        o.put("text", "所选择的故障地域、投诉类型跟已有内容相冲突，请重新选择！");
+        data.put(o);
+        JSONObject jsonRoot = new JSONObject();
+        jsonRoot.put("data", data);
+        if (obj != null) {
+            jsonRoot.put("status", "2");
+        } else {
+            jsonRoot.put("status", "0");
+        }
+        JSONUtil.print(response, jsonRoot.toString());
+
+    }
 }

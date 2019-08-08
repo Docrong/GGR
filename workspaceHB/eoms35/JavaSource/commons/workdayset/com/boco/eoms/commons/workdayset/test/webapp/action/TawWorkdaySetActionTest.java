@@ -55,7 +55,7 @@ public class TawWorkdaySetActionTest extends BaseStrutsTestCase {
     }
 
     public void testSave() throws Exception {
-    	TawWorkdaySetForm tawWorkdaySetForm = new TawWorkdaySetForm();
+        TawWorkdaySetForm tawWorkdaySetForm = new TawWorkdaySetForm();
         setRequestPathInfo("/editTawWorkdaySet");
         addRequestParameter("method", "Edit");
         addRequestParameter("id", "1");
@@ -80,7 +80,7 @@ public class TawWorkdaySetActionTest extends BaseStrutsTestCase {
         verifyForward("edit");
 
         // verify success messages
-        verifyActionMessages(new String[] {"tawWorkdaySet.updated"});
+        verifyActionMessages(new String[]{"tawWorkdaySet.updated"});
 
     }
 

@@ -5,7 +5,7 @@
             <bind-xml name="report" node="element"/>
         </field>
     </class>
-    
+
     <class name="com.boco.eoms.commons.statistic.base.config.report.Report">
         <field name="datas" type="com.boco.eoms.commons.statistic.base.config.report.Datas">
             <bind-xml name="datas" node="element"/>
@@ -17,21 +17,21 @@
             <bind-xml name="id" node="attribute"/>
         </field>
     </class>
-    
+
     <class name="com.boco.eoms.commons.statistic.base.config.report.Datas">
         <field name="datas"
-            type="com.boco.eoms.commons.statistic.base.config.report.Data" collection="array">
+               type="com.boco.eoms.commons.statistic.base.config.report.Data" collection="array">
             <bind-xml name="data" node="element"/>
         </field>
     </class>
-    
+
     <class name="com.boco.eoms.commons.statistic.base.config.report.Data">
         <field name="fields"
-            type="com.boco.eoms.commons.statistic.base.config.report.Field" collection="array">
+               type="com.boco.eoms.commons.statistic.base.config.report.Field" collection="array">
             <bind-xml name="field" node="element"/>
         </field>
     </class>
-    
+
     <class name="com.boco.eoms.commons.statistic.base.config.report.Field">
         <field name="url" type="java.lang.String">
             <bind-xml name="url" node="attribute"/>
@@ -46,14 +46,14 @@
             <bind-xml name="id" node="attribute"/>
         </field>
     </class>
-    
+
     <class name="com.boco.eoms.commons.statistic.base.config.report.DisplayInfo">
         <field name="infos"
-            type="com.boco.eoms.commons.statistic.base.config.report.Info" collection="array">
+               type="com.boco.eoms.commons.statistic.base.config.report.Info" collection="array">
             <bind-xml name="info" node="element"/>
         </field>
     </class>
-    
+
     <class name="com.boco.eoms.commons.statistic.base.config.report.Info">
         <field name="name" type="java.lang.String">
             <bind-xml name="name" node="attribute"/>

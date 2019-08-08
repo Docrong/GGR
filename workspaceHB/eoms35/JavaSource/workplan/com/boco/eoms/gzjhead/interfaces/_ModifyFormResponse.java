@@ -1,13 +1,13 @@
 /**
  * _ModifyFormResponse.java
- *
+ * <p>
  * This file was auto-generated from WSDL
  * by the Apache Axis WSDL2Java emitter.
  */
 
 package com.boco.eoms.gzjhead.interfaces;
 
-public class _ModifyFormResponse  implements java.io.Serializable {
+public class _ModifyFormResponse implements java.io.Serializable {
     private java.lang.String resultModifyForm;
 
     public _ModifyFormResponse() {
@@ -22,6 +22,7 @@ public class _ModifyFormResponse  implements java.io.Serializable {
     }
 
     private java.lang.Object __equalsCalc = null;
+
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof _ModifyFormResponse)) return false;
         _ModifyFormResponse other = (_ModifyFormResponse) obj;
@@ -32,15 +33,16 @@ public class _ModifyFormResponse  implements java.io.Serializable {
         }
         __equalsCalc = obj;
         boolean _equals;
-        _equals = true && 
-            ((this.resultModifyForm==null && other.getResultModifyForm()==null) || 
-             (this.resultModifyForm!=null &&
-              this.resultModifyForm.equals(other.getResultModifyForm())));
+        _equals = true &&
+                ((this.resultModifyForm == null && other.getResultModifyForm() == null) ||
+                        (this.resultModifyForm != null &&
+                                this.resultModifyForm.equals(other.getResultModifyForm())));
         __equalsCalc = null;
         return _equals;
     }
 
     private boolean __hashCodeCalc = false;
+
     public synchronized int hashCode() {
         if (__hashCodeCalc) {
             return 0;

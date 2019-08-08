@@ -25,61 +25,57 @@ import com.boco.eoms.sheet.commonfault.dao.INetOptimizationDAO;
 import com.boco.eoms.sheet.commonfault.db.NetOptimizationDB;
 
 
+public class NetOptimizationDao extends DAO {
 
-public class NetOptimizationDao extends DAO
-		{
-	
-	public NetOptimizationDao(ConnectionPool ds)
-	{
-		super(ds);
-	}
+    public NetOptimizationDao(ConnectionPool ds) {
+        super(ds);
+    }
 
-	public  void inserNetOpt(String sheetkey)throws SQLException {
-		String sql = "INSERT INTO t_commonfault_main (id,sheetid) select m.id,m.sheetid FROM commonfault_main m where m.id = '8a9982f24f25e613014f25e834520003'";
-	//   String sql ="SELECT ID,sheetid,title FROM commonfault_main where id = '"+sheetkey+"'";
-	//	String sql ="INSERT INTO t_commonfault_main(ID,sheetid,title) values(?,?,?)"; 
-		System.out.println("--------sql netOpt ---------"+sql);
-		
-		BocoConnection conn = null;
-        PreparedStatement pstmt=null;
-        ResultSet rs=null;
-	    try {
-	    	 conn=ds.getConnection();
-	    	   pstmt=conn.prepareStatement(sql);
-	     //	  pstmt.setString(1, "8a9e63934700d4ee01471bc547ad496b");
-	      //     pstmt.setString(2, sheetkey);
-	       //     pstmt.setString(3, sheetkey);
-    	     System.out.println("------netOpt--2--");
+    public void inserNetOpt(String sheetkey) throws SQLException {
+        String sql = "INSERT INTO t_commonfault_main (id,sheetid) select m.id,m.sheetid FROM commonfault_main m where m.id = '8a9982f24f25e613014f25e834520003'";
+        //   String sql ="SELECT ID,sheetid,title FROM commonfault_main where id = '"+sheetkey+"'";
+        //	String sql ="INSERT INTO t_commonfault_main(ID,sheetid,title) values(?,?,?)";
+        System.out.println("--------sql netOpt ---------" + sql);
+
+        BocoConnection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try {
+            conn = ds.getConnection();
+            pstmt = conn.prepareStatement(sql);
+            //	  pstmt.setString(1, "8a9e63934700d4ee01471bc547ad496b");
+            //     pstmt.setString(2, sheetkey);
+            //     pstmt.setString(3, sheetkey);
+            System.out.println("------netOpt--2--");
             pstmt.executeUpdate();
-    	  //    rs= pstmt.executeQuery();
-    	     System.out.println("----SheetKey----"+sheetkey);
-    	 //    while (rs.next()){
-    	  //  	System.out.println("---------netOpt:result----"+ rs.getString("sheetid"));
-    	   //  }
+            //    rs= pstmt.executeQuery();
+            System.out.println("----SheetKey----" + sheetkey);
+            //    while (rs.next()){
+            //  	System.out.println("---------netOpt:result----"+ rs.getString("sheetid"));
+            //  }
 
             conn.commit();
-    	  System.out.println("------netOpt--3--");
-	    }   catch(SQLException ex){
-	    	System.out.println(ex);
+            System.out.println("------netOpt--3--");
+        } catch (SQLException ex) {
+            System.out.println(ex);
             ex.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
-        finally{
-        	try {
-				if(rs!=null){
-					rs.close();
-				}
-				if(pstmt!=null){
-					pstmt.close();
-				}
-				if(conn!=null){
-					conn.close();
-				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	}
+    }
 
 	/*public Integer getCountByMainId(final String sheetkey)
 	throws HibernateException {
@@ -102,10 +98,10 @@ return (Integer) getHibernateTemplate().execute(callback);
 }
 
 */
-	
-	public void main(String[] args) throws SQLException {
-		String sheekey="8a9e63934700d4ee01471bc547ad496b";
-		inserNetOpt(sheekey);
-	}
-	
+
+    public void main(String[] args) throws SQLException {
+        String sheekey = "8a9e63934700d4ee01471bc547ad496b";
+        inserNetOpt(sheekey);
+    }
+
 }

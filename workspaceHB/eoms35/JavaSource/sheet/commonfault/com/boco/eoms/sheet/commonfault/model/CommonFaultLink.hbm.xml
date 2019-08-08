@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,116 +13,116 @@
             table="commonfault_link"
     >
 
-    <id
-        name="id"
-            column="id"
-    >
+        <id
+                name="id"
+                column="id"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="assigned">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="assigned">
 
-    </generator>
+            </generator>
 
-    </id>
-         <property name="mainId" />
-       	<property name="nodeAcceptLimit" />
-		<property name="nodeCompleteLimit" />
-		<property name="operateType" />
-		<property name="operateTime" />
-		<property name="operateOrgType" />
-		<property name="operateUserId" />
-		<property name="operateDeptId" />
-		<property name="operateRoleId" />
-		<property name="operaterContact" />
-		<property name="toOrgType" />
-		<property name="toOrgUserId" />
-		<property name="toOrgDeptId" />
-		<property name="toOrgRoleId" />
-		<property name="acceptFlag" />
-		<property name="acceptTime" />
-		<property name="completeFlag" />
-		<property name="completeTime" />
-		<property name="preLinkId" />
-		<property name="parentLinkId" />
-		<property name="firstLinkId" />
-		<property name="piid" />
-		<property name="aiid" />
-		<property name="activeTemplateId" />
-		<property name="nodeTemplateName" />
-		<property name="correlationKey" />
-		<property name="nodeAccessories" />		
-		
-		<property name="templateFlag" />
-		<property name="templateName" />
-		<property name="templateCreateUserId" />
-		<property name="transferReason" />
-		<property name="remark" />
-	
-		<property name="linkFaultResponseLevel" />	
-		<property name="linkUrgentFaultLog" />	
-		<property name="linkIfMutualCommunication" />	
-		<property name="linkIfSafe" />	
-		<property name="linkIfExcuteNetChange" />	
-		<property name="linkFaultDealResult" />	
-		<property name="linkFaultAvoidTime" />	
-		<property name="linkOperRenewTime" />	
-		<property name="linkAffectTimeLength" />	
-		<property name="linkFaultReason" />	
-		<property name="linkDealStep" />	
-		<property name="linkUntreadReason" />
-		<property name="linkIfGreatFault" />
-		
-		<property name="linkIfUrgentFault" />
-		<property name="linkTransmitReason" />
-		
-		<property name="linkFaultFirstDealDesc" />
-		<property name="linkFaultDesc" />
-		<property name="linkFaultReasonSort" />
-		<property name="linkFaultReasonSubsection" />
-		<property name="linkIfFinallySolveProject" />
-		<property name="linkIfAddCaseDataBase" />	
-		<property name="linkTransmitContent" />	
-		<property name="linkExamineContent" />
-		<property name="linkIfDeferResolve" />
-		<property name="linkFaultDealInfo" />
-		
-		<property name="operateYear" />
-		<property name="operateMonth" />
-		<property name="operateDay" />
-		
-		<property name="linkUntreadIdea" />
-		<property name="faultdealTime" />
-		<property name="faultdealdesc" />
-		<property name="linkDealdesc" />
-	    <property name="selectStep" />
-	    <property name="faultTreatment" />
-	    <property name="linkBackCase" />
-	    <property name="faultClassification" />
-	    <property name="recoveryUnit" />
-	    <property name="linkIfMobile" />
-	    <property name="linkFaultReasonSubsectionTwo" />
-	    <property name="linkIfConfirmPreSolve" />
-	    <property name="confirmReason" />
-	    <property name="manualPreSolve" />
-	    <property name="faultReason" />	    
-	    
-		<property name="linkFalg" />	   
-		
-		<property name="linkCiytSubrole" />	
-		<property name="linkReserved1" />	
-		<property name="linkReserved2" />	
-		<property name="linkReserved3" />	
-		<property name="linkReserved4" />	
-		<property name="linkReserved5" />	
-		
-		<property name="linkSendOtherName" />	
-		<property name="linkSendOtherTel" />	
-		<property name="linkSendRes" />
-		<property name="linkIsPass" />
-		<property name="linkT1NoRes" />
-		
+        </id>
+        <property name="mainId"/>
+        <property name="nodeAcceptLimit"/>
+        <property name="nodeCompleteLimit"/>
+        <property name="operateType"/>
+        <property name="operateTime"/>
+        <property name="operateOrgType"/>
+        <property name="operateUserId"/>
+        <property name="operateDeptId"/>
+        <property name="operateRoleId"/>
+        <property name="operaterContact"/>
+        <property name="toOrgType"/>
+        <property name="toOrgUserId"/>
+        <property name="toOrgDeptId"/>
+        <property name="toOrgRoleId"/>
+        <property name="acceptFlag"/>
+        <property name="acceptTime"/>
+        <property name="completeFlag"/>
+        <property name="completeTime"/>
+        <property name="preLinkId"/>
+        <property name="parentLinkId"/>
+        <property name="firstLinkId"/>
+        <property name="piid"/>
+        <property name="aiid"/>
+        <property name="activeTemplateId"/>
+        <property name="nodeTemplateName"/>
+        <property name="correlationKey"/>
+        <property name="nodeAccessories"/>
 
-    </class>    
+        <property name="templateFlag"/>
+        <property name="templateName"/>
+        <property name="templateCreateUserId"/>
+        <property name="transferReason"/>
+        <property name="remark"/>
+
+        <property name="linkFaultResponseLevel"/>
+        <property name="linkUrgentFaultLog"/>
+        <property name="linkIfMutualCommunication"/>
+        <property name="linkIfSafe"/>
+        <property name="linkIfExcuteNetChange"/>
+        <property name="linkFaultDealResult"/>
+        <property name="linkFaultAvoidTime"/>
+        <property name="linkOperRenewTime"/>
+        <property name="linkAffectTimeLength"/>
+        <property name="linkFaultReason"/>
+        <property name="linkDealStep"/>
+        <property name="linkUntreadReason"/>
+        <property name="linkIfGreatFault"/>
+
+        <property name="linkIfUrgentFault"/>
+        <property name="linkTransmitReason"/>
+
+        <property name="linkFaultFirstDealDesc"/>
+        <property name="linkFaultDesc"/>
+        <property name="linkFaultReasonSort"/>
+        <property name="linkFaultReasonSubsection"/>
+        <property name="linkIfFinallySolveProject"/>
+        <property name="linkIfAddCaseDataBase"/>
+        <property name="linkTransmitContent"/>
+        <property name="linkExamineContent"/>
+        <property name="linkIfDeferResolve"/>
+        <property name="linkFaultDealInfo"/>
+
+        <property name="operateYear"/>
+        <property name="operateMonth"/>
+        <property name="operateDay"/>
+
+        <property name="linkUntreadIdea"/>
+        <property name="faultdealTime"/>
+        <property name="faultdealdesc"/>
+        <property name="linkDealdesc"/>
+        <property name="selectStep"/>
+        <property name="faultTreatment"/>
+        <property name="linkBackCase"/>
+        <property name="faultClassification"/>
+        <property name="recoveryUnit"/>
+        <property name="linkIfMobile"/>
+        <property name="linkFaultReasonSubsectionTwo"/>
+        <property name="linkIfConfirmPreSolve"/>
+        <property name="confirmReason"/>
+        <property name="manualPreSolve"/>
+        <property name="faultReason"/>
+
+        <property name="linkFalg"/>
+
+        <property name="linkCiytSubrole"/>
+        <property name="linkReserved1"/>
+        <property name="linkReserved2"/>
+        <property name="linkReserved3"/>
+        <property name="linkReserved4"/>
+        <property name="linkReserved5"/>
+
+        <property name="linkSendOtherName"/>
+        <property name="linkSendOtherTel"/>
+        <property name="linkSendRes"/>
+        <property name="linkIsPass"/>
+        <property name="linkT1NoRes"/>
+
+
+    </class>
 
 </hibernate-mapping>
 

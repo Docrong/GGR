@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout>
-  <cell id="1" type="InitialActionCell" height="30" width="100" x="192" y="80" />
-  <cell id="2" type="StepCell" height="30" width="100" x="450" y="80" />
-  <cell id="3" type="StepCell" height="30" width="100" x="712" y="80" />
-  <cell id="4" type="StepCell" height="30" width="100" x="450" y="281" />
-  <cell id="5" type="StepCell" height="30" width="100" x="450" y="494" />
-  <connector id="90" linewidth="1.0" color="-16777216" labelx="506" labely="0" from="0" to="0" start="192,80" end="450,80" />
-  <connector id="91" linewidth="1.0" color="-16777216" labelx="-5" labely="582" from="0" to="0" start="192,80" end="450,281">
-    <routing id="91" x="245" y="294" />
-  </connector>
-  <connector id="92" linewidth="1.0" color="-16777216" labelx="0" labely="563" from="0" to="0" start="450,281" end="450,494" />
-  <connector id="93" linewidth="1.0" color="-16777216" labelx="1005" labely="471" from="0" to="0" start="450,494" end="712,80">
-    <routing id="93" x="766" y="505" />
-  </connector>
-  <channel id="chl-1" y1="0" y2="200" text="建单人" />
-  <channel id="chl-2" y1="200" y2="400" text="审核人" />
-  <channel id="chl-3" y1="400" y2="600" text="数据制作人" />
+    <cell id="1" type="InitialActionCell" height="30" width="100" x="192" y="80"/>
+    <cell id="2" type="StepCell" height="30" width="100" x="450" y="80"/>
+    <cell id="3" type="StepCell" height="30" width="100" x="712" y="80"/>
+    <cell id="4" type="StepCell" height="30" width="100" x="450" y="281"/>
+    <cell id="5" type="StepCell" height="30" width="100" x="450" y="494"/>
+    <connector id="90" linewidth="1.0" color="-16777216" labelx="506" labely="0" from="0" to="0" start="192,80"
+               end="450,80"/>
+    <connector id="91" linewidth="1.0" color="-16777216" labelx="-5" labely="582" from="0" to="0" start="192,80"
+               end="450,281">
+        <routing id="91" x="245" y="294"/>
+    </connector>
+    <connector id="92" linewidth="1.0" color="-16777216" labelx="0" labely="563" from="0" to="0" start="450,281"
+               end="450,494"/>
+    <connector id="93" linewidth="1.0" color="-16777216" labelx="1005" labely="471" from="0" to="0" start="450,494"
+               end="712,80">
+        <routing id="93" x="766" y="505"/>
+    </connector>
+    <channel id="chl-1" y1="0" y2="200" text="建单人"/>
+    <channel id="chl-2" y1="200" y2="400" text="审核人"/>
+    <channel id="chl-3" y1="400" y2="600" text="数据制作人"/>
 </layout>
 

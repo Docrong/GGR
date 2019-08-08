@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="GB2312"?>
 <boco>
-	<Interface>
-			<type>
-                  <value name="故障工单" interface_id="001" eoms_id="commonfaultMain"/>
-                  <value name="投诉工单" interface_id="002" eoms_id="complaintMain"/>
-            </type>			
-			<ProvinceID>010</ProvinceID><!--每个省的区号码010代表北京请修改为响应的代码-->
-          	<Ftp>
-              	<Ip>10.0.0.22</Ip><!--此节点为集团的FTP的地址-->
-              	<Port>21</Port><!--此节点为集团的FTP的端口-->
-                <User>anonymous</User><!--此节点为集团的FTP的登陆用户名-->
-                <Password>123</Password><!--此节点为集团的FTP的登陆密码-->
-                <Path>/zcx</Path><!--此节点为集团的FTP的上传目录-->
-                <ftpXmlPath>xml</ftpXmlPath> 
- 				<ftpHtmlPath>html</ftpHtmlPath> 
-                <XmlPath>D:\\test2\\</XmlPath><!--此节点为省端生成xml的存放目录-->
-                <CopyFileXmlPath>D:\\test3\\</CopyFileXmlPath><!--此节点为省端生成xml的备份目录-->
-                <HtmlPath>D:\\test3\\</HtmlPath><!--此节点为省端生成html的存放目录-->
-				<EomsUrl>http:\\localhost:9080\eoms35\</EomsUrl><!-- 正式系统服务地址-->
-             </Ftp>
-             <Url><![CDATA[http://localhost:9080/eoms35/sheet/commonfault/commonfault.do?method=showProvinceMainPage&type=interface&userName=admin&sheetNo=]]></Url> <!--生成html需要的连接-->
-             <AppUrl><![CDATA[http://localhost:9080/eoms35/sheet/complaint/complaint.do?method=showProvinceMainPage&type=interface&userName=admin&sheetNo=]]></AppUrl> <!--生成html需要的连接-->
-             <provinceIndexPage>http://www.hotmail.com</provinceIndexPage>
-	</Interface>
+    <Interface>
+        <type>
+            <value name="故障工单" interface_id="001" eoms_id="commonfaultMain"/>
+            <value name="投诉工单" interface_id="002" eoms_id="complaintMain"/>
+        </type>
+        <ProvinceID>010</ProvinceID><!--每个省的区号码010代表北京请修改为响应的代码-->
+        <Ftp>
+            <Ip>10.0.0.22</Ip><!--此节点为集团的FTP的地址-->
+            <Port>21</Port><!--此节点为集团的FTP的端口-->
+            <User>anonymous</User><!--此节点为集团的FTP的登陆用户名-->
+            <Password>123</Password><!--此节点为集团的FTP的登陆密码-->
+            <Path>/zcx</Path><!--此节点为集团的FTP的上传目录-->
+            <ftpXmlPath>xml</ftpXmlPath>
+            <ftpHtmlPath>html</ftpHtmlPath>
+            <XmlPath>D:\\test2\\</XmlPath><!--此节点为省端生成xml的存放目录-->
+            <CopyFileXmlPath>D:\\test3\\</CopyFileXmlPath><!--此节点为省端生成xml的备份目录-->
+            <HtmlPath>D:\\test3\\</HtmlPath><!--此节点为省端生成html的存放目录-->
+            <EomsUrl>http:\\localhost:9080\eoms35\</EomsUrl><!-- 正式系统服务地址-->
+        </Ftp>
+        <Url>
+            <![CDATA[http://localhost:9080/eoms35/sheet/commonfault/commonfault.do?method=showProvinceMainPage&type=interface&userName=admin&sheetNo=]]></Url> <!--生成html需要的连接-->
+        <AppUrl>
+            <![CDATA[http://localhost:9080/eoms35/sheet/complaint/complaint.do?method=showProvinceMainPage&type=interface&userName=admin&sheetNo=]]></AppUrl> <!--生成html需要的连接-->
+        <provinceIndexPage>http://www.hotmail.com</provinceIndexPage>
+    </Interface>
 </boco>

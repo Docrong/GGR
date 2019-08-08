@@ -12,7 +12,7 @@ import org.apache.struts.action.ActionForm;
  * 地址：北京市海淀区亮甲店130号亿阳大厦 12层3室
  * To change this template use File | Settings | File Templates.
  */
-public class StatForm   extends ActionForm {
+public class StatForm extends ActionForm {
     private String act;
     private int statType;
     private String startTime;

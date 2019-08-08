@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
-    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping
 
@@ -13,233 +13,233 @@
             table="taw_system_user"
     >
 
-    <id
-        name="id"
-            column="id"
-            unsaved-value="null"
-    >
+        <id
+                name="id"
+                column="id"
+                unsaved-value="null"
+        >
 
-    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
-    <generator class="uuid.hex">
+            <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+            <generator class="uuid.hex">
 
-    </generator>
+            </generator>
 
-    </id>
+        </id>
 
         <property
-            name="cptroomid"
+                name="cptroomid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="cptroomname"
+                name="cptroomname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="deptid"
+                name="deptid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="deptname"
+                name="deptname"
                 length="100"
         >
 
         </property>
 
         <property
-            name="email"
-                length="100"
-        >
-        
-        </property>
-        
-        <property
-            name="isPartners"
-                length="100"
-        >            
-       
-        </property>
-
-        <property
-            name="familyaddress"
+                name="email"
                 length="100"
         >
 
         </property>
 
         <property
-            name="fax"
+                name="isPartners"
                 length="100"
         >
 
         </property>
 
         <property
-            name="mobile"
+                name="familyaddress"
                 length="100"
         >
 
         </property>
 
         <property
-            name="operuserid"
+                name="fax"
                 length="100"
         >
 
         </property>
 
         <property
-            name="phone"
-                length="100"
-        >
-
-        </property>
-
-       
-        <property
-            name="remark"
+                name="mobile"
                 length="100"
         >
 
         </property>
 
         <property
-            name="sex"
+                name="operuserid"
+                length="100"
+        >
+
+        </property>
+
+        <property
+                name="phone"
+                length="100"
+        >
+
+        </property>
+
+
+        <property
+                name="remark"
+                length="100"
+        >
+
+        </property>
+
+        <property
+                name="sex"
                 length="20"
         >
 
         </property>
 
         <property
-            name="userdegree"
+                name="userdegree"
                 length="100"
         >
 
         </property>
 
         <property
-            name="userid"
+                name="userid"
                 length="100"
         >
 
         </property>
 
         <property
-            name="username"
+                name="username"
                 length="100"
         >
 
         </property>
 
         <property
-            name="operremotip"
+                name="operremotip"
                 length="100"
         >
 
         </property>
 
         <property
-            name="savetime"
-               
+                name="savetime"
+
         >
 
         </property>
 
         <property
-            name="updatetime"
+                name="updatetime"
                 length="100"
         >
 
         </property>
-        
-        <property
-            name="enabled"
-                    type="yes_no"
-                    column="account_enabled"
-        >
 
-        </property>
-        
         <property
-            name="accountExpired"
-                    type="yes_no"
-                    column="account_expired"
-                not-null="true"
+                name="enabled"
+                type="yes_no"
+                column="account_enabled"
         >
 
         </property>
 
-		<property
-            name="accountLocked"
-                    type="yes_no"
-                    column="account_locked"
+        <property
+                name="accountExpired"
+                type="yes_no"
+                column="account_expired"
                 not-null="true"
         >
 
         </property>
 
         <property
-            name="credentialsExpired"
-                    type="yes_no"
-                    column="credentials_expired"
+                name="accountLocked"
+                type="yes_no"
+                column="account_locked"
                 not-null="true"
         >
 
         </property>
-        
+
         <property
-            name="password"
-                    column="password"
+                name="credentialsExpired"
+                type="yes_no"
+                column="credentials_expired"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+                name="password"
+                column="password"
                 not-null="true"
         >
         </property>
-         <property
-            name="deleted"
-           column="deleted"
+        <property
+                name="deleted"
+                column="deleted"
         >
         </property>
         <property
-            name="isfullemploy"
-           column="isfullemploy"
+                name="isfullemploy"
+                column="isfullemploy"
         >
         </property>
         <property
-            name="isrest"
-           column="isrest"
+                name="isrest"
+                column="isrest"
         >
         </property>
         <property
-            name="portalrolename"
-           column="portalrolename"
+                name="portalrolename"
+                column="portalrolename"
         >
         </property>
         <property
-            name="userstatus"
-           column="userstatus"
+                name="userstatus"
+                column="userstatus"
         >
         </property>
-      
-        
-       <property
-            name="attribute1"
-           column="attribute1"
+
+
+        <property
+                name="attribute1"
+                column="attribute1"
         >
         </property>
-               <property
-            name="attribute2"
-           column="attribute2"
+        <property
+                name="attribute2"
+                column="attribute2"
         >
         </property>
         <property name="failCount" column="fail_count"/>
-    </class>    
+    </class>
 
 </hibernate-mapping>
 

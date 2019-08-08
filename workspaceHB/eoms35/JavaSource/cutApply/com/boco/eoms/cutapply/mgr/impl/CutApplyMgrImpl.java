@@ -23,55 +23,54 @@ import com.boco.eoms.cutapply.dao.CutApplyDao;
  * <p>
  * Thu Apr 02 16:59:37 CST 2009
  * </p>
- * 
+ *
  * @author wangsixuan
  * @version 3.5
- * 
  */
 public class CutApplyMgrImpl implements CutApplyMgr {
- 
-	private CutApplyDao  cutApplyDao;
- 	
-	public CutApplyDao getCutApplyDao() {
-		return this.cutApplyDao;
-	}
- 	
-	public void setCutApplyDao(CutApplyDao cutApplyDao) {
-		this.cutApplyDao = cutApplyDao;
-	}
- 	
+
+    private CutApplyDao cutApplyDao;
+
+    public CutApplyDao getCutApplyDao() {
+        return this.cutApplyDao;
+    }
+
+    public void setCutApplyDao(CutApplyDao cutApplyDao) {
+        this.cutApplyDao = cutApplyDao;
+    }
+
     public List getCutApplys() {
-    	return cutApplyDao.getCutApplys();
+        return cutApplyDao.getCutApplys();
     }
-    
+
     public CutApply getCutApply(final String id) {
-    	return cutApplyDao.getCutApply(id);
+        return cutApplyDao.getCutApply(id);
     }
-    
+
     public void saveCutApply(CutApply cutApply) {
-    	cutApplyDao.saveCutApply(cutApply);
+        cutApplyDao.saveCutApply(cutApply);
     }
-    
+
     public void removeCutApply(final String id) {
-    	cutApplyDao.removeCutApply(id);
+        cutApplyDao.removeCutApply(id);
     }
-    
+
     public Map getCutApplys(final Integer curPage, final Integer pageSize,
-			final String whereStr) {
-		return cutApplyDao.getCutApplys(curPage, pageSize, whereStr);
-	}
-    
-    public List getCutApplysByCondition(final String hql){
-    	return cutApplyDao.getCutApplysByCondition(hql);
+                            final String whereStr) {
+        return cutApplyDao.getCutApplys(curPage, pageSize, whereStr);
     }
-    
+
+    public List getCutApplysByCondition(final String hql) {
+        return cutApplyDao.getCutApplysByCondition(hql);
+    }
+
     /*
-	 * name2Id，即字典id转为字典名称
-	 * 
-	 * @see com.boco.eoms.base.dao.Name2IDDAO#name2Id(java.lang.String)
-	 */
-	public String name2Id(final String dictName,final String parentDictId) {
-		return cutApplyDao.name2Id(dictName, parentDictId);
-	}
-	
+     * name2Id，即字典id转为字典名称
+     *
+     * @see com.boco.eoms.base.dao.Name2IDDAO#name2Id(java.lang.String)
+     */
+    public String name2Id(final String dictName, final String parentDictId) {
+        return cutApplyDao.name2Id(dictName, parentDictId);
+    }
+
 }

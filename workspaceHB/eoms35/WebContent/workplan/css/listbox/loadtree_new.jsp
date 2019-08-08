@@ -1,35 +1,35 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-<%@ page import="java.util.*"%>
-<%@ page import ="com.boco.eoms.jbzl.bo.TawDeptBO"%>
-<%@ page import ="com.boco.eoms.db.util.ConnectionPool"%>
-<%@ page import ="com.boco.eoms.jbzl.model.TawDept"%>
-<%@ page import="java.util.*,com.boco.eoms.common.util.*"%>
-<%@ page import="java.util.*,com.boco.eoms.jbzl.model.TawRmUser"%>
+<%@ page import="java.util.*" %>
+<%@ page import="com.boco.eoms.jbzl.bo.TawDeptBO" %>
+<%@ page import="com.boco.eoms.db.util.ConnectionPool" %>
+<%@ page import="com.boco.eoms.jbzl.model.TawDept" %>
+<%@ page import="java.util.*,com.boco.eoms.common.util.*" %>
+<%@ page import="java.util.*,com.boco.eoms.jbzl.model.TawRmUser" %>
 
 <%
-String DASID = request.getParameter("divID");
-String user = request.getParameter("user");
+    String DASID = request.getParameter("divID");
+    String user = request.getParameter("user");
 
 //获取部门和人员的数组 ，cheng修改
-com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.
-ConnectionPool.getInstance();
+    com.boco.eoms.db.util.ConnectionPool ds = com.boco.eoms.db.util.
+            ConnectionPool.getInstance();
 
-int deptId = Integer.parseInt(DASID);//部门id
-TawDeptBO tawDeptBO = new TawDeptBO(ds);
-List list = tawDeptBO.getSecondDepts(deptId);
+    int deptId = Integer.parseInt(DASID);//部门id
+    TawDeptBO tawDeptBO = new TawDeptBO(ds);
+    List list = tawDeptBO.getSecondDepts(deptId);
 //for (int j=0;j<list.size();j++){
 //out.println("部门id："+((TawDept)list.get(j)).getDeptId());
 //out.println("部门名称："+((TawDept)list.get(j)).getDeptName());
 //}
 
-List listu = tawDeptBO.getRmUsers(deptId);
+    List listu = tawDeptBO.getRmUsers(deptId);
 //for (int k=0;k<listu.size();k++) {
 //out.println("用户id："+((TawRmUser)listu.get(k)).getUserId());
 //out.println("用户名称："+((TawRmUser)listu.get(k)).getUserName());
 //}
 //修改结束
 
-String catContent = "<table cellSpacing=0 cellPadding=0 id='tr_parentid_"+deptId+"'><TBODY id=rootTbody>";
+    String catContent = "<table cellSpacing=0 cellPadding=0 id='tr_parentid_" + deptId + "'><TBODY id=rootTbody>";
 
 //子部门列表
 /*
@@ -43,28 +43,31 @@ for (int i=0;i<list.size();i++){
 }
 */
 //人员列表
-if (!user.equals("no")){
-for (int j=0;j<listu.size();j++){
-	String uID = ((TawRmUser)listu.get(j)).getUserId();
-	String uName = ((TawRmUser)listu.get(j)).getUserName();
-	catContent += "<tr class=EOMSListboxItem id='tr_userid_"+uID+"'>";
-	catContent += "<td class=EOMSListboxImage><img src='images/user.gif' id='img_treeid_"+uID+"' align='TextTop' style='cursor:hand'></td>";
-	catContent += "<td class=EOMSListboxCaption>"+uName+"</td><TD class=EOMSListboxValue>"+uID+"</TD><TD class=EOMSListboxTag></TD></tr>";
-}
-}
+    if (!user.equals("no")) {
+        for (int j = 0; j < listu.size(); j++) {
+            String uID = ((TawRmUser) listu.get(j)).getUserId();
+            String uName = ((TawRmUser) listu.get(j)).getUserName();
+            catContent += "<tr class=EOMSListboxItem id='tr_userid_" + uID + "'>";
+            catContent += "<td class=EOMSListboxImage><img src='images/user.gif' id='img_treeid_" + uID + "' align='TextTop' style='cursor:hand'></td>";
+            catContent += "<td class=EOMSListboxCaption>" + uName + "</td><TD class=EOMSListboxValue>" + uID + "</TD><TD class=EOMSListboxTag></TD></tr>";
+        }
+    }
 
-catContent += "</tbody></table>";
+    catContent += "</tbody></table>";
 %>
 
 <html>
 <head>
-<META HTTP-EQUIV="content-type" CONTENT="text/html; charset=GB2312">
-<script language="JavaScript">
-<!--
-function window.onload(){
-	parent.td_treeid_<%=DASID%>.innerHTML="<%=catContent%>";
-}
-//-->
-</script>
+    <META HTTP-EQUIV="content-type" CONTENT="text/html; charset=GB2312">
+    <script language="JavaScript">
+        <!--
+        function window
+
+        .onload()
+        {
+            parent.td_treeid_<%=DASID%>.innerHTML = "<%=catContent%>";
+        }
+        //-->
+    </script>
 </head>
 </html>

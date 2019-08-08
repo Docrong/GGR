@@ -20,9 +20,9 @@ public interface ISmsMobilesTemplateDao extends Dao {
 
     /**
      * Gets smsMobilesTemplate's information based on primary key. An
-     * ObjectRetrievalFailureException Runtime Exception is thrown if 
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
      * nothing is found.
-     * 
+     *
      * @param id the smsMobilesTemplate's id
      * @return smsMobilesTemplate populated smsMobilesTemplate object
      */
@@ -30,49 +30,65 @@ public interface ISmsMobilesTemplateDao extends Dao {
 
     /**
      * Saves a smsMobilesTemplate's information
+     *
      * @param smsMobilesTemplate the object to be saved
-     */    
+     */
     public void saveSmsMobilesTemplate(SmsMobilesTemplate smsMobilesTemplate);
 
     /**
      * Removes a smsMobilesTemplate from the database by id
+     *
      * @param id the smsMobilesTemplate's id
      */
     public void removeSmsMobilesTemplate(final String id);
+
     /**
      * 用于分页显示
-     * @param curPage the current page number
+     *
+     * @param curPage  the current page number
      * @param pageSize the size number per page
-     */    
+     */
     public Map getSmsMobilesTemplates(final Integer curPage, final Integer pageSize);
+
     /**
      * 用于分页显示
-     * @param curPage the current page number
+     *
+     * @param curPage  the current page number
      * @param pageSize the size number per page
      * @param whereStr the "where.." conditional statement,must start with "where", can be blank
-     */ 
+     */
     public Map getSmsMobilesTemplates(final Integer curPage, final Integer pageSize, final String whereStr);
+
     /**
      * 根据父节点查询下级子节点
+     *
      * @param parentId 子节点中parentId字段即父节点id
-     */    
+     */
     public ArrayList getChildList(String parentId);
+
     /**
      * 根据deleted标志查询号码组模板列表
+     *
      * @param deleted
      * @return
      */
     public List getMobileTempByDeleted(String deleted);
-    
+
     public List getNodes4Team();
+
     public Map getUsersListById(final Integer curPage, final Integer pageSize,
-			final String id);
-    
+                                final String id);
+
     public void saveSmsUser(final SmsUserMgr smsUserMgr);
+
     public List getSmsUserMgr(String id);
+
     public void removeUser(String id);
-    public Map searchUser(final Integer curPage, final Integer pageSize,SmsUserLogForm smsUserLogForm);
+
+    public Map searchUser(final Integer curPage, final Integer pageSize, SmsUserLogForm smsUserLogForm);
+
     public String getTeamNameById(String teamId);
-    public String saveLog(String str,String content,String status);
+
+    public String saveLog(String str, String content, String status);
 }
 

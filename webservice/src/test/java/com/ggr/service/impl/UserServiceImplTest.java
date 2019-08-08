@@ -1,12 +1,6 @@
 package com.ggr.service.impl;
 
-import static org.junit.Assert.*;
-
-import java.rmi.RemoteException;
-
-import javax.xml.namespace.QName;
-import javax.xml.rpc.ServiceException;
-
+import com.ggr.model.User;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.encoding.ser.BeanDeserializerFactory;
@@ -14,7 +8,11 @@ import org.apache.axis.encoding.ser.BeanSerializerFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.ggr.model.User;
+import javax.xml.namespace.QName;
+import javax.xml.rpc.ServiceException;
+import java.rmi.RemoteException;
+
+import static org.junit.Assert.fail;
 
 public class UserServiceImplTest {
 

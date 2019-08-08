@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/leecode.iml" filepath="$PROJECT_DIR$/leecode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../webservice_boco.iml" filepath="$PROJECT_DIR$/../webservice_boco.iml" />
     </modules>
   </component>
 </project>

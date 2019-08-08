@@ -1,13 +1,12 @@
 package com.ggr.client;
 
-import javax.xml.namespace.QName;
-
+import com.ggr.model.SimpleObject;
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.encoding.ser.BeanDeserializerFactory;
 import org.apache.axis.encoding.ser.BeanSerializerFactory;
 
-import com.ggr.model.SimpleObject;
+import javax.xml.namespace.QName;
 
 public class TestClientSimpleObject {
 

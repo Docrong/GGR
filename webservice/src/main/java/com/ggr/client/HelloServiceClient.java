@@ -1,12 +1,10 @@
 package com.ggr.client;
 
-import java.rmi.RemoteException;
-
-import javax.xml.namespace.QName;
-import javax.xml.rpc.ServiceException;
-
 import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
+
+import javax.xml.rpc.ServiceException;
+import java.rmi.RemoteException;
 
 public class HelloServiceClient {
 

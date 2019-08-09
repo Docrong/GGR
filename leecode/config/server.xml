@@ -1,5 +1,8 @@
 <?xml version = "1.0" encoding="UTF-8"?>
 <server>
+    <!--
+        dom4j使用document解析xml
+    -->
     <MySql>
         <driver>com.mysql.jdbc.Driver</driver>
         <url>jdbc:mysql://localhost:3306/database?useSSL=true</url>

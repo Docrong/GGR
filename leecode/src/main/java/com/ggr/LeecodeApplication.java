@@ -9,5 +9,4 @@ public class LeecodeApplication {
     public static void main(String[] args) {
         SpringApplication.run(LeecodeApplication.class, args);
     }
-
 }

@@ -54,7 +54,7 @@ class solution {
         }
         paragraph = paragraph.toLowerCase();
         String[] strarr = paragraph.split(" ");
-        Map<String, Integer> strmap = new HashMap<>();
+        Map<String, Integer> strmap = new HashMap<String, Integer>();
         for (String str : strarr) {
             strmap.put(str, strmap.containsKey(str) ? strmap.get(str) + 1 : 1);
         }

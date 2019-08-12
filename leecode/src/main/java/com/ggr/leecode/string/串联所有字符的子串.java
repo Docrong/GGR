@@ -49,7 +49,7 @@ public class 串联所有字符的子串 {
         List list = Arrays.asList(words);
         System.out.println(list);
 
-        List strbuff = new ArrayList<>();
+        List strbuff = new ArrayList();
         while (list.size() > 0) {
 
         }

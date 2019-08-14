@@ -13,14 +13,11 @@ import java.util.*;
 public class test2 {
     public static void main(String[] args) throws ParseException, DocumentException {
 
-        Map m = new HashMap();
-        m.put("2", "");
-        System.out.println(m);
-        System.out.println(String.valueOf(m.get("2")));
+
         // 创建SAXReader对象
         SAXReader reader = new SAXReader();
         // 读取XML文件结构
-        File file = new File("config/server.xml");
+        File file = new File("server.xml");
         System.out.println(file.getAbsolutePath());
         Document doc = reader.read(file);
         // 获取XML文件根节点
@@ -64,16 +61,18 @@ public class test2 {
             }
 
         }
-        String sheetCompleteLimit = "2019-08-04 09:37:20";
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Calendar calendar = Calendar.getInstance();
-        Date completeLimitDate = sdf.parse(sheetCompleteLimit);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date completeLimitDate=new Date();
+        System.out.println("当前时间:"+sdf.format(completeLimitDate));
 
+        Calendar calendar=Calendar.getInstance();
         calendar.setTime(completeLimitDate);
-        System.out.println(calendar.getTime());
-        calendar.add(Calendar.HOUR, Integer.parseInt(allowtime));
-        System.out.println(calendar.getTime());
-        System.out.println(completeLimitDate);
+        System.out.println("时间:"+sdf.format(calendar.getTime()));
+        calendar.add(Calendar.HOUR,Integer.parseInt(allowtime));
+        completeLimitDate=calendar.getTime();
 
+
+        System.out.println("处理时限:"+sdf.format(completeLimitDate));
+        System.out.println("ggr==end complaint CrmServicemanagerImpl()时限设置");
     }
 }

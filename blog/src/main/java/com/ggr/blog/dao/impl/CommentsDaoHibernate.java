@@ -2,6 +2,8 @@ package com.ggr.blog.dao.impl;
 
 import com.ggr.blog.dao.CommentsDao;
 import com.ggr.blog.model.Comments;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -13,11 +15,12 @@ import javax.annotation.Resource;
 public class CommentsDaoHibernate  implements CommentsDao {
 
 
+    protected Log log = LogFactory.getLog(getClass());
 
 
     @Override
     public Comments getCommentsById(String id) {
-        System.out.println("sessionFactory");
+        log.info(this.getClass().getName());
         return null;
     }
 }

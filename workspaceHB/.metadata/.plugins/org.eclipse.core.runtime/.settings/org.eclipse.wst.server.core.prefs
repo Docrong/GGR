@@ -1,4 +1,0 @@
-#Thu May 16 09:16:23 CST 2019
-module-start-timeout=300000
-runtimes=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<runtimes>\r\n  <runtime id\="wps.esb.v61" id-set\="true" location\="D\:/wid/WID61/runtimes/bi_v61" locked\="true" name\="WebSphere ESB Server v6.1" runtime-type-id\="com.ibm.ws.ast.st.runtime.v61.bi.esb" stub\="false" timestamp\="0"/>\r\n  <runtime id\="wps.v61" id-set\="true" location\="D\:/wid/WID61/runtimes/bi_v61" locked\="true" name\="WebSphere Process Server v6.1" runtime-type-id\="com.ibm.ws.ast.st.runtime.v61.bi" stub\="false" timestamp\="0"/>\r\n  <runtime id\="was.base.v61" id-set\="true" location\="D\:/wid/WID61/runtimes/base_v61_stub" locked\="true" name\="WebSphere Application Server v6.1 stub" runtime-type-id\="com.ibm.ws.ast.st.runtime.v61" stub\="true" test-environment\="false" timestamp\="0"/>\r\n</runtimes>\r\n
-eclipse.preferences.version=1

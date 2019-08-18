@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<launchConfiguration type="com.ibm.ws.ast.st.v61.core.batchProcessLaunchConfigurationType">
-<stringAttribute key="launchMode" value="debug"/>
-<stringAttribute key="wasInstallPath" value="D:/wid/WID61/pf/wps"/>
-<stringAttribute key="wasServerName" value="server1"/>
-</launchConfiguration>

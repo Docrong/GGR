@@ -1,3 +1,0 @@
-@javax.xml.bind.annotation.XmlSchema(namespace = "http://api/")
-package com.boco.eoms.sheet.supervisetask.api;
-

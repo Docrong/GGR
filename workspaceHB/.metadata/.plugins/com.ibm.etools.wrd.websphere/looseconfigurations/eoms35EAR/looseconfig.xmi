@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseApplication xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:org.eclipse.jst.j2ee.commonarchivecore.looseconfig="commonarchive.looseconfig.xmi" uri="D:\wid\workspaceHB\eoms35EAR" binariesPath="D:\wid\workspaceHB\eoms35EAR" resourcesPath="D:\wid\workspaceHB\eoms35EAR">
-  <looseArchives xsi:type="org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseWARFile" uri="eoms35.war" binariesPath="D:\wid\workspaceHB\eoms35\WebContent" resourcesPath="D:\wid\workspaceHB\eoms35\WebContent"/>
-  <looseArchives xsi:type="org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseModule" uri="eomsEJB.jar" binariesPath="D:/wid/workspaceHB/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/eomsEJB" resourcesPath="D:/wid/workspaceHB/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/eomsEJB"/>
-  <looseArchives xsi:type="org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseLibrary" uri="eomsEJBClient.jar" binariesPath="D:\wid\workspaceHB\eomsEJBClient\src" resourcesPath="D:\wid\workspaceHB\eomsEJBClient\src"/>
-</org.eclipse.jst.j2ee.commonarchivecore.looseconfig:LooseApplication>

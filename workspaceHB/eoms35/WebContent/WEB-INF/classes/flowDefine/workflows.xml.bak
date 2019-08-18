@@ -1,6 +1,0 @@
-<workflows>
-   <workflow name="goodsapply" type="resource" location="flowDefine/goodsapply/goodsapply.xml" />
-   <workflow name="goodsbuy" type="resource" location="flowDefine/goodsbuy/goodsbuy.xml" />
-    <workflow name="testcard" type="resource" location="flowDefine/testcard/testcard.xml" />
- </workflows>
-

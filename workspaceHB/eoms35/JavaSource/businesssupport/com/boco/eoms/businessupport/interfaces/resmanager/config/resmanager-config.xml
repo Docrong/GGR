@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="GB2312"?>
-<boco>
-    <ServiceUrl>http://10.32.2.18:8089/Tnms_GIS_SX/webService/ResManager</ServiceUrl>
-    <enable>true</enable>
-</boco>
-

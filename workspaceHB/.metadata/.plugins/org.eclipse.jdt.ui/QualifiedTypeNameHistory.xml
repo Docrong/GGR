@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="com.boco.eoms.sheet.commontask.model.CommonTaskMain"/>
-<fullyQualifiedTypeName name="com.boco.eoms.sheet.listedregulation.model.ListedRegulationTask"/>
-<fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="javax.xml.rpc.ParameterMode"/>
-<fullyQualifiedTypeName name="com.boco.eoms.base.util.StaticMethod"/>
-<fullyQualifiedTypeName name="net.sf.json.JSONObject"/>
-</qualifiedTypeNameHistroy>

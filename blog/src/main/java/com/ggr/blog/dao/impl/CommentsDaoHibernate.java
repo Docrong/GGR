@@ -15,6 +15,7 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 @Repository("iCommentsDao")
@@ -23,6 +24,12 @@ public class CommentsDaoHibernate  extends HibernateDaoSupport implements Commen
 
     protected Log log = LogFactory.getLog(getClass());
 
+    @Autowired
+    private EntityManagerFactory entityManagerFactory;
+
+    public Session getSession() {
+        return entityManagerFactory.unwrap(SessionFactory.class).openSession();
+    }
 
 
 

@@ -17,6 +17,8 @@ public class test2 {
         // 创建SAXReader对象
         SAXReader reader = new SAXReader();
         // 读取XML文件结构
+
+
         File file = new File("server.xml");
         System.out.println(file.getAbsolutePath());
         Document doc = reader.read(file);
@@ -24,10 +26,19 @@ public class test2 {
         Element root = doc.getRootElement();
         // 获取根节点一下的子元素
         List<Element> list = root.elements();
-        String mainNetWork1 = "101060107te";
+        String mainNetWork1 = "101060107";
 
-        String mainNetWork2 = "101060105";
-        String mainNetWork3 = "10106010502";
+        String mainNetWork2 = "101060101";
+        String mainNetWork3 = "10106010101";
+        /*
+        101060107
+        101060101
+        10106010101
+        1010601010104
+        101060101010408
+        null
+        null
+         */
         String defaultallowtime = "";
         String allowtime = "";
         for (Element item : list) {
@@ -61,18 +72,18 @@ public class test2 {
             }
 
         }
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date completeLimitDate=new Date();
-        System.out.println("当前时间:"+sdf.format(completeLimitDate));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date completeLimitDate = new Date();
+        System.out.println("当前时间:" + sdf.format(completeLimitDate));
 
-        Calendar calendar=Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         calendar.setTime(completeLimitDate);
-        System.out.println("时间:"+sdf.format(calendar.getTime()));
-        calendar.add(Calendar.HOUR,Integer.parseInt(allowtime));
-        completeLimitDate=calendar.getTime();
+        System.out.println("时间:" + sdf.format(calendar.getTime()));
+        calendar.add(Calendar.HOUR, Integer.parseInt(allowtime));
+        completeLimitDate = calendar.getTime();
 
 
-        System.out.println("处理时限:"+sdf.format(completeLimitDate));
+        System.out.println("处理时限:" + sdf.format(completeLimitDate));
         System.out.println("ggr==end complaint CrmServicemanagerImpl()时限设置");
     }
 }

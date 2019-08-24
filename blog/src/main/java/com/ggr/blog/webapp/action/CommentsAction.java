@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.SQLException;
+
 @Controller
 public class CommentsAction {
 
@@ -15,7 +17,7 @@ public class CommentsAction {
 
     @RequestMapping("/index")
     @ResponseBody
-    public String index() {
+    public String index() throws SQLException {
         commentsManager.getCommentsById("");
         System.out.println(commentsManager);
         return "212312";

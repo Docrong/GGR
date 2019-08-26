@@ -54,6 +54,12 @@ public class CommentsDaoHibernate extends HibernateDaoSupport implements Comment
         List list=getHibernateTemplate().find("from Comments where 1=1") ;
         t= (Comments) list.get(0);
         System.out.println(t.getId());
+        t.setId("2");
+        t.setDate("2312");
+        t.setAgainst("31232");
+        t.setAgree("3123");
+        getHibernateTemplate().save(t);
+        getHibernateTemplate().flush();
 
         System.out.println("hibernate end");
         return null;

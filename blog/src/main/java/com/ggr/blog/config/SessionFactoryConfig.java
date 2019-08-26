@@ -2,10 +2,12 @@ package com.ggr.blog.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
@@ -28,6 +30,14 @@ public class SessionFactoryConfig {
 
 
         return sqlSessionFactoryBean;
+    }
+
+    @Bean
+    public HibernateTransactionManager transactionManager() {
+
+        HibernateTransactionManager txManager = new HibernateTransactionManager();
+        txManager.setSessionFactory((SessionFactory) createLocalSessionFactoryBean());
+        return txManager;
     }
 
 }

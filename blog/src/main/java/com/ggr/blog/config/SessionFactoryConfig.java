@@ -22,7 +22,7 @@ public class SessionFactoryConfig {
     @Bean(name="sessionFactory")
     public LocalSessionFactoryBean createLocalSessionFactoryBean() {
         LocalSessionFactoryBean sqlSessionFactoryBean = new LocalSessionFactoryBean();
-
+        sqlSessionFactoryBean.setPackagesToScan("com.ggr.blog.model");
         sqlSessionFactoryBean.setDataSource(dataSource);
 
 

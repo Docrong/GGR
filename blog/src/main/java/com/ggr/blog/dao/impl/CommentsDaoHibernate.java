@@ -38,6 +38,7 @@ public class CommentsDaoHibernate extends HibernateDaoSupport implements Comment
     public void setSuperSessionFactory(SessionFactory sessionFactory) {
         super.setSessionFactory(sessionFactory);
     }
+
     protected HibernateTemplate createHibernateTemplate(SessionFactory sessionFactory) {
         return super.createHibernateTemplate(sessionFactory);
     }
@@ -49,17 +50,12 @@ public class CommentsDaoHibernate extends HibernateDaoSupport implements Comment
     public Comments getCommentsById(final String id) {
         log.info(this.getClass().getName());
         System.out.println("sessionFactory321");
-        try {
-            Comments t=new Comments();
-            t.setId("123");
-            t.setDate("2019-8-26");
-            getHibernateTemplate().save(t);
-            System.out.println(t);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Comments t = new Comments();
+        List list=getHibernateTemplate().find("from Comments where 1=1") ;
+        t= (Comments) list.get(0);
+        System.out.println(t.getId());
 
-System.out.println("hibernate end");
+        System.out.println("hibernate end");
         return null;
     }
 }

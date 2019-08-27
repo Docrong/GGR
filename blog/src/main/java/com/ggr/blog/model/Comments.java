@@ -7,21 +7,37 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * 评论部分
+ *
+ * @author gr
+ * @date 2019-08-27 09:39:11
+ */
 @Entity(name = "Comments")
 @Table(name = "blog_comments")
 public class Comments {
     @Id
-    @GenericGenerator(name="system-uuid", strategy = "uuid.hex")
-    @Column(name = "id",unique = true)
+    @GenericGenerator(name = "system-uuid", strategy = "uuid.hex")
+    @Column(name = "id", unique = true)
     private String id;
     @Column(name = "senddate")
-    private String date;
+    private String date;//时间
     @Column(name = "agreenum")
-    private String agree;
+    private String agree;//赞同
     @Column(name = "againstnum")
-    private String against;
-    @Column(name = "nextone")
-    private String next;
+    private String against;//反对
+    @Column(name = "lastid")
+    private String lastid;//上一条
+    @Column(name = "nickname")
+    private String nickname;
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public String getId() {
         return id;
@@ -55,11 +71,11 @@ public class Comments {
         this.against = against;
     }
 
-    public String getNext() {
-        return next;
+    public String getLastid() {
+        return lastid;
     }
 
-    public void setNext(String next) {
-        this.next = next;
+    public void setLastid(String lastid) {
+        this.lastid = lastid;
     }
 }

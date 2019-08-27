@@ -15,9 +15,9 @@ public class CommentsAction {
     @Autowired
     private CommentsManagerImpl commentsManager;
 
-    @RequestMapping("/index")
+    @RequestMapping("/test")
     @ResponseBody
-    public String index() throws SQLException {
+    public String test() throws SQLException {
         commentsManager.getCommentsById("");
         System.out.println(commentsManager);
         return "212312";

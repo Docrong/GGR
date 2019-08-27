@@ -2,17 +2,19 @@ package com.ggr.blog.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
-import java.io.IOException;
 
+/**
+ * @author gr
+ * @date 2019-08-27 09:35:21
+ * 配置sessionFactory
+ */
 @Configuration
 public class SessionFactoryConfig {
     protected Log log = LogFactory.getLog(getClass());
@@ -21,23 +23,26 @@ public class SessionFactoryConfig {
     @Qualifier(value = "mysqlDataSource")
     DataSource dataSource;
 
-    @Bean(name="sessionFactory")
+    @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean createLocalSessionFactoryBean() {
         LocalSessionFactoryBean sqlSessionFactoryBean = new LocalSessionFactoryBean();
         sqlSessionFactoryBean.setPackagesToScan("com.ggr.blog.model");
         sqlSessionFactoryBean.setDataSource(dataSource);
-
-
-
         return sqlSessionFactoryBean;
+
     }
 
-    @Bean
-    public HibernateTransactionManager transactionManager() {
+    @Autowired
+    @Qualifier(value = "oracleDataSource")
+    DataSource dataSource2;
 
-        HibernateTransactionManager txManager = new HibernateTransactionManager();
-        txManager.setSessionFactory((SessionFactory) createLocalSessionFactoryBean());
-        return txManager;
+    @Bean(name = "sessionFactory2")
+    public LocalSessionFactoryBean createLocalSessionFactoryBean2() {
+        LocalSessionFactoryBean sqlSessionFactoryBean = new LocalSessionFactoryBean();
+        sqlSessionFactoryBean.setPackagesToScan("com.ggr.blog.model");
+        sqlSessionFactoryBean.setDataSource(dataSource2);
+        return sqlSessionFactoryBean;
+
     }
 
 }

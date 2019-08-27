@@ -10,6 +10,11 @@ import org.springframework.core.env.Environment;
 
 import javax.sql.DataSource;
 
+/**
+ * 配置数据源oracle,mysql
+ * @author gr
+ * @date 2019-08-27 09:32:45
+ */
 
 @Configuration
 public class DataSourceConfig {

@@ -2,10 +2,7 @@ package com.ggr.blog.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 评论部分
@@ -17,6 +14,7 @@ import javax.persistence.Table;
 @Table(name = "blog_comments")
 public class Comments {
     @Id
+    @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid.hex")
     @Column(name = "id", unique = true)
     private String id;

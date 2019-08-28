@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
@@ -23,6 +24,8 @@ public class SessionFactoryConfig {
     @Qualifier(value = "mysqlDataSource")
     DataSource dataSource;
 
+
+    @Primary
     @Bean(name = "sessionFactory")
     public LocalSessionFactoryBean createLocalSessionFactoryBean() {
         LocalSessionFactoryBean sqlSessionFactoryBean = new LocalSessionFactoryBean();
@@ -40,7 +43,7 @@ public class SessionFactoryConfig {
     public LocalSessionFactoryBean createLocalSessionFactoryBean2() {
         LocalSessionFactoryBean sqlSessionFactoryBean = new LocalSessionFactoryBean();
         sqlSessionFactoryBean.setPackagesToScan("com.ggr.blog.model");
-        sqlSessionFactoryBean.setDataSource(dataSource2);
+        sqlSessionFactoryBean.setDataSource(dataSource);
         return sqlSessionFactoryBean;
 
     }

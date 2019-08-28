@@ -1,0 +1,62 @@
+2019-08-28 11:01:01.946  INFO 12220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MrWRong with PID 12220 (C:\Users\gr\Documents\GGR\springbootjpa\target\classes started by gr in C:\Users\gr\Documents\GGR)
+2019-08-28 11:01:01.946  INFO 12220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-08-28 11:01:02.374  INFO 12220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-28 11:01:02.376  INFO 12220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 repository interfaces.
+2019-08-28 11:01:02.440  INFO 12220 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2f38fa22] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-28 11:01:02.561  INFO 12220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-08-28 11:01:02.563  INFO 12220 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-28 11:01:02.563  INFO 12220 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-08-28 11:01:02.564  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-08-28 11:01:02.564  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2019-08-28 11:01:02.564  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-08-28 11:01:02.564  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-08-28 11:01:02.565  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2019-08-28 11:01:02.613  INFO 12220 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-28 11:01:02.613  INFO 12220 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 662 ms
+2019-08-28 11:01:02.682  INFO 12220 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2019-08-28 11:01:02.683  WARN 12220 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-08-28 11:01:02.686  INFO 12220 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2019-08-28 11:01:02.693  INFO 12220 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-28 11:01:02.704  INFO 12220 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-08-28 11:01:02.778  INFO 12220 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-28 11:01:02.800  INFO 12220 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-28 11:01:02.933  INFO 12220 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-28 11:01:02.941  WARN 12220 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-28 11:01:03.138  INFO 12220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-08-28 11:01:03.140  INFO 12220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 1.258 seconds (JVM running for 313.056)
+2019-08-28 11:01:03.144  INFO 12220 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-08-28 14:56:51.999  INFO 12220 --- [Thread-26] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-08-28 14:56:52.000  INFO 12220 --- [Thread-26] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2019-08-28 14:56:52.001  INFO 12220 --- [Thread-26] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2019-08-28 14:56:52.006  INFO 12220 --- [Thread-26] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2019-08-28 14:56:52.677  INFO 12220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MrWRong with PID 12220 (C:\Users\gr\Documents\GGR\springbootjpa\target\classes started by gr in C:\Users\gr\Documents\GGR)
+2019-08-28 14:56:52.678  INFO 12220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-08-28 14:56:53.272  INFO 12220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-08-28 14:56:53.275  INFO 12220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3ms. Found 0 repository interfaces.
+2019-08-28 14:56:53.358  INFO 12220 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2f38fa22] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-08-28 14:56:53.521  INFO 12220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-08-28 14:56:53.523  INFO 12220 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-08-28 14:56:53.523  INFO 12220 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-08-28 14:56:53.524  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : An older version [1.2.17] of the APR based Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.23]
+2019-08-28 14:56:53.524  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2019-08-28 14:56:53.525  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2019-08-28 14:56:53.526  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2019-08-28 14:56:53.527  INFO 12220 --- [restartedMain] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2019-08-28 14:56:53.580  INFO 12220 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-08-28 14:56:53.580  INFO 12220 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 898 ms
+2019-08-28 14:56:53.669  INFO 12220 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2019-08-28 14:56:53.670  WARN 12220 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2019-08-28 14:56:53.674  INFO 12220 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2019-08-28 14:56:53.682  INFO 12220 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-08-28 14:56:53.694  INFO 12220 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2019-08-28 14:56:53.782  INFO 12220 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-08-28 14:56:53.809  INFO 12220 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-08-28 14:56:53.911  INFO 12220 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-08-28 14:56:53.919  WARN 12220 --- [restartedMain] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2019-08-28 14:56:54.021  INFO 12220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-08-28 14:56:54.022  INFO 12220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 1.495 seconds (JVM running for 14463.937)
+2019-08-28 14:56:54.024  INFO 12220 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

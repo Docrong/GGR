@@ -29,13 +29,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/blog/mvnw.cmd
-/blog/.mvn
-/blog/mvnw.cmd
-/blog/mvnw
-<<<<<<< HEAD
-/workspaceHB
-=======
->>>>>>> 691bc0140004ae060b4cfa72d7cf0248f81678e5
-/springbootjpa/mvnw
-/springbootjpa/mvnw.cmd

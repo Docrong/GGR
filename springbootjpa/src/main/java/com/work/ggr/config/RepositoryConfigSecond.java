@@ -17,24 +17,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 配置主数据库
- *
  * @author : gr
- * @date : 2019/8/28 17:12
+ * @date : 2019/8/29 16:12
  */
 @Configuration
-@EnableTransactionManagement // 启注解事务管理，等同于xml配置方式的 <tx:annotation-driven /
+@EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.work.ggr",
-        entityManagerFactoryRef = "entityManagerFactoryMain",
-        transactionManagerRef = "transactionManagerMain")
-public class RepositoryConfigMain {
-
+entityManagerFactoryRef = "entityManagerFactorySecond",
+transactionManagerRef = "transactionManagerSecond")
+public class RepositoryConfigSecond {
     @Autowired
-    @Qualifier("mysqlDataSource")
+    @Qualifier("mysqlDataSource2")
     private DataSource dataSource;
 
-    @Bean(name = "entityManagerFactoryMain")
-    public EntityManagerFactory entityManagerFactory() {
+    @Bean("entityManagerFactorySecond")
+    public EntityManagerFactory entityManagerFactory(){
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         vendorAdapter.setShowSql(true);
         vendorAdapter.setGenerateDdl(true);
@@ -55,7 +52,7 @@ public class RepositoryConfigMain {
         return factory.getObject();
     }
 
-    @Bean(name = "transactionManagerMain")
+    @Bean(name = "transactionManagerSecond")
     public PlatformTransactionManager transactionManager() {
 
         JpaTransactionManager txManager = new JpaTransactionManager();

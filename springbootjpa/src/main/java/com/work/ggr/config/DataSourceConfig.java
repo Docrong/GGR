@@ -10,6 +10,7 @@ import org.springframework.core.env.Environment;
 import javax.sql.DataSource;
 
 /**
+ * 使用DataSource直连数据库
  * @author : gr
  * @date : 2019/8/28 15:00
  */

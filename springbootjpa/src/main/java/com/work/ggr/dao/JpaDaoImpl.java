@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Date;
 import java.util.List;
@@ -27,19 +28,21 @@ public class JpaDaoImpl {
 
     @Transactional(value = "transactionManagerMain")
     public Map testMysql1(Map map) {
-        EntityManager entityManager=entityManagerFactory.createEntityManager();
+        EntityManager entityManager =entityManagerFactory.createEntityManager();
+        System.out.println("factory:*****"+entityManagerFactory);
+        System.out.println("entity:****"+entityManager);
         Query query=entityManager.createQuery(" from Person where username='test2'");
         List list=query.getResultList();
         System.out.println(list);
         Person p=new Person();
-        p.setId("123");
+//        p.setId("123");
         p.setAddress("1");
         p.setCreated(new Date().toString());
         p.setPhone("12345678901");
         p.setRemark("hello");
         p.setUsername(new Date().toString());
-        entityManager.persist(p);
-        entityManager.flush();
+//        entityManager.persist(p);
+//        entityManager.flush();
 
         return null;
     }

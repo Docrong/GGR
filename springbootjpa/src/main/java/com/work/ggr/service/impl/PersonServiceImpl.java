@@ -20,11 +20,12 @@ public class PersonServiceImpl {
     @Autowired
     private DataSourceDaoImpl dsDao;
 
+    @Autowired
+    private JdbcDaoImpl jdbcDao;
 
     public Map testJpa(Map maptj) {
         System.out.println("dao:" + dao);
         dao.testMysql1(maptj);
-        dao.testMysql2();
         return null;
     }
 
@@ -32,6 +33,13 @@ public class PersonServiceImpl {
         System.out.println("test DataSource");
         dsDao.testMysql1();
         dsDao.testMysql2();
+        return null;
+    }
+
+    public Map testJdbc(Map maptj){
+        System.out.println("test JDBC");
+        jdbcDao.test1();;
+        jdbcDao.test2();
         return null;
     }
 }

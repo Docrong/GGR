@@ -14,19 +14,34 @@ import java.util.Map;
  * @date : 2019/8/28 15:11
  */
 @RestController
-public class JpaAction {
+public class JpaTestAction {
 
     @Autowired
     private PersonServiceImpl personManager;
 
-    @RequestMapping
+    @RequestMapping("/test")
     @ResponseBody
-    public String test(){
-        Map maptj=new HashMap();
-        System.out.println("service:"+personManager);
+    public String test() {
+        Map maptj = new HashMap();
         personManager.testJpa(maptj);
-//        personManager.testDataSource(maptj);
-        return "test";
+        return "testJpa";
     }
+
+    @RequestMapping("/test2")
+    @ResponseBody
+    public String test2() {
+        Map maptj = new HashMap();
+        personManager.testDataSource(maptj);
+        return "testDataSource";
+    }
+
+    @RequestMapping("/test3")
+    @ResponseBody
+    public String test3() {
+        Map maptj = new HashMap();
+        personManager.testJdbc(maptj);
+        return "testJdbc";
+    }
+
 
 }

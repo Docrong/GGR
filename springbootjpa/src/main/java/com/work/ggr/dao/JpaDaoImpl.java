@@ -8,10 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,41 +17,45 @@ import java.util.Map;
  */
 
 @Repository("jpaDao")
+@Transactional
 public class JpaDaoImpl {
     @Autowired
     @Qualifier("entityManagerFactoryMain")
     private EntityManagerFactory entityManagerFactory;
 
 
-    @Transactional(value = "transactionManagerMain")
+
     public Map testMysql1(Map map) {
-        EntityManager entityManager =entityManagerFactory.createEntityManager();
-        System.out.println("factory:*****"+entityManagerFactory);
-        System.out.println("entity:****"+entityManager);
-        Query query=entityManager.createQuery(" from Person where username='test2'");
-        List list=query.getResultList();
-        System.out.println(list);
-        Person p=new Person();
+        System.out.println("testMysql1():" + entityManagerFactory);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+//        Query query=entityManager.createQuery(" from Person where username='test2'");
+        System.out.println("entity:****" + entityManager);
+//        List list=query.getResultList();
+//        System.out.println(list);
+        Person p = new Person();
 //        p.setId("123");
         p.setAddress("1");
         p.setCreated(new Date().toString());
         p.setPhone("12345678901");
         p.setRemark("hello");
         p.setUsername(new Date().toString());
-//        entityManager.persist(p);
-//        entityManager.flush();
+        Person p2=entityManager.find(Person.class,"11");
+        System.out.println(p2);
+        entityManager.remove(p2);
+        entityManager.flush();
 
         return null;
     }
 
-    @Autowired
-    @Qualifier("entityManagerFactorySecond")
-    private EntityManagerFactory entityManagerFactory2;
-    public Map testMysql2() {
-        EntityManager entityManager=entityManagerFactory2.createEntityManager();
-        Query query=entityManager.createQuery(" from Person");
-        List list=query.getResultList();
-        System.out.println(list);
-        return null;
-    }
+//    @Autowired
+//    @Qualifier("entityManagerFactorySecond")
+//    private EntityManagerFactory entityManagerFactory2;
+//    @Transactional(value = "transactionManagerSecond")
+//    public Map testMysql2() {
+//        EntityManager entityManager=entityManagerFactory2.createEntityManager();
+//        Query query=entityManager.createQuery(" from Person");
+//        List list=query.getResultList();
+//        System.out.println(list);
+//        return null;
+//    }
 }

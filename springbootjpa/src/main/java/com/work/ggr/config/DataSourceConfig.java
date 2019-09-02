@@ -2,10 +2,12 @@ package com.work.ggr.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
@@ -29,6 +31,12 @@ public class DataSourceConfig {
         dataSource.setName("mysqlDataSource");
         return dataSource;
     }
+    @Bean(name = "JdbcTemplate1")
+    public JdbcTemplate JdbcTemplate1(
+            @Qualifier("mysqlDataSource") DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
+
 
     @Bean(name = "mysqlDataSource2")
     public DataSource getDataSource2(){
@@ -41,4 +49,9 @@ public class DataSourceConfig {
         return dataSource;
     }
 
+    @Bean(name = "JdbcTemplate2")
+    public JdbcTemplate JdbcTemplate2(
+            @Qualifier("mysqlDataSource2") DataSource dataSource) {
+        return new JdbcTemplate(dataSource);
+    }
 }

@@ -1,10 +1,13 @@
 package com.work.ggr.config;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -24,10 +27,12 @@ import java.util.Map;
  */
 @Configuration
 @EnableTransactionManagement // 启注解事务管理，等同于xml配置方式的 <tx:annotation-driven /
-@EnableJpaRepositories(basePackages = "com.work.ggr",
+@EnableJpaRepositories(basePackages = "com.work.ggr.dao",
         entityManagerFactoryRef = "entityManagerFactoryMain",
         transactionManagerRef = "transactionManagerMain")
 public class RepositoryConfigMain {
+
+    private Log log= LogFactory.getLog(this.getClass());
 
     @Autowired
     @Qualifier("mysqlDataSource")
@@ -48,10 +53,11 @@ public class RepositoryConfigMain {
         Map<String, Object> jpaProperties = new HashMap<String, Object>();
         jpaProperties.put("hibernate.ejb.naming_strategy","org.hibernate.cfg.ImprovedNamingStrategy");
         jpaProperties.put("hibernate.jdbc.batch_size",50);
-        //jpaProperties.put("hibernate.show_sql",true);
+        jpaProperties.put("hibernate.show_sql",true);
 
         factory.setJpaPropertyMap(jpaProperties);
         factory.afterPropertiesSet();
+        System.out.println("entityManagerFactory:"+factory.getObject());
         return factory.getObject();
     }
 
@@ -60,6 +66,13 @@ public class RepositoryConfigMain {
 
         JpaTransactionManager txManager = new JpaTransactionManager();
         txManager.setEntityManagerFactory(entityManagerFactory());
+        System.out.println("txManager:"+txManager);
+        System.out.println(">>>>>>>>>>transactionManagerMain:"+txManager.getClass().getName());
         return txManager;
+    }
+    @Bean
+    public Object testBean(@Qualifier("transactionManagerMain") PlatformTransactionManager platformTransactionManager) {
+        log.info(">>>>>>>>>>" + platformTransactionManager.getClass().getName());
+        return new Object();
     }
 }

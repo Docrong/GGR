@@ -10,11 +10,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "person")
+@GenericGenerator(name = "system-uuid", strategy = "uuid.hex")//自定义主键生成策略
 public class Person {
     @Id
     @GeneratedValue(generator = "system-uuid")//JPA通用策略生成器
-    @GenericGenerator(name = "system-uuid", strategy = "uuid.hex")//自定义主键生成策略
-    @Column(name="id",unique = true)
+    @Column(name = "id", unique = true)
     private String id;
     @Column(name = "username")
     private String username;
@@ -73,5 +73,17 @@ public class Person {
 
     public void setCreated(String created) {
         this.created = created;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id='" + id + '\'' +
+                ", username='" + username + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", remark='" + remark + '\'' +
+                ", created='" + created + '\'' +
+                '}';
     }
 }

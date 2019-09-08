@@ -1,6 +1,6 @@
 package com.work.ggr.webapp.action;
 
-import com.work.ggr.service.impl.PersonServiceImpl;
+import com.work.ggr.service.PersonServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -21,7 +21,7 @@ public class JpaTestAction {
 
     @RequestMapping("/test")
     @ResponseBody
-    public String test() {
+    public String testJpa() {
         Map maptj = new HashMap();
         personManager.testJpa(maptj);
         return "testJpa";
@@ -29,7 +29,7 @@ public class JpaTestAction {
 
     @RequestMapping("/test2")
     @ResponseBody
-    public String test2() {
+    public String testDataSource() {
         Map maptj = new HashMap();
         personManager.testDataSource(maptj);
         return "testDataSource";
@@ -37,11 +37,18 @@ public class JpaTestAction {
 
     @RequestMapping("/test3")
     @ResponseBody
-    public String test3() {
+    public String testJdbc() {
         Map maptj = new HashMap();
         personManager.testJdbc(maptj);
         return "testJdbc";
     }
 
+    @RequestMapping("/test4")
+    @ResponseBody
+    public String testJpaRepository(){
+        Map maptj=new HashMap();
+        personManager.testJpaRepository(maptj);
+        return "testJpaRepository";
+    }
 
 }

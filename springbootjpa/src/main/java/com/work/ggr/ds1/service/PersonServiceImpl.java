@@ -1,16 +1,15 @@
-package com.work.ggr.service;
+package com.work.ggr.ds1.service;
 
 
 import com.work.ggr.dao.*;
 import com.work.ggr.model.Person;
-import com.work.ggr.repository.PersonRepository;
+import com.work.ggr.ds1.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -52,21 +51,21 @@ public class PersonServiceImpl {
 
 
     @Autowired
-    @Qualifier("personRepository")
+    @Qualifier(value="personRepository")
     private PersonRepository personRepository;
     public Map testJpaRepository(Map maptj){
         System.out.println(personRepository);
-        Person p=personRepository.findById("2");
-        System.out.println(p);
-        List list=personRepository.findByUsernameAndAddress("test2","123");
-        System.out.println("(>^ω^<)喵");
-        System.out.println("personList===="+list);
-        System.out.println("(^・ω・^ )( ^・ω・^)(^・ω・^ )( ^・ω・^)");
-        p.setPhone(new Date().toString());
-        personRepository.save(p);
+//        Person p=personRepository.findById("2");
+//        System.out.println(p);
+//        List list=personRepository.findByUsernameAndAddress("test2","123");
+//        System.out.println("(>^ω^<)喵");
+//        System.out.println("personList===="+list);
+//        System.out.println("(^・ω・^ )( ^・ω・^)(^・ω・^ )( ^・ω・^)");
+//        p.setPhone(new Date().toString());
+//        personRepository.save(p);
         Person p2=new Person();
 
-        p2.setPhone("20190906");
+        p2.setPhone("数据库1");
         p2.setUsername("ggr");
         p2.setCreated(new Date().toString());
         personRepository.save(p2);

@@ -1,4 +1,4 @@
-package com.work.ggr.repository;
+package com.work.ggr.ds1.repository;
 
 import com.work.ggr.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;

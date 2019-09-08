@@ -1244,3 +1244,326 @@ java.lang.NullPointerException: null
 2019-09-08 14:27:59.379  INFO 576 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2019-09-08 14:27:59.384  INFO 576 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
 2019-09-08 14:27:59.392  INFO 576 --- [http-nio-8081-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-09-08 15:08:58.168  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MSIB360 with PID 7108 (E:\java\GGR\springbootjpa\target\classes started by gr in E:\java\GGR)
+2019-09-08 15:08:58.174  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-09-08 15:08:58.268  INFO 7108 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-08 15:08:58.272  INFO 7108 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-08 15:08:59.343  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:08:59.428  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58ms. Found 1 repository interfaces.
+2019-09-08 15:08:59.428  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:08:59.429  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 repository interfaces.
+2019-09-08 15:09:00.146  INFO 7108 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$34321dd4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-08 15:09:01.296  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-09-08 15:09:01.383  INFO 7108 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-08 15:09:01.384  INFO 7108 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-08 15:09:01.633  INFO 7108 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-08 15:09:01.633  INFO 7108 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3359 ms
+2019-09-08 15:09:02.105  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:09:02.243  INFO 7108 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2019-09-08 15:09:02.245  INFO 7108 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-09-08 15:09:02.430  INFO 7108 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-09-08 15:09:02.633  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,mysqlDataSource} inited
+2019-09-08 15:09:02.758  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:09:02.938  WARN 7108 --- [restartedMain] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-09-08 15:09:03.455  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:09:03.557  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:09:03.567  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2,mysqlDataSource2} inited
+2019-09-08 15:09:03.572  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:09:03.600  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:09:03.915  INFO 7108 --- [restartedMain] figMain$$EnhancerBySpringCGLIB$$c730e03e : >>>>>>>>>>org.springframework.orm.jpa.JpaTransactionManager
+2019-09-08 15:09:04.115  INFO 7108 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:09:04.330  INFO 7108 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-08 15:09:04.414  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-09-08 15:09:04.416  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 6.788 seconds (JVM running for 9.304)
+2019-09-08 15:09:10.681  INFO 7108 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-08 15:09:10.681  INFO 7108 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-08 15:09:10.688  INFO 7108 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2019-09-08 15:09:10.796  INFO 7108 --- [http-nio-8081-exec-1] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2019-09-08 15:09:11.009 ERROR 7108 --- [http-nio-8081-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+
+java.lang.NullPointerException: null
+	at com.work.ggr.service.PersonServiceImpl.testJpaRepository(PersonServiceImpl.java:65) ~[classes/:na]
+	at com.work.ggr.service.PersonServiceImpl$$FastClassBySpringCGLIB$$637546db.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:295) ~[spring-tx-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98) ~[spring-tx-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at com.work.ggr.service.PersonServiceImpl$$EnhancerBySpringCGLIB$$94de4820.testJpaRepository(<generated>) ~[classes/:na]
+	at com.work.ggr.webapp.action.JpaTestAction.testJpaRepository(JpaTestAction.java:50) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_151]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_151]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_151]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_151]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:897) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) ~[spring-webmvc-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:118) ~[spring-web-5.1.9.RELEASE.jar:5.1.9.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:853) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1587) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_151]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_151]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.22.jar:9.0.22]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_151]
+
+2019-09-08 15:14:03.311  INFO 7108 --- [Thread-20] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:14:03.316  INFO 7108 --- [Thread-20] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closing ...
+2019-09-08 15:14:03.413  INFO 7108 --- [Thread-20] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2019-09-08 15:14:03.416  INFO 7108 --- [Thread-20] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2019-09-08 15:14:03.425  INFO 7108 --- [Thread-20] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-09-08 15:14:03.970  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MSIB360 with PID 7108 (E:\java\GGR\springbootjpa\target\classes started by gr in E:\java\GGR)
+2019-09-08 15:14:03.970  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-09-08 15:14:04.266  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:14:04.272  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6ms. Found 1 repository interfaces.
+2019-09-08 15:14:04.272  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:14:04.273  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1ms. Found 0 repository interfaces.
+2019-09-08 15:14:04.355  INFO 7108 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$34321dd4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-08 15:14:04.524  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-09-08 15:14:04.526  INFO 7108 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-08 15:14:04.526  INFO 7108 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-08 15:14:04.594  INFO 7108 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-08 15:14:04.594  INFO 7108 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 622 ms
+2019-09-08 15:14:04.653  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:14:04.667  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3,mysqlDataSource} inited
+2019-09-08 15:14:04.675  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:14:04.728  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:14:04.751  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:14:04.772  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4,mysqlDataSource2} inited
+2019-09-08 15:14:04.778  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:14:04.821  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:14:04.845  INFO 7108 --- [restartedMain] figMain$$EnhancerBySpringCGLIB$$c730e03e : >>>>>>>>>>org.springframework.orm.jpa.JpaTransactionManager
+2019-09-08 15:14:04.929  INFO 7108 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:14:05.017  INFO 7108 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-08 15:14:05.036  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-09-08 15:14:05.037  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 1.096 seconds (JVM running for 309.925)
+2019-09-08 15:14:05.039  INFO 7108 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-09-08 15:14:48.691  INFO 7108 --- [Thread-28] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:14:48.695  INFO 7108 --- [Thread-28] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} closing ...
+2019-09-08 15:14:48.697  INFO 7108 --- [Thread-28] com.alibaba.druid.pool.DruidDataSource   : {dataSource-4} closed
+2019-09-08 15:14:48.698  INFO 7108 --- [Thread-28] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} closing ...
+2019-09-08 15:14:48.699  INFO 7108 --- [Thread-28] com.alibaba.druid.pool.DruidDataSource   : {dataSource-3} closed
+2019-09-08 15:14:49.098  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MSIB360 with PID 7108 (E:\java\GGR\springbootjpa\target\classes started by gr in E:\java\GGR)
+2019-09-08 15:14:49.098  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-09-08 15:14:49.343  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:14:49.348  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 1 repository interfaces.
+2019-09-08 15:14:49.349  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:14:49.349  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0ms. Found 0 repository interfaces.
+2019-09-08 15:14:49.414  INFO 7108 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$34321dd4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-08 15:14:49.556  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-09-08 15:14:49.559  INFO 7108 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-08 15:14:49.559  INFO 7108 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-08 15:14:49.624  INFO 7108 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-08 15:14:49.624  INFO 7108 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 524 ms
+2019-09-08 15:14:49.666  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:14:49.677  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5,mysqlDataSource} inited
+2019-09-08 15:14:49.681  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:14:49.720  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:14:49.734  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:14:49.746  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6,mysqlDataSource2} inited
+2019-09-08 15:14:49.750  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:14:49.783  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:14:49.806  INFO 7108 --- [restartedMain] figMain$$EnhancerBySpringCGLIB$$c730e03e : >>>>>>>>>>org.springframework.orm.jpa.JpaTransactionManager
+2019-09-08 15:14:49.889  INFO 7108 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:14:49.957  INFO 7108 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-08 15:14:49.982  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-09-08 15:14:49.983  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 0.91 seconds (JVM running for 354.87)
+2019-09-08 15:14:49.989  INFO 7108 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-09-08 15:15:09.931  INFO 7108 --- [Thread-34] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:15:09.934  INFO 7108 --- [Thread-34] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6} closing ...
+2019-09-08 15:15:09.935  INFO 7108 --- [Thread-34] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6} closed
+2019-09-08 15:15:09.935  INFO 7108 --- [Thread-34] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} closing ...
+2019-09-08 15:15:09.937  INFO 7108 --- [Thread-34] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} closed
+2019-09-08 15:15:10.340  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MSIB360 with PID 7108 (E:\java\GGR\springbootjpa\target\classes started by gr in E:\java\GGR)
+2019-09-08 15:15:10.340  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-09-08 15:15:10.585  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:15:10.590  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 1 repository interfaces.
+2019-09-08 15:15:10.590  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:15:10.593  INFO 7108 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3ms. Found 0 repository interfaces.
+2019-09-08 15:15:10.663  INFO 7108 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$34321dd4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-08 15:15:10.774  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-09-08 15:15:10.775  INFO 7108 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-08 15:15:10.775  INFO 7108 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-08 15:15:10.814  INFO 7108 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-08 15:15:10.814  INFO 7108 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 471 ms
+2019-09-08 15:15:10.858  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:15:10.869  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-7,mysqlDataSource} inited
+2019-09-08 15:15:10.872  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:15:10.907  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:15:10.920  INFO 7108 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:15:10.929  INFO 7108 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-8,mysqlDataSource2} inited
+2019-09-08 15:15:10.932  INFO 7108 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:15:10.957  INFO 7108 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:15:10.976  INFO 7108 --- [restartedMain] figMain$$EnhancerBySpringCGLIB$$c730e03e : >>>>>>>>>>org.springframework.orm.jpa.JpaTransactionManager
+2019-09-08 15:15:11.051  INFO 7108 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:15:11.115  INFO 7108 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-08 15:15:11.133  INFO 7108 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-09-08 15:15:11.134  INFO 7108 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 0.824 seconds (JVM running for 376.022)
+2019-09-08 15:15:11.136  INFO 7108 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2019-09-08 15:22:08.369  INFO 7108 --- [Thread-45] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:22:08.372  INFO 7108 --- [Thread-45] com.alibaba.druid.pool.DruidDataSource   : {dataSource-8} closing ...
+2019-09-08 15:22:08.372  INFO 7108 --- [Thread-45] com.alibaba.druid.pool.DruidDataSource   : {dataSource-8} closed
+2019-09-08 15:22:08.372  INFO 7108 --- [Thread-45] com.alibaba.druid.pool.DruidDataSource   : {dataSource-7} closing ...
+2019-09-08 15:22:08.373  INFO 7108 --- [Thread-45] com.alibaba.druid.pool.DruidDataSource   : {dataSource-7} closed
+2019-09-08 15:46:29.886  INFO 8220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MSIB360 with PID 8220 (E:\java\GGR\springbootjpa\target\classes started by gr in E:\java\GGR)
+2019-09-08 15:46:29.889  INFO 8220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-09-08 15:46:29.949  INFO 8220 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-08 15:46:29.950  INFO 8220 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-08 15:46:30.570  INFO 8220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:46:30.626  INFO 8220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47ms. Found 1 repository interfaces.
+2019-09-08 15:46:30.626  INFO 8220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:46:30.628  INFO 8220 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2ms. Found 0 repository interfaces.
+2019-09-08 15:46:31.045  INFO 8220 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$37703442] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-08 15:46:31.336  INFO 8220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-09-08 15:46:31.355  INFO 8220 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-08 15:46:31.355  INFO 8220 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-08 15:46:31.490  INFO 8220 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-08 15:46:31.491  INFO 8220 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1541 ms
+2019-09-08 15:46:31.657  INFO 8220 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:46:31.761  INFO 8220 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2019-09-08 15:46:31.762  INFO 8220 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-09-08 15:46:31.874  INFO 8220 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-09-08 15:46:32.023  INFO 8220 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,mysqlDataSource} inited
+2019-09-08 15:46:32.136  INFO 8220 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:46:32.259  WARN 8220 --- [restartedMain] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-09-08 15:46:32.678  INFO 8220 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:46:32.728  INFO 8220 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:46:32.739  INFO 8220 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2,mysqlDataSource2} inited
+2019-09-08 15:46:32.744  INFO 8220 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:46:32.773  INFO 8220 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:46:33.022  INFO 8220 --- [restartedMain] figMain$$EnhancerBySpringCGLIB$$ca6ef6ac : >>>>>>>>>>org.springframework.orm.jpa.JpaTransactionManager
+2019-09-08 15:46:33.184  INFO 8220 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:46:33.334  INFO 8220 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-08 15:46:33.378  INFO 8220 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-09-08 15:46:33.380  INFO 8220 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 3.999 seconds (JVM running for 4.982)
+2019-09-08 15:46:40.415  INFO 8220 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-08 15:46:40.415  INFO 8220 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-08 15:46:40.421  INFO 8220 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2019-09-08 15:53:01.465  INFO 8220 --- [Thread-16] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:53:01.467  INFO 8220 --- [Thread-16] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closing ...
+2019-09-08 15:53:01.470  INFO 8220 --- [Thread-16] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2019-09-08 15:53:01.470  INFO 8220 --- [Thread-16] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2019-09-08 15:53:01.471  INFO 8220 --- [Thread-16] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-09-08 15:56:48.220  INFO 9268 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MSIB360 with PID 9268 (E:\java\GGR\springbootjpa\target\classes started by gr in E:\java\GGR)
+2019-09-08 15:56:48.222  INFO 9268 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-09-08 15:56:48.283  INFO 9268 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-08 15:56:48.283  INFO 9268 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-08 15:56:48.976  INFO 9268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:56:49.034  INFO 9268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 48ms. Found 1 repository interfaces.
+2019-09-08 15:56:49.034  INFO 9268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 15:56:49.040  INFO 9268 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5ms. Found 1 repository interfaces.
+2019-09-08 15:56:49.546  INFO 9268 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6e54ec19] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-08 15:56:49.968  INFO 9268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-09-08 15:56:49.989  INFO 9268 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-08 15:56:49.989  INFO 9268 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-08 15:56:50.132  INFO 9268 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-08 15:56:50.133  INFO 9268 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1849 ms
+2019-09-08 15:56:50.330  INFO 9268 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:56:50.470  INFO 9268 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2019-09-08 15:56:50.471  INFO 9268 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2019-09-08 15:56:50.634  INFO 9268 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2019-09-08 15:56:50.801  INFO 9268 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1,mysqlDataSource} inited
+2019-09-08 15:56:50.895  INFO 9268 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:56:51.032  WARN 9268 --- [restartedMain] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2019-09-08 15:56:51.456  INFO 9268 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:56:51.508  INFO 9268 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 15:56:51.521  INFO 9268 --- [restartedMain] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2,mysqlDataSource2} inited
+2019-09-08 15:56:51.524  INFO 9268 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2019-09-08 15:56:51.554  INFO 9268 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2019-09-08 15:56:51.808  INFO 9268 --- [restartedMain] nfigMain$$EnhancerBySpringCGLIB$$153ae83 : >>>>>>>>>>org.springframework.orm.jpa.JpaTransactionManager
+2019-09-08 15:56:51.971  INFO 9268 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-09-08 15:56:52.126  INFO 9268 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-09-08 15:56:52.170  INFO 9268 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2019-09-08 15:56:52.172  INFO 9268 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Started SpringbootjpaApplication in 4.649 seconds (JVM running for 5.719)
+2019-09-08 15:56:59.715  INFO 9268 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-09-08 15:56:59.715  INFO 9268 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-09-08 15:56:59.721  INFO 9268 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2019-09-08 17:44:16.985  INFO 9268 --- [Thread-17] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-08 17:44:16.986  INFO 9268 --- [Thread-17] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closing ...
+2019-09-08 17:44:16.987  INFO 9268 --- [Thread-17] com.alibaba.druid.pool.DruidDataSource   : {dataSource-2} closed
+2019-09-08 17:44:16.987  INFO 9268 --- [Thread-17] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2019-09-08 17:44:16.988  INFO 9268 --- [Thread-17] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
+2019-09-08 18:05:16.350  INFO 6084 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : Starting SpringbootjpaApplication on MSIB360 with PID 6084 (E:\java\GGR\springbootjpa\target\classes started by gr in E:\java\GGR)
+2019-09-08 18:05:16.355  INFO 6084 --- [restartedMain] com.work.ggr.SpringbootjpaApplication    : The following profiles are active: dev
+2019-09-08 18:05:16.449  INFO 6084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-09-08 18:05:16.450  INFO 6084 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-09-08 18:05:17.058  INFO 6084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 18:05:17.177  INFO 6084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111ms. Found 1 repository interfaces.
+2019-09-08 18:05:17.179  INFO 6084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2019-09-08 18:05:17.193  INFO 6084 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13ms. Found 1 repository interfaces.
+2019-09-08 18:05:17.767  INFO 6084 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$208e696c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-09-08 18:05:18.081  INFO 6084 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2019-09-08 18:05:18.102  INFO 6084 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-09-08 18:05:18.102  INFO 6084 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.22]
+2019-09-08 18:05:18.242  INFO 6084 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-09-08 18:05:18.242  INFO 6084 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1792 ms
+2019-09-08 18:05:18.412  INFO 6084 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2019-09-08 18:05:18.526  INFO 6084 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2019-09-08 18:05:18.528  INFO 6084 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found

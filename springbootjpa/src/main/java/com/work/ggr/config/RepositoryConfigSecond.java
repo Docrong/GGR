@@ -22,7 +22,7 @@ import java.util.Map;
  */
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.work.ggr.dao",
+@EnableJpaRepositories(basePackages = "com.work.ggr.ds2.repository2",
 entityManagerFactoryRef = "entityManagerFactorySecond",
 transactionManagerRef = "transactionManagerSecond")
 public class RepositoryConfigSecond {

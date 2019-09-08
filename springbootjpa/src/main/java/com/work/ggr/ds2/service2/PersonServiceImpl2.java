@@ -1,7 +1,7 @@
 package com.work.ggr.ds2.service2;
 
 import com.work.ggr.model.Person;
-import com.work.ggr.ds2.repository2.PersonRepository;
+import com.work.ggr.ds2.repository2.PersonRepository2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class PersonServiceImpl2 {
 
     @Autowired
     @Qualifier(value = "personRepository2")
-    private PersonRepository personRepository;
+    private PersonRepository2 personRepository;
     @Transactional(value = "transactionManagerSecond")
     public void testSecondDS(Map maptj){
         Person p2=new Person();

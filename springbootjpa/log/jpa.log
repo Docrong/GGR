@@ -2860,3 +2860,8 @@ org.springframework.beans.factory.NoUniqueBeanDefinitionException: No qualifying
 2019-09-09 16:04:36.132  INFO 6140 --- [http-nio-8081-exec-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2019-09-09 16:04:36.133  INFO 6140 --- [http-nio-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2019-09-09 16:04:36.138  INFO 6140 --- [http-nio-8081-exec-6] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2019-09-09 18:05:30.784  INFO 6140 --- [Thread-44] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-09-09 18:05:30.785  INFO 6140 --- [Thread-44] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6} closing ...
+2019-09-09 18:05:30.786  INFO 6140 --- [Thread-44] com.alibaba.druid.pool.DruidDataSource   : {dataSource-6} closed
+2019-09-09 18:05:30.787  INFO 6140 --- [Thread-44] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} closing ...
+2019-09-09 18:05:30.787  INFO 6140 --- [Thread-44] com.alibaba.druid.pool.DruidDataSource   : {dataSource-5} closed

@@ -29,5 +29,4 @@ build/
 
 ### VS Code ###
 .vscode/
-
-**/resources/datasource.properties
+src/main/resources/datasource.properties

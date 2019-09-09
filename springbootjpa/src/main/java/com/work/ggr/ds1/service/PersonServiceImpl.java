@@ -51,8 +51,8 @@ public class PersonServiceImpl {
         System.out.println("test JDBC");
         jdbcTemplateDao.queryMysql1();;
         jdbcTemplateDao.queryMysql2();
-        jdbcTemplateDao.insertMysql1();
-        jdbcTemplateDao.insertMysql2();
+//        jdbcTemplateDao.insertMysql1();
+//        jdbcTemplateDao.insertMysql2();
         return null;
     }
 

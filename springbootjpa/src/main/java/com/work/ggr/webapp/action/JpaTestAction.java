@@ -1,5 +1,6 @@
 package com.work.ggr.webapp.action;
 
+import com.work.ggr.config.MysqlConfig;
 import com.work.ggr.ds1.service.PersonServiceImpl;
 import com.work.ggr.ds2.service2.PersonServiceImpl2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,15 @@ public class JpaTestAction {
     @Autowired
     private PersonServiceImpl2 personManager2;
 
+    @Autowired
+    private MysqlConfig mysqlConfig;
+
     @RequestMapping("/test")
     @ResponseBody
     public String testJpa() {
         Map maptj = new HashMap();
         personManager.testJpa(maptj);
+        System.out.println(mysqlConfig);
         return "testJpa";
     }
 
@@ -34,7 +39,7 @@ public class JpaTestAction {
     @ResponseBody
     public String testDataSource() {
         Map maptj = new HashMap();
-        personManager.testDataSource(maptj);
+        personManager.testJdbc(maptj);
         return "testDataSource";
     }
 
@@ -42,7 +47,7 @@ public class JpaTestAction {
     @ResponseBody
     public String testJdbc() {
         Map maptj = new HashMap();
-        personManager.testJdbc(maptj);
+        personManager.testJdbcTemplate(maptj);
         return "testJdbc";
     }
 
@@ -56,7 +61,7 @@ public class JpaTestAction {
 
     @RequestMapping("/test5")
     @ResponseBody
-    public String testJPA2(){
+    public String testJPA2() {
         personManager2.testSecondDS(new HashMap());
         return "testJPARepository";
     }

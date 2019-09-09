@@ -22,9 +22,10 @@ public class PersonServiceImpl2 {
     @Autowired
     @Qualifier(value = "personRepository2")
     private PersonRepository2 personRepository;
+
     @Transactional(value = "transactionManagerSecond")
-    public void testSecondDS(Map maptj){
-        Person p2=new Person();
+    public void testSecondDS(Map maptj) {
+        Person p2 = new Person();
 
         p2.setPhone("数据库2");
         p2.setUsername("ggr");

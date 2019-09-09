@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -17,35 +18,41 @@ import java.util.Map;
  * @date : 2019/8/29 8:54
  */
 @Service("personManager")
-@Transactional(value = "transactionManagerMain")
 public class PersonServiceImpl {
 
     @Autowired
-    private JpaDaoImpl dao;
-
-    @Autowired
-    private DataSourceDaoImpl dsDao;
+    private JpaDaoImpl jpaDao;
 
     @Autowired
     private JdbcDaoImpl jdbcDao;
 
+    @Autowired
+    private JdbcTemplateDaoImpl jdbcTemplateDao;
+
+@Transactional(value = "transactionManagerMain")
     public Map testJpa(Map maptj) {
-        System.out.println("dao:" + dao);
-        dao.testMysql1(maptj);
+        System.out.println("dao:" + jpaDao);
+        jpaDao.testMysql1(maptj);
         return null;
     }
 
-    public Map testDataSource(Map maptj) {
+    public Map testJdbc(Map maptj) {
         System.out.println("test DataSource");
-        dsDao.testMysql1();
-        dsDao.testMysql2();
+        jdbcDao.selectMysql1(new HashMap());
+        jdbcDao.selectMysql2(new HashMap());
+        jdbcDao.insertMysql1(new HashMap());
+        jdbcDao.insertMysql2(new HashMap());
+
+//        jdbcDao.updateMysql1(new HashMap());
         return null;
     }
 
-    public Map testJdbc(Map maptj){
+    public Map testJdbcTemplate(Map maptj){
         System.out.println("test JDBC");
-        jdbcDao.test1();;
-        jdbcDao.test2();
+        jdbcTemplateDao.queryMysql1();;
+        jdbcTemplateDao.queryMysql2();
+        jdbcTemplateDao.insertMysql1();
+        jdbcTemplateDao.insertMysql2();
         return null;
     }
 

@@ -17,7 +17,7 @@ import java.util.Map;
  */
 
 @Repository("jpaDao")
-@Transactional
+@Transactional(value = "transactionManagerMain")
 public class JpaDaoImpl {
     @Autowired
     @Qualifier("entityManagerFactoryMain")
@@ -41,8 +41,8 @@ public class JpaDaoImpl {
         p.setUsername(new Date().toString());
         Person p2=entityManager.find(Person.class,"11");
         System.out.println(p2);
-        entityManager.remove(p2);
-        entityManager.flush();
+//        entityManager.remove(p2);
+//        entityManager.flush();
 
         return null;
     }

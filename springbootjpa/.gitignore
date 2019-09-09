@@ -1,7 +1,6 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-**/datasource.properties
 !**/src/test/**
 
 ### STS ###

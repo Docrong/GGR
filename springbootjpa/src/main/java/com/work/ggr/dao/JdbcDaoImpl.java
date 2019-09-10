@@ -20,14 +20,21 @@ import java.util.UUID;
  */
 @Repository("dsDao")
 public class JdbcDaoImpl {
-    @Autowired
-    @Qualifier(value = "mysqlDataSource")
+
     DataSource dataSource;
 
-    @Autowired
-    @Qualifier(value = "mysqlDataSource2")
+
     DataSource dataSource2;
 
+    @Autowired
+    public void setDataSource(@Qualifier(value = "mysqlDataSource") DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    @Autowired
+    public void setDataSource2(@Qualifier(value = "mysqlDataSource2") DataSource dataSource2) {
+        this.dataSource2 = dataSource2;
+    }
 
     private Connection conn;
     private Statement state;
@@ -145,18 +152,18 @@ public class JdbcDaoImpl {
 
     public void insertMysql2(Map maptj) {
         try {
-            conn=dataSource2.getConnection();
-            state=conn.createStatement();
-            String uuid= UUID.randomUUID().toString().replace("-","");
-            String currentTime=new Date().toString();
-            String insertSql=" insert into person (id,username,created,remark)values('"+uuid+"','ggr','"+currentTime+"','inserByJdbc')";
-            int back=state.executeUpdate(insertSql);
-            System.out.println("insert result back:"+back);
+            conn = dataSource2.getConnection();
+            state = conn.createStatement();
+            String uuid = UUID.randomUUID().toString().replace("-", "");
+            String currentTime = new Date().toString();
+            String insertSql = " insert into person (id,username,created,remark)values('" + uuid + "','ggr','" + currentTime + "','inserByJdbc')";
+            int back = state.executeUpdate(insertSql);
+            System.out.println("insert result back:" + back);
             state.close();
             conn.close();
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
                 state.close();
                 conn.close();

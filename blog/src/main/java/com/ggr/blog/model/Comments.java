@@ -10,7 +10,7 @@ import javax.persistence.*;
  * @author gr
  * @date 2019-08-27 09:39:11
  */
-@Entity(name = "Comments")
+@Entity
 @Table(name = "blog_comments")
 @GenericGenerator(name = "system-uuid", strategy = "uuid.hex")
 public class Comments {

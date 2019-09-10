@@ -2715,15 +2715,6 @@ public class StaticMethodbak {
     }
 
 
-    public static void main(String[] args) {
-//		System.out.println(StaticMethod.getLocalString());
-//		System.out.println(StaticMethod.getLocalString(0));
-//		System.out.println(StaticMethod.getLocalString(-1));
-//		System.out.println(StaticMethod.getLocalString(1));
-//		System.out.println(StaticMethod.getStringRandom(6));
-    }
-
-
     public static boolean isChineseCharacter(String chineseStr) {
         try {
             char[] charArray = chineseStr.toCharArray();

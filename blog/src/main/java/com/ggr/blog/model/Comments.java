@@ -12,18 +12,18 @@ import javax.persistence.*;
  */
 @Entity(name = "Comments")
 @Table(name = "blog_comments")
+@GenericGenerator(name = "system-uuid", strategy = "uuid.hex")
 public class Comments {
     @Id
-    @GeneratedValue(generator="system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid.hex")
+    @GeneratedValue(generator = "system-uuid")
     @Column(name = "id", unique = true)
     private String id;
     @Column(name = "senddate")
-    private String date;//时间
+    private String senddate;//时间
     @Column(name = "agreenum")
-    private String agree;//赞同
+    private String agreenum;//赞同
     @Column(name = "againstnum")
-    private String against;//反对
+    private String againstnum;//反对
     @Column(name = "lastid")
     private String lastid;//上一条
     @Column(name = "nickname")
@@ -45,28 +45,28 @@ public class Comments {
         this.id = id;
     }
 
-    public String getDate() {
-        return date;
+    public String getSenddate() {
+        return senddate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setSenddate(String senddate) {
+        this.senddate = senddate;
     }
 
-    public String getAgree() {
-        return agree;
+    public String getAgreenum() {
+        return agreenum;
     }
 
-    public void setAgree(String agree) {
-        this.agree = agree;
+    public void setAgreenum(String agreenum) {
+        this.agreenum = agreenum;
     }
 
-    public String getAgainst() {
-        return against;
+    public String getAgainstnum() {
+        return againstnum;
     }
 
-    public void setAgainst(String against) {
-        this.against = against;
+    public void setAgainstnum(String againstnum) {
+        this.againstnum = againstnum;
     }
 
     public String getLastid() {

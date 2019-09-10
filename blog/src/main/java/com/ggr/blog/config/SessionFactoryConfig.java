@@ -20,32 +20,6 @@ import javax.sql.DataSource;
 public class SessionFactoryConfig {
     protected Log log = LogFactory.getLog(getClass());
 
-    @Autowired
-    @Qualifier(value = "mysqlDataSource")
-    DataSource dataSource;
 
-
-    @Primary
-    @Bean(name = "sessionFactory")
-    public LocalSessionFactoryBean createLocalSessionFactoryBean() {
-        LocalSessionFactoryBean sqlSessionFactoryBean = new LocalSessionFactoryBean();
-        sqlSessionFactoryBean.setPackagesToScan("com.ggr.blog.model");
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        return sqlSessionFactoryBean;
-
-    }
-
-    @Autowired
-    @Qualifier(value = "oracleDataSource")
-    DataSource dataSource2;
-
-    @Bean(name = "sessionFactory2")
-    public LocalSessionFactoryBean createLocalSessionFactoryBean2() {
-        LocalSessionFactoryBean sqlSessionFactoryBean = new LocalSessionFactoryBean();
-        sqlSessionFactoryBean.setPackagesToScan("com.ggr.blog.model");
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        return sqlSessionFactoryBean;
-
-    }
 
 }

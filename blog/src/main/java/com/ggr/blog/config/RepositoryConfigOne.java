@@ -32,6 +32,7 @@ public class RepositoryConfigOne {
 
     @Autowired
     @Qualifier("mysqlDataSource")
+
     private DataSource dataSource;
 
     @Bean(name = "entityManagerFactoryOne")

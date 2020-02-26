@@ -13,17 +13,16 @@ public class HelloServiceClient {
         Service service = new Service();
         try {
             Call call = (Call) service.createCall();
-            //���õ�ַ
-            call.setTargetEndpointAddress("http://localhost:8080/webservice/services/HelloServiceImpl?wsdl");
-            //����Ҫִ�еķ���(�������ַ�ʽ������)
-            call.setOperationName("sayHello");
+            //??????
+            call.setTargetEndpointAddress("http://localhost:9080/eoms35/services/SuperviseTaskInterface?wsdl");
+            call.setOperationName("countDataAppend");
 //				call.setOperationName(new QName("http://impl.service.ggr.com","sayHello"));
-            //����Ҫ�������,���û��Ҫ����Ĳ�������Ҫд��������������������͡�ParameterMode��,��һ��������û�о���Ҫ��
-            call.addParameter("param1", org.apache.axis.Constants.XSD_STRING, javax.xml.rpc.ParameterMode.IN);
-            //���÷��ص�����
+            //????????????,????????????????????д??????????????????????ParameterMode??,?????????????о??????
+            call.addParameter("str", org.apache.axis.Constants.XSD_STRING, javax.xml.rpc.ParameterMode.IN);
+            //???÷????????
             call.setReturnType(org.apache.axis.Constants.XSD_STRING);
-            //����WebService����
-            String info = "С�������ã�";
+            //????WebService????
+            String info = "";
             String result = (String) call.invoke(new Object[]{info});
             System.out.println(result);
         } catch (ServiceException e) {
